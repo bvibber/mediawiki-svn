@@ -115,6 +115,8 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 	|| embedPlayer.instanceOf.toLowerCase() == 'smil'
 	|| embedPlayer.getHeight() < 180 
 	|| embedPlayer.getWidth() < 240
+	// For now require that the video is a flat sequence special key: Sequence-
+	|| embedPlayer.apiTitleKey.indexOf('Sequence-') != 0
 	){		
 		return ;
 	}
@@ -246,8 +248,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		var _this = this;
 		if( wgArticleId == 0 ) {
 			// Update create button 
-			$j('#ca-edit span a')
-				.text( gM('mwe-sequencer-create-sequence' ))
+			$j('#ca-edit a')
+				.html( $j('<span />').text( gM('mwe-sequencer-create-sequence' ) ) )
 				.click(function(){
 					_this.showEditor();
 					return false;
@@ -263,8 +265,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			);
 		} else {						
 			// Update edit button 
-			$j('#ca-edit span a')
-				.text( gM('mwe-sequencer-edit-sequence' ))
+			$j('#ca-edit a')
+				.html( $j('<span />').text( gM('mwe-sequencer-edit-sequence' ) ) )
 				.click(function(){
 					_this.showEditor();
 					return false;

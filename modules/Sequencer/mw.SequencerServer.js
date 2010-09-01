@@ -72,7 +72,9 @@
 		getUserName: function(){
 			return this.userName;
 		},
-
+		getTitleKey: function(){
+			return this.titleKey;
+		},
 		// Check if the server exists / is configured 
 		isConfigured: function( ){
 			if( !this.apiType || !this.apiUrl || !this.titleKey){
@@ -95,7 +97,7 @@
 		 */
 		getSmilXml: function( callback ){
 			var _this = this; 						
-			mw.getTitleText( this.getApiUrl(), this.titleKey, function( smilXml ){
+			mw.getTitleText( this.getApiUrl(), this.getTitleKey(), function( smilXml ){
 				// set smil to empty string if unset:
 				if(!smilXml )
 					smilXml = '';
@@ -124,7 +126,7 @@
 				callback ( this.saveToken );
 				return ;	
 			}
-			mw.getToken( this.getApiUrl(), this.titleKey, function( saveToken ){
+			mw.getToken( this.getApiUrl(), this.getTitleKey(), function( saveToken ){
 				_this.saveToken = saveToken;
 				callback ( _this.saveToken )
 			});
@@ -223,11 +225,12 @@
 			});
 		},
 		
-		updateSequenceFileDescription: function(){
+		updateSequenceFileDescription: function( callback ){
 			var _this = this;
-			mw.getToken( apiUrl, title, function( token ){
+			mw.getToken( _this.getApiUrl(), 'File:' + _this.getVideoFileName(), function( token ){
 				var pageText = ''
-				if( mw.parseUri( apiUrl ).host == 'commons.wikimedia.org' ){
+				// Check if we should use commons asset description template:
+				if( mw.parseUri( _this.getApiUrl() ).host == 'commons.wikimedia.org' ){
 					pageText = _this.getCommonsDescriptionText()
 				} else {
 					pageText = _this.getBaseFileDescription()
@@ -236,36 +239,53 @@
 					'action':'edit',
 					'token' : token, 
 					'title' : 'File:' + _this.getVideoFileName(),
-					'summary' : 'Automated sequence description page for published sequence: ' + _this.getTitle(),
+					'summary' : 'Automated sequence description page for published sequence: ' + _this.getTitleKey(),
 					'text' : pageText
-				}
+				};
+				mw.getJSON( _this.getApiUrl(), request, function(data){
+					if( data && data.edit && data.edit.result == "Success"){
+						callback( true );
+					} else {
+						callback( false )
+					}
+				});
 			})
 		},
 		getBaseFileDescription: function(){
-			return 'Published sequence file for [[Sequence:' + _this.getTitle() + ']]';
+			var _this = this;
+			return 'Published sequence for [['+ _this.getTitleKey() + ']]';
 		},
 		getCommonsDescriptionText: function(){
+			var _this = this;
+			
 			var descText ="{{Information\n" +  
-				"|Description=" + _this.getSequenceFileBaseDescription() + "\n" + 
+				"|Description=" + _this.getBaseFileDescription() + "\n" + 
 				"|Source= Sequence Sources assets include:\n";
 			
 			// loop over every asset:
 			this.sequencer.getSmil().getBody().getRefElementsRecurse(null, 0, function( $node ){
 				var $apiKeyParam =  $node.children("param[name='apiTitleKey']"); 
 				if( $apiKeyParam.length ){
-					descText+= "*[[" + $apiKeyParam.attr('value') + "]]\n";
+					descText+= "* [[:" + $apiKeyParam.attr('value') + "]]\n";
 				}
 			});
+			var pad2 = function(num){
+				if( parseInt( num ) < 10 ){
+					return '0' + num;
+				}
+				return num;
+			}
 			var dt = new Date();
 			descText+='|Date=' +  dt.getFullYear() + '-' + 
 						pad2(dt.getMonth()+1) + '-' + 
 						pad2(dt.getDate()) + "\n" +
-				"|Author=Last edit by [[User:" + _this.getUserName() + "\n" +  
+				"|Author=Last edit by [[User:" + _this.getUserName() + "]]\n" +  
 				"|Permission= {{Cc-by-nc-sa-2.0-dual}}" + "\n" +				
 				"}}";
 			
 			// Add Published Sequence category ( for now )
 			descText += "\n[[Category:Published Sequence]]\n";
+			return descText;
 		},
 		
 		/**
@@ -274,7 +294,7 @@
 		 */
 		getSequenceViewUrl: function( titleKey ){
 			if( !titleKey )
-				titleKey = this.titleKey;
+				titleKey = this.getTitleKey();
 			// Check that we have a pagePathUrl config: 
 			if( !this.pagePathUrl ){
 				return false;
@@ -294,7 +314,7 @@
 		 * @return {String}
 		 */
 		getVideoFileName: function(){
-			return this.titleKey.replace( ':', '-') + '.ogv';
+			return this.getTitleKey().replace( ':', '-') + '.ogv';
 		},
 		
 		// get upload settings runs the callback with the post url and request data 

@@ -79,9 +79,6 @@ mw.SequencerAddMedia.prototype = {
 						}
 						widgetFocus = true;
 					})
-					.click(function(){
-						$j(this).focus();						
-					})
 					// add the sequencer input binding
 					.sequencerInput(  _this.sequencer  )
 				)

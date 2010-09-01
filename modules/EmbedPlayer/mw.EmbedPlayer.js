@@ -2726,10 +2726,13 @@ mw.EmbedPlayer.prototype = {
 	   	 .attr( 'title', gM( 'mwe-embedplayer-pause_clip' ) );
 	   	 
 	   	 
-	   	 //Run play hook: 
+	   	 // Run play hook: 
 	   	 mw.log("playEvent");
 	   	 $j( this ).trigger( 'playEvent' );
 	   	
+	   	 // Start monitor
+	   	 this.monitor();
+	   	 
 	   	  // If we previously finished playing this clip run the "replay hook"
 	   	 if( this.donePlayingCount > 0 ) {
 	   	 	mw.log("replayEvent");

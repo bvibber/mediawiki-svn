@@ -125,6 +125,7 @@ $messages['en'] = array(
 	'mwe-sequencer-publishing-status' => 'Publish status:',
 	'mwe-sequencer-publishing-error' => 'Publish error',
 	'mwe-sequencer-publishing-error-upload-desc' => 'There was an error in uploading the published file',
+	'mwe-sequencer-publishing-error-adding-desc' => 'There was an error adding the file description',
 	'mwe-sequencer-publishing-uploading' => 'Uploading published file',
 	'mwe-sequencer-publishing-updatepage' => 'Updating sequence description',
 

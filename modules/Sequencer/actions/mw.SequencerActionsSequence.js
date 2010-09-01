@@ -436,11 +436,17 @@ mw.SequencerActionsSequence.prototype = {
 		$dialog.html( gM('mwe-sequencer-publishing-updatepage' ) );
 		
 		// Update the file description
-		this.sequencer.getServer().updateSequenceFileDescription(function(){
-			
-		});
-		
-		
+		this.sequencer.getServer().updateSequenceFileDescription( function( status ){
+			if( status === true ){
+				_this.fileDescriptionSuccess( $dialog );
+			} else {
+				// xxx do better error handling 
+				$dialog.empty().text( gM( 'mwe-sequencer-publishing-error-adding-desc' ) ); 
+			}
+		});					
+	},
+	fileDescriptionSuccess: function( $dialog ){
+		var _this = this;
 		// Success link to the sequence page / ok closes dialog
 		$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-success' ) );
 		var button = {};
