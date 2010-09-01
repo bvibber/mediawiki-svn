@@ -75,6 +75,7 @@ mw.Smil.prototype = {
 		// Check for data url
 		var dataUrlKey = 'data:text/xml;charset=utf-8,';
 		if( url.indexOf( dataUrlKey ) === 0 ){
+			// Load the smil document from the data url:
 			_this.loadFromString(
 				unescape( url.substr( dataUrlKey.length ) )
 			);

@@ -2813,6 +2813,8 @@ mw.EmbedPlayer.prototype = {
 		this.showThumbnail();
 		this.bufferedPercent = 0; // reset buffer state			
 		this.controlBuilder.setStatus( this.getTimeRange() );
+		// stop monitor:
+		this.monitorInterval = null;
 		
 		// Reset the playhead
 		mw.log("EmbedPlayer::Stop:: Reset play head")
@@ -3081,6 +3083,7 @@ mw.EmbedPlayer.prototype = {
 				}, this.monitorRate )
 			}
 		} else {
+			mw.log("EmbedPlayer::monitor: player is stoped, stop monitor")
 			// If stopped "stop" monitor: 
 			clearInterval( this.monitorInterval );
 		}
