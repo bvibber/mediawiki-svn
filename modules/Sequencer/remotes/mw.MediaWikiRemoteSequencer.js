@@ -89,11 +89,11 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 			// pause event should fire 
 			mw.remoteSequencerAddEditOverlay( embedPlayerId );
 			
-			// show the credits screen after 3 seconds 
+			// show the credits screen after 3 seconds 1/2 second to fade in
 			setTimeout(function(){				
 				$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
 				embedPlayer.$interface.find('.k-menu').fadeIn('fast');
-			}, 3000)
+			}, 3500)
 			
 			// On end runs before interface bindings (give the dom 10ms to build out the menu )
 			setTimeout(function(){
@@ -519,7 +519,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				'titleKey' : wgPageName,
 				'pagePathUrl' : wgServer + wgArticlePath,
 				'userName' : wgUserName
-			},
+			},			
     		// Set the add media wizard to only include commons:   
     		addMedia : {
     			 'enabled_providers':[ 'wiki_commons' ],	    			 
