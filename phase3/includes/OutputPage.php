@@ -2367,7 +2367,7 @@ class OutputPage {
 		}
 		$scripts .= "\n" . $this->mScripts;
 		// This should be at the bottom of the body - below ALL other scripts
-		$scripts .= Html::inlineScript( 'mediaWiki.loader.go();' );
+		$scripts .= Html::inlineScript( "if ( typeof mediaWiki.loader.go === 'function' ) { mediaWiki.loader.go(); }" );
 		return $scripts;
 	}
 
