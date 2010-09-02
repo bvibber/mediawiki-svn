@@ -56,7 +56,7 @@ class ArticleAssessmentPilotHooks {
 		global $wgArticleAssessmentCategory;
 
 		// check if this page should have the form
-		if ( strlen( $wgArticleAssessmentCategory ) == 0 || !$title->isInCategory( $wgArticleAssessmentCategory ) ) {
+		if ( $wgArticleAssessmentCategory === '' || !$title->isInCategory( $wgArticleAssessmentCategory ) ) {
 			return true;
 		}
 
