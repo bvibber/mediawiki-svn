@@ -17,11 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-lexer grammar mwLexer;
-
-/*
- * TODO:
- */
+lexer grammar mwWikitextLexer;
 
 options {
     language = C;
@@ -35,6 +31,8 @@ tokens {
     BEGIN_INTERNAL_LINK;
     BEGIN_EXTERNAL_LINK;
     BEGIN_MEDIA_LINK;
+    END_MEDIA_LINK;
+    MEDIA_LINK;
     HORIZONTAL_RULE;
     NOWIKI;
     BEGIN_HEADING;
@@ -42,6 +40,9 @@ tokens {
     LIST_ELEMENT;
     TABLE_OF_CONTENTS;
     NON_PRINTABLE; // Will be sent to the hidden channel.
+
+    TAGEXT_BLOCK;
+    TAGEXT_INLINE;
 
     HTML_TABLE_OPEN;
     HTML_TABLE_CLOSE;
@@ -287,26 +288,30 @@ eofAction(void *param)
     SPECULATION_FAILURE(context,
                         &context->headingSpeculation,
                         &context->internalLinkSpeculation,
-                        &context->mediaLinkSpeculation);
+                        &context->mediaLinkSpeculation[0],
+                        &context->mediaLinkSpeculation[1]);
 }
 
 
 
 }
 
+fragment
 NOWIKI
 @init{ 
     ANTLR3_MARKER nowikiStart;
     ANTLR3_MARKER nowikiEnd;
 }:
-    '<nowiki>'
+    'nowiki>'
     ((SPACE_CHAR|NEWLINE_CHAR) => (SPACE_CHAR|NEWLINE_CHAR))*
     {
-        nowikiStart = GETCHARINDEX();
+        nowikiEnd = nowikiStart = GETCHARINDEX();
     }
     NOWIKI_BODY[&nowikiEnd]
     {
         ACTION(SETTEXT(SUBSTR2(nowikiStart, nowikiEnd));)
+        MW_SETTYPE(NOWIKI);
+        MW_EMIT();
     }
     ;
 
@@ -316,7 +321,6 @@ HORIZONTAL_RULE: {BOL}?=> ('---' '-'+ SPACE_TAB*) | (('-'|'--'|'---') {MW_SETTYP
 BEGIN_HEADING
 @init{
     int level;
-    bool success;
 }: {BOL && !CX->wikitextHeadingOpenDisabled && !alreadyTried(CX, &CX->headingSpeculation)}?=>
    {
       level = 0;
@@ -360,7 +364,6 @@ INDENTED_LIST_TABLE
     ANTLR3_MARKER listStart;
     ANTLR3_MARKER tableStart;
     ANTLR3_MARKER spaceStart;
-    pANTLR3_COMMON_TOKEN tok;
 }:
     {BOL}?=>
     {
@@ -478,52 +481,112 @@ TABLE_CELL_INLINE
     }
     ;
 
+
+/**
+ * Internal link production, that covers the tokens INTERNAL_LINK,
+ * BEGIN_INTERNAL_LINK, MEDIAL_LINK, and BEGIN_MEDIA_LINK.
+ */
 INTERNAL_LINK
 @init{
     ANTLR3_MARKER mark;
     pANTLR3_STRING linkTitle;
     bool isCompleteLink = false;
-    bool isLegalTitle = false;
-    bool fail = false;
-}:  {!CX->internalLinkOpenDisabled && !alreadyTried(CX, &CX->internalLinkSpeculation)}?=>
+    bool success = true;
+    bool alreadyInInternalLink;
+    bool isMediaLink;
+    pANTLR3_VECTOR attr = NULL;
+}:  {!CX->mediaLinkOpenDisabled && !alreadyTried(CX, &CX->internalLinkSpeculation)
+        /*
+         * We do not need to worry about whether a nested media link has
+         * already failed or not, as if the internal media link fails, the
+         * external will fail at the same time.
+         */
+        && !alreadyTried(CX, &CX->mediaLinkSpeculation[0])}?=>
     (
         {
-            speculationInitiate(CX, &CX->internalLinkSpeculation);
+            /*
+             * If already in an internal link, we are going to fail
+             * the currently ongoing speculation later on.  We cannot
+             * fail a speculation until we have actually emitted a
+             * token.
+             */
+            alreadyInInternalLink = CX->internalLinkOpenDisabled;
+            if (!alreadyInInternalLink) {
+                speculationInitiate(CX, &CX->internalLinkSpeculation);
+            }
+            /*
+             * The nesting level is limited via the predicate controle
+             * logic so it will never happen that
+             * mediaLinkOpenDisabled is false and at the same time
+             * mediaLinkOpenNestingLevel > 1.  Hence, we can safely
+             * initiate a speculation at the current nesting level.
+             */
+            speculationInitiate(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
         }
         '[['
         {
-           SPECULATION_FAILURE(CX, &CX->externalLinkSpeculation);
            mark = MARK();
         }
         (
-            SPACE_TAB_CHAR*
+           SPACE_TAB_CHAR*
            (
             INTERNAL_LINK_TITLE[&linkTitle]
-            SPACE_TAB_CHAR*
+            SPACE_TAB_CHAR* {isMediaLink = CX->isMediaLinkTitle(CX, linkTitle);}
             (
                  ']]' {isCompleteLink=true;}
-               | '|'
-               | {fail = true;}
+               | '|' ({isMediaLink}?=> MEDIA_LINK_ATTRIBUTES[&attr] | )
+               | {success = false;}
             )
            )
-          | {fail = true;}
+          | {success = false;}
         )
     )
     {
-        if (!fail && CX->isMediaLinkTitle(CX, linkTitle)) {
-           MW_EMIT();
-           SPECULATION_FAILURE(CX, &CX->internalLinkSpeculation);
-        } else if (!fail && isCompleteLink && CX->isLegalTitle(CX, linkTitle)) {
-           ACTION(CUSTOM = linkTitle;)
-           speculationAbort(CX, &CX->internalLinkSpeculation);
-        } else if (!fail && CX->isLegalTitle(CX, linkTitle)) {
-           ACTION(CUSTOM = linkTitle;)
-           onInternalLinkOpen(CX);
-           MW_SETTYPE(BEGIN_INTERNAL_LINK);
+        if (success) {
+            if (isMediaLink) {
+                if (!alreadyInInternalLink) {
+                    speculationAbort(CX, &CX->internalLinkSpeculation);
+                }
+                if (attr == NULL) {
+                    attr = CX->vectorFactory->newVector(CX->vectorFactory);
+                }
+                /*
+                 * We'll pack the link title in the attribute vector.
+                 * The parser will unpack it and send it as a separate
+                 * parameter to the client.
+                 */
+                attr->add(attr, linkTitle, NULL);
+                ACTION(CUSTOM = attr;)
+                if (isCompleteLink) {
+                    MW_SETTYPE(MEDIA_LINK);
+                    speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
+                } else {
+                    onMediaLinkOpen(CX);
+                    MW_SETTYPE(BEGIN_MEDIA_LINK);
+                }
+            } else if (CX->isLegalTitle(CX, linkTitle)) {
+                speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
+                ACTION(CUSTOM = linkTitle;)
+                if (isCompleteLink) {
+                    speculationAbort(CX, &CX->internalLinkSpeculation);
+                } else {
+                    onInternalLinkOpen(CX);
+                    MW_SETTYPE(BEGIN_INTERNAL_LINK);
+                }
+            }
         } else {
-           speculationAbort(CX, &CX->internalLinkSpeculation);
-           REWIND(mark);
-           MW_SETTYPE(SPECIAL);
+            if (!alreadyInInternalLink) {
+                speculationAbort(CX, &CX->internalLinkSpeculation);
+            }
+            speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
+            REWIND(mark);
+            MW_SETTYPE(SPECIAL);
+        }
+        MW_EMIT();
+        if (alreadyInInternalLink) {
+            SPECULATION_FAILURE(CX, &CX->internalLinkSpeculation);
+        } else {
+            SPECULATION_FAILURE(CX, &CX->externalLinkSpeculation);
         }
     }
     ;
@@ -541,79 +604,52 @@ INTERNAL_LINK_FAIL_CONDITION: {CX->internalLinkSpeculation.active}?=>
     }
     ;
 
-MEDIA_LINK
-@init{
-    ANTLR3_MARKER mark;
-    pANTLR3_STRING linkTitle;
-    bool isCompleteLink = false;
-    bool isLegalTitle = false;
-    bool fail = false;
-    pANTLR3_VECTOR attr = NULL;
-}:  {!CX->mediaLinkOpenDisabled && !alreadyTried(CX, &CX->mediaLinkSpeculation)}?=>
-    (
-        {
-            speculationInitiate(CX, &CX->mediaLinkSpeculation);
-        }
-        '[['
-        {
-           mark = MARK();
-        }
-        (
-            SPACE_TAB_CHAR*
-           (
-            INTERNAL_LINK_TITLE[&linkTitle]
-            SPACE_TAB_CHAR*
-            (
-                 ']]' {isCompleteLink=true;}
-               | '|' MEDIA_LINK_ATTRIBUTES[&attr]
-               | {fail = true;}
-            )
-           )
-          | {fail = true;}
-        )
-    )
-    {
-        if (!fail && CX->isMediaLinkTitle(CX, linkTitle)) {
-           if (attr == NULL) {
-               attr = CX->vectorFactory->newVector(CX->vectorFactory);
-           }
-           /*
-            * We'll pack the link title in the attribute vector.
-            * The parser will unpack it and send it as a separate
-            * parameter to the client.
-            */
-           attr->add(attr, linkTitle, NULL);
-           ACTION(CUSTOM = attr;)
-           if (isCompleteLink) {
-               speculationAbort(CX, &CX->mediaLinkSpeculation);
-           } else {
-               onMediaLinkOpen(CX);
-               MW_SETTYPE(BEGIN_MEDIA_LINK);
-           }
-        } else {
-           speculationAbort(CX, &CX->mediaLinkSpeculation);
-           REWIND(mark);
-           MW_SETTYPE(SPECIAL);
-        }
-    }
+fragment
+MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr]:
+    //((MEDIA_LINK_ATTRIBUTE[NULL])=> MEDIA_LINK_ATTRIBUTE[attr])*
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr]:
-    (MEDIA_LINK_ATTRIBUTE[&attr])*
+MEDIA_LINK_ATTRIBUTE[pANTLR3_VECTOR *attr]:
+    ( 'thumbnail'
+     |'left'
+     |'right'
+     |'none'
+     | (DECIMAL_DIGIT* 'x')? DECIMAL_DIGIT+ 'px'
+     |'center'
+     |'frame'
+     |'framed'
+     |'frameless'
+     |'upright'
+     |'border'
+     |'alt'
+     |'link'
+     |'baseline'
+     |'sub'
+     |'super'
+     |'top'
+     |'text-top'
+     |'middle'
+     |'bottom')
     ;
 
-END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled}?=> ']]'
+END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled || !CX->mediaLinkCloseDisabled}?=> ']]'
     {
-        speculationSuccess(CX, &CX->internalLinkSpeculation);
-        onInternalLinkClose(CX);
-    }
-    ;
-
-END_MEDIA_LINK: {!CX->mediaLinkCloseDisabled}?=> ']]'
-    {
-        speculationSuccess(CX, &CX->mediaLinkSpeculation);
-        onMediaLinkClose(CX);
+        /*
+         * This token will be matched with BEGIN_INTERNAL_LINK, if
+         * opened.  Otherwise it will be matched with the innermost
+         * BEGIN_MEDIA_LINK.  If neither are opened, this token will
+         * not be active.
+         */
+        if (CX->internalLinkSpeculation.active) {
+            speculationSuccess(CX, &CX->internalLinkSpeculation);
+            onInternalLinkClose(CX);
+        } else {
+            int n = CX->mediaLinkOpenNestingLevel;
+            speculationSuccess(CX, &CX->mediaLinkSpeculation[n - 1]);
+            onMediaLinkClose(CX);
+            MW_SETTYPE(END_MEDIA_LINK);
+        } 
     }
     ;
 
@@ -627,7 +663,7 @@ EXTERNAL_LINK
     {
         speculationInitiate(CX, &CX->externalLinkSpeculation);
     }
-   ('[' ({urlStart = GETCHARINDEX();} URL_PROTOCOL
+   ('[' ((URL_PROTOCOL)=> {urlStart = GETCHARINDEX();} URL_PROTOCOL
              (( {urlEnd = GETCHARINDEX();} URL_CHAR)+ SPACE_TAB_CHAR* (']' | {complete = false;})
          | {success = false;})
     | {success = false;}) )
@@ -693,7 +729,7 @@ INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
     {
        start = GETCHARINDEX();
     }
-    (~(NEWLINE_CHAR|SPACE_TAB_CHAR|'|'|']'))+
+    (~(NEWLINE_CHAR|SPACE_TAB_CHAR|'|'|'['|']'|NON_PRINTABLE_CHAR))+
     {
        *linkTitle = SUBSTR1(start);
     }
@@ -758,13 +794,10 @@ APOS: '\''
 NON_PRINTABLE: (NON_PRINTABLE_CHAR)+ {MW_HIDE();}
    ;
 
-/*
- *  Only fragments below.
- */
 fragment
 NOWIKI_BODY[ANTLR3_MARKER *nowikiEnd]:
-    (((SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki>'|EOF))=>
-     (SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki>'|EOF)   )
+    (((SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki' SKIP_SPACE '>'|EOF))=>
+      (SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki' SKIP_SPACE '>'|EOF)   )
     |
     ({ *nowikiEnd = GETCHARINDEX(); } . ) NOWIKI_BODY[nowikiEnd]
     ;
@@ -772,10 +805,81 @@ NOWIKI_BODY[ANTLR3_MARKER *nowikiEnd]:
 HTML_OPEN_TAG:
     '<' (
            (HTML_OPEN_TAG_INTERNAL)=> HTML_OPEN_TAG_INTERNAL
-        |
-        { MW_SETTYPE(SPECIAL); }
-         )
+        |  ('nowiki>')=> NOWIKI
+        |  TAG_EXTENSION
+        |  { MW_SETTYPE(SPECIAL); }
+        )
     ;
+
+fragment
+TAG_EXTENSION
+@init{
+    ANTLR3_MARKER mark;
+    ANTLR3_MARKER nameStart;
+    ANTLR3_MARKER nameEnd;
+    ANTLR3_MARKER bodyStart;
+    ANTLR3_MARKER bodyEnd;
+    pANTLR3_VECTOR attr = NULL;
+    bool success = true;
+    bool empty = false;
+    pANTLR3_STRING name;
+    pANTLR3_STRING body = NULL;
+    MWPARSER_TAGEXT *tagExt;
+}:
+    {
+        mark = MARK();
+        nameStart = GETCHARINDEX();
+    }
+    ({nameEnd = GETCHARINDEX();} LETTER)+
+    (SPACE_TAB ATTRIBUTE_LIST_HTML[&attr]?)?
+      ( ('>' | '/>' {empty = true;})
+        (({name = SUBSTR2(nameStart, nameEnd), (tagExt = CX->getTagExtension(CX, name)) != NULL}?=>
+           ({empty}?=> | {!empty}?=> {bodyEnd = bodyStart = GETCHARINDEX();} TAG_EXTENSION_BODY[name, &bodyEnd]) )
+         | {success = false;})
+      | {success = false;})
+    {
+        if (success) {
+            if (tagExt->isBlock) {
+                MW_SETTYPE(TAGEXT_BLOCK);
+            } else {
+                MW_SETTYPE(TAGEXT_INLINE);
+            }
+            if (attr == NULL) {
+                attr = CX->vectorFactory->newVector(CX->vectorFactory);
+            }
+            if (!empty) {
+                body = SUBSTR2(bodyStart, bodyEnd);
+            }
+            /*
+             * Pack the body into the vector.
+             */
+            attr->add(attr, body, NULL);
+            CUSTOM = attr;
+        } else {
+            REWIND(mark);
+            MW_SETTYPE(SPECIAL);
+        }
+        MW_EMIT();
+    }
+    ;
+
+fragment
+TAG_EXTENSION_BODY[pANTLR3_STRING name, ANTLR3_MARKER *bodyEnd]
+@init{
+    ANTLR3_MARKER start;
+    ANTLR3_MARKER end;
+    ANTLR3_MARKER tmpBodyEnd;
+}:
+      (('</' ((LETTER)=> LETTER)+)=> '</' {start = GETCHARINDEX();} ((LETTER)=> {tmpBodyEnd = end = GETCHARINDEX();} LETTER)+ ((SPACE_TAB_CHAR)=> {tmpBodyEnd = GETCHARINDEX();} SPACE_TAB_CHAR)*
+        (('>')=> '>' ({name->compareS(name, SUBSTR2(start, end)) == 0}?=> | {*bodyEnd = tmpBodyEnd;} TAG_EXTENSION_BODY[name, bodyEnd])
+
+         | ({*bodyEnd = GETCHARINDEX();} . TAG_EXTENSION_BODY[name, bodyEnd])
+         | {*bodyEnd = tmpBodyEnd;} EOF)
+      )
+    | EOF
+    | ({*bodyEnd = GETCHARINDEX();} . TAG_EXTENSION_BODY[name, bodyEnd])
+    ;
+
 fragment
 HTML_OPEN_TAG_INTERNAL
 @init{
@@ -877,7 +981,7 @@ HTML_CLOSE_TAG_INTERNAL
     bool isBlock = false;
 }:
     (
-      SPACE_TAB_CHAR* (
+      (
        ( /* begin html block elements */
         {isBlock = true;}
         (({!CX->htmlTableCloseDisabled}?=>      T A B L E           { MW_SETTYPE(HTML_TABLE_CLOSE);      onHtmlTableClose(CX); })      |
@@ -922,7 +1026,7 @@ HTML_CLOSE_TAG_INTERNAL
          ({!CX->htmlTtCloseDisabled}?=>         T T                 { MW_SETTYPE(HTML_TT_CLOSE);         onHtmlTtClose(CX); })         |
          ({!CX->htmlVarCloseDisabled}?=>        V A R               { MW_SETTYPE(HTML_VAR_CLOSE);        onHtmlVarClose(CX); })        |
          ({!CX->htmlAbbrCloseDisabled}?=>       A B B R             { MW_SETTYPE(HTML_ABBR_CLOSE);       onHtmlAbbrClose(CX); })
-        ) '>'
+        ) SPACE_TAB_CHAR* '>'
      ) {
         MW_EMIT();
         if (isBlock) {

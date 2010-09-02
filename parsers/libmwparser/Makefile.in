@@ -42,7 +42,10 @@ DIST_COMMON = README $(am__configure_deps) $(include_HEADERS) \
 	ChangeLog INSTALL NEWS TODO config.guess config.sub depcomp \
 	install-sh ltmain.sh missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
+	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
+	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -77,9 +80,10 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libmwparser_la_LIBADD =
 am_libmwparser_la_OBJECTS = mwbasicevents.lo mwformats.lo \
 	mwheadings.lo mwhtml.lo mwlexercontext.lo mwlinks.lo \
-	mwparsercontext.lo mwtables.lo tracingcontext.lo
-am__objects_1 = mwLexer.lo
-am__objects_2 = mwParser.lo
+	mwparser.lo mwparsercontext.lo mwtagext.lo mwtables.lo \
+	tracingcontext.lo
+am__objects_1 = mwWikitextLexer.lo
+am__objects_2 = mwWikitextParser.lo
 am__objects_3 =
 am__objects_4 = $(am__objects_1) $(am__objects_2) $(am__objects_3) \
 	$(am__objects_3)
@@ -276,8 +280,8 @@ AUTOMAKE_OPTIONS = gnu
 AC_LIBTOOLFLAGS = 
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = tests
-ANTLR_LEXER = mwLexer
-ANTLR_PARSER = mwParser
+ANTLR_LEXER = mwWikitextLexer
+ANTLR_PARSER = mwWikitextParser
 ANTLR_LEXER_DELEGATES = 
 ANTLR_GRAMMARS = $(ANTLR_LEXER:=.g) $(ANTLR_PARSER:=.g)
 ANTLR_SOURCES = $(ANTLR_LEXER:=.c) $(ANTLR_PARSER:=.c) $(ANTLR_LEXER:=.h) $(ANTLR_PARSER:=.h)
@@ -298,6 +302,7 @@ libmwparser_la_SOURCES = \
 	include/mwparser.h			\
 	include/mwparsercontext.h		\
 	include/mwtables.h			\
+        include/mwtagext.h                      \
 	include/mwutils.h			\
 	include/tracingcontext.h		\
 	src/mwbasicevents.c			\
@@ -306,7 +311,9 @@ libmwparser_la_SOURCES = \
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+        src/mwparser.c                          \
 	src/mwparsercontext.c			\
+        src/mwtagext.c                          \
 	src/mwtables.c				\
 	src/tracingcontext.c
 
@@ -418,16 +425,18 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwLexer.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwParser.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwWikitextLexer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwWikitextParser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwbasicevents.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwformats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwheadings.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwhtml.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwlexercontext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwlinks.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwparser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwparsercontext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwtables.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mwtagext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tracingcontext.Plo@am__quote@
 
 .c.o:
@@ -493,12 +502,26 @@ mwlinks.lo: src/mwlinks.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mwlinks.lo `test -f 'src/mwlinks.c' || echo '$(srcdir)/'`src/mwlinks.c
 
+mwparser.lo: src/mwparser.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mwparser.lo -MD -MP -MF $(DEPDIR)/mwparser.Tpo -c -o mwparser.lo `test -f 'src/mwparser.c' || echo '$(srcdir)/'`src/mwparser.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mwparser.Tpo $(DEPDIR)/mwparser.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwparser.c' object='mwparser.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mwparser.lo `test -f 'src/mwparser.c' || echo '$(srcdir)/'`src/mwparser.c
+
 mwparsercontext.lo: src/mwparsercontext.c
 @am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mwparsercontext.lo -MD -MP -MF $(DEPDIR)/mwparsercontext.Tpo -c -o mwparsercontext.lo `test -f 'src/mwparsercontext.c' || echo '$(srcdir)/'`src/mwparsercontext.c
 @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mwparsercontext.Tpo $(DEPDIR)/mwparsercontext.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwparsercontext.c' object='mwparsercontext.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mwparsercontext.lo `test -f 'src/mwparsercontext.c' || echo '$(srcdir)/'`src/mwparsercontext.c
+
+mwtagext.lo: src/mwtagext.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mwtagext.lo -MD -MP -MF $(DEPDIR)/mwtagext.Tpo -c -o mwtagext.lo `test -f 'src/mwtagext.c' || echo '$(srcdir)/'`src/mwtagext.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/mwtagext.Tpo $(DEPDIR)/mwtagext.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwtagext.c' object='mwtagext.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o mwtagext.lo `test -f 'src/mwtagext.c' || echo '$(srcdir)/'`src/mwtagext.c
 
 mwtables.lo: src/mwtables.c
 @am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT mwtables.lo -MD -MP -MF $(DEPDIR)/mwtables.Tpo -c -o mwtables.lo `test -f 'src/mwtables.c' || echo '$(srcdir)/'`src/mwtables.c
@@ -1001,8 +1024,8 @@ debug_echo:
 	echo $(nodist_libmwparser_la_SOURCES)
 	echo $(libmwparser_la_OBJECTS)
 
-src/mwparsercontext.c: mwParser.h
-src/mwlexercontext.c: mwLexer.h
+src/mwparsercontext.c src/mwparser.c: mwWikitextParser.h
+src/mwlexercontext.c mwparser.c: mwWikitextLexer.h
 
 %.tokens %.c %Lexer.c %Parser.c %Lexer.h %Parser.h %.h: %.g
 	$(ANTLR) -fo $(top_builddir) $(ANTLR_OPTIONS) $<

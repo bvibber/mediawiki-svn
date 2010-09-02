@@ -267,7 +267,9 @@ array(
           'name'              => "mediaLinkOpen",
           'close'             => "mediaLinkClose",
           'initiallyDisabled' => array(),
-          'mayNest'           => false,
+          'mayNest'           => true,
+          'haveNestingCount'  => true,
+          'maxNestingLevel'   => 2,
           'types'             => array(),
           ),
       );

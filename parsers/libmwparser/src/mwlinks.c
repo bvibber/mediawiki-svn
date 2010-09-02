@@ -15,8 +15,8 @@ static void onMediaLink(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr);
 static void
 beginInternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkTitle)
 {
-    MW_DELAYED_CALL(        context, beginInternalLink, endInternalLink, linkTitle, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginInternalLink, endInternalLink, linkTitle, NULL, false);
+    MW_DELAYED_CALL(        context, beginInternalLink, endInternalLink, linkTitle, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginInternalLink, endInternalLink, linkTitle, false);
     MWLISTENER *l = &context->listener;
     l->beginInternalLink(l, linkTitle);
 }
@@ -24,8 +24,8 @@ beginInternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkTitle)
 static void
 endInternalLink(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginInternalLink, endInternalLink, NULL);
-    MW_END_ORDERED_FORMAT(context, beginInternalLink, endInternalLink, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginInternalLink, endInternalLink);
+    MW_END_ORDERED_FORMAT(context, beginInternalLink, endInternalLink);
     MWLISTENER *l = &context->listener;
     l->endInternalLink(l);
 }
@@ -41,8 +41,8 @@ onInternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkTitle)
 static void
 beginExternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkUrl)
 {
-    MW_DELAYED_CALL(        context, beginExternalLink, endExternalLink, linkUrl, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginExternalLink, endExternalLink, linkUrl, NULL, false);
+    MW_DELAYED_CALL(        context, beginExternalLink, endExternalLink, linkUrl, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginExternalLink, endExternalLink, linkUrl, false);
     MWLISTENER *l = &context->listener;
     l->beginExternalLink(l, linkUrl);
 }
@@ -50,8 +50,8 @@ beginExternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkUrl)
 static void
 endExternalLink(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginExternalLink, endExternalLink, NULL);
-    MW_END_ORDERED_FORMAT(context, beginExternalLink, endExternalLink, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginExternalLink, endExternalLink);
+    MW_END_ORDERED_FORMAT(context, beginExternalLink, endExternalLink);
     MWLISTENER *l = &context->listener;
     l->endExternalLink(l);
 }
@@ -67,8 +67,8 @@ onExternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkUrl)
 static void
 beginMediaLink(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginMediaLink, endMediaLink, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginMediaLink, endMediaLink, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginMediaLink, endMediaLink, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginMediaLink, endMediaLink, attr, false);
 
     pANTLR3_STRING linkUrl = attr->get(attr, attr->count - 1);
     attr->remove(attr, attr->count - 1);
@@ -79,8 +79,8 @@ beginMediaLink(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endMediaLink(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginMediaLink, endMediaLink, NULL);
-    MW_END_ORDERED_FORMAT(context, beginMediaLink, endMediaLink, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginMediaLink, endMediaLink);
+    MW_END_ORDERED_FORMAT(context, beginMediaLink, endMediaLink);
     MWLISTENER *l = &context->listener;
     l->endMediaLink(l);
 }

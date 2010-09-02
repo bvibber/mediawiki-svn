@@ -34,7 +34,7 @@
  */
 typedef struct MWPARSERCONTEXT_struct 
 {
-    pANTLR3_PARSER parser;
+    void * parser;
     
     /*
      * Configuration methods.
@@ -97,16 +97,15 @@ typedef struct MWPARSERCONTEXT_struct
     void (*beginMediaLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endMediaLink)(struct MWPARSERCONTEXT_struct * context);
     void (*onMediaLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
+    void (*onTagExtension)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*beginFormat)(struct MWPARSERCONTEXT_struct * context,
                         void (*begin)(),
                         void (*end)(),
                         void *parameter,
-                        void *identifier,
                         bool isInlined);
     void (*endFormat)(struct MWPARSERCONTEXT_struct * context,
                       void (*begin)(),
-                      void (*end)(),
-                      void *identifier);
+                      void (*end)());
     void (*beginInlinePrescan)(struct MWPARSERCONTEXT_struct * context);
     void (*endInlinePrescan)(struct MWPARSERCONTEXT_struct * context);
     void (*onApostrophesPrescan)(struct MWPARSERCONTEXT_struct * context, int length);
@@ -175,6 +174,7 @@ typedef struct MWPARSERCONTEXT_struct
     bool formatResolutionInProgress      :1;
     bool executingDelayedCalls           :1;
     bool haveGeneratedTableOfContents    :1;
+    bool openingFormats                  :1;
     pANTLR3_VECTOR apostropheSequences;
     pANTLR3_VECTOR formatOrder;
     pANTLR3_VECTOR delayedCalls;
@@ -194,18 +194,17 @@ typedef struct MWPARSERCONTEXT_struct
     void (*delayCall)(struct MWPARSERCONTEXT_struct * context,
                       void (*beginMethod)(),
                       void (*endMethod)(),
-                      void *parameter,
-                      void *identifier);
+                      void *parameter);
     bool (*shouldSkip)(struct MWPARSERCONTEXT_struct * context,
                        void (*beginMethod)(),
-                       void (*endMethod)(),
-                       void *identifier);
+                       void (*endMethod)());
     void (*triggerDelayedCalls)(struct MWPARSERCONTEXT_struct * context);
     pANTLR3_VECTOR_FACTORY vectorFactory;
     pANTLR3_STRING_FACTORY stringFactory;
     
     /** Method for deallocating this instance. */
     void (*free)(void * context);
+    void (*reset)(struct MWPARSERCONTEXT_struct * context);
 
 }
     MWPARSERCONTEXT;
@@ -213,7 +212,7 @@ typedef struct MWPARSERCONTEXT_struct
 /**
  * Constructor for the parser context super class.  
  */
-MWPARSERCONTEXT * MWAbstractParserContextNew(pANTLR3_PARSER parser);
+MWPARSERCONTEXT * MWParserContextNew(void* parser, const MWLISTENER *listener);
 
 /**
  * Put this macro at the beginning of begin methods that should not be
@@ -222,14 +221,15 @@ MWPARSERCONTEXT * MWAbstractParserContextNew(pANTLR3_PARSER parser);
  * @param context 
  * @param beginmethod The name of the begin method.
  * @param endmethod The name of the corresponding end method.
- * @param parameter Parameter to pass to the begin method.  NULL if
- *                  the begin method does not take a parameter.
+ * @param delayFirst If also the first occurence should be delayed, i.e.,
+ * if even explicitly inputted empty instances should be removed.
  * @param identifier Unique identifier in case of multiple active instances are allowed.                 
  */
-#define MW_DELAYED_CALL(context, beginmethod, endmethod, parameter, identifier)    \
+#define MW_DELAYED_CALL(context, beginmethod, endmethod, parameter, delayFirst) \
 do {                                                                    \
-    if (!context->executingDelayedCalls) {                              \
-        context->delayCall(context, beginmethod, endmethod, parameter, identifier); \
+    if (!context->executingDelayedCalls                                 \
+        && (delayFirst || context->openingFormats)) {                   \
+        context->delayCall(context, beginmethod, endmethod, parameter); \
         return;                                                         \
     }                                                                   \
 } while (0)
@@ -241,11 +241,10 @@ do {                                                                    \
  * @param context 
  * @param The name of the begin method.
  * @param The name of the corresponding end method.
- * @param identifier Unique identifier in case of multiple active instances are allowed.                 
  */
-#define MW_SKIP_IF_EMPTY(context, beginmethod, endmethod, identifier)      \
+#define MW_SKIP_IF_EMPTY(context, beginmethod, endmethod)      \
 do {                                                            \
-    if (context->shouldSkip(context, beginmethod, endmethod, identifier)) {        \
+    if (context->shouldSkip(context, beginmethod, endmethod)) {        \
         return;                                                 \
     }                                                           \
 } while (0)
@@ -268,15 +267,12 @@ do {                                                            \
  * @param parameter    Parameter to pass to the begin method.  NULL if
  *                     the begin method does not take parameters (other
  *                     than the context pointer).
- * @param identifier   To allow several active instances of the same format, use a unique pointer
- *                     value to separate them.  Use NULL if there are only one active instance
- *                     at the time.
  * @param isShortLived true, if the format should be terminated at end of line, if still open.
  */
-#define MW_BEGIN_ORDERED_FORMAT(context, beginmethod, endmethod, parameter, identifier, isShortLived) \
+#define MW_BEGIN_ORDERED_FORMAT(context, beginmethod, endmethod, parameter, isShortLived) \
 do {                                                                    \
     if (!context->formatResolutionInProgress) {                         \
-        context->beginFormat(context, beginmethod, endmethod, parameter, identifier, isShortLived); \
+        context->beginFormat(context, beginmethod, endmethod, parameter, isShortLived); \
     }                                                                   \
 } while (0)
 
@@ -287,12 +283,11 @@ do {                                                                    \
  * @param context
  * @param beginmethod
  * @param endmethod
- * @param identifier
  */
-#define MW_END_ORDERED_FORMAT(context, beginmethod, endmethod, identifier) \
+#define MW_END_ORDERED_FORMAT(context, beginmethod, endmethod) \
 do {                                                            \
     if (!context->formatResolutionInProgress) {                 \
-        context->endFormat(context, beginmethod, endmethod, identifier);   \
+        context->endFormat(context, beginmethod, endmethod);   \
         return;                                                 \
     }                                                           \
 } while (0)

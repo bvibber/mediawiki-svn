@@ -1,5 +1,5 @@
 
-AC_INIT(libmwparser, 0.3, andreas.jonsson@kreablo.se)
+AC_INIT(libmwparser, 0.4-SNAPSHOT, andreas.jonsson@kreablo.se)
 AC_COPYRIGHT([
 Copyright 2010  Andreas Jonsson
 

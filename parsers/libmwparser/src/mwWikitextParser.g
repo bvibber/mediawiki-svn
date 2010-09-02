@@ -17,13 +17,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-parser grammar mwParser;
+parser grammar mwWikitextParser;
 
 options {
     language = C;
     k = 1;
     backtrack = false;
-    tokenVocab = mwLexer;
+    tokenVocab = mwWikitextLexer;
 }
 
 @parser::preincludes {
@@ -73,7 +73,7 @@ empty_lines:
     }
     ;
 
-block_element: paragraph | table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_blockquote | html_center
+block_element: paragraph | table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_blockquote | html_center | block_tag_extension
     ;
 
 html_div: 
@@ -260,7 +260,7 @@ inline_prescan
 actual_inline_text_line: (()=> inline_element)+
     ;
 
-inline_element: word|space|special|br|html_entity|link_element|format|nowiki|table_of_contents|html_inline_tag
+inline_element: word|space|special|br|html_entity|link_element|format|nowiki|table_of_contents|html_inline_tag|inline_tag_extension
     ;
 
 special: (token = SPECIAL {IE(CX->onSpecial(CX, $token->getText($token));)} | apostrophes)
@@ -630,3 +630,19 @@ end_media_link: END_MEDIA_LINK
     }
     ;
 
+inline_tag_extension: tagextToken = TAGEXT_INLINE
+    {
+        CX->onTagExtension(CX, tagextToken->custom);
+    }
+    ;
+
+block_tag_extension: tagextToken = TAGEXT_BLOCK
+    {
+        pANTLR3_VECTOR attr = tagextToken->custom;
+        pANTLR3_STRING body = attr->get(attr, attr->count - 1);
+        attr->remove(attr, attr->count - 1);
+        const char * name = attr->get(attr, attr->count - 1);
+        attr->remove(attr, attr->count - 1);
+        LISTENER->onTagExtension(LISTENER, name, body, attr);
+    }
+    ;

@@ -32,12 +32,15 @@
 typedef struct MWLISTENER_struct
 {
     /**
-     *  Pointer used when extending this class.  Called 'super' as
-     *  antlr uses this convention, although 'extending' would be a
-     *  more appropriate name, since it points to the extending class'
-     *  data.
+     *  Pointer that may be used for storing data that is used by the
+     *  implementing class.  
      */
-    void *super;
+    void *data;
+
+    void * (*newData)(void);
+    void   (*freeData)(void *);
+    void   (*resetData)(void *);
+
 
     void (*onWord)(struct MWLISTENER_struct * context, pANTLR3_STRING word);
     void (*onSpecial)(struct MWLISTENER_struct * context, pANTLR3_STRING special);
@@ -100,6 +103,7 @@ typedef struct MWLISTENER_struct
     void (*beginMediaLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
     void (*endMediaLink)(struct MWLISTENER_struct * context);
     void (*onMediaLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+    void (*onTagExtension)(struct MWLISTENER_struct * context, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
     void (*beginTableOfContents)(struct MWLISTENER_struct * context);
     void (*endTableOfContents)(struct MWLISTENER_struct * context);
     void (*beginTableOfContentsItem)(struct MWLISTENER_struct * context, int level);

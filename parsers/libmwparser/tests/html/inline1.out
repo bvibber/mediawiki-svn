@@ -1,0 +1,9 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        BEGIN SPAN
+            BEGIN BOLD
+            END BOLD
+        END SPAN
+        SPACE[ ]
+    END PARAGRAPH
+END ARTICLE

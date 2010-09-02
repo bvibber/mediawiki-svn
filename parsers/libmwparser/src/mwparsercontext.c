@@ -25,8 +25,9 @@
 #include <mwtables.h>
 #include <mwheadings.h>
 #include <mwhtml.h>
+#include <mwlinks.h>
 #include <assert.h>
-#include <mwLexer.h>
+#include "mwWikitextParser.h"
 
 /**
  * These values encodes the situation before a sequence of apostrophes.
@@ -65,17 +66,18 @@ static void closeFormats(MWPARSERCONTEXT *context);
 static void openFormats(MWPARSERCONTEXT *context);
 static void beginInlinePrescan(MWPARSERCONTEXT *context);
 static void endInlinePrescan(MWPARSERCONTEXT *context);
-static void beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *parameter, void *identifier, bool isShortLived);
-static void endFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *identifier);
+static void beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *parameter, bool isShortLived);
+static void endFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)());
 static void onApostrophesPrescan(MWPARSERCONTEXT *context, int length);
 static void onInlineTokenPrescan(MWPARSERCONTEXT *context, pANTLR3_COMMON_TOKEN token);
 static void onConsumedApostrophes(MWPARSERCONTEXT *context);
 static void onListElement(MWPARSERCONTEXT *context, pANTLR3_STRING type);
 static void onNonListBlockElement(MWPARSERCONTEXT *context);
-static void MWAbstractParserContextFree(void *parserContext);
+static void MWParserContextFree(void *parserContext);
+static void MWParserContextReset(MWPARSERCONTEXT *context);
 
-static void delayCall(struct MWPARSERCONTEXT_struct * context, void (*beginMethod)(), void (*endMethod)(), void *parameter, void *identifier);
-static bool shouldSkip(struct MWPARSERCONTEXT_struct * context, void (*beginMethod)(), void (*endMethod)(), void *identifier);
+static void delayCall(struct MWPARSERCONTEXT_struct * context, void (*beginMethod)(), void (*endMethod)(), void *parameter);
+static bool shouldSkip(struct MWPARSERCONTEXT_struct * context, void (*beginMethod)(), void (*endMethod)());
 static void triggerDelayedCalls(struct MWPARSERCONTEXT_struct * context);
 
 static PRECEEDING_APOSTROPHE resolvePreceedingApostrophe(MWPARSERCONTEXT *context, int len);
@@ -88,13 +90,12 @@ static void closeLists(MWPARSERCONTEXT *context, int offset);
  * Opened formats are stored in tuples that are layed out according to
  * the below configuration.
  */
-static const ORDERED_FORMAT_TUPLE_SIZE = 5;
-static const DELAYED_CALLS_TUPLE_SIZE  = 4;
-static const BEGIN_METHOD_OFFSET = 0;
-static const END_METHOD_OFFSET   = 1;
-static const PARAMETER_OFFSET    = 2;
-static const IDENTIFIER_OFFSET   = 3;
-static const IS_INLINE_OFFSET    = 4;
+static const int ORDERED_FORMAT_TUPLE_SIZE = 4;
+static const int DELAYED_CALLS_TUPLE_SIZE  = 4;
+static const int BEGIN_METHOD_OFFSET = 0;
+static const int END_METHOD_OFFSET   = 1;
+static const int PARAMETER_OFFSET    = 2;
+static const int IS_INLINE_OFFSET    = 3;
 
 static void
 addTuple(pANTLR3_VECTOR v, size_t tupleSize, void *tuple[])
@@ -124,16 +125,25 @@ getTuple(pANTLR3_VECTOR v, size_t tupleSize, void *tuple[], int offset)
 }
 
 
-MWPARSERCONTEXT * MWAbstractParserContextNew(pANTLR3_PARSER parser)
+MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
 {
     MWPARSERCONTEXT *context = ANTLR3_MALLOC(sizeof(*context));
+    pmwWikitextParser psr = parser;
     context->parser = parser;
-    parser->super = context;
+    psr->pParser->super = context;
 
     if (context == NULL) {
         return NULL;
     }
-    context->free = MWAbstractParserContextFree;
+    context->free  = MWParserContextFree;
+    context->reset = MWParserContextReset;
+    context->listener = *listener;
+
+    context->formatOrder                  = NULL;
+    context->delayedCalls                 = NULL;
+    context->savedOrderedFormats          = NULL;
+    context->parseInlineInstruction       = NULL;
+    context->listener.data                = NULL;
 
 #define NULL_FAIL(p) do {                       \
     if (p == NULL) {                            \
@@ -161,11 +171,6 @@ MWPARSERCONTEXT * MWAbstractParserContextNew(pANTLR3_PARSER parser)
     mwLinksInit(context);
     mwHtmlInit(context);
 
-    context->inlinePrescan                = false;
-    context->takeBold                     = true;
-    context->takeItalic                   = true;
-    context->takeApostrophe               = true;
-
     context->closeFormats                 = closeFormats;
     context->openFormats                  = openFormats;
     context->beginInlinePrescan           = beginInlinePrescan;
@@ -183,30 +188,65 @@ MWPARSERCONTEXT * MWAbstractParserContextNew(pANTLR3_PARSER parser)
     context->onListElement                = onListElement;
     context->onNonListBlockElement        = onNonListBlockElement;
 
-    context->apostropheSequences          = NULL;
-    context->parseInlineInstruction       = NULL;
-    context->prevInlineToken              = NULL;
-    context->prevPrevInlineToken          = NULL;
-    context->startOfTokenStream           = -1;
-    context->listState                    = NULL;
-    context->currentInlineInstruction     = 0;
-    context->formatOrder                  = context->vectorFactory->newVector(context->vectorFactory);
+    context->formatOrder                  = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->formatOrder);
-    context->delayedCalls                 = context->vectorFactory->newVector(context->vectorFactory);
+    context->delayedCalls                 = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->delayedCalls);
-    context->savedOrderedFormats          = context->vectorFactory->newVector(context->vectorFactory);
+    context->savedOrderedFormats          = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->savedOrderedFormats);
-    context->formatResolutionInProgress   = false;
-    context->executingDelayedCalls        = false;
-    context->haveGeneratedTableOfContents = false;
-    context->parseInlineInstruction       = context->vectorFactory->newVector(context->vectorFactory);
+    context->parseInlineInstruction       = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->parseInlineInstruction);
+
+    if (context->listener.newData != NULL) {
+        context->listener.data = context->listener.newData();
+        NULL_FAIL(context->listener.data);
+    }
+
+    context->reset(context);
 
     return context;
 }
 
 static void
-MWAbstractParserContextFree(void *parserContext)
+MWParserContextReset(MWPARSERCONTEXT *context)
+{
+    context->inShortItalic                = false;
+    context->inShortBold                  = false;
+    context->inlinePrescan                = false;
+    context->takeBold                     = true;
+    context->takeItalic                   = true;
+    context->takeApostrophe               = true;
+
+    context->apostropheSequences          = NULL;
+    context->prevInlineToken              = NULL;
+    context->prevPrevInlineToken          = NULL;
+    context->startOfTokenStream           = -1;
+    context->listState                    = NULL;
+    context->currentInlineInstruction     = 0;
+
+    context->formatResolutionInProgress   = false;
+    context->executingDelayedCalls        = false;
+    context->haveGeneratedTableOfContents = false;
+    context->openingFormats               = false;
+
+    context->formatOrder->clear(context->formatOrder);
+    context->delayedCalls->clear(context->delayedCalls);
+    context->savedOrderedFormats->clear(context->savedOrderedFormats);
+    context->parseInlineInstruction->clear(context->parseInlineInstruction);
+
+    pmwWikitextParser psr = context->parser;
+    psr->pParser->rec->reset(psr->pParser->rec);
+
+    pANTLR3_COMMON_TOKEN_STREAM tstream = psr->pParser->tstream->super;
+    tstream->reset(tstream);
+
+    if (context->listener.resetData != NULL) {
+        context->listener.resetData(context->listener.data);
+    }
+}
+
+static void
+MWParserContextFree(void *parserContext)
 {
     MWPARSERCONTEXT *context = parserContext;
     if (context->stringFactory != NULL) {
@@ -215,6 +255,24 @@ MWAbstractParserContextFree(void *parserContext)
     if (context->vectorFactory != NULL) {
         context->vectorFactory->close(context->vectorFactory);
     }
+    if (context->formatOrder != NULL) {
+        context->formatOrder->free(context->formatOrder);
+    }
+    if (context->delayedCalls != NULL) {
+        context->delayedCalls->free(context->delayedCalls);
+    }
+    if (context->savedOrderedFormats != NULL) {
+        context->savedOrderedFormats->free(context->savedOrderedFormats);
+    }
+    if (context->parseInlineInstruction != NULL) {
+        context->parseInlineInstruction->free(context->parseInlineInstruction);
+    }
+    if (context->listener.freeData != NULL && context->listener.data != NULL) {
+        context->listener.freeData(context->listener.data);
+    }
+    pmwWikitextParser prs = context->parser;
+    prs->free(prs);
+    ANTLR3_FREE(context);
 }
 
 static void
@@ -223,6 +281,9 @@ openFormats(MWPARSERCONTEXT *context)
     pANTLR3_VECTOR v = context->savedOrderedFormats;
     const int tupleCount = v->count / ORDERED_FORMAT_TUPLE_SIZE;
     int i;
+
+    context->openingFormats = true;
+
     for (i = 0; i < tupleCount; i++) {
         void *tuple[ORDERED_FORMAT_TUPLE_SIZE];
         getTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tuple, i);
@@ -230,6 +291,9 @@ openFormats(MWPARSERCONTEXT *context)
         void *parameter = tuple[PARAMETER_OFFSET];
         begin(context, parameter);
     }
+
+    context->openingFormats = false;
+
     v->clear(v);
 }
 
@@ -654,13 +718,12 @@ closeLists(MWPARSERCONTEXT *context, int offset)
  * enforce a well ordered nesting.
  */
 static void
-beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *parameter, void *identifier, bool isShortLived)
+beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *parameter, bool isShortLived)
 {
     void *formatOrderTuple[ORDERED_FORMAT_TUPLE_SIZE];
     formatOrderTuple[BEGIN_METHOD_OFFSET] = begin;
     formatOrderTuple[END_METHOD_OFFSET]   = end;
     formatOrderTuple[PARAMETER_OFFSET]    = parameter;
-    formatOrderTuple[IDENTIFIER_OFFSET]   = identifier;
     formatOrderTuple[IS_INLINE_OFFSET]    = isShortLived ? context : NULL;
     addTuple(context->formatOrder, ORDERED_FORMAT_TUPLE_SIZE, formatOrderTuple);
 }
@@ -668,8 +731,7 @@ beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *para
 static void
 endFormat(MWPARSERCONTEXT *context,
           void (*beginMethod)(MWPARSERCONTEXT *context),
-          void (*endMethod)(MWPARSERCONTEXT *context),
-          void *identifier)
+          void (*endMethod)(MWPARSERCONTEXT *context))
 {
     pANTLR3_VECTOR v = context->formatOrder;
     const tupleCount = v->count / ORDERED_FORMAT_TUPLE_SIZE;
@@ -683,8 +745,7 @@ endFormat(MWPARSERCONTEXT *context,
 
     for (i = tupleCount - 1; i >= 0; i--) {
         removeTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tuples[i], i);
-        if (tuples[i][BEGIN_METHOD_OFFSET] == beginMethod &&
-            tuples[i][IDENTIFIER_OFFSET]   == identifier) {
+        if (tuples[i][BEGIN_METHOD_OFFSET] == beginMethod) {
             break;
         }
     }
@@ -710,11 +771,15 @@ endFormat(MWPARSERCONTEXT *context,
      * Execute the inner begin methods anew.
      */
 
+    context->openingFormats = true;
+
     for (j = i + 1; j < tupleCount; j++) {
         void (*begin)()  = tuples[j][BEGIN_METHOD_OFFSET];
         void *parameter  = tuples[j][PARAMETER_OFFSET];
         begin(context, parameter);
     }
+
+    context->openingFormats = false;
 
     assert(v->count % ORDERED_FORMAT_TUPLE_SIZE == 0);  // there are complete tuples in the vector
 }
@@ -731,14 +796,12 @@ static void
 delayCall(struct MWPARSERCONTEXT_struct * context,
           void (*beginMethod)(),
           void (*endMethod)(),
-          void *parameter,
-          void *identifier)
+          void *parameter)
 {
     void *tuple[DELAYED_CALLS_TUPLE_SIZE];
     tuple[BEGIN_METHOD_OFFSET] = beginMethod;
     tuple[END_METHOD_OFFSET]   = endMethod;
     tuple[PARAMETER_OFFSET]    = parameter;
-    tuple[IDENTIFIER_OFFSET]   = identifier;
     addTuple(context->delayedCalls, DELAYED_CALLS_TUPLE_SIZE, tuple);
 }
 
@@ -754,16 +817,15 @@ delayCall(struct MWPARSERCONTEXT_struct * context,
 static bool
 shouldSkip(struct MWPARSERCONTEXT_struct * context,
            void (*beginMethod)(struct MWPARSERCONTEXT_struct * context),
-           void (*endMethod)(struct MWPARSERCONTEXT_struct * context),
-           void *identifier)
+           void (*endMethod)(struct MWPARSERCONTEXT_struct * context))
 {
     pANTLR3_VECTOR v = context->delayedCalls;
-    if (v->count > 0) {
-        void *begin      = v->get(v, v->count - DELAYED_CALLS_TUPLE_SIZE + BEGIN_METHOD_OFFSET);
-        void *id         = v->get(v, v->count - DELAYED_CALLS_TUPLE_SIZE + IDENTIFIER_OFFSET);
-        if (begin == beginMethod && identifier == id) {
+    int i;
+    for (i = v->count - DELAYED_CALLS_TUPLE_SIZE; i >= 0; i -= DELAYED_CALLS_TUPLE_SIZE) {
+        void *begin      = v->get(v, i + BEGIN_METHOD_OFFSET);
+        if (begin == beginMethod) {
             void *tuple[DELAYED_CALLS_TUPLE_SIZE];
-            removeTuple(v, DELAYED_CALLS_TUPLE_SIZE, tuple, v->count/DELAYED_CALLS_TUPLE_SIZE - 1);
+            removeTuple(v, DELAYED_CALLS_TUPLE_SIZE, tuple, i/DELAYED_CALLS_TUPLE_SIZE);
             return true;
         }
     } 

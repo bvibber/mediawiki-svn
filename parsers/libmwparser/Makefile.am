@@ -10,8 +10,8 @@ ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = tests
 
-ANTLR_LEXER  = mwLexer
-ANTLR_PARSER = mwParser
+ANTLR_LEXER  = mwWikitextLexer
+ANTLR_PARSER = mwWikitextParser
 ANTLR_LEXER_DELEGATES =
 
 ANTLR_GRAMMARS = $(ANTLR_LEXER:=.g) $(ANTLR_PARSER:=.g)
@@ -53,6 +53,7 @@ libmwparser_la_SOURCES		=		\
 	include/mwparser.h			\
 	include/mwparsercontext.h		\
 	include/mwtables.h			\
+        include/mwtagext.h                      \
 	include/mwutils.h			\
 	include/tracingcontext.h		\
 	src/mwbasicevents.c			\
@@ -61,12 +62,14 @@ libmwparser_la_SOURCES		=		\
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+        src/mwparser.c                          \
 	src/mwparsercontext.c			\
+        src/mwtagext.c                          \
 	src/mwtables.c				\
 	src/tracingcontext.c
 
-src/mwparsercontext.c: mwParser.h
-src/mwlexercontext.c: mwLexer.h
+src/mwparsercontext.c src/mwparser.c: mwWikitextParser.h
+src/mwlexercontext.c mwparser.c: mwWikitextLexer.h
 
 EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DELEGATES:%=src/%.g)	\
 	src/mwlexerpredicates.php									\

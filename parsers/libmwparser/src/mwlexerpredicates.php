@@ -130,8 +130,13 @@ function pred_method($pred) {
         $d = new PredicateDisable($pred['name'], 'OPENED');
         $method .= $d->getCode(INDENT);
     } else if (isset($pred['haveNestingCount']) && $pred['haveNestingCount']) {
+        if (isset($pred['maxNestingLevel'])) {
+            $max = $pred['maxNestingLevel'];
+        } else {
+            $max = MAX_NESTING_LEVEL;
+        }
         $method .= INDENT . nesting_level_ref($pred). "++;\n";
-        $method .= INDENT . 'if (' . nesting_level_ref($pred) . ' >= ' . MAX_NESTING_LEVEL . ") {\n";
+        $method .= INDENT . 'if (' . nesting_level_ref($pred) . " >= $max) {\n";
         $d = new PredicateDisable($pred['name'], 'NESTING_LIMIT');
         $method .= $d->getCode(INDENT . INDENT);
         $method .= INDENT . "}\n";

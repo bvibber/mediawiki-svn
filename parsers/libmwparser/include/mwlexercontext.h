@@ -6,25 +6,7 @@
 #include <tre/regex.h>
 #include <antlr3defs.h>
 #include <iconv.h>
-
-/*
- * Different table types can be nested, but not mixed.
- */
-typedef enum {
-    TCT_NONE,
-    TCT_HTML,
-    TCT_WIKITEXT,
-}
-    TABLE_CONTEXT_TYPE;
- 
-
-typedef enum {
-    LCT_NONE,
-    LCT_UL,
-    LCT_OL,
-    LCT_DL,
-}
-    LIST_CONTEXT_TYPE;
+#include <mwtagext.h>
 
 typedef struct MWLEXERCONTEXT_BACKUP_struct {
 #include "mwlexerpredicatedefs.inc"
@@ -57,7 +39,7 @@ typedef struct MWLEXERCONTEXT_struct
      */
     pANTLR3_STACK blockContextStack;
     int headingLevel;
-    regex_t legalTitleChars;
+    regex_t legalTitleRegexp;
     regex_t mediaLinkTitle;
 
     /*
@@ -67,7 +49,7 @@ typedef struct MWLEXERCONTEXT_struct
     MWLEXERSPECULATION headingSpeculation;
     MWLEXERSPECULATION internalLinkSpeculation;
     MWLEXERSPECULATION externalLinkSpeculation;
-    MWLEXERSPECULATION mediaLinkSpeculation;
+    MWLEXERSPECULATION mediaLinkSpeculation[2];
     int istreamIndex;
 
     /*
@@ -82,14 +64,23 @@ typedef struct MWLEXERCONTEXT_struct
     bool (*reset)(struct MWLEXERCONTEXT_struct * context);
 
     /*
+     * Tag extension support.
+     */
+    pANTLR3_HASH_TABLE tagExtensionTable;
+
+    bool              (*registerTagExtension)(struct MWLEXERCONTEXT_struct * context, const MWPARSER_TAGEXT *tagExt);
+    MWPARSER_TAGEXT * (*getTagExtension)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING name);
+
+    /*
      * Utility.
      */
     pANTLR3_VECTOR_FACTORY vectorFactory;
     pANTLR3_STRING_FACTORY stringFactory;
+    pANTLR3_STRING_FACTORY asciiStringFactory;
     bool (*isLegalTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
     bool (*isMediaLinkTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
-
-
+    bool (*setLegalTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const wchar_t *posixExtendedRegexp);
+    bool (*setMediaLinkTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const wchar_t *posixExtendedRegexp);
 }
     MWLEXERCONTEXT;
 

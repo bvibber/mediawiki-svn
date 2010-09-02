@@ -23,39 +23,22 @@
 #include <iconv.h>
 #include <errno.h>
 
-#include <mwLexer.h>
+#include "mwWikitextLexer.h"
 #include "mwlexerpredicates.h"
-
-/*
- * These instances are used for storing in a stack.
- */
-static TABLE_CONTEXT_TYPE TCT_NONE_CONST = TCT_NONE;
-static TABLE_CONTEXT_TYPE TCT_HTML_CONST = TCT_HTML;
-static TABLE_CONTEXT_TYPE TCT_WIKITEXT_CONST = TCT_WIKITEXT;
-
-static LIST_CONTEXT_TYPE LCT_NONE_CONST = LCT_NONE;
-static LIST_CONTEXT_TYPE LCT_UL_CONST = LCT_UL;
-static LIST_CONTEXT_TYPE LCT_OL_CONST = LCT_OL;
-static LIST_CONTEXT_TYPE LCT_DL_CONST = LCT_DL;
-
 
 static void MWLexerContextFree(void *lexerContext);
 static bool MWLexerContextReset(MWLEXERCONTEXT *context);
 
 static bool isLegalTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle);
 static bool isMediaLinkTitle(MWLEXERCONTEXT *context, pANTLR3_STRING url);
+static MWPARSER_TAGEXT * getTagExtension(MWLEXERCONTEXT *context, pANTLR3_STRING name);
+static bool registerTagExtension(struct MWLEXERCONTEXT_struct * context, const MWPARSER_TAGEXT *tagExt);
 
 static int openConversion(MWLEXERCONTEXT *context, ANTLR3_UINT8 encoding);
 static const wchar_t *mwAntlr3stows(MWLEXERCONTEXT *context, pANTLR3_STRING string, void **state);
 static void  mwFreeStringConversionState(void *state);
-
-/**
- * Set the characters allowed in a page title.
- *
- * Default is L" %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+"
- * 
- */
-static int setLegalTitleChars(MWLEXERCONTEXT *context, const wchar_t *posixExtendedRegexp);
+static bool setLegalTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *posixExtendedRegexp);
+static bool setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *posixExtendedRegexp);
 
 MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
 {
@@ -72,13 +55,13 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
      * The legal title chars must be reconfigurable, so we treat them
      * specially.
      */
-    int err = regwcomp(&context->legalTitleChars,
+    int err  = regwcomp(&context->legalTitleRegexp,
                        L"^[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\xFF+]+$",
                        REG_EXTENDED);
     if (err) {
         char errbuf[200];
-        regerror(err, &context->legalTitleChars, errbuf, 200);
-        fprintf(stderr, "Failed to compile legal title chars regular expression: %s\n", errbuf);
+        regerror(err, &context->legalTitleRegexp, errbuf, 200);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
         context->free(context);
         return NULL;
     }
@@ -104,17 +87,17 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
 
     context->vectorFactory                = NULL;
     context->stringFactory                = NULL;
-    context->blockContextStack             = NULL;
+    context->asciiStringFactory           = NULL;
+    context->blockContextStack            = NULL;
+    context->tagExtensionTable            = NULL;
     context->indentSpeculation.contextBackup.blockContextStack       = NULL;
     context->internalLinkSpeculation.contextBackup.blockContextStack = NULL;
     context->externalLinkSpeculation.contextBackup.blockContextStack = NULL;
     context->headingSpeculation.contextBackup.blockContextStack      = NULL;
-    context->mediaLinkSpeculation.contextBackup.blockContextStack    = NULL;
+    context->mediaLinkSpeculation[0].contextBackup.blockContextStack = NULL;
+    context->mediaLinkSpeculation[1].contextBackup.blockContextStack = NULL;
 
     context->conversionState = (iconv_t)-1;
-
-    context->vectorFactory = antlr3VectorFactoryNew(ANTLR3_SIZE_HINT);
-    NULL_FAIL(context->vectorFactory);
 
     context->blockContextStack            = antlr3StackNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->blockContextStack);
@@ -127,11 +110,19 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
     NULL_FAIL(context->externalLinkSpeculation.contextBackup.blockContextStack);
     context->headingSpeculation.contextBackup.blockContextStack      = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->headingSpeculation.contextBackup.blockContextStack);
-    context->mediaLinkSpeculation.contextBackup.blockContextStack    = antlr3VectorNew(ANTLR3_SIZE_HINT);
-    NULL_FAIL(context->mediaLinkSpeculation.contextBackup.blockContextStack);
+    context->mediaLinkSpeculation[0].contextBackup.blockContextStack = antlr3VectorNew(ANTLR3_SIZE_HINT);
+    NULL_FAIL(context->mediaLinkSpeculation[0].contextBackup.blockContextStack);
+    context->mediaLinkSpeculation[1].contextBackup.blockContextStack = antlr3VectorNew(ANTLR3_SIZE_HINT);
+    NULL_FAIL(context->mediaLinkSpeculation[1].contextBackup.blockContextStack);
+    context->tagExtensionTable                                       = antlr3HashTableNew(ANTLR3_SIZE_HINT);
+    NULL_FAIL(context->tagExtensionTable);
 
     context->isLegalTitle                 = isLegalTitle;
     context->isMediaLinkTitle             = isMediaLinkTitle;
+    context->getTagExtension              = getTagExtension;
+    context->registerTagExtension         = registerTagExtension;
+    context->setLegalTitleRegexp          = setLegalTitleRegexp;
+    context->setMediaLinkTitleRegexp      = setMediaLinkTitleRegexp;
 
     if (!context->reset(context)) {
         context->free(context);
@@ -142,7 +133,7 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
         context->free(context);
         return NULL;
     }
-
+    
     return context;
 }
 
@@ -154,7 +145,8 @@ MWLexerContextReset(MWLEXERCONTEXT *context)
     context->internalLinkSpeculation.active = false;
     context->externalLinkSpeculation.active = false;
     context->headingSpeculation.active      = false;
-    context->mediaLinkSpeculation.active    = false;
+    context->mediaLinkSpeculation[0].active = false;
+    context->mediaLinkSpeculation[1].active = false;
     context->istreamIndex                   = 0;
     context->indentSpeculation.contextBackup.blockContextStack->count       =  0;
     context->indentSpeculation.failurePoint                                 = -1;
@@ -164,8 +156,10 @@ MWLexerContextReset(MWLEXERCONTEXT *context)
     context->externalLinkSpeculation.failurePoint                           = -1;
     context->headingSpeculation.contextBackup.blockContextStack->count      =  0;
     context->headingSpeculation.failurePoint                                = -1;
-    context->mediaLinkSpeculation.contextBackup.blockContextStack->count    =  0;
-    context->mediaLinkSpeculation.failurePoint                              = -1;
+    context->mediaLinkSpeculation[0].contextBackup.blockContextStack->count =  0;
+    context->mediaLinkSpeculation[0].failurePoint                           = -1;
+    context->mediaLinkSpeculation[1].contextBackup.blockContextStack->count =  0;
+    context->mediaLinkSpeculation[1].failurePoint                           = -1;
 
     mwlexerpredicatesReset(context);
 
@@ -190,6 +184,14 @@ MWLexerContextReset(MWLEXERCONTEXT *context)
         return false;
     }
 
+    if (context->asciiStringFactory != NULL) {
+        context->asciiStringFactory->close(context->asciiStringFactory);
+    }
+    context->asciiStringFactory = antlr3StringFactoryNew(ANTLR3_ENC_8BIT);
+    if (context->asciiStringFactory == NULL) {
+        return false;
+    }
+
     return true;
 }
 
@@ -200,6 +202,9 @@ MWLexerContextFree(void *lexerContext)
 
     if (context->stringFactory != NULL) {
         context->stringFactory->close(context->stringFactory);
+    }
+    if (context->asciiStringFactory != NULL) {
+        context->asciiStringFactory->close(context->asciiStringFactory);
     }
     if (context->vectorFactory != NULL) {
         context->vectorFactory->close(context->vectorFactory);
@@ -223,16 +228,27 @@ MWLexerContextFree(void *lexerContext)
         context->headingSpeculation.contextBackup.blockContextStack
             ->free(context->headingSpeculation.contextBackup.blockContextStack);
     }
-    if(context->mediaLinkSpeculation.contextBackup.blockContextStack != NULL) {
-        context->mediaLinkSpeculation.contextBackup.blockContextStack
-            ->free(context->mediaLinkSpeculation.contextBackup.blockContextStack);
+    if(context->mediaLinkSpeculation[0].contextBackup.blockContextStack != NULL) {
+        context->mediaLinkSpeculation[0].contextBackup.blockContextStack
+            ->free(context->mediaLinkSpeculation[0].contextBackup.blockContextStack);
+    }
+    if(context->mediaLinkSpeculation[1].contextBackup.blockContextStack != NULL) {
+        context->mediaLinkSpeculation[1].contextBackup.blockContextStack
+            ->free(context->mediaLinkSpeculation[1].contextBackup.blockContextStack);
     }
     if (context->conversionState != (iconv_t)-1) {
         iconv_close(context->conversionState);
     }
+    if (context->tagExtensionTable != NULL) {
+        context->tagExtensionTable->free(context->tagExtensionTable);
+    }
     
-    regfree(&context->legalTitleChars);
+    regfree(&context->legalTitleRegexp);
     regfree(&context->mediaLinkTitle);
+
+    pmwWikitextLexer lxr = context->lexer->ctx;
+    lxr->free(lxr);
+
     ANTLR3_FREE(lexerContext);
 }
 
@@ -242,7 +258,7 @@ isLegalTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
     void *state;
     const wchar_t *wsLinkTitle = mwAntlr3stows(context, linkTitle, &state);
     regmatch_t match;
-    int err = regwexec(&context->legalTitleChars, wsLinkTitle, 1, &match, 0);
+    int err = regwexec(&context->legalTitleRegexp, wsLinkTitle, 1, &match, 0);
     mwFreeStringConversionState(state);
     return err == 0;
 }
@@ -258,9 +274,48 @@ isMediaLinkTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
     return err == 0;
 }
 
+/*
+ * We need to use ascii encoded strings as name of tag extensions, so
+ * they can be used as keys for the hash table.  Also, the tag names
+ * should be case insensitive.
+ */
+static pANTLR3_STRING
+lowerCaseAsciiString(MWLEXERCONTEXT *context, pANTLR3_STRING string)
+{
+    pANTLR3_STRING string8 = string->to8(string);
+    pANTLR3_STRING lstring = context->asciiStringFactory->newSize(context->asciiStringFactory, string8->len + 1);
+    int i;
+    for (i = 0; i < string8->len; i++) {
+        lstring->addc(lstring, tolower(string8->charAt(string8, i)));
+    }
+    return lstring;
+}
+
+static MWPARSER_TAGEXT *
+getTagExtension(MWLEXERCONTEXT *context, pANTLR3_STRING name)
+{
+    pANTLR3_HASH_TABLE t = context->tagExtensionTable;
+    return t->get(t, lowerCaseAsciiString(context, name)->chars);
+}
+
+static bool
+registerTagExtension(MWLEXERCONTEXT *context, const MWPARSER_TAGEXT *tagExt)
+{
+    pANTLR3_HASH_TABLE t = context->tagExtensionTable;
+    pANTLR3_STRING name = context->asciiStringFactory->newPtr8(context->asciiStringFactory, 
+                                                               (pANTLR3_UINT8)tagExt->name,
+                                                               strlen(tagExt->name) + 1);
+    pANTLR3_STRING lname = lowerCaseAsciiString(context, name);
+    MWPARSER_TAGEXT *tagExtCopy = MWTagextCopy(tagExt);
+    ANTLR3_UINT32 err = t->put(t, lname->chars, tagExtCopy, MWTagextFree);
+    if (err != ANTLR3_SUCCESS) {
+        return false;
+    }
+    return true;
+}
+
 void printLexerInfo(pANTLR3_LEXER lexer)
 {
-    MWLEXERCONTEXT *context = lexer->super;
     fprintf(stderr, "type: %d, position in line: %d, matched text \"%s\" next char '%c' backtracking %d char index %d \n",
             lexer->rec->state->type,
             lexer->input->charPositionInLine,
@@ -269,7 +324,6 @@ void printLexerInfo(pANTLR3_LEXER lexer)
             lexer->rec->state->backtracking,
             lexer->getCharIndex(lexer));
 }
-
 
 static int
 openConversion(MWLEXERCONTEXT *context, ANTLR3_UINT8 encoding)
@@ -318,13 +372,14 @@ openConversion(MWLEXERCONTEXT *context, ANTLR3_UINT8 encoding)
     if (context->conversionState == (iconv_t)-1) {
         return -1;
     }
+    return 0;
 }
 
 static size_t
 convertString(MWLEXERCONTEXT *context, ANTLR3_STRING *string, void *buf, size_t bufSize) {
     size_t outBytesLeft = bufSize;
     size_t inBytesLeft = string->size;
-    char *inBuf = string->chars;
+    char *inBuf = (char *)string->chars;
     char *outBuf = buf;
     
     size_t ret = iconv(context->conversionState, NULL, NULL, NULL, NULL);
@@ -358,4 +413,34 @@ static void
 mwFreeStringConversionState(void *state)
 {
     ANTLR3_FREE(state);
+}
+
+static bool
+setLegalTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *regexp)
+{
+    regfree(&context->legalTitleRegexp);
+    int err     = regwcomp(&context->legalTitleRegexp, regexp, REG_EXTENDED);
+    if (err) {
+        char errbuf[200];
+        regerror(err, &context->legalTitleRegexp, errbuf, 200);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        return false;
+    }
+
+    return true;
+}
+
+static bool
+setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *regexp)
+{
+    regfree(&context->mediaLinkTitle);
+    int err     = regwcomp(&context->mediaLinkTitle, regexp, REG_EXTENDED);
+    if (err) {
+        char errbuf[200];
+        regerror(err, &context->mediaLinkTitle, errbuf, 200);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        return false;
+    }
+
+    return true;
 }

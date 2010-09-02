@@ -11,8 +11,8 @@ static void
 beginItalic(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
     context->inShortItalic = true;
-    MW_DELAYED_CALL(        context, beginItalic, endItalic, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginItalic, endItalic, attr, NULL, true);
+    MW_DELAYED_CALL(        context, beginItalic, endItalic, attr, true);
+    MW_BEGIN_ORDERED_FORMAT(context, beginItalic, endItalic, attr, true);
     MWLISTENER *l = &context->listener;
     if (!context->inLongItalic) {
         l->beginItalic(l, attr);
@@ -23,8 +23,8 @@ static void
 endItalic(MWPARSERCONTEXT *context)
 {
     context->inShortItalic = false;
-    MW_SKIP_IF_EMPTY(     context, beginItalic, endItalic, NULL);
-    MW_END_ORDERED_FORMAT(context, beginItalic, endItalic, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginItalic, endItalic);
+    MW_END_ORDERED_FORMAT(context, beginItalic, endItalic);
     MWLISTENER *l = &context->listener;
     if (!context->inLongItalic) {
         l->endItalic(l);
@@ -35,8 +35,8 @@ static void
 beginBold(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
     context->inShortBold = true;
-    MW_DELAYED_CALL(        context, beginBold, endBold, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginBold, endBold, attr, NULL, true);
+    MW_DELAYED_CALL(        context, beginBold, endBold, attr, true);
+    MW_BEGIN_ORDERED_FORMAT(context, beginBold, endBold, attr, true);
     MWLISTENER *l = &context->listener;
     if (!context->inLongBold) {
         l->beginBold(l, attr);
@@ -47,8 +47,8 @@ static void
 endBold(MWPARSERCONTEXT *context)
 {
     context->inShortBold = false;
-    MW_SKIP_IF_EMPTY(     context, beginBold, endBold, NULL);
-    MW_END_ORDERED_FORMAT(context, beginBold, endBold, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginBold, endBold);
+    MW_END_ORDERED_FORMAT(context, beginBold, endBold);
     MWLISTENER *l = &context->listener;
     if (!context->inLongBold) {
         l->endBold(l);
@@ -88,9 +88,6 @@ endPre(MWPARSERCONTEXT *context)
 void
 mwFormatsInit(MWPARSERCONTEXT *context)
 {
-    context->inShortItalic            = false;
-    context->inShortBold              = false;
-
     context->beginItalic              = beginItalic;
     context->endItalic                = endItalic;
     context->beginBold                = beginBold;

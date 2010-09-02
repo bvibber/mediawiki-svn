@@ -7,6 +7,8 @@ BEGIN ARTICLE
             WORD[italic]
             SPACE[ ]
             BEGIN BOLD
+                BEGIN STRONG
+                END STRONG
                 SPACE[ ]
                 WORD[bold]
                 SPECIAL[-]

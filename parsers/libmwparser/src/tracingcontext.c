@@ -20,6 +20,7 @@
 #include <antlr3.h>
 #include <tracingcontext.h>
 #include <mwkeyvalue.h>
+#include <wchar.h>
 
 static const int INDENT_SPACES = 4;
 
@@ -89,6 +90,7 @@ static void TCOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
 static void TCBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
 static void TCEndMediaLink(MWLISTENER *listener);
 static void TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void TCOnTagExtension(MWLISTENER *listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void TCBeginHtmlU(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlU(MWLISTENER *listener);
 static void TCBeginHtmlDel(MWLISTENER *listener, pANTLR3_VECTOR attributes);
@@ -122,8 +124,7 @@ static void TCEndHtmlVar(MWLISTENER *listener);
 static void TCBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlAbbr(MWLISTENER *listener);
 
-static void MWTracingParserContextFree(void *context);
-static struct MWTRACINGCONTEXT_struct * TCNew(void);
+static void * TCNew(void);
 static void TCFree(void *tcontext);
 
 static void TCPrintAttributes(pANTLR3_VECTOR attributes);
@@ -140,146 +141,120 @@ typedef struct MWTRACINGCONTEXT_struct
 } 
     MWTRACINGCONTEXT;
 
-#define TC(listener) ((MWTRACINGCONTEXT*)((listener)->super))
+#define TC(listener) ((MWTRACINGCONTEXT*)((listener)->data))
 #define S(string) (((string)->toUTF8(string))->chars)
 
 //#define putchar(c)
 //#define putwchar(c)
 //#define printf(...)
 
-MWPARSERCONTEXT *
-MWTracingContextNew(pANTLR3_PARSER parser)
-{
-    MWPARSERCONTEXT *context = MWAbstractParserContextNew(parser);
+const MWLISTENER mwParserTracingListener = {
+    .newData                  = TCNew,
+    .freeData                 = TCFree,
+    .resetData                = NULL,
+    .onWord                   = TCOnWord,
+    .onSpecial                = TCOnSpecial,
+    .onSpace                  = TCOnSpace,
+    .onNewline                = TCOnNewline,
+    .onBr                     = TCOnBr,
+    .beginParagraph           = TCBeginParagraph,
+    .endParagraph             = TCEndParagraph,
+    .beginArticle             = TCBeginArticle,
+    .endArticle               = TCEndArticle,
+    .beginItalic              = TCBeginItalic,
+    .endItalic                = TCEndItalic,
+    .beginBold                = TCBeginBold,
+    .endBold                  = TCEndBold,
+    .beginPre                 = TCBeginPre,
+    .endPre                   = TCEndPre,
+    .beginTable               = TCBeginTable,
+    .endTable                 = TCEndTable,
+    .beginTableRow            = TCBeginTableRow,
+    .endTableRow              = TCEndTableRow,
+    .beginTableCell           = TCBeginTableCell,
+    .endTableCell             = TCEndTableCell,
+    .beginTableHeading        = TCBeginTableHeading,
+    .endTableHeading          = TCEndTableHeading,
+    .beginTableCaption        = TCBeginTableCaption,
+    .endTableCaption          = TCEndTableCaption,
+    .beginTableBody           = TCBeginTableBody,
+    .endTableBody             = TCEndTableBody,
+    .onNowiki                 = TCOnNowiki,
+    .onHTMLEntity             = TCOnHTMLEntity,
+    .onHorizontalRule         = TCOnHorizontalRule,
+    .beginHeading             = TCBeginHeading,
+    .endHeading               = TCEndHeading,
+    .beginInternalLink        = TCBeginInternalLink,
+    .endInternalLink          = TCEndInternalLink,
+    .onInternalLink           = TCOnInternalLink,
+    .beginExternalLink        = TCBeginExternalLink,
+    .endExternalLink          = TCEndExternalLink,
+    .onExternalLink           = TCOnExternalLink,
+    .beginMediaLink           = TCBeginMediaLink,
+    .endMediaLink             = TCEndMediaLink,
+    .onMediaLink              = TCOnMediaLink,
+    .onTagExtension           = TCOnTagExtension,
+    .beginBulletList          = TCBeginBulletList,
+    .endBulletList            = TCEndBulletList,
+    .beginBulletListItem      = TCBeginBulletListItem,
+    .endBulletListItem        = TCEndBulletListItem,
+    .beginEnumerationList     = TCBeginEnumerationList,
+    .endEnumerationList       = TCEndEnumerationList,
+    .beginEnumerationItem     = TCBeginEnumerationItem,
+    .endEnumerationItem       = TCEndEnumerationItem,
+    .beginDefinitionList      = TCBeginDefinitionList,
+    .endDefinitionList        = TCEndDefinitionList,
+    .beginDefinedTermItem     = TCBeginDefinedTermItem,
+    .endDefinedTermItem       = TCEndDefinedTermItem,
+    .beginDefinitionItem      = TCBeginDefinitionItem,
+    .endDefinitionItem        = TCEndDefinitionItem,
+    .beginTableOfContents     = TCBeginTableOfContents,
+    .endTableOfContents       = TCEndTableOfContents,
+    .beginTableOfContentsItem = TCBeginTableOfContentsItem,
+    .endTableOfContentsItem   = TCEndTableOfContentsItem,
+    .beginHtmlDiv             = TCBeginHtmlDiv,
+    .endHtmlDiv               = TCEndHtmlDiv,
+    .beginHtmlBlockquote      = TCBeginHtmlBlockquote,
+    .endHtmlBlockquote        = TCEndHtmlBlockquote,
+    .beginHtmlCenter          = TCBeginHtmlCenter,
+    .endHtmlCenter            = TCEndHtmlCenter,
+    .beginHtmlU               = TCBeginHtmlU,
+    .endHtmlU                 = TCEndHtmlU,
+    .beginHtmlDel             = TCBeginHtmlDel,
+    .endHtmlDel               = TCEndHtmlDel,
+    .beginHtmlIns             = TCBeginHtmlIns,
+    .endHtmlIns               = TCEndHtmlIns,
+    .beginHtmlFont            = TCBeginHtmlFont,
+    .endHtmlFont              = TCEndHtmlFont,
+    .beginHtmlBig             = TCBeginHtmlBig,
+    .endHtmlBig               = TCEndHtmlBig,
+    .beginHtmlSmall           = TCBeginHtmlSmall,
+    .endHtmlSmall             = TCEndHtmlSmall,
+    .beginHtmlSub             = TCBeginHtmlSub,
+    .endHtmlSub               = TCEndHtmlSub,
+    .beginHtmlSup             = TCBeginHtmlSup,
+    .endHtmlSup               = TCEndHtmlSup,
+    .beginHtmlCite            = TCBeginHtmlCite,
+    .endHtmlCite              = TCEndHtmlCite,
+    .beginHtmlCode            = TCBeginHtmlCode,
+    .endHtmlCode              = TCEndHtmlCode,
+    .beginHtmlStrike          = TCBeginHtmlStrike,
+    .endHtmlStrike            = TCEndHtmlStrike,
+    .beginHtmlStrong          = TCBeginHtmlStrong,
+    .endHtmlStrong            = TCEndHtmlStrong,
+    .beginHtmlSpan            = TCBeginHtmlSpan,
+    .endHtmlSpan              = TCEndHtmlSpan,
+    .beginHtmlTt              = TCBeginHtmlTt,
+    .endHtmlTt                = TCEndHtmlTt,
+    .beginHtmlVar             = TCBeginHtmlVar,
+    .endHtmlVar               = TCEndHtmlVar,
+    .beginHtmlAbbr            = TCBeginHtmlAbbr,
+    .endHtmlAbbr              = TCEndHtmlAbbr,
 
-    if (context == NULL) {
-        return NULL;
-    }
-    MWTRACINGCONTEXT *tc = TCNew();
-    context->listener.super = tc;
-    if (context->listener.super == NULL) {
-        context->free(context);
-        return NULL;
-    }
+};
 
-    tc->free = context->free;
-    context->free = MWTracingParserContextFree;
 
-    MWLISTENER *listener = &context->listener;
-
-    listener->onWord                   = TCOnWord;
-    listener->onSpecial                = TCOnSpecial;
-    listener->onSpace                  = TCOnSpace;
-    listener->onNewline                = TCOnNewline;
-    listener->onBr                     = TCOnBr;
-    listener->beginParagraph           = TCBeginParagraph;
-    listener->endParagraph             = TCEndParagraph;
-    listener->beginArticle             = TCBeginArticle;
-    listener->endArticle               = TCEndArticle;
-    listener->beginItalic              = TCBeginItalic;
-    listener->endItalic                = TCEndItalic;
-    listener->beginBold                = TCBeginBold;
-    listener->endBold                  = TCEndBold;
-    listener->beginPre                 = TCBeginPre;
-    listener->endPre                   = TCEndPre;
-    listener->beginTable               = TCBeginTable;
-    listener->endTable                 = TCEndTable;
-    listener->beginTableRow            = TCBeginTableRow;
-    listener->endTableRow              = TCEndTableRow;
-    listener->beginTableCell           = TCBeginTableCell;
-    listener->endTableCell             = TCEndTableCell;
-    listener->beginTableHeading        = TCBeginTableHeading;
-    listener->endTableHeading          = TCEndTableHeading;
-    listener->beginTableCaption        = TCBeginTableCaption;
-    listener->endTableCaption          = TCEndTableCaption;
-    listener->beginTableBody           = TCBeginTableBody;
-    listener->endTableBody             = TCEndTableBody;
-    listener->onNowiki                 = TCOnNowiki;
-    listener->onHTMLEntity             = TCOnHTMLEntity;
-    listener->onHorizontalRule         = TCOnHorizontalRule;
-    listener->beginHeading             = TCBeginHeading;
-    listener->endHeading               = TCEndHeading;
-    listener->beginInternalLink        = TCBeginInternalLink;
-    listener->endInternalLink          = TCEndInternalLink;
-    listener->onInternalLink           = TCOnInternalLink;
-    listener->beginExternalLink        = TCBeginExternalLink;
-    listener->endExternalLink          = TCEndExternalLink;
-    listener->onExternalLink           = TCOnExternalLink;
-    listener->beginMediaLink           = TCBeginMediaLink;
-    listener->endMediaLink             = TCEndMediaLink;
-    listener->onMediaLink              = TCOnMediaLink;
-    listener->beginBulletList          = TCBeginBulletList;
-    listener->endBulletList            = TCEndBulletList;
-    listener->beginBulletListItem      = TCBeginBulletListItem;
-    listener->endBulletListItem        = TCEndBulletListItem;
-    listener->beginEnumerationList     = TCBeginEnumerationList;
-    listener->endEnumerationList       = TCEndEnumerationList;
-    listener->beginEnumerationItem     = TCBeginEnumerationItem;
-    listener->endEnumerationItem       = TCEndEnumerationItem;
-    listener->beginDefinitionList      = TCBeginDefinitionList;
-    listener->endDefinitionList        = TCEndDefinitionList;
-    listener->beginDefinedTermItem     = TCBeginDefinedTermItem;
-    listener->endDefinedTermItem       = TCEndDefinedTermItem;
-    listener->beginDefinitionItem      = TCBeginDefinitionItem;
-    listener->endDefinitionItem        = TCEndDefinitionItem;
-    listener->beginTableOfContents     = TCBeginTableOfContents;
-    listener->endTableOfContents       = TCEndTableOfContents;
-    listener->beginTableOfContentsItem = TCBeginTableOfContentsItem;
-    listener->endTableOfContentsItem   = TCEndTableOfContentsItem;
-    listener->beginHtmlDiv             = TCBeginHtmlDiv;
-    listener->endHtmlDiv               = TCEndHtmlDiv;
-    listener->beginHtmlBlockquote      = TCBeginHtmlBlockquote;
-    listener->endHtmlBlockquote        = TCEndHtmlBlockquote;
-    listener->beginHtmlCenter          = TCBeginHtmlCenter;
-    listener->endHtmlCenter            = TCEndHtmlCenter;
-    listener->beginHtmlU               = TCBeginHtmlU;
-    listener->endHtmlU                 = TCEndHtmlU;
-    listener->beginHtmlDel             = TCBeginHtmlDel;
-    listener->endHtmlDel               = TCEndHtmlDel;
-    listener->beginHtmlIns             = TCBeginHtmlIns;
-    listener->endHtmlIns               = TCEndHtmlIns;
-    listener->beginHtmlFont            = TCBeginHtmlFont;
-    listener->endHtmlFont              = TCEndHtmlFont;
-    listener->beginHtmlBig             = TCBeginHtmlBig;
-    listener->endHtmlBig               = TCEndHtmlBig;
-    listener->beginHtmlSmall           = TCBeginHtmlSmall;
-    listener->endHtmlSmall             = TCEndHtmlSmall;
-    listener->beginHtmlSub             = TCBeginHtmlSub;
-    listener->endHtmlSub               = TCEndHtmlSub;
-    listener->beginHtmlSup             = TCBeginHtmlSup;
-    listener->endHtmlSup               = TCEndHtmlSup;
-    listener->beginHtmlCite            = TCBeginHtmlCite;
-    listener->endHtmlCite              = TCEndHtmlCite;
-    listener->beginHtmlCode            = TCBeginHtmlCode;
-    listener->endHtmlCode              = TCEndHtmlCode;
-    listener->beginHtmlStrike          = TCBeginHtmlStrike;
-    listener->endHtmlStrike            = TCEndHtmlStrike;
-    listener->beginHtmlStrong          = TCBeginHtmlStrong;
-    listener->endHtmlStrong            = TCEndHtmlStrong;
-    listener->beginHtmlSpan            = TCBeginHtmlSpan;
-    listener->endHtmlSpan              = TCEndHtmlSpan;
-    listener->beginHtmlTt              = TCBeginHtmlTt;
-    listener->endHtmlTt                = TCEndHtmlTt;
-    listener->beginHtmlVar             = TCBeginHtmlVar;
-    listener->endHtmlVar               = TCEndHtmlVar;
-    listener->beginHtmlAbbr            = TCBeginHtmlAbbr;
-    listener->endHtmlAbbr              = TCEndHtmlAbbr;
-
-    return context;
-}
-
-static void MWTracingParserContextFree(void *context)
-{
-    MWPARSERCONTEXT *c = context;
-    MWTRACINGCONTEXT *tc = c->listener.super;
-    if (tc != NULL) {
-        tc->free(context);
-        TCFree(tc);
-    }
-    ANTLR3_FREE(c);
-}
-
-static MWTRACINGCONTEXT * TCNew()
+static void * TCNew()
 {
     MWTRACINGCONTEXT *tc = ANTLR3_MALLOC(sizeof(*tc));
 
@@ -511,6 +486,17 @@ TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr)
     printf("MEDIA LINK[%s]", linkUrl->chars);
     TCPrintAttributes(attr);
     printf("\n");
+}
+
+static void
+TCOnTagExtension(MWLISTENER *listener, const char *name, pANTLR3_STRING body, pANTLR3_VECTOR attr)
+{
+    TCPrintIndent(listener);
+    printf("BEGIN TAG EXTENSION [%s]", name);
+    TCPrintAttributes(attr);
+    printf("[%s]\n", body->chars);
+    TCPrintIndent(listener);
+    printf("END TAG EXTENSION [%s]\n", name);
 }
 
 static void

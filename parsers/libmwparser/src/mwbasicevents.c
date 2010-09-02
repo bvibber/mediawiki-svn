@@ -1,6 +1,8 @@
-#include <antlr3defs.h>
+#include <antlr3.h>
 #include <mwparsercontext.h>
 #include <mwbasicevents.h>
+
+static void onTagExtension(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr);
 
 static void
 onWord(MWPARSERCONTEXT *context, pANTLR3_STRING word)
@@ -79,6 +81,18 @@ endArticle(MWPARSERCONTEXT *context)
     l->endArticle(l);
 }
 
+static void
+onTagExtension(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
+{
+    MW_TRIGGER_DELAYED_CALLS(context);
+    pANTLR3_STRING body = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    const char * name = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MWLISTENER *l = &context->listener;
+    l->onTagExtension(l, name, body, attr);
+}
+
 void
 mwBasicEventsInit(MWPARSERCONTEXT *context)
 {
@@ -92,4 +106,5 @@ mwBasicEventsInit(MWPARSERCONTEXT *context)
     context->beginArticle             = beginArticle;
     context->endArticle               = endArticle;
     context->onHTMLEntity             = onHTMLEntity;
+    context->onTagExtension           = onTagExtension;
 }

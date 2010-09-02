@@ -86,8 +86,8 @@ endHtmlCenter(MWPARSERCONTEXT *context)
 static void
 beginHtmlB(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlB, endHtmlB, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlB, endHtmlB, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlB, endHtmlB, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlB, endHtmlB, attr, false);
     MWLISTENER *l = &context->listener;
     if (!context->inShortBold) {
         l->beginBold(l, attr);
@@ -97,8 +97,8 @@ beginHtmlB(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlB(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlB, endHtmlB, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlB, endHtmlB, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlB, endHtmlB);
+    MW_END_ORDERED_FORMAT(context, beginHtmlB, endHtmlB);
     MWLISTENER *l = &context->listener;
     if (!context->inShortBold) {
         l->endBold(l);
@@ -108,8 +108,8 @@ endHtmlB(MWPARSERCONTEXT *context)
 static void
 beginHtmlI(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlI, endHtmlI, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlI, endHtmlI, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlI, endHtmlI, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlI, endHtmlI, attr, false);
     MWLISTENER *l = &context->listener;
     if (!context->inShortItalic) {
         l->beginItalic(l, attr);
@@ -119,8 +119,8 @@ beginHtmlI(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlI(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlI, endHtmlI, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlI, endHtmlI, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlI, endHtmlI);
+    MW_END_ORDERED_FORMAT(context, beginHtmlI, endHtmlI);
     MWLISTENER *l = &context->listener;
     if (!context->inShortItalic) {
         l->endItalic(l);
@@ -130,8 +130,8 @@ endHtmlI(MWPARSERCONTEXT *context)
 static void
 beginHtmlDel(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlDel, endHtmlDel, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlDel, endHtmlDel, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlDel, endHtmlDel, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlDel, endHtmlDel, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlDel(l, attr);
 }
@@ -139,8 +139,8 @@ beginHtmlDel(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlDel(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlDel, endHtmlDel, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlDel, endHtmlDel, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlDel, endHtmlDel);
+    MW_END_ORDERED_FORMAT(context, beginHtmlDel, endHtmlDel);
     MWLISTENER *l = &context->listener;
     l->endHtmlDel(l);
 }
@@ -148,8 +148,8 @@ endHtmlDel(MWPARSERCONTEXT *context)
 static void
 beginHtmlStrong(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlStrong, endHtmlStrong, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlStrong, endHtmlStrong, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlStrong, endHtmlStrong, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlStrong, endHtmlStrong, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlStrong(l, attr);
 }
@@ -157,8 +157,8 @@ beginHtmlStrong(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlStrong(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlStrong, endHtmlStrong, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlStrong, endHtmlStrong, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlStrong, endHtmlStrong);
+    MW_END_ORDERED_FORMAT(context, beginHtmlStrong, endHtmlStrong);
     MWLISTENER *l = &context->listener;
     l->endHtmlStrong(l);
 }
@@ -166,8 +166,8 @@ endHtmlStrong(MWPARSERCONTEXT *context)
 static void
 beginHtmlSpan(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlSpan, endHtmlSpan, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSpan, endHtmlSpan, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlSpan, endHtmlSpan, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSpan, endHtmlSpan, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlSpan(l, attr);
 }
@@ -175,8 +175,8 @@ beginHtmlSpan(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlSpan(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlSpan, endHtmlSpan, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlSpan, endHtmlSpan, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlSpan, endHtmlSpan);
+    MW_END_ORDERED_FORMAT(context, beginHtmlSpan, endHtmlSpan);
     MWLISTENER *l = &context->listener;
     l->endHtmlSpan(l);
 }
@@ -184,8 +184,8 @@ endHtmlSpan(MWPARSERCONTEXT *context)
 static void
 beginHtmlU(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlU, endHtmlU, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlU, endHtmlU, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlU, endHtmlU, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlU, endHtmlU, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlU(l, attr);
 }
@@ -193,8 +193,8 @@ beginHtmlU(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlU(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlU, endHtmlU, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlU, endHtmlU, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlU, endHtmlU);
+    MW_END_ORDERED_FORMAT(context, beginHtmlU, endHtmlU);
     MWLISTENER *l = &context->listener;
     l->endHtmlU(l);
 }
@@ -202,8 +202,8 @@ endHtmlU(MWPARSERCONTEXT *context)
 static void
 beginHtmlIns(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlIns, endHtmlIns, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlIns, endHtmlIns, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlIns, endHtmlIns, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlIns, endHtmlIns, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlIns(l, attr);
 }
@@ -211,8 +211,8 @@ beginHtmlIns(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlIns(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlIns, endHtmlIns, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlIns, endHtmlIns, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlIns, endHtmlIns);
+    MW_END_ORDERED_FORMAT(context, beginHtmlIns, endHtmlIns);
     MWLISTENER *l = &context->listener;
     l->endHtmlIns(l);
 }
@@ -220,8 +220,8 @@ endHtmlIns(MWPARSERCONTEXT *context)
 static void
 beginHtmlFont(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlFont, endHtmlFont, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlFont, endHtmlFont, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlFont, endHtmlFont, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlFont, endHtmlFont, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlFont(l, attr);
 }
@@ -229,8 +229,8 @@ beginHtmlFont(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlFont(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlFont, endHtmlFont, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlFont, endHtmlFont, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlFont, endHtmlFont);
+    MW_END_ORDERED_FORMAT(context, beginHtmlFont, endHtmlFont);
     MWLISTENER *l = &context->listener;
     l->endHtmlFont(l);
 }
@@ -238,8 +238,8 @@ endHtmlFont(MWPARSERCONTEXT *context)
 static void
 beginHtmlBig(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlBig, endHtmlBig, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlBig, endHtmlBig, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlBig, endHtmlBig, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlBig, endHtmlBig, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlBig(l, attr);
 }
@@ -247,8 +247,8 @@ beginHtmlBig(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlBig(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlBig, endHtmlBig, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlBig, endHtmlBig, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlBig, endHtmlBig);
+    MW_END_ORDERED_FORMAT(context, beginHtmlBig, endHtmlBig);
     MWLISTENER *l = &context->listener;
     l->endHtmlBig(l);
 }
@@ -256,8 +256,8 @@ endHtmlBig(MWPARSERCONTEXT *context)
 static void
 beginHtmlSmall(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlSmall, endHtmlSmall, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSmall, endHtmlSmall, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlSmall, endHtmlSmall, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSmall, endHtmlSmall, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlSmall(l, attr);
 }
@@ -265,8 +265,8 @@ beginHtmlSmall(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlSmall(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlSmall, endHtmlSmall, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlSmall, endHtmlSmall, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlSmall, endHtmlSmall);
+    MW_END_ORDERED_FORMAT(context, beginHtmlSmall, endHtmlSmall);
     MWLISTENER *l = &context->listener;
     l->endHtmlSmall(l);
 }
@@ -274,8 +274,8 @@ endHtmlSmall(MWPARSERCONTEXT *context)
 static void
 beginHtmlSub(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlSub, endHtmlSub, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSub, endHtmlSub, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlSub, endHtmlSub, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSub, endHtmlSub, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlSub(l, attr);
 }
@@ -283,8 +283,8 @@ beginHtmlSub(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlSub(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlSub, endHtmlSub, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlSub, endHtmlSub, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlSub, endHtmlSub);
+    MW_END_ORDERED_FORMAT(context, beginHtmlSub, endHtmlSub);
     MWLISTENER *l = &context->listener;
     l->endHtmlSub(l);
 }
@@ -292,8 +292,8 @@ endHtmlSub(MWPARSERCONTEXT *context)
 static void
 beginHtmlSup(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlSup, endHtmlSup, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSup, endHtmlSup, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlSup, endHtmlSup, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlSup, endHtmlSup, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlSup(l, attr);
 }
@@ -301,8 +301,8 @@ beginHtmlSup(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlSup(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlSup, endHtmlSup, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlSup, endHtmlSup, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlSup, endHtmlSup);
+    MW_END_ORDERED_FORMAT(context, beginHtmlSup, endHtmlSup);
     MWLISTENER *l = &context->listener;
     l->endHtmlSup(l);
 }
@@ -310,8 +310,8 @@ endHtmlSup(MWPARSERCONTEXT *context)
 static void
 beginHtmlCite(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlCite, endHtmlCite, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlCite, endHtmlCite, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlCite, endHtmlCite, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlCite, endHtmlCite, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlCite(l, attr);
 }
@@ -319,8 +319,8 @@ beginHtmlCite(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlCite(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlCite, endHtmlCite, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlCite, endHtmlCite, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlCite, endHtmlCite);
+    MW_END_ORDERED_FORMAT(context, beginHtmlCite, endHtmlCite);
     MWLISTENER *l = &context->listener;
     l->endHtmlCite(l);
 }
@@ -328,8 +328,8 @@ endHtmlCite(MWPARSERCONTEXT *context)
 static void
 beginHtmlCode(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlCode, endHtmlCode, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlCode, endHtmlCode, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlCode, endHtmlCode, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlCode, endHtmlCode, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlCode(l, attr);
 }
@@ -337,8 +337,8 @@ beginHtmlCode(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlCode(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlCode, endHtmlCode, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlCode, endHtmlCode, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlCode, endHtmlCode);
+    MW_END_ORDERED_FORMAT(context, beginHtmlCode, endHtmlCode);
     MWLISTENER *l = &context->listener;
     l->endHtmlCode(l);
 }
@@ -346,8 +346,8 @@ endHtmlCode(MWPARSERCONTEXT *context)
 static void
 beginHtmlStrike(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlStrike, endHtmlStrike, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlStrike, endHtmlStrike, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlStrike, endHtmlStrike, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlStrike, endHtmlStrike, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlStrike(l, attr);
 }
@@ -355,8 +355,8 @@ beginHtmlStrike(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlStrike(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlStrike, endHtmlStrike, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlStrike, endHtmlStrike, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlStrike, endHtmlStrike);
+    MW_END_ORDERED_FORMAT(context, beginHtmlStrike, endHtmlStrike);
     MWLISTENER *l = &context->listener;
     l->endHtmlStrike(l);
 }
@@ -364,8 +364,8 @@ endHtmlStrike(MWPARSERCONTEXT *context)
 static void
 beginHtmlTt(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlTt, endHtmlTt, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlTt, endHtmlTt, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlTt, endHtmlTt, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlTt, endHtmlTt, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlTt(l, attr);
 }
@@ -373,8 +373,8 @@ beginHtmlTt(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlTt(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlTt, endHtmlTt, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlTt, endHtmlTt, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlTt, endHtmlTt);
+    MW_END_ORDERED_FORMAT(context, beginHtmlTt, endHtmlTt);
     MWLISTENER *l = &context->listener;
     l->endHtmlTt(l);
 }
@@ -382,8 +382,8 @@ endHtmlTt(MWPARSERCONTEXT *context)
 static void
 beginHtmlVar(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlVar, endHtmlVar, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlVar, endHtmlVar, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlVar, endHtmlVar, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlVar, endHtmlVar, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlVar(l, attr);
 }
@@ -391,8 +391,8 @@ beginHtmlVar(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlVar(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlVar, endHtmlVar, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlVar, endHtmlVar, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlVar, endHtmlVar);
+    MW_END_ORDERED_FORMAT(context, beginHtmlVar, endHtmlVar);
     MWLISTENER *l = &context->listener;
     l->endHtmlVar(l);
 }
@@ -400,8 +400,8 @@ endHtmlVar(MWPARSERCONTEXT *context)
 static void
 beginHtmlAbbr(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginHtmlAbbr, endHtmlAbbr, attr, NULL);
-    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlAbbr, endHtmlAbbr, attr, NULL, false);
+    MW_DELAYED_CALL(        context, beginHtmlAbbr, endHtmlAbbr, attr, false);
+    MW_BEGIN_ORDERED_FORMAT(context, beginHtmlAbbr, endHtmlAbbr, attr, false);
     MWLISTENER *l = &context->listener;
     l->beginHtmlAbbr(l, attr);
 }
@@ -409,8 +409,8 @@ beginHtmlAbbr(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 static void
 endHtmlAbbr(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginHtmlAbbr, endHtmlAbbr, NULL);
-    MW_END_ORDERED_FORMAT(context, beginHtmlAbbr, endHtmlAbbr, NULL);
+    MW_SKIP_IF_EMPTY(     context, beginHtmlAbbr, endHtmlAbbr);
+    MW_END_ORDERED_FORMAT(context, beginHtmlAbbr, endHtmlAbbr);
     MWLISTENER *l = &context->listener;
     l->endHtmlAbbr(l);
 }
