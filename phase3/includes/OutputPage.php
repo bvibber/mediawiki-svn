@@ -1606,12 +1606,6 @@ class OutputPage {
 		// Add base resources
 		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
 		
-		// Add site JS if enabled
-		global $wgUseSiteJs;
-		if ( $wgUseSiteJs ) {
-			$this->addModuleScripts( 'sitejs' );
-		}
-
 		// Add various resources if required
 		if ( $wgUseAjax ) {
 			$this->addModules( 'mediawiki.legacy.ajax' );
@@ -2307,7 +2301,7 @@ class OutputPage {
 	 */
 	function getHeadScripts( Skin $sk ) {
 		global $wgUser, $wgRequest, $wgJsMimeType;
-		global $wgStylePath, $wgStyleVersion;
+		global $wgStylePath, $wgStyleVersion, $wgUseSiteJs;
 		
 		// Statup - this will immediately load jquery and mediawiki modules
 		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
@@ -2369,6 +2363,11 @@ class OutputPage {
 		$scripts .= "\n" . $this->mScripts;
 		// This should be at the bottom of the body - below ALL other scripts
 		$scripts .= Html::inlineScript( "if ( mediaWiki !== undefined ) { mediaWiki.loader.go(); }" );
+		// Add site JS if enabled
+		if ( $wgUseSiteJs ) {
+			$scripts .= self::makeResourceLoaderLink( $sk, 'sitejs', 'scripts' );
+		}
+		
 		return $scripts;
 	}
 
