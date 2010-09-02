@@ -176,6 +176,17 @@ mw.SequencerAddMedia.prototype = {
 		var resource = this.getResourceFromAsset( assetElement )
 		this.getSmilClipFromResource ( resource, callback );
 	},
+	
+	getSmilClipFromWikiTemplate: function( titleKey, provider, callback){		
+		return $j( '<ref />' )
+			.attr({
+				'type': "application/x-wikitemplate",
+				'apiTitleKey' : titleKey,
+				// xxx For now just force commons
+				'apiProvider' : 'commons'
+			})			
+	},
+	
 	/**
 	 * Take an addMedia 'resource' and convert to a smil 
 	 *  ref node that can be inserted into a smil xml tree

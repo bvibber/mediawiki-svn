@@ -406,6 +406,7 @@ mw.Smil.prototype = {
 		// If the smilType is ref, check for a content type
 		if (smilType == 'ref') {
 			switch ($j(smilElement).attr('type')) {
+			case 'application/x-wikitemplate':
 			case 'text/html':
 				smilType = 'cdata_html';
 				break;

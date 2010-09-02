@@ -111,7 +111,7 @@ mw.SmilLayout.prototype = {
 				$j( '#' + this.smil.getPageDomId( smilElement ) ).length );
 	},
 	
-	drawElementThumb: function( $target, $node, relativeTime, callback){
+	drawElementThumb: function( $target, $node, relativeTime, callback ){
 		var _this = this;
 		mw.log('SmilLayout::drawElementThumb: ' + $node.attr('id') + ' relative time:' + relativeTime );	
 		if( $target.length == 0 ){
@@ -121,11 +121,12 @@ mw.SmilLayout.prototype = {
 		// parse the time in case it came in as human input
 		relativeTime = this.smil.parseTime( relativeTime );
 		
-		if( this.smil.getRefType( $node ) == 'video' ){
-			this.getVideoCanvasThumb($target,  $node, relativeTime, callback )		
-			return ;
-		}
-		switch ( this.smil.getRefType( $node )  ){		
+		
+		switch ( this.smil.getRefType( $node )  ){
+			case 'video':
+				this.getVideoCanvasThumb($target,  $node, relativeTime, callback )		
+				return ;
+			break;
 			case 'img':
 				// XXX should refactor and to use same path as player embed
 				// xxx we should use canvas here but for now just hack it up:		
@@ -151,13 +152,14 @@ mw.SmilLayout.prototype = {
 					if( $node.attr('panZoom') ){
 						_this.panZoomLayout( $node.get(0), $target, img );
 					}
+					if( callback )
+						callback();
 				}); 
+				return 
 			break;
 			case 'cdata_html':
 				// Scale down the html into the target width
-				$target.html( 
-					this.getSmilCDATAHtml( $node, $target.width() )
-				)
+				this.addSmilCDATAHtml( $node, $target, callback );
 			break;
 			case 'audio':			
 				var titleStr = ( $node.attr('title') )?  $node.attr('title') : gM( 'mwe-sequencer-untitled-audio' )
@@ -286,7 +288,7 @@ mw.SmilLayout.prototype = {
 			// Not part of strict smil, but saves time being able have an "html"
 			// display mode
 			case 'cdata_html': 
-				$regionTarget.append( this.getSmilCDATAHtml( smilElement ) );
+				this.addSmilCDATAHtml( smilElement, $regionTarget );
 				return ;
 			break;
 			case 'video': 
@@ -351,11 +353,62 @@ mw.SmilLayout.prototype = {
 	 * @@TODO check all sources are "local" only smil and enforce domain on all
 	 *        asset sources
 	 */
-	getSmilCDATAHtml: function( smilElement, targetWidth ){	
-		// Default target width if unset:
-		if( ! targetWidth )
-			targetWidth  = this.targetWidth;
-		
+	addSmilCDATAHtml: function( smilElement, $target, callback ){
+		if( $j( smilElement).attr('type') == 'text/html' ){
+			$target.append( this.getSmilCDATAHtml(smilElement, $target.width() ));
+			if( callback )
+				callback();
+			return ;
+		}
+		// Check if we need to load the content: 
+		if( $j( smilElement).attr('type') == 'application/x-wikitemplate' ){
+			// build a wikitext call
+			var templateKey = $j( smilElement).attr('apiTitleKey').replace('Template:', '');
+			if(!templateKey){
+				mw.log("Error: wikitemplate without title key")
+				return ;
+			}
+			var apiProviderUrl = mw.getApiProviderURL( $j( smilElement).attr('apiProvider') );
+			if(!apiProviderUrl){
+				mw.log("Error: wikitemplate without api provider url")
+			}
+			
+			var wikiTextTemplateCall = '' +
+			'{{' + templateKey + "\n";
+			$j( smilElement).find('param').each(function( inx, paramNode ){
+				wikiTextTemplateCall+= $j( paramNode ).attr('name') + '= ' +  
+					unescape(  $j( paramNode ).attr('value') )
+			});
+			
+			// Close up the template call
+			wikiTextTemplateCall+="\n}}";
+			var request = {
+				'action' : 'parse',
+				'text': wikiTextTemplateCall,
+			};
+			// Check if we have the titleKey for the sequence and use that as context title
+			var titleKey = this.smil.getEmbedPlayer().apiTitleKey;
+			if( titleKey ){
+				request['title'] = titleKey;
+			}
+			mw.getJSON( apiProviderUrl, request, function(data){
+				if( data && data.parse && data.parse.text && data.parse.text['*'] ){
+					$target.html('<![CDATA[' +
+							 data.parse.text['*'] 
+					+ "\n]]>")
+					$target.append( this.getSmilCDATAHtml(smilElement, $target.width() ));
+					if( callback ) 
+						callback();
+				}
+				mw.log("Error could not get template data")
+				if( callback ) 
+					callback();
+			});
+		} 
+	},
+	
+	getSmilCDATAHtml: function( smilElement, targetWidth){
+	
 		mw.log("getSmilCDATAHtml:" + $j( smilElement ).attr('id') +' :' + targetWidth );
 		
 		// Get "clean" smil data
