@@ -29,8 +29,9 @@ class SpecialSimpleSurvey extends SpecialPage {
 		if ( $this->tokenToCheck != "" &&
 			 ( $wgRequest->getVal( 'token' ) == $this->tokenToCheck ) ) {
 			return true;
+		} else {
+			return false;
 		}
-		else return false;
 	}
 
 	public function setToken() {

@@ -22,8 +22,6 @@ $wgAutoloadClasses = array_merge(
 		'SpecialSimpleSurvey' => $dir . 'SpecialSimpleSurvey.php',
 	)
 );
-unset( $prefswitchdir );
-
 
 // add special pages
 $wgSpecialPages['SimpleSurvey'] = 'SpecialSimpleSurvey';
@@ -46,12 +44,10 @@ $wgValidSurveys = array();
 
 // add surveys
 require_once( $dir . "Surveys.php" );
-unset( $dir );
 
 // Always include the browser stuff...
-foreach ( $wgPrefSwitchSurveys as $survey ) {
+foreach ( $wgPrefSwitchSurveys as &$survey ) {
 	$survey['questions']['browser'] = array(
-		'visibility' => "hidden",
 		'question' => 'prefswitch-survey-question-browser',
 		'type' => 'select',
 		'answers' => array(
@@ -59,14 +55,21 @@ foreach ( $wgPrefSwitchSurveys as $survey ) {
 			'ie6' => 'prefswitch-survey-answer-browser-ie6',
 			'ie7' => 'prefswitch-survey-answer-browser-ie7',
 			'ie8' => 'prefswitch-survey-answer-browser-ie8',
+			'ie9' => 'prefswitch-survey-answer-browser-ie9',
+			'ffb' => 'prefswitch-survey-answer-browser-ffb',
 			'ff1' => 'prefswitch-survey-answer-browser-ff1',
 			'ff2' => 'prefswitch-survey-answer-browser-ff2',
 			'ff3' => 'prefswitch-survey-answer-browser-ff3',
 			'cb' => 'prefswitch-survey-answer-browser-cb',
+			'cd' => 'prefswitch-survey-answer-browser-cd',
 			'c1' => 'prefswitch-survey-answer-browser-c1',
 			'c2' => 'prefswitch-survey-answer-browser-c2',
+			'c3' => 'prefswitch-survey-answer-browser-c3',
+			'c4' => 'prefswitch-survey-answer-browser-c4',
+			'c5' => 'prefswitch-survey-answer-browser-c5',
 			's3' => 'prefswitch-survey-answer-browser-s3',
 			's4' => 'prefswitch-survey-answer-browser-s4',
+			's5' => 'prefswitch-survey-answer-browser-s5',
 			'o9' => 'prefswitch-survey-answer-browser-o9',
 			'o9.5' => 'prefswitch-survey-answer-browser-o9.5',
 			'o10' => 'prefswitch-survey-answer-browser-o10',
@@ -75,20 +78,19 @@ foreach ( $wgPrefSwitchSurveys as $survey ) {
 	);
 	$survey['questions']['os'] = array(
 		'question' => 'prefswitch-survey-question-os',
-		'visibility' => "hidden",
 		'type' => 'select',
-			'answers' => array(
+		'answers' => array(
 			'windows' => 'prefswitch-survey-answer-os-windows',
 			'windowsmobile' => 'prefswitch-survey-answer-os-windowsmobile',
 			'macos' => 'prefswitch-survey-answer-os-macos',
 			'iphoneos' => 'prefswitch-survey-answer-os-iphoneos',
+			'ios' => 'prefswitch-survey-answer-os-ios',
 			'linux' => 'prefswitch-survey-answer-os-linux',
 		),
 		'other' => 'prefswitch-survey-answer-os-other',
 	);
 	$survey['questions']['res'] = array(
 		'question' => 'prefswitch-survey-question-res',
-		'visibility' => "hidden",
 		'type' => 'dimensions',
 	);
 }
