@@ -1,6 +1,10 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.36 - 2 September 2010
+  Updated CategoryTree, FancyCaptcha, FlaggedRevs, SemanticForms and
+  SemanticMediaWiki extensions.
+
 0.15.35 - 8 August 2010
   Updated CategoryWatch, CodeReview and Woopra extensions.
 
