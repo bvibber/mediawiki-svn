@@ -624,6 +624,8 @@ window.mediaWiki = new ( function( $ ) {
 			that.work();
 		}
 		
+		/* Cache document ready status */
+		
 		$(document).ready( function() { ready = true; } );
 	} )();
 	
@@ -634,9 +636,10 @@ window.mediaWiki = new ( function( $ ) {
 	
 } )( jQuery );
 
+
 /* Auto-register from pre-loaded startup scripts */
 
-if ( typeof mediaWikiStartUp === 'function' ) {
-	mediaWikiStartUp();
-	delete mediaWikiStartUp;
+if ( typeof window['startUp'] === 'function' ) {
+	window['startUp']();
+	delete window['startUp'];
 }

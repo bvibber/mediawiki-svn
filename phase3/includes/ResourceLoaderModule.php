@@ -595,7 +595,7 @@ class ResourceLoaderStartupModule extends ResourceLoaderModule {
 	private $modifiedTime = null;
 	
 	public function getScript( $lang, $skin, $debug ) {
-		return '';
+		return file_get_contents( 'resources/startup.js' );
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {

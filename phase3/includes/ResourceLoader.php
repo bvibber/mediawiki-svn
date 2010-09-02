@@ -190,7 +190,7 @@ class ResourceLoader {
 			} else {
 				// Support module loader scripts
 				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
-					$scripts .= "\n" . $loader;
+					$scripts .= $loader;
 				}
 				// Automatically register module
 				else {
@@ -206,7 +206,7 @@ class ResourceLoader {
 				}
 			}
 		}
-		return $scripts . "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
+		return $scripts . "mediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );";
 	}
 	
 	/**
@@ -327,29 +327,38 @@ class ResourceLoader {
 				);
 				// Special meta-information for the 'startup' module
 				if ( $name === 'startup' && $parameters['only'] === 'scripts' ) {
-					$scripts .= self::getModuleRegistrations(
+					// Get all module registrations
+					$registration = self::getModuleRegistrations(
 						$parameters['lang'], $parameters['skin'], $parameters['debug']
 					);
-					$scripts .= "mediaWiki.config.set( " .
-						FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) ) . " );\n";
-					// Wrap in a closure
-					$scripts = "window.mediaWikiStartUp = function() {" . $scripts . "};";
-					$query = wfArrayToCGI( $parameters + array( 'version' => wfTimestamp(
-						TS_ISO_8601,
-						round(
-							max(
-								self::$modules['jquery']->getModifiedTime(
-									$parameters['lang'], $parameters['skin'], $parameters['debug']
+					// Build configuration
+					$config = FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) );
+					// Add a well-known start-up function
+					$scripts .= "window.startUp = function() { {$registration} mediaWiki.config.set( {$config} ); };";
+					// Build load query for jquery and mediawiki modules
+					$query = wfArrayToCGI( $parameters + array(
+						'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
+						'version' => wfTimestamp(
+							TS_ISO_8601,
+							round(
+								max(
+									self::$modules['jquery']->getModifiedTime(
+										$parameters['lang'], $parameters['skin'], $parameters['debug']
+									),
+									self::$modules['mediawiki']->getModifiedTime(
+										$parameters['lang'], $parameters['skin'], $parameters['debug']
+									)
 								),
-								self::$modules['mediawiki']->getModifiedTime(
-									$parameters['lang'], $parameters['skin'], $parameters['debug']
-								)
-							),
-							-2
+								-2
+							)
 						)
-					) ) );
-					$scripts .= "document.write('<script type=\"text/javascript\" " .
-						"src=\"{$server}?modules=jquery|mediawiki&{$query}\"></script>');";
+					) );
+					// Build HTML code for loading jquery and mediawiki modules
+					$linkedScript = Html::linkedScript( "{$server}?{$query}" );
+					// Add code to add jquery and mediawiki loading code; only if the current client is compatible
+					$scripts .= "if ( isCompatible() ) { document.write( '{$linkedScript}' ); }";
+					// Delete the compatible function - it's not needed anymore
+					$scripts .= "delete window['isCompatible'];";
 				}
 			}
 			// Styles
