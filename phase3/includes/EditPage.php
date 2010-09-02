@@ -2246,9 +2246,9 @@ HTML
 		}
 		
 		$wgOut->addScript( Html::inlineScript(
-			"\nmediaWiki.loader.using( 'mediawiki.legacy.edit', function() { $script } );\n"
+			"if ( mediaWiki !== undefined ) { mediaWiki.loader.using( 'mediawiki.legacy.edit', function() { $script } ); }"
 		) );
-
+		
 		$toolbar .= "\n</div>";
 
 		wfRunHooks( 'EditPageBeforeEditToolbar', array( &$toolbar ) );
