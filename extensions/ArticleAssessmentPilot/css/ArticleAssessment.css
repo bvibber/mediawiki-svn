@@ -108,12 +108,24 @@
 .article-assessment-wrapper .article-assessment-submit {
 	text-align: right;
 }
-.article-assessment-wrapper .article-assessment-stale-msg {
-	background: #d6f3ff;
-	border: 1px solid #5dc9f4;
+.article-assessment-wrapper .article-assessment-flash {
 	float: left;
 	font-size: 11px;
 	padding: 1px 5px;
+	width: 560px;
+	text-align: left;
+}
+.article-assessment-wrapper .article-assessment-stale-msg {
+	background: #d6f3ff;
+	border: 2px solid #5dc9f4;
+}
+.article-assessment-wrapper .article-assessment-success-msg {
+	background: #e8e8e8;
+	border: 2px solid #006505;
+}
+.article-assessment-wrapper .article-assessment-error-msg {
+	background: #e8e8e8;
+	border: 2px solid #a91100;
 }
 .article-assessment-wrapper .article-assessment-rating-field-name {
 	float: left;

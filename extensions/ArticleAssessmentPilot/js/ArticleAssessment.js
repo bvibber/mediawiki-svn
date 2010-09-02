@@ -2,7 +2,7 @@
 	$.ArticleAssessment = {
 		'config': { 
 			'authtoken': '',
-			'userID': wgUserName,
+			'userID': '',
 			'pageID': wgArticleId,
 			'revID': wgCurRevisionId
 		},
@@ -66,8 +66,8 @@
 				var config = $.ArticleAssessment.config;
 				// if this is an anon user, get a unique identifier for them
 				// load up the stored ratings and update the markup if the cookie exists
-				var cookieSettings = $.cookie( 'mwArticleAssessment' );
-				if ( true || typeof cookieSettings == 'undefined' ) {
+				var userToken = $.cookie( 'mwArticleAssessmentUserToken' );
+				if ( typeof userToken == 'undefined' || userToken == null ) {
 					function randomString( string_length ) {
 						var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 						var randomstring = '';
@@ -77,24 +77,22 @@
 						}
 						return randomstring;
 					}
-					cookieSettings = {
-						uid: randomString( 32 )
-					};
-					$.cookie( 'mwArticleAssessment', cookieSettings );
+					userToken = randomString( 32 );
+					$.cookie( 'mwArticleAssessmentUserToken', userToken );
 				}
 				if ( ! wgUserName ) {
-					config.userID = cookieSettings.uid;
+					config.userID = userToken;
 				}
 				// setup our markup using the template varibales in settings 
 				var $output = $( settings.structureHTML
 					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg('articleassessment-pleaserate') )
-					.replace( /\{FEEDBACK\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-featurefeedback')
+					.replace( /\{FEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg('articleassessment-featurefeedback')
 						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
-					.replace( /\{YOURFEEDBACK\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-yourfeedback') )
-					.replace( /\{ARTICLERATING\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-articlerating' ) ) 
-					.replace( /\{RESULTSHIDE\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-results-hide' )
+					.replace( /\{YOURFEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg('articleassessment-yourfeedback') )
+					.replace( /\{ARTICLERATING\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-articlerating' ) ) 
+					.replace( /\{RESULTSHIDE\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-results-hide' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) 
-					.replace( /\{RESULTSSHOW\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-results-show' )
+					.replace( /\{RESULTSSHOW\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-results-show' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) );
 				for( var field in settings.fieldMessages ) { 
 					$output.find( '.article-assessment-rating-fields' )
@@ -146,9 +144,9 @@
 				
 				// set the height of our smaller fieldset to match the taller
 				if( $( '#article-assessment-rate' ).height() > $( '#article-assessment-ratings' ).height() ) {
-					$( '#article-assessment-ratings' ).css( 'minHeight',  $( '#article-assessment-rate' ).height() );
+					$( '#article-assessment-ratings' ).css( 'minHeight',	$( '#article-assessment-rate' ).height() );
 				} else {
-					$( '#article-assessment-rate' ).css( 'minHeight',  $( '#article-assessment-ratings' ).height() );
+					$( '#article-assessment-rate' ).css( 'minHeight',	 $( '#article-assessment-ratings' ).height() );
 				}
 				// attempt to fetch the ratings 
 				$.ArticleAssessment.fn.getRatingData();
@@ -177,7 +175,7 @@
 					$( this )
 						.after( $( '<span class="rating-field-hint" />' )
 							.attr( 'original-title', $( this ).attr( 'original-title' ) )
-							.tipsy( { gravity : 'se', opacity: '0.9',  } ) );
+							.tipsy( { gravity : 'se', opacity: '0.9',	 } ) );
 				} );
 				// bind submit event to the form
 				$( '#article-assessment' )
@@ -189,35 +187,39 @@
 			// Request the ratings data for the current article
 			'getRatingData': function() {
 				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
+				var requestData = {
+					'action': 'query',
+					'list': 'articleassessment',
+					'aarevid': config.revID,
+					'aapageid': config.pageID,
+					'aauserrating': 1,
+					'format': 'json'
+				}
+				if( config.userID.length == 32 ) {
+					requestData.aaanontoken = config.userID;
+				}
 				var request = $.ajax( {
 					url: wgScriptPath + '/api.php',
-					data: {
-						'action': 'query',
-						'list': 'articleassessment',
-						'aarevid': config.revID,
-						'aapageid': config.pageID,
-						'aauserrating': 1,
-						'aauserid': config.userID,
-						'format': 'json'
-					},
+					data: requestData,
 					dataType: 'json',
 					success: function( data ) {
 						$.ArticleAssessment.fn.afterGetRatingData( data );
 					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						// console.log(XMLHttpRequest, textStatus, errorThrown);
+					error: function( XMLHttpRequest, textStatus, errorThrown ) {
+						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ),
+							{ 'class': 'article-assessment-error-msg' } );
 					}
 				} );
 			},
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
-				if( data.query.articleassessment.length > 0 ) {
+				if( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
 					for( rating in data.query.articleassessment[0].ratings) {
 						var rating = data.query.articleassessment[0].ratings[rating],
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
-							total = rating.total / count,
+							total = ( rating.total / count ).toFixed( 1 ),
 							label = $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [total, count] );
 						$rating
 							.find( '.article-assessment-rating-field-value' )
@@ -231,7 +233,7 @@
 						}
 					}
 					// if the rating is stale, add the stale class
-					if( data.query.articleassessment ) {
+					if( data.query.articleassessment.stale ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
@@ -240,8 +242,11 @@
 							.replace( /'''([^']*)'''/g, '<strong>$1</strong>' )
 							.replace( /''([^']*)''/g, '<em>$1</em>' );
 						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
+					} else {
+						// if it's not a stale rating, we want to make the stars blue
+						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 					}
-				}
+				} 
 				// initialize the ratings 
 				$( '.article-assessment-rating-field-value' ).each( function() {
 					$( this )
@@ -255,8 +260,9 @@
 				// clear out the stale message
 				$.ArticleAssessment.fn.flashNotice( );
 				
-				//lock the star inputs
-				
+				// lock the star inputs & submit
+				$( '.rating-field' ).stars( 'disable' );
+				$( '#article-assessment input' ).attr( "disabled", "disabled" ); 
 				// get our results for submitting
 				var results = {};
 				$( '.rating-field input' ).each( function() {
@@ -280,14 +286,24 @@
 					},
 					dataType: 'json',
 					success: function( data ) {
+						// update the ratings 
+						$.ArticleAssessment.fn.getRatingData();
 						// set the stars to rated status
-						$j('.ui-stars-star-on').addClass('ui-stars-star-rated');
-						// unlock the stars 
-						
+						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
+						// unlock the stars & submit
+						$( '.rating-field' ).stars( 'enable' );
+						$( '#article-assessment input:disabled' ).removeAttr( "disabled" ); 
 						// update the results
 						
 						// show the results
 						$( '#article-assessment .article-assessment-show-ratings a' ).click();
+						// say thank you
+						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-thanks' ),
+							{ 'class': 'article-assessment-success-msg' } );
+					},
+					error: function( XMLHttpRequest, textStatus, errorThrown ) {
+						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ),
+							{ 'class': 'article-assessment-error-msg' } );
 					}
 				} );
 			},

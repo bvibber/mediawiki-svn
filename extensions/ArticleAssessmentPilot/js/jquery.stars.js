@@ -264,10 +264,8 @@ $.stars = {
 $.fn.stars = function ( ) {
 	// convert the arguments to an array
 	var args = Array.prototype.slice.call(arguments);
-	
 	// default value to return -- overwritten by api calls
 	var out = $( this );
-	
 	$( this ).each( function() {
 		// get the context if it's already been initialized
 		var context = $( this ).data( 'stars-context' );
@@ -287,9 +285,9 @@ $.fn.stars = function ( ) {
 				$.stars.create.call( context );
 			} else if ( typeof args[0] == 'string' ) {
 				// API call 
-				var funcName = args.shift();
+				var funcName = args[0];
 				// call the function, and if it returns something, store the output in our return var
-				out = $.stars[funcName].call( context, args[0] ) || out;
+				out = $.stars[funcName].call( context, args.slice(1) ) || out;
 			}
 		} else {
 			// initialize with the defaults

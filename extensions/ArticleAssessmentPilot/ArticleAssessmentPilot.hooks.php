@@ -89,6 +89,8 @@ class ArticleAssessmentPilotHooks {
 			'articleassessment-rating-neutrality-tooltip',
 			'articleassessment-rating-completeness-tooltip',
 			'articleassessment-rating-readability-tooltip',
+			'articleassessment-error',
+			'articleassessment-thanks',
 			'articleassessment-articlerating',
 			'articleassessment-featurefeedback',
 			'articleassessment-noratings',
