@@ -1105,7 +1105,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		// Build the uiRequest
 		var uiRequest = [ '$j.ui.dialog' ];
 		if( options.draggable ){
-			uiRequest.push( '$j.ui.draggable' )
+			uiRequest.push( '$j.ui.mouse' )
+			uiRequest.push( '$j.ui.draggable' )		
 		}
 		if( options.resizable ){
 			uiRequest.push( '$j.ui.resizable' );
@@ -1123,7 +1124,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		// Load the dialog resources
 		mw.load([
 			[
-				'$j.ui'
+				'$j.ui',
+				'$j.widget'
 			],
 			uiRequest
 		], function() {
@@ -1135,11 +1137,11 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	/**
 	 * Mobile Safari has special properties for html5 video::
 	 * 
-	 * NOTE: should be moved to browser detection script
+	 * NOTE: should be phased out in favor of browser feature detection script
 	 */
 	mw.isMobileSafari = function() {		
 		// check mobile safari foce ( for debug )
-		if( mw.getConfig( 'forceMobileSafari' ) ){
+		if( mw.getConfig( 'forceMobileSafari' ) || document.URL.indexOf('forceMobileSafari') != -1 ){
 			return true;
 		}
 		if ((navigator.userAgent.indexOf('iPhone') != -1) || 

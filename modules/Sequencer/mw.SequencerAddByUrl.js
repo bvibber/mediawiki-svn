@@ -75,34 +75,26 @@ mw.SequencerAddByUrl.prototype = {
 								});			 						
 							});	
 						} else if( titleKey.indexOf('Template:') == 0 ) {
-							// get parsed page text
-							var request ={
-								'action':'parse',
-								'page' : titleKey
+							// Parse any paramters we can find:				
+							var apiProvider = '';
+							if( mw.parseUri(provider.apiUrl ).host == 'commons.wikimedia.org' ){
+								apiProvider = 'commons'
+							} else {
+								// xxx we need to abstract the remoteSearch driver provider logic
+								// into a provider class
+								apiProvider = 'local';
 							}
-							// should maybe
-							mw.getJSON( provider.apiUrl, request, function( data ){
-								if( !data || !data.parse || !data.parse.text || !data.parse.text['*'] ){
-									$dialog.html( 'Error loading asset');
-									return ; 
-								}
-								var apiProvider = '';
-								if( mw.parseUri( _this.getApiUrl() ).host == 'commons.wikimedia.org' ){
-									apiProvider = 'commons'
-								} else {
-									// xxx we need to abstract the remoteSearch driver provider logic
-									// into a provider class
-									apiProvider = 'local';
-								}
-								// Get the rendered page text: 
-								_this
-								.sequencer
-								.getAddMedia()
-								.getSmilClipFromWikiTemplate( titleKey, apiProvider, function( smilClip ){
-									_this.sequencer.getTimeline().insertSmilClipEdit( smilClip );
-									mw.closeLoaderDialog();
-								});
-							})							
+							// Get the rendered page text: 
+							var smilClip = _this
+							.sequencer
+							.getAddMedia()
+							.getSmilClipFromWikiTemplate( titleKey, apiProvider );
+
+							// Add the smil clip to the sequencer
+							_this.sequencer.getTimeline().insertSmilClipEdit( smilClip );
+							
+							// Close the dialog loading: 
+							mw.closeLoaderDialog();
 						}
 										
 					});
