@@ -53,10 +53,10 @@ class ArticleAssessmentPilotHooks {
 			return true;
 		}
 
-		global $wgArticleAssessmentPages;
+		global $wgArticleAssessmentCategory;
 
 		// check if this page should have the form
-		if ( !array_key_exists( $title->getArticleId() , $wgArticleAssessmentPages ) ) {
+		if ( strlen( $wgArticleAssessmentCategory ) == 0 || !$title->isInCategory( $wgArticleAssessmentCategory ) ) {
 			return true;
 		}
 
