@@ -9,43 +9,39 @@
  
 $messages = array();
 
-/** Dutch
- * */
-$messages['nl'] = array(
-	'articletocategory2-desc'               => 'Zet een inputbox op elke categorie pagina, en u kunt direct een nieuw artikel te cre&euml;ren om die categorie',
-	'create-article-under-category-Text' 	=> 'Maak een artikel voor deze categorie',
-	'create-article-under-category-Button'	=> 'Aanmaken',
-	'create-category-under-category-Text'	=> 'Maak een subcategorie voor deze categorie',
-	'create-category-under-category-Button'	=> 'Aanmanen',
-);
-
- 
-/** English
- */
+/** English */
 $messages['en'] = array(
-	'articletocategory2-desc'		=> 'Puts an inputbox on each category page, and you can create a new article directly to that category',
-	'create-article-under-category-Text'	=> 'Add an article to this category',
-	'create-article-under-category-Button'	=> 'Create',
-	'create-category-under-category-Text'	=> 'Add a category to this category',
-        'create-category-under-category-Button'	=> 'Create',
+	'articletocategory2-desc' => 'Puts an inputbox on each category page, and you can create a new article directly to that category',
+	'articletocategory2-create-article-under-category-text' => 'Add an article to this category',
+	'articletocategory2-create-article-under-category-button' => 'Create',
+	'articletocategory2-create-category-under-category-text' => 'Add a category to this category',
+	'articletocategory2-create-category-under-category-button' => 'Create',
 );
 
-/** German 
- */
+/** German  */
 $messages['de'] = array(
-	'articletocategory2-desc'		=> 'F&uuml;gt ein Eingabefeld auf jeder Seite der Kategorie, so k&ouml;nnen Sie einen Artikel erstellen, die direkt in dieser Kategorie',
-        'create-article-under-category-Text'	=> 'Ein Artikel zu dieser Kategorie hinzuf&uuml;gen',
-        'create-article-under-category-Button '	=> 'Erstellen',
-        'create-category-under-category-Text'	=> 'Eine Kategorie zu dieser Kategorie hinzuf&uuml;gen',
-        'create-category-under-category-Button'	=> 'Erstellen',
+	'articletocategory2-desc' => 'Fügt ein Eingabefeld auf jeder Seite der Kategorie, so können Sie einen Artikel erstellen, die direkt in dieser Kategorie',
+	'articletocategory2-create-article-under-category-text' => 'Ein Artikel zu dieser Kategorie hinzufügen',
+	'articletocategory2-create-article-under-category-button' => 'Erstellen',
+	'articletocategory2-create-category-under-category-text' => 'Eine Kategorie zu dieser Kategorie hinzufügen',
+	'articletocategory2-create-category-under-category-button' => 'Erstellen',
 );
 
-/** Swedish
- */
-$messages['sv'] = array(
-	'articletocategory2-desc'		=> 'L&auml;gger ett inmatningsf&auml;lt p&aring; varje kategorisida, s&aring; att du kan skapa en artikel direkt i denna kategori',
-        'create-article-under-category-Text'	=> 'L&auml;gg till artikel till denna kategori',
-        'create-article-under-category-Button'	=> 'Skapa',
-	'create-category-under-category-Text'	=> 'L&auml;gg till kategori till denna kategori',
-        'create-category-under-category-Button'	=> 'Skapa',
+/** Dutch * */
+$messages['nl'] = array(
+	'articletocategory2-desc' => 'Zet een inputbox op elke categorie pagina, en u kunt direct een nieuw artikel te cre&euml;ren om die categorie',
+	'articletocategory2-create-article-under-category-text' => 'Maak een artikel voor deze categorie',
+	'articletocategory2-create-article-under-category-button' => 'Aanmaken',
+	'articletocategory2-create-category-under-category-text' => 'Maak een subcategorie voor deze categorie',
+	'articletocategory2-create-category-under-category-button' => 'Aanmanen',
 );
+
+/** Swedish */
+$messages['sv'] = array(
+	'articletocategory2-desc' => 'Lägger ett inmatningsfält på varje kategorisida, så att du kan skapa en artikel direkt i denna kategori',
+	'articletocategory2-create-article-under-category-text' => 'Lägg till artikel till denna kategori',
+	'articletocategory2-create-article-under-category-button' => 'Skapa',
+	'articletocategory2-create-category-under-category-text' => 'Lägg till kategori till denna kategori',
+	'articletocategory2-create-category-under-category-button' => 'Skapa',
+);
+

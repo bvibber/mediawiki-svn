@@ -47,8 +47,7 @@ $wgarticletocategory2ConfigBlacklist=false;
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Add Article to Category 2',
-	'description' => 'It put a inputbox on each category page from where you can create a new article',
-	'descriptionmsg' => "articletocategory2-desc",
+	'descriptionmsg' => 'articletocategory2-desc',
 	'version' => '0.2',
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:BiGreat Liang Chen \'BiGreat\'] (original code)',
@@ -137,10 +136,10 @@ function wfCategoryChange( $catpage ) {
 
 	wfLoadExtensionMessages( 'ArticleToCategory2' );
 
-	$boxtext  = wfMsg( 'create-article-under-category-Text' );
-        $btext =    wfMsg( 'create-article-under-category-Button' );
-        $boxtext2 = wfMsg( 'create-category-under-category-Text' );
-        $btext2 =   wfMsg( 'create-category-under-category-Button' );
+	$boxtext  = wfMsg( 'articletocategory2-create-article-under-category-text' );
+        $btext =    wfMsg( 'articletocategory2-create-article-under-category-button' );
+        $boxtext2 = wfMsg( 'articletocategory2-create-category-under-category-text' );
+        $btext2 =   wfMsg( 'articletocategory2-create-category-under-category-button' );
  
 	$action = htmlspecialchars( $wgScript );
 	if ( !$catpage->mTitle->quickUserCan( 'edit' )
