@@ -11,8 +11,8 @@ $messages = array();
 
 /** English */
 $messages['en'] = array(
-	'articletocategory2-desc' => 'Puts an inputbox on each category page, and you can create a new article directly to that category',
-	'articletocategory2-create-article-under-category-text' => 'Add an article to this category',
+	'articletocategory2-desc' => 'Puts an inputbox on each category page allowing creation of a new page directly into that category',
+	'articletocategory2-create-article-under-category-text' => 'Add a page to this category',
 	'articletocategory2-create-article-under-category-button' => 'Create',
 	'articletocategory2-create-category-under-category-text' => 'Add a category to this category',
 	'articletocategory2-create-category-under-category-button' => 'Create',
@@ -20,8 +20,8 @@ $messages['en'] = array(
 
 /** German  */
 $messages['de'] = array(
-	'articletocategory2-desc' => 'Fügt ein Eingabefeld auf jeder Seite der Kategorie, so können Sie einen Artikel erstellen, die direkt in dieser Kategorie',
-	'articletocategory2-create-article-under-category-text' => 'Ein Artikel zu dieser Kategorie hinzufügen',
+	'articletocategory2-desc' => 'Fügt ein Eingabefeld auf jeder Seite der Kategorie, so können Sie eine Seite erstellen, die direkt in dieser Kategorie',
+	'articletocategory2-create-article-under-category-text' => 'Eine Seite zu dieser Kategorie hinzufügen',
 	'articletocategory2-create-article-under-category-button' => 'Erstellen',
 	'articletocategory2-create-category-under-category-text' => 'Eine Kategorie zu dieser Kategorie hinzufügen',
 	'articletocategory2-create-category-under-category-button' => 'Erstellen',
