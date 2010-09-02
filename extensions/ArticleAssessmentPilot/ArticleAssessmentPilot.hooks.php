@@ -56,7 +56,8 @@ class ArticleAssessmentPilotHooks {
 		global $wgArticleAssessmentCategory;
 
 		// check if this page should have the form
-		if ( $wgArticleAssessmentCategory === '' || !$title->isInCategory( $wgArticleAssessmentCategory ) ) {
+		if ( $wgArticleAssessmentCategory === ''
+				|| !self::isInCategory( $title->getArticleId(), $wgArticleAssessmentCategory ) ) {
 			return true;
 		}
 
@@ -114,6 +115,25 @@ class ArticleAssessmentPilotHooks {
 		}
 
 		return true;
+	}
+
+		/*
+	 * Returns whether an article is in the specific category
+	 *
+	 * @param $articleId Integer: Article ID
+	 * @param $category String: The category name (without Category: Prefix)
+	 *
+	 * @return bool
+	 */
+	private static function isInCategory( $articleId, $category ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		return (bool)$dbr->selectRow( 'categorylinks', '1',
+			array(
+				'cl_from' => $articleId,
+				'cl_to' => $category,
+			),
+			__METHOD__
+		);
 	}
 
 	/**
