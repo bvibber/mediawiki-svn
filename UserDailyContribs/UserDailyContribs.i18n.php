@@ -52,6 +52,13 @@ $messages['arz'] = array(
 	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمه لامتداد تتبع الضغطات',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'userdailycontribs-desc' => 'Баҫыуҙарҙы күҙәтеүҙе киңәйтеүгә ҡатнашыусыларҙың көндәлек индергән өлөшө',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */

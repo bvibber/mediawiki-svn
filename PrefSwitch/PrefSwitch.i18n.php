@@ -2887,7 +2887,6 @@ $messages['hr'] = array(
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Isključi nove osobine',
-	'prefswitch-survey-submit-global-off' => 'Isključi nove osobine na svim wikiprojektima',
 	'prefswitch-survey-cancel-off' => 'Ako želite nastaviti koristiti nove mogućnosti, možete se vratiti na $1.',
 	'prefswitch-survey-submit-feedback' => 'Pošaljite komentar',
 	'prefswitch-survey-cancel-feedback' => 'Ako ne želite pružiti povratne informacije, možete se vratiti na $1.',
@@ -2895,6 +2894,7 @@ $messages['hr'] = array(
 	'prefswitch-survey-question-dislike' => 'Što vam se ne sviđa kod novog sučelja?',
 	'prefswitch-survey-question-whyoff' => 'Zašto isključujete nove mogućnosti? 
 Molimo označite sve razloge.',
+	'prefswitch-survey-question-globaloff' => 'Želite li isključiti novo sučelje za sve Wiki projekte?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Sučelje je previše komplicirano.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Sučelje nije ispravno funkcioniralo.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Sučelje nije izvršilo rečeno.',
@@ -2906,6 +2906,7 @@ Molimo označite sve razloge.',
 	'prefswitch-survey-answer-browser-other' => 'Drugi internetski preglednik:',
 	'prefswitch-survey-question-os' => 'Koji operativni sustav rabite?',
 	'prefswitch-survey-answer-os-other' => 'Drugi operativni sustav:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Isključi novo sučelje na svim wikiprojektima',
 	'prefswitch-survey-question-res' => 'Koja je rezolucija Vašeg zaslona?',
 	'prefswitch-title-on' => 'Nove mogućnosti',
 	'prefswitch-title-switched-on' => 'Uživajte!',
@@ -3788,17 +3789,17 @@ $messages['krc'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-krc.png|401px|]]
 |-
-| Бетлени редакторлаўну баш интерфейсини кёрюнюмю <small>[[Media:VectorEditorBasic-ru.png|(уллу эт)]]</small>
+| Бетлени редакторлаўну баш интерфейсини кёрюнюмю <small>[[Media:VectorEditorBasic-krc.png|(уллу эт)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-ru.png|401px|]]
+| [[Image:VectorLinkDialog-krc.png|401px|]]
 |-
 | Джибриўле къурагъан джангы диалогну кёрюнюмю
 |}
 |}
-«Викимедиа фондда» сайтны хайырланыўун анализ этген  группа ишлейди, вики-джамагъатха къатышханла бла бирге ала сизни Википедия бла эмда башха вики-проектле бла ишлеўюгюзню тынчыракъ этерге кюрешедиле. Талай джангы игилендириўню, аланы ичинде – джангы интерфейс эмда тынчыракъ этилген редакторлаў функцияла, сизге берген бизни къуўандыргъанды. Бу тюрлениўле джангы редакторланы ишлеўлерин тынчыракъ этерге деб этилгендиле, ала [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ётген джылда бардырыгъан юзабилити-тестлениўде тамалланадыла]. Бизни сайтларыбызгъа тынчыракъ интерфейс къураў «Викимедиа фондну» преоритетлеринден бириди, биз проектни энтда игилендиргенлей турлукъбуз. Толуракъ информация [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедияны блогунда] табарыкъсыз.
+«Викимедиа фондда» сайтны хайырланыўун анализ этген  группа ишлейди, вики-джамагъатха къатышханла бла бирге ала сизни Википедия бла эмда башха вики-проектле бла ишлеўюгюзню тынчыракъ этерге кюрешедиле. Талай джангы игилендириўню, аланы ичинде – джангы интерфейс эмда тынчыракъ этилген редакторлаў функцияла, сизге берген бизни къуўандыргъанды. Бу тюрлениўле джангы редакторланы ишлеўлерин тынчыракъ этерге деб этилгендиле, ала [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ётген джылда бардырылгъан юзабилити-тестлениўде тамалланадыла]. Бизни сайтларыбызгъа тынчыракъ интерфейс къураў «Викимедиа фондну» преоритетлеринден бириди, биз проектни энтда игилендиргенлей турлукъбуз. Толуракъ информация [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедияны блогунда] табарыкъсыз.
 
 === Нени тюрлендиргенбиз ===
 * '''Навигация.''' Биз навигацияны игилендиргенбиз, окъургъа эмда бетлени редакторлагъа тынчыракъ этгенбиз. Энди хар бетни баш джанында вкладка бусагъатда не эте тургъаныгъызны тюзюрек ангылатады: бетгеми къарайсыз огъесе сюзюўюне, окъуй турамысыз огъесе редакторлагъанмы этесиз бетни.
@@ -4202,7 +4203,6 @@ $messages['mr'] = array(
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
 	'prefswitch-survey-submit-off' => 'नविन चेहरामोहरा बंद करा',
-	'prefswitch-survey-submit-global-off' => 'सर्व विकिंवर नविन चेहरामोहरा बंद करा',
 	'prefswitch-survey-cancel-off' => 'जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
 	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
 	'prefswitch-survey-cancel-feedback' => 'जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
@@ -4254,19 +4254,19 @@ $messages['mr'] = array(
 |दुवे टाकण्यासाठी असलेल्या नविन संवाद पेटीचे पटलदृष्य
 |}
 |}
-विकिमिडिया फाउंडेशनची ’सदस्य अनुभव चमू (User Experience Team)’ ही आपणास काम करणे सोपे व्हावे म्हणुन विकिसमाजातील स्वयंसेवकासमवेत काम करीत आहे. आपल्यासमवेत, नविन चेहरामोहर्‍यासह व सोप्या संपादन तोंडवळ्यासह काही सुधारणा आदानप्रदान करण्यास आम्ही आतूर आहोत.नविन सदस्यास सुरुवात करण्यास अभिप्रेत हे बदल त्यांना सोपे पडतील व ते [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year यावर] आधारीत आहेत. आमच्या प्रकल्पांचा वापर (कोणासही)सोप्या पद्धतीने करता यावा ही विकिमिडिया फाउंडेशनची प्राथमिकता आहे आणि भविष्यात आम्ही यात आणखी अद्ययावतता आणुन ती आपल्यासह आदानप्रदान करु.अधिक विस्तृत माहितीसाठी विकिमिडियासंबंधित [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post या] संकेतस्थळास भेट द्या.
+विकिमिडिया फाउंडेशनची ’सदस्य अनुभव चमू (User Experience Team)’ ही आपणास काम करणे सोपे व्हावे म्हणुन विकिसमाजातील स्वयंसेवकासमवेत काम करीत आहे. आपल्यासमवेत, नविन चेहरामोहर्‍यासह व सोप्या संपादन तोंडवळ्यासह काही सुधारणा आदानप्रदान करण्यास आम्ही आतूर आहोत.नविन सदस्यास सुरुवात करण्यास अभिप्रेत हे बदल त्यांना सोपे पडतील व ते [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year यावर]  आधारीत आहेत. आमच्या प्रकल्पांचा वापर (कोणासही) सोप्या पद्धतीने करता यावा ही विकिमिडिया फाउंडेशनची प्राथमिकता आहे आणि भविष्यात आम्ही यात आणखी अद्ययावतता आणुन ती आपल्यासह आदानप्रदान करु.अधिक विस्तृत माहितीसाठी विकिमिडियासंबंधित [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post या] संकेतस्थळास भेट द्या.
 
 
 === आम्ही काय बदलले आहे ते येथे बघा  ===
 
-* '''सुचालन:''' पाने वाचण्यास व संपादण्यास सोपे जावे म्हणुन आम्ही सुधारणा केल्या आहेत.सध्या, प्रत्येक पानाच्या वरील बाजूस असलेली ’टॅब’ ही जास्त स्पष्टपणे हे दर्शविते कि, आपण तेच पान पहात आहात की त्याचे चर्चापान आणि आपण ते पान वाचत आहात की संपादन करीत आहात.
-* '''संपादन साधनपट्टीतील सुधारणा:''' आम्ही वापरात अधीक सुलभता मिळावी म्हणून संपादन साधनपट्टी ची पुर्नरचना केली आहे . पानांछी रचना करणे अधीक सुगम आणि सोपे झाले आहे.
-* '''दुवे सहाय्यक:''' इतर विकिपानांना आणि बाह्य दुवे देण्याकरिता  वापरास सोपे असे साधन तुम्हाला अधीक सुलभता उपलब्ध व्हावी म्हणून उपलब्ध केले आहे.
+* '''सुचालन:''' पाने वाचण्यास व संपादण्यास सोपे जावे म्हणुन आम्ही सुधारणा केल्या आहेत.सध्या, प्रत्येक पानाच्या वरील बाजूस असलेली ’टॅब’ ही जास्त स्पष्टपणे हे दर्शविते कि, आपण तेच पान पहात आहात की, त्याचे चर्चापान आणि आपण ते पान वाचत आहात की संपादन करीत आहात.
+* '''संपादन साधनपट्टीतील सुधारणा:''' आम्ही, वापरात अधीक सुलभता मिळावी म्हणून, संपादन साधनपट्टी ची पुर्नरचना केली आहे . पानांची रचना करणे अधीक सुगम आणि सोपे झाले आहे.
+* '''दुवे सहाय्यक:''' इतर विकिपानांना आणि बाह्य दुवे देण्याकरिता,  वापरास सोपे असे साधन, तुम्हाला अधीक सुलभता उपलब्ध व्हावी म्हणून उपलब्ध केले आहे.
 * '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत.
-* '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे.
-* '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] येथे अधीक वाचा.",
-	'prefswitch-main-logged-changes' => "* '''{{int:watch}} कळ (टॅब)''' आता तारा आहे.
-* The '''{{int:move}} कळ (टॅब)''' आता शोधपेटी पुढच्या अधोदर्शक बाणात ( ड्रॉपडाऊनमध्ये) आहे .",
+* '''इतर नवीन वैशिष्ट्ये: '''सारणी (टेबल) सोपी करण्यासाठी आम्ही आता एक 'नवीन सारणी (टेबल) सहाय्यक' उपलब्ध केला आहे आणि संपादनांमध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace) वैशिष्ट्य सुद्धा उपलब्ध केले आहे.
+* '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog येथे]  अधीक वाचा.",
+	'prefswitch-main-logged-changes' => "*  '''{{int:watch}} कळ (टॅब)''' आता तारा आहे.
+*  '''{{int:move}} कळ (टॅब)''' आता शोधपेटी पुढच्या अधोदर्शक बाणात ( ड्रॉपडाऊनमध्ये) आहे .",
 	'prefswitch-main-feedback' => '===प्रतिक्रीया?===
 आम्हाला तुमच्या कडून ऐकण्यास आवडेल. कृपया आमच्या [[$1|प्रतिक्रीया पानास]] अथवा, तुम्ही जर आमच्या संगणन प्रणाली सुधारण्याच्या चालू प्रक्रीयेत रस असल्यास ,अधीक माहिती करिता आमच्या [http://usability.wikimedia.org ऊपयोगसुलभता उपक्रम विकिस] भेट द्या.',
 	'prefswitch-main-anon' => '===मला परत न्या===
@@ -4277,7 +4277,7 @@ $messages['mr'] = array(
 [$1 नवीन बदल पाहण्यासाठी येथे टिचकी द्या]',
 	'prefswitch-survey-intro-feedback' => 'कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
 	'prefswitch-survey-intro-off' => 'आमच्या नवीन वैशिष्ट्यसुविधा वापरून पहाण्याकरिता धन्यवाद.
-त्यात सुधारणा करण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" वर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
+त्यात सुधारणा करण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" या पानाचे शेवटी दिलेल्या कळीवर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
 	'prefswitch-feedbackpage' => 'Project:सदस्याचे अनुभवाचा परतसंदेश',
 );
 
@@ -4804,7 +4804,7 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-survey-answer-browser-other' => 'Inna przeglądarka',
 	'prefswitch-survey-question-os' => 'Z jakiego systemu operacyjnego korzystasz?',
 	'prefswitch-survey-answer-os-other' => 'Inny system operacyjny',
-	'prefswitch-survey-answer-globaloff-yes' => 'Tak – wyłącz funkcje na wszystkich wiki',
+	'prefswitch-survey-answer-globaloff-yes' => 'Tak – wyłącz funkcje we wszystkich projektach wiki',
 	'prefswitch-survey-question-res' => 'Z ekranu o jakiej rozdzielczości korzystasz?',
 	'prefswitch-title-on' => 'Nowe funkcje',
 	'prefswitch-title-switched-on' => 'Super!',
@@ -5081,7 +5081,6 @@ $messages['pt-br'] = array(
 	'prefswitch-survey-true' => 'Sim',
 	'prefswitch-survey-false' => 'Não',
 	'prefswitch-survey-submit-off' => 'Desligar as funcionalidades novas',
-	'prefswitch-survey-submit-global-off' => 'Desabilitar as novas funcionalidades em todas as wikis',
 	'prefswitch-survey-cancel-off' => 'Se quiser continuar usando as novas funcionalidades, você pode voltar à $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentário',
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
@@ -5089,6 +5088,7 @@ $messages['pt-br'] = array(
 	'prefswitch-survey-question-dislike' => 'De que coisas não gostou nas funcionalidades novas?',
 	'prefswitch-survey-question-whyoff' => 'Por que você está desligando as novas funcionalidades?
 Selecione todas as opções que se aplicam, por favor.',
+	'prefswitch-survey-question-globaloff' => 'Quer desligar as funcionalidades globalmente?',
 	'prefswitch-survey-answer-whyoff-hard' => 'As funcionalidades eram muito difíceis de utilizar.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'As funcionalidades não funcionaram corretamente.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'As funcionalidades não tiveram o comportamento esperado.',
@@ -5100,6 +5100,7 @@ Selecione todas as opções que se aplicam, por favor.',
 	'prefswitch-survey-answer-browser-other' => 'Outro navegador:',
 	'prefswitch-survey-question-os' => 'Qual é o sistema operacional que você usa?',
 	'prefswitch-survey-answer-os-other' => 'Outro sistema operacional:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sim, desligar as funcionalidades em todas as wikis',
 	'prefswitch-survey-question-res' => 'Qual é a resolução do seu monitor?',
 	'prefswitch-title-on' => 'Funcionalidades novas',
 	'prefswitch-title-switched-on' => 'Desfrute!',
@@ -5177,6 +5178,7 @@ $messages['qu'] = array(
 	'prefswitch-survey-question-dislike' => 'Imatataq musuq kaqninkunapi manam munankichu?',
 	'prefswitch-survey-question-whyoff' => "Imaraykutaq musuq kaqninkunata hark'achkanki?
 Ama hina kaspa, tukuy paqtaqta akllay.",
+	'prefswitch-survey-question-globaloff' => "Musuq kaqninkunata tukuy wikikunapi hark'ayta munankichu?",
 	'prefswitch-survey-answer-whyoff-hard' => "Kaqninkunataqa sasallatam llamk'achini.",
 	'prefswitch-survey-answer-whyoff-didntwork' => "Kaqninkunaqa manam allinta llamk'ankuchu.",
 	'prefswitch-survey-answer-whyoff-notpredictable' => "Kaqninkunap llamk'anantaqa manam qhipaqta yachanichu.",
@@ -5188,6 +5190,7 @@ Ama hina kaspa, tukuy paqtaqta akllay.",
 	'prefswitch-survey-answer-browser-other' => "Huk llika wamp'una:",
 	'prefswitch-survey-question-os' => "Mayqin llamk'aykuna llikatataq (OS nisqata) llamk'achinki?",
 	'prefswitch-survey-answer-os-other' => "Huk llamk'aykuna llika (OS):",
+	'prefswitch-survey-answer-globaloff-yes' => "Arí, musuq kaqninkunata tukuy wikikunapi hark'ay",
 	'prefswitch-survey-question-res' => 'Qhawana pampaykiri ima huyakuyuqtaq?',
 	'prefswitch-title-on' => 'Musuq kaqninkuna',
 	'prefswitch-title-switched-on' => "Kusikuspalla llamk'ariy!",
@@ -5199,6 +5202,37 @@ Ama hina kaspa, tukuy paqtaqta akllay.",
 	'prefswitch-success-feedback' => 'Rimanakuypaq willasqaykiqa kachasqañam.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>-man kutimuy.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Wikipidiyap musuq wamp'una uyapuranmanta qhawanapampa rikch'a <small>[[Media:VectorNavigation-en.png|(hatunchay)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Tiksi p'anqa llamk'apuna uyapuramanta qhawanapampa rikch'a <small>[[Media:VectorEditorBasic-en.png|(hatunchay)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| T'inkikunata sat'inapaq musuq chimpapurari kahamanta qhawanapampa rikch'a
+|}
+|}
+Wikimedia Foundation nisqap Ruraqkuna Rurayyachay Qhuchu ruraqkunap ayllunmanta munaqlla yanapaqkunawan llamk'achkan imakunatapas atinllachanapaq. Kusikuykum allinchasqakunata rakinakuspa, ahinataq musuq rikch'akuyninta, atinllayasqa llamk'apunakunatapas. Kay musuq kaqninkunataqa rurayku musuq ruraqkunapaq yanapayta atinllachanapaqmi, [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study qayna watapi ruranalla llanchiyta ruraspayku]. Ruraykamayniykupaq ruranallata allinchayqa Wikimedia Foundation nisqapaq anchayupam - hamuq pacha aswan musuqchanakunatapas rakinakusaqkum. Aswan yuyaykunapaqqa, kaymanta Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post] nisqaman riy.
+
+=== Kaykunatam musuqcharquyku ===
+* '''Wamp'uy:''' Wamp'uytam allincharquyku p'anqakunata ñawirinapaqpas llamk'apunapaqpas. Kunanqa, tukuy p'anqap patanpi kaq qichiprakuna aswan ch'uyatam rikuchinku p'anqatachu rimanakuynintachu rikunkichu, icha p'anqata qhawallankichu llamk'apunkichu.
+* '''Allinchasqa llamk'apunapaq butunnintin uma siq'i:''' Llamk'apunapaq butunnintin uma siq'itam musuqcharquyku aswan atinlla llamk'achinaykipaq. Kunanqa, p'anqakunata aswan sikllallata aswan sunqullamanta sumaqchanki.
+* '''T'inki layqa:''' Musuq sikllalla llamk'anawanmi wikipi huk p'anqakunaman icha hawa tiyaykunaman t'inkikunata yapanki.
+* '''Allinchasqa maskana:''' Maskaypi rikuriq sakumaykunatam allincharquyku maskasqayki p'anqata aswan utqaylla taripanaykipaq.
+* '''Huk musuq kaqninkuna:''' Wachuchasqapaq layqatam wallparirquyku wachuchasqakunata aswan sikllallata kamarinaykipaq, tarina huknachana khillaytapas p'anqa llamk'apuyta atinllachanapaq.
+* '''Wikipidiya unancha:''' Unanchaykutam musuqcharquyku. Astawan [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] nisqapi ñawiriy.",
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}} qhichipra'''qa kunan quyllurmi kachkan.
 * '''{{int:move}} qhichipra'''qa kunan maskana sinrup kinrayninpi rikuchinapim rikch'akun.",
 	'prefswitch-main-feedback' => "===Kaymanta willaspa rimanakuy?===
@@ -5230,7 +5264,6 @@ $messages['ro'] = array(
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Nu',
 	'prefswitch-survey-submit-off' => 'Dezactivează noile funcționalități',
-	'prefswitch-survey-submit-global-off' => 'Dezactivează noile funcționalități pentru toate proiectele wiki',
 	'prefswitch-survey-cancel-off' => 'Dacă doriți să continuați folosirea noilor funcționalități, puteți să reveniți la $1.',
 	'prefswitch-survey-submit-feedback' => 'Trimite feedback',
 	'prefswitch-survey-cancel-feedback' => 'Dacă nu doriți să comentați vă puteți întoarce la $1.',
@@ -5238,6 +5271,7 @@ $messages['ro'] = array(
 	'prefswitch-survey-question-dislike' => 'Ce v-a displăcut la funcționalități?',
 	'prefswitch-survey-question-whyoff' => 'Ce vă face să dezactivați noile funcționalități?
 Selectați toate răspunsurile care se potrivesc.',
+	'prefswitch-survey-question-globaloff' => 'Doriți ca funcționalitățile să fie dezactivate global?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Prea greu de folosit.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nu funcționa cum trebuie.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Funcționalitățile sînt impredictibile.',
@@ -5249,6 +5283,7 @@ Selectați toate răspunsurile care se potrivesc.',
 	'prefswitch-survey-answer-browser-other' => 'Alt navigator:',
 	'prefswitch-survey-question-os' => 'Ce sistem de operare folosiți?',
 	'prefswitch-survey-answer-os-other' => 'Alt sistem de operare:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Da, dezactivează funcționalitățile de pe toate site-urile wiki',
 	'prefswitch-survey-question-res' => 'Ce rezoluție are ecranul dumneavoastră?',
 	'prefswitch-title-on' => 'Noi funcționalități',
 	'prefswitch-title-switched-on' => 'Distracție plăcută!',
@@ -5638,7 +5673,6 @@ $messages['sl'] = array(
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Izklopi nove funkcije',
-	'prefswitch-survey-submit-global-off' => 'Izklopi nove funkcije na vseh wikijih',
 	'prefswitch-survey-cancel-off' => 'Če bi radi še naprej uporabljali nove funkcije, se lahko vrnete na $1.',
 	'prefswitch-survey-submit-feedback' => 'Pošlji povratne informacije',
 	'prefswitch-survey-cancel-feedback' => 'Če ne želite podati povratnih informacij, se lahko vrnete na $1.',
@@ -5646,6 +5680,7 @@ $messages['sl'] = array(
 	'prefswitch-survey-question-dislike' => 'Česa pri novih funkcijah ne marate?',
 	'prefswitch-survey-question-whyoff' => 'Zakaj izklapljate nove funkcije?
 Prosimo, izberite vse kar ustreza.',
+	'prefswitch-survey-question-globaloff' => 'Želite funkcije izklopiti globalno?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Bilo je pretežko uporabljati.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ni delovalo pravilno.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Ni delovalo predvidljivo.',
@@ -5657,6 +5692,7 @@ Prosimo, izberite vse kar ustreza.',
 	'prefswitch-survey-answer-browser-other' => 'Drug brskalnik:',
 	'prefswitch-survey-question-os' => 'Kateri operacijski sistem uporabljate?',
 	'prefswitch-survey-answer-os-other' => 'Drug operacijski sistem:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Da, izklopi funkcije na vseh wikijih',
 	'prefswitch-survey-question-res' => 'Kakšna je ločljivost vašega zaslona?',
 	'prefswitch-title-on' => 'Nove funkcije',
 	'prefswitch-title-switched-on' => 'Uživajte!',
@@ -6368,7 +6404,7 @@ $messages['tt-cyrl'] = array(
 	'prefswitch-success-off' => 'Яңа мөмкинчелекләр ябылды. Сынап караганыгыз өчен бик зур рәхмәт. Сез бу мөмкинчелекләрне теләсә кайсы вакытны яңадан ача аласыз, бары тик бу сылтамага гына басарга кирәк «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» .',
 	'prefswitch-success-feedback' => 'Сезнең фикер җибәрелде.',
 	'prefswitch-return' => '<hr style="clear:both">
-<span class="plainlinks">[$1 $2]гә кире кайту</span>.',
+<span class="plainlinks">[$1 $2]кә кире кайту</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
@@ -6401,7 +6437,7 @@ $messages['tt-cyrl'] = array(
 * '''Башка яңа функцияләр.''' Яңа табын ясау коралы сезгә вивда табыннарны ясауны җиңеләйтер дип уйлыйбыз.Шулай ук хатаны эзләү һәм алмаштыру функциясен өстәдек. 
 * '''Логотип.''' Без шарик-пазлның яңа бизәлешен ясадык, тулырак мәгълүмат [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Викимедия блогында].",
 	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» кыстырмасы'''  хәзер йолдыз формасында.
-* ''' «{{int:move}}» кыстырмасы'''  төшерелмә меню куелган.",
+* ''' «{{int:move}}» кыстырмасы'''  төшерелмә менюга куелган.",
 	'prefswitch-main-feedback' => '=== Элемтә ===
 Без сезнең фикерләрегезне ишәтебез килә. Зинһар, безнең [[$1|элемтә битенә керегез]]. ЕӘгәрдә сезгә безнең яңа төрле программа белән тәэмин ителеш турында күбрәк беләсегез килсә  [http://usability.wikimedia.org бизәлеш проекты сәхифәсен] карагыз.',
 	'prefswitch-main-anon' => '=== Ничек бар шулай кайтарырга ===
@@ -6471,6 +6507,7 @@ $messages['ug-arab'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Alex Khimich
  * @author NickK
  * @author Olvin
  * @author Riwnodennyk
@@ -6484,7 +6521,6 @@ $messages['uk'] = array(
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Ні',
 	'prefswitch-survey-submit-off' => 'Вимкнути нові можливості',
-	'prefswitch-survey-submit-global-off' => 'Вимкнути нові можливості на всіх вікі',
 	'prefswitch-survey-cancel-off' => 'Якщо ви бажаєте продовжити користуватися новими можливостями, ви можете повернутися до $1.',
 	'prefswitch-survey-submit-feedback' => 'Надіслати відгук',
 	'prefswitch-survey-cancel-feedback' => 'Якщо ви бажаєте надіслати відгук, ви можете повернутися до $1.',
@@ -6492,6 +6528,7 @@ $messages['uk'] = array(
 	'prefswitch-survey-question-dislike' => 'Що в нових можливостях вам не сподобалося?',
 	'prefswitch-survey-question-whyoff' => 'Чому ви відключаєте нові можливості?
 Виберіть усе, що підходить.',
+	'prefswitch-survey-question-globaloff' => 'Ви хочете ці можливості вимкнути глобально?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Нові можливості заскладні для користування.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Нові можливості не функціонуюють коректно.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Працює непередбачувано',
@@ -6503,6 +6540,7 @@ $messages['uk'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Інший веб-оглядач:',
 	'prefswitch-survey-question-os' => 'Яку операційну систему ви використовуєте?',
 	'prefswitch-survey-answer-os-other' => 'Інша операційна система:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Так, вимкнути ці властивості глобально, на всіх вікі.',
 	'prefswitch-survey-question-res' => 'Яка роздільна здатність вашого екрана?',
 	'prefswitch-title-on' => 'Нові можливості',
 	'prefswitch-title-switched-on' => 'Користуйтесь!',

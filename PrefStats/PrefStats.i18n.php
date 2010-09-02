@@ -166,6 +166,37 @@ $messages['arz'] = array(
 	'prefstats-legend-in' => 'مشترك',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'prefstats' => 'Көйләүҙәр статистикаһы',
+	'prefstats-desc' => 'Нисә ҡатнашыусы үҙендә теге йәки был мөмкинлектәрҙе көйләүҙәре тураһында статистиканы күҙәтеү',
+	'prefstats-title' => 'Көйләүҙәр статистикаһы',
+	'prefstats-list-intro' => 'Хәҙерге ваҡытта түбәндәге көйләүҙәр күҙәтелә.
+Статистиканы ҡарау өсөн береһен һайлағыҙ.',
+	'prefstats-noprefs' => 'Хәҙерге ваҡытта бер көйләү ҙә күҙәтелмәй.
+Статистиканы күҙәтеү өсөн $wgPrefStatsTrackPrefs билдәләгеҙ.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|ҡатнашыусы|ҡатнашыусы}} мәғлүмәт йыйыу мәленән был көйләүҙе һайлаған
+** $2 {{PLURAL:$2|ҡатнашыусы|ҡатнашыусы}} был көйләүҙе һайланған килеш ҡалдырған
+** $3 {{PLURAL:$3|ҡатнашыусы|ҡатнашыусы}} был көйләүҙе һундергән',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ҡатнашыусы|ҡатнашыусы}} мәғлүмәт йыйыу мәленән был көйләүҙе һайлаған
+** $2 {{PLURAL:$2|ҡатнашыусы|ҡатнашыусы}} был көйләүҙе һайланған килеш ҡалдырған
+** $3 {{PLURAL:$3|ҡатнашыусы|ҡатнашыусы}} был көйләүҙе һундергән
+* Барыһы, $4 {{PLURAL:$4|ҡатнашыусыла|ҡатнашыусыла}} был көйләү һайланған',
+	'prefstats-xaxis' => 'Дауамы (сәғәттәрҙә)',
+	'prefstats-factors' => '$1 эсендә ҡарау',
+	'prefstats-factor-hour' => 'сәғәт',
+	'prefstats-factor-sixhours' => 'алты сәғәт',
+	'prefstats-factor-day' => 'көн',
+	'prefstats-factor-week' => 'аҙна',
+	'prefstats-factor-twoweeks' => 'ике аҙна',
+	'prefstats-factor-fourweeks' => 'дүрт аҙна',
+	'prefstats-factor-default' => 'ғәҙәттәге дәүмәлгә ҡайтыу',
+	'prefstats-legend-out' => 'Һүндергәндәр',
+	'prefstats-legend-in' => 'Һайлағандар',
+);
+
 /** Belarusian (Беларуская)
  * @author Yury Tarasievich
  */

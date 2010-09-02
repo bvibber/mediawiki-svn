@@ -1429,7 +1429,7 @@ $messages['mr'] = array(
 	'ct-total-header' => 'एकुण टिचक्या',
 	'ct-start-date' => 'सुरवात दिनांक (YYYYMMDD)',
 	'ct-end-date' => 'अंतीम दिनांक (YYYYMMDD)',
-	'ct-increment-by' => 'प्रत्येक विदा निर्देशक केवढ्या दिवसांचे प्रतिनिधीत्व करतो',
+	'ct-increment-by' => 'प्रत्येक विदा निर्देशक किती दिवसांचे प्रतिनिधीत्व करतो',
 	'ct-change-graph' => 'आलेख बदला',
 	'ct-beginner' => 'नवशिका',
 	'ct-intermediate' => 'मध्यम',
@@ -1770,6 +1770,34 @@ $messages['pt-br'] = array(
 	'ct-user-span' => 'Contribuições dos usuários no período de tempo',
 	'ct-and' => 'e',
 	'ct-update-table' => 'Atualizar tabela',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'clicktracking' => "Llamk'apunalla ruraykachanap ñit'ipasqakuna qatipaynin",
+	'clicktracking-desc' => "Ñit'ipasqakuna qatipay mana p'anqata musuqchaq tukusqakunata qatipanapaq",
+	'ct-title' => "Ruraqpa tawqachasqa ñit'ipasqankuna",
+	'ct-event-name' => 'Tukusqap sutin',
+	'ct-expert-header' => '"Kamayuqpa" ñit\'ipasqankuna',
+	'ct-intermediate-header' => '"Ñawparikusqap" ñit\'ipasqankuna',
+	'ct-beginner-header' => '"Qallariqpa" ñit\'ipasqankuna',
+	'ct-total-header' => "Tukuy ñit'ipasqankuna",
+	'ct-start-date' => "Qallariy p'unchaw (WWWWKKPP)",
+	'ct-end-date' => "Puchukay p'unchaw (WWWWKKPP)",
+	'ct-increment-by' => "Hayk'a p'unchawta llapa t'uksi (iñu) rikuchikun",
+	'ct-change-graph' => "Wakinchasqamanta rikch'a",
+	'ct-beginner' => 'Qallariq',
+	'ct-intermediate' => 'Ñawparikusqa',
+	'ct-expert' => 'Kamayuq',
+	'ct-date-range' => "Kaymanta chaykama p'unchawkuna",
+	'ct-editing' => "Kunan llamk'apuchkaspa:",
+	'ct-anon-users' => 'Sutinnaq ruraqkuna',
+	'ct-user-contribs' => "Ruraqpa tukuy llamk'apusqankuna",
+	'ct-user-span' => "Ruraqpa llamk'apusqankuna wiñaykawsaypachapi",
+	'ct-and' => '+',
+	'ct-update-table' => 'Wachuchasqata musuqchay',
 );
 
 /** Romanian (Română)

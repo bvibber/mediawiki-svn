@@ -454,6 +454,8 @@ $messages['arz'] = array(
  * @author Assele
  */
 $messages['ba'] = array(
+	'optin' => 'Юзабилити Инициативаһында ҡатнашыу',
+	'optin-desc' => 'Ҡатнашыусыларға Бета-версияны — Юзабилити Инициативаһы сиктәрендә эшләнгән аҙаҡҡы яҡшыртыуҙы һынап ҡарарға мөмкинлек бирә.',
 	'optin-title-optedout' => 'Бета-версияны һынау',
 	'optin-title-optedin' => 'Бета-версиянан сығыу',
 	'optin-title-justoptedin' => 'Бета-версияға рәхим итегеҙ',
@@ -4473,7 +4475,7 @@ $messages['mr'] = array(
 	'optin-success-feedback' => 'आपल्या प्रतीक्रियेबद्दल आभार!',
 	'optin-accept-short' => 'चला करून पाहूया !',
 	'optin-deny-short' => 'नको धन्यवाद',
-	'optin-deny-long' => 'मागच्या पानाकडे वापस जा',
+	'optin-deny-long' => 'मागील पानाकडे परत जा',
 	'optin-submit-feedback' => 'प्रतिक्रिया द्या',
 	'optin-survey-yes' => 'होय',
 	'optin-survey-no' => 'नाही',
