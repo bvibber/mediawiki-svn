@@ -595,16 +595,17 @@ class ResourceLoaderStartupModule extends ResourceLoaderModule {
 	private $modifiedTime = null;
 	
 	public function getScript( $lang, $skin, $debug ) {
-		return file_get_contents( 'resources/startup.js' );
+		global $IP;
+		return file_get_contents( "$IP/resources/startup.js" );
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
+		global $IP;
 		if ( !is_null( $this->modifiedTime ) ) {
 			return $this->modifiedTime;
 		}
-		
 		// HACK getHighestModifiedTime() calls this function, so protect against infinite recursion
-		$this->modifiedTime = 1;
+		$this->modifiedTime = filemtime( "$IP/resources/startup.js" );
 		$this->modifiedTime = ResourceLoader::getHighestModifiedTime( $lang, $skin, $debug );
 		return $this->modifiedTime;
 	}
