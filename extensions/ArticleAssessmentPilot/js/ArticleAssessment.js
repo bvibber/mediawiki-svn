@@ -175,7 +175,7 @@
 					$( this )
 						.after( $( '<span class="rating-field-hint" />' )
 							.attr( 'original-title', $( this ).attr( 'original-title' ) )
-							.tipsy( { gravity : 'se', opacity: '0.9',	 } ) );
+							.tipsy( { gravity : 'se', opacity: '0.9' } ) );
 				} );
 				// bind submit event to the form
 				$( '#article-assessment' )

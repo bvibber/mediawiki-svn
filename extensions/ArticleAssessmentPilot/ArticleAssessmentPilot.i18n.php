@@ -39,6 +39,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Sam Reed
+ * @author Brandon Harris
  */
 $messages['qqq'] = array(
 	'articleassessment' => 'The title of the feature. It is about reader feedback.',
