@@ -305,8 +305,12 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'randomincategory' => 'Pâge a l’hasârd dens la catègorie',
+	'randomincategory-toolbox' => 'Pâge a l’hasârd',
+	'randomincategory-nocategory' => 'La catègorie « $1 » ègziste pas ou ben est voueda',
 	'randomincategory-label' => 'Catègorie :',
 	'randomincategory-submit' => 'Lanciér',
 );

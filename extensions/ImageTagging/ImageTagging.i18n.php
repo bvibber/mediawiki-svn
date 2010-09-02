@@ -1574,10 +1574,38 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'imagetagging-article' => 'Artykuł:',
+	'taggedimages' => 'Oznaczone grafiki',
+	'imagetagging-desc' => 'Pozwala użytkownikowi wybrać fragment grafiki i skojarzyć stronę z tym fragmentem',
+	'imagetagging-addimagetag' => 'Oznacz coś na zdjęciu',
+	'imagetagging-article' => 'Strona',
+	'imagetagging-articletotag' => 'Strona dla znacznika',
+	'imagetagging-canteditothermessage' => 'Nie możesz edytować tej strony, ponieważ nie masz do tego uprawnień lub strona jest zablokowana z innych powodów.',
 	'imagetagging-imghistory' => 'Historia',
 	'imagetagging-images' => 'grafiki',
+	'imagetagging-inthisimage' => 'Na tej grafice: $1',
+	'imagetagging-logentry' => '$2 usunął znacznik ze strony [[$1]]',
+	'imagetagging-log-tagged' => '$4 dodał do grafiki [[$1|$2]] znacznik z linkiem do strony [[$3]]',
+	'imagetagging-new' => '<sup><span style="color:red">Nowe!</span></sup>',
+	'imagetagging-removetag' => 'usuń znacznik',
+	'imagetagging-done-button' => 'Koniec dodawania znaczników',
+	'imagetagging-tag-button' => 'Znacznik',
 	'imagetagging-tagcancel-button' => 'Anuluj',
+	'imagetagging-tagging-instructions' => 'Kliknij na człowieka lub przedmiot na grafice, aby je oznaczyć.',
+	'imagetagging-addingtag' => 'Dodawanie znacznika...',
+	'imagetagging-removingtag' => 'Usuwanie znacznika...',
+	'imagetagging-addtagsuccess' => 'Znacznik został dodany.',
+	'imagetagging-removetagsuccess' => 'Znacznik został usunięty.',
+	'imagetagging-canteditneedloginmessage' => 'Nie możesz edytować tej strony. 
+Możliwe, że musisz się zalogować, aby oznaczać zdjęcia. 
+Czy chcesz zalogować się teraz?',
+	'imagetagging-oneactionatatimemessage' => 'Jednocześnie można dodawać tyko jeden znacznik.
+Poczekaj na zakończenie obecnych działań.',
+	'imagetagging-oneuniquetagmessage' => 'Ta grafika ma już oznaczenie o tej nazwie.',
+	'imagetagging-imagetag-seemoreimages' => 'Zobacz jedną z $2 grafik z „$1”',
+	'imagetagging-taggedimages-title' => 'Grafiki z  „$1”',
+	'imagetagging-taggedimages-displaying' => 'Wyświetlanie $1 – $2 z $3 grafiki z „$4”',
+	'tag-logpagename' => 'Rejestr dodawania znaczników',
+	'tag-logpagetext' => 'Rejestr dodawania i usuwania znaczników do grafik.',
 );
 
 /** Piedmontese (Piemontèis)

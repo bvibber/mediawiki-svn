@@ -122,6 +122,13 @@ $messages['gsw'] = array(
 	'apisvgproxy-desc' => 'SVG-Dateie us ere (villicht extärne) Dateiesammlig in di lokal Domain yybinde',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'apisvgproxy-desc' => 'Posreduje SVG datoteke s (moguće udaljenog) poslužitelja na lokalnu domenu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

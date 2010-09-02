@@ -940,10 +940,18 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'indexfunc-desc' => 'Funkcja parsera automatycznie tworząca przekierowania i strony ujednoznaczniające',
 	'indexfunc-badtitle' => 'Niepoprawny tytuł „$1”',
 	'indexfunc-index-exists' => 'Strona „$1” już istnieje',
+	'index' => 'Indeks',
+	'index-legend' => 'Szukaj w indeksie',
 	'index-search' => 'Szukaj',
 	'index-submit' => 'Zapisz',
+	'index-disambig-start' => "'''$1''' może odnosić się do wielu stron:",
+	'index-emptylist' => 'Nie ma strony związanej z „$1”',
+	'index-expand-detail' => 'Pokaż strony indeksowane tym tytułem',
+	'index-hide-detail' => 'Ukryj listę stron',
+	'index-no-results' => 'Brak wyników wyszukiwania',
 );
 
 /** Piedmontese (Piemontèis)

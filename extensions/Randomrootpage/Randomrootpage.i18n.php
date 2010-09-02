@@ -141,6 +141,13 @@ $messages['fr'] = array(
 	'randomrootpage-desc' => '[[Special:Randomrootpage|Page spéciale]] qui va chercher une page racine au hasard',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'randomrootpage' => 'Pâge racena a l’hasârd',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

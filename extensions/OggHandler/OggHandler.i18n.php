@@ -2005,6 +2005,8 @@ QuickTime kann Ogg-Fichiere net ouni dës Komponent spillen.
 	'ogg-dismiss' => 'Zoumaachen',
 	'ogg-download' => 'Fichier eroflueden',
 	'ogg-desc-link' => 'Iwwer dëse Fichier',
+	'ogg-oggThumb-version' => 'OggHandler brauch oggThumb Versioun $1 oder méi eng nei.',
+	'ogg-oggThumb-failed' => 'oggThumb konnt kee Miniaturbild maachen.',
 );
 
 /** Lingua Franca Nova (Lingua Franca Nova)

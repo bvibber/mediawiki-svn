@@ -2046,6 +2046,43 @@ $messages['tr'] = array(
 	'right-todosubmit' => 'Kullanıcının yapılacaklar listesi haklarını kısıtla',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'todo' => 'Список завдань',
+	'todo-desc' => 'Експерементальне персональний додаток [[Special:Todo|списку завдань]].',
+	'todo-tab' => 'завдання',
+	'todo-new-queue' => 'нові',
+	'todo-mail-subject' => 'Виконані пункти в списку завдань $1',
+	'todo-mail-body' => 'Ви запросили підтвердження по електронній пошті про завершення завдання, переданого до  $1 в онлайн списку завдань.
+
+Завдання: $2 
+Відправлено: $3 
+
+Це завдання було відзначене як завершене, з наступним коментарем: 
+$4',
+	'todo-invalid-item' => 'Відсутнє або недійсне завдання',
+	'todo-update-else-item' => 'Спроба оновити чужі завдання',
+	'todo-unrecognize-type' => 'Невідомий тип',
+	'todo-user-invalide' => 'Завданню призначений відсутній або неуповноважений користувач',
+	'todo-item-list' => 'Ваші завдання',
+	'todo-no-item' => 'Немає завдань',
+	'todo-invalid-owner' => 'Невідомий власник завдання',
+	'todo-add-queue' => 'Додати чергу...',
+	'todo-move-queue' => 'Перемістити до черги ...',
+	'todo-list-for' => 'Список завдань для $1',
+	'todo-list-change' => 'Змінити',
+	'todo-list-cancel' => 'Скасувати',
+	'todo-new-item' => 'Нове завдання',
+	'todo-issue-summary' => 'Підсумок роботи:',
+	'todo-form-details' => 'Деталі:',
+	'todo-form-email' => 'Щоб отримати сповіщення по електронній пошті, коли це завдання закрите, вкажіть свою адресу:',
+	'todo-form-submit' => 'Відправити запит',
+	'right-todo' => 'Присутній список завдань',
+	'right-todosubmit' => 'Заборона списку завдань користувача',
+);
+
 /** Urdu (اردو) */
 $messages['ur'] = array(
 	'todo-list-cancel' => 'منسوخ',

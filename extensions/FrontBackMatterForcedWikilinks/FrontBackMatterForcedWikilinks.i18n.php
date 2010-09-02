@@ -185,6 +185,16 @@ $messages['no'] = array(
 	'frontbackforced-forced' => '_(tvungne_wikilenker)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'frontbackforced-desc' => 'Dodaje nagłówek i stopkę do stron oraz wprowadza wymuszone wikilinki.',
+	'frontbackforced-front' => '_(nagłówek)',
+	'frontbackforced-back' => '_(stopka)',
+	'frontbackforced-forced' => '_(wymuś_wikilinki)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

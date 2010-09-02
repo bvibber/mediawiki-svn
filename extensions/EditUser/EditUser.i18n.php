@@ -109,7 +109,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'edituser-username' => 'ܫܡܐ',
+	'edituser-username' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
 	'edituser-dosearch' => 'ܒܨܝ',
 );
 

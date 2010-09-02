@@ -32,6 +32,14 @@ $messages['ar'] = array(
 	'dontswitchmeover-pref' => 'لا تسمح لواجهتي أن تتغيّر حين تتغيرُ الواجهة المبدئية',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'dontswitchmeover-desc' => 'Ҡулланыусыларға көйләүҙәр битендә ғәҙәттәге күренеш үҙгәргәндән һуң һайланған күренеште һаҡларға теләүҙәрен билдәләргә мөмкинлек бирә.',
+	'dontswitchmeover-pref' => 'Ғәҙәттәге күренеш үҙгәргәндән һуң мин һайлаған күренеште үҙгәртмәҫкә',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist

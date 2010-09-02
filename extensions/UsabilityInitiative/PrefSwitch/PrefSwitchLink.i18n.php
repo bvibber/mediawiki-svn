@@ -68,6 +68,18 @@ $messages['ar'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'جرّب المزايا الجديدة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'prefswitch-link-anon' => 'Яңы мөмкинлектәр',
+	'tooltip-pt-prefswitch-link-anon' => 'Яңы мөмкинлектәр тураһында',
+	'prefswitch-link-on' => 'Элекке торошҡа ҡайтарырға',
+	'tooltip-pt-prefswitch-link-on' => 'Яңы мөмкинлектәрҙе һүндерергә',
+	'prefswitch-link-off' => 'Яңы мөмкинлектәр',
+	'tooltip-pt-prefswitch-link-off' => 'Яңы мөмкинлектәрҙе һынап ҡарағыҙ',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */

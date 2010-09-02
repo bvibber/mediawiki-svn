@@ -988,6 +988,13 @@ $messages['ru'] = array(
 	'metadata_help' => 'Метаданные:',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'metadata_help' => 'Метадата:',
+);
+
 /** Sanskrit (संस्कृत)
  * @author Hemant wikikosh1
  */

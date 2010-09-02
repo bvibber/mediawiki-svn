@@ -3782,12 +3782,18 @@ $messages['cu'] = array(
 	'wikieditor-toolbar-tool-ilink-example' => 'съвѧ́ꙁи и́мѧ',
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com съвѧ́ꙁи и́мѧ',
 	'wikieditor-toolbar-tool-link' => 'съвѧ́ꙁь',
+	'wikieditor-toolbar-tool-link-title' => 'съвѧ́ꙁи приложє́ниѥ',
+	'wikieditor-toolbar-tool-link-insert' => 'съвѧ́ꙁи приложє́ниѥ',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'страни́цѧ нѣ́стъ',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'вънѣщьнꙗ съвѧꙁь',
 	'wikieditor-toolbar-tool-file-example' => 'Прикладъ.jpg',
 	'wikieditor-toolbar-tool-signature' => 'аѵто́графъ и нꙑ́нѣшьна врѣ́мѧ и дьнь',
 	'wikieditor-toolbar-tool-redirect' => 'прѣнаправлѥ́ниѥ',
+	'wikieditor-toolbar-tool-big' => 'вєликъ',
+	'wikieditor-toolbar-tool-small' => 'малъ',
+	'wikieditor-toolbar-tool-newline' => 'новъ рѧдъ',
 	'wikieditor-toolbar-tool-table' => 'та́влїѥ',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'рѧдꙑ',
 	'wikieditor-toolbar-tool-table-example' => 'прикладъ',
 	'wikieditor-toolbar-section-characters' => 'допльнитєл҄ьнꙑ сѷмволи',
 	'wikieditor-toolbar-characters-page-latin' => 'лати́ньска а́ꙁъбоукꙑ',
@@ -4221,6 +4227,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Church of emacs
  * @author Imre
  * @author Kghbln
  * @author Lukas9950
@@ -4330,8 +4337,8 @@ Möchtest du daraus einen internen Link machen?',
 	'wikieditor-toolbar-tool-table-title' => 'Tabelle einfügen',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Zeilen',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Spalten',
-	'wikieditor-toolbar-tool-table-dimensions-header' => 'Kopfzeile einschließen',
-	'wikieditor-toolbar-tool-table-wikitable' => 'Style mit Rahmen',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'mit Kopfzeile',
+	'wikieditor-toolbar-tool-table-wikitable' => 'mit Rahmen',
 	'wikieditor-toolbar-tool-table-sortable' => 'Tabelle sortierbar machen',
 	'wikieditor-toolbar-tool-table-example' => 'Beispiel',
 	'wikieditor-toolbar-tool-table-preview' => 'Vorschau',
@@ -11830,8 +11837,69 @@ Apo awak ingin mambueknyo jadi pranala dalam?',
 	'wikieditor-toolbar-tool-signature' => 'Tandotangan dan tandomaso',
 	'wikieditor-toolbar-section-advanced' => 'Lanjutan',
 	'wikieditor-toolbar-tool-heading' => 'Judul',
+	'wikieditor-toolbar-tool-heading-1' => 'Tingkek 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Tingkek 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Tingkek 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Tingkek 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Tingkek 5',
+	'wikieditor-toolbar-tool-heading-example' => 'Teks tajuk',
+	'wikieditor-toolbar-group-format' => 'Format',
+	'wikieditor-toolbar-tool-ulist' => 'Senarai babantuak peluru',
+	'wikieditor-toolbar-tool-ulist-example' => 'Hal senarai babantuak peluru',
+	'wikieditor-toolbar-tool-olist' => 'Senarai babantuak nomor',
+	'wikieditor-toolbar-tool-olist-example' => 'Hal senarai babantuak nomor',
+	'wikieditor-toolbar-tool-indent' => 'Lekukan',
+	'wikieditor-toolbar-tool-indent-example' => 'Barih lekuk',
+	'wikieditor-toolbar-tool-nowiki' => 'Indak ado pemformatan wiki',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Masuakkan disiko teks yang indak diformat',
+	'wikieditor-toolbar-tool-redirect' => 'Pengalihan',
+	'wikieditor-toolbar-tool-redirect-example' => 'Namo laman sasaran',
+	'wikieditor-toolbar-tool-big' => 'Gadang',
+	'wikieditor-toolbar-tool-big-example' => 'Teks gadang',
+	'wikieditor-toolbar-tool-small' => 'Ketek',
+	'wikieditor-toolbar-tool-small-example' => 'Teks ketek',
+	'wikieditor-toolbar-tool-superscript' => 'Ditulis di atas',
+	'wikieditor-toolbar-tool-superscript-example' => 'Teks ditulis di atas',
+	'wikieditor-toolbar-tool-subscript' => 'Ditulis di bawah',
+	'wikieditor-toolbar-tool-subscript-example' => 'Teks ditulis di bawah',
+	'wikieditor-toolbar-group-insert' => 'Masuakkan',
+	'wikieditor-toolbar-tool-gallery' => 'Galeri gambar',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Contoh.jpg|Judul1
 {{ns:file}}:Contoh.jpg|Judul2',
+	'wikieditor-toolbar-tool-newline' => 'Barih baru',
+	'wikieditor-toolbar-tool-table' => 'Tabel',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! kapalo judul 1
+! kapalo judul 2
+! kapalo judul 3
+|-
+| barih 1, sel 1
+| barih 1, sel 2
+| barih 1, sel 3
+|-
+| barih 2, sel 1
+| barih 2, sel 2
+| barih 2, sel 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Teks sel',
+	'wikieditor-toolbar-tool-table-example-header' => 'Teks tajuk',
+	'wikieditor-toolbar-tool-table-title' => 'Masuakkan tabel',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Barih',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolom',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Tambahkan kapalo barih',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Gaya pakai bingkai',
+	'wikieditor-toolbar-tool-table-sortable' => 'Buek tabel yang baurutan',
+	'wikieditor-toolbar-tool-table-example' => 'Contoh',
+	'wikieditor-toolbar-tool-table-preview' => 'Pratonton',
+	'wikieditor-toolbar-tool-table-insert' => 'Masuakkan',
+	'wikieditor-toolbar-tool-table-cancel' => 'Batalkan',
+	'wikieditor-toolbar-tool-table-toomany' => 'Disiko indak mungkin mambuek tabel dengan jumlah selnyo malebihi $1.',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Awak indak mamasuakkan jumlah sah dari barih atau kolom.',
+	'wikieditor-toolbar-tool-table-zero' => 'Awak indak boleh mamasuakkan tabel dengan jumlah kosong pado barih atau kolom',
+	'wikieditor-toolbar-tool-replace' => 'Cari dan ganti',
+	'wikieditor-toolbar-tool-replace-title' => 'Cari dan ganti',
+	'wikieditor-toolbar-tool-replace-search' => 'Cari:',
+	'wikieditor-toolbar-tool-replace-replace' => 'Ganti jo:',
+	'wikieditor-toolbar-tool-replace-case' => 'Keadaan cocok',
 );
 
 /** Macedonian (Македонски)
@@ -12294,11 +12362,11 @@ $messages['mr'] = array(
 	'wikieditor-toolbar-tool-file' => 'संलग्न संचिका',
 	'wikieditor-toolbar-tool-file-example' => 'उदाहरण.jpg',
 	'wikieditor-toolbar-tool-reference' => 'संदर्भ',
-	'wikieditor-toolbar-tool-reference-example' => 'तळटीप मजकुर येथे भरा',
+	'wikieditor-toolbar-tool-reference-example' => 'तळटीप मजकूर येथे भरा',
 	'wikieditor-toolbar-tool-reference-cancel' => 'रद्द करा',
 	'wikieditor-toolbar-tool-reference-title' => 'संदर्भ भरा',
 	'wikieditor-toolbar-tool-reference-insert' => 'समाविष्टकरा',
-	'wikieditor-toolbar-tool-reference-text' => 'संदर्भ मजकुर',
+	'wikieditor-toolbar-tool-reference-text' => 'संदर्भ मजकूर',
 	'wikieditor-toolbar-tool-signature' => 'सही आणि वेळठसा',
 	'wikieditor-toolbar-section-advanced' => 'प्रगत',
 	'wikieditor-toolbar-tool-heading' => 'मथळा',
@@ -18784,7 +18852,7 @@ $messages['tk'] = array(
 	'wikieditor-toolbar-tool-olist-example' => 'Belgili sanaw elementi',
 	'wikieditor-toolbar-tool-indent' => 'Boş ýer',
 	'wikieditor-toolbar-tool-indent-example' => 'Boş ýerli setir',
-	'wikieditor-toolbar-tool-nowiki' => 'Wiki formatirlemesi vok',
+	'wikieditor-toolbar-tool-nowiki' => 'Wiki formatirlemesi ýok',
 	'wikieditor-toolbar-tool-nowiki-example' => 'Formatirlenmedik teksti şu ýere salyň',
 	'wikieditor-toolbar-tool-redirect' => 'Gönükdirme',
 	'wikieditor-toolbar-tool-redirect-example' => 'Niýetlenilýän sahypa ady',

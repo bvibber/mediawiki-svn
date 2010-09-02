@@ -159,6 +159,14 @@ $messages['pt'] = array(
 	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'semanticformsinputs-desc' => 'Tipos de entrada adicionais para [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formulários Semânticos]',
+	'semanticformsinputs-wrongformat' => 'Formato incorreto.',
+);
+
 /** Russian (Русский)
  * @author Сrower
  */

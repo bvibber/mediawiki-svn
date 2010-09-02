@@ -70,6 +70,16 @@ $messages['arz'] = array(
 	'prefs-labs' => 'خصايص Labs',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'usabilityinitiative' => 'Юзабилити Инициативаһы',
+	'usabilityinitiative-desc' => 'Юзабилити Инициативаһы тарафынан эшләнгән, Википедияны ҡулланыуҙы еңелләштереүгә йүнәлтелгән  мөмкинлектәр',
+	'prefs-beta' => 'Бета версияһы мөмкинлектәре',
+	'prefs-labs' => 'Һынау өсөн мөмкинлектәр',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

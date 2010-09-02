@@ -1126,11 +1126,41 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'masseditregex' => 'Masowe edytowanie z użyciem wyrażeń regularnych',
+	'masseditregex-desc' => 'Pozwala użyć wyrażeń regularnych do [[Special:MassEditRegex|do wprowadzenia zmian na wielu stronach w jednej operacji]]',
+	'masseditregextext' => 'Wstaw jedno lub więcej wyrażenie regularne (jedno w linii) do wyszukania oraz jedno lub więcej wyrażeń, którym mają być zastąpione.
+Jeśli pierwsze wyrażenie zostanie odnalezione zostanie zastąpione pierwszym wyrażeniem itd.
+Zobacz [http://php.net/manual/pl/function.preg-replace.php opis funkcji preg_replace() napisanej w PHP] jeśli chcesz dowiedzieć się więcej na ten temat.',
+	'masseditregex-pagelisttxt' => 'Strony do edycji (nie dodawaj przedrostka przestrzeni nazw z dwukropkiem)',
 	'masseditregex-matchtxt' => 'Szukaj',
 	'masseditregex-replacetxt' => 'Zastąp przez',
+	'masseditregex-executebtn' => 'Wykonaj',
+	'masseditregex-err-nopages' => 'Musisz wskazać co najmniej jedną stronę do wykonania zmian.',
 	'masseditregex-before' => 'Przed',
 	'masseditregex-after' => 'Później',
+	'masseditregex-max-preview-diffs' => 'Podgląd został ograniczony do {{PLURAL:$1|jednego wystąpienia|pierwszych $1 wystąpień}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|zmiana|zmiany|zmian}}',
+	'masseditregex-page-not-exists' => '$1 nie istnieje',
+	'masseditregex-num-articles-changed' => 'zmieniono $1 {{PLURAL:$1|stronę|strony|stron}}',
+	'masseditregex-view-full-summary' => 'Pokaż pełny rejestr zmian',
+	'masseditregex-hint-intro' => 'Oto kilka wskazówek i przykładów wykonania typowych zadań:',
+	'masseditregex-hint-headmatch' => 'Pasuje',
 	'masseditregex-hint-headreplace' => 'Zastąp',
+	'masseditregex-hint-headeffect' => 'Efekt',
+	'masseditregex-hint-toappend' => 'Dołącz tekst na koniec strony – wygodne dla dodania stron do kategorii',
+	'masseditregex-hint-remove' => 'Usuń tekst ze wszystkich stron z listy',
+	'masseditregex-hint-removecat' => 'Usuń wszystkie kategorie ze strony (uwaga na konieczność escapowania nawiasów kwadratowych w kodzie wiki).
+Tekst wstawiany nie wymaga escapowania.',
+	'masseditregex-listtype-intro' => 'Jest to lista',
+	'masseditregex-listtype-pagenames' => 'Nazwy stron (edytuj te strony)',
+	'masseditregex-listtype-pagename-prefixes' => 'Prefiksy nazw stron (edytuj strony, których nazwy rozpoczynają się od tej frazy)',
+	'masseditregex-listtype-categories' => 'Nazwy kategorii (edytuj wszystkie strony, należące do którejś z tych kategorii; wybór przestrzeni nazw jest ignorowany)',
+	'masseditregex-listtype-backlinks' => 'Linkujące (edytuj strony, które zawierają linki do tej strony)',
+	'masseditregex-namespace-intro' => 'Wszystkie te strony, które są w przestrzeni nazw',
+	'masseditregex-exprnomatch' => 'Wyrażenie „$1” nie pasuje do żadnej strony.',
+	'masseditregex-badregex' => 'Nieprawidłowe wyrażenie regularne',
+	'masseditregex-editfailed' => 'Edycja nie powiodła się',
+	'masseditregex-tooltip-execute' => 'Zastosuj te zmiany do wszystkich stron',
 );
 
 /** Piedmontese (Piemontèis)

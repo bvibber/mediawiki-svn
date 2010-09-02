@@ -888,6 +888,44 @@ Pour enregistrer un sondage, soumettez-le en ne répondant à aucune question de
 	'qp_error_unique' => 'La question de type unique() a plus de propositions qu’il n’y a de réponses possibles définies : impossible de compléter',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'pollresults' => 'Rèsultats des sondâjos sur ceti seto',
+	'qp_desc' => 'Pèrmèt la crèacion de sondâjos.',
+	'qp_desc-sp' => '[[Special:PollResults|Pâge spèciâla]] por vêre los rèsultats des sondâjos',
+	'qp_result_NA' => 'Pas rèpondu',
+	'qp_result_error' => 'Èrror de sintaxa',
+	'qp_vote_button' => 'Votar',
+	'qp_vote_again_button' => 'Changiér voutron voto',
+	'qp_polls_list' => 'Listar tôs los sondâjos',
+	'qp_users_list' => 'Listar tôs los utilisators',
+	'qp_browse_to_poll' => 'Navegar tant qu’a $1',
+	'qp_browse_to_user' => 'Navegar tant qu’a $1',
+	'qp_votes_count' => '$1 voto{{PLURAL:$1||s}}',
+	'qp_source_link' => 'Sôrsa',
+	'qp_stats_link' => 'Statistiques',
+	'qp_users_link' => 'Utilisators',
+	'qp_voice_link' => 'Vouèx a l’utilisator',
+	'qp_voice_link_inv' => 'Vouèx a l’utilisator ?',
+	'qp_user_polls_link' => 'At participâ a $1 sondâjo{{PLURAL:$1||s}}',
+	'qp_user_missing_polls_link' => 'Gins de participacion',
+	'qp_not_participated_link' => 'At pas participâ',
+	'qp_order_by_username' => 'Triyér per nom d’utilisator',
+	'qp_order_by_polls_count' => 'Triyér per nombro de sondâjos',
+	'qp_results_line_qupl' => 'Pâge « $1 » Sondâjo « $2 » : $3',
+	'qp_results_line_qpl' => 'Pâge « $1 » Sondâjo « $2 » : $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Pâge « $2 » Sondâjo « $3 » ]',
+	'qp_export_to_xls' => 'Èxportar les statistiques u format XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|utilisator a|utilisators on}}t rèpondu a les quèstions',
+	'qp_func_no_such_poll' => 'Lo sondâjo ègziste pas ($1)',
+	'qp_error_unanswered_span' => 'Sot-catègorie sen rèponsa',
+	'qp_error_category_name_empty' => 'Lo nom de la catègorie est vouedo',
+	'qp_error_proposal_text_empty' => 'Lo tèxto de la proposicion est vouedo',
+	'qp_error_no_answer' => 'Proposicion sen rèponsa',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

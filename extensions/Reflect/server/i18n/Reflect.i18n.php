@@ -234,6 +234,13 @@ U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 heeft gereageerd op uw bondige samenvatting',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'reflect-desc' => 'Rozszerzenie o komentarze w wątkach',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -264,7 +271,7 @@ S\'it veule lese l\'arspòsta ant ël contest, vìsita <$4>.',
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'reflect-desc' => 'Extensão dos comentários por tópicos',
+	'reflect-desc' => 'Adiciona uma coluna às páginas de discussão por tópicos, na qual os utilizadores podem resumir as conversações existentes',
 	'reflect-bulleted' => 'Olá $1,
 	
 $2 resumiu uma afirmação sua no tópico "$3". 
@@ -272,6 +279,32 @@ $2 resumiu uma afirmação sua no tópico "$3".
 O resumo: "$5".
 
 Para verificar se o resumo de $2 está correcto, visite <$4>. 
+
+Se a sua afirmação foi mal entendida, poderá clarificá-la.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] A sua afirmação foi resumida por $2',
+	'reflect-responded' => 'Olá $1, 
+	
+o resumo que fez de uma afirmação de $2 tem uma resposta.
+
+O seu resumo: "$6". 
+A resposta: "$5".
+
+Para ler a resposta em contexto, visite <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 respondeu ao seu resumo',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'reflect-desc' => 'Adiciona uma coluna às páginas de discussão por tópicos, na qual os usuários podem resumir as conversações existentes',
+	'reflect-bulleted' => 'Olá $1,
+	
+$2 resumiu uma afirmação sua no tópico "$3". 
+
+O resumo: "$5".
+
+Para verificar se o resumo de $2 está correto, visite <$4>. 
 
 Se a sua afirmação foi mal entendida, poderá clarificá-la.',
 	'reflect-bulleted-subject' => '[{{SITENAME}}] A sua afirmação foi resumida por $2',

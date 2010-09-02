@@ -978,6 +978,7 @@ $messages['frp'] = array(
 	'readerfeedback-tier-poor' => 'Crouye',
 	'tooltip-ca-ratinghist' => 'Èstimacions de ceta pâge per los liésors',
 	'specialpages-group-feedback' => 'Avis u liésor',
+	'readerfeedback-tt-review' => 'Sometre la rèvision',
 );
 
 /** Galician (Galego)

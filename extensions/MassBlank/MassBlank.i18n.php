@@ -368,6 +368,24 @@ $messages['pdc'] = array(
 	'massblank-blankcomment' => 'Grund:',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'massblank' => 'Masowe kasowanie treści stron',
+	'massblank-desc' => 'Pozawala administratorom na [[Special:MassBlank|masowe kasowanie]] treści stron',
+	'massblank-nopages' => 'Brak nowych stron [[Special:Contributions/$1|$1]] w ostatnich zmianach.',
+	'massblank-list' => 'Następujące strony zostały ostatnio utworzone przez [[Special:Contributions/$1|$1]];
+wpisz komentarz i wciśnij przycisk by usunąć ich treść.',
+	'massblank-defaultreason' => 'Masowe usuwanie treści stron dodanych przez $1',
+	'massblank-tools' => 'Narzędzia pozwala na masowe usuwanie treści stron ostatnio dodanych przez zarejestrowanego lub anonimowego użytkownika.
+Wpisz nazwę użytkownika lub adres IP by otrzymać listę stron, których treść ma zostać usunięta.',
+	'massblank-submit-user' => 'Dalej',
+	'massblank-submit-blank' => 'Usuń treść wybranych stron',
+	'massblank-blankcomment' => 'Powód',
+	'right-massblank' => 'Masowe usuwanie treści stron',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

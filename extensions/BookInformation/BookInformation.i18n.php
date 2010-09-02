@@ -1404,12 +1404,17 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'bookinfo-header' => 'Liwrumanta willakuna',
+	'bookinformation-desc' => "[[Special:Booksources|Liwru pukyu sapaq p'anqata]] llikapi sirwiymanta willaykunawan mast'arin",
 	'bookinfo-result-title' => 'Liwrup sutin:',
 	'bookinfo-result-author' => 'Qillqaq:',
 	'bookinfo-result-publisher' => 'Uyaychaq:',
 	'bookinfo-result-year' => 'Uyaychay wata:',
 	'bookinfo-error-invalidisbn' => 'ISBN huchhaqa manam allinchu.',
 	'bookinfo-error-nosuchitem' => 'Chay sutiyuq liwruqa manam kanchu icha manam tarisqachu.',
+	'bookinfo-error-nodriver' => 'Manam atinichu allin Liwru Willaykuna Pusanata churariyta.',
+	'bookinfo-error-noresponse' => "Manam kutichinchu icha mit'a yallisqaña.",
+	'bookinfo-purchase' => 'Kay liwruta $1-manta rantiy',
+	'bookinfo-provider' => 'Willakunata kamaq: $1',
 );
 
 /** Romanian (Română)

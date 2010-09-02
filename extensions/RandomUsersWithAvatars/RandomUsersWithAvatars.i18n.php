@@ -140,6 +140,13 @@ $messages['fr'] = array(
 	'random-users-avatars-desc' => 'Ajoute la balise <code>&lt;randomuserswithavatars&gt;</code> pour afficher les avatars d’utilisateurs choisis aléatoirement',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'random-users-avatars-title' => 'Féte cognessence avouéc la comunôtât',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

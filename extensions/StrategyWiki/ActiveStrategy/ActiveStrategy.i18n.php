@@ -459,10 +459,13 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Alex Khimich
  * @author Тест
  */
 $messages['uk'] = array(
 	'activestrategy' => 'Активна стратегія',
+	'active-strategy-desc' => 'Показати кількість правок на сторінках стратегічного планування',
+	'active-strategy-intro' => 'Кількість правок цільових сторінок за останні {{PLURAL:$1|$1 день|$1 дні|$1 днів}}.',
 	'nedits' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
 );
 

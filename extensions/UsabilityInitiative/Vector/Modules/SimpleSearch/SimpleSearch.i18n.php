@@ -44,6 +44,13 @@ $messages['aln'] = array(
 	'vector-simplesearch-containing' => 'përmban ...',
 );
 
+/** Amharic (አማርኛ)
+ * @author Codex Sinaiticus
+ */
+$messages['am'] = array(
+	'vector-simplesearch-search' => 'ፈልግ',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -67,6 +74,14 @@ $messages['ar'] = array(
 $messages['arz'] = array(
 	'vector-simplesearch-search' => 'تدوير',
 	'vector-simplesearch-containing' => 'جوّاه...',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'vector-simplesearch-search' => 'Эҙләү',
+	'vector-simplesearch-containing' => 'эстәлегендә...',
 );
 
 /** Belarusian (Беларуская)

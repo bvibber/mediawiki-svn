@@ -6390,6 +6390,16 @@ $messages['vo'] = array(
 	'viewapc-version-failed' => 'No eplöpos ad dagetön fomamanünis.',
 );
 
+/** Walloon (Walon)
+ * @author Lucyin
+ */
+$messages['wa'] = array(
+	'viewapc-display-deletion_time' => 'Disfacé',
+	'viewapc-ls-header-deleted' => 'Disfacé',
+	'viewapc-ls-scope-deleted' => 'Disfacé',
+	'viewapc-ls-sort-deleted' => 'Disfacé',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

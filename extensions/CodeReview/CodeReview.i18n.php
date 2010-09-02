@@ -792,6 +792,7 @@ $messages['be-tarask'] = array(
 	'code-rev-diff-too-large' => 'Розьніца занадта вялікая для паказу.',
 	'code-rev-purge-link' => 'ачысьціць кэш',
 	'code-rev-total' => 'Агульная колькасьць вынікаў: $1',
+	'code-rev-not-found' => "Вэрсія '''$1''' не існуе!",
 	'code-status-new' => 'новая',
 	'code-status-fixme' => 'выправіць',
 	'code-status-reverted' => 'адмененая',

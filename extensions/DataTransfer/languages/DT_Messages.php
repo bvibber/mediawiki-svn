@@ -1538,6 +1538,15 @@ $messages['pl'] = array(
 	'dt_xml_title' => 'Tytuł',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Dowolny tekst',
+	'importxml' => 'Import XML',
+	'dt_import_selectfile' => 'Wybierz plik $1 do zaimportowania',
+	'dt_import_encodingtype' => 'Typ kodowania',
+	'dt_import_summarydesc' => 'Podsumowanie importu',
+	'dt_import_editsummary' => 'Import $1',
+	'dt_import_importing' => 'Importowanie...',
+	'dt_import_success' => '$1 {{PLURAL:$1|strona zostanie utworzona|strony zostaną utworzone|stron zostanie utworzonych}} z pliku $2.',
+	'importcsv' => 'Import CSV',
+	'dt_importcsv_badheader' => 'Błąd – w kolumnie $1 nagłówka jest „$2”, a powinno być: „$3”, „$4” lub „nazwa_szablonu[nazwa_pola]”',
 	'right-datatransferimport' => 'Importowanie danych',
 );
 
