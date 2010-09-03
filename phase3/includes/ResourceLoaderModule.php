@@ -16,6 +16,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  * 
  * @author Trevor Parscal
+ * @author Roan Kattouw
  */
 
 /**
