@@ -186,7 +186,7 @@ class PagedTiffImage {
 		return $this->_meta;
 	}
 
-	private function addPageEntry( $entry, &$metadata, &$prevPage ) {
+	private function addPageEntry( &$entry, &$metadata, &$prevPage ) {
 		if ( !isset( $entry['page'] ) ) {
 			$entry['page'] = $prevPage +1;
 		} else {
@@ -266,7 +266,6 @@ class PagedTiffImage {
 
 				if ( !$bypass ) {
 					$data['warnings'][] = $msg;
-					break;
 				}
 			} else if ( preg_match('/^\s*(.*?)\s*:\s*(.*?)\s*$/', $row, $m) ) {
 				$key = $m[1];
