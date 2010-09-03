@@ -101,7 +101,7 @@ function doPageSpecificRewrite() {
 	window.ranMwRewrites = 'done';
 	
 	// Add media wizard ( only if not on a sequence page
-	if ( ( wgAction == 'edit' || wgAction == 'submit' ) {
+	if ( wgAction == 'edit' || wgAction == 'submit' ) {
 		if( wgPageName.indexOf( "Sequence:" ) != 0 ){
 			loadMwEmbed( [ 
 				'mw.RemoteSearchDriver',
