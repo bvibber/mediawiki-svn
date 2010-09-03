@@ -1639,7 +1639,7 @@ $wgResourceLoaderClientMaxage = 30*24*60*60; // 30 days
  * the server side. This means Squid/Varnish but also any other public proxy
  * cache between the client and MediaWiki.
  */
-$wgResourceLoaderServerMaxage = 60*60; // 1 hour
+$wgResourceLoaderServerMaxage = 30*24*60*60; // 30 days
 
 /** @} */ # end of cache settings
 
