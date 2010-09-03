@@ -670,11 +670,11 @@ mw.SmilLayout.prototype = {
 			};
 		}
 		// Fit the image per the provided targetWidth closure
-		/* mw.log( 'getDominateAspectTransform:: naspect:' + 
+		/*mw.log( 'getDominateAspectTransform:: naspect:' + 
 				( natrualSize.width / natrualSize.height ) + 
 				' taspect: ' + targetSize.width + '/' + targetSize.height + ' = ' + ( targetSize.width / targetSize.height )
-			); 
-		*/
+			);*/ 
+		
 		var targetAspect = ( parseFloat( targetSize.width ) / parseFloat( targetSize.height ) )
 		var natrualAspect = ( natrualSize.width / natrualSize.height );
 		
@@ -682,20 +682,20 @@ mw.SmilLayout.prototype = {
 		// xxx height domination here may be confused refactor this check
 		if( natrualAspect >= targetAspect ){			
 			transformCss.width = parseFloat( transformPercent ) + '%';
-			transformCss.height = ( parseFloat( transformPercent ) * ( 
+			/*transformCss.height = ( parseFloat( transformPercent ) * ( 
 					( natrualSize.height  /  natrualSize.width ) /
 						( targetSize.height / targetSize.width ) 
 					) 
-				) + '%';
+				) + '%';*/
 		}
 		
 		// Fit vertically
 		if(! transformCss.height || natrualAspect < targetAspect  ){
 			transformCss.height =  parseFloat( transformPercent ) + '%';
-			transformCss.width = ( parseFloat( transformPercent ) * 
-					(  natrualSize.width / natrualSize.height ) / 
+			/*transformCss.width = ( parseFloat( transformPercent ) * 
+					( natrualSize.height /  natrualSize.width ) / 
 					( targetSize.width / targetSize.height )
-				) + '%';
+				) + '%';*/
 		}
 		return transformCss;
 	},
