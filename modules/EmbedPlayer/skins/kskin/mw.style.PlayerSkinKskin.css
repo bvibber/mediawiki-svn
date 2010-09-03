@@ -167,7 +167,6 @@
 	float: left;
 	font-size: 11px;
 	padding: 13px 10px 15px 15px;
-	overflow-y:scroll;
 }
 
 .k-player ul.k-menu-bar {
@@ -335,8 +334,10 @@
 }
 
 .k-player .menu-screen {
-	height: 100%;	
+	height: 100%;
+	overflow-y:scroll;	
 }
+	
 
 .k-player .menu-screen.menu-share div.ui-state-highlight {
 	background: none repeat scroll 0 0 transparent;
