@@ -198,6 +198,7 @@ $wgAutoloadLocalClasses = array(
 	'ReplacementArray' => 'includes/StringUtils.php',
 	'Replacer' => 'includes/StringUtils.php',
 	'ResourceLoader' => 'includes/ResourceLoader.php',
+	'ResourceLoaderContext' => 'includes/ResourceLoaderContext.php',
 	'ResourceLoaderFileModule' => 'includes/ResourceLoaderModule.php',
 	'ResourceLoaderModule' => 'includes/ResourceLoaderModule.php',
 	'ResourceLoaderSiteModule' => 'includes/ResourceLoaderModule.php',

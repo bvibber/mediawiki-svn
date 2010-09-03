@@ -179,7 +179,7 @@ class ResourceLoader {
 	 * @param $debug bool Debug mode flag
 	 * @return {string} JavaScript code for registering all modules with the client loader
 	 */
-	public static function getModuleRegistrations( $lang, $skin, $debug ) {
+	public static function getModuleRegistrations( ResourceLoaderContext $context ) {
 		$scripts = '';
 		$registrations = array();
 		foreach ( self::$modules as $name => $module ) {
@@ -191,12 +191,11 @@ class ResourceLoader {
 			else {
 				// Modules without dependencies pass two arguments (name, timestamp) to mediaWiki.loader.register()
 				if ( !count( $module->getDependencies() ) ) {
-					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ) );
+					$registrations[] = array( $name, $module->getModifiedTime( $context ) );
 				}
 				// Modules with dependencies pass three arguments (name, timestamp, dependencies) to mediaWiki.loader.register()
 				else {
-					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ),
-						$module->getDependencies() );
+					$registrations[] = array( $name, $module->getModifiedTime( $context ), $module->getDependencies() );
 				}
 			}
 		}
@@ -211,12 +210,12 @@ class ResourceLoader {
 	 * @param $debug bool Debug mode flag
 	 * @return int UNIX timestamp
 	 */
-	public static function getHighestModifiedTime( $lang, $skin, $debug ) {
-		$retval = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
+	public static function getHighestModifiedTime( ResourceLoaderContext $context ) {
+		$time = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
 		foreach ( self::$modules as $module ) {
-			$retval = max( $retval, $module->getModifiedTime( $lang, $skin, $debug ) );
+			$time = max( $time, $module->getModifiedTime( $context ) );
 		}
-		return $retval;
+		return $time;
 	}
 	
 	/*
@@ -234,47 +233,11 @@ class ResourceLoader {
 	 * 		'only' => [string: 'scripts', 'styles' or 'messages', optional, if set only get part of the requested module]
 	 * 	)
 	 */
-	public static function respond( WebRequest $request, $server ) {
-		global $wgUser, $wgLang, $wgDefaultSkin;
-		// Fallback on system settings
-		// FIXME: Unnecessary unstubbing going on here, work around that
-		$parameters = array(
-			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
-			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
-			'debug' => $request->getVal( 'debug' ),
-			'only' => $request->getVal( 'only' ),
-		);
-		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
-		// to be converted to boolean true and false
-		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'];
-		// Get the direction from the requested language
-		if ( !isset( $parameters['dir'] ) ) {
-			$lang = Language::factory( $parameters['lang'] );
-			$parameters['dir'] = $lang->getDir();
-		}
-		$includeScripts = false;
-		$includeStyles = false;
-		$includeMessages = false;
-		switch ( $parameters['only'] ) {
-			case 'scripts':
-				$includeScripts = true;
-				break;
-			case 'styles':
-				$includeStyles = true;
-				break;
-			case 'messages':
-				$includeMessages = true;
-				break;
-			default:
-				$includeScripts = true;
-				$includeStyles = true;
-				$includeMessages = true;
-		}
-		
-		// Build a list of requested modules excluding unrecognized ones
+	public static function respond( ResourceLoaderContext $context ) {
+		// Split requested modules into two groups, modules and missing
 		$modules = array();
 		$missing = array();
-		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $name ) {
+		foreach ( $context->getModules() as $name ) {
 			if ( isset( self::$modules[$name] ) ) {
 				$modules[] = $name;
 			} else {
@@ -287,12 +250,9 @@ class ResourceLoader {
 		$maxage = PHP_INT_MAX;
 		$smaxage = PHP_INT_MAX;
 		foreach ( $modules as $name ) {
-			$module = self::getModule( $name );
-			$mtime = max( $mtime, $module->getModifiedTime(
-				$parameters['lang'], $parameters['skin'], $parameters['debug']
-			) );
-			$maxage = min( $maxage, $module->getClientMaxage() );
-			$smaxage = min( $smaxage, $module->getServerMaxage() );
+			$mtime = max( $mtime, self::$modules[$name]->getModifiedTime( $context ) );
+			$maxage = min( $maxage, self::$modules[$name]->getClientMaxage() );
+			$smaxage = min( $smaxage, self::$modules[$name]->getServerMaxage() );
 		}
 		header( 'Last-Modified: ' . wfTimestamp( TS_RFC2822, $mtime ) );
 		$expires = wfTimestamp( TS_RFC2822, min( $maxage, $smaxage ) + time() );
@@ -300,7 +260,7 @@ class ResourceLoader {
 		header( "Expires: $expires" );
 		
 		// Check if there's an If-Modified-Since header and respond with a 304 Not Modified if possible
-		$ims = $request->getHeader( 'If-Modified-Since' );
+		$ims = $context->getRequest()->getHeader( 'If-Modified-Since' );
 		if ( $ims !== false && wfTimestamp( TS_UNIX, $ims ) == $mtime ) {
 			header( 'HTTP/1.0 304 Not Modified' );
 			header( 'Status: 304 Not Modified' );
@@ -309,68 +269,69 @@ class ResourceLoader {
 		
 		// Use output buffering
 		ob_start();
-		$blobs = $includeMessages ? MessageBlobStore::get( $modules, $parameters['lang'] ) : array();
+		
+		// Pre-fetch blobs
+		$blobs = $context->shouldIncludeMessages() ?
+			MessageBlobStore::get( $modules, $context->getLanguage() ) : array();
 		
 		// Generate output
 		foreach ( $modules as $name ) {
 			// Scripts
 			$scripts = '';
-			if ( $includeScripts ) {
-				$scripts .= self::$modules[$name]->getScript(
-					$parameters['lang'], $parameters['skin'], $parameters['debug']
-				);
+			if ( $context->shouldIncludeScripts() ) {
+				$scripts .= self::$modules[$name]->getScript( $context );
 				// Special meta-information for the 'startup' module
-				if ( $name === 'startup' && $parameters['only'] === 'scripts' ) {
+				if ( $name === 'startup' && $context->getOnly() === 'scripts' ) {
 					// Get all module registrations
-					$registration = self::getModuleRegistrations(
-						$parameters['lang'], $parameters['skin'], $parameters['debug']
-					);
+					$registration = self::getModuleRegistrations( $context );
 					// Build configuration
-					$config = FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) );
+					$config = FormatJson::encode(
+						array( 'server' => $context->getServer(), 'debug' => $context->getDebug() )
+					);
 					// Add a well-known start-up function
-					$scripts .= "window.startUp = function() { {$registration} mediaWiki.config.set( {$config} ); };";
+					$scripts .= "window.startUp = function() { $registration mediaWiki.config.set( $config ); };";
 					// Build load query for jquery and mediawiki modules
-					$query = wfArrayToCGI( $parameters + array(
-						'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
-						'version' => wfTimestamp(
-							TS_ISO_8601,
-							round(
-								max(
-									self::$modules['jquery']->getModifiedTime(
-										$parameters['lang'], $parameters['skin'], $parameters['debug']
-									),
-									self::$modules['mediawiki']->getModifiedTime(
-										$parameters['lang'], $parameters['skin'], $parameters['debug']
-									)
-								),
-								-2
-							)
+					$query = wfArrayToCGI(
+						array(
+							'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
+							'only' => 'scripts',
+							'lang' => $context->getLanguage(),
+							'dir' => $context->getDirection(),
+							'skin' => $context->getSkin(),
+							'debug' => $context->getDebug(),
+							'version' => wfTimestamp( TS_ISO_8601, round( max(
+								self::$modules['jquery']->getModifiedTime( $context ),
+								self::$modules['mediawiki']->getModifiedTime( $context )
+							), -2 ) )
 						)
-					) );
+					);
 					// Build HTML code for loading jquery and mediawiki modules
-					$linkedScript = Html::linkedScript( "{$server}?{$query}" );
+					$loadScript = Html::linkedScript( $context->getServer() . "?$query" );
 					// Add code to add jquery and mediawiki loading code; only if the current client is compatible
-					$scripts .= "if ( isCompatible() ) { document.write( '{$linkedScript}' ); }";
+					$scripts .= "if ( isCompatible() ) { document.write( '$loadScript' ); }";
 					// Delete the compatible function - it's not needed anymore
 					$scripts .= "delete window['isCompatible'];";
 				}
 			}
 			// Styles
 			$styles = '';
-			if ( $includeStyles && ( $styles .= self::$modules[$name]->getStyle( $parameters['skin'] ) ) !== '' ) {
-				if ( $parameters['dir'] == 'rtl' ) {
+			if (
+				$context->shouldIncludeStyles() &&
+				( $styles .= self::$modules[$name]->getStyle( $context ) ) !== ''
+			) {
+				if ( $context->getDirection() == 'rtl' ) {
 					$styles = self::filter( 'flip-css', $styles );
 				}
-				$styles = $parameters['debug'] ? $styles : self::filter( 'minify-css', $styles );
+				$styles = $context->getDebug() ? $styles : self::filter( 'minify-css', $styles );
 			}
 			// Messages
 			$messages = isset( $blobs[$name] ) ? $blobs[$name] : '{}';
 			// Output
-			if ( $parameters['only'] === 'styles' ) {
+			if ( $context->getOnly() === 'styles' ) {
 				echo $styles;
-			} else if ( $parameters['only'] === 'scripts' ) {
+			} else if ( $context->getOnly() === 'scripts' ) {
 				echo $scripts;
-			} else if ( $parameters['only'] === 'messages' ) {
+			} else if ( $context->getOnly() === 'messages' ) {
 				echo "mediaWiki.msg.set( $messages );\n";
 			} else {
 				$styles = Xml::escapeJsString( $styles );
@@ -378,7 +339,7 @@ class ResourceLoader {
 			}
 		}
 		// Update the status of script-only modules
-		if ( $parameters['only'] === 'scripts' && !in_array( 'startup', $modules ) ) {
+		if ( $context->getOnly() === 'scripts' && !in_array( 'startup', $modules ) ) {
 			$statuses = array();
 			foreach ( $modules as $name ) {
 				$statuses[$name] = 'ready';
@@ -387,15 +348,17 @@ class ResourceLoader {
 			echo "mediaWiki.loader.state( {$statuses} );";
 		}
 		// Register missing modules
-		foreach ( $missing as $name ) {
-			echo "mediaWiki.loader.register( '{$name}', null, 'missing' );\n";
+		if ( $context->shouldIncludeScripts() ) {
+			foreach ( $missing as $name ) {
+				echo "mediaWiki.loader.register( '{$name}', null, 'missing' );\n";
+			}
 		}
-		
-		if ( $parameters['only'] === 'styles' ) {
+		// Output the appropriate header
+		if ( $context->getOnly() === 'styles' ) {
 			header( 'Content-Type: text/css' );
 		} else {
 			header( 'Content-Type: text/javascript' );
-			if ( $parameters['debug'] ) {
+			if ( $context->getDebug() ) {
 				ob_end_flush();
 			} else {
 				echo self::filter( 'minify-js', ob_get_clean() );

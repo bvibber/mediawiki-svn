@@ -15,7 +15,6 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  * 
- * @author Roan Kattouw
  * @author Trevor Parscal
  */
 
@@ -73,14 +72,14 @@ abstract class ResourceLoaderModule {
 	 * @param $debug bool Whether to include debug scripts
 	 * @return string JS
 	 */
-	public abstract function getScript( $lang, $skin, $debug );
+	public abstract function getScript( ResourceLoaderContext $context );
 	
 	/**
 	 * Get all CSS for this module for a given skin.
 	 * @param $skin string Skin name
 	 * @return string CSS
 	 */
-	public abstract function getStyle( $skin );
+	public abstract function getStyle( ResourceLoaderContext $context );
 	
 	/**
 	 * Get the messages needed for this module.
@@ -124,7 +123,7 @@ abstract class ResourceLoaderModule {
 	 * @param $debug bool Debug mode flag
 	 * @return int UNIX timestamp
 	 */
-	public abstract function getModifiedTime( $lang, $skin, $debug );
+	public abstract function getModifiedTime( ResourceLoaderContext $context );
 }
 
 /**
@@ -321,37 +320,37 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 		$this->loaders = array_merge( $this->loaders, (array)$scripts );
 	}
 	
-	public function getScript( $lang, $skin, $debug ) {
+	public function getScript( ResourceLoaderContext $context ) {
 		$retval = $this->getPrimaryScript() . "\n" .
-			$this->getLanguageScript( $lang ) . "\n" .
-			$this->getSkinScript( $skin );
-		if ( $debug ) {
+			$this->getLanguageScript( $context->getLanguage() ) . "\n" .
+			$this->getSkinScript( $context->getSkin() );
+		if ( $context->getDebug() ) {
 			$retval .= $this->getDebugScript();
 		}
 		return $retval;
 	}
 	
-	public function getStyle( $skin ) {
-		$style = $this->getPrimaryStyle() . "\n" . $this->getSkinStyle( $skin );
+	public function getStyle( ResourceLoaderContext $context ) {
+		$style = $this->getPrimaryStyle() . "\n" . $this->getSkinStyle( $context->getSkin() );
 		
 		// Extract and store the list of referenced files
 		$files = CSSMin::getLocalFileReferences( $style );
 		
 		// Only store if modified
-		if ( $files !== $this->getFileDependencies( $skin ) ) {
+		if ( $files !== $this->getFileDependencies( $context->getSkin() ) ) {
 			$encFiles = FormatJson::encode( $files );
 			$dbw = wfGetDb( DB_MASTER );
 			$dbw->replace( 'module_deps',
 				array( array( 'md_module', 'md_skin' ) ), array(
 					'md_module' => $this->getName(),
-					'md_skin' => $skin,
+					'md_skin' => $context->getSkin(),
 					'md_deps' => $encFiles,
 				)
 			);
 			
 			// Save into memcached
 			global $wgMemc;
-			$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $skin );
+			$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $context->getSkin() );
 			$wgMemc->set( $key, $encFiles );
 		}
 		return $style;
@@ -384,37 +383,27 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @param $debug bool Debug mode flag
 	 * @return int UNIX timestamp
 	 */
-	public function getModifiedTime( $lang, $skin, $debug ) {
-		if ( isset( $this->modifiedTime["$lang|$skin|$debug"] ) ) {
-			return $this->modifiedTime["$lang|$skin|$debug"];
+	public function getModifiedTime( ResourceLoaderContext $context ) {
+		$hash = implode( '|', array( $context->getLanguage(), $context->getSkin(), $context->getDebug() ) );
+		if ( isset( $this->modifiedTime[$hash] ) ) {
+			return $this->modifiedTime[$hash];
 		}
 		
-		// Get the maximum mtime of the various files involved
-		$files = array_merge( $this->scripts, $this->styles,
-			$debug ? $this->debugScripts : array(),
-			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
-			(array)self::getSkinFiles( $skin, $this->skinScripts ),
-			(array)self::getSkinFiles( $skin, $this->skinStyles ),
+		$files = array_merge(
+			$this->scripts,
+			$this->styles,
+			$context->getDebug() ? $this->debugScripts : array(),
+			isset( $this->languageScripts[$context->getLanguage()] ) ?
+				(array) $this->languageScripts[$context->getLanguage()] : array(),
+			(array) self::getSkinFiles( $context->getSkin(), $this->skinScripts ),
+			(array) self::getSkinFiles( $context->getSkin(), $this->skinStyles ),
 			$this->loaders,
-			$this->getFileDependencies( $skin )
+			$this->getFileDependencies( $context->getSkin() )
 		);
-		$maxFileMtime = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
-		
-		// Get the mtime of the message blob
-		// TODO: This timestamp is queried a lot and queried separately for each module. Maybe it should be put in memcached?
-		$dbr = wfGetDb( DB_SLAVE );
-		$msgBlobMtime = $dbr->selectField( 'msg_resource', 'mr_timestamp', array(
-				'mr_resource' => $this->getName(),
-				'mr_lang' => $lang
-			), __METHOD__
+		$this->modifiedTime[$hash] = max(
+			array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) )
 		);
-		
-		if ( $msgBlobMtime ) {
-			$this->modifiedTime["$lang|$skin|$debug"] = max( $maxFileMtime, wfTimestamp( TS_UNIX, $msgBlobMtime ) );
-		} else {
-			$this->modifiedTime["$lang|$skin|$debug"] = $maxFileMtime;
-		}
-		return $this->modifiedTime["$lang|$skin|$debug"];
+		return $this->modifiedTime[$hash];
 	}
 	
 	/**
@@ -572,20 +561,21 @@ class ResourceLoaderSiteModule extends ResourceLoaderModule {
 	// In-object cache for modified time
 	private $modifiedTime = null;
 	
-	public function getScript( $lang, $skin, $debug ) {
-		return Skin::newFromKey( $skin )->generateUserJs();
+	public function getScript( ResourceLoaderContext $context ) {
+		return Skin::newFromKey( $context->getSkin() )->generateUserJs();
 	}
 	
-	public function getModifiedTime( $lang, $skin, $debug ) {
-		if ( isset( $this->modifiedTime["$lang|$skin|$debug"] ) )  {
-			return $this->modifiedTime["$lang|$skin|$debug"];
+	public function getModifiedTime( ResourceLoaderContext $context ) {
+		$hash = implode( '|', array( $context->getLanguage(), $context->getSkin(), $context->getDebug() ) );
+		if ( isset( $this->modifiedTime[$hash] ) )  {
+			return $this->modifiedTime[$hash];
 		}
 		
 		// HACK: We duplicate the message names from generateUserJs()
 		// here and weird things (i.e. mtime moving backwards) can happen
 		// when a MediaWiki:Something.js page is deleted
 		$jsPages = array( Title::makeTitle( NS_MEDIAWIKI, 'Common.js' ),
-			Title::makeTitle( NS_MEDIAWIKI, ucfirst( $skin ) . '.js' )
+			Title::makeTitle( NS_MEDIAWIKI, ucfirst( $context->getSkin() ) . '.js' )
 		);
 		
 		// Do batch existence check
@@ -602,7 +592,7 @@ class ResourceLoaderSiteModule extends ResourceLoaderModule {
 		return $this->modifiedTime;
 	}
 	
-	public function getStyle( $skin ) { return ''; }
+	public function getStyle( ResourceLoaderContext $context ) { return ''; }
 	public function getMessages() { return array(); }
 	public function getLoaderScript() { return ''; }
 	public function getDependencies() { return array(); }
@@ -612,19 +602,19 @@ class ResourceLoaderSiteModule extends ResourceLoaderModule {
 class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 	private $modifiedTime = null;
 	
-	public function getScript( $lang, $skin, $debug ) {
+	public function getScript( ResourceLoaderContext $context ) {
 		global $IP;
 		return file_get_contents( "$IP/resources/startup.js" );
 	}
 	
-	public function getModifiedTime( $lang, $skin, $debug ) {
+	public function getModifiedTime( ResourceLoaderContext $context ) {
 		global $IP;
 		if ( !is_null( $this->modifiedTime ) ) {
 			return $this->modifiedTime;
 		}
 		// HACK getHighestModifiedTime() calls this function, so protect against infinite recursion
 		$this->modifiedTime = filemtime( "$IP/resources/startup.js" );
-		$this->modifiedTime = ResourceLoader::getHighestModifiedTime( $lang, $skin, $debug );
+		$this->modifiedTime = ResourceLoader::getHighestModifiedTime( $context );
 		return $this->modifiedTime;
 	}
 	
@@ -636,7 +626,7 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 		return 300; // 5 minutes
 	}
 	
-	public function getStyle( $skin ) { return ''; }
+	public function getStyle( ResourceLoaderContext $context ) { return ''; }
 	public function getMessages() { return array(); }
 	public function getLoaderScript() { return ''; }
 	public function getDependencies() { return array(); }

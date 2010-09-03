@@ -26,18 +26,35 @@ class ResourceLoaderContext {
 	
 	protected $request;
 	protected $server;
-	protected $lang;
+	protected $modules;
+	protected $language;
+	protected $direction;
 	protected $skin;
 	protected $debug;
 	protected $only;
 	
-	public function __construct( WebRequest $request, $server, $lang, $skin, $debug, $only ) {
+	public function __construct( WebRequest $request, $server ) {
+		global $wgUser, $wgLang, $wgDefaultSkin;
+		
 		$this->request = $request;
 		$this->server = $server;
-		$this->lang = $lang;
-		$this->skin = $skin;
-		$this->debug = $debug;
-		$this->only = $only;
+		// Interperet request
+		$this->modules = explode( '|', $request->getVal( 'modules' ) );
+		$this->language = $request->getVal( 'lang' );
+		$this->direction = $request->getVal( 'dir' );
+		$this->skin = $request->getVal( 'skin' );
+		$this->debug = $request->getVal( 'debug' ) === 'true' || $request->getBool( 'debug' );
+		$this->only = $request->getVal( 'only' );
+		// Fallback on system defaults
+		if ( !$this->language ) {
+			$this->language = $wgLang->getCode();
+		}
+		if ( !$this->direction ) {
+			$this->direction = Language::factory( $this->language )->getDir();
+		}
+		if ( !$this->skin ) {
+			$this->skin = $wgDefaultSkin;
+		}
 	}
 	public function getRequest() {
 		return $this->request;
@@ -45,16 +62,31 @@ class ResourceLoaderContext {
 	public function getServer() {
 		return $this->server;
 	}
+	public function getModules() {
+		return $this->modules;
+	}
 	public function getLanguage() {
-		return $this->lang;
+		return $this->language;
+	}
+	public function getDirection() {
+		return $this->direction;
 	}
 	public function getSkin() {
-		return $this->request;
+		return $this->skin;
 	}
 	public function getDebug() {
 		return $this->debug;
 	}
 	public function getOnly() {
 		return $this->only;
+	}
+	public function shouldIncludeScripts() {
+		return !isset( $this->only ) || $this->only === 'scripts';
+	}
+	public function shouldIncludeStyles() {
+		return !isset( $this->only ) || $this->only === 'styles';
+	}
+	public function shouldIncludeMessages() {
+		return !isset( $this->only ) || $this->only === 'messages';
 	}
 }
