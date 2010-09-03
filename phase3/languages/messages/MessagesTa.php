@@ -212,33 +212,22 @@ $messages = array(
 'faqpage'        => 'Project:அடிக்கடி கேட்கப்படும் கேள்விகள்',
 
 # Vector skin
-'vector-action-addsection'   => 'தலைப்பைச் சேர்',
-'vector-action-delete'       => 'நீக்கவும்',
-'vector-action-move'         => 'நகர்த்தவும்',
-'vector-action-protect'      => 'காக்கவும்',
-'vector-action-undelete'     => 'நீக்கத்தை நிறுத்து
+'vector-action-addsection' => 'தலைப்பைச் சேர்',
+'vector-action-delete'     => 'நீக்கவும்',
+'vector-action-move'       => 'நகர்த்தவும்',
+'vector-action-protect'    => 'காக்கவும்',
+'vector-action-undelete'   => 'நீக்கத்தை நிறுத்து
 
 நீக்கியதை பழையபடிக்குக் கொண்டுவா',
-'vector-action-unprotect'    => 'காப்பைநீக்கு',
-'vector-namespace-category'  => 'பகுப்பு',
-'vector-namespace-help'      => 'உதவிப் பக்கம்',
-'vector-namespace-image'     => 'கோப்பு',
-'vector-namespace-main'      => 'பக்கம்',
-'vector-namespace-media'     => 'ஊடகப் பக்கம்',
-'vector-namespace-mediawiki' => 'தகவல்',
-'vector-namespace-project'   => 'திட்டப் பக்கம்',
-'vector-namespace-special'   => 'சிறப்புப் பக்கம்',
-'vector-namespace-talk'      => 'உரையாடல்',
-'vector-namespace-template'  => 'வார்ப்புரு',
-'vector-namespace-user'      => 'பயனர் பக்கம்',
-'vector-view-create'         => 'உருவாக்கவும்',
-'vector-view-edit'           => 'தொகுக்கவும்',
-'vector-view-history'        => 'வரலாற்றைக் காட்டவும்',
-'vector-view-view'           => 'வாசிக்கவும்',
-'vector-view-viewsource'     => 'மூலத்தைக் காட்டவும்',
-'actions'                    => 'செயல்கள்',
-'namespaces'                 => 'பெயர்வெளிகள்',
-'variants'                   => 'மாற்றுக்கள்
+'vector-action-unprotect'  => 'காப்பைநீக்கு',
+'vector-view-create'       => 'உருவாக்கவும்',
+'vector-view-edit'         => 'தொகுக்கவும்',
+'vector-view-history'      => 'வரலாற்றைக் காட்டவும்',
+'vector-view-view'         => 'வாசிக்கவும்',
+'vector-view-viewsource'   => 'மூலத்தைக் காட்டவும்',
+'actions'                  => 'செயல்கள்',
+'namespaces'               => 'பெயர்வெளிகள்',
+'variants'                 => 'மாற்றுக்கள்
 
 மாற்றுருவங்கள்',
 
@@ -1701,7 +1690,7 @@ $NEWPAGE
 அருள் கூர்ந்து உங்கள் செய்கையின் விளைவுகளை நீங்கள் விள்ங்கிக் கொண்டீர்கள் என்பதையும் இது [[{{MediaWiki:Policy-url}}|கொள்கைகளுடன்]] ஒத்துப்போவதையும் உறுதிப் படுத்தவும்.',
 'actioncomplete'         => 'செயற்பாடு நிறைவுற்றது',
 'deletedtext'            => '"<nowiki>$1</nowiki>" நீக்கப்பட்டு விட்டது. அண்மைய நீக்குதல்களின் பதிவுக்கு $2 ஐப் பார்க்க.',
-'deletedarticle'         => '"$1" நீக்கப்பட்டது',
+'deletedarticle'         => '"[[$1]]" நீக்கப்பட்டது',
 'dellogpage'             => 'நீக்கல் பதிவு',
 'dellogpagetext'         => 'கீழே காணப்படுவது மிக அண்மைய நீக்கல்களின் அட்டவணையாகும்.',
 'deletionlog'            => 'நீக்கல் பதிவு',

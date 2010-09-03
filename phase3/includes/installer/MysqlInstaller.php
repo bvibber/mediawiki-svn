@@ -198,7 +198,7 @@ class MysqlInstaller extends DatabaseInstaller {
 
 		$ret = true;
 
-		ob_start( array( __CLASS__, 'outputHandler' ) );
+		ob_start( array( $this, 'outputHandler' ) );
 		try {
 			do_all_updates( false, true );
 		} catch ( MWException $e ) {
@@ -208,10 +208,6 @@ class MysqlInstaller extends DatabaseInstaller {
 		}
 		ob_end_flush();
 		return $ret;
-	}
-
-	public static function outputHandler( $string ) {
-		return htmlspecialchars( $string );
 	}
 
 	/**
@@ -467,26 +463,6 @@ class MysqlInstaller extends DatabaseInstaller {
 			$status->fatal( 'config-install-user-failed', $this->getVar( 'wgDBuser' ), $error );
 		}
 
-		return $status;
-	}
-
-	public function createTables() {
-		global $IP;
-		$status = $this->getConnection();
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
-		
-		if( $this->db->tableExists( 'user' ) ) {
-			$status->warning( 'config-install-tables-exist' );
-			return $status;
-		} 
-		
-		$error = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
-		if( $error !== true ) {
-			$status->fatal( 'config-install-tables-failed', $error );
-		}
 		return $status;
 	}
 

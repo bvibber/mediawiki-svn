@@ -644,9 +644,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", "$IP/../data" );
 
 	## DB2 specific:
-	// New variable in order to have a different default port number
 	$conf->DBport_db2   = importPost( "DBport_db2",      "50000" );
-	$conf->DBcataloged  = importPost( "DBcataloged",  "cataloged" );
 	$conf->DBdb2schema  = importPost( "DBdb2schema",  "mediawiki" );
 
 	// Oracle specific
@@ -837,7 +835,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		}
 
 		## DB2 specific:
-		$wgDBcataloged = $conf->DBcataloged;
+		if ( $conf->DBtype == 'ibm_db2' ) {
+			$wgDBport      = $conf->DBport_db2;
+		}
 
 		$wgCommandLineMode = true;
 		if (! defined ( 'STDERR' ) )
@@ -1713,14 +1713,12 @@ if( count( $errs ) ) {
 	<div class="config-input"><?php
 		aField( $conf, "DBport_db2", "Database port:" );
 	?></div>
+	<div class="config-desc">
+		<p>50000 is the usual DB2 port.</p>
+	</div>
 	<div class="config-input"><?php
 		aField( $conf, "DBdb2schema", "Schema for mediawiki:" );
 	?></div>
-	<div>Select one:</div>
-		<ul class="plain">
-		<li><?php aField( $conf, "DBcataloged", "Cataloged (DB2 installed locally)", "radio", "cataloged" ); ?></li>
-		<li><?php aField( $conf, "DBcataloged", "Uncataloged (remote DB2 through ODBC)", "radio", "uncataloged" ); ?></li>
-		</ul>
 	<div class="config-desc">
 		<p>If you need to share one database between multiple wikis, or
 		between MediaWiki and another web application, you may specify
@@ -1911,11 +1909,11 @@ function writeLocalSettings( $conf ) {
 "# SQLite-specific settings
 \$wgSQLiteDataDir    = \"{$sqliteDataDir}\";";
 	} elseif( $conf->DBtype == 'ibm_db2' ) {
-		$dbsettings =
-"# DB2 specific settings
-\$wgDBport       = \"{$slconf['DBport_db2']}\";
-\$wgDBmwschema       = \"{$slconf['DBdb2schema']}\";
-\$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
+		$dbsettings = <<<MULTILINE
+# DB2 specific settings
+\$wgDBport           = "{$slconf['DBport_db2']}";
+\$wgDBmwschema       = "{$slconf['DBdb2schema']}";
+MULTILINE;
 	} elseif( $conf->DBtype == 'oracle' ) {
 		$dbsettings =
 "# Oracle specific settings

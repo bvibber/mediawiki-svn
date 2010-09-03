@@ -276,6 +276,18 @@ abstract class DatabaseBase implements DatabaseType {
 		}
 	}
 
+	/**
+	 * Return a path to the DBMS-specific schema, otherwise default to tables.sql
+	 */
+	public function getSchema() {
+		global $IP;
+		if ( file_exists( "$IP/maintenance/" . $this->getType() . "/tables.sql" ) ) {
+			return "$IP/maintenance/" . $this->getType() . "/tables.sql";
+		} else {
+			return "$IP/maintenance/tables.sql";
+		}
+	}
+
 #------------------------------------------------------------------------------
 # Other functions
 #------------------------------------------------------------------------------
@@ -1383,7 +1395,7 @@ abstract class DatabaseBase implements DatabaseType {
 				$on = $this->makeList((array)$join_conds_safe[$table][1], LIST_AND);
 				if ( $on != '' ) {
 					$tableClause .= ' ON (' . $on . ')';
-				}				
+				}
 				$retJOIN[] = $tableClause;
 			} else {
 				$tableClause = $this->tableName( $table );

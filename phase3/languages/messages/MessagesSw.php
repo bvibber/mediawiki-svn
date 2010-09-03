@@ -286,17 +286,6 @@ $messages = array(
 'vector-action-protect'          => 'Linda',
 'vector-action-undelete'         => 'Rudisha',
 'vector-action-unprotect'        => 'Ondoa tunzo',
-'vector-namespace-category'      => 'Jamii',
-'vector-namespace-help'          => 'Ukurasa wa msaada',
-'vector-namespace-image'         => 'Faili',
-'vector-namespace-main'          => 'Ukurasa',
-'vector-namespace-media'         => 'Ukurasa wa faili',
-'vector-namespace-mediawiki'     => 'Ujumbe',
-'vector-namespace-project'       => 'Ukurasa wa mradi',
-'vector-namespace-special'       => 'Ukurasa maalum',
-'vector-namespace-talk'          => 'Majadiliano',
-'vector-namespace-template'      => 'Kigezo',
-'vector-namespace-user'          => 'Ukurasa wa mtumiaji',
 'vector-simplesearch-preference' => 'Kuwezesha madokezo imara ya tafutaji (umbo la Vector tu)',
 'vector-view-create'             => 'Anzisha',
 'vector-view-edit'               => 'Hariri',
@@ -2351,6 +2340,11 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 
 'exif-focalplaneresolutionunit-2' => 'inchi',
 
+'exif-scenecapturetype-0' => 'Kawaida',
+'exif-scenecapturetype-1' => 'Mandhari',
+'exif-scenecapturetype-2' => 'Watu',
+'exif-scenecapturetype-3' => 'Usiku',
+
 'exif-gaincontrol-0' => 'Bila',
 
 'exif-contrast-0' => 'Kawaida',
@@ -2479,6 +2473,7 @@ Tafadhali uthibitishe kwamba kweli unataka kuanzisha ukurasa huu upya.",
 'table_pager_first'        => 'Ukurasa wa kwanza',
 'table_pager_last'         => 'Ukurasa wa mwisho',
 'table_pager_limit'        => 'Ionyeshwe vitu $1 katika kila ukurasa',
+'table_pager_limit_label'  => 'Vitu katika kila ukurasa:',
 'table_pager_limit_submit' => 'Nenda',
 'table_pager_empty'        => 'Hakuna matokeo',
 
@@ -2534,6 +2529,9 @@ Pia unaweza [[Special:Watchlist/edit|kutumia kihariri cha kawaida]].',
 'version-license'           => 'Ruhusa',
 'version-poweredby-credits' => "Wiki hii inaendeshwa na bidhaa pepe ya '''[http://www.mediawiki.org/ MediaWiki]''', hatimiliki © 2001-$1 $2.",
 'version-poweredby-others'  => 'wengine',
+'version-license-info'      => 'MediaWiki ni bidhaa pepe huru; unaweza kuigawanyika pamoja na kuitumia na kuibadilisha kutokana na masharti ya hatimiliki GNU General Public License inayotolewa na Free Software Foundation; ama toleo 2 la hatimiliki, ama (ukitaka) toleo lolote linalofuata.
+
+MediaWiki inagawanyika',
 'version-software'          => 'Bidhaa pepe iliyosakinishwa',
 'version-software-product'  => 'Bidhaa',
 'version-software-version'  => 'Toleo',
@@ -2581,11 +2579,12 @@ Andika jina la faili bila kiambishi awali cha "{{ns:file}}:".',
 'intentionallyblankpage' => 'Ukurasa huu umeachwa tupu kwa makusudi.',
 
 # Special:Tags
-'tag-filter'        => 'Chujio cha [[Special:Tags|tagi]]:',
-'tag-filter-submit' => 'Chuja',
-'tags-title'        => 'Tagi',
-'tags-edit'         => 'hariri',
-'tags-hitcount'     => '{{PLURAL:$1|badiliko|mabadiliko}} $1',
+'tag-filter'              => 'Chujio cha [[Special:Tags|tagi]]:',
+'tag-filter-submit'       => 'Chuja',
+'tags-title'              => 'Tagi',
+'tags-description-header' => 'Maelezo kamili ya maana',
+'tags-edit'               => 'hariri',
+'tags-hitcount'           => '{{PLURAL:$1|badiliko|mabadiliko}} $1',
 
 # Special:ComparePages
 'comparepages'     => 'Linganisha kurasa',

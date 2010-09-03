@@ -599,6 +599,21 @@ function wfUILang() {
 }
 
 /**
+ * This is the new function for getting translated interface messages.
+ * See the Message class for documentation how to use them.
+ * The intention is that this function replaces all old wfMsg* functions.
+ * @param $key \string Message key.
+ * Varargs: normal message parameters.
+ * @return \type{Message}
+ * @since 1.17
+ */
+function wfMessage( $key /*...*/) {
+	$params = func_get_args();
+	array_shift( $params );
+	return new Message( $key, $params );
+}
+
+/**
  * Get a message from anywhere, for the current user language.
  *
  * Use wfMsgForContent() instead if the message should NOT
@@ -1510,7 +1525,11 @@ function wfMerge( $old, $mine, $yours, &$result ) {
 
 	# This check may also protect against code injection in
 	# case of broken installations.
-	if( !$wgDiff3 || !file_exists( $wgDiff3 ) ) {
+	wfSuppressWarnings();
+	$haveDiff3 = $wgDiff3 && file_exists( $wgDiff3 );
+	wfRestoreWarnings();
+
+	if( !$haveDiff3 ) {
 		wfDebug( "diff3 not found\n" );
 		return false;
 	}
@@ -1580,10 +1599,13 @@ function wfDiff( $before, $after, $params = '-u' ) {
 	}
 
 	global $wgDiff;
+	wfSuppressWarnings();
+	$haveDiff = $wgDiff && file_exists( $wgDiff );
+	wfRestoreWarnings();
 
 	# This check may also protect against code injection in
 	# case of broken installations.
-	if( !file_exists( $wgDiff ) ) {
+	if( !$haveDiff ) {
 		wfDebug( "diff executable not found\n" );
 		$diffs = new Diff( explode( "\n", $before ), explode( "\n", $after ) );
 		$format = new UnifiedDiffFormatter();
@@ -1973,6 +1995,8 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		# TS_POSTGRES
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/', $ts, $da ) ) {
 		# TS_POSTGRES
+	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.\d\d\d$/',$ts,$da)) {
+		# TS_DB2
 	} elseif ( preg_match( '/^[A-Z][a-z]{2}, \d\d [A-Z][a-z]{2} \d{4} \d\d:\d\d:\d\d/', $ts ) ) {
 		# TS_RFC2822
 		$uts = strtotime( $ts );

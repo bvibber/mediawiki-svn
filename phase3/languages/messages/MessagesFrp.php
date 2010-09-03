@@ -466,17 +466,6 @@ $messages = array(
 'vector-action-protect'          => 'Protègiér',
 'vector-action-undelete'         => 'Refâre',
 'vector-action-unprotect'        => 'Dèprotègiér',
-'vector-namespace-category'      => 'Catègorie',
-'vector-namespace-help'          => 'Éde',
-'vector-namespace-image'         => 'Fichiér',
-'vector-namespace-main'          => 'Pâge',
-'vector-namespace-media'         => 'Pâge du fichiér multimèdia',
-'vector-namespace-mediawiki'     => 'Mèssâjo',
-'vector-namespace-project'       => 'Pâge du projèt',
-'vector-namespace-special'       => 'Pâge spèciâla',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Modèlo',
-'vector-namespace-user'          => 'Pâge utilisator',
 'vector-simplesearch-preference' => 'Activar los consèlys de rechèrche mèlyorâs (solament por « Vèctor »)',
 'vector-view-create'             => 'Fâre',
 'vector-view-edit'               => 'Changiér',
@@ -1063,7 +1052,7 @@ Volyéd controlar los changements ce-desot, et pués sôvar s’o est franc cen 
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Vos pouede pas fâre un compto.',
-'cantcreateaccount-text' => "La crèacion de compto dês ceta adrèce IP ('''$1''') at étâ blocâ per [[User:$3|$3]].
+'cantcreateaccount-text' => "La crèacion de compto dês ceta adrèce IP ('''$1''') at étâ dèfendua per [[User:$3|$3]].
 
 La rêson balyê per $3 ére ''$2''.",
 
@@ -1412,7 +1401,7 @@ Vê-que una valor fêta per hasârd que vos pouede utilisar : $1',
 'prefs-searchoptions'           => 'Chouèx de rechèrche',
 'prefs-namespaces'              => 'Èspâços de noms',
 'defaultns'                     => 'Ôtrament rechèrchiér dens cetos èspâços de noms :',
-'default'                       => 'dèfôt',
+'default'                       => 'per dèfôt',
 'prefs-files'                   => 'Fichiérs',
 'prefs-custom-css'              => 'CSS pèrsonalisâ',
 'prefs-custom-js'               => 'JavaScript pèrsonalisâ',
@@ -2578,7 +2567,7 @@ Vêde la [[Special:IPBlockList|lista ux utilisators et a les adrèces IP blocâs
 'expiringblock'                   => 'èxpire lo $1 a $2',
 'anononlyblock'                   => 'ren que los utilisators pas encartâs',
 'noautoblockblock'                => 'blocâjo ôtomatico dèsactivâ',
-'createaccountblock'              => 'crèacion de compto blocâ',
+'createaccountblock'              => 'crèacion de compto dèfendua',
 'emailblock'                      => 'mèssageria èlèctronica blocâ',
 'blocklist-nousertalk'            => 'pôt pas changiér sa prôpra pâge de discussion',
 'ipblocklist-empty'               => 'Ora, la lista a les adrèces IP blocâs est voueda.',

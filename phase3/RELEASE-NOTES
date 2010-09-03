@@ -309,6 +309,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Disable multithreaded behaviour in recent ImageMagick, to avoid a deadlock
   when a resource limit such as $wgMaxShellMemory is hit.
 * (bug 24981) Allow extensions to access SpecialUpload variables again
+* (bug 20744) Wiki forgets about an uploaded file
+* (bug 17913) Don't show "older edit" when no older edit available
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -374,6 +376,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * For required string parameters, if '' is provided, this is now classed as
   missing
 * (bug 24724) list=allusers is out by 1 (shows total users - 1)
+* (bug 24166) API error when using rvprop=tags
 
 === Languages updated in 1.17 ===
 

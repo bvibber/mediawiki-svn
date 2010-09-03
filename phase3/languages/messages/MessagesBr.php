@@ -329,17 +329,6 @@ $messages = array(
 'vector-action-protect'          => 'Gwareziñ',
 'vector-action-undelete'         => 'Diziverkañ',
 'vector-action-unprotect'        => 'Diwareziñ',
-'vector-namespace-category'      => 'Rummad',
-'vector-namespace-help'          => 'Skoazell',
-'vector-namespace-image'         => 'Restr',
-'vector-namespace-main'          => 'Pennad',
-'vector-namespace-media'         => 'Pajenn vedia',
-'vector-namespace-mediawiki'     => 'Kemennadenn',
-'vector-namespace-project'       => 'Pajenn ar raktres',
-'vector-namespace-special'       => 'Pajenn dibar',
-'vector-namespace-talk'          => 'Kaozeal',
-'vector-namespace-template'      => 'Patrom',
-'vector-namespace-user'          => 'Pajenn implijer',
 'vector-simplesearch-preference' => "Aotren ar c'hinnigoù klask gwellaet (gant Vektor nemetken)",
 'vector-view-create'             => 'Krouiñ',
 'vector-view-edit'               => 'Kemmañ',
@@ -1605,7 +1594,7 @@ PICT # misc.
 'upload-success-subj'         => 'Eiladenn kaset da benn vat',
 'upload-success-msg'          => 'Ho kargadenn eus [$2] a zo bet graet. Gellout a rit kavout anezhi amañ : [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Kudenn kargañ',
-'upload-failure-msg'          => "Ur gudenn 'zo bet e-pad ho kargadenn :
+'upload-failure-msg'          => "Ur gudenn 'zo bet e-pad ho kargadenn adalek [$2] :
 
 $1",
 'upload-warning-subj'         => "Kemmen diwall e-pad ar c'hargañ",

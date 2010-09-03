@@ -122,14 +122,6 @@ class SqliteInstaller extends DatabaseInstaller {
 		return parent::needsUpgrade();
 	}
 
-	public function getSettingsForm() {
-		return false;
-	}
-
-	public function submitSettingsForm() {
-		return Status::newGood();
-	}
-
 	public function setupDatabase() {
 		$dir = $this->getVar( 'wgSQLiteDataDir' );
 
@@ -159,24 +151,12 @@ class SqliteInstaller extends DatabaseInstaller {
 	}
 
 	public function createTables() {
-		global $IP;
-		$status = $this->getConnection();
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		// Process common MySQL/SQLite table definitions
-		$err = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
-		if ( $err !== true ) {
-			//@todo or...?
-			$this->db->reportQueryError( $err, 0, $sql, __FUNCTION__ );
-		}
-		return $this->setupSearchIndex();
+		$status = parent::createTables();
+		return $this->setupSearchIndex( $status );
 	}
 
-	public function setupSearchIndex() {
+	public function setupSearchIndex( &$status ) {
 		global $IP;
-
-		$status = Status::newGood();
 
 		$module = $this->db->getFulltextSearchModule();
 		$fts3tTable = $this->db->checkForEnabledSearch();
@@ -194,14 +174,10 @@ class SqliteInstaller extends DatabaseInstaller {
 		global $wgDatabase;
 		LBFactory::enableBackend();
 		$wgDatabase = wfGetDB( DB_MASTER );
-		ob_start( array( 'SqliteInstaller', 'outputHandler' ) );
+		ob_start( array( $this, 'outputHandler' ) );
 		do_all_updates( false, true );
 		ob_end_flush();
 		return true;
-	}
-
-	public static function outputHandler( $string ) {
-		return htmlspecialchars( $string );
 	}
 
 	public function getLocalSettings() {

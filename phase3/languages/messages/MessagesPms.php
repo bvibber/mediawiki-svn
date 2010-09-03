@@ -206,17 +206,6 @@ dj'artìcoj ancó pa scrit",
 'vector-action-protect'          => 'Protegg',
 'vector-action-undelete'         => 'Arcùpera',
 'vector-action-unprotect'        => 'Sprotegg',
-'vector-namespace-category'      => 'Categorìa',
-'vector-namespace-help'          => "Pàgina d'agiut",
-'vector-namespace-image'         => 'Archivi',
-'vector-namespace-main'          => 'Pàgina',
-'vector-namespace-media'         => 'Pàgina con mojen',
-'vector-namespace-mediawiki'     => 'Mëssagi',
-'vector-namespace-project'       => 'Pàgina ëd proget',
-'vector-namespace-special'       => 'Pàgina special',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Stamp',
-'vector-namespace-user'          => 'Pàgina utent',
 'vector-simplesearch-preference' => "Abilité ij sugeriment d'arserca ameliorà (mach për la pel Vector)",
 'vector-view-create'             => 'Crea',
 'vector-view-edit'               => 'Modìfica',
@@ -1477,7 +1466,7 @@ Për piasì, ch'a controla l'ampostassion file_uploads.",
 'upload-options'              => 'Opsion për carié',
 'watchthisupload'             => "Ten-e d'euj s'archivi.",
 'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é già stàit carià e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
-'upload-wasdeleted'           => "'''Dosman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
+'upload-wasdeleted'           => "'''Dossman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
 
 Për piasì, ch'a contròla s'a val la pen-a dë felo.
 Për soa comodità, ambelessì a-i son ij dat dla scancelament:",
@@ -1490,7 +1479,7 @@ CIMG # Casio
 DSC_ # Nikon
 DSCF # Fuji
 DSCN # Nikon
-DUW # chèich celular
+DUW # chèich sacociàbil
 IMG # genérich
 JD # Jenoptik
 MGP # Pentax
@@ -1502,14 +1491,14 @@ PICT # vàire marche diferente
 'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià da [$2]:
 
 $1",
-'upload-warning-subj'         => 'Avis che i soma dapress a carié',
+'upload-warning-subj'         => "Avis antramentre ch'as caria",
 'upload-warning-msg'          => "A-i era un problema con lòn ch'a l'ha carià da [$2]. A peul artorné al [[Special:Upload/stash/$1|formolari për carié]] për corege ël problema.",
 
 'upload-proto-error'        => 'Protocòl cioch',
 'upload-proto-error-text'   => "Për carié da dij servent lontan a venta buté dj'anliure ch'as anandio për <code>http://</code> ò pura <code>ftp://</code>.",
 'upload-file-error'         => 'Eror antern',
 'upload-file-error-text'    => "A l'é rivaie n'eror antern dëmentrè che as fasìa n'archivi provisòri ant sël servent.
-Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrador]].",
+Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
 'upload-misc-error'         => "Eror nen identificà antramentr ch'as cariava",
 'upload-misc-error-text'    => "A l'é staie n'eror nen identificà dëmentrè ch'as cariava chèich-còs.
 Për piasì, ch'a varda che soa anliura a sia bon-a e che a l'arsponda e peuj ch'a preuva torna.

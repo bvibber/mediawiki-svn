@@ -165,7 +165,7 @@ abstract class DatabaseUpdater {
 		if ( $isFullPath ) {
 			$this->db->sourceFile( $path );
 		} else {
-			$this->db->sourceFile( archive( $path ) );
+			$this->db->sourceFile( DatabaseBase::patchPath( $path ) );
 		}
 	}
 
@@ -237,11 +237,5 @@ abstract class DatabaseUpdater {
 		} else {
 			wfOut( "...$table table does not contain $field field.\n" );
 		}
-	}
-}
-
-class OracleUpdater extends DatabaseUpdater {
-	protected function getCoreUpdateList() {
-		return array();
 	}
 }
