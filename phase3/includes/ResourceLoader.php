@@ -189,11 +189,11 @@ class ResourceLoader {
 			}
 			// Automatically register module
 			else {
-				// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
+				// Modules without dependencies pass two arguments (name, timestamp) to mediaWiki.loader.register()
 				if ( !count( $module->getDependencies() ) ) {
 					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ) );
 				}
-				// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
+				// Modules with dependencies pass three arguments (name, timestamp, dependencies) to mediaWiki.loader.register()
 				else {
 					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ),
 						$module->getDependencies() );
