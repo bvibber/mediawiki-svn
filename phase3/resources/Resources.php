@@ -4,8 +4,8 @@ ResourceLoader::register( array(
 
 	/* Special resources who have their own classes */
 	
-	'sitejs' => new ResourceLoaderSiteJSModule,
-	'startup' => new ResourceLoaderStartupModule,
+	'site' => new ResourceLoaderSiteModule,
+	'startup' => new ResourceLoaderStartUpModule,
 	
 	/* Skins */
 	

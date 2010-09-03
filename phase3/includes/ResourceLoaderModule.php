@@ -549,8 +549,9 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 
 /**
  * Custom module for MediaWiki:Common.js and MediaWiki:Skinname.js
+ * TODO: Add Site CSS functionality too
  */
-class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
+class ResourceLoaderSiteModule extends ResourceLoaderModule {
 	// In-object cache for modified time
 	private $modifiedTime = null;
 	
@@ -591,7 +592,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 }
 
 
-class ResourceLoaderStartupModule extends ResourceLoaderModule {
+class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 	private $modifiedTime = null;
 	
 	public function getScript( $lang, $skin, $debug ) {
