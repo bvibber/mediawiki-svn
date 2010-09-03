@@ -40,7 +40,7 @@ mw.SequencerTools.prototype = {
 		},
 		'templateedit':{
 			'editWidgets' : ['edittemplate'],
-			'editableAttributes' : [ 'apiTitleKey' ],
+			'editableAttributes' : [ 'apititlekey' ],
 			'contentTypes' : ['mwtemplate']
 		},
 		'transitions' : {
@@ -63,9 +63,9 @@ mw.SequencerTools.prototype = {
 			'title' : gM('mwe-sequencer-clip-panzoom' ),
 			'defaultValue' : '0%, 0%, 100%, 100%'
 		},
-		'apiTitleKey' : {
+		'apititlekey' : {
 			'type' : 'string',
-			'inputSize' : 15,
+			'inputSize' : 30,
 			'title' : gM('mwe-sequencer-template-name' )
 		},
 		'transIn' : {
@@ -79,28 +79,34 @@ mw.SequencerTools.prototype = {
 		// Special child node type
 		'param' : {
 			'type' : 'childParam',
-			'inputSize' : 20
+			'inputSize' : 30
 		}
 	},
 	editableTypes: {
 		'childParam': {
-			update: function( _this, smilElement, paramName, value){
+			update: function( _this, smilElement, paramName, value){				
 				// Check if the param already exists
-				$paramNode = $j( smilElement ).find( "[name='"+ paramName + '"]' );
+				$paramNode = $j( smilElement ).find( "[name='"+ paramName + "']" );				
 				if( $paramNode.length == 0){
 					$j( smilElement ).append(
-						$j('<param />').attr('name', paramName)
+						$j('<param />').attr({
+							'name': paramName,
+							'value' : value
+						})
 					)
+				} else {
+					// Update the param value
+					$paramNode.attr( 'value', value);
 				}
-				// Update the param value
-				$paramNode.attr( 'value', value);
+				mw.log("editableTypes::Should have updated smilElement param: " + paramName 
+						+ ' to : ' + $j( smilElement ).find( "[name='"+ paramName + '"]' ).attr( 'value') );				
 			},
-			getSmilVal: function( _this, smilElement, paramName, value){
-				$paramNode =  $j( smilElement ).find( "[name='"+ paramName + '"]' );
+			getSmilVal: function( _this, smilElement, paramName ){							
+				$paramNode =  $j( smilElement ).find( "[name='"+ paramName + "']" );
 				if( $paramNode.length == 0){
 					return '';
 				}
-				$paramNode.attr('value');
+				return $paramNode.attr('value');
 			}
 		},
 		'string': {
@@ -185,8 +191,16 @@ mw.SequencerTools.prototype = {
 	},
 	editWidgets: {
 		'edittemplate':{
-			'onChange' : function( _this, target, smilElement ){
-		
+			'onChange' : function( _this, smilElement, target ){
+				// Clear the smilElement template cache: 
+				$j( smilElement ).data('templateHtmlCache', null);
+				// Re draw the smilElement in the player
+				var smil = _this.sequencer.getSmil();
+				$playerTarget = $j('#' + smil.getSmilElementPlayerID( smilElement ) );
+				$playerTarget.loadingSpinner();
+				smil.getLayout().getSmilTemplateHtml( smilElement, $playerTarget, function(){
+					mw.log("SequencerTools::editWidgets: smil template updated");
+				});
 			},
 			'draw': function( _this, target, smilElement ){
 				// Parse the set of templates from the template text cache
@@ -197,19 +211,23 @@ mw.SequencerTools.prototype = {
 					return ;
 				}
 				// Get the template wikitext 
-				_this.sequencer.getServer().getTemplateText($j( smilElement).attr('apititlekey'), function( templateText ){
-					if( ! templateText ){
+				_this.sequencer
+				.getServer()
+				.getTemplateText( $j( smilElement).attr('apititlekey'), function( templateText ){
+					mw.log("GotTemplateText: " + templateText );
+					if( ! templateText || typeof templateText != 'string' ){
 						mw.log("Error: could not get wikitext form titlekey: " +  $j( smilElement).attr('apititlekey'))
 						return ;
 					}
 					$j( target ).empty().append( 
-						$j('<h3 />').text('mwe-sequencer-edittemplate-params')
+						$j('<h3 />').text( gM('mwe-sequencer-edittemplate-params') )
 					)
 					
 					// This is not supposed to be perfect .. 
 					// just get you 'most' of the input vars 'most' of the time via the greedy regEx:
-					var templateVars = templateText.match(/\{\{\{([^\}]*)\}\}\}/gi);					
-					var cleanTemplateParams = {};
+					var templateVars = templateText.match(/\{\{\{([^\}]*)\}\}\}/gi);							
+					var cleanTemplateParams = {};		
+					
 					for( i =0;i<templateVars.length; i++ ){
 						var tVar = templateVars[i];
 						// Remove all {{{ and }}}
@@ -224,15 +242,34 @@ mw.SequencerTools.prototype = {
 					// Output input boxes for each template var as a param
 					for( var paramName in cleanTemplateParams ){
 						$j( target ).append( 
-							_this.getEditableAttribute(smilElement, 'edittemplate', 'param',  paramName ),
-							$j('<br />')
+							_this.getEditableAttribute(
+									smilElement, 
+									'edittemplate', 
+									'param',  
+									paramName
+							)
+							.find('input')
+							// Bind the change event:
+							.change(function(){
+								_this.editWidgets.edittemplate.onChange(
+									_this, 
+									smilElement, 
+									target
+								)
+							})
+							.parent()
+							,							
+							$j('<div />')
+							.css('clear', 'both')
 						)
-					}					
+					}
+					
+					
 				});
 			}
 		},
 		'panzoom' : {
-			'onChange': function( _this, target, smilElement ){
+			'onChange': function( _this, smilElement, target ){
 				var panZoomVal = $j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom')).val();
 				mw.log("panzoom change:" + panZoomVal );
 				
@@ -267,7 +304,7 @@ mw.SequencerTools.prototype = {
 				// Add a input box binding: 				
 				$j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom'))
 				.change(function(){
-					_this.editWidgets.panzoom.onChange( _this, target, smilElement);
+					_this.editWidgets.panzoom.onChange( _this, smilElement, target );
 				})
 				
 				$j( target ).append( 
@@ -357,7 +394,7 @@ mw.SequencerTools.prototype = {
 					_this.sequencer.getSmil()
 					.getLayout()
 					.panZoomLayout(
-						smilElement
+						smilElement						
 					);
 				}
 				// Add bindings
@@ -378,7 +415,7 @@ mw.SequencerTools.prototype = {
 						// Restore original css for the layout helper 
 						$j(this).css( orginalHelperCss )
 						// trigger the 'change'
-						_this.editWidgets.panzoom.onChange( _this, target, smilElement  );
+						_this.editWidgets.panzoom.onChange( _this, smilElement, target );
 					}
 				})
 				.css('cursor', 'move')
@@ -400,14 +437,14 @@ mw.SequencerTools.prototype = {
 						// Restore original css
 						$j(this).css( orginalHelperCss )
 						// trigger the change
-						_this.editWidgets.panzoom.onChange( _this, target, smilElement  );
+						_this.editWidgets.panzoom.onChange( _this, smilElement, target );
 					}
 				})
 				
 			}
 		},
 		'trimTimeline' : {
-			'onChange': function( _this, target, smilElement ){				
+			'onChange': function( _this, smilElement, target){				
 				var smil = _this.sequencer.getSmil();
 				// Update the preview thumbs
 				
@@ -466,7 +503,7 @@ mw.SequencerTools.prototype = {
 				
 				var onInputChange = function( sliderIndex, timeValue ){
 					// Register the change
-					_this.editWidgets.trimTimeline.onChange( _this, target, smilElement);
+					_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
 					// Update the slider
 					if( fullClipDuration ){
 						$j('#'+_this.sequencer.id + '_trimTimeline' )
@@ -493,7 +530,7 @@ mw.SequencerTools.prototype = {
 				});
 				 
 				// Update the thumbnails:				
-				_this.editWidgets.trimTimeline.onChange( _this, target, smilElement );
+				_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
 				
 				// Get the clip full duration to build out the timeline selector
 				smil.getBody().getClipAssetDuration( smilElement, function( clipDuration ) {
@@ -539,7 +576,7 @@ mw.SequencerTools.prototype = {
 								_this.editableTypes['time'].update( _this, smilElement, 'dur',   sliderToTime( ui.values[ 1 ]- ui.values[0] ) );
 																				
 								// update the widget display
-								_this.editWidgets.trimTimeline.onChange( _this, target, smilElement);
+								_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
 								
 								// Register the edit state for undo / redo 
 								_this.sequencer.getActionsEdit().registerEdit();
@@ -758,7 +795,7 @@ mw.SequencerTools.prototype = {
 				_this.editableAttributes[ attributeName ].inputSize : 6;
 
 		// Set paramName based attributes: 
-		var attributeTitle = ( editAttribute.title ) ? editAttribute.title : paramName;
+		var attributeTitle = ( editAttribute.title ) ? editAttribute.title : paramName + ':';
 
 		return $j( '<div />' )
 			.css({

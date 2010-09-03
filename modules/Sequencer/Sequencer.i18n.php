@@ -45,7 +45,10 @@ $messages['en'] = array(
 	'mwe-sequencer-tools-panzoomhelper-desc' => 'Resize and move the <i>layout helper</i> to update layout',
 	'mwe-sequencer-tools-panzoomhelper-resetlayout' => 'Reset layout',
 
-
+	'mwe-sequencer-tools-templateedit' => 'Edit template',
+	'mwe-sequencer-template-name' => 'Template page name',
+	'mwe-sequencer-tools-templateedit-desc' => 'Edit template parameters',
+	'mwe-sequencer-edittemplate-params' => 'Template parameters',
 
 	'mwe-sequencer-tools-transitions' => 'Transitions',
 	'mwe-sequencer-tools-transitions-desc' => 'Set in and out Transitions',

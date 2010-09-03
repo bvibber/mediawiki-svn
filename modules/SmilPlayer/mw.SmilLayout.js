@@ -130,7 +130,7 @@ mw.SmilLayout.prototype = {
 			case 'img': 
 			case 'cdata_html': 
 			case 'smiltext':				
-				// Give the static content a getSmilElementPlayerID for player layaer control
+				// Give the static content a getSmilElementPlayerID for player layer control
 				var $target = $j('<div />')
 					.attr('id', _this.smil.getSmilElementPlayerID( smilElement ) )
 					.css({
@@ -208,7 +208,7 @@ mw.SmilLayout.prototype = {
 			break;
 			case 'mwtemplate':
 				$target.loadingSpinner();
-				this.addSmilTemplateHtml( smilElement, $target, callback );
+				this.getSmilTemplateHtml( smilElement, $target, callback );
 				return; 
 			break;
 			case 'cdata_html':				
@@ -371,7 +371,7 @@ mw.SmilLayout.prototype = {
 	/**
 	 * Add Smil Template to a $target
 	 */
-	addSmilTemplateHtml: function( smilElement, $target, callback ){
+	getSmilTemplateHtml: function( smilElement, $target, callback ){
 		var _this = this;
 		var addTemplateHtmlToTarget = function(){								
 			// Add the html to the target: 
@@ -400,7 +400,7 @@ mw.SmilLayout.prototype = {
 			return ;
 		}
 		
-		mw.log("addSmilTemplateHtml:: x-wikitemplate:: " + $j( smilElement).attr( 'apititlekey' ) + " to target:" + $target.attr('class'));;
+		mw.log("getSmilTemplateHtml:: x-wikitemplate:: " + $j( smilElement).attr( 'apititlekey' ) + " to target:" + $target.attr('class'));;
 		// build a wikitext call ( xml keys lose case when put into xml ) 
 		var templateKey = $j( smilElement).attr( 'apititlekey' );
 		if(!templateKey){
@@ -526,7 +526,9 @@ mw.SmilLayout.prototype = {
 		return $j('<div />')			
 			// Wrap in font-size percentage relative to virtual size
 			.css( {
-				'font-size': ( scalePercent *100 ) + '%' 
+				'font-size': ( scalePercent *100 ) + '%',
+				'width': '100%',
+				'height' : '100%'
 			})
 			.append(
 				$htmlLayout.css( textCss )
@@ -703,11 +705,15 @@ mw.SmilLayout.prototype = {
 	 */
 	panZoomLayout: function( smilElement, $target, img ){
 		var _this = this;		
+		mw.log( 'panZoomLayout:' +  $j( smilElement).attr('id')  );		
 		var panZoom = $j( smilElement).attr('panZoom').split(',');
 		if( !img ){
-			var img = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).get(0);
+			var img = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).find('img').get(0);
+			if( !img){
+				mw.log('Error getting image for ' +  $j( smilElement).attr('id') );
+			}
 		}		
-		
+
 		_this.getNaturalSize( img, function( natrualSize ){
 			// Check if the transfrom is needed:
 			if( parseInt( panZoom.left ) == 0 
@@ -719,11 +725,13 @@ mw.SmilLayout.prototype = {
 				( parseInt( panZoom.height ) == 100 && panZoom.height.indexOf('%') != -1 ) 
 			){
 				// no transform is needed
+				mw.log("no transofmr needed: " + parseInt( panZoom.left ) + ' = 0 && ' + 
+						( parseInt( panZoom.width ) ) );
 				return ;
 			}
 			// Get percent values			
 			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoom, natrualSize );
-			//mw.log('panZoomLayout::' +  'l:' + percentValues.left + ' t:' + percentValues.top + ' w:' + percentValues.width + ' h:' + percentValues.height );
+			mw.log('panZoomLayout::' +  'l:' + percentValues.left + ' t:' + percentValues.top + ' w:' + percentValues.width + ' h:' + percentValues.height );
 			// Update the layout via the animation engine updateElementLayout method
 			_this.smil.getAnimate().updateElementLayout( smilElement, percentValues, $target, img );
 		});

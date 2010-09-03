@@ -113,11 +113,9 @@ mw.SequencerTimeline.prototype = {
 		var trackStack =0;
 		// Draw all the tracks
 		$j.each(smilSequenceTracks, function( trackIndex, smilSequenceTrack ){
-			trackStack++;
-			mw.log("!!!t++ inx: " + trackIndex + ' stack:' + trackStack);
+			trackStack++;		
 			_this.drawSequenceTrack( trackIndex, smilSequenceTrack, function(){
 				trackStack--;
-				mw.log("t-- inx: " + trackIndex + ' stack:' + trackStack);
 				if( trackStack == 0 && callback ){
 					callback();
 				}

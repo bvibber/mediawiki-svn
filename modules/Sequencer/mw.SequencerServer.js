@@ -116,8 +116,8 @@
 		},		
 		getTemplateText: function( templateTitle, callback ){
 			var _this = this; 	
-			if(this.templateTextCache[templateTitle]){
-				callback(templateTitle);
+			if( this.templateTextCache[templateTitle] ){
+				callback( this.templateTextCache[templateTitle] );
 				return ;
 			}
 			mw.getTitleText( this.getApiUrl(),templateTitle, function( templateText ){

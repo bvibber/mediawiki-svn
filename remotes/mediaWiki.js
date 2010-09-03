@@ -271,11 +271,13 @@ function mwLoadPlayer( callback ){
 	var jsPlayerRequest = [	                    
 		'mw.EmbedPlayer', 
 		'mw.style.EmbedPlayer',
-		'$j.ui', 
+		'$j.ui',
+		'$j.widget',
+		'$j.ui.mouse',
 		'mw.PlayerControlBuilder', 
 		'$j.fn.hoverIntent',		
 		'$j.cookie', 
-		'JSON',
+		'JSON',		
 		'$j.ui.slider', 
 		
 		'mw.PlayerSkinKskin',

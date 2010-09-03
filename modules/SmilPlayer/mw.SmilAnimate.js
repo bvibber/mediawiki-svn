@@ -235,7 +235,7 @@ mw.SmilAnimate.prototype = {
 		//mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + videoSeekTime );
 		
 		// Register a buffer ready callback
-		this.smil.getBuffer().videoBufferSeek( smilElement, videoSeekTime, function() {			
+		this.smil.getBuffer().mediaBufferSeek( smilElement, videoSeekTime, function() {			
 			//mw.log( "transformVideoForTime:: seek complete ")
 			if( callback )
 				callback();
@@ -435,7 +435,7 @@ mw.SmilAnimate.prototype = {
 	// xxx need to refactor move to "smilLayout"
 	updateElementLayout: function( smilElement, percentValues, $target, htmlElement ){
 		var _this = this;
-		//mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
+		mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
 		
 		// get a pointer to the html target:
 		if( !$target ) {

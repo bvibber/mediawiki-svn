@@ -252,7 +252,7 @@ mw.SequencerActionsSequence.prototype = {
 			'title' : gM('mwe-sequencer-menu-sequence-publish-desc'),			
 			'content' : gM('mwe-sequencer-loading-publish-render'),
 			'width' : 450,
-			'height' : 400
+			'height' : 470
 		});
 		
 		// Check if we have unsaved changes ( don't publish unsaved changes )

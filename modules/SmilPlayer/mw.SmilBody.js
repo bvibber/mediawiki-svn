@@ -89,7 +89,7 @@ mw.SmilBody.prototype = {
 		this.getElementsForTime( time ,
 			/* SMIL Element in Range */ 
 			function( smilElement) {	
-				mw.log("SmilBody::renderTime: Element in Range" + $j( smilElement ).attr('id'));
+				//mw.log("SmilBody::renderTime: Element in Range" + $j( smilElement ).attr('id'));
 				// var relativeTime = time - smilElement.parentTimeOffset;
 				var relativeTime = time - $j( smilElement ).data ( 'startOffset' );
 				
@@ -101,7 +101,7 @@ mw.SmilBody.prototype = {
 			},
 			/* SMIL Element out of range */
 			function( smilElement ){
-				mw.log("SmilBody::renderTime: Element out of Range" + $j( smilElement ).attr('id'));
+				//mw.log("SmilBody::renderTime: Element out of Range" + $j( smilElement ).attr('id'));
 				// Stop the animation or playback 
 				_this.smil.getAnimate().pauseAnimation( smilElement )
 				
