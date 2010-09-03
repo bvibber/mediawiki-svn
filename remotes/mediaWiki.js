@@ -110,7 +110,7 @@ function doPageSpecificRewrite() {
 				'$j.fn.textSelection', 
 				'$j.ui', 
 				'$j.widget',
-				'$j.ui.mouse'
+				'$j.ui.mouse',
 				'$j.ui.sortable' 
 			], function() {
 				mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
