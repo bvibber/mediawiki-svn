@@ -471,8 +471,23 @@ $messages['pdc'] = array(
 	'pf-header-page_title' => 'Titel',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administrator PackageForce',
+	'pf-desc' => '[[Special:PackageForce|Pobieranie pakietów]] przydatnych szablonów itp.',
+	'pf-only-admins-allowed' => 'Ta strona jest wyłącznie dla użytkowników posiadających uprawnienie „packageforce-admin”.',
+	'pf-admin-menu-default' => 'Domyślne',
+	'pf-admin-menu-unsortedtemplates' => 'Szablony jeszcze nieposortowane',
+	'pf-admin-link-view-documentation' => 'Zobacz dokumentację związaną z tą stroną.',
+	'pf-admin-link-editlink-page' => 'Edytuj stronę',
+	'pf-admin-link-approve' => 'Zatwierdź stronę',
+	'pf-header-documentation' => 'Dokumentacja',
+	'pf-header-in_packages' => 'Pakiety',
+	'pf-header-edit' => 'Link do edycji',
+	'pf-header-type' => 'Typ strony',
 	'pf-header-page_title' => 'Tytuł',
 	'pf-header-approve' => 'Akceptuj',
 );

@@ -65,6 +65,13 @@ $messages['ce'] = array(
 	'wikimediamobile-desc' => 'Гlодарца йолу хийцамашца MediaWiki оцу лерагlирсан кхоллам Викимедийа, хlокху чохь ю http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'wikimediamobile-desc' => 'Podpůrné funkce MediaWiki pro projekt Wikimedia-mobile, sídlící na http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  * @author Xxglennxx

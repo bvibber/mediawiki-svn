@@ -135,6 +135,7 @@ $messages['cs'] = array(
 	'categoryintersection-desc' => 'Udržuje tabulku s hash hodnotami [[Special:CategoryIntersection|průniků kategorií]] na speciální stránce.',
 	'categoryintersection-doit' => 'Seznam stránek ve všech těchto kategoriích',
 	'categoryintersection-maxcategories' => 'Maximální povolený počet kategorií, pro které lze hledat průnik, je $1.',
+	'categoryintersection-mincategories' => 'Musíte zadat alespoň dvě kategorie.',
 	'categoryintersection-results' => 'Hledání vrátilo $1 {{PLURAL:$1|výsledek|výsledky|výsledků}}.',
 );
 

@@ -268,6 +268,7 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  * @author Reaperman
  */
 $messages['cs'] = array(
@@ -277,8 +278,8 @@ $messages['cs'] = array(
 	'authorprotect-confirm' => 'Změnit úroveň ochrany',
 	'authorprotect-edit' => 'Umožnit úpravy pouze autorům',
 	'authorprotect-move' => 'Umožnit přesouvání jen autorům',
-	'authorprotect-expiry' => 'Čas vypršení',
-	'authorprotect-reason' => 'Důvod',
+	'authorprotect-expiry' => 'Čas vypršení:',
+	'authorprotect-reason' => 'Důvod:',
 	'authorprotect-intro' => 'Tento formulář slouží k zamknutí této stránky všem uživatelům kromě autorů.',
 	'authorprotect-success' => 'Zamknutí proběhlo úspěšně!',
 	'authorprotect-failure' => 'Zamknutí neproběhlo úspěšně',

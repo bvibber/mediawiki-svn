@@ -147,6 +147,32 @@ Se quere ler a resposta no seu contexto visite <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 respondeu ao seu resumo',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'reflect-desc' => 'Uuswytig vu no Themesträng gordnete Diskussionsyte',
+	'reflect-bulleted' => 'Sali $1,
+
+$2 het e Uussag us Dyym Byytrag zum Thema „$3“ zämmegfasst.
+
+D Zämmefassig isch: „$5“.
+
+Du chasch iberpriefe, eb $2 Dyy Uussag richtig verstande het, indäm Du <$4> ufruefsch.
+
+Wänn imfall e Missverständnis vorlyt, chasch Dyy Uussag klarstelle.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Dyy Byytrag isch vu $2 zämmegfasst wore',
+	'reflect-responded' => 'Sali $1,
+
+$2 het uf Dyy Zämmefassig zuen ere Uussag in syym Byytrag reagiert.
+
+D Zämmefassig, wu Du aagleit hesch: „$6“.
+Sällem syy Nochricht: „$5“.
+
+Ruef <$4> uf, wänn Du d Antwort im däm Zämmehang witt läse.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 het uf Dyy Zämmefassig vun ere Uussag reagiert.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -239,32 +265,52 @@ U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
  */
 $messages['pl'] = array(
 	'reflect-desc' => 'Rozszerzenie o komentarze w wątkach',
+	'reflect-bulleted' => 'Witam $1,
+
+$2 podsumował opinię, którą przedstawiłeś w wątku „$3”. 
+
+Jego podsumowanie: „$5”.
+
+Możesz sprawdzić czy $2 właściwie to zrobił odwiedzając <$4>. 
+
+Objaśnij swoją opinię, jeśli zostałeś źle zrozumiany.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Twoja opinia została podsumowana przez $2',
+	'reflect-responded' => 'Witam $1,
+
+$2 odpowiedział na Twoje podsumowanie opinii, którą przedstawił.
+
+Podsumowanie które napisałeś: „$6”. 
+Jego odpowiedź: „$5”. 
+
+Jeśli chcesz zobaczyć odpowiedź w kontekście wątku, odwiedź <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 odpowiedział na Twoje podsumowanie',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'reflect-desc' => 'Aument dij coment concatenà',
 	'reflect-bulleted' => 'Cerea $1,
 
-$2 a l\'ha riassumù un pont ch\'it l\'has fàit ant ël thread "$3".
+$2 a l\'ha fàit un resumé d\'un rasonament ch\'a l\'has fàit ant la discussion "$3".
 
 Sò resumé: "$5".
 
-It peule verifiché se $2 a l\'ha fàit giust tò pont an visitand <$4>.
+A peule verifiché se $2 a l\'ha capì bin tò rasonament an visitand <$4>.
 
-It podras ciairì tò pont s\'a-i é dle anconprension.',
-	'reflect-bulleted-subject' => "[{{SITENAME}}] Tò pont a l'é stàit riassumù da $2",
+A podrà s-ciairì sò rasonament s\'a-i son dj\'incomprension.',
+	'reflect-bulleted-subject' => "[{{SITENAME}}] Ëd sò rasonament a l'ha fàit un resumé $2",
 	'reflect-responded' => 'Cerea $1,
 
-$2 a l\'ha arspondù a tò resumé d\'un pont ch\'a l\'avìa fàit.
+$2 a l\'ha arspondù a sò resumé d\'un rasonament ch\'a l\'avìa fàit.
 
-Ël resumé ch\'it l\'has lassà: "$6".
-So mëssagi: "$5".
+Ël resumé ch\'a l\'ha lassà: "$6".
+Soa rispòsta: "$5".
 
-S\'it veule lese l\'arspòsta ant ël contest, vìsita <$4>.',
-	'reflect-responded-subject' => "[{{SITENAME}}] $2 a l'ha arspondù ai pont ëd tò resumé",
+S\'a veule lese l\'arspòsta ant ël contest, ch\'a vìsita <$4>.',
+	'reflect-responded-subject' => "[{{SITENAME}}] $2 a l'ha arspondù al resumé ëd soa opinion",
 );
 
 /** Portuguese (Português)

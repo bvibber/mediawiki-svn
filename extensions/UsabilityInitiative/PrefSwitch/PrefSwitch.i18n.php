@@ -312,6 +312,11 @@ Nëse ju dëshironi të kthehet në tipare të reja, ju lutem [$1 klikoni këtu]
 $messages['an'] = array(
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
+	'prefswitch-survey-submit-off' => 'Desactivar as nuevas caracteristicas',
+	'prefswitch-survey-submit-feedback' => 'Ninviar a suya opinión',
+	'prefswitch-survey-answer-whyoff-other' => 'Atra razón:',
+	'prefswitch-title-switched-off' => 'Gracias',
+	'prefswitch-title-feedback' => 'Comentarios',
 );
 
 /** Arabic (العربية)
@@ -406,6 +411,44 @@ $messages['ar'] = array(
 	'prefswitch-survey-intro-off' => 'شكرا لك على تجربة المزايا الجديدة.
 لتساعدنا في تحسين هذه المزايا، من فضلك عبّئ الاستبيان الاختياري أدناه قبل نقر [[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]',
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'prefswitch' => 'Юзабилити инициативаһы мөмкинлектәрен көйләү',
+	'prefswitch-desc' => 'Ҡатнашыусыларға көйләүҙәр йыйынтығын үҙгәртергә мөмкинлек бирә',
+	'prefswitch-jswarning' => 'Күренеш үҙгәреү менән, ул артабан эшләһен өсөн, һеҙҙең [[User:$1/$2.js|$2 JavaScript]] [[{{ns:user}}:$1/vector.js]] <!-- йәки [[{{ns:user}}:$1/common.js]]--> файлына күсерелегә тейеш икәнен иҫегеҙҙә тотоғоҙ.',
+	'prefswitch-csswarning' => 'Һеҙҙең [[User:$1/$2.css| «$2» күренеше өсөн шәхси биҙәлешегеҙ]] артабан ҡулланылмаясаҡ. Һеҙ үҙегеҙҙең CSS көйләүҙәрегеҙҙе «Векторлы» күренеш өсөн [[{{ns:user}}:$1/vector.css]] файлына өҫтәй алаһығыҙ.',
+	'prefswitch-survey-true' => 'Эйе',
+	'prefswitch-survey-false' => 'Юҡ',
+	'prefswitch-survey-submit-off' => 'Яңы мөмкинлектәрҙе һүндерергә',
+	'prefswitch-survey-cancel-off' => 'Әгәр яңы мөмкинлектәрҙе артабан ҡулланырға теләһәгеҙ, $1 битенә кире ҡайта алаһығыҙ.',
+	'prefswitch-survey-submit-feedback' => 'Баһалама ебәрергә',
+	'prefswitch-survey-cancel-feedback' => 'Әгәр баһалама ебәрергә теләмәһәгеҙ, $1 битенә ҡайта алаһағыҙ.',
+	'prefswitch-survey-question-like' => 'Һеҙгә яңы мөмкинлектәрҙә нимә оҡшаны?',
+	'prefswitch-survey-question-dislike' => 'Һеҙгә яңы мөмкинлектәрҙә нимә оҡшаманы?',
+	'prefswitch-survey-question-whyoff' => 'Ниңә һеҙ яңы мөмкинлектәрҙе һүндерәһегеҙ?
+Бөтә тап килгән яуаптарҙы һайлағыҙ, зинһар.',
+	'prefswitch-survey-question-globaloff' => 'Һеҙ яңы мөмкинлектәрҙе дөйөм һүндерергә теләйһегеҙме?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Уларҙы ҡулланыуы бик ауыр.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Улар тейешлесә эшләмәй.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Улар көтөлгәнсә эшләмәй.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Миңә тышҡы ҡиәфәте оҡшамай.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Миңә яңы бүлгестәр һәм төҙөлөшө оҡшаманы.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Миңә яңы мөхәррирләү панеле оҡшаманы.',
+	'prefswitch-survey-answer-whyoff-other' => 'Башҡа сәбәп:',
+	'prefswitch-survey-question-browser' => 'Һеҙ ниндәй браузер ҡулланаһығыҙ?',
+	'prefswitch-survey-answer-browser-other' => 'Башҡа браузер:',
+	'prefswitch-survey-question-os' => 'Һеҙ ниндәй операцион система ҡулланаһығыҙ?',
+	'prefswitch-survey-answer-os-other' => 'Башҡа операцион система:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Эйе, был мөмкинлектәрҙе бөтә вики проекттарҙа һүндерергә',
+	'prefswitch-survey-question-res' => 'Экранығыҙҙың киңәйтелмәһе ниндәй?',
+	'prefswitch-title-on' => 'Яңы мөмкинлектәр',
+	'prefswitch-title-switched-on' => 'Рәхәтләнегеҙ!',
+	'prefswitch-title-off' => 'Яңы мөмкинлектәрҙе һүндерергә',
+	'prefswitch-title-switched-off' => 'Рәхмәт',
 );
 
 /** Belarusian (Беларуская)
@@ -1131,6 +1174,13 @@ $messages['cu'] = array(
 	'prefswitch-survey-false' => 'нѣ́тъ',
 	'prefswitch-survey-answer-browser-other' => 'ино съмотри́ло :',
 	'prefswitch-title-switched-off' => 'благода́рьщвлѭ',
+);
+
+/** Chuvash (Чӑвашла)
+ * @author FLAGELLVM DEI
+ */
+$messages['cv'] = array(
+	'prefswitch-title-on' => 'Çĕнĕ мехелсем',
 );
 
 /** Welsh (Cymraeg)
@@ -1864,6 +1914,7 @@ Helpi nin por plibonigi ilin, bonvolu plenumi la jenan malnepran enketon antaŭ 
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Locos epraix
  * @author Muro de Aguas
  * @author Pertile
@@ -1878,7 +1929,6 @@ $messages['es'] = array(
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Desactivar las nuevas características',
-	'prefswitch-survey-submit-global-off' => 'Deshabilitar nuevas características en todos los wikis',
 	'prefswitch-survey-cancel-off' => 'Si desea continuar utilizando las nuevas características puede volver a $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentario',
 	'prefswitch-survey-cancel-feedback' => 'Si no desea enviar sus comentarios puede volver a $1.',
@@ -1886,6 +1936,7 @@ $messages['es'] = array(
 	'prefswitch-survey-question-dislike' => 'Qué no te gustó de las nuevas características',
 	'prefswitch-survey-question-whyoff' => '¿Por qué está desactivando las nuevas características?
 Por favor seleccione todas las opciones que correspondan.',
+	'prefswitch-survey-question-globaloff' => '¿Desea desactivar las nuevas características globalmente?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Era muy difícil de utilizar.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'No funcionó correctamente.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Tuvo comportamientos impredecibles.',
@@ -1897,6 +1948,7 @@ Por favor seleccione todas las opciones que correspondan.',
 	'prefswitch-survey-answer-browser-other' => 'Otro navegador:',
 	'prefswitch-survey-question-os' => '¿Qué sistema operativo utiliza?',
 	'prefswitch-survey-answer-os-other' => 'Otro sistema operativo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sí, desactivar las nuevas características en todos los proyectos',
 	'prefswitch-survey-question-res' => '¿Cuál es la resolución de su pantalla?',
 	'prefswitch-title-on' => 'Nuevas características',
 	'prefswitch-title-switched-on' => '¡Disfrute!',
@@ -3365,7 +3417,6 @@ $messages['it'] = array(
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disattiva le nuove funzioni',
-	'prefswitch-survey-submit-global-off' => 'Attiva nuove caratteristiche su tutti i wiki',
 	'prefswitch-survey-cancel-off' => 'Se vuoi continuare ad usare le nuove funzioni, puoi tornare a $1.',
 	'prefswitch-survey-submit-feedback' => 'Invia feedback',
 	'prefswitch-survey-cancel-feedback' => 'Se non vuoi fornire un feedback, puoi tornare a $1.',
@@ -3373,6 +3424,7 @@ $messages['it'] = array(
 	'prefswitch-survey-question-dislike' => 'Cosa non ti è piaciuto delle nuove funzionalità?',
 	'prefswitch-survey-question-whyoff' => 'Perché stai disattivando le nuove funzioni?
 Si prega di selezionare tutte le motivazioni pertinenti.',
+	'prefswitch-survey-question-globaloff' => 'Vuoi disattivare le funzionalità globalmente?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Era troppo difficile da usare.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Non funzionava correttamente.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Non si comportava in modo coerente.',
@@ -4006,6 +4058,96 @@ Vul e.t.b. de ongerstaonde vraogelies in om os te helpe ze wiejer te verbaetere 
 $messages['lv'] = array(
 	'prefswitch-survey-true' => 'Jā',
 	'prefswitch-survey-false' => 'Paldies',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'prefswitch' => 'Peralihan preferensi Inisiatif Kagunoaan',
+	'prefswitch-desc' => 'Izinkan pangguno maubah aturan preferensi',
+	'prefswitch-jswarning' => 'Ingeklah adonyo parubahan kulit ko, awak [[User:$1/$2.js|$2 JavaScript]] akan disalin ka [[{{ns:user}}:$1/vector.js]] <!-- atau [[{{ns:user}}:$1/common.js]]--> untuak dapek terus digunoan.',
+	'prefswitch-csswarning' => 'Awak [[User:$1/$2.css|custom $2 styles]] indak akan dapek dipakai. Awak dapek manambahkab CSS untuak kulit Vektor di [[{{ns:user}}:$1/vector.css]].',
+	'prefswitch-survey-true' => 'Yo',
+	'prefswitch-survey-false' => 'Indak',
+	'prefswitch-survey-submit-off' => 'Corak baru dimatian',
+	'prefswitch-survey-cancel-off' => 'Jiko awak ingin taruih manggunoan corak baru, awak dapek baliak ka $1.',
+	'prefswitch-survey-submit-feedback' => 'Kirim umpan baliak',
+	'prefswitch-survey-cancel-feedback' => 'Jiko awak indak ingin memberikan umpan baliak, awak dapek baliak ka $1.',
+	'prefswitch-survey-question-like' => 'Apo yang awak sukoi tentang corak baru ko?',
+	'prefswitch-survey-question-dislike' => 'Apo yang awak indak sukoi tentang corak ko?',
+	'prefswitch-survey-question-whyoff' => 'Kenapo awak matian corak baru ko?
+Harap pilih yang tapek.',
+	'prefswitch-survey-question-globaloff' => 'Apo awak ingin corak ko dimatian sejagad',
+	'prefswitch-survey-answer-whyoff-hard' => 'Corak terlalu susah untuak digunoan',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Corak indak bafungsi dengan baik',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Corak indak sasuai dengan diharapkan',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Denai indak suko tampilan coraknyo',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Denai indak suko dengan tab baru dan tampilannyo',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Denai indak suko dengan bilah baru.',
+	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnyo:',
+	'prefswitch-survey-question-browser' => 'Penjelajah web apo yang awak gunoan?',
+	'prefswitch-survey-answer-browser-other' => 'Penjelajah web lainnyo:',
+	'prefswitch-survey-question-os' => 'Sistem operasi apo yang awak gunoan?',
+	'prefswitch-survey-answer-os-other' => 'Sistem operasi lainnyo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Yo, corak dimatian di semua wiki',
+	'prefswitch-survey-question-res' => 'Barapo ukuran resolusi layar awak?',
+	'prefswitch-title-on' => 'Corak baru',
+	'prefswitch-title-switched-on' => 'Salamaik menikmati!',
+	'prefswitch-title-off' => 'Corak baru dimatian',
+	'prefswitch-title-switched-off' => 'Tarimo kasih',
+	'prefswitch-title-feedback' => 'Umpan baliak',
+	'prefswitch-success-on' => 'Corak baru kini lah aktif. Kami harap awak dapek menikmatinyo. Awak dapek kapan sajo mamatiannyo dengan menklik tautan ko "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" pado atas laman.',
+	'prefswitch-success-off' => 'Corak baru sudah dimatian. Tarimo kasih sudah mancubonyo. Awak dapek manggunoannyo baliak kapan sajo dengan menklik tautan ko "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" pado atas laman.',
+	'prefswitch-success-feedback' => 'Umpan baliak awak sudah terkirim',
+	'prefswitch-return' => '<hr style="clear:both">
+Baliak ka <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Cuplikan navigasi antarmuka baru Wikipedia <small>[[Media:VectorNavigation-en.png|(pagadang)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Cuplikan antarmuka laman suntingan dasar <small>[[Media:VectorEditorBasic-en.png|(pagadang)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Cuplikan kotak dialog baru untuak mamasuakkan tautan
+|}
+|}
+Tim Berpengalaman Pangguno Yayasan Wikimedia telah bakarajo basamo relawan dari komunitas untuak mambuek sagalonyo jadi mudah untuak awak. Kami senang babagi sajumlah perbaikan, tamasuak tampilan dan gaya baru dan corak penyuntingan yang labiah sederhana. Parubahan ko ditujukan untuak mambuek sagalonyo jadi mudah pulo bagi panyumbang baru untuak mamulai pengalamannyo, dan didasarkan kapado [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year]. Membaiki kagunoan proyek-proyek kami ko adolah sebuah kautamoan Yayasan Wikimedia dan kami akan terus babagi pemutakhiran terkini selanjutnya. Untuak labiah lanjut, baco [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post].
+
+=== Iko apo sajo yang lah kami ubah ===
+* '''Navigasi:''' Kami sudah membaiki navigasi untuak laman mambaco dan suntingan. Kini, tab pado bagian atas laman lah tarang memberitahukan awak apokah awak sadang menampilkan laman atau laman ota, dan katiko awak sadang mambaco atau manyuntian laman.
+* '''Perbaikan bilah suntingan:''' Kami lah maatur bilah suntingan untuak labih mudah digunoan. Kini, pemformatan laman jadi sederhana dan labiah intuitif.
+* '''Sihir tautan:''' Alat yang mudah digunoan yang membolehkan manambah tautan kapado laman wiki lain sarato situs lua lainnyo.
+* '''Perbaikan pencarian:''' Kami lah membaiki saran pencarian untuak mambawo awak mencari laman labiah capek.
+* '''Corak baru lainnyo:''' Kami juo lah memperkenalkan tabel sihir untuak mambuek tabel labiah mudah dan mencari dan mangganti corak menjadi laman suntingan yang sederhana.
+* '''Logo Wikipedia:''' Kami sudah memperbarui logo kami. Baco untuak lanjutnyo di [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
+	'prefswitch-main-logged-changes' => "* Kini '''tab {{int:watch}}''' jadi bintang.
+* Kini '''tab {{int:move}}''' terletak di menu turunan sasudah bilah pencarian.",
+	'prefswitch-main-feedback' => '===Umpan baliak?===
+Kami ingin mendengar pandapek awak. Silakan kunjungi kami di [[$1|laman umpan baliak]] atau, jiko awak tertarik pado usaho kami dalam membaiki perangkat lunak ko, kunjungi kami di [http://usability.wikimedia.org usability wiki] untuak maklumat lanjut.',
+	'prefswitch-main-anon' => '===Bao denai baliak===
+[$1 Klik ko untuak mamatian corak baru]. Awak akan diminta untuak masuak log atau mambuek akun talabiah dulu.',
+	'prefswitch-main-on' => '===Bao denai baliak!===
+[$2 Klik ko untuak mamatian corak baru].',
+	'prefswitch-main-off' => '===Cubolah!===
+[$1 Klik ko untuak maaktifkan corak baru].',
+	'prefswitch-survey-intro-feedback' => 'Kami ingin mendengar pandapek awak.
+Silakah isi pilihan survei di bawah ko sabalun menklik "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Tarimo kasih sudah mancubo corak baru kami.
+Untuak membantu kami membaikinyo, silakan isi pilihan survei di bawah ko sabalun menklik "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:Umpan baliak pengalaman pangguno',
 );
 
 /** Macedonian (Македонски)
@@ -4757,6 +4899,14 @@ Vennligst fyll ut den valgfrie undersøkelsen under før du klikker på «[[#pre
 	'prefswitch-survey-intro-off' => 'Takk for at du prøvde de nye funksjonene.
 For å hjelpe oss med å forbedre dem kan du fylle ut det valgfrie skjemaet under før du klikker på «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'prefswitch-survey-true' => 'Ee',
+	'prefswitch-survey-false' => 'Aowa',
 );
 
 /** Deitsch (Deitsch)
@@ -5514,9 +5664,9 @@ $messages['rue'] = array(
 	'prefswitch-main-anon' => '===Хочу назад===
 Кідь хочете, можете собі [$1 выпнути новы функції]. Перше ся але будете мусити приголосити або реґістровати.',
 	'prefswitch-main-on' => '=== Хочу назад! ===
-[$2 Кликните гев, кідь хочете выпнути новы функції].',
+[$2 Кликните ту, кідь хочете выпнути новы функції].',
 	'prefswitch-main-off' => '=== Спробуйте їх! ===
-Кідь собі хочете спробовати новы функції, просиме [$1 кликните гев].',
+Кідь собі хочете спробовати новы функції, просиме [$1 кликните ту].',
 	'prefswitch-survey-intro-feedback' => 'Потїшыме ся, кідь ся дознаме ваш назор.
 Просиме, выповните формулар ниже а потім кликните на „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
 	'prefswitch-survey-intro-off' => 'Дякуєме за спробованя нашых новых функцій.
@@ -6439,7 +6589,7 @@ $messages['tt-cyrl'] = array(
 	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» кыстырмасы'''  хәзер йолдыз формасында.
 * ''' «{{int:move}}» кыстырмасы'''  төшерелмә менюга куелган.",
 	'prefswitch-main-feedback' => '=== Элемтә ===
-Без сезнең фикерләрегезне ишәтебез килә. Зинһар, безнең [[$1|элемтә битенә керегез]]. ЕӘгәрдә сезгә безнең яңа төрле программа белән тәэмин ителеш турында күбрәк беләсегез килсә  [http://usability.wikimedia.org бизәлеш проекты сәхифәсен] карагыз.',
+Без сезнең фикерләрегезне ишәтебез килә. Зинһар, безнең [[$1|элемтә битенә керегез]]. Әгәрдә сезгә безнең яңа төрле программа белән тәэмин ителеш турында күбрәк беләсегез килсә  [http://usability.wikimedia.org бизәлеш проекты сәхифәсен] карагыз.',
 	'prefswitch-main-anon' => '=== Ничек бар шулай кайтарырга ===
 Әгәрдә сез яңа мөмкинчелекләрне ябасагыз килсә, [$1монда басыгыз]. Сезгә башта сәхифәгә керергә яисә яңадан теркәлергә тәкъдим ителәчәк.',
 	'prefswitch-main-on' => '=== Яңадан кайтарыгыз! ===

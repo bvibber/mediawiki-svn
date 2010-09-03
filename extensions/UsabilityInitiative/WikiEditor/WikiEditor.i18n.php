@@ -53,6 +53,16 @@ $messages['aln'] = array(
 	'wikieditor-loading' => 'Ngarkim',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor' => 'Interficie avanzada de edición de wikitexto',
+	'wikieditor-desc' => 'Proporciona una interficie extensible de modificación de wikitexto y quantos modulos de funcionalidatz',
+	'wikieditor-wikitext-tab' => 'Wikitexto',
+	'wikieditor-loading' => 'Cargando',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -74,6 +84,16 @@ $messages['arz'] = array(
 	'wikieditor-desc' => 'بيدّى interface بتاع wikitext بينفع يتكبّر و modules كتيره بتنفع تعمل مميزات',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'بيلوّد',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor' => 'Киңәйтелгән викитекст мөхәррирләү интерфейсы',
+	'wikieditor-desc' => 'Киңәйтелгән викитекст мөхәррирләү интерфейсы менән һәм модулдәр тарафынан күп мөмкинлектәр менән тәьмин итә',
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Сығарыу',
 );
 
 /** Belarusian (Беларуская)
@@ -559,6 +579,16 @@ $messages['lt'] = array(
 	'wikieditor-loading' => 'Įkeliama',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor' => 'Suntingan antarmuka teks wiki lanjut',
+	'wikieditor-desc' => 'Menyediakan suntingan antarmuka teks wiki dan babarapo ruang penyedia corak',
+	'wikieditor-wikitext-tab' => 'Teks wiki',
+	'wikieditor-loading' => 'Maunggah',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -657,6 +687,13 @@ $messages['no'] = array(
 	'wikieditor-desc' => 'Gir et utvidbart tekstredigeringsgrensesnitt og mange utvidelsesmoduler',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
 	'wikieditor-loading' => 'Laster',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'wikieditor-loading' => 'Laiša',
 );
 
 /** Occitan (Occitan)

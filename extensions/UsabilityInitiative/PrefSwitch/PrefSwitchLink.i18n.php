@@ -55,6 +55,14 @@ $messages['aln'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Provoni karakteristika të reja',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'prefswitch-link-on' => 'Tornar enta zaga',
+	'tooltip-pt-prefswitch-link-off' => 'Prebe as nuevas caracteristicas',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -200,6 +208,15 @@ $messages['cs'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Vypnout nové funkce',
 	'prefswitch-link-off' => 'Nové funkce',
 	'tooltip-pt-prefswitch-link-off' => 'Vyzkoušejte nové funkce',
+);
+
+/** Chuvash (Чӑвашла)
+ * @author FLAGELLVM DEI
+ */
+$messages['cv'] = array(
+	'prefswitch-link-anon' => 'Çĕнĕ мехелсем',
+	'prefswitch-link-on' => 'Кивĕ интерфейс',
+	'prefswitch-link-off' => 'Çĕнĕ мехелсем',
 );
 
 /** Welsh (Cymraeg)
@@ -595,6 +612,18 @@ $messages['li'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Zèt nuuj deil oet',
 	'prefswitch-link-off' => 'Nuuj meugelikhede',
 	'tooltip-pt-prefswitch-link-off' => 'Perbeer nuuj mäögelikhede',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'prefswitch-link-anon' => 'Corak baru',
+	'tooltip-pt-prefswitch-link-anon' => 'Pelajari tentang corak baru',
+	'prefswitch-link-on' => 'Bao denai baliak',
+	'tooltip-pt-prefswitch-link-on' => 'Pantang corak baru',
+	'prefswitch-link-off' => 'Corak baru',
+	'tooltip-pt-prefswitch-link-off' => 'Cubo corak baru',
 );
 
 /** Macedonian (Македонски)

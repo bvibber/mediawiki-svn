@@ -489,7 +489,7 @@ $messages['ba'] = array(
 	'optin-survey-answer-whyoptout-notpredictable' => 'Ул көтөлгәнсә эшләмәй.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Миңә уның тышҡы ҡиәфәте оҡшамай.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Миңә яңы бүлгестәр һәм төҙөлөшө оҡшаманы.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Миңә яңы уҙгәртеү панеле оҡшаманы.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Миңә яңы мөхәррирләү панеле оҡшаманы.',
 	'optin-survey-answer-whyoptout-other' => 'Башҡа сәбәп:',
 	'optin-survey-question-explain' => 'Үрҙәге яуабығыҙҙы тулыландырығыҙ, зинһар:',
 	'optin-survey-question-techfail' => 'Бета-версияны ҡулланғанда ниндәй ҙә булһа техник хаталарға юлыҡтығыҙмы?',
@@ -4268,6 +4268,29 @@ $messages['lzz'] = array(
 	'optin-survey-no' => 'Var',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'optin' => 'Pilihan Inisiatif Kagunoan',
+	'optin-desc' => 'Memungkinkan pangguno mancubo Beta, untuak meningkatkan kagunoan Inisiatif Kagunoaan.',
+	'optin-title-optedout' => 'Cubo Beta',
+	'optin-title-optedin' => 'Tinggaan Beta',
+	'optin-title-justoptedin' => 'Salamaik Datang di Beta',
+	'optin-title-justoptedout' => 'Tarimo kasih sudah mancubo Beta',
+	'optin-title-feedback' => 'Umpan baliak Beta',
+	'optin-needlogin' => 'Awak harus [$1 masuak log] untuak mancubo Beta.',
+	'optin-intro' => 'Inisiatif Kagunoan Wikipedia gigiah bausaho untuak membaiki kagunoan dari Wikipedia.
+Apo awak tertarik untuak mancubo Beta?',
+	'optin-feedback-intro' => 'Tarimo kasih sudah mancubo Beta.
+Kami ingin tahu apo pandapek awak tentang antarmuka baru kami ko, jadi kami manghargoi jiko awak maisi pilihan survei di bawah.',
+	'optin-feedback-back' => 'Jiko awak indak ingin maisi survei, awak buliah baliak ka $1.',
+	'optin-success-in' => 'Awak kini ko sedang mancubo Beta.
+Awak dapek kapan sajo kalua dengan menklik tautan ko "{{int:optin-leave}}" di atas laman.',
+	'optin-survey-yes' => 'Yo',
+	'optin-survey-no' => 'Indak',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -5078,6 +5101,15 @@ Vi har introdusert en rekke forbedringer som forbedret navigasjon, fallende fane
 == Hvordan bli involvert ==
 For å finne ut mer om Brukervennlighetsinitiativet, besøk vår [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative hjemmeside].
 <div style="clear:both"></div>',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'optin-deny-short' => 'Aowa, kea leboga',
+	'optin-survey-yes' => 'Ee',
+	'optin-survey-no' => 'Aowa',
 );
 
 /** Occitan (Occitan)

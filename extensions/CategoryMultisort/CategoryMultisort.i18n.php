@@ -384,9 +384,11 @@ $messages['ru'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'categorymultisort-desc' => 'Омогућава преглед категорија са различитим кључевима сортирања',
 	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
 	'categorymultisort-sortkey' => 'Кључ сортирања:',
 	'categorymultisort-go' => 'Иди',
+	'categorymultisort-default-sortkey' => 'Подразумевани кључ сортирања:',
 	'prefs-category' => 'Категорија',
 );
 

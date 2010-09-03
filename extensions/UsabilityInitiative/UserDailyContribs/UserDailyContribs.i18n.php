@@ -326,6 +326,13 @@ $messages['li'] = array(
 	'userdailycontribs-desc' => 'Dagelikse gebroekersbiedrage veur de oetbreijing óm gebroekerskliks mit te volge',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'userdailycontribs-desc' => 'Jariah harian pangguno untuak pengaya pelacak klik',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

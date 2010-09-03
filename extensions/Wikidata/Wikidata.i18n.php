@@ -2665,6 +2665,7 @@ Nastal problém s konzistencí databáze. Wikidata nemůže najít platné údaj
 	'ow_needs_xlation_source_lang' => 'Zdrojový jazyk:',
 	'ow_needs_xlation_dest_lang' => 'Cílový jazyk:',
 	'ow_needs_xlation_no_dest_lang' => 'Zadejte prosím cílový jazyk.',
+	'ow_statistics' => 'Wikidata: Statistika',
 	'ow_show' => 'Zobrazit',
 	'ow_upload' => 'Nahrát',
 	'ow_create' => 'Vytvořit',

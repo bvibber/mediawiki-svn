@@ -392,6 +392,14 @@ $messages['lv'] = array(
 	'vector-desc' => 'Uzlabo lietotāja saskarsnes elementus Vector apdarē.',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'vector' => 'Membaiki UI untuak Vektor',
+	'vector-desc' => 'Membaiki elemen pado antamuka pangguno dari kulit Vektor',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -253,12 +253,20 @@ $messages['ce'] = array(
 
 /** Czech (Česky)
  * @author Danny B.
+ * @author Mormegil
  */
 $messages['cs'] = array(
-	'slippymap_desc' => 'Umožňuje použití tagu <code><nowiki>&lt;slippymap&gt;</nowiki></code> pro zobrazení posuvné mapy OpenLayers. Mapy pocházejí z [http://openstreetmap.org openstreetmap.org].',
+	'slippymap_desc' => 'Přidává značku <code>&lt;slippymap&gt;</code> pro vkládání statických a dynamických map. Podporuje několik mapových služeb včetně [http://openstreetmap.org openstreetmap.org] a NASA Worldwind',
+	'slippymap_error' => 'Chyba rozšíření $1: $2',
+	'slippymap_errors' => 'Chyby rozšíření $1:',
+	'slippymap_error_missing_arguments' => 'U značky &lt;$1&gt; jste neuvedli žádné atributy; návod k použití najdete v [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax dokumentaci].',
+	'slippymap_error_missing_attribute_lat' => 'Chybí atribut <tt>lat</tt> (pro zeměpisnou šířku).',
+	'slippymap_error_missing_attribute_lon' => 'Chybí atribut <tt>lon</tt> (pro zeměpisnou délku).',
+	'slippymap_error_missing_attribute_zoom' => 'Chybí atribut <tt>zoom</tt> (pro úroveň přiblížení).',
 	'slippymap_code' => 'Wikikód tohoto pohledu na mapu:',
 	'slippymap_button_code' => 'Zobrazit wikikód',
 	'slippymap_resetview' => 'Obnovit zobrazení',
+	'slippymap_clicktoactivate' => 'Mapu aktivujete kliknutím',
 );
 
 /** German (Deutsch)

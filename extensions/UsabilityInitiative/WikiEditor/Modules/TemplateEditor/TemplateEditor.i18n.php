@@ -52,6 +52,9 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'wikieditor-template-editor-preference' => 'Activar a edición de plantillas basada en formularios',
+	'wikieditor-template-editor-dialog-title' => 'Editar a plantilla',
+	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
 );
 
@@ -75,6 +78,16 @@ $messages['arz'] = array(
 	'wikieditor-template-editor-dialog-title' => 'تعديل قالب',
 	'wikieditor-template-editor-dialog-submit' => 'تحديث (update)',
 	'wikieditor-template-editor-dialog-cancel' => 'كانسل',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-template-editor-preference' => 'Ҡалыптарҙы формалар ярҙамында үҙгәртеүҙе тоҡандырырға',
+	'wikieditor-template-editor-dialog-title' => 'Ҡалыпты үҙгәртеү',
+	'wikieditor-template-editor-dialog-submit' => 'Яңыртырға',
+	'wikieditor-template-editor-dialog-cancel' => 'Кире алырға',
 );
 
 /** Belarusian (Беларуская)
@@ -605,6 +618,16 @@ $messages['lv'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Atcelt',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-template-editor-preference' => 'Aktifkan formulir suntingan templat wiki',
+	'wikieditor-template-editor-dialog-title' => 'Suntiang templat',
+	'wikieditor-template-editor-dialog-submit' => 'Perbarui',
+	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -704,6 +727,13 @@ $messages['no'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Rediger mal',
 	'wikieditor-template-editor-dialog-submit' => 'Oppdater',
 	'wikieditor-template-editor-dialog-cancel' => 'Avbryt',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Khansela',
 );
 
 /** Occitan (Occitan)

@@ -341,6 +341,13 @@ $messages['no'] = array(
 	'editown-desc' => "Brukere uten ''editall''-rettigheter kan kun redigere sider de selv har opprettet",
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'editown-desc' => 'Bašumiši bao ba se nago tumello yago fetola gohle "editall" ba dumelwa go fetola matlakala a go hlolwa ke bona fela',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

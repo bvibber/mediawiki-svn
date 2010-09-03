@@ -387,6 +387,8 @@ $messages['bs'] = array(
 	'recordadmin-editwithform' => 'Svojstva',
 	'recordadmin-typeinfo' => '$1 zapis',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Bez "$1"',
 );
 

@@ -66,6 +66,14 @@ $messages['br'] = array(
 	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'dontswitchmeover-desc' => 'Postavke za korisnike za određivanje kada žele sačuvati svoje postavke kože kada se promijeni pretpostavljena koža.',
+	'dontswitchmeover-pref' => 'Ne dopusti mojoj koži da bude promijenjena kada se promijeni pretpostavljena koža',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

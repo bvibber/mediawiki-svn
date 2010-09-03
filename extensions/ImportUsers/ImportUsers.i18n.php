@@ -340,6 +340,7 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Danny B.
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'importusers' => 'Importovat uživatele',
@@ -353,7 +354,7 @@ $messages['cs'] = array(
 	'importusers-user-present-update' => "Uživatel '''$1''' již existuje. Aktualizován.",
 	'importusers-user-present-not-update' => "Uživatel '''$1''' již existuje. Neaktualizován.",
 	'importusers-user-invalid-format' => 'Údaje na řádku #$1 mají neplatný formát anebo je řádek prázdný. Přeskočeno.',
-	'importusers-log' => 'Kniha importů',
+	'importusers-log' => 'Kniha importů uživatelů',
 	'importusers-log-summary' => 'Shrnutí',
 	'importusers-log-summary-all' => 'Vše',
 	'importusers-log-summary-added' => 'Přidané',
@@ -362,6 +363,7 @@ $messages['cs'] = array(
 	'importusers-password' => 'heslo',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'skutečné jméno',
+	'right-import_users' => 'Hromadné importování uživatelů',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

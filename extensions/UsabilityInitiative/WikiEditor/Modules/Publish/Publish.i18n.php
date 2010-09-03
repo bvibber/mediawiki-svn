@@ -87,10 +87,15 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'wikieditor-publish-preference' => 'Activar a publicación trango a trango',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
+	'wikieditor-publish-dialog-title' => 'Publicar en {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => "Resumen d'edición (describa breument os cambios que ha feito):",
+	'wikieditor-publish-dialog-minor' => 'Edición menor',
 	'wikieditor-publish-dialog-watch' => 'Cosirar ista pachina',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
+	'wikieditor-publish-dialog-goback' => 'Tornar',
 );
 
 /** Arabic (العربية)
@@ -123,6 +128,21 @@ $messages['arz'] = array(
 	'wikieditor-publish-dialog-watch' => 'راقب الصفحه دى',
 	'wikieditor-publish-dialog-publish' => 'انشر',
 	'wikieditor-publish-dialog-goback' => 'ارجع',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-publish-preference' => 'Аҙымлап баҫтырыуҙы тоҡандырырға',
+	'wikieditor-publish-button-publish' => 'Баҫтырып сығарырға',
+	'wikieditor-publish-button-cancel' => 'Кире алырға',
+	'wikieditor-publish-dialog-title' => ' {{SITENAME}} проектына баҫтырып сығарырға',
+	'wikieditor-publish-dialog-summary' => 'Үҙгәртеүҙәр тасуирламаһы (ниндәй үҙгәртеүҙәр кереткәнегеҙҙе ҡыҫҡаса тасуирлағыҙ):',
+	'wikieditor-publish-dialog-minor' => 'Әҙ генә үҙгәрештәр',
+	'wikieditor-publish-dialog-watch' => 'Был битте күҙәтергә',
+	'wikieditor-publish-dialog-publish' => 'Баҫтырып сығарырға',
+	'wikieditor-publish-dialog-goback' => 'Кире ҡайтырға',
 );
 
 /** Belarusian (Беларуская)
@@ -904,6 +924,21 @@ $messages['lv'] = array(
 	'wikieditor-publish-button-cancel' => 'Atcelt',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-publish-preference' => 'Aktifkan penerbitan batahap',
+	'wikieditor-publish-button-publish' => 'Terbitkan',
+	'wikieditor-publish-button-cancel' => 'Batalkan',
+	'wikieditor-publish-dialog-title' => 'Mencetak {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Ringkasan suntingan (jelaskan dengan ringkas parubahan yang awak buek):',
+	'wikieditor-publish-dialog-minor' => 'Suntingan ketek',
+	'wikieditor-publish-dialog-watch' => 'Pantau laman ko',
+	'wikieditor-publish-dialog-publish' => 'Terbitkan',
+	'wikieditor-publish-dialog-goback' => 'Baliak',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1049,6 +1084,14 @@ $messages['no'] = array(
 	'wikieditor-publish-dialog-watch' => 'Overvåk denne siden',
 	'wikieditor-publish-dialog-publish' => 'Publiser',
 	'wikieditor-publish-dialog-goback' => 'Gå tilbake',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'wikieditor-publish-button-cancel' => 'Khansela',
+	'wikieditor-publish-dialog-goback' => 'Boela morago',
 );
 
 /** Occitan (Occitan)

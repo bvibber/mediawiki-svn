@@ -7830,6 +7830,10 @@ opura a peul vorèj <a href="$3">Gionté ël fluss</a>.',
 	'ht_en_desc' => "Trascrission anglèisa.
 Sta sòrt ëd presentassion-sì a l'é për ël test parlà",
 	'anno_en' => 'Anotassion e categorìe',
+	'anno_en_desc' => "Categorisassion e anotassion an anglèis.
+Sta copertura a peul esse dovrà për categorisé session ëd filmà o për gionté anformassion anotative ch'a son pa test parlà",
+	'thomas_en' => 'Trascrission ufissial',
+	'mv_time_separator' => '$1 a $2',
 );
 
 /** Pashto (پښتو)

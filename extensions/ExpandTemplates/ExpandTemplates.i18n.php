@@ -1620,6 +1620,7 @@ Ver o resultado nas secções abaixo.",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
@@ -1634,7 +1635,7 @@ $messages['pt-br'] = array(
 	'expand_templates_remove_comments' => 'Remover comentários',
 	'expand_templates_remove_nowiki' => 'Suprima marcações <nowiki> no resultado',
 	'expand_templates_generate_xml' => 'Mostrar árvore de análise (parse) do XML',
-	'expand_templates_preview' => 'Previsão',
+	'expand_templates_preview' => 'Pré-visualização',
 );
 
 /** Quechua (Runa Simi)

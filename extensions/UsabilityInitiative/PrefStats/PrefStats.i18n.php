@@ -1655,6 +1655,37 @@ $messages['lzz'] = array(
 	'prefstats-factor-fourweeks' => 'xut doloni',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'prefstats' => 'Statistik preferensi',
+	'prefstats-desc' => 'Talian statistik tentang barapo banyak pangguno yang mengaktifkan preferensi tertentu',
+	'prefstats-title' => 'Statistik preferensi',
+	'prefstats-list-intro' => 'Kini ko, babarapo preferensi ko sedang ditelusuri.
+Klik salah satu untuak malihek statistiknyo',
+	'prefstats-noprefs' => 'Indak ado preferensi yang ditelusuri.
+Konfigurasi $wgPrefStatsTrackPrefs untuak telusuri preferensi.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|pangguno|pangguno}} sudah mengaktifkan preferensi ko sejak statistik preferensi diaktifkan
+** $2 {{PLURAL:$2|pangguno|pangguno}} masih mengaktifkan
+** $3 {{PLURAL:$3|pangguno|pangguno}} sudah indak aktif',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|pangguno|pangguno}} sudah mengaktifkan preferensi ko sejak statistik preferensi diaktifkan
+** $2 {{PLURAL:$2|pangguno|pangguno}} masih mengaktifkan
+** $3 {{PLURAL:$3|pangguno|pangguno}} sudah indak aktif
+* Dengan total, $4 {{PLURAL:$4|pengguno|pengguno}} mengatur preferensi ko',
+	'prefstats-xaxis' => 'Durasi (jam)',
+	'prefstats-factors' => 'Lihek per: $1',
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'anam jam',
+	'prefstats-factor-day' => 'hari',
+	'prefstats-factor-week' => 'saminggu',
+	'prefstats-factor-twoweeks' => 'duo minggu',
+	'prefstats-factor-fourweeks' => 'ampek minggu',
+	'prefstats-factor-default' => 'Baliak ka skala default',
+	'prefstats-legend-out' => 'Membatalkan',
+	'prefstats-legend-in' => 'Menyertakan',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1944,6 +1975,15 @@ Klikk på en for å se statistikk om den.',
 	'prefstats-factor-default' => 'tilbake til standardskalering',
 	'prefstats-legend-out' => 'Valgt vekk',
 	'prefstats-legend-in' => 'Valgt',
+);
+
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'prefstats-factor-hour' => 'iri',
+	'prefstats-factor-day' => 'letšatši',
+	'prefstats-factor-week' => 'beke',
 );
 
 /** Occitan (Occitan)

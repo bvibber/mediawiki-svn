@@ -1640,9 +1640,13 @@ $messages['cs'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Rozšíření',
 	'configure-viewconfig-default-diff' => 'Změny oproti výchozímu nastavení',
+	'configure-ext-ext-dependencies' => "'''Upozornění:''' toto rozšíření vyžaduje následující {{PLURAL:$2|aktivované rozšíření|aktivovaná rozšíření}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''Chyba:''' rozšíření $1 vyžaduje aktivované rozšíření $2.",
 	'configure-ext-doc' => 'Vizte online dokumentaci',
-	'configure-ext-schemachange' => "'''Upozornění:''' Toto rozšíření potřebuje ke svému bezproblémovému chodu update databáze!",
+	'configure-ext-schemachange' => "'''Upozornění:''' Toto rozšíření potřebuje ke správné funkčnosti [http://www.mediawiki.org/wiki/Manual:Update.php update databáze]!",
 	'configure-ext-settings' => 'Nastavení',
+	'configure-ext-settings-dep-errors' => 'Toto rozšíření nelze zapnout, neboť následující nastavení {{PLURAL:$1|má nepřípustnou hodnotu|mají nepřípustné hodnoty}}:',
+	'configure-ext-settings-dep-error' => '$1: vyžadovaná hodnota: $2, stávající hodnota: $3',
 	'configure-ext-use-extension' => 'Používat toto rozšíření',
 	'configure-ext-use' => 'Používat',
 	'configure-form-reason' => 'Důvod:',
@@ -1707,6 +1711,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-namespaces' => 'Jmenné prostory',
 	'configure-section-stats' => 'Statistika webu',
 	'configure-section-skin' => 'Vzhledy',
+	'configure-section-vector' => 'Vzhled Vektor',
 	'configure-section-category' => 'Kategorie',
 	'configure-section-cache' => 'Vyrovnávací paměť',
 	'configure-section-pcache' => 'Vyrovnávací paměť parseru',
@@ -1728,6 +1733,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-specialpages' => 'Speciální stránky',
 	'configure-section-recentchanges' => 'Poslední změny',
 	'configure-section-users' => 'Uživatelé',
+	'configure-section-externalauth' => 'Externí autentizace',
 	'configure-section-feed' => 'Kanál zpráv',
 	'configure-section-job' => 'Úlohy',
 	'configure-section-extension' => 'Rozšíření',
@@ -1743,12 +1749,12 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-section-output' => 'Výstup',
 	'configure-select-wiki' => 'Výběr wiki',
 	'configure-select-wiki-desc' => 'Vyberte wiki, kterou chcete konfigurovat.',
-	'configure-select-wiki-view-desc' => 'Vyberte wiki, jejíž verze chcete vidět.',
+	'configure-select-wiki-view-desc' => 'Vyberte wiki, jejíž konfigurační verze chcete vidět.',
 	'configure-select-wiki-view-all' => 'Všechny wiki',
 	'configure-select-wiki-view-specific' => 'Specifická wiki:',
 	'configure-select-wiki-submit' => 'Vybrat',
 	'configure-setting-not-available' => 'Toto nastavení není v této verzi MediaWiki dostupné',
-	'configure-transwiki-not-in-range' => 'Požadovaná wiki – $1 – není mezi přípustnými hodnotami ($2).',
+	'configure-transwiki-not-in-range' => 'Požadovaná wiki – $1 – {{PLURAL:$3|neodpovídá definované hodnotě|není mezi definovanými hodnotami}}: $2.',
 	'configure-view' => 'Zobrazit',
 	'configure-view-all-versions' => 'Úplný seznam verzí',
 	'configure-view-default' => 'Výchozí nastavení',
@@ -1794,6 +1800,7 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-condition-name-4' => 'Ve skupinách',
 	'configure-condition-name-5' => 'IP adresa uživatele',
 	'configure-condition-name-6' => 'IP adresa uživatele v CIDR rozsahu',
+	'configure-condition-name-7' => 'Minimální doba od první editace',
 	'configure-autopromote-noconds' => 'Žádné požadavky',
 	'configure-condition-description-1' => 'Minimální počet editací je $1',
 	'configure-condition-description-2' => 'Minimální věk účtu je {{plural:$1|1 sekunda|$1 sekundy|$1 sekund}}',
@@ -1801,10 +1808,14 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
 	'configure-condition-description-4' => 'V {{plural:$2|následující skupině|následujících skupinách}}: $1',
 	'configure-condition-description-5' => 'IP adresa uživatele je $1',
 	'configure-condition-description-6' => 'IP adresa uživatele je v rozsahu $1',
+	'configure-condition-description-7' => 'Minimální doba $1 {{PLURAL:$1|sekunda|sekund}} od první editace',
 	'configure-boolop-description-and' => 'Všechny podmínky musejí být splněny',
 	'configure-boolop-description-or' => 'Minimálně jedna z podmínek musí být splněná',
 	'configure-boolop-description-xor' => 'Právě jedna z podmínek musí být splněná',
 	'configure-boolop-description-not' => 'Žádná z podmínek nesmí být splněná',
+	'configure-farmer-settings' => '[[Special:Configure|Konfigurovat tuto wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Konfigurovat rozšíření na této wiki]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Vypsat rozšíření dostupná pro tuto wiki]].',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -10049,6 +10060,18 @@ Lütfen bu eklentiyi kullanmak için PHP ile dizini yazılabilir hale getirin.',
 	'configure-farmer-settings' => '[[Special:Configure|Bu vikiyi konfigüre et]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Bu viki için eklentileri konfigüre et]].',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Bu viki için kullanılabilir olan eklentileri listele]].',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'configure-old-changes' => 'үзгәртүләр',
+	'configure-old-summary' => '$2 $4 $3дән $1',
+	'configure-saved' => 'Көйләнмәләрегез сакланды',
+	'configure-backlink' => 'Формага кире кайту',
+	'configure-section-robots' => 'Эзләү роботлары',
+	'configure-section-features' => 'Мөмкинчелекләр',
 );
 
 /** Udmurt (Удмурт)

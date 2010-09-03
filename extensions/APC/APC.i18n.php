@@ -5408,8 +5408,8 @@ Novšia verzia $2 je dostupná na http://pecl.php.net/package/APC/$2',
  */
 $messages['sr-ec'] = array(
 	'apc' => 'APC подаци',
-	'apc-desc' => '[[Посебно:APC|Прегледај и управљај APC међумеморијом]] са Медијавикијем',
-	'right-apc' => 'Користи све опције у [[Посебно:APC|APC]]',
+	'apc-desc' => '[[Special:APC|Прегледај и управљај APC кешом]] преко МедијаВикија',
+	'right-apc' => 'Користи све опције у [[Special:APC|APC]]',
 	'viewapc-apc-not-available' => 'Нема информација о међумеморији.
 Изгледа да APC није покренут.',
 	'viewapc-clear-confirm' => 'Да ли желите да очистите међумеморију?',

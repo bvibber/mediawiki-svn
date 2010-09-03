@@ -217,10 +217,12 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'chemicalsources' => 'Chemické zdroje',
 	'chemicalsource-desc' => 'Přidává značku &lt;chemform&gt; pro chemické vzorce',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Speciální stránka]] pro chemické zdroje',
 	'chemFunctions_ListPage' => 'Chemické zdroje',
 	'chemFunctions_DataList' => 'Níže je seznam odkazů na stránky, které můžou poskytnout informace o chemikálii, kterou hledáte.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Sloučenina $MIXCASNameFormula na NIST</a><br />

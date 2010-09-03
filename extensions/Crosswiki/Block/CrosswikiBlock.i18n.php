@@ -475,7 +475,7 @@ $messages['cs'] = array(
 	'crosswikiblock-header' => 'Tato stránka umožňuje zablokovat uživatele na jiné wiki.
 Prosím, ověřte si, že můžete na dané wiki provádět takové akce a že vaše konání odpovídá všem pravidlům.',
 	'crosswikiblock-target' => 'IP adresa nebo uživatelské jméno a cílová wiki:',
-	'crosswikiblock-expiry' => 'Vypršení:',
+	'crosswikiblock-expiry' => 'Čas vypršení:',
 	'crosswikiblock-reason' => 'Důvod:',
 	'crosswikiblock-submit' => 'Zablokovat tohoto uživatele',
 	'crosswikiblock-anononly' => 'Zablokovat všechny anonymní uživatele',
