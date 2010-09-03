@@ -45,6 +45,15 @@ $messages['aln'] = array(
 	'wikieditor-toc-hide' => 'Përmbajtja Hide',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-toc-preference' => 'Activar a tabla de contenius navigable',
+	'wikieditor-toc-show' => 'Amostrar o conteniu',
+	'wikieditor-toc-hide' => 'Amagar o conteniu',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -63,6 +72,15 @@ $messages['arz'] = array(
 	'wikieditor-toc-preference' => 'Enable navigable table of contents',
 	'wikieditor-toc-show' => 'بيّن المحتويات',
 	'wikieditor-toc-hide' => 'خبّى المحتويات',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-toc-preference' => 'Йөкмәтке буйлап күсеү һылтанмаларын күрһәтергә',
+	'wikieditor-toc-show' => 'Йөкмәткене күрһәтергә',
+	'wikieditor-toc-hide' => 'Йөкмәткене йәшерергә',
 );
 
 /** Belarusian (Беларуская)
@@ -509,6 +527,15 @@ $messages['lv'] = array(
 	'wikieditor-toc-preference' => 'Ieslēgt satura rādītāju ar navigācijas iespējām',
 	'wikieditor-toc-show' => 'Parādīt satura rādītāju',
 	'wikieditor-toc-hide' => 'Paslēpt satura rādītāju',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-toc-preference' => 'Senarai kandungan dapek dilayari',
+	'wikieditor-toc-show' => 'Tampilkan kandungan',
+	'wikieditor-toc-hide' => 'Suruakkan kandungan',
 );
 
 /** Macedonian (Македонски)

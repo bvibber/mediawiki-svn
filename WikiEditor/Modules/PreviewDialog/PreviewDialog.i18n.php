@@ -69,6 +69,15 @@ $messages['arz'] = array(
 	'wikieditor-previewDialog-loading' => 'بيلوّد...',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-previewDialog-preference' => 'Ҡарап сығыу диалогын тоҡандырырға',
+	'wikieditor-previewDialog-tab' => 'Ҡарап сығыу',
+	'wikieditor-previewDialog-loading' => 'Сығарыу...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -608,7 +617,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'wikieditor-previewDialog-preference' => 'Ativar o diálogo de previsão',
-	'wikieditor-previewDialog-tab' => 'Previsão',
+	'wikieditor-previewDialog-tab' => 'Pré-visualização',
 	'wikieditor-previewDialog-loading' => 'Carregando...',
 );
 
@@ -771,6 +780,15 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'wikieditor-previewDialog-tab' => 'Önizleme',
 	'wikieditor-previewDialog-loading' => 'Yükleniyor...',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-previewDialog-preference' => 'Алдан карау диалогын ачу',
+	'wikieditor-previewDialog-tab' => 'Алдан карау',
+	'wikieditor-previewDialog-loading' => 'Йөкләү...',
 );
 
 /** Ukrainian (Українська)

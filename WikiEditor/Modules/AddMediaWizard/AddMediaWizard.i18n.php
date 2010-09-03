@@ -29,6 +29,13 @@ $messages['aln'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivo "Shto mediat magjistar" vegël',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Activar o gadget "Asistent ta adhibir medios audiovisuals"',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -41,6 +48,13 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'wikieditor-addMediaWizard-preference' => 'شغّل عدّة "زوّد media wizard"',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Медиа өҫтәү ҡоралы" гаджетын асырға',
 );
 
 /** Belarusian (Беларуская)
@@ -301,6 +315,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Zèt de mediatoevogingswizard aan',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktifkan pakakeh "Tambah media sihir"',
 );
 
 /** Macedonian (Македонски)

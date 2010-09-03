@@ -531,6 +531,16 @@ $messages['lt'] = array(
 	'prefs-labs' => 'Bandomosios funkcijos',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'usabilityinitiative' => 'Inisiatif kagunoaan',
+	'usabilityinitiative-desc' => 'Corak yang dikambangkan oleh Inisiatif Kagunoan Wikipedia untuak maningkekkan kagunoan MediaWiki',
+	'prefs-beta' => 'Corak Beta',
+	'prefs-labs' => 'Corak Uji',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -882,6 +892,14 @@ $messages['tr'] = array(
 	'usabilityinitiative-desc' => "Vikipedi Kullanılabilirlik Girişimi tarafından MedyaViki'nin kullanılabilirliğini artırmak için geliştirilen özellikler",
 	'prefs-beta' => 'Beta özellikleri',
 	'prefs-labs' => 'Lab özellikleri',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'prefs-beta' => 'Бета-мөмкинчелекләр',
+	'prefs-labs' => 'Сынаулы мөмкинчелекләр',
 );
 
 /** Ukrainian (Українська)

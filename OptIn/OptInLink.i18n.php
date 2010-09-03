@@ -796,6 +796,18 @@ $messages['lv'] = array(
 	'tooltip-pt-optin-feedback' => 'Sniegt savas atsauksmes par jaunajām funkcijām',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'optin-try' => 'Cubo Beta',
+	'tooltip-pt-optin-try' => 'Cubo corak baru',
+	'optin-leave' => 'Tinggaan Beta',
+	'tooltip-pt-optin-leave' => 'Corak baru dimatian',
+	'optin-feedback' => 'Umpan baliak Beta',
+	'tooltip-pt-optin-feedback' => 'Berikan umpan baliak tentang pengalaman awak dengan corak baru',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

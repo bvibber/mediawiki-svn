@@ -62,7 +62,9 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'wikieditor-preview-preference' => 'Activar a previsualización costau a costau',
 	'wikieditor-preview-tab' => 'Previsualizar',
+	'wikieditor-preview-changes-tab' => 'Cambios',
 	'wikieditor-preview-loading' => 'Cargando...',
 );
 
@@ -86,6 +88,16 @@ $messages['arz'] = array(
 	'wikieditor-preview-tab' => 'پروڤه',
 	'wikieditor-preview-changes-tab' => 'تغييرات',
 	'wikieditor-preview-loading' => 'بيلوّد...',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-preview-preference' => 'Йәнәш ҡарап сығыуҙы тоҡандырырға',
+	'wikieditor-preview-tab' => 'Ҡарап сығыу',
+	'wikieditor-preview-changes-tab' => 'Үҙгәрештәр',
+	'wikieditor-preview-loading' => 'Сығарыу...',
 );
 
 /** Belarusian (Беларуская)
@@ -645,6 +657,16 @@ $messages['lv'] = array(
 	'wikieditor-preview-loading' => 'Ielādē…',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-preview-preference' => 'Aktifkan pratonton basisian',
+	'wikieditor-preview-tab' => 'Pratonton',
+	'wikieditor-preview-changes-tab' => 'Parubahan',
+	'wikieditor-preview-loading' => 'Maunggah...',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -747,6 +769,14 @@ $messages['no'] = array(
 	'wikieditor-preview-loading' => 'Laster…',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'wikieditor-preview-changes-tab' => 'Diphetogo',
+	'wikieditor-preview-loading' => 'Laiša...',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -811,13 +841,14 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'wikieditor-preview-preference' => 'Habilitar a previsão lado-a-lado',
-	'wikieditor-preview-tab' => 'Previsão',
+	'wikieditor-preview-tab' => 'Pré-visualização',
 	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'Carregando...',
 );

@@ -56,6 +56,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'vector-simplesearch-search' => 'Mirar',
+	'vector-simplesearch-containing' => 'que contién...',
 );
 
 /** Arabic (العربية)
@@ -64,6 +65,13 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'vector-simplesearch-search' => 'ابحث',
 	'vector-simplesearch-containing' => 'يحتوي...',
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'vector-simplesearch-search' => 'ܒܨܝ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -564,6 +572,14 @@ $messages['lt'] = array(
 $messages['lv'] = array(
 	'vector-simplesearch-search' => 'Meklēt',
 	'vector-simplesearch-containing' => 'Meklējamā frāze:',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'vector-simplesearch-search' => 'Cari',
+	'vector-simplesearch-containing' => 'Barisi...',
 );
 
 /** Macedonian (Македонски)

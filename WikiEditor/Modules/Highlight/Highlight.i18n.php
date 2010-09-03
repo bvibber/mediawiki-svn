@@ -29,6 +29,13 @@ $messages['aln'] = array(
 	'wikieditor-highlight-preference' => 'Sintaksa Aktivizo theksuar kur redaktimi',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-highlight-preference' => 'Activa o resaltau de sintaxi entre a edición',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -42,6 +49,13 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-highlight-preference' => 'Мөхәррирләү ваҡытында синтаксис яҡтыртыуҙы тоҡандырырға',
 );
 
 /** Belarusian (Беларуская)
@@ -354,6 +368,13 @@ $messages['lt'] = array(
  */
 $messages['lv'] = array(
 	'wikieditor-highlight-preference' => 'Atļaut sintakses iezīmēšanu rediģējot',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-highlight-preference' => 'Aktifkan sintaks bakilek saat manyuntiang',
 );
 
 /** Macedonian (Македонски)

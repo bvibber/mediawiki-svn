@@ -29,6 +29,13 @@ $messages['aln'] = array(
 	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-templates-preference' => 'Activar o replegamiento de plantillas',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -41,6 +48,13 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'wikieditor-templates-preference' => 'خلّى القالب يبان مقفول',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'wikieditor-templates-preference' => 'Ҡалыптарҙы йыйыу мөмкинлеген тоҡандырырға',
 );
 
 /** Belarusian (Беларуская)
@@ -322,6 +336,13 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'wikieditor-templates-preference' => 'Zèt inklapbaar sjablone aan',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'wikieditor-templates-preference' => 'Aktifkan fungsi tutup templat',
 );
 
 /** Macedonian (Македонски)

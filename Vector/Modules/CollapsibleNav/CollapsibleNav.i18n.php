@@ -31,6 +31,14 @@ $messages['aln'] = array(
 	'vector-collapsiblenav-preference' => 'Aktivizo paloset la navigacion menu',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'vector-collapsiblenav-preference' => "Activar a opción de plegar os menús de navegación en l'aparencia Vector",
+	'vector-collapsiblenav-more' => 'Más luengas',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -458,6 +466,14 @@ $messages['lv'] = array(
 	'vector-collapsiblenav-more' => 'Vairāk valodu',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi yang dapek ditampilkan pado kulit Vektor',
+	'vector-collapsiblenav-more' => 'Labiah banyak baso',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -735,6 +751,14 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'vector-collapsiblenav-preference' => 'Vector temasında dolaşım menüsündeki ögelerin daraltılmasını etkinleştir',
 	'vector-collapsiblenav-more' => 'Daha fazla dil',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'vector-collapsiblenav-preference' => '«Сызымлы» бизәлеше өчен сул менюдагы блокларны ябарга рөхсәт итү',
+	'vector-collapsiblenav-more' => 'Башка телләр',
 );
 
 /** Ukrainian (Українська)

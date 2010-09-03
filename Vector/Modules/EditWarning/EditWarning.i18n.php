@@ -43,6 +43,14 @@ $messages['aln'] = array(
 	'vector-editwarning-preference' => 'Paralajmëron mua kur unë të lë një redakto faqe me ndryshimet e para shpëtimit',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'vector-editwarning-warning' => "Si sale d'ista pachina perderá totz os cambios que haiga feito. Si tiene una cuenta d'usuario, puet eliminar ista alvertencia en a sección «Caixa d'edición» d'as suyas preferencies.",
+	'vector-editwarning-preference' => "Alvertir-me quan salga d'una pachina d'edición sin alzar os cambios",
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -540,6 +548,14 @@ Ja esi pieteicies, jūs vari atspējot šo brīdinājumu savās izvēlēs sadaļ
 	'vector-editwarning-preference' => 'Brīdināt mani, kad es atstāju lapas rediģēšanu nesaglabājot izmaiņas',
 );
 
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'vector-editwarning-warning' => 'Maninggakan laman ko dapek maakibatkan parubahan yang awak buek hilang. Jiko awak lah masuak log, awak dapek maabaikan maklumat ko malalui "Suntingan" pado laman preferensi awak.',
+	'vector-editwarning-preference' => 'Ingekkan denai katiko denai maninggakan laman suntiang sabalun menyimpan parubahan',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -839,6 +855,15 @@ $messages['tr'] = array(
 	'vector-editwarning-warning' => 'Bu sayfadan ayrılmak yaptığınız herhangi bir değişikliği kaybetmenize sebep olabilir.
 Eğer giriş yaptıysanız, bu uyarıyı, tercihlerinizin "Sayfa yazma alanı" bölümünde devre dışı bırakabilirsiniz.',
 	'vector-editwarning-preference' => 'Kaydedilmemiş değişikliğe sahip bir değişiklik sayfasından çıkarken beni uyar',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'vector-editwarning-warning' => 'Башка биткә күчү вакытында бу мәкаләгә керткән үзгәрешләр югалырга мөмкин.
+Әгәрдә сез теркәлгән булсагыз, бу искәрмәне сез «Көйләнмәләрем» өлешендә үзгәртә аласыз.',
+	'vector-editwarning-preference' => 'Битне сакламыйча китү вакытында мине кисәтергә',
 );
 
 /** Ukrainian (Українська)
