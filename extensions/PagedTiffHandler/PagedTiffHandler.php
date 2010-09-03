@@ -123,9 +123,10 @@ $wgAutoloadClasses['PagedTiffHandlerSeleniumTestSuite'] = $dir . 'selenium/Paged
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
 
-define('TIFF_METADATA_VERSION', '1.1');
+define('TIFF_METADATA_VERSION', '1.2');
 # 1.0: initial
 # 1.1: fixed bugs in imageinfo parser
+# 1.2: photoshop quirks for imageinfo parser
 
 //$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
 //$wgHooks['PagedTiffHandlerTiffData'][] = 'PagedTiffImage::tiffData';
