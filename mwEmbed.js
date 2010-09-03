@@ -1124,7 +1124,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		mw.load([
 			[
 				'$j.ui',
-				'$j.widget'
+				'$j.widget',
+				'$j.ui.position'
 			],
 			uiRequest
 		], function() {

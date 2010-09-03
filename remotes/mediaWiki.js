@@ -67,22 +67,12 @@ if( !mw.setConfig ){
 }
 
 
-
-
-
 /*******************************
 * Wikimedia specific config 
 ********************************/
 mw.setConfig( 'Sequencer.KalturaPlayerEditOverlay', true );
 mw.setConfig( 'SwarmTransport.Enable', true );
 mw.setConfig( 'SmilPlayer.AssetDomainWhiteList', ['upload.wikimedia.org'] );
-
-
-
-
-
-
-
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {
@@ -190,6 +180,8 @@ function doPageSpecificRewrite() {
 			'mw.UploadInterface',
 			'mw.Firefogg', 
 			'$j.ui',
+			'$j.widget',
+			'$j.ui.position',
 			'$j.ui.progressbar', 
 			'$j.ui.dialog', 
 			'$j.ui.draggable'

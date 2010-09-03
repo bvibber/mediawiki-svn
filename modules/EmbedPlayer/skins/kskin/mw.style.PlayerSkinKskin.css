@@ -167,6 +167,7 @@
 	float: left;
 	font-size: 11px;
 	padding: 13px 10px 15px 15px;
+	overflow-y:scroll;
 }
 
 .k-player ul.k-menu-bar {
