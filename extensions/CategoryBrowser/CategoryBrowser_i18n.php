@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -49,12 +49,15 @@ $messages['en'] = array(
 	'cb_ie6_warning' => 'The condition editor does not work in Internet Explorer 6.0 or earlier versions.
 However, browsing of pre-defined conditions should work normally.
 Please change or upgrade your browser, if possible.',
+	'cb_show_no_parents_only' => 'Show only categories which has no parents',
 	'cb_cat_name_filter' => 'Search for category by name:',
-	'cb_cat_name_filter_ci' => '(case insensitive)',
+	'cb_cat_name_filter_clear' => 'Press to clear category name filter',
+	'cb_cat_name_filter_ci' => 'Case insensitive',
 	'cb_copy_line_hint' => 'Use the [+] and [>+] buttons to copy and paste operators into the selected expression',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategory|subcategories}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|page|pages}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|file|files}}',
+	'cb_has_parentcategories' => 'parent categories (if any)',
 	'cb_previous_items_link' => 'Previous',
 	'cb_previous_items_stats' => ' ($1 - $2)',
 	'cb_previous_items_line' => '$1 $2',
@@ -112,12 +115,15 @@ $messages['ru'] = array(
 	'cb_ie6_warning' => 'Редактор выражений не поддерживается в Internet Explorer версии 6.0 или более ранних.
 Возможен лишь просмотр предопределенных выражений.
 Пожалуйста поменяйте или обновите ваш браузер.',
+	'cb_show_no_parents_only' => 'Показывать только категории без родителей',
 	'cb_cat_name_filter' => 'Поиск категории по имени:',
-	'cb_cat_name_filter_ci' => '(без учёта регистра)',
+	'cb_cat_name_filter_clear' => 'Нажмите здесь для очистки поля поиска категории по имени',
+	'cb_cat_name_filter_ci' => 'Без учёта регистра',
 	'cb_copy_line_hint' => 'Используйте кнопки [+] и [>+] для копирования оператора в выбранное выражение',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|подкатегория|подкатегории|подкатегорий}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|страница|страницы|страниц}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|файл|файла|файлов}}',
+	'cb_has_parentcategories' => 'родительские категории (если есть)',
 	'cb_previous_items_link' => 'Предыдущие',
 	'cb_next_items_link' => 'Следующие',
 	'cb_next_items_stats' => ' (начиная с $1)',

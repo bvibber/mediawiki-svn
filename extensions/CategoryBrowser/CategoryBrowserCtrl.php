@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -131,8 +131,9 @@ class CategoryBrowser {
 	static function generateRanges( array &$source_ranges ) {
 		$ranges = array();
 		foreach ( $source_ranges as $infix_queue ) {
-			$sqlCond = CB_SqlCond::newFromInfixTokens( $infix_queue );
-			$ranges[] = (object) array( 'infix_decoded' => $infix_queue, 'polish_encoded' => $sqlCond->getEncodedQueue( false ) );
+			$sqlCond = CB_SqlCond::newFromEncodedInfixQueue( $infix_queue );
+			$sqlCond->getCond(); // build $sqlCond->infix_tokens
+			$ranges[] = (object) array( 'infix_tokens' => $sqlCond->infix_tokens, 'rpn_queue' => $sqlCond->getEncodedQueue( false ) );
 		}
 		return $ranges;
 	}
@@ -147,14 +148,14 @@ class CategoryBrowser {
 		$encPolishQueue = $sqlCond->getEncodedQueue( false );
 		$queueExists = false;
 		foreach ( $ranges as &$range ) {
-			if ( $range->polish_encoded == $encPolishQueue ) {
+			if ( $range->rpn_queue == $encPolishQueue ) {
 				$queueExists = true;
 				break;
 			}
 		}
 		if ( !$queueExists ) {
-			$sqlCond->getCond(); // build infix queue array
-			$ranges[] = (object) array( 'infix_decoded' => $sqlCond->infix_queue, 'polish_encoded' => $encPolishQueue );
+			$sqlCond->getCond(); // build $sqlCond->infix_tokens array
+			$ranges[] = (object) array( 'infix_tokens' => $sqlCond->infix_tokens, 'rpn_queue' => $encPolishQueue );
 		}
 	}
 
@@ -184,7 +185,7 @@ class CategoryBrowser {
 		$selectedEncPolishQueue = $rootPager->sqlCond->getEncodedQueue( false );
 		foreach ( $ranges as &$range ) {
 			$condOptList[] = self::generateOption( $range, $selectedEncPolishQueue );
-			if ( $range->polish_encoded == $selectedEncPolishQueue ) {
+			if ( $range->rpn_queue == $selectedEncPolishQueue ) {
 				$queueFound = true;
 			}
 		}
@@ -202,11 +203,11 @@ class CategoryBrowser {
 		$condOptTpl =
 			array( '__tag' => $nodeName, 'value' => &$condOptVal, 'infixexpr' => &$condOptInfix, 0 => &$condOptName, '__end' => "\n" );
 		# }}}
-		$le = new CB_LocalExpr( $range->infix_decoded );
-		$condOptVal = CB_Setup::specialchars( $range->polish_encoded );
-		$sqlCond = CB_SqlCond::newFromEncodedPolishQueue( $range->polish_encoded );
+		$le = new CB_LocalExpr( $range->infix_tokens );
+		$condOptVal = CB_Setup::specialchars( $range->rpn_queue );
+		$sqlCond = CB_SqlCond::newFromEncodedPolishQueue( $range->rpn_queue );
 		$condOptInfix = CB_Setup::specialchars( $sqlCond->getEncodedQueue( true ) );
-		if ( $range->polish_encoded == $selectedValue ) {
+		if ( $range->rpn_queue == $selectedValue ) {
 			$condOptTpl['selected'] = null;
 		}
 		$condOptName = CB_Setup::entities( $le->toString() );
@@ -219,20 +220,23 @@ class CategoryBrowser {
 	 * @param $args[0] : encoded reverse polish queue
 	 * @param $args[1] : category name filter string
 	 * @param $args[2] : category name filter case insensitive flag
-	 * @param $args[3] : offset (optional)
-	 * @param $args[4] : limit (optional)
+	 * @param $args[3] : browse only categories which has no parents flag (by default, false)
+	 * @param $args[4] : offset (optional)
+	 * @param $args[5] : limit (optional)
 	 */
 	static function getRootOffsetHtml() {
 		wfLoadExtensionMessages( 'CategoryBrowser' );
 		$args = func_get_args();
-		$limit = ( count( $args ) > 4 ) ? abs( intval( $args[4] ) ) : CB_PAGING_ROWS;
-		$offset = ( count( $args ) > 3 ) ? abs( intval( $args[3] ) ) : 0;
+		$limit = ( count( $args ) > 5 ) ? abs( intval( $args[5] ) ) : CB_PAGING_ROWS;
+		$offset = ( count( $args ) > 4 ) ? abs( intval( $args[4] ) ) : 0;
+		$noParentsOnly = ( count( $args ) > 3 ) ? $args[3] == 'true' : false;
 		$nameFilterCI = ( count( $args ) > 2 ) ? $args[2] == 'true' : false;
 		$nameFilter = ( count( $args ) > 1 ) ? $args[1] : '';
 		$encPolishQueue = ( count( $args ) > 0 ) ? $args[0] : 'all';
 		$cb = new CategoryBrowser();
 		$sqlCond = CB_SqlCond::newFromEncodedPolishQueue( $encPolishQueue );
 		$rootPager = CB_RootPager::newFromSqlCond( $sqlCond, $offset, $limit );
+		$rootPager->setNoParentsOnly( $noParentsOnly );
 		$rootPager->setNameFilter( $nameFilter, $nameFilterCI );
 		$rootPager->getCurrentRows();
 		$catView = new CB_CategoriesView( $rootPager );
@@ -241,9 +245,35 @@ class CategoryBrowser {
 	}
 
 	/*
+	 * called via AJAX to setup custom edited expression cookie then display category root offset
+	 * @param $args[0] : encoded infix expression
+	 * @param $args[1] : category name filter string
+	 * @param $args[2] : category name filter case insensitive flag
+	 * @param $args[3] : browse only categories which has no parents flag (by default, false)
+	 * @param $args[4] : 1 - cookie has to be set, 0 - cookie should not be set (expression is pre-defined or already was stored)
+	 * @param $args[5] : pager limit (optional)
+	 */
+	static function applyEncodedQueue() {
+		CB_Setup::initUser();
+		$args = func_get_args();
+		$limit = ( ( count( $args ) > 5 ) ? intval( $args[5] ) : CB_PAGING_ROWS );
+		$setCookie = ( ( count( $args ) > 4 ) ? $args[4] != 0 : false );
+		$noParentsOnly = ( count( $args ) > 3 ) ? $args[3] == 'true' : false;
+		$nameFilterCI = ( count( $args ) > 2 ) ? $args[2] == 'true' : false;
+		$nameFilter = ( count( $args ) > 1 ) ? $args[1] : '';
+		$encInfixQueue = ( ( count( $args ) > 0 ) ? $args[0] : 'all' );
+		$sqlCond = CB_SqlCond::newFromEncodedInfixQueue( $encInfixQueue );
+		$encPolishQueue = $sqlCond->getEncodedQueue( false );
+		if ( $setCookie ) {
+			CB_Setup::setCookie( 'rootcond', $encPolishQueue, time() + 60 * 60 * 24 * 7 );
+		}
+		return self::getRootOffsetHtml( $encPolishQueue, $nameFilter, $nameFilterCI, $noParentsOnly, 0, $limit );
+	}
+
+	/*
 	 * called via AJAX to get list of (subcategories,pages,files) for specitied parent category id, offset, limit
 	 * @param $args[0] : type of pager ('subcats','pages','files')
-	 * @param $args[1] : parent category id
+	 * @param $args[1] : parent category name
 	 * @param $args[2] : offset (optional)
 	 * @param $args[3] : limit (optional)
 	 */
@@ -251,7 +281,7 @@ class CategoryBrowser {
 		$pager_types = array(
 			'subcats' => array(
 				'js_nav_func' => "subCatsNav",
-				'select_fields' => "cl_sortkey, cat_id, cat_title, cat_subcats, cat_pages, cat_files",
+				'select_fields' => "cl_sortkey, cat_id, cat_title, cat_subcats, " . CB_AbstractPager::$cat_pages_only . ", cat_files",
 				'ns_cond' => "page_namespace = " . NS_CATEGORY,
 				'default_limit' => CB_Setup::$categoriesLimit
 			),
@@ -266,6 +296,9 @@ class CategoryBrowser {
 				'select_fields' => "page_title, page_namespace, page_len, page_is_redirect",
 				'ns_cond' => "page_namespace = " . NS_FILE,
 				'default_limit' => CB_Setup::$filesLimit
+			),
+			'parents' => array(
+				'default_limit' => CB_Setup::$parentsLimit
 			)
 		);
 		wfLoadExtensionMessages( 'CategoryBrowser' );
@@ -277,18 +310,23 @@ class CategoryBrowser {
 		if ( !isset( $pager_types[ $pager_type ] ) ) {
 			return 'Unknown pager type=' . CB_Setup::specialchars( $pager_type ) . ' in ' . __METHOD__;
 		}
-		$pager_setup = & $pager_types[ $args[0] ];
+		$pager_setup = & $pager_types[ $pager_type ];
 		$limit = ( count( $args ) > 3 ) ? abs( intval( $args[3] ) ) : $pager_setup[ 'default_limit' ];
 		$offset = ( count( $args ) > 2 ) ? abs( intval( $args[2] ) ) : 0;
-		$parentCatId = abs( intval( $args[1] ) );
+		$parentCatName = $args[1];
 		$cb = new CategoryBrowser();
-		$pager = new CB_SubPager( $parentCatId, $offset, $limit,
-			$pager_setup[ 'js_nav_func' ],
-			$pager_setup[ 'select_fields' ],
-			$pager_setup[ 'ns_cond' ] );
+		if ( $pager_type == 'parents' ) {
+			$pager = new CB_ParentPager( $parentCatName, $offset, $limit );
+		} else {
+			$pager = new CB_SubPager( $parentCatName, $offset, $limit,
+				$pager_setup[ 'js_nav_func' ],
+				$pager_setup[ 'select_fields' ],
+				$pager_setup[ 'ns_cond' ] );
+		}
 		$pager->getCurrentRows();
 		switch ( $pager_type ) {
 		case 'subcats' :
+		case 'parents' :
 			$view = new CB_CategoriesView( $pager );
 			break;
 		case 'pages' :
@@ -311,30 +349,6 @@ class CategoryBrowser {
 		}
 		$list = $view->generateList();
 		return CB_XML::toText( $list );
-	}
-
-	/*
-	 * called via AJAX to setup custom edited expression cookie then display category root offset
-	 * @param $args[0] : encoded infix expression
-	 * @param $args[1] : category name filter string
-	 * @param $args[2] : category name filter case insensitive flag
-	 * @param $args[3] : 1 - cookie has to be set, 0 - cookie should not be set (expression is pre-defined or already was stored)
-	 * @param $args[4] : pager limit (optional)
-	 */
-	static function applyEncodedQueue() {
-		CB_Setup::initUser();
-		$args = func_get_args();
-		$limit = ( ( count( $args ) > 4 ) ? intval( $args[4] ) : CB_PAGING_ROWS );
-		$setCookie = ( ( count( $args ) > 3 ) ? $args[3] != 0 : false );
-		$nameFilterCI = ( count( $args ) > 2 ) ? $args[2] == 'true' : false;
-		$nameFilter = ( count( $args ) > 1 ) ? $args[1] : '';
-		$encInfixQueue = ( ( count( $args ) > 0 ) ? $args[0] : 'all' );
-		$sqlCond = CB_SqlCond::newFromEncodedInfixQueue( $encInfixQueue );
-		$encPolishQueue = $sqlCond->getEncodedQueue( false );
-		if ( $setCookie ) {
-			CB_Setup::setCookie( 'rootcond', $encPolishQueue, time() + 60 * 60 * 24 * 7 );
-		}
-		return self::getRootOffsetHtml( $encPolishQueue, $nameFilter, $nameFilterCI, 0, $limit );
 	}
 
 	/*

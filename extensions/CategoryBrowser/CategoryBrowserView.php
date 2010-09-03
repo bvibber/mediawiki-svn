@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -60,9 +60,10 @@ abstract class CB_AbstractPagesView {
 		# {{{ ajax link template
 		$this->ajax_onclick = '';
 		$this->ajax_link_text = '';
+		$this->ajax_title_attr = '';
 		if ( !isset( $this->ajax_link_tpl ) ) {
 			$this->ajax_link_tpl =
-				array( '__tag' => 'a', 'class' => 'cb_sublink', 'href' => '', 'onclick' => &$this->ajax_onclick, 0 => &$this->ajax_link_text );
+				array( '__tag' => 'a', 'class' => 'cb_sublink', 'href' => '', 'onclick' => &$this->ajax_onclick, 'title' => &$this->ajax_title_attr, 0 => &$this->ajax_link_text );
 		}
 		# }}}
 	}
@@ -152,7 +153,6 @@ abstract class CB_AbstractPagesView {
 	}
 } /* end of CB_AbstractPagesView class */
 
-
 class CB_CategoriesView extends CB_AbstractPagesView {
 
 	function generateList() {
@@ -190,16 +190,15 @@ class CB_CategoriesView extends CB_AbstractPagesView {
 			} else {
 				$cat_title_obj = Title::makeTitle( NS_CATEGORY, $cat_title_str );
 			}
+			$js_cat_string = "'" . Xml::escapeJsString( $cat_title_str ) . "'";
 
-			# calculate exact number of pages alone
-			$cat->pages_only = intval( $cat->cat_pages ) - intval( $cat->cat_subcats ) - intval( $cat->cat_files );
 			# generate tree "expand" sign
 			$this->initAjaxLinkTpl();
 			if ( $cat->cat_subcats === NULL ) {
 				$cat_expand_sign = 'x';
 				$subcat_count_hint = '';
 			} elseif ( $cat->cat_subcats > 0 ) {
-				$this->ajax_onclick = 'return CategoryBrowser.subCatsPlus(this,' . $cat->cat_id . ')';
+				$this->ajax_onclick = 'return CategoryBrowser.subCatsPlus(this,' . $js_cat_string . ')';
 				$this->ajax_link_text = '+';
 				$cat_expand_sign = CB_XML::toText( $this->ajax_link_tpl );
 				$subcat_count_hint = wfMsgExt( 'cb_has_subcategories', array( 'parsemag' ), $cat->cat_subcats );
@@ -211,20 +210,30 @@ class CB_CategoriesView extends CB_AbstractPagesView {
 			# create AJAX links for viewing categories, pages, files, belonging to this category
 			$ajax_links = '';
 			$this->initAjaxLinkTpl();
-			if ( !empty( $cat->cat_id ) ) {
-				$this->ajax_onclick = 'return CategoryBrowser.subCatsLink(this,' . $cat->cat_id . ')';
-				$this->ajax_link_text = wfMsgExt( 'cb_has_subcategories', array( 'parsemag' ), $cat->cat_subcats );
-				$cat_subcats = ( ( $cat->cat_subcats > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
 
-				$this->ajax_onclick = 'return CategoryBrowser.pagesLink(this,' . $cat->cat_id . ')';
-				$this->ajax_link_text = wfMsgExt( 'cb_has_pages', array( 'parsemag' ), $cat->pages_only );
-				$cat_pages = ( ( $cat->pages_only > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
+			$this->ajax_onclick = 'return CategoryBrowser.subCatsLink(this,' . $js_cat_string . ')';
+			$this->ajax_link_text = wfMsgExt( 'cb_has_subcategories', array( 'parsemag' ), $cat->cat_subcats );
+			$cat_subcats = ( ( $cat->cat_subcats > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
 
-				$this->ajax_onclick = 'return CategoryBrowser.filesLink(this,' . $cat->cat_id . ')';
-				$this->ajax_link_text = wfMsgExt( 'cb_has_files', array( 'parsemag' ), $cat->cat_files );
-				$cat_files = ( ( $cat->cat_files > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
-				$ajax_links .= $cat_subcats . $cat_pages . $cat_files;
+			$this->ajax_onclick = 'return CategoryBrowser.pagesLink(this,' . $js_cat_string . ')';
+			$this->ajax_link_text = wfMsgExt( 'cb_has_pages', array( 'parsemag' ), $cat->cat_pages_only );
+			$cat_pages = ( ( $cat->cat_pages_only > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
+
+			$this->ajax_onclick = 'return CategoryBrowser.filesLink(this,' . $js_cat_string . ')';
+			$this->ajax_link_text = wfMsgExt( 'cb_has_files', array( 'parsemag' ), $cat->cat_files );
+			$cat_files = ( ( $cat->cat_files > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
+
+			if ( CB_Setup::$allowNestedParents ) {
+				$this->ajax_onclick = 'return CategoryBrowser.parentCatsLink(this,' . $js_cat_string . ')';
+				$this->ajax_link_text = '↑';
+				$this->ajax_title_attr = wfMsg( 'cb_has_parentcategories' );
+				$cat_parentcats = ' | ' . CB_XML::toText( $this->ajax_link_tpl );
+			} else {
+				$cat_parentcats = '';
 			}
+
+			$ajax_links .= $cat_subcats . $cat_pages . $cat_files . $cat_parentcats;
+
 			$cat_link = CB_Setup::$skin->link( $cat_title_obj, $cat_title_obj->getText() );
 			# show sortkey, when it does not match title name
 			$cat_link .= $this->addSortkey( $cat_title_obj, $cat );
@@ -252,7 +261,8 @@ class CB_PagesView extends CB_AbstractPagesView {
 		$page_link = '';
 		$page_tpl =
 			array( '__tag' => 'div', 'class' => 'cb_cat_container', '__end' => "\n",
-				array( '__tag' => 'div', 'class' => 'cb_cat_item', 0 => &$page_link )
+				array( '__tag' => 'span', 'class' => 'cb_cat_expand', 0 => '' ), // empty cb_cat_expand makes line height matching to CB_CategoriesView
+				array( '__tag' => 'span', 'class' => 'cb_cat_item', 0 => &$page_link )
 			);
 		# }}}
 		# create list of pages
@@ -271,11 +281,7 @@ class CB_PagesView extends CB_AbstractPagesView {
 
 } /* end of CB_PagesView class */
 
-class CB_FilesView extends CB_AbstractPagesView {
-
-	function __construct( CB_SubPager $pager ) {
-		parent::__construct( $pager );
-	}
+class CB_FilesView extends CB_PagesView {
 
 	function generateList() {
 		if ( $this->pager->offset == -1 ) {

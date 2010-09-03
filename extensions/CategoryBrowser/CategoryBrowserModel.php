@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -40,6 +40,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class CB_AbstractPager {
 
 	var $db;
+	var $page_table;
+	var $category_table;
+	var $categorylinks_table;
+	// select pages number without number of categories or files
+	static $cat_pages_only = '(cat_pages - cat_subcats - cat_files) as cat_pages_only';
 
 	/* pager position (actual offset)
 	 * 0 means pager has no previous elements
@@ -50,12 +55,15 @@ abstract class CB_AbstractPager {
 	var $query_offset;
 	/* indicates, whether the pager has further elements */
 	var $hasMoreEntries = false;
-	/* maximal number of entries per page (actual number of entries on page) */
+	/*
+	 * maximal number of entries per page (actual number of entries on page)
+	 * warning: is not initialized until $this->getCurrentRows() call
+	 */
 	var $limit = 0;
 	/* provided "source" limit */
 	var $query_limit;
 	/* array of current entries */
-	var $entries;
+	var $entries = array();
 
 	/*
 	 * abstract query (doesn't instantinate)
@@ -64,6 +72,9 @@ abstract class CB_AbstractPager {
 	 */
 	function __construct( $offset, $limit ) {
 		$this->db = & wfGetDB( DB_SLAVE );
+		$this->page_table = $this->db->tableName( 'page' );
+		$this->category_table = $this->db->tableName( 'category' );
+		$this->categorylinks_table = $this->db->tableName( 'categorylinks' );
 		$this->query_limit = intval( $limit );
 		$this->query_offset = intval( $offset );
 	}
@@ -101,64 +112,19 @@ abstract class CB_AbstractPager {
 		return ( ( $this->hasMoreEntries ) ? $this->offset + $this->limit : 0 );
 	}
 
-	/*
-	 * suggests, what kind of view should be used for instance of the model
-	 * @return name of view method
-	 * otherwise throws an error
-	 * warning: will fail, when called before calling $this->getCurrentRows() !
-	 * warning: $this->limit is not set properly before calling $this->getCurrentRows() !
-	 * todo: unused anymore; keep because might be useful in some cases
-	 */
-	function getListType() {
-		// it is not enough to check $this->entries[0],
-		// because some broken tables might have just some (not all) cat_title = NULL or page_title = NULL
-		foreach ( $this->entries as &$entry ) {
-			if ( isset( $entry->page_namespace ) && $entry->page_namespace == NS_FILE ) { return 'generateFilesList'; }
-			if ( isset( $entry->page_title ) ) { return 'generatePagesList'; }
-			if ( isset( $entry->cat_title ) ) { return 'generateCatList'; }
-			if ( isset( $entry->cl_sortkey ) ) { return 'generateCatList'; }
-		}
-		throw new MWException( 'Entries not initialized in ' . __METHOD__ );
-	}
-
 } /* end of CB_AbstractPager class */
 
 /*
- * subentries (subcategories, pages, files) pager
- * TODO: gracefully set offset = 0 when too large offset was given
+ * parent categories pager
  */
-class CB_SubPager extends CB_AbstractPager {
+class CB_ParentPager extends CB_AbstractPager {
 
-	var $page_table;
-	var $category_table;
-	var $categorylinks_table;
-	// database ID of parent category
-	var $parentCatId;
-	// database fields to query
-	var $select_fields;
-	// namespace SQL condition (WHERE part)
-	var $ns_cond;
-	// javascript function used to navigate between the pages
-	var $js_nav_func;
+	// database cat_title of children category (with underscores, dbkey-like)
+	var $childCatName;
 
-	/*
-	 * creates subcategory list pager
-	 *
-	 * @param $parentCatId id of parent category
-	 * @param $offset SQL offset
-	 * @param $limit SQL limit
-	 *
-	 * TODO: query count of parentCatId subcategories/pages/files in category table for progress / percentage display
-	 */
-	function __construct( $parentCatId, $offset, $limit, $js_nav_func, $select_fields = '*', $ns_cond = '' ) {
+	function __construct( $childCatName, $offset, $limit ) {
 		parent::__construct( $offset, $limit );
-		$this->page_table = $this->db->tableName( 'page' );
-		$this->category_table = $this->db->tableName( 'category' );
-		$this->categorylinks_table = $this->db->tableName( 'categorylinks' );
-		$this->parentCatId = $parentCatId;
-		$this->select_fields = $select_fields;
-		$this->ns_cond = $ns_cond;
-		$this->js_nav_func = $js_nav_func;
+		$this->childCatName = $childCatName;
 	}
 
 	/*
@@ -167,20 +133,18 @@ class CB_SubPager extends CB_AbstractPager {
 	 * @param $limit SQL limit
 	 */
 	function getCurrentRows() {
-		/* TODO: change the query to more optimal one (no subselects)
-		 * SELECT cl_sortkey,cat_id,cat_title,cat_subcats,cat_pages,cat_files FROM `wiki_page` INNER JOIN `wiki_categorylinks` FORCE INDEX (cl_sortkey) ON (cl_from = page_id) LEFT JOIN `wiki_category` ON (cat_title = page_title AND page_namespace = 14)  WHERE cl_to IN (SELECT cat_title FROM wiki_category WHERE cat_id = 44) AND page_namespace = 14 ORDER BY cl_sortkey LIMIT 0,11
-		 */
+		if ( !CB_Setup::$allowNestedParents ) {
+			return;
+		}
+		/*
+			SELECT null cl_sortkey,cat_id,cat_title,cat_subcats,cat_pages,cat_files FROM `wiki_page` INNER JOIN `wiki_categorylinks` ON (cl_from = page_id AND page_namespace=14 AND page_title='Жизненные_ценности' ) INNER JOIN `wiki_category` ON (cat_title = cl_to) ORDER BY cat_title
+		*/
 		$query_string =
-			"SELECT {$this->select_fields} " .
+			"SELECT null cl_sortkey,cat_id,cat_title,cat_subcats," . self::$cat_pages_only . ",cat_files " .
 			"FROM {$this->page_table} " .
-			"INNER JOIN {$this->categorylinks_table} FORCE INDEX (cl_sortkey) ON cl_from = page_id " .
-			"LEFT JOIN {$this->category_table} ON cat_title = page_title AND page_namespace = " . NS_CATEGORY . " " .
-			"WHERE cl_to IN (" .
-				"SELECT cat_title " .
-				"FROM {$this->category_table} " .
-				"WHERE cat_id = " . $this->db->addQuotes( $this->parentCatId ) .
-			") " . ( ( $this->ns_cond == '' ) ? '' : "AND {$this->ns_cond} " ) .
-			"ORDER BY cl_sortkey ";
+			"INNER JOIN {$this->categorylinks_table} ON (cl_from = page_id AND page_namespace=14 AND page_title=" . $this->db->addQuotes( $this->childCatName ) . ") " .
+			"INNER JOIN {$this->category_table} ON (cat_title = cl_to) " .
+			"ORDER BY cat_title ";
 		$res = $this->db->query( $query_string . "LIMIT {$this->query_offset}," . ( $this->query_limit + 1 ), __METHOD__ );
 		$this->setEntries( $res );
 	}
@@ -192,7 +156,7 @@ class CB_SubPager extends CB_AbstractPager {
 	 */
 	function getPrevAjaxLink() {
 		$result = (object) array(
-			"call" => "return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . "," . $this->getPrevOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"call" => "return CategoryBrowser.parentCatsNav(this,'" . Xml::escapeJsString( $this->childCatName ) . "'," . $this->getPrevOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
 			"placeholders" => false
 		);
 		return $result;
@@ -205,7 +169,88 @@ class CB_SubPager extends CB_AbstractPager {
 	 */
 	function getNextAjaxLink() {
 		$result = (object) array(
-			"call" => "return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . ',' . $this->getNextOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"call" => "return CategoryBrowser.parentCatsNav(this,'" . Xml::escapeJsString( $this->childCatName ) . "'," . $this->getNextOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => false
+		);
+		return $result;
+	}
+
+} /* end of CB_ParentPager class */
+
+/*
+ * subentries (subcategories, pages, files) pager
+ * TODO: gracefully set offset = 0 when too large offset was given
+ */
+class CB_SubPager extends CB_AbstractPager {
+
+	// database cat_title of parent category (with underscores, dbkey-like)
+	var $parentCatName;
+	// database fields to query
+	var $select_fields;
+	// namespace SQL condition (WHERE part)
+	var $ns_cond;
+	// javascript function used to navigate between the pages
+	var $js_nav_func;
+
+	/*
+	 * creates subcategory list pager
+	 *
+	 * @param $parentCatName cat_title of parent category
+	 * @param $offset SQL offset
+	 * @param $limit SQL limit
+	 *
+	 * TODO: query count of parent subcategories/pages/files in category table for progress / percentage display
+	 */
+	function __construct( $parentCatName, $offset, $limit, $js_nav_func, $select_fields = '*', $ns_cond = '' ) {
+		parent::__construct( $offset, $limit );
+		$this->parentCatName = $parentCatName;
+		$this->select_fields = $select_fields;
+		$this->ns_cond = $ns_cond;
+		$this->js_nav_func = $js_nav_func;
+	}
+
+	/*
+	 * set offset, limit, hasMoreEntries and entries
+	 * @param $offset SQL offset
+	 * @param $limit SQL limit
+	 */
+	function getCurrentRows() {
+		/* 
+		 * SELECT cl_sortkey,cat_id,cat_title,cat_subcats,cat_pages,cat_files FROM `wiki_page` INNER JOIN `wiki_categorylinks` FORCE INDEX (cl_sortkey) ON (cl_from = page_id) LEFT JOIN `wiki_category` ON (cat_title = page_title AND page_namespace = 14)  WHERE cl_to = 'parent category name' AND page_namespace = 14 ORDER BY cl_sortkey LIMIT 0,11
+		 */
+		$query_string =
+			"SELECT {$this->select_fields} " .
+			"FROM {$this->page_table} " .
+			"INNER JOIN {$this->categorylinks_table} FORCE INDEX (cl_sortkey) ON (cl_from = page_id) " .
+			"LEFT JOIN {$this->category_table} ON (cat_title = page_title AND page_namespace = " . NS_CATEGORY . ") " .
+			"WHERE cl_to = " . $this->db->addQuotes( $this->parentCatName ) .
+			( ( $this->ns_cond == '' ) ? ' ' : "AND {$this->ns_cond} " ) .
+			"ORDER BY cl_sortkey ";
+		$res = $this->db->query( $query_string . "LIMIT {$this->query_offset}," . ( $this->query_limit + 1 ), __METHOD__ );
+		$this->setEntries( $res );
+	}
+
+	/*
+	 * returns JS function call used to navigate to the previous page of this pager
+	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
+	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
+	 */
+	function getPrevAjaxLink() {
+		$result = (object) array(
+			"call" => "return CategoryBrowser.{$this->js_nav_func}(this,'" . Xml::escapeJsString( $this->parentCatName ) . "'," . $this->getPrevOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => false
+		);
+		return $result;
+	}
+
+	/*
+	 * returns JS function call used to navigate to the next page of this pager
+	 * when placeholders = true, empty html placeholder should be generated in pager view instead of link
+	 * when placeholders = false, nothing ('') will be generated in pager view instead of link
+	 */
+	function getNextAjaxLink() {
+		$result = (object) array(
+			"call" => "return CategoryBrowser.{$this->js_nav_func}(this,'" . Xml::escapeJsString( $this->parentCatName ) . "'," . $this->getNextOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
 			"placeholders" => false
 		);
 		return $result;
@@ -227,6 +272,9 @@ class CB_RootPager extends CB_AbstractPager {
 	 * (in case it's been provided in constructor call)
 	 */
 	var $sqlCond = null;
+
+	// by default, query for all categories, not just these which have no parents
+	var $noParentsOnly = false;
 
 	// category name filter (LIKE)
 	var $nameFilter = '';
@@ -278,7 +326,7 @@ class CB_RootPager extends CB_AbstractPager {
 	public static function newFromCategoryRange( $ranges ) {
 		$rp = null;
 		foreach ( $ranges as &$range ) {
-			$rp = CB_RootPager::newFromInfixTokens( $range->infix_decoded );
+			$rp = CB_RootPager::newFromInfixTokens( $range->infix_tokens );
 			if ( is_object( $rp ) && $rp->offset != -1 ) {
 				break;
 			}
@@ -287,12 +335,21 @@ class CB_RootPager extends CB_AbstractPager {
 	}
 
 	/*
+	 * setup query only for categories, which does not have the parents
+	 * @param: $noParentsOnly - boolean flag
+	 *     true - query only for categories, which does not have the parents
+	 */
+	function setNoParentsOnly( $noParentsOnly ) {
+		$this->noParentsOnly = (boolean) $noParentsOnly;
+	}
+
+	/*
 	 * filter catetories by names
 	 * @param $cat_name_filter - string category name begins from
 	 * @param $cat_name_filter_ci - boolean, true attempts to use case-insensetive search, when available
 	 */
 	function setNameFilter( $cat_name_filter, $cat_name_filter_ci ) {
-		$this->nameFilter = ltrim( $cat_name_filter );
+		$this->nameFilter = str_replace( ' ', '_', ltrim( $cat_name_filter ) );
 		$this->nameFilterCI = $cat_name_filter_ci;
 	}
 
@@ -312,13 +369,26 @@ class CB_RootPager extends CB_AbstractPager {
 				$conds .= ' COLLATE ' . $this->db->addQuotes( CB_Setup::$cat_title_CI );
 			}
 		}
-		$options = array( 'OFFSET' => $this->query_offset, 'ORDER BY' => 'cat_title', 'LIMIT' => $this->query_limit + 1 );
-		$res = $this->db->select( 'category',
-			array( 'cat_id', 'cat_title', 'cat_pages', 'cat_subcats', 'cat_files' ),
-			$conds,
-			__METHOD__,
-			$options
-		);
+		if ( CB_Setup::$allowNoParentsOnly && $this->noParentsOnly ) {
+			/*
+				SELECT * FROM `wiki_category` INNER JOIN `wiki_categorylinks` AS childs ON (cat_title = cl_to) LEFT JOIN `wiki_page` ON ( childs.cl_to = page_title AND page_namespace = 14 ) LEFT JOIN `wiki_categorylinks` AS parents ON ( page_id = parents.cl_from ) WHERE parents.cl_from IS NULL GROUP BY childs.cl_to ORDER BY childs.cl_to
+			*/
+			$conds = "parents.cl_from IS NULL" . ( ($conds == '') ? '' : " AND ${conds}" );
+			$query_string =
+				"SELECT cat_id, cat_title, " . self::$cat_pages_only . ", cat_subcats, cat_files FROM {$this->category_table} " .
+				"INNER JOIN {$this->categorylinks_table} AS childs ON (cat_title = cl_to) " .
+				"LEFT JOIN {$this->page_table} ON (childs.cl_to = page_title AND page_namespace = 14) " .
+				"LEFT JOIN {$this->categorylinks_table} AS parents ON (page_id = parents.cl_from) " .
+				"WHERE ${conds} GROUP BY childs.cl_to ORDER BY childs.cl_to ";
+			$res = $this->db->query( $query_string . "LIMIT {$this->query_offset}," . ( $this->query_limit + 1 ), __METHOD__ );
+		} else {
+			$res = $this->db->select( 'category',
+				array( 'cat_id', 'cat_title', self::$cat_pages_only, 'cat_subcats', 'cat_files' ),
+				$conds,
+				__METHOD__,
+				array( 'OFFSET' => $this->query_offset, 'ORDER BY' => 'cat_title', 'LIMIT' => $this->query_limit + 1 )
+			);
+		}
 		/* set actual offset, limit, hasMoreEntries and entries */
 		$this->setEntries( $res );
 	}

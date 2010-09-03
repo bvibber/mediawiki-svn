@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -48,7 +48,7 @@ CB_Setup::init();
 
 class CB_Setup {
 
-	static $version = '0.2.1';
+	static $version = '0.3.1';
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 	static $cat_pages_ranges; // ???
@@ -58,8 +58,11 @@ class CB_Setup {
 	static $response;
 	static $cookie_prefix;
 
-	// case insensitive collation of category table 'cat_title' field
-	static $cat_title_CI = '';
+	// by default, enable browsing of category parents (reverse browsing)
+	static $allowNestedParents = true;
+
+	// by default, allow optional selecting of categories which has no parents only
+	static $allowNoParentsOnly = true;
 
 	// number of files to show in gallery row
 	static $imageGalleryPerRow = 4;
@@ -69,6 +72,10 @@ class CB_Setup {
 	static $pagesLimit = CB_PAGING_ROWS;
 	static $filesLimit = null;
 	static $filesMaxRows = CB_FILES_MAX_ROWS;
+	static $parentsLimit = CB_PAGING_ROWS;
+
+	// case insensitive collation of category table 'cat_title' field
+	static $cat_title_CI = '';
 
 	/**
 	 * Add this extension to the mediawiki's extensions list.
@@ -91,9 +98,12 @@ class CB_Setup {
 		$wgAutoloadClasses['CB_XML'] =
 		$wgAutoloadClasses['CB_SqlCond'] = self::$ExtDir . '/CategoryBrowserBasic.php';
 
+		$wgAutoloadClasses['CB_AbstractPager'] =
 		$wgAutoloadClasses['CB_RootPager'] =
-		$wgAutoloadClasses['CB_SubPager'] = self::$ExtDir . '/CategoryBrowserModel.php';
+		$wgAutoloadClasses['CB_SubPager'] =
+		$wgAutoloadClasses['CB_ParentPager'] = self::$ExtDir . '/CategoryBrowserModel.php';
 
+		$wgAutoloadClasses['CB_AbstractPagesView'] =
 		$wgAutoloadClasses['CB_CategoriesView'] =
 		$wgAutoloadClasses['CB_PagesView'] =
 		$wgAutoloadClasses['CB_FilesView'] = self::$ExtDir . '/CategoryBrowserView.php';

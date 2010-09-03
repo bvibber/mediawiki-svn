@@ -26,7 +26,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -120,6 +120,15 @@ var CB_lib = {
 		}
 		// cookie not found
 		return null;
+	},
+
+	findParentByClassName : function( obj, className ) {
+		for ( var parentObj = obj.parentNode; parentObj != null; parentObj = parentObj.parentNode ) {
+			if ( parentObj.nodeType == 1 && parentObj.className == className ) {
+				return parentObj;
+			}
+		}
+		return parentObj;
 	},
 
 	/*
@@ -233,7 +242,7 @@ var CB_Setup = {
 		'error': { 'color': 'red', 'bgr': 'aquamarine' },
 		'copy': { 'color': 'white', 'bgr': 'blue' }
 	},
-	// delay in seconds before performing ajax call to reduce server load
+	// delay in milliseconds before performing ajax call to reduce server load
 	'ajaxPollTimeout' : 2000
 } /* end of CB_Setup */
 
@@ -243,12 +252,17 @@ var CategoryBrowser = {
  * AJAX category tree section
  */
 
-	// currently selected encoded reverse polish queue
+	// {{{ root query condition parameters
+	// currently selected encoded reverse polish queue (constructed in CB_ConditionEditor)
 	rootCond : null,
+	// query only categories which has no parents
+	noParentsOnly : false,
 	// category name filter (LIKE)
 	nameFilter : '',
 	// category name filter case-insensetive flag (when true, queries use LIKE COLLATE)
 	nameFilterCI : false,
+	// }}}
+
 	// limit of pager query (also passed further via AJAX call)
 	pagerLimit : null,
 	// nested container object
@@ -262,7 +276,7 @@ var CategoryBrowser = {
 	 */
 	rootCats : function( rootCond, offset, limit ) {
 		this.rootCond = rootCond;
-		var param = [this.rootCond, this.nameFilter, this.nameFilterCI, offset];
+		var param = [this.rootCond, this.nameFilter, this.nameFilterCI, this.noParentsOnly, offset];
 		if ( limit ) {
 			param.push( limit );
 		} else {
@@ -291,6 +305,7 @@ var CategoryBrowser = {
 	/*
 	 * create / get nested DOM container of the specified category DOM node
 	 * @param node - category DOM node
+	 * @return DOM node of current nested container
 	 */
 	getNestedContainer : function( node ) {
 		var container = node.lastChild;
@@ -302,64 +317,88 @@ var CategoryBrowser = {
 			container.className = 'cb_nested_container';
 			node.appendChild( container );
 		}
-		this.container = container;
+		return container;
 	},
 
 	/*
 	 * switch visibility of container
-	 * @param: id - set id attribute of nested container (used in setContainerVisibility() method)
+	 * @param: id - set id attribute of nested container (indicates the type of content placed into container)
 	 */
-	setContainerVisibility : function( id ) {
-		if ( this.container.style.display == 'none' ||
-				this.container.getAttribute( 'id' ) != id ) {
+	setContainerVisibility : function( id, isVisible ) {
+		if ( isVisible ) {
 			this.container.style.display = 'block';
 		} else {
+			this.container.innerHTML = '';
 			this.container.style.display = 'none';
 		}
 		this.container.setAttribute( 'id', id );
 	},
 
-	subCatsNav : function( eventObj, catId, offset, limit ) {
-		var param = ['subcats', catId];
-		if ( offset ) {
-			param.push( offset );
-			if ( limit ) {
-				param.push( limit );
-			}
+	subLink : function( eventObj, catName, pagerType, plusMode ) {
+		eventObj.blur();
+		// find 'cat_expand_sign' container
+		var expandSign = CB_lib.findParentByClassName( eventObj, 'cb_cat_controls' );
+		if ( expandSign === null ||
+				(expandSign = expandSign.firstChild) === null ||
+				(expandSign = expandSign.firstChild) === null ) {
+			alert( 'Cannot find expand sign container in CategoryBrowser.subCatsLink() ' );
 		}
-		this.subOffset( eventObj, param );
-		return false;
-	},
-
-	subCatsPlus : function( eventObj, catId ) {
-		eventObj.blur();
-		eventObj.innerHTML = ( eventObj.innerHTML == '+' ) ? '-' : '+';
-		var param = ['subcats', catId];
-		this.subOffset( eventObj, param );
-		this.setContainerVisibility( 'cb_nested_subcats' );
-		return false;
-	},
-
-	subCatsLink : function( eventObj, catId ) {
-		eventObj.blur();
-		var param = ['subcats', catId];
-		this.subOffset( eventObj, param );
-		this.setContainerVisibility( 'cb_nested_subcats' );
-		return false;
-	},
-
-	subOffset : function( eventObj, param ) {
 		var treeNode = this.findNode( eventObj );
 		if ( treeNode == null ) {
-			alert( 'Cannot find DOM node object of event click object in CategoryBrowser.subOffset()' );
+			alert( 'Cannot find DOM node object of event click object in CategoryBrowser.subCatsLink()' );
 			return;
 		}
-		this.getNestedContainer( treeNode );
+		this.container = this.getNestedContainer( treeNode );
+		// when clicking an expanded (opened) node "sign", force collapsing (close node)
+		var forceCollapsing = typeof plusMode !== 'undefined' && expandSign.innerHTML == '-';
+		if ( forceCollapsing ||
+				( this.container.style.display != 'none' &&
+					this.container.getAttribute( 'id' ) == 'cb_nested_'+pagerType ) ) {
+			// collapsing
+			expandSign.innerHTML = '+';
+			this.setContainerVisibility( '', false );
+		} else {
+			// expanding
+			expandSign.innerHTML = '-';
+			var param = [pagerType, catName];
+			sajax_do_call( "CategoryBrowser::getSubOffsetHtml", param, this.container );
+			this.setContainerVisibility( 'cb_nested_'+pagerType, true );
+		}
+		return false;
+	},
+
+	subCatsPlus : function( eventObj, catName ) {
+		return this.subLink( eventObj, catName, 'subcats', true );
+	},
+
+	subCatsLink : function( eventObj, catName ) {
+		return this.subLink( eventObj, catName, 'subcats' );
+	},
+
+	pagesLink : function( eventObj, catName ) {
+		return this.subLink( eventObj, catName, 'pages' );
+	},
+
+	filesLink : function( eventObj, catName ) {
+		return this.subLink( eventObj, catName, 'files' );
+	},
+
+	parentCatsLink : function( eventObj, catName ) {
+		return this.subLink( eventObj, catName, 'parents' );
+	},
+
+	subNav : function( eventObj, param ) {
+		var treeNode = this.findNode( eventObj );
+		if ( treeNode == null ) {
+			alert( 'Cannot find DOM node object of event click object in CategoryBrowser.subNav()' );
+			return;
+		}
+		this.container = this.getNestedContainer( treeNode );
 		sajax_do_call( "CategoryBrowser::getSubOffsetHtml", param, this.container );
 	},
 
-	pagesNav : function( eventObj, catId, offset, limit ) {
-		var param = ['pages', catId];
+	subCatsNav : function( eventObj, catName, offset, limit ) {
+		var param = ['subcats', catName];
 		if ( offset ) {
 			param.push( offset );
 			if ( limit ) {
@@ -367,20 +406,12 @@ var CategoryBrowser = {
 			}
 		}
 		// used .parentNode to skip self container
-		this.subOffset( eventObj.parentNode, param );
+		this.subNav( eventObj.parentNode, param );
 		return false;
 	},
 
-	pagesLink : function( eventObj, catId ) {
-		eventObj.blur();
-		var param = ['pages', catId];
-		this.subOffset( eventObj, param );
-		this.setContainerVisibility( 'cb_nested_pages' );
-		return false;
-	},
-
-	filesNav : function( eventObj, catId, offset, limit ) {
-		var param = ['files', catId];
+	pagesNav : function( eventObj, catName, offset, limit ) {
+		var param = ['pages', catName];
 		if ( offset ) {
 			param.push( offset );
 			if ( limit ) {
@@ -388,63 +419,84 @@ var CategoryBrowser = {
 			}
 		}
 		// used .parentNode to skip self container
-		this.subOffset( eventObj.parentNode, param );
+		this.subNav( eventObj.parentNode, param );
 		return false;
 	},
 
-	filesLink : function( eventObj, catId ) {
+	filesNav : function( eventObj, catName, offset, limit ) {
+		var param = ['files', catName];
+		if ( offset ) {
+			param.push( offset );
+			if ( limit ) {
+				param.push( limit );
+			}
+		}
+		// used .parentNode to skip self container
+		this.subNav( eventObj.parentNode, param );
+		return false;
+	},
+
+	parentCatsNav : function( eventObj, catName, offset, limit ) {
+		var param = ['parents', catName];
+		if ( offset ) {
+			param.push( offset );
+			if ( limit ) {
+				param.push( limit );
+			}
+		}
+		// used .parentNode to skip self container
+		this.subNav( eventObj.parentNode, param );
+		return false;
+	},
+
+	searchForRoot : function( eventObj, catName ) {
 		eventObj.blur();
-		var param = ['files', catId];
-		this.subOffset( eventObj, param );
-		this.setContainerVisibility( 'cb_nested_files' );
+		document.getElementById( 'cb_cat_name_filter' ).value = catName;
+		this.setFilter();
 		return false;
 	},
 
-	setNameFilter : function( eventObj ) {
-		var id = eventObj.getAttribute( 'id' );
+	setFilter : function() {
 		if ( this.rootCond === null ) {
 			this.rootCond = document.getElementById( 'cb_expr_select' ).value;
 			if ( this.rootCond === null ) {
-				alert( 'Cannot find selected rootCond option in CategoryBrowser.setNameFilter' );
+				alert( 'Cannot find selected rootCond option in CategoryBrowser.setFilter' );
 			}
 		}
-		switch ( id ) {
-		case 'cb_cat_name_filter' :
-			/* more reliable to check in nameFilterCall
-			this.nameFilter = eventObj.value;
-			CB_lib.log( 'setNameFilter nameFilter='+this.nameFilter  ); */
-			break;
-		case 'cb_cat_name_filter_ci' :
-			/* more reliable to check in nameFilterCall
-			this.nameFilterCI = eventObj.checked; */
-			break;
-		default : alert( 'CategoryBrowser.setNameFilter was called with unknown event object id='+id );
-		}
-		window.setTimeout( function() { CategoryBrowser.nameFilterCall(); }, CB_Setup.ajaxPollTimeout );
+		window.setTimeout( function() { CategoryBrowser.filterPoll(); }, CB_Setup.ajaxPollTimeout );
 		return true;
 	},
 
-	nameFilterCall : function() {
+	clearNameFilter : function( eventObj ) {
+		this.searchForRoot( eventObj, '' );
+		document.getElementById( 'cb_cat_name_filter' ).focus();
+		return false;
+	},
+
+	filterPoll : function() {
 		if ( this.rootCond === null ) {
 			this.rootCond = document.getElementById( 'cb_expr_select' ).value;
 		}
 		var nameFilter = document.getElementById( 'cb_cat_name_filter' ).value;
 		var CIcheckbox = document.getElementById( 'cb_cat_name_filter_ci' );
-		if ( CIcheckbox !== null ) {
-			var nameFilterCI = CIcheckbox.checked;
-		}
+		var nameFilterCI = CIcheckbox !== null ? CIcheckbox.checked : false;
+		var noParentsCheckbox = document.getElementById( 'cb_cat_no_parents_only' );
+		var noParentsOnly = noParentsCheckbox !== null ? noParentsCheckbox.checked : false;
 		if ( this.rootCond !== null &&
-				( this.nameFilter != nameFilter || this.nameFilterCI != nameFilterCI ) ) {
+				( this.nameFilter != nameFilter ||
+					this.nameFilterCI != nameFilterCI ||
+					this.noParentsOnly != noParentsOnly ) ) {
 			// in case nameFilter field was changed, update the root pager
 			this.nameFilter = nameFilter;
 			this.nameFilterCI = nameFilterCI;
-			var param = [this.rootCond, this.nameFilter, this.nameFilterCI, 0];
+			this.noParentsOnly = noParentsOnly;
+			var param = [this.rootCond, this.nameFilter, this.nameFilterCI, this.noParentsOnly, 0];
 			if ( this.pagerLimit !== null ) {
 				param.push( this.pagerLimit );
 			}
 			sajax_do_call( "CategoryBrowser::getRootOffsetHtml", param, document.getElementById( "cb_root_container" ) );
 		}
-		window.setTimeout( function() { CategoryBrowser.nameFilterCall(); }, CB_Setup.ajaxPollTimeout );
+		window.setTimeout( function() { CategoryBrowser.filterPoll(); }, CB_Setup.ajaxPollTimeout );
 	},
 
 	/*
@@ -461,7 +513,7 @@ var CategoryBrowser = {
 		CB_lib.log('setExpr selectedEncInfixQueue='+selectedEncInfixQueue);
 		this.pagerLimit = pagerLimit;
 		CB_lib.log( 'setExpr refreshing with value='+eventObj.value );
-		sajax_do_call( "CategoryBrowser::getRootOffsetHtml", [this.rootCond, this.nameFilter, this.nameFilterCI, 0, this.pagerLimit], document.getElementById( "cb_root_container" ) );
+		sajax_do_call( "CategoryBrowser::getRootOffsetHtml", [this.rootCond, this.nameFilter, this.nameFilterCI, this.noParentsOnly, 0, this.pagerLimit], document.getElementById( "cb_root_container" ) );
 		CB_ConditionEditor.createExpr( selectedEncInfixQueue );
 		return true;
 	}
@@ -1621,7 +1673,7 @@ var CB_ConditionEditor = {
 		var encInfixQueue = this.conditionLine.getEncodedExpr();
 		var appliedOption = CB_lib.getSelectOption( document.getElementById( 'cb_expr_select' ), encInfixQueue, 'infixexpr' );
 		var setCookie = appliedOption == null ? 1 : 0;
-		var param = [ encInfixQueue, CategoryBrowser.nameFilter, CategoryBrowser.nameFilterCI, setCookie ];
+		var param = [ encInfixQueue, CategoryBrowser.nameFilter, CategoryBrowser.nameFilterCI, CategoryBrowser.noParentsOnly, setCookie ];
 		if ( CategoryBrowser.pagerLimit !== null ) {
 			param.push( CategoryBrowser.pagerLimit );
 		}

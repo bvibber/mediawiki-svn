@@ -35,8 +35,16 @@ select#cb_expr_select {
 }
 
 input#cb_cat_name_filter {
-	margin: 0 1em 0 1em;
-	width: 20em;
+	margin: 0 0 0 0.5em;
+	width: 16em;
+}
+
+div.cb_filter_container {
+	margin: 0 0 0.5em 0;
+}
+
+.cb_filter_field {
+	margin: 0 0 0 0.5em;
 }
 
 div#cb_root_container {

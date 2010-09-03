@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.1
+ * @version 0.3.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -53,24 +53,23 @@ class CategoryBrowserPage extends SpecialPage {
 
 	var $source_ranges =
 		array(
-// start of test entries
-// NOTE: do not forget that only '>=', '<=', '=' comparsions are allowed, otherwise the bug check will be "triggered"
-//		array( '(', 'cat_pages >= 1000', 'OR', 'cat_subcats >= 10', ')', 'AND', 'cat_files >= 100' ),
-//		array( 'cat_pages >= 1000', 'OR', 'cat_subcats >= 10', 'AND', 'cat_files >= 100' ),
-//		array( 'cat_pages >= 100', 'OR', 'cat_subcats >= 10' ),
-//		array( '(', 'cat_pages <= 100', 'AND', 'cat_pages >= 10', ')', 'OR', '(', 'cat_subcats >= 0', 'AND', 'cat_subcats <= 10', ')' ),
-// end of test entries
-		array( '' ), // default value "all",
-		array( 'cat_pages >= 100', 'OR', 'cat_subcats >= 1', 'OR', 'cat_files >= 10' ),
-		array( 'cat_pages >= 1000', 'OR', 'cat_subcats >= 10', 'OR', 'cat_files >= 100' ),
-		array( 'cat_pages >= 10000', 'OR', 'cat_subcats >= 100', 'OR', 'cat_files >= 1000' ),
-		array( 'cat_subcats >= 1' ),
-		array( 'cat_pages >= 1' ),
-		array( 'cat_files >= 1' ),
-		array( 'cat_subcats = 0' ),
-		array( 'cat_pages = 0' ),
-		array( 'cat_files = 0' ),
-	);
+			// start of test entries
+/*			'(_gep1000_or_ges10_)_and_gef100',
+			'gep1000_or_ges10_and_gef100',
+			'gep100_or_ges10',
+			'(_lep100_and_gep10_)_or_(_ges0_and_les10_)', */
+			// end of test entries
+			'', // default value "all",
+			'gep10000_or_ges100_or_gef1000',
+			'gep1000_or_ges10_or_gef100',
+			'gep100_or_ges1_or_gef10',
+			'ges1',
+			'gep1',
+			'gef1',
+			'eqs0',
+			'eqp0',
+			'eqf0'
+		);
 	var $ranges;
 
 	function execute( $param ) {
@@ -105,14 +104,19 @@ class CategoryBrowserPage extends SpecialPage {
 		# {{{ top template
 		$condSelector = '';
 		$catlist = array();
-		$js_setNameFilter = 'CategoryBrowser.setNameFilter( this )';
-		$nameFilterFields = array(
-			array( '__tag' => 'input', 'type' => 'text', 'onkeyup' => $js_setNameFilter, 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter' )
-		);
+		$js_setFilter = 'CategoryBrowser.setFilter()';
+		$filterFields = array();
 		if ( CB_Setup::$cat_title_CI != '' ) {
 			// case insensitive search is possible
-			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci' );
-			$nameFilterFields[] = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
+			$filterFields[] = array( '__tag' => 'span', 0 => wfMsg( 'cb_cat_name_filter_ci' ) );
+			$filterFields[] = array( '__tag' => 'input', 'class' => 'cb_filter_field', 'type' => 'checkbox', 'onchange' => $js_setFilter, 'id' => 'cb_cat_name_filter_ci', 'title' => wfMsg( 'cb_cat_name_filter_ci' ), 'checked' => null );
+		}
+		if ( CB_Setup::$allowNoParentsOnly ) {
+			$filterFields[] =
+				array(
+					array( '__tag' => 'span', 'class' => 'cb_filter_field', 0 => wfMsg( 'cb_show_no_parents_only' ) ),
+					array( '__tag' => 'input', 'class' => 'cb_filter_field', 'type' => 'checkbox', 'onchange' => $js_setFilter, 'onclick' => $js_setFilter, 'title' => wfMsg( 'cb_show_no_parents_only' ), 'id' =>'cb_cat_no_parents_only' )
+				);
 		}
 		$top_tpl =
 			array( '__tag' => 'table', 'class' => 'cb_top_container', '__end' => "\n",
@@ -121,8 +125,14 @@ class CategoryBrowserPage extends SpecialPage {
 				),
 				array( '__tag' => 'tr', '__end' => "\n",
 					array( '__tag' => 'td', 'class' => 'cb_toolbox_bottom', '__end' => "\n",
-						array( wfMsg( 'cb_cat_name_filter' ) ),
-						&$nameFilterFields,
+						array( '__tag' => 'div', 'class' => 'cb_filter_container',
+							wfMsg( 'cb_cat_name_filter' ),
+							array( '__tag' => 'input', 'type' => 'text', 'onkeyup' => $js_setFilter, 'onchange' => $js_setFilter, 'id' => 'cb_cat_name_filter' ),
+							array( '__tag' => 'input', 'type' => 'button', 'class' => 'cb_filter_field', 'onclick' => 'CategoryBrowser.clearNameFilter(this)', 'title' => wfMsg( 'cb_cat_name_filter_clear' ), 'value' =>'&#8251;' )
+						),
+						array( '__tag' => 'div', 'class' => 'cb_filter_container',
+							&$filterFields
+						)
 					)
 				),
 				array( '__tag' => 'tr', '__end' => "\n",

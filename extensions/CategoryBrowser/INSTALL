@@ -1,4 +1,4 @@
-MediaWiki extension CategoryBrowser, version 0.2.1
+MediaWiki extension CategoryBrowser, version 0.3.1
 
 * download the latest available version and extract it to your wiki extension directory. 
 * add the following line to LocalSettings.php 
