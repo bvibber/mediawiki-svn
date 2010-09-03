@@ -105,24 +105,23 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		if ( $params['userrating'] && $userRatedArticle ) {
 			$revid = isset( $params['revid'] ) ? $params['revid'] : $ratings[$pageId]['revid'];
 
-			$this->resetQueryParams();
+			$dbr = wfGetDb( DB_SLAVE );
 
-			$this->addTables( 'revision' );
-			$this->addFields( array( 'COUNT(rev_id) AS norevs', 'rev_page' ) );
-
-			$this->addWhereFld( 'rev_page', $params['pageid'] );
-			$this->addWhere( 'rev_id > ' . $revid );
-
-			$res = $this->select( __METHOD__ );
+			$res = $dbr->selectField(
+				'revision',
+				'COUNT(*) AS norevs',
+				array(
+					'rev_page' => $params['pageid'],
+					'rev_id > ' . $revid
+				),
+				__METHOD__
+			);
 
 			global $wgArticleAssessmentStaleCount;
 
-			if ( $res ) {
-				$noOfRevs = $res->fetchRow()->norevs;
-				if ( $noOfRevs > $wgArticleAssessmentStaleCount ) {
-					//it's stale!
-					$ratings[$params['pageid']]['stale'] = intval( $noOfRevs );
-				}
+			if ( $res && (int)$res > $wgArticleAssessmentStaleCount ) {
+				//it's stale!
+				$ratings[$params['pageid']]['stale'] = intval( $res );
 			}
 		}
 
@@ -187,7 +186,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		return array(
 			'api.php?action=query&list=articleassessment',
 			'api.php?action=query&list=articleassessment&aapageid=1',
-			'api.php?action=query&list=articleassessment&aapageid=1&userrating',
+			'api.php?action=query&list=articleassessment&aapageid=1&aauserrating',
 		);
 	}
 
