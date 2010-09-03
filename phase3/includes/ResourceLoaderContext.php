@@ -81,12 +81,12 @@ class ResourceLoaderContext {
 		return $this->only;
 	}
 	public function shouldIncludeScripts() {
-		return !isset( $this->only ) || $this->only === 'scripts';
+		return is_null( $this->only ) || $this->only === 'scripts';
 	}
 	public function shouldIncludeStyles() {
-		return !isset( $this->only ) || $this->only === 'styles';
+		return is_null( $this->only ) || $this->only === 'styles';
 	}
 	public function shouldIncludeMessages() {
-		return !isset( $this->only ) || $this->only === 'messages';
+		return is_null( $this->only ) || $this->only === 'messages';
 	}
 }
