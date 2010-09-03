@@ -15,6 +15,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  * 
+ * @author Roan Kattouw
  * @author Trevor Parscal
  */
 
@@ -388,6 +389,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			return $this->modifiedTime["$lang|$skin|$debug"];
 		}
 		
+		// Get the maximum mtime of the various files involved
 		$files = array_merge( $this->scripts, $this->styles,
 			$debug ? $this->debugScripts : array(),
 			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
@@ -396,7 +398,22 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $skin )
 		);
-		$this->modifiedTime["$lang|$skin|$debug"] = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
+		$maxFileMtime = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
+		
+		// Get the mtime of the message blob
+		// TODO: This timestamp is queried a lot and queried separately for each module. Maybe it should be put in memcached?
+		$dbr = wfGetDb( DB_SLAVE );
+		$msgBlobMtime = $dbr->selectField( 'msg_resource', 'mr_timestamp', array(
+				'mr_resource' => $this->getName(),
+				'mr_lang' => $lang
+			), __METHOD__
+		);
+		
+		if ( $msgBlobMtime ) {
+			$this->modifiedTime["$lang|$skin|$debug"] = max( $maxFileMtime, wfTimestamp( TS_UNIX, $msgBlobMtime ) );
+		} else {
+			$this->modifiedTime["$lang|$skin|$debug"] = $maxFileMtime;
+		}
 		return $this->modifiedTime["$lang|$skin|$debug"];
 	}
 	
