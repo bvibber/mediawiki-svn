@@ -19,9 +19,6 @@
  * @author Trevor Parscal
  */
 
-// TODO: Add relevant code to MessageCache::replace()
-// TODO: Figure out what to do in LocalisationCache::recache(). Empty entire table?
-
 /**
  * This class provides access to the resource message blobs storage used by
  * the ResourceLoader.
@@ -111,8 +108,12 @@ class MessageBlobStore {
 	/**
 	 * Update all message blobs for a given module.
 	 * @param $module string Module name
+	 * @param $lang string Language code (optional)
+	 * @return mixed If $lang is set, the new message blob for that language is returned if present. Otherwise, null is returned.
 	 */
-	public static function updateModule( $module ) {
+	public static function updateModule( $module, $lang = null ) {
+		$retval = null;
+		
 		// Find all existing blobs for this module
 		$dbw = wfGetDb( DB_MASTER );
 		$res = $dbw->select( 'msg_resource', array( 'mr_lang', 'mr_blob' ),
@@ -128,6 +129,9 @@ class MessageBlobStore {
 		foreach ( $res as $row ) {
 			$oldBlob = $row->mr_blob;
 			$newBlob = self::generateMessageBlob( $module, $row->mr_lang );
+			if ( $row->mr_lang === $lang ) {
+				$retval = $newBlob;
+			}
 			$newRows[] = array(
 				'mr_resource' => $module,
 				'mr_lang' => $row->mr_lang,
@@ -147,22 +151,28 @@ class MessageBlobStore {
 		$added = array_diff( $newMessages, $oldMessages );
 		$removed = array_diff( $oldMessages, $newMessages );
 		
-		// Delete old messages, insert new ones
-		$dbw->delete( 'msg_resource_links', array(
-				'mrl_resource' => $module,
-				'mrl_message' => $oldMessages
-			), __METHOD__
-		);
+		// Delete removed messages, insert added ones
+		if ( $removed ) {
+			$dbw->delete( 'msg_resource_links', array(
+					'mrl_resource' => $module,
+					'mrl_message' => $removed
+				), __METHOD__
+			);
+		}
 		$newLinksRows = array();
-		foreach ( $newMessages as $message ) {
+		foreach ( $added as $message ) {
 			$newLinksRows[] = array(
 				'mrl_resource' => $module,
 				'mrl_message' => $message
 			);
 		}
-		$dbw->insert( 'msg_resource_links', $newLinksRows, __METHOD__,
-			 array( 'IGNORE' ) // just in case
-		);
+		if ( $newLinksRows ) {
+			$dbw->insert( 'msg_resource_links', $newLinksRows, __METHOD__,
+				 array( 'IGNORE' ) // just in case
+			);
+		}
+		
+		return $retval;
 	}
 	
 	/**
@@ -203,6 +213,14 @@ class MessageBlobStore {
 		
 		// No need to update msg_resource_links because we didn't add
 		// or remove any messages, we just changed their contents.
+	}
+	
+	public static function clear() {
+		// TODO: Give this some more thought
+		// TODO: Is TRUNCATE better?
+		$dbw = wfGetDb( DB_MASTER );
+		$dbw->delete( 'msg_resource', '*', __METHOD__ );
+		$dbw->delete( 'msg_resource_links', '*', __METHOD__ );
 	}
 	
 	/**
@@ -275,12 +293,21 @@ class MessageBlobStore {
 	private static function getFromDB( $modules, $lang ) {
 		$retval = array();
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'msg_resource', array( 'mr_blob', 'mr_resource' ),
+		$res = $dbr->select( 'msg_resource', array( 'mr_blob', 'mr_resource', 'mr_timestamp' ),
 			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
 			__METHOD__
 		);
 		foreach ( $res as $row ) {
-			$retval[$row->mr_resource] = $row->mr_blob;
+			$module = ResourceLoader::getModule( $row->mr_resource );
+			if ( !$module ) {
+				// This shouldn't be possible
+				throw new MWException( __METHOD__ . ' passed an invalid module name' );
+			}
+			if ( array_keys( FormatJson::decode( $row->mr_blob, true ) ) !== $module->getMessages() ) {
+				$retval[$row->mr_resource] = self::updateModule( $row->mr_resource, $lang );
+			} else {
+				$retval[$row->mr_resource] = $row->mr_blob;
+			}
 		}
 		return $retval;
 	}
