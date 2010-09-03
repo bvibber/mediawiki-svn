@@ -483,11 +483,11 @@ window.mediaWiki = new ( function( $ ) {
 		this.register = function( module, version, dependencies, status ) {
 			// Allow multiple registration
 			if ( typeof module === 'object' ) {
-				for ( var n = 0; n < module.length; n++ ) {
-					if ( typeof module[n] === 'string' ) {
-						that.register( module[n] );
-					} else if ( typeof module[n] === 'object' ) {
-						that.register.apply( that, module[n] );
+				for ( var m = 0; m < module.length; m++ ) {
+					if ( typeof module[m] === 'string' ) {
+						that.register( module[m] );
+					} else if ( typeof module[m] === 'object' ) {
+						that.register.apply( that, module[m] );
 					}
 				}
 				return;
@@ -617,12 +617,29 @@ window.mediaWiki = new ( function( $ ) {
 			}
 		};
 		/**
-		 * Flush the request queue and begin executing load requests on demand
+		 * Flushes the request queue and begin executing load requests on demand
 		 */
 		this.go = function() {
 			suspended = false;
 			that.work();
-		}
+		};
+		/**
+		 * Changes the state of a module
+		 * 
+		 * @param mixed module string module name or object of module name/state pairs
+		 * @param string state string state name
+		 */
+		this.state = function( module, state ) {
+			if ( typeof module === 'object' ) {
+				for ( var m in module ) {
+					that.state( m, module[m] );
+				}
+				return;
+			}
+			if ( module in registry ) {
+				registry[module].state = state;
+			}
+		};
 		
 		/* Cache document ready status */
 		

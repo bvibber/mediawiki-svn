@@ -358,7 +358,6 @@ ResourceLoader::register( array(
 	) ),
 	'mediawiki.legacy.wikibits' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/wikibits.js',
-		'dependencies' => 'mediawiki',
 		'messages' => array( 'showtoc', 'hidetoc' ),
 	) ),
 ) );

@@ -68,8 +68,6 @@ class ResourceLoader {
 	
 	// @var array list of module name/ResourceLoaderModule object pairs
 	protected static $modules = array();
-	// @var array list of modules which should not be registered, as they are already registered in mediawiki.js
-	protected static $preRegisteredModules = array( 'jquery', 'mediawiki' );
 	
 	/* Protected Static Methods */
 	
@@ -185,24 +183,20 @@ class ResourceLoader {
 		$scripts = '';
 		$registrations = array();
 		foreach ( self::$modules as $name => $module ) {
-			if ( in_array( $name, self::$preRegisteredModules ) ) {
-				$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ), array(), 'ready' );
-			} else {
-				// Support module loader scripts
-				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
-					$scripts .= $loader;
+			// Support module loader scripts
+			if ( ( $loader = $module->getLoaderScript() ) !== false ) {
+				$scripts .= $loader;
+			}
+			// Automatically register module
+			else {
+				// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
+				if ( !count( $module->getDependencies() ) ) {
+					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ) );
 				}
-				// Automatically register module
+				// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
 				else {
-					// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
-					if ( !count( $module->getDependencies() ) ) {
-						$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ) );
-					}
-					// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
-					else {
-						$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ),
-							$module->getDependencies() );
-					}
+					$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ),
+						$module->getDependencies() );
 				}
 			}
 		}
@@ -383,13 +377,21 @@ class ResourceLoader {
 				echo "mediaWiki.loader.implement( '{$name}', function() {{$scripts}},\n'{$styles}',\n{$messages} );\n";
 			}
 		}
-		
+		// Update the status of script-only modules
+		if ( $parameters['only'] === 'scripts' && !in_array( 'startup', $modules ) ) {
+			$statuses = array();
+			foreach ( $modules as $name ) {
+				$statuses[$name] = 'ready';
+			}
+			$statuses = FormatJson::encode( $statuses );
+			echo "mediaWiki.loader.state( {$statuses} );";
+		}
 		// Register missing modules
 		foreach ( $missing as $name ) {
 			echo "mediaWiki.loader.register( '{$name}', null, 'missing' );\n";
 		}
 		
-		if ( $parameters['only'] == 'styles' ) {
+		if ( $parameters['only'] === 'styles' ) {
 			header( 'Content-Type: text/css' );
 		} else {
 			header( 'Content-Type: text/javascript' );
