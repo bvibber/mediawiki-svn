@@ -222,4 +222,4 @@ mw.FirefoggRender.prototype = {
 	    	this.doneRenderCallback( this.fogg )
 	    }
 	}
-}
+};

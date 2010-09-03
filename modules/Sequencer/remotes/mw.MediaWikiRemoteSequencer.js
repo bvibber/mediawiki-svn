@@ -311,7 +311,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			.append( 
 				gM("mwe-sequencer-restore-text-edit", $j('<a />').click(function(){
 					$j('#sequencerContainer').hide();
-					$j('#editform').show();
+					$j('#editform,#toolbar').show();
 				}) )
 			)
 			.css( {'cursor': 'pointer', 'font-size':'x-small' })
@@ -486,7 +486,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				'top' : '5px',
 				'bottom' : '5px',
 				'left' : '5px',
-				'right' : '5px',	
+				'right' : '6px',	
 				'background': '#FFF'
 			})			
 			.append(

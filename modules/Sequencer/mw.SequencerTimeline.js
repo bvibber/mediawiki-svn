@@ -64,9 +64,9 @@ mw.SequencerTimeline.prototype = {
 		this.trackLayout.resizeAll();
 	},
 	getTimelineContainerHeight: function(){
-		var _this = this;
+		var _this = this;		
 		// Start with vertical space for one more track
-		var timelineHeight = mw.getConfig( 'Sequencer.TimelineTrackHeight' );
+		var timelineHeight = 60;
 		var smilSequenceTracks = this.sequencer.getSmil().getBody().getSeqElements();
 		$j.each(smilSequenceTracks, function( trackIndex, smilSequenceTrack ){
 			timelineHeight+= _this.getSequenceTrackHeight( smilSequenceTrack )

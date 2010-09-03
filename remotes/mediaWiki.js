@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r139';
+var mwRemoteVersion = 'r142';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -30,7 +30,6 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 if( document.URL.indexOf( 'debug=true' ) !== -1 ){
 	mwReqParam['debug'] = true;
 }
-
 // Check if debug mode and disable script grouping  
 if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
@@ -102,7 +101,7 @@ function doPageSpecificRewrite() {
 	window.ranMwRewrites = 'done';
 	
 	// Add media wizard
-	if ( ( wgAction == 'edit' && wgPageName.indexOf( "Sequence:" ) ) || wgAction == 'submit' ) {
+	if ( ( wgAction == 'edit' && wgPageName.indexOf( "Sequence:" ) ) || wgAction == 'submit' ) {		
 		loadMwEmbed( [ 
 			'mw.RemoteSearchDriver',
 			'mw.ClipEdit',
@@ -112,7 +111,7 @@ function doPageSpecificRewrite() {
 			'$j.ui.sortable' 
 		], function() {
 			mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
-		} );
+		} );		
 		return ;
 	}
 	
@@ -138,7 +137,7 @@ function doPageSpecificRewrite() {
 			return ;
 		}
 	}
-	
+
 	// Remote Sequencer
 	if( wgPageName.indexOf( "Sequence:" ) === 0 ){			
 		//console.log( 'spl: ' + typeof mwSetPageToLoading );
@@ -155,8 +154,9 @@ function doPageSpecificRewrite() {
 			if( window.mwSequencerRemote  ){
 				window.mwSequencerRemote.drawUI();
 			} else {
-				loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer', 'mw.style.SequencerRemote' ], function(){
-					$j('#editform,.mw-newarticletext').hide();
+				mwLoadPlayer(function(){
+					// wait for wikieditor to do its thing			
+					$j('#editform,.mw-newarticletext,#toolbar').hide();
 					$j('.sequenceLoader').hide();
 					
 					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
@@ -164,8 +164,10 @@ function doPageSpecificRewrite() {
 						'title' : wgTitle,
 						'target' : '#bodyContent'
 					});
-					window.mwSequencerRemote.drawUI();
-				} );
+					window.mwSequencerRemote.drawUI();						
+				
+					//setTimeout(function(){
+				})
 			}
 			
 		}
@@ -268,15 +270,17 @@ function mwAddCommonStyleSheet(){
 function mwLoadPlayer( callback ){
 
 	// The jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
-	var jsPlayerRequest = [	                    
-		'mw.EmbedPlayer', 
-		'mw.style.EmbedPlayer',
+	var jsPlayerRequest = [
 		'$j.ui',
 		'$j.widget',
 		'$j.ui.mouse',
+
+	    '$j.cookie',
+		'mw.EmbedPlayer', 
+		'mw.style.EmbedPlayer',
+		
 		'mw.PlayerControlBuilder', 
-		'$j.fn.hoverIntent',		
-		'$j.cookie', 
+		'$j.fn.hoverIntent',				
 		'JSON',		
 		'$j.ui.slider', 
 		
@@ -291,8 +295,11 @@ function mwLoadPlayer( callback ){
 		'mw.style.TimedText',
 		
 		// mwSwarmTransport module
-		'mw.SwarmTransport'
+		'mw.SwarmTransport',
 		
+		// Sequencer remote: 
+		'mw.MediaWikiRemoteSequencer',
+		'mw.style.SequencerRemote'
 	];		
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
@@ -579,6 +586,8 @@ function loadMwEmbed( classSet, callback ) {
 				rurl +=  ',' + cName;
 			}
 		}
+		// force add our updated version of $j.cookie
+		rurl +=',$j.cookie';
 		
 		// Add the remaining arguments
 		rurl += '&' + mwGetReqArgs();

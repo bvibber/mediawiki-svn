@@ -705,7 +705,7 @@ mw.SmilLayout.prototype = {
 	 */
 	panZoomLayout: function( smilElement, $target, img ){
 		var _this = this;		
-		mw.log( 'panZoomLayout:' +  $j( smilElement).attr('id')  );		
+		//mw.log( 'panZoomLayout:' +  $j( smilElement).attr('id')  );		
 		var panZoom = $j( smilElement).attr('panZoom').split(',');
 		if( !img ){
 			var img = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).find('img').get(0);
@@ -731,7 +731,7 @@ mw.SmilLayout.prototype = {
 			}
 			// Get percent values			
 			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoom, natrualSize );
-			mw.log('panZoomLayout::' +  'l:' + percentValues.left + ' t:' + percentValues.top + ' w:' + percentValues.width + ' h:' + percentValues.height );
+			//mw.log('panZoomLayout::' +  'l:' + percentValues.left + ' t:' + percentValues.top + ' w:' + percentValues.width + ' h:' + percentValues.height );
 			// Update the layout via the animation engine updateElementLayout method
 			_this.smil.getAnimate().updateElementLayout( smilElement, percentValues, $target, img );
 		});

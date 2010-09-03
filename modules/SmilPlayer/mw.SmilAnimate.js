@@ -435,7 +435,7 @@ mw.SmilAnimate.prototype = {
 	// xxx need to refactor move to "smilLayout"
 	updateElementLayout: function( smilElement, percentValues, $target, htmlElement ){
 		var _this = this;
-		mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
+		//mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
 		
 		// get a pointer to the html target:
 		if( !$target ) {

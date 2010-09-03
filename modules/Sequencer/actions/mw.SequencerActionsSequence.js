@@ -512,4 +512,4 @@ mw.SequencerActionsSequence.prototype = {
 			}
 		);
 	}	
-}
+};
