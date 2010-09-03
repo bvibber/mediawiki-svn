@@ -11,11 +11,23 @@
 		<testsuite name="includes">
 			<directory>./includes</directory>
 		</testsuite>
+		<testsuite name="includes">
+			<directory>./includes</directory>
+		</testsuite>
 		<testsuite name="languages">
 			<directory>./languages</directory>
 		</testsuite>
 		<testsuite name="skins">
 			<directory>./skins</directory>
 		</testsuite>
+		<testsuite name="uploadfromurl">
+			<file>./suites/UploadFromUrlTestSuite.php</file>
+		</testsuite>
 	</testsuites>
+	<groups>
+		<exclude>
+			<group>Broken</group>
+			<group>Stub</group>
+		</exclude>
+	</groups>
 </phpunit>

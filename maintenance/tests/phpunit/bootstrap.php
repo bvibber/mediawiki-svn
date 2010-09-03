@@ -5,6 +5,8 @@
  * @file
  */
 
+/* Configuration */
+
 // This file is not included in the global scope, but rather within a function, so we must global anything we need to
 // have access to in the global scope explicitly
 global $wgCommandLineMode, $IP, $optionsWithArgs;
@@ -37,4 +39,38 @@ dependencies.
 ********************************************************************************
 
 EOF;
+}
+
+/* Classes */
+
+abstract class MediaWikiTestSetup extends PHPUnit_Framework_TestCase {
+
+	protected function buildTestDatabase( $tables ) {
+		global $wgDBprefix;
+
+		$db = wfGetDB( DB_MASTER );
+		$oldTableNames = array();
+		foreach ( $tables as $table )
+			$oldTableNames[$table] = $db->tableName( $table );
+		if ( $db->getType() == 'oracle' ) {
+			$wgDBprefix = 'pt_';
+		} else {
+			$wgDBprefix = 'parsertest_';
+		}
+
+		$db->tablePrefix( $wgDBprefix );
+
+		if ( $db->isOpen() ) {
+			foreach ( $tables as $tbl ) {
+				$newTableName = $db->tableName( $tbl );
+				$tableName = $oldTableNames[$tbl];
+				$db->query( "DROP TABLE IF EXISTS $newTableName", __METHOD__ );
+				$db->duplicateTableStructure( $tableName, $newTableName, __METHOD__ );
+			}
+			return $db;
+		} else {
+			// Something amiss
+			return null;
+		}
+	}
 }
