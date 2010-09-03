@@ -218,6 +218,8 @@ class ResourceLoader {
 		return $time;
 	}
 	
+	/* Methods */
+	
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
 	 *
@@ -280,38 +282,6 @@ class ResourceLoader {
 			$scripts = '';
 			if ( $context->shouldIncludeScripts() ) {
 				$scripts .= self::$modules[$name]->getScript( $context );
-				// Special meta-information for the 'startup' module
-				if ( $name === 'startup' && $context->getOnly() === 'scripts' ) {
-					// Get all module registrations
-					$registration = self::getModuleRegistrations( $context );
-					// Build configuration
-					$config = FormatJson::encode(
-						array( 'server' => $context->getServer(), 'debug' => $context->getDebug() )
-					);
-					// Add a well-known start-up function
-					$scripts .= "window.startUp = function() { $registration mediaWiki.config.set( $config ); };";
-					// Build load query for jquery and mediawiki modules
-					$query = wfArrayToCGI(
-						array(
-							'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
-							'only' => 'scripts',
-							'lang' => $context->getLanguage(),
-							'dir' => $context->getDirection(),
-							'skin' => $context->getSkin(),
-							'debug' => $context->getDebug(),
-							'version' => wfTimestamp( TS_ISO_8601, round( max(
-								self::$modules['jquery']->getModifiedTime( $context ),
-								self::$modules['mediawiki']->getModifiedTime( $context )
-							), -2 ) )
-						)
-					);
-					// Build HTML code for loading jquery and mediawiki modules
-					$loadScript = Html::linkedScript( $context->getServer() . "?$query" );
-					// Add code to add jquery and mediawiki loading code; only if the current client is compatible
-					$scripts .= "if ( isCompatible() ) { document.write( '$loadScript' ); }";
-					// Delete the compatible function - it's not needed anymore
-					$scripts .= "delete window['isCompatible'];";
-				}
 			}
 			// Styles
 			$styles = '';
@@ -335,7 +305,7 @@ class ResourceLoader {
 				echo "mediaWiki.msg.set( $messages );\n";
 			} else {
 				$styles = Xml::escapeJsString( $styles );
-				echo "mediaWiki.loader.implement( '{$name}', function() {{$scripts}},\n'{$styles}',\n{$messages} );\n";
+				echo "mediaWiki.loader.implement( '$name', function() {{$scripts}},\n'$styles',\n$messages );\n";
 			}
 		}
 		// Update the status of script-only modules
@@ -345,12 +315,12 @@ class ResourceLoader {
 				$statuses[$name] = 'ready';
 			}
 			$statuses = FormatJson::encode( $statuses );
-			echo "mediaWiki.loader.state( {$statuses} );";
+			echo "mediaWiki.loader.state( $statuses );";
 		}
 		// Register missing modules
 		if ( $context->shouldIncludeScripts() ) {
 			foreach ( $missing as $name ) {
-				echo "mediaWiki.loader.register( '{$name}', null, 'missing' );\n";
+				echo "mediaWiki.loader.register( '$name', null, 'missing' );\n";
 			}
 		}
 		// Output the appropriate header

@@ -22,7 +22,12 @@
  * Interface for resource loader modules, with name registration and maxage functionality.
  */
 abstract class ResourceLoaderModule {
-	private $name = null;
+	
+	/* Protected Members */
+	
+	protected $name = null;
+	
+	/* Methods */
 	
 	/**
 	 * Get this module's name. This is set when the module is registered
@@ -130,23 +135,26 @@ abstract class ResourceLoaderModule {
  * Module based on local JS/CSS files. This is the most common type of module.
  */
 class ResourceLoaderFileModule extends ResourceLoaderModule {
-	private $scripts = array();
-	private $styles = array();
-	private $messages = array();
-	private $dependencies = array();
-	private $debugScripts = array();
-	private $languageScripts = array();
-	private $skinScripts = array();
-	private $skinStyles = array();
-	private $loaders = array();
-	private $parameters = array();
+	
+	/* Protected Members */
+	
+	protected $scripts = array();
+	protected $styles = array();
+	protected $messages = array();
+	protected $dependencies = array();
+	protected $debugScripts = array();
+	protected $languageScripts = array();
+	protected $skinScripts = array();
+	protected $skinStyles = array();
+	protected $loaders = array();
+	protected $parameters = array();
 	
 	// In-object cache for file dependencies
-	private $fileDeps = array();
+	protected $fileDeps = array();
 	// In-object cache for mtime
-	private $modifiedTime = array();
+	protected $modifiedTime = array();
 	
-	/* Public methods */
+	/* Methods */
 	
 	/**
 	 * Construct a new module from an options array.
@@ -384,9 +392,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return int UNIX timestamp
 	 */
 	public function getModifiedTime( ResourceLoaderContext $context ) {
-		$hash = implode( '|', array( $context->getLanguage(), $context->getSkin(), $context->getDebug() ) );
-		if ( isset( $this->modifiedTime[$hash] ) ) {
-			return $this->modifiedTime[$hash];
+		if ( isset( $this->modifiedTime[$context->getHash()] ) ) {
+			return $this->modifiedTime[$context->getHash()];
 		}
 		
 		$files = array_merge(
@@ -400,11 +407,13 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $context->getSkin() )
 		);
-		$this->modifiedTime[$hash] = max(
+		$this->modifiedTime[$context->getHash()] = max(
 			array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) )
 		);
-		return $this->modifiedTime[$hash];
+		return $this->modifiedTime[$context->getHash()];
 	}
+	
+	/* Protected Members */
 	
 	/**
 	 * Get the primary JS for this module. This is pulled from the
@@ -558,17 +567,21 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
  * TODO: Add Site CSS functionality too
  */
 class ResourceLoaderSiteModule extends ResourceLoaderModule {
+	
+	/* Protected Members */
+	
 	// In-object cache for modified time
-	private $modifiedTime = null;
+	protected $modifiedTime = null;
+	
+	/* Methods */
 	
 	public function getScript( ResourceLoaderContext $context ) {
 		return Skin::newFromKey( $context->getSkin() )->generateUserJs();
 	}
 	
 	public function getModifiedTime( ResourceLoaderContext $context ) {
-		$hash = implode( '|', array( $context->getLanguage(), $context->getSkin(), $context->getDebug() ) );
-		if ( isset( $this->modifiedTime[$hash] ) )  {
-			return $this->modifiedTime[$hash];
+		if ( isset( $this->modifiedTime[$context->getHash()] ) ) {
+			return $this->modifiedTime[$context->getHash()];
 		}
 		
 		// HACK: We duplicate the message names from generateUserJs()
@@ -600,11 +613,49 @@ class ResourceLoaderSiteModule extends ResourceLoaderModule {
 
 
 class ResourceLoaderStartUpModule extends ResourceLoaderModule {
-	private $modifiedTime = null;
+	
+	/* Protected Members */
+	
+	protected $modifiedTime = null;
+	
+	/* Methods */
 	
 	public function getScript( ResourceLoaderContext $context ) {
 		global $IP;
-		return file_get_contents( "$IP/resources/startup.js" );
+		
+		$scripts = file_get_contents( "$IP/resources/startup.js" );
+		if ( $context->getOnly() === 'scripts' ) {
+			// Get all module registrations
+			$registration = ResourceLoader::getModuleRegistrations( $context );
+			// Build configuration
+			$config = FormatJson::encode(
+				array( 'server' => $context->getServer(), 'debug' => $context->getDebug() )
+			);
+			// Add a well-known start-up function
+			$scripts .= "window.startUp = function() { $registration mediaWiki.config.set( $config ); };";
+			// Build load query for jquery and mediawiki modules
+			$query = wfArrayToCGI(
+				array(
+					'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
+					'only' => 'scripts',
+					'lang' => $context->getLanguage(),
+					'dir' => $context->getDirection(),
+					'skin' => $context->getSkin(),
+					'debug' => $context->getDebug(),
+					'version' => wfTimestamp( TS_ISO_8601, round( max(
+						ResourceLoader::getModule( 'jquery' )->getModifiedTime( $context ),
+						ResourceLoader::getModule( 'mediawiki' )->getModifiedTime( $context )
+					), -2 ) )
+				)
+			);
+			// Build HTML code for loading jquery and mediawiki modules
+			$loadScript = Html::linkedScript( $context->getServer() . "?$query" );
+			// Add code to add jquery and mediawiki loading code; only if the current client is compatible
+			$scripts .= "if ( isCompatible() ) { document.write( '$loadScript' ); }";
+			// Delete the compatible function - it's not needed anymore
+			$scripts .= "delete window['isCompatible'];";
+		}
+		return $scripts;
 	}
 	
 	public function getModifiedTime( ResourceLoaderContext $context ) {

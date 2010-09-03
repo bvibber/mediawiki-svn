@@ -24,6 +24,8 @@
  */
 class ResourceLoaderContext {
 	
+	/* Protected Members */
+	
 	protected $request;
 	protected $server;
 	protected $modules;
@@ -32,6 +34,9 @@ class ResourceLoaderContext {
 	protected $skin;
 	protected $debug;
 	protected $only;
+	protected $hash;
+	
+	/* Methods */
 	
 	public function __construct( WebRequest $request, $server ) {
 		global $wgUser, $wgLang, $wgDefaultSkin;
@@ -56,37 +61,53 @@ class ResourceLoaderContext {
 			$this->skin = $wgDefaultSkin;
 		}
 	}
+	
 	public function getRequest() {
 		return $this->request;
 	}
+	
 	public function getServer() {
 		return $this->server;
 	}
+	
 	public function getModules() {
 		return $this->modules;
 	}
+	
 	public function getLanguage() {
 		return $this->language;
 	}
+	
 	public function getDirection() {
 		return $this->direction;
 	}
+	
 	public function getSkin() {
 		return $this->skin;
 	}
+	
 	public function getDebug() {
 		return $this->debug;
 	}
+	
 	public function getOnly() {
 		return $this->only;
 	}
+	
 	public function shouldIncludeScripts() {
 		return is_null( $this->only ) || $this->only === 'scripts';
 	}
+	
 	public function shouldIncludeStyles() {
 		return is_null( $this->only ) || $this->only === 'styles';
 	}
+	
 	public function shouldIncludeMessages() {
 		return is_null( $this->only ) || $this->only === 'messages';
+	}
+	
+	public function getHash() {
+		return isset( $this->hash ) ?
+			$this->hash : $this->hash = implode( '|', array( $this->language, $this->skin, $this->debug ) );
 	}
 }
