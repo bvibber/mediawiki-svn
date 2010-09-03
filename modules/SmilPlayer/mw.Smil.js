@@ -396,15 +396,10 @@ mw.Smil.prototype = {
 		);
 		// Links go to a new window and are disable when smaller than player size
 		$html.find('a').each( function(inx, link ){
-			if( scalePercent < 1 ){
-				$j(link).attr('href', '#');
-			} else {
-				$j(link).attr('target', '_new');
-				// Filter the link for any xss
-				$j(link).attr('href', 
-						mw.escapeQuotesHTML( $j(link).attr('href') )
-				)
-			}			
+			// escape link output as to not include scirpt execution
+			$j(link).attr('href', 
+					mw.escapeQuotesHTML( $j(link).attr('href') )
+			)
 		});		
 		
 		// Make every asset url absolute and restrict domain of assets 

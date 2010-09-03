@@ -95,6 +95,14 @@ mw.SequencerAddByUrl.prototype = {
 							
 							// Close the dialog loading: 
 							mw.closeLoaderDialog();
+						
+						/*
+						 * Soon sequence transclution fun: 
+						 * else if( titleKey.indexOf('Sequence:') == 0 ) {
+						 */
+						
+						} else {
+							$dialog.html( 'Error loading asset type');
 						}
 										
 					});

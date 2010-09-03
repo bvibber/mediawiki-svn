@@ -48,7 +48,7 @@
 					return ;
 				}
 			}
-			callbac( false );
+			callback( false );
 		} );
 	}		
 	

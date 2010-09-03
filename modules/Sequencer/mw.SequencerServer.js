@@ -35,6 +35,9 @@
 		// Flags if the sequence was successfully saved in this session
 		sequenceSaved: false,
 		
+		//Template cache of wikitext for templates loaded in this session
+		templateTextCache: [],
+		
 		/**
 		 * init the sequencer
 		 */
@@ -111,6 +114,17 @@
 				callback( smilXml );	
 			})
 		},		
+		getTemplateText: function( templateTitle, callback ){
+			var _this = this; 	
+			if(this.templateTextCache[templateTitle]){
+				callback(templateTitle);
+				return ;
+			}
+			mw.getTitleText( this.getApiUrl(),templateTitle, function( templateText ){
+				_this.templateTextCache[templateTitle] = templateText;
+				callback(templateText);
+			});
+		},
 		// Check if there have been local changes 
 		hasLocalChanges: function(){
 			return ( this.serverSmilXml != this.sequencer.getSmil().getXMLString() );  

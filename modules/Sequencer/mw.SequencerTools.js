@@ -27,7 +27,7 @@ mw.SequencerTools.prototype = {
 			'editWidgets' : [ 'trimTimeline' ], 
 			'editableAttributes' : ['clipBegin','dur' ],			
 			'contentTypes': ['video', 'audio']
-		},
+		},			
 		'duration':{			 
 			'editableAttributes' : [ 'dur' ],
 			'contentTypes': ['img', 'mwtemplate']
@@ -38,9 +38,14 @@ mw.SequencerTools.prototype = {
 			'contentTypes': [ 'img'], // xxx todo add video support
 			'animate' : 'true'
 		},
+		'templateedit':{
+			'editWidgets' : ['edittemplate'],
+			'editableAttributes' : [ 'apiTitleKey' ],
+			'contentTypes' : ['mwtemplate']
+		},
 		'transitions' : {
 			'editableAttributes' : [ 'transIn', 'transOut' ],
-			'contentTypes': ['video', 'img' ]
+			'contentTypes': ['video', 'img', 'mwtemplate' ]
 		}
 	},
 	editableAttributes:{		
@@ -53,10 +58,15 @@ mw.SequencerTools.prototype = {
 			'title' : gM('mwe-sequencer-clip-duration' )
 		},
 		'panZoom' :{
-			'type' : 'display',
+			'type' : 'string',
 			'inputSize' : 15,
 			'title' : gM('mwe-sequencer-clip-panzoom' ),
 			'defaultValue' : '0%, 0%, 100%, 100%'
+		},
+		'apiTitleKey' : {
+			'type' : 'string',
+			'inputSize' : 15,
+			'title' : gM('mwe-sequencer-template-name' )
 		},
 		'transIn' : {
 			'type' : 'select',
@@ -65,10 +75,35 @@ mw.SequencerTools.prototype = {
 		'transOut' : {
 			'type' : 'select',
 			'selectValues' : [ 'fadeFromColor', 'crossfade' ]
+		},
+		// Special child node type
+		'param' : {
+			'type' : 'childParam',
+			'inputSize' : 20
 		}
 	},
 	editableTypes: {
-		'display': {
+		'childParam': {
+			update: function( _this, smilElement, paramName, value){
+				// Check if the param already exists
+				$paramNode = $j( smilElement ).find( "[name='"+ paramName + '"]' );
+				if( $paramNode.length == 0){
+					$j( smilElement ).append(
+						$j('<param />').attr('name', paramName)
+					)
+				}
+				// Update the param value
+				$paramNode.attr( 'value', value);
+			},
+			getSmilVal: function( _this, smilElement, paramName, value){
+				$paramNode =  $j( smilElement ).find( "[name='"+ paramName + '"]' );
+				if( $paramNode.length == 0){
+					return '';
+				}
+				$paramNode.attr('value');
+			}
+		},
+		'string': {
 			update: function( _this, smilElement, attributeName, value){
 				$j( smilElement ).attr( attributeName, value);
 				// update the display
@@ -149,6 +184,53 @@ mw.SequencerTools.prototype = {
 		}
 	},
 	editWidgets: {
+		'edittemplate':{
+			'onChange' : function( _this, target, smilElement ){
+		
+			},
+			'draw': function( _this, target, smilElement ){
+				// Parse the set of templates from the template text cache
+				$j( target ).loadingSpinner();
+			
+				if( ! $j( smilElement).attr('apititlekey') ){
+					mw.log("Error: can't grab template without title key")
+					return ;
+				}
+				// Get the template wikitext 
+				_this.sequencer.getServer().getTemplateText($j( smilElement).attr('apititlekey'), function( templateText ){
+					if( ! templateText ){
+						mw.log("Error: could not get wikitext form titlekey: " +  $j( smilElement).attr('apititlekey'))
+						return ;
+					}
+					$j( target ).empty().append( 
+						$j('<h3 />').text('mwe-sequencer-edittemplate-params')
+					)
+					
+					// This is not supposed to be perfect .. 
+					// just get you 'most' of the input vars 'most' of the time via the greedy regEx:
+					var templateVars = templateText.match(/\{\{\{([^\}]*)\}\}\}/gi);					
+					var cleanTemplateParams = {};
+					for( i =0;i<templateVars.length; i++ ){
+						var tVar = templateVars[i];
+						// Remove all {{{ and }}}
+						tVar = tVar.replace(/\{\{\{/, '' ).replace( /\}\}\}/, '');
+						// Check for | operator
+						if( tVar.indexOf("|") != -1 ){
+							// Only the first version of the template var
+							tVar = tVar.split( '|')[0];
+						}
+						cleanTemplateParams[ tVar ] = true;
+					}					
+					// Output input boxes for each template var as a param
+					for( var paramName in cleanTemplateParams ){
+						$j( target ).append( 
+							_this.getEditableAttribute(smilElement, 'edittemplate', 'param',  paramName ),
+							$j('<br />')
+						)
+					}					
+				});
+			}
+		},
 		'panzoom' : {
 			'onChange': function( _this, target, smilElement ){
 				var panZoomVal = $j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom')).val();
@@ -482,7 +564,7 @@ mw.SequencerTools.prototype = {
 		)
 	},
 	getEditToolInputId: function( toolId, attributeName){
-		return 'editTool_' + toolId + '_' + attributeName;
+		return 'editTool_' + toolId + '_' + attributeName.replace('/\s/', '');
 	},
 	/**
 	 * update the current displayed tool ( when an undo, redo or history jump changes smil state ) 
@@ -651,7 +733,7 @@ mw.SequencerTools.prototype = {
 		return $actionButton;
 	},
 	/* get the editiable attribute input html */
-	getEditableAttribute: function( smilElement, toolId, attributeName ){
+	getEditableAttribute: function( smilElement, toolId, attributeName, paramName ){
 		if( ! this.editableAttributes[ attributeName ] ){
 			mw.log("Error: editableAttributes : " + attributeName + ' not found');
 			return; 
@@ -663,15 +745,21 @@ mw.SequencerTools.prototype = {
 			mw.log(" Error: No editableTypes interface for " + editType);
 			return ;	
 		}
+		// Set the update key to the paramName if provided:
+		var updateKey = ( paramName ) ? paramName : attributeName;
+		
 		var initialValue =  _this.editableTypes[ editType ].getSmilVal(
 			_this, 
 			smilElement, 
-			attributeName
+			updateKey
 		);
 		// Set the default input size 
 		var inputSize = ( _this.editableAttributes[ attributeName ].inputSize)? 
 				_this.editableAttributes[ attributeName ].inputSize : 6;
-		
+
+		// Set paramName based attributes: 
+		var attributeTitle = ( editAttribute.title ) ? editAttribute.title : paramName;
+
 		return $j( '<div />' )
 			.css({
 				'float': 'left',
@@ -685,22 +773,22 @@ mw.SequencerTools.prototype = {
 			.append( 
 				$j('<span />')
 				.css('margin', '5px')
-				.text( editAttribute.title ),
+				.text( attributeTitle ),
 				
 				$j('<input />')
 				.attr( {
-					'id' : _this.getEditToolInputId( toolId, attributeName),
+					'id' : _this.getEditToolInputId( toolId, updateKey ),
 					'size': inputSize
 				})
 				.data('initialValue', initialValue )
 				.sequencerInput( _this.sequencer )
 				.val( initialValue )
-				.change(function(){					
+				.change(function(){							
 					// Run the editableType update function: 
 					_this.editableTypes[ editType ].update( 
 							_this, 
 							smilElement, 
-							attributeName, 
+							updateKey, 
 							$j( this ).val() 
 					);				
 					// widgets can bind directly to this change action. 					
