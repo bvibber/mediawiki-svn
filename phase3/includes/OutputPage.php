@@ -2309,10 +2309,6 @@ class OutputPage {
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		// Support individual script requests in debug mode
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
-			// Styles
-			foreach ( $this->getModuleStyles() as $name ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
-			}
 			// Scripts
 			foreach ( $this->getModuleScripts() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
@@ -2322,10 +2318,6 @@ class OutputPage {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
 			}
 		} else {
-			// Styles
-			if ( count( $this->getModuleStyles() ) ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
-			}
 			// Scripts
 			if ( count( $this->getModuleScripts() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
