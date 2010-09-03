@@ -100,19 +100,23 @@ function doPageSpecificRewrite() {
 	}
 	window.ranMwRewrites = 'done';
 	
-	// Add media wizard
-	if ( ( wgAction == 'edit' && wgPageName.indexOf( "Sequence:" ) ) || wgAction == 'submit' ) {		
-		loadMwEmbed( [ 
-			'mw.RemoteSearchDriver',
-			'mw.ClipEdit',
-		 	'mw.style.ClipEdit',
-			'$j.fn.textSelection', 
-			'$j.ui', 
-			'$j.ui.sortable' 
-		], function() {
-			mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
-		} );		
-		return ;
+	// Add media wizard ( only if not on a sequence page
+	if ( ( wgAction == 'edit' || wgAction == 'submit' ) {
+		if( wgPageName.indexOf( "Sequence:" ) != 0 ){
+			loadMwEmbed( [ 
+				'mw.RemoteSearchDriver',
+				'mw.ClipEdit',
+			 	'mw.style.ClipEdit',
+				'$j.fn.textSelection', 
+				'$j.ui', 
+				'$j.widget',
+				'$j.ui.mouse'
+				'$j.ui.sortable' 
+			], function() {
+				mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
+			} );		
+			return ;
+		}
 	}
 	
 	// Timed text display:
