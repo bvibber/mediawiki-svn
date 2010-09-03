@@ -43,7 +43,7 @@ mw.SequencerAddByUrl.prototype = {
 				foundImportUrl = true;
 				mw.log( "addByUrlDialog: matching host getResourceFromUrl::"
 						+ mw.parseUri( provider.detailsUrl ).host 
-						+ ' == ' + mw.parseUri( url).host );
+						+ ' == ' + mw.parseUri( importUrl ).host );
 				
 				// Do special check for mediawiki templates and pages as 'special' smil types 
 				if( provider.lib == 'mediaWiki' ){
@@ -75,7 +75,7 @@ mw.SequencerAddByUrl.prototype = {
 								});			 						
 							});	
 						} else if( titleKey.indexOf('Template:') == 0 ) {
-							// Parse any paramters we can find:				
+							// Parse any parameters we can find:				
 							var apiProvider = '';
 							if( mw.parseUri(provider.apiUrl ).host == 'commons.wikimedia.org' ){
 								apiProvider = 'commons'
@@ -84,7 +84,7 @@ mw.SequencerAddByUrl.prototype = {
 								// into a provider class
 								apiProvider = 'local';
 							}
-							// Get the rendered page text: 
+							// Get template smilClip: 
 							var smilClip = _this
 							.sequencer
 							.getAddMedia()

@@ -177,13 +177,16 @@ mw.SequencerAddMedia.prototype = {
 		this.getSmilClipFromResource ( resource, callback );
 	},
 	
-	getSmilClipFromWikiTemplate: function( titleKey, provider, callback){		
+	getSmilClipFromWikiTemplate: function( titleKey, providerKey, callback){	
+		mw.log('SequencerAddMedia::getSmilClipFromWikiTemplate: ' + titleKey + ' provider: ' + providerKey);
 		return $j( '<ref />' )
 			.attr({
 				'type': "application/x-wikitemplate",
 				'apiTitleKey' : titleKey,
 				// xxx For now just force commons
-				'apiProvider' : 'commons'
+				'apiProvider' : providerKey,
+				// Set template based titles to default image duration:
+				'dur': mw.getConfig( 'Sequencer.AddMediaImageDuration' )
 			})			
 	},
 	

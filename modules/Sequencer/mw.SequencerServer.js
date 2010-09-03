@@ -77,7 +77,7 @@
 		},
 		// Check if the server exists / is configured 
 		isConfigured: function( ){
-			if( !this.apiType || !this.apiUrl || !this.titleKey){
+			if( !this.apiUrl || !this.titleKey){
 				return false;
 			}
 			return true;

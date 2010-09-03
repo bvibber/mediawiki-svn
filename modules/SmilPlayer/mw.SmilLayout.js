@@ -14,6 +14,18 @@ mw.SmilLayout.prototype = {
 	// Stores the current top z-index for "putting things on top"
 	topZindex: 1,
 	
+	// Font size em map
+	// based on: http://style.cleverchimp.com/font_size_intervals/altintervals.html
+	emFontSizeMap : {
+		'xx-small' : '.57em',				
+		'x-small' : '.69em',
+		'small' : '.83em', 
+		'medium' : '1em',
+		'large' : '1.2em',
+		'x-large' : '1.43em',
+		'xx-large' : '1.72em'
+	},
+
 	// Constructor:
 	init: function( smilObject ){	
 		// Setup a pointer to parent smil Object
@@ -85,56 +97,93 @@ mw.SmilLayout.prototype = {
 	 */ 
 	drawElement: function( smilElement ) {
 		var _this = this;		
+		
 		// Check for quick "show" path:
-		var $targetElement = $j( '#' + this.smil.getPageDomId( smilElement ) );
+		var $targetElement = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
 		if( $targetElement.length ){
 			$targetElement.show();
 			return ;
-		}
-		
-		// Else draw the node into the regionTarget
-							
-		// mw.log( "SmilLayout::drawElement: " + nodeName + '.' + $j(
-		// smilElement ).attr('id' ) + ' into ' + regionId );
-		var $regionTarget = this.getRegionTarget( smilElement );
-		
+		}				
+		var $regionTarget = this.getRegionTarget( smilElement );		
 		// Make sure we have a $regionTarget
 		if( !$regionTarget ){
 			return ;
 		}
 							
 		// Append the Smil element to the target region
-		_this.addSmilElementHtml($regionTarget, smilElement )			
-		mw.log( "addSmilElementHtml Added " + 
-				this.smil.getPageDomId( smilElement ) +
-				' to target: ' + 
-				$j( '#' + this.smil.getPageDomId( smilElement ) ).length );
+		_this.drawPlayerSmilElement(smilElement, $regionTarget );
+		
 	},
-	
-	drawElementThumb: function( $target, $node, relativeTime, callback ){
+	/**
+	 * Add the transformed smil element to the $regionTarget
+	 * 
+	 * @param
+	 */
+	// should be merged with addTHumb!
+	drawPlayerSmilElement: function( smilElement, $regionTarget ) {
 		var _this = this;
-		mw.log('SmilLayout::drawElementThumb: ' + $node.attr('id') + ' relative time:' + relativeTime );	
+		mw.log('SmilLayout:: drawPlayerSmilElement: '  )
+		var smilType = this.smil.getRefType( smilElement );
+		switch( smilType ){
+			// Static content can use drawSmilElementToTarget function:
+			case 'mwtemplate':
+			case 'img': 
+			case 'cdata_html': 
+			case 'smiltext':				
+				// Give the static content a getSmilElementPlayerID for player layaer control
+				var $target = $j('<div />')
+					.attr('id', _this.smil.getSmilElementPlayerID( smilElement ) )
+					.css({
+						'width':'100%',
+						'height':'100%'
+					})
+				$regionTarget.append( $target )
+				this.drawSmilElementToTarget( smilElement, $target );
+				return ;
+			break;
+			case 'video': 
+				$regionTarget.append( this.getSmilVideoPlayerHtml( smilElement ) );
+				return ;
+			break;			
+			break;
+			case 'audio':
+				$regionTarget.append( this.getSmilAudioPlayerHtml( smilElement ) );
+				return ;
+			break;					
+		}
+		
+		mw.log( "Error: Could not find smil layout transform for element type: " +
+				smilType + ' of type ' + $j( smilElement ).attr( 'type' ) );				
+		$regionTarget.append( $j('<span />')
+				.attr( 'id' , this.smil.getSmilElementPlayerID( smilElement ) )				
+				.text( 'Error: unknown type:' + smilType )
+		)
+	},		
+	
+	drawSmilElementToTarget: function( smilElement, $target, relativeTime, callback ){
+		var _this = this;
+		mw.log('SmilLayout::drawSmilElementToTarget: ' + $j(smilElement).attr('id') + ' relative time:' + relativeTime );	
 		if( $target.length == 0 ){
-			mw.log("Error drawElementThumb to empty target");
+			mw.log("Error drawSmilElementToTarget to empty target");
 			return ;
 		}
 		// parse the time in case it came in as human input
 		relativeTime = this.smil.parseTime( relativeTime );
 		
 		
-		switch ( this.smil.getRefType( $node )  ){
+		switch ( this.smil.getRefType( smilElement )  ){
 			case 'video':
-				this.getVideoCanvasThumb($target,  $node, relativeTime, callback )		
+				this.getVideoCanvasThumb(smilElement, $target,  relativeTime, callback )		
 				return ;
 			break;
 			case 'img':
-				// XXX should refactor and to use same path as player embed
-				// xxx we should use canvas here but for now just hack it up:		
-				var $playerImage = this.getSmilImgHtml( $node );				
+				// xxx We should use canvas here but for now just hack it up:			
 				$target.html(
 					$j('<img />')
 					.attr({
-						'src' : this.smil.getAssetUrl( $node.attr( 'src' ) )
+						'src' : this.smil.getAssetUrl( 
+								$j( smilElement).attr( 'src' ) 
+							)
 					})
 				);
 				var img = $target.find('img').get(0)
@@ -149,20 +198,36 @@ mw.SmilLayout.prototype = {
 					)
 					// Check for panZoom attribute 
 					//( if animation is set it will override this value ) 
-					if( $node.attr('panZoom') ){
-						_this.panZoomLayout( $node.get(0), $target, img );
+					if( $j( smilElement ).attr('panZoom') ){
+						_this.panZoomLayout( smilElement, $target, img );
 					}
 					if( callback )
 						callback();
 				}); 
 				return 
 			break;
-			case 'cdata_html':
-				// Scale down the html into the target width
-				this.addSmilCDATAHtml( $node, $target, callback );
+			case 'mwtemplate':
+				$target.loadingSpinner();
+				this.addSmilTemplateHtml( smilElement, $target, callback );
+				return; 
 			break;
+			case 'cdata_html':				
+				// Put the cdata into the smil element: 		
+				$target.append( 
+					this.getSmilCDATAHtml( smilElement, $target.width() )
+				);		
+			break;
+			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html 
+			// We support a subset
+			case 'smiltext':
+				$target.append( this.getSmilTextHtml( smilElement ) ) ;
+				return ;
+			break;			
 			case 'audio':			
-				var titleStr = ( $node.attr('title') )?  $node.attr('title') : gM( 'mwe-sequencer-untitled-audio' )
+				var titleStr = ( $j( smilElement ).attr('title') ) ? 
+						$j( smilElement ).attr('title') : 
+						gM( 'mwe-sequencer-untitled-audio' );
+						
 				// draw an audio icon / title the target
 				$target.append(
 					$j('<span />')
@@ -181,14 +246,15 @@ mw.SmilLayout.prototype = {
 				)
 			break;
 		}
+		// assume direct callback if callback not passed in content type switch
 		if( callback )
 			callback();
 	},
 	
-	getVideoCanvasThumb: function($target, $node, relativeTime, callback ){
+	getVideoCanvasThumb: function( smilElement, $target, relativeTime, callback ){
 		var _this = this;
 		var naturaSize = {};					
-		var drawElement = $j( '#' + this.smil.getPageDomId( $node ) ).get(0);	
+		var drawElement = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).get(0);	
 		
 		var drawFrame = function( drawElement ){
 			if( !drawElement ){
@@ -225,7 +291,7 @@ mw.SmilLayout.prototype = {
 		
 		// check if relativeTime transform matches current absolute time then
 		// render directly:
-		var drawTime = ( relativeTime + this.smil.parseTime( $j( $node ).attr('clipBegin') ) );
+		var drawTime = ( relativeTime + this.smil.parseTime( $j( smilElement ).attr('clipBegin') ) );
 		if( this.smil.isSameFrameTime( drawElement.currentTime, drawTime ) ) {
 			mw.log("getVideoCanvasThumb: Draw time:" + drawTime + " matches video time drawFrame:" +drawElement.currentTime );
 			drawFrame( drawElement );
@@ -233,11 +299,11 @@ mw.SmilLayout.prototype = {
 			// check if we need to spawn a video copy for the draw request
 			mw.log( 'getVideoCanvasThumb: Clone object' );
 			// span new draw element
-			var $tmpFrameNode = $node.clone();
-			$tmpFrameNode.attr('id', $node.attr('id') + '_tmpFrameNode' );				
+			var $tmpFrameNode = $j( smilElement ).clone();
+			$tmpFrameNode.attr('id', $j( smilElement).attr('id') + '_tmpFrameNode' );				
 			this.smil.getBuffer().bufferedSeekRelativeTime( $tmpFrameNode, relativeTime, function(){
 				// update the drawElement
-				drawElement = $j( '#' + _this.smil.getPageDomId( $tmpFrameNode ) ).get(0);
+				drawElement = $j( '#' + _this.smil.getSmilElementPlayerID( $tmpFrameNode ) ).get(0);
 				drawFrame( drawElement );
 				// Remove the temporary node from dom
 				$j( drawElement ).remove();
@@ -269,65 +335,22 @@ mw.SmilLayout.prototype = {
 	 */	
 	hideElement: function( smilElement ){
 		// Check that the element is already in the dom
-		var $targetElement = this.$rootLayout.find( '#' + this.smil.getPageDomId( smilElement ) );
+		var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
 		if( $targetElement.length ){
 			// Issue a quick hide request
 			$targetElement.hide();
 		}
 	},
 	
-	/**
-	 * Add the transformed smil element to the $regionTarget
-	 * 
-	 * @param
-	 */
-	addSmilElementHtml: function( $regionTarget, smilElement ) {
-		var _this = this;
-		var smilType = this.smil.getRefType( smilElement )		
-		switch( smilType ){
-			// Not part of strict smil, but saves time being able have an "html"
-			// display mode
-			case 'cdata_html': 
-				this.addSmilCDATAHtml( smilElement, $regionTarget );
-				return ;
-			break;
-			case 'video': 
-				$regionTarget.append( this.getSmilVideoHtml( smilElement ) );
-				return ;
-			break;
-			case 'img': 
-				$regionTarget.append( this.getSmilImgHtml( smilElement ) );
-				// Update the asset layout ( only img supports layout atm )
-				_this.doSmilElementLayout( smilElement );
-				return ;
-			break;
-			case 'audio':
-				$regionTarget.append( this.getSmilAudioHtml( smilElement ) );
-				return ;
-			break;
-			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html 
-			// We support a subset
-			case 'smiltext':
-				$regionTarget.append( this.getSmilTextHtml( smilElement ) ) ;
-				return ;
-			break;					
-		}
-		
-		mw.log( "Error: Could not find smil layout transform for element type: " +
-				smilType + ' of type ' + $j( smilElement ).attr( 'type' ) );				
-		$regionTarget.append( $j('<span />')
-				.attr( 'id' , this.smil.getPageDomId( smilElement ) )				
-				.text( 'Error: unknown type:' + smilType )
-		)
-	},		
+	
 	
 	/**
 	 * Return the video
 	 */
-	getSmilVideoHtml: function( smilElement ){
+	getSmilVideoPlayerHtml: function( smilElement ){
 		return $j('<video />')
 			.attr( {
-				'id' : this.smil.getPageDomId( smilElement ), 
+				'id' : this.smil.getSmilElementPlayerID( smilElement ), 
 				'src' : this.smil.getAssetUrl( $j( smilElement ).attr( 'src' ) )
 			} )
 			.addClass( 'smilFillWindow' )
@@ -336,75 +359,103 @@ mw.SmilLayout.prototype = {
 	/**
 	 * Return audio element ( by default audio tracks are hidden )
 	 */
-	getSmilAudioHtml: function ( smilElement ){
+	getSmilAudioPlayerHtml: function ( smilElement ){
 		return $j('<audio />')
 		.attr( {
-			'id' : this.smil.getPageDomId( smilElement ), 
+			'id' : this.smil.getSmilElementPlayerID( smilElement ), 
 			'src' : this.smil.getAssetUrl( $j( smilElement ).attr( 'src' ) )
 		} )
 		.css( 'display', 'none');
 	},
 	
 	/**
-	 * Get Smil CDATA ( passed through jQuery .clean as part of fragment
-	 * creation ) XXX Security XXX Here we are parsing in SMIL -> HTML should be
-	 * careful about XSS or script elevation
-	 * 
-	 * @@TODO check all sources are "local" only smil and enforce domain on all
-	 *        asset sources
+	 * Add Smil Template to a $target
 	 */
-	addSmilCDATAHtml: function( smilElement, $target, callback ){
-		if( $j( smilElement).attr('type') == 'text/html' ){
-			$target.append( this.getSmilCDATAHtml(smilElement, $target.width() ));
+	addSmilTemplateHtml: function( smilElement, $target, callback ){
+		var _this = this;
+		var addTemplateHtmlToTarget = function(){								
+			// Add the html to the target: 
+			mw.log( 'addTemplateHtmlToTarget:: with width:' + $target.width() );
+			$target.empty().append( 
+				_this.getScaledHtml(
+					    // The scaled template:
+						$j( $j( smilElement).data('templateHtmlCache') ),
+						
+						// The smilElement
+						smilElement,
+						
+						// The target width to be scaled
+						$target.width()
+					)
+			);
+			// Run the callback
+			if( callback ) 
+				callback();	
+		}
+		// Check if we have the result data in the cache: 
+		if( $j( smilElement).data('templateHtmlCache') ){
+			addTemplateHtmlToTarget()
 			if( callback )
 				callback();
 			return ;
 		}
-		// Check if we need to load the content: 
-		if( $j( smilElement).attr('type') == 'application/x-wikitemplate' ){
-			// build a wikitext call
-			var templateKey = $j( smilElement).attr('apiTitleKey').replace('Template:', '');
-			if(!templateKey){
-				mw.log("Error: wikitemplate without title key")
-				return ;
-			}
-			var apiProviderUrl = mw.getApiProviderURL( $j( smilElement).attr('apiProvider') );
-			if(!apiProviderUrl){
-				mw.log("Error: wikitemplate without api provider url")
-			}
-			
-			var wikiTextTemplateCall = '' +
-			'{{' + templateKey + "\n";
-			$j( smilElement).find('param').each(function( inx, paramNode ){
-				wikiTextTemplateCall+= $j( paramNode ).attr('name') + '= ' +  
-					unescape(  $j( paramNode ).attr('value') )
-			});
-			
-			// Close up the template call
-			wikiTextTemplateCall+="\n}}";
-			var request = {
-				'action' : 'parse',
-				'text': wikiTextTemplateCall,
-			};
-			// Check if we have the titleKey for the sequence and use that as context title
-			var titleKey = this.smil.getEmbedPlayer().apiTitleKey;
-			if( titleKey ){
-				request['title'] = titleKey;
-			}
-			mw.getJSON( apiProviderUrl, request, function(data){
-				if( data && data.parse && data.parse.text && data.parse.text['*'] ){
-					$target.html('<![CDATA[' +
-							 data.parse.text['*'] 
-					+ "\n]]>")
-					$target.append( this.getSmilCDATAHtml(smilElement, $target.width() ));
-					if( callback ) 
-						callback();
+		
+		mw.log("addSmilTemplateHtml:: x-wikitemplate:: " + $j( smilElement).attr( 'apititlekey' ) + " to target:" + $target.attr('class'));;
+		// build a wikitext call ( xml keys lose case when put into xml ) 
+		var templateKey = $j( smilElement).attr( 'apititlekey' );
+		if(!templateKey){
+			mw.log("Error: wikitemplate without title key")
+			return ;
+		} else {
+			templateKey = templateKey.replace('Template:', '');	
+		}
+		var apiProviderUrl = mw.getApiProviderURL( $j( smilElement).attr('apiprovider') );
+		if(!apiProviderUrl){
+			mw.log("Error: wikitemplate without api provider url")
+		}
+		
+		var wikiTextTemplateCall = '{{' + templateKey ;
+		var paramText = '';
+		$j( smilElement).find('param').each(function( inx, paramNode ){
+			paramText +='|' + $j( paramNode ).attr('name') + 
+						'= ' +  
+						unescape(  $j( paramNode ).attr('value') ) + 
+						"\n";
+		});
+		// Close up the template call
+		if( paramText!= ''){
+			wikiTextTemplateCall+="\n" + paramText + '}}';
+		} else{
+			wikiTextTemplateCall+='}}'
+		}
+				
+		var request = {
+			'action' : 'parse',
+			'text': wikiTextTemplateCall,
+		};
+		// Check if we have the titleKey for the sequence and use that as context title
+		var titleKey = this.smil.getEmbedPlayer().apiTitleKey;
+		if( titleKey ){
+			request['title'] = titleKey;
+		}
+		
+		mw.getJSON( apiProviderUrl, request, function( data ){
+			if( data && data.parse && data.parse.text && data.parse.text['*'] ){
+				// Mediawiki protects against xss but filter the parsed text 'just in case' 
+				$j( smilElement).data('templateHtmlCache', 
+					_this.smil.getFilterdHtml( data.parse.text['*'] ).html()
+				)					
+				// Check if we have a load callback associated with the smilElement: 
+				if( $j( smilElement ).data('loadCallback') ){
+					 $j( smilElement ).data('loadCallback')();
 				}
-				mw.log("Error could not get template data")
-				if( callback ) 
-					callback();
-			});
-		} 
+				addTemplateHtmlToTarget();
+			} else{
+				mw.log("Error: addSmilCDATAHtml could not get template data from the wiki")
+			}
+			if( callback ) 
+				callback();
+		});
 	},
 	
 	getSmilCDATAHtml: function( smilElement, targetWidth){
@@ -421,33 +472,27 @@ mw.SmilLayout.prototype = {
 				xmlCdata += node.nodeValue;
 			}
 		}
+		var $htmlLayout = this.smil.getFilterdHtml( xmlCdata );	
 		
-		var textCss = this.transformSmilCss( smilElement , targetWidth);	
+		// Return scaled and filtered html	
+		return this.getScaledHtml( $htmlLayout,	smilElement, targetWidth );
+	},	
+	
+	getScaledHtml: function( $htmlLayout, smilElement, targetWidth){		
+		var _this = this;
+		var textCss = this.transformSmilCss( smilElement , targetWidth);
 		
-		// We pass the xmlCdata via jQuery fragment creation, this runs
-		// jquery.clean()
-		// and filters the result html.
-		var $cdataHtml = $j( '<div />' ).append( 
-				$j( xmlCdata )
-			)
-
 		// See if we need to scale
 		var scalePercent = ( targetWidth / this.getVirtualWidth() );
-			
-		// Links go to a new window and are disable scale down.
-		$cdataHtml.find('a').each( function(inx, link ){
-			if( scalePercent < 1 ){
-				$j(link).attr('href', '#');
-			} else {
-				$j(link).attr('target', '_new');
-			}
-		});		
-				
+		
+		// Don't scale fonts as dramatically:
+		var fontScalePercent = Math.sqrt( scalePercent );
+		
+		// Scale the 
 		if( scalePercent != 1 ){			
-			$cdataHtml.find('img').each( function(inx, image ){
+			$htmlLayout.find('img').each( function(inx, image ){
 				// make sure each image is loaded before we transform,
-				// AND via the magic of closures this updates $cdataHtml output
-				// in-place
+				// AND updates $htmlLayout output in-place
 				$j( image ).load(function(){
 					// if the image has an height or width scale by scalePercent
 					if ( $j( image ).width() ){
@@ -465,17 +510,26 @@ mw.SmilLayout.prototype = {
 					})
 				});					
 			})
+			// Switch any named font-size attribute to em
+			$htmlLayout.find('[style]').each( function(inx, node){			
+				if( $j(node).css('font-size') ){
+					$j(node).css('font-size', 
+						( fontScalePercent * parseFloat( $j(node).css('font-size') ) ) + 'px'
+					); 				
+				}
+			})	
 		}
+				
+		
 		
 		// Return the cdata
-		return $j('<div />')
-			.attr( 'id' , this.smil.getPageDomId( smilElement ) )
+		return $j('<div />')			
 			// Wrap in font-size percentage relative to virtual size
 			.css( {
 				'font-size': ( scalePercent *100 ) + '%' 
 			})
 			.append(
-				$cdataHtml.css( textCss )
+				$htmlLayout.css( textCss )
 			);	
 	},
 	
@@ -500,7 +554,7 @@ mw.SmilLayout.prototype = {
 
 		// Return the htmlElement
 		return $j('<span />')
-			.attr( 'id' , this.smil.getPageDomId( textElement ) )
+			.attr( 'id' , this.smil.getSmilElementPlayerID( textElement ) )
 			// Wrap in font-size percentage relative to virtual size
 			.css( 'font-size',  ( ( this.targetWidth / this.getVirtualWidth() )*100 ) + '%' )
 			.html(  
@@ -522,7 +576,7 @@ mw.SmilLayout.prototype = {
 		var _this = this;
 		var $image = $j('<img />')
 		.attr( {
-			'id' : this.smil.getPageDomId( smilImg ), 
+			'id' : this.smil.getSmilElementPlayerID( smilImg ), 
 			'src' : this.smil.getAssetUrl( $j( smilImg ).attr( 'src' ) )
 		} )
 		// default width 100%
@@ -533,7 +587,7 @@ mw.SmilLayout.prototype = {
 	doSmilElementLayout: function( smilElement ){
 		var _this = this;
 		
-		var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		var img = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).get(0);
 		_this.getNaturalSize( img, function( naturalSize) {
 			_this.doAssetLayout( smilElement , naturalSize);			
 		});
@@ -576,7 +630,7 @@ mw.SmilLayout.prototype = {
 				'height' : this.smil.embedPlayer.getHeight()
 			}			
 			this.fitMeetBest( 
-				$j( '#' + this.smil.getPageDomId( smilElement ) ).get(0), 
+				$j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).get(0), 
 				naturalSize, 
 				targetSize
 			);
@@ -651,7 +705,7 @@ mw.SmilLayout.prototype = {
 		var _this = this;		
 		var panZoom = $j( smilElement).attr('panZoom').split(',');
 		if( !img ){
-			var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+			var img = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) ).get(0);
 		}		
 		
 		_this.getNaturalSize( img, function( natrualSize ){
@@ -886,20 +940,9 @@ mw.SmilLayout.prototype = {
 				cssAttributes[ smilAttributeToCss[ attr.nodeName ]] = attr.nodeValue;	
 			}
 		}		
-		
-		// Make the font size fixed so it can be scaled
-		// based on:
-		// http://style.cleverchimp.com/font_size_intervals/altintervals.html
-		var sizeMap = {
-			'xx-small' : '.57em',				
-			'x-small' : '.69em',
-			'small' : '.83em', 
-			'medium' : '1em',
-			'large' : '1.2em',
-			'x-large' : '1.43em',
-			'xx-large' : '1.72em'
-		}				
-		if( sizeMap[ cssAttributes['font-size'] ] ){
+						
+		// convert named font sizes to em: 
+		if( this.emFontSizeMap[ cssAttributes['font-size'] ] ){
 			cssAttributes['font-size'] = sizeMap[ cssAttributes['font-size'] ];
 		}
 		
