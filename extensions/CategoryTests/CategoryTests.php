@@ -22,6 +22,7 @@ $wgExtensionCredits['parserhook'][] = array(
 );
 
 $wgExtensionMessagesFiles['CategoryTests'] = dirname( __FILE__ ) . '/CategoryTests.i18n.php';
+$wgExtensionMessagesFiles['CategoryTestsMagic'] = dirname( __FILE__ ) . '/CategoryTests.i18n.magic.php';
 
 function wfCategoryTests( $parser ) {
 	global $wgExtCategoryTests;
