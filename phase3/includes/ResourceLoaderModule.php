@@ -142,9 +142,9 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	private $parameters = array();
 	
 	// In-object cache for file dependencies
-	private $fileDeps = null;
+	private $fileDeps = array();
 	// In-object cache for mtime
-	private $modifiedTime = null;
+	private $modifiedTime = array();
 	
 	/* Public methods */
 	
@@ -481,8 +481,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 */
 	protected function getFileDependencies( $skin ) {
 		// Try in-object cache first
-		if ( !is_null( $this->fileDeps ) ) {
-			return $this->fileDeps;
+		if ( isset( $this->fileDeps[$skin] ) ) {
+			return $this->fileDeps[$skin];
 		}
 		
 		// Now try memcached
@@ -559,8 +559,8 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
-		if ( !is_null( $this->modifiedTime ) )  {
-			return $this->modifiedTime;
+		if ( isset( $this->modifiedTime["$lang|$skin|$debug"] ) )  {
+			return $this->modifiedTime["$lang|$skin|$debug"];
 		}
 		
 		// HACK: We duplicate the message names from generateUserJs()
