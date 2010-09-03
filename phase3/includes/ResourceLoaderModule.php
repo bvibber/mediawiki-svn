@@ -384,8 +384,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return int UNIX timestamp
 	 */
 	public function getModifiedTime( $lang, $skin, $debug ) {
-		if ( !is_null( $this->modifiedTime ) ) {
-			return $this->modifiedTime;
+		if ( isset( $this->modifiedTime["$lang|$skin|$debug"] ) ) {
+			return $this->modifiedTime["$lang|$skin|$debug"];
 		}
 		
 		$files = array_merge( $this->scripts, $this->styles,
@@ -396,8 +396,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $skin )
 		);
-		$this->modifiedTime = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
-		return $this->modifiedTime;
+		$this->modifiedTime["$lang|$skin|$debug"] = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
+		return $this->modifiedTime["$lang|$skin|$debug"];
 	}
 	
 	/**
