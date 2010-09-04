@@ -4,7 +4,7 @@
  * Checks a number of syntax conventions on variables from a valid PHP file.
  *
  * Run as:
- *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php \) -exec php tools/code-utils/check-vars.php \{\} +
+ *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php -o -name LocalSettings.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
 
 require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
@@ -43,6 +43,8 @@ $wgAutoloadLocalClasses += array(
 class CheckVars {
 	var $mDebug = false;
 	static $mDefaultSettingsGlobals = null;
+	static $mRequireKnownClasses = array();
+	static $mRequireKnownConstants = array();
 
 	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_", "SQLSRV_" ); # Ignore constants with these prefixes
 	protected $generateDeprecatedList = false;
@@ -53,6 +55,8 @@ class CheckVars {
 	const IN_FUNCTION = 2;
 	const IN_GLOBAL = 3;
 	const IN_INTERFACE = 4;
+	const IN_REQUIRE_WAITING = 6;
+	const IN_FUNCTION_REQUIRE = 8;
 
 	/* Token specializations */
 	const CLASS_NAME = -4;
@@ -150,6 +154,12 @@ class CheckVars {
 	function load( $file, $shortcircuit = true ) {
 		$this->mProblemCount = 0;
 		$this->mFilename = $file;
+		
+		/* These are used even if it's shortcircuited */
+		$this->mKnownFileClasses = array();
+		$this->mUnknownClasses = array();
+		$this->mConstants = array();
+
 		$source = file_get_contents( $file );
 		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
 			$this->warning( "$file has an UTF-8 BOM" );
@@ -165,8 +175,6 @@ class CheckVars {
 		$this->mTokens = token_get_all( $source );
 		$this->mStatus = self::WAITING_FUNCTION;
 		$this->mFunctionQualifiers = array();
-		$this->mKnownFileClasses = array();
-		$this->mUnknownClasses = array();
 
 
 		$this->mConstants = array( 'PARSEKIT_SIMPLE', 'UNORM_NFC', # Extensions
@@ -237,6 +245,12 @@ class CheckVars {
 						$this->mParent = $token[1];
 					}
 
+					if ( in_array( $token[0], array( T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE ) ) ) {
+						$this->mStatus = self::IN_REQUIRE_WAITING;
+						$requirePath = "";
+						continue;
+					}
+					
 					if ( $token[0] != T_FUNCTION )
 						continue;
 					$this->mStatus = self::IN_FUNCTION_NAME;
@@ -341,6 +355,10 @@ class CheckVars {
 
 							$this->checkClassName( $token );
 							$currentToken[0] = self::CLASS_NAME;
+						} else if ( in_array( $token[0], array( T_REQUIRE, T_REQUIRE_ONCE, T_INCLUDE, T_INCLUDE_ONCE ) ) ) {
+							$this->mStatus = self::IN_FUNCTION_REQUIRE;
+							$requirePath = '';
+							continue;
 						}
 					}
 
@@ -391,11 +409,11 @@ class CheckVars {
 					if ( is_array( $token ) ) {
 						if ( $token[0] == T_VARIABLE ) {
 							if ( !$this->shouldBeGlobal( $token[1] ) && !$this->canBeGlobal( $token[1] ) ) {
-								$this->warning( "Global variable {$token[1]} in line $token[2], function {$this->mFunction} does not follow coding conventions" );
+								$this->warning( "Global variable {$token[1]} in line {$token[2]}, function {$this->mFunction} does not follow coding conventions" );
 							}
 							if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
 								if ( !$this->mInSwitch ) {
-									$this->warning( $token[1] . " marked as global again in line $token[2], function {$this->mFunction}" );
+									$this->warning( $token[1] . " marked as global again in line {$token[2]}, function {$this->mFunction}" );
 								}
 							} else {
 								$this->checkGlobalName( $token[1] );
@@ -418,6 +436,100 @@ class CheckVars {
 							$this->mStatus = self::WAITING_FUNCTION;
 					}
 					continue;
+
+				case self::IN_REQUIRE_WAITING:
+				case self::IN_FUNCTION_REQUIRE:
+					if ( $token == ';' ) {
+						$requirePath = trim( $requirePath, ')("' );
+						
+						if ( substr( $requirePath, 0, 8 ) == "PHPUnit/" ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
+						if ( $requirePath == "Testing/Selenium.php" ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
+						if ( substr( $requirePath, 0, 12 ) == "Net/Gearman/" ) {
+							$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+							continue;
+						}
+						
+						if ( ( $requirePath == '' ) || ( !file_exists( $requirePath ) && $requirePath[0] != '/' ) ) {
+							/* Try prepending the script folder, for maintenance scripts (but see Maintenance.php:758) */
+							$requirePath = dirname( $this->mFilename ) . "/" . $requirePath;
+						}
+						if ( !file_exists( $requirePath ) ) {
+							if ( strpos( $requirePath, '$' ) === false ) {
+								$this->warning( "Did not found the expected require of $requirePath" );
+							}
+						} else if ( isset( self::$mRequireKnownClasses[$requirePath] ) ) {
+							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, self::$mRequireKnownClasses[$requirePath] );
+							$this->mConstants = array_merge( $this->mConstants, self::$mRequireKnownConstants[$requirePath] );
+						} else {
+							$newCheck = new CheckVars;
+							$newCheck->load( $requirePath );
+							$newCheck->execute();
+							/* Get the classes defined there */
+							$this->mKnownFileClasses = array_merge( $this->mKnownFileClasses, $newCheck->mKnownFileClasses );
+							$this->mConstants = array_merge( $this->mConstants, $newCheck->mConstants );
+							self::$mRequireKnownClasses[$requirePath] = $newCheck->mKnownFileClasses;
+							self::$mRequireKnownConstants[$requirePath] = $newCheck->mConstants;
+						}
+						$this->mStatus = $this->mStatus - self::IN_REQUIRE_WAITING;
+						continue;
+					}
+					
+					if ( $token[0] == T_WHITESPACE )
+						continue;
+					
+					if ( $token[0] == T_STRING_VARNAME ) {
+						$token[0] = T_VARIABLE;
+						$token[1] = '$' . $token[1];
+					}
+					if ( $token[0] == T_VARIABLE && $this->mStatus == self::IN_FUNCTION_REQUIRE ) {
+						if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
+								$this->mFunctionGlobals[ $token[1] ][0] ++;
+						} elseif ( $this->shouldBeGlobal( $token[1] ) ) {
+							$this->warning( "{$token[1]} is used as local variable in line $token[2], function {$this->mFunction}" );
+						}
+					}
+					if ( $token == '.' ) {
+						if ( $requirePath == 'dirname(__FILE__)' ) {
+							$requirePath = dirname( $this->mFilename );
+						} elseif ( $requirePath == 'dirname(dirname(__FILE__))' ) {
+							$requirePath = dirname( dirname( $this->mFilename ) );
+						}
+					} else if ( $token[0] == T_CURLY_OPEN || $token == '}' ) {
+						continue;
+					} else if ( !is_array( $token ) ) {
+						if ( ( $token != '(' ) || $requirePath != '' ) {
+							$requirePath .= $token[0];
+						}
+					} else if ( in_array( $token[0], array( T_CONSTANT_ENCAPSED_STRING, T_ENCAPSED_AND_WHITESPACE ) ) ) {
+						$requirePath .= trim( $token[1], '\'"' );
+					} else if ( $token[0] == T_VARIABLE ) {
+						if ( $token[1] == '$IP' || $token[1] == '$mwPath' ) {
+							$requirePath .= dirname( __FILE__ ) . '/../../phase3';
+						} elseif ( $token[1] == '$dir' ) {
+							//  Scripts at phase3/maintenance/language/
+							$requirePath .= dirname( $this->mFilename );
+						} elseif ( $token[1] == '$wgStyleDirectory' ) {
+							$requirePath .= dirname( __FILE__ ) . '/../../phase3/skins';
+						} elseif ( in_array( $token[1], array( '$classFile', '$file', '$_fileName', '$fileName', '$filename' ) ) ) {
+							/* Maintenance.php lines 374 and 894 */
+							/* LocalisationCache.php, MessageCache.php, AutoLoader.php */
+						} else {
+							//$this->warning( "require uses unknown variable {$token[1]} in line {$token[2]}" );
+							$requirePath .= $token[1];
+						}
+					} elseif ( $token[0] == T_STRING && $token[1] == 'DO_MAINTENANCE' ) {
+						$requirePath .= dirname( __FILE__ ) . '/../../phase3/maintenance/doMaintenance.php';
+					} else {
+						$requirePath .= $token[1];
+					}
+					continue;
+				
 			}
 		}
 
@@ -527,6 +639,10 @@ class CheckVars {
 		if ( isset( self::$mGlobalsPerFile[$name] ) && in_array( basename( $this->mFilename ) , self::$mGlobalsPerFile[$name] ) ) {
 			return true;
 		}
+		if ( $this->mFunction == 'loadWikimediaSettings' ) {
+			/* Skip the error about $site and $lang in Maintenance.php */
+			return true;
+		}
 		
 		return false;
 	}
@@ -588,7 +704,9 @@ class CheckVars {
 
 		if ( class_exists( $token[1], false ) ) return $token[1]; # Provided by an extension
 		if ( substr( $token[1], 0, 8 ) == "PHPUnit_" ) return $token[1];
+		if ( $token[1] == "Testing_Selenium" || $token[1] == "Testing_Selenium_Exception" ) return $token[1];
 		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return $token[1]; # phase3/maintenance/gearman/gearman.inc
+		if ( $token[1] == "PEAR_Error" ) return $token[1]; # Services_JSON.php
 
 		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
 			if ( $warn == 'now' ) {
