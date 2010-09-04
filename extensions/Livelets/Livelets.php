@@ -9,14 +9,10 @@
  * Started: 2007-10-06
  *     1.0: 2010-08-25
  */
-define( 'LIVELETS_VERSION', '1.0.2, 2010-09-04' );
+define( 'LIVELETS_VERSION', '1.0.3, 2010-09-04' );
 
 # the parser-function name for doing live-transclusions
 $wgLiveletsMagic  = 'live';
-
-# Default content for livelets while loading
-$wgLiveletsDefaultContent = "http://upload.wikimedia.org/wikipedia/commons/d/de/Ajax-loader.gif";
-$wgLiveletsDefaultContent = "<div style='widthtext-align:center'><img src='$wgLiveletsDefaultContent'/></div>";
 
 # Settings for the event-driven live method
 $wgLiveletsUseSWF = false;     # Set this to true to use SWF to make livelets fully event-driven (no polling for change)
