@@ -3712,50 +3712,6 @@ $wgParserTestFiles = array(
  */
 $wgParserTestRemote = false;
 
-/**
- * Enable Selenium test framework.
- * This enables maintenance/tests/RunSeleniumTests.php and [[Special:Selenium]].
- */
-$wgEnableSelenium = false;
-
-/** List of Selenium test suites. These must be registered with the autoloader. */
-$wgSeleniumTestSuites = array(
-	'SimpleSeleniumTestSuite'
-);
-
-
-/** Hostname of selenium server */
-$wgSeleniumTestsSeleniumHost = 'localhost';
-
-/** URL of the wiki to be tested. By default, the local wiki is used. */
-$wgSeleniumTestsWikiUrl = false;
-
-/** Port used by selenium server. */
-$wgSeleniumServerPort = 4444;
-
-/** Wiki login username. Used by Selenium to log onto the wiki. */
-$wgSeleniumTestsWikiUser      = 'Wikiuser';
-
-/** Wiki login password. Used by Selenium to log onto the wiki. */
-$wgSeleniumTestsWikiPassword  = '';
-
-/**
- * Common browsers on Windows platform. Modify for other platforms or
- * other Windows browsers.
- * Use the *chrome handler in order to be able to test file uploads.
- * Further solution suggestions: http://www.brokenbuild.com/blog/2007/06/07/testing-file-uploads-with-selenium-rc-and-firefoxor-reducing-javascript-security-in-firefox-for-fun-and-profit/
- */
-$wgSeleniumTestsBrowsers = array(
-	'firefox' => '*firefox /usr/bin/firefox',
-	'iexplorer' => '*iexploreproxy',
-	'opera' => '*chrome /usr/bin/opera',
-);
-
-/** Actually, use this browser */
-$wgSeleniumTestsUseBrowser = 'firefox';
-
-
-
 /** @} */ # end of profiling, testing and debugging }
 
 /************************************************************************//**
@@ -4442,10 +4398,13 @@ $wgCategoryPagingLimit = 200;
 /**
  * A version indicator for collations that will be stored in cl_collation for
  * all new rows.  Used when the collation algorithm changes: a script checks
- * for all rows where cl_collation != $wgCollationVersion and regenerates
+ * for all rows where cl_collation != $wgCategoryCollation and regenerates
  * cl_sortkey based on the page name and cl_sortkey_prefix.
+ *
+ * Currently only supports 'uppercase', which just uppercases the string.  This
+ * is a dummy collation, to be replaced later by real ones.
  */
-$wgCollationVersion = 1;
+$wgCategoryCollation = 'uppercase';
 
 /** @} */ # End categories }
 
