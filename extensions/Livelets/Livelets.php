@@ -99,6 +99,7 @@ class Livelets {
 	function onArticleAfterFetchContent( &$article, &$content ) {
 		global $wgLiveletsMagic;
 
+		# Replace the wikitext with just the content of the requested livelet
 		foreach( self::examineBraces( $content ) as $brace ) {
 			if ( $brace['NAME'] == "#$wgLiveletsMagic:" && --$this->request_id < 0 ) {
 				$len = strlen( $wgLiveletsMagic );
