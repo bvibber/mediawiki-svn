@@ -126,6 +126,8 @@ $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
 define('TIFF_METADATA_VERSION', '1.1');
 # 1.0: initial
 # 1.1: fixed bugs in imageinfo parser
+# 1.2: photoshop quirks (reverted)
+# 1.3: handing extra IDFs reported by tiffinfo
 
 //$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
 //$wgHooks['PagedTiffHandlerTiffData'][] = 'PagedTiffImage::tiffData';

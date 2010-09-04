@@ -196,14 +196,16 @@ class PagedTiffImage {
 			} 
 		}
 
-		$prevPage = max($prevPage, $entry['page']);
+		if ( isset( $entry['width'] ) && isset( $entry['height'] ) ) {
+			$prevPage = max($prevPage, $entry['page']);
 
-		if ( !isset( $entry['alpha'] ) ) {
-			$entry['alpha'] = 'false';
+			if ( !isset( $entry['alpha'] ) ) {
+				$entry['alpha'] = 'false';
+			}
+
+			$entry['pixels'] = $entry['height'] * $entry['width'];
+			$metadata['page_data'][$entry['page']] = $entry;
 		}
-
-		$entry['pixels'] = $entry['height'] * $entry['width'];
-		$metadata['page_data'][$entry['page']] = $entry;
 
 		$entry = array();
 		return true;
@@ -222,8 +224,10 @@ class PagedTiffImage {
 		$data = array();
 		$data['page_data'] = array();
 
+		$ignoreIFDs = array();
 		$entry = array();
 
+		$ignore = false;
 		$prevPage = 0;
 
 		foreach ( $rows as $row ) {
@@ -245,14 +249,19 @@ class PagedTiffImage {
 
 			if ( $error ) continue;
 
-			if ( preg_match('/^TIFF Directory at/', $row) ) {
-				if ( $entry ) {
+			if ( preg_match('/^TIFF Directory at offset 0x[a-f0-9]+ \((\d+)\)/', $row, $m) ) {
+				if ( $ignore ) {
+					$entry = array();
+				} else if ( $entry ) {
 					$ok = $this->addPageEntry($entry, $data, $prevPage);
 					if ( !$ok ) {
 						$error = true;
 						continue;
 					}
 				}
+
+				$ofs = (int)$m[1];
+				$ignore = !empty( $ignoreIFDs[ $ofs ] );
 			} else if ( preg_match('#^(TIFF.*?Directory): (.*?/.*?): (.*)#i', $row, $m) ) {
 				$bypass = false; 
 				$msg = $m[3];
@@ -282,6 +291,11 @@ class PagedTiffImage {
 					$entry['width'] = (int)$value;
 				} else if ( $key == 'Image Length' || $key == 'PixelYDimension' ) {
 					$entry['height'] = (int)$value;
+				} else if ( preg_match('/.*IFDOffset/', $key) ) {
+					# ignore extra IFDs, see <http://www.awaresystems.be/imaging/tiff/tifftags/exififd.html>
+					# Note: we assume that we will always see the reference before the actual IFD, so we know which IFDs to ignore
+					$ofs = (int)$value;
+					$ignoreIFDs[$ofs] = true;
 				}
 			} else {
 				// strange line
@@ -289,7 +303,7 @@ class PagedTiffImage {
 
 		}
 
-		if ( $entry ) {
+		if ( $entry && !$ignore ) {
 			$ok = $this->addPageEntry($entry, $data, $prevPage);
 		}
 
