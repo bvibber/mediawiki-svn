@@ -225,7 +225,6 @@ class PagedTiffImage {
 		$entry = array();
 
 		$prevPage = 0;
-		$quirks = false;
 
 		foreach ( $rows as $row ) {
 			$row = trim( $row );
@@ -283,36 +282,16 @@ class PagedTiffImage {
 					$entry['width'] = (int)$value;
 				} else if ( $key == 'Image Length' || $key == 'PixelYDimension' ) {
 					$entry['height'] = (int)$value;
-				} else if ( $key == 'Software' && preg_match('/photoshop/i', $value) ) {
-					$quirks = "photoshop";
-				} else if ( $key == 'Subfile Type' ) {
-					$entry['type'] = (int)$value;
 				}
 			} else {
 				// strange line
 			}
+
 		}
 
 		if ( $entry ) {
 			$ok = $this->addPageEntry($entry, $data, $prevPage);
 		}
-
-		if ( $quirks === 'photoshop' && count( $data['page_data'] ) > 1 ) {
-			# Photoshop may use multiple directories for a single page image
-			# Ignore the ones with SubfileType == 0
-			foreach ( $data['page_data'] as $i => $entry ) {
-				if ( isset($entry['type']) && $entry['type'] === 0 ) {
-					unset( $data['page_data'][$i] );
-					$data['warnings'][] = "removed spurious frame (photoshop quirk)";
-				}
-			}
-
-			$data['page_data'] = array_values( $data['page_data'] ); # re-index
-			array_unshift( $data['page_data'], null ); # make 1-indexed
-			unset( $data['page_data'][0] ); #remove dummy
-		}
-
-		$data['quirks'] = $quirks;
 
 		if ( !isset( $data['page_amount'] ) ) {
 			$data['page_amount'] = count( $data['page_data'] );
