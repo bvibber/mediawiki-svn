@@ -1,0 +1,35 @@
+.referenceEditor .referenceEditorElement {
+	/* soft-blue background color to highlight editable references */
+	background-color: #E4F0F9;
+	
+	/* create a hand cursor, cross-browser hack: http://www.quirksmode.org/css/cursor.html */
+	cursor: pointer;
+	cursor: hand;
+	
+	/* add a lot of padding to make them stand out */
+	padding: 0.5em;
+}
+
+.referenceEditor .referenceEditorElement:hover {
+	/* indicate the reference to be edited with a darker color */
+	background-color: #a7d7f9;
+}
+
+.referenceEditor .editing {
+	/* keeping the custom padding and margin breaks in Webkit browsers */
+	padding: 0px;
+	margin: 0px;
+	
+	/* reset the cursor when editing */
+	cursor: auto;
+}
+
+.referenceEditor .edited {
+	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
+	background-color: #F9F2A7;
+}
+
+.referenceEditor .lastEdit {
+	/* have an orange color, the exact complement of the hover color, for highlighting on preview/cancel */
+	background-color: #f9c9a7;
+}

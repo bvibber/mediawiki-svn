@@ -1,0 +1,4 @@
+.editsection {
+	/* hide the edit section from the page using CSS as opposed to hacking the parser options (and thus, cache) */
+	display: none !important;
+}

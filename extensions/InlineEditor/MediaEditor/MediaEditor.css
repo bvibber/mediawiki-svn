@@ -1,0 +1,37 @@
+.mediaEditor .mediaEditorElement {
+	/* soft-blue background color to highlight editable media */
+	background-color: #E4F0F9;
+	
+	/* create a hand cursor, cross-browser hack: http://www.quirksmode.org/css/cursor.html */
+	cursor: pointer;
+	cursor: hand;
+}
+
+.mediaEditor .mediaEditorElement:hover {
+	/* indicate the media to be edited with a darker color */
+	background-color: #a7d7f9;
+}
+
+.mediaEditor .editing {
+	/* keeping the custom padding and margin breaks in Webkit browsers */
+	padding: 0px;
+	margin: 0px;
+	
+	/* reset the cursor when editing */
+	cursor: auto;
+}
+
+.mediaEditor .edited {
+	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
+	background-color: #F9F2A7;
+}
+
+.mediaEditor .lastEdit {
+	/* have an orange color, the exact complement of the hover color, for highlighting on preview/cancel */
+	background-color: #f9c9a7;
+}
+
+.mediaEditor .thumb,
+.mediaEditor .thumbinner {
+	background-color: inherit !important;
+}
