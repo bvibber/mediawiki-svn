@@ -9,7 +9,7 @@
  * Started: 2007-10-06
  *     1.0: 2010-08-25
  */
-define( 'LIVELETS_VERSION', '1.0.3, 2010-09-04' );
+define( 'LIVELETS_VERSION', '1.0.4, 2010-09-05' );
 
 # the parser-function name for doing live-transclusions
 $wgLiveletsMagic  = 'live';
@@ -100,7 +100,7 @@ class Livelets {
 		global $wgLiveletsMagic;
 
 		# Replace the wikitext with just the content of the requested livelet
-		foreach( self::examineBraces( $content ) as $brace ) {
+		foreach( $this->examineBraces( $content ) as $brace ) {
 			if ( $brace['NAME'] == "#$wgLiveletsMagic:" && --$this->request_id < 0 ) {
 				$len = strlen( $wgLiveletsMagic );
 				$content = substr( $content, $brace['OFFSET'] + $len + 4, $brace['LENGTH'] - $len - 6 );
