@@ -601,9 +601,11 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Garas
+ * @author Matasg
  * @author Vpovilaitis
  */
 $messages['lt'] = array(
+	'wikieditor-template-editor-preference' => 'Įjungti formos pagrindu sukurtą wiki šablonų redagavimą',
 	'wikieditor-template-editor-dialog-title' => 'Redaguoti šabloną',
 	'wikieditor-template-editor-dialog-submit' => 'Pakeisti',
 	'wikieditor-template-editor-dialog-cancel' => 'Atšaukti',
@@ -1017,9 +1019,13 @@ $messages['ur'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Vajotwo
  */
 $messages['vec'] = array(
 	'wikieditor-template-editor-preference' => 'Intaca par i modèi wiki la modifica basà sui mòduli',
+	'wikieditor-template-editor-dialog-title' => 'Modifega modeło',
+	'wikieditor-template-editor-dialog-submit' => 'Ajorna',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuła',
 );
 
 /** Vietnamese (Tiếng Việt)

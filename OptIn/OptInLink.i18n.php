@@ -987,6 +987,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'optin-try' => 'آزمېښتي بڼه کارول',
+	'optin-leave' => 'آزمېښتي بڼه پرېښودل',
 );
 
 /** Portuguese (Português)

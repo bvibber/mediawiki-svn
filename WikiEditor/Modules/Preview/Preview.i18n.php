@@ -646,6 +646,16 @@ $messages['li'] = array(
 	'wikieditor-preview-loading' => 'Laje...',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'wikieditor-preview-preference' => "Įjungti ''side-by-side'' peržiūrą",
+	'wikieditor-preview-tab' => 'Peržiūra',
+	'wikieditor-preview-changes-tab' => 'Pokyčiai',
+	'wikieditor-preview-loading' => 'Kraunama...',
+);
+
 /** Latvian (Latviešu)
  * @author Marozols
  * @author Papuass

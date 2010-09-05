@@ -155,6 +155,7 @@ $messages['ckb'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'wikieditor-previewDialog-preference' => 'Používat dialog pro náhled',
 	'wikieditor-previewDialog-tab' => 'Náhled',
 	'wikieditor-previewDialog-loading' => 'Načítá se…',
 );

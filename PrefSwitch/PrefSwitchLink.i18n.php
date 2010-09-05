@@ -76,6 +76,14 @@ $messages['ar'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'جرّب المزايا الجديدة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'prefswitch-link-anon' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+	'prefswitch-link-off' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+);
+
 /** Bashkir (Башҡорт)
  * @author Assele
  */
@@ -614,6 +622,18 @@ $messages['li'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Perbeer nuuj mäögelikhede',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'prefswitch-link-anon' => 'Kas pasikeitė naujoje išvaizdoje?',
+	'tooltip-pt-prefswitch-link-anon' => 'Sužinokite daugiau apie naujas funkcijas',
+	'prefswitch-link-on' => 'Noriu ankstesnės išvaizdos',
+	'tooltip-pt-prefswitch-link-on' => 'Išjungti naujas funkcijas',
+	'prefswitch-link-off' => 'Naujos funkcijos',
+	'tooltip-pt-prefswitch-link-off' => 'Išbandyti naujas funkcijas',
+);
+
 /** Minangkabau (Baso Minangkabau)
  * @author VoteITP
  */
@@ -1039,6 +1059,18 @@ $messages['uk'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Вимкнути нові можливості',
 	'prefswitch-link-off' => 'Нові можливості',
 	'tooltip-pt-prefswitch-link-off' => 'Спробуйте нові можливості',
+);
+
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'prefswitch-link-anon' => 'nove funsionałidà',
+	'tooltip-pt-prefswitch-link-anon' => 'Informasion so łe nove funsionałidà',
+	'prefswitch-link-on' => 'riportame indrio',
+	'tooltip-pt-prefswitch-link-on' => 'Disativa łe nove funsionałidà',
+	'prefswitch-link-off' => 'nove funsionałidà',
+	'tooltip-pt-prefswitch-link-off' => 'Prova łe nove funsionałidà',
 );
 
 /** Vietnamese (Tiếng Việt)

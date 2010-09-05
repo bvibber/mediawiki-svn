@@ -413,6 +413,15 @@ $messages['ar'] = array(
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'prefswitch-survey-true' => 'ܐܝܢ',
+	'prefswitch-survey-false' => 'ܠܐ',
+	'prefswitch-title-on' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+);
+
 /** Bashkir (Башҡорт)
  * @author Assele
  */
@@ -449,6 +458,57 @@ $messages['ba'] = array(
 	'prefswitch-title-switched-on' => 'Рәхәтләнегеҙ!',
 	'prefswitch-title-off' => 'Яңы мөмкинлектәрҙе һүндерергә',
 	'prefswitch-title-switched-off' => 'Рәхмәт',
+	'prefswitch-title-feedback' => 'Баһалама ебәреү',
+	'prefswitch-success-on' => 'Әлеге мәлдә яңы мөмкинлектәр ҡулланыла. Һеҙгә улар оҡшар, тип өмөт итәбеҙ. Һеҙ уларҙы үҙегеҙ теләгән ваҡытта, биттең өҫкө өлөшөндәге "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" һылтанмаһына баҫып, һүндерә алаһығыҙ.',
+	'prefswitch-success-off' => 'Яңы мөмкинлектәр һүндерелгән. Уларҙы һынап ҡарауығыҙ өсөн рәхмәт. Һеҙ уларҙы үҙегеҙ теләгән ваҡытта, биттең өҫкө өлөшөндәге "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" һылтанмаһына баҫып, ҡабаттан ҡуллана башлай алаһығыҙ.',
+	'prefswitch-success-feedback' => 'Һеҙҙең баһаламағыҙ ебәрелде.',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]</span> битенә ҡайтырға.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-ru.png|401px|]]
+|-
+| Википедияның яңы бүлектәргә күсеү интерфейсы <small>[[Media:VectorNavigation-ru.png|(ҙурайтырға)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-ru.png|401px|]]
+|-
+| Төп биттәр мөхәррирләү интерфейсы <small>[[Media:VectorEditorBasic-ru.png|(ҙурайтырға)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-ru.png|401px|]]
+|-
+| Һалтанмалар өҫтәү өсөн яңы диалог
+|}
+|}
+В «Фонде Викимедиа» работает группа анализа использования сайта, совместно с добровольцами из сообщества она старается упростить вашу работу с Википедией и другими вики-проектами. Мы рады поделиться некоторыми улучшениями, в том числе новым интерфейсом и упрощёнными функциями редактирования. Эти изменения предназначены для упрощения работы новых редакторов, они основаны на [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study юзабилити-тестировании, проведённом в прошедшем году]. Задача создания более удобного интерфейса наших сайтов рассматривается «Фондом Викимедиа» как приоритетная, мы продолжим совершенствовать проект и в дальнейшем. Подробности можно узнать в [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ блоге Викимедии].
+
+=== Что мы изменили ===
+* '''Навигация.''' Мы улучшили навигацию, сделав её более удобной для чтения и редактирования страниц. Теперь вкладки в верхней части каждой страницы позволяют более чётко определить, чем вы сейчас занимаетесь: просматриваете страницу или её обсуждение, читаете или редактируете страницу.
+* '''Панель редактирования.''' Мы переделали панель инструментов редактирования, чтобы упростить её использование. Теперь форматирование страниц стало проще и понятнее.
+* '''Мастер ссылок.''' Простой в использовании инструмент позволяет добавлять ссылки, ведущие как на другие вики-страницы, так и на внешние сайты.
+* '''Поиск.''' Мы улучшили поисковые подсказки, чтобы у вас была возможность быстрее найти требуемую страницу.
+* '''Другие новые функции.''' Мы сделали мастер таблиц, позволяющий легко создавать таблицы, а также функцию поиска и замены, упрощающую редактирование.
+* '''Логотип.''' Мы обновили вид шарика-пазла, подробнее см. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блог «Фонда Викимедиа»].",
+	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» бүлеге''' хәҙер йондоҙ формаһында.
+* ''' «{{int:move}}» бүлеге''' хәҙер эҙләү юлы янындағы асыла торған менюла урынлашҡан.",
+	'prefswitch-main-feedback' => '=== Баһалама ебәреү ===
+Беҙ һеҙҙең баһаламағыҙҙы ишетергә теләр инек. Зинһар, [[$1|баһалама ебәреү битенә]] керегеҙ. Әгәр һеҙҙе беҙҙең программаны яҡшыртыу буйынса артабанғы эштәребеҙ ҡыҙыҡһындырһа, [http://usability.wikimedia.org вики юзабилити проекты битенә] керегеҙ.',
+	'prefswitch-main-anon' => '===Элекке торошҡа ҡайтарырға===
+[$1 Яңы мөмкинлектәрҙе һүндерер өсөн, ошонда баҫығыҙ]. Һеҙгә башта танылырға йәки яңы иҫәп яҙыуын булдырырға тәҡдим ителәсәк.',
+	'prefswitch-main-on' => '===Элекке торошҡа ҡайтарырға===
+[$2 Яңы мөмкинлектәрҙе һүндерер өсөн, ошонда баҫығыҙ].',
+	'prefswitch-main-off' => '===Һынап ҡарарға===
+[$1 Яңы мөмкинлектәрҙе ҡуллана башлар өсөн, ошонда баҫығыҙ].',
+	'prefswitch-survey-intro-feedback' => 'Беҙ һеҙҙең фекерегеҙҙе ишетергә теләр инек. Зинһар, «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]» һылтанмаһына баҫыр алдынан, түбәндәге мөһим булмаған һорауҙарға яуап бирегеҙ.',
+	'prefswitch-survey-intro-off' => 'Яңы мөмкинлектәрҙе һынап ҡарағанығыҙ өсөн рәхмәт.
+Беҙгә уларҙы яҡшыртырға ярҙам итер өсөн, зинһар «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]» һылтанмаһына баҫыр алдынан, түбәндәге мөһим булмаған һорауҙарға яуап бирегеҙ.',
+	'prefswitch-feedbackpage' => 'Project:Отзывы о новом оформлении',
 );
 
 /** Belarusian (Беларуская)
@@ -2414,7 +2474,6 @@ $messages['fr'] = array(
 	'prefswitch-survey-true' => 'Oui',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Désactiver les nouvelles fonctionnalités',
-	'prefswitch-survey-submit-global-off' => 'Désactiver les nouvelles fonctionnalités sur tous les wikis',
 	'prefswitch-survey-cancel-off' => 'Si vous voulez continuer à utiliser les nouvelles fonctionnalités, vous pouvez revenir à $1',
 	'prefswitch-survey-submit-feedback' => 'Envoyer des commentaires',
 	'prefswitch-survey-cancel-feedback' => 'Si vous ne voulez pas faire de commentaires, vous pouvez revenir à $1.',
@@ -2422,6 +2481,7 @@ $messages['fr'] = array(
 	'prefswitch-survey-question-dislike' => "Qu'est-ce que vous n'avez pas apprécié dans les fonctionnalités ?",
 	'prefswitch-survey-question-whyoff' => 'Pourquoi voulez-vous désactiver les nouvelles fonctionnalités ?
 Veuillez choisir tout ce qui convient.',
+	'prefswitch-survey-question-globaloff' => 'Voulez-vous désactiver ces fonctionnalités globalement ?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de les utiliser.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ça ne fonctionne pas correctement.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Cela ne s’est pas passé comme prévu.',
@@ -2433,6 +2493,7 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-survey-answer-browser-other' => 'Autre navigateur :',
 	'prefswitch-survey-question-os' => 'Quel système d’exploitation utilisez-vous ?',
 	'prefswitch-survey-answer-os-other' => 'Autre système d’exploitation :',
+	'prefswitch-survey-answer-globaloff-yes' => 'Oui, les désactiver sur tous les wikis',
 	'prefswitch-survey-question-res' => 'Quelle est la résolution de votre écran ?',
 	'prefswitch-title-on' => 'Nouvelles fonctionnalités',
 	'prefswitch-title-switched-on' => 'Savourez !',
@@ -3436,6 +3497,7 @@ Si prega di selezionare tutte le motivazioni pertinenti.',
 	'prefswitch-survey-answer-browser-other' => 'Altro browser:',
 	'prefswitch-survey-question-os' => 'Quale sistema operativo usi?',
 	'prefswitch-survey-answer-os-other' => 'Altro sistema operativo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sì, disattiva le funzionalità su tutte le wiki',
 	'prefswitch-survey-question-res' => 'Qual è la risoluzione del tuo schermo?',
 	'prefswitch-title-on' => 'Nuove funzionalità',
 	'prefswitch-title-switched-on' => 'Buon divertimento!',
@@ -3508,7 +3570,6 @@ $messages['ja'] = array(
 	'prefswitch-survey-true' => 'はい',
 	'prefswitch-survey-false' => 'いいえ',
 	'prefswitch-survey-submit-off' => '新機能を停止する',
-	'prefswitch-survey-submit-global-off' => '全てのウィキで新機能を停止する',
 	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$1に戻ってください。',
 	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
 	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$1に戻ってください。',
@@ -3516,6 +3577,7 @@ $messages['ja'] = array(
 	'prefswitch-survey-question-dislike' => '新機能のどの点が気に入りませんでしたか？',
 	'prefswitch-survey-question-whyoff' => '新機能を停止する理由をお聞かせください。
 あてはまるものを全てお選びください。',
+	'prefswitch-survey-question-globaloff' => '全ウィキでこの機能を停止しますか？',
 	'prefswitch-survey-answer-whyoff-hard' => '使用方法が難しすぎた。',
 	'prefswitch-survey-answer-whyoff-didntwork' => '正常に機能しなかった。',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '動作が予測不能だった。',
@@ -3527,6 +3589,7 @@ $messages['ja'] = array(
 	'prefswitch-survey-answer-browser-other' => 'その他のブラウザ:',
 	'prefswitch-survey-question-os' => 'ご利用のOSをお答えください。',
 	'prefswitch-survey-answer-os-other' => 'その他のオペレーティングシステム:',
+	'prefswitch-survey-answer-globaloff-yes' => 'はい、全ウィキでこの機能を停止してください。',
 	'prefswitch-survey-question-res' => 'ご使用中の画面の解像度をお答えください。',
 	'prefswitch-title-on' => '新機能',
 	'prefswitch-title-switched-on' => 'お楽しみください！',
@@ -4050,6 +4113,54 @@ Vul e.t.b. de optionele vraogelies hieonger in veurdet se kliks op "[[#prefswitc
 	'prefswitch-survey-intro-off' => 'Bedank veur \'t oetprobere van de nuuj meugelikhede.
 Vul e.t.b. de ongerstaonde vraogelies in om os te helpe ze wiejer te verbaetere veurdet se kliks op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'prefswitch' => 'Naudojimo iniciatyvos nustatymai',
+	'prefswitch-desc' => 'Leidžia naudotojams keisti nustatymus',
+	'prefswitch-survey-true' => 'Taip',
+	'prefswitch-survey-false' => 'No',
+	'prefswitch-survey-submit-off' => 'Išjungti naujas funkcijas',
+	'prefswitch-survey-cancel-off' => 'Jei norite toliau naudotis naujomis funkcijomis, galite grįžti į $1.',
+	'prefswitch-survey-submit-feedback' => 'Siųsti atsiliepimą',
+	'prefswitch-survey-cancel-feedback' => 'Jei nenorite pateikti atsiliepimo, galite grįžti į $1.',
+	'prefswitch-survey-question-like' => 'Kas jums patiko naujojoje sąsajoje?',
+	'prefswitch-survey-question-dislike' => 'Kas jums nepatiko naujojoje sąsajoje?',
+	'prefswitch-survey-question-whyoff' => 'Kodėl jūs išjungiate naujas funkcijas? 
+Prašome pasirinkti tai, kas Jums tinka.',
+	'prefswitch-survey-question-globaloff' => 'Ar norite, kad naujos funkcijos būtų išjungtos visuose projektuose?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Buvo per sunku naudoti',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Funkcijos neveikė tinkamai.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Funkcijos neveikė nuspėjamai.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Man nepatiko funkcijų išvaizda.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Man nepatiko nauji skirtukai ir išdėstymas.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Man nepatiko naujoji įrankių juosta.',
+	'prefswitch-survey-answer-whyoff-other' => 'Kita priežastis:',
+	'prefswitch-survey-question-browser' => 'Kurią naršyklę naudojate?',
+	'prefswitch-survey-answer-browser-other' => 'Kita naršyklė:',
+	'prefswitch-survey-question-os' => 'Kurią operacinę sistemą naudojate?',
+	'prefswitch-survey-answer-os-other' => 'Kita operacinė sistema:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Taip, funkcijas išjungti visuose wiki projektuose.',
+	'prefswitch-survey-question-res' => 'Kokia Jūsų ekrano rezoliucija?',
+	'prefswitch-title-on' => 'Naujos funkcijos',
+	'prefswitch-title-switched-on' => 'Mėgaukitės!',
+	'prefswitch-title-off' => 'Išjungti naujas funkcijas',
+	'prefswitch-title-switched-off' => 'Ačiū',
+	'prefswitch-title-feedback' => 'Atsiliepimas',
+	'prefswitch-success-on' => 'Naujos funkcijos įjungtos. Tikimės, kad Jums jos patiks. Bet kada galite jas išjungti paspaudžiant "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" nuorodą puslapio viršuje.',
+	'prefswitch-success-off' => 'Naujos funkcijos išjungotos. Ačiū už funkcijų išbandymą. Bet kada galite jas įjungti paspaudžiant "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" nuorodą puslapio viršuje.',
+	'prefswitch-success-feedback' => 'Jūsų atsiliepimas išsiųstas.',
+	'prefswitch-return' => '<hr style="clear:both">
+Grįžti į <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '===Noriu ankstesnės išvaizdos===
+[$1 Čia paspaudus, naujos funkcijos bus išjungtos]. Pirma būsite paprašytas prisijungti ar susikurti sąskaitą.',
+	'prefswitch-main-on' => '===Noriu ankstesnės išvaizdos===
+[$2 Čia paspaudus, naujos funkcijos bus išjungtos].',
+	'prefswitch-main-off' => '===Noriu išbandyti!===
+[$1 Spauskite čia, norėdami išbandyti naujas funkcijas].',
 );
 
 /** Latvian (Latviešu)
@@ -4823,7 +4934,6 @@ $messages['no'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nei',
 	'prefswitch-survey-submit-off' => 'Slå av nye funksjoner',
-	'prefswitch-survey-submit-global-off' => 'Slå av nye funksjoner på alle wikier',
 	'prefswitch-survey-cancel-off' => 'Om du vil fortsette å bruke de nye funksjonene kan du gå tilbake til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send tilbakemelding',
 	'prefswitch-survey-cancel-feedback' => 'Hvis du ikke ønsker å gi tilbakemelding kan du gå tilbake til $1.',
@@ -4831,6 +4941,7 @@ $messages['no'] = array(
 	'prefswitch-survey-question-dislike' => 'Hva mislikte du med funksjonene?',
 	'prefswitch-survey-question-whyoff' => 'Hvorfor slår du av de nye funksjonene?
 Velg alle som passer.',
+	'prefswitch-survey-question-globaloff' => 'Vil du ha funksjonene avslått globalt?',
 	'prefswitch-survey-answer-whyoff-hard' => 'De var vanskelige å bruke.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'De fungerte ikke skikkelig.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'De oppførte seg ikke slik jeg skulle forvente.',
@@ -4842,6 +4953,7 @@ Velg alle som passer.',
 	'prefswitch-survey-answer-browser-other' => 'Annen nettleser:',
 	'prefswitch-survey-question-os' => 'Hvilket operativsystem bruker du?',
 	'prefswitch-survey-answer-os-other' => 'Annet operativsystem:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Ja, slå av funksjonene på alle wikier',
 	'prefswitch-survey-question-res' => 'Hva er oppløsningen på skjermen din?',
 	'prefswitch-title-on' => 'Nye funksjoner',
 	'prefswitch-title-switched-on' => 'Kos deg',
@@ -5604,6 +5716,7 @@ $messages['rue'] = array(
 	'prefswitch-survey-question-dislike' => 'Што з новых можностей ся вам не любило?',
 	'prefswitch-survey-question-whyoff' => 'Чом сьте выпнули новы можности?
 Выберте вшыткы релевантны можности.',
+	'prefswitch-survey-question-globaloff' => 'Хочете функції выпнути ґлобално?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Была дуже тяжка про хоснованя.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Не фунґовала коректно.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Не ховала ся предвидаво.',
@@ -5615,6 +5728,7 @@ $messages['rue'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Іншый веб-переглядач:',
 	'prefswitch-survey-question-os' => 'Якый операчный сістем хоснуєте?',
 	'prefswitch-survey-answer-os-other' => 'Іншый операчный сістем:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Гей, выпнути функції на вшыткых вікі',
 	'prefswitch-survey-question-res' => 'Яке є розлішіня вашой образовкы?',
 	'prefswitch-title-on' => 'Новы функції',
 	'prefswitch-title-switched-on' => 'Хоснуйте собі тото!',
@@ -6748,6 +6862,44 @@ $messages['uk'] = array(
 	'prefswitch-survey-intro-off' => 'Дякуємо за випробування наших нових можливостей.
 Аби їх удосконалити, будь ласка, заповніть форму "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Відгуки щодо нового оформлення',
+);
+
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'prefswitch' => "Canbiamento de łe prefarense de l'inisiativa par l'usabiłità",
+	'prefswitch-desc' => 'Permeti a i utenti de canbiare set de prefarense',
+	'prefswitch-survey-true' => 'Sì',
+	'prefswitch-survey-false' => 'No',
+	'prefswitch-survey-submit-off' => 'Disativa łe nove funsionałidà',
+	'prefswitch-survey-cancel-off' => 'Se te vui continuar ad usare łe nove funsionałidà, te pui tornare a $1.',
+	'prefswitch-survey-submit-feedback' => 'Invia feedback',
+	'prefswitch-survey-cancel-feedback' => 'Se no te vui fornire on feedback, te pui tornare a $1.',
+	'prefswitch-survey-question-like' => 'Cossa te xè piaxuo de łe nove funsionałidà?',
+	'prefswitch-survey-question-dislike' => 'Cossa no te xè piaxuo de łe nove funsionałidà?',
+	'prefswitch-survey-question-whyoff' => '↓ Parché te ste disativando łe nove funsionałidà?
+Se prega de sełesionare tute łe modivasion pertinenti.',
+	'prefswitch-survey-question-globaloff' => 'Vuto disativare łe funsionałidà globalmente?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Jera tropo difisiłe da usare.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nol funsionava coretamente.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nol se conportava en modo coerente.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "Nol me piaxeva l'aspeto.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'No me piaxevano łe nove schede e el layout.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nol me piaxeva ła nova bara de i strumenti.',
+	'prefswitch-survey-question-browser' => 'Quałe browser te ste doparando?',
+	'prefswitch-survey-answer-browser-other' => 'Altro browser:',
+	'prefswitch-survey-question-os' => 'Quałe sistema operativo te ste doparando?',
+	'prefswitch-survey-answer-os-other' => 'Altro sistema operativo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sì, disativa łe nove funsionałidà so tute łe wiki',
+	'prefswitch-survey-question-res' => 'Quała xè ła risołuxion del to schermo?',
+	'prefswitch-title-on' => 'Nove funsionałidà',
+	'prefswitch-title-switched-on' => 'Bon divertimento!',
+	'prefswitch-title-off' => 'Disativa łe nove funsionałidà',
+	'prefswitch-title-switched-off' => 'Grasie',
+	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-feedback' => 'El to feedback xè sta invià.',
+	'prefswitch-feedbackpage' => 'Project:Coordinamento/Fruibiłidà',
 );
 
 /** Vietnamese (Tiếng Việt)

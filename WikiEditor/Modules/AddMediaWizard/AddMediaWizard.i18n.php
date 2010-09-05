@@ -317,6 +317,13 @@ $messages['li'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Zèt de mediatoevogingswizard aan',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Įjungti „Media turinio pridėjimo vedlį“',
+);
+
 /** Minangkabau (Baso Minangkabau)
  * @author VoteITP
  */
@@ -499,6 +506,13 @@ $messages['tt-cyrl'] = array(
  */
 $messages['uk'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Увімкнути додаток «Майстер додавання медіа»',
+);
+
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Abiłita il gadget "Zonta prosedura guidà par i media"',
 );
 
 /** Vietnamese (Tiếng Việt)
