@@ -7,7 +7,14 @@ $messages = array();
 
 $messages['en'] = array(
 	'semanticformsinputs-desc' => 'Additional input types for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
-	'semanticformsinputs-wrongformat' => 'Wrong format.'
+	'semanticformsinputs-wrongformat' => 'Wrong format.',
+	'semanticformsinputs-close' => 'Close',
+	'semanticformsinputs-prev' => 'Previous',
+	'semanticformsinputs-next' => 'Next',
+	'semanticformsinputs-today' => 'Today',
+	'semanticformsinputs-dateformatlong' => 'd MM yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
+	'semanticformsinputs-dateformatshort' => 'dd/mm/yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
+	'semanticformsinputs-firstdayofweek' => '0' // 0 - sunday, 1 - monday...
 );
 
 /** Message documentation (Message documentation)
@@ -56,6 +63,13 @@ $messages['bs'] = array(
 $messages['de'] = array(
 	'semanticformsinputs-desc' => 'Ermöglicht zusätzliche Eingabearten für [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Falsches Format.',
+	'semanticformsinputs-close' => 'Schließen',
+	'semanticformsinputs-prev' => 'Voriger Monat',
+	'semanticformsinputs-next' => 'Nächster Monat',
+	'semanticformsinputs-today' => 'Heute',
+	'semanticformsinputs-dateformatlong' => 'd. MM yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
+	'semanticformsinputs-dateformatshort' => 'dd.mm.yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
+	'semanticformsinputs-firstdayofweek' => '1' // 0 - sunday, 1 - monday...
 );
 
 /** French (Français) */

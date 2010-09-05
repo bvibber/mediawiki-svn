@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', 'Sanyam Goyal', 'Yaron Koren' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
 	'descriptionmsg' => 'semanticformsinputs-desc',
-	'version' => '0.3',
+	'version' => '0.3.1',
 );
 
 // load user settings
@@ -67,7 +67,7 @@ function wfSFISetup() {
 	global $sfgFormPrinter, $wgOut;
 
 	$sfgFormPrinter->setInputTypeHook( 'regexp', array( 'SFIInputs', 'regexpHTML' ), array() );
-	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'datePickerHTML' ), array() );
+	$sfgFormPrinter->setInputTypeHook( 'datepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
 	$sfgFormPrinter->setInputTypeHook( 'simpledatepicker', array( 'SFIInputs', 'jqDatePickerHTML' ), array() );
 
 	$wgOut->addInlineScript( 'sfiElements = new Object();' );
