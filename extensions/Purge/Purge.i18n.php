@@ -196,9 +196,11 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'purge' => 'očisti',
+	'purge' => 'očisti cache',
+	'purge-desc' => 'Dodaje očisti cache karticu na svim običnim stranicama, te zaobilazi provjeru cache-a za anonimne suradnike omogućavajući brzo brisanje memoriranih stranicu u pregledniku',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

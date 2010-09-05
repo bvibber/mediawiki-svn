@@ -428,11 +428,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'categoryintersection' => 'Iwwerschneide vu Kategorien',
-	'categoryintersection-desc' => "Säit mat enger Tabell mat den ''Hashwerter'' vun de [[Special:CategoryIntersection|Kategorieniwwerschneidungen]]",
+	'categoryintersection-desc' => "Säit mat enger Tabell mat den ''Hashwäerter'' vun de [[Special:CategoryIntersection|Kategorieniwwerschneidungen]]",
 	'categoryintersection-doit' => 'Lëscht vun de Säiten aus all dëse Kategorien',
 	'categoryintersection-maxcategories' => 'Déi maximal Zuel vu Kategorien déi sech iwwerschneiden däerfen ass $1.',
 	'categoryintersection-mincategories' => 'Dir musst mindestens zwou Kategorien drasetzen.',

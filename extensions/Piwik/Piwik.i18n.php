@@ -146,12 +146,14 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'piwik-desc' => 'Vkládá Piwik skript do wiki stránek pro vyhledávání a přidává [[Special:Piwik|nějaké statistiky]]',
 	'piwik-lastvisits' => 'Poslední návštěvy',
 	'piwik-countries' => 'Země',
 	'piwik-browsers' => 'Prohlížeče',
+	'right-viewpiwik' => 'Prohlížení [[Special:Piwik|statistiky z Piwik]]',
 );
 
 /** German (Deutsch)

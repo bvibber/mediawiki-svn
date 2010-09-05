@@ -459,6 +459,13 @@ $messages['li'] = array(
 	'vector-collapsiblenav-more' => 'Mieë spräök',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'vector-collapsiblenav-more' => 'Daugiau kalbų',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
@@ -767,6 +774,14 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'vector-collapsiblenav-preference' => 'Дозволити згортати блоки навігаційного меню в оформленні «Векторне»',
 	'vector-collapsiblenav-more' => 'Інші мови',
+);
+
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'vector-collapsiblenav-preference' => 'Abiłita menù de navigaxion nascondibiłe par ła skin Vector',
+	'vector-collapsiblenav-more' => 'Pì łengue',
 );
 
 /** Vietnamese (Tiếng Việt)

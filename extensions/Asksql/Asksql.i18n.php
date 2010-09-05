@@ -755,7 +755,7 @@ $messages['lb'] = array(
 	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze riichten.
 Benotzt dëst Zeechen' ('esou wéi hei') fir Wäerter an der Ufro ofzegrenzen.
 Esou Ufroe kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonctioun ëm.",
-	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
+	'sqlislogged' => 'Zu Ärer Informatioun: All Ufroe ginn an e Logbuch agedroen',
 	'sqlquery' => 'Ufro aginn',
 	'querybtn' => 'Ufro schécken',
 	'selectonly' => 'Et sinn nëmmen Offroen zougelooss fir ze liesen.',

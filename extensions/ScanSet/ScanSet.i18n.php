@@ -1217,6 +1217,20 @@ $messages['ru'] = array(
 	'scanset_prev' => '&lt; Предыдущая',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'scanset-desc' => 'Зображує сторінкы з наскенованыма образками з CD/DVD Андреаса Ґроса (Andreas Grosz)',
+	'scanset_no_name' => 'Error: Мусите увести назву скенованой колекції, наприклад &lt;scanset name="EB1911" /&gt;',
+	'scanset_invalid_name' => 'Error: Неплатна або хыбяча скенована колекція.',
+	'scanset_unrecognised_index_format' => 'Error: Незнамый формат індексу',
+	'scanset_opendir_error' => 'Error: Хыба, не годен отворити адресарь $1',
+	'scanset_no_files' => 'Error: В  данім адресарю ся не находять жадны файлы.',
+	'scanset_no_volumes' => 'Error: Не были найджены жадны адресарї про світок (дісковый)',
+	'scanset_missing_index_file' => 'Error: Індексовый файл  $1 ся не нашов',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -417,6 +417,29 @@ Een eerste argument of "template"-argument is verplicht.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'datatransclusion-desc' => 'Import og gjengivelse av dataoppføringer fra eksterne datakilder',
+	'datatransclusion-missing-source' => 'Ingen datakilde oppgitt.
+Andre eller «kilde»-argument kreves.',
+	'datatransclusion-unknown-source' => 'Dårlig datakilde oppgitt.
+«$1» er ikke kjent.',
+	'datatransclusion-missing-key' => 'Ingen nøkkel oppgitt.
+$2 er gyldige nøkler i datakilden $1.',
+	'datatransclusion-bad-argument-by' => 'Dårlig nøkkelfelt oppgitt.
+«$2» er ikke et nøkkelfelt i datakilden «$1».
+{{PLURAL:$4|Gyldig nøkkel|Gyldige nøkler}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Ingen nøkkelverdi oppgitt.
+Andre eller «nøkkel»-argument kreves.',
+	'datatransclusion-missing-argument-template' => 'Ingen mal oppgitt.
+Første eller «mal»-argument kreves.',
+	'datatransclusion-record-not-found' => 'Ingen oppføringer samsvarende $2 = $3 ble funnet i datakilden $1.',
+	'datatransclusion-bad-template-name' => 'Dårlig malnavn: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> finnes ikke.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

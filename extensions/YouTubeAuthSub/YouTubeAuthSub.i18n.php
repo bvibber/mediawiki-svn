@@ -2043,6 +2043,8 @@ Hutt w.e.g. e bësse Gedold!',
  */
 $messages['li'] = array(
 	'youtubeauthsub' => 'YouTubevideo uploade',
+	'youtubeauthsub-desc' => "Laot gebroekers drek [[Special:YouTubeAuthSub|video's hoeaglaje]] óp YouTube",
+	'youtubeauthsub_info' => "Gaef de volgende informatie op om 'ne video óp YouTube hoeag te laje om dae later aan 'n pagina te kinne toevoge:",
 	'youtubeauthsub_title' => 'Naam',
 	'youtubeauthsub_description' => 'Besjrieving',
 	'youtubeauthsub_password' => 'YouTubewachwaord',
@@ -2050,6 +2052,8 @@ $messages['li'] = array(
 	'youtubeauthsub_keywords' => 'Trèfwaord',
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_submit' => 'Bievoge',
+	'youtubeauthsub_clickhere' => 'Klik hie om aan te melje bie YouTube',
+	'youtubeauthsub_tokenerror' => "Fout bie 't make van 't autorisatieteike. Vernuuj de pagina.",
 	'youtubeauthsub_uploadbutton' => 'Upload',
 	'youtubeauthsub_jserror_nokeywords' => 'Gaef e.t.b. ein of mier trefweurd op.',
 	'youtubeauthsub_jserror_notitle' => "Gaef e.t.b. 'ne naam veur de video op.",
@@ -2061,7 +2065,34 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'youtubeauthsub' => 'Įkelti YouTube video',
+	'youtubeauthsub-desc' => 'Leidžia naudotojams [[Special:YouTubeAuthSub|įkelti video]] tiesiai į YouTube',
+	'youtubeauthsub_info' => 'Norėdami įkelti video į YouTube, siekiant įdėti jį puslapyje, užpildykite šią informaciją:',
+	'youtubeauthsub_title' => 'Pavadinimas',
+	'youtubeauthsub_description' => 'Aprašymas',
+	'youtubeauthsub_password' => 'YouTube slaptažodis',
+	'youtubeauthsub_username' => 'YouTube naudotojo vardas',
+	'youtubeauthsub_keywords' => 'Raktažodžiai',
+	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Siųsti',
+	'youtubeauthsub_clickhere' => 'Paspauskite čia norint prisijungti prie YouTube',
+	'youtubeauthsub_tokenerror' => 'Klaida kuriant leidimo ženklą, pabandykite atnaujinti puslapį.',
+	'youtubeauthsub_success' => "Sveikiname! 
+Jūsų video įkeltas.
+<a href='http://www.youtube.com/watch?v=$1'>Peržiūrėti įrašą</a>.
+YouTube gali pareikalauti šiek tiek laiko apdoroti jūsų vaizdo įrašą, todėl jis dar gali būti neparuoštas. 
+
+Norėdami įdėti savo video į wiki puslapį, į jį įterpkite šį kodą : 
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Norint įkelti video, pirma turite prisijungti prie YouTube.',
+	'youtubeauthsub_uploadhere' => 'Įkelti savo video iš čia:',
+	'youtubeauthsub_uploadbutton' => 'Įkelti',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Peržiūrėti vaizdo įrašą]',
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
+	'youtubeauthsub_uploading' => 'Jūsų vaizdo įrašas įkeliamas. 
+Prašome būti kantriems.',
+	'youtubeauthsub_viewpage' => 'Taip pat galite [[$1|peržiūrėti savo video]].',
 );
 
 /** Latgalian (Latgaļu)

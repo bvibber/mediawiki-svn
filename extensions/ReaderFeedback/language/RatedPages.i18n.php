@@ -330,9 +330,15 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Roberta F.
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'ratedpages' => 'Ocijenjene stranice',
+	'ratedpages-leg' => 'Nađi stranice ocijenjene s većim brojem ocjena',
+	'ratedpages-list' => 'Ispod je popis stranica razvrstanih po njihovim ocjenama.',
 	'ratedpages-none' => 'Nema stranica u ovom popisu',
+	'ratedpages-graphs' => 'podatci o ocjenama',
+	'ratedpages-count' => '$1 {{PLURAL:$1|ocjena|ocjene|ocjena}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

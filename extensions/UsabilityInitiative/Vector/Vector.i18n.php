@@ -41,6 +41,14 @@ $messages['aln'] = array(
 	'vector-desc' => 'Në elementet përmirëson ndërfaqen e përdoruesit të lëkurës Vektor.',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'vector' => "Milloras d'a interficie ta Vector",
+	'vector-desc' => "Milloras en os elementos d'interficie d'usuario de l'aparencia Vector.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -589,6 +597,13 @@ $messages['sv'] = array(
 	'vector-desc' => 'Förbättrar element i användargränssnittet för Vector-utseendet.',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'vector' => 'Mabadiliko ya kuendeleza kusano ya Vector',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -624,6 +639,13 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'vector' => 'Vector için kullanıcı arabirimi iyileştirmeleri',
 	'vector-desc' => 'Vector görünümünün kullanıcı arayüzü bileşenlerini iyileştirir',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'vector' => '«Сызымлы» бизәлеше өчен яңартулар',
 );
 
 /** Ukrainian (Українська)

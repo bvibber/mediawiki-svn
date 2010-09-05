@@ -109,6 +109,20 @@ $messages['br'] = array(
 	'right-lastlogin' => "Gwelet peur e oa ar wech ziwezhañ m'en deus kevreet un implijer",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'lastuserlogin' => 'Posljednja prijava korisnika',
+	'lastuserlogin-desc' => 'Prikazuje kada se korisnik posljednji put prijavio',
+	'lastuserlogin_userid' => 'Korisničko ime',
+	'lastuserlogin_username' => 'Pravo ime',
+	'lastuserlogin_useremail' => 'Korisnički e-mail',
+	'lastuserlogin_lastlogin' => 'Posljednja prijava',
+	'lastuserlogin_daysago' => 'dana ranije',
+	'right-lastlogin' => 'Pregled kada se korisnik posljednji put prijavio',
+);
+
 /** Catalan (Català)
  * @author Aleator
  */

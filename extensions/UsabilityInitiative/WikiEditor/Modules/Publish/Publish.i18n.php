@@ -908,11 +908,17 @@ $messages['li'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Garas
+ * @author Matasg
  */
 $messages['lt'] = array(
+	'wikieditor-publish-preference' => 'Įjungti žingsnis po žingsnio publikavimą',
+	'wikieditor-publish-button-publish' => 'Publikuoti',
 	'wikieditor-publish-button-cancel' => 'Atšaukti',
+	'wikieditor-publish-dialog-title' => 'Publikuoti į {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Redagavimo komentaras (trumpai aprašykite, kokius pakeitimus padarėte):',
 	'wikieditor-publish-dialog-minor' => 'Smulkus keitimas',
 	'wikieditor-publish-dialog-watch' => 'Stebėti šį puslapį',
+	'wikieditor-publish-dialog-publish' => 'Publikuoti',
 	'wikieditor-publish-dialog-goback' => 'Grįžti',
 );
 

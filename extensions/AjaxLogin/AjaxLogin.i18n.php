@@ -606,18 +606,19 @@ Donn noh Ding Schriefwiiß kike.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'ajaxlogin-desc' => "Dynamesch Këscht déi et de Benotzer erlaabt sech anzeloggen an d'passwuert ze verhalen",
-	'ajaxLogin1' => 'Fir Är Umeldung ofzeschléissen musst Dir e neit Passwuert aginn.
-Dëst wäert Iech op vun dëser Ännerungssäit erofbréngen an Dir kënnt Är akuell Ännerung verléieren.',
+	'ajaxlogin-desc' => "Dynamesch Këscht déi et de Benotzer erlaabt sech anzeloggen an d'Passwuert ze verhalen",
+	'ajaxLogin1' => 'Fir Är Umeldung ofzeschléissen musst Dir en neit Passwuert aginn.
+Dëst bréngt Iech vun dëser Ännerungssäit erof an Dir kënnt Är aktuell Ännerung verléieren.',
 	'ajaxLogin2' => 'Sidd Dir sécher?
-Dir kënnt Är Ännerunge vun dëser Säit verléieren wann Dir elo vun dëser Säit erof gitt.',
+Dir kënnt Är Ännerunge vun dëser Säit verléieren, wann Dir elo vun dëser Säit erofgitt.',
 	'ajaxlogin-create' => 'E Benotzerkont uleeën',
 	'al-nosuchuser' => 'Et gëtt kee Benotzer mam Numm "$1".
-Bei Benotzernimm gëtt en Ënenrscheed tëschent klengen a gorusse Buchstawe gemaach.
-Kuckt no ob Dir den Numm richteg geschriwwen hutt.',
+Bei Benotzernimm gëtt en Ënnerscheed tëschent klengen a grousse Buschtawe gemaach.
+Kuckt no, ob Dir den Numm richteg geschriwwen hutt.',
 );
 
 /** Limburgish (Limburgs)
@@ -647,6 +648,9 @@ Jūs paliksite šį redaguojamą puslapį ir galite prarasti tai, ką pataisėte
 	'ajaxLogin2' => 'Ar esate įsitikinęs?
 Jūs prarasite pakeitimus, atliktus šiame puslapyje, jei jį dabar paliksite.',
 	'ajaxlogin-create' => 'Sukurti sąskaitą',
+	'al-nosuchuser' => 'Nėra tokio naudotojo "$1". 
+Naudotojų vardai gali turėti didžiąsias ir mažąsias raidės. 
+Pasitikrinkite rašybą.',
 );
 
 /** Macedonian (Македонски)

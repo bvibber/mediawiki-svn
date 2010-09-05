@@ -276,6 +276,7 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'tasklist' => 'Seznam úkolů',
@@ -293,6 +294,7 @@ $messages['cs'] = array(
 	'tasklistchooseproj' => 'Vyberte projekt:',
 	'tasklistprojdisp' => 'Zobrazit',
 	'tasklistbyname' => '== Seznam úkolů pro %s ==',
+	'tasklistnowguseprojects' => 'Máte $wgUseProjects nastaveno na „false“, takže tuto stránku nemůžete používat.',
 	'tasklistnoprojects' => "Chyba: Zdá se, že jste zapnuli '''\$wgUseProjects''', ale nevytvořili jste [[MediaWiki:TodoTasksValidProjects]]. Podívejte se na podrobnosti v [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 instalačních instrukcích].",
 	'tasklistemailbody' => ',
 

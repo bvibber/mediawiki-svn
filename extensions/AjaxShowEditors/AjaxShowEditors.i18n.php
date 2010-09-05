@@ -714,12 +714,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'ajaxshoweditors-desc' => "Weist déi Benotzer déi amgaang sinn déi selwescht Säit z'änneren.",
+	'ajaxshoweditors-desc' => "Weist déi Benotzer déi amgaang sinn déiselwecht Säit z'änneren.",
 	'ajax-se-title' => 'Elo geännert vum:',
-	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fénkt u mat änneren)',
+	'ajax-se-pending' => 'soll geännert ginn ... (klickt op dës Këscht oder fänkt u mat änneren)',
 	'ajax-se-idling' => '(viru(n) $1 Sekonnen)',
 	'ajax-se-pagedoesnotexist' => "d'Säit gëtt et net",
 	'ajax-se-userinvalid' => 'Feeler: Benotzer ongëlteg',

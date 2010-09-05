@@ -152,6 +152,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'frontbackforced-desc' => "Setzt een Ufank an een Ënn un d'Säiten derbäi an implementéiert forcéiert Wiki-Linken",
+	'frontbackforced-front' => '_(virdru gesat)',
+	'frontbackforced-back' => '_(hannendru gesat)',
 	'frontbackforced-forced' => '_(forcéiert Wikilinken)',
 );
 

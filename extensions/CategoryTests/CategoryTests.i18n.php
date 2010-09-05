@@ -497,6 +497,13 @@ $messages['vi'] = array(
 	'categorytests-desc' => 'Hàm để đo thử thể loại',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'categorytests-desc' => 'פֿונקציעס פֿאַרן אויספרואוון קאַטעגאריעס',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */

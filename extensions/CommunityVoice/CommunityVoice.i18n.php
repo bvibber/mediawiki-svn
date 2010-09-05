@@ -596,6 +596,7 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'communityvoice' => 'Gemeinsjapsstöm',
+	'communityvoice-desc' => 'Gemeinsjapsdeilnaamhólpmiddele',
 	'communityvoice-ratings' => 'Waarderinge',
 	'communityvoice-ratings-scale-status-sending' => 'Ópslaondje...',
 	'communityvoice-ratings-scale-status-error' => "Fout bie 't versture!",

@@ -981,14 +981,35 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'ratinghistory' => 'Povijest ocjenjivanja stranice',
+	'ratinghistory-leg' => 'Povijest ocjena za [[:$1|$1]]',
+	'ratinghistory-tab' => 'ocjena',
+	'ratinghistory-link' => 'Ocjena stranice',
+	'ratinghistory-thanks' => "<font color=\"darkred\">''Hvala vam što ste našli vremena ocijeniti ovu stranicu!''</font>",
 	'ratinghistory-period' => 'Razdoblje:',
 	'ratinghistory-month' => 'prošli mjesec',
 	'ratinghistory-3months' => 'protekla 3 mjeseca',
 	'ratinghistory-year' => 'prošla godina',
 	'ratinghistory-3years' => 'posljednje 3 godine',
 	'ratinghistory-ave' => 'Prosjek: $1',
+	'ratinghistory-chart' => 'Ocjene tijekom vremena',
 	'ratinghistory-purge' => "očisti spremnik (''cache'')",
+	'ratinghistory-table' => 'Pregled ocjena čitatelja',
+	'ratinghistory-users' => 'Suradnici koji su ocjenjivali',
+	'ratinghistory-graph' => '$2 od "$3" ($1 {{PLURAL:$1|recenzija|recenzije|recenzija}})',
+	'ratinghistory-svg' => 'Prikaži kao SVG',
+	'ratinghistory-table-rating' => 'Ocjena',
 	'ratinghistory-table-votes' => 'Glasovi',
+	'ratinghistory-none' => 'Nema dovoljno ocjena za crtanje grafova u ovom trenutku.',
+	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' - Loše i nedovoljno; '''(2)''' - Slabo ali dovoljno; '''(3)''' - Dobro; '''(4)''' - Vrlo dobro; '''(5)''' - Izvrsno;",
+	'ratinghistory-legend' => "'''Dnevni broj ocjena''' <font color=\"red\">''(crveno)''</font>, '''dnevni prosjek ocjena''' <font color=\"blue\">''(plava)''</font>,
+i '''prosječna ocjena <font color=\"green\">''(zeleno)''</font> u nastavku su prikazani grafom, po datumu. 
+'''Prosječna ocjena''' je prosjek svih dnevnih ocjene ''unutar'' vremenskog razdoblja za svaki dan. 
+Ocjene su kako slijedi: 
+
+'''(1)''' - Loše i nedovoljno; '''(2)''' - Slabo ali dovoljno; '''(3)''' - Dobro; '''(4)''' - Vrlo dobro; '''(5)''' - Izvrsno;",
+	'ratinghistory-graph-scale' => "'''Ocjena dnevno''' <font color=\"red\">''(red)''</font> prikazano u ''1:\$1'' mjerilu.",
+	'right-feedback' => 'Rabite obrazac kako bi ocijenili stranicu',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

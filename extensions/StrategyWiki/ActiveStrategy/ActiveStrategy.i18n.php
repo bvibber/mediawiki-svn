@@ -54,6 +54,13 @@ $messages['br'] = array(
 	'nedits' => '$1 {{PLURAL:$1|kemm|kemm}}',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'nedits' => '$1 {{PLURAL:$1|izmjena|izmjene}}',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil

@@ -2272,6 +2272,7 @@ $messages['tt-cyrl'] = array(
 	'ct-total-header' => 'Барлык басулар',
 	'ct-start-date' => 'Башлау вакыты (YYYYMMDD)',
 	'ct-end-date' => 'Бетә вакыты (YYYYMMDD)',
+	'ct-increment-by' => 'Мәгълүмат белән тәэмин итүче көннәр саны',
 	'ct-change-graph' => 'Сызымны үзгәртү',
 	'ct-beginner' => 'Яңа кулланучы',
 	'ct-intermediate' => 'Уртача кулланучы',

@@ -165,6 +165,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'ukgeocoding_name' => 'UK Geocoding fir Kaarten',
+	'ukgeocoding_desc' => "Erweidert d'Kaarten mat enger display_uk_point-Parser-Fonctioun mat Google Maps Implementatioun",
 	'ukgeocoding_couldNotGeocode' => 'Een oder méi Postcode konnten net geocodéiert ginn a goufen op der Kaart ewechgelooss.',
 );
 

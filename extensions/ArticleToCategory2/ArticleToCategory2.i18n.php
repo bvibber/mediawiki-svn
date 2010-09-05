@@ -49,6 +49,16 @@ $messages['be-tarask'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Стварыць',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'articletocategory2-create-article-under-category-text' => "Ouzhpennañ ur bajenn d'ar rummad-mañ",
+	'articletocategory2-create-article-under-category-button' => 'Krouiñ',
+	'articletocategory2-create-category-under-category-text' => "Ouzhpennañ ur rummad d'ar rummad-mañ",
+	'articletocategory2-create-category-under-category-button' => 'Krouiñ',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -69,6 +79,27 @@ $messages['de'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Erstellen',
 	'articletocategory2-create-category-under-category-text' => 'Eine Kategorie zu dieser Kategorie hinzufügen',
 	'articletocategory2-create-category-under-category-button' => 'Erstellen',
+);
+
+/** Spanish (Español)
+ * @author Danke7
+ */
+$messages['es'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Añadir una página a esta categoría',
+	'articletocategory2-create-article-under-category-button' => 'Crear',
+	'articletocategory2-create-category-under-category-text' => 'Añadir una categoría a esta categoría',
+	'articletocategory2-create-category-under-category-button' => 'Crear',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'articletocategory2-desc' => "Ajoute une boîte d'entrée sur chaque page de catégorie permettant la création d'une nouvelle page directement dans cette catégorie",
+	'articletocategory2-create-article-under-category-text' => 'Ajouter une page à cette catégorie',
+	'articletocategory2-create-article-under-category-button' => 'Créer',
+	'articletocategory2-create-category-under-category-text' => 'Ajouter une catégorie à cette catégorie',
+	'articletocategory2-create-category-under-category-button' => 'Créer',
 );
 
 /** Galician (Galego)
@@ -102,6 +133,28 @@ $messages['ia'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Adder un categoria a iste categoria',
 	'articletocategory2-create-category-under-category-button' => 'Crear',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'articletocategory2-desc' => '各カテゴリのページに、新しいページを直接そのカテゴリへ追加して作成することのできる入力ボックスを追加する',
+	'articletocategory2-create-article-under-category-text' => 'このカテゴリにページを追加',
+	'articletocategory2-create-article-under-category-button' => '作成',
+	'articletocategory2-create-category-under-category-text' => 'このカテゴリにカテゴリを追加',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'articletocategory2-desc' => 'Setzt op all Kategoriessäit eng Këscht derbäi fir eng nei Säit direkt an där Kategorie derbäizesetzen',
+	'articletocategory2-create-article-under-category-text' => 'Eng Säit an dës Kategorie derbäisetzen',
+	'articletocategory2-create-article-under-category-button' => 'Uleeën',
+	'articletocategory2-create-category-under-category-text' => 'Eng Kategorie an dës Kategorie derbäisetzen',
+	'articletocategory2-create-category-under-category-button' => 'Uleeën',
 );
 
 /** Macedonian (Македонски)
@@ -199,5 +252,13 @@ $messages['sv'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Skapa',
 	'articletocategory2-create-category-under-category-text' => 'Lägg till kategori till denna kategori',
 	'articletocategory2-create-category-under-category-button' => 'Skapa',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'articletocategory2-create-article-under-category-button' => 'సృష్టించు',
+	'articletocategory2-create-category-under-category-button' => 'సృష్టించు',
 );
 

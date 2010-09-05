@@ -452,11 +452,12 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'block_title_error_page_title' => 'Gespaarte Säitenumm',
-	'blocktitles-desc' => 'Eng einfach Method fir ze verhenneren, datt Säite matt verschidenen Titele gemaach kënne ginn',
+	'block_title_error_page_title' => 'Gespaarte Säitennumm',
+	'blocktitles-desc' => 'Eng einfach Method fir ze verhënneren, datt Säite matt verschidenen Titele gemaach kënne ginn',
 	'block_title_error' => 'Pardon, eng Säit mat dësem Numm däerf net gespäichert ginn.',
 );
 

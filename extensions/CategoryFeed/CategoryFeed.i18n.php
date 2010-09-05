@@ -252,11 +252,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
-	'categoryfeed-desc' => 'Benotzt Biten vun de Rezenten Ännerungen.
-Leet eng nei Versioun an der Säit unn, besonnesch nëtzlech fir Wikinews',
+	'categoryfeed-desc' => 'Benotzt Bitë vun de Rezenten Ännerungen.
+Leet eng nei Versioun an der Säit un, besonnesch nëtzlech fir Wikinews',
 );
 
 /** Limburgish (Limburgs)

@@ -1385,6 +1385,8 @@ $messages['hr'] = array(
 	'ogg-dismiss' => 'Zatvori',
 	'ogg-download' => 'Snimi datoteku',
 	'ogg-desc-link' => 'O ovoj datoteci',
+	'ogg-oggThumb-version' => 'OggHandler zahtijeva oggThumb inačicu $1 ili noviju.',
+	'ogg-oggThumb-failed' => 'oggThumb nije uspio stvoriti sličicu.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

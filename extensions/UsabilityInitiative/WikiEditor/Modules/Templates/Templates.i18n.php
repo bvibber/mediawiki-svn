@@ -568,6 +568,13 @@ $messages['uk'] = array(
 	'wikieditor-templates-preference' => 'Увімкнути згортання шаблонів',
 );
 
+/** Vèneto (Vèneto)
+ * @author Vajotwo
+ */
+$messages['vec'] = array(
+	'wikieditor-templates-preference' => 'Abiłita ła funsion par nascondere i modełi',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

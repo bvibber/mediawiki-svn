@@ -1468,6 +1468,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1478,7 +1479,7 @@ $messages['lb'] = array(
 	'badimages-count' => "Et gëtt '''$1''' {{PLURAL:$1|Bild|Biller}} op der Lëscht vun den onerwënschte Biller.",
 	'badimages-name' => 'Numm:',
 	'badimages-not-added' => "D'Bild konnt net derbäigesat ginn.",
-	'badimages-not-removed' => "D'bild konnt net vun der lëscht erofgeholl ginn.",
+	'badimages-not-removed' => "D'Bild konnt net vun der Lëscht erofgeholl ginn.",
 	'badimages-reason' => 'Grond:',
 	'badimages-remove' => '(erofhuelen)',
 	'badimages-remove-btn' => 'Erofhuelen',

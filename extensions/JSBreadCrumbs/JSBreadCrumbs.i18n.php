@@ -241,6 +241,11 @@ $messages['no'] = array(
 $messages['pl'] = array(
 	'jsbreadcrumbs-desc' => 'Dodaje szlak nawigacyjny poniżej paska zakładek',
 	'jsbreadcrumbs-leading-description' => 'Szlak nawigacyjny',
+	'prefs-jsbreadcrumbs' => 'Ścieżka hiperłączy',
+	'prefs-jsbreadcrumbs-showsite' => 'Dodaj do ścieżki hiperłączy nazwę witryny (przydatne gdy korzysta się z wielu wiki)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Wyświetl ścieżkę hiperłączy',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Liczba hiperłączy w ścieżce',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksymalnie 20 hiperłączy w ścieżce',
 );
 
 /** Piedmontese (Piemontèis)

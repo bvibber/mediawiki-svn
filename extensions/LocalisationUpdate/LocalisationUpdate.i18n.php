@@ -184,6 +184,13 @@ $messages['hil'] = array(
 	'localisationupdate-desc' => 'Gatugo sang mga mensahe nga lokal para mapahibalo sang madali',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'localisationupdate-desc' => 'Dogradnja za osvježavanje lokalizacije poruka MediaWikija',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

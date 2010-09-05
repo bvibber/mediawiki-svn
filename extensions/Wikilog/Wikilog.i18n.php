@@ -4342,6 +4342,8 @@ $messages['li'] = array(
 	'wikilog-updated' => 'Biegewèrk',
 	'wikilog-draft' => 'Werkversie',
 	'wikilog-authors' => 'sjrievers',
+	'wikilog-wikilog' => 'Wikilog',
+	'wikilog-title' => 'Titel',
 	'wikilog-error-msg' => 'Wikilog: $1',
 	'wikilog-error-title' => 'Foutmeljing Wikilog',
 );

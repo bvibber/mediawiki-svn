@@ -2071,6 +2071,7 @@ Versöhk ens dat Kommando „<code>$3{…}</code>“.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2079,14 +2080,14 @@ $messages['lb'] = array(
 	'math_CannotCreateTexFile' => 'tex-Fichier kann net ugeluecht ginn',
 	'math_CannotWritePngDirectory' => 'Kann net an de PNG-Repertoire schreiwen',
 	'math_CannotWriteTexFile' => 'Kann net an den tex-Fichier schreiwen',
-	'math_IllegalCharacter' => 'Zeechen dat net zouelooss ass an deem wat Dir aginn hutt.',
+	'math_IllegalCharacter' => 'Ongëltegt Zeechen an der Donnée',
 	'math_IllegalFinalBackslash' => 'D\'Zeechen "\\" kann net um Enn vun enger Saisie stoen',
 	'math_IllegalRedefinition' => 'D\'Uweisung "$1" ass schonn definéiert; Dir kënnt se net nach emol definéieren',
-	'math_InvalidColour' => 'D\'Faarw "$1" gëtt et net',
+	'math_InvalidColour' => 'D\'Faarf "$1" gëtt et net',
 	'math_MissingOpenBraceAfter' => '"{" hanner "$1" feelt',
-	'math_MissingOpenBraceAtEnd' => 'Eng "{" feelt um Ënn vun der Saisie',
+	'math_MissingOpenBraceAtEnd' => 'Eng "{" feelt um Enn vun der Saisie',
 	'math_MissingOpenBraceBefore' => 'Eng "{" feelt viru(n) "$1"',
-	'math_NotEnoughArguments' => 'Dir hutt net genuch Parameter ugi fir "$1"',
+	'math_NotEnoughArguments' => 'Dir hutt net genuch Parameteren ugi fir "$1"',
 	'math_PngIncompatibleCharacter' => 'E PNG mat dem Zeechen $1 konnt net korrekt generéiert ginn',
 	'math_TooManyTokens' => 'Dat wat Dir aginn hutt ass ze laang',
 	'math_UnavailableSymbolFontCombination' => 'D\'Symbol "$1" gëtt et an der Schrëft "$2" net.',

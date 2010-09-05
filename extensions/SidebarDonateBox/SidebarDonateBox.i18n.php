@@ -35,6 +35,13 @@ $messages['br'] = array(
 	'sidebardonatebox-desc' => 'Ouzhpennañ ur voest evit ar roadennoù personelaet er barenn kostez',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'sidebardonatebox-desc' => 'Dodaje prilagođenu kutiju za donacije na traku za navigaciju',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
@@ -146,6 +153,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'sidebardonatebox-desc' => 'Voegt een aangepast venster voor donaties toe in de menubalk',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'sidebardonatebox-desc' => 'Legger til en egendefinert donasjonsboks til sidepanelet',
 );
 
 /** Polish (Polski)

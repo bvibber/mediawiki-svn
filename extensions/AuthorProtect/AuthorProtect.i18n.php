@@ -960,17 +960,17 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'authorprotect' => "Ännere vun der Säit op d'Auteure limitéieren",
-	'authorprotect-desc' => "Erlaabt et dem Auteur vun enger Säit fir dës fir d'Verännerung dovun fir aner Benotzer ze spären",
+	'authorprotect-desc' => 'Erlaabt et dem Auteur vun enger Säit, déi fir Ännerungen duerch aner Benotzer ze spären',
 	'authorprotect-notauthor' => 'Dir sidd net den Auteur vun dëser Säit',
 	'authorprotect-confirm' => "D'Niveaue vun der Protectioun änneren",
 	'authorprotect-edit' => 'Ännerungen nëmmen fir Auteure méiglech maachen',
-	'authorprotect-move' => 'Récklen nëmme fir Auteure méiglech maachen',
+	'authorprotect-move' => 'Réckelen nëmme fir Auteure méiglech maachen',
 	'authorprotect-expiry' => 'Dauer vun der Spär:',
 	'authorprotect-reason' => 'Grond:',
-	'authorprotect-intro' => "Benotzt dëse Formulaire fir d'änner vun dëser Säit op d'Auteuren ze limitéieren",
+	'authorprotect-intro' => "Benotzt dëse Formulaire fir d'Ännere vun dëser Säit op d'Auteuren ze limitéieren",
 	'authorprotect-success' => "D'Säit gouf protegéiert!",
 	'authorprotect-failure' => "D'Säit konnt net protegéiert ginn",
-	'protect-level-author' => "Protegéiert viru ''Net-Auteuren''",
+	'protect-level-author' => "Protegéiert virun ''Net-Auteuren''",
 	'restriction-level-author' => 'Auteur-protegéiert',
 	'right-authorprotect' => 'Säite mat engem Auteur schützen',
 );

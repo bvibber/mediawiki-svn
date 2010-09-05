@@ -390,6 +390,16 @@ $messages['lb'] = array(
 	'externalpages-no-page' => 'Keng Säit uginn',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'externalpages' => "Extern pagina's",
+	'externalpages-desc' => "Haolt pagina's óp van anger WMF-sites en tuint die hie",
+	'externalpages-bad-page' => 'Verkieërde pagina ópgegaeve',
+	'externalpages-no-page' => 'Gein pagina ópgegaeve',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

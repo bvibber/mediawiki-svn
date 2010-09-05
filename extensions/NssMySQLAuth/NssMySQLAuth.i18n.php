@@ -852,6 +852,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'accountmanager' => 'Gerenciador de contas',
@@ -861,7 +862,7 @@ $messages['pt-br'] = array(
 	'am-updated' => 'As suas alterações foram gravadas com sucesso',
 	'nss-desc' => 'Um "plugin" para autenticar numa base de dados libnss-mysql. Contém um [[Special:AccountManager|gerenciador de contas]]',
 	'nss-rights' => 'permissões',
-	'nss-save-changes' => 'Gravar alterações',
+	'nss-save-changes' => 'Salvar alterações',
 	'nss-create-account-header' => 'Criar nova conta',
 	'nss-create-account' => 'Criar conta',
 	'nss-no-mail' => 'Não enviar email',

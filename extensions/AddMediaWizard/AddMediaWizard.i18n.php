@@ -290,6 +290,13 @@ $messages['li'] = array(
 	'addmediawizard-desc' => 'Wizard media toevoege, ontwikkeld in samenwerking tusse Kaltura en de Wikimedia Foundation',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Matasg
+ */
+$messages['lt'] = array(
+	'addmediawizard-desc' => 'Medijos pridėjimo vedlys, sukurtas bendradarbiaujant su Kaltura bei Wikimedia Foundation.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

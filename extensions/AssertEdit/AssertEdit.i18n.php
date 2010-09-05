@@ -460,12 +460,13 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'assert_edit_title' => 'Feeler beim derbäisetzen',
-	'assertedit-desc' => "Setzt Ännerungen derbäi fir d'Benotzung vu Botten",
-	'assert_edit_message' => 'Déi uginn Derbäisetzung ($1) huet net fonctionnéiert.',
+	'assertedit-desc' => "Setzt Ännerungen derbäi fir d'Benotze vu Botten",
+	'assert_edit_message' => 'Déi spezifiéiert Donnée ($1) huet net fonctionnéiert.',
 );
 
 /** Limburgish (Limburgs)

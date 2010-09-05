@@ -727,7 +727,7 @@ Wann de Probleme häß, versooch et enß met <b>[[{{#special:call}}/DebuG|{{#spe
  */
 $messages['lb'] = array(
 	'call' => 'Opruff',
-	'call-desc' => 'Mecht een Hyperlink op eng Schabloun (oder eng normal wiki-Säit) mat der Benotzung vu Parameteren. Kann an der Kommandozeil vum Browser oder am Wiki-Text benotzt ginn.',
+	'call-desc' => 'Mecht een Hyperlink op eng Schabloun (oder eng normal Wiki-Säit) mat Benotze vu Parameteren. Kann an der Kommandozeil vum Browser oder am Wiki-Text benotzt ginn.',
 	'call-save' => "D'Resultat vun dësem Opruff géif op der Säit '''$1''' gespäichert ginn.",
 	'call-save-success' => 'Dësen Text gouf op der Säit <big>[[$1]]</big> gespäichert.',
 	'call-save-failed' => 'Dësen Text konnt NET op der Säit <big>[[$1]]</big> ofgespäichert ginn, well et déi Säit scho gëtt.',

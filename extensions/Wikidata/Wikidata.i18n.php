@@ -2091,6 +2091,9 @@ Odaberite kolekciju za izvoz. U tekstualnoj kutiji jezika, unesite spisak odvoje
 	'ow_exporttsv_not_allowed' => 'Nemate dopuštenja da izvršite TSV izvoz.',
 	'ow_exporttsv_export_failed' => 'Izvoz nije uspio',
 	'addcollection' => 'Wikipodaci: Dodaj kolekciju',
+	'ow_searchnoresult' => "<p>Možete:<br />
+* '''Napraviti izraz \"[[Expression:\$1]]\"''' (i dodati definiciju)<br />
+* '''Napraviti stranicu \"[[:\$1]]\"''' (običnu wiki stranicu)</p>",
 	'ow_save' => 'Spremi',
 	'ow_history' => 'Historija',
 	'ow_datasets' => 'Odabir seta podataka',
@@ -2244,6 +2247,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
 	'ow_needs_xlation_source_lang' => 'Izvorni jezik:',
 	'ow_needs_xlation_dest_lang' => 'Odredišni jezik:',
 	'ow_needs_xlation_no_dest_lang' => 'Molimo navedite odredišni jezik.',
+	'ow_statistics' => 'Wikidata: Statistike',
 	'ow_show' => 'Pokaži',
 	'ow_upload' => 'Postavi',
 	'ow_create' => 'Napravi',

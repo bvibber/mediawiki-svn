@@ -2949,6 +2949,7 @@ $messages['li'] = array(
 	'contribstats-value-under' => 'Minder es $1',
 	'contribstats-value-from' => 'Tösje $1 en $2',
 	'contribstats-value-over' => 'Meer es $1',
+	'contribstats-day-totals' => 'Daagtotaal',
 	'contribstats-week' => 'Waek',
 	'contribstats-payment-type' => 'Betaalwies',
 	'contribstats-banner' => 'Vaan',

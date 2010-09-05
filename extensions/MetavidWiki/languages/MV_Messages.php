@@ -6038,6 +6038,7 @@ $messages['lb'] = array(
 	'mv_spoken_by' => 'Geschwat vum',
 	'mv_speech_by' => 'geschwat vum',
 	'mv_category' => 'Kategorie',
+	'mv_search_no_results' => 'Et goufe keng Medie fonnt',
 	'mv_media_matches' => 'Medien-Treffer',
 	'mv_remove_filter' => 'Filter ewechhuelen',
 	'mv_advaced_search' => 'Erweidert Medie-Sich',

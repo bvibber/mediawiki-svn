@@ -142,6 +142,7 @@ $messages['bs'] = array(
 	'usabilityinitiative' => 'Inicijativa upotrebljivosti',
 	'usabilityinitiative-desc' => 'Mogućnost koju je razvila Wikipedia inicijativa upotrebljivosti da bi se poboljšala upotrebljivost MediaWiki',
 	'prefs-beta' => 'Beta mogućnosti',
+	'prefs-labs' => 'Eksperimentalne mogućnosti',
 );
 
 /** Catalan (Català)
@@ -915,10 +916,13 @@ $messages['uk'] = array(
 
 /** Vèneto (Vèneto)
  * @author Candalua
+ * @author Vajotwo
  */
 $messages['vec'] = array(
 	'usabilityinitiative' => "Inissiativa par l'Usabilità",
 	'usabilityinitiative-desc' => "Carateristiche svilupà da l'Inissiativa par l'Usabilità de Wikipedia par mejorar l'usabilità de MediaWiki",
+	'prefs-beta' => 'Funsionałidà beta',
+	'prefs-labs' => 'Funsionałidà de i laboratori',
 );
 
 /** Veps (Vepsan kel')

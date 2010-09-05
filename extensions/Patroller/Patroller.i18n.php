@@ -548,7 +548,7 @@ $messages['es'] = array(
 	'patrol-stopped' => 'Has optado no marcar otra edición como verificada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
 	'group-patroller' => 'Patrulleros',
-	'group-patroller-member' => 'patrulleros',
+	'group-patroller-member' => 'patrullero',
 	'grouppage-patroller' => '{{ns:project}}:Verificador',
 	'right-patroller' => 'Verificar páginas',
 );

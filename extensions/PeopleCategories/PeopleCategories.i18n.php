@@ -42,6 +42,13 @@ $messages['br'] = array(
 	'peoplecategories-desc' => 'Cheñch a ra mod kinnig anvioù ar pajennoù diskouezet eus "Anv-bihan Anv" da "Anv Anv-bihan" er rummadoù spisaet.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'peoplecategories-desc' => 'Mijenja prikazana imena na stranici iz "Ime Prezime" u "Prezim, Ime" na određenim stranicama kategorija',
+);
+
 /** Danish (Dansk)
  * @author Amjaabc
  */

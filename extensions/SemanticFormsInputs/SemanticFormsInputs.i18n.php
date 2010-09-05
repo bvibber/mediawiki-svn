@@ -18,10 +18,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Siebrand
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'semanticformsinputs-desc' => '{{desc}}',
+	'semanticformsinputs-dateformatlong' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
+	'semanticformsinputs-dateformatshort' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
 );
 
 /** Afrikaans (Afrikaans)
@@ -72,10 +75,26 @@ $messages['de'] = array(
 	'semanticformsinputs-firstdayofweek' => '1' // 0 - sunday, 1 - monday...
 );
 
-/** French (Français) */
+/** Spanish (Español)
+ * @author Danke7
+ */
+$messages['es'] = array(
+	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
+);
+
+/** French (Français)
+ * @author IAlex
+ */
 $messages['fr'] = array(
 	'semanticformsinputs-desc' => "Types d'entrées additionnelles pour [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formulaires sémantiques]",
 	'semanticformsinputs-wrongformat' => 'Format erroné.',
+	'semanticformsinputs-close' => 'Fermer',
+	'semanticformsinputs-prev' => 'Précédent',
+	'semanticformsinputs-next' => 'Suivant',
+	'semanticformsinputs-today' => "Aujourd'hui",
+	'semanticformsinputs-dateformatlong' => 'j MM aa',
+	'semanticformsinputs-dateformatshort' => 'jj / mm / aa',
+	'semanticformsinputs-firstdayofweek' => '0',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -131,6 +150,10 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'semanticformsinputs-desc' => 'Дополнителни типови на внос за [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Семантички обрасци]',
 	'semanticformsinputs-wrongformat' => 'Погрешен формат.',
+	'semanticformsinputs-close' => 'Затвори',
+	'semanticformsinputs-prev' => 'Претходно',
+	'semanticformsinputs-next' => 'Следно',
+	'semanticformsinputs-today' => 'Денес',
 );
 
 /** Dutch (Nederlands)
@@ -139,6 +162,10 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'semanticformsinputs-desc' => 'Extra invoertypen voor [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Onjuiste opmaak.',
+	'semanticformsinputs-close' => 'Sluiten',
+	'semanticformsinputs-prev' => 'Vorige',
+	'semanticformsinputs-next' => 'Volgende',
+	'semanticformsinputs-today' => 'Vandaag',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -181,11 +208,21 @@ $messages['pt-br'] = array(
 	'semanticformsinputs-wrongformat' => 'Formato incorreto.',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'semanticformsinputs-desc' => 'Tipe de input aggiundive pe le [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Module Semandece]',
+	'semanticformsinputs-wrongformat' => 'Formate sbagliate',
+);
+
 /** Russian (Русский)
+ * @author MaxSem
  * @author Сrower
  */
 $messages['ru'] = array(
 	'semanticformsinputs-desc' => 'Дополнительные входящие типы для [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Семантических Форм]',
 	'semanticformsinputs-wrongformat' => 'Неверный формат.',
+	'semanticformsinputs-today' => 'Сегодня',
 );
 

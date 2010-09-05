@@ -42,19 +42,26 @@ Configure $wgPrefStatsTrackPrefs to track preferences.',
 
 /** Message documentation (Message documentation)
  * @author GerardM
+ * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'prefstats-desc' => '{{desc}}',
-	'prefstats-factors' => '$1 is a list of values with a link each, and separated by {{msg-mw|pipe-separator}}.',
+	'prefstats-factors' => '$1 is a list of values with a link each, and separated by {{msg-mw|pipe-separator}}.
+
+See graph of [http://en.wikipedia.org/wiki/Special:PrefStats/skin user preference statistics].',
 	'prefstats-factor-hour' => 'One hour. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 	'prefstats-factor-day' => 'One day. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 	'prefstats-factor-week' => 'One week. Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 	'prefstats-factor-twoweeks' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
 	'prefstats-factor-fourweeks' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
-	'prefstats-factor-default' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.',
+	'prefstats-factor-default' => 'Used in {{msg-mw|prefstats-factors}} as part of the pipe separated list $1.
+
+See graph of [http://en.wikipedia.org/wiki/Special:PrefStats/skin user preference statistics].',
+	'prefstats-legend-out' => 'Legend on graph of [http://en.wikipedia.org/wiki/Special:PrefStats/skin user preference statistics].',
+	'prefstats-legend-in' => 'Legend on graph of [http://en.wikipedia.org/wiki/Special:PrefStats/skin user preference statistics].',
 );
 
 /** Afrikaans (Afrikaans)
@@ -134,6 +141,19 @@ $messages['ar'] = array(
 	'prefstats-factor-default' => 'عد إلى الجدول الإفتراضي',
 	'prefstats-legend-out' => 'اختارت',
 	'prefstats-legend-in' => 'مشترك',
+);
+
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'prefstats-xaxis' => 'ܡܬܚܐ (ܒܫܥܬ̈ܐ)',
+	'prefstats-factor-hour' => 'ܫܥܬܐ',
+	'prefstats-factor-sixhours' => 'ܫܬ ܫܥܬ̈ܐ',
+	'prefstats-factor-day' => 'ܝܘܡܐ',
+	'prefstats-factor-week' => 'ܫܒܘܥܐ',
+	'prefstats-factor-twoweeks' => 'ܬܪܝܢ ܫܒܘܥ̈ܐ',
+	'prefstats-factor-fourweeks' => 'ܐܪܒܥܐ ܫܒܘܥ̈ܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -2558,6 +2578,9 @@ Bonyeza kitu ili kuangalia takwimu zake.',
 	'prefstats-factor-week' => 'wiki',
 	'prefstats-factor-twoweeks' => 'wiki mbili',
 	'prefstats-factor-fourweeks' => 'wiki nne',
+	'prefstats-factor-default' => 'rudi kwa kipimo cha chaguo-msingi',
+	'prefstats-legend-out' => 'Walioamua kutoshiriki',
+	'prefstats-legend-in' => 'Waliochagua kushiriki',
 );
 
 /** Telugu (తెలుగు)
@@ -2712,6 +2735,7 @@ Tercihleri izlemek için $wgPrefStatsTrackPrefs\'i yapılandırın.',
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
 	'prefstats-factor-hour' => 'сәгать',
@@ -2720,6 +2744,8 @@ $messages['tt-cyrl'] = array(
 	'prefstats-factor-week' => 'атна',
 	'prefstats-factor-twoweeks' => 'ике атна',
 	'prefstats-factor-fourweeks' => 'дүрт атна',
+	'prefstats-legend-out' => 'Ябылды',
+	'prefstats-legend-in' => 'Ачылды',
 );
 
 /** Ukrainian (Українська)

@@ -173,6 +173,7 @@ $messages['lad'] = array(
  */
 $messages['lb'] = array(
 	'rped' => 'Entdecke vu Säiten op externe Siten',
+	'rped-desc' => "Viruleedung vu Wikilinken op Wikipedia wann et d'Säit an där lokaler Wiki net gëtt awer wann et se op Wikipedia gëtt",
 	'rped-wikipedia-url' => 'http://lb.wikipedia.org/wiki/$1',
 );
 

@@ -290,11 +290,13 @@ $messages['ckb'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'spamdifftool' => 'Spravovat černou listinu spamu',
 	'spamdifftool-desc' => 'Poskytuje základní způsob přidávání nových záznamů na černou listinu spamu ze stránek rozdílů revizí',
 	'spamdifftool_cantedit' => 'Omlouváme se, nemáte oprávnění upravovat černou listinu spamu.',
+	'spamdifftool-no-title' => "'''Chyba:''' nebyl zadán název stránky.",
 	'spamdifftool_notext' => "Není co přidat na černou listinu spamu. Pokračujte <a href='$1'>kliknutím sem</a>.",
 	'spamdifftool_confirm' => "Potvrďte, že chcete přidat tyto položky na černou listinu spamu. (Můžete také <a href='$1' target='new'>nahlásit problém</a>.)",
 	'spamdifftool_summary' => 'Přidání na černou listinu spamu',

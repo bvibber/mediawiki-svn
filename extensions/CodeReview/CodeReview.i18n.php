@@ -1156,9 +1156,11 @@ $messages['bs'] = array(
 	'code-prop-changes' => 'Zapis stanja i oznaka',
 	'codereview-desc' => '[[Special:Code|Alat za provjeru koda]] sa [[Special:RepoAdmin|podrškom za subverzije]]',
 	'code-no-repo' => 'Nijedan repozitorijum nije konfigurisan!',
+	'code-repo-not-found' => "Repozitorij '''$1''' ne postoji!",
 	'code-load-diff' => 'Punim diff...',
 	'code-notes' => 'nedavni komentari',
 	'code-statuschanges' => 'izmjene stanja',
+	'code-mycommits' => 'moje publikacije',
 	'code-authors' => 'autori',
 	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
@@ -1173,6 +1175,8 @@ $messages['bs'] = array(
 	'code-author-link' => 'povezati?',
 	'code-author-unlink' => 'ukloni povezivanje?',
 	'code-author-unlinksuccess' => 'Autoru $1 je uklonjeno povezivanje.',
+	'code-author-badtoken' => 'Greška sesije pri pokušaju izvršavanje akcije.',
+	'code-author-total' => 'Ukupan broj autora: $1',
 	'code-browsing-path' => "Pregledavanje revizija u '''$1'''",
 	'code-field-id' => 'Revizija',
 	'code-field-author' => 'Autor',
@@ -1209,6 +1213,7 @@ $messages['bs'] = array(
 	'code-rev-diff-too-large' => 'Razlika je prevelika za prikaz.',
 	'code-rev-purge-link' => 'obnoviti',
 	'code-rev-total' => 'Ukupan broj rezultata: $1',
+	'code-rev-not-found' => "Revizija '''$1''' ne postoji!",
 	'code-status-new' => 'novi',
 	'code-status-fixme' => 'popravi me',
 	'code-status-reverted' => 'vraćeno',
@@ -1219,6 +1224,7 @@ $messages['bs'] = array(
 	'code-status-old' => 'staro',
 	'code-pathsearch-legend' => 'Pretraga revizija u ovom repozitoriju po putanji',
 	'code-pathsearch-path' => 'Putanja:',
+	'code-pathsearch-filter' => 'Primijenjen filter:',
 	'code-revfilter-cr_status' => 'Stanje = $1',
 	'code-revfilter-cr_author' => 'Autor = $1',
 	'code-revfilter-clear' => 'Očisti filtere',
@@ -1254,6 +1260,11 @@ Napravljeni sažetak:
 
 $4',
 	'code-stats' => 'statistike',
+	'code-stats-header' => 'Statistike repozitorija za $1',
+	'code-stats-main' => 'Sa stanjem od $1, repozitorij je imao $2 {{PLURAL:$2|reviziju|revizije|revizija}} od strane [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autora}}]].',
+	'code-stats-staus-breakdown' => 'Broj revizija po stanju',
+	'code-stats-fixme-breakdown' => 'Analiza popravaka po autoru',
+	'code-stats-count' => 'Broj revizija',
 	'repoadmin' => 'Administracija repozitorijuma',
 	'repoadmin-new-legend' => 'Napravi novi repozitorijum',
 	'repoadmin-new-label' => 'Naziv repozitorija:',
@@ -2314,6 +2325,7 @@ $4',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Danke7
  * @author Dferg
  * @author Diego Grez
  * @author Imre
@@ -2395,6 +2407,7 @@ $messages['es'] = array(
 	'code-rev-diff-too-large' => 'El diff es demasiado grande para ser mostrado.',
 	'code-rev-purge-link' => 'purgar',
 	'code-rev-total' => 'Número total de resultados: $1',
+	'code-rev-not-found' => "Revisión '''\$ 1''' no existe!",
 	'code-status-new' => 'nuevo',
 	'code-status-fixme' => 'arréglame',
 	'code-status-reverted' => 'revertido',
@@ -5637,6 +5650,9 @@ Toelichting bie toevoging:
 $4',
 	'code-stats' => 'statistieke',
 	'code-stats-header' => 'Repositorystatistieke veur $1',
+	'code-stats-staus-breakdown' => 'Aantal versies per status',
+	'code-stats-fixme-breakdown' => "Verdeiling van de fixme's per auteur",
+	'code-stats-count' => 'Aantal versies',
 	'repoadmin' => 'Repositoirbehieër',
 	'repoadmin-new-legend' => 'Maak nuuj repositoir',
 	'repoadmin-new-label' => 'Repositoirnaam:',
@@ -7409,7 +7425,7 @@ $messages['pt-br'] = array(
 	'code-revfilter-cr_status' => 'Estado = $1',
 	'code-revfilter-cr_author' => 'Autor = $1',
 	'code-revfilter-clear' => 'Remover filtro',
-	'code-rev-submit' => 'Gravar alterações',
+	'code-rev-submit' => 'Salvar alterações',
 	'code-rev-submit-next' => 'Gravar & próximo por resolver',
 	'code-batch-status' => 'Estado da modificação:',
 	'code-batch-tags' => 'Etiquetas da modificação:',

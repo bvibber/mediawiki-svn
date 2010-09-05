@@ -971,6 +971,13 @@ $messages['ru'] = array(
 	'fundraiserportal-tourmaline-close' => 'Больше не показывать',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'fundraiserportal-plain-button' => 'Підпорте Вікіпедю!',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

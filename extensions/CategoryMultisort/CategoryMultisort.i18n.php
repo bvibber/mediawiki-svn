@@ -61,6 +61,18 @@ $messages['br'] = array(
 	'prefs-category' => 'Rummad',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorymultisort-desc' => 'Omogućava pregled kategorija sa drugim ključevima sortiranja',
+	'categorymultisort-defaultsortkey-name' => 'Pretpostavljeno',
+	'categorymultisort-sortkey' => 'Ključ sortiranja:',
+	'categorymultisort-go' => 'Idi',
+	'categorymultisort-default-sortkey' => 'Pretpostavljeni ključ sortiranja:',
+	'prefs-category' => 'Kategorija',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'categorymultisort-go' => 'بڕۆ',
@@ -244,6 +256,7 @@ $messages['ko'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -251,7 +264,7 @@ $messages['lb'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Standard',
 	'categorymultisort-sortkey' => 'Zortéiercritère:',
 	'categorymultisort-go' => 'Lass',
-	'categorymultisort-default-sortkey' => 'STandard-Zortéiercritère:',
+	'categorymultisort-default-sortkey' => 'Standard-Zortéiercritère:',
 	'prefs-category' => 'Kategorie',
 );
 
