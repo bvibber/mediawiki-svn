@@ -499,7 +499,7 @@ function DynamicPageList( $input ) {
 			$sSqlSort = 'page_id'; # Since they're never reused and increasing
 			break;
 		case 'categorysortkey':
-			$sSqlSort = 'c1.cl_sortkey';
+			$sSqlSort = "c1.cl_type $sSqlOrder, c1.cl_sortkey";
 			break;
 		case 'popularity':
 			$sSqlSort = 'page_counter';
