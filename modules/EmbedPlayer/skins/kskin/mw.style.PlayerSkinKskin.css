@@ -336,6 +336,7 @@
 .k-player .menu-screen {
 	height: 100%;
 	overflow-y: auto;	
+	overflow-x: hide;
 }
 	
 

@@ -36,7 +36,6 @@ if( mwReqParam['debug'] ) {
 }
 
 
-
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
 
 //Setup preMwEmbedReady queue
@@ -71,8 +70,10 @@ if( !mw.setConfig ){
 * Wikimedia specific config 
 ********************************/
 mw.setConfig( 'Sequencer.KalturaPlayerEditOverlay', true );
+mw.setConfig( 'EmbedPlayer.KalturaAttribution', true );	
 mw.setConfig( 'SwarmTransport.Enable', true );
 mw.setConfig( 'SmilPlayer.AssetDomainWhiteList', ['upload.wikimedia.org'] );
+
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {
@@ -93,18 +94,20 @@ function doPageSpecificRewrite() {
 	// Add media wizard ( only if not on a sequence page
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
 		if( wgPageName.indexOf( "Sequence:" ) != 0 ){
-			loadMwEmbed( [ 
-				'mw.RemoteSearchDriver',
-				'mw.ClipEdit',
-			 	'mw.style.ClipEdit',
-				'$j.fn.textSelection', 
-				'$j.ui', 
-				'$j.widget',
-				'$j.ui.mouse',
-				'$j.ui.sortable' 
-			], function() {
-				mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
-			} );		
+			setTimeout(function(){
+				loadMwEmbed( [ 
+					'mw.RemoteSearchDriver',
+					'mw.ClipEdit',
+				 	'mw.style.ClipEdit',
+					'$j.fn.textSelection', 
+					'$j.ui', 
+					'$j.widget',
+					'$j.ui.mouse',
+					'$j.ui.sortable' 
+				], function() {							
+						mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
+				} );		
+			},100);
 			return ;
 		}
 	}
@@ -565,7 +568,7 @@ function loadMwEmbed( classSet, callback ) {
 			||
 			// force load jquery if version 1.3.2 ( issues with '1.3.2' .data handling )
 			jQuery.fn.jquery == '1.3.2') 
-		{
+		{			
 			rurl += 'window.jQuery';
 			coma = ',';
 		}	
