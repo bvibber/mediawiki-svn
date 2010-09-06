@@ -1,4 +1,4 @@
-TARGETS = log2udp udprecv delta udp2log/udp2log
+TARGETS = log2udp udprecv delta udp2log/udp2log packet-loss
 HOST_OBJS = srcmisc/host.o srclib/HostEntry.o srclib/IPAddress.o
 LOG2UDP_OBJS = srcmisc/log2udp.o srclib/HostEntry.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
 UDPRECV_OBJS = srcmisc/udprecv.o srclib/IPAddress.o srclib/Socket.o srclib/SocketAddress.o
@@ -24,6 +24,9 @@ udprecv: $(UDPRECV_OBJS)
 
 delta: srcmisc/delta.cpp
 	g++ $(CFLAGS) -o delta srcmisc/delta.cpp
+
+packet-loss: srcmisc/packet-loss.cpp
+	g++ $(CFLAGS) -o packet-loss srcmisc/packet-loss.cpp
 
 udp2log/udp2log: $(UDP2LOG_OBJS)
 	g++ $(CFLAGS) -o udp2log/udp2log -lboost_program_options $(UDP2LOG_OBJS) 
