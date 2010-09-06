@@ -59,7 +59,11 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'prefswitch-link-anon' => 'Nuevas caracteristicas',
+	'tooltip-pt-prefswitch-link-anon' => 'Más información sobre as nuevas caracteristicas',
 	'prefswitch-link-on' => 'Tornar enta zaga',
+	'tooltip-pt-prefswitch-link-on' => 'Desactivar as nuevas caracteristicas',
+	'prefswitch-link-off' => 'Nuevas caracteristicas',
 	'tooltip-pt-prefswitch-link-off' => 'Prebe as nuevas caracteristicas',
 );
 

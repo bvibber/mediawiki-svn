@@ -111,6 +111,36 @@ $messages['aln'] = array(
 	'prefstats-legend-in' => 'Zgjedhur në',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'prefstats' => "Estatisticas d'as preferencias",
+	'prefstats-desc' => 'Rechistrar as estatisticas sobre quántos usuarios tienen activatas ciertas preferencias',
+	'prefstats-title' => "Estatisticas d'as preferencias",
+	'prefstats-list-intro' => "Actualment s'están rechistrando as preferencias siguients. 
+Clique sobre una ta veyer as suyas estatisticas.",
+	'prefstats-noprefs' => 'No se ye rechistrando garra preferencia. Configure $wgPrefStatsTrackPrefs ta rechistrar as preferencias.',
+	'prefstats-counters' => "* $1  {{PLURAL:$1|usuario ha|usuarios han}} activato ista preferencia dende que a estatistica s'activó.
+** $2  {{PLURAL:$2|usuario aún tiene|usuarios encara tienen}} ista preferencia activata.
+** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivato dende alavaez.",
+	'prefstats-counters-expensive' => "* $1  {{PLURAL:$1|usuario ha|usuarios han}} activato ista preferencia dende que a estatistica s'activó.
+** $2  {{PLURAL:$2|usuario aún tiene|usuarios encara tienen}} ista preferencia activata.
+** $3  {{PLURAL:$1|usuario la ha|usuarios la han}} desactivato dende alavez.
+* En total, $4 {{PLURAL:$4|usuario tien|usuarios tienen}} ista preferencia activa.",
+	'prefstats-xaxis' => 'Duración (horas)',
+	'prefstats-factors' => 'Veyer-lo seguntes: $1',
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'seis horas',
+	'prefstats-factor-day' => 'día',
+	'prefstats-factor-week' => 'semana',
+	'prefstats-factor-twoweeks' => 'dos semanas',
+	'prefstats-factor-fourweeks' => 'quatro semanas',
+	'prefstats-factor-default' => 'torna a la escala por defecto',
+	'prefstats-legend-out' => 'Ha deixau de participar',
+	'prefstats-legend-in' => 'Quiere participar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Orango

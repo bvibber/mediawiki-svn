@@ -4287,8 +4287,66 @@ Kami ingin tahu apo pandapek awak tentang antarmuka baru kami ko, jadi kami mang
 	'optin-feedback-back' => 'Jiko awak indak ingin maisi survei, awak buliah baliak ka $1.',
 	'optin-success-in' => 'Awak kini ko sedang mancubo Beta.
 Awak dapek kapan sajo kalua dengan menklik tautan ko "{{int:optin-leave}}" di atas laman.',
+	'optin-leave-cancel' => 'Jiko awak ingin taruih manggunoan Beta, awak dapek baliak ka $1.',
+	'optin-success-out' => 'Awak sudah berhasil meninggalkan Beta.
+Awak dapek mancubo baliak kapan sajo dengan menklik tautan ko "{{int:optin-try}}" di atas laman.',
+	'optin-success-feedback' => 'Tarimo kasih untuak umpan baliak awak!',
+	'optin-accept-short' => 'Ayo dicubo!',
+	'optin-accept-long' => 'Cubo Beta',
+	'optin-accept-long-anon' => 'Masuak log dan cubo Beta',
+	'optin-deny-short' => 'Indak, Tarimo kasih',
+	'optin-deny-long' => 'Baliak ka laman sabalunnyo',
+	'optin-submit-out' => 'Tingaan Beta',
+	'optin-submit-feedback' => 'Agiah umpan baliak',
 	'optin-survey-yes' => 'Yo',
 	'optin-survey-no' => 'Indak',
+	'optin-survey-intro' => 'Tarimo kasih sudah mancubo Beta.
+Kami ingin tahu ba\'a pandapek awak tentang antarmuka kami yang baru ko, dek itu kami sangat menghargoi jiko awak maisi pilihan survei di bawah ko sabalun menklik "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Apo yang awak sukoi tentang Beta? Apo yang awak indak sukoi tentang Beta?',
+	'optin-survey-question-whyoptout' => "Ba'a awak tinggaan Beta? (Silakan pilih yang tapek.)",
+	'optin-survey-answer-whyoptout-hard' => 'Talalu sulik untuak digunoan.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Indak bafungsi dengan baik.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Indak sasuai dengan sabananyo.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Denai indak suko jo tampilannyo.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Denai indak suko dengan tab baru dan tampilannyo.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Denai indak suko dengan bilah baru.',
+	'optin-survey-answer-whyoptout-other' => 'Alasan lainnyo:',
+	'optin-survey-question-explain' => 'Silakan diperjelas atau diuraikan jawaban awak di atas:',
+	'optin-survey-question-techfail' => 'Pernahkah awak marasokan kesalahan teknis katiko manggunoan Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Jiko iyo, silakan diuraikan atau dijabarkan:',
+	'optin-survey-question-usedtoolbar' => 'Apo awak sudah manggunoan bilah yang perluas untuak manyuntiang laman?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Jiko iyo, apo yang awak sukoi? Apo yang awak indak sukoi?',
+	'optin-survey-question-usedtoolbar-ifno' => "Jiko indak, ba'a tu? Mungkinkah nanti? Silakan dijelaskan.",
+	'optin-survey-question-different' => 'Apo kiro yang dapek kami lakukan dengan caro yang lain untuak mambuek awak tetap manggunoan Beta?',
+	'optin-survey-question-feedback' => "Tolong kami untuak diberitahu ba'a pandapek awak:",
+	'optin-survey-question-browser' => 'Penjelajah web apo yang awak gunoan?',
+	'optin-survey-answer-browser-other' => 'Penjelajah web lainnyo:',
+	'optin-survey-question-os' => 'Sistem operasi apo yang awak gunoan?',
+	'optin-survey-answer-os-other' => 'Sistem operasi lainnyo:',
+	'optin-survey-question-res' => 'Barapo ukuran resolusi layar awak?',
+	'optin-survey-question-changes' => 'Parubahan apo yang awak harapkan dalam Beta di maso depan (silakan pilih yang tapek)?',
+	'optin-survey-answer-changes-nav' => 'Mambuek navigasi keseluruhan situs labiah mudah digunoan.',
+	'optin-survey-answer-changes-edittools' => 'Manambah dan mampabanyak alat suntingan.',
+	'optin-survey-answer-changes-upload' => 'Membaiki maunggah konten dan media.',
+	'optin-survey-answer-changes-richtext' => 'Mangambangkan alat suntingan yang samo dengan penyuntingan teks biasa.',
+	'optin-survey-answer-changes-lookfeel' => 'Memperbarui "tampilan dan nuansa" dari situs.',
+	'optin-survey-answer-changes-predictability' => 'Membaiki kemungkinan dari kinerja',
+	'optin-survey-answer-changes-custom' => 'Memungkinkan ubah suai pangguno yang lebih luas.',
+	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements2' => '== Apo yang sudah diperbarui? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;Penambahbaikan bilah
+Penambahbaikan bilah untuak mamudahkan laman disuntiang.
+Ikon baru dan diperbarui mambuek jaleh kagunoannyo.
+Bagian yang dapat dipagadang mangurangi gangguan katiko manjago peralatan yang jarang digunoan dengan hanyo sakali klik.
+;Dialog
+Katiko mambuek tautan atau tabel, dengan menklik ikon peralatan kini akan mambuka sabuah kotak dialog yang mambantu awak mambuek tautan dan tabel dengan maisi kotak yang sederhana.
+;Dan lainnyo
+Kami sudah memperkenalkan sejumlah perbaikan lain seperti penjelajah yang diperbaiki, tab batingkek, pencarian yang diperbarui, dan lainnyo.
+== Caro malibatkan diri? ==
+Untuak tahu labiah lanjut tentang Inisiatif Kagunoan, silakan kunjungi kami di [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
 );
 
 /** Macedonian (Македонски)

@@ -24,6 +24,14 @@ $messages['qqq'] = array(
 	'dontswitchmeover-pref' => 'The wording of this message may change',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'dontswitchmeover-desc' => "Preferencias ta que os usuarios especifiquen si deseyan preservar a suya configuración d'aparencia quan l'aparencia por defecto cambea.",
+	'dontswitchmeover-pref' => "No deixar que a mía aparencia cambee si cambea l'aparencia por defecto",
+);
+
 /** Arabic (العربية)
  * @author Samer
  */
@@ -255,6 +263,14 @@ $messages['lb'] = array(
 $messages['li'] = array(
 	'dontswitchmeover-desc' => 'Veurkeur veur gebroekers om aan te gaeven of veurkeuren behaje mótte waeren es de standaardveurkeure wiezige.',
 	'dontswitchmeover-pref' => "Pas mien oeterlik neet aan wen 't standaardoeterlik gewiezig weurt",
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'dontswitchmeover-desc' => 'Preferensi untuak pangguno dalam menentukan apo yang mereka inginkan dalam pengaturan tampilan kulit katiko tampilan kulit default barubah.',
+	'dontswitchmeover-pref' => 'Jangan izinkan tampilan kulit den diubah katiko kulit default barubah',
 );
 
 /** Macedonian (Македонски)

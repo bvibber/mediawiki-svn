@@ -89,6 +89,34 @@ $messages['af'] = array(
 	'ct-update-table' => 'Opdateer tabel',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'clicktracking' => "Seguimiento de clics d'a Iniciativa d'Usabilidat",
+	'clicktracking-desc' => "Seguimiento de clics d'esdevenimientos que no causen a recarga d'a pachina",
+	'ct-title' => "Agregación d'os clics de l'usuario",
+	'ct-event-name' => "Nombre de l'evento",
+	'ct-expert-header' => "Clics d'«experto»",
+	'ct-intermediate-header' => "Clics d'usuario «intermeyo»",
+	'ct-beginner-header' => 'Clics de «novenzano»',
+	'ct-total-header' => 'Clics totals',
+	'ct-start-date' => "Calendata d'inicio (AAAAMMDD)",
+	'ct-end-date' => 'Calendata de finalización (AAAAMMDD)',
+	'ct-increment-by' => 'Numero de días que represienta cada punto',
+	'ct-change-graph' => 'Cambiar o grafico',
+	'ct-beginner' => 'Prencipiant',
+	'ct-intermediate' => 'Intermeyo',
+	'ct-expert' => 'Experto',
+	'ct-date-range' => 'Intervalo de calendatas',
+	'ct-editing' => 'Editando actualment:',
+	'ct-anon-users' => 'Usuarios anonimos',
+	'ct-user-contribs' => "Total de contribucions de l'usuario",
+	'ct-user-span' => "Contribucions de l'usuario en l'intervalo de tiempo",
+	'ct-and' => 'y',
+	'ct-update-table' => 'Esviellar a tabla',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1355,6 +1383,34 @@ $messages['lv'] = array(
  */
 $messages['lzz'] = array(
 	'ct-and' => 'do',
+);
+
+/** Minangkabau (Baso Minangkabau)
+ * @author VoteITP
+ */
+$messages['min'] = array(
+	'clicktracking' => 'Klik pelacak Inisiatif Kagunoan',
+	'clicktracking-desc' => "Klik pelacak untuak menelusuri kejadian yang indak menyebabkan ''refresh'' laman",
+	'ct-title' => 'Kumpulan klik pangguno',
+	'ct-event-name' => 'Namo kejadian',
+	'ct-expert-header' => 'Klik "Mahir"',
+	'ct-intermediate-header' => 'Klik "Menengah"',
+	'ct-beginner-header' => 'Klik "Rang baru"',
+	'ct-total-header' => 'Total klik',
+	'ct-start-date' => 'Bamulo (YYYYMMDD)',
+	'ct-end-date' => 'Baakhir (YYYYMMDD)',
+	'ct-increment-by' => 'Satiok poin mencerminkan jumlah hari',
+	'ct-change-graph' => 'Ganti grafik',
+	'ct-beginner' => 'Rang baru',
+	'ct-intermediate' => 'Menengah',
+	'ct-expert' => 'Mahir',
+	'ct-date-range' => 'Jangko maso',
+	'ct-editing' => 'Kini ko suntingan:',
+	'ct-anon-users' => 'Pangguno anonim',
+	'ct-user-contribs' => 'Keseluruhan jariah pangguno',
+	'ct-user-span' => 'Jariah pangguno dalam rentang waktu',
+	'ct-and' => 'dan',
+	'ct-update-table' => 'Tabel diperbarui',
 );
 
 /** Macedonian (Македонски)
