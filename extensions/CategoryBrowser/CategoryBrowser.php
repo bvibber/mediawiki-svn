@@ -92,7 +92,7 @@ class CB_Setup {
 		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
 		$top_dir = array_pop( explode( '/', self::$ExtDir ) );
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
-		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser_i18n.php';
+		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser.i18n.php';
 
 		// do not forget to autoload all the required classes (for AJAX to work correctly)
 		$wgAutoloadClasses['CB_XML'] =
@@ -112,6 +112,7 @@ class CB_Setup {
 		$wgAutoloadClasses['CategoryBrowserPage'] = self::$ExtDir . '/CategoryBrowserPage.php';
 
 		$wgExtensionCredits['specialpage'][] = array(
+			'path' => __FILE__,
 			'name' => 'CategoryBrowser',
 			'author' => 'QuestPC',
 			'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryBrowser',
