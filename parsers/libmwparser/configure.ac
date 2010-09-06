@@ -55,10 +55,29 @@ AC_CHECK_HEADERS([wchar.h])
 AC_CHECK_SIZEOF([wchar_t], [], [#include<wchar.h>])
 AC_C_BIGENDIAN
 
-AC_CHECK_HEADER(tre/regex.h, AC_DEFINE([HAVE_TRE_REGEX_H], [1], [Header file for supporting wide character regexps.]), AC_MSG_ERROR([tre/regex.h not found]))
-AC_CHECK_LIB([tre], [tre_regwcomp], [LIBREGEX="-ltre"], AC_MSG_ERROR([Regexp library for wide characters not found.]))
+AC_PROG_SWIG([1.3.40])
 
-AC_SUBST(LIBREGEX)
+AX_PERL_EXT_FLAGS([PERLXS_CFLAGS], [PERLXS_LDFLAGS])
+AC_SUBST([PERLXS_CFLAGS])
+AC_SUBST([PERLXS_LDFLAGS])
+
+PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.24.1])
+
+AC_ARG_VAR([TARGET_LANGUAGE], [Target language for wrapper library.])
+
+if test "x${TARGET_LANGUAGE}" == x; then
+   TARGET_LANGUAGE=php;
+fi
+
+if test "x$TARGET_LANGUAGE" == xperl; then
+   TARGET_LANGUAGE_CFLAGS='-DTARGET_LANGUAGE_PERL $(PERLXS_CFLAGS)'
+   TARGET_LANGUAGE_LDFLAGS='$(PERLXS_LDFLAGS)'
+elif test "x$TARGET_LANGUAGE" == xphp; then
+   TARGET_LANGUAGE_CFLAGS='-DTARGET_LANGUAGE_PHP $(PHP_CFLAGS)'
+   TARGET_LANGUAGE_LDFLAGS='$(PHP_LDFLAGS)'
+fi
+
+AC_SUBST([TARGET_LANGUAGE_CFLAGS])
 
 AM_PROG_LIBTOOL
 AC_PROG_LIBTOOL
@@ -66,6 +85,6 @@ AC_PROG_LIBTOOL
 AC_CONFIG_TESTDIR([tests])
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES([Makefile] [tests/Makefile] [tests/atlocal])
+AC_CONFIG_FILES([Makefile] [tests/Makefile] [tests/atlocal] [wrapper/Makefile])
 AC_OUTPUT
 

@@ -2,8 +2,7 @@
 #define MWLEXERCONTEXT_H_
 
 #include <stdbool.h>
-#include <wchar.h>
-#include <tre/regex.h>
+#include <glib.h>
 #include <antlr3defs.h>
 #include <iconv.h>
 #include <mwtagext.h>
@@ -39,8 +38,11 @@ typedef struct MWLEXERCONTEXT_struct
      */
     pANTLR3_STACK blockContextStack;
     int headingLevel;
-    regex_t legalTitleRegexp;
-    regex_t mediaLinkTitle;
+    
+    GRegex * legalTitleRegexp;
+    GRegex * mediaLinkTitle;
+    //    regex_t legalTitleRegexp;
+    //    regex_t mediaLinkTitle;
 
     /*
      * State for speculative execution.
@@ -79,8 +81,8 @@ typedef struct MWLEXERCONTEXT_struct
     pANTLR3_STRING_FACTORY asciiStringFactory;
     bool (*isLegalTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
     bool (*isMediaLinkTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
-    bool (*setLegalTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const wchar_t *posixExtendedRegexp);
-    bool (*setMediaLinkTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const wchar_t *posixExtendedRegexp);
+    bool (*setLegalTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const char *perlRegexp);
+    bool (*setMediaLinkTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const char *perlRegexp);
 }
     MWLEXERCONTEXT;
 

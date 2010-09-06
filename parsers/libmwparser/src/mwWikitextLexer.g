@@ -301,8 +301,9 @@ NOWIKI
 @init{ 
     ANTLR3_MARKER nowikiStart;
     ANTLR3_MARKER nowikiEnd;
+    pANTLR3_VECTOR attrs;
 }:
-    'nowiki>'
+    'nowiki' (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
     ((SPACE_CHAR|NEWLINE_CHAR) => (SPACE_CHAR|NEWLINE_CHAR))*
     {
         nowikiEnd = nowikiStart = GETCHARINDEX();
@@ -805,7 +806,7 @@ NOWIKI_BODY[ANTLR3_MARKER *nowikiEnd]:
 HTML_OPEN_TAG:
     '<' (
            (HTML_OPEN_TAG_INTERNAL)=> HTML_OPEN_TAG_INTERNAL
-        |  ('nowiki>')=> NOWIKI
+        |  ('nowiki' (SPACE_TAB ATTRIBUTE_LIST_HTML[NULL]? )? '>')=> NOWIKI
         |  TAG_EXTENSION
         |  { MW_SETTYPE(SPECIAL); }
         )

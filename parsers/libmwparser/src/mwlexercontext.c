@@ -37,8 +37,8 @@ static bool registerTagExtension(struct MWLEXERCONTEXT_struct * context, const M
 static int openConversion(MWLEXERCONTEXT *context, ANTLR3_UINT8 encoding);
 static const wchar_t *mwAntlr3stows(MWLEXERCONTEXT *context, pANTLR3_STRING string, void **state);
 static void  mwFreeStringConversionState(void *state);
-static bool setLegalTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *posixExtendedRegexp);
-static bool setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *posixExtendedRegexp);
+static bool setLegalTitleRegexp(MWLEXERCONTEXT *context, const char *perlRegexp);
+static bool setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const char *perlRegexp);
 
 MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
 {
@@ -50,29 +50,27 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
     context->reset = MWLexerContextReset;
     context->lexer = lexer;
     lexer->super = context;
+    context->legalTitleRegexp = NULL;
+    context->mediaLinkTitle = NULL;
 
     /*
      * The legal title chars must be reconfigurable, so we treat them
      * specially.
      */
-    int err  = regwcomp(&context->legalTitleRegexp,
-                       L"^[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\xFF+]+$",
-                       REG_EXTENDED);
+
+    GError *err = NULL;
+    context->legalTitleRegexp = g_regex_new("^[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\u00FF+]+$", 0, 0, &err);
     if (err) {
-        char errbuf[200];
-        regerror(err, &context->legalTitleRegexp, errbuf, 200);
-        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", err->message);
+        g_error_free(err);
         context->free(context);
         return NULL;
     }
 
-    err     = regwcomp(&context->mediaLinkTitle,
-                       L"^File:[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\xFF+]+$",
-                       REG_EXTENDED);
+    context->mediaLinkTitle = g_regex_new("^File:[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\u00FF+]+$", 0, 0, &err);
     if (err) {
-        char errbuf[200];
-        regerror(err, &context->mediaLinkTitle, errbuf, 200);
-        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", err->message);
+        g_error_free(err);
         context->free(context);
         return NULL;
     }
@@ -242,9 +240,12 @@ MWLexerContextFree(void *lexerContext)
     if (context->tagExtensionTable != NULL) {
         context->tagExtensionTable->free(context->tagExtensionTable);
     }
-    
-    regfree(&context->legalTitleRegexp);
-    regfree(&context->mediaLinkTitle);
+    if (context->legalTitleRegexp != NULL) {
+        g_regex_unref(context->legalTitleRegexp);
+    }
+    if (context->mediaLinkTitle != NULL) {
+        g_regex_unref(context->mediaLinkTitle);
+    }
 
     pmwWikitextLexer lxr = context->lexer->ctx;
     lxr->free(lxr);
@@ -255,23 +256,15 @@ MWLexerContextFree(void *lexerContext)
 static bool
 isLegalTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
 {
-    void *state;
-    const wchar_t *wsLinkTitle = mwAntlr3stows(context, linkTitle, &state);
-    regmatch_t match;
-    int err = regwexec(&context->legalTitleRegexp, wsLinkTitle, 1, &match, 0);
-    mwFreeStringConversionState(state);
-    return err == 0;
+    pANTLR3_STRING utf8 = linkTitle->toUTF8(linkTitle);
+    return g_regex_match(context->legalTitleRegexp, utf8->chars, 0, NULL);
 }
 
 static bool
 isMediaLinkTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
 {
-    void *state;
-    const wchar_t *wsLinkTitle = mwAntlr3stows(context, linkTitle, &state);
-    regmatch_t match;
-    int err = regwexec(&context->mediaLinkTitle, wsLinkTitle, 1, &match, 0);
-    mwFreeStringConversionState(state);
-    return err == 0;
+    pANTLR3_STRING utf8 = linkTitle->toUTF8(linkTitle);
+    return g_regex_match(context->mediaLinkTitle, utf8->chars, 0, NULL);
 }
 
 /*
@@ -416,14 +409,14 @@ mwFreeStringConversionState(void *state)
 }
 
 static bool
-setLegalTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *regexp)
+setLegalTitleRegexp(MWLEXERCONTEXT *context, const char *regexp)
 {
-    regfree(&context->legalTitleRegexp);
-    int err     = regwcomp(&context->legalTitleRegexp, regexp, REG_EXTENDED);
+    g_regex_unref(context->legalTitleRegexp);
+    GError *err = NULL;
+    context->legalTitleRegexp = g_regex_new(regexp, 0, 0, &err);    
     if (err) {
-        char errbuf[200];
-        regerror(err, &context->legalTitleRegexp, errbuf, 200);
-        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        fprintf(stderr, "Failed to compile link title regular expression: %s\n", err->message);
+        g_error_free(err);
         return false;
     }
 
@@ -431,14 +424,14 @@ setLegalTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *regexp)
 }
 
 static bool
-setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const wchar_t *regexp)
+setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const char *regexp)
 {
-    regfree(&context->mediaLinkTitle);
-    int err     = regwcomp(&context->mediaLinkTitle, regexp, REG_EXTENDED);
+    g_regex_unref(context->mediaLinkTitle);
+    GError *err = NULL;
+    context->mediaLinkTitle = g_regex_new(regexp, 0, 0, &err);    
     if (err) {
-        char errbuf[200];
-        regerror(err, &context->mediaLinkTitle, errbuf, 200);
-        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", errbuf);
+        fprintf(stderr, "Failed to compile media link title regular expression: %s\n", err->message);
+        g_error_free(err);
         return false;
     }
 

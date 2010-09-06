@@ -39,7 +39,7 @@ int main(int argc, char *const* argv)
             MWParserReset(parser, inputStream);
         }
 
-        MWParserParseArticle(parser);
+        MWParserParseArticle(parser, NULL);
         MWParserCloseInputStream(inputStream);
     }
     MWParserFree(parser);

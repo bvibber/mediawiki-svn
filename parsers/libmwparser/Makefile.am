@@ -8,7 +8,7 @@ AC_LIBTOOLFLAGS =
 ## --silent
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = tests
+SUBDIRS = tests wrapper
 
 ANTLR_LEXER  = mwWikitextLexer
 ANTLR_PARSER = mwWikitextParser
@@ -41,6 +41,7 @@ debug_echo:
 	echo $(libmwparser_la_OBJECTS)
 
 libmwparser_la_SOURCES		=		\
+	include/mwattributes.h			\
 	include/mwbasicevents.h			\
 	include/mwconfig.h			\
 	include/mwformats.h			\
@@ -53,18 +54,19 @@ libmwparser_la_SOURCES		=		\
 	include/mwparser.h			\
 	include/mwparsercontext.h		\
 	include/mwtables.h			\
-        include/mwtagext.h                      \
+        include/mwtagext.h			\
 	include/mwutils.h			\
 	include/tracingcontext.h		\
+	src/mwattributes.c			\
 	src/mwbasicevents.c			\
 	src/mwformats.c				\
 	src/mwheadings.c			\
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
-        src/mwparser.c                          \
+        src/mwparser.c				\
 	src/mwparsercontext.c			\
-        src/mwtagext.c                          \
+        src/mwtagext.c				\
 	src/mwtables.c				\
 	src/tracingcontext.c
 
@@ -76,6 +78,10 @@ EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DE
 	src/mwlexerpredicatetable.php									\
 	src/mwlexerpredicatedefs.php									\
 	antlr.patch
+
+libmwparser_la_LIBS = $(GLIB_LIBS)
+
+libmwparser_la_CFLAGS = $(GLIB_CFLAGS) -std=gnu99
 
 libmwparser_la_LDFLAGS = -release 0.1 -version-info 0:0:0
 

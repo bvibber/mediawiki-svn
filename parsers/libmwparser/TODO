@@ -1,3 +1,15 @@
 
-- API
+- Memory leak in php api: the reference count on the input string must
+  be decreased when the input stream is closed.  (API flaw.)
 - Media link attributes
+- html pre
+- hr-tag
+- img-tag
+- parser options
+  + __NOTOC__, __FORCETOC__ etc. passed from the preprocessor.
+- red/blue links. 
+  + It would be possible to make a lookup for all internal links after
+    the lexer has made its run, to enable the parser to generate 
+    "redlink" and "bluelink" actions directly.
+- link prefix/suffixes.  Pass as arguments to the listener functions.
+- The lexer should generate heading anchors.

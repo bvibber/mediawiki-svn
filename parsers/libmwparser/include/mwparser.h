@@ -7,10 +7,18 @@
 
 struct MWLISTENER_struct;
 
+/**
+ * Character encoding.
+ */
 typedef enum MWPARSER_ENCODING {
     MWPARSER_8BIT,
     MWPARSER_UTF8,
-    
+    MWPARSER_UTF16,
+    MWPARSER_UTF16LE,
+    MWPARSER_UTF16BE,
+    MWPARSER_UTF32,
+    MWPARSER_UTF32LE,
+    MWPARSER_UTF32BE,
 } MWPARSER_ENCODING;
 
 /**
@@ -22,6 +30,12 @@ typedef struct MWPARSER_struct MWPARSER;
  * A data structure representing an input stream for the parser.
  */
 typedef struct MWPARSER_INPUT_STREAM_struct MWPARSER_INPUT_STREAM;
+
+/**
+ * Options that alters the behavior of a particular parser run.  These
+ * should be set as the result of preprocessing.
+ */
+typedef struct MWPARSER_OPTIONS_struct MWPARSER_OPTIONS;
 
 /**
  * Constructor for the parser.
@@ -56,7 +70,7 @@ void MWParserFree(MWPARSER *parser);
  * 
  * @param parser pointer to parser instance
  */
-void MWParserParseArticle(MWPARSER *parser);
+void MWParserParseArticle(MWPARSER *parser, MWPARSER_OPTIONS *options);
 
 /**
  * Open an input stream that reads from a character buffer.
@@ -82,18 +96,18 @@ void MWParserCloseInputStream(MWPARSER_INPUT_STREAM *stream);
  * Set a regexp that validates a document title.
  * The default is L"^[- %!\"$&'()*,./0-9:;=?@A-Z\\\\^_`a-z~\x80-\xFF+]+$"
  * @param parser Pointer to parser instance.
- * @param posixRegexp A posix regular expression.
+ * @param perlRegexp A perl regular expression.
  * @return {\code true} on success.
  */
-bool MWParserSetLegalTitleRegexp(MWPARSER *parser, const wchar_t *posixRegexp);
+bool MWParserSetLegalTitleRegexp(MWPARSER *parser, const char *perlRegexp);
 
 /**
  * Set a regexp that identifies a link as being a media link.
  * @param parser Pointer to parser instance.
- * @param posigRegexp A posix regular expression.
+ * @param perlRegexp A perl regular expression.
  * @return {\code true} on success.
  */
-bool MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const wchar_t *posixRegexp);
+bool MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const char *perlRegexp);
 
 /**
  * Register a tag extension with the parser.
@@ -102,5 +116,16 @@ bool MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const wchar_t *posixRegex
  * @return {\code true} on success.
  */
 bool MWParserRegisterTagExtension(MWPARSER *parser, const MWPARSER_TAGEXT *tagExtension);
+
+/**
+ * Return a pointer to a resulting output buffer or equivalent.  The
+ * contents of this buffer is specific to the listener implementation.
+ * The listener implementation does not necessarily provide any such
+ * buffer.
+ *
+ * @param parser
+ * @return Pointer to listener specific output buffer or similar.
+ */
+void * MWParserGetResult(MWPARSER *parser);
 
 #endif

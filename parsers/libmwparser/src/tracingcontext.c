@@ -41,7 +41,7 @@ static void TCBeginItalic(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndItalic(MWLISTENER *listener);
 static void TCBeginBold(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndBold(MWLISTENER *listener);
-static void TCBeginPre(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void TCBeginPre(MWLISTENER *listener);
 static void TCEndPre(MWLISTENER *listener);
 static void TCBeginBulletList(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndBulletList(MWLISTENER *listener);
@@ -380,11 +380,10 @@ TCEndBold(MWLISTENER *listener)
 }
 
 static void
-TCBeginPre(MWLISTENER *listener, pANTLR3_VECTOR attr)
+TCBeginPre(MWLISTENER *listener)
 {
     TCPrintIndent(listener);
     printf("BEGIN PRE");
-    TCPrintAttributes(attr);
     printf("\n");
     TCIncreaseIndent(listener);
 }

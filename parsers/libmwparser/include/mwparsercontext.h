@@ -59,7 +59,7 @@ typedef struct MWPARSERCONTEXT_struct
     void (*endItalic)(struct MWPARSERCONTEXT_struct * context);
     void (*beginBold)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endBold)(struct MWPARSERCONTEXT_struct * context);
-    void (*beginPre)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
+    void (*beginPre)(struct MWPARSERCONTEXT_struct * context);
     void (*endPre)(struct MWPARSERCONTEXT_struct * context);
     void (*beginArticle)(struct MWPARSERCONTEXT_struct * context);
     void (*endArticle)(struct MWPARSERCONTEXT_struct * context);

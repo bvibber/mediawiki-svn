@@ -19,6 +19,398 @@ You have another version of autoconf.  It may work, but is not guaranteed to.
 If you have problems, you may need to regenerate the build system entirely.
 To do so, use the procedure documented by the package, typically `autoreconf'.])])
 
+# ===========================================================================
+#              http://autoconf-archive.cryp.to/ac_pkg_swig.html
+# ===========================================================================
+#
+# SYNOPSIS
+#
+#   AC_PROG_SWIG([major.minor.micro])
+#
+# DESCRIPTION
+#
+#   This macro searches for a SWIG installation on your system. If found you
+#   should call SWIG via $(SWIG). You can use the optional first argument to
+#   check if the version of the available SWIG is greater than or equal to
+#   the value of the argument. It should have the format: N[.N[.N]] (N is a
+#   number between 0 and 999. Only the first N is mandatory.)
+#
+#   If the version argument is given (e.g. 1.3.17), AC_PROG_SWIG checks that
+#   the swig package is this version number or higher.
+#
+#   In configure.in, use as:
+#
+#     AC_PROG_SWIG(1.3.17)
+#     SWIG_ENABLE_CXX
+#     SWIG_MULTI_MODULE_SUPPORT
+#     SWIG_PYTHON
+#
+# LICENSE
+#
+#   Copyright (c) 2008 Sebastian Huber <sebastian-huber@web.de>
+#   Copyright (c) 2008 Alan W. Irwin <irwin@beluga.phys.uvic.ca>
+#   Copyright (c) 2008 Rafael Laboissiere <rafael@laboissiere.net>
+#   Copyright (c) 2008 Andrew Collier <colliera@ukzn.ac.za>
+#
+#   This program is free software; you can redistribute it and/or modify it
+#   under the terms of the GNU General Public License as published by the
+#   Free Software Foundation; either version 2 of the License, or (at your
+#   option) any later version.
+#
+#   This program is distributed in the hope that it will be useful, but
+#   WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+#   Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License along
+#   with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+#   As a special exception, the respective Autoconf Macro's copyright owner
+#   gives unlimited permission to copy, distribute and modify the configure
+#   scripts that are the output of Autoconf when processing the Macro. You
+#   need not follow the terms of the GNU General Public License when using
+#   or distributing such scripts, even though portions of the text of the
+#   Macro appear in them. The GNU General Public License (GPL) does govern
+#   all other use of the material that constitutes the Autoconf Macro.
+#
+#   This special exception to the GPL applies to versions of the Autoconf
+#   Macro released by the Autoconf Archive. When you make and distribute a
+#   modified version of the Autoconf Macro, you may extend this special
+#   exception to the GPL to apply to your modified version as well.
+
+AC_DEFUN([AC_PROG_SWIG],[
+        AC_PATH_PROG([SWIG],[swig])
+        if test -z "$SWIG" ; then
+                AC_MSG_WARN([cannot find 'swig' program. You should look at http://www.swig.org])
+                SWIG='echo "Error: SWIG is not installed. You should look at http://www.swig.org" ; false'
+        elif test -n "$1" ; then
+                AC_MSG_CHECKING([for SWIG version])
+                [swig_version=`$SWIG -version 2>&1 | grep 'SWIG Version' | sed 's/.*\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\).*/\1/g'`]
+                AC_MSG_RESULT([$swig_version])
+                if test -n "$swig_version" ; then
+                        # Calculate the required version number components
+                        [required=$1]
+                        [required_major=`echo $required | sed 's/[^0-9].*//'`]
+                        if test -z "$required_major" ; then
+                                [required_major=0]
+                        fi
+                        [required=`echo $required | sed 's/[0-9]*[^0-9]//'`]
+                        [required_minor=`echo $required | sed 's/[^0-9].*//'`]
+                        if test -z "$required_minor" ; then
+                                [required_minor=0]
+                        fi
+                        [required=`echo $required | sed 's/[0-9]*[^0-9]//'`]
+                        [required_patch=`echo $required | sed 's/[^0-9].*//'`]
+                        if test -z "$required_patch" ; then
+                                [required_patch=0]
+                        fi
+                        # Calculate the available version number components
+                        [available=$swig_version]
+                        [available_major=`echo $available | sed 's/[^0-9].*//'`]
+                        if test -z "$available_major" ; then
+                                [available_major=0]
+                        fi
+                        [available=`echo $available | sed 's/[0-9]*[^0-9]//'`]
+                        [available_minor=`echo $available | sed 's/[^0-9].*//'`]
+                        if test -z "$available_minor" ; then
+                                [available_minor=0]
+                        fi
+                        [available=`echo $available | sed 's/[0-9]*[^0-9]//'`]
+                        [available_patch=`echo $available | sed 's/[^0-9].*//'`]
+                        if test -z "$available_patch" ; then
+                                [available_patch=0]
+                        fi
+                        if test $available_major -ne $required_major \
+                                -o $available_minor -ne $required_minor \
+                                -o $available_patch -lt $required_patch ; then
+                                AC_MSG_WARN([SWIG version >= $1 is required.  You have $swig_version.  You should look at http://www.swig.org])
+                                SWIG='echo "Error: SWIG version >= $1 is required.  You have '"$swig_version"'.  You should look at http://www.swig.org" ; false'
+                        else
+                                AC_MSG_NOTICE([SWIG executable is '$SWIG'])
+                                SWIG_LIB=`$SWIG -swiglib`
+                                AC_MSG_NOTICE([SWIG library directory is '$SWIG_LIB'])
+                        fi
+                else
+                        AC_MSG_WARN([cannot determine SWIG version])
+                        SWIG='echo "Error: Cannot determine SWIG version.  You should look at http://www.swig.org" ; false'
+                fi
+        fi
+        AC_SUBST([SWIG_LIB])
+])
+
+# ===========================================================================
+#           http://autoconf-archive.cryp.to/ax_perl_ext_flags.html
+# ===========================================================================
+#
+# SYNOPSIS
+#
+#   AX_PERL_EXT_FLAGS([CFLAGS-VARIABLE], [LDFLAGS-VARIABLE], [EXTRA-MODULES])
+#   AX_PERL_EXT_CFLAGS([CFLAGS-VARIABLE])
+#   AX_PERL_EXT_LDFLAGS([LDFLAGS-VARIABLE], [EXTRA-MODULES])
+#
+# DESCRIPTION
+#
+#   Fetches the linker flags and C compiler flags for compiling and linking
+#   programs that embed a Perl interpreter. If the EXTRA-MODULES argument is
+#   submitted, it is a space separated list of extra modules to link. The
+#   flags will be stored in the provided variables.
+#
+#   Examples:
+#
+#     AX_PERL_EXT_FLAGS([PERLXS_CFLAGS], [PERLXS_LDFLAGS])
+#     AC_SUBST([PERLXS_CFLAGS])
+#     AC_SUBST([PERLXS_LDFLAGS])
+#
+#     AX_PERL_EXT_CFLAGS([PERLXS_CFLAGS])
+#     AC_SUBST([PERLXS_CFLAGS])
+#
+#     AX_PERL_EXT_LDFLAGS([PERLXS_LDFLAGS], [-std Socket])
+#
+# LICENSE
+#
+#   Copyright (c) 2009 Mats Kindahl of Sun Microsystems <mats@sun.com>
+#
+#   Redistribution and use in source and binary forms, with or without
+#   modification, are permitted provided that the following conditions are
+#   met:
+#
+#   1. Redistributions of source code must retain the above copyright
+#   notice, this list of conditions and the following disclaimer.
+#
+#   2. Redistributions in binary form must reproduce the above copyright
+#   notice, this list of conditions and the following disclaimer in the
+#   documentation and/or other materials provided with the distribution.
+#
+#   3. The name of the author may not be used to endorse or promote products
+#   derived from this software without specific prior written permission.
+#
+#   THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+#   IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+#   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#   DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+#   INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+#   (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#   SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+#   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+#   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+#   ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#   POSSIBILITY OF SUCH DAMAGE.
+
+AC_DEFUN([AX_PERL_EXT_CFLAGS],
+[AC_CHECK_PROG(PERL,perl,perl)
+ _AX_PERL_EXT_MODULE_CHECK([ExtUtils::Embed], [have_embed=yes],
+                           [have_embed=no])
+ AS_IF([test $have_embed = no],
+       AC_MSG_ERROR([Require ExtUtils::Embed to proceed]))
+ _AX_PERL_EXT_EMBED_CHECK([$1],[ccopts])
+])
+
+
+AC_DEFUN([AX_PERL_EXT_LDFLAGS],
+[AC_CHECK_PROG(PERL,perl,perl)
+ _AX_PERL_EXT_MODULE_CHECK([ExtUtils::Embed], [have_embed=yes],
+                           [have_embed=no])
+ AS_IF([test $have_embed = no],
+       AC_MSG_ERROR([Require ExtUtils::Embed to proceed]))
+ _AX_PERL_EXT_EMBED_CHECK([$1],[ldopts],[$2])
+])
+
+
+AC_DEFUN([AX_PERL_EXT_FLAGS],
+[AC_CHECK_PROG(PERL,perl,perl)
+ _AX_PERL_EXT_MODULE_CHECK([ExtUtils::Embed], [have_embed=yes],
+                           [have_embed=no])
+ AS_IF([test $have_embed = no],
+       AC_MSG_ERROR([Require ExtUtils::Embed to proceed]))
+ _AX_PERL_EXT_EMBED_CHECK([$1],[ccopts])
+ _AX_PERL_EXT_EMBED_CHECK([$2],[ldopts],[$3])
+])
+
+
+dnl _AX_PERL_EXT_MODULE_CHECK(MODULE-NAME, ACTION-IF-FOUND, ACTION-IF-NOT-FOUND)
+dnl
+dnl Check for the existance of the perl module given by MODULE-NAME.
+dnl
+AC_DEFUN([_AX_PERL_EXT_MODULE_CHECK],
+[AC_MSG_CHECKING([for perl module $1])
+ $PERL "-M$1" -e exit > /dev/null 2>&1
+ AS_IF([test $? -eq 0],
+ [AC_MSG_RESULT(yes)
+  $2],
+ [AC_MSG_RESULT(no)
+  $3])
+])
+
+dnl _AX_PERL_EXT_EMBED_CHECK(VARIABLE, COMMAND, [EXTRA-FLAGS]) Use
+dnl
+dnl ExtUtils::Embed fetch flags for embedding Perl in a C/C++
+dnl application
+dnl
+AC_DEFUN([_AX_PERL_EXT_EMBED_CHECK],
+[AC_MSG_CHECKING([for perl $2 embed flags])
+ ax_c_perlxs_extras="$3"
+ $1=`$PERL -MExtUtils::Embed -e $2 ${ax_c_perlxs_extras:+"-- $3"}`
+ AC_MSG_RESULT($$1)
+])
+
+# pkg.m4 - Macros to locate and utilise pkg-config.            -*- Autoconf -*-
+# serial 1 (pkg-config-0.24)
+# 
+# Copyright © 2004 Scott James Remnant <scott@netsplit.com>.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+# As a special exception to the GNU General Public License, if you
+# distribute this file as part of a program that contains a
+# configuration script generated by Autoconf, you may include it under
+# the same distribution terms that you use for the rest of that program.
+
+# PKG_PROG_PKG_CONFIG([MIN-VERSION])
+# ----------------------------------
+AC_DEFUN([PKG_PROG_PKG_CONFIG],
+[m4_pattern_forbid([^_?PKG_[A-Z_]+$])
+m4_pattern_allow([^PKG_CONFIG(_PATH)?$])
+AC_ARG_VAR([PKG_CONFIG], [path to pkg-config utility])
+AC_ARG_VAR([PKG_CONFIG_PATH], [directories to add to pkg-config's search path])
+AC_ARG_VAR([PKG_CONFIG_LIBDIR], [path overriding pkg-config's built-in search path])
+
+if test "x$ac_cv_env_PKG_CONFIG_set" != "xset"; then
+	AC_PATH_TOOL([PKG_CONFIG], [pkg-config])
+fi
+if test -n "$PKG_CONFIG"; then
+	_pkg_min_version=m4_default([$1], [0.9.0])
+	AC_MSG_CHECKING([pkg-config is at least version $_pkg_min_version])
+	if $PKG_CONFIG --atleast-pkgconfig-version $_pkg_min_version; then
+		AC_MSG_RESULT([yes])
+	else
+		AC_MSG_RESULT([no])
+		PKG_CONFIG=""
+	fi
+fi[]dnl
+])# PKG_PROG_PKG_CONFIG
+
+# PKG_CHECK_EXISTS(MODULES, [ACTION-IF-FOUND], [ACTION-IF-NOT-FOUND])
+#
+# Check to see whether a particular set of modules exists.  Similar
+# to PKG_CHECK_MODULES(), but does not set variables or print errors.
+#
+# Please remember that m4 expands AC_REQUIRE([PKG_PROG_PKG_CONFIG])
+# only at the first occurence in configure.ac, so if the first place
+# it's called might be skipped (such as if it is within an "if", you
+# have to call PKG_CHECK_EXISTS manually
+# --------------------------------------------------------------
+AC_DEFUN([PKG_CHECK_EXISTS],
+[AC_REQUIRE([PKG_PROG_PKG_CONFIG])dnl
+if test -n "$PKG_CONFIG" && \
+    AC_RUN_LOG([$PKG_CONFIG --exists --print-errors "$1"]); then
+  m4_default([$2], [:])
+m4_ifvaln([$3], [else
+  $3])dnl
+fi])
+
+# _PKG_CONFIG([VARIABLE], [COMMAND], [MODULES])
+# ---------------------------------------------
+m4_define([_PKG_CONFIG],
+[if test -n "$$1"; then
+    pkg_cv_[]$1="$$1"
+ elif test -n "$PKG_CONFIG"; then
+    PKG_CHECK_EXISTS([$3],
+                     [pkg_cv_[]$1=`$PKG_CONFIG --[]$2 "$3" 2>/dev/null`],
+		     [pkg_failed=yes])
+ else
+    pkg_failed=untried
+fi[]dnl
+])# _PKG_CONFIG
+
+# _PKG_SHORT_ERRORS_SUPPORTED
+# -----------------------------
+AC_DEFUN([_PKG_SHORT_ERRORS_SUPPORTED],
+[AC_REQUIRE([PKG_PROG_PKG_CONFIG])
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi[]dnl
+])# _PKG_SHORT_ERRORS_SUPPORTED
+
+
+# PKG_CHECK_MODULES(VARIABLE-PREFIX, MODULES, [ACTION-IF-FOUND],
+# [ACTION-IF-NOT-FOUND])
+#
+#
+# Note that if there is a possibility the first call to
+# PKG_CHECK_MODULES might not happen, you should be sure to include an
+# explicit call to PKG_PROG_PKG_CONFIG in your configure.ac
+#
+#
+# --------------------------------------------------------------
+AC_DEFUN([PKG_CHECK_MODULES],
+[AC_REQUIRE([PKG_PROG_PKG_CONFIG])dnl
+AC_ARG_VAR([$1][_CFLAGS], [C compiler flags for $1, overriding pkg-config])dnl
+AC_ARG_VAR([$1][_LIBS], [linker flags for $1, overriding pkg-config])dnl
+
+pkg_failed=no
+AC_MSG_CHECKING([for $1])
+
+_PKG_CONFIG([$1][_CFLAGS], [cflags], [$2])
+_PKG_CONFIG([$1][_LIBS], [libs], [$2])
+
+m4_define([_PKG_TEXT], [Alternatively, you may set the environment variables $1[]_CFLAGS
+and $1[]_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.])
+
+if test $pkg_failed = yes; then
+   	AC_MSG_RESULT([no])
+        _PKG_SHORT_ERRORS_SUPPORTED
+        if test $_pkg_short_errors_supported = yes; then
+	        $1[]_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "$2" 2>&1`
+        else 
+	        $1[]_PKG_ERRORS=`$PKG_CONFIG --print-errors "$2" 2>&1`
+        fi
+	# Put the nasty error message in config.log where it belongs
+	echo "$$1[]_PKG_ERRORS" >&AS_MESSAGE_LOG_FD
+
+	m4_default([$4], [AC_MSG_ERROR(
+[Package requirements ($2) were not met:
+
+$$1_PKG_ERRORS
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+_PKG_TEXT])dnl
+        ])
+elif test $pkg_failed = untried; then
+     	AC_MSG_RESULT([no])
+	m4_default([$4], [AC_MSG_FAILURE(
+[The pkg-config script could not be found or is too old.  Make sure it
+is in your PATH or set the PKG_CONFIG environment variable to the full
+path to pkg-config.
+
+_PKG_TEXT
+
+To get pkg-config, see <http://pkg-config.freedesktop.org/>.])dnl
+        ])
+else
+	$1[]_CFLAGS=$pkg_cv_[]$1[]_CFLAGS
+	$1[]_LIBS=$pkg_cv_[]$1[]_LIBS
+        AC_MSG_RESULT([yes])
+	$3
+fi[]dnl
+])# PKG_CHECK_MODULES
+
 # Copyright (C) 2002, 2003, 2005, 2006, 2007, 2008  Free Software Foundation, Inc.
 #
 # This file is free software; the Free Software Foundation

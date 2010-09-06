@@ -1,0 +1,1401 @@
+#include <antlr3.h>
+#include <mwkeyvalue.h>
+#include <mwlistener.h>
+#include <wchar.h>
+
+/*
+ * A note on memory management:  All parameters of type pANTLR3_STRING
+ * or pANTLR3_VECTOR have been allocated by the antlr runtime via
+ * factory objects and will be reclaimed when the parser is reset or
+ * free:d.
+ *
+ * Attribute parameters (of type pANTLR3_VECTOR) will be NULL, if the
+ * corresponding production did not have any attributes.  It is up to the
+ * listener to validate and interprete the attributes.
+ *
+ * Furthermore, the attribute vectors contain pointers to elements of
+ * type MWKEYVALUE.
+ */
+
+static void PREFIX`OnWord'(MWLISTENER *listener, pANTLR3_STRING word);
+static void PREFIX`OnSpecial'(MWLISTENER *listener, pANTLR3_STRING special);
+static void PREFIX`OnSpace'(MWLISTENER *listener, pANTLR3_STRING space);
+static void PREFIX`OnNewline'(MWLISTENER *listener);
+static void PREFIX`OnBr'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`OnNowiki'(MWLISTENER *listener, pANTLR3_STRING nowiki);
+static void PREFIX`OnHTMLEntity'(MWLISTENER *listener, pANTLR3_STRING entity);
+static void PREFIX`OnHorizontalRule'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`BeginParagraph'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndParagraph'(MWLISTENER *listener);
+static void PREFIX`BeginArticle'(MWLISTENER *listener);
+static void PREFIX`EndArticle'(MWLISTENER *listener);
+static void PREFIX`BeginItalic'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndItalic'(MWLISTENER *listener);
+static void PREFIX`BeginBold'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndBold'(MWLISTENER *listener);
+static void PREFIX`BeginPre'(MWLISTENER *listener);
+static void PREFIX`EndPre'(MWLISTENER *listener);
+static void PREFIX`BeginBulletList'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndBulletList'(MWLISTENER *listener);
+static void PREFIX`BeginEnumerationList'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndEnumerationList'(MWLISTENER *listener);
+static void PREFIX`BeginDefinitionList'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndDefinitionList'(MWLISTENER *listener);
+static void PREFIX`BeginBulletListItem'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndBulletListItem'(MWLISTENER *listener);
+static void PREFIX`BeginEnumerationItem'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndEnumerationItem'(MWLISTENER *listener);
+static void PREFIX`BeginDefinedTermItem'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndDefinedTermItem'(MWLISTENER *listener);
+static void PREFIX`BeginDefinitionItem'(MWLISTENER *listener, pANTLR3_VECTOR attr);
+static void PREFIX`EndDefinitionItem'(MWLISTENER *listener);
+static void PREFIX`BeginTableOfContents'(MWLISTENER *listener);
+static void PREFIX`EndTableOfContents'(MWLISTENER *listener);
+static void PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level);
+static void PREFIX`EndTableOfContentsItem'(MWLISTENER *listener);
+static void PREFIX`BeginTable'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTable'(MWLISTENER *listener);
+static void PREFIX`BeginTableRow'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTableRow'(MWLISTENER *listener);
+static void PREFIX`BeginTableCell'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTableCell'(MWLISTENER *listener);
+static void PREFIX`BeginTableHeading'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTableHeading'(MWLISTENER *listener);
+static void PREFIX`BeginTableCaption'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTableCaption'(MWLISTENER *listener);
+static void PREFIX`BeginTableBody'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndTableBody'(MWLISTENER *listener);
+static void PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHeading'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlDiv'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlDiv'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlBlockquote'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlBlockquote'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlCenter'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlCenter'(MWLISTENER *listener);
+static void PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void PREFIX`EndInternalLink'(MWLISTENER *listener);
+static void PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void PREFIX`BeginExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl);
+static void PREFIX`EndExternalLink'(MWLISTENER *listener);
+static void PREFIX`OnExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl);
+static void PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void PREFIX`EndMediaLink'(MWLISTENER *listener);
+static void PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void PREFIX`OnTagExtension'(MWLISTENER *listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
+static void PREFIX`BeginHtmlU'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlU'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlDel'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlDel'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlIns'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlIns'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlFont'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlFont'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlBig'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlBig'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlSmall'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlSmall'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlSub'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlSub'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlSup'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlSup'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlCite'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlCite'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlCode'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlCode'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlStrike'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlStrike'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlStrong'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlStrong'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlSpan'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlSpan'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlTt'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlTt'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlVar'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlVar'(MWLISTENER *listener);
+static void PREFIX`BeginHtmlAbbr'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
+static void PREFIX`EndHtmlAbbr'(MWLISTENER *listener);
+static void * PREFIX`New'(void);
+static void PREFIX`Reset'(void *data);
+static void PREFIX`Free'(void *data);
+static void * PREFIX`GetResult'(MWLISTENER *listener);
+
+/**
+ * Data storage for the listener.
+ */
+typedef struct STRUCT_NAME`_struct'
+{
+} 
+    STRUCT_NAME;
+
+/**
+ * Macro for accessing the data.
+ */
+#define DATA \
+   ((STRUCT_NAME *)listener->data)
+
+/**
+ * The listener instance.
+ */
+const MWLISTENER LISTENER_NAME = {
+    .newData                  = PREFIX`New',
+    .freeData                 = PREFIX`Free',
+    .resetData                = PREFIX`Reset',
+    .getResult                = PREFIX`GetResult',
+    .onWord                   = PREFIX`OnWord',
+    .onSpecial                = PREFIX`OnSpecial',
+    .onSpace                  = PREFIX`OnSpace',
+    .onNewline                = PREFIX`OnNewline',
+    .onBr                     = PREFIX`OnBr',
+    .beginParagraph           = PREFIX`BeginParagraph',
+    .endParagraph             = PREFIX`EndParagraph',
+    .beginArticle             = PREFIX`BeginArticle',
+    .endArticle               = PREFIX`EndArticle',
+    .beginItalic              = PREFIX`BeginItalic',
+    .endItalic                = PREFIX`EndItalic',
+    .beginBold                = PREFIX`BeginBold',
+    .endBold                  = PREFIX`EndBold',
+    .beginPre                 = PREFIX`BeginPre',
+    .endPre                   = PREFIX`EndPre',
+    .beginTable               = PREFIX`BeginTable',
+    .endTable                 = PREFIX`EndTable',
+    .beginTableRow            = PREFIX`BeginTableRow',
+    .endTableRow              = PREFIX`EndTableRow',
+    .beginTableCell           = PREFIX`BeginTableCell',
+    .endTableCell             = PREFIX`EndTableCell',
+    .beginTableHeading        = PREFIX`BeginTableHeading',
+    .endTableHeading          = PREFIX`EndTableHeading',
+    .beginTableCaption        = PREFIX`BeginTableCaption',
+    .endTableCaption          = PREFIX`EndTableCaption',
+    .beginTableBody           = PREFIX`BeginTableBody',
+    .endTableBody             = PREFIX`EndTableBody',
+    .onNowiki                 = PREFIX`OnNowiki',
+    .onHTMLEntity             = PREFIX`OnHTMLEntity',
+    .onHorizontalRule         = PREFIX`OnHorizontalRule',
+    .beginHeading             = PREFIX`BeginHeading',
+    .endHeading               = PREFIX`EndHeading',
+    .beginInternalLink        = PREFIX`BeginInternalLink',
+    .endInternalLink          = PREFIX`EndInternalLink',
+    .onInternalLink           = PREFIX`OnInternalLink',
+    .beginExternalLink        = PREFIX`BeginExternalLink',
+    .endExternalLink          = PREFIX`EndExternalLink',
+    .onExternalLink           = PREFIX`OnExternalLink',
+    .beginMediaLink           = PREFIX`BeginMediaLink',
+    .endMediaLink             = PREFIX`EndMediaLink',
+    .onMediaLink              = PREFIX`OnMediaLink',
+    .onTagExtension           = PREFIX`OnTagExtension',
+    .beginBulletList          = PREFIX`BeginBulletList',
+    .endBulletList            = PREFIX`EndBulletList',
+    .beginBulletListItem      = PREFIX`BeginBulletListItem',
+    .endBulletListItem        = PREFIX`EndBulletListItem',
+    .beginEnumerationList     = PREFIX`BeginEnumerationList',
+    .endEnumerationList       = PREFIX`EndEnumerationList',
+    .beginEnumerationItem     = PREFIX`BeginEnumerationItem',
+    .endEnumerationItem       = PREFIX`EndEnumerationItem',
+    .beginDefinitionList      = PREFIX`BeginDefinitionList',
+    .endDefinitionList        = PREFIX`EndDefinitionList',
+    .beginDefinedTermItem     = PREFIX`BeginDefinedTermItem',
+    .endDefinedTermItem       = PREFIX`EndDefinedTermItem',
+    .beginDefinitionItem      = PREFIX`BeginDefinitionItem',
+    .endDefinitionItem        = PREFIX`EndDefinitionItem',
+    .beginTableOfContents     = PREFIX`BeginTableOfContents',
+    .endTableOfContents       = PREFIX`EndTableOfContents',
+    .beginTableOfContentsItem = PREFIX`BeginTableOfContentsItem',
+    .endTableOfContentsItem   = PREFIX`EndTableOfContentsItem',
+    .beginHtmlDiv             = PREFIX`BeginHtmlDiv',
+    .endHtmlDiv               = PREFIX`EndHtmlDiv',
+    .beginHtmlBlockquote      = PREFIX`BeginHtmlBlockquote',
+    .endHtmlBlockquote        = PREFIX`EndHtmlBlockquote',
+    .beginHtmlCenter          = PREFIX`BeginHtmlCenter',
+    .endHtmlCenter            = PREFIX`EndHtmlCenter',
+    .beginHtmlU               = PREFIX`BeginHtmlU',
+    .endHtmlU                 = PREFIX`EndHtmlU',
+    .beginHtmlDel             = PREFIX`BeginHtmlDel',
+    .endHtmlDel               = PREFIX`EndHtmlDel',
+    .beginHtmlIns             = PREFIX`BeginHtmlIns',
+    .endHtmlIns               = PREFIX`EndHtmlIns',
+    .beginHtmlFont            = PREFIX`BeginHtmlFont',
+    .endHtmlFont              = PREFIX`EndHtmlFont',
+    .beginHtmlBig             = PREFIX`BeginHtmlBig',
+    .endHtmlBig               = PREFIX`EndHtmlBig',
+    .beginHtmlSmall           = PREFIX`BeginHtmlSmall',
+    .endHtmlSmall             = PREFIX`EndHtmlSmall',
+    .beginHtmlSub             = PREFIX`BeginHtmlSub',
+    .endHtmlSub               = PREFIX`EndHtmlSub',
+    .beginHtmlSup             = PREFIX`BeginHtmlSup',
+    .endHtmlSup               = PREFIX`EndHtmlSup',
+    .beginHtmlCite            = PREFIX`BeginHtmlCite',
+    .endHtmlCite              = PREFIX`EndHtmlCite',
+    .beginHtmlCode            = PREFIX`BeginHtmlCode',
+    .endHtmlCode              = PREFIX`EndHtmlCode',
+    .beginHtmlStrike          = PREFIX`BeginHtmlStrike',
+    .endHtmlStrike            = PREFIX`EndHtmlStrike',
+    .beginHtmlStrong          = PREFIX`BeginHtmlStrong',
+    .endHtmlStrong            = PREFIX`EndHtmlStrong',
+    .beginHtmlSpan            = PREFIX`BeginHtmlSpan',
+    .endHtmlSpan              = PREFIX`EndHtmlSpan',
+    .beginHtmlTt              = PREFIX`BeginHtmlTt',
+    .endHtmlTt                = PREFIX`EndHtmlTt',
+    .beginHtmlVar             = PREFIX`BeginHtmlVar',
+    .endHtmlVar               = PREFIX`EndHtmlVar',
+    .beginHtmlAbbr            = PREFIX`BeginHtmlAbbr',
+    .endHtmlAbbr              = PREFIX`EndHtmlAbbr',
+
+};
+
+
+/**
+ * Constructor for the listener's data storage.
+ * @return A new instance of the data.
+ */
+static void *
+PREFIX`New'()
+{
+    STRUCT_NAME *data = ANTLR3_MALLOC(sizeof(*data));
+    if (data == NULL) {
+        return NULL;
+    }
+
+    return data;
+}
+
+/**
+ * Deallocates the data storage.
+ * @param pointer to the data storage.
+ */
+static void
+PREFIX`Free'(void *ptr)
+{
+    STRUCT_NAME *data = ptr;
+
+    ANTLR3_FREE(data);
+}
+
+/**
+ * Resets an instance of the data storage.
+ * @param pointer to the data storage.
+ */
+static void
+PREFIX`Reset'(void *ptr)
+{
+    STRUCT_NAME *data = ptr;
+}
+
+/**
+ * Return a pointer to an output buffer or similar.
+ *
+ * @param listener
+ * @returns Pointer to implementation specific result, if any.
+ */
+static void *
+PREFIX`GetResult'(MWLISTENER *listener)
+{
+    return NULL;
+}
+
+/**
+ * Method that will be called to indicate that a "word" should be
+ * rendered.
+ *
+ * A word is liberally defined as a sequence of printable characters
+ * that aren't 'special', 'newline' or 'space'.  A non-html rendering
+ * listener might need to escape some characters.
+ *
+ * Two words may occur without any space, newlines or any other
+ * symbol in between.  These should be concatenated into one word
+ * in the output.
+ *
+ * @param listener
+ * @param word
+ */
+static void
+PREFIX`OnWord'(MWLISTENER *listener, pANTLR3_STRING word)
+{
+}
+
+/**
+ * The listener should render a sequence of "special" characters.
+ *
+ * This is the complete set of special characters:
+ * !"#$%&(*)+,-./:;<=>?@[']^_`{|}~
+ *
+ * Although special characters are usually sent one at the time,
+ * sometimes a sequence of more than one characters are sent to
+ * the listener.
+ * 
+ * @param listener
+ * @param special
+ */
+static void
+PREFIX`OnSpecial'(MWLISTENER *listener, pANTLR3_STRING special)
+{
+}
+
+/**
+ * The listener should render a space.
+ *
+ * The space characters are stored in the argument, if the renderer
+ * would like to output the spaces exactly as they appeared in the
+ * wikitext.  Usually the listener should render just a space.
+ *
+ * @param listener
+ * @param space
+ */
+static void
+PREFIX`OnSpace'(MWLISTENER *listener, pANTLR3_STRING space)
+{
+}
+
+/**
+ * A newline was encountered in the wikitext.
+ *
+ * A listener should normally just render a space.
+ *
+ * @param listener
+ */
+static void
+PREFIX`OnNewline'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A <br> tag was encontered in the wikitext.
+ *
+ * The listener should render a line break.
+ *
+ * The tag may have attributes.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`OnBr'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * Called at the start of a paragraph.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginParagraph'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * Called at the end of a paragraph.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndParagraph'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Called at the start of an article.
+ *
+ * @param listener
+ */
+static void
+PREFIX`BeginArticle'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Called at the end of an article.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndArticle'(MWLISTENER *listener)
+{
+}
+
+/**
+ * The listener should initiate italic rendering.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginItalic'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * The listener should stop italic rendering.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndItalic'(MWLISTENER *listener)
+{
+}
+
+/**
+ * The listener should initiate bold rendering.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginBold'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * The listener should stop bold rendering.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndBold'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Initiate formatting of a preformatted text box.
+ *
+ * @param listener
+ */
+static void
+PREFIX`BeginPre'(MWLISTENER *listener)
+{
+}
+
+/**
+ * End preformatted text box.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndPre'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Initiate formatting of a heading at the given level.
+ *
+ * @param listener
+ * @param level
+ * @param attr
+ */
+static void
+PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting of the currently opened heading.
+ *
+ * @param listener.
+ */
+static void
+PREFIX`EndHeading'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Initiate formatting of the link text corresponding to an internal
+ * link targetting the page with the given title.
+ *
+ * @param listener
+ * @param linkTitle
+ */
+static void
+PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+{
+}
+
+/**
+ * End formatting of internal link.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndInternalLink'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A complete internal link has been encountered.  The link title
+ * should be used as the text contents of the link.
+ *
+ * TODO: pass link trail and prefix as arguments to this method.
+ *
+ * @param listener
+ * @param linkTitle
+ */
+static void
+PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+{
+}
+
+/**
+ * Begin formatting text as the link text of an external link
+ * targeting the given URL.
+ *
+ * @param listener
+ * @param linkUrl
+ */
+static void
+PREFIX`BeginExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl)
+{
+}
+
+/**
+ * End formatting of external link.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndExternalLink'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Indicate that a complete external link has been encountered.  The text should
+ * be derived from the link URL.
+ *
+ * @param listener
+ * @param linkUrl
+ */
+static void
+PREFIX`OnExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl)
+{
+}
+
+/**
+ * Begin formatting of a media link.  The options that describes how this media link should
+ * be formatted is given by the attribute vector.  Note that for options that do not take an
+ * argument the value element is NULL.  Unlike attributes of html elements, the attributes
+ * of the media link has been validated by the parser.
+ *
+ * Following this event is the inlined text elements of the caption.
+ * Also, note that media links may nest one level.
+ *
+ * @param listener
+ * @param linkTitle
+ * @param attr
+ */
+static void
+PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * Marks the end of the innermost currently opened media link.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndMediaLink'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Indicate that a complete image link (one without any caption) has been encountered.
+ *
+ * The options are passed in the attribute vector.  Works the same as
+ * for PREFIX`BeginMediaLink'.
+ *
+ * @param listener
+ * @param linkTitle
+ * @param attr
+ */
+static void
+PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * Indicates that a tag corresponding to a registered tag extension has been encountered.
+ *
+ * Note that the body has not been filtered in any way; it may contain
+ * any characters/markup code except the corresponding closing tag.
+ *
+ * @param listener
+ * @param name
+ * @param body
+ * @param attr
+ */
+static void
+PREFIX`OnTagExtension'(MWLISTENER *listener, const char *name, pANTLR3_STRING body, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * Begin formatting of a bullet list.
+ *
+ * After this, bullet list items may appear.  Note, however, that inlined text
+ * may appear outside of any list item.
+ *
+ * TODO: Should we generate implicit list items for the inlined text
+ * that appears outside of list items?  The original behavior is to
+ * render the inlined text outside of any list items, e.g., "<ul>inline
+ * text</ul>" is rendered as is.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginBulletList'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting of a bullet list.  Bullet list items may still
+ * appear, if this list was a nested inside another list.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndBulletList'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a bullet list item.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginBulletListItem'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting of bullet list item.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndBulletListItem'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting an enumeration list (numbered list items).  After this,
+ * enumeration list items may appear.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginEnumerationList'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting enumeration list  Enumeration list items may still
+ * appear, if this list was a nested inside another list.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndEnumerationList'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting an enumeration list item.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginEnumerationItem'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting enumeration list item.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndEnumerationItem'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a definition list.  After this, defined term
+ * items and definition items may appear.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginDefinitionList'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting of definition list.  Defined term items and definition
+ * items may still appear if this list was nested inside another list.
+ *
+ * @param listener.
+ */
+static void
+PREFIX`EndDefinitionList'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a defined term item.  (HTML <dt>)
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginDefinedTermItem'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting a defined term item.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndDefinedTermItem'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a definition (HTML <dd>)
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginDefinitionItem'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * End formatting a definition item.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndDefinitionItem'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table of contents.  After this, only table of contents items will
+ * appear until the end of the table of contents.
+ *
+ * @param listener
+ */
+static void
+PREFIX`BeginTableOfContents'(MWLISTENER *listener)
+{
+}
+
+/**
+ * End formatting a table of contents.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableOfContents'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table of contents item.  The table of contents
+ * item corresponds to a heading level.
+ *
+ * The table of contents item contains inlined text.
+ *
+ * @param listener
+ * @param level
+ */
+static void
+PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level)
+{
+}
+
+/**
+ * End formatting a table of contents item.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableOfContentsItem'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table.  The table is guaranteed to be well formed
+ * with table cells encapsulated in table rows, which in turn
+ * is encapsulated in a table body.
+ *
+ * A table may, however, have multiple table bodies and multiple table
+ * captions.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTable'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting of a table.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTable'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table row.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTableRow'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting a table row.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableRow'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table cell.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTableCell'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting a table cell.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableCell'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table heading cell.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTableHeading'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting a table heading cell.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableHeading'(MWLISTENER *listener)
+{
+}
+
+/**
+ * Begin formatting a table caption.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTableCaption'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting a table caption.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableCaption'(MWLISTENER *listener)
+{
+}
+
+
+/**
+ * Begin formatting a table body.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginTableBody'(MWLISTENER *listener, pANTLR3_VECTOR attributes)
+{
+}
+
+/**
+ * End formatting a table body.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndTableBody'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A <nowiki> element.  The body of the nowiki element is
+ * passed verbatim.  It is up to the listener to filter
+ * and escape undesired character sequences.
+ *
+ * @param listener
+ * @param nowiki
+ */
+static void
+PREFIX`OnNowiki'(MWLISTENER *listener, pANTLR3_STRING nowiki)
+{
+}
+
+/**
+ * An html entity on the form &<entity description>;.
+ * The string describing the entity is passed as the argument.
+ *
+ * @param listener
+ * @param entity
+ */
+static void
+PREFIX`OnHTMLEntity'(MWLISTENER *listener, pANTLR3_STRING entity)
+{
+}
+
+/**
+ * A horizontal line.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`OnHorizontalRule'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html <div> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlDiv'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </div> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlDiv'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <blockquote> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlBlockquote'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </blockquote> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlBlockquote'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <center> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlCenter'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </center> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlCenter'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <u> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlU'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </u> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlU'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <del> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlDel'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </del> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlDel'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <ins> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlIns'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </ins> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlIns'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <font> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlFont'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </font> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlFont'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <big> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlBig'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </big> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlBig'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <small> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlSmall'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </small> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlSmall'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <sub> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlSub'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </sub> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlSub'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <sup> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlSup'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </sup> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlSup'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <cite> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlCite'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </cite> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlCite'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <code> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlCode'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </code> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlCode'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <strike> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlStrike'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </strike> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlStrike'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <strong> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlStrong'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </strong> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlStrong'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <span> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlSpan'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </span> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlSpan'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <tt> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlTt'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </tt> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlTt'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <var> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlVar'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </var> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlVar'(MWLISTENER *listener)
+{
+}
+
+/**
+ * A html <abbr> element.
+ *
+ * @param listener
+ * @param attr
+ */
+static void
+PREFIX`BeginHtmlAbbr'(MWLISTENER *listener, pANTLR3_VECTOR attr)
+{
+}
+
+/**
+ * An html </abbr> element.
+ *
+ * @param listener
+ */
+static void
+PREFIX`EndHtmlAbbr'(MWLISTENER *listener)
+{
+}
+

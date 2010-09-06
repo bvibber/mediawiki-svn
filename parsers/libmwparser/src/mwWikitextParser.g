@@ -327,20 +327,10 @@ begin_italic: {!CX->inShortItalic}?=> APOS APOS      {CX->beginItalic(CX, NULL);
 end_italic:   { CX->inShortItalic}?=> APOS APOS      {CX->endItalic(CX);}  ;
 
 pre:
-    ( 
-        {
-            CX->beginPre(CX, NULL);
-        }
-        (()=> INDENT inline_text_line (NEWLINE|EOF))+
-      |
-        p = BEGIN_PRE
-        {
-           CX->beginPre(CX, $p->custom);
-        }
-        inline_text END_PRE
-    )
-
-
+    {
+        CX->beginPre(CX);
+    }
+    (()=> INDENT inline_text_line (NEWLINE|EOF))+
     {
         CX->endPre(CX);
     }

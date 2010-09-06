@@ -72,10 +72,10 @@ onHorizontalRule(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 }
 
 static void
-beginPre(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
+beginPre(MWPARSERCONTEXT *context)
 {
     MWLISTENER *l = &context->listener;
-    l->beginPre(l, attr);
+    l->beginPre(l);
 }
 
 static void

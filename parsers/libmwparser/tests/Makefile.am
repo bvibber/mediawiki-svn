@@ -2,7 +2,7 @@
 check_PROGRAMS = testtext
 
 testtext_SOURCES = src/testtext.c
-testtext_LDADD = $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(LIBREGEX)
+testtext_LDADD = $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(GLIB_LIBS)
 
 test_data_dirs = format nowiki html table hr list link
 

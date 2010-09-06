@@ -13,8 +13,13 @@ struct MWPARSER_struct
     pANTLR3_COMMON_TOKEN_STREAM tstream;
 };
 
-struct MWPARSER_INPUT_STREAM_struct {
+struct MWPARSER_INPUT_STREAM_struct
+{
     pANTLR3_INPUT_STREAM antlrStream;
+};
+
+struct MWPARSER_OPTIONS_struct
+{
 };
 
 
@@ -82,7 +87,7 @@ void MWParserReset(MWPARSER *parser, MWPARSER_INPUT_STREAM *inputStream)
 }
 
 
-void MWParserParseArticle(MWPARSER *parser)
+void MWParserParseArticle(MWPARSER *parser, MWPARSER_OPTIONS *options)
 {
     pmwWikitextParser psr = parser->parserContext->parser;
     psr->article(psr);
@@ -95,6 +100,18 @@ static ANTLR3_UINT32 antlr3encoding(MWPARSER_ENCODING encoding)
         return ANTLR3_ENC_8BIT;
     case MWPARSER_UTF8:
         return ANTLR3_ENC_UTF8;
+    case MWPARSER_UTF16:
+        return ANTLR3_ENC_UTF16;
+    case MWPARSER_UTF16LE:
+        return ANTLR3_ENC_UTF16LE;
+    case MWPARSER_UTF16BE:
+        return ANTLR3_ENC_UTF16BE;
+    case MWPARSER_UTF32:
+        return ANTLR3_ENC_UTF32;
+    case MWPARSER_UTF32LE:
+        return ANTLR3_ENC_UTF32LE;
+    case MWPARSER_UTF32BE:
+        return ANTLR3_ENC_UTF32BE;
     default:
         return -1;
     }
@@ -146,19 +163,25 @@ MWParserCloseInputStream(MWPARSER_INPUT_STREAM * inputStream)
 
 
 bool
-MWParserSetLegalTitleRegexp(MWPARSER *parser, const wchar_t *posixRegexp)
+MWParserSetLegalTitleRegexp(MWPARSER *parser, const char *perlRegexp)
 {
-    return parser->lexerContext->setLegalTitleRegexp(parser->lexerContext, posixRegexp);
+    return parser->lexerContext->setLegalTitleRegexp(parser->lexerContext, perlRegexp);
 }
 
 bool
-MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const wchar_t *posixRegexp)
+MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const char *perlRegexp)
 {
-    return parser->lexerContext->setMediaLinkTitleRegexp(parser->lexerContext, posixRegexp);
+    return parser->lexerContext->setMediaLinkTitleRegexp(parser->lexerContext, perlRegexp);
 }
 
 bool
 MWParserRegisterTagExtension(MWPARSER *parser, const MWPARSER_TAGEXT *tagExtension)
 {
     return parser->lexerContext->registerTagExtension(parser->lexerContext, tagExtension);
+}
+
+void *
+MWParserGetResult(MWPARSER *parser)
+{
+    return parser->parserContext->listener.getResult(&parser->parserContext->listener);
 }
