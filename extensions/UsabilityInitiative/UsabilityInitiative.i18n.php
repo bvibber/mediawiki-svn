@@ -49,6 +49,16 @@ $messages['aln'] = array(
 	'prefs-labs' => 'Laboratorë karakteristika',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'usabilityinitiative' => "Iniciativa d'usabilitat",
+	'usabilityinitiative-desc' => "Caracteristas desenvolicadas por a ''Wikipedia Usability Initiative'' ta amillorar a usabilidat de MediaWiki",
+	'prefs-beta' => 'Caracteristicas beta',
+	'prefs-labs' => 'Caracteristicas experimentals',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

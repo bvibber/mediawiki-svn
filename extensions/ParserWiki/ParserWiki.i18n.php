@@ -40,6 +40,13 @@ $messages['br'] = array(
 	'parserwiki-desc' => "Talvezout a ra da dermeniñ ur yezhadur en ur wiki ha d'e evit enporzhiañ titouroù er wiki-se",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'parserwiki-desc' => 'Omogućava definiranje gramatike u wikiju te korištenje gramatike za unos podataka u tu wiki',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

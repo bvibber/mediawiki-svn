@@ -142,6 +142,13 @@ $messages['he'] = array(
 	'wlfeed-desc' => 'מחלקות מתקדמות לייצור הזנות',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'wlfeed-desc' => 'Poboljšane klase za stvaranje feedova',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

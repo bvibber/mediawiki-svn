@@ -425,9 +425,19 @@ $messages['oc'] = array(
 	'tablemod-error-missingid' => 'Atribut ident mancant dins la balisa.',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulacja tabelą wiki',
 	'tablemod-msg-remove' => 'Usuń',
+	'tablemod-error-format' => 'Ten znacznik obsługuje tylko jedną prostą tabelę dla znacznika, bez żadnego tekstu przed lub po jego zakończeniu.',
+	'tablemod-error-colcount' => 'Ten znacznik obsługuje tylko tabele o tej samej liczbie kolumn w każdym wierszu przy usuwaniu.',
+	'tablemod-error-headcount' => 'Ten znacznik obsługuje tylko tabele z jednym nagłówkiem kolumn podczas sortowania.',
+	'tablemod-error-invalidsort' => 'Nieprawidłowe parametry sortowania.',
+	'tablemod-error-invalidaction' => 'Nieprawidłowe działanie.',
+	'tablemod-error-missingid' => 'Brakuje atrybutu ident w znaczniku.',
 );
 
 /** Piedmontese (Piemontèis)

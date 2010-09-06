@@ -92,6 +92,13 @@ $messages['br'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Gweredekaat ar bitrak "Ouzhpennañ ameiler mediaoù"',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Omogući dodatak "Dodaj čarobnjak za medije"',
+);
+
 /** Catalan (Català)
  * @author Vriullop
  */

@@ -58,6 +58,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'activestrategy' => 'Aktivna strategija',
 	'nedits' => '$1 {{PLURAL:$1|izmjena|izmjene}}',
 );
 

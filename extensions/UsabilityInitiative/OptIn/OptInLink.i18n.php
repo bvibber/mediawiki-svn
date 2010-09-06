@@ -65,6 +65,18 @@ $messages['aln'] = array(
 	'tooltip-pt-optin-feedback' => 'Sigurimi reagime për përvojën tuaj me karakteristika të reja',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'optin-try' => 'Prebar Beta',
+	'tooltip-pt-optin-try' => 'Prebar as nuevas caracteristicas',
+	'optin-leave' => 'Deixar Beta',
+	'tooltip-pt-optin-leave' => 'Desactivar as nuevas caracteristicas',
+	'optin-feedback' => 'Ninviar a suya opinión sobre Beta',
+	'tooltip-pt-optin-feedback' => 'Comente as suyas experiencias con as nuevas caracteristicas',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author Meno25

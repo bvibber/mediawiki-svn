@@ -84,6 +84,13 @@ $messages['gsw'] = array(
 	'xmlrc-desc' => 'Verschickt Benochrichtigunge iber Änderige as XML, iber UDP, Jabber oder anderi Protokoll',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'xmlrc-desc' => 'Šalje obavijesti o izmjenama koristeći XML, preko UDP-a, Jabbera ili na neki drugi način',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

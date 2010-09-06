@@ -18,11 +18,15 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Siebrand
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'semanticformsinputs-desc' => '{{desc}}',
+	'semanticformsinputs-close' => '{{Identical|Close}}',
+	'semanticformsinputs-prev' => '{{Identical|Previous}}',
+	'semanticformsinputs-next' => '{{Identical|Next}}',
 	'semanticformsinputs-dateformatlong' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
 	'semanticformsinputs-dateformatshort' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
 );
@@ -42,14 +46,23 @@ $messages['af'] = array(
 $messages['be-tarask'] = array(
 	'semanticformsinputs-desc' => 'Дадатковыя тыпы ўводу для [http://www.mediawiki.org/wiki/Extension:Semantic_Forms сэмантычных формаў]',
 	'semanticformsinputs-wrongformat' => 'Няслушны фармат.',
+	'semanticformsinputs-close' => 'Закрыць',
+	'semanticformsinputs-prev' => 'Папярэдняе',
+	'semanticformsinputs-next' => 'Наступнае',
+	'semanticformsinputs-today' => 'Сёньня',
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
 	'semanticformsinputs-desc' => 'Doareoù moned ouzhpenn evit [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Furmad fall.',
+	'semanticformsinputs-close' => 'Serriñ',
+	'semanticformsinputs-prev' => 'Kent',
+	'semanticformsinputs-next' => "War-lerc'h",
+	'semanticformsinputs-today' => 'Hiziv',
 );
 
 /** Bosnian (Bosanski)
@@ -110,6 +123,10 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'semanticformsinputs-desc' => 'Tipos de entrada adicionais para os [http://www.mediawiki.org/wiki/Extension:Semantic_Forms formularios semánticos]',
 	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
+	'semanticformsinputs-close' => 'Pechar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Seguinte',
+	'semanticformsinputs-today' => 'Hoxe',
 );
 
 /** Swiss German (Alemannisch)
@@ -190,6 +207,10 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'semanticformsinputs-desc' => "Sòrt d'intrade adissionaj për [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formolari Semàntich]",
 	'semanticformsinputs-wrongformat' => 'Formà pa bon.',
+	'semanticformsinputs-close' => 'Sara',
+	'semanticformsinputs-prev' => 'Prima',
+	'semanticformsinputs-next' => 'Apress',
+	'semanticformsinputs-today' => 'Ancheuj',
 );
 
 /** Portuguese (Português)
@@ -198,6 +219,10 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'semanticformsinputs-desc' => 'Tipos de entrada adicionais para [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formulários Semânticos]',
 	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
+	'semanticformsinputs-close' => 'Fechar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Seguinte',
+	'semanticformsinputs-today' => 'Hoje',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -206,6 +231,10 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'semanticformsinputs-desc' => 'Tipos de entrada adicionais para [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formulários Semânticos]',
 	'semanticformsinputs-wrongformat' => 'Formato incorreto.',
+	'semanticformsinputs-close' => 'Fechar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Seguinte',
+	'semanticformsinputs-today' => 'Hoje',
 );
 
 /** Tarandíne (Tarandíne)
@@ -218,11 +247,15 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author MaxSem
+ * @author Александр Сигачёв
  * @author Сrower
  */
 $messages['ru'] = array(
 	'semanticformsinputs-desc' => 'Дополнительные входящие типы для [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Семантических Форм]',
 	'semanticformsinputs-wrongformat' => 'Неверный формат.',
+	'semanticformsinputs-close' => 'Закрыть',
+	'semanticformsinputs-prev' => 'Предыдущая',
+	'semanticformsinputs-next' => 'Следующая',
 	'semanticformsinputs-today' => 'Сегодня',
 );
 

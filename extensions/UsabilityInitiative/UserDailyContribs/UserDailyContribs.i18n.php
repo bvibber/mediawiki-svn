@@ -38,6 +38,13 @@ $messages['aln'] = array(
 	'userdailycontribs-desc' => 'Kontributet e përdoruesit çdo ditë për ndjekjen klikoni extension',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'userdailycontribs-desc' => "Contribucions diarias d'os usuarios t'a extensión de seguimiento de clics",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

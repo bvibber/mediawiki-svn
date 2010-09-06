@@ -2563,6 +2563,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Järelmuudatused',
 	'codereview-email-body2' => 'Kasutaja $1 tegi koodile $2 järelmuudatusi.
 
+Täielik URL järelmuudatuste juurde: $5
+
 Täielik URL: $3
 
 Kehtestamise kokkuvõte:

@@ -2242,6 +2242,8 @@ $messages['ms'] = array(
 	'ogg-dismiss' => 'Tutup',
 	'ogg-download' => 'Muat turun fail',
 	'ogg-desc-link' => 'Perihal fail ini',
+	'ogg-oggThumb-version' => 'OggHandler memerlukan oggThumb versi $1 ke atas.',
+	'ogg-oggThumb-failed' => 'oggThumb gagal mencipta imej ringkas.',
 );
 
 /** Maltese (Malti)

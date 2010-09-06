@@ -1535,6 +1535,83 @@ $messages['pdc'] = array(
 	'storyboard-language' => 'Schprooch',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'storyboard-name' => 'Opowiadania',
+	'storyboard-desc' => '[[Special:Story|Strona dla autorów]], na której można [[Special:StorySubmission|zamieszczać]] opowiadania oraz [[Special:StoryReview|interfejs do zarządzania nimi]]',
+	'right-storyreview' => 'Przeglądanie, edycja, publikowanie i ukrywanie opowiadań',
+	'storyboard-anerroroccured' => 'Wystąpił błąd – $1',
+	'storyboard-unpublished' => 'Niepublikowane',
+	'storyboard-published' => 'Opublikowane',
+	'storyboard-hidden' => 'Ukryte',
+	'storyboard-unpublish' => 'Cofnij publikację',
+	'storyboard-publish' => 'Publikuj',
+	'storyboard-hide' => 'Ukryj',
+	'storyboard-option-unpublished' => 'niepublikowane',
+	'storyboard-option-published' => 'opublikowane',
+	'storyboard-option-hidden' => 'ukryte',
+	'story' => 'Opowiadanie',
+	'storyboard-submittedbyon' => 'Napisane przez $1 dnia $2 o $3',
+	'storyboard-viewstories' => 'Pokaż opowiadania',
+	'storyboard-nosuchstory' => 'To opowiadanie nie istnieje.
+Możliwe, że zostało usunięte.',
+	'storyboard-storyunpublished' => 'To opowiadanie nie zostało jeszcze opublikowane.',
+	'storyboard-nostorytitle' => 'Musisz określić tytuł lub identyfikator opowiadania, które chcesz zobaczyć.',
+	'storyboard-cantedit' => 'Nie możesz edytować opowiadań.',
+	'storyboard-canedit' => 'Możesz [$1 napisać] i opublikować to opowiadanie.',
+	'storyboard-createdandmodified' => 'Utworzone $1 o $2 i ostatnio poprawiane $3 o $4.',
+	'storyboard-authorname' => 'Imię i nazwisko autora',
+	'storyboard-authorlocation' => 'Lokalizacja autora',
+	'storyboard-authoroccupation' => 'Zawód autora',
+	'storyboard-authoremail' => 'Adres e‐mail autora',
+	'storyboard-thestory' => 'Opowiadanie',
+	'storyboard-storystate' => 'Stan',
+	'storyboard-language' => 'Język',
+	'storyboard-storymetadata' => 'Napisane przez $1 dnia $2 o $3',
+	'storyboard-storymetadatafrom' => 'Przesłane przez $1 z $2 dnia $3 o $4.',
+	'storyboard-yourname' => 'Twoje imię i nazwisko (wymagane)',
+	'storyboard-location' => 'Twoja lokalizacja',
+	'storyboard-occupation' => 'Twój zawód',
+	'storyboard-story' => 'Twoje opowiadanie',
+	'storyboard-photo' => 'Masz swoje zdjęcie?
+Dlaczego miałbyś go nie pokazać?',
+	'storyboard-email' => 'Twój adres e‐mail (wymagany)',
+	'storyboard-storytitle' => 'Krótki, opisowy tytuł (wymagany)',
+	'storyboard-agreement' => 'Wyrażam zgodę na publikację i wykorzystanie opowiadania na warunkach licencji [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Za uznaniem autora Na tych samych warunkach].',
+	'storyboard-charsleft' => '({{PLURAL:$1|pozostał $1 znak|pozostały $1 znaki|pozostało $1 znaków}})',
+	'storyboard-cannotbelonger' => 'Twoje opowiadanie jest zbyt długie o <b>$1</b> {{PLURAL:$1|znak|znaki|znaków}}!',
+	'storyboard-charsneeded' => '(dodaj jeszcze $1 {{PLURAL:$1|znak|znaki|znaków}})',
+	'storyboard-needtoagree' => 'Musisz zgodzić się na publikację opowiadania aby je zapisać.',
+	'storyboard-submissioncomplete' => 'Zapisane',
+	'storyboard-submissionincomplete' => 'Zapisanie nieudane',
+	'storyboard-alreadyexists' => '„$1” jest już zajęte.',
+	'storyboard-alreadyexistschange' => '„{0}” jest już zajęte, wybierz inny tytuł.',
+	'storyboard-changetitle' => 'Zmień tytuł.',
+	'storyboard-notsubmitted' => 'Uwierzytelnienie nie powiodło się, opowiadanie nie zostało zapisane.',
+	'storyboard-charstomany' => '$1 {{PLURAL:$1|znak|znaki|znaków}} za dużo!',
+	'storyboard-morecharsneeded' => 'Dodaj jeszcze $1 {{PLURAL:$1|znak|znaki|znaków}}',
+	'storyboard-charactersleft' => '{{PLURAL:$1|Pozostał $1 znak|Pozostały $1 znaki|Pozostało $1 znaków}}',
+	'storyboard-createdsuccessfully' => 'Dziękujemy za to, że podzieliłeś się z nami opowiadaniem!
+Opublikujemy je najszybciej jak to będzie możliwe.
+Możesz [$1 przeczytać dotychczas opublikowane] opowiadania.',
+	'storyboard-emailtitle' => 'Opowiadanie zostało zapisane',
+	'storyboard-emailbody' => 'Opowiadanie pod tytułem „$1” zostało zapisane.
+Opublikujemy je najszybciej, jak to będzie możliwe.
+Możesz [$2 przeczytać dotychczas opublikowane] opowiadania.',
+	'storyreview' => 'Sprawdzenie opowiadanie',
+	'storyboard-deleteimage' => 'Usuń ilustrację',
+	'storyboard-done' => 'Gotowe',
+	'storyboard-working' => 'Operacja jest wykonywana...',
+	'storyboard-imagedeletionconfirm' => 'Czy na pewno chcesz trwale usunąć tę ilustrację opowiadania?',
+	'storyboard-imagedeleted' => 'Ilustracja została usunięta',
+	'storyboard-showimage' => 'Pokaż ilustrację',
+	'storyboard-hideimage' => 'Ukryj ilustrację',
+	'storyboard-deletestory' => 'Usuń',
+	'storyboard-storydeletionconfirm' => 'Czy na pewno chcesz trwale usunąć to opowiadanie?',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

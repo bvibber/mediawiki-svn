@@ -7834,7 +7834,22 @@ Sta sòrt ëd presentassion-sì a l'é për ël test parlà",
 	'anno_en_desc' => "Categorisassion e anotassion an anglèis.
 Sta copertura a peul esse dovrà për categorisé session ëd filmà o për gionté anformassion anotative ch'a son pa test parlà",
 	'thomas_en' => 'Trascrission ufissial',
+	'thomas_en_desc' => 'Trascrission Thomas ufissial dal servissi ëd memorisassion governativ THOMAS.
+Ora sorziss sincronisà da C-SPAN c-spanarchives.org',
+	'mvd_default_mismatch' => "Eror ant l'archivi d'ampostassion",
+	'mvd_default_mismatch_text' => 'A-i é n\'eror ant tò file d\'ampostassion.
+$mvMVDTypeDefaultDisp a dovrìa esse un sotansema ëd $mvMVDTypeAllAvailable',
+	'mv_data_page_title' => '$1 për $2 da $3',
 	'mv_time_separator' => '$1 a $2',
+	'mv_list_streams' => 'Fluss ëd lista MetaVid',
+	'mv_list_streams_page' => 'Fluss ëd lista MetaVid',
+	'mv_list_streams_docu' => "Ël fluss ch'a ven a esist:",
+	'mv_list_streams_none' => 'Pa gnun fluss a esist',
+	'mvvideofeed' => "Esportassion dl'alimentassion ëd video MetaVid",
+	'mvexportask' => "Esportassion dl'alimentassion ëd video Semantic",
+	'video_feed_cat' => 'Alimentassion ëd video për categorìa:',
+	'mv_cat_search_note' => "Nòta: Le categorìe a elenc mach le prime categorìe. 
+Për tùit ij metadat ant l'ansema dle categorìe serca $1",
 );
 
 /** Pashto (پښتو)

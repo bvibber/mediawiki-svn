@@ -1285,6 +1285,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Kurniasan
  */
 $messages['ms'] = array(
@@ -1295,6 +1296,8 @@ $messages['ms'] = array(
 	'patrol-revert-reason' => 'Sebab:',
 	'patrol-skip' => 'Langkau',
 	'patrol-reverting' => 'Membalikkan: $1',
+	'patrol-nonefound' => 'Tiada suntingan yang bersesuaian untuk dirondai.',
+	'patrol-endorsed-ok' => 'Suntingan ini telah ditanda ronda.',
 	'patrol-endorsed-failed' => 'Suntingan tersebut tidak dapat ditandakan telah dironda.',
 	'patrol-reverted-ok' => 'Suntingan telah dikembalikan.',
 	'patrol-reverted-failed' => 'Suntingan ini tidak dapat dikembalikan.',
