@@ -87,7 +87,9 @@ pid_t Daemonize()
 	setsid();
 
 	// Change directory
-	chdir("/");
+	if (chdir("/") == -1) {
+		throw libc_error("Error changing directory");
+	}
 	return 0;
 }
 
