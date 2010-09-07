@@ -1,5 +1,5 @@
 #include <iostream>
-#include <map>
+#include <boost/tr1/unordered_map.hpp>
 #include <stdint.h>
 #include <boost/lexical_cast.hpp>
 #include <cstring>
@@ -9,7 +9,7 @@
 
 using std::strtok;
 
-typedef std::map<std::string, uint64_t>::iterator SeqIterator;
+typedef std::tr1::unordered_map<std::string, uint64_t>::iterator SeqIterator;
 
 struct HostData {
 	HostData() : received(1), sent(0) {}
@@ -20,7 +20,7 @@ struct HostData {
 	// Number of packets sent, estimated from sequence numbers (unsampled)
 	int64_t sent;
 };
-typedef std::map<std::string, HostData>::iterator HostIterator;
+typedef std::tr1::unordered_map<std::string, HostData>::iterator HostIterator;
 
 struct SampleData {
 	SampleData() : total(0), outOfOrder(0), invalid(0) {}
@@ -34,7 +34,7 @@ struct SampleData {
 	// Number of sampled lines which were invalid
 	int64_t invalid;
 
-	std::map<std::string, HostData> hosts;
+	std::tr1::unordered_map<std::string, HostData> hosts;
 
 	void Report(const struct tm * timeStruct, int sampleRate);
 	void PrintRatio(int64_t numerator, int64_t denominator, double numeratorError);
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 {
 	using namespace std;
 	const size_t bufSize = 65536;
-	map<string, uint64_t> seqs;
+	std::tr1::unordered_map<string, uint64_t> seqs;
 	char buffer[bufSize];
 	int sampleRate;
 
@@ -73,6 +73,9 @@ int main(int argc, char** argv)
 		cerr << "packet-loss: invalid sample rate\n";
 		exit(1);
 	}
+
+	// Don't take all day due to http://gcc.gnu.org/bugzilla/show_bug.cgi?id=45574
+	ios::sync_with_stdio(false);
 
 	while (cin.good()) {
 		cin.getline(buffer, bufSize);
@@ -108,7 +111,7 @@ int main(int argc, char** argv)
 			currentData.invalid++;
 			continue;
 		}
-		currentTime = mktime(&timeStruct);
+		currentTime = timegm(&timeStruct);
 
 		SeqIterator seqIter = seqs.find(strConn);
 		HostIterator hostIter = currentData.hosts.find(strConn);
@@ -150,6 +153,7 @@ int main(int argc, char** argv)
 	// Final report
 	currentTime = time(NULL);
 	currentData.Report(&timeStruct, sampleRate);
+	return 0;
 }
 
 void SampleData::Report(const struct tm * timeStruct, int sampleRate) {
