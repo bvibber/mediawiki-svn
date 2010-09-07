@@ -20,9 +20,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			),
 		) );
 
-		if ( isset( $params['pageid'] ) ) {
-			$this->addWhereFld( 'aap_page_id', $params['pageid'] );
-		}
+		$this->addWhereFld( 'aap_page_id', $params['pageid'] );
 
 		if ( $params['userrating'] ) {
 			global $wgUser;
@@ -73,7 +71,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 					'pageid' => $pageId,
 				);
 
-				if ( isset( $params['revid'] ) || $params['userrating'] ) {
+				if ( $params['userrating'] ) {
 					$page['revid'] = $row->aa_revision;
 				}
 
@@ -138,6 +136,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array(
 			'pageid' => array(
+				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => 'integer',
 			),
