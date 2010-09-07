@@ -73,9 +73,10 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	/**
-	 *
-	 * @param $pageId Integer:
-	 * @param $ratingId Integer:
+	 * Inserts (or Updates, where appropriate) the aggregate page rating
+	 * 
+	 * @param $pageId Integer: Page Id
+	 * @param $ratingId Integer: Rating Id
 	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
 	 * @param $newRating Boolean: Whether this is a new rating (for update, whether this increases the count)
 	 */
@@ -109,12 +110,14 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	/**
-	 * @param $pageId Integer:
-	 * @param $revisionId Integer:
-	 * @param $user User:
-	 * @param $token Array:
-	 * @param $ratingId Integer:
-	 * @param $ratingValue Integer:
+	 * Inserts (or Updates, where appropriate) the users ratings for a specific revision
+	 *
+	 * @param $pageId Integer: Page Id
+	 * @param $revisionId Integer: Revision Id
+	 * @param $user User: Current User object
+	 * @param $token Array: Token if necessary
+	 * @param $ratingId Integer: Rating Id
+	 * @param $ratingValue Integer: Value of the Rating
 	 */
 	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue ) {
 		$dbw = wfGetDB( DB_MASTER );

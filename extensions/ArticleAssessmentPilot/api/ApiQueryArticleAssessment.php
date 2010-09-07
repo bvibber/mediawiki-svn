@@ -54,9 +54,10 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
+		
+		global $wgArticleAssessmentRatingCount;
 
-		$limit = $params['limit'];
-		$this->addOption( 'LIMIT', $limit * 4 ); //4 "Ratings"
+		$this->addOption( 'LIMIT', $wgArticleAssessmentRatingCount );
 
 		$res = $this->select( __METHOD__ );
 
@@ -100,6 +101,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			$revid = isset( $params['revid'] ) ? $params['revid'] : $ratings[$pageId]['revid'];
 
 			$dbr = wfGetDb( DB_SLAVE );
+			
+			global $wgArticleAssessmentStaleCount;
 
 			$res = $dbr->selectField(
 				'revision',
@@ -108,10 +111,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 					'rev_page' => $params['pageid'],
 					'rev_id > ' . $revid
 				),
-				__METHOD__
+				__METHOD__,
+				array ( 'LIMIT', $wgArticleAssessmentStaleCount + 1 )
 			);
-
-			global $wgArticleAssessmentStaleCount;
 
 			if ( $res && (int)$res > $wgArticleAssessmentStaleCount ) {
 				//it's stale!
@@ -139,16 +141,12 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => 'integer',
 			),
-			'revid' => null,
+			'revid' =>array(
+				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_TYPE => 'integer',
+			),
 			'userrating' => false,
 			'anontoken' => null,
-			'limit' => array(
-				ApiBase::PARAM_DFLT => 1,
-				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MIN => 1,
-				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
-				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG1,
-			),
 		);
 	}
 
@@ -158,7 +156,6 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored)',
 			'userrating' => "Whether to get the current user's ratings for the specific rev/article",
 			'anontoken' => 'Token for anonymous users',
-			'limit' => 'Amount of pages to get the ratings for',
 		);
 	}
 
