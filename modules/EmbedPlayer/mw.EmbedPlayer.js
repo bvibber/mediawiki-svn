@@ -3022,7 +3022,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// update the mute state from the player element
 		if( _this.muted != _this.getPlayerElementMuted() ){
-			mw.log("monitor:: muted does not mach embed player" );
+			mw.log("monitor:: muted does not match embed player" );
 			_this.toggleMute();
 			// Make sure they match: 
 			_this.muted = _this.getPlayerElementMuted(); 
@@ -3083,7 +3083,7 @@ mw.EmbedPlayer.prototype = {
 				}, this.monitorRate )
 			}
 		} else {
-			mw.log("EmbedPlayer::monitor: player is stoped, stop monitor")
+			//mw.log("EmbedPlayer::monitor: player is stoped, stop monitor")
 			// If stopped "stop" monitor: 
 			clearInterval( this.monitorInterval );
 		}

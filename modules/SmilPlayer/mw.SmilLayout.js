@@ -682,6 +682,7 @@ mw.SmilLayout.prototype = {
 		// xxx height domination here may be confused refactor this check
 		if( natrualAspect >= targetAspect ){			
 			transformCss.width = parseFloat( transformPercent ) + '%';
+			transformCss.height = null;
 			/*transformCss.height = ( parseFloat( transformPercent ) * ( 
 					( natrualSize.height  /  natrualSize.width ) /
 						( targetSize.height / targetSize.width ) 
@@ -692,6 +693,7 @@ mw.SmilLayout.prototype = {
 		// Fit vertically
 		if(! transformCss.height || natrualAspect < targetAspect  ){
 			transformCss.height =  parseFloat( transformPercent ) + '%';
+			transformCss.width = null;
 			/*transformCss.width = ( parseFloat( transformPercent ) * 
 					( natrualSize.height /  natrualSize.width ) / 
 					( targetSize.width / targetSize.height )

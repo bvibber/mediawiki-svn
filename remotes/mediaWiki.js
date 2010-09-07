@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r143';
+var mwRemoteVersion = 'r144';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -35,6 +35,8 @@ if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
 
+//mwReqParam['debug'] =false;
+//mwUseScriptLoader = true;
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
 

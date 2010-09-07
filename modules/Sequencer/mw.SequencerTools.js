@@ -30,7 +30,7 @@ mw.SequencerTools.prototype = {
 		},			
 		'duration':{			 
 			'editableAttributes' : [ 'dur' ],
-			'contentTypes': ['img', 'mwtemplate']
+			'contentTypes': ['img', 'cdata_html', 'mwtemplate']
 		},
 		'panzoom' : {
 			'editWidgets' : ['panzoom'],

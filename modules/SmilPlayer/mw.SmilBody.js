@@ -83,7 +83,7 @@ mw.SmilBody.prototype = {
 	*/
 	renderTime: function( time, deltaTime ){
 		var _this = this;
-		mw.log( "SmilBody::renderTime:: " + time  + ' delta: '+ deltaTime);
+		//mw.log( "SmilBody::renderTime:: " + time  + ' delta: '+ deltaTime);
 		
 		// Get all the draw elements from the body this time: 
 		this.getElementsForTime( time ,
