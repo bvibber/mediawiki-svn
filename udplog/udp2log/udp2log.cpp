@@ -82,6 +82,9 @@ pid_t Daemonize()
 	dup2(nullFd, STDIN_FILENO);
 	dup2(logFd, STDOUT_FILENO);
 	dup2(logFd, STDERR_FILENO);
+	
+	close(nullFd);
+	close(logFd);
 
 	// Set session
 	setsid();
