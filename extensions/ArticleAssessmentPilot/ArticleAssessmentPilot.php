@@ -4,8 +4,8 @@
 // then consider the last rating "stale"
 $wgArticleAssessmentStaleCount = 5;
 
-// Number of "ratings" to store. Allows it to be a bit more dynamic
-$wgArticleAssessmentRatingCount = 4;
+// Array of the "ratings" id's to store. Allows it to be a bit more dynamic
+$wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
 
 // Which category the pages must belong to have the rating widget added (with _ in text)
 // Extension is "disabled" if this field is an empty string (as per default configuration)

@@ -5,7 +5,7 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function execute() {
-		global $wgUser, $wgArticleAssessmentRatingCount;
+		global $wgUser, $wgArticleAssessmentRatings;
 		$params = $this->extractRequestParams();
 
 		$token = array();
@@ -50,22 +50,22 @@ class ApiArticleAssessment extends ApiBase {
 		$revisionId = $params['revid'];
 
 		// TODO: Fold for loop into foreach above?
-		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
+		foreach( $wgArticleAssessmentRatings as $rating ) {
 			$lastRating = 0;
-			if ( isset( $lastRatings[$i] ) ) {
-				$lastRating = $lastRatings[$i];
+			if ( isset( $lastRatings[$rating] ) ) {
+				$lastRating = $lastRatings[$rating];
 			}
 
 			$thisRating = 0;
-			if ( isset( $params["r{$i}"] ) ) {
-				$thisRating = $params["r{$i}"];
+			if ( isset( $params["r{$rating}"] ) ) {
+				$thisRating = $params["r{$rating}"];
 			}
 
 			$this->insertPageRating( $pageId, $i, ( $thisRating - $lastRating ),
 					( $lastRating == 0 && $thisRating != 0 )
 			);
 
-			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $i, $thisRating );
+			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating );
 		}
 
 		$r = array( 'result' => 'Success' );
@@ -164,7 +164,7 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		global $wgArticleAssessmentRatingCount;
+		global $wgArticleAssessmentRatings;
 		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -178,9 +178,9 @@ class ApiArticleAssessment extends ApiBase {
 			),
 			'anontoken' => null,
 		);
-
-		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
-			$ret["r{$i}"] = array(
+		
+		foreach( $wgArticleAssessmentRatings as $rating ) {
+			$ret["r{$rating}"] = array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
@@ -191,14 +191,14 @@ class ApiArticleAssessment extends ApiBase {
 	}
 
 	public function getParamDescription() {
-		global $wgArticleAssessmentRatingCount;
+		global $wgArticleAssessmentRatings;
 		$ret = array(
 			'pageid' => 'Page ID to submit assessment for',
 			'revid' => 'Revision ID to submit assessment for',
 			'anontoken' => 'Token for anonymous users',
 		);
-		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
-		        $ret["r{$i}"] = "Rating {$i}";
+		foreach( $wgArticleAssessmentRatings as $rating ) {
+		        $ret["r{$rating}"] = "Rating {$rating}";
 		}
 		return $ret;
 	}

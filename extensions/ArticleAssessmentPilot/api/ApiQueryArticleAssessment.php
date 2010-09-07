@@ -53,9 +53,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
 		
-		global $wgArticleAssessmentRatingCount;
+		global $wgArticleAssessmentRatings;
 
-		$this->addOption( 'LIMIT', $wgArticleAssessmentRatingCount );
+		$this->addOption( 'LIMIT', count( $wgArticleAssessmentRatings ) );
 
 		$res = $this->select( __METHOD__ );
 
