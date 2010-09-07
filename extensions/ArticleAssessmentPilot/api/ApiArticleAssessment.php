@@ -1,7 +1,7 @@
 <?php
 class ApiArticleAssessment extends ApiBase {
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'aa' );
+		parent::__construct( $query, $moduleName, '' );
 	}
 
 	public function execute() {
@@ -118,6 +118,8 @@ class ApiArticleAssessment extends ApiBase {
 	 */
 	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue ) {
 		$dbw = wfGetDB( DB_MASTER );
+		
+		$timestamp = $dbw->timestamp();
 
 		$res = $dbw->insert(
 			'article_assessment',
@@ -127,7 +129,7 @@ class ApiArticleAssessment extends ApiBase {
 					'aa_user_id' => $user->getId(),
 					'aa_user_text' => $user->getName(),
 					'aa_revision' => $revisionId,
-					'aa_timestamp' => wfTimestampNow(),
+					'aa_timestamp' => $timestamp,
 					'aa_rating_id' => $ratingId,
 					'aa_rating_value' => $ratingValue,
 				),
@@ -141,7 +143,7 @@ class ApiArticleAssessment extends ApiBase {
 		$dbw->update(
 			'article_assessment',
 			array(
-				'aa_timestamp' => wfTimestampNow(),
+				'aa_timestamp' => $timestamp,
 				'aa_rating_value' => $ratingValue,
 			),
 			array_merge(
@@ -201,6 +203,10 @@ class ApiArticleAssessment extends ApiBase {
 		return array(
 			'Submit article assessments'
 		);
+	}
+	
+	public function mustBePosted() {
+		return true;
 	}
 
 	public function isWriteMode() {
