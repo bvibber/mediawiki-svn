@@ -59,85 +59,75 @@ class PagedTiffHandler extends ImageHandler {
 	 * - identify-warnings
 	 * - check for running-identify-service
 	 */
-	function verifyFileHook( $upload, $mime, &$error ) {
+	function verifyUpload( $fileName ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, 
 			$wgTiffRejectOnError, $wgTiffRejectOnWarning, $wgTiffUseTiffReader, 
 			$wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
 
-		$tempName = $upload->getTempPath();
-		$saveName = $upload->getLocalFile()->getName();
-
-		if ( $mime != "image/tiff" ) {
-			# not a tiff file, do not check
-			wfDebug( __METHOD__ . ": not a tiff file\n" );
-			return true;
-		}
-
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
+		$status = Status::newGood();
 		if ( $wgTiffUseTiffReader ) {
-			$tr = new TiffReader( $tempName );
+			$tr = new TiffReader( $fileName );
 			$tr->check();
 			if ( !$tr->isValidTiff() ) {
-				$error = array( 'tiff_bad_file' );
-				wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
-				return false;
-			}
-			if ( $tr->checkScriptAtEnd( $wgTiffReaderCheckEofForJS ) ) {
-				$error = array( 'tiff_script_detected' );
-				wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
-				return false;
-			}
-			if ( !$tr->checkSize() ) {
-				$error = array( 'tiff_size_error' );
-				wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
-				return false;
+				wfDebug( __METHOD__ . ": bad file\n" );
+				$status->fatal( 'tiff_bad_file' );
+			} else {
+				if ( $tr->checkScriptAtEnd( $wgTiffReaderCheckEofForJS ) ) {
+					wfDebug( __METHOD__ . ": script detected\n" );
+					$status->fatal( 'tiff_script_detected' );
+				}
+				if ( !$tr->checkSize() ) {
+					wfDebug( __METHOD__ . ": size error\n" );
+					$status->fatal( 'tiff_size_error' );
+				}
 			}
 		}
-		$meta = self::getTiffImage( false, $tempName )->retrieveMetaData();
+		$meta = self::getTiffImage( false, $fileName )->retrieveMetaData();
 		if ( !$meta ) {
-			$error = array( 'tiff_out_of_service' );
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
-			return false;
+			wfDebug( __METHOD__ . ": unable to retreive metadata\n" );
+			$status->fatal( 'tiff_out_of_service' );
+		} else {
+			$error = false;
+			$ok = self::verifyMetaData( $meta, $error );
+
+			if ( !$ok ) {
+				call_user_func_array( array( $status, 'fatal' ), $error );
+			}
 		}
 
-		$ok = self::verifyMetaData( $meta, $error, $saveName );
-
-		if ( !$ok ) {
-			wfDebug( __METHOD__ . ": file is ok ($saveName)\n" );
-		}
-
-		return $ok;
+		return $status;
 	}
 
-	static function verifyMetaData( $meta, &$error, $saveName = '' ) {
+	static function verifyMetaData( $meta, &$error ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize;
 
 		$errors = PagedTiffHandler::getMetadataErrors( $meta );
 		if ( $errors ) {
 			$error = array( 'tiff_bad_file', PagedTiffHandler::joinMessages( $errors ) );
 
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName) " . PagedTiffHandler::joinMessages( $errors, false ) . "\n" );
+			wfDebug( __METHOD__ . ": {$error[0]} " . PagedTiffHandler::joinMessages( $errors, false ) . "\n" );
 			return false;
 		}
 
 		if ( $meta['page_amount'] <= 0 || empty( $meta['page_data'] ) ) {
 			$error = array( 'tiff_page_error', $meta['page_amount'] );
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
 		if ( $wgTiffMaxEmbedFiles && $meta['page_amount'] > $wgTiffMaxEmbedFiles ) {
 			$error = array( 'tiff_too_much_embed_files', $meta['page_amount'], $wgTiffMaxEmbedFiles );
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
 		$len = strlen( serialize( $meta ) );
 		if ( ( $len + 1 ) > $wgTiffMaxMetaSize ) {
 			$error = array( 'tiff_too_much_meta', $len, $wgTiffMaxMetaSize );
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
 
-		wfDebug( __METHOD__ . ": metadata is ok ($saveName)\n" );
+		wfDebug( __METHOD__ . ": metadata is ok\n" );
 		return true;
 	}
 
