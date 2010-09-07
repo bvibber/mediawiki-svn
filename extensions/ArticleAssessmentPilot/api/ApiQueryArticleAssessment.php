@@ -5,6 +5,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgArticleAssessmentRatings;
 		$params = $this->extractRequestParams();
 
 		$result = $this->getResult();
@@ -16,6 +17,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$this->addJoinConds( array(
 				'article_assessment_ratings' => array( 'LEFT JOIN', array(
 					'aar_id=aap_rating_id',
+					'aap_rating_id' => $wgArticleAssessmentRatings,
 				)
 			),
 		) );
@@ -52,8 +54,6 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
-		
-		global $wgArticleAssessmentRatings;
 
 		$this->addOption( 'LIMIT', count( $wgArticleAssessmentRatings ) );
 

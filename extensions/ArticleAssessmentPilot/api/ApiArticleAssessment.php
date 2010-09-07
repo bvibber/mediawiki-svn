@@ -20,8 +20,6 @@ class ApiArticleAssessment extends ApiBase {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
-		
-		global $wgArticleAssessmentRatings;
 
 		// Query the latest ratings by this user for this page,
 		// possibly for an older revision
@@ -35,6 +33,7 @@ class ApiArticleAssessment extends ApiBase {
 					'aa_user_id' => $wgUser->getId(),
 					'aa_user_text' => $wgUser->getName(),
 					'aa_page_id' => $params['pageid'],
+					'aa_rating_id' => $wgArticleAssessmentRatings,
 				),
 				$token
 			),
