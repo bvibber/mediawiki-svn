@@ -600,12 +600,14 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'categoryintersection' => 'Intersecția categoriilor',
 	'categoryintersection-desc' => 'Menține un tabel cu valori hash pentru [[Special:CategoryIntersection|intersecțiile categoriilor]] dintr-o pagină',
 	'categoryintersection-doit' => 'Afișează paginile în toate aceste categorii',
 	'categoryintersection-maxcategories' => 'Numărul maxim permis de categorii intersectante este $1.',
+	'categoryintersection-mincategories' => 'Trebuie să includeți cel puțin două categorii.',
 	'categoryintersection-results' => 'Căutarea a returnat $1 {{PLURAL:$1|rezultat|rezultate}}.',
 );
 

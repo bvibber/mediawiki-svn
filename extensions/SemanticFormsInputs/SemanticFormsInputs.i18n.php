@@ -73,6 +73,18 @@ $messages['bs'] = array(
 	'semanticformsinputs-wrongformat' => 'Pogrešan format.',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'semanticformsinputs-desc' => "Tipus d'entrada addicionals per al [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]",
+	'semanticformsinputs-wrongformat' => 'Format incorrecte.',
+	'semanticformsinputs-close' => 'Tanca',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Següent',
+	'semanticformsinputs-today' => 'Avui',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -96,6 +108,7 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author F.trott
  * @author IAlex
  */
 $messages['fr'] = array(
@@ -106,7 +119,7 @@ $messages['fr'] = array(
 	'semanticformsinputs-next' => 'Suivant',
 	'semanticformsinputs-today' => "Aujourd'hui",
 	'semanticformsinputs-dateformatlong' => 'j MM aa',
-	'semanticformsinputs-dateformatshort' => 'jj / mm / aa',
+	'semanticformsinputs-dateformatshort' => 'dd / mm / yy',
 	'semanticformsinputs-firstdayofweek' => '0',
 );
 
@@ -143,6 +156,10 @@ $messages['gsw'] = array(
 $messages['ia'] = array(
 	'semanticformsinputs-desc' => 'Additional typos de entrata pro [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semantic]',
 	'semanticformsinputs-wrongformat' => 'Formato incorrecte.',
+	'semanticformsinputs-close' => 'Clauder',
+	'semanticformsinputs-prev' => 'Precedente',
+	'semanticformsinputs-next' => 'Sequente',
+	'semanticformsinputs-today' => 'Hodie',
 );
 
 /** Indonesian (Bahasa Indonesia)

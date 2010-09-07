@@ -917,6 +917,11 @@ $messages['sv'] = array(
 	'contrib-tracking-button' => 'Fortsätt',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'contrib-tracking-error' => 'Hitilafu',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

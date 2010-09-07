@@ -1724,6 +1724,11 @@ $messages['sv'] = array(
 	'sitematrix-fishbowl' => 'redigering begränsad',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'sitematrix-language' => 'Lugha',
+);
+
 /** Silesian (Ślůnski)
  * @author Herr Kriss
  */

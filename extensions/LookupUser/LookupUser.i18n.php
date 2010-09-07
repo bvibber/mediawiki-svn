@@ -195,6 +195,7 @@ $messages['bs'] = array(
  * @author Toniher
  */
 $messages['ca'] = array(
+	'lookupuser-no-email' => 'no proporcionat',
 	'lookupuser-realname' => 'Nom real: $1',
 	'lookupuser-registration' => 'Data de registre: $1',
 	'lookupuser-no-registration' => 'no guardat',
@@ -1328,6 +1329,11 @@ $messages['sv'] = array(
 	'lookupuser-info-authenticated' => 'E-postverifiering: $1',
 	'lookupuser-useroptions' => 'Användarval:',
 	'right-lookupuser' => 'Kolla användarpreferenser',
+);
+
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'lookupuser-realname' => 'Jina lako halisi:$1',
 );
 
 /** Telugu (తెలుగు)

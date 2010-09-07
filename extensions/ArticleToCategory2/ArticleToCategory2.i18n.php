@@ -202,10 +202,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'articletocategory2-desc' => "A buta na casela d'input su minca pàgina ëd categorìa an përmëttend la creassion ëd na neuva pàgina diretament an cola categorìa",
+	'articletocategory2-desc' => "A buta na casela d'intrada su minca pàgina ëd categorìa an përmëttend la creassion ëd na neuva pàgina diretament an cola categorìa",
 	'articletocategory2-create-article-under-category-text' => 'Gionta na pàgina a sta categorìa',
 	'articletocategory2-create-article-under-category-button' => 'Crea',
 	'articletocategory2-create-category-under-category-text' => 'Gionta na categorìa a sta categorìa',

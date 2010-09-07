@@ -225,6 +225,12 @@ $messages['ca'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importa-ho',
 	'importfreeimages_next' => 'Següent $1',
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Miniatura',
+	'importfreeimages_size_small' => 'Petit',
+	'importfreeimages_size_medium' => 'Mitjà',
+	'importfreeimages_size_large' => 'Gran',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Sorani (کوردی)
@@ -1249,6 +1255,13 @@ $messages['sv'] = array(
 	'importfreeimages_size_medium' => 'Medium',
 	'importfreeimages_size_large' => 'Stor',
 	'importfreeimages_size_original' => 'Original',
+);
+
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'importfreeimages_owner' => 'Mwandishi',
+	'importfreeimages_size_thumbnail' => 'Picha ndogo',
+	'importfreeimages_size_small' => 'Ndogo',
 );
 
 /** Telugu (తెలుగు)

@@ -59,6 +59,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'activestrategy' => 'Aktivna strategija',
+	'active-strategy-desc' => 'Prikazuje broj izmjena na strateškim planskim stranicama',
+	'active-strategy-intro' => 'Broj izmjena na stranicama za radne zadatke u posljednjih {{PLURAL:$1|$1 dan|$1 dana}}.',
 	'nedits' => '$1 {{PLURAL:$1|izmjena|izmjene}}',
 );
 

@@ -803,6 +803,22 @@ $messages['tr'] = array(
 	'securepasswords-word' => 'kelime olmayacak',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'securepasswords-desc' => 'Створює більш безпечний хеш для паролю і додає перевірку паролю на надійність',
+	'securepasswords-valid' => 'Ваш пароль недійсний або надто короткий. 
+Він повинен:',
+	'securepasswords-minlength' => 'Бути не менше $1 {{PLURAL:$1|символ|символа|символів}} в довжину.',
+	'securepasswords-lowercase' => 'Повинен містить не менше 1 літери в нижньому реєстрі.',
+	'securepasswords-uppercase' => 'Повинен містити не менше 1 літери в верхньому реєстрі.',
+	'securepasswords-digit' => 'Повинен містити як мінімум 1 цифру.',
+	'securepasswords-special' => 'Повинен містити як мінімум 1 спеціальний символ (допустимі спецсимволи: $1).',
+	'securepasswords-username' => 'Повинен відрізнятись від імені вашого облікового запису.',
+	'securepasswords-word' => 'Не повинен бути словниковим словом.',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

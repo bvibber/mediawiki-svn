@@ -1072,6 +1072,7 @@ $messages['br'] = array(
 	'code-rev-diff-too-large' => "Re vras eo an diforc'h evit bezañ diskwelet",
 	'code-rev-purge-link' => 'spurjañ',
 	'code-rev-total' => "Niver hollek a zisoc'hoù : $1",
+	'code-rev-not-found' => "N'eus ket eus an adweladenn '''$1''' !",
 	'code-status-new' => 'nevez',
 	'code-status-fixme' => 'da zresañ',
 	'code-status-reverted' => 'distaolet',
@@ -1109,6 +1110,8 @@ Evezhiadenn :
 $4',
 	'codereview-email-subj2' => "[$1] [$2] : Heuliadenn ar c'hemm",
 	'codereview-email-body2' => 'Degaset ez eus bet kemmoù liammet ouzh $2 gant an implijer "$1".
+
+URL klok evit heuliañ an adweladenn : $5
 
 URL klok : $3
 
@@ -8611,7 +8614,22 @@ $4',
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'code-change-added' => 'alichangia:',
+	'code-field-author' => 'Mwandishi',
+	'code-field-status' => 'Hadhi',
+	'code-field-timestamp' => 'Tarehe',
+	'code-field-comments' => 'Maelezo',
+	'code-rev-date' => 'Tarehe:',
 	'code-rev-message' => 'Maelezo:',
+	'code-rev-modified-a' => 'alichangia',
+	'code-rev-modified-m' => 'zilizotengenezwa',
+	'code-rev-status' => 'Hadhi:',
+	'code-rev-comment-preview' => 'Hakiki',
+	'code-rev-diff' => 'Tofauti',
+	'code-rev-diff-link' => 'tofauti',
+	'codereview-batch-submit' => 'Wasilisha',
+	'repoadmin-new-button' => 'Anzisha',
+	'repoadmin-edit-button' => 'Sawa',
 );
 
 /** Telugu (తెలుగు)

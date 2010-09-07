@@ -1917,6 +1917,12 @@ $messages['sv'] = array(
 	'expand_templates_preview' => 'Förhandsvisning',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'expand_templates_ok' => 'Sawa',
+	'expand_templates_preview' => 'Hakiki',
+);
+
 /** Silesian (Ślůnski)
  * @author Herr Kriss
  */

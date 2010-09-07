@@ -190,6 +190,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author F.trott
  * @author Kghbln
  */
 $messages['de'] = array(
@@ -198,7 +199,7 @@ $messages['de'] = array(
 	'mwe-clipedit-reset_crop' => 'Zuschnitt zurücksetzen',
 	'mwe-clipedit-insert_image_page' => 'In Seite einfügen',
 	'mwe-clipedit-insert_into_sequence' => 'In Sequenz einfügen',
-	'mwe-clipedit-preview_insert' => 'Einfügen der Vorschau',
+	'mwe-clipedit-preview_insert' => 'Vorschau',
 	'mwe-clipedit-cancel_image_insert' => 'Einfügen abbrechen',
 	'mwe-clipedit-sc_attributes' => 'Details zum Videoclip bearbeiten',
 	'mwe-clipedit-sc_inoutpoints' => 'Ein-Aus-Punkte setzen',

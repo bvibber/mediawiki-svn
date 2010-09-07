@@ -50,6 +50,15 @@ $messages['aln'] = array(
 	'wikieditor-previewDialog-loading' => 'Loading ...',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar o dialogo de visualización previa',
+	'wikieditor-previewDialog-tab' => 'Previsualización',
+	'wikieditor-previewDialog-loading' => 'Cargando…',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

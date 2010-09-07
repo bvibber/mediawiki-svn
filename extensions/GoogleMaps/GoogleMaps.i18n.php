@@ -857,7 +857,7 @@ $wgGoogleMapsMessages['ca'] = array(
 	'gm-selector-control' => 'Selector Mapa/Sat&egrave;lit',
 	'gm-zoom-control' => 'Tamany',
 	'gm-large' => 'Gran',
-	'gm-medium' => 'Mitj&agrave;',
+	'gm-medium' => 'Mitjà',
 	'gm-small' => 'Petit',
 	'gm-no-zoom-control' => 'Cap',
 	'gm-yes' => 'S&iacute;',
@@ -4486,6 +4486,7 @@ $wgGoogleMapsMessages['rif'] = array(
  */
 $wgGoogleMapsMessages['ro'] = array(
 	'gm-incompatible-browser-link' => 'Click aici pentru a vedea o listă de navigatoare compatibile.',
+	'gm-no-editor' => 'Din păcate, navigatorul dumneavoastră nu este compatibil cu funcția de modelare a hărților. Încercați ultima versiune de <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) sau <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac și Linux).',
 	'gm-balloon-title' => 'Titlu:',
 	'gm-balloon-link-article' => 'Legătură către această pagină (opțional):',
 	'gm-remove' => 'elimină',
@@ -4504,11 +4505,12 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-searching' => 'căutare…',
 	'gm-map' => 'Hartă',
 	'gm-are-you-sure' => 'Sunteți sigur?',
-	'gm-clear-all-points' => 'Şterge toate punctele',
+	'gm-clear-all-points' => 'Șterge toate punctele',
 	'gm-refresh-points' => 'Reactualizează toate punctele',
 	'gm-width' => 'Lățime',
 	'gm-height' => 'Înălțime',
 	'gm-scale-control' => 'Scală',
+	'gm-overview-control' => 'Vedere de ansamblu',
 	'gm-zoom-control' => 'Navigare',
 	'gm-large' => 'Mare',
 	'gm-medium' => 'Mediu',
@@ -4516,6 +4518,8 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-no-zoom-control' => 'Niciunul',
 	'gm-yes' => 'Da',
 	'gm-no' => 'Nu',
+	'gm-search-preface' => 'Apăsați pe hartă pentru a adăuga un punct sau pentru a vă deplasa la un oraș, țară, adresă ori companie:',
+	'gm-geocode-preface' => 'Apăsați pe hartă pentru a adăuga un punct sau pentru a vă deplasa la un oraș, țară ori adresă:',
 	'gm-no-search-preface' => 'Apăsați pe hartă pentru a adăuga un punct.',
 	'gm-search' => 'Caută',
 	'gm-clear-search' => 'șterge rezultatele căutării',
@@ -4525,6 +4529,10 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-edit-path' => 'adaugă puncte',
 	'gm-show-path' => 'arată puncte',
 	'gm-color-path' => 'schimbă culoare',
+	'gm-color-fill' => 'schimbă culoarea de umplere',
+	'gm-add-fill' => 'umple o zonă',
+	'gm-remove-fill' => 'șterge umplerea',
+	'gm-fill-color' => 'Culoare de umplere',
 	'gm-line-color' => 'Culoarea liniei',
 	'gm-opacity' => 'Opacitate',
 	'gm-line-width' => 'Lățime',
@@ -5439,7 +5447,18 @@ $wgGoogleMapsMessages['sv'] = array(
  * @author Lloffiwr
  */
 $wgGoogleMapsMessages['sw'] = array(
+	'gm-balloon-title' => 'Cheo:',
+	'gm-remove' => 'ondoa',
+	'gm-width' => 'Upana',
+	'gm-height' => 'Urefu',
+	'gm-small' => 'Ndogo',
+	'gm-no-zoom-control' => 'Usichague',
+	'gm-yes' => 'Ndiyo',
+	'gm-no' => 'Siyo',
+	'gm-search' => 'Tafuta',
 	'gm-save-path' => 'Hifadhi',
+	'gm-line-width' => 'Upana',
+	'gm-back' => 'rudi',
 );
 
 /** Silesian (Ślůnski)

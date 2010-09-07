@@ -401,8 +401,10 @@ $messages['mk'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Aviator
  */
 $messages['ms'] = array(
+	'categoryonupload-desc' => 'Meminta supaya pengguna memilih kategori ketika memuat naik fail',
 	'categoryonupload-label' => 'Kategori:',
 );
 

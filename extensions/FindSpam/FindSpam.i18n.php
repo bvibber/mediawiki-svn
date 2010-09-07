@@ -933,6 +933,12 @@ $messages['sv'] = array(
 	'right-findspam' => 'Sök efter nyligen tillagd spam',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'findspam-ip' => 'Anwani ya IP:',
+	'findspam-ok' => 'Sawa',
+);
+
 /** Silesian (Ślůnski)
  * @author Herr Kriss
  */

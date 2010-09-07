@@ -4377,6 +4377,14 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-ytd' => 'Total i år (USD)',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'contrib-hist-name' => 'Jina',
+	'contribstats-currency' => 'Fedha',
+	'contribstats-template' => 'Kigezo',
+	'contribstats-average' => 'Wastani',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author చక్రవర్తి

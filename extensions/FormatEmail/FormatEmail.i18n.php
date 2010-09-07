@@ -480,9 +480,11 @@ $2',
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aviator
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
+	'email-desc' => 'Membenarkan pengatas/pembawah tempahan ditambahkan ke dalam e-mel pengguna',
 	'email_footer' => 'E-mel ini dihantar kepada anda melalui sistem mel {{SITENAME}} oleh $1.
 
 $2',

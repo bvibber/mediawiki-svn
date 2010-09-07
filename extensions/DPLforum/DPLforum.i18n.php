@@ -793,6 +793,11 @@ $messages['sv'] = array(
 	'dplforum-toomany' => 'DPL-forum: För många kategorier!',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'dplforum-never' => 'Kamwe',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

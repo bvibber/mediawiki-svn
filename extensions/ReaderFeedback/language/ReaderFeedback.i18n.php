@@ -2390,6 +2390,11 @@ $messages['sv'] = array(
 	'readerfeedback-tt-review' => 'Skicka recension',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'readerfeedback-submit' => 'Wasilisha',
+);
+
 /** Tamil (தமிழ்)
  * @author Mahir78
  * @author TRYPPN

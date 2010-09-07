@@ -115,6 +115,13 @@ An arguzenn gentañ pe "patrom" a zo ret.',
 	'datatransclusion-unknown-template' => "N'eus ket eus <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'datatransclusion-bad-template-name' => 'Loše ime šablona: $1.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

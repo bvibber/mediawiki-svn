@@ -90,6 +90,14 @@ Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da we
 	'right-massblank' => 'Gwennañ pajennoù a-vras',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'massblank-submit-user' => 'Idi',
+	'massblank-blankcomment' => 'Razlog:',
+);
+
 /** Chechen (Нохчийн) */
 $messages['ce'] = array(
 	'massblank-blankcomment' => 'Бахьан:',

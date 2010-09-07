@@ -3117,6 +3117,11 @@ $messages['sv'] = array(
 	'ogg-oggThumb-failed' => 'oggThumb misslyckades med att skapa miniatyrbilden.',
 );
 
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'ogg-dismiss' => 'Funga',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

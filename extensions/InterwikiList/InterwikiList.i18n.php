@@ -598,9 +598,11 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'interwikilist' => 'Listă interwiki',
+	'interwikilist-desc' => 'Adaugă o [[Special:Interwikilist|pagină specială]] pentru vizualizarea legăturilor interwiki disponibile',
 	'interwikilist-linkname' => 'Legătură interwiki',
 	'interwikilist-target' => 'URL țintă',
 	'interwikilist-filter' => 'Listă filtre',

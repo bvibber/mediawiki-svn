@@ -4710,6 +4710,17 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'deletequeue-desc' => 'Tworzy [[Special:DeleteQueue|oparty na kolejce system zarządzania usuwaniem]]',
+	'deletequeue-action-queued' => 'Usunięcie',
+	'deletequeue-action' => 'Zaproponuj do usunięcia',
+	'deletequeue-action-title' => 'Zaproponuj usunięcie „$1”',
+	'deletequeue-permissions-noedit' => 'Musisz być w stanie edytować stronę, aby móc wpływać na jej status usunięcia.',
+	'deletequeue-generic-reasons' => '* Najczęstsze powody
+** Wandalizm
+** Spam
+** Porządki
+** Treść nie przystaje do projektu',
+	'deletequeue-nom-alreadyqueued' => 'Ta strona jest już w kolejce do usunięcia.',
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
 	'deletequeue-delnom-otherreason' => 'Inny powód',
 	'right-speedy-nominate' => 'Oznaczanie stron do ekspresowego skasowania',

@@ -136,6 +136,14 @@ Sellit ouzh $2 evit ur roll eus ar gwennadurioù nevez.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Leuniañ]] taolenn ar pajennoù gwennaet',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'randomexcludeblank' => 'Slučajna stranica (neuključujući prazne)',
+	'purewikideletion-blanknologin' => 'Niste prijavljeni',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
