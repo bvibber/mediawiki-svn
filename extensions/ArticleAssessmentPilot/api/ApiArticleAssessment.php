@@ -21,6 +21,9 @@ class ApiArticleAssessment extends ApiBase {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
+		// Query the latest ratings by this user for this page,
+		// possibly for an older revision
+		// TODO: Make this query saner once $wgArticleAssessmentRatingCount has been redone
 		// TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
@@ -36,7 +39,7 @@ class ApiArticleAssessment extends ApiBase {
 			__METHOD__,
 			array(
 				'ORDER BY' => 'aa_revision DESC',
-				'LIMIT' => 4,
+				'LIMIT' => $wgArticleAssessmentRatingCount,
 			)
 		);
 
@@ -49,20 +52,19 @@ class ApiArticleAssessment extends ApiBase {
 		$pageId = $params['pageid'];
 		$revisionId = $params['revid'];
 
-		// TODO: Fold for loop into foreach above?
 		foreach( $wgArticleAssessmentRatings as $rating ) {
-			$lastRating = 0;
+			$lastRating = false;
 			if ( isset( $lastRatings[$rating] ) ) {
 				$lastRating = $lastRatings[$rating];
 			}
 
-			$thisRating = 0;
+			$thisRating = false;
 			if ( isset( $params["r{$rating}"] ) ) {
 				$thisRating = $params["r{$rating}"];
 			}
 
 			$this->insertPageRating( $pageId, $i, ( $thisRating - $lastRating ),
-					( $lastRating == 0 && $thisRating != 0 )
+					( $lastRating === false && $thisRating !== false )
 			);
 
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $rating, $thisRating );
