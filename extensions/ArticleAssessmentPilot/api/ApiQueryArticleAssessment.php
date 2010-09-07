@@ -96,8 +96,6 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 		//Only can actually be "stale" if the user has rated the article before
 		if ( $params['userrating'] && $userRatedArticle ) {
-			$revid = isset( $params['revid'] ) ? $params['revid'] : $ratings[$pageId]['revid'];
-
 			$dbr = wfGetDb( DB_SLAVE );
 			
 			global $wgArticleAssessmentStaleCount;
@@ -107,7 +105,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				'COUNT(*) AS norevs',
 				array(
 					'rev_page' => $params['pageid'],
-					'rev_id > ' . $revid
+					'rev_id > ' . $ratings[$pageId]['revid']
 				),
 				__METHOD__,
 				array ( 'LIMIT', $wgArticleAssessmentStaleCount + 1 )
