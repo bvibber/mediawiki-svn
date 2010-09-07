@@ -88,11 +88,11 @@
 					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-pleaserate' ) )
 					.replace( /\{FEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg( 'articleassessment-featurefeedback' )
 						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
-					.replace( /\{YOURFEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg('articleassessment-yourfeedback') )
-					.replace( /\{ARTICLERATING\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-articlerating' ) ) 
-					.replace( /\{RESULTSHIDE\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-results-hide' )
+					.replace( /\{YOURFEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg( 'articleassessment-yourfeedback') )
+					.replace( /\{ARTICLERATING\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-articlerating' ) ) 
+					.replace( /\{RESULTSHIDE\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-results-hide' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) 
-					.replace( /\{RESULTSSHOW\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-results-show' )
+					.replace( /\{RESULTSSHOW\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-results-show' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) );
 				for ( var field in settings.fieldMessages ) { 
 					$output.find( '.article-assessment-rating-fields' )
@@ -102,7 +102,7 @@
 							.replace( /\{HINT\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) ) );
 					$output.find( '#article-assessment-ratings' )
 						.append( $( settings.ratingHTML
-							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg(settings.fieldPrefix + settings.fieldMessages[field]) )
+							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
 							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
 							.replace( /\{VALUE\}/g, '0%' ) 
 							.replace( /\{COUNT\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
@@ -202,9 +202,7 @@
 					url: wgScriptPath + '/api.php',
 					data: requestData,
 					dataType: 'json',
-					success: function( data ) {
-						$.ArticleAssessment.fn.afterGetRatingData( data );
-					},
+					success: $.ArticleAssessment.fn.afterGetRatingData,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ),
 							{ 'class': 'article-assessment-error-msg' } );
@@ -215,8 +213,8 @@
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
 				if ( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
-					for ( rating in data.query.articleassessment[0].ratings) {
-						var rating = data.query.articleassessment[0].ratings[rating],
+					for ( var r in data.query.articleassessment[0].ratings) {
+						var rating = data.query.articleassessment[0].ratings[r],
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
 							total = ( rating.total / count ).toFixed( 1 ),
@@ -336,6 +334,7 @@
 			},
 			/**
 			 * Get a message
+			 * FIXME: Parameter expansion is broken in all sorts of edge cases
 			 */
 			'getMsg': function( key, args ) {
 				if ( !( key in $.ArticleAssessment.messages ) ) {
@@ -343,11 +342,11 @@
 				}
 				var msg = $.ArticleAssessment.messages[key];
 				if ( typeof args == 'object' || typeof args == 'array' ) {
-					for ( var argKey in args ) {
-						msg = msg.replace( '\$' + ( parseInt( argKey ) + 1 ), args[argKey] );
+					for ( var i = 0; i < args.length; i++ ) {
+						msg = msg.replace( new RegExp( '\$' + ( parseInt( i ) + 1 ), 'g' ), args[i] );
 					}
 				} else if ( typeof args == 'string' || typeof args == 'number' ) {
-					msg = msg.replace( '$1', args );
+					msg = msg.replace( /\$1/g, args );
 				}
 				return msg;
 			}
