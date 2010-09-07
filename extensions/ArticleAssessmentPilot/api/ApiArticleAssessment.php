@@ -20,6 +20,8 @@ class ApiArticleAssessment extends ApiBase {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
+		
+		global $wgArticleAssessmentRatings;
 
 		// Query the latest ratings by this user for this page,
 		// possibly for an older revision
@@ -39,7 +41,7 @@ class ApiArticleAssessment extends ApiBase {
 			__METHOD__,
 			array(
 				'ORDER BY' => 'aa_revision DESC',
-				'LIMIT' => $wgArticleAssessmentRatingCount,
+				'LIMIT' => count( $wgArticleAssessmentRatings ),
 			)
 		);
 
