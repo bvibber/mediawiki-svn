@@ -246,6 +246,30 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'optin' => "Fer parte d'a Iniciativa d'Usabilidat",
+	'optin-desc' => "Permitir que os usuarios preben a Beta con as zagueras milloras d'a Iniciativa d'Usabilidat.",
+	'optin-title-optedout' => 'Prebar Beta',
+	'optin-title-optedin' => 'Deixar Beta',
+	'optin-title-justoptedin' => 'Bienplegau en a Beta',
+	'optin-title-justoptedout' => 'Gracias por prebar a Beta',
+	'optin-title-feedback' => 'Ninviar a suya opinión sobre Beta',
+	'optin-needlogin' => "S'ha d'[$1 encetar a sesión] ta prebar Beta.",
+	'optin-intro' => "A ''Iniciativa d'Usabilidat de Wikipedia'' ha estato treballando durament ta amillorar a usabilidat de Wikipedia.
+En quiere prebar a Beta?",
+	'optin-feedback-intro' => "Gracias por prebar a Beta.
+Nos fería goyo de saber o qué piensa d'a nueva interficie. Por ixo li agradeixeríanos que respondese a enqüesta voluntaria que tien contino.",
+	'optin-feedback-back' => 'Si no quiere responder a enqüesta, puet tornar ta $1.',
+	'optin-success-in' => 'Agora ye prebando a Beta.
+Puet salir-ne en qualsiquier inte fendo clic sobre o vinclo «{{int:optin-leave}}» que tien en o cantón superior dreito.',
+	'optin-leave-cancel' => 'Si quiere seguir usando a Beta, puet tornar ta $1.',
+	'optin-success-out' => "Ha saliu d'a Beta.
+Puet prebar-la unatra vegada en qualsiquier inte fendo clic sobre o vinclo «{{int:optin-try}}» que tien en o cantón superior dreito d'a pantalla.",
+	'optin-success-feedback' => 'Gracias por a suya opinión!',
+	'optin-accept-short' => 'Imo-nos-ne!',
+	'optin-accept-long' => 'Prebar a Beta',
+	'optin-accept-long-anon' => 'Encete una sesión y prebe a Beta',
+	'optin-deny-short' => 'No, gracias',
+	'optin-submit-out' => 'Deixar Beta',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
 	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
@@ -6628,6 +6652,7 @@ Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru i
 	'optin-survey-question-os' => 'Unatumia mfumo gani wa uendeshaji?',
 	'optin-survey-answer-os-other' => 'Mfumo mwingine wa uendeshaji:',
 	'optin-survey-question-res' => 'Je, skrini yako ina msongo upi wa piseli?',
+	'optin-survey-answer-changes-other' => 'Nyingine:',
 );
 
 /** Telugu (తెలుగు)

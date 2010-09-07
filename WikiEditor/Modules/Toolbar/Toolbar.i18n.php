@@ -4492,7 +4492,7 @@ Möchtest du daraus einen internen Link machen?',
 	'wikieditor-toolbar-tool-reference-title' => 'Einzelnachweis einfügen',
 	'wikieditor-toolbar-tool-reference-insert' => 'Einfügen',
 	'wikieditor-toolbar-tool-reference-text' => 'Text des Einzelnachweises',
-	'wikieditor-toolbar-tool-signature' => 'Unterschrift und Zeitstempel',
+	'wikieditor-toolbar-tool-signature' => 'Signatur und Zeitstempel',
 	'wikieditor-toolbar-section-advanced' => 'Erweitert',
 	'wikieditor-toolbar-tool-heading' => 'Überschrift',
 	'wikieditor-toolbar-tool-heading-1' => 'Ebene 1',
@@ -4638,9 +4638,9 @@ Möchtest du daraus einen internen Link machen?',
 	'wikieditor-toolbar-help-content-rereference-result' => "Seitentext.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Belege anzeigen',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.beispiel.org' class='external text' href='#'>Linktext</a>, zusätzlicher Text.</li></ol>",
-	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Unterschrift mit Zeitstempel',
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Signatur mit Zeitstempel',
 	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Benutzername</a> (<a href='#' title='{{#special:mytalk}}'>Diskussion</a>) 15:54, 10. Jun. 2009 (UTC)",
-	'wikieditor-toolbar-help-content-signature-description' => 'Unterschrift',
+	'wikieditor-toolbar-help-content-signature-description' => 'Signatur',
 	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Benutzername</a> (<a href='#' title='{{#special:mytalk}}'>Diskussion</a>)",
 	'wikieditor-toolbar-help-content-indent-description' => 'Einrücken',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Normaler Text<br />:Eingerückter Text<br />::Eingerückter Text',
@@ -7452,6 +7452,7 @@ $messages['grc'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Kghbln
  */
 $messages['gsw'] = array(
 	'wikieditor-toolbar' => 'Wärchzygchäschtli bearbeite',

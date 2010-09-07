@@ -310,13 +310,30 @@ Nëse ju dëshironi të kthehet në tipare të reja, ju lutem [$1 klikoni këtu]
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'prefswitch' => "Commutador de preferencias d'a Iniciativa d'Usabilitat",
+	'prefswitch-desc' => 'Permite a os usuarios de cambiar conchuntos de preferencias',
+	'prefswitch-jswarning' => "Recuerde que con o cambio d'aparencia habrá de copiar o suyo JavaScript de [[User:$1/$2.js|$2]] enta [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> ta que contine funcionando.",
+	'prefswitch-csswarning' => "O suyo [[User:$1/$2.css|estilo personalizato $2]] ya no s'aplicará. Puet adhibir CSS personalitzatos ta un vector en [[{{ns:user}}:$1/vector.css]].",
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Desactivar as nuevas caracteristicas',
+	'prefswitch-survey-cancel-off' => 'Si deseya continar emplegando as nuevas caracteristicas puet tornar ta $1.',
 	'prefswitch-survey-submit-feedback' => 'Ninviar a suya opinión',
+	'prefswitch-survey-cancel-feedback' => 'Si no quiere fer garra comentario puet tornar ta $1.',
+	'prefswitch-survey-question-like' => "Que li ha feito goyo d'as nuevas funcionalidatz?",
+	'prefswitch-survey-question-dislike' => "Que no li ha feito goyo d'as nuevas funcionalidatz?",
+	'prefswitch-survey-question-whyoff' => 'Por qué quiere desactivar as nuevas funcionalidatz? 
+Por favor, trigue todas as opcions que correspondan.',
+	'prefswitch-survey-question-globaloff' => 'Deseya desactivar as nuevas funcionalidatz globalment?',
+	'prefswitch-survey-answer-whyoff-hard' => "As funcionalidatz yeran muit dificils d'usar.",
+	'prefswitch-survey-answer-whyoff-didntwork' => 'As funcionalidatz no funcionoron como cal.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'As funcionalidatz tenioron comportamientos impredictibles.',
 	'prefswitch-survey-answer-whyoff-other' => 'Atra razón:',
+	'prefswitch-title-on' => 'Nuevas caracteristicas',
+	'prefswitch-title-off' => 'Desactivar as nuevas caracteristicas',
 	'prefswitch-title-switched-off' => 'Gracias',
 	'prefswitch-title-feedback' => 'Comentarios',
+	'prefswitch-feedbackpage' => "Project:Comentarios sobre a experiencia de l'usuario",
 );
 
 /** Arabic (العربية)
@@ -467,21 +484,21 @@ $messages['ba'] = array(
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorNavigation-ru.png|401px|]]
+| [[Image:VectorNavigation-ba.png|401px|]]
 |-
-| Википедияның яңы бүлектәргә күсеү интерфейсы <small>[[Media:VectorNavigation-ru.png|(ҙурайтырға)]]</small>
+| Википедияның яңы бүлектәргә күсеү интерфейсы <small>[[Media:VectorNavigation-ba.png|(ҙурайтырға)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-ru.png|401px|]]
+| [[Image:VectorEditorBasic-ba.png|401px|]]
 |-
-| Төп биттәр мөхәррирләү интерфейсы <small>[[Media:VectorEditorBasic-ru.png|(ҙурайтырға)]]</small>
+| Төп биттәр мөхәррирләү интерфейсы <small>[[Media:VectorEditorBasic-ba.png|(ҙурайтырға)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-ru.png|401px|]]
+| [[Image:VectorLinkDialog-ba.png|401px|]]
 |-
 | Һылтанмалар өҫтәү өсөн яңы диалог
 |}
@@ -975,9 +992,51 @@ Molimo odaberite sve što se može primijeniti.',
 	'prefswitch-survey-question-res' => 'Koja je rezolucija Vašeg monitora?',
 	'prefswitch-title-on' => 'Nove mogućnosti',
 	'prefswitch-title-switched-on' => 'Uživajte!',
+	'prefswitch-title-off' => 'Ugasite nove mogućnosti',
 	'prefswitch-title-switched-off' => 'Hvala',
 	'prefswitch-title-feedback' => 'Povratne informacije',
+	'prefswitch-success-on' => 'Nove mogućnosti su sada omogućene. Nadamo se da ćete uživati koristeći nove mogućnosti. Uvijek ih možete ponovo ugasiti ako kliknete na link "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" na vrhu stranice.',
+	'prefswitch-success-off' => 'Nove mogućnosti su sada ugašene. Hvala što se probali nove mogućnosti. Uvijek ih možete ponovo omogućiti ako kliknete na link "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" na vrhu stranice.',
 	'prefswitch-success-feedback' => 'Vaš povratni odgovor je poslan.',
+	'prefswitch-return' => '<hr style="clear:both">
+Nazad na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Datoteka:VectorNavigation-en.png|401px|]]
+|-
+| Snimak Wikipedijinog novog navigacionog interfejsa <small>[[Media:VectorNavigation-en.png|(povećaj)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Datoteka:VectorEditorBasic-en.png|401px|]]
+|-
+| Snimak osnovne stranice uređivačkog interfejsa <small>[[Media:VectorEditorBasic-en.png|(povećaj)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Datoteka:VectorLinkDialog-en.png|401px|]]
+|-
+| Snika novog dijaloškog okvira za unos linkova
+|}
+|}
+Wikimedia Foundation User Experience Team (Tim za korisnička iskustva Wikimedia Fondacije) je radio sa dobrovoljcima iz zajednice da bi za vas načinio stvari lakše. Uzbuđeni smo što možemo s vama podijeliti neka poboljšanja, uključujući novi izgled i osjećaj i jednostavnije uređivačke osobine. Ove izmjene su u svrhu pojednostavljenja za nove korisnike koji započinju rad i zasnovane su na našim [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study probama korištenja koje smo proveli prošlih godina]. Poboljšavanje korisnost naših projekata je prioritet za Wikimedia Foundation i podijelićemo i više novih ažuriranja u budućnosti. Za više detalja posjetite vezane Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog poruke].
+
+=== Ono što smo promijenili ===
+* '''Navigacija:''' Poboljšali smo navigaciju za čitanje i uređivanje stranica. Sada, jezičci na vrhu svake stranice jasnije definiraju da li gledate stranicu ili razgovor o stranici, ili da li čitate ili uređujete stranicu.
+* '''Poboljšanja trake za uređivanje:''' Reorganizirali smo traku za uređivanje da bi mogla lahko koristiti. Sada, formatiranje stranica je jednostavnije i više intuitivno.
+* '''Čarobnjak za linkove:''' Alata koji je jednostavan za upotrebu kojim možete dodavati linkove na druge wiki stranice kao i linkove na vanjske stranice.
+* '''Poboljšanja pretrage:''' Poboljšali smo prijedloge za pretragu gdje lahko i brzo možete naći stranicu koju tražite.
+* '''Druge nove mogućnosti:''' Također smo uveli čarobnjaka za tabele za lahko pravljenje tabela i mogućnost traženja i zamjene za pojednostavljenje uređivanja stranice.
+* '''Wikipedia logo:''' Ažurirali smo naš logo. Pročitajte više na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blogu].",
+	'prefswitch-main-logged-changes' => "* '''Jezičak {{int:watch}}''' je sad zvijezda.
+* '''Jezičak {{int:move}}''' je sad u padajućem meniju pored trake za pretragu.",
+	'prefswitch-main-feedback' => '===Povratne informacije?===
+Željeli bismo čuti šta mislite. Molimo posjetite našu [[$1|stranicu za korisnička mišljenja]] ili, ako ste zainteresirani za naše stalne napore za poboljšanje softvera, posjetite našu [http://usability.wikimedia.org wiki upotrebljivosti] za više podataka.',
+	'prefswitch-main-anon' => '===Vrati me nazad===
+[$1 Kliknite ovdje da ugasite nove mogućnosti]. Tražit će se od vas da se prijavite ili napravite račun.',
 	'prefswitch-main-on' => '===Vrati me nazad!===
 [$2 Kliknite ovdje da ugasite nove mogućnosti].',
 	'prefswitch-main-off' => '===Isprobajte ih!===
@@ -986,6 +1045,7 @@ Molimo odaberite sve što se može primijeniti.',
 Molimo ispunite anketu ispod, koja nije obavezna, prije nego kliknete "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Hvala što isprobavate naše nove mogućnosti.
 Da biste nam pomogli da ih poboljšamo, molimo ispunite neobaveznu anketu ispod prije nego kliknete "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:Mišljenja korisnika o izgledu',
 );
 
 /** Catalan (Català)
@@ -6670,7 +6730,7 @@ $messages['tt-cyrl'] = array(
 	'prefswitch-success-off' => 'Яңа мөмкинчелекләр ябылды. Сынап караганыгыз өчен бик зур рәхмәт. Сез бу мөмкинчелекләрне теләсә кайсы вакытны яңадан ача аласыз, бары тик бу сылтамага гына басарга кирәк «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» .',
 	'prefswitch-success-feedback' => 'Сезнең фикер җибәрелде.',
 	'prefswitch-return' => '<hr style="clear:both">
-<span class="plainlinks">[$1 $2]кә кире кайту</span>.',
+<span class="plainlinks">[$1 $2] исемле биткә кире кайту</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
@@ -6718,6 +6778,43 @@ $messages['tt-cyrl'] = array(
 Безгә аларның сыйфатын тагын да артыру өчен аста бирелгән сорауларга җавап бирегез. ''(җавап бирү мәҗбүри түгел)''
 Шуннан соң «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]»  төймәсенә баса аласыз.",
 	'prefswitch-feedbackpage' => 'Project:Яңа бизәлеш турында фикерләр',
+);
+
+/** Tatar (Latin) (Татарча/Tatarça (Latin))
+ * @author Ильнар
+ */
+$messages['tt-latn'] = array(
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-tt.png|401px|]]
+|-
+|  Википедия интерфейсының яңа бизәлеше <small>[[Media:VectorNavigation-tt.png|(зурайтырга)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-tt.png|401px|]]
+|-
+| Бит үзгәрткечнең төп бизәлеше <small>[[Media:VectorEditorBasic-tt.png|(зурайтырга)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-tt.png|401px|]]
+|-
+| Сылтама ясау өчен диалогның яңа бизәлеше
+|}
+|}
+«Викимедиа Фондында» сәхифәне куллану буенча махсус төркем эшли, төрле илләрдән җыелган волентерлар белән алар Википедия һәм башка вики-проектларны үстерүдә зур өлеш кертәләр. Хәзергесе вакытта без сезгә яңа интерфейс бизәлеше һәм яңа төрле үзгәрткеч тәкъдим итәбез. Бу үзгәртүләр гади кулланучыларның эшен җиңеләйтү өчен кулланыла һәм алдагы елда үткәрелгән [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study сорау алуга нигезләнгән]. Яңа бизәлеш һәм уңайлылык «Викимедиа Фонды»  тарафынанбик өстенлекле проект булып тора. Тулырак мәгъләматны [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/  Викимедия блогында] карый аласыз.
+
+=== Без ниләр үзгәрттек ===
+* '''Навигация.''' Без навигацияне тулысынча үзгәрттек дисәк тә була. Без аны тагын да уңайлырак һәм матуррак эшләдек. Хәзер өстә урнаштырылган кыстыргычлар сезнең ниләр эшләгәнегезне, битне яисә бәхәс битен каравыгызны мы, әллә бөтенләй дә яңа бит ясавыгызны мы тулысынча аңлатып бирә. 
+* '''Үзгәртү панеле.''' Үзгәртү панелен алмаштыру нәтиҗәсендә битләрне ясау, үзгәртү тагын да тизрк һәм уңайлырак була.
+* '''Сылтама ясагыч.''' Гади сылтама ясау коралы нигезендә эчке, проект эчендә урнашкан вики-битләргә, шулай ук тышкы сәхифәләргә дә ясарга мөмкин.
+* '''Эзләү.''' Без эзләүдә булган ярдәмче хәбәрләрне тулыландыра төштек, болар барсы да сезнең эзләгән битне тизрәк һәм уңайлырак табу өчен эшләнде
+* '''Башка яңа функцияләр.''' Яңа табын ясау коралы сезгә вивда табыннарны ясауны җиңеләйтер дип уйлыйбыз.Шулай ук хатаны эзләү һәм алмаштыру функциясен өстәдек. 
+* '''Логотип.''' Без шарик-пазлның яңа бизәлешен ясадык, тулырак мәгълүмат [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Викимедия блогында].",
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

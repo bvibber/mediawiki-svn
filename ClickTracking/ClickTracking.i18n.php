@@ -174,6 +174,34 @@ $messages['arz'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'clicktracking' => 'Юзабилити Инициативаһы сиктәрендә баҫыуҙарҙы күҙәтеү',
+	'clicktracking-desc' => 'Биттең яңырыуына килтермәгән ваҡиғаларҙы күҙәтеү өсөн баҫыуҙарҙы күҙәтеү',
+	'ct-title' => 'Ҡатнашыусыларҙың дөйөм баҫыуҙары',
+	'ct-event-name' => 'Ваҡиғаның исеме',
+	'ct-expert-header' => '"Белгестәр"ҙең баҫыуҙары',
+	'ct-intermediate-header' => '"Уртаса ҡатнашыусылар"ҙың баҫыуҙары',
+	'ct-beginner-header' => '"Башланғыстар"ҙың баҫыуҙары',
+	'ct-total-header' => 'Бөтә баҫыуҙар',
+	'ct-start-date' => 'Башлау ваҡыты (ЙЙЙЙААКК)',
+	'ct-end-date' => 'Тамамлау ваҡыты (ЙЙЙЙААКК)',
+	'ct-increment-by' => 'Һәр мәғлүмәттәр нөктәһе күрһәткән көндәр һаны',
+	'ct-change-graph' => 'Рәсемде үҙгәртергә',
+	'ct-beginner' => 'Башланғыс',
+	'ct-intermediate' => 'Уртаса ҡатнашыусы',
+	'ct-expert' => 'Белгес',
+	'ct-date-range' => 'Ваҡыт арауығы',
+	'ct-editing' => 'Әлеге үҙгәртеү:',
+	'ct-anon-users' => 'Танылмаған ҡулланыусылар',
+	'ct-user-contribs' => 'Ҡатнашыусыларҙың дөйөм индергән өлөшө',
+	'ct-user-span' => 'Ҡатнашыусыларҙың ваҡыт арауығында индергән өлөшө',
+	'ct-and' => 'һәм',
+	'ct-update-table' => 'Таблицаны яңыртырға',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
