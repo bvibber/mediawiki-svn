@@ -13,7 +13,7 @@ $wgArticleAssessmentCategory = '';
 
 // Auto-load files
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiListArticleAssessment'] = $dir . 'api/ApiListArticleAssessment.php';
+$wgAutoloadClasses['ApiQueryArticleAssessment'] = $dir . 'api/ApiQueryArticleAssessment.php';
 $wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
 $wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
 
@@ -25,7 +25,7 @@ $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables'
 $wgHooks['BeforePageDisplay'][] = 'ArticleAssessmentPilotHooks::addResources';
 
 // API modules
-$wgAPIListModules['articleassessment'] = 'ApiListArticleAssessment';
+$wgAPIListModules['articleassessment'] = 'ApiQueryArticleAssessment';
 $wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
 
 // i18n and aliases
