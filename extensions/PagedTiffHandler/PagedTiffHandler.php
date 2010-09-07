@@ -127,7 +127,7 @@ define('TIFF_METADATA_VERSION', '1.3');
 # 1.0: initial
 # 1.1: fixed bugs in imageinfo parser
 # 1.2: photoshop quirks (reverted)
-# 1.3: handing extra IDFs reported by tiffinfo
+# 1.3: handing extra IFDs reported by tiffinfo
 
 //$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
 //$wgHooks['PagedTiffHandlerTiffData'][] = 'PagedTiffImage::tiffData';
