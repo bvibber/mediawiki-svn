@@ -1,5 +1,6 @@
 #include <iostream>
 #include <boost/tr1/unordered_map.hpp>
+#include <map>
 #include <stdint.h>
 #include <boost/lexical_cast.hpp>
 #include <cstring>
@@ -170,6 +171,7 @@ void SampleData::Report(const struct tm * timeStruct, int sampleRate) {
 	PrintRatio(outOfOrder, total, sqrt(total));
 	cout << "\n";
 
+	map<string, HostData> sortedHosts;
 	HostIterator iter;
 	int64_t totalSent = 0, totalReceived = 0;
 	for (iter = hosts.begin(); iter != hosts.end(); iter++) {
@@ -177,13 +179,7 @@ void SampleData::Report(const struct tm * timeStruct, int sampleRate) {
 			// Sample size too small
 			continue;
 		}
-		cout << timebuf << iter->first << " lost: ";
-		PrintRatio(
-			iter->second.sent - iter->second.received * sampleRate, 
-			iter->second.sent,
-			sqrt(iter->second.received) * sampleRate
-		);
-		cout << "\n";
+		sortedHosts[iter->first] = iter->second;
 		totalSent += iter->second.sent;
 		totalReceived += iter->second.received;
 	}
@@ -195,6 +191,17 @@ void SampleData::Report(const struct tm * timeStruct, int sampleRate) {
 		sqrt(totalReceived) * sampleRate
 	);
 	cout << "\n";
+
+	map<string, HostData>::iterator sortedIter;
+	for (sortedIter = sortedHosts.begin(); sortedIter != sortedHosts.end(); sortedIter++) {
+		cout << timebuf << sortedIter->first << " lost: ";
+		PrintRatio(
+			sortedIter->second.sent - sortedIter->second.received * sampleRate, 
+			sortedIter->second.sent,
+			sqrt(sortedIter->second.received) * sampleRate
+		);
+		cout << "\n";
+	}
 }
 
 void SampleData::PrintRatio(int64_t numerator, int64_t denominator, double numeratorError) {
