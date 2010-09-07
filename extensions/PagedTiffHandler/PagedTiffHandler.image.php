@@ -260,8 +260,8 @@ class PagedTiffImage {
 					}
 				}
 
-				$ofs = (int)$m[1];
-				$ignore = !empty( $ignoreIFDs[ $ofs ] );
+				$offset = (int)$m[1];
+				$ignore = !empty( $ignoreIFDs[ $offset ] );
 			} else if ( preg_match('#^(TIFF.*?Directory): (.*?/.*?): (.*)#i', $row, $m) ) {
 				$bypass = false; 
 				$msg = $m[3];
@@ -294,8 +294,8 @@ class PagedTiffImage {
 				} else if ( preg_match('/.*IFDOffset/', $key) ) {
 					# ignore extra IFDs, see <http://www.awaresystems.be/imaging/tiff/tifftags/exififd.html>
 					# Note: we assume that we will always see the reference before the actual IFD, so we know which IFDs to ignore
-					$ofs = (int)$value;
-					$ignoreIFDs[$ofs] = true;
+					$offset = (int)$value;
+					$ignoreIFDs[$offset] = true;
 				}
 			} else {
 				// strange line
