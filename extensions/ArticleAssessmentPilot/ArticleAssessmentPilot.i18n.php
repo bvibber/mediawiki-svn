@@ -24,7 +24,7 @@ $messages['en'] = array(
 	'articleassessment-error' => "We're sorry! An error has occurred. Please try again later.",
 	'articleassessment-thanks' => 'Thanks! Your ratings have been saved.',
 
-	# FIXME: Special page seems not exist.
+	# This special page doesn't exist yet, but it will soon.
 	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
 	'articleassessment-stalemessage-revisioncount' => "This article has been ''revised'' '''$1 times''' since you last reviewed it. You may wish to re-rate it.",

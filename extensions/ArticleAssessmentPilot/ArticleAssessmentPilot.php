@@ -8,6 +8,9 @@ $wgArticleAssessmentStaleCount = 5;
 // Number of "ratings" to store. Allows it to be a bit more dynamic
 $wgArticleAssessmentRatingCount = 4;
 
+//Category the pages are in (with _ in text)
+$wgArticleAssessmentCategory = '';
+
 // Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiListArticleAssessment'] = $dir . 'api/ApiListArticleAssessment.php';
@@ -38,6 +41,3 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'articleassessment-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
 );
-
-//Category the pages are in (with _ in text)
-$wgArticleAssessmentCategory = '';

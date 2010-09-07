@@ -54,7 +54,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			$this->addFields( array( 'aa_rating_value', 'aa_revision' ) );
 
-			if ( isset( $params['revid'] ) ){
+			if ( isset( $params['revid'] ) ) {
 				$this->addWhereFld( 'aa_revision', $params['revid'] );
 			}
 
@@ -78,14 +78,14 @@ class ApiListArticleAssessment extends ApiQueryBase {
 					'pageid' => $pageId,
 				);
 
-				if ( isset( $params['revid'] ) || $params['userrating'] ){
+				if ( isset( $params['revid'] ) || $params['userrating'] ) {
 					$page['revid'] = $row->aa_revision;
 				}
 
 				$ratings[$pageId] = $page;
 			}
 
-			 $thisRow = array(
+			$thisRow = array(
 				'ratingid' => $row->aap_rating_id,
 				'ratingdesc' => $row->aar_rating,
 				'total' => $row->aap_total,
@@ -162,7 +162,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		return array(
 			'pageid' => 'Page ID to get assessments for',
 			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored)',
-			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
+			'userrating' => "Whether to get the current user's ratings for the specific rev/article",
 			'anontoken' => 'Token for anonymous users',
 			'limit' => 'Amount of pages to get the ratings for',
 		);

@@ -4,8 +4,9 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings (
   aar_rating varchar(255) binary NOT NULL
 ) /*$wgDBTableOptions*/;
 
-INSERT INTO /*$wgDBprefix*/article_assessment_ratings(aar_rating) VALUES('articleassessment-rating-wellsourced'),
-('articleassessment-rating-neutrality'), ('articleassessment-rating-completeness'), ('articleassessment-rating-readability');
+INSERT INTO /*$wgDBprefix*/article_assessment_ratings (aar_rating) VALUES
+('articleassessment-rating-wellsourced'), ('articleassessment-rating-neutrality'),
+('articleassessment-rating-completeness'), ('articleassessment-rating-readability');
 
 -- Store article assessments
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (

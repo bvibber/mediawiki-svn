@@ -34,7 +34,7 @@ class ArticleAssessmentPilotHooks {
 	}
 
 	/**
-	 * Make sure the table exists for parser tests
+	 * Make sure the tables exist for parser tests
 	 * @param $tables
 	 * @return bool
 	 */
@@ -69,7 +69,7 @@ class ArticleAssessmentPilotHooks {
 			);
 		}
 
-		foreach(self::$styleFiles as $style) {
+		foreach ( self::$styleFiles as $style ) {
 			$out->addExtensionStyle( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
 			);
@@ -117,11 +117,11 @@ class ArticleAssessmentPilotHooks {
 		return true;
 	}
 
-		/*
-	 * Returns whether an article is in the specific category
+	/**
+	 * Returns whether an article is in the specified category
 	 *
 	 * @param $articleId Integer: Article ID
-	 * @param $category String: The category name (without Category: Prefix)
+	 * @param $category String: The category name (without Category: prefix, with underscores)
 	 *
 	 * @return bool
 	 */

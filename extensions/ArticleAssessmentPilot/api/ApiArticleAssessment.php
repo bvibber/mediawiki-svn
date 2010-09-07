@@ -68,16 +68,15 @@ class ApiArticleAssessment extends ApiBase {
 			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $i, $thisRating );
 		}
 
-		$r = array();
-		$r['result'] = 'Success';
+		$r = array( 'result' => 'Success' );
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
-	/*
+	/**
 	 *
 	 * @param $pageId Integer:
 	 * @param $ratingId Integer:
-	 * @param $updateAddition Integer: Difference between users last rating (if applicable)
+	 * @param $updateAddition Integer: Difference between user's last rating (if applicable)
 	 * @param $newRating Boolean: Whether this is a new rating (for update, whether this increases the count)
 	 */
 	private function insertPageRating( $pageId, $ratingId, $updateAddition, $newRating ) {
@@ -109,7 +108,7 @@ class ApiArticleAssessment extends ApiBase {
 		);
 	}
 
-	/*
+	/**
 	 * @param $pageId Integer:
 	 * @param $revisionId Integer:
 	 * @param $user User:
@@ -193,7 +192,7 @@ class ApiArticleAssessment extends ApiBase {
 			'anontoken' => 'Token for anonymous users',
 		);
 		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
-	        $ret["r{$i}"] = "Rating {$i}";
+		        $ret["r{$i}"] = "Rating {$i}";
 		}
 		return $ret;
 	}

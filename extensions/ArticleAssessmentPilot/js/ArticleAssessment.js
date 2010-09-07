@@ -10,10 +10,10 @@
 		'settings': {
 			'endpoint': wgScriptPath + '/api.php?',
 			'fieldMessages' : [
-			'wellsourced',
-			'neutrality',
-			'completeness',
-			'readability'
+				'wellsourced',
+				'neutrality',
+				'completeness',
+				'readability'
 			],
 			'fieldHintSuffix': '-tooltip',
 			'fieldPrefix': 'articleassessment-rating-',
@@ -71,22 +71,22 @@
 					function randomString( string_length ) {
 						var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 						var randomstring = '';
-						for (var i=0; i<string_length; i++) {
-							var rnum = Math.floor(Math.random() * chars.length);
-							randomstring += chars.substring(rnum,rnum+1);
+						for ( var i = 0; i < string_length; i++ ) {
+							var rnum = Math.floor( Math.random() * chars.length );
+							randomstring += chars.substring( rnum, rnum + 1 );
 						}
 						return randomstring;
 					}
 					userToken = randomString( 32 );
 					$.cookie( 'mwArticleAssessmentUserToken', userToken );
 				}
-				if ( ! wgUserName ) {
+				if ( !wgUserName ) {
 					config.userID = userToken;
 				}
-				// setup our markup using the template varibales in settings 
+				// setup our markup using the template variables in settings 
 				var $output = $( settings.structureHTML
-					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg('articleassessment-pleaserate') )
-					.replace( /\{FEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg('articleassessment-featurefeedback')
+					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-pleaserate' ) )
+					.replace( /\{FEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg( 'articleassessment-featurefeedback' )
 						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
 					.replace( /\{YOURFEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg('articleassessment-yourfeedback') )
 					.replace( /\{ARTICLERATING\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-articlerating' ) ) 
@@ -94,7 +94,7 @@
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) 
 					.replace( /\{RESULTSSHOW\}/g,	 $.ArticleAssessment.fn.getMsg('articleassessment-results-show' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) );
-				for( var field in settings.fieldMessages ) { 
+				for ( var field in settings.fieldMessages ) { 
 					$output.find( '.article-assessment-rating-fields' )
 						.append( $( settings.fieldHTML
 							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
@@ -143,7 +143,7 @@
 				$( '#catlinks' ).before( $output );
 				
 				// set the height of our smaller fieldset to match the taller
-				if( $( '#article-assessment-rate' ).height() > $( '#article-assessment-ratings' ).height() ) {
+				if ( $( '#article-assessment-rate' ).height() > $( '#article-assessment-ratings' ).height() ) {
 					$( '#article-assessment-ratings' ).css( 'minHeight',	$( '#article-assessment-rate' ).height() );
 				} else {
 					$( '#article-assessment-rate' ).css( 'minHeight',	 $( '#article-assessment-ratings' ).height() );
@@ -164,14 +164,14 @@
 									$( this )
 										.removeClass( 'ui-stars-star-stale' )
 										.removeClass( 'ui-stars-star-rated' );
-								// enable our submit button if it's still disabled
-								$( '#article-assessment input:disabled' ).removeAttr( "disabled" ); 
+									// enable our submit button if it's still disabled
+									$( '#article-assessment input:disabled' ).removeAttr( 'disabled' ); 
 								} );
 							}
 						 } );
 				});
 				// intialize the tooltips
-				$( '.field-wrapper label[original-title]' ).each(function() {
+				$( '.field-wrapper label[original-title]' ).each( function() {
 					$( this )
 						.after( $( '<span class="rating-field-hint" />' )
 							.attr( 'original-title', $( this ).attr( 'original-title' ) )
@@ -195,7 +195,7 @@
 					'aauserrating': 1,
 					'format': 'json'
 				}
-				if( config.userID.length == 32 ) {
+				if ( config.userID.length == 32 ) {
 					requestData.aaanontoken = config.userID;
 				}
 				var request = $.ajax( {
@@ -214,8 +214,8 @@
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
-				if( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
-					for( rating in data.query.articleassessment[0].ratings) {
+				if ( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
+					for ( rating in data.query.articleassessment[0].ratings) {
 						var rating = data.query.articleassessment[0].ratings[rating],
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
@@ -251,7 +251,7 @@
 				$( '.article-assessment-rating-field-value' ).each( function() {
 					$( this )
 						.css( {
-							'width': 120 - ( 120 * ( parseFloat( $( this ).text() ) / 5 ) ) + "px"
+							'width': 120 - ( 120 * ( parseFloat( $( this ).text() ) / 5 ) ) + 'px'
 						} )
 				} );
 			},
@@ -262,13 +262,13 @@
 				
 				// lock the star inputs & submit
 				$( '.rating-field' ).stars( 'disable' );
-				$( '#article-assessment input' ).attr( "disabled", "disabled" ); 
+				$( '#article-assessment input' ).attr( 'disabled', 'disabled' ); 
 				// get our results for submitting
 				var results = {};
 				$( '.rating-field input' ).each( function() {
 					// expects the hidden inputs to have names like 'rating[field-name]' which we use to
 					// be transparent about what values we're sending to the server
-					var fieldName = $( this ).attr('name').match(/\[([a-zA-Z0-9\-]*)\]/)[1];
+					var fieldName = $( this ).attr( 'name' ).match( /\[([a-zA-Z0-9\-]*)\]/ )[1];
 					results[ fieldName ] = $( this ).val();
 				} );
 				var request = $.ajax( {
@@ -292,7 +292,7 @@
 						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
 						// unlock the stars & submit
 						$( '.rating-field' ).stars( 'enable' );
-						$( '#article-assessment input:disabled' ).removeAttr( "disabled" ); 
+						$( '#article-assessment input:disabled' ).removeAttr( 'disabled' ); 
 						// update the results
 						
 						// show the results
@@ -344,7 +344,7 @@
 				var msg = $.ArticleAssessment.messages[key];
 				if ( typeof args == 'object' || typeof args == 'array' ) {
 					for ( var argKey in args ) {
-						msg = msg.replace( '\$' + (parseInt( argKey ) + 1), args[argKey] );
+						msg = msg.replace( '\$' + ( parseInt( argKey ) + 1 ), args[argKey] );
 					}
 				} else if ( typeof args == 'string' || typeof args == 'number' ) {
 					msg = msg.replace( '$1', args );

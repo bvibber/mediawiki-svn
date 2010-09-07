@@ -12,25 +12,25 @@
  *
  */
 .article-assessment-wrapper .ui-stars-star {
-  float: left;
-  display: block;
-  overflow: hidden;
-  text-indent: -999em;
-  cursor: pointer;
+	float: left;
+	display: block;
+	overflow: hidden;
+	text-indent: -999em;
+	cursor: pointer;
 	padding-right: 4px;
 }
 .article-assessment-wrapper .ui-stars-star a {
-  width: 21px;
-  height: 21px;
-  display: block;
-  background: url(../images/stars.gif) no-repeat 0 0;
+	width: 21px;
+	height: 21px;
+	display: block;
+	background: url(../images/stars.gif) no-repeat 0 0;
 }
 .article-assessment-wrapper .ui-stars-star a {
-  background-position: 0 0px;
+	background-position: 0 0px;
 }
 
 .article-assessment-wrapper .ui-stars-star-on a  {
-  background-position: 0 -21px;
+	background-position: 0 -21px;
 }
 .article-assessment-wrapper .ui-stars-star-rated a {
 	background-position: 0 -42px;
@@ -39,11 +39,11 @@
 	background-position: 0 -63px;
 }
 .article-assessment-wrapper .ui-stars-star-hover a {
-  background-position: 0 -21px;
+	background-position: 0 -21px;
 }
 .article-assessment-wrapper .ui-stars-star-disabled,
 .article-assessment-wrapper .ui-stars-star-disabled a {
-  cursor: default !important;
+	cursor: default !important;
 }
 .article-assessment-wrapper .ui-stars-cancel {
 	display: none;
