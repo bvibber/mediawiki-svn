@@ -272,6 +272,7 @@
 				var request = $.ajax( {
 					url: wgScriptPath + '/api.php',
 					data: {
+						'type': 'POST',
 						'action': 'articleassessment',
 						'revid': config.revID,
 						'pageid': config.pageID,
