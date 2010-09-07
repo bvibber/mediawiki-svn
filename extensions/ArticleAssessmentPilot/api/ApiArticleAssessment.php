@@ -124,7 +124,7 @@ class ApiArticleAssessment extends ApiBase {
 		
 		$timestamp = $dbw->timestamp();
 
-		$res = $dbw->insert(
+		$dbw->insert(
 			'article_assessment',
 			array_merge(
 				array(
@@ -142,24 +142,25 @@ class ApiArticleAssessment extends ApiBase {
 			 array( 'IGNORE' )
 		);
 
-		//TODO: Don't do this if the insert was successful
-		$dbw->update(
-			'article_assessment',
-			array(
-				'aa_timestamp' => $timestamp,
-				'aa_rating_value' => $ratingValue,
-			),
-			array_merge(
+		if ( !$dbw->affectedRows() ) {
+			$dbw->update(
+				'article_assessment',
 				array(
-					'aa_page_id' => $pageId,
-					'aa_user_text' => $user->getName(),
-					'aa_revision' => $revisionId,
-					'aa_rating_id' => $ratingId,
+					'aa_timestamp' => $timestamp,
+					'aa_rating_value' => $ratingValue,
 				),
-				$token
-			),
-			__METHOD__
-		);
+				array_merge(
+					array(
+						'aa_page_id' => $pageId,
+						'aa_user_text' => $user->getName(),
+						'aa_revision' => $revisionId,
+						'aa_rating_id' => $ratingId,
+					),
+					$token
+				),
+				__METHOD__
+			);
+		}
 	}
 
 	public function getAllowedParams() {
