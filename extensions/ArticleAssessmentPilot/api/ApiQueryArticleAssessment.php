@@ -1,10 +1,4 @@
 <?php
-/**
- *
- *
- * @file
- * @ingroup API
- */
 class ApiListArticleAssessment extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'aa' );

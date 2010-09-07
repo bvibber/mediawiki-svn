@@ -135,23 +135,4 @@ class ArticleAssessmentPilotHooks {
 			__METHOD__
 		);
 	}
-
-	/**
-	 * Adds a reference to a javascript file to the head of the document
-	 * @param string $src Path to the file relative to this extension's folder
-	 * @param object $version Version number of the file
-	 */
-	public static function addScript( $src, $version = '' ) {
-		// The key is Andrew's snarky 20-character way of stopping multiple inclusion of the same file.
-		self::$scripts["$src?$version"] = array( 'src' => $src, 'version' => $version );
-	}
-
-	/**
-	 * Adds internationalized message definitions to the document for access
-	 * via javascript using the mw.usability.getMsg() function
-	 * @param array $messages Key names of messages to load
-	 */
-	public static function addMessages( $messages ) {
-		self::$messages = array_merge( self::$messages, $messages );
-	}
 }

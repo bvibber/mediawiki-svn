@@ -1,14 +1,14 @@
 <?php
 
-// settings
-
-// number of new revisions to mark the last rating as old
+// If the number of page revisions (since users last rating) is greater than this
+// then consider the last rating "stale"
 $wgArticleAssessmentStaleCount = 5;
 
 // Number of "ratings" to store. Allows it to be a bit more dynamic
 $wgArticleAssessmentRatingCount = 4;
 
-//Category the pages are in (with _ in text)
+// Which category the pages must belong to have the rating widget added (with _ in text)
+// Extension is "disabled" if this field is an empty string (as per default configuration)
 $wgArticleAssessmentCategory = '';
 
 // Auto-load files
@@ -36,7 +36,7 @@ $wgExtensionMessagesFiles['ArticleAssessmentPilot'] = $dir . 'ArticleAssessmentP
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Article Assessment Pilot',
-	'author' => array( 'Nimish Gautam', 'Sam Reed' ),
+	'author' => array( 'Nimish Gautam', 'Sam Reed', 'Adam Miller' ),
 	'version' => '0.1.0',
 	'descriptionmsg' => 'articleassessment-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
