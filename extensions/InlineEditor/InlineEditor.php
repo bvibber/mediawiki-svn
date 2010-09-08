@@ -9,7 +9,7 @@
  *
  * Usage: Include the following line in your LocalSettings.php
  * require_once( "$IP/extensions/InlineEditor.php" );
- * 
+ *
  * To enable all provided editors, add this in your LocalSettings.php:
  * require_once( "$IP/extensions/InlineEditor/InlineEditor.php" );
  * require_once( "$IP/extensions/InlineEditor/SentenceEditor/SentenceEditor.php" );
@@ -37,7 +37,7 @@ $wgExtensionCredits['other'][] = array(
 );
 
 // current directory including trailing slash
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 // add autoload classes
 $wgAutoloadClasses['InlineEditor']                = $dir . 'InlineEditor.class.php';

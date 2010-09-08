@@ -15,10 +15,8 @@ $messages['en'] = array(
 	'list-editor-desc' => 'Adds the "Lists" edit mode for the InlineEditor',
 
 	'list-editor-editmode-caption' => "Lists",
-	'list-editor-editmode-description' => "
-Lists work like shown below. 
-You can also make a new list by going in any other mode, like the '''Text''' mode,
-and add a list like the one below. 
+	'list-editor-editmode-description' => "Lists work like shown below.
+You can also make a new list by going in any other mode, like the '''Text''' mode, and add a list like the one below.
 
 {| width=\"100%\" style=\"background-color: inherit\"
 ! Code
@@ -38,6 +36,5 @@ and add a list like the one below.
 *** deeper levels
 |}
 
-[http://meta.wikimedia.org/wiki/Help:List More information]
-	",
+[http://meta.wikimedia.org/wiki/Help:List More information]",
 );
