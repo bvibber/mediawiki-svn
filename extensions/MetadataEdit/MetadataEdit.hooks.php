@@ -4,8 +4,7 @@ class MetadataEditHooks {
 
 	public static function wfMetadataEditExtractFromArticle( $editPage ) {
 		global $wgMetadataWhitelist, $wgContLang;
-	
-		if ( $wgMetadataWhitelist == '' ) {
+		if ( $wgMetadataWhitelist == '' || !self::isValidMetadataNamespace( $editPage->mTitle->getNamespace() ) ) {
 			return true;
 		}
 
@@ -95,7 +94,7 @@ class MetadataEditHooks {
 	}
 	
 	public static function wfMetadataEditOnImportData( $editPage, $request ) {
-		if ( $request->wasPosted() ) {
+		if ( self::isValidMetadataNamespace( $editPage->mTitle->getNamespace() ) && $request->wasPosted() ) {
 			$editPage->mMetaData = rtrim( $request->getText( 'metadata' ) );
 		} else {
 			$editPage->mMetaData = '';
@@ -115,6 +114,10 @@ class MetadataEditHooks {
 	}
 	
 	public static function wfMetadataEditOnShowFields( $editPage ) {
+		if ( !self::isValidMetadataNamespace( $editPage->mTitle->getNamespace() ) ) {
+			return true;
+		}
+
 		global $wgContLang, $wgUser;
 		$metadata = htmlspecialchars( $wgContLang->recodeForEdit( $editPage->mMetaData ) );
 
@@ -146,5 +149,10 @@ class MetadataEditHooks {
 			$newText .= "\n" . $editPage->mMetaData;
 		}
 		return true;
+	}
+
+	public static function isValidMetadataNamespace( $namespace ) {
+		global $wgMetadataNamespaces;
+		return in_array( $namespace,  $wgMetadataNamespaces );
 	}
 }

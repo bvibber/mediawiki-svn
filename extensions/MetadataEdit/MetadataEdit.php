@@ -24,6 +24,11 @@ $wgExtensionCredits['other'][] = array(
  */
 $wgMetadataWhitelist = '';
 
+/**
+ * Restrict function to one or more namespaces, i.e. NS_MAIN
+ */
+$wgMetadataNamespaces = array();
+
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['MetadataEdit'] = $dir . 'MetadataEdit.i18n.php';
 
