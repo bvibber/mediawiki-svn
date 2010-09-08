@@ -337,6 +337,15 @@ $messages['ca'] = array(
 	'masseditregex-listtype-pagenames' => 'Noms de les pàgines (editeu aquestes pàgines)',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'masseditregex-matchtxt' => 'Najít:',
+	'masseditregex-replacetxt' => 'Nahradit za:',
+	'masseditregex-before' => 'Před',
+	'masseditregex-after' => 'Po',
+	'masseditregex-hint-headreplace' => 'Nahradit',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author LWChris
@@ -1477,5 +1486,12 @@ $messages['vep'] = array(
 	'masseditregex-before' => 'Edel',
 	'masseditregex-after' => "Jäl'ges",
 	'masseditregex-hint-headeffect' => 'Effekt',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'masseditregex-matchtxt' => '查找：',
+	'masseditregex-executebtn' => '执行',
+	'masseditregex-hint-headreplace' => '替换',
 );
 

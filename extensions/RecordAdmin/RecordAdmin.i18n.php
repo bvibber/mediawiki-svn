@@ -406,6 +406,19 @@ $messages['ckb'] = array(
 	'recordadmin-buttonsave' => 'پاشەکەوت',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'recordadmin-select' => 'Vybrat',
+	'recordadmin-badtitle' => 'Neplatný název!',
+	'recordadmin-buttonsave' => 'Uložit',
+	'recordadmin-viewlink' => 'prohlédnout',
+	'recordadmin-editlink' => 'editovat',
+	'recordadmin-created' => 'Vytvořeno',
+	'recordadmin-modified' => 'Upraveno',
+	'recordadmin-actions' => 'Akce',
+	'recordadmin-editwithform' => 'Vlastnosti',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Kghbln
@@ -2356,13 +2369,21 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'recordadmin-select' => '选择',
+	'recordadmin-submit' => '提交',
 	'recordadmin-badtitle' => '标题错误！',
 	'recordadmin-invert' => '反向选择',
 	'recordadmin-buttonsearch' => '搜寻',
+	'recordadmin-buttoncreate' => '创建',
 	'recordadmin-buttonreset' => '重置',
+	'recordadmin-searchresult' => '搜索结果',
 	'recordadmin-buttonsave' => '保存',
 	'recordadmin-viewlink' => '检视',
 	'recordadmin-editlink' => '编辑',
+	'recordadmin-created' => '已发起',
+	'recordadmin-modified' => '曾修改',
+	'recordadmin-actions' => '操作',
+	'recordadmin-editwithform' => '属性',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

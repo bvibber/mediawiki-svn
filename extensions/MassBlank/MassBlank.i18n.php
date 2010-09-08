@@ -108,6 +108,12 @@ $messages['ckb'] = array(
 	'massblank-blankcomment' => 'هۆکار:',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'massblank-submit-user' => 'Jít na',
+	'massblank-blankcomment' => 'Důvod:',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -545,5 +551,11 @@ $messages['ur'] = array(
 /** Wu (吴语) */
 $messages['wuu'] = array(
 	'massblank-blankcomment' => '理由：',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'massblank-submit-user' => '进入',
+	'massblank-blankcomment' => '原因：',
 );
 

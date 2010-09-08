@@ -100,11 +100,12 @@ $messages['ast'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Рустам Нурыев
  */
 $messages['ba'] = array(
 	'languageselector' => 'Тышҡы күренештә ҡулланылған тел:',
-	'languageselector-desc' => 'Һәр биткә йәки ҡулланыусыға телде һайларға',
+	'languageselector-desc' => 'Һәр биттә тел һайлау, шулай уҡ ябай кереүселәр өсөн',
 	'languageselector-setlang' => 'Билдәләргә',
 );
 

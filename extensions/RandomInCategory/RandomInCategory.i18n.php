@@ -1089,7 +1089,8 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'randomincategory-toolbox' => '随机页面',
-	'randomincategory-label' => '页面分类：',
+	'randomincategory-label' => '分类：',
+	'randomincategory-submit' => '进入',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1098,6 +1099,6 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'randomincategory-toolbox' => '隨機頁面',
-	'randomincategory-label' => '頁面分類：',
+	'randomincategory-label' => '分類：',
 );
 

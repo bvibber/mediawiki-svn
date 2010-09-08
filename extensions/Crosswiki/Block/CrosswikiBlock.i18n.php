@@ -2985,6 +2985,7 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'crosswikiblock-expiry' => '期限：',
 	'crosswikiblock-reason' => '原因：',
 	'crosswikiunblock-reason' => '原因：',
 );

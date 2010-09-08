@@ -19356,6 +19356,7 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'configure-setting-wgSitename' => '网站名称',
+	'configure-setting-wgActionPaths-key' => '操作',
 	'configure-setting-wgActionPaths-value' => '网址模板',
 	'configure-setting-wgDBAvgStatusPoll' => '在超负荷情况下SHOW STATUS查询的平均时间',
 	'configure-setting-wgDBerrorLog' => '把数据库出错记录写入文件',
@@ -19428,6 +19429,7 @@ $messages['zh-hans'] = array(
 	'configure-setting-wgAutoloadClasses' => '类别文件位置',
 	'configure-setting-wgAvailableRights' => '可用权限列表',
 	'configure-setting-wgDisableInternalSearch' => '禁用内部搜索',
+	'configure-setting-wgHooks' => '钩',
 	'configure-setting-wgSpecialPages' => '自定义特殊页面',
 	'configure-setting-wgSearchForwardUrl' => '转送搜索请求',
 	'configure-setting-wgValidSkinNames-key' => '内部名称',

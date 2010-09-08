@@ -151,6 +151,12 @@ $messages['ce'] = array(
 	'right-lastlogin' => 'декъашхо тlаьххьара маца чуваьлла хан гойту',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'lastuserlogin_userid' => 'Uživatelské jméno',
+	'lastuserlogin_username' => 'Skutečné jméno',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address

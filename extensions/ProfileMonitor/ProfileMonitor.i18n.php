@@ -181,6 +181,12 @@ $messages['ca'] = array(
 	'profiling-ok' => 'OK',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'profiling-ok' => 'OK',
+	'profiling-data-count' => 'Počet',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

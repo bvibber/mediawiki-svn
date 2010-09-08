@@ -305,6 +305,13 @@ $messages['ca'] = array(
 	'right-duplicate' => 'Duplicar pàgines',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'duplicator-options' => 'Nastavení',
+	'duplicator-source' => 'Zdroj:',
+	'duplicator-dest' => 'Cíl:',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

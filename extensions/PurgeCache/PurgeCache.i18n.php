@@ -128,6 +128,11 @@ $messages['ca'] = array(
 	'purgecache-button' => 'Purga',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'purgecache-button' => 'Obnovit',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  * @author Umherirrender

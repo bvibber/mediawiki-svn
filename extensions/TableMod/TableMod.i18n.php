@@ -109,6 +109,11 @@ $messages['bs'] = array(
 	'tablemod-error-invalidaction' => 'Nevaljana akcija.',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'tablemod-msg-remove' => 'Odstranit',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

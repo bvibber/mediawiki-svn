@@ -401,6 +401,16 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'datatransfer-desc' => 'Umožňuje import a export strukturovaných údajů v buňkách šablon.',
+	'dt_viewxml_categories' => 'Kategorie',
+	'dt_viewxml_namespaces' => 'Jmenné prostory',
+	'dt_xml_namespace' => 'Jmenný prostor',
+	'dt_xml_pages' => 'Stránky',
+	'dt_xml_page' => 'Stránka',
+	'dt_xml_template' => 'Šablona',
+	'dt_xml_field' => 'Pole',
+	'dt_xml_name' => 'Název',
+	'dt_xml_title' => 'Název',
+	'dt_xml_id' => 'ID',
 );
 
 /** Danish (Dansk)
@@ -2155,7 +2165,10 @@ $messages['zh-hans'] = array(
 	'dt_viewxml_namespaces' => '名称空间',
 	'dt_viewxml_simplifiedformat' => '简化格式',
 	'dt_xml_namespace' => '名称空间',
+	'dt_xml_pages' => '页面',
 	'dt_xml_page' => '页面',
+	'dt_xml_template' => '模板',
+	'dt_xml_field' => '事件',
 	'dt_xml_name' => '名称',
 	'dt_xml_title' => '标题',
 	'dt_xml_id' => 'ID',

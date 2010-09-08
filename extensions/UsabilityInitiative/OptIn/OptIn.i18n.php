@@ -269,11 +269,57 @@ Puet prebar-la unatra vegada en qualsiquier inte fendo clic sobre o vinclo «{{i
 	'optin-accept-long' => 'Prebar a Beta',
 	'optin-accept-long-anon' => 'Encete una sesión y prebe a Beta',
 	'optin-deny-short' => 'No, gracias',
+	'optin-deny-long' => "Tornar t'a pachina anterior",
 	'optin-submit-out' => 'Deixar Beta',
+	'optin-submit-feedback' => 'Ninvíe a suya opinión',
 	'optin-survey-yes' => 'Sí',
 	'optin-survey-no' => 'No',
+	'optin-survey-intro' => "Gracias por prebar a Beta
+Nos fería goyo de saber opina d'a nueva interficie, asinas que li agradeixeríanos que respondese a enqüesta voluntaria que se troba contino, antes de fer clic en «[[#leave|{{int:optin-submit-out}}]]».",
+	'optin-survey-question-likedislike' => "Qué cosa li ha feto goyo d'a Beta? Qué cosa no li ha feito goyo?",
+	'optin-survey-question-whyoptout' => 'Por qué deixa a Beta? (Trigue todas as opcions que conviengan.)',
+	'optin-survey-answer-whyoptout-hard' => 'Yera de mal usar.',
+	'optin-survey-answer-whyoptout-didntwork' => 'No funcionaba correctament',
+	'optin-survey-answer-whyoptout-notpredictable' => 'No funcionaba de traza predicible',
+	'optin-survey-answer-whyoptout-didntlike-look' => "No m'ha feito goyo o suyo aspecto.",
+	'optin-survey-answer-whyoptout-didntlike-layout' => "No m'han feito goyo as nuevas pestanyas ni o nuevo formato.",
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => "No m'ha feito goyo a nueva barra de ferramientas.",
 	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
+	'optin-survey-question-explain' => 'Por favor, chustifique a suya respuesta anterior:',
+	'optin-survey-question-techfail' => 'Ha trobau bella error quan emplegaba a Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Si ye que sí, por favor, describa-lo u explique-lo',
+	'optin-survey-question-usedtoolbar' => 'Ha visto a nueva barra desplegable ta editar pachinas?',
+	'optin-survey-question-usedtoolbar-ifyes' => "Si ye que sí, que li'n ha feito goyo? que no le'n ha feito goyo?",
+	'optin-survey-question-usedtoolbar-ifno' => 'Si ye que no, por qué no? Lo ferá en o esdevenidero? Puet explicar-lo?',
+	'optin-survey-question-different' => "Qué podríanos haber feito d'atra traza diferent ta aconseguir que seguise emplegando a nuestra Beta?",
+	'optin-survey-question-feedback' => 'Por favor, deixe-nos qualsiquier atro tipo de comentarios u ideyas que tienga por o prochecto, todas as contribucions nos serán de muita utilidat!',
+	'optin-survey-question-browser' => 'Que navegador emplega?',
+	'optin-survey-answer-browser-other' => 'Belatro navegador:',
+	'optin-survey-question-os' => 'Qué sistema operativo fa servir?',
+	'optin-survey-answer-os-other' => 'Belatro sistema operativo:',
+	'optin-survey-question-res' => "Quála ye a resolución d'a suya pantalla?",
+	'optin-survey-question-changes' => 'Qué cambios li fería goyo de veyer en a Beta en o esdevenidor? (trigue os que quiera)',
+	'optin-survey-answer-changes-nav' => "Fer a navegación d'o web de millor usar.",
+	'optin-survey-answer-changes-edittools' => "Aumentar y amillorar as ferramientas d'edición.",
+	'optin-survey-answer-changes-upload' => 'Amillorar os contenius y as cargas de material multimedia.',
+	'optin-survey-answer-changes-richtext' => "Desenvolicar ferramientas d'edición semellants a os editors de texto enriquiu",
+	'optin-survey-answer-changes-lookfeel' => "Esviellar l'aparencia d'o sitio.",
+	'optin-survey-answer-changes-predictability' => "Amillorar a preditabilidat d'o comportamiento.",
+	'optin-survey-answer-changes-custom' => "Permitir más posibilidatz de personalización por parte de l'usuario.",
 	'optin-survey-answer-changes-other' => 'Atros:',
+	'optin-improvements2' => "== Que s'ha amillorau? ==
+[[File:UsabilityToolbar.png|left|link=|Imachen d'a barra d'edición amillorada]]
+[[File:UsabilityDialogs.png|left|link=|Imachen d'as nuevas caixas de dialogo]]
+; Barra de ferramientas amillorada
+A nueva barra de ferramientas fa que siga más fácil d'editar articlos.
+Iconos nuevos y milloras fan que sía de millor veyer qué accions fa cada herramienta.
+As opcions desplegables reducen o desorden de vez que se mantienen ferramientas poco emplegadas a nomás un clic de distancia.
+; Dialogo
+En creyar vinclos u tablas, fendo clic en l'icono d'a ferramienta, agora s'ubre un quadro de dialogo que li aduya a creyar vinclos u tablas emplindo un sencillo formulario.
+; Y más
+Hemos introducito una serie d'atras milloras como a navegación, as pestanyas en cascada, a busca amillorada y muito más.
+== Como colaborar-ie ==
+Si quiere saber más sobre a Iniciativa d'Usabilitat, visite o nuestro [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative web].<div style=\"clear:both\"></div>",
 );
 
 /** Arabic (العربية)

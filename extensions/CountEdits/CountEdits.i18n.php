@@ -1619,7 +1619,10 @@ No cödolös keblünanis bai redakaminum onsik.",
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'countedits' => 'ציילן רעדאַקטירונגען',
 	'countedits-username' => 'באַניצער נאָמען:',
+	'countedits-ok' => 'יאָ',
+	'countedits-nosuchuser' => 'נישטאָ קיין באַניצער מיטן נאָמען $1',
 );
 
 /** Cantonese (粵語)

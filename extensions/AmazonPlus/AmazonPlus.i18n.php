@@ -288,6 +288,9 @@ $messages['cs'] = array(
 	'amazonplus-german' => 'Němčina',
 	'amazonplus-french' => 'Francouzština',
 	'amazonplus-japanese' => 'Japonština',
+	'amazonplus-new' => 'nová',
+	'amazonplus-cp-none' => 'Nic',
+	'amazonplus-more' => 'více',
 );
 
 /** German (Deutsch)

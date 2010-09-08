@@ -120,6 +120,11 @@ $messages['ckb'] = array(
 	'categoryonupload-label' => 'پۆل:',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'categoryonupload-label' => 'Kategorie:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

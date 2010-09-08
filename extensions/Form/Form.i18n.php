@@ -1709,6 +1709,7 @@ Fulükolös oni.',
  */
 $messages['yi'] = array(
 	'formsave' => 'אויפֿהיטן',
+	'formbadpagename' => 'נישט געהעריגער בלאַט נאָמען',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -180,6 +180,12 @@ $messages['ckb'] = array(
 	'inspectcache-delete' => 'سڕینەوە',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'inspectcache-delete' => 'Smazat',
+	'inspectcache-list' => 'Seznam',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -1135,6 +1141,7 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'inspectcache-delete' => '删除',
+	'inspectcache-list' => '列表',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

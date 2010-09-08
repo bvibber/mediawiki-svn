@@ -359,6 +359,16 @@ $messages['co'] = array(
 	'createsigndoc-create' => 'Creà',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'createsigndoc-pagename' => 'Stránka:',
+	'createsigndoc-email' => 'E-mailová adresa:',
+	'createsigndoc-bday' => 'Datum narození:',
+	'createsigndoc-hidden' => 'Skrytý',
+	'createsigndoc-optional' => 'Volitelné',
+	'createsigndoc-create' => 'Vytvořit',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

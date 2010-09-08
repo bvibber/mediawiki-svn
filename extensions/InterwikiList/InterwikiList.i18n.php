@@ -786,6 +786,8 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'interwikilist' => 'אינטערוויקי ליסטע',
 	'interwikilist-linkname' => 'אינטערוויקי לינק',
+	'interwikilist-target' => 'ציל URL',
+	'interwikilist-filter' => 'פֿילטערן ליסטע',
 	'interwikilist-prefix' => 'אינטערוויקי פּרעפֿיקס:',
 );
 

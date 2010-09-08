@@ -124,6 +124,11 @@ $messages['ca'] = array(
 	'multiboilerplate-submit' => 'Carrega',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'multiboilerplate-submit' => 'Načíst',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Pill

@@ -328,11 +328,72 @@ Por favor, trigue todas as opcions que correspondan.',
 	'prefswitch-survey-answer-whyoff-hard' => "As funcionalidatz yeran muit dificils d'usar.",
 	'prefswitch-survey-answer-whyoff-didntwork' => 'As funcionalidatz no funcionoron como cal.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'As funcionalidatz tenioron comportamientos impredictibles.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "No me'n ha feito goyo l'aspecto.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "No me'n han feito goyo as nuevas pestanyas ni o nuevo formato.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "No me'n ha feito goyo a nueva barra de ferramientas.",
 	'prefswitch-survey-answer-whyoff-other' => 'Atra razón:',
+	'prefswitch-survey-question-browser' => 'Que navegador emplega?',
+	'prefswitch-survey-answer-browser-other' => 'Belatro navegador:',
+	'prefswitch-survey-question-os' => 'Qué sistema operativo fa servir?',
+	'prefswitch-survey-answer-os-other' => 'Belatro sistema operativo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sí, desactivar as nuevas caracteristicas en totz os wikis',
+	'prefswitch-survey-question-res' => "Quál ye a resolución d'a suya pantalla?",
 	'prefswitch-title-on' => 'Nuevas caracteristicas',
+	'prefswitch-title-switched-on' => 'Disfrute!',
 	'prefswitch-title-off' => 'Desactivar as nuevas caracteristicas',
 	'prefswitch-title-switched-off' => 'Gracias',
 	'prefswitch-title-feedback' => 'Comentarios',
+	'prefswitch-success-on' => "S'han activato as nuevas caracteristicas. Esperamos que li faigan goyo. Siempre puede tornar enta zaga fendo clic en o vinclo «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» en o cobalto d'a pachina.",
+	'prefswitch-success-off' => "S'han desactivato as nuevas caracteristicas. Gracias por prebar-las. Siempre puede tornar enta zaga fendo clic en o vinclo «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» en o cobalto d'a pachina.",
+	'prefswitch-success-feedback' => "S'ha ninviato a suya opinión",
+	'prefswitch-return' => '<hr style="clear:both">
+Tornar ta <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Muestra d'a nueva interficie de navegación d'a Wikipedia <small>[[Media:VectorNavigation-en.png|(ampliar)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Muestra d'a interficie d'edición basica de pachinas <small>[[Media:VectorEditorBasic-en.png|(ampliar)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Muestra d'a nueva caixa de dialogo ta introducir vinclos
+|}
+|}
+
+L'equipo d'experiencia d'usuario (''User Experience Team'') d'a Fundación Wikimedia ha estato treballando con voluntarios d'a comunidat ta fer-li as cosas más sencillas. Somos ansiosos por compartir qualques milloras, incluyindo-ie un nuevo aspecto y a simplificación d'as funcions d'edición. Istos cambios son pensatos ta que os nuevos colaborador lo tiengan más fácil ta escomenzar y se basan en as nuestras [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study prebas d'usabilidat feitas entre l'anyo pasato]. A millora d'a usabilidat d'os nuestros prochectos ye una prioridat d'a Fundación Wikipedia y compartiremos más actualizacions en o futuro. Ta trobar más información leiga o mensache publicato en o [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog de Wikimedia].
+
+===O que hemos cambiato===
+* '''Navegación''': Hemos amillorato a navegación por a lectura y edición de pachinas. Agora, as pestanyas d'a parte superior de cada pachina definen más clarament si ye mirando a pachina prencipal u a de discusión, u si ye leyendo u editando una pachina.
+* '''Milloras en a barra de ferramientas d'edición''': Hemos reorganizato a barra de ferramientas d'edición ta que sía más fácil d'emplegar. Agora, dar formato a las pachinas ye más fácil y intuitivo.
+* '''Asistent ta vinclos''': Una ferramienta de buen usar li permite d'adhibir vinclos ta atras pachinas wiki, asinas como vinclos a sitios externos.
+* '''Milloras en a busca''': Hemos amillorato as sucherencias de busca ta trobar más rapidament a pachian que ye mirando.
+* '''Atras caracteristicas nuevas''': Tamién hemos introduciu un asistent ta fer más fácil a creyación de tablas y una función de trobar y substituir ta simplificar a modificación de pachinas.
+* '''Logotipo de Wikipedia''': Hemos esviellato o nuestro logotipo. En trobará más información en o  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
+	'prefswitch-main-logged-changes' => "* A '''pestanya {{int:watch}}''' ye agora una estrela.
+* A '''pestanya {{int:move}}''' ye agora en un menú desplegable a canto d'a barra de busca.",
+	'prefswitch-main-feedback' => "===Tien comentarios a fer?===
+Nos fería goyo de conoixer-los. Puede vesitar a nuestra [[$1|pachina de comentarios]] u, si ye intresato en as fayenas en marcha por amillorar o software, vesite o nuestro [http://usability.wikimedia.org wiki d'usabilitat] ta más información.",
+	'prefswitch-main-anon' => '===Tornar enta zaga===
+Si deseya desactivar as nuevas caracteristicas [$1 faiga clic aquí]. Habrá de rechistrar-se u creyar una cuenta.',
+	'prefswitch-main-on' => '===Tornar enta zaga!===
+[$2 Faiga clic aquí ta desactivar as nuevas caracteristicas].',
+	'prefswitch-main-off' => '===Prebe-lo!===
+Si deseya activar as nuevas funcionalidatz [$1 faiga clic aquí].',
+	'prefswitch-survey-intro-feedback' => "Nos fería goyo de saber as suyas impresions.
+Por favor, replene o formulario opcional d'aquí abaixo antes de fer clic en «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».",
+	'prefswitch-survey-intro-off' => "Gracias por prebar as nuevas caracteristicas.
+Ta duyar-nos a amillorar-las, replene por favor o formulario opcional d'aquí abaixo antes de fer clic en «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».",
 	'prefswitch-feedbackpage' => "Project:Comentarios sobre a experiencia de l'usuario",
 );
 

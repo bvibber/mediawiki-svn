@@ -85,6 +85,13 @@ $messages['ca'] = array(
 	'semanticformsinputs-today' => 'Avui',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'semanticformsinputs-close' => 'Zavřít',
+	'semanticformsinputs-prev' => 'Předchozí',
+	'semanticformsinputs-next' => 'Další',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -274,5 +281,13 @@ $messages['ru'] = array(
 	'semanticformsinputs-prev' => 'Предыдущая',
 	'semanticformsinputs-next' => 'Следующая',
 	'semanticformsinputs-today' => 'Сегодня',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'semanticformsinputs-close' => '关闭',
+	'semanticformsinputs-prev' => '向前',
+	'semanticformsinputs-next' => '下一个',
+	'semanticformsinputs-today' => '今天',
 );
 

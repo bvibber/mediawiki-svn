@@ -243,6 +243,9 @@ $messages['cs'] = array(
 	'player-file' => 'Název souboru',
 	'player-play' => 'Přehrát',
 	'player-not-allowed' => 'Nepovolený formát',
+	'player-goto-player' => 'přehrávač',
+	'player-goto-page' => 'Stránka',
+	'player-goto-file' => 'soubor',
 );
 
 /** Danish (Dansk)
@@ -1481,6 +1484,7 @@ $messages['zh-hans'] = array(
 	'player-file' => '文件名',
 	'player-play' => '播放',
 	'player-not-found' => '找不到文件',
+	'player-invalid-title' => '无效标题',
 	'player-clicktoplay' => '播放$1',
 	'player-goto-player' => '播放器',
 	'player-goto-page' => '页面',

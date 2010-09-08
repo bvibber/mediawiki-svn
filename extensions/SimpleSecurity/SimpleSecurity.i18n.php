@@ -211,6 +211,12 @@ $messages['ckb'] = array(
 	'security-type-category' => 'پۆل',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'security-type-category' => 'kategorie',
+	'security-type-namespace' => 'jmenný prostor',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Kghbln
@@ -1125,6 +1131,7 @@ $messages['yi'] = array(
  * @author Liangent
  */
 $messages['zh-hans'] = array(
+	'security-type-category' => '分类',
 	'security-type-namespace' => '名字空间',
 );
 

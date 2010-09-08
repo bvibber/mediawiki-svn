@@ -79,6 +79,13 @@ $messages['ckb'] = array(
 	'prefs-category' => 'پۆل',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Výchozí',
+	'categorymultisort-go' => 'Jít na',
+	'prefs-category' => 'Kategorie',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

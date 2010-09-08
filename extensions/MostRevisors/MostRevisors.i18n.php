@@ -914,6 +914,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'mostrevisors-namespace' => '名字空间：',
+	'mostrevisors-submit' => '进入',
 	'mostrevisors-showredir' => '显示重定向页面',
 	'mostrevisors-hideredir' => '隐藏重定向页面',
 	'mostrevisors-viewcontributors' => '检视主要贡献者',

@@ -99,6 +99,13 @@ $messages['br'] = array(
 	'pf-header-approve' => 'Aprouiñ',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'pf-header-documentation' => 'Dokumentace',
+	'pf-header-page_title' => 'Název',
+	'pf-header-approve' => 'Schválit',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -672,5 +679,12 @@ $messages['tl'] = array(
 $messages['yi'] = array(
 	'pf-admin-link-editlink-page' => 'רעדאַקטירן בלאַט',
 	'pf-header-documentation' => 'דאָקומענטאַציע',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'pf-header-documentation' => '说明',
+	'pf-header-page_title' => '标题',
+	'pf-header-approve' => '批复',
 );
 

@@ -229,6 +229,16 @@ $messages['ckb'] = array(
 	'refhelper-search' => 'گەڕان',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'refhelper-title' => 'Název:',
+	'refhelper-pages' => 'Stránky:',
+	'refhelper-year' => 'Rok:',
+	'refhelper-category' => 'Kategorie: $1',
+	'refhelper-create' => 'Vytvořit',
+	'refhelper-search' => 'Hledat',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -1217,5 +1227,15 @@ $messages['vi'] = array(
 	'refhelper-category' => 'Thể loại $1:',
 	'refhelper-create' => 'Tạo',
 	'refhelper-search' => 'Tìm kiếm',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'refhelper-title' => '标题：',
+	'refhelper-pages' => '页面:',
+	'refhelper-year' => '年份:',
+	'refhelper-category' => '分类： $1',
+	'refhelper-create' => '创建',
+	'refhelper-search' => '搜索',
 );
 

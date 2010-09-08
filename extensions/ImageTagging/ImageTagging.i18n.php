@@ -2254,6 +2254,7 @@ $messages['yi'] = array(
 $messages['zh-hans'] = array(
 	'imagetagging-addimagetag' => '标签这幅图片',
 	'imagetagging-article' => '页面：',
+	'imagetagging-imghistory' => '历史',
 	'imagetagging-images' => '图片',
 	'imagetagging-removetag' => '移除标签',
 	'imagetagging-done-button' => '完成标签',

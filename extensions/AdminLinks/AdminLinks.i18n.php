@@ -1468,7 +1468,10 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'adminlinks_general' => 'אַלגעמיין',
+	'adminlinks_editsidebar' => 'רעדאַקטירן זײַטפאַס',
 	'adminlinks_editcss' => 'רעדאַקטירן CSS טעקע',
+	'adminlinks_editmainpagename' => 'רעדאַקטירן נאָמען פֿון הויפּט בלאַט',
 	'adminlinks_users' => 'באַניצער',
 	'adminlinks_createuser' => 'שאַפֿן אַ באַניצער',
 	'adminlinks_browsesearch' => 'בלעטערן און זוכן',

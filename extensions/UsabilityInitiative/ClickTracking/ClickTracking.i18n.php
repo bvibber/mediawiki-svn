@@ -2212,12 +2212,14 @@ $messages['sv'] = array(
 );
 
 /** Swahili (Kiswahili)
+ * @author Ikiwaner
  * @author Lloffiwr
  */
 $messages['sw'] = array(
 	'ct-event-name' => 'Jina la tukio',
 	'ct-start-date' => 'Tarehe ya kuanza (mwaka - tarakimu 4, mwezi - tarakimu 2, siku - tarakimu 2)',
 	'ct-end-date' => 'Tarehe ya kumaliza (mwaka - tarakimu 4, mwezi - tarakimu 2, siku - tarakimu 2)',
+	'ct-beginner' => 'Mwanzishi',
 	'ct-expert' => 'Mtaalam',
 	'ct-anon-users' => 'Watumiaji bila majina',
 	'ct-user-contribs' => 'Jumla ya michango ya mtumiaji',

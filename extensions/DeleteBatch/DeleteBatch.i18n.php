@@ -277,6 +277,11 @@ $messages['ckb'] = array(
 	'deletebatch-delete' => 'سڕینەوە',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'deletebatch-delete' => 'Smazat',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK

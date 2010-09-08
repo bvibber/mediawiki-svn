@@ -744,7 +744,9 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'pageby-first' => 'בלאַט באַשאַפֿן דורך $1, $2',
+	'pageby-last' => 'צו לעצט <a href="$3">מאדיפיצירט</a> דורך $1, $2',
 	'pageby-contributors' => 'בײַשטײַערער:',
+	'pageby-anon' => 'אַנאנים',
 );
 
 /** Cantonese (粵語)

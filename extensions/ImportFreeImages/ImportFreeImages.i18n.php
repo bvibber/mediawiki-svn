@@ -252,6 +252,12 @@ $messages['cs'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importovat toto',
 	'importfreeimages_next' => 'Dalších $1',
+	'importfreeimages_size_square' => 'Čtverec',
+	'importfreeimages_size_thumbnail' => 'Náhled',
+	'importfreeimages_size_small' => 'Malá',
+	'importfreeimages_size_medium' => 'Střední',
+	'importfreeimages_size_large' => 'Velká',
+	'importfreeimages_size_original' => 'Originál',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)

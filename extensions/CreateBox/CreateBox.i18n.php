@@ -145,6 +145,11 @@ $messages['co'] = array(
 	'createbox-create' => 'Creà',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'createbox-create' => 'Vytvořit',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -734,6 +739,11 @@ $messages['sk'] = array(
 Túto stránku nemôžete vytvoriť, ale môžete ju [{{fullurl:{{FULLPAGENAME}}|action=edit}} upravovať], [{{fullurl:{{FULLPAGENAME}}}} čítať] alebo vytvoriť inú stránku pomocou tohto vstupného poľa.
 
 <createbox>break=no</createbox>",
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$messages['sr-ec'] = array(
+	'createbox-create' => 'Направи',
 );
 
 /** Sundanese (Basa Sunda)

@@ -180,6 +180,12 @@ $messages['ckb'] = array(
 	'emergencydesysop-submit' => 'ناردن',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'emergencydesysop-submit' => 'Odeslat',
+	'emergencydesysop-nogroups' => 'Nic',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Metalhead64

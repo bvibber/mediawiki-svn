@@ -393,3 +393,10 @@ $messages['vi'] = array(
 	'interlanguage-desc' => 'Lấy liên kết giữa ngôn ngữ từ wiki khác',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'interlanguage-desc' => 'נעמט אינטערשפראַך לינקען פון אַן אַנדער וויקי',
+);
+

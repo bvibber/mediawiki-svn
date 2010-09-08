@@ -292,6 +292,13 @@ $messages['vi'] = array(
 	'dynamicsidebar-desc' => 'Cung cấp thanh bên động dựa trên trang thành viên, nhóm, và thể loại',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'dynamicsidebar-desc' => 'באַזארגט דינאַמישע זײַטפאַסן באַזירט אויף באניצער בלעטער, גרופעס און קאַטעגאריעס',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'dynamicsidebar-desc' => '根据用户，组别和类别提供动态页面侧边栏',

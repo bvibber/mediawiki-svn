@@ -122,6 +122,12 @@ $messages['ca'] = array(
 	'logentry-invalidpage' => 'Pàgina no vàlida',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'logentry-append' => 'Přidat',
+	'logentry-invalidtoken' => 'Neplatný token',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

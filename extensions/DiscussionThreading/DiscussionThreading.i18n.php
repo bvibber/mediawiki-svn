@@ -733,3 +733,9 @@ $messages['vo'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Primön fadi nulik',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'discussionthreading-replysection' => '回复',
+	'discussionthreading-threadnewsection' => '新',
+);
+

@@ -1524,6 +1524,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'invite-logpage' => '邀请记录',
+	'invitations-inviteform-submit' => '邀请',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

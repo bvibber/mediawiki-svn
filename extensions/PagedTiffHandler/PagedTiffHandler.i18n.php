@@ -135,6 +135,14 @@ $messages['br'] = array(
 	'tiff-file-info-size' => '(pajenn $5, $1 × $2 piksel, ment ar restr : $3, seurt MIME : $4)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'tiff_no_metadata' => 'Ne mogu se naći metapodaci iz TIFF',
+	'tiff_file_too_large' => 'Postavljena datoteka je prevelika ili je odbijena.',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Hallo Welt! - Medienwerkstatt GmbH

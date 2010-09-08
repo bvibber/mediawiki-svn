@@ -70,6 +70,12 @@ $messages['bs'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Napravi',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Vytvořit',
+	'articletocategory2-create-category-under-category-button' => 'Vytvořit',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -244,6 +250,12 @@ $messages['ru'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Создать',
 	'articletocategory2-create-category-under-category-text' => 'Добавить категорию в эту категорию',
 	'articletocategory2-create-category-under-category-button' => 'Создать',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$messages['sr-ec'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Направи',
+	'articletocategory2-create-category-under-category-button' => 'Направи',
 );
 
 /** Swedish (Svenska) */

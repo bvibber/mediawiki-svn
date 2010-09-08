@@ -62,6 +62,16 @@ $messages['br'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enrollañ ur poent evezhiañ]])',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'checkpoint' => 'Spremi i nastavi sa uređivanjem',
+	'checkpoint-desc' => 'Omogućuje korisniku da spremi promjenu i nastavi uređivanje',
+	'checkpoint-tooltip' => 'Spremite vaš doprinos i nastavite uređivati stranicu',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|spremljena međuverzija]])',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

@@ -658,3 +658,10 @@ $messages['vo'] = array(
 	'nstab-comments' => 'Küpets',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'nstab-comments' => 'קאמענטאַר',
+);
+

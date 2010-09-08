@@ -841,6 +841,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'block_title_error_page_title' => 'פֿאַרשפאַרטער בלאַטנאָמען',
+	'block_title_error' => 'אַנטשולדיגט, דער טיטל פון דעם בלאַט איז אומגליטיג.',
 );
 
 /** Cantonese (粵語)

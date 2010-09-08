@@ -254,6 +254,11 @@ $messages['ckb'] = array(
 	'editmsg-search' => 'گەڕان',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'editmsg-search' => 'Hledat',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

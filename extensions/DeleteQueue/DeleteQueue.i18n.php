@@ -1029,6 +1029,24 @@ $messages['ckb'] = array(
 	'deletequeue-case-reason' => 'هۆکار:',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'deletequeue-delnom-otherreason' => 'Jiný důvod',
+	'deletequeue-review-reason' => 'Komentáře:',
+	'deletequeue-vote-reason' => 'Komentáře:',
+	'deletequeue-vote-submit' => 'Odeslat',
+	'deletequeue-list-queue' => 'Zvolená fronta:',
+	'deletequeue-list-status' => 'Stav:',
+	'deletequeue-list-search' => 'Hledat',
+	'deletequeue-list-header-page' => 'Stránka',
+	'deletequeue-list-header-queue' => 'Zvolená fronta',
+	'deletequeue-list-header-expiry' => 'Čas vypršení',
+	'deletequeue-list-header-reason' => 'Zdůvodnění smazání',
+	'deletequeue-case-page' => 'Stránka:',
+	'deletequeue-case-reason' => 'Důvod:',
+	'deletequeue-case-expiry' => 'Čas vypršení:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */
@@ -4722,6 +4740,7 @@ $messages['pl'] = array(
 ** Treść nie przystaje do projektu',
 	'deletequeue-nom-alreadyqueued' => 'Ta strona jest już w kolejce do usunięcia.',
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
+	'deletequeue-prod-title' => 'Zaproponuj usunięcie „$1”',
 	'deletequeue-delnom-otherreason' => 'Inny powód',
 	'right-speedy-nominate' => 'Oznaczanie stron do ekspresowego skasowania',
 	'right-speedy-review' => 'Przeglądanie stron oznaczonych do ekspresowego skasowania',
@@ -6563,11 +6582,14 @@ $messages['zh-hans'] = array(
 	'deletequeue-vote-submit' => '提交',
 	'deletequeue-showvotes-restrict-endorse' => '只显示赞成票',
 	'deletequeue-showvotes-restrict-object' => '只显示反对票。',
+	'deletequeue-list-queue' => '队列：',
 	'deletequeue-list-status' => '状态：',
 	'deletequeue-list-search' => '搜索',
 	'deletequeue-list-anyqueue' => '（任何）',
 	'deletequeue-list-votes' => '投票列表',
 	'deletequeue-list-header-page' => '页面',
+	'deletequeue-list-header-queue' => '队列',
+	'deletequeue-list-header-expiry' => '期限',
 	'deletequeue-case-reason' => '原因：',
 );
 

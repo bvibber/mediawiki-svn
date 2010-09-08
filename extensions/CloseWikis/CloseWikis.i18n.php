@@ -2098,6 +2098,7 @@ $messages['yi'] = array(
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
+	'closewikis-page-close-submit' => '关闭',
 	'closewikis-page-reopen-reason' => '原因：',
 );
 

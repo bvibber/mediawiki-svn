@@ -87,6 +87,11 @@ $messages['ca'] = array(
 	'purge' => 'purga',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'purge' => 'obnovit',
+);
+
 /** Danish (Dansk)
  * @author Masz
  */

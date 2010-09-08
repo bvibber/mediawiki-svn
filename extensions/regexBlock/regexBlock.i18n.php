@@ -579,6 +579,17 @@ $messages['ckb'] = array(
 	'regexblock-view-go' => 'بڕۆ',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'regexblock-form-username' => 'IP adresa nebo uživatelské jméno:',
+	'regexblock-form-reason' => 'Důvod:',
+	'regexblock-form-expiry' => 'Čas vypršení:',
+	'regexblock-view-all' => 'Všechny',
+	'regexblock-view-go' => 'Jít na',
+	'regexblock-view-match' => '(přesná shoda)',
+	'regexblock-view-reason' => 'důvod: $1',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -1319,7 +1330,7 @@ $messages['hi'] = array(
 	'regexblock-view-block-infinite' => 'हमेशा के लिये ब्लॉक',
 	'regexblock-view-block-by' => 'ब्लॉक कर्ता',
 	'regexblock-view-block-unblock' => 'अनब्लॉक',
-	'regexblock-view-stats' => '(सांख्यिकी)',
+	'regexblock-view-stats' => 'सांख्यिकी',
 	'regexblock-view-empty' => 'ब्लॉक किये सदस्यनाम और आइपी एड्रेसोंकी सूची खाली हैं।',
 	'regexblock-view-time' => '$1 पर',
 );
@@ -2078,7 +2089,7 @@ $messages['mr'] = array(
 	'regexblock-view-block-infinite' => 'कायमस्वरूपी ब्लॉक',
 	'regexblock-view-block-by' => 'ब्लॉक कर्ता',
 	'regexblock-view-block-unblock' => 'अनब्लॉक',
-	'regexblock-view-stats' => '(सांख्यिकी)',
+	'regexblock-view-stats' => 'सांख्यिकी',
 	'regexblock-view-empty' => 'ब्लॉक केलेल्या सदस्यनाव तसेच आयपी अंकपत्त्यांची यादी रिकामी आहे.',
 	'regexblock-view-time' => '$1 वर',
 );
@@ -2123,7 +2134,7 @@ $messages['nah'] = array(
 	'regexblock-view-all' => 'Mochīntīn',
 	'regexblock-view-go' => 'Yāuh',
 	'regexblock-view-reason' => 'īxtlamatiliztli: $1',
-	'regexblock-view-stats' => '(tlapōhualli)',
+	'regexblock-view-stats' => 'tlapōhualli',
 	'regexblock-view-time' => 'īpan $1',
 );
 
@@ -3076,7 +3087,7 @@ $messages['tg-cyrl'] = array(
 	'regexblock-view-block-infinite' => 'бастани доимӣ',
 	'regexblock-view-block-by' => 'баста шуд тавассути',
 	'regexblock-view-block-unblock' => 'боз кардан',
-	'regexblock-view-stats' => '(омор)',
+	'regexblock-view-stats' => 'омор',
 	'regexblock-view-empty' => 'Феҳристи номҳо ва нишонаҳои баста шуда холӣ аст.',
 	'regexblock-view-time' => 'дар $1',
 );
@@ -3382,10 +3393,13 @@ $messages['zh-hans'] = array(
 	'regexblock-form-expiry' => '到期日：',
 	'regexblock-form-submit' => '封禁这位用户',
 	'regexblock-nodata-found' => '找不到数据',
+	'regexblock-view-all' => '全部',
+	'regexblock-view-go' => '进入',
 	'regexblock-view-reason' => '原因：$1',
 	'regexblock-view-reason-default' => '一般原因',
 	'regexblock-view-block-infinite' => '永久封禁',
-	'regexblock-view-stats' => '（统计）',
+	'regexblock-view-block-unblock' => '解除封禁',
+	'regexblock-view-stats' => '统计',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -3402,6 +3416,6 @@ $messages['zh-hant'] = array(
 	'regexblock-view-reason' => '原因：$1',
 	'regexblock-view-reason-default' => '一般原因',
 	'regexblock-view-block-infinite' => '永久封禁',
-	'regexblock-view-stats' => '（統計）',
+	'regexblock-view-stats' => '統計',
 );
 

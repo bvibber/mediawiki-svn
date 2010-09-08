@@ -185,8 +185,11 @@ $messages['cs'] = array(
 	'mwe-clipedit-insert_image_page' => 'Vložit do stránky',
 	'mwe-clipedit-preview_insert' => 'Náhled vložení',
 	'mwe-clipedit-cancel_image_insert' => 'Zrušit vkládání',
+	'mwe-clipedit-sc_duration' => 'Období',
 	'mwe-clipedit-edit-tools' => 'Nástroje pro editaci',
 	'mwe-clipedit-inline-description' => 'Titulek',
+	'mwe-clipedit-duration' => 'Období:',
+	'mwe-clipedit-layout' => 'Vzhled',
 );
 
 /** German (Deutsch)
@@ -1254,7 +1257,9 @@ $messages['tl'] = array(
 	'mwe-clipedit-layout_left' => 'Pakaliwang ayos ng larawan',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Mert.subay
+ */
 $messages['tr'] = array(
 	'mwe-clipedit-crop' => 'Resmi kırp',
 	'mwe-clipedit-apply_crop' => 'Kırpmayı resme uygula',
@@ -1263,6 +1268,7 @@ $messages['tr'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Sıraya ekle',
 	'mwe-clipedit-preview_insert' => 'Eklemeyi önizle',
 	'mwe-clipedit-cancel_image_insert' => 'Eklemeyi iptal et',
+	'mwe-clipedit-sc_attributes' => 'Klip detayını düzenle',
 	'mwe-clipedit-sc_inoutpoints' => 'Başlangıç-bitiş noktalarını ayarla',
 	'mwe-clipedit-sc_overlays' => 'Katmanlar',
 	'mwe-clipedit-sc_audio' => 'Ses denetimi',
@@ -1280,6 +1286,9 @@ $messages['tr'] = array(
 	'mwe-clipedit-inline-description' => 'Resim yazısı',
 	'mwe-clipedit-edit-video-tools' => 'Video Düzenleme Araçları:',
 	'mwe-clipedit-duration' => 'Süre:',
+	'mwe-clipedit-layout' => 'Yerleşim',
+	'mwe-clipedit-layout_right' => 'Sağa yerleştirilmiş resim',
+	'mwe-clipedit-layout_left' => 'Sola yerleştirilmiş resim',
 );
 
 /** Ukrainian (Українська)
@@ -1368,5 +1377,15 @@ $messages['vi'] = array(
 	'mwe-clipedit-end_time' => 'Thời điểm kết thúc',
 	'mwe-clipedit-preview_inout' => 'Nghe thử điểm vào-ra',
 	'mwe-clipedit-edit-tools' => 'Công cụ sửa đổi',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'mwe-clipedit-sc_duration' => '期限',
+	'mwe-clipedit-start_time' => '开始时间',
+	'mwe-clipedit-end_time' => '结束时间',
+	'mwe-clipedit-inline-description' => '说明',
+	'mwe-clipedit-duration' => '期限：',
+	'mwe-clipedit-layout' => '布局',
 );
 

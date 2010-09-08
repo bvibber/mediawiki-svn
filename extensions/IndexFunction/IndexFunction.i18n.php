@@ -227,6 +227,12 @@ $messages['ckb'] = array(
 	'index-submit' => 'ناردن',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'index-search' => 'Hledat:',
+	'index-submit' => 'Odeslat',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author MF-Warburg

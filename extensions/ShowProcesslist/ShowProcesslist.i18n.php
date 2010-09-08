@@ -31,6 +31,7 @@ $messages['qqq'] = array(
 	'showprocesslist-user' => '{{Identical|User}}',
 	'showprocesslist-db' => '{{Identical|Database}}',
 	'showprocesslist-time' => '{{Identical|Time}}',
+	'showprocesslist-info' => '{{Identical|Info}}',
 );
 
 /** Abkhazian (Аҧсуа)
@@ -45,9 +46,16 @@ $messages['ab'] = array(
  * @author SPQRobin
  */
 $messages['af'] = array(
+	'showprocesslist' => 'Wys prosesse',
+	'showprocesslist-desc' => 'Wys die afvoer van [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Gebruiker',
+	'showprocesslist-host' => 'Stelsel',
+	'showprocesslist-db' => 'Databasis',
+	'showprocesslist-command' => 'Opdrag',
 	'showprocesslist-time' => 'Tyd',
+	'showprocesslist-state' => 'Status',
+	'showprocesslist-info' => 'Inligting',
 );
 
 /** Arabic (العربية)
@@ -1142,8 +1150,11 @@ $messages['yi'] = array(
  */
 $messages['zh-hans'] = array(
 	'showprocesslist-user' => '用户',
+	'showprocesslist-host' => '主机',
+	'showprocesslist-db' => '数据库',
 	'showprocesslist-time' => '时间',
 	'showprocesslist-state' => '状态',
+	'showprocesslist-info' => '信息',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

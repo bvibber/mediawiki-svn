@@ -315,6 +315,16 @@ Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyboard-storydeletionconfirm' => "Ha sur oc'h hoc'h eus c'hoant dilemel an istor-mañ da vat ?",
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'storyboard-hide' => 'Skrýt',
+	'storyboard-option-hidden' => 'skrytý',
+	'storyboard-language' => 'Jazyk',
+	'storyboard-location' => 'Vaše poloha',
+	'storyboard-done' => 'Hotovo',
+	'storyboard-deletestory' => 'Odstranit',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
@@ -2157,5 +2167,16 @@ Bakit hindi mo ito ibahagi?',
 	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
 	'storyboard-done' => 'Nagawa na',
 	'storyboard-deletestory' => 'Tanggalin',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'storyboard-hidden' => '隐藏',
+	'storyboard-hide' => '隐藏',
+	'storyboard-option-hidden' => '隐藏',
+	'storyboard-storystate' => '州份/省份',
+	'storyboard-language' => '语言',
+	'storyboard-done' => '完成',
+	'storyboard-deletestory' => '移除',
 );
 

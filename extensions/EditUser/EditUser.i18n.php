@@ -247,6 +247,12 @@ $messages['ckb'] = array(
 	'edituser-dosearch' => 'گەڕان',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'edituser-username' => 'Uživatelské jméno:',
+	'edituser-dosearch' => 'Hledat',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

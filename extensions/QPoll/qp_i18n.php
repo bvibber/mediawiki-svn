@@ -539,6 +539,13 @@ $messages['bs'] = array(
 	'qp_users_link' => 'Korisnici',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'qp_source_link' => 'Zdroj',
+	'qp_stats_link' => 'Statistika',
+	'qp_users_link' => 'Uživatelé',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Kghbln
@@ -2334,5 +2341,12 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'qp_desc' => 'Дозволяє створювати опитування',
 	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'qp_source_link' => '来源',
+	'qp_stats_link' => '统计',
+	'qp_users_link' => '用户',
 );
 

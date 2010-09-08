@@ -159,6 +159,11 @@ $messages['ca'] = array(
 	'commentbox-error-empty-comment' => 'No estan permesos els comentaris buits!',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'commentbox-name' => 'Jméno:',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
@@ -1002,7 +1007,7 @@ $messages['zh-hans'] = array(
 	'commentbox-intro' => '添加评论
 是否对此页内容有意见？请将意见添加在此或
 直接修改此页',
-	'commentbox-name' => '名称',
+	'commentbox-name' => '名称：',
 	'commentbox-log' => '新评论',
 );
 

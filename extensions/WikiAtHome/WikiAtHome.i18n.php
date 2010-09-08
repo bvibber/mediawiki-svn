@@ -1889,6 +1889,7 @@ $messages['zh-hans'] = array(
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
 	'wah-loading' => '正在载入Wiki@Home界面……',
 	'wah-menu-pref' => '参数设置',
+	'wah-uploadfail' => '上传失败',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

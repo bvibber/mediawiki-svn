@@ -775,6 +775,28 @@ $messages['ca'] = array(
 	'sign-review-comment' => 'Comentari',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'sign-realname' => 'Jméno:',
+	'sign-address' => 'Adresu:',
+	'sign-city' => 'Město:',
+	'sign-state' => 'Stát:',
+	'sign-country' => 'Země:',
+	'sign-bday' => 'Věk:',
+	'sign-email' => 'E-mailová adresa:',
+	'sign-viewfield-timestamp' => 'Časová značka',
+	'sign-viewfield-realname' => 'Jméno',
+	'sign-viewfield-address' => 'Adresa',
+	'sign-viewfield-city' => 'Město',
+	'sign-viewfield-country' => 'Země',
+	'sign-viewfield-zip' => 'PSČ',
+	'sign-viewfield-ip' => 'IP adresa',
+	'sign-viewfield-email' => 'E-mail',
+	'sign-viewfield-age' => 'Věk',
+	'sign-closed' => 'zavřeno',
+	'sign-viewfield-reviewcomment' => 'Komentář',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */
