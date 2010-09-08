@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Old entry point for the SMWWriter extension. 
+ * Old entry point for the SMWWriter extension.
  * Deprecated. Use SMWWriter.php instead.
  */
 

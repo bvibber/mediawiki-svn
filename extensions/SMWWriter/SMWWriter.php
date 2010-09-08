@@ -7,7 +7,7 @@
  * @ingroup SMWWriter
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -20,7 +20,7 @@ include_once( "$smwwgIP/api/SMWWriter_API.php" );
 
 global $wgExtensionCredits;
 
-$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][]= array(
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
 	'name' => 'SMWWriter',
 	'version' => SMWWRITER_VERSION,
