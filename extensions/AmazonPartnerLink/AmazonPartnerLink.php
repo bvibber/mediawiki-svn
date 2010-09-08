@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 define( 'APL_VERSION', '0.2' );
 
 $wgExtensionMessagesFiles['AmazonPartnerLink'] = dirname( __FILE__ ) . '/AmazonPartnerLink.i18n.php';
-$wgExtensionFunctions[] = 'AmazonPartnerLink';
+$wgHooks['ParserFirstCallInit'][] = 'efAPLAddTagExtension';
 
 // Extension credits that show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
@@ -38,30 +38,30 @@ $wgExtensionCredits['parserhook'][] = array(
 	'version' => APL_VERSION
 );
 
-function AmazonPartnerLink() {
-    global $wgParser;
-    $wgParser->setHook( 'amazon', 'AddAmazonLink' );
+function efAPLAddTagExtension( Parser &$parser ) {
+    $parser->setHook( 'amazon', 'efAPLRenderTag' );
+    return true;
 }
 
-function AddAmazonLink( $label, $argv, $parser ) {
-	$asin = $argv['asin'];
-	$type = $argv['type'];
-	$limit = $argv['limitto'];
-	$preview = $argv['preview'];
-	$keywords = $argv['keywords'];
-
+function efAPLRenderTag( $label, $argv, $parser ) {
+	$asin = array_key_exists( 'asin', $argv ) ? $argv['asin'] : '';
+	$type = array_key_exists( 'type', $argv ) ? $argv['type'] : 'context';
+	$limit = array_key_exists( 'limitto', $argv ) ? $argv['limitto'] : 'blended';
+	$preview = array_key_exists( 'preview', $argv ) ? $argv['preview'] : false;
+	$keywords = array_key_exists( 'keywords', $argv ) ? $argv['keywords'] : '';
+	
     // Strip "-" from the maybe-isbn.
-	$asin = ereg_replace( '-', '', $asin );
+	$asin = str_replace( '-', '', $asin );
 
 	if ( strlen( $asin ) == 13 ) {
-		$asin = ISBNTransform( $asin );
+		$asin = wfAPLISBNTransform( $asin );
 	}
 
 	// In fact, we could already do some switching over here! (look for keywords, etc)
-	return getLinkTo( $type, $asin, $label, $keywords, $preview, $limit );
+	return efAPLGetLinkTo( $type, $asin, $label, $keywords, $preview, $limit );
 }
 
-function getLinkTo( $type = 'context', $asin = '', $label = '', $keywords = '', $preview = false, $limit = 'blended' ) {
+function efAPLGetLinkTo( $type = 'context', $asin = '', $label = '', $keywords = '', $preview = false, $limit = '' ) {
 	global $wgAmazonPartnerID, $wgAmazonLanguage;
 
 	$pid = $wgAmazonPartnerID;
@@ -138,10 +138,11 @@ function getLinkTo( $type = 'context', $asin = '', $label = '', $keywords = '', 
 			$output = sprintf( $singleBox, $asin, $pid, $tld );
 		break;
 	}
-    return $output;
+
+	return $output;
 }
 
-function ISBNTransform( $isbn ) {
+function wfAPLISBNTransform( $isbn ) {
 	# Transform ISBN-13 to ISBN-10 by stripping down to 9 digits + chksum
 	$chksm = (
 		$tmpisbn[3] * 1
