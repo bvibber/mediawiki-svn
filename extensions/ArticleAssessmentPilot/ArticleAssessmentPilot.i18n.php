@@ -27,13 +27,12 @@ $messages['en'] = array(
 	# This special page doesn't exist yet, but it will soon.
 	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
+	# Some of these messages are unused in the code as it is but may be in the future depending on performance.  They should still be translated.
 	'articleassessment-stalemessage-revisioncount' => "This article has been ''revised'' '''$1 times''' since you last reviewed it. You may wish to re-rate it.",
 	'articleassessment-stalemessage-greaterthancount' => "This article has been ''revised'' more than $1 times since you last reviewed it. You may wish to re-rate it.",
-
-	# FIXME: Message seems unused. Please check.
 	'articleassessment-stalemessage-norevisioncount' => "This article has been ''revised'' since you last reviewed it. You may wish to re-rate it.",
 
-	# FIXME: Invalid links
+	# Links get rewritten in javascript.
 	'articleassessment-results-show' => "(Results hidden. [[|Show]] them.)",
 	'articleassessment-results-hide' => "([[|Hide Results]])",
 );
@@ -61,9 +60,10 @@ $messages['qqq'] = array(
 	'articleassessment-thanks' => 'The message to display when the user has successfully submitted a rating.',
 	'articleassessment-featurefeedback' => 'This is a call to action link for users to provide feedback about the feature.  It takes them to a survey.',
 	'articleassessment-noratings' => 'This indicates the number of ratings that the article has received.',
+	# Some of these messages are unused in the code as it is but may be in the future depending on performance.  They should still be translated.	
 	'articleassessment-stalemessage-revisioncount' => 'This is a message shown to the user when their ratings are "stale" and includes the number of revisions since.',
 	'articleassessment-stalemessage-greaterthancount' => 'This is a message shown to the user when their ratings are "stale". It allows for not looking up the total number of revisions.',
-	'articleassessment-stalemessage-norevisioncount' => 'This is a message shown to the user when their ratings are "stale" and does NOT include the number of revisions. This is included for completeness, in case revision counts need to be turned off.',
+	'articleassessment-stalemessage-norevisioncount' => 'This is a message shown to the user when their ratings are "stale" and does NOT include the number of revisions. This is an ambiguous reason, and allows for us to have complicated staleness patterns. This is the preferred message.',
 	'articleassessment-results-show' => 'This is an explanatory control that, when clicked, will display hidden aggregate ratings.',
 	'articleassessment-results-hide' => 'This is a control that, when clicked, will hide the aggregate ratings.',
 );
