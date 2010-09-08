@@ -90,7 +90,9 @@ class CB_Setup {
 		global $wgAjaxExportList;
 
 		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
-		$top_dir = array_pop( explode( '/', self::$ExtDir ) );
+		// next expression splitted into two separate lines due to warning in E_STRICT mode
+		$top_dir = explode( '/', self::$ExtDir );
+		$top_dir = array_pop( $top_dir );
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
 		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser.i18n.php';
 
@@ -165,11 +167,11 @@ class CB_Setup {
 		}
 	}
 
-	static function entities( &$s ) {
+	static function entities( $s ) {
 		return htmlentities( $s, ENT_COMPAT, 'UTF-8' );
 	}
 
-	static function specialchars( &$s ) {
+	static function specialchars( $s ) {
 		return htmlspecialchars( $s, ENT_COMPAT, 'UTF-8' );
 	}
 

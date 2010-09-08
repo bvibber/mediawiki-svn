@@ -146,7 +146,8 @@ abstract class CB_AbstractPagesView {
 		$result = '';
 		if ( !empty( $pager_row->cl_sortkey ) &&
 				$title_obj->getText() != $pager_row->cl_sortkey ) {
-			$this->sortkey_hint = '(' . CategoryViewer::getSubcategorySortChar( $title_obj, $pager_row->cl_sortkey ) . ')';
+			$cv = new CategoryViewer( $title_obj );
+			$this->sortkey_hint = '(' . $cv->getSubcategorySortChar( $title_obj, $pager_row->cl_sortkey ) . ')';
 			$result = CB_XML::toText( $this->sortkey_hint_tpl );
 		}
 		return $result;
