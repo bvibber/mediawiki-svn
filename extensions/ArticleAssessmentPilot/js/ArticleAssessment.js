@@ -17,9 +17,9 @@
 			],
 			'fieldHintSuffix': '-tooltip',
 			'fieldPrefix': 'articleassessment-rating-',
-			'fieldHTML': '<div class="field-wrapper" id="articleassessment-rate-{FIELD}"> \
-				<label for="rating_{FIELD}" original-title="{HINT}" class="rating-field-label">{LABEL}</label> \
-				<select id="rating_{FIELD}" name="rating[{FIELD}]" class="rating-field"> \
+			'fieldHTML': '<div class="field-wrapper"> \
+				<label class="rating-field-label"></label> \
+				<select class="rating-field"> \
 					<option value="1">1</option> \
 					<option value="2">2</option> \
 					<option value="3">3</option> \
@@ -30,10 +30,10 @@
 			'structureHTML': '<div class="article-assessment-wrapper"> \
 				<form action="rate" method="post" id="article-assessment"> \
 					<fieldset id="article-assessment-rate"> \
-						<legend>{YOURFEEDBACK}</legend> \
+						<legend></legend> \
 						<div class="article-assessment-information"> \
-							<span class="article-assessment-rate-instructions">{INSTRUCTIONS}</span> \
-							<span class="article-assessment-rate-feedback">{FEEDBACK}</span> \
+							<span class="article-assessment-rate-instructions"></span> \
+							<span class="article-assessment-rate-feedback"></span> \
 						</div> \
 						<div class="article-assessment-rating-fields"></div> \
 						<div class="article-assessment-submit"> \
@@ -41,20 +41,20 @@
 						</div> \
 					</fieldset> \
 					<fieldset id="article-assessment-ratings"> \
-						<legend>{ARTICLERATING}</legend> \
+						<legend></legend> \
 						<div class="article-assessment-information"> \
-							<span class="article-assessment-show-ratings">{RESULTSSHOW}</span> \
-							<span class="article-assessment-hide-ratings">{RESULTSHIDE}</span> \
+							<span class="article-assessment-show-ratings"></span> \
+							<span class="article-assessment-hide-ratings"></span> \
 						</div> \
 					</fieldset> \
 				</form> \
 			</div>',
-			'ratingHTML': '<div class="article-assessment-rating" id="articleassessment-rating-{FIELD}"> \
-					<span class="article-assessment-rating-field-name">{LABEL}</span> \
+			'ratingHTML': '<div class="article-assessment-rating"> \
+					<span class="article-assessment-rating-field-name"></span> \
 					<span class="article-assessment-rating-field-value-wrapper"> \
-						<span class="article-assessment-rating-field-value">{VALUE}</span> \
+						<span class="article-assessment-rating-field-value">0%</span> \
 					</span> \
-					<span class="article-assessment-rating-count">{COUNT}</span> \
+					<span class="article-assessment-rating-count"></span> \
 				</div>',
 			'staleMSG': '<span class="article-assessment-stale-msg">{MSG}</span>'
 		},
@@ -84,40 +84,76 @@
 					config.userID = userToken;
 				}
 				// setup our markup using the template variables in settings 
-				var $output = $( settings.structureHTML
-					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-pleaserate' ) )
-					.replace( /\{FEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg( 'articleassessment-featurefeedback' )
-						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
-					.replace( /\{YOURFEEDBACK\}/g,	$.ArticleAssessment.fn.getMsg( 'articleassessment-yourfeedback') )
-					.replace( /\{ARTICLERATING\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-articlerating' ) ) 
-					.replace( /\{RESULTSHIDE\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-results-hide' )
-						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) 
-					.replace( /\{RESULTSSHOW\}/g,	 $.ArticleAssessment.fn.getMsg( 'articleassessment-results-show' )
-						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) );
-				for ( var field in settings.fieldMessages ) { 
-					$output.find( '.article-assessment-rating-fields' )
-						.append( $( settings.fieldHTML
-							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
-							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
-							.replace( /\{HINT\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) ) );
-					$output.find( '#article-assessment-ratings' )
-						.append( $( settings.ratingHTML
-							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
-							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
-							.replace( /\{VALUE\}/g, '0%' ) 
-							.replace( /\{COUNT\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
-							);
+				var $structure = $( settings.structureHTML ),
+					instructions = $.ArticleAssessment.fn.getMsg( 'articleassessment-pleaserate' ),
+					feedback = $.ArticleAssessment.fn.getMsg( 'articleassessment-featurefeedback' ),
+					yourfeedback = $.ArticleAssessment.fn.getMsg( 'articleassessment-yourfeedback'),
+					articlerating = $.ArticleAssessment.fn.getMsg( 'articleassessment-articlerating' ),
+					resultshide = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-hide' ),
+					resultsshow = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-show' );
+				$structure
+					.find( '#article-assessment-rate legend' )
+						.text( yourfeedback )
+						.end()
+					.find( '.article-assessment-rate-instructions' )
+						.text( instructions )
+						.end()
+					.find( '.article-assessment-rate-feedback' )
+						.html( feedback.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
+						.end()
+					.find( '#article-assessment-ratings legend' )
+						.text( articlerating )
+						.end()
+					.find( '.article-assessment-show-ratings' )
+						.html( resultsshow.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+						.end()
+					.find( '.article-assessment-hide-ratings')
+						.html( resultshide.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+						.end();
+				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
+					var $field = $( settings.fieldHTML ),
+						$rating = $( settings.ratingHTML ),
+						label = $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[i] ),
+						field = settings.fieldMessages[i],
+						hint = $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[i] + settings.fieldHintSuffix ),
+						count = $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [0, 0] );
+					// initialize the field html
+					$field
+						.attr( 'id', 'articleassessment-rate-' + field )
+						.find( 'label' )
+							.attr( 'for', 'rating_' + field )
+							.attr( 'original-title', hint )
+							.text( label )
+							.end()
+						.find( 'select' )
+							.attr( 'id', 'rating_' + field )
+							.attr( 'name', 'rating[' + field + ']' );
+					// initialize the rating html
+					$rating
+						.attr( 'id',  'articleassessment-rating-' + field )
+						.find( '.article-assessment-rating-field-name' )
+							.text( label )
+							.end()
+						.find( '.article-assessment-rating-count' )
+							.text( count );
+					// append the field and rating html
+					$structure
+						.find( '.article-assessment-rating-fields' )
+							.append( $field )
+							.end()
+						.find( '#article-assessment-ratings' )
+							.append( $rating );
 				}
 				// store our settings and configuration for later
-				$output.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings, 'config': config } );
+				$structure.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings, 'config': config } );
 				// bind the ratings show/hide handlers
-				$output
+				$structure
 					.find( '.article-assessment-show-ratings a' )
 					.click( function() {
 						$( this )
 							.parent()
 							.hide();
-						$output
+						$structure
 							.find( '#article-assessment-ratings' )
 							.removeClass( 'article-assessment-ratings-disabled' )
 							.end()
@@ -131,7 +167,7 @@
 						$( this )
 							.parent()
 							.hide();
-						$output
+						$structure
 							.find( '#article-assessment-ratings' )
 							.addClass( 'article-assessment-ratings-disabled' )
 							.end()
@@ -140,7 +176,7 @@
 							return false;
 					} )
 					.click();
-				$( '#catlinks' ).before( $output );
+				$( '#catlinks' ).before( $structure );
 				
 				// set the height of our smaller fieldset to match the taller
 				if ( $( '#article-assessment-rate' ).height() > $( '#article-assessment-ratings' ).height() ) {
@@ -271,8 +307,8 @@
 				} );
 				var request = $.ajax( {
 					url: wgScriptPath + '/api.php',
+					type: 'POST',
 					data: {
-						'type': 'POST',
 						'action': 'articleassessment',
 						'revid': config.revID,
 						'pageid': config.pageID,

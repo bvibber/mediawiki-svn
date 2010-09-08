@@ -1,12 +1,12 @@
 -- Store mapping of i18n key of "rating" to an ID
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings (
-  --Rating Id
+  -- Rating Id
   aar_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  --Text (i18n key) for rating description
+  -- Text (i18n key) for rating description
   aar_rating varchar(255) binary NOT NULL
 ) /*$wgDBTableOptions*/;
 
---Default article assessment ratings for the pilot
+-- Default article assessment ratings for the pilot
 INSERT INTO /*$wgDBprefix*/article_assessment_ratings (aar_rating) VALUES
 ('articleassessment-rating-wellsourced'), ('articleassessment-rating-neutrality'),
 ('articleassessment-rating-completeness'), ('articleassessment-rating-readability');

@@ -22,6 +22,7 @@
 .article-assessment-wrapper .ui-stars-star a {
 	width: 21px;
 	height: 21px;
+	line-height: 0;
 	display: block;
 	background: url(../images/stars.gif) no-repeat 0 0;
 }
@@ -87,6 +88,7 @@
 }
 .article-assessment-wrapper .rating-field {
 	float: right;
+	width: 125px;
 	line-height: 24px;
 	padding-right: 5px;
 }
@@ -105,15 +107,14 @@
 	float: right;
 	background: url(../images/question.gif) 0 50% no-repeat;
 }
-.article-assessment-wrapper .article-assessment-submit {
-	text-align: right;
-}
+
 .article-assessment-wrapper .article-assessment-flash {
 	float: left;
 	font-size: 11px;
 	padding: 1px 5px;
 	width: 560px;
 	text-align: left;
+	display: block;
 }
 .article-assessment-wrapper .article-assessment-stale-msg {
 	background: #d6f3ff;
@@ -162,7 +163,7 @@
 	float: right;
 	display: block;
 }
-.article-assessment-wrapper .article-assessment-wrapper .article-assessment-rating-fields {
+.article-assessment-wrapper .article-assessment-rating-fields {
 	margin: 8px 0;
 }
 .article-assessment-wrapper .article-assessment-rating-fields .field-wrapper {
@@ -175,6 +176,7 @@
 }
 .article-assessment-submit input {
 	margin: 2px 0;
+	float: right;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value-wrapper {
 	background: url( ../images/rating_disabled_bg.gif ) 0 0 no-repeat;
