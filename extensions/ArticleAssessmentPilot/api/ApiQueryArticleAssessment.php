@@ -119,11 +119,6 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 		$count = 0;
 		foreach ( $ratings as $rat ) {
-			if ( ++ $count > $limit ) {
-				//$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->page_title ) );
-				break;
-			}
-
 			$result->setIndexedTagName( $rat['ratings'], 'r' );
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
