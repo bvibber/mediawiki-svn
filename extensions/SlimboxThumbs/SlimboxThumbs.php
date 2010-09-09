@@ -35,6 +35,9 @@ $wgExtensionCredits['other'][] = array(
 	'version' => SlimboxThumbs_VERSION
 );
 
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['SlimboxThumbs'] = $dir . 'SlimboxThumbs.i18n.php';
+
 // Include the settings file.
 require_once 'SlimboxThumbs_Settings.php';
 
