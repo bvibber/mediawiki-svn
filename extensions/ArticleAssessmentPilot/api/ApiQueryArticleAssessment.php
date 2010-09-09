@@ -100,7 +100,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 			
 			global $wgArticleAssessmentStaleCount;
 
-			$res = $dbr->selectField(
+			$res = $dbr->select(
 				'revision',
 				'rev_id',
 				array(
@@ -111,7 +111,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 				array ( 'LIMIT', $wgArticleAssessmentStaleCount + 1 )
 			);
 
-			if ( $res && (int)$res > $wgArticleAssessmentStaleCount ) {
+			if ( $res && $dbr->numRows( $res ) > $wgArticleAssessmentStaleCount ) {
 				//it's stale!
 				$ratings[$params['pageid']]['stale'] = intval( $res );
 			}
