@@ -7,7 +7,7 @@
  * http://www.digitalia.be/software/slimbox2
  * and use it by replacing the included one, or pointing to it with $slimboxThumbsFilesDir
  *
- * @license Creative Commons Attribution-NonCommercial license 3.0: http://creativecommons.org/licenses/by-nc/3.0/
+ * @license Creative Commons Attribution-ShareAlike license 3.0: http://creativecommons.org/licenses/by-sa/3.0/
  *
  * @file SlimboxThumbs.php
  *
