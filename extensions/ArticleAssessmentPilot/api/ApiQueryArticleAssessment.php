@@ -102,7 +102,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 			$res = $dbr->selectField(
 				'revision',
-				'COUNT(*) AS norevs',
+				'rev_id',
 				array(
 					'rev_page' => $params['pageid'],
 					'rev_id > ' . $ratings[$pageId]['revid']
