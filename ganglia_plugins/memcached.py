@@ -10,8 +10,8 @@ import memcache, math
 
 stats_cache = {}
 items_cache = {}
-stats_descriptions = { 'curr_items': 'Current number of items stored', 'bytes': 'Current number of bytes used to store items', 'curr_connectons': 'Number of clients connected', 'global_hitrate': 'Percentage of hits vs misses (get_hits / (get_hits + get_misses))', 'evictions': 'Number of valid items removed from cache to free memoy for new items', 'threads': 'Number of worker threads requested', 'listen_disabled_num': 'Number of times memcached has hit connection limit', 'cmd_flush': 'Number of times flush_all has been called' }
-items_descriptions = { 'median_slab_age': 'Median age of items in the cache', 'minimum_slab_age': 'Minimum age of items in the cache', 'median_evictions': 'Median number of times an item had to be evicted before it expired', 'maximum_evictions': 'Maximum number of times an item had to be evicted before it expired', 'median_outofmemory': 'Median number of times a slab was unable to store a new item', 'maximum_outofmemory': 'Maximum number of times a slab was unable to store a new item' }
+stats_descriptions = { 'curr_items': 'Number of items stored', 'bytes': 'Number of bytes used to store items', 'curr_connectons': 'Number of clients connected', 'global_hitrate': 'Hitrate', 'evictions': 'Number of evictions', 'threads': 'Number of worker threads requested', 'listen_disabled_num': 'Number of times connection limit hit', 'cmd_flush': 'Number of times flush_all called' }
+items_descriptions = { 'median_slab_age': 'Median age of items in the cache', 'minimum_slab_age': 'Minimum age of items in the cache', 'median_evictions': 'Median number of evictions before expiration', 'maximum_evictions': 'Maximum number of evictions before expiration', 'median_outofmemory': 'Median number of out of memory errors', 'maximum_outofmemory': 'Maximum number out of memory errors' }
 host = 'localhost'
 port = '11211'
 
