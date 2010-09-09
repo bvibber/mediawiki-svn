@@ -112,7 +112,7 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 		return $sql;
 	}
 
-	public function fetchRecord( $field, $value, $options = null ) {
+	public function fetchRawRecord( $field, $value, $options = null ) {
 		$db = wfGetDB( DB_SLAVE );
 
 		$sql = $this->getQuery( $field, $value, $db );

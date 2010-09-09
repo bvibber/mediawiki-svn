@@ -30,7 +30,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *	 * $spec['dataFormat']: Serialization format returned from the web service.
  *		Supported values are 'php' for PHP serialization format, 'json'
  *		for JavaScript syntax, and 'wddx' for XML-based list/dicts.
- *		To support more formats, override decodeData(). Default is 'php'.
+ *		'xml' is supported, but requires a transformer that can handle an XML DOM
+ * 		as input. To support more formats, override decodeData(). Default is 'php'.
  *	 * $spec['dataPath']: "path" to the actual data in the structure returned from the
  *		HTTP request. The response data is assumed to consit of nested arrays. Each entry
  *		In the path navigates one step in this structure. Each entry can be either a
@@ -38,14 +39,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		a "meta-key" of the form @@N, where N is an integer. A meta-key refers to the
  *		Nth entry in an associative array: @1 would be "bar" in array( 'x' => "foo", 'y' => "bar" ).
  *		For more complex retrieval of the record, override extractRecord(). REQUIRED.
- *	 * $spec['fieldPathes']: an associative array giving a "path" for each fied which points
- *		to the actual field values inside the record, that is, the structure that 
- *		$spec['dataPath'] resolved to. Useful when field values are returned as complex
- *		records. For more complex processing, override the method flattenRecord().
- *		If given, $spec['fieldNames'] defaults to array_keys( $spec['fieldPathes'] ).
  *	 * $spec['fieldNames']: names of all fields present in each record.
  *		Fields not listed here will not be available on the wiki,
- *		even if they are returned by the data source. Required if fieldPathes is not given.
+ *		even if they are returned by the data source. REQUIRED.
  *	 * $spec['errorPath']: "path" to error messages in the structure returned from the
  *		HTTP request. The path is evaluated as deswcribed for $spec['dataPath']. If an
  *		entry is found at the given position in the response structure, the request
@@ -61,10 +57,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class WebDataTransclusionSource extends DataTransclusionSource {
 
 	function __construct( $spec ) {
-		if ( !isset( $spec['fieldNames'] ) && isset( $spec['fieldPathes'] ) ) {
-			$spec['fieldNames'] = array_keys( $spec['fieldPathes'] );
-		}
-
 		DataTransclusionSource::__construct( $spec );
 
 		$this->url = $spec[ 'url' ];
@@ -79,6 +71,10 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 			$this->dataFormat = 'php';
 		}
 
+		if ( $this->dataFormat == 'xml' ) {
+			if ( !$this->transformer ) throw new MWException( "XML-Based formats require a record transformer" );
+		}
+
 		if ( !$this->timeout ) {
 			$this->timeout = &$this->httpOptions[ 'timeout' ];
 		}
@@ -88,7 +84,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		}
 	}
 
-	public function fetchRecord( $field, $value, $options = null ) {
+	public function fetchRawRecord( $field, $value, $options = null ) {
 		$raw = $this->loadRecordData( $field, $value, $options ); 
 		if ( !$raw ) {
 			wfDebugLog( 'DataTransclusion', "failed to fetch data for $field=$value\n" );
@@ -186,6 +182,14 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 			return wddx_unserialize( $raw ); 
 		}
 
+		if ( $format == 'xml' ) {
+			$dom = new DOMDocument();
+			$dom->loadXML( $raw );
+
+			#NOTE: returns a DOM, RecordTransformer must be aware!
+			return $dom->documentElement; 
+		}
+
 		if ( $format == 'php' || $format == 'pser' ) {
 			return unserialize( $raw ); 
 		}
@@ -194,96 +198,24 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function extractError( $data ) {
-		$err = $this->resolvePath( $data, $this->errorPath );
+		if ( $this->transformer ) {
+		    $err = $this->transformer->extractError( $data );
+		} else {
+		    $err = FlattenRecord::naiveResolvePath( $data, $this->errorPath );
+		    $err = FlattenRecord::naiveAsString( $err );
+		}
 
-		$err = $this->asString( $err );
 		return $err;
 	}
 
 	public function extractRecord( $data ) {
-		$rec = $this->resolvePath( $data, $this->dataPath );
-
-		$rec = $this->flattenRecord( $rec );
-		return $rec;
-	}
-
-	public function asString( $value ) {
-		return "$value"; //XXX: will often fail. we could just throw here for non-primitives?
-	}
-
-	public function flattenRecord( $rec ) {
-		if ( !$rec ) return $rec;
-
-		if ( $this->fieldPathes ) {
-			$r = array();
-
-			foreach ( $this->fieldNames as $k ) {
-				if ( isset( $this->fieldPathes[$k] ) ) { 
-					$path = $this->fieldPathes[$k];
-					$v = $this->resolvePath( $rec, $path );
-				} else {
-					$v = $rec[ $k ];
-				}
-
-				$r[ $k ] = $v; 
-			}
-
-			$rec = $r;
-		} 
-
-		foreach ( $rec as $k => $v ) {
-			if ( !is_null( $v ) && !is_string( $v ) && !is_int( $v ) ) {
-				$rec[ $k ] = $this->asString( $v ); 
-			}
-		}
-
-		return $rec;
-	}
-
-	public function resolvePath( $data, $path, $split = true ) {
-		if ( is_object( $data ) ) {
-			$data = wfObjectToArray( $data );
-		}
-
-		if ( !is_array( $data ) || $path === '.' ) {
-			return $data; 
-		}
-
-		if ( $split && is_string( $path ) ) {
-			$path = DataTransclusionSource::splitList( $path, '/' );
-		}
-
-		if ( is_string( $path ) || is_int( $path ) ) {
-			return @$data[ $path ];
-		}
-
-		if ( !$path ) {
-			return $data; 
-		}
-
-		$p = array_shift( $path );
-
-		if ( is_string( $p ) && preg_match( '/^(@)?(\d+)$/', $p, $m ) ) { //numberic index
-			$i = (int)$m[2];
-
-			if ( $m[1] ) { //meta-index
-				$k = array_keys( $data );
-				$p = $k[ $i ];
-			}
-		} 
-
-		if ( !isset( $data[ $p ] ) ) {
-			return false;
-		}
-
-		$next = $data[ $p ];
-
-		if ( $next && $path ) {
-			return $this->resolvePath( $next, $path );
+		if ( $this->transformer ) {
+		    $rec = $this->transformer->extractRecord( $data );
 		} else {
-			return $next;
+		    $rec = FlattenRecord::naiveResolvePath( $data, $this->dataPath );
 		}
 
-		//TODO: named components. separator??
+		return $rec;
 	}
+
 }

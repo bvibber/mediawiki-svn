@@ -46,6 +46,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		shown on the wiki. Note that DataTransclusionSource implementations may
  *		provide extra information in the source info on their own: This base
  *		class forces $spec['sourceInfo']['source-name'] = $spec['name'].
+ *	 * $spec['transformer']: a record transformer specification. This may be an
+ *		instance of RecordTransformer, or an associative array specifying a
+ *		record transformer which can then be created using 
+ *		RecordTransformer::newRecordTransformer. In that case, 
+ *		$spec['transformer']['class'] must be the class name of the desired
+ *		RecordTransformer implementation. Other entries in that array are 
+ *		specific to the individual transformers.
  *
  * Options used by DataTransclusionHandler but ignored by DataTransclusionSource:
  *	 * $spec['class']: see documentation if $wgDataTransclusionSources in DataTransclusion.
@@ -53,7 +60,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * Lists may be given as arrays or strings with items separated by [,;|].
  */
-class DataTransclusionSource {
+abstract class DataTransclusionSource {
 	static function splitList( $s, $chars = ',;|' ) {
 		if ( $s === null || $s === false ) {
 			return $s;
@@ -92,6 +99,16 @@ class DataTransclusionSource {
 			$this->cacheDuration = null;
 		}
 
+		if ( !empty( $spec[ 'transformer' ] ) ) {
+			if ( is_array( $spec[ 'transformer' ] ) ) {
+				$this->transformer = RecordTransformer::newRecordTransformer( $spec[ 'transformer' ] );
+			} else {
+				$this->transformer = $spec[ 'transformer' ];
+			}
+		} else {
+			$this->transformer = null;
+		}
+
 		$this->sourceInfo = array();
 
 		if ( !empty( $spec[ 'sourceInfo' ] ) ) {
@@ -127,8 +144,16 @@ class DataTransclusionSource {
 		return $this->cacheDuration;
 	}
 
+	public abstract function fetchRawRecord( $field, $value, $options = null );
+
 	public function fetchRecord( $field, $value, $options = null ) {
-		throw new MWException( "override fetchRecord()" );
+		$rec = $this->fetchRawRecord( $field, $value, $options );
+
+		if ( $this->transformer ) {
+			$rec = $this->transformer->transform( $rec );
+		}
+
+		return $rec;
 	}
 }
 
@@ -173,6 +198,10 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 
 	public function getCacheDuration() {
 		return $this->source->getCacheDuration();
+	}
+
+	public function fetchRawRecord( $field, $value, $options = null ) {
+		throw new MWException( "not implemented" );
 	}
 
 	public function fetchRecord( $field, $value, $options = null ) {
@@ -247,7 +276,7 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 		}
 	}
 
-	public function fetchRecord( $field, $value, $options = null ) {
+	public function fetchRawRecord( $field, $value, $options = null ) {
 		return @$this->lookup[ $field ][ $value ];
 	}
 }

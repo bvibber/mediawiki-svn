@@ -28,12 +28,15 @@ $wgExtensionMessagesFiles['DataTransclusionMagic'] = $dir . 'DataTransclusion.i1
 
 $wgAutoloadClasses['DataTransclusionRenderer'] = $dir . 'DataTransclusionRenderer.php';
 $wgAutoloadClasses['DataTransclusionHandler'] = $dir . 'DataTransclusionHandler.php';
+$wgAutoloadClasses['RecordTransformer'] = $dir . 'RecordTransformer.php';
+$wgAutoloadClasses['FlattenRecord'] = $dir . 'FlattenRecord.php';
+$wgAutoloadClasses['XPathFlattenRecord'] = $dir . 'XPathFlattenRecord.php';
+$wgAutoloadClasses['OpenLibraryRecordTransformer'] = $dir . 'OpenLibraryRecordTransformer.php';
 $wgAutoloadClasses['DataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
 $wgAutoloadClasses['CachingDataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
 $wgAutoloadClasses['FakeDataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
 $wgAutoloadClasses['DBDataTransclusionSource'] = $dir . 'DBDataTransclusionSource.php';
 $wgAutoloadClasses['WebDataTransclusionSource'] = $dir . 'WebDataTransclusionSource.php';
-$wgAutoloadClasses['XmlDataTransclusionSource'] = $dir . 'XmlDataTransclusionSource.php';
 $wgAutoloadClasses['OpenLibrarySource'] = $dir . 'OpenLibrarySource.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efDataTransclusionSetHooks';

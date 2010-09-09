@@ -475,17 +475,21 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'keyFields' => 'item',
 			'optionNames' => 'lang',
 			'url' => 'http://acme.com/{name}',
-			'dataFormat' => 'rdf+xml',
-			'dataPath' => '/rdf:RDF',
-			'errorPath' => '/html//*[@class="error"]',
-			'fieldPathes' => array(
-			  'latitude' => './/pos:lat',
-			  'longitude' => './/pos:long',
+			'dataFormat' => 'xml',
+			'transformer' => array(
+			    'class' => 'XPathFlattenRecord',
+			    'dataPath' => '/rdf:RDF',
+			    'errorPath' => '/html//*[@class="error"]',
+			    'fieldPathes' => array(
+			      'latitude' => './/pos:lat',
+			      'longitude' => './/pos:long',
+			    ),
 			),
+			'fieldNames' => 'latitude,longitude',
 		);
 
 		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-item-{item}.rdf.xml';
-		$source = new XmlDataTransclusionSource( $spec );
+		$source = new WebDataTransclusionSource( $spec );
 
 		$rec = $source->fetchRecord( 'item', 'Berlin' );
 		$this->assertEquals( $rec['latitude'], "52.461" );

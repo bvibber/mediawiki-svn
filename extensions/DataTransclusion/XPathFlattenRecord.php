@@ -1,6 +1,6 @@
 <?php
 /**
- * DataTransclusion Source implementation
+ * Simple Record transformer for extracting strings from an XML DOM using XPath.
  *
  * @file
  * @ingroup Extensions
@@ -15,10 +15,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Extension of WebDataTransclusionSource that allows to parse and process arbitrary XML.
+ * Extension of FlattenRecord transformer that handles arbitrary XML using XPath.
  *
- * In addition to the options supported by the WebDataTransclusionSource class,
- * XmlDataTransclusionSource accepts some additional options, and changes the convention for others.
+ * In addition to the options supported by the FlattenRecord class,
+ * XPathFlattenRecord accepts some additional options, and changes the convention for others.
  *
  *	 * $spec['dataFormat']: must be "xml" or end with "+xml" if given. Defaults to "xml".
  *	 * $spec['dataPath']: xpath to the actual data in the structure returned from the
@@ -27,7 +27,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		to the actual field values inside the record, that is, the structure that 
  *		$spec['dataPath'] resolved to. Useful when field values are returned as complex
  *		records. For more complex processing, override the method flattenRecord().
- *		If given, $spec['fieldNames'] defaults to array_keys( $spec['fieldPathes'] ).
  *	 * $spec['errorPath']: xpath to error messages in the structure returned from the
  *		HTTP request. If an
  *		entry is found at the given position in the response structure, the request
@@ -37,27 +36,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * For more information on options supported by DataTransclusionSource and 
  * WebDataTransclusionSource, see the class-level documentation there.
  */
-class XmlDataTransclusionSource extends WebDataTransclusionSource {
+class XPathFlattenRecord extends FlattenRecord {
 
+	/**
+	 * Initializes the XPathFlattenRecord from the given parameter array.
+	 * @param $spec associative array of options. See class-level documentation for details.
+	 */
 	function __construct( $spec ) {
-		if ( !isset( $spec['dataFormat'] ) ) {
-			$spec['dataFormat'] = 'xml';
-		}
-
-		if ( !preg_match( '/^(.*\+)?xml$/', $spec['dataFormat'] ) ) {
-			throw new MWException( "not a known XML data format: {$spec['dataFormat']}" );
-		}
-
-		parent::__construct( $spec );
+		FlattenRecord::__construct( $spec );
 	}
 
-	public function decodeData( $raw, $format = null ) {
-		$dom = new DOMDocument();
-		$dom->loadXML( $raw );
-		return $dom->documentElement;
+	public function asString( $value ) {
+		return XPathFlattenRecord::domAsString( $value );
 	}
 
-	public function resolvePath( $dom, $xpath ) {
+	public function resolvePath( $data, $path, $split = true ) {
+		return XPathFlattenRecord::domResolvePath( $data, $path, $split );
+	}
+
+	public static function domResolvePath( $dom, $xpath ) {
+		if ( !$dom ) return false;
+		if ( ! is_object( $dom ) ) throw new MWException( "domResolvePath expects a DOMNode object" );
+		if ( ! ( $dom instanceof DOMNode ) ) throw new MWException( "domResolvePath expects a DOMNode object" );
+
 		$lookup = new DOMXPath( $dom->ownerDocument );
 
 		$res = $lookup->query( $xpath, $dom );
@@ -70,7 +71,7 @@ class XmlDataTransclusionSource extends WebDataTransclusionSource {
 		return $res;
 	}
 
-	public function asString( $v ) {
+	public static function domAsString( $v ) {
 		if ( is_object($v) ) {
 			if ( $v instanceof DOMNodeList ) {
 				if ( $v->length ) $v = $v->item( 0 ); 
@@ -90,3 +91,4 @@ class XmlDataTransclusionSource extends WebDataTransclusionSource {
 	}
 
 }
+
