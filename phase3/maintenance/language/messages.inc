@@ -2798,7 +2798,7 @@ $wgMessageStructure = array(
 	),
 	'exif-colorspace' => array(
 		'exif-colorspace-1',
-		'exif-colorspace-ffff.h',
+		'exif-colorspace-65535',
 	),
 	'exif-componentsconfiguration' => array(
 		'exif-componentsconfiguration-0',
@@ -2998,6 +2998,9 @@ $wgMessageStructure = array(
 	),
 	'exif-isospeedratings' => array(
 		'exif-isospeedratings-overflow',
+	),
+	'exif-maxaperturevalue' => array(
+		'exif-maxaperturevalue-value',
 	),
 	'edit-externally' => array(
 		'edit-externally',

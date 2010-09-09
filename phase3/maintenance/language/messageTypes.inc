@@ -254,7 +254,7 @@ $wgOptionalMessages = array(
 	'exif-xyresolution-i',
 	'exif-xyresolution-c',
 	'exif-colorspace-1',
-	'exif-colorspace-ffff.h',
+	'exif-colorspace-65535',
 	'exif-componentsconfiguration-1',
 	'exif-componentsconfiguration-2',
 	'exif-componentsconfiguration-3',
@@ -673,4 +673,5 @@ $wgEXIFMessages = array(
 	'exif-disclaimer',
 	'exif-contentwarning',
 	'exif-giffilecomment',
+	'exif-maxaperturevalue-value',
 );

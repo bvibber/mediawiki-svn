@@ -3858,7 +3858,7 @@ Others will be hidden by default.
 'exif-xyresolution-c' => '$1 dpc', # only translate this message to other languages if you have to change it
 
 'exif-colorspace-1'      => 'sRGB', # only translate this message to other languages if you have to change it
-'exif-colorspace-ffff.h' => 'FFFF.H', # only translate this message to other languages if you have to change it
+'exif-colorspace-65535' => 'Uncalibrated', # only translate this message to other languages if you have to change it
 
 'exif-componentsconfiguration-0' => 'does not exist',
 'exif-componentsconfiguration-1' => 'Y', # only translate this message to other languages if you have to change it
@@ -4038,6 +4038,8 @@ Others will be hidden by default.
 'exif-rating-rejected' => 'Rejected',
 
 'exif-isospeedratings-overflow' => 'Greater than 65535',
+
+'exif-maxaperturevalue-value' => '$1 APEX (f/$2)',
 
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',

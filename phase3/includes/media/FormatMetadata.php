@@ -187,7 +187,7 @@ class FormatMetadata {
 
 				case 'ColorSpace':
 					switch( $val ) {
-					case 1: case 'FFFF.H':
+					case 1: case 65535:
 						$val = self::msg( $tag, $val );
 						break;
 					default:
@@ -464,9 +464,9 @@ class FormatMetadata {
 
 				case 'GPSAltitude':
 					if ( $val < 0 ) {
-						$val = self::msg( 'GPSAltitude', 'below-sealevel', self::formatNum( -$val ) );
+						$val = self::msg( 'GPSAltitude', 'below-sealevel', self::formatNum( -$val, 3 ) );
 					} else {
-						$val = self::msg( 'GPSAltitude', 'above-sealevel', self::formatNum( $val ) );
+						$val = self::msg( 'GPSAltitude', 'above-sealevel', self::formatNum( $val, 3 ) );
 					}
 					break;
 
@@ -591,10 +591,30 @@ class FormatMetadata {
 						self::formatNum( $val ) );
 					break;
 
-				case 'FocalLength':
+				case 'FocalLength': case 'FocalLengthIn35mmFilm':
 					$val = wfMsg( 'exif-focallength-format',
 						self::formatNum( $val ) );
 					break;
+
+				case 'MaxApertureValue':
+					if ( strpos( $val, '/' ) !== false ) {
+						// need to expand this earlier to calculate fNumber
+						list($n, $d) = explode('/', $val);
+						if ( is_numeric( $n ) && is_numeric( $d ) ) {
+							$val = $n / $d;
+						}
+					}
+					if ( is_numeric( $val ) ) {
+						$fNumber = pow( 2, $val / 2 );
+						if ( $fNumber !== false ) {
+							$val = wfMsg( 'exif-maxaperturevalue-value',
+								self::formatNum( $val ),
+								self::formatNum( $fNumber, 2 )
+							);
+						}
+					}
+					break;
+					
 
 				// Do not transform fields with pure text.
 				// For some languages the formatNum() conversion results to wrong output like
@@ -877,9 +897,10 @@ class FormatMetadata {
 	 * @private
 	 *
 	 * @param $num Mixed: the value to format
+	 * @param $round digits to round to or false.
 	 * @return mixed A floating point number or whatever we were fed
 	 */
-	static function formatNum( $num ) {
+	static function formatNum( $num, $round = false ) {
 		global $wgLang;
 		$m = array();
 		if( is_array($num) ) {
@@ -889,10 +910,23 @@ class FormatMetadata {
 			}
 			return $wgLang->commaList( $out );
 		}
-		if ( preg_match( '/^(-?\d+)\/(\d+)$/', $num, $m ) )
-			return $wgLang->formatNum( $m[2] != 0 ? $m[1] / $m[2] : $num );
-		else
+		if ( preg_match( '/^(-?\d+)\/(\d+)$/', $num, $m ) ) {
+			if ( $m[2] != 0 ) {
+				$newNum = $m[1] / $m[2];
+				if ( $round !== false ) {
+					$newNum = round( $newNum, $round );
+				}
+			} else {
+				$newNum = $num;
+			}
+
+			return $wgLang->formatNum( $newNum );
+		} else {
+			if ( is_numeric( $num ) && $round !== false ) {
+				$num = round( $num, $round );
+			}
 			return $wgLang->formatNum( $num );
+		}
 	}
 
 	/**
