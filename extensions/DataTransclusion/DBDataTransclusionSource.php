@@ -31,7 +31,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *	 * $spec['keyTypes']: associative arrays specifying the data types for the key fields.
  *		Array keys are the field names, the associated values specify the type
  *		as 'int' for integers, 'float' or 'decimal' for decimals, or 'string'
- *		for string fields.
+ *		for string fields. 
+ *	 * $spec['serializedFields']: associative array of fields that contain serialized data
+ *		structures. The keys in the array are the field names, the values are the 
+ *		specify the data format: 'json', 'wddx' and 'php' for php serialized objects. 
+ *		If deserialzation yields an array, the array will be merged with rest of the
+ *		record.
  *	 * $spec['keyFields']: like for DataTransclusionSource, this is list of fields
  *		that can be used as the key for fetching a record. However, it's not required
  *		for DBDataTransclusionSource: if not provided, array_keys( $spec['keyTypes'] )
@@ -55,6 +60,7 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 
 		$this->query = $spec[ 'query' ];
 		$this->querySuffix = @$spec[ 'querySuffix' ];
+		$this->serializedFields = DataTransclusionSource::splitList( @$spec[ 'serializedFields' ] );
 
 		if ( isset( $spec[ 'keyTypes' ] ) ) {
 			$this->keyTypes = $spec[ 'keyTypes' ];
@@ -74,9 +80,29 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 			return (int)$value;
 		} else if ( $t == 'decimal' || $t == 'float' ) {
 			return (float)$value;
+		} else if ( $format == 'json' || $format == 'js' ) {
+			return DataTransclusionSource::decodeJson( $raw ); 
+		} else if ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $raw ); 
+		} else if ( $format == 'xml' ) {
+			return DataTransclusionSource::parseXml( $raw ); #WARNING: returns DOM
+		} else if ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $raw ); 
 		} else {
 			return (string)$value;
 		}
+	}
+
+	public function unserialize( $data, $format ) {
+		if ( $format == 'json' || $format == 'js' ) {
+			return DataTransclusionSource::decodeJson( $raw ); 
+		} else if ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $raw ); 
+		} else if ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $raw ); 
+		} 
+
+		return $data;
 	}
 
 	public function getQuery( $field, $value, $db = null ) {
@@ -132,6 +158,18 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 		}
 
 		$db->freeResult( $rs );
+
+		if ( $this->serializedFields ) {
+		    foreach ( $this->serializedFields as $f => $format ) {
+			if ( empty( $rec[ $f ] ) ) continue;
+
+			$data = $this->unserialize( $rec[ $f ], $format );
+
+			if ( is_array( $data ) ) {
+			    $rec = array_merge( $data, $rec );
+			}
+		    }
+		}
 
 		wfDebugLog( 'DataTransclusion', "loaded record for $field=$value from database\n" );
 		return $rec;
