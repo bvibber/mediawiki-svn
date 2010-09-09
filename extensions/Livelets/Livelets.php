@@ -20,12 +20,15 @@ $wgLiveletsSwfBg  = '#ffffff'; # The background colour of the embedded SWF
 $wgLiveletsPort   = '1729';    # The port that Livelets.pl can be reached on (using $wgServer:$wgLiveletsPort)
 
 $wgExtensionCredits['parserhook'][] = array(
-	'name'        => 'Livelets',
-	'author'      => '[http://www.organicdesign.co.nz/User:Nad Aran Dunkley], [http://www.organicdesign.co.nz/User:Jack Jack Henderson]',
-	'description' => 'Allows articles to be transcluded which load after the main page content and can update dynamically with Ajax',
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Livelets',
-	'version'     => LIVELETS_VERSION
+	'path' => __FILE__,
+	'name' => 'Livelets',
+	'author' => '[http://www.organicdesign.co.nz/User:Nad Aran Dunkley], [http://www.organicdesign.co.nz/User:Jack Jack Henderson]',
+	'descriptionmsg' => 'livelets-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Livelets',
+	'version' => LIVELETS_VERSION
 );
+$dir = dirname( __FILE__ );
+$wgExtensionMessagesFiles['Livelets'] =  "$dir/Livelets.i18n.php";
 
 class Livelets {
 
