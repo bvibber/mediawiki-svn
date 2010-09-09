@@ -223,7 +223,7 @@ function wfSpecialFilelist () {
 					$ul = $this->sk->makeLinkObj( Title::makeTitle( NS_USER, $ut ), $ut );
 				}
 
-				$ilink = "<a href=\"" . htmlspecialchars( Image::imageUrl( $name ) ) .
+				$ilink = "<a href=\"" . htmlspecialchars( wfLocalFile( $name )->getUrl() ) .
 				  "\">" . strtr(htmlspecialchars( $name ), '_', ' ') . "</a>";
 
 				$nb = wfMsg( "nbytes", $wgLang->formatNum( $s->img_size ) );

@@ -46,7 +46,7 @@ EOT;
 		$name = $wgRequest->getFileName( 'file' );
 		$n = strrpos( $name, '.' );
 		if ( $n ) {
-			$extension = '.' . Image::normalizeExtension( substr( $name, $n + 1 ) );
+			$extension = '.' . File::normalizeExtension( substr( $name, $n + 1 ) );
 		} else {
 			$extension = '';
 		}

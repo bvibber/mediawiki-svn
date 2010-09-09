@@ -48,7 +48,7 @@ class WebStoreMetadata extends WebStoreCommon {
 
 		$name = basename( $fullPath );
 		$i = strrpos( $name, '.' );
-		$ext = Image::normalizeExtension( $i ? substr( $name, $i + 1 ) : '' );
+		$ext = File::normalizeExtension( $i ? substr( $name, $i + 1 ) : '' );
 		$magic = MimeMagic::singleton();
 		$mime = $magic->guessTypesForExtension( $ext );
 		$type = $magic->getMediaType( $fullPath, $mime);
