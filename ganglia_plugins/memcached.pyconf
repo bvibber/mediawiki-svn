@@ -49,4 +49,34 @@ collection_group {
                 name = 'bytes'
                 title = 'Current number of bytes used to store items'
         }
+
+        metric {
+                name = 'median_outofmemory'   
+                title = 'Median number of times a slab was unable to store a new item'
+        }
+
+        metric {
+                name = 'maximum_evictions'
+                title = 'Maximum number of times an item had to be evicted before it expired'
+        }
+
+        metric {
+                name = 'median_evictions'
+                title = 'Median number of times an item had to be evicted before it expired'
+        }
+
+        metric {
+                name = 'maximum_outofmemory'  
+                title = 'Maximum number of times a slab was unable to store a new item'
+        }
+
+        metric {
+                name = 'minimum_slab_age'
+                title = 'Minimum age of items in the cache'
+        }
+
+        metric {
+                name = 'median_slab_age'
+                title = 'Median age of items in the cache'
+        }
 }
