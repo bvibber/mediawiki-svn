@@ -1369,6 +1369,13 @@ $messages['vo'] = array(
 	'optin-try' => 'Sperimäntolös el Beta',
 );
 
+/** Walloon (Walon)
+ * @author Lucyin
+ */
+$messages['wa'] = array(
+	'tooltip-pt-optin-try' => 'Sayî li novea prezintaedje',
+);
+
 /** Kalmyk (Хальмг)
  * @author Huuchin
  */
