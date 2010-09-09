@@ -155,6 +155,18 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'semanticformsinputs-desc' => 'Mecht zuesätzligi Arte vu Yygabe megli fir [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Falsch Format.',
+	'semanticformsinputs-close' => 'Zuemache',
+	'semanticformsinputs-prev' => 'Vorigi',
+	'semanticformsinputs-next' => 'Negschti',
+	'semanticformsinputs-today' => 'Hit',
+);
+
+/** Hungarian (Magyar) */
+$messages['hu'] = array(
+	'semanticformsinputs-close' => 'Bezárás',
+	'semanticformsinputs-prev' => 'Előző',
+	'semanticformsinputs-next' => 'Következő',
+	'semanticformsinputs-today' => 'Ma',
 );
 
 /** Interlingua (Interlingua)

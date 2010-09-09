@@ -241,6 +241,14 @@ $messages['ko'] = array(
 	'dontswitchmeover-pref' => '기본 스킨이 바뀔 때 내 스킨은 바뀌지 않게 하기',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'dontswitchmeover-desc' => 'Хайырландырыўчулагъа джарашдырыўларында, тынгылаў бла темаларын аўушдургъан сагъатда, салыныб тургъан теманы сакъларгъа излегенлерин белгилер амал береди.',
+	'dontswitchmeover-pref' => 'Тынгылаў бла теманы тюрлендирген сагъатда мени темамы аўушдурма.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

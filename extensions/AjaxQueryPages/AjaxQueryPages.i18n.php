@@ -49,6 +49,13 @@ $messages['arz'] = array(
 	'ajaxquerypages-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'ajaxquerypages-desc' => 'Ҡайһы бер биттәргә AJAX өҫтәй, мәҫәлән — [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

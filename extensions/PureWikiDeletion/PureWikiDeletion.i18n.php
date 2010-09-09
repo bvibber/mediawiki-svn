@@ -373,6 +373,11 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 	'right-purewikideletion' => 'Tabelu wuprózdnjenych stronow [[Special:PopulateBlankedPagesTable|napjelnić]]',
 );
 
+/** Hungarian (Magyar) */
+$messages['hu'] = array(
+	'purewikideletion-blanknologin' => 'Nem vagy bejelentkezve',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

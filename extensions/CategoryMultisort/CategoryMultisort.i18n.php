@@ -194,6 +194,13 @@ $messages['hsb'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Hungarian (Magyar) */
+$messages['hu'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Alapértelmezett',
+	'categorymultisort-go' => 'Menj',
+	'prefs-category' => 'Kategória',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

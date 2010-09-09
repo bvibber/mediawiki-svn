@@ -130,6 +130,12 @@ $messages['gsw'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Aalege',
 );
 
+/** Hungarian (Magyar) */
+$messages['hu'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Létrehozás',
+	'articletocategory2-create-category-under-category-button' => 'Létrehozás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -142,6 +148,7 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -149,6 +156,7 @@ $messages['ja'] = array(
 	'articletocategory2-create-article-under-category-text' => 'このカテゴリにページを追加',
 	'articletocategory2-create-article-under-category-button' => '作成',
 	'articletocategory2-create-category-under-category-text' => 'このカテゴリにカテゴリを追加',
+	'articletocategory2-create-category-under-category-button' => '作成',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

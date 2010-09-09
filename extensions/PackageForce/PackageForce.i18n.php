@@ -303,6 +303,7 @@ $messages['hu'] = array(
 	'pf-header-documentation' => 'Dokumentáció',
 	'pf-header-edit' => 'Hivatkozás szerkesztése',
 	'pf-header-page_title' => 'Cím',
+	'pf-header-approve' => 'Elfogadás',
 );
 
 /** Interlingua (Interlingua)

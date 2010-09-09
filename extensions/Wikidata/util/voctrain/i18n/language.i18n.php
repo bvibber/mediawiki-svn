@@ -679,6 +679,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'voctrain_Hello_World' => "DEMAT DEOC'H !",
@@ -719,7 +720,7 @@ $messages['br'] = array(
 	'voctrain_one_of' => 'unan diwar',
 	'voctrain_list_of_questions_and_answers' => 'Roll ar goulennoù hag o respontoù',
 	'voctrain_Answer_s_' => 'Respont(où)',
-	'voctrain_logout' => 'Dilugañ',
+	'voctrain_logout' => 'digevreañ',
 	'voctrain_Powered_by' => 'Savet diwar',
 	'voctrain_Omegawiki' => 'Omegawiki',
 	'voctrain_Exercise_complete' => 'Poelladenn echu',
@@ -731,7 +732,7 @@ $messages['br'] = array(
 	'voctrain_Create_new_user' => 'Krouiñ un implijer nevez',
 	'voctrain_Switch_language' => 'Cheñch yezh',
 	'voctrain_Language' => 'Yezh',
-	'voctrain_Log_in' => 'En em lugañ',
+	'voctrain_Log_in' => 'Kevreañ',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Pleustrer gerioù Omegawiki',
 	'voctrain_Definitions' => 'Termenadurioù',
 	'voctrain_Could_not_create_new_user' => "N'eus ket bet gallet krouiñ un implijer nevez",

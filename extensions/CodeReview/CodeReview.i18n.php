@@ -4068,6 +4068,7 @@ $4',
 );
 
 /** Hungarian (Magyar)
+ * @author BáthoryPéter
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -4177,11 +4178,14 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: rákövetkező változtatások',
 	'codereview-email-body2' => '„$1” szerkesztő utólagos változtatásokat végzett a(z) $2 verzión.
 
+Teljes URL az adott változathoz: $5
+
 Teljes URL: $3
 
 Commit összefoglaló:
 
 $4',
+	'code-stats' => 'statisztika',
 	'repoadmin' => 'Tárhelyadminisztráció',
 	'repoadmin-new-legend' => 'Új tárhely készítése',
 	'repoadmin-new-label' => 'Tárhely neve:',

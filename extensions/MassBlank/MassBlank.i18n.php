@@ -255,6 +255,12 @@ Zapodaj wužiwarske mjeno abo IP-adresu, zo by lisćinu stronow dóstak, kotrež
 	'right-massblank' => 'Masowe wuprózdnjenje stronow',
 );
 
+/** Hungarian (Magyar) */
+$messages['hu'] = array(
+	'massblank-submit-user' => 'Menj',
+	'massblank-blankcomment' => 'Indoklás:',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

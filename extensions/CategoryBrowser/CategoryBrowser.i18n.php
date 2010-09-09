@@ -93,16 +93,43 @@ Please change or upgrade your browser, if possible.',
  */
 $messages['qqq'] = array(
 	'cb_cat_name_filter_ci' => 'Dialog string for case insensitive category name search.',
-	'cb_op1_template' => 'One operand operation visualisation template. Argument 1 is an operator name. Argument 2 is operation\'s parameter.',
-	'cb_op2_template' => 'Two operands operation visualisation template. Argument 1 is first parameter. Argument 2 is operator name. Argument 3 is second parameter.',
 	'cb_all_op' => 'Operator to select all categories available.',
-	'cb_lbracket_op' => 'Opening bracket, allows to change execution order.',
-	'cb_rbracket_op' => 'Closing bracket, allows to change execution order.',
-	'cb_or_op' => 'Name of logical "or" operator in your language. Short (mathematical) form is preferred.',
-	'cb_and_op' => 'Name of logical "and" operator in your language. Short (mathematical) form is preferred.',
-	'cb_ge_op' => 'Name of comparsion operator "greater or equal" in your language. Short (mathematical) form is preferred.',
-	'cb_le_op' => 'Name of comparsion operator "less or equal" in your language. Short (mathematical) form is preferred.',
-	'cb_eq_op' => 'Name of comparsion operator "equal" in your language. Short (mathematical) form is preferred.',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'categorybrowser' => 'Kategorie-blaaier',
+	'cb_cat_name_filter' => 'Soek vir kategorie met die naam:',
+	'cb_cat_name_filter_ci' => 'Kas onsensitief',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subkategorie|subkategorieë}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|bladsy|bladsye}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|lêer|lêers}}',
+	'cb_has_parentcategories' => 'boonste kategorieë (indien enige)',
+	'cb_previous_items_link' => 'Vorige',
+	'cb_next_items_link' => 'Volgende',
+	'cb_next_items_stats' => '(vanaf $1)',
+	'cb_cat_subcats' => 'subkategorië',
+	'cb_cat_pages' => 'bladsye',
+	'cb_cat_files' => 'lêers',
+	'cb_apply_button' => 'Pas toe',
+	'cb_all_op' => 'Alle',
+	'cb_edit_left_hint' => 'Skuif na links, indien moontlik',
+	'cb_edit_right_hint' => 'Skuif na regs, indien moontlik',
+	'cb_edit_remove_hint' => 'Verwyder, indien moontlik',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorybrowser' => 'Navigator de categorias',
+	'categorybrowser-desc' => 'Provide un [[Special:CategoryBrowser|pagina special]] pro filtrar le categorias le plus popular e pro navigar per illos usante un interfacie AJAX',
+	'cb_requires_javascript' => 'Le extension de navigator de categorias require JavaScript pro esser activate in le navigator del web.',
+	'cb_ie6_warning' => 'Le editor de conditiones non functiona in Internet Explorer 6.0 o versiones anterior.
+Nonobstante, le navigation de categorias predefinite debe functionar normalmente.
+Per favor cambia o actualisa le navigator del web, si possibile.',
 );
 
 /** Russian (Русский)
@@ -132,8 +159,6 @@ $messages['ru'] = array(
 	'cb_cat_files' => 'файлов',
 	'cb_apply_button' => 'Применить',
 	'cb_all_op' => 'Все',
-	'cb_or_op' => 'или',
-	'cb_and_op' => 'и',
 	'cb_edit_left_hint' => 'Переместить влево, если возможно',
 	'cb_edit_right_hint' => 'Переместить вправо, если возможно',
 	'cb_edit_remove_hint' => 'Удалить, если возможно',

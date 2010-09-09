@@ -2586,6 +2586,7 @@ Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely ennen k
  * @author IAlex
  * @author Jean-Frédéric
  * @author Kropotkine 113
+ * @author Lucyin
  * @author Peter17
  * @author Urhixidur
  */
@@ -2618,7 +2619,7 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-survey-answer-os-other' => 'Autre système d’exploitation :',
 	'prefswitch-survey-answer-globaloff-yes' => 'Oui, les désactiver sur tous les wikis',
 	'prefswitch-survey-question-res' => 'Quelle est la résolution de votre écran ?',
-	'prefswitch-title-on' => 'Nouvelles fonctionnalités',
+	'prefswitch-title-on' => '',
 	'prefswitch-title-switched-on' => 'Savourez !',
 	'prefswitch-title-off' => 'Désactiver les nouvelles fonctionnalités',
 	'prefswitch-title-switched-off' => 'Merci',
@@ -3993,6 +3994,7 @@ $messages['krc'] = array(
 	'prefswitch-survey-question-dislike' => 'Джангы амалланы несин джаратмадыгъыз?',
 	'prefswitch-survey-question-whyoff' => 'Джангы амалланы нек джукълатдыгъыз?
 Келишген вариантланы сайлагъыз.',
+	'prefswitch-survey-question-globaloff' => 'Бу амалны глобал халда джукълатыргъа излеймисиз?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Хайырланнган асыры къыйынды.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Тюзюуюн ишлемейдиле.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Алгъадан билмезча ишлейдиле.',
@@ -4004,6 +4006,7 @@ $messages['krc'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Башха браузер',
 	'prefswitch-survey-question-os' => 'Къайсы операция системаны хайырландырасыз?',
 	'prefswitch-survey-answer-os-other' => 'Башха операция система:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Хоў, бу амалны бютеў викиледе да джукълат.',
 	'prefswitch-survey-question-res' => 'Экраныгъызны разрешениеси къалайды?',
 	'prefswitch-title-on' => 'Джангы амалла',
 	'prefswitch-title-switched-on' => 'Хайырланыгъыз!',
@@ -5821,7 +5824,7 @@ $messages['ru'] = array(
 	'prefswitch-feedbackpage' => 'Project:Отзывы о новом оформлении',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
@@ -5885,7 +5888,7 @@ $messages['rue'] = array(
 | Снимок образовкы з новым діалоґом про вкладаня одказів
 |}
 |}
-Тім надації Вікімедія про хосновательску приветливость працёвав з доброволниками з комуніты, жебы упростив працю. Тїшыме ся, же ся з вами можеме подїлити о пару вылїпшінь включавчі нового нового взгляду і упростеной едітації. Цілём тых змін є злегчіти зачаткы новачком і суть заложены на нашых [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study тестох з мінулого року]. Здоконалюваня хосновательности нашых проєктів є пріорітов надації Вікімедія і в будучности будеме нукати далшы іновації. Детайлы можете найти во [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ вістї на блогу Вікімедія].
+Тім надації Вікімедія про хосновательску приветливость працёвав з доброволниками з комуніты, жебы упростив працю. Тїшыме ся, же ся з вами можеме подїлити о пару вылїпшінь включавчі нового нового взгляду і упрощеной едітації. Цілём тых змін є злегчіти зачаткы новачком і суть заложены на нашых [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study тестох з мінулого року]. Здоконалюваня хосновательности нашых проєктів є пріорітов надації Вікімедія і в будучности будеме нукати далшы іновації. Детайлы можете найти во [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ вістї на блогу Вікімедія].
 
 === Што сьме змінили ===
 * '''Навіґація:''' Маєме лїпшу оріентацію про чітаня і едітацію сторінок. Заложкы во верхній части сторінкы нынї ясно зображують, ці собі смотрите статю ці діскузію а ці сторінку чітаєте або едітуєте.
@@ -7163,6 +7166,14 @@ $messages['vo'] = array(
 	'prefswitch-survey-answer-whyoff-other' => 'Kod votik:',
 	'prefswitch-title-switched-on' => 'Fredolös!',
 	'prefswitch-title-switched-off' => 'Danö!',
+);
+
+/** Walloon (Walon)
+ * @author Lucyin
+ */
+$messages['wa'] = array(
+	'prefswitch-title-on' => 'Novea prezintaedje',
+	'prefswitch-title-off' => 'Diclitchî li novea prezintaedje',
 );
 
 /** Yiddish (ייִדיש)

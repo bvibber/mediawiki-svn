@@ -245,6 +245,20 @@ $messages['id'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradisional',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'categorymultisortchinese-desc' => '中国語のスクリプトに特化した異なるソートキーで閲覧されるカテゴリーを許可する',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => '北京語：ピンイン',
+	'categorymultisort-sortkey-name-stroke' => 'ストローク',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'ストローク：簡体字',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'ストローク：繁体字',
+	'categorymultisort-sortkey-name-radical' => '部首',
+	'categorymultisort-sortkey-name-radical-simplified' => '部首：簡体字',
+	'categorymultisort-sortkey-name-radical-traditional' => '部首：繁体字',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
