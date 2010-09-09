@@ -174,24 +174,13 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		}
 
 		if ( $format == 'json' || $format == 'js' ) {
-			$raw = preg_replace( '/^\s*(var\s)?\w([\w\d]*)\s+=\s*|\s*;\s*$/sim', '', $raw);
-			return FormatJson::decode( $raw, true ); 
-		}
-
-		if ( $format == 'wddx' ) {
-			return wddx_unserialize( $raw ); 
-		}
-
-		if ( $format == 'xml' ) {
-			$dom = new DOMDocument();
-			$dom->loadXML( $raw );
-
-			#NOTE: returns a DOM, RecordTransformer must be aware!
-			return $dom->documentElement; 
-		}
-
-		if ( $format == 'php' || $format == 'pser' ) {
-			return unserialize( $raw ); 
+			return DataTransclusionSource::decodeJson( $raw ); 
+		} else if ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $raw ); 
+		} else if ( $format == 'xml' ) {
+			return DataTransclusionSource::parseXml( $raw ); 
+		} else if ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $raw ); 
 		}
 
 		return false;

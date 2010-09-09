@@ -279,4 +279,22 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 	public function fetchRawRecord( $field, $value, $options = null ) {
 		return @$this->lookup[ $field ][ $value ];
 	}
+
+	public static function decodeJson( $raw ) {
+		$raw = preg_replace( '/^\s*(var\s)?\w([\w\d]*)\s+=\s*|\s*;\s*$/sim', '', $raw);
+		return FormatJson::decode( $raw, true ); 
+	}
+
+	public static function decodeWddx( $raw ) {
+		return wddx_unserialize( $raw ); 
+	}
+
+	public static function parseXml( $raw ) {
+		$dom = new DOMDocument();
+		$dom->loadXML( $raw );
+
+		#NOTE: returns a DOM, RecordTransformer must be aware!
+		return $dom->documentElement; 
+	}
+
 }
