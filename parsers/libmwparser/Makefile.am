@@ -3,6 +3,7 @@ vpath %.g $(top_srcdir)/src
 vpath %.php $(top_srcdir)/src
 vpath %.h $(top_srcdir)/include
 
+AM_CFLAGS = -Wall
 AUTOMAKE_OPTIONS = gnu
 AC_LIBTOOLFLAGS =
 ## --silent
@@ -49,6 +50,7 @@ libmwparser_la_SOURCES		=		\
 	include/mwhtml.h			\
 	include/mwkeyvalue.h			\
 	include/mwlexercontext.h		\
+	include/mwlinkcollection.h              \
 	include/mwlinks.h			\
 	include/mwlistener.h			\
 	include/mwparser.h			\
@@ -64,6 +66,7 @@ libmwparser_la_SOURCES		=		\
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+	src/mwlinkcollection.c                  \
         src/mwparser.c				\
 	src/mwparsercontext.c			\
         src/mwtagext.c				\
@@ -81,9 +84,9 @@ EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DE
 
 libmwparser_la_LIBS = $(GLIB_LIBS)
 
-libmwparser_la_CFLAGS = $(GLIB_CFLAGS) -std=gnu99
+libmwparser_la_CFLAGS = $(GLIB_CFLAGS) -std=gnu99 -Wall -Wno-unused-variable
 
-libmwparser_la_LDFLAGS = -release 0.1 -version-info 0:0:0
+libmwparser_la_LDFLAGS = -release $(PACKAGE_VERSION)
 
 INCLUDES = -I$(top_srcdir)/include
 

@@ -1,0 +1,99 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[text]
+        SPACE[ ]
+        BEGIN MEDIA LINK[File:example.jpg]
+            BEGIN PARAGRAPH
+                SPACE[ ]
+            END PARAGRAPH
+            BEGIN TABLE
+                BEGIN TABLE BODY
+                    BEGIN ROW
+                        BEGIN CELL
+                            SPACE[ ]
+                            WORD[foo]
+                            SPACE[ ]
+                            SPECIAL[]]
+                            SPECIAL[]]
+                            SPACE[ ]
+                            WORD[bar]
+                            SPACE[ ]
+                        END CELL
+                    END ROW
+                END TABLE BODY
+            END TABLE
+            SPACE[ ]
+            WORD[foo]
+            SPACE[ ]
+        END MEDIA LINK
+        SPACE[ ]
+        WORD[bar]
+    END PARAGRAPH
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+            SPACE[ ]
+            BEGIN MEDIA LINK[File:example.jpg]
+                BEGIN PARAGRAPH
+                    SPACE[ ]
+                    WORD[text]
+                END PARAGRAPH
+                BEGIN BULLET LIST
+                    BEGIN BULLET LIST ITEM
+                        WORD[list]
+                    END BULLET LIST ITEM
+                END BULLET LIST
+            END MEDIA LINK
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN PARAGRAPH
+        WORD[text]
+        BEGIN ITALIC
+            SPACE[ ]
+            WORD[line]
+            SPACE[ ]
+        END ITALIC
+        BEGIN MEDIA LINK[File:example.jpg]
+            BEGIN PARAGRAPH
+                SPACE[ ]
+                WORD[text]
+                SPACE[ ]
+            END PARAGRAPH
+        END MEDIA LINK
+        SPACE[ ]
+        WORD[end]
+        BEGIN ITALIC
+            SPACE[ ]
+            WORD[text]
+        END ITALIC
+    END PARAGRAPH
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+            SPACE[ ]
+            BEGIN MEDIA LINK[File:example.jpg]
+                BEGIN BULLET LIST
+                    BEGIN BULLET LIST ITEM
+                        WORD[list]
+                        SPACE[ ]
+                        WORD[item]
+                        SPACE[ ]
+                        WORD[in]
+                        SPACE[ ]
+                        WORD[image]
+                        SPACE[ ]
+                        WORD[caption]
+                        SPACE[ ]
+                    END BULLET LIST ITEM
+                END BULLET LIST
+            END MEDIA LINK
+        END BULLET LIST ITEM
+        BEGIN BULLET LIST ITEM
+            WORD[continuing]
+            SPACE[ ]
+            WORD[outer]
+            SPACE[ ]
+            WORD[list]
+        END BULLET LIST ITEM
+    END BULLET LIST
+END ARTICLE

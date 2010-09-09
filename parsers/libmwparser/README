@@ -34,3 +34,9 @@ command line argument.
 
 To use libmwparser in an application, implement the MWLISTENER
 interface defined in the file include/mwlistener.h.
+
+The template mwlistener.template can be used to generate a skeleton
+file for a listener implementation.  Use GNU m4 to process the tempate:
+
+m4 -DPREFIX=<prefix> -DSTRUCT_NAME=<struct name> -DLISTENER_NAME=<listener name> > mylistener.c
+

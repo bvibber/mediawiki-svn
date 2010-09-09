@@ -54,7 +54,7 @@ static void SBBeginDefinitionItem(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndDefinitionItem(MWLISTENER *listener);
 static void SBBeginTableOfContents(MWLISTENER *listener);
 static void SBEndTableOfContents(MWLISTENER *listener);
-static void SBBeginTableOfContentsItem(MWLISTENER *listener, int level);
+static void SBBeginTableOfContentsItem(MWLISTENER *listener, int level, pANTLR3_STRING anchor);
 static void SBEndTableOfContentsItem(MWLISTENER *listener);
 static void SBBeginTable(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndTable(MWLISTENER *listener);
@@ -68,7 +68,7 @@ static void SBBeginTableCaption(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndTableCaption(MWLISTENER *listener);
 static void SBBeginTableBody(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndTableBody(MWLISTENER *listener);
-static void SBBeginHeading(MWLISTENER *listener, int level, pANTLR3_VECTOR attr);
+static void SBBeginHeading(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr);
 static void SBEndHeading(MWLISTENER *listener);
 static void SBBeginHtmlDiv(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlDiv(MWLISTENER *listener);
@@ -118,6 +118,7 @@ static void SBBeginHtmlVar(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlVar(MWLISTENER *listener);
 static void SBBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlAbbr(MWLISTENER *listener);
+static void SBOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void * SBNew(void);
 static void SBReset(void *data);
 static void SBFree(void *data);
@@ -248,6 +249,7 @@ const MWLISTENER mwScriptBufferListener = {
     .endHtmlVar               = SBEndHtmlVar,
     .beginHtmlAbbr            = SBBeginHtmlAbbr,
     .endHtmlAbbr              = SBEndHtmlAbbr,
+    .onHtmlPre                = SBOnHtmlPre,
 
 };
 
@@ -550,10 +552,11 @@ SBEndPre(MWLISTENER *listener)
  *
  * @param listener
  * @param level
+ * @param anchor Raw text that should be used to produce an anchor id.
  * @param attr
  */
 static void
-SBBeginHeading(MWLISTENER *listener, int level, pANTLR3_VECTOR attr)
+SBBeginHeading(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr)
 {
     switch (level) {
     case 1:
@@ -758,6 +761,12 @@ SBOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR att
 static void
 SBOnTagExtension(MWLISTENER *listener, const char *name, pANTLR3_STRING body, pANTLR3_VECTOR attr)
 {
+    APPEND_CONST_STRING("<!-- TAG EXTENSION[");
+    printf("name: %p, body: %p\n", name, body);
+    APPEND_STRING(name);
+    APPEND_CONST_STRING("] -->");
+    SBOnSpecial(listener, body);
+    APPEND_CONST_STRING("<!-- END TAG EXTENSION -->");
 }
 
 /**
@@ -963,9 +972,10 @@ SBEndTableOfContents(MWLISTENER *listener)
  *
  * @param listener
  * @param level
+ * @param anchor Raw text that should be used to produce an anchor id.
  */
 static void
-SBBeginTableOfContentsItem(MWLISTENER *listener, int level)
+SBBeginTableOfContentsItem(MWLISTENER *listener, int level, pANTLR3_STRING anchor)
 {
 }
 
@@ -1599,3 +1609,19 @@ SBEndHtmlAbbr(MWLISTENER *listener)
     APPEND_CONST_STRING("</abbr>");
 }
 
+
+/**
+ * An instance of html <pre> body </pre>.  The body is unfiltered, the
+ * same as for nowiki.
+ *
+ * @param listener
+ * @param body
+ * @param attr
+ */
+static void
+SBOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr)
+{
+    HTML_TAG("pre");
+    SBOnSpecial(listener, body);
+    APPEND_CONST_STRING("</pre>");
+}

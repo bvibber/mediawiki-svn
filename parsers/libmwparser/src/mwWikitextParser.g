@@ -68,12 +68,9 @@ block_elements: block_element (()=> empty_lines)?  ((~(EOF))=> block_elements)?
 
 empty_lines:
     (()=> NEWLINE)+
-    {
-        CX->onNonListBlockElement(CX);
-    }
     ;
 
-block_element: paragraph | table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_blockquote | html_center | block_tag_extension
+block_element: paragraph | table | wikitext_list | heading | pre | horizontal_rule | html_div | html_list | html_pre | html_blockquote | html_center | block_tag_extension
     ;
 
 html_div: 
@@ -85,6 +82,13 @@ html_div:
     (HTML_DIV_CLOSE|EOF)
     {
         CX->endHtmlDiv(CX);
+    }
+    ;
+
+html_pre:
+    token = HTML_PRE
+    {
+        CX->onHtmlPre(CX, $token->getText($token), $token->custom);
     }
     ;
 
@@ -208,7 +212,7 @@ html_dd:
     ;
 
 
-wikitext_list: (()=> list_element)+ {CX->onNonListBlockElement(CX);}
+wikitext_list: (()=> list_element (()=>NEWLINE)?)+ {CX->onNonListBlockElement(CX);}
     ;
 
 list_element: 
@@ -230,17 +234,33 @@ paragraph:
     ;
 
 inline_text: 
-    inline_text_line ((newline inline_element)=> newline inline_text_line)*
+    inline_text_line ((newline (inline_element|inline_block))=> newline inline_text_line)*
     ;
 
 inline_text_line: 
-    inline_prescan
+   (
+     (
+        inline_prescan
+        {
+           CX->openFormats(CX);
+        }
+        actual_inline_text_line
+        {
+           CX->closeFormats(CX);
+        }
+      )
+      |
+      inline_block
+    ) (()=> inline_text_line)?
+    ;
+
+inline_block:
     {
-       CX->openFormats(CX);
+       CX->pushListContext(CX);
     }
-    actual_inline_text_line
+    media_link_with_caption
     {
-       CX->closeFormats(CX);
+       CX->popListContext(CX);
     }
     ;
 
@@ -484,13 +504,13 @@ heading_contents: newline* inline_text ((NEWLINE)=> (()=>newline)+ (()=>inline_t
 
 
 begin_heading: 
-      (h = BEGIN_HEADING { CX->beginHeading(CX, $h->HEADING_LEVEL, NULL); })
-    | (h = HTML_H1_OPEN  { CX->beginHeading(CX, 1, $h->custom); })
-    | (h = HTML_H2_OPEN  { CX->beginHeading(CX, 2, $h->custom); })
-    | (h = HTML_H3_OPEN  { CX->beginHeading(CX, 3, $h->custom); })
-    | (h = HTML_H4_OPEN  { CX->beginHeading(CX, 4, $h->custom); })
-    | (h = HTML_H5_OPEN  { CX->beginHeading(CX, 5, $h->custom); })
-    | (h = HTML_H6_OPEN  { CX->beginHeading(CX, 6, $h->custom); })
+       (h = BEGIN_HEADING { CX->beginHeading(CX, $h->HEADING_LEVEL, $h->getText($h), $h->custom); })
+    |  (h = HTML_H1_OPEN  { CX->beginHeading(CX, 1, $h->getText($h), $h->custom); })
+    |  (h = HTML_H2_OPEN  { CX->beginHeading(CX, 2, $h->getText($h), $h->custom); })
+    |  (h = HTML_H3_OPEN  { CX->beginHeading(CX, 3, $h->getText($h), $h->custom); })
+    |  (h = HTML_H4_OPEN  { CX->beginHeading(CX, 4, $h->getText($h), $h->custom); })
+    |  (h = HTML_H5_OPEN  { CX->beginHeading(CX, 5, $h->getText($h), $h->custom); })
+    |  (h = HTML_H6_OPEN  { CX->beginHeading(CX, 6, $h->getText($h), $h->custom); })
     ;
 
 end_heading:
@@ -534,14 +554,14 @@ table_of_contents_item:
     end_table_of_contents_item
     ;
 
-begin_table_of_contents_item:
-      (h = BEGIN_HEADING { CX->beginTableOfContentsItem(CX, h->HEADING_LEVEL); })
-    | (h = HTML_H1_OPEN  { CX->beginTableOfContentsItem(CX, 1); })
-    | (h = HTML_H2_OPEN  { CX->beginTableOfContentsItem(CX, 2); })
-    | (h = HTML_H3_OPEN  { CX->beginTableOfContentsItem(CX, 3); })
-    | (h = HTML_H4_OPEN  { CX->beginTableOfContentsItem(CX, 4); })
-    | (h = HTML_H5_OPEN  { CX->beginTableOfContentsItem(CX, 5); })
-    | (h = HTML_H6_OPEN  { CX->beginTableOfContentsItem(CX, 6); })
+begin_table_of_contents_item: 
+       (h = BEGIN_HEADING { CX->beginTableOfContentsItem(CX, $h->HEADING_LEVEL, $h->getText($h)); })
+    |  (h = HTML_H1_OPEN  { CX->beginTableOfContentsItem(CX, 1, $h->getText($h)); })
+    |  (h = HTML_H2_OPEN  { CX->beginTableOfContentsItem(CX, 2, $h->getText($h)); })
+    |  (h = HTML_H3_OPEN  { CX->beginTableOfContentsItem(CX, 3, $h->getText($h)); })
+    |  (h = HTML_H4_OPEN  { CX->beginTableOfContentsItem(CX, 4, $h->getText($h)); })
+    |  (h = HTML_H5_OPEN  { CX->beginTableOfContentsItem(CX, 5, $h->getText($h)); })
+    |  (h = HTML_H6_OPEN  { CX->beginTableOfContentsItem(CX, 6, $h->getText($h)); })
     ;
 
 end_table_of_contents_item:
@@ -599,7 +619,7 @@ end_external_link: END_EXTERNAL_LINK
     }
     ;
 
-media_link: complete_media_link | begin_media_link | end_media_link
+media_link: complete_media_link
     ;
 
 complete_media_link: linkToken = MEDIA_LINK
@@ -608,21 +628,21 @@ complete_media_link: linkToken = MEDIA_LINK
     }
     ;
 
-begin_media_link:  linkToken = BEGIN_MEDIA_LINK
+media_link_with_caption:
+    linkToken = BEGIN_MEDIA_LINK
     {
-        IE(CX->beginMediaLink(CX, $linkToken->custom);)
+        CX->beginMediaLink(CX, $linkToken->custom);
     }
-    ;
-
-end_media_link: END_MEDIA_LINK
+    block_level
+    END_MEDIA_LINK
     {
-        IE(CX->endMediaLink(CX);)
+        CX->endMediaLink(CX);
     }
     ;
 
 inline_tag_extension: tagextToken = TAGEXT_INLINE
     {
-        CX->onTagExtension(CX, tagextToken->custom);
+        IE(CX->onTagExtension(CX, tagextToken->custom);)
     }
     ;
 

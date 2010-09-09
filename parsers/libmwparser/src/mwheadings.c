@@ -2,18 +2,18 @@
 #include <mwparsercontext.h>
 #include <mwheadings.h>
 
-static void beginHeading(MWPARSERCONTEXT *context, int level, pANTLR3_VECTOR attr);
+static void beginHeading(MWPARSERCONTEXT *context, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr);
 static void endHeading(MWPARSERCONTEXT *context);
 static void beginTableOfContents(MWPARSERCONTEXT *context);
 static void endTableOfContents(MWPARSERCONTEXT *context);
-static void beginTableOfContentsItem(MWPARSERCONTEXT *context, int level);
+static void beginTableOfContentsItem(MWPARSERCONTEXT *context, int level, pANTLR3_STRING anchor);
 static void endTableOfContentsItem(MWPARSERCONTEXT *context);
 
 static void
-beginHeading(MWPARSERCONTEXT *context, int level, pANTLR3_VECTOR attr)
+beginHeading(MWPARSERCONTEXT *context, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr)
 {
     MWLISTENER *l = &context->listener;
-    l->beginHeading(l, level, attr);
+    l->beginHeading(l, level, anchor, attr);
 }
 
 static void
@@ -38,10 +38,10 @@ endTableOfContents(MWPARSERCONTEXT *context)
 }
 
 static void
-beginTableOfContentsItem(MWPARSERCONTEXT *context, int level)
+beginTableOfContentsItem(MWPARSERCONTEXT *context, int level, pANTLR3_STRING anchor)
 {
     MWLISTENER *l = &context->listener;
-    l->beginTableOfContentsItem(l, level);
+    l->beginTableOfContentsItem(l, level, anchor);
 }
 
 static void

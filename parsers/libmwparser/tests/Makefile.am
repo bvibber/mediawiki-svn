@@ -1,5 +1,8 @@
 
-check_PROGRAMS = testtext
+check_PROGRAMS = testtext bench
+
+bench_SOURCES = src/bench.c
+bench_LDADD =  $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(GLIB_LIBS)
 
 testtext_SOURCES = src/testtext.c
 testtext_LDADD = $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(GLIB_LIBS)

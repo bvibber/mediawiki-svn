@@ -1,0 +1,10 @@
+text [[File:example.jpg| <table><td> foo ]] bar </table> foo ]] bar
+* list [[File:example.jpg| text
+* list
+]]
+
+text'' line [[File:example.jpg| text ]] end'' text
+
+* list [[File:example.jpg|
+* list item in image caption ]]
+* continuing outer list

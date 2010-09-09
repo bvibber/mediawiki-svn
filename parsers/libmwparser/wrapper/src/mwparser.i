@@ -8,24 +8,27 @@ extern MWLISTENER mwScriptBufferListener;
 static MWPARSER_OPTIONS *null_options = NULL;
 %}
 
-%{
-    static MWPARSER *new_MWPARSER(MWPARSER_INPUT_STREAM *inputStream) 
-    {
-        return MWParserNew(&mwScriptBufferListener, inputStream);
-    }
-
-    static void delete_MWPARSER(MWPARSER *parser)
-    {
-        MWParserFree(parser);
-    }
-%}
-
 #ifdef SWIGPERL
+%typemap(in) SV *string {
+    SvREFCNT_inc($input);
+    $1 = $input;
+}
+
 %{
     static SV *MWParseArticle(MWPARSER *parser) 
     {
         MWParserParseArticle(parser, NULL);
         return MWParserGetResult(parser);
+    }
+
+    static void freeString(void *string) {
+        SV *sv = string;
+        SvREFCNT_dec(sv);
+    }
+
+    static MWPARSER_INPUT_STREAM * new_MWParserInput(SV *string)
+    {
+        return MWParserOpenStringWithCleanup("input", SvPVX(string), SvCUR(string), MWPARSER_UTF8, string, freeString);
     }
 %}
 
@@ -39,57 +42,74 @@ static MWPARSER_OPTIONS *null_options = NULL;
         MWParserParseArticle(parser, NULL);
         return MWParserGetResult(parser);
     }
+    static void freeString(void *string) {
+        zval *z = string;
+        Z_DELREF_P(z);
+    }
+
+    static MWPARSER_INPUT_STREAM * new_MWParserInput(zval *string)
+    {
+        return MWParserOpenStringWithCleanup("input", string->value.str.val, string->value.str.len, MWPARSER_UTF8, string, freeString);
+    }
 %}
 
 %typemap(out) zval * {
     *$result = *$1;
 }
-#endif
 
-
-#ifdef SWIGPHP
-%typemap(in) (char *string, size_t size) {
+%typemap(in) (zval *string) {
     if ((*$input)->type != IS_STRING) {
         SWIG_PHP_Error(E_ERROR ,"Expected string value for parameter." );
     }
-    $1 = (*$input)->value.str.val;
-    $2 = (*$input)->value.str.len;
     Z_ADDREF_P(*$input);
+    $1 = *$input;
 }
 #endif
 
-%apply (char *STRING, size_t LENGTH) { (char *string, size_t size) };
+%{
+    static MWPARSER *new_MWParser(MWPARSER_INPUT_STREAM *inputStream) 
+    {
+        return MWParserNew(&mwScriptBufferListener, inputStream);
+    }
 
-typedef enum MWPARSER_ENCODING {
-    MWPARSER_8BIT,
-    MWPARSER_UTF8,
-    MWPARSER_UTF16,
-    MWPARSER_UTF16LE,
-    MWPARSER_UTF16BE,
-    MWPARSER_UTF32,
-    MWPARSER_UTF32LE,
-    MWPARSER_UTF32BE,
-} MWPARSER_ENCODING;
+    static void delete_MWParser(MWPARSER *parser)
+    {
+        MWParserFree(parser);
+    }
+
+    static void delete_MWParserInput(MWPARSER_INPUT_STREAM *inputStream)
+    {
+        MWParserCloseInputStream(inputStream);
+    }
+%}
 
 extern MWPARSER *MWParserNew(const MWLISTENER *listener, MWPARSER_INPUT_STREAM *inputStream);
 
-static MWPARSER *new_MWPARSER(MWPARSER_INPUT_STREAM *inputStream);
+static MWPARSER *new_MWParser(MWPARSER_INPUT_STREAM *inputStream);
 
-static void delete_MWPARSER(MWPARSER *parser);
+static void delete_MWParser(MWPARSER *parser);
+
+static void delete_MWParserInput(MWPARSER_INPUT_STREAM *inputStream);
 
 extern void MWParserReset(MWPARSER *parser, MWPARSER_INPUT_STREAM *inputStream);
 
-extern void MWParserFree(MWPARSER *parser);
+extern bool MWParserSetLegalTitleRegexp(MWPARSER *parser, const char *perlRegexp);
 
-extern MWPARSER_INPUT_STREAM * MWParserOpenString(char *name, char *string, size_t size, MWPARSER_ENCODING encoding);
+extern bool MWParserSetMediaLinkTitleRegexp(MWPARSER *parser, const char *perlRegexp);
 
-extern MWPARSER_INPUT_STREAM * MWParserOpenFile(char *fileName, MWPARSER_ENCODING encoding);
+typedef struct MWPARSER_TAGEXT_struct {
+    char * name;
+    bool isBlock;
+}
+    MWPARSER_TAGEXT;
 
-extern void MWParserCloseInputStream(MWPARSER_INPUT_STREAM *stream);
+extern bool MWParserRegisterTagExtension(MWPARSER *parser, const MWPARSER_TAGEXT *tagExtension);
 
 #ifdef SWIGPERL
 static SV *MWParseArticle(MWPARSER *parser);
+static MWPARSER_INPUT_STREAM * new_MWParserInput(SV *string);
 #elif defined(SWIGPHP)
 static zval *MWParseArticle(MWPARSER *parser);
+static MWPARSER_INPUT_STREAM * new_MWParserInput(zval *string);
 #endif
 

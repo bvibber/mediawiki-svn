@@ -193,6 +193,13 @@ AT_CHECK([testtext ${srcdir}/list/list2.in > tempoutput && diff ${srcdir}/list/l
 
 AT_CLEANUP
 
+AT_SETUP([list3])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/list/list3.in > tempoutput && diff ${srcdir}/list/list3.out tempoutput])
+
+AT_CLEANUP
+
 AT_SETUP([hr])
 
 AT_DATA([tempoutput], [])
@@ -226,5 +233,12 @@ AT_SETUP([link4])
 
 AT_DATA([tempoutput], [])
 AT_CHECK([testtext ${srcdir}/link/link4.in > tempoutput && diff ${srcdir}/link/link4.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([link5])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/link/link5.in > tempoutput && diff ${srcdir}/link/link5.out tempoutput])
 
 AT_CLEANUP

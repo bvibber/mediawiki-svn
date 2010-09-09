@@ -16,6 +16,8 @@ struct MWPARSER_struct
 struct MWPARSER_INPUT_STREAM_struct
 {
     pANTLR3_INPUT_STREAM antlrStream;
+    void *data;
+    void (*freeData)(void *);
 };
 
 struct MWPARSER_OPTIONS_struct
@@ -124,12 +126,23 @@ MWParserOpenString(char *name, char *string, size_t size, MWPARSER_ENCODING enco
     if (stream == NULL) {
         return NULL;
     }
+    stream->data = NULL;
+    stream->freeData = NULL;
     ANTLR3_UINT32 enc = antlr3encoding(encoding);
     if (enc == (ANTLR3_UINT32)-1) {
         ANTLR3_FREE(stream);
         return NULL;
     }
     stream->antlrStream = antlr3StringStreamNew((pANTLR3_UINT8)string, enc, size, (pANTLR3_UINT8)name);
+    return stream;
+}
+
+MWPARSER_INPUT_STREAM *
+MWParserOpenStringWithCleanup(char *name, char *string, size_t size, MWPARSER_ENCODING encoding, void *data, void (*freeData)(void *))
+{
+    MWPARSER_INPUT_STREAM *stream = MWParserOpenString(name, string, size, encoding);
+    stream->data = data;
+    stream->freeData = freeData;
     return stream;
 }
 
@@ -146,6 +159,8 @@ MWParserOpenFile(char *fileName, MWPARSER_ENCODING encoding)
         return NULL;
     }
     stream->antlrStream  = antlr3FileStreamNew((pANTLR3_UINT8)fileName, enc);
+    stream->data = NULL;
+    stream->freeData = NULL;
     if (stream->antlrStream == NULL) {
         ANTLR3_FREE(stream);
         return NULL;
@@ -158,6 +173,9 @@ void
 MWParserCloseInputStream(MWPARSER_INPUT_STREAM * inputStream)
 {
     inputStream->antlrStream->close(inputStream->antlrStream);
+    if (inputStream->freeData != NULL) {
+        inputStream->freeData(inputStream->data);
+    }
     ANTLR3_FREE(inputStream);
 }
 

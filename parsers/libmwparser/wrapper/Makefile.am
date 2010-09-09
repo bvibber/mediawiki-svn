@@ -10,7 +10,7 @@ lib_LTLIBRARIES = libmwp.la
 libmwp_la_SOURCES = src/mwscriptbufferlistener.c	\
 	mwp_wrap.c
 
-libmwp_la_CFLAGS = $(TARGET_LANGUAGE_CFLAGS) $(GLIB_CFLAGS)
+libmwp_la_CFLAGS = $(TARGET_LANGUAGE_CFLAGS) $(GLIB_CFLAGS) -Wall 
 
 libmwp_la_LDFLAGS = $(TARGET_LANGUAGE_LDFLAGS) $(GLIB_LDFLAGS)
 

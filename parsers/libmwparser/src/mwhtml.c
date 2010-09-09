@@ -415,6 +415,14 @@ endHtmlAbbr(MWPARSERCONTEXT *context)
     l->endHtmlAbbr(l);
 }
 
+static void
+onHtmlPre(MWPARSERCONTEXT *context, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr)
+{
+    MW_TRIGGER_DELAYED_CALLS(context);
+    MWLISTENER *l = &context->listener;
+    l->onHtmlPre(l, nowiki, attr);
+}
+
 void
 mwHtmlInit(MWPARSERCONTEXT *context)
 {
@@ -463,4 +471,5 @@ mwHtmlInit(MWPARSERCONTEXT *context)
     context->endHtmlVar     = endHtmlVar;
     context->beginHtmlAbbr  = beginHtmlAbbr;
     context->endHtmlAbbr    = endHtmlAbbr;
+    context->onHtmlPre      = onHtmlPre;
 }

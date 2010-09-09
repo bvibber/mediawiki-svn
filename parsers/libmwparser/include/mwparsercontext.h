@@ -63,11 +63,11 @@ typedef struct MWPARSERCONTEXT_struct
     void (*endPre)(struct MWPARSERCONTEXT_struct * context);
     void (*beginArticle)(struct MWPARSERCONTEXT_struct * context);
     void (*endArticle)(struct MWPARSERCONTEXT_struct * context);
-    void (*beginHeading)(struct MWPARSERCONTEXT_struct * context, int level, pANTLR3_VECTOR attr);
+    void (*beginHeading)(struct MWPARSERCONTEXT_struct * context, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr);
     void (*endHeading)(struct MWPARSERCONTEXT_struct * context);
     void (*beginTableOfContents)(struct MWPARSERCONTEXT_struct * context);
     void (*endTableOfContents)(struct MWPARSERCONTEXT_struct * context);
-    void (*beginTableOfContentsItem)(struct MWPARSERCONTEXT_struct * context, int level);
+    void (*beginTableOfContentsItem)(struct MWPARSERCONTEXT_struct * context, int level, pANTLR3_STRING anchor);
     void (*endTableOfContentsItem)(struct MWPARSERCONTEXT_struct * context);
     void (*beginTable)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attributes);
     void (*endTable)(struct MWPARSERCONTEXT_struct * context);
@@ -150,7 +150,7 @@ typedef struct MWPARSERCONTEXT_struct
     void (*endHtmlVar)(struct MWPARSERCONTEXT_struct * context);
     void (*beginHtmlAbbr)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endHtmlAbbr)(struct MWPARSERCONTEXT_struct * context);
-
+    void (*onHtmlPre)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING body, pANTLR3_VECTOR attr);
     /*
      * The listener API.
      */
@@ -180,6 +180,7 @@ typedef struct MWPARSERCONTEXT_struct
     pANTLR3_VECTOR delayedCalls;
     pANTLR3_VECTOR savedOrderedFormats;
     pANTLR3_VECTOR parseInlineInstruction;
+    pANTLR3_STACK  listContextStack;
     pANTLR3_COMMON_TOKEN prevInlineToken;
     pANTLR3_COMMON_TOKEN prevPrevInlineToken;
     pANTLR3_STRING listState;
@@ -191,6 +192,10 @@ typedef struct MWPARSERCONTEXT_struct
      */
     void (*closeFormats)(struct MWPARSERCONTEXT_struct * context);
     void (*openFormats)(struct MWPARSERCONTEXT_struct * context);
+    void (*tempCloseFormats)(struct MWPARSERCONTEXT_struct * context);
+    void (*tempReopenFormats)(struct MWPARSERCONTEXT_struct * context);
+    void (*pushListContext)(struct MWPARSERCONTEXT_struct * context);
+    void (*popListContext)(struct MWPARSERCONTEXT_struct * context);
     void (*delayCall)(struct MWPARSERCONTEXT_struct * context,
                       void (*beginMethod)(),
                       void (*endMethod)(),

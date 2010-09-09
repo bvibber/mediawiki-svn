@@ -228,6 +228,8 @@ function reset_method() {
     }
     $method .= INDENT . "context->emptyHtmlTagType = ANTLR3_TOKEN_INVALID;\n";
     $method .= INDENT . "context->inEmptyHtmlTag = false;\n";
+    $method .= INDENT . "context->inHtmlPre = false;\n";
+    $method .= INDENT . "context->inNowiki = false;\n";
     $method .= INDENT . "context->lookahead = 0;\n";
     $method .= "}\n";
     array_push($methods, $method);
@@ -384,6 +386,8 @@ function save_context_method() {
     $method .= INDENT . "}\n";
     $method .= INDENT . CX . "->emptyHtmlTagType = back->emptyHtmlTagType;\n";
     $method .= INDENT . CX . "->inEmptyHtmlTag   = back->inEmptyHtmlTag;\n"; 
+    $method .= INDENT . CX . "->inHtmlPre   = back->inHtmlPre;\n";
+    $method .= INDENT . CX . "->inNowiki   = back->inNowiki;\n";
     $method .= "}\n";
     array_push($methods, $method);
 }
@@ -406,12 +410,17 @@ function restore_context_method() {
     }
     $method .= INDENT . "pANTLR3_STACK s = context->blockContextStack;\n";
     $method .= INDENT . "pANTLR3_VECTOR v = back->blockContextStack;\n";
+    $method .= INDENT . "while (s->size(s) > 0) {\n";
+    $method .= INDENT . INDENT . "s->pop(s);\n";
+    $method .= INDENT . "}\n";
     $method .= INDENT . "int i;\n";
     $method .= INDENT . "for (i = v->count - 1 ; i >= 0; i--) {\n";
     $method .= INDENT . INDENT . "s->push(s, v->get(v, i), NULL);\n";
     $method .= INDENT . "}\n";
     $method .= INDENT . "back->emptyHtmlTagType = " . CX . "->emptyHtmlTagType;\n";
     $method .= INDENT . "back->inEmptyHtmlTag   = " . CX . "->inEmptyHtmlTag;\n"; 
+    $method .= INDENT . "back->inNowiki   = " . CX . "->inNowiki;\n"; 
+    $method .= INDENT . "back->inHtmlPre   = " . CX . "->inHtmlPre;\n"; 
     $method .= "}\n";
     array_push($methods, $method);
 }

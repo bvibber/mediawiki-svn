@@ -74,10 +74,29 @@ void MWParserParseArticle(MWPARSER *parser, MWPARSER_OPTIONS *options);
 
 /**
  * Open an input stream that reads from a character buffer.
+ * @param name The name of the input stream.  (Only used for debugging?)
  * @param string Character buffer.
  * @param encoding The character encoding of the buffer.
  */
 MWPARSER_INPUT_STREAM * MWParserOpenString(char *name, char *string, size_t size, MWPARSER_ENCODING encoding);
+
+/**
+ * Open an input stream with MWParserOpenString, but also register a
+ * pointer and a free function that will be called when the stream is
+ * closed.  This is useful when the input stream is reading directly
+ * from a buffer associated with a variable tied to a script, when the
+ * reference counter need to be decreased on the script variable after
+ * we are done with the string.
+ *
+ * @param name The name of the input stream.  (Only used for debugging?)
+ * @param string Character buffer.
+ * @param encoding The character encoding of the buffer.
+ * @param data A pointer that should be free:d or equivalent when the
+ * stream is closed.
+ * @param freeData Function to free the data pointer.
+ */
+MWPARSER_INPUT_STREAM * MWParserOpenStringWithCleanup(char *name, char *string, size_t size, MWPARSER_ENCODING encoding, void *data, void (*freeData)(void *));
+
 
 /**
  * Open an input stream that reads from a file.

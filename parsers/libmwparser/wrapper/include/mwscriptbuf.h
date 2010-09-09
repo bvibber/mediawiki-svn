@@ -201,6 +201,8 @@ appendAttrVector(MWSCRIPTBUF *buf, const char *element, pANTLR3_VECTOR attr)
 
 #define APPEND_CONST_STRING(string) (appendBytes(BUF, string, sizeof(string)))
 
+#define APPEND_STRING(string) (appendBytes(BUF, string, strlen(string)))
+
 #define APPEND_ANTLR3_STRING(string) (appendAntlr3String(BUF, string))
 
 #define CLEAR_STRING(string) do {                               \

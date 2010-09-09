@@ -67,22 +67,21 @@ onExternalLink(MWPARSERCONTEXT *context, pANTLR3_STRING linkUrl)
 static void
 beginMediaLink(MWPARSERCONTEXT *context, pANTLR3_VECTOR attr)
 {
-    MW_DELAYED_CALL(        context, beginMediaLink, endMediaLink, attr, false);
-    MW_BEGIN_ORDERED_FORMAT(context, beginMediaLink, endMediaLink, attr, false);
-
+    context->tempCloseFormats(context);
     pANTLR3_STRING linkUrl = attr->get(attr, attr->count - 1);
     attr->remove(attr, attr->count - 1);
     MWLISTENER *l = &context->listener;
     l->beginMediaLink(l, linkUrl, attr);
+    context->tempReopenFormats(context);
 }
 
 static void
 endMediaLink(MWPARSERCONTEXT *context)
 {
-    MW_SKIP_IF_EMPTY(     context, beginMediaLink, endMediaLink);
-    MW_END_ORDERED_FORMAT(context, beginMediaLink, endMediaLink);
+    context->tempCloseFormats(context);
     MWLISTENER *l = &context->listener;
     l->endMediaLink(l);
+    context->tempReopenFormats(context);
 }
 
 static void

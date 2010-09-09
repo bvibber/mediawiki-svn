@@ -93,7 +93,7 @@ array(
           'name'              => 'wikitextListElement',
           'initiallyDisabled' => array(),
           'types'             => array('block'),
-          'affects'           => array(new TypeDisable('block', 'WIKITEXT_BLOCK_OR_LINK')),
+          'affects'           => array(new TypeDisable('block', 'WIKITEXT_BLOCK')),
           'mayNest'           => false,
           'scope'             => new Scope('eol'),
           ),
@@ -234,6 +234,24 @@ array(
           'types'             => array('html'),
           ),
     array(
+          'name'              => "htmlHr",
+          'initiallyDisabled' => array(),
+          'mayNest'           => true,
+          'types'             => array('html'),
+          ),
+    array(
+          'name'              => "htmlImg",
+          'initiallyDisabled' => array(),
+          'mayNest'           => true,
+          'types'             => array('html'),
+          ),
+    array(
+          'name'              => "htmlPre",
+          'initiallyDisabled' => array(),
+          'mayNest'           => true,
+          'types'             => array('html', 'block'),
+          ),
+    array(
           'name'              => 'htmlPOpen',
           'close'             => 'htmlPClose',
           'initiallyDisabled' => array(),
@@ -254,7 +272,7 @@ array(
           'initiallyDisabled' => array(),
           'mayNest'           => false,
           'types'             => array(),
-          'affects'           => array(new PredicateDisable('externalLinkOpen', 'WIKITEXT_BLOCK_OR_LINK')),
+          'affects'           => array(new PredicateDisable('externalLinkOpen', 'LINK')),
           ),
     array(
           'name'              => "externalLinkOpen",
@@ -271,6 +289,7 @@ array(
           'haveNestingCount'  => true,
           'maxNestingLevel'   => 2,
           'types'             => array(),
+          'pushesBlockContext'=> true,
           ),
       );
 
@@ -342,9 +361,8 @@ $disabledCauses = array(
     'BLOCK_CONTEXT',
     'BLOCKQUOTE',
     'NESTING_LIMIT',
-    'WIKITEXT_BLOCK_OR_LINK'  // It should be OK for these two causes
-                              // to share the same bit, since they are never applied
-                              // to the same predicate.
+    'WIKITEXT_BLOCK',
+    'LINK',
  );
 
 define('CX', 'context');

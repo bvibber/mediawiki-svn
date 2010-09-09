@@ -64,6 +64,11 @@ typedef enum {
 
 static void closeFormats(MWPARSERCONTEXT *context);
 static void openFormats(MWPARSERCONTEXT *context);
+static void tempCloseFormats(MWPARSERCONTEXT *context);
+static void tempReopenFormats(MWPARSERCONTEXT *context);
+static void pushListContext(MWPARSERCONTEXT *context);
+static void popListContext(MWPARSERCONTEXT *context);
+
 static void beginInlinePrescan(MWPARSERCONTEXT *context);
 static void endInlinePrescan(MWPARSERCONTEXT *context);
 static void beginFormat(MWPARSERCONTEXT *context, void (*begin)(), void (*end)(), void *parameter, bool isShortLived);
@@ -142,6 +147,7 @@ MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
     context->formatOrder                  = NULL;
     context->delayedCalls                 = NULL;
     context->savedOrderedFormats          = NULL;
+    context->listContextStack             = NULL;
     context->parseInlineInstruction       = NULL;
     context->listener.data                = NULL;
 
@@ -173,6 +179,10 @@ MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
 
     context->closeFormats                 = closeFormats;
     context->openFormats                  = openFormats;
+    context->tempCloseFormats             = tempCloseFormats;
+    context->tempReopenFormats            = tempReopenFormats;
+    context->pushListContext              = pushListContext;
+    context->popListContext               = popListContext;
     context->beginInlinePrescan           = beginInlinePrescan;
     context->endInlinePrescan             = endInlinePrescan;
     context->onApostrophesPrescan         = onApostrophesPrescan;
@@ -196,6 +206,8 @@ MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
     NULL_FAIL(context->savedOrderedFormats);
     context->parseInlineInstruction       = antlr3VectorNew(ANTLR3_SIZE_HINT);
     NULL_FAIL(context->parseInlineInstruction);
+    context->listContextStack             = antlr3StackNew(ANTLR3_SIZE_HINT);
+    NULL_FAIL(context->listContextStack);
 
     if (context->listener.newData != NULL) {
         context->listener.data = context->listener.newData();
@@ -243,6 +255,10 @@ MWParserContextReset(MWPARSERCONTEXT *context)
     if (context->listener.resetData != NULL) {
         context->listener.resetData(context->listener.data);
     }
+
+    while (context->listContextStack->size(context->listContextStack) > 0) {
+        context->listContextStack->pop(context->listContextStack);
+    }
 }
 
 static void
@@ -263,6 +279,9 @@ MWParserContextFree(void *parserContext)
     }
     if (context->savedOrderedFormats != NULL) {
         context->savedOrderedFormats->free(context->savedOrderedFormats);
+    }
+    if (context->listContextStack != NULL) {
+        context->listContextStack->free(context->listContextStack);
     }
     if (context->parseInlineInstruction != NULL) {
         context->parseInlineInstruction->free(context->parseInlineInstruction);
@@ -298,6 +317,64 @@ openFormats(MWPARSERCONTEXT *context)
 }
 
 static void
+tempCloseFormats(MWPARSERCONTEXT *context)
+{
+    int i;
+    /*
+     * Close formats in reverse order.
+     */
+    pANTLR3_VECTOR v = context->formatOrder;
+    const int tupleCount = v->count/ORDERED_FORMAT_TUPLE_SIZE;
+    void *tuple[ORDERED_FORMAT_TUPLE_SIZE];
+    for (i = tupleCount - 1; i >= 0; i --) {
+        getTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tuple, i);
+        void (*end)(MWPARSERCONTEXT *context) = tuple[END_METHOD_OFFSET];
+        end(context);
+    }
+}
+
+static void
+tempReopenFormats(MWPARSERCONTEXT *context)
+{
+    int i;
+    /*
+     * Backup delayed calls.
+     */
+    pANTLR3_VECTOR v = context->delayedCalls;
+    const int delayedCallsTupleCount = v->count / DELAYED_CALLS_TUPLE_SIZE;
+    void *tmpDelayedCalls[v->count][DELAYED_CALLS_TUPLE_SIZE];
+    for (i = delayedCallsTupleCount - 1; i >= 0; i --) {
+        removeTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tmpDelayedCalls[i], i);
+    }
+
+    /*
+     * Open formats.
+     */
+    v = context->formatOrder;
+    const int tupleCount = v->count / ORDERED_FORMAT_TUPLE_SIZE;
+
+    context->openingFormats = true;
+
+    for (i = 0; i < tupleCount; i++) {
+        void *tuple[ORDERED_FORMAT_TUPLE_SIZE];
+        getTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tuple, i);
+        void (*begin)() = tuple[BEGIN_METHOD_OFFSET];
+        void *parameter = tuple[PARAMETER_OFFSET];
+        begin(context, parameter);
+    }
+
+    context->openingFormats = false;
+
+    /*
+     * Append backed up delayed calls.
+     */
+    v = context->delayedCalls;
+    for (i = 0; i < delayedCallsTupleCount; i++) {
+        addTuple(v, ORDERED_FORMAT_TUPLE_SIZE, tmpDelayedCalls[i]);
+    }
+}
+
+static void
 closeFormats(MWPARSERCONTEXT *context)
 {
     int i;
@@ -310,6 +387,7 @@ closeFormats(MWPARSERCONTEXT *context)
         void (*end)(MWPARSERCONTEXT *context) = v->get(v, END_METHOD_OFFSET);
         end(context);
     }
+
     /*
      * Close formats in reverse order.
      */
@@ -603,6 +681,17 @@ onConsumedApostrophes(MWPARSERCONTEXT *context)
 }
 
 #define CASE(c, chr) if (c == antlr3c8toAntlrc(chr))
+
+static void
+closeDLElement(MWLISTENER *listener, ANTLR3_UCHAR type) {
+    CASE(type, ':') { 
+        listener->endDefinitionItem(listener); 
+    } else {
+        assert(type == antlr3c8toAntlrc(';'));
+        listener->endDefinedTermItem(listener);
+    }
+}
+
 static void
 onListElement(MWPARSERCONTEXT *context, pANTLR3_STRING type)
 {
@@ -627,8 +716,8 @@ onListElement(MWPARSERCONTEXT *context, pANTLR3_STRING type)
         ANTLR3_UCHAR c = type->charAt(type, type->len - 1);
         CASE(c, '*') { LSTNR->endBulletListItem(LSTNR);    LSTNR->beginBulletListItem(LSTNR, NULL);  } else
         CASE(c, '#') { LSTNR->endEnumerationItem(LSTNR);   LSTNR->beginEnumerationItem(LSTNR, NULL); } else
-        CASE(c, ';') { LSTNR->endDefinedTermItem(LSTNR);   LSTNR->beginDefinedTermItem(LSTNR, NULL); } else
-        CASE(c, ':') { LSTNR->endDefinitionItem(LSTNR);    LSTNR->beginDefinitionItem(LSTNR, NULL);
+        CASE(c, ';') { closeDLElement(LSTNR, s->charAt(s, s->len - 1));   LSTNR->beginDefinedTermItem(LSTNR, NULL); } else
+        CASE(c, ':') { closeDLElement(LSTNR, s->charAt(s, s->len - 1));   LSTNR->beginDefinitionItem(LSTNR, NULL);
         } else {
             assert(false); // Invalid character representing a list item.
         }
@@ -693,21 +782,37 @@ closeLists(MWPARSERCONTEXT *context, int offset)
 {
     pANTLR3_STRING s = context->listState;
     ANTLR3_UCHAR c = s->charAt(s, s->len - 1);
-    CASE(c, ';') { LSTNR->endDefinedTermItem(LSTNR); }
+    bool first;
     int i;
-    for (i = s->len - 1; i >= offset; i--) {
+    for (i = s->len - 1, first = true; i >= offset; i--, first = false) {
         c = s->charAt(s, i);
 
         CASE(c, '*') { LSTNR->endBulletListItem(LSTNR);  LSTNR->endBulletList(LSTNR);       } else
         CASE(c, '#') { LSTNR->endEnumerationItem(LSTNR); LSTNR->endEnumerationList(LSTNR);  } else
         CASE(c, ':') { LSTNR->endDefinitionItem(LSTNR);  LSTNR->endDefinitionList(LSTNR);   } else
-        CASE(c, ';') { LSTNR->endDefinitionList(LSTNR);
+        CASE(c, ';') { if (first) { LSTNR->endDefinedTermItem(LSTNR); } LSTNR->endDefinitionList(LSTNR);
         } else {
             assert(false); // Invalid character representing a list item.
         }
     }
 }
 #undef CASE        
+
+static void
+pushListContext(MWPARSERCONTEXT *context)
+{
+    pANTLR3_STACK s =  context->listContextStack;
+    s->push(s, context->listState, NULL);
+    context->listState = NULL;
+}
+
+static void
+popListContext(MWPARSERCONTEXT *context)
+{
+    pANTLR3_STACK s =  context->listContextStack;
+    context->listState = s->peek(s);
+    s->pop(s);
+}
 
 /**
  * This method is used to register that a format has been started in
@@ -734,7 +839,7 @@ endFormat(MWPARSERCONTEXT *context,
           void (*endMethod)(MWPARSERCONTEXT *context))
 {
     pANTLR3_VECTOR v = context->formatOrder;
-    const tupleCount = v->count / ORDERED_FORMAT_TUPLE_SIZE;
+    const int tupleCount = v->count / ORDERED_FORMAT_TUPLE_SIZE;
     int i;
 
     /*

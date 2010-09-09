@@ -117,6 +117,7 @@ tokens {
     HTML_H6_OPEN;
     HTML_H6_CLOSE;
     HTML_BR;
+    HTML_IMG;
     HTML_UL_LI_OPEN;
     HTML_UL_LI_CLOSE;
     HTML_OL_OPEN;
@@ -170,7 +171,7 @@ typedef enum
 #define NEW_TOK(type, text) (newToken(LEXSTATE->tokFactory, type, text))
 #define SUBSTR1(start) (INPUT->substr(INPUT, start, GETCHARINDEX() - 1))
 #define SUBSTR2(start, end) (INPUT->substr(INPUT, start, end))
-#define HEADING_LEVEL USER1
+#define HEADING_LEVEL user1
 
 static pANTLR3_COMMON_TOKEN
 newToken(pANTLR3_TOKEN_FACTORY factory, ANTLR3_UINT32 type, pANTLR3_STRING text)
@@ -214,6 +215,7 @@ speculationInitiate(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation)
     saveContext(context, &speculation->contextBackup);
     context->lexer->markTokenStream(context->lexer, &speculation->tstreamMark);
     speculation->istreamMark = context->lexer->input->istream->mark(context->lexer->input->istream);
+    speculation->lcMark = MWLinkCollectionMark(context->linkCollection);
     speculation->active = true;
     speculation->istreamIndex = context->istreamIndex++;
 }
@@ -263,6 +265,7 @@ speculationFailure(MWLEXERCONTEXT *context, int n, MWLEXERSPECULATION *speculati
         restoreContext(context, &earliestFail->contextBackup);
         context->lexer->restoreTokenStream(context->lexer, &earliestFail->tstreamMark);
         context->lexer->input->istream->rewind(context->lexer->input->istream, earliestFail->istreamMark);
+        MWLinkCollectionRewind(context->linkCollection, earliestFail->lcMark);
         earliestFail->failurePoint = context->lexer->getCharIndex(context->lexer);
     }
 }
@@ -301,9 +304,9 @@ NOWIKI
 @init{ 
     ANTLR3_MARKER nowikiStart;
     ANTLR3_MARKER nowikiEnd;
-    pANTLR3_VECTOR attrs;
+    pANTLR3_VECTOR attrs = NULL;
 }:
-    'nowiki' (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
+    N O W I K I  (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
     ((SPACE_CHAR|NEWLINE_CHAR) => (SPACE_CHAR|NEWLINE_CHAR))*
     {
         nowikiEnd = nowikiStart = GETCHARINDEX();
@@ -315,6 +318,48 @@ NOWIKI
         MW_EMIT();
     }
     ;
+
+fragment
+NOWIKI_BODY[ANTLR3_MARKER *nowikiEnd]
+options{
+    k = 1;
+}:
+    (((SPACE_CHAR|NEWLINE_CHAR)* ('</' N O W I K I SKIP_SPACE '>'|EOF))=>
+      (SPACE_CHAR|NEWLINE_CHAR)* ('</' N O W I K I SKIP_SPACE '>'|EOF)   )
+    |
+    ({ *nowikiEnd = GETCHARINDEX(); } . ) NOWIKI_BODY[nowikiEnd]
+    ;
+
+fragment
+HTML_PRE
+@init{ 
+    ANTLR3_MARKER preStart;
+    ANTLR3_MARKER preEnd;
+    pANTLR3_VECTOR attrs = NULL;
+}:
+    {!CX->htmlPreDisabled}?=> P R E (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
+    ((SPACE_CHAR|NEWLINE_CHAR) => (SPACE_CHAR|NEWLINE_CHAR))*
+    {
+        preEnd = preStart = GETCHARINDEX();
+    }
+    PRE_BODY[&preEnd]
+    {
+        ACTION(SETTEXT(SUBSTR2(preStart, preEnd));)
+        MW_SETTYPE(HTML_PRE);
+        CUSTOM = attrs;
+        MW_EMIT();
+    }
+    ;
+
+fragment
+PRE_BODY[ANTLR3_MARKER *preEnd]:
+    (((SPACE_CHAR|NEWLINE_CHAR)* ('</' P R E SKIP_SPACE '>'|EOF))=>
+      (SPACE_CHAR|NEWLINE_CHAR)* ('</' P R E SKIP_SPACE '>'|EOF)   )
+    |
+    ({ *preEnd = GETCHARINDEX(); } . ) PRE_BODY[preEnd]
+    ;
+
+
 
 HORIZONTAL_RULE: {BOL}?=> ('---' '-'+ SPACE_TAB*) | (('-'|'--'|'---') {MW_SETTYPE(SPECIAL);})
     ;
@@ -330,7 +375,10 @@ BEGIN_HEADING
    ({level < 6}?=> '=' {level++;})+
    {
       CX->headingLevel = level;
-      HEADING_LEVEL = CX->headingLevel;
+      CX->headingTextBegin = GETCHARINDEX();
+      CX->headingBeginToken = NEW_TOK(BEGIN_HEADING, $text);
+      CX->headingBeginToken->HEADING_LEVEL = CX->headingLevel;
+      EMITNEW(CX->headingBeginToken);
       onWikitextHeadingOpen(CX);
    }
    ;
@@ -338,8 +386,9 @@ BEGIN_HEADING
 END_HEADING
 @init {
     ANTLR3_MARKER mark;
+    ANTLR3_MARKER endHeadingText;
 }: 
-   {!CX->wikitextHeadingCloseDisabled}?=> '=' {mark = MARK();}
+   {!CX->wikitextHeadingCloseDisabled}?=> '=' {mark = MARK();endHeadingText = GETCHARINDEX();}
     ( ({CX->headingLevel == 1}?=>   END_HEADING_EOL[mark])
      | ({CX->headingLevel == 2}?=>(('=' END_HEADING_EOL[mark])
                                     | {REWIND(mark); MW_SETTYPE(SPECIAL);}))
@@ -351,6 +400,11 @@ END_HEADING
                                     | {REWIND(mark); MW_SETTYPE(SPECIAL);}))
      | ({CX->headingLevel == 6}?=>(('=====' END_HEADING_EOL[mark])
                                     | {REWIND(mark); MW_SETTYPE(SPECIAL);})))
+   {
+       if ($type == END_HEADING) {
+           CX->headingBeginToken->setText(CX->headingBeginToken, SUBSTR2(CX->headingTextBegin, endHeadingText));
+       }
+   }
    ;
 
 fragment
@@ -484,18 +538,20 @@ TABLE_CELL_INLINE
 
 
 /**
- * Internal link production, that covers the tokens INTERNAL_LINK,
+ * Internal link production, that covers the tokens INTERNAL_LNK,
  * BEGIN_INTERNAL_LINK, MEDIAL_LINK, and BEGIN_MEDIA_LINK.
  */
 INTERNAL_LINK
 @init{
     ANTLR3_MARKER mark;
     pANTLR3_STRING linkTitle;
+    pANTLR3_STRING linkAnchor=NULL;
     bool isCompleteLink = false;
     bool success = true;
     bool alreadyInInternalLink;
     bool isMediaLink;
     pANTLR3_VECTOR attr = NULL;
+    pANTLR3_STRING attrLink = NULL;
 }:  {!CX->mediaLinkOpenDisabled && !alreadyTried(CX, &CX->internalLinkSpeculation)
         /*
          * We do not need to worry about whether a nested media link has
@@ -516,7 +572,7 @@ INTERNAL_LINK
                 speculationInitiate(CX, &CX->internalLinkSpeculation);
             }
             /*
-             * The nesting level is limited via the predicate controle
+             * The nesting level is limited via the predicate control
              * logic so it will never happen that
              * mediaLinkOpenDisabled is false and at the same time
              * mediaLinkOpenNestingLevel > 1.  Hence, we can safely
@@ -533,9 +589,10 @@ INTERNAL_LINK
            (
             INTERNAL_LINK_TITLE[&linkTitle]
             SPACE_TAB_CHAR* {isMediaLink = CX->isMediaLinkTitle(CX, linkTitle);}
+            ('#' INTERNAL_LINK_ANCHOR[&linkAnchor])?
             (
                  ']]' {isCompleteLink=true;}
-               | '|' ({isMediaLink}?=> MEDIA_LINK_ATTRIBUTES[&attr] | )
+               | '|' ({isMediaLink}?=> MEDIA_LINK_ATTRIBUTES[&attr, &attrLink] | )
                | {success = false;}
             )
            )
@@ -544,7 +601,16 @@ INTERNAL_LINK
     )
     {
         if (success) {
+            pANTLR3_COMMON_TOKEN token = NEW_TOK(INTERNAL_LINK, linkTitle);
             if (isMediaLink) {
+                MWLinkCollectionAdd(CX->linkCollection, MWLT_MEDIA, linkTitle, token);
+                if (attrLink != NULL) {
+                    /*
+                     * Note that the value of the link attribute has not been validated
+                     * in any way.
+                     */
+                    MWLinkCollectionAdd(CX->linkCollection, MWLT_LINKATTR, attrLink, token);
+                }
                 if (!alreadyInInternalLink) {
                     speculationAbort(CX, &CX->internalLinkSpeculation);
                 }
@@ -557,24 +623,26 @@ INTERNAL_LINK
                  * parameter to the client.
                  */
                 attr->add(attr, linkTitle, NULL);
-                ACTION(CUSTOM = attr;)
+                token->custom = attr;
                 if (isCompleteLink) {
-                    MW_SETTYPE(MEDIA_LINK);
+                    token->setType(token, MEDIA_LINK);
                     speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
                 } else {
                     onMediaLinkOpen(CX);
-                    MW_SETTYPE(BEGIN_MEDIA_LINK);
+                    token->setType(token, BEGIN_MEDIA_LINK);
                 }
             } else if (CX->isLegalTitle(CX, linkTitle)) {
+                MWLinkCollectionAdd(CX->linkCollection, MWLT_INTERNAL, linkTitle, token);
                 speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
-                ACTION(CUSTOM = linkTitle;)
+                token->custom = linkTitle;
                 if (isCompleteLink) {
                     speculationAbort(CX, &CX->internalLinkSpeculation);
                 } else {
                     onInternalLinkOpen(CX);
-                    MW_SETTYPE(BEGIN_INTERNAL_LINK);
+                    token->setType(token, BEGIN_INTERNAL_LINK);
                 }
             }
+            EMITNEW(token);
         } else {
             if (!alreadyInInternalLink) {
                 speculationAbort(CX, &CX->internalLinkSpeculation);
@@ -582,8 +650,8 @@ INTERNAL_LINK
             speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
             REWIND(mark);
             MW_SETTYPE(SPECIAL);
+            MW_EMIT();
         }
-        MW_EMIT();
         if (alreadyInInternalLink) {
             SPECULATION_FAILURE(CX, &CX->internalLinkSpeculation);
         } else {
@@ -606,25 +674,34 @@ INTERNAL_LINK_FAIL_CONDITION: {CX->internalLinkSpeculation.active}?=>
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr]:
-    //((MEDIA_LINK_ATTRIBUTE[NULL])=> MEDIA_LINK_ATTRIBUTE[attr])*
+MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr, pANTLR3_STRING *link]:
+    ((MEDIA_LINK_ATTRIBUTE[NULL]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[NULL, NULL])=>
+     (MEDIA_LINK_ATTRIBUTE[attr]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[attr, link])
+     SKIP_SPACE)
+     (
+      ('|' MEDIA_LINK_ATTRIBUTE[NULL]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[NULL, NULL])=>
+      '|' (MEDIA_LINK_ATTRIBUTE[attr]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[attr, link])
+     )*
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTE[pANTLR3_VECTOR *attr]:
+MEDIA_LINK_ATTRIBUTE[pANTLR3_VECTOR *attrs]
+@init{
+   ANTLR3_MARKER start;
+}:
+    {
+        start = GETCHARINDEX();
+    }
     ( 'thumbnail'
      |'left'
      |'right'
      |'none'
-     | (DECIMAL_DIGIT* 'x')? DECIMAL_DIGIT+ 'px'
      |'center'
      |'frame'
      |'framed'
      |'frameless'
      |'upright'
      |'border'
-     |'alt'
-     |'link'
      |'baseline'
      |'sub'
      |'super'
@@ -632,25 +709,73 @@ MEDIA_LINK_ATTRIBUTE[pANTLR3_VECTOR *attr]:
      |'text-top'
      |'middle'
      |'bottom')
+    {
+        MWKEYVALUE kv = { SUBSTR1(start), NULL };
+        addAttribute(CX, attrs, kv);
+    }
     ;
 
-END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled || !CX->mediaLinkCloseDisabled}?=> ']]'
+fragment
+MEDIA_LINK_ATTRIBUTE_WITH_VALUE[pANTLR3_VECTOR *attrs, pANTLR3_STRING *link]
+@init{
+    ANTLR3_MARKER startKey;
+    ANTLR3_MARKER endKey;
+    ANTLR3_MARKER startVal;
+    bool hasHeight = false;
+    bool hasWidth  = false;
+    bool isLink    = false;
+    ANTLR3_MARKER startVal1;
+    ANTLR3_MARKER endVal1;
+    ANTLR3_MARKER startVal2;
+    ANTLR3_MARKER endVal2;
+}:
     {
-        /*
-         * This token will be matched with BEGIN_INTERNAL_LINK, if
-         * opened.  Otherwise it will be matched with the innermost
-         * BEGIN_MEDIA_LINK.  If neither are opened, this token will
-         * not be active.
-         */
-        if (CX->internalLinkSpeculation.active) {
-            speculationSuccess(CX, &CX->internalLinkSpeculation);
-            onInternalLinkClose(CX);
-        } else {
-            int n = CX->mediaLinkOpenNestingLevel;
-            speculationSuccess(CX, &CX->mediaLinkSpeculation[n - 1]);
-            onMediaLinkClose(CX);
-            MW_SETTYPE(END_MEDIA_LINK);
-        } 
+        startKey = GETCHARINDEX();
+    }
+    ((( 'al'  { endKey = GETCHARINDEX(); } 't=' 
+      | 'lin' { endKey = GETCHARINDEX(); isLink = true; } 'k=') 
+         { startVal = GETCHARINDEX(); } (MEDIA_LINK_ATTRIBUTE_VALUE_CHAR | {PEEK(1, ']') && !PEEK(2, ']')}?=> ']')*)
+      {
+          pANTLR3_STRING val = SUBSTR1(startVal);
+          MWKEYVALUE kv = { SUBSTR2(startKey, endKey), val };
+          addAttribute(CX, attrs, kv);
+          if (isLink) {
+              *link = val;
+          }
+      }
+    )
+    | (({startVal1 = GETCHARINDEX(); } (({hasWidth=true; endVal1 = GETCHARINDEX();} DECIMAL_DIGIT)* 'x' {hasHeight=true;})?
+        {startVal2 = GETCHARINDEX(); }  ({ endVal2 = GETCHARINDEX(); } DECIMAL_DIGIT)+ 'px')
+       {
+           pANTLR3_STRING width = CX->stringFactory->newStr8(CX->stringFactory, "width");
+           if (hasHeight) {
+               pANTLR3_STRING height = CX->stringFactory->newStr8(CX->stringFactory, "height");
+               MWKEYVALUE h = { height, SUBSTR2(startVal2, endVal2) };
+               if (hasWidth) {
+                   MWKEYVALUE w = { width,  SUBSTR2(startVal1, endVal1) };
+                   addAttribute(CX, attrs, w);
+               }
+               addAttribute(CX, attrs, h);
+           } else {
+               MWKEYVALUE w = { width, SUBSTR2(startVal2, endVal2) };
+               addAttribute(CX, attrs, w);
+           }
+       }
+      )
+    ;
+
+END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled}?=> ']]'
+    {
+        speculationSuccess(CX, &CX->internalLinkSpeculation);
+        onInternalLinkClose(CX);
+    }
+    ;
+
+END_MEDIA_LINK: {!CX->mediaLinkCloseDisabled}?=> ']]'
+    {
+        int n = CX->mediaLinkOpenNestingLevel;
+        speculationSuccess(CX, &CX->mediaLinkSpeculation[n - 1]);
+        onMediaLinkClose(CX);
     }
     ;
 
@@ -670,13 +795,17 @@ EXTERNAL_LINK
     | {success = false;}) )
     {
         if (success) {
-            ACTION(CUSTOM = SUBSTR2(urlStart, urlEnd);)
+            pANTLR3_STRING url = SUBSTR2(urlStart, urlEnd);
+            pANTLR3_COMMON_TOKEN token = NEW_TOK(EXTERNAL_LINK, url);
+            token->custom = url;
+            MWLinkCollectionAdd(CX->linkCollection, MWLT_EXTERNAL, url, token);
             if (!complete) {
-                MW_SETTYPE(BEGIN_EXTERNAL_LINK);
+                token->setType(token, BEGIN_EXTERNAL_LINK);
                 onExternalLinkOpen(CX);
             } else {
                 speculationAbort(CX, &CX->externalLinkSpeculation);
             }
+            EMITNEW(token);
         } else {
             speculationAbort(CX, &CX->externalLinkSpeculation);
             MW_SETTYPE(SPECIAL);
@@ -733,6 +862,20 @@ INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
     (~(NEWLINE_CHAR|SPACE_TAB_CHAR|'|'|'['|']'|NON_PRINTABLE_CHAR))+
     {
        *linkTitle = SUBSTR1(start);
+    }
+    ;
+
+fragment
+INTERNAL_LINK_ANCHOR[pANTLR3_STRING *linkAnchor]
+@init{
+    ANTLR3_MARKER start;
+}:
+    {
+       start = GETCHARINDEX();
+    }
+    (~(NEWLINE_CHAR|'|'|'['|']'|NON_PRINTABLE_CHAR))*
+    {
+       *linkAnchor = SUBSTR1(start);
     }
     ;
 
@@ -795,21 +938,41 @@ APOS: '\''
 NON_PRINTABLE: (NON_PRINTABLE_CHAR)+ {MW_HIDE();}
    ;
 
-fragment
-NOWIKI_BODY[ANTLR3_MARKER *nowikiEnd]:
-    (((SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki' SKIP_SPACE '>'|EOF))=>
-      (SPACE_CHAR|NEWLINE_CHAR)* ('</nowiki' SKIP_SPACE '>'|EOF)   )
-    |
-    ({ *nowikiEnd = GETCHARINDEX(); } . ) NOWIKI_BODY[nowikiEnd]
-    ;
-
-HTML_OPEN_TAG:
+HTML_OPEN_TAG
+@init{
+    ANTLR3_MARKER bodyStart;
+    ANTLR3_MARKER bodyEnd;
+    CX->inHtmlPre = false;
+    CX->inNowiki = false;
+    pANTLR3_VECTOR attrs = NULL;
+}:
     '<' (
-           (HTML_OPEN_TAG_INTERNAL)=> HTML_OPEN_TAG_INTERNAL
-        |  ('nowiki' (SPACE_TAB ATTRIBUTE_LIST_HTML[NULL]? )? '>')=> NOWIKI
+         ((HTML_OPEN_TAG_INTERNAL[NULL])=>
+           (HTML_OPEN_TAG_INTERNAL[&attrs]
+            {bodyEnd = bodyStart = GETCHARINDEX(); } 
+            ({!CX->inEmptyHtmlTag && (CX->inHtmlPre || CX->inNowiki)}?=>
+             ( ((SPACE_CHAR|NEWLINE_CHAR) => (SPACE_CHAR|NEWLINE_CHAR))*
+               {bodyEnd = bodyStart = GETCHARINDEX(); } 
+                 ( {CX->inNowiki}?=>  NOWIKI_BODY[&bodyEnd]|{CX->inHtmlPre}?=> PRE_BODY[&bodyEnd] ) )
+             )?
+            )
+         )
         |  TAG_EXTENSION
         |  { MW_SETTYPE(SPECIAL); }
         )
+        {
+            if (CX->inNowiki) {
+                CUSTOM = attrs;
+                SETTEXT(SUBSTR2(bodyStart, bodyEnd));
+                MW_SETTYPE(NOWIKI);
+            } else if (CX->inHtmlPre) {
+                CUSTOM = attrs;
+                SETTEXT(SUBSTR2(bodyStart, bodyEnd));
+                MW_SETTYPE(HTML_PRE);
+                MW_EMIT();
+                SPECULATION_FAILURE(CX, &CX->indentSpeculation);
+            }
+        }
     ;
 
 fragment
@@ -820,10 +983,10 @@ TAG_EXTENSION
     ANTLR3_MARKER nameEnd;
     ANTLR3_MARKER bodyStart;
     ANTLR3_MARKER bodyEnd;
-    pANTLR3_VECTOR attr = NULL;
     bool success = true;
     bool empty = false;
     pANTLR3_STRING name;
+    pANTLR3_VECTOR attr = NULL;
     pANTLR3_STRING body = NULL;
     MWPARSER_TAGEXT *tagExt;
 }:
@@ -852,8 +1015,9 @@ TAG_EXTENSION
                 body = SUBSTR2(bodyStart, bodyEnd);
             }
             /*
-             * Pack the body into the vector.
+             * Pack the name and body into the vector.
              */
+            attr->add(attr, tagExt->name, NULL);
             attr->add(attr, body, NULL);
             CUSTOM = attr;
         } else {
@@ -882,10 +1046,10 @@ TAG_EXTENSION_BODY[pANTLR3_STRING name, ANTLR3_MARKER *bodyEnd]
     ;
 
 fragment
-HTML_OPEN_TAG_INTERNAL
+HTML_OPEN_TAG_INTERNAL[pANTLR3_VECTOR *attrs]
 @init{
-    pANTLR3_VECTOR attrs = NULL;
     bool isBlock = false;
+    bool isHeading = false;
 }:
     (
       ( 
@@ -899,14 +1063,16 @@ HTML_OPEN_TAG_INTERNAL
          ({!CX->htmlTdOpenDisabled}?=>         T D                 { MW_SETTYPE(HTML_TD_OPEN);         onHtmlTdOpen(CX); })         |
          ({!CX->htmlDivOpenDisabled}?=>        D I V               { MW_SETTYPE(HTML_DIV_OPEN);        onHtmlDivOpen(CX); })        |
          ({!CX->htmlPOpenDisabled}?=>          P                   { MW_SETTYPE(HTML_P_OPEN);          onHtmlPOpen(CX); })          |
+         ({!CX->htmlPreDisabled}?=>            P R E               { MW_SETTYPE(HTML_PRE); CX->inHtmlPre = true; onHtmlPre(CX); })  |
          ({!CX->htmlCenterOpenDisabled}?=>     C E N T E R         { MW_SETTYPE(HTML_CENTER_OPEN);     onHtmlCenterOpen(CX); })     |
          ({!CX->htmlBlockquoteOpenDisabled}?=> B L O C K Q U O T E { MW_SETTYPE(HTML_BLOCKQUOTE_OPEN); onHtmlBlockquoteOpen(CX); }) |
+        ({isHeading = true;}
          ({!CX->htmlH1OpenDisabled}?=>         H '1'               { MW_SETTYPE(HTML_H1_OPEN);         onHtmlH1Open(CX); })         |
          ({!CX->htmlH2OpenDisabled}?=>         H '2'               { MW_SETTYPE(HTML_H2_OPEN);         onHtmlH2Open(CX); })         |
          ({!CX->htmlH3OpenDisabled}?=>         H '3'               { MW_SETTYPE(HTML_H3_OPEN);         onHtmlH3Open(CX); })         |
          ({!CX->htmlH4OpenDisabled}?=>         H '4'               { MW_SETTYPE(HTML_H4_OPEN);         onHtmlH4Open(CX); })         |
          ({!CX->htmlH5OpenDisabled}?=>         H '5'               { MW_SETTYPE(HTML_H5_OPEN);         onHtmlH5Open(CX); })         |
-         ({!CX->htmlH6OpenDisabled}?=>         H '6'               { MW_SETTYPE(HTML_H6_OPEN);         onHtmlH6Open(CX); })         |
+         ({!CX->htmlH6OpenDisabled}?=>         H '6'               { MW_SETTYPE(HTML_H6_OPEN);         onHtmlH6Open(CX); }))        |
          ({!CX->htmlUlOpenDisabled}?=>         U L                 { MW_SETTYPE(HTML_UL_OPEN);         onHtmlUlOpen(CX); })         |
          ({!CX->htmlOlOpenDisabled}?=>         O L                 { MW_SETTYPE(HTML_OL_OPEN);         onHtmlOlOpen(CX); })         |
          ({!CX->htmlDlOpenDisabled}?=>         D L                 { MW_SETTYPE(HTML_DL_OPEN);         onHtmlDlOpen(CX); })         |
@@ -933,29 +1099,47 @@ HTML_OPEN_TAG_INTERNAL
          ({!CX->htmlTtOpenDisabled}?=>         T T                 { MW_SETTYPE(HTML_TT_OPEN);         onHtmlTtOpen(CX); })         |
          ({!CX->htmlVarOpenDisabled}?=>        V A R               { MW_SETTYPE(HTML_VAR_OPEN);        onHtmlVarOpen(CX); })        |
          ({!CX->htmlAbbrOpenDisabled}?=>       A B B R             { MW_SETTYPE(HTML_ABBR_OPEN);       onHtmlAbbrOpen(CX); })       |
-         ({!CX->htmlBrDisabled}?=>             B R                 { MW_SETTYPE(HTML_BR);              onHtmlBr(CX); })
+         ({!CX->htmlBrDisabled}?=>             B R                 { MW_SETTYPE(HTML_BR);              onHtmlBr(CX); })             |
+         ({!CX->htmlHrDisabled}?=>             H R                 { MW_SETTYPE(HORIZONTAL_RULE);      onHtmlHr(CX); })             |
+         ({!CX->htmlImgDisabled}?=>            I M G               { MW_SETTYPE(HTML_IMG);             onHtmlImg(CX); })            |
+         (                                     N O W I K I         { MW_SETTYPE(NOWIKI); CX->inNowiki = true;})
         )
         (SPACE_TAB 
-           ATTRIBUTE_LIST_HTML[&attrs]?
+           ATTRIBUTE_LIST_HTML[attrs]?
         )?
         (  '>'
          | ({PEEK(1, '/') && PEEK(2, '>')}?=> {CX->inEmptyHtmlTag = true; CX->emptyHtmlTagType = $type;})
         )
     )
     {
-        CUSTOM = attrs;
-        MW_EMIT();
-        if (isBlock) {
-            SPECULATION_FAILURE(CX, &CX->indentSpeculation);
+        if (CX->inEmptyHtmlTag || (!CX->inNowiki && !CX->inHtmlPre)) {
+            if (!isHeading) {
+                CUSTOM = *attrs;
+                MW_EMIT();
+            } else {
+                CX->headingBeginToken = NEW_TOK($type, $text);
+                CX->headingTextBegin = GETCHARINDEX();
+                CX->headingBeginToken->custom = *attrs;
+                EMITNEW(CX->headingBeginToken);
+            }
+            if (isBlock) {
+                SPECULATION_FAILURE(CX, &CX->indentSpeculation);
+            }
         }
     }
     ;
 
-HTML_CLOSE_TAG:
+HTML_CLOSE_TAG
+@init{
+    ANTLR3_MARKER endHeadingText;
+}:
+    {
+        endHeadingText = GETCHARINDEX();
+    }
     (
       '</'
       (
-        (HTML_CLOSE_TAG_INTERNAL)=> HTML_CLOSE_TAG_INTERNAL
+        (HTML_CLOSE_TAG_INTERNAL[0])=> HTML_CLOSE_TAG_INTERNAL[endHeadingText]
         | { MW_SETTYPE(SPECIAL); }
       )
     )
@@ -977,9 +1161,10 @@ HTML_CLOSE_TAG:
 
 
 fragment
-HTML_CLOSE_TAG_INTERNAL
-@init {
+HTML_CLOSE_TAG_INTERNAL[ANTLR3_MARKER endHeadingText]
+@init{
     bool isBlock = false;
+    bool isHeading = false;
 }:
     (
       (
@@ -995,12 +1180,13 @@ HTML_CLOSE_TAG_INTERNAL
          ({!CX->htmlPCloseDisabled}?=>          P                   { MW_SETTYPE(HTML_P_CLOSE);          onHtmlPClose(CX); })          |
          ({!CX->htmlCenterCloseDisabled}?=>     C E N T E R         { MW_SETTYPE(HTML_CENTER_CLOSE);     onHtmlCenterClose(CX); })     |
          ({!CX->htmlBlockquoteCloseDisabled}?=> B L O C K Q U O T E { MW_SETTYPE(HTML_BLOCKQUOTE_CLOSE); onHtmlBlockquoteClose(CX); }) |
+        ({isHeading = true;}
          ({!CX->htmlH1CloseDisabled}?=>         H '1'               { MW_SETTYPE(HTML_H1_CLOSE);         onHtmlH1Close(CX); })         |
          ({!CX->htmlH2CloseDisabled}?=>         H '2'               { MW_SETTYPE(HTML_H2_CLOSE);         onHtmlH2Close(CX); })         |
          ({!CX->htmlH3CloseDisabled}?=>         H '3'               { MW_SETTYPE(HTML_H3_CLOSE);         onHtmlH3Close(CX); })         |
          ({!CX->htmlH4CloseDisabled}?=>         H '4'               { MW_SETTYPE(HTML_H4_CLOSE);         onHtmlH4Close(CX); })         |
          ({!CX->htmlH5CloseDisabled}?=>         H '5'               { MW_SETTYPE(HTML_H5_CLOSE);         onHtmlH5Close(CX); })         |
-         ({!CX->htmlH6CloseDisabled}?=>         H '6'               { MW_SETTYPE(HTML_H6_CLOSE);         onHtmlH6Close(CX); })         |
+         ({!CX->htmlH6CloseDisabled}?=>         H '6'               { MW_SETTYPE(HTML_H6_CLOSE);         onHtmlH6Close(CX); }))        |
          ({!CX->htmlUlCloseDisabled}?=>         U L                 { MW_SETTYPE(HTML_UL_CLOSE);         onHtmlUlClose(CX); })         |
          ({!CX->htmlOlCloseDisabled}?=>         O L                 { MW_SETTYPE(HTML_OL_CLOSE);         onHtmlOlClose(CX); })         |
          ({!CX->htmlDlCloseDisabled}?=>         D L                 { MW_SETTYPE(HTML_DL_CLOSE);         onHtmlDlClose(CX); })         |
@@ -1030,6 +1216,9 @@ HTML_CLOSE_TAG_INTERNAL
         ) SPACE_TAB_CHAR* '>'
      ) {
         MW_EMIT();
+        if (isHeading) {
+            CX->headingBeginToken->setText(CX->headingBeginToken, SUBSTR2(CX->headingTextBegin, endHeadingText));
+        }
         if (isBlock) {
             SPECULATION_FAILURE(CX, &CX->indentSpeculation);
         }
@@ -1231,6 +1420,7 @@ fragment NON_WHITESPACE_OR_GT_OR_SLASH_CHAR:   ~(SPACE_TAB_CHAR | NEWLINE_CHAR |
 fragment NON_WHITESPACE_OR_BAR_OR_OPEN_BRACKET_CHAR: ~(SPACE_TAB_CHAR | NEWLINE_CHAR | '|' | '[' |'!'|
                               '-'|
                               '}');
+fragment MEDIA_LINK_ATTRIBUTE_VALUE_CHAR: ~(NON_PRINTABLE_CHAR|'|'|']');
 fragment SKIP_SPACE:          ((SPACE_TAB_CHAR)=> SPACE_TAB_CHAR)*;
 fragment LETTER:              UCASE_LETTER | LCASE_LETTER;
 fragment HTML_ENTITY_CHARS:   HTML_ENTITY_CHAR+;

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 MWPARSER_TAGEXT *
 MWTagextCopy(const MWPARSER_TAGEXT *tagExt)
 {

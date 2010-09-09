@@ -93,7 +93,7 @@ typedef struct MWLISTENER_struct
     void (*endTableCell)(struct MWLISTENER_struct * listener);
     void (*beginTableBody)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attributes);
     void (*endTableBody)(struct MWLISTENER_struct * listener);
-    void (*beginHeading)(struct MWLISTENER_struct * listener, int level, pANTLR3_VECTOR attributes);
+    void (*beginHeading)(struct MWLISTENER_struct * listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attributes);
     void (*endHeading)(struct MWLISTENER_struct * listener);
     void (*beginInternalLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkTitle);
     void (*endInternalLink)(struct MWLISTENER_struct * listener);
@@ -107,7 +107,7 @@ typedef struct MWLISTENER_struct
     void (*onTagExtension)(struct MWLISTENER_struct * listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
     void (*beginTableOfContents)(struct MWLISTENER_struct * listener);
     void (*endTableOfContents)(struct MWLISTENER_struct * listener);
-    void (*beginTableOfContentsItem)(struct MWLISTENER_struct * listener, int level);
+    void (*beginTableOfContentsItem)(struct MWLISTENER_struct * listener, int level, pANTLR3_STRING anchor);
     void (*endTableOfContentsItem)(struct MWLISTENER_struct * listener);
     void (*beginHtmlDiv)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*endHtmlDiv)(struct MWLISTENER_struct * listener);
@@ -147,6 +147,7 @@ typedef struct MWLISTENER_struct
     void (*endHtmlVar)(struct MWLISTENER_struct * listener);
     void (*beginHtmlAbbr)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*endHtmlAbbr)(struct MWLISTENER_struct * listener);
+    void (*onHtmlPre)(struct MWLISTENER_struct * listener, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr);
 }
     MWLISTENER;
 

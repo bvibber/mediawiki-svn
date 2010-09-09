@@ -34,7 +34,7 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-check_PROGRAMS = testtext$(EXEEXT)
+check_PROGRAMS = testtext$(EXEEXT) bench$(EXEEXT)
 subdir = tests
 DIST_COMMON = $(dist_data_DATA) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/atlocal.in
@@ -49,9 +49,13 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES = atlocal
 CONFIG_CLEAN_VPATH_FILES =
+am_bench_OBJECTS = bench.$(OBJEXT)
+bench_OBJECTS = $(am_bench_OBJECTS)
+am__DEPENDENCIES_1 =
+bench_DEPENDENCIES = $(top_builddir)/.libs/libmwparser.a \
+	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_testtext_OBJECTS = testtext.$(OBJEXT)
 testtext_OBJECTS = $(am_testtext_OBJECTS)
-am__DEPENDENCIES_1 =
 testtext_DEPENDENCIES = $(top_builddir)/.libs/libmwparser.a \
 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
@@ -67,8 +71,8 @@ CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
 	$(LDFLAGS) -o $@
-SOURCES = $(testtext_SOURCES)
-DIST_SOURCES = $(testtext_SOURCES)
+SOURCES = $(bench_SOURCES) $(testtext_SOURCES)
+DIST_SOURCES = $(bench_SOURCES) $(testtext_SOURCES)
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -222,6 +226,8 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+bench_SOURCES = src/bench.c
+bench_LDADD = $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(GLIB_LIBS)
 testtext_SOURCES = src/testtext.c
 testtext_LDADD = $(top_builddir)/.libs/libmwparser.a $(ANTLR3C_LIBS) $(GLIB_LIBS)
 test_data_dirs = format nowiki html table hr list link
@@ -279,6 +285,9 @@ clean-checkPROGRAMS:
 	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
 	echo " rm -f" $$list; \
 	rm -f $$list
+bench$(EXEEXT): $(bench_OBJECTS) $(bench_DEPENDENCIES) 
+	@rm -f bench$(EXEEXT)
+	$(LINK) $(bench_OBJECTS) $(bench_LDADD) $(LIBS)
 testtext$(EXEEXT): $(testtext_OBJECTS) $(testtext_DEPENDENCIES) 
 	@rm -f testtext$(EXEEXT)
 	$(LINK) $(testtext_OBJECTS) $(testtext_LDADD) $(LIBS)
@@ -289,6 +298,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bench.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testtext.Po@am__quote@
 
 .c.o:
@@ -311,6 +321,20 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
+
+bench.o: src/bench.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT bench.o -MD -MP -MF $(DEPDIR)/bench.Tpo -c -o bench.o `test -f 'src/bench.c' || echo '$(srcdir)/'`src/bench.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/bench.Tpo $(DEPDIR)/bench.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/bench.c' object='bench.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o bench.o `test -f 'src/bench.c' || echo '$(srcdir)/'`src/bench.c
+
+bench.obj: src/bench.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT bench.obj -MD -MP -MF $(DEPDIR)/bench.Tpo -c -o bench.obj `if test -f 'src/bench.c'; then $(CYGPATH_W) 'src/bench.c'; else $(CYGPATH_W) '$(srcdir)/src/bench.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/bench.Tpo $(DEPDIR)/bench.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/bench.c' object='bench.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o bench.obj `if test -f 'src/bench.c'; then $(CYGPATH_W) 'src/bench.c'; else $(CYGPATH_W) '$(srcdir)/src/bench.c'; fi`
 
 testtext.o: src/testtext.c
 @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT testtext.o -MD -MP -MF $(DEPDIR)/testtext.Tpo -c -o testtext.o `test -f 'src/testtext.c' || echo '$(srcdir)/'`src/testtext.c

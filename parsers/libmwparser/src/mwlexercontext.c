@@ -94,6 +94,7 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
     context->headingSpeculation.contextBackup.blockContextStack      = NULL;
     context->mediaLinkSpeculation[0].contextBackup.blockContextStack = NULL;
     context->mediaLinkSpeculation[1].contextBackup.blockContextStack = NULL;
+    context->linkCollection               = NULL;
 
     context->conversionState = (iconv_t)-1;
 
@@ -189,6 +190,13 @@ MWLexerContextReset(MWLEXERCONTEXT *context)
     if (context->asciiStringFactory == NULL) {
         return false;
     }
+    if (context->linkCollection != NULL) {
+        MWLinkCollectionFree(context->linkCollection);
+    }
+    context->linkCollection = MWLinkCollectionNew();
+    if (context->linkCollection == NULL) {
+        return false;
+    }
 
     return true;
 }
@@ -246,6 +254,9 @@ MWLexerContextFree(void *lexerContext)
     if (context->mediaLinkTitle != NULL) {
         g_regex_unref(context->mediaLinkTitle);
     }
+    if (context->linkCollection != NULL) {
+        MWLinkCollectionFree(context->linkCollection);
+    }
 
     pmwWikitextLexer lxr = context->lexer->ctx;
     lxr->free(lxr);
@@ -257,14 +268,14 @@ static bool
 isLegalTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
 {
     pANTLR3_STRING utf8 = linkTitle->toUTF8(linkTitle);
-    return g_regex_match(context->legalTitleRegexp, utf8->chars, 0, NULL);
+    return g_regex_match(context->legalTitleRegexp, (gchar*)utf8->chars, 0, NULL);
 }
 
 static bool
 isMediaLinkTitle(MWLEXERCONTEXT *context, pANTLR3_STRING linkTitle)
 {
     pANTLR3_STRING utf8 = linkTitle->toUTF8(linkTitle);
-    return g_regex_match(context->mediaLinkTitle, utf8->chars, 0, NULL);
+    return g_regex_match(context->mediaLinkTitle, (gchar*)utf8->chars, 0, NULL);
 }
 
 /*

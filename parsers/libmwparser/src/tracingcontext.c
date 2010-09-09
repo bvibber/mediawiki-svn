@@ -59,7 +59,7 @@ static void TCBeginDefinitionItem(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndDefinitionItem(MWLISTENER *listener);
 static void TCBeginTableOfContents(MWLISTENER *listener);
 static void TCEndTableOfContents(MWLISTENER *listener);
-static void TCBeginTableOfContentsItem(MWLISTENER *listener, int level);
+static void TCBeginTableOfContentsItem(MWLISTENER *listener, int level, pANTLR3_STRING anchor);
 static void TCEndTableOfContentsItem(MWLISTENER *listener);
 static void TCBeginTable(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndTable(MWLISTENER *listener);
@@ -73,7 +73,7 @@ static void TCBeginTableCaption(MWLISTENER *listener, pANTLR3_VECTOR attributes)
 static void TCEndTableCaption(MWLISTENER *listener);
 static void TCBeginTableBody(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndTableBody(MWLISTENER *listener);
-static void TCBeginHeading(MWLISTENER *listener, int level, pANTLR3_VECTOR attributes);
+static void TCBeginHeading(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attributes);
 static void TCEndHeading(MWLISTENER *listener);
 static void TCBeginHtmlDiv(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlDiv(MWLISTENER *listener);
@@ -123,6 +123,7 @@ static void TCBeginHtmlVar(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlVar(MWLISTENER *listener);
 static void TCBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlAbbr(MWLISTENER *listener);
+static void TCOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr);
 
 static void * TCNew(void);
 static void TCFree(void *tcontext);
@@ -250,7 +251,7 @@ const MWLISTENER mwParserTracingListener = {
     .endHtmlVar               = TCEndHtmlVar,
     .beginHtmlAbbr            = TCBeginHtmlAbbr,
     .endHtmlAbbr              = TCEndHtmlAbbr,
-
+    .onHtmlPre                = TCOnHtmlPre,
 };
 
 
@@ -397,7 +398,7 @@ TCEndPre(MWLISTENER *listener)
 }
 
 static void
-TCBeginHeading(MWLISTENER *listener, int level, pANTLR3_VECTOR attr)
+TCBeginHeading(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr)
 {
     TCPrintIndent(listener);
     printf("BEGIN HEADING[%d]", level);
@@ -641,7 +642,7 @@ TCEndTableOfContents(MWLISTENER *listener)
 }
 
 static void
-TCBeginTableOfContentsItem(MWLISTENER *listener, int level)
+TCBeginTableOfContentsItem(MWLISTENER *listener, int level, pANTLR3_STRING anchor)
 {
     TCPrintIndent(listener);
     printf("BEGIN TABLE OF CONTENTS ITEM[%d]\n", level);
@@ -663,18 +664,22 @@ TCPrintAttributes(pANTLR3_VECTOR attributes)
         int i;
         for (i = 0; i < attributes->count; i++) {
             MWKEYVALUE *p = attributes->get(attributes, i);
-            printf(" %s=\"", p->key->chars);
-            int j;
-            for (j = 0; j < p->value->len; j++) {
-                ANTLR3_UINT32 c = p->value->charAt(p->value, j);
-                if (c == '"') {
-                    putchar('\\');
-                    putchar('"');
-                } else {
-                    putwchar(c);
+            if (p->value != NULL) {
+                printf(" %s=\"", p->key->chars);
+                int j;
+                for (j = 0; j < p->value->len; j++) {
+                    ANTLR3_UINT32 c = p->value->charAt(p->value, j);
+                    if (c == '"') {
+                        putchar('\\');
+                        putchar('"');
+                    } else {
+                        putwchar(c);
+                    }
                 }
+                putchar('"');
+            } else {
+                printf(" %s", p->key->chars);
             }
-            putchar('"');
         }
     }
 }
@@ -1153,6 +1158,17 @@ TCEndHtmlAbbr(MWLISTENER *listener)
     TCDecreaseIndent(listener);
     TCPrintIndent(listener);
     printf("END ABBR\n");
+}
+
+static void
+TCOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING nowiki, pANTLR3_VECTOR attr)
+{
+    TCPrintIndent(listener);
+    printf("HTML PRE[%s]", S(nowiki));
+    TCPrintAttributes(attr);
+    printf("\n");
+    TCPrintIndent(listener);
+    printf("END HTML PRE\n");
 }
 
 static void

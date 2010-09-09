@@ -6,6 +6,7 @@
 #include <antlr3defs.h>
 #include <iconv.h>
 #include <mwtagext.h>
+#include <mwlinkcollection.h>
 
 typedef struct MWLEXERCONTEXT_BACKUP_struct {
 #include "mwlexerpredicatedefs.inc"
@@ -17,6 +18,7 @@ typedef struct MWLEXERCONTEXT_BACKUP_struct {
 typedef struct MWLEXERSPECULATION_struct {
     bool active;
     MWLEXERCONTEXT_BACKUP contextBackup;
+    MWLINKCOLLECTION_MARK lcMark;
     ANTLR3_MARKER istreamMark;
     ANTLR3_MARKER failurePoint;
     ANTLR3_TOKEN_STREAM_MARKER tstreamMark;
@@ -38,6 +40,8 @@ typedef struct MWLEXERCONTEXT_struct
      */
     pANTLR3_STACK blockContextStack;
     int headingLevel;
+    ANTLR3_MARKER headingTextBegin;
+    pANTLR3_COMMON_TOKEN headingBeginToken;
     
     GRegex * legalTitleRegexp;
     GRegex * mediaLinkTitle;
@@ -79,6 +83,7 @@ typedef struct MWLEXERCONTEXT_struct
     pANTLR3_VECTOR_FACTORY vectorFactory;
     pANTLR3_STRING_FACTORY stringFactory;
     pANTLR3_STRING_FACTORY asciiStringFactory;
+    MWLINKCOLLECTION *linkCollection;
     bool (*isLegalTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
     bool (*isMediaLinkTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
     bool (*setLegalTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const char *perlRegexp);

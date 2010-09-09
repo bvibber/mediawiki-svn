@@ -5,10 +5,6 @@ BEGIN ARTICLE
     BEGIN BULLET LIST
         BEGIN BULLET LIST ITEM
             WORD[list]
-        END BULLET LIST ITEM
-    END BULLET LIST
-    BEGIN BULLET LIST
-        BEGIN BULLET LIST ITEM
             BEGIN BULLET LIST
                 BEGIN BULLET LIST ITEM
                     WORD[list]
@@ -16,25 +12,11 @@ BEGIN ARTICLE
                     WORD[item]
                 END BULLET LIST ITEM
             END BULLET LIST
-        END BULLET LIST ITEM
-    END BULLET LIST
-    BEGIN BULLET LIST
-        BEGIN BULLET LIST ITEM
             WORD[bar]
-        END BULLET LIST ITEM
-    END BULLET LIST
-    BEGIN BULLET LIST
-        BEGIN BULLET LIST ITEM
             BEGIN ENUMERATION LIST
                 BEGIN ENUMERATION LIST ITEM
                     WORD[baz]
                 END ENUMERATION LIST ITEM
-            END ENUMERATION LIST
-        END BULLET LIST ITEM
-    END BULLET LIST
-    BEGIN BULLET LIST
-        BEGIN BULLET LIST ITEM
-            BEGIN ENUMERATION LIST
                 BEGIN ENUMERATION LIST ITEM
                     WORD[quiz]
                 END ENUMERATION LIST ITEM

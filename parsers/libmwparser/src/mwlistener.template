@@ -51,7 +51,7 @@ static void PREFIX`BeginDefinitionItem'(MWLISTENER *listener, pANTLR3_VECTOR att
 static void PREFIX`EndDefinitionItem'(MWLISTENER *listener);
 static void PREFIX`BeginTableOfContents'(MWLISTENER *listener);
 static void PREFIX`EndTableOfContents'(MWLISTENER *listener);
-static void PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level);
+static void PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level, pANTLR3_STRING anchor);
 static void PREFIX`EndTableOfContentsItem'(MWLISTENER *listener);
 static void PREFIX`BeginTable'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndTable'(MWLISTENER *listener);
@@ -65,7 +65,7 @@ static void PREFIX`BeginTableCaption'(MWLISTENER *listener, pANTLR3_VECTOR attri
 static void PREFIX`EndTableCaption'(MWLISTENER *listener);
 static void PREFIX`BeginTableBody'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndTableBody'(MWLISTENER *listener);
-static void PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_VECTOR attributes);
+static void PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHeading'(MWLISTENER *listener);
 static void PREFIX`BeginHtmlDiv'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHtmlDiv'(MWLISTENER *listener);
@@ -115,6 +115,7 @@ static void PREFIX`BeginHtmlVar'(MWLISTENER *listener, pANTLR3_VECTOR attributes
 static void PREFIX`EndHtmlVar'(MWLISTENER *listener);
 static void PREFIX`BeginHtmlAbbr'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHtmlAbbr'(MWLISTENER *listener);
+static void PREFIX`OnHtmlPre'(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void * PREFIX`New'(void);
 static void PREFIX`Reset'(void *data);
 static void PREFIX`Free'(void *data);
@@ -240,6 +241,7 @@ const MWLISTENER LISTENER_NAME = {
     .endHtmlVar               = PREFIX`EndHtmlVar',
     .beginHtmlAbbr            = PREFIX`BeginHtmlAbbr',
     .endHtmlAbbr              = PREFIX`EndHtmlAbbr',
+    .onHtmlPre                = PREFIX`OnHtmlPre',
 
 };
 
@@ -481,10 +483,11 @@ PREFIX`EndPre'(MWLISTENER *listener)
  *
  * @param listener
  * @param level
+ * @param anchor Raw text that should be used to produce an anchor id.
  * @param attr
  */
 static void
-PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_VECTOR attr)
+PREFIX`BeginHeading'(MWLISTENER *listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attr)
 {
 }
 
@@ -816,9 +819,10 @@ PREFIX`EndTableOfContents'(MWLISTENER *listener)
  *
  * @param listener
  * @param level
+ * @param anchor Raw text that should be used to produce an anchor id.
  */
 static void
-PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level)
+PREFIX`BeginTableOfContentsItem'(MWLISTENER *listener, int level, pANTLR3_STRING anchor)
 {
 }
 
@@ -1399,3 +1403,15 @@ PREFIX`EndHtmlAbbr'(MWLISTENER *listener)
 {
 }
 
+/**
+ * An instance of html <pre> body </pre>.  The body is unfiltered, the
+ * same as for nowiki.
+ *
+ * @param listener
+ * @param body
+ * @param attr
+ */
+static void
+PREFIX`OnHtmlPre'(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr)
+{
+}

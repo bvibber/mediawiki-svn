@@ -27,8 +27,8 @@
 
 include 'mwlexerpredicatetable.php';
 
-define('PRED_TYPE', 'ANTLR3_UINT8');
-define('PRED_SIZE_BITS', 8);
+define('PRED_TYPE', 'ANTLR3_UINT16');
+define('PRED_SIZE_BITS', 16);
 define('COUNT_TYPE', 'unsigned int');
 
 foreach ($predicates as $pred) {
@@ -48,5 +48,7 @@ echo('#define PRED_SIZE_BITS ' . PRED_SIZE_BITS . "\n");
 echo('#define ' . MAX_NESTING_LEVEL . " 20\n");
 ?>
 int           lookahead;
-bool          inEmptyHtmlTag;
+bool          inNowiki       : 1;
+bool          inHtmlPre      : 1;
+bool          inEmptyHtmlTag : 1;
 ANTLR3_UINT32 emptyHtmlTagType;

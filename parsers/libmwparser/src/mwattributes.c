@@ -131,13 +131,13 @@ lookupElement(const char * const name)
 static gchar *
 antlr3StringToGchar(pANTLR3_STRING s)
 {
-    return s->toUTF8(s)->chars;
+    return (gchar*)s->toUTF8(s)->chars;
 }
 
 static char *
 antlr3StringToChar(pANTLR3_STRING s)
 {
-    return s->toUTF8(s)->chars;
+    return (char*)s->toUTF8(s)->chars;
 }
 
 static bool
