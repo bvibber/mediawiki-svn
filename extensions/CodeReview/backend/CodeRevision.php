@@ -396,6 +396,7 @@ class CodeRevision {
 
 	public function saveComment( $text, $review, $parent = null ) {
 		global $wgUser;
+		$text = trim( $text );
 		if ( !strlen( $text ) ) {
 			return 0;
 		}
