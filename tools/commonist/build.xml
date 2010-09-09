@@ -6,6 +6,7 @@
 	<property environment="env"/>
 	<property file="${user.home}/.build.properties"/>	<!-- these override the project local version -->
 	<property file="build.properties"/>
+	<property file="private.properties"/>
 
 	<!-- scala -->
 	<property name="scala.home"		value="${env.SCALA_HOME}"/>
