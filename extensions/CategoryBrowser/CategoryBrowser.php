@@ -44,6 +44,19 @@ define( 'CB_FILES_MAX_ROWS', 3 );
 /* maximal number of logical operations in SQL filter (condition) */
 define( 'CB_MAX_LOGICAL_OP', 5 );
 
+$wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
+	'name' => 'CategoryBrowser',
+	'author' => 'QuestPC',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryBrowser',
+	'descriptionmsg' => 'categorybrowser-desc',
+);
+$dir = dirname(__FILE__);
+$wgExtensionMessagesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.i18n.php';
+$wgExtensionAliasesFiles['CategoryBrowser'] = $dir . '/CategoryBrowser.alias.php';
+$wgSpecialPages['CategoryBrowser'] = array( 'CategoryBrowserPage' );
+$wgSpecialPageGroups['CategoryBrowser'] = 'pages';
+		
 CB_Setup::init();
 
 class CB_Setup {
@@ -94,7 +107,6 @@ class CB_Setup {
 		$top_dir = explode( '/', self::$ExtDir );
 		$top_dir = array_pop( $top_dir );
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
-		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser.i18n.php';
 
 		// do not forget to autoload all the required classes (for AJAX to work correctly)
 		$wgAutoloadClasses['CB_XML'] =
@@ -113,15 +125,6 @@ class CB_Setup {
 		$wgAutoloadClasses['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowserCtrl.php';
 		$wgAutoloadClasses['CategoryBrowserPage'] = self::$ExtDir . '/CategoryBrowserPage.php';
 
-		$wgExtensionCredits['specialpage'][] = array(
-			'path' => __FILE__,
-			'name' => 'CategoryBrowser',
-			'author' => 'QuestPC',
-			'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryBrowser',
-			'descriptionmsg' => 'categorybrowser-desc',
-		);
-		$wgSpecialPages['CategoryBrowser'] = array( 'CategoryBrowserPage' );
-		$wgSpecialPageGroups['CategoryBrowser'] = 'pages';
 
 		$wgAjaxExportList[] = 'CategoryBrowser::getRootOffsetHtml';
 		$wgAjaxExportList[] = 'CategoryBrowser::getSubOffsetHtml';
