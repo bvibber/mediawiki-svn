@@ -1,0 +1,215 @@
+--- python-memcache-1.40.orig/memcache.py
++++ python-memcache-1.40/memcache.py
+@@ -172,9 +172,10 @@
+         self.servers = [_Host(s, self.debuglog) for s in servers]
+         self._init_buckets()
+ 
+-    def get_stats(self):
++    def get_stats(self, stat_args=''):
+         '''Get statistics from each of the servers.
+ 
++        @param stat_args: string to pass as arguments to the stats command.
+         @return: A list of tuples ( server_identifier, stats_dictionary ).
+             The dictionary contains a number of name/value pairs specifying
+             the name of the status field and the string value associated with
+@@ -184,7 +185,10 @@
+         for s in self.servers:
+             if not s.connect(): continue
+             name = '%s:%s (%s)' % ( s.ip, s.port, s.weight )
+-            s.send_cmd('stats')
++            if not stat_args:
++                s.send_cmd('stats')
++            else:
++                s.send_cmd('stats ' + stat_args)
+             serverData = {}
+             data.append(( name, serverData ))
+             readline = s.readline
+--- python-memcache-1.40.orig/debian/copyright
++++ python-memcache-1.40/debian/copyright
+@@ -0,0 +1,63 @@
++This package was debianized by Christopher Schmidt <crschmidt@metacarta.com> on
++Tue,  1 Jan 2008 23:00:41 -0500.
++
++It was downloaded from http://www.tummy.com/Community/software/python-memcached/
++
++Copyright Holder: Copyright (C) 2003 Danga Interactive 
++
++License:
++ This package is licenced under the Python Software Foundation License 
++ version 2.
++ 
++
++ PYTHON SOFTWARE FOUNDATION LICENSE VERSION 2
++ --------------------------------------------
++
++   1. This LICENSE AGREEMENT is between the Python Software Foundation ("PSF"),
++      and the Individual or Organization ("Licensee") accessing and otherwise
++      using this software ("Python") in source or binary form and its associated
++      documentation.
++
++   2. Subject to the terms and conditions of this License Agreement, PSF hereby
++      grants Licensee a nonexclusive, royalty-free, world-wide license to
++      reproduce, analyze, test, perform and/or display publicly, prepare
++      derivative works, distribute, and otherwise use Python alone or in any
++      derivative version, provided, however, that PSF's License Agreement and
++      PSF's notice of copyright, i.e., "Copyright (c) 2001, 2002, 2003, 2004,
++      2005, 2006 Python Software Foundation; All Rights Reserved" are retained
++      in Python alone or in any derivative version prepared by Licensee.
++
++   3. In the event Licensee prepares a derivative work that is based on or
++      incorporates Python or any part thereof, and wants to make the derivative
++      work available to others as provided herein, then Licensee hereby agrees
++      to include in any such work a brief summary of the changes made to Python.
++
++   4. PSF is making Python available to Licensee on an "AS IS" basis.  PSF MAKES
++      NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.  BY WAY OF EXAMPLE,
++      BUT NOT LIMITATION, PSF MAKES NO AND DISCLAIMS ANY REPRESENTATION OR
++      WARRANTY OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR PURPOSE OR THAT
++      THE USE OF PYTHON WILL NOT INFRINGE ANY THIRD PARTY RIGHTS.
++
++   5. PSF SHALL NOT BE LIABLE TO LICENSEE OR ANY OTHER USERS OF PYTHON FOR ANY
++      INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES OR LOSS AS A RESULT OF
++      MODIFYING, DISTRIBUTING, OR OTHERWISE USING PYTHON, OR ANY DERIVATIVE
++      THEREOF, EVEN IF ADVISED OF THE POSSIBILITY THEREOF.
++
++   6. This License Agreement will automatically terminate upon a material breach
++      of its terms and conditions.
++
++   7. Nothing in this License Agreement shall be deemed to create any
++      relationship of agency, partnership, or joint venture between PSF and
++      Licensee.  This License Agreement does not grant permission to use PSF
++      trademarks or trade name in a trademark sense to endorse or promote
++      products or services of Licensee, or any third party.
++
++   8. By copying, installing or otherwise using Python, Licensee agrees to be
++      bound by the terms and conditions of this License Agreement.
++
++
++The Debian packaging is (C) 2008 Christopher Schmidt <crschmidt@metacarta.com>
++and is licensed under the BSD License.
++
++On Debian systems, the complete text of the BSD License can be found in
++`/usr/share/common-licenses/BSD'.
+--- python-memcache-1.40.orig/debian/changelog
++++ python-memcache-1.40/debian/changelog
+@@ -0,0 +1,36 @@
++python-memcache (1.40-2wm1) karmic; urgency=low
++
++  * Add support for stats arguments in get_stats()
++
++ -- Ryan Lane <rlane@wikimedia.org>  Wed, 8 Sep 2010 15:30:00 -0700
++
++python-memcache (1.40-2ubuntu1) karmic; urgency=low
++
++  * Fix FTBFS with Python 2.6:
++    - debian/rules:
++      + Include /usr/share/python/python.mk.
++      + Use a simple workaround to set PACKAGE_DIR properly.
++      + Add --install-layout=deb to setup.py install.
++  * debian/control:
++    - Bump-up build-dependency on python.
++
++ -- Alessio Treglia <quadrispro@ubuntu.com>  Wed, 27 May 2009 12:02:54 +0200
++
++python-memcache (1.40-2) unstable; urgency=medium
++
++  * debian/control
++    - switch Vcs-Browser field to viewsvn
++    - bump Standards-Version to 3.8.1 (no changes needed)
++  * debian/watch
++    - fixed (upstream ftp site uses symlinks, breaking version check)
++  * debian/rules
++    - fixed for the new python-support; thanks to Josselin Mouette for the
++      report and patch; Closes: #517063
++
++ -- Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>  Fri, 10 Apr 2009 12:58:57 +0200
++
++python-memcache (1.40-1) unstable; urgency=low
++
++  * Initial release. (Closes: #458608)
++
++ -- Christopher Schmidt <crschmidt@metacarta.com>  Thu,  3 Jan 2008 18:47:00 -0500
+--- python-memcache-1.40.orig/debian/rules
++++ python-memcache-1.40/debian/rules
+@@ -0,0 +1,46 @@
++#!/usr/bin/make -f
++# -*- makefile -*-
++
++# Uncomment this to turn on verbose mode.
++#export DH_VERBOSE=1
++
++include /usr/share/python/python.mk
++
++PYVER := $(shell pyversions -d)
++PREFIX := debian/python-memcache
++PACKAGE_DIR := /usr/lib/$(PYVER)/$(call py_sitename, $(PYVER))
++
++build:
++
++clean:
++	dh_testdir
++	dh_testroot
++	rm -rf python_memcached.egg-info build dist
++	
++	dh_clean *.pyc 
++    
++install: build
++	dh_testdir
++	dh_testroot
++	
++	python ./setup.py install --no-compile --root=$(PREFIX) \
++		--install-layout=deb
++
++# Build architecture-independent files here.
++binary-indep: build install
++	dh_testdir
++	dh_testroot
++	dh_installdocs
++	dh_installchangelogs ChangeLog 
++	dh_compress
++	dh_fixperms
++	chmod +x $(PREFIX)$(PACKAGE_DIR)/memcache.py
++	dh_pysupport
++	dh_installdeb
++	dh_gencontrol
++	dh_md5sums
++	dh_builddeb
++
++binary: binary-indep
++binary-arch:
++.PHONY: build clean binary-indep binary install
+--- python-memcache-1.40.orig/debian/watch
++++ python-memcache-1.40/debian/watch
+@@ -0,0 +1,2 @@
++version=3
++ftp://ftp.tummy.com/pub/python-memcached/python-memcached-([\d\.]*)\.tar\.gz
+--- python-memcache-1.40.orig/debian/control
++++ python-memcache-1.40/debian/control
+@@ -0,0 +1,23 @@
++Source: python-memcache
++Section: python
++Priority: optional
++XS-Python-Version: >= 2.1
++Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
++XSBC-Original-Maintainer: Christopher Schmidt <crschmidt@metacarta.com>
++Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
++Build-Depends: debhelper (>= 5.0.38)
++Build-Depends-Indep: python (>= 2.6.1-0ubuntu1), python-support (>= 0.6.4), 
++                     python-setuptools
++Standards-Version: 3.8.1
++Homepage: http://www.tummy.com/Community/software/python-memcached/
++Vcs-Svn: svn://svn.debian.org/python-modules/packages/python-memcache/trunk
++Vcs-Browser: http://svn.debian.org/viewsvn/python-modules/packages/python-memcache/trunk/
++
++Package: python-memcache
++Architecture: all
++Depends: ${python:Depends}
++Suggests: memcached
++Description: pure python memcached client 
++ This software is a 100% Python interface to the memcached memory cache
++ daemon. It is the client side software which allows storing values in
++ one or more, possibly remote, memcached servers. 
+--- python-memcache-1.40.orig/debian/compat
++++ python-memcache-1.40/debian/compat
+@@ -0,0 +1 @@
++5

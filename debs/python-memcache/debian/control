@@ -1,0 +1,23 @@
+Source: python-memcache
+Section: python
+Priority: optional
+XS-Python-Version: >= 2.1
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+XSBC-Original-Maintainer: Christopher Schmidt <crschmidt@metacarta.com>
+Uploaders: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 5.0.38)
+Build-Depends-Indep: python (>= 2.6.1-0ubuntu1), python-support (>= 0.6.4), 
+                     python-setuptools
+Standards-Version: 3.8.1
+Homepage: http://www.tummy.com/Community/software/python-memcached/
+Vcs-Svn: svn://svn.debian.org/python-modules/packages/python-memcache/trunk
+Vcs-Browser: http://svn.debian.org/viewsvn/python-modules/packages/python-memcache/trunk/
+
+Package: python-memcache
+Architecture: all
+Depends: ${python:Depends}
+Suggests: memcached
+Description: pure python memcached client 
+ This software is a 100% Python interface to the memcached memory cache
+ daemon. It is the client side software which allows storing values in
+ one or more, possibly remote, memcached servers. 

@@ -1,0 +1,36 @@
+python-memcache (1.40-2wm1) karmic; urgency=low
+
+  * Add support for stats arguments in get_stats()
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 8 Sep 2010 15:30:00 -0700
+
+python-memcache (1.40-2ubuntu1) karmic; urgency=low
+
+  * Fix FTBFS with Python 2.6:
+    - debian/rules:
+      + Include /usr/share/python/python.mk.
+      + Use a simple workaround to set PACKAGE_DIR properly.
+      + Add --install-layout=deb to setup.py install.
+  * debian/control:
+    - Bump-up build-dependency on python.
+
+ -- Alessio Treglia <quadrispro@ubuntu.com>  Wed, 27 May 2009 12:02:54 +0200
+
+python-memcache (1.40-2) unstable; urgency=medium
+
+  * debian/control
+    - switch Vcs-Browser field to viewsvn
+    - bump Standards-Version to 3.8.1 (no changes needed)
+  * debian/watch
+    - fixed (upstream ftp site uses symlinks, breaking version check)
+  * debian/rules
+    - fixed for the new python-support; thanks to Josselin Mouette for the
+      report and patch; Closes: #517063
+
+ -- Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>  Fri, 10 Apr 2009 12:58:57 +0200
+
+python-memcache (1.40-1) unstable; urgency=low
+
+  * Initial release. (Closes: #458608)
+
+ -- Christopher Schmidt <crschmidt@metacarta.com>  Thu,  3 Jan 2008 18:47:00 -0500

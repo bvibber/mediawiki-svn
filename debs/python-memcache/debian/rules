@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/python/python.mk
+
+PYVER := $(shell pyversions -d)
+PREFIX := debian/python-memcache
+PACKAGE_DIR := /usr/lib/$(PYVER)/$(call py_sitename, $(PYVER))
+
+build:
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -rf python_memcached.egg-info build dist
+	
+	dh_clean *.pyc 
+    
+install: build
+	dh_testdir
+	dh_testroot
+	
+	python ./setup.py install --no-compile --root=$(PREFIX) \
+		--install-layout=deb
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installchangelogs ChangeLog 
+	dh_compress
+	dh_fixperms
+	chmod +x $(PREFIX)$(PACKAGE_DIR)/memcache.py
+	dh_pysupport
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep
+binary-arch:
+.PHONY: build clean binary-indep binary install
