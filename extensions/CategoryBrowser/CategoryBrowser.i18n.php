@@ -45,7 +45,7 @@ $messages = array();
 $messages['en'] = array(
 	'categorybrowser' => 'Category browser',
 	'categorybrowser-desc' => 'Provides a [[Special:CategoryBrowser|special page]] to filter out most populated categories and to navigate them using an AJAX interface',
-	'cb_requires_javascript' => 'The Category Browser extension requires JavaScript to be enabled in the browser.',
+	'cb_requires_javascript' => 'The category browser extension requires JavaScript to be enabled in the browser.',
 	'cb_ie6_warning' => 'The condition editor does not work in Internet Explorer 6.0 or earlier versions.
 However, browsing of pre-defined conditions should work normally.
 Please change or upgrade your browser, if possible.',
@@ -59,25 +59,25 @@ Please change or upgrade your browser, if possible.',
 	'cb_has_files' => '$1 {{PLURAL:$1|file|files}}',
 	'cb_has_parentcategories' => 'parent categories (if any)',
 	'cb_previous_items_link' => 'Previous',
-	'cb_previous_items_stats' => ' ($1 - $2)',
-	'cb_previous_items_line' => '$1 $2',
+	'cb_previous_items_stats' => ' ($1 - $2)', # only translate this message to other languages if you have to change it
+	'cb_previous_items_line' => '$1 $2', # do not translate or duplicate this message to other languages
 	'cb_next_items_link' => 'Next',
 	'cb_next_items_stats' => ' (from $1)',
-	'cb_next_items_line' => '$1 $2',
+	'cb_next_items_line' => '$1 $2', # do not translate or duplicate this message to other languages
 	'cb_cat_subcats' => 'subcategories',
 	'cb_cat_pages' => 'pages',
 	'cb_cat_files' => 'files',
 	'cb_apply_button' => 'Apply',
-	'cb_op1_template' => '$1[$2]',
-	'cb_op2_template' => '$1 $2 $3',
+	'cb_op1_template' => '$1[$2]', # do not translate or duplicate this message to other languages
+	'cb_op2_template' => '$1 $2 $3', # do not translate or duplicate this message to other languages
 	'cb_all_op' => 'All',
-	'cb_lbracket_op' => '(',
-	'cb_rbracket_op' => ')',
-	'cb_or_op' => 'or',
-	'cb_and_op' => 'and',
-	'cb_ge_op' => '>=',
-	'cb_le_op' => '<=',
-	'cb_eq_op' => '=',
+	'cb_lbracket_op' => '(', # do not translate or duplicate this message to other languages
+	'cb_rbracket_op' => ')', # do not translate or duplicate this message to other languages
+	'cb_or_op' => 'or', # do not translate or duplicate this message to other languages
+	'cb_and_op' => 'and', # do not translate or duplicate this message to other languages
+	'cb_ge_op' => '>=', # do not translate or duplicate this message to other languages
+	'cb_le_op' => '<=', # do not translate or duplicate this message to other languages
+	'cb_eq_op' => '=', # do not translate or duplicate this message to other languages
 	'cb_edit_left_hint' => 'Move left, if possible',
 	'cb_edit_right_hint' => 'Move right, if possible',
 	'cb_edit_remove_hint' => 'Delete, if possible',
@@ -143,3 +143,4 @@ $messages['ru'] = array(
 	'cb_edit_paste_hint' => 'Вставить оператор в текущую позицию, если возможно',
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
 );
+
