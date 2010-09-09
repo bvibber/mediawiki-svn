@@ -23,16 +23,16 @@ define( 'SlimboxThumbs_VERSION', '0.1' );
 
 // Register the extension credits.
 $wgExtensionCredits['other'][] = array(
-    'name'		=> 'SlimboxThumbs',
-    'url'		=> 'http://www.mediawiki.org/wiki/Extension:SlimboxThumbs',
-    'author'	=> array(
+	'path' => __FILE__,
+	'name' => 'SlimboxThumbs',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SlimboxThumbs',
+	'author' => array(
 		'[http://david.raison.lu Kwisatz]',
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw].' .
 		' Inspired by [http://www.mediawiki.org/wiki/User:Alxndr Alexander]',
 	),
-    'descriptionmsg' => 'slimboxthumbs_desc',
-	'path'		=> __FILE__,
-    'version'	=> SlimboxThumbs_VERSION
+	'descriptionmsg' => 'slimboxthumbs-desc',
+	'version' => SlimboxThumbs_VERSION
 );
 
 // Include the settings file.
