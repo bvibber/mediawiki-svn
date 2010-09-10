@@ -578,6 +578,57 @@ $messages['ar'] = array(
 	'mwe-upload-multi' => 'ارفع {{PLURAL:$1|الملف|الملف|الملفين|الملفات|الملفات|الملفات}}',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'mwe-upload-unknown-size' => 'Билдәһеҙ дәүмәл',
+	'mwe-cancel-confim' => 'Һеҙ ысынлап та кире алырға теләһегеҙме?',
+	'mwe-successfulupload' => 'Файл күсереү уңышлы тамамланды',
+	'mwe-uploaderror' => 'Файл күсереү хатаһы',
+	'mwe-uploadwarning' => 'Файл күсереү ваҡытында киҫәтеү',
+	'mwe-unknown-error' => 'Билдәһеҙ хата:',
+	'mwe-return-to-form' => 'Формаға кире ҡайтырға',
+	'mwe-file-exists-duplicate' => 'Был файл түбәндәге файл менән бер:',
+	'mwe-fileexists' => 'Бындай исемле файл бар инде. Зинһар, әгәр уны алыштырыға теләмәһәгеҙ, <b><code>$1</code></b> тикшерегеҙ.',
+	'mwe-fileexists-thumb' => 'Булған файл',
+	'mwe-ignorewarning' => 'Киҫәтеүҙәрҙе иғтибарға алмаҫҡа һәм барыбер файлды һаҡларға',
+	'mwe-file-thumbnail-no' => 'Файлдың исеме <b><tt>$1</tt></b> тип башлана',
+	'mwe-go-to-resource' => 'Ресурстар битенә күсергә',
+	'mwe-upload-misc-error' => 'Файл күсергәндә билдәһеҙ хата',
+	'mwe-wgfogg_warning_bad_extension' => 'Һеҙ ҡулланылмаған киңәйтеүле файл һайлағанһығыҙ (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">өҫтәмә мәғлүмәт</a>)',
+	'mwe-thumbnail-more' => 'Ҙурайтырға',
+	'mwe-license-header' => 'Лицензиялау',
+	'mwe-filedesc' => 'Ҡыҫҡа аңлатма',
+	'mwe-filesource' => 'Сығанаҡ:',
+	'mwe-filestatus' => 'Копирайт торошо:',
+	'mwe-loading-add-media-wiz' => 'Медиа өҫтәү ҡоралын сығарыу',
+	'fogg-wont-upload-to-server' => 'Иҫкәрмә: Һеҙҙең видео файлығыҙ ниндәй ҙә булһа серверға күсерелмәйенсә, урынында кодланасаҡ.',
+	'fogg-save_local_file' => 'Файлға кодларға',
+	'fogg-help-sticky' => 'Белешмә (беркетеү өсөн баҫығыҙ)',
+	'fogg-cg-preset' => 'Алдан көйләүҙәр: <strong>$1</strong>',
+	'fogg-cg-quality' => 'Төп сифат һәм дәүмәл көйләүҙәре',
+	'fogg-cg-meta' => 'клип өсөн мета мәғлүмәттәр',
+	'fogg-cg-range' => 'Кодлау арауығы',
+	'fogg-cg-advVideo' => 'Видео кодлау менән киңәйтелгән идара итеү',
+	'fogg-cg-advAudio' => 'Аудио кодлау менән киңәйтелгән идара итеү',
+	'fogg-preset-custom' => 'Ҡулланыусы көйләүҙәре',
+	'fogg-webvideo-desc' => 'Веб-видео Theora, Vorbis 600 кбит/с, иң ҙур киңлек - 400 пикс.',
+	'fogg-savebandwidth-desc' => 'Түбән тиҙлекле каналдар өсөн Theora, Vorbis 164 кбит/с, иң ҙур киңлек - 200 пикс.',
+	'fogg-highquality-desc' => 'Юғары сифатлы Theora, Vorbis, иң ҙур киңлек - 1080 пикс.',
+	'fogg-webvideo-webm-desc' => 'WebM Web video VP8 (600 кбит\\/с, иң ҙур киңлек - 480 пикс.)',
+	'fogg-highquality-webm-desc' => 'WebM High quality VP8 (иң ҙур киңлек - 1080 пикс.)',
+	'fogg-videoQuality-title' => 'Видео сифаты',
+	'fogg-videoQuality-help' => 'Кодланған видеоның <i>күренгән сифатын</i> көйләү өсөн ҡулланыла (түбәндәге киңәйтелгән көйләүҙәрҙә битрейт ҡуйылһа, ҡулланылмай)',
+	'fogg-starttime-title' => 'Башлау секунды',
+	'fogg-starttime-help' => 'Секундтарҙа күрһәтелгән ваҡыттан башлап ҡына кодларға',
+	'fogg-endtime-title' => 'Тамамлау секунды',
+	'fogg-endtime-help' => 'Секундтарҙа күрһәтелгән ваҡытҡа тиклем генә кодларға',
+	'fogg-audioQuality-title' => 'Аудио сифаты',
+	'fogg-audioQuality-help' => 'Кодланған аудионың <i>күренгән сифатын</i> көйләү өсөн ҡулланыла (түбәндәге киңәйтелгән көйләүҙәрҙә битрейт ҡуйылһа, ҡулланылмай)',
+	'fogg-videoCodec-title' => 'Видеокодек',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -4471,6 +4522,13 @@ $messages['lb'] = array(
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'fogg-title-title' => 'Naam',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -5451,6 +5509,39 @@ $messages['pl'] = array(
 	'fogg-warning-firebug' => '<b>Firebug</b> może powodować konflikty z <i>Firefogg</i>. Wyłącz <b>Firebug</b> dla tej strony.',
 	'mwe-upload-multi' => 'Prześlij {{PLURAL:$1|plik|pliki}}',
 	'mwe-review-upload' => 'Przejrzyj {{PLURAL:$1|przesłany plik|przesłane pliki}}',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 ëd $2',
+	'mwe-upload-unknown-size' => 'Dimension pa conossùa',
+	'mwe-cancel-confim' => 'É-lo sigur ëd volej scanselé?',
+	'mwe-successfulupload' => 'Carià da bin',
+	'mwe-uploaderror' => 'Eror dëmentré che as cariava',
+	'mwe-uploadwarning' => "Avis antramentre ch'as caria",
+	'mwe-unknown-error' => 'Eror pa conossù:',
+	'mwe-return-to-form' => 'Torné andré al formolari',
+	'mwe-file-exists-duplicate' => "Sto file a l'é un duplicà dël file ch'a ven:",
+	'mwe-fileexists' => "N'archivi con cost nòm a esist già. Për piasì ch'a contròla <b><tt>$1</tt></b> s'a l'é pa sigur ëd vorèj cangelo.",
+	'mwe-fileexists-thumb' => 'File esistent',
+	'mwe-ignorewarning' => "Lassé perde j'avis e salvé an tute le manere",
+	'mwe-file-thumbnail-no' => 'Ël nòm file a ancamin-a con <b><code>$1</code></b>',
+	'mwe-go-to-resource' => "Và a la pàgina d'arzorsa",
+	'mwe-upload-misc-error' => "Eror nen identificà antramentr ch'as cariava",
+	'mwe-wgfogg_warning_bad_extension' => 'It l\'has selessionà un file con n\'estension pa apogià (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_fypes">për savèjne ëd pi</a>).',
+	'mwe-thumbnail-more' => 'Slarga',
+	'mwe-license-header' => 'Licensa',
+	'mwe-filedesc' => 'Resumé',
+	'mwe-filesource' => 'Sorgiss:',
+	'mwe-filestatus' => "Situassion dij drit d'autor:",
+	'mwe-loading-add-media-wiz' => 'Carié wizard për gionté mojen',
+	'fogg-wont-upload-to-server' => 'Nòta: Tò file video a sarà codificà localment e pa carià su gnun server.',
+	'fogg-save_local_file' => 'Codìfica File',
+	'fogg-help-sticky' => 'Agiut (sgnaca per ancolé)',
+	'fogg-cg-preset' => 'Preampòsta: <strong>$1</strong>',
+	'fogg-cg-quality' => "Qualità bas e contròl d'arzolussion",
 );
 
 /** Pashto (پښتو)

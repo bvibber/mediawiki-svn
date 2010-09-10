@@ -650,7 +650,7 @@ $messages['lb'] = array(
 	'createpage' => 'Eng Säit uleeën',
 	'uwcreatepage-desc' => 'Setzt eng [[Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
 	'createpage_submitbutton' => 'Schécken',
-	'createpage_instructions' => 'Gitt den titel vun däer Säit un déi Dir uleeë wëllt:',
+	'createpage_instructions' => 'Gitt den Titel vun där Säit un déi Dir uleeë wëllt:',
 	'createpage_entertitle' => 'Gitt w.e.g. en Titel fir Är Säit un.',
 	'createpage_titleexists' => 'Eng Säit mam Titel [[$1]] gëtt et schonn.
 Wëll Dir déi Säit veränneren?',

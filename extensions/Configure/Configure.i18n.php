@@ -5903,7 +5903,7 @@ $messages['lb'] = array(
 	'configure-arrayinput-oneperline' => "''(e pro Linn)''",
 	'configure-summary' => "Dës Spezialsäit erlaabt et Iech fir dës Wiki ze configuréieren, kuckt [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuratioun's Astellungen] fir méi Informatiounen.",
 	'configure-btn-save' => 'Confuguratioun späicheren',
-	'configure-db-error' => "D'Datebank an däer, no Ären Informatiounen d'Konfiguratioun ($1) dra soll sinn, gëtt et net.
+	'configure-db-error' => "D'Datebank an där, no Ären Informatiounen d'Konfiguratioun ($1) dra soll sinn, gëtt et net.
 Leet se w.e.g. un a féiert configure.sql doran aus oder verbessert hiren Numm.",
 	'configure-db-table-error' => "D'Datebank déi dir uginn hutt huet net déi gebrauchten Tabellen. Benotzt w.e.g. configure.sql an dëser Datebank.",
 	'configure-directory-not-writable' => "An de Repertoire dee benotzt gëtt fir d'Configuratioun ze späicheren, <tt>$1</tt>, kann näischt geschriwwe ginn.
@@ -5998,7 +5998,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-output' => 'Resultat',
 	'configure-select-wiki' => 'Wiki-Auswiel',
 	'configure-select-wiki-desc' => 'Wielt déi Wiki aus déi Dir astelle wëllt.',
-	'configure-select-wiki-view-desc' => "Wielt eng Wiki, vun däer Dir d'Versioune vun der Astellung gesi wëllt.",
+	'configure-select-wiki-view-desc' => "Wielt eng Wiki, vun där Dir d'Versioune vun der Astellung gesi wëllt.",
 	'configure-select-wiki-view-all' => 'All Wikiën',
 	'configure-select-wiki-view-specific' => 'Spezifesch Wiki:',
 	'configure-select-wiki-submit' => 'Wielen',

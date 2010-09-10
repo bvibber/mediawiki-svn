@@ -400,7 +400,7 @@ Metmaacher se ze Ändere.',
  * @author Robby
  */
 $messages['lb'] = array(
-	'editsubpages-desc' => "Erlaabt engem Adiministrateur fir d'Spär vu Säiten opzehiewen an all Ënnersäite vun däer Säit fir anonym Ännerungen via [[MediaWiki:Unlockedpages|Säiten denen hir Spär opgehuewen ass]]",
+	'editsubpages-desc' => "Erlaabt engem Adiministrateur fir d'Spär vu Säiten opzehiewen an all Ënnersäite vun där Säit fir anonym Ännerungen via [[MediaWiki:Unlockedpages|Säiten deenen hir Spär opgehuewen ass]]",
 	'unlockedpages' => " #<!-- Dës Zeil net änneren --><pre>
 # Säite vun deenen Dir wëllt datt se net gespaart sinn, hei ënnendrënner schreiwen mat dem
 # * Säitennumm

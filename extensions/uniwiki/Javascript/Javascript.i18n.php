@@ -239,7 +239,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'javascript-desc' => 'Setzt uniwiki.js op all Säit derbäi op däer JavaScript-Code de vu verschiddenen Uniwiki Erweiderunge benotzt gëtt',
+	'javascript-desc' => 'Setzt uniwiki.js op all Säit derbäi op där JavaScript-Code de vu verschiddenen Uniwiki Erweiderunge benotzt gëtt',
 );
 
 /** Macedonian (Македонски)

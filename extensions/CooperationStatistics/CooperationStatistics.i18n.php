@@ -29,6 +29,7 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
@@ -36,7 +37,8 @@ See also the [[Special:MostRevisors|\'\'\'pages with the most revisors\'\'\']] a
 $messages['qqq'] = array(
 	'cooperationstatistics-desc' => '{{desc}}',
 	'cooperationstatistics-text' => 'Consider translating the + sign to " or more" if "number+" is not a commonplace notation in your language.',
-	'cooperationstatistics-articles' => 'This message supports PLURAL.',
+	'cooperationstatistics-articles' => 'This message supports PLURAL.
+{{Identical|Page}}',
 	'cooperationstatistics-nbusers' => 'This message supports PLURAL.
 * $1 is the number of editors
 * $2 is the number of pages in the previous column',
@@ -258,6 +260,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'cooperationstatistics' => 'Statistiques de coopération',
@@ -267,7 +270,7 @@ De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperations
 Voyez aussi les [[Special:MostRevisors|'''pages avec le plus de relecteurs''']] et les [[Special:MostRevisions|pages avec le plus de révisions]].",
 	'cooperationstatistics-tablearticle' => 'Nombre de pages',
 	'cooperationstatistics-tablevalue' => "Nombre d'éditeurs",
-	'cooperationstatistics-articles' => '$1 pages',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|page|pages}}',
 	'cooperationstatistics-nbusers' => 'ont $1 éditeurs',
 	'cooperationstatistics-nblessusers' => 'ont $1 éditeurs ou moins',
 	'cooperationstatistics-nbmoreusers' => 'ont $1 éditeurs ou moins',
@@ -275,6 +278,7 @@ Voyez aussi les [[Special:MostRevisors|'''pages avec le plus de relecteurs''']] 
 );
 
 /** Galician (Galego)
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -286,7 +290,7 @@ De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperations
 Olle tamén as [[Special:MostRevisors|'''páxinas con máis revisores''']] e as [[Special:MostRevisions|páxinas con máis revisións]].",
 	'cooperationstatistics-tablearticle' => 'Número de páxinas',
 	'cooperationstatistics-tablevalue' => 'Número de editores',
-	'cooperationstatistics-articles' => '$1 páxinas',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|páxina|páxinas}}',
 	'cooperationstatistics-nbusers' => 'ten $1 editores',
 	'cooperationstatistics-nblessusers' => 'ten $1 ou menos editores',
 	'cooperationstatistics-nbmoreusers' => 'ten $1 ou máis editores',
@@ -295,6 +299,7 @@ Olle tamén as [[Special:MostRevisors|'''páxinas con máis revisores''']] e as 
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author McDutchie
  */
 $messages['gsw'] = array(
 	'cooperationstatistics' => 'Zämmearbetsstatischtik',
@@ -304,7 +309,7 @@ Vu dr [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperati
 Luege au d [[Special:MostRevisors|'''Syte mit dr meischte Bearbeiter''']] un d [[Special:MostRevisions|Syte mit dr meischte Bearbeitige]].",
 	'cooperationstatistics-tablearticle' => 'Sytezeller',
 	'cooperationstatistics-tablevalue' => 'Zahl vu Bearbeiter',
-	'cooperationstatistics-articles' => '$1 Syte',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|Syte|Syte}}',
 	'cooperationstatistics-nbusers' => 'hän $1 Bearbeiter',
 	'cooperationstatistics-nblessusers' => 'hän $1 oder weniger Bearbeiter',
 	'cooperationstatistics-nbmoreusers' => 'hän $1 oder meh Bearbeiter',
@@ -393,7 +398,7 @@ De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperations
 Vide etiam le [[Special:MostRevisors|'''paginas con le plus contributores''']] e le [[Special:MostRevisions|paginas con le plus versiones]].",
 	'cooperationstatistics-tablearticle' => 'Numero de paginas',
 	'cooperationstatistics-tablevalue' => 'Numero de contributores',
-	'cooperationstatistics-articles' => '$1 paginas',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagina|paginas}}',
 	'cooperationstatistics-nbusers' => 'ha $1 contributores',
 	'cooperationstatistics-nblessusers' => 'ha $1 contributores o minus',
 	'cooperationstatistics-nbmoreusers' => 'ha $1 contributores o plus',
@@ -422,6 +427,7 @@ Lihat juga  [[Special:MostRevisors|'''halaman dengan paling banyak pengubah''']]
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule
+ * @author McDutchie
  */
 $messages['it'] = array(
 	'cooperationstatistics' => 'Statistiche di cooperazione',
@@ -431,7 +437,7 @@ Da [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperations
 Consulta anche le [[Special:MostRevisors|'''pagine con più revisori''']] e le [[Special:MostRevisions|pagine con più revisioni]].",
 	'cooperationstatistics-tablearticle' => 'Numero di pagine',
 	'cooperationstatistics-tablevalue' => 'Numero di autori',
-	'cooperationstatistics-articles' => '$1 pagine',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagina|pagine}}',
 	'cooperationstatistics-nbusers' => 'hanno $1 autori',
 	'cooperationstatistics-nblessusers' => 'hanno $1 autori o meno',
 	'cooperationstatistics-nbmoreusers' => 'hanno $1 autori o più',
@@ -491,6 +497,7 @@ Loor och  noh de [[Special:MostRevisors|'''Sigge met de miehßte Schriiver''']] 
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author McDutchie
  * @author Robby
  */
 $messages['lb'] = array(
@@ -501,7 +508,7 @@ Vu(n) [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperati
 Kuckt och d'[[Special:MostRevisors|'''Säite mat de meeschte Reviseuren''']] an d'[[Special:MostRevisions|Säite mat de meeschte Versiounen]].",
 	'cooperationstatistics-tablearticle' => 'Säitenzuel',
 	'cooperationstatistics-tablevalue' => 'Zuel vun Editeuren',
-	'cooperationstatistics-articles' => '$1 Säiten',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|Säit|Säiten}}',
 	'cooperationstatistics-nbusers' => 'hunn $1 Editeuren',
 	'cooperationstatistics-nblessusers' => 'hunn $1 oder manner Editeuren',
 	'cooperationstatistics-nbmoreusers' => 'hunn $1 oder méi Editeuren',
@@ -564,6 +571,7 @@ Se også [[Special:MostRevisors|'''sidene med flest revisorer''']] og [[Special:
 
 /** Occitan (Occitan)
  * @author Cedric31
+ * @author McDutchie
  */
 $messages['oc'] = array(
 	'cooperationstatistics' => 'Estatisticas de cooperacion',
@@ -573,7 +581,7 @@ De [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperations
 Vejatz tanben las [[Special:MostRevisors|'''paginas amb lo mai de relectors''']] e las [[Special:MostRevisions|paginas amb lo mai de revisions]].",
 	'cooperationstatistics-tablearticle' => 'Nombre de paginas',
 	'cooperationstatistics-tablevalue' => "Nombre d'editors",
-	'cooperationstatistics-articles' => '$1 paginas',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagina|paginas}}',
 	'cooperationstatistics-nbusers' => 'an $1 editors',
 	'cooperationstatistics-nblessusers' => 'an $1 editors o mens',
 	'cooperationstatistics-nbmoreusers' => 'an $1 editors o mens',

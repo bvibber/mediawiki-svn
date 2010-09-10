@@ -616,7 +616,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'randomincategory' => 'Zoufälleg Säit an däer Kategorie',
+	'randomincategory' => 'Zoufälleg Säit an där Kategorie',
 	'randomincategory-desc' => '[[Special:Randomincategory|Spezialsäit]], fir eng zoufälleg Säite vun enger Kategorie ze weisen',
 	'randomincategory-toolbox' => 'Zoufälleg Säit',
 	'randomincategory-nocategory' => "D'Kategorie $1 gëtt et net oder si ass eidel",

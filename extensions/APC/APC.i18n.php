@@ -145,7 +145,8 @@ $messages['qqq'] = array(
 *$2 is a size of segments in Xbytes
 *$3 can be something like <tt>mmap</tt>
 *$4 can be something like <tt>pthread mutex</tt>',
-	'viewapc-cached-files-d' => '* $2 is the size of files in Xbytes',
+	'viewapc-cached-files-d' => '* $2 is the size of files in Xbytes
+{{Identical|File}}',
 	'viewapc-cachefull' => 'It can be paraphrased to "Number of times the cache has been full".',
 	'viewapc-rps' => '$1 is the number of requests with two decimal places. Do not use PLURAL.',
 	'viewapc-fragmentation-info' => '* $1 is percentage

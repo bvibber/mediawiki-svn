@@ -341,6 +341,22 @@ $messages['it'] = array(
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non esiste.',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'datatransclusion-desc' => '外部のデータソースからの記録データのインポートおよびレンダリング',
+	'datatransclusion-missing-source' => 'データソースが指定されていません。
+二番目または"source"引数が要求されています。',
+	'datatransclusion-unknown-source' => '不正なデータソースが指定されました。 
+ "$1"は認知されていない。',
+	'datatransclusion-missing-key' => 'キーが指定されていません。
+$2はデータソース$1において有効なキーです。',
+	'datatransclusion-missing-argument-template' => 'テンプレートが指定されていません。
+一番目または"template"引数が要求されています。',
+	'datatransclusion-bad-template-name' => '間違ったテンプレート名: $1。',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

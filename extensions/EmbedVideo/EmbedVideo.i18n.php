@@ -170,6 +170,19 @@ $messages['id'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo menerima parameter lebar "$1" tidak sah.',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'embedvideo-desc' => '人気のあるソースからのビデオを埋め込むためのパーサ関数を追加する。',
+	'embedvideo-missing-params' => '埋め込みビデオには必須パラメーターが不足しています。',
+	'embedvideo-bad-params' => '埋め込みビデオは不正なパラメーターを受け取りました。',
+	'embedvideo-unparsable-param-string' => '埋め込みビデオは解析できないパラメーター"<code>$1</code>"を受け取りました。',
+	'embedvideo-unrecognized-service' => '埋め込みビデオはビデオサービス"<code>$1</code>"を認識していません。',
+	'embedvideo-bad-id' => '埋め込みビデオはサービス"$2"のための無効なid"$1"を受け取りました。',
+	'embedvideo-illegal-width' => '埋め込みビデオは不正な幅のパラメーター"$1"を受け取った。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

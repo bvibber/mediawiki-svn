@@ -102,6 +102,18 @@ $messages['avk'] = array(
 	'ajax-se-usernotfound' => 'ROKLA : metrasin favesik',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'ajaxshoweditors-desc' => 'Бер үк битте мөхәррирләүсе ҡатнашыусыларҙы күрһәтә',
+	'ajax-se-title' => 'Әлеге ваҡытта мөхәррирләйҙәр:',
+	'ajax-se-pending' => 'яңыртыуҙы көтөү... (ошонда баҫығыҙ йәки мөхәррирләй башлағыҙ)',
+	'ajax-se-pagedoesnotexist' => 'был бит юҡ',
+	'ajax-se-userinvalid' => 'Хата: ҡатнашыусы дөрөҫ түгел',
+	'ajax-se-usernotfound' => 'Хата: ҡатнашыусы табылманы',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
