@@ -142,7 +142,7 @@
 				'pageStart' :  pageText.substring(0, pageText.indexOf( startKey ) ),
 				'sequenceXML' :  pageText.substring( pageText.indexOf( startKey ) +  startKey.length, 
 						pageText.indexOf(endKey ) ),				
-				'pageEnd' : pageText.substring( pageText.indexOf(endKey) ) 
+				'pageEnd' : pageText.substring( pageText.indexOf(endKey) + endKey.length  ) 
 			}
 		},
 		

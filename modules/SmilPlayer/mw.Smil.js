@@ -396,9 +396,9 @@ mw.Smil.prototype = {
 		);
 		// Links go to a new window and are disable when smaller than player size
 		$html.find('a').each( function(inx, link ){
-			// escape link output as to not include scirpt execution
+			// Escape link output as to not include scirpt execution
 			$j(link).attr('href', 
-					mw.escapeQuotesHTML( $j(link).attr('href') )
+				mw.escapeQuotesHTML( $j(link).attr('href') )
 			)
 		});		
 		

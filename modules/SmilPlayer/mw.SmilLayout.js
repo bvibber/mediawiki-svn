@@ -518,6 +518,8 @@ mw.SmilLayout.prototype = {
 					); 				
 				}
 			})	
+			// Strip any links for thumbs of player
+			$htmlLayout.find('a').attr('href', '#');
 		}
 				
 		

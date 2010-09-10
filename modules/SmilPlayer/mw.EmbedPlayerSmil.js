@@ -49,7 +49,7 @@ mw.EmbedPlayerSmil = {
 	/**
 	* Put the embed player into the container
 	*/
-	doEmbedPlayer: function() {
+	doEmbedHTML: function() {
 		var _this = this;		
 		
 		// check if we have already embed the player:
@@ -57,10 +57,10 @@ mw.EmbedPlayerSmil = {
 			return; 
 		}
 		this.smilPlayerEmbedded = true;
-		mw.log("EmbedPlayerSmil::doEmbedPlayer: " + this.id + " time:" + this.smilPlayTime ) ;
+		mw.log("EmbedPlayerSmil::doEmbedHTML: " + this.id + " time:" + this.smilPlayTime ) ;
 				
 		this.setCurrentTime( this.smilPlayTime, function(){
-			mw.log("EmbedPlayerSmil::doEmbedPlayer:: render callback ready " );
+			mw.log("EmbedPlayerSmil::doEmbedHTML:: render callback ready " );
 		}); 				
 	},
 	
@@ -148,10 +148,7 @@ mw.EmbedPlayerSmil = {
 	 */
 	play: function( playSegmentEndTime ){
 		var _this = this;
-		mw.log(" EmbedPlayerSmil::play " + _this.smilPlayTime + ' to ' + playSegmentEndTime + ' pause time: ' + this.smilPauseTime );		
-
-		// Set thumbnail_disp to false 
-		this.thumbnail_disp = false;
+		mw.log(" EmbedPlayerSmil::play " + _this.smilPlayTime + ' to ' + playSegmentEndTime + ' pause time: ' + this.smilPauseTime );
 		
 		// Update clock start time 
 		_this.clockStartTime = new Date().getTime()
@@ -183,6 +180,9 @@ mw.EmbedPlayerSmil = {
 					'-' + ' splaytime:  ' + _this.smilPlayTime +' x1000' );
 			// Zero out the pause time:
 			_this.smilPauseTime = 0;
+			
+			// Set thumbnail_disp to false 
+			this.thumbnail_disp = false;
 			
 			// Start up monitor:
 			_this.monitor();
@@ -236,7 +236,7 @@ mw.EmbedPlayerSmil = {
 	 */
 	monitor: function(){
 		// Get a local variable of the new target time: 		
-		//mw.log("smilPlayer::monitor: isPlaying:" + this.isPlaying() + ' pausedForBuffer:' +  this.pausedForBuffer + ' playtime:' + this.smilPlayTime);
+		//mw.log("smilPlayer::monitor: isPlaying:" + this.isPlaying() + ' is stoped: ' + this.isStopped() + ' pausedForBuffer:' +  this.pausedForBuffer + ' playtime:' + this.smilPlayTime);
 		
 		// Check if we reached playSegmentEndTime and pause playback  
 		if( this.playSegmentEndTime && this.smilPlayTime >= this.playSegmentEndTime ) {
@@ -289,8 +289,7 @@ mw.EmbedPlayerSmil = {
 			// Issue an animate time request with monitorDelta 
 			this.smil.animateTime( this.smilPlayTime, this.monitorRate ); 
 		}
-				
-		
+						
 		this.parent_monitor();
 	},
 	
@@ -350,7 +349,7 @@ mw.EmbedPlayerSmil = {
 			return ;
 		}
 		// If no thumb could be found use the first frame of smil: 
-		this.doEmbedPlayer(); 
+		this.doEmbedHTML(); 
 	},
 	
 	/**

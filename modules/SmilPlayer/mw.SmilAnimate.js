@@ -50,12 +50,13 @@ mw.SmilAnimate.prototype = {
 			// var relativeTime = time - smilElement.parentTimeOffset;
 			var relativeTime = time - $j( smilElement ).data ( 'startOffset' );
 			switch( _this.smil.getRefType( smilElement ) ){
+				case 'auido':
 				case 'video':
-					var vid = $j ( '#' + _this.smil.getSmilElementPlayerID( smilElement ) ).get( 0 );
-					var vidTime = ( !vid || !vid.currentTime )? 0 : vid.currentTime;					
-					//mw.log( "getPlaybackSyncDelta:: video time should be: " + relativeTime + ' video time is: ' + vidTime );
+					var media = $j ( '#' + _this.smil.getSmilElementPlayerID( smilElement ) ).get( 0 );
+					var mediaTime = ( !media || !media.currentTime )? 0 : media.currentTime;					
+					//mw.log( "getPlaybackSyncDelta:: mediaeo time should be: " + relativeTime + ' video time is: ' + vidTime );
 					
-					var syncOffset = ( relativeTime -vidTime );
+					var syncOffset = ( relativeTime -mediaTime );
 					if( syncOffset >  maxOutOfSync ){
 						maxOutOfSync = syncOffset;
 					}
@@ -92,7 +93,8 @@ mw.SmilAnimate.prototype = {
 		// Check for special playback types that for playback animation action:
 		if( this.smil.getRefType( smilElement ) == 'video' 
 			|| 
-			this.smil.getRefType( smilElement ) == 'audio' ){
+			this.smil.getRefType( smilElement ) == 'audio' )
+		{
 			this.transformMediaForPlayback( smilElement, animateTime );
 		}
 				
@@ -186,13 +188,17 @@ mw.SmilAnimate.prototype = {
 	 * Transform Element in an inner animation loop
 	 */
 	transformAnimateFrame: function( smilElement, animateTime ){
-		// Video has no inner animation per-frame transforms 
-		if( this.smil.getRefType( smilElement ) != 'video' ){
+		// Audio / Video has no inner animation per-frame transforms 
+		if( this.smil.getRefType( smilElement ) != 'video' 
+			&& 
+			this.smil.getRefType( smilElement ) != 'audio' 
+		){
 			this.transformElement( smilElement, animateTime );	
 		}
 		// Update the smil Element transition:
 		this.smil.getTransitions().transformTransitionOverlay( smilElement, animateTime );		
 	},
+	
 	/** 
 	* Transform a smil element for a requested time.
 	*
@@ -209,7 +215,8 @@ mw.SmilAnimate.prototype = {
 				this.transformImageForTime( smilElement, animateTime );
 			break;
 			case 'video':
-				this.transformVideoForTime( smilElement, animateTime );
+			case 'audio':
+				this.transformMediaForTime( smilElement, animateTime );
 			break;
 		}					
 	},
@@ -219,24 +226,24 @@ mw.SmilAnimate.prototype = {
 	 * @param {Element} smilElement Smil video element to be transformed
 	 * @param {time} animateTime Relative time to be transformed
 	 */
-	transformVideoForTime: function( smilElement, animateTime, callback ){
+	transformMediaForTime: function( smilElement, animateTime, callback ){
 		// Get the video element 
 		var assetId = this.smil.getSmilElementPlayerID( smilElement );
 		var vid = $j ( '#' + assetId ).get( 0 );		
 		
-		var videoSeekTime = animateTime;
+		var mediaSeekTime = animateTime;
 		//Add the clipBegin if set
 		if( $j( smilElement ).attr( 'clipBegin') && 
 			this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') ) ) 
 		{
-			videoSeekTime += this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') );  
+			mediaSeekTime += this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') );  
 		}
 				
-		//mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + videoSeekTime );
+		//mw.log( "SmilAnimate::transformMediaForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + mediaSeekTime );
 		
 		// Register a buffer ready callback
-		this.smil.getBuffer().mediaBufferSeek( smilElement, videoSeekTime, function() {			
-			//mw.log( "transformVideoForTime:: seek complete ")
+		this.smil.getBuffer().mediaBufferSeek( smilElement, mediaSeekTime, function() {			
+			//mw.log( "transformMediaForTime:: seek complete ")
 			if( callback )
 				callback();
 		});
