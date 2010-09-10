@@ -349,6 +349,15 @@
 			}
 			return this.pagePathUrl.replace( '$1', 'Sequence:' + titleKey);
 		},
+		
+		getAssetViewUrl: function( titleKey ){
+			// Check that we have a pagePathUrl config: 
+			if( !this.pagePathUrl ){
+				return false;
+			}
+			return this.pagePathUrl.replace( '$1', titleKey );
+		},
+		
 		/**
 		 * Get the sequencer 'edit' url
 		 */

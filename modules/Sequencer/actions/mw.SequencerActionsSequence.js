@@ -167,7 +167,7 @@ mw.SequencerActionsSequence.prototype = {
 		if( !_this.sequencer.getServer().hasLocalChanges() ){		
 			$dialog.html( gM('mwe-sequencer-save-no-changes') );
 			var closeButton = {};
-			closeButton[gM('mwe-ok')]= function(){ $j(this).dialog('close') };
+			closeButton[ gM('mwe-ok') ]= function(){ $j(this).dialog('close') };
 			$dialog.dialog( "option", "buttons", closeButton);	
 			return ;
 		}

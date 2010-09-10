@@ -331,6 +331,9 @@ mediaWikiSearch.prototype = {
 		if ( size.width ) {
 			request['iiurlwidth'] = size.width;
 		}
+		if( size.height ){
+			request['iiurlheight'] = size.height;
+		}
 		
 		mw.getJSON( this.provider.apiUrl, request, function( data ) {			
 			var imObj = { };

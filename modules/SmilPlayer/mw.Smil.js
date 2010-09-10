@@ -449,6 +449,16 @@ mw.Smil.prototype = {
 		
 		return $html;
 	},
+	getTitleKey: function( smilElement ){
+		// check directly for the attribute: 
+		if( $j(smilElement).attr('apititlekey') ){
+			return  $j(smilElement).attr('apititlekey') ;
+		}
+		if( $j(smilElement).find("param[name='apiTitleKey']").length ) {
+			return $j(smilElement).find("param[name='apiTitleKey']").attr('value');
+		}
+		return false;
+	},
 	/**
 	 * Get the smil resource type based on nodeName and type attribute
 	 */

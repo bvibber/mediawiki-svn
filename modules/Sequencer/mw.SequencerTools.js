@@ -149,18 +149,80 @@ mw.SequencerTools.prototype = {
 		}
 	},
 	editActions: {
+		'sourcePage':{
+			'displayCheck': function( _this, smilElement ){
+				if( _this.sequencer.getSmil().getTitleKey( smilElement ) 
+					&& 
+					_this.sequencer.getServer().isConfigured() 
+				){
+					return true;
+				}
+				return false;							
+			},
+			'icon': 'info',
+			'title': gM('mwe-sequencer-asset-source'),
+			'action' : function( clickButton, _this, smilElement ){				
+				// Update the link
+				$j( clickButton )
+				.attr({
+					'href': _this.sequencer.getServer().getAssetViewUrl(
+							$j(smilElement).find("param[name='apiTitleKey']").attr('value')
+							)
+					,
+					'target' : '_new'
+				})
+				// follow the link the link
+				return true;
+			}	
+		},			
 		'preview' : {
 			'icon' : 'play',
 			'title' : gM('mwe-sequencer-preview'),
-			'action': function( _this, smilElement ){				
-				_this.sequencer.getPlayer().previewClip( smilElement );
+			'action': function( clickButton, _this, smilElement ){				
+				_this.sequencer.getPlayer().previewClip( smilElement, function(){
+					// preview done, restore original state:
+					$j(clickButton).replaceWith ( 
+						_this.getEditAction( smilElement, 'preview' ) 
+					)
+				});
 				// xxx todo  update preview button to "pause" / "play" 
+				var doPause = function(){
+					$j( clickButton ).find( '.ui-icon')
+						.removeClass( 'ui-icon-pause' )
+						.addClass( 'ui-icon-play' )
+					$j( clickButton ).find('.btnText').text(
+						gM('mwe-sequencer-preview-continue')
+					)
+					_this.sequencer.getEmbedPlayer().pause();
+				}
+				var doPlay = function(){
+					// setup pause button: 
+					$j( clickButton ).find( '.ui-icon')
+						.removeClass( 'ui-icon-play' )
+						.addClass( 'ui-icon-pause' )
+					$j( clickButton ).find('.btnText').text(
+						gM('mwe-sequencer-preview-pause')
+					)
+					// keep the target preview end time: 
+					// xxx should probably refactor this.. a bit of abstraction leak here: 
+					_this.sequencer.getEmbedPlayer().play(
+						_this.sequencer.getEmbedPlayer().playSegmentEndTime
+					);
+				}
+				$j( clickButton ).unbind().click(function(){
+					if( _this.sequencer.getEmbedPlayer().paused ){
+						doPlay();
+					} else {
+						doPause();						
+					}					
+				})
+				doPlay();
 			}
-		},
+		},		
 		'cancel' : {
 			'icon': 'close',
-			'title' : gM('mwe-cancel'),
-			'action' : function( _this, smilElement ){
+			'title' : gM('mwe-sequencer-clip-cancel-edit'),
+			'action' : function(clickButton,  _this, smilElement ){
 				$j.each( 
 					_this.getToolSet( 
 						_this.sequencer.getSmil().getRefType( smilElement ) 
@@ -724,16 +786,21 @@ mw.SequencerTools.prototype = {
 		});
 		
 		// Add tab bindings
-		$toolsContainer.tabs({
-			select: function(event, ui) {
-			
-			}
-		})
+		$toolsContainer.tabs();
+		
 		// Build out global edit Actions buttons after the container
 		for( var editActionId in this.editActions ){		
-			$toolsContainer.after( 
-				this.getEditAction( smilElement, editActionId )
-			)	
+			// Check if the edit action has a conditional display:
+			var displayEidtAction = true;
+			
+			if( this.editActions[ editActionId ].displayCheck ){
+				displayEidtAction =  this.editActions[ editActionId ].displayCheck( _this,  smilElement );
+			}			
+			if( displayEidtAction ){
+				$toolsContainer.after( 
+					this.getEditAction( smilElement, editActionId )
+				)	
+			}
 		}
 	},
 	getCurrentsmilElement: function(){
@@ -765,7 +832,7 @@ mw.SequencerTools.prototype = {
 				'margin': '5px'
 			})
 			.click( function(){
-				editAction.action( _this, smilElement );
+				return editAction.action( this, _this, smilElement );
 			})
 		return $actionButton;
 	},

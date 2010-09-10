@@ -3039,10 +3039,8 @@ mw.EmbedPlayer.prototype = {
 		// Call monitor at 250ms interval. ( use  setInterval to avoid stacking monitor requests ) 
 		//mw.log("EmbedPlayer::monitor: continue?:" + !this.isStopped() + ' monitorInterval: ' + this.monitorInterval );
 		if( ! this.isStopped() ) {			
-			if( !this.monitorInterval ){
-				
-				this.monitorInterval = setInterval( function(){
-					mw.log("monitorInterval!!");
+			if( !this.monitorInterval ){				
+				this.monitorInterval = setInterval( function(){					
 					if( _this.monitor ){
 						_this.monitor();
 					}

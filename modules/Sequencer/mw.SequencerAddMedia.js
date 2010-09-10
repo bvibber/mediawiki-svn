@@ -195,6 +195,9 @@ mw.SequencerAddMedia.prototype = {
 	 *  ref node that can be inserted into a smil xml tree
 	 */
 	getSmilClipFromResource: function( resource, callback ){
+		// fist check if we 
+		
+		
 		var tagType = 'ref';
 		if( resource.mime.indexOf( 'image/' ) != -1 ){
 			tagType = 'img';		
@@ -249,24 +252,37 @@ mw.SequencerAddMedia.prototype = {
 					})
 				)
 			}
+		}	
+		// Check if the source asset is smaller than our target import size in both width and height: 
+		if( resource.width < mw.getConfig( 'Sequencer.AddMediaImageWidth' ) 
+			&&
+			resource.height < mw.getConfig( 'Sequencer.AddMediaImageHeight' ) 
+		) {	
+			callback( $smilRef.get(0) );
+			return ;	
 		}
-		// Make sure we have source for the asset.   
-		if( $smilRef.attr('src') ){
-			callback( $smilRef.get(0) )
-		} else {
-			// the resource includes a pointer to its parent search object
-			// from the search object grab the image object for the target resolution 
-			resource.pSobj.getImageObj( 
-				resource,
-				{
-					'width' : mw.getConfig( 'Sequencer.AddMediaImageWidth' )
-				},
-				function( imageObj ){
-					$smilRef.attr('src', imageObj.url )
-					callback( $smilRef.get(0) );
-				}
-			)			
+		
+		// Get the dominate aspect ratio so we can
+		var targetAspect = mw.getConfig( 'Sequencer.AddMediaImageWidth' )  / mw.getConfig( 'Sequencer.AddMediaImageHeight' ) 
+		var fileAspect = resource.width / resource.height;
+		
+		var requestWidth = mw.getConfig( 'Sequencer.AddMediaImageWidth' );
+		if( targetAspect >  fileAspect ){
+			requestWidth = parseInt( mw.getConfig( 'Sequencer.AddMediaImageHeight' ) * fileAspect );
 		}
+		
+		// the resource includes a pointer to its parent search object
+		// from the search object grab the image object for the target resolution 
+		resource.pSobj.getImageObj( 
+			resource,
+			{ 
+				'width' : requestWidth 
+			},
+			function( imageObj ){
+				$smilRef.attr('src', imageObj.url )
+				callback( $smilRef.get(0) );
+			}
+		)			
 	}
 }
 

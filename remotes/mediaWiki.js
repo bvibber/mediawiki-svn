@@ -449,19 +449,13 @@ function rewrite_for_OggHandler( vidIdList ) {
 								// close the dialog
 								$j(this).dialog( 'close' ).remove();
 							};
-							mw.addDialog( {				
+							var $dialog = mw.addDialog( {				
 								'title' : decodeURIComponent( apiTitleKey.replace(/_/g, ' ') ),
 								'content' : html_out,
-								'buttons' : buttons
-							})
-							// Dialog size setup is a bit strange:							
-							.css( {
-								'height' : dialogHeight + 'px'
-							})
-							.parent().css( {
-								// we hard code the default resolution to 400 above
-								'width' : '435px',							
-							} )							
+								'buttons' : buttons,
+								'height' : dialogHeight,
+								'width' : 425
+							})							
 							
 							// Update the embed code to use the mwEmbed player: 		
 							$j( '#mwe_' + vidId ).embedPlayer( function(){								

@@ -55,9 +55,13 @@ $messages['en'] = array(
 	'mwe-sequencer-clip-transin' => 'Transition in',
 	'mwe-sequencer-clip-transout' => 'Transition out',
 
+	'mwe-sequencer-clip-cancel-edit' => 'Cancel clip edit',
 	'mwe-sequencer-preview' => 'Preview',
+	'mwe-sequencer-preview-pause' => 'Pause preview',
+	'mwe-sequencer-preview-continue' => 'Continue preview',
 	'mwe-sequencer-apply-changes' => 'Apply changes',
 	'mwe-sequencer-start-time' => 'Start time',
+	'mwe-sequencer-asset-source' => 'Source page',
 
 
 	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',
@@ -110,6 +114,7 @@ $messages['en'] = array(
 	'mwe-sequencer-save-no-changes' => 'There are no new edits to save',
 	'mwe-sequencer-save-summary' => 'Please enter a short summary of changes:',
 	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',
+
 	'mwe-sequencer-saving_wait' => 'Save in progress (please wait)',
 	'mwe-sequencer-save_done' => 'Save complete',
 

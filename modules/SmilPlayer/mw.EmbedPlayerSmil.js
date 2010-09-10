@@ -241,6 +241,7 @@ mw.EmbedPlayerSmil = {
 		// Check if we reached playSegmentEndTime and pause playback  
 		if( this.playSegmentEndTime && this.smilPlayTime >= this.playSegmentEndTime ) {
 			mw.log("monitor:: Reached playSegmentEndTime pause playback: " + this.playSegmentEndTime );
+			$j( this ).trigger( 'playSegmentEnd' );
 			this.playSegmentEndTime= null;
 			this.pause();
 			this.parent_monitor();
