@@ -23,8 +23,6 @@ class ApiArticleAssessment extends ApiBase {
 
 		// Query the latest ratings by this user for this page,
 		// possibly for an older revision
-		// TODO: Make this query saner once $wgArticleAssessmentRatingCount has been redone
-		// TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
 			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
@@ -64,7 +62,7 @@ class ApiArticleAssessment extends ApiBase {
 				$thisRating = $params["r{$rating}"];
 			}
 
-			$this->insertPageRating( $pageId, $i, ( $thisRating - $lastRating ),
+			$this->insertPageRating( $pageId, $rating, ( $thisRating - $lastRating ),
 					( $lastRating === false && $thisRating !== false )
 			);
 
