@@ -213,10 +213,12 @@ mw.SmilAnimate.prototype = {
 			break;
 			case 'img': 
 				this.transformImageForTime( smilElement, animateTime );
-			break;
+			break;			
 			case 'video':
-			case 'audio':
 				this.transformMediaForTime( smilElement, animateTime );
+			break;
+			case 'audio':
+				// audio has no frame transform ( only playback )
 			break;
 		}					
 	},
@@ -253,30 +255,30 @@ mw.SmilAnimate.prototype = {
 	 * Used to support video playback
 	 */
 	transformMediaForPlayback: function( smilElement, animateTime ){ 
-		var $vid = $j ( '#' + this.smil.getSmilElementPlayerID( smilElement ) );	
+		var $media = $j ( '#' + this.smil.getSmilElementPlayerID( smilElement ) );	
 		
 		// Set activePlayback flag ( informs edit and buffer actions ) 
 		$j( smilElement ).data('activePlayback', true)
 		
 		// Make the video is being displayed and get a pointer to the video element:
-		var vid = $vid.show().get( 0 );
+		var media = $media.show().get( 0 );
 		
 		// Set volume to master volume 
-		vid.volume = this.smil.embedPlayer.volume;
+		media.volume = this.smil.embedPlayer.volume;
 		
 		// Seek to correct time if off by more than 1 second 
 		// ( buffer delays management things insync below this range )
 		
 		// Check the buffer if we can play this time and the video is "paused" ( if so start playback )
 		if( this.smil.getBuffer().canPlayTime( smilElement, animateTime ) 
-			&& vid.paused
+			&& media.paused
 		) {
 			//mw.log( "transformMediaForPlayback:: should play:" + animateTime );						
-			vid.play();
+			media.play();
 			return ;
 		}		
 		// Else issue the initial "play" request
-		vid.play();		
+		media.play();		
 	},
 	
 	/**

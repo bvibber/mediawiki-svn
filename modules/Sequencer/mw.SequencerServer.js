@@ -108,7 +108,7 @@
 				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates ) 
-				_this.serverSmilXml =_this.currentSequencePage.sequenceXML;
+				_this.serverSmilXml = _this.currentSequencePage.sequenceXML ;
 				
 				// Cache the pre / post bits
 				
@@ -121,7 +121,7 @@
 				 _this.currentSequencePage.pageStart ="\nTo edit this sequence " + 
 					'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page'; 
 			}
-			return _this.currentSequencePage.pageStart  + 
+			return _this.currentSequencePage.pageStart + 
 				"\n\n<!-- " + SEQUENCER_PAYLOADKEY + "\n" + 
 				xmlString +
 				"\n\n " + SEQUENCER_PAYLOADKEY + " -->\n" + 
@@ -139,10 +139,17 @@
 			}			
 			// trim the output:
 			return {
-				'pageStart' :  pageText.substring(0, pageText.indexOf( startKey ) ),
-				'sequenceXML' :  pageText.substring( pageText.indexOf( startKey ) +  startKey.length, 
-						pageText.indexOf(endKey ) ),				
-				'pageEnd' : pageText.substring( pageText.indexOf(endKey) + endKey.length  ) 
+				'pageStart' :   $j.trim( 
+					pageText.substring(0, pageText.indexOf( startKey ) ) 
+				),					
+				'sequenceXML' :  $j.trim( 
+					pageText.substring( pageText.indexOf( startKey ) +  startKey.length, 
+										pageText.indexOf(endKey ) 
+									) 
+				),				
+				'pageEnd' : $j.trim( 
+					pageText.substring( pageText.indexOf(endKey) + endKey.length  )
+				)
 			}
 		},
 		
