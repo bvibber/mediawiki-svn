@@ -6,6 +6,8 @@
 
 //Wrap in mw closure
 ( function( mw ) {
+	
+	var SEQUENCER_PAYLOADKEY = '@gadgetSequencePayload@_$%^%';
 		
 	mw.SequencerServer = function( sequencer ) {
 		return this.init( sequencer );
@@ -100,20 +102,51 @@
 		 */
 		getSmilXml: function( callback ){
 			var _this = this; 						
-			mw.getTitleText( this.getApiUrl(), this.getTitleKey(), function( smilXml ){
-				// set smil to empty string if unset:
-				if(!smilXml )
-					smilXml = '';
-				
-				// Check for remote payload wrapper
-				smilXml = mw.getRemoteSequencerPayLoad( smilXml );
-				
+			mw.getTitleText( this.getApiUrl(), this.getTitleKey(), function( smilPage ){				
+				// Check for remote payload wrapper 
+				// XXX need to support multipe pages in single context 		
+				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates ) 
-				_this.serverSmilXml = smilXml;
-				callback( smilXml );	
+				_this.serverSmilXml =_this.currentSequencePage.sequenceXML;
+				
+				// Cache the pre / post bits
+				
+				callback( _this.serverSmilXml  );	
 			})
 		},		
+		wrapSequencerWikiText : function( xmlString ){
+			var _this = this;
+			if( !_this.currentSequencePage.pageStart ){
+				 _this.currentSequencePage.pageStart ="\nTo edit this sequence " + 
+					'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page'; 
+			}
+			return _this.currentSequencePage.pageStart  + 
+				"\n\n<!-- " + SEQUENCER_PAYLOADKEY + "\n" + 
+				xmlString +
+				"\n\n " + SEQUENCER_PAYLOADKEY + " -->\n" + 
+				_this.currentSequencePage.pageEnd;
+		},
+		
+		parseSequencerPage : function( pageText ){
+			var _this = this;
+			var startKey = '<!-- ' + SEQUENCER_PAYLOADKEY;
+			var endKey = SEQUENCER_PAYLOADKEY + ' -->';
+			// If the key is not found fail
+			if( !pageText || pageText.indexOf( startKey ) == -1  ||  pageText.indexOf(endKey) == -1 ){
+				mw.log("Error could not find sequence payload");
+				return '';
+			}			
+			// trim the output:
+			return {
+				'pageStart' :  pageText.substring(0, pageText.indexOf( startKey ) ),
+				'sequenceXML' :  pageText.substring( pageText.indexOf( startKey ) +  startKey.length, 
+						pageText.indexOf(endKey ) ),				
+				'pageEnd' : pageText.substring( pageText.indexOf(endKey) ) 
+			}
+		},
+		
+		
 		getTemplateText: function( templateTitle, callback ){
 			var _this = this; 	
 			if( this.templateTextCache[templateTitle] ){
@@ -159,7 +192,7 @@
 					'action' : 'edit',
 					'summary' : saveSummary,
 					'title' : _this.titleKey,
-					'text' : mw.getRemoteSequencerPageHelper( sequenceXML ),
+					'text' : _this.wrapSequencerWikiText( sequenceXML ),
 					'token': token
 				};
 				mw.getJSON( _this.getApiUrl(), request, function( data ) {
@@ -175,7 +208,8 @@
 					}
 				})
 			})
-		},	
+		},			
+		
 		/**
 		 * Check if the published file is up-to-date with the saved sequence 
 		 * ( higher page revision for file than sequence )
