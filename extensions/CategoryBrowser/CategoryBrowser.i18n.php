@@ -73,8 +73,8 @@ Please change or upgrade your browser, if possible.',
 	'cb_all_op' => 'All',
 	'cb_lbracket_op' => '(', # do not translate or duplicate this message to other languages
 	'cb_rbracket_op' => ')', # do not translate or duplicate this message to other languages
-	'cb_or_op' => 'or', # do not translate or duplicate this message to other languages
-	'cb_and_op' => 'and', # do not translate or duplicate this message to other languages
+	'cb_or_op' => 'or',
+	'cb_and_op' => 'and',
 	'cb_ge_op' => '>=', # do not translate or duplicate this message to other languages
 	'cb_le_op' => '<=', # do not translate or duplicate this message to other languages
 	'cb_eq_op' => '=', # do not translate or duplicate this message to other languages
@@ -159,6 +159,8 @@ $messages['ru'] = array(
 	'cb_cat_files' => 'файлов',
 	'cb_apply_button' => 'Применить',
 	'cb_all_op' => 'Все',
+	'cb_or_op' => 'или',
+	'cb_and_op' => 'и',
 	'cb_edit_left_hint' => 'Переместить влево, если возможно',
 	'cb_edit_right_hint' => 'Переместить вправо, если возможно',
 	'cb_edit_remove_hint' => 'Удалить, если возможно',
