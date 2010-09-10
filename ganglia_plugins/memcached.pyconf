@@ -71,12 +71,12 @@ collection_group {
         }
 
         metric {
-                name = 'minimum_slab_age'
+                name = 'minimum_age'
                 title = 'Minimum age of items in the cache'
         }
 
         metric {
-                name = 'median_slab_age'
+                name = 'median_age'
                 title = 'Median age of items in the cache'
         }
 }

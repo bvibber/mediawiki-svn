@@ -11,7 +11,7 @@ import memcache, math
 stats_cache = {}
 items_cache = {}
 stats_descriptions = { 'curr_items': 'Number of items stored', 'bytes': 'Number of bytes used to store items', 'curr_connectons': 'Number of clients connected', 'global_hitrate': 'Hitrate', 'evictions': 'Number of evictions', 'threads': 'Number of worker threads requested', 'listen_disabled_num': 'Number of times connection limit hit', 'cmd_flush': 'Number of times flush_all called' }
-items_descriptions = { 'median_slab_age': 'Median age of items in the cache', 'minimum_slab_age': 'Minimum age of items in the cache', 'median_evictions': 'Median number of evictions before expiration', 'maximum_evictions': 'Maximum number of evictions before expiration', 'median_outofmemory': 'Median number of out of memory errors', 'maximum_outofmemory': 'Maximum number out of memory errors' }
+items_descriptions = { 'median_age': 'Median age of items in the cache', 'minimum_age': 'Minimum age of items in the cache', 'median_evictions': 'Median number of evictions before expiration', 'maximum_evictions': 'Maximum number of evictions before expiration', 'median_outofmemory': 'Median number of out of memory errors', 'maximum_outofmemory': 'Maximum number out of memory errors' }
 host = 'localhost'
 port = '11211'
 
