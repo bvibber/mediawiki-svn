@@ -399,9 +399,9 @@ HEREDOC;
 var showFCKEditor = ' . $this->showFCKEditor . ';
 var popup = false; // pointer to popup document
 var firstLoad = true;
-var editorMsgOn = "' . wfMsg( 'textrichditor' ) . '";
-var editorMsgOff = "' . wfMsg( 'tog-riched_disable' ) . '";
-var editorLink = "' . ( ( $this->showFCKEditor & RTE_VISIBLE ) ? wfMsg( 'tog-riched_disable' ) : wfMsg( 'textrichditor' ) ) . '";
+var editorMsgOn = "' . Xml::escapeJsString( wfMsgHtml( 'textrichditor' ) ) . '";
+var editorMsgOff = "' . Xml::escapeJsString( wfMsgHtml( 'tog-riched_disable' ) ) . '";
+var editorLink = "' . ( ( $this->showFCKEditor & RTE_VISIBLE ) ? Xml::escapeJsString( wfMsgHtml( 'tog-riched_disable' ) ) : Xml::escapeJsString( wfMsgHtml( 'textrichditor' ) ) ) . '";
 var saveSetting = ' . ( $wgUser->getOption( 'riched_toggle_remember_state', $wgDefaultUserOptions['riched_toggle_remember_state']  ) ?  1 : 0 ) . ';
 var RTE_VISIBLE = ' . RTE_VISIBLE . ';
 var RTE_TOGGLE_LINK = ' . RTE_TOGGLE_LINK . ';
@@ -427,7 +427,7 @@ oFCKeditor.Config["showsource"] = ' . ( ( $showSource ) ? 'true' : 'false' ) . '
 ';
 		$script .= '</script>';
 
-		$newWinMsg = wfMsg( 'rich_editor_new_window' );
+		$newWinMsg = Xml::escapeJsString( wfMsgHtml( 'rich_editor_new_window' ) );
 		$script .= <<<HEREDOC
 <script type="text/javascript">
 
