@@ -186,31 +186,6 @@ class PagedTiffImage {
 		return $this->_meta;
 	}
 
-	private function addPageEntry( &$entry, &$metadata, &$prevPage ) {
-		if ( !isset( $entry['page'] ) ) {
-			$entry['page'] = $prevPage +1;
-		} else {
-			if ( $prevPage >= $entry['page'] ) {
-				$metadata['errors'][] = "inconsistent page numbering in TIFF directory";
-				return false;
-			} 
-		}
-
-		if ( isset( $entry['width'] ) && isset( $entry['height'] ) ) {
-			$prevPage = max($prevPage, $entry['page']);
-
-			if ( !isset( $entry['alpha'] ) ) {
-				$entry['alpha'] = 'false';
-			}
-
-			$entry['pixels'] = $entry['height'] * $entry['width'];
-			$metadata['page_data'][$entry['page']] = $entry;
-		}
-
-		$entry = array();
-		return true;
-	}
-
 	/**
 	 * helper function of retrieveMetaData().
 	 * parses shell return from tiffinfo-command into an array.
@@ -221,27 +196,25 @@ class PagedTiffImage {
 		$dump = preg_replace( '/ Image Length:/', "\n  Image Length:", $dump ); #HACK: width and length are given on a single line...
 		$rows = preg_split('/[\r\n]+\s*/', $dump);
 
-		$data = array();
-		$data['page_data'] = array();
+		$state = new PagedTiffInfoParserState();
 
 		$ignoreIFDs = array();
-		$entry = array();
-
 		$ignore = false;
-		$prevPage = 0;
 
 		foreach ( $rows as $row ) {
 			$row = trim( $row );
 
-			if ( preg_match('/^<|^$/', $row) ) {
+			# ignore XML rows
+			if ( preg_match('/^<|^$/', $row) ) { 
 				continue;
 			}
 
 			$error = false;
 
+			# handle fatal errors
 			foreach ( $wgTiffTiffinfoRejectMessages as $pattern ) {
 				if ( preg_match( $pattern, trim( $row ) ) ) {
-					$data['errors'][] = $row;
+					$state->addError( $row );
 					$error = true;
 					break;
 				}
@@ -250,19 +223,25 @@ class PagedTiffImage {
 			if ( $error ) continue;
 
 			if ( preg_match('/^TIFF Directory at offset 0x[a-f0-9]+ \((\d+)\)/', $row, $m) ) {
+				# new IFD starting, flush previous page
+
 				if ( $ignore ) {
-					$entry = array();
-				} else if ( $entry ) {
-					$ok = $this->addPageEntry($entry, $data, $prevPage);
+					$state->resetPage();
+				} else {
+					$ok = $state->finishPage();
+
 					if ( !$ok ) {
 						$error = true;
 						continue;
 					}
 				}
 
+				# check if the next IFD is to be ignored
 				$offset = (int)$m[1];
 				$ignore = !empty( $ignoreIFDs[ $offset ] );
 			} else if ( preg_match('#^(TIFF.*?Directory): (.*?/.*?): (.*)#i', $row, $m) ) {
+				# handle warnings
+
 				$bypass = false; 
 				$msg = $m[3];
 
@@ -274,23 +253,25 @@ class PagedTiffImage {
 				}
 
 				if ( !$bypass ) {
-					$data['warnings'][] = $msg;
+					$state->addWarning( $msg );
 				}
 			} else if ( preg_match('/^\s*(.*?)\s*:\s*(.*?)\s*$/', $row, $m) ) {
+				# handle key/value pair
+
 				$key = $m[1];
 				$value = $m[2];
 
 				if ( $key == 'Page Number' && preg_match('/(\d+)-(\d+)/', $value, $m) ) {
-					$data['page_amount'] = (int)$m[2];
-					$entry['page'] = (int)$m[1] +1;
+					$state->setFileProperty('page_amount', (int)$m[2]);
+					$state->setPageProperty('page', (int)$m[1] +1);
 				} else if ( $key == 'Samples/Pixel' ) {
-					if ($value == '4') $entry['alpha'] = 'true';
+					if ($value == '4') $state->setPageProperty('alpha', 'true');
 				} else if ( $key == 'Extra samples' ) {
-					if (preg_match('.*alpha.*', $value)) $entry['alpha'] = 'true';
+					if (preg_match('.*alpha.*', $value)) $state->setPageProperty('alpha', 'true');
 				} else if ( $key == 'Image Width' || $key == 'PixelXDimension' ) {
-					$entry['width'] = (int)$value;
+					$state->setPageProperty('width', (int)$value);
 				} else if ( $key == 'Image Length' || $key == 'PixelYDimension' ) {
-					$entry['height'] = (int)$value;
+					$state->setPageProperty('height', (int)$value);
 				} else if ( preg_match('/.*IFDOffset/', $key) ) {
 					# ignore extra IFDs, see <http://www.awaresystems.be/imaging/tiff/tifftags/exififd.html>
 					# Note: we assume that we will always see the reference before the actual IFD, so we know which IFDs to ignore
@@ -303,18 +284,9 @@ class PagedTiffImage {
 
 		}
 
-		if ( $entry && !$ignore ) {
-			$ok = $this->addPageEntry($entry, $data, $prevPage);
-		}
+		$state->finish( !$ignore );
 
-		if ( !isset( $data['page_amount'] ) ) {
-			$data['page_amount'] = count( $data['page_data'] );
-		}
-
-		if ( ! $data['page_data'] ) {
-			$data['errors'][] = 'no page data found in tiff directory!';
-		}
-
+		$data = $state->getMetadata();
 		return $data;
 	}
 
@@ -342,18 +314,17 @@ class PagedTiffImage {
 	protected function parseIdentifyOutput( $dump ) {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
 
-		$data = array();
+		$state = new PagedTiffInfoParserState();
+
 		if ( strval( $dump ) == '' ) {
-			$data['errors'][] = "no metadata";
-			return $data;
+			$state->addError( "no metadata" );
+			return $state->getMetadata();
 		}
 
 		$infos = null;
 		preg_match_all( '/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER );
-		$data['page_amount'] = count( $infos );
-		$data['page_data'] = array();
 		foreach ( $infos as $info ) {
-			$entry = array();
+			$state->resetPage();
 			$lines = explode( "\n", $info[1] );
 			foreach ( $lines as $line ) {
 				if ( trim( $line ) == '' ) {
@@ -363,22 +334,21 @@ class PagedTiffImage {
 				if ( trim( $parts[0] ) == 'alpha' && trim( $parts[1] ) == '%A' ) {
 					continue;
 				}
-				if ( trim( $parts[0] ) == 'alpha2' && !isset( $entry['alpha'] ) ) {
+				if ( trim( $parts[0] ) == 'alpha2' && !$state->hasPageProperty( 'alpha' ) ) {
 					switch( trim( $parts[1] ) ) {
 						case 'DirectClassRGBMatte':
 						case 'DirectClassRGBA':
-							$entry['alpha'] = 'true';
+							$state->setPageProperty('alpha', 'true');
 							break;
 						default:
-							$entry['alpha'] = 'false';
+							$state->setPageProperty('alpha', 'false');
 							break;
 					}
 					continue;
 				}
-				$entry[trim( $parts[0] )] = trim( $parts[1] );
+				$state->setPageProperty( trim( $parts[0] ), trim( $parts[1] ) );
 			}
-			$entry['pixels'] = $entry['height'] * $entry['width'];
-			$data['page_data'][$entry['page']] = $entry;
+			$state->finishPage();
 		}
 
 		
@@ -393,7 +363,7 @@ class PagedTiffImage {
 				$knownError = false;
 				foreach ( $wgTiffIdentifyRejectMessages as $msg ) {
 					if ( preg_match( $msg, trim( $error ) ) ) {
-						$data['errors'][] = $error;
+						$state->addError( $error );
 						$knownError = true;
 						break;
 					}
@@ -402,17 +372,109 @@ class PagedTiffImage {
 					// ignore messages that match $wgTiffIdentifyBypassMessages
 					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
 						if ( preg_match( $msg, trim( $error ) ) ) {
-							// $data['warnings'][] = $error;
 							$knownError = true;
 							break;
 						}
 					}
 				}
 				if ( !$knownError ) {
-					$data['warnings'][] = $error;
+					$state->addWarning( $error );
 				}
 			}
 		}
+
+		$state->finish();
+
+		$data = $state->getMetadata();
 		return $data;
+	}
+}
+
+class PagedTiffInfoParserState {
+	var $metadata; # all data
+	var $page; # current page
+	var $prevPage;
+
+	function __construct() {
+	    $this->metadata = array();
+	    $this->page = array();
+	    $this->prevPage = 0;
+
+	    $this->metadata['page_data'] = array();
+	}
+
+	function finish( $finishPage = true ) {
+		if ( $finishPage ) {
+			$this->finishPage( );
+		}
+
+		if ( !isset( $this->metadata['page_amount'] ) ) {
+			$this->metadata['page_amount'] = count( $this->metadata['page_data'] );
+		}
+
+		if ( ! $this->metadata['page_data'] ) {
+			$this->metadata['errors'][] = 'no page data found in tiff directory!';
+		}
+	}
+
+	function resetPage( ) {
+		$this->page = array();
+	}
+
+	function finishPage( ) {
+		if ( !isset( $this->page['page'] ) ) {
+			$this->page['page'] = $this->prevPage +1;
+		} else {
+			if ( $this->prevPage >= $this->page['page'] ) {
+				$this->metadata['errors'][] = "inconsistent page numbering in TIFF directory";
+				return false;
+			} 
+		}
+
+		if ( isset( $this->page['width'] ) && isset( $this->page['height'] ) ) {
+			$this->prevPage = max($this->prevPage, $this->page['page']);
+
+			if ( !isset( $this->page['alpha'] ) ) {
+				$this->page['alpha'] = 'false';
+			}
+
+			$this->page['pixels'] = $this->page['height'] * $this->page['width'];
+			$this->metadata['page_data'][$this->page['page']] = $this->page;
+		}
+
+		$this->page = array();
+		return true;
+	}
+
+	function setPageProperty( $key, $value ) {
+		$this->page[$key] = $value;
+	}
+
+	function hasPageProperty( $key ) {
+		return isset( $this->page[$key] ) && ! is_null( $this->page[$key] );
+	}
+
+	function setFileProperty( $key, $value ) {
+		$this->metadata[$key] = $value;
+	}
+
+	function hasFileProperty( $key, $value ) {
+		return isset( $this->metadata[$key] ) && ! is_null( $this->metadata[$key] );
+	}
+
+	function addError( $message ) {
+		$this->metadata['errors'][] = $message;
+	}
+
+	function addWarning( $message ) {
+		$this->metadata['warnings'][] = $message;
+	}
+
+	function getMetadata( ) {
+		return $this->metadata;
+	}
+
+	function hasErrors() {
+		return !empty( $this->metadata['errors'] );
 	}
 }
