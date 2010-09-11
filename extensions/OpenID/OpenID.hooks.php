@@ -278,26 +278,35 @@ class OpenIDHooks {
 		return true;
 	}
 
-	public static function onLoadExtensionSchemaUpdates() {
-		global $wgDBtype, $wgUpdates, $wgExtNewTables;
-
+	public static function onLoadExtensionSchemaUpdates( $updater = null ) {
 		$base = dirname( __FILE__ );
-
-		if ( $wgDBtype == 'mysql' ) {
-			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
-			$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
-		} else if ( $wgDBtype == 'postgres' ) {
-			$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
-			# This doesn't work since MediaWiki doesn't use $wgUpdates when
-			# updating a PostgreSQL database
-			#$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+		if ( $updater === null ) { // < 1.17
+			global $wgDBtype, $wgUpdates, $wgExtNewTables;
+			if ( $wgDBtype == 'mysql' ) {
+				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.sql" );
+				$wgUpdates['mysql'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+			} else if ( $wgDBtype == 'postgres' ) {
+				$wgExtNewTables[] = array( 'user_openid', "$base/openid_table.pg.sql" );
+				# This doesn't work since MediaWiki doesn't use $wgUpdates when
+				# updating a PostgreSQL database
+				#$wgUpdates['postgres'][] = array( array( __CLASS__, 'makeUoiUserNotUnique' ) );
+			}
+		} else {
+			$dbPatch = "$base/" . ( $updater->getDB()->getType() == 'postgres' ?
+				'openid_table.pg.sql' : 'openid_table.sql' );
+			$updater->addExtensionUpdate( array( 'addTable', 'user_openid', $dbPatch ) );
+			$updater->addExtensionUpdate( array( array( __CLASS__, 'makeUoiUserNotUnique' ) ) );
 		}
 
 		return true;
 	}
 
-	public static function makeUoiUserNotUnique() {
-		$db = wfGetDB( DB_MASTER );
+	public static function makeUoiUserNotUnique( $updater = null ) {
+		if ( $updater === null ) {
+			$db = wfGetDB( DB_MASTER );
+		} else {
+			$db = $updater->getDB();
+		}
 		if ( !$db->tableExists( 'user_openid' ) )
 			return;
 
