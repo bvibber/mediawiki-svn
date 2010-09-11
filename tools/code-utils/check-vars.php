@@ -4,7 +4,7 @@
  * Checks a number of syntax conventions on variables from a valid PHP file.
  *
  * Run as:
- *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php -o -name LocalSettings.php \) -exec php tools/code-utils/check-vars.php \{\} +
+ *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php -o -name LocalSettings.php -o -name Parser?????.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
 
 require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
@@ -77,12 +77,9 @@ class CheckVars {
 					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers					
 					'$wgCanonicalNamespaceNames', # Namespace.php
 					'$wgContLang', # Setup.php
-					'$wgContLanguageCode', # Should probably be removed					
-					'$wgDBcataloged', # http://www.mediawiki.org/wiki/Special:Code/MediaWiki/45755#c7954
 					'$wgDeferredUpdateList', # Setup.php
 					'$wgExtModifiedFields', '$wgExtNewFields', '$wgExtNewIndexes', '$wgExtNewTables', # Updates
 					'$wgFeedClasses', # Defines.php, many uses					
-					'$wgIP', # Setup.php
 					'$wgLang', # Setup.php
 					'$wgLanguageNames', # Language.php, read by others
 					'$wgMemc', # Setup.php
@@ -122,7 +119,11 @@ class CheckVars {
 			'$wgHtmlEntities' => array( 'Sanitizer.php' ),
 			'$wgHtmlEntityAliases' => array( 'Sanitizer.php' ),
 			'$wgFullyInitialised' => array( /* Set */ 'Setup.php', /* read */ 'Exception.php' ),
+			'$wgContLanguageCode' => array( 'Setup.php' ),
 			'$wgUseLatin1' => array( 'FiveUpgrade.inc' ), # If you upgrade from MW < 1.5 it will be there
+			'$wgDatabase' => array( 'DatabaseUpdater.php' ),
+			'$wgExtPGNewFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
+			'$wgExtPGAlteredFields' => array( 'DatabaseUpdater.php', 'PostgresUpdater.php' ),
 			'$errs' => array( 'Installer.php' ),
 			'$mainListOpened' => array( 'Installer.php' ),
 			'$optionsWithArgs' => array( 'commandLine.inc' ),
@@ -194,7 +195,16 @@ class CheckVars {
 
 			if ( $lastMeaningfulToken[0] == T_OPEN_TAG && $token[0] == T_OPEN_TAG ) {
 				# See r69767
-				$this->warning( "$token[1] in line $token[2] after $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
+				$this->warning( "{$token[1]} in line {$token[2]} after {$lastMeaningfulToken[1]} in line {$lastMeaningfulToken[2]}" );
+			}
+			if ( $token == ';' ) {
+				if ( $lastMeaningfulToken == ';' ) {
+					# See r72751, warn on ;;
+					$this->warning( "Empty statement" );
+				} elseif ( $lastMeaningfulToken[0] == T_FOR ) {
+					# But not on infinte for loops: for ( ; ; )
+					$currentToken = array(';', ';', $lastMeaningfulToken[2] );
+				}
 			}
 
 			if ( $lastMeaningfulToken[0] == T_DECLARE && $token[0] == T_STRING ) {
