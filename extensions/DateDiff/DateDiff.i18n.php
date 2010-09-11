@@ -14,7 +14,7 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
-	'datediff-desc' => 'Takes two dates and returns all intermediary days'
+	'datediff-desc' => 'Takes two dates and returns all intermediate days'
 );
 
 /** German (Deutsch)
