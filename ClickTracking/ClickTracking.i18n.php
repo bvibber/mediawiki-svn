@@ -262,6 +262,11 @@ $messages['bg'] = array(
  * @author J Subhi
  */
 $messages['bjn'] = array(
+	'ct-expert-header' => 'Klik "mahir"',
+	'ct-intermediate-header' => 'Klik "manangah"',
+	'ct-beginner-header' => 'Klik "pamula"',
+	'ct-total-header' => 'Klik sabaraataan',
+	'ct-start-date' => 'Tanggal Bamula(YYYYMMDD)',
 	'ct-end-date' => 'Tanggal tuntung (YYYYMMDD)',
 	'ct-change-graph' => 'Ubah grapik',
 	'ct-beginner' => 'Pamula',
@@ -269,6 +274,8 @@ $messages['bjn'] = array(
 	'ct-expert' => 'Bisa',
 	'ct-editing' => 'Wayahini mambabak:',
 	'ct-anon-users' => 'Pamuruk kada bangaran',
+	'ct-user-contribs' => 'Sabarataan sumbangan pamuruk',
+	'ct-user-span' => 'Sumbangan pamuruk di babatas wayah',
 	'ct-and' => 'wan',
 );
 

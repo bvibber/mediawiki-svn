@@ -85,6 +85,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'prefswitch-link-anon' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+	'prefswitch-link-on' => 'ܦܢܝ ܠܝ ܠܒܬܪܐ',
 	'prefswitch-link-off' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
 );
 
