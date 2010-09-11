@@ -108,12 +108,13 @@ function efRewriteGalleryImage( $matches ) {
 /* Add javacsripts and stylesheets */
 function efSBTAddScripts( $out ) {
         global $slimboxThumbsFilesDir, $hasGallery;
-        // we don't want to load jQuery if there's no gallery here
-        if ( !$hasGallery ) return false;
+        
+        // We don't want to load jQuery if there's no gallery here.
+        //if ( !$hasGallery ) return false;
 
         $out->addScript( '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>' . "\n" );
         $out->addScript( '<script type="text/javascript" src="' . $slimboxThumbsFilesDir . '/js/slimbox2.js"></script>' . "\n" );
-        $out->addStyle( $slimboxThumbsFilesDir . '/css/slimbox2.css', 'screen' );
+        $out->addExtensionStyle( $slimboxThumbsFilesDir . '/css/slimbox2.css', 'screen' );
 
         // use thumb.php to resize pictures if browser window is smaller than the picture itself
         $out->addInlineScript( '$(document).ready(function(){

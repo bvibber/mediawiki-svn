@@ -17,4 +17,8 @@
 $slimboxDefaultWidth = 680;
 
 # Path of the Slimbox directory (string).
-$slimboxThumbsFilesDir = dirname( __FILE__ ) . '/slimbox';
+$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+$slimboxThumbsFilesDir 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SlimboxThumbs';
+unset( $useExtensionPath );
+
+$slimboxThumbsFilesDir .= '/slimbox';
