@@ -114,6 +114,7 @@ class PNGMetadataExtractor {
 						continue;
 					}
 
+					$items[3] = strtolower( $items[3] );
 					if ( $items[3] == '' ) {
 						// if no lang specified use x-default like in xmp.
 						$items[3] = 'x-default';
