@@ -44,7 +44,7 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
 	$m_count = count( $m_BreadCrumbs ) - 1;
 
 	# acquire a skin object:
-	$m_skin =& $wgUser->getSkin();
+	$m_skin = $wgUser->getSkin();
 	# build the breadcrumbs trail:
 	$m_trail = '<div id="BreadCrumbsTrail">';
 	for ( $i = 0; $i <= $m_count; $i++ ) {
