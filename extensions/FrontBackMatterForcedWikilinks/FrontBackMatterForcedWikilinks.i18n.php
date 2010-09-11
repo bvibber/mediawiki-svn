@@ -137,6 +137,16 @@ $messages['id'] = array(
 	'frontbackforced-forced' => '_(forced_wikilinks)',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'frontbackforced-desc' => 'ページやウィキリンクに連携された事象の前後に事柄を付加する',
+	'frontbackforced-front' => '_(前部の事象)',
+	'frontbackforced-back' => '_(後部の事象)',
+	'frontbackforced-forced' => '_(ウィキリンクに連携された事象)',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

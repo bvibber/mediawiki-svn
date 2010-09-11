@@ -352,8 +352,14 @@ $messages['ja'] = array(
  "$1"は認知されていない。',
 	'datatransclusion-missing-key' => 'キーが指定されていません。
 $2はデータソース$1において有効なキーです。',
+	'datatransclusion-bad-argument-by' => '無効なキーフィールドを指定しました。
+"$2"はデータソース"$1"におけるキーフィールドではありません。
+{{PLURAL:$4|有効なキー|有効なキーの内容}}: $3。',
+	'datatransclusion-missing-argument-key' => 'キーの値が指定されていません。
+２番目あるいは"key"引数が要求されています。',
 	'datatransclusion-missing-argument-template' => 'テンプレートが指定されていません。
 一番目または"template"引数が要求されています。',
+	'datatransclusion-record-not-found' => 'データソース$1において$2 = $3というようにマッチングする記録が見つかりませんでした。',
 	'datatransclusion-bad-template-name' => '間違ったテンプレート名: $1。',
 );
 

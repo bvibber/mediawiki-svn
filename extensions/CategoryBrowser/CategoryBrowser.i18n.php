@@ -267,6 +267,8 @@ Cambie ou actualice o seu navegador, se fose posible.',
 	'cb_cat_files' => 'ficheiros',
 	'cb_apply_button' => 'Aplicar',
 	'cb_all_op' => 'Todas',
+	'cb_or_op' => 'ou',
+	'cb_and_op' => 'e',
 	'cb_edit_left_hint' => 'Mover á esquerda, se fose posible',
 	'cb_edit_right_hint' => 'Mover á dereita, se fose posible',
 	'cb_edit_remove_hint' => 'Borrar, se fose posible',
@@ -304,6 +306,8 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 	'cb_cat_files' => 'files',
 	'cb_apply_button' => 'Applicar',
 	'cb_all_op' => 'Totes',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'e',
 	'cb_edit_left_hint' => 'Displaciar a sinistra, si possibile',
 	'cb_edit_right_hint' => 'Displaciar a dextra, si possibile',
 	'cb_edit_remove_hint' => 'Deler, si possibile',
@@ -320,9 +324,15 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 $messages['ja'] = array(
 	'categorybrowser' => 'カテゴリーブラウザ',
 	'cb_requires_javascript' => 'カテゴリーブラウザの拡張にはブラウザ上で有効にされたJavaScriptが必要である。',
+	'cb_ie6_warning' => '条件エディタはInternet Explorer 6.0以前のバージョンでは稼働しません。
+ただし、事前に定義された条件のブラウジングは正常に稼働するでしょう。 
+もし、可能であればブラウザを変更するか、アップデートしてください。',
 	'cb_show_no_parents_only' => '親のないカテゴリーのみを表示する',
 	'cb_cat_name_filter' => '名前によるカテゴリーの検索',
+	'cb_cat_name_filter_clear' => 'カテゴリ名フィルターをクリアするために押す',
+	'cb_cat_name_filter_ci' => '大文字、小文字を区別しない場合',
 	'cb_copy_line_hint' => '選択された式に演算子をコピーまたはペーストする場合は、[+] と[>+]ボタンを使用する',
+	'cb_has_parentcategories' => '親元のカテゴリー(いかなる場合においても)',
 	'cb_previous_items_link' => '前',
 	'cb_next_items_link' => '次',
 	'cb_next_items_stats' => '（$1から）',
@@ -363,6 +373,8 @@ $messages['lb'] = array(
 	'cb_cat_files' => 'Fichieren',
 	'cb_apply_button' => 'Applizéieren',
 	'cb_all_op' => 'All',
+	'cb_or_op' => 'oder',
+	'cb_and_op' => 'an',
 	'cb_edit_left_hint' => 'No lénks réckelen, wa méiglech',
 	'cb_edit_right_hint' => 'No riets réckelen, wa méiglech',
 	'cb_edit_remove_hint' => 'Läschen, wa méiglech',
@@ -405,6 +417,37 @@ $messages['mk'] = array(
 	'cb_edit_clear_hint' => 'Исчисти го тековниот израз (избери сè)',
 	'cb_edit_paste_hint' => 'Залепи го операторот во тековната позиција, ако може',
 	'cb_edit_paste_right_hint' => 'Залепи го операторот во следната позиција, ако може',
+);
+
+/** Dutch (Nederlands)
+ * @author Kjell
+ * @author SPQRobin
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'categorybrowser' => 'Categorieën doorbladeren',
+	'cb_cat_name_filter' => 'Op naam naar categorie zoeken:',
+	'cb_cat_name_filter_ci' => 'Hoofdletterongevoelig',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategorie|subcategorieën}}',
+	'cb_has_pages' => "$1 {{PLURAL:$1|pagina|pagina's}}",
+	'cb_has_files' => '$1 {{PLURAL:$1|bestand|bestanden}}',
+	'cb_has_parentcategories' => 'bovenliggende categorieën (als die bestaan)',
+	'cb_previous_items_link' => 'Vorige',
+	'cb_next_items_link' => 'Volgende',
+	'cb_next_items_stats' => '(van $1)',
+	'cb_cat_subcats' => 'subcategorieën',
+	'cb_cat_pages' => "pagina's",
+	'cb_cat_files' => 'bestanden',
+	'cb_apply_button' => 'Toepassen',
+	'cb_all_op' => 'Alles',
+	'cb_or_op' => 'of',
+	'cb_and_op' => 'en',
+	'cb_edit_left_hint' => 'Naar links verplaatsen, indien mogelijk',
+	'cb_edit_right_hint' => 'Naar rechts verplaatsen, indien mogelijk',
+	'cb_edit_remove_hint' => 'Verwijderen, indien mogelijk',
+	'cb_edit_copy_hint' => 'Operator naar klembord kopiëren',
+	'cb_edit_append_hint' => 'Operator na laatste positie invoegen',
+	'cb_edit_clear_hint' => 'Huidige expressie wissen (alles selecteren)',
 );
 
 /** Polish (Polski)

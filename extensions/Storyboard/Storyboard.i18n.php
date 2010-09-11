@@ -160,6 +160,14 @@ $messages['an'] = array(
 	'storyboard-language' => 'Idioma',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'storyboard-hide' => 'ܛܫܝ',
+	'storyboard-hideimage' => 'ܛܫܝ ܨܘܪܬܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

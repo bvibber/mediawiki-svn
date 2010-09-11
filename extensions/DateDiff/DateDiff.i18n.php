@@ -45,6 +45,13 @@ $messages['ia'] = array(
 	'datediff-desc' => 'Prende duo datas e retorna tote le dies inter illos',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'datediff-desc' => '２種類の日付を受け取って、すべての中間の日付を返す',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

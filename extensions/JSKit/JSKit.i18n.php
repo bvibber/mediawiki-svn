@@ -51,6 +51,13 @@ $messages['arz'] = array(
 	'jskit-desc' => 'يدمج مجموعة أدوات جافاسكريبت إلى صفحة ويكى',
 );
 
+/** Belarusian (Беларуская)
+ * @author Хомелка
+ */
+$messages['be'] = array(
+	'jskit-desc' => 'Інтэграцыя js-камплекту інструментаў на вікі-старонку',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -315,6 +315,7 @@ $1',
  * @author Basharh
  */
 $messages['arc'] = array(
+	'sign-list-hideemail' => 'ܠܐ ܓܠܚ ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'sign-viewfield-country' => 'ܐܬܪܐ',
 	'sign-viewfield-options' => 'ܓܒܝܬ̈ܐ',
 );
@@ -2778,6 +2779,7 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
 	'sign-viewfield-country' => 'Land',
 	'sign-viewfield-zip' => 'Postcode',
 	'sign-viewfield-ip' => 'IP-Adress',
+	'sign-viewfield-agent' => 'Benotzeragent',
 	'sign-viewfield-phone' => 'Telefonsnummer',
 	'sign-viewfield-email' => 'E-Mail',
 	'sign-viewfield-age' => 'Alter',
@@ -2803,6 +2805,7 @@ Liest dat ganzt Dokument duerch a wann Dir dozou Är Ënnerstëtzung gi wëllt d
 	'sign-detail-strike' => 'Ënnerschreft duerchsträichen',
 	'sign-reviewsig' => 'Ënnerschrëft nokucken',
 	'sign-review-comment' => 'Bemierkung',
+	'sign-submitreview' => 'Bewäertung fortschécken',
 	'sign-uniquequery-similarname' => 'Ähnlechen Numm',
 	'sign-uniquequery-similaraddress' => 'Ähnlech Adress',
 	'sign-uniquequery-similarphone' => 'Ähnlech Telefonsnummer',

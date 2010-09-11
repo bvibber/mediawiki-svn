@@ -42,6 +42,13 @@ $messages['ar'] = array(
 	'stalkerlog-log-text' => 'هذا سجل بعمليات تسجيل الدخول والخروج للمستخدمين.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'stalkerlog-log-login' => 'ܥܠܝܠܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

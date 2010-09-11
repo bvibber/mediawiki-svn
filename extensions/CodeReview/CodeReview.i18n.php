@@ -5503,6 +5503,7 @@ Resumé vun der Ännerung:
 
 $4',
 	'code-stats' => 'Statistiken',
+	'code-stats-staus-breakdown' => 'Zuel vun de Versioune pro Statut',
 	'code-stats-fixme-breakdown' => 'Opdeelung vun de FixMe pro Auteur',
 	'code-stats-count' => 'Zuel vun de Versiounen',
 	'repoadmin-new-button' => 'Uleeën',

@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'interlanguage-desc' => 'يجلب الوصلات بين اللغات من ويكي آخر',
 );
 
+/** Belarusian (Беларуская)
+ * @author Хомелка
+ */
+$messages['be'] = array(
+	'interlanguage-desc' => 'Пераносіць міжмоўныя спасылкі з іншых вікі',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

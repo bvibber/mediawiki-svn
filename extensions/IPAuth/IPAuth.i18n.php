@@ -37,6 +37,13 @@ $messages['ar'] = array(
 	'ipauth-desc' => 'دخول تلقائي من عناوين آيبي معينة',
 );
 
+/** Belarusian (Беларуская)
+ * @author Хомелка
+ */
+$messages['be'] = array(
+	'ipauth-desc' => 'Аўтаматычны ўваход з фіксаваных IP адрасоў',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
