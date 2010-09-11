@@ -294,7 +294,7 @@ class OpenIDHooks {
 		} else {
 			$dbPatch = "$base/" . ( $updater->getDB()->getType() == 'postgres' ?
 				'openid_table.pg.sql' : 'openid_table.sql' );
-			$updater->addExtensionUpdate( array( 'addTable', 'user_openid', $dbPatch ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'user_openid', $dbPatch, true ) );
 			$updater->addExtensionUpdate( array( array( __CLASS__, 'makeUoiUserNotUnique' ) ) );
 		}
 
