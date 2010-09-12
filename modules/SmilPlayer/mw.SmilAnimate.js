@@ -39,7 +39,6 @@ mw.SmilAnimate.prototype = {
 	
 	/**
 	 * Checks if assets are insync 
-	 *  re
 	 */
 	getPlaybackSyncDelta: function( time ){
 		var _this = this;
