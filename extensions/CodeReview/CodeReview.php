@@ -165,25 +165,28 @@ $wgCRUDPPrefix = '';
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
-function efCodeReviewSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, /*$wgExtPGNewFields,*/ $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
+function efCodeReviewSchemaUpdates( $updater ) {
 	$base = dirname( __FILE__ );
-	if ( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
-		$wgExtNewFields[] = array( 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql" );
-		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
+	switch ( $updater->getDB()->getType() ) {
+	case 'mysql':
+		$updater->addExtensionUpdate( array( 'addTable', 'code_rev', "$base/codereview.sql", true ) ); // Initial install tables
+		$updater->addExtensionUpdate( array( 'addField', 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql", true ) );
+		$updater->addExtensionUpdate( array( 'addIndex', 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql", true ) );
 
-		// $wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
+		// $updater->addExtensionUpdate( array( 'addField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_status.sql", true ) ); // FIXME FIXME this is a change to options... don't know how
 
-		if ( !update_row_exists( 'add old to code_rev enum' ) ) {
-			$wgExtModifiedFields[] = array( 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql" );
+		if ( !$updater->updateRowExists( 'add old to code_rev enum' ) ) {
+			$updater->addExtensionUpdate( array( 'modifyField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql", true ) );
 		}
 
-		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
-	} elseif ( $wgDBtype == 'sqlite' ) {
-		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" );
-	} elseif ( $wgDBtype == 'postgres' ) {
+		$updater->addExtensionUpdate( array( 'addTable', 'code_bugs', "$base/archives/code_bugs.sql", true ) );
+		break;
+	case 'sqlite':
+		$updater->addExtensionUpdate( array( 'addTable', 'code_rev', "$base/codereview.sql", true ) );
+		break;
+	case 'postgres':
 		// TODO
+		break;
 	}
 	return true;
 }
