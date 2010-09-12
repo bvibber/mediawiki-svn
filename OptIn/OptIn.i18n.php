@@ -809,6 +809,7 @@ $messages['bjn'] = array(
 	'optin-submit-feedback' => 'Bariakan kitihan mantuk',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Kada',
+	'optin-survey-answer-whyoptout-other' => 'Alasan nang lain:',
 );
 
 /** Bengali (বাংলা)
