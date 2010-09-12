@@ -189,6 +189,17 @@ $messages['id'] = array(
 	'semanticformsinputs-wrongformat' => 'Format salah.',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'semanticformsinputs-wrongformat' => '間違った形式です。',
+	'semanticformsinputs-close' => '閉じる',
+	'semanticformsinputs-prev' => '前へ',
+	'semanticformsinputs-next' => '次へ',
+	'semanticformsinputs-today' => '今日',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

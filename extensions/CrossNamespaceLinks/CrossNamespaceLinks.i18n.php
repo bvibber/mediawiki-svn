@@ -17,12 +17,19 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Lloffiwr
  * @author Meno25
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
+	'crossnamespacelinks' => 'Title of [http://en.wikipedia.org/wiki/Special:CrossNamespaceLinks special page].',
 	'crossnamespacelinks-desc' => '{{desc}}',
 	'crossnamespacelinks-summary' => '{{Identical|Main namespace}}',
+	'crossnamespacelinkstext' => 'Entry in list of cross-namespace links, for example on [http://en.wikipedia.org/wiki/Special:CrossNamespaceLinks Wikipedia].
+
+*$1 is a page name
+*$2 is the number of links
+*$3 is a namespace',
 );
 
 /** Afrikaans (Afrikaans)
@@ -991,6 +998,13 @@ $messages['sv'] = array(
 	'crossnamespacelinks-desc' => 'Skapar en [[Special:CrossNamespaceLinks|lista över länkar mellan namnrymder]] som inte borde finnas på {{SITENAME}}',
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'crossnamespacelinks' => 'Viungo vinavyoelekea eneo lingine la wiki',
 );
 
 /** Tamil (தமிழ்)

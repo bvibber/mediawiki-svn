@@ -575,9 +575,9 @@ $messages['pt'] = array(
 # * Nome da página
 # Páginas desbloqueadas devem começar com um asterisco (*) para serem consideradas,
 # tudo o resto é considerado um comentário
-# Os nomes das páginas podem ser [[links]] e são sensíveis à maiúsculas e minúsculas
-# A respectiva página de discussão será também automaticamente desbloqueada
-# Veja http://www.mediawiki.org/wiki/Extension:EditSubpages para mais informação
+# Os nomes das páginas podem ser [[links]] e distingue-se maiúsculas de minúsculas
+# A respectiva página de discussão será também desbloqueada automaticamente
+# Para mais informações, consulte http://www.mediawiki.org/wiki/Extension:EditSubpages
   #</pre><!-- deixe esta linha como está -->',
 );
 

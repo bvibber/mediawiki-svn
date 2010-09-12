@@ -233,11 +233,37 @@ $messages['es'] = array(
 );
 
 /** French (Français)
+ * @author Grondin
  * @author The Evil IP address
  */
 $messages['fr'] = array(
+	'categorybrowser' => 'Navigateur de catégories',
+	'cb_show_no_parents_only' => 'Afficher uniquement les catégories sans catégorie-mère',
+	'cb_cat_name_filter' => 'Recherche de catégories par le nom :',
+	'cb_cat_name_filter_clear' => 'Appuyer pour effacer le filtre de nom de catégorie',
+	'cb_cat_name_filter_ci' => 'Casse insensible',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|sous-catégorie|sous-catégories}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|page|pages}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|fichier|fichiers}}',
+	'cb_has_parentcategories' => 'Catégorie mère (si elle existe)',
+	'cb_previous_items_link' => 'Précédent',
+	'cb_next_items_link' => 'Suivant',
+	'cb_next_items_stats' => '(à partir de $1)',
+	'cb_cat_subcats' => 'sous-catégories',
+	'cb_cat_pages' => 'pages',
+	'cb_cat_files' => 'fichiers',
+	'cb_apply_button' => 'Appliquer',
+	'cb_all_op' => 'Toutes',
 	'cb_or_op' => 'ou',
 	'cb_and_op' => 'et',
+	'cb_edit_left_hint' => 'Déplacer à gauche, si possible',
+	'cb_edit_right_hint' => 'Déplacer à droite, si possible',
+	'cb_edit_remove_hint' => 'Supprimer, si possible',
+	'cb_edit_copy_hint' => "Copier l'opérateur vers le presse-papier",
+	'cb_edit_append_hint' => "Insérer l'opérateur en dernière position",
+	'cb_edit_clear_hint' => 'Effacer la présente expression (tout sélectionner)',
+	'cb_edit_paste_hint' => "Coller, si possible, l'opérateur à cet endroit",
+	'cb_edit_paste_right_hint' => "Coller, si possible, l'opérateur à la position suivante",
 );
 
 /** Galician (Galego)
@@ -332,6 +358,9 @@ $messages['ja'] = array(
 	'cb_cat_name_filter_clear' => 'カテゴリ名フィルターをクリアするために押す',
 	'cb_cat_name_filter_ci' => '大文字、小文字を区別しない場合',
 	'cb_copy_line_hint' => '選択された式に演算子をコピーまたはペーストする場合は、[+] と[>+]ボタンを使用する',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|サブカテゴリ|総サブカテゴリ数}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|ページ|総ページ数}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|ファイル|総ファイル数}}',
 	'cb_has_parentcategories' => '親元のカテゴリー(いかなる場合においても)',
 	'cb_previous_items_link' => '前',
 	'cb_next_items_link' => '次',
@@ -358,6 +387,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'categorybrowser' => 'Kategoriebrowser',
+	'cb_requires_javascript' => "D'Erweiderung Kategriebrowser brauch ageschalte Javascript am Browser.",
 	'cb_show_no_parents_only' => 'Nëmme Kategorie weisen déi keng Kategorie driwwer hunn',
 	'cb_cat_name_filter' => 'Sich no enger Kategorie nom Numm:',
 	'cb_cat_name_filter_clear' => 'Dréckt fir de Filter vum Kategoriennumm eidelzemaachen',
@@ -426,8 +456,16 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'categorybrowser' => 'Categorieën doorbladeren',
+	'categorybrowser-desc' => 'Maakt een [[Special:CategoryBrowser|speciale pagina]] beschikbaar om categorieën met de meeste elementen te selecteren en ze te verkennen via een AJAX-interface',
+	'cb_requires_javascript' => 'De uitbreiding voor het doorbladeren van categorieën vereist dat JavaScript is ingeschakeld in de browser.',
+	'cb_ie6_warning' => 'De tekstverwerker voor condities werkt niet in Internet Explorer 6.0 of eerdere versies.
+Vooraf gedefinieerde voorwaarden doorbladeren hoort normaal te werken.
+Gebruik een andere browser of werkt deze bij, als mogelijk.',
+	'cb_show_no_parents_only' => 'Alleen categorieën weergeven die geen bovenliggende categorieën hebben',
 	'cb_cat_name_filter' => 'Op naam naar categorie zoeken:',
+	'cb_cat_name_filter_clear' => 'Klik om het categorienaamfilter te verwijderen',
 	'cb_cat_name_filter_ci' => 'Hoofdletterongevoelig',
+	'cb_copy_line_hint' => 'Gebruik de knoppen [+] en [>+] om de operators in de geselecteerde expressie te kopiëren en plakken',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategorie|subcategorieën}}',
 	'cb_has_pages' => "$1 {{PLURAL:$1|pagina|pagina's}}",
 	'cb_has_files' => '$1 {{PLURAL:$1|bestand|bestanden}}',
@@ -448,6 +486,8 @@ $messages['nl'] = array(
 	'cb_edit_copy_hint' => 'Operator naar klembord kopiëren',
 	'cb_edit_append_hint' => 'Operator na laatste positie invoegen',
 	'cb_edit_clear_hint' => 'Huidige expressie wissen (alles selecteren)',
+	'cb_edit_paste_hint' => 'Als mogelijk de operator op de huidige positie invoegen',
+	'cb_edit_paste_right_hint' => 'Als mogelijk de operator op de volgende positie invoegen',
 );
 
 /** Polish (Polski)
@@ -496,10 +536,34 @@ Për piasì cangia o modìfica tò browser, se possìbil.",
 	'cb_edit_paste_right_hint' => "Còpia operador ant la posission d'apress, se possìbil",
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'categorybrowser' => 'Navegação de categorias',
+	'categorybrowser-desc' => 'Fornece uma [[Special:CategoryBrowser|página especial]] para filtrar as categorias mais povoadas e navegá-las com uma interface AJAX',
+	'cb_requires_javascript' => 'A extensão para navegação de categorias necessita que o JavaScript tenha sido activado no seu browser.',
+	'cb_ie6_warning' => 'O editor de condições não funciona no Internet Explorer versão 6.0 ou anteriores.
+No entanto, a navegação de condições predefinidas deve funcionar normalmente.
+Se for possível, mude ou actualize o seu browser, por favor.',
+	'cb_show_no_parents_only' => 'Mostrar só as categorias que não pertencem a nenhuma categoria',
+	'cb_cat_name_filter' => 'Procurar a categoria pelo nome:',
+	'cb_cat_name_filter_clear' => 'Clique para limpar o filtro do nome da categoria',
+	'cb_cat_name_filter_ci' => 'Sem distinguir maiúsculas de minúsculas',
+	'cb_copy_line_hint' => 'Use os botões [+] e [>+] para copiar e inserir operadores na expressão seleccionada',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoria|subcategorias}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|ficheiro|ficheiros}}',
+	'cb_next_items_stats' => ' (de $1)',
+	'cb_edit_paste_hint' => 'Inserir o operador na posição actual, se possível',
+	'cb_edit_paste_right_hint' => 'Inserir o operador na posição seguinte, se possível',
+);
+
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
  */
 $messages['pt-br'] = array(
+	'categorybrowser' => 'Navegador de categorias',
 	'cb_cat_name_filter' => 'Procurar categoria por  nome:',
 	'cb_cat_name_filter_ci' => 'Não diferenciar maiúsculas/minúsculas',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoria|subcategorias}}',
@@ -507,12 +571,14 @@ $messages['pt-br'] = array(
 	'cb_has_files' => '$1 {{PLURAL:$1|arquivo|arquivos}}',
 	'cb_previous_items_link' => 'Anteriores',
 	'cb_next_items_link' => 'Próximos',
-	'cb_next_items_stats' => '$1 (de $2)',
+	'cb_next_items_stats' => ' (de $1)',
 	'cb_cat_subcats' => 'subcategorias',
 	'cb_cat_pages' => 'páginas',
 	'cb_cat_files' => 'arquivos',
 	'cb_apply_button' => 'Aplicar',
 	'cb_all_op' => 'Todos',
+	'cb_or_op' => 'ou',
+	'cb_and_op' => 'e',
 	'cb_edit_left_hint' => 'Mover para esquerda, se possível',
 	'cb_edit_right_hint' => 'Mover para direita, se possível',
 	'cb_edit_remove_hint' => 'Apagar, se possível',

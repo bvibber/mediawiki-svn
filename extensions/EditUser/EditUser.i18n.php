@@ -550,14 +550,15 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Misibacsi
  */
 $messages['hu'] = array(
 	'edituser-desc' => 'A megfelelő joggal rendelkező szerkesztők számára lehetővé teszi más szerkesztők beállításainak módosítását',
 	'edituser' => 'Szerkesztő módosítása',
 	'edituser-username' => 'Felhasználói név:',
 	'edituser-dosearch' => 'Keresés',
-	'edituser-nouser' => 'A kiválasztott szerkesztő nem létezik',
-	'edituser-exempt' => 'A kiválasztott szerkesztő nem módosítható',
+	'edituser-nouser' => 'A kiválasztott szerkesztő ($1) nem létezik',
+	'edituser-exempt' => 'A kiválasztott szerkesztő ($1) nem módosítható',
 	'right-edituser' => 'más szerkesztők beállításainak módosítása',
 	'right-edituser-exempt' => 'más szerkesztők nem módosíthatják a beállításait',
 );

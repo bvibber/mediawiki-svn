@@ -373,6 +373,7 @@ ImageMagick tidak tersedia.',
 /** Japanese (日本語)
  * @author Aotake
  * @author Naohiro19
+ * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -388,7 +389,7 @@ $messages['ja'] = array(
 	'tiff_error_cached' => 'このファイルはキャッシュの有効期限が切れてからでなければレンダリングできません。',
 	'tiff_size_error' => '報告されたファイルサイズが実際のサイズと一致しません。',
 	'tiff_script_detected' => 'アップロードされたファイルに、スクリプトが含まれます。',
-	'tiff_bad_file' => 'アップロードされたファイルに、エラーが含まれます。',
+	'tiff_bad_file' => 'アップロードされたファイルは次のエラーを含んでいます: $1',
 	'tiff-file-info-size' => '(ページ $5、$1 × $2ピクセル、ファイルサイズ:$3、MIME:$4)',
 );
 

@@ -1210,7 +1210,7 @@ $messages['ckb'] = array(
 	'prefswitch-jswarning' => 'لەیادت بێ، کاتێ بەرگت گۆڕی، پێویستە [[User:$1/$2.js|$2 جاڤاسکریپتەکات]] کۆپی بکرێ بۆ [[{{ns:user}}:$1/vector.js]] <!-- یا [[{{ns:user}}:$1/common.js]]--> بۆ ئەوەی درێژە بدات بە کارکردن.',
 	'prefswitch-csswarning' => '[[User:$1/$2.css|$2 دڵخوازەکەت]] چی دیکە بەکارناگیرێت. دەتوانی CSSی دڵخوازت زیادبکەیتە سەر ڤێکتۆر لە [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'بەڵێ',
-	'prefswitch-survey-false' => 'نا',
+	'prefswitch-survey-false' => 'نەخێر',
 	'prefswitch-survey-submit-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
 	'prefswitch-survey-cancel-off' => 'ئەگەر دەتەوێ لە بەکارھێنانی تایبەتمەندییە نوێکان بەردەوام ببیت، دەتوانی بگەڕێیەوە بۆ $1.',
 	'prefswitch-survey-submit-feedback' => 'پێڕاگەیاندنەوە',
@@ -6869,7 +6869,7 @@ $messages['tt-cyrl'] = array(
 Әгәрдә сез бөтен яңа мөмкинчелекләрне ябасыгыз килсә, зинһар, [$2 монда басыгыз].',
 	'prefswitch-main-off' => '=== Сынап карагыз! ===
 Әгәрдә сезнең яңа мөмкинчелекләрне сынап карыйсыгыз килсә, зинһар, [$1 монда басыгыз].',
-	'prefswitch-survey-intro-feedback' => 'Без сезенең фикерләрегезне беләсебез килә.
+	'prefswitch-survey-intro-feedback' => 'Без сезнең фикерләрегезне беләсебез килә.
 Зинһар, «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]» төймәсенә баскыйнча,  аста урнашкан сорауларга җавап бирегез.',
 	'prefswitch-survey-intro-off' => "Яңа мөмкинчелекләрне сынап караганыгыз өчен бик зур рәхмәт!
 Безгә аларның сыйфатын тагын да артыру өчен аста бирелгән сорауларга җавап бирегез. ''(җавап бирү мәҗбүри түгел)''

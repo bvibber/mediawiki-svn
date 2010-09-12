@@ -199,6 +199,13 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 ha respondite a tu curte summario',
 );
 
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'reflect-desc' => '補強スレッドのコメント',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'googleadsense-desc' => '{{desc}}',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'googleadsense-desc' => '[http://www.google.com/adsense Google AdSense] कॆ साइड बार मॆ जोङॊ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

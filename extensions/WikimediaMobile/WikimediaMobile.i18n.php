@@ -160,6 +160,13 @@ $messages['hsb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki podpěruje funkcije za projekt Wikimedia Mobile, kotryž ja na at http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Hungarian (Magyar)
+ * @author Misibacsi
+ */
+$messages['hu'] = array(
+	'wikimediamobile-desc' => 'MediaWiki támogató funkciók a Wikimedia-mobil projekt számára itt: http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

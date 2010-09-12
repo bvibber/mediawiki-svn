@@ -90,3 +90,17 @@ $messages['pt'] = array(
 	'livelets-desc' => 'Permite que páginas transcluídas só sejam carregadas após o conteúdo principal da página e que possam receber actualizações usando Ajax',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'livelets-desc' => 'Permite que páginas transcluídas só sejam carregadas após o conteúdo principal da página e que possam receber atualizações usando Ajax',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'livelets-desc' => 'Позволяет добавлять к страницам после основного содержания динамически обновляемый посредством Ajax блок данных',
+);
+

@@ -805,7 +805,7 @@ Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edi�
 Pode perder as suas alterações a esta página se abandonar a página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
 	'al-nosuchuser' => 'Não existe nenhum utilizador com o nome "$1".
-Nomes de utilizador são sensíveis à maiúsculas.
+Nos nomes de utilizador distingue-se maiúsculas de minúsculas.
 Verifique se soletrou o nome correctamente.',
 );
 
