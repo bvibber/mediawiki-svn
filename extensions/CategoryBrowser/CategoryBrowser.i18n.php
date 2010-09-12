@@ -49,7 +49,7 @@ $messages['en'] = array(
 	'cb_ie6_warning' => 'The condition editor does not work in Internet Explorer 6.0 or earlier versions.
 However, browsing of pre-defined conditions should work normally.
 Please change or upgrade your browser, if possible.',
-	'cb_show_no_parents_only' => 'Show only categories which has no parents',
+	'cb_show_no_parents_only' => 'Show only categories which have no parents',
 	'cb_cat_name_filter' => 'Search for category by name:',
 	'cb_cat_name_filter_clear' => 'Press to clear category name filter',
 	'cb_cat_name_filter_ci' => 'Case insensitive',
