@@ -118,7 +118,7 @@
 		wrapSequencerWikiText : function( xmlString ){
 			var _this = this;
 			if( !_this.currentSequencePage.pageStart ){
-				 _this.currentSequencePage.pageStart ="\nTo edit this sequence " + 
+				 _this.currentSequencePage.pageStart ="\nTo edit or view this sequence " + 
 					'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page'; 
 			}
 			return _this.currentSequencePage.pageStart + 
@@ -313,7 +313,12 @@
 		getCommonsDescriptionText: function(){
 			var _this = this;
 			
-			var descText ="{{Information\n" +  
+			var descText = '<!-- ' +  
+			"Note: this is an automated file description for a published video sequence. \n"
+			"Changes to this wikitext will be overwiten. Please add metadata and categories to\n" + 
+			 _this.getTitleKey() + " instead --> \n";
+				
+			descText += "{{Information\n" +  
 				"|Description=" + _this.getBaseFileDescription() + "\n" + 
 				"|Source= Sequence Sources assets include:\n";
 			
@@ -335,10 +340,11 @@
 						pad2(dt.getMonth()+1) + '-' + 
 						pad2(dt.getDate()) + "\n" +
 				"|Author=Last edit by [[User:" + _this.getUserName() + "]]\n" +  
-				"|Permission= {{Cc-by-nc-sa-2.0-dual}}" + "\n" +				
+				"For full editor list see history page of [[" + _this.getTitleKey() + "]] \n" +
+				"|Permission={{Cc-by-sa-3.0}} and {{GFDL|migration=redundant}}" + "\n" +				
 				"}}";
 			
-			// Add Published Sequence category ( for now )
+			// Add Published Sequence category ( for now ) 
 			descText += "\n[[Category:Published Sequence]]\n";
 			return descText;
 		},

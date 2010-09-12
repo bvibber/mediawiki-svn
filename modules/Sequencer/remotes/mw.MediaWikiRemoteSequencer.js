@@ -37,7 +37,7 @@ mw.addMessageKeys( [
  * 	   
  *  @param {String} url The url to be wrapped  
  */
-mw.getRemoteSequencerLink = function( url ){
+mw.getRemoteSequencerLink = function( url ){	
 	if( mw.getConfig( 'Sequencer.WithJsMwEmbedUrlHelper' ) ){
 		if( url.indexOf('?') == -1){
 			url+='?'
@@ -90,7 +90,7 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 	|| embedPlayer.instanceOf.toLowerCase() == 'smil'
 	|| embedPlayer.getHeight() < 180 
 	|| embedPlayer.getWidth() < 240
-	// For now require that the video is a flat sequence special key: Sequence-
+	// Require that the video is a flat sequence special key: Sequence-
 	|| embedPlayer.apiTitleKey.indexOf('Sequence-') != 0
 	){		
 		return ;
@@ -200,9 +200,12 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	* @param {Object} options RemoteMwSequencer options
 	*/
 	init: function( options ) {
-		this.action = ( options.action )? options.action : this.action;
-		this.title = ( options.title )? options.title : this.title;
-		this.target = ( options.target )? options.target : this.target;
+		if( ! options.action || ! options.titleKey || ! options.target){
+			mw.log("Error sequence remote missing action, title or target");
+		}
+		this.action =  options.action;
+		this.titleKey = options.titleKey;
+		this.target =  options.target;
 	},	
 	
 	drawUI: function() {
@@ -250,6 +253,17 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			_this.displayPlayerEmbed();							
 		}
 	},	
+	
+	showViewFlattenedFile: function(){
+		var _this = this;
+		//just update the edit button: 
+		$j('#ca-edit a')
+		.html( $j('<span />').text( gM('mwe-sequencer-edit-sequence' ) ) )
+		.click(function(){
+			_this.showEditor();
+			return false;
+		})		
+	},
 	
 	showEditUI: function(){
 		var _this = this;
@@ -444,7 +458,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 
 		return '[[' + this.getSequenceFileKey() + "|thumb|400px|right|\n\n" + 
 		 "Sequence " + this.getTitle() + " \n\n" +
-		 "<br/>Edit this sequence with the [" +
+		 "&lt;br&gt;Edit this sequence with the [" +
 		 mw.getRemoteSequencerLink ( editLink ) +
 		 ' kaltura editor] ]]';		
 	},	
@@ -491,7 +505,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			server: {
 				'type' : 'mediaWiki',
 				'url' : _this.getApiUrl(),
-				'titleKey' : wgPageName,
+				'titleKey' : _this.titleKey,
 				'pagePathUrl' : wgServer + wgArticlePath,
 				'userName' : wgUserName
 			},			
