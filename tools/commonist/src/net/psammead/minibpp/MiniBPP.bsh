@@ -1,0 +1,26 @@
+/** compile a template file into a String */
+String template(var file, String charSet) {
+	var	in		= new BufferedReader(new InputStreamReader(new FileInputStream(file), charSet));
+	var	tmpl	= new net.psammead.minibpp.Compiler().compile(in);
+	in.close();	return tmpl;
+}
+
+/** compile a template into a String */
+private String templateRelative(var file, String charSet) {
+	// see sourceRelative command
+	var	file	= pathToFile(dirname(getSourceFileInfo()) + File.separator + file);
+	return new net.psammead.minibpp.Compiler().compile(file, charSet);
+}
+
+// und die bpp_redirect dinger wären hier praktisch
+
+/*
+evalTemplate( 
+
+Object eval( String expression ) {
+    return this.interpreter.eval( expression, this.caller.namespace );
+}
+
+// compile and source template
+eval(templateRelative("template.bpp", "ISO-8859-1"));
+*/

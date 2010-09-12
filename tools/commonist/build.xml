@@ -28,15 +28,42 @@
 		<pathelement location="${scala.compiler}"/>
 	</path>
 	
+	<path id="scala.source.dirs">
+		<pathelement location="src/scala" />
+	</path>
+
+	<path id="java.source.dirs">
+		<pathelement location="src" />
+		<pathelement location="build/src" />
+	</path>
+
+	<fileset id="runtime.libraries" dir="lib">
+		<patternset id="runtime.jars">
+			<include name="bsh-2.0b2-fixed.jar" />
+			<include name="commons-httpclient-3.1.jar" />
+			<include name="commons-codec-1.3.jar" />
+			<include name="commons-logging-1.1.jar" />
+			<include name="sanselan-0.97-incubator.jar" />
+			<include name="scala-library.jar" />
+		</patternset>
+	</fileset>
+
+	<fileset id="compile.libraries" dir="lib">
+		<patternset refid="runtime.jars" />
+		<include name="javacc.jar" />
+	</fileset>
+
+	<patternset id="product.jars">
+		<patternset refid="runtime.jars" />
+		<include name="${project}.jar" />
+	</patternset>
+
 	<path id="build.classpath">
 		<pathelement location="${scala.library}"/>
-		<fileset dir="lib"/>
+		<pathelement location="build/classes" />
+		<fileset refid="compile.libraries" />
 	</path>
-	
-	<!-- project specifics -->
-	<property name="source.jars"	value="minibpp-src.jar"/>
-	<property name="binary.jars"	value="scala-library.jar,bsh-2.0b2-fixed.jar,minibpp.jar,sanselan-0.97-incubator.jar,commons-httpclient-3.1.jar,commons-codec-1.3.jar,commons-logging-1.1.jar"/>
-	  
+
 	<!-- ==== main	==== -->
 	
 	<target name="clean" description="deletes everything that can be rebuilt">
@@ -55,19 +82,39 @@
 		</replace>
 	</target>
 	-->
+
+	<target name="parser" description="create the parser sources">
+		<mkdir dir="build/src/net/psammead/minibpp/parser"/>
+		<javacc
+			target="src/net/psammead/minibpp/Parser.jj"
+			outputdirectory="build/src/net/psammead/minibpp/parser"
+			javacchome="lib"
+			unicodeinput="true"
+			static="false"
+		/>
+	</target>
 	
-	<target name="compile" description="compiles scala classes">
+	<target name="compile" depends="parser" description="compiles scala classes">
 		<mkdir dir="build/classes"/>
+		<javac
+			destdir="build/classes"
+			source="${java.source}"
+			target="${java.target}"
+			encoding="${java.encoding}"
+			deprecation="true"
+			classpathref="build.classpath"
+			debug="true">
+				<src refid="java.source.dirs" />
+				<include name="**/*.java" />
+		</javac>
 		<scalac 
-			srcdir="src/scala" 
 			destdir="build/classes" 
 			encoding="${scala.encoding}" 
 			classpathref="build.classpath"
 			deprecation="yes"
-			unchecked="yes"
-		>
-			<!-- addparams -->
-			<include name="**/*.scala"/>
+			unchecked="yes">
+				<src refid="scala.source.dirs" />
+				<include name="**/*.scala" />
 		</scalac>
 	</target>
 	
@@ -92,10 +139,8 @@
 				<attribute name="Creator"		value="${author}"/>
 				<attribute name="License"		value="${license}"/>
 				
-				<!-- 
-				TODO: use a property, add binary.jars to classpath (manifestclasspath from ant 1.7.0)
-				<attribute name="Main-Class"	value="net.psammead.commonist.Commonist"/>
-				-->
+				<attribute name="Main-Class"	value="commonist.Commonist"/>
+				<attribute name="Class-Path"	value="bsh-2.0b2-fixed.jar commons-httpclient-3.1.jar commons-codec-1.3.jar commons-logging-1.1.jar sanselan-0.97-incubator.jar scala-library.jar" />
 			</manifest>
 		</jar>
 	</target>
@@ -110,22 +155,24 @@
 	
 	<!-- ==== full dist ==== -->
 	
-	<target name="dist" depends="compile" description="create a distribution zip">
+	<target name="dist" depends="jar" description="create a distribution zip">
 		<mkdir dir="build"/>
 		<zip destfile="build/${project}-${version}.zip">
 			<zipfileset dir="." prefix="${project}-${version}" filemode="770">
 				<include name="bin/*"/> 
 			</zipfileset>
+			<zipfileset dir="build/jar" prefix="${project}-${version}/lib">
+				<include name="commonist.jar" />
+			</zipfileset>
 			<zipfileset dir="." prefix="${project}-${version}">
 				<include name="doc/index.html"/>
 				<include name="doc/changes.txt"/>
-				<include name="build.*"/>
-				<include name="src/scala/**"/>
+				<include name="doc/changes-minibpp.txt"/>
+				<include name="src/**"/>
 				<include name="etc/**"/>
 				<exclude name="${sign.keystore}"/>
 				<include name="image/**"/>
 				<include name="lib/**"/>
-				<include name="build/classes/**"/>
 			</zipfileset>
 		</zip>
 	</target>
@@ -151,7 +198,9 @@
 			<zipfileset dir="etc"		includes="PkgInfo"				prefix="${mac.app}/Contents"/>
 			<zipfileset dir="build/etc"	includes="Info.plist"			prefix="${mac.app}/Contents"/>
 			<zipfileset dir="image"		includes="${mac.bundle.icons}"	prefix="${mac.app}/Contents/Resources"/>
-			<zipfileset dir="lib"		includes="${binary.jars}"		prefix="${mac.app}/Contents/Resources/Java"/>
+			<zipfileset dir="lib" prefix="${mac.app}/Contents/Resources/Java">
+				<fileset refid="runtime.libraries" />
+			</zipfileset>
 			<zipfileset dir="build/jar"	includes="${project}.jar"		prefix="${mac.app}/Contents/Resources/Java"/>
 		</zip>
 	</target>
@@ -168,8 +217,9 @@
 		<mkdir dir="build/ws"/>
 		<copy toDir="build/ws">
 			<fileset dir="build/jar"/>
-			<fileset dir="lib" includes="${binary.jars}"/>
+			<fileset refid="runtime.libraries" />
 		</copy>
+		<fail unless="sign.alias" message="Please create private.properties file and include sign.alias, sign.storepass, sign.keypass properties there."/>
 		<signjar 
 			alias="${sign.alias}"
 			storepass="${sign.storepass}"
@@ -177,7 +227,9 @@
 			keypass="${sign.keypass}"
 		>
 			<!-- jar="build/signed-jar/${project}.jar" -->
-			<fileset dir="build/ws" includes="*.jar"/>
+			<fileset dir="build/ws">
+				<patternset refid="product.jars" />
+			</fileset>
 		</signjar>
 	</target>
 	
@@ -198,31 +250,12 @@
 		<zip destfile="build/${project}-${version}-ws.zip">
 			<zipfileset dir="build/ws">
 				<include name="${ws.jnlp}"/>
-				<include name="*.jar"/>
+				<patternset refid="product.jars" />
 			</zipfileset>
 			<zipfileset dir="image">
 				<include name="${ws.icon}"/>
 				<include name="${ws.splash}"/>
 			</zipfileset>
 		</zip>
-	</target>
-	
-	<!-- ==== export ==== -->
-
-	<target name="import" description="import artefacts from other projects">
-		<ant dir="../minibpp" antfile="build.xml" target="export" inheritAll="false"/>
-		<copy toDir="lib">
-			<fileset dir="../minibpp/build/export" includes="minibpp.jar,minibpp-src.jar"/>
-		</copy>
-	</target>
-	
-	<target name="export" depends="doc,dist,ws-dist" description="create artefacts">
-		<property name="export.dir" value="build/export"/>
-		<mkdir dir="${export.dir}"/>
-		<copy todir="${export.dir}">
-			<fileset dir="build/doc"	includes="changes.txt,index.html"/>
-			<fileset dir="build"		includes="${project}-${version}.zip"/>
-		</copy>
-		<unzip src="build/${project}-${version}-ws.zip" dest="${export.dir}/ws" overwrite="true"/>
 	</target>
 </project>

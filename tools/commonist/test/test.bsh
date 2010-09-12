@@ -1,0 +1,20 @@
+//bin/true; exec java -Xmx16m -cp "lib/bsh-2.0b2-fixed.jar" bsh.Interpreter "$0" "$@" 
+//==============================================================================
+
+/*
+if (!new File("build/classes").exists())	exec("ant fresh");
+addClassPath("build/classes");
+*/
+if (!new File("build/jar/minibpp.jar").exists())	exec("ant fresh");
+addClassPath("build/jar/minibpp.jar");
+import net.psammead.minibpp.Compiler;
+
+var	in	= new BufferedReader(new InputStreamReader(new FileInputStream("versatz/template.bpp")));
+var	out	= new PrintWriter(System.out);
+var f	= new Compiler();
+f.filter(in, out);			// BufferedReader in, PrintWriter out
+in.close();
+out.close();
+
+//==============================================================================
+//:mode=beanshell:noTabs=false:tabSize=4:indentSize=4:lineSeparator=\n:

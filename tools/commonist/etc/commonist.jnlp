@@ -18,7 +18,6 @@
 		<jar href="commonist.jar" main="true"/>
 		<jar href="scala-library.jar"/>
 		<jar href="bsh-2.0b2-fixed.jar"/>
-		<jar href="minibpp.jar"/>
 		<jar href="sanselan-0.97-incubator.jar"/>
 		<jar href="commons-logging-1.1.jar"/>
 		<jar href="commons-codec-1.3.jar"/>

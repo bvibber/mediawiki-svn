@@ -1,4 +1,7 @@
+0.0.3
+
 0.0.2
+	fixed OOME for escaped unicode characters
 	added A.class and A.bsh for use with useModule.bsh
 
 0.0.1	
