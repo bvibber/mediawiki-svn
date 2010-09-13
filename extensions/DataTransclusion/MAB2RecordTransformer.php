@@ -40,7 +40,7 @@ $mab_field_map = array(
     'dnb' => array( '025a', ),
     'zdb' => array( '025z', ),
     'zka' => array( '025g', ),
-    'hzb' => array( '025h', ),
+    'hbz' => array( '025h', ),
     'id' => array( '001', ),
     'howpublished' => array( '590', '596', ),
 );
