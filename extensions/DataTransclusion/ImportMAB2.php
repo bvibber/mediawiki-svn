@@ -113,6 +113,11 @@ class ImportMAB2 extends Maintenance {
 
 		$this->output( "scanning directory $dir\n" );
 		$d = opendir( $dir );
+		if ( !$d ) {
+			$this->error( "unable to open directory $dir!\n" );
+			return false;
+		}
+
 		while( ( $file = readdir( $d ) ) ) {
 			if ( $file == "." or $file == ".." ) {
 				continue;
@@ -187,7 +192,7 @@ class ImportMAB2 extends Maintenance {
 		if ( $this->noblob ) {
 			$id = 0;
 		} else {
-			$db->insert( $this->blob_table, $insert );
+			$db->insert( $this->blob_table, $insert, __METHOD__ );
 			$id = $db->insertId();
 		}
 
@@ -201,7 +206,7 @@ class ImportMAB2 extends Maintenance {
 			}
 		}
 
-		$db->insert( $this->index_table, $insert );
+		$db->insert( $this->index_table, $insert, __METHOD__, array( 'IGNORE' ) );
 	}
 
 	public function readMabFile( $file ) {
