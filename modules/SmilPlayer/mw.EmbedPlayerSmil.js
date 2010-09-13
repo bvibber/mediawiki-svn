@@ -286,7 +286,7 @@ mw.EmbedPlayerSmil = {
 			// Reset the pausedForBuffer flag: 
 			this.pausedForBuffer = false;
 			
-			//mw.log( "Call animateTime: " + this.smilPlayTime);
+			mw.log( "Call animateTime: " + this.smilPlayTime);
 			// Issue an animate time request with monitorDelta 
 			this.smil.animateTime( this.smilPlayTime, this.monitorRate ); 
 		}

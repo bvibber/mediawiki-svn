@@ -252,7 +252,7 @@ mw.SequencerTools.prototype = {
 						'editType' : 'hidden'
 					},
 					'dur' : {
-						'value' : '2s',
+						'value' : '0:02',
 						'editType' : 'time'
 					},
 				},
@@ -292,8 +292,8 @@ mw.SequencerTools.prototype = {
 			buildAttributeSet: function( transitionType ){
 				var attributes = {};
 				for( var i in this.transitionTypes[ transitionType ] ){
-					if( i == 'extends' ){
-						$j.extend( attributes,  this.buildAttributeSet( i ) );
+					if( i == 'extends' ){			
+						$j.extend( attributes, this.buildAttributeSet( this.transitionTypes[ transitionType ][i] ) );
 					} else {
 						attributes[ i ] = this.transitionTypes[ transitionType ][i];
 					}
@@ -308,7 +308,20 @@ mw.SequencerTools.prototype = {
 				// but in the sequencer context we want unique transitions so that each can be customized
 				// independently. 
 				return $j( smilElement ).attr('id') + '_' + transitionType;
-			},		
+			},	
+			
+			// Get a transition element ( if it does not exist add it ) 
+			getTransitionElement: function( _this, smilElement, transitionType ){
+				var $smilDom = _this.sequencer.getSmil().$dom;
+				var transId = this.getTransitionId( smilElement, transitionType );				
+				if( $smilDom.find( '#' + transId  ).length == 0 ){					
+					$smilDom.find('head').append( 
+						$j('<transition />')
+						.attr('id', transId )
+					);
+				}
+				return $smilDom.find( '#' + transId );
+			},
 			
 			getSelectedTransitionType: function(smilElement, transitionDirection ){
 				var attributeValue = $j( smilElement ).attr( transitionDirection );
@@ -318,43 +331,90 @@ mw.SequencerTools.prototype = {
 			},
 			
 			getBindedTranstionEdit: function( _this, smilElement, transitionType ){
-				var $smilDom = _this.sequencer.getSmil().$dom;
-				var $editTransitionsSet = $j('<span />');
+				var _editTransitions = this;
+				var $editTransitionsSet = $j('<div />');
+				// return the empty div on empty transtionType
+				if( transitionType == '' ){
+					return $editTransitionsSet
+				}
+				
 				// Get the smil transition element
-				var $smilTransitionElement = $smilDom.find( '#' + this.getTransitionId( smilElement, transitionType ) );				
+				var $smilTransitionElement = this.getTransitionElement( _this, smilElement, transitionType )		
 				// Get all the editable attributes for transitionName
 				var attributeSet = this.buildAttributeSet( transitionType );
-				for( var i in attributeSet ){
-					var transitionAttribute = attributeSet[i];
+				
+				$j.each( attributeSet, function( attributeKey, transitionAttribute ){					
 					// Skip setup attributes
-					if( i == 'extends' || i == 'selectable' ){
-						continue;
+					if( attributeKey == 'extends' || attributeKey == 'selectable' ){
+						return true;
 					}
+					var initialValue = $smilTransitionElement.attr( attributeKey );
+					// Set to the default value if the transition attribute has no attribute key
+					if( !initialValue){
+						initialValue = transitionAttribute.value
+						$smilTransitionElement.attr( attributeKey, transitionAttribute.value )
+					}
+					
 					if( transitionAttribute.editType == 'time' ){
 						$editTransitionsSet.append(
-							$j('<input />')							
-							.attr('size', 5)							
-							.change(function(){
-								var timeValue = mw.pa$j(this).val();
+							_this.getInputBox({
+								'title' : gM('mwe-sequencer-tools-duration'),
+								'inputSize' : 5,
+								'initialValue' :initialValue,
+								'change': function(){
+									// parse smil time
+									var time = _this.sequencer.getSmil().parseTime( $j(this).val() );
+									// Check if time > clip duration 
+									if( time >  $j( smilElement ).attr('dur') ){
+										time =  $j( smilElement ).attr('dur');
+									}
+									if( time < 0 ) 
+										time = 0;
+									// Update the input value
+									$j( this ).val( mw.seconds2npt( time ) );
+									// Update the smil attribute
+									$smilTransitionElement.attr( attributeKey,  time );
+									// run the onChange action
+									_editTransitions.onChange( _this, smilElement );
+								}
 							})
 						)
+					} else if ( transitionAttribute.editType == 'color' ){
+						$inputBox = _this.getInputBox({
+							'title' : gM('mwe-sequencer-tools-transitions-color'),
+							'inputSize' : 8,
+							'initialValue' : initialValue,
+							'change': function(){
+								var cat = $j(this).val();
+								debugger;
+							}
+						})
+						// xxx add the color picker:						
+						$editTransitionsSet.append( $inputBox );
 					}
-					
-					
-				}
+				})
+				return $editTransitionsSet;
 			},			
 			
-			'onChange': function( _this, smilElement, target ){
+			'onChange': function( _this, smilElement ){
+				// Update the sequence duration :
+				_this.sequencer.getEmbedPlayer().getDuration( true );
 				
+				// Seek to "this clip" 
+				_this.sequencer.getEmbedPlayer().setCurrentTime( 
+					$j( smilElement ).data('startOffset')
+				);	
 			},			
 			'draw': function( _this, target, smilElement ){
 				// draw the two attribute types
-				$transitionWidget = $j('<div />');
+				var _editTransitions = this;
+				var $transitionWidget = $j('<div />');
 				
 				var transitionDirections = ['transIn', 'transOut'];
-				for( var i in transitionDirections ){
-					var transitionDirection = transitionTypes[i];
+				$j.each(transitionDirections, function( inx, transitionDirection ){
 					$transitionWidget.append(
+						$j('<div />').css('clear', 'both')
+						,
 						$j('<h3 />').text( gM('mwe-sequencer-tools-transitions-' + transitionDirection ))
 					)
 					// Output the top level empty select
@@ -362,50 +422,65 @@ mw.SequencerTools.prototype = {
 						$j('<option />')
 						.attr('value', '')
 					);
-					var selectedTransitionType = this.getSelectedTransitionType(smilElement, transitionDirection);
-					for( var j in this.transitionTypes ){
-						if( this.transitionTypes[j].selectable 
+					var selectedTransitionType = _editTransitions.getSelectedTransitionType( smilElement, transitionDirection);
+					for( var transitionType in _editTransitions.transitionTypes ){
+						if( _editTransitions.transitionTypes[ transitionType ].selectable 
 							&& 
-							$j.inArray( transitionType, this.transitionTypes[j].selectable ) !== -1 )
+							$j.inArray( transitionDirection, _editTransitions.transitionTypes[transitionType].selectable ) !== -1 )
 						{
-							// output the item if its selecteable for the current transitionType
+							// Output the item if its selectable for the current transitionType
 							var $option = $j("<option />")
-							.attr('value', this.transitionTypes[j])
-							.text( this.transitionTypes[j] )
+							.attr('value', transitionType )
+							.text( transitionType )
 							// Add selected attribute if selected: 
-							if( selectedTransitionType == this.transitionTypes[j] ){
+							if( selectedTransitionType == transitionType ){
 								$option.attr('selected', 'true');
 							}
 							$transSelect.append( $option );
 						}
 					}
-					// add the select
-					$transitionWidget.append( $transSelect );			
+					$transSelect.change( function(){	
+						var transitionType = $j(this).val();
+						$transitionWidget.find( '#' + transitionDirection + '_attributeContainer' ).html(
+							_editTransitions.getBindedTranstionEdit(
+								_this, smilElement, transitionType
+							)
+						)
+						// Update the smil attribute:  
+						$j( smilElement ).attr( 
+							transitionDirection, 
+							_editTransitions.getTransitionId( smilElement, transitionType )
+						)
+						// Update the player on select change
+						_editTransitions.onChange( _this, smilElement );
+					});
+
+					// Add the select to the $transitionWidget
+					$transitionWidget.append( $transSelect );
 					
 					// Set up the transConfig container: 						
 					var $transConfig = $j('<span />')
-						.addClass('transConfig');
+						.attr('id', transitionDirection + '_attributeContainer');
+					
 					// If a given transition type is selected output is editable attributes
 					if( selectedTransitionType != '' ) {
-						$transConfig.append( 
-							this.getBindedTranstionEdit(
-								smilElement, selectedTransitionType 
-							) 
+						$transConfig.append(
+							_editTransitions.getBindedTranstionEdit(
+								_this, smilElement, selectedTransitionType 
+							)
 						)
 					}
-					
 					$transitionWidget.append( $transConfig );
-				}
-			
-				return $transitionWidget;
-			},			
-			'drawTransitionType':function( attributeType ){
-				
-			}
-				
+					
+					// update the player for the default selected set. 
+					_editTransitions.onChange( _this, smilElement );
+				});
+				// add the transition widget to the target
+				$j( target ).append( $transitionWidget );
+			}						
 		},
 		'editTemplate':{
-			'onChange' : function( _this, smilElement, target ){
+			'onChange' : function( _this, smilElement ){
 				// Clear the smilElement template cache: 
 				$j( smilElement ).data('templateHtmlCache', null);
 				// Re draw the smilElement in the player
@@ -428,7 +503,7 @@ mw.SequencerTools.prototype = {
 				_this.sequencer
 				.getServer()
 				.getTemplateText( $j( smilElement).attr('apititlekey'), function( templateText ){
-					mw.log("GotTemplateText: " + templateText );
+					//mw.log("GotTemplateText: " + templateText );
 					if( ! templateText || typeof templateText != 'string' ){
 						mw.log("Error: could not get wikitext form titlekey: " +  $j( smilElement).attr('apititlekey'))
 						return ;
@@ -467,8 +542,7 @@ mw.SequencerTools.prototype = {
 							.change(function(){
 								_this.editWidgets.editTemplate.onChange(
 									_this, 
-									smilElement, 
-									target
+									smilElement
 								)
 							})
 							.parent()
@@ -483,7 +557,7 @@ mw.SequencerTools.prototype = {
 			}
 		},
 		'panzoom' : {
-			'onChange': function( _this, smilElement, target ){
+			'onChange': function( _this, smilElement ){
 				var panZoomVal = $j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom')).val();
 				mw.log("panzoom change:" + panZoomVal );
 				
@@ -629,7 +703,7 @@ mw.SequencerTools.prototype = {
 						// Restore original css for the layout helper 
 						$j(this).css( orginalHelperCss )
 						// trigger the 'change'
-						_this.editWidgets.panzoom.onChange( _this, smilElement, target );
+						_this.editWidgets.panzoom.onChange( _this, smilElement );
 					}
 				})
 				.css('cursor', 'move')
@@ -651,14 +725,14 @@ mw.SequencerTools.prototype = {
 						// Restore original css
 						$j(this).css( orginalHelperCss )
 						// trigger the change
-						_this.editWidgets.panzoom.onChange( _this, smilElement, target );
+						_this.editWidgets.panzoom.onChange( _this, smilElement);
 					}
 				})
 				
 			}
 		},
 		'trimTimeline' : {
-			'onChange': function( _this, smilElement, target){				
+			'onChange': function( _this, smilElement ){				
 				var smil = _this.sequencer.getSmil();
 				// Update the preview thumbs
 				
@@ -717,7 +791,7 @@ mw.SequencerTools.prototype = {
 				
 				var onInputChange = function( sliderIndex, timeValue ){
 					// Register the change
-					_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
+					_this.editWidgets.trimTimeline.onChange( _this, smilElement );
 					// Update the slider
 					if( fullClipDuration ){
 						$j('#'+_this.sequencer.id + '_trimTimeline' )
@@ -744,7 +818,7 @@ mw.SequencerTools.prototype = {
 				});
 				 
 				// Update the thumbnails:				
-				_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
+				_this.editWidgets.trimTimeline.onChange( _this, smilElement );
 				
 				// Get the clip full duration to build out the timeline selector
 				smil.getBody().getClipAssetDuration( smilElement, function( clipDuration ) {
@@ -790,7 +864,7 @@ mw.SequencerTools.prototype = {
 								_this.editableTypes['time'].update( _this, smilElement, 'dur',   sliderToTime( ui.values[ 1 ]- ui.values[0] ) );
 																				
 								// update the widget display
-								_this.editWidgets.trimTimeline.onChange( _this, smilElement, target);
+								_this.editWidgets.trimTimeline.onChange( _this, smilElement );
 								
 								// Register the edit state for undo / redo 
 								_this.sequencer.getActionsEdit().registerEdit();
@@ -902,12 +976,14 @@ mw.SequencerTools.prototype = {
 			)
 			var $toolContainer = $toolsContainer.find( '#tooltab_' + toolId );
 			
-			// Build out the attribute list for the given tool: 
-			for( var i=0; i < tool.editableAttributes.length ; i++ ){
-				attributeName = tool.editableAttributes[i];
-				$toolContainer.append(
-					_this.getEditableAttribute( smilElement, toolId, attributeName )
-				);
+			// Build out the attribute list for the given tool ( if the tool has directly editable attributes )
+			if( tool.editableAttributes ){
+				for( var i=0; i < tool.editableAttributes.length ; i++ ){
+					attributeName = tool.editableAttributes[i];
+					$toolContainer.append(
+						_this.getEditableAttribute( smilElement, toolId, attributeName )
+					);
+				}
 			}
 			
 			// Output a float divider: 
@@ -1030,7 +1106,7 @@ mw.SequencerTools.prototype = {
 			'inputId' : _this.getEditToolInputId( toolId, updateKey ),
 			'inputSize': inputSize,
 			'initialValue' : initialValue,
-			'inputChange': function(){							
+			'change': function(){							
 				// Run the editableType update function: 
 				_this.editableTypes[ editType ].update( 
 						_this, 
@@ -1066,7 +1142,7 @@ mw.SequencerTools.prototype = {
 			.data('initialValue', config.initialValue )
 			.sequencerInput( _this.sequencer )
 			.val( config.initialValue )
-			.change( options.inputChange )
+			.change( config.change )
 		);
 	}
 }
