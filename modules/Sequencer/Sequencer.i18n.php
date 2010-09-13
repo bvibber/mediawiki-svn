@@ -52,8 +52,8 @@ $messages['en'] = array(
 
 	'mwe-sequencer-tools-transitions' => 'Transitions',
 	'mwe-sequencer-tools-transitions-desc' => 'Set in and out Transitions',
-	'mwe-sequencer-clip-transin' => 'Transition in',
-	'mwe-sequencer-clip-transout' => 'Transition out',
+	'mwe-sequencer-tools-transitions-transIn' => 'Transition in',
+	'mwe-sequencer-tools-transitions-transOut' => 'Transition out',
 
 	'mwe-sequencer-clip-cancel-edit' => 'Cancel clip edit',
 	'mwe-sequencer-preview' => 'Preview',

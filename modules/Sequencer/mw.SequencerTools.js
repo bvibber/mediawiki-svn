@@ -2,7 +2,7 @@
  * Handles the "tools" window top level component driver 
  */
 
-//Wrap in mw closure to avoid global leakage
+// Wrap in mw closure to avoid global leakage
 ( function( mw ) {
 	
 mw.SequencerTools = function( sequencer ) {
@@ -38,13 +38,13 @@ mw.SequencerTools.prototype = {
 			'contentTypes': [ 'img'], // xxx todo add video support
 			'animate' : 'true'
 		},
-		'templateedit':{
-			'editWidgets' : ['edittemplate'],
+		'templateedit' : {
+			'editWidgets' : ['editTemplate'],
 			'editableAttributes' : [ 'apititlekey' ],
 			'contentTypes' : ['mwtemplate']
 		},
-		'transitions' : {
-			'editableAttributes' : [ 'transIn', 'transOut' ],
+		'transitions' : {			
+			'editWidgets' : ['editTransitions'],		
 			'contentTypes': ['video', 'img', 'mwtemplate' ]
 		}
 	},
@@ -67,14 +67,6 @@ mw.SequencerTools.prototype = {
 			'type' : 'string',
 			'inputSize' : 30,
 			'title' : gM('mwe-sequencer-template-name' )
-		},
-		'transIn' : {
-			'type' : 'select',
-			'selectValues' : [ 'fadeFromColor' ]
-		}, 
-		'transOut' : {
-			'type' : 'select',
-			'selectValues' : [ 'fadeFromColor', 'crossfade' ]
 		},
 		// Special child node type
 		'param' : {
@@ -166,8 +158,8 @@ mw.SequencerTools.prototype = {
 				$j( clickButton )
 				.attr({
 					'href': _this.sequencer.getServer().getAssetViewUrl(
-							$j(smilElement).find("param[name='apiTitleKey']").attr('value')
-							)
+							_this.sequencer.getSmil().getTitleKey( smilElement ) 
+						)
 					,
 					'target' : '_new'
 				})
@@ -252,7 +244,167 @@ mw.SequencerTools.prototype = {
 		}
 	},
 	editWidgets: {
-		'edittemplate':{
+		'editTransitions' : {	
+			'transitionTypes' : {		
+				'fade':{
+					'type' : {
+						'value' : 'fade', 
+						'editType' : 'hidden'
+					},
+					'dur' : {
+						'value' : '2s',
+						'editType' : 'time'
+					},
+				},
+				'fadeColor':{
+					'extends':'fade',
+					'fadeColor' : {
+						'value' : '#000',
+						'editType' : 'color'
+					}	
+				},
+				// Set high level select attribute default
+				'fadeFromColor' : {
+					'extends': 'fadeColor',	
+					'selectable' : ['transIn'],
+					'subtype' : {
+						'value' : 'fadeFromColor',
+						'editType' : 'hidden'
+					}			
+				},	
+				'fadeToColor' : {
+					'extends': 'fadeColor',		
+					'selectable' : ['transOut'],
+					'subtype' : {
+						'value' : 'fadeToColor', 
+						'editType' : 'hidden'
+					}
+				},		
+				'crossfade' : {
+					'extends': 'fade',
+					'selectable' : ['transIn', 'transOut'],
+					'subtype' : {
+						'value' : 'crossfade',
+						'editType' : 'hidden'
+					}
+				}				
+			},
+			buildAttributeSet: function( transitionType ){
+				var attributes = {};
+				for( var i in this.transitionTypes[ transitionType ] ){
+					if( i == 'extends' ){
+						$j.extend( attributes,  this.buildAttributeSet( i ) );
+					} else {
+						attributes[ i ] = this.transitionTypes[ transitionType ][i];
+					}
+				}
+				return attributes;
+			},
+			
+			getTransitionId: function( smilElement, transitionType ){
+				// Transition name is packed from attributeValue via striping the smilElement id
+				// This is a consequence of smil's strange transition dom placement in the head of the 
+				// document instead of as child nodes. The idea with smil is the transition can be 'reused'
+				// but in the sequencer context we want unique transitions so that each can be customized
+				// independently. 
+				return $j( smilElement ).attr('id') + '_' + transitionType;
+			},		
+			
+			getSelectedTransitionType: function(smilElement, transitionDirection ){
+				var attributeValue = $j( smilElement ).attr( transitionDirection );
+				if( !attributeValue )
+					return '';
+				return attributeValue.replace( $j( smilElement ).attr('id') + '_', '' );
+			},
+			
+			getBindedTranstionEdit: function( _this, smilElement, transitionType ){
+				var $smilDom = _this.sequencer.getSmil().$dom;
+				var $editTransitionsSet = $j('<span />');
+				// Get the smil transition element
+				var $smilTransitionElement = $smilDom.find( '#' + this.getTransitionId( smilElement, transitionType ) );				
+				// Get all the editable attributes for transitionName
+				var attributeSet = this.buildAttributeSet( transitionType );
+				for( var i in attributeSet ){
+					var transitionAttribute = attributeSet[i];
+					// Skip setup attributes
+					if( i == 'extends' || i == 'selectable' ){
+						continue;
+					}
+					if( transitionAttribute.editType == 'time' ){
+						$editTransitionsSet.append(
+							$j('<input />')							
+							.attr('size', 5)							
+							.change(function(){
+								var timeValue = mw.pa$j(this).val();
+							})
+						)
+					}
+					
+					
+				}
+			},			
+			
+			'onChange': function( _this, smilElement, target ){
+				
+			},			
+			'draw': function( _this, target, smilElement ){
+				// draw the two attribute types
+				$transitionWidget = $j('<div />');
+				
+				var transitionDirections = ['transIn', 'transOut'];
+				for( var i in transitionDirections ){
+					var transitionDirection = transitionTypes[i];
+					$transitionWidget.append(
+						$j('<h3 />').text( gM('mwe-sequencer-tools-transitions-' + transitionDirection ))
+					)
+					// Output the top level empty select
+					$transSelect = $j('<select />').append(
+						$j('<option />')
+						.attr('value', '')
+					);
+					var selectedTransitionType = this.getSelectedTransitionType(smilElement, transitionDirection);
+					for( var j in this.transitionTypes ){
+						if( this.transitionTypes[j].selectable 
+							&& 
+							$j.inArray( transitionType, this.transitionTypes[j].selectable ) !== -1 )
+						{
+							// output the item if its selecteable for the current transitionType
+							var $option = $j("<option />")
+							.attr('value', this.transitionTypes[j])
+							.text( this.transitionTypes[j] )
+							// Add selected attribute if selected: 
+							if( selectedTransitionType == this.transitionTypes[j] ){
+								$option.attr('selected', 'true');
+							}
+							$transSelect.append( $option );
+						}
+					}
+					// add the select
+					$transitionWidget.append( $transSelect );			
+					
+					// Set up the transConfig container: 						
+					var $transConfig = $j('<span />')
+						.addClass('transConfig');
+					// If a given transition type is selected output is editable attributes
+					if( selectedTransitionType != '' ) {
+						$transConfig.append( 
+							this.getBindedTranstionEdit(
+								smilElement, selectedTransitionType 
+							) 
+						)
+					}
+					
+					$transitionWidget.append( $transConfig );
+				}
+			
+				return $transitionWidget;
+			},			
+			'drawTransitionType':function( attributeType ){
+				
+			}
+				
+		},
+		'editTemplate':{
 			'onChange' : function( _this, smilElement, target ){
 				// Clear the smilElement template cache: 
 				$j( smilElement ).data('templateHtmlCache', null);
@@ -282,7 +434,7 @@ mw.SequencerTools.prototype = {
 						return ;
 					}
 					$j( target ).empty().append( 
-						$j('<h3 />').text( gM('mwe-sequencer-edittemplate-params') )
+						$j('<h3 />').text( gM('mwe-sequencer-editTemplate-params') )
 					)
 					
 					// This is not supposed to be perfect .. 
@@ -306,14 +458,14 @@ mw.SequencerTools.prototype = {
 						$j( target ).append( 
 							_this.getEditableAttribute(
 									smilElement, 
-									'edittemplate', 
+									'editTemplate', 
 									'param',  
 									paramName
 							)
 							.find('input')
 							// Bind the change event:
 							.change(function(){
-								_this.editWidgets.edittemplate.onChange(
+								_this.editWidgets.editTemplate.onChange(
 									_this, 
 									smilElement, 
 									target
@@ -848,6 +1000,8 @@ mw.SequencerTools.prototype = {
 			mw.log("Error: editableAttributes : " + attributeName + ' not found');
 			return; 
 		}
+	
+		
 		var _this = this;
 		var editAttribute = this.editableAttributes[ attributeName ];
 		var editType = editAttribute.type;
@@ -855,6 +1009,7 @@ mw.SequencerTools.prototype = {
 			mw.log(" Error: No editableTypes interface for " + editType);
 			return ;	
 		}
+		
 		// Set the update key to the paramName if provided:
 		var updateKey = ( paramName ) ? paramName : attributeName;
 		
@@ -870,41 +1025,50 @@ mw.SequencerTools.prototype = {
 		// Set paramName based attributes: 
 		var attributeTitle = ( editAttribute.title ) ? editAttribute.title : paramName + ':';
 
-		return $j( '<div />' )
-			.css({
-				'float': 'left',
-				'font-size': '12px',				
-				'border': 'solid thin #999',
-				'background-color': '#EEE',
-				'padding' : '2px',
-				'margin' : '5px'
+		return _this.getInputBox({
+			'title' : attributeTitle,
+			'inputId' : _this.getEditToolInputId( toolId, updateKey ),
+			'inputSize': inputSize,
+			'initialValue' : initialValue,
+			'inputChange': function(){							
+				// Run the editableType update function: 
+				_this.editableTypes[ editType ].update( 
+						_this, 
+						smilElement, 
+						updateKey, 
+						$j( this ).val() 
+				);		
+			}
+		})
+	},
+	getInputBox: function( config ){
+		var _this = this;
+		return  $j( '<div />' )
+		.css({
+			'float': 'left',
+			'font-size': '12px',				
+			'border': 'solid thin #999',
+			'background-color': '#EEE',
+			'padding' : '2px',
+			'margin' : '5px'
+		})
+		.addClass('ui-corner-all')
+		.append( 
+			$j('<span />')
+			.css('margin', '5px')
+			.text( config.title ),
+			
+			$j('<input />')
+			.attr( {
+				'id' : config.inputId ,
+				'size': config.inputSize
 			})
-			.addClass('ui-corner-all')
-			.append( 
-				$j('<span />')
-				.css('margin', '5px')
-				.text( attributeTitle ),
-				
-				$j('<input />')
-				.attr( {
-					'id' : _this.getEditToolInputId( toolId, updateKey ),
-					'size': inputSize
-				})
-				.data('initialValue', initialValue )
-				.sequencerInput( _this.sequencer )
-				.val( initialValue )
-				.change(function(){							
-					// Run the editableType update function: 
-					_this.editableTypes[ editType ].update( 
-							_this, 
-							smilElement, 
-							updateKey, 
-							$j( this ).val() 
-					);				
-					// widgets can bind directly to this change action. 					
-				})
-			);
-	}		
+			.data('initialValue', config.initialValue )
+			.sequencerInput( _this.sequencer )
+			.val( config.initialValue )
+			.change( options.inputChange )
+		);
+	}
 }
 
 } )( window.mw );

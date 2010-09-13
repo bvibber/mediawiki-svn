@@ -108,12 +108,14 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 			seqTitle = seqTitle.substr(0, seqTitle.length -4 );
 			// not ideal details page builder but 'should work' ::
 			editLink = mw.getApiProviderURL( embedPlayer.apiProvider ).replace( 'api.php', 'index.php' );
-			editLink = mw.replaceUrlParams( editLink, 
-					{
-						'title' : seqTitle,
-						'action' : 'edit' 
-					}
-			);
+			editLink = mw.getRemoteSequencerLink (
+					mw.replaceUrlParams( editLink, 
+						{
+							'title' : seqTitle,
+							'action' : 'edit' 
+						}
+					)
+				);
 		}
 		var kalturaLinkAttr = {
 				'href': 'http://kaltura.com', 
