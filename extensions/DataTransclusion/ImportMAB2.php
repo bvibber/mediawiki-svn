@@ -131,7 +131,7 @@ class ImportMAB2 extends Maintenance {
 			}
 
 			if ( is_dir( $dir . $file ) && $recursive ) {
-				$this->importDir( $dir . $file );
+				$this->importDir( $dir . $file, $recursive, $limit );
 				continue;
 			} else if ( !is_file( $dir . $file ) ) {
 				$this->output( "not a file: $dir/$file\n" );
