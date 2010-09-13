@@ -7,6 +7,8 @@
  *
  * @author David Raison
  * @author Jeroen De Dauw
+ * 
+ * @licence http://creativecommons.org/licenses/by-sa/3.0/
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
