@@ -48,10 +48,6 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 			$this->addFields( array( 'aa_rating_value', 'aa_revision' ) );
 
-			if ( isset( $params['revid'] ) ) {
-				$this->addWhereFld( 'aa_revision', $params['revid'] );
-			}
-
 			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
 		}
 
@@ -133,10 +129,6 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => false,
 				ApiBase::PARAM_TYPE => 'integer',
 			),
-			'revid' =>array(
-				ApiBase::PARAM_ISMULTI => false,
-				ApiBase::PARAM_TYPE => 'integer',
-			),
 			'userrating' => false,
 			'anontoken' => null,
 		);
@@ -145,7 +137,6 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'pageid' => 'Page ID to get assessments for',
-			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored)',
 			'userrating' => "Whether to get the current user's ratings for the specific rev/article",
 			'anontoken' => 'Token for anonymous users',
 		);

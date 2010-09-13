@@ -28,11 +28,6 @@ Please try again later.',
 	# This special page doesn't exist yet, but it will soon.
 	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
-	# Some of these messages are unused in the code as it is but may be in the future depending on performance.  They should still be translated.
-	'articleassessment-stalemessage-revisioncount' => "This article has been ''revised'' '''$1 times''' since you last reviewed it.
-You may wish to re-rate it.",
-	'articleassessment-stalemessage-greaterthancount' => "This article has been ''revised'' more than $1 times since you last reviewed it.
-You may wish to re-rate it.",
 	'articleassessment-stalemessage-norevisioncount' => "This article has been ''revised'' since you last reviewed it.
 You may wish to re-rate it.",
 

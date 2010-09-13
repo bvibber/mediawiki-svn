@@ -272,7 +272,7 @@
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						var msg = $.ArticleAssessment.fn.getMsg( 'articleassessment-stalemessage-revisioncount' );
+						var msg = $.ArticleAssessment.fn.getMsg( 'articleassessment-stalemessage-norevisioncount' );
 						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
 					} else {
 						// if it's not a stale rating, we want to make the stars blue
