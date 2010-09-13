@@ -27,7 +27,7 @@ Please try again later.',
 
 	# This special page doesn't exist yet, but it will soon.
 	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
-	'articleassessment-noratings' => '$1 (Total $2 ratings)',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
 	# Some of these messages are unused in the code as it is but may be in the future depending on performance.  They should still be translated.
 	'articleassessment-stalemessage-revisioncount' => "This article has been ''revised'' '''$1 times''' since you last reviewed it.
 You may wish to re-rate it.",
@@ -65,7 +65,8 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articleassessment-error' => 'A generic error message to display on any error.',
 	'articleassessment-thanks' => 'The message to display when the user has successfully submitted a rating.',
 	'articleassessment-featurefeedback' => 'This is a call to action link for users to provide feedback about the feature.  It takes them to a survey.',
-	'articleassessment-noratings' => 'This indicates the number of ratings that the article has received.',
+	'articleassessment-noratings' => 'This indicates the number of ratings that the article has received.
+Note that PLURAL does not currently work in this message but defaults to the zero; it will work properly in the near future, so keep the calls in.',
 	'articleassessment-stalemessage-revisioncount' => 'This is a message shown to the user when their ratings are "stale" and includes the number of revisions since.',
 	'articleassessment-stalemessage-greaterthancount' => 'This is a message shown to the user when their ratings are "stale". It allows for not looking up the total number of revisions.',
 	'articleassessment-stalemessage-norevisioncount' => 'This is a message shown to the user when their ratings are "stale" and does NOT include the number of revisions. This is an ambiguous reason, and allows for us to have complicated staleness patterns. This is the preferred message.',
