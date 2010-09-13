@@ -78,7 +78,7 @@
 						return randomstring;
 					}
 					userToken = randomString( 32 );
-					$.cookie( 'mwArticleAssessmentUserToken', userToken );
+					$.cookie( 'mwArticleAssessmentUserToken', userToken, { 'expires': 30, 'path': '/' } );
 				}
 				if ( !wgUserName ) {
 					config.userID = userToken;
@@ -220,13 +220,13 @@
 				$( '#article-assessment input[type=submit]' )
 					.attr( 'disabled', 'disabled' );
 			},
+			
 			// Request the ratings data for the current article
 			'getRatingData': function() {
 				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
 				var requestData = {
 					'action': 'query',
 					'list': 'articleassessment',
-					'aarevid': config.revID,
 					'aapageid': config.pageID,
 					'aauserrating': 1,
 					'format': 'json'
@@ -267,7 +267,7 @@
 						}
 					}
 					// if the rating is stale, add the stale class
-					if( data.query.articleassessment.stale ) {
+					if( data.query.articleassessment[0].revid <  wgCurRevisionId ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
