@@ -99,16 +99,16 @@
 						.text( instructions )
 						.end()
 					.find( '.article-assessment-rate-feedback' )
-						.html( feedback.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
+						.html( feedback.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/g, '<a href="' + wgArticlePath + '">$2</a>' ) )
 						.end()
 					.find( '#article-assessment-ratings legend' )
 						.text( articlerating )
 						.end()
 					.find( '.article-assessment-show-ratings' )
-						.html( resultsshow.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+						.html( resultsshow.replace( /\[\[#\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
 						.end()
 					.find( '.article-assessment-hide-ratings')
-						.html( resultshide.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+						.html( resultshide.replace( /\[\[#\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
 						.end();
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
 					var $field = $( settings.fieldHTML ),

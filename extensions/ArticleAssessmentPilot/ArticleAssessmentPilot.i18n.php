@@ -37,11 +37,8 @@ You may wish to re-rate it.",
 You may wish to re-rate it.",
 
 	# Links get rewritten in javascript.
-	# FIXME: These links are invalid. Translation is impossible because you cannot save pages with such links.
-	# The parser strips the pipe and saves as "[[Show]]".
-	# Even customization in MediaWiki namespace is impossible therefore.
-	'articleassessment-results-show' => "(Results hidden. [[|Show]] them.)",
-	'articleassessment-results-hide' => "([[|Hide results]])",
+	'articleassessment-results-show' => "(Results hidden. [[#|Show]] them.)",
+	'articleassessment-results-hide' => "([[#|Hide results]])",
 );
 
 /** Message documentation (Message documentation)
