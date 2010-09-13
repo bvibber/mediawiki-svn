@@ -25,6 +25,7 @@ class ImportMAB2 extends Maintenance {
 		$this->addOption( "create", "create database tables if they do not exist", false, false );
 		$this->addOption( "truncate", "truncate (empty) database tables", false, false );
 		$this->addOption( "prefix", "database table prefix. May contain a period (\".\") to reference tables in another database. If not given, the wiki's table prefix will be used", false, true );
+		$this->addOption( "noblob", "don't write blob data, import index fields only", false, false );
 		$this->addOption( "limit", "max number of files to process", false, true );
 		$this->addOption( "debug", "don't write to the database, dump to console instead", false, false );
 	}
@@ -66,6 +67,7 @@ class ImportMAB2 extends Maintenance {
 		global $wgDataTransclusionSources;
 
 		$this->debug = $this->hasOption( 'debug' );
+		$this->noblob = $this->hasOption( 'noblob' );
 		$limit = (int)$this->getOption( 'limit' );
 
 		$src = $this->mArgs[0];
@@ -126,7 +128,7 @@ class ImportMAB2 extends Maintenance {
 				if ( $ids ) {
 					if ( $this->debug ) {
 						var_export( $ids );
-						var_export( $rec );
+						if ( !$this->noblob ) var_export( $rec );
 						print "------------------------------------\n";
 					} else {
 						$this->output( "importing file $file\n" );
@@ -182,8 +184,12 @@ class ImportMAB2 extends Maintenance {
 
 		$insert = array( 'data' => serialize($rec) );
 
-		$db->insert( $this->blob_table, $insert );
-		$id = $db->insertId();
+		if ( $this->noblob ) {
+			$id = 0;
+		} else {
+			$db->insert( $this->blob_table, $insert );
+			$id = $db->insertId();
+		}
 
 		$insert = array();
 		foreach ( $ids as $field => $values ) {
