@@ -59,77 +59,75 @@ class PagedTiffHandler extends ImageHandler {
 	 * - identify-warnings
 	 * - check for running-identify-service
 	 */
-	static function check( $saveName, $tempName, &$error ) {
+	function verifyUpload( $fileName ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, 
 			$wgTiffRejectOnError, $wgTiffRejectOnWarning, $wgTiffUseTiffReader, 
 			$wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
 
-		# XXX: it would be much nicer if the hook would get the mime type as a parameter
-		$mime = MimeMagic::singleton()->guessMimeType( $tempName, false ); 
-
-		if ( $mime != "image/tiff" ) {
-			# not a tiff file, do not check
-			wfDebug( __METHOD__ . ": not a tiff file\n" );
-			return true;
-		}
-
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
+		$status = Status::newGood();
 		if ( $wgTiffUseTiffReader ) {
-			$tr = new TiffReader( $tempName );
+			$tr = new TiffReader( $fileName );
 			$tr->check();
 			if ( !$tr->isValidTiff() ) {
-				$error = 'tiff_bad_file';
-				wfDebug( __METHOD__ . ": $error ($saveName)\n" );
-				return false;
-			}
-			if ( $tr->checkScriptAtEnd( $wgTiffReaderCheckEofForJS ) ) {
-				$error = 'tiff_script_detected';
-				wfDebug( __METHOD__ . ": $error ($saveName)\n" );
-				return false;
-			}
-			if ( !$tr->checkSize() ) {
-				$error = 'tiff_size_error';
-				wfDebug( __METHOD__ . ": $error ($saveName)\n" );
-				return false;
+				wfDebug( __METHOD__ . ": bad file\n" );
+				$status->fatal( 'tiff_bad_file' );
+			} else {
+				if ( $tr->checkScriptAtEnd( $wgTiffReaderCheckEofForJS ) ) {
+					wfDebug( __METHOD__ . ": script detected\n" );
+					$status->fatal( 'tiff_script_detected' );
+				}
+				if ( !$tr->checkSize() ) {
+					wfDebug( __METHOD__ . ": size error\n" );
+					$status->fatal( 'tiff_size_error' );
+				}
 			}
 		}
-		$meta = self::getTiffImage( false, $tempName )->retrieveMetaData();
-		if ( !$meta && $meta != - 1 ) {
-			$error = 'tiff_out_of_service';
-			wfDebug( __METHOD__ . ": $error ($saveName)\n" );
-			return false;
+		$meta = self::getTiffImage( false, $fileName )->retrieveMetaData();
+		if ( !$meta ) {
+			wfDebug( __METHOD__ . ": unable to retreive metadata\n" );
+			$status->fatal( 'tiff_out_of_service' );
+		} else {
+			$error = false;
+			$ok = self::verifyMetaData( $meta, $error );
+
+			if ( !$ok ) {
+				call_user_func_array( array( $status, 'fatal' ), $error );
+			}
 		}
-		if ( $meta == - 1 ) {
-			$error = 'tiff_error_cached';
-			wfDebug( __METHOD__ . ": $error ($saveName)\n" );
-		}
-		return self::extCheck( $meta, $error, $saveName );
+
+		return $status;
 	}
 
-	static function extCheck( $meta, &$error, $saveName = '' ) {
+	static function verifyMetaData( $meta, &$error ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize;
 
 		$errors = PagedTiffHandler::getMetadataErrors( $meta );
 		if ( $errors ) {
-			$error = 'tiff_bad_file';
+			$error = array( 'tiff_bad_file', PagedTiffHandler::joinMessages( $errors ) );
 
-			// NOTE: in future, it will become possible to pass parameters
-			// $error = array( 'tiff_bad_file' , PagedTiffHandler::joinMessages( $errors ) );
-			// does that work now? ^DK
-
-			wfDebug( __METHOD__ . ": $error ($saveName) " . PagedTiffHandler::joinMessages( $errors, false ) . "\n" );
+			wfDebug( __METHOD__ . ": {$error[0]} " . PagedTiffHandler::joinMessages( $errors, false ) . "\n" );
 			return false;
 		}
-		if ( ( strlen( serialize( $meta ) ) + 1 ) > $wgTiffMaxMetaSize ) {
-			$error = 'tiff_too_much_meta';
-			wfDebug( __METHOD__ . ": $error ($saveName)\n" );
+
+		if ( $meta['page_amount'] <= 0 || empty( $meta['page_data'] ) ) {
+			$error = array( 'tiff_page_error', $meta['page_amount'] );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
 		if ( $wgTiffMaxEmbedFiles && $meta['page_amount'] > $wgTiffMaxEmbedFiles ) {
-			$error = 'tiff_too_much_embed_files';
-			wfDebug( __METHOD__ . ": $error ($saveName)\n" );
+			$error = array( 'tiff_too_much_embed_files', $meta['page_amount'], $wgTiffMaxEmbedFiles );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
+		$len = strlen( serialize( $meta ) );
+		if ( ( $len + 1 ) > $wgTiffMaxMetaSize ) {
+			$error = array( 'tiff_too_much_meta', $len, $wgTiffMaxMetaSize );
+			wfDebug( __METHOD__ . ": {$error[0]}\n" );
+			return false;
+		}
+
+		wfDebug( __METHOD__ . ": metadata is ok\n" );
 		return true;
 	}
 
@@ -327,7 +325,7 @@ class PagedTiffHandler extends ImageHandler {
 			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
 		}
 
-		if ( !self::extCheck( $meta, $error, $dstPath ) ) {
+		if ( !self::verifyMetaData( $meta, $error, $dstPath ) ) {
 			return $this->doThumbError( $params, $error );
 		}
 
@@ -502,7 +500,9 @@ class PagedTiffHandler extends ImageHandler {
 	 * If it returns false, Image will reload the metadata from the file and update the database
 	 */
 	function isMetadataValid( $image, $metadata ) {
-		if ( is_string( $metadata ) ) $metadata = unserialize( $metadata );
+		if ( is_string( $metadata ) ) {
+			$metadata = unserialize( $metadata );
+		}
 
 		if ( !isset( $metadata['TIFF_METADATA_VERSION'] ) ) {
 			return false;

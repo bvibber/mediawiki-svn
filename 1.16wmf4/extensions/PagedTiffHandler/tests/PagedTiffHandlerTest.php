@@ -232,9 +232,13 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		// ---- File upload checks and Thumbnail transformation
 		// check
 		// TODO: check other images
-		$this->assertTrue( $this->handler->check( 'multipage.tiff', $this->multipage_path, $error ) );
-		$this->assertFalse( $this->handler->check( 'Truncated.tiff', $this->truncated_path, $error ) );
-		$this->assertEquals( $error, 'tiff_bad_file' );
+		$status = $this->handler->verifyUpload( $this->multipage_path );
+		$this->assertTrue( $status->isGood() );
+
+		$status = $this->handler->verifyUpload( $this->truncated_path );
+		$this->assertFalse( $status->isGood() );
+		$this->assertTrue( $status->hasMessage( 'tiff_bad_file' ) );
+
 		// doTransform
 		$this->handler->doTransform( $this->multipage_image, $this->test_path, 'Test.tif', array( 'width' => 100, 'height' => 100 ) ); 
 		$error = $this->handler->doTransform( wfFindFile( Title::newFromText( 'Image:Truncated.tiff' ) ), $this->truncated_path, 'Truncated.tiff', array( 'width' => 100, 'height' => 100 ) );
