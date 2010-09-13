@@ -1023,7 +1023,7 @@ $messages['fa'] = array(
 	'ogg-more' => 'بیشتر...',
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',
-	'ogg-desc-link' => 'دربارهٔ این پرونده',
+	'ogg-desc-link' => 'پیرامون این پرونده',
 	'ogg-oggThumb-version' => 'OggHandler به oggThumb نسخهٔ $1 یا بعدتر از آن نیاز دارد.',
 	'ogg-oggThumb-failed' => 'oggThumb موفق به ایجاد بندانگشتی نشد.',
 );
@@ -3366,8 +3366,24 @@ $messages['ts'] = array(
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'ogg-play' => 'Җырлату',
+	'ogg-pause' => 'Туктатып тору',
+	'ogg-stop' => 'Туктату',
+	'ogg-play-video' => 'Видеоязманы карау',
+	'ogg-play-sound' => 'Көйне тыңлау',
+	'ogg-no-player' => 'Гафу итегез, ләкин сезнең системагыз бу файллар төрен ача алмый, зинһар кирәк булган программаларны  <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">үзегезгә йөкләп алыгыз</a>.',
+	'ogg-player-videoElement' => 'Браузер ярдәмендә тыңлау',
+	'ogg-player-oggPlugin' => 'Ogg модуль',
+	'ogg-player-thumbnail' => 'Тыйнак рәсемнәрне генә куллану',
+	'ogg-player-soundthumb' => 'Уйнаутучы юк',
+	'ogg-player-selected' => '(сайланган)',
+	'ogg-use-player' => 'Бирелгән уйнаткычны куллану:',
 	'ogg-more' => 'Тулырак...',
 	'ogg-dismiss' => 'Ябу',
+	'ogg-download' => 'Файлны алу',
+	'ogg-desc-link' => 'Файл турында мәгълүмат',
+	'ogg-oggThumb-version' => 'OggHandler $1 юрамасыннан да югарырак oggThumb тәэминатын сорый.',
+	'ogg-oggThumb-failed' => 'oggThumb нигезендә миниатюраны ясап булмады.',
 );
 
 /** Ukrainian (Українська)

@@ -189,6 +189,13 @@ $messages['hil'] = array(
 	'categorytests-desc' => 'Pagfunksiyon para sa kategorya nga gina testingan',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'categorytests-desc' => 'Funkcije za testiranje kategorija',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -24,6 +24,20 @@ $messages['de'] = array(
 	'datediff-desc' => 'Ermöglicht die Ausgabe aller Tage, die zwischen zwei angegebenen Tagen liegen',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'datediff-desc' => 'Toma dos fechas y devuelve todos los días intermedios',
+);
+
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'datediff-desc' => 'Prend deux dates et retourne tous les jours intermédiaires',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -82,6 +82,14 @@ $messages['bs'] = array(
 	'dontswitchmeover-pref' => 'Ne dopusti mojoj koži da bude promijenjena kada se promijeni pretpostavljena koža',
 );
 
+/** Catalan (Català)
+ * @author Martorell
+ */
+$messages['ca'] = array(
+	'dontswitchmeover-desc' => "Preferència que es demane als usuaris si desitgen preservar la configuració d'aspecte quan canvia la configuració per omissió.",
+	'dontswitchmeover-pref' => "Evita que l'aparença canvie quan la configuració per omissió canvia",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

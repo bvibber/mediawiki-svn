@@ -66,10 +66,11 @@ $messages['ast'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'absenteelandlord-reason' => 'De Datnbank is automatisch gspead woan, weu ka Administrator aktiv is.',
-	'absenteelandlord-desc' => "Automatische Sperre vu da Datnbank, wãnn d'Administratoan fia a gwisse Zeid inaktiv han",
+	'absenteelandlord-reason' => 'De Datenbånk is automaatisch gsperrt worn, wail koa Administrator aktiv is.',
+	'absenteelandlord-desc' => "Automaatische Sperre vo da Datenbånk, wånn d' Administratorn fyra gwisse Zaid inaktiv san",
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

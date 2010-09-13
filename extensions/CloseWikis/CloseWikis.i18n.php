@@ -166,6 +166,40 @@ $messages['arz'] = array(
 	'right-closewikis' => 'إغلاق الويكيات',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'closewikis-desc' => 'Dameglichts Schliassen vo oazlne Wikis in ner Wikifarm',
+	'closewikis-page' => 'Wiki schliassen.',
+	'closewikis-page-close' => 'Wiki schliassen',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Åzoagter Grund:',
+	'closewikis-page-close-reason' => 'Grund, der wos ins Logbuach aitrong werd:',
+	'closewikis-page-close-submit' => 'Schliassen',
+	'closewikis-page-close-success' => 'Wiki is erfoigraich gschlossen worn.',
+	'closewikis-page-reopen' => 'Wiki wider effnan',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Grund:',
+	'closewikis-page-reopen-submit' => 'Wider effna',
+	'closewikis-page-reopen-success' => 'Wiki is wider erfoigraich geffnat',
+	'closewikis-page-err-nowiki' => 'Ungüitigs Wiki ågeem',
+	'closewikis-page-err-closed' => 'Wiki is beraits gschlossen',
+	'closewikis-page-err-opened' => 'Wiki is ned gschlossen',
+	'closewikis-list' => 'Listen vo de gschlossanen Wikis',
+	'closewikis-list-intro' => 'De Listn do enthoit Wikis, de vo Stewards gschlossen worn san.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Gschlossen vo',
+	'closewikis-list-header-timestamp' => 'Gschlossen am',
+	'closewikis-list-header-dispreason' => 'Åzoagter Grund',
+	'closewikis-log' => 'Wikischliassungs-Logbuach',
+	'closewikis-log-header' => 'Des Logbuach do zoagt olle Schliassungen und Wiaderdaeffnungen vo Wikis duch an Steward å.',
+	'closewikis-log-close' => 'gschlossen $2',
+	'closewikis-log-reopen' => '$2 hod wiider geffnet',
+	'right-editclosedwikis' => 'Gschlossane Wikis beorwaiten',
+	'right-closewikis' => 'Wikis schliassen',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

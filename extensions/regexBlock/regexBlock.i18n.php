@@ -842,6 +842,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
  * @author Imre
  * @author Jatrobat
  * @author Piolinfax
+ * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(
@@ -856,10 +857,10 @@ $messages['es'] = array(
 	'regexblockstats' => 'Estadísticas del bloque de expresiones regulares',
 	'regexblock-help' => 'Utilice el formulario de abajo para bloquear acceso de escritura de un usuario o dirección IP específicos.
 Esto se deberá hacer para prevenir actos vandálicos y en concordancia con la política.
-\'\'ESta página le permite bloquear usuarios no existentes inclusive, y también bloqueará usuarios con nombres similares al introducido. Por ejemplo: "Prueba" se bloqueará en conjunto con "Prueba 2", etc.
+\'\'Esta página le permite incluso bloquear usuarios no existentes, y también bloqueará usuarios con nombres similares al introducido. Por ejemplo: "Prueba" se bloqueará en conjunto con "Prueba 2", etc.
 También puede bloquear direcciones completas de IP, con lo que nadie que acceda al sistema desde ahí pueda editar páginas.
-Observación: Las direcciones parciales de IP serán tratadas como nombres de usuario en la determinación de bloqueos.
-Si no se especifica razones, se utilizará una razón genérica predeterminada.\'\'',
+Observación: Las direcciones IP parciales serán tratadas como nombres de usuario en la determinación de bloqueos.
+Si no se especifica una razón, se utilizará una razón genérica predeterminada.\'\'',
 	'regexblock-page-title-1' => 'Bloquear direcciones por medio de expresiones regulares',
 	'regexblock-reason-ip' => 'Esta dirección IP está prevenida de editar a causa de vandalismo u otra desorganización tuya o pde alguien que comparte tu dirección IP.
 Si crees que esto es un error, por favor [[$1|contactanos]]',
@@ -1346,6 +1347,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author Ex13
+ * @author Herr Mlinka
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -1354,6 +1356,7 @@ $messages['hr'] = array(
 	'regexblock-block-log' => "Suradnik ili IP-adresa '''$1''' su blokirani.",
 	'regexblock-block-success' => 'Blokiranje uspjelo',
 	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
+	'regexblock-expire-duration' => '1 sat,2 sata,4 sata,6 sati,1 dan,3 dana,1 tjedan,2 tjedna,1 mjesec,3 mjeseca,6 mjeseci,1 godina,zauvijek',
 	'regexblock-page-title' => 'Blokiranje pomoću regularnih izraza',
 	'regexblockstats' => 'Statistika blokiranja regularnim izrazima',
 	'regexblock-help' => "Rabite donju formu za blokiranje određenih IP adresa ili suradnika. TO treba činiti samo radi sprječavanja vandalizama, u skladu s pravilima.

@@ -37,6 +37,17 @@ $messages['af'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Skep',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'articletocategory2-desc' => 'Fiagt jeeder Kategoriisaiten a Aigobföid dazua, ywer des in derer Kategorii automaatisch aizordnende Artike erstöid wern kennan',
+	'articletocategory2-create-article-under-category-text' => 'A Saiten zua derer Kategorii dazuafyng',
+	'articletocategory2-create-article-under-category-button' => 'Erstöin',
+	'articletocategory2-create-category-under-category-text' => 'A Kategorii zua derer Kategorii dazuafyng',
+	'articletocategory2-create-category-under-category-button' => 'Erstöin',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -89,8 +100,10 @@ $messages['de'] = array(
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Sanbec
  */
 $messages['es'] = array(
+	'articletocategory2-desc' => 'Añade una caja de entrada en cada página de categoría que permite la creación de una nueva página directamente en esa categoría',
 	'articletocategory2-create-article-under-category-text' => 'Añadir una página a esta categoría',
 	'articletocategory2-create-article-under-category-button' => 'Crear',
 	'articletocategory2-create-category-under-category-text' => 'Añadir una categoría a esta categoría',

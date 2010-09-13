@@ -86,6 +86,33 @@ Rufe <$4> auf, sofern du die Antwort im entsprechenden Zusammenhang lesen möcht
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 hat auf deine Zusammenfassung einer Aussage reagiert.',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'reflect-desc' => 'Añade una columna a la páginas de discusión por hilos, en la cual los usuarios pueden resumir las conversaciones existentes',
+	'reflect-bulleted' => 'Hola $1,
+	
+$2 ha resumido un comentario tuyo en el hilo "$3". 
+
+Su resumen: "$5".
+
+Puedes verificar si $2 ha comprendido bien tu punto de vista visitando <$4>.
+
+Podrás aclarar tu punto de vista si hubo un malentendido.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Su opinión fue resumida por $2',
+	'reflect-responded' => 'Hola $1,
+	
+$2 ha respondido a tu resumen de un comentario que hizo. 
+
+El resumen que hiciste: "$6".
+Su mensaje: "$5".
+
+
+Para leer la respuesta en contexto, visita <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 respondió a tu resumen de su opinión',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -204,6 +231,23 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
  */
 $messages['ja'] = array(
 	'reflect-desc' => '補強スレッドのコメント',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'reflect-desc' => 'Mieh Müjjeleschkeite för Jeschprääschsfäddeme op Klaafsigge.',
+	'reflect-bulleted' => 'Daach $1,
+
+{{GENDER:Dä|Dat|Dä Metmaacher|De|Et}} $2 hät e Schtöck us Deinem Beidraach zodammejevaß zom Thema:
+„$3“
+
+De Zusammenfassung es: „$5“.
+
+Do kanns nohloore, of dat esu reschtesch es, indämm dat De <$4> oprööfs.
+
+Falls dat e Meßverschtändnes wohr, kanns De dat kloh schtelle.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

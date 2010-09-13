@@ -642,7 +642,7 @@ $messages['gl'] = array(
 	'sitematrix-total' => "'''Suma total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privado',
-	'sitematrix-fishbowl' => 'editado restrinxido',
+	'sitematrix-fishbowl' => 'edición restrinxida',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

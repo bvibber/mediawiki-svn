@@ -173,6 +173,8 @@ $messages['br'] = array(
 	'cb_cat_files' => 'restroù',
 	'cb_apply_button' => 'Arloañ',
 	'cb_all_op' => 'An holl',
+	'cb_or_op' => 'pe',
+	'cb_and_op' => 'ha',
 );
 
 /** German (Deutsch)
@@ -234,14 +236,19 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Grondin
+ * @author Sherbrooke
  * @author The Evil IP address
  */
 $messages['fr'] = array(
 	'categorybrowser' => 'Navigateur de catégories',
+	'categorybrowser-desc' => 'Offre une [[Special:CategoryBrowser|page spéciale]] pour filtrer la plupart des catégories et y naviguer en utilisant une interface Ajax',
+	'cb_requires_javascript' => 'Le navigateur de catégories exige que JavaScript soit autorisé par le navigateur web.',
+	'cb_ie6_warning' => "L'éditeur conditionnel ne fonctionne pas dans Internet Explorer 6.0 ou versions antérieures. Toutefois, la navigation des conditions pré-défini devrait fonctionner normalement. S'il vous plaît, changer ou mettre à jour votre navigateur.",
 	'cb_show_no_parents_only' => 'Afficher uniquement les catégories sans catégorie-mère',
 	'cb_cat_name_filter' => 'Recherche de catégories par le nom :',
 	'cb_cat_name_filter_clear' => 'Appuyer pour effacer le filtre de nom de catégorie',
 	'cb_cat_name_filter_ci' => 'Casse insensible',
+	'cb_copy_line_hint' => "Utilisez les boutons [+] et [>+] pour copier et coller les opérateurs dans l'expression choisie",
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|sous-catégorie|sous-catégories}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|page|pages}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|fichier|fichiers}}',

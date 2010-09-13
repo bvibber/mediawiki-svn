@@ -27,11 +27,32 @@ Further description on http://www.mediawiki.org/wiki/Extension:Livelets
 According to that page, the functionality of this extension is not limited to the Main Page but can be used in all pages. ''Therefore, the phrase \"the main page content\" '''should be translated as \"the main content of the page\",''' not as \"the content of the main page\".''",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'livelets-desc' => 'Omogućava da se uklope stranice koje se učitavaju nakon sadržaja početne stranice i mogu se dinamički ažurirati putem Ajaxa.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
 	'livelets-desc' => 'Ermöglicht es, Seiten nach dem Laden der Hauptseite in deren Inhalte zu transkludieren und diese dynamisch mit Hilfe von Ajax zu aktualisieren',
+);
+
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'livelets-desc' => 'Permite que las páginas transcluídas sean cargadas después del contenido principal de la página y que puedan actualizarse dinámicamente usando Ajax',
+);
+
+/** French (Français)
+ * @author Sherbrooke
+ */
+$messages['fr'] = array(
+	'livelets-desc' => "Permet aux pages incluses d'être chargées après le contenu principal de la page et d'être mises à jour dynamiquement grâce à Ajax.",
 );
 
 /** Galician (Galego)

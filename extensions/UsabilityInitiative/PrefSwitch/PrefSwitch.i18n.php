@@ -1110,6 +1110,7 @@ Da biste nam pomogli da ih poboljšamo, molimo ispunite neobaveznu anketu ispod 
 );
 
 /** Catalan (Català)
+ * @author Martorell
  * @author Paucabot
  * @author SMP
  * @author Vriullop
@@ -1129,6 +1130,7 @@ $messages['ca'] = array(
 	'prefswitch-survey-question-dislike' => 'Què és el que no us ha agradat de les funcionalitats?',
 	'prefswitch-survey-question-whyoff' => 'Per què desactiveu les noves funcionalitats?
 Si us plau, seleccioneu tot el que correspongui',
+	'prefswitch-survey-question-globaloff' => 'Voleu desactivar les característiques de manera global?',
 	'prefswitch-survey-answer-whyoff-hard' => "Ha estat massa difícil d'usar.",
 	'prefswitch-survey-answer-whyoff-didntwork' => 'No funcionava correctament.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'No funcionava de manera predictible.',
@@ -1140,6 +1142,7 @@ Si us plau, seleccioneu tot el que correspongui',
 	'prefswitch-survey-answer-browser-other' => 'Un altre navegador:',
 	'prefswitch-survey-question-os' => 'Quin sistema operatiu usau?',
 	'prefswitch-survey-answer-os-other' => 'Un altre sistema operatiu:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sí, desactiva les característiques en tots els wikis',
 	'prefswitch-survey-question-res' => 'Quina és la resolució de la vostra pantalla?',
 	'prefswitch-title-on' => 'Noves característiques',
 	'prefswitch-title-switched-on' => 'Gaudiu-ne!',

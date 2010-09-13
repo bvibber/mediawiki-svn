@@ -24,6 +24,13 @@ $messages['de'] = array(
 	'slimboxthumbs-desc' => 'Ermöglicht nach einem Klick auf ein Vorschaubild dessen Anzeige in voller Größe mit Hilfe von [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'slimboxthumbs-desc' => 'Muestra imágenes a tamaño completo con [http://www.digitalia.be/software/slimbox2 Slimbox 2] cuando se pulsa sobre la miniatura',
+);
+
 /** French (Français)
  * @author Iluvalar
  */

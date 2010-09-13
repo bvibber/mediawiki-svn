@@ -67,9 +67,10 @@ $messages['ast'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'antibot-desc' => "Oafåchs ''Framework'' fia Spambot-Prüfungen",
+	'antibot-desc' => "Oafochs ''Framework'' fyr Spambot-Priafungen",
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

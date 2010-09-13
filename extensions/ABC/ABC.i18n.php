@@ -105,6 +105,13 @@ $messages['ba'] = array(
 	'abc-desc' => 'ABC музыка форматлауы өсөн <code>&lt;abc&gt;</code> тэге ҡулланыла',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'abcdownload' => 'Owerloon',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Red Winged Duck

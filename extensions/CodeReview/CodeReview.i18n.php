@@ -2410,7 +2410,7 @@ $messages['es'] = array(
 	'code-rev-diff-too-large' => 'El diff es demasiado grande para ser mostrado.',
 	'code-rev-purge-link' => 'purgar',
 	'code-rev-total' => 'Número total de resultados: $1',
-	'code-rev-not-found' => "Revisión '''\$ 1''' no existe!",
+	'code-rev-not-found' => "¡La revisión '''$1''' no existe!",
 	'code-status-new' => 'nuevo',
 	'code-status-fixme' => 'arréglame',
 	'code-status-reverted' => 'revertido',
@@ -2448,6 +2448,8 @@ Comentario:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Cambios de seguimiento',
 	'codereview-email-body2' => 'El usuario "$1" ha hecho de modificaciones de seguimiento a $2.
+
+URL completa para la revisión de seguimiento: $5
 
 URL completa : $3
 

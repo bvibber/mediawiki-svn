@@ -63,6 +63,13 @@ $messages['dsb'] = array(
 	'xmlrc-desc' => 'Sćele powěźeńki wó změnach ako XML, pśez UDP, Jabber abo druge srědki',
 );
 
+/** Spanish (Español)
+ * @author Sanbec
+ */
+$messages['es'] = array(
+	'xmlrc-desc' => 'Envía notificaciones sobre cambios en formato XML, a través de UDP,  Jabber u otros medios',
+);
+
 /** French (Français)
  * @author Peter17
  */

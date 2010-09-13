@@ -112,6 +112,13 @@ $messages['gsw'] = array(
 	'logofunctions-filenotexist' => 'Fähler: [[File:$1]] git s nit',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'logofunctions-filenotexist' => 'Greška: [[File:$1]] ne postoji',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

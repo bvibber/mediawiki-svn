@@ -43,6 +43,7 @@ You may wish to re-rate it.",
 
 /** Message documentation (Message documentation)
  * @author Brandon Harris
+ * @author EugeneZelenko
  * @author Sam Reed
  */
 $messages['qqq'] = array(
@@ -52,7 +53,7 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articleassessment-desc' => '{{desc}}',
 	'articleassessment-yourfeedback' => 'This is a box or section header.  It indicates that the contents of the box are personal to the user.',
 	'articleassessment-pleaserate' => 'This is a call to action for the user to provide their ratings about the page.',
-	'articleassessment-submit' => 'This is for when the user submits their ratings to the server.',
+	'articleassessment-submit' => '{{Identical|Submit}}',
 	'articleassessment-rating-wellsourced' => 'This is a rating metric label. The metric is for measuring how researched the article is.',
 	'articleassessment-rating-neutrality' => "This is a rating metric label. The metric is for measuring an article's NPOV.",
 	'articleassessment-rating-completeness' => 'This is a rating metric label. The metric is for measuring how comprehensive the article is.',
@@ -87,8 +88,25 @@ $messages['af'] = array(
 	'articleassessment-rating-completeness' => 'Volledig:',
 	'articleassessment-rating-readability' => 'Leesbaar:',
 	'articleassessment-articlerating' => 'Artikel gradering',
-	'articleassessment-results-show' => '(Resultate versteek. [[Wys]] hulle.)',
-	'articleassessment-results-hide' => '([[Versteek resultate]])',
+	'articleassessment-results-show' => '(Resultate versteek. [[#|Wys]] hulle.)',
+	'articleassessment-results-hide' => '([[#|Versteek resultate]])',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'articleassessment' => 'Адзнака артыкулаў',
+	'articleassessment-desc' => 'Адзнака артыкулаў (пачатковая вэрсія)',
+	'articleassessment-yourfeedback' => 'Ваш водгук',
+	'articleassessment-pleaserate' => 'Калі ласка, знайдзіце час, каб адзначыць старонку ўнізе.',
+	'articleassessment-submit' => 'Даслаць',
+	'articleassessment-rating-wellsourced' => 'Спасылкі на крыніцы:',
+	'articleassessment-rating-neutrality' => 'Нэўтральнасьць:',
+	'articleassessment-rating-completeness' => 'Скончанасьць:',
+	'articleassessment-rating-readability' => 'Лёгкасьць чытаньня:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Вы лічыце, што гэты артыкул мае дастаткова цытатаў, і яны спасылаюцца на крыніцы, якія заслугоўваюць даверу?',
 );
 
 /** German (Deutsch)
@@ -120,8 +138,80 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung ''bearbeitet''.
 Vielleicht möchtest du ihn erneut einschätzen.",
-	'articleassessment-results-show' => '(Ergebnisse sind ausgeblendet. [[Einblenden]].)',
-	'articleassessment-results-hide' => '([[Ergebnisse ausblenden]])',
+	'articleassessment-results-show' => '(Ergebnisse sind ausgeblendet. [[#|Einblenden]].)',
+	'articleassessment-results-hide' => '([[#|Ergebnisse ausblenden]])',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'articleassessment' => 'Avaliación do artigo',
+	'articleassessment-desc' => 'Versión piloto da avaliación dos artigos',
+	'articleassessment-yourfeedback' => 'Os seus comentarios',
+	'articleassessment-submit' => 'Enviar',
+	'articleassessment-rating-wellsourced' => 'Ben documentado:',
+	'articleassessment-rating-neutrality' => 'Neutral:',
+	'articleassessment-rating-completeness' => 'Completo:',
+	'articleassessment-rating-readability' => 'Lexible:',
+	'articleassessment-articlerating' => 'Avaliación do artigo',
+	'articleassessment-error' => 'Houbo un erro.
+Inténteo de novo máis tarde.',
+	'articleassessment-featurefeedback' => 'Déanos [[Special:Article Assessment Feedback|a súa opinión]] sobre esta característica.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|avaliación|avaliacións}})',
+	'articleassessment-results-show' => '(Resultados agochados. [[#|Mostralos]].)',
+	'articleassessment-results-hide' => '([[#|Agochar os resultados]])',
+);
+
+/** Japanese (日本語)
+ * @author Yanajin66
+ */
+$messages['ja'] = array(
+	'articleassessment' => '記事の評価',
+	'articleassessment-desc' => '記事の評価（パイロット版）',
+	'articleassessment-yourfeedback' => 'あなたのフィードバック',
+	'articleassessment-pleaserate' => 'このページの評価を算出していますので、少しお待ちください。',
+	'articleassessment-submit' => '送信',
+	'articleassessment-rating-wellsourced' => '良くソース化できたもの:',
+	'articleassessment-rating-neutrality' => '中立的なもの:',
+	'articleassessment-rating-completeness' => '完了:',
+	'articleassessment-rating-readability' => '読み込み可能なもの:',
+	'articleassessment-rating-wellsourced-tooltip' => 'あなたはこの記事が十分な引用を含んでいて、それらの引用は信憑性のあるソースからのものだと感じますか？',
+	'articleassessment-rating-neutrality-tooltip' => 'あなたはこの記事が問題点における全ての見解の中で公正な表現だと感じますか？',
+	'articleassessment-rating-completeness-tooltip' => 'あなたはこの記事が不可欠な話題の領域をカバーしていると感じますか？',
+	'articleassessment-rating-readability-tooltip' => 'あなたはこの記事が良く整理され、良く書かれていると感じますか？',
+	'articleassessment-articlerating' => '記事の評価',
+	'articleassessment-error' => 'エラーが発生しました。
+後でもう一度試みてください。',
+	'articleassessment-thanks' => 'ありがとうございます！あなたの評価は保存されました。',
+	'articleassessment-stalemessage-revisioncount' => "この記事はあなたが最後にレビューしてから、'''$1 回'''''修正''されました。
+あなたは再評価したいかもしれません。",
+	'articleassessment-stalemessage-greaterthancount' => "この記事はあなたが最後にレビューしてから、'''$1 回以上'''''修正''されました。
+あなたは再評価したいかもしれません。",
+	'articleassessment-stalemessage-norevisioncount' => "この記事はあなたが最後にレビューしてから、''修正''されました。
+あなたは再評価したいかもしれません。",
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'articleassessment' => 'Artikelaschätzung',
+	'articleassessment-desc' => 'Artikelaschätzung Pilotversioun',
+	'articleassessment-yourfeedback' => 'Äre Feedback',
+	'articleassessment-pleaserate' => 'Huelt Iech w.e.g. een Ament fir déi Säit hei drënner ze bewäerten.',
+	'articleassessment-submit' => 'Späicheren',
+	'articleassessment-rating-wellsourced' => 'Gudd dokumentéiert:',
+	'articleassessment-rating-neutrality' => 'Neutral:',
+	'articleassessment-rating-completeness' => 'Komplett:',
+	'articleassessment-rating-readability' => 'Verständlech:',
+	'articleassessment-articlerating' => 'Bewäertung vum Artikel',
+	'articleassessment-error' => 'Et ass e Feeler geschitt.
+Probéiert w.e.g. méi spéit nach emol.',
+	'articleassessment-thanks' => 'Merci! Är Bewäertung gouf gespäichert.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
+	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater [[#|weisen]].)",
+	'articleassessment-results-hide' => '([[#|Resultater verstoppen]])',
 );
 
 /** Macedonian (Македонски)
@@ -153,14 +243,69 @@ $messages['mk'] = array(
 Ви предлагаме да ја преоцените.",
 	'articleassessment-stalemessage-norevisioncount' => "Статијава е ''преработена'' од последниот преглеед наваму.
 Ви предлагаме да ја преоцените.",
-	'articleassessment-results-show' => '(Резултатите се скриени. [[Прикажи]] ги.)',
-	'articleassessment-results-hide' => '([[Сокриј резултати]])',
+	'articleassessment-results-show' => '(Резултатите се скриени. [[#|Прикажи]] ги.)',
+	'articleassessment-results-hide' => '([[#|Сокриј резултати]])',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'articleassessment' => "Valutassion ëd j'artìcoj",
+	'articleassessment-desc' => "Vërsion pilòta dla valutassion ëd j'artìcoj",
+	'articleassessment-yourfeedback' => 'Tò artorn',
+	'articleassessment-pleaserate' => 'Për piasì pija un moment për valuté sta pàgina sota.',
 	'articleassessment-submit' => 'Spediss',
+	'articleassessment-rating-wellsourced' => 'Bon-e-Sorgiss:',
+	'articleassessment-rating-neutrality' => 'Neutral:',
+	'articleassessment-rating-completeness' => 'Completa:',
+	'articleassessment-rating-readability' => 'Lesìbil:',
+	'articleassessment-rating-wellsourced-tooltip' => "Pensës-to che sto artìcol a l'abia basta citassion e che ste citassion a rivo da sorziss sigure?",
+	'articleassessment-rating-neutrality-tooltip' => 'Pensës-to che sto artìcol a mosta na giusta rapresentassion ëd tute le prospetive ant sua edission?',
+	'articleassessment-rating-completeness-tooltip' => "Pensës-to che sto artìcol a coata le aire essensial ëd l'argoment com a dovrìa?",
+	'articleassessment-rating-readability-tooltip' => 'Pensës-to che sto artìcol a sia bin-organisà e bin scrivù?',
+	'articleassessment-articlerating' => "Valutassion ëd l'artìcol",
+	'articleassessment-error' => "Un eror a l'é capità.
+Për piasì preuva torna pi tard.",
+	'articleassessment-thanks' => 'Mersì! Toe valutassion a son ëstàite salvà.',
+	'articleassessment-featurefeedback' => 'Dane [[Special:Article Assessment Feedback|artorn]] su sta funsion.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|valutassion|valutassion}})',
+	'articleassessment-stalemessage-revisioncount' => "Sto artìcol a l'é stàit ''revisionà'' '''$1 vire''' da l'ùltima vira ch'it l'has revisionalo.
+It podrìe vorejlo revaluté.",
+	'articleassessment-stalemessage-greaterthancount' => "Sto artìcol a l'é stàit ''revisionà'' pi che $1 vire da l'ùltima vira ch'it l'has revisionalo.
+It podrìe vorejlo revaluté.",
+	'articleassessment-stalemessage-norevisioncount' => "Sto artìcol a l'é stàit ''revisionà'' da quand ch'it l'has revisionalo.
+It podrìe vorejlo revaluté.",
+	'articleassessment-results-show' => '(Arzultà stërmà. [[#|Mostlo]].)',
+	'articleassessment-results-hide' => '([[#|Stërma arzultà]])',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'articleassessment-pleaserate' => 'Xin hãy dành một chút thì giờ để đánh giá trang này ở dưới:',
+	'articleassessment-submit' => 'Đánh giá',
+	'articleassessment-rating-wellsourced' => 'Đầy đủ nguồn:',
+	'articleassessment-rating-neutrality' => 'Trung lập:',
+	'articleassessment-rating-completeness' => 'Đầy đủ:',
+	'articleassessment-rating-readability' => 'Dễ đọc:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Bạn có cảm thấy rằng bày này chú thích nguồn gốc đầy đủ và đáng tin các nguồn?',
+	'articleassessment-rating-neutrality-tooltip' => 'Bạn có cảm thấy rằng bài này đại diện công bằng cho tất cả các quan điểm về các vấn đề?',
+	'articleassessment-rating-completeness-tooltip' => 'Bạn có cảm thấy rằng bài này bao gồm các đề tài cần thiết?',
+	'articleassessment-rating-readability-tooltip' => 'Bạn có cảm thấy rằng bài này được sắp xếp đàng hoàng có văn bản hay?',
+	'articleassessment-articlerating' => 'Đánh giá bài',
+	'articleassessment-error' => 'Đã gặp lỗi.
+Xin hãy thử lại sau.',
+	'articleassessment-thanks' => 'Cám ơn! Đánh giá của bạn đã được lưu.',
+	'articleassessment-noratings' => '$1 ($2 đánh giá)',
+	'articleassessment-stalemessage-revisioncount' => "Bài này đã được ''chỉnh sửa'' '''$1 lần''' sau lần cuối bạn xem xét nó.
+Bạn có thể muốn đánh giá nó một lần nữa.",
+	'articleassessment-stalemessage-greaterthancount' => "Bài này đã được ''chỉnh sửa'' hơn $1 lần sau lần cuối bạn xem xét nó.
+Bạn có thể muốn đánh giá nó một lần nữa.",
+	'articleassessment-stalemessage-norevisioncount' => "Bài này đã được ''chỉnh sửa'' sau lần cuối bạn xem xét nó.
+Bạn có thể muốn đánh giá nó một lần nữa.",
+	'articleassessment-results-show' => '(Các kết quả được ẩn. [[#|Hiện]] kết quả.)',
+	'articleassessment-results-hide' => '([[#|Ẩn kết quả]])',
 );
 

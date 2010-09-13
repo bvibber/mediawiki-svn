@@ -195,6 +195,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Pertile
+ * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(

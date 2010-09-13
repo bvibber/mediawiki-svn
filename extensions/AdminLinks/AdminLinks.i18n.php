@@ -138,19 +138,21 @@ $messages['ba'] = array(
 
 /** Bavarian (Boarisch)
  * @author Man77
+ * @author Mucalexx
  */
 $messages['bar'] = array(
-	'adminlinks' => 'Links fia Administratoan',
-	'adminlinks-desc' => 'Eagänzt a [[Special:AdminLinks|Spezialseitn]] mid hüifreiche Links fia Administratoan',
-	'adminlinks_documentation' => 'Dokumentazion vu „$1“',
-	'adminlinks_general' => 'Åigemein',
-	'adminlinks_editsidebar' => "d'Sidebar beåawatn",
-	'adminlinks_editcss' => 'CSS-Datein beåawatn',
-	'adminlinks_editmainpagename' => 'in Nãmen vu da Hauptseitn ändan',
-	'adminlinks_users' => 'Benutza',
-	'adminlinks_createuser' => 'Benutza eastöin',
-	'adminlinks_browsesearch' => 'Duachschaun und suacha',
-	'adminlinks_importexport' => 'Impoatian und expoatian',
+	'adminlinks' => 'Links fyr Administratorn',
+	'adminlinks-desc' => 'Ergänzt a [[Special:AdminLinks|Speziaalsaiten]] mid hüifraiche Links fyr Administratorn',
+	'adminlinks_documentation' => 'Dokumentazion vo „$1“',
+	'adminlinks_general' => 'Oigmoa',
+	'adminlinks_editsidebar' => 'de Sidebar beorwaiten',
+	'adminlinks_editcss' => 'CSS-Datain beorwaiten',
+	'adminlinks_editmainpagename' => 'an Nåm vo da Hauptsaiten endern',
+	'adminlinks_users' => 'Benytzer',
+	'adminlinks_createuser' => 'Benytzer erstöin',
+	'adminlinks_browsesearch' => 'Durchschaun und suacha',
+	'adminlinks_importexport' => 'Importiarn und exportiarn',
+	'right-adminlinks' => 'Link noch [[Special:AdminLinks|Links fyr Administratorn]] seeng',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

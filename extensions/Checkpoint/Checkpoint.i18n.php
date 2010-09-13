@@ -158,6 +158,13 @@ $messages['gsw'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischespycherig]])',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'checkpoint' => 'Spremi i nastavi uređivanje',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

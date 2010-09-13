@@ -509,11 +509,16 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dnik
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
 	'chemicalsources' => 'Kemijski izvori',
 	'chemFunctions_ListPage' => 'Kemijski izvori',
+	'chemFunctions_CAS' => 'CAS broj',
+	'chemFunctions_ATCCode' => 'ATC kod',
+	'chemFunctions_ECNumber' => 'EC broj',
 	'chemFunctions_Formula' => 'Formula',
+	'chemFunctions_Name' => 'Ime po IUPAC-u',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
