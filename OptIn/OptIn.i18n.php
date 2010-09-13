@@ -809,6 +809,12 @@ $messages['bjn'] = array(
 	'optin-submit-feedback' => 'Bariakan kitihan mantuk',
 	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Kada',
+	'optin-survey-answer-whyoptout-hard' => 'Ngalih banar nah mamuruk ni',
+	'optin-survey-answer-whyoptout-didntwork' => 'Kada tapi kawa dipuruk.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Kada kawa dicagar-cagar.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Ulun kada katuju lawan paniringannya.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ulun kada katuju lawan tab hanyar wan tampaiannya.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ulun kada katuju kutak pakakas nang hanyar.',
 	'optin-survey-answer-whyoptout-other' => 'Alasan nang lain:',
 );
 

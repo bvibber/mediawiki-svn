@@ -3291,6 +3291,7 @@ Da li želite napraviti interni link?',
 );
 
 /** Catalan (Català)
+ * @author Martorell
  * @author Oç
  * @author Paucabot
  * @author SMP
@@ -3431,6 +3432,9 @@ Voleu convertir-lo en un enllaç intern?",
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Tailandès',
+	'wikieditor-toolbar-characters-page-lao' => 'Laosià',
+	'wikieditor-toolbar-characters-page-khmer' => 'Khmer',
 	'wikieditor-toolbar-section-help' => 'Ajuda',
 	'wikieditor-toolbar-help-heading-description' => 'Descripció',
 	'wikieditor-toolbar-help-heading-syntax' => 'El que teclegeu',
@@ -14547,7 +14551,7 @@ $messages['pl'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Wiersze',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolumny',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Dołącz wiersz nagłówka',
-	'wikieditor-toolbar-tool-table-wikitable' => 'Styl z granicami',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Styl z krawędziami',
 	'wikieditor-toolbar-tool-table-sortable' => 'Dodaj do tabeli możliwość sortowania',
 	'wikieditor-toolbar-tool-table-example' => 'Treść komórki',
 	'wikieditor-toolbar-tool-table-preview' => 'Podgląd',

@@ -307,7 +307,7 @@ $messages['fa'] = array(
 	'usabilityinitiative' => 'گام مقدماتی قابلیت استفاده',
 	'usabilityinitiative-desc' => 'ویژگی‌های توسعه‌یافته توسط بهبود کاربردپذیری ویکی‌پدیا به منظور افزایش کاربردپذیری مدیاویکی',
 	'prefs-beta' => 'امکانات بتا',
-	'prefs-labs' => 'امکانات آزمایشگاهی',
+	'prefs-labs' => 'ویژگی‌های آزمایشی',
 );
 
 /** Finnish (Suomi)
