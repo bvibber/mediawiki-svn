@@ -376,7 +376,9 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	function testDBDataTransclusionSource() {
 		$spec = array(
 			'name' => 'FOO',
-			'keyTypes' => array( 'id' => 'int', 'name' => 'string' ),
+			'keyFields' => array( 'id'  ),
+			'fieldNames' => array( 'id', 'name' ),
+			'fieldInfo' => array( 'id' => array( 'type' => 'int') ),
 			'query' => 'SELECT * FROM foo ',
 			'querySuffix' => ' GROUP BY id',
 		);
@@ -388,7 +390,9 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( preg_match( '/GROUP BY id$/', $sql ) === 1 );
 		$this->assertTrue( preg_match( "/WHERE \\( *name *= *'foo\\\\\"' *\\)/", $sql ) === 1 );
 
-		$sql = $source->getQuery( 'id', '3' );
+		#TODO: test automatic key conversion... but how?
+
+		$sql = $source->getQuery( 'id', 3 );
 		$this->assertTrue( preg_match( '/WHERE \( *id *= *3 *\)/', $sql ) === 1 );
 
 		// check blocking of evil field names
