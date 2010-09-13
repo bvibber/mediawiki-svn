@@ -162,7 +162,7 @@ function doPageSpecificRewrite() {
 					
 					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
 						'action': wgAction,
-						'title' : wgTitle,
+						'titleKey' : wgTitle,
 						'target' : '#bodyContent'
 					});
 					window.mwSequencerRemote.drawUI();						

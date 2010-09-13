@@ -61,7 +61,7 @@ $messages['en'] = array(
 	'mwe-sequencer-preview-continue' => 'Continue preview',
 	'mwe-sequencer-apply-changes' => 'Apply changes',
 	'mwe-sequencer-start-time' => 'Start time',
-	'mwe-sequencer-asset-source' => 'Source page',
+	'mwe-sequencer-asset-source' => 'Source asset page',
 
 
 	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',

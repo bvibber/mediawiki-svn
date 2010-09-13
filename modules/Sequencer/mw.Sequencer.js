@@ -15,7 +15,8 @@ mw.includeAllModuleMessages();
 			return; 
 		}		
 		var seqContainer = $j( this.selector ).get(0);
-		// support jquery ui style 'destroy' call 
+
+		// Support jquery ui style 'destroy' call 
 		if( options == 'destroy' ){
 			if( seqContainer['sequencer'] )
 				delete seqContainer['sequencer'];				

@@ -718,17 +718,18 @@ mw.SequencerTools.prototype = {
 								this.getCurrentsmilElement() 
 							) 
 						);
-		mw.log( 'Adding ' + toolSet.length + ' tools for ' + this.sequencer.getSmil().getRefType( this.getCurrentsmilElement() ) );
+		mw.log( 'Adding ' + toolSet.length + ' tools for ' + 
+				this.sequencer.getSmil().getRefType( this.getCurrentsmilElement() ) +
+				' current tool: ' +  _this.getCurrentToolId()
+			);
 		
+		var toolTabIndex = 0;
 		$j.each( toolSet, function( inx, toolId ){
 			
-			var tool = _this.tools[ toolId ];
-			
-			// set the currentTool if not already set 
-			if(!_this.currentToolId){
-				_this.currentToolId = toolId;
+			var tool = _this.tools[ toolId ];			
+			if( _this.getCurrentToolId() == toolId){
+				toolTabIndex = inx;
 			}
-			
 			// Append the title to the ul list
 			$toolsContainer.find( 'ul').append( 
 				$j('<li />').append( 
@@ -786,7 +787,12 @@ mw.SequencerTools.prototype = {
 		});
 		
 		// Add tab bindings
-		$toolsContainer.tabs();
+		$toolsContainer.tabs({
+			select: function(event, ui) {
+				_this.setCurrentToolId(  $j( ui.tab ).attr('href').replace('#tooltab_', '') ); 
+			},
+			selected : toolTabIndex
+		});
 		
 		// Build out global edit Actions buttons after the container
 		for( var editActionId in this.editActions ){		
