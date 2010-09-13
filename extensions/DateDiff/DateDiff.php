@@ -13,38 +13,44 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Datediff_VERSION', '0.1' );
+define( 'Datediff_VERSION', '0.1.1' );
 
 $wgExtensionMessagesFiles['DateDiff'] = dirname( __FILE__ ) . '/DateDiff.i18n.php';
-$wgExtensionFunctions[] = "efDateDiff";
-$wgHooks['LanguageGetMagic'][] = 'efDatesFunctionMagic';
 
 // Extension credits that show up on Special:Version
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'DateDiff',
-	'author' => 'David Raison',
+	'author' => array(
+		'[http://david.raison.lu David Raison]',
+		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
+	),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DateDiff',
 	'descriptionmsg' => 'datediff-desc',
 	'version' => Datediff_VERSION,
 );
 
-function efDateDiff() {
-	global $wgParser;
-	$wgParser->setFunctionHook( 'dates', 'calcdates' );
+$wgHooks['ParserFirstCallInit'][] = 'efDDDateDiff';
+$wgHooks['LanguageGetMagic'][] = 'efDDDatesFunctionMagic';
+
+function efDDDateDiff( Parser &$parser ) {
+	$parser->setFunctionHook( 'dates', 'efDDCalcDates' );
+	return true;
 }
 
 /**
- * Adds the magic words for the parser functions
+ * Adds the magic words for the parser functions.
  */
-function efDatesFunctionMagic( &$magicWords, $langCode ) {
+function efDDDatesFunctionMagic( &$magicWords, $langCode ) {
 	$magicWords['dates'] = array( 0, 'dates' );
 	return true;
 }
 
-function calcdates( &$parser ) {
+function efDDCalcDates( &$parser ) {
 	$params = func_get_args();
-	array_shift( $params ); // We already know the $parser ...
+	
+	// We already know the $parser ...
+	array_shift( $params ); 
 
 	while ( empty( $params[0] ) ) {
 		array_shift( $params );
@@ -56,7 +62,6 @@ function calcdates( &$parser ) {
 		// We currently ignore the label of the date.
 		$dates[] = substr( $pair, strpos( $pair, '=' ) + 1 );
 	}
-		
 
 	$time1 = strtotime( $dates[0] );
 	$time2 = strtotime( $dates[1] );
