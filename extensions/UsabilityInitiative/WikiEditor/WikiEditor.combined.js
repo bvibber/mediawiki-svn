@@ -1194,13 +1194,10 @@ $j(document).ready( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
-							if ( !data ) {
-								// This happens in some weird cases
-								return;
-							}
 							var status;
-							if ( typeof data.query == 'undefined' ) {
-								status = 'invalid';
+							if ( !data || typeof data.query == 'undefined' ) {
+								// This happens in some weird cases
+								status = false;
 							} else {
 								var page = data.query.pages[data.query.pageids[0]];
 								status = 'exists';
