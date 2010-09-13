@@ -25,6 +25,7 @@ class ImportMAB2 extends Maintenance {
 		$this->addOption( "create", "create database tables if they do not exist", false, false );
 		$this->addOption( "truncate", "truncate (empty) database tables", false, false );
 		$this->addOption( "prefix", "database table prefix. May contain a period (\".\") to reference tables in another database. If not given, the wiki's table prefix will be used", false, true );
+		$this->addOption( "recursive", "recurse into subdirectories while importing MAB files", false, false );
 		$this->addOption( "noblob", "don't write blob data, import index fields only", false, false );
 		$this->addOption( "limit", "max number of files to process", false, true );
 		$this->addOption( "debug", "don't write to the database, dump to console instead", false, false );
@@ -68,6 +69,7 @@ class ImportMAB2 extends Maintenance {
 
 		$this->debug = $this->hasOption( 'debug' );
 		$this->noblob = $this->hasOption( 'noblob' );
+		$recursive = $this->hasOption( 'recursive' );
 		$limit = (int)$this->getOption( 'limit' );
 
 		$src = $this->mArgs[0];
@@ -109,9 +111,14 @@ class ImportMAB2 extends Maintenance {
 			}
 		}
 
+		$this->importDir( $dir, $recursive, $limit );
+	}
+
+	public function importDir( $dir, $recursive = false, $limit = 0 ) {
 		$dir = "$dir/";
 
 		$this->output( "scanning directory $dir\n" );
+
 		$d = opendir( $dir );
 		if ( !$d ) {
 			$this->error( "unable to open directory $dir!\n" );
@@ -120,6 +127,14 @@ class ImportMAB2 extends Maintenance {
 
 		while( ( $file = readdir( $d ) ) ) {
 			if ( $file == "." or $file == ".." ) {
+				continue;
+			}
+
+			if ( is_dir( $dir . $file ) && $recursive ) {
+				$this->importDir( $dir . $file );
+				continue;
+			} else if ( !is_file( $dir . $file ) ) {
+				$this->output( "not a file: $dir/$file\n" );
 				continue;
 			}
 
