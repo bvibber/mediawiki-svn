@@ -36,8 +36,8 @@ mw.addMessages( {
 	"mwe-embedplayer-download_text" : "Download timed text",
 	"mwe-embedplayer-download" : "Download",
 	"mwe-embedplayer-share" : "Share",
-	'mwe-embedplayer-about-library' : 'About kaltura player',
-	"mwe-embedplayer-about-library-desc" : 'Kaltura\'s HTML5 Media Library enables you to take advantage of the html5 &lt;video&gt; and &lt;audio&gt; tags today with a consistent player interface across all major browsers. <br> <br> [$1 More about the kaltura player library].',
+	"mwe-embedplayer-about-library" : "About kaltura player",
+	"mwe-embedplayer-about-library-desc" : "Kaltura's HTML5 Media Library enables you to take advantage of the html5 &lt;video&gt; and &lt;audio&gt; tags today with a consistent player interface across all major browsers. <br> <br> [$1 More about the kaltura player library]",
 	"mwe-embedplayer-credits" : "Credits",
 	"mwe-embedplayer-clip_linkback" : "Clip source page",
 	"mwe-embedplayer-choose_player" : "Choose video player",
@@ -615,6 +615,7 @@ EmbedPlayerManager.prototype = {
 			$j( targetElement )
 			.attr('id', playerInterface.pid )
 			.addClass( 'nativeEmbedPlayerPid' )
+			.show()
 			.after( 
 				$j( swapPlayerElement ).css('display', 'none')
 			)
@@ -902,6 +903,12 @@ mediaSource.prototype = {
 			case 'audio/ogg' :
 				return gM( 'mwe-embedplayer-video-audio' );
 			break;
+			case 'video/mpeg' :
+				return 'MPEG video'; // FIXME: i18n
+			break;
+			case 'video/x-msvideo' :
+				return 'AVI video'; // FIXME: i18n
+			break;
 		}
 		
 		// Return tilte based on file name:
@@ -991,6 +998,15 @@ mediaSource.prototype = {
 			break;
 			case '.xml':
 				return 'text/xml';
+			break;
+			case '.avi':
+				return 'video/x-msvideo';
+			break;
+			case '.mpg':
+				return 'video/mpeg';
+			break;
+			case '.mpeg':
+				return 'video/mpeg';
 			break;
 		}
 	}
@@ -2415,8 +2431,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Check if we need to refresh mobile safari
 		var mobileSafairNeedsRefresh = false;					
-		
-		
+				
 		// Unhide the original video element
 		if( !$j( '#' + this.pid ).hasClass('PlayerThemer') ){
 			$j( '#' + this.pid )
@@ -2435,7 +2450,7 @@ mw.EmbedPlayer.prototype = {
 			var source = this.mediaElement.getSources( 'video/h264' )[0];
 			if( source && ! source.src ){
 				mw.log( 'Error: should have caught no playable sources for mobile safari earlier' );
-			}					
+			}
 			
 			var videoAttribues = {
 				'id' : _this.pid,
@@ -2443,6 +2458,7 @@ mw.EmbedPlayer.prototype = {
 				'src' : source.src,
 				'controls' : 'true'
 			}
+			
 			if( this.loop ){
 				videoAttribues[ 'loop' ] = 'true';
 			}
@@ -3299,7 +3315,7 @@ var h264NativePlayer = new mediaPlayer( 'h264Native', ['video/h264'], 'Native' )
 var webmNativePlayer = new mediaPlayer( 'webmNative', ['video/webm'], 'Native' );
 
 // VLC player
-var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
+var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264', 'video/x-msvideo', 'video/mpeg'];
 var vlcPlayer = new mediaPlayer( 'vlc-player', vlcMineList, 'Vlc' );
 
 // Generic plugin
@@ -3345,6 +3361,8 @@ mediaPlayers.prototype =
 		this.defaultPlayers['application/ogg'] = ['Native', 'Vlc', 'Java', 'Generic'];
 		this.defaultPlayers['audio/ogg'] = ['Native', 'Vlc', 'Java' ];
 		this.defaultPlayers['video/mp4'] = ['Vlc'];
+		this.defaultPlayers['video/mpeg'] = ['Vlc'];
+		this.defaultPlayers['video/x-msvideo'] = ['Vlc'];
 		
 		this.defaultPlayers['text/html'] = ['Html'];
 		this.defaultPlayers['image/jpeg'] = ['Html'];
@@ -3621,6 +3639,11 @@ mw.EmbedTypes = {
 					continue;
 				}
 		
+				if ( (type == 'video/mpeg' || type=='video/x-msvideo') &&
+                                     pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+                                  this.players.addPlayer( vlcMozillaPlayer );
+                                }
+                                
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
 						this.players.addPlayer( vlcMozillaPlayer );
