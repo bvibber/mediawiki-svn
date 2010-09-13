@@ -279,6 +279,22 @@ abstract class UploadBase {
 		if ( $virus ) {
 			return array( 'uploadvirus', $virus );
 		}
+
+		$handler = MediaHandler::getHandler( $mime );
+		if ( $handler ) {
+			$handlerStatus = $handler->verifyUpload( $this->mTempPath );
+			if ( !$handlerStatus->isOK() ) {
+				$errors = $handlerStatus->getErrorsArray();
+				return reset( $errors );
+			}
+		}
+
+		$status = true;
+		wfRunHooks( 'UploadVerifyFile', array( $this, $mime, &$status ) );
+		if ( $status !== true ) {
+			return $status;
+		}
+
 		wfDebug( __METHOD__ . ": all clear; passing.\n" );
 		return true;
 	}
