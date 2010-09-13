@@ -163,10 +163,14 @@ class DataTransclusionHandler {
 		}
 
 		// render the record into wiki text
-		$t = Title::newFromText( $template, NS_TEMPLATE );
-		if ( empty( $t ) ) {
-			wfDebugLog( 'DataTransclusion', "illegal template name: $template\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
+		if ( $template === "#dump" ) {
+			$t = null; 
+		} else {
+			$t = Title::newFromText( $template, NS_TEMPLATE );
+			if ( empty( $t ) ) {
+				wfDebugLog( 'DataTransclusion', "illegal template name: $template\n" );
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
+			}
 		}
 
 		$handler = new DataTransclusionHandler( $parser, $source, $t, $templateText );
@@ -201,6 +205,20 @@ class DataTransclusionHandler {
 	}
 
 	function render( $record ) {
+		if ( empty( $this->templateText ) && $this->template === null ) {
+			// magic record dump
+			$t = null;
+
+			$this->templateText = "\n{|";
+			$this->templateText .= "|--\n";
+			$this->templateText .= "! key !! value\n";
+			foreach ( $record as $k => $v ) {
+				$this->templateText .= "|--\n";
+				$this->templateText .= "| $k || {{{{$k}}}}\n";
+			}
+			$this->templateText .= "|}\n";
+		} 
+
 		if ( $this->templateText ) { 
 			// explicit template content set. Used for testing and debugging.
 			if ( is_string( $this->templateText ) ) {
@@ -264,7 +282,7 @@ class DataTransclusionHandler {
 		if ( $args ) {
 			// add arguments
 			foreach ( $args as $f => $v ) {
-				if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
+				if ( is_int( $f ) || is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
 					continue;
 				}
 

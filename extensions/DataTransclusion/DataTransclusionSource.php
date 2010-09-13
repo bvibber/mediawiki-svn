@@ -31,7 +31,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		to a key, to refine the output. Optional.
  *	 * $spec['fieldNames']: names of all fields present in each record.
  *		Fields not listed here will not be available on the wiki,
- *		even if they are returned by the data source. REQUIRED.
+ *		even if they are returned by the data source. If not given, this defaults to
+ *		$spec['keyFields'] + array_keys( $spec['fieldInfo'] ).
+ *	 * $spec['fieldInfo']: Assiciative array mapping logical field names to additional
+ *		information for using and interpreting these fields. Different data sources
+ *		may allow different hints for each field. The following hints are known per
+ *		default:
+ *	     * $spec['fieldInfo'][$field]['type']: specifies the data types for the field:
+ *		'int' for integers, 'float' or 'decimal' for decimals, or 'string' for 
+ *		string fields. Serialization types 'json', 'wddx' and 'php' are also
+ *		supported. Defaults to 'string'.
+ *	     * $spec['fieldInfo'][$field]['normalization']: normalization to be applied for
+ *		this field, when used as a query key. This may be a callable, or an object 
+ *		that supports the function normalize(), or a regular expression for patterns
+ *		to be removed from the value.
  *	 * $spec['cacheDuration']: the number of seconds a result from this source
  *		may be cached for. If not set, results are assumed to be cacheable
  *		indefinitely. This setting determines the expiry time of the parser
@@ -87,10 +100,24 @@ abstract class DataTransclusionSource {
 		$this->keyFields = self::splitList( $spec[ 'keyFields' ] );
 		$this->optionNames = self::splitList( @$spec[ 'optionNames' ] );
 
+		if ( isset( $spec[ 'fieldInfo' ] ) ) {
+			$this->fieldInfo = $spec[ 'fieldInfo' ];
+		} else {
+			$this->fieldInfo = null;
+		}
+
 		if ( isset( $spec[ 'fieldNames' ] ) ) {
 			$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
+		} else if ( isset( $spec[ 'fieldInfo' ] ) ) {
+			$this->fieldNames = array_keys( $spec[ 'fieldInfo' ] );
 		} else {
 			$this->fieldNames = $this->keyFields;
+
+			if ( !empty( $this->fieldInfo ) ) {
+				$this->fieldNames = array_merge( $this->fieldNames, array_keys( $this->fieldInfo ) );
+			} 
+
+			$this->fieldNames = array_unique( $this->fieldNames );
 		}
 
 		if ( !empty( $spec[ 'cacheDuration' ] ) ) {
@@ -120,6 +147,51 @@ abstract class DataTransclusionSource {
 		$this->sourceInfo[ 'source-name' ] = $this->name; // force this one
 	}
 
+	public function normalize( $key, $value, $norm = null ) {
+		if ( $norm );
+		else if ( isset( $this->fieldInfo[ $key ]['normalization'] ) ) {
+			$norm = trim( $this->fieldInfo[ $key ]['normalization'] );
+		} else {
+			return $value;
+		}
+
+		if ( is_object( $norm ) ) {
+			return $norm->normalize( $value );
+		} else if ( is_callable( $norm ) || preg_match( '/^(\w[\w\d]*::)?(\w[\w\d]*)$/', $norm ) ) {
+			return call_user_func( $norm, $value );
+		} else if ( is_array( $norm ) ) {
+			return preg_replace( $norm[0], $norm[1], $value );
+		} else {
+			return preg_replace( $norm, '', $value );
+		}
+	}
+
+	public function convert( $key, $value, $format = null ) {
+		if ( $format );
+		else if ( isset( $this->fieldInfo[ $key ]['type'] ) ) {
+			$format = strtolower( trim( $this->fieldInfo[ $key ]['type'] ) );
+		} else {
+			return (string)$value;
+		}
+		
+		if ( $format == 'int' ) {
+			return (int)$value;
+		} else if ( $format == 'decimal' || $format == 'float' ) {
+			return (float)$value;
+		} else if ( $format == 'json' || $format == 'js' ) {
+			return DataTransclusionSource::decodeJson( $value ); 
+		} else if ( $format == 'wddx' ) {
+			return DataTransclusionSource::decodeWddx( $value ); 
+		} else if ( $format == 'xml' ) {
+			return DataTransclusionSource::parseXml( $value ); #WARNING: returns DOM
+		} else if ( $format == 'php' || $format == 'pser' ) {
+			return DataTransclusionSource::decodeSerialized( $value ); 
+		} else {
+			return (string)$value;
+		}
+	}
+
+
 	public function getName() {
 		return $this->name;
 	}
@@ -147,6 +219,9 @@ abstract class DataTransclusionSource {
 	public abstract function fetchRawRecord( $field, $value, $options = null );
 
 	public function fetchRecord( $field, $value, $options = null ) {
+		$value = $this->normalize( $field, $value );
+		$value = $this->convert( $field, $value ); 
+
 		$rec = $this->fetchRawRecord( $field, $value, $options );
 
 		if ( $this->transformer ) {
@@ -154,6 +229,27 @@ abstract class DataTransclusionSource {
 		}
 
 		return $rec;
+	}
+
+	public static function decodeSerialized( $raw ) {
+		return unserialize( $raw ); 
+	}
+
+	public static function decodeJson( $raw ) {
+		$raw = preg_replace( '/^\s*(var\s)?\w([\w\d]*)\s+=\s*|\s*;\s*$/sim', '', $raw);
+		return FormatJson::decode( $raw, true ); 
+	}
+
+	public static function decodeWddx( $raw ) {
+		return wddx_unserialize( $raw ); 
+	}
+
+	public static function parseXml( $raw ) {
+		$dom = new DOMDocument();
+		$dom->loadXML( $raw );
+
+		#NOTE: returns a DOM, RecordTransformer must be aware!
+		return $dom->documentElement; 
 	}
 }
 
@@ -279,22 +375,4 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 	public function fetchRawRecord( $field, $value, $options = null ) {
 		return @$this->lookup[ $field ][ $value ];
 	}
-
-	public static function decodeJson( $raw ) {
-		$raw = preg_replace( '/^\s*(var\s)?\w([\w\d]*)\s+=\s*|\s*;\s*$/sim', '', $raw);
-		return FormatJson::decode( $raw, true ); 
-	}
-
-	public static function decodeWddx( $raw ) {
-		return wddx_unserialize( $raw ); 
-	}
-
-	public static function parseXml( $raw ) {
-		$dom = new DOMDocument();
-		$dom->loadXML( $raw );
-
-		#NOTE: returns a DOM, RecordTransformer must be aware!
-		return $dom->documentElement; 
-	}
-
 }

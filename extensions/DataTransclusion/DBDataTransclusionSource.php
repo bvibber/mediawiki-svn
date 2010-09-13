@@ -28,19 +28,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		not supported reliably. REQUIRED.
  *	 * $spec['querySuffix']: additional clauses to be added after the WHERE clause.
  *		Useful mostly to specify GROUP BY (or ORDER BY or LIMIT).
- *	 * $spec['keyTypes']: associative arrays specifying the data types for the key fields.
- *		Array keys are the field names, the associated values specify the type
- *		as 'int' for integers, 'float' or 'decimal' for decimals, or 'string'
- *		for string fields. 
- *	 * $spec['serializedFields']: associative array of fields that contain serialized data
- *		structures. The keys in the array are the field names, the values are the 
- *		specify the data format: 'json', 'wddx' and 'php' for php serialized objects. 
- *		If deserialzation yields an array, the array will be merged with rest of the
- *		record.
- *	 * $spec['keyFields']: like for DataTransclusionSource, this is list of fields
- *		that can be used as the key for fetching a record. However, it's not required
- *		for DBDataTransclusionSource: if not provided, array_keys( $spec['keyTypes'] )
- *		will be used. 
+ *	 * $spec['fieldNames']: like for DataTransclusionSource; However, it's not required
+ *		for DBDataTransclusionSource: if not provided, array_keys( $spec['fieldInfo'] )
+ *		will be used.
+ *	 * $spec['fieldInfo']: like for DataTransclusionSource; Some additional hints are
+ *		supported for each field:
+ *	     * $spec['fieldInfo'][...]['dbfield']: the field's name in the database table, 
+ *		if different from the logical name.
+ *	     * $spec['fieldInfo'][...]['serialized']: format if the field contains a 
+ *		serialized structure as a blob. If deserialzation yields an array, it is
+ *		merged with the data record. Supported formats are 'json', 'wddx' and 
+ * 		'php' for php serialized objects. 
  *
  * For more information on options supported by DataTransclusionSource, see the class-level
  * documentation there.
@@ -52,57 +50,14 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 	 * @param $spec associative array of options. See class-level documentation for details.
 	 */
 	function __construct( $spec ) {
-		if ( !isset( $spec[ 'keyFields' ] ) && isset( $spec[ 'keyTypes' ] ) ) {
-			$spec[ 'keyFields' ] = array_keys( $spec[ 'keyTypes' ] );
+		if ( !isset( $spec[ 'fieldNames' ] ) && isset( $spec[ 'fieldInfo' ] ) ) {
+			$spec[ 'fieldNames' ] = array_keys( $spec[ 'fieldInfo' ] );
 		}
 
 		DataTransclusionSource::__construct( $spec );
 
 		$this->query = $spec[ 'query' ];
 		$this->querySuffix = @$spec[ 'querySuffix' ];
-		$this->serializedFields = DataTransclusionSource::splitList( @$spec[ 'serializedFields' ] );
-
-		if ( isset( $spec[ 'keyTypes' ] ) ) {
-			$this->keyTypes = $spec[ 'keyTypes' ];
-		} else {
-			$this->keyTypes = null;
-		}
-	}
-
-	public function convertKey( $key, $value ) {
-		if ( !isset( $this->keyTypes[ $key ] ) ) {
-			return (string)$value;
-		}
-
-		$t = strtolower( trim( $this->keyTypes[ $key ] ) );
-		
-		if ( $t == 'int' ) {
-			return (int)$value;
-		} else if ( $t == 'decimal' || $t == 'float' ) {
-			return (float)$value;
-		} else if ( $format == 'json' || $format == 'js' ) {
-			return DataTransclusionSource::decodeJson( $raw ); 
-		} else if ( $format == 'wddx' ) {
-			return DataTransclusionSource::decodeWddx( $raw ); 
-		} else if ( $format == 'xml' ) {
-			return DataTransclusionSource::parseXml( $raw ); #WARNING: returns DOM
-		} else if ( $format == 'php' || $format == 'pser' ) {
-			return DataTransclusionSource::decodeSerialized( $raw ); 
-		} else {
-			return (string)$value;
-		}
-	}
-
-	public function unserialize( $data, $format ) {
-		if ( $format == 'json' || $format == 'js' ) {
-			return DataTransclusionSource::decodeJson( $raw ); 
-		} else if ( $format == 'wddx' ) {
-			return DataTransclusionSource::decodeWddx( $raw ); 
-		} else if ( $format == 'php' || $format == 'pser' ) {
-			return DataTransclusionSource::decodeSerialized( $raw ); 
-		} 
-
-		return $data;
 	}
 
 	public function getQuery( $field, $value, $db = null ) {
@@ -114,7 +69,9 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 			return false; // redundant, but make extra sure we don't get anythign evil here 
 		}
 
-		$value = $this->convertKey( $field, $value ); 
+		if ( !empty( $this->fieldInfo ) && isset( $this->fieldInfo[$field]['dbfield'] ) ) {
+			$field = $this->fieldInfo[$field]['dbfield'];
+		}
 
 		if ( is_string( $value ) ) {
 			$v = $db->addQuotes( $value ); 
@@ -159,16 +116,34 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 
 		$db->freeResult( $rs );
 
-		if ( $this->serializedFields ) {
-		    foreach ( $this->serializedFields as $f => $format ) {
-			if ( empty( $rec[ $f ] ) ) continue;
-
-			$data = $this->unserialize( $rec[ $f ], $format );
-
-			if ( is_array( $data ) ) {
-			    $rec = array_merge( $data, $rec );
+		foreach ( $rec as $k => $v ) { 
+			if ( is_int( $k ) ) { # remove numeric keys, keep only assoc.
+				unset( $rec[ $k ] );
 			}
-		    }
+		}
+
+		foreach ( $rec as $k => $v ) { 
+			if ( isset( $this->fieldInfo[ $k ] ) ) {
+				$format = null; # auto format
+				$serialized = !empty( $this->fieldInfo[ $k ]['serialized'] );
+
+				if ( $serialized && is_string( $this->fieldInfo[ $k ]['serialized'] ) ) {
+					$format = $this->fieldInfo[ $k ]['serialized']; # serialization format, else use ['type']
+				}
+  
+				$data = $this->convert( $k , $rec[ $k ], $format ); # unserialize or convert
+
+				if ( $serialized && is_array( $data ) ) { # flatten serialized
+					# flatten
+					unset( $rec[ $k ] );
+
+					foreach ( $data as $m => $w ) { # don't use array_merge, it stinks.
+						$rec[ $m ] = $w;
+					}
+				} else {
+					$rec[ $k ] = $data;
+				}
+			}
 		}
 
 		wfDebugLog( 'DataTransclusion', "loaded record for $field=$value from database\n" );

@@ -14,6 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
+global $mab_field_map; # auto-loaded from within a function, so top scope is not global!
 $mab_field_map = array(
     'title' => array( '081', '200b', '304', '310', '331', '335' ),
     'series' => array( '089', '090', '451', '545' ),
@@ -22,6 +23,7 @@ $mab_field_map = array(
     'author' => array( ), # added later
     'editor' => array( ), # added later
     'institution' => array( '200', '204',  ),
+    'language' => array( '037', '037a', '037b', '037c', '037z' ),
     'annote' => array( '334', '434', '501' ),
     'note' => array( '359' ),
     'journal' => array( '376' ),
@@ -31,10 +33,15 @@ $mab_field_map = array(
     'pages' => array( '433' ),
     'type' => array( '509' ),
     'copyright' => array( '531' ),
-    'ISBN' => array( '540', '540a', '540b' ),
-    'ISSN' => array( '542', ),
-    'LCC' => array( '544', ),
-    'DOI' => array( '552', ),
+    'isbn' => array( '540', '540a', '540b' ),
+    'issn' => array( '542', ),
+    'lcc' => array( '544', '25l' ),
+    'doi' => array( '552', ),
+    'dnb' => array( '025a', ),
+    'zdb' => array( '025z', ),
+    'zka' => array( '025g', ),
+    'hzb' => array( '025h', ),
+    'id' => array( '001', ),
     'howpublished' => array( '590', '596', ),
 );
 
@@ -48,15 +55,15 @@ for ($i = 0; $i<25; $i++) {
 }
 
 $mab_field_map['author'][] = '333';
+$mab_field_map['author'][] = '359';
+$mab_field_map['author'][] = '369';
 
 /**
  * Implementations of RecordTransformer for processing data from the OpenLibrary web API.
  * No configuration options are needed.
  */
-class MABRecordTransformer extends RecordTransformer {
+class MAB2RecordTransformer extends RecordTransformer {
     
-
-
 	/**
 	 * Initializes the RecordTransformer from the given parameter array.
 	 * @param $spec associative array of options. See class-level documentation for details.
@@ -69,17 +76,32 @@ class MABRecordTransformer extends RecordTransformer {
 		$this->fieldPrefix = @$spec[ 'fieldPrefix' ];
 	}
 
+	public static function getMABFields( $logical ) {
+		global $mab_field_map;
+
+		if ( isset( $mab_field_map[ $logical ] ) ) {
+			return $mab_field_map[ $logical ];
+		} else {
+			return false;
+		}
+	}
+
 	public function transform( $rec ) {
 		global $mab_field_map;
 
 		$r = array();
 
-		foreach ($mab_field_map as $field => $items) {
+		foreach ( $mab_field_map as $field => $items ) {
 		    foreach ( $items as $item ) {
 			if ( $this->fieldPrefix ) $item = fieldPrefix + $item;
 
 			if ( !empty( $rec[ $item ] ) ) {
-			    $r[ $field ][] = $rec[ $item ];
+			    if ( is_array( $rec[ $item ] ) ) {
+				$r[ $field ] = array_merge( $r[ $field ], $rec[ $item ] );
+			    } else {
+				$r[ $field ][] = $rec[ $item ];
+			    }
+
 			    break;
 			}
 		    }
@@ -87,14 +109,24 @@ class MABRecordTransformer extends RecordTransformer {
 
 		foreach ($r as $f => $values) {
 		    if ( count($values) == 0 ) unset( $r[ $f ] );
-		    else if ( count($values) == 1 ) $r[ $f ] = $values[0];
+		    else if ( count($values) == 1 ) $r[ $f ] = MAB2RecordTransformer::mangleValue( $values[0] );
 		    else {
 			$values = array_unique( $values );
+			$values = array_map( 'MAB2RecordTransformer::mangleValue', $values );
 			$r[ $f ] = join(', ', $values);
 		    }
 		}
 	      
 		return $r;
+	}
+
+	function mangleValue( $v ) {
+		$v = preg_replace( '/<<\[(.*?)\]>>/', '', $v );
+		$v = preg_replace( '/\[(.*?)\]/', '$1', $v );
+		$v = preg_replace( '/<<(.*?)>>/', '$1', $v );
+		$v = preg_replace( '/<(.*?)>/', '$1', $v );
+		$v = preg_replace( '/^[¤¬]/', '', $v );
+		return $v;
 	}
 
 	/**
@@ -104,6 +136,13 @@ class MABRecordTransformer extends RecordTransformer {
 	 * @param $rec a structured data response, as received from the data source
 	 */
 	public function extractError( $data ) {
+		if ( !$this->dataPath ) {
+			$r = $this->extractRecord( $data );
+
+			if ( $r ) return false;
+			else return true;
+		}
+
 		$err = $this->resolvePath( $data, $this->errorPath );
 		$err = $this->asString( $err );
 
@@ -117,6 +156,10 @@ class MABRecordTransformer extends RecordTransformer {
 	 * @param $rec a structured data response, as received from the data source
 	 */
 	public function extractRecord( $data ) {
+		if ( !$this->dataPath ) {
+			return $data;
+		}
+
 		$rec = $this->resolvePath( $data, $this->dataPath );
 
 		return $rec;
