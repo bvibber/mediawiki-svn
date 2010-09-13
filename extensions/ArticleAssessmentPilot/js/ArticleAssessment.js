@@ -56,7 +56,7 @@
 					</span> \
 					<span class="article-assessment-rating-count"></span> \
 				</div>',
-			'staleMSG': '<span class="article-assessment-stale-msg">{MSG}</span>'
+			'staleMSG': '<span class="article-assessment-stale-msg"></span>'
 		},
 		
 		'fn' : {
@@ -249,7 +249,7 @@
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
 				if ( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
-					for ( var r in data.query.articleassessment[0].ratings) {
+					for ( var r in data.query.articleassessment[0].ratings ) {
 						var rating = data.query.articleassessment[0].ratings[r],
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
@@ -272,9 +272,7 @@
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						var msg = $.ArticleAssessment.fn.getMsg( 'articleassessment-stalemessage-revisioncount' )
-							.replace( /'''([^']*)'''/g, '<strong>$1</strong>' )
-							.replace( /''([^']*)''/g, '<em>$1</em>' );
+						var msg = $.ArticleAssessment.fn.getMsg( 'articleassessment-stalemessage-revisioncount' );
 						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
 					} else {
 						// if it's not a stale rating, we want to make the stars blue
@@ -320,27 +318,28 @@
 						'format': 'json'
 					},
 					dataType: 'json',
-					success: function( data ) {
-						// update the ratings 
-						$.ArticleAssessment.fn.getRatingData();
-						// set the stars to rated status
-						$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
-						// unlock the stars & submit
-						$( '.rating-field' ).stars( 'enable' );
-						$( '#article-assessment input:disabled' ).removeAttr( 'disabled' ); 
-						// update the results
-						
-						// show the results
-						$( '#article-assessment .article-assessment-show-ratings a' ).click();
-						// say thank you
-						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-thanks' ),
-							{ 'class': 'article-assessment-success-msg' } );
-					},
+					success: $.ArticleAssessment.fn.afterSubmitRating,
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ),
 							{ 'class': 'article-assessment-error-msg' } );
 					}
 				} );
+			},
+			'afterSubmitRating': function ( data ) {
+				// update the ratings 
+				$.ArticleAssessment.fn.getRatingData();
+				// set the stars to rated status
+				$( '.ui-stars-star-on' ).addClass( 'ui-stars-star-rated' );
+				// unlock the stars & submit
+				$( '.rating-field' ).stars( 'enable' );
+				$( '#article-assessment input:disabled' ).removeAttr( 'disabled' ); 
+				// update the results
+				
+				// show the results
+				$( '#article-assessment .article-assessment-show-ratings a' ).click();
+				// say thank you
+				$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-thanks' ),
+					{ 'class': 'article-assessment-success-msg' } );
 			},
 			// places a message on the interface
 			'flashNotice': function( text, options ) {
@@ -380,7 +379,7 @@
 				var msg = $.ArticleAssessment.messages[key];
 				if ( typeof args == 'object' || typeof args == 'array' ) {
 					for ( var i = 0; i < args.length; i++ ) {
-						msg = msg.replace( new RegExp( '\$' + ( parseInt( i ) + 1 ), 'g' ), args[i] );
+						msg = msg.replace( new RegExp( '\\$' + ( parseInt( i ) + 1 ), 'g' ), args[i] );
 					}
 				} else if ( typeof args == 'string' || typeof args == 'number' ) {
 					msg = msg.replace( /\$1/g, args );
