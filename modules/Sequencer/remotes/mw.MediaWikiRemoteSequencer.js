@@ -52,14 +52,21 @@ mw.getRemoteSequencerLink = function( url ){
 // Add player pause binding if config is set::
 $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 	if( mw.getConfig( 'Sequencer.KalturaPlayerEditOverlay' )){
+		
 		var embedPlayer = $j( '#' + embedPlayerId ).get(0);
-
+		
+		// hide if the main menu is requested 
+		$j( embedPlayer ).bind( 'displayMenuOverlay', function(){			
+			$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
+		});
+		
 		$j( embedPlayer ).bind( 'pause', function() {		
 			mw.remoteSequencerAddEditOverlay( embedPlayerId )
 			// xxx should use getter setter
 			embedPlayer.controlBuilder.displayOptionsMenuFlag = true;		
 			return true;
-		})
+		});
+		
 		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){			
 			// pause event should fire 
 			mw.remoteSequencerAddEditOverlay( embedPlayerId );
@@ -80,6 +87,7 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 			embedPlayer.controlBuilder.displayOptionsMenuFlag = false;
 			return true ;
 		});
+		
 	}
 });
 mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
