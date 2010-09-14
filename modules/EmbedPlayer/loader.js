@@ -33,7 +33,7 @@
 		    'href' :  MW_EMBED_LIBRARY_PAGE,
 		    // Style icon to be applied 
 		    'class' : 'kaltura-icon',
-		    // An icon image url ( should be a 16x16 image or data url )  
+		    // An icon image url ( should be a 12x12 image or data url )  
 		    'iconurl' : false
 		},
 

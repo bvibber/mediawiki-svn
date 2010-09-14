@@ -42,11 +42,12 @@ mw.SequencerTools.prototype = {
 			'editWidgets' : ['editTemplate'],
 			'editableAttributes' : [ 'apititlekey' ],
 			'contentTypes' : ['mwtemplate']
-		},
+		}
+		/*,
 		'transitions' : {			
 			'editWidgets' : ['editTransitions'],		
 			'contentTypes': ['video', 'img', 'mwtemplate' ]
-		}
+		}*/
 	},
 	editableAttributes:{		
 		'clipBegin':{
@@ -364,12 +365,14 @@ mw.SequencerTools.prototype = {
 								'change': function(){
 									// parse smil time
 									var time = _this.sequencer.getSmil().parseTime( $j(this).val() );
+									
 									// Check if time > clip duration 
 									if( time >  $j( smilElement ).attr('dur') ){
 										time =  $j( smilElement ).attr('dur');
 									}
 									if( time < 0 ) 
 										time = 0;
+									
 									// Update the input value
 									$j( this ).val( mw.seconds2npt( time ) );
 									// Update the smil attribute
