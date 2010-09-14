@@ -35,6 +35,14 @@ $wgVariablePagePossibilities = array(
 	'http://wikimediafoundation.org/wiki/Support_Wikipedia' => 100
 );
 
+/**
+ * You may set a custom utm_medium to be used for pages reached via VariablePage
+ *
+ * This can be set to whatever string you wish to use for utm_medium
+ */
+$wgVariablePageUtmMedium;
+
+
 $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses[ 'SpecialVariablePage' ] = $dir . 'VariablePage.body.php';

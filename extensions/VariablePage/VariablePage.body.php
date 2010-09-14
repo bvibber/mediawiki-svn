@@ -8,11 +8,11 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 
 	public function execute() {
 		global $wgOut, $wgRequest;
-		global $wgVariablePagePossibilities;
-
+		global $wgVariablePagePossibilities, $wgVariablePageUtmMedium;
+		
 		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
-		$utm_medium = $wgRequest->getVal( 'utm_medium' );
+		$utm_medium = ( strlen($wgVariablePageUtmMedium )) ? $wgVariablePageUtmMedium : $wgRequest->getVal( 'utm_medium' );
 		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
 		$referrer = $wgRequest->getHeader( 'referrer' );
 
