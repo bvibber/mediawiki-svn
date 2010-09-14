@@ -227,7 +227,7 @@ mw.PlayerSkinKskin = {
 		} );
 		this.$playerTarget.find( '.play-btn-large' ).fadeOut( 'fast' );
 		
-		$j(embedPlayer).trigger( 'displayMenuOverlay' );
+		$j(this.embedPlayer).trigger( 'displayMenuOverlay' );
 		
 		// Set the Options Menu display flag to true:
 		this.displayOptionsMenuFlag = true;
