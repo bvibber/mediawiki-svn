@@ -47,7 +47,7 @@ class PagedTiffHandler extends ImageHandler {
 			return true;
 		}
 		$meta = unserialize( $img->metadata );
-		return $meta['page_amount'] > 1;
+		return $meta['page_count'] > 1;
 	}
 
 	/**
@@ -110,13 +110,13 @@ class PagedTiffHandler extends ImageHandler {
 			return false;
 		}
 
-		if ( $meta['page_amount'] <= 0 || empty( $meta['page_data'] ) ) {
-			$error = array( 'tiff_page_error', $meta['page_amount'] );
+		if ( $meta['page_count'] <= 0 || empty( $meta['page_data'] ) ) {
+			$error = array( 'tiff_page_error', $meta['page_count'] );
 			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
-		if ( $wgTiffMaxEmbedFiles && $meta['page_amount'] > $wgTiffMaxEmbedFiles ) {
-			$error = array( 'tiff_too_much_embed_files', $meta['page_amount'], $wgTiffMaxEmbedFiles );
+		if ( $wgTiffMaxEmbedFiles && $meta['page_count'] > $wgTiffMaxEmbedFiles ) {
+			$error = array( 'tiff_too_much_embed_files', $meta['page_count'], $wgTiffMaxEmbedFiles );
 			wfDebug( __METHOD__ . ": {$error[0]}\n" );
 			return false;
 		}
@@ -231,7 +231,7 @@ class PagedTiffHandler extends ImageHandler {
 				$params['lossy'] = 'lossless';
 			}
 		} else {
-			$page = $params['page'];
+			$page = $this->adjustPage( $image, $params['page'] );
 
 			if ( ( strtolower( $data['page_data'][$page]['alpha'] ) == 'true' ) ) {
 				$params['lossy'] = 'lossless';
@@ -319,6 +319,7 @@ class PagedTiffHandler extends ImageHandler {
 		$height = intval( $params['height'] );
 		$srcPath = $image->getPath();
 		$page = intval( $params['page'] );
+		$page = $this->adjustPage( $image, $page );
 
 		if ( $flags & self::TRANSFORM_LATER ) { 
 			// pretend the thumbnail exists, let it be created by a 404-handler
@@ -415,7 +416,46 @@ class PagedTiffHandler extends ImageHandler {
 		if ( !$data ) {
 			return false;
 		}
-		return intval( $data['page_amount'] );
+		return intval( $data['page_count'] );
+	}
+
+	/**
+	 * Returns the number of the first page in the file
+	 */
+	function firstPage( $image ) {
+		$data = $this->getMetaArray( $image );
+		if ( !$data ) {
+			return false;
+		}
+		return intval( $data['first_page'] );
+	}
+
+	/**
+	 * Returns the number of the last page in the file
+	 */
+	function lastPage( $image ) {
+		$data = $this->getMetaArray( $image );
+		if ( !$data ) {
+			return false;
+		}
+		return intval( $data['last_page'] );
+	}
+
+	/**
+	 * Returns a page number within range. 
+	 */
+	function adjustPage( $image, $page ) {
+		$page = intval( $page );
+
+		if ( !$page || $page < $this->firstPage( $image ) ) {
+			$page = $this->firstPage( $image );
+		}
+
+		if ( $page > $this->lastPage( $image ) ) {
+			$page = $this->lastPage( $image );
+		}
+
+		return $page;
 	}
 
 	/**
@@ -473,12 +513,8 @@ class PagedTiffHandler extends ImageHandler {
 	function getLongDesc( $image ) {
 		global $wgLang, $wgRequest;
 		$page = $wgRequest->getText( 'page', 1 );
-		if ( !isset( $page ) || $page < 1 ) {
-			$page = 1;
-		}
-		if ( $page > $this->pageCount( $image ) ) {
-			$page = $this->pageCount( $image );
-		}
+		$page = $this->adjustPage( $image, $page );
+
 		$metadata = $this->getMetaArray( $image );
 		if ( $metadata ) {
 			wfLoadExtensionMessages( 'PagedTiffHandler' );
@@ -661,12 +697,7 @@ class PagedTiffHandler extends ImageHandler {
 	function getPageDimensions( $image, $page ) {
 		// makeImageLink2 (Linker.php) sets $page to false if no page parameter  
 		// is set in wiki code 
-		if ( !$page ) {
-			$page = 1;
-		}
-		if ( $page > $this->pageCount( $image ) ) {
-			$page = $this->pageCount( $image );
-		}
+		$page = $this->adjustPage( $image, $page );
 		$data = $this->getMetaArray( $image );
 		return PagedTiffImage::getPageSize( $data, $page );
 	}

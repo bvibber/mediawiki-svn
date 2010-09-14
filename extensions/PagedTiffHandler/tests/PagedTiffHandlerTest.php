@@ -145,23 +145,23 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		// ---- Metadata handling
 		// getMetadata
 		$metadata =  $this->handler->getMetadata( false, $this->multipage_path );
-		$this->assertTrue( strpos( $metadata, '"page_amount";i:7' ) !== false );
+		$this->assertTrue( strpos( $metadata, '"page_count";i:7' ) !== false );
 		$this->assertTrue( $this->handler->isMetadataValid( $this->multipage_image, $metadata ) );
 
 		$metadata =  $this->handler->getMetadata( false, $this->mhz_path );
-		$this->assertTrue( strpos( $metadata, '"page_amount";i:1' ) !== false );
+		$this->assertTrue( strpos( $metadata, '"page_count";i:1' ) !== false );
 		$this->assertTrue( $this->handler->isMetadataValid( $this->mhz_image, $metadata ) );
 
 		// getMetaArray
 		$metaArray = $this->handler->getMetaArray( $this->mhz_image );
 		if ( !empty( $metaArray['errors'] ) ) $this->fail( join('; ', $metaArray['error']) );
-		$this->assertEquals( $metaArray['page_amount'], 1 );
+		$this->assertEquals( $metaArray['page_count'], 1 );
 
 		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'true' );
 
 		$metaArray = $this->handler->getMetaArray( $this->multipage_image );
 		if ( !empty( $metaArray['errors'] ) ) $this->fail( join('; ', $metaArray['error']) );
-		$this->assertEquals( $metaArray['page_amount'], 7 );
+		$this->assertEquals( $metaArray['page_count'], 7 );
 
 		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'false' );
 		$this->assertEquals( strtolower( $metaArray['page_data'][2]['alpha'] ), 'true' );

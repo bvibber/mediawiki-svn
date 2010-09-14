@@ -77,7 +77,9 @@ class PagedTiffImage {
 	/**
 	 * Reads metadata of the tiff file via shell command and returns an associative array.
 	 * layout:
-	 * meta['page_amount'] = amount of pages
+	 * meta['page_count'] = number of pages
+	 * meta['first_page'] = number of first page
+	 * meta['last_page'] = number of last page
 	 * meta['page_data'] = metadata per page
 	 * meta['exif']  = Exif, XMP and IPTC
 	 * meta['errors'] = identify-errors
@@ -262,7 +264,6 @@ class PagedTiffImage {
 				$value = $m[2];
 
 				if ( $key == 'Page Number' && preg_match('/(\d+)-(\d+)/', $value, $m) ) {
-					$state->setFileProperty('page_amount', (int)$m[2]);
 					$state->setPageProperty('page', (int)$m[1] +1);
 				} else if ( $key == 'Samples/Pixel' ) {
 					if ($value == '4') $state->setPageProperty('alpha', 'true');
@@ -408,12 +409,21 @@ class PagedTiffInfoParserState {
 			$this->finishPage( );
 		}
 
-		if ( !isset( $this->metadata['page_amount'] ) ) {
-			$this->metadata['page_amount'] = count( $this->metadata['page_data'] );
-		}
-
 		if ( ! $this->metadata['page_data'] ) {
 			$this->metadata['errors'][] = 'no page data found in tiff directory!';
+			return;
+		}
+
+		if ( !isset( $this->metadata['page_count'] ) ) {
+			$this->metadata['page_count'] = count( $this->metadata['page_data'] );
+		}
+
+		if ( !isset( $this->metadata['first_page'] ) ) {
+			$this->metadata['first_page'] = min( array_keys( $this->metadata['page_data'] ) );
+		}
+
+		if ( !isset( $this->metadata['last_page'] ) ) {
+			$this->metadata['last_page'] = max( array_keys( $this->metadata['page_data'] ) );
 		}
 	}
 
