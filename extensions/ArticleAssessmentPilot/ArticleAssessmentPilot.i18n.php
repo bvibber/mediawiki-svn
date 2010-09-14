@@ -205,7 +205,7 @@ $messages['lb'] = array(
 Probéiert w.e.g. méi spéit nach emol.',
 	'articleassessment-thanks' => 'Merci! Är Bewäertung gouf gespäichert.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
-	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater <span class="showlink">weisen</span>.)",
+	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater <span class=\"showlink\">weisen</span>.)",
 	'articleassessment-results-hide' => '(<span class="hidelink">Resultater verstoppen</span>)',
 );
 
