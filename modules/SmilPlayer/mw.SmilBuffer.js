@@ -332,7 +332,8 @@ mw.SmilBuffer.prototype = {
 	canPlayTime: function( smilElement, time ){
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'video':
-				return this.canPlayVideoTime(  smilElement, time );				
+			case 'audio':
+				return this.canPlayMediaTime(  smilElement, time );				
 			break;
 		}
 		// by default return true 
@@ -342,7 +343,7 @@ mw.SmilBuffer.prototype = {
 	/**
 	 * Register a video loading progress indicator and check the time against the requested time 
 	 */
-	canPlayVideoTime: function( smilVideoElement, time ){
+	canPlayMediaTime: function( smilVideoElement, time ){
 		var _this = this;
 		var assetId = this.smil.getSmilElementPlayerID( smilVideoElement );
 		var $vid = $j( '#' + assetId );

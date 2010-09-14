@@ -190,6 +190,7 @@ mw.SmilAnimate.prototype = {
 		//mw.log( 'checkForTransformUpdate::' + nodeName +' ' +  animateTime );	
 		return false;
 	},
+	
 	/** 
 	 * Transform Element in an inner animation loop
 	 */
@@ -236,6 +237,8 @@ mw.SmilAnimate.prototype = {
 		// Get the video element 
 		var assetId = this.smil.getSmilElementPlayerID( smilElement );
 		var vid = $j ( '#' + assetId ).get( 0 );		
+		mw.log( "SmilAnimate::transformMediaForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + mediaSeekTime );
+		
 		
 		var mediaSeekTime = animateTime;
 		//Add the clipBegin if set
@@ -245,8 +248,6 @@ mw.SmilAnimate.prototype = {
 			mediaSeekTime += this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') );  
 		}
 				
-		//mw.log( "SmilAnimate::transformMediaForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + mediaSeekTime );
-		
 		// Register a buffer ready callback
 		this.smil.getBuffer().mediaBufferSeek( smilElement, mediaSeekTime, function() {			
 			//mw.log( "transformMediaForTime:: seek complete ")

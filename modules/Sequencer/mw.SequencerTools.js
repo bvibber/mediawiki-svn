@@ -738,7 +738,7 @@ mw.SequencerTools.prototype = {
 			'onChange': function( _this, smilElement ){				
 				var smil = _this.sequencer.getSmil();
 				// Update the preview thumbs
-				
+				var $target = $j( '#editWidgets_trimTimeline' );
 				// (local function so it can be updated after the start time is done with its draw ) 
 				var updateDurationThumb = function(){
 					// Check the duration:
@@ -747,7 +747,7 @@ mw.SequencerTools.prototype = {
 						// Render a thumbnail for the updated duration  
 						smil.getLayout().drawSmilElementToTarget( 							
 							smilElement,
-							$j( target ).find('.trimEndThumb'),
+							$target.find('.trimEndThumb'),
 							clipDur
 						);
 					}
@@ -755,13 +755,13 @@ mw.SequencerTools.prototype = {
 				
 				var clipBeginTime = $j('#editTool_trim_clipBegin').val();
 				if( !clipBeginTime ){
-					$j(target).find('.trimStartThumb').hide();
+					$target.find('.trimStartThumb').hide();
 				} else {
 					mw.log("Should update trimStartThumb::" +  $j(smilElement).attr('clipBegin') );
 					// Render a thumbnail for relative start time = 0  
 					smil.getLayout().drawSmilElementToTarget( 						
 						smilElement, 
-						$j( target ).find('.trimStartThumb'),
+						$target.find('.trimStartThumb'),
 						0,
 						updateDurationThumb()
 					)
