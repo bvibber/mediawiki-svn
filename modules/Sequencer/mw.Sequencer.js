@@ -7,6 +7,7 @@ mw.includeAllModuleMessages();
 /*
 * Setup the sequencer jQuery binding:
 */
+
 ( function( $ ) {
 	$.fn.sequencer = function( options ) {			
 		// Debugger

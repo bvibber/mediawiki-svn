@@ -316,7 +316,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			.css( {'cursor': 'pointer', 'font-size':'x-small' })
 		);
 		// load the sequence editor with the sequencerContainer target
-		mw.load( 'Sequencer', function(){ 	 				
+		mw.load( 'Sequencer', function(){ 
 			$j('#sequencerContainer').sequencer( _this.getSequencerConfig() );
 		});
 	},
@@ -496,7 +496,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				.css( {'width':'200px', 'margin':'auto'})
 			)
 		)
-		mw.load( 'Sequencer', function(){
+		mw.load( 'Sequencer', function(){					
 			// Send a jquery ui style destroy command ( in case the editor is re-invoked )
 			$j('#edit_sequence_container').sequencer( 'destroy');
 			$j('#edit_sequence_container').sequencer( _this.getSequencerConfig() );
@@ -544,21 +544,6 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		return mw.absoluteUrl( wgScript.replace('index.php', 'api.php') );
 	}
 	
-	// Check page type 
-	
-	// "view" page 	
-	
-	// set page content to "loading"
-	// get wikitext of page via api
-	// grab xml
-	// update page with sequence and 
-	
-	
-	//"edit" page
-	// grab textbox text, 
-	// set page to loading
-	// display sequence editor in "body" with -> full-screen link
-};	//Setup the remote configuration
-	
+};
 	
 } )( window.mw );	

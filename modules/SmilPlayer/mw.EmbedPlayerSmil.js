@@ -102,6 +102,7 @@ mw.EmbedPlayerSmil = {
 			} );
 		});
 	},
+	
 	/**
 	* Issue a seeking request. 
 	*

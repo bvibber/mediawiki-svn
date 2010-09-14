@@ -972,6 +972,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Show the big play button: 
 		embedPlayer.$interface.find( '.play-btn-large' ).fadeIn( 'slow' );
 		
+		
 		$j(embedPlayer).trigger( 'closeMenuOverlay' );
 		
 		return false; // onclick action return false
