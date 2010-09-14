@@ -405,6 +405,16 @@ $messages['tr'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Kontrol noktası|kontrol noktası kayıt]])',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Trần Nguyễn Minh Huy
+ */
+$messages['vi'] = array(
+	'checkpoint' => 'Lưu và tiếp tục sửa đổi',
+	'checkpoint-desc' => 'Cho phép một lần lưu sửa đổi và tiếp tục sửa đổi',
+	'checkpoint-tooltip' => 'Lưu những thay đổi của bạn và tiếp tục sửa đổi trang này',
+	'checkpoint-notice' => '([[{{ns:project}}:Kiểm soát|kiểm soát lưu]])',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Wilsonmess

@@ -820,6 +820,20 @@ $messages['ka'] = array(
 	'wikieditor-publish-dialog-goback' => 'უკან',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'wikieditor-publish-button-publish' => 'បោះផ្សាយ',
+	'wikieditor-publish-button-cancel' => 'បោះបង់',
+	'wikieditor-publish-dialog-title' => 'បោះផ្សាយក្នុង{{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'ចំណារពន្យល់ (រៀបរាប់ដោយសង្ខេបពីកំណែប្រែដែលអ្នកបានធ្វើឡើង)៖',
+	'wikieditor-publish-dialog-minor' => 'កំណែប្រែតិចតួច',
+	'wikieditor-publish-dialog-watch' => 'តាមដាន​ទំព័រនេះ',
+	'wikieditor-publish-dialog-publish' => 'បោះផ្សាយ',
+	'wikieditor-publish-dialog-goback' => 'ត្រឡប់​ក្រោយ',
+);
+
 /** Korean (한국어)
  * @author Devunt
  * @author Kwj2772

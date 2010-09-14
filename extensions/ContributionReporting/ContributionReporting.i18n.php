@@ -2649,6 +2649,7 @@ $messages['ka'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'contributiontotal' => 'ការរួមចំណែក​សរុប',
@@ -2676,6 +2677,7 @@ $messages['km'] = array(
 	'contribstats-value-under' => 'ក្រោម $1',
 	'contribstats-value-from' => 'ពី $1 - $2',
 	'contribstats-value-over' => 'លើស $1',
+	'contribstats-payment-type' => 'របៀបបង់ប្រាក់',
 	'fundraiserstatistics' => 'ស្ថិតិ​គោល',
 	'fundraiserstats-date' => 'កាលបរិច្ឆេទ',
 	'fundraiserstats-day' => 'កាលបរិច្ឆេទ $1 នៃ $2',
@@ -4992,6 +4994,7 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'contributionreporting-desc' => 'Báo cáo tức thời về cuộc vận động gây quỹ Wikimedia',
@@ -5042,6 +5045,7 @@ $messages['vi'] = array(
 	'contribstats-landingpage' => 'Trang Giới thiệu',
 	'contribstats-donatepage' => 'Trang Quyên góp',
 	'contribstats-average' => 'Trung bình',
+	'contribstats-imperfect-data' => 'dữ liệu này không hoàn hảo như theo dõi các nhà tài trợ mà không cần sử dụng theo dõi phiên có những hạn chế của nó.',
 	'contribstats-paypal-donations' => 'Quyên góp dùng PayPal',
 	'contribstats-credit-card' => 'Thẻ tín dụng',
 	'contribstats-fraud-note' => 'Một số quyên góp có vẻ gian lận.',

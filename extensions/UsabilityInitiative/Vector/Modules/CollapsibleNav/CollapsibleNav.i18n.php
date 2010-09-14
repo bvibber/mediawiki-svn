@@ -412,6 +412,13 @@ $messages['ka'] = array(
 	'vector-collapsiblenav-more' => 'დამატებითი ენები',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'vector-collapsiblenav-more' => 'ភាសាផ្សេងទៀត',
+);
+
 /** Korean (한국어)
  * @author IRTC1015
  * @author Kwj2772

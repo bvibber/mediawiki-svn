@@ -63,8 +63,6 @@ Please visit http://prototype.wikimedia.org/articleassess/Main_Page for a protot
 	'articleassessment-featurefeedback' => 'This is a call to action link for users to provide feedback about the feature.  It takes them to a survey.',
 	'articleassessment-noratings' => 'This indicates the number of ratings that the article has received.
 Note that PLURAL does not currently work in this message but defaults to the zero; it will work properly in the near future, so keep the calls in.',
-	'articleassessment-stalemessage-revisioncount' => 'This is a message shown to the user when their ratings are "stale" and includes the number of revisions since.',
-	'articleassessment-stalemessage-greaterthancount' => 'This is a message shown to the user when their ratings are "stale". It allows for not looking up the total number of revisions.',
 	'articleassessment-stalemessage-norevisioncount' => 'This is a message shown to the user when their ratings are "stale" and does NOT include the number of revisions. This is an ambiguous reason, and allows for us to have complicated staleness patterns. This is the preferred message.',
 	'articleassessment-results-show' => 'This is an explanatory control that, when clicked, will display hidden aggregate ratings.
 The span tag gets rewritten in JavaScript to become a link.',
@@ -102,6 +100,18 @@ $messages['be-tarask'] = array(
 	'articleassessment-rating-completeness' => 'Скончанасьць:',
 	'articleassessment-rating-readability' => 'Лёгкасьць чытаньня:',
 	'articleassessment-rating-wellsourced-tooltip' => 'Вы лічыце, што гэты артыкул мае дастаткова цытатаў, і яны спасылаюцца на крыніцы, якія заслугоўваюць даверу?',
+	'articleassessment-rating-neutrality-tooltip' => 'Вы лічыце, што на гэтай старонцы адлюстраваныя усе пункты гледжаньня на пытаньне?',
+	'articleassessment-rating-readability-tooltip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
+	'articleassessment-articlerating' => 'Адзнака старонкі',
+	'articleassessment-error' => 'Узьнікла памылка.
+Калі ласка, паспрабуйце потым.',
+	'articleassessment-thanks' => 'Дзякуй! Вашая адзнака была захаваная.',
+	'articleassessment-featurefeedback' => 'Паведаміце нам <span class="feedbacklink">Вашае меркаваньне</span> пра гэтую магчымасьць.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|адзнака|адзнакі|адзнакаў}})',
+	'articleassessment-stalemessage-norevisioncount' => "Гэтая старонка была ''рэдагаваная'' пасьля Вашага апошняга рэцэнзаваная.
+Верагодна, Вы жадаеце адзначыць яе яшчэ раз.",
+	'articleassessment-results-show' => '(Вынікі схаваныя. <span class="showlink">Паказаць</span> іх.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Схаваць вынікі</span>)',
 );
 
 /** German (Deutsch)
@@ -127,10 +137,6 @@ Bitte versuche es später erneut.',
 	'articleassessment-thanks' => 'Vielen Dank! Deine Einschätzung wurde gespeichert.',
 	'articleassessment-featurefeedback' => 'Gebe uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Funktion zur Einschätzung eines Artikels.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Einschätzung|Einschätzungen}})',
-	'articleassessment-stalemessage-revisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung „$1-mal“ ''bearbeitet''.
-Vielleicht möchtest du ihn erneut einschätzen.",
-	'articleassessment-stalemessage-greaterthancount' => "Dieser Artikel wurde seit deiner letzten Einschätzung mehr als „$1-mal“ ''bearbeitet''.
-Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung ''bearbeitet''.
 Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-results-show' => '(Ergebnisse sind ausgeblendet. <span class="showlink">Einblenden</span>.)',
@@ -144,21 +150,59 @@ $messages['gl'] = array(
 	'articleassessment' => 'Avaliación do artigo',
 	'articleassessment-desc' => 'Versión piloto da avaliación dos artigos',
 	'articleassessment-yourfeedback' => 'Os seus comentarios',
+	'articleassessment-pleaserate' => 'Por favor, tome uns intres para avaliar esta páxina.',
 	'articleassessment-submit' => 'Enviar',
 	'articleassessment-rating-wellsourced' => 'Ben documentado:',
 	'articleassessment-rating-neutrality' => 'Neutral:',
 	'articleassessment-rating-completeness' => 'Completo:',
 	'articleassessment-rating-readability' => 'Lexible:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Cre que esta páxina ten citas suficientes e que estas son de fontes fiables?',
+	'articleassessment-rating-neutrality-tooltip' => 'Cre que esta páxina mostra unha representación xusta de todas as perspectivas do tema?',
+	'articleassessment-rating-completeness-tooltip' => 'Cre que esta páxina aborda as áreas esenciais do tema que debería?',
+	'articleassessment-rating-readability-tooltip' => 'Cre que esta páxina está ben organizada e escrita?',
 	'articleassessment-articlerating' => 'Avaliación do artigo',
 	'articleassessment-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
+	'articleassessment-thanks' => 'Grazas! Gardáronse as súas valoracións.',
 	'articleassessment-featurefeedback' => 'Déanos <span class="feedbacklink">a súa opinión</span> sobre esta característica.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|avaliación|avaliacións}})',
+	'articleassessment-stalemessage-norevisioncount' => "Alguén fixo unha ''revisión'' da páxina desde a súa última visita.
+Quizais queira avaliala novamente.",
 	'articleassessment-results-show' => '(Resultados agochados. <span class="showlink">Mostralos</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Agochar os resultados</span>)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'articleassessment' => 'Evalutation de articulos',
+	'articleassessment-desc' => 'Evalutation de articulos (version pilota)',
+	'articleassessment-yourfeedback' => 'Tu opinion',
+	'articleassessment-pleaserate' => 'Per favor prende un momento pro evalutar iste pagina hic infra.',
+	'articleassessment-submit' => 'Submitter',
+	'articleassessment-rating-wellsourced' => 'Ben referentiate:',
+	'articleassessment-rating-neutrality' => 'Neutral:',
+	'articleassessment-rating-completeness' => 'Complete:',
+	'articleassessment-rating-readability' => 'Legibile:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Pensa tu que iste articulo ha sufficiente citationes e que iste citationes refere a fontes digne de fide?',
+	'articleassessment-rating-neutrality-tooltip' => 'Pensa tu que iste articulo monstra un representation juste de tote le perspectivas super le question?',
+	'articleassessment-rating-completeness-tooltip' => 'Pensa tu que iste articulo coperi le themas essential que illo deberea coperir?',
+	'articleassessment-rating-readability-tooltip' => 'Pensa tu que iste articulo es ben organisate e ben scribite?',
+	'articleassessment-articlerating' => 'Evalutation del articulo',
+	'articleassessment-error' => 'Un error ha occurrite.
+Per favor reproba plus tarde.',
+	'articleassessment-thanks' => 'Gratias! Tu evalutation ha essite salveguardate.',
+	'articleassessment-featurefeedback' => 'Da nos [[Special:Article Assessment Feedback|tu opinion]] super iste functionalitate.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|evalutation|evalutationes}})',
+	'articleassessment-stalemessage-norevisioncount' => "Iste articulo ha essite ''re-elaborate'' post tu ultime evalutation.
+Es recommendate que tu lo re-evaluta.",
+	'articleassessment-results-show' => '(Resultatos celate. <span class="showlink">Revelar</span> los.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Celar resultatos</span>)',
+);
+
 /** Japanese (日本語)
+ * @author Marine-Blue
  * @author Yanajin66
  */
 $messages['ja'] = array(
@@ -179,12 +223,8 @@ $messages['ja'] = array(
 	'articleassessment-error' => 'エラーが発生しました。
 後でもう一度試みてください。',
 	'articleassessment-thanks' => 'ありがとうございます！あなたの評価は保存されました。',
-	'articleassessment-stalemessage-revisioncount' => "この記事はあなたが最後にレビューしてから、'''$1 回'''''修正''されました。
-あなたは再評価したいかもしれません。",
-	'articleassessment-stalemessage-greaterthancount' => "この記事はあなたが最後にレビューしてから、'''$1 回以上'''''修正''されました。
-あなたは再評価したいかもしれません。",
 	'articleassessment-stalemessage-norevisioncount' => "この記事はあなたが最後にレビューしてから、''修正''されました。
-あなたは再評価したいかもしれません。",
+再度レビューしたほうが良いかもしれません。",
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -204,8 +244,11 @@ $messages['lb'] = array(
 	'articleassessment-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
 	'articleassessment-thanks' => 'Merci! Är Bewäertung gouf gespäichert.',
+	'articleassessment-featurefeedback' => 'Gitt eis Äre [[Special:Article Assessment Feedback|Feedback]] vun dëser Fonctioun.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
-	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater <span class=\"showlink\">weisen</span>.)",
+	'articleassessment-stalemessage-norevisioncount' => "Dësen Artikel gouf zënter datt Dir e fir d'lescht nogekuckt hutt ''verännert''.
+Et kéint sinn datt dir en nei bewäerte wëllt.",
+	'articleassessment-results-show' => '(D\'Resultater si verstopp. Resultater <span class="showlink">weisen</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Resultater verstoppen</span>)',
 );
 
@@ -232,14 +275,40 @@ $messages['mk'] = array(
 	'articleassessment-thanks' => 'Ви благодариме! Вашите оценки се зачувани.',
 	'articleassessment-featurefeedback' => 'Дајте ваше <span class="feedbacklink">мислење</span> за оваа функција.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|оценка|оценки}})',
-	'articleassessment-stalemessage-revisioncount' => "Статијава е ''преработена'' '''$1 пати''' од последниот преглед наваму.
-Ви предлагаме да ја преоцените.",
-	'articleassessment-stalemessage-greaterthancount' => "Статијава е ''преработена'' повеќе од $1 пати од последниот преглед наваму.
-Ви предлагаме да ја преоцените.",
 	'articleassessment-stalemessage-norevisioncount' => "Статијава е ''преработена'' од последниот преглеед наваму.
 Ви предлагаме да ја преоцените.",
 	'articleassessment-results-show' => '(Резултатите се скриени. <span class="showlink">Прикажи</span> ги.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Сокриј резултати</span>)',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'articleassessment' => 'Paginabeoordeling',
+	'articleassessment-desc' => 'Paginabeoordeling (testversie)',
+	'articleassessment-yourfeedback' => 'Uw terugkoppeling',
+	'articleassessment-pleaserate' => 'Geef alstublieft een beoordeling van deze pagina.',
+	'articleassessment-submit' => 'Opslaan',
+	'articleassessment-rating-wellsourced' => 'Goed van bronnen voorzien:',
+	'articleassessment-rating-neutrality' => 'Neutraal:',
+	'articleassessment-rating-completeness' => 'Compleet:',
+	'articleassessment-rating-readability' => 'Leesbaar:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Vindt u dat deze pagina voldoende bronvermeldingen heeft en dat de bronvermeldingen betrouwbaar zijn?',
+	'articleassessment-rating-neutrality-tooltip' => 'Vindt u dat deze pagina een eerlijke weergave is van alle invalshoeken voor dit onderwerp?',
+	'articleassessment-rating-completeness-tooltip' => 'Vindt u dat deze pagina de essentie van dit onderwerp bestrijkt?',
+	'articleassessment-rating-readability-tooltip' => 'Vindt u dat deze pagina een correcte opbouw heeft een goed is geschreven?',
+	'articleassessment-articlerating' => 'Paginawaardering',
+	'articleassessment-error' => 'Er is een fout opgetreden. 
+Probeer het later opnieuw.',
+	'articleassessment-thanks' => 'Bedankt!
+Uw beoordeling is opgeslagen.',
+	'articleassessment-featurefeedback' => 'Geef ons [[Special:ArticleAssessmentFeedback|terugkoppeling]] over deze functie.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|beoordeling|beoordelingen}})',
+	'articleassessment-stalemessage-norevisioncount' => "Deze pagina is ''aangepast'' sinds uw beoordeling.
+Wilt u de pagina opnieuw beoordelen?",
+	'articleassessment-results-show' => '(<span class="showlink">resultaten weergeven</span>)',
+	'articleassessment-results-hide' => '(<span class="hidelink">resultaten verbergen</span>)',
 );
 
 /** Piedmontese (Piemontèis)
@@ -263,16 +332,100 @@ $messages['pms'] = array(
 	'articleassessment-error' => "Un eror a l'é capità.
 Për piasì preuva torna pi tard.",
 	'articleassessment-thanks' => 'Mersì! Toe valutassion a son ëstàite salvà.',
-	'articleassessment-featurefeedback' => 'Dane <span class="feedbacklink">artorn</span> su sta funsion.',
+	'articleassessment-featurefeedback' => 'Dane <span class="feedbacklink">artorn</span> a propòsit dë sta funsion.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|valutassion|valutassion}})',
-	'articleassessment-stalemessage-revisioncount' => "Sto artìcol a l'é stàit ''revisionà'' '''$1 vire''' da l'ùltima vira ch'it l'has revisionalo.
-It podrìe vorejlo revaluté.",
-	'articleassessment-stalemessage-greaterthancount' => "Sto artìcol a l'é stàit ''revisionà'' pi che $1 vire da l'ùltima vira ch'it l'has revisionalo.
-It podrìe vorejlo revaluté.",
 	'articleassessment-stalemessage-norevisioncount' => "Sto artìcol a l'é stàit ''revisionà'' da quand ch'it l'has revisionalo.
 It podrìe vorejlo revaluté.",
 	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Mostlo</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Stërma arzultà</span>)',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ * @author Waldir
+ */
+$messages['pt'] = array(
+	'articleassessment' => 'Avaliação do artigo',
+	'articleassessment-desc' => 'Avaliação do artigo (versão de testes)',
+	'articleassessment-yourfeedback' => 'Os seus comentários',
+	'articleassessment-pleaserate' => 'Dedique um momento a avaliar esta página abaixo, por favor.',
+	'articleassessment-submit' => 'Enviar',
+	'articleassessment-rating-wellsourced' => 'Bem referenciado:',
+	'articleassessment-rating-neutrality' => 'Neutro:',
+	'articleassessment-rating-completeness' => 'Completo:',
+	'articleassessment-rating-readability' => 'Fácil de ler:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
+	'articleassessment-rating-neutrality-tooltip' => 'Acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
+	'articleassessment-rating-completeness-tooltip' => 'Considera que esta página aborda os temas essenciais que deviam ser cobertos?',
+	'articleassessment-rating-readability-tooltip' => 'Acha que esta página está bem organizada e bem escrita?',
+	'articleassessment-articlerating' => 'Avaliação da página',
+	'articleassessment-error' => 'Ocorreu um erro. 
+Por favor, tente novamente mais tarde.',
+	'articleassessment-thanks' => 'Obrigado! As suas avaliações foram gravadas.',
+	'articleassessment-featurefeedback' => 'Envie-nos os seus <span class="feedbacklink">comentários</span> sobre esta funcionalidade.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|avaliação|avaliações}})',
+	'articleassessment-stalemessage-norevisioncount' => "Esta página foi ''alterada'' desde a sua última revisão. 
+Talvez queira voltar a avaliá-la.",
+	'articleassessment-results-show' => '(Resultados ocultados. <span class="showlink">Mostrá-los</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ocultar os resultados</span>)',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'articleassessment' => 'Avaliação do artigo',
+	'articleassessment-desc' => 'Avaliação do artigo (versão de testes)',
+	'articleassessment-yourfeedback' => 'Os seus comentários',
+	'articleassessment-pleaserate' => 'Dedique um momento para avaliar esta página abaixo, por favor.',
+	'articleassessment-submit' => 'Enviar',
+	'articleassessment-rating-wellsourced' => 'Bem referenciado:',
+	'articleassessment-rating-neutrality' => 'Neutro:',
+	'articleassessment-rating-completeness' => 'Completo:',
+	'articleassessment-rating-readability' => 'Fácil de ler:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Você considera que esta página tem citações suficientes e que essas citações provêm de fontes fiáveis?',
+	'articleassessment-rating-neutrality-tooltip' => 'Você acha que esta página representa, de forma equilibrada, todos os pontos de vista sobre o assunto?',
+	'articleassessment-rating-completeness-tooltip' => 'Você considera que esta página aborda os temas essenciais que deviam ser cobertos?',
+	'articleassessment-rating-readability-tooltip' => 'Você acha que esta página está bem organizada e bem escrita?',
+	'articleassessment-articlerating' => 'Avaliação da página',
+	'articleassessment-error' => 'Ocorreu um erro. 
+Por favor, tente novamente mais tarde.',
+	'articleassessment-thanks' => 'Obrigado! As suas avaliações foram salvas.',
+	'articleassessment-featurefeedback' => 'Envie-nos os seus <span class="feedbacklink">comentários</span> sobre esta funcionalidade.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|avaliação|avaliações}})',
+	'articleassessment-stalemessage-norevisioncount' => "Esta página foi ''alterada'' desde a sua última revisão. 
+Talvez queira voltar a avaliá-la.",
+	'articleassessment-results-show' => '(Resultados ocultados. <span class="showlink">Mostrá-los</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ocultar os resultados</span>)',
+);
+
+/** Russian (Русский)
+ * @author Сrower
+ */
+$messages['ru'] = array(
+	'articleassessment' => 'Оценка статьи',
+	'articleassessment-desc' => 'Оценка статьи (экспериментальный вариант)',
+	'articleassessment-yourfeedback' => 'Ваш отзыв',
+	'articleassessment-pleaserate' => 'Пожалуйста, уделите минуту, чтобы оценить статью ниже.',
+	'articleassessment-submit' => 'Сохранить',
+	'articleassessment-rating-wellsourced' => 'Из хорошего источника:',
+	'articleassessment-rating-neutrality' => 'Нейтральная:',
+	'articleassessment-rating-completeness' => 'Завершённая:',
+	'articleassessment-rating-readability' => 'Читаемая:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Считаете ли Вы, что на этой странице достаточно цитат и что они взяты из достоверных источников?',
+	'articleassessment-rating-neutrality-tooltip' => 'Считаете ли Вы, что эта страница объективно отражает все точки зрения по этому вопросу?',
+	'articleassessment-rating-completeness-tooltip' => 'Считаете ли Вы, что эта страница в достаточной мере расскрывает основные вопросы темы.',
+	'articleassessment-rating-readability-tooltip' => 'Считаете ли Вы, что эта страница хорошо организована и хорошо написана?',
+	'articleassessment-articlerating' => 'Рейтинг страницы',
+	'articleassessment-error' => 'Произошла ошибка. 
+Пожалуйста, повторите попытку позже.',
+	'articleassessment-thanks' => 'Спасибо! Ваши оценки сохранены.',
+	'articleassessment-featurefeedback' => 'Сообщите [[Special:ArticleAssessmentFeedback|Ваше мнение]] об этой функции.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL: $ 2 | оценка | оценки}})',
+	'articleassessment-stalemessage-norevisioncount' => 'Эта страница редактировалась после Вашего просмотра. 
+Вы можете оценить её еще раз.',
+	'articleassessment-results-show' => '(Результаты скрыты. <span class="showlink">Показать</span> их).',
+	'articleassessment-results-hide' => '(<span class="hidelink">Скрыть результаты</span>)',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -294,10 +447,6 @@ $messages['vi'] = array(
 Xin hãy thử lại sau.',
 	'articleassessment-thanks' => 'Cám ơn! Đánh giá của bạn đã được lưu.',
 	'articleassessment-noratings' => '$1 ($2 đánh giá)',
-	'articleassessment-stalemessage-revisioncount' => "Bài này đã được ''chỉnh sửa'' '''$1 lần''' sau lần cuối bạn xem xét nó.
-Bạn có thể muốn đánh giá nó một lần nữa.",
-	'articleassessment-stalemessage-greaterthancount' => "Bài này đã được ''chỉnh sửa'' hơn $1 lần sau lần cuối bạn xem xét nó.
-Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-stalemessage-norevisioncount' => "Bài này đã được ''chỉnh sửa'' sau lần cuối bạn xem xét nó.
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',

@@ -225,6 +225,14 @@ $messages['fy'] = array(
 	'absenteelandlord-desc' => 'Slút de database automatysk as de behearders allegearre in beskate tiid ynaktyf binne',
 );
 
+/** Irish (Gaeilge)
+ * @author Alison
+ */
+$messages['ga'] = array(
+	'absenteelandlord-reason' => 'Tá bunachar sonraí an vicí faoi ghlas go huathoibríoch mar gheall ar neamhghníomhaíocht faoi na riarthóirí',
+	'absenteelandlord-desc' => 'Cuireann glas ar bunachar sonraí an vicí go huathoibríoch mar gheall ar neamhghníomhaíocht faoi na riarthóirí',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

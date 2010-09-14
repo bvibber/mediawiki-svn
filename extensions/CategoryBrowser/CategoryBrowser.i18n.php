@@ -156,6 +156,8 @@ $messages['be-tarask'] = array(
 	'cb_cat_files' => 'файлы',
 	'cb_apply_button' => 'Ужыць',
 	'cb_all_op' => 'Усе',
+	'cb_or_op' => 'ці',
+	'cb_and_op' => 'і',
 );
 
 /** Breton (Brezhoneg)
@@ -175,6 +177,19 @@ $messages['br'] = array(
 	'cb_all_op' => 'An holl',
 	'cb_or_op' => 'pe',
 	'cb_and_op' => 'ha',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'categorybrowser' => 'Preglednik kategorija',
+	'cb_cat_name_filter' => 'Pretraga kategorija po nazivu:',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategorije|podkategorija}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteke|datoteka}}',
+	'cb_previous_items_link' => 'Prethodno',
+	'cb_next_items_link' => 'Slijedeći',
+	'cb_next_items_stats' => '(od $1)',
 );
 
 /** German (Deutsch)
@@ -553,7 +568,7 @@ $messages['pt'] = array(
 	'cb_ie6_warning' => 'O editor de condições não funciona no Internet Explorer versão 6.0 ou anteriores.
 No entanto, a navegação de condições predefinidas deve funcionar normalmente.
 Se for possível, mude ou actualize o seu browser, por favor.',
-	'cb_show_no_parents_only' => 'Mostrar só as categorias que não pertencem a nenhuma categoria',
+	'cb_show_no_parents_only' => 'Mostrar só as categorias que não têm categorias superiores',
 	'cb_cat_name_filter' => 'Procurar a categoria pelo nome:',
 	'cb_cat_name_filter_clear' => 'Clique para limpar o filtro do nome da categoria',
 	'cb_cat_name_filter_ci' => 'Sem distinguir maiúsculas de minúsculas',
@@ -561,7 +576,24 @@ Se for possível, mude ou actualize o seu browser, por favor.',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoria|subcategorias}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|página|páginas}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|ficheiro|ficheiros}}',
+	'cb_has_parentcategories' => 'categorias superiores (se existirem)',
+	'cb_previous_items_link' => 'Anterior',
+	'cb_previous_items_stats' => ' ($1 - $2)',
+	'cb_next_items_link' => 'Seguinte',
 	'cb_next_items_stats' => ' (de $1)',
+	'cb_cat_subcats' => 'subcategorias',
+	'cb_cat_pages' => 'páginas',
+	'cb_cat_files' => 'ficheiros',
+	'cb_apply_button' => 'Aplicar',
+	'cb_all_op' => 'Todas',
+	'cb_or_op' => 'ou',
+	'cb_and_op' => 'e',
+	'cb_edit_left_hint' => 'Mover para a esquerda, se possível',
+	'cb_edit_right_hint' => 'Mover para a direita, se possível',
+	'cb_edit_remove_hint' => 'Apagar, se possível',
+	'cb_edit_copy_hint' => 'Copiar o operador',
+	'cb_edit_append_hint' => 'Inserir o operador na última posição',
+	'cb_edit_clear_hint' => 'Limpar a expressão presente (seleccionar todas)',
 	'cb_edit_paste_hint' => 'Inserir o operador na posição actual, se possível',
 	'cb_edit_paste_right_hint' => 'Inserir o operador na posição seguinte, se possível',
 );
@@ -571,11 +603,20 @@ Se for possível, mude ou actualize o seu browser, por favor.',
  */
 $messages['pt-br'] = array(
 	'categorybrowser' => 'Navegador de categorias',
+	'categorybrowser-desc' => 'Fornece uma [[Special:CategoryBrowser|página especial]] para filtrar as categorias mais povoadas e navegá-las com uma interface AJAX',
+	'cb_requires_javascript' => 'A extensão para navegação de categorias necessita que o JavaScript tenha sido ativado no seu navegador.',
+	'cb_ie6_warning' => 'O editor de condições não funciona no Internet Explorer versão 6.0 ou anteriores.
+No entanto, a navegação de condições predefinidas deve funcionar normalmente.
+Se for possível, mude ou atualize o seu navegador, por favor.',
+	'cb_show_no_parents_only' => 'Mostrar só as categorias que não têm categorias superiores',
 	'cb_cat_name_filter' => 'Procurar categoria por  nome:',
+	'cb_cat_name_filter_clear' => 'Clique para limpar o filtro do nome da categoria',
 	'cb_cat_name_filter_ci' => 'Não diferenciar maiúsculas/minúsculas',
+	'cb_copy_line_hint' => 'Use os botões [+] e [>+] para copiar e inserir operadores na expressão selecionada',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoria|subcategorias}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|página|páginas}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|arquivo|arquivos}}',
+	'cb_has_parentcategories' => 'categorias superiores (se existirem)',
 	'cb_previous_items_link' => 'Anteriores',
 	'cb_next_items_link' => 'Próximos',
 	'cb_next_items_stats' => ' (de $1)',
@@ -589,6 +630,11 @@ $messages['pt-br'] = array(
 	'cb_edit_left_hint' => 'Mover para esquerda, se possível',
 	'cb_edit_right_hint' => 'Mover para direita, se possível',
 	'cb_edit_remove_hint' => 'Apagar, se possível',
+	'cb_edit_copy_hint' => 'Copiar o operador',
+	'cb_edit_append_hint' => 'Inserir o operador na última posição',
+	'cb_edit_clear_hint' => 'Limpar a expressão presente (selecionar todas)',
+	'cb_edit_paste_hint' => 'Inserir o operador na posição atual, se possível',
+	'cb_edit_paste_right_hint' => 'Inserir o operador na posição seguinte, se possível',
 );
 
 /** Russian (Русский)
@@ -629,5 +675,16 @@ $messages['ru'] = array(
 	'cb_edit_clear_hint' => 'Очистить текущее выражение (выбрать всё)',
 	'cb_edit_paste_hint' => 'Вставить оператор в текущую позицию, если возможно',
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатегорія|підкатегорії|підкатегорій}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
+	'cb_cat_subcats' => 'підкатегорій',
+	'cb_cat_pages' => 'сторінок',
+	'cb_all_op' => 'Усі',
 );
 

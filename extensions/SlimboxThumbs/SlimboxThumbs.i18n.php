@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'slimboxthumbs-desc' => 'Displays full-size images with [http://www.digitalia.be/software/slimbox2 Slimbox 2] when clicking on thumbnails'
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'slimboxthumbs-desc' => 'Prikazuje slike pune veličine sa [http://www.digitalia.be/software/slimbox2 Slimbox 2] kada se klikne na smanjene prikaze',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

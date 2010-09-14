@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'datediff-desc' => 'Takes two dates and returns all intermediate days'
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'datediff-desc' => 'Uzima dva datuma i vraća sve dane između njih',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

@@ -85,6 +85,17 @@ $messages['arz'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'createbox-exists' => "„'''{{FULLPAGENAME}}'''“ existiard beraits.
+
+Du kååst de Saiten ned åleeng, ower du kååstas [{{fullurl:{{FULLPAGENAME}}|action=edit}} beorwaiten], [{{fullurl:{{FULLPAGENAME}}}} leesen] oder a åndre Seiten mid da Hüif vom untensteehaten Aigobföidl åleeng.
+
+<createbox>break=no</createbox>",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

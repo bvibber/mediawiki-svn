@@ -1005,6 +1005,9 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'crossnamespacelinks' => 'Viungo vinavyoelekea eneo lingine la wiki',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Inaorodhesha viungo kati ya maeneo tofauti]] visivyostahili kuwepo katika {{SITENAME}}',
+	'crossnamespacelinks-summary' => 'Ukurasa huu unaorodhesha viungo vilivyopo katika ukurasa fulani wa eneo kuu na vinavyoelekea ukurasa katika eneo lingine la wiki (ukiacha maeneo ya {{ns:special}}, {{ns:talk}}, {{ns:project}}, na {{ns:template}}), ambayo hayashauriwi kuvitumia.',
+	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|kiungo $2 kina|viungo $2 vina}}elekea eneo la $3',
 );
 
 /** Tamil (தமிழ்)
