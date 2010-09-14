@@ -109,25 +109,35 @@ class TitleKey {
 	 *
 	 * Status info is sent to stdout.
 	 */
-	static function schemaUpdates() {
-		global $wgDBtype;
-		$db = wfGetDB( DB_MASTER );
-		if( $db->tableExists( 'titlekey' ) ) {
-			echo "...titlekey already exists.\n";
+	static function schemaUpdates( $updater = null ) {
+		if ( $updater === null ) { // < 1.17
+			self::runUpdates( wfGetDB( DB_MASTER ) );
 		} else {
-			echo "...creating titlekey table...\n";
-			$sourcefile = $wgDBtype == 'postgres' ? '/titlekey.pg.sql' : '/titlekey.sql';
+			$updater->addExtensionUpdate( array( array( __CLASS__, 'addDBtable' ) ) );
+		}
+		return true;
+	}
+
+	public static function addDBtable( $updater ) {
+		self::runUpdates( $updater->getDB() );
+	}
+
+	private static function runUpdates( $db ) {
+		if( $db->tableExists( 'titlekey' ) ) {
+			wfOut( "...titlekey table already exists.\n" );
+		} else {
+			wfOut( "Creating titlekey table..." );
+			$sourcefile = $db->getType() == 'postgres' ? '/titlekey.pg.sql' : '/titlekey.sql';
 			$err = $db->sourceFile( dirname( __FILE__ ) . $sourcefile );
 			if( $err !== true ) {
 				throw new MWException( $err );
 			}
-			
-			echo "...populating titlekey table...\n";
+
+			wfOut( "ok.\nPopulating titlekey table...\n" );
 			self::populateKeys();
 		}
-		return true;
 	}
-	
+
 	/**
 	 * (Re)populate the titlekeys table with all page titles,
 	 * optionally starting from a given page id.
