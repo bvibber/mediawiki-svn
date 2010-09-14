@@ -99,16 +99,25 @@
 						.text( instructions )
 						.end()
 					.find( '.article-assessment-rate-feedback' )
-						.html( feedback.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/g, '<a href="' + wgArticlePath + '">$2</a>' ) )
+						.html( feedback )
+							.find( '.feedbacklink' )
+							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.showFeedback ) )
+							.end()
 						.end()
 					.find( '#article-assessment-ratings legend' )
 						.text( articlerating )
 						.end()
 					.find( '.article-assessment-show-ratings' )
-						.html( resultsshow.replace( /\[\[#\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+						.html( resultsshow )
+							.find( '.showlink' )
+							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.showRatings ) )
+							.end()
 						.end()
-					.find( '.article-assessment-hide-ratings')
-						.html( resultshide.replace( /\[\[#\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) )
+					.find( '.article-assessment-hide-ratings' )
+						.html( resultshide )
+							.find ( '.hidelink' )
+							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.hideRatings ) )
+							.end()
 						.end();
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
 					var $field = $( settings.fieldHTML ),
@@ -146,43 +155,16 @@
 				}
 				// store our settings and configuration for later
 				$structure.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings, 'config': config } );
-				// bind the ratings show/hide handlers
-				$structure
-					.find( '.article-assessment-show-ratings a' )
-					.click( function() {
-						$( this )
-							.parent()
-							.hide();
-						$structure
-							.find( '#article-assessment-ratings' )
-							.removeClass( 'article-assessment-ratings-disabled' )
-							.end()
-							.find( '.article-assessment-hide-ratings' )
-							.show();
-							return false;
-					} )
-					.end()
-					.find( '.article-assessment-hide-ratings a' )
-					.click( function() {
-						$( this )
-							.parent()
-							.hide();
-						$structure
-							.find( '#article-assessment-ratings' )
-							.addClass( 'article-assessment-ratings-disabled' )
-							.end()
-							.find( '.article-assessment-show-ratings' )
-							.show();
-							return false;
-					} )
-					.click();
 				$( '#catlinks' ).before( $structure );
+				// Hide the ratings initially
+				$.ArticleAssessment.fn.hideRatings();
+
 				
 				// set the height of our smaller fieldset to match the taller
 				if ( $( '#article-assessment-rate' ).height() > $( '#article-assessment-ratings' ).height() ) {
 					$( '#article-assessment-ratings' ).css( 'minHeight',	$( '#article-assessment-rate' ).height() );
 				} else {
-					$( '#article-assessment-rate' ).css( 'minHeight',	 $( '#article-assessment-ratings' ).height() );
+					$( '#article-assessment-rate' ).css( 'minHeight',	$( '#article-assessment-ratings' ).height() );
 				}
 				// attempt to fetch the ratings 
 				$.ArticleAssessment.fn.getRatingData();
@@ -219,6 +201,27 @@
 				// prevent the submit button for being active until all ratings are filled out
 				$( '#article-assessment input[type=submit]' )
 					.attr( 'disabled', 'disabled' );
+			},
+			'showRatings': function() {
+				$( '#article-assessment-ratings' )
+					.removeClass( 'article-assessment-ratings-disabled' )
+					.find( '.article-assessment-show-ratings' )
+					.hide()
+					.end()
+					.find( '.article-assessment-hide-ratings' )
+					.show();
+				return false;
+			},
+			'hideRatings': function() {
+				$( '#article-assessment-ratings' )
+					.addClass( 'article-assessment-ratings-disabled' )
+					.find( '.article-assessment-hide-ratings' )
+					.hide()
+					.end()
+					.find( '.article-assessment-show-ratings' )
+					.show();
+				return false;
+
 			},
 			
 			// Request the ratings data for the current article
@@ -336,7 +339,7 @@
 				// update the results
 				
 				// show the results
-				$( '#article-assessment .article-assessment-show-ratings a' ).click();
+				$.ArticleAssessment.fn.showRatings();
 				// say thank you
 				$.ArticleAssessment.fn.flashNotice( $.ArticleAssessment.fn.getMsg( 'articleassessment-thanks' ),
 					{ 'class': 'article-assessment-success-msg' } );
@@ -362,6 +365,11 @@
 					$( '#article-assessment .article-assessment-submit' )
 						.append( $msg );
 				}
+			},
+			'showFeedback': function() {
+				// TODO: Implement
+				$.ArticleAssessment.fn.flashNotice( 'Not implemented yet', { 'class': 'article-assessment-error-msg' } );
+				return false;
 			},
 			'addMessages': function( messages ) {
 				for ( var key in messages ) {

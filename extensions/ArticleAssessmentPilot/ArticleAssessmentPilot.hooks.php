@@ -102,7 +102,10 @@ class ArticleAssessmentPilotHooks {
 			);
 
 		foreach ( self::$messages as $i => $message ) {
-			$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
+			// TODO: Not parsing or even preprocessing the messages would be more efficient,
+			// but we can't do that until we have such nice things as JS-side {{PLURAL}}
+			// Should be OK for now in a limited deployment scenario
+			$escapedMessageValue = Xml::escapeJsString( wfMsgExt( $message, array( 'parseinline' ) ) );
 			$escapedMessageKey = Xml::escapeJsString( $message );
 			self::$messages[$i] =
 				"'{$escapedMessageKey}':'{$escapedMessageValue}'";

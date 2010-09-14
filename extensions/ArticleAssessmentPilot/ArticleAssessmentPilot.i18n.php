@@ -26,14 +26,14 @@ Please try again later.',
 	'articleassessment-thanks' => 'Thanks! Your ratings have been saved.',
 
 	# This special page doesn't exist yet, but it will soon.
-	'articleassessment-featurefeedback' => 'Give us [[Special:ArticleAssessmentFeedback|feedback]] about this feature.',
+	'articleassessment-featurefeedback' => 'Give us <span class="feedbacklink">feedback</span> about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
 	'articleassessment-stalemessage-norevisioncount' => "This page has been ''revised'' since you last reviewed it.
 You may wish to rate it again.",
 
 	# Links get rewritten in javascript.
-	'articleassessment-results-show' => "(Results hidden. [[#|Show]] them.)",
-	'articleassessment-results-hide' => "([[#|Hide results]])",
+	'articleassessment-results-show' => '(Results hidden. <span class="showlink">Show</span> them.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Hide results</span>)',
 );
 
 /** Message documentation (Message documentation)
@@ -67,9 +67,9 @@ Note that PLURAL does not currently work in this message but defaults to the zer
 	'articleassessment-stalemessage-greaterthancount' => 'This is a message shown to the user when their ratings are "stale". It allows for not looking up the total number of revisions.',
 	'articleassessment-stalemessage-norevisioncount' => 'This is a message shown to the user when their ratings are "stale" and does NOT include the number of revisions. This is an ambiguous reason, and allows for us to have complicated staleness patterns. This is the preferred message.',
 	'articleassessment-results-show' => 'This is an explanatory control that, when clicked, will display hidden aggregate ratings.
-The incomplete looking wikilinks get rewritten in javascript.',
+The span tag gets rewritten in JavaScript to become a link.',
 	'articleassessment-results-hide' => 'This is a control that, when clicked, will hide the aggregate ratings.
-The incomplete looking wikilinks get rewritten in javascript.',
+The span tag gets rewritten in JavaScript to become a link.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -83,8 +83,8 @@ $messages['af'] = array(
 	'articleassessment-rating-completeness' => 'Volledig:',
 	'articleassessment-rating-readability' => 'Leesbaar:',
 	'articleassessment-articlerating' => 'Artikel gradering',
-	'articleassessment-results-show' => '(Resultate versteek. [[#|Wys]] hulle.)',
-	'articleassessment-results-hide' => '([[#|Versteek resultate]])',
+	'articleassessment-results-show' => '(Resultate versteek. <span class="showlink">Wys</span> hulle.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Versteek resultate</span>)',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -125,7 +125,7 @@ $messages['de'] = array(
 	'articleassessment-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuche es später erneut.',
 	'articleassessment-thanks' => 'Vielen Dank! Deine Einschätzung wurde gespeichert.',
-	'articleassessment-featurefeedback' => 'Gebe uns bitte eine [[Special:Article Assessment Feedback|Rückmeldung]] zu dieser Funktion zur Einschätzung eines Artikels.',
+	'articleassessment-featurefeedback' => 'Gebe uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Funktion zur Einschätzung eines Artikels.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Einschätzung|Einschätzungen}})',
 	'articleassessment-stalemessage-revisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung „$1-mal“ ''bearbeitet''.
 Vielleicht möchtest du ihn erneut einschätzen.",
@@ -133,8 +133,8 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung ''bearbeitet''.
 Vielleicht möchtest du ihn erneut einschätzen.",
-	'articleassessment-results-show' => '(Ergebnisse sind ausgeblendet. [[#|Einblenden]].)',
-	'articleassessment-results-hide' => '([[#|Ergebnisse ausblenden]])',
+	'articleassessment-results-show' => '(Ergebnisse sind ausgeblendet. <span class="showlink">Einblenden</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ergebnisse ausblenden</span>)',
 );
 
 /** Galician (Galego)
@@ -152,10 +152,10 @@ $messages['gl'] = array(
 	'articleassessment-articlerating' => 'Avaliación do artigo',
 	'articleassessment-error' => 'Houbo un erro.
 Inténteo de novo máis tarde.',
-	'articleassessment-featurefeedback' => 'Déanos [[Special:Article Assessment Feedback|a súa opinión]] sobre esta característica.',
+	'articleassessment-featurefeedback' => 'Déanos <span class="feedbacklink">a súa opinión</span> sobre esta característica.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|avaliación|avaliacións}})',
-	'articleassessment-results-show' => '(Resultados agochados. [[#|Mostralos]].)',
-	'articleassessment-results-hide' => '([[#|Agochar os resultados]])',
+	'articleassessment-results-show' => '(Resultados agochados. <span class="showlink">Mostralos</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Agochar os resultados</span>)',
 );
 
 /** Japanese (日本語)
@@ -205,8 +205,8 @@ $messages['lb'] = array(
 Probéiert w.e.g. méi spéit nach emol.',
 	'articleassessment-thanks' => 'Merci! Är Bewäertung gouf gespäichert.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
-	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater [[#|weisen]].)",
-	'articleassessment-results-hide' => '([[#|Resultater verstoppen]])',
+	'articleassessment-results-show' => "(D'Resultater si verstopp. Resultater <span class="showlink">weisen</span>.)",
+	'articleassessment-results-hide' => '(<span class="hidelink">Resultater verstoppen</span>)',
 );
 
 /** Macedonian (Македонски)
@@ -230,7 +230,7 @@ $messages['mk'] = array(
 	'articleassessment-error' => 'Се појави грешка.
 Обидете се подоцна.',
 	'articleassessment-thanks' => 'Ви благодариме! Вашите оценки се зачувани.',
-	'articleassessment-featurefeedback' => 'Дајте ваше [[Special:Article Assessment Feedback|мислење]] за оваа функција.',
+	'articleassessment-featurefeedback' => 'Дајте ваше <span class="feedbacklink">мислење</span> за оваа функција.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|оценка|оценки}})',
 	'articleassessment-stalemessage-revisioncount' => "Статијава е ''преработена'' '''$1 пати''' од последниот преглед наваму.
 Ви предлагаме да ја преоцените.",
@@ -238,8 +238,8 @@ $messages['mk'] = array(
 Ви предлагаме да ја преоцените.",
 	'articleassessment-stalemessage-norevisioncount' => "Статијава е ''преработена'' од последниот преглеед наваму.
 Ви предлагаме да ја преоцените.",
-	'articleassessment-results-show' => '(Резултатите се скриени. [[#|Прикажи]] ги.)',
-	'articleassessment-results-hide' => '([[#|Сокриј резултати]])',
+	'articleassessment-results-show' => '(Резултатите се скриени. <span class="showlink">Прикажи</span> ги.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Сокриј резултати</span>)',
 );
 
 /** Piedmontese (Piemontèis)
@@ -263,7 +263,7 @@ $messages['pms'] = array(
 	'articleassessment-error' => "Un eror a l'é capità.
 Për piasì preuva torna pi tard.",
 	'articleassessment-thanks' => 'Mersì! Toe valutassion a son ëstàite salvà.',
-	'articleassessment-featurefeedback' => 'Dane [[Special:Article Assessment Feedback|artorn]] su sta funsion.',
+	'articleassessment-featurefeedback' => 'Dane <span class="feedbacklink">artorn</span> su sta funsion.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|valutassion|valutassion}})',
 	'articleassessment-stalemessage-revisioncount' => "Sto artìcol a l'é stàit ''revisionà'' '''$1 vire''' da l'ùltima vira ch'it l'has revisionalo.
 It podrìe vorejlo revaluté.",
@@ -271,8 +271,8 @@ It podrìe vorejlo revaluté.",
 It podrìe vorejlo revaluté.",
 	'articleassessment-stalemessage-norevisioncount' => "Sto artìcol a l'é stàit ''revisionà'' da quand ch'it l'has revisionalo.
 It podrìe vorejlo revaluté.",
-	'articleassessment-results-show' => '(Arzultà stërmà. [[#|Mostlo]].)',
-	'articleassessment-results-hide' => '([[#|Stërma arzultà]])',
+	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Mostlo</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Stërma arzultà</span>)',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -300,7 +300,7 @@ Bạn có thể muốn đánh giá nó một lần nữa.",
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-stalemessage-norevisioncount' => "Bài này đã được ''chỉnh sửa'' sau lần cuối bạn xem xét nó.
 Bạn có thể muốn đánh giá nó một lần nữa.",
-	'articleassessment-results-show' => '(Các kết quả được ẩn. [[#|Hiện]] kết quả.)',
-	'articleassessment-results-hide' => '([[#|Ẩn kết quả]])',
+	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ẩn kết quả</span>)',
 );
 
