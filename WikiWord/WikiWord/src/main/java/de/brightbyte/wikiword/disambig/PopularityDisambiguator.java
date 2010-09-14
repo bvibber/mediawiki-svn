@@ -62,7 +62,7 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 	}
 
 	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
-		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
+		Collection<List<X>> sequences = getSequences(root, getPhraseSearchDepth());
 		return disambiguate(sequences, root, meanings, context);
 	}
 	

@@ -271,7 +271,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		}
 	} */
 	
-	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight) {
+	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight, int maxDepth) {
 		PhraseOccuranceSet phrases = new PhraseOccuranceSet(text.toString(), new ArrayList<PhraseOccurance>());
 		
 		text = applyManglers(config.sentenceManglers, text);
@@ -285,7 +285,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 			buildPhrases(s, ofs, phrases, maxWeight);
 			if (phrases.isEmpty()) continue;
 			
-			phrases.buildAggregatePhrases(ofs, 0, maxWeight, phraseBreakeMatcher);
+			phrases.buildAggregatePhrases(ofs, 0, maxWeight, maxDepth, phraseBreakeMatcher);
 		}
 
 		if (phrases.isEmpty()) return phrases; 
@@ -373,7 +373,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String s ;
 		 while ( (s = in.readLine()) != null ) {
-			 PhraseOccuranceSet phrases = analyzer.extractPhrases(s, 6);
+			 PhraseOccuranceSet phrases = analyzer.extractPhrases(s, 6, 6);
 			 DebugUtil.dump("", phrases, ConsoleIO.output);
 		}
 	}

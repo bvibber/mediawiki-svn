@@ -66,7 +66,6 @@ public class WikiWordConcept {
 	}
 
 	public void setName(String name) {
-		if (this.name!=null) throw new IllegalStateException("property already initialized");
 		this.name = name;
 	}
 
@@ -91,7 +90,6 @@ public class WikiWordConcept {
 	}
 
 	public void setFeatures(ConceptFeatures<? extends WikiWordConcept, Integer> features) {
-		if (this.features!=null) throw new IllegalStateException("property already initialized");
 		if (features.getConcept()!=null && !this.equals(features.getConcept())) throw new IllegalArgumentException("ConceptFeatures bound to a different concept: "+features.getConcept());
 		this.features = features;
 	}
@@ -101,7 +99,6 @@ public class WikiWordConcept {
 	}
 
 	public void setProperties(ConceptProperties<? extends WikiWordConcept> properties) {
-		if (this.properties!=null) throw new IllegalStateException("property already initialized");
 		if (properties.getConcept()!=null && !this.equals(properties.getConcept())) throw new IllegalArgumentException("ConceptFeatures bound to a different concept: "+features.getConcept());
 		this.properties = properties;
 	}
@@ -111,7 +108,6 @@ public class WikiWordConcept {
 	}
 
 	public void setResources(ConceptResources<? extends WikiWordConcept> resources) {
-		if (this.resources!=null) throw new IllegalStateException("property already initialized");
 		this.resources = resources;
 	}
 	
@@ -120,7 +116,6 @@ public class WikiWordConcept {
 	}
 
 	public void setRelations(ConceptRelations<? extends WikiWordConcept> relations) {
-		if (this.relations!=null) throw new IllegalStateException("property already initialized");
 		this.relations = relations;
 	}
 
@@ -137,7 +132,6 @@ public class WikiWordConcept {
 	}
 
 	public void setTerms(TermReference[] terms) {
-		if (this.terms!=null) throw new IllegalStateException("property already initialized");
 		this.terms = terms;
 	}
 
@@ -146,7 +140,6 @@ public class WikiWordConcept {
 	}
 
 	public void setType(ConceptType type) {
-		if (this.type!=null && !this.type.equals(ConceptType.UNKNOWN)) throw new IllegalStateException("property already initialized");
 		this.type = type;
 	}
 

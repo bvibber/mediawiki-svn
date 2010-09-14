@@ -73,29 +73,29 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 		}
 
 		public void testExtractPhrases() {
-			PhraseOccuranceSet phrases = extractPhrases("", 3);
+			PhraseOccuranceSet phrases = extractPhrases("", 3, 3);
 			assertEquals(0, phrases.size());
 			assertEquals(theList(), getWordList(phrases.getPhrasesAt(0)));
 			
-			phrases = extractPhrases("foo", 3);
+			phrases = extractPhrases("foo", 3, 3);
 			assertEquals(theList( "foo" ), getWordList(phrases.getPhrasesAt(0)));
 
-			phrases = extractPhrases(" foo ", 3);
+			phrases = extractPhrases(" foo ", 3, 3);
 			assertEquals(theList(), getWordList(phrases.getPhrasesAt(0)));
 			assertEquals(theList( "foo" ), getWordList(phrases.getPhrasesAt(1)));
 			assertEquals(theList( "foo" ), getWordList(phrases.getPhrasesFrom(0)));
 		}
 		
 		public void testExtractPhrases2() {
-			PhraseOccuranceSet phrases = extractPhrases("red green blue yellow black", 3);
+			PhraseOccuranceSet phrases = extractPhrases("red green blue yellow black", 3, 6);
 			assertEquals(theList( "red green blue", "red green", "red" ), getWordList(phrases.getPhrasesAt(0)));
 			assertEquals(theList( "green blue yellow", "green blue", "green" ), getWordList(phrases.getPhrasesAt(4)));
 
-			phrases = extractPhrases("red green blue yellow black", 5);
+			phrases = extractPhrases("red green blue yellow black", 5, 10);
 			assertEquals(theList( "red green blue yellow black", "red green blue yellow", "red green blue", "red green", "red" ), getWordList(phrases.getPhrasesAt(0)));
 			assertEquals(theList( "green blue yellow black", "green blue yellow", "green blue", "green" ), getWordList(phrases.getPhrasesAt(4)));
 
-			phrases = extractPhrases("and red and green and blue and yellow", 3);
+			phrases = extractPhrases("and red and green and blue and yellow", 3, 12);
 			assertEquals(theList( "and red and green and blue",
 														"and red and green and",
 														"and red and green",
@@ -111,14 +111,14 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 														), 
 											getWordList(phrases.getPhrasesAt(4)));
 
-			phrases = extractPhrases("red green blue. yellow black", 5);
+			phrases = extractPhrases("red green blue. yellow black", 5, 10);
 			assertEquals(theList( "red green blue", "red green", "red" ), getWordList(phrases.getPhrasesAt(0)));
 			assertEquals(theList( "blue" ), getWordList(phrases.getPhrasesAt(10)));
 			assertEquals(theList( "yellow black", "yellow" ), getWordList(phrases.getPhrasesAt(16)));
 		}
 		
 		public void testExtractPhrases3() {
-			PhraseOccuranceSet phrases = extractPhrases("Krababbel: l'Foo-Bar", 3);
+			PhraseOccuranceSet phrases = extractPhrases("Krababbel: l'Foo-Bar", 3, 6);
 			assertEquals(theList( "Krababbel"), getWordList(phrases.getPhrasesAt(0)));
 
 			assertEquals(theList( "l'Foo-Bar", 
@@ -134,7 +134,7 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 			assertEquals(theList( "Bar"), 
 										getWordList(phrases.getPhrasesAt(17)));
 
-			phrases = extractPhrases("harald's 'schlaaand", 3);
+			phrases = extractPhrases("harald's 'schlaaand", 3, 3);
 			assertEquals(theList( "harald's 'schlaaand", 
 														"harald's", 
 														"harald" 

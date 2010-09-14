@@ -28,7 +28,7 @@ public class AnalyzerConsole extends QueryConsole {
 	public void runCommand(String cmd, List<Object> params, ConsoleOutput out) throws Exception {
 			if (cmd.equals("phrases") || cmd.equals("p")) {
 				Object s = params.get(1);
-				PhraseOccuranceSet occurances = plainTextAnalyzer.extractPhrases(s.toString(), 5);
+				PhraseOccuranceSet occurances = plainTextAnalyzer.extractPhrases(s.toString(), 5, 5);
 				out.writeList(occurances);
 				out.dumpPhraseTree(occurances.getRootNode());
 			} else {
@@ -40,7 +40,7 @@ public class AnalyzerConsole extends QueryConsole {
 		if (s.indexOf('|')>0 || s.indexOf(';')>0 ) {
 			return super.getPhrases(s);
 		} else {
-			PhraseOccuranceSet occurances = plainTextAnalyzer.extractPhrases(s, 5);
+			PhraseOccuranceSet occurances = plainTextAnalyzer.extractPhrases(s, 5, 5);
 			return occurances.getRootNode();
 		}
 	}

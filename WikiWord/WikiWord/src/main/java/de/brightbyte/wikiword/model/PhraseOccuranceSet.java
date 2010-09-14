@@ -354,7 +354,7 @@ public class PhraseOccuranceSet implements List<PhraseOccurance> {
 		}
 	}
 
-	public void buildAggregatePhrases( int start, double minWeight, double maxWeight, Matcher phraseBreak ) {
+	public void buildAggregatePhrases( int start, double minWeight, double maxWeight, int maxDepth, Matcher phraseBreak ) {
 		AggregatePhraseBuilder builder = new AggregatePhraseBuilder( minWeight, maxWeight, phraseBreak );
 		
 		if (isEmpty()) return;
@@ -363,7 +363,7 @@ public class PhraseOccuranceSet implements List<PhraseOccurance> {
 		
 		for (int i=start; i<end; i++) {
 				if (hasPhrasesAt(i)) {
-					builder.walk(getRootNodeAt(i), 0, null, Integer.MAX_VALUE, maxWeight);
+					builder.walk(getRootNodeAt(i), 0, null, maxDepth, maxWeight);
 				}
 		}
  

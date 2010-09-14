@@ -248,7 +248,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
-		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
+		Collection<List<X>> sequences = getSequences(root, getPhraseSearchDepth());
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
