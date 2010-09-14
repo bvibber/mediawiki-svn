@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalization for VariablePlage extension
+ * Internationalization for VariablePage extension
  *
  * @file
  * @ingroup Extensions
@@ -15,3 +15,4 @@ $messages = array();
 $messages[ 'en' ] = array(
 	'variablepage-desc' => 'Lightweight variable page redirection',
 );
+
