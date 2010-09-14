@@ -121,6 +121,6 @@ mw.SequencerAddByUrl.prototype = {
 			// try directly adding the asset
 		}
 	}	
-}
+};
 
 } )( window.mw );	

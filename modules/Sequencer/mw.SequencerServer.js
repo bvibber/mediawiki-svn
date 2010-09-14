@@ -291,14 +291,15 @@
 					pageText = _this.getBaseFileDescription()
 				}
 				var request = {
-					'action':'edit',
+					'action': 'edit',
 					'token' : token, 
 					'title' : 'File:' + _this.getVideoFileName(),
 					'summary' : 'Automated sequence description page for published sequence: ' + _this.getTitleKey(),
 					'text' : pageText
 				};
-				mw.getJSON( _this.getApiUrl(), request, function(data){
-					if( data && data.edit && data.edit.result == "Success"){
+												
+				mw.getJSON( _this.getApiUrl(), request, function( data ){
+					if( data && data.edit && data.edit.result == "Success" ){
 						callback( true );
 					} else {
 						callback( false );
@@ -307,21 +308,23 @@
 			})
 		},
 		
-		getBaseFileDescription: function(){
-			var _this = this;
-			return 'Published sequence for [['+ _this.getTitleKey() + ']]';
+		getBaseFileDescription: function(){					
+			return 'Published sequence for [[' + this.getTitleKey() + ']]';
 		},
 		
 		getCommonsDescriptionText: function(){
 			var _this = this;
 			
-			var descText = '<!-- ' +  
-			"Note: this is an automated file description for a published video sequence. \n"
-			"Changes to this wikitext will be overwiten. Please add metadata and categories to\n" + 
-			 _this.getTitleKey() + " instead --> \n" + 
+			var descText = "<!-- " +
+			"Note: this is an automated file description for a published video sequence. \n" + 
+			"Changes to this wikitext will be overwiten. Please add metadata and categories to\n" +
+			_this.getTitleKey() +
+			" instead --> \n" + 
 			 "{{Information\n" +  
 			"|Description=" + _this.getBaseFileDescription() + "\n" + 
 			"|Source= Sequence Sources assets include:\n";
+			
+			
 			
 			// loop over every asset:
 			this.sequencer.getSmil().getBody().getRefElementsRecurse(null, 0, function( $node ){

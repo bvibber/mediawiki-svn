@@ -63,8 +63,7 @@
 				'mw.SequencerConfig'
 			],		
 			[										
-				'$j.contextMenu',
-				
+				'$j.contextMenu',				
 				'mw.SequencerServer',				
 				'mw.SequencerAddByUrl',
 				'mw.SequencerAddMedia',
