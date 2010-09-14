@@ -543,6 +543,14 @@ $messages['ka'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'გაუქმება',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'ធ្វើឱ្យទាន់សម័យ',
+	'wikieditor-template-editor-dialog-cancel' => 'បោះបង់',
+);
+
 /** Korean (한국어)
  * @author Devunt
  * @author Kwj2772

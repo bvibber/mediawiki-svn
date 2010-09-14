@@ -489,10 +489,12 @@ $messages['ka'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
 	'vector-simplesearch-search' => 'ស្វែងរក​',
+	'vector-simplesearch-containing' => 'ដែលមានពាក្យ...',
 );
 
 /** Korean (한국어)

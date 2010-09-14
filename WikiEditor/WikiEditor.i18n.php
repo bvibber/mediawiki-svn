@@ -511,6 +511,13 @@ $messages['ka'] = array(
 	'wikieditor-loading' => 'იტვირთება',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'wikieditor-loading' => 'កំពុងផ្ទុក',
+);
+
 /** Korean (한국어)
  * @author Devunt
  * @author Kwj2772

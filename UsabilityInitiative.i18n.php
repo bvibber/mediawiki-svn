@@ -482,6 +482,14 @@ $messages['ka'] = array(
 	'prefs-labs' => 'ექსპერიმენტალური ფუნქციები',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'prefs-beta' => 'មុខងារពិសេសថ្មីៗរបស់ស៊េរីបេតា',
+	'prefs-labs' => 'មុខងារពិសេសថ្មីៗដែលស្ថិតក្រោមការពិសោធន៍នៅឡើយ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Kwj2772

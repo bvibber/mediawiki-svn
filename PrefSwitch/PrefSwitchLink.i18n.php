@@ -101,6 +101,15 @@ $messages['ba'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Яңы мөмкинлектәрҙе һынап ҡарағыҙ',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'prefswitch-link-anon' => 'Naiche Funkzionen',
+	'prefswitch-link-on' => 'Zruck zur oiden Owerflächen',
+	'prefswitch-link-off' => 'Naiche Funkzionen',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */
@@ -576,6 +585,17 @@ $messages['ka'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'ახალი შესაძლებლობების გამორთვა',
 	'prefswitch-link-off' => 'ახალი შესაძლებლობები',
 	'tooltip-pt-prefswitch-link-off' => 'სცადეთ ახალი ხელსაწყოები',
+);
+
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'prefswitch-link-anon' => 'មុខងារពិសេសថ្មីៗ',
+	'prefswitch-link-on' => 'ប្រើស៊េរីចាស់វិញ',
+	'tooltip-pt-prefswitch-link-on' => 'មិនប្រើមុខងារពិសេសថ្មីៗ',
+	'prefswitch-link-off' => 'មុខងារពិសេសថ្មីៗ',
+	'tooltip-pt-prefswitch-link-off' => 'សាកប្រើមុខងារពិសេសថ្មីៗ',
 );
 
 /** Korean (한국어)
