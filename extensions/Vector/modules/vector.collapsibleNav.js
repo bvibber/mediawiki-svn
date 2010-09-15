@@ -203,7 +203,7 @@ $( document ).ready( function() {
 
 	var $headings = $( '#mw-panel > div.portal:not(.persistent) > h5' );
 	// Get the highest tab index
-	var tabIndex = mw.usability.getMaxTabIndex() + 1;
+	var tabIndex = $( document ).lastTabIndex() + 1;
 	// Fix the search not having a tabindex
 	$( '#searchInput' ).attr( 'tabindex', tabIndex++ );
 	// Make it keyboard accessible

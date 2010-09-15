@@ -19,7 +19,13 @@ class VectorHooks {
 				'messages' => array(
 					'vector-collapsiblenav-more',
 				),
-				'dependencies' => array( 'jquery.client' ),
+				'dependencies' => array(
+					'jquery.client',
+					'jquery.cookie',
+					'jquery.tabIndex',
+					'jquery.collapsibleTabs',
+					'jquery.delayedBind',
+				),
 			),
 			'preferences' => array(
 				'key' => 'vector-collapsiblenav',
