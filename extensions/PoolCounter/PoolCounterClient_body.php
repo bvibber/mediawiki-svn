@@ -29,7 +29,9 @@ class PoolCounter_ConnectionManager {
 			if ( count( $parts ) < 2 ) {
 				$parts[] = 7531;
 			}
+			wfSuppressWarnings();
 			$conn = fsockopen( $parts[0], $parts[1], $errno, $errstr, $this->timeout );
+			wfRestoreWarnings();
 			if ( $conn ) {
 				break;
 			}
@@ -115,20 +117,8 @@ class PoolCounter_Client extends PoolCounter {
 			case 'QUEUE_FULL':
 			case 'TIMEOUT':
 			case 'LOCK_HELD':
-				return constant( "PoolCounter::$responseType" );
+				return Status::newGood( constant( "PoolCounter::$responseType" ) );
 		}
-	}
-
-	function colonsToAssoc( $items ) {
-		$assoc = array();
-		foreach ( $items as $item ) {
-			$parts = explode( ':', $item, 2 );
-			if ( count( $parts ) !== 2 ) {
-				continue;
-			}
-			$assoc[$parts[0]] = $parts[1];
-		}
-		return $assoc;
 	}
 
 	function acquireForMe() {
