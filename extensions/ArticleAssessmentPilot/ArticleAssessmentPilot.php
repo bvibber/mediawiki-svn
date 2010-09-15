@@ -41,3 +41,40 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'articleassessment-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
 );
+
+// Survey setup
+// This is totally a hack, but it's easy and had to be done fast
+require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
+$wgPrefSwitchSurveys['articleassessment'] = array(
+	'updatable' => false,
+	'submit-msg' => 'articleassessment-survey-submit',
+	'questions' => array(
+		'whyrated' => array(
+			'question' => 'articleassessment-survey-question-whyrated',
+			'type' => 'checks',
+			'answers' => array(
+				'contribute-rating' => 'articleassessment-survey-answer-whyrated-contribute-rating',
+				'development' => 'articleassessment-survey-answer-whyrated-development',
+				'contribute-wiki' => 'articleassessment-survey-answer-whyrated-contribute-wiki',
+				'sharing-opinion' => 'articleassessment-survey-answer-whyrated-sharing-opinion',
+				'didntrate' => 'articleassessment-survey-answer-whyrated-didntrate',
+			),
+			'other' => 'articleassessment-survey-answer-whyrated-other',
+		),
+		'useful' => array(
+			'question' => 'articleassessment-survey-question-useful',
+			'type' => 'boolean',
+			'iffalse' => 'articleassessment-survey-question-useful-iffalse',
+		),
+		'expert' => array(
+			'question' => 'articleassessment-survey-question-expert',
+			'type' => 'boolean',
+			'iftrue' => 'articleassessment-survey-question-expert-iftrue',
+		),
+		'comments' => array(
+			'question' => 'articleassessment-survey-question-comments',
+			'type' => 'text',
+		),
+	),
+);
+$wgValidSurveys[] = 'articleassessment';

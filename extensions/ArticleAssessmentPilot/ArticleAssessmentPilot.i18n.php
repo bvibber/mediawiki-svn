@@ -24,16 +24,25 @@ $messages['en'] = array(
 	'articleassessment-error' => 'An error has occurred.
 Please try again later.',
 	'articleassessment-thanks' => 'Thanks! Your ratings have been saved.',
-
-	# This special page doesn't exist yet, but it will soon.
 	'articleassessment-featurefeedback' => 'Give us <span class="feedbacklink">feedback</span> about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
 	'articleassessment-stalemessage-norevisioncount' => "This page has been ''revised'' since you last reviewed it.
 You may wish to rate it again.",
-
-	# Links get rewritten in javascript.
 	'articleassessment-results-show' => '(Results hidden. <span class="showlink">Show</span> them.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Hide results</span>)',
+	'articleassessment-survey-question-whyrated' => 'Please let us know why you rated this article today (check all that apply): ',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'I wanted to contribute to the overall rating of the article',
+	'articleassessment-survey-answer-whyrated-development' => 'I hope that my rating would positively affect the development of the article',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'I wanted to contribute to {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'I like sharing my opinion',
+	'articleassessment-survey-answer-whyrated-didntrate' => "I didn't provide ratings today, but wanted to give feedback on the feature",
+	'articleassessment-survey-answer-whyrated-other' => 'Other',
+	'articleassessment-survey-question-useful' => 'Do you believe the ratings provided are useful and clear?',
+	'articleassessment-survey-question-useful-iffalse' => 'Why?',
+	'articleassessment-survey-question-expert' => 'Do you consider yourself an expert in the field this article covers?',
+	'articleassessment-survey-question-expert-iftrue' => 'Can you describe your expertise?',
+	'articleassessment-survey-question-comments' => 'Do you have any additional comments?',
+	'articleassessment-survey-submit' => 'Submit',
 );
 
 /** Message documentation (Message documentation)
@@ -68,6 +77,19 @@ Note that PLURAL does not currently work in this message but defaults to the zer
 The span tag gets rewritten in JavaScript to become a link.',
 	'articleassessment-results-hide' => 'This is a control that, when clicked, will hide the aggregate ratings.
 The span tag gets rewritten in JavaScript to become a link.',
+	'articleassessment-survey-question-whyrated' => 'This is a question in the survey with checkboxes for the answers. The user can check multiple answers.',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-answer-whyrated-development' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-answer-whyrated-other' => 'This is a possible answer for the "Why did you rate this article today?" survey question. The user can check this to fill out an answer that wasn\'t provided as a checkbox.',
+	'articleassessment-survey-question-useful' => 'This is a question in the survey with "yes" and "no" (prefswitch-survey-true and prefswitch-survey-false) as possible answers.',
+	'articleassessment-survey-question-useful-iffalse' => 'This question appears when the user checks "no" for the "Do you believe the ratings provided are useful and clear?" question. The user can enter their answer in a text box.',
+	'articleassessment-survey-question-expert' => 'This is a possible answer for the "Why did you rate this article today?" survey question.',
+	'articleassessment-survey-question-expert-iftrue' => 'This question appears when the user checks "no" for the "Do you consider yourself an expert?" question. The user can enter their answer in a text box.',
+	'articleassessment-survey-question-comments' => 'This is a question in the survey with a text box that the user can enter their answer in.',
+	'articleassessment-survey-submit' => 'This is the caption for the button that submits the survey.',
 );
 
 /** Afrikaans (Afrikaans)
