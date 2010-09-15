@@ -14,11 +14,12 @@ class VectorHooks {
 		'collapsiblenav' => array(
 			'name' => 'vector.collapsibleNav',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.collapsibleNav.js',
+				'styles' => 'vector.collapsibleNav.css',
 				'messages' => array(
 					'vector-collapsiblenav-more',
 				),
+				'dependencies' => array( 'jquery.client' ),
 			)
 			'preferences' => array(
 				'key' => 'vector-collapsiblenav',
@@ -36,15 +37,13 @@ class VectorHooks {
 		'collapsibletabs' => array(
 			'name' => 'vector.collapsibleTabs',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.collapsibleTabs.js',
 			)
 		),
 		'editwarning' => array(
 			'name' => 'vector.editWarning',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.editWarning.js',
 				'messages' => array(
 					'vector-editwarning-warning',
 				),
@@ -62,32 +61,32 @@ class VectorHooks {
 		'expandablesearch' => array(
 			'name' => 'vector.expandableSearch',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.expandableSearch.js',
+				'styles' => 'vector.expandableSearch.css',
+				'dependencies' => array( 'jquery.client' ),
 			),
 			'preferences' => array(
-				'requirements' = array( 'vector-simplesearch', 'disablesuggest' ),
+				'requirements' = array( 'vector-simplesearch' => true ),
 			),
 		),
 		'footercleanup' => array(
 			'name' => 'vector.footerCleanup',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.footerCleanup.js',
+				'styles' => 'vector.footerCleanup.css',
 			),
 		),
 		'simplesearch' => array(
 			'name' => 'vector.simpleSearch',
 			'resources' => array(
-				'scripts' => '',
-				'styles' => '',
+				'scripts' => 'vector.simpleSearch.js',
 				'messages' => array(
 					'vector-simplesearch-search',
 					'vector-simplesearch-containing',
 				),
 			),
 			'preferences' => array(
-				'requirements' = array( 'vector-simplesearch', 'disablesuggest' ),
+				'requirements' = array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
 			),
 		),
 	);
@@ -107,8 +106,9 @@ class VectorHooks {
 		if ( !$enabled ) {
 			return false;
 		}
-		foreach ( self::$modules[$module]['preferences']['requirements'] as $requirement ) {
-			if ( !$wgUser->getOption( $requirement ) ) {
+		foreach ( self::$modules[$module]['preferences']['requirements'] as $requirement => $value ) {
+			// Important! We really do want fuzzy evaluation here
+			if ( $wgUser->getOption( $requirement ) != $value ) {
 				return false;
 			}
 		}
@@ -190,6 +190,8 @@ class VectorHooks {
 	 * Adds modules to ResourceLoader
 	 */
 	public static function resourceLoaderRegisterModules() {
-		ResourceLoader::register(  );
+		foreach ( self::$modules as $module ) {
+			ResourceLoader::register( $module['name'], $module['resources'] );
+		}
 	}
 }
