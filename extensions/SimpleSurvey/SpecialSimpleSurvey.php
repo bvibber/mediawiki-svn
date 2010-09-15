@@ -90,12 +90,23 @@ class SpecialSimpleSurvey extends SpecialPage {
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
-		$wgOut->addHtml( '<div class="plainlinks">' );
+		
 		// Handle various modes
+		$renderedSurvey = $this->render( $wgRequest->getVal( "survey" ) );
 
-		$this->render( $wgRequest->getVal( "survey" ) );
-
+		$wgOut->addHtml( '<div class="plainlinks">' );
+		$wgOut->addHtml( $renderedSurvey );
 		$wgOut->addHtml( '</div>' );
+		
+		// Handle raw mode
+		// Only output the <form> and the <script>
+		if ( $wgRequest->getBool( 'raw' ) ) {
+			$wgOut->disable();
+			echo $renderedSurvey;
+			
+			global $wgExtensionAssetsPath;
+			echo Html::linkedScript( "$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/PrefSwitch.js?$wgPrefSwitchStyleVersion" );
+		}
 	}
 
 	/* Private Functions */
@@ -113,7 +124,9 @@ class SpecialSimpleSurvey extends SpecialPage {
 			return;
 		}
 
-		$wgOut->addWikiMsg( "simple-survey-intro-{$mode}" );
+		if ( isset( $wgPrefSwitchSurveys[$mode]['intro-msg'] ) ) {
+			$wgOut->addWikiMsg( $wgPrefSwitchSurveys[$mode]['intro-msg'] );
+		}
 
 		// Setup a form
 		$html = Xml::openElement(
@@ -138,6 +151,6 @@ class SpecialSimpleSurvey extends SpecialPage {
 		);
 		$html .= Xml::closeElement( 'dt' );
 		$html .= Xml::closeElement( 'form' );
-		$wgOut->addHtml( $html );
+		return $html;
 	}
 }

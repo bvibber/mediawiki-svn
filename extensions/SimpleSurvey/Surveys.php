@@ -6,6 +6,7 @@ $wgValidSurveys[] = 'vitals-07-2010';
 
 $wgPrefSwitchSurveys['vitals-07-2010'] = array(
 	'submit-msg' => 'vitals-07-2010-submit',
+	'intro-msg' => 'simple-survey-intro-vitals-07-2010',
 	'updatable' => false,
 	'questions' => array(
 		'use' => array(
