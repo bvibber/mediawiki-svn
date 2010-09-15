@@ -178,6 +178,7 @@ class VectorHooks {
 					self::$modules['preferences'][$module]['ui'];
 			}
 		}
+		return true;
 	}
 	
 	/**
