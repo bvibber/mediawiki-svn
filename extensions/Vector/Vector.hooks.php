@@ -23,8 +23,6 @@ class VectorHooks {
 					'jquery.client',
 					'jquery.cookie',
 					'jquery.tabIndex',
-					'jquery.collapsibleTabs',
-					'jquery.delayedBind',
 				),
 			),
 			'preferences' => array(
@@ -44,6 +42,10 @@ class VectorHooks {
 			'name' => 'vector.collapsibleTabs',
 			'resources' => array(
 				'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
+				'dependencies' => array(
+					'jquery.collapsibleTabs',
+					'jquery.delayedBind',
+				),
 			),
 		),
 		'editwarning' => array(
@@ -69,7 +71,11 @@ class VectorHooks {
 			'resources' => array(
 				'scripts' => 'extensions/Vector/modules/vector.expandableSearch.js',
 				'styles' => 'extensions/Vector/modules/vector.expandableSearch.css',
-				'dependencies' => array( 'jquery.client' ),
+				'dependencies' => array(
+					'jquery.client',
+					'jquery.expandableField',
+					'jquery.delayedBind',
+				),
 			),
 			'preferences' => array(
 				'requirements' => array( 'vector-simplesearch' => true ),
@@ -89,6 +95,11 @@ class VectorHooks {
 				'messages' => array(
 					'vector-simplesearch-search',
 					'vector-simplesearch-containing',
+				),
+				'dependencies' => array(
+					'jquery.client',
+					'jquery.suggestions',
+					'jquery.autoEllipsis',
 				),
 			),
 			'preferences' => array(

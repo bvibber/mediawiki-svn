@@ -8,7 +8,7 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 
 $( document ).ready( function() {
 	
-	var mod = {
+	var map = {
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
@@ -29,7 +29,7 @@ $( document ).ready( function() {
 			}
 		}
 	};
-	if ( !$.wikiEditor.isSupported( mod ) ) {
+	if ( !$.client.test( map ) ) {
 		return true;
 	}
 	
@@ -37,7 +37,7 @@ $( document ).ready( function() {
 	// if the placeholder attribute is supported, use it
 	if ( 'placeholder' in document.createElement( 'input' ) ) {
 		$( 'div#simpleSearch > input#searchInput' )
-			.attr( 'placeholder', mw.usability.getMsg( 'vector-simplesearch-search' ) );
+			.attr( 'placeholder', mediaWiki.msg.get( 'vector-simplesearch-search' ) );
 	} else {
 		$( 'div#simpleSearch > input#searchInput' )
 			.each( function() {
@@ -46,7 +46,7 @@ $( document ).ready( function() {
 					.bind( 'blur', function() {
 						if ( $input.val().length == 0 ) {
 							$input
-								.val( mw.usability.getMsg( 'vector-simplesearch-search' ) )
+								.val( mediaWiki.msg.get( 'vector-simplesearch-search' ) )
 								.addClass( 'placeholder' );
 							}
 						} )
@@ -116,7 +116,7 @@ $( document ).ready( function() {
 					$(this).show()
 					$label = $( '<div />' )
 						.addClass( 'special-label' )
-						.text( mw.usability.getMsg( 'vector-simplesearch-containing' ) )
+						.text( mediaWiki.msg.get( 'vector-simplesearch-containing' ) )
 						.appendTo( $(this) );
 					$query = $( '<div />' )
 						.addClass( 'special-query' )
