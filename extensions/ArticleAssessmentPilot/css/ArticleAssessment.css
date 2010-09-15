@@ -78,7 +78,7 @@
 }
 .article-assessment-wrapper .field-wrapper {
 	float: left;
-	width: 250px;
+	width: 270px;
 	padding-right: 28px;
 }
 .article-assessment-wrapper .rating-field {
@@ -125,7 +125,7 @@
 }
 .article-assessment-wrapper .article-assessment-rating-field-name {
 	float: left;
-	width: 90px;
+	width: 110px;
 	font-weight: bold;
 	font-size: 11px;
 }
@@ -137,13 +137,13 @@
 	float: left;
 	padding: 2px;
 	text-indent: -9999px;
-	margin-top: 2px;
+	margin-top: 4px;
 }
 .article-assessment-wrapper .article-assessment-rate-instructions, 
 .article-assessment-wrapper .article-assessment-rate-feedback,
 .article-assessment-wrapper .article-assessment-show-ratings,
 .article-assessment-wrapper .article-assessment-hide-ratings {
-	font-size: 10px;
+	font-size: 11px;
 	font-style: italic;
 }
 .article-assessment-wrapper .article-assessment-rate-instructions {

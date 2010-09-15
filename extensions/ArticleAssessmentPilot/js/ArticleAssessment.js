@@ -269,8 +269,8 @@
 							$rateControl.stars( 'select', rating.userrating );
 						}
 					}
-					// if the rating is stale, add the stale class
-					if( data.query.articleassessment[0].revid <  wgCurRevisionId ) {
+					// if the rating is more than 5 revisions old, mark it as stale
+					if( data.query.articleassessment[0].revid <  wgCurRevisionId - 5 ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
