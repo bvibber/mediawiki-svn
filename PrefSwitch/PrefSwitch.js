@@ -42,7 +42,7 @@ $j(document).ready( function() {
 			'survey-browser': browser, 'survey-os': os, 'survey-res-x': screen.width, 'survey-res-y': screen.height
 		};
 	}
-	// Auto-hide/show "other" explaination fields for selects
+	// Auto-hide/show "other" explanation fields for selects
 	$j( '.prefswitch-survey-other-select' ).parent().hide();
 	$j( 'select.prefswitch-survey-need-other' ).change( function() {
 		if ( $j(this).val() == 'other' ) {
@@ -55,7 +55,7 @@ $j(document).ready( function() {
 	$j( '.prefswitch-survey-other-radios, .prefswitch-survey-other-checks' ).click( function() {
 		$j(this).prev().prev().attr( 'checked', true );
 	});
-	// Auto-hide/show explaination fields for boolean
+	// Auto-hide/show explanation fields for boolean
 	$j( '.prefswitch-survey-iftrue, .prefswitch-survey-iffalse' ).hide();
 	$j( '.prefswitch-survey-true, .prefswitch-survey-false' ).change( function() {
 		$ifTrueRow = $j( '#' + $j(this).attr( 'name' ) + '-iftrue-row' );
@@ -68,7 +68,7 @@ $j(document).ready( function() {
 			$ifFalseRow.slideDown( 'fast' );
 		}
 	} );
-	$j( '.prefswitch-survey-yes, .prefswitch-survey-no' ).change();
+	$j( '.prefswitch-survey-true, .prefswitch-survey-false' ).change();
 	// Auto-detect browser, os and screen size
 	var detected = detect();
 	$j( '#prefswitch-survey-browser' ).val( detected['survey-browser'] );
