@@ -31,7 +31,7 @@ $wgPoolCountClientConf = array(
 
 /**
  * Sample pool configuration:
- *   $wgPoolCounterConf = array( 'PoolWorkArticleView' => array(
+ *   $wgPoolCounterConf = array( 'ArticleView' => array(
  *     'class' => 'PoolCounter_Client',
  *     'timeout' => 15, // wait timeout in seconds
  *     'workers' => 5, // maximum number of active threads in each pool
