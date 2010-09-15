@@ -109,11 +109,10 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 			if ( $res && $dbr->numRows( $res ) > $wgArticleAssessmentStaleCount ) {
 				//it's stale!
-				$ratings[$params['pageid']]['stale'] = intval( $res );
+				$ratings[$params['pageid']]['stale'] = '';
 			}
 		}
 
-		$count = 0;
 		foreach ( $ratings as $rat ) {
 			$result->setIndexedTagName( $rat['ratings'], 'r' );
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
