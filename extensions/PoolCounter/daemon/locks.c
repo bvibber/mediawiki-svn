@@ -44,6 +44,10 @@ unsigned atou(char const* astext)  {
 
 char* process_line(struct client_data* cli_data, char* line, int line_len) {
 	struct locks* l = &cli_data->client_locks;
+	if (line_len > 0 && line[line_len-1] == '\r') {
+		line_len--;
+		line[line_len] = '\0';
+	}
 	
 	if ( !strncmp( line, "ACQ4ME ", 7 ) || !strncmp( line, "ACQ4ANY ", 8 ) ) {
 		if ( l->state != UNLOCKED ) {
