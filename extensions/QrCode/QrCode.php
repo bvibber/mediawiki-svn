@@ -2,19 +2,17 @@
 /**
  * QrCode.php
  * Written by David Raison
- * @license: LGPL (GNU Lesser General Public License)
+ * @license: LGPL (GNU Lesser General Public License) http://www.gnu.org/licenses/lgpl.html
  *
  * @file QrCode.php
  *
  * @author David Raison
  *
- * Uses the PHPQrcode library written by Dominik Dzienia (C) 2010,
+ * Uses the phpqrcode library written by Dominik Dzienia (C) 2010,
  * which is, in turn, based on C libqrencode library
  * Copyright (C) 2006-2010 by Kentaro Fukuchi
  * http://megaui.net/fukuchi/works/qrencode/index.en.html
  * 
- * Todo: 
- *	* Update (i.e. replace) the image file when the QrCode arguments change
  *
  */
 
