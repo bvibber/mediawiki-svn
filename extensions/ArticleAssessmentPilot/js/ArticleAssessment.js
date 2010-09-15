@@ -101,7 +101,10 @@
 					.find( '.article-assessment-rate-feedback' )
 						.html( feedback )
 							.find( '.feedbacklink' )
-							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.showFeedback ) )
+							.wrap( '<a href="#"></a>' )
+								.parent()
+									.click( $.ArticleAssessment.fn.showFeedback )
+								.end()
 							.end()
 						.end()
 					.find( '#article-assessment-ratings legend' )
@@ -110,13 +113,19 @@
 					.find( '.article-assessment-show-ratings' )
 						.html( resultsshow )
 							.find( '.showlink' )
-							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.showRatings ) )
+							.wrap( '<a href="#"></a>' )
+								.parent()
+									.click( $.ArticleAssessment.fn.showRatings )
+								.end()
 							.end()
 						.end()
 					.find( '.article-assessment-hide-ratings' )
 						.html( resultshide )
 							.find ( '.hidelink' )
-							.wrap( $( '<a href="#"></a>' ).click( $.ArticleAssessment.fn.hideRatings ) )
+							.wrap( '<a href="#"></a>' )
+								.parent()
+									.click( $.ArticleAssessment.fn.hideRatings )
+								.end()
 							.end()
 						.end();
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
@@ -270,7 +279,7 @@
 						}
 					}
 					// if the rating is more than 5 revisions old, mark it as stale
-					if( data.query.articleassessment[0].revid <  wgCurRevisionId - 5 ) {
+					if( data.query.articleassessment.stale ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
