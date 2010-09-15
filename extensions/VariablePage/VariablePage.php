@@ -26,6 +26,9 @@ $wgExtensionCredits[ 'VariablePage' ][] = array(
  * The key in the array is the full URL path, the value is an integer representing
  * a percentage (0-100) probability of a user being redirected to that page.
  *
+ * The percentages here MUST add up to 100 -or- a value must be set for
+ * $wgVariablePageDefault
+ *
  * The following will redirect a user to http://foo.com/bar 90% of the time:
  *		$wgVariablePagePossibilities = array(
  *			'http://foo.com/bar' => 90,
@@ -42,6 +45,14 @@ $wgVariablePagePossibilities = array(
  */
 $wgVariablePageUtmMedium = '';
 
+/**
+ * The default URL to send a user to in the event that one of the URLs in 
+ * $wgVariablePagePossibilities not selected.
+ *
+ * Either this must be set or the probabilities in $wgVariablePagePossibiliites
+ * must add up to 100.
+ */
+$wgVariablePageDefault = '';
 
 $dir = dirname( __FILE__ ) . '/';
 

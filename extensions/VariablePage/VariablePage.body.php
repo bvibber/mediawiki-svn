@@ -4,12 +4,17 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'VariablePage' );
+		
+		// make sure configuration will result in something sane
+		if ( !$this->sanityCheck() ) {
+			throw new MWException( 'VariablePage configuation not sane!  Either $wgVariablePageDefault must be set or probabilites in $wgVariablePagePossibilities must add up to 100.' );
+		}
 	}
 
 	public function execute() {
 		global $wgOut, $wgRequest;
 		global $wgVariablePagePossibilities, $wgVariablePageUtmMedium;
-		
+
 		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
 		$utm_medium = ( strlen($wgVariablePageUtmMedium )) ? $wgVariablePageUtmMedium : $wgRequest->getVal( 'utm_medium' );
@@ -37,6 +42,8 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 	 * @return string $url
 	 */
 	public function determinePage( $page_possibilities ) {
+		global $wgVariablePageDefault;
+
 		/**
 		 * Determine a random number to measure probability again
 		 *
@@ -50,6 +57,32 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 			if ( $random_number <= $offset ) {
 				return $url;
 			}
+		}
+
+		// if all else fails, return the default
+		return $wgVariablePageDefault;
+	}
+
+	/**
+	 * Check configuartion sanity
+	 *
+	 * Probabilities defined in $wgVariablePagePossibilities MUST add
+	 * up to 100 -or- $wgVariablePageDefault MUST be set.
+	 *
+	 * @return bool
+	 */
+	public function sanityCheck() {
+		global $wgVariablePagePossibilities, $wgVariablePageDefault;
+
+		$total_probability = 0;
+		foreach ( $wgVariablePagePossibilities as $url => $probability ) {
+			$total_probability += $probability;
+		}
+
+		if ( $total_probability != 100 && !strlen( $wgVariablePageDefault )) {
+			return FALSE;
+		} else {
+			return TRUE;
 		}
 	}
 }
