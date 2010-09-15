@@ -241,7 +241,7 @@ Die Wikimedia Foundation se Gebruikerervarings Span (User Experience Team) in sa
 * '''Ander nuwe funksies:''' Ons het 'n assistent bygevoeg wat die maak van tabelle makliker maak en 'n vind-en-vervang funksie om die redigering van bladsye te vereenvoudig.
 * '''Wikipedia logo:''' Ons het ons logo opdateer. Lees meer daaroor in die [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia webjoernaal].",
 	'prefswitch-main-logged-changes' => "* Die '''{{int:watch}}'''-oortjie is nou in die vorm van 'n stêr.
-* Die '''{{int:move}}'''-oortjie kan nou gevind in die opsielys langs die soekveld.",
+* Die '''{{int:move}}'''-oortjie kan nou gevind word in die opsielys langs die soekveld.",
 	'prefswitch-main-feedback' => '===Terugvoer?===
 Ons sal dit waardeer om van jou af te hoor. Besoek asseblief ons [[$1|terugvoer bladsy]] of, as u belangstel in ons aanhoudende pogings om die sagteware te verbeter, besoek gerus ons [http://usability.wikimedia.org bruikbaarheids-wiki] vir meer inligting.',
 	'prefswitch-main-anon' => "===Neem my terug===
