@@ -34,7 +34,7 @@ $(document).ready( function() {
 				$( '#wpSummary' ).data( 'origtext' ) != $( '#wpSummary' ).val()
 			) {
 				// Return our message
-				retval = mw.usability.getMsg( 'vector-editwarning-warning' );
+				retval = mediaWiki.msg.get( 'vector-editwarning-warning' );
 			}
 		}
 		
