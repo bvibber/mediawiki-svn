@@ -20,7 +20,7 @@ class VectorHooks {
 					'vector-collapsiblenav-more',
 				),
 				'dependencies' => array( 'jquery.client' ),
-			)
+			),
 			'preferences' => array(
 				'key' => 'vector-collapsiblenav',
 				'ui' => array(
@@ -38,7 +38,7 @@ class VectorHooks {
 			'name' => 'vector.collapsibleTabs',
 			'resources' => array(
 				'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
-			)
+			),
 		),
 		'editwarning' => array(
 			'name' => 'vector.editWarning',
@@ -66,7 +66,7 @@ class VectorHooks {
 				'dependencies' => array( 'jquery.client' ),
 			),
 			'preferences' => array(
-				'requirements' = array( 'vector-simplesearch' => true ),
+				'requirements' => array( 'vector-simplesearch' => true ),
 			),
 		),
 		'footercleanup' => array(
@@ -86,14 +86,14 @@ class VectorHooks {
 				),
 			),
 			'preferences' => array(
-				'requirements' = array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
+				'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
 			),
 		),
 	);
 	
 	/* Protected Static Methods */
 	
-	protected static isEnabled( $module ) {
+	protected static function isEnabled( $module ) {
 		global $wgVectorModules, $wgUser;
 		
 		$enabled =
@@ -101,15 +101,17 @@ class VectorHooks {
 			(
 				$wgVectorModules[$module]['user'] &&
 				isset( self::$modules[$module]['preferences']['key'] ) &&
-				$wgUser->getOption( self::$modules[$module]['preferences']['key']
+				$wgUser->getOption( self::$modules[$module]['preferences']['key'] )
 			);
 		if ( !$enabled ) {
 			return false;
 		}
-		foreach ( self::$modules[$module]['preferences']['requirements'] as $requirement => $value ) {
-			// Important! We really do want fuzzy evaluation here
-			if ( $wgUser->getOption( $requirement ) != $value ) {
-				return false;
+		if ( isset( self::$modules[$module]['preferences']['requirements'] ) ) {
+			foreach ( self::$modules[$module]['preferences']['requirements'] as $requirement => $value ) {
+				// Important! We really do want fuzzy evaluation here
+				if ( $wgUser->getOption( $requirement ) != $value ) {
+					return false;
+				}
 			}
 		}
 		return true;
@@ -139,6 +141,7 @@ class VectorHooks {
 				$out->addModules( self::$modules[$module]['name'] );
 			}
 		}
+		return true;
 	}
 	
 	/**
@@ -153,7 +156,7 @@ class VectorHooks {
 		global $wgVectorModules;
 		
 		foreach ( $wgVectorModules as $module => $enable ) {
-			if ( $enable['user'] ) && isset( self::$modules['preferences'][$module]['ui'] ) ) {
+			if ( $enable['user'] && isset( self::$modules['preferences'][$module]['ui'] ) ) {
 				$defaultPreferences[self::$modules['preferences'][$module]['key']] =
 					self::$modules['preferences'][$module]['ui'];
 			}
@@ -166,6 +169,8 @@ class VectorHooks {
 	 * Adds enabled/disabled switches for Vector modules
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
+		global $wgVectorModules;
+		
 		$configurations = array();
 		foreach ( $wgVectorModules as $module => $enable ) {
 			if (
@@ -191,7 +196,8 @@ class VectorHooks {
 	 */
 	public static function resourceLoaderRegisterModules() {
 		foreach ( self::$modules as $module ) {
-			ResourceLoader::register( $module['name'], $module['resources'] );
+			ResourceLoader::register( $module['name'], new ResourceLoaderFileModule( $module['resources'] ) );
 		}
+		return true;
 	}
 }
