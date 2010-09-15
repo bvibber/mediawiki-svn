@@ -3,10 +3,10 @@
  * Lightweight variable page redirection
  */
 
-//Alert the user that this is not a valid entry point to MediaWiki if they try to access the special pages file directly.
+//Alert the user that this is not a valid entry point to MediaWiki if they try to access the setup file directly.
 if ( !defined( 'MEDIAWIKI' ) ) { 
 	echo <<<EOT
-To install my extension, put the following line in LocalSettings.php:
+To install this extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/VariablePage/VariablePage.php" );
 EOT;
 	exit( 1 );
@@ -21,7 +21,7 @@ $wgExtensionCredits[ 'VariablePage' ][] = array(
 );
 
 /**
- * An array of pages and the probability of a user being redirected to it.
+ * An array of pages and the probability of a user being redirected to each page.
  * 
  * The key in the array is the full URL path, the value is an integer representing
  * a percentage (0-100) probability of a user being redirected to that page.
@@ -40,7 +40,7 @@ $wgVariablePagePossibilities = array(
  *
  * This can be set to whatever string you wish to use for utm_medium
  */
-$wgVariablePageUtmMedium;
+$wgVariablePageUtmMedium = '';
 
 
 $dir = dirname( __FILE__ ) . '/';
