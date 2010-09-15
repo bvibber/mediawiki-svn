@@ -705,7 +705,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$headerRows = getStructureAsTableHeaderRows( $visibleStructure, $columnOffset, $idPath );
 
 		if ( $this->allowRemove )
-			$headerRows[0] = '<th class="remove" rowspan="' . count( $headerRows ) . '"><img src="' . $wgStylePath . '/amethyst/delete.png" title="' . wfMsgSc( "RemoveHint" ) . '" alt="' . wfMsgSc( "ow_editor_remove" ) . '"/></th>' . $headerRows[0];
+			$headerRows[0] = '<th class="remove" rowspan="' . count( $headerRows ) . '"><img src="' . $wgStylePath . '/amethyst/delete.png" title="' . wfMsgSc( "RemoveHint" ) . '" alt="' . wfMsgSc( "Remove" ) . '"/></th>' . $headerRows[0];
 
 		if ( $this->repeatInput )
 			$headerRows[0] .= '<th class="add" rowspan="' . count( $headerRows ) . '">Input rows</th>';
@@ -806,7 +806,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		
 		# + is add new Fo o(but grep this file for Add.png for more)
 		if ( $allowRemove ) {
-			$result .= '<td class="add"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( "ow_AddHint" ) . '" alt="' . wfMsgSc( "ow_editor_add" ) . '" onclick="addEmptyRow(this.parentNode.parentNode.id);"/></td>' . EOL;
+			$result .= '<td class="add"><img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( "AddHint" ) . '" alt="Add" onclick="addEmptyRow(this.parentNode.parentNode.id);"/></td>' . EOL;
 		}
 
 		$result .= $this->getStructureAsAddCells( $idPath, $this );
@@ -1951,7 +1951,7 @@ class RecordSetListEditor extends RecordSetEditor {
 				
 				# For which class is this add?
 				$result .= '<li>' .
-							'<h' . $this->headerLevel . '><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $class ) . '" onclick="toggle(this, event);">' . $this->getExpansionPrefix( $idPath->getClass(), $idPath->getId() ) . ' <img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="' . wfMsgSc( 'ow_AddHintList' ) . '" alt="' . wfMsgSc( "ow_editor_add" ) . '" onclick="addEmptyRow(this.parentNode.parentNode.id);"/>' . $this->captionEditor->add( $idPath ) . '</span></h' . $this->headerLevel . '>' . EOL;
+							'<h' . $this->headerLevel . '><span id="collapse-' . $recordId . '" class="toggle ' . addCollapsablePrefixToClass( $class ) . '" onclick="toggle(this, event);">' . $this->getExpansionPrefix( $idPath->getClass(), $idPath->getId() ) . ' <img src="' . $wgScriptPath . '/extensions/Wikidata/Images/Add.png" title="Enter new list item to add" alt="Add" onclick="addEmptyRow(this.parentNode.parentNode.id);"/>' . $this->captionEditor->add( $idPath ) . '</span></h' . $this->headerLevel . '>' . EOL;
 				$idPath->popAttribute();
 	
 				$idPath->pushAttribute( $valueAttribute );
