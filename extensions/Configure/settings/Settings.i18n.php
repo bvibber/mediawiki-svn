@@ -11158,7 +11158,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgSpamRegex' => '<i lang="en">Regular expressons</i> als Fellter jäje der <i lang="en">SPAM</i> en Sigge',
 	'configure-setting-wgSummarySpamRegex' => '<i lang="en">Regular expressons</i> als Fellter jäje der <i lang="en">SPAM</i> em Feld „{{int:Summary}}“ beim Sigge Ändere udder Schriive',
 	'configure-setting-wgWhitelistRead' => 'Sigge, di de naameloose Metmaacher ze sinn krijje',
-	'configure-setting-wgEmailAuthentication' => 'En beschtääteschte <i lang="en">e-mail</i>-Addräß es nüdesch, öm de <i lang="en">e-mail</i> ier Müjjeleschkeite bruch ze künne',
+	'configure-setting-wgEmailAuthentication' => 'En beschtääteschte <i lang="en">e-mail</i>-Addräß es nüdesch, öm de <i lang="en">e-mail</i> ier Müjjeleschkeite bruche ze künne',
 	'configure-setting-wgEmergencyContact' => 'Däm Wikki-Verantwootlijje sing <i lang="en">e-mail</i>-Addräß',
 	'configure-setting-wgEnableEmail' => '<i lang="en">e-mail</i> Zohlohße',
 	'configure-setting-wgEnableUserEmail' => '<i lang="en">e-mail</i> zwesche de Metmaacher zohlohße',

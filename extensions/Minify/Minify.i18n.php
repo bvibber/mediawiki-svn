@@ -59,6 +59,13 @@ $messages['ca'] = array(
 	'minify-desc' => 'Comprimeix la sortida del CSS i del JavaScript de action=raw',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'minify-desc' => 'Zmenšuje JavaScriptový a CSS výstup action=raw',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

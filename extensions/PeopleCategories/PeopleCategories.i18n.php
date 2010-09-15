@@ -160,6 +160,13 @@ $messages['ja'] = array(
 	'peoplecategories-desc' => '指定されたカテゴリ内のページにおいて、ページ名の表示を "Firstname Lastname"（名、姓）から "Lastname, Firstname"（姓、名）の形式に変更する',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'peoplecategories-desc' => 'Määt et müjjelesch, de Sittetittele en beschtemmpte Saachjruppe ier Sigge automattesch vun „Fürname Nohname“ op „Nohname, Fürname“ ömzeschtelle.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

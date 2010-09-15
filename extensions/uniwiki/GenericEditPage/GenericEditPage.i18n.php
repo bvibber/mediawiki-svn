@@ -661,6 +661,20 @@ $messages['he'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Dodaj kategoriju',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Predloži kategoriji',
+	'gep-suggestcategorybutton' => 'Pošalji',
+	'gep-sections' => 'Odlomci',
+	'gep-sectionnotdisabled' => 'Ovaj odlomak ne može se isključiti',
+	'gep-addsection' => 'Dodaj odlomak',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

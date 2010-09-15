@@ -1174,6 +1174,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
@@ -1182,7 +1183,7 @@ $messages['su'] = array(
 $messages['sv'] = array(
 	'edituser-desc' => 'Gör det möjligt för användare med viss behörighet att ändra andra användares inställningar',
 	'edituser' => 'Redigera användare',
-	'edituser-username' => 'Namn',
+	'edituser-username' => 'Användarnamn:',
 	'edituser-dosearch' => 'Sök',
 	'edituser-nouser' => 'Användaren «$1» finns inte.',
 	'edituser-exempt' => 'Användaren «$1» kan inte redigeras.',

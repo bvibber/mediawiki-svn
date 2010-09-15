@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'datediff-desc' => 'Takes two dates and returns all intermediate days'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'datediff-desc' => 'Вяртае ўсе дні паміж двума пададзенымі датамі',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -71,6 +78,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'datediff-desc' => '２種類の日付を受け取って、すべての中間の日付を返す',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'datediff-desc' => 'Deiht et Dattum för all die Daare ußrääschne, di zwesche zwei Dääsch lijje.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

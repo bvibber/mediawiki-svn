@@ -4185,8 +4185,12 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
+	'metavid' => 'MetaVid stranica',
+	'mv_save_changes' => 'Spremi izmjene',
+	'mv_tool_search' => 'Traži',
 	'mv_remove' => 'ukloni',
 );
 

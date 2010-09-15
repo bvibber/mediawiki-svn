@@ -3884,6 +3884,7 @@ $messages['hr'] = array(
 	'code-status-reverted' => 'uklonjen',
 	'code-status-resolved' => 'riješeno',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'ovjereno',
 	'code-status-deferred' => 'odgođeno',
 	'code-pathsearch-legend' => 'Traži izmjene u ovom repozitoriju preko putanje',
 	'code-pathsearch-path' => 'Putanja:',

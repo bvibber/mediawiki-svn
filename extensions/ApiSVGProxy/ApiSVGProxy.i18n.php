@@ -50,6 +50,13 @@ $messages['ca'] = array(
 	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'apisvgproxy-desc' => 'Zprostředkovává SVG soubory z (případně vzdáleného) úložiště souborů pro lokální doménu',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  * @author Xxglennxx

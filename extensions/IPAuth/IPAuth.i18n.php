@@ -74,6 +74,13 @@ $messages['ca'] = array(
 	'ipauth-desc' => "Inici de sessió automàtic des d'adreces IP fixes",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'ipauth-desc' => 'Automatické přihlášení z pevných IP adres',
+);
+
 /** German (Deutsch)
  * @author PasO
  */

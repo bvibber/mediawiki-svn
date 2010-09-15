@@ -1143,6 +1143,7 @@ $messages['ja'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'imagetagging-addimagetag' => 'ដាក់ប្លាកឱ្យរូបភាពនេះ',
@@ -1159,6 +1160,7 @@ $messages['km'] = array(
 	'imagetagging-addtagsuccess' => 'ប្លាក់ដែលបានដាក់៖',
 	'imagetagging-removetagsuccess' => 'ស្លាក​ដែល​បាន​ដក​ចេញ​។',
 	'imagetagging-imagetag-seemoreimages' => 'មើល​រូបភាព​បន្ថែម​នៃ "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'រួបភាពរបស់"$1"',
 	'imagetagging-taggedimages-displaying' => 'កំពុង​បង្ហាញ $1 - $2 នៃ $3 រូបភាព​នៃ "$4"',
 );
 

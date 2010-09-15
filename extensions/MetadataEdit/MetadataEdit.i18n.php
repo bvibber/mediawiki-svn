@@ -230,8 +230,10 @@ $messages['crh-cyrl'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
+	'metadataedit-desc' => 'Přesouvá při editaci stránek kategorie, mezijazykové odkazy a dostupné šablony do odděleného pole',
 	'metadata_help' => 'Metadata:',
 );
 

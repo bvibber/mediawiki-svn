@@ -406,13 +406,14 @@ $messages['tr'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'checkpoint' => 'Lưu và tiếp tục sửa đổi',
 	'checkpoint-desc' => 'Cho phép một lần lưu sửa đổi và tiếp tục sửa đổi',
 	'checkpoint-tooltip' => 'Lưu những thay đổi của bạn và tiếp tục sửa đổi trang này',
-	'checkpoint-notice' => '([[{{ns:project}}:Kiểm soát|kiểm soát lưu]])',
+	'checkpoint-notice' => '([[{{ns:project}}:Kiểm soát|lưu nửa chừng]])',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

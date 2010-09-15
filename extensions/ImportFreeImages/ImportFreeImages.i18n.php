@@ -735,6 +735,11 @@ $messages['km'] = array(
 	'importfreeimages_owner' => 'អ្នកនិពន្ធ',
 	'importfreeimages_importthis' => 'នាំចូល នេះ',
 	'importfreeimages_next' => 'បន្ទាប់ $1',
+	'importfreeimages_size_thumbnail' => 'កូនរូបភាព',
+	'importfreeimages_size_small' => 'តូច',
+	'importfreeimages_size_medium' => 'មធ្យម',
+	'importfreeimages_size_large' => 'ធំ',
+	'importfreeimages_size_original' => 'ទំហំដើម',
 );
 
 /** Kannada (ಕನ್ನಡ)

@@ -298,6 +298,19 @@ $messages['ru'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo получил недопустимый параметр ширины «$1».',
 );
 
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'embedvideo-desc' => 'Lägger till en parserfunktion för att bädda in video från populära källor',
+	'embedvideo-missing-params' => 'EmbedVideo saknar en parameter som krävs.',
+	'embedvideo-bad-params' => 'EmbedVideo fick en dålig parameter.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo fick den inte parserbara parametersträngen "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo erkänner inte videotjänsten "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo fick ett dålig id "$1" för tjänsten "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo erhöll den olagliga breddparametern "$1".',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

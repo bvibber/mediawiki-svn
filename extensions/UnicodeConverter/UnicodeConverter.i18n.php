@@ -333,6 +333,13 @@ $messages['he'] = array(
 	'unicodeconverter-newtext' => 'הטקסט המומר:',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'unicodeconverter-oldtext' => 'Izvorni tekst:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

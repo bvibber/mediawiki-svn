@@ -420,6 +420,16 @@ $messages['he'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'layouts_continue' => 'Nastavi',
+	'layouts_choosecategory' => 'Odaberite kategoriju za $1:',
+	'layouts_unknown' => 'Nepoznato',
+	'layouts_tagline' => "Ova stranica je generirana od '''$1''' izgleda (''layouta'').",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

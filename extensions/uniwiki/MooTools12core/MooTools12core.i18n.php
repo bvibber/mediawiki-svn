@@ -182,6 +182,13 @@ $messages['hil'] = array(
 	'mootools12core-desc' => 'Nagadugang [http://mootools.net mootools-1.2-core-yc.js], isa ka kompak JavaScript framework, sa kada pahina',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'mootools12core-desc' => 'Dodaje [http://mootools.net mootools-1.2-core-yc.js], kompaktnu JavaScript biblioteku na svaku stranicu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

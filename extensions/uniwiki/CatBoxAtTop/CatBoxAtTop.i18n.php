@@ -251,6 +251,13 @@ $messages['he'] = array(
 	'catboxattop-categories' => 'קטגוריות',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'catboxattop-categories' => 'Kategorije',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -1528,6 +1528,7 @@ $messages['ksh'] = array(
 	'readerfeedback-tier-poor' => 'Mau',
 	'tooltip-ca-ratinghist' => 'Wi de Lesser hee di Sigg ennschäze un wat se ier för Note jävve',
 	'specialpages-group-feedback' => 'Enschäzunge vum Lesser',
+	'readerfeedback-tt-review' => 'Ennschäzung afjävve',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1656,7 +1657,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'readerfeedback-desc' => 'വർഗ്ഗീകൃത നിലവാരമളക്കൽ പോലെ വായനക്കാർക്ക് അവരുടെ അഭിപ്രായം വഴി താൾ മൂല്യനിർണ്ണയം ചെയ്യാനുള്ള അവസരം നൽകുന്നു.',
 	'readerfeedback' => 'ഈ താളിനെ കുറിച്ച് താങ്കൾ എന്തു കരുതുന്നു?',
-	'readerfeedback-text' => "''ഈ താളിന്റെ നിലവാരം കണ്ടെത്താൻ ഒരു നിമിഷമെടുക്കൂ. താങ്കളുടെ അഭിപ്രായങ്ങൾ വിലയേറിയതും വെബ്‌‌സൈറ്റ് മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കുന്നതുമാണ്.''",
+	'readerfeedback-text' => "''ഈ താളിന്റെ നിലവാരം കണ്ടെത്താൻ ഒരു നിമിഷം ചിലവഴിക്കൂ. താങ്കളുടെ അഭിപ്രായങ്ങൾ വിലയേറിയതും വെബ്‌‌സൈറ്റ് മെച്ചപ്പെടുത്താൻ ഞങ്ങളെ സഹായിക്കുന്നതുമാണ്.''",
 	'readerfeedback-reliability' => 'വിശ്വാസയോഗ്യത',
 	'readerfeedback-completeness' => 'പൂർണ്ണത',
 	'readerfeedback-npov' => 'നിഷ്പക്ഷത',

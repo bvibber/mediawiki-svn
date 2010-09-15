@@ -234,6 +234,7 @@ $messages['ca'] = array(
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'player' => 'Přehrávač',
@@ -243,6 +244,9 @@ $messages['cs'] = array(
 	'player-file' => 'Název souboru',
 	'player-play' => 'Přehrát',
 	'player-not-allowed' => 'Nepovolený formát',
+	'player-not-found' => 'soubor nenalezen',
+	'player-invalid-title' => 'neplatný název',
+	'player-clicktoplay' => 'Přehrát $1',
 	'player-goto-player' => 'přehrávač',
 	'player-goto-page' => 'Stránka',
 	'player-goto-file' => 'soubor',

@@ -158,6 +158,14 @@ $messages['be-tarask'] = array(
 	'cb_all_op' => 'Усе',
 	'cb_or_op' => 'ці',
 	'cb_and_op' => 'і',
+	'cb_edit_left_hint' => 'Перанесьці ўлева, калі магчыма',
+	'cb_edit_right_hint' => 'Перанесьці ўправа, калі магчыма',
+	'cb_edit_remove_hint' => 'Выдаліць, калі магчыма',
+	'cb_edit_copy_hint' => 'Скапіяваць апэратар у буфэр абмену',
+	'cb_edit_append_hint' => 'Уставіць апэратар у апошнюю пазыцыю',
+	'cb_edit_clear_hint' => 'Ачысьціць цяперашні выраз (выбраць усё)',
+	'cb_edit_paste_hint' => 'Уставіць апэратар у цяперашнюю пазыцыю, калі магчыма',
+	'cb_edit_paste_right_hint' => 'Уставіць апэратар у наступную пазыцыю, калі магчыма',
 );
 
 /** Breton (Brezhoneg)
@@ -184,12 +192,23 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'categorybrowser' => 'Preglednik kategorija',
+	'categorybrowser-desc' => 'Omogućuje [[Special:CategoryBrowser|posebnu stranicu]] za filtriranje najviše napunjenih kategorija te navigacija u njima putem AJAX interfejsa',
 	'cb_cat_name_filter' => 'Pretraga kategorija po nazivu:',
+	'cb_cat_name_filter_clear' => 'Pritisnite za čišćenje filtera naziva kategorije',
+	'cb_cat_name_filter_ci' => 'Ne razlikuje velika slova',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategorije|podkategorija}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|stranica|stranice|stranica}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteke|datoteka}}',
 	'cb_previous_items_link' => 'Prethodno',
 	'cb_next_items_link' => 'Slijedeći',
 	'cb_next_items_stats' => '(od $1)',
+	'cb_cat_subcats' => 'potkategorije',
+	'cb_cat_pages' => 'stranice',
+	'cb_cat_files' => 'datoteke',
+	'cb_apply_button' => 'Primijeni',
+	'cb_all_op' => 'Sve',
+	'cb_or_op' => 'ili',
+	'cb_and_op' => 'i',
 );
 
 /** German (Deutsch)

@@ -87,9 +87,12 @@ $messages['ca'] = array(
 	'purge' => 'purga',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Mormegil
+ */
 $messages['cs'] = array(
 	'purge' => 'obnovit',
+	'purge-desc' => 'Přidává na všechny běžné stránky záložku pro obnovení a odstraňuje ověření u anonymních uživatelů, čímž umožňuje rychlé obnovení cache',
 );
 
 /** Danish (Dansk)

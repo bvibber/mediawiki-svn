@@ -368,6 +368,20 @@ $messages['ja'] = array(
 	'right-lastlogin' => '利用者が最後にログインした時刻を表示する',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'lastuserlogin' => 'កាត់កត់ឈ្មោះចូលចុងក្រោយរបស់អ្នកប្រើប្រាស់',
+	'lastuserlogin-desc' => 'បង្ហាញពេលវេលាដែលអ្នកប្រើប្រាស់បានកត់ឈ្មោះចូលចុងក្រោយ',
+	'lastuserlogin_userid' => 'ឈ្មោះអ្នកប្រើប្រាស់',
+	'lastuserlogin_username' => 'ឈ្មោះពិត',
+	'lastuserlogin_useremail' => 'អ៊ីមែលអ្នកប្រើប្រាស់',
+	'lastuserlogin_lastlogin' => 'ការកត់ឈ្មោះចូលចុងក្រោយ',
+	'lastuserlogin_daysago' => 'ថ្ងៃមុន',
+	'right-lastlogin' => 'មើលពេលវេលាដែលអ្នកប្រើប្រាស់បានកត់ឈ្មោះចូលចុងក្រោយ',
+);
+
 /** Latin (Latina)
  * @author UV
  */

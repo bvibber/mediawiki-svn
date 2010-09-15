@@ -475,6 +475,13 @@ $messages['he'] = array(
 	'createpage-badtitle' => '"$1" אינו כותרת תקינה לדף',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'createpage' => 'Započni ovu stranicu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

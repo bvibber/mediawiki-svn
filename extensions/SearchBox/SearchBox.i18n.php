@@ -517,6 +517,7 @@ $messages['lfn'] = array(
  * @author Kizito
  */
 $messages['lg'] = array(
+	'searchbox-desc' => "Kirizaamu ne fomula ez'eyambisibwa mu kunoonya",
 	'searchbox-search' => 'Noonya',
 	'searchbox-go' => 'Nona',
 	'searchbox-namespaces' => 'Makuŋaanyizo:',

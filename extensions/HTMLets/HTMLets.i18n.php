@@ -62,6 +62,13 @@ $messages['ca'] = array(
 	'htmlets-desc' => "Permet inserir snippets HTML de fitxers usant l'etiqueta <code>&lt;htmlet&gt;</code>",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'htmlets-desc' => 'Umožňuje vkládání kousků HTML ze souborů pomocí značky <code>&lt;htmlet&gt;</code>',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Raimond Spekking

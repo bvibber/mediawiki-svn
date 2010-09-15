@@ -1283,6 +1283,17 @@ $wgCustomToolbarMessages['he'] = array(
 	'ct_user_sample' => 'שם המשתמש',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$wgCustomToolbarMessages['hr'] = array(
+	'ct_image_tip' => 'Umetnite sliku',
+	'ct_image_caption' => 'Dodajte sliku',
+	'ct_attachment_tip' => 'Umetanje privitaka',
+	'ct_attachment_caption' => 'Dodati privitak',
+	'ct_close' => 'Zatvori prozor',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -264,6 +264,14 @@ $messages['he'] = array(
 	'authors_anonymous' => 'אנונימי',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'authors_authors' => 'Autori',
+	'authors_anonymous' => 'Anonimni',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

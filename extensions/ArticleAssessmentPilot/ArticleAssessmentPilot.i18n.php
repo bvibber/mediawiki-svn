@@ -123,6 +123,7 @@ $messages['be-tarask'] = array(
 	'articleassessment-rating-readability' => 'Лёгкасьць чытаньня:',
 	'articleassessment-rating-wellsourced-tooltip' => 'Вы лічыце, што гэты артыкул мае дастаткова цытатаў, і яны спасылаюцца на крыніцы, якія заслугоўваюць даверу?',
 	'articleassessment-rating-neutrality-tooltip' => 'Вы лічыце, што на гэтай старонцы адлюстраваныя усе пункты гледжаньня на пытаньне?',
+	'articleassessment-rating-completeness-tooltip' => 'Вы лічыце, што гэтая старонка раскрывае асноўныя пытаньні тэмы як сьлед?',
 	'articleassessment-rating-readability-tooltip' => 'Вы лічыце, што гэтая старонка добра арганізаваная і добра напісаная?',
 	'articleassessment-articlerating' => 'Адзнака старонкі',
 	'articleassessment-error' => 'Узьнікла памылка.
@@ -134,6 +135,13 @@ $messages['be-tarask'] = array(
 Верагодна, Вы жадаеце адзначыць яе яшчэ раз.",
 	'articleassessment-results-show' => '(Вынікі схаваныя. <span class="showlink">Паказаць</span> іх.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Схаваць вынікі</span>)',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'articleassessment-submit' => 'Pošalji',
 );
 
 /** German (Deutsch)
@@ -262,6 +270,10 @@ $messages['lb'] = array(
 	'articleassessment-rating-neutrality' => 'Neutral:',
 	'articleassessment-rating-completeness' => 'Komplett:',
 	'articleassessment-rating-readability' => 'Verständlech:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Hutt Dir den Androck datt dës Säit genuch Zitater huet an datt dës Zitater aus vertrauenswierdege Quelle kommen?',
+	'articleassessment-rating-neutrality-tooltip' => 'Hutt Dir den Androck datt dës Säit eng ausgeglache Presentatioun vun alle Perspektive vun dësem Thema weist?',
+	'articleassessment-rating-completeness-tooltip' => 'Hutt dir den Androck datt dës Säit déi wesentlech Aspekter vun dësem Sujet behandelt déi solle beliicht ginn?',
+	'articleassessment-rating-readability-tooltip' => 'Hutt Dir den Androck datt dës Säit gutt organiséiert a gutt geschriwwen ass?',
 	'articleassessment-articlerating' => 'Bewäertung vum Artikel',
 	'articleassessment-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
