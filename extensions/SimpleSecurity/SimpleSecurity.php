@@ -7,10 +7,11 @@
  * See http://www.mediawiki.org/Extension:SimpleSecurity for installation and usage details
  * See http://www.organicdesign.co.nz/Extension_talk:SimpleSecurity.php for development notes and disucssion
  *
- * Version 4.0 started Oct 2007 - new version for modern MediaWiki's using DatabaseFetchHook
- * Version 4.1 started Jun 2008 - development funded for a slimmed down functional version
- * Version 4.2 started Aug 2008 - fattened up a bit again - $wgPageRestrictions and security info added in again
- * Version 4.3 started Mar 2009 - bug fixes and split out to separate class and i18n files
+ * Version 4.0 - Oct 2007 - new version for modern MediaWiki's using DatabaseFetchHook
+ * Version 4.1 - Jun 2008 - development funded for a slimmed down functional version
+ * Version 4.2 - Aug 2008 - fattened up a bit again - $wgPageRestrictions and security info added in again
+ * Version 4.3 - Mar 2009 - bug fixes and split out to separate class and i18n files
+ * Version 4.5 - Sep 2010 - File security started again - by Josh Adams
  *
  * @file
  * @ingroup Extensions
@@ -22,7 +23,7 @@
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
 if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
-define( 'SIMPLESECURITY_VERSION', '4.4.3, 2010-06-20' );
+define( 'SIMPLESECURITY_VERSION', '4.5.0, 2010-09-16' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';

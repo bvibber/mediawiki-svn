@@ -12,6 +12,7 @@ class SimpleSecurity {
 		'CR' => array()  # security info for rules which are currently in effect
 	);
 
+
 	function __construct() {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgMessageCache,
 			$wgSecurityMagicIf, $wgSecurityMagicGroup, $wgSecurityExtraActions, $wgSecurityExtraGroups,
@@ -24,6 +25,7 @@ class SimpleSecurity {
 
 		# Add our hooks
 		$wgHooks['UserGetRights'][] = $this;
+		$wgHooks['ImgAuthBeforeStream'][] = $this;
 		if ( $wgSecurityMagicIf )    $wgParser->setFunctionHook( $wgSecurityMagicIf,    array( $this, 'ifUserCan' ) );
 		if ( $wgSecurityMagicGroup ) $wgParser->setFunctionHook( $wgSecurityMagicGroup, array( $this, 'ifGroup' ) );
 		if ( $wgSecurityRenderInfo ) $wgHooks['OutputPageBeforeHTML'][] = $this;
@@ -78,12 +80,14 @@ class SimpleSecurity {
 		}
 	}
 
+
 	/**
 	 * Process the ifUserCan conditional security directive
 	 */
 	public function ifUserCan( &$parser, $action, $pagename, $then, $else = '' ) {
 		return Title::newFromText( $pagename )->userCan( $action ) ? $then : $else;
 	}
+
 
 	/**
 	 * Process the ifGroup conditional security directive
@@ -94,6 +98,7 @@ class SimpleSecurity {
 		$intersection = array_intersect( array_map( 'strtolower', split( ',', $groups ) ), $wgUser->getEffectiveGroups() );
 		return count( $intersection ) > 0 ? $then : $else;
 	}
+
 
 	/**
 	 * Convert the urls with guids for hrefs into non-clickable text of class "unreadable"
@@ -106,6 +111,7 @@ class SimpleSecurity {
 		);
 		return true;
 	}
+
 
 	/**
 	 * Render security info if any restrictions on this title
@@ -153,6 +159,7 @@ class SimpleSecurity {
 		return true;
 	}
 
+
 	/**
 	 * Callback function for unreadable link replacement
 	 */
@@ -161,6 +168,28 @@ class SimpleSecurity {
 		return $this->userCanReadTitle( $wgUser, Title::newFromText( $match[1] ), $error )
 			? $match[0] : "<span class=\"unreadable\">$match[2]</span>";
 	}
+
+
+	/*
+	 * Check if image is accessible by current user when using img_auth
+	 */
+	public function onImgAuthBeforeStream( &$title, &$path, &$name, &$result ) {
+		global $wgUser, $wgGroupPermissions;
+
+		# Put the anon read right back in $wgGroupPermissions if it was there initially
+		# - it had to be removed because Title::userCanRead short-circuits with it
+		if ( $this->default_read ) {
+			$wgGroupPermissions['*']['read'] = true;
+		}
+
+		if ( !$this->userCanReadTitle( $wgUser, $title, $error )) {
+			$result = array('img-auth-accessdenied', 'img-auth-noread', $name);
+			return false;
+		}
+
+		return true;
+	}
+
 
 	/**
 	 * User::getRights returns a list of rights (allowed actions) based on the current users group membership
@@ -216,6 +245,7 @@ class SimpleSecurity {
 		return true;
 	}
 
+
 	/**
 	 * Patches SQL queries to ensure that the old_id field is present in all requests for the old_text field
 	 * otherwise the title that the old_text is associated with can't be determined
@@ -225,6 +255,7 @@ class SimpleSecurity {
 		$fields = str_replace( " ", "", $match[0] );
 		return ( $fields == "*" || preg_match( "/old_id/", $fields ) ) ? $fields : "$fields,old_id";
 	}
+
 
 	/**
 	 * Validate the passed database row and replace any invalid content
@@ -246,6 +277,7 @@ class SimpleSecurity {
 		# Replace text content in the passed database row if title unreadable by user
 		if ( !$this->userCanReadTitle( $wgUser, $title, $error ) ) $row->old_text = $error;
 	}
+
 
 	/**
 	 * Return bool for whether or not passed user has read access to the passed title
@@ -276,6 +308,7 @@ class SimpleSecurity {
 		return $readable;
 	}
 
+
 	/**
 	 * Returns a textual description of the passed list
 	 */
@@ -288,6 +321,7 @@ class SimpleSecurity {
 		else $gt = "the <b>$gt</b> group"; // FIXME: hard coded text. Needs i18n support.
 		return $gt;
 	}
+
 
 	/**
 	 * Reduce the passed list of rights based on $wgPageRestrictions and the passed groups and title
@@ -348,6 +382,7 @@ class SimpleSecurity {
 		}
 	}
 
+
 	/**
 	 * Updates passed LoadBalancer's DB servers to secure class
 	 */
@@ -355,6 +390,7 @@ class SimpleSecurity {
 		$lb->closeAll();
 		foreach ( $lb->mServers as $i => $server ) $lb->mServers[$i]['type'] = 'SimpleSecurity';
 	}
+
 
 	/**
 	 * Hack to ensure proper search class is used
