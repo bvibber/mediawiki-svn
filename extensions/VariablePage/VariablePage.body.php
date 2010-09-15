@@ -17,10 +17,10 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		$referrer = $wgRequest->getHeader( 'referrer' );
 
 		$tracking = '?' . wfArrayToCGI( array(
-			'utm_source' => "$utm_source",
-			'utm_medium' => "$utm_medium",
-			'utm_campaign' => "$utm_campaign",
-			'referrer' => "$referrer"
+			'utm_source' => $utm_source,
+			'utm_medium' => $utm_medium,
+			'utm_campaign' => $utm_campaign,
+			'referrer' => $referrer
 		));
 
 		$url = $this->determinePage( $wgVariablePagePossibilities );
@@ -42,7 +42,7 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		 *
 		 * We use a # larger than 100 to increase 'randomness'
 		 */
-		$random_number = mt_rand( 0, 10000 );
+		$random_number = mt_rand( 0, 100*100 );
 		$offset = 0;  
 
 		foreach ( $page_possibilities as $url => $probability ) {
