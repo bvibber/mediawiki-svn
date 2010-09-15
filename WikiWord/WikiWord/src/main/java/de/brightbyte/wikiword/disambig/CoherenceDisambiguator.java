@@ -94,7 +94,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 	//protected Functor2.Double scoreCombiner = new LinearCombiner(0.8);
 	protected Functor2.Double scoreCombiner = ProductCombiner.instance;
 	protected Functor2.Double weightCombiner = ProductCombiner.instance;
-	protected Functor.Double weightBooster = SquareBooster.instance; 
+	protected Functor.Double weightBooster = SquareBooster.instance;
 	
 	public CoherenceDisambiguator(MeaningFetcher<? extends C> meaningFetcher, FeatureFetcher<C, Integer> featureFetcher, int cacheCapacity) {
 		this(meaningFetcher, featureFetcher, cacheCapacity, null, null);  
@@ -248,7 +248,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
-		Collection<List<X>> sequences = getSequences(root, getPhraseSearchDepth());
+		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
 		return disambiguate(sequences, root, meanings, context);
 	}
 	

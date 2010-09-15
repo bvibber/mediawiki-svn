@@ -21,21 +21,11 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 
 	private Map<String, C> meaningOverrides;
 	
-	private int phraseSearchDepth = 8; //FIXME: magic...
-	
 	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheCapacity) {
 		if (meaningFetcher==null) throw new NullPointerException();
 		
 		if (cacheCapacity>0) meaningFetcher = new CachingMeaningFetcher<C>(meaningFetcher, cacheCapacity);
 		this.meaningFetcher = meaningFetcher;
-	}
-	
-	public int getPhraseSearchDepth() {
-		return phraseSearchDepth;
-	}
-
-	public void setPhraseSearchDepth(int phraseSearchDepth) {
-		this.phraseSearchDepth = phraseSearchDepth;
 	}
 
 	public MeaningFetcher<? extends C> getMeaningFetcher() {
@@ -96,7 +86,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	
 	
 	protected <X extends T>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root) throws PersistenceException {
-		Collection<X> terms = getTerms(root, phraseSearchDepth);
+		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		return getMeanings(terms);
 	}
 	
@@ -123,11 +113,13 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	}
 	
 	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException {
-		return this.<X>disambiguate(new TermListNode<X>(terms, 0), context);
+		PhraseNode<X> root = new TermListNode<X>(terms, 0);
+		Map<X, List<? extends C>> meanings = getMeanings(terms);
+		return disambiguate(root, meanings, context);
 	}
 	
 	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException {
-		Collection<X> terms = getTerms(root, phraseSearchDepth);
+		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms);
 		return disambiguate(root, meanings, context);
 	}
