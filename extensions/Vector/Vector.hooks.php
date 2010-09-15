@@ -14,8 +14,8 @@ class VectorHooks {
 		'collapsiblenav' => array(
 			'name' => 'vector.collapsibleNav',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.collapsibleNav.js',
-				'styles' => dirname( __FILE__ ) . '/modules/vector.collapsibleNav.css',
+				'scripts' => 'extensions/Vector/modules/vector.collapsibleNav.js',
+				'styles' => 'extensions/Vector/modules/vector.collapsibleNav.css',
 				'messages' => array(
 					'vector-collapsiblenav-more',
 				),
@@ -37,13 +37,13 @@ class VectorHooks {
 		'collapsibletabs' => array(
 			'name' => 'vector.collapsibleTabs',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.collapsibleTabs.js',
+				'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
 			)
 		),
 		'editwarning' => array(
 			'name' => 'vector.editWarning',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.editWarning.js',
+				'scripts' => 'extensions/Vector/modules/vector.editWarning.js',
 				'messages' => array(
 					'vector-editwarning-warning',
 				),
@@ -61,8 +61,8 @@ class VectorHooks {
 		'expandablesearch' => array(
 			'name' => 'vector.expandableSearch',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.expandableSearch.js',
-				'styles' => dirname( __FILE__ ) . '/modules/vector.expandableSearch.css',
+				'scripts' => 'extensions/Vector/modules/vector.expandableSearch.js',
+				'styles' => 'extensions/Vector/modules/vector.expandableSearch.css',
 				'dependencies' => array( 'jquery.client' ),
 			),
 			'preferences' => array(
@@ -72,14 +72,14 @@ class VectorHooks {
 		'footercleanup' => array(
 			'name' => 'vector.footerCleanup',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.footerCleanup.js',
-				'styles' => dirname( __FILE__ ) . '/modules/vector.footerCleanup.css',
+				'scripts' => 'extensions/Vector/modules/vector.footerCleanup.js',
+				'styles' => 'extensions/Vector/modules/vector.footerCleanup.css',
 			),
 		),
 		'simplesearch' => array(
 			'name' => 'vector.simpleSearch',
 			'resources' => array(
-				'scripts' => dirname( __FILE__ ) . '/modules/vector.simpleSearch.js',
+				'scripts' => 'extensions/Vector/modules/vector.simpleSearch.js',
 				'messages' => array(
 					'vector-simplesearch-search',
 					'vector-simplesearch-containing',
