@@ -14,8 +14,8 @@ class VectorHooks {
 		'collapsiblenav' => array(
 			'name' => 'vector.collapsibleNav',
 			'resources' => array(
-				'scripts' => 'vector.collapsibleNav.js',
-				'styles' => 'vector.collapsibleNav.css',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.collapsibleNav.js',
+				'styles' => dirname( __FILE__ ) . '/modules/vector.collapsibleNav.css',
 				'messages' => array(
 					'vector-collapsiblenav-more',
 				),
@@ -37,13 +37,13 @@ class VectorHooks {
 		'collapsibletabs' => array(
 			'name' => 'vector.collapsibleTabs',
 			'resources' => array(
-				'scripts' => 'vector.collapsibleTabs.js',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.collapsibleTabs.js',
 			)
 		),
 		'editwarning' => array(
 			'name' => 'vector.editWarning',
 			'resources' => array(
-				'scripts' => 'vector.editWarning.js',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.editWarning.js',
 				'messages' => array(
 					'vector-editwarning-warning',
 				),
@@ -61,8 +61,8 @@ class VectorHooks {
 		'expandablesearch' => array(
 			'name' => 'vector.expandableSearch',
 			'resources' => array(
-				'scripts' => 'vector.expandableSearch.js',
-				'styles' => 'vector.expandableSearch.css',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.expandableSearch.js',
+				'styles' => dirname( __FILE__ ) . '/modules/vector.expandableSearch.css',
 				'dependencies' => array( 'jquery.client' ),
 			),
 			'preferences' => array(
@@ -72,14 +72,14 @@ class VectorHooks {
 		'footercleanup' => array(
 			'name' => 'vector.footerCleanup',
 			'resources' => array(
-				'scripts' => 'vector.footerCleanup.js',
-				'styles' => 'vector.footerCleanup.css',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.footerCleanup.js',
+				'styles' => dirname( __FILE__ ) . '/modules/vector.footerCleanup.css',
 			),
 		),
 		'simplesearch' => array(
 			'name' => 'vector.simpleSearch',
 			'resources' => array(
-				'scripts' => 'vector.simpleSearch.js',
+				'scripts' => dirname( __FILE__ ) . '/modules/vector.simpleSearch.js',
 				'messages' => array(
 					'vector-simplesearch-search',
 					'vector-simplesearch-containing',
