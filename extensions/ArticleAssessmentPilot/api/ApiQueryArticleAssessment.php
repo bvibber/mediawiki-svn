@@ -37,12 +37,12 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 				$this->addWhereFld( 'aa_user_anon_token', $params['anontoken'] );
 			}
 
-			$this->addWhereFld( 'aa_user_id', $wgUser->getId() );
 			$this->addTables( 'article_assessment' );
 			$this->addJoinConds( array(
 				'article_assessment' => array( 'LEFT JOIN', array(
 					'aa_page_id=aap_page_id',
-					'aa_rating_id=aap_rating_id' ) ),
+					'aa_rating_id=aap_rating_id',
+					'aa_user_id=' . $wgUser->getId() ) ),
 				)
 			);
 
