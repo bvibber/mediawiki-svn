@@ -26,6 +26,11 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 		if ( $params['userrating'] ) {
 			global $wgUser;
+			
+			$leftJoinConds = array(
+					'aa_page_id=aap_page_id',
+					'aa_rating_id=aap_rating_id',
+					'aa_user_id=' . $wgUser->getId() );
 
 			if ( $wgUser->isAnon() ) {
 				if ( !isset( $params['anontoken'] ) ) {
@@ -34,15 +39,12 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 					$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
 				}
 
-				$this->addWhereFld( 'aa_user_anon_token', $params['anontoken'] );
+				$leftJoinConds[] = 'aa_user_anon_token=' . $params['anontoken'];
 			}
 
 			$this->addTables( 'article_assessment' );
-			$this->addJoinConds( array(
-				'article_assessment' => array( 'LEFT JOIN', array(
-					'aa_page_id=aap_page_id',
-					'aa_rating_id=aap_rating_id',
-					'aa_user_id=' . $wgUser->getId() ) ),
+			$this->addJoinConds( array( 
+					'article_assessment' => array( 'LEFT JOIN', $leftJoinConds ), 
 				)
 			);
 
