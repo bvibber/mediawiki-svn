@@ -28,10 +28,9 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
 		if ( strlen( $referrer )) $query[ 'referrer' ] = $referrer;
 
-		$tracking = '?' . wfArrayToCGI( $query );
-
+		// determine the URL to which we will redirect the user
 		$url = $this->determinePage( $wgVariablePagePossibilities );
-		$wgOut->redirect( $url . $tracking );
+		$wgOut->redirect( wfAppendQuery( $url, $query ));
 	}
 
 	/**
