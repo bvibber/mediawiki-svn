@@ -13,7 +13,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 
-define( 'EMAILPAGE_VERSION', '1.3.4, 2009-05-04' );
+define( 'EMAILPAGE_VERSION', '1.3.5, 2010-09-17' );
 
 $wgEmailPageGroup           = 'sysop';              # Users must belong to this group to send emails (empty string means anyone can send)
 $wgEmailPageContactsCat     = '';                   # This specifies the name of a category containing categories of contact pages

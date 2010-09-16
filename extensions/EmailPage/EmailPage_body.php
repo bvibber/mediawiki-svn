@@ -162,7 +162,7 @@ class SpecialEmailPage extends SpecialPage {
 	 * Send the message to the recipients (or just list them if arg = false)
 	 */
 	function send( $send = true ) {
-		global $wgOut, $wgUser, $wgParser, $wgServer, $wgScript, $wgArticlePath, $wgScriptPath,
+		global $wgOut, $wgUser, $wgParser, $wgServer, $wgScript, $wgArticlePath, $wgScriptPath, $wgEmergencyContact,
 			$wgEmailPageCss, $wgEmailPageGroup, $wgEmailPageAllowRemoteAddr, $wgEmailPageAllowAllUsers;
 
 		# Set error and bail if user not in postmaster group, and request not from trusted address
@@ -239,7 +239,7 @@ class SpecialEmailPage extends SpecialPage {
 			# Set up new mailer instance if sending
 			if ( $send ) {
 				$mail           = new PHPMailer();
-				$mail->From     = $wgUser->isValidEmailAddr( $wgUser->getEmail() ) ? $wgUser->getEmail() : "wiki@$wgServer";
+				$mail->From     = $wgUser->isValidEmailAddr( $wgUser->getEmail() ) ? $wgUser->getEmail() : $wgEmergencyContact;
 				$mail->FromName = User::whoIsReal( $wgUser->getId() );
 				$mail->Subject  = $this->subject;
 				$mail->Body     = $message;
