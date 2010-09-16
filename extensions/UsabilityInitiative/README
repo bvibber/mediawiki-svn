@@ -14,15 +14,11 @@ require_once( "$IP/extensions/UsabilityInitiative/OptIn/OptIn.php" );
 #$wgOptInAlwaysShowPersonalLink = true;
 
 # Shows statistics on when users have started and ended using certain prefs
+
 require_once("$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php");
 $wgPrefStatsTrackPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 $wgGroupPermissions['sysop']['prefstats'] = true;
 $wgPrefStatsTimeUnit = 60*60*24;
-
-# When working on these extensions' js and css files, you will want to do this,
-# otherwise, the default will always use the combined and minified versions and
-# you will have to use combine.sh every time you make a change just to see it
-#$wgUsabilityInitiativeResourceMode = 'raw';
 
 # Track users' contribution counts. ClickTracking (see below) needs this
 # NOTE: This extension may not be very useful for non-WMF wikis
