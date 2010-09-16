@@ -57,6 +57,13 @@ $messages['ba'] = array(
 	'wikieditor-templates-preference' => 'Ҡалыптарҙы йыйыу мөмкинлеген тоҡандырырға',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'wikieditor-templates-preference' => 'Aktivirung vom Ei- und Ausblenden vo Vurlong',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */

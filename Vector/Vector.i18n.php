@@ -73,6 +73,13 @@ $messages['ba'] = array(
 	'vector-desc' => '"Векторлы" күренешенең ҡулланыусы интерфейсында яҡшыртыуҙар.',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'vector-desc' => 'Vabessarungen ån da Vektor-Benutzerowerflächen',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */

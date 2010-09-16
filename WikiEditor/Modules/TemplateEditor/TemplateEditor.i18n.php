@@ -90,6 +90,16 @@ $messages['ba'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Кире алырға',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'wikieditor-template-editor-preference' => 'Formularbasirnds Beorwaten vo Wiki-Vurlong aktivirn',
+	'wikieditor-template-editor-dialog-title' => 'Vurlog beorwaten',
+	'wikieditor-template-editor-dialog-submit' => 'Aktualisirn',
+	'wikieditor-template-editor-dialog-cancel' => 'Obbrecha',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */
