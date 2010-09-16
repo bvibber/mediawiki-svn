@@ -28,10 +28,23 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
 		if ( strlen( $referrer )) $query[ 'referrer' ] = $referrer;
 
-		$tracking = '?' . wfArrayToCGI( $query );
-
+		// determine the URL to which we will redirect the user
 		$url = $this->determinePage( $wgVariablePagePossibilities );
-		$wgOut->redirect( $url . $tracking );
+
+		// check if we have a pre-existing query string in the URL, merge it with our previously generated query 
+		$query_start =  strpos( $url, '?' );
+		if ( $query_start ) {
+			$query_str = substr( $url, $query_start + 1 );
+			$url = substr( $url, 0, $query_start );
+			foreach ( explode( "&", $query_str  ) as $params ) {
+				list( $key, $value ) = explode( "=", $params );
+				$query_orig[ $key ] = $value;
+			}
+			$query = array_merge( $query, $query_orig );
+		}
+
+		$full_query = $wgRequest->appendQueryArray( $query, true );
+		$wgOut->redirect( $url . '?' . $full_query );
 	}
 
 	/**
