@@ -55,7 +55,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		if ( $wgRequest->wasPosted() ) {
 				if ( $surveyName && in_array( $surveyName, $wgValidSurveys ) && $this->checkToken() ) {
 					SimpleSurvey::save( $surveyName, $wgPrefSwitchSurveys[$surveyName] );
-					$wgOut->addHtml( "<b>" . wfMsg( 'simple-survey-confirm' ) . "</b>" );
+					$wgOut->addHtml( '<strong class="simplesurvey-success">' . wfMsg( 'simple-survey-confirm' ) . '</strong>' );
 				}
 					// forward to new page
 				if ( $wgSimpleSurveyRedirectURL ) {
