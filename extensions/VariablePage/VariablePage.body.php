@@ -22,7 +22,7 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		$referrer = $wgRequest->getHeader( 'referrer' );
 	
 		$query = array();
-		if ( strlen( $lang ) ) $query[ 'uselang' ] = $lang;
+		if ( strlen( $lang ) ) $query[ 'language' ] = $lang;
 		if ( strlen( $utm_source )) $query[ 'utm_source' ] = $utm_source;
 		if ( strlen( $utm_medium )) $query[ 'utm_medium' ] = $utm_medium;
 		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
