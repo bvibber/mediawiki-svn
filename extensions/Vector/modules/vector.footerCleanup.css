@@ -25,11 +25,13 @@
 	padding: 0 0 0 14px;
 }
 .collapsible-list.collapsed label {
+	/* @embed */
 	background: url(../images/vector/collapsibleNav/arrow-down.png?1) 0 50% no-repeat;
 	padding: 4px  0 3px 1.5em;
 	margin-bottom: 0px;
 }
 .collapsible-list.expanded label {
+	/* @embed */
 	background: url(../images/vector/collapsibleNav/arrow-right.png?1) 0 50% no-repeat;
 	padding: 4px  0 3px 1.5em;
 	margin-bottom: 0px;
