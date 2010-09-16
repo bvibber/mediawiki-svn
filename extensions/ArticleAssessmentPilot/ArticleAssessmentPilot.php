@@ -45,7 +45,9 @@ $wgExtensionCredits['other'][] = array(
 // Survey setup
 // This is totally a hack, but it's easy and had to be done fast
 require_once( $dir . '../SimpleSurvey/SimpleSurvey.php' );
-$wgPrefSwitchSurveys['articleassessment'] = array(
+
+// Would ordinarily call this articleassessment but survey names are 16 chars max
+$wgPrefSwitchSurveys['articlerating'] = array(
 	'updatable' => false,
 	'submit-msg' => 'articleassessment-survey-submit',
 	'questions' => array(
@@ -77,4 +79,4 @@ $wgPrefSwitchSurveys['articleassessment'] = array(
 		),
 	),
 );
-$wgValidSurveys[] = 'articleassessment';
+$wgValidSurveys[] = 'articlerating';
