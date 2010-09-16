@@ -31,20 +31,18 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		// determine the URL to which we will redirect the user
 		$url = $this->determinePage( $wgVariablePagePossibilities );
 
-		// check if we have a pre-existing query string in the URL, merge it with our previously generated query 
-		$query_start =  strpos( $url, '?' );
-		if ( $query_start ) {
-			$query_str = substr( $url, $query_start + 1 );
-			$url = substr( $url, 0, $query_start );
-			foreach ( explode( "&", $query_str  ) as $params ) {
+		// check if we have a pre-existing query string in the URL, merge it with our previously generated query
+		$url_parts = parse_url( $url );
+		$url_query = parse_url( $url, PHP_URL_QUERY );
+		if ( $url_query ) {
+			foreach ( explode( "&", $url_query ) as $params ) {
 				list( $key, $value ) = explode( "=", $params );
 				$query_orig[ $key ] = $value;
 			}
 			$query = array_merge( $query, $query_orig );
 		}
-
 		$full_query = $wgRequest->appendQueryArray( $query, true );
-		$wgOut->redirect( $url . '?' . $full_query );
+		$wgOut->redirect( $url_parts[ 'scheme' ] . '://' . $url_parts[ 'host' ] . $url_parts[ 'path' ] . '?' . $full_query );
 	}
 
 	/**
