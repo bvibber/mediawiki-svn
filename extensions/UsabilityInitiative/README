@@ -1,34 +1,9 @@
+# Looking for WikiEditor or Vector extensions? They've been moved to extensions/WikiEditor and extensions/Vector
+# respectively. These remaining extensions have been ported to be compatible with 1.17. For 1.16 compatible versions
+# (which are no longer under active development but can be used to fixing bugs on existing deployments) please see the
+# branches/usability-initiative-1_16/ branch.
+
 # Some lines to add to LocalSettings.php to get these extensions up and running:
-
-# Vector enhancements (CollapsibleTabs, SimpleSearch, EditWarning)
-require_once( "$IP/extensions/UsabilityInitiative/Vector/Vector.php" );
-
-# Vector enhancements config
-# global: Enabled for everyone, users can't disable in preferences (FIXME this behavior should change)
-# user: Disabled by default, users can enable in preferences
-# Shown values are defaults
-$wgVectorModules = array(
-	'collapsibletabs' => array( 'global' => true, 'user' => false ), // Doesn't have a user pref
-	'editwarning' => array( 'global' => false, 'user' => true ),
-	'simplesearch' => array( 'global' => true, 'user' => false ), // Doesn't have a user pref
-);
-# To really enable SimpleSearch (FIXME)
-$wgVectorUseSimpleSearch = true;
-
-# WikiEditor (Toolbar, Toc, Preview, Highlight)
-require_once( "$IP/extensions/UsabilityInitiative/WikiEditor/WikiEditor.php" );
-
-# WikiEditor config
-$wgWikiEditorModules = array(
-	'highlight' => array( 'global' => false, 'user' => true ),
-	'preview' => array( 'global' => false, 'user' => true ),
-	'toc' => array( 'global' => false, 'user' => true ),
-	'toolbar' => array( 'global' => false, 'user' => true ),
-);
-
-# To enable something by default but still allow users to disable it in preferences, use something like:
-# FIXME this should be done more cleanly, see also above
-#$wgDefaultUserOptions['usenavigabletoc'] = 1;
 
 # A system for making it easy for users to opt-in and out of a beta, in this
 # case using vector as their skin and the enhanced toolbar
