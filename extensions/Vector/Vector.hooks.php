@@ -8,26 +8,65 @@
 
 class VectorHooks {
 	
-	/* Static Members */
+	/* Protected Static Members */
 	
-	static $modules = array(
-		'collapsiblenav' => array(
-			'name' => 'vector.collapsibleNav',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.collapsibleNav.js',
-				'styles' => 'extensions/Vector/modules/vector.collapsibleNav.css',
-				'messages' => array(
-					'vector-collapsiblenav-more',
-				),
-				'dependencies' => array(
-					'jquery.client',
-					'jquery.cookie',
-					'jquery.tabIndex',
-				),
+	protected static $modules = array(
+		'vector.collapsibleNav' => array(
+			'scripts' => 'extensions/Vector/modules/vector.collapsibleNav.js',
+			'styles' => 'extensions/Vector/modules/vector.collapsibleNav.css',
+			'messages' => array(
+				'vector-collapsiblenav-more',
 			),
+			'dependencies' => array(
+				'jquery.client',
+				'jquery.cookie',
+				'jquery.tabIndex',
+			),
+		),
+		'vector.collapsibleTabs' => array(
+			'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
+			'dependencies' => array(
+				'jquery.collapsibleTabs',
+				'jquery.delayedBind',
+			),
+		),
+		'vector.editWarning' => array(
+			'scripts' => 'extensions/Vector/modules/vector.editWarning.js',
+			'messages' => array(
+				'vector-editwarning-warning',
+			),
+		),
+		'vector.expandableSearch' => array(
+			'scripts' => 'extensions/Vector/modules/vector.expandableSearch.js',
+			'styles' => 'extensions/Vector/modules/vector.expandableSearch.css',
+			'dependencies' => array(
+				'jquery.client',
+				'jquery.expandableField',
+				'jquery.delayedBind',
+			),
+		),
+		'vector.footerCleanup' => array(
+			'scripts' => 'extensions/Vector/modules/vector.footerCleanup.js',
+			'styles' => 'extensions/Vector/modules/vector.footerCleanup.css',
+		),
+		'vector.simpleSearch' => array(
+			'scripts' => 'extensions/Vector/modules/vector.simpleSearch.js',
+			'messages' => array(
+				'vector-simplesearch-search',
+				'vector-simplesearch-containing',
+			),
+			'dependencies' => array(
+				'jquery.client',
+				'jquery.suggestions',
+				'jquery.autoEllipsis',
+			),
+		),
+	);
+	
+	protected static $features = array(
+		'collapsiblenav' => array(
 			'preferences' => array(
-				'key' => 'vector-collapsiblenav',
-				'ui' => array(
+				'vector-collapsiblenav' => array(
 					'type' => 'toggle',
 					'label-message' => 'vector-collapsiblenav-preference',
 					'section' => 'rendering/advancedrendering',
@@ -37,101 +76,58 @@ class VectorHooks {
 				'wgCollapsibleNavBucketTest',
 				'wgCollapsibleNavForceNewVersion',
 			),
+			'modules' => array( 'vector.collapsibleNav' ),
 		),
 		'collapsibletabs' => array(
-			'name' => 'vector.collapsibleTabs',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
-				'dependencies' => array(
-					'jquery.collapsibleTabs',
-					'jquery.delayedBind',
-				),
-			),
+			'modules' => array( 'vector.collapsibleTabs' ),
 		),
 		'editwarning' => array(
-			'name' => 'vector.editWarning',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.editWarning.js',
-				'messages' => array(
-					'vector-editwarning-warning',
-				),
-			),
 			'preferences' => array(
 				// Ideally this would be 'vector-editwarning'
-				'key' => 'useeditwarning',
-				'ui' => array(
+				'useeditwarning' => array(
 					'type' => 'toggle',
 					'label-message' => 'vector-editwarning-preference',
 					'section' => 'editing/advancedediting',
 				),
 			),
+			'modules' => array( 'vector.editWarning' ),
 		),
 		'expandablesearch' => array(
-			'name' => 'vector.expandableSearch',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.expandableSearch.js',
-				'styles' => 'extensions/Vector/modules/vector.expandableSearch.css',
-				'dependencies' => array(
-					'jquery.client',
-					'jquery.expandableField',
-					'jquery.delayedBind',
-				),
-			),
-			'preferences' => array(
-				'requirements' => array( 'vector-simplesearch' => true ),
-			),
+			'requirements' => array( 'vector-simplesearch' => true ),
+			'modules' => array( 'vector.expandableSearch' ),
 		),
 		'footercleanup' => array(
-			'name' => 'vector.footerCleanup',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.footerCleanup.js',
-				'styles' => 'extensions/Vector/modules/vector.footerCleanup.css',
-			),
+			'modules' => array( 'vector.footerCleanup' ),
 		),
 		'simplesearch' => array(
-			'name' => 'vector.simpleSearch',
-			'resources' => array(
-				'scripts' => 'extensions/Vector/modules/vector.simpleSearch.js',
-				'messages' => array(
-					'vector-simplesearch-search',
-					'vector-simplesearch-containing',
-				),
-				'dependencies' => array(
-					'jquery.client',
-					'jquery.suggestions',
-					'jquery.autoEllipsis',
-				),
-			),
-			'preferences' => array(
-				'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
-			),
+			'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
+			'modules' => array( 'vector.simpleSearch' ),
 		),
 	);
 	
 	/* Protected Static Methods */
 	
-	protected static function isEnabled( $module ) {
-		global $wgVectorModules, $wgUser;
+	protected static function isEnabled( $name ) {
+		global $wgVectorFeatures, $wgUser;
 		
-		$enabled =
-			$wgVectorModules[$module]['global'] ||
-			(
-				$wgVectorModules[$module]['user'] &&
-				isset( self::$modules[$module]['preferences']['key'] ) &&
-				$wgUser->getOption( self::$modules[$module]['preferences']['key'] )
-			);
-		if ( !$enabled ) {
-			return false;
+		// Features with global set to true are always enabled
+		if ( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['global'] ) {
+			return true;
 		}
-		if ( isset( self::$modules[$module]['preferences']['requirements'] ) ) {
-			foreach ( self::$modules[$module]['preferences']['requirements'] as $requirement => $value ) {
-				// Important! We really do want fuzzy evaluation here
-				if ( $wgUser->getOption( $requirement ) != $value ) {
-					return false;
+		// Features with user preference control can have any number of preferences to be specific values to be enabled
+		if ( $wgVectorFeatures[$name]['user'] ) {
+			if ( isset( self::$features[$name]['requirements'] ) ) {
+				foreach ( self::$features[$name]['requirements'] as $requirement => $value ) {
+					// Important! We really do want fuzzy evaluation here
+					if ( $wgUser->getOption( $requirement ) != $value ) {
+						return false;
+					}
 				}
 			}
+			return true;
 		}
-		return true;
+		// Features controlled by $wgVectorFeatures with both global and user set to false are awlways disabled 
+		return false;
 	}
 	
 	/* Static Methods */
@@ -139,23 +135,16 @@ class VectorHooks {
 	/**
 	 * BeforePageDisplay hook
 	 * 
-	 * Adds the modules to the edit form
+	 * Adds the modules to the page
 	 * 
 	 * @param $out OutputPage output page
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
-		global $wgVectorModules;
-		
-		// Don't load Vector modules for non-Vector skins
-		if ( !( $skin instanceof SkinVector ) ) {
-			return true;
-		}
-		
-		// Add enabled modules
-		foreach ( $wgVectorModules as $module => $enable ) {
-			if ( self::isEnabled( $module ) ) {
-				$out->addModules( self::$modules[$module]['name'] );
+		// Add modules for enabled features
+		foreach ( self::$features as $name => $feature ) {
+			if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
+				$out->addModules( $feature['modules'] );
 			}
 		}
 		return true;
@@ -170,12 +159,15 @@ class VectorHooks {
 	 * @param $skin array list of default user preference controls
 	 */
 	public static function getPreferences( $user, &$defaultPreferences ) {
-		global $wgVectorModules;
+		global $wgVectorFeatures;
 		
-		foreach ( $wgVectorModules as $module => $enable ) {
-			if ( $enable['user'] && isset( self::$modules['preferences'][$module]['ui'] ) ) {
-				$defaultPreferences[self::$modules['preferences'][$module]['key']] =
-					self::$modules['preferences'][$module]['ui'];
+		foreach ( self::$features as $name => $feature ) {
+			if (
+				isset( $feature['preferences'] ) &&
+				( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['user'] )
+			) {
+				foreach ( $feature['preferences'] as $key => $options )
+				$defaultPreferences[$key] = $options;
 			}
 		}
 		return true;
@@ -187,15 +179,15 @@ class VectorHooks {
 	 * Adds enabled/disabled switches for Vector modules
 	 */
 	public static function makeGlobalVariablesScript( &$vars ) {
-		global $wgVectorModules;
+		global $wgVectorFeatures;
 		
 		$configurations = array();
-		foreach ( $wgVectorModules as $module => $enable ) {
+		foreach ( self::$features as $name => $feature ) {
 			if (
-				isset( self::$modules[$module]['configurations'] ) &&
-				is_array( self::$modules[$module]['configurations'] )
+				isset( $feature['configurations'] ) &&
+				( !isset( $wgVectorFeatures[$name] ) || self::isEnabled( $name ) )
 			) {
-				foreach ( self::$modules[$module]['configurations'] as $configuration ) {
+				foreach ( $feature['configurations'] as $configuration ) {
 					global $$configuration;
 					$configurations[$configuration] = $$configuration;
 				}
@@ -213,8 +205,8 @@ class VectorHooks {
 	 * Adds modules to ResourceLoader
 	 */
 	public static function resourceLoaderRegisterModules() {
-		foreach ( self::$modules as $module ) {
-			ResourceLoader::register( $module['name'], new ResourceLoaderFileModule( $module['resources'] ) );
+		foreach ( self::$modules as $name => $resources ) {
+			ResourceLoader::register( $name, new ResourceLoaderFileModule( $resources ) );
 		}
 		return true;
 	}
