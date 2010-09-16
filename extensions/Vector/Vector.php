@@ -10,7 +10,7 @@
  * @author Nimish Gautam <nimish@wikimedia.org>
  * @author Adam Miller <amiller@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.2.0
+ * @version 0.3.0
  */
 
 /* Configuration */
@@ -47,5 +47,5 @@ $wgAutoloadClasses['VectorHooks'] = dirname( __FILE__ ) . '/Vector.hooks.php';
 $wgExtensionMessagesFiles['Vector'] = dirname( __FILE__ ) . '/Vector.i18n.php';
 $wgHooks['BeforePageDisplay'][] = 'VectorHooks::beforePageDisplay';
 $wgHooks['GetPreferences'][] = 'VectorHooks::getPreferences';
-$wgHooks['MakeGlobalVariablesScript'][] = 'VectorHooks::MakeGlobalVariablesScript';
+$wgHooks['MakeGlobalVariablesScript'][] = 'VectorHooks::makeGlobalVariablesScript';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'VectorHooks::resourceLoaderRegisterModules';
