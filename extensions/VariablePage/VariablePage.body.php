@@ -20,16 +20,18 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		$utm_medium = ( strlen($wgVariablePageUtmMedium )) ? $wgVariablePageUtmMedium : $wgRequest->getVal( 'utm_medium' );
 		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
 		$referrer = $wgRequest->getHeader( 'referrer' );
+	
+		$query = array();
+		if ( strlen( $lang ) ) $query[ 'uselang' ] = $lang;
+		if ( strlen( $utm_source )) $query[ 'utm_source' ] = $utm_source;
+		if ( strlen( $utm_medium )) $query[ 'utm_medium' ] = $utm_medium;
+		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
+		if ( strlen( $referrer )) $query[ 'referrer' ] = $referrer;
 
-		$tracking = '?' . wfArrayToCGI( array(
-			'utm_source' => $utm_source,
-			'utm_medium' => $utm_medium,
-			'utm_campaign' => $utm_campaign,
-			'referrer' => $referrer
-		));
+		$tracking = '?' . wfArrayToCGI( $query );
 
 		$url = $this->determinePage( $wgVariablePagePossibilities );
-		$wgOut->redirect( $url . '/' . $lang . $tracking );
+		$wgOut->redirect( $url . $tracking );
 	}
 
 	/**
