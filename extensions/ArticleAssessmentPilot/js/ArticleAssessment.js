@@ -279,7 +279,7 @@
 						}
 					}
 					// if the rating is more than 5 revisions old, mark it as stale
-					if( data.query.articleassessment.stale ) {
+					if ( typeof data.query.articleassessment[0].stale != 'undefined' ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );

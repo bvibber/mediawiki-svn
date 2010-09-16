@@ -12,7 +12,7 @@ class ArticleAssessmentPilotHooks {
 	);
 
 	private static $scriptFiles = array(
-		array( 'src' => 'js/ArticleAssessment.js', 'version' => 1 ),
+		array( 'src' => 'js/ArticleAssessment.js', 'version' => 2 ),
 		array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
