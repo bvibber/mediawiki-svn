@@ -99,6 +99,8 @@ class ArticleAssessmentPilotHooks {
 			'articleassessment-stalemessage-norevisioncount',
 			'articleassessment-results-show',
 			'articleassessment-results-hide',
+			'articleassessment-survey-title',
+			'articleassessment-survey-thanks',
 			);
 
 		foreach ( self::$messages as $i => $message ) {

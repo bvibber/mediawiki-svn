@@ -43,6 +43,8 @@ You may wish to rate it again.",
 	'articleassessment-survey-question-expert-iftrue' => 'Can you describe your expertise?',
 	'articleassessment-survey-question-comments' => 'Do you have any additional comments?',
 	'articleassessment-survey-submit' => 'Submit',
+	'articleassessment-survey-title' => 'Please answer a few questions',
+	'articleassessment-survey-thanks' => 'Thanks for filling out the survey.',
 );
 
 /** Message documentation (Message documentation)
@@ -90,6 +92,8 @@ The span tag gets rewritten in JavaScript to become a link.',
 	'articleassessment-survey-question-expert-iftrue' => 'This question appears when the user checks "no" for the "Do you consider yourself an expert?" question. The user can enter their answer in a text box.',
 	'articleassessment-survey-question-comments' => 'This is a question in the survey with a text box that the user can enter their answer in.',
 	'articleassessment-survey-submit' => 'This is the caption for the button that submits the survey.',
+	'articleassessment-survey-title' => 'This text appears in the title bar of the survey dialog.',
+	'articleassessment-survey-thanks' => 'This text appears when the user has successfully submitted the survey.',
 );
 
 /** Afrikaans (Afrikaans)

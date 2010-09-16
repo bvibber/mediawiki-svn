@@ -376,8 +376,94 @@
 				}
 			},
 			'showFeedback': function() {
-				// TODO: Implement
-				$.ArticleAssessment.fn.flashNotice( 'Not implemented yet', { 'class': 'article-assessment-error-msg' } );
+				$.ArticleAssessment.fn.withJUI( function() {
+					var $dialogDiv = $( '#article-assessment-dialog' );
+					if ( $dialogDiv.size() == 0 ) {
+						$dialogDiv = $( '<div id="article-assessment-dialog" class="loading" />' )
+							.dialog( {
+								width: 600,
+								height: 400,
+								bgiframe: true,
+								autoOpen: true,
+								modal: true,
+								title: $.ArticleAssessment.fn.getMsg( 'articleassessment-survey-title' ),
+								close: function() {
+									$( this )
+										.find( '.article-assessment-success-msg, .article-assessment-error-msg' )
+										.remove()
+										.end()
+										.find( 'form' )
+										.show();
+								}
+							} );
+						$dialogDiv.load(
+							wgScript + '?title=Special:SimpleSurvey&survey=articlerating&raw=1',
+							function() {
+								$( this ).find( 'form' ).bind( 'submit', $.ArticleAssessment.fn.submitFeedback );
+								$( this ).removeClass( 'loading' );
+							}
+						);
+					}
+					$dialogDiv.dialog( 'open' );
+				} );
+				return false;
+			},
+			'submitFeedback': function() {
+				var $dialogDiv = $( '#article-assessment-dialog' );
+				$dialogDiv
+					.find( 'form' )
+					.hide()
+					.end()
+					.addClass( 'loading' );
+				
+				// Submit straight to the special page. Yes, this is a dirty dirty hack
+				// Build request from form data
+				var formData = {};
+				$dialogDiv.find( 'input' ).each( function() {
+					var name = $( this ).attr( 'name' );
+					if ( name !== '' ) {
+						if ( name.substr( -2 ) == '[]' ) {
+							var trimmedName = name.substr( 0, name.length - 2 );
+							if ( typeof formData[trimmedName] == 'undefined' ) {
+								formData[trimmedName] = [];
+							}
+							formData[trimmedName].push( $( this ).val() );
+						} else {
+							formData[name] = $( this ).val();
+						}
+					}
+				} );
+				formData.title = 'Special:SimpleSurvey';
+				
+				$.ajax( {
+					url: wgScript,
+					type: 'POST',
+					data: formData,
+					dataType: 'html',
+					success: function( data ) {
+						// This is an evil screenscraping method to determine whether
+						// the submission was successful
+						var success = $( data ).find( '.simplesurvey-success' ).size() > 0;
+						// TODO: Style success-msg, error-msg
+						$( '<div />' )
+							.addClass( success ? 'article-assessment-success-msg' : 'article-assessment-error-msg' )
+							.text( $.ArticleAssessment.fn.getMsg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
+							.appendTo( $dialogDiv );
+						$dialogDiv.removeClass( 'loading' );
+						if ( success ) {
+							// Hide the dialog link
+							$( '#article-assessment .article-assessment-rate-feedback' ).hide();
+						}
+					},
+					error: function( XMLHttpRequest, textStatus, errorThrown ) {
+						// TODO: Duplicates code, factor out, maybe
+						$( '<div />' )
+							.addClass( 'article-assessment-error-msg' )
+							.text( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ) )
+							.appendTo( $dialogDiv );
+						$dialogDiv.removeClass( 'loading' );
+					}
+				} );
 				return false;
 			},
 			'addMessages': function( messages ) {
@@ -402,6 +488,13 @@
 					msg = msg.replace( /\$1/g, args );
 				}
 				return msg;
+			},
+			'withJUI': function( callback ) {
+				if ( typeof $.ui == 'undefined' ) {
+					$.getScript( wgScriptPath + '/extensions/UsabilityInitiative/js/js2stopgap/jui.combined.min.js', callback );
+				} else {
+					callback();
+				}
 			}
 		}
 	};

@@ -222,3 +222,12 @@
 .article-assessment-wrapper .rating-fields {
 	display: block;
 }
+
+#article-assessment-dialog.loading {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background: url( ../images/loading.gif ) center no-repeat;
+	text-indent: -9999px;
+	margin: 0 auto;
+}
