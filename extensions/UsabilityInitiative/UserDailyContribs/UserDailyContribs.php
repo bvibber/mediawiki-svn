@@ -1,44 +1,30 @@
 <?php
 /**
- * Usability Initiative User Daily Contributions (for Click Tracking) extension
- *
+ * User Daily Contributions extension
+ * 
+ * This extension adds a step to saving an article that incriments a counter for a user's activity in a given day.
+ * 
  * @file
  * @ingroup Extensions
- *
- * This file contains the include file for the User Daily Contributions table in the
- * UsabilityInitiative extension of MediaWiki.
- *
- * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.php" );
- *
+ * 
  * @author Nimish Gautam <ngautam@wikimedia.org>
+ * @author Trevor Parscal <tparscal@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.1.1
+ * @version 0.2.0
  */
 
-/* Configuration */
- 
-// Credits
+/* Setup */
+
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'User Daily Contributions',
-	'author' => 'Nimish Gautam',
-	'version' => '0.1.1',
+	'author' => array( 'Nimish Gautam', 'Trevor Parscal' ),
+	'version' => '0.2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'userdailycontribs-desc',
 );
-
-// Includes parent extension
-require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
-
-// Adds Autoload Classes
-$dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['UserDailyContribsHooks'] = $dir . 'UserDailyContribs.hooks.php';
-
-// Adds Internationalized Messages
-$wgExtensionMessagesFiles['UserDailyContribs'] = $dir . 'UserDailyContribs.i18n.php';
-
-// Hooked functions
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'UserDailyContribsHooks::schema';
-$wgHooks['ArticleSaveComplete'][] = 'UserDailyContribsHooks::storeNewContrib';
+$wgAutoloadClasses['UserDailyContribsHooks'] = dirname( __FILE__ ) . '/UserDailyContribs.hooks.php';
+$wgExtensionMessagesFiles['UserDailyContribs'] = dirname( __FILE__ ) . '/UserDailyContribs.i18n.php';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'UserDailyContribsHooks::loadExtensionSchemaUpdates';
+$wgHooks['ArticleSaveComplete'][] = 'UserDailyContribsHooks::articleSaveComplete';
 $wgHooks['ParserTestTables'][] = 'UserDailyContribsHooks::parserTestTables';
