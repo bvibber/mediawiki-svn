@@ -77,6 +77,24 @@ $messages['aln'] = array(
 	'right-adminlinks' => 'Shih vegzën te [[Special:AdminLinks|Vegzat e administrimit]]',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'adminlinks' => "Vinclos d'administración",
+	'adminlinks-desc' => 'Adhibir una [[Special:AdminLinks|pachina especial]] que mantien vinclos útils ta os administradors',
+	'adminlinks_documentation' => 'Documentación $1',
+	'adminlinks_general' => 'Cheneral',
+	'adminlinks_editsidebar' => 'Editar a barra lateral',
+	'adminlinks_editcss' => 'Editar o fichero CSS',
+	'adminlinks_editmainpagename' => "Editar o nombre d'a pachina prencipal",
+	'adminlinks_users' => 'Usuarios',
+	'adminlinks_createuser' => 'Creyar un usuario',
+	'adminlinks_browsesearch' => 'Navegar y mirar',
+	'adminlinks_importexport' => 'Importar y exportar',
+	'right-adminlinks' => 'Se veiga o vinclo ta [[Special:AdminLinks|Admin links]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

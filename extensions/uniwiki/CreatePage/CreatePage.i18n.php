@@ -110,6 +110,22 @@ $messages['arz'] = array(
 	'createpage-badtitle' => 'لا بمكن إستخدامه كعنوان للصفحة "$1"',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'createpage' => 'A neiche Seiten erstöin',
+	'uwcreatepage-desc' => 'Fiagt a  [[Special:CreatePage|Spezialseiten]] fyrs Erstöin vo ner neichen Seiten dazua',
+	'createpage_submitbutton' => 'Schicka',
+	'createpage_instructions' => "Gib an Nåma vo da neich z' erstöianden Seiten ei:",
+	'createpage_entertitle' => 'Titl fyr de Seiten.',
+	'createpage_titleexists' => 'A Seiten mid dem Nåma  [[$1]] existird bereits.
+Mechadst de existirate Seiten beorwaten?',
+	'createpage_tryagain' => 'Naa - i mechad a neiche Seiten mid am åndern Titl åleeng.',
+	'createpage_editexisting' => 'Jo - I mechad de existirate Seiten beorwaten.',
+	'createpage-badtitle' => '„$1“ kå ned ois Seitentitl gnutzt wern',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

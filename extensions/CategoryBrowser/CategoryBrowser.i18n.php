@@ -193,12 +193,15 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'categorybrowser' => 'Preglednik kategorija',
 	'categorybrowser-desc' => 'Omogućuje [[Special:CategoryBrowser|posebnu stranicu]] za filtriranje najviše napunjenih kategorija te navigacija u njima putem AJAX interfejsa',
+	'cb_requires_javascript' => 'Proširenje za preglednik kategorija zahtjeva da JavaScript bude omogućen u pregledniku.',
+	'cb_show_no_parents_only' => 'Prikaži samo kategorije koje nemaju nadkategoriju',
 	'cb_cat_name_filter' => 'Pretraga kategorija po nazivu:',
 	'cb_cat_name_filter_clear' => 'Pritisnite za čišćenje filtera naziva kategorije',
 	'cb_cat_name_filter_ci' => 'Ne razlikuje velika slova',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategorije|podkategorija}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|stranica|stranice|stranica}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteke|datoteka}}',
+	'cb_has_parentcategories' => 'nadkategorije (ako ih ima)',
 	'cb_previous_items_link' => 'Prethodno',
 	'cb_next_items_link' => 'Slijedeći',
 	'cb_next_items_stats' => '(od $1)',
@@ -209,6 +212,9 @@ $messages['bs'] = array(
 	'cb_all_op' => 'Sve',
 	'cb_or_op' => 'ili',
 	'cb_and_op' => 'i',
+	'cb_edit_left_hint' => 'Premjesti lijevo, ako je moguće',
+	'cb_edit_right_hint' => 'Premjesti desno, ako je moguće',
+	'cb_edit_remove_hint' => 'Obriši, ako je moguće',
 );
 
 /** German (Deutsch)

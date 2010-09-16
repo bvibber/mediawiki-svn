@@ -318,6 +318,13 @@ $messages['mk'] = array(
 	'addmediawizard-desc' => 'Помошник за додавање мултимедијални содржини, изработен од Kaltura во соработка со Фондацијата Викимедија.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author CoolCityCat
+ */
+$messages['ms'] = array(
+	'addmediawizard-desc' => 'Penambah media ajaib, dibangunkan dengan kerjasama Kaltura dan Yayasan Wikimedia',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

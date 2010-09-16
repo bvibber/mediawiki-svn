@@ -92,6 +92,14 @@ $messages['ba'] = array(
 	'vector-simplesearch-containing' => 'эстәлегендә...',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'vector-simplesearch-search' => 'Suach',
+	'vector-simplesearch-containing' => 'Voitextsuach noch ...',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */

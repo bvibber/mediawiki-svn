@@ -682,9 +682,10 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'onlinestatus-js-anon' => 'កំហុស​៖ អ្នក​ត្រូវតែ​ឡុកអ៊ីនចូល ដើម្បី​ប្រើប្រាស់​លក្ខណៈពិសេស​នេះ',
+	'onlinestatus-js-anon' => 'កំហុស​៖ អ្នក​ត្រូវតែ​កត់ឈ្មោះចូល ដើម្បី​ប្រើប្រាស់​មុខងារពិសេស​នេះ',
 	'onlinestatus-js-changed' => 'ស្ថានភាព​របស់​អ្នក ត្រូវ​បាន​ប្ដូរទៅ "$1"',
 	'onlinestatus-js-error' => 'មិន​អាច​ផ្លាស់ប្ដូរ​ស្ថានភាព​បាន​ទេ, តម្លៃ "$1" មិនត្រឹមត្រូវ',
 	'onlinestatus-subtitle-offline' => 'អ្នកប្រើប្រាស់​នេះ​កំពុង​ស្ថិតនៅ​ក្រៅបណ្ដាញ',
@@ -694,8 +695,8 @@ $messages['km'] = array(
 	'onlinestatus-toggles-show' => 'បង្ហាញ​ស្ថានភាព​លើបណ្ដាញ​នៅ​លើ​ទំព័រ​អ្នកប្រើប្រាស់​របស់​ខ្ញុំ',
 	'onlinestatus-toggle-offline' => 'ក្រៅបណ្ដាញ',
 	'onlinestatus-toggle-online' => 'លើបណ្ដាញ',
-	'onlinestatus-pref-onlineonlogin' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​លើបណ្ដាញ នៅពេល​ឡុកអ៊ីន​(ចូល)',
-	'onlinestatus-pref-offlineonlogout' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​ក្រៅបណ្ដាញ នៅពេល​ចាកចេញ',
+	'onlinestatus-pref-onlineonlogin' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​លើបណ្ដាញ នៅពេល​កត់ឈ្មោះចូល',
+	'onlinestatus-pref-offlineonlogout' => 'ផ្លាស់ប្ដូរ​ស្ថានភាព​របស់​ខ្ញុំ​ទៅជា​ក្រៅបណ្ដាញ នៅពេល​កត់ឈ្មោះចេញ',
 );
 
 /** Kannada (ಕನ್ನಡ)

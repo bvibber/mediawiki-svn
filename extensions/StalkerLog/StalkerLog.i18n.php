@@ -343,13 +343,14 @@ $messages['jv'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
-	'stalkerlog-desc' => 'បន្ថែម [[Special:Log/stalkerlog|កំណត់ហេតុ]]​នៃការ​ឡុកអ៊ីន​ចូល និង​ចាកចេញ របស់​​អ្នកប្រើប្រាស់',
-	'stalkerlog-log-login' => 'បាន​ឡុកអ៊ីន​ហើយ។',
-	'stalkerlog-log-logout' => 'បាន​ចាកចេញ​ហើយ។',
+	'stalkerlog-desc' => 'បន្ថែម[[Special:Log/stalkerlog|កំណត់ហេតុ]]​នៃការ​កត់ឈ្មោះ​ចូលនិង​កត់ឈ្មោះចេញរបស់​​អ្នកប្រើប្រាស់',
+	'stalkerlog-log-login' => 'បានកត់ឈ្មោះចូល​ហើយ។',
+	'stalkerlog-log-logout' => 'បាន​កត់ឈ្មោះចេញ​ហើយ។',
 	'stalkerlog-log-type' => 'កំណត់ហេតុ​ការផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវ​របស់​អ្នកប្រើប្រាស់',
-	'stalkerlog-log-text' => 'នេះ​ជា​កំណត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
+	'stalkerlog-log-text' => 'នេះ​ជា​កំណត់ហេតុ​នៃ​ការ​កត់ឈ្មោះចូលនិង​ការ​កត់ឈ្មោះចេញ​របស់​អ្នកប្រើប្រាស់។',
 );
 
 /** Colognian (Ripoarisch)

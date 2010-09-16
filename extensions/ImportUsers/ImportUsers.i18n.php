@@ -1051,6 +1051,7 @@ $messages['kk-latn'] = array(
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
@@ -1066,7 +1067,7 @@ $messages['km'] = array(
 	'importusers-log-summary-all' => 'ទាំងអស់',
 	'importusers-log-summary-added' => 'បានបន្ថែម',
 	'importusers-log-summary-updated' => 'បានធ្វើឱ្យទាន់សម័យ',
-	'importusers-login-name' => 'ឈ្មោះឡុកអ៊ីន',
+	'importusers-login-name' => 'ឈ្មោះសំរាប់កត់ឈ្មោះចូល',
 	'importusers-password' => 'ពាក្យសំងាត់',
 	'importusers-email' => 'អ៊ីមែល',
 	'importusers-realname' => 'ឈ្មោះពិត',

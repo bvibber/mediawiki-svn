@@ -306,6 +306,13 @@ $messages['ba'] = array(
 	'youtubeauthsub_username' => 'YouTube ҡулланыусы исеме',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'youtubeauthsub' => 'YouTube-Video auffeloon',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

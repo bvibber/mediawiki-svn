@@ -520,11 +520,13 @@ $messages['ml'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author CoolCityCat
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
+	'wikieditor-previewDialog-preference' => 'Aktifkan dialog pratonton',
 	'wikieditor-previewDialog-tab' => 'Pratonton',
-	'wikieditor-previewDialog-loading' => 'Sedang dimuat turun...',
+	'wikieditor-previewDialog-loading' => 'Sedang dimuatkan...',
 );
 
 /** Maltese (Malti)

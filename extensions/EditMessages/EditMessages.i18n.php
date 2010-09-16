@@ -1018,6 +1018,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author CoolCityCat
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
@@ -1029,6 +1030,8 @@ $messages['ms'] = array(
 	'editmsg-get-patch' => 'Lakukan penyesuaian',
 	'editmsg-new-search' => 'Carian baru',
 	'editmsg-warning-parse1' => '* Nama mesej regex tidak tepat: $1',
+	'editmsg-no-patch' => 'Tidak dapat menjalankan perintah "tampal"',
+	'editmsg-patch-success' => 'Tampalan berjaya.',
 );
 
 /** Erzya (Эрзянь)

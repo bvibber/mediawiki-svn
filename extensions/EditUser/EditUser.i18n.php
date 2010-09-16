@@ -668,14 +668,15 @@ $messages['jv'] = array(
  * @author Chhorran
  * @author Lovekhmer
  * @author Thearith
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
 	'edituser-desc' => 'អនុញ្ញាតឱ្យអ្នកប្រើប្រាស់មានសិទ្ធិកែប្រែចំណូលចិត្តរបស់អ្នកប្រើប្រាស់ដ៏ទៃ',
 	'edituser' => 'កែប្រែអ្នកប្រើប្រាស់',
-	'edituser-username' => 'ឈ្មោះ',
+	'edituser-username' => 'ឈ្មោះអ្នកប្រើប្រាស់៖',
 	'edituser-dosearch' => 'ស្វែងរក',
-	'edituser-nouser' => 'មិនមានអ្នកប្រើប្រាស់ដូចដែលបានបញ្ជាក់ទេ',
-	'edituser-exempt' => 'អ្នកប្រើប្រាស់ដែលបានបញ្ជាក់មិនអាចកែបានទេ',
+	'edituser-nouser' => 'គ្មានអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',
+	'edituser-exempt' => 'មិនអាចកែប្រែអ្នកប្រើប្រាស់ឈ្មោះ "$1" ទេ។',
 	'right-edituser' => 'កែប្រែ​ចំណង់ចំណូលចិត្ត​របស់​អ្នកប្រើប្រាស់​ដទៃ',
 );
 
