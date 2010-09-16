@@ -93,6 +93,8 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		
 		if (initialWindow > 0) { //apply full coherence disambig to initial window size. initialWindow == 1 will trigger a popularity disambig.
 			Collection<List<X>> sequences = getSequences(root, initialWindow);
+			pruneMeaninglessSequences( sequences, meanings );
+			
 			Disambiguation<X, C> r;
 			
 			if (initialWindow == 1) r = popularityDisambiguator.disambiguate(sequences, root, meanings, context);

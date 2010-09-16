@@ -207,7 +207,144 @@ public class DisambiguatorTestBase extends TestCase {
 	}
 
 	private String bankAndMonumentText = "The Bank and Monument Underground station";
+	private String margaretofYorkText = "Margaret of York is introduced to her future husband, Charles the Bold on 27th June, 1468 at Damme (vellum)";
+	//private String fromTheFrenchText = "from the French edition of the biography of Alexandre le Grand by Quintus Curtius Rufus (c.42 AD)";
+	//private String translationByVasqueText = "from the French edition of the biography of Alexandre le Grand by Quintus Curtius Rufus (c.42 AD)";
 
+	protected List<PhraseOccurance> getMargaretOfYorkTerms(int depth) {
+		List<PhraseOccurance> phrases = new ArrayList<PhraseOccurance>();
+
+		if (depth==0) return phrases;
+		
+		int ofs = 0;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs,  8 ), 1, ofs,  8  -ofs ) ); //Margaret
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 11 ), 1, ofs, 11 -ofs ) ); //Margaret of
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 16 ), 2, ofs, 16 -ofs ) ); //Margaret of York
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 19 ), 2, ofs, 19  -ofs ) ); //Margaret of York is 
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 30 ), 3, ofs, 30  -ofs ) ); //Margaret of York is introduced
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 33 ), 3, ofs, 33  -ofs ) ); //Margaret of York is introduced to
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 37 ), 3, ofs, 37  -ofs ) ); //Margaret of York is introduced to her
+
+		if (depth==1) return phrases;
+
+		ofs = 9;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 16 ), 1, ofs, 16 -ofs ) ); //of York
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 19 ), 1, ofs, 19  -ofs ) ); //of York is 
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 30 ), 2, ofs, 30  -ofs ) ); //of York is introduced
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 33 ), 2, ofs, 33  -ofs ) ); //of York is introduced to
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 37 ), 2, ofs, 37  -ofs ) ); //of York is introduced to her
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 4, ofs, 44 -ofs ) ); //of York is introduced to her future
+
+		ofs = 12;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 16 ), 1, ofs, 16 -ofs ) ); //York
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 19 ), 1, ofs, 19  -ofs ) ); //York is 
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 30 ), 2, ofs, 30  -ofs ) ); //York is introduced
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 33 ), 2, ofs, 33  -ofs ) ); //York is introduced to
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 37 ), 2, ofs, 37  -ofs ) ); //York is introduced to her
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 4, ofs, 44 -ofs ) ); //York is introduced to her future
+
+		if (depth==2) return phrases;
+
+		ofs = 17;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 30 ), 1, ofs, 30  -ofs ) ); //is introduced
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 33 ), 1, ofs, 33  -ofs ) ); //is introduced to
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 37 ), 1, ofs, 37  -ofs ) ); //is introduced to her
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 2, ofs, 44 -ofs ) ); //is introduced to her future
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 3, ofs, 52 -ofs ) ); //is introduced to her future husband
+
+		ofs = 20;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 30 ), 1, ofs, 30  -ofs ) ); //introduced
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 33 ), 1, ofs, 33  -ofs ) ); //introduced to
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 37 ), 1, ofs, 37  -ofs ) ); //introduced to her
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 2, ofs, 44 -ofs ) ); //introduced to her future
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 3, ofs, 52 -ofs ) ); //introduced to her future husband
+
+		if (depth==3) return phrases;
+
+		ofs = 31;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 1, ofs, 44 -ofs ) ); //to her future
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 2, ofs, 52 -ofs ) ); //to her future husband
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 61 ), 3, ofs,61 -ofs ) ); //to her future husband, Charles
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 65 ), 3, ofs, 65 -ofs ) ); //to her future husband, Charles the
+
+		ofs = 34;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 1, ofs, 44 -ofs ) ); //her future
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 2, ofs, 52 -ofs ) ); //her future husband
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 61 ), 3, ofs, 61 -ofs ) ); //her future husband, Charles
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 65), 3, ofs, 65 -ofs ) ); //her future husband, Charles the
+
+		ofs = 38;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 44 ), 1, ofs, 44 -ofs ) ); //future
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 2, ofs, 52 -ofs ) ); //future husband
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 61 ), 3, ofs, 61 -ofs ) ); //future husband, Charles
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 65 ), 3, ofs, 65 -ofs ) ); //future husband, Charles the
+
+		if (depth==4) return phrases;
+
+		ofs = 45;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 52 ), 1, ofs, 52 -ofs ) ); //husband
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 61 ), 2, ofs, 61 -ofs ) ); //husband, Charles
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 65 ), 2, ofs, 65 -ofs ) ); //husband, Charles the
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 70 ), 3, ofs, 70 -ofs ) ); //husband, Charles the Bold
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 73 ), 3, ofs, 73 -ofs ) ); //husband, Charles the Bold on
+
+		if (depth==5) return phrases;
+
+		ofs = 54;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 61 ), 1, ofs, 61 -ofs ) ); //Charles
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 65 ), 1, ofs, 65 -ofs ) ); //Charles the
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 70 ), 2, ofs, 70 -ofs ) ); //Charles the Bold
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 73 ), 2, ofs, 73 -ofs ) ); //Charles the Bold on
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 78 ), 3, ofs, 78 -ofs ) ); //Charles the Bold on 27th
+
+		if (depth==6) return phrases;
+
+		ofs = 62;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 70 ), 1, ofs, 70 -ofs ) ); //the Bold
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 73 ), 1, ofs, 73 -ofs ) ); //the Bold on
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 78 ), 2, ofs, 78 -ofs ) ); //the Bold on 27th
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 83 ), 3, ofs, 83 -ofs ) ); //the Bold on 27th June
+
+		ofs = 66;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 70 ), 1, ofs, 70 -ofs ) ); //Bold
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 73 ), 1, ofs, 73 -ofs ) ); //Bold on
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 78 ), 2, ofs, 78 -ofs ) ); //Bold on 27th
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 83 ), 3, ofs, 83 -ofs ) ); //Bold on 27th June
+
+		if (depth==7) return phrases;
+
+		ofs = 71;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 78 ), 1, ofs, 78 -ofs ) ); //on 27th
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 83 ), 2, ofs, 83 -ofs ) ); //on 27th June
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 89 ), 3, ofs, 89 -ofs ) ); //on 27th June, 1468
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 92 ), 3, ofs, 92 -ofs ) ); //on 27th June, 1468 at
+
+		ofs = 73;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 78 ), 1, ofs, 78 -ofs ) ); //27th
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 83 ), 2, ofs, 83 -ofs ) ); //27th June
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 89 ), 3, ofs, 89 -ofs ) ); //27th June, 1468
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 92 ), 3, ofs, 92 -ofs ) ); //27th June, 1468 at
+
+		if (depth==8) return phrases;
+		
+		ofs = 78;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 83 ), 1, ofs, 83 -ofs ) ); //June
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 89 ), 2, ofs, 89 -ofs ) ); //June, 1468
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 92 ), 2, ofs, 92 -ofs ) ); //June, 1468 at
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 98 ), 2, ofs, 98 -ofs ) ); //June, 1468 at Damme
+
+		if (depth==9) return phrases;
+		
+		ofs = 84;
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 89 ), 1, ofs, 89 -ofs ) ); //1468
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 92 ), 1, ofs, 92 -ofs ) ); //1468 at
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 98 ), 2, ofs, 98 -ofs ) ); //1468 at Damme
+		phrases.add( new PhraseOccurance( margaretofYorkText.substring( ofs, 107 ), 3, ofs, 107 -ofs ) ); //1468 at Damme (vellum)
+
+		return phrases;
+	}
+	// "Margaret of York is introduced to her future husband, Charles the Bold on 27th June, 1468 at Damme (vellum)"
+	
 	protected List<PhraseOccurance> getBankAndMonumentTerms(int depth) {
 		List<PhraseOccurance> phrases = new ArrayList<PhraseOccurance>();
 
@@ -384,6 +521,12 @@ public class DisambiguatorTestBase extends TestCase {
 		return set;
 	}
 	
+	protected PhraseOccuranceSet getMargaretOfYorkPhrases() {
+		List<PhraseOccurance> phrases = getMargaretOfYorkTerms(1000);
+		
+		PhraseOccuranceSet set = new PhraseOccuranceSet(margaretofYorkText, phrases);
+		return set;
+	}
 
 	public static boolean sameElements(Collection a, Collection b) {
 		if (a==b) return true;

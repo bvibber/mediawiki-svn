@@ -3,7 +3,9 @@ package de.brightbyte.wikiword.disambig;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import de.brightbyte.io.Output;
@@ -84,6 +86,20 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return builder.getSequences();
 	}
 	
+	protected <X extends T>void pruneMeaninglessSequences(Collection<List<X>> sequences,  Map<X, List<? extends C>> meanings) {
+		Iterator<List<X>> it = sequences.iterator();
+		outer: while ( it.hasNext() ) {
+			List<X> seq = it.next();
+			
+			for (X t: seq) {
+				if ( meanings.get(t) != null ) {
+					continue outer;
+				}
+			}
+			
+			it.remove();
+		}
+	}
 	
 	protected <X extends T>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);

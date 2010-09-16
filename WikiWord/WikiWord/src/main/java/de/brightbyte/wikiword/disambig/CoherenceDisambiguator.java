@@ -261,6 +261,8 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 	
 	private <X extends T>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context, LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
 		
+		pruneMeaninglessSequences( sequences, meanings );
+		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 		
 		Collection<Disambiguator.Interpretation<X, C>> interpretations = getInterpretations(sequences, meanings);

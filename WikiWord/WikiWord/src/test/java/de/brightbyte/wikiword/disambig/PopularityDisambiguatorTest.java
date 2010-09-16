@@ -108,6 +108,40 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		assertTrue("depth 1000", sameElements(getBankAndMonumentSequences(1000), res));
 	}
 	
+	public void testGetSequences2() throws PersistenceException {
+		PopularityDisambiguator<TermReference, LocalConcept> disambiguator = new PopularityDisambiguator<TermReference, LocalConcept>(meaningFetcher, 10);
+		PhraseOccuranceSet set = getMargaretOfYorkPhrases();
+		
+		Collection<List<PhraseOccurance>> res = disambiguator.getSequences(set.getRootNode(), 3);
+		printSequences(res, 1000);
+		
+		//res = disambiguator.getSequences(set.getRootNode(), 1000);
+		//printSequences(res, 1000);
+		//TODO: check / compare. right now, we just test performance
+	}
+	
+	protected void printSequences(Collection<List<PhraseOccurance>> res, int max) {
+		int i = 0;
+		StringBuilder b = new StringBuilder();
+		for (List<PhraseOccurance> seq: res) {
+			b.setLength(0);
+			
+			for (PhraseOccurance p: seq) {
+				if (b.length()>0) b.append(" | ");
+				b.append(p.getTerm());
+			}
+			
+			i++;
+			
+			System.out.println("#"+i+": "+b);
+			
+			if (i>1000) {
+				System.out.println("way too many ("+res.size()+")!");
+				break;
+			}
+		}
+	}
+	
 	public void testDisambiguateTerms() throws PersistenceException {
 		PopularityDisambiguator<TermReference, LocalConcept> disambiguator = new PopularityDisambiguator<TermReference, LocalConcept>(meaningFetcher, 10);
 		
