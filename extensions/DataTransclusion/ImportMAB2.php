@@ -18,17 +18,23 @@ class ImportMAB2 extends Maintenance {
 		parent::__construct();
 
 		$this->addArg( "name", "name of a transclusion data source, as specified in \$wgDataTransclusionSources", true );
-		$this->addArg( "dir", "directory containing MAB files", true );
+		$this->addArg( "file/dir", "directory containing MAB files, or a single MAB file, or - for stdin", true );
+
 		$this->addArg( "blob_table", "database table for data blobs, without prefix", true );
 		$this->addArg( "index_table", "database table for index entries, without prefix", true );
 
 		$this->addOption( "create", "create database tables if they do not exist", false, false );
 		$this->addOption( "truncate", "truncate (empty) database tables", false, false );
 		$this->addOption( "prefix", "database table prefix. May contain a period (\".\") to reference tables in another database. If not given, the wiki's table prefix will be used", false, true );
+
 		$this->addOption( "recursive", "recurse into subdirectories while importing MAB files", false, false );
+
 		$this->addOption( "noblob", "don't write blob data, import index fields only", false, false );
 		$this->addOption( "limit", "max number of files to process", false, true );
 		$this->addOption( "debug", "don't write to the database, dump to console instead", false, false );
+
+		$this->addOption( "multi-record", "read multiple records from a single file. Records may be separated by special lines matching --record-separator; if --record-separator is not given, all records are expected to start with filed number 001.", false, false );
+		$this->addOption( "record-separator", "regular expression for lines separating records in a multi-record file. Implies --multi-record", false, true );
 	}
 
 	public function createTables( ) {
@@ -72,6 +78,9 @@ class ImportMAB2 extends Maintenance {
 		$recursive = $this->hasOption( 'recursive' );
 		$limit = (int)$this->getOption( 'limit' );
 
+		$this->recordSeparator = $this->getOption( 'record-separator' );
+		$this->multiRecord = $this->recordSeparator || $this->hasOption( 'multi-record' );
+
 		$src = $this->mArgs[0];
 		$dir = $this->mArgs[1];
 		$this->blob_table = $this->mArgs[2];
@@ -111,7 +120,13 @@ class ImportMAB2 extends Maintenance {
 			}
 		}
 
-		$this->importDir( $dir, $recursive, $limit );
+		$dir = "php://stdin";
+
+		if ( is_dir( $dir ) ) {
+			$this->importDir( $dir, $recursive, $limit );
+		} else {
+			$this->importMabFile( $dir );
+		}
 	}
 
 	public function importDir( $dir, $recursive = false, $limit = 0 ) {
@@ -138,26 +153,11 @@ class ImportMAB2 extends Maintenance {
 				continue;
 			}
 
-			$rec = $this->readMabFile( $dir . $file );
+			$ok = $this->importMabFile( $dir . $file );
 
-			if ( !$rec ) {
+			if ( !$ok ) {
 				$this->output( "error processing $file\n" );
-			} else {
-				$ids = $this->getIds($rec);
-
-				if ( $ids ) {
-					if ( $this->debug ) {
-						var_export( $ids );
-						if ( !$this->noblob ) var_export( $rec );
-						print "------------------------------------\n";
-					} else {
-						$this->output( "importing file $file\n" );
-						$this->storeRecord($rec, $ids);
-					}
-				} else {
-					$this->output( "skipping file $file\n" );
-				}
-			}
+			} 
 
 			if ( $limit > 0 ) {
 				$limit -= 1;
@@ -224,28 +224,91 @@ class ImportMAB2 extends Maintenance {
 		$db->insert( $this->index_table, $insert, __METHOD__, array( 'IGNORE' ) );
 	}
 
-	public function readMabFile( $file ) {
-		$rec = array();
+	public function importMabFile( $file ) {
 		$f = fopen( $file, 'r' );
 		if ( !$f ) return false;
 
-		while( ( $s = fgets( $f ) ) ) {
-		    if ( preg_match( '/^(\d+[a-z]?)\s*([a-z])?=(.*$)/', $s, $m ) ) {
-			$k = $m[1];
-			$t = $m[2];
-			$v = $m[3];
+		if ( $this->debug ) {
+			print "== $file =======================\n";
+		} else if ( $this->multiRecord ) {
+			$this->output( "reading records from $file\n" );
+		}
 
-			if ( isset( $rec[$k] ) ) {
-			    if ( !is_array( $rec[$k] ) ) {
-				$rec[$k] = array( $rec[$k] );
+		$eof = false;
+		$pushed = false;
+
+		while( !$eof ) {
+		    $rec = array();
+
+		    while( !$eof ) {
+			if ( $pushed ) {
+			    $s = $pushed;
+			    $pushed = false;
+			} else {
+			    $s = fgets( $f );
+			}
+
+			if ( $s === "" || $s === false ) {
+			    $eof = true;
+			    break;
+			}
+
+			if ( $rec && $this->recordSeparator && preg_match( $this->recordSeparator, $s ) ) {
+			    break; // next record
+			}
+
+			if ( preg_match( '/^(\d+[a-z]?)\s*([a-z])?=(.*$)/', $s, $m ) ) {
+			    $k = $m[1];
+			    $t = $m[2];
+			    $v = $m[3];
+
+			    if ( $rec && ($this->multiRecord && !$this->recordSeparator) && $k === "001" ) {
+				$pushed = $s;
+				# we expect 0001 to be the first thing in every record!
+				break; // next record
 			    }
 
-			    $rec[$k][] = $v;
+			    if ( isset( $rec[$k] ) ) {
+				if ( !is_array( $rec[$k] ) ) {
+				    $rec[$k] = array( $rec[$k] );
+				}
+
+				$rec[$k][] = $v;
+			    } else {
+				$rec[$k] = $v;
+			    }
+			}
+		    }
+
+		    if ( $rec ) {
+			$ids = $this->getIds($rec);
+
+			if ( $ids ) {
+				if ( $this->debug ) {
+					var_export( $ids );
+					if ( !$this->noblob ) var_export( $rec );
+					print "------------------------------------\n";
+				} else {
+					$id = false;
+					foreach ( $this->source->keyFields as $idf ) {
+						if ( !empty( $ids[ $idf ] ) ) {
+							$id = "$idf:" . $ids[$idf][0];
+						}
+					}
+
+					$this->output( "importing record $id\n" );
+					$this->storeRecord($rec, $ids);
+				}
 			} else {
-			    $rec[$k] = $v;
+				$this->output( "skipping record from file $file\n" );
+				if ( $this->debug ) {
+					var_export( $rec );
+					print "------------------------------------\n";
+				}
 			}
 		    }
 		}
+
 		fclose( $f );
 		return $rec;
 	}
