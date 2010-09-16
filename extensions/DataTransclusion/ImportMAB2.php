@@ -35,6 +35,9 @@ class ImportMAB2 extends Maintenance {
 
 		$this->addOption( "multi-record", "read multiple records from a single file. Records may be separated by special lines matching --record-separator; if --record-separator is not given, all records are expected to start with filed number 001.", false, false );
 		$this->addOption( "record-separator", "regular expression for lines separating records in a multi-record file. Implies --multi-record", false, true );
+
+		$this->addOption( "id-list-field", "id field to compare against the id list.", false, true );
+		$this->addOption( "id-list-file", "list of ids to import.", false, true );
 	}
 
 	public function createTables( ) {
@@ -81,6 +84,10 @@ class ImportMAB2 extends Maintenance {
 		$this->recordSeparator = $this->getOption( 'record-separator' );
 		$this->multiRecord = $this->recordSeparator || $this->hasOption( 'multi-record' );
 
+		$this->idListField = $this->getOption( 'id-list-field' );
+		$this->idListFile = $this->getOption( 'id-list-file' );
+		$this->idList = null;
+
 		$src = $this->mArgs[0];
 		$dir = $this->mArgs[1];
 		$this->blob_table = $this->mArgs[2];
@@ -116,8 +123,21 @@ class ImportMAB2 extends Maintenance {
 		foreach ( $this->source->keyFields as $key ) {
 			$this->id_map[ $key ] = MAB2RecordTransformer::getMABFields( $key );
 			if ( !$this->id_map[ $key ] ) {
-				$this->error( "unknown key field '$key', no MAB fields mapped." );
+				$this->error( "unknown key field '$key', no MAB fields mapped.\n" );
 			}
+		}
+
+		if ( $this->idListFile ) {
+			$this->output( "loading id list from {$this->idListFile}.\n" );
+			$this->idList = $this->loadList( $this->idListFile, $this->idListField );
+			if ( $this->idList === false ) {
+				$this->error( "failed to load id list from {$this->idListFile}.\n" );
+				return;
+			}
+		}
+
+		if ( $this->idList && $this->idListField ) {
+			$this->output( "filtering by {$this->idListField} from {$this->idListFile}.\n" );
 		}
 
 		$dir = "php://stdin";
@@ -224,6 +244,28 @@ class ImportMAB2 extends Maintenance {
 		$db->insert( $this->index_table, $insert, __METHOD__, array( 'IGNORE' ) );
 	}
 
+	public function loadList( $file, $field = null ) {
+		$f = fopen( $file, 'r' );
+		if ( !$f ) return false;
+
+		$list = array();
+
+		while ( true ) {
+			$s = fgets( $f );
+
+			if ( $s === "" || $s === false ) {
+			    break;
+			}
+
+			$s = trim( $s );
+			if ( $field ) $s = $this->source->normalize( $field, $s );
+
+			$list[] = $s;
+		}
+
+		return $list;
+	}
+
 	public function importMabFile( $file ) {
 		$f = fopen( $file, 'r' );
 		if ( !$f ) return false;
@@ -283,28 +325,47 @@ class ImportMAB2 extends Maintenance {
 		    if ( $rec ) {
 			$ids = $this->getIds($rec);
 
-			if ( $ids ) {
-				if ( $this->debug ) {
-					var_export( $ids );
-					if ( !$this->noblob ) var_export( $rec );
-					print "------------------------------------\n";
-				} else {
-					$id = false;
-					foreach ( $this->source->keyFields as $idf ) {
-						if ( !empty( $ids[ $idf ] ) ) {
-							$id = "$idf:" . $ids[$idf][0];
-						}
-					}
-
-					$this->output( "importing record $id\n" );
-					$this->storeRecord($rec, $ids);
-				}
-			} else {
-				$this->output( "skipping record from file $file\n" );
+			if ( !$ids ) {
+				$this->output( "skipping part of file $file\n" );
 				if ( $this->debug ) {
 					var_export( $rec );
 					print "------------------------------------\n";
 				}
+
+				continue;
+			}
+
+			$id = false;
+			foreach ( $this->source->keyFields as $idf ) {
+				if ( !empty( $ids[ $idf ] ) ) {
+					$id = "$idf:" . $ids[$idf][0];
+				}
+			}
+
+			if ( $this->idList && $this->idListField ) {
+				$found = false;
+				if ( !empty( $ids[ $this->idListField ] ) ) {
+					foreach ( $ids[ $this->idListField ] as $v ) {
+						if ( in_array( $v, $this->idList ) ) {
+							$found = true;
+							break;
+						}
+					}
+				}
+
+				if ( !$found ) {
+					$this->output( "ignoring record #$id from file $file\n" );
+					continue;
+				}
+			}
+
+			if ( $this->debug ) {
+				var_export( $ids );
+				if ( !$this->noblob ) var_export( $rec );
+				print "------------------------------------\n";
+			} else {
+				$this->output( "importing record $id\n" );
+				$this->storeRecord($rec, $ids);
 			}
 		    }
 		}
