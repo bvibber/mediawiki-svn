@@ -14,6 +14,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'variablepage-desc' => 'Lightweight variable page redirection',
+	'variablepage-randomurl' => 'Special:VariablePage',
 );
 
 /** Bosnian (Bosanski)
