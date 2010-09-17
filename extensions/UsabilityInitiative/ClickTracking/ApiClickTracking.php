@@ -1,6 +1,6 @@
 <?php
 /**
- * Extend the API for click tracking
+ * Click tracking API extension
  *
  * @file
  * @ingroup API
@@ -9,25 +9,29 @@
 class ApiClickTracking extends ApiBase {
 
 	/**
-	 * runs when the API is called with "clicktracking", takes in "eventid" and an edit token given to the user, "token"
+	 * API clicktracking action
+	 *
+	 * Parameters:
+	 * 		eventid: event name
+	 * 		token: unique identifier for a user session
+	 *
 	 * @see includes/api/ApiBase#execute()
 	 */
 	public function execute() {
-		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2, $wgClickTrackContribGranularity3;
+		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2,
+			$wgClickTrackContribGranularity3;
 
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
 		$session_id = $params['token'];
-		
+
 		$additional = null;
-		
-		if( isset($params['additional'])  && strlen($params['additional']) > 0){
+
+		if ( isset( $params['additional'] )  && strlen( $params['additional'] ) > 0 ){
 			$additional = $params['additional'];
-			
 		}
-		
-		
+
 		// Event ID lookup table
 		// FIXME: API should already have urldecode()d
 		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
@@ -54,7 +58,7 @@ class ApiClickTracking extends ApiBase {
 			$granularity3,  // contributions made in granularity 3 time frame
 			$additional
 		);
-		
+
 		// For links that go off the page, redirect the user
 		// FIXME: The API should have a proper infrastructure for this
 		if ( !is_null( $params['redirectto'] ) ) {
@@ -66,7 +70,7 @@ class ApiClickTracking extends ApiBase {
 				global $wgOut;
 				$wgOut->redirect( $params['redirectto'] );
 				$wgOut->output();
-				
+
 				// Prevent any further output
 				$wgOut->disable();
 				$this->getMain()->getPrinter()->disable();
@@ -80,7 +84,7 @@ class ApiClickTracking extends ApiBase {
 	 * Required parameter check
 	 * @param $params params extracted from the POST
 	 */
- 	protected function validateParams( $params ) {
+	protected function validateParams( $params ) {
 		$required = array( 'eventid', 'token' );
 		foreach ( $required as $arg ) {
 			if ( !isset( $params[$arg] ) ) {
@@ -95,19 +99,19 @@ class ApiClickTracking extends ApiBase {
 			'token'  => 'unique edit ID for this edit session',
 			'redirectto' => 'URL to redirect to (only used for links that go off the page)',
 			'additional' => 'additional info for the event, like state information'
-		);
+			);
 	}
 
 	public function getDescription() {
 		return array(
 			'Track user clicks on JavaScript items.'
-		);
+			);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'eventid' ),
-			array( 'missingparam', 'token' ),
+		array( 'missingparam', 'eventid' ),
+		array( 'missingparam', 'token' ),
 		) );
 	}
 
@@ -123,5 +127,4 @@ class ApiClickTracking extends ApiBase {
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}
-
 }
