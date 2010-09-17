@@ -1,7 +1,7 @@
 # Looking for WikiEditor or Vector extensions? They've been moved to extensions/WikiEditor and extensions/Vector
 # respectively. These remaining extensions have been ported to be compatible with 1.17. For 1.16 compatible versions
 # (which are no longer under active development but can be used to fixing bugs on existing deployments) please see the
-# branches/usability-initiative-1_16/ branch.
+# branches/usability-initiative-1_16/ or the branches/usability-initiative-1_16/ branch.
 
 # Some lines to add to LocalSettings.php to get these extensions up and running:
 
