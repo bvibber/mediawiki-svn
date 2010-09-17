@@ -145,6 +145,14 @@ $messages['he'] = array(
 	'flv-long-desc' => '(סרט פלאש, $1 × $2 פיקסלים, גודל הקובץ: $3)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'flvhandler_desc' => 'Dopusti da Flash Video (.flv) datoteke mogu biti dodane kao standardne datoteke (npr. <nowiki>[[</nowiki>((ns:datoteka)):Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 piksela, veličina datoteke: $3)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

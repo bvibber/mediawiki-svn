@@ -702,6 +702,26 @@ $messages['ru'] = array(
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'cb_previous_items_link' => 'Алдагы',
+	'cb_next_items_link' => 'Киләсе',
+	'cb_next_items_stats' => ' ( $1 башлап)',
+	'cb_cat_subcats' => 'төркемчәләр',
+	'cb_cat_pages' => 'битләр',
+	'cb_cat_files' => 'файллар',
+	'cb_apply_button' => 'Сакларга',
+	'cb_all_op' => 'Барысы',
+	'cb_or_op' => 'яки',
+	'cb_and_op' => 'һәм',
+	'cb_edit_left_hint' => 'Мөмкин булса сулга күчерергә',
+	'cb_edit_right_hint' => 'Мөмкин булса уңга күчерергә',
+	'cb_edit_remove_hint' => 'Мөмкин булса бетерегә',
+	'cb_edit_copy_hint' => 'Бирелешне алмаш буферга күчермәләү',
+);
+
 /** Ukrainian (Українська)
  * @author Тест
  */

@@ -572,9 +572,13 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
+	'player-not-found' => 'datoteka nije pronađena',
+	'player-invalid-title' => 'neispravan naslov',
 	'player-goto-page' => 'Stranica',
+	'player-goto-file' => 'datoteka',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

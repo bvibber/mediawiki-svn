@@ -60,6 +60,13 @@ $messages['ca'] = array(
 	'cassandra-desc' => 'Revisió de text a la base de dades [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'cassandra-desc' => 'Ukládá text revizí do databáze [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Welsh (Cymraeg)
  * @author Xxglennxx
  */

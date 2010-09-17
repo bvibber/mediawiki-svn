@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'slimboxthumbs-desc' => 'Displays full-size images with [http://www.digitalia.be/software/slimbox2 Slimbox 2] when clicking on thumbnails'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'slimboxthumbs-desc' => 'Паказвае выяву поўнага памеру з [http://www.digitalia.be/software/slimbox2 Slimbox 2], калі націснуць на мініятуру',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

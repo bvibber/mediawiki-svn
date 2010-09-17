@@ -154,6 +154,8 @@ $messages['be-tarask'] = array(
 	'articleassessment-survey-question-expert-iftrue' => 'Вы можаце апісаць узровень Вашых ведаў?',
 	'articleassessment-survey-question-comments' => 'Вы маеце якія-небудзь дадатковыя камэнтары?',
 	'articleassessment-survey-submit' => 'Даслаць',
+	'articleassessment-survey-title' => 'Калі ласка, адкажыце на некалькі пытаньняў',
+	'articleassessment-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
 );
 
 /** Bosnian (Bosanski)
@@ -222,6 +224,15 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-survey-thanks' => 'Vielen Dank für deine Rückmeldung.',
 );
 
+/** French (Français)
+ * @author Crochet.david
+ */
+$messages['fr'] = array(
+	'articleassessment-submit' => 'Soumettre',
+	'articleassessment-survey-question-useful-iffalse' => 'Pourquoi ?',
+	'articleassessment-survey-submit' => 'Soumettre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -262,6 +273,8 @@ Quizais queira avaliala novamente.",
 	'articleassessment-survey-question-expert-iftrue' => 'Pode describir a súa experiencia?',
 	'articleassessment-survey-question-comments' => 'Ten algún comentario adicional?',
 	'articleassessment-survey-submit' => 'Enviar',
+	'articleassessment-survey-title' => 'Responda algunhas preguntas',
+	'articleassessment-survey-thanks' => 'Grazas por encher a enquisa.',
 );
 
 /** Interlingua (Interlingua)
@@ -461,6 +474,52 @@ Wilt u de pagina opnieuw beoordelen?",
 	'articleassessment-survey-question-expert-iftrue' => 'Kunt u uw expertise beschrijven?',
 	'articleassessment-survey-question-comments' => 'Hebt u nog opmerkingen?',
 	'articleassessment-survey-submit' => 'Opslaan',
+	'articleassessment-survey-title' => 'Beantwoord alstublieft een paar vragen',
+	'articleassessment-survey-thanks' => 'Bedankt voor het beantwoorden van de vragen.',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'articleassessment' => 'Ocena artykułu',
+	'articleassessment-desc' => 'Ocena artykułu (wersja pilotażowa)',
+	'articleassessment-yourfeedback' => 'Twoja opinia',
+	'articleassessment-pleaserate' => 'Poświeć chwilę, aby ocenić poniższą stronę.',
+	'articleassessment-submit' => 'Zapisz',
+	'articleassessment-rating-wellsourced' => 'Dobre źródła',
+	'articleassessment-rating-neutrality' => 'Neutralny punkt widzenia',
+	'articleassessment-rating-completeness' => 'Wyczerpanie tematu',
+	'articleassessment-rating-readability' => 'Zrozumiałość',
+	'articleassessment-rating-wellsourced-tooltip' => 'Czy uważasz, że strona ma wystarczającą liczbę odnośników i że odnoszą się one do wiarygodnych źródeł?',
+	'articleassessment-rating-neutrality-tooltip' => 'Czy uważasz, że strona prezentuje wszystkie punkty widzenia na to zagadnienie?',
+	'articleassessment-rating-completeness-tooltip' => 'Czy uważasz, że strona porusza wszystkie istotne aspekty, które powinna?',
+	'articleassessment-rating-readability-tooltip' => 'Czy uważasz, że strona jest poprawnie sformatowana oraz zrozumiale napisana?',
+	'articleassessment-articlerating' => 'Ocena strony',
+	'articleassessment-error' => 'Wystąpił błąd. 
+Spróbuj ponownie później.',
+	'articleassessment-thanks' => 'Wystawiona przez Ciebie ocena została zapisana.',
+	'articleassessment-featurefeedback' => '<span class="feedbacklink">Napisz do autorów</span> co myślisz o tym rozszerzeniu.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|ocena|oceny|ocen}})',
+	'articleassessment-stalemessage-norevisioncount' => "Strona została ''zmieniona'' od czasu, gdy ją oceniałeś.
+Możesz ocenić ją ponownie.",
+	'articleassessment-results-show' => '(Wyniki ukryte. <span class="showlink">Pokaż</span> je.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ukryj wyniki</span>)',
+	'articleassessment-survey-question-whyrated' => 'Dlaczego oceniłeś dziś tę stronę (zaznacz wszystkie pasujące):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Chciałem mieć wpływ na ogólną ocenę strony',
+	'articleassessment-survey-answer-whyrated-development' => 'Mam nadzieję, że moja ocena pozytywnie wpłynie na rozwój strony',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Chciałem mieć swój wkład w rozwój {{GRAMMAR:D.lp|{{SITENAME}}}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Lubię dzielić się swoją opinią',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Nie oceniałem dziś, ale chcę podzielić się swoją opinią na temat tego rozszerzenia',
+	'articleassessment-survey-answer-whyrated-other' => 'Inny powód',
+	'articleassessment-survey-question-useful' => 'Czy uważasz, że taka metoda oceniania jest użyteczna i czytelna?',
+	'articleassessment-survey-question-useful-iffalse' => 'Dlaczego?',
+	'articleassessment-survey-question-expert' => 'Czy uważasz się za eksperta w tematyce, którą porusza ta strona?',
+	'articleassessment-survey-question-expert-iftrue' => 'Czy możesz opisać swój poziom wiedzy?',
+	'articleassessment-survey-question-comments' => 'Czy masz jakieś dodatkowe uwagi?',
+	'articleassessment-survey-submit' => 'Zapisz',
+	'articleassessment-survey-title' => 'Proszę udzielić odpowiedzi na kilka pytań',
+	'articleassessment-survey-thanks' => 'Dziękujemy za wypełnienie ankiety.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -500,6 +559,11 @@ It podrìe vorejlo revaluté.",
 	'articleassessment-survey-question-useful' => 'Chërdës-to che le valutassion dàite a sio ùtij e ciàire?',
 	'articleassessment-survey-question-useful-iffalse' => 'Përchè?',
 	'articleassessment-survey-question-expert' => "Considërës-to ti midem n'espert ant ël camp che sta pàgina a coata?",
+	'articleassessment-survey-question-expert-iftrue' => 'Peuss-to descrive toa esperiensa?',
+	'articleassessment-survey-question-comments' => "L'has-to quaich coment adissionaj?",
+	'articleassessment-survey-submit' => 'Spediss',
+	'articleassessment-survey-title' => 'Për piasì arspond a quaich custion',
+	'articleassessment-survey-thanks' => 'Mersì për avej vempì ël questionari.',
 );
 
 /** Portuguese (Português)
@@ -539,11 +603,13 @@ Talvez queira voltar a avaliá-la.",
 	'articleassessment-survey-answer-whyrated-didntrate' => 'Hoje não classifiquei páginas, mas queria deixar o meu comentário sobre a funcionalidade',
 	'articleassessment-survey-answer-whyrated-other' => 'Outra',
 	'articleassessment-survey-question-useful' => 'Acredita que as classificações dadas são úteis e claras?',
-	'articleassessment-survey-question-useful-iffalse' => 'Por quê?',
+	'articleassessment-survey-question-useful-iffalse' => 'Porquê?',
 	'articleassessment-survey-question-expert' => 'Considera-se um perito na área descrita nesta página?',
 	'articleassessment-survey-question-expert-iftrue' => 'Pode descrever a sua experiência?',
 	'articleassessment-survey-question-comments' => 'Tem mais comentários?',
 	'articleassessment-survey-submit' => 'Enviar',
+	'articleassessment-survey-title' => 'Por favor, responda a algumas perguntas',
+	'articleassessment-survey-thanks' => 'Obrigado por preencher o inquérito.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -586,9 +652,12 @@ Talvez queira voltar a avaliá-la.",
 	'articleassessment-survey-question-expert-iftrue' => 'Você pode descrever a sua experiência?',
 	'articleassessment-survey-question-comments' => 'Você tem mais algum comentário?',
 	'articleassessment-survey-submit' => 'Enviar',
+	'articleassessment-survey-title' => 'Por favor, responda a algumas perguntas',
+	'articleassessment-survey-thanks' => 'Obrigado por preencher o questionário.',
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Александр Сигачёв
  * @author Сrower
  */
@@ -629,6 +698,8 @@ $messages['ru'] = array(
 	'articleassessment-survey-question-expert-iftrue' => 'Можете ли вы привести экспертную оценку?',
 	'articleassessment-survey-question-comments' => 'Есть ли у вас какие-либо дополнительные замечания?',
 	'articleassessment-survey-submit' => 'Отправить',
+	'articleassessment-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
+	'articleassessment-survey-thanks' => 'Спасибо за участие в опросе.',
 );
 
 /** Vietnamese (Tiếng Việt)

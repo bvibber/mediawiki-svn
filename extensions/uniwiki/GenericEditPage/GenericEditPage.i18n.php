@@ -1398,6 +1398,7 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'gep-desc' => 'Dopolni urejevalno stran tako, da je uporabniku prijaznejša',
 	'gep-emailsubject' => '[$1] Predlog kategorije: $2',
 	'gep-emailbody' => 'Uporabnik »$1« je predlagal kategorijo »$2« za stran »$3«.',
 	'gep-emailfailure' => 'Oprostite, vašega predloga ni bilo mogoče obdelati.',
@@ -1413,6 +1414,8 @@ $messages['sl'] = array(
 	'gep-addsectionbutton' => 'Dodaj',
 	'gep-classicmode' => 'Klasični način',
 	'gep-genericmode' => 'Generični način',
+	'gep-nosectioninstructions' => 'Na tej strani ni razdelkov.
+Dodajte jih nekaj z uporabo orodij v menijski vrstici.',
 	'gep-nocategories' => 'Prosimo, pred shranjevanjem izberite vsaj eno kategorijo',
 );
 

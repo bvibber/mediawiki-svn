@@ -1536,6 +1536,7 @@ $messages['mr'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author CoolCityCat
  * @author Kurniasan
  */
 $messages['ms'] = array(
@@ -1556,6 +1557,9 @@ $messages['ms'] = array(
 	'ct-date-range' => 'Julat tarikh',
 	'ct-editing' => 'Sedang menyunting:',
 	'ct-anon-users' => 'Pengguna tanpa nama',
+	'ct-user-contribs' => 'Jumlah sumbangan pengguna',
+	'ct-and' => 'dan',
+	'ct-update-table' => 'Kemaskini jadual',
 );
 
 /** Maltese (Malti)

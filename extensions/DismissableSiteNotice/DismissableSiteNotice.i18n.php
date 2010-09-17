@@ -93,6 +93,14 @@ $messages['ast'] = array(
 	'sitenotice-desc' => "Permite a los usuarios zarrar l'anuncia del sitiu",
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'sitenotice_close' => 'ausblenden',
+	'sitenotice-desc' => "Dalaabt am Nutzer d' Saiten z' schliassen",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

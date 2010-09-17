@@ -105,6 +105,13 @@ $messages['ba'] = array(
 	'metadata_help' => 'Мета-мәғлүмәттәр:',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'metadata_help' => 'Metadata:',
+);
+
 /** Samogitian (Žemaitėška) */
 $messages['bat-smg'] = array(
 	'metadata_help' => 'Metadoumenīs:',

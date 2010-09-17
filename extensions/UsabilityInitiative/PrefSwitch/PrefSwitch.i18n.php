@@ -4709,6 +4709,7 @@ $messages['mr'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author CoolCityCat
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
@@ -4719,7 +4720,6 @@ $messages['ms'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Padamkan ciri-ciri baru',
-	'prefswitch-survey-submit-global-off' => 'Padamkan fungsi dan ciri-ciri baru untuk semua wiki',
 	'prefswitch-survey-cancel-off' => 'Seandainya anda ingin terus menggunakan Beta, sila kembali ke $1',
 	'prefswitch-survey-submit-feedback' => 'Hantarkan maklumbalas',
 	'prefswitch-survey-cancel-feedback' => 'Seandainya anda tidak ingin menghantar maklumbalas, kembali ke $1',
@@ -4787,8 +4787,8 @@ Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cada
 [$1 Klik sini untuk mematikan ciri-ciri baru]. Anda perlu log masuk atau membuat akuan baru terlebih dahulu.',
 	'prefswitch-main-on' => '===Kembali kepada asal===
 [$2 Klik di sini untuk memadamkan ciri-ciri baru].',
-	'prefswitch-main-off' => '==Cubalah!===
-Klik [$ 1 di sini untuk mengaktifkan] ciri-ciri baru',
+	'prefswitch-main-off' => '===Cubalah!===
+[$1 Klik di sini untuk mengaktifkan ciri-ciri baru].',
 	'prefswitch-survey-intro-feedback' => 'Kami ingin mengetahui maklum balas anda.
 Sila hantarkan soal selidk di bawah.',
 	'prefswitch-survey-intro-off' => 'Terima kasih kerana cuba menggunakan ciri-ciri baru.

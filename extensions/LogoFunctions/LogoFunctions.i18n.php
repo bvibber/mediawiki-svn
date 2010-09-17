@@ -143,6 +143,13 @@ $messages['id'] = array(
 	'logofunctions-filenotexist' => 'Kesalahan: [[File:$1]] tidak ada',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'logofunctions-filenotexist' => 'Errore: [[File:$1]] non esiste',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

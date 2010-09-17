@@ -618,6 +618,13 @@ $messages['as'] = array(
 	'deletequeue-list-search' => 'সন্ধান কৰক',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'deletequeue-list-search' => 'Suacha',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

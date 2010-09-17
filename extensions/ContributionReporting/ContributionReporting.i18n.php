@@ -2040,6 +2040,7 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -2080,10 +2081,13 @@ $messages['hr'] = array(
 	'contribstats-day-totals' => 'Ukupno za dan',
 	'contribstats-week' => 'Tjedan',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Ukupno za ovaj tjedan|Ukupno tjedno za proteklih $1 tjedana uključeno}}',
+	'contribstats-payment-type' => 'Način plaćanja',
 	'contribstats-clicks' => 'Klikovi',
 	'contribstats-donations' => 'Donacije',
 	'contribstats-conversion' => 'Stopa konverzije (%)',
 	'contribstats-template' => 'Predložak',
+	'contribstats-average' => 'Prosjek',
+	'contribstats-credit-card' => 'Kreditna kartica:',
 	'fundraiserstatistics' => 'Statistika prikupljanja',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Dan $1 od $2',
