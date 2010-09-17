@@ -90,18 +90,21 @@ class ImportMAB2 extends Maintenance {
 
 		$src = $this->mArgs[0];
 		$dir = $this->mArgs[1];
-		$this->blob_table = $this->mArgs[2];
-		$this->index_table = $this->mArgs[3];
 
 		if ( !isset( $wgDataTransclusionSources[ $src ] ) ) {
 			throw new MWException( "unknown transclusion data source '$src', not found in \$wgDataTransclusionSources" );
 		}
+
+		$this->output( "using settings for data transclusion source \"$src\".\n" );
 
 		$this->source = DataTransclusionHandler::getDataSource( $src );
 
 		if ( !( $this->source instanceof DBDataTransclusionSource ) ) {
 			throw new MWException( "bad data source '$src': not compatible with DBDataTransclusionSource" );
 		}
+
+		$this->blob_table = $this->mArgs[2];
+		$this->index_table = $this->mArgs[3];
 
 		if ( $this->hasOption( 'prefix' ) ) {
 			$prefix = $this->getOption( "prefix" );
@@ -113,10 +116,16 @@ class ImportMAB2 extends Maintenance {
 			$this->index_table = $db->tableName( $this->index_table );
 		}
 
-		if ( $this->hasOption('create') && !$this->debug ) {
-			$this->createTables( $this->blob_table, $this->index_table );
-		} else if ( $this->hasOption('truncate') && !$this->debug ) {
-			$this->truncateTables( $this->blob_table, $this->index_table );
+		if ( !$this->debug ) {
+			$this->output( "using tables {$this->blob_table} and {$this->index_table}.\n" );
+
+			if ( $this->hasOption('create') ) {
+				$this->output( "creating tables if neccessary.\n" );
+				$this->createTables( $this->blob_table, $this->index_table );
+			} else if ( $this->hasOption('truncate') ) {
+				$this->output( "truncating tables.\n" );
+				$this->truncateTables( $this->blob_table, $this->index_table );
+			}
 		}
 
 		$this->id_map = array();
@@ -354,7 +363,7 @@ class ImportMAB2 extends Maintenance {
 				}
 
 				if ( !$found ) {
-					$this->output( "ignoring record #$id from file $file\n" );
+					$this->output( "ignoring record #$id\n" );
 					continue;
 				}
 			}
