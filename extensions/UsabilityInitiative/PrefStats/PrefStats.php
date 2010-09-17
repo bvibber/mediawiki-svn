@@ -1,19 +1,14 @@
 <?php
 /**
- * Usability Initiative PrefStats extension
+ * PrefStats extension
  *
  * @file
  * @ingroup Extensions
- *
- * This file contains the include file for the EditWarning portion of the
- * UsabilityInitiative extension of MediaWiki.
- *
- * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php" );
- *
+ * 
  * @author Roan Kattouw <roan.kattouw@gmail.com>
+ * @author Trevor Parscal <tparscal.kattouw@gmail.com>
  * @license GPL v2 or later
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 /* Configuration */
@@ -36,8 +31,7 @@ $wgPrefStatsChartDimensions = array( 800, 300 );
 // Don't change this unless you know what you're doing
 $wgPrefStatsTimeUnit = 60 * 60; // one hour
 
-// Multiples of $wgPrefStatsTimeUnit to offer
-// array( messagekey => factor )
+// Multiples of $wgPrefStatsTimeUnit to offer -- array( messagekey => factor )
 $wgPrefStatsTimeFactors = array(
 	'prefstats-factor-hour' => 1,
 	'prefstats-factor-sixhours' => 6,
@@ -51,8 +45,7 @@ $wgPrefStatsTimeFactors = array(
 // How many bars to strive for in default scaling
 $wgPrefStatsDefaultScaleBars = 15;
 
-// Whether to run possibly expensive COUNT(*) queries on the user_properties
-// table
+// Whether to run possibly expensive COUNT(*) queries on the user_properties table
 $wgPrefStatsExpensiveCounts = false;
 
 // For how long statistics should be cached
@@ -61,34 +54,19 @@ $wgPrefStatsCacheTime = 60 * 60; // one hour
 
 /* Setup */
 
-// Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PrefStats',
-	'author' => 'Roan Kattouw',
-	'version' => '0.1.1',
+	'author' => array( 'Roan Kattouw', 'Trevor Parscal' ),
+	'version' => '0.2.0',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'prefstats-desc',
 );
-
-// Includes parent extension
-require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
-
-// Adds Autoload Classes
-$wgAutoloadClasses['PrefStatsHooks'] =
-	dirname( __FILE__ ) . '/PrefStats.hooks.php';
-$wgAutoloadClasses['SpecialPrefStats'] =
-	dirname( __FILE__ ) . '/SpecialPrefStats.php';
-
+$wgAutoloadClasses['PrefStatsHooks'] = dirname( __FILE__ ) . '/PrefStats.hooks.php';
+$wgAutoloadClasses['SpecialPrefStats'] = dirname( __FILE__ ) . '/SpecialPrefStats.php';
 $wgSpecialPages['PrefStats'] = 'SpecialPrefStats';
 $wgSpecialPageGroups['PrefStats'] = 'wiki';
-
-// Adds Internationalized Messages
-$wgExtensionMessagesFiles['PrefStats'] =
-	dirname( __FILE__ ) . '/PrefStats.i18n.php';
-$wgExtensionAliasesFiles['PrefStats'] =
-	dirname( __FILE__ ) . '/PrefStats.alias.php';
-
-// Registers Hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::schema';
-$wgHooks['UserSaveOptions'][] = 'PrefStatsHooks::save';
+$wgExtensionMessagesFiles['PrefStats'] = dirname( __FILE__ ) . '/PrefStats.i18n.php';
+$wgExtensionAliasesFiles['PrefStats'] = dirname( __FILE__ ) . '/PrefStats.alias.php';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefStatsHooks::loadExtensionSchemaUpdates';
+$wgHooks['UserSaveOptions'][] = 'PrefStatsHooks::userSaveOptions';
