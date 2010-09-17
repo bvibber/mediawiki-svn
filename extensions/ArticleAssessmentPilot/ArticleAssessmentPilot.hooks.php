@@ -46,10 +46,18 @@ class ArticleAssessmentPilotHooks {
 	}
 
 	public static function addResources( $out ) {
+		
 		$title = $out->getTitle();
 
 		// Chances are we only want to be rating Mainspace, right?
 		if ( $title->getNamespace() !== NS_MAIN ) {
+			return true;
+		}
+
+		global $wgRequest;
+
+		// Only show for view actions.
+		if ( $wgRequest->getVal( 'action' ) !== null && $wgRequest->getVal( 'action' ) !== 'view' ) {
 			return true;
 		}
 
