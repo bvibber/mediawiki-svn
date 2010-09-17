@@ -122,7 +122,9 @@ class ImportMAB2 extends Maintenance {
 			if ( $this->hasOption('create') ) {
 				$this->output( "creating tables if neccessary.\n" );
 				$this->createTables( $this->blob_table, $this->index_table );
-			} else if ( $this->hasOption('truncate') ) {
+			} 
+
+			if ( $this->hasOption('truncate') ) {
 				$this->output( "truncating tables.\n" );
 				$this->truncateTables( $this->blob_table, $this->index_table );
 			}
