@@ -277,9 +277,6 @@ if( !is_writable( "." ) ) {
 	<p>Afterwards retry to start the <a href=\"\">setup</a>.</p>" );
 }
 
-
-require_once( "$IP/maintenance/updaters.inc" );
-
 class ConfigData {
 	function getEncoded( $data ) {
 		# removing latin1 support, no need...
@@ -644,9 +641,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", "$IP/../data" );
 
 	## DB2 specific:
-	// New variable in order to have a different default port number
 	$conf->DBport_db2   = importPost( "DBport_db2",      "50000" );
-	$conf->DBcataloged  = importPost( "DBcataloged",  "cataloged" );
 	$conf->DBdb2schema  = importPost( "DBdb2schema",  "mediawiki" );
 
 	// Oracle specific
@@ -837,7 +832,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		}
 
 		## DB2 specific:
-		$wgDBcataloged = $conf->DBcataloged;
+		if ( $conf->DBtype == 'ibm_db2' ) {
+			$wgDBport      = $conf->DBport_db2;
+		}
 
 		$wgCommandLineMode = true;
 		if (! defined ( 'STDERR' ) )
@@ -1042,7 +1039,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				echo "<li>Connect failed.</li>";
 				if ($useRoot) {
 					if (ini_get('oci8.privileged_connect') === false) {
-						echo "<li>Privileged connect disabled, please set oci8.privileged_connect or run maintenance/ora/user.sql script manually prior to continuing.</li>";
+						echo "<li>Privileged connect disabled, please set oci8.privileged_connect or run maintenance/oracle/user.sql script manually prior to continuing.</li>";
 						$ok = false;
 					} else {
 						$wgDBadminuser = $conf->RootUser;
@@ -1052,7 +1049,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						if ($wgDatabase->isOpen()) {
 							$wgDBOracleDefTS = $conf->DBdefTS_ora;
 							$wgDBOracleTempTS = $conf->DBtempTS_ora;
-							$res = $wgDatabase->sourceFile( "../maintenance/ora/user.sql"  );
+							$res = $wgDatabase->sourceFile( "../maintenance/oracle/user.sql"  );
 							if ($res !== true) dieout($res);
 						} else {
 							echo "<li>Invalid database superuser, please supply a valid superuser account.</li>";
@@ -1236,7 +1233,14 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			print "</ul><pre>\n";
 			chdir( ".." );
 			flush();
-			do_all_updates();
+
+			define( 'MW_NO_SETUP', true );
+			$updater = DatabaseUpdater::newForDb( $wgDatabase, false );
+			$updater->doUpdates();
+			foreach( $updater->getPostDatabaseUpdateMaintenance() as $maint ) {
+				call_user_func_array( array( new $maint, 'execute' ), array() );
+			}
+
 			chdir( "config" );
 			print "</pre>\n";
 			print "<ul><li>Finished update checks.</li>\n";
@@ -1713,14 +1717,12 @@ if( count( $errs ) ) {
 	<div class="config-input"><?php
 		aField( $conf, "DBport_db2", "Database port:" );
 	?></div>
+	<div class="config-desc">
+		<p>50000 is the usual DB2 port.</p>
+	</div>
 	<div class="config-input"><?php
 		aField( $conf, "DBdb2schema", "Schema for mediawiki:" );
 	?></div>
-	<div>Select one:</div>
-		<ul class="plain">
-		<li><?php aField( $conf, "DBcataloged", "Cataloged (DB2 installed locally)", "radio", "cataloged" ); ?></li>
-		<li><?php aField( $conf, "DBcataloged", "Uncataloged (remote DB2 through ODBC)", "radio", "uncataloged" ); ?></li>
-		</ul>
 	<div class="config-desc">
 		<p>If you need to share one database between multiple wikis, or
 		between MediaWiki and another web application, you may specify
@@ -1911,11 +1913,11 @@ function writeLocalSettings( $conf ) {
 "# SQLite-specific settings
 \$wgSQLiteDataDir    = \"{$sqliteDataDir}\";";
 	} elseif( $conf->DBtype == 'ibm_db2' ) {
-		$dbsettings =
-"# DB2 specific settings
-\$wgDBport       = \"{$slconf['DBport_db2']}\";
-\$wgDBmwschema       = \"{$slconf['DBdb2schema']}\";
-\$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
+		$dbsettings = <<<MULTILINE
+# DB2 specific settings
+\$wgDBport           = "{$slconf['DBport_db2']}";
+\$wgDBmwschema       = "{$slconf['DBdb2schema']}";
+MULTILINE;
 	} elseif( $conf->DBtype == 'oracle' ) {
 		$dbsettings =
 "# Oracle specific settings

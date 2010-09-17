@@ -187,7 +187,7 @@ $messages = array(
 'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisninger',
 'tog-editsectiononrightclick' => 'Redigér afsnit ved at højreklikke på deres titler (JavaScript)',
 'tog-showtoc'                 => 'Vis indholdsfortegnelse (på sider med mere end tre afsnit)',
-'tog-rememberpassword'        => 'Husk min adgangskode på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
+'tog-rememberpassword'        => 'Husk mit login på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'tog-watchcreations'          => 'Tilføj sider jeg opretter til min overvågningsliste',
 'tog-watchdefault'            => 'Tilføj sider jeg redigerer til min overvågningsliste',
 'tog-watchmoves'              => 'Tilføj sider jeg flytter til min overvågningsliste',
@@ -332,17 +332,6 @@ $messages = array(
 'vector-action-protect'          => 'Beskyt',
 'vector-action-undelete'         => 'Gendan',
 'vector-action-unprotect'        => 'Fjern beskyttelse',
-'vector-namespace-category'      => 'Kategori',
-'vector-namespace-help'          => 'Hjælpeside',
-'vector-namespace-image'         => 'Fil',
-'vector-namespace-main'          => 'Side',
-'vector-namespace-media'         => 'Medieside',
-'vector-namespace-mediawiki'     => 'Besked',
-'vector-namespace-project'       => 'Projektside',
-'vector-namespace-special'       => 'Specialside',
-'vector-namespace-talk'          => 'Diskussion',
-'vector-namespace-template'      => 'Skabelon',
-'vector-namespace-user'          => 'Brugerside',
 'vector-simplesearch-preference' => 'Aktivér forbedrede søgeforslag (kun Vector-udseendet)',
 'vector-view-create'             => 'Opret',
 'vector-view-edit'               => 'Redigér',
@@ -650,6 +639,11 @@ Du kan ignorere denne besked hvis kontoen blev oprettet ved en fejl.',
 Vent venligst før du prøver igen.',
 'loginlanguagelabel'         => 'Sprog: $1',
 'suspicious-userlogout'      => 'Din anmodning om at logge ud blev nægtet, fordi det ser ud som den blev sendt af en ødelagt browser eller caching proxy.',
+'ratelimit-excluded-ips'     => '#<!-- leave this line exactly as it is --> <pre>
+# Syntax er som følger:
+# * Alt fra et "#"-tegn til slutningen af linjen er en kommentar
+# * Alle ikke-tomme linjer er en IP-adresse udelukket fra hastigheds begrænsningen
+#</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Anslået passwordstyrke: $1',
@@ -1096,7 +1090,8 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'compareselectedversions'  => 'Sammenlign valgte versioner',
 'showhideselectedversions' => 'Vis/skjul udvalgte versioner',
 'editundo'                 => 'fjern redigering',
-'diff-multi'               => '(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)',
+'diff-multi'               => '({{PLURAL:$1|En mellemliggende version|$1 mellemliggende versioner}} af {{PLURAL:$2|en bruger|$2 brugere}} ikke vist)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|En mellemliggende version|$1 mellemliggende versioner}} af mere end $2 {{PLURAL:$2|bruger|brugere}} ikke vist)',
 
 # Search results
 'searchresults'                    => 'Søgeresultater',
@@ -1392,7 +1387,6 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 'right-override-export-depth' => 'Eksportere sider inkl. henviste sider op til en dybde på 5',
 'right-sendemail'             => 'Sende e-mail til andre brugere',
 'right-revisionmove'          => 'Flyt revisioner',
-'right-selenium'              => 'Kør Selenium tests',
 
 # User rights log
 'rightslog'      => 'Rettighedslog',
@@ -2249,7 +2243,7 @@ $1',
 
 'sp-contributions-newbies'             => 'Vis kun bidrag fra nye brugere',
 'sp-contributions-newbies-sub'         => 'Fra nye kontoer',
-'sp-contributions-newbies-title'       => 'Brugerbidrag fra nye kontoer',
+'sp-contributions-newbies-title'       => 'Brugerbidrag fra nye konti',
 'sp-contributions-blocklog'            => 'blokeringslog',
 'sp-contributions-deleted'             => 'slettede brugerbidrag',
 'sp-contributions-logs'                => 'loglister',

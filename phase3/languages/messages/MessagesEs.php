@@ -23,6 +23,7 @@
  * @author Clerc
  * @author Crazymadlover
  * @author Cvmontuy
+ * @author Danke7
  * @author David0811
  * @author Dferg
  * @author Diego Grez
@@ -54,6 +55,7 @@
  * @author Sanbec
  * @author Spacebirdy
  * @author Technorum
+ * @author The Evil IP address
  * @author Titoxd
  * @author Toniher
  * @author Translationista
@@ -326,7 +328,7 @@ $messages = array(
 'tog-editsection'             => 'Habilitar la edición de secciones usando el enlace [editar]',
 'tog-editsectiononrightclick' => 'Habilitar la edición de secciones presionando el botón de la derecha en los títulos de secciones (requiere JavaScript)',
 'tog-showtoc'                 => 'Mostrar el índice (para páginas con más de 3 encabezados)',
-'tog-rememberpassword'        => 'Recordar mi nombre de usuario y contraseña entre sesiones en esta computadora (por un máximo de $1 {{PLURAL:$1|día|días}})',
+'tog-rememberpassword'        => 'Recordar mi nombre de usuario y contraseña entre sesiones en este navegador (por un máximo de $1 {{PLURAL:$1|día|días}})',
 'tog-watchcreations'          => 'Vigilar las páginas que yo cree',
 'tog-watchdefault'            => 'Vigilar las páginas que yo modifique',
 'tog-watchmoves'              => 'Vigilar las páginas que renombre',
@@ -477,17 +479,6 @@ $messages = array(
 'vector-action-protect'          => 'Proteger',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desproteger',
-'vector-namespace-category'      => 'Categoría',
-'vector-namespace-help'          => 'Página de ayuda',
-'vector-namespace-image'         => 'Archivo',
-'vector-namespace-main'          => 'Página',
-'vector-namespace-media'         => 'Página de multimedia',
-'vector-namespace-mediawiki'     => 'Mensaje',
-'vector-namespace-project'       => 'Página de proyecto',
-'vector-namespace-special'       => 'Página especial',
-'vector-namespace-talk'          => 'Discusión',
-'vector-namespace-template'      => 'Plantilla',
-'vector-namespace-user'          => 'Página de usuario',
 'vector-simplesearch-preference' => 'Habilitar sugerencias de búsqueda mejoradas (solo piel de vector)',
 'vector-view-create'             => 'Crear',
 'vector-view-edit'               => 'Editar',
@@ -860,7 +851,7 @@ Puede que ya hayas cambiado la contraseña o que hayas pedido una temporal.',
 'anoneditwarning'                  => "'''Aviso:''' No ha iniciado sesión con una cuenta de usuario.
 Tu dirección IP se almacenará en el historial de ediciones de la página.",
 'anonpreviewwarning'               => "''No ha iniciado sesión con una cuenta de usuario. Al guardar los cambios se almacenará su dirección IP en el historial de edición de la página.''",
-'missingsummary'                   => "'''Atención:''' No has escrito un resumen de edición. Si haces clic nuevamente en «{{MediaWiki:Savearticle}}» tu edición se grabará sin él.",
+'missingsummary'                   => "'''Atención:''' No has escrito un resumen de edición. Si haces clic nuevamente en «{{int:savearticle}}» tu edición se grabará sin él.",
 'missingcommenttext'               => 'Por favor introduce texto debajo.',
 'missingcommentheader'             => "'''Recordatorio:''' No has escrito un título para este comentario. Si haces clic nuevamente en \"{{int:savearticle}}\" tu edición se grabará sin él.",
 'summary-preview'                  => 'Previsualización del resumen:',
@@ -1241,11 +1232,13 @@ Nota que usar los enlaces de navegación borrará las selecciones de esta column
 # Diffs
 'history-title'            => 'Historial de revisiones para «$1»',
 'difference'               => '(Diferencias entre revisiones)',
+'difference-multipage'     => '(Diferencia entre las páginas)',
 'lineno'                   => 'Línea $1:',
 'compareselectedversions'  => 'Comparar versiones seleccionadas',
 'showhideselectedversions' => 'Mostrar/ocultar versiones seleccionadas',
 'editundo'                 => 'deshacer',
-'diff-multi'               => '({{PLURAL:$1|Una edición intermedia no se muestra|$1 ediciones intermedias no se muestran}}.)',
+'diff-multi'               => '(No se {{PLURAL:$1|muestra una edición intermedia realizada|muestran $1 ediciones intermedias realizadas}} por {{PLURAL:$2|un usuario|$2 usuarios}})',
+'diff-multi-manyusers'     => '(No se {{PLURAL:$1|muestra una edición intermedia|muestran $1 ediciones intermedias}} de {{PLURAL:$2|un usuario|$2 usuarios}})',
 
 # Search results
 'searchresults'                    => 'Resultados de la búsqueda',
@@ -1412,7 +1405,7 @@ Esto no puede ser deshecho.',
 'gender-unknown'                => 'Sin especificar',
 'gender-male'                   => 'Masculino',
 'gender-female'                 => 'Femenino',
-'prefs-help-gender'             => 'Opcional: Usada para tarea de corrección de género por el software. Esta información será pública.',
+'prefs-help-gender'             => 'Opcional: empleado para que sea usado correctamente el género por parte del software. Esta información será pública.',
 'email'                         => 'Correo electrónico',
 'prefs-help-realname'           => 'El nombre real es opcional. Si decides proporcionarlo, se usará para dar atribución a tu trabajo.',
 'prefs-help-email'              => 'La dirección de correo es opcional, pero permite enviar una nueva contraseña en caso de olvidarla.
@@ -1541,7 +1534,6 @@ También puede permitir a otros usuarios que te contacten a través de tu págin
 'right-override-export-depth' => 'Exporta páginas incluyendo aquellas enlazadas hasta una profundidad de 5',
 'right-sendemail'             => 'Enviar un correo electrónico a otros usuarios',
 'right-revisionmove'          => 'Mover revisiones',
-'right-selenium'              => 'Ejecutar tests de Selenium',
 
 # User rights log
 'rightslog'      => 'Cambios de perfil de usuario',
@@ -1749,7 +1741,7 @@ Por favor, elige un nombre más descriptivo.",
 'upload-success-subj'         => 'Subida con éxito',
 'upload-success-msg'          => 'Tu carga de  [$2] fue existosa. Está disponible aquí: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema en la carga',
-'upload-failure-msg'          => 'Hubo un problema con tu carga:
+'upload-failure-msg'          => 'Hubo un problema durante la carga desde [$2]:
 
 $1',
 'upload-warning-subj'         => 'Alerta de carga',
@@ -2464,7 +2456,7 @@ Explica la razón específica del bloqueo (por ejemplo, citando las páginas en 
 ** Comportamiento intimidatorio u hostil
 ** Abusar de múltiples cuentas
 ** Nombre de usuario inaceptable',
-'ipbanononly'                     => 'Bloquear usuarios anónimos solamente',
+'ipbanononly'                     => 'Bloquear sólo usuarios anónimos',
 'ipbcreateaccount'                => 'Prevenir la creación de cuentas de usuario',
 'ipbemailban'                     => 'Prevenir que el usuario envíe correo electrónico',
 'ipbenableautoblock'              => 'Bloquear automáticamente la dirección IP usada por este usuario y cualquier IP posterior desde la cual intente editar',
@@ -3423,6 +3415,7 @@ También puedes [[Special:Watchlist/edit|usar el editor estándar]].',
 'version-version'                  => '(Versión $1)',
 'version-license'                  => 'Licencia',
 'version-poweredby-credits'        => "Este wiki funciona gracias a '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'otros',
 'version-license-info'             => 'MediaWiki es software libre; puedes redistribuírlo y/o modificarlo bajo los términos de la Licencia General Pública GNU publicada por la Fundación del Software Libre; ya sea la versión 2 de la licencia, o (a tu elección) cualquier versión posterior.
 
 MediaWiki es distribuído con la esperanza de que será útil, pero SIN NINGUNA GARANTÍA; ni siquiera con la garantía implícita de COMERCIALIZACIÓN ó ADAPTACIÓN A UN PROPÓSITO PARTICULAR. Véase la Licencia Pública General GNU para mayores detalles.

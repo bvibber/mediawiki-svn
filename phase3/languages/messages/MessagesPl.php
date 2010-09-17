@@ -248,7 +248,7 @@ $messages = array(
 'tog-editsection'             => 'Możliwość edycji poszczególnych sekcji strony (link [edytuj])',
 'tog-editsectiononrightclick' => 'Kliknięcie prawym klawiszem myszy na tytule sekcji rozpoczyna jej edycję (JavaScript)',
 'tog-showtoc'                 => 'Pokazuj spis treści (na stronach z więcej niż 3 nagłówkami)',
-'tog-rememberpassword'        => 'Zapamiętaj moje hasło na tym komputerze (maksymalnie przez $1 {{PLURAL:$1|dzień|dni}})',
+'tog-rememberpassword'        => 'Zapamiętaj moje hasło w przeglądarce (maksymalnie przez $1 {{PLURAL:$1|dzień|dni}})',
 'tog-watchcreations'          => 'Dodaj do obserwowanych strony tworzone przeze mnie',
 'tog-watchdefault'            => 'Dodaj do obserwowanych strony, które edytuję',
 'tog-watchmoves'              => 'Dodaj do obserwowanych strony, które przenoszę',
@@ -399,17 +399,6 @@ $messages = array(
 'vector-action-protect'          => 'Zabezpiecz',
 'vector-action-undelete'         => 'Odtwórz',
 'vector-action-unprotect'        => 'Odbezpiecz',
-'vector-namespace-category'      => 'Kategoria',
-'vector-namespace-help'          => 'Strona pomocy',
-'vector-namespace-image'         => 'Plik',
-'vector-namespace-main'          => 'Strona',
-'vector-namespace-media'         => 'Strona pliku',
-'vector-namespace-mediawiki'     => 'Komunikat',
-'vector-namespace-project'       => 'Strona projektu',
-'vector-namespace-special'       => 'Strona specjalna',
-'vector-namespace-talk'          => 'Dyskusja',
-'vector-namespace-template'      => 'Szablon',
-'vector-namespace-user'          => 'Strona użytkownika',
 'vector-simplesearch-preference' => 'Włącz zaawansowane podpowiedzi wyszukiwania (tylko dla skórki Wektor)',
 'vector-view-create'             => 'Utwórz',
 'vector-view-edit'               => 'Edytuj',
@@ -479,6 +468,9 @@ Zbyt wielu użytkowników próbuje wyświetlić tę stronę.
 Poczekaj chwilę przed ponowną próbą dostępu do tej strony.
 
 $1',
+'pool-timeout'      => 'Zbyt długi czas oczekiwania na blokadę',
+'pool-queuefull'    => 'Kolejka zadań jest pełna',
+'pool-errorunknown' => 'Błąd nieznany',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O {{GRAMMAR:MS.lp|{{SITENAME}}}}',
@@ -727,6 +719,11 @@ Możesz zignorować tę wiadomość, jeśli konto zostało utworzone przez pomy�
 Odczekaj chwilę zanim ponowisz próbę.',
 'loginlanguagelabel'         => 'Język: $1',
 'suspicious-userlogout'      => 'Żądanie wylogowania zostało odrzucone ponieważ wygląda na to, że zostało wysłane przez uszkodzoną przeglądarkę lub buforujący serwer proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- nie modyfikuj tej linii --> <pre>
+# Składnia jest następująca:
+# * Wszystko od znaku „#” do końca linii uznawane jest za komentarz
+# * Każda niepusta linia, zawiera adres IP wyłączony z ograniczenia przepustowości
+ #</pre> <!-- nie modyfikuj tej linii -->',
 
 # JavaScript password checks
 'password-strength'            => 'Szacowane bezpieczeństwo hasła – $1',
@@ -1182,7 +1179,8 @@ Użycie linków nawigacyjnych kasuje wybór w kolumnie.',
 'compareselectedversions'  => 'porównaj wybrane wersje',
 'showhideselectedversions' => 'Pokaż lub ukryj zaznaczone wersje',
 'editundo'                 => 'anuluj edycję',
-'diff-multi'               => '(Nie pokazano $1 {{PLURAL:$1|wersji|wersji}} pomiędzy niniejszymi.)',
+'diff-multi'               => '(Nie pokazano $1 wersji {{PLURAL:$1|utworzonej|utworzonych}} przez {{PLURAL:$2|jednego użytkownika|$2 użytkowników}})',
+'diff-multi-manyusers'     => '(Nie pokazano $1 {{PLURAL:$1|pośredniej wersji utworzonej|pośrednich wersji utworzonych}} przez {{PLURAL:$2|jednego użytkownika|$2 użytkowników}})',
 
 # Search results
 'searchresults'                    => 'Wyniki wyszukiwania',
@@ -1479,7 +1477,6 @@ Jeśli zdecydujesz się je podać, zostaną użyte, by udokumentować Twoje auto
 'right-override-export-depth' => 'Eksport stron wraz z linkowanymi do głębokości 5 linków',
 'right-sendemail'             => 'Wysyłanie e‐maili do innych użytkowników',
 'right-revisionmove'          => 'Przenoszenie wersji',
-'right-selenium'              => 'Uruchamianie testów Selenium',
 
 # User rights log
 'rightslog'      => 'Uprawnienia',

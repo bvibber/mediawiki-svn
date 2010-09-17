@@ -41,6 +41,13 @@ class PasswordError extends MWException {
  * of the database.
  */
 class User {
+	/**
+	 * Global constants made accessable as class constants so that autoloader
+	 * magic can be used.
+	 */
+	const USER_TOKEN_LENGTH = USER_TOKEN_LENGTH;
+	const MW_USER_VERSION = MW_USER_VERSION;
+	const EDIT_TOKEN_SUFFIX = EDIT_TOKEN_SUFFIX;
 
 	/**
 	 * \type{\arrayof{\string}} List of member variables which are saved to the
@@ -1205,10 +1212,34 @@ class User {
 			// Deprecated, but kept for backwards-compatibility config
 			return false;
 		}
-		if( in_array( wfGetIP(), $wgRateLimitsExcludedIPs ) ) {
+
+		wfDebug( "Checking the list of IP addresses excluded from rate limit..\n" );
+
+		// Read list of IP addresses from MediaWiki namespace
+		$message = wfMsgForContentNoTrans( 'ratelimit-excluded-ips' );
+		$lines = explode( "\n", $message );
+		foreach( $lines as $line ) {
+			// Remove comment lines
+			$comment = substr( trim( $line ), 0, 1 );
+			if ( $comment == '#' || $comment == '' ) {
+				continue;
+			}
+			// Remove additional comments after an IP address
+			$comment = strpos( $line, '#' );
+			if ( $comment > 0 ) {
+				$line = trim( substr( $line, 0, $comment-1 ) );
+				if ( IP::isValid( $line ) ) {
+					$wgRateLimitsExcludedIPs[] = IP::sanitizeIP( $line );
+				}
+			}
+		}
+
+		$ip = IP::sanitizeIP( wfGetIP() );
+		if( in_array( $ip, $wgRateLimitsExcludedIPs ) ) {
 			// No other good way currently to disable rate limits
 			// for specific IPs. :P
 			// But this is a crappy hack and should die.
+			wfDebug( "IP $ip matches the list of rate limit excluded IPs\n" );
 			return false;
 		}
 		return !$this->isAllowed('noratelimit');
@@ -2209,33 +2240,46 @@ class User {
 	 * @return Skin The current skin
 	 * @todo FIXME : need to check the old failback system [AV]
 	 */
-	function &getSkin( $t = null ) {
-		if ( !isset( $this->mSkin ) ) {
-			wfProfileIn( __METHOD__ );
-
-			global $wgHiddenPrefs;
-			if( !in_array( 'skin', $wgHiddenPrefs ) ) {
-				# get the user skin
-				global $wgRequest;
-				$userSkin = $this->getOption( 'skin' );
-				$userSkin = $wgRequest->getVal( 'useskin', $userSkin );
-			} else {
-				# if we're not allowing users to override, then use the default
-				global $wgDefaultSkin;
-				$userSkin = $wgDefaultSkin;
+	function getSkin( $t = null ) {
+		if ( $t ) {
+			$skin = $this->createSkinObject();
+			$skin->setTitle( $t );
+			return $skin;
+		} else {
+			if ( ! $this->mSkin ) {
+				$this->mSkin = $this->createSkinObject();
 			}
-
-			$this->mSkin = Skin::newFromKey( $userSkin );
-			wfProfileOut( __METHOD__ );
-		}
-		if( $t || !$this->mSkin->getTitle() ) {
-			if ( !$t ) {
+			
+			if ( ! $this->mSkin->getTitle() ) {
 				global $wgOut;
 				$t = $wgOut->getTitle();
+				$this->mSkin->setTitle($t);
 			}
-			$this->mSkin->setTitle( $t );
+			
+			return $this->mSkin;
 		}
-		return $this->mSkin;
+	}
+	
+	// Creates a Skin object, for getSkin()
+	private function createSkinObject() {
+		wfProfileIn( __METHOD__ );
+
+		global $wgHiddenPrefs;
+		if( !in_array( 'skin', $wgHiddenPrefs ) ) {
+			# get the user skin
+			global $wgRequest;
+			$userSkin = $this->getOption( 'skin' );
+			$userSkin = $wgRequest->getVal( 'useskin', $userSkin );
+		} else {
+			# if we're not allowing users to override, then use the default
+			global $wgDefaultSkin;
+			$userSkin = $wgDefaultSkin;
+		}
+
+		$skin = Skin::newFromKey( $userSkin );
+		wfProfileOut( __METHOD__ );
+		
+		return $skin;
 	}
 
 	/**

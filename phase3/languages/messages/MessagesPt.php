@@ -304,7 +304,7 @@ $messages = array(
 'tog-editsection'             => 'Possibilitar a edição de secções com links [editar]',
 'tog-editsectiononrightclick' => 'Possibilitar a edição de secções por clique com o botão direito no título da secção (JavaScript)',
 'tog-showtoc'                 => 'Mostrar índice (para páginas com mais de três secções)',
-'tog-rememberpassword'        => 'Recordar os meus dados neste computador (no máximo, por $1 {{PLURAL:$1|dia|dias}})',
+'tog-rememberpassword'        => 'Recordar os meus dados neste navegador (no máximo, por $1 {{PLURAL:$1|dia|dias}})',
 'tog-watchcreations'          => 'Adicionar as páginas que eu criar às minhas páginas vigiadas',
 'tog-watchdefault'            => 'Adicionar as páginas que eu editar às minhas páginas vigiadas',
 'tog-watchmoves'              => 'Adicionar as páginas que eu mover às minhas páginas vigiadas',
@@ -456,17 +456,6 @@ $messages = array(
 'vector-action-protect'          => 'Proteger',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desproteger',
-'vector-namespace-category'      => 'Categoria',
-'vector-namespace-help'          => 'Página de ajuda',
-'vector-namespace-image'         => 'Ficheiro',
-'vector-namespace-main'          => 'Página',
-'vector-namespace-media'         => 'Página de multimédia',
-'vector-namespace-mediawiki'     => 'Mensagem',
-'vector-namespace-project'       => 'Página de projecto',
-'vector-namespace-special'       => 'Página especial',
-'vector-namespace-talk'          => 'Discussão',
-'vector-namespace-template'      => 'Predefinição',
-'vector-namespace-user'          => 'Página de utilizador',
 'vector-simplesearch-preference' => 'Activar sugestões de busca melhoradas (apenas no tema Vector)',
 'vector-view-create'             => 'Criar',
 'vector-view-edit'               => 'Editar',
@@ -536,6 +525,9 @@ Há demasiados utilizadores a tentar visionar esta página.
 Espere um pouco antes de tentar aceder à página novamente, por favor.
 
 $1',
+'pool-timeout'      => 'Tempo limite de espera para o bloqueio excedido',
+'pool-queuefull'    => 'A pool queue está cheia',
+'pool-errorunknown' => 'Erro desconhecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sobre a {{SITENAME}}',
@@ -783,6 +775,11 @@ Se a conta foi criada por engano, pode ignorar esta mensagem.',
 Aguarde antes de tentar novamente, por favor.',
 'loginlanguagelabel'         => 'Língua: $1',
 'suspicious-userlogout'      => 'O seu pedido para sair foi negado porque parece ter sido enviado por um browser danificado ou por um proxy com cache.',
+'ratelimit-excluded-ips'     => ' #<!-- deixe esta linha exactamente como está --> <pre>
+# A sintaxe é a seguinte:
+#  * Tudo desde um símbolo de cardinal (#) até ao fim da linha é um comentário
+#  * Qualquer linha que não esteja em branco é um endereço IP isento dos limites de velocidade de operação
+ #</pre> <!-- deixe esta linha exactamente como está -->',
 
 # JavaScript password checks
 'password-strength'            => 'Estimativa da segurança da palavra-chave: $1',
@@ -1035,8 +1032,9 @@ Estes argumentos foram omitidos.',
 'language-converter-depth-warning'        => 'O limite de profundidade do conversor de línguas excedeu a ($1)',
 
 # "Undo" feature
-'undo-success' => 'A edição pode ser desfeita.
-Por favor, verifique a seguinte comparação para se certificar de que é o que pretende fazer, e grave abaixo as alterações para finalizar e desfazer a edição.',
+'undo-success' => 'É possível desfazer a edição.
+Verifique a comparação abaixo, para se certificar que corresponde ao que pretende fazer.
+Depois grave as alterações, para finalizar e desfazer a edição.',
 'undo-failure' => 'Não foi possível desfazer a edição por conflito com alterações intermédias.',
 'undo-norev'   => 'Não foi possível desfazer a edição porque ela não existe ou foi apagada.',
 'undo-summary' => 'Desfeita a edição $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|Discussão]])',
@@ -1251,7 +1249,8 @@ Note que, se usar os links de navegação, os botões de opção voltarão aos v
 'compareselectedversions'  => 'Compare as versões seleccionadas',
 'showhideselectedversions' => 'Mostrar/ocultar versões selecionadas',
 'editundo'                 => 'desfazer',
-'diff-multi'               => '({{PLURAL:$1|uma edição intermédia não apresentada|$1 edições intermédias não apresentadas}})',
+'diff-multi'               => '({{PLURAL:$1|Uma edição intermédia|$1 edições intermédias}} de {{PLURAL:$2|um utilizador|$2 utilizadores}} {{PLURAL:$1|não apresentada|não apresentadas}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Uma edição intermédia|$1 edições intermédias}} de mais de {{PLURAL:$2|um utilizador|$2 utilizadores}} não {{PLURAL:$1|apresentada|apresentadas}})',
 
 # Search results
 'searchresults'                    => 'Resultados da pesquisa',
@@ -1551,7 +1550,6 @@ Também permite que outros entrem em contacto consigo através da sua página de
 'right-override-export-depth' => 'Exportar páginas incluindo páginas ligadas até uma profundidade de 5',
 'right-sendemail'             => 'Enviar correio electrónico a outros utilizadores',
 'right-revisionmove'          => 'Mover revisões',
-'right-selenium'              => 'Executar os testes do Selenium',
 
 # User rights log
 'rightslog'      => 'Registo de privilégios de utilizador',
@@ -1659,11 +1657,11 @@ As suas [[Special:Watchlist|páginas vigiadas]] aparecem a '''negrito'''.",
 'upload-recreate-warning'     => "'''Aviso: Um ficheiro com esse nome foi eliminado ou movido.'''
 
 Para sua conveniência, é apresentado de seguida o registo de eliminação e de movimento da página:",
-'uploadtext'                  => "Utilize o formulário abaixo para carregar novos ficheiros.
-Para ver ou pesquisar ficheiros anteriormente carregados, consulte a [[Special:FileList|lista de ficheiros]].
-Os recarregamentos de um ficheiro são também registados no [[Special:Log/upload|registo de carregamentos]] e as eliminações no [[Special:Log/delete|registo de eliminações]].
+'uploadtext'                  => "Utilize o formulário abaixo para fazer upload de ficheiros novos.
+Para ver ou pesquisar ficheiros anteriormente enviados, consulte a [[Special:FileList|lista de ficheiros]].
+Os reenvios de um ficheiro são também registados no [[Special:Log/upload|registo de uploads]] e as eliminações no [[Special:Log/delete|registo de eliminações]].
 
-Para utilizar um ficheiro numa página, depois de carregado, insira um link com um dos seguintes formatos:
+Para utilizar um ficheiro numa página, depois de ter feito o upload, insira um link com um dos seguintes formatos:
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:ficheiro.jpg]]</nowiki></tt>''' para mostrar uma imagem nas suas dimensões originais;
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:ficheiro.png|200px|thumb|left|texto]]</nowiki></tt>''' para mostrar uma imagem com a dimensão horizontal de 200 pixels, dentro de uma caixa, na margem esquerda, contendo 'texto' como descrição (pode usar subconjuntos destas características);
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:ficheiro.ogg]]</nowiki></tt>''' para apresentar um link directo para o ficheiro em vez de mostrá-lo, quer este tenha por conteúdo uma imagem ou outros dados.",
@@ -1759,11 +1757,11 @@ Verifique a configuração file_uploads, por favor.',
 'watchthisupload'             => 'Vigiar este ficheiro',
 'filewasdeleted'              => 'Um ficheiro com este nome foi carregado anteriormente e subsequentemente eliminado.
 Deverá verificar o $1 antes de voltar a enviá-lo.',
-'upload-wasdeleted'           => "'''Aviso: Está a carregar um ficheiro anteriormente eliminado.'''
+'upload-wasdeleted'           => "'''Aviso: Está a enviar um ficheiro anteriormente eliminado.'''
 
 Verifique se é apropriado prosseguir este envio.
 Para sua conveniência, é apresentado de seguida o registo de eliminação do ficheiro:",
-'filename-bad-prefix'         => "O nome do ficheiro que está a carregar começa por '''\"\$1\"''', um nome pouco explicativo, normalmente originado de forma automática por câmaras digitais. Escolha um nome de ficheiro mais explicativo, por favor.",
+'filename-bad-prefix'         => "O nome do ficheiro que está a enviar começa por '''\"\$1\"''', um nome pouco explicativo, normalmente originado de forma automática por câmaras digitais. Escolha um nome de ficheiro mais explicativo, por favor.",
 'filename-prefix-blacklist'   => ' #<!-- deixe esta linha exactamente como está --> <pre>
 # A sintaxe é a seguinte:
 #   * Tudo a partir do caractere "#" até ao fim da linha é um comentário
@@ -2723,8 +2721,8 @@ Se desejar, pode utilizar um link (por exemplo, [[{{#Special:Export}}/{{MediaWik
 'allmessagesname'               => 'Nome',
 'allmessagesdefault'            => 'Texto padrão',
 'allmessagescurrent'            => 'Texto actual',
-'allmessagestext'               => 'Esta é uma lista das mensagens de sistema disponíveis no espaço nominal {{ns:mediawiki}}.
-Por favor, visite [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [http://translatewiki.net translatewiki.net] se deseja participar na localização do MediaWiki.',
+'allmessagestext'               => 'Esta é a lista das mensagens de sistema disponíveis no espaço nominal MediaWiki.
+Se deseja colaborar na localização genérica do MediaWiki, visite [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e a [http://translatewiki.net translatewiki.net].',
 'allmessagesnotsupportedDB'     => "Esta página não pode ser utilizada, uma vez que '''\$wgUseDatabaseMessages''' foi desativado.",
 'allmessages-filter-legend'     => 'Filtro',
 'allmessages-filter'            => 'Filtrar pelo estado de personalização:',
@@ -2838,7 +2836,7 @@ Utilize o botão "Antever resultado" antes de gravar, por favor.',
 'tooltip-feed-atom'               => "''Feed'' Atom desta página",
 'tooltip-t-contributions'         => 'Ver as contribuições deste utilizador',
 'tooltip-t-emailuser'             => 'Enviar uma mensagem de correio a este utilizador',
-'tooltip-t-upload'                => 'Carregar ficheiros',
+'tooltip-t-upload'                => 'Upload de ficheiros',
 'tooltip-t-specialpages'          => 'Lista de páginas especiais',
 'tooltip-t-print'                 => 'Versão para impressão desta página',
 'tooltip-t-permalink'             => 'Link permanente para esta versão desta página',
@@ -3113,7 +3111,7 @@ Caso o ficheiro tenha sido modificado a partir do seu estado original, alguns de
 'exif-focalplaneresolutionunit'    => 'Unidade de resolução do plano focal',
 'exif-subjectlocation'             => 'Localização do motivo',
 'exif-exposureindex'               => 'Índice de exposição',
-'exif-sensingmethod'               => 'Método de sensação',
+'exif-sensingmethod'               => 'Tipo de sensor',
 'exif-filesource'                  => 'Fonte do ficheiro',
 'exif-scenetype'                   => 'Tipo de cena',
 'exif-cfapattern'                  => 'padrão CFA',
@@ -3543,7 +3541,7 @@ Introduza o nome do ficheiro sem o prefixo \"{{ns:file}}:\".",
 # Estas serão comparadas com as URLs das imagens externas (com link directo)
 # As que corresponderem serão apresentadas como imagens, caso contrário apenas será apresentado um link para a imagem
 # As linhas que começam com um símbolo de cardinal (#) são tratadas como comentários
-# Esta lista não é sensível a maiúsculas ou minúsculas
+# Esta lista não distingue maiúsculas de minúsculas
 
 # Coloque todos os fragmentos de expressões regulares (regex) acima desta linha. Deixe esta linha exatamente como ela está</pre>',
 

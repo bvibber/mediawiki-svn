@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base code for files.
+ *
+ * @file
+ * @ingroup FileRepo
+ */
 
 /**
  * Implements some public methods and some protected utility functions which
@@ -1186,7 +1192,16 @@ abstract class File {
 		if ( $info['fileExists'] ) {
 			$magic = MimeMagic::singleton();
 
-			$info['mime'] = $magic->guessMimeType( $path, $ext );
+			if ( $ext === true ) {
+				$i = strrpos( $path, '.' );
+				$ext = strtolower( $i ? substr( $path, $i + 1 ) : '' );
+			}
+
+			# mime type according to file contents
+			$info['file-mime'] = $magic->guessMimeType( $path, false );
+			# logical mime type
+			$info['mime'] = $magic->improveTypeFromExtension( $info['file-mime'], $ext );
+
 			list( $info['major_mime'], $info['minor_mime'] ) = self::splitMime( $info['mime'] );
 			$info['media_type'] = $magic->getMediaType( $path, $info['mime'] );
 

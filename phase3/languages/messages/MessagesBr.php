@@ -329,17 +329,6 @@ $messages = array(
 'vector-action-protect'          => 'Gwareziñ',
 'vector-action-undelete'         => 'Diziverkañ',
 'vector-action-unprotect'        => 'Diwareziñ',
-'vector-namespace-category'      => 'Rummad',
-'vector-namespace-help'          => 'Skoazell',
-'vector-namespace-image'         => 'Restr',
-'vector-namespace-main'          => 'Pennad',
-'vector-namespace-media'         => 'Pajenn vedia',
-'vector-namespace-mediawiki'     => 'Kemennadenn',
-'vector-namespace-project'       => 'Pajenn ar raktres',
-'vector-namespace-special'       => 'Pajenn dibar',
-'vector-namespace-talk'          => 'Kaozeal',
-'vector-namespace-template'      => 'Patrom',
-'vector-namespace-user'          => 'Pajenn implijer',
 'vector-simplesearch-preference' => "Aotren ar c'hinnigoù klask gwellaet (gant Vektor nemetken)",
 'vector-view-create'             => 'Krouiñ',
 'vector-view-edit'               => 'Kemmañ',
@@ -409,6 +398,7 @@ Re a implijerien a glask mont war ar bajenn-mañ war un dro.
 Gortozit ur pennadig a-raok klask mont war ar bjann-mañ en-dro.
 
 $1',
+'pool-errorunknown' => 'Fazi dianav',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Diwar-benn {{SITENAME}}',
@@ -1088,7 +1078,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'compareselectedversions'  => 'Keñveriañ ar stummoù diuzet',
 'showhideselectedversions' => 'Diskouez/Kuzhat ar stummoù diuzet',
 'editundo'                 => 'disteuler',
-'diff-multi'               => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} kuzhet.)",
+'diff-multi'               => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant {{PLURAL:$2|un implijer|$2 implijer}} kuzhet.)",
 
 # Search results
 'searchresults'                    => "Disoc'h ar c'hlask",
@@ -1384,7 +1374,6 @@ Gallout a rit lezel tud all da vont e darempred ganeoc'h dre ho pajennoù implij
 'right-override-export-depth' => 'Ezporzhiañ ar pajennoù en ur lakaat e-barzh ar pajennoù liammet betek un donder a 5 live',
 'right-sendemail'             => "Kas ur postel d'an implijerien all",
 'right-revisionmove'          => "Dilec'hiañ an adweladennoù",
-'right-selenium'              => 'Seveniñ an testoù seleniom',
 
 # User rights log
 'rightslog'      => 'Marilh statud an implijerien',
@@ -1605,7 +1594,7 @@ PICT # misc.
 'upload-success-subj'         => 'Eiladenn kaset da benn vat',
 'upload-success-msg'          => 'Ho kargadenn eus [$2] a zo bet graet. Gellout a rit kavout anezhi amañ : [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Kudenn kargañ',
-'upload-failure-msg'          => "Ur gudenn 'zo bet e-pad ho kargadenn :
+'upload-failure-msg'          => "Ur gudenn 'zo bet e-pad ho kargadenn adalek [$2] :
 
 $1",
 'upload-warning-subj'         => "Kemmen diwall e-pad ar c'hargañ",

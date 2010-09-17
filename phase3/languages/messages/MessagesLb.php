@@ -173,7 +173,7 @@ $messages = array(
 'tog-editsection'             => "Linke fir d'Ännere vun eenzelnen Abschnitter weisen",
 'tog-editsectiononrightclick' => 'Eenzel Abschnitter mat Rietsklick änneren (JavaScript)',
 'tog-showtoc'                 => 'Inhaltsverzeechnes weise bei Säite mat méi wéi dräi Iwwerschrëften',
-'tog-rememberpassword'        => 'Meng Umeldung op dësem Computer (fir maximal $1 {{PLURAL:$1|Dag|Deeg}}) verhalen',
+'tog-rememberpassword'        => 'Meng Umeldung mat dësem Browser(fir maximal $1 {{PLURAL:$1|Dag|Deeg}}) verhalen',
 'tog-watchcreations'          => 'Säiten déi ech nei uleeën automatesch op meng Iwwerwaachungslëscht setzen',
 'tog-watchdefault'            => 'Säiten déi ech änneren op meng Iwwerwaachungslëscht setzen',
 'tog-watchmoves'              => 'Säiten déi ech réckelen automatesch op meng Iwwerwaachungslëscht setzen',
@@ -324,17 +324,6 @@ $messages = array(
 'vector-action-protect'          => 'Spären',
 'vector-action-undelete'         => 'Restauréieren',
 'vector-action-unprotect'        => 'Spär ophiewen',
-'vector-namespace-category'      => 'Kategorie',
-'vector-namespace-help'          => 'Hëllefssäit',
-'vector-namespace-image'         => 'Fichier',
-'vector-namespace-main'          => 'Säit',
-'vector-namespace-media'         => 'Mediesäit',
-'vector-namespace-mediawiki'     => 'Message',
-'vector-namespace-project'       => 'Projetssäit',
-'vector-namespace-special'       => 'Spezialsäit',
-'vector-namespace-talk'          => 'Diskussioun',
-'vector-namespace-template'      => 'Schabloun',
-'vector-namespace-user'          => 'Benotzersäit',
 'vector-simplesearch-preference' => 'Verbessert Sichvirschléi aktiviéieren (nëmme beim Ausgesinn Vector)',
 'vector-view-create'             => 'Uleeën',
 'vector-view-edit'               => 'Änneren',
@@ -1088,7 +1077,8 @@ Denkt w.e.g drunn datt d'Navigatiounslinken d'Wiel vun de Versiounen nees zréck
 'compareselectedversions'  => 'Ausgewielte Versioune vergläichen',
 'showhideselectedversions' => 'Erausgesichte Versioune weisen/verstoppen',
 'editundo'                 => 'zréck',
-'diff-multi'               => '({{PLURAL:$1|Eng Tëscheversioun gëtt net|$1 Tëscheversioune ginn net}} gewisen)',
+'diff-multi'               => '({{PLURAL:$1|Eng Tëscheversioun|$1 Tëscheversioune}} vun {{PLURAL:$2|engem|$2}} Benotzer {{PLURAL:$1|¨gëtt|ginn}} net gewisen)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Eng Tëscheversioun|$1 Tëscheversioune}} vu méi wéi $2 {{PLURAL:$2|Benotzer|Benotzer}} ginn net gewisen)',
 
 # Search results
 'searchresults'                    => 'Resultat vun der Sich',
@@ -1383,7 +1373,6 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op Ärer Be
 'right-override-export-depth' => 'Säiten exportéieren inklusiv de verlinkte Säite bis zu enger Déift vu 5',
 'right-sendemail'             => 'Anere Benotzer E-Maile schécken',
 'right-revisionmove'          => 'Versioune réckelen',
-'right-selenium'              => 'Selenium-Tester maachen',
 
 # User rights log
 'rightslog'      => 'Logbuch vun de Benotzerrechter',
@@ -2121,7 +2110,7 @@ Déi lescht Ännerung vun der Säit ass vum [[User:$3|$3]] ([[User talk:$3|Disku
 'sessionfailure-title' => 'Setzungsfeeler',
 'sessionfailure'       => 'Et schéngt e Problem mat ärer Loginséance ze ginn;
 Dës Aktioun gouf aus Sécherheetsgrënn ofgebrach, fir ze verhënneren datt är Séance piratéiert ka ginn.
-Klickt w.e.g. op "Zréck" a lued déi Säit vun däer Dir komm sidd nei, a versicht et dann nach eng Kéier.',
+Klickt w.e.g. op "Zréck" a lued déi Säit vun där Dir komm sidd nei, a versicht et dann nach eng Kéier.',
 
 # Protect
 'protectlogpage'              => 'Protectiouns-Logbuch',
@@ -2647,20 +2636,20 @@ Späichert en op Ärem Computer of a luet en hei nees erop.',
 'tooltip-ca-nstab-image'          => 'Billersäit weisen',
 'tooltip-ca-nstab-mediawiki'      => 'Systemmessage weisen',
 'tooltip-ca-nstab-template'       => 'Schabloun weisen',
-'tooltip-ca-nstab-help'           => 'Hëllefesäite weisen',
+'tooltip-ca-nstab-help'           => 'Hëllefssäite weisen',
 'tooltip-ca-nstab-category'       => 'Kategoriesäit weisen',
 'tooltip-minoredit'               => 'Dës Ännerung als kleng markéieren.',
 'tooltip-save'                    => 'Ännerunge späicheren',
 'tooltip-preview'                 => 'Kuckt är Ännerungen ouni ofzespäicheren, Benotzt dëst w.e.g. virum späicheren!',
-'tooltip-diff'                    => 'Weist wéi eng Ännerungen der beim Text gemaach hutt.',
+'tooltip-diff'                    => 'Weist wéi eng Ännerungen Dir beim Text gemaach hutt.',
 'tooltip-compareselectedversions' => "D'Ënnerscheeder op dëser Säit tëscht den zwou gewielte Versioune weisen.",
-'tooltip-watch'                   => 'Dës Säit op är Iwwerwaachungslëscht bäisetzen',
-'tooltip-recreate'                => "D'Säit nees maachen, obwuel se geläscht gi war.",
+'tooltip-watch'                   => 'Dës Säit op Är Iwwerwaachungslëscht bäisetzen',
+'tooltip-recreate'                => "D'Säit nees uleeën, obwuel se geläscht gi war.",
 'tooltip-upload'                  => 'Mam eroplueden ufänken',
 'tooltip-rollback'                => '"Zrécksetzen" mécht all Ännerunge vum leschten "Auteur" an engem Klick nees réckgängeg.',
 'tooltip-undo'                    => '"Zréck" setzt dës Ännerung zréck a mécht den Ännerungsformulaire am Modus "kucken ouni ofzespäicheren" op.
 Erlaabt et e Grond an de Resumé derbäizesetzen.',
-'tooltip-preferences-save'        => 'Astellungen späicheren',
+'tooltip-preferences-save'        => 'Astellunge späicheren',
 'tooltip-summary'                 => 'Gitt e kuerze Resumé an',
 
 # Stylesheets

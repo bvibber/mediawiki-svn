@@ -1,7 +1,7 @@
 <?php
 /**
  * Classes to show various lists of changes:
- * - what links here
+ * - watchlist
  * - related changes
  * - recent changes
  *
@@ -601,14 +601,14 @@ class EnhancedChangesList extends ChangesList {
 	 * @return String
 	 */
 	public function beginRecentChangesList() {
-		global $wgStylePath, $wgStyleVersion;
+		global $wgOut;
 		$this->rc_cache = array();
 		$this->rcMoveIndex = 0;
 		$this->rcCacheIndex = 0;
 		$this->lastdate = '';
 		$this->rclistOpen = false;
-		$script = Html::linkedScript( $wgStylePath . "/common/enhancedchanges.js?$wgStyleVersion" );
-		return $script;
+		$wgOut->addModules( 'mediawiki.legacy.enhancedchanges' );
+		return '';
 	}
 	/**
 	 * Format a line for enhanced recentchange (aka with javascript and block of lines).

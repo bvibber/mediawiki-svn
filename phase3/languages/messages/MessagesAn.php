@@ -10,6 +10,7 @@
  * @author Juanpabl
  * @author Malafaya
  * @author Remember the dot
+ * @author The Evil IP address
  * @author Urhixidur
  * @author Willtron
  * @author לערי ריינהארט
@@ -136,7 +137,7 @@ $messages = array(
 'tog-editsection'             => 'Activar a edición por seccions usando os vinclos [editar]',
 'tog-editsectiononrightclick' => "Activar a edición de seccions punchando con o botón dreito d'o ratet <br /> en os títols de seccions (cal JavaScript)",
 'tog-showtoc'                 => "Amostrar l'endice (ta pachinas con más de 3 seccions)",
-'tog-rememberpassword'        => "Remerar o mío nombre d'usuario y contrasenya entre sesions en iste ordinador (como muito por $1 {{PLURAL:$1|día|días}})",
+'tog-rememberpassword'        => "Remerar o mío nombre d'usuario en iste navegador (como muito por $1 {{PLURAL:$1|día|días}})",
 'tog-watchcreations'          => 'Cosirar as pachinas que creye',
 'tog-watchdefault'            => 'Cosirar as pachinas que edite',
 'tog-watchmoves'              => 'Cosirar as pachinas que treslade',
@@ -287,17 +288,6 @@ $messages = array(
 'vector-action-protect'          => 'Protecher',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desprotecher',
-'vector-namespace-category'      => 'Categoría',
-'vector-namespace-help'          => "Pachina d'aduya",
-'vector-namespace-image'         => 'Fichero',
-'vector-namespace-main'          => 'Pachina',
-'vector-namespace-media'         => 'Pachina multimedia',
-'vector-namespace-mediawiki'     => 'Mensache',
-'vector-namespace-project'       => "Pachina d'o prochecto",
-'vector-namespace-special'       => 'Pachina especial',
-'vector-namespace-talk'          => 'Discusión',
-'vector-namespace-template'      => 'Plantilla',
-'vector-namespace-user'          => "Pachina d'usuario",
 'vector-simplesearch-preference' => "Habilitar socherencias de busca amilloradas (nomás ta l'apariencia Vector)",
 'vector-view-create'             => 'Creyar',
 'vector-view-edit'               => 'Editar',
@@ -596,6 +586,11 @@ Si a cuenta s\'ha creyato por error, simplament ignore iste mensache.',
 'login-throttled'            => 'Ha feito masiaus intentos ta encetar una sesión. Por favor, aspere antes de prebar de fer-lo unatra vegada.',
 'loginlanguagelabel'         => 'Idioma: $1',
 'suspicious-userlogout'      => "S'ha denegau a suya demanda de zarrar a sesión ya que pareix que la ninvió un navegador defectuoso u bell proxy amagau.",
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# A sintaxi ye asinas:
+#  * Tot o que bi ha dende un carácter "#" dica a fin d\'a linia ye un comentario
+#  * Qualsiquier linia que no sía en blanco corresponde a una adreza IP excluyida d\'o limite de velocidat
+   #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => "Livel de seguranza d'a contrasenya: $1",
@@ -658,7 +653,7 @@ Talment ya ha cambiato a suya contrasenya u ha demandato una nueva contrasenya t
 'showdiff'                         => 'Amostrar cambeos',
 'anoneditwarning'                  => "''Pare cuenta:'' No s'ha identificato con un nombre d'usuario. A suya adreza IP s'alzará en l'historial d'a pachina.",
 'anonpreviewwarning'               => "''No s'ha identificau con una cuenta d'usuario. A suya adreza IP quedará rechistrada en l'historial d'edicions d'ista pachina.\"",
-'missingsummary'                   => "'''Pare cuenta:''' No ha escrito garra resumen d'edición. Si puncha de nuevas en «{{MediaWiki:Savearticle}}» a suya edición se grabará sin resumen.",
+'missingsummary'                   => "'''Pare cuenta:''' No ha escrito garra resumen d'edición. Si puncha de nuevas en «{{int:savearticle}}» a suya edición se grabará sin resumen.",
 'missingcommenttext'               => 'Por favor, escriba o texto astí baixo.',
 'missingcommentheader'             => "'''Recordanza:''' No ha garra títol ta iste comentario. Si puncha de nuevas en \"{{int:savearticle}}\", a suya edición se grabará sin garra títol.",
 'summary-preview'                  => "Veyer anvista previa d'o resumen:",
@@ -1023,11 +1018,13 @@ Asegure-se que iste cambio no trencará a continidat de l'historial d'a pachina.
 # Diffs
 'history-title'            => 'Historial de versions de "$1"',
 'difference'               => '(Esferencias entre versions)',
+'difference-multipage'     => '(Diferencia entre pachinas)',
 'lineno'                   => 'Linia $1:',
 'compareselectedversions'  => 'Confrontar as versions trigatas',
 'showhideselectedversions' => 'Amostrar/amagar as versions trigadas',
 'editundo'                 => 'desfer',
-'diff-multi'               => "(S'ha amagato {{PLURAL:$1|una edición entremeya|$1 edicions entremeyas}}.)",
+'diff-multi'               => "(No s'amuestra {{PLURAL:$1|una edición entremeya feita|$1 edicions entremeyas feitas}} por {{PLURAL:$2|un usuario|$2 usuarios}}).",
+'diff-multi-manyusers'     => "(No s'amuestra {{PLURAL:$1|una edición entremeya|$1 edicions entremeyas}} feitas por más {{PLURAL:$2|d'un usuario|de $2 usuarios}})",
 
 # Search results
 'searchresults'                    => "Resultau d'a busca",
@@ -1321,7 +1318,6 @@ Habría de tener menos de $1 {{PLURAL:$1|carácter|carácters}}.',
 'right-override-export-depth' => 'Exporta pachinas que incluigan as enlazadas dica un fundaria de 5',
 'right-sendemail'             => 'Ninviar un correu electronico a atros usuarios',
 'right-revisionmove'          => 'Tresladar versions',
-'right-selenium'              => 'Executar os tests Selenium',
 
 # User rights log
 'rightslog'      => "Rechistro de cambios en os dreitos d'os usuarios",
@@ -1536,7 +1532,7 @@ PICT # misz.
 'upload-success-subj'         => 'Cargata correctament',
 'upload-success-msg'          => 'A carga de [$2] ha surtiu con exito. Ye disponible aquí: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema en a carga',
-'upload-failure-msg'          => 'I ha habiu bell problema con a suya carga:
+'upload-failure-msg'          => 'I ha habiu un problema con o a suya carga dende [$2]:
 
 $1',
 'upload-warning-subj'         => 'Alvertencia de carga',
@@ -2234,7 +2230,7 @@ as pachinas que s'han vandalizato).",
 ** Meter información falsa
 ** Borrar conteniu d'as pachinas
 ** Fer publicidat ficando vinclos con atras pachinas web
-** Meter sinconisions u basuera en as pachinas
+** Meter sinconisions u vasuera en as pachinas
 ** Portar-se de traza intimidatoria u violenta / atosegar
 ** Abusar de multiples cuentas
 ** Nombre d'usuario inacceptable",
@@ -3157,6 +3153,13 @@ Tamién puede fer servir o [[Special:Watchlist/edit|editor estándar]].",
 'version-hook-subscribedby'        => 'Suscrito por',
 'version-version'                  => '(Versión $1)',
 'version-license'                  => 'Licencia',
+'version-poweredby-credits'        => "Iste wiki funciona gracias a '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'atros',
+'version-license-info'             => "MediaWiki ye software libre, puet redistribuyir-lo y/u modificar-lo baixo os terminos d'a Licencia Publica Cheneral GNU publicada por a Free Software Foundation, ya siga d'a suya versión 2 u (a la suya esleción) qualsiquier versión posterior. 
+
+MediaWiki se distribuye con l'asperanza d'estar d'utilidat, pero SIN GARRA GUARANCIA; nian a guarancia implicita de COMERCIALIZACIÓN u ADEQUACIÓN TA UNA FINALIDAT DETERMINADA. En trobará más detalles en a Licencia Publica General GNU.
+
+Con iste programa ha d'haber recibiu [{{SERVER}}{{SCRIPTPATH}}/COPYING una copia d'a Licencia Publica Cheneral GNU]; si no ye asinas, endrece-se a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA u bien [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html la leiga en linia].",
 'version-software'                 => 'Software instalato',
 'version-software-product'         => 'Producto',
 'version-software-version'         => 'Versión',

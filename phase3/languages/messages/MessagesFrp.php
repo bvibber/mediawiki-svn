@@ -315,7 +315,7 @@ $messages = array(
 'tog-editsection'             => 'Activar los lims « [changiér] » por changiér una sèccion',
 'tog-editsectiononrightclick' => 'Fâre un clic drêt sur un titro de sèccion pèrmèt de changiér ceta (at fôta de JavaScript)',
 'tog-showtoc'                 => 'Fâre vêre la trâbla de les matiéres (por les pâges qu’ont més de 3 sèccions)',
-'tog-rememberpassword'        => 'Sè rapelar de mon branchement sur ceti ordenator (por $1 jorn{{PLURAL:$1||s}} u més)',
+'tog-rememberpassword'        => 'Sè rapelar de mon branchement sur ceti navigator (por $1 jorn{{PLURAL:$1||s}} u més)',
 'tog-watchcreations'          => 'Apondre les pâges que fé a ma lista de survelyence',
 'tog-watchdefault'            => 'Apondre les pâges que chanjo a ma lista de survelyence',
 'tog-watchmoves'              => 'Apondre les pâges que renomo a ma lista de survelyence',
@@ -466,17 +466,6 @@ $messages = array(
 'vector-action-protect'          => 'Protègiér',
 'vector-action-undelete'         => 'Refâre',
 'vector-action-unprotect'        => 'Dèprotègiér',
-'vector-namespace-category'      => 'Catègorie',
-'vector-namespace-help'          => 'Éde',
-'vector-namespace-image'         => 'Fichiér',
-'vector-namespace-main'          => 'Pâge',
-'vector-namespace-media'         => 'Pâge du fichiér multimèdia',
-'vector-namespace-mediawiki'     => 'Mèssâjo',
-'vector-namespace-project'       => 'Pâge du projèt',
-'vector-namespace-special'       => 'Pâge spèciâla',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Modèlo',
-'vector-namespace-user'          => 'Pâge utilisator',
 'vector-simplesearch-preference' => 'Activar los consèlys de rechèrche mèlyorâs (solament por « Vèctor »)',
 'vector-view-create'             => 'Fâre',
 'vector-view-edit'               => 'Changiér',
@@ -714,7 +703,7 @@ Oubliâd pas de pèrsonalisar voutres [[Special:Preferences|prèferences dessus 
 'yourname'                   => 'Voutron nom d’utilisator :',
 'yourpassword'               => 'Mot de pâssa :',
 'yourpasswordagain'          => 'Confirmâd lo mot de pâssa :',
-'remembermypassword'         => 'Sè rapelar de mon branchement sur ceti ordenator (por $1 jorn{{PLURAL:$1||s}} u més)',
+'remembermypassword'         => 'Sè rapelar de mon branchement sur ceti navigator (por $1 jorn{{PLURAL:$1||s}} u més)',
 'yourdomainname'             => 'Voutron domêno :',
 'externaldberror'            => 'Ou ben una èrror est arrevâ avouéc la bâsa de balyês d’ôtentificacion de defôr, ou ben vos éte pas ôtorisâ a betar a jorn voutron compto de defôr.',
 'login'                      => 'Branchement',
@@ -1063,7 +1052,7 @@ Volyéd controlar los changements ce-desot, et pués sôvar s’o est franc cen 
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Vos pouede pas fâre un compto.',
-'cantcreateaccount-text' => "La crèacion de compto dês ceta adrèce IP ('''$1''') at étâ blocâ per [[User:$3|$3]].
+'cantcreateaccount-text' => "La crèacion de compto dês ceta adrèce IP ('''$1''') at étâ dèfendua per [[User:$3|$3]].
 
 La rêson balyê per $3 ére ''$2''.",
 
@@ -1269,7 +1258,8 @@ Notâd bien que l’usâjo des lims de navigacion tornerat inicialisar cela colo
 'compareselectedversions'  => 'Comparar les vèrsions chouèsies',
 'showhideselectedversions' => 'Fâre vêre / cachiér les vèrsions chouèsies',
 'editundo'                 => 'dèfâre',
-'diff-multi'               => '({{PLURAL:$1|Yona vèrsion entèrmèdièra cachiê|$1 vèrsions entèrmèdières cachiês}}.)',
+'diff-multi'               => '({{PLURAL:$1|Yona vèrsion entèrmèdièra|$1 vèrsions entèrmèdières}} per {{PLURAL:$2|yon utilisator|$2 utilisators}} {{PLURAL:$1|est pas montrâ|sont pas montrâs}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Yona vèrsion entèrmèdièra|$1 vèrsions entèrmèdières}} per més de $2 utilisator{{PLURAL:$2||s}} {{PLURAL:$1|est pas montrâ|sont pas montrâs}})',
 
 # Search results
 'searchresults'                    => 'Rèsultats de la rechèrche',
@@ -1412,7 +1402,7 @@ Vê-que una valor fêta per hasârd que vos pouede utilisar : $1',
 'prefs-searchoptions'           => 'Chouèx de rechèrche',
 'prefs-namespaces'              => 'Èspâços de noms',
 'defaultns'                     => 'Ôtrament rechèrchiér dens cetos èspâços de noms :',
-'default'                       => 'dèfôt',
+'default'                       => 'per dèfôt',
 'prefs-files'                   => 'Fichiérs',
 'prefs-custom-css'              => 'CSS pèrsonalisâ',
 'prefs-custom-js'               => 'JavaScript pèrsonalisâ',
@@ -1569,7 +1559,6 @@ Vos pouede asse-ben dècidar de lèssiér los ôtros sè veriér vers vos avoué
 'right-override-export-depth' => 'Èxportar les pâges en encllusent les pâges liyês tant qu’a una provondior de 5 nivéls',
 'right-sendemail'             => 'Mandar un mèssâjo ux ôtros utilisators',
 'right-revisionmove'          => 'Dèplaciér des vèrsions',
-'right-selenium'              => 'Ègzécutar les èprôves « Selenium »',
 
 # User rights log
 'rightslog'      => 'Jornal des changements de statut d’utilisator',
@@ -2578,7 +2567,7 @@ Vêde la [[Special:IPBlockList|lista ux utilisators et a les adrèces IP blocâs
 'expiringblock'                   => 'èxpire lo $1 a $2',
 'anononlyblock'                   => 'ren que los utilisators pas encartâs',
 'noautoblockblock'                => 'blocâjo ôtomatico dèsactivâ',
-'createaccountblock'              => 'crèacion de compto blocâ',
+'createaccountblock'              => 'crèacion de compto dèfendua',
 'emailblock'                      => 'mèssageria èlèctronica blocâ',
 'blocklist-nousertalk'            => 'pôt pas changiér sa prôpra pâge de discussion',
 'ipblocklist-empty'               => 'Ora, la lista a les adrèces IP blocâs est voueda.',

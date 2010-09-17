@@ -24,6 +24,7 @@ class OutputPage {
 	var $mCategoryLinks = array(), $mCategories = array(), $mLanguageLinks = array();
 
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
+	var $mModules = array(), $mModuleScripts = array(), $mModuleStyles = array(), $mModuleMessages = array();
 	var $mInlineMsg = array();
 
 	var $mTemplateIds = array();
@@ -222,6 +223,85 @@ class OutputPage {
 	 */
 	function getScript() {
 		return $this->mScripts . $this->getHeadItems();
+	}
+
+	/**
+	 * Get the list of modules to include on this page
+	 *
+	 * @return Array of module names
+	 */
+	public function getModules() {
+		return $this->mModules;
+	}
+
+	/**
+	 * Add one or more modules recognized by the resource loader. Modules added
+	 * through this function will be loaded by the resource loader when the
+	 * page loads.
+	 *
+	 * @param $modules Mixed: module name (string) or array of module names
+	 */
+	public function addModules( $modules ) {
+		$this->mModules = array_merge( $this->mModules, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module JS to include on this page
+	 * @return array of module names
+	 */
+	public function getModuleScripts() {
+		return $this->mModuleScripts;
+	}
+
+	/**
+	 * Add only JS of one or more modules recognized by the resource loader. Module
+	 * scripts added through this function will be loaded by the resource loader when
+	 * the page loads.
+	 *
+	 * @param $modules Mixed: module name (string) or array of module names
+	 */
+	public function addModuleScripts( $modules ) {
+		$this->mModuleScripts = array_merge( $this->mModuleScripts, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module CSS to include on this page
+	 *
+	 * @return Array of module names
+	 */
+	public function getModuleStyles() {
+		return $this->mModuleStyles;
+	}
+
+	/**
+	 * Add only CSS of one or more modules recognized by the resource loader. Module
+	 * styles added through this function will be loaded by the resource loader when
+	 * the page loads.
+	 *
+	 * @param $modules Mixed: module name (string) or array of module names
+	 */
+	public function addModuleStyles( $modules ) {
+		$this->mModuleStyles = array_merge( $this->mModuleStyles, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module messages to include on this page
+	 *
+	 * @return Array of module names
+	 */
+	public function getModuleMessages() {
+		return $this->mModuleMessages;
+	}
+
+	/**
+	 * Add only messages of one or more modules recognized by the resource loader.
+	 * Module messages added through this function will be loaded by the resource
+	 * loader when the page loads.
+	 *
+	 * @param $modules Mixed: module name (string) or array of module names
+	 */
+	public function addModuleMessages( $modules ) {
+		$this->mModuleMessages = array_merge( $this->mModuleMessages, (array)$modules );
 	}
 
 	/**
@@ -1095,6 +1175,7 @@ class OutputPage {
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, $parserOutput->getHeadItems() );
+		$this->addModules( $parserOutput->getModules() );
 		// Versioning...
 		foreach ( (array)$parserOutput->mTemplateIds as $ns => $dbks ) {
 			if ( isset( $this->mTemplateIds[$ns] ) ) {
@@ -1488,10 +1569,10 @@ class OutputPage {
 	 */
 	public function output() {
 		global $wgUser, $wgOutputEncoding, $wgRequest;
-		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
+		global $wgLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgUseAjax, $wgAjaxWatch;
 		global $wgEnableMWSuggest, $wgUniversalEditButton;
-		global $wgArticle, $wgJQueryOnEveryPage;
+		global $wgArticle;
 
 		if( $this->mDoNothing ) {
 			return;
@@ -1528,24 +1609,27 @@ class OutputPage {
 		}
 
 		$sk = $wgUser->getSkin();
-
+		
+		// Add base resources
+		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
+		
+		// Add various resources if required
 		if ( $wgUseAjax ) {
-			$this->addScriptFile( 'ajax.js' );
+			$this->addModules( 'mediawiki.legacy.ajax' );
 
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
-				$this->includeJQuery();
-				$this->addScriptFile( 'ajaxwatch.js' );
+				$this->addModules( 'mediawiki.legacy.ajaxwatch' );
 			}
 
 			if ( $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ) {
-				$this->addScriptFile( 'mwsuggest.js' );
+				$this->addModules( 'mediawiki.legacy.mwsuggest' );
 			}
 		}
 
 		if( $wgUser->getBoolOption( 'editsectiononrightclick' ) ) {
-			$this->addScriptFile( 'rightclickedit.js' );
+			$this->addModules( 'mediawiki.legacy.rightclickedit' );
 		}
 
 		if( $wgUniversalEditButton ) {
@@ -1568,15 +1652,12 @@ class OutputPage {
 			}
 		}
 
-		if ( $wgJQueryOnEveryPage ) {
-			$this->includeJQuery();
-		}
 
 		# Buffer output; final headers may depend on later processing
 		ob_start();
 
 		$wgRequest->response()->header( "Content-type: $wgMimeType; charset={$wgOutputEncoding}" );
-		$wgRequest->response()->header( 'Content-language: ' . $wgContLanguageCode );
+		$wgRequest->response()->header( 'Content-language: ' . $wgLanguageCode );
 
 		if ( $this->mArticleBodyOnly ) {
 			$this->out( $this->mBodytext );
@@ -1981,8 +2062,7 @@ class OutputPage {
 			$data['messages'][$message] = wfMsg( $message );
 		}
 		$this->addScript( Html::inlineScript( 'var passwordSecurity=' . FormatJson::encode( $data ) ) );
-		$this->addScriptFile( 'password.js' );
-		$this->addStyle( 'common/password.css' );
+		$this->addModules( 'mediawiki.legacy.password' );
 	}
 
 	/** @deprecated */
@@ -2124,7 +2204,7 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgLang;
 
 		if ( $sk->commonPrintStylesheet() ) {
-			$this->addStyle( 'common/wikiprintable.css', 'print' );
+			$this->addModuleStyles( 'mediawiki.legacy.wikiprintable' );
 		}
 		$sk->setupUserCss( $this );
 
@@ -2151,9 +2231,9 @@ class OutputPage {
 		$ret .= Html::element( 'title', null, $this->getHTMLTitle() ) . "\n";
 
 		$ret .= implode( "\n", array(
-			$this->getHeadLinks(),
+			$this->getHeadLinks( $sk ),
 			$this->buildCssLinks(),
-			$this->getHeadScripts( $sk ) . $this->getHeadItems(),
+			$this->getHeadItems(),
 		) );
 		if ( $sk->usercss ) {
 			$ret .= Html::inlineStyle( $sk->usercss );
@@ -2205,56 +2285,131 @@ class OutputPage {
 
 		return $ret;
 	}
-
+	
+	static function makeResourceLoaderLink( $skin, $modules, $only ) {
+		global $wgUser, $wgLang, $wgRequest, $wgLoadScript;
+		// TODO: Should this be a static function of ResourceLoader instead?
+		// TODO: Divide off modules starting with "user", and add the user parameter to them
+		$query = array(
+			'lang' => $wgLang->getCode(),
+			'debug' => ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) == 'true' ) ? 'true' : 'false',
+			'skin' => $wgUser->getSkin()->getSkinName(),
+			'only' => $only,
+		);
+		$moduleGroups = array( null => array(), 'user' => array() );
+		foreach ( (array) $modules as $name ) {
+			$moduleGroups[strpos( $name, 'user' ) === 0 ? 'user' : null][] = $name;
+		}
+		$links = '';
+		foreach ( $moduleGroups as $group => $modules ) {
+			if ( count( $modules ) ) {
+				sort( $modules );
+				$query['modules'] = implode( '|', array_unique( (array) $modules ) );
+				if ( $group === 'user' && $wgUser->isLoggedIn() ) {
+					$query['user'] = $wgUser->getName();
+				}
+				// Users might change their stuff on-wiki like site or user pages, or user preferences; we need to find
+				// the highest timestamp of these user-changable modules so we can ensure cache misses upon change
+				$timestamp = 0;
+				foreach ( $modules as $name ) {
+					$module = ResourceLoader::getModule( $name );
+					if (
+						$module instanceof ResourceLoaderWikiModule ||
+						$module instanceof ResourceLoaderUserPreferencesModule
+					) {
+						$timestamp = max(
+							$timestamp,
+							$module->getModifiedTime( new ResourceLoaderContext( new FauxRequest( $query ) ) )
+						);
+					}
+				}
+				// Add a version parameter if any of the modules were user-changable
+				if ( $timestamp ) {
+					$query['version'] = wfTimestamp( TS_ISO_8601, round( $timestamp, -2 ) );
+				}
+				// Make queries uniform in order
+				ksort( $query );
+				// Automatically select style/script elements
+				if ( $only === 'styles' ) {
+					$links .= Html::linkedStyle( wfAppendQuery( $wgLoadScript, $query ) ) . "\n";
+				} else {
+					$links .= Html::linkedScript( wfAppendQuery( $wgLoadScript, $query ) ) . "\n";
+				}
+			}
+		}
+		return $links;
+	}
+	
 	/**
 	 * Gets the global variables and mScripts; also adds userjs to the end if
-	 * enabled
+	 * enabled. Despite the name, these scripts are no longer put in the
+	 * <head> but at the bottom of the <body>
 	 *
 	 * @param $sk Skin object to use
 	 * @return String: HTML fragment
 	 */
 	function getHeadScripts( Skin $sk ) {
-		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
-		global $wgStylePath, $wgStyleVersion;
-
-		$scripts = Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		$scripts .= Html::linkedScript( "{$wgStylePath}/common/wikibits.js?$wgStyleVersion" );
-
-		// add site JS if enabled
-		if( $wgUseSiteJs ) {
-			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
-			$this->addScriptFile(
-				Skin::makeUrl(
-					'-',
-					"action=raw$jsCache&gen=js&useskin=" .
-					urlencode( $sk->getSkinName() )
-				)
-			);
+		global $wgUser, $wgRequest;
+		global $wgUseSiteJs;
+		
+		// Statup - this will immediately load jquery and mediawiki modules
+		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
+		
+		// Configuration -- This could be merged together with the load and go, but makeGlobalVariablesScript returns a
+		// whole script tag -- grumble grumble...
+		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
+		
+		// Script and Messages "only"
+		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+			// Scripts
+			foreach ( $this->getModuleScripts() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
+			}
+			// Messages
+			foreach ( $this->getModuleMessages() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
+			}
+		} else {
+			// Scripts
+			if ( count( $this->getModuleScripts() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
+			}
+			// Messages
+			if ( count( $this->getModuleMessages() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
+			}
 		}
-
-		// add user JS if enabled
-		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
+		
+		// Modules - let the client calculate dependencies and batch requests as it likes
+		if ( $this->getModules() ) {
+			$modules = FormatJson::encode( $this->getModules() );
+			$scripts .= Html::inlineScript(
+				"if ( mediaWiki !== undefined ) { mediaWiki.loader.load( {$modules} ); mediaWiki.loader.go(); }\n"
+			) . "\n";
+		}
+		
+		// Add user JS if enabled - trying to load user.options as a bundle if possible
+		$userOptionsAdded = false;
+		if ( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );
 			if( $this->mTitle && $this->mTitle->isJsSubpage() && $sk->userCanPreview( $action ) ) {
 				# XXX: additional security check/prompt?
 				$this->addInlineScript( $wgRequest->getText( 'wpTextbox1' ) );
 			} else {
-				$userpage = $wgUser->getUserPage();
-				$names = array( 'common', $sk->getSkinName() );
-				foreach( $names as $name ) {
-					$scriptpage = Title::makeTitleSafe(
-						NS_USER,
-						$userpage->getDBkey() . '/' . $name . '.js'
-					);
-					if ( $scriptpage && $scriptpage->exists() && ( $scriptpage->getLength() > 0 ) ) {
-						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
-						$this->addScriptFile( $userjs, $scriptpage->getLatestRevID() );
-					}
-				}
+				$scripts .= self::makeResourceLoaderLink( $sk, array( 'user', 'user.options' ), 'scripts' );
+				$userOptionsAdded = true;
 			}
 		}
-
+		if ( !$userOptionsAdded ) {
+			$scripts .= self::makeResourceLoaderLink( $sk, 'user.options', 'scripts' );
+		}
 		$scripts .= "\n" . $this->mScripts;
+		
+		// Add site JS if enabled
+		if ( $wgUseSiteJs ) {
+			$scripts .= self::makeResourceLoaderLink( $sk, 'site', 'scripts' );
+		}
+		
 		return $scripts;
 	}
 
@@ -2302,8 +2457,8 @@ class OutputPage {
 	/**
 	 * @return string HTML tag links to be put in the header.
 	 */
-	public function getHeadLinks() {
-		global $wgFeed;
+	public function getHeadLinks( $sk ) {
+		global $wgFeed, $wgRequest;
 
 		// Ideally this should happen earlier, somewhere. :P
 		$this->addDefaultMeta();
@@ -2373,6 +2528,17 @@ class OutputPage {
 			}
 		}
 
+		// Support individual script requests in debug mode
+		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+			foreach ( $this->getModuleStyles() as $name ) {
+				$tags[] = self::makeResourceLoaderLink( $sk, $name, 'styles' );
+			}
+		} else {
+			if ( count( $this->getModuleStyles() ) ) {
+				$tags[] = self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+			}
+		}
+		
 		return implode( "\n", $tags );
 	}
 
@@ -2643,20 +2809,10 @@ class OutputPage {
 	 * @param $modules Array: list of jQuery modules which should be loaded
 	 * @return Array: the list of modules which were not loaded.
 	 * @since 1.16
+	 * @deprecated No longer needed as of 1.17
 	 */
 	public function includeJQuery( $modules = array() ) {
-		global $wgStylePath, $wgStyleVersion, $wgJQueryVersion, $wgJQueryMinified;
-
-		$supportedModules = array( /** TODO: add things here */ );
-		$unsupported = array_diff( $modules, $supportedModules );
-
-		$min = $wgJQueryMinified ? '.min' : '';
-		$url = "$wgStylePath/common/jquery-$wgJQueryVersion$min.js?$wgStyleVersion";
-		if ( !$this->mJQueryDone ) {
-			$this->mJQueryDone = true;
-			$this->mScripts = Html::linkedScript( $url ) . "\n" . $this->mScripts;
-		}
-		return $unsupported;
+		return array();
 	}
 
 }

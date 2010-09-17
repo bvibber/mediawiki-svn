@@ -788,6 +788,8 @@ $reason: reason
 
 'FileUpload': When a file upload occurs
 $file : Image object representing the file that was uploaded
+$reupload : Boolean indicating if there was a previously another image there or not (since 1.17)
+$hasDescription : Boolean indicating that there was already a description page and a new one from the comment wasn't created (since 1.17)
 
 'FileUndeleteComplete': When a file is undeleted
 $title: title object to the file
@@ -823,6 +825,9 @@ $query: query options passed to Title::getFullURL()
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getInternalURL()
+
+'GetIP': modify the ip of the current user (called only once)
+&$ip: string holding the ip as determined so far
 
 'GetLinkColours': modify the CSS class of an array of page links
 $linkcolour_ids: array of prefixed DB keys of the pages linked to,
@@ -1684,9 +1689,9 @@ string &$error: output: message key for message to show if upload canceled
 'UploadVerifyFile': extra file verification, based on mime type, etc. Preferred
                     in most cases over UploadVerification.
 object $upload: an instance of UploadBase, with all info about the upload
-object $mime: the uploaded file's mime type, as detected by MediaWiki. Handlers 
+string $mime: the uploaded file's mime type, as detected by MediaWiki. Handlers 
 	will typically only apply for specific mime types.
-object &$error: output: true if the file is valid. Otherwise, and indexed array
+object &$error: output: true if the file is valid. Otherwise, an indexed array
 	representing the problem with the file, where the first element
 	is the message key and the remaining elements are used as parameters to
 	the message.

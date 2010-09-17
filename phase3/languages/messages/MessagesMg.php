@@ -373,31 +373,20 @@ $messages = array(
 'faqpage'        => 'Project:Fanontaniana',
 
 # Vector skin
-'vector-action-addsection'   => 'hanampy foto-kevitra (topic)',
-'vector-action-delete'       => 'fafao',
-'vector-action-move'         => 'afindrao',
-'vector-action-protect'      => 'arovy',
-'vector-action-undelete'     => 'avereno',
-'vector-action-unprotect'    => 'esory ny fiarovana',
-'vector-namespace-category'  => 'sokajy',
-'vector-namespace-help'      => 'fanoroana',
-'vector-namespace-image'     => 'rakitra',
-'vector-namespace-main'      => 'pejy',
-'vector-namespace-media'     => 'Pejy Media',
-'vector-namespace-mediawiki' => 'hafatra',
-'vector-namespace-project'   => 'tetikasa',
-'vector-namespace-special'   => 'pejy manokana',
-'vector-namespace-talk'      => 'resaka',
-'vector-namespace-template'  => 'endrika',
-'vector-namespace-user'      => 'pejy ny mpikambana',
-'vector-view-create'         => 'amboary',
-'vector-view-edit'           => 'Hanova',
-'vector-view-history'        => 'Hijery ny tantara',
-'vector-view-view'           => 'Hamaky',
-'vector-view-viewsource'     => 'hijery fango',
-'actions'                    => 'Tao',
-'namespaces'                 => 'Namespace',
-'variants'                   => "Ny ''skin'' Voasintona",
+'vector-action-addsection' => 'hanampy foto-kevitra (topic)',
+'vector-action-delete'     => 'fafao',
+'vector-action-move'       => 'afindrao',
+'vector-action-protect'    => 'arovy',
+'vector-action-undelete'   => 'avereno',
+'vector-action-unprotect'  => 'esory ny fiarovana',
+'vector-view-create'       => 'amboary',
+'vector-view-edit'         => 'Hanova',
+'vector-view-history'      => 'Hijery ny tantara',
+'vector-view-view'         => 'Hamaky',
+'vector-view-viewsource'   => 'hijery fango',
+'actions'                  => 'Tao',
+'namespaces'               => 'Namespace',
+'variants'                 => "Ny ''skin'' Voasintona",
 
 'errorpagetitle'    => 'Tsy fetezana',
 'returnto'          => "Hiverina any amin'ny $1.",
@@ -1407,7 +1396,6 @@ Tokony mba manana lohavy ambanimbany kokoa non'ny $1",
 'right-override-export-depth' => "Mamoaka ny pejy miaraka amin'ny zana-pejy hatramin'ny ambaratonga fahadimy",
 'right-sendemail'             => "Mandefa imailaka any amin'ny mpikambana hafa",
 'right-revisionmove'          => 'Afindra ny revision',
-'right-selenium'              => 'Hanao fanandramana Selenium',
 
 # User rights log
 'rightslog'      => 'Tatitr’asa momban’ny fanovana satam-pikambana',
@@ -1879,8 +1867,8 @@ wiki ity aza izy.</p>",
 'speciallogtitlelabel' => 'Lohateny:',
 'log'                  => 'Tatitr’asa',
 'all-logs-page'        => 'Ny tatitr’asa',
-'alllogstext'          => "Seho nakambana an'ny tatitr'asa rehetra azo jerena eo amin'ny {{SITENAME}}.
-Azonao akelezina ny fahitana azy amin'ny alàlan'ny fisafidianana tatitr'asa iray manokana, anaram-pikambana iray na pejy iray (manasamihafa ny sorabaventy sy soramadinika ny rindrankajy).",
+'alllogstext'          => "Seho nakambana an'ny tatitr'asa rehetra izay azonao jerena eto amin'ny {{SITENAME}}.
+Azonao ferana ny fahitana ny tao amin'ny alàlan'ny fisafidianana karazana tatitr'asa iray, anaram-pikambana iray na pejy iray (manasamihafa ny sorabaventy sy soramadinika).",
 'logempty'             => 'Tsy nahitana.',
 'log-title-wildcard'   => "Hitady amin'ny lohateny manomboka amin'io soratra io",
 
@@ -2788,6 +2776,13 @@ Tokony sary tsy misy na sary tsy izy ny rohy voalohany anaty andalana iray .
 'exif-fnumber'                   => 'Isa F',
 'exif-isospeedratings'           => 'ISO',
 'exif-aperturevalue'             => 'Sanasana',
+'exif-gpsdatestamp'              => 'Daty GPS',
+
+'exif-unknowndate' => 'Daty tsy fantatra',
+
+'exif-componentsconfiguration-0' => 'tsy nahitana',
+
+'exif-exposureprogram-0' => 'Tsy nolazaina',
 
 'exif-subjectdistance-value' => '$1 metatra',
 

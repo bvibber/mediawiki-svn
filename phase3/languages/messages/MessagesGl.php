@@ -215,7 +215,7 @@ $messages = array(
 'tog-editsection'             => 'Permitir a edición de seccións vía as ligazóns [editar]',
 'tog-editsectiononrightclick' => 'Permitir a edición de seccións premendo co botón dereito <br /> nos títulos das seccións (JavaScript)',
 'tog-showtoc'                 => 'Mostrar o índice (para páxinas con máis de tres cabeceiras)',
-'tog-rememberpassword'        => 'Lembrar o meu contrasinal neste ordenador (ata $1 {{PLURAL:$1|día|días}})',
+'tog-rememberpassword'        => 'Lembrar o meu contrasinal neste navegador (ata $1 {{PLURAL:$1|día|días}})',
 'tog-watchcreations'          => 'Engadir as páxinas creadas por min á miña lista de artigos vixiados',
 'tog-watchdefault'            => 'Engadir as páxinas que edite á miña lista de vixilancia',
 'tog-watchmoves'              => 'Engadir as páxinas que mova á miña lista de vixilancia',
@@ -366,17 +366,6 @@ $messages = array(
 'vector-action-protect'          => 'Protexer',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desprotexer',
-'vector-namespace-category'      => 'Categoría',
-'vector-namespace-help'          => 'Páxina de axuda',
-'vector-namespace-image'         => 'Ficheiro',
-'vector-namespace-main'          => 'Páxina',
-'vector-namespace-media'         => 'Páxina de multimedia',
-'vector-namespace-mediawiki'     => 'Mensaxe',
-'vector-namespace-project'       => 'Páxina do proxecto',
-'vector-namespace-special'       => 'Páxina especial',
-'vector-namespace-talk'          => 'Conversa',
-'vector-namespace-template'      => 'Modelo',
-'vector-namespace-user'          => 'Páxina de usuario',
 'vector-simplesearch-preference' => 'Activar as suxestións de procura melloradas (soamente na aparencia vector)',
 'vector-view-create'             => 'Crear',
 'vector-view-edit'               => 'Editar',
@@ -446,6 +435,9 @@ Hai moitos usuarios intentando ver esta páxina.
 Por favor, agarde un anaco antes de intentar acceder á páxina de novo.
 
 $1',
+'pool-timeout'      => 'Tempo límite de espera para o peche',
+'pool-queuefull'    => 'A cola está chea',
+'pool-errorunknown' => 'Erro descoñecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
@@ -699,6 +691,11 @@ Pode facer caso omiso desta mensaxe se se creou esta conta por erro.',
 Por favor, agarde antes de probar outra vez.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Rexeitouse a súa petición de saír do sistema porque semella que a enviou un navegador roto ou a caché dun proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- Deixe esta liña tal e como está --> <pre>
+# A sintaxe é a seguinte:
+#   * Todo o que vaia despois dun carácter "#" ata o final da liña é un comentario
+#   * Toda liña que non estea en branco é un enderezo IP excluído do límite
+  #</pre> <!-- Deixe esta liña tal e como está -->',
 
 # JavaScript password checks
 'password-strength'            => 'Fortaleza estimada do contrasinal: $1',
@@ -845,7 +842,7 @@ Velaquí está a última entrada do rexistro de bloqueos, por se quere consultal
 Lembre que as páxinas .css e .js personalizadas utilizan un título en minúsculas, como por exemplo {{ns:user}}:Foo/monobook.css no canto de {{ns:user}}:Foo/Monobook.css.",
 'updated'                          => '(Actualizado)',
 'note'                             => "'''Nota:'''",
-'previewnote'                      => "'''Lembre que esta é só unha vista previa e que os seus cambios aínda non foron gardados!'''",
+'previewnote'                      => "'''Lembre que esta é só unha vista previa e que aínda non gardou os seus cambios!'''",
 'previewconflict'                  => 'Esta vista previa amosa o texto na área superior tal e como aparecerá se escolle gardar.',
 'session_fail_preview'             => "'''O sistema non pode procesar a súa edición porque se perderon os datos de inicio da sesión.
 Por favor, inténteo de novo.
@@ -1155,7 +1152,8 @@ Asegúrese de que esta modificación da páxina mantén a continuidade históric
 'compareselectedversions'  => 'Comparar as versións seleccionadas',
 'showhideselectedversions' => 'Mostrar/Agochar as versións seleccionadas',
 'editundo'                 => 'desfacer',
-'diff-multi'               => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial.)',
+'diff-multi'               => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial {{PLURAL:$2|feita por un usuario|feitas por $2 usuarios}}.)',
+'diff-multi-manyusers'     => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial {{PLURAL:$2|feita por máis dun usuario|feitas por máis de $2 usuarios}}.)',
 
 # Search results
 'searchresults'                    => 'Resultados da procura',
@@ -1453,7 +1451,6 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'right-override-export-depth' => 'Exportar páxinas incluíndo as páxinas ligadas ata unha profundidade de 5',
 'right-sendemail'             => 'Enviar correos electrónicos a outros usuarios',
 'right-revisionmove'          => 'Mover revisións',
-'right-selenium'              => 'Realizar probas de selenio',
 
 # User rights log
 'rightslog'      => 'Rexistro de dereitos de usuario',

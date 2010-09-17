@@ -321,9 +321,13 @@ class Article {
 	 * @return mixed string on success, false on failure
 	 */
 	public function getUndoText( Revision $undo, Revision $undoafter = null ) {
+		$currentRev = Revision::newFromTitle( $this->mTitle );
+		if ( !$currentRev ) {
+			return false; // no page
+		}
 		$undo_text = $undo->getText();
 		$undoafter_text = $undoafter->getText();
-		$cur_text = $this->getContent();
+		$cur_text = $currentRev->getText();
 
 		if ( $cur_text == $undo_text ) {
 			# No use doing a merge if it's just a straight revert.
@@ -4504,7 +4508,6 @@ class Article {
 	 *
 	 * @param $parserOutput mixed ParserOptions object, or boolean false
 	 **/
-
 	protected function doCascadeProtectionUpdates( $parserOutput ) {
 		if ( !$this->isCurrent() || wfReadOnly() || !$this->mTitle->areRestrictionsCascading() ) {
 			return;
@@ -4672,7 +4675,7 @@ class PoolWorkArticleView extends PoolCounterWork {
 	private $mArticle;
 	
 	function __construct( $article, $key, $useParserCache, $parserOptions ) {
-		parent::__construct( __CLASS__, $key );
+		parent::__construct( 'ArticleView', $key );
 		$this->mArticle = $article;
 		$this->cacheable = $useParserCache;
 		$this->parserOptions = $parserOptions;
@@ -4710,11 +4713,7 @@ class PoolWorkArticleView extends PoolCounterWork {
 		$wgOut->enableClientCache( false );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		
-		if ( $status instanceof Status ) {
-			$errortext = $status->getWikiText( false, 'view-pool-error' );
-		} else {
-			$errortext = wfMsgNoTrans( 'view-pool-error', '' );
-		}
+		$errortext = $status->getWikiText( false, 'view-pool-error' );
 		$wgOut->addWikiText( '<div class="errorbox">' . $errortext . '</div>' );
 		
 		return false;

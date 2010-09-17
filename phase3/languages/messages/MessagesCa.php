@@ -196,7 +196,7 @@ $messages = array(
 'tog-editsection'             => 'Activa la modificació de seccions mitjançant els enllaços [modifica]',
 'tog-editsectiononrightclick' => "Habilita l'edició per seccions en clicar amb el botó dret sobre els títols de les seccions (cal JavaScript)",
 'tog-showtoc'                 => 'Mostra la taula de continguts (per pàgines amb més de 3 seccions)',
-'tog-rememberpassword'        => "Recorda la sessió a l'ordinador (per un màxim de {{PLURAL:$1|dia|dies}})",
+'tog-rememberpassword'        => 'Recorda la sessió al navegador (per un màxim de {{PLURAL:$1|dia|dies}})',
 'tog-watchcreations'          => 'Vigila les pàgines que he creat',
 'tog-watchdefault'            => 'Afegeix les pàgines que edito a la meua llista de seguiment',
 'tog-watchmoves'              => 'Afegeix les pàgines que reanomeni a la llista de seguiment',
@@ -347,17 +347,6 @@ $messages = array(
 'vector-action-protect'          => 'Protegeix',
 'vector-action-undelete'         => 'Restaura',
 'vector-action-unprotect'        => 'Desprotegeix',
-'vector-namespace-category'      => 'Categoria',
-'vector-namespace-help'          => 'Ajuda',
-'vector-namespace-image'         => 'Fitxer',
-'vector-namespace-main'          => 'Pàgina',
-'vector-namespace-media'         => 'Pàgina de fitxer',
-'vector-namespace-mediawiki'     => 'Missatge',
-'vector-namespace-project'       => 'Pàgina del projecte',
-'vector-namespace-special'       => 'Pàgina especial',
-'vector-namespace-talk'          => 'Discussió',
-'vector-namespace-template'      => 'Plantilla',
-'vector-namespace-user'          => "Pàgina d'usuari",
 'vector-simplesearch-preference' => 'Habilitar suggeriments de recerca millorats (només aparença Vector)',
 'vector-view-create'             => 'Inicia',
 'vector-view-edit'               => 'Modifica',
@@ -662,6 +651,11 @@ Si no hi teniu cap relació i aquest compte ha estat creat per error, simplement
 Si us plau, esperi abans de tornar-ho a intentar.",
 'loginlanguagelabel'         => 'Llengua: $1',
 'suspicious-userlogout'      => "S'ha denegat la vostra petició per tancar la sessió ja què sembla que va ser enviada per un navegador defectuós o un proxy cau.",
+'ratelimit-excluded-ips'     => "#<!-- deixeu aquesta línia tal com està --> <pre>
+# La sintaxí és la següent:
+#   * Totes les línies que comencen amb un # es consideren comentaris
+#   * Tota línia no buida és una adreça IP que s'exclou del càlcul del límit de velocitat
+#</pre> <!-- deixeu aquesta línia tal com està -->",
 
 # JavaScript password checks
 'password-strength'            => 'Força estimada de la contrasenya: $1',
@@ -1103,7 +1097,8 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'compareselectedversions'  => 'Compara les versions seleccionades',
 'showhideselectedversions' => 'Mostrar/ocultar les versions seleccionades',
 'editundo'                 => 'desfés',
-'diff-multi'               => '(Hi ha {{PLURAL:$1|una revisió intermèdia|$1 revisions intermèdies}})',
+'diff-multi'               => '({{PLURAL:$1|Hi ha una revisió intermèdia |Hi ha $1 revisions intermèdies}} sense mostrar fetes per {{PLURAL:$2|un usuari|$2 usuaris}})',
+'diff-multi-manyusers'     => "({{PLURAL:$1|Hi ha una revisió intermèdia|Hi ha $1 revisions intermèdies}} sense mostrar fetes per més {{PLURAL:$2|d'un usuari|de $2 usuaris}})",
 
 # Search results
 'searchresults'                    => 'Resultats de la cerca',
@@ -1398,7 +1393,6 @@ També podeu contactar amb altres usuaris a través de la vostra pàgina d'usuar
 'right-override-export-depth' => 'Exporta pàgines incloent aquelles enllaçades fins a una fondària de 5',
 'right-sendemail'             => 'Envia un correu electrònic a altres usuaris.',
 'right-revisionmove'          => 'Moure revisions',
-'right-selenium'              => 'Executar els tests Selenium',
 
 # User rights log
 'rightslog'      => "Registre dels permisos d'usuari",
@@ -1602,7 +1596,7 @@ A continuació teniu el registre d'eliminació per a que pugueu comprovar els mo
 'upload-success-subj'         => "El fitxer s'ha carregat amb èxit",
 'upload-success-msg'          => 'El material carregat de [$2] està disponible ací: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema en la càrrega',
-'upload-failure-msg'          => 'Hi ha hagut un problema amb la vostra càrrega:
+'upload-failure-msg'          => 'Hi ha hagut un problema amb la vostra càrrega des de [$2]:
 
 $1',
 'upload-warning-subj'         => 'Avís de càrrega',
@@ -3281,6 +3275,7 @@ També podeu [[Special:Watchlist/edit|utilitzar l'editor estàndard]].",
 'version-version'                  => '(Versió $1)',
 'version-license'                  => 'Llicència',
 'version-poweredby-credits'        => "El wiki funciona gràcies a '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'altres',
 'version-license-info'             => "↓ MediaWiki és programari lliure, podeu redistribuir-lo i/o modificar-lo sota els termes de la Llicència Pública General GNU publicada per la Free Software Foundation, ja sigui de la seva versió 2 o (a elecció vostra) qualsevol versió posterior. 
 
 MediaWiki es distribueix en l'esperança de ser d'utilitat, però SENSE CAP GARANTIA; ni tan sols la garantia implícita de COMERCIALITZACIÓ o ADEQUACIÓ A UNA FINALITAT DETERMINADA. En trobareu més detalls a  la Llicència Pública General GNU.

@@ -169,6 +169,7 @@ CREATE TABLE pagelinks (
   pl_title      TEXT      NOT NULL
 );
 CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_from,pl_namespace,pl_title);
+CREATE INDEX pagelinks_title ON pagelinks (pl_title);
 
 CREATE TABLE templatelinks (
   tl_from       INTEGER  NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
@@ -185,10 +186,13 @@ CREATE TABLE imagelinks (
 CREATE UNIQUE INDEX il_from ON imagelinks (il_to,il_from);
 
 CREATE TABLE categorylinks (
-  cl_from       INTEGER      NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
-  cl_to         TEXT         NOT NULL,
-  cl_sortkey    TEXT,
-  cl_timestamp  TIMESTAMPTZ  NOT NULL
+  cl_from           INTEGER      NOT NULL  REFERENCES page(page_id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED,
+  cl_to             TEXT         NOT NULL,
+  cl_sortkey        TEXT             NULL,
+  cl_timestamp      TIMESTAMPTZ  NOT NULL,
+  cl_sortkey_prefix TEXT         NOT NULL  DEFAULT '',
+  cl_collation      TEXT         NOT NULL  DEFAULT 0,
+  cl_type           TEXT         NOT NULL  DEFAULT 'page'
 );
 CREATE UNIQUE INDEX cl_from ON categorylinks (cl_from, cl_to);
 CREATE INDEX cl_sortkey     ON categorylinks (cl_to, cl_sortkey, cl_from);
@@ -627,3 +631,24 @@ CREATE TABLE iwlinks (
 );
 CREATE UNIQUE INDEX iwl_from ON iwlinks (iwl_from, iwl_prefix, iwl_title);
 CREATE UNIQUE INDEX iwl_prefix_title_from ON iwlinks (iwl_prefix, iwl_title, iwl_from);
+
+CREATE TABLE msg_resource (
+  mr_resource   TEXT         NOT NULL,
+  mr_lang       TEXT         NOT NULL,
+  mr_blob       TEXT         NOT NULL,
+  mr_timestamp  TIMESTAMPTZ  NOT NULL
+);
+CREATE UNIQUE INDEX mr_resource_lang ON msg_resource (mr_resource, mr_lang);
+
+CREATE TABLE msg_resource_links (
+  mrl_resource  TEXT  NOT NULL,
+  mrl_message   TEXT  NOT NULL
+);
+CREATE UNIQUE INDEX mrl_message_resource ON msg_resource_links (mrl_message, mrl_resource);
+
+CREATE TABLE module_deps (
+  md_module  TEXT  NOT NULL,
+  md_skin    TEXT  NOT NULL,
+  md_deps    TEXT  NOT NULL
+);
+CREATE UNIQUE INDEX md_module_skin ON module_deps (md_module, md_skin);

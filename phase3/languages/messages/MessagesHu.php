@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Alquen
  * @author Balasyum
  * @author Bdamokos
  * @author Bennó
@@ -20,6 +21,7 @@
  * @author Gondnok
  * @author Hunyadym
  * @author KossuthRad
+ * @author Misibacsi
  * @author Samat
  * @author Terik
  * @author Tgr
@@ -310,14 +312,14 @@ $messages = array(
 'tog-editsection'             => '[szerkesztés] linkek az egyes szakaszok szerkesztéséhez',
 'tog-editsectiononrightclick' => 'Szakaszok szerkesztése a szakaszcímre való jobb kattintással (JavaScript-alapú)',
 'tog-showtoc'                 => 'Tartalomjegyzék megjelenítése a három fejezetnél többel rendelkező cikkeknél',
-'tog-rememberpassword'        => 'Emlékezzen rám ezen a számítógépen (legfeljebb $1 napig)',
+'tog-rememberpassword'        => 'Emlékezzen rám ezzel a böngészővel (legfeljebb $1 napig)',
 'tog-watchcreations'          => 'Az általam létrehozott lapok felvétele a figyelőlistára',
 'tog-watchdefault'            => 'Az általam szerkesztett lapok felvétele a figyelőlistára',
 'tog-watchmoves'              => 'Az általam átnevezett lapok felvétele a figyelőlistára',
 'tog-watchdeletion'           => 'Az általam törölt lapok felvétele a figyelőlistára',
 'tog-previewontop'            => 'Előnézet megjelenítése a szerkesztőablak előtt',
 'tog-previewonfirst'          => 'Előnézet első szerkesztésnél',
-'tog-nocache'                 => 'A lapok gyorstárazásának letiltása',
+'tog-nocache'                 => 'A lapok gyorstárazásának letiltása a böngészőben',
 'tog-enotifwatchlistpages'    => 'Értesítés küldése e-mailben, ha egy általam figyelt lap megváltozik',
 'tog-enotifusertalkpages'     => 'Értesítés e-mailben, ha megváltozik a vitalapom',
 'tog-enotifminoredits'        => 'Értesítés e-mailben a lapok apró változtatásairól',
@@ -460,17 +462,6 @@ $messages = array(
 'vector-action-protect'          => 'Lapvédelem',
 'vector-action-undelete'         => 'Visszaállítás',
 'vector-action-unprotect'        => 'Védelem feloldása',
-'vector-namespace-category'      => 'Kategória',
-'vector-namespace-help'          => 'Segítséglap',
-'vector-namespace-image'         => 'Fájl',
-'vector-namespace-main'          => 'Szócikk',
-'vector-namespace-media'         => 'Médialap',
-'vector-namespace-mediawiki'     => 'Rendszerüzenet',
-'vector-namespace-project'       => 'Projektlap',
-'vector-namespace-special'       => 'Speciális lap',
-'vector-namespace-talk'          => 'Megbeszélés',
-'vector-namespace-template'      => 'Sablon',
-'vector-namespace-user'          => 'Szerkesztői lap',
 'vector-simplesearch-preference' => 'Továbbfejlesztett keresési javaslatok engedélyezése (csak Vector felületen)',
 'vector-view-create'             => 'Létrehozás',
 'vector-view-edit'               => 'Szerkesztés',
@@ -717,6 +708,7 @@ Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].
 'gotaccount'                 => "Ha már korábban regisztráltál, '''$1'''!",
 'gotaccountlink'             => 'Bejelentkezés',
 'createaccountmail'          => 'e-mailben',
+'createaccountreason'        => 'Indoklás:',
 'badretype'                  => 'Az általad megadott jelszavak nem egyeznek.',
 'userexists'                 => 'A megadott szerkesztőnév már foglalt.
 Kérlek, válassz másikat!',
@@ -778,6 +770,15 @@ Ha nem kértél új azonosítót, és tévedésből kaptad ezt a levelet, nyugod
 Várj egy kicsit, mielőtt újra próbálkozol.',
 'loginlanguagelabel'         => 'Nyelv: $1',
 'suspicious-userlogout'      => 'A kijelentkezési kérésed vissza lett utasítva, mert úgy tűnik, hogy egy hibás böngésző vagy gyorsítótárazó proxy küldte.',
+
+# JavaScript password checks
+'password-strength'            => 'Becsült jelszóerősség: $1',
+'password-strength-bad'        => 'GYENGE',
+'password-strength-mediocre'   => 'közepes',
+'password-strength-acceptable' => 'elfogadható',
+'password-strength-good'       => 'jó',
+'password-retype'              => 'Jelszavad még egyszer:',
+'password-retype-mismatch'     => 'A jelszavak nem egyeznek meg',
 
 # Password reset dialog
 'resetpass'                 => 'Jelszó módosítása',
@@ -902,7 +903,11 @@ Nézd meg, hogy valóban ezt a lapot szeretnéd-e létrehozni vagy szerkeszteni.
 'userpage-userdoesnotexist-view'   => 'Nincs regisztrálva „$1” szerkesztői azonosító.',
 'blocked-notice-logextract'        => 'A felhasználó jelenleg blokkolva van.
 A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
-'clearyourcache'                   => "'''Megjegyzés: mentés után frissítened kell a böngésződ gyorsítótárát, hogy lásd a változásokat.''' '''Mozilla''' / '''Firefox''' / '''Safari:''' tartsd lenyomva a Shift gombot és kattints a ''Reload'' / ''Frissítés'' gombra az eszköztáron, vagy használd a ''Ctrl–F5'' billentyűkombinációt (Apple Mac-en ''Cmd–Shift–R''); '''Konqueror:''' egyszerűen csak kattints a ''Reload'' / ''Frissítés'' gombra vagy nyomj ''F5''-öt; '''Opera:''' ürítsd ki a gyorsítótárat az ''Eszközök→Személyes adatok törlése'' / ''Tools→Preferences'' menüben; '''Internet Explorer:''' tartsd nyomva a ''Ctrl''-t, és kattints a ''Reload / Frissítés'' gombra, vagy nyomj ''Ctrl–F5''-öt.",
+'clearyourcache'                   => "'''Megjegyzés: mentés után frissítened kell a böngésződ gyorsítótárát, hogy lásd a változásokat.'''
+'''Mozilla''' / '''Firefox''' / '''Safari:''' tartsd lenyomva a Shift gombot és kattints a ''Frissítés'' gombra az eszköztáron, vagy használd a ''Ctrl–F5'' billentyűkombinációt (Apple Mac-en ''Cmd–Shift–R'');
+'''Konqueror:''' egyszerűen csak kattints a ''Frissítés'' gombra vagy nyomj ''F5''-öt;
+'''Opera:''' ürítsd ki a gyorsítótárat a ''Beállítások / Haladó / Előzmények→Törlés most'' gombbal, majd frissítsd az oldalt;
+'''Internet Explorer:''' tartsd nyomva a ''Ctrl''-t, és kattints a ''Frissítés'' gombra, vagy nyomj ''Ctrl–F5''-öt.",
 'usercssyoucanpreview'             => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új CSS-ed teszteléséhez.",
 'userjsyoucanpreview'              => "'''Tipp:''' mentés előtt használd az „{{int:showpreview}}” gombot az új JavaScipted teszteléséhez.",
 'usercsspreview'                   => "'''Ne felejtsd el, hogy ez csak a felhasználói CSS-ed előnézete és még nincs elmentve!'''",
@@ -1209,6 +1214,7 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 # Diffs
 'history-title'            => 'A(z) „$1” laptörténete',
 'difference'               => '(Változatok közti eltérés)',
+'difference-multipage'     => '(Lapok közti eltérés)',
 'lineno'                   => '$1. sor:',
 'compareselectedversions'  => 'Kiválasztott változatok összehasonlítása',
 'showhideselectedversions' => 'Kiválasztott változatok láthatóságának beállítása',
@@ -1323,6 +1329,7 @@ Győződj meg róla, hogy a laptörténet folytonossága megmarad.',
 'contextlines'                  => 'Találatonként mutatott sorok száma:',
 'contextchars'                  => 'Soronkénti szövegkörnyezet (karakterszám):',
 'stub-threshold'                => 'A hivatkozások <a href="#" class="stub">csonkként</a> történő formázásának határa (bájtban):',
+'stub-threshold-disabled'       => 'Kikapcsolva',
 'recentchangesdays'             => 'A friss változtatásokban mutatott napok száma:',
 'recentchangesdays-max'         => '(maximum {{PLURAL:$1|egy|$1}} nap)',
 'recentchangescount'            => 'Az alapértelmezettként mutatott szerkesztések száma:',
@@ -1506,7 +1513,6 @@ Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vag
 'right-override-export-depth' => 'Lapok exportálása a hivatkozott lapokkal együtt, legfeljebb 5-ös mélységig',
 'right-sendemail'             => 'e-mail küldése más felhasználóknak',
 'right-revisionmove'          => 'lapváltozatok áthelyezése',
-'right-selenium'              => 'Selenium-tesztek futtatása',
 
 # User rights log
 'rightslog'      => 'Szerkesztői jogosultságok naplója',
@@ -1615,9 +1621,9 @@ A [[Special:Watchlist|figyelőlistádon]] szereplő lapok '''félkövérrel''' v
 
 Az oldalhoz tartozó törlési és átnevezési naplóbejegyzések:",
 'uploadtext'                  => "Az alábbi űrlap használatával tölthetsz fel fájlokat.
-A korábban feltöltött képek megtekintéséhez vagy a köztük való kereséshez menj a [[Special:FileList|feltöltött fájlok listájához]], a(z újra)feltöltések a [[Special:Log/upload|feltöltési naplóban]], a törlések a [[Special:Log/upload|törlési naplóban]] vannak jegyezve.
+A korábban feltöltött képek megtekintéséhez vagy a köztük való kereséshez menj a [[Special:FileList|feltöltött fájlok listájához]], a feltöltések, újrafeltöltések a [[Special:Log/upload|feltöltési naplóban]], a törlések a [[Special:Log/delete|törlési naplóban]] vannak jegyezve.
 
-Képet a következő módon illeszhetsz be egy oldalra: '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Kép.jpg]]</nowiki>''',
+Képet a következő módon illeszthetsz be egy oldalra: '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Kép.jpg]]</nowiki>''',
 '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Kép.png|alternatív szöveg]]</nowiki>''' vagy a közvetlen hivatkozáshoz használd a
 '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fájl.ogg]]</nowiki>''' formát.",
 'upload-permitted'            => 'Engedélyezett fájltípusok: $1.',
@@ -1725,11 +1731,12 @@ MGP # Pentax
 PICT # ált.
  #</pre> <!-- ezt a sort hagyd így -->',
 'upload-success-subj'         => 'A feltöltés sikerült',
-'upload-success-msg'          => 'A feltöltésed itt érhető el: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'A feltöltés (innen $2) sikeres volt. A feltöltésed itt érhető el: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Feltöltési hiba',
-'upload-failure-msg'          => 'Probléma történt a feltöltéseddel:
+'upload-failure-msg'          => 'Probléma történt a feltöltéseddel (innen: $2):
 
 $1',
+'upload-warning-subj'         => 'Feltöltési figyelmeztetés',
 
 'upload-proto-error'        => 'Hibás protokoll',
 'upload-proto-error-text'   => 'A távoli feltöltéshez <code>http://</code> vagy <code>ftp://</code> kezdetű URL-ekre van szükség.',
@@ -2167,7 +2174,7 @@ Ezután minden, a lapon vagy annak vitalapján történő változást ott fogsz 
 'changed'                      => 'megváltoztatta',
 'created'                      => 'létrehozta',
 'enotif_subject'               => 'A(z) {{SITENAME}} $PAGETITLE című oldalát $CHANGEDORCREATED $PAGEEDITOR',
-'enotif_lastvisited'           => 'Lásd a $1 lapot az utolsó látogatásod történt változtatásokért.',
+'enotif_lastvisited'           => 'Lásd a $1 lapot az utolsó látogatásod óta történt változtatásokért.',
 'enotif_lastdiff'              => 'Lásd a $1 lapot ezen változtatás megtekintéséhez.',
 'enotif_anon_editor'           => '$1 névtelen felhasználó',
 'enotif_body'                  => 'Kedves $WATCHINGUSERNAME!
@@ -2201,7 +2208,7 @@ Visszajelzés és további segítség:
 'deletepage'             => 'Lap törlése',
 'confirm'                => 'Megerősítés',
 'excontent'              => 'a lap tartalma: „$1”',
-'excontentauthor'        => 'a lap tartalma: „$1” (és csak „$2” szerkesztette)',
+'excontentauthor'        => 'a lap tartalma: „$1” (és csak „[[Special:Contributions/$2|$2]]” szerkesztette)',
 'exbeforeblank'          => 'az eltávolítás előtti tartalom: „$1”',
 'exblank'                => 'a lap üres volt',
 'delete-confirm'         => '$1 törlése',
@@ -2213,7 +2220,7 @@ Kérjük, erősítsd meg, hogy valóban ezt szeretnéd tenni, átlátod a követ
 'actionfailed'           => 'A művelet nem sikerült',
 'deletedtext'            => 'A(z) „<nowiki>$1</nowiki>” lapot törölted.
 A legutóbbi törlések listájához lásd a $2 lapot.',
-'deletedarticle'         => '„$1” törölve',
+'deletedarticle'         => '„[[$1]]” törölve',
 'suppressedarticle'      => 'elrejtette a(z) „[[$1]]” szócikket',
 'dellogpage'             => 'Törlési_napló',
 'dellogpagetext'         => 'Itt láthatók a legutóbb törölt lapok.',
@@ -2608,7 +2615,7 @@ Kérlek, válassz egy másik nevet.',
 'movesubpage'                  => '{{PLURAL:$1|Allap|Allapok}}',
 'movesubpagetext'              => 'Ennek a lapnak {{PLURAL:$1|egy|$1}} allapja van.',
 'movenosubpage'                => 'Ez a lap nem rendelkezik allapokkal.',
-'movereason'                   => 'Indoklás',
+'movereason'                   => 'Indoklás:',
 'revertmove'                   => 'visszaállítás',
 'delete_and_move'              => 'Törlés és átnevezés',
 'delete_and_move_text'         => '== Törlés szükséges ==
@@ -2623,6 +2630,7 @@ Az átnevezés céljaként megadott „[[:$1]]” szócikk már létezik.  Ha az
 'immobile-source-page'         => 'Ez a lap nem nevezhető át.',
 'immobile-target-page'         => 'A lap nem helyezhető át a megadott címre.',
 'imagenocrossnamespace'        => 'A fájlok nem helyezhetőek át más névtérbe',
+'nonfile-cannot-move-to-file'  => 'Nem fájlok nem nevezhetők át fájlnévtérbe',
 'imagetypemismatch'            => 'Az új kiterjesztés nem egyezik meg a fájl típusával',
 'imageinvalidfilename'         => 'A célnév érvénytelen',
 'fix-double-redirects'         => 'Az eredeti címre mutató hivatkozások frissítése',
@@ -2803,7 +2811,7 @@ Valamennyi transwiki importálási művelet az [[Special:Log/import|importálás
 'tooltip-summary'                 => 'Adj meg egy rövid összefoglalót',
 
 # Stylesheets
-'common.css'   => '/* Közös CSS az összes felszínnek */',
+'common.css'   => '/* Közös CSS az összes felületnek */',
 'monobook.css' => '/* Az ide elhelyezett CSS hatással lesz a Monobook felület használóira */',
 'vector.css'   => '/******************************************************************************************\\
 *                   Ezek a stílusok csak a Vector felületre vonatkoznak                    *
@@ -3400,6 +3408,8 @@ minden egyes sor egy figyelt lap címe. Ha kész vagy, kattints a lista alatt ta
 'version-hook-subscribedby'        => 'Használja',
 'version-version'                  => '(verzió: $1)',
 'version-license'                  => 'Licenc',
+'version-poweredby-credits'        => "Ez a wiki '''[http://www.mediawiki.org/ MediaWiki]''' szoftverrel működik, copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'mások',
 'version-software'                 => 'Telepített szoftverek',
 'version-software-product'         => 'Termék',
 'version-software-version'         => 'Verzió',

@@ -283,7 +283,7 @@ $messages = array(
 'tog-editsection'             => 'Omogući da mijenjam pojedinačne odjeljke putem [uredi] linka',
 'tog-editsectiononrightclick' => 'Uključite uređivanje odjeljka sa pritiskom na desno dugme miša u naslovu odjeljka (JavaScript)',
 'tog-showtoc'                 => 'Prikaži sadržaj (u svim stranicama sa više od tri podnaslova)',
-'tog-rememberpassword'        => 'Zapamti moju šifru na ovom računaru (najviše $1 {{PLURAL:$1|dan|dana|dana}})',
+'tog-rememberpassword'        => 'Zapamti moju šifru u ovom pregledniku (najviše $1 {{PLURAL:$1|dan|dana}})',
 'tog-watchcreations'          => 'Dodaj stranice koje ja napravim u moj spisak praćenih članaka',
 'tog-watchdefault'            => 'Dodaj stranice koje uređujem u moj spisak praćenih članaka',
 'tog-watchmoves'              => 'Stranice koje premjestim dodaj na spisak praćenja',
@@ -434,17 +434,6 @@ $messages = array(
 'vector-action-protect'          => 'Zaštiti',
 'vector-action-undelete'         => 'Vrati obrisano',
 'vector-action-unprotect'        => 'Oslobodi zaštitu',
-'vector-namespace-category'      => 'Kategorija',
-'vector-namespace-help'          => 'Stranica pomoći',
-'vector-namespace-image'         => 'Datoteka',
-'vector-namespace-main'          => 'Stranica',
-'vector-namespace-media'         => 'Stranica medije',
-'vector-namespace-mediawiki'     => 'Poruka',
-'vector-namespace-project'       => 'Stranica projekta',
-'vector-namespace-special'       => 'Posebna stranica',
-'vector-namespace-talk'          => 'Razgovor',
-'vector-namespace-template'      => 'Šablon',
-'vector-namespace-user'          => 'Korisnička stranica',
 'vector-simplesearch-preference' => 'Omogući napredne sugestije pretrage (samo vector koža)',
 'vector-view-create'             => 'Napravi',
 'vector-view-edit'               => 'Uređivanje',
@@ -509,11 +498,14 @@ $messages = array(
 'jumpto'            => 'Idi na:',
 'jumptonavigation'  => 'navigacija',
 'jumptosearch'      => 'traži',
-'view-pool-error'   => 'Žao nam je, serveris u trenutno preopterećeni.
+'view-pool-error'   => 'Žao nam je, serveri su trenutno preopterećeni.
 Previše korisnika pokušava da pregleda ovu stranicu.
 Molimo pričekajte trenutak prije nego što ponovno pokušate pristupiti ovoj stranici.
 
 $1',
+'pool-timeout'      => 'Zaustavi čekanje na zaključavanje',
+'pool-queuefull'    => 'Red na pool je prenapunjen',
+'pool-errorunknown' => 'Nepoznata greška',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O projektu {{SITENAME}}',
@@ -757,6 +749,11 @@ Možete ignorisati ovu poruku, ako je korisnički račun napravljen greškom.',
 Molimo Vas da sačekate prije nego što pokušate ponovo.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer je poslan preko pokvarenog preglednika ili keširanog proksija.',
+'ratelimit-excluded-ips'     => ' #<!-- ostavite ovaj red onakav kakav je  --> <pre>
+# Sintaksa je slijedeća:
+#   * Sve od znaka "#" do kraja reda je komentar
+#   * Svaki neprazni red je IP adresa isključena od ograničenja brzine
+ #</pre> <!-- ostavite ovaj red onakav kakav je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Procijenjena snaga šifre: $1',
@@ -945,7 +942,7 @@ nemojte ih slati ovdje. Takođe, slanje članka podrazumijeva i vašu izjavu da 
 'copyrightwarning2'                => "Zapamtite da svi doprinosi na stranici {{SITENAME}} može biti izmijenjen, promijenjen ili uklonjen od strane ostalih korisnika. Ako ne želite da ovo desi sa Vašim tekstom, onda ga nemojte slati ovdje.<br />
 Također nam garantujete da ste ovo Vi napisali, ili da ste ga kopirali iz javne domene ili sličnog slobodnog izvora informacija (pogledajte $1 za više detalja).
 '''NE ŠALJITE AUTORSKIM PRAVOM ZAŠTIĆENE TEKSTOVE BEZ DOZVOLE!'''",
-'longpagewarning'                  => "'''PAŽNJA''': Ova stranica ima $1 kilobajta;
+'longpagewarning'                  => "'''Pažnja''': Ova stranica ima $1 kilobajta;
 neki preglednici mogu imati problema kad uređujete stranice skoro ili veće od 32 kilobajta.
 Molimo Vas da razmotrite razbijanje stranice na manje dijelove.",
 'longpageerror'                    => "'''Greška: Tekst, koji ste poslali, je dug $1 kilobajta, što je veće od maksimuma, koji iznosi $2 kilobajta.
@@ -1219,7 +1216,8 @@ Korištenje navigacionih linkova će resetovati ovaj stupac.',
 'compareselectedversions'  => 'Uporedite označene verzije',
 'showhideselectedversions' => 'Pokaži/sakrij odabrane verzije',
 'editundo'                 => 'ukloni ovu izmjenu',
-'diff-multi'               => '({{plural:$1|Nije prikazana jedna međuverzija|Nisu prikazane $1 međuverzije|Nije prikazano $1 međuverzija}})',
+'diff-multi'               => '({{plural:$1|Nije prikazana jedna međurevizija|Nisu prikazane $1 međurevizije|Nije prikazano $1 međurevizija}} od {{PLURAL:$2|jednog korisnika|$2 korisnika}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Jedna međurevizija|$1 međurevizije|$1 međurevizija}} od više od $2 {{PLURAL:$2|korisnika|korisnika}} {{PLURAL:$1|nije prikazana|nisu prikazane}})',
 
 # Search results
 'searchresults'                    => 'Rezultati pretrage',
@@ -1517,7 +1515,6 @@ Također omogućuje drugim korisnicima da vas kontaktiraju preko Vaše korisnič
 'right-override-export-depth' => 'Izvoz stranica uključujući povezane stranice do dubine od 5 linkova',
 'right-sendemail'             => 'Slanje e-maila drugim korisnicima',
 'right-revisionmove'          => 'Premještanje revizija',
-'right-selenium'              => 'Pokretanje selenijum testova',
 
 # User rights log
 'rightslog'      => 'Zapisnik korisničkih prava',

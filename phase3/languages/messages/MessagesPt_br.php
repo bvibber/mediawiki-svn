@@ -303,7 +303,7 @@ $messages = array(
 'tog-editsection'             => 'Habilitar edição de seção via links [editar]',
 'tog-editsectiononrightclick' => 'Habilitar edição de seção por clique com o botão direito no título da seção (JavaScript)',
 'tog-showtoc'                 => 'Mostrar Tabela de Conteúdos (para páginas com mais de três cabeçalhos)',
-'tog-rememberpassword'        => 'Lembrar o meu login neste computador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
+'tog-rememberpassword'        => 'Recordar os meus dados neste navegador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
 'tog-watchcreations'          => 'Adicionar páginas criadas por mim à minha lista de páginas vigiadas',
 'tog-watchdefault'            => 'Adicionar páginas editadas por mim à minha lista de páginas vigiadas',
 'tog-watchmoves'              => 'Adicionar páginas movidas por mim à minha lista de páginas vigiadas',
@@ -355,13 +355,13 @@ $messages = array(
 'thursday'      => 'quinta-feira',
 'friday'        => 'sexta-feira',
 'saturday'      => 'sábado',
-'sun'           => 'Dom',
-'mon'           => 'Seg',
-'tue'           => 'Ter',
-'wed'           => 'Qua',
-'thu'           => 'Qui',
-'fri'           => 'Sex',
-'sat'           => 'Sáb',
+'sun'           => 'dom',
+'mon'           => 'seg',
+'tue'           => 'ter',
+'wed'           => 'qua',
+'thu'           => 'qui',
+'fri'           => 'sex',
+'sat'           => 'sáb',
 'january'       => 'janeiro',
 'february'      => 'fevereiro',
 'march'         => 'março',
@@ -455,17 +455,6 @@ $messages = array(
 'vector-action-protect'          => 'Proteger',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desproteger',
-'vector-namespace-category'      => 'Categoria',
-'vector-namespace-help'          => 'Página de ajuda',
-'vector-namespace-image'         => 'Arquivo',
-'vector-namespace-main'          => 'Página',
-'vector-namespace-media'         => 'Página de mídia',
-'vector-namespace-mediawiki'     => 'Mensagem',
-'vector-namespace-project'       => 'Página de projeto',
-'vector-namespace-special'       => 'Página especial',
-'vector-namespace-talk'          => 'Discussão',
-'vector-namespace-template'      => 'Predefinição',
-'vector-namespace-user'          => 'Página de usuário',
 'vector-simplesearch-preference' => 'Ativar sugestões de busca melhoradas (apenas no tema Vector)',
 'vector-view-create'             => 'Criar',
 'vector-view-edit'               => 'Editar',
@@ -535,6 +524,9 @@ Muitos usuários estão tentando ver esta página.
 Aguarde um instante antes de tentar acessar esta página novamente.
 
 $1',
+'pool-timeout'      => 'Tempo limite de espera para o bloqueio excedido',
+'pool-queuefull'    => 'A pool queue está cheia',
+'pool-errorunknown' => 'Erro desconhecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sobre {{SITENAME}}',
@@ -700,7 +692,7 @@ Não se esqueça de personalizar as suas [[Special:Preferences|preferências na 
 'yourname'                   => 'Nome de usuário:',
 'yourpassword'               => 'Senha:',
 'yourpasswordagain'          => 'Redigite sua senha',
-'remembermypassword'         => 'Lembrar o meu login neste computador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
+'remembermypassword'         => 'Recordar os meus dados neste computador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
 'yourdomainname'             => 'Seu domínio:',
 'externaldberror'            => 'Ocorreu ou um erro no banco de dados durante a autenticação ou não lhe é permitido atualizar a sua conta externa.',
 'login'                      => 'Autenticar-se',
@@ -775,6 +767,11 @@ Você pode ignorar esta mensagem caso a conta tenha sido criada por engano.',
 Por favor aguarde antes de tentar novamente.',
 'loginlanguagelabel'         => 'Idioma: $1',
 'suspicious-userlogout'      => 'Sua solicitação para sair foi negada porque aparentemente foi enviada por um navegador danificado ou por um servidor proxy com cache.',
+'ratelimit-excluded-ips'     => ' #<!-- deixe esta linha exatamente como está --> <pre>
+# A sintaxe é a seguinte:
+#  * Tudo desde o caractere "#" até ao fim da linha é um comentário
+#  * Qualquer linha que não esteja em branco é um endereço de IP isento dos limites de velocidade de operação
+ #</pre> <!-- deixe esta linha exatamente como está  -->',
 
 # JavaScript password checks
 'password-strength'            => 'Nível de segurança da senha: $1',
@@ -831,7 +828,7 @@ Você pode já ter alterado com sucesso a sua senha, ou solicitado uma nova senh
 'minoredit'                        => 'Marcar como edição menor',
 'watchthis'                        => 'Vigiar esta página',
 'savearticle'                      => 'Salvar página',
-'preview'                          => 'Previsualização',
+'preview'                          => 'Pré-visualização',
 'showpreview'                      => 'Mostrar previsão',
 'showlivepreview'                  => 'Pré-visualização em tempo real',
 'showdiff'                         => 'Mostrar alterações',
@@ -1227,7 +1224,8 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'compareselectedversions'  => 'Compare as versões selecionadas',
 'showhideselectedversions' => 'Mostrar/esconder versões selecionadas',
 'editundo'                 => 'desfazer',
-'diff-multi'               => '({{PLURAL:$1|uma edição intermediária não está sendo exibida|$1 edições intermediárias não estão sendo exibidas}}.)',
+'diff-multi'               => '({{PLURAL:$1|Uma edição intermediária|$1 edições intermediárias}} de {{PLURAL:$2|um usuário|$2 usuários}} {{PLURAL:$1|não apresentada|não apresentadas}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Uma edição intermediária|$1 edições intermediárias}} de mais de {{PLURAL:$2|um usuário|$2 usuário}} não {{PLURAL:$1|apresentada|apresentadas}})',
 
 # Search results
 'searchresults'                    => 'Resultados de pesquisa',
@@ -1311,7 +1309,7 @@ Note que os índices do sistema de busca externo poderão conter referências de
 'prefsnologintext'              => 'É necessário estar <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} autenticado]</span> para definir as suas preferências.',
 'changepassword'                => 'Alterar senha',
 'prefs-skin'                    => 'Tema',
-'skin-preview'                  => 'Previsão',
+'skin-preview'                  => 'Pré-visualização',
 'prefs-math'                    => 'Matemática',
 'datedefault'                   => 'Sem preferência',
 'prefs-datetime'                => 'Data e hora',
@@ -1523,7 +1521,6 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'right-override-export-depth' => 'Exportar páginas incluindo páginas ligadas até uma profundidade de 5',
 'right-sendemail'             => 'Enviar email a outros usuários',
 'right-revisionmove'          => 'Mover revisões',
-'right-selenium'              => 'Executar os testes do Selenium',
 
 # User rights log
 'rightslog'      => 'Registro de privilégios de usuário',
@@ -1642,7 +1639,7 @@ Para incluir a imagem numa página, utilize uma ligação em um dos seguintes fo
 'upload-preferred'            => 'Tipos de arquivos preferidos: $1.',
 'upload-prohibited'           => 'Tipos de arquivo proibidos: $1.',
 'uploadlog'                   => 'registro de uploads',
-'uploadlogpage'               => 'Registro de uploads',
+'uploadlogpage'               => 'Registro de carregamento',
 'uploadlogpagetext'           => 'Segue a listagem dos envios de arquivos mais recentes.
 A [[Special:NewFiles|galeria de arquivos novos]] oferece uma listagem mais visual.',
 'filename'                    => 'Nome do arquivo',
@@ -2550,7 +2547,7 @@ $1 já se encontra bloqueado. Deseja alterar as configurações?',
 
 # Developer tools
 'lockdb'              => 'Trancar banco de dados',
-'unlockdb'            => 'Destrancar banco de dados',
+'unlockdb'            => 'Desbloquear a base de dados',
 'lockdbtext'          => 'Trancar o banco de dados suspenderá a habilidade de todos os usuários de editarem páginas, mudarem suas preferências, lista de páginas vigiadas e outras coisas que requerem mudanças na base de dados.<br />
 Por favor, confirme que você realmente pretende fazer isso e que vai destrancar a base de dados quando a manutenção estiver concluída.',
 'unlockdbtext'        => 'Desbloquear a base de dados vai restaurar a habilidade de todos os usuários de editarem páginas, mudarem suas preferências, alterarem suas listas de páginas vigiadas e outras coisas que requerem mudanças na base de dados.
@@ -3422,9 +3419,10 @@ Em conjunto com este programa deve ter recebido [{{SERVER}}{{SCRIPTPATH}}/COPYIN
 'filepath'         => 'Diretório do arquivo',
 'filepath-page'    => 'arquivo:',
 'filepath-submit'  => 'Ir',
-'filepath-summary' => 'Através dsta página especial é possível descobrir o endereço completo de um determinado arquivo. As imagens serão exibidas em sua resolução máxima, outros tipos de arquivos serão iniciados automaticamente em seus programas correspondentes.
+'filepath-summary' => 'Esta página especial retorna o endereço completo de um arquivo.
+As imagens serão exibidas em sua resolução máxima, outros tipos de arquivos serão abertos diretamente pelos programas associados.
 
-Entre com o nome do arquivo sem utilizar o prefixo "{{ns:file}}:".',
+Insira o nome do arquivo sem o prefixo "{{ns:file}}:".',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Procurar por arquivos duplicados',

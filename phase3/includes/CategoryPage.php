@@ -159,26 +159,26 @@ class CategoryViewer {
 	/**
 	 * Add a subcategory to the internal lists, using a Category object
 	 */
-	function addSubcategoryObject( $cat, $sortkey, $pageLength ) {
-		$title = $cat->getTitle();
-		$this->addSubcategory( $title, $sortkey, $pageLength );
-	}
-
-	/**
-	 * Add a subcategory to the internal lists, using a title object
-	 * @deprecated kept for compatibility, please use addSubcategoryObject instead
-	 */
-	function addSubcategory( $title, $sortkey, $pageLength ) {
+	function addSubcategoryObject( Category $cat, $sortkey, $pageLength ) {
 		// Subcategory; strip the 'Category' namespace from the link text.
 		$this->children[] = $this->getSkin()->link(
-			$title,
+			$cat->getTitle(),
 			null,
 			array(),
 			array(),
 			array( 'known', 'noclasses' )
 		);
 
-		$this->children_start_char[] = $this->getSubcategorySortChar( $title, $sortkey );
+		$this->children_start_char[] = 
+			$this->getSubcategorySortChar( $cat->getTitle(), $sortkey );
+	}
+
+	/**
+	 * Add a subcategory to the internal lists, using a title object
+	 * @deprecated kept for compatibility, please use addSubcategoryObject instead
+	 */
+	function addSubcategory( Title $title, $sortkey, $pageLength ) {
+		$this->addSubcategoryObject( Category::newFromTitle( $title ), $sortkey, $pageLength );
 	}
 
 	/**

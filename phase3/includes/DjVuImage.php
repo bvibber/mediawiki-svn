@@ -248,6 +248,7 @@ class DjVuImage {
 			wfProfileIn( 'djvutxt' );
 			$cmd = wfEscapeShellArg( $wgDjvuTxt ) . ' --detail=page ' . wfEscapeShellArg( $this->mFilename ) ;
 			wfDebug( __METHOD__.": $cmd\n" );
+			$retval = '';
 			$txt = wfShellExec( $cmd, $retval );
 			wfProfileOut( 'djvutxt' );
 			if( $retval == 0) {

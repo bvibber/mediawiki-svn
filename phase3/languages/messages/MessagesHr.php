@@ -319,7 +319,7 @@ $messages = array(
 'tog-editsection'             => 'Prikaži poveznice za uređivanje pojedinih odlomaka',
 'tog-editsectiononrightclick' => 'Pritiskom na desnu tipku miša otvori uređivanje pojedinih odlomaka (JavaScript)',
 'tog-showtoc'                 => 'U člancima s više od tri odlomka prikaži tablicu sadržaja.',
-'tog-rememberpassword'        => 'Zapamti moju lozinku na ovom računalu (najduže $1 {{PLURAL:$1|dan|dana}})',
+'tog-rememberpassword'        => 'Zapamti moju lozinku u ovom pregledniku (najduže $1 {{PLURAL:$1|dan|dana|dana}})',
 'tog-watchcreations'          => 'Dodaj članke koje kreiram na moj popis praćenja',
 'tog-watchdefault'            => 'Dodaj sve nove i izmijenjene stranice u popis praćenja',
 'tog-watchmoves'              => 'Dodaj sve stranice koje premjestim na popis praćenja',
@@ -465,24 +465,13 @@ i [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Vodič za suradnike] 
 'vector-action-protect'          => 'Zaštiti',
 'vector-action-undelete'         => 'Vrati',
 'vector-action-unprotect'        => 'Ukloni zaštitu',
-'vector-namespace-category'      => 'Kategorija',
-'vector-namespace-help'          => 'Stranica pomoći',
-'vector-namespace-image'         => 'Datoteka',
-'vector-namespace-main'          => 'Stranica',
-'vector-namespace-media'         => 'Mediji',
-'vector-namespace-mediawiki'     => 'Poruka',
-'vector-namespace-project'       => 'Stranica projekta',
-'vector-namespace-special'       => 'Posebna stranica',
-'vector-namespace-talk'          => 'Razgovor',
-'vector-namespace-template'      => 'Predložak',
-'vector-namespace-user'          => 'Suradnička stranica',
 'vector-simplesearch-preference' => 'Omogući poboljšane prijedloge za pretraživanje (samo izgled Vector)',
 'vector-view-create'             => 'Započni',
 'vector-view-edit'               => 'Uredi',
 'vector-view-history'            => 'Vidi stare izmjene',
 'vector-view-view'               => 'Čitaj',
 'vector-view-viewsource'         => 'Vidi izvor',
-'actions'                        => 'Akcije',
+'actions'                        => 'Radnje',
 'namespaces'                     => 'Imenski prostori',
 'variants'                       => 'Inačice',
 
@@ -545,6 +534,9 @@ Previše suradnika pokušava vidjeti ovu stranicu.
 Molimo malo pričekajte  prije nego što opet pokušate pristupiti ovoj stranici.
 
 $1',
+'pool-timeout'      => "Istek vremena (''timeout'') čekajući zaključavanje",
+'pool-queuefull'    => 'Red čekanja je pun',
+'pool-errorunknown' => 'Nepoznata pogreška',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O projektu {{SITENAME}}',
@@ -639,7 +631,7 @@ Baza je vratila pogrešku "$3: $4"',
 'laggedslavemode'      => 'Upozorenje: na stranici se možda ne nalaze najnovije promjene.',
 'readonly'             => 'Baza podataka je zaključana',
 'enterlockreason'      => 'Upiši razlog zaključavanja i procjenu vremena otključavanja',
-'readonlytext'         => 'Baza podataka je trenutačno zaključana, nije ju moguće uređivati ili mijenjati. Ovo je obično pokazatelj tekućeg redovitog održavanja. Nakon što se potonja privremena akcija završi, baza podataka će se vratiti u uobičajeno stanje.
+'readonlytext'         => 'Baza podataka je trenutačno zaključana, nije ju moguće uređivati ili mijenjati. Ovo je obično pokazatelj tekućeg redovitog održavanja. Nakon što se potonja privremena radnja završi, baza podataka će se vratiti u uobičajeno stanje.
 
 Administrator koji je izvršio zaključavanje naveo je ovaj razlog: $1',
 'missing-article'      => 'U bazi podataka nije pronađen tekst stranice koji je trebao biti pronađen, nazvane "$1" $2.
@@ -676,7 +668,7 @@ Upit: $2',
 'viewsource'           => 'Vidi izvornik',
 'viewsourcefor'        => 'za $1',
 'actionthrottled'      => 'Uređivanje je usporeno',
-'actionthrottledtext'  => 'Kao anti-spam mjeru, ograničeni ste u broju ovih akcija u određenom vremenu, i trenutačno ste dosegli to ograničenje. Pokušajte opet za koju minutu.',
+'actionthrottledtext'  => 'Kao anti-spam mjeru, ograničeni ste u broju ovih radnji u određenom vremenu, i trenutačno ste dosegli to ograničenje. Pokušajte opet za koju minutu.',
 'protectedpagetext'    => 'Ova stranica je zaključana da bi se onemogućile izmjene.',
 'viewsourcetext'       => 'Možete pogledati i kopirati izvorni sadržaj ove stranice:',
 'protectedinterface'   => 'Ova stranica je zaštićena od izmjena jer sadrži tekst MediaWiki softvera.',
@@ -757,7 +749,7 @@ koristiti staru lozinku.',
 'noemail'                    => 'Suradnik "$1" nema zapisanu e-mail adresu.',
 'noemailcreate'              => 'Morate navesti važeću e-mail adresu',
 'passwordsent'               => 'Nova je lozinka poslana na e-mail adresu suradnika "$1"',
-'blocked-mailpassword'       => 'Vašoj IP adresi je blokirano uređivanje stranica, a da bi se spriječila nedopuštena akcija, mogućnost zahtijevanja nove lozinke je također onemogućena.',
+'blocked-mailpassword'       => 'Vašoj IP adresi je blokirano uređivanje stranica, a da bi se spriječila nedopuštena radnja, mogućnost zahtijevanja nove lozinke je također onemogućena.',
 'eauthentsent'               => 'Na navedenu adresu poslan je e-mail s potvrdom.
 Prije nego što pošaljemo daljnje poruke, molimo Vas da otvorite e-mail i slijedite u njemu sadržana uputstva kako biste potvrdili da je e-mail adresa zaista Vaša.',
 'throttled-mailpassword'     => 'Već Vam je poslan e-mail za promjenu lozinke, u {{PLURAL:$1|zadnjih sat vremena|zadnja $1 sata|zadnjih $1 sati}}.
@@ -782,7 +774,12 @@ Možete zanemariti ovu poruku ako je suradnički račun stvoren nenamjerno.',
 'login-throttled'            => 'Nedavno ste se previše puta pokušali prijaviti.
 Molimo Vas da pričekate prije nego što pokušate ponovo.',
 'loginlanguagelabel'         => 'Jezik: $1',
-'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer to izgleda kao da je poslan preko pokvarenog preglednika ili keširanog proxyja.',
+'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer to izgleda kao da je poslan preko pokvarenog preglednika ili keširanog posrednika (proxyja).',
+'ratelimit-excluded-ips'     => '#<!-- leave this line exactly as it is --><pre>
+# Sintaksa je sljedeća: 
+# * Sve od "#" znaka do kraja linije je komentar 
+# * U svakom ne-prazni redak treba/može biti IP adresa isključena od vremenskog ograničenja pristupa
+#</pre><!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Procijenjena snaga lozinke: $1',
@@ -927,9 +924,9 @@ Molimo pokušajte ponovno. Ako i dalje ne bude uspijevalo, pokušajte se [[Speci
 ''Budući da je na ovom wikiju ({{SITENAME}}) omogućen unos HTML oznaka (tagova), pretpregled je skriven kao mjera predstrožnosti protiv napada pomoću JavaScripta.''
 
 '''Ukoliko ste pokušali vidjeti kako stranica izgleda, molimo probajte opet. Ako ne uspije, [[Special:UserLogout|odjavite se]] i prijavite se ponovo.'''",
-'token_suffix_mismatch'            => "'''Vaše uređivanje je odbačeno jer je Vaš web preglednik ubacio znak/znakove interpunkcije u token uređivanja.
+'token_suffix_mismatch'            => "'''Vaše uređivanje je odbačeno jer je Vaš web preglednik ubacio znak/znakove interpunkcije u token uređivanja.'''
 Stoga je uređivanje odbačeno da se spriječi uništavanje teksta stranice.
-To se ponekad događa kad rabite neispravan web-baziran anonimni proxy.'''",
+To se ponekad događa kad rabite neispravan web-baziran anonimni posrednik (proxy).",
 'editing'                          => 'Uređujete $1',
 'editingsection'                   => 'Uređujete $1 (odlomak)',
 'editingcomment'                   => 'Uređujete $1 (novi odlomak)',
@@ -1082,7 +1079,7 @@ Kao administrator možete ju pregledati; vjerojatno postoji više podataka u [{{
 'revdelete-nooldid-title'     => 'Nema tražene izmjene',
 'revdelete-nooldid-text'      => 'Niste naveli željenu izmjenu (izmjene), željena izmjena ne postoji, ili  pokušavate sakriti trenutačnu izmjenu.',
 'revdelete-nologtype-title'   => 'Nije zadana vrsta evidencije',
-'revdelete-nologtype-text'    => 'Niste izabrali vrstu evidencije nad kojom se vrši ova akcija.',
+'revdelete-nologtype-text'    => 'Niste izabrali vrstu evidencije nad kojom se vrši ova radnja.',
 'revdelete-nologid-title'     => 'Nevaljani zapis u evidenciji',
 'revdelete-nologid-text'      => 'Niste naveli ciljnu evidenciju ili navedeni zapis ne postoji.',
 'revdelete-no-file'           => 'Navedena datoteka ne postoji.',
@@ -1212,7 +1209,8 @@ Primijetite da uporaba navigacijskih poveznica resetira Vaše izbore u stupcu.',
 'compareselectedversions'  => 'Usporedi odabrane inačice',
 'showhideselectedversions' => 'Otkrij/sakrij odabrane izmjene',
 'editundo'                 => 'ukloni ovu izmjenu',
-'diff-multi'               => '({{PLURAL:$1|Nije prikazana jedna međuinačica|Nisu prikazane $1 međuinačice|Nije prikazano $1 međuinačica}})',
+'diff-multi'               => '({{PLURAL:$1|Nije prikazana jedna međuinačica|Nisu prikazane $1 međuinačice|Nije prikazano $1 međuinačica}} {{PLURAL:$2|jednog|$2|$2}} suradnika)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Nije prikazana jedna međuinačica|Nisu prikazane $1 međuinačice|Nije prikazano $1 međuinačica}} više od {{PLURAL:$2|jednog|$2|$2}} suradnika)',
 
 # Search results
 'searchresults'                    => 'Rezultati pretrage',
@@ -1478,7 +1476,7 @@ Možete omogućiti drugima da Vas kontaktiraju na suradničkoj stranici ili stra
 'right-blockemail'            => 'Blokiranje suradnika u slanju elektroničke pošte',
 'right-hideuser'              => 'Blokiranje suradničkog imena, skrivajući ga od javnosti',
 'right-ipblock-exempt'        => 'Imunitet na IP blokiranje, auto-blok i blokiranje opsega',
-'right-proxyunbannable'       => 'Imunitet na automatska blokiranja proxya',
+'right-proxyunbannable'       => 'Imunitet na automatska blokiranja posrednika (proxya)',
 'right-unblockself'           => 'Odblokirati se',
 'right-protect'               => 'Mijenjanje razina zaštićivanja i uređivanje zaštićenih stranica',
 'right-editprotected'         => 'Uređivanje zaštićenih stranica (s prenosivom zaštitom)',
@@ -1504,7 +1502,6 @@ Možete omogućiti drugima da Vas kontaktiraju na suradničkoj stranici ili stra
 'right-override-export-depth' => 'Izvezi stranice uključujući i povezane stranice do dubine od 5',
 'right-sendemail'             => 'Slanje e-maila drugim korisnicima',
 'right-revisionmove'          => 'Premjesti izmjene',
-'right-selenium'              => 'Pokreni testove Selenium',
 
 # User rights log
 'rightslog'      => 'Evidencija suradničkih prava',

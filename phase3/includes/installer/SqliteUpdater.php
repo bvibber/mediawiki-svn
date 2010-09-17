@@ -18,9 +18,9 @@ class SqliteUpdater extends DatabaseUpdater {
 		return array(
 			// 1.14
 			array( 'addField', 'site_stats',    'ss_active_users',  'patch-ss_active_users.sql' ),
-			array( 'do_active_users_init' ),
+			array( 'doActiveUsersInit' ),
 			array( 'addField', 'ipblocks',      'ipb_allow_usertalk', 'patch-ipb_allow_usertalk.sql' ),
-			array( 'sqlite_initial_indexes' ),
+			array( 'sqliteInitialIndexes' ),
 
 			// 1.15
 			array( 'addTable', 'change_tag',                        'patch-change_tag.sql' ),
@@ -30,23 +30,54 @@ class SqliteUpdater extends DatabaseUpdater {
 			// 1.16
 			array( 'addTable', 'user_properties',                   'patch-user_properties.sql' ),
 			array( 'addTable', 'log_search',                        'patch-log_search.sql' ),
-			array( 'do_log_search_population' ),
+			array( 'doLogSearchPopulation' ),
 			array( 'addField', 'logging',       'log_user_text',    'patch-log_user_text.sql' ),
 			array( 'addTable', 'l10n_cache',                        'patch-l10n_cache.sql' ),
 			array( 'addTable', 'external_user',                     'patch-external_user.sql' ),
 			array( 'addIndex', 'log_search',    'ls_field_val',     'patch-log_search-rename-index.sql' ),
 			array( 'addIndex', 'change_tag',    'change_tag_rc_tag', 'patch-change_tag-indexes.sql' ),
 			array( 'addField', 'redirect',      'rd_interwiki',     'patch-rd_interwiki.sql' ),
-			array( 'do_update_transcache_field' ),
-			array( 'sqlite_setup_searchindex' ),
+			array( 'doUpdateTranscacheField' ),
+			array( 'sqliteSetupSearchindex' ),
 
 			// 1.17
 			array( 'addTable', 'iwlinks',                            'patch-iwlinks.sql' ),
 			array( 'addIndex', 'iwlinks',   'iwl_prefix_title_from', 'patch-rename-iwl_prefix.sql' ),
 			array( 'addField', 'updatelog', 'ul_value',              'patch-ul_value.sql' ),
 			array( 'addField', 'interwiki',     'iw_api',           'patch-iw_api_and_wikiid.sql' ),
-			array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
-			array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
+			array( 'dropIndex', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
+			array( 'dropIndex', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
+			array( 'addField', 'categorylinks', 'cl_collation', 'patch-categorylinks-better-collation.sql' ),
+			array( 'doCollationUpdate' ),
+			array( 'addTable', 'msg_resource',                      'patch-msg_resource.sql' ),
+			array( 'addTable', 'module_deps',                       'patch-module_deps.sql' ),
 		);
+	}
+
+	protected function sqliteInitialIndexes() {
+		// initial-indexes.sql fails if the indexes are already present, so we perform a quick check if our database is newer.
+		if ( $this->updateRowExists( 'initial_indexes' ) || $this->db->indexExists( 'user', 'user_name' ) ) {
+			wfOut( "...have initial indexes\n" );
+			return;
+		}
+		wfOut( "Adding initial indexes..." );
+		$this->applyPatch( 'initial-indexes.sql' );
+		wfOut( "done\n" );
+	}
+
+	protected function sqliteSetupSearchindex() {
+		$module = $this->db->getFulltextSearchModule();
+		$fts3tTable = $this->updateRowExists( 'fts3' );
+		if ( $fts3tTable &&  !$module ) {
+			wfOut( '...PHP is missing FTS3 support, downgrading tables...' );
+			$this->applyPatch( 'searchindex-no-fts.sql' );
+			wfOut( "done\n" );
+		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
+			wfOut( '...adding FTS3 search capabilities...' );
+			$this->applyPatch( 'searchindex-fts3.sql' );
+			wfOut( "done\n" );
+		} else {
+			wfOut( "...fulltext search table appears to be in order.\n" );
+		}
 	}
 }

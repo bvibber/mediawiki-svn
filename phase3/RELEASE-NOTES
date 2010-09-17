@@ -54,6 +54,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   $wgUseMemCached, $wgDisableSearchContext, $wgColorErrors,
   $wgUseZhdaemon, $wgZhdaemonHost and $wgZhdaemonPort.
 * (bug 24408) The include_path is not modified in the default LocalSettings.php
+* $wgVectorExtraStyles was removed, and is no longer in use.
+* $wgLoadScript was added to specify alternative locations for ResourceLoader
+  requests.
+* $wgResourceLoaderVersionedClientMaxage, $wgResourceLoaderVersionedServerMaxage,
+  $wgResourceLoaderUnversionedClientMaxage and
+  wgResourceLoaderUnversionedServerMaxage were added to specify maxage and
+  smaxage times for responses from ResourceLoader based on whether the request's
+  URL contained a version parameter or not.
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -147,6 +155,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * The parser cache is now shared amongst users whose different settings aren't
   used in the page.
 * Any attribute beginning with "data-" can now be used in wikitext, per HTML5.
+* (bug 24007) Diff pages now mention the number of users having edited
+  intermediate revisions
+* Added new hook GetIP
+* (bug 16574) Allow administrators to temporarily disable the account creation
+  limit for IP addresses: [[MediaWiki:Ratelimit-excluded-ips]]
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -309,6 +322,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Disable multithreaded behaviour in recent ImageMagick, to avoid a deadlock
   when a resource limit such as $wgMaxShellMemory is hit.
 * (bug 24981) Allow extensions to access SpecialUpload variables again
+* (bug 20744) Wiki forgets about an uploaded file
+* (bug 17913) Don't show "older edit" when no older edit available
+* (bug 6204) TOC not properly rendered when using $wgMaxTocLevel
+* (bug 24977) The accesskey in history page now lead directly to the diff 
+  instead of alterning focus between the two buttons.
+* (bug 24987) Special:ListUsers does not take external groups into account
+* (bug 20633) update.php has mixed language output
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -351,7 +371,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   to the local alias.
 * (bug 24296) Added converttitles parameter to convert titles to their
   canonical language variant.
-* Fixed "link" parameter in image links with "thumb" parameter.
+* (bug 17398) Fixed "link" parameter in image links with "thumb" or "frame" parameter.
 * (bug 23936) Add "displaytitle" to query/info API
 * (bug 24485) Make iwbacklinks a generator, optionally display iwprefix and
   iwtitle
@@ -374,6 +394,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * For required string parameters, if '' is provided, this is now classed as
   missing
 * (bug 24724) list=allusers is out by 1 (shows total users - 1)
+* (bug 24166) API error when using rvprop=tags
+* Introduced "asynchronous download" mode for upload-by-url. Requires 
+  $wgAllowAsyncCopyUploads to be true.
 
 === Languages updated in 1.17 ===
 

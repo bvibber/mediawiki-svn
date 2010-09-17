@@ -145,7 +145,7 @@ $messages = array(
 'tog-editsection'             => 'Activar le modification de sectiones con ligamines "[modificar]"',
 'tog-editsectiononrightclick' => 'Activar modification de sectiones con clic-a-dextra super lor titulos (require JavaScript)',
 'tog-showtoc'                 => 'Monstrar tabula de contento (in paginas con plus de 3 sectiones)',
-'tog-rememberpassword'        => 'Memorar mi contrasigno in iste computator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
+'tog-rememberpassword'        => 'Memorar mi contrasigno in iste navigator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
 'tog-watchcreations'          => 'Adder le paginas que io crea a mi observatorio',
 'tog-watchdefault'            => 'Adder le paginas que io modifica a mi observatorio',
 'tog-watchmoves'              => 'Adder le paginas que io renomina a mi observatorio',
@@ -296,17 +296,6 @@ $messages = array(
 'vector-action-protect'          => 'Proteger',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Disproteger',
-'vector-namespace-category'      => 'Categoria',
-'vector-namespace-help'          => 'Pagina de adjuta',
-'vector-namespace-image'         => 'File',
-'vector-namespace-main'          => 'Pagina',
-'vector-namespace-media'         => 'Pagina de multimedia',
-'vector-namespace-mediawiki'     => 'Message',
-'vector-namespace-project'       => 'Pagina de projecto',
-'vector-namespace-special'       => 'Pagina special',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Patrono',
-'vector-namespace-user'          => 'Pagina de usator',
 'vector-simplesearch-preference' => 'Activar le suggestiones de recerca meliorate (solmente in apparentia Vector)',
 'vector-view-create'             => 'Crear',
 'vector-view-edit'               => 'Modificar',
@@ -376,6 +365,9 @@ Troppo de usatores tenta vider iste pagina.
 Per favor attende un momento ante que tu essaya acceder novemente a iste pagina.
 
 $1',
+'pool-timeout'      => 'Tempore limite excedite attendente le serratura',
+'pool-queuefull'    => 'Le cauda de ressources commun es plen',
+'pool-errorunknown' => 'Error incognite',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A proposito de {{SITENAME}}',
@@ -543,7 +535,7 @@ Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].
 'yourname'                   => 'Nomine de usator:',
 'yourpassword'               => 'Contrasigno:',
 'yourpasswordagain'          => 'Repete contrasigno:',
-'remembermypassword'         => 'Memorar mi contrasigno in iste computator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
+'remembermypassword'         => 'Memorar mi contrasigno in iste navigator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
 'yourdomainname'             => 'Tu dominio:',
 'externaldberror'            => 'O il occurreva un error in le base de datos de authentication, o tu non ha le autorisation de actualisar tu conto externe.',
 'login'                      => 'Aperir session',
@@ -630,6 +622,11 @@ Tu pote ignorar iste message si iste conto ha essite create in error.',
 Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
+'ratelimit-excluded-ips'     => ' #<!-- non modificar in alcun modo iste linea --> <pre>
+# Le syntaxe es lo sequente:
+#  * Toto a partir de un character "#" usque al fin del linea es un commento
+#  * Omne linea non vacue es un adresse IP excludite del limite de frequentia
+  #</pre> <!-- non modificar in alcun modo iste linea -->',
 
 # JavaScript password checks
 'password-strength'            => 'Estimation del securitate del contrasigno: $1',
@@ -1095,7 +1092,8 @@ Nota que le uso del ligamines de navigation causara le perdita de tote cambios i
 'compareselectedversions'  => 'Comparar versiones seligite',
 'showhideselectedversions' => 'Revelar/celar le versiones seligite',
 'editundo'                 => 'disfacer',
-'diff-multi'               => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} non es monstrate)',
+'diff-multi'               => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} facite per {{PLURAL:$2|un usator|$2 usatores}} non es monstrate)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Un version intermedie|$1 versiones intermedie}} facite per plus de $2 {{PLURAL:$2|usator|usatores}} non es monstrate)',
 
 # Search results
 'searchresults'                    => 'Resultatos del recerca',
@@ -1393,7 +1391,6 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'right-override-export-depth' => 'Exportar paginas includente paginas ligate usque a un profunditate de 5',
 'right-sendemail'             => 'Inviar e-mail a altere usatores',
 'right-revisionmove'          => 'Displaciar versiones',
-'right-selenium'              => 'Executar tests de Selenium',
 
 # User rights log
 'rightslog'      => 'Registro de derectos de usator',

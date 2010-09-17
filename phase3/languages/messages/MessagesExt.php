@@ -8,6 +8,7 @@
  * @file
  *
  * @author Better
+ * @author The Evil IP address
  * @author Urhixidur
  */
 
@@ -163,31 +164,20 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection'   => 'Añiil tema',
-'vector-action-delete'       => 'Esborral',
-'vector-action-move'         => 'Mual',
-'vector-action-protect'      => 'Protegel',
-'vector-action-undelete'     => 'Esborral',
-'vector-action-unprotect'    => 'Esprotegel',
-'vector-namespace-category'  => 'Categoria',
-'vector-namespace-help'      => "Página d'ayua",
-'vector-namespace-image'     => 'Archivu',
-'vector-namespace-main'      => 'Página',
-'vector-namespace-media'     => 'Página Murtimeya',
-'vector-namespace-mediawiki' => 'Mensaji',
-'vector-namespace-project'   => 'Página el proyeutu',
-'vector-namespace-special'   => 'Página especial',
-'vector-namespace-talk'      => 'Caraba',
-'vector-namespace-template'  => 'Cuairu',
-'vector-namespace-user'      => "Página d'usuáriu",
-'vector-view-create'         => 'Crial',
-'vector-view-edit'           => 'Eital',
-'vector-view-history'        => 'Guipal estorial',
-'vector-view-view'           => 'Leyel',
-'vector-view-viewsource'     => 'Guipal cóigu',
-'actions'                    => 'Acionis',
-'namespaces'                 => 'Espáciu nombris',
-'variants'                   => 'Variantis',
+'vector-action-addsection' => 'Añiil tema',
+'vector-action-delete'     => 'Esborral',
+'vector-action-move'       => 'Mual',
+'vector-action-protect'    => 'Protegel',
+'vector-action-undelete'   => 'Esborral',
+'vector-action-unprotect'  => 'Esprotegel',
+'vector-view-create'       => 'Crial',
+'vector-view-edit'         => 'Eital',
+'vector-view-history'      => 'Guipal estorial',
+'vector-view-view'         => 'Leyel',
+'vector-view-viewsource'   => 'Guipal cóigu',
+'actions'                  => 'Acionis',
+'namespaces'               => 'Espáciu nombris',
+'variants'                 => 'Variantis',
 
 'errorpagetitle'    => 'Marru',
 'returnto'          => 'Gorvel a $1.',
@@ -519,7 +509,7 @@ Si s\'á criau la cuenta ebiu a angún marru, inora esti mensahi.',
 'showlivepreview'                  => '"Live Preview"',
 'showdiff'                         => 'Muestral chambus',
 'anoneditwarning'                  => "'''Avisu:''' Nu t'alcuentras rustriu, razón pola que s'emburacará la tu IP nel estorial d'esta páhina.",
-'missingsummary'                   => "'''Atención:''' Nu as escrebiu una síntesis al tentu la tu eición. Si pursas otra vezi sobri «{{MediaWiki:Savearticle}}» la tu eición s´emburacará sin él.",
+'missingsummary'                   => "'''Atención:''' Nu as escrebiu una síntesis al tentu la tu eición. Si pursas otra vezi sobri «{{int:savearticle}}» la tu eición s´emburacará sin él.",
 'missingcommenttext'               => 'Pol favol, escrebi un testu embahu.',
 'missingcommentheader'             => "'''Atención:''' Nu as escrebiu un entítulu pal tu comentáriu. Si güervis a pursal sobri \"Emburacal\", s'emburacará sin él.",
 'summary-preview'                  => 'Previsoreal síntesis:',

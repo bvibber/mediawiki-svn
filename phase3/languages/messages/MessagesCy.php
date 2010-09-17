@@ -130,7 +130,7 @@ $messages = array(
 'tog-editsection'             => 'Galluogi golygu adran trwy ddolennau [golygu] uwchben yr adran',
 'tog-editsectiononrightclick' => 'Galluogi golygu adran drwy dde-glicio ar bennawd yr adran (JavaScript)',
 'tog-showtoc'                 => 'Dangos y daflen gynnwys (ar gyfer tudalennau sydd â mwy na 3 pennawd)',
-'tog-rememberpassword'        => "Y cyfrifiadur hwn i gofio'r cyfrinair (am hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
+'tog-rememberpassword'        => "Y porwr hwn i gofio'r manylion mewngofnodi (hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
 'tog-watchcreations'          => 'Ychwanegu tudalennau at fy rhestr wylio wrth i mi eu creu',
 'tog-watchdefault'            => 'Ychwanegu tudalennau at fy rhestr wylio wrth i mi eu golygu',
 'tog-watchmoves'              => 'Ychwanegu tudalennau at fy rhestr wylio wrth i mi eu symud',
@@ -280,17 +280,6 @@ $messages = array(
 'vector-action-protect'          => 'Diogelu',
 'vector-action-undelete'         => 'Adfer',
 'vector-action-unprotect'        => 'Dad-ddiogelu',
-'vector-namespace-category'      => 'Categori',
-'vector-namespace-help'          => 'Tudalen gymorth',
-'vector-namespace-image'         => 'Ffeil',
-'vector-namespace-main'          => 'Tudalen',
-'vector-namespace-media'         => 'Tudalen cyfrwng',
-'vector-namespace-mediawiki'     => 'Neges',
-'vector-namespace-project'       => 'Tudalen brosiect',
-'vector-namespace-special'       => 'Tudalen arbennig',
-'vector-namespace-talk'          => 'Sgwrs',
-'vector-namespace-template'      => 'Nodyn',
-'vector-namespace-user'          => 'Tudalen defnyddiwr',
 'vector-simplesearch-preference' => 'Galluogi awgrymiadau chwilio uwch (gwedd Vector yn unig)',
 'vector-view-create'             => 'Dechrau',
 'vector-view-edit'               => 'Golygu',
@@ -523,7 +512,7 @@ Cofiwch osod y [[Special:Preferences|dewisiadau]] sydd fwyaf hwylus i chi ar {{S
 'yourname'                   => 'Eich enw defnyddiwr:',
 'yourpassword'               => 'Eich cyfrinair:',
 'yourpasswordagain'          => 'Ail-deipiwch y cyfrinair:',
-'remembermypassword'         => "Y cyfrifiadur hwn i gofio'r cyfrinair (am hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
+'remembermypassword'         => "Y porwr hwn i gofio'r manylion mewngofnodi (am hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
 'yourdomainname'             => 'Eich parth',
 'externaldberror'            => "Naill ai: cafwyd gwall dilysu allanol ar databas neu: ar y llaw arall efallai nad oes hawl gennych chi i ddiwygio'ch cyfrif allanol.",
 'login'                      => 'Mewngofnodi',
@@ -1034,7 +1023,8 @@ Pan yn gwneud hyn dylid sicrhau nad yw dilyniant hanes tudalennau yn cael ei ddi
 'compareselectedversions'  => 'Cymharer y fersiynau dewisedig',
 'showhideselectedversions' => 'Dangos/cuddio y diwygiadau dewisedig',
 'editundo'                 => 'dadwneud',
-'diff-multi'               => '(Ni ddangosir {{PLURAL:$1|yr $1 diwygiad|yr $1 diwygiad|y $1 ddiwygiad|y $1 diwygiad|y $1 diwygiad|y $1 diwygiad}} rhyngol.)',
+'diff-multi'               => '(Ni ddangosir {{PLURAL:$1|yr $1 diwygiad|yr $1 diwygiad|y $1 ddiwygiad|y $1 diwygiad|y $1 diwygiad|y $1 diwygiad}} rhyngol gan {{PLURAL:$2||un defnyddiwr|$2 ddefnyddiwr|$2 defnyddiwr|$2 o ddefnyddwyr|$2 o ddefnyddwyr}}.)',
+'diff-multi-manyusers'     => '(Ni ddangosir {{PLURAL:$1|yr $1 diwygiad|yr $1 diwygiad|y $1 ddiwygiad|y $1 diwygiad|y $1 diwygiad|y $1 diwygiad}} rhyngol gan mwy na $2 {{PLURAL:$2|o ddefnyddwyr}}.)',
 
 # Search results
 'searchresults'                    => "Canlyniadau'r chwiliad",
@@ -1332,7 +1322,6 @@ Gallwch hefyd adael i eraill anfon e-bost atoch trwy'r cyswllt ar eich tudalen d
 'right-override-export-depth' => 'Allforio tudalennau gan gynnwys tudalennau cysylltiedig hyd at ddyfnder o 5',
 'right-sendemail'             => 'Anfon e-bost at ddefnyddwyr eraill',
 'right-revisionmove'          => 'Symud diwygiadau',
-'right-selenium'              => 'Gwneud profion Seleniwm',
 
 # User rights log
 'rightslog'      => 'Lòg galluoedd defnyddiwr',
@@ -1464,7 +1453,7 @@ Gweler [[Special:NewFiles|oriel y ffeiliau newydd]] i fwrw golwg drostynt.",
 'ignorewarnings'              => 'Anwybydder pob rhybudd',
 'minlength1'                  => 'Rhaid i enwau ffeiliau gynnwys un llythyren neu ragor.',
 'illegalfilename'             => 'Mae\'r enw ffeil "$1" yn cynnwys nodau sydd wedi\'u gwahardd mewn teitlau tudalennau. Ail-enwch y ffeil ac uwchlwythwch hi eto os gwelwch yn dda.',
-'badfilename'                 => 'Mae enw\'r ffeil wedi\'i newid i "$1".',
+'badfilename'                 => 'Newidiwyd enw\'r ffeil i "$1".',
 'filetype-mime-mismatch'      => "Nid yw estyniad y ffeil yn cysefeillio â'r math MIME.",
 'filetype-badmime'            => "Ni chaniateir uwchlwytho ffeiliau o'r math MIME '$1'.",
 'filetype-bad-ie-mime'        => 'Ni ellir uwchlwytho\'r ffeil hon oherwydd y byddai Internet Explorer yn ei adnabod fel "$1", sef math annilys o ffeil sydd efallai hefyd yn beryglus.',
@@ -2271,7 +2260,7 @@ Mae'r cofnod diweddaraf yn y lòg blocio i'w weld isod:",
 'ipballowusertalk'                => "Galluogi'r defnyddiwr hwn i olygu ei dudalen sgwrs ei hun tra bod bloc arno",
 'ipb-change-block'                => "Ailflocio'r defnyddiwr hwn gyda'r gosodiadau hyn",
 'badipaddress'                    => 'Cyfeiriad IP annilys.',
-'blockipsuccesssub'               => 'Y blocio wedi llwyddo',
+'blockipsuccesssub'               => 'Llwyddodd y rhwystr',
 'blockipsuccesstext'              => 'Mae cyfeiriad IP [[Special:Contributions/$1|$1]] wedi cael ei flocio.
 <br />Gwelwch [[Special:IPBlockList|restr y blociau IP]] er mwyn arolygu blociau.',
 'ipb-edit-dropdown'               => "Golygu'r rhesymau dros flocio",
@@ -2308,13 +2297,13 @@ Mae'r cofnod diweddaraf yn y lòg blocio i'w weld isod:",
 'unblocklink'                     => 'dadflocio',
 'change-blocklink'                => 'newid y bloc',
 'contribslink'                    => 'cyfraniadau',
-'autoblocker'                     => 'Rydych chi wedi cael eich blocio yn awtomatig gan eich bod chi\'n rhannu cyfeiriad IP gyda "[[User:$1|$1]]". Dyma\'r rheswm a roddwyd dros flocio $1: "$2".',
+'autoblocker'                     => 'Rydych wedi cael eich rhwystro\'n awtomatig oherwydd defnyddiwyd eich cyfeiriad IP gyda "[[User:$1|$1]]" yn ddiweddar. Dyma\'r rheswm a roddwyd dros rwystro $1: "$2".',
 'blocklogpage'                    => 'Lòg blociau',
 'blocklog-showlog'                => "Cafodd y defnyddiwr hwn ei flocio o'r blaen.
 Dyma'r lòg blocio perthnasol:",
 'blocklog-showsuppresslog'        => "Cafodd y defnyddiwr hwn ei flocio a'i guddio o'r blaen.
 Dyma'r lòg cuddio perthnasol:",
-'blocklogentry'                   => 'wedi blocio "[[$1]]" am gyfnod $2 $3',
+'blocklogentry'                   => 'wedi rhwystro "[[$1]]" am gyfnod o $2 $3',
 'reblock-logentry'                => 'wedi newid y gosodiadau blocio ar [[$1]], gan ddod i ben am $2 $3',
 'blocklogtext'                    => "Dyma lòg o'r holl weithredoedd blocio a datflocio. Nid yw'r cyfeiriadau IP sydd wedi cael eu blocio'n awtomatig ar y rhestr. Gweler [[Special:IPBlockList|rhestr y blociau IP]] am restr y blociau a'r gwaharddiadau sydd yn weithredol ar hyn o bryd.",
 'unblocklogentry'                 => 'wedi dadflocio $1',
@@ -3202,7 +3191,7 @@ Gallwch hefyd [[Special:Watchlist/edit|ddefnyddio\'r rhestr arferol]].',
 
 Cyhoeddir MediaWiki yn y gobaith y bydd o ddefnydd, ond HEB UNRHYW WARANT; heb hyd yn oed gwarant ymhlyg o FARCHNADWYEDD nag o FOD YN ADDAS AT RYW BWRPAS ARBENNIG. Gweler y GNU General Public License am fanylion pellach.
 
-Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Public License] gyda'r rhaglen hon; os nad ydych, ysgrifennwch at Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, neu [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html darllenwch amdano ar y we].",
+Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Public License] gyda'r rhaglen hon; os nad ydych, ysgrifennwch at Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, neu [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html gallwch ei ddarllen ar y we].",
 'version-software'                 => 'Meddalwedd gosodedig',
 'version-software-product'         => 'Cynnyrch',
 'version-software-version'         => 'Fersiwn',
@@ -3212,7 +3201,7 @@ Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Publ
 'filepath-page'    => 'Ffeil:',
 'filepath-submit'  => 'Eler',
 'filepath-summary' => 'Mae\'r dudalen arbennig hon yn adrodd llwybr ffeil yn gyfan.
-Dangosir delweddau ar eu llawn maint, dechreuir ffeiliau o fathau eraill yn uniongyrchol gan y rhaglen cysylltiedig.
+Dangosir delweddau ar eu maint llawn, dechreuir ffeiliau o fathau eraill yn uniongyrchol gan y rhaglen gysylltiedig.
 
 Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 

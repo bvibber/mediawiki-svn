@@ -88,24 +88,26 @@ class OracleInstaller extends DatabaseInstaller {
 		return $status;
 	}
 
-
-	public function getSettingsForm() {
-		// TODO
-	}
-	
-	public function submitSettingsForm() {
-		// TODO
-	}
-
 	public function getConnection() {
-		// TODO
+		$status = Status::newGood();
+		try {
+			$this->db = new DatabaseOracle(
+				$this->getVar( 'wgDBserver' ),
+				$this->getVar( '_InstallUser' ),
+				$this->getVar( '_InstallPassword' ),
+				false,
+				false,
+				0,
+				$this->getVar( 'wgDBprefix' )
+			);
+			$status->value = $this->db;
+		} catch ( DBConnectionError $e ) {
+			$status->fatal( 'config-connection-error', $e->getMessage() );
+		}
+		return $status;
 	}
 
 	public function setupDatabase() {
-		// TODO
-	}
-
-	public function createTables() {
 		// TODO
 	}
 

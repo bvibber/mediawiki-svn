@@ -75,6 +75,24 @@ class SpecialVersion extends SpecialPage {
 	 * @return string
 	 */
 	private static function getMediaWikiCredits() {
+		$ret = Xml::element( 'h2', array( 'id' => 'mw-version-license' ), wfMsg( 'version-license' ) );
+
+		// This text is always left-to-right.
+		$ret .= '<div>';
+		$ret .= "__NOTOC__
+		" . self::getCopyrightAndAuthorList() . "\n
+		" . wfMsg( 'version-license-info' );
+		$ret .= '</div>';
+
+		return str_replace( "\t\t", '', $ret ) . "\n";
+	}
+
+	/**
+	 * Get the "Mediawiki is copyright 2001-20xx by lots of cool guys" text
+	 *
+	 * @return String
+	 */
+	public static function getCopyrightAndAuthorList() {
 		global $wgLang;
 
 		$authorList = array( 'Magnus Manske', 'Brion Vibber', 'Lee Daniel Crocker',
@@ -84,17 +102,9 @@ class SpecialVersion extends SpecialPage {
 			'Alexandre Emsenhuber', 'Siebrand Mazeland', 'Chad Horohoe',
 			wfMsg( 'version-poweredby-others' )
 		);
-		$ret = Xml::element( 'h2', array( 'id' => 'mw-version-license' ), wfMsg( 'version-license' ) );
 
-		// This text is always left-to-right.
-		$ret .= '<div>';
-		$ret .= "__NOTOC__
-		" . wfMsg( 'version-poweredby-credits', date( 'Y' ),
-				$wgLang->listToText( $authorList ) ) . "\n
-		" . wfMsg( 'version-license-info' );
-		$ret .= '</div>';
-
-		return str_replace( "\t\t", '', $ret ) . "\n";
+		return wfMsg( 'version-poweredby-credits', date( 'Y' ),
+			$wgLang->listToText( $authorList ) );
 	}
 
 	/**

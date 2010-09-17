@@ -16,14 +16,183 @@ define( 'DEADLOCK_DELAY_MIN', 500000 );
 define( 'DEADLOCK_DELAY_MAX', 1500000 );
 
 /**
+ * Base interface for all DBMS-specific code. At a bare minimum, all of the
+ * following must be implemented to support MediaWiki
+ *
+ * @file
+ * @ingroup Database
+ */
+interface DatabaseType {
+	/**
+	 * Get the type of the DBMS, as it appears in $wgDBtype.
+	 *
+	 * @return string
+	 */
+	public function getType();
+
+	/**
+	 * Open a connection to the database. Usually aborts on failure
+	 * If the failFunction is set to a non-zero integer, returns success
+	 *
+	 * @param $server String: database server host
+	 * @param $user String: database user name
+	 * @param $password String: database user password
+	 * @param $dbName String: database name
+	 * @return bool
+	 * @throws DBConnectionError
+	 */
+	public function open( $server, $user, $password, $dbName );
+
+	/**
+	 * The DBMS-dependent part of query()
+	 * @todo @fixme Make this private someday
+	 *
+	 * @param  $sql String: SQL query.
+	 * @return Result object to feed to fetchObject, fetchRow, ...; or false on failure
+	 * @private
+	 */
+	/*private*/ function doQuery( $sql );
+
+	/**
+	 * Fetch the next row from the given result object, in object form.
+	 * Fields can be retrieved with $row->fieldname, with fields acting like
+	 * member variables.
+	 *
+	 * @param $res SQL result object as returned from DatabaseBase::query(), etc.
+	 * @return Row object
+	 * @throws DBUnexpectedError Thrown if the database returns an error
+	 */
+	public function fetchObject( $res );
+
+	/**
+	 * Fetch the next row from the given result object, in associative array
+	 * form.  Fields are retrieved with $row['fieldname'].
+	 *
+	 * @param $res SQL result object as returned from DatabaseBase::query(), etc.
+	 * @return Row object
+	 * @throws DBUnexpectedError Thrown if the database returns an error
+	 */
+	public function fetchRow( $res );
+
+	/**
+	 * Get the number of rows in a result object
+	 *
+	 * @param $res Mixed: A SQL result
+	 * @return int
+	 */
+	public function numRows( $res );
+
+	/**
+	 * Get the number of fields in a result object
+	 * @see http://www.php.net/mysql_num_fields
+	 *
+	 * @param $res Mixed: A SQL result
+	 * @return int
+	 */
+	public function numFields( $res );
+
+	/**
+	 * Get a field name in a result object
+	 * @see http://www.php.net/mysql_field_name
+	 *
+	 * @param $res Mixed: A SQL result
+	 * @param $n Integer
+	 * @return string
+	 */
+	public function fieldName( $res, $n );
+
+	/**
+	 * Get the inserted value of an auto-increment row
+	 *
+	 * The value inserted should be fetched from nextSequenceValue()
+	 *
+	 * Example:
+	 * $id = $dbw->nextSequenceValue('page_page_id_seq');
+	 * $dbw->insert('page',array('page_id' => $id));
+	 * $id = $dbw->insertId();
+	 *
+	 * @return int
+	 */
+	public function insertId();
+
+	/**
+	 * Change the position of the cursor in a result object
+	 * @see http://www.php.net/mysql_data_seek
+	 *
+	 * @param $res Mixed: A SQL result
+	 * @param $row Mixed: Either MySQL row or ResultWrapper
+	 */
+	public function dataSeek( $res, $row );
+
+	/**
+	 * Get the last error number
+	 * @see http://www.php.net/mysql_errno
+	 *
+	 * @return int
+	 */
+	public function lastErrno();
+
+	/**
+	 * Get a description of the last error
+	 * @see http://www.php.net/mysql_error
+	 *
+	 * @return string
+	 */
+	public function lastError();
+
+	/**
+	 * mysql_fetch_field() wrapper
+	 * Returns false if the field doesn't exist
+	 *
+	 * @param $table string: table name
+	 * @param $field string: field name
+	 */
+	public function fieldInfo( $table, $field );
+
+	/**
+	 * Get the number of rows affected by the last write query
+	 * @see http://www.php.net/mysql_affected_rows
+	 *
+	 * @return int
+	 */
+	public function affectedRows();
+
+	/**
+	 * Wrapper for addslashes()
+	 *
+	 * @param $s string: to be slashed.
+	 * @return string: slashed string.
+	 */
+	public function strencode( $s );
+
+	/**
+	 * Returns a wikitext link to the DB's website, e.g.,
+	 *     return "[http://www.mysql.com/ MySQL]";
+	 * Should at least contain plain text, if for some reason
+	 * your database has no website.
+	 *
+	 * @return string: wikitext of a link to the server software's web site
+	 */
+	public static function getSoftwareLink();
+
+	/**
+	 * A string describing the current software version, like from
+	 * mysql_get_server_info().  Will be listed on Special:Version, etc.
+	 *
+	 * @return string: Version information from the database
+	 */
+	public function getServerVersion();
+}
+
+/**
  * Database abstraction object
  * @ingroup Database
  */
 abstract class DatabaseBase implements DatabaseType {
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Variables
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 	protected $mLastQuery = '';
 	protected $mDoneWrites = false;
@@ -41,9 +210,9 @@ abstract class DatabaseBase implements DatabaseType {
 	protected $mFakeSlaveLag = null, $mFakeMaster = false;
 	protected $mDefaultBigSelects = null;
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Accessors
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 	# These optionally set a variable and return the previous state
 
 	/**
@@ -186,7 +355,7 @@ abstract class DatabaseBase implements DatabaseType {
 
 	/**
 	 * Returns true if this database requires that SELECT DISTINCT queries require that all
-       ORDER BY expressions occur in the SELECT list per the SQL92 standard
+	   ORDER BY expressions occur in the SELECT list per the SQL92 standard
 	 */
 	function standardSelectDistinct() {
 		return true;
@@ -258,7 +427,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @return Boolean
 	 */
 	function getFlag( $flag ) {
-		return !!($this->mFlags & $flag);
+		return !!( $this->mFlags & $flag );
 	}
 
 	/**
@@ -269,16 +438,28 @@ abstract class DatabaseBase implements DatabaseType {
 	}
 
 	function getWikiID() {
-		if( $this->mTablePrefix ) {
+		if ( $this->mTablePrefix ) {
 			return "{$this->mDBname}-{$this->mTablePrefix}";
 		} else {
 			return $this->mDBname;
 		}
 	}
 
-#------------------------------------------------------------------------------
+	/**
+	 * Return a path to the DBMS-specific schema, otherwise default to tables.sql
+	 */
+	public function getSchema() {
+		global $IP;
+		if ( file_exists( "$IP/maintenance/" . $this->getType() . "/tables.sql" ) ) {
+			return "$IP/maintenance/" . $this->getType() . "/tables.sql";
+		} else {
+			return "$IP/maintenance/tables.sql";
+		}
+	}
+
+# ------------------------------------------------------------------------------
 # Other functions
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 	/**
 	 * Constructor.
@@ -291,9 +472,10 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $tablePrefix String: database table prefixes. By default use the prefix gave in LocalSettings.php
 	 */
 	function __construct( $server = false, $user = false, $password = false, $dbName = false,
-		$failFunction = false, $flags = 0, $tablePrefix = 'get from global' ) {
-
+		$failFunction = false, $flags = 0, $tablePrefix = 'get from global'
+	) {
 		global $wgOut, $wgDBprefix, $wgCommandLineMode;
+
 		# Can't get a reference if it hasn't been set yet
 		if ( !isset( $wgOut ) ) {
 			$wgOut = null;
@@ -338,8 +520,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param failFunction
 	 * @param $flags
 	 */
-	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 )
-	{
+	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 ) {
 		wfDeprecated( __METHOD__ );
 		return new DatabaseMysql( $server, $user, $password, $dbName, $failFunction, $flags );
 	}
@@ -429,7 +610,7 @@ abstract class DatabaseBase implements DatabaseType {
 			# logging size most of the time. The substr is really just a sanity check.
 
 			# Who's been wasting my precious column space? -- TS
-			#$profName = 'query: ' . $fname . ' ' . substr( DatabaseBase::generalizeSQL( $sql ), 0, 255 );
+			# $profName = 'query: ' . $fname . ' ' . substr( DatabaseBase::generalizeSQL( $sql ), 0, 255 );
 
 			if ( $isMaster ) {
 				$queryProf = 'query-m: ' . substr( DatabaseBase::generalizeSQL( $sql ), 0, 255 );
@@ -438,6 +619,7 @@ abstract class DatabaseBase implements DatabaseType {
 				$queryProf = 'query: ' . substr( DatabaseBase::generalizeSQL( $sql ), 0, 255 );
 				$totalProf = 'DatabaseBase::query';
 			}
+
 			wfProfileIn( $totalProf );
 			wfProfileIn( $queryProf );
 		}
@@ -445,14 +627,14 @@ abstract class DatabaseBase implements DatabaseType {
 		$this->mLastQuery = $sql;
 		if ( !$this->mDoneWrites && $this->isWriteQuery( $sql ) ) {
 			// Set a flag indicating that writes have been done
-			wfDebug( __METHOD__.": Writes done: $sql\n" );
+			wfDebug( __METHOD__ . ": Writes done: $sql\n" );
 			$this->mDoneWrites = true;
 		}
 
 		# Add a comment for easy SHOW PROCESSLIST interpretation
-		#if ( $fname ) {
+		# if ( $fname ) {
 			global $wgUser;
-			if ( is_object( $wgUser ) && !($wgUser instanceof StubObject) ) {
+			if ( is_object( $wgUser ) && !( $wgUser instanceof StubObject ) ) {
 				$userName = $wgUser->getName();
 				if ( mb_strlen( $userName ) > 15 ) {
 					$userName = mb_substr( $userName, 0, 15 ) . '...';
@@ -461,27 +643,29 @@ abstract class DatabaseBase implements DatabaseType {
 			} else {
 				$userName = '';
 			}
-			$commentedSql = preg_replace('/\s/', " /* $fname $userName */ ", $sql, 1);
-		#} else {
+			$commentedSql = preg_replace( '/\s/', " /* $fname $userName */ ", $sql, 1 );
+		# } else {
 		#	$commentedSql = $sql;
-		#}
+		# }
 
 		# If DBO_TRX is set, start a transaction
 		if ( ( $this->mFlags & DBO_TRX ) && !$this->trxLevel() &&
-			$sql != 'BEGIN' && $sql != 'COMMIT' && $sql != 'ROLLBACK') {
+			$sql != 'BEGIN' && $sql != 'COMMIT' && $sql != 'ROLLBACK' ) {
 			// avoid establishing transactions for SHOW and SET statements too -
 			// that would delay transaction initializations to once connection
 			// is really used by application
-			$sqlstart = substr($sql,0,10); // very much worth it, benchmark certified(tm)
-			if (strpos($sqlstart,"SHOW ")!==0 and strpos($sqlstart,"SET ")!==0)
+			$sqlstart = substr( $sql, 0, 10 ); // very much worth it, benchmark certified(tm)
+			if ( strpos( $sqlstart, "SHOW " ) !== 0 and strpos( $sqlstart, "SET " ) !== 0 )
 				$this->begin();
 		}
 
 		if ( $this->debug() ) {
 			static $cnt = 0;
+
 			$cnt++;
 			$sqlx = substr( $commentedSql, 0, 500 );
 			$sqlx = strtr( $sqlx, "\t\n", '  ' );
+
 			if ( $isMaster ) {
 				wfDebug( "Query $cnt (master): $sqlx\n" );
 			} else {
@@ -501,12 +685,13 @@ abstract class DatabaseBase implements DatabaseType {
 			# Transaction is gone, like it or not
 			$this->mTrxLevel = 0;
 			wfDebug( "Connection lost, reconnecting...\n" );
+
 			if ( $this->ping() ) {
 				wfDebug( "Reconnected\n" );
 				$sqlx = substr( $commentedSql, 0, 500 );
 				$sqlx = strtr( $sqlx, "\t\n", '  ' );
 				global $wgRequestTime;
-				$elapsed = round( microtime(true) - $wgRequestTime, 3 );
+				$elapsed = round( microtime( true ) - $wgRequestTime, 3 );
 				wfLogDBError( "Connection lost and reconnected after {$elapsed}s, query: $sqlx\n" );
 				$ret = $this->doQuery( $commentedSql );
 			} else {
@@ -522,6 +707,7 @@ abstract class DatabaseBase implements DatabaseType {
 			wfProfileOut( $queryProf );
 			wfProfileOut( $totalProf );
 		}
+
 		return $this->resultObject( $ret );
 	}
 
@@ -537,13 +723,13 @@ abstract class DatabaseBase implements DatabaseType {
 		$ignore = $this->ignoreErrors( true );
 		++$this->mErrorCount;
 
-		if( $ignore || $tempIgnore ) {
-			wfDebug("SQL ERROR (ignored): $error\n");
+		if ( $ignore || $tempIgnore ) {
+			wfDebug( "SQL ERROR (ignored): $error\n" );
 			$this->ignoreErrors( $ignore );
 		} else {
 			$sql1line = str_replace( "\n", "\\n", $sql );
-			wfLogDBError("$fname\t{$this->mServer}\t$errno\t$error\t$sql1line\n");
-			wfDebug("SQL ERROR: " . $error . "\n");
+			wfLogDBError( "$fname\t{$this->mServer}\t$errno\t$error\t$sql1line\n" );
+			wfDebug( "SQL ERROR: " . $error . "\n" );
 			throw new DBQueryError( $this, $error, $errno, $sql, $fname );
 		}
 	}
@@ -575,12 +761,14 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $args Mixed: Either an array here, or put scalars as varargs
 	 */
 	function execute( $prepared, $args = null ) {
-		if( !is_array( $args ) ) {
+		if ( !is_array( $args ) ) {
 			# Pull the var args
 			$args = func_get_args();
 			array_shift( $args );
 		}
+
 		$sql = $this->fillPrepared( $prepared['query'], $args );
+
 		return $this->query( $sql, $prepared['func'] );
 	}
 
@@ -592,13 +780,16 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function safeQuery( $query, $args = null ) {
 		$prepared = $this->prepare( $query, 'DatabaseBase::safeQuery' );
-		if( !is_array( $args ) ) {
+
+		if ( !is_array( $args ) ) {
 			# Pull the var args
 			$args = func_get_args();
 			array_shift( $args );
 		}
+
 		$retval = $this->execute( $prepared, $args );
 		$this->freePrepared( $prepared );
+
 		return $retval;
 	}
 
@@ -612,6 +803,7 @@ abstract class DatabaseBase implements DatabaseType {
 	function fillPrepared( $preparedQuery, $args ) {
 		reset( $args );
 		$this->preparedArgs =& $args;
+
 		return preg_replace_callback( '/(\\\\[?!&]|[?!&])/',
 			array( &$this, 'fillPreparedArg' ), $preparedQuery );
 	}
@@ -631,7 +823,9 @@ abstract class DatabaseBase implements DatabaseType {
 			case '\\!': return '!';
 			case '\\&': return '&';
 		}
+
 		list( /* $n */ , $arg ) = each( $this->preparedArgs );
+
 		switch( $matches[1] ) {
 			case '?': return $this->addQuotes( $arg );
 			case '!': return $arg;
@@ -664,6 +858,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$table = $this->tableName( $table );
 		$sql = "UPDATE $table SET $var = '" .
 		  $this->strencode( $value ) . "' WHERE ($cond)";
+
 		return (bool)$this->query( $sql, $fname );
 	}
 
@@ -672,17 +867,21 @@ abstract class DatabaseBase implements DatabaseType {
 	 * Usually aborts on failure
 	 * If errors are explicitly ignored, returns FALSE on failure
 	 */
-	function selectField( $table, $var, $cond='', $fname = 'DatabaseBase::selectField', $options = array() ) {
+	function selectField( $table, $var, $cond = '', $fname = 'DatabaseBase::selectField', $options = array() ) {
 		if ( !is_array( $options ) ) {
 			$options = array( $options );
 		}
+
 		$options['LIMIT'] = 1;
 
 		$res = $this->select( $table, $var, $cond, $fname, $options );
+
 		if ( $res === false || !$this->numRows( $res ) ) {
 			return false;
 		}
+
 		$row = $this->fetchRow( $res );
+
 		if ( $row !== false ) {
 			return reset( $row );
 		} else {
@@ -705,6 +904,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$startOpts = '';
 
 		$noKeyOptions = array();
+
 		foreach ( $options as $key => $option ) {
 			if ( is_numeric( $key ) ) {
 				$noKeyOptions[$option] = true;
@@ -714,25 +914,29 @@ abstract class DatabaseBase implements DatabaseType {
 		if ( isset( $options['GROUP BY'] ) ) {
 			$preLimitTail .= " GROUP BY {$options['GROUP BY']}";
 		}
+
 		if ( isset( $options['HAVING'] ) ) {
 			$preLimitTail .= " HAVING {$options['HAVING']}";
 		}
+
 		if ( isset( $options['ORDER BY'] ) ) {
 			$preLimitTail .= " ORDER BY {$options['ORDER BY']}";
 		}
 
-		//if (isset($options['LIMIT'])) {
+		// if (isset($options['LIMIT'])) {
 		//	$tailOpts .= $this->limitResult('', $options['LIMIT'],
 		//		isset($options['OFFSET']) ? $options['OFFSET']
 		//		: false);
-		//}
+		// }
 
 		if ( isset( $noKeyOptions['FOR UPDATE'] ) ) {
 			$postLimitTail .= ' FOR UPDATE';
 		}
+
 		if ( isset( $noKeyOptions['LOCK IN SHARE MODE'] ) ) {
 			$postLimitTail .= ' LOCK IN SHARE MODE';
 		}
+
 		if ( isset( $noKeyOptions['DISTINCT'] ) || isset( $noKeyOptions['DISTINCTROW'] ) ) {
 			$startOpts .= 'DISTINCT';
 		}
@@ -741,24 +945,31 @@ abstract class DatabaseBase implements DatabaseType {
 		if ( isset( $noKeyOptions['STRAIGHT_JOIN'] ) ) {
 			$startOpts .= ' /*! STRAIGHT_JOIN */';
 		}
+
 		if ( isset( $noKeyOptions['HIGH_PRIORITY'] ) ) {
 			$startOpts .= ' HIGH_PRIORITY';
 		}
+
 		if ( isset( $noKeyOptions['SQL_BIG_RESULT'] ) ) {
 			$startOpts .= ' SQL_BIG_RESULT';
 		}
+
 		if ( isset( $noKeyOptions['SQL_BUFFER_RESULT'] ) ) {
 			$startOpts .= ' SQL_BUFFER_RESULT';
 		}
+
 		if ( isset( $noKeyOptions['SQL_SMALL_RESULT'] ) ) {
 			$startOpts .= ' SQL_SMALL_RESULT';
 		}
+
 		if ( isset( $noKeyOptions['SQL_CALC_FOUND_ROWS'] ) ) {
 			$startOpts .= ' SQL_CALC_FOUND_ROWS';
 		}
+
 		if ( isset( $noKeyOptions['SQL_CACHE'] ) ) {
 			$startOpts .= ' SQL_CACHE';
 		}
+
 		if ( isset( $noKeyOptions['SQL_NO_CACHE'] ) ) {
 			$startOpts .= ' SQL_NO_CACHE';
 		}
@@ -785,8 +996,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 *                           (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
 	 * @return mixed Database result resource (feed to DatabaseBase::fetchObject or whatever), or false on failure
 	 */
-	function select( $table, $vars, $conds='', $fname = 'DatabaseBase::select', $options = array(), $join_conds = array() ) {
+	function select( $table, $vars, $conds = '', $fname = 'DatabaseBase::select', $options = array(), $join_conds = array() ) {
 		$sql = $this->selectSQLText( $table, $vars, $conds, $fname, $options, $join_conds );
+
 		return $this->query( $sql, $fname );
 	}
 
@@ -803,21 +1015,23 @@ abstract class DatabaseBase implements DatabaseType {
 	 *                           (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
 	 * @return string, the SQL text
 	 */
-	function selectSQLText( $table, $vars, $conds='', $fname = 'DatabaseBase::select', $options = array(), $join_conds = array() ) {
-		if( is_array( $vars ) ) {
+	function selectSQLText( $table, $vars, $conds = '', $fname = 'DatabaseBase::select', $options = array(), $join_conds = array() ) {
+		if ( is_array( $vars ) ) {
 			$vars = implode( ',', $vars );
 		}
-		if( !is_array( $options ) ) {
+
+		if ( !is_array( $options ) ) {
 			$options = array( $options );
 		}
-		if( is_array( $table ) ) {
-			if ( !empty($join_conds) || ( isset( $options['USE INDEX'] ) && is_array( @$options['USE INDEX'] ) ) ) {
+
+		if ( is_array( $table ) ) {
+			if ( !empty( $join_conds ) || ( isset( $options['USE INDEX'] ) && is_array( @$options['USE INDEX'] ) ) ) {
 				$from = ' FROM ' . $this->tableNamesWithUseIndexOrJOIN( $table, @$options['USE INDEX'], $join_conds );
 			} else {
 				$from = ' FROM ' . implode( ',', array_map( array( &$this, 'tableName' ), $table ) );
 			}
-		} elseif ($table!='') {
-			if ($table{0}==' ') {
+		} elseif ( $table != '' ) {
+			if ( $table { 0 } == ' ' ) {
 				$from = ' FROM ' . $table;
 			} else {
 				$from = ' FROM ' . $this->tableName( $table );
@@ -828,7 +1042,7 @@ abstract class DatabaseBase implements DatabaseType {
 
 		list( $startOpts, $useIndex, $preLimitTail, $postLimitTail ) = $this->makeSelectOptions( $options );
 
-		if( !empty( $conds ) ) {
+		if ( !empty( $conds ) ) {
 			if ( is_array( $conds ) ) {
 				$conds = $this->makeList( $conds, LIST_AND );
 			}
@@ -837,14 +1051,15 @@ abstract class DatabaseBase implements DatabaseType {
 			$sql = "SELECT $startOpts $vars $from $useIndex $preLimitTail";
 		}
 
-		if (isset($options['LIMIT']))
-			$sql = $this->limitResult($sql, $options['LIMIT'],
-				isset($options['OFFSET']) ? $options['OFFSET'] : false);
+		if ( isset( $options['LIMIT'] ) )
+			$sql = $this->limitResult( $sql, $options['LIMIT'],
+				isset( $options['OFFSET'] ) ? $options['OFFSET'] : false );
 		$sql = "$sql $postLimitTail";
 
-		if (isset($options['EXPLAIN'])) {
+		if ( isset( $options['EXPLAIN'] ) ) {
 			$sql = 'EXPLAIN ' . $sql;
 		}
+
 		return $sql;
 	}
 
@@ -869,13 +1084,17 @@ abstract class DatabaseBase implements DatabaseType {
 	function selectRow( $table, $vars, $conds, $fname = 'DatabaseBase::selectRow', $options = array(), $join_conds = array() ) {
 		$options['LIMIT'] = 1;
 		$res = $this->select( $table, $vars, $conds, $fname, $options, $join_conds );
+
 		if ( $res === false ) {
 			return false;
 		}
-		if ( !$this->numRows($res) ) {
+
+		if ( !$this->numRows( $res ) ) {
 			return false;
 		}
+
 		$obj = $this->fetchObject( $res );
+
 		return $obj;
 	}
 
@@ -892,13 +1111,15 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $options Array: options for select
 	 * @return Integer: row count
 	 */
-	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'DatabaseBase::estimateRowCount', $options = array() ) {
+	public function estimateRowCount( $table, $vars = '*', $conds = '', $fname = 'DatabaseBase::estimateRowCount', $options = array() ) {
 		$rows = 0;
 		$res = $this->select ( $table, 'COUNT(*) AS rowcount', $conds, $fname, $options );
+
 		if ( $res ) {
 			$row = $this->fetchRow( $res );
 			$rows = ( isset( $row['rowcount'] ) ) ? $row['rowcount'] : 0;
 		}
+
 		return $rows;
 	}
 
@@ -913,17 +1134,17 @@ abstract class DatabaseBase implements DatabaseType {
 		# as to avoid crashing php on some large strings.
 		# $sql = preg_replace ( "/'([^\\\\']|\\\\.)*'|\"([^\\\\\"]|\\\\.)*\"/", "'X'", $sql);
 
-		$sql = str_replace ( "\\\\", '', $sql);
-		$sql = str_replace ( "\\'", '', $sql);
-		$sql = str_replace ( "\\\"", '', $sql);
-		$sql = preg_replace ("/'.*'/s", "'X'", $sql);
-		$sql = preg_replace ('/".*"/s', "'X'", $sql);
+		$sql = str_replace ( "\\\\", '', $sql );
+		$sql = str_replace ( "\\'", '', $sql );
+		$sql = str_replace ( "\\\"", '', $sql );
+		$sql = preg_replace ( "/'.*'/s", "'X'", $sql );
+		$sql = preg_replace ( '/".*"/s', "'X'", $sql );
 
 		# All newlines, tabs, etc replaced by single space
-		$sql = preg_replace ( '/\s+/', ' ', $sql);
+		$sql = preg_replace ( '/\s+/', ' ', $sql );
 
 		# All numbers => N
-		$sql = preg_replace ('/-?[0-9]+/s', 'N', $sql);
+		$sql = preg_replace ( '/-?[0-9]+/s', 'N', $sql );
 
 		return $sql;
 	}
@@ -938,6 +1159,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function fieldExists( $table, $field, $fname = 'DatabaseBase::fieldExists' ) {
 		$info = $this->fieldInfo( $table, $field );
+
 		return (bool)$info;
 	}
 
@@ -966,20 +1188,22 @@ abstract class DatabaseBase implements DatabaseType {
 		# http://dev.mysql.com/doc/mysql/en/SHOW_INDEX.html
 		$table = $this->tableName( $table );
 		$index = $this->indexName( $index );
-		$sql = 'SHOW INDEX FROM '.$table;
+		$sql = 'SHOW INDEX FROM ' . $table;
 		$res = $this->query( $sql, $fname );
+
 		if ( !$res ) {
 			return null;
 		}
 
 		$result = array();
+
 		while ( $row = $this->fetchObject( $res ) ) {
 			if ( $row->Key_name == $index ) {
 				$result[] = $row;
 			}
 		}
 
-		return empty($result) ? false : $result;
+		return empty( $result ) ? false : $result;
 	}
 
 	/**
@@ -990,6 +1214,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$old = $this->ignoreErrors( true );
 		$res = $this->query( "SELECT 1 FROM $table LIMIT 1" );
 		$this->ignoreErrors( $old );
+
 		return (bool)$res;
 	}
 
@@ -1000,6 +1225,7 @@ abstract class DatabaseBase implements DatabaseType {
 		if ( $res instanceof ResultWrapper ) {
 			$res = $res->result;
 		}
+
 		return mysql_field_type( $res, $index );
 	}
 
@@ -1008,12 +1234,14 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function indexUnique( $table, $index ) {
 		$indexInfo = $this->indexInfo( $table, $index );
+
 		if ( !$indexInfo ) {
 			return null;
 		}
+
 		return !$indexInfo[0]->Non_unique;
 	}
-	
+
 	/**
 	 * INSERT wrapper, inserts an array into a table
 	 *
@@ -1037,9 +1265,11 @@ abstract class DatabaseBase implements DatabaseType {
 		}
 
 		$table = $this->tableName( $table );
+
 		if ( !is_array( $options ) ) {
 			$options = array( $options );
 		}
+
 		if ( isset( $a[0] ) && is_array( $a[0] ) ) {
 			$multi = true;
 			$keys = array_keys( $a[0] );
@@ -1076,17 +1306,21 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @return string
 	 */
 	function makeUpdateOptions( $options ) {
-		if( !is_array( $options ) ) {
+		if ( !is_array( $options ) ) {
 			$options = array( $options );
 		}
+
 		$opts = array();
+
 		if ( in_array( 'LOW_PRIORITY', $options ) ) {
 			$opts[] = $this->lowPriorityOption();
 		}
+
 		if ( in_array( 'IGNORE', $options ) ) {
 			$opts[] = 'IGNORE';
 		}
-		return implode(' ', $opts);
+
+		return implode( ' ', $opts );
 	}
 
 	/**
@@ -1105,9 +1339,11 @@ abstract class DatabaseBase implements DatabaseType {
 		$table = $this->tableName( $table );
 		$opts = $this->makeUpdateOptions( $options );
 		$sql = "UPDATE $opts $table SET " . $this->makeList( $values, LIST_SET );
+
 		if ( $conds != '*' ) {
 			$sql .= " WHERE " . $this->makeList( $conds, LIST_AND );
 		}
+
 		return $this->query( $sql, $fname );
 	}
 
@@ -1127,11 +1363,12 @@ abstract class DatabaseBase implements DatabaseType {
 
 		$first = true;
 		$list = '';
+
 		foreach ( $a as $field => $value ) {
 			if ( !$first ) {
 				if ( $mode == LIST_AND ) {
 					$list .= ' AND ';
-				} elseif($mode == LIST_OR) {
+				} elseif ( $mode == LIST_OR ) {
 					$list .= ' OR ';
 				} else {
 					$list .= ',';
@@ -1139,21 +1376,22 @@ abstract class DatabaseBase implements DatabaseType {
 			} else {
 				$first = false;
 			}
-			if ( ($mode == LIST_AND || $mode == LIST_OR) && is_numeric( $field ) ) {
+
+			if ( ( $mode == LIST_AND || $mode == LIST_OR ) && is_numeric( $field ) ) {
 				$list .= "($value)";
-			} elseif ( ($mode == LIST_SET) && is_numeric( $field ) ) {
+			} elseif ( ( $mode == LIST_SET ) && is_numeric( $field ) ) {
 				$list .= "$value";
-			} elseif ( ($mode == LIST_AND || $mode == LIST_OR) && is_array($value) ) {
+			} elseif ( ( $mode == LIST_AND || $mode == LIST_OR ) && is_array( $value ) ) {
 				if ( count( $value ) == 0 ) {
-					throw new MWException( __METHOD__.': empty input' );
-				} elseif( count( $value ) == 1 ) {
+					throw new MWException( __METHOD__ . ': empty input' );
+				} elseif ( count( $value ) == 1 ) {
 					// Special-case single values, as IN isn't terribly efficient
 					// Don't necessarily assume the single key is 0; we don't
 					// enforce linear numeric ordering on other arrays here.
 					$value = array_values( $value );
-					$list .= $field." = ".$this->addQuotes( $value[0] );
+					$list .= $field . " = " . $this->addQuotes( $value[0] );
 				} else {
-					$list .= $field." IN (".$this->makeList($value).") ";
+					$list .= $field . " IN (" . $this->makeList( $value ) . ") ";
 				}
 			} elseif ( $value === null ) {
 				if ( $mode == LIST_AND || $mode == LIST_OR ) {
@@ -1169,6 +1407,7 @@ abstract class DatabaseBase implements DatabaseType {
 				$list .= $mode == LIST_NAMES ? $value : $this->addQuotes( $value );
 			}
 		}
+
 		return $list;
 	}
 
@@ -1183,11 +1422,12 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function makeWhereFrom2d( $data, $baseKey, $subKey ) {
 		$conds = array();
+
 		foreach ( $data as $base => $sub ) {
 			if ( count( $sub ) ) {
 				$conds[] = $this->makeList(
 					array( $baseKey => $base, $subKey => array_keys( $sub ) ),
-					LIST_AND);
+					LIST_AND );
 			}
 		}
 
@@ -1236,28 +1476,28 @@ abstract class DatabaseBase implements DatabaseType {
 	 * Bitwise operations
 	 */
 
-	function bitNot($field) {
+	function bitNot( $field ) {
 		return "(~$field)";
 	}
 
-	function bitAnd($fieldLeft, $fieldRight) {
+	function bitAnd( $fieldLeft, $fieldRight ) {
 		return "($fieldLeft & $fieldRight)";
 	}
 
-	function bitOr($fieldLeft, $fieldRight) {
+	function bitOr( $fieldLeft, $fieldRight ) {
 		return "($fieldLeft | $fieldRight)";
 	}
 
 	/**
 	 * Change the current database
 	 *
+	 * @todo Explain what exactly will fail if this is not overridden.
 	 * @return bool Success or failure
 	 */
 	function selectDB( $db ) {
 		# Stub.  Shouldn't cause serious problems if it's not overridden, but
 		# if your database engine supports a concept similar to MySQL's
-		# databases you may as well.  TODO: explain what exactly will fail if
-		# this is not overridden.
+		# databases you may as well.
 		return true;
 	}
 
@@ -1305,7 +1545,7 @@ abstract class DatabaseBase implements DatabaseType {
 		# Note that we use a whitespace test rather than a \b test to avoid
 		# any remote case where a word like on may be inside of a table name
 		# surrounded by symbols which may be considered word breaks.
-		if( preg_match( '/(^|\s)(DISTINCT|JOIN|ON|AS)(\s|$)/i', $name ) !== 0 ) {
+		if ( preg_match( '/(^|\s)(DISTINCT|JOIN|ON|AS)(\s|$)/i', $name ) !== 0 ) {
 			return $name;
 		}
 
@@ -1313,7 +1553,7 @@ abstract class DatabaseBase implements DatabaseType {
 		# We reverse the explode so that database.table and table both output
 		# the correct table.
 		$dbDetails = array_reverse( explode( '.', $name, 2 ) );
-		if( isset( $dbDetails[1] ) ) {
+		if ( isset( $dbDetails[1] ) ) {
 			@list( $table, $database ) = $dbDetails;
 		} else {
 			@list( $table ) = $dbDetails;
@@ -1322,13 +1562,13 @@ abstract class DatabaseBase implements DatabaseType {
 
 		# A database name has been specified in input. Quote the table name
 		# because we don't want any prefixes added.
-		if( isset($database) ) {
+		if ( isset( $database ) ) {
 			$table = ( $table[0] == '`' ? $table : "`{$table}`" );
 		}
 
 		# Note that we use the long format because php will complain in in_array if
 		# the input is not an array, and will complain in is_array if it is not set.
-		if( !isset( $database ) # Don't use shared database if pre selected.
+		if ( !isset( $database ) # Don't use shared database if pre selected.
 		 && isset( $wgSharedDB ) # We have a shared database
 		 && $table[0] != '`' # Paranoia check to prevent shared tables listing '`table`'
 		 && isset( $wgSharedTables )
@@ -1339,15 +1579,14 @@ abstract class DatabaseBase implements DatabaseType {
 		}
 
 		# Quote the $database and $table and apply the prefix if not quoted.
-		if( isset($database) ) {
+		if ( isset( $database ) ) {
 			$database = ( $database[0] == '`' ? $database : "`{$database}`" );
 		}
 		$table = ( $table[0] == '`' ? $table : "`{$prefix}{$table}`" );
 
 		# Merge our database and table into our final table name.
-		$tableName = ( isset($database) ? "{$database}.{$table}" : "{$table}" );
+		$tableName = ( isset( $database ) ? "{$database}.{$table}" : "{$table}" );
 
-		# We're finished, return.
 		return $tableName;
 	}
 
@@ -1363,9 +1602,11 @@ abstract class DatabaseBase implements DatabaseType {
 	public function tableNames() {
 		$inArray = func_get_args();
 		$retVal = array();
+
 		foreach ( $inArray as $name ) {
 			$retVal[$name] = $this->tableName( $name );
 		}
+
 		return $retVal;
 	}
 
@@ -1381,9 +1622,11 @@ abstract class DatabaseBase implements DatabaseType {
 	public function tableNamesN() {
 		$inArray = func_get_args();
 		$retVal = array();
+
 		foreach ( $inArray as $name ) {
 			$retVal[] = $this->tableName( $name );
 		}
+
 		return $retVal;
 	}
 
@@ -1393,41 +1636,48 @@ abstract class DatabaseBase implements DatabaseType {
 	function tableNamesWithUseIndexOrJOIN( $tables, $use_index = array(), $join_conds = array() ) {
 		$ret = array();
 		$retJOIN = array();
-		$use_index_safe = is_array($use_index) ? $use_index : array();
-		$join_conds_safe = is_array($join_conds) ? $join_conds : array();
+		$use_index_safe = is_array( $use_index ) ? $use_index : array();
+		$join_conds_safe = is_array( $join_conds ) ? $join_conds : array();
+
 		foreach ( $tables as $table ) {
 			// Is there a JOIN and INDEX clause for this table?
-			if ( isset($join_conds_safe[$table]) && isset($use_index_safe[$table]) ) {
+			if ( isset( $join_conds_safe[$table] ) && isset( $use_index_safe[$table] ) ) {
 				$tableClause = $join_conds_safe[$table][0] . ' ' . $this->tableName( $table );
 				$tableClause .= ' ' . $this->useIndexClause( implode( ',', (array)$use_index_safe[$table] ) );
-				$on = $this->makeList((array)$join_conds_safe[$table][1], LIST_AND);
+				$on = $this->makeList( (array)$join_conds_safe[$table][1], LIST_AND );
+
 				if ( $on != '' ) {
 					$tableClause .= ' ON (' . $on . ')';
 				}
+
 				$retJOIN[] = $tableClause;
 			// Is there an INDEX clause?
-			} else if ( isset($use_index_safe[$table]) ) {
+			} else if ( isset( $use_index_safe[$table] ) ) {
 				$tableClause = $this->tableName( $table );
 				$tableClause .= ' ' . $this->useIndexClause( implode( ',', (array)$use_index_safe[$table] ) );
 				$ret[] = $tableClause;
 			// Is there a JOIN clause?
-			} else if ( isset($join_conds_safe[$table]) ) {
+			} else if ( isset( $join_conds_safe[$table] ) ) {
 				$tableClause = $join_conds_safe[$table][0] . ' ' . $this->tableName( $table );
-				$on = $this->makeList((array)$join_conds_safe[$table][1], LIST_AND);
+				$on = $this->makeList( (array)$join_conds_safe[$table][1], LIST_AND );
+
 				if ( $on != '' ) {
 					$tableClause .= ' ON (' . $on . ')';
-				}				
+				}
+
 				$retJOIN[] = $tableClause;
 			} else {
 				$tableClause = $this->tableName( $table );
 				$ret[] = $tableClause;
 			}
 		}
+
 		// We can't separate explicit JOIN clauses with ',', use ' ' for those
-		$straightJoins = !empty($ret) ? implode( ',', $ret ) : "";
-		$otherJoins = !empty($retJOIN) ? implode( ' ', $retJOIN ) : "";
+		$straightJoins = !empty( $ret ) ? implode( ',', $ret ) : "";
+		$otherJoins = !empty( $retJOIN ) ? implode( ' ', $retJOIN ) : "";
+
 		// Compile our final table clause
-		return implode(' ',array($straightJoins,$otherJoins) );
+		return implode( ' ', array( $straightJoins, $otherJoins ) );
 	}
 
 	/**
@@ -1440,6 +1690,7 @@ abstract class DatabaseBase implements DatabaseType {
 			'un_user_id'		=> 'user_id',
 			'un_user_ip'		=> 'user_ip',
 		);
+
 		if ( isset( $renamed[$index] ) ) {
 			return $renamed[$index];
 		} else {
@@ -1478,6 +1729,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$s = str_replace( '\\', '\\\\', $s );
 		$s = $this->strencode( $s );
 		$s = str_replace( array( '%', '_' ), array( '\%', '\_' ), $s );
+
 		return $s;
 	}
 
@@ -1495,18 +1747,21 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function buildLike() {
 		$params = func_get_args();
-		if (count($params) > 0 && is_array($params[0])) {
+
+		if ( count( $params ) > 0 && is_array( $params[0] ) ) {
 			$params = $params[0];
 		}
 
 		$s = '';
-		foreach( $params as $value) {
-			if( $value instanceof LikeMatch ) {
+
+		foreach ( $params as $value ) {
+			if ( $value instanceof LikeMatch ) {
 				$s .= $value->toString();
 			} else {
 				$s .= $this->escapeLikeInternal( $value );
 			}
 		}
+
 		return " LIKE '" . $s . "' ";
 	}
 
@@ -1569,16 +1824,19 @@ abstract class DatabaseBase implements DatabaseType {
 			$rows = array( $rows );
 		}
 
-		$sql = "REPLACE INTO $table (" . implode( ',', array_keys( $rows[0] ) ) .') VALUES ';
+		$sql = "REPLACE INTO $table (" . implode( ',', array_keys( $rows[0] ) ) . ') VALUES ';
 		$first = true;
+
 		foreach ( $rows as $row ) {
 			if ( $first ) {
 				$first = false;
 			} else {
 				$sql .= ',';
 			}
+
 			$sql .= '(' . $this->makeList( $row ) . ')';
 		}
+
 		return $this->query( $sql, $fname );
 	}
 
@@ -1606,6 +1864,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$delTable = $this->tableName( $delTable );
 		$joinTable = $this->tableName( $joinTable );
 		$sql = "DELETE $delTable FROM $delTable, $joinTable WHERE $delVar=$joinVar ";
+
 		if ( $conds != '*' ) {
 			$sql .= ' AND ' . $this->makeList( $conds, LIST_AND );
 		}
@@ -1623,11 +1882,13 @@ abstract class DatabaseBase implements DatabaseType {
 		$row = $this->fetchObject( $res );
 
 		$m = array();
+
 		if ( preg_match( '/\((.*)\)/', $row->Type, $m ) ) {
 			$size = $m[1];
 		} else {
 			$size = -1;
 		}
+
 		return $size;
 	}
 
@@ -1651,11 +1912,14 @@ abstract class DatabaseBase implements DatabaseType {
 		if ( !$conds ) {
 			throw new DBUnexpectedError( $this, 'DatabaseBase::delete() called with no conditions' );
 		}
+
 		$table = $this->tableName( $table );
 		$sql = "DELETE FROM $table";
+
 		if ( $conds != '*' ) {
 			$sql .= ' WHERE ' . $this->makeList( $conds, LIST_AND );
 		}
+
 		return $this->query( $sql, $fname );
 	}
 
@@ -1670,25 +1934,33 @@ abstract class DatabaseBase implements DatabaseType {
 		$insertOptions = array(), $selectOptions = array() )
 	{
 		$destTable = $this->tableName( $destTable );
+
 		if ( is_array( $insertOptions ) ) {
 			$insertOptions = implode( ' ', $insertOptions );
 		}
-		if( !is_array( $selectOptions ) ) {
+
+		if ( !is_array( $selectOptions ) ) {
 			$selectOptions = array( $selectOptions );
 		}
+
 		list( $startOpts, $useIndex, $tailOpts ) = $this->makeSelectOptions( $selectOptions );
+
 		if ( is_array( $srcTable ) ) {
 			$srcTable =  implode( ',', array_map( array( &$this, 'tableName' ), $srcTable ) );
 		} else {
 			$srcTable = $this->tableName( $srcTable );
 		}
+
 		$sql = "INSERT $insertOptions INTO $destTable (" . implode( ',', array_keys( $varMap ) ) . ')' .
 			" SELECT $startOpts " . implode( ',', $varMap ) .
 			" FROM $srcTable $useIndex ";
+
 		if ( $conds != '*' ) {
 			$sql .= ' WHERE ' . $this->makeList( $conds, LIST_AND );
 		}
+
 		$sql .= " $tailOpts";
+
 		return $this->query( $sql, $fname );
 	}
 
@@ -1710,14 +1982,16 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $limit Integer: the SQL limit
 	 * @param $offset Integer the SQL offset (default false)
 	 */
-	function limitResult( $sql, $limit, $offset=false ) {
-		if( !is_numeric( $limit ) ) {
+	function limitResult( $sql, $limit, $offset = false ) {
+		if ( !is_numeric( $limit ) ) {
 			throw new DBUnexpectedError( $this, "Invalid non-numeric limit passed to limitResult()\n" );
 		}
+
 		return "$sql LIMIT "
-				. ( (is_numeric($offset) && $offset != 0) ? "{$offset}," : "" )
+				. ( ( is_numeric( $offset ) && $offset != 0 ) ? "{$offset}," : "" )
 				. "{$limit} ";
 	}
+
 	function limitResultForUpdate( $sql, $num ) {
 		return $this->limitResult( $sql, $num, 0 );
 	}
@@ -1739,9 +2013,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $all Boolean: use UNION ALL
 	 * @return String: SQL fragment
 	 */
-	function unionQueries($sqls, $all) {
+	function unionQueries( $sqls, $all ) {
 		$glue = $all ? ') UNION ALL (' : ') UNION (';
-		return '('.implode( $glue, $sqls ) . ')';
+		return '(' . implode( $glue, $sqls ) . ')';
 	}
 
 	/**
@@ -1818,11 +2092,13 @@ abstract class DatabaseBase implements DatabaseType {
 		$function = array_shift( $args );
 		$oldIgnore = $this->ignoreErrors( true );
 		$tries = DEADLOCK_TRIES;
+
 		if ( is_array( $function ) ) {
 			$fname = $function[0];
 		} else {
 			$fname = $function;
 		}
+
 		do {
 			$retVal = call_user_func_array( $function, $args );
 			$error = $this->lastError();
@@ -1838,7 +2114,9 @@ abstract class DatabaseBase implements DatabaseType {
 				}
 			}
 		} while ( $this->wasDeadlock() && --$tries > 0 );
+
 		$this->ignoreErrors( $oldIgnore );
+
 		if ( $tries <= 0 ) {
 			$this->rollback( $myFname );
 			$this->reportQueryError( $error, $errno, $sql, $fname );
@@ -1865,7 +2143,8 @@ abstract class DatabaseBase implements DatabaseType {
 		}
 
 		if ( !is_null( $this->mFakeSlaveLag ) ) {
-			$wait = intval( ( $pos->pos - microtime(true) + $this->mFakeSlaveLag ) * 1e6 );
+			$wait = intval( ( $pos->pos - microtime( true ) + $this->mFakeSlaveLag ) * 1e6 );
+
 			if ( $wait > $timeout * 1e6 ) {
 				wfDebug( "Fake slave timed out waiting for $pos ($wait us)\n" );
 				wfProfileOut( $fname );
@@ -1887,6 +2166,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$encPos = intval( $pos->pos );
 		$sql = "SELECT MASTER_POS_WAIT($encFile, $encPos, $timeout)";
 		$res = $this->doQuery( $sql );
+
 		if ( $res && $row = $this->fetchRow( $res ) ) {
 			wfProfileOut( $fname );
 			return $row[0];
@@ -1901,14 +2181,16 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	function getSlavePos() {
 		if ( !is_null( $this->mFakeSlaveLag ) ) {
-			$pos = new MySQLMasterPos( 'fake', microtime(true) - $this->mFakeSlaveLag );
-			wfDebug( __METHOD__.": fake slave pos = $pos\n" );
+			$pos = new MySQLMasterPos( 'fake', microtime( true ) - $this->mFakeSlaveLag );
+			wfDebug( __METHOD__ . ": fake slave pos = $pos\n" );
 			return $pos;
 		}
+
 		$res = $this->query( 'SHOW SLAVE STATUS', 'DatabaseBase::getSlavePos' );
 		$row = $this->fetchObject( $res );
+
 		if ( $row ) {
-			$pos = isset($row->Exec_master_log_pos) ? $row->Exec_master_log_pos : $row->Exec_Master_Log_Pos;
+			$pos = isset( $row->Exec_master_log_pos ) ? $row->Exec_master_log_pos : $row->Exec_Master_Log_Pos;
 			return new MySQLMasterPos( $row->Relay_Master_Log_File, $pos );
 		} else {
 			return false;
@@ -1922,8 +2204,10 @@ abstract class DatabaseBase implements DatabaseType {
 		if ( $this->mFakeMaster ) {
 			return new MySQLMasterPos( 'fake', microtime( true ) );
 		}
+
 		$res = $this->query( 'SHOW MASTER STATUS', 'DatabaseBase::getMasterPos' );
 		$row = $this->fetchObject( $res );
+
 		if ( $row ) {
 			return new MySQLMasterPos( $row->File, $row->Position );
 		} else {
@@ -1943,7 +2227,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * End a transaction
 	 */
 	function commit( $fname = 'DatabaseBase::commit' ) {
-		if( $this->mTrxLevel ) {
+		if ( $this->mTrxLevel ) {
 			$this->query( 'COMMIT', $fname );
 			$this->mTrxLevel = 0;
 		}
@@ -1954,7 +2238,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * No-op on non-transactional databases.
 	 */
 	function rollback( $fname = 'DatabaseBase::rollback' ) {
-		if( $this->mTrxLevel ) {
+		if ( $this->mTrxLevel ) {
 			$this->query( 'ROLLBACK', $fname, true );
 			$this->mTrxLevel = 0;
 		}
@@ -1997,8 +2281,8 @@ abstract class DatabaseBase implements DatabaseType {
 	/**
 	 * Return MW-style timestamp used for MySQL schema
 	 */
-	function timestamp( $ts=0 ) {
-		return wfTimestamp(TS_MW,$ts);
+	function timestamp( $ts = 0 ) {
+		return wfTimestamp( TS_MW, $ts );
 	}
 
 	/**
@@ -2031,7 +2315,7 @@ abstract class DatabaseBase implements DatabaseType {
 	/**
 	 * Return aggregated value alias
 	 */
-	function aggregateValue ($valuedata,$valuename='value') {
+	function aggregateValue ( $valuedata, $valuename = 'value' ) {
 		return $valuename;
 	}
 
@@ -2051,18 +2335,20 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @return Database replication lag in seconds
 	 */
 	function getLag() {
-		return $this->mFakeSlaveLag;		
+		return $this->mFakeSlaveLag;
 	}
 
 	/**
 	 * Get status information from SHOW STATUS in an associative array
 	 */
-	function getStatus($which="%") {
+	function getStatus( $which = "%" ) {
 		$res = $this->query( "SHOW STATUS LIKE '{$which}'" );
 		$status = array();
+
 		while ( $row = $this->fetchObject( $res ) ) {
 			$status[$row->Variable_name] = $row->Value;
 		}
+
 		return $status;
 	}
 
@@ -2073,11 +2359,11 @@ abstract class DatabaseBase implements DatabaseType {
 		return 0;
 	}
 
-	function encodeBlob($b) {
+	function encodeBlob( $b ) {
 		return $b;
 	}
 
-	function decodeBlob($b) {
+	function decodeBlob( $b ) {
 		return $b;
 	}
 
@@ -2097,28 +2383,37 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $filename String: File name to open
 	 * @param $lineCallback Callback: Optional function called before reading each line
 	 * @param $resultCallback Callback: Optional function called for each MySQL result
+	 * @param $fname String: Calling function name or false if name should be generated dynamically
+	 * 		using $filename
 	 */
-	function sourceFile( $filename, $lineCallback = false, $resultCallback = false ) {
+	function sourceFile( $filename, $lineCallback = false, $resultCallback = false, $fname = false ) {
 		$fp = fopen( $filename, 'r' );
+
 		if ( false === $fp ) {
-			if (!defined("MEDIAWIKI_INSTALL"))
+			if ( !defined( "MEDIAWIKI_INSTALL" ) )
 				throw new MWException( "Could not open \"{$filename}\".\n" );
 			else
 				return "Could not open \"{$filename}\".\n";
 		}
-		try {
-			$error = $this->sourceStream( $fp, $lineCallback, $resultCallback );
+
+		if ( !$fname ) {
+			$fname = __METHOD__ . "( $filename )";
 		}
-		catch( MWException $e ) {
-			if ( defined("MEDIAWIKI_INSTALL") ) {
+
+		try {
+			$error = $this->sourceStream( $fp, $lineCallback, $resultCallback, $fname );
+		}
+		catch ( MWException $e ) {
+			if ( defined( "MEDIAWIKI_INSTALL" ) ) {
 				$error = $e->getMessage();
 			} else {
 				fclose( $fp );
 				throw $e;
 			}
 		}
-		
+
 		fclose( $fp );
+
 		return $error;
 	}
 
@@ -2132,6 +2427,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 */
 	public static function patchPath( $patch ) {
 		global $wgDBtype, $IP;
+
 		if ( file_exists( "$IP/maintenance/$wgDBtype/archives/$patch" ) ) {
 			return "$IP/maintenance/$wgDBtype/archives/$patch";
 		} else {
@@ -2145,8 +2441,9 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $fp String: File handle
 	 * @param $lineCallback Callback: Optional function called before reading each line
 	 * @param $resultCallback Callback: Optional function called for each MySQL result
+	 * @param $fname String: Calling function name
 	 */
-	function sourceStream( $fp, $lineCallback = false, $resultCallback = false ) {
+	function sourceStream( $fp, $lineCallback = false, $resultCallback = false, $fname = 'DatabaseBase::sourceStream' ) {
 		$cmd = "";
 		$done = false;
 		$dollarquote = false;
@@ -2155,19 +2452,21 @@ abstract class DatabaseBase implements DatabaseType {
 			if ( $lineCallback ) {
 				call_user_func( $lineCallback );
 			}
+
 			$line = trim( fgets( $fp, 1024 ) );
 			$sl = strlen( $line ) - 1;
 
 			if ( $sl < 0 ) {
 				continue;
 			}
-			if ( '-' == $line{0} && '-' == $line{1} ) {
+
+			if ( '-' == $line { 0 } && '-' == $line { 1 } ) {
 				continue;
 			}
 
-			## Allow dollar quoting for function declarations
-			if (substr($line,0,4) == '$mw$') {
-				if ($dollarquote) {
+			# # Allow dollar quoting for function declarations
+			if ( substr( $line, 0, 4 ) == '$mw$' ) {
+				if ( $dollarquote ) {
 					$dollarquote = false;
 					$done = true;
 				}
@@ -2175,8 +2474,8 @@ abstract class DatabaseBase implements DatabaseType {
 					$dollarquote = true;
 				}
 			}
-			else if (!$dollarquote) {
-				if ( ';' == $line{$sl} && ($sl < 2 || ';' != $line{$sl - 1})) {
+			else if ( !$dollarquote ) {
+				if ( ';' == $line { $sl } && ( $sl < 2 || ';' != $line { $sl - 1 } ) ) {
 					$done = true;
 					$line = substr( $line, 0, $sl );
 				}
@@ -2185,12 +2484,14 @@ abstract class DatabaseBase implements DatabaseType {
 			if ( $cmd != '' ) {
 				$cmd .= ' ';
 			}
+
 			$cmd .= "$line\n";
 
 			if ( $done ) {
-				$cmd = str_replace(';;', ";", $cmd);
+				$cmd = str_replace( ';;', ";", $cmd );
 				$cmd = $this->replaceVars( $cmd );
-				$res = $this->query( $cmd, __METHOD__ );
+				$res = $this->query( $cmd, $fname );
+
 				if ( $resultCallback ) {
 					call_user_func( $resultCallback, $res, $this );
 				}
@@ -2204,9 +2505,9 @@ abstract class DatabaseBase implements DatabaseType {
 				$done = false;
 			}
 		}
+
 		return true;
 	}
-
 
 	/**
 	 * Replace variables in sourced SQL
@@ -2235,6 +2536,7 @@ abstract class DatabaseBase implements DatabaseType {
 		// Index names
 		$ins = preg_replace_callback( '!/\*i\*/([a-zA-Z_0-9]*)!',
 			array( $this, 'indexNameCallback' ), $ins );
+
 		return $ins;
 	}
 
@@ -2335,7 +2637,6 @@ abstract class DatabaseBase implements DatabaseType {
 	}
 }
 
-
 /******************************************************************************
  * Utility classes
  *****************************************************************************/
@@ -2347,7 +2648,7 @@ abstract class DatabaseBase implements DatabaseType {
 class DBObject {
 	public $mData;
 
-	function __construct($data) {
+	function __construct( $data ) {
 		$this->mData = $data;
 	}
 
@@ -2368,9 +2669,11 @@ class DBObject {
  */
 class Blob {
 	private $mData;
-	function __construct($data) {
+
+	function __construct( $data ) {
 		$this->mData = $data;
 	}
+
 	function fetch() {
 		return $this->mData;
 	}
@@ -2383,7 +2686,8 @@ class Blob {
 class MySQLField {
 	private $name, $tablename, $default, $max_length, $nullable,
 		$is_pk, $is_unique, $is_multiple, $is_key, $type;
-	function __construct ($info) {
+
+	function __construct ( $info ) {
 		$this->name = $info->name;
 		$this->tablename = $info->table;
 		$this->default = $info->def;
@@ -2392,7 +2696,7 @@ class MySQLField {
 		$this->is_pk = $info->primary_key;
 		$this->is_unique = $info->unique_key;
 		$this->is_multiple = $info->multiple_key;
-		$this->is_key = ($this->is_pk || $this->is_unique || $this->is_multiple);
+		$this->is_key = ( $this->is_pk || $this->is_unique || $this->is_multiple );
 		$this->type = $info->type;
 	}
 
@@ -2452,10 +2756,13 @@ class DBError extends MWException {
 
 	function getText() {
 		global $wgShowDBErrorBacktrace;
+
 		$s = $this->getMessage() . "\n";
+
 		if ( $wgShowDBErrorBacktrace ) {
 			$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
 		}
+
 		return $s;
 	}
 }
@@ -2468,10 +2775,13 @@ class DBConnectionError extends DBError {
 
 	function __construct( DatabaseBase &$db, $error = 'unknown error' ) {
 		$msg = 'DB connection error';
+
 		if ( trim( $error ) != '' ) {
 			$msg .= ": $error";
 		}
+
 		$this->error = $error;
+
 		parent::__construct( $db, $msg );
 	}
 
@@ -2492,7 +2802,9 @@ class DBConnectionError extends DBError {
 
 	function getPageTitle() {
 		global $wgSitename, $wgLang;
+
 		$header = "$wgSitename has a problem";
+
 		if ( $wgLang instanceof Language ) {
 			$header = htmlspecialchars( $wgLang->getMessage( 'dberr-header' ) );
 		}
@@ -2519,7 +2831,7 @@ class DBConnectionError extends DBError {
 		}
 
 		if ( trim( $this->error ) == '' ) {
-			$this->error = $this->db->getProperty('mServer');
+			$this->error = $this->db->getProperty( 'mServer' );
 		}
 
 		$noconnect = "<p><strong>$sorry</strong><br />$again</p><p><small>$info</small></p>";
@@ -2531,33 +2843,38 @@ class DBConnectionError extends DBError {
 
 		$extra = $this->searchForm();
 
-		if( $wgUseFileCache ) {
+		if ( $wgUseFileCache ) {
 			try {
 				$cache = $this->fileCachedPage();
 				# Cached version on file system?
-				if( $cache !== null ) {
+				if ( $cache !== null ) {
 					# Hack: extend the body for error messages
-					$cache = str_replace( array('</html>','</body>'), '', $cache );
+					$cache = str_replace( array( '</html>', '</body>' ), '', $cache );
 					# Add cache notice...
 					$cachederror = "This is a cached copy of the requested page, and may not be up to date. ";
+
 					# Localize it if possible...
-					if( $wgLang instanceof Language ) {
+					if ( $wgLang instanceof Language ) {
 						$cachederror = htmlspecialchars( $wgLang->getMessage( 'dberr-cachederror' ) );
 					}
+
 					$warning = "<div style='color:red;font-size:150%;font-weight:bold;'>$cachederror</div>";
+
 					# Output cached page with notices on bottom and re-close body
 					return "{$cache}{$warning}<hr />$text<hr />$extra</body></html>";
 				}
-			} catch( MWException $e ) {
+			} catch ( MWException $e ) {
 				// Do nothing, just use the default page
 			}
 		}
+
 		# Headers needed here - output is just the error message
-		return $this->htmlHeader()."$text<hr />$extra".$this->htmlFooter();
+		return $this->htmlHeader() . "$text<hr />$extra" . $this->htmlFooter();
 	}
 
 	function searchForm() {
 		global $wgSitename, $wgServer, $wgLang, $wgInputEncoding;
+
 		$usegoogle = "You can try searching via Google in the meantime.";
 		$outofdate = "Note that their indexes of our content may be out of date.";
 		$googlesearch = "Search";
@@ -2568,23 +2885,23 @@ class DBConnectionError extends DBError {
 			$googlesearch  = htmlspecialchars( $wgLang->getMessage( 'searchbutton' ) );
 		}
 
-		$search = htmlspecialchars(@$_REQUEST['search']);
+		$search = htmlspecialchars( @$_REQUEST['search'] );
 
 		$trygoogle = <<<EOT
 <div style="margin: 1.5em">$usegoogle<br />
 <small>$outofdate</small></div>
 <!-- SiteSearch Google -->
 <form method="get" action="http://www.google.com/search" id="googlesearch">
-    <input type="hidden" name="domains" value="$wgServer" />
-    <input type="hidden" name="num" value="50" />
-    <input type="hidden" name="ie" value="$wgInputEncoding" />
-    <input type="hidden" name="oe" value="$wgInputEncoding" />
+	<input type="hidden" name="domains" value="$wgServer" />
+	<input type="hidden" name="num" value="50" />
+	<input type="hidden" name="ie" value="$wgInputEncoding" />
+	<input type="hidden" name="oe" value="$wgInputEncoding" />
 
-    <input type="text" name="q" size="31" maxlength="255" value="$search" />
-    <input type="submit" name="btnG" value="$googlesearch" />
+	<input type="text" name="q" size="31" maxlength="255" value="$search" />
+	<input type="submit" name="btnG" value="$googlesearch" />
   <div>
-    <input type="radio" name="sitesearch" id="gwiki" value="$wgServer" checked="checked" /><label for="gwiki">$wgSitename</label>
-    <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
+	<input type="radio" name="sitesearch" id="gwiki" value="$wgServer" checked="checked" /><label for="gwiki">$wgSitename</label>
+	<input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
   </div>
 </form>
 <!-- SiteSearch Google -->
@@ -2594,22 +2911,27 @@ EOT;
 
 	function fileCachedPage() {
 		global $wgTitle, $title, $wgLang, $wgOut;
-		if( $wgOut->isDisabled() ) return; // Done already?
+
+		if ( $wgOut->isDisabled() ) {
+			return; // Done already?
+		}
+
 		$mainpage = 'Main Page';
+
 		if ( $wgLang instanceof Language ) {
 			$mainpage    = htmlspecialchars( $wgLang->getMessage( 'mainpage' ) );
 		}
 
-		if( $wgTitle ) {
+		if ( $wgTitle ) {
 			$t =& $wgTitle;
-		} elseif( $title ) {
+		} elseif ( $title ) {
 			$t = Title::newFromURL( $title );
 		} else {
 			$t = Title::newFromText( $mainpage );
 		}
 
 		$cache = new HTMLFileCache( $t );
-		if( $cache->isFileCached() ) {
+		if ( $cache->isFileCached() ) {
 			return $cache->fetchPageText();
 		} else {
 			return '';
@@ -2619,7 +2941,6 @@ EOT;
 	function htmlBodyOnly() {
 		return true;
 	}
-
 }
 
 /**
@@ -2629,12 +2950,13 @@ class DBQueryError extends DBError {
 	public $error, $errno, $sql, $fname;
 
 	function __construct( DatabaseBase &$db, $error, $errno, $sql, $fname ) {
-		$message = "A database error has occurred\n" .
+		$message = "A database error has occurred.  Did you forget to run maintenance/update.php after upgrading?  See: http://www.mediawiki.org/wiki/Manual:Upgrading#Run_the_update_script\n" .
 		  "Query: $sql\n" .
 		  "Function: $fname\n" .
 		  "Error: $errno $error\n";
 
 		parent::__construct( $db, $message );
+
 		$this->error = $error;
 		$this->errno = $errno;
 		$this->sql = $sql;
@@ -2643,12 +2965,15 @@ class DBQueryError extends DBError {
 
 	function getText() {
 		global $wgShowDBErrorBacktrace;
+
 		if ( $this->useMessageCache() ) {
 			$s = wfMsg( 'dberrortextcl', htmlspecialchars( $this->getSQL() ),
 				htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) ) . "\n";
+
 			if ( $wgShowDBErrorBacktrace ) {
 				$s .= "Backtrace:\n" . $this->getTraceAsString() . "\n";
 			}
+
 			return $s;
 		} else {
 			return parent::getText();
@@ -2657,7 +2982,8 @@ class DBQueryError extends DBError {
 
 	function getSQL() {
 		global $wgShowSQLErrors;
-		if( !$wgShowSQLErrors ) {
+
+		if ( !$wgShowSQLErrors ) {
 			return $this->msg( 'sqlhidden', 'SQL hidden' );
 		} else {
 			return $this->sql;
@@ -2675,15 +3001,18 @@ class DBQueryError extends DBError {
 
 	function getHTML() {
 		global $wgShowDBErrorBacktrace;
+
 		if ( $this->useMessageCache() ) {
 			$s = wfMsgNoDB( 'dberrortext', htmlspecialchars( $this->getSQL() ),
 			  htmlspecialchars( $this->fname ), $this->errno, htmlspecialchars( $this->error ) );
 		} else {
 			$s = nl2br( htmlspecialchars( $this->getMessage() ) );
 		}
+
 		if ( $wgShowDBErrorBacktrace ) {
 			$s .= '<p>Backtrace:</p><p>' . nl2br( htmlspecialchars( $this->getTraceAsString() ) );
 		}
+
 		return $s;
 	}
 }
@@ -2706,6 +3035,7 @@ class ResultWrapper implements Iterator {
 	 */
 	function __construct( $database, $result ) {
 		$this->db = $database;
+
 		if ( $result instanceof ResultWrapper ) {
 			$this->result = $result->result;
 		} else {
@@ -2767,8 +3097,8 @@ class ResultWrapper implements Iterator {
 	 */
 
 	function rewind() {
-		if ($this->numRows()) {
-			$this->db->dataSeek($this, 0);
+		if ( $this->numRows() ) {
+			$this->db->dataSeek( $this, 0 );
 		}
 		$this->pos = 0;
 		$this->currentRow = null;
@@ -2796,17 +3126,17 @@ class ResultWrapper implements Iterator {
 	}
 }
 
-/* Overloads the relevant methods of the real ResultsWrapper so it
+/**
+ * Overloads the relevant methods of the real ResultsWrapper so it
  * doesn't go anywhere near an actual database.
  */
 class FakeResultWrapper extends ResultWrapper {
-
 	var $result     = array();
 	var $db         = null;	// And it's going to stay that way :D
 	var $pos        = 0;
 	var $currentRow = null;
 
-	function __construct( $array ){
+	function __construct( $array ) {
 		$this->result = $array;
 	}
 
@@ -2826,7 +3156,7 @@ class FakeResultWrapper extends ResultWrapper {
 	function free() {}
 
 	// Callers want to be able to access fields with $this->fieldName
-	function fetchObject(){
+	function fetchObject() {
 		$this->currentRow = $this->result[$this->pos++];
 		return (object)$this->currentRow;
 	}

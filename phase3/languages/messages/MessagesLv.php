@@ -199,31 +199,20 @@ $messages = array(
 'faqpage'        => 'Project:BUJ',
 
 # Vector skin
-'vector-action-addsection'   => 'Jauna sadaļa',
-'vector-action-delete'       => 'Dzēst',
-'vector-action-move'         => 'Pārvietot',
-'vector-action-protect'      => 'Aizsargāt',
-'vector-action-undelete'     => 'Atjaunot',
-'vector-action-unprotect'    => 'Neaizsargāt',
-'vector-namespace-category'  => 'Kategorija',
-'vector-namespace-help'      => 'Palīdzības lapa',
-'vector-namespace-image'     => 'Attēls',
-'vector-namespace-main'      => 'Raksts',
-'vector-namespace-media'     => 'Multivides lapa',
-'vector-namespace-mediawiki' => 'Paziņojums',
-'vector-namespace-project'   => 'Projekta lapa',
-'vector-namespace-special'   => 'Īpašā lapa',
-'vector-namespace-talk'      => 'Diskusija',
-'vector-namespace-template'  => 'Veidne',
-'vector-namespace-user'      => 'Lietotāja lapa',
-'vector-view-create'         => 'Izveidot',
-'vector-view-edit'           => 'Rediģēt',
-'vector-view-history'        => 'Hronoloģija',
-'vector-view-view'           => 'Skatīt',
-'vector-view-viewsource'     => 'Aplūkot kodu',
-'actions'                    => 'Darbības',
-'namespaces'                 => 'Vārdtelpas',
-'variants'                   => 'Varianti',
+'vector-action-addsection' => 'Jauna sadaļa',
+'vector-action-delete'     => 'Dzēst',
+'vector-action-move'       => 'Pārvietot',
+'vector-action-protect'    => 'Aizsargāt',
+'vector-action-undelete'   => 'Atjaunot',
+'vector-action-unprotect'  => 'Neaizsargāt',
+'vector-view-create'       => 'Izveidot',
+'vector-view-edit'         => 'Rediģēt',
+'vector-view-history'      => 'Hronoloģija',
+'vector-view-view'         => 'Skatīt',
+'vector-view-viewsource'   => 'Aplūkot kodu',
+'actions'                  => 'Darbības',
+'namespaces'               => 'Vārdtelpas',
+'variants'                 => 'Varianti',
 
 'errorpagetitle'    => 'Kļūda',
 'returnto'          => 'Atgriezties: $1.',
@@ -343,9 +332,9 @@ $1',
 'nstab-special'   => 'Īpašā lapa',
 'nstab-project'   => 'Projekta lapa',
 'nstab-image'     => 'Attēls',
-'nstab-mediawiki' => 'paziņojums',
+'nstab-mediawiki' => 'Paziņojums',
 'nstab-template'  => 'Veidne',
-'nstab-help'      => 'palīdzība',
+'nstab-help'      => 'Palīdzība',
 'nstab-category'  => 'Kategorija',
 
 # Main script and global functions
@@ -367,7 +356,7 @@ palaists funkcijā "$2".
 Izdotā MySQL kļūda: "$3: $4"',
 'laggedslavemode'      => 'Uzmanību: Iespējams, šajā lapā nav redzami nesen izdarītie papildinājumi.',
 'readonly'             => 'Datubāze bloķēta',
-'readonlytext'         => 'Datubāze šobrīd ir bloķēta pret jaunu ierakstu izveidošanu un citām izmaiņām, visticamāk, dēļ kārtējā datubāzes uzturēšanas pasākuma, pēc kura tā tiks atjaunota normālā stāvoklī.
+'readonlytext'         => 'Datubāze šobrīd ir bloķēta jaunu ierakstu izveidošanai un citām izmaiņām, visticamāk, kārtējā datubāzes uzturēšanas pasākuma dēļ, pēc kura tā tiks atjaunota normālā stāvoklī.
 
 Administrators, kurš nobloķēja datubāzi, norādīja šādu iemeslu: $1',
 'missing-article'      => 'Teksts lapai ar nosaukumu "$1" $2 datubāzē nav atrodams.
@@ -444,6 +433,7 @@ Tavs lietotāja konts ir izveidots. Neaizmirsti, ka ir iespējams mainīt [[Spec
 'gotaccount'                 => "Tev jau ir lietotājvārds? '''$1'''!",
 'gotaccountlink'             => 'Dodies iekšā',
 'createaccountmail'          => 'pa e-pastu',
+'createaccountreason'        => 'Iemesls:',
 'badretype'                  => 'Tevis ievadītās paroles nesakrīt.',
 'userexists'                 => 'Šāds lietotāja vārds jau eksistē. Izvēlies citu vārdu.',
 'loginerror'                 => 'Neveiksmīga ieiešana',
@@ -492,12 +482,26 @@ Tādēļ šobrīd no šīs IP adreses vairs nevar izveidot jaunus kontus.',
 'usernamehasherror'          => 'Lietotājvārds nevar saturēt hash simbolus',
 'loginlanguagelabel'         => 'Valoda: $1',
 
+# JavaScript password checks
+'password-strength'            => 'Paroles drošības novērtējums: $1',
+'password-strength-bad'        => 'VĀJA',
+'password-strength-mediocre'   => 'vidēja',
+'password-strength-acceptable' => 'pieņemama',
+'password-strength-good'       => 'laba',
+'password-retype'              => 'Pārrakstiet paroli šeit',
+'password-retype-mismatch'     => 'Paroles nesakrīt',
+
 # Password reset dialog
 'resetpass'                 => 'Mainīt paroli',
 'resetpass_header'          => 'Mainīt konta paroli',
 'oldpassword'               => 'Vecā parole',
 'newpassword'               => 'Jaunā parole',
 'retypenew'                 => 'Atkārto jauno paroli',
+'resetpass_submit'          => 'Uzstādīt paroli un ieiet',
+'resetpass_success'         => 'Parole nomainīta veiksmīgi!
+Notiek ieiešana...',
+'resetpass_forbidden'       => 'Paroles nav iespējams nomainīt',
+'resetpass-no-info'         => 'Jums ir nepieciešams ieiet, lai tūlīt piekļūtu šai lapai.',
 'resetpass-submit-loggedin' => 'Mainīt paroli',
 'resetpass-submit-cancel'   => 'Atcelt',
 'resetpass-wrong-oldpass'   => 'Nepareiza pagaidu vai galvenā parole.
@@ -600,6 +604,9 @@ Tu vari [[Special:Search/{{PAGENAME}}|meklēt šīs lapas nosaukumu]] citās lap
 vai <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} meklēt saistītus reģistru ierakstus]</span>.',
 'userpage-userdoesnotexist'        => 'Lietotājs "$1" nav reģistrēts.
 Lūdzu, pārliecinies vai vēlies izveidot/izmainīt šo lapu.',
+'blocked-notice-logextract'        => 'Šis lietotājs pašlaik ir nobloķēts.
+
+Pēdējais bloķēšanas reģistra ieraksts ir apskatāms zemāk:',
 'clearyourcache'                   => "'''Piezīme - Pēc saglabāšanas, lai būtu redzamas izmaiņas, var būt nepieciešamas iztīrīt pārlūka kešatmiņu.''' '''Mozilla / Firefox / Safari:''' turi nospiestu ''Shift'' un klikšķini ''Reload,'' vai arī spied ''Ctrl-F5'' vai ''Ctrl-R'' (''Command-R'' uz Macintosh); '''Konqueror: '''klikšķini ''Reload'' vai spied uz ''F5;'' '''Opera:''' kešu var iztīrīt ''Tools → Preferences;'' '''Internet Explorer:''' turi nospiestu ''Ctrl'' un klikšķini ''Refresh,'' vai spied ''Ctrl-F5.''",
 'usercssyoucanpreview'             => "'''Ieteikums:''' Lieto pirmsskata pogu, lai pārbaudītu savu jauno CSS pirms saglabāšanas.",
 'userjsyoucanpreview'              => "'''Ieteikums:''' Lieto pirmsskata pogu, lai pārbaudītu savu jauno JS pirms saglabāšanas.",
@@ -649,7 +656,9 @@ Tas nevar tikt saglabāts.'''",
 Tu vari nokopēt tekstu un saglabāt kā teksta failu vēlākam laikam.'''
 
 Admins, kas slēdza datubāzi, norādīja šādu paskaidrojumu: $1",
-'protectedpagewarning'             => "'''BRĪDINĀJUMS: Šī lapa ir bloķēta pret izmaiņām, tikai lietotāji ar admina privilēģijām var to izmainīt. To darot, noteikti ievēro [[Project:Norādījumi par aizsargātajām lapām|norādījumus par aizsargātajām lapām]].'''",
+'protectedpagewarning'             => "'''BRĪDINĀJUMS: Šī lapa ir aizsargāta, tikai lietotāji ar administratora privilēģijām var to izmainīt.'''
+
+Pēdējais aizsargāšanas reģistra ieraksts ir apskatāms zemāk:",
 'semiprotectedpagewarning'         => "'''Piezīme:''' Izmaiņu veikšana šajā lapā ir atļauta tikai reģistrētiem lietotājiem.",
 'titleprotectedwarning'            => "'''Brīdinājums: Šī lapa ir slēgta un to var izveidot tikai [[Special:ListGroupRights|noteikti]] lietotāji.'''",
 'templatesused'                    => 'Šajā lapā {{PLURAL:$1|izmantotā veidne|izmantotās veidnes}}:',
@@ -680,6 +689,9 @@ Izskatās, ka lapa ir dzēsta.',
 'edit-no-change'                   => 'Tavs labojums tika ignorēts, jo tekstā netika izdarītas izmaiņas.',
 'edit-already-exists'              => 'Nevar izveidot jaunu lapu.
 Tā jau eksistē.',
+
+# Parser/template warnings
+'parser-template-loop-warning' => 'Veidne ir ievietota tādā pašā veidnē: [[$1]]',
 
 # "Undo" feature
 'undo-success' => 'Šo izmaiņu ir iespējams atcelt.
@@ -1471,7 +1483,7 @@ iepriekšējas versijas.",
 'actioncomplete'         => 'Darbība pabeigta',
 'deletedtext'            => 'Lapa "<nowiki>$1</nowiki>" ir izdzēsta.
 Šeit var apskatīties pēdējos izdzēstos: "$2".',
-'deletedarticle'         => 'izdzēsu "$1"',
+'deletedarticle'         => 'izdzēsa "[[$1]]"',
 'dellogpage'             => 'Dzēšanas reģistrs',
 'dellogpagetext'         => 'Šajā lapā ir pēdējo dzēsto lapu saraksts.',
 'deletionlog'            => 'dzēšanas reģistrs',
@@ -1587,7 +1599,7 @@ kāds cits iespējams to ir atjaunojis ātrāk.',
 [[Special:Log/delete|Dzēšanas reģistrā]] ir informācija par pēdējām dzēšanām un atjaunošanām.",
 
 # Namespace form on various pages
-'namespace'      => 'Lapas veids:',
+'namespace'      => 'Vārdtelpa:',
 'invert'         => 'Izvēlēties pretēji',
 'blanknamespace' => '(Pamatlapa)',
 

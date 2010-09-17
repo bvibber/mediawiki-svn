@@ -8,6 +8,7 @@
  * @file
  *
  * @author Annabel
+ * @author DasRakel
  * @author Effeietsanders
  * @author Erwin
  * @author Erwin85
@@ -23,6 +24,7 @@
  * @author Mwpnl
  * @author Naudefj
  * @author Niels
+ * @author Romaine
  * @author SPQRobin
  * @author Servien
  * @author Siebrand
@@ -482,17 +484,6 @@ $messages = array(
 'vector-action-protect'          => 'Beveiligen',
 'vector-action-undelete'         => 'Terugplaatsen',
 'vector-action-unprotect'        => 'Beveiliging opheffen',
-'vector-namespace-category'      => 'Categorie',
-'vector-namespace-help'          => 'Hulppagina',
-'vector-namespace-image'         => 'Bestand',
-'vector-namespace-main'          => 'Pagina',
-'vector-namespace-media'         => 'Mediapagina',
-'vector-namespace-mediawiki'     => 'Bericht',
-'vector-namespace-project'       => 'Projectpagina',
-'vector-namespace-special'       => 'Speciale pagina',
-'vector-namespace-talk'          => 'Overleg',
-'vector-namespace-template'      => 'Sjabloon',
-'vector-namespace-user'          => 'Gebruikerspagina',
 'vector-simplesearch-preference' => 'Verbeterde zoeksuggesties inschakelen (alleen voor het uiterlijk Vector)',
 'vector-view-create'             => 'Aanmaken',
 'vector-view-edit'               => 'Bewerken',
@@ -562,6 +553,9 @@ Te veel gebruikers proberen deze pagina te bekijken.
 Wacht alstublieft even voordat u opnieuw toegang probeert te krijgen tot deze pagina.
 
 $1',
+'pool-timeout'      => 'De maximaal te wachten tijd voor het wachten op een lock is verstreken',
+'pool-queuefull'    => 'De wachtrij van de poel is vol',
+'pool-errorunknown' => 'Er is een onbekende fout opgetreden',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Over {{SITENAME}}',
@@ -825,6 +819,11 @@ Negeer dit bericht als deze gebruiker zonder uw medeweten is aangemaakt.',
 Wacht even voordat u het opnieuw probeert.',
 'loginlanguagelabel'         => 'Taal: $1',
 'suspicious-userlogout'      => 'Uw verzoek om af te melden is genegeerd, omdat het lijkt alsof het verzoek is verzonden door een browser of cacheproxy die stuk is.',
+'ratelimit-excluded-ips'     => ' #<!-- laat deze regel zoals hij is --> <pre>
+# De syntaxis is als volgt:
+#   * Alle tekst vanaf het karakter "#" tot het einde van de regels wordt gezien als opmerking
+#   * Iedere niet-lege regel is een IP-adres waarop geen snelheidsbeperkingen van toepassing zijn
+ #</pre> <!-- laat deze regel zoals hij is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Geschatte wachtwoordsterkte: $1',
@@ -1296,7 +1295,8 @@ Let op dat het gebruiken van de navigatieverwijzingen deze kolom opnieuw instelt
 'compareselectedversions'  => 'Aangevinkte versies vergelijken',
 'showhideselectedversions' => 'Geselecteerde versies weergeven/verbergen',
 'editundo'                 => 'ongedaan maken',
-'diff-multi'               => '({{PLURAL:$1|Eén tussenliggende versie wordt|$1 tussenliggende versies worden}} niet weergegeven)',
+'diff-multi'               => '({{PLURAL:$1|Eén tussenliggende versie|$1 tussenliggende versies}} door {{PLURAL:$2|één gebruiker|$2 gebruikers}} {{PLURAL:$1|wordt|worden}} niet weergegeven)',
+'diff-multi-manyusers'     => '($1 tussenliggende versies door meer dan $2 gebruikers worden niet weergegeven)',
 
 # Search results
 'searchresults'                    => 'Zoekresultaten',
@@ -1598,7 +1598,6 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-override-export-depth' => "Pagina's exporteren inclusief pagina's waarnaar verwezen wordt tot een diepte van vijf",
 'right-sendemail'             => 'E-mail versturen aan andere gebruikers',
 'right-revisionmove'          => 'Versies verplaatsen',
-'right-selenium'              => 'Selenium-tests uitvoeren',
 
 # User rights log
 'rightslog'      => 'Gebruikersrechtenlogboek',

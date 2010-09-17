@@ -29,6 +29,7 @@ if ( !isset( $wgVersion ) ) {
 // Set various default paths sensibly...
 if( $wgScript === false ) $wgScript = "$wgScriptPath/index$wgScriptExtension";
 if( $wgRedirectScript === false ) $wgRedirectScript = "$wgScriptPath/redirect$wgScriptExtension";
+if( $wgLoadScript === false ) $wgLoadScript = "$wgScriptPath/load$wgScriptExtension";
 
 if( $wgArticlePath === false ) {
 	if( $wgUsePathInfo ) {
@@ -173,7 +174,7 @@ wfProfileIn( $fname.'-misc1' );
 wfMemoryLimit();
 
 /**
- * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+ 
+ * Set up the timezone, suppressing the pseudo-security warning in PHP 5.1+
  * that happens whenever you use a date function without the timezone being
  * explicitly set. Inspired by phpMyAdmin's treatment of the problem.
  */
@@ -181,18 +182,18 @@ wfSuppressWarnings();
 date_default_timezone_set( date_default_timezone_get() );
 wfRestoreWarnings();
 
-$wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
 $wgRequest = new WebRequest;
 
 # Useful debug output
+global $wgCommandLineMode;
 if ( $wgCommandLineMode ) {
 	wfDebug( "\n\nStart command line script $self\n" );
 } else {
 	wfDebug( "Start request\n\n" );
 	# Output the REQUEST_URI. This is not supported by IIS in rewrite mode,
 	# so use an alternative
-	$requestUri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : 
+	$requestUri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] :
 		( isset( $_SERVER['HTTP_X_ORIGINAL_URL'] ) ? $_SERVER['HTTP_X_ORIGINAL_URL'] :
 		$_SERVER['PHP_SELF'] );
 	wfDebug( "{$_SERVER['REQUEST_METHOD']} {$requestUri}\n" );

@@ -60,7 +60,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Юйған биттәрем күҙәтеү исемлегемә өҫтәлһен',
 'tog-previewontop'            => 'Алдан байҡау тәҙрәһен мөхәррирләү битенең өҫтөнә ҡуйырға',
 'tog-previewonfirst'          => 'Мөхәррирләүгә күскәндә алдан ҡарау күрһәтелһен',
-'tog-nocache'                 => 'Биттәрҙе кэшлауҙы тыйырға',
+'tog-nocache'                 => 'Браузерҙа биттәрҙе кэшлауҙы тыйырға',
 'tog-enotifwatchlistpages'    => 'Күҙәтеү исемлегендәге биттәрҙең үҙгәрештәре тураһында электрон почта аша белдерергә',
 'tog-enotifusertalkpages'     => 'Шәхси фекер алышыу битем үҙгәртелеү тураһында электрон почта аша белдерергә',
 'tog-enotifminoredits'        => 'Әҙ генә үҙгәрештәр тураһында электрон почта аша белдерергә',
@@ -196,31 +196,20 @@ $messages = array(
 'faqpage'        => 'Project:ЙБҺ',
 
 # Vector skin
-'vector-action-addsection'   => 'Тема өҫтәргә',
-'vector-action-delete'       => 'Юйырға',
-'vector-action-move'         => 'Исемен үҙгәртергә',
-'vector-action-protect'      => 'Һаҡларға',
-'vector-action-undelete'     => 'Тергеҙергә',
-'vector-action-unprotect'    => 'Һаҡлауҙы сисергә',
-'vector-namespace-category'  => 'Категория',
-'vector-namespace-help'      => 'Ярҙам бите',
-'vector-namespace-image'     => 'Файл',
-'vector-namespace-main'      => 'Бит',
-'vector-namespace-media'     => 'Медиа-бит',
-'vector-namespace-mediawiki' => 'Хәбәр',
-'vector-namespace-project'   => 'Проект бите',
-'vector-namespace-special'   => 'Махсус бит',
-'vector-namespace-talk'      => 'Фекер алышыу',
-'vector-namespace-template'  => 'Ҡалып',
-'vector-namespace-user'      => 'Ҡулланыусы бите',
-'vector-view-create'         => 'Яһау',
-'vector-view-edit'           => 'Үҙгәртергә',
-'vector-view-history'        => 'Тарихты ҡарау',
-'vector-view-view'           => 'Уҡыу',
-'vector-view-viewsource'     => 'Сығанаҡты ҡарарға',
-'actions'                    => 'Хәрәкәт',
-'namespaces'                 => 'Исем арауыҡтары',
-'variants'                   => 'Варианттар',
+'vector-action-addsection' => 'Тема өҫтәргә',
+'vector-action-delete'     => 'Юйырға',
+'vector-action-move'       => 'Исемен үҙгәртергә',
+'vector-action-protect'    => 'Һаҡларға',
+'vector-action-undelete'   => 'Тергеҙергә',
+'vector-action-unprotect'  => 'Һаҡлауҙы сисергә',
+'vector-view-create'       => 'Яһау',
+'vector-view-edit'         => 'Үҙгәртергә',
+'vector-view-history'      => 'Тарихты ҡарау',
+'vector-view-view'         => 'Уҡыу',
+'vector-view-viewsource'   => 'Сығанаҡты ҡарарға',
+'actions'                  => 'Хәрәкәт',
+'namespaces'               => 'Исем арауыҡтары',
+'variants'                 => 'Варианттар',
 
 'errorpagetitle'    => 'Хата',
 'returnto'          => '$1 битенә ҡайтыу.',
@@ -517,6 +506,9 @@ $2',
 Зинһар, ҡабатламаҫтан алда бераҙ көтөгөҙ.',
 'loginlanguagelabel'         => 'Тел: $1',
 
+# JavaScript password checks
+'password-retype' => 'Паролде ошонда ҡабаттан яҙығыҙ',
+
 # Password reset dialog
 'resetpass'                 => 'Паролде үҙгәртеү',
 'resetpass_announce'        => 'Һеҙ системала электрон почта аша алынған ваҡытлыса пароль менән танылдығыҙ. Системаға кереүҙә тамалау өсөн яңы пароль булдырығыҙ.',
@@ -568,7 +560,7 @@ $2',
 'missingsummary'                   => "'''Иҫкәртеү.''' Һеҙ үҙгәртеүҙергә ҡыҫҡа тасуирлама яҙманығыҙ. Ҡабаттан «Битте һаҡларға» төймәһенә баҫһағыҙ, үҙгәртеүҙәрегеҙ тасуирламаһыҙ һаҡланасаҡ.",
 'missingcommenttext'               => 'Зинһар, аҫҡа үҙ тасуирламағыҙҙы керетегеҙ.',
 'missingcommentheader'             => "'''Иҫкәртеү:''' Һеҙ был комментарий өсөн тема/исем яҙманығыҙ.
-«Битте һаҡларға» төймәһенә ҡабат баҫыу менән үҙгәртеүҙерегеҙ исемһеҙ яҙыласаҡ.",
+«{{int:savearticle}}» төймәһенә ҡабат баҫыу менән үҙгәртеүҙерегеҙ исемһеҙ яҙыласаҡ.",
 'summary-preview'                  => 'Буласаҡ тасуирлама:',
 'subject-preview'                  => 'Тема/башлыҡты алдан ҡарау:',
 'blockedtitle'                     => 'Ҡулланыусы блокланған',
@@ -636,8 +628,8 @@ $2',
 'blocked-notice-logextract'        => 'Хәҙергә был ҡатнашыусы ябылған. Һуңғы ҡулланыусы ябыу яҙмаһы:',
 'clearyourcache'                   => "'''Иҫкәрмә:''' Битте һаҡлағандан һуң үҙгәртеүҙерегеҙ күренһен өсөн браузерығыҙҙың кэшын таҙартығыҙ.
 Быны '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' аша эшләп була.",
-'usercssyoucanpreview'             => "'''Кәңәш:''' Яңы CSS-файлды һаҡларҙан алда тикшерер өсөн \"алдан ҡарау\" төймәһенә баҫығыҙ.",
-'userjsyoucanpreview'              => "'''Кәңәш:''' Яңы JS-файлды һаҡларҙан алда тикшерер өсөн \"алдан ҡарау\" төймәһенә баҫығыҙ.",
+'usercssyoucanpreview'             => "'''Кәңәш:''' Яңы CSS-файлды һаҡларҙан алда тикшерер өсөн \"{{int:showpreview}}\" төймәһенә баҫығыҙ.",
+'userjsyoucanpreview'              => "'''Кәңәш:''' Яңы JS-файлды һаҡларҙан алда тикшерер өсөн \"{{int:showpreview}}\" төймәһенә баҫығыҙ.",
 'usercsspreview'                   => "'''Был бары тик CSS файлды алдан ҡарау ғына, ул әле һаҡланмаған!'''",
 'userjspreview'                    => "'''Был бары тик JavaScript файлын алдан ҡарау ғына, ул әле һаҡланмаған!'''",
 'userinvalidcssjstitle'            => "'''Иғтибар:''' \"\$1\" биҙәү темаһы табылманы. Иҫтә тотоғоҙ, .css һәм .js ҡулланыусы биттәренең исемдәре тик бәләкәй хәрефтәрҙән генә торорға тейеш. Мәҫәлән: {{ns:user}}:Foo/monobook.css, ә {{ns:user}}:Foo/Monobook.css түгел!",
@@ -893,7 +885,10 @@ $1",
 Ағымдағы блоклауҙарҙы күрер өсөн [[Special:IPBlockList|IP-блоклауҙар исемлеген]] ҡарағыҙ.',
 
 # Revision move
-'revmove-reasonfield' => 'Сәбәп:',
+'revisionmoveselectedversions' => 'Һайланған версияларҙы күсерергә',
+'revmove-reasonfield'          => 'Сәбәп:',
+'revmove-norevisions-title'    => 'Кәрәкле версия дөрөҫ яҙылмаған',
+'revmove-nullmove-title'       => 'Ярамаған исем',
 
 # History merging
 'mergehistory'                     => 'Үҙгәртеүҙәр тарихын берләштерергә',
@@ -1029,6 +1024,8 @@ $1",
 'columns'                     => 'Бағаналар:',
 'searchresultshead'           => 'Эҙләү',
 'resultsperpage'              => 'Биттә табылған яҙыуҙар',
+'stub-threshold'              => '<a href="#" class="stub">Материалдарға һылтанмалар </a> форматлау сиге (байттарҙа)',
+'stub-threshold-disabled'     => 'Һүндерелгән',
 'prefs-help-watchlist-token'  => 'Юыл юлды серле асҡыс менән тултырыу, күҙәтеү исемлегегеҙ өсөн RSS-таҫма яһаясаҡ.
 Был юлдағы асҡысты белгән һәр кем, күҙәтеү исемлегегеҙҙе уҡый аласаҡ, шуның өсөн ышаныслы ҡиммәт һайлағыҙ.
 Осраҡлы рәүештә һайланған ҡиммәтте лә ҡуллана алаһығыҙ: $1',
@@ -1095,23 +1092,26 @@ $1",
 'prefs-advancedsearchoptions' => 'Киңәйтелгән көйләүҙәр',
 'prefs-advancedwatchlist'     => 'Киңәйтелгән көйләүҙәр',
 'prefs-displayrc'             => 'Күренеш көйләүҙәре',
+'prefs-displaysearchoptions'  => 'Күренеш көйләүҙәре',
+'prefs-displaywatchlist'      => 'Күренеш көйләүҙәре',
 'prefs-diffs'                 => 'Айырмалар',
 
 # User rights
-'userrights'                => 'Ҡулланыусы хоҡуҡтарын идаралау',
-'userrights-lookup-user'    => 'Ҡулланыусы төркөмдәрен идаралау',
-'userrights-user-editname'  => 'Ҡулланыусы исемен керетерегеҙ:',
-'editusergroup'             => 'Ҡулланыусы төркөмдәрен идараларға',
-'editinguser'               => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
-'userrights-editusergroup'  => 'Ҡулланыусы төркөмдәрен идараларға',
-'saveusergroups'            => 'Ҡулланыусы төркөмдәрен һаҡларға',
-'userrights-groupsmember'   => 'Ағза булған төркөмдәр:',
-'userrights-groups-help'    => 'Был ҡулланыусы кергән төркөмдәрҙе үҙгәртә алаһығыҙ.
+'userrights'                  => 'Ҡулланыусы хоҡуҡтарын идаралау',
+'userrights-lookup-user'      => 'Ҡулланыусы төркөмдәрен идаралау',
+'userrights-user-editname'    => 'Ҡулланыусы исемен керетерегеҙ:',
+'editusergroup'               => 'Ҡулланыусы төркөмдәрен идараларға',
+'editinguser'                 => "Мөхәрирләү  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]])",
+'userrights-editusergroup'    => 'Ҡулланыусы төркөмдәрен идараларға',
+'saveusergroups'              => 'Ҡулланыусы төркөмдәрен һаҡларға',
+'userrights-groupsmember'     => 'Ағза булған төркөмдәр:',
+'userrights-groups-help'      => 'Был ҡулланыусы кергән төркөмдәрҙе үҙгәртә алаһығыҙ.
 * Әгәр төркөм исеме эргәһендә билдә булһа, ҡулланыусы төркөмгә кергән була.
 * Әгәр билдә булмаһа, ҡулланыусы ул төркөмгә кермәй тимәк.
 * * билдәһе, әгәр төркөмдән ҡулланыусыны юйһағыҙ кире ҡуя алмаясағығыҙҙы аңлата һәм киреһенсә.',
-'userrights-reason'         => 'Сәбәп:',
-'userrights-changeable-col' => 'Һеҙ үҙгәртә алған төркөмдәр',
+'userrights-reason'           => 'Сәбәп:',
+'userrights-changeable-col'   => 'Һеҙ үҙгәртә алған төркөмдәр',
+'userrights-unchangeable-col' => 'Һеҙ үҙгәртә алмаған төркөмдәр',
 
 # Groups
 'group'               => 'Төркөм:',
@@ -1477,21 +1477,28 @@ $1",
 'emailsend'    => 'Ебәреү',
 
 # Watchlist
-'watchlist'         => 'Күҙәтеү исемлеге',
-'mywatchlist'       => 'Күҙәтеү исемлеге',
-'watchnologin'      => 'Үҙегеҙҙе танытырға кәрәк',
-'addedwatch'        => 'Күҙәтеү исемлегенә өҫтәлде',
-'addedwatchtext'    => "\"[[:\$1]]\" бите [[Special:Watchlist|күҙәтеү исемлегегеҙгә]] өҫтәлде.
+'watchlist'            => 'Күҙәтеү исемлеге',
+'mywatchlist'          => 'Күҙәтеү исемлеге',
+'watchnologin'         => 'Үҙегеҙҙе танытырға кәрәк',
+'addedwatch'           => 'Күҙәтеү исемлегенә өҫтәлде',
+'addedwatchtext'       => "\"[[:\$1]]\" бите [[Special:Watchlist|күҙәтеү исемлегегеҙгә]] өҫтәлде.
 Был биттә һәм уның фекер алышыу битендә бөтә буласаҡ үҙгәртеүҙәр исемлектә һәм [[Special:RecentChanges|һуңғы үҙгәртеүҙәр]] исемлегендә уларҙы еңелерәк табыу өсөн '''ҡалын яҙыу''' менән күрһәтеләсәк.",
-'removedwatch'      => 'Күҙәтеү исемлегенән сығарылды',
-'removedwatchtext'  => '«[[:$1]]» бите [[Special:Watchlist|күҙәтеү исемлегегеҙҙән]] сығарылды.',
-'watch'             => 'Күҙәтергә',
-'watchthispage'     => 'Был битте күҙәтергә',
-'unwatch'           => 'Күҙәтмәҫкә',
-'notanarticle'      => 'Мәҡәлә түгел',
-'watchlist-details' => 'Һеҙҙең күҙәтеү исемлегегеҙҙә, фекер алышыу биттәрен һанамағанда, {{PLURAL:$1|$1 бит|$1 бит}} бар.',
-'wlshowlast'        => 'Һуңғы $1 сәғәт $2 көн өсөн күрһәт $3',
-'watchlist-options' => 'Күҙәтеү исемлеге көйләүҙәре',
+'removedwatch'         => 'Күҙәтеү исемлегенән сығарылды',
+'removedwatchtext'     => '«[[:$1]]» бите [[Special:Watchlist|күҙәтеү исемлегегеҙҙән]] сығарылды.',
+'watch'                => 'Күҙәтергә',
+'watchthispage'        => 'Был битте күҙәтергә',
+'unwatch'              => 'Күҙәтмәҫкә',
+'notanarticle'         => 'Мәҡәлә түгел',
+'watchnochange'        => 'Күрһәтелгән арауыҡта күҙәтеүҙәр исемлегенән бер ни ҙә үҙгәрмәгән.',
+'watchlist-details'    => 'Һеҙҙең күҙәтеү исемлегегеҙҙә, фекер алышыу биттәрен һанамағанда, {{PLURAL:$1|$1 бит|$1 бит}} бар.',
+'wlheader-showupdated' => "* Һеҙҙең аҙаҡҡы кереүегеҙҙән һуң үҙгәргән биттәр '''ҡалын''' шрифт менән күрһәтелгән.",
+'watchmethod-recent'   => 'күҙәтелгән биттәр өсөн аҙаҡҡы үҙгәртеүҙәрҙе ҡарау',
+'watchmethod-list'     => 'аҙаҡҡы үҙгәртеүҙәр өсөн күҙәтелгән биттәрҙе ҡарау',
+'watchlistcontains'    => 'Һеҙҙең күҙәтеү исемлегендә $1 {{PLURAL:$1|бит|бит}}бар.',
+'iteminvalidname'      => '«$1» менән ҡыйынлыҡтар, исеме дөрөҫ түгел...',
+'wlnote'               => "Түбәндә аҙаҡҡы {{PLURAL:$2|сәғәт|'''$2''' сәғәт}} эсендә эшләнгән {{PLURAL:$1|үҙгәртеү|'''$1''' үҙгәртеү}} күрһәтелгән.",
+'wlshowlast'           => 'Һуңғы $1 сәғәт $2 көн өсөн күрһәт $3',
+'watchlist-options'    => 'Күҙәтеү исемлеге көйләүҙәре',
 
 # Displayed when you click the "watch" button and it is in the process of watching
 'watching'   => 'Күҙәтеү исемлегенә өҫтәү...',
@@ -1787,6 +1794,15 @@ $NEWPAGE
 'others'    => 'башҡалар',
 'siteusers' => '{{SITENAME}} {{PLURAL:$2|ҡатнашыусы|ҡатнашыусылары}} $1',
 
+# Skin names
+'skinname-standard'    => 'Классик',
+'skinname-cologneblue' => 'Кёльн һағышы',
+'skinname-myskin'      => 'Шәхси',
+'skinname-chick'       => 'Себеш',
+'skinname-simple'      => 'Ябай',
+'skinname-modern'      => 'Заманса',
+'skinname-vector'      => 'Векторлы',
+
 # Math errors
 'math_unknown_error' => 'билдәһеҙ хата',
 
@@ -1877,7 +1893,25 @@ $NEWPAGE
 'table_pager_limit_submit' => 'Күсеү',
 
 # Watchlist editor
-'watchlistedit-raw-titles' => 'Яҙмалар:',
+'watchlistedit-numitems'       => 'Һеҙҙең күҙәтеү исемлегегеҙҙә фекер алышыу биттәрен иҫәпләмәгәндә - {{PLURAL:$1|$1 бит|$1 бит}} бар.',
+'watchlistedit-noitems'        => 'Һеҙҙең күҙәтеү исемлегегеҙҙә бер бит тә юҡ.',
+'watchlistedit-normal-title'   => 'Күҙәтеү исемлеген мөхәррирләү',
+'watchlistedit-normal-legend'  => 'Күҙәтеү исемлегенән биттәрҙе юйыу',
+'watchlistedit-normal-explain' => 'Түбәндә һеҙҙең күҙәтеү исемлегендә булған биттәр күрһәтелгән.
+Биттәрҙе юйыу өсөн, кәрәкле юлдарҙы һайлағыҙ һәм «{{int:Watchlistedit-normal-submit}}» төймәһенә баҫығыҙ.
+Һеҙ шулай уҡ [[Special:Watchlist/raw|исемлекте текст рәүешендә үҙгәртә]] алаһығыҙ.',
+'watchlistedit-normal-submit'  => 'Биттәрҙе юйырға',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|$1 бит|$1 бит}} һеҙҙең күҙәтеү исемлегенән юйылды:',
+'watchlistedit-raw-title'      => '«Сей» күҙәтеү исемлеген мөхәррирләү',
+'watchlistedit-raw-legend'     => '«Сей» күҙәтеү исемлеген мөхәррирләү',
+'watchlistedit-raw-explain'    => 'Түбәндә һеҙҙең күҙәтеү исемлегендә булған биттәр күрһәтелгән. Һеҙ был исемлекте, юлдар өҫтәп йәки юйып, үҙгәртә алаһығыҙ; бер юлға - бер исем.
+Үҙгәртеүҙе тамамлағас, «{{int:Watchlistedit-raw-submit}}» төймәһенә баҫығыҙ.
+Һеҙ шулай уҡ ғәҙәттәге [[Special:Watchlist/edit|күҙәтеү исемен мөхәррирләү битен]] ҡулланана алаһығыҙ.',
+'watchlistedit-raw-titles'     => 'Яҙмалар:',
+'watchlistedit-raw-submit'     => 'Исемлекте яңыртырға',
+'watchlistedit-raw-done'       => 'Һеҙҙең күҙәтеү исемлеге яңырҙы.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 яҙма|$1 яҙма}} өҫтәлде:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 яҙма|$1 яҙма}} юйылды:',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Исемлектәге биттәрҙәге үҙгәрештәр',

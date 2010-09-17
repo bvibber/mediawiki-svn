@@ -277,18 +277,22 @@ CONTROL;
 		if( $this->unhide ) {
 			$query['unhide'] = 1;
 		}
-		$prevlink = $sk->link(
-			$this->mTitle,
-			wfMsgHtml( 'previousdiff' ),
-			array(
-				'id' => 'differences-prevlink'
-			),
-			$query,
-			array(
-				'known',
-				'noclasses'
-			)
-		);
+		if( !$this->mOldRev->getPrevious() ) {
+			$prevlink = '&#160;';
+		} else {
+			$prevlink = $sk->link(
+				$this->mTitle,
+				wfMsgHtml( 'previousdiff' ),
+				array(
+					'id' => 'differences-prevlink'
+				),
+				$query,
+				array(
+					'known',
+					'noclasses'
+				)
+			);
+		}
 
 		# Make "next revision link"
 		$query['diff'] = 'next';
@@ -575,11 +579,8 @@ CONTROL;
 	 * Add style sheets and supporting JS for diff display.
 	 */
 	function showDiffStyle() {
-		global $wgStylePath, $wgStyleVersion, $wgOut;
-		$wgOut->addStyle( 'common/diff.css' );
-
-		// JS is needed to detect old versions of Mozilla to work around an annoyance bug.
-		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$wgStylePath/common/diff.js?$wgStyleVersion\"></script>" );
+		global $wgOut;
+		$wgOut->addModules( 'mediawiki.legacy.diff' );
 	}
 
 	/**
@@ -811,10 +812,34 @@ CONTROL;
 		}
 
 		$n = $this->mTitle->countRevisionsBetween( $oldid, $newid );
-		if ( !$n )
-		return '';
-
-		return wfMsgExt( 'diff-multi', array( 'parseinline' ), $n );
+		if ( !$n ) {
+			return '';
+		} else {
+			global $wgLang;
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			// Actually, the limit is $limit + 1. We do this so we can detect
+			// if there are > 100 authors in a given revision range. If they
+			// are, $limit will be passed to diff-multi-manyusers for l10n.
+			$limit = 100;
+			$res = $dbr->select( 'revision', 'DISTINCT rev_user_text',
+				array(
+					'rev_page = ' . $this->mOldRev->getPage(),
+					'rev_id > ' . $this->mOldRev->getId(),
+					'rev_id < ' . $this->mNewRev->getId()
+				), __METHOD__,
+				array( 'LIMIT' => $limit + 1 )
+			);
+			$numUsers = $dbr->numRows( $res );
+			if( $numUsers > $limit ) {
+				$msg = 'diff-multi-manyusers';
+				$numUsers = $limit;
+			} else {
+				$msg = 'diff-multi';
+			}
+			return wfMsgExt( $msg, array( 'parseinline' ), $wgLang->formatnum( $n ),
+				$wgLang->formatnum( $numUsers ) );
+		}
 	}
 
 

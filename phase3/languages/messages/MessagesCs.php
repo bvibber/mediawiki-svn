@@ -358,7 +358,7 @@ $messages = array(
 'tog-editsection'             => 'Zapnout možnost editace části stránky pomocí odkazu [editovat]',
 'tog-editsectiononrightclick' => 'Zapnout možnost editace části stránky pomocí kliknutí pravým tlačítkem na nadpisy stránky (JavaScript)',
 'tog-showtoc'                 => 'Zobrazovat obsah (na stránkách s více než třemi nadpisy)',
-'tog-rememberpassword'        => 'Zapamatovat si mé přihlášení na tomto počítači (maximálně $1 {{PLURAL:$1|den|dny|dní}})',
+'tog-rememberpassword'        => 'Zapamatovat si mé přihlášení v tomto prohlížeči (maximálně $1 {{PLURAL:$1|den|dny|dní}})',
 'tog-watchcreations'          => 'Přidávat mnou založené stránky ke sledovaným',
 'tog-watchdefault'            => 'Přidávat mnou editované stránky ke sledovaným',
 'tog-watchmoves'              => 'Přidávat přesouvané stránky mezi sledované',
@@ -510,17 +510,6 @@ $messages = array(
 'vector-action-protect'          => 'Zamknout',
 'vector-action-undelete'         => 'Obnovit',
 'vector-action-unprotect'        => 'Odemknout',
-'vector-namespace-category'      => 'Kategorie',
-'vector-namespace-help'          => 'Nápověda',
-'vector-namespace-image'         => 'Soubor',
-'vector-namespace-main'          => 'Stránka',
-'vector-namespace-media'         => 'Stránka souboru',
-'vector-namespace-mediawiki'     => 'Hlášení',
-'vector-namespace-project'       => 'Projektová stránka',
-'vector-namespace-special'       => 'Speciální stránka',
-'vector-namespace-talk'          => 'Diskuse',
-'vector-namespace-template'      => 'Šablona',
-'vector-namespace-user'          => 'Uživatelská stránka',
 'vector-simplesearch-preference' => 'Zapnout rozšířené návrhy hledání (pouze vzhled Vektor)',
 'vector-view-create'             => 'Založit',
 'vector-view-edit'               => 'Editovat',
@@ -826,6 +815,11 @@ Pokud byl účet vytvořen omylem, považujte tuto zprávu za bezpředmětnou.',
 Počkejte chvíli, než to zkusíte znovu.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 'suspicious-userlogout'      => 'Váš požadavek na odhlášení byl odmítnut, neboť to vypadá, že ho poslal rozbitý prohlížeč nebo cachující proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- Nechte tento řádek přesně tak jak je --> <pre>
+# Syntaxe je následující:
+#  * Všechno od znaku „#“ do konce řádku je komentář
+#  * Každý neprázdný řádek je IP adresa, na kterou se nevztahuje rychlostní omezení
+ #</pre> <!-- Nechte tento řádek přesně tak jak je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Odhad síly hesla: $1',
@@ -1260,7 +1254,8 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'compareselectedversions'  => 'Porovnat vybrané verze',
 'showhideselectedversions' => 'Zobrazit/skrýt vybrané revize',
 'editundo'                 => 'zrušit editaci',
-'diff-multi'               => '({{PLURAL:$1|Není zobrazena jedna mezilehlá verze|Nejsou zobrazeny $1 mezilehlé verze|Není zobrazeno $1 mezilehlých verzí}}.)',
+'diff-multi'               => '({{PLURAL:$1|Není zobrazena 1 mezilehlá verze|Nejsou zobrazeny $1 mezilehlé verze|Není zobrazeno $1 mezilehlých verzí}} od {{PLURAL:$2|1 uživatele|$2 uživatelů}}.)',
+'diff-multi-manyusers'     => '(Není zobrazeno $1 mezilehlých verzí od více než $2 {{PLURAL:$2|uživatele|uživatelů}}.)',
 
 # Search results
 'searchresults'                    => 'Výsledky hledání',
@@ -1555,7 +1550,6 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'right-override-export-depth' => 'Exportovat stránky včetně odkazovaných stránek až do hloubky 5',
 'right-sendemail'             => 'Odesílání e-mailů ostatním uživatelům',
 'right-revisionmove'          => 'Přesouvání verzí',
-'right-selenium'              => 'Spouštění testů v Seleniu',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
@@ -1771,7 +1765,7 @@ PICT # různé
 'upload-success-subj'         => 'Načtení úspěšně provedeno!',
 'upload-success-msg'          => 'Soubor vámi načtený z [$2] je dostupný na [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problém s načítaným souborem',
-'upload-failure-msg'          => 'U vámi načítaného souboru se vyskytl problém:
+'upload-failure-msg'          => 'U souboru vámi načítaného z [$2] se vyskytl problém:
 
 $1',
 'upload-warning-subj'         => 'Upozornění k načítání',
@@ -2304,7 +2298,7 @@ Stiskněte tlačítko „zpět“, obnovte stránku, ze které jste přišli a z
 'prot_1movedto2'              => 'Stránka [[$1]] přemístěna na stránku [[$2]]',
 'protect-legend'              => 'Potvrdit zamčení',
 'protectcomment'              => 'Důvod:',
-'protectexpiry'               => 'Čas vypršení',
+'protectexpiry'               => 'Čas vypršení:',
 'protect_expiry_invalid'      => 'Čas vypršení je chybný.',
 'protect_expiry_old'          => 'Čas vypršení již minul.',
 'protect-unchain-permissions' => 'Zpřístupnit další nastavení zámku',

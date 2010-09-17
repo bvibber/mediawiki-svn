@@ -131,6 +131,8 @@ class MysqlInstaller extends DatabaseInstaller {
 	}
 
 	public function preUpgrade() {
+		global $wgDBuser, $wgDBpassword;
+
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			$this->parent->showStatusError( $status );
@@ -142,7 +144,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		# Determine existing default character set
 		if ( $conn->tableExists( "revision" ) ) {
 			$revision = $conn->escapeLike( $this->getVar( 'wgDBprefix' ) . 'revision' );
-			$res = $conn->query( "SHOW TABLE STATUS LIKE '$revision'" );
+			$res = $conn->query( "SHOW TABLE STATUS LIKE '$revision'", __METHOD__ );
 			$row = $conn->fetchObject( $res );
 			if ( !$row ) {
 				$this->parent->showMessage( 'config-show-table-status' );
@@ -178,40 +180,11 @@ class MysqlInstaller extends DatabaseInstaller {
 			$this->parent->showMessage( 'config-mysql-egine-mismatch', $this->getVar( '_MysqlEngine' ), $existingEngine );
 			$this->setVar( '_MysqlEngine', $existingEngine );
 		}
-	}
 
-	/**
-	 * @todo FIXME: this code is just pure crap for compatibility between
-	 * old and new code.
-	 */
-	public function doUpgrade() {
-		global $wgDatabase, $wgDBuser, $wgDBpassword;
-
-		# Some maintenance scripts like wfGetDB()
-		LBFactory::enableBackend();
-		# For do_all_updates()
-		$wgDatabase = $this->db;
 		# Normal user and password are selected after this step, so for now
 		# just copy these two
 		$wgDBuser = $this->getVar( '_InstallUser' );
 		$wgDBpassword = $this->getVar( '_InstallPassword' );
-
-		$ret = true;
-
-		ob_start( array( __CLASS__, 'outputHandler' ) );
-		try {
-			do_all_updates( false, true );
-		} catch ( MWException $e ) {
-			echo "\nAn error occured:\n";
-			echo $e->getText();
-			$ret = false;
-		}
-		ob_end_flush();
-		return $ret;
-	}
-
-	public static function outputHandler( $string ) {
-		return htmlspecialchars( $string );
 	}
 
 	/**
@@ -232,7 +205,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		}
 
 		$engines = array();
-		$res = $conn->query( 'SHOW ENGINES' );
+		$res = $conn->query( 'SHOW ENGINES', __METHOD__ );
 		foreach ( $res as $row ) {
 			if ( $row->Support == 'YES' || $row->Support == 'DEFAULT' ) {
 				$engines[] = $row->Engine;
@@ -442,7 +415,7 @@ class MysqlInstaller extends DatabaseInstaller {
 		$conn = $status->value;
 		$dbName = $this->getVar( 'wgDBname' );
 		if( !$conn->selectDB( $dbName ) ) {
-			$conn->query( "CREATE DATABASE `$dbName`" );
+			$conn->query( "CREATE DATABASE `$dbName`", __METHOD__ );
 			$conn->selectDB( $dbName );
 		}
 		return $status;
@@ -467,26 +440,6 @@ class MysqlInstaller extends DatabaseInstaller {
 			$status->fatal( 'config-install-user-failed', $this->getVar( 'wgDBuser' ), $error );
 		}
 
-		return $status;
-	}
-
-	public function createTables() {
-		global $IP;
-		$status = $this->getConnection();
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
-		
-		if( $this->db->tableExists( 'user' ) ) {
-			$status->warning( 'config-install-tables-exist' );
-			return $status;
-		} 
-		
-		$error = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
-		if( $error !== true ) {
-			$status->fatal( 'config-install-tables-failed', $error );
-		}
 		return $status;
 	}
 

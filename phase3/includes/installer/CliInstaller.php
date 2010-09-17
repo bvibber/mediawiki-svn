@@ -35,7 +35,7 @@ class CliInstaller extends CoreInstaller {
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param $siteName
 	 * @param $admin
 	 * @param $option Array
@@ -59,7 +59,7 @@ class CliInstaller extends CoreInstaller {
 		}
 
 		$this->setVar( 'wgSitename', $siteName );
-		
+
 		if ( $admin ) {
 			$this->setVar( '_AdminName', $admin );
 		}
@@ -96,19 +96,19 @@ class CliInstaller extends CoreInstaller {
 
 	public function endStage( $step, $status ) {
 		$warnings = $status->getWarningsArray();
-		
+
 		if ( !$status->isOk() ) {
 			$this->showStatusMessage( $status );
 			echo "\n";
 			exit;
-		} elseif ( count($warnings) !== 0 ) {
+		} elseif ( count( $warnings ) !== 0 ) {
 			foreach ( $status->getWikiTextArray( $warnings ) as $w ) {
 				$this->showMessage( $w . wfMsg( 'ellipsis' ) .
 					wfMsg( 'word-separator' ) );
 			}
 		}
-		
-		$this->showMessage( wfMsg( 'config-install-step-done' ) ."\n");
+
+		$this->showMessage( wfMsg( 'config-install-step-done' ) . "\n" );
 	}
 
 	public function showMessage( $msg /*, ... */ ) {
@@ -119,5 +119,4 @@ class CliInstaller extends CoreInstaller {
 	public function showStatusMessage( Status $status ) {
 		$this->showMessage( $status->getWikiText() );
 	}
-
 }

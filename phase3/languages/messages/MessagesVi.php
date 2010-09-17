@@ -274,7 +274,7 @@ $messages = array(
 'tog-editsection'             => 'Cho phép sửa đổi đề mục qua liên kết [sửa]',
 'tog-editsectiononrightclick' => 'Cho phép sửa đổi đề mục bằng cách bấm chuột phải trên tên đề mục (JavaScript)',
 'tog-showtoc'                 => 'Hiển thị mục lục (cho trang có trên 3 đề mục)',
-'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trên máy tính này (cho đến $1 ngày)',
+'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trong trình duyệt này (cho đến $1 ngày)',
 'tog-watchcreations'          => 'Tự động theo dõi trang tôi viết mới',
 'tog-watchdefault'            => 'Tự động theo dõi trang tôi sửa',
 'tog-watchmoves'              => 'Tự động theo dõi trang tôi di chuyển',
@@ -426,17 +426,6 @@ $messages = array(
 'vector-action-protect'          => 'Khóa',
 'vector-action-undelete'         => 'Phục hồi',
 'vector-action-unprotect'        => 'Mở khóa',
-'vector-namespace-category'      => 'Thể loại',
-'vector-namespace-help'          => 'Trang trợ giúp',
-'vector-namespace-image'         => 'Tập tin',
-'vector-namespace-main'          => 'Trang',
-'vector-namespace-media'         => 'Trang phương tiện',
-'vector-namespace-mediawiki'     => 'Thông điệp',
-'vector-namespace-project'       => 'Trang dự án',
-'vector-namespace-special'       => 'Trang đặc biệt',
-'vector-namespace-talk'          => 'Thảo luận',
-'vector-namespace-template'      => 'Bản mẫu',
-'vector-namespace-user'          => 'Trang cá nhân',
 'vector-simplesearch-preference' => 'Gợi ý tìm kiếm nâng cao (cần bề ngoài Vectơ)',
 'vector-view-create'             => 'Tạo',
 'vector-view-edit'               => 'Sửa',
@@ -483,7 +472,7 @@ $messages = array(
 'articlepage'       => 'Xem trang nội dung',
 'talk'              => 'Thảo luận',
 'views'             => 'Xem',
-'toolbox'           => 'Thanh công cụ',
+'toolbox'           => 'Công cụ',
 'userpage'          => 'Xem trang thành viên',
 'projectpage'       => 'Xem trang dự án',
 'imagepage'         => 'Xem trang tập tin',
@@ -506,6 +495,9 @@ Có quá nhiều thành viên đang cố gắng xem trang này.
 Xin hãy đợi một lát rồi thử truy cập lại vào trang.
 
 $1',
+'pool-timeout'      => 'Hết thời gian chờ đợi khóa',
+'pool-queuefull'    => 'Đầy hàng đợi khối ứng dụng (pool queue)',
+'pool-errorunknown' => 'Lỗi lạ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Giới thiệu {{SITENAME}}',
@@ -736,6 +728,11 @@ Xin hãy bỏ qua thông báo này nếu tài khoản này không phải do bạ
 Xin hãy đợi chốc lát rồi thử lại.',
 'loginlanguagelabel'         => 'Ngôn ngữ: $1',
 'suspicious-userlogout'      => 'Đã bỏ qua yêu cầu đăng xuất bạn, hình như được gửi từ trình duyệt hoặc máy proxy nhớ đệm hư.',
+'ratelimit-excluded-ips'     => ' #<!-- xin để dòng này đừng thay đổi --> <pre>
+# Cú pháp như sau:
+#   * Mọi thứ bắt đầu bằng ký tự “$” là lời chú thích
+#   * Mọi hàng không trắng là một địa chỉ IP được loại trừ khỏi bị giới hạn tỷ lệ
+ #</pre> <!-- xin để dòng này đừng thay đổi -->',
 
 # JavaScript password checks
 'password-strength'            => 'Độ mạnh ước lượng của mật khẩu: $1',
@@ -1177,7 +1174,8 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'compareselectedversions'  => 'So sánh các bản đã chọn',
 'showhideselectedversions' => 'Hiện/ẩn các phiên bản được chọn',
 'editundo'                 => 'lùi sửa',
-'diff-multi'               => '(Không hiển thị {{PLURAL:$1|một|$1}} phiên bản ở giữa)',
+'diff-multi'               => '(Không hiển thị {{PLURAL:$1||$1}} phiên bản {{PLURAL:$2||của $2 người dùng}} ở giữa)',
+'diff-multi-manyusers'     => '(Không hiển thị {{PLURAL:$1||$1}} phiên bản của hơn $2 người dùng ở giữa)',
 
 # Search results
 'searchresults'                    => 'Kết quả tìm kiếm',
@@ -1474,7 +1472,6 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'right-override-export-depth' => 'Xuất trang kèm theo các trang được liên kết đến với độ sâu tối đa là 5',
 'right-sendemail'             => 'Gửi thư điện tử cho thành viên khác',
 'right-revisionmove'          => 'Di chuyển phiên bản',
-'right-selenium'              => 'Chạy thử nghiệm Selenium',
 
 # User rights log
 'rightslog'      => 'Nhật trình cấp quyền thành viên',
@@ -1571,7 +1568,7 @@ Các trang trong [[Special:Watchlist|danh sách bạn theo dõi]] được '''t�
 
 # Upload
 'upload'                      => 'Tải tập tin lên',
-'uploadbtn'                   => 'Tải lên',
+'uploadbtn'                   => 'Tải tập tin lên',
 'reuploaddesc'                => 'Hủy tác vụ tải và quay lại mẫu tải tập tin lên',
 'upload-tryagain'             => 'Lưu miêu tả tập tin được sửa đổi',
 'uploadnologin'               => 'Chưa đăng nhập',
@@ -2186,7 +2183,7 @@ Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy c�
 'actioncomplete'         => 'Đã thực hiện xong',
 'actionfailed'           => 'Tác động bị thất bại',
 'deletedtext'            => 'Đã xóa “<nowiki>$1</nowiki>”. Xem danh sách các xóa bỏ gần nhất tại $2.',
-'deletedarticle'         => 'đã xóa “$1”',
+'deletedarticle'         => 'đã xóa “[[$1]]”',
 'suppressedarticle'      => 'đã giấu "[[$1]]"',
 'dellogpage'             => 'Nhật trình xóa',
 'dellogpagetext'         => 'Dưới đây là danh sách các trang bị xóa gần đây nhất.',
@@ -2789,12 +2786,12 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'standard.js'    => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Cổ điển */',
 'nostalgia.js'   => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Vọng cổ */',
 'cologneblue.js' => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Xanh Cologne */',
-'monobook.js'    => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng MonoBook */',
-'myskin.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Cá nhân */',
-'chick.js'       => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Chick */',
-'simple.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Đơn giản */',
-'modern.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Hiện đại */',
-'vector.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng hình dạng Vector */',
+'monobook.js'    => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài MonoBook */',
+'myskin.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Cá nhân */',
+'chick.js'       => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Chick */',
+'simple.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Đơn giản */',
+'modern.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Hiện đại */',
+'vector.js'      => '/* Mã JavaScript tại đây sẽ được tải khi người dùng sử dụng bề ngoài Vectơ */',
 
 # Metadata
 'nodublincore'      => 'Máy chủ không hỗ trợ siêu dữ liệu Dublin Core RDF.',

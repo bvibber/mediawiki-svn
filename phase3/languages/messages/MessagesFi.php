@@ -303,7 +303,7 @@ $messages = array(
 'tog-editsection'             => 'Näytä muokkauslinkit jokaisen osion yläpuolella',
 'tog-editsectiononrightclick' => 'Muokkaa osioita napsauttamalla otsikkoa hiiren oikealla painikkeella (JavaScript)',
 'tog-showtoc'                 => 'Näytä sisällysluettelo sivuille, joilla yli 3 otsikkoa',
-'tog-rememberpassword'        => 'Muista kirjautumiseni tällä koneella (enintään $1 {{PLURAL:$1|päivä|päivää}})',
+'tog-rememberpassword'        => 'Muista kirjautumisen tässä selaimessa (enintään $1 {{PLURAL:$1|päivä|päivää}})',
 'tog-watchcreations'          => 'Lisää luomani sivut tarkkailulistalle',
 'tog-watchdefault'            => 'Lisää muokkaamani sivut tarkkailulistalle',
 'tog-watchmoves'              => 'Lisää siirtämäni sivut tarkkailulistalle',
@@ -464,17 +464,6 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'vector-action-protect'          => 'Suojaa',
 'vector-action-undelete'         => 'Palauta',
 'vector-action-unprotect'        => 'Muuta suojausta',
-'vector-namespace-category'      => 'Luokka',
-'vector-namespace-help'          => 'Ohjesivu',
-'vector-namespace-image'         => 'Tiedosto',
-'vector-namespace-main'          => 'Sivu',
-'vector-namespace-media'         => 'Mediasivu',
-'vector-namespace-mediawiki'     => 'Järjestelmäviesti',
-'vector-namespace-project'       => 'Projektisivu',
-'vector-namespace-special'       => 'Toimintosivu',
-'vector-namespace-talk'          => 'Keskustelu',
-'vector-namespace-template'      => 'Malline',
-'vector-namespace-user'          => 'Käyttäjäsivu',
 'vector-simplesearch-preference' => 'Ota käyttöön parannetut hakuehdotukset (vain Vector-ulkoasu)',
 'vector-view-create'             => 'Luo',
 'vector-view-edit'               => 'Muokkaa',
@@ -1479,7 +1468,6 @@ Tässä satunnaisesti tuotettu arvo, jota voit käyttää: $1',
 'right-override-export-depth' => 'Viedä sivuja sisältäen viitatut sivut viiden syvyydellä',
 'right-sendemail'             => 'Lähettää sähköpostia muille käyttäjille',
 'right-revisionmove'          => 'Siirtää versioita',
-'right-selenium'              => 'Suorittaa Selenium-testit',
 
 # User rights log
 'rightslog'      => 'Käyttöoikeusloki',
@@ -2158,7 +2146,7 @@ Palaute ja lisäapu osoitteessa:
 'actionfailed'           => 'Toiminto epäonnistui',
 'deletedtext'            => '”<nowiki>$1</nowiki>” on poistettu.
 Sivulla $2 on lista viimeaikaisista poistoista.',
-'deletedarticle'         => 'poisti sivun $1',
+'deletedarticle'         => 'poisti sivun [[$1]]',
 'suppressedarticle'      => 'häivytti sivun [[$1]]',
 'dellogpage'             => 'Poistoloki',
 'dellogpagetext'         => 'Alla on loki viimeisimmistä poistoista.',
@@ -3307,7 +3295,7 @@ Voit myös muokata listaa [[Special:Watchlist/edit|tavalliseen tapaan]].',
 'version-poweredby-others'         => 'muut',
 'version-license-info'             => 'MediaWiki on vapaa ohjelmisto – voit levittää sitä ja/tai muokata sitä Free Software Foundationin GNU General Public Licensen ehdoilla, joko version 2 tai halutessasi mikä tahansa myöhemmän version mukaisesti.
 
-MediaWikiä levitetään siinä toivossa, että se olisi hyödyllinen, mutta ILMAN MITÄÄN TAKUUTA; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Katso lisätietoja GNU General Public Licensestä.
+MediaWikiä levitetään siinä toivossa, että se olisi hyödyllinen, mutta ilman mitään takuuta; ilman edes hiljaista takuuta kaupallisesti hyväksyttävästä laadusta tai soveltuvuudesta tiettyyn tarkoitukseen. Katso GPL-lisenssistä lisää yksityiskohtia.
 
 Sinun olisi pitänyt saada [{{SERVER}}{{SCRIPTPATH}}/COPYING kopio GNU General Public Licensestä] tämän ohjelman mukana. Jos et saanut kopiota, kirjoita siitä osoitteeseen Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA tai [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html lue se Internetissä].',
 'version-software'                 => 'Asennettu ohjelmisto',

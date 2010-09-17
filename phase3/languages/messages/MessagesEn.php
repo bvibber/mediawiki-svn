@@ -459,7 +459,6 @@ $specialPageAliases = array(
 	'Activeusers'               => array( 'ActiveUsers' ),
 	'RevisionMove'              => array( 'RevisionMove' ),
 	'ComparePages'              => array( 'ComparePages' ),
-	'Selenium'                  => array( 'Selenium' ),
 	'Badtitle'                  => array( 'Badtitle' ),
 );
 
@@ -633,7 +632,7 @@ XHTML id names.
 'tog-editsection'             => 'Enable section editing via [edit] links',
 'tog-editsectiononrightclick' => 'Enable section editing by right clicking on section titles (requires JavaScript)',
 'tog-showtoc'                 => 'Show table of contents (for pages with more than 3 headings)',
-'tog-rememberpassword'        => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'tog-rememberpassword'        => 'Remember my login on this browser (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Add pages I create to my watchlist',
 'tog-watchdefault'            => 'Add pages I edit to my watchlist',
 'tog-watchmoves'              => 'Add pages I move to my watchlist',
@@ -788,17 +787,6 @@ XHTML id names.
 'vector-action-protect'          => 'Protect',
 'vector-action-undelete'         => 'Undelete',
 'vector-action-unprotect'        => 'Unprotect',
-'vector-namespace-category'      => 'Category',
-'vector-namespace-help'          => 'Help page',
-'vector-namespace-image'         => 'File',
-'vector-namespace-main'          => 'Page',
-'vector-namespace-media'         => 'Media page',
-'vector-namespace-mediawiki'     => 'Message',
-'vector-namespace-project'       => 'Project page',
-'vector-namespace-special'       => 'Special page',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Template',
-'vector-namespace-user'          => 'User page',
 'vector-simplesearch-preference' => 'Enable enhanced search suggestions (Vector skin only)',
 'vector-view-create'             => 'Create',
 'vector-view-edit'               => 'Edit',
@@ -870,6 +858,9 @@ Too many users are trying to view this page.
 Please wait a while before you try to access this page again.
 
 $1',
+'pool-timeout'      => 'Timeout waiting for the lock',
+'pool-queuefull'    => 'Pool queue is full',
+'pool-errorunknown' => 'Unknown error',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'About {{SITENAME}}',
@@ -1047,7 +1038,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'yourname'                   => 'Username:',
 'yourpassword'               => 'Password:',
 'yourpasswordagain'          => 'Retype password:',
-'remembermypassword'         => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'remembermypassword'         => 'Remember my login on this browser (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Your domain:',
 'externaldberror'            => 'There was either an authentication database error or you are not allowed to update your external account.',
 'login'                      => 'Log in',
@@ -1146,6 +1137,11 @@ Please wait before trying again.',
 * Italiano|it
 * Nederlands|nl', # do not translate or duplicate this message to other languages
 'suspicious-userlogout'      => 'Your request to log out was denied because it looks like it was sent by a broken browser or caching proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Syntax is as follows:
+#   * Everything from a "#" character to the end of the line is a comment
+#   * Every non-blank line is an IP address excluded from the rate limit
+ #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Estimated password strength: $1',
@@ -1212,7 +1208,7 @@ You may have already successfully changed your password or requested a new tempo
 Your IP address will be recorded in this page's edit history.",
 'anonpreviewwarning'               => "''You are not logged in. Saving will record your IP address in this page's edit history.''",
 'missingsummary'                   => "'''Reminder:''' You have not provided an edit summary.
-If you click Save again, your edit will be saved without one.",
+If you click \"{{int:savearticle}}\" again, your edit will be saved without one.",
 'missingcommenttext'               => 'Please enter a comment below.',
 'missingcommentheader'             => "'''Reminder:''' You have not provided a subject/headline for this comment.
 If you click \"{{int:savearticle}}\" again, your edit will be saved without one.",
@@ -1632,7 +1628,8 @@ Note that using the navigation links will reset this column.',
 'compareselectedversions'  => 'Compare selected revisions',
 'showhideselectedversions' => 'Show/hide selected revisions',
 'editundo'                 => 'undo',
-'diff-multi'               => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} not shown)',
+'diff-multi'               => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by {{PLURAL:$2|one user|$2 users}} not shown)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|One intermediate revision|$1 intermediate revisions}} by more than $2 {{PLURAL:$2|user|users}} not shown)',
 
 # Search results
 'search-summary'                   => '', # do not translate or duplicate this message to other languages
@@ -1653,7 +1650,7 @@ Note that using the navigation links will reset this column.',
 'shown-title'                      => 'Show $1 {{PLURAL:$1|result|results}} per page',
 'viewprevnext'                     => 'View ($1 {{int:pipe-separator}} $2) ($3)',
 'searchmenu-legend'                => 'Search options',
-'searchmenu-exists'                => "'''There is a page named \"[[:\$1]]\" on this wiki'''",
+'searchmenu-exists'                => "'''There is a page named \"[[:\$1]]\" on this wiki.'''",
 'searchmenu-new'                   => "'''Create the page \"[[:\$1]]\" on this wiki!'''",
 'searchmenu-new-nocreate'          => '', # do not translate or duplicate this message to other languages
 'searchhelp-url'                   => 'Help:Contents',
@@ -1958,7 +1955,6 @@ You can also choose to let others contact you through your user or talk page wit
 'right-override-export-depth' => 'Export pages including linked pages up to a depth of 5',
 'right-sendemail'             => 'Send e-mail to other users',
 'right-revisionmove'          => 'Move revisions',
-'right-selenium'              => 'Run Selenium tests',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -2350,7 +2346,7 @@ The description on its [$2 file description page] there is shown below.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
-'mimesearch-summary' => 'This page enables the filtering of files for its MIME type.
+'mimesearch-summary' => 'This page enables the filtering of files for their MIME type.
 Input: contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
 'mimetype'           => 'MIME type:',
 'download'           => 'download',
@@ -2868,9 +2864,9 @@ You can change this page's protection level, but it will not affect the cascadin
 'undeletepagetext'             => 'The following {{PLURAL:$1|page has been deleted but is|$1 pages have been deleted but are}} still in the archive and can be restored.
 The archive may be periodically cleaned out.',
 'undelete-fieldset-title'      => 'Restore revisions',
-'undeleteextrahelp'            => "To restore the page's entire history, leave all checkboxes deselected and click '''''Restore'''''.
-To perform a selective restoration, check the boxes corresponding to the revisions to be restored, and click '''''Restore'''''.
-Clicking '''''Reset''''' will clear the comment field and all checkboxes.",
+'undeleteextrahelp'            => "To restore the page's entire history, leave all checkboxes deselected and click '''''{{int:undeletebtn}}'''''.
+To perform a selective restoration, check the boxes corresponding to the revisions to be restored, and click '''''{{int:undeletebtn}}'''''.
+Clicking '''''{{int:undeletereset}}''''' will clear the comment field and all checkboxes.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|revision|revisions}} archived',
 'undeletehistory'              => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored revisions will appear in the prior history.',

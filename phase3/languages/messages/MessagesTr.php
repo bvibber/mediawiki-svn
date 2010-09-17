@@ -453,17 +453,6 @@ $messages = array(
 'vector-action-protect'          => 'Koru',
 'vector-action-undelete'         => 'Silinmeyi geri al',
 'vector-action-unprotect'        => 'Korumayı kaldır',
-'vector-namespace-category'      => 'Kategori',
-'vector-namespace-help'          => 'Yardım sayfası',
-'vector-namespace-image'         => 'Dosya',
-'vector-namespace-main'          => 'Sayfa',
-'vector-namespace-media'         => 'Ortam sayfası',
-'vector-namespace-mediawiki'     => 'İleti',
-'vector-namespace-project'       => 'Proje sayfası',
-'vector-namespace-special'       => 'Özel sayfa',
-'vector-namespace-talk'          => 'Tartışma',
-'vector-namespace-template'      => 'Şablon',
-'vector-namespace-user'          => 'Kullanıcı sayfası',
 'vector-simplesearch-preference' => 'Gelişmiş arama önerilerini getir (Sadece Vector motifi için)',
 'vector-view-create'             => 'Oluştur',
 'vector-view-edit'               => 'Değiştir',
@@ -589,15 +578,15 @@ $1',
 'red-link-title'          => '$1 (sayfa mevcut değil)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'      => 'Madde',
-'nstab-user'      => 'kullanıcı sayfası',
-'nstab-media'     => 'Medya',
+'nstab-main'      => 'Sayfa',
+'nstab-user'      => 'Kullanıcı sayfası',
+'nstab-media'     => 'Medya sayfası',
 'nstab-special'   => 'Özel sayfa',
 'nstab-project'   => 'Proje sayfası',
 'nstab-image'     => 'Dosya',
 'nstab-mediawiki' => 'Mesaj',
 'nstab-template'  => 'Şablon',
-'nstab-help'      => 'yardım',
+'nstab-help'      => 'Yardım sayfası',
 'nstab-category'  => 'Kategori',
 
 # Main script and global functions
@@ -692,7 +681,7 @@ Web tarayıcınızın önbelleğini temizleyene kadar bazı sayfalar sanki hala 
 Hesabınız açıldı.
 [[Special:Preferences|{{SITENAME}} tercihlerinizi]] değiştirmeyi unutmayın.',
 'yourname'                   => 'Kullanıcı adınız:',
-'yourpassword'               => 'Parolanız',
+'yourpassword'               => 'Parola:',
 'yourpasswordagain'          => 'Parolayı yeniden yaz',
 'remembermypassword'         => 'Girişimi bu bilgisayarda hatırla (en fazla $1 {{PLURAL:$1|gün|gün}} için)',
 'yourdomainname'             => 'Alan adınız',
@@ -1503,7 +1492,6 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'right-override-export-depth' => "Sayfaları, derinlik 5'e kadar bağlantılı sayfalarla beraber, dışa aktar",
 'right-sendemail'             => 'Diğer kullanıcılara e-posta gönder',
 'right-revisionmove'          => 'Revizyonları taşı',
-'right-selenium'              => 'Selenyum testleri yap',
 
 # User rights log
 'rightslog'      => 'Kullanıcı hakları kayıtları',
@@ -1724,7 +1712,7 @@ PICT # misc.
 'upload-success-subj'         => 'Yükleme başarılı',
 'upload-success-msg'          => '[$2] yüklemeniz başarılı oldu. Yüklemeniz burada mevcut: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Yükleme sorunu',
-'upload-failure-msg'          => 'Yüklemenizle ilgili bir sorun var:
+'upload-failure-msg'          => '[$2] adresinden yapılan yüklemenizle ilgili bir sorun var:
 
 $1',
 'upload-warning-subj'         => 'Yükleme uyarısı',
@@ -2218,7 +2206,7 @@ Bu işlemden kaynaklı doğabilecek sonuçların farkında iseniz ve işlemin [[
 'actionfailed'           => 'Eylem başarısız oldu',
 'deletedtext'            => '"<nowiki>$1</nowiki>" silindi.
 Yakın zamanda silinenleri görmek için: $2.',
-'deletedarticle'         => '"$1" silindi',
+'deletedarticle'         => '"[[$1]]" silindi',
 'suppressedarticle'      => '"[[$1]]" bastırıldı',
 'dellogpage'             => 'Silme kayıtları',
 'dellogpagetext'         => 'Aşağıdaki liste son silme kayıtlarıdır.',
@@ -3432,6 +3420,11 @@ Ayrıca [[Special:Watchlist/edit|standart düzenleme sayfasını]] da kullanabil
 'version-license'                  => 'Lisans',
 'version-poweredby-credits'        => "Bu wiki '''[http://www.mediawiki.org/ MediaWiki]''' programı kullanılarak oluşturulmuştur, telif © 2001-$1 $2.",
 'version-poweredby-others'         => 'diğerleri',
+'version-license-info'             => "MediaWiki özgür bir yazılımdır; MediaWiki'yi, Özgür Yazılım Vakfı tarafından yayımlanmış olan GNU Genel Kamu Lisansının 2. veya (seçeceğiniz) daha sonraki bir sürümünün koşulları altında yeniden dağıtabilir ve/veya değiştirebilirsiniz.
+
+MediaWiki yazılımı faydalı olacağı ümidiyle dağıtılmaktadır; ancak kastedilen SATILABİLİRLİK veya BELİRLİ BİR AMACA UYGUNLUK garantisi hariç HİÇBİR GARANTİSİ YOKTUR. Daha fazla ayrıntı için GNU Genel Kamu Lisansı'na bakınız.
+
+Bu programla birlikte [{{SERVER}}{{SCRIPTPATH}}/COPYING GNU Genel Kamu Lisansının bir kopyasını] da edinmiş olmalısınız; eğer edinmediyseniz, Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA adresine yazın veya [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html lisansı çevrim içi olarak okuyun].",
 'version-software'                 => 'Yüklü yazılım',
 'version-software-product'         => 'Ürün',
 'version-software-version'         => 'Versiyon',

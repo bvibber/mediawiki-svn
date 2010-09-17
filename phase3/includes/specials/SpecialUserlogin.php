@@ -272,7 +272,7 @@ class LoginForm {
 		# Request forgery checks.
 		if ( !self::getCreateaccountToken() ) {
 			self::setCreateaccountToken();
-			$this->mainLoginForm( wfMsgExt( 'nocookiesnew', array( 'parseinline' ) ) );;
+			$this->mainLoginForm( wfMsgExt( 'nocookiesnew', array( 'parseinline' ) ) );
 			return false;
 		}
 
@@ -892,7 +892,7 @@ class LoginForm {
 	}
 
 	/** */
-	function userNotPrivilegedMessage($errors) {
+	function userNotPrivilegedMessage( $errors ) {
 		global $wgOut;
 
 		$wgOut->setPageTitle( wfMsg( 'permissionserrors' ) );

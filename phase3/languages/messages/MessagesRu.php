@@ -13,6 +13,7 @@
  * @author AlexSm
  * @author Alexander Sigachov (alexander.sigachov@gmail.com)
  * @author Amikeco
+ * @author Assele
  * @author Chilin
  * @author Claymore
  * @author DCamer
@@ -37,6 +38,7 @@
  * @author MaxSem
  * @author Putnik
  * @author Sk
+ * @author TarzanASG
  * @author Temuri rajavi
  * @author VasilievVV
  * @author Ytsukeng Fyvaprol
@@ -289,7 +291,7 @@ $messages = array(
 'tog-editsection'             => 'Показывать ссылку «править» для каждой секции',
 'tog-editsectiononrightclick' => 'Править секции при правом щелчке мышью на заголовке (JavaScript)',
 'tog-showtoc'                 => 'Показывать оглавление (для страниц более чем с 3 заголовками)',
-'tog-rememberpassword'        => 'Помнить мою учётную запись на этом компьютере (не более $1 {{PLURAL:$1|дня|дней|дней}})',
+'tog-rememberpassword'        => 'Запомнить мой логин в этом браузере (не более $1 {{PLURAL:$1|дня|дней|дней}})',
 'tog-watchcreations'          => 'Добавлять созданные мной страницы в список наблюдения',
 'tog-watchdefault'            => 'Добавлять изменённые мной страницы в список наблюдения',
 'tog-watchmoves'              => 'Добавлять переименованные мной страницы в список наблюдения',
@@ -439,17 +441,6 @@ $messages = array(
 'vector-action-protect'          => 'Защитить',
 'vector-action-undelete'         => 'Восстановить',
 'vector-action-unprotect'        => 'Снять защиту',
-'vector-namespace-category'      => 'Категория',
-'vector-namespace-help'          => 'Справочная страница',
-'vector-namespace-image'         => 'Файл',
-'vector-namespace-main'          => 'Страница',
-'vector-namespace-media'         => 'Медиа-страница',
-'vector-namespace-mediawiki'     => 'Сообщение',
-'vector-namespace-project'       => 'О проекте',
-'vector-namespace-special'       => 'Служебная страница',
-'vector-namespace-talk'          => 'Обсуждение',
-'vector-namespace-template'      => 'Шаблон',
-'vector-namespace-user'          => 'Страница участника',
 'vector-simplesearch-preference' => 'Включить расширенные поисковые подсказки (только для оформления «Векторное»)',
 'vector-view-create'             => 'Создание',
 'vector-view-edit'               => 'Правка',
@@ -519,6 +510,9 @@ $messages = array(
 Пожалуйста, подождите и повторите попытку обращения к странице позже.
 
 $1',
+'pool-timeout'      => 'Истекло время ожидания блокировки',
+'pool-queuefull'    => 'Накопитель запросов полон',
+'pool-errorunknown' => 'Неизвестная ошибка',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Описание {{grammar:genitive|{{SITENAME}}}}',
@@ -527,7 +521,7 @@ $1',
 'copyrightpage'        => '{{ns:project}}:Авторское право',
 'currentevents'        => 'Текущие события',
 'currentevents-url'    => 'Project:Текущие события',
-'disclaimers'          => 'Отказ от ответственности',
+'disclaimers'          => 'Отказы от ответственности',
 'disclaimerpage'       => 'Project:Отказ от ответственности',
 'edithelp'             => 'Справка по редактированию',
 'edithelppage'         => 'Help:Справка по редактированию',
@@ -763,6 +757,11 @@ $2',
 Пожалуйста, подождите, перед тем, как попробовать снова.',
 'loginlanguagelabel'         => 'Язык: $1',
 'suspicious-userlogout'      => 'Ваш запрос на завершение сеанса отклонён, так как он похож на запрос, отправленный некорректным браузером или кэширующим прокси.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Описание синтаксиса:
+#   * Строки, начинающиеся с символа "#", считаются комментариями
+#   * Каждая непустая строка считается IP-адресом, на который не действуют ограничения скорости
+ #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Оценка стойкости пароля: $1',
@@ -804,7 +803,7 @@ $2',
 'headline_tip'    => 'Заголовок 2-го уровня',
 'math_sample'     => 'Вставьте сюда формулу',
 'math_tip'        => 'Математическая формула (формат LaTeX)',
-'nowiki_sample'   => 'Вставляйте сюда неотформатированный текст.',
+'nowiki_sample'   => 'Вставьте сюда текст, который не нужно форматировать',
 'nowiki_tip'      => 'Игнорировать вики-форматирование',
 'image_tip'       => 'Встроенный файл',
 'media_tip'       => 'Ссылка на медиа-файл',
@@ -1206,7 +1205,8 @@ $1",
 'compareselectedversions'  => 'Сравнить выбранные версии',
 'showhideselectedversions' => 'Показать/скрыть выбранные версии',
 'editundo'                 => 'отменить',
-'diff-multi'               => '({{PLURAL:$1|$1 промежуточная версия не показана|$1 промежуточные версии не показаны|$1 промежуточных версий не показаны.}})',
+'diff-multi'               => '({{PLURAL:$1|не показана $1 промежуточная версия|не показаны $1 промежуточные версии|не показаны $1 промежуточных версий}} {{PLURAL:$2|$2 участника|$2 участников|$2 участников}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|не показана $1 промежуточная версия|не показаны $1 промежуточные версии|не показаны $1 промежуточных версий}}, сделанные более чем {{PLURAL:$2|$1 участником|$2 участниками}})',
 
 # Search results
 'searchresults'                    => 'Результаты поиска',
@@ -1503,7 +1503,6 @@ $1",
 'right-override-export-depth' => 'экспортирование страниц, включая связанные страницы с глубиной до 5',
 'right-sendemail'             => 'отправлять электронную почту другим участникам',
 'right-revisionmove'          => 'перенос версий страниц',
-'right-selenium'              => 'запуск проверок Selenium',
 
 # User rights log
 'rightslog'      => 'Журнал прав участника',

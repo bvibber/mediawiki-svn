@@ -40,6 +40,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			# new tables
 			array( 'addTable', 'category',          'patch-category.sql' ),
 			array( 'addTable', 'mwuser',            'patch-mwuser.sql' ),
+			array( 'addTable', 'page',              'patch-page.sql' ),
 			array( 'addTable', 'pagecontent',       'patch-pagecontent.sql' ),
 			array( 'addTable', 'querycachetwo',     'patch-querycachetwo.sql' ),
 			array( 'addTable', 'page_props',        'patch-page_props.sql' ),
@@ -55,6 +56,9 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addTable', 'log_search',        'patch-log_search.sql' ),
 			array( 'addTable', 'l10n_cache',        'patch-l10n_cache.sql' ),
 			array( 'addTable', 'iwlinks',           'patch-iwlinks.sql' ),
+			array( 'addTable', 'msg_resource',      'patch-msg_resource.sql' ),
+			array( 'addTable', 'msg_resource_links','patch-msg_resource_links.sql' ),
+			array( 'addTable', 'module_deps',       'patch-module_deps.sql' ),
 
 			# Needed before new field
 			array( 'convertArchive2' ),
@@ -64,6 +68,9 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgField', 'archive',       'ar_len',               'INTEGER' ),
 			array( 'addPgField', 'archive',       'ar_page_id',           'INTEGER' ),
 			array( 'addPgField', 'archive',       'ar_parent_id',         'INTEGER' ),
+			array( 'addPgField', 'categorylinks', 'cl_sortkey_prefix',    "TEXT NOT NULL DEFAULT ''"),
+			array( 'addPgField', 'categorylinks', 'cl_collation',         "TEXT NOT NULL DEFAULT 0"),
+			array( 'addPgField', 'categorylinks', 'cl_type',              "TEXT NOT NULL DEFAULT 'page'"),
 			array( 'addPgField', 'image',         'img_sha1',             "TEXT NOT NULL DEFAULT ''" ),
 			array( 'addPgField', 'ipblocks',      'ipb_allow_usertalk',   'SMALLINT NOT NULL DEFAULT 0' ),
 			array( 'addPgField', 'ipblocks',      'ipb_anon_only',        'SMALLINT NOT NULL DEFAULT 0' ),
@@ -166,6 +173,7 @@ class PostgresUpdater extends DatabaseUpdater {
 			array( 'addPgIndex', 'image',         'img_sha1',               '(img_sha1)' ),
 			array( 'addPgIndex', 'oldimage',      'oi_sha1',                '(oi_sha1)' ),
 			array( 'addPgIndex', 'page',          'page_mediawiki_title',   '(page_title) WHERE page_namespace = 8' ),
+			array( 'addPgIndex', 'pagelinks',     'pagelinks_title',        '(pl_title)' ),
 			array( 'addPgIndex', 'revision',      'rev_text_id_idx',        '(rev_text_id)' ),
 			array( 'addPgIndex', 'recentchanges', 'rc_timestamp_bot',       '(rc_timestamp) WHERE rc_bot = 0' ),
 			array( 'addPgIndex', 'templatelinks', 'templatelinks_from',     '(tl_from)' ),
@@ -564,7 +572,7 @@ END;
 				wfOut( "Dropping rule \"archive_delete\"\n" );
 				$this->db->query( 'DROP RULE archive_delete ON archive' );
 			}
-			$this->db->sourceFile( archive( 'patch-remove-archive2.sql' ) );
+			$this->applyPatch( 'patch-remove-archive2.sql' );
 		} else {
 			wfOut( "... obsolete table \"archive2\" does not exist\n" );
 		}

@@ -334,7 +334,7 @@ class MessageCache {
 	 */
 	function loadFromDB( $code ) {
 		wfProfileIn( __METHOD__ );
-		global $wgMaxMsgCacheEntrySize, $wgContLanguageCode, $wgAdaptiveMessageCache;
+		global $wgMaxMsgCacheEntrySize, $wgLanguageCode, $wgAdaptiveMessageCache;
 		$dbr = wfGetDB( DB_SLAVE );
 		$cache = array();
 
@@ -347,14 +347,14 @@ class MessageCache {
 		$mostused = array();
 		if ( $wgAdaptiveMessageCache ) {
 			$mostused = $this->getMostUsedMessages();
-			if ( $code !== $wgContLanguageCode ) {
+			if ( $code !== $wgLanguageCode ) {
 				foreach ( $mostused as $key => $value ) $mostused[$key] = "$value/$code";
 			}
 		}
 
 		if ( count( $mostused ) ) {
 			$conds['page_title'] = $mostused;
-		} elseif ( $code !== $wgContLanguageCode ) {
+		} elseif ( $code !== $wgLanguageCode ) {
 			$conds[] = 'page_title' . $dbr->buildLike( $dbr->anyString(), "/$code" );
 		} else {
 			# Effectively disallows use of '/' character in NS_MEDIAWIKI for uses
@@ -411,7 +411,7 @@ class MessageCache {
 			return;
 		}
 
-		list( , $code ) = $this->figureMessage( $title );
+		list( $msg, $code ) = $this->figureMessage( $title );
 
 		$cacheKey = wfMemcKey( 'messages', $code );
 		$this->load( $code );
@@ -451,6 +451,10 @@ class MessageCache {
 			$sidebarKey = wfMemcKey( 'sidebar', $code );
 			$parserMemc->delete( $sidebarKey );
 		}
+		
+		// Update the message in the message blob store
+		global $wgContLang;
+		MessageBlobStore::updateMessage( $wgContLang->lcfirst( $msg ) );
 
 		wfRunHooks( "MessageCacheReplace", array( $title, $text ) );
 
@@ -530,7 +534,7 @@ class MessageCache {
 	 *                   "msg/lang".
 	 */
 	function get( $key, $useDB = true, $langcode = true, $isFullKey = false ) {
-		global $wgContLanguageCode, $wgContLang;
+		global $wgLanguageCode, $wgContLang;
 
 		if ( !is_string( $key ) ) {
 			throw new MWException( "Non-string key given" );
@@ -564,7 +568,7 @@ class MessageCache {
 		# Try the MediaWiki namespace
 		if( !$this->mDisable && $useDB ) {
 			$title = $uckey;
-			if(!$isFullKey && ( $langcode != $wgContLanguageCode ) ) {
+			if(!$isFullKey && ( $langcode != $wgLanguageCode ) ) {
 				$title .= '/' . $langcode;
 			}
 			$message = $this->getMsgFromNamespace( $title, $langcode );
@@ -595,8 +599,8 @@ class MessageCache {
 		# Is this a custom message? Try the default language in the db...
 		if( ($message === false || $message === '-' ) &&
 			!$this->mDisable && $useDB &&
-			!$isFullKey && ($langcode != $wgContLanguageCode) ) {
-			$message = $this->getMsgFromNamespace( $uckey, $wgContLanguageCode );
+			!$isFullKey && ($langcode != $wgLanguageCode) ) {
+			$message = $this->getMsgFromNamespace( $uckey, $wgLanguageCode );
 		}
 
 		# Final fallback
@@ -712,6 +716,7 @@ class MessageCache {
 			$popts = $this->getParserOptions();
 			$popts->setInterfaceMessage( $interface );
 			$popts->setTargetLanguage( $language );
+			$popts->setUserLang( $language );
 			$message = $this->mParser->transformMsg( $message, $popts );
 		}
 		return $message;
@@ -746,6 +751,7 @@ class MessageCache {
 			# Invalidate all local caches
 			$this->mMemc->delete( wfMemcKey( 'messages', $code, 'hash' ) );
 		}
+		$this->mLoadedLanguages = array();
 	}
 
  	/**
@@ -807,15 +813,15 @@ class MessageCache {
 	}
 
 	public function figureMessage( $key ) {
-		global $wgContLanguageCode;
+		global $wgLanguageCode;
 		$pieces = explode( '/', $key );
 		if( count( $pieces ) < 2 )
-			return array( $key, $wgContLanguageCode );
+			return array( $key, $wgLanguageCode );
 
 		$lang = array_pop( $pieces );
 		$validCodes = Language::getLanguageNames();
 		if( !array_key_exists( $lang, $validCodes ) )
-			return array( $key, $wgContLanguageCode );
+			return array( $key, $wgLanguageCode );
 
 		$message = implode( '/', $pieces );
 		return array( $message, $lang );

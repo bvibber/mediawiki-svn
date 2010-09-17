@@ -55,7 +55,7 @@ dj'artìcoj ancó pa scrit",
 'tog-editsection'             => "Abìlita la modìfica dle session con j'anliure [modìfica]",
 'tog-editsectiononrightclick' => 'Abilité la modìfica dle session ën sgnacand-je ansima<br />  al tìtol col tast drit dël rat (a-i va Javascript)',
 'tog-showtoc'                 => "Buta le tàole dij contnù<br />(për j'artìcoj che l'han pì che 3 session)",
-'tog-rememberpassword'        => "↓ Vis-te mia ciav ansima a st'ordinator (për al pi $1 {{PLURAL:$1|di|di}})",
+'tog-rememberpassword'        => 'Vis-te mia ciav ansima a sto browser-sì (për al pi $1 {{PLURAL:$1|di|di}})',
 'tog-watchcreations'          => 'Gionta le pàgine che i creo mi a la lista ëd lòn che im ten-o sot euj',
 'tog-watchdefault'            => "Gionta le pàgine che i modìfico mi a la lista dle ròbe ch'i ten-o sot-euj",
 'tog-watchmoves'              => 'Gionta le pàgine che i tramudo a lòn che im ten-o sot euj',
@@ -206,17 +206,6 @@ dj'artìcoj ancó pa scrit",
 'vector-action-protect'          => 'Protegg',
 'vector-action-undelete'         => 'Arcùpera',
 'vector-action-unprotect'        => 'Sprotegg',
-'vector-namespace-category'      => 'Categorìa',
-'vector-namespace-help'          => "Pàgina d'agiut",
-'vector-namespace-image'         => 'Archivi',
-'vector-namespace-main'          => 'Pàgina',
-'vector-namespace-media'         => 'Pàgina con mojen',
-'vector-namespace-mediawiki'     => 'Mëssagi',
-'vector-namespace-project'       => 'Pàgina ëd proget',
-'vector-namespace-special'       => 'Pàgina special',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Stamp',
-'vector-namespace-user'          => 'Pàgina utent',
 'vector-simplesearch-preference' => "Abilité ij sugeriment d'arserca ameliorà (mach për la pel Vector)",
 'vector-view-create'             => 'Crea',
 'vector-view-edit'               => 'Modìfica',
@@ -286,6 +275,9 @@ Tròpi utent a son an camin ch'a preuvo a lese sta pàgina-sì.
 Për piasì, speta un pòch prima ëd prové torna a vardé sta pàgina-sì.
 
 $1",
+'pool-timeout'      => 'Timeout an spetand ël lock',
+'pool-queuefull'    => "La coa dël pool a l'é pien-a",
+'pool-errorunknown' => 'Eror pa conossù',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A propòsit ëd {{SITENAME}}',
@@ -526,6 +518,11 @@ Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.'
 Për piasì speta prima ëd prové torna.",
 'loginlanguagelabel'         => 'Lenga: $1',
 'suspicious-userlogout'      => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
+'ratelimit-excluded-ips'     => " #<!-- leave this line exactly as it is --> <pre>
+# La sintass a l'é com ch'a ven:
+#   * Minca ròba da un caràter \"#\" a la fin ëd la linia a l'é un coment
+#   * Minca linia pa-bianca a l'é n'adrëssa IP gavà dal lìmit ëd valutassion
+ #</pre> <!-- leave this line exactly as it is -->",
 
 # JavaScript password checks
 'password-strength'            => 'Fòrsa stimà dla ciav: $1',
@@ -974,7 +971,8 @@ Ch'a varda mach che a-i ven-a nen fòra un rabel ant la continuità stòrica.",
 'compareselectedversions'  => 'Paragon-a le version selessionà',
 'showhideselectedversions' => 'Smon-e/stërmé le version selessionà',
 'editundo'                 => "buta 'me ch'a l'era",
-'diff-multi'               => '({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} pa mostrà.)',
+'diff-multi'               => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
+'diff-multi-manyusers'     => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
 
 # Search results
 'searchresults'                    => "Arzultà dl'arserca",
@@ -1274,7 +1272,6 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'right-override-export-depth' => 'Esporté le pàgine ancludend le pàgine colegà fin-a a na profondeur ëd 5',
 'right-sendemail'             => "Mandé un mëssagi an pòsta eletrònica a j'àutri utent",
 'right-revisionmove'          => 'Tramudé le revision',
-'right-selenium'              => 'Fé marcé le preuve Selenium',
 
 # User rights log
 'rightslog'      => "Argistr dij drit ëd j'utent",
@@ -1477,7 +1474,7 @@ Për piasì, ch'a controla l'ampostassion file_uploads.",
 'upload-options'              => 'Opsion për carié',
 'watchthisupload'             => "Ten-e d'euj s'archivi.",
 'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é già stàit carià e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
-'upload-wasdeleted'           => "'''Dosman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
+'upload-wasdeleted'           => "'''Dossman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
 
 Për piasì, ch'a contròla s'a val la pen-a dë felo.
 Për soa comodità, ambelessì a-i son ij dat dla scancelament:",
@@ -1490,7 +1487,7 @@ CIMG # Casio
 DSC_ # Nikon
 DSCF # Fuji
 DSCN # Nikon
-DUW # chèich celular
+DUW # chèich sacociàbil
 IMG # genérich
 JD # Jenoptik
 MGP # Pentax
@@ -1502,47 +1499,47 @@ PICT # vàire marche diferente
 'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià da [$2]:
 
 $1",
-'upload-warning-subj'         => 'Avis che i soma dapress a carié',
+'upload-warning-subj'         => "Avis antramentre ch'as caria",
 'upload-warning-msg'          => "A-i era un problema con lòn ch'a l'ha carià da [$2]. A peul artorné al [[Special:Upload/stash/$1|formolari për carié]] për corege ël problema.",
 
 'upload-proto-error'        => 'Protocòl cioch',
 'upload-proto-error-text'   => "Për carié da dij servent lontan a venta buté dj'anliure ch'as anandio për <code>http://</code> ò pura <code>ftp://</code>.",
 'upload-file-error'         => 'Eror antern',
 'upload-file-error-text'    => "A l'é rivaie n'eror antern dëmentrè che as fasìa n'archivi provisòri ant sël servent.
-Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrador]].",
+Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
 'upload-misc-error'         => "Eror nen identificà antramentr ch'as cariava",
 'upload-misc-error-text'    => "A l'é staie n'eror nen identificà dëmentrè ch'as cariava chèich-còs.
 Për piasì, ch'a varda che soa anliura a sia bon-a e che a l'arsponda e peuj ch'a preuva torna.
-Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:ListUsers/sysop|aministrador]].",
-'upload-too-many-redirects' => "L'URT a l'avìa tròpe rediression",
+Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
+'upload-too-many-redirects' => "L'adrëssa dl'aragnà a l'avìa tròpe ridiression",
 'upload-unknown-size'       => 'Dimension pa conossùa',
-'upload-http-error'         => "A l'é stàit-ie n'eror HTTP: $1.",
+'upload-http-error'         => "A l'é staje n'eror HTTP: $1.",
 
 # img_auth script messages
 'img-auth-accessdenied' => 'Acess negà',
 'img-auth-nopathinfo'   => "PATH_INFO mancant.
-Tò server a l'é pa ampostà për passé sta anformassion-sì.
-A peul esse basà an sij CGI e a peul pa apogé img_auth.
-Varda http://www.mediawiki.org/wiki/Manual:Image_Authorization.",
-'img-auth-notindir'     => "Ël path ciamà a l'é pa ant la directory configurà për carié.",
+Sò servent a l'é nen ampostà për passé costa anformassion.
+Peul desse ch'a sia basà an sij CGI e a peul pa mantnì img_auth.
+Ch'a bèica http://www.mediawiki.org/wiki/Manual:Image_Authorization.",
+'img-auth-notindir'     => "Ël senté ciamà a l'é pa ant ël dossié configurà për carié.",
 'img-auth-badtitle'     => 'As peul pa fesse un tìtol bon për "$1".',
-'img-auth-nologinnWL'   => 'It ses pa intrà e "$1" a l\'é pa ant la whitelist.',
-'img-auth-nofile'       => 'Ël file "$1" a esist pa.',
-'img-auth-isdir'        => 'It ses an mente ch\'it preuve a andé ant na directory "$1".
-As peul mach acede ai file.',
-'img-auth-streaming'    => 'Streaming "$1".',
-'img-auth-public'       => "La funsion d'img_auth.php a l'é ëd dé an output file da na wiki privà.
+'img-auth-nologinnWL'   => 'A l\'é pa intrà ant ël sistema e "$1" a l\'é pa ant la lista bianca.',
+'img-auth-nofile'       => 'L\'archivi "$1" a esist pa.',
+'img-auth-isdir'        => 'A l\'é an camin ch\'a preuve a intré ant un dossié "$1".
+As peul mach avèj acess a j\'archivi.',
+'img-auth-streaming'    => 'Letura an continuà ëd "$1".',
+'img-auth-public'       => "La funsion d'img_auth.php a l'é dë smone dj'archivi da na wiki privà.
 Sta wiki-sì a l'é configurà com na wiki pùblica.
 Për na sicurëssa otimal, img_auth.php a l'é disabilità.",
 'img-auth-noread'       => 'L\'utent a l\'ha pa ij privilegi për lese "$1".',
 
 # HTTP errors
 'http-invalid-url'      => "Adrëssa dl'aragnà pa bon-a: $1.",
-'http-invalid-scheme'   => 'J\'adrësse dl\'aragnà con lë schema "$1" a son pa sostnùe',
-'http-request-error'    => "Arcesta Http falìa për n'eror pa conossù.",
+'http-invalid-scheme'   => 'J\'adrësse dl\'aragnà con ël prefiss "$1" a son pa mantnùe.',
+'http-request-error'    => "L'arcesta Http a l'é falìa për n'eror pa conossù.",
 'http-read-error'       => 'Eror ëd letura HTTP.',
-'http-timed-out'        => "L'arcesta HTTP a l'ha finì ël temp.",
-'http-curl-error'       => "Eror an sërcand l'URL: $1.",
+'http-timed-out'        => "L'arcesta HTTP a l'ha finì sò temp.",
+'http-curl-error'       => "Eror an sërcand d'arcuperé l'adrëssa dl'aragnà: $1.",
 'http-host-unreachable' => "L'anliura a l'arspond pa",
 'http-bad-status'       => "A l'é staje un problema durant l'arcesta HTTP: $1 $2",
 

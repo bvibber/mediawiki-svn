@@ -20,6 +20,7 @@
  * @author දසනැබළයෝ
  * @author නන්දිමිතුරු
  * @author බිඟුවා
+ * @author රොමානිස් සැමුවෙල්
  */
 
 $namespaceNames = array(
@@ -346,31 +347,20 @@ $messages = array(
 'faqpage'        => 'Project:නිතර-අසන-පැන',
 
 # Vector skin
-'vector-action-addsection'   => 'මාතෘකාව එක්කරන්න',
-'vector-action-delete'       => 'මකාදමන්න',
-'vector-action-move'         => 'ගෙනයන්න',
-'vector-action-protect'      => 'ආරක්ෂා කරන්න',
-'vector-action-undelete'     => 'මකාදැමීම අවලංගු කරන්න',
-'vector-action-unprotect'    => 'ආරක්ෂා‍ නොකරන්න',
-'vector-namespace-category'  => 'ප්‍රවර්ගය',
-'vector-namespace-help'      => 'උදවු පිටුව',
-'vector-namespace-image'     => 'ගොනුව',
-'vector-namespace-main'      => 'පිටුව',
-'vector-namespace-media'     => 'මාධ්‍ය පිටුව',
-'vector-namespace-mediawiki' => 'පණිවුඩය',
-'vector-namespace-project'   => 'ව්‍යාපෘති පිටුව',
-'vector-namespace-special'   => 'විශේෂ පිටුව',
-'vector-namespace-talk'      => 'සංවාදය',
-'vector-namespace-template'  => 'සැකිල්ල',
-'vector-namespace-user'      => 'පරිශීලක පිටුව',
-'vector-view-create'         => 'තනන්න',
-'vector-view-edit'           => 'සංස්කරණය කරන්න',
-'vector-view-history'        => 'ඉතිහාසය නරඹන්න',
-'vector-view-view'           => 'කියවන්න',
-'vector-view-viewsource'     => 'මූලාශ්‍රය නරඹන්න',
-'actions'                    => 'කාර්යයන්',
-'namespaces'                 => 'නාමඅවකාශයන්',
-'variants'                   => 'ප්‍රභේද්‍යයන්',
+'vector-action-addsection' => 'මාතෘකාව එක්කරන්න',
+'vector-action-delete'     => 'මකාදමන්න',
+'vector-action-move'       => 'ගෙනයන්න',
+'vector-action-protect'    => 'ආරක්ෂා කරන්න',
+'vector-action-undelete'   => 'මකාදැමීම අවලංගු කරන්න',
+'vector-action-unprotect'  => 'ආරක්ෂා‍ නොකරන්න',
+'vector-view-create'       => 'තනන්න',
+'vector-view-edit'         => 'සංස්කරණය කරන්න',
+'vector-view-history'      => 'ඉතිහාසය නරඹන්න',
+'vector-view-view'         => 'කියවන්න',
+'vector-view-viewsource'   => 'මූලාශ්‍රය නරඹන්න',
+'actions'                  => 'කාර්යයන්',
+'namespaces'               => 'නාමඅවකාශයන්',
+'variants'                 => 'ප්‍රභේද්‍යයන්',
 
 'errorpagetitle'    => 'දෝෂය',
 'returnto'          => '$1 ට නැවත යන්න.',
@@ -1344,7 +1334,7 @@ HTML ටැගයන් පිරික්සන්න.',
 'userrights-lookup-user'         => 'පරිශීලක කණ්ඩායම් කළමනාකරණය කරන්න',
 'userrights-user-editname'       => 'පරිශීලක-නාමයක් ආදායනය කරන්න:',
 'editusergroup'                  => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
-'editinguser'                    => "පරිශීලක  '''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) ගේ පරිශීලක හිමිකම් වෙනස්කිරීම",
+'editinguser'                    => "පරිශීලක  '''[[පරිශීලක:$1|$1]]''' ([[පරිශීලක සාකච්ඡාව:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) ගේ පරිශීලක හිමිකම් වෙනස්කිරීම",
 'userrights-editusergroup'       => 'පරිශීලක කණ්ඩායම් සංස්කරණය කරන්න',
 'saveusergroups'                 => 'පරිශීලක කණ්ඩායම් සුරකින්න',
 'userrights-groupsmember'        => 'ඉදිරි කාණ්ඩයන්හි සාමාජිකයෙකි:',
@@ -1448,7 +1438,6 @@ HTML ටැගයන් පිරික්සන්න.',
 'right-override-export-depth' => '5වන මට්ටම දක්වා සබැඳි පිටු ද සහිතව පිටු නිර්යාත කරන්න',
 'right-sendemail'             => 'අනෙක් පරිශීලකයන්ට ඊ-ලිපි යවන්න',
 'right-revisionmove'          => 'සංශෝධන ඒකාබද්ධ කරන්න',
-'right-selenium'              => 'සෙලිනියම් පරික්ෂාවන් සිදුකරන්න',
 
 # User rights log
 'rightslog'      => 'පරිශීලක හිමිකම් සටහන',

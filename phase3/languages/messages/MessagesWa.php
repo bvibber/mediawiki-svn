@@ -282,6 +282,8 @@ $1",
 'youhavenewmessagesmulti' => 'Vos avoz des noveas messaedjes so $1',
 'editsection'             => 'candjî',
 'editold'                 => 'candjî',
+'editlink'                => 'candjî',
+'viewsourcelink'          => 'Vey côde sourdant',
 'editsectionhint'         => "Candjî l' seccion: $1",
 'toc'                     => 'Ådvins',
 'showtoc'                 => 'mostrer',
@@ -539,6 +541,11 @@ Do côp, vos n' såroz schaper vos candjmints asteure; motoit vos dvrîz copyî 
 'recreate-moveddeleted-warn' => "'''Asteme : vous estoz ki rahive ene pådje k' a stî dsfacêye davance.'''
 
 Tuzez bén s' el fåt vormint rahiver, tot tapant èn ouy so l' istwere del pådje :",
+'edit-gone-missing'          => "Li pàdje n' a sepou esse rapontieye.
+Motoit k' elle a stî tapêye evoye.",
+'edit-conflict'              => 'Ecramiaedje di candjmints.',
+'edit-no-change'             => "Vosse sicrijhaedje n' a nén passé, paski rén n' a stî candjî al modêye di dvant.",
+'edit-already-exists'        => "Li novele pâdje n' a savou esse ahivêye, ca cisse pâdje la egzistêye dedja.",
 
 # Account creation failure
 'cantcreateaccounttitle' => "Vos n' ploz nén ahiver-st on conte.",
@@ -713,6 +720,9 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'grouppage-sysop'      => '{{ns:project}}:Manaedjeus',
 'grouppage-bureaucrat' => '{{ns:project}}:Mwaisse-manaedjeus',
 
+# Rights
+'right-read' => 'Lére les pådjes',
+
 # User rights log
 'rightslog'      => 'Djournå des droets des uzeus',
 'rightslogtext'  => "Çouchal, c' est on djournå des candjmints des droets des uzeus.",
@@ -744,7 +754,7 @@ Les ôtes manaedjeus so ç' wiki ci pôront todi vey li contnou catchî eyet l' 
 'diff'                              => 'dif.',
 'hist'                              => 'ist.',
 'hide'                              => 'Muchyî',
-'show'                              => 'håy.',
+'show'                              => 'håyner',
 'number_of_watching_users_pageview' => '[shuvou pa $1 {{PLURAL:$1|uzeu|uzeus}}]',
 'rc_categories'                     => 'Limiter åzès categoreyes (separer avou des «|»)',
 'rc_categories_any'                 => 'Totes',
@@ -824,8 +834,10 @@ ou co po les sons
 'filehist-help'             => "Clitchîz so ene date ey ene eure po vey kimint ki l' fitchî esteut adon.",
 'filehist-deleteall'        => 'disfacer ttafwait',
 'filehist-deleteone'        => 'disfacer çouci',
+'filehist-current'          => 'asteure',
 'filehist-datetime'         => 'Date/Eure',
 'filehist-user'             => 'Uzeu',
+'filehist-dimensions'       => 'Grandeur',
 'filehist-filesize'         => 'Grandeur do fitchî',
 'filehist-comment'          => 'Comintaire',
 'imagelinks'                => 'Loyéns viè ciste imådje cial',
@@ -920,6 +932,8 @@ ou co po les sons
 'movethispage'            => 'Displaecî cisse pådje',
 'unusedimagestext'        => "Notez tot l' minme ki d' ôtès waibes polèt aveur des loyéns viè ces imådjes la gråcès a ene direke hårdêye. Do côp, ces imådjes aparexhèt chal, mågré k' ele soeyexhe eployeyes.",
 'unusedcategoriestext'    => "Les pådjes di categoreye shuvantes egzistént, mins i n' a nol årtike ni categoreye å dvins.",
+'pager-newer-n'           => '{{PLURAL:$1|pus novea 1|pus noveas $1}}',
+'pager-older-n'           => '{{PLURAL:$1|pus vî 1|pus vîs $1}}',
 
 # Book sources
 'booksources' => 'Sourdants po les lives',
@@ -1061,7 +1075,7 @@ tot [[{{MediaWiki:Policy-url}}|shuvant les rîles]].",
 'actioncomplete'    => 'Fwait',
 'deletedtext'       => 'Li pådje «<nowiki>$1</nowiki>» a stî disfacêye. Loukîz li $2 po ene
 djivêye des dierins disfaçaedjes.',
-'deletedarticle'    => 'pådje «$1» disfacêye',
+'deletedarticle'    => 'pådje «[[$1]]» disfacêye',
 'dellogpage'        => 'Djournå des disfaçaedjes',
 'dellogpagetext'    => "Chal pa dzo c' est l' djivêye des dierins disfaçaedjes.",
 'deletionlog'       => 'djournå des disfaçaedjes',
@@ -1140,6 +1154,7 @@ Loukîz l' [[Special:Log/delete|djournå des disfaçaedjes]] po ene djivêye des
 'mycontris'     => 'Mi ovraedje',
 'contribsub2'   => "Po l' uzeu $1 ($2)",
 'nocontribs'    => "Nou candjmint di trové ki corespondreut a ç' critere la.",
+'month'         => "dispu l' moes (et pus timpe)",
 
 'sp-contributions-talk'       => 'Copiner',
 'sp-contributions-userrights' => 'Manaedjî les liveas des uzeus',
@@ -1406,11 +1421,12 @@ Totes les accions di rcopiaedje eterwiki sont metowes e [[Special:Log/import|djo
 'nextdiff'     => 'Diferinces des candjmints shuvants →',
 
 # Media information
-'mediawarning'   => "'''Asteme''': Ci fitchî chal pôreut esse evirussé, si vos l' enondez vos pôrîz infecter l' sistinme da vosse.",
-'imagemaxsize'   => "Limite pol håynaedje ezès pådjes d' imådje:",
-'thumbsize'      => 'Grandeu po les imådjetes (thumb):',
-'file-info-size' => '($1 × $2 picsels, groxheur do fitchî: $3, del sôre "MIME": $4)',
-'show-big-image' => 'Pus grande imådje',
+'mediawarning'         => "'''Asteme''': Ci fitchî chal pôreut esse evirussé, si vos l' enondez vos pôrîz infecter l' sistinme da vosse.",
+'imagemaxsize'         => "Limite pol håynaedje ezès pådjes d' imådje:",
+'thumbsize'            => 'Grandeu po les imådjetes (thumb):',
+'file-info-size'       => '($1 × $2 picsels, groxheur do fitchî: $3, del sôre "MIME": $4)',
+'show-big-image'       => 'Pus grande imådje',
+'show-big-image-thumb' => '<small>Grandeur di ci prevoeyaedje ci : $1 × $2 picsels</small>',
 
 # Special:NewFiles
 'newimages'             => 'Galreye des nouvès imådjes',

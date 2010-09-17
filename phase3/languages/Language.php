@@ -1600,18 +1600,24 @@ class Language {
 		return strtr( $matches[0], $wikiUpperChars );
 	}
 
+	/**
+	 * Make a string's first character uppercase
+	 */
 	function ucfirst( $str ) {
 		$o = ord( $str );
-		if ( $o < 96 ) {
+		if ( $o < 96 ) { // if already uppercase...
 			return $str;
 		} elseif ( $o < 128 ) {
-			return ucfirst( $str );
+			return ucfirst( $str ); // use PHP's ucfirst()
 		} else {
 			// fall back to more complex logic in case of multibyte strings
 			return $this->uc( $str, true );
 		}
 	}
 
+	/**
+	 * Convert a string to uppercase
+	 */
 	function uc( $str, $first = false ) {
 		if ( function_exists( 'mb_strtoupper' ) ) {
 			if ( $first ) {
@@ -2961,18 +2967,6 @@ class Language {
 	}
 
 	/**
-	 * Does it make sense for lists to be split up into sections based on their
-	 * first letter?  Logogram-based scripts probably want to return false.
-	 *
-	 * TODO: Use this in CategoryPage.php.
-	 *
-	 * @return boolean
-	 */
-	public function usesFirstLettersInLists() {
-		return true;
-	}
-
-	/**
 	 * Given a string, return the logical "first letter" to be used for
 	 * grouping on category pages and so on.  This has to be coordinated
 	 * carefully with convertToSortkey(), or else the sorted list might jump
@@ -2991,7 +2985,6 @@ class Language {
 	 * * [[Ape]]
 	 *
 	 * etc., assuming for the sake of argument that $wgCapitalLinks is false.
-	 * Obviously, this is ignored if usesFirstLettersInLists() is false.
 	 *
 	 * @param string $string UTF-8 string
 	 * @return string UTF-8 string corresponding to the first letter of input
