@@ -1,7 +1,15 @@
 # Looking for WikiEditor or Vector extensions? They've been moved to extensions/WikiEditor and extensions/Vector
-# respectively. These remaining extensions have been ported to be compatible with 1.17. For 1.16 compatible versions
-# (which are no longer under active development but can be used to fixing bugs on existing deployments) please see the
-# branches/usability-initiative-1_16/ or the branches/usability-initiative-1_16/ branch.
+# respectively. These remaining extensions are being ported to either no longer depend on the now remove
+# UsabilityInitiative.php code or to be made compatible with MediaWiki 1.17. For 1.16 compatible versions (which are no
+# longer under active development but can be used to fixing bugs on existing deployments) please see the
+# branches/usability-initiative-1_16/ (which has the latest patches) or the branches/usability-initiative-1_16/ branch.
+
+# PROGRESS ON WORK IN PROGRESS:
+# * ClickTracking -- incomplete/broken
+# * DontSwitchMeOver -- complete, does not depend on MediaWiki 1.17
+# * PrefStats -- incomplete/broken
+# * PrefSwitch -- incomplete/broken
+# * UserDailyContribs -- complete, does not depend on MediaWiki 1.17
 
 # Some lines to add to LocalSettings.php to get these extensions up and running:
 
