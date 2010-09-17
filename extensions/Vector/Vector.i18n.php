@@ -22,3 +22,4 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 	'vector-simplesearch-search' => 'Search',
 	'vector-simplesearch-containing' => 'containing...',
 );
+
