@@ -1,6 +1,6 @@
-// Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
-// For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on@if(@_jscript_version<9){'video audio source track'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
+// Add support for html5 / mwEmbed elements to browsers that do not support the elements natively 
+// For discussion and comments, see: http://ejohn.org/blog/html5-shiv/
+'video audio source track'.replace(/\w+/g, function(n){ document.createElement(n) });
 
 /**
  * @license
@@ -1144,22 +1144,31 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	}	
 	
 	/**
-	 * Mobile Safari has special properties for html5 video::
+	 * Mobile HTML5 has special properties for html5 video::
 	 * 
-	 * NOTE: should be phased out in favor of browser feature detection script
+	 * NOTE: should be phased out in favor of browser feature detection where possible
 	 */
-	mw.isMobileSafari = function() {		
+	mw.isMobileHTML5 = function() {
 		// check mobile safari foce ( for debug )
-		if( mw.getConfig( 'forceMobileSafari' ) || document.URL.indexOf('forceMobileSafari') != -1 ){
+		if( mw.getConfig( 'forceMobileHTML5' ) || document.URL.indexOf('forceMobileHTML5') != -1 ){
 			return true;
 		}
-		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
-			(navigator.userAgent.indexOf('iPod') != -1) || 
-			(navigator.userAgent.indexOf('iPad') != -1)) {
+		if (( navigator.userAgent.indexOf('iPhone') != -1) || 
+			( navigator.userAgent.indexOf('iPod') != -1) || 
+			( navigator.userAgent.indexOf('iPad') != -1) ||
+			( mw.isAndroid2() )  
+		) {
 			return true;
 		}
 		return false;
-	}
+	};
+	// Android 2 has some restrictions vs other mobile platforms 
+	mw.isAndroid2 = function(){
+		if ( navigator.userAgent.indexOf('Android 2.') != -1) {
+			return true;
+		}
+		return false;
+	};
 	
 	/**
 	 * Similar to php isset function checks if the variable exists. Does a safe
@@ -1185,7 +1194,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			}
 		}
 		return true;
-	}
+	};
 	
 	/**
 	 * Wait for a object to be defined and the call the callback
@@ -1268,10 +1277,11 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		
 		if ( window.console ) {
 			window.console.log( string );
-		} else {	
+		} else {
 			/**
 			 * Old IE and non-Firebug debug: ( commented out for now )
-			 */						
+			 */		
+		
 			/*var log_elm = document.getElementById('mv_js_log'); 
 			if(!log_elm) {				
 				document.getElementsByTagName("body")[0].innerHTML += '<div ' +
@@ -1282,7 +1292,9 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			var log_elm = document.getElementById('mv_js_log'); 
 			if(log_elm) {
 				log_elm.value+=string+"\n"; 
-			}*/			
+				// scroll to bottom: 
+				log_elm.scrollTop = log_elm.scrollHeight;
+			}*/
 		}
 	}
 	
@@ -1390,6 +1402,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if( mw.isset( 'window.jQuery' ) 
 			&& mw.getConfig( 'debug' ) === false 
 			&& typeof $j != 'undefined'
+			&& mw.parseUri( url ).protocal != 'file'
 			&& !isCssFile ) 
 		{	
 			$j.getScript( url, myCallback); 		
@@ -1507,18 +1520,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 	};
 	
-	
-	// Local mwEmbedPath variable ( for cache of mw.getMwEmbedPath )
-	var mwEmbedPath = null;
-				
+	mw.getRelativeMwEmbedPath = function(){
+		return mw.getMwEmbedPath(true);
+	};		
 	/**
 	 * Get the path to the mwEmbed folder
 	 */
-	mw.getMwEmbedPath = function() {
-		if ( mwEmbedPath ) {
-			return mwEmbedPath;
-		}	
-			
+	mw.getMwEmbedPath = function( relativePath ) {			
 		// Get mwEmbed src:
 		var src = mw.getMwEmbedSrc();
 		var mwpath = null;
@@ -1539,7 +1547,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if( src.indexOf( 'ResourceLoader.php' ) !== -1 ) {
 			mwpath = src.substr( 0, src.indexOf( 'ResourceLoader.php' ) );			
 		}	
-		
+			
 		// For static packages mwEmbed packages start with: "mwEmbed-"
 		if( src.indexOf( 'mwEmbed-' ) !== -1 && src.indexOf( '-static' ) !== -1 ) {
 			mwpath = src.substr( 0, src.indexOf( 'mwEmbed-' ) );
@@ -1552,8 +1560,10 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		
 		// Update the cached var with the absolute path:
-		mwEmbedPath = mw.absoluteUrl( mwpath )	;			
-		return mwEmbedPath;
+		if( !relativePath ){
+			mwpath = mw.absoluteUrl( mwpath )	;
+		}
+		return mwpath;
 	}
 	
 	/**
@@ -1823,28 +1833,36 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * 	from a relative path
 	 * @return {String} absolute url
 	 */
-	mw.absoluteUrl = function( src, contextUrl ) {
+mw.absoluteUrl = function( src, contextUrl ) {
 		
 		var parsedSrc =  mw.parseUri( src );		
+
 		// Source is already absolute return:
 		if( parsedSrc.protocol != '') {
 			return src;				
 		}
 		
 		// Get parent Url location the context URL
-		if( contextUrl ) {	
-			var parsedUrl = mw.parseUri( contextUrl );			
-		} else {
-			var parsedUrl = mw.parseUri( document.URL );
+		if( !contextUrl ) {	
+			contextUrl = document.URL;
+		}		
+		var parsedUrl = mw.parseUri( contextUrl );	
+	
+		// Check for IE local file that does not flip the slashes 	
+		if( parsedUrl.directory == '' && parsedUrl.protocol == 'file' ){			
+			// pop off the file
+			var fileUrl = contextUrl.split( '\\');
+			fileUrl.pop();
+			return 	fileUrl.join('\\') + '\\' + src;		
 		}
-		
+
 		// Check for leading slash:
 		if( src.indexOf( '/' ) === 0 ) {
 			return parsedUrl.protocol + '://' + parsedUrl.authority + src;
-		}else{
+		}else{			
 			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
 		}
-	};	
+	};
 	/**
 	 * Check if a given source string is likely a url   
 	 * 
@@ -2164,11 +2182,18 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			} );
 		}		
 		function addLocalSettings(){
-			mw.log("Load loacal settings")
-			mw.load( 'localSettings.js', function(){
+			var continueCallback = function(){
 				// Set the mwModuleLoaderCheckFlag flag to true
 				mwModuleLoaderCheckFlag = true;		
 				callback();
+			}
+			if( mw.getConfig( 'LoadLocalSettings') != true ){
+				continueCallback();
+				return; 
+			}
+			mw.log("Load loacal settings")
+			mw.load( 'localSettings.js', function(){
+				continueCallback();
 			})
 		}
 					
