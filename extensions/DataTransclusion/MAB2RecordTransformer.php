@@ -116,7 +116,7 @@ class MAB2RecordTransformer extends RecordTransformer {
 		    else if ( count($values) == 1 ) $r[ $f ] = MAB2RecordTransformer::mangleValue( $values[0] );
 		    else {
 			$values = array_unique( $values );
-			$values = array_map( 'MAB2RecordTransformer::mangleValue', $values );
+			$values = array_map( array('MAB2RecordTransformer', 'mangleValue'), $values );
 			$r[ $f ] = join(', ', $values);
 		    }
 		}
