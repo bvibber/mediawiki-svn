@@ -246,6 +246,7 @@
 				if ( config.userID.length == 32 ) {
 					requestData.aaanontoken = config.userID;
 				}
+
 				var request = $.ajax( {
 					url: wgScriptPath + '/api.php',
 					data: requestData,
@@ -259,8 +260,12 @@
 			},
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
+				if (data.error) {
+					alert(data.error.code);
+				}
+				
 				// add the correct data to the markup
-				if ( data.query.articleassessment && data.query.articleassessment.length > 0 ) {
+				if ( data.query && data.query.articleassessment && data.query.articleassessment.length > 0 ) {
 					for ( var r in data.query.articleassessment[0].ratings ) {
 						var rating = data.query.articleassessment[0].ratings[r],
 							$rating = $( '#' + rating.ratingdesc ),
