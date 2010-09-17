@@ -1,4 +1,5 @@
 usr/lib/cgi-bin/lib/*py                       /usr/lib/viewvc
+usr/lib/cgi-bin/lib/vcauth/                   /usr/lib/viewvc/
 usr/lib/cgi-bin/lib/vclib/*py                 /usr/lib/viewvc/vclib
 usr/lib/cgi-bin/lib/vclib/bincvs/*py          /usr/lib/viewvc/vclib/bincvs
 usr/lib/cgi-bin/lib/vclib/ccvs/*py            /usr/lib/viewvc/vclib/ccvs
@@ -6,6 +7,7 @@ usr/lib/cgi-bin/lib/vclib/ccvs/rcsparse/*py   /usr/lib/viewvc/vclib/ccvs/rcspars
 usr/lib/cgi-bin/lib/vclib/svn/*py             /usr/lib/viewvc/vclib/svn
 usr/lib/cgi-bin/lib/vclib/svn_ra/*py          /usr/lib/viewvc/vclib/svn_ra
 usr/lib/cgi-bin/bin/*dbadmin                  /usr/lib/viewvc/
+usr/lib/cgi-bin/bin/wsgi/                     /usr/lib/viewvc/
 usr/lib/cgi-bin/templates/                    /etc/viewvc/
 usr/lib/cgi-bin/*.conf                        /etc/viewvc/
 usr/lib/cgi-bin/bin/cgi/viewvc.cgi            /usr/lib/cgi-bin/
