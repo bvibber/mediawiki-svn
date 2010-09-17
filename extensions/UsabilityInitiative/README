@@ -14,27 +14,20 @@
 
 # Some lines to add to LocalSettings.php to get these extensions up and running:
 
-# A system for making it easy for users to opt-in and out of a beta, in this
-# case using vector as their skin and the enhanced toolbar
-# NOTE: This extension may not be very useful for non-WMF wikis
-require_once( "$IP/extensions/UsabilityInitiative/OptIn/OptIn.php" );
-# Always show the link to opt-in in the personal tools - without this, the link
-# to opt-out (while opted in) will still appear (it always does)
-#$wgOptInAlwaysShowPersonalLink = true;
-
-# Shows statistics on when users have started and ended using certain prefs
+# PrefStats collects and displays statistics for when users have started/ended using certain options
 
 require_once("$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php");
 $wgPrefStatsTrackPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
 $wgGroupPermissions['sysop']['prefstats'] = true;
-$wgPrefStatsTimeUnit = 60*60*24;
+$wgPrefStatsTimeUnit = 60 * 60 * 24;
 
-# Track users' contribution counts. ClickTracking (see below) needs this
-# NOTE: This extension may not be very useful for non-WMF wikis
+# UserDailyContribs allows you to track users' contribution totals
+
 require_once( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.php" );
 
-# Track users' clicks in the toolbar and the left nav bar (and possibly other places as well)
-# NOTE: This extension may not be very useful for non-WMF wikis
+# ClickTracking lets you track users' clicks on links/buttons. The current implementation tracks clicks on the
+# navigation bar - the WikiEditor toolbar makes use of this if present
+
 require_once("$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.php");
-# Click tracking is disabled by default. To enable it, use something like:
-#$wgClickTrackThrottle = 10; // Track 1 in every 10 clicks; set to 1 to track all clicks, -1 to disable
+// Track 1 in every 10 clicks; set to 1 to track all clicks, -1 to disable
+$wgClickTrackThrottle = 10;
