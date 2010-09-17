@@ -14,6 +14,6 @@ $messages = array();
  * @author David Raison
  */
 $messages['en'] = array(
-	'qrcode-desc' => 'Generates and adds QR Code png to a wiki page'
+	'qrcode-desc' => 'Generates and adds QR Code images to a wiki page'
 );
 
