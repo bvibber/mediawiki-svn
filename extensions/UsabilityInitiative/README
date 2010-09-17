@@ -6,9 +6,9 @@
 # branches/REL1_16/extensions/UsabilityInitiative branch.
 
 # PROGRESS ON WORK IN PROGRESS:
-# * ClickTracking -- incomplete/broken
+# * ClickTracking -- complete, depends on MediaWiki 1.17
 # * DontSwitchMeOver -- complete, does not depend on MediaWiki 1.17
-# * PrefStats -- incomplete/broken
+# * PrefStats -- complete, does not depend on MediaWiki 1.17
 # * PrefSwitch -- incomplete/broken
 # * UserDailyContribs -- complete, does not depend on MediaWiki 1.17
 
