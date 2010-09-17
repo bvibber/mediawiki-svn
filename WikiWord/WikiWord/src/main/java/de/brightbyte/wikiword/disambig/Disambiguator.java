@@ -169,4 +169,6 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException;
 	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException;
 
+	public boolean exploresAllSequences();
+
 }

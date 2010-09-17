@@ -173,4 +173,8 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 		this.window = window;
 	}
 
+	public boolean exploresAllSequences() {
+		return true; //XXX: really true?... not *all* but still to many?
+	}
+
 }

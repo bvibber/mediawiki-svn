@@ -52,7 +52,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			return features;
 		}
 		
-		public ConceptFeatures<C, Integer> getFeature(int concept) {
+		public ConceptFeatures<C, Integer> getConceptFeatures(int concept) {
 			return getFeatures().get(concept);
 		}
 		
@@ -252,7 +252,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends T>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
+	protected <X extends T>CoherenceDisambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException {
 		LabeledMatrix<C, C> similarities = new MapLabeledMatrix<C, C>(true);
 		FeatureFetcher<C, Integer> features = getFeatureCache(meanings, context); 
 
@@ -570,4 +570,8 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return value;
 	}
 
+	public boolean exploresAllSequences() {
+		return true;
+	}
+	
 }

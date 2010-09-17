@@ -9,7 +9,6 @@ import java.util.Map;
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functor2;
 import de.brightbyte.data.measure.Measure;
-import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -17,16 +16,15 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class PopularityDisambiguator<T extends TermReference, C extends WikiWordConcept> extends AbstractDisambiguator<T, C> {
 	
 	protected Measure<? super C> popularityMeasure;
-	protected Comparator<? super C> popularityComparator;
 	
 	protected Functor.Double weightBooster = SquareBooster.instance; 
 	protected Functor2.Double weigthCombiner = new ProductCombiner(); //NOTE: pop and weight are not in the same scale.
 	
-	public PopularityDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity) {
+	public PopularityDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheCapacity) {
 		this(meaningFetcher, cacheCapacity, WikiWordConcept.theCardinality);
 	}
 	
-	public PopularityDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity, Measure<? super C> popularityMeasure) {
+	public PopularityDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheCapacity, Measure<? super C> popularityMeasure) {
 		super(meaningFetcher, cacheCapacity);
 		
 		this.setPopularityMeasure(popularityMeasure);
@@ -38,7 +36,6 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 
 	public void setPopularityMeasure(Measure<? super C> popularityMeasure) {
 		this.popularityMeasure = popularityMeasure;
-		this.popularityComparator = new Measure.Comparator<C>(popularityMeasure, true);
 	}
 
 	public void setWeightCombiner(Functor2.Double weightCombiner) {
@@ -66,7 +63,7 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends T>Disambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+	protected <X extends T>Disambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		Disambiguation<X, C> best = null;
 		
 		pruneMeaninglessSequences( sequences, meanings );
@@ -83,6 +80,25 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		return best;
 	}
 	
+	protected <X extends T> C getBestMeaning(X term, Map<X, List<? extends C>> meanings, Measure<? super C> measure) {
+		List<? extends C> m = meanings.get(term);
+		if (m==null || m.size()==0) return null;
+		
+		C best = null;
+		double bestPop = 0;
+		
+		for (C c: m) {
+			double pop = measure.measure(c);
+			if ( best==null || pop>bestPop ) {
+				bestPop = pop;
+				best = c;
+			}
+		}
+		
+		C c = m.get(0);
+		return c;
+	}
+	
 	public <X extends T>Disambiguation<X, C> disambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Disambiguation<X, C>(Collections.<X, C>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
@@ -91,12 +107,9 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		int totalPop = 0;
 		
 		for (X t: sequence) {
-			List<? extends C> m = meanings.get(t);
-			if (m==null || m.size()==0) continue;
+			C c = getBestMeaning(t, meanings, popularityMeasure);
+			if ( c==null ) continue;
 			
-			if (m.size()>1) Collections.sort(m, popularityComparator);
-			
-			C c = m.get(0);
 			disambig.put(t, c);
 
 			double pop = popularityMeasure.measure(c);
@@ -111,6 +124,10 @@ public class PopularityDisambiguator<T extends TermReference, C extends WikiWord
 		
 		Disambiguation<X, C> r = new Disambiguation<X, C>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
 		return r;
+	}
+
+	public boolean exploresAllSequences() {
+		return true;
 	}
 
 }
