@@ -97,7 +97,11 @@ class MAB2RecordTransformer extends RecordTransformer {
 
 			if ( !empty( $rec[ $item ] ) ) {
 			    if ( is_array( $rec[ $item ] ) ) {
-				$r[ $field ] = array_merge( $r[ $field ], $rec[ $item ] );
+				if ( empty( $r[ $field ] ) ) {
+				    $r[ $field ] = $rec[ $item ];
+				} else {
+				    $r[ $field ] = array_merge( $r[ $field ], $rec[ $item ] );
+				}
 			    } else {
 				$r[ $field ][] = $rec[ $item ];
 			    }
