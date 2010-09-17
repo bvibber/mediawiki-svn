@@ -1,0 +1,134 @@
+# Galician translation of viewvc's debconf templates
+# This file is distributed under the same license as the viewvc package.
+# Jacobo Tarrio <jtarrio@debian.org>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-04 14:53+0100\n"
+"Last-Translator: Jacobo Tarrio <jtarrio@debian.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Raíces CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Esta configuración especifica as raíces CVS (repositorios) do seu sistema e "
+"asígnalles nomes. Cada raíz debe especificarse mediante un valor \"nome: ruta"
+"\". As distintas raíces deben separarse mediante comas."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "Raices SVN:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Esta configuración especifica as raíces Subversion (repositorios) do seu "
+"sistema e asígnalles nomes. Cada raíz debe especificarse mediante un valor "
+"\"nome: ruta\". As distintas raíces deben separarse mediante comas.<"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Raíz por defecto"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Raíz a amosar se non se escolle unha raíz."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Administrador do repositorio</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Enderezo do administrador dos repositorios:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Este enderezo amósase no pé das páxinas xeradas. Debe ser o enderezo do "
+"mantedor dos repositorios locais (p.ex., <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lista de módulos con acceso prohibido:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Isto debe conter unha lista de módulos do repositorio que non se deben "
+"amosar (nin por defecto nin especificando a súa ruta). Esta configuración "
+"pode consistir nunha simple lista de módulos ou pode complicarse máis:\n"
+"  *) Pódese empregar \"!\" antes dun módulo para indicar que NON está "
+"prohibido.\n"
+"  *) Pódense empregar comodíns coma os do intérprete de ordes. \"*\" encaixa "
+"con calquera secuencia de cero ou máis caracteres, \"?\" encaixa con "
+"calquera carácter, \"[secuencia]\" encaixa con calquera carácter da "
+"secuencia, e \"[!sec]\" encaixa con calquera carácter que non estea na "
+"secuencia."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "¿Permitir xerar arquivos tar automaticamente?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC pode xerar un arquivo tar (.tar.gz) dun repositorio no momento. Esta "
+"opción permite que calquera descargue un arquivo tar do directorio actual."

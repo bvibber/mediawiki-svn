@@ -1,0 +1,3 @@
+usr/lib/cgi-bin/bin/make-database            /usr/lib/viewvc/
+usr/lib/cgi-bin/bin/loginfo-handler          /usr/lib/viewvc/
+usr/lib/cgi-bin/bin/cgi/query.cgi            /usr/lib/cgi-bin/

@@ -1,0 +1,229 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-04 14:42+0100\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "CVS kořeny:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Tímto zadáte všechny kořeny CVS úložišť na vašem systému a přiřadíte jim "
+"jména. Každý kořen musí mít podobu \"jméno: cesta\". Více kořenů můžete "
+"oddělit čárkami."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "SVN kořeny:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Tímto zadáte všechny kořeny Subversion úložišť na vašem systému a přiřadíte "
+"jim jména. Každý kořen musí mít podobu \"jméno: cesta\". Více kořenů můžete "
+"oddělit čárkami."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Výchozí kořen:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Kořen, který se má zobrazovat v případě, že nebyl žádný vybrán."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Správce repositáře</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Adresa správce repositáře:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Tato adresa se zobrazuje v zápatí vygenerovaných stránek. Mělo by jít o "
+"adresu správce místního repositáře (např. <a href=\"mailto:karel@nekde"
+"\">cvsadmin</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Seznam modulů s omezeným přístupem:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Nyní byste měli zadat seznam modulů v úložišti, které by se neměly "
+"zobrazovat (jak při běžném prohlížení, tak i při explicitním zadání cesty). "
+"Konfigurace může být jednoduchý výčet modulů, nebo také poměrně složité "
+"nastavení:\n"
+"  *) \"!\" před jménem modulu explicitně říká, že NENÍ skrytý\n"
+"  *) Také můžete použít běžné shellové zástupné znaky. \"*\" se shoduje s "
+"libovolnou sekvencí nula nebo více znaků, \"?\" se shoduje s jedním znakem, "
+"\"[sekvence]\" se shoduje s libovolným znakem ze sekvence a \"[!sekvence]\" "
+"se shoduje s libovolným znakem, který není obsažen v sekvenci."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Povolit automatické vytváření tar archivů?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC umí za běhu vytvářet tar archivy repositářů. Touto volbou umožníte "
+"stahování tar archivu aktuálního adresáře."
+
+#, fuzzy
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them.  Each root should be given by a "
+#~ "\"name: path\" value.  Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr ""
+#~ "Tímto zadáte všechny kořeny Subversion úložišť na vašem systému a "
+#~ "přiřadíte jim jména. Každý kořen musí mít podobu \"jméno: cesta\". Více "
+#~ "kořenů můžete oddělit čárkami a také je můžete umístit na samostatné "
+#~ "řádky."
+
+#, fuzzy
+#~ msgid "Default of CVS/SVN root."
+#~ msgstr "Výchozí CVS/SVN kořen."
+
+#, fuzzy
+#~ msgid "Please enter your CVS roots:"
+#~ msgstr "Kde se nachází kořeny CVS úložišť?"
+
+#, fuzzy
+#~ msgid "Please enter your SVN roots:"
+#~ msgstr "Kde se nachází kořeny CVS úložišť?"
+
+#, fuzzy
+#~ msgid "Please enter your default root:"
+#~ msgstr "Který kořen je výchozí?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You need to modify httpd configuration for online documents and icons."
+#~ msgstr ""
+#~ "Pro použití online dokumentace a ikon musíte upravit nastavení httpd."
+
+#, fuzzy
+#~ msgid ""
+#~ "The ViewVC package has online documents and icons in </usr/share/viewvc/"
+#~ ">.  If you want to use them, you should modify the httpd configuration "
+#~ "file (</etc/apache/httpd.conf> or similar) like this:\\n\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "In addition, the default templates use the icons in </viewvc/icons/*>, so "
+#~ "they also require this configuration."
+#~ msgstr ""
+#~ "Balíček ViewVC obsahuje online dokumentaci a ikony v /usr/share/viewcvs/. "
+#~ "Chcete-li je používat, musíte upravit konfigurační soubor httpd (např. /"
+#~ "etc/apache/httpd.conf) a přidat řádek jako:\n"
+#~ "  Alias /viewcvs/ /usr/share/viewcvs/\n"
+#~ "Vzhledem k tomu, že výchozí šablony používají ikony z /viewcvs/icons/*, "
+#~ "je toto nastavení téměř povinné."
+
+#, fuzzy
+#~ msgid "Where is your SVN directory containing any number of repositories?"
+#~ msgstr "Kde je rodičovský svn adresář obsahující neomezený počet úložišť?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The 'svn_parent_path' is a directory in which any number of Subversion "
+#~ "repositories may reside.  Rather than force you to add a new entry to "
+#~ "'svn_roots' each time you create a new repository, ViewVC rewards you for "
+#~ "putting all your Subversion repositories in a single parent directory by "
+#~ "allowing you to simply specify that parent directory.  ViewVC will then "
+#~ "notice each Subversion repository in that directory as a new root whose "
+#~ "name is the subdirectory of the parent path in which that repository "
+#~ "lives."
+#~ msgstr ""
+#~ "'svn_parent_path' je adresář, ve kterém může být umístěn libovolný počet "
+#~ "Subversion úložišť. Aby jste nemuseli přidávat novou cestu do 'svn_roots' "
+#~ "pokaždé, když chcete založit nové úložiště, tak vám ViewVC nabízí možnost "
+#~ "umístit všechna Subversion úložiště do jednoho rodičovského adresáře a "
+#~ "zadat tak pouze adresu tohoto rodičovského adresáře. ViewVC pak "
+#~ "automaticky rozpozná všechna zde umístěná úložiště a pojmenuje je podle "
+#~ "adresářů, ve kterých se úložiště nachází."
+
+#~ msgid ""
+#~ "Caution: these names can, of course, clash with names you have defined in "
+#~ "your cvs_roots or svn_roots configuration items.  If this occurs, you can "
+#~ "either rename the offending repository on disk, or grant new names to the "
+#~ "clashing item in cvs_roots or svn_roots."
+#~ msgstr ""
+#~ "Varování: tato jména mohou kolidovat se jmény, která jste zadali v "
+#~ "položkách 'cvs_roots' nebo 'svn_roots'. Pokud se tak stane, můžete buď "
+#~ "přejmenovat úložiště na disku, nebo přejmenovat kolidující položky v "
+#~ "'cvs_roots' a 'svn_roots'."
+
+#~ msgid "Where are your svn roots?"
+#~ msgstr "Kde se nachází kořeny SVN úložišť?"

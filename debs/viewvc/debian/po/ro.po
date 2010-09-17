@@ -1,0 +1,128 @@
+# translation of ro.po to Romanian
+# Romanian translations for PACKAGE package
+# Traducerea în limba română pentru pachetul PACKAGE.
+# Copyright (C) 2007 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Eddy Petrisor <eddy.petrisor@gmail.com>, 2007.
+# Eddy Petrișor <eddy.petrisor@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-08 00:53+0200\n"
+"Last-Translator: Eddy Petrișor <eddy.petrisor@gmail.com>\n"
+"Language-Team: Romanian <debian-l10n-romanian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Rădăcinile CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr "Acestă opţiune precizează fiecare din rădăcinile CVS (depozitele) de pe sistemul dumneavoastră şi asociază nume fiecăreia dintre ele. Fiecare rădăcină trebuie precizată printr-o valoare „nume: cale”. Dacă sunt mai multe rădăcini, se vor separa prin virgule."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "Rădăcinile SVN:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr "Acestă opţiune precizează fiecare din rădăcinile Subversion (depozitele) de pe sistemul dumneavoastră şi asociază nume fiecăreia dintre ele. Fiecare rădăcină trebuie precizată printr-o valoare „nume: cale”. Dacă sunt mai multe rădăcini, se vor separa prin virgule."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Rădăcina implicită:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Rădăcina afişată dacă nu a fost selectată nici o rădăcină."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@undeva\">Administratorul depozitului</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Adresa administratorului depozitului:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Această adresă este afişată în nota de subsol a paginilor generate. Trebuie să fie adresa responsabilului local al depozitului (ex. <a href=\"mailto:cineva@undeva"
+"\">admincvs</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lista modulelor cu acces restricţionat:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Aici este precizează o listă cu module din depozit care nu ar trebui să afişate (implicit sau prin precizare explicită a căii). Acestă configuraţie poate fi o simplă listă de module sau poate fi chiar complexă:\n"
+"  *) „!” poate fi folosit înaintea unui modul pentru a preciza explicit că \n"
+"accesul NU este restricţionat.\n"
+"  *) Pot fi folosite expresiile de expandare în stil consolă. „*” se va potrivi\n"
+"de zero sau mai multe caractere, „?” se va potrivi cu un singur caracter, oricare\n"
+" ar fi acesta, „[secv]” se va potrivi cu orice caracter din secv şi „[!secv]” se va potrivi cu orice caracter care nu este în secv."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Se permite generarea automată a arhivelor?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr "ViewVC poate genera o arhivă (.tar.gz) dintr-un depozit fără a provoca întreruperi. Această opţiune vă va permite (atât dumneavoastră cât şi oricui) să descarce o arhivă a directorului curent."
+

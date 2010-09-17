@@ -1,0 +1,81 @@
+#!/usr/bin/python
+# -*- coding: iso-8859-15 -*-
+#
+# It will be called internally by debconf.
+#
+# 2001 Takuo KITAME <kitame@debian.org>
+# GPLv2
+# Modified for use with ViewVC by David Martínez Moreno
+# 2006,2007 David Martínez Moreno <ender@debian.org>
+#
+# Usage: viewvc-config -k keyname -v value -c config_file
+
+import getopt
+import sys
+import string
+import re
+import ConfigParser
+
+def SetValue(contents, var, value):
+    pattern = re.compile('^(|#)' + var + r'\s*=\s*?.*?$', re.MULTILINE)
+    repl = '%s = %s' % (var, value)
+    return re.sub(pattern, repl, contents)
+
+if __name__ == "__main__":
+    argv = sys.argv
+    getting = 0
+    all = 0
+    section = "general"
+    config_file = "/etc/viewvc/viewvc.conf"
+    opts, args = getopt.getopt(argv[1:], 'k:v:g:s:c:a',
+        ['key=', 'value=', 'get=', 'section=', 'config=', 'all' ])
+    for opt, val in opts:
+        if opt in ('-k', '--key'):
+           key = val
+        elif opt in ('-v', '--value'):
+           value = val
+        elif opt in ('-g', '--get'):
+           getting = 1
+           value = val
+        elif opt in ('-s', '--section'):
+           section = val
+	elif opt in ('-c', '--config'):
+           config_file = val
+	elif opt in ('-a', '--all'):
+           getting = 1
+           all = 1
+
+    if getting:
+        parser = ConfigParser.ConfigParser()
+        parser.read(config_file)
+
+        if all:
+            for opt, val in parser.items(section):
+                print opt + '=' + val    
+        else:
+            if parser.has_option(section, value):
+                print parser.get(section, value)
+        sys.exit(0)
+
+    try:
+        contents = open(config_file, "r").read()
+        try:
+            open(config_file + ".bak", "w").write(contents)
+        except IOError, e:
+            if e[0] == 13:
+                # EACCES: permission denied
+                print("You do not have permission to write file " + config_file + ".bak")
+            print("Unknown error writing file " + config_file + ".bak", IOError, e)
+
+    except IOError, e:
+        print(str(e))
+
+    contents = SetValue(contents, key, value)
+
+    try:
+        open(config_file, "w").write(contents)
+    except IOError, e:
+        if e[0] == 13:
+            # EACCES: permission denied
+            print("You do not have permission to write file " + config_file)
+        print("Unknown error writing file " + config_file, IOError, e)

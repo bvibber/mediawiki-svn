@@ -1,0 +1,182 @@
+# Vietnamese translation for ViewVC.
+# Copyright © 2007 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-1\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-05-31 22:06+0930\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.6.3b1\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Gốc CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Thiết lập này xác định mỗi gốc CVS (kho lưu) nằm trên hệ thống của bạn, cũng "
+"gán tên cho nó. Mỗi gốc nên được xác định bằng giá trị dạng « tên: đường dẫn "
+"». Nhiều gốc nên được định giới bằng dấu phẩy."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "Gốc SVN:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Thiết lập này xác định mỗi gốc SVN (kho lưu) nằm trên hệ thống của bạn, cũng "
+"gán tên cho nó. Mỗi gốc nên được xác định bằng giá trị dạng « tên: đường dẫn "
+"». Nhiều gốc nên được định giới bằng dấu phẩy."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Gốc mặc định:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Gốc cần hiển thị nếu chưa chọn gốc riêng."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:quản_trị@phu\">Quản trị Kho</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Địa chỉ thư của quản trị kho :"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Địa chỉ thư này được hiển thị trong phần chân của mỗi trang đã tạo ra. Nó "
+"phải là địa chỉ thư của nhà duy trì kho cục bộ (v.d. <a href=\"mailto:phu@ba"
+"\">quản trị CVS</a>"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Danh sách các mô-đun cấm truy cập:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Giá trị này nên chứa danh sách các mô-đun trong kho mà không nên được hiển "
+"thị (theo mặc định, hoặc bằng đặc tả đường dẫn riêng). Cấu hình này có thể "
+"là một danh sách mô-đun đơn giản, hoặc nó có thể trở thành hơi phức tạp:\n"
+" • Có thể sử dụng dấu cảm « ! » nằm trước tên mô-đun để hiển thị dứt khoát là "
+"nó KHÔNG PHẢI bị cấm.\n"
+" • Có thể sử dụng biểu thức « glob » kiểu dáng trình bao :\n"
+"\t* \t\tkhớp bất cứ dây nào chứa không hay nhiều ký tự (≥0),\n"
+"\t? \t\tkhớp bất cứ ký tự đơn nào,\n"
+"\t[dãy]\tkhớp bất cứ ký tự nào nằm trong dãy đó, và\n"
+"\t[!dãy] \tkhớp bất cứ ký tự nào không nằm trong dãy đó."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Cho phép tự động tạo ra tarball không?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"Trình ViewVC có khả năng tạo ra một tập tin kho nén dạng .tar (tarball) từ "
+"kho khi yêu cầu. Tùy chọn này cho phép (bạn/mọi người) tải về một tarball "
+"của thư mục hiện thời."
+
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them.  Each root should be given by a "
+#~ "\"name: path\" value.  Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr ""
+#~ "Thiết lập này xác định mỗi gốc Subversion (kho) nằm trên hệ thống của "
+#~ "bạn, cũng gán tên cho nó. Mỗi gốc nên được xác định bằng giá trị dạng « "
+#~ "tên: đường dẫn ». Nên định giới nhiều gốc bằng dấu phẩy, mỗi gốc nằm trên "
+#~ "một dòng riêng."
+
+#~ msgid "Default of CVS/SVN root."
+#~ msgstr "Mặc định của gốc CVS/SVN."
+
+#~ msgid "Please enter your CVS roots:"
+#~ msgstr "Hãy nhập các gốc CVS:"
+
+#~ msgid "Please enter your SVN roots:"
+#~ msgstr "Hãy nhập các gốc SVN:"
+
+#~ msgid "Please enter your default root:"
+#~ msgstr "Hãy nhập gốc mặc định:"
+
+#~ msgid ""
+#~ "You need to modify httpd configuration for online documents and icons."
+#~ msgstr ""
+#~ "Bạn cần phải sửa đổi cấu hình « httpd » cho cả tài liệu lần biểu tượng nằm "
+#~ "trực tuyến ."
+
+#~ msgid ""
+#~ "The ViewVC package has online documents and icons in </usr/share/viewvc/"
+#~ ">.  If you want to use them, you should modify the httpd configuration "
+#~ "file (</etc/apache/httpd.conf> or similar) like this:\\n\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "In addition, the default templates use the icons in </viewvc/icons/*>, so "
+#~ "they also require this configuration."
+#~ msgstr ""
+#~ "Gói ViewVC có một số tài liệu và biểu tượng nằm trực tuyến trong thư mục "
+#~ "« /usr/share/viewvc/ ». Nếu bạn muốn sử dụng chúng, hãy sửa đổi tập tin "
+#~ "cấu hình của trình nền httpd (« /etc/apache/httpd.conf » hay tương tự) như "
+#~ "thế:\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "Hơn nữa, những biểu mẫu mặc định sử dụng những biểu tượng nằm trong « /"
+#~ "viewvc/icons/* », vậy chúng cũng cần thiết cấu hình này."

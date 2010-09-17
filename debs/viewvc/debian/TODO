@@ -1,0 +1,11 @@
+Remaining things to do
+----------------------
+- Make a link to create /usr/bin/viewvc-make-database linking to
+  /usr/lib/viewvc/make-database.
+- Think about packaging mod_python module (remove -X/mod_python/
+  from dh_install).
+- Maybe add current SVN snapshot to lib/viewvc.py __version__ field.
+- Add several other useful parameters to the debconf configuration, as
+  root_parents or use_enscript/use_cvsgraph.
+- Will be necessary to depend on mime-support and configure viewvc with
+  /etc/mime.types as default MIME file?

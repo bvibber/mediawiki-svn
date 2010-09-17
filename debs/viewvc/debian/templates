@@ -1,0 +1,51 @@
+Template: viewvc/cvsroots
+Type: string
+Default: cvs: /var/lib/cvs
+_Description: CVS roots:
+ This setting specifies each of the CVS roots (repositories) on your system and assigns
+ names to them.  Each root should be given by a "name: path" value.  Multiple
+ roots should be separated by commas.
+
+Template: viewvc/svnroots
+Type: string
+Default: svn: /var/lib/svn
+_Description: SVN roots:
+ This setting specifies each of the Subversion roots (repositories)
+ on your system and assigns names to them.  Each root should be given
+ by a "name: path" value.  Multiple roots should be separated by
+ commas.
+
+Template: viewvc/defaultroot
+Type: select
+Choices: ${rootlist}
+_Description: Default root:
+ Root to show if no root was chosen.
+
+Template: viewvc/address
+Type: string
+_Default: <a href="mailto:admin@foo">Repository Admin</a>
+_Description: Repository administrator address:
+ This address is shown in the footer of the generated pages.  It must be the
+ address of the local repository maintainer (e.g. <a
+ href="mailto:foo@bar">cvsadmin</a>).
+
+Template: viewvc/forbidden
+Type: string
+_Description: List of access-forbidden modules:
+ This should contain a list of modules in the repository that should not be
+ displayed (by default or by explicit path specification).  This
+ configuration can be a simple list of modules, or it can get quite
+ complex:
+   *) The "!" can be used before a module to explicitly state that it is
+ NOT forbidden.
+   *) Shell-style "glob" expressions may be used. "*" will match any
+ sequence of zero or more characters, "?" will match any single character,
+ "[seq]" will match any character in seq, and "[!seq]" will match any
+ character not in seq.
+
+Template: viewvc/allow_tar
+Type: boolean
+Default: false
+_Description: Allow automatic tarball generation?
+ ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This
+ option allows (you/anyone) to download a tarball of the current directory.

@@ -1,0 +1,145 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewcvs 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-05 11:23+0100\n"
+"Last-Translator: Michel Grentzinger <mic.grentz@online.fr>\n"
+"Language-Team: French <debian-l10n-french@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Dépôts CVS :"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Ce paramètre définit chacun des dépôts CVS sur votre système et leur "
+"attribue un nom. Chaque entrepôt doit être indiqué sous la forme « nom: "
+"chemin ». Les noms des différents dépôts doivent être séparés par des "
+"virgules."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "Dépôts SVN :"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Ce paramètre définit chacun des depôts Subversion sur votre système et leur "
+"attribue un nom. Chaque depôt doit être indiqué sous la forme « nom: "
+"chemin ». Les noms des différents depôts doivent être séparés par des "
+"virgules."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Depôt par défaut :"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Dépôt à afficher si aucun dépôt n'a été choisi par défaut."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Administrateur du dépôt</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Adresse électronique de l'administrateur :"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Cette adresse sera visible au bas des pages produites. Elle doit "
+"correspondre à l'adresse du responsable du dépôt local (par ex. <a href="
+"\"mailto:foo@bar\">cvsadmin</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Liste des modules dont l'accès doit être restreint :"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Ceci devrait contenir une liste des modules du dépôt qui ne devraient pas "
+"être affichés (soit avec un chemin par défaut, soit avec un chemin "
+"explicitement indiqué). Ce paramètre peut être une simple liste de modules, "
+"ou il peut être plus complexe :\n"
+"  - Le caractère « ! » peut être employé avant un module afin\n"
+"    d'indiquer que son accès n'est PAS interdit.\n"
+"  - Les expressions de type shell « glob » peuvent être utilisées.\n"
+"    Le caractère « * » correspondra à n'importe quelle suite de zéro\n"
+"    ou plusieurs caractères, « ? » correspondra à n'importe quel\n"
+"    caractère unique, « [seq] » correspondra à n'importe quel\n"
+"    caractère dans « seq » et « [!seq] » correspondra à n'importe\n"
+"    quel caractère ne faisant pas partie de « seq »."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Autorisez-vous la création d'archives (« tarball ») ?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC peut produire à la volée une archive (tar.gz) à partir du dépôt. "
+"Cette option permet de télécharger une archive du répertoire courant."

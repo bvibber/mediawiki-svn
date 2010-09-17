@@ -1,0 +1,200 @@
+# Catalan translation of viewcvs debconf template
+# Copyright (c) 2004 Software in the Public Interest, Inc.
+# This file is distributed under the same license as the viewcvs package.
+# Josep Monés i Teixidor <jmones@puntbarra.com>, 2004.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: viewcvs 0.9.2+cvs.1.0.dev.2003.08.26\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2004-02-27 03:17+0100\n"
+"Last-Translator: Josep Monés i Teixidor <jmones@puntbarra.com>\n"
+"Language-Team: Catalan <debian-l10-catalan@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:1001
+#, fuzzy
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Aquest paràmetre especifica cadascuna de les arrels del CVS en el vostre "
+"sistema i els assigna un nom a cadascuna. S'ha d'especificar cada arrel amb "
+"un valor \"nom: camí\". Múltiples arrels s'haurien de separar mitjançant "
+"comes."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr ""
+
+#. Type: string
+#. Description
+#: ../templates:2001
+#, fuzzy
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Aquest paràmetre especifica cadascuna de les arrels del CVS en el vostre "
+"sistema i els assigna un nom a cadascuna. S'ha d'especificar cada arrel amb "
+"un valor \"nom: camí\". Múltiples arrels s'haurien de separar mitjançant "
+"comes."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+#, fuzzy
+msgid "Default root:"
+msgstr "Valor predeterminat de l'arrel del CVS."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr ""
+
+#. Type: string
+#. Default
+#: ../templates:4001
+#, fuzzy
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a·href=\"mailto:cvsadmin@foo\">Administrador del CVS</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+#, fuzzy
+msgid "Repository administrator address:"
+msgstr "Introduïu l'adreça de l'administrador del CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+#, fuzzy
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Aquesta adreça es mostra al peu de les planes generades. Ha de ser l'adreça "
+"del mantenidor local del CVS (p.ex. <a·href=\"mailto:foo@bar\">cvsadmin</a>)"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+#, fuzzy
+msgid "List of access-forbidden modules:"
+msgstr "Hi ha mòduls als quals estigui prohibit l'accés?"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+#, fuzzy
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Aquesta entrada hauria de contenir una llista de mòduls al dipòsit que no "
+"s'haurien de mostrar (ja sigui per defecte o bé especificant-ne "
+"explícitament el camí). Aquest paràmetre pot ser simplement una llista de "
+"mòduls, o una mica més complexe:  *) El caràcter \"!\" es pot utilitzar "
+"davant d'un mòdul per fer explícit que NO està prohibit.  *) Es poden "
+"utilitzar expressions amb comodins de l'estil de les de l'intèrpret "
+"d'ordres, \"*\" admetrà una seqüència de zero o més caràcters, \"?\" admetrà "
+"un sol caràcter, \"[seq]\" admetrà qualsevol caràcter a seq, i \"[!seq]\" "
+"admetrà qualsevol caràcter no present a seq."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+#, fuzzy
+msgid "Allow automatic tarball generation?"
+msgstr "Permeteu la generació d'arxius tar?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+#, fuzzy
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC pot generar arxius tar a partir d'un dipòsit al moment. Aquesta opció "
+"permet la baixada d'un arxiu tar del directori actual."
+
+#, fuzzy
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them.  Each root should be given by a "
+#~ "\"name: path\" value.  Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr ""
+#~ "Aquest paràmetre especifica cadascuna de les arrels del CVS en el vostre "
+#~ "sistema i els assigna un nom a cadascuna. S'ha d'especificar cada arrel "
+#~ "amb un valor \"nom: camí\". Múltiples arrels s'haurien de separar "
+#~ "mitjançant comes."
+
+#, fuzzy
+#~ msgid "Default of CVS/SVN root."
+#~ msgstr "Valor predeterminat de l'arrel del CVS."
+
+#, fuzzy
+#~ msgid "Please enter your CVS roots:"
+#~ msgstr "On hi ha les arrels dels cvs?"
+
+#, fuzzy
+#~ msgid "Please enter your SVN roots:"
+#~ msgstr "On hi ha les arrels dels cvs?"
+
+#, fuzzy
+#~ msgid "Please enter your default root:"
+#~ msgstr "Quina és l'arrel del CVS per defecte?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You need to modify httpd configuration for online documents and icons."
+#~ msgstr ""
+#~ "És necessari modificar la configuració httpd per documents en línia i "
+#~ "icones."
+
+#, fuzzy
+#~ msgid ""
+#~ "The ViewVC package has online documents and icons in </usr/share/viewvc/"
+#~ ">.  If you want to use them, you should modify the httpd configuration "
+#~ "file (</etc/apache/httpd.conf> or similar) like this:\\n\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "In addition, the default templates use the icons in </viewvc/icons/*>, so "
+#~ "they also require this configuration."
+#~ msgstr ""
+#~ "El paquet ViewVC té documents en línia i icones a /usr/share/viewcvs/. Si "
+#~ "voleu utilitzar-lo, hauríeu de modificar el fitxer de configuració de "
+#~ "httpd (/etc/apache/httpd.conf o l'equivalent en el vostre sistema) de la "
+#~ "manera següent:  Alias /viewcvs/ /usr/share/viewcvs/A més, les plantilles "
+#~ "per defecte utilitzen les icones amb el camí /viewcvs/icons/*, així "
+#~ "doncs, aquesta configuració és necessària."
+
+#, fuzzy
+#~ msgid "Where are your svn roots?"
+#~ msgstr "On hi ha les arrels dels cvs?"

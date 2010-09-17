@@ -1,0 +1,7 @@
+viewvc (1.1.7-1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix pending l10n bugs. Debconf translations:
+    - Portuguese. Closes: #489388
+
+ -- Ryan Lane <rlane@wikimedia.org>  Fri, 17 Sept 2010 13:32:01 -0700

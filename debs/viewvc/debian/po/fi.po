@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2007-02-09 02:40+0100\n"
+"PO-Revision-Date: 2008-03-30 22:59+0200\n"
+"Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "CVS-juuret:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Tämä asetus määrittää kaikki järjestelmän CVS-juuret "
+"(versionhallintavarastot) ja nimeää ne. Kukin juuri pitää antaa muodossa "
+"”nimi: polku”. Jos juuria on useampia kuin yksi, ne tulee erottaa pilkuilla."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "SVN-juuret:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Tämä asetus määrittää kaikki järjestelmän Subversion-juuret "
+"(versionhallintavarastot) ja nimeää ne. Kukin juuri pitää antaa muodossa "
+"”nimi: polku”. Jos juuria on useampia kuin yksi, ne tulee erottaa pilkuilla."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Oletusjuuri:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Näytettävä juuri, jos juurea ei ole valittu."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Versionhallinnan ylläpitäjä</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Versionhallinnan ylläpitäjän osoite:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Tämä sähköpostiosoite näytetään luotujen sivujen alatunnisteessa. Sen tulee "
+"olla paikallisen versionhallinnan ylläpitäjän osoite. (Esim. <a href="
+"\"mailto:foo@bar\">cvsadmin</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Kiellettyjen moduulien lista:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Tämän tulisi olla lista versionhallinnan moduuleista, joita ei näytetä (ei "
+"oletuksena eikä annettaessa polku eksplisiittisesti). Tämä asetus voi olla "
+"yksinkertainen lista moduuleista tai se voi olla monimutkainen:\n"
+"  *) Merkki ”!” moduulin edessä tarkoittaa, että se EI ole kielletty.\n"
+"  *) Komentotulkin ”glob”-tyylisiä lausekkeita voidaan käyttää.\n"
+"     ”*” täsmää mihin tahansa nollan tai useamman merkin jonoon ja\n"
+"     ”?” täsmää mihin tahansa yhteen merkkiin. ”[jono]” täsmää mihin\n"
+"     tahansa jonon merkkiin ja ”[!jono]\" täsmää mihin tahansa merkkiin\n"
+"     joka ei ole jonossa."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Sallitaanko automaattinen tar-pallojen luonti?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC voi lennossa luoda tar-pallon (.tar.gz) versionhallinnan varastosta. "
+"Tämä asetus sallii kenen tahansa ladata hakemistojen sisällöt tar-palloina."

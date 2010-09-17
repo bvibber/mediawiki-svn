@@ -1,0 +1,173 @@
+# Portuguese translation of viewvc debconf messages.
+# Copyright (C) 2007 Carlos Lisboa
+# This file is distributed under the same license as the viewvc package.
+# Carlos Lisboa <carloslisboa@gmail.com>, 2007.
+# Carlos Lisboa <carloslisboa@gmail.com>>, 2008.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.5-0.1\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2007-02-09 02:40+0100\n"
+"PO-Revision-Date: 2008-07-05 12:39+0100\n"
+"Last-Translator: Carlos Lisboa <carloslisboa@gmail.com>\n"
+"Language-Team: Portuguese <traduz@debianpt.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Raízes para o CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr "Esta opção especifica cada uma das raízes CVS (repositório) no seu sistema e dá nomes a cada uma delas. A cada raiz deverá ser dado um valor \"nome: caminho\". Várias raízes devem ser separadas por vírgulas."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "raízes SVN:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr "Esta opção especifica cada uma das raízes do Subversion (repositórios) no seu sistema e dá nomes a cada uma delas. A cada raiz deverá ser dado um valor \"nome: caminho\". Várias raízes devem ser separadas por vírgulas."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Raiz por omissão:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Raízes a mostrar caso nenhuma raiz seja escolhida."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Administrador de Repositório</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Endereço do administrador do repositório:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr "Este endereço é mostrado no rodapé das páginas geradas. Deverá ser o endereço do gestor local do repositório. (e.g. <a href=\"mailto:foo@bar\">cvsadmin</a>)"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lista de módulos de proibição de acesso:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Aqui deverá encontrar uma lista de módulos no repositório que não devem ser mostrados (por omissão ou por especificação explícita do caminho). Esta configuração pode ser uma simples lista de módulos, ou pode tornar-se bastante complexa:\n"
+"  *) O \"!\" pode ser usado antes de um módulo para afirmar explicitamente\n"
+"que NÃO está proibido.\n"
+"  *) Expressões do tipo shell \"glob\" pode ser utilizadas. \"*\" irá fazer\n"
+"coincidir qualquer sequência de zero ou mais caracteres, \"?\" irá fazer coincidir qualquer caracter,\"[seq]\" irá fazer coincidir qualquer caractere em seq, e \"[!seq]\" irá fazer coincidir qualquer caractere que não esteja em seq."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Permitir a criação automática de arquivos tarball?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr "O ViewCVS pode criar arquivos tarball (.tar.gz) de um repositório em qualquer altura. Esta opção permite (voçê/qualquer pessoa) fazer o download do arquivo tarball no actual directório."
+
+#~ msgid "Where are your cvs roots?"
+#~ msgstr "Onde se encontra as raízes do seu cvs?"
+
+#~ msgid "Where are your svn roots?"
+#~ msgstr "Onde se encontram as raízes do seu svn?"
+
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them. Each root should be given by a "
+#~ "\"name: path\" value. Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr "Esta opção especifica cada uma das raízes Subversion (repositórios) do seu sistema e atribui-lhes nomes. A cada raiz deverá ser dado um valor \"nome: caminho\". Váras raízes devem ser separadas por vírgulas."
+
+#~ msgid "Where is your svn directory which has any number of repositories?"
+#~ msgstr "Onde se encontra o directório svn com com um qualquer número de repositórios?"
+
+#~ msgid ""
+#~ "The 'svn_parent_path' is a directory in which any number of Subversion "
+#~ "repositories may reside.  Rather than force you to add a new entry to "
+#~ "'svn_roots' each time you create a new repository, ViewCVS rewards you "
+#~ "for putting all your Subversion repositories in a single parent directory "
+#~ "by allowing you to simply specifiy that parent directory.  ViewCVS will "
+#~ "then notice each Subversion repository in that directory as a new root "
+#~ "whose name is the subdirectory of the parent path in which that "
+#~ "repository lives."
+#~ msgstr "O 'svn_parent_path' é um directório em que podem residir um qualquer número de repositórios Subversion.  Em vez de o forçar a adicionar uma nova entrada para o 'svn_roots' de cada vez que criar um novo repositório, o ViewCVS recompensa-o por colocar todos os repositórios num único directório pai, e permitindo que especifique apenas esse directório pai. O ViewCVS irá então verificar cada repositório Subversion nesse directório como sendo uma nova raiz cujo nome será o sub-directório onde esse repositório está."
+
+#~ msgid ""
+#~ "Caution: these names can, of course, clash with names you have defined in "
+#~ "your cvs_roots or svn_roots configuration items.  If this occurs, you can "
+#~ "either rename the offending repository on disk, or grant new names to the "
+#~ "clashing item in cvs_roots or svn_roots."
+#~ msgstr "Cuidado: esses nomes podem, como é claro, chocar com nomes que tenha definido nos items de configuração do seu cvs_roots ou svn_roots. Se tal ocorrer, poderá ou mudar o nome do repositório em conflicto, ou atribuir novos nomes ao item no cvs_roots ou svn_roots que provocou o conflicto."
+
+#~ msgid "Default of CVS/SVN Root."
+#~ msgstr "Raiz CVS/SVN por omissão."
+
+#~ msgid "You need modify httpd configuration for online documents and icons."
+#~ msgstr "Você tem de modificar a configuração do httpd para documentos e ícones online."
+
+#~ msgid ""
+#~ "ViewCVS package has online documents and icons in /usr/share/viewcvs/ If "
+#~ "you want to use it, you should modify configuration file of httpd (/etc/"
+#~ "apache/httpd.conf or so) like,\n"
+#~ "  Alias /viewcvs/ /usr/share/viewcvs/\n"
+#~ "In addition, default templates use icons as /viewcvs/icons/*, so this "
+#~ "configuration is required."
+#~ msgstr ""
+#~ "O pacote ViewCVS possui documentos e ícones online em usr/share/viewcvs/. Se desejar, poderá modificar o ficheiro de configuração do httpd (/etc/apache/httpd.conf ou parecido) com, \n"
+#~ "  Alias /viewcvs/ /usr/share/viewcvs/\n"
+#~ "Além disso, os templates utilizam ícones como /viewcvs/icons/*, por isso esta configuração é necessária."

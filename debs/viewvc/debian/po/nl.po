@@ -1,0 +1,148 @@
+# 
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+# 
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+# 
+#    Developers do not need to manually edit POT or PO files.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-04 14:03+0100\n"
+"Last-Translator: Thijs Kinkhorst <thijs@debian.org>\n"
+"Language-Team: Debian Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "CVS-hoofdmappen:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"Deze instelling beschrijft alle CVS-hoofdmappen (roots, repositories) op uw "
+"systeem en geeft ze een naam. Elke hoofdmap dient te worden opgeven als "
+"\"naam: pad\". Verschillende hoofdmappen dienen te worden gescheiden door "
+"komma's."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "SVN-hoofdmappen:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Deze instelling beschrijft alle Subversion-hoofdmappen (roots, repositories) "
+"op uw systeem en geeft ze een naam. Elke hoofdmap dient te worden opgeven "
+"als \"naam: pad\". Verschillende hoofdmappen dienen te worden gescheiden door "
+"komma's."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Standaard hoofdmap:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Hoofdmap die gebruikt wordt als er geen geselecteerd is."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Repository-beheerder</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Geef het adres van de repository-beheerder:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Dit adres is te zien onderaan de gegenereerde pagina's. Het dient het adres "
+"te zijn van de lokale repositorybeheerder (bv: "
+"<a href=\"mailto:foo@bar\">Repository-beheerder</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lijst van modules waarvoor de toegang verboden is:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"Dit dient een lijst van modules te bevatten die niet mogen worden "
+"weergegeven (zowel standaard als door middel van een expliciet opgegeven "
+"pad). De instelling kan een eenvoudige lijst van modules zijn of het kan "
+"behoorlijk ingewikkeld worden:\n"
+"  *) Een \"!\" kan voor een module geplaatst worden om aan te geven dat\n"
+"     de module expliciet NIET verboden is;\n"
+"  *) Shell-achtige \"glob\" expressies mogen worden gebruikt. \"*\" komt\n"
+"     overeen met een serie van nul of meer karakters, \"?\" met een enkel\n"
+"     karakter, \"[seq]\" met een van de karakters in seq en \"[!seq]\" met "
+"     een van de karakters niet in seq."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Staat u het genereren van tar-ballen toe?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC kan op aanvraag van een bewaarplaats een tar-bal maken. Deze "
+"optie maakt het mogelijk om een tar-bal van de huidige map op te halen."
+

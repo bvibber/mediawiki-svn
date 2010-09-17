@@ -1,0 +1,135 @@
+# Spanish translation of viewvc debconf template.
+# Copyright (c) 2004 Software in the Public Interest, Inc.
+# This file is distributed under the same license as the viewvc package.
+# David Martínez Moreno <ender@debian.org>, 2006.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 0.9.4+svn20060318-1\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:06+0200\n"
+"PO-Revision-Date: 2006-08-14 01:08+0200\n"
+"Last-Translator: David Martínez Moreno <ender@debian.org>\n"
+"Language-Team: Spanish <debian-l10-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "Raíces CVS:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system and assigns "
+"names to them.  Each root should be given by a \"name: path\" value.  "
+"Multiple roots should be separated by commas."
+msgstr ""
+"Este parámetro especifica cada una de las raíces (repositorios) CVS de su sistema y les "
+"asigna un nombre. Cada raíz ha de especificarse en la forma «nombre: ruta». "
+"Para separar varias raíces, utilice comas."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "Raíces SVN:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"Este parámetro especifica cada una de las raíces (repositorios) Subversion de su sistema y les "
+"asigna un nombre. Cada raíz ha de especificarse en la forma «nombre: ruta». "
+"Para separar varias raíces, utilice comas."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Raíz por omisión:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Raíz a mostrar en caso de no especificar ninguna."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Administrador del repositorio</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Introduzca la dirección del administrador de los repositorios:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"Esta dirección aparece en el pie de todas las páginas generadas. Debería apuntar "
+"a la dirección del responsable local del repositorio (p. ej.: <a href=\"mailto:tal@cual\">Administrador local</a>."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lista de módulos de acceso prohibido:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"A continuación se pide la lista de los módulos del repositorios que no deberían "
+"mostrarse (ya sea por omisión o por indicar su ruta explícitamente). Tal lista "
+"puede ser simplemente una lista de módulos, o puede ser algo más complejo:\n"
+"  *) El símbolo «!» puede usarse antes de un módulo para indicar explícitamente\n"
+"     que NO está prohibido.\n"
+"  *) Se pueden utilizar los comodines de tipo «shell»: por ejemplo, el símbolo «*»\n"
+"     coincidirá con cualquier secuencia de cero o más caracteres, «?» coincidirá\n"
+"     con un solo carácter, «[secuencia]» coincidirá con cualquier carácter incluido\n"
+"     en dicha secuencia, y «[!secuencia]» coincidirá con cualquier carácter que no\n"
+"     esté incluido en la secuencia."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "¿Permitir generación automática de archivos tar?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC puede generar un archivo tar (un .tar.gz, en realidad) de un repositorio "
+"en el momento. Esta opción le permite controlar si cualquiera que se conecte al "
+"repositorio puede descargar un archivo tar del directorio en el que se encuentre."

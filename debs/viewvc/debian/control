@@ -1,0 +1,51 @@
+Source: viewvc
+Section: devel
+Priority: optional
+Maintainer: David Martínez Moreno <ender@debian.org>
+Build-Depends-Indep: sharutils, python-dev, docbook-to-man, python-subversion, python-support (>= 0.3)
+Build-Depends: debhelper (>= 5.0.37.2), quilt, po-debconf
+Standards-Version: 3.7.2.1
+
+Package: viewvc
+Architecture: all
+Depends: ${python:Depends}, python-subversion, cvs | subversion, rcs, mime-support, debconf | debconf-2.0, gawk
+Replaces: viewcvs (<< 0.9.4)
+Conflicts: viewcvs (<< 0.9.4)
+Recommends: enscript, apache | httpd
+Suggests: cvsgraph, viewvc-query
+XB-Python-Version: ${python:Versions}
+XS-Python-Version: current
+Description: view CVS/SVN repositories via HTTP
+ The ViewVC (formerly ViewCVS) software was inspired by cvsweb (by Henner
+ Zeller).  ViewVC can browse directories, commit logs, and specific revisions
+ of files.  It can display diffs between versions and show selections of files
+ based on tags or branches.
+ .
+ This version supports Subversion and CVS repositories.
+
+Package: viewcvs
+Architecture: all
+Depends: viewvc
+Description: dummy package to migrate to ViewVC
+ The ViewCVS software was recently renamed to ViewVC.  This package is intented
+ for easy translation to the new ViewVC packages, and can be removed with no
+ ill effect after its installation.
+
+Package: viewvc-query
+Architecture: all
+Depends: viewvc (= ${source:Version}), python-mysqldb, python-egenix-mxdatetime, ${python:Depends}
+Replaces: viewvc (<< 0.9.2-6)
+XB-Python-Version: ${python:Versions}
+XS-Python-Version: current
+Description: utility to query CVS commit database
+ The ViewVC (formerly ViewCVS) software was inspired by cvsweb (by Henner
+ Zeller).  ViewVC can browse directories, commit logs, and specific revisions
+ of files.  It can display diffs between versions and show selections of files
+ based on tags or branches.
+ .
+ This package includes query.cgi, an utility to query a separate CVS commit
+ database.  You can search for multiple matches by typing comma-seperated
+ lists into the text fields.  Regular expressions, and wildcards are also
+ supported.
+ .
+ It needs a standalone MySQL server.

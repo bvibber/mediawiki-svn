@@ -1,0 +1,192 @@
+# Translators, if you are not familiar with the PO format, gettext
+# documentation is worth reading, especially sections dedicated to
+# this format, e.g. by running:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Some information specific to po-debconf are available at
+# /usr/share/doc/po-debconf/README-trans
+# or http://www.debian.org/intl/l10n/po-debconf/README-trans
+# Developers do not need to manually edit POT or PO files.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-04 14:31+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <sv@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "CVS-rötter:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "This setting specifies each of the CVS roots (repositories) on your system and assigns names to them.  Each root should be given by a \"name: path\" value.  Multiple roots should be separated by commas."
+msgstr "Denna inställning anger varenda av de CVS-rötter (förråd) på ditt system och tilldelar namn till dem.  Varje rot ska anges med ett \"namn: sökväg\"-värde. Flera rötter ska separeras med kommatecken."
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "SVN-rötter:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "This setting specifies each of the Subversion roots (repositories) on your system and assigns names to them.  Each root should be given by a \"name: path\" value.  Multiple roots should be separated by commas."
+msgstr "Denna inställning anger varenda av de Subversion-rötter (förråd) på ditt system och tilldelar namn till dem.  Varje rot ska anges med ett \"namn: sökväg\"-värde. Flera rötter ska separeras med kommatecken."
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "Standardrot:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "Rot att visa om ingen rot har valts."
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">Förrådsadministratör</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "Adressen till förrådsadministratören:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "This address is shown in the footer of the generated pages.  It must be the address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar\">cvsadmin</a>)."
+msgstr "Denna adress är den som visas i sidfoten på de genererade sidorna.  Den måste vara adressen till den lokala förrådsadministratören. (t.ex. <a href=\"mailto:foo@bar\">cvsadmin</a>)."
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "Lista över åtkomstförbjudna moduler:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be displayed (by default or by explicit path specification).  This configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, \"[seq]\" will match any character in seq, and \"[!seq]\" will match any character not in seq."
+msgstr ""
+"Denna ska innehålla en lista över moduler i förrådet som inte ska visas (som standard eller genom uttrycklig specifikation av sökvägar). Denna konfiguration kan vara en enkel lista över moduler eller kan vara rätt så komplex:\n"
+"  *) \"!\" kan användas före en modul för att uttryckligen säga att den INTE är förbjuden.\n"
+"  *) Skal-liknande \"glob\"-uttryck kan användas. \"*\" matchar alla\n"
+"sekvenser av inga eller fler tecken, \"?\" kommer att matcha alla ensamma tecken, \"[seq]\" kommer att matcha vilket tecken som helst i seq och \"[!seq]\" matchar vilket tecken inte i seq."
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "Tillåt generering av tar-arkiv?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This option allows (you/anyone) to download a tarball of the current directory."
+msgstr "ViewCVS kan generera ett tar-arkiv från ett förråd när det behövs. Detta alternativ tillåter (dig/någon annan) att hämta ner ett tar-arkiv av den aktuella katalogen."
+
+#, fuzzy
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them.  Each root should be given by a "
+#~ "\"name: path\" value.  Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr ""
+#~ "Denna inställning specificerar varje Subversion rot (repositories) på "
+#~ "ditt system och tilldelar namn till dom. Varje rot ska anges med ett "
+#~ "\"name: path\" värde. Multipla rotar ska separeras med kommatecken och "
+#~ "kan placeras på separata rader."
+
+#, fuzzy
+#~ msgid "Default of CVS/SVN root."
+#~ msgstr "Standard för CVS/SVN-rot."
+
+#, fuzzy
+#~ msgid "Please enter your CVS roots:"
+#~ msgstr "Var är dina CVS-rotmappar?"
+
+#, fuzzy
+#~ msgid "Please enter your SVN roots:"
+#~ msgstr "Var är dina CVS-rotmappar?"
+
+#, fuzzy
+#~ msgid "Please enter your default root:"
+#~ msgstr "Vilken är standard roten?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You need to modify httpd configuration for online documents and icons."
+#~ msgstr ""
+#~ "Du behöver modifera din webserverkonfiguration för online dokument och "
+#~ "ikoner."
+
+#, fuzzy
+#~ msgid ""
+#~ "The ViewVC package has online documents and icons in </usr/share/viewvc/"
+#~ ">.  If you want to use them, you should modify the httpd configuration "
+#~ "file (</etc/apache/httpd.conf> or similar) like this:\\n\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "In addition, the default templates use the icons in </viewvc/icons/*>, so "
+#~ "they also require this configuration."
+#~ msgstr ""
+#~ "ViewCVS-paketet har online dokumentering och ikoner i /usr/share/"
+#~ "viewcvs/. Om du vill använda de bör du modifiera konfigurationsfilen i "
+#~ "httpd (/etc/apache/httpd.conf eller liknande) så här\n"
+#~ "  Alias /viewcvs/ /usr/share/viewcvs/\n"
+#~ "I tillägg så använder standardmallen ikoner som /viewcvs/icons/* så denna "
+#~ "konfiguration är nödvändig."
+#~ msgid "Where are your svn roots?"
+#~ msgstr "Var är dina SVN-rotmappar?"
+#~ msgid "Where is your svn directory which has any number of repositories?"
+#~ msgstr "Var är din SVN-mapp som innehåller alla repositories?"
+#~ msgid ""
+#~ "The 'svn_parent_path' is a directory in which any number of Subversion "
+#~ "repositories may reside.  Rather than force you to add a new entry to "
+#~ "'svn_roots' each time you create a new repository, ViewCVS rewards you "
+#~ "for putting all your Subversion repositories in a single parent directory "
+#~ "by allowing you to simply specifiy that parent directory.  ViewCVS will "
+#~ "then notice each Subversion repository in that directory as a new root "
+#~ "whose name is the subdirectory of the parent path in which that "
+#~ "repository lives."
+#~ msgstr ""
+#~ "'svn_parent_path' är en mapp i vilken alla nummer av Subversion "
+#~ "repositories kan finnas.  Hellre än att tvinga du att lägga till ett nytt "
+#~ "inlägg i 'svn_root' varje gång du skapar ett nytt repository. ViewCVS "
+#~ "belönar dig för att lägga alla dina Subversion repositories i en enda "
+#~ "mapp genom att helt enkelt specificera huvudmappen.  ViewCVS kan då "
+#~ "notera alla Subversion repository i den mappen som en ny rot vars namn i "
+#~ "den undermappen av huvudsökvägen i vilken repository lever."
+#~ msgid ""
+#~ "Caution: these names can, of course, clash with names you have defined in "
+#~ "your cvs_roots or svn_roots configuration items.  If this occurs, you can "
+#~ "either rename the offending repository on disk, or grant new names to the "
+#~ "clashing item in cvs_roots or svn_roots."
+#~ msgstr ""
+#~ "Varning: dessa namn kan, så klart, krocka med namn du har definierat i "
+#~ "din cvs_root eller svn_roots-konfiguration.  Om detta sker, kan du "
+#~ "antingen byta namn på den felnamngivna repository på disken eller ge nya "
+#~ "namn på de felnamngivna i cvs_root eller svn_roots."
+

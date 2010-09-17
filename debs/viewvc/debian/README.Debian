@@ -1,0 +1,44 @@
+viewvc for Debian
+-----------------
+
+  ViewVC is a CGI script in Python that is accessible through
+  
+http://your_hostname/cgi-bin/viewvc.cgi
+
+  Basic configuration can be obtained running 'dpkg-reconfigure viewvc' as root.
+
+  It is worth noting that viewvc does not touch anything of your web server
+configuration, so you will have to add CGI support and whatever other config
+options you need.  For example, if, under Apache2, accessing to the above URL
+shows some Python code instead of the ViewVC pages, you could need to make the
+following link:
+
+/etc/apache2/mods-enabled/cgi.load -> /etc/apache2/mods-available/cgi.load
+
+in order to activate CGI processing.
+
+  You will find the ViewVC online help at the bottom of each page.
+
+
+  Since viewvc 0.9.4+svn20060318-1, with the default configuration viewvc itself
+serves all the help documents, images and style sheets under *docroot* (the path is
+/etc/viewvc/templates/docroot, which is a link pointing to /usr/share/viewvc).  This
+is suboptimal, as you have a slight performance hit, but it allows to ship viewvc
+working out-of-the-box, without the pain of dealing with various web server config
+files.
+
+  If you want to avoid this in order to, for example, cache viewvc images, you will
+need to uncomment 'docroot' directive in /etc/viewvc/viewvc.conf, give it a value,
+and make whatever changes and alias to your webserver configuration you need in order
+to expose /usr/share/viewvc as the value of 'docroot'.  In this moment, every content
+previously served as:
+
+http://localhost/cgi-bin/viewvc.cgi/*docroot*/images/logo.png
+
+becomes:
+
+http://localhost/$DOCROOT/images/logo.png
+
+being $DOCROOT the value of the directive.
+
+ -- David Martínez Moreno <ender@debian.org>  Mon,  7 Aug 2006 16:51:31 +0200

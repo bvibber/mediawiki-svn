@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+# We need to purge old debconf questions that belonged
+# to viewcvs (when it was not a dummy package).
+if [ "$1" = purge ] && [ -e /usr/share/debconf/confmodule ]; then
+        . /usr/share/debconf/confmodule
+        db_purge
+fi
+
+#DEBHELPER#

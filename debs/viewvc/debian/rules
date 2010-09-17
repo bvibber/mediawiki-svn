@@ -1,0 +1,68 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+
+CFLAGS = -Wall -g
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0
+else
+	CFLAGS += -O2
+endif
+
+CGIDIR=/usr/lib/cgi-bin
+SYSCONFDIR=/etc/viewvc
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
+	
+	./viewvc-install < debian/viewvc-install_answers
+	cp debian/viewvc-config debian/viewvc/usr/lib/viewvc/
+	chmod 755 debian/viewvc/usr/lib/viewvc/viewvc-config
+
+# Build architecture-dependent files here.
+binary-arch: build install
+# We have nothing to do by default.
+
+# Build architecture-independent files here.
+binary-indep: build install
+	dh_testdir
+	dh_testroot
+#
+#	We put the templates in the right place.
+	mv debian/tmp/usr/lib/cgi-bin/templates/docroot/* debian/viewvc/usr/share/viewvc
+	rmdir debian/tmp/usr/lib/cgi-bin/templates/docroot/
+#
+#	The scripts should have mode 755.
+	for SCRIPT in `find debian/tmp -name \*py`; \
+	  do \
+	  if `head -1 $$SCRIPT|grep '^#!' >/dev/null`; \
+	    then chmod 755 $$SCRIPT;\
+	  fi; \
+	  done
+#
+#	dh_install --sourcedir=debian/tmp --fail-missing
+	dh_install --sourcedir=debian/tmp --list-missing -X.pyc -X/mod_python/
+	dh_installchangelogs CHANGES
+	dh_installdocs docs
+	dh_installdebconf	
+	dh_installman
+	dh_installexamples templates-contrib
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_pysupport
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

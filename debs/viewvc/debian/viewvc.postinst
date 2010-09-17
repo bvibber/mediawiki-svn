@@ -1,0 +1,65 @@
+#!/bin/bash
+# Copyright 2006,2007 David Martínez Moreno
+# Licensed under GPL v2.
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+if [ "$1" = "reconfigure" ] || [ -n "$DEBCONF_RECONFIGURE" ]; then
+  # if we are reconfiguring, or already have installed the package at least
+  # once before, we should not try to overwrite viewvc.conf.
+  RECONFIGURE=true
+else
+  RECONFIGURE=
+fi
+
+if [ -z "$2" ]; then
+  FIRSTINST=yes
+fi
+
+if [ -n "$FIRSTINST" ] && [ -z "$RECONFIGURE" ] ; then
+    # We move viewcvs.conf to viewvc.conf, because we want to keep changes.
+    if [ -f /etc/viewcvs/viewcvs.conf ]; then
+        mv /etc/viewcvs/viewcvs.conf /etc/viewvc/viewvc.conf
+    fi
+fi
+
+if [ "$1" = "configure" ]; then
+
+        db_get viewvc/cvsroots
+        cvs_roots=$RET
+
+        db_get viewvc/svnroots
+        svn_roots=$RET
+
+        rootlist=`echo "$cvs_roots $svn_roots" | sed 's/,/, /g' | gawk '{ gsub(/:[^,]*(,|)/, "") ; print }'`
+        db_subst viewvc/defaultroot rootlist $rootlist
+
+        db_get viewvc/defaultroot
+        default_root=$RET
+
+        db_get viewvc/address
+        address=$RET
+
+        db_get viewvc/forbidden
+        forbidden=$RET
+
+        db_get viewvc/allow_tar
+        if [ "$RET" = "false" ]; then
+            allow_tar="0"
+        else
+            allow_tar="1"
+        fi
+
+        if [ -x /usr/lib/viewvc/viewvc-config ]; then
+                /usr/lib/viewvc/viewvc-config -k cvs_roots -v "$cvs_roots"
+                /usr/lib/viewvc/viewvc-config -k svn_roots -v "$svn_roots"
+                /usr/lib/viewvc/viewvc-config -k default_root -v "$default_root"
+                /usr/lib/viewvc/viewvc-config -k address -v "$address"
+                /usr/lib/viewvc/viewvc-config -k forbidden -v "$forbidden"
+                /usr/lib/viewvc/viewvc-config -k allow_tar -v "$allow_tar"
+        fi
+
+fi
+
+#DEBHELPER#

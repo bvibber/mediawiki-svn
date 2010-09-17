@@ -1,0 +1,11 @@
+viewvc (0.9.4+svn20060318-1) unstable; urgency=low
+
+  * With the default configuration, viewvc itself serves all the documents and
+    images under docroot (the path is /etc/viewvc/templates/docroot, which is a
+    link pointing to /usr/share/viewvc).  This is suboptimal, as you have a slight
+    performance hit, but it allows to ship viewvc working out-of-the-box.
+    Please refer to README.Debian for further information.
+  * svn_parent_path has been removed in favour of a wider 'root_parents'
+    parameter, valid for either CVS or Subversion.
+
+ -- David Martínez Moreno <ender@debian.org>  Mon,  7 Aug 2006 16:51:31 +0200

@@ -1,0 +1,230 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: viewvc 1.0.3-2\n"
+"Report-Msgid-Bugs-To: ender@debian.org\n"
+"POT-Creation-Date: 2006-08-14 01:30+0200\n"
+"PO-Revision-Date: 2007-02-06 19:02+0900\n"
+"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid "CVS roots:"
+msgstr "CVS ルートディレクトリ:"
+
+#. Type: string
+#. Description
+#: ../templates:1001
+msgid ""
+"This setting specifies each of the CVS roots (repositories) on your system "
+"and assigns names to them.  Each root should be given by a \"name: path\" "
+"value.  Multiple roots should be separated by commas."
+msgstr ""
+"この設定で CVS ルートディレクトリ群 (リポジトリ) がそれぞれシステムのどこにあるのかを指定し"
+"て名前を付けます。ルートディレクトリに対してそれぞれ \"name: path\" という値の"
+"指定が必要です。複数のルートディレクトリ群はコンマで区切る必要があります。"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid "SVN roots:"
+msgstr "SVN ルートディレクトリ:"
+
+#. Type: string
+#. Description
+#: ../templates:2001
+msgid ""
+"This setting specifies each of the Subversion roots (repositories) on your "
+"system and assigns names to them.  Each root should be given by a \"name: "
+"path\" value.  Multiple roots should be separated by commas."
+msgstr ""
+"この設定で Subversion ルートディレクトリ (リポジトリ) がそれぞれシステムのどこにあるのかを指定し"
+"て名前を付けます。ルートディレクトリに対してそれぞれ \"name: path\" という値の"
+"指定が必要です。複数のルートディレクトリ群はコンマで区切る必要があります。"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Default root:"
+msgstr "標準のルートディレクトリ:"
+
+#. Type: select
+#. Description
+#: ../templates:3001
+msgid "Root to show if no root was chosen."
+msgstr "どのルートディレクトリも選ばれなかった際、表示するルートディレクトリ。"
+
+#. Type: string
+#. Default
+#: ../templates:4001
+msgid "<a href=\"mailto:admin@foo\">Repository Admin</a>"
+msgstr "<a href=\"mailto:admin@foo\">リポジトリ管理者</a>"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid "Repository administrator address:"
+msgstr "リポジトリ管理者のメールアドレス:"
+
+#. Type: string
+#. Description
+#: ../templates:4002
+msgid ""
+"This address is shown in the footer of the generated pages.  It must be the "
+"address of the local repository maintainer (e.g. <a href=\"mailto:foo@bar"
+"\">cvsadmin</a>)."
+msgstr ""
+"このアドレスは生成されたページの下部に表示されます。これはローカルのリポジトリ管理者"
+"のアドレスである必要があります。 (例 <a href=\"mailto:foo@bar\">cvsadmin</a>)"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid "List of access-forbidden modules:"
+msgstr "アクセスを許可しないモジュール:"
+
+#. Type: string
+#. Description
+#: ../templates:5001
+msgid ""
+"This should contain a list of modules in the repository that should not be "
+"displayed (by default or by explicit path specification).  This "
+"configuration can be a simple list of modules, or it can get quite complex:\n"
+"  *) The \"!\" can be used before a module to explicitly state that it is\n"
+"NOT forbidden.\n"
+"  *) Shell-style \"glob\" expressions may be used. \"*\" will match any\n"
+"sequence of zero or more characters, \"?\" will match any single character, "
+"\"[seq]\" will match any character in seq, and \"[!seq]\" will match any "
+"character not in seq."
+msgstr ""
+"ここではリポジトリ内の表示させたくないモジュールのリストを設定してください "
+"(デフォルトのままか、もしくは明示的に path を指定します) 。この"
+"設定は単にモジュールを列挙してもかまいませんし、次のような複雑な指定をするこ"
+"ともできます:\n"
+" *) 明示的に「禁止ではない」という宣言を行うためには、モジュール名の前に \"!\" を"
+"使用できます。\n"
+" *) シェル形式のグロブ表現も利用可能です。 \"*\" は0文字以上の文字列、 \"?\" "
+"は任意の 1 文字、\"[seq]\" は seq に含まれる任意の文字、そして \"[!seq]\" は "
+"seq に含まれない任意の文字にそれぞれマッチします。"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid "Allow automatic tarball generation?"
+msgstr "tarball の自動生成を行いますか?"
+
+#. Type: boolean
+#. Description
+#: ../templates:6001
+msgid ""
+"ViewVC can generate a tarball (.tar.gz) from a repository on the fly.  This "
+"option allows (you/anyone) to download a tarball of the current directory."
+msgstr ""
+"ViewVC はリポジトリから tarball (.tar.gz) を直接生成できます。このオプション"
+"は (誰でも) 現在のディレクトリから tarball をダウンロード可能にするものです。"
+
+#, fuzzy
+#~ msgid ""
+#~ "This setting specifies each of the Subversion roots (repositories) on "
+#~ "your system and assigns names to them.  Each root should be given by a "
+#~ "\"name: path\" value.  Multiple roots should be separated by commas and "
+#~ "can be placed on separate lines."
+#~ msgstr ""
+#~ "この設定で Subversion のルートディレクトリ群 (リポジトリ) がそれぞれシステ"
+#~ "ムのどこにあるのかを指定して名前を付けます。それぞれのルートディレクトリに"
+#~ "は \"name: path\" という値を与える必要があります。複数のルートディレクトリ"
+#~ "群はコンマで区切る必要があります。"
+
+#, fuzzy
+#~ msgid "Default of CVS/SVN root."
+#~ msgstr "標準の CVS/SVN ルートディレクトリ。"
+
+#, fuzzy
+#~ msgid "Please enter your CVS roots:"
+#~ msgstr "CVS のルートディレクトリ群はどこにありますか?"
+
+#, fuzzy
+#~ msgid "Please enter your SVN roots:"
+#~ msgstr "CVS のルートディレクトリ群はどこにありますか?"
+
+#, fuzzy
+#~ msgid "Please enter your default root:"
+#~ msgstr "標準のルートディレクトリはどこですか?"
+
+#, fuzzy
+#~ msgid ""
+#~ "You need to modify httpd configuration for online documents and icons."
+#~ msgstr ""
+#~ "オンラインドキュメントとアイコンの表示のために httpd の設定を変更する必要"
+#~ "があります。"
+
+#, fuzzy
+#~ msgid ""
+#~ "The ViewVC package has online documents and icons in </usr/share/viewvc/"
+#~ ">.  If you want to use them, you should modify the httpd configuration "
+#~ "file (</etc/apache/httpd.conf> or similar) like this:\\n\n"
+#~ "  Alias /viewvc/ /usr/share/viewvc/\\n\n"
+#~ "In addition, the default templates use the icons in </viewvc/icons/*>, so "
+#~ "they also require this configuration."
+#~ msgstr ""
+#~ "ViewVC パッケージのオンラインドキュメントとアイコンが /usr/share/view/"
+#~ "cvs/ にあります。これを使いたい場合、httpd の設定ファイル (/etc/apache/"
+#~ "httpd.conf など) を\n"
+#~ "  Alias /viewcvs/ /usr/share/viewcvs/\n"
+#~ " というように変更しなくてはいけません。さらに、標準のテンプレートでは /"
+#~ "viewcvs/icons/* のようにしてアイコンを利用するので、この設定も必要です。"
+
+#, fuzzy
+#~ msgid "Where is your SVN directory containing any number of repositories?"
+#~ msgstr "リポジトリがある svn ディレクトリはどこになりますか?"
+
+#, fuzzy
+#~ msgid ""
+#~ "The 'svn_parent_path' is a directory in which any number of Subversion "
+#~ "repositories may reside.  Rather than force you to add a new entry to "
+#~ "'svn_roots' each time you create a new repository, ViewVC rewards you for "
+#~ "putting all your Subversion repositories in a single parent directory by "
+#~ "allowing you to simply specify that parent directory.  ViewVC will then "
+#~ "notice each Subversion repository in that directory as a new root whose "
+#~ "name is the subdirectory of the parent path in which that repository "
+#~ "lives."
+#~ msgstr ""
+#~ "'svn_parent_path' はいくつもの Subversion のリポジトリディレクトリが置かれ"
+#~ "るようになります。ViewVC では新しいレポジトリを作るたびに新しいエントリを "
+#~ "'svn_roots' に追加するようにするよりも、単に親ディレクトリを指定して全て"
+#~ "の Subversion リポジトリをひとつの親ディレクトリに置くようにします。"
+#~ "ViewVC はその際にそれぞれの Subversion リポジトリをそのリポジトリが置かれ"
+#~ "ている親ディレクトリのサブディレクトリ名として新しいルートディレクトリを認"
+#~ "識します。"
+
+#~ msgid ""
+#~ "Caution: these names can, of course, clash with names you have defined in "
+#~ "your cvs_roots or svn_roots configuration items.  If this occurs, you can "
+#~ "either rename the offending repository on disk, or grant new names to the "
+#~ "clashing item in cvs_roots or svn_roots."
+#~ msgstr ""
+#~ "注意: 当たり前ですが、cvs_roots や svn_roots の設定で定義した名前とこの名"
+#~ "前がぶつかる場合があります。このような場合は問題が起こるリポジトリの名前を"
+#~ "変更するか、cvs_roots または svn_roots 内の名前が衝突するものへ新しい名前"
+#~ "を付与できます。"
+
+#~ msgid "Where are your svn roots?"
+#~ msgstr "svn のルートディレクトリ群はどこにありますか?"
