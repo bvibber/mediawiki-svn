@@ -51,7 +51,7 @@ class ClickTrackingHooks {
 	public static function beforePageDisplay( $out, $skin ) {
 		global $wgClickTrackThrottle;
 		
-		if ( !( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 ) ) {
+		if ( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 ) {
 			$out->addModules( 'clickTracking' );
 		}
 		return true;
@@ -84,8 +84,10 @@ class ClickTrackingHooks {
 			'clickTracking.special' => new ResourceLoaderFileModule( array(
 				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/clickTracking.special.js',
 				'styles' => 'extensions/UsabilityInitiative/ClickTracking/modules/clickTracking.special.css',
+				'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 			) ),
 		) );
+		return true;
 	}
 
 	/**
