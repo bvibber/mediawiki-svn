@@ -33,20 +33,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		'xml' is supported, but requires a transformer that can handle an XML DOM
  * 		as input. To support more formats, override decodeData(). Default is 'php'.
  *	 * $spec['dataPath']: "path" to the actual data in the structure returned from the
- *		HTTP request. The response data is assumed to consit of nested arrays. Each entry
- *		In the path navigates one step in this structure. Each entry can be either a
- *		string (for a lookup in an associative array), and int (an index in a list), or
- *		a "meta-key" of the form @@N, where N is an integer. A meta-key refers to the
- *		Nth entry in an associative array: @1 would be "bar" in array( 'x' => "foo", 'y' => "bar" ).
- *		For more complex retrieval of the record, override extractRecord(). REQUIRED.
- *	 * $spec['fieldNames']: names of all fields present in each record.
- *		Fields not listed here will not be available on the wiki,
- *		even if they are returned by the data source. REQUIRED.
+ *		HTTP request. This is only used if no transformer is set. The syntax of the 
+ *		path is the one defined for the dataPath parameter for the FlattenRecord 
+ *		transformer. REQUIRED if no transformer is defined.
  *	 * $spec['errorPath']: "path" to error messages in the structure returned from the
- *		HTTP request. The path is evaluated as deswcribed for $spec['dataPath']. If an
- *		entry is found at the given position in the response structure, the request
- *		is assumed to have failed. For more complex detection of errors, override
- *		extractError(). REQUIRED.
+ *		HTTP request. This is only used if no transformer is set. The syntax of the 
+ *		path is the one defined for the dataPath parameter for the FlattenRecord 
+ *		transformer. REQUIRED if no transformer is defined.
  *	 * $spec['httpOptions']: array of options to pass to Http::get. For details, see Http::request.
  *	 * $spec['timeout']: seconds before the request times out. If not given,
  *		$spec['httpOptions']['timeout'] is used. If both are not givern, 5 seconds are assumed.

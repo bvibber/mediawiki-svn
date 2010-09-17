@@ -34,7 +34,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		extractError() method. The path is evaluated as deswcribed for $spec['dataPath']. If an
  *		entry is found at the given position in the response structure, the request
  *		is assumed to have failed. For more complex detection of errors, override
- *		extractError(). REQUIRED.
+ *		extractError(). If not given, the request is assumed to have been successful as long as 
+ *		dataPath can be resolved to a data item.
 */
 class FlattenRecord extends RecordTransformer {
 

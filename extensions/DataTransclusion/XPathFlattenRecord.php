@@ -20,7 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * In addition to the options supported by the FlattenRecord class,
  * XPathFlattenRecord accepts some additional options, and changes the convention for others.
  *
- *	 * $spec['dataFormat']: must be "xml" or end with "+xml" if given. Defaults to "xml".
  *	 * $spec['dataPath']: xpath to the actual data in the structure returned from the
  *		HTTP request. This uses standard W3C XPath syntax. REQUIRED.
  *	 * $spec['fieldPathes']: an associative array giving a XPath for each fied which points
@@ -31,10 +30,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		HTTP request. If an
  *		entry is found at the given position in the response structure, the request
  *		is assumed to have failed. For more complex detection of errors, override
- *		extractError(). REQUIRED.
+ *		extractError(). If not given, the request is assumed to have been
+ *		successful as long as dataPath can be resolved to a data item.
  *
- * For more information on options supported by DataTransclusionSource and 
- * WebDataTransclusionSource, see the class-level documentation there.
+ * For more information on options supported by FlattenRecord 
+ * see the class-level documentation there.
  */
 class XPathFlattenRecord extends FlattenRecord {
 

@@ -28,9 +28,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		not supported reliably. REQUIRED.
  *	 * $spec['querySuffix']: additional clauses to be added after the WHERE clause.
  *		Useful mostly to specify GROUP BY (or ORDER BY or LIMIT).
- *	 * $spec['fieldNames']: like for DataTransclusionSource; However, it's not required
- *		for DBDataTransclusionSource: if not provided, array_keys( $spec['fieldInfo'] )
- *		will be used.
  *	 * $spec['fieldInfo']: like for DataTransclusionSource; Some additional hints are
  *		supported for each field:
  *	     * $spec['fieldInfo'][...]['dbfield']: the field's name in the database table, 
