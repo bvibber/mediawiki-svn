@@ -64,7 +64,7 @@ class AssertEdit
 				$pass = call_user_func( self::$msAssert[$assertName] );
 			}
 
-			if ( $negate and isset( $pass ) ) {
+			if ( $negate && isset( $pass ) ) {
 				$pass = !$pass;
 			}
 		} else {
