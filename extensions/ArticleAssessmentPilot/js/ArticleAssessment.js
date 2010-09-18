@@ -260,10 +260,6 @@
 			},
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
-				if (data.error) {
-					alert(data.error.code);
-				}
-				
 				// add the correct data to the markup
 				if ( data.query && data.query.articleassessment && data.query.articleassessment.length > 0 ) {
 					for ( var r in data.query.articleassessment[0].ratings ) {
