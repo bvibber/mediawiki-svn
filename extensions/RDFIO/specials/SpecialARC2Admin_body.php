@@ -7,7 +7,7 @@
 class SpecialARC2Admin extends SpecialPage {
 
     protected $m_issysop;
-    
+
     function __construct() {
         global $wgUser;
 
@@ -16,14 +16,14 @@ class SpecialARC2Admin extends SpecialPage {
             $this->m_issysop = true;
         } else {
             $this->m_issysop = false;
-        } 
-        
+        }
+
         parent::__construct( 'SpecialARC2Admin' );
-        wfLoadExtensionMessages('SpecialARC2Admin');
+        wfLoadExtensionMessages( 'SpecialARC2Admin' );
     }
 
     function execute( $par ) {
-        global $wgRequest, $wgOut, $wgDBserver, $wgDBname, $wgDBuser, 
+        global $wgRequest, $wgOut, $wgDBserver, $wgDBname, $wgDBuser,
                $wgDBpassword, $smwgARC2StoreConfig, $wgArticlePath,
                $wgServer, $wgScriptPath, $wgUser;
 
@@ -31,14 +31,14 @@ class SpecialARC2Admin extends SpecialPage {
         $output = "";
 
         # Get request data from, e.g.
-        $rdfio_action = $wgRequest->getText('rdfio_action');
+        $rdfio_action = $wgRequest->getText( 'rdfio_action' );
 
         # instantiation
-        $store = ARC2::getStore($smwgARC2StoreConfig);
+        $store = ARC2::getStore( $smwgARC2StoreConfig );
 
         $output .= "\n===RDF Store Setup===\n'''Status:'''\n\n";
 
-        if (!$store->isSetUp()) {
+        if ( !$store->isSetUp() ) {
             $output .= "* Store is '''not''' set up\n";
             if ( $rdfio_action == "setup" ) {
                 if ( !$wgUser->matchEditToken( $wgRequest->getText( 'token' ) ) ) {
@@ -48,9 +48,9 @@ class SpecialARC2Admin extends SpecialPage {
                         $output .= "* Setting up now ...\n";
                         $store->setUp();
                         $output .= "* Done!\n";
-                    } else{
+                    } else {
                         $errormessage = "Only sysops can perform this operation!";
-                        $wgOut->addHTML( RDFIOUtils::formatErrorHTML("Permission Error", $errormessage) );
+                        $wgOut->addHTML( RDFIOUtils::formatErrorHTML( "Permission Error", $errormessage ) );
                     }
                 }
             }

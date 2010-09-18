@@ -31,7 +31,7 @@ class RDFIOSMWBatchWriter {
         $rdfiogPropertiesToUseAsWikiTitle,
         $rdfiogUseNSPrefixInWikiTitleForProperties,
         $rdfiogUseNSPrefixInWikiTitleForEntities;
-         
+
         if ( $dataformat == 'triples_array' ) {
             $this->m_triples = $importdata;
         } else {
@@ -45,7 +45,7 @@ class RDFIOSMWBatchWriter {
             $this->m_parser = ARC2::getRDFXMLParser();
             $this->parse();
         } else if ( $this->m_dataformat == 'turtle' ) {
-            $this->m_unparseddata = $wgRequest->getText('importdata');
+            $this->m_unparseddata = $wgRequest->getText( 'importdata' );
             $this->m_parser = ARC2::getTurtleParser();
             $this->parse();
         }
@@ -98,7 +98,7 @@ class RDFIOSMWBatchWriter {
     }
 
     /**
-     * Check for namespaces lacking a prefix ("abbreviation"), in the 
+     * Check for namespaces lacking a prefix ("abbreviation"), in the
      * current namespace prefix configuration
      */
     public function checkForNamespacesWithoutPrefix() {
@@ -133,7 +133,7 @@ class RDFIOSMWBatchWriter {
         $entityuris = array_merge( $subjecturis, $valueuris );
         $entityuris = array_unique( $entityuris );
         $unabbreviateduris = array();
-        foreach( $entityuris as $entityuri ) {
+        foreach ( $entityuris as $entityuri ) {
             $titlebypropertyuriindex = '';
             $titlebypropertyuriindex = $this->getWikiTitleByPropertyURIIndex( $entityuri );
             if ( $titlebypropertyuriindex == '' ) {
@@ -193,7 +193,7 @@ class RDFIOSMWBatchWriter {
         // The page below should not be deleted on delete operations
         if ( !$this->m_delete ) {
             // Add type info to the Original URI property
-            $property_hastypeurl = array( array( 'p' => 'Has type', 'v' => 'URL') );
+            $property_hastypeurl = array( array( 'p' => 'Has type', 'v' => 'URL' ) );
             $origuripage = new RDFIOPageHandler( 'Original URI', SMW_NS_PROPERTY, $property_hastypeurl );
             $this->addToPages( $origuripage );
         }
@@ -282,7 +282,7 @@ class RDFIOSMWBatchWriter {
             $page->writeOrDeleteDataToWiki();
             if ( $page->hasErrors() ) {
                 $errortitle = "Error for wikipage \"" . $page->getWikiTitleFull() . "\"</h3>";
-                $wgOut->addHTML( RDFIOUtils::formatErrorHTML( $errortitle, $page->getErrorText() ));
+                $wgOut->addHTML( RDFIOUtils::formatErrorHTML( $errortitle, $page->getErrorText() ) );
             }
         }
     }
@@ -298,7 +298,7 @@ class RDFIOSMWBatchWriter {
             $page->deleteDataFromWiki();
             if ( $page->hasErrors() ) {
                 $errortitle = "Error for wikipage \"" . $page->getWikiTitleFull() . "\"</h3>";
-                $wgOut->addHTML( RDFIOUtils::formatErrorHTML( $errortitle, $page->getErrorText() ));
+                $wgOut->addHTML( RDFIOUtils::formatErrorHTML( $errortitle, $page->getErrorText() ) );
             }
         }
     }
@@ -333,7 +333,7 @@ class RDFIOSMWBatchWriter {
      * @return array $triples
      */
     function getTriplesForSubject( $subjecturi ) {
-        $reconstructedIndex = array( $subjecturi => $this->m_tripleindex[$subjecturi]);
+        $reconstructedIndex = array( $subjecturi => $this->m_tripleindex[$subjecturi] );
         $triples = ARC2::getTriplesFromIndex( $reconstructedIndex );
         return $triples;
     }
@@ -354,11 +354,11 @@ class RDFIOSMWBatchWriter {
     function getUniquePropertyURIs() {
         $tripleindex = $this->m_tripleindex;
         $properties = array();
-        foreach( $tripleindex as $cur_props ) {
-            foreach( $cur_props as $cur_prop => $cur_propdata ) {
+        foreach ( $tripleindex as $cur_props ) {
+            foreach ( $cur_props as $cur_prop => $cur_propdata ) {
                 $properties[$cur_prop] = array(
-                	'type' => $cur_propdata[0]['type'], 
-                	'datatype' => $cur_propdata[0]['datatype'] 
+                	'type' => $cur_propdata[0]['type'],
+                	'datatype' => $cur_propdata[0]['datatype']
                 ); // Only the type info is interesting here
             }
         }
@@ -372,16 +372,16 @@ class RDFIOSMWBatchWriter {
     function getUniqueValueURIs() {
         $tripleindex = $this->m_tripleindex;
         $value_uris_data = array();
-        foreach( $tripleindex as $cur_props ) {
-            foreach( $cur_props as $cur_prop => $cur_propdatas ) {
+        foreach ( $tripleindex as $cur_props ) {
+            foreach ( $cur_props as $cur_prop => $cur_propdatas ) {
                 foreach ( $cur_propdatas as $cur_propdata ) {
                     $value = $cur_propdata['value'];
                     $valuetype = $cur_propdata['type'];
                     $valuedatatype = $cur_propdata['datatype'];
                     if ( $valuetype == 'uri' ) {
                         $value_uris_data[$value] = array(
-                			'type' => $valuetype, 
-                			'datatype' => $valuedatatype 
+                			'type' => $valuetype,
+                			'datatype' => $valuedatatype
                         );
                     }
                 }
@@ -392,15 +392,15 @@ class RDFIOSMWBatchWriter {
     }
 
     /**
-     * Create a property array with "Original URI" as property, 
-     * and $uri as subject 
+     * Create a property array with "Original URI" as property,
+     * and $uri as subject
      * @param string $uri
      * @return array $origuripropertyarray
      */
     function createOrigURIPropertyArray( $uri ) {
         $origuripropertyarray = array(
-            'p' => 'Original URI', 
-            'v' => $uri ); 
+            'p' => 'Original URI',
+            'v' => $uri );
         return $origuripropertyarray;
     }
 
@@ -412,8 +412,8 @@ class RDFIOSMWBatchWriter {
      */
     function createEquivURIPropertyArray( $uri ) {
         $equivuripropertyarray = array(
-            'p' => 'Equivalent URI', 
-            'v' => $uri ); 
+            'p' => 'Equivalent URI',
+            'v' => $uri );
         return $equivuripropertyarray;
     }
 
@@ -434,7 +434,7 @@ class RDFIOSMWBatchWriter {
                 return 'String';
             }
         } else {
-            $this->addError('Unknown entity type in SMWBatchWriter.php:convertARCTypeToSMWType');
+            $this->addError( 'Unknown entity type in SMWBatchWriter.php:convertARCTypeToSMWType' );
         }
         // TODO: Expand with more options
     }
@@ -485,7 +485,6 @@ class RDFIOSMWBatchWriter {
         return $this->m_haserrors;
     }
 
-
     /**
      * Get an array with current errors
      * @return array
@@ -510,7 +509,7 @@ class RDFIOSMWBatchWriter {
     }
 
 
-    ///////////// PREVIOUSLY THE EQUIV URI CLASS //////////////////////
+    //////////// / PREVIOUSLY THE EQUIV URI CLASS //////////////////////
 
 
     /**
@@ -549,7 +548,7 @@ class RDFIOSMWBatchWriter {
             if ( $titlebypropertyuriindex != '' ) {
                 $wikititle = $titlebypropertyuriindex;
             } else if ( ( $this->m_usenspintitles_entities && !$isproperty ) ||
-            ( $this->m_usenspintitles_properties && $isproperty ) ){
+            ( $this->m_usenspintitles_properties && $isproperty ) ) {
                 $wikititle = $this->abbreviateNSFromURI( $uri );
             } else {
                 $wikititle = RDFIOUtils::extractLabelFromURI( $uri );
@@ -633,15 +632,15 @@ class RDFIOSMWBatchWriter {
 
         if ( $localpart == '' ) {
             $uri = $basepart;
-        } else if ( substr($basepart, 0, 1) == '_' ) {
+        } else if ( substr( $basepart, 0, 1 ) == '_' ) {
             // Change ARC:s default "random string", to indicate more clearly that
             // it lacks title
-            $uri = str_replace('arc','untitled',$localpart);
-        } else if ( substr($basepart, 0, 7) == 'http://' ) {
+            $uri = str_replace( 'arc', 'untitled', $localpart );
+        } else if ( substr( $basepart, 0, 7 ) == 'http://' ) {
             // If the abbreviation does not seem to have succeeded,
             // fall back to use only the local part
             $uri = $localpart;
-        } else if ( substr($basepart, -1) == ':' ) {
+        } else if ( substr( $basepart, -1 ) == ':' ) {
             // Don't add another colon
             $uri = $basepart . $localpart;
         } else if ( $basepart == false || $basepart == '' ) {
@@ -665,17 +664,17 @@ class RDFIOSMWBatchWriter {
 
         if ( $localpart == '' ) {
             $uri = $basepart;
-        } else if ( substr($basepart, 0, 1) == '_' ) {
+        } else if ( substr( $basepart, 0, 1 ) == '_' ) {
             // Change ARC:s default "random string", to indicate more clearly that
             // it lacks title
-            $uri = str_replace('arc','untitled',$localpart);
+            $uri = str_replace( 'arc', 'untitled', $localpart );
         } else {
-            $basepart = $this->getPrefixForNS($basepart);
-            if ( substr($basepart, 0, 7) == 'http://' ) {
+            $basepart = $this->getPrefixForNS( $basepart );
+            if ( substr( $basepart, 0, 7 ) == 'http://' ) {
                 // If the abbreviation does not seem to have succeeded,
                 // fall back to use only the local part
                 $uri = $localpart;
-            } else if ( substr($basepart, -1) == ':' ) {
+            } else if ( substr( $basepart, -1 ) == ':' ) {
                 // Don't add another colon
                 $uri = $basepart . $localpart;
             } else {

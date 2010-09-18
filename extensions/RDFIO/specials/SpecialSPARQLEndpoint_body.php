@@ -15,12 +15,12 @@ class SPARQLEndpoint extends SpecialPage {
     protected $m_outputequivuris;
     protected $m_haswriteaccess; // User permission
     protected $m_hasdeleteaccess; // User permission
-    
+
     function __construct() {
         global $wgUser, $rdfiogQueryByOrigURI;
 
         parent::__construct( 'SPARQLEndpoint' );
-        wfLoadExtensionMessages('SPARQLEndpoint');
+        wfLoadExtensionMessages( 'SPARQLEndpoint' );
         $this->m_sparqlendpointconfig = $this->getSPARQLEndpointConfig();
         $this->m_sparqlendpoint = ARC2::getStoreEndpoint( $this->m_sparqlendpointconfig );
         $this->m_sparqlparser = ARC2::getSPARQLPlusParser();
@@ -31,12 +31,12 @@ class SPARQLEndpoint extends SpecialPage {
             $this->m_haswriteaccess = true;
         } else {
             $this->m_haswriteaccess = false;
-        } 
+        }
         if ( in_array( 'edit', $userrights ) && in_array( 'delete', $userrights ) ) {
             $this->m_hasdeleteaccess = true;
         } else {
             $this->m_hasdeleteaccess = false;
-        } 
+        }
     }
 
     /**
@@ -47,15 +47,15 @@ class SPARQLEndpoint extends SpecialPage {
 
         $this->setHeaders();
         $this->handleRequestData();
-        
+
         $executesparql = true;
-        
+
         if ( $this->m_query == '' ) {
             $this->printHTMLForm();
         } else {
             $this->ensureSparqlEndpointInstalled();
             $this->convertURIsInQuery();
-            
+
             if ( $this->m_querytype == 'insert' ) { // TODO
                 if ( $this->checkAllowInsert() ) {
                     $this->importTriplesInQuery();
@@ -68,7 +68,7 @@ class SPARQLEndpoint extends SpecialPage {
                 // TODO Add a "successfully inserted/deleted" message here
                 $this->printHTMLForm();
             } else { // We are querying/outputting data, not editing
-                
+
                 if ( $this->m_outputtype == 'htmltab' ) {
                     $this->printHTMLForm();
                     if ( $wgRequest->getBool( 'showquery', false ) ) {
@@ -146,40 +146,40 @@ class SPARQLEndpoint extends SpecialPage {
      * in class variables
      */
     function handleRequestData() {
-        global $wgRequest, 
+        global $wgRequest,
                $rdfiogQueryByOrigURI,
                $rdfiogQueryByEquivURI,
                $rdfiogOutputOrigURIs,
                $rdfiogOutputEquivURIs;
-               
+
         $this->m_query = $wgRequest->getText( 'query' );
-        
+
         if ( $rdfiogQueryByOrigURI == '' ) {
           $this->m_querybyoriguri = $wgRequest->getBool( 'origuri_q' ); // No default value, as to not overwrite configurable setting in LocalSettings.php
         } else {
           $this->m_querybyoriguri = $rdfiogQueryByOrigURI;
         }
-        
+
         if ( $rdfiogQueryByEquivURI == '' ) {
           $this->m_querybyequivuri = $wgRequest->getBool( 'equivuri_q' );
         } else {
           $this->m_querybyequivuri = $rdfiogQueryByEquivURI;
         }
-        
+
         if ( $rdfiogOutputOrigURIs == '' ) {
             $this->m_outputoriguris = $wgRequest->getBool( 'origuri_o' );
         } else {
             $this->m_outputoriguris = $rdfiogOutputOrigURIs;
         }
-        
+
         if ( $rdfiogOutputEquivURIs == '' ) {
             $this->m_outputequivuris = $wgRequest->getBool( 'equivuri_o' );
         } else {
             $this->m_outputequivuris = $rdfiogOutputEquivURIs;
         }
-        
+
         $this->m_filtervocab = $wgRequest->getBool( 'filtervocab', false );
-        $this->m_filtervocaburl = $wgRequest->getText( 'filtervocaburl');
+        $this->m_filtervocaburl = $wgRequest->getText( 'filtervocaburl' );
         $this->m_outputtype = $wgRequest->getText( 'output' );
         if ( $this->m_query !== '' ) {
             $this->m_sparqlparser->parse( $this->m_query, '' );
@@ -189,16 +189,16 @@ class SPARQLEndpoint extends SpecialPage {
             }
         }
     }
-    
+
     function ensureSparqlEndpointInstalled() {
-        if (!$this->m_sparqlendpoint->isSetUp()) {
+        if ( !$this->m_sparqlendpoint->isSetUp() ) {
             $this->m_sparqlendpoint->setUp(); /* create MySQL tables */
         }
     }
-    
+
     /**
-     * If option is so chosen, convert URIs in the query to 
-     * their corresponding "Original URIs" or "Equivalent URIs" 
+     * If option is so chosen, convert URIs in the query to
+     * their corresponding "Original URIs" or "Equivalent URIs"
      */
     function convertURIsInQuery() {
         if ( $this->m_querybyoriguri ) {
@@ -215,34 +215,34 @@ class SPARQLEndpoint extends SpecialPage {
             if ( $s_type === 'uri' ) {
                 $triple['s'] = 's';
                 $triple['s_type'] = 'var';
-                $newtriple = $this->createEquivURITriple( $s, 's' ); 
+                $newtriple = $this->createEquivURITriple( $s, 's' );
                 $query_structure['query']['pattern']['patterns'][0]['patterns'][] = $newtriple;
             }
             if ( $p_type === 'uri' ) {
                 $triple['p'] = 'p';
                 $triple['p_type'] = 'var';
-                $newtriple = $this->createEquivURITriple( $p, 'p', true ); 
+                $newtriple = $this->createEquivURITriple( $p, 'p', true );
                 $query_structure['query']['pattern']['patterns'][0]['patterns'][] = $newtriple;
             }
             if ( $o_type === 'uri' ) {
                 $triple['o'] = 'o';
                 $triple['o_type'] = 'var';
-                $newtriple = $this->createEquivURITriple( $o, 'o' ); 
+                $newtriple = $this->createEquivURITriple( $o, 'o' );
                 $query_structure['query']['pattern']['patterns'][0]['patterns'][] = $newtriple;
             }
             // restore the first triple into its original location
             $query_structure['query']['pattern']['patterns'][0]['patterns'][0] = $triple;
-            require_once(__DIR__ . "/bundle/ARC2_SPARQLSerializerPlugin.php");
+            require_once( __DIR__ . "/bundle/ARC2_SPARQLSerializerPlugin.php" );
             $sparqlserializer = new ARC2_SPARQLSerializerPlugin();
             $query = $sparqlserializer->toString( $query_structure );
-            
+
             $this->setQueryInPost( $query );
             # $this->convertEquivURIsToInternalURIsInQuery(); // TODO DEPRECATED
         }
     }
-    
+
     /**
-     * Get an array of property URIs from the specified ontology, 
+     * Get an array of property URIs from the specified ontology,
      * to function as a filter
      * @return array $vocab_p_uri_filter
      */
@@ -264,7 +264,7 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $vocab_p_uri_filter;
     }
-        
+
     /**
      * Create an RDF triple that links a wiki page to its corresponding
      * equivalent URI
@@ -292,7 +292,7 @@ class SPARQLEndpoint extends SpecialPage {
         );
         return $equivuritriple;
     }
-    
+
     /**
      * Check if writing to wiki is allowed, and handle a number
      * of exceptions to that, by showing error messages etc
@@ -319,7 +319,7 @@ class SPARQLEndpoint extends SpecialPage {
             }
         }
     }
-    
+
     /**
      * Check if deleting from wiki is allowed, and handle a number
      * of exceptions to that, by showing error messages etc
@@ -340,7 +340,7 @@ class SPARQLEndpoint extends SpecialPage {
             }
         }
     }
-    
+
     /**
      * Print out the datastructure of the query in preformatted text
      */
@@ -350,8 +350,8 @@ class SPARQLEndpoint extends SpecialPage {
     }
 
     /**
-     * Do preparations for getting outputted data as a downloadable file 
-     * rather than written to the current page 
+     * Do preparations for getting outputted data as a downloadable file
+     * rather than written to the current page
      */
     function prepareCreatingDownloadableFile() {
         global $wgOut;
@@ -363,7 +363,7 @@ class SPARQLEndpoint extends SpecialPage {
         // and potentially is to be downloaded as a file
         $this->sendHeadersForOutputType( $this->m_outputtype );
     }
-    
+
     /**
      * Print out the HTML Form
      */
@@ -391,19 +391,19 @@ class SPARQLEndpoint extends SpecialPage {
      */
     function importTriplesInQuery() {
         $triples = $this->m_query_parsed['query']['construct_triples'];
-        $rdfImporter = new RDFIOSMWBatchWriter( $triples, 'triples_array');
+        $rdfImporter = new RDFIOSMWBatchWriter( $triples, 'triples_array' );
         $rdfImporter->execute();
     }
-    
+
     /**
      * After a query is parsed, delete the parsed data from the wiki
      */
     function deleteTriplesInQuery() {
         $triples = $this->m_query_parsed['query']['construct_triples'];
-        $rdfImporter = new RDFIOSMWBatchWriter( $triples, 'triples_array');
+        $rdfImporter = new RDFIOSMWBatchWriter( $triples, 'triples_array' );
         $rdfImporter->executeDelete();
     }
-    
+
     /**
      * Die and display current errors
      */
@@ -422,16 +422,16 @@ class SPARQLEndpoint extends SpecialPage {
             RDFIOUtils::showErrorMessage( "SPARQL Error", $errormessage );
         }
     }
-    
+
     /**
      * For each URI in the (unparsed) query that is set by an "Original URI" property in
-     * the wiki, replace it with the page's corresponding URI Resolver URI 
+     * the wiki, replace it with the page's corresponding URI Resolver URI
      */
     function convertOrigURIsToInternalURIsInQuery() {
         $query = $this->m_query;
         $origuris = RDFIOUtils::extractURIs( $this->m_query ); // TODO: Use parsed query instead
         $count = count( $origuris );
-        if ( $count > 1 || ($count > 0 && !RDFIOUtils::contains("URIResolver", $origuris[0])) ) { // The first URI is the URI Resolver one, which always is there
+        if ( $count > 1 || ( $count > 0 && !RDFIOUtils::contains( "URIResolver", $origuris[0] ) ) ) { // The first URI is the URI Resolver one, which always is there
             foreach ( $origuris as $origuri ) {
                 $uri = $this->m_store->getURIForOrigURI( $origuri );
                 if ( $uri != '' ) {
@@ -443,10 +443,10 @@ class SPARQLEndpoint extends SpecialPage {
             $this->setQueryInPost( $query );
         }
     }
-    
+
     /**
      * For each URI in the (unparsed) query that is set by an "Equivalent URI" property in
-     * the wiki, replace it with the page's corresponding URI Resolver URI 
+     * the wiki, replace it with the page's corresponding URI Resolver URI
      */
     function convertEquivURIsToInternalURIsInQuery() {
         $equivuris = RDFIOUtils::extractURIs( $this->m_query ); // TODO: Use parsed query instead
@@ -464,10 +464,10 @@ class SPARQLEndpoint extends SpecialPage {
             $this->setQueryInPost( $query );
         }
     }
-    
+
     /**
      * Convert all URI Resolver URIs which have a corresponding Original URI,
-     * to that Original URI. 
+     * to that Original URI.
      * @param array $triples
      * @return array $triples
      */
@@ -488,10 +488,10 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $triples;
     }
-    
+
     /**
      * Convert all URI Resolver URIs which have a corresponding Original URI,
-     * to that Original URI. 
+     * to that Original URI.
      * @param array $triples
      * @return array $triples
      */
@@ -513,8 +513,8 @@ class SPARQLEndpoint extends SpecialPage {
             }
         }
         return $output_structure;
-    }    
-    
+    }
+
     /**
      * For all property URIs, add triples using equivalent uris for the,
      * current property uri
@@ -529,19 +529,19 @@ class SPARQLEndpoint extends SpecialPage {
             $equivuris = $this->m_store->getEquivURIsForURI( $propertyuri, true );
             foreach ( $equivuris as $equivuri ) {
                 $newtriple = array(
-                    's' => $triple['s'], 
+                    's' => $triple['s'],
                 	'p' => $equivuri,
                     'o' => $triple['o']
                 );
                 $newtriples[] = $newtriple;
             }
         }
-        $triples = array_merge( $triples, $newtriples ); 
+        $triples = array_merge( $triples, $newtriples );
         return $triples;
     }
-    
+
     /**
-     * For all property URIs and all subject and objects which have URIs, 
+     * For all property URIs and all subject and objects which have URIs,
      * add triples using equivalent uris for these URIs (in all combinations
      * thereof). If $p_uris_filter is set, allow only triples with properties
      * included in this filter array
@@ -556,7 +556,7 @@ class SPARQLEndpoint extends SpecialPage {
             // Subject
             $s_equivuris = array( $triple['s'] );
             if ( $triple['s_type'] === 'uri' ) {
-                $s_uri = $triple['s']; 
+                $s_uri = $triple['s'];
                 $s_equivuris_temp = $this->m_store->getEquivURIsForURI( $s_uri );
                 if ( count( $s_equivuris_temp ) > 0 ) {
                     $s_equivuris = $s_equivuris_temp;
@@ -576,23 +576,23 @@ class SPARQLEndpoint extends SpecialPage {
                     $p_equivuris = $p_equivuris_temp;
                 }
             }
-            
+
             // Object
             $o_equivuris = array( $triple['o'] );
             if ( $triple['o_type'] === 'uri' ) {
-                $o_uri = $triple['o']; 
+                $o_uri = $triple['o'];
                 $o_equivuris_temp = $this->m_store->getEquivURIsForURI( $o_uri );
                 if ( count( $o_equivuris_temp ) > 0 ) {
                     $o_equivuris = $o_equivuris_temp;
                 }
             }
-            
+
             // Generate triples
             foreach ( $s_equivuris as $s_equivuri ) {
                 foreach ( $p_equivuris as $p_equivuri ) {
                     foreach ( $o_equivuris as $o_equivuri ) {
                         $newtriple = array(
-                    		's' => $s_equivuri, 
+                    		's' => $s_equivuri,
                 			'p' => $p_equivuri,
                     		'o' => $o_equivuri
                         );
@@ -603,12 +603,12 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $newtriples;
     }
-    
+
     function complementSPARQLResultRowsWithEquivURIs( $output_structure, $p_uris_filter = '' ) {
         $predvarname = $this->getPredicateVariableName();
         $variables = $output_structure['result']['variables'];
         $rows = $output_structure['result']['rows'];
-        
+
         $predvarname = 'p'; // TODO DO a real check up
         $newrows_total = array();
         foreach ( $rows as $rowid => $row ) {
@@ -651,7 +651,7 @@ class SPARQLEndpoint extends SpecialPage {
         $output_structure['result']['rows'] = $newrows_total;
         return $output_structure;
     }
-    
+
     /**
      * Convert an ARC triple index array structure into RDF/XML
      * @param array $tripleindex
@@ -668,7 +668,7 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $rdfxml;
     }
-    
+
     /**
      * Convert an ARC triples array into RDF/XML
      * @param array $triples
@@ -685,10 +685,10 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $rdfxml;
     }
-    
+
     /**
      * Convert all URI Resolver URIs which have a corresponding Original URI,
-     * to that Original URI. 
+     * to that Original URI.
      * @param string $text
      * @return string $text
      */
@@ -704,7 +704,7 @@ class SPARQLEndpoint extends SpecialPage {
         }
         return $text;
     }
-    
+
     function getPredicateVariableName() {
         $predvarname = $this->m_query_parsed['vars'][1];
         return $predvarname;
@@ -722,15 +722,15 @@ class SPARQLEndpoint extends SpecialPage {
             'db_user' => $wgDBuser,
             'db_pwd' =>  $wgDBpassword,
             'store_name' => $smwgARC2StoreConfig['store_name'],
-            'endpoint_features' => 
+            'endpoint_features' =>
         array(
-            'select', 
-            'construct', 
-            'ask', 
-            'describe', 
+            'select',
+            'construct',
+            'ask',
+            'describe',
         # 'load',
         # 'insert', // This is not needed, since it is done via SMWWriter instead
-        # 'delete', // This is not needed, since it is done via SMWWriter instead 
+        # 'delete', // This is not needed, since it is done via SMWWriter instead
         # 'dump' /* dump is a special command for streaming SPOG export */
         ),
             'endpoint_timeout' => 60, /* not implemented in ARC2 preview */
@@ -794,7 +794,7 @@ class SPARQLEndpoint extends SpecialPage {
      * @param string $query
      * @return string $htmlForm
      */
-    private function getHTMLForm( $query = '') {
+    private function getHTMLForm( $query = '' ) {
         global $wgArticlePath, $wgUser, $wgRequest;
 
         $uriResolverURI = $this->m_store->getURIResolverURI();
@@ -815,22 +815,22 @@ class SPARQLEndpoint extends SpecialPage {
 
         $selected_output_html = $wgRequest->getText( 'output', '' ) == 'htmltab' ? ' selected="selected" ' : '';
         $selected_output_rdfxml = $wgRequest->getText( 'output', '' ) == 'rdfxml' ? ' selected="selected" ' : '';
-        
+
         // Make the HTML format selected by default
         if ( $selected_output_rdfxml == '' ) {
             $selected_output_html = ' selected="selected" ';
         }
 
-        $htmlForm = '<form method="post" action="' . str_replace('/$1', '', $wgArticlePath) . '/Special:SPARQLEndpoint"
+        $htmlForm = '<form method="post" action="' . str_replace( '/$1', '', $wgArticlePath ) . '/Special:SPARQLEndpoint"
             name="createEditQuery">
             <div style="font-size: 10px">
-            
+
             <table border="0"><tbody>
             <tr><td colspan="3">Enter SPARQL query:</td><tr>
             <tr><td colspan="3"><textarea cols="80" rows="9" name="query">' . $query . '</textarea></td></tr>
             <tr>
             <td style="vertical-align: top; border-right: 1px solid #ccc;">
-            
+
             <table border="0" style="background: transparent; font-size: 11px;">
             <tr><td width="160" style="text-align: right">Query by original URIs:</td>
             <td>
@@ -840,11 +840,11 @@ class SPARQLEndpoint extends SpecialPage {
             <td>
 			<input type="checkbox" name="equivuri_q" value="1" ' . $checked_equivuri_q . '/>
             </td></tr>
-            </table>            
-            
+            </table>
+
             </td>
             <td width="170" style="vertical-align: top; border-right: 1px solid #ccc;">
-            
+
             <table border="0" style="font-size: 11px; background: transparent;">
             <tr><td style="text-align: right">Output original URIs:</td>
             <td>
@@ -855,37 +855,37 @@ class SPARQLEndpoint extends SpecialPage {
 			<input type="checkbox" name="equivuri_o" id="outputequivuri" value="1" ' . $checked_equivuri_o . ' onChange="toggleDisplay(\'byontology\');" />
             </td></tr>
             </table>
-            
+
             </td>
             <td width="260" style="vertical-align: top;">
-            
+
             <table border="0" style="font-size: 11px; background: transparent;" >
             <tr><td style="text-align: right" width="180">Output format:</td>
             <td style="vertical-align: top">
-            <select id="output" name="output" onChange="toggleDisplay(\'byontology\');" > 
+            <select id="output" name="output" onChange="toggleDisplay(\'byontology\');" >
               <!-- <option value="" >default</option> -->
               <!-- <option value="json" >JSON</option> -->
               <!-- <option value="plain" >Plain</option> -->
-              <!-- <option value="php_ser" >Serialized PHP</option> --> 
+              <!-- <option value="php_ser" >Serialized PHP</option> -->
               <!-- <option value="turtle" >Turtle</option> -->
-              <option value="htmltab" ' . $selected_output_html . '>HTML</option> 
+              <option value="htmltab" ' . $selected_output_html . '>HTML</option>
               <option value="xml" >XML Resultset</option>
-              <option value="rdfxml" ' . $selected_output_rdfxml . '>RDF/XML</option> 
-              <!-- <option value="infos" >Query Structure</option> --> 
+              <option value="rdfxml" ' . $selected_output_rdfxml . '>RDF/XML</option>
+              <!-- <option value="infos" >Query Structure</option> -->
               <!-- <option value="tsv" >TSV</option> -->
-            </select> 
+            </select>
             </td></tr>
             <tr>
             <td colspan="2">
             <span style="font-family: arial, helvetica, sans-serif; font-size: 10px; color: #777;">(RDF/XML requires creating triples using <a href="http://www.w3.org/TR/rdf-sparql-query/#construct">CONSTRUCT</a>)</span>
             </td>
             </table>
-            
+
             </td>
             </tr>
             <tr>
             <td colspan="3">
-            
+
             <div id="byontology" style="display: none; background: #ffd; border: 1px solid #ee7;">
             <table border="0" style="font-size: 11px; background: transparent;" >
             <tr><td style="text-align: right;">Filter by vocabulary:</td>
@@ -902,19 +902,19 @@ class SPARQLEndpoint extends SpecialPage {
             <td>&nbsp;</td>
             <td>
             <span style="font-family: arial, helvetica, sans-serif; font-size: 10px; color: #777">Example: http://xmlns.com/foaf/spec/index.rdf</span>
-            </td></tr>            
+            </td></tr>
 			</table>
-			</div>         
-			   
+			</div>
+
             </td>
             </table>
 			</div>
-			            
-            <input type="submit" value="Submit">' . Xml::hidden( 'token', $wgUser->editToken() ) . ' 
+
+            <input type="submit" value="Submit">' . Xml::hidden( 'token', $wgUser->editToken() ) . '
             </form>';
         return $htmlForm;
     }
-    
+
     /**
      * Get the javascript used for some functionality in the main SPARQL
      * querying HTML form
@@ -924,10 +924,10 @@ class SPARQLEndpoint extends SpecialPage {
         $htmlFormScript = "<script type=\"text/javascript\">
         function toggleDisplay(id1) {
         	var bostyle = document.getElementById(id1).style.display;
-        	var fmtsel = document.getElementById('output'); 
+        	var fmtsel = document.getElementById('output');
         	var fmt = fmtsel.options[fmtsel.selectedIndex].value;
         	var outsel = document.getElementById('outputequivuri');
-        	if ( outsel.checked && fmt.match('rdfxml') ) { 
+        	if ( outsel.checked && fmt.match('rdfxml') ) {
 				document.getElementById(id1).style.display = 'block';
 			} else {
 				document.getElementById(id1).style.display = 'none';
@@ -942,13 +942,13 @@ class SPARQLEndpoint extends SpecialPage {
      * @return string $query
      */
     function getQuery() {
-        $query = $wgRequest->getText('query');
+        $query = $wgRequest->getText( 'query' );
         return $query;
     }
 
     /**
-     * Update the query variable in the $_POST object. 
-     * Useful for passing on parsing to ARC, since $_POST is what ARC reads  
+     * Update the query variable in the $_POST object.
+     * Useful for passing on parsing to ARC, since $_POST is what ARC reads
      * @param string $query
      */
     function setQueryInPost( $query ) {
@@ -957,8 +957,8 @@ class SPARQLEndpoint extends SpecialPage {
     }
 
     /**
-     * Update the output (type) variable in the $_POST object. 
-     * Useful for passing on parsing to ARC, since $_POST is what ARC reads  
+     * Update the output (type) variable in the $_POST object.
+     * Useful for passing on parsing to ARC, since $_POST is what ARC reads
      * @param string $type
      */
     function setOutputTypeInPost( $type ) {

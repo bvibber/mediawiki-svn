@@ -2,9 +2,9 @@
 
 global $IP;
 
-require_once("$IP/extensions/SemanticMediaWiki/includes/storage/SMW_SQLStore2.php");
+require_once( "$IP/extensions/SemanticMediaWiki/includes/storage/SMW_SQLStore2.php" );
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
     die( 'Not a valid entry point.' );
 }
 
@@ -22,28 +22,28 @@ class SMWARC2Store extends SMWSQLStore2 {
         global $wgDBserver, $wgDBname, $wgDBuser, $wgDBpassword, $smwgARC2StoreConfig;
 
         /* instantiation */
-        $this->arc2store = ARC2::getStore($smwgARC2StoreConfig);
+        $this->arc2store = ARC2::getStore( $smwgARC2StoreConfig );
     }
 
     /**
      * wraps removeDataForURI
      * @param $subject
      */
-    function deleteSubject(Title $subject) {
-        $subject_uri = SMWExporter::expandURI($this->getURI($subject));
-        $this->removeDataForURI($subject_uri);
+    function deleteSubject( Title $subject ) {
+        $subject_uri = SMWExporter::expandURI( $this->getURI( $subject ) );
+        $this->removeDataForURI( $subject_uri );
 
-        return parent::deleteSubject($subject);
+        return parent::deleteSubject( $subject );
     }
 
     /**
      * deletes triples that have $uri as subject
      * @param $uri
      */
-    function removeDataForURI($uri) {
-        $sparqlUpdateText = "DELETE { <".$uri."> ?x ?y . }";
-        wfDebugLog('SPARQL_LOG', "===DELETE===\n".$sparqlUpdateText);
-        $response = $this->do_arc2_query($sparqlUpdateText);
+    function removeDataForURI( $uri ) {
+        $sparqlUpdateText = "DELETE { <" . $uri . "> ?x ?y . }";
+        wfDebugLog( 'SPARQL_LOG', "===DELETE===\n" . $sparqlUpdateText );
+        $response = $this->do_arc2_query( $sparqlUpdateText );
         return $response;
     }
 
@@ -51,18 +51,18 @@ class SMWARC2Store extends SMWSQLStore2 {
      * Does update. First deletes, then inserts.
      * @param $data
      */
-    function updateData(SMWSemanticData $data) {
-        $export = SMWExporter::makeExportData($data);
-        $subject_uri = SMWExporter::expandURI($export->getSubject()->getName());
+    function updateData( SMWSemanticData $data ) {
+        $export = SMWExporter::makeExportData( $data );
+        $subject_uri = SMWExporter::expandURI( $export->getSubject()->getName() );
 
         // remove subject from triple store
-        $this->removeDataForURI($subject_uri);
+        $this->removeDataForURI( $subject_uri );
 
         $triple_list = $export->getTripleList();
 
         $sparqlUpdateText = "INSERT INTO <> {\n";
 
-        foreach ($triple_list as $triple) {
+        foreach ( $triple_list as $triple ) {
 
             $subject = $triple[0];
             $predicate = $triple[1];
@@ -72,23 +72,23 @@ class SMWARC2Store extends SMWSQLStore2 {
             $sub_str = "";
             $pre_str = "";
 
-            if ($object instanceof SMWExpLiteral) {
-                $obj_str = "\"".$object->getName()."\"".(($object->getDatatype() == "") ? "" : "^^<".$object->getDatatype().">");
-            } else if ($object instanceof SMWExpResource) {
-                $obj_str = "<".SMWExporter::expandURI($object->getName()).">";
+            if ( $object instanceof SMWExpLiteral ) {
+                $obj_str = "\"" . $object->getName() . "\"" . ( ( $object->getDatatype() == "" ) ? "" : "^^<" . $object->getDatatype() . ">" );
+            } else if ( $object instanceof SMWExpResource ) {
+                $obj_str = "<" . SMWExporter::expandURI( $object->getName() ) . ">";
             } else {
                 $obj_str = "\"\"";
             }
 
-            if ($subject instanceof SMWExpResource) {
-                $sub_str = "<".SMWExporter::expandURI($subject->getName()).">";
+            if ( $subject instanceof SMWExpResource ) {
+                $sub_str = "<" . SMWExporter::expandURI( $subject->getName() ) . ">";
             }
 
-            if ($predicate instanceof SMWExpResource) {
-                $pre_str = "<".SMWExporter::expandURI($predicate->getName()).">";
+            if ( $predicate instanceof SMWExpResource ) {
+                $pre_str = "<" . SMWExporter::expandURI( $predicate->getName() ) . ">";
             }
 
-            $sparqlUpdateText .= $sub_str." ".$pre_str." ".$obj_str." .\n";
+            $sparqlUpdateText .= $sub_str . " " . $pre_str . " " . $obj_str . " .\n";
         }
         $sparqlUpdateText .= "}\n";
 
@@ -96,22 +96,22 @@ class SMWARC2Store extends SMWSQLStore2 {
         // var_dump();
         // TODO Debug-code
 
-        wfDebugLog('SPARQL_LOG', "===INSERT===\n".$sparqlUpdateText);
+        wfDebugLog( 'SPARQL_LOG', "===INSERT===\n" . $sparqlUpdateText );
 
-        $response = $this->do_arc2_query($sparqlUpdateText);
+        $response = $this->do_arc2_query( $sparqlUpdateText );
 
-        return parent::updateData($data);
+        return parent::updateData( $data );
     }
 
     /**
      * Insert new pages into endpoint. Used to import data.
      * @param $title
      */
-    function insertData(Title $title, $pageid) {
-        $newpage = SMWDataValueFactory::newTypeIDValue('_wpg');
-        $newpage->setValues($title->getDBkey(), $title->getNamespace(), $pageid);
-        $semdata = $this->getSemanticData($newpage);
-        $this->updateData($semdata);
+    function insertData( Title $title, $pageid ) {
+        $newpage = SMWDataValueFactory::newTypeIDValue( '_wpg' );
+        $newpage->setValues( $title->getDBkey(), $title->getNamespace(), $pageid );
+        $semdata = $this->getSemanticData( $newpage );
+        $this->updateData( $semdata );
     }
 
     /**
@@ -121,25 +121,25 @@ class SMWARC2Store extends SMWSQLStore2 {
      * @param $pageid
      * @param $redirid
      */
-    function changeTitle(Title $oldtitle, Title $newtitle, $pageid, $redirid=0) {
+    function changeTitle( Title $oldtitle, Title $newtitle, $pageid, $redirid = 0 ) {
 
         // Save it in parent store now!
         // We need that so we get all information correctly!
-        $result = parent::changeTitle($oldtitle, $newtitle, $pageid, $redirid);
+        $result = parent::changeTitle( $oldtitle, $newtitle, $pageid, $redirid );
 
         // delete old stuff
-        $old_uri = SMWExporter::expandURI($this->getURI($oldtitle));
-        $this->removeDataForURI($old_uri);
+        $old_uri = SMWExporter::expandURI( $this->getURI( $oldtitle ) );
+        $this->removeDataForURI( $old_uri );
 
-        $newpage = SMWDataValueFactory::newTypeIDValue('_wpg');
-        $newpage->setValues($newtitle->getDBkey(), $newtitle->getNamespace(), $pageid);
-        $semdata = $this->getSemanticData($newpage);
-        $this->updateData($semdata);
+        $newpage = SMWDataValueFactory::newTypeIDValue( '_wpg' );
+        $newpage->setValues( $newtitle->getDBkey(), $newtitle->getNamespace(), $pageid );
+        $semdata = $this->getSemanticData( $newpage );
+        $this->updateData( $semdata );
 
-        $oldpage = SMWDataValueFactory::newTypeIDValue('_wpg');
-        $oldpage->setValues($oldtitle->getDBkey(), $oldtitle->getNamespace(), $redirid);
-        $semdata = $this->getSemanticData($oldpage);
-        $this->updateData($semdata,false);
+        $oldpage = SMWDataValueFactory::newTypeIDValue( '_wpg' );
+        $oldpage->setValues( $oldtitle->getDBkey(), $oldtitle->getNamespace(), $redirid );
+        $semdata = $this->getSemanticData( $oldpage );
+        $this->updateData( $semdata, false );
 
         return $result;
     }
@@ -148,12 +148,12 @@ class SMWARC2Store extends SMWSQLStore2 {
      * no setup required
      * @param unknown_type $verbose
      */
-    function setup($verbose = true) {
-        return parent::setup($verbose);
+    function setup( $verbose = true ) {
+        return parent::setup( $verbose );
     }
 
 
-    function drop($verbose = true) {
+    function drop( $verbose = true ) {
         return parent::drop();
     }
 
@@ -162,13 +162,13 @@ class SMWARC2Store extends SMWSQLStore2 {
      * TODO: Deprecated, replaced by do_arc2_query
      * @param $requestString
      */
-    function do_arc2_post($requestString) {
+    function do_arc2_post( $requestString ) {
         $postdata = http_build_query(
         array(
                 'request' => $requestString
         )
         );
-        $opts = array('http' =>
+        $opts = array( 'http' =>
         array(
                 'method'  => 'POST',
                 'header'  => 'Content-type: application/x-www-form-urlencoded',
@@ -176,20 +176,20 @@ class SMWARC2Store extends SMWSQLStore2 {
         )
         );
 
-        $context  = stream_context_create($opts);
-        $result = file_get_contents(SPARQL_ENDPOINT_UPDATE_URL, false, $context);
+        $context  = stream_context_create( $opts );
+        $result = file_get_contents( SPARQL_ENDPOINT_UPDATE_URL, false, $context );
         return $result;
     }
 
-     
+
     /**
      * Communicates with ARC2 RDF Store
      * @param $requestString
      */
-    function do_arc2_query($requestString) {
+    function do_arc2_query( $requestString ) {
 
         $q = $requestString;
-        $rs = $this->arc2store->query($q);
+        $rs = $this->arc2store->query( $q );
         $result = $rs;
 
         // echo( "<pre>" . $this->unhtmlify( $requestString ) . "</pre>" );
@@ -206,8 +206,8 @@ class SMWARC2Store extends SMWSQLStore2 {
      * @return string $outstring
      */
     function unhtmlify( $instring ) {
-        $outstring = str_replace('<','&lt;',$instring);
-        $outstring = str_replace('>','&gt;',$outstring);
+        $outstring = str_replace( '<', '&lt;', $instring );
+        $outstring = str_replace( '>', '&gt;', $outstring );
         return $outstring;
     }
 
@@ -217,14 +217,14 @@ class SMWARC2Store extends SMWSQLStore2 {
      * @param string $title
      * @return string $uri
      */
-    protected function getURI($title) {
+    protected function getURI( $title ) {
         $uri = "";
-        if($title instanceof Title){
-            $dv = SMWDataValueFactory::newTypeIDValue('_wpg');
-            $dv->setTitle($title);
+        if ( $title instanceof Title ) {
+            $dv = SMWDataValueFactory::newTypeIDValue( '_wpg' );
+            $dv->setTitle( $title );
             $exp = $dv->getExportData();
             $uri = $exp->getSubject()->getName();
-        }else{
+        } else {
             // There could be other types as well that we do NOT handle here
         }
 

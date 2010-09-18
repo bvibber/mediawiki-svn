@@ -53,13 +53,13 @@ class RDFIOPageHandler {
             $propertyErrorText = $property->getErrorText();
             $propertyHasError = ( $propertyErrorText != '' );
             if ( $propertyHasError ) {
-                $this->addError( "<p>In RDFIOPageHandler::writeOrDeleteDataToWiki(): " . $property->getErrorText() . "</p>");
+                $this->addError( "<p>In RDFIOPageHandler::writeOrDeleteDataToWiki(): " . $property->getErrorText() . "</p>" );
             }
-            
+
             $valueErrorText = $value->getErrorText();
             $valueHasError = ( $valueErrorText != '' );
             if ( $valueHasError ) {
-                $this->addError( "<p>Error creating property value object in RDFIOPageHandler::writeOrDeleteDataToWiki():</p><p>" . $value->getErrorText() . "</p>");
+                $this->addError( "<p>Error creating property value object in RDFIOPageHandler::writeOrDeleteDataToWiki():</p><p>" . $value->getErrorText() . "</p>" );
             }
             if ( $delete ) {
                 $this->m_smwwriter_remove->addPropertyObjectValue( $property, $value );
@@ -69,7 +69,7 @@ class RDFIOPageHandler {
                 $editmessage = "Importing properties. Last property added: " . $propertystring . " : " . $valuestring;
             }
         }
-        
+
         $this->m_smwwriter->update( $this->m_smwwriter_remove, $this->m_smwwriter_add, $editmessage );
         $smwWriterError = $this->m_smwwriter->getError();
         $smwWriterHasError = ( $smwWriterError != '' );
@@ -77,7 +77,7 @@ class RDFIOPageHandler {
             $this->addError( "<p>SMWWriter Error: " . $smwWriterError . "</p>" );
         }
     }
-    
+
     /**
      * Delete the data in the object variables from the wiki page
      * corresponding to this page handler
@@ -88,13 +88,13 @@ class RDFIOPageHandler {
 
     /**
      * Wrapper method for wikiPageExistsSaveEditToken()
-     * TODO Is this really needed? 
+     * TODO Is this really needed?
      */
     private function checkWikiPageExists() {
         $this->m_wikipageexists = $this->wikiPageExistsSaveEditToken();
         return $this->m_wikipageexists;
     }
-    
+
     /**
      * For a wiki page title, check if it exists (and at the same time, store an edit token),
      * and if not, create it.
@@ -113,15 +113,15 @@ class RDFIOPageHandler {
     private function createWikiPage() {
         // Prepare a 'fake' request to the MediaWiki API, which we use internally
         // See http://www.mediawiki.org/wiki/API:Calling_internally for more info
-        $fauxEditRequest = new FauxRequest(array (
+        $fauxEditRequest = new FauxRequest( array (
                         'action' => 'edit',
-                        'title' => $this->m_wikititlefull, // For the faux request, the namespace must be included in text form 
+                        'title' => $this->m_wikititlefull, // For the faux request, the namespace must be included in text form
                         'section' => '0',
                         'summary' => 'New Page (by SMWRDFConnector)',
                         'text' => '<!-- Empty page -->',
                         'token' => $this->m_edittoken
-        ));
-        $editApi = new ApiMain($fauxEditRequest, $enableWrite = true);
+        ) );
+        $editApi = new ApiMain( $fauxEditRequest, $enableWrite = true );
         $editApi->execute();
         $editApiOutput = & $editApi->getResultData(); // TODO: Take care of this
     }
@@ -132,16 +132,16 @@ class RDFIOPageHandler {
      * @return boolean
      */
     private function wikiPageExistsSaveEditToken() {
-        $fauxRequest = new FauxRequest(array (
+        $fauxRequest = new FauxRequest( array (
                     'action' => 'query',
                     'prop' => 'info',
                     'intoken' => 'edit',
                     'titles' => $this->m_wikititlefull
-        ));
+        ) );
         // We are using the MediaWiki API internally.
         // See http://www.mediawiki.org/wiki/API:Calling_internally
         // for more info
-        $api = new ApiMain($fauxRequest);
+        $api = new ApiMain( $fauxRequest );
         $api->execute();
         $apioutput = & $api->getResultData(); // TODO: Take care of this
         $apioutputpages = $apioutput['query']['pages'];
@@ -150,13 +150,13 @@ class RDFIOPageHandler {
         }
         // Using intricacies of array structure to determine if page exists
         // TODO: Use more robust method
-        $pageismissing = count($apioutput['query']['pages'][-1]) > 0;
+        $pageismissing = count( $apioutput['query']['pages'][ -1] ) > 0;
         return !$pageismissing;
     }
 
     /**
      * Initialize SMWWriter for the page corresponding to title
-     * in object variable 
+     * in object variable
      * @param boolean $delete
      */
     private function initSMWWriter( $delete = false ) {
@@ -180,17 +180,17 @@ class RDFIOPageHandler {
 
     private function addError( $errormessage ) {
         $this->m_errors[] = $errormessage;
-        $this->m_haserrors = true; 
+        $this->m_haserrors = true;
     }
-    
+
     public function hasErrors() {
-        return $this->m_haserrors; 
+        return $this->m_haserrors;
     }
-    
+
     public function getErrors( ) {
         return $this->m_errors;
     }
-    
+
     public function getErrorText() {
         $errors = $this->m_errors;
         $errortext = '';
@@ -199,6 +199,6 @@ class RDFIOPageHandler {
             $errortext .= "$error\n";
             $i++;
         }
-        return $errortext; 
+        return $errortext;
     }
 }

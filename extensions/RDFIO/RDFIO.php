@@ -1,24 +1,23 @@
 <?php
-
 /**
  * Initializing file for SMW RDFIO extension.
  *
  * @file
  * @ingroup RDFIO
  */
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('RDFIO_VERSION', '0.5.0');
-	
+define( 'RDFIO_VERSION', '0.5.0' );
+
 global $wgExtensionCredits;
 
-$wgExtensionCredits['other'][]= array(
+$wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'RDFIO',
 	'version' => RDFIO_VERSION,
-	'author' => array( '[http://saml.rilspace.org Samuel Lampa]' ),
+	'author' => '[http://saml.rilspace.org Samuel Lampa]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RDFIO',
 	'description' => 'Extended RDF Import/Export functionality, including SPARQL endpoint, for Semantic MediaWiki'
 );
@@ -28,7 +27,7 @@ $wgExtensionCredits['other'][]= array(
  ****************************/
 
 $smwgARC2Path = $smwgIP . '/libs/arc/';
-require_once($smwgARC2Path . '/ARC2.php');
+require_once( $smwgARC2Path . '/ARC2.php' );
 
 /**************************
  *  ARC2 RDF Store config *
@@ -45,24 +44,23 @@ $smwgARC2StoreConfig = array(
 );
 $smwgDefaultStore = 'SMWARC2Store'; // Determines database table prefix
 
-require_once("$IP/extensions/RDFIO/stores/SMW_ARC2Store.php");
-require_once("$IP/extensions/RDFIO/specials/SpecialARC2Admin.php");
+require_once( "$IP/extensions/RDFIO/stores/SMW_ARC2Store.php" );
+require_once( "$IP/extensions/RDFIO/specials/SpecialARC2Admin.php" );
 
 /**************************
  *   SMWWriter settings   *
  **************************/
-
-include_once("$IP/extensions/PageObjectModel/POM.php");
-include_once("$IP/extensions/SMWWriter/SMWWriter.php");
+// @todo FIXME: use auto loader where possible.
+include_once( "$IP/extensions/PageObjectModel/POM.php" );
+include_once( "$IP/extensions/SMWWriter/SMWWriter.php" );
 
 /**************************
  *    RDFIO Components    *
  **************************/
 
-require_once("classes/Utils.php");
-require_once("classes/RDFStore.php");
-require_once("classes/SMWBatchWriter.php");
-require_once("classes/PageHandler.php");
-require_once("specials/SpecialRDFImport.php");
-require_once("specials/SpecialSPARQLEndpoint.php");
-
+require_once( "classes/Utils.php" );
+require_once( "classes/RDFStore.php" );
+require_once( "classes/SMWBatchWriter.php" );
+require_once( "classes/PageHandler.php" );
+require_once( "specials/SpecialRDFImport.php" );
+require_once( "specials/SpecialSPARQLEndpoint.php" );

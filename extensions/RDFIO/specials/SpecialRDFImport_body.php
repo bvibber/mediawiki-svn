@@ -11,7 +11,7 @@ class RDFImport extends SpecialPage {
     protected $m_nsprefix_in_wikititles_entities;
     protected $m_show_abbrscreen_properties;
     protected $m_show_abbrscreen_entities;
-    
+
     function __construct() {
         global $wgUser;
 
@@ -20,9 +20,9 @@ class RDFImport extends SpecialPage {
             $this->m_haswriteaccess = true;
         } else {
             $this->m_haswriteaccess = false;
-        } 
+        }
         parent::__construct( 'RDFImport' );
-        wfLoadExtensionMessages('RDFImport');
+        wfLoadExtensionMessages( 'RDFImport' );
     }
 
     function execute( $par ) {
@@ -30,7 +30,7 @@ class RDFImport extends SpecialPage {
 
         $this->setHeaders();
         $this->handleRequestData();
-        
+
         if ( $this->m_action == 'Import' ) {
             if ( !$wgUser->matchEditToken( $this->m_edittoken ) ) {
                 die( 'Cross-site request forgery detected!' );
@@ -68,24 +68,24 @@ class RDFImport extends SpecialPage {
             $this->outputHTMLForm();
         }
     }
-    
+
     /**
      * Get data from the request object and store it in class variables
      */
     function handleRequestData() {
         global $wgRequest;
-        $this->m_action = $wgRequest->getText('action');
-        $this->m_dataformat = $wgRequest->getText('dataformat');
-        $this->m_importdata = $wgRequest->getText('importdata');
+        $this->m_action = $wgRequest->getText( 'action' );
+        $this->m_dataformat = $wgRequest->getText( 'dataformat' );
+        $this->m_importdata = $wgRequest->getText( 'importdata' );
         $this->m_edittoken = $wgRequest->getText( 'token' );
         $this->m_nsprefix_in_wikititles_properties = $wgRequest->getBool( 'nspintitle_prop', false );
         $this->m_show_abbrscreen_properties = $wgRequest->getBool( 'abbrscr_prop', false );
         $this->m_nsprefix_in_wikititles_entities = $wgRequest->getBool( 'nspintitle_ent', false );
         $this->m_show_abbrscreen_entities = $wgRequest->getBool( 'abbrscr_ent', false );
     }
-    
+
     /**
-     * Create a new SMWBatchWriter object, store it in a class variable, and 
+     * Create a new SMWBatchWriter object, store it in a class variable, and
      * set some options, like which ns prefixes to use.
      */
     function initSMWBatchWriter() {
@@ -93,7 +93,7 @@ class RDFImport extends SpecialPage {
         $this->m_smwbatchwriter->setUseNSPInTitlesForProperties(  $this->m_nsprefix_in_wikititles_properties );
         $this->m_smwbatchwriter->setUseNSPInTitlesForEntities( $this->m_nsprefix_in_wikititles_entities );
     }
-    
+
     /**
      * Tell the SMWBatchWriter object to execute the import
      */
@@ -103,13 +103,13 @@ class RDFImport extends SpecialPage {
         $wgOut->addScript( $this->getExampleDataJs() );
         $wgOut->addHTML( $this->getHTMLFormContent() );
     }
-    
+
     /**
      * Add more namespace prefixes in the configured namespace mapping
      */
     function addNewNsPrefixes() {
-        $nss = $wgRequest->getArray('ns',array());
-        $nsprefixes = $wgRequest->getArray('nsprefixes',array());
+        $nss = $wgRequest->getArray( 'ns', array() );
+        $nsprefixes = $wgRequest->getArray( 'nsprefixes', array() );
         $newnsmappings = array();
         $nsid = 0;
         foreach ( $nss as $ns ) {
@@ -120,7 +120,7 @@ class RDFImport extends SpecialPage {
         $this->initSMWBatchWriter();
         $this->m_smwbatchwriter->AddNamespacePrefixes( $newnsmappings );
     }
-    
+
     /**
      * Output the HTML for the form, to the user
      */
@@ -129,9 +129,9 @@ class RDFImport extends SpecialPage {
         $wgOut->addScript( $this->getExampleDataJs() );
         $wgOut->addHTML( $this->getHTMLFormContent() );
     }
-    
-    /** 
-     * For a number of base uri:s, generate the HTML for a screen for 
+
+    /**
+     * For a number of base uri:s, generate the HTML for a screen for
      * configuring abbreviation for them
      * @param array $baseuris
      */
@@ -153,7 +153,7 @@ class RDFImport extends SpecialPage {
                            ";
         return $baseuriscreen;
     }
-    
+
     /**
      * For an array of unabbreviated entities, generate HTML for a
      * formatted list of these entities' URIs
@@ -203,16 +203,16 @@ class RDFImport extends SpecialPage {
                 \\n\
                 </rdf:RDF>';
     }
-    
+
     /**
      * Generate the main HTML form, if the variable $extraFormContent is set, the
-     * content of it will be prepended before the form 
+     * content of it will be prepended before the form
      * @param string $extraFormContent
      * @return string $htmlFormContent
      */
     public function getHTMLFormContent( $extraFormContent = '' ) {
         global $wgRequest, $wgUser, $wgArticlePath;
-        
+
         // Abbreviation (and screen) options for properties
         $checked_nspintitle_properties = $wgRequest->getBool( 'nspintitle_prop', false ) == 1 ? ' checked="true" ' : '';
         $checked_abbrscr_properties = $wgRequest->getBool( 'abbrscr_prop', false ) == 1 ? ' checked="true" ' : '';
@@ -222,9 +222,9 @@ class RDFImport extends SpecialPage {
         $checked_abbrscr_entities = $wgRequest->getBool( 'abbrscr_ent', false ) == 1 ? ' checked="true" ' : '';
 
         $this->m_importdata = $wgRequest->getText( 'importdata', '' );
-        
+
         // Create the HTML form for RDF/XML Import
-        $htmlFormContent = '<form method="post" action="' . str_replace('/$1', '', $wgArticlePath) . '/Special:RDFImport"
+        $htmlFormContent = '<form method="post" action="' . str_replace( '/$1', '', $wgArticlePath ) . '/Special:RDFImport"
             name="createEditQuery"><input type="hidden" name="action" value="Import">
             ' . $extraFormContent . '
             <table border="0"><tbody>
@@ -233,9 +233,9 @@ class RDFImport extends SpecialPage {
             </td></tr>
             <tr><td width="100">Data format:</td>
             <td>
-            <select id="dataformat" name="dataformat"> 
-              <option value="rdfxml" selected="selected">RDF/XML</option> 
-              <option value="turtle" >Turtle</option> 
+            <select id="dataformat" name="dataformat">
+              <option value="rdfxml" selected="selected">RDF/XML</option>
+              <option value="turtle" >Turtle</option>
             </select>
             </td>
             <td style="text-align: right; font-size: 10px;">

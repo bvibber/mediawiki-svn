@@ -1,7 +1,7 @@
 <?php
 
 /**
- * RDFIOStore contains utility functionality that requires connecting to the 
+ * RDFIOStore contains utility functionality that requires connecting to the
  * ARC based RDF store
  * @author samuel.lampa@gmail.com
  * @package RDFIO
@@ -21,18 +21,18 @@ class RDFIOStore {
     function getOrigURIURI() {
         return $this->getURIResolverURI() . 'Property-3AOriginal_URI';
     }
-    
+
     /**
-     * Get SMWs internal URI for corresponding to the "Equivalent URI" property 
+     * Get SMWs internal URI for corresponding to the "Equivalent URI" property
      * @return string
      */
     function getEquivURIURI() {
         return 'http://www.w3.org/2002/07/owl#sameAs';
     }
-    
+
     /**
      * Get SMWs internal URI for corresponding to the "Equivalent URI" property,
-     * for property pages 
+     * for property pages
      * @return string
      */
     function getEquivURIURIForProperty() {
@@ -40,7 +40,7 @@ class RDFIOStore {
     }
 
     /**
-     * For a given RDF URI, return it's original URI, as defined in wiki articles 
+     * For a given RDF URI, return it's original URI, as defined in wiki articles
      * by the "Original URI" property
      * @param string $uri
      * @return string $origuri
@@ -50,8 +50,8 @@ class RDFIOStore {
         $store = $this->m_arcstore;
         $origuriuri = $this->getOrigURIURI();
         $q = "SELECT ?origuri WHERE { <$uri> <$origuriuri> ?origuri }";
-        $rs = $store->query($q);
-        if (!$store->getErrors()) {
+        $rs = $store->query( $q );
+        if ( !$store->getErrors() ) {
             $rows = $rs['result']['rows'];
             $row = $rows[0];
             $origuri = $row['origuri'];
@@ -60,9 +60,9 @@ class RDFIOStore {
         }
         return $origuri;
     }
-    
+
     /**
-     * For a given RDF URI, return it's corresponding equivalend URIs 
+     * For a given RDF URI, return it's corresponding equivalend URIs
      * as defined in wiki articles by the Equivalent URI property
      * @param string $uri
      * @param boolean $is_property
@@ -77,18 +77,18 @@ class RDFIOStore {
             $equivuriuri = $this->getEquivURIURI();
         }
         $q = "SELECT ?equivuri WHERE { <$uri> <$equivuriuri> ?equivuri }";
-        $rs = $store->query($q);
-        if (!$store->getErrors()) {
+        $rs = $store->query( $q );
+        if ( !$store->getErrors() ) {
             $equivuris = $rs['result']['rows'];
             foreach ( $equivuris as $equivuriid => $equivuri ) {
-                $equivuris[$equivuriid] = $equivuri['equivuri']; 
-            } 
+                $equivuris[$equivuriid] = $equivuri['equivuri'];
+            }
         } else {
             die( "Error in ARC Store: " . print_r( $store->getErrors(), true ) );
         }
         return $equivuris;
     }
-    
+
     /**
      * @param string $ouri
      * @return string $uri
@@ -98,8 +98,8 @@ class RDFIOStore {
         $store = $this->m_arcstore;
         $origuriuri = $this->getOrigURIURI();
         $q = "SELECT ?uri WHERE { ?uri <$origuriuri> <$origuri> }";
-        $rs = $store->query($q);
-        if (!$store->getErrors()) {
+        $rs = $store->query( $q );
+        if ( !$store->getErrors() ) {
             if ( $rs !== '' ) {
                 $rows = $rs['result']['rows'];
                 $row = $rows[0];
@@ -121,8 +121,8 @@ class RDFIOStore {
         $store = $this->m_arcstore;
         $equivuriuri = $this->getEquivURIURI();
         $q = "SELECT ?uri WHERE { ?uri <$equivuriuri> <$equivuri> }";
-        $rs = $store->query($q);
-        if (!$store->getErrors()) {
+        $rs = $store->query( $q );
+        if ( !$store->getErrors() ) {
             $rows = $rs['result']['rows'];
             $row = $rows[0];
             $uri = $row['uri'];
@@ -141,7 +141,7 @@ class RDFIOStore {
         $uriresolveruri = $resolver->getFullURL() . '/';
         return $uriresolveruri;
     }
-    
+
     /**
      * For a URI that is defined using the "Original URI" property, return the wiki
      * article corresponding to that entity
@@ -149,7 +149,7 @@ class RDFIOStore {
      * @return string $wikititle;
      */
     function getWikiTitleByOriginalURI( $uri ) {
-        $wikititleresolveruri = $this->getURIForOrigURI( $uri ); 
+        $wikititleresolveruri = $this->getURIForOrigURI( $uri );
         $resolveruri = $this->getURIResolverURI();
         $wikititle = str_replace( $resolveruri, '', $wikititleresolveruri );
         $wikititle = str_replace( 'Property-3A', '', $wikititle );

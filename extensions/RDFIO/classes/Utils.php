@@ -1,7 +1,6 @@
 <?php
 
 class RDFIOUtils {
-
     /**
      * Checks if $uri is an URI Resolver URI (i.e. an URI used by SMW to identify wiki pages)
      * @param string $uri
@@ -11,7 +10,7 @@ class RDFIOUtils {
         $isURIResolverURI = ( preg_match( '/Special:URIResolver/', $uri, $matches ) > 0 );
         return $isURIResolverURI;
     }
-    
+
     /**
      * Checks if $uri is an ARC untitled identifier
      * @param string $uri
@@ -23,7 +22,7 @@ class RDFIOUtils {
         $isArcUntitledNode = ( $isArcUntitledNode1 || $isArcUntitledNode2 );
         return $isArcUntitledNode;
     }
-    
+
     /**
      * Checks if a string is a URL (i.e., starts with 'http:')
      * @param $text
@@ -33,7 +32,7 @@ class RDFIOUtils {
         $isURL = ( preg_match( '/^http(s)?:/', $text, $matches ) > 0 );
         return $isURL;
     }
-    
+
     /**
      * Extracts the "label", or "local part" of an URI, i.e. it removes
      * its namespace, or base URI
@@ -45,7 +44,7 @@ class RDFIOUtils {
         $basepart = $uriparts[0];
         $localpart = $uriparts[1];
         if ( $localpart[1] != '' ) {
-            return $localpart; 
+            return $localpart;
         } else {
             return $basepart;
         }
@@ -53,7 +52,7 @@ class RDFIOUtils {
 
     /**
      * Customized version of the splitURI($uri) of the ARC2 library (http://arc.semsol.org)
-     * Splits a URI into its base part and local part, and returns them as an 
+     * Splits a URI into its base part and local part, and returns them as an
      * array of two strings
      * @param string $uri
      * @return array
@@ -64,7 +63,7 @@ class RDFIOUtils {
          * the following namespaces may lead to conflated URIs,
          * we have to set the split position manually
          */
-        if (strpos($uri, 'www.w3.org')) {
+        if ( strpos( $uri, 'www.w3.org' ) ) {
             $specials = array(
         'http://www.w3.org/XML/1998/namespace',
         'http://www.w3.org/2005/Atom',
@@ -73,33 +72,33 @@ class RDFIOUtils {
             if ( $rdfiogBaseURIs != '' ) {
                 $specials = array_merge( $specials, $rdfiogBaseURIs );
             }
-            foreach ($specials as $ns) {
-                if (strpos($uri, $ns) === 0) {
-                    $local_part = substr($uri, strlen($ns));
-                    if (!preg_match('/^[\/\#]/', $local_part)) {
+            foreach ( $specials as $ns ) {
+                if ( strpos( $uri, $ns ) === 0 ) {
+                    $local_part = substr( $uri, strlen( $ns ) );
+                    if ( !preg_match( '/^[\/\#]/', $local_part ) ) {
                         return array( $ns, $local_part );
                     }
                 }
             }
         }
         /* auto-splitting on / or # */
-        //$re = '^(.*?)([A-Z_a-z][-A-Z_a-z0-9.]*)$';
-        if (preg_match('/^(.*[\#])([^\#]+)$/', $uri, $matches)) {
-            return array($matches[1], $matches[2]);
+        // $re = '^(.*?)([A-Z_a-z][-A-Z_a-z0-9.]*)$';
+        if ( preg_match( '/^(.*[\#])([^\#]+)$/', $uri, $matches ) ) {
+            return array( $matches[1], $matches[2] );
         }
-        if (preg_match('/^(.*[\:])([^\:\/]+)$/', $uri, $matches)) {
-            return array($matches[1], $matches[2]);
+        if ( preg_match( '/^(.*[\:])([^\:\/]+)$/', $uri, $matches ) ) {
+            return array( $matches[1], $matches[2] );
         }
-        if (preg_match('/^(.*[\/])([^\/]+)$/', $uri, $matches)) {
-            return array($matches[1], $matches[2]);
+        if ( preg_match( '/^(.*[\/])([^\/]+)$/', $uri, $matches ) ) {
+            return array( $matches[1], $matches[2] );
         }        /* auto-splitting on last special char, e.g. urn:foo:bar */
-        return array($uri, '');
+        return array( $uri, '' );
 
     }
-    
+
     static function contains( $word, $subject ) {
         $contains = preg_match( "/$word/i", $subject ) > 0;
-        return $contains; 
+        return $contains;
     }
 
     /**
@@ -112,7 +111,7 @@ class RDFIOUtils {
         print_r( $arrayToShow );
         echo "</pre>";
     }
-    
+
     static function showErrorMessage( $title, $message ) {
         global $wgOut;
         $errorhtml = RDFIOUtils::formatErrorHTML( $title, $message );
@@ -146,7 +145,7 @@ class RDFIOUtils {
         // Convert any table to sortable wiki table
         return $html;
     }
-    
+
     /**
      * Add css class attributes which make tables styled and sortable inside the wiki
      * @param string $html
@@ -169,7 +168,7 @@ class RDFIOUtils {
     }
 
     /**
-     * Convert to character identifiers used to make URLs XML compliant 
+     * Convert to character identifiers used to make URLs XML compliant
      * @param string $text
      * @return string $text
      */
@@ -180,9 +179,9 @@ class RDFIOUtils {
         $text = str_replace( ' ', '-20', $text );
         return $text;
     }
-    
+
     /**
-     * Convert back character identifiers used to make URLs XML compliant 
+     * Convert back character identifiers used to make URLs XML compliant
      * @param string $text
      * @return string $text
      */
@@ -190,12 +189,12 @@ class RDFIOUtils {
         $text = str_replace( '-23', '#', $text );
         $text = str_replace( '-3A', ':', $text );
         $text = str_replace( '-3F', '?', $text );
-        $text = str_replace( '-2D', '-', $text );    
+        $text = str_replace( '-2D', '-', $text );
         $text = str_replace( '-20', ' ', $text );
         $text = str_replace( '-3D', '=', $text );
         return $text;
     }
-    
+
     /**
      * @param string $text
      * @return string $text
@@ -216,7 +215,7 @@ class RDFIOUtils {
         $text = str_replace( '-20', '_', $text );
         return $text;
     }
-    
+
     /**
      * Remove characters which don't work in wiki titles
      * @param string $uri
@@ -246,5 +245,4 @@ class RDFIOUtils {
         $value = str_replace( ']', '', $value );
         return $value;
     }
-    
 }
