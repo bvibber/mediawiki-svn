@@ -671,6 +671,7 @@ mw.SmilLayout.prototype = {
 				'height' : this.smil.embedPlayer.getHeight()
 			};
 		}
+	
 		// Fit the image per the provided targetWidth closure
 		/*mw.log( 'getDominateAspectTransform:: naspect:' + 
 				( natrualSize.width / natrualSize.height ) + 

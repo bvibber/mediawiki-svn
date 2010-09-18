@@ -30,6 +30,9 @@
 		"mw.SequencerActionsView" : "actions/mw.SequencerActionsView.js",
 		"mw.SequencerActionsEdit" : "actions/mw.SequencerActionsEdit.js",
 		
+		"$j.fn.jPicker" : "tools/jPicker/jpicker-1.1.5.js",
+		"mw.style.jPicker" : "tools/jPicker/css/jPicker-1.1.5.css",
+		
 		"mw.SequencerRender" : "mw.SequencerRender.js",
 		
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
@@ -73,6 +76,8 @@
 				'mw.SequencerTimeline',
 				'mw.SequencerKeyBindings',
 				'mw.SequencerTools',
+				"$j.fn.jPicker",
+				"mw.style.jPicker",
 				
 				'mw.SequencerMenu',
 				'mw.SequencerActionsSequence',
