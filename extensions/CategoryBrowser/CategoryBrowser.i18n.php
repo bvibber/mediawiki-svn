@@ -169,6 +169,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -185,6 +186,9 @@ $messages['br'] = array(
 	'cb_all_op' => 'An holl',
 	'cb_or_op' => 'pe',
 	'cb_and_op' => 'ha',
+	'cb_edit_left_hint' => "Dilec'hiañ a-gleiz, mard eo posubl",
+	'cb_edit_right_hint' => "Dilec'hiañ a-zehoù, mard eo posubl",
+	'cb_edit_remove_hint' => 'Lemel, mard eo posubl',
 );
 
 /** Bosnian (Bosanski)
@@ -393,9 +397,11 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 
 /** Japanese (日本語)
  * @author Yanajin66
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'categorybrowser' => 'カテゴリーブラウザ',
+	'categorybrowser-desc' => '最もページなどが格納されたカテゴリをフィルターにかけ、それらをAJAXを使ったインターフェースで案内する[[Special:CategoryBrowser|特別ページ]]を提供する',
 	'cb_requires_javascript' => 'カテゴリーブラウザの拡張にはブラウザ上で有効にされたJavaScriptが必要である。',
 	'cb_ie6_warning' => '条件エディタはInternet Explorer 6.0以前のバージョンでは稼働しません。
 ただし、事前に定義された条件のブラウジングは正常に稼働するでしょう。 

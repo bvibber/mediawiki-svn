@@ -73,6 +73,13 @@ $messages['ia'] = array(
 	'slimboxthumbs-desc' => 'Visualisa imagines in plen grandor con [http://www.digitalia.be/software/slimbox2 Slimbox 2] post clic sur miniaturas',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'slimboxthumbs-desc' => '画像のサムネイルをクリックしたときに[http://www.digitalia.be/software/slimbox2 Slimbox 2]を使って、フルサイズで表示する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

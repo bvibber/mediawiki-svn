@@ -158,6 +158,21 @@ $messages['be-tarask'] = array(
 	'articleassessment-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Gwendal
+ */
+$messages['br'] = array(
+	'articleassessment-submit' => 'Kas',
+	'articleassessment-rating-neutrality' => 'Diberzh :',
+	'articleassessment-rating-completeness' => 'Graet :',
+	'articleassessment-rating-readability' => 'Lennus :',
+	'articleassessment-articlerating' => 'Priziadenn ar bajenn',
+	'articleassessment-thanks' => 'Trugarez! Ho priziadenn zo bet enrollet.',
+	'articleassessment-survey-answer-whyrated-other' => 'All',
+	'articleassessment-survey-question-useful-iffalse' => 'Perak ?',
+	'articleassessment-survey-submit' => 'Kas',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -226,9 +241,16 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 
 /** French (Français)
  * @author Crochet.david
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'articleassessment-submit' => 'Soumettre',
+	'articleassessment-rating-wellsourced' => 'Bien sourcé :',
+	'articleassessment-rating-neutrality' => 'Neutre :',
+	'articleassessment-rating-completeness' => 'Complet :',
+	'articleassessment-rating-readability' => 'Lisible :',
+	'articleassessment-articlerating' => 'Évaluation de la page',
+	'articleassessment-survey-answer-whyrated-other' => 'Autre',
 	'articleassessment-survey-question-useful-iffalse' => 'Pourquoi ?',
 	'articleassessment-survey-submit' => 'Soumettre',
 );
@@ -324,6 +346,7 @@ Es recommendate que tu lo re-evaluta.",
 /** Japanese (日本語)
  * @author Marine-Blue
  * @author Yanajin66
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'articleassessment' => '記事の評価',
@@ -343,8 +366,12 @@ $messages['ja'] = array(
 	'articleassessment-error' => 'エラーが発生しました。
 後でもう一度試みてください。',
 	'articleassessment-thanks' => 'ありがとうございます！あなたの評価は保存されました。',
+	'articleassessment-featurefeedback' => 'この機能について<span class="feedbacklink">フォードバック</span>をお願いします。',
+	'articleassessment-noratings' => '$1（$2の{{PLURAL:$2|評価}}）',
 	'articleassessment-stalemessage-norevisioncount' => "この記事はあなたが最後にレビューしてから、''修正''されました。
 再度レビューしたほうが良いかもしれません。",
+	'articleassessment-results-show' => '（結果は隠されています。<span class="showlink">表示</span>する。）',
+	'articleassessment-results-hide' => '（<span class="hidelink">結果を隠す</span>）',
 	'articleassessment-survey-question-whyrated' => '今日、なぜあなたがこのページを評価したか我々に教えてください（適用するすべてにチェックを入れてください）:',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => '私はページの全ての評価に貢献したいです',
 	'articleassessment-survey-answer-whyrated-development' => '私は自分の評価が積極的にこのページの開発に影響を与えることを希望している',
@@ -358,6 +385,8 @@ $messages['ja'] = array(
 	'articleassessment-survey-question-expert-iftrue' => 'あなたは専門知識を述べることができますか？',
 	'articleassessment-survey-question-comments' => 'あなたには追加すべきコメントがありますか？',
 	'articleassessment-survey-submit' => '送信',
+	'articleassessment-survey-title' => '質問に少し答えてください',
+	'articleassessment-survey-thanks' => '調査に記入していただき、ありがとうございます。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

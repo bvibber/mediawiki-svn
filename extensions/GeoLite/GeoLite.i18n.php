@@ -160,6 +160,13 @@ $messages['he'] = array(
 	'geolite-desc' => 'הפניה ל־GeoIp קלת משקל',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'geolite-desc' => 'GeoIp preusmjeravanje',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

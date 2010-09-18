@@ -521,7 +521,7 @@ Para xestionar as invitacións para unha característica individual, faga clic n
 	'invitations-feature-notallowed' => 'Non ten acceso para usar <i>$1</i>.',
 	'invitations-inviteform-title' => 'Invitar a un usuario a usar $1',
 	'invitations-inviteform-username' => 'Usuario para invitar',
-	'invitations-inviteform-submit' => 'Invitar',
+	'invitations-inviteform-submit' => 'Convidar',
 	'invitations-error-baduser' => 'Parece que o usuario que especificou non existe.',
 	'invitations-error-alreadyinvited' => 'O usuario que especificou xa ten acceso a esta característica!',
 	'invitations-invite-success' => 'Invitou con éxito a $1 para usar esta característica!',

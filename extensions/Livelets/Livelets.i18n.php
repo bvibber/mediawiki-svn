@@ -83,6 +83,13 @@ $messages['ia'] = array(
 	'livelets-desc' => 'Permitte le transclusion de paginas que se carga post le contento principal del pagina e que pote actualisar se dynamicamente con Ajax',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'livelets-desc' => 'いくつかのページを、ページの主な内容が読み込まれた後に、取り込まれるよう設定し、それらをAjaxを使って動的に更新できるようにする',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

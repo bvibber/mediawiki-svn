@@ -31,6 +31,13 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'variablepage-desc' => 'Redirection de page légère et variable',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -38,11 +45,25 @@ $messages['gl'] = array(
 	'variablepage-desc' => 'Redirección lixeira de páxina variable',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'variablepage-desc' => 'Lychti variabli Wyterleitige',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'variablepage-desc' => '軽い可変ページのリダイレクト',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

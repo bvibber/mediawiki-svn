@@ -231,6 +231,16 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
  */
 $messages['ja'] = array(
 	'reflect-desc' => '補強スレッドのコメント',
+	'reflect-bulleted' => 'こんにちは $1さん。
+
+$2はあなたがスレッド"$3"で作成したポイントを要約しました。
+
+要約は以下のようになります。: "$5"
+
+あなたは<$4>を訪れることによって$2があなたの要点を正しくとらえているかどうか、確かめることができます。
+
+もし、間違っていれば、あなたは要点を明確にすることができるでしょう。',
+	'reflect-bulleted-subject' => '[{{サイト名}}]  あなたの要点は$2によって要約されました。',
 );
 
 /** Colognian (Ripoarisch)

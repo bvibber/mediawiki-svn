@@ -510,15 +510,22 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dnik
  * @author Herr Mlinka
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'chemicalsources' => 'Kemijski izvori',
+	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki>, za kemijske formule',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stranica]] za kemijske izvore',
 	'chemFunctions_ListPage' => 'Kemijski izvori',
+	'chemFunctions_DataList' => 'Slijedi popis poveznica prema stranicama koje Vam mogu pružiti informacije o kemijskim tvarima koje ste tražili.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Tvar $MIXCASNameFormula na NIST-u</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Oxfordskom sveučilištu (Velika Britanija) (ne može se pretraživati)</a><br />',
 	'chemFunctions_CAS' => 'CAS broj',
 	'chemFunctions_ATCCode' => 'ATC kod',
 	'chemFunctions_ECNumber' => 'EC broj',
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Ime po IUPAC-u',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Pogreška pri unosu!',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

@@ -3798,6 +3798,7 @@ $messages['tr'] = array(
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'whitelistnewtableprocess' => 'Барыш',
 	'whitelistnewtablereview' => 'Карау',
 );
 

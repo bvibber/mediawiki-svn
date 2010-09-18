@@ -50,11 +50,32 @@ $messages['gl'] = array(
 	'qrcode-desc' => 'Xera e engade imaxes QR Code a unha páxina wiki',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'qrcode-desc' => 'Leit QR Code-Grafike aa un zun ere Wikisyte zue',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'qrcode-desc' => 'Genera e adde imagines con codice QR a un pagina wiki',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'qrcode-desc' => 'ウィキのページに、QRコードを生成し追加する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'qrcode-desc' => 'Generéiert QR Code-Grafiken op Wiki-Säiten derbäi',
 );
 
 /** Macedonian (Македонски)
@@ -71,9 +92,11 @@ $messages['nl'] = array(
 	'qrcode-desc' => "Genereert QR Code-afbeeldingen voor wikipagina's",
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
-	'qrcode-desc' => 'Generuje i dodaje do stron wiki QR Code w formacie png',
+	'qrcode-desc' => 'Generuje i dodaje do stron wiki grafiki z kodem kreskowym QR Code',
 );
 
 /** Piedmontese (Piemontèis)

@@ -4751,6 +4751,7 @@ $messages['pl'] = array(
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
 	'deletequeue-prod-title' => 'Zaproponuj usunięcie „$1”',
 	'deletequeue-delnom-otherreason' => 'Inny powód',
+	'deletequeue-delnom-extra' => 'Dodatkowe informacje',
 	'right-speedy-nominate' => 'Oznaczanie stron do ekspresowego skasowania',
 	'right-speedy-review' => 'Przeglądanie stron oznaczonych do ekspresowego skasowania',
 	'right-prod-nominate' => 'Proponowanie usunięcia strony',

@@ -132,6 +132,7 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Meno25
  * @author Nike
  * @author Purodha
@@ -141,6 +142,10 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
 $messages['qqq'] = array(
 	'apc-desc' => '{{desc}}',
 	'right-apc' => '{{doc-right}}',
+	'viewapc-mode-stats' => 'Link. See screenshot. 
+[[File:ViewAPC-System-cache-entries.png|thumb]]',
+	'viewapc-mode-system-cache' => 'Link. See screenshot. 
+[[File:ViewAPC-System-cache-entries.png|thumb]]',
 	'viewapc-shared-memory-details' => '*$1 is the number of segments
 *$2 is a size of segments in Xbytes
 *$3 can be something like <tt>mmap</tt>

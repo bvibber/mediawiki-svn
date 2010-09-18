@@ -522,14 +522,15 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'edituser-desc' => 'Omogućava suradnicima s pripadajućim pravom uređivanje postavki drugih suradnika',
 	'edituser' => 'Uredi suradnika',
-	'edituser-username' => 'Ime',
+	'edituser-username' => 'Suradničko ime:',
 	'edituser-dosearch' => 'Traži',
-	'edituser-nouser' => 'Traži suradnik ne postoji',
-	'edituser-exempt' => 'Traženi suradnik se ne može uređivati',
+	'edituser-nouser' => 'Suradnik "$1" ne postoji.',
+	'edituser-exempt' => 'Postavke suradnika "$1" ne možete uređivati.',
 	'right-edituser' => 'Uredi postavke drugih suradnika',
 	'right-edituser-exempt' => 'Drugi ne mogu uređivati postavke ovog suradnika',
 );

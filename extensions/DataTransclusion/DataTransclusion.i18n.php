@@ -343,6 +343,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Yanajin66
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'datatransclusion-desc' => '外部のデータソースからの記録データのインポートおよびレンダリング',
@@ -361,6 +362,7 @@ $2はデータソース$1において有効なキーです。',
 一番目または"template"引数が要求されています。',
 	'datatransclusion-record-not-found' => 'データソース$1において$2 = $3というようにマッチングする記録が見つかりませんでした。',
 	'datatransclusion-bad-template-name' => '間違ったテンプレート名: $1。',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>は存在しません。',
 );
 
 /** Colognian (Ripoarisch)

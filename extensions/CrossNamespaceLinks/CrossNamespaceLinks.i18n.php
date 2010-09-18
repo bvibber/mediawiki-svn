@@ -1090,6 +1090,16 @@ $messages['tr'] = array(
 	'crossnamespacelinkstext' => '$1: $3 için $2 {{PLURAL:$2|bağlantı|bağlantı}}',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'crossnamespacelinks' => 'Исемнәр киңлегендәге сылтамалар',
+	'crossnamespacelinks-desc' => '{{grammar:genitive|{{SITENAME}}}} кирәкле булган [[Special:CrossNamespaceLinks|исемнәр киңлегендәге сылтамалар тәртибен]] чыгара',
+	'crossnamespacelinks-summary' => 'Әлеге биттә исемнәр киңлегендә урнашкан сылтамалар күчерелүе исемлеге бирелгән ( {{ns:special}}, {{ns:talk}}, {{ns:project}} һәм {{ns:template}} битләреннән кала), әлеге сылтамаларны куллану рөхсәт ителми.',
+	'crossnamespacelinkstext' => '$1: $3 битенә $2 {{PLURAL:$2|сылтама}}',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

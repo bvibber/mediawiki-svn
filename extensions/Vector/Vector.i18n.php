@@ -23,3 +23,15 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 	'vector-simplesearch-containing' => 'containing...',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'vector-collapsiblenav-preference' => 'Luba Vektori-kujundusega navigeerimismenüü üksusi peita',
+	'vector-editwarning-warning' => 'Sellelt leheküljelt lahkumise tõttu võivad tehtud muudatused kaotsi minna.
+Kui oled sisse loginud, saad selle hoiatuse eelistuste alaosas "Toimetamine" keelata.',
+	'vector-editwarning-preference' => 'Hoiata mind, kui lahkun redigeerimisleheküljelt muudatusi salvestamata',
+	'vector-simplesearch-search' => 'Otsi',
+	'vector-simplesearch-containing' => 'sisalduv...',
+);
+

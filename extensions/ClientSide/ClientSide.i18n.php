@@ -174,6 +174,13 @@ $messages['hil'] = array(
 	'clientside-desc' => 'Nagahatag panksiyon para sa pagbuhat koda sa mga kliyente-side nga na na-format parehas sang HTML, CSS kag JavaScript',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'clientside-desc' => 'Omogućuje funkcije za generiranje kôda za klijentsku stranu (web preglednike) poput HTML-a, CSS-a i JavaScripta',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
