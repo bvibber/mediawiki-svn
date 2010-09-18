@@ -39,7 +39,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 					$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
 				}
 
-				$leftJoinConds[] = 'aa_user_anon_token=' . $params['anontoken'];
+				$leftJoinConds['aa_user_anon_token'] = $params['anontoken'];
 			}
 
 			$this->addTables( 'article_assessment' );
