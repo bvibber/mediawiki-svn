@@ -25,6 +25,8 @@ public class LanguageConfiguration_en extends LanguageConfiguration {
                 "\\p{L}(?:\\.\\p{L})+|\\p{L}*\\p{Lu}"+ //XXX: gives a lot of false positives!
                 ")$"
 		);
+		
+		this.nameGluePattern = Pattern.compile("of|on|in|the"); // common non-capitalized components of proper nouns
 	}
 
 }

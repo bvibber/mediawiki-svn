@@ -32,6 +32,8 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 	private Matcher sentenceFollowGlueMatcher;
 	private Matcher wordMatcher;
 	private Matcher wordPartMatcher;
+	private Matcher namePartMatcher;
+	private Matcher nameGlueMatcher;
 
 	protected Filter<String> stopwordFilter;
 	protected Matcher phraseBreakeMatcher;
@@ -48,28 +50,46 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 	
 	public static PlainTextAnalyzer getPlainTextAnalyzer(Corpus corpus, TweakSet tweaks) throws InstantiationException {
 		Class[] acc = getSpecializedClasses(corpus, PlainTextAnalyzer.class, "PlainTextAnalyzer");
+		
+		try {
+			Constructor<PlainTextAnalyzer> ctor = acc[0].getConstructor(new Class[] { Corpus.class });
+			PlainTextAnalyzer analyzer = ctor.newInstance(new Object[] { corpus } );
+	
+			analyzer.configure(corpus, tweaks);
+			return analyzer;
+		} catch (SecurityException e) {
+			throw (InstantiationException)new InstantiationException().initCause(e);
+		} catch (IllegalArgumentException e) {
+			throw (InstantiationException)new InstantiationException().initCause(e);
+		} catch (NoSuchMethodException e) {
+			throw (InstantiationException)new InstantiationException().initCause(e);
+		} catch (InvocationTargetException e) {
+			throw (InstantiationException)new InstantiationException().initCause(e);
+		} catch (IllegalAccessException e) {
+			throw (InstantiationException)new InstantiationException().initCause(e);
+		}
+	}
+	
+	protected void  configure(Corpus corpus, TweakSet tweaks) throws InstantiationException {
 		Class[] ccc = getSpecializedClasses(corpus, LanguageConfiguration.class, "LanguageConfiguration", corpus.getConfigPackages());
 		
 		try {
-			Constructor ctor = acc[0].getConstructor(new Class[] { Corpus.class });
-			PlainTextAnalyzer analyzer = (PlainTextAnalyzer)ctor.newInstance(new Object[] { corpus } );
-			
 			for (int i = ccc.length-1; i >= 0; i--) { //NOTE: most specific last, because last write wins.
 				LanguageConfiguration conf ;
-			
+				Constructor<LanguageConfiguration> ctor;
+				
 				try {
 					ctor = ccc[i].getConstructor(new Class[] { });
-					conf = (LanguageConfiguration)ctor.newInstance(new Object[] { } );
+					conf = ctor.newInstance(new Object[] { } );
 				} 
 				catch (NoSuchMethodException ex) {
 					ctor = ccc[i].getConstructor(new Class[] { String.class });
-					conf = (LanguageConfiguration)ctor.newInstance(new Object[] { corpus.getLanguage() } );
+					conf = ctor.newInstance(new Object[] { corpus.getLanguage() } );
 				}
 				
-				analyzer.configure(conf, tweaks);
+				this.configure(conf, tweaks);
 			}
 			
-			return analyzer;
 		} catch (SecurityException e) {
 			throw (InstantiationException)new InstantiationException().initCause(e);
 		} catch (IllegalArgumentException e) {
@@ -96,6 +116,8 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		sentenceFollowGlueMatcher = config.sentenceFollowGluePattern.matcher("");
 		wordMatcher = config.wordPattern.matcher("");
 		wordPartMatcher = config.wordPartPattern.matcher("");
+		namePartMatcher = config.namePartPattern.matcher("");
+		nameGlueMatcher = config.nameGluePattern == null ? null : config.nameGluePattern.matcher("");
 		
 		phraseBreakeMatcher = config.phraseBreakerPattern.matcher("");
 		stopwordFilter = new FixedSetFilter<String>(config.stopwords);
@@ -109,15 +131,20 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 	 * @return
 	 */
 	public CharSequence extractFirstSentence(CharSequence text) {
-		return extractNextSentence(text, null, true);
-	}
-	
-	public CharSequence extractNextSentence(CharSequence text, ParsePosition position, boolean mangle) {
 		if (text==null || text.length()==0) return "";
 		
-		if (mangle) text = applyManglers(config.sentenceManglers, text);
+		text = applyManglers(config.sentenceManglers, text);
 		if (text.length()==0) return "";
 
+		CharSequence s = scanNextSentence(text, null);
+		s = AnalyzerUtils.trim(s);
+
+		return s;
+	}
+	
+	public CharSequence scanNextSentence(CharSequence text, ParsePosition position) {
+		if (text==null || text.length()==0) return "";
+		
 		sentenceMatcher.reset(text);
 		sentenceTailGlueMatcher.reset(text);
 		sentenceFollowGlueMatcher.reset(text);
@@ -132,13 +159,14 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 			sentenceFollowGlueMatcher.region(ofs, text.length());
 		}
 		
-		StringBuilder s = new StringBuilder();
+		StringBuilder s = null;
 		boolean add = false;
 		while (sentenceMatcher.find()) {
 			int start = ofs;
 			ofs = sentenceMatcher.end();
 			if (position!=null) position.setIndex(ofs);
 			
+			if (s==null) s = new StringBuilder();
 			s.append(text, start, sentenceMatcher.end());
 			
 			if (sentenceMatcher.group(1)!=null) {
@@ -168,10 +196,16 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 			if (position!=null) position.setIndex(ofs);
 		}
 		
-		if (ofs!=0) text = AnalyzerUtils.trim(s);
-		else {
-			if (position!=null) position.setIndex(text.length());
-			AnalyzerUtils.trim(text);
+		if (s!=null) {
+			text = s;
+		} else {
+			int end= text.length();
+			
+			if (position!=null && position.getIndex()>0) {
+				text = text.subSequence(position.getIndex(), end);  
+			} 
+
+			if (position!=null) position.setIndex(end);
 		}
 		
 		return text;
@@ -184,6 +218,22 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		while (wordMatcher.find()) {
 			if (wordMatcher.groupCount()>0) words.add(wordMatcher.group(1));
 			else words.add(wordMatcher.group(0));
+		}
+		
+		return words;
+	}
+
+	public List<PhraseOccurance> extractWordOccurrance(CharSequence s) {
+		ArrayList<PhraseOccurance> words = new ArrayList<PhraseOccurance>();
+		
+		wordMatcher.reset(s); 
+		while (wordMatcher.find()) {
+			int g;
+			if (wordMatcher.groupCount()>0) g = 1;
+			else g = 0;
+			
+			PhraseOccurance w = new PhraseOccurance(wordMatcher.group(g), 1, wordMatcher.start(g), wordMatcher.end(g) - wordMatcher.start(g));
+			words.add(w);
 		}
 		
 		return words;
@@ -271,15 +321,128 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		}
 	} */
 	
-	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight, int maxDepth) {
-		PhraseOccuranceSet phrases = new PhraseOccuranceSet(text.toString(), new ArrayList<PhraseOccurance>());
-		
+	public PhraseOccuranceSet extractNames(CharSequence text, int maxWeight) {
 		text = applyManglers(config.sentenceManglers, text);
+		PhraseOccuranceSet names= new PhraseOccuranceSet(text.toString(), new ArrayList<PhraseOccurance>());
 		
 		ParsePosition pos = new ParsePosition(0);
 		while (pos.getIndex() < text.length()) {
 			int ofs = pos.getIndex();
-			CharSequence s = extractNextSentence(text, pos, false);
+			CharSequence s = scanNextSentence(text, pos);
+			if (s==null || s.length()==0) break;
+			
+			extractNamesFromSentence(s, ofs, names, maxWeight);
+		}
+
+		names.prune(1);
+		return names;
+	}
+	
+	private void extractNamesFromSentence(CharSequence s, int ofs, PhraseOccuranceSet names, int maxWeight) {
+		StringBuilder n = new StringBuilder();
+		StringBuilder glue = new StringBuilder();
+		
+		int start = -1;
+		int weight = 0;
+		int pos = 0;
+
+		wordMatcher.reset(s); 
+		while (wordMatcher.find()) {
+			int g;
+			if (wordMatcher.groupCount()>0) g = 1;
+			else g = 0;
+			
+			String w = wordMatcher.group(g);
+			int i = wordMatcher.start(g);
+			CharSequence space = s.subSequence(pos, i);
+			
+			if (start>=0) { //in name
+				boolean doEndName = false;
+				
+				if ( weight >= maxWeight ) {
+					doEndName = true;
+				} else {
+						phraseBreakeMatcher.reset(space);
+						
+						if (phraseBreakeMatcher.matches()) { // phrase break encountered, end name
+							doEndName = true;
+						}
+				}
+				
+				if ( doEndName ) {
+						names.add( new PhraseOccurance(n.toString(), weight, start, n.length()));
+						
+						n.setLength(0);
+						start = -1;
+						weight = 0;
+						
+						glue.setLength(0);
+				}
+			}
+
+			namePartMatcher.reset(w);
+			
+			if (namePartMatcher.matches()) { // looks like a name part (capitalized word)
+				boolean doConcat;
+				if (start>=0) { //already in a name
+					doConcat = true;
+				} else { //new name starts
+					doConcat = true;
+					
+					if ( i == 0 && stopwordFilter!=null ) { //start of sentence, other stuff also gets capitalized. filter at least stop words.
+						String t = w.toLowerCase();
+						if ( stopwordFilter.matches(t) ) {
+							doConcat = false;
+						}
+					}
+				}
+
+				if ( doConcat ) {
+					if (start<0) { // start new name
+						start = i; 
+					} else { // in name, process glue
+						n.append(glue); 
+						n.append(space); 
+					}
+					
+					n.append(w);
+					weight += 1;
+					
+					glue.setLength(0);
+				}
+			} else if (start>=0) { //not a name part, but already in a name
+				if (nameGlueMatcher!=null) nameGlueMatcher.reset(w);
+				
+				if (nameGlueMatcher!=null && nameGlueMatcher.matches()) { // is glue word
+					glue.append(space);
+					glue.append(w);
+				} else { //name finished
+					names.add( new PhraseOccurance(n.toString(), weight, ofs + start, n.length()));
+					
+					n.setLength(0);
+					start = -1;
+					weight = 0;
+					
+					glue.setLength(0);
+				}
+			}
+			
+			pos = i + w.length();
+		}
+
+		if (start>=0) { //name finished
+			names.add( new PhraseOccurance(n.toString(), weight, ofs + start, n.length()));
+		}
+	}
+
+	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight, int maxDepth) {
+		text = applyManglers(config.sentenceManglers, text);
+		PhraseOccuranceSet phrases = new PhraseOccuranceSet(text.toString(), new ArrayList<PhraseOccurance>());
+		
+		ParsePosition pos = new ParsePosition(0);
+		while (pos.getIndex() < text.length()) {
+			int ofs = pos.getIndex();
+			CharSequence s = scanNextSentence(text, pos);
 			if (s==null || s.length()==0) break;
 			
 			buildPhrases(s, ofs, phrases, maxWeight);

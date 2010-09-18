@@ -2,6 +2,7 @@ package de.brightbyte.wikiword.analyzer;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,10 +33,48 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 		}
 		
 		public void testExtractFirstSentence() {
-			String text = "Foo (also abc. cde.) is the 2. Quux in Xyzzy. Its not a Barf.\n";
+			String text = "Hello World";
 			
 			CharSequence s = extractFirstSentence(text);
+			assertEquals("simple sentence", "Hello World", s.toString());
+
+			//-------------------
+			text = "Hello World.";
+			
+			s = extractFirstSentence(text);
+			assertEquals("simple sentence", "Hello World.", s.toString());
+
+			//-------------------
+			text = "Hello World.\n";
+			
+			s = extractFirstSentence(text);
+			assertEquals("simple sentence", "Hello World.", s.toString());
+
+			//-------------------
+			text = "Foo (also abc. cde.) is the 2. Quux in Xyzzy. Its not a Barf.\n";
+			
+			s = extractFirstSentence(text);
 			assertEquals("simple sentence", "Foo is the 2. Quux in Xyzzy.", s.toString());
+			
+			//TODO: all the nasty stuff...
+		}
+
+		public void testScanNextSentence() {
+			String text = "Hello World";
+			
+			ParsePosition pos = new ParsePosition(0);
+			CharSequence s = scanNextSentence(text, pos);
+			assertEquals("Hello World", s.toString());
+
+			// ----------------------
+			text = "He's John Doe, I'm Jane. Alex is not here.";
+			
+			pos = new ParsePosition(0);
+			s = scanNextSentence(text, pos);
+			assertEquals("He's John Doe, I'm Jane. ", s.toString());
+			
+			s = scanNextSentence(text, pos);
+			assertEquals("Alex is not here.", s.toString());
 			
 			//TODO: all the nasty stuff...
 		}
@@ -70,6 +109,36 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 
 			words = extractWords("23foo42");
 			assertEquals(theList( "23", "foo", "42" ), words);
+		}
+
+		public void testExtractNames() {
+			PhraseOccuranceSet names = extractNames("", 2);
+			assertEquals(0, names.size());
+			assertEquals(theList(), getWordList(names));
+
+			names = extractNames("foo", 2);
+			assertEquals(theList(), getWordList(names));
+
+			names = extractNames("Foo", 2);
+			assertEquals(theList("Foo"), getWordList(names));
+
+			names = extractNames("The", 2);
+			assertEquals(theList(), getWordList(names));
+
+			names = extractNames("The Foo", 2);
+			assertEquals(theList("Foo"), getWordList(names));
+
+			names = extractNames("The Foo Bar Bear", 2);
+			assertEquals(theList("Foo Bar", "Bear"), getWordList(names));
+
+			names = extractNames("meet the Foo of Bar on tuesday", 2);
+			assertEquals(theList("Foo of Bar"), getWordList(names));
+
+			names = extractNames("He's John Doe, I'm Jane. Alex is not here.", 2);
+			assertEquals(theList("John Doe", "Jane", "Alex"), getWordList(names));
+
+			names = extractNames("Anne-Catrin Drinkwater, Joe; Jane.", 3);
+			assertEquals(theList("Anne-Catrin Drinkwater", "Joe", "Jane"), getWordList(names));
 		}
 
 		public void testExtractPhrases() {
@@ -171,12 +240,9 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 	protected TestPlainTextAnalyzer testAnalyzer;
 	
 	@Override
-	public void setUp() throws URISyntaxException, IOException {
-		LanguageConfiguration config = new LanguageConfiguration();
-		
-		//corpus = new Corpus("TEST", "en", "en", "en", "en", "en", "en", null);
+	public void setUp() throws URISyntaxException, IOException, InstantiationException {
 		testAnalyzer = new TestPlainTextAnalyzer(corpus);
-		testAnalyzer.configure(config, tweaks);
+		testAnalyzer.configure(corpus, tweaks);
 		testAnalyzer.initialize();
 		
 		analyzer = testAnalyzer;
@@ -186,8 +252,16 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 		testAnalyzer.testExtractFirstSentence();
 	}
 
+	public void testScanNextSentence() {
+		testAnalyzer.testScanNextSentence();
+	}
+
 	public void testExtractWords() {
 		testAnalyzer.testExtractWords();
+	}
+
+	public void testExtractNames() {
+		testAnalyzer.testExtractNames();
 	}
 
 	public void testExtractPhrases() {

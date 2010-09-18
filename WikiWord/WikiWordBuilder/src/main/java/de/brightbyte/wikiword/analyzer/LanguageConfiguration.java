@@ -72,6 +72,18 @@ public class LanguageConfiguration {
 	 */
 	public Pattern wordPartPattern;
 
+	/**
+	 * A pattern matching parts of names, for detecting proper nouns. This is usually
+	 * set to match any sequence of letters that starts with an upper case latter. 
+	 */
+	public Pattern namePartPattern;
+
+	/**
+	 * A pattern matching words that may occur inside a proper nound (name), but do not match
+	 * namePartPattern. A common example for english would be "of", as in "Marquess of Dorset".
+	 */
+	public Pattern nameGluePattern;
+
 	protected String languageName;
 
 	/**
@@ -108,6 +120,8 @@ public class LanguageConfiguration {
 	public void defaults() throws IOException {
 		if (this.wordPattern==null) this.wordPattern = Pattern.compile("[\\p{L}']+(?:[\\p{Pc}\\p{Pd}][\\p{L}']+)*|\\p{Nd}+(?:.\\p{Nd}+)?"); 
 		if (this.wordPartPattern==null) this.wordPartPattern = Pattern.compile("[\\p{L}]+|\\p{Nd}+"); 
+		if (this.namePartPattern==null) this.namePartPattern = Pattern.compile("\\p{Lu}[-\\p{L}]+"); 
+		//this.nameGluePattern is null per default! 
 
 		this.sentenceManglers.add( new RegularExpressionMangler("\\s+\\(.*?\\)", "", 0) ); //strip parentacized blocks 
 		this.sentenceManglers.add( new RegularExpressionMangler("^([^\\p{L}]*(\\r\\n|\\r|\\n))+[^\\p{L}0-9]*\\s*", "", 0) ); //strip leading cruft (lines without any characters)
@@ -136,6 +150,8 @@ public class LanguageConfiguration {
 
 		if (with.wordPattern!=null) wordPattern = with.wordPattern;
 		if (with.wordPartPattern!=null) wordPartPattern = with.wordPartPattern;
+		if (with.namePartPattern!=null) namePartPattern = with.namePartPattern;
+		if (with.nameGluePattern!=null) nameGluePattern = with.nameGluePattern;
 		if (with.phraseBreakerPattern!=null) phraseBreakerPattern = with.phraseBreakerPattern;
 		
 		if (with.stopwords!=null) stopwords.addAll(with.stopwords);
