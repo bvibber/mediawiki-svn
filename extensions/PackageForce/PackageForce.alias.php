@@ -9,6 +9,7 @@
 $specialPageAliases = array();
 
 /** English (English) */
+$specialPageAliases['en'] = array(
 	'PackageForce' => array( 'PackageForce' ),
 	'PackageForceAdmin' => array( 'PackageForceAdmin' ),
 );
