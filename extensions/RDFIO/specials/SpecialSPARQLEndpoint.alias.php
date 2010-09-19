@@ -3,6 +3,6 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-    'SPARQLEndpoint' => array( 'SPARQLEndpoint' ),
+	'SPARQLEndpoint' => array( 'SPARQLEndpoint' ),
 );
 

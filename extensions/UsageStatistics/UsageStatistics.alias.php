@@ -8,6 +8,7 @@ $specialPageAliases = array();
 
 /** English
  * @author Paul Grinberg
+ */
 $specialPageAliases['en'] = array(
 	'SpecialUserStats' => array( 'UserStats', 'SpecialUserStats' ),
 );

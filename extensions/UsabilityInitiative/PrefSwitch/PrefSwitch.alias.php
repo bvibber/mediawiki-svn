@@ -1,7 +1,6 @@
 <?php
 /**
  * Aliases for special pages
- *
  */
 
 $specialPageAliases = array();

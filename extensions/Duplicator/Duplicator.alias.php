@@ -36,5 +36,5 @@ $aliases['fi'] = array(
 );
 
 $aliases['nl'] = array(
-	'Duplicator' => array( 'Kopieren', 'kopiëren' ),
+	'Duplicator' => array( 'Kopieren', 'Kopiëren' ),
 );

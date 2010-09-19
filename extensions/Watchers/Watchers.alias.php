@@ -10,6 +10,7 @@ $specialPageAliases = array();
 
 /** English
  * @author Magnus Manske
+ */
 $specialPageAliases['en'] = array(
 	'Watchers' => array( 'Watchers' ),
 );
