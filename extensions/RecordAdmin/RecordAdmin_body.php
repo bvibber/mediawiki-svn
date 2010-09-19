@@ -907,4 +907,19 @@ class RecordAdmin {
 	function guid() {
 		return $this->guid = strftime( '%Y%m%d', time() ) . '-' . substr( strtoupper( uniqid('', true) ), -5 );
 	}
+
+
+	/**
+	 * Create DB table for caching queries
+	 */
+	function createCacheTable() {
+		$dbw = wfGetDB( DB_MASTER );
+		$tbl = $dbw->tableName( 'recordadmin_querycache' );
+		if ( !$dbw->tableExists( $tbl ) ) {
+			$query = "CREATE TABLE $tbl (raqc_id INT(32) NOT NULL, raqc_type TINYTEXT, raqc_content TEXT, raqc_state TINYTEXT, PRIMARY KEY (raqc_id));";
+			$result = $dbw->query( $query );
+			$dbw->freeResult( $result );
+		}
+	}
+
 }
