@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright © 2008-2010 Garrett Brown <http://www.mediawiki.org/wiki/User:Gbruin>
+ * Copyright Â© 2008-2010 Garrett Brown <http://www.mediawiki.org/wiki/User:Gbruin>
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -28,7 +28,7 @@
  *
  * @file
  * @author Garrett Bruin
- * @copyright Copyright © 2008 Garrett Brown
+ * @copyright Copyright Â© 2008 Garrett Brown
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @ingroup Extensions
  */
@@ -50,6 +50,7 @@ define( 'MEDIAWIKI_FBCONNECT_VERSION', '2.1.0' );
  * Add information about this extension to Special:Version.
  */
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name'           => 'Facebook Connect Plugin',
 	'author'         => 'Garrett Brown',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:FBConnect',
