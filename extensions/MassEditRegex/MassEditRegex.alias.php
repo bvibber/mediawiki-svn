@@ -6,9 +6,14 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
+$specialPageAliases = array();
 
-/** English */
+/** English (English) */
 $aliases['en'] = array(
 	'MassEditRegex' => array('MassEditRegex'),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;
