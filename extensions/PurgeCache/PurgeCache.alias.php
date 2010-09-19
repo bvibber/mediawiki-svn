@@ -6,159 +6,167 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'PurgeCache' => array( 'PurgeCache' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'PurgeCache' => array( 'إفراغ_الكاش' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'PurgeCache' => array( 'Purge_Cach' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'PurgeCache' => array( 'Cache leeren' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'PurgeCache' => array( 'Cache wuprozniś' ),
 );
 
 /** Spanish (Español) */
-$aliases['es'] = array(
+$specialPageAliases['es'] = array(
 	'PurgeCache' => array( 'Purgar_caché' ),
 );
 
 /** Finnish (Suomi) */
-$aliases['fi'] = array(
+$specialPageAliases['fi'] = array(
 	'PurgeCache' => array( 'Pyyhi_välimuistiversio' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
 /** Franco-Provençal (Arpetan) */
-$aliases['frp'] = array(
+$specialPageAliases['frp'] = array(
 	'PurgeCache' => array( 'Purgiér lo cache', 'PurgiérLoCache' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'PurgeCache' => array( 'Purgar a caché' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'PurgeCache' => array( 'Cache lääre' ),
 );
 
 /** Croatian (Hrvatski) */
-$aliases['hr'] = array(
+$specialPageAliases['hr'] = array(
 	'PurgeCache' => array( 'Očisti_cache' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'PurgeCache' => array( 'Vacuar cache' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'PurgeCache' => array( 'Pembersihan tembolok', 'PembersihanTembolok', 'Purgasi kas', 'PurgasiKas' ),
+$specialPageAliases['id'] = array(
+	'PurgeCache' => array( 'Pembersihan_tembolok', 'PembersihanTembolok', 'Purgasi_kas', 'PurgasiKas' ),
+);
+
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'PurgeCache' => array( 'SvuotaCache' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'PurgeCache' => array( 'キャッシュ削除' ),
 );
 
 /** Korean (한국어) */
-$aliases['ko'] = array(
+$specialPageAliases['ko'] = array(
 	'PurgeCache' => array( '캐시갱신' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'PurgeCache' => array( 'Zwescheschpeischer leddisch' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'PurgeCache' => array( 'Cache eidel maachen' ),
+$specialPageAliases['lb'] = array(
+	'PurgeCache' => array( 'Cache_eidel_maachen' ),
 );
 
 /** Macedonian (Македонски) */
-$aliases['mk'] = array(
+$specialPageAliases['mk'] = array(
 	'PurgeCache' => array( 'ИсчистиКеш' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'PurgeCache' => array( 'കാഷെശുദ്ധീകരണം' ),
 );
 
 /** Maltese (Malti) */
-$aliases['mt'] = array(
+$specialPageAliases['mt'] = array(
 	'PurgeCache' => array( 'ŻvojtaCache' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'PurgeCache' => array( 'Kas_leegmaken' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'PurgeCache' => array( 'CacheLegen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'PurgeCache' => array( 'Oppdater mellomlager' ),
 );
 
 /** Occitan (Occitan) */
-$aliases['oc'] = array(
-	'PurgeCache' => array( "Purgar l'amagatal", 'Purgar amagatal', 'PurgarAmagatal' ),
+$specialPageAliases['oc'] = array(
+	'PurgeCache' => array( 'Purgar l\'amagatal', 'Purgar amagatal', 'PurgarAmagatal' ),
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'PurgeCache' => array( 'पुनातिसंगणकसंस्मृति' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'PurgeCache' => array( 'VyčistiťCache' ),
 );
 
 /** Thai (ไทย) */
-$aliases['th'] = array(
+$specialPageAliases['th'] = array(
 	'PurgeCache' => array( 'ล้างแคช' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'PurgeCache' => array( 'Purgahin ang baunan' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'PurgeCache' => array( 'ÖnbellekBoşalt', 'ÖnbellekTemizle' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

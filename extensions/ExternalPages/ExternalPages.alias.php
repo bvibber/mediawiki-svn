@@ -6,91 +6,129 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author ArielGlenn
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'ExternalPages' => array( 'ExternalPages' ),
 );
 
-$aliases['ar'] = array(
-	'ExternalPages'   => array( 'صفحات_خارجية' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ExternalPages' => array( 'صفحات_خارجية' ),
 );
 
-$aliases['arz'] = array(
-	'ExternalPages'   => array( 'صفح_برّانيّه' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ExternalPages' => array( 'صفح_برّانيّه' ),
 );
 
-$aliases['br'] = array(
-	'ExternalPages'   => array( 'PajennoùDiavaez' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ExternalPages' => array( 'PajennoùDiavaez' ),
 );
 
-$aliases['bs'] = array(
-	'ExternalPages'   => array( 'VanjskeStranice' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ExternalPages' => array( 'VanjskeStranice' ),
 );
 
-$aliases['el'] = array(
-	'ExternalPages'   => array( 'ΕξωτερικέςΣελίδες' ),
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'ExternalPages' => array( 'ΕξωτερικέςΣελίδες' ),
 );
 
-$aliases['es'] = array(
-	'ExternalPages'   => array( 'Enlaces_externos' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'ExternalPages' => array( 'Enlaces_externos' ),
 );
 
-$aliases['fa'] = array(
-	'ExternalPages'   => array( 'صفحات_خارجی' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ExternalPages' => array( 'صفحات_خارجی' ),
 );
 
-$aliases['ia'] = array(
-	'ExternalPages'   => array( 'Paginas_externe' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ExternalPages' => array( 'Paginas_externe' ),
 );
 
-$aliases['id'] = array(
-	'ExternalPages'   => array( 'Halaman_eksternal', 'HalamanEksternal' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ExternalPages' => array( 'Halaman_eksternal', 'HalamanEksternal' ),
 );
 
-$aliases['ja'] = array(
-	'ExternalPages'   => array( '外部ページ' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ExternalPages' => array( 'PagineEsterne' ),
 );
 
-$aliases['ksh'] = array(
-	'ExternalPages'   => array( 'FrembSigge', 'Fremb_Sigge', 'FrämbSigge', 'Främb_Sigge' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ExternalPages' => array( '外部ページ' ),
 );
 
-$aliases['lad'] = array(
-	'ExternalPages'   => array( 'Linkes_de_afuera' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ExternalPages' => array( 'FrembSigge', 'Fremb_Sigge', 'FrämbSigge', 'Främb_Sigge' ),
 );
 
-$aliases['lb'] = array(
-	'ExternalPages'   => array( 'Extern_Säiten' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ExternalPages' => array( 'Linkes_de_afuera' ),
 );
 
-$aliases['mk'] = array(
-	'ExternalPages'   => array( 'НадворешниСтраници' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ExternalPages' => array( 'Extern_Säiten' ),
 );
 
-$aliases['ml'] = array(
-	'ExternalPages'   => array( 'ബാഹ്യതാളുകൾ' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ExternalPages' => array( 'НадворешниСтраници' ),
 );
 
-$aliases['nl'] = array(
-	'ExternalPages'   => array( 'ExternePaginas', 'ExternePagina\'s' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ExternalPages' => array( 'ബാഹ്യതാളുകൾ' ),
 );
 
-$aliases['no'] = array(
-	'ExternalPages'   => array( 'Eksterne_sider' ),
+/** Erzya (Эрзянь) */
+$specialPageAliases['myv'] = array(
+	'ExternalPages' => array( 'УшоньЛопат' ),
 );
 
-$aliases['pt'] = array(
-	'ExternalPages'   => array( 'Páginas_externas' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ExternalPages' => array( 'ExternePaginas', 'ExternePagina\'s' ),
 );
 
-$aliases['tr'] = array(
-	'ExternalPages'   => array( 'HariciSayfalar', 'DışSayfalar' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ExternalPages' => array( 'Eksterne_sider' ),
 );
 
-$aliases['vec'] = array(
-	'ExternalPages'   => array( 'PagineEsterne' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ExternalPages' => array( 'Páginas_externas' ),
 );
+
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'ExternalPages' => array( 'Pagini_externe' ),
+);
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ExternalPages' => array( 'HariciSayfalar', 'DışSayfalar' ),
+);
+
+/** Vèneto (Vèneto) */
+$specialPageAliases['vec'] = array(
+	'ExternalPages' => array( 'PagineEsterne' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

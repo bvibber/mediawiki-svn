@@ -6,113 +6,147 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'CommunityVoice' => array( 'CommunityVoice' ),
 );
 
-$aliases['ar'] = array(
-	'CommunityVoice'   => array( 'صوت_المجتمع' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'CommunityVoice' => array( 'صوت_المجتمع' ),
 );
 
-$aliases['arz'] = array(
-	'CommunityVoice'   => array( 'صوت_المجتمع' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'CommunityVoice' => array( 'صوت_المجتمع' ),
 );
 
-$aliases['br'] = array(
-	'CommunityVoice'   => array( 'MouezhKumuniezh' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'CommunityVoice' => array( 'MouezhKumuniezh' ),
 );
 
-$aliases['bs'] = array(
-	'CommunityVoice'   => array( 'GlasZajednice' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'CommunityVoice' => array( 'GlasZajednice' ),
 );
 
-$aliases['dsb'] = array(
-	'CommunityVoice'   => array( 'Głos_zgromaźeństwa' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'CommunityVoice' => array( 'Głos_zgromaźeństwa' ),
 );
 
-$aliases['fa'] = array(
-	'CommunityVoice'   => array( 'صدای_انجمن' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'CommunityVoice' => array( 'صدای_انجمن' ),
 );
 
-$aliases['hsb'] = array(
-	'CommunityVoice'   => array( 'Hłós_zhromadźenstwa' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'CommunityVoice' => array( 'Hłós_zhromadźenstwa' ),
 );
 
-$aliases['ia'] = array(
-	'CommunityVoice'   => array( 'Voce_del_communitate' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'CommunityVoice' => array( 'Voce_del_communitate' ),
 );
 
-$aliases['id'] = array(
-	'CommunityVoice'   => array( 'Suara_komunitas', 'SuaraKomunitas' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'CommunityVoice' => array( 'Suara_komunitas', 'SuaraKomunitas' ),
 );
 
-$aliases['ja'] = array(
-	'CommunityVoice'   => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
 );
 
-$aliases['km'] = array(
-	'CommunityVoice'   => array( 'សំលេងសហគមន៍' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'CommunityVoice' => array( 'សំលេងសហគមន៍' ),
 );
 
-$aliases['ksh'] = array(
-	'CommunityVoice'   => array( 'Metmaacherstemme' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'CommunityVoice' => array( 'Metmaacherstemme' ),
 );
 
-$aliases['lad'] = array(
-	'CommunityVoice'   => array( 'BozComunidad' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'CommunityVoice' => array( 'BozComunidad' ),
 );
 
-$aliases['lb'] = array(
-	'CommunityVoice'   => array( 'Stëmm_vun_der_Gemeinschaft' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'CommunityVoice' => array( 'Stëmm_vun_der_Gemeinschaft' ),
 );
 
-$aliases['mk'] = array(
-	'CommunityVoice'   => array( 'ГласНаЗаедницата' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'CommunityVoice' => array( 'ГласНаЗаедницата' ),
 );
 
-$aliases['ml'] = array(
-	'CommunityVoice'   => array( 'സമൂഹശബ്ദം' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'CommunityVoice' => array( 'സമൂഹശബ്ദം' ),
 );
 
-$aliases['mr'] = array(
-	'CommunityVoice'   => array( 'समूहवाणी' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'CommunityVoice' => array( 'समूहवाणी' ),
 );
 
-$aliases['mt'] = array(
-	'CommunityVoice'   => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'CommunityVoice' => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
 );
 
-$aliases['nds-nl'] = array(
-	'CommunityVoice'   => array( 'Gemeenschapsstemme' ),
+/** Erzya (Эрзянь) */
+$specialPageAliases['myv'] = array(
+	'CommunityVoice' => array( 'ВейтьсэньВайгель' ),
 );
 
-$aliases['nl'] = array(
-	'CommunityVoice'   => array( 'Gemeenschapsstem' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'CommunityVoice' => array( 'Gemeenschapsstemme' ),
 );
 
-$aliases['no'] = array(
-	'CommunityVoice'   => array( 'Brukermedvirkning' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'CommunityVoice' => array( 'Gemeenschapsstem' ),
 );
 
-$aliases['pl'] = array(
-	'CommunityVoice'   => array( 'Opinia_społeczności' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'CommunityVoice' => array( 'Brukermedvirkning' ),
 );
 
-$aliases['ro'] = array(
-	'CommunityVoice'   => array( 'Vocea_comunității' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'CommunityVoice' => array( 'Opinia_społeczności' ),
 );
 
-$aliases['sk'] = array(
-	'CommunityVoice'   => array( 'HlasKomunity' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'CommunityVoice' => array( 'Vocea_comunității' ),
 );
 
-$aliases['tl'] = array(
-	'CommunityVoice'   => array( 'Tinig ng pamayanan' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'CommunityVoice' => array( 'HlasKomunity' ),
 );
 
-$aliases['tr'] = array(
-	'CommunityVoice'   => array( 'ToplulukSesi' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'CommunityVoice' => array( 'Tinig ng pamayanan' ),
 );
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'CommunityVoice' => array( 'ToplulukSesi' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

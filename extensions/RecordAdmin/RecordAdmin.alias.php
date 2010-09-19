@@ -5,84 +5,87 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'RecordAdmin' => array( 'RecordAdmin' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'RecordAdmin' => array( 'تسجيل_إداري' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'RecordAdmin' => array( 'تسجيل_ادارى' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'RecordAdmin' => array( 'Gérer enregistrement', 'GérerEnregistrement', 'GererEnregistrement' ),
 );
 
 /** Franco-Provençal (Arpetan) */
-$aliases['frp'] = array(
-	'RecordAdmin' => array( "Administrar l'encartâjo", 'AdministrarLEncartâjo' ),
+$specialPageAliases['frp'] = array(
+	'RecordAdmin' => array( 'Administrar l\'encartâjo', 'AdministrarLEncartâjo' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'RecordAdmin' => array( 'Ammann yytrage' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'RecordAdmin' => array( 'Gestion de datos' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'RecordAdmin' => array( 'Catat admin', 'CatatAdmin' ),
+$specialPageAliases['id'] = array(
+	'RecordAdmin' => array( 'Catat_admin', 'CatatAdmin' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'RecordAdmin' => array( '記録管理' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'RecordAdmin' => array( 'Gegevensbeheer' ),
 );
 
 /** Occitan (Occitan) */
-$aliases['oc'] = array(
+$specialPageAliases['oc'] = array(
 	'RecordAdmin' => array( 'GerirEnregistrament', 'Gerir Enregistrament' ),
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'RecordAdmin' => array( 'प्रचालकअङ्कन' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'RecordAdmin' => array( 'SprávcaZáznamu' ),
 );
 
 /** Swahili (Kiswahili) */
-$aliases['sw'] = array(
+$specialPageAliases['sw'] = array(
 	'RecordAdmin' => array( 'RekodizaMkabidhi' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'RecordAdmin' => array( 'Tagapangasiwa ng talaan' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'RecordAdmin' => array( 'HizmetliKaydı' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

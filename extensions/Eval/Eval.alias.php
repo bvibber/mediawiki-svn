@@ -6,131 +6,169 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Jon Harald Søby
  */
-$aliases['en'] = array(
-    'Eval' => array( 'Eval' ),
+$specialPageAliases['en'] = array(
+	'Eval' => array( 'Eval' ),
 );
 
-$aliases['ar'] = array(
-	'Eval'   => array( 'تقييم' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Eval' => array( 'تقييم' ),
 );
 
-$aliases['arz'] = array(
-	'Eval'   => array( 'تقييم' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Eval' => array( 'تقييم' ),
 );
 
-$aliases['bs'] = array(
-	'Eval'   => array( 'Ocjenjivanje' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'Eval' => array( 'Ocjenjivanje' ),
 );
 
-$aliases['de'] = array(
-	'Eval'   => array( 'Auswerten' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Eval' => array( 'Auswerten' ),
 );
 
-$aliases['dsb'] = array(
-	'Eval'   => array( 'Wugódnośiś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'Eval' => array( 'Wugódnośiś' ),
 );
 
-$aliases['fa'] = array(
-	'Eval'   => array( 'ارزیابی' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Eval' => array( 'ارزیابی' ),
 );
 
-$aliases['fr'] = array(
-	'Eval'   => array( 'Évaluer', 'Evaluer' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'Eval' => array( 'Évaluer', 'Evaluer' ),
 );
 
-$aliases['frp'] = array(
-	'Eval'   => array( 'Èstimar' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Eval' => array( 'Èstimar' ),
 );
 
-$aliases['gl'] = array(
-	'Eval'   => array( 'Avaliación' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Eval' => array( 'Avaliación' ),
 );
 
-$aliases['gsw'] = array(
-	'Eval'   => array( 'Uuswerte' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'Eval' => array( 'Uuswerte' ),
 );
 
-$aliases['he'] = array(
-	'Eval'   => array( 'פירוש' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'Eval' => array( 'פירוש' ),
 );
 
-$aliases['hsb'] = array(
-	'Eval'   => array( 'Wuhódnoćić' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'Eval' => array( 'Wuhódnoćić' ),
 );
 
-$aliases['ht'] = array(
-	'Eval'   => array( 'Evalye' ),
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'Eval' => array( 'Evalye' ),
 );
 
-$aliases['ia'] = array(
-	'Eval'   => array( 'Evalutation' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Eval' => array( 'Evalutation' ),
 );
 
-$aliases['id'] = array(
-	'Eval'   => array( 'Evaluasi' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Eval' => array( 'Evaluasi' ),
 );
 
-$aliases['ja'] = array(
-	'Eval'   => array( '評価', 'PHPコードとして評価' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Eval' => array( '評価', 'PHPコードとして評価' ),
 );
 
-$aliases['ko'] = array(
-	'Eval'   => array( '평가' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'Eval' => array( '평가' ),
 );
 
-$aliases['ksh'] = array(
-	'Eval'   => array( 'Berääschne' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'Eval' => array( 'Berääschne' ),
 );
 
-$aliases['lad'] = array(
-	'Eval'   => array( 'Val' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Eval' => array( 'Val' ),
 );
 
-$aliases['lb'] = array(
-	'Eval'   => array( 'Bewäertung' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'Eval' => array( 'Bewäertung' ),
 );
 
-$aliases['ml'] = array(
-	'Eval'   => array( 'മൂല്യനിർണ്ണയം' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Eval' => array( 'മൂല്യനിർണ്ണയം' ),
 );
 
-$aliases['mr'] = array(
-	'Eval'   => array( 'ईव्हाल' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Eval' => array( 'ईव्हाल' ),
 );
 
-$aliases['nds-nl'] = array(
-	'Eval'   => array( 'Evalueren' ),
+/** Erzya (Эрзянь) */
+$specialPageAliases['myv'] = array(
+	'Eval' => array( 'Питненьпутома' ),
 );
 
-$aliases['nl'] = array(
-	'Eval'   => array( 'Evalueren' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Eval' => array( 'Evalueren' ),
 );
 
-$aliases['no'] = array(
-	'Eval'   => array( 'Beregn' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'Eval' => array( 'Evalueren' ),
 );
 
-$aliases['oc'] = array(
-	'Eval'   => array( 'Avalorar' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Eval' => array( 'Beregn' ),
 );
 
-$aliases['sa'] = array(
-	'Eval'   => array( 'ईवाल्‌' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'Eval' => array( 'Avalorar' ),
 );
 
-$aliases['sk'] = array(
-	'Eval'   => array( 'Vyhodnotenie' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'Eval' => array( 'ईवाल्‌' ),
 );
 
-$aliases['tl'] = array(
-	'Eval'   => array( 'Pagsusuri' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'Eval' => array( 'Vyhodnotenie' ),
 );
 
-$aliases['tr'] = array(
-	'Eval'   => array( 'Değ' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'Eval' => array( 'Pagsusuri' ),
 );
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'Eval' => array( 'Değ' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

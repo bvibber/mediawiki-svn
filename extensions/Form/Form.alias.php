@@ -4,152 +4,207 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'Form' => array( 'Form' ),
 );
 
-$aliases['af'] = array(
-	'Form'   => array( 'Vorm' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'Form' => array( 'Vorm' ),
 );
 
-$aliases['ar'] = array(
-	'Form'   => array( 'استمارة' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Form' => array( 'استمارة' ),
 );
 
-$aliases['arz'] = array(
-	'Form'   => array( 'استماره' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Form' => array( 'استماره' ),
 );
 
-$aliases['de'] = array(
-	'Form'   => array( 'Eingabefeld' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Form' => array( 'Eingabefeld' ),
 );
 
-$aliases['dsb'] = array(
-	'Form'   => array( 'Formular' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'Form' => array( 'Formular' ),
 );
 
-$aliases['fa'] = array(
-	'Form'   => array( 'فرم' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Form' => array( 'فرم' ),
 );
 
-$aliases['frp'] = array(
-	'Form'   => array( 'Formulèro' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Form' => array( 'Formulèro' ),
 );
 
-$aliases['gl'] = array(
-	'Form'   => array( 'Formulario' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Form' => array( 'Formulario' ),
 );
 
-$aliases['he'] = array(
-	'Form'   => array( 'טופס' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'Form' => array( 'טופס' ),
 );
 
-$aliases['hsb'] = array(
-	'Form'   => array( 'Formular' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'Form' => array( 'Formular' ),
 );
 
-$aliases['hu'] = array(
-	'Form'   => array( 'Űrlap' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'Form' => array( 'Űrlap' ),
 );
 
-$aliases['ia'] = array(
-	'Form'   => array( 'Formulario' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Form' => array( 'Formulario' ),
 );
 
-$aliases['id'] = array(
-	'Form'   => array( 'FormulirKhusus' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Form' => array( 'FormulirKhusus' ),
 );
 
-$aliases['it'] = array(
-	'Form'   => array( 'Modulo' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'Form' => array( 'Modulo' ),
 );
 
-$aliases['ja'] = array(
-	'Form'   => array( 'フォーム' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Form' => array( 'フォーム' ),
 );
 
-$aliases['km'] = array(
-	'Form'   => array( 'បែបបទ' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'Form' => array( 'បែបបទ' ),
 );
 
-$aliases['ko'] = array(
-	'Form'   => array( '양식' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'Form' => array( '양식' ),
 );
 
-$aliases['ksh'] = array(
-	'Form'   => array( 'Fommulaa', 'Formular' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'Form' => array( 'Fommulaa', 'Formular' ),
 );
 
-$aliases['lad'] = array(
-	'Form'   => array( 'Forma' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Form' => array( 'Forma' ),
 );
 
-$aliases['lb'] = array(
-	'Form'   => array( 'Formulaire' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'Form' => array( 'Formulaire' ),
 );
 
-$aliases['mk'] = array(
-	'Form'   => array( 'Образец' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Form' => array( 'Образец' ),
 );
 
-$aliases['ml'] = array(
-	'Form'   => array( 'ഫോം' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Form' => array( 'ഫോം' ),
 );
 
-$aliases['mr'] = array(
-	'Form'   => array( 'छापीलनमूना' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Form' => array( 'छापीलनमूना' ),
 );
 
-$aliases['mt'] = array(
-	'Form'   => array( 'Formola' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'Form' => array( 'Formola' ),
 );
 
-$aliases['nds-nl'] = array(
-	'Form'   => array( 'Formelier' ),
+/** Erzya (Эрзянь) */
+$specialPageAliases['myv'] = array(
+	'Form' => array( 'Парцун' ),
 );
 
-$aliases['nl'] = array(
-	'Form'   => array( 'Formulier' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Form' => array( 'Formelier' ),
 );
 
-$aliases['no'] = array(
-	'Form'   => array( 'Skjema' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'Form' => array( 'Formulier' ),
 );
 
-$aliases['oc'] = array(
-	'Form'   => array( 'Formulari' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Form' => array( 'Skjema' ),
 );
 
-$aliases['pl'] = array(
-	'Form'   => array( 'Formularz' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'Form' => array( 'Formulari' ),
 );
 
-$aliases['si'] = array(
-	'Form'   => array( 'සිට' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Form' => array( 'Formularz' ),
 );
 
-$aliases['sk'] = array(
-	'Form'   => array( 'Formulár' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'Form' => array( 'Formular' ),
 );
 
-$aliases['sq'] = array(
-	'Form'   => array( 'Formë' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'Form' => array( 'සිට' ),
 );
 
-$aliases['sv'] = array(
-	'Form'   => array( 'Formulär' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'Form' => array( 'Formulár' ),
 );
 
-$aliases['sw'] = array(
-	'Form'   => array( 'Fomu' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'Form' => array( 'Formë' ),
 );
 
-$aliases['th'] = array(
-	'Form'   => array( 'ฟอร์ม' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'Form' => array( 'Formulär' ),
 );
 
-$aliases['tl'] = array(
-	'Form'   => array( 'Pormularyo' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'Form' => array( 'Fomu' ),
 );
+
+/** Thai (ไทย) */
+$specialPageAliases['th'] = array(
+	'Form' => array( 'ฟอร์ม' ),
+);
+
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'Form' => array( 'Pormularyo' ),
+);
+
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'Form' => array( 'Форма' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

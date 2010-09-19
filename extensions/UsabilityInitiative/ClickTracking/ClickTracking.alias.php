@@ -6,74 +6,82 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ClickTracking' => array( 'ClickTracking' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'ClickTracking' => array( 'تتبع_الضغط' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'ClickTracking' => array( 'متابعة_الدوسات' ),
 );
 
 /** Breton (Brezhoneg) */
-$aliases['br'] = array(
+$specialPageAliases['br'] = array(
 	'ClickTracking' => array( 'HeuliañKlikoù' ),
 );
 
 /** Persian (فارسی) */
-$aliases['fa'] = array(
+$specialPageAliases['fa'] = array(
 	'ClickTracking' => array( 'تعقیب_کلیک' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'ClickTracking' => array( 'Traciamento de clic' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'ClickTracking' => array( 'Pelacakan klik', 'PelacakanKlik' ),
+$specialPageAliases['id'] = array(
+	'ClickTracking' => array( 'Pelacakan_klik', 'PelacakanKlik' ),
+);
+
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ClickTracking' => array( 'TracciaClic' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'ClickTracking' => array( 'クリック追跡' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'ClickTracking' => array( 'Opzeechne vun de Klicken' ),
+$specialPageAliases['lb'] = array(
+	'ClickTracking' => array( 'Opzeechne_vun_de_Klicken' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'ClickTracking' => array( 'ഞെക്കൽപിന്തുടരൽ' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'ClickTracking' => array( 'मागोवाटिचकवा' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'ClickTracking' => array( 'Klikvolgen' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'ClickTracking' => array( 'Klikksporing' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'ClickTracking' => array( 'TıklamaTakibi' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

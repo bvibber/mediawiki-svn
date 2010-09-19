@@ -6,161 +6,207 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'Call' => array( 'Call' ),
 );
 
-$aliases['af'] = array(
-	'Call'   => array( 'Roep' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'Call' => array( 'Roep' ),
 );
 
-$aliases['ar'] = array(
-	'Call'   => array( 'استدعاء' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Call' => array( 'استدعاء' ),
 );
 
-$aliases['arz'] = array(
-	'Call'   => array( 'استدعا' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Call' => array( 'استدعا' ),
 );
 
-$aliases['br'] = array(
-	'Call'   => array( 'Pellgomz' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'Call' => array( 'Pellgomz' ),
 );
 
-$aliases['bs'] = array(
-	'Call'   => array( 'Poziv' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'Call' => array( 'Poziv' ),
 );
 
-$aliases['de'] = array(
-	'Call'   => array( 'Aufruf' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Call' => array( 'Aufruf' ),
 );
 
-$aliases['dsb'] = array(
-	'Call'   => array( 'Zawołanje' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'Call' => array( 'Zawołanje' ),
 );
 
-$aliases['el'] = array(
-	'Call'   => array( 'Κλήση' ),
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'Call' => array( 'Κλήση' ),
 );
 
-$aliases['fa'] = array(
-	'Call'   => array( 'خواندن' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Call' => array( 'خواندن' ),
 );
 
-$aliases['fr'] = array(
-	'Call'   => array( 'Appeler', 'Appels', 'Appel' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'Call' => array( 'Appeler', 'Appels', 'Appel' ),
 );
 
-$aliases['frp'] = array(
-	'Call'   => array( 'Apelar', 'Apèl', 'Apèls' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Call' => array( 'Apelar', 'Apèl', 'Apèls' ),
 );
 
-$aliases['gl'] = array(
-	'Call'   => array( 'Chamada' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Call' => array( 'Chamada' ),
 );
 
-$aliases['gsw'] = array(
-	'Call'   => array( 'Lyt aa' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'Call' => array( 'Lyt aa' ),
 );
 
-$aliases['hsb'] = array(
-	'Call'   => array( 'Zawołanje' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'Call' => array( 'Zawołanje' ),
 );
 
-$aliases['hu'] = array(
-	'Call'   => array( 'Hívás' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'Call' => array( 'Hívás' ),
 );
 
-$aliases['ia'] = array(
-	'Call'   => array( 'Appello' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Call' => array( 'Appello' ),
 );
 
-$aliases['id'] = array(
-	'Call'   => array( 'Panggil' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Call' => array( 'Panggil' ),
 );
 
-$aliases['ig'] = array(
-	'Call'   => array( 'Kpȯ' ),
+/** Igbo (Igbo) */
+$specialPageAliases['ig'] = array(
+	'Call' => array( 'Kpȯ' ),
 );
 
-$aliases['ja'] = array(
-	'Call'   => array( 'ページ呼び出し', 'ページの呼び出し' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'Call' => array( 'Richiamo' ),
 );
 
-$aliases['km'] = array(
-	'Call'   => array( 'ហៅ' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Call' => array( 'ページ呼び出し', 'ページの呼び出し' ),
 );
 
-$aliases['ksh'] = array(
-	'Call'   => array( 'Oproof' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'Call' => array( 'ហៅ' ),
 );
 
-$aliases['lad'] = array(
-	'Call'   => array( 'Llamada' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'Call' => array( 'Oproof' ),
 );
 
-$aliases['lb'] = array(
-	'Call'   => array( 'Opruff' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Call' => array( 'Llamada' ),
 );
 
-$aliases['mk'] = array(
-	'Call'   => array( 'Повик' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'Call' => array( 'Opruff' ),
 );
 
-$aliases['ml'] = array(
-	'Call'   => array( 'വിളിക്കുക' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Call' => array( 'Повик' ),
 );
 
-$aliases['mr'] = array(
-	'Call'   => array( 'कॉल' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Call' => array( 'വിളിക്കുക' ),
 );
 
-$aliases['nds-nl'] = array(
-	'Call'   => array( 'Anroepen' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Call' => array( 'कॉल' ),
 );
 
-$aliases['nl'] = array(
-	'Call'   => array( 'Aanroepen' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Call' => array( 'Anroepen' ),
 );
 
-$aliases['no'] = array(
-	'Call'   => array( 'Kall' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'Call' => array( 'Aanroepen' ),
 );
 
-$aliases['oc'] = array(
-	'Call'   => array( 'Ampèl', 'Ampèls', 'Apelar' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Call' => array( 'Kall' ),
 );
 
-$aliases['sa'] = array(
-	'Call'   => array( 'आमन्त्र्' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'Call' => array( 'Ampèl', 'Ampèls', 'Apelar' ),
 );
 
-$aliases['si'] = array(
-	'Call'   => array( 'ඇමතුම' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'Call' => array( 'आमन्त्र्' ),
 );
 
-$aliases['sk'] = array(
-	'Call'   => array( 'Volanie' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'Call' => array( 'ඇමතුම' ),
 );
 
-$aliases['sq'] = array(
-	'Call'   => array( 'Thirr' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'Call' => array( 'Volanie' ),
 );
 
-$aliases['su'] = array(
-	'Call'   => array( 'Gero' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'Call' => array( 'Thirr' ),
 );
 
-$aliases['tl'] = array(
-	'Call'   => array( 'Tawagin' ),
+/** Sundanese (Basa Sunda) */
+$specialPageAliases['su'] = array(
+	'Call' => array( 'Gero' ),
 );
 
-$aliases['tr'] = array(
-	'Call'   => array( 'Çağrı' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'Call' => array( 'Tawagin' ),
 );
 
-$aliases['vep'] = array(
-	'Call'   => array( 'SätaPagin' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'Call' => array( 'Çağrı' ),
 );
+
+/** Veps (Vepsan kel') */
+$specialPageAliases['vep'] = array(
+	'Call' => array( 'SätaPagin' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

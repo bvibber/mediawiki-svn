@@ -4,68 +4,87 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'PovWatch' => array( 'PovWatch' ),
 );
 
-$aliases['ar'] = array(
-	'PovWatch'   => array( 'مراقبة_وجهة_النظر' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
 );
 
-$aliases['arz'] = array(
-	'PovWatch'   => array( 'مراقبه_وجهة_نظر' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'PovWatch' => array( 'مراقبه_وجهة_نظر' ),
 );
 
-$aliases['bs'] = array(
-	'PovWatch'   => array( 'PovNazdor' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'PovWatch' => array( 'PovNazdor' ),
 );
 
-$aliases['fa'] = array(
-	'PovWatch'   => array( 'پیگیری_نقطه‌نظر' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'PovWatch' => array( 'پیگیری_نقطه‌نظر' ),
 );
 
-$aliases['gsw'] = array(
-	'PovWatch'   => array( 'Lueg POV' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'PovWatch' => array( 'Lueg POV' ),
 );
 
-$aliases['hr'] = array(
-	'PovWatch'   => array( 'Predbilježeno_praćenje' ),
+/** Croatian (Hrvatski) */
+$specialPageAliases['hr'] = array(
+	'PovWatch' => array( 'Predbilježeno_praćenje' ),
 );
 
-$aliases['ia'] = array(
-	'PovWatch'   => array( 'Observa_PdV' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'PovWatch' => array( 'Observa_PdV' ),
 );
 
-$aliases['id'] = array(
-	'PovWatch'   => array( 'Pantau_sudut_pandang', 'PantauSudutPandang' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'PovWatch' => array( 'Pantau_sudut_pandang', 'PantauSudutPandang' ),
 );
 
-$aliases['ja'] = array(
-	'PovWatch'   => array( '編集合戦の監視' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'PovWatch' => array( '編集合戦の監視' ),
 );
 
-$aliases['nds-nl'] = array(
-	'PovWatch'   => array( 'Staandpuntsvolglieste' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'PovWatch' => array( 'Staandpuntsvolglieste' ),
 );
 
-$aliases['nl'] = array(
-	'PovWatch'   => array( 'PovVolglijst' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'PovWatch' => array( 'PovVolglijst' ),
 );
 
-$aliases['sa'] = array(
-	'PovWatch'   => array( 'पक्षवृत्तीनिरिक्षा' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'PovWatch' => array( 'पक्षवृत्तीनिरिक्षा' ),
 );
 
-$aliases['sk'] = array(
-	'PovWatch'   => array( 'SledovaniePOV' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'PovWatch' => array( 'SledovaniePOV' ),
 );
 
-$aliases['sv'] = array(
-	'PovWatch'   => array( 'Povövervakning' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'PovWatch' => array( 'Povövervakning' ),
 );
 
-$aliases['tl'] = array(
-	'PovWatch'   => array( 'Pagbantay sa POV' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'PovWatch' => array( 'Pagbantay sa POV' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

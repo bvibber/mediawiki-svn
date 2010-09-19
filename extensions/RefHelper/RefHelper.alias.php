@@ -2,27 +2,38 @@
 $aliases = array();
 
 /** English */
-$aliases['en'] = array(
-    'RefHelper' => array( 'RefHelper' ),
+
+/** English (English) */
+$specialPageAliases['en'] = array(
+	'RefHelper' => array( 'RefHelper' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'RefHelper' => array( 'مساعد_المراجع' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'RefHelper' => array( '注釈ヘルパー' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'RefHelper' => array( 'Assistent fir Referenzen' ),
+$specialPageAliases['lb'] = array(
+	'RefHelper' => array( 'Assistent_fir_Referenzen' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'RefHelper' => array( 'അവലംബസഹായി' ),
 );
 
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'RefHelper' => array( 'RefHulp' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

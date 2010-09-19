@@ -6,207 +6,259 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Jon Harald Søby
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'ImportUsers' => array( 'ImportUsers' ),
 );
 
-$aliases['ar'] = array(
-	'ImportUsers'   => array( 'استيراد_المستخدمين' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ImportUsers' => array( 'استيراد_المستخدمين' ),
 );
 
-$aliases['arz'] = array(
-	'ImportUsers'   => array( 'استوراد_اليوزرات' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ImportUsers' => array( 'استوراد_اليوزرات' ),
 );
 
-$aliases['br'] = array(
-	'ImportUsers'   => array( 'EnporzhiañImplijerien' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ImportUsers' => array( 'EnporzhiañImplijerien' ),
 );
 
-$aliases['bs'] = array(
-	'ImportUsers'   => array( 'UvozKorisnika' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ImportUsers' => array( 'UvozKorisnika' ),
 );
 
-$aliases['de'] = array(
-	'ImportUsers'   => array( 'Benutzer_importieren' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ImportUsers' => array( 'Benutzer_importieren' ),
 );
 
-$aliases['dsb'] = array(
-	'ImportUsers'   => array( 'Wužywarjow_importěrowaś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'ImportUsers' => array( 'Wužywarjow_importěrowaś' ),
 );
 
-$aliases['eo'] = array(
-	'ImportUsers'   => array( 'Importi_uzantojn' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ImportUsers' => array( 'Importi_uzantojn' ),
 );
 
-$aliases['fa'] = array(
-	'ImportUsers'   => array( 'درون‌ریزی_کاربران' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ImportUsers' => array( 'درون‌ریزی_کاربران' ),
 );
 
-$aliases['fi'] = array(
-	'ImportUsers'   => array( 'Tuo_käyttäjiä' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'ImportUsers' => array( 'Tuo_käyttäjiä' ),
 );
 
-$aliases['fr'] = array(
-	'ImportUsers'   => array( 'Importer_utilisateurs', 'ImporterUtilisateurs', 'ImporterUtilisateur' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'ImportUsers' => array( 'Importer_utilisateurs', 'ImporterUtilisateurs', 'ImporterUtilisateur' ),
 );
 
-$aliases['frp'] = array(
-	'ImportUsers'   => array( 'Importar_des_utilisators', 'ImportarDesUtilisators' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'ImportUsers' => array( 'Importar_des_utilisators', 'ImportarDesUtilisators' ),
 );
 
-$aliases['gl'] = array(
-	'ImportUsers'   => array( 'Importar usuarios' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'ImportUsers' => array( 'Importar usuarios' ),
 );
 
-$aliases['gsw'] = array(
-	'ImportUsers'   => array( 'Benutzer importiere' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'ImportUsers' => array( 'Benutzer importiere' ),
 );
 
-$aliases['he'] = array(
-	'ImportUsers'   => array( 'ייבוא_משתמשים' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'ImportUsers' => array( 'ייבוא_משתמשים' ),
 );
 
-$aliases['hr'] = array(
-	'ImportUsers'   => array( 'Uvezi_suradnike' ),
+/** Croatian (Hrvatski) */
+$specialPageAliases['hr'] = array(
+	'ImportUsers' => array( 'Uvezi_suradnike' ),
 );
 
-$aliases['hsb'] = array(
-	'ImportUsers'   => array( 'Wužiwarjow_importować' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'ImportUsers' => array( 'Wužiwarjow_importować' ),
 );
 
-$aliases['ht'] = array(
-	'ImportUsers'   => array( 'EnpòteItlizatè' ),
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'ImportUsers' => array( 'EnpòteItlizatè' ),
 );
 
-$aliases['hu'] = array(
-	'ImportUsers'   => array( 'Szerkesztők_importálása' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'ImportUsers' => array( 'Szerkesztők_importálása' ),
 );
 
-$aliases['ia'] = array(
-	'ImportUsers'   => array( 'Importar_usatores' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ImportUsers' => array( 'Importar_usatores' ),
 );
 
-$aliases['id'] = array(
-	'ImportUsers'   => array( 'Impor_pengguna', 'ImporPengguna' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ImportUsers' => array( 'Impor_pengguna', 'ImporPengguna' ),
 );
 
-$aliases['it'] = array(
-	'ImportUsers'   => array( 'ImportaUtenti' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ImportUsers' => array( 'ImportaUtenti' ),
 );
 
-$aliases['ja'] = array(
-	'ImportUsers'   => array( '利用者のインポート', 'インポートユーザー' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ImportUsers' => array( '利用者のインポート', 'インポートユーザー' ),
 );
 
-$aliases['km'] = array(
-	'ImportUsers'   => array( 'នាំចូលអ្នកប្រើប្រាស់' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'ImportUsers' => array( 'នាំចូលអ្នកប្រើប្រាស់' ),
 );
 
-$aliases['ko'] = array(
-	'ImportUsers'   => array( '사용자 추가' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'ImportUsers' => array( '사용자 추가' ),
 );
 
-$aliases['ksh'] = array(
-	'ImportUsers'   => array( 'Metmaacher_Empoteere', 'MetmaacherEmpoteere', 'Medmaacher_Empoteere', 'MedmaacherEmpoteere' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ImportUsers' => array( 'Metmaacher_Empoteere', 'MetmaacherEmpoteere', 'Medmaacher_Empoteere', 'MedmaacherEmpoteere' ),
 );
 
-$aliases['lad'] = array(
-	'ImportUsers'   => array( 'AktarearArientoUsadores' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ImportUsers' => array( 'AktarearArientoUsadores' ),
 );
 
-$aliases['lb'] = array(
-	'ImportUsers'   => array( 'Benotzer_importéieren' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ImportUsers' => array( 'Benotzer_importéieren' ),
 );
 
-$aliases['mk'] = array(
-	'ImportUsers'   => array( 'УвозНаКорисници' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ImportUsers' => array( 'УвозНаКорисници' ),
 );
 
-$aliases['ml'] = array(
-	'ImportUsers'   => array( 'ഉപയോക്തൃഇറക്കുമതി' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ImportUsers' => array( 'ഉപയോക്തൃഇറക്കുമതി' ),
 );
 
-$aliases['mr'] = array(
-	'ImportUsers'   => array( 'सदस्यआयात' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'ImportUsers' => array( 'सदस्यआयात' ),
 );
 
-$aliases['ms'] = array(
-	'ImportUsers'   => array( 'Import pengguna' ),
+/** Malay (Bahasa Melayu) */
+$specialPageAliases['ms'] = array(
+	'ImportUsers' => array( 'Import_pengguna' ),
 );
 
-$aliases['mt'] = array(
-	'ImportUsers'   => array( 'ImportaUtenti' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'ImportUsers' => array( 'ImportaUtenti' ),
 );
 
-$aliases['nds-nl'] = array(
-	'ImportUsers'   => array( 'Gebrukers_invoeren' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ImportUsers' => array( 'Gebrukers_invoeren' ),
 );
 
-$aliases['nl'] = array(
-	'ImportUsers'   => array( 'GebruikersImporteren', 'GebruikerImporteren' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ImportUsers' => array( 'GebruikersImporteren', 'GebruikerImporteren' ),
 );
 
-$aliases['nn'] = array(
-	'ImportUsers'   => array( 'Importer_brukarar' ),
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$specialPageAliases['nn'] = array(
+	'ImportUsers' => array( 'Importer_brukarar' ),
 );
 
-$aliases['no'] = array(
-	'ImportUsers'   => array( 'Importer_brukere' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ImportUsers' => array( 'Importer_brukere' ),
 );
 
-$aliases['oc'] = array(
-	'ImportUsers'   => array( 'Importar_un_utilizaire', 'ImportarUtilizaire' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'ImportUsers' => array( 'Importar_un_utilizaire', 'ImportarUtilizaire' ),
 );
 
-$aliases['pl'] = array(
-	'ImportUsers'   => array( 'Import_użytkowników' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'ImportUsers' => array( 'Import_użytkowników' ),
 );
 
-$aliases['ps'] = array(
-	'ImportUsers'   => array( 'کارونکي_واردول' ),
+/** Pashto (پښتو) */
+$specialPageAliases['ps'] = array(
+	'ImportUsers' => array( 'کارونکي_واردول' ),
 );
 
-$aliases['pt'] = array(
-	'ImportUsers'   => array( 'Importar_utilizadores' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ImportUsers' => array( 'Importar_utilizadores' ),
 );
 
-$aliases['sa'] = array(
-	'ImportUsers'   => array( 'आयातयोजक:' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'ImportUsers' => array( 'आयातयोजक:' ),
 );
 
-$aliases['sk'] = array(
-	'ImportUsers'   => array( 'ImportPoužívateľov' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'ImportUsers' => array( 'ImportPoužívateľov' ),
 );
 
-$aliases['sq'] = array(
-	'ImportUsers'   => array( 'ImportoPërdorues' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'ImportUsers' => array( 'ImportoPërdorues' ),
 );
 
-$aliases['sv'] = array(
-	'ImportUsers'   => array( 'Importera_användare' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'ImportUsers' => array( 'Importera_användare' ),
 );
 
-$aliases['sw'] = array(
-	'ImportUsers'   => array( 'IngizaWatumiaji' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'ImportUsers' => array( 'IngizaWatumiaji' ),
 );
 
-$aliases['th'] = array(
-	'ImportUsers'   => array( 'นำเข้าผู้ใช้' ),
+/** Thai (ไทย) */
+$specialPageAliases['th'] = array(
+	'ImportUsers' => array( 'นำเข้าผู้ใช้' ),
 );
 
-$aliases['tl'] = array(
-	'ImportUsers'   => array( 'Mag-angkat ng mga tagagamit' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'ImportUsers' => array( 'Mag-angkat ng mga tagagamit' ),
 );
 
-$aliases['tr'] = array(
-	'ImportUsers'   => array( 'KullanıcıAktar' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ImportUsers' => array( 'KullanıcıAktar' ),
 );
 
-$aliases['zh-hant'] = array(
-	'ImportUsers'   => array( '導入用戶' ),
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ImportUsers' => array( '導入用戶' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

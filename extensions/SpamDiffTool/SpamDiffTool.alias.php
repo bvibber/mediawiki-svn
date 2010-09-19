@@ -6,32 +6,34 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author IAlex
  */
-$aliases['en'] = array(
-	'SpamDiffTool'  => array( 'SpamDiffTool' ),
+$specialPageAliases['en'] = array(
+	'SpamDiffTool' => array( 'SpamDiffTool' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'SpamDiffTool' => array( 'أداة_فرق_السبام' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'SpamDiffTool' => array( 'スパム差分ツール' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'SpamDiffTool' => array( "Tool fir Spam z'ënnersichen" ),
+$specialPageAliases['lb'] = array(
+	'SpamDiffTool' => array( 'Tool_fir_Spam_z\'ënnersichen' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'SpamDiffTool' => array( 'Spamverschillenhulpmiddel' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

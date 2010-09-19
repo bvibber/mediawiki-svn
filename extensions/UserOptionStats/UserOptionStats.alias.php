@@ -7,97 +7,99 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$aliases = array();
-
 /** English
  * @author Nike
  */
-$aliases['en'] = array(
-	'UserOptionStats'          => array( 'UserOptionStats' ),
+$specialPageAliases['en'] = array(
+	'UserOptionStats' => array( 'UserOptionStats' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'UserOptionStats' => array( 'إحصاءات_خيارات_المستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'UserOptionStats' => array( 'احصائيات_أوپشنز_اليوزر' ),
 );
 
 /** Czech (Česky) */
-$aliases['cs'] = array(
+$specialPageAliases['cs'] = array(
 	'UserOptionStats' => array( 'Statistika uživatelského nastavení' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'UserOptionStats' => array( 'Statistika wužywarskich opcijow' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'UserOptionStats' => array( 'Statsticas de optiones de usator' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'UserOptionStats' => array( 'Statistik opsi pengguna', 'StatistikOpsiPengguna' ),
+$specialPageAliases['id'] = array(
+	'UserOptionStats' => array( 'Statistik_opsi_pengguna', 'StatistikOpsiPengguna' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'UserOptionStats' => array( '利用者オプション統計' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'UserOptionStats' => array( 'MetmaacherEnstellungsStatistik' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'UserOptionStats' => array( 'Statistike vun de Benotzerastellungen' ),
+$specialPageAliases['lb'] = array(
+	'UserOptionStats' => array( 'Statistike_vun_de_Benotzerastellungen' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'UserOptionStats' => array( 'ഉപയോക്തൃഐച്ഛികങ്ങളുടെസ്ഥിതിവിവരം' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'UserOptionStats' => array( 'सदस्यपर्यायसांख्यिकी' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'UserOptionStats' => array( 'Gebrukersinstellingenstaotestieken' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'UserOptionStats' => array( 'Gebruikersinstellingenstatistieken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'UserOptionStats' => array( 'Brukervalgstatistikk' ),
 );
 
 /** Portuguese (Português) */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'UserOptionStats' => array( 'Estatísticas da opções de utilizador' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'UserOptionStats' => array( 'ŠtatistikyPoužívateľskýchVolieb' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'UserOptionStats' => array( 'KullanıcıSeçenekİstatistikleri' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

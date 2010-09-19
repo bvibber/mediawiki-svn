@@ -6,133 +6,167 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'Player' => array( 'Player' ),
 );
 
-$aliases['ar'] = array(
-	'Player'   => array( 'لاعب' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Player' => array( 'لاعب' ),
 );
 
-$aliases['arz'] = array(
-	'Player'   => array( 'لعيب' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Player' => array( 'لعيب' ),
 );
 
-$aliases['br'] = array(
-	'Player'   => array( 'C\'hoarier' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'Player' => array( 'C\'hoarier' ),
 );
 
-$aliases['bs'] = array(
-	'Player'   => array( 'Igrac' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'Player' => array( 'Igrac' ),
 );
 
-$aliases['dsb'] = array(
-	'Player'   => array( 'Wótegrawak' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'Player' => array( 'Wótegrawak' ),
 );
 
-$aliases['eo'] = array(
-	'Player'   => array( 'Ludilo' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'Player' => array( 'Ludilo' ),
 );
 
-$aliases['fa'] = array(
-	'Player'   => array( 'پخش‌کننده' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Player' => array( 'پخش‌کننده' ),
 );
 
-$aliases['fr'] = array(
-	'Player'   => array( 'Lecteur' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'Player' => array( 'Lecteur' ),
 );
 
-$aliases['frp'] = array(
-	'Player'   => array( 'Liésor' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Player' => array( 'Liésor' ),
 );
 
-$aliases['gl'] = array(
-	'Player'   => array( 'Xogador' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Player' => array( 'Xogador' ),
 );
 
-$aliases['hr'] = array(
-	'Player'   => array( 'Igrač' ),
+/** Croatian (Hrvatski) */
+$specialPageAliases['hr'] = array(
+	'Player' => array( 'Igrač' ),
 );
 
-$aliases['hsb'] = array(
-	'Player'   => array( 'Wothrawak' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'Player' => array( 'Wothrawak' ),
 );
 
-$aliases['ia'] = array(
-	'Player'   => array( 'Reproductor' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Player' => array( 'Reproductor' ),
 );
 
-$aliases['id'] = array(
-	'Player'   => array( 'Pemutar' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Player' => array( 'Pemutar' ),
 );
 
-$aliases['ja'] = array(
-	'Player'   => array( 'プレーヤー', 'プレイヤー', 'プレーヤ', 'プレイヤ' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Player' => array( 'プレーヤー', 'プレイヤー', 'プレーヤ', 'プレイヤ' ),
 );
 
-$aliases['ko'] = array(
-	'Player'   => array( '재생기' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'Player' => array( '재생기' ),
 );
 
-$aliases['lad'] = array(
-	'Player'   => array( 'Jugador' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Player' => array( 'Jugador' ),
 );
 
-$aliases['ml'] = array(
-	'Player'   => array( 'പ്ലേയർ' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Player' => array( 'പ്ലേയർ' ),
 );
 
-$aliases['mr'] = array(
-	'Player'   => array( 'खेळाडू' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Player' => array( 'खेळाडू' ),
 );
 
-$aliases['nds-nl'] = array(
-	'Player'   => array( 'Mediaspeuler' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Player' => array( 'Mediaspeuler' ),
 );
 
-$aliases['nl'] = array(
-	'Player'   => array( 'Mediaspeler' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'Player' => array( 'Mediaspeler' ),
 );
 
-$aliases['no'] = array(
-	'Player'   => array( 'Medieavspiller' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Player' => array( 'Medieavspiller' ),
 );
 
-$aliases['oc'] = array(
-	'Player'   => array( 'Lector' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'Player' => array( 'Lector' ),
 );
 
-$aliases['pl'] = array(
-	'Player'   => array( 'Odtwarzacz' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Player' => array( 'Odtwarzacz' ),
 );
 
-$aliases['ps'] = array(
-	'Player'   => array( 'غږونکی' ),
+/** Pashto (پښتو) */
+$specialPageAliases['ps'] = array(
+	'Player' => array( 'غږونکی' ),
 );
 
-$aliases['sa'] = array(
-	'Player'   => array( 'खेळाडू' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'Player' => array( 'खेळाडू' ),
 );
 
-$aliases['sk'] = array(
-	'Player'   => array( 'Hráč' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'Player' => array( 'Hráč' ),
 );
 
-$aliases['sv'] = array(
-	'Player'   => array( 'Spelare' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'Player' => array( 'Spelare' ),
 );
 
-$aliases['tl'] = array(
-	'Player'   => array( 'Manlalaro' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'Player' => array( 'Manlalaro' ),
 );
 
-$aliases['tr'] = array(
-	'Player'   => array( 'Oyuncu' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'Player' => array( 'Oyuncu' ),
 );
 
-$aliases['tt-cyrl'] = array(
-	'Player'   => array( 'Плейер' ),
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'Player' => array( 'Плейер' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

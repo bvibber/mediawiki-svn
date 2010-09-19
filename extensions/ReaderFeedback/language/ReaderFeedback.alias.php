@@ -6,12 +6,10 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Aaron Schulz
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'LikedPages' => array( 'LikedPages' ),
 	'ProblemPages' => array( 'ProblemPages' ),
 	'RatingHistory' => array( 'RatingHistory' ),
@@ -19,7 +17,7 @@ $aliases['en'] = array(
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'LikedPages' => array( 'صفحات_محبوبة' ),
 	'ProblemPages' => array( 'صفحات_المشاكل' ),
 	'RatingHistory' => array( 'تاريخ_التقييم' ),
@@ -27,7 +25,7 @@ $aliases['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'LikedPages' => array( 'صفح_معمول_ليها_لينك' ),
 	'ProblemPages' => array( 'صفح_المشاكل' ),
 	'RatingHistory' => array( 'تاريخ_التقييم' ),
@@ -35,19 +33,19 @@ $aliases['arz'] = array(
 );
 
 /** Southern Balochi (بلوچی مکرانی) */
-$aliases['bcc'] = array(
+$specialPageAliases['bcc'] = array(
 	'ProblemPages' => array( 'صفحات‌مشکل' ),
 );
 
 /** Bulgarian (Български) */
-$aliases['bg'] = array(
+$specialPageAliases['bg'] = array(
 	'LikedPages' => array( 'Харесвани страници' ),
 	'ProblemPages' => array( 'Проблемни страници' ),
 	'ReaderFeedback' => array( 'Читателски отзиви' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'LikedPages' => array( 'OmiljeneStranice' ),
 	'ProblemPages' => array( 'ProblematicneStranice' ),
 	'RatingHistory' => array( 'HistorijaRejtinga' ),
@@ -55,7 +53,7 @@ $aliases['bs'] = array(
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'LikedPages' => array( 'Hoch bewertete Seiten' ),
 	'ProblemPages' => array( 'Niedrig bewertete Seiten' ),
 	'RatingHistory' => array( 'Bewertungsgeschichte' ),
@@ -63,7 +61,7 @@ $aliases['de'] = array(
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'LikedPages' => array( 'Kwalitne boki' ),
 	'ProblemPages' => array( 'Problematiske boki' ),
 	'RatingHistory' => array( 'Stawizny pógódnośenjow' ),
@@ -71,12 +69,12 @@ $aliases['dsb'] = array(
 );
 
 /** Esperanto (Esperanto) */
-$aliases['eo'] = array(
+$specialPageAliases['eo'] = array(
 	'ProblemPages' => array( 'ProblemajPaĝoj' ),
 );
 
 /** Persian (فارسی) */
-$aliases['fa'] = array(
+$specialPageAliases['fa'] = array(
 	'LikedPages' => array( 'صفحه‌های_مطلوب' ),
 	'ProblemPages' => array( 'صفحه‌های_مشکل‌دار' ),
 	'RatingHistory' => array( 'تاریخچه_درجه‌بندی' ),
@@ -84,28 +82,28 @@ $aliases['fa'] = array(
 );
 
 /** Finnish (Suomi) */
-$aliases['fi'] = array(
+$specialPageAliases['fi'] = array(
 	'LikedPages' => array( 'Laatusivut' ),
 	'ProblemPages' => array( 'Ongelmalliset_sivut' ),
 	'ReaderFeedback' => array( 'Lukijapalaute' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'LikedPages' => array( 'Pages appréciées' ),
 	'ProblemPages' => array( 'PagesProblematiques' ),
 );
 
 /** Franco-Provençal (Arpetan) */
-$aliases['frp'] = array(
-	'LikedPages' => array( "Pâges qu'ont des èstimacions hôtes", 'PâgesQuOntDesÈstimacionsHôtes' ),
-	'ProblemPages' => array( "Pâges qu'ont des crouyes èstimacions", 'PâgesQuOntDesCrouyesÈstimacions' ),
-	'RatingHistory' => array( "Historico de l'èstimacion de la pâge", 'HistoricoDeLÈstimacionDeLaPâge' ),
+$specialPageAliases['frp'] = array(
+	'LikedPages' => array( 'Pâges qu\'ont des èstimacions hôtes', 'PâgesQuOntDesÈstimacionsHôtes' ),
+	'ProblemPages' => array( 'Pâges qu\'ont des crouyes èstimacions', 'PâgesQuOntDesCrouyesÈstimacions' ),
+	'RatingHistory' => array( 'Historico de l\'èstimacion de la pâge', 'HistoricoDeLÈstimacionDeLaPâge' ),
 	'ReaderFeedback' => array( 'Èstimacion' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'LikedPages' => array( 'Páxinas ligadas' ),
 	'ProblemPages' => array( 'Páxinas problemáticas' ),
 	'RatingHistory' => array( 'Valoración do historial' ),
@@ -113,7 +111,7 @@ $aliases['gl'] = array(
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'LikedPages' => array( 'Syte wu am beschte bewärtet sin' ),
 	'ProblemPages' => array( 'Syte wu am nidrigschte bewärtet sin' ),
 	'RatingHistory' => array( 'Bewärtigsgschicht' ),
@@ -121,14 +119,14 @@ $aliases['gsw'] = array(
 );
 
 /** Gujarati (ગુજરાતી) */
-$aliases['gu'] = array(
+$specialPageAliases['gu'] = array(
 	'LikedPages' => array( 'જોડાયેલપાનાં' ),
 	'ProblemPages' => array( 'સંદિગ્ધપાનાઓ' ),
 	'ReaderFeedback' => array( 'વાચકનોફીડબેક' ),
 );
 
 /** Hebrew (עברית) */
-$aliases['he'] = array(
+$specialPageAliases['he'] = array(
 	'LikedPages' => array( 'דפים_מקושרים' ),
 	'ProblemPages' => array( 'דפים_בעייתיים' ),
 	'RatingHistory' => array( 'היסטוריית_הדירוג' ),
@@ -136,7 +134,7 @@ $aliases['he'] = array(
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'LikedPages' => array( 'Kwalitne strony' ),
 	'ProblemPages' => array( 'Problematiske strony' ),
 	'RatingHistory' => array( 'Stawizny pohódnoćenjow' ),
@@ -144,7 +142,7 @@ $aliases['hsb'] = array(
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'LikedPages' => array( 'Jónak ítélt lapok' ),
 	'ProblemPages' => array( 'Rossznak ítélt lapok' ),
 	'RatingHistory' => array( 'Értékeléstörténet' ),
@@ -152,7 +150,7 @@ $aliases['hu'] = array(
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'LikedPages' => array( 'Paginas ligate' ),
 	'ProblemPages' => array( 'Paginas problematic' ),
 	'RatingHistory' => array( 'Historia de evalutationes' ),
@@ -160,15 +158,20 @@ $aliases['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'LikedPages' => array( 'Halaman yang digemari', 'HalamanDigemari' ),
-	'ProblemPages' => array( 'Halaman bermasalah', 'HalamanBermasalah' ),
-	'RatingHistory' => array( 'Riwayat penilaian', 'RiwayatPenilaian' ),
-	'ReaderFeedback' => array( 'Umpan balik pembaca', 'UmpanBalikPembaca' ),
+$specialPageAliases['id'] = array(
+	'LikedPages' => array( 'Halaman_yang_digemari', 'HalamanDigemari' ),
+	'ProblemPages' => array( 'Halaman_bermasalah', 'HalamanBermasalah' ),
+	'RatingHistory' => array( 'Riwayat_penilaian', 'RiwayatPenilaian' ),
+	'ReaderFeedback' => array( 'Umpan_balik_pembaca', 'UmpanBalikPembaca' ),
+);
+
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'LikedPages' => array( 'PagineLinkate' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'LikedPages' => array( '評価の高いページ' ),
 	'ProblemPages' => array( '問題のあるページ', '評価の低いページ' ),
 	'RatingHistory' => array( '評価履歴', 'ページ評価履歴' ),
@@ -176,33 +179,33 @@ $aliases['ja'] = array(
 );
 
 /** Khmer (ភាសាខ្មែរ) */
-$aliases['km'] = array(
+$specialPageAliases['km'] = array(
 	'LikedPages' => array( 'ទំពរ​មាន​តំណភ្ជាប់' ),
 	'ProblemPages' => array( 'ទំព័រមានបញ្ហា' ),
 );
 
 /** Korean (한국어) */
-$aliases['ko'] = array(
+$specialPageAliases['ko'] = array(
 	'ReaderFeedback' => array( '독자피드백' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'LikedPages' => array( 'Beléifte Säiten' ),
-	'ProblemPages' => array( 'Problematesch Säiten' ),
-	'RatingHistory' => array( 'Bewäertung vun de Versiounen' ),
-	'ReaderFeedback' => array( 'Bewäertung vun de Lieser' ),
+$specialPageAliases['lb'] = array(
+	'LikedPages' => array( 'Beléifte_Säiten' ),
+	'ProblemPages' => array( 'Problematesch_Säiten' ),
+	'RatingHistory' => array( 'Bewäertung_vun_de_Versiounen' ),
+	'ReaderFeedback' => array( 'Bewäertung_vun_de_Lieser' ),
 );
 
 /** Macedonian (Македонски) */
-$aliases['mk'] = array(
+$specialPageAliases['mk'] = array(
 	'LikedPages' => array( 'БараниСтраници' ),
 	'ProblemPages' => array( 'ПроблематичниСтраници' ),
 	'RatingHistory' => array( 'ИсторијаНаОценување' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'LikedPages' => array( 'കണ്ണിവത്ക്കരിക്കപ്പെട്ടതാളുകൾ' ),
 	'ProblemPages' => array( 'പ്രശ്നമുള്ളതാളുകൾ' ),
 	'RatingHistory' => array( 'നിലവാരമിടലിന്റെചരിത്രം' ),
@@ -210,44 +213,44 @@ $aliases['ml'] = array(
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'LikedPages' => array( 'जोडलेलीपाने' ),
 );
 
 /** Malay (Bahasa Melayu) */
-$aliases['ms'] = array(
-	'ProblemPages' => array( 'Laman bermasalah' ),
+$specialPageAliases['ms'] = array(
+	'ProblemPages' => array( 'Laman_bermasalah' ),
 );
 
 /** Maltese (Malti) */
-$aliases['mt'] = array(
+$specialPageAliases['mt'] = array(
 	'LikedPages' => array( 'PaġniMarbuta' ),
 );
 
 /** Erzya (Эрзянь) */
-$aliases['myv'] = array(
+$specialPageAliases['myv'] = array(
 	'LikedPages' => array( 'ВечкевиксЛопат' ),
 	'ProblemPages' => array( 'ПроблемаМартоЛопат' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
-	'LikedPages' => array( "Goeie_pagina's" ),
-	'ProblemPages' => array( "Prebleempagina's" ),
+$specialPageAliases['nds-nl'] = array(
+	'LikedPages' => array( 'Goeie_pagina\'s' ),
+	'ProblemPages' => array( 'Prebleempagina\'s' ),
 	'RatingHistory' => array( 'Werderingsgeschiedenisse' ),
 	'ReaderFeedback' => array( 'Lezerreactie' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'LikedPages' => array( 'HoogGewaardeerdePaginas' ),
-	'ProblemPages' => array( 'LaagGewaardeerdePaginas', 'ProbleemPaginas', "ProbleemPagina's" ),
+	'ProblemPages' => array( 'LaagGewaardeerdePaginas', 'ProbleemPaginas', 'ProbleemPagina\'s' ),
 	'RatingHistory' => array( 'Waarderingsgeschiedenis' ),
 	'ReaderFeedback' => array( 'Lezersterugkoppeling' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
-$aliases['nn'] = array(
+$specialPageAliases['nn'] = array(
 	'LikedPages' => array( 'Lika sider' ),
 	'ProblemPages' => array( 'Problemsider' ),
 	'RatingHistory' => array( 'Vurderingsoversyn' ),
@@ -255,7 +258,7 @@ $aliases['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'LikedPages' => array( 'Godt likte sider' ),
 	'ProblemPages' => array( 'Problemsider' ),
 	'RatingHistory' => array( 'Vurderingshistorikk' ),
@@ -263,21 +266,21 @@ $aliases['no'] = array(
 );
 
 /** Occitan (Occitan) */
-$aliases['oc'] = array(
-	'LikedPages' => array( 'PaginasQuAgradan', "Paginas qu'agradan" ),
+$specialPageAliases['oc'] = array(
+	'LikedPages' => array( 'PaginasQuAgradan', 'Paginas qu\'agradan' ),
 	'ProblemPages' => array( 'PaginasProblematicas' ),
 );
 
 /** Polish (Polski) */
-$aliases['pl'] = array(
-	'LikedPages' => array( 'Wysoko oceniane strony' ),
-	'ProblemPages' => array( 'Nisko oceniane strony' ),
-	'RatingHistory' => array( 'Historia oceniania strony' ),
-	'ReaderFeedback' => array( 'Ocena czytelnika' ),
+$specialPageAliases['pl'] = array(
+	'LikedPages' => array( 'Wysoko_oceniane_strony' ),
+	'ProblemPages' => array( 'Nisko_oceniane_strony' ),
+	'RatingHistory' => array( 'Historia_oceniania_strony' ),
+	'ReaderFeedback' => array( 'Ocena_czytelnika' ),
 );
 
 /** Portuguese (Português) */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'LikedPages' => array( 'Páginas aprovadas' ),
 	'ProblemPages' => array( 'Páginas com problemas' ),
 	'RatingHistory' => array( 'Histórico de avaliações' ),
@@ -285,7 +288,7 @@ $aliases['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil) */
-$aliases['pt-br'] = array(
+$specialPageAliases['pt-br'] = array(
 	'LikedPages' => array( 'Páginas aprovadas' ),
 	'ProblemPages' => array( 'Páginas com problemas' ),
 	'RatingHistory' => array( 'Histórico de avaliações' ),
@@ -293,7 +296,7 @@ $aliases['pt-br'] = array(
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'LikedPages' => array( 'इष्टपृष्ठ' ),
 	'ProblemPages' => array( 'समस्यापृष्ठ' ),
 	'RatingHistory' => array( 'मुल्यांकनइतिहास' ),
@@ -301,7 +304,7 @@ $aliases['sa'] = array(
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'LikedPages' => array( 'OdkazovanéStránky' ),
 	'ProblemPages' => array( 'ProblémovéStránky' ),
 	'RatingHistory' => array( 'HistóriaHodnotenia' ),
@@ -309,17 +312,17 @@ $aliases['sk'] = array(
 );
 
 /** Albanian (Shqip) */
-$aliases['sq'] = array(
+$specialPageAliases['sq'] = array(
 	'RatingHistory' => array( 'HistoriaeVlerësimit' ),
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица)) */
-$aliases['sr-ec'] = array(
+$specialPageAliases['sr-ec'] = array(
 	'ProblemPages' => array( 'ПроблематичнеСтране' ),
 );
 
 /** Swedish (Svenska) */
-$aliases['sv'] = array(
+$specialPageAliases['sv'] = array(
 	'LikedPages' => array( 'Länkade sidor' ),
 	'ProblemPages' => array( 'Problemsidor' ),
 	'RatingHistory' => array( 'Betygshistorik' ),
@@ -327,14 +330,14 @@ $aliases['sv'] = array(
 );
 
 /** Swahili (Kiswahili) */
-$aliases['sw'] = array(
+$specialPageAliases['sw'] = array(
 	'LikedPages' => array( 'KurasaZilizounganishwa' ),
 	'ProblemPages' => array( 'KurasaZenyematatizo' ),
 	'RatingHistory' => array( 'HesabuHistoria' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'LikedPages' => array( 'Nagustuhang mga pahina' ),
 	'ProblemPages' => array( 'Mga pahinang may suliranin' ),
 	'RatingHistory' => array( 'Kasaysayan ng pag-aantas' ),
@@ -342,10 +345,14 @@ $aliases['tl'] = array(
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'LikedPages' => array( 'BeğenilenSayfalar', 'SevilenSayfalar' ),
 	'ProblemPages' => array( 'ProblemSayfalar' ),
 	'RatingHistory' => array( 'DerecelendirmeGeçmişi', 'PuanlamaGeçmişi' ),
 	'ReaderFeedback' => array( 'OkuyucuGeribildirimi' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

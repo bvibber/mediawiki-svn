@@ -6,115 +6,144 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Trevor Parscal
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'LogEntry' => array( 'LogEntry' ),
 );
 
-$aliases['ar'] = array(
-	'LogEntry'   => array( 'مدخلة_سجل' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'LogEntry' => array( 'مدخلة_سجل' ),
 );
 
-$aliases['arz'] = array(
-	'LogEntry'   => array( 'مدخلة_سجل' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'LogEntry' => array( 'مدخلة_سجل' ),
 );
 
-$aliases['bs'] = array(
-	'LogEntry'   => array( 'UnosZapisa' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'LogEntry' => array( 'UnosZapisa' ),
 );
 
-$aliases['de'] = array(
-	'LogEntry'   => array( 'Logbucheintrag' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'LogEntry' => array( 'Logbucheintrag' ),
 );
 
-$aliases['dsb'] = array(
-	'LogEntry'   => array( 'Protokolowy_zapisk' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'LogEntry' => array( 'Protokolowy_zapisk' ),
 );
 
-$aliases['fa'] = array(
-	'LogEntry'   => array( 'مدخل_سیاهه' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'LogEntry' => array( 'مدخل_سیاهه' ),
 );
 
-$aliases['gl'] = array(
-	'LogEntry'   => array( 'Entrada no rexistro' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'LogEntry' => array( 'Entrada no rexistro' ),
 );
 
-$aliases['gsw'] = array(
-	'LogEntry'   => array( 'Logbuechyytrag' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'LogEntry' => array( 'Logbuechyytrag' ),
 );
 
-$aliases['hsb'] = array(
-	'LogEntry'   => array( 'Protokolowy_zapisk' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'LogEntry' => array( 'Protokolowy_zapisk' ),
 );
 
-$aliases['hu'] = array(
-	'LogEntry'   => array( 'Naplóbejegyzés' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'LogEntry' => array( 'Naplóbejegyzés' ),
 );
 
-$aliases['ia'] = array(
-	'LogEntry'   => array( 'Entrata_de_registro' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'LogEntry' => array( 'Entrata_de_registro' ),
 );
 
-$aliases['id'] = array(
-	'LogEntry'   => array( 'Entri_catatan', 'EntriCatatan' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'LogEntry' => array( 'Entri_catatan', 'EntriCatatan' ),
 );
 
-$aliases['ja'] = array(
-	'LogEntry'   => array( '記録項目' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'LogEntry' => array( '記録項目' ),
 );
 
-$aliases['ksh'] = array(
-	'LogEntry'   => array( 'LogbochEnndraach' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'LogEntry' => array( 'LogbochEnndraach' ),
 );
 
-$aliases['lad'] = array(
-	'LogEntry'   => array( 'Entrada_de_rējistros' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'LogEntry' => array( 'Entrada_de_rējistros' ),
 );
 
-$aliases['lb'] = array(
-	'LogEntry'   => array( 'Rubrik_an_engem_Logbuch' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'LogEntry' => array( 'Rubrik_an_engem_Logbuch' ),
 );
 
-$aliases['mk'] = array(
-	'LogEntry'   => array( 'ЗаписВоДневник' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'LogEntry' => array( 'ЗаписВоДневник' ),
 );
 
-$aliases['ml'] = array(
-	'LogEntry'   => array( 'രേഖയിലുൾപ്പെടുത്തൽ' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'LogEntry' => array( 'രേഖയിലുൾപ്പെടുത്തൽ' ),
 );
 
-$aliases['mt'] = array(
-	'LogEntry'   => array( 'DaħlaReġistru' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'LogEntry' => array( 'DaħlaReġistru' ),
 );
 
-$aliases['nl'] = array(
-	'LogEntry'   => array( 'Logboekregel' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'LogEntry' => array( 'Logboekregel' ),
 );
 
-$aliases['no'] = array(
-	'LogEntry'   => array( 'Loggelement' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'LogEntry' => array( 'Loggelement' ),
 );
 
-$aliases['pt'] = array(
-	'LogEntry'   => array( 'Entrada_no_registo' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'LogEntry' => array( 'Entrada_no_registo' ),
 );
 
-$aliases['sa'] = array(
-	'LogEntry'   => array( 'अंकनप्रविष्टि' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'LogEntry' => array( 'अंकनप्रविष्टि' ),
 );
 
-$aliases['sk'] = array(
-	'LogEntry'   => array( 'PoložkaZáznamu' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'LogEntry' => array( 'PoložkaZáznamu' ),
 );
 
-$aliases['tl'] = array(
-	'LogEntry'   => array( 'Pagpasok sa tala' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'LogEntry' => array( 'Pagpasok sa tala' ),
 );
 
-$aliases['tr'] = array(
-	'LogEntry'   => array( 'KayıtGirdisi' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'LogEntry' => array( 'KayıtGirdisi' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

@@ -6,43 +6,54 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Ryan Lane, rlane32+mwext@gmail.com
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
 
-$aliases['ar'] = array(
-	'Plotters'   => array( 'طابعات' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Plotters' => array( 'طابعات' ),
 );
 
-$aliases['arz'] = array(
-	'Plotters'   => array( 'طابعات' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Plotters' => array( 'طابعات' ),
 );
 
-$aliases['es'] = array(
-	'Plotters'   => array( 'Gráficos' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'Plotters' => array( 'Gráficos' ),
 );
 
-$aliases['fa'] = array(
-	'Plotters'   => array( 'رسم‌کنندگان' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Plotters' => array( 'رسم‌کنندگان' ),
 );
 
-$aliases['ja'] = array(
-	'Plotters'   => array( 'プロッター' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Plotters' => array( 'プロッター' ),
 );
 
-$aliases['lad'] = array(
-	'Plotters'   => array( 'Pintador' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Plotters' => array( 'Pintador' ),
 );
 
-$aliases['mk'] = array(
-	'Plotters'   => array( 'Цртачи' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Plotters' => array( 'Цртачи' ),
 );
 
-$aliases['no'] = array(
-	'Plotters'   => array( 'Plottere' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Plotters' => array( 'Plottere' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

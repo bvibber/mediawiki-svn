@@ -4,75 +4,92 @@
  *
  */
 
-$aliases = array();
-
-/** English
- *
- */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'MostRevisors' => array( 'MostRevisors' ),
 );
 
-$aliases['ar'] = array(
-	'MostRevisors'   => array( 'أكثر_المراجعين' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'MostRevisors' => array( 'أكثر_المراجعين' ),
 );
 
-$aliases['arz'] = array(
-	'MostRevisors'   => array( 'اكتر_مراجعين' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'MostRevisors' => array( 'اكتر_مراجعين' ),
 );
 
-$aliases['fa'] = array(
-	'MostRevisors'   => array( 'بیش‌ترین_تجدیدنظرکننده‌ها' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'MostRevisors' => array( 'بیش‌ترین_تجدیدنظرکننده‌ها' ),
 );
 
-$aliases['ia'] = array(
-	'MostRevisors'   => array( 'Le_plus_revisores' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'MostRevisors' => array( 'Le_plus_revisores' ),
 );
 
-$aliases['id'] = array(
-	'MostRevisors'   => array( 'Peninjau_terbanyak', 'PeninjauTerbanyak' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'MostRevisors' => array( 'Peninjau_terbanyak', 'PeninjauTerbanyak' ),
 );
 
-$aliases['ja'] = array(
-	'MostRevisors'   => array( '最も編集者の多いページ' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'MostRevisors' => array( '最も編集者の多いページ' ),
 );
 
-$aliases['ksh'] = array(
-	'MostRevisors'   => array( 'MiehßteSchriiver' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'MostRevisors' => array( 'MiehßteSchriiver' ),
 );
 
-$aliases['lad'] = array(
-	'MostRevisors'   => array( 'Más_muncho_de_los_egzaminadores' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'MostRevisors' => array( 'Más_muncho_de_los_egzaminadores' ),
 );
 
-$aliases['mk'] = array(
-	'MostRevisors'   => array( 'НајвеќеПрегледувачи' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'MostRevisors' => array( 'НајвеќеПрегледувачи' ),
 );
 
-$aliases['ml'] = array(
-	'MostRevisors'   => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'MostRevisors' => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
 );
 
-$aliases['nds-nl'] = array(
-	'MostRevisors'   => array( 'Meeste_bewarkers' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'MostRevisors' => array( 'Meeste_bewarkers' ),
 );
 
-$aliases['nl'] = array(
-	'MostRevisors'   => array( 'MeesteBewerkers' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'MostRevisors' => array( 'MeesteBewerkers' ),
 );
 
-$aliases['no'] = array(
-	'MostRevisors'   => array( 'Flest_bidragsytere' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'MostRevisors' => array( 'Flest_bidragsytere' ),
 );
 
-$aliases['sk'] = array(
-	'MostRevisors'   => array( 'NajviacKontrolórov' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'MostRevisors' => array( 'NajviacKontrolórov' ),
 );
 
-$aliases['tr'] = array(
-	'MostRevisors'   => array( 'EnÇokİncelenilen' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'MostRevisors' => array( 'EnÇokİncelenilen' ),
 );
 
-$aliases['zh-hant'] = array(
-	'MostRevisors'   => array( '最多版本' ),
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'MostRevisors' => array( '最多版本' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

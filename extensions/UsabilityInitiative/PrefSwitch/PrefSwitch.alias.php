@@ -4,29 +4,37 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'PrefSwitch' => array( 'UsabilityInitiativePrefSwitch' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'PrefSwitch' => array( 'تغيير_تفضيلات_مبادرة_الاستخدام' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'PrefSwitch' => array( 'ユーザビリティイニシアティブ設定スイッチ' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'PrefSwitch' => array( 'Benotzerfrëndlechkeet__astellen' ),
+);
+
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'PrefSwitch' => array( 'യൂസബിലിറ്റി‌‌ഇനിഷ്യേറ്റീവ്‌‌ക്രമീകരണസ്ഥിതിവിവരം' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'PrefSwitch' => array( 'BruikbaarheidsinitiatiefVoorkeurenwissel' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

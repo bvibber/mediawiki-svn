@@ -6,131 +6,164 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
 /** English
  * @author Jon Harald Søby
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'AdvancedRandom' => array( 'AdvancedRandom' ),
 );
 
-$aliases['ar'] = array(
-	'AdvancedRandom'   => array( 'عشوائي_متقدم' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'AdvancedRandom' => array( 'عشوائي_متقدم' ),
 );
 
-$aliases['arz'] = array(
-	'AdvancedRandom'   => array( 'عشوائى_متقدم' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'AdvancedRandom' => array( 'عشوائى_متقدم' ),
 );
 
-$aliases['bg'] = array(
-	'AdvancedRandom'   => array( 'Случайна страница плюс' ),
+/** Bulgarian (Български) */
+$specialPageAliases['bg'] = array(
+	'AdvancedRandom' => array( 'Случайна страница плюс' ),
 );
 
-$aliases['bs'] = array(
-	'AdvancedRandom'   => array( 'NaprednoSlucajno' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'AdvancedRandom' => array( 'NaprednoSlucajno' ),
 );
 
-$aliases['es'] = array(
-	'AdvancedRandom'   => array( 'AleatorioAvanzado', 'Aleatorio_avanzado' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'AdvancedRandom' => array( 'AleatorioAvanzado', 'Aleatorio_avanzado' ),
 );
 
-$aliases['fa'] = array(
-	'AdvancedRandom'   => array( 'تصادفی_پیشرفته' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'AdvancedRandom' => array( 'تصادفی_پیشرفته' ),
 );
 
-$aliases['fi'] = array(
-	'AdvancedRandom'   => array( 'Ehdollinen_satunnaissivu' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'AdvancedRandom' => array( 'Ehdollinen_satunnaissivu' ),
 );
 
-$aliases['he'] = array(
-	'AdvancedRandom'   => array( 'אקראי_מתקדם' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'AdvancedRandom' => array( 'אקראי_מתקדם' ),
 );
 
-$aliases['ht'] = array(
-	'AdvancedRandom'   => array( 'RandonmAvanse' ),
+/** Haitian (Kreyòl ayisyen) */
+$specialPageAliases['ht'] = array(
+	'AdvancedRandom' => array( 'RandonmAvanse' ),
 );
 
-$aliases['hu'] = array(
-	'AdvancedRandom'   => array( 'Fejletlebb_véletlen' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'AdvancedRandom' => array( 'Fejletlebb_véletlen' ),
 );
 
-$aliases['ia'] = array(
-	'AdvancedRandom'   => array( 'Aleatori_avantiate' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'AdvancedRandom' => array( 'Aleatori_avantiate' ),
 );
 
-$aliases['id'] = array(
-	'AdvancedRandom'   => array( 'Sembarang_lanjut', 'SembarangLanjut' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'AdvancedRandom' => array( 'Sembarang_lanjut', 'SembarangLanjut' ),
 );
 
-$aliases['it'] = array(
-	'AdvancedRandom'   => array( 'CasualeAvanzata' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'AdvancedRandom' => array( 'CasualeAvanzata' ),
 );
 
-$aliases['ja'] = array(
-	'AdvancedRandom'   => array( '高度なおまかせ表示' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'AdvancedRandom' => array( '高度なおまかせ表示' ),
 );
 
-$aliases['ksh'] = array(
-	'AdvancedRandom'   => array( 'Besser_zohfällejje_Sigg' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'AdvancedRandom' => array( 'Besser_zohfällejje_Sigg' ),
 );
 
-$aliases['lad'] = array(
-	'AdvancedRandom'   => array( 'KualunkeAdelantado' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'AdvancedRandom' => array( 'KualunkeAdelantado' ),
 );
 
-$aliases['lb'] = array(
-	'AdvancedRandom'   => array( 'Zoufall' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'AdvancedRandom' => array( 'Zoufall' ),
 );
 
-$aliases['ml'] = array(
-	'AdvancedRandom'   => array( 'നൂതനക്രമരഹിതം' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'AdvancedRandom' => array( 'നൂതനക്രമരഹിതം' ),
 );
 
-$aliases['mr'] = array(
-	'AdvancedRandom'   => array( 'प्रगताविशीष्ट' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'AdvancedRandom' => array( 'प्रगताविशीष्ट' ),
 );
 
-$aliases['nds-nl'] = array(
-	'AdvancedRandom'   => array( 'Uut-ebreid_willekeurig' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'AdvancedRandom' => array( 'Uut-ebreid_willekeurig' ),
 );
 
-$aliases['nl'] = array(
-	'AdvancedRandom'   => array( 'UitgebreidWillekeurig' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'AdvancedRandom' => array( 'UitgebreidWillekeurig' ),
 );
 
-$aliases['no'] = array(
-	'AdvancedRandom'   => array( 'Avansert_tilfeldig_side' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'AdvancedRandom' => array( 'Avansert_tilfeldig_side' ),
 );
 
-$aliases['ro'] = array(
-	'AdvancedRandom'   => array( 'Aleatoriu_avansat' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'AdvancedRandom' => array( 'Aleatoriu_avansat' ),
 );
 
-$aliases['sa'] = array(
-	'AdvancedRandom'   => array( 'प्रगताअविशीष्ट' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'AdvancedRandom' => array( 'प्रगताअविशीष्ट' ),
 );
 
-$aliases['si'] = array(
-	'AdvancedRandom'   => array( 'ප්‍රගතඅහඹු' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'AdvancedRandom' => array( 'ප්‍රගතඅහඹු' ),
 );
 
-$aliases['sk'] = array(
-	'AdvancedRandom'   => array( 'RozšírenéNáhodné' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'AdvancedRandom' => array( 'RozšírenéNáhodné' ),
 );
 
-$aliases['tl'] = array(
-	'AdvancedRandom'   => array( 'Mas masulong na paghanap ng alin mang pahina' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'AdvancedRandom' => array( 'Mas masulong na paghanap ng alin mang pahina' ),
 );
 
-$aliases['tr'] = array(
-	'AdvancedRandom'   => array( 'GelişmişRastgele' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'AdvancedRandom' => array( 'GelişmişRastgele' ),
 );
 
-$aliases['zh-hans'] = array(
-	'AdvancedRandom'   => array( '高级随机页面' ),
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'AdvancedRandom' => array( '高级随机页面' ),
 );
 
-$aliases['zh-hant'] = array(
-	'AdvancedRandom'   => array( '高級隨機頁面' ),
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'AdvancedRandom' => array( '高級隨機頁面' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

@@ -6,74 +6,77 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ProfileMonitor' => array( 'ProfileMonitor' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'ProfileMonitor' => array( 'مراقب_الملف' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'ProfileMonitor' => array( 'مراقب_الپروفايل' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'ProfileMonitor' => array( 'Profiklowy monitor' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'ProfileMonitor' => array( 'Profilowy monitor' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'ProfileMonitor' => array( 'Analyse de rendimento' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'ProfileMonitor' => array( 'Monitor profil', 'MonitorProfil' ),
+$specialPageAliases['id'] = array(
+	'ProfileMonitor' => array( 'Monitor_profil', 'MonitorProfil' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'ProfileMonitor' => array( 'プロファイリングデータ', 'プロファイルモニター', 'プロファイルモニタ' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'ProfileMonitor' => array( 'ProfilingMonitor' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'ProfileMonitor' => array( 'Profilmonitor' ),
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'ProfileMonitor' => array( 'व्यक्तिविवरणावेक्षते' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'ProfileMonitor' => array( 'MonitorProfilu' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'ProfileMonitor' => array( 'Tagapagmatyag ng talaan ng katangian' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'ProfileMonitor' => array( 'ProfilMonitörü' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

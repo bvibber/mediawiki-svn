@@ -6,125 +6,157 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'AdminLinks' => array( 'AdminLinks' ),
 );
 
-$aliases['af'] = array(
-	'AdminLinks'   => array( 'AdminSkakels' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'AdminLinks' => array( 'AdminSkakels' ),
 );
 
-$aliases['ar'] = array(
-	'AdminLinks'   => array( 'وصلات_الإدارة' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'AdminLinks' => array( 'وصلات_الإدارة' ),
 );
 
-$aliases['arz'] = array(
-	'AdminLinks'   => array( 'لينكات_الاداره' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'AdminLinks' => array( 'لينكات_الاداره' ),
 );
 
-$aliases['de'] = array(
-	'AdminLinks'   => array( 'Admin-Links' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'AdminLinks' => array( 'Admin-Links' ),
 );
 
-$aliases['eo'] = array(
-	'AdminLinks'   => array( 'Ligiloj_por_administrantoj' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'AdminLinks' => array( 'Ligiloj_por_administrantoj' ),
 );
 
-$aliases['es'] = array(
-	'AdminLinks'   => array( 'EnlacesAdministrador' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'AdminLinks' => array( 'EnlacesAdministrador' ),
 );
 
-$aliases['fa'] = array(
-	'AdminLinks'   => array( 'پیوندهای_مدیر' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'AdminLinks' => array( 'پیوندهای_مدیر' ),
 );
 
-$aliases['fi'] = array(
-	'AdminLinks'   => array( 'Ylläpitolinkit' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'AdminLinks' => array( 'Ylläpitolinkit' ),
 );
 
-$aliases['ia'] = array(
-	'AdminLinks'   => array( 'Ligamines_pro_administratores' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'AdminLinks' => array( 'Ligamines_pro_administratores' ),
 );
 
-$aliases['id'] = array(
-	'AdminLinks'   => array( 'Pranala_admin', 'PranalaAdmin' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'AdminLinks' => array( 'Pranala_admin', 'PranalaAdmin' ),
 );
 
-$aliases['ja'] = array(
-	'AdminLinks'   => array( '管理者用リンク集' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'AdminLinks' => array( '管理者用リンク集' ),
 );
 
-$aliases['ksh'] = array(
-	'AdminLinks'   => array( 'Lengks_för_Wiki_Köbesse' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'AdminLinks' => array( 'Lengks_för_Wiki_Köbesse' ),
 );
 
-$aliases['lad'] = array(
-	'AdminLinks'   => array( 'Linkes_de_administradores' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'AdminLinks' => array( 'Linkes_de_administradores' ),
 );
 
-$aliases['lb'] = array(
-	'AdminLinks'   => array( 'Linke_fir_Administrateuren' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'AdminLinks' => array( 'Linke_fir_Administrateuren' ),
 );
 
-$aliases['mk'] = array(
-	'AdminLinks'   => array( 'АдминистраторскиВрски' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'AdminLinks' => array( 'АдминистраторскиВрски' ),
 );
 
-$aliases['ml'] = array(
-	'AdminLinks'   => array( 'കാര്യനിർവാഹകകണ്ണികൾ' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'AdminLinks' => array( 'കാര്യനിർവാഹകകണ്ണികൾ' ),
 );
 
-$aliases['mr'] = array(
-	'AdminLinks'   => array( 'प्रचालकदुवे' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'AdminLinks' => array( 'प्रचालकदुवे' ),
 );
 
-$aliases['mt'] = array(
-	'AdminLinks'   => array( 'ĦoloqAmmin' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'AdminLinks' => array( 'ĦoloqAmmin' ),
 );
 
-$aliases['nds-nl'] = array(
-	'AdminLinks'   => array( 'Beheerdersverwiezingen' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'AdminLinks' => array( 'Beheerdersverwiezingen' ),
 );
 
-$aliases['nl'] = array(
-	'AdminLinks'   => array( 'Beheerdersverwijzingen' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'AdminLinks' => array( 'Beheerdersverwijzingen' ),
 );
 
-$aliases['no'] = array(
-	'AdminLinks'   => array( 'Administratorlenker' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'AdminLinks' => array( 'Administratorlenker' ),
 );
 
-$aliases['pt'] = array(
-	'AdminLinks'   => array( 'Ligações_de_administração' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'AdminLinks' => array( 'Ligações_de_administração' ),
 );
 
-$aliases['ro'] = array(
-	'AdminLinks'   => array( 'Legături_admini' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'AdminLinks' => array( 'Legături_admini' ),
 );
 
-$aliases['si'] = array(
-	'AdminLinks'   => array( 'පරිපාලක_සබැඳි' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'AdminLinks' => array( 'පරිපාලක_සබැඳි' ),
 );
 
-$aliases['sk'] = array(
-	'AdminLinks'   => array( 'OdkazySprávcu' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'AdminLinks' => array( 'OdkazySprávcu' ),
 );
 
-$aliases['sv'] = array(
-	'AdminLinks'   => array( 'Administratörslänkar' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'AdminLinks' => array( 'Administratörslänkar' ),
 );
 
-$aliases['tr'] = array(
-	'AdminLinks'   => array( 'HizmetliBağlantıları' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'AdminLinks' => array( 'HizmetliBağlantıları' ),
 );
 
-$aliases['zh-hans'] = array(
-	'AdminLinks'   => array( '管理员链接' ),
+/** Simplified Chinese (‪中文(简体)‬) */
+$specialPageAliases['zh-hans'] = array(
+	'AdminLinks' => array( '管理员链接' ),
 );
 
-$aliases['zh-hant'] = array(
-	'AdminLinks'   => array( '管理員鏈接' ),
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'AdminLinks' => array( '管理員鏈接' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

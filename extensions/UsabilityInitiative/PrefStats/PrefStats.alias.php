@@ -6,99 +6,107 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'PrefStats' => array( 'PrefStats' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'PrefStats' => array( 'إحصاءات_التفضيلات' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'PrefStats' => array( 'إحصاءات_التفضيلات' ),
 );
 
 /** Bulgarian (Български) */
-$aliases['bg'] = array(
+$specialPageAliases['bg'] = array(
 	'PrefStats' => array( 'Статистики за настройките' ),
 );
 
 /** Estonian (Eesti) */
-$aliases['et'] = array(
+$specialPageAliases['et'] = array(
 	'PrefStats' => array( 'Eelistuste_arvandmed' ),
 );
 
 /** Hebrew (עברית) */
-$aliases['he'] = array(
+$specialPageAliases['he'] = array(
 	'PrefStats' => array( 'סטטיסטיקת_העדפות' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'PrefStats' => array( 'Statisticas de preferentias' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'PrefStats' => array( 'Statistik preferensi', 'StatistikPreferensi' ),
+$specialPageAliases['id'] = array(
+	'PrefStats' => array( 'Statistik_preferensi', 'StatistikPreferensi' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'PrefStats' => array( '設定統計' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'PrefStats' => array( 'StatistikeFörEnstellunge', 'StatistikeFörEnshtellunge', 'EnstellungStatistike', 'EnstellungStatistik' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'PrefStats' => array( 'Statistike vun den Astellungen' ),
+$specialPageAliases['lb'] = array(
+	'PrefStats' => array( 'Statistike_vun_den_Astellungen' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'PrefStats' => array( 'ക്രമീകരണസ്ഥിതിവിവരം' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'PrefStats' => array( 'प्राथम्यसांख्यिकी' ),
 );
 
+/** Malay (Bahasa Melayu) */
+$specialPageAliases['ms'] = array(
+	'PrefStats' => array( 'Statistik_keutamaan' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'PrefStats' => array( 'Veurkeurenstaotestieken' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'PrefStats' => array( 'Voorkeurenstatistieken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'PrefStats' => array( 'Innstillingsstatistikk' ),
 );
 
 /** Portuguese (Português) */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'PrefStats' => array( 'Estatísticas de preferências' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'PrefStats' => array( 'ŠtatistikyNastavení' ),
 );
 
 /** Yiddish (ייִדיש) */
-$aliases['yi'] = array(
-	'PrefStats' => array( 'פרעפערענצן סטאטיסטיק' ),
+$specialPageAliases['yi'] = array(
+	'PrefStats' => array( 'פרעפערענצן_סטאטיסטיק' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

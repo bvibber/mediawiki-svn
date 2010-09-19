@@ -4,209 +4,212 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'WhoIsWatching' => array( 'WhoIsWatching' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'WhoIsWatching' => array( 'من_يراقب' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'WhoIsWatching' => array( 'مين_بيراقب' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'WhoIsWatching' => array( 'KoPregleda' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'WhoIsWatching' => array( 'Wer beobachtet' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'WhoIsWatching' => array( 'Chto wobglědujo' ),
 );
 
 /** Spanish (Español) */
-$aliases['es'] = array(
+$specialPageAliases['es'] = array(
 	'WhoIsWatching' => array( 'Quién_esta_vigilando' ),
 );
 
 /** Persian (فارسی) */
-$aliases['fa'] = array(
+$specialPageAliases['fa'] = array(
 	'WhoIsWatching' => array( 'چه_کسی_پی‌گیری_می‌کند' ),
 );
 
 /** Finnish (Suomi) */
-$aliases['fi'] = array(
+$specialPageAliases['fi'] = array(
 	'WhoIsWatching' => array( 'Ketkä tarkkailevat' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'WhoIsWatching' => array( 'Qui a en suivi', 'QuiAEnSuivi' ),
 );
 
 /** Franco-Provençal (Arpetan) */
-$aliases['frp'] = array(
+$specialPageAliases['frp'] = array(
 	'WhoIsWatching' => array( 'Qui at en survelyence', 'QuiAtEnSurvelyence' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'WhoIsWatching' => array( 'Quen está vixiando' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'WhoIsWatching' => array( 'Wär beobachtet?' ),
 );
 
 /** Hebrew (עברית) */
-$aliases['he'] = array(
+$specialPageAliases['he'] = array(
 	'WhoIsWatching' => array( 'מי_עוקב' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'WhoIsWatching' => array( 'Štó wobkedźbuje' ),
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'WhoIsWatching' => array( 'Ki figyel' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'WhoIsWatching' => array( 'Qui observa' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'WhoIsWatching' => array( 'Siapa yang memantau', 'SiapaPantau' ),
+$specialPageAliases['id'] = array(
+	'WhoIsWatching' => array( 'Siapa_yang_memantau', 'SiapaPantau' ),
 );
 
 /** Italian (Italiano) */
-$aliases['it'] = array(
+$specialPageAliases['it'] = array(
 	'WhoIsWatching' => array( 'ChiOsserva' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'WhoIsWatching' => array( 'ページをウォッチしている利用者' ),
 );
 
 /** Khmer (ភាសាខ្មែរ) */
-$aliases['km'] = array(
+$specialPageAliases['km'] = array(
 	'WhoIsWatching' => array( 'អ្នកកំពុងតាមដាន' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'WhoIsWatching' => array( 'Wä paß op op', 'WäPassOpOp', 'WäPaßOpOp' ),
 );
 
 /** Cornish (Kernewek) */
-$aliases['kw'] = array(
-	'WhoIsWatching' => array( 'PiwUsiOwKolya' ),
+$specialPageAliases['kw'] = array(
+	'WhoIsWatching' => array( 'PiwUjyOwColya' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'WhoIsWatching' => array( 'Wien iwwerwaacht' ),
+$specialPageAliases['lb'] = array(
+	'WhoIsWatching' => array( 'Wien_iwwerwaacht' ),
 );
 
 /** Lithuanian (Lietuvių) */
-$aliases['lt'] = array(
+$specialPageAliases['lt'] = array(
 	'WhoIsWatching' => array( 'Kas stebi' ),
 );
 
 /** Macedonian (Македонски) */
-$aliases['mk'] = array(
+$specialPageAliases['mk'] = array(
 	'WhoIsWatching' => array( 'КојНабљудува' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'WhoIsWatching' => array( 'ആരൊക്കെശ്രദ്ധിക്കുന്നു' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'WhoIsWatching' => array( 'कोणकोणबघतय' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'WhoIsWatching' => array( 'Wee_volg' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'WhoIsWatching' => array( 'WieVolgt' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'WhoIsWatching' => array( 'Hvem overvåker' ),
 );
 
 /** Polish (Polski) */
-$aliases['pl'] = array(
-	'WhoIsWatching' => array( 'Kto obserwuje' ),
+$specialPageAliases['pl'] = array(
+	'WhoIsWatching' => array( 'Kto_obserwuje' ),
 );
 
 /** Pashto (پښتو) */
-$aliases['ps'] = array(
+$specialPageAliases['ps'] = array(
 	'WhoIsWatching' => array( 'څوک يې ګوري' ),
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'WhoIsWatching' => array( 'अन्यकतम्‌पश्यति' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'WhoIsWatching' => array( 'KtoSleduje' ),
 );
 
 /** Sundanese (Basa Sunda) */
-$aliases['su'] = array(
+$specialPageAliases['su'] = array(
 	'WhoIsWatching' => array( 'SahaNuMoncorong' ),
 );
 
 /** Telugu (తెలుగు) */
-$aliases['te'] = array(
+$specialPageAliases['te'] = array(
 	'WhoIsWatching' => array( 'ఎవరువీక్షిస్తున్నారు' ),
 );
 
 /** Thai (ไทย) */
-$aliases['th'] = array(
+$specialPageAliases['th'] = array(
 	'WhoIsWatching' => array( 'ผู้ที่กำลังเฝ้าดู' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'WhoIsWatching' => array( 'Sino ang nagbabantay' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'WhoIsWatching' => array( 'Kimİzliyor' ),
 );
 
 /** Yiddish (ייִדיש) */
-$aliases['yi'] = array(
-	'WhoIsWatching' => array( 'ווער פאסט אויף' ),
+$specialPageAliases['yi'] = array(
+	'WhoIsWatching' => array( 'ווער_פאסט_אויף' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

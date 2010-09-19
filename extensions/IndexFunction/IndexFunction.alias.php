@@ -6,113 +6,147 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'Index' => array( 'Index' ),
 );
 
-$aliases['af'] = array(
-	'Index'   => array( 'Indeks' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'Index' => array( 'Indeks' ),
 );
 
-$aliases['ar'] = array(
-	'Index'   => array( 'فهرس' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Index' => array( 'فهرس' ),
 );
 
-$aliases['arc'] = array(
-	'Index'   => array( 'ܡܚܘܝܢܐ' ),
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'Index' => array( 'ܡܚܘܝܢܐ' ),
 );
 
-$aliases['arz'] = array(
-	'Index'   => array( 'فهرس' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Index' => array( 'فهرس' ),
 );
 
-$aliases['br'] = array(
-	'Index'   => array( 'Meneger' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'Index' => array( 'Meneger' ),
 );
 
-$aliases['bs'] = array(
-	'Index'   => array( 'Indeks' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'Index' => array( 'Indeks' ),
 );
 
-$aliases['eo'] = array(
-	'Index'   => array( 'Indekso' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'Index' => array( 'Indekso' ),
 );
 
-$aliases['es'] = array(
-	'Index'   => array( 'Índice' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'Index' => array( 'Índice' ),
 );
 
-$aliases['fa'] = array(
-	'Index'   => array( 'نمایه' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Index' => array( 'نمایه' ),
 );
 
-$aliases['frp'] = array(
-	'Index'   => array( 'Endèxe' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'Index' => array( 'Endèxe' ),
 );
 
-$aliases['ia'] = array(
-	'Index'   => array( 'Indice' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Index' => array( 'Indice' ),
 );
 
-$aliases['id'] = array(
-	'Index'   => array( 'Indeks' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Index' => array( 'Indeks' ),
 );
 
-$aliases['ig'] = array(
-	'Index'   => array( 'Ndetu_nlé' ),
+/** Igbo (Igbo) */
+$specialPageAliases['ig'] = array(
+	'Index' => array( 'Ndetu_nlé' ),
 );
 
-$aliases['ja'] = array(
-	'Index'   => array( '索引' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'Index' => array( 'Indice' ),
 );
 
-$aliases['kw'] = array(
-	'Index'   => array( 'Menegva' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Index' => array( '索引' ),
 );
 
-$aliases['lad'] = array(
-	'Index'   => array( 'Fijhrist' ),
+/** Cornish (Kernewek) */
+$specialPageAliases['kw'] = array(
+	'Index' => array( 'Menegva' ),
 );
 
-$aliases['mk'] = array(
-	'Index'   => array( 'Индекс' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Index' => array( 'Fijhrist' ),
 );
 
-$aliases['ml'] = array(
-	'Index'   => array( 'സൂചിക' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Index' => array( 'Индекс' ),
 );
 
-$aliases['mr'] = array(
-	'Index'   => array( 'सूची' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Index' => array( 'സൂചിക' ),
 );
 
-$aliases['no'] = array(
-	'Index'   => array( 'Indeks' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Index' => array( 'सूची' ),
 );
 
-$aliases['pl'] = array(
-	'Index'   => array( 'Indeks' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Index' => array( 'Indeks' ),
 );
 
-$aliases['ps'] = array(
-	'Index'   => array( 'ليکلړ' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Index' => array( 'Indeks' ),
 );
 
-$aliases['pt'] = array(
-	'Index'   => array( 'Índice' ),
+/** Pashto (پښتو) */
+$specialPageAliases['ps'] = array(
+	'Index' => array( 'ليکلړ' ),
 );
 
-$aliases['si'] = array(
-	'Index'   => array( 'සූචිය' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'Index' => array( 'Índice' ),
 );
 
-$aliases['sl'] = array(
-	'Index'   => array( 'Kazalo' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'Index' => array( 'සූචිය' ),
 );
 
-$aliases['tr'] = array(
-	'Index'   => array( 'Dizin', 'Endeks' ),
+/** Slovenian (Slovenščina) */
+$specialPageAliases['sl'] = array(
+	'Index' => array( 'Kazalo' ),
 );
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'Index' => array( 'Dizin', 'Endeks' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

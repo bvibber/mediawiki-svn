@@ -6,117 +6,147 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ImageTagging' => array( 'ImageTagging' ),
 );
 
-$aliases['ar'] = array(
-	'ImageTagging'   => array( 'وسم_الصور' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ImageTagging' => array( 'وسم_الصور' ),
 );
 
-$aliases['arz'] = array(
-	'ImageTagging'   => array( 'Tagging_للصور' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ImageTagging' => array( 'Tagging_للصور' ),
 );
 
-$aliases['bs'] = array(
-	'ImageTagging'   => array( 'OznacavanjeSlika' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ImageTagging' => array( 'OznacavanjeSlika' ),
 );
 
-$aliases['de'] = array(
-	'ImageTagging'   => array( 'Bildmarkierung' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ImageTagging' => array( 'Bildmarkierung' ),
 );
 
-$aliases['dsb'] = array(
-	'ImageTagging'   => array( 'Markěrowanje_wobrazow' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'ImageTagging' => array( 'Markěrowanje_wobrazow' ),
 );
 
-$aliases['fa'] = array(
-	'ImageTagging'   => array( 'برچسب_تصویر' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ImageTagging' => array( 'برچسب_تصویر' ),
 );
 
-$aliases['hsb'] = array(
-	'ImageTagging'   => array( 'Markěrowanje_wobrazow' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'ImageTagging' => array( 'Markěrowanje_wobrazow' ),
 );
 
-$aliases['hu'] = array(
-	'ImageTagging'   => array( 'Képcímkézés' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'ImageTagging' => array( 'Képcímkézés' ),
 );
 
-$aliases['ia'] = array(
-	'ImageTagging'   => array( 'Etiquettage_de_imagines' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ImageTagging' => array( 'Etiquettage_de_imagines' ),
 );
 
-$aliases['id'] = array(
-	'ImageTagging'   => array( 'Tag_gambar', 'TagGambar' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ImageTagging' => array( 'Tag_gambar', 'TagGambar' ),
 );
 
-$aliases['ja'] = array(
-	'ImageTagging'   => array( '画像のラベル付け', 'ラベル付画像' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ImageTagging' => array( '画像のラベル付け', 'ラベル付画像' ),
 );
 
-$aliases['ksh'] = array(
-	'ImageTagging'   => array( 'Belder_Makeere', 'BelderMakeere' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ImageTagging' => array( 'Belder_Makeere', 'BelderMakeere' ),
 );
 
-$aliases['lad'] = array(
-	'ImageTagging'   => array( 'TegguearFotografías' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ImageTagging' => array( 'TegguearFotografías' ),
 );
 
-$aliases['lb'] = array(
-	'ImageTagging'   => array( 'Bildmarkéierung' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ImageTagging' => array( 'Bildmarkéierung' ),
 );
 
-$aliases['mk'] = array(
-	'ImageTagging'   => array( 'ОзначувањеНаСлики' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ImageTagging' => array( 'ОзначувањеНаСлики' ),
 );
 
-$aliases['ml'] = array(
-	'ImageTagging'   => array( 'ചിത്രംറ്റാഗ്ചെയ്യുക' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ImageTagging' => array( 'ചിത്രംറ്റാഗ്ചെയ്യുക' ),
 );
 
-$aliases['mr'] = array(
-	'ImageTagging'   => array( 'सचित्रखूणा' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'ImageTagging' => array( 'सचित्रखूणा' ),
 );
 
-$aliases['nds-nl'] = array(
-	'ImageTagging'   => array( 'Ofbeeldingen_annoteren' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ImageTagging' => array( 'Ofbeeldingen_annoteren' ),
 );
 
-$aliases['nl'] = array(
-	'ImageTagging'   => array( 'AfbeeldingAnnoteren' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ImageTagging' => array( 'AfbeeldingAnnoteren' ),
 );
 
-$aliases['no'] = array(
-	'ImageTagging'   => array( 'Bildetagging' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ImageTagging' => array( 'Bildetagging' ),
 );
 
-$aliases['pl'] = array(
-	'ImageTagging'   => array( 'Ustawianie_słów_kluczowych_grafiki' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'ImageTagging' => array( 'Ustawianie_słów_kluczowych_grafiki' ),
 );
 
-$aliases['pt'] = array(
-	'ImageTagging'   => array( 'Categorização_de_imagens' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ImageTagging' => array( 'Categorização_de_imagens' ),
 );
 
-$aliases['sa'] = array(
-	'ImageTagging'   => array( 'छायाचित्रवीजक' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'ImageTagging' => array( 'छायाचित्रवीजक' ),
 );
 
-$aliases['sk'] = array(
-	'ImageTagging'   => array( 'OznačovanieObrázkov' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'ImageTagging' => array( 'OznačovanieObrázkov' ),
 );
 
-$aliases['sw'] = array(
-	'ImageTagging'   => array( 'MabanoyaPicha' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'ImageTagging' => array( 'MabanoyaPicha' ),
 );
 
-$aliases['tl'] = array(
-	'ImageTagging'   => array( 'Pagtatatak ng larawan' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'ImageTagging' => array( 'Pagtatatak ng larawan' ),
 );
 
-$aliases['tr'] = array(
-	'ImageTagging'   => array( 'DosyaEtiketleme' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ImageTagging' => array( 'DosyaEtiketleme' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

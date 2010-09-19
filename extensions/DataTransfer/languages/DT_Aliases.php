@@ -6,195 +6,256 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ImportCSV' => array( 'ImportCSV' ),
 	'ImportXML' => array( 'ImportXML' ),
 	'ViewXML' => array( 'ViewXML' ),
 );
 
-$aliases['af'] = array(
-	'ViewXML'     => array( 'WysXML' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'ViewXML' => array( 'WysXML' ),
 );
 
-$aliases['ar'] = array(
-	'ViewXML'     => array( 'عرض_إكس_إم_إل' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
 );
 
-$aliases['arz'] = array(
-	'ViewXML'     => array( 'عرض_XML' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ViewXML' => array( 'عرض_XML' ),
 );
 
-$aliases['br'] = array(
-	'ViewXML'     => array( 'GweletXML' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ViewXML' => array( 'GweletXML' ),
 );
 
-$aliases['bs'] = array(
-	'ViewXML'     => array( 'VidiXML' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ViewXML' => array( 'VidiXML' ),
 );
 
-$aliases['de'] = array(
-	'ImportCSV'   => array( 'CSV_importieren' ),
-	'ImportXML'   => array( 'XML_importieren' ),
-	'ViewXML'     => array( 'XML_anzeigen' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ImportCSV' => array( 'CSV_importieren' ),
+	'ImportXML' => array( 'XML_importieren' ),
+	'ViewXML' => array( 'XML_anzeigen' ),
 );
 
-$aliases['eo'] = array(
-	'ViewXML'     => array( 'Montri_XML' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ViewXML' => array( 'Montri_XML' ),
 );
 
-$aliases['es'] = array(
-	'ViewXML'     => array( 'Ver_XML', 'VerXML' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'ViewXML' => array( 'Ver_XML', 'VerXML' ),
 );
 
-$aliases['eu'] = array(
-	'ViewXML'     => array( 'XMLIkusi' ),
+/** Basque (Euskara) */
+$specialPageAliases['eu'] = array(
+	'ViewXML' => array( 'XMLIkusi' ),
 );
 
-$aliases['fa'] = array(
-	'ImportCSV'   => array( 'درون‌ریزی_سی‌اس‌وی' ),
-	'ImportXML'   => array( 'درون‌ریزی_اکس‌ام‌ال' ),
-	'ViewXML'     => array( 'مشاهده_اکس‌ام‌ال' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ImportCSV' => array( 'درون‌ریزی_سی‌اس‌وی' ),
+	'ImportXML' => array( 'درون‌ریزی_اکس‌ام‌ال' ),
+	'ViewXML' => array( 'مشاهده_اکس‌ام‌ال' ),
 );
 
-$aliases['fr'] = array(
-	'ImportCSV'   => array( 'Importer_CVS', 'ImporterCVS' ),
-	'ImportXML'   => array( 'Importer_XML', 'ImporterXML' ),
-	'ViewXML'     => array( 'Voir_le_XML', 'Voir_XML', 'VoirXML' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'ImportCSV' => array( 'Importer_CVS', 'ImporterCVS' ),
+	'ImportXML' => array( 'Importer_XML', 'ImporterXML' ),
+	'ViewXML' => array( 'Voir_le_XML', 'Voir_XML', 'VoirXML' ),
 );
 
-$aliases['frp'] = array(
-	'ViewXML'     => array( 'Vêre_lo_XML', 'VêreLoXML' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'ViewXML' => array( 'Vêre_lo_XML', 'VêreLoXML' ),
 );
 
-$aliases['gl'] = array(
-	'ViewXML'     => array( 'Ver XML' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'ViewXML' => array( 'Ver XML' ),
 );
 
-$aliases['gsw'] = array(
-	'ViewXML'     => array( 'Lueg XML' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'ViewXML' => array( 'Lueg XML' ),
 );
 
-$aliases['gu'] = array(
-	'ViewXML'     => array( 'XMLજુઓ' ),
+/** Gujarati (ગુજરાતી) */
+$specialPageAliases['gu'] = array(
+	'ViewXML' => array( 'XMLજુઓ' ),
 );
 
-$aliases['hu'] = array(
-	'ViewXML'     => array( 'XML_megtekintése' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'ViewXML' => array( 'XML_megtekintése' ),
 );
 
-$aliases['ia'] = array(
-	'ViewXML'     => array( 'Visualisar_XML' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ViewXML' => array( 'Visualisar_XML' ),
 );
 
-$aliases['id'] = array(
-	'ViewXML'     => array( 'Lihat_XML', 'LihatXML' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ViewXML' => array( 'Lihat_XML', 'LihatXML' ),
 );
 
-$aliases['it'] = array(
-	'ViewXML'     => array( 'VediXML' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ImportCSV' => array( 'ImportaCSV' ),
+	'ImportXML' => array( 'ImportaXML' ),
+	'ViewXML' => array( 'VediXML' ),
 );
 
-$aliases['ja'] = array(
-	'ViewXML'     => array( 'XML表示', 'ＸＭＬ表示' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ViewXML' => array( 'XML表示', 'ＸＭＬ表示' ),
 );
 
-$aliases['km'] = array(
-	'ViewXML'     => array( 'មើលXML' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'ViewXML' => array( 'មើលXML' ),
 );
 
-$aliases['ksh'] = array(
-	'ImportCSV'   => array( 'CSV_Empotteere' ),
-	'ImportXML'   => array( 'XML_Empoteere' ),
-	'ViewXML'     => array( 'XML_beloore' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ImportCSV' => array( 'CSV_Empotteere' ),
+	'ImportXML' => array( 'XML_Empoteere' ),
+	'ViewXML' => array( 'XML_beloore' ),
 );
 
-$aliases['lad'] = array(
-	'ImportCSV'   => array( 'Aktarear_CSV_Ariento' ),
-	'ImportXML'   => array( 'Aktarear_XML_Ariento' ),
-	'ViewXML'     => array( 'Ver_XML' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ImportCSV' => array( 'Aktarear_CSV_Ariento' ),
+	'ImportXML' => array( 'Aktarear_XML_Ariento' ),
+	'ViewXML' => array( 'Ver_XML' ),
 );
 
-$aliases['lb'] = array(
-	'ViewXML'     => array( 'XML_weisen' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ImportCSV' => array( 'CSV_importéieren' ),
+	'ImportXML' => array( 'XML_importéieren' ),
+	'ViewXML' => array( 'XML_weisen' ),
 );
 
-$aliases['mk'] = array(
-	'ViewXML'     => array( 'ВидиXML' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ViewXML' => array( 'ВидиXML' ),
 );
 
-$aliases['ml'] = array(
-	'ImportCSV'   => array( 'സി.എസ്.വി.ഇറക്കുമതി' ),
-	'ImportXML'   => array( 'എക്സ്.എം.എൽ.ഇറക്കുമതി' ),
-	'ViewXML'     => array( 'എക്സ്.എം.എൽ.കാണുക' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ImportCSV' => array( 'സി.എസ്.വി.ഇറക്കുമതി' ),
+	'ImportXML' => array( 'എക്സ്.എം.എൽ.ഇറക്കുമതി' ),
+	'ViewXML' => array( 'എക്സ്.എം.എൽ.കാണുക' ),
 );
 
-$aliases['mr'] = array(
-	'ViewXML'     => array( 'XMLपहा' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'ViewXML' => array( 'XMLपहा' ),
 );
 
-$aliases['mt'] = array(
-	'ViewXML'     => array( 'UriXML' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'ViewXML' => array( 'UriXML' ),
 );
 
-$aliases['nds-nl'] = array(
-	'ViewXML'     => array( 'XML_bekieken' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ViewXML' => array( 'XML_bekieken' ),
 );
 
-$aliases['nl'] = array(
-	'ViewXML'     => array( 'XMLBekijken' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ImportCSV' => array( 'CSVImporteren' ),
+	'ImportXML' => array( 'XMLImporteren' ),
+	'ViewXML' => array( 'XMLBekijken' ),
 );
 
-$aliases['no'] = array(
-	'ViewXML'     => array( 'Vis_XML' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ViewXML' => array( 'Vis_XML' ),
 );
 
-$aliases['oc'] = array(
-	'ViewXML'     => array( 'Veire_XML', 'VeireXML' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'ViewXML' => array( 'Veire_XML', 'VeireXML' ),
 );
 
-$aliases['pl'] = array(
-	'ViewXML'     => array( 'XML' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'ViewXML' => array( 'XML' ),
 );
 
-$aliases['pt'] = array(
-	'ViewXML'     => array( 'Ver_XML' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ViewXML' => array( 'Ver_XML' ),
 );
 
-$aliases['ro'] = array(
-	'ViewXML'     => array( 'Vizualizare_XML' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'ImportCSV' => array( 'Import_CSV', 'ImportCSV' ),
+	'ImportXML' => array( 'Import_XML', 'ImportXML' ),
+	'ViewXML' => array( 'Vizualizare_XML' ),
 );
 
-$aliases['sa'] = array(
-	'ViewXML'     => array( 'XMLपश्यति' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'ViewXML' => array( 'XMLपश्यति' ),
 );
 
-$aliases['sk'] = array(
-	'ViewXML'     => array( 'ZobraziťXML' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'ViewXML' => array( 'ZobraziťXML' ),
 );
 
-$aliases['sq'] = array(
-	'ViewXML'     => array( 'ShihXML' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'ViewXML' => array( 'ShihXML' ),
 );
 
-$aliases['sv'] = array(
-	'ViewXML'     => array( 'Visa_XML' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'ViewXML' => array( 'Visa_XML' ),
 );
 
-$aliases['sw'] = array(
-	'ViewXML'     => array( 'OnyeshaXML' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'ViewXML' => array( 'OnyeshaXML' ),
 );
 
-$aliases['tl'] = array(
-	'ViewXML'     => array( 'Tingnan ang XML' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'ViewXML' => array( 'Tingnan ang XML' ),
 );
 
-$aliases['tr'] = array(
-	'ViewXML'     => array( 'XMLGör' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ViewXML' => array( 'XMLGör' ),
 );
 
-$aliases['vec'] = array(
-	'ViewXML'     => array( 'VardaXML' ),
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'ImportCSV' => array( 'CSV_импорт' ),
+	'ImportXML' => array( 'XML_импорт' ),
+	'ViewXML' => array( 'XML_иттереп_ачу' ),
 );
+
+/** Vèneto (Vèneto) */
+$specialPageAliases['vec'] = array(
+	'ViewXML' => array( 'VardaXML' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

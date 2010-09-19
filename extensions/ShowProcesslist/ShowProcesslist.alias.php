@@ -4,134 +4,137 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ShowProcesslist' => array( 'ShowProcesslist' ),
 );
 
 /** Afrikaans (Afrikaans) */
-$aliases['af'] = array(
+$specialPageAliases['af'] = array(
 	'ShowProcesslist' => array( 'WysProseslys' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'ShowProcesslist' => array( 'عرض_ليستة_العمليه' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'ShowProcesslist' => array( 'PrikazSpiskaProcesa' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'ShowProcesslist' => array( 'Prozessliste anzeigen' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'ShowProcesslist' => array( 'Lisćinu procesow pokazaś' ),
 );
 
 /** Finnish (Suomi) */
-$aliases['fi'] = array(
+$specialPageAliases['fi'] = array(
 	'ShowProcesslist' => array( 'Prosessilistaus' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'ShowProcesslist' => array( 'Prozässlischt aazeige' ),
 );
 
 /** Hebrew (עברית) */
-$aliases['he'] = array(
+$specialPageAliases['he'] = array(
 	'ShowProcesslist' => array( 'הצגת_רשימת_תהליכים' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'ShowProcesslist' => array( 'Lisćinu procesow pokazać' ),
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'ShowProcesslist' => array( 'Folyamatlista mutatása' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'ShowProcesslist' => array( 'Lista de processos' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'ShowProcesslist' => array( 'Daftar proses', 'DaftarProses' ),
+$specialPageAliases['id'] = array(
+	'ShowProcesslist' => array( 'Daftar_proses', 'DaftarProses' ),
 );
 
 /** Italian (Italiano) */
-$aliases['it'] = array(
+$specialPageAliases['it'] = array(
 	'ShowProcesslist' => array( 'MostraListaProcessi' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'ShowProcesslist' => array( 'プロセス一覧表示' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'ShowProcesslist' => array( 'Prozessless' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'ShowProcesslist' => array( "Weis d'Lëscht vun de Prozesser" ),
+$specialPageAliases['lb'] = array(
+	'ShowProcesslist' => array( 'Weis_d\'Lëscht_vun_de_Prozesser' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'ShowProcesslist' => array( 'प्रक्रीयासूचीदाखवा' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'ShowProcesslist' => array( 'Preceslieste_weergeven' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'ShowProcesslist' => array( 'ProceslijstWeergeven' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'ShowProcesslist' => array( 'Vis prosessliste' ),
 );
 
 /** Polish (Polski) */
-$aliases['pl'] = array(
-	'ShowProcesslist' => array( 'Lista procesów' ),
+$specialPageAliases['pl'] = array(
+	'ShowProcesslist' => array( 'Lista_procesów' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'ShowProcesslist' => array( 'ZobraziťZoznamProcesov' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'ShowProcesslist' => array( 'Ipakita ang talaan ng proseso' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'ShowProcesslist' => array( 'İşlemListesiniGöster' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

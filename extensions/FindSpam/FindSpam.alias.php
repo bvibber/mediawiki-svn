@@ -6,165 +6,207 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'FindSpam' => array( 'FindSpam' ),
 );
 
-$aliases['ar'] = array(
-	'FindSpam'   => array( 'إيجاد_السبام' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'FindSpam' => array( 'إيجاد_السبام' ),
 );
 
-$aliases['arz'] = array(
-	'FindSpam'   => array( 'شوف_الSpam' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'FindSpam' => array( 'شوف_الSpam' ),
 );
 
-$aliases['br'] = array(
-	'FindSpam'   => array( 'KavoutStrob' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'FindSpam' => array( 'KavoutStrob' ),
 );
 
-$aliases['bs'] = array(
-	'FindSpam'   => array( 'TrazenjeSpama' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'FindSpam' => array( 'TrazenjeSpama' ),
 );
 
-$aliases['de'] = array(
-	'FindSpam'   => array( 'Spam_finden' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'FindSpam' => array( 'Spam_finden' ),
 );
 
-$aliases['dsb'] = array(
-	'FindSpam'   => array( 'Spam_namakaś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'FindSpam' => array( 'Spam_namakaś' ),
 );
 
-$aliases['el'] = array(
-	'FindSpam'   => array( 'ΑναζήτησηSpam' ),
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'FindSpam' => array( 'ΑναζήτησηSpam' ),
 );
 
-$aliases['eo'] = array(
-	'FindSpam'   => array( 'Trovi_spamon' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'FindSpam' => array( 'Trovi_spamon' ),
 );
 
-$aliases['es'] = array(
-	'FindSpam'   => array( 'Buscar_spam' ),
+/** Spanish (Español) */
+$specialPageAliases['es'] = array(
+	'FindSpam' => array( 'Buscar_spam' ),
 );
 
-$aliases['fa'] = array(
-	'FindSpam'   => array( 'هرزیاب' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'FindSpam' => array( 'هرزیاب' ),
 );
 
-$aliases['gl'] = array(
-	'FindSpam'   => array( 'Atopar spam' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'FindSpam' => array( 'Atopar spam' ),
 );
 
-$aliases['gsw'] = array(
-	'FindSpam'   => array( 'Spam finde' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'FindSpam' => array( 'Spam finde' ),
 );
 
-$aliases['gu'] = array(
-	'FindSpam'   => array( 'સ્પામશોધો' ),
+/** Gujarati (ગુજરાતી) */
+$specialPageAliases['gu'] = array(
+	'FindSpam' => array( 'સ્પામશોધો' ),
 );
 
-$aliases['hsb'] = array(
-	'FindSpam'   => array( 'Spam_namakać' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'FindSpam' => array( 'Spam_namakać' ),
 );
 
-$aliases['hu'] = array(
-	'FindSpam'   => array( 'Spam_keresése' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'FindSpam' => array( 'Spam_keresése' ),
 );
 
-$aliases['ia'] = array(
-	'FindSpam'   => array( 'Cercar_spam' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'FindSpam' => array( 'Cercar_spam' ),
 );
 
-$aliases['id'] = array(
-	'FindSpam'   => array( 'Temukan_spam', 'TemukanSpam' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'FindSpam' => array( 'Temukan_spam', 'TemukanSpam' ),
 );
 
-$aliases['it'] = array(
-	'FindSpam'   => array( 'TrovaSpam' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'FindSpam' => array( 'TrovaSpam' ),
 );
 
-$aliases['ja'] = array(
-	'FindSpam'   => array( 'スパムを探す' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'FindSpam' => array( 'スパムを探す' ),
 );
 
-$aliases['ko'] = array(
-	'FindSpam'   => array( '스팸찾기' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'FindSpam' => array( '스팸찾기' ),
 );
 
-$aliases['ksh'] = array(
-	'FindSpam'   => array( 'SPAM_fenge' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'FindSpam' => array( 'SPAM_fenge' ),
 );
 
-$aliases['lad'] = array(
-	'FindSpam'   => array( 'ToparReklamas' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'FindSpam' => array( 'ToparReklamas' ),
 );
 
-$aliases['lb'] = array(
-	'FindSpam'   => array( 'Spam_fannen' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'FindSpam' => array( 'Spam_fannen' ),
 );
 
-$aliases['mk'] = array(
-	'FindSpam'   => array( 'НајдиСпам' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'FindSpam' => array( 'НајдиСпам' ),
 );
 
-$aliases['ml'] = array(
-	'FindSpam'   => array( 'പാഴ്‌‌എഴുത്തുകൾകണ്ടെത്തുക' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'FindSpam' => array( 'പാഴ്‌‌എഴുത്തുകൾകണ്ടെത്തുക' ),
 );
 
-$aliases['mr'] = array(
-	'FindSpam'   => array( 'स्पॅमशोधा' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'FindSpam' => array( 'स्पॅमशोधा' ),
 );
 
-$aliases['mt'] = array(
-	'FindSpam'   => array( 'FittexSpam' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'FindSpam' => array( 'FittexSpam' ),
 );
 
-$aliases['nds-nl'] = array(
-	'FindSpam'   => array( 'Ongewunste_verwiezingen_vienen' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'FindSpam' => array( 'Ongewunste_verwiezingen_vienen' ),
 );
 
-$aliases['nl'] = array(
-	'FindSpam'   => array( 'SpamVinden' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'FindSpam' => array( 'SpamVinden' ),
 );
 
-$aliases['no'] = array(
-	'FindSpam'   => array( 'Finn_spam' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'FindSpam' => array( 'Finn_spam' ),
 );
 
-$aliases['pl'] = array(
-	'FindSpam'   => array( 'Szukanie_spamu' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'FindSpam' => array( 'Szukanie_spamu' ),
 );
 
-$aliases['pt'] = array(
-	'FindSpam'   => array( 'Procurar_spam' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'FindSpam' => array( 'Procurar_spam' ),
 );
 
-$aliases['ro'] = array(
-	'FindSpam'   => array( 'Găsește_spam' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'FindSpam' => array( 'Găsește_spam' ),
 );
 
-$aliases['sa'] = array(
-	'FindSpam'   => array( 'समाप्नोतिअतिपत्राचार' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'FindSpam' => array( 'समाप्नोतिअतिपत्राचार' ),
 );
 
-$aliases['sk'] = array(
-	'FindSpam'   => array( 'HľadanieSpamu' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'FindSpam' => array( 'HľadanieSpamu' ),
 );
 
-$aliases['sq'] = array(
-	'FindSpam'   => array( 'GjejGabime' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'FindSpam' => array( 'GjejGabime' ),
 );
 
-$aliases['sw'] = array(
-	'FindSpam'   => array( 'TafutaUharabu' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'FindSpam' => array( 'TafutaUharabu' ),
 );
 
-$aliases['tl'] = array(
-	'FindSpam'   => array( 'Maghanap ng manlulusob' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'FindSpam' => array( 'Maghanap ng manlulusob' ),
 );
 
-$aliases['tr'] = array(
-	'FindSpam'   => array( 'ReklamBul' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'FindSpam' => array( 'ReklamBul' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

@@ -6,100 +6,107 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'WebChat' => array( 'WebChat' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'WebChat' => array( 'دردشة_الويب' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'WebChat' => array( 'شات_الويب' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'WebChat' => array( 'Web-Chat' ),
 );
 
 /** Spanish (Español) */
-$aliases['es'] = array(
+$specialPageAliases['es'] = array(
 	'WebChat' => array( 'Chat web' ),
 );
 
 /** Estonian (Eesti) */
-$aliases['et'] = array(
+$specialPageAliases['et'] = array(
 	'WebChat' => array( 'Jututuba' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'WebChat' => array( 'Chat web' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'WebChat' => array( 'Obrolan web', 'ObrolanWeb' ),
+$specialPageAliases['id'] = array(
+	'WebChat' => array( 'Obrolan_web', 'ObrolanWeb' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'WebChat' => array( 'ウェブチャット' ),
 );
 
 /** Korean (한국어) */
-$aliases['ko'] = array(
+$specialPageAliases['ko'] = array(
 	'WebChat' => array( '웹 채팅' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
+$specialPageAliases['lb'] = array(
 	'WebChat' => array( 'Web-Chat' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'WebChat' => array( 'വെബ് ചാറ്റ്' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'WebChat' => array( 'वेबगप्पा' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'WebChat' => array( 'Draodpraot' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
-	'WebChat' => array( 'Webchat' ),
+$specialPageAliases['nl'] = array(
+	'WebChat' => array( 'WebChat' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'WebChat' => array( 'Chat' ),
 );
 
 /** Portuguese (Português) */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'WebChat' => array( 'Conversação' ),
 );
 
 /** Slovenian (Slovenščina) */
-$aliases['sl'] = array(
+$specialPageAliases['sl'] = array(
 	'WebChat' => array( 'SpletnaKlepetalnica' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'WebChat' => array( 'WebSohbet' ),
 );
 
+/** Татарча (Татарча) */
+$specialPageAliases['tt-cyrl'] = array(
+	'WebChat' => array( 'Веб-чат' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

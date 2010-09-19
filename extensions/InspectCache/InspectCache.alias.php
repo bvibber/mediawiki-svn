@@ -4,140 +4,177 @@
  *
  */
 
-$aliases = array();
-
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'InspectCache' => array( 'InspectCache' ),
 );
 
-$aliases['ar'] = array(
-	'InspectCache'   => array( 'فحص_الكاش' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'InspectCache' => array( 'فحص_الكاش' ),
 );
 
-$aliases['arz'] = array(
-	'InspectCache'   => array( 'تفتيش_على_الCache' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'InspectCache' => array( 'تفتيش_على_الCache' ),
 );
 
-$aliases['bs'] = array(
-	'InspectCache'   => array( 'ProvjeriKes' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'InspectCache' => array( 'ProvjeriKes' ),
 );
 
-$aliases['dsb'] = array(
-	'InspectCache'   => array( 'Cache_inspicěrowaś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'InspectCache' => array( 'Cache_inspicěrowaś' ),
 );
 
-$aliases['fa'] = array(
-	'InspectCache'   => array( 'بازرسی_کاشه' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'InspectCache' => array( 'بازرسی_کاشه' ),
 );
 
-$aliases['fi'] = array(
-	'InspectCache'   => array( 'Tutki_välimuistia' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'InspectCache' => array( 'Tutki_välimuistia' ),
 );
 
-$aliases['fr'] = array(
-	'InspectCache'   => array( 'InspecterCache' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'InspectCache' => array( 'InspecterCache' ),
 );
 
-$aliases['frp'] = array(
-	'InspectCache'   => array( 'Controlar_lo_cache', 'ControlarLoCache' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'InspectCache' => array( 'Controlar_lo_cache', 'ControlarLoCache' ),
 );
 
-$aliases['gl'] = array(
-	'InspectCache'   => array( 'Inspeccionar a caché' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'InspectCache' => array( 'Inspeccionar a caché' ),
 );
 
-$aliases['gsw'] = array(
-	'InspectCache'   => array( 'Cache inschpiziere' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'InspectCache' => array( 'Cache inschpiziere' ),
 );
 
-$aliases['hsb'] = array(
-	'InspectCache'   => array( 'Pufrowak_inspektować' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'InspectCache' => array( 'Pufrowak_inspektować' ),
 );
 
-$aliases['hu'] = array(
-	'InspectCache'   => array( 'Gyorsítótár_vizsgálat' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'InspectCache' => array( 'Gyorsítótár_vizsgálat' ),
 );
 
-$aliases['ia'] = array(
-	'InspectCache'   => array( 'Inspectar_cache' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'InspectCache' => array( 'Inspectar_cache' ),
 );
 
-$aliases['id'] = array(
-	'InspectCache'   => array( 'Periksa_tembolok', 'PeriksaTembolok', 'Periksa_kas', 'PeriksaKas' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'InspectCache' => array( 'Periksa_tembolok', 'PeriksaTembolok', 'Periksa_kas', 'PeriksaKas' ),
 );
 
-$aliases['it'] = array(
-	'InspectCache'   => array( 'IspezionaCache' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'InspectCache' => array( 'IspezionaCache' ),
 );
 
-$aliases['ja'] = array(
-	'InspectCache'   => array( 'キャッシュの点検' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'InspectCache' => array( 'キャッシュの点検' ),
 );
 
-$aliases['ksh'] = array(
-	'InspectCache'   => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'InspectCache' => array( 'Cache_beloore', 'Cache_Beloore', 'CacheBeloore' ),
 );
 
-$aliases['lad'] = array(
-	'InspectCache'   => array( 'EgzaminarKaxé' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'InspectCache' => array( 'EgzaminarKaxé' ),
 );
 
-$aliases['lb'] = array(
-	'InspectCache'   => array( 'Cache_iwwerpréiwen' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'InspectCache' => array( 'Cache_iwwerpréiwen' ),
 );
 
-$aliases['mk'] = array(
-	'InspectCache'   => array( 'ПрегледајКеш' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'InspectCache' => array( 'ПрегледајКеш' ),
 );
 
-$aliases['ml'] = array(
-	'InspectCache'   => array( 'കാഷെപരിശോധിക്കുക' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'InspectCache' => array( 'കാഷെപരിശോധിക്കുക' ),
 );
 
-$aliases['mr'] = array(
-	'InspectCache'   => array( 'सयतपासा' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'InspectCache' => array( 'सयतपासा' ),
 );
 
-$aliases['nds-nl'] = array(
-	'InspectCache'   => array( 'Kas_naokieken' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'InspectCache' => array( 'Kas_naokieken' ),
 );
 
-$aliases['nl'] = array(
-	'InspectCache'   => array( 'CacheInspecteren' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'InspectCache' => array( 'CacheInspecteren' ),
 );
 
-$aliases['no'] = array(
-	'InspectCache'   => array( 'Inspiser_mellomlager' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'InspectCache' => array( 'Inspiser_mellomlager' ),
 );
 
-$aliases['oc'] = array(
-	'InspectCache'   => array( 'Inspectar_l\'amagatal', 'InspectarAmagatal' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'InspectCache' => array( 'Inspectar_l\'amagatal', 'InspectarAmagatal' ),
 );
 
-$aliases['pl'] = array(
-	'InspectCache'   => array( 'Przeglądanie_pamięci_podręcznej' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'InspectCache' => array( 'Przeglądanie_pamięci_podręcznej' ),
 );
 
-$aliases['pt'] = array(
-	'InspectCache'   => array( 'Inspeccionar_cache' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'InspectCache' => array( 'Inspeccionar_cache' ),
 );
 
-$aliases['sa'] = array(
-	'InspectCache'   => array( 'संगणकसंस्मृतिपरिक्षती' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'InspectCache' => array( 'संगणकसंस्मृतिपरिक्षती' ),
 );
 
-$aliases['sk'] = array(
-	'InspectCache'   => array( 'SkúmanieCache' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'InspectCache' => array( 'SkúmanieCache' ),
 );
 
-$aliases['sw'] = array(
-	'InspectCache'   => array( 'ChunguzaMabaki' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'InspectCache' => array( 'ChunguzaMabaki' ),
 );
 
-$aliases['tl'] = array(
-	'InspectCache'   => array( 'Suriin ang nakakubling taguan' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'InspectCache' => array( 'Suriin ang nakakubling taguan' ),
 );
 
-$aliases['tr'] = array(
-	'InspectCache'   => array( 'ÖnbellekDenetle' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'InspectCache' => array( 'ÖnbellekDenetle' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

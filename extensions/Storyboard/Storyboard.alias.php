@@ -8,47 +8,49 @@
  * @author Jeroen De Dauw
  */
 
-$aliases = array();
-
 /** English
  * @author Jeroen De Dauw
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'StoryReview' => array( 'StoryReview' ),
 	'Story' => array( 'Story' ),
 	'StorySubmission' => array( 'StorySubmission' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'StoryReview' => array( 'مراجعة_القصة' ),
 	'Story' => array( 'قصة' ),
 	'StorySubmission' => array( 'إرسال_القصة' ),
 );
 
 /** Breton (Brezhoneg) */
-$aliases['br'] = array(
+$specialPageAliases['br'] = array(
 	'Story' => array( 'Istor' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'StoryReview' => array( 'Annekdot nokucken' ),
+$specialPageAliases['lb'] = array(
+	'StoryReview' => array( 'Annekdot_nokucken' ),
 	'Story' => array( 'Annekdot' ),
-	'StorySubmission' => array( 'Annekdot aschécken' ),
+	'StorySubmission' => array( 'Annekdot_aschécken' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'StoryReview' => array( 'കഥസംശോധനം' ),
 	'Story' => array( 'കഥ' ),
 	'StorySubmission' => array( 'കഥസമർപ്പിക്കൽ' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'StoryReview' => array( 'Verhaalcontrole' ),
 	'Story' => array( 'Verhaal' ),
 	'StorySubmission' => array( 'VerhaalInzenden' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

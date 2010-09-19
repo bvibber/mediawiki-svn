@@ -3,122 +3,124 @@
  * Aliases for special pages
  */
 
-$aliases = array();
-
 /** English
  * @author Charles Melbye
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'SharedUserRights' => array( 'SharedUserRights', 'GlobalUserRights' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'SharedUserRights' => array( 'حقوق_اليوزر_المشتركه' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'SharedUserRights' => array( 'DijeljenaKorisnickaPrava' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'SharedUserRights' => array( 'Geteilte Benutzerrechte' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'SharedUserRights' => array( 'Zgromadne wužywarske pšawa' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'SharedUserRights' => array( 'Dereitos de usuario compartidos' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'SharedUserRights' => array( 'Teilti Benutzerrächt' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'SharedUserRights' => array( 'Zhromadne wužiwarske prawa' ),
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'SharedUserRights' => array( 'Megosztott felhasználói jogok' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'SharedUserRights' => array( 'Derectos commun de usatores' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'SharedUserRights' => array( '共有利用者権限', '共有利用者権限管理' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'SharedUserRights' => array( 'Jemeinsam Rääschte för Metmaacher' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
-	'SharedUserRights' => array( 'Gedeelte Benotzerrechter' ),
+$specialPageAliases['lb'] = array(
+	'SharedUserRights' => array( 'Gedeelte_Benotzerrechter' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'SharedUserRights' => array( 'പങ്ക്‌‌വെയ്ക്കപ്പെട്ടഉപയോക്തൃഅവകാശങ്ങൾ', 'ആഗോള‌‌ഉപയോക്തൃഅവകാശങ്ങൾ' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'SharedUserRights' => array( 'सार्वत्रिकसदस्यअधिकार' ),
 );
 
 /** Maltese (Malti) */
-$aliases['mt'] = array(
+$specialPageAliases['mt'] = array(
 	'SharedUserRights' => array( 'DrittjietUtentiMaqsuma' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'SharedUserRights' => array( 'Edeelde_gebrukersrechen' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'SharedUserRights' => array( 'GedeeldeGebruikersrechten' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'SharedUserRights' => array( 'Delte brukerrettigheter' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'SharedUserRights' => array( 'ZdieľanéPoužívateľskéPráva' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'SharedUserRights' => array( 'Pinagsasaluhang mga karapatan ng tagagamit', 'Mga karapatan ng pandaigdigang tagagamit' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'SharedUserRights' => array( 'PaylaşılanKullanıcıHakları' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

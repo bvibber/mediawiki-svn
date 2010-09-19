@@ -6,70 +6,72 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'SpecialWikiAtHome' => array( 'WikiAtHome' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'SpecialWikiAtHome' => array( 'الويكي_في_المنزل' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'SpecialWikiAtHome' => array( 'الويكى_فى_البيت' ),
 );
 
 /** Azerbaijani (Azərbaycanca) */
-$aliases['az'] = array(
+$specialPageAliases['az'] = array(
 	'SpecialWikiAtHome' => array( 'VikiEvdə' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'SpecialWikiAtHome' => array( 'WikiKodKuce' ),
 );
 
 /** Korean (한국어) */
-$aliases['ko'] = array(
+$specialPageAliases['ko'] = array(
 	'SpecialWikiAtHome' => array( '위키 홈' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
+$specialPageAliases['lb'] = array(
 	'SpecialWikiAtHome' => array( 'WikiDoheem' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'SpecialWikiAtHome' => array( 'വീട്ടിലെ വിക്കി' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'SpecialWikiAtHome' => array( 'घरचाविकि' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'SpecialWikiAtHome' => array( 'Wiki_thuus' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'SpecialWikiAtHome' => array( 'WikiThuis' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'SpecialWikiAtHome' => array( 'Hjemmewiki' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'SpecialWikiAtHome' => array( 'EvdeViki' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

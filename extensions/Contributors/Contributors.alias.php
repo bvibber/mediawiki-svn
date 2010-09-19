@@ -6,205 +6,257 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
-	'Contributors'=> array( 'Contributors' ),
+/** English (English) */
+$specialPageAliases['en'] = array(
+	'Contributors' => array( 'Contributors' ),
 );
 
-$aliases['af'] = array(
-	'Contributors'   => array( 'Bydraers' ),
+/** Afrikaans (Afrikaans) */
+$specialPageAliases['af'] = array(
+	'Contributors' => array( 'Bydraers' ),
 );
 
-$aliases['ar'] = array(
-	'Contributors'   => array( 'مساهمون' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Contributors' => array( 'مساهمون' ),
 );
 
-$aliases['arc'] = array(
-	'Contributors'   => array( 'ܫܘܬܦܢ̈ܐ' ),
+/** Aramaic (ܐܪܡܝܐ) */
+$specialPageAliases['arc'] = array(
+	'Contributors' => array( 'ܫܘܬܦܢ̈ܐ' ),
 );
 
-$aliases['arz'] = array(
-	'Contributors'   => array( 'مساهمين' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Contributors' => array( 'مساهمين' ),
 );
 
-$aliases['br'] = array(
-	'Contributors'   => array( 'Kenlabourerien' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'Contributors' => array( 'Kenlabourerien' ),
 );
 
-$aliases['bs'] = array(
-	'Contributors'   => array( 'Urednici' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'Contributors' => array( 'Urednici' ),
 );
 
-$aliases['de'] = array(
-	'Contributors'   => array( 'Autoren' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'Contributors' => array( 'Autoren' ),
 );
 
-$aliases['dsb'] = array(
-	'Contributors'   => array( 'Awtory' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'Contributors' => array( 'Awtory' ),
 );
 
-$aliases['el'] = array(
-	'Contributors'   => array( 'Συνεισφέροντες' ),
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'Contributors' => array( 'Συνεισφέροντες' ),
 );
 
-$aliases['eo'] = array(
-	'Contributors'   => array( 'Kontribuantoj' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'Contributors' => array( 'Kontribuantoj' ),
 );
 
-$aliases['fa'] = array(
-	'Contributors'   => array( 'مشارکت‌کنندگان' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Contributors' => array( 'مشارکت‌کنندگان' ),
 );
 
-$aliases['fr'] = array(
-	'Contributors'   => array( 'Contributeurs' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'Contributors' => array( 'Contributeurs' ),
 );
 
-$aliases['gl'] = array(
-	'Contributors'   => array( 'Contribuíntes' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'Contributors' => array( 'Contribuíntes' ),
 );
 
-$aliases['gsw'] = array(
-	'Contributors'   => array( 'Autore' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'Contributors' => array( 'Autore' ),
 );
 
-$aliases['he'] = array(
-	'Contributors'   => array( 'תורמים' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'Contributors' => array( 'תורמים' ),
 );
 
-$aliases['hr'] = array(
-	'Contributors'   => array( 'Doprinositelji' ),
+/** Croatian (Hrvatski) */
+$specialPageAliases['hr'] = array(
+	'Contributors' => array( 'Doprinositelji' ),
 );
 
-$aliases['hsb'] = array(
-	'Contributors'   => array( 'Awtorojo' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'Contributors' => array( 'Awtorojo' ),
 );
 
-$aliases['ia'] = array(
-	'Contributors'   => array( 'Contributores' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'Contributors' => array( 'Contributores' ),
 );
 
-$aliases['id'] = array(
-	'Contributors'   => array( 'Kontributor' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'Contributors' => array( 'Kontributor' ),
 );
 
-$aliases['io'] = array(
-	'Contributors'   => array( 'Kontributanti' ),
+/** Ido (Ido) */
+$specialPageAliases['io'] = array(
+	'Contributors' => array( 'Kontributanti' ),
 );
 
-$aliases['it'] = array(
-	'Contributors'   => array( 'Contributori' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'Contributors' => array( 'Contributori' ),
 );
 
-$aliases['ja'] = array(
-	'Contributors'   => array( '投稿者' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'Contributors' => array( '投稿者' ),
 );
 
-$aliases['km'] = array(
-	'Contributors'   => array( 'អ្នករួមចំណែក' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'Contributors' => array( 'អ្នករួមចំណែក' ),
 );
 
-$aliases['ko'] = array(
-	'Contributors'   => array( '기여자목록' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'Contributors' => array( '기여자목록' ),
 );
 
-$aliases['ksh'] = array(
-	'Contributors'   => array( 'Schriiver' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'Contributors' => array( 'Schriiver' ),
 );
 
-$aliases['lad'] = array(
-	'Contributors'   => array( 'Ajustadores' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'Contributors' => array( 'Ajustadores' ),
 );
 
-$aliases['lb'] = array(
-	'Contributors'   => array( 'Auteuren' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'Contributors' => array( 'Auteuren' ),
 );
 
-$aliases['mk'] = array(
-	'Contributors'   => array( 'Придонесувачи' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'Contributors' => array( 'Придонесувачи' ),
 );
 
-$aliases['ml'] = array(
-	'Contributors'   => array( 'സംഭാവകർ' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Contributors' => array( 'സംഭാവകർ' ),
 );
 
-$aliases['mr'] = array(
-	'Contributors'   => array( 'योगदानकर्ते' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Contributors' => array( 'योगदानकर्ते' ),
 );
 
-$aliases['mt'] = array(
-	'Contributors'   => array( 'Kontributuri' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'Contributors' => array( 'Kontributuri' ),
 );
 
-$aliases['nds-nl'] = array(
-	'Contributors'   => array( 'Biedragers' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'Contributors' => array( 'Biedragers' ),
 );
 
-$aliases['nl'] = array(
-	'Contributors'   => array( 'Auteurs', 'Bijdragers' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'Contributors' => array( 'Auteurs', 'Bijdragers' ),
 );
 
-$aliases['nn'] = array(
-	'Contributors'   => array( 'Bidragsytarar' ),
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$specialPageAliases['nn'] = array(
+	'Contributors' => array( 'Bidragsytarar' ),
 );
 
-$aliases['no'] = array(
-	'Contributors'   => array( 'Bidragsytere' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'Contributors' => array( 'Bidragsytere' ),
 );
 
-$aliases['pl'] = array(
-	'Contributors'   => array( 'Autorzy' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'Contributors' => array( 'Autorzy' ),
 );
 
-$aliases['ps'] = array(
-	'Contributors'   => array( 'ونډه_وال' ),
+/** Pashto (پښتو) */
+$specialPageAliases['ps'] = array(
+	'Contributors' => array( 'ونډه_وال' ),
 );
 
-$aliases['pt'] = array(
-	'Contributors'   => array( 'Contribuidores' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'Contributors' => array( 'Contribuidores' ),
 );
 
-$aliases['pt-br'] = array(
-	'Contributors'   => array( 'Colaboradores', 'Contribuidores' ),
+/** Brazilian Portuguese (Português do Brasil) */
+$specialPageAliases['pt-br'] = array(
+	'Contributors' => array( 'Colaboradores', 'Contribuidores' ),
 );
 
-$aliases['ro'] = array(
-	'Contributors'   => array( 'Contribuitori' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'Contributors' => array( 'Contribuitori' ),
 );
 
-$aliases['sa'] = array(
-	'Contributors'   => array( 'योगदाता' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'Contributors' => array( 'योगदाता' ),
 );
 
-$aliases['si'] = array(
-	'Contributors'   => array( 'දායකයන්' ),
+/** Sinhala (සිංහල) */
+$specialPageAliases['si'] = array(
+	'Contributors' => array( 'දායකයන්' ),
 );
 
-$aliases['sk'] = array(
-	'Contributors'   => array( 'Prispievatelia' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'Contributors' => array( 'Prispievatelia' ),
 );
 
-$aliases['sq'] = array(
-	'Contributors'   => array( 'Kontribues' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'Contributors' => array( 'Kontribues' ),
 );
 
-$aliases['sw'] = array(
-	'Contributors'   => array( 'Wachangiaji' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'Contributors' => array( 'Wachangiaji' ),
 );
 
-$aliases['th'] = array(
-	'Contributors'   => array( 'ผู้เขียน' ),
+/** Thai (ไทย) */
+$specialPageAliases['th'] = array(
+	'Contributors' => array( 'ผู้เขียน' ),
 );
 
-$aliases['tl'] = array(
-	'Contributors'   => array( 'Mga tagapag-ambag' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'Contributors' => array( 'Mga tagapag-ambag' ),
 );
 
-$aliases['tr'] = array(
-	'Contributors'   => array( 'KatkıdaBulunanlar' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'Contributors' => array( 'KatkıdaBulunanlar' ),
 );
 
-$aliases['vec'] = array(
-	'Contributors'   => array( 'Contribudori' ),
+/** Vèneto (Vèneto) */
+$specialPageAliases['vec'] = array(
+	'Contributors' => array( 'Contribudori' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

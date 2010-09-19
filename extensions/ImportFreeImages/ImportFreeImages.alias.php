@@ -6,149 +6,187 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ImportFreeImages' => array( 'ImportFreeImages' ),
 );
 
-$aliases['ar'] = array(
-	'ImportFreeImages'   => array( 'استيراد_صور_حرة' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ImportFreeImages' => array( 'استيراد_صور_حرة' ),
 );
 
-$aliases['arz'] = array(
-	'ImportFreeImages'   => array( 'استوراد_صور_حره' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ImportFreeImages' => array( 'استوراد_صور_حره' ),
 );
 
-$aliases['br'] = array(
-	'ImportFreeImages'   => array( 'EnporzhiañSkeudennoùFrank' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ImportFreeImages' => array( 'EnporzhiañSkeudennoùFrank' ),
 );
 
-$aliases['bs'] = array(
-	'ImportFreeImages'   => array( 'UvozSlobodnihSlika' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ImportFreeImages' => array( 'UvozSlobodnihSlika' ),
 );
 
-$aliases['de'] = array(
-	'ImportFreeImages'   => array( 'Freie_Bilder_importieren' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ImportFreeImages' => array( 'Freie_Bilder_importieren' ),
 );
 
-$aliases['dsb'] = array(
-	'ImportFreeImages'   => array( 'Liche_wobraze_importěrowaś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'ImportFreeImages' => array( 'Liche_wobraze_importěrowaś' ),
 );
 
-$aliases['fa'] = array(
-	'ImportFreeImages'   => array( 'درون‌ریزی_تصاویر_آزاد' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ImportFreeImages' => array( 'درون‌ریزی_تصاویر_آزاد' ),
 );
 
-$aliases['fi'] = array(
-	'ImportFreeImages'   => array( 'Tuo_vapaita_kuvia' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'ImportFreeImages' => array( 'Tuo_vapaita_kuvia' ),
 );
 
-$aliases['fr'] = array(
-	'ImportFreeImages'   => array( 'ImporterImagesLibres' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'ImportFreeImages' => array( 'ImporterImagesLibres' ),
 );
 
-$aliases['frp'] = array(
-	'ImportFreeImages'   => array( 'Importar_des_émâges_abades', 'ImportarDesÉmâgesAbades' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'ImportFreeImages' => array( 'Importar_des_émâges_abades', 'ImportarDesÉmâgesAbades' ),
 );
 
-$aliases['gsw'] = array(
-	'ImportFreeImages'   => array( 'Freji Bilder importiere' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'ImportFreeImages' => array( 'Freji Bilder importiere' ),
 );
 
-$aliases['hsb'] = array(
-	'ImportFreeImages'   => array( 'Swobodne_wobrazy_importować' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'ImportFreeImages' => array( 'Swobodne_wobrazy_importować' ),
 );
 
-$aliases['hu'] = array(
-	'ImportFreeImages'   => array( 'Szabad_képek_importálása' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'ImportFreeImages' => array( 'Szabad_képek_importálása' ),
 );
 
-$aliases['ia'] = array(
-	'ImportFreeImages'   => array( 'Importar_imagines_libere' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ImportFreeImages' => array( 'Importar_imagines_libere' ),
 );
 
-$aliases['id'] = array(
-	'ImportFreeImages'   => array( 'Impor_gambar_gratis', 'ImporGambarGratis' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ImportFreeImages' => array( 'Impor_gambar_gratis', 'ImporGambarGratis' ),
 );
 
-$aliases['it'] = array(
-	'ImportFreeImages'   => array( 'ImportaImmaginiLibere' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ImportFreeImages' => array( 'ImportaImmaginiLibere' ),
 );
 
-$aliases['ja'] = array(
-	'ImportFreeImages'   => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ImportFreeImages' => array( 'フリー画像のインポート', 'フリーの画像をインポート' ),
 );
 
-$aliases['ksh'] = array(
-	'ImportFreeImages'   => array( 'Frei_Bellder_Empotteere', 'FreiBellderEmpotteere' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ImportFreeImages' => array( 'Frei_Bellder_Empotteere', 'FreiBellderEmpotteere' ),
 );
 
-$aliases['lad'] = array(
-	'ImportFreeImages'   => array( 'AktarearArientoFotografíasLíbberos' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ImportFreeImages' => array( 'AktarearArientoFotografíasLíbberos' ),
 );
 
-$aliases['lb'] = array(
-	'ImportFreeImages'   => array( 'Fräi_Biller_importéieren' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ImportFreeImages' => array( 'Fräi_Biller_importéieren' ),
 );
 
-$aliases['mk'] = array(
-	'ImportFreeImages'   => array( 'УвозНаСлободниСлики' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ImportFreeImages' => array( 'УвозНаСлободниСлики' ),
 );
 
-$aliases['ml'] = array(
-	'ImportFreeImages'   => array( 'സ്വതന്ത്രചിത്രങ്ങളിറക്കുമതിചെയ്യുക' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ImportFreeImages' => array( 'സ്വതന്ത്രചിത്രങ്ങളിറക്കുമതിചെയ്യുക' ),
 );
 
-$aliases['mr'] = array(
-	'ImportFreeImages'   => array( 'मुक्तचित्रेआयात' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'ImportFreeImages' => array( 'मुक्तचित्रेआयात' ),
 );
 
-$aliases['nds-nl'] = array(
-	'ImportFreeImages'   => array( 'Vrieje_ofbeeldingen_invoeren' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ImportFreeImages' => array( 'Vrieje_ofbeeldingen_invoeren' ),
 );
 
-$aliases['nl'] = array(
-	'ImportFreeImages'   => array( 'VrijeAfbeeldingenImporteren' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ImportFreeImages' => array( 'VrijeAfbeeldingenImporteren' ),
 );
 
-$aliases['no'] = array(
-	'ImportFreeImages'   => array( 'Importer_frie_bilder' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ImportFreeImages' => array( 'Importer_frie_bilder' ),
 );
 
-$aliases['oc'] = array(
-	'ImportFreeImages'   => array( 'ImportarImatgesLiures' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'ImportFreeImages' => array( 'ImportarImatgesLiures' ),
 );
 
-$aliases['pt'] = array(
-	'ImportFreeImages'   => array( 'Importar_imagens_de_acesso_livre' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ImportFreeImages' => array( 'Importar_imagens_de_acesso_livre' ),
 );
 
-$aliases['sa'] = array(
-	'ImportFreeImages'   => array( 'आयातमुक्तछायाचित्र' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'ImportFreeImages' => array( 'आयातमुक्तछायाचित्र' ),
 );
 
-$aliases['sk'] = array(
-	'ImportFreeImages'   => array( 'ImportSlobodnýchObrázkov' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'ImportFreeImages' => array( 'ImportSlobodnýchObrázkov' ),
 );
 
-$aliases['sq'] = array(
-	'ImportFreeImages'   => array( 'ImportoFiguraFalas' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'ImportFreeImages' => array( 'ImportoFiguraFalas' ),
 );
 
-$aliases['sv'] = array(
-	'ImportFreeImages'   => array( 'Importera_fria_bilder' ),
+/** Swedish (Svenska) */
+$specialPageAliases['sv'] = array(
+	'ImportFreeImages' => array( 'Importera_fria_bilder' ),
 );
 
-$aliases['sw'] = array(
-	'ImportFreeImages'   => array( 'IngizaPichaHuria' ),
+/** Swahili (Kiswahili) */
+$specialPageAliases['sw'] = array(
+	'ImportFreeImages' => array( 'IngizaPichaHuria' ),
 );
 
-$aliases['tl'] = array(
-	'ImportFreeImages'   => array( 'Mag-angkat ng malayang mga larawan' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'ImportFreeImages' => array( 'Mag-angkat ng malayang mga larawan' ),
 );
 
-$aliases['tr'] = array(
-	'ImportFreeImages'   => array( 'ÖzgürResimAktar' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ImportFreeImages' => array( 'ÖzgürResimAktar' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

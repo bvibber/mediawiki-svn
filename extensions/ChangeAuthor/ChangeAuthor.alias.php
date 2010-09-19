@@ -6,205 +6,262 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'ChangeAuthor' => array( 'ChangeAuthor' ),
 );
 
-$aliases['ar'] = array(
-	'ChangeAuthor'   => array( 'تغيير_المؤلف' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'ChangeAuthor' => array( 'تغيير_المؤلف' ),
 );
 
-$aliases['arz'] = array(
-	'ChangeAuthor'   => array( 'تغيير_المؤلف' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'ChangeAuthor' => array( 'تغيير_المؤلف' ),
 );
 
-$aliases['as'] = array(
-	'ChangeAuthor'   => array( 'লিখক_সলাওঁক' ),
+/** Assamese (অসমীয়া) */
+$specialPageAliases['as'] = array(
+	'ChangeAuthor' => array( 'লিখক_সলাওঁক' ),
 );
 
-$aliases['br'] = array(
-	'ChangeAuthor'   => array( 'CheñchAozer' ),
+/** Breton (Brezhoneg) */
+$specialPageAliases['br'] = array(
+	'ChangeAuthor' => array( 'CheñchAozer' ),
 );
 
-$aliases['bs'] = array(
-	'ChangeAuthor'   => array( 'PromjenaAutora' ),
+/** Bosnian (Bosanski) */
+$specialPageAliases['bs'] = array(
+	'ChangeAuthor' => array( 'PromjenaAutora' ),
 );
 
-$aliases['de'] = array(
-	'ChangeAuthor'   => array( 'Autor_ändern' ),
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'ChangeAuthor' => array( 'Autor_ändern' ),
 );
 
-$aliases['dsb'] = array(
-	'ChangeAuthor'   => array( 'Awtora_změniś' ),
+/** Lower Sorbian (Dolnoserbski) */
+$specialPageAliases['dsb'] = array(
+	'ChangeAuthor' => array( 'Awtora_změniś' ),
 );
 
-$aliases['eo'] = array(
-	'ChangeAuthor'   => array( 'Ŝanĝi_aŭtoron' ),
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = array(
+	'ChangeAuthor' => array( 'Ŝanĝi_aŭtoron' ),
 );
 
-$aliases['fa'] = array(
-	'ChangeAuthor'   => array( 'تغییر_مولف' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'ChangeAuthor' => array( 'تغییر_مولف' ),
 );
 
-$aliases['fi'] = array(
-	'ChangeAuthor'   => array( 'Vaihda_tekijänimi' ),
+/** Finnish (Suomi) */
+$specialPageAliases['fi'] = array(
+	'ChangeAuthor' => array( 'Vaihda_tekijänimi' ),
 );
 
-$aliases['fr'] = array(
-	'ChangeAuthor'   => array( 'Modifier_l\'auteur', 'ModifierAuteur', 'Changer_auteur', 'ChangerAuteur' ),
+/** French (Français) */
+$specialPageAliases['fr'] = array(
+	'ChangeAuthor' => array( 'Modifier_l\'auteur', 'ModifierAuteur', 'Changer_auteur', 'ChangerAuteur' ),
 );
 
-$aliases['frp'] = array(
-	'ChangeAuthor'   => array( 'Changiér_l\'ôtor', 'ChangiérLÔtor' ),
+/** Franco-Provençal (Arpetan) */
+$specialPageAliases['frp'] = array(
+	'ChangeAuthor' => array( 'Changiér_l\'ôtor', 'ChangiérLÔtor' ),
 );
 
-$aliases['gl'] = array(
-	'ChangeAuthor'   => array( 'Cambiar o autor' ),
+/** Galician (Galego) */
+$specialPageAliases['gl'] = array(
+	'ChangeAuthor' => array( 'Cambiar o autor' ),
 );
 
-$aliases['gsw'] = array(
-	'ChangeAuthor'   => array( 'Autor ändere' ),
+/** Swiss German (Alemannisch) */
+$specialPageAliases['gsw'] = array(
+	'ChangeAuthor' => array( 'Autor ändere' ),
 );
 
-$aliases['gu'] = array(
-	'ChangeAuthor'   => array( 'લેખકબદલો' ),
+/** Gujarati (ગુજરાતી) */
+$specialPageAliases['gu'] = array(
+	'ChangeAuthor' => array( 'લેખકબદલો' ),
 );
 
-$aliases['he'] = array(
-	'ChangeAuthor'   => array( 'שינוי_כותב' ),
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'ChangeAuthor' => array( 'שינוי_כותב' ),
 );
 
-$aliases['hr'] = array(
-	'ChangeAuthor'   => array( 'Promjeni_Autora' ),
+/** Croatian (Hrvatski) */
+$specialPageAliases['hr'] = array(
+	'ChangeAuthor' => array( 'Promjeni_Autora' ),
 );
 
-$aliases['hsb'] = array(
-	'ChangeAuthor'   => array( 'Awtora_změnić' ),
+/** Upper Sorbian (Hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'ChangeAuthor' => array( 'Awtora_změnić' ),
 );
 
-$aliases['hu'] = array(
-	'ChangeAuthor'   => array( 'Szerző_megváltoztatása' ),
+/** Hungarian (Magyar) */
+$specialPageAliases['hu'] = array(
+	'ChangeAuthor' => array( 'Szerző_megváltoztatása' ),
 );
 
-$aliases['ia'] = array(
-	'ChangeAuthor'   => array( 'Cambiar_autor' ),
+/** Interlingua (Interlingua) */
+$specialPageAliases['ia'] = array(
+	'ChangeAuthor' => array( 'Cambiar_autor' ),
 );
 
-$aliases['id'] = array(
-	'ChangeAuthor'   => array( 'Ganti_penulis_pertama', 'GantiPenulisPertama' ),
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = array(
+	'ChangeAuthor' => array( 'Ganti_penulis_pertama', 'GantiPenulisPertama' ),
 );
 
-$aliases['ja'] = array(
-	'ChangeAuthor'   => array( '著者変更' ),
+/** Italian (Italiano) */
+$specialPageAliases['it'] = array(
+	'ChangeAuthor' => array( 'CambiaAutore' ),
 );
 
-$aliases['km'] = array(
-	'ChangeAuthor'   => array( 'ផ្លាស់ប្ដូរអ្នកនិពន្ធ' ),
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'ChangeAuthor' => array( '著者変更' ),
 );
 
-$aliases['ko'] = array(
-	'ChangeAuthor'   => array( '저작자변경' ),
+/** Khmer (ភាសាខ្មែរ) */
+$specialPageAliases['km'] = array(
+	'ChangeAuthor' => array( 'ផ្លាស់ប្ដូរអ្នកនិពន្ធ' ),
 );
 
-$aliases['ksh'] = array(
-	'ChangeAuthor'   => array( 'Schriiver_ußtuusche' ),
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'ChangeAuthor' => array( '저작자변경' ),
 );
 
-$aliases['lad'] = array(
-	'ChangeAuthor'   => array( 'TrocarReddaktor' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'ChangeAuthor' => array( 'Schriiver_ußtuusche' ),
 );
 
-$aliases['lb'] = array(
-	'ChangeAuthor'   => array( 'Auteur_änneren' ),
+/** Ladino (Ladino) */
+$specialPageAliases['lad'] = array(
+	'ChangeAuthor' => array( 'TrocarReddaktor' ),
 );
 
-$aliases['mk'] = array(
-	'ChangeAuthor'   => array( 'ПроменаНаАвтор' ),
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'ChangeAuthor' => array( 'Auteur_änneren' ),
 );
 
-$aliases['ml'] = array(
-	'ChangeAuthor'   => array( 'രചയിതാവിനെ_മാറ്റുക' ),
+/** Macedonian (Македонски) */
+$specialPageAliases['mk'] = array(
+	'ChangeAuthor' => array( 'ПроменаНаАвтор' ),
 );
 
-$aliases['mr'] = array(
-	'ChangeAuthor'   => array( 'लेखकबदला' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'ChangeAuthor' => array( 'രചയിതാവിനെ_മാറ്റുക' ),
 );
 
-$aliases['mt'] = array(
-	'ChangeAuthor'   => array( 'BiddelAwtur' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'ChangeAuthor' => array( 'लेखकबदला' ),
 );
 
-$aliases['myv'] = array(
-	'ChangeAuthor'   => array( 'ПолавтомсСёрмадыцянть' ),
+/** Maltese (Malti) */
+$specialPageAliases['mt'] = array(
+	'ChangeAuthor' => array( 'BiddelAwtur' ),
 );
 
-$aliases['nds-nl'] = array(
-	'ChangeAuthor'   => array( 'Auteur_wiezigen' ),
+/** Erzya (Эрзянь) */
+$specialPageAliases['myv'] = array(
+	'ChangeAuthor' => array( 'ПолавтомсСёрмадыцянть' ),
 );
 
-$aliases['nl'] = array(
-	'ChangeAuthor'   => array( 'AuteurWijzigen' ),
+/** Nedersaksisch (Nedersaksisch) */
+$specialPageAliases['nds-nl'] = array(
+	'ChangeAuthor' => array( 'Auteur_wiezigen' ),
 );
 
-$aliases['nn'] = array(
-	'ChangeAuthor'   => array( 'Endra_forfattar' ),
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'ChangeAuthor' => array( 'AuteurWijzigen' ),
 );
 
-$aliases['no'] = array(
-	'ChangeAuthor'   => array( 'Endre_forfatter' ),
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$specialPageAliases['nn'] = array(
+	'ChangeAuthor' => array( 'Endra_forfattar' ),
 );
 
-$aliases['oc'] = array(
-	'ChangeAuthor'   => array( 'Cambiar_autor', 'CambiarAutor' ),
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$specialPageAliases['no'] = array(
+	'ChangeAuthor' => array( 'Endre_forfatter' ),
 );
 
-$aliases['pl'] = array(
-	'ChangeAuthor'   => array( 'Zmiana_autora' ),
+/** Occitan (Occitan) */
+$specialPageAliases['oc'] = array(
+	'ChangeAuthor' => array( 'Cambiar_autor', 'CambiarAutor' ),
 );
 
-$aliases['pt'] = array(
-	'ChangeAuthor'   => array( 'Alterar_autor' ),
+/** Polish (Polski) */
+$specialPageAliases['pl'] = array(
+	'ChangeAuthor' => array( 'Zmiana_autora' ),
 );
 
-$aliases['ro'] = array(
-	'ChangeAuthor'   => array( 'Schimbă_autor' ),
+/** Portuguese (Português) */
+$specialPageAliases['pt'] = array(
+	'ChangeAuthor' => array( 'Alterar_autor' ),
 );
 
-$aliases['sa'] = array(
-	'ChangeAuthor'   => array( 'सम्पादकपरिवर्तयति' ),
+/** Romanian (Română) */
+$specialPageAliases['ro'] = array(
+	'ChangeAuthor' => array( 'Schimbă_autor' ),
 );
 
-$aliases['sk'] = array(
-	'ChangeAuthor'   => array( 'ZmeniťAutora' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'ChangeAuthor' => array( 'सम्पादकपरिवर्तयति' ),
 );
 
-$aliases['sq'] = array(
-	'ChangeAuthor'   => array( 'NdërroAutor' ),
+/** Slovak (Slovenčina) */
+$specialPageAliases['sk'] = array(
+	'ChangeAuthor' => array( 'ZmeniťAutora' ),
 );
 
-$aliases['su'] = array(
-	'ChangeAuthor'   => array( 'GantiPanulis' ),
+/** Albanian (Shqip) */
+$specialPageAliases['sq'] = array(
+	'ChangeAuthor' => array( 'NdërroAutor' ),
 );
 
-$aliases['tl'] = array(
-	'ChangeAuthor'   => array( 'Baguhin ang may-akda' ),
+/** Sundanese (Basa Sunda) */
+$specialPageAliases['su'] = array(
+	'ChangeAuthor' => array( 'GantiPanulis' ),
 );
 
-$aliases['tr'] = array(
-	'ChangeAuthor'   => array( 'YazarDeğiştir' ),
+/** Tagalog (Tagalog) */
+$specialPageAliases['tl'] = array(
+	'ChangeAuthor' => array( 'Baguhin ang may-akda' ),
 );
 
-$aliases['vec'] = array(
-	'ChangeAuthor'   => array( 'CanbiaAutor' ),
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'ChangeAuthor' => array( 'YazarDeğiştir' ),
 );
 
-$aliases['vep'] = array(
-	'ChangeAuthor'   => array( 'VajehtadaAvtorad' ),
+/** Vèneto (Vèneto) */
+$specialPageAliases['vec'] = array(
+	'ChangeAuthor' => array( 'CanbiaAutor' ),
 );
 
-$aliases['zh-hant'] = array(
-	'ChangeAuthor'   => array( '更改作者' ),
+/** Veps (Vepsan kel') */
+$specialPageAliases['vep'] = array(
+	'ChangeAuthor' => array( 'VajehtadaAvtorad' ),
 );
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$specialPageAliases['zh-hant'] = array(
+	'ChangeAuthor' => array( '更改作者' ),
+);
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

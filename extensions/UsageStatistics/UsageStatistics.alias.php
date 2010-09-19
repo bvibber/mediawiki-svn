@@ -4,197 +4,199 @@
  *
  */
 
-$aliases = array();
-
 /** English
  * @author Paul Grinberg
  */
-$aliases['en'] = array(
+$specialPageAliases['en'] = array(
 	'SpecialUserStats' => array( 'UserStats', 'SpecialUserStats' ),
 );
 
 /** Arabic (العربية) */
-$aliases['ar'] = array(
+$specialPageAliases['ar'] = array(
 	'SpecialUserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
+$specialPageAliases['arz'] = array(
 	'SpecialUserStats' => array( 'احصائيات_اليوزر', 'مخصوص_احصائيات_اليوزر' ),
 );
 
 /** Assamese (অসমীয়া) */
-$aliases['as'] = array(
+$specialPageAliases['as'] = array(
 	'SpecialUserStats' => array( 'সদস্য পৰিসংখ্যা', 'বিশেষ সদস্য পৰিসংখ্যা' ),
 );
 
 /** Bosnian (Bosanski) */
-$aliases['bs'] = array(
+$specialPageAliases['bs'] = array(
 	'SpecialUserStats' => array( 'KorisnickeStatistike' ),
 );
 
 /** German (Deutsch) */
-$aliases['de'] = array(
+$specialPageAliases['de'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatistik' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
+$specialPageAliases['dsb'] = array(
 	'SpecialUserStats' => array( 'Wužywarska statistika' ),
 );
 
 /** Persian (فارسی) */
-$aliases['fa'] = array(
+$specialPageAliases['fa'] = array(
 	'SpecialUserStats' => array( 'آمار_کاربر' ),
 );
 
 /** French (Français) */
-$aliases['fr'] = array(
+$specialPageAliases['fr'] = array(
 	'SpecialUserStats' => array( 'StatistiquesUtilisateur' ),
 );
 
 /** Franco-Provençal (Arpetan) */
-$aliases['frp'] = array(
+$specialPageAliases['frp'] = array(
 	'SpecialUserStats' => array( 'Statistiques utilisator', 'StatistiquesUtilisator' ),
 );
 
 /** Galician (Galego) */
-$aliases['gl'] = array(
+$specialPageAliases['gl'] = array(
 	'SpecialUserStats' => array( 'Estatísticas do usuario' ),
 );
 
 /** Swiss German (Alemannisch) */
-$aliases['gsw'] = array(
+$specialPageAliases['gsw'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatischtik' ),
 );
 
 /** Croatian (Hrvatski) */
-$aliases['hr'] = array(
+$specialPageAliases['hr'] = array(
 	'SpecialUserStats' => array( 'Statistika_uporabe' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
+$specialPageAliases['hsb'] = array(
 	'SpecialUserStats' => array( 'Wužiwarska statistika' ),
 );
 
 /** Hungarian (Magyar) */
-$aliases['hu'] = array(
+$specialPageAliases['hu'] = array(
 	'SpecialUserStats' => array( 'Felhasználói statisztika', 'Felhasználóstatisztika' ),
 );
 
 /** Interlingua (Interlingua) */
-$aliases['ia'] = array(
+$specialPageAliases['ia'] = array(
 	'SpecialUserStats' => array( 'Statisticas de usatores', 'Statisticas special de usatores' ),
 );
 
 /** Indonesian (Bahasa Indonesia) */
-$aliases['id'] = array(
-	'SpecialUserStats' => array( 'Statistik pengguna', 'StatistikPengguna' ),
+$specialPageAliases['id'] = array(
+	'SpecialUserStats' => array( 'Statistik_pengguna', 'StatistikPengguna' ),
 );
 
 /** Italian (Italiano) */
-$aliases['it'] = array(
+$specialPageAliases['it'] = array(
 	'SpecialUserStats' => array( 'StatisticheUtente' ),
 );
 
 /** Japanese (日本語) */
-$aliases['ja'] = array(
+$specialPageAliases['ja'] = array(
 	'SpecialUserStats' => array( '利用統計' ),
 );
 
 /** Colognian (Ripoarisch) */
-$aliases['ksh'] = array(
+$specialPageAliases['ksh'] = array(
 	'SpecialUserStats' => array( 'Statistik vun fun de Metmaacher', 'Statistik vun fun de Medmaacher', 'Metmaacher ier Zahle', 'Medmaacher ier Zahle' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */
-$aliases['lb'] = array(
+$specialPageAliases['lb'] = array(
 	'SpecialUserStats' => array( 'Benotzerstatistiken' ),
 );
 
 /** Lumbaart (Lumbaart) */
-$aliases['lmo'] = array(
+$specialPageAliases['lmo'] = array(
 	'SpecialUserStats' => array( 'StatistichDupradur' ),
 );
 
 /** Macedonian (Македонски) */
-$aliases['mk'] = array(
+$specialPageAliases['mk'] = array(
 	'SpecialUserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
 );
 
 /** Malayalam (മലയാളം) */
-$aliases['ml'] = array(
+$specialPageAliases['ml'] = array(
 	'SpecialUserStats' => array( 'ഉപയോക്തൃസ്ഥിതിവിവരം', 'പ്രത്യേക‌‌ഉപയോക്തൃസ്ഥിതിവിവരം' ),
 );
 
 /** Marathi (मराठी) */
-$aliases['mr'] = array(
+$specialPageAliases['mr'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्य्की', 'विशेषसदस्यसांख्य्की' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */
-$aliases['nds-nl'] = array(
+$specialPageAliases['nds-nl'] = array(
 	'SpecialUserStats' => array( 'Gebrukersgegevens' ),
 );
 
 /** Dutch (Nederlands) */
-$aliases['nl'] = array(
+$specialPageAliases['nl'] = array(
 	'SpecialUserStats' => array( 'Gebruikersgegevens', 'Gebruikersstatistieken' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
-$aliases['no'] = array(
+$specialPageAliases['no'] = array(
 	'SpecialUserStats' => array( 'Brukerstatistikk' ),
 );
 
 /** Occitan (Occitan) */
-$aliases['oc'] = array(
+$specialPageAliases['oc'] = array(
 	'SpecialUserStats' => array( 'EstatisticasUtilizaire' ),
 );
 
 /** Portuguese (Português) */
-$aliases['pt'] = array(
+$specialPageAliases['pt'] = array(
 	'SpecialUserStats' => array( 'Estatísticas de utilizadores' ),
 );
 
 /** Sanskrit (संस्कृत) */
-$aliases['sa'] = array(
+$specialPageAliases['sa'] = array(
 	'SpecialUserStats' => array( 'सदस्यसांख्यिकी' ),
 );
 
 /** Slovak (Slovenčina) */
-$aliases['sk'] = array(
+$specialPageAliases['sk'] = array(
 	'SpecialUserStats' => array( 'ŠtatistikyPoužívateľov' ),
 );
 
 /** Swedish (Svenska) */
-$aliases['sv'] = array(
+$specialPageAliases['sv'] = array(
 	'SpecialUserStats' => array( 'Användarstatistik' ),
 );
 
 /** Swahili (Kiswahili) */
-$aliases['sw'] = array(
+$specialPageAliases['sw'] = array(
 	'SpecialUserStats' => array( 'TakwimuzaMtumiaji', 'TakwimumaalumzaMtumiaji' ),
 );
 
 /** Thai (ไทย) */
-$aliases['th'] = array(
+$specialPageAliases['th'] = array(
 	'SpecialUserStats' => array( 'สถิติผู้ใช้' ),
 );
 
 /** Tagalog (Tagalog) */
-$aliases['tl'] = array(
+$specialPageAliases['tl'] = array(
 	'SpecialUserStats' => array( 'Mga estadistika ng tagagamit', 'Mga estadistika ng natatanging tagagamit' ),
 );
 
 /** Turkish (Türkçe) */
-$aliases['tr'] = array(
+$specialPageAliases['tr'] = array(
 	'SpecialUserStats' => array( 'Kullanıcıİstatistikleri', 'ÖzelKullanıcıİstatistikleri' ),
 );
 
 /** Vèneto (Vèneto) */
-$aliases['vec'] = array(
+$specialPageAliases['vec'] = array(
 	'SpecialUserStats' => array( 'StatìstegheUtente' ),
 );
 
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;

@@ -6,41 +6,52 @@
  * @ingroup Extensions
  */
 
-$aliases = array();
-
-/** English */
-$aliases['en'] = array(
+/** English (English) */
+$specialPageAliases['en'] = array(
 	'Piwik' => array( 'Piwik' ),
 );
 
-$aliases['ar'] = array(
-	'Piwik'   => array( 'بيويك' ),
+/** Arabic (العربية) */
+$specialPageAliases['ar'] = array(
+	'Piwik' => array( 'بيويك' ),
 );
 
-$aliases['arz'] = array(
-	'Piwik'   => array( 'بيويك' ),
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'Piwik' => array( 'بيويك' ),
 );
 
-$aliases['fa'] = array(
-	'Piwik'   => array( 'پی‌ویک' ),
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'Piwik' => array( 'پی‌ویک' ),
 );
 
-$aliases['ksh'] = array(
-	'Piwik'   => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
+/** Colognian (Ripoarisch) */
+$specialPageAliases['ksh'] = array(
+	'Piwik' => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
 );
 
-$aliases['ml'] = array(
-	'Piwik'   => array( 'പൈവിക്' ),
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'Piwik' => array( 'പൈവിക്' ),
 );
 
-$aliases['mr'] = array(
-	'Piwik'   => array( 'पायविकि' ),
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = array(
+	'Piwik' => array( 'पायविकि' ),
 );
 
-$aliases['sa'] = array(
-	'Piwik'   => array( 'पिविकि' ),
+/** Sanskrit (संस्कृत) */
+$specialPageAliases['sa'] = array(
+	'Piwik' => array( 'पिविकि' ),
 );
 
-$aliases['te'] = array(
-	'Piwik'   => array( 'పివిక్' ),
+/** Telugu (తెలుగు) */
+$specialPageAliases['te'] = array(
+	'Piwik' => array( 'పివిక్' ),
 );
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;
