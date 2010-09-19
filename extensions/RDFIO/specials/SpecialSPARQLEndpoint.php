@@ -3,18 +3,18 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
     echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/SMWRDFConnector/SpecialSPARQLEndpoint.php" );
+require_once( "\$IP/extensions/RDFIO/specials/SpecialSPARQLEndpoint.php" );
 EOT;
     exit( 1 );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'name' => 'SPARQLEndpoint',
-    'author' => 'Samuel Lampa',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:SMWRDFConnector',
-    'description' => 'SPARQL Endpoint',
-    'descriptionmsg' => 'sparqlendpoint-desc',
-    'version' => '0.0.0',
+	'path' => __FILE__,
+	'name' => 'SPARQLEndpoint',
+	'author' => 'Samuel Lampa',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SMWRDFConnector',
+	'descriptionmsg' => 'rdfio-sparqlendpoint-desc',
+	'version' => '0.0.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';

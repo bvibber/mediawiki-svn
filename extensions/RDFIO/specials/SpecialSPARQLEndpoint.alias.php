@@ -5,3 +5,4 @@ $aliases = array();
 $aliases['en'] = array(
     'SPARQLEndpoint' => array( 'SPARQLEndpoint' ),
 );
+

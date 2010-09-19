@@ -4,5 +4,6 @@ $messages = array();
 
 $messages['en'] = array(
     'sparqlendpoint' => 'SPARQL Endpoint',
-    'sparqlendpoint-desc' => 'A SPARQLEndpoint provided by the SMWRDFConnector',
+    'rdfio-sparqlendpoint-desc' => 'A SPARQL Endpoint provided by the SMWRDFConnector',
 );
+

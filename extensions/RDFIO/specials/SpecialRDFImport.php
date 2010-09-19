@@ -3,18 +3,18 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
     echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/SMWRDFConnector/SpecialRDFImport.php" );
+require_once( "\$IP/extensions/RDFIO/specials/SpecialRDFImport.php" );
 EOT;
     exit( 1 );
 }
 
 $wgExtensionCredits['specialpage'][] = array(
-    'name' => 'RDFImport',
-    'author' => 'Samuel Lampa',
-    'url' => 'http://www.mediawiki.org/wiki/Extension:SMWRDFConnector',
-    'description' => 'RDF Import',
-    'descriptionmsg' => 'rdfimport-desc',
-    'version' => '0.0.0',
+	'path' => __FILE__,
+	'name' => 'RDFImport',
+	'author' => 'Samuel Lampa',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SMWRDFConnector',
+	'descriptionmsg' => 'rdfio-rdfimport-desc',
+	'version' => '0.0.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';
