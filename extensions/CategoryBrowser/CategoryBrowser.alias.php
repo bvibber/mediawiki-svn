@@ -6,9 +6,16 @@
  * @ingroup Extensions
  */
 
+$specialPageAliases = array();
+
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'CategoryBrowser' => array( 'CategoryBrowser' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'CategoryBrowser' => array( 'CategorieenDoorbladeren' ),
 );
 
 /**
