@@ -605,7 +605,7 @@ mw.SequencerTools.prototype = {
 						return ;
 					}
 					$j( target ).empty().append( 
-						$j('<h3 />').text( gM('mwe-sequencer-editTemplate-params') )
+						$j('<h3 />').text( gM('mwe-sequencer-edittemplate-params') )
 					)
 					
 					// This is not supposed to be perfect .. 

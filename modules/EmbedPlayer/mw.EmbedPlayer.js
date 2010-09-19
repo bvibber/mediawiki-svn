@@ -106,10 +106,13 @@ mw.setConfig( 'EmbedPlayer.Attributes', {
 	
 	// If the player controls should be overlaid 
 	//( Global default via config EmbedPlayer.OverlayControls in module loader.js)  
-	"overlayControls" : true,
+	"overlaycontrols" : true,
 	
 	// Attribute to use 'native' controls 
 	"usenativecontrols" : false,
+	
+	// If the player should include an attribution button:
+	'attributionbutton' : true,
 	
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE

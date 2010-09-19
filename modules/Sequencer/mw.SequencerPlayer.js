@@ -34,7 +34,9 @@ mw.SequencerPlayer.prototype = {
 				$video.css(
 					_this.getPlayerSize()
 				).attr({
-					'id' : _this.getSmilPlayerId()
+					'id' : _this.getSmilPlayerId(),
+					'attributionbutton' : false,
+					'overlaycontrols' : false
 				}).append(
 					$j('<source />').attr({
 						'type' : 'application/smil',
@@ -46,9 +48,7 @@ mw.SequencerPlayer.prototype = {
 			// Draw the player ( keep the playhead for now )
 			// xxx we will eventually replace the playhead with sequence 
 			// based playhead interface for doing easy trims
-			$j( '#' + _this.getSmilPlayerId() ).embedPlayer({
-				'overlayControls' : false
-			}, function(){
+			$j( '#' + _this.getSmilPlayerId() ).embedPlayer({}, function(){
 				// Set the player interface to autoMargin ( need to fix css propagation in embed player) 			
 				$j( '#' + _this.getSmilPlayerId() ).parent('.interface_wrap').css('margin', 'auto');
 				if( callback ){

@@ -294,11 +294,11 @@ mw.Sequencer.prototype = {
 		}
 		return this.addMedia;
 	},
-	getAddByUrl: function(){
-		if( ! this.addByUrl ){
-			this.addByUrl = new mw.SequencerAddByUrl( this );
+	getAddByUri: function(){
+		if( ! this.addByUri ){
+			this.addByUri = new mw.SequencerAddByUri( this );
 		}
-		return this.addByUrl
+		return this.addByUri
 	},
 	getKeyBindings:function(){
 		if( ! this.keyBindings ){

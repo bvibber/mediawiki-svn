@@ -166,7 +166,7 @@ mw.PlayerControlBuilder.prototype = {
 			this.supportedComponets['timedText'] = true;
 		}		
 		// Check for Attribution button 	
-		if( mw.getConfig( 'EmbedPlayer.AttributionButton' ) ){
+		if( mw.getConfig( 'EmbedPlayer.AttributionButton' ) && embedPlayer.attributionbutton ){
 			this.supportedComponets[ 'attributionButton' ] = true;
 		}
 		
@@ -640,7 +640,7 @@ mw.PlayerControlBuilder.prototype = {
 		}
 		
 		// If disabled via the player
-		if( this.embedPlayer.overlayControls === false ){
+		if( this.embedPlayer.overlaycontrols === false ){
 			return false;
 		} 
 		
