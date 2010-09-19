@@ -19,8 +19,15 @@ $wgExtensionCredits['other'][] = array(
 	'version' => RDFIO_VERSION,
 	'author' => '[http://saml.rilspace.org Samuel Lampa]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RDFIO',
-	'description' => 'Extended RDF Import/Export functionality, including SPARQL endpoint, for Semantic MediaWiki'
+	'descriptionmsg' => 'rdfio-desc',
 );
+
+/****************************
+ * i18n
+ ****************************/
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['RDFIO'] = $dir . 'RDFIO.i18n.php';
+$wgExtensionAliasesFiles['RDFIO'] = $dir . 'RDFIO.alias.php';
 
 /****************************
  * ARC2 RDF library for PHP *

@@ -20,7 +20,7 @@ class SPARQLEndpoint extends SpecialPage {
         global $wgUser, $rdfiogQueryByOrigURI;
 
         parent::__construct( 'SPARQLEndpoint' );
-        wfLoadExtensionMessages( 'SPARQLEndpoint' );
+        wfLoadExtensionMessages( 'RDFIO' );
         $this->m_sparqlendpointconfig = $this->getSPARQLEndpointConfig();
         $this->m_sparqlendpoint = ARC2::getStoreEndpoint( $this->m_sparqlendpointconfig );
         $this->m_sparqlparser = ARC2::getSPARQLPlusParser();
