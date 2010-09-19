@@ -3,8 +3,6 @@
  * Aliases for special pages
  */
 
-$specialPageAliases = array();
-
 /** English
  * @author Bryan Tong Minh
  */

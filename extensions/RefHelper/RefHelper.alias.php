@@ -3,8 +3,6 @@ $aliases = array();
 
 /** English */
 
-$specialPageAliases = array();
-
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'RefHelper' => array( 'RefHelper' ),

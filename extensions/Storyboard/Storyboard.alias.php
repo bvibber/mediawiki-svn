@@ -8,8 +8,6 @@
  * @author Jeroen De Dauw
  */
 
-$specialPageAliases = array();
-
 /** English
  * @author Jeroen De Dauw
  */

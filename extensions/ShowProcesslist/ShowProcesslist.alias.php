@@ -4,8 +4,6 @@
  *
  */
 
-$specialPageAliases = array();
-
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'ShowProcesslist' => array( 'ShowProcesslist' ),

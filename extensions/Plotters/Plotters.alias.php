@@ -6,8 +6,6 @@
  * @ingroup Extensions
  */
 
-$specialPageAliases = array();
-
 /** English
  * @author Ryan Lane, rlane32+mwext@gmail.com
  */

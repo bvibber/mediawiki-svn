@@ -6,8 +6,6 @@
  * @ingroup Extensions
  */
 
-$specialPageAliases = array();
-
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'CategoryIntersection' => array( 'Category intersection', 'CategoryIntersection' ),
