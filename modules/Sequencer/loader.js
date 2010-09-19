@@ -23,7 +23,7 @@
 		"mw.SequencerPlayer" : "mw.SequencerPlayer.js",
 		"mw.SequencerTimeline" : "mw.SequencerTimeline.js",
 		"mw.SequencerKeyBindings" : "mw.SequencerKeyBindings.js",
-		"mw.SequencerTools" : "mw.SequencerTools.js",		
+		"mw.SequencerTools" : "tools/mw.SequencerTools.js",		
 		"mw.SequencerMenu" : "mw.SequencerMenu.js", 
 		
 		"mw.SequencerActionsSequence" : "actions/mw.SequencerActionsSequence.js",

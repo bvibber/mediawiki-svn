@@ -143,6 +143,7 @@ mw.EmbedPlayerSmil = {
 		}
 		return this.$renderTarget;		
 	},
+	
 	/**
 	 * Smil play function 
 	 * @param {float=} playSegmentEndTime Optional duration to be played before pausing playback

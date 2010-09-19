@@ -105,11 +105,8 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 	}
 	
 	if(! $j( '#' + embedPlayerId ).siblings( '.kalturaEditOverlay' ).length ){
-		var editLink = '#';
-		if( mw.isLocalDomain( mw.getApiProviderURL( embedPlayer.apiProvider ) ) 
-				&& 
-			embedPlayer.apiTitleKey )
-		{			
+		var editLink = '#';		
+		if( ! mw.isLocalDomain( mw.getApiProviderURL( embedPlayer.apiProvider ) ) ) {			
 			var seqTitle = embedPlayer.apiTitleKey
 				.replace( 'Sequence-', 'Sequence:')
 			// strip the extension
@@ -165,7 +162,7 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 							'href': editLink,
 							'target': '_new'
 						})
-						.click(function(){						
+						.click(function(){										
 							// load the editor in-place if on the same domain as the sequence
 							if( editLink == '#' ){
 								if( ! window.mwSequencerRemote ){

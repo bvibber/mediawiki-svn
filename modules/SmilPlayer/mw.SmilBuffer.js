@@ -129,7 +129,7 @@ mw.SmilBuffer.prototype = {
 		// Loop on loading until all elements are loaded
 		setTimeout( function(){
 			if( _this.getBufferedPercent() == 1 ){
-				mw.log( "smilBuffer::continueBufferLoad:: done loading buffer for " + bufferTime); 
+				//mw.log( "smilBuffer::continueBufferLoad:: done loading buffer for " + bufferTime); 
 				return ;
 			}
 			// get the percentage buffered, translated into buffer time and call continueBufferLoad with a timeout

@@ -185,7 +185,7 @@ mw.SequencerMenu.prototype = {
 				$j('<span />')
 				.css({ 
 					'float': 'right',
-					'font-size': '12px'
+					'font-size': '10.5px'
 				})
 				.append( 
 					gM('mwe-sequencer-sequencer_credit_line',

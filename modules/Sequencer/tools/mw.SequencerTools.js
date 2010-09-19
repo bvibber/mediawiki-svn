@@ -391,7 +391,22 @@ mw.SequencerTools.prototype = {
 								'initialValue' : initialValue								
 							})
 							.addClass("jColorPicker")
-						);								
+						);		
+						$editTransitionsSet.find('.jColorPicker input').jPicker( 
+								_editTransitions.colorPickerConfig,
+								function(color){
+									// commit color ( update undo / redo )
+									
+								},
+								function(color){
+									// live preview of selection ( update player )
+									//mw.log('update: ' + attributeKey + ' set to: #' + color.val('hex'));
+									$smilTransitionElement.attr( attributeKey, '#' + color.val('hex') );
+									_editTransitions.onChange( _this, smilElement );
+								}					
+							)
+						// adjust the position of the color button:
+						$editTransitionsSet.find('.jColorPicker .Icon').css('top', '-5px');
 					}
 				})
 				return $editTransitionsSet;
@@ -403,7 +418,11 @@ mw.SequencerTools.prototype = {
 				'window' : {
 				 	'expandable': true,
 					'effects' : {
-						'type' : 'fade'
+						'type' : 'show'
+					},
+					'position' : {
+						'x' : '10px',
+						'y' : 'bottom'
 					}
 				},			
 				'images' : {
@@ -477,7 +496,7 @@ mw.SequencerTools.prototype = {
 				// Update the sequence duration :
 				_this.sequencer.getEmbedPlayer().getDuration( true );
 				
-				// Seek to "this clip" 
+				// xxx we should re-display the current time 
 				_this.sequencer.getEmbedPlayer().setCurrentTime( 
 					$j( smilElement ).data('startOffset')
 				);	
@@ -553,14 +572,7 @@ mw.SequencerTools.prototype = {
 					_editTransitions.onChange( _this, smilElement );
 				});
 				// add the transition widget to the target
-				$j( target ).append( $transitionWidget );
-				
-				$j( target ).find('.jColorPicker input').jPicker( 
-					_editTransitions.colorPickerConfig 
-				);
-				// adjust the position of the color button:
-				$j( target ).find('.jColorPicker .Icon').css('top', '-5px');
-				
+				$j( target ).append( $transitionWidget );				
 			}						
 		},
 		'editTemplate':{
