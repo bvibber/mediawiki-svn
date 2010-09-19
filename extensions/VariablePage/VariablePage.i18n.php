@@ -87,6 +87,13 @@ $messages['nl'] = array(
 	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'variablepage-desc' => 'Prosta strona przekierowująca losowo',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -113,5 +120,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
 );
 

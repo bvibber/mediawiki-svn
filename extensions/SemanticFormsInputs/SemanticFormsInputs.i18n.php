@@ -307,6 +307,18 @@ $messages['ru'] = array(
 	'semanticformsinputs-today' => 'Сегодня',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'semanticformsinputs-desc' => 'Karagdagang mga tipo ng pagpasok para sa [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Anyong Semantiko]',
+	'semanticformsinputs-wrongformat' => 'Maling anyo.',
+	'semanticformsinputs-close' => 'Isara',
+	'semanticformsinputs-prev' => 'Nakaraan',
+	'semanticformsinputs-next' => 'Susunod',
+	'semanticformsinputs-today' => 'Ngayon',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'semanticformsinputs-close' => '关闭',

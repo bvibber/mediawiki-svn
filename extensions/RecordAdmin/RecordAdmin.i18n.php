@@ -729,7 +729,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
-	'recordadmin-desc' => 'Une page spéciale pour trouver et modifier l’enregistrement des pages par l’utilisation d’un formulaire',
+	'recordadmin-desc' => 'Recherche, requêtes, formulaires et rapport de données du wiki dérivés de paramètres de modèle',
 	'recordadmin-specialdesc' => 'Une [[Special:RecordAdmin|page spéciale]] pour trouver et créer des pages en utilisant des formulaires associés.',
 	'recordadmin-noforms' => 'Il n’y a actuellement aucun formulaire défini à utiliser pour la recherche et la création',
 	'recordadmin-select' => 'Sélectionner le type d’enregistrement à gérer',
@@ -822,7 +822,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'recordadmin' => 'Xestión dos rexistros',
-	'recordadmin-desc' => 'Unha [[Special:RecordAdmin|páxina especial]] para atopar e editar páxinas de rexistros usando un formulario',
+	'recordadmin-desc' => 'Procuras, pescudas, formularios e informes de datos do wiki derivados de parámetros de modelo',
 	'recordadmin-specialdesc' => 'Unha [[Special:RecordAdmin|páxina especial]] para atopar e crear páxinas usando un formulario',
 	'recordadmin-noforms' => 'Actualmente non hai formularios definidos a usar para as procurar e creacións',
 	'recordadmin-select' => 'Seleccione o tipo de rexistro a xestionar',
@@ -1694,7 +1694,9 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'recordadmin' => 'Administracja rekordami',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Strona specjalna]] służąca do wyszukiwania i edytowania stron ze zbiorami danych (rekordami) przy użyciu formularza',
+	'recordadmin-desc' => 'Wyszukiwanie, zapytania, formularze i raportowanie dla danych pochodzących z parametrów szablonów',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Strona specjalna]] służąca do wyszukiwania i tworzenia stron z użyciem przypisanych formularzy',
+	'recordadmin-noforms' => 'Obecnie brak jest formularzy służących do wyszukiwania i tworzenia stron',
 	'recordadmin-select' => 'Wybierz typ rekordu, którym chcesz zarządzać',
 	'recordadmin-createtype' => 'Podaj nazwę nowego typu rekordy, który chcesz utworzyć',
 	'recordadmin-recordtype' => 'typ rekordu',
@@ -1947,7 +1949,9 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'recordadmin' => 'Администрирование записей',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Служебная страница]] для поиска и правки страниц записей, используя форму',
+	'recordadmin-desc' => 'Поиск, запросы, формы и отчёты по вики-данным, полученным из параметров шаблона',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Служебная страница]] для поиска и создания страниц с помощью ассоциированных форм',
+	'recordadmin-noforms' => 'Есть в настоящее время не определены формы для поиска и создания',
 	'recordadmin-select' => 'Выбрать',
 	'recordadmin-createtype' => 'Введите название нового типа записи для создания',
 	'recordadmin-recordtype' => 'тип записи',

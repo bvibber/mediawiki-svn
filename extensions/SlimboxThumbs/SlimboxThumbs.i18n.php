@@ -101,11 +101,19 @@ $messages['nl'] = array(
 	'slimboxthumbs-desc' => 'Geeft bij klikken op miniaturen afbeeldingen op de volledige grootte weer met [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'slimboxthumbs-desc' => 'Po kliknięciu na miniaturkę wyświetla zdjęcia w pełnym rozmiarze. Korzysta ze [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
+);
+
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'slimboxthumbs-desc' => 'A mosta figure a dimension pien-a con [http://www.digitalia.be/software/slimbox2 Slimbox 2] quand a së sgnaca sla miniatura',
+	'slimboxthumbs-desc' => 'A smon le figure a dimension pien-a con [http://www.digitalia.be/software/slimbox2 Slimbox 2] quand a së sgnaca an sle miniadure',
 );
 
 /** Portuguese (Português)
@@ -127,5 +135,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'slimboxthumbs-desc' => 'Показывает полноразмерные изображения с [http://www.digitalia.be/software/slimbox2 Slimbox 2] при нажатии на картинке.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'slimboxthumbs-desc' => 'Nagpapakita ng buong hugis ng mga larawan na ginagamitan ng [http://www.digitalia.be/software/slimbox2 Slimbox 2] kapag pinipindot ang mga kagyat',
 );
 

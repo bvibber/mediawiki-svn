@@ -123,10 +123,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'datediff-desc' => 'A pija doe date e a artorna tùit ij di ant ël mes',
+	'datediff-desc' => 'A pija doe date e a da andarera tùit ij di ant ël mes',
 );
 
 /** Portuguese (Português)
@@ -148,5 +149,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'datediff-desc' => 'Возвращает все даты между двумя заданными.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'datediff-desc' => 'Kumukuha ng dalawang mga petsa at nagbabalik ng panggitnang mga araw',
 );
 

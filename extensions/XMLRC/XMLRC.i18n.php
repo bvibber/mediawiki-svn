@@ -226,6 +226,13 @@ $messages['te'] = array(
 XML, వయ UDP లేదా ఇతర సదనము ద్వారా తేడాలను ప్రకటించు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'xmlrc-desc' => 'Nagpapadala ng mga abiso hinggil sa mga pagbabago bilang XML, sa pamamagitan ng UDP, Jabber o iba pang paraan',
+);
+
 /** Ukrainian (Українська)
  * @author Arturyatsko
  */

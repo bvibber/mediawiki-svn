@@ -383,7 +383,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'purewikideletion' => 'Pur deletion wiki',
-	'randomexcludeblank' => 'Pagina aleatori (non in blanco)',
+	'randomexcludeblank' => 'Pagina aleatori (non vacue)',
 	'populateblankedpagestable' => 'Plenar le tabella de paginas vacuate',
 	'purewikideletion-desc' => 'Inter altere cosas, causa que le ligamines a paginas vacuate appare in rubie',
 	'purewikideletion-pref-watchblank' => 'Adder le paginas que io vacua a mi observatorio',

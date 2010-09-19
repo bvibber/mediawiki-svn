@@ -296,3 +296,14 @@ $messages['te'] = array(
 	'articletocategory2-create-category-under-category-button' => 'సృష్టించు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'articletocategory2-desc' => 'Naglalagay ng isang kahong pampasok-paloob sa ibabaw ng bawat pahinang pangkategorya na nagpapahintulot ng isang bagong pahina na tuwirang papunta sa kategoryang iyan',
+	'articletocategory2-create-article-under-category-text' => 'Magdagdag ng isang pahina sa kategoryang ito',
+	'articletocategory2-create-article-under-category-button' => 'Likhain',
+	'articletocategory2-create-category-under-category-text' => 'Magdagdag ng isang kategorya sa kategoryang ito',
+	'articletocategory2-create-category-under-category-button' => 'Likhain',
+);
+

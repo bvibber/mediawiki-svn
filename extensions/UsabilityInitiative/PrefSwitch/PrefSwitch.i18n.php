@@ -2425,7 +2425,6 @@ $messages['fa'] = array(
 	'prefswitch-survey-true' => 'بله',
 	'prefswitch-survey-false' => 'خیر',
 	'prefswitch-survey-submit-off' => 'غیرفعال کردن ویژگی های جدید',
-	'prefswitch-survey-submit-global-off' => 'ویژگی‌های جدید را در همهٔ ویکی‌ها غیرفعال کن',
 	'prefswitch-survey-cancel-off' => 'اگر مایل به ادامه استفاده از ویژگی‌های جدید هستید;می‌توانید به $1 بازگردید.',
 	'prefswitch-survey-submit-feedback' => 'ارسال بازخورد',
 	'prefswitch-survey-cancel-feedback' => 'اگر به ارائهٔ بازخورد تمایلی ندارید، می‌توانید به $1 بازگردید.',
@@ -2513,7 +2512,7 @@ $messages['fa'] = array(
 * '''برگه {{int:move}}''' یک منوی کشویی در کنار دیگر برگه‌هاست.",
 	'prefswitch-main-feedback' => '===بازخورد؟===
 ما خوشحال می‌شویم نظر شما را بشنویم. لطفا در [[$1|صفحهٔ بازخورد]] نظرتان را بیان کنید یا اگر علاقه‌مندید تا ابزار را بهبود ببخشید لطفاً در [http://usability.wikimedia.org ویکی استفاده‌پذیری] بیان کنید.',
-	'prefswitch-main-anon' => '===مرا باز گردان===
+	'prefswitch-main-anon' => '===مرا بازگردان===
 [$1 اینجا را کلیک کنید تا ویژگی‌های جدید را غیرفعال کنید].از شما خواسته خواهد شد که ابتدا یا وارد شوید یا حسابی بسازید.',
 	'prefswitch-main-on' => '===من را بازگردان !===
 [$2 در این جا کلیک کنید تا ویژگی های جدید را برگردانید].',
@@ -2521,8 +2520,8 @@ $messages['fa'] = array(
 [$1 برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید].',
 	'prefswitch-survey-intro-feedback' => 'مشتاق شنیدن دیدگاه‌های شما هستیم.
 لطفاً تحقیق اختیاری زیر را پیش از کلیک بر «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]» پر کنید.',
-	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی های جدید سیستم ما از شما تشکر می کنیم
-برای کمک به ما در جهت بهبود‌سازی آن‌ها, لطفا قبل از کلیک روی  "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" نظر سنجی اختیاری زیر را پر کنید .',
+	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی‌های جدید سیستم ما از شما تشکر می‌کنیم.
+برای کمک به ما در جهت بهبود‌سازی آن‌ها، لطفا قبل از کلیک روی «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]» نظرسنجی اختیاری زیر را پر کنید.',
 	'prefswitch-feedbackpage' => 'Project:بازخورد تجربه کاربر',
 );
 
@@ -3425,7 +3424,7 @@ Légyszíves segíts a továbbfejlesztésükben az alábbi önkéntes kérdőív
  */
 $messages['ia'] = array(
 	'prefswitch' => 'Activation e disactivation del Initiativa de Usabilitate',
-	'prefswitch-desc' => 'Permitter le usatores de cambiar inter gruppos de preferentias',
+	'prefswitch-desc' => 'Permitte al usatores de cambiar inter gruppos de preferentias',
 	'prefswitch-jswarning' => 'Memora que, con le cambiamento del apparentia, tu [[User:$1/$2.js|$2 JavaScript]] debera esser copiate in [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> pro continuar a functionar.',
 	'prefswitch-csswarning' => 'Tu [[User:$1/$2.css|stilos personalisate de $2]] non essera plus applicate. Tu pote adder CSS personalisate pro Vector in [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Si',

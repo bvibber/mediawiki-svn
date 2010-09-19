@@ -205,6 +205,13 @@ $messages['ru'] = array(
 	'sidebardonatebox-desc' => 'Добавляет специальное уведомление о пожертвованиях на боковую панель',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'sidebardonatebox-desc' => 'Nagdaragdag ng isang pasadyang kahong ambagan sa baretang panggilid',
+);
+
 /** Ukrainian (Українська)
  * @author Alex Khimich
  */

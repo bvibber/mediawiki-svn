@@ -409,6 +409,14 @@ $messages['su'] = array(
 	'dontswitchmeover-pref' => 'Lamun kulit ti dituna robah, setélan kulit kuring ulah milu robah',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'dontswitchmeover-desc' => 'Mga kagustuhan para sa mga tagagamit upang tukuyin kung nais nilang panatilihin ang kanilang pagtatakda ng pabalat kapag binago ang likas na nakatakdang pabalat.',
+	'dontswitchmeover-pref' => 'Huwag payagang baguhin ang aking pabalat kapag binago ang likas na nakatakdang pabalat',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */

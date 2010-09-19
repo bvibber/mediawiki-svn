@@ -452,3 +452,29 @@ $2 отреагировал на вашу формулировку его точ
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 ответил на вашу формулировку',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'reflect-desc' => 'Pagdaragdag sa sinulid ng mga puna',
+	'reflect-bulleted' => 'Kumusta $1,
+
+Ibinuod ni $2 ang puntong ginawa mo sa bagting na "$3".
+
+Ang kanilang buod: "$5".
+
+Masusuri mo kung nakuha ng tama ni $2 ang punto mo sa pamamagita n ng pagdalaw sa <$4>.
+
+Maaari mong linawin ang punto mo kung mayroon hindi pagkakaunawaan.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Ang puno mo ay ibinuod ni $2',
+	'reflect-responded' => 'Kumusta $1,
+
+Tumugon si $2 sa iyong buod ng isang puntong ginawa nila.
+
+Ang buod na iniwanan mo: "$6".
+Ang kanilang mensahe: "$5".
+
+Kung naisa mong basahin ang tugon ayon sa konteksto, dalawin ang <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] Tumugon si $2 sa iyong puntong-punglo ng buod',
+);
+

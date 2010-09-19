@@ -263,6 +263,15 @@ $messages['ru'] = array(
 	'rss-empty' => 'Не удалось загрузить RSS-канал из $1!',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'rss-desc' => 'Nagpapakita ng isang pakaing RSS sa isang pahina ng wiki',
+	'rss-error' => 'Nabigong ikarga ang pakaing RSS mula sa $1: $2',
+	'rss-empty' => 'Nabigong ikarga ang pakaing RSS mula sa $1!',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */

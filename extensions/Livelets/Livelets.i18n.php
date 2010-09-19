@@ -111,11 +111,19 @@ $messages['nl'] = array(
 	'livelets-desc' => "Staat het transcluderen van pagina's toe die geladen worden na de hoofdinhoud van de pagina en via AJAX dynamisch bijgewerkt kunnen worden",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'livelets-desc' => 'Pozwala na dodawanie do strony głównej dynamicznie aktualizowanych stron z użyciem technologii Ajax',
+);
+
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'livelets-desc' => "A përmëtt che le pàgine transludùe a sio carà d'apress dël contnù prinsipal ëd la pàgina e a peusso modifiché dinamicament con Ajax",
+	'livelets-desc' => 'A përmët che le pàgine ancludùe a sio carà apress ël contnù prinsipal ëd la pàgina e a peulo esse modificà dinamicament con Ajax',
 );
 
 /** Portuguese (Português)
@@ -137,5 +145,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'livelets-desc' => 'Позволяет добавлять к страницам после основного содержания динамически обновляемый посредством Ajax блок данных',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'livelets-desc' => 'Nagpapahintulot sa mga pahina na mailipat-sama na naikarga pagkaraan ng nilalaman ng pangunahing pahina at masiglang nakapagsasapanahon sa pamamagitan ng Ajax',
 );
 

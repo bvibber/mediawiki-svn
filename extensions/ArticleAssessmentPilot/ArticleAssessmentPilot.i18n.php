@@ -244,15 +244,44 @@ Vielleicht möchtest du ihn erneut einschätzen.",
  * @author Peter17
  */
 $messages['fr'] = array(
+	'articleassessment' => 'Évaluation d’article',
+	'articleassessment-desc' => 'Évaluation d’article (version pilote)',
+	'articleassessment-yourfeedback' => 'Votre retour',
+	'articleassessment-pleaserate' => 'Veuillez prendre un moment pour évaluer cette page ci-dessous.',
 	'articleassessment-submit' => 'Soumettre',
 	'articleassessment-rating-wellsourced' => 'Bien sourcé :',
 	'articleassessment-rating-neutrality' => 'Neutre :',
 	'articleassessment-rating-completeness' => 'Complet :',
 	'articleassessment-rating-readability' => 'Lisible :',
+	'articleassessment-rating-wellsourced-tooltip' => 'Pensez-vous que cette page a suffisamment de citations et que celles-ci proviennent de sources dignes de confiance.',
+	'articleassessment-rating-neutrality-tooltip' => 'Pensez-vous que cette page fournit une présentation équitable de toutes les perspectives du sujet traité ?',
+	'articleassessment-rating-completeness-tooltip' => 'Pensez-vous que cette page couvre les thèmes essentiels du sujet ?',
+	'articleassessment-rating-readability-tooltip' => 'Pensez-vous que cette page soit bien organisée et bien écrite ?',
 	'articleassessment-articlerating' => 'Évaluation de la page',
+	'articleassessment-error' => 'Une erreur est survenue.
+Veuillez ré-essayer plus tard.',
+	'articleassessment-thanks' => 'Merci ! Votre évaluation a été enregistrée.',
+	'articleassessment-featurefeedback' => 'Donnez-nous vos <span class="feedbacklink">commentaires</span> sur cette fonctionnalité.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|évaluation|évaluations}})',
+	'articleassessment-stalemessage-norevisioncount' => 'Cette page a été révisée depuis que vous l’avez évaluée.
+Vous pourriez vouloir l’évaluer à nouveau.',
+	'articleassessment-results-show' => '(Résultats masqués. <span class="showlink">Les afficher.</span>)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Masquer les résultats</span>)',
+	'articleassessment-survey-question-whyrated' => 'Veuillez nous indiquer pourquoi vous avez évalué cette page aujourd’hui (cochez tout ce qui s’applique) :',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Je voulais contribuer à l’évaluation globale de la page',
+	'articleassessment-survey-answer-whyrated-development' => 'J’espère que mon évaluation aura une incidence positive sur le développement de la page',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Je voulais contribuer à {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'J’aime partager mon opinion',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Je n’ai pas évalué la page, mais je voulais donner un retour sur cette fonctionnalité',
 	'articleassessment-survey-answer-whyrated-other' => 'Autre',
+	'articleassessment-survey-question-useful' => 'Pensez-vous que les évaluations fournies soient utiles et claires ?',
 	'articleassessment-survey-question-useful-iffalse' => 'Pourquoi ?',
+	'articleassessment-survey-question-expert' => 'Vous considérez-vous comme un expert dans le domaine couvert par cette page ?',
+	'articleassessment-survey-question-expert-iftrue' => 'Pouvez-vous décrire votre expertise ?',
+	'articleassessment-survey-question-comments' => 'Avez-vous d’autres commentaires ?',
 	'articleassessment-survey-submit' => 'Soumettre',
+	'articleassessment-survey-title' => 'Veuillez répondre à quelques questions',
+	'articleassessment-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
 );
 
 /** Galician (Galego)
@@ -729,6 +758,50 @@ $messages['ru'] = array(
 	'articleassessment-survey-submit' => 'Отправить',
 	'articleassessment-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articleassessment-survey-thanks' => 'Спасибо за участие в опросе.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'articleassessment' => 'Pagsusuri ng lathalain',
+	'articleassessment-desc' => 'Pagsusuri ng lathalain (paunang bersyon)',
+	'articleassessment-yourfeedback' => 'Ang iyong puna',
+	'articleassessment-pleaserate' => 'Mangyaring maglaan ng isang sanali upang antasan ang pahinang nasa ibaba.',
+	'articleassessment-submit' => 'Ipadala',
+	'articleassessment-rating-wellsourced' => 'Sapat at tumpak ang mga pinagkunan',
+	'articleassessment-rating-neutrality' => 'Walang pinapanigan:',
+	'articleassessment-rating-completeness' => 'Kumpleto:',
+	'articleassessment-rating-readability' => 'Nababasa:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Sa tingin mo ba ang pahinang ito ay may sapat ng mga pagbanggit at ang mga pagbanggit na ito ay nagbuhat sa mapagkakatiwalaang mga pinagkunan?',
+	'articleassessment-rating-neutrality-tooltip' => 'Sa tingin mo ba ang pahinang ito ay nagpapakita ng isang patas na kinatawan ng lahat ng mga pananaw hinggil sa paksa?',
+	'articleassessment-rating-completeness-tooltip' => 'Sa tingin mo ba ang pahinang ito ay sumasaklaw sa nararapat na mahahalagang mga lugar ng paksa?',
+	'articleassessment-rating-readability-tooltip' => 'Sa tingin mo ba ang pahinang ito ay talagang maayos at mabuti ang pagkakasulat?',
+	'articleassessment-articlerating' => 'Pagkakaantas ng pahina',
+	'articleassessment-error' => 'Naganap ang isang kamalian.
+Subukan uli mamaya.',
+	'articleassessment-thanks' => 'Salamat! Nasagip na ang iyong mga pag-aantas.',
+	'articleassessment-featurefeedback' => 'Bigyan kami ng <span class="feedbacklink">puna</span> hinggil sa tampok na ito.',
+	'articleassessment-noratings' => ' $1 ($2 {{PLURAL:$2|pag-aantas|mga pag-aantas}})',
+	'articleassessment-stalemessage-norevisioncount' => "''Nabago'' ang pahinang ito magmula noong huli mong pagsuri nito.
+Maaari mo itong antasang muli.",
+	'articleassessment-results-show' => '(Nakatago ang mga resulta. <span class="showlink">Ipakita</span> ang mga ito.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Itago ang mga resulta</span>)',
+	'articleassessment-survey-question-whyrated' => 'Mangyari sabihin sa amin kung bakit mo inantasan ng ganito ang pahinang ito ngayon (lagyan ng tsek ang lahat ng maaari):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Nais kong umambag sa pangkalahatang kaantasan ng pahina',
+	'articleassessment-survey-answer-whyrated-development' => 'Umaasa ako na ang aking pag-aantas ay positibong makakaapekto sa pagpapaunlad ng pahina',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Nais kong makapag-ambag sa {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Nais ko ang pagpapamahagi ng aking opinyon',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Hindi ako nagbigay ng pag-aantas ngayon, subalit nais kong magbigay ng puna sa hinaharap',
+	'articleassessment-survey-answer-whyrated-other' => 'Iba pa',
+	'articleassessment-survey-question-useful' => 'Naniniwala ka ba na ang mga pag-aantas na ibinigay ay magagamit at malinaw?',
+	'articleassessment-survey-question-useful-iffalse' => 'Bakit?',
+	'articleassessment-survey-question-expert' => 'Itinuturing mo ba ang sarili mo bilang isang dalubhasa sa larangang sakop ng pahinang ito?',
+	'articleassessment-survey-question-expert-iftrue' => 'Maaari mo bang ilarawan ang iyong kadalubhasaan?',
+	'articleassessment-survey-question-comments' => 'Mayroon ka pa bang karagdagang mga puna?',
+	'articleassessment-survey-submit' => 'Ipasa',
+	'articleassessment-survey-title' => 'Pakisagot ang ilang mga katanungan',
+	'articleassessment-survey-thanks' => 'Salamat sa pagsagot sa mga pagtatanong.',
 );
 
 /** Vietnamese (Tiếng Việt)

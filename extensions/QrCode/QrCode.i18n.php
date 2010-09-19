@@ -127,3 +127,10 @@ $messages['ru'] = array(
 	'qrcode-desc' => 'Создаёт изображения с QR-кодами и добавляет их на страницы вики',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'qrcode-desc' => 'Bumubuo at nagdaragdag ng mga larawan ng Kodigong QR sa isang pahina ng wiki',
+);
+

@@ -281,6 +281,14 @@ $messages['bg'] = array(
 	'extdist-tar-error' => 'Tar върна код за грешка $1:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'extdist-submit-extension' => 'অগ্রসর হোন',
+	'extdist-submit-version' => 'অগ্রসর হোন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Y-M D

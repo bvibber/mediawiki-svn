@@ -193,13 +193,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author LyzTyphone
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'piwik-desc' => 'Enigas skripton "Piwik" en paĝoj MediaWiki por kontrolado kaj aldonas [[Special:Piwik|iujn statistikojn]]',
 	'piwik-lastvisits' => 'Lastaj vizitoj',
 	'piwik-countries' => 'Landoj',
-	'piwik-browsers' => 'Retumiloj',
+	'piwik-browsers' => 'Foliumiloj',
 );
 
 /** Spanish (Español)

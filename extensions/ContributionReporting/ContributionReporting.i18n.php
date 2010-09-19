@@ -535,6 +535,11 @@ $messages['bn'] = array(
 	'contribstats-max' => 'সর্বোচ্চ (USD)',
 	'contribstats-percentage-ytd' => 'শতকরা (YTD)',
 	'contribstats-total-ytd' => 'মোট (YTD)',
+	'contribstats-banner' => 'ব্যানার',
+	'contribstats-clicks' => 'ক্লিক',
+	'contribstats-donations' => 'দান',
+	'contribstats-template' => 'টেম্পলেট',
+	'contribstats-average' => 'গড়',
 	'fundraiserstats-date' => 'তারিখ',
 	'fundraiserstats-contributions' => 'অবদান',
 	'fundraiserstats-total' => 'মোট (USD)',
@@ -2040,6 +2045,7 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Herr Mlinka
  * @author Roberta F.
  * @author SpeedyGonsales
  */
@@ -2087,6 +2093,7 @@ $messages['hr'] = array(
 	'contribstats-conversion' => 'Stopa konverzije (%)',
 	'contribstats-template' => 'Predložak',
 	'contribstats-average' => 'Prosjek',
+	'contribstats-paypal-donations' => 'PayPal donacije',
 	'contribstats-credit-card' => 'Kreditna kartica:',
 	'fundraiserstatistics' => 'Statistika prikupljanja',
 	'fundraiserstats-date' => 'Datum',

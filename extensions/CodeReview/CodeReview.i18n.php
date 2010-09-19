@@ -978,19 +978,33 @@ $4',
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'code-comments' => 'মন্তব্য',
 	'code-change-removed' => 'অপসারিত',
+	'code-change-added' => 'সংযোজিত:',
 	'code-authors' => 'লেখক',
+	'code-tags' => 'ট্যাগসমূহ',
+	'code-author-name' => 'ব্যবহারকারীর নাম লিখুন:',
 	'code-field-author' => 'লেখক:',
+	'code-field-status' => 'অবস্থা',
 	'code-field-timestamp' => 'তারিখ',
 	'code-field-comments' => 'টীকা',
+	'code-field-text' => 'টীকা',
 	'code-field-select' => 'নির্বাচন',
 	'code-rev-author' => 'লেখক:',
 	'code-rev-date' => 'তারিখ:',
 	'code-rev-message' => 'মন্তব্য:',
+	'code-rev-modified-a' => 'সংযোজিত',
 	'code-rev-modified-r' => 'প্রতিস্থাপিত',
 	'code-rev-comment-preview' => 'প্রাকদর্শন',
+	'code-rev-diff-link' => 'পার্থক্য',
+	'code-rev-purge-link' => 'পার্জ',
+	'code-rev-total' => 'ফলাফলের মোট সংখ্যা: $1',
 	'code-status-new' => 'নতুন',
 	'code-status-ok' => 'ঠিক আছে',
+	'code-status-old' => 'পুরাতন',
+	'codereview-batch-submit' => 'জমা',
+	'codereview-reply-link' => 'উত্তর',
+	'code-stats' => 'পরিসংখ্যান',
 	'repoadmin-new-button' => 'তৈরি',
 	'repoadmin-edit-button' => 'ঠিক আছে',
 );
@@ -6663,6 +6677,7 @@ $messages['no'] = array(
 	'code-rev-diff-too-large' => 'Revisjonsforskjellen er for stor til å vises.',
 	'code-rev-purge-link' => 'Rense',
 	'code-rev-total' => 'Totalt antall resultat: $1',
+	'code-rev-not-found' => "Revisjon '''$1''' eksisterer ikke!",
 	'code-status-new' => 'ny',
 	'code-status-fixme' => 'fiksmeg',
 	'code-status-reverted' => 'tilbakestilt',
@@ -6708,6 +6723,8 @@ Sammendrag:
 $4',
 	'code-stats' => 'statistikk',
 	'code-stats-header' => 'Statistikk for oppbevaringssted $1',
+	'code-stats-main' => 'Som på $1 har depoet $2 {{PLURAL:$2|revisjon|revisjoner}} av [[Special:Code/$3/author|$4 {{PLURAL:$4|forfatter|forfattere}}]]',
+	'code-stats-staus-breakdown' => 'Antall revisjoner per status',
 	'code-stats-fixme-breakdown' => 'Fordeling av fiksmeg-er per forfatter',
 	'code-stats-count' => 'Antall revisjoner',
 	'repoadmin' => 'Databaseadministrasjon',
@@ -9113,7 +9130,7 @@ $messages['tl'] = array(
 	'code-authors' => 'mga may-akda',
 	'code-status' => 'mga kalagayan',
 	'code-tags' => 'mga tatak',
-	'code-authors-text' => 'Nasa ibaba ang isang talaan ng mga may-akda ng repositoryo ayon sa kamakailan lamang na mga pagsasagawa.  Ipinapakita sa loob ng mga saklong ang mga akawnt na panglokal na wiki.',
+	'code-authors-text' => 'Nasa ibaba ang isang talaan ng mga may-akda ng repositoryo ayon sa pangalan ng paglalagak.  Ipinapakita sa loob ng mga saklong ang mga akawnt na panglokal na wiki.',
 	'code-author-haslink' => 'Nakakawing ang may-akdang ito sa tagagamit ng wiking si $1',
 	'code-author-orphan' => 'Ang may-akdang ito ay walang kawing sa isang kuwenta/akawnt ng wiki',
 	'code-author-dolink' => 'Ikawing ang may-akdang ito sa isang tagagamit ng wiki:',
@@ -9125,6 +9142,7 @@ $messages['tl'] = array(
 	'code-author-unlink' => 'tanggalin sa pagkakakawing?',
 	'code-author-unlinksuccess' => 'Tinanggal na sa pagkakakawing ang may-akdang si $1',
 	'code-author-badtoken' => 'Sinusubok ng kamalian sa pagpupulong na isagawa ang galaw.',
+	'code-author-total' => 'Kabuuang bilang ng mga may-akda: $1',
 	'code-browsing-path' => "Tinitingnan-tingnan ng mga rebisyon sa loob ng '''$1'''",
 	'code-field-id' => 'Pagbabago',
 	'code-field-author' => 'May-akda',
@@ -9161,6 +9179,7 @@ $messages['tl'] = array(
 	'code-rev-diff-too-large' => 'Napakalaki ng kaibahan upang maipakita.',
 	'code-rev-purge-link' => 'purgahin',
 	'code-rev-total' => 'Kabuuang bilang ng mga resulta: $1',
+	'code-rev-not-found' => "Hindi umiiral ang rebisyong '''$1'''!",
 	'code-status-new' => 'bago',
 	'code-status-fixme' => 'ayusinako',
 	'code-status-reverted' => 'ibinalik',
@@ -9197,13 +9216,20 @@ Kumento:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Pangtugaygay na mga pagbabago',
-	'codereview-email-body2' => 'Gumawa ng pangtugaygay na mga pagbabago si "$1" sa $2.
+	'codereview-email-body2' => 'Gumawa ng patugaygay na mga pagbabago si "$1" sa $2.
+
+Buong URL para sa tinugaygayang rebisyon: $5
 
 Buong URL: $3
 
 Buod ng pagsasagawa:
 
 $4',
+	'code-stats' => 'estadistika',
+	'code-stats-header' => 'Estadistika ng repositoryo para sa $1',
+	'code-stats-staus-breakdown' => 'Bilang ng mga rebisyon sa bawat kalagayan',
+	'code-stats-fixme-breakdown' => 'Paglilista ng mga pag-aayos ng bawat may-akda',
+	'code-stats-count' => 'Bilang ng mga rebisyon',
 	'repoadmin' => 'Pamamahala ng Repositoryo',
 	'repoadmin-new-legend' => 'Lumikha ng isang bagong repositoryo',
 	'repoadmin-new-label' => 'Pangalan ng repositoryo:',

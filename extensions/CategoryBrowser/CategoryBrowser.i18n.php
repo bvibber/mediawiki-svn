@@ -548,13 +548,46 @@ Gebruik een andere browser of werkt deze bij, als mogelijk.',
  */
 $messages['pl'] = array(
 	'categorybrowser' => 'Przeglądarka kategorii',
+	'categorybrowser-desc' => '[[Special:CategoryBrowser|Strona specjalna]] do odnajdywania najczęściej wykorzystywanych kategorii i do przeglądania ich z wykorzystaniem interfejsu wykonanego w technologii AJAX',
+	'cb_requires_javascript' => 'Przeglądarka kategorii wymaga włączonej w przeglądarce obsługi JavaScript',
+	'cb_ie6_warning' => 'Edytor warunków nie działa poprawnie w przeglądarce Internet Explorer 6.0 i jej wcześniejszych wersjach.
+Można jednak przeglądać wcześniej zdefiniowane warunki.
+Jeśli to możliwe zmień lub uaktualnij swoją przeglądarkę.',
+	'cb_show_no_parents_only' => 'Pokaż wyłącznie kategorie, które nie mają kategorii nadrzędnych',
+	'cb_cat_name_filter' => 'Szukaj kategorii według nazwy',
+	'cb_cat_name_filter_clear' => 'Naciśnij, aby wyczyścić filtr nazw kategorii',
+	'cb_cat_name_filter_ci' => 'Ignoruj wielkość liter',
+	'cb_copy_line_hint' => 'Użyj przycisków [+] i [>+] aby skopiować i wkleić operatory w wybranym wyrażeniu',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategoria|podkategorie|podkategorii}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|strona|strony|stron}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|plik|pliki|plików}}',
+	'cb_has_parentcategories' => 'kategorię nadrzędne (jeśli są)',
+	'cb_previous_items_link' => 'poprzednie',
+	'cb_next_items_link' => 'następne',
+	'cb_next_items_stats' => '(od $1)',
+	'cb_cat_subcats' => 'podkategorie',
+	'cb_cat_pages' => 'strony',
+	'cb_cat_files' => 'pliki',
+	'cb_apply_button' => 'Zastosuj',
+	'cb_all_op' => 'Wszystkie',
+	'cb_or_op' => 'lub',
+	'cb_and_op' => 'i',
+	'cb_edit_left_hint' => 'Jeśli to możliwe przesuń w lewo',
+	'cb_edit_right_hint' => 'Jeśli to możliwe przesuń w prawo',
+	'cb_edit_remove_hint' => 'Jeśli to możliwe usuń',
+	'cb_edit_copy_hint' => 'Skopiuj operator do schowka',
+	'cb_edit_append_hint' => 'Wstaw operator na ostatnią pozycję',
+	'cb_edit_clear_hint' => 'Wyczyść aktualne wyrażenie (wybierz wszystko)',
+	'cb_edit_paste_hint' => 'Jeśli to możliwe wstaw operator na aktualną pozycję',
+	'cb_edit_paste_right_hint' => 'Jeśli to możliwe wstaw operator na następną pozycję',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'categorybrowser' => 'Browser dle categorìe',
+	'categorybrowser' => 'Navigador ëd categorìe',
 	'categorybrowser-desc' => "A dà na [[Special:CategoryBrowser|pàgina special]] për filtré le categorìe pi popolar e për scorrje an dovrand n'antërfacia AJAX",
 	'cb_requires_javascript' => "L'estension browser ëd categorìa a ciama che JavaScript a sia abilità ant ël browser.",
 	'cb_ie6_warning' => "L'editor ëd condission a travaja pa an Internet Explorer 6.0 o vërsion pi veje.
@@ -706,6 +739,45 @@ $messages['ru'] = array(
 	'cb_edit_clear_hint' => 'Очистить текущее выражение (выбрать всё)',
 	'cb_edit_paste_hint' => 'Вставить оператор в текущую позицию, если возможно',
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorybrowser' => 'Pantingin-tingin ng kategorya',
+	'categorybrowser-desc' => 'Nagbibigay ng isang [[Special:CategoryBrowser|natatanging pahina]] upang salain ang pinakamaraming-lamang mga kategorya at upang malibot sila na ginagamitan ng ugnayang-mukhang AJAX',
+	'cb_requires_javascript' => 'Ang pandugtong ng pantingin-tingin ng kategorya ay nangangailangan ng JavaScript upang mapagana ito sa pantingin-tingin.',
+	'cb_ie6_warning' => 'Ang pamatnugot ng kundisyon ay hindi gumagana sa Internet Explorer 6.0 or mas naunang mga bersyon.
+Subalit, ang pagtingin-tingin ng paunang nilarawang mga kundisyon ay dapat na gumana ng normal.
+Paki bago o itaas ang antas ng iyong pantingin-tingin, kung maaari.',
+	'cb_show_no_parents_only' => 'Ipakita lamang ang mga kategoryang walang mga magulang',
+	'cb_cat_name_filter' => 'Maghanap ng mga kategorya ayon sa pangalan:',
+	'cb_cat_name_filter_clear' => 'Pindutin upang malinis ang pansala ng pangalan ng kategorya',
+	'cb_cat_name_filter_ci' => 'Hindi sensitibo sa uri ng panitik',
+	'cb_copy_line_hint' => 'Gamitin ang mga pindutang [+] at [>+] upang kopyahin at idikit ang mga bantas sa napiling mga pagsasaad',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|kabahaging kategorya|kabahaging mga kategorya}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|pahina|mga pahina}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|talaksan|mga talaksan}}',
+	'cb_has_parentcategories' => 'magulang na mga kategorya (kung mayroon)',
+	'cb_previous_items_link' => 'Nakaraan',
+	'cb_next_items_link' => 'Kasunod',
+	'cb_next_items_stats' => '(mula $1)',
+	'cb_cat_subcats' => 'kabahaging mga kategorya',
+	'cb_cat_pages' => 'mga pahina',
+	'cb_cat_files' => 'mga talaksan',
+	'cb_apply_button' => 'Gamitin',
+	'cb_all_op' => 'Lahat',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'at',
+	'cb_edit_left_hint' => 'Ilipat sa kaliwa, kung maaari',
+	'cb_edit_right_hint' => 'Ilipat sa kanan, kung maaari',
+	'cb_edit_remove_hint' => 'Burahin, kung maaari',
+	'cb_edit_copy_hint' => 'Kopyahin ang bantas sa tablang-ipitan',
+	'cb_edit_append_hint' => 'Isingit ang bantas sa huling posisyon',
+	'cb_edit_clear_hint' => 'Linisin ang pangkasalukuyang pagsasaad (piliing lahat)',
+	'cb_edit_paste_hint' => 'Idikit ang bantas sa pangkasalukuyang posisyon, kung maaari',
+	'cb_edit_paste_right_hint' => 'Idikit ang bantas sa kasunod na posisyon, kung maaari',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))

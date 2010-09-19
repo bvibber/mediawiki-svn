@@ -368,12 +368,13 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'prefswitch-link-anon' => 'ویژگی‌های جدید',
 	'tooltip-pt-prefswitch-link-anon' => 'یادگیری در مورد ویژگی‌های جدید',
-	'prefswitch-link-on' => 'مرا باز گردان',
+	'prefswitch-link-on' => 'مرا بازگردان',
 	'tooltip-pt-prefswitch-link-on' => 'غیرفعال کردن ویژگی‌های جدید',
 	'prefswitch-link-off' => 'ویژگی‌های جدید',
 	'tooltip-pt-prefswitch-link-off' => 'خروج از امکانات جدید',

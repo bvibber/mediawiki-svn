@@ -128,6 +128,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'contrib-tracking-error' => 'ত্রুটি',
+	'contrib-tracking-button' => 'অগ্রসর হোন',
 );
 
 /** Breton (Brezhoneg)

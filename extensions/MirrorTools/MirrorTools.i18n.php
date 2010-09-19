@@ -280,3 +280,15 @@ $messages['ru'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}: Пользователи инструмента зеркалирования',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Nagpapahintulot ng mga pagbabago sa pamamagitan ng API na magagawa sa ilalim ng anumang pangalan ng tagagamit',
+	'right-mirroredit' => 'Mamatnugot sa pamamagitan ng API sa ilalim ng anumang pangalan ng tagagamit',
+	'group-MirrorTools' => 'Mga tagagamit ng kasangkapang salamin',
+	'group-MirrorTools-member' => 'tagagamit ng kasangkapang salamin',
+	'grouppage-MirrorTools' => '{{ns:project}}:Mga tagagamit ng kasangkapang salamin',
+);
+
