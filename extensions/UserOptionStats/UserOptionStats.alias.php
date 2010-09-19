@@ -11,6 +11,7 @@ $specialPageAliases = array();
 
 /** English
  * @author Nike
+ */
 $specialPageAliases['en'] = array(
 	'UserOptionStats' => array( 'UserOptionStats' ),
 );
