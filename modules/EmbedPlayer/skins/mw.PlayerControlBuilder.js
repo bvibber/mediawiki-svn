@@ -557,7 +557,7 @@ mw.PlayerControlBuilder.prototype = {
 		// Add recommend firefox if we have non-native playback:
 		if ( _this.checkNativeWarning( ) ) {			
 			_this.doWarningBindinng(
-				'showNativePlayerWarning',
+				'EmbedPlayer.ShowNativeWarning',
 				gM( 'mwe-embedplayer-for_best_experience' ) 
 			);
 		}
@@ -673,17 +673,22 @@ mw.PlayerControlBuilder.prototype = {
 		// If the resolution is too small don't display the warning
 		if( this.embedPlayer.getPlayerHeight() < 199 ){
 			return false;
-		}				
-		
+		}						
 		// See if we have we have ogg support
 		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supportingPlayers.length; i++ ) {
-			if ( supportingPlayers[i].id == 'oggNative' ) {
+						
+			if ( supportingPlayers[i].id == 'oggNative' 
+				&& 
+				// xxx google chrome has broken oggNative playback:
+				// http://code.google.com/p/chromium/issues/detail?id=56180
+				! /chrome/.test(navigator.userAgent.toLowerCase() ) 
+			){
 				return false;
 			}
 		}
 		
-		// Check for h264 and or flash/flv source and playback support and dont' show wanring 
+		// Check for h264 and or flash/flv source and playback support and don't show warning 
 		if( 
 			( mw.EmbedTypes.players.getMIMETypePlayers( 'video/h264' ).length 
 			&& this.embedPlayer.mediaElement.getSources( 'video/h264' ).length )
@@ -713,9 +718,8 @@ mw.PlayerControlBuilder.prototype = {
 		
 		$j( embedPlayer ).hoverIntent({
 			'timeout': 2000,
-			'over': function() {				
-				if ( $j( '#warningOverlay_' + embedPlayer.id ).length == 0 ) {
-					var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
+			'over': function() {			
+				if ( $j( '#warningOverlay_' + embedPlayer.id ).length == 0 ) {					
 					
 					$j( this ).append(
 						$j('<div />')
@@ -728,7 +732,7 @@ mw.PlayerControlBuilder.prototype = {
 							'display' : 'none',
 							'background' : '#FFF',
 							'color' : '#111',
-							'top' : toppos + 'px',
+							'top' : '10px',
 							'left' : '10px',
 							'right' : '10px',
 							'padding' : '4px'
