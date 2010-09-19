@@ -3,6 +3,8 @@
  * Aliases for special pages
  */
 
+$specialPageAliases = array();
+
 /** English
  * @author Charles Melbye
  */

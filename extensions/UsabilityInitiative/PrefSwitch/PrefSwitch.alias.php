@@ -4,6 +4,8 @@
  *
  */
 
+$specialPageAliases = array();
+
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'PrefSwitch' => array( 'UsabilityInitiativePrefSwitch' ),

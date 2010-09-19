@@ -6,6 +6,8 @@
  * @ingroup Extensions
  */
 
+$specialPageAliases = array();
+
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'ChemicalSources' => array( 'ChemicalSources' ),

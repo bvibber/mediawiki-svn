@@ -3,6 +3,8 @@ $aliases = array();
  
 /** English */
 
+$specialPageAliases = array();
+
 /** English (English) */
 $specialPageAliases['en'] = array(
 	'PureWikiDeletion' => array( 'PureWikiDeletion' ),
