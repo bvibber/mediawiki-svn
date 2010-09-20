@@ -51,7 +51,7 @@ class RecordAdmin {
 	 * Add record forms to page edit view
 	 */
 	function onEditPage( $editPage ) {
-		global $wgOut;
+		global $wgOut, $wgJsMimeType;
 
 		# Extract each of the top-level template calls in the content that have associated forms
 		# - note multiple records are now allowed in an article, but only one of each type
@@ -69,20 +69,50 @@ class RecordAdmin {
 				}
 			}
 		}
+		$count = count( $records );
 
 		# If any were found, remove them from the textbox and render their forms instead
-		if( count( $records ) > 0 ) {
+		if( $count > 0 ) {
+
 			$editPage->textbox1 = str_replace( "\x07", "", $content );
+
+			$jsFormsList = array();
+			$tabset = "";
 			foreach( $records as $type => $record ) {
+				$jsFormsList[] = "'$type'";
 				$this->preProcessForm( $type );
 				$this->examineForm();
 				$this->populateForm( $this->valuesFromText( $record ) );
-				$editPage->editFormTextTop = "<form class=\"{$type}-record recordadmin\">$this->form</form>";
+				$tabset .= "<form id=\"$type-form\" class=\"$type-record recordadmin\">$this->form</form>\n";
 			}
+			$jsFormsList = join( ', ', $jsFormsList );
 
-			# TODO: JS needs to be added so that the record form's values are posted with the edit form submission
+			# Add the tabset before the normal edit form
+			$editPage->editFormTextTop = $tabset;
 
+			# JS to add an onSubmit method that adds the record forms contents to hidden values in the edit form
+			$wgOut->addScript( "<script type='$wgJsMimeType'>
+				function raRecordForms() {
+					forms = [ $jsFormsList ];
+					for( i = 0; i < forms.length; i++ ) {
+						type = forms[i];
+						form = document.getElementById( type + '-form' );
+						tags = [ 'input', 'select', 'textarea' ];
+						for( j = 0; j < tags.length; j++ ) {
+							tag = tags[j]; alert(tag);
+							inputs = form.getElementsByTagName( tag );
+							for( k = 0; k < inputs.length; k++ ) {
+								input = inputs[k];
+								key = type + ':' + input.getAttribute('name');
+								//alert(key + ' = ' + input.value);
+							}
+						}
+					}
+				}
+				addOnloadHook(raRecordForms);
+			</script>" );
 		}
+
 
 		return true;
 	}
@@ -92,9 +122,27 @@ class RecordAdmin {
 	 * Incorprate any posted record form's data into the article wikitext before saving
 	 */
 	function onArticleSave( &$article, &$user, &$text ) {
+		global $wgRequest;
+		
+		# Organise the posted record data
+		$data = array();
+		foreach( $wgRequest->getArray( 'ra_forms' ) as $key => $value ) {
+			if( preg_match( "|(.+):ra_(.+)|", $key, $m ) ) {
+				list( $key, $type, $field ) = $m;
+				array_key_exists( $type, $data ) ? $data[$type][$field] = $value : $data[$type] = array( $field => $value );
+			}
+		}
 
-		# TODO
+		# Build the template syntax for the posted record data
+		$templates = '';
+		foreach( $data as $type => $values ) {
+			$this->preProcessForm( $type );
+			$this->examineForm();
+			$templates .= $this->valuesToText( $type, $values ) . "\n";
+		}
 
+		# Prepend the template syntax to the posted wikitext (which had them removed by onEditPage)
+		$text = $templates . $text;
 		return true;
 	}
 
