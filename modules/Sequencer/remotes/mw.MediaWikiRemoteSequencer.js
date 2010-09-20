@@ -319,7 +319,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	
 	
 	getSequenceFileKey: function(){
-		return 'File:' + wgPageName.replace( 'Sequence:', 'Sequence-') + '.ogv';
+		return 'File:' + wgPageName.replace( /:/g, '-') + '.ogv';
 	},
 	
 	displayPlayerEmbed: function(){
