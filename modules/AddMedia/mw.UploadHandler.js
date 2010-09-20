@@ -320,7 +320,7 @@ mw.UploadHandler.prototype = {
 					return mw.log( 'Error: bad api results' );
 				}
 				if ( typeof data.paraminfo.modules[0].classname == 'undefined' ) {
-					mw.log( 'Autodetect Upload Mode: \'post\' ' );
+					mw.log( 'Autodetect Upload Mode: post ' );
 					_this.upload_mode = 'post';
 					callback( 'post' );
 				} else {
