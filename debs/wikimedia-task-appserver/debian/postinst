@@ -83,7 +83,7 @@ case "$1" in
 		rsync -a 10.0.5.8::httpdconf/ /usr/local/apache/conf
 
 		sync-common
-		apache-start
+		/etc/init.d/apache2 start || true
 	else
 		echo "remember to sync this server before you start it!"
 	fi
