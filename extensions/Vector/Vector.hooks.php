@@ -141,7 +141,7 @@ class VectorHooks {
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
-		if ( $skin instanceof VectorSkin ) {
+		if ( $skin instanceof SkinVector ) {
 			// Add modules for enabled features
 			foreach ( self::$features as $name => $feature ) {
 				if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
