@@ -1,6 +1,6 @@
 <?php
 /**
- * Hooks for Usability Initiative PrefSwitch extension
+ * Hooks for PrefSwitch extension
  *
  * @file
  * @ingroup Extensions
@@ -8,22 +8,36 @@
 
 class PrefSwitchHooks {
 
-	/* Static Functions */
+	/* Protected Static Members */
 	
-	public static function schema() {
+	protected static $modules = array(
+		'prefSwitch' => array(
+			'scripts' => 'extensions/UsabilityInitiative/PrefSwitch/modules/prefSwitch.js',
+			'styles' => 'extensions/UsabilityInitiative/PrefSwitch/modules/prefSwitch.css',
+			'dependencies' => 'jquery.client',
+		),
+	);
+	
+	/* Static Methods */
+	
+	/*
+	 * LoadExtensionSchemaUpdates hook
+	 */
+	public static function loadExtensionSchemaUpdates() {
 		global $wgExtNewTables, $wgExtNewFields;
 
-		$dir = dirname( __FILE__ );
-
+		$dir = dirname( __FILE__ ) . '/patches';
 		$wgExtNewTables[] = array( 'prefswitch_survey', $dir  . '/PrefSwitch.sql' );
 		$wgExtNewFields[] = array( 'prefswitch_survey', 'pss_user_text', $dir  . '/PrefSwitch-addusertext.sql' );
 		return true;
 	}
 
+	/*
+	 * PersonalUrls hook
+	 */
 	public static function personalUrls( &$personal_urls, &$title ) {
-		global $wgUser, $wgRequest;		
-		// Loads opt-in messages
-		wfLoadExtensionMessages( 'PrefSwitchLink' );
+		global $wgUser, $wgRequest;
+		
 		// Figure out the orgin to include in the link
 		$fromquery = array();
 		if ( !( $wgRequest->wasPosted() ) ) {
@@ -63,6 +77,16 @@ class PrefSwitchHooks {
 			),
 			$personal_urls
 		);
+		return true;
+	}
+	
+	/*
+	 * ResourceLoaderRegisterModules hook
+	 */
+	public static function resourceLoaderRegisterModules() {
+		foreach ( self::$modules as $name => $resources ) {
+			ResourceLoader::register( $name, new ResourceLoaderFileModule( $resources ) );
+		}
 		return true;
 	}
 }

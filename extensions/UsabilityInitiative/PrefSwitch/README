@@ -1,0 +1,28 @@
+# Format for $wgPrefSwitchPrefs
+
+array(
+	'off' => array( [pref] => [value] ),
+	'on' => array( [pref] => [value] ),
+)
+
+# Format for $wgPrefSwitchSurveys
+
+array(
+	[survey-id] => array(
+		'submit-msg' => [message key for submit button caption]
+		'updateable' => [boolean],
+		'questions' => array(
+			field-id => array(
+				'question' => [msg-id],
+				'type' => [msg-id],
+				'answers' => array(
+					answer => [msg-id],
+					...
+				),
+				'other' => [msg-id],
+				'ifyes' => [msg-id],
+			),
+			...
+		),
+	),
+)

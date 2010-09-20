@@ -1,19 +1,14 @@
 <?php
 /**
- * Usability Initiative PrefSwitch extension
- *
+ * PrefSwitch extension
+ * 
  * @file
  * @ingroup Extensions
- *
- * This file contains the include file for the PrefSwitch portion of the
- * UsabilityInitiative extension of MediaWiki.
- *
- * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/UsabilityInitiative/PrefSwitch/PrefSwitch.php" );
- *
- * @author Roan Kattouw <roan.kattouw@gmail.com>, Trevor Parscal <tparscal@wikimedia.org>
+ * 
+ * @author Roan Kattouw <roan.kattouw@gmail.com>
+ * @author Trevor Parscal <tparscal@wikimedia.org>
  * @license GPL v2 or later
- * @version 0.1.1
+ * @version 0.2.0
  */
 
 /* Configuration */
@@ -21,10 +16,6 @@
 $wgPrefSwitchStyleVersion = 1;
 
 // Preferences to set when users switch prefs
-// array(
-//		'off' => array( pref => value ),
-//		'on' => array( pref => value ),
-//	)
 $wgPrefSwitchPrefs = array(
 	'off' => array(
 	    'skin' => 'monobook',
@@ -42,25 +33,6 @@ $wgPrefSwitchPrefs = array(
 $wgPrefSwitchGlobalOptOut = false;
 
 // Survey questions to ask when users switch prefs
-// array(
-//		survey-id => array(
-//			'submit-msg' => message key for submit button caption
-//			'updateable' => boolean,
-//			'questions' => array(
-//				field-id => array(
-//					'question' => msg-id,
-//					'type' => msg-id,
-//					'answers' => array(
-//						answer => msg-id,
-//						...
-//					),
-//					'other' => msg-id,
-//					'ifyes' => msg-id
-//				),
-//				...
-//			),
-//		)
-// )
 $wgPrefSwitchSurveys = array();
 $wgPrefSwitchSurveys['feedback'] = array(
 	'submit-msg' => 'prefswitch-survey-submit-feedback',
@@ -160,7 +132,6 @@ $wgPrefSwitchSurveys['off']['questions']['global'] = array(
 
 /* Setup */
 
-// Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'PrefSwitch',
@@ -169,11 +140,6 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative',
 	'descriptionmsg' => 'prefswitch-desc',
 );
-
-// Includes parent extension
-require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative.php" );
-
-// Adds Autoload Classes
 $wgAutoloadClasses = array_merge(
 	$wgAutoloadClasses,
 	array(
@@ -189,18 +155,10 @@ $wgAutoloadClasses = array_merge(
 		'PrefSwitchSurveyFieldText' => dirname( __FILE__ ) . '/PrefSwitch.classes.php',
 	)
 );
-
-// Adds Internationalized Messages
-$wgExtensionMessagesFiles['PrefSwitchLink'] =
-	dirname( __FILE__ ) . '/PrefSwitchLink.i18n.php';
-$wgExtensionMessagesFiles['PrefSwitch'] =
-	dirname( __FILE__ ) . '/PrefSwitch.i18n.php';
-$wgExtensionAliasesFiles['PrefSwitch'] =
-	dirname( __FILE__ ) . '/PrefSwitch.alias.php';
-
+$wgExtensionMessagesFiles['PrefSwitch'] = dirname( __FILE__ ) . '/PrefSwitch.i18n.php';
+$wgExtensionAliasesFiles['PrefSwitch'] = dirname( __FILE__ ) . '/PrefSwitch.alias.php';
 $wgSpecialPages['PrefSwitch'] = 'SpecialPrefSwitch';
 $wgSpecialPageGroups['PrefSwitch'] = 'wiki';
-
-// Register Hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefSwitchHooks::schema';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'PrefSwitchHooks::loadExtensionSchemaUpdates';
 $wgHooks['PersonalUrls'][] = 'PrefSwitchHooks::personalUrls';
+$wgHooks['ResourceLoaderRegisterModules'][] = 'PrefSwitchHooks::resourceLoaderRegisterModules';

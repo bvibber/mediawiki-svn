@@ -17,7 +17,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	private $originLinkUrl = '';
 	private $originFullUrl = '';
 
-	/* Static Functions */
+	/* Static Methods */
 
 	/**
 	 * Quick token matching wrapper for form processing
@@ -100,7 +100,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		$user->saveSettings();
 	}
 
-	/* Functions */
+	/* Methods */
 	
 	public function __construct() {
 		parent::__construct( 'PrefSwitch' );
@@ -129,9 +129,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		// Begin output
 		$this->setHeaders();
-		UsabilityInitiativeHooks::initialize();
-		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
-		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
+		$wgOut->addModules( 'prefSwitch' );
 		$wgOut->addHtml( '<div class="plainlinks">' );
 		// Handle various modes
 		if ( $wgRequest->getCheck( 'mode' ) && $wgUser->isLoggedIn() ) {
@@ -218,7 +216,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		$wgOut->addHtml( '</div>' );
 	}
 	
-	/* Private Functions */
+	/* Private Methods */
 	
 	private function render( $mode = null ) {
 		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgPrefSwitchGlobalOptOut, $wgAllowUserCss, $wgAllowUserJs;

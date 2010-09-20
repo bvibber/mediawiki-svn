@@ -1,6 +1,9 @@
 <?php
 /**
- * Aliases for special pages
+ * Aliases for PrefSwitch extension special pages
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $specialPageAliases = array();

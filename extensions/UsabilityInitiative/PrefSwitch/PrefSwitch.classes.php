@@ -1,4 +1,10 @@
 <?php
+/*
+ * Classes for PrefSwitch extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 class PrefSwitchSurvey {
 	
@@ -15,7 +21,7 @@ class PrefSwitchSurvey {
 		'smallinput' => 'PrefSwitchSurveyFieldSmallInput',
 	);
 	
-	/* Static Functions */
+	/* Static Methods */
 	
 	/**
 	 * Render the HTML for a survey.
@@ -81,7 +87,7 @@ class PrefSwitchSurvey {
 }
 interface PrefSwitchSurveyField {	
 
-	/* Static Functions */
+	/* Static Methods */
 	
 	/**
 	 * Render the HTML for a question
@@ -103,7 +109,7 @@ interface PrefSwitchSurveyField {
 }
 class PrefSwitchSurveyFieldSelect implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
@@ -160,7 +166,7 @@ class PrefSwitchSurveyFieldSelect implements PrefSwitchSurveyField {
 }
 class PrefSwitchSurveyFieldRadios extends PrefSwitchSurveyFieldSelect {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
@@ -198,7 +204,7 @@ class PrefSwitchSurveyFieldRadios extends PrefSwitchSurveyFieldSelect {
 }
 class PrefSwitchSurveyFieldChecks implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$answers = explode( ',', $answer );
@@ -245,7 +251,7 @@ class PrefSwitchSurveyFieldChecks implements PrefSwitchSurveyField {
 }
 class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
@@ -303,7 +309,7 @@ class PrefSwitchSurveyFieldBoolean implements PrefSwitchSurveyField {
 }
 class PrefSwitchSurveyFieldDimensions implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		list( $x, $y ) = $answerData ? explode( 'x', $answerData ) : array( false, false );
@@ -330,7 +336,7 @@ class PrefSwitchSurveyFieldDimensions implements PrefSwitchSurveyField {
 }
 class PrefSwitchSurveyFieldText implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
@@ -350,7 +356,7 @@ class PrefSwitchSurveyFieldText implements PrefSwitchSurveyField {
 
 class PrefSwitchSurveyFieldSmallInput implements PrefSwitchSurveyField {
 
-	/* Static Functions */
+	/* Static Methods */
 
 	public static function render( $question, $config, $answer, $answerData ) {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
