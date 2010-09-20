@@ -105,23 +105,21 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 	}
 	
 	if(! $j( '#' + embedPlayerId ).siblings( '.kalturaEditOverlay' ).length ){
-		var editLink = '#';		
-		if( ! mw.isLocalDomain( mw.getApiProviderURL( embedPlayer.apiProvider ) ) ) {			
-			var seqTitle = embedPlayer.apiTitleKey
-				.replace( 'Sequence-', 'Sequence:')
-			// strip the extension
-			seqTitle = seqTitle.substr(0, seqTitle.length -4 );
-			// not ideal details page builder but 'should work' ::
-			editLink = mw.getApiProviderURL( embedPlayer.apiProvider ).replace( 'api.php', 'index.php' );
-			editLink = mw.getRemoteSequencerLink (
-					mw.replaceUrlParams( editLink, 
-						{
-							'title' : seqTitle,
-							'action' : 'edit' 
-						}
-					)
-				);
-		}
+	
+		var seqTitle = embedPlayer.apiTitleKey
+			.replace( 'Sequence-', 'Sequence:')
+		// strip the extension
+		seqTitle = seqTitle.substr(0, seqTitle.length -4 );
+		// not ideal details page builder but 'should work' ::
+		var editLink = mw.getApiProviderURL( embedPlayer.apiProvider ).replace( 'api.php', 'index.php' );
+		editLink = mw.getRemoteSequencerLink (
+				mw.replaceUrlParams( editLink, 
+					{
+						'title' : seqTitle,
+						'action' : 'edit' 
+					}
+				)
+			);
 		var kalturaLinkAttr = {
 				'href': 'http://kaltura.com', 
 				'target' : '_new',
