@@ -26,7 +26,7 @@ public class LanguageConfiguration_en extends LanguageConfiguration {
                 ")$"
 		);
 		
-		this.nameGluePattern = Pattern.compile("of|on|in|the"); // common non-capitalized components of proper nouns
+		this.nameGluePattern = Pattern.compile("of|on|in|the|d|de|la|le|en|van|von"); // common non-capitalized components of proper nouns
 	}
 
 }
