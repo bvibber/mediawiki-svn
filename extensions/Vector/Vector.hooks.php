@@ -141,10 +141,12 @@ class VectorHooks {
 	 * @param $skin Skin current skin
 	 */
 	public static function beforePageDisplay( $out, $skin ) {
-		// Add modules for enabled features
-		foreach ( self::$features as $name => $feature ) {
-			if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
-				$out->addModules( $feature['modules'] );
+		if ( $skin instanceof VectorSkin ) {
+			// Add modules for enabled features
+			foreach ( self::$features as $name => $feature ) {
+				if ( isset( $feature['modules'] ) && self::isEnabled( $name ) ) {
+					$out->addModules( $feature['modules'] );
+				}
 			}
 		}
 		return true;
