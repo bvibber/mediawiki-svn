@@ -216,7 +216,6 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	},	
 	
 	drawUI: function() {
-		
 		// Check page action 
 		if( this.action == 'view' ) {	
 			this.showViewUI();

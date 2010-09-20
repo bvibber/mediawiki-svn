@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r146';
+var mwRemoteVersion = 'r147';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -144,7 +144,10 @@ function doPageSpecificRewrite() {
 	if( wgPageName.indexOf( "Sequence:" ) === 0 ){			
 		//console.log( 'spl: ' + typeof mwSetPageToLoading );
 		// If on a view page set content to "loading" 
-		if( wgAction == 'view' || wgAction == 'edit' ){
+		if( ( wgAction == 'view' || wgAction == 'edit' ) 
+			&& 
+			document.URL.indexOf('&diff=') == -1
+		){
 			if( wgAction == 'view' ){
 				mwSetPageToLoading();
 			}
