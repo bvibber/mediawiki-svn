@@ -52,39 +52,49 @@ class RecordAdmin {
 	 */
 	function onEditPage( $editPage ) {
 		global $wgOut;
-		$type = false;
-		if( $type ) {
-			$this->preProcessForm( $type );
-			$this->examineForm();
-			$this->populateForm( array() );
-			$editPage->editFormTextTop = "<form class=\"{$type}-record recordadmin\">$this->form</form>";
 
-			# Add the forms from QS:default and RA::templates to divs
-			# - since the forms are being rendered here they should include values (from current state then preload)
-			# - since these are added, they should be removed from the text at this point not in JS
-			
-			# Add the JS that converts the divs into a single form
-			$wgOut->addScript( "<script>
-				var forms = document.getElementById('ra-editforms');
-				var form = document.getElementById('editform');
-				for( i in forms) {
-					form.innerHTML = form.innerHTML + '<fieldset>' + i.innerHTML + '</fieldset>';
+		# Extract each of the top-level template calls in the content that have associated forms
+		# - note multiple records are now allowed in an article, but only one of each type
+		$records = array();
+		$content = $editPage->getContent();
+		foreach( self::examineBraces( $content ) as $brace ) {
+			if( $brace['DEPTH'] == 2 ) {
+				$name = $brace['NAME'];
+				$form = Title::newFromText( $name, NS_FORM );
+				if( $form->exists() ) {
+					$offset = $brace['OFFSET'];
+					$length = $brace['LENGTH'];
+					$records[$name] = substr( $content, $offset, $length );
+					$content = substr_replace( $content, str_repeat( "\x07", $length ), $offset, $length );
 				}
-			</script>");
-			
-			# Allow tabset to execute if exists
-			
-			# NOTE: The form now submits all the data in one go so no need to rebuild into wikitext
-			# - but therefore the onsave hook is needed to build the wikitext at that point instead
+			}
 		}
+
+		# If any were found, remove them from the textbox and render their forms instead
+		if( count( $records ) > 0 ) {
+			$editPage->textbox1 = str_replace( "\x07", "", $content );
+			foreach( $records as $type => $record ) {
+				$this->preProcessForm( $type );
+				$this->examineForm();
+				$this->populateForm( $this->valuesFromText( $record ) );
+				$editPage->editFormTextTop = "<form class=\"{$type}-record recordadmin\">$this->form</form>";
+			}
+
+			# TODO: JS needs to be added so that the record form's values are posted with the edit form submission
+
+		}
+
 		return true;
 	}
 
 
 	/**
-	 * Incorprate any posted form data into the article wikitext before saving
+	 * Incorprate any posted record form's data into the article wikitext before saving
 	 */
 	function onArticleSave( &$article, &$user, &$text ) {
+
+		# TODO
+
 		return true;
 	}
 
