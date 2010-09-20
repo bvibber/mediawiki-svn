@@ -455,7 +455,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 							var _this = this;
 									
 							var dialogHeight = ( pheight == 0 	)? 175 :
-												( pheight + 25 );
+												( pheight + 30 );
 							var buttons = {};
 							buttons[ gM( 'mwe-ok' ) ] = function(){
 								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
@@ -471,7 +471,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 								'content' : html_out,
 								'buttons' : buttons,
 								'height' : dialogHeight,
-								'width' : 425
+								'width' : 430
 							})							
 							
 							// Update the embed code to use the mwEmbed player: 		
