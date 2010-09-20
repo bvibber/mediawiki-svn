@@ -1,3 +1,6 @@
+# PrefSwitch provides a way to make it easier for users to turn a set of options on and off, as well as fill out an
+# optional survey when they are turning them off.
+
 # Format for $wgPrefSwitchPrefs
 
 array(
