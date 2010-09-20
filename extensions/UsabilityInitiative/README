@@ -1,33 +1,15 @@
 # Looking for WikiEditor or Vector extensions? They've been moved to extensions/WikiEditor and extensions/Vector
-# respectively. These remaining extensions are being ported to either no longer depend on the now remove
-# UsabilityInitiative.php code or to be made compatible with MediaWiki 1.17. For 1.16 compatible versions (which are no
-# longer under active development but can be used to fixing bugs on existing deployments) please see the
-# branches/usability-initiative-1_16/ (which has the latest patches) or the
-# branches/REL1_16/extensions/UsabilityInitiative branch.
+# respectively. These remaining extensions have been ported to either no longer depend on the now removed code in
+# UsabilityInitiative.php. This process has left some of these extensions incompatible with MediaWiki prior to 1.17.
+# For 1.16 compatible versions (which are no longer under active development but can be used to fixing bugs on existing
+# deployments) please see the branches/usability-initiative-1_16/ (which has the latest patches) or the
+# branches/REL1_16/extensions/UsabilityInitiative branches.
 
-# PROGRESS ON WORK IN PROGRESS:
-# * ClickTracking -- complete, depends on MediaWiki 1.17
-# * DontSwitchMeOver -- complete, does not depend on MediaWiki 1.17
-# * PrefStats -- complete, does not depend on MediaWiki 1.17
-# * PrefSwitch -- incomplete/broken
-# * UserDailyContribs -- complete, does not depend on MediaWiki 1.17
+# Dependent on 1.17
+# * ClickTracking
+# * PrefSwitch
 
-# Some lines to add to LocalSettings.php to get these extensions up and running:
-
-# PrefStats collects and displays statistics for when users have started/ended using certain options
-
-require_once("$IP/extensions/UsabilityInitiative/PrefStats/PrefStats.php");
-$wgPrefStatsTrackPrefs = array( 'skin' => 'vector', 'usebetatoolbar' => 1 );
-$wgGroupPermissions['sysop']['prefstats'] = true;
-$wgPrefStatsTimeUnit = 60 * 60 * 24;
-
-# UserDailyContribs allows you to track users' contribution totals
-
-require_once( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.php" );
-
-# ClickTracking lets you track users' clicks on links/buttons. The current implementation tracks clicks on the
-# navigation bar - the WikiEditor toolbar makes use of this if present
-
-require_once("$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.php");
-// Track 1 in every 10 clicks; set to 1 to track all clicks, -1 to disable
-$wgClickTrackThrottle = 10;
+# Not dependent on 1.17
+# * DontSwitchMeOver
+# * PrefStats
+# * UserDailyContribs

@@ -16,7 +16,7 @@ class UserDailyContribsHooks {
 	public static function loadExtensionSchemaUpdates() {
 		global $wgExtNewTables;
 		
-		$wgExtNewTables[] = array( 'user_daily_contribs', dirname( __FILE__ ) . '/UserDailyContribs.sql' );
+		$wgExtNewTables[] = array( 'user_daily_contribs', dirname( __FILE__ ) . '/patches/UserDailyContribs.sql' );
 		return true;
 	}
 	

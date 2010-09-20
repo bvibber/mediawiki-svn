@@ -15,7 +15,7 @@ class PrefStatsHooks {
 	 */
 	public static function loadExtensionSchemaUpdates() {
 		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'prefstats', dirname( __FILE__ ) . '/PrefStats.sql' );
+		$wgExtNewTables[] = array( 'prefstats', dirname( __FILE__ ) . '/patches/PrefStats.sql' );
 		return true;
 	}
 

@@ -1,0 +1,8 @@
+# ClickTracking lets you track users' clicks on links/buttons. The current implementation tracks clicks on the
+# navigation bar - the WikiEditor toolbar makes use of this if present
+
+# Example LocalSettings.php additions
+
+require_once("$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.php");
+// Track 1 in every 10 clicks; set to 1 to track all clicks, -1 to disable
+$wgClickTrackThrottle = 10;

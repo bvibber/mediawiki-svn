@@ -16,17 +16,17 @@ class ClickTrackingHooks {
 	public static function loadExtensionSchemaUpdates() {
 		global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
 
-		$wgExtNewTables[] = array( 'click_tracking', dirname( __FILE__ ) . '/ClickTracking.sql' );
-		$wgExtNewTables[] = array( 'click_tracking_events', dirname( __FILE__ ) . '/ClickTrackingEvents.sql' );
+		$wgExtNewTables[] = array( 'click_tracking', dirname( __FILE__ ) . '/patches/ClickTracking.sql' );
+		$wgExtNewTables[] = array( 'click_tracking_events', dirname( __FILE__ ) . '/patches/ClickTrackingEvents.sql' );
 		$wgExtNewIndexes[] = array(
 			'click_tracking',
 			'click_tracking_action_time',
-		dirname( __FILE__ ) . '/patch-action_time.sql',
+		dirname( __FILE__ ) . '/patches/patch-action_time.sql',
 		);
 		$wgExtNewFields[] = array(
 			'click_tracking',
 			'additional_info',
-		dirname( __FILE__ ) . '/patch-additional_info.sql',
+		dirname( __FILE__ ) . '/patches/patch-additional_info.sql',
 		);
 		return true;
 	}
