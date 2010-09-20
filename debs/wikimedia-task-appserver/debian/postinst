@@ -74,7 +74,8 @@ case "$1" in
 
 	chown -R pybal-check:pybal-check /var/lib/pybal-check/.ssh
 
-	checkmount ms1.wikimedia.org:/export/upload /mnt/upload5
+	checkmount ms7.pmtpa.wmnet:/export/upload /mnt/upload6
+	checkmount ms4.wikimedia.org:/export/thumbs /mnt/thumbs
 
 	CLUSTER=$(cat /etc/wikimedia-cluster)
 	if [ $CLUSTER="pmtpa" ]

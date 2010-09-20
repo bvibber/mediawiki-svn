@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.44) hardy; urgency=low
+
+  * Updated upload mounts
+
+ -- Tim Starling <tstarling@wikimedia.org>  Mon, 20 Sep 2010 17:10:07 +1000
+
 wikimedia-task-appserver (1.43) hardy; urgency=low
 
   * Add libtiff-tools dependency to support PagedTiffHandler

@@ -47,14 +47,18 @@ case "$1" in
 		removemount /mnt/upload3
 		removemount /mnt/upload4
 		removemount /mnt/upload5
+		remotemount /mnt/upload6
 		removemount /mnt/math
+		removemount /mnt/thumbs
 	   	;;
 
 	upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 	   removemount /mnt/upload3
 	   removemount /mnt/upload4
 	   removemount /mnt/upload5
+	   removemount /mnt/upload6
 	   removemount /mnt/math
+	   removemount /mnt/thumbs
 	   ;;
 
 	*)
