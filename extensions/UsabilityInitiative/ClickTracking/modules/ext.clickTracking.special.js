@@ -1,5 +1,5 @@
 /*
- * JavaScript for Click Tracking special page
+ * JavaScript for ClickTracking extension special page
  */
 
 ( function( $ ) {

@@ -52,7 +52,7 @@ class ClickTrackingHooks {
 		global $wgClickTrackThrottle;
 		
 		if ( $wgClickTrackThrottle >= 0 && rand() % $wgClickTrackThrottle == 0 ) {
-			$out->addModules( 'clickTracking' );
+			$out->addModules( 'ext.clickTracking' );
 		}
 		return true;
 	}
@@ -77,13 +77,13 @@ class ClickTrackingHooks {
 				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/jquery.clickTracking.js',
 				'dependencies' => 'jquery.cookie',
 			) ),
-			'clickTracking' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/clickTracking.js',
+			'ext.clickTracking' => new ResourceLoaderFileModule( array(
+				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.js',
 				'dependencies' => 'jquery.clickTracking',
 			) ),
-			'clickTracking.special' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/clickTracking.special.js',
-				'styles' => 'extensions/UsabilityInitiative/ClickTracking/modules/clickTracking.special.css',
+			'ext.clickTracking.special' => new ResourceLoaderFileModule( array(
+				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.special.js',
+				'styles' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.special.css',
 				'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 			) ),
 		) );

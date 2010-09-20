@@ -11,9 +11,9 @@ class PrefSwitchHooks {
 	/* Protected Static Members */
 	
 	protected static $modules = array(
-		'prefSwitch' => array(
-			'scripts' => 'extensions/UsabilityInitiative/PrefSwitch/modules/prefSwitch.js',
-			'styles' => 'extensions/UsabilityInitiative/PrefSwitch/modules/prefSwitch.css',
+		'ext.prefSwitch' => array(
+			'scripts' => 'extensions/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.js',
+			'styles' => 'extensions/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.css',
 			'dependencies' => 'jquery.client',
 		),
 	);

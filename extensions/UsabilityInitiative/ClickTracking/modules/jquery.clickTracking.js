@@ -1,5 +1,5 @@
 /*
- * JavaScript for Click Tracking jQuery plugin
+ * JavaScript for ClickTracking jQuery plugin
  */
 
 ( function( $ ) {

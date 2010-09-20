@@ -104,7 +104,6 @@ class SpecialPrefSwitch extends SpecialPage {
 	
 	public function __construct() {
 		parent::__construct( 'PrefSwitch' );
-		wfLoadExtensionMessages( 'PrefSwitch' );
 	}
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion, $wgPrefSwitchGlobalOptOut;
@@ -129,7 +128,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		// Begin output
 		$this->setHeaders();
-		$wgOut->addModules( 'prefSwitch' );
+		$wgOut->addModules( 'ext.prefSwitch' );
 		$wgOut->addHtml( '<div class="plainlinks">' );
 		// Handle various modes
 		if ( $wgRequest->getCheck( 'mode' ) && $wgUser->isLoggedIn() ) {

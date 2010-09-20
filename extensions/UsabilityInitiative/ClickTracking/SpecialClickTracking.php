@@ -37,7 +37,7 @@ class SpecialClickTracking extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser;
 
-		$wgOut->addModules( 'clickTracking.special' );
+		$wgOut->addModules( 'ext.clickTracking.special' );
 
 		// Check permissions
 		if ( !$this->userCanExecute( $wgUser ) ) {
