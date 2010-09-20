@@ -406,7 +406,7 @@
 						'action' : 'upload',
 						'format': 'json',
 						'filename': _this.getVideoFileName(),
-						'comment': 'Published Sequence: ' + saveSummary,
+						'comment': 'Published [[' + _this.getTitleKey() + ']] : ' + saveSummary,
 						'ignorewarnings' : true
 					}
 					// Return the apiUrl and request
