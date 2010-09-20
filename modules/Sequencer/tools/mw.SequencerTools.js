@@ -878,10 +878,10 @@ mw.SequencerTools.prototype = {
 				
 				// Some slider functions
 				var sliderToTime = function( sliderval ){
-					return parseInt( fullClipDuration * ( sliderval / 1000 ) );
+					return parseInt( fullClipDuration * ( sliderval / 100000 ) );
 				}
 				var timeToSlider = function( time ){					
-					return parseInt( ( time / fullClipDuration ) * 1000 );
+					return parseInt( ( time / fullClipDuration ) * 100000 );
 				}
 				
 				
@@ -939,7 +939,7 @@ mw.SequencerTools.prototype = {
 						.slider({
 							range: true,
 							min: 0,
-							max: 1000,
+							max: 100000,
 							values: sliderValues,
 							slide: function(event, ui) {	
 							

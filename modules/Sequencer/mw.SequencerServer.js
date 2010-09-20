@@ -392,7 +392,7 @@
 		 * @return {String}
 		 */
 		getVideoFileName: function(){
-			return this.getTitleKey().replace( ':', '-') + '.ogv';
+			return this.getTitleKey().replace( /:/g, '-') + '.ogv';
 		},
 		
 		// get upload settings runs the callback with the post url and request data 

@@ -376,8 +376,7 @@ mw.SequencerActionsSequence.prototype = {
 						// xxx WTF? no idea why progressbar above is not working 
 						$j("#firefoggProgressbar .ui-progressbar-value").css('width', Math.round( progress * 10000 ) / 100 + '%');
 					},
-					'doneRenderCallback': function( fogg ){
-						debugger;
+					'doneRenderCallback': function( fogg ){					
 						if( localFile ){
 							$dialog.html( gM('mwe-sequencer-save_done') );
 						} else {
@@ -419,7 +418,7 @@ mw.SequencerActionsSequence.prototype = {
 			// Parts of this code are replicated in firefogg upload handler
 			// xxx should refactor so they share a common handler
 			if( fogg.status() == 'upload done' ){
-				var response_text = fogg.responseText;
+				var response_text = fogg.responseText;				
 				if ( !response_text ) {
 					try {
 						var pstatus = JSON.parse( fogg.uploadstatus() );
@@ -439,6 +438,7 @@ mw.SequencerActionsSequence.prototype = {
 						var apiResult = null;
 					}
 				}
+				
 				// Check the api response 				
 				if ( !apiResult || apiResult.error || ( apiResult.upload && 
 						( apiResult.upload.result == "Failure" || apiResult.upload.error ) ) ) {
@@ -459,8 +459,7 @@ mw.SequencerActionsSequence.prototype = {
 		})		
 	},
 	uploadSuccess: function($dialog, apiResult){
-		var _this = this;	
-		debugger;
+		var _this = this;
 		// Update the description page:
 		$dialog.html( gM('mwe-sequencer-publishing-updatepage' ) );
 		
