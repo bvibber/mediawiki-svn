@@ -273,26 +273,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	
 	showEditUI: function(){
 		var _this = this;
-		$j('#bodyContent').prepend(
-			// Append switch visual / text editor links
-			/*$j('<div />')
-			.append( 
-				$j.button({ 
-					'icon' : 'video',
-					'text' : gM( "mwe-sequencer-visual-editor")
-				}).click( function(){
-					$j('#editform').hide();				
-					$j('#sequencerContainer').show();					
-				}),
-				$j.button({
-					'icon' : 'script',
-					'text' : gM("mwe-sequencer-text-editor-warn")
-				}).click(function(){
-					$j('#sequencerContainer').hide();
-					$j('#editform').show();
-				})			
-			)*/
-		).append( 				
+		$j('#bodyContent')
+		.append( 				
 			$j('<div />')
 			.css({
 				'position' : 'relative',
