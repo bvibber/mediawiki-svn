@@ -291,17 +291,17 @@ mw.SequencerActionsSequence.prototype = {
 		
 		// Check if the published version is already the latest 
 		_this.sequencer.getServer().isPublished( function( isPublished ){
-			if( !isPublished ){
-				mw.load( ['AddMedia.firefogg','FirefoggRender'], function(){
-					_this.doPublish( $dialog )
-				});
-			} else {
+			if( isPublished ){
 				$dialog.empty().text( gM('mwe-sequencer-already-published') )
 				var buttons = {};
 				buttons[ gM('mwe-ok') ] = function(){
 					$j( this ).dialog( 'close' );
 				}
 				$dialog.dialog( 'option', 'buttons', buttons);
+			} else {
+				mw.load( ['AddMedia.firefogg','FirefoggRender'], function(){
+					_this.doPublish( $dialog, false )
+				});				
 			}
 		});
 	},
@@ -377,6 +377,7 @@ mw.SequencerActionsSequence.prototype = {
 						$j("#firefoggProgressbar .ui-progressbar-value").css('width', Math.round( progress * 10000 ) / 100 + '%');
 					},
 					'doneRenderCallback': function( fogg ){
+						debugger;
 						if( localFile ){
 							$dialog.html( gM('mwe-sequencer-save_done') );
 						} else {
@@ -459,6 +460,7 @@ mw.SequencerActionsSequence.prototype = {
 	},
 	uploadSuccess: function($dialog, apiResult){
 		var _this = this;	
+		debugger;
 		// Update the description page:
 		$dialog.html( gM('mwe-sequencer-publishing-updatepage' ) );
 		

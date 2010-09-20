@@ -261,12 +261,6 @@ mw.Sequencer.prototype = {
 		}
 		return this.actionsEdit;
 	},
-	getRender: function(){
-		if( !this.render ){
-			this.render = new mw.SequencerRender( this );
-		}
-		return this.render;
-	},
 	getEmbedPlayer:function(){
 		 return this.getPlayer().getEmbedPlayer();
 	},

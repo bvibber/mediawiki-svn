@@ -1548,13 +1548,20 @@ mw.EmbedPlayer.prototype = {
 	 * Resize the player to a new size
 	 */
 	resizePlayer: function( size , animate){
+		mw.log("EmbedPlayer::resizePlayer:" + size.width + ' x ' + size.height );
 		this.width = size.width;
 		this.height = size.height;
+		var playerSize = {'width' : this.width, 'height' : this.height };
+		// check if height needs to include interface contorls
+		if( ! this.controlBuilder.checkOverlayControls() ){
+			size.height = size.height + this.controlBuilder.height;
+		}
+		
 		if( animate ){
-			$j(this).animate(size);
+			$j(this).animate(playerSize);
 			this.$interface.animate( size );
 		}else{
-			$j(this).css(size);
+			$j(this).css(playerSize);
 			this.$interface.css( size );
 		}
 	},
