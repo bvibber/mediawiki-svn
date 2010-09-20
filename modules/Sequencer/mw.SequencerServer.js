@@ -40,6 +40,9 @@
 		//Template cache of wikitext for templates loaded in this session
 		templateTextCache: [],
 		
+		// Current sequence page
+		currentSequencePage: {},
+		
 		/**
 		 * init the sequencer
 		 */
@@ -117,7 +120,7 @@
 		},		
 		wrapSequencerWikiText : function( xmlString ){
 			var _this = this;
-			if( !_this.currentSequencePage.pageStart ){
+			if( !_this.currentSequencePage || !_this.currentSequencePage.pageStart ){
 				 _this.currentSequencePage.pageStart ="\nTo edit or view this sequence " + 
 					'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page'; 
 			}

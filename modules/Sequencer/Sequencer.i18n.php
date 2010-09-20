@@ -15,7 +15,7 @@ $messages['en'] = array(
 
 	'mwe-sequencer-visual-editor'=> "Visual sequence editor",
 	'mwe-sequencer-text-editor-warn'=> 'Text XML editor ( not recommended ) ',
-	'mwe-sequencer-restore-text-edit' => '[$1 Restore text editor] ( It\'s <i>highly</i> recommended that you use the visual editor',
+	'mwe-sequencer-restore-text-edit' => '[$1 Restore text editor] ( It\'s <i>highly</i> recommended that you use the visual editor )',
 
 	'mwe-sequencer-loading-timeline' => 'Loading timeline ...',
 	'mwe-sequencer-loading-player' => 'Loading player ...',

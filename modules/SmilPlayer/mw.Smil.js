@@ -296,9 +296,14 @@ mw.Smil.prototype = {
 		// return 0 while we don't have the $dom loaded
 		if (!this.$dom) {
 			return 0;
-		}
+		}		
 		if ( this.duration == null || forceRefresh === true ) {
+			var orgDuration = this.duration
 			this.duration = this.getBody().getDuration( forceRefresh );
+			// Trigger the duration change event: 
+			if( orgDuration !=  this.duration ){
+				$j( this.getEmbedPlayer() ).trigger('durationchange');	
+			}
 		}
 		return this.duration;
 	},

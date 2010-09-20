@@ -95,7 +95,7 @@ mw.SequencerPlayer.prototype = {
 		if( this.sequencer.options.videoAspect ){
 			var aspect = this.sequencer.options.videoAspect.split( ':' );											
 			var apectRatio = ( aspect[1] / aspect[0] );
-			size.height = parseInt( size.width * ( aspect[1] / aspect[0] ) )- 50;
+			size.height = parseInt( size.width * ( aspect[1] / aspect[0] ) )- 55;
 		} else {
 			size.height = $playerContainer.height() ;
 		}
