@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r147';
+var mwRemoteVersion = 'r148';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -35,9 +35,9 @@ if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
 
-//mwReqParam['debug'] = false;
-//mwUseScriptLoader = true;
-//mwRemoteVersion = Math.random();
+mwReqParam['debug'] = false;
+mwUseScriptLoader = true;
+mwRemoteVersion = Math.random();
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
 
@@ -191,11 +191,12 @@ function doPageSpecificRewrite() {
 		var libraries = [];		
 		scriptName = 'uploadPage.js';
    		libraries = [
-			'mw.UploadHandler',
+			
 			'mw.UploadInterface',
-			'mw.Firefogg', 
+			'mw.Firefogg',		
 			'$j.ui',
 			'$j.widget',
+			'$j.ui.mouse',
 			'$j.ui.position',
 			'$j.ui.progressbar', 
 			'$j.ui.dialog', 
@@ -598,12 +599,20 @@ function loadMwEmbed( classSet, callback ) {
 		// Add requested classSet to scriptLoader request
 		for( var i=0; i < classSet.length; i++ ){
 			var cName =  classSet[i];
+			// always include our version of the library ( too many crazy conflicts with old library versions ) 
+			rurl +=  ',' + cName;
+			/*
 			if( !mwCheckObjectPath( cName ) ){
-				rurl +=  ',' + cName;
-			}
+				
+			} else { 
+				// Check for old version of jquery ui components
+				if( $j.ui.version == '1.7.1' ){
+					if(cName.indexOf('$j.ui') != -1 ){
+						rurl +=  ',' + cName;
+					}
+				}
+			}*/
 		}
-		// force add our updated version of $j.cookie
-		rurl +=',$j.cookie';
 		
 		// Add the remaining arguments
 		rurl += '&' + mwGetReqArgs();

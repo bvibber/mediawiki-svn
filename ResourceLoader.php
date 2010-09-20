@@ -218,8 +218,8 @@ class ResourceLoader {
 	 * @return String javascript to tell mwEmbed that the requested resource set is loaded
 	 */
 	static private function getOnDoneCallback( ){
-		return 'if(typeof mw !=\'undefined\' && mw.loadDone){mw.loadDone(\'' .
-			htmlspecialchars( self::$rawClassList ) . '\');};';
+		return "\n" . 'if( typeof mw !=\'undefined\' && mw.loadDone ){ mw.loadDone(\'' .
+			htmlspecialchars( self::$rawClassList ) . '\')};';
 	}
 
 	/**
