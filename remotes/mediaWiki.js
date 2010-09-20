@@ -81,9 +81,13 @@ mw.setConfig( 'SmilPlayer.AssetDomainWhiteList', ['upload.wikimedia.org'] );
 
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
-addOnloadHook( function() {
-	doPageSpecificRewrite();
-} );
+if( window.jQuery ){	
+	jQuery( document ).ready( doPageSpecificRewrite );
+} else {
+	addOnloadHook( function() {	
+		doPageSpecificRewrite();
+	} );
+}
 
 
 /**
