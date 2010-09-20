@@ -798,6 +798,14 @@ $messages['sw'] = array(
 	'dplforum-never' => 'Kamwe',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'dplforum-edited' => 'கடைசியாகத் தொகுக்கப்பட்டது',
+	'dplforum-never' => 'எப்போதுமில்லை',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

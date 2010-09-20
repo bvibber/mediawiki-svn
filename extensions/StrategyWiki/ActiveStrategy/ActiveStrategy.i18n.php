@@ -452,8 +452,8 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'activestrategy' => 'Masiglang Paraan',
-	'active-strategy-desc' => 'Nagpapaikta ng bilang ng mga pagbabago sa mga pahina ng madiskarteng pagpaplano',
+	'activestrategy' => 'Masiglang estratehiya',
+	'active-strategy-desc' => 'Nagpapakita ng bilang ng mga pagbabago sa mga pahina ng madiskarteng pagpaplano',
 	'active-strategy-intro' => 'Bilang ng mga pagbabago sa mga pahina ng puwersang panggawain sa loob ng huling {{PLURAL:$1|$1 araw|$1 mga araw}}.',
 	'nedits' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
 );

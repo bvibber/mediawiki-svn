@@ -2922,6 +2922,9 @@ $messages['sl'] = array(
 	'ogg-play-sound' => 'Predvajaj zvok',
 	'ogg-no-player' => 'Oprostite, kaže da vaš sistem nima nameščenega programja nobenega podprtega predvajalnika.
 Prosimo, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">prenesite predvajalnik</a>.',
+	'ogg-no-xiphqt' => 'Kot kaže, nimate komponente XiphQT za QuickTime.
+QuickTime ne more oredvajati datotek Ogg brez te komponente.
+Prosimo, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">prenesite XiphQT</a> ali izberite drug predvajalnik.',
 	'ogg-player-videoElement' => 'Vgrajena podpora brskalnika',
 	'ogg-player-oggPlugin' => 'Vtičnik brskalnika',
 	'ogg-player-thumbnail' => 'Samo stoječa slika',

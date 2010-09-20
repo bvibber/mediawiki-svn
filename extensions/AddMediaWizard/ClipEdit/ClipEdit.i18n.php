@@ -157,13 +157,16 @@ $messages['br'] = array(
 	'mwe-clipedit-layout_left' => "Lec'hiadur a gleiz eus ar skeudenn",
 );
 
-/** Bosnian (Bosanski) */
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
 $messages['bs'] = array(
 	'mwe-clipedit-crop' => 'Isjecanje slike',
 	'mwe-clipedit-insert_image_page' => 'Ubaci u stranicu',
 	'mwe-clipedit-insert_into_sequence' => 'Ubaci u niz',
 	'mwe-clipedit-preview_insert' => 'Pregled ubacivanja',
 	'mwe-clipedit-cancel_image_insert' => 'Odustani od ubacivanja',
+	'mwe-clipedit-sc_overlays' => 'Slojevi',
 	'mwe-clipedit-sc_audio' => 'Kontrola zvuka',
 	'mwe-clipedit-sc_duration' => 'Trajanje',
 	'mwe-clipedit-template_properties' => 'Svojstva šablona',
@@ -174,7 +177,11 @@ $messages['bs'] = array(
 	'mwe-clipedit-start_time' => 'Vrijeme početka',
 	'mwe-clipedit-end_time' => 'Vrijeme završetka',
 	'mwe-clipedit-edit-tools' => 'Uređivanje alata',
+	'mwe-clipedit-inline-description' => 'Opis',
+	'mwe-clipedit-edit-video-tools' => 'Uredi video alate:',
 	'mwe-clipedit-duration' => 'Trajanje:',
+	'mwe-clipedit-layout' => 'Izgled',
+	'mwe-clipedit-layout_right' => 'Izgled sa slikom na desnoj strani',
 );
 
 /** Czech (Česky) */

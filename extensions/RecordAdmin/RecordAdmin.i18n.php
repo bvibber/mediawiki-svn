@@ -347,7 +347,9 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'recordadmin' => 'Zapis administracije',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Posebna stranica]] za traženje i uređivanje zapisa stranica koristeći obrazac',
+	'recordadmin-desc' => 'Pretraga, upiti, obrasci i izvještaji o wiki podacima izvedenim iz parametara šablona',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Posebna stranica]] za traženje i pravljenje stranica koristeći pridružene obrasce',
+	'recordadmin-noforms' => 'Trenutno nema definisanih obrazaca za korištenje za traženje i pravljenje',
 	'recordadmin-select' => 'Odaberite tip zapisa za upravljanje',
 	'recordadmin-createtype' => 'Unesite ime novog tipa zapisa da ga napravite',
 	'recordadmin-recordtype' => 'tip zapisa',

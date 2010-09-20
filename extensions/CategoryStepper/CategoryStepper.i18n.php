@@ -619,9 +619,11 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'categorystepper-desc' => 'பகுப்புகள் பற்றிய இந்த கட்டத்தின் மூலம் முன்னும் பின்னும் அகரவரிசையில் செல்ல அனுமதிக்கிறது',
 	'categorystepper-end' => '(பகுப்பின் முடிவு)',
 	'categorystepper-start' => '(பகுப்பின் தொடக்கம்)',
 );

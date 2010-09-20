@@ -92,6 +92,13 @@ $messages['nl'] = array(
 	'qrcode-desc' => "Genereert QR Code-afbeeldingen voor wikipagina's",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'qrcode-desc' => 'Genererer og legger til QR-koder til en wikiside',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

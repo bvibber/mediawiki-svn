@@ -227,20 +227,21 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
 );
 
 /** Japanese (日本語)
+ * @author Aphaia
  * @author Yanajin66
  */
 $messages['ja'] = array(
 	'reflect-desc' => '補強スレッドのコメント',
 	'reflect-bulleted' => 'こんにちは $1さん。
 
-$2はあなたがスレッド"$3"で作成したポイントを要約しました。
+$2はスレッド"$3"でのあなたの論点の要約です。
 
-要約は以下のようになります。: "$5"
+要約は以下のとおりです。: "$5"
 
-あなたは<$4>を訪れることによって$2があなたの要点を正しくとらえているかどうか、確かめることができます。
+<$4>で、$2があなたの論点を正しくとらえているかどうか確認できます。
 
-もし、間違っていれば、あなたは要点を明確にすることができるでしょう。',
-	'reflect-bulleted-subject' => '[{{サイト名}}]  あなたの要点は$2によって要約されました。',
+もし、間違いがあれば、論点を説明しなおすことができます。',
+	'reflect-bulleted-subject' => '[{{サイト名}}]  あなたの論点は$2によって要約されました。',
 );
 
 /** Colognian (Ripoarisch)
@@ -265,6 +266,15 @@ Falls dat e Meßverschtändnes wohr, kanns De dat kloh schtelle.',
  */
 $messages['lb'] = array(
 	'reflect-desc' => 'Erweiderung vu Bemierkungs-Rubriken',
+	'reflect-bulleted' => 'Salut $1,
+
+$2 huet e Punkt resuméiert deen Dir an der Rubrik "$3" gemaach hutt.
+
+Resumé: "$5"
+
+Dir kënnt nokucken ob de $2 Äre Standpunkt richteg verstan huet wann Dir op <$4> nokuckt.
+
+Dir kënnt Äre Punkt och kloerstelle wann et e Mëssverständnis gëtt.',
 	'reflect-bulleted-subject' => '[{{SITENAME}}] Är Meenung gouf vum $2 resuméiert',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 huet op Äre Resumé vun enger Bemierkung geäntwert.',
 );

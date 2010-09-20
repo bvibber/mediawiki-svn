@@ -925,6 +925,13 @@ $messages['sv'] = array(
 	'abcdownload' => 'Ladda ner:',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'abcdownload' => 'பதிவிறக்கம் செய்:',
+);
+
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
  * @author Veeven

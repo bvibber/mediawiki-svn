@@ -946,6 +946,14 @@ $messages['szl'] = array(
 	'findspam-ok' => 'OK',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'findspam' => 'வீண்செய்திகளை கண்டுபிடி',
+	'findspam-ok' => 'ஆம்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

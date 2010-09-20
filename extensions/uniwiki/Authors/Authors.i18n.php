@@ -615,6 +615,14 @@ $messages['sv'] = array(
 	'authors_anonymous' => 'Anonym',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'authors_authors' => 'ஆசிரியர்கள்',
+	'authors_anonymous' => 'அடையாளமற்றவர்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

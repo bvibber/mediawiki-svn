@@ -461,6 +461,7 @@ $messages['lb'] = array(
 	'cb_edit_left_hint' => 'No lénks réckelen, wa méiglech',
 	'cb_edit_right_hint' => 'No riets réckelen, wa méiglech',
 	'cb_edit_remove_hint' => 'Läschen, wa méiglech',
+	'cb_edit_clear_hint' => 'Aktuellen Ausdrock ewechhuelen (alles uwielen)',
 );
 
 /** Macedonian (Македонски)

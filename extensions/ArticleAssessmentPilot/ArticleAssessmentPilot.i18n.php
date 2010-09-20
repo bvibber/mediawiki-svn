@@ -445,6 +445,10 @@ Probéiert w.e.g. méi spéit nach emol.',
 Et kéint sinn datt dir en nei bewäerte wëllt.",
 	'articleassessment-results-show' => '(D\'Resultater si verstopp. Resultater <span class="showlink">weisen</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Resultater verstoppen</span>)',
+	'articleassessment-survey-question-whyrated' => 'Sot eis w.e.g. firwat datt Dir dës säit bewäert hutt (klickt alles u wat zoutrëfft):',
+	'articleassessment-survey-answer-whyrated-other' => 'Anerer',
+	'articleassessment-survey-question-useful-iffalse' => 'Firwat?',
+	'articleassessment-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 );
 
 /** Macedonian (Македонски)

@@ -100,6 +100,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'tablemod' => 'Modifikacija tabele',
 	'tablemod-desc' => 'Upravljanje wiki tabelama',
 	'tablemod-msg-remove' => 'Ukloni',
 	'tablemod-error-format' => 'Ova oznaka podržava samo jednu jednostavnu tabelu za svaku oznaku, bez bilo kakvog teksta prije ili poslije nje.',
@@ -107,6 +108,7 @@ $messages['bs'] = array(
 	'tablemod-error-headcount' => 'Ova oznaka podržava sortiranje samo kod tabela koje imaju zaglavlja u svakoj koloni.',
 	'tablemod-error-invalidsort' => 'Nevaljani parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Nevaljana akcija.',
+	'tablemod-error-missingid' => 'Nedostaje atribut ident u oznaci.',
 );
 
 /** Czech (Česky) */

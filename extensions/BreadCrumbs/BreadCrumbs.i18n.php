@@ -16,6 +16,13 @@ $messages['qqq'] = array(
 	'breadcrumbs-desc' => '{{desc}}',
 );
 
+/** Jamaican Creole English (Jamaican Creole English)
+ * @author Yocahuna
+ */
+$messages['jam'] = array(
+	'breadcrumbs-desc' => 'Shuo di yuuza paat chruu di wiki',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

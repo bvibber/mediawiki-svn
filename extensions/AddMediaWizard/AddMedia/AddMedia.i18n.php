@@ -2051,6 +2051,7 @@ $messages['dsb'] = array(
  * @author Crazymadlover
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Περίεργος
  */
 $messages['el'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 από $2',

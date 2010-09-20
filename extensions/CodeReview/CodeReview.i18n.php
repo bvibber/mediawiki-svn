@@ -8130,6 +8130,17 @@ $messages['sh'] = array(
 	'codereview-batch-submit' => 'Unesi',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'code-comments' => 'පරිකථන',
+	'code-field-author' => 'කතෘ',
+	'code-field-timestamp' => 'දිනය',
+	'code-rev-message' => 'පරිකථනය:',
+	'code-rev-comment-preview' => 'පෙර දසුන',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Mormegil
@@ -9227,6 +9238,7 @@ Buod ng pagsasagawa:
 $4',
 	'code-stats' => 'estadistika',
 	'code-stats-header' => 'Estadistika ng repositoryo para sa $1',
+	'code-stats-main' => 'Magmula noong $1, ang repositoryo ay may $2 {{PLURAL:$2|rebisyon|mga rebisyon}} ng [[Special:Code/$3/author|$4 {{PLURAL:$4|may-akda|mga may-akda}}]].',
 	'code-stats-staus-breakdown' => 'Bilang ng mga rebisyon sa bawat kalagayan',
 	'code-stats-fixme-breakdown' => 'Paglilista ng mga pag-aayos ng bawat may-akda',
 	'code-stats-count' => 'Bilang ng mga rebisyon',

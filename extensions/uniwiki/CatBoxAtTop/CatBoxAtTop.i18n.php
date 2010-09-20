@@ -554,6 +554,13 @@ $messages['sv'] = array(
 	'catboxattop-categories' => 'Kategorier',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'catboxattop-categories' => 'பகுப்புகள்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
