@@ -22,6 +22,7 @@ class VectorHooks {
 				'jquery.cookie',
 				'jquery.tabIndex',
 			),
+			'group' => 'ext.vector',
 		),
 		'ext.vector.collapsibleTabs' => array(
 			'scripts' => 'extensions/Vector/modules/ext.vector.collapsibleTabs.js',
@@ -29,12 +30,14 @@ class VectorHooks {
 				'jquery.collapsibleTabs',
 				'jquery.delayedBind',
 			),
+			'group' => 'ext.vector',
 		),
 		'ext.vector.editWarning' => array(
 			'scripts' => 'extensions/Vector/modules/ext.vector.editWarning.js',
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
+			'group' => 'ext.vector',
 		),
 		'ext.vector.expandableSearch' => array(
 			'scripts' => 'extensions/Vector/modules/ext.vector.expandableSearch.js',
@@ -44,10 +47,12 @@ class VectorHooks {
 				'jquery.expandableField',
 				'jquery.delayedBind',
 			),
+			'group' => 'ext.vector',
 		),
 		'ext.vector.footerCleanup' => array(
 			'scripts' => 'extensions/Vector/modules/ext.vector.footerCleanup.js',
 			'styles' => 'extensions/Vector/modules/ext.vector.footerCleanup.css',
+			'group' => 'ext.vector',
 		),
 		'ext.vector.simpleSearch' => array(
 			'scripts' => 'extensions/Vector/modules/ext.vector.simpleSearch.js',
@@ -60,6 +65,7 @@ class VectorHooks {
 				'jquery.suggestions',
 				'jquery.autoEllipsis',
 			),
+			'group' => 'ext.vector',
 		),
 	);
 	
