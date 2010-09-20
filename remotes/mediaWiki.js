@@ -390,11 +390,11 @@ function rewrite_for_OggHandler( vidIdList ) {
 		
 		// If in a gallery box or filehistory we will be displaying the video larger in a lightbox
 		if( $j( '#' + vidId ).parents( '.gallerybox,.filehistory' ).length ){
-			// Update the width to 400 and keep scale
+			// Update the width to 420 and keep scale
 			pwidth = 400;
 			if( pheight != 0 ) {
-				pheight = pwidth * ( $j( '#' + vidId ).height() / $j( '#' + vidId ).width() );
-			}			
+				pheight = pwidth * (  $j( '#' + vidId ).height() / $j( '#' + vidId ).width() );
+			}						
 		}
 		
 		if ( src ) {
@@ -455,7 +455,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 							var _this = this;
 									
 							var dialogHeight = ( pheight == 0 	)? 175 :
-												( pheight - 25 );
+												( pheight + 25 );
 							var buttons = {};
 							buttons[ gM( 'mwe-ok' ) ] = function(){
 								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
