@@ -11,9 +11,9 @@ class VectorHooks {
 	/* Protected Static Members */
 	
 	protected static $modules = array(
-		'vector.collapsibleNav' => array(
-			'scripts' => 'extensions/Vector/modules/vector.collapsibleNav.js',
-			'styles' => 'extensions/Vector/modules/vector.collapsibleNav.css',
+		'ext.vector.collapsibleNav' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.collapsibleNav.js',
+			'styles' => 'extensions/Vector/modules/ext.vector.collapsibleNav.css',
 			'messages' => array(
 				'vector-collapsiblenav-more',
 			),
@@ -23,34 +23,34 @@ class VectorHooks {
 				'jquery.tabIndex',
 			),
 		),
-		'vector.collapsibleTabs' => array(
-			'scripts' => 'extensions/Vector/modules/vector.collapsibleTabs.js',
+		'ext.vector.collapsibleTabs' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.collapsibleTabs.js',
 			'dependencies' => array(
 				'jquery.collapsibleTabs',
 				'jquery.delayedBind',
 			),
 		),
-		'vector.editWarning' => array(
-			'scripts' => 'extensions/Vector/modules/vector.editWarning.js',
+		'ext.vector.editWarning' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.editWarning.js',
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
 		),
-		'vector.expandableSearch' => array(
-			'scripts' => 'extensions/Vector/modules/vector.expandableSearch.js',
-			'styles' => 'extensions/Vector/modules/vector.expandableSearch.css',
+		'ext.vector.expandableSearch' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.expandableSearch.js',
+			'styles' => 'extensions/Vector/modules/ext.vector.expandableSearch.css',
 			'dependencies' => array(
 				'jquery.client',
 				'jquery.expandableField',
 				'jquery.delayedBind',
 			),
 		),
-		'vector.footerCleanup' => array(
-			'scripts' => 'extensions/Vector/modules/vector.footerCleanup.js',
-			'styles' => 'extensions/Vector/modules/vector.footerCleanup.css',
+		'ext.vector.footerCleanup' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.footerCleanup.js',
+			'styles' => 'extensions/Vector/modules/ext.vector.footerCleanup.css',
 		),
-		'vector.simpleSearch' => array(
-			'scripts' => 'extensions/Vector/modules/vector.simpleSearch.js',
+		'ext.vector.simpleSearch' => array(
+			'scripts' => 'extensions/Vector/modules/ext.vector.simpleSearch.js',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
@@ -76,10 +76,10 @@ class VectorHooks {
 				'wgCollapsibleNavBucketTest',
 				'wgCollapsibleNavForceNewVersion',
 			),
-			'modules' => array( 'vector.collapsibleNav' ),
+			'modules' => array( 'ext.vector.collapsibleNav' ),
 		),
 		'collapsibletabs' => array(
-			'modules' => array( 'vector.collapsibleTabs' ),
+			'modules' => array( 'ext.vector.collapsibleTabs' ),
 		),
 		'editwarning' => array(
 			'preferences' => array(
@@ -90,18 +90,18 @@ class VectorHooks {
 					'section' => 'editing/advancedediting',
 				),
 			),
-			'modules' => array( 'vector.editWarning' ),
+			'modules' => array( 'ext.vector.editWarning' ),
 		),
 		'expandablesearch' => array(
 			'requirements' => array( 'vector-simplesearch' => true ),
-			'modules' => array( 'vector.expandableSearch' ),
+			'modules' => array( 'ext.vector.expandableSearch' ),
 		),
 		'footercleanup' => array(
-			'modules' => array( 'vector.footerCleanup' ),
+			'modules' => array( 'ext.vector.footerCleanup' ),
 		),
 		'simplesearch' => array(
 			'requirements' => array( 'vector-simplesearch' => true, 'disablesuggest' => false ),
-			'modules' => array( 'vector.simpleSearch' ),
+			'modules' => array( 'ext.vector.simpleSearch' ),
 		),
 	);
 	
