@@ -4,6 +4,11 @@
  * Mostly stubbed functionallity for central notice improvements
  * May or may not be used, definitely will be changed.
  * More of a sketch of what we think needs to be done.
+ * 
+ * QUESTIONS: 
+ * 1. How do I determin if a user is logged in or not?
+ * 2. How do I determin a users location?
+ * 
  */
 ( function( $ ) {
 	$.centralNotice = {
@@ -12,68 +17,38 @@
 		},
 		'fn': {
 			'loadBanner': function( bannerName ) {
-				// get the requested banner
-				var bannerPage = 'Special:BannerLoader?banner='+bannerName+'&userlang='+wgContentLanguage+'&sitename='+wgNoticeProject;
-				var bannerURL = wgArticlePath.replace( '$1', bannerPage );
+				// get the requested banner from /centralnotice/banners/<bannername>/<wgUserLanguage>.js
 				var request = $.ajax( {
-					url: bannerURL,
+					url: 'response.html',
 					dataType: 'html',
 					success: function( data ) {
 						$.centralNotice.fn.displayBanner( data );
 					}
 				});
 			},
-			'loadBannerList': function( timestamp ) {
-				var bannerListURL;
+			'loadCampaign': function( timestamp ) {
+				var listURL;
 				if ( timestamp ) {
-					bannerListURL = "TBD"
+					listURL = "TBD"
 				} else {
-					// http://geoiplookup.wikimedia.org/
-					var geoLocation = 'US'; // Hard-coding for now
-					var bannerListPage = 'Special:BannerListLoader?language='+wgContentLanguage+'&project='+wgNoticeProject+'&location='+geoLocation;
-					bannerListURL = wgArticlePath.replace( '$1', bannerListPage );
+					listURL = "/centralnotice/<project type>/<wgContentLanguage>.js"
 				}
 				var request = $.ajax( {
-					url: bannerListURL,
+					url: listURL,
 					dataType: 'json',
-					success: $.centralNotice.fn.chooseBanner
+					success: function( data ) {
+						$.centralNotice.fn.chooseBanner( data );
+					}
 				} );
 			},
 			'chooseBanner': function( bannerList ) {
-				// convert the json object to a true array
-				bannerList = Array.prototype.slice.call( bannerList );
-				
-				// Make sure there are some banners to choose from
-				if ( bannerList.length == 0 ) return false;
-				
-				var totalWeight = 0;
-				// run through the bannerlist and sum the weights of all banners
-				for( var i = 0; i < bannerList.length; i++ ) {
-					totalWeight += bannerList[i].weight;
-				}
-				
-				// select a random integer between 0 and our total weight
-				var pointer = Math.floor( Math.random() * totalWeight ),
-					selectedBanner = bannerList[0],
-					w = 0;
-				// run through the banner list and start accumulating weights
-				for( var i = 0; i < bannerList.length; i++ ) {
-					w += bannerList[i].weight;
-					// when the weight tally exceeds the random integer, return the banner and stop the loop
-					if( w > pointer ) {
-						selectedBanner = bannerList[i];
-						break;
-					}
-				}
-				// return our selected banner
-				$.centralNotice.fn.loadBanner( 
-					selectedBanner.name
-				 );
+				// pick a banner based on logged-in status and geotargetting
+				var bannerHTML = bannerList[0].html;
+				$.centralNotice.fn.displayBanner( bannerHTML );
 			},
 			'displayBanner': function( bannerHTML ) {
 				// inject the banner html into the page
-				$( '#siteNotice' )
-					.prepend( '<div id="centralnotice" class="' + ( wgNoticeToggleState ? 'expanded' : 'collapsed' ) + '">' + bannerHTML + '</div>' );
+				$( '#centralNotice' ).replaceWith( bannerHTML );
 			},
 			'getQueryStringVariables': function() {
 				document.location.search.replace( /\??(?:([^=]+)=([^&]*)&?)/g, function () {
@@ -93,10 +68,10 @@
 			$.centralNotice.fn.loadBanner( $.centralNotice.data.getVars['forceBanner'] );
 		} else if ( $.centralNotice.data.getVars['forceTimestamp'] ) {
 			// if we're forcing a future campaign time
-			$.centralNotice.fn.loadBannerList( $.centralNotice.data.getVars['forceTimestamp'] );	
+			$.centralNotice.fn.loadCampaign( $.centralNotice.data.getVars['forceTimestamp'] );	
 		} else {
 			// look for banners ready to go NOW
-			$.centralNotice.fn.loadBannerList( );	
+			$.centralNotice.fn.loadCampaign( );	
 		}
 	} ); //document ready
 } )( jQuery );

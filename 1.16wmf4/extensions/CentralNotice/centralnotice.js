@@ -43,15 +43,3 @@ function insertButton( buttonType ) {
 	}
 	bannerField.focus();
 }
-// Handle revealing the geoMultiSelector when the geotargetted checkbox is checked
-( function( $ ) {
-	$(document).ready(function() {
-		$("#geotargeted").click(function () {
-			if ($('#geotargeted:checked').val() !== undefined) {
-				$("#geoMultiSelector").fadeIn('fast');
-			} else {
-				$("#geoMultiSelector").fadeOut('fast');
-			}
-		});
-	});
-})(jQuery);
