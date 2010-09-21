@@ -54,7 +54,7 @@ $messages['en'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No "$1"',
-	'recordadmin-edit-info' => 'This article contains templates which have their own forms which you can fill in from this tab-set',
+	'recordadmin-edit-info' => 'This page contains templates which have their own forms which you can fill in from this tab-set',
 );
 
 /** Message documentation (Message documentation)
