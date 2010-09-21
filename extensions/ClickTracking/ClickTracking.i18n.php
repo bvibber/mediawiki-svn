@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for Usability Initiative Click Tracking extension
+ * Internationalisation for Click Tracking extension
  *
  * @file
  * @ingroup Extensions
