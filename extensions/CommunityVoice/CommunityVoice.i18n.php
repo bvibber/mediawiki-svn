@@ -945,6 +945,18 @@ $messages['tr'] = array(
 	'communityvoice-ratings-error-no-title' => 'Derecelendirme etiketinde başlık niteliği eksik.',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'communityvoice-desc' => 'Җәмгыятьнең эшләү кораллары',
+	'communityvoice-ratings' => 'Рейтинглар',
+	'communityvoice-ratings-scale-status-sending' => 'Җибәрү...',
+	'communityvoice-ratings-scale-status-error' => 'Җибәрү барышында хата барлыкка килде!',
+	'communityvoice-ratings-scale-status-thanks' => 'Җавап бирүегез өчен рәхмәт!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ({{PLURAL:$2| $2 тавыш бирелгән}})',
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na

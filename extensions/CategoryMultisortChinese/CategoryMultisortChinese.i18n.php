@@ -425,6 +425,25 @@ $messages['ru'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'по радикалам: традиционный',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorymultisortchinese-desc' => "Pinapahintulutan ang mga kategorya na matingnan sa pamamagitan ng iba't ibang mga susi ng pag-uuri na tiyak sa mga panitik na Intsik",
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantones: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Hagod',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Hagod: Pinapayak',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Hagod: Nakaugalian',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Pinapayak',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Nakaugalian',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Yfdyh000

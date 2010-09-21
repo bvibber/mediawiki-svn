@@ -619,6 +619,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'authors-desc' => 'பக்கங்களுக்கான பங்களிப்பாளர்களின் பட்டியலைச் சேர்க்கிறது',
 	'authors_authors' => 'ஆசிரியர்கள்',
 	'authors_anonymous' => 'அடையாளமற்றவர்',
 );

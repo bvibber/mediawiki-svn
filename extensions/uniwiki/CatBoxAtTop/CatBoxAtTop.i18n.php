@@ -558,6 +558,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'catboxattop-desc' => 'பக்கங்களின் வலது மேற்புறத்தில் ஒரு பகுப்பு பெட்டியை உருவாக்குகிறது',
 	'catboxattop-categories' => 'பகுப்புகள்',
 );
 

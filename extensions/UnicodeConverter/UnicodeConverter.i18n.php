@@ -252,6 +252,16 @@ $messages['eu'] = array(
 	'unicodeconverter-newtext' => 'Eraldatutako testua:',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'unicodeconverter' => 'مبدل یونیکد',
+	'unicodeconverter-ok' => 'تبدیل شود',
+	'unicodeconverter-oldtext' => 'متن اصلی:',
+	'unicodeconverter-newtext' => 'متن تبدیل شده:',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

@@ -18,6 +18,19 @@ $messages['en'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store admin page',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rdfio-desc' => 'Proširena funkcionalnost RSF Uvoz/Izvoz, uključujući SPARQL krajnju tačku, za Semantičku MediaWiki',
+	'rdfimport' => 'RDF uvoz',
+	'rdfio-arc2admin-desc' => 'Administratorska stranica za ARC2 RDF Store za Semantičku MediaWiki',
+	'rdfio-rdfimport-desc' => 'Posebna stranica za uvoz semantičkih podataka u RDF/XML formatu',
+	'rdfio-sparqlendpoint-desc' => 'SPARQL Krajnja tačka omogućena od SMWRDFKonektora',
+	'sparqlendpoint' => 'SPARQL Krajnja tačka',
+	'specialarc2admin' => 'ARC2 RDF Store administratorska stranica',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -61,7 +74,11 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'rdfio-desc' => 'Uitgebreide import- en exportfunctionaliteit voor RDF voor Semantic MediaWiki, inclusief een eindpunt voor SPARQL',
 	'rdfimport' => 'RDF importeren',
+	'rdfio-arc2admin-desc' => 'Beheerpagina voor de ARC2 RDF Store voor Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'Speciale pagina om semantische gegevens in RDF/XML-formaat te importeren',
+	'rdfio-sparqlendpoint-desc' => 'Een SPARQL eindpunt voor de SMWRDFConnector',
 	'sparqlendpoint' => 'SPARQL eindpunt',
 	'specialarc2admin' => 'ARC2 RDF-opslag beheren',
 );

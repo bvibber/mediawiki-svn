@@ -43,6 +43,13 @@ $messages['br'] = array(
 	'apisvgproxy-desc' => "Kas a ra restroù SVG adalek ur sanailh restroù (a-bell diouzh ret) war-du an domani lec'hel.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'apisvgproxy-desc' => 'Proksi SVG datoteke iz (možda udaljenog) repozitorijuma datoteka za lokalnu domenu',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

@@ -364,10 +364,7 @@ $messages['bs'] = array(
 	'recordadmin-buttonreset' => 'Poništi',
 	'recordadmin-searchresult' => 'Rezultati pretrage',
 	'recordadmin-nomatch' => 'Nije pronađen odgovarajući zapis!',
-	'recordadmin-edit' => 'Uređujete $2 zapisa "$1"',
 	'recordadmin-typeupdated' => '$1 svojstvo ažurirano',
-	'recordadmin-updatesuccess' => '$1 ažurirano',
-	'recordadmin-updateerror' => 'Desila se greška pri ažuriranju',
 	'recordadmin-buttonsave' => 'Sačuvaj',
 	'recordadmin-noform' => 'Ne postoji obrazac koji je pripojen "$1" zapisima!',
 	'recordadmin-createlink' => 'napravi jedan',
@@ -379,12 +376,11 @@ $messages['bs'] = array(
 	'recordadmin-modified' => 'Izmijenjeno',
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
-	'recordadmin-editwithform' => 'Svojstva',
-	'recordadmin-typeinfo' => '$1 zapis',
 	'right-recordadmin' => 'Traženje i uređivanje stranica zapisa',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Bez "$1"',
+	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka',
 );
 
 /** Catalan (Català)
@@ -447,10 +443,7 @@ $messages['de'] = array(
 	'recordadmin-buttonreset' => 'Zurücksetzen',
 	'recordadmin-searchresult' => 'Suchergebnisse',
 	'recordadmin-nomatch' => 'Keine passenden Aufzeichnungen gefunden!',
-	'recordadmin-edit' => '$2 vom Typ „$1“ bearbeiten',
 	'recordadmin-typeupdated' => '$1 Werte aktualisiert',
-	'recordadmin-updatesuccess' => '$1 aktualisiert',
-	'recordadmin-updateerror' => 'Während der Aktualisierung trat ein Fehler auf',
 	'recordadmin-buttonsave' => 'Speichern',
 	'recordadmin-noform' => 'Es gibt kein Formular für „$1“-Aufzeichnungen!',
 	'recordadmin-createlink' => 'erstelle eins',
@@ -462,12 +455,11 @@ $messages['de'] = array(
 	'recordadmin-modified' => 'Modifiziert',
 	'recordadmin-actions' => 'Aktionen',
 	'recordadmin-needscontent' => 'Inhalt hinzufügen …',
-	'recordadmin-editwithform' => 'Eigenschaften',
-	'recordadmin-typeinfo' => '$1-Aufnahme',
 	'right-recordadmin' => 'Aufzeichnungsseiten finden und bearbeiten',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Keine „$1“',
+	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Formulare verfügen und über diese Registerkarte ausgefüllt werden können.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -841,10 +833,7 @@ $messages['gl'] = array(
 	'recordadmin-buttonreset' => 'Restablecer',
 	'recordadmin-searchresult' => 'Resultados da procura',
 	'recordadmin-nomatch' => 'Non se atoparon rexistros que coincidisen!',
-	'recordadmin-edit' => 'Editando o rexistro $2 "$1"',
 	'recordadmin-typeupdated' => 'Propiedades de "$1" actualizadas',
-	'recordadmin-updatesuccess' => '"$1" actualizado',
-	'recordadmin-updateerror' => 'Ocorreu un erro durante a actualización',
 	'recordadmin-buttonsave' => 'Gardar',
 	'recordadmin-noform' => 'Non hai ningún formulario asociado cos rexistros "$1"!',
 	'recordadmin-createlink' => 'crear un',
@@ -856,12 +845,11 @@ $messages['gl'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Accións',
 	'recordadmin-needscontent' => 'Engadir o contido...',
-	'recordadmin-editwithform' => 'Propiedades',
-	'recordadmin-typeinfo' => 'Rexistro de tipo $1',
 	'right-recordadmin' => 'Atopar e editar páxinas de rexistro',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe ningún "$1"',
+	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios, cos que encher desde este conxunto de lapelas',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1419,10 +1407,7 @@ $messages['mk'] = array(
 	'recordadmin-buttonreset' => 'Одново',
 	'recordadmin-searchresult' => 'Резултати од пребарувањето',
 	'recordadmin-nomatch' => 'Нема пронајдено соодветни записи!',
-	'recordadmin-edit' => 'Уредување на запис за $2 наречен „$1“',
 	'recordadmin-typeupdated' => 'Обновени се $1 својства',
-	'recordadmin-updatesuccess' => '$1 е обновено',
-	'recordadmin-updateerror' => 'Настана грешка при обновувањето',
 	'recordadmin-buttonsave' => 'Зачувај',
 	'recordadmin-noform' => 'Нема образец поврзан со записи од типот „$1“!',
 	'recordadmin-createlink' => 'создај',
@@ -1434,12 +1419,11 @@ $messages['mk'] = array(
 	'recordadmin-modified' => 'Изменето',
 	'recordadmin-actions' => 'Дејства',
 	'recordadmin-needscontent' => 'Додај содржина...',
-	'recordadmin-editwithform' => 'Својства',
-	'recordadmin-typeinfo' => 'Запис од типот $1',
 	'right-recordadmin' => 'Пронаоѓање и уредување на записни страници',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нема „$1“',
+	'recordadmin-edit-info' => 'Оваа страница содржи шаблони кои имаат свои обрасци што можете да ги пополните од овој збир јазичиња.',
 );
 
 /** Mongolian (Монгол)
@@ -1506,10 +1490,7 @@ $messages['nl'] = array(
 	'recordadmin-buttonreset' => 'Fomulier wissen',
 	'recordadmin-searchresult' => 'Zoekresultaten',
 	'recordadmin-nomatch' => 'Er zijn geen gegevens gevonden die aan de voorwaarden voldoen.',
-	'recordadmin-edit' => 'Bezig met bewerken van gegeven $1 van het type $2',
 	'recordadmin-typeupdated' => 'De eigenschappen van $1 zijn bijgewerkt',
-	'recordadmin-updatesuccess' => '$1 is bijgewerkt',
-	'recordadmin-updateerror' => 'Er is een fout opgetreden tijdens het bijwerken',
 	'recordadmin-buttonsave' => 'Opslaan',
 	'recordadmin-noform' => 'Er is geen formulier gekoppeld aan gegevens van het type "$1"!',
 	'recordadmin-createlink' => 'aanmaken',
@@ -1521,12 +1502,11 @@ $messages['nl'] = array(
 	'recordadmin-modified' => 'Gewijzigd',
 	'recordadmin-actions' => 'Handelingen',
 	'recordadmin-needscontent' => 'Inhoud toevoegen...',
-	'recordadmin-editwithform' => 'Eigenschappen',
-	'recordadmin-typeinfo' => 'Gegeven van het type $1',
 	'right-recordadmin' => "Gegevenspagina's zoeken en bewerken",
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Geen "$1"',
+	'recordadmin-edit-info' => 'Deze pagina bevat sjablonen die hun eigen formulieren hebben die u hier in kunt vullen.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1713,10 +1693,7 @@ $messages['pl'] = array(
 	'recordadmin-buttonreset' => 'Resetuj',
 	'recordadmin-searchresult' => 'Wyniki wyszukiwania',
 	'recordadmin-nomatch' => 'Nie znaleziono pasujących rekordów!',
-	'recordadmin-edit' => 'Edycja rekordu „$1” typu $2',
 	'recordadmin-typeupdated' => 'Właściwości $1 zaktualizowane',
-	'recordadmin-updatesuccess' => '$1 zaktualizowane',
-	'recordadmin-updateerror' => 'Wystąpił błąd w trakcie aktualizacji',
 	'recordadmin-buttonsave' => 'Zapisz',
 	'recordadmin-noform' => 'Brak formularza współpracującego z rekordami „$1”!',
 	'recordadmin-createlink' => 'utwórz',
@@ -1728,12 +1705,11 @@ $messages['pl'] = array(
 	'recordadmin-modified' => 'Zmienione',
 	'recordadmin-actions' => 'Operacje',
 	'recordadmin-needscontent' => 'Dodaj zawartość...',
-	'recordadmin-editwithform' => 'Właściwości',
-	'recordadmin-typeinfo' => 'Rekord typu $1',
 	'right-recordadmin' => 'Znajdywanie i edycja stron z rekordami danych',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Nie „$1”',
+	'recordadmin-edit-info' => 'Ta strona zawiera szablony z formularzami, które można wypełnić korzystając z tego zestawu gotowych odpowiedzi',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1763,10 +1739,7 @@ $messages['pms'] = array(
 	'recordadmin-buttonreset' => 'Spian-a',
 	'recordadmin-searchresult' => "Arzultà dl'arserca",
 	'recordadmin-nomatch' => 'Pa gnun-e anotassion corispondente trovà!',
-	'recordadmin-edit' => 'Modifiché $2 anotassion "$1"',
 	'recordadmin-typeupdated' => 'Modificà $1 proprietà',
-	'recordadmin-updatesuccess' => '$1 modificà',
-	'recordadmin-updateerror' => "A l'é capitaje n'eror an mente dla modìfica",
 	'recordadmin-buttonsave' => 'Salva',
 	'recordadmin-noform' => 'A-i é gnun formolari associà con l\'anotassion "$1"!',
 	'recordadmin-createlink' => 'crea un',
@@ -1778,12 +1751,11 @@ $messages['pms'] = array(
 	'recordadmin-modified' => 'Modificà',
 	'recordadmin-actions' => 'Assion',
 	'recordadmin-needscontent' => 'Gionté contnù ...',
-	'recordadmin-editwithform' => 'Proprietà',
-	'recordadmin-typeinfo' => '$1 anotassion',
 	'right-recordadmin' => "Treuva e modifica pàgine d'anotassion",
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Pa gnun "$1"',
+	'recordadmin-edit-info' => "Sta pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'it peule ampinì da sto tab-set",
 );
 
 /** Pashto (پښتو)
@@ -1838,10 +1810,7 @@ $messages['pt'] = array(
 	'recordadmin-buttonreset' => 'Repor',
 	'recordadmin-searchresult' => 'Resultados da pesquisa',
 	'recordadmin-nomatch' => 'Não foram encontrados resultados correspondentes!',
-	'recordadmin-edit' => 'A editar registo $2 "$1"',
 	'recordadmin-typeupdated' => 'Propriedades de $1 actualizadas',
-	'recordadmin-updatesuccess' => '$1 actualizado',
-	'recordadmin-updateerror' => 'Ocorreu um erro durante a actualização',
 	'recordadmin-buttonsave' => 'Gravar',
 	'recordadmin-noform' => 'Não há um formulário associado com registos "$1"!',
 	'recordadmin-createlink' => 'criar um',
@@ -1853,12 +1822,11 @@ $messages['pt'] = array(
 	'recordadmin-modified' => 'Modificado',
 	'recordadmin-actions' => 'Acções',
 	'recordadmin-needscontent' => 'Adicionar conteúdo...',
-	'recordadmin-editwithform' => 'Propriedades',
-	'recordadmin-typeinfo' => 'Registo de $1',
 	'right-recordadmin' => 'Encontrar e editar páginas de registos',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" não {{PLURAL:$1|existe|existem}}',
+	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1968,10 +1936,7 @@ $messages['ru'] = array(
 	'recordadmin-buttonreset' => 'Сбросить',
 	'recordadmin-searchresult' => 'Результаты поиска',
 	'recordadmin-nomatch' => 'Подходящие записи не найдены!',
-	'recordadmin-edit' => 'Редактировать $2 запись «$1»',
 	'recordadmin-typeupdated' => 'Обновлено $1 свойств',
-	'recordadmin-updatesuccess' => '$1 обновлено',
-	'recordadmin-updateerror' => 'Во время обновления произошла ошибка',
 	'recordadmin-buttonsave' => 'Сохранить',
 	'recordadmin-noform' => 'Нет формы, ассоциированной с записями «$1»!',
 	'recordadmin-createlink' => 'создать один',
@@ -1983,12 +1948,11 @@ $messages['ru'] = array(
 	'recordadmin-modified' => 'Изменено',
 	'recordadmin-actions' => 'Действия',
 	'recordadmin-needscontent' => 'Добавить содержимое...',
-	'recordadmin-editwithform' => 'Свойства',
-	'recordadmin-typeinfo' => '$1 запись',
 	'right-recordadmin' => 'поиск и редактирование страниц записей',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нет «$1»',
+	'recordadmin-edit-info' => 'Эта страница содержит шаблоны, которые имеют свои собственные формы, которые можно заполнить с этого набора вкладок',
 );
 
 /** Rusyn (русиньскый язык)

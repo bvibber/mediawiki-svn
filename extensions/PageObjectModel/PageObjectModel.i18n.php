@@ -175,6 +175,13 @@ $messages['ru'] = array(
 	'pageobjectmodel-desc' => 'Добавляет набор классов для абстракции синтаксиса MediaWiki, что позволяет облегчить извлечение и обработку данных страниц другими программами',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pageobjectmodel-desc' => 'Nagdaragdag ng isang pangkat ng mga klase para sa abstraksyon ng palaugnayan ng MediaWiki upang mapahintulutan ang maginhawang pagkuha at manipulasyon ng mga pahina sa loob ng ibang mga programa',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

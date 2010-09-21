@@ -278,11 +278,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
 	'sitenotice_close' => 'بستن',
-	'sitenotice-desc' => 'به کاربرها اجازه می‌دهد که اعلانات وبگاه را پنهان کنند',
+	'sitenotice-desc' => 'به کاربرها اجازه می‌دهد که اعلانات وب‌گاه را پنهان کنند',
 );
 
 /** Finnish (Suomi)

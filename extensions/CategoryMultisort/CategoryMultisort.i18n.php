@@ -448,6 +448,18 @@ $messages['te'] = array(
 	'prefs-category' => 'వర్గం',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorymultisort-desc' => "Nagpapahintulot na matingnan ang mga kategorya sa pamamagitan ng iba't ibang mga susi ng pag-uuri",
+	'categorymultisort-defaultsortkey-name' => 'Likas na nakatakda',
+	'categorymultisort-sortkey' => 'Susi ng pag-uuri:',
+	'categorymultisort-go' => 'Gawin',
+	'categorymultisort-default-sortkey' => 'Likas na nakatakdang susi ng pag-uuri:',
+	'prefs-category' => 'Kategorya',
+);
+
 /** Turkish (Türkçe)
  * @author Manco Capac
  */

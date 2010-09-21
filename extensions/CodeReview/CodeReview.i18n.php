@@ -5512,6 +5512,7 @@ $messages['lb'] = array(
 	'code-rev-diff-too-large' => 'Den Diff (Ënnerscheed) ass ze grouss fir en ze weisen.',
 	'code-rev-purge-link' => 'botzen (vum Cache)',
 	'code-rev-total' => 'Gesamtzuel vun de Resultater: $1',
+	'code-rev-not-found' => "Versioun '''$1''' gëtt et net!",
 	'code-status-new' => 'nei',
 	'code-status-fixme' => 'verbesser mech',
 	'code-status-reverted' => 'zréckgesat',

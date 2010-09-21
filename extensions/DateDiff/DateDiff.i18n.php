@@ -24,11 +24,25 @@ $messages['be-tarask'] = array(
 	'datediff-desc' => 'Вяртае ўсе дні паміж двума пададзенымі датамі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Gwendal
+ */
+$messages['br'] = array(
+	'datediff-desc' => 'Kemer daou deiziad ha reiñ a ra an deizioù etre',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
 	'datediff-desc' => 'Uzima dva datuma i vraća sve dane između njih',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'datediff-desc' => 'Na základě dvou dat vrátí všechny mezilehlé dny',
 );
 
 /** German (Deutsch)

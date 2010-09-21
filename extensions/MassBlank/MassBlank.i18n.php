@@ -554,6 +554,19 @@ $messages['ur'] = array(
 	'massblank-blankcomment' => 'وجہ:',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'massblank' => 'Tẩy trống hàng loạt',
+	'massblank-desc' => 'Cho phép quản lý viên [[Special:MassBlank|tẩy trống trang hàng loạt]]',
+	'massblank-nopages' => 'Không có trang mới do [[Special:Contributions/$1|$1]] tạo ra trong thay đổi gần đây.',
+	'massblank-submit-user' => 'Tẩy trống',
+	'massblank-submit-blank' => 'Tẩy trống lựa chọn',
+	'massblank-blankcomment' => 'Lý do:',
+	'right-massblank' => 'Tẩy trống trang hàng loạt',
+);
+
 /** Wu (吴语) */
 $messages['wuu'] = array(
 	'massblank-blankcomment' => '理由：',

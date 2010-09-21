@@ -285,6 +285,14 @@ $messages['te'] = array(
 	'logofunctions-filenotexist' => 'పొరపాటు: [[File:$1]] ఉనికిలో లేదు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'logofunctions-desc' => 'Magdagdag ng tungkuling pang-parser tungkol sa logo ng wiki',
+	'logofunctions-filenotexist' => 'Kamalian: Hindi umiiral ang [[File:$1]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

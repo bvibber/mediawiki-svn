@@ -2034,6 +2034,7 @@ $messages['tl'] = array(
 	'importxml' => 'Angkatin ang XML',
 	'dt_import_selectfile' => 'Pakipili ang talaksang $1 na aangkatin:',
 	'dt_import_encodingtype' => 'Uri ng pagkokodigo',
+	'dt_import_summarydesc' => 'Buod ng pag-angkat:',
 	'dt_import_editsummary' => 'Pag-angkat ng $1',
 	'dt_import_importing' => 'Inaangkat...',
 	'dt_import_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang lilikhain mula sa talaksang $2.',

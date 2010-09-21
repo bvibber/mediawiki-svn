@@ -1792,11 +1792,71 @@ For å lagre en spørreundersøkelse, send den mens du ikke svarer på noen fors
 
 /** Polish (Polski)
  * @author Odder
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'qp_source_link' => 'Źródło',
-	'qp_stats_link' => 'Statystyki',
-	'qp_users_link' => 'Użytkownicy',
+	'pollresults' => 'Wyniki ankiet na tej witrynie',
+	'qp_desc' => 'Pozwala na tworzenie ankiet',
+	'qp_desc-sp' => '[[Special:PollResults|Strona specjalna]] z wynikami ankiet',
+	'qp_result_NA' => 'Brak odpowiedzi',
+	'qp_result_error' => 'Błąd składni',
+	'qp_vote_button' => 'Zapisz głos',
+	'qp_vote_again_button' => 'Zmień głos',
+	'qp_polls_list' => 'Spis wszystkich ankiet',
+	'qp_users_list' => 'Spis wszystkich użytkowników',
+	'qp_browse_to_poll' => 'Przeglądaj do $1',
+	'qp_browse_to_user' => 'Przeglądaj do $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|głos|głosy|głosów}}',
+	'qp_source_link' => 'źródło',
+	'qp_stats_link' => 'statystyki',
+	'qp_users_link' => 'użytkownicy',
+	'qp_voice_link' => 'Głos użytkownika',
+	'qp_voice_link_inv' => 'Głos użytkownika?',
+	'qp_user_polls_link' => 'Brał udział w $1 {{PLURAL:$1|ankiecie|ankietach}}',
+	'qp_user_missing_polls_link' => '{{GENDER:$1|Nie brał|Nie brała|Brak}} udziału',
+	'qp_not_participated_link' => 'brak udziału',
+	'qp_order_by_username' => 'Posortowane względem nazwy użytkownika',
+	'qp_order_by_polls_count' => 'Posortowane względem liczby uczestników ankiety',
+	'qp_results_line_qupl' => 'Strona „$1” ankieta „$2” – $3',
+	'qp_results_line_qpl' => 'Strona „$1” ankieta „$2” – $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Strona „$2” ankieta „$3” ]',
+	'qp_export_to_xls' => 'Eksport statystyk w formacie XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|użytkownik odpowiedział|użytkowników odpowiedziało}} na pytania',
+	'qp_func_no_such_poll' => 'Brak takiej ankiety ($1)',
+	'qp_func_missing_question_id' => 'Określ istniejący identyfikator pytania (zaczynając od 1) dla ankiety $1',
+	'qp_func_invalid_question_id' => 'Nieprawidłowy identyfikator $2 pytania (nie jest to numer) dla ankiety $1',
+	'qp_func_missing_proposal_id' => 'Określ identyfikator istniejącej propozycji (zaczynając od 0) dla pytania $2 z ankiety $1',
+	'qp_func_invalid_proposal_id' => 'Nieprawidłowy identyfikator $3 propozycji (to nie jest numer) pytania $2 w ankiecie $1',
+	'qp_error_no_such_poll' => 'Brak takiej ankiety ($1).
+Upewnij się, że ankieta została zadeklarowana i zapisana oraz, że użyłeś jako ogranicznika adresu znaku #',
+	'qp_error_in_question_header' => 'Nieprawidłowy nagłówek pytania – $1',
+	'qp_error_id_in_stats_mode' => 'Nie można zadeklarować identyfikatora ankiety w trybie statycznym',
+	'qp_error_dependance_in_stats_mode' => 'Nie można zadeklarować łańcucha zależności ankiety w trybie statystycznym',
+	'qp_error_no_stats' => 'Brak danych statystycznych, ponieważ nikt jeszcze nie brał udziału w tej ankiecie (adres=$1)',
+	'qp_error_address_in_decl_mode' => 'Nie można uzyskać adresu ankiety w trybie deklaracji',
+	'qp_error_question_not_implemented' => 'Pytania tego typu nie zostały jeszcze zaimplementowane – $1',
+	'qp_error_invalid_question_type' => 'Nieprawidłowy typ pytania – $1',
+	'qp_error_type_in_stats_mode' => 'Typ pytania nie może być definiowany w trybie wyświetlania statystyki – $1',
+	'qp_error_no_poll_id' => 'Znacznik ankiety nie ma zdefiniowanego atrybutu identyfikatora.',
+	'qp_error_invalid_poll_id' => 'Nieprawidłowy identyfikator ankiety (id=$1).
+Identyfikator ankiety może zawierać wyłączanie litery, cyfry i znak odstępu',
+	'qp_error_already_used_poll_id' => 'Identyfikator ankiety został już użyty na tej stronie (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Łańcuch zależności ankiety (id=$1) ma nieprawidłową wartość atrybutu zależności (dependence=„$2”)',
+	'qp_error_missed_dependance_title' => 'Ankieta (id=$1) jest uzależniona od innej ankiety (id=$3) ze strony [[$2]], ale tytuł [[$2]] nie został odnaleziony.
+Należy usunąć atrybut zależności lub przywrócić [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Ankieta (id=$1) jest uzależniona od innej ankiety (id=$3) na stronie $2, ale ankieta nie istnieje lub nie została jeszcze zapisana.
+Należy usunąć atrybut zależności lub utworzyć ankietę z id=$3 na stronie $2 i ją zapisać.
+Aby zapisać ankietę, zapisz ją bez odpowiadania na jakiekolwiek proponowane pytania.',
+	'qp_error_vote_dependance_poll' => 'Najpierw weź udział w ankiecie $1.',
+	'qp_error_too_many_spans' => 'Zbyt wiele grup kategorii dla ogólnej liczby zdefiniowanych podkategorii',
+	'qp_error_unanswered_span' => 'Podkategoria bez odpowiedzi',
+	'qp_error_non_unique_choice' => 'To pytanie wymaga udzielenia unikalnej odpowiedzi',
+	'qp_error_category_name_empty' => 'Nazwa kategorii jest pusta',
+	'qp_error_proposal_text_empty' => 'Tekst odpowiedzi jest pusty',
+	'qp_error_too_few_categories' => 'Należy wybrać co najmniej dwie kategorie',
+	'qp_error_too_few_spans' => 'Każda grupa kategorii musi zawierać co najmniej dwie podkategorie',
+	'qp_error_no_answer' => 'Pytanie bez odpowiedzi',
+	'qp_error_unique' => 'Pytanie typu unique() ma więcej propozycji odpowiedzi niż zdefiniowano jako dopuszczalne – brak możliwości zakończenia',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2332,6 +2392,19 @@ $messages['tr'] = array(
 	'qp_error_too_few_categories' => 'En az iki kategori tanımlanmalı',
 	'qp_error_too_few_spans' => 'Tüm kategori grupları en az iki alt kategori içermelidir',
 	'qp_error_no_answer' => 'Cevaplanmamış teklif',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'qp_user_missing_polls_link' => 'Сорауларда катнашмау',
+	'qp_not_participated_link' => 'Сорауларда катнашмаучылар исемлеге',
+	'qp_order_by_username' => 'Кулланучы исеме буенча тәртипкә салу',
+	'qp_order_by_polls_count' => 'Сорау алулар саны буенча тәртипкә салу',
+	'qp_results_line_qupl' => '"$1" бит "$2": $3 сорау алу',
+	'qp_results_line_qpl' => '"$1"  бит  "$2": $3, $4, $5, $6 сорау алу',
+	'qp_header_line_qpul' => '$1 [ "$2" бит "$3" сорау алу ]',
 );
 
 /** Ukrainian (Українська)

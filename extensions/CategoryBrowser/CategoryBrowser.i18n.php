@@ -173,9 +173,20 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'categorybrowser' => 'Merdeer rummadoù',
+	'categorybrowser-desc' => 'A ro ur [[Special:CategoryBrowser|bajenn ispisial]] evit silañ ar brasañ eus ar rummadoù ha gellet merdeiñ enno en ur implijout an etrefas AJAX',
+	'cb_requires_javascript' => "Merdeer ar rummadoù a c'houlenn ma vefe aotreet JavaScript gant ar merdeer web.",
+	'cb_ie6_warning' => "Ne za ket en-dro an embanner amplegadek en Internet Explorer 6.0 pe gant stummoù koshañ.
+Koulskoude, merdeadur an amplegadek raktermenet a rankfe mont-en-dro d'un doare normal.
+Mar plij, cheñchit pe hizivit ho merdeer.",
+	'cb_show_no_parents_only' => 'Diskouez ar rummadoù emzivad',
+	'cb_cat_name_filter' => "O klask war-lec'h rummadoù hervez o anv :",
+	'cb_cat_name_filter_clear' => 'Pouezit evit dizober sil anv ar rummad',
+	'cb_copy_line_hint' => 'Implijit ar boutonoù [+] ha [>+] evit eilañ ha pegañ an oberataerioù er jedad dibabet',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|isrummad|isrummad}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|pajenn|pajenn}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|restr|restr}}',
+	'cb_has_parentcategories' => 'Usrummadoù (ma vez reoù)',
 	'cb_previous_items_link' => 'Kent',
 	'cb_next_items_link' => "War-lerc'h",
 	'cb_next_items_stats' => '(eus $1)',
@@ -189,6 +200,11 @@ $messages['br'] = array(
 	'cb_edit_left_hint' => "Dilec'hiañ a-gleiz, mard eo posubl",
 	'cb_edit_right_hint' => "Dilec'hiañ a-zehoù, mard eo posubl",
 	'cb_edit_remove_hint' => 'Lemel, mard eo posubl',
+	'cb_edit_copy_hint' => 'Eilañ an oberataer er golver',
+	'cb_edit_append_hint' => "Ensoc'hañ an oberataer er plas diwezhañ",
+	'cb_edit_clear_hint' => 'Dizober ar jedad-mañ (dibab pep tra)',
+	'cb_edit_paste_hint' => 'Pegañ an oberataer amañ, mard eo posubl',
+	'cb_edit_paste_right_hint' => "Pegañ an oberataer d'al lec'hiadur war-lec'h, mard eo posubl",
 );
 
 /** Bosnian (Bosanski)
@@ -396,18 +412,19 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 );
 
 /** Japanese (日本語)
+ * @author Tommy6
  * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'categorybrowser' => 'カテゴリーブラウザ',
 	'categorybrowser-desc' => '最もページなどが格納されたカテゴリをフィルターにかけ、それらをAJAXを使ったインターフェースで案内する[[Special:CategoryBrowser|特別ページ]]を提供する',
-	'cb_requires_javascript' => 'カテゴリーブラウザの拡張にはブラウザ上で有効にされたJavaScriptが必要である。',
+	'cb_requires_javascript' => 'カテゴリブラウザを利用するにはブラウザのJavaScriptを有効にする必要があります。',
 	'cb_ie6_warning' => '条件エディタはInternet Explorer 6.0以前のバージョンでは稼働しません。
 ただし、事前に定義された条件のブラウジングは正常に稼働するでしょう。 
 もし、可能であればブラウザを変更するか、アップデートしてください。',
-	'cb_show_no_parents_only' => '親のないカテゴリーのみを表示する',
-	'cb_cat_name_filter' => '名前によるカテゴリーの検索',
+	'cb_show_no_parents_only' => '親のないカテゴリのみを表示する',
+	'cb_cat_name_filter' => '名前によるカテゴリの検索:',
 	'cb_cat_name_filter_clear' => 'カテゴリ名フィルターをクリアするために押す',
 	'cb_cat_name_filter_ci' => '大文字、小文字を区別しない場合',
 	'cb_copy_line_hint' => '選択された式に演算子をコピーまたはペーストする場合は、[+] と[>+]ボタンを使用する',

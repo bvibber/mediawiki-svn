@@ -61,9 +61,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
+	'articletocategory2-desc' => "Ouzhpenn ur bouest ec'hank e pep pajenn rummad hag a ro ar gwir da grouiñ ur bajenn nevez er rummad-se",
 	'articletocategory2-create-article-under-category-text' => "Ouzhpennañ ur bajenn d'ar rummad-mañ",
 	'articletocategory2-create-article-under-category-button' => 'Krouiñ',
 	'articletocategory2-create-category-under-category-text' => "Ouzhpennañ ur rummad d'ar rummad-mañ",

@@ -229,19 +229,29 @@ Si tu vole leger le responsa in contexto, visita <$4>.',
 /** Japanese (日本語)
  * @author Aphaia
  * @author Yanajin66
+ * @author 青子守歌
  */
 $messages['ja'] = array(
-	'reflect-desc' => '補強スレッドのコメント',
+	'reflect-desc' => 'スレッドでのコメントの拡張',
 	'reflect-bulleted' => 'こんにちは $1さん。
 
-$2はスレッド"$3"でのあなたの論点の要約です。
+$2はスレッド「$3」での$1さんの投稿の要約です。
 
-要約は以下のとおりです。: "$5"
+要約は以下のとおりです：「$5」
 
-<$4>で、$2があなたの論点を正しくとらえているかどうか確認できます。
+<$4>で、$2があなたの投稿の論点を正しくとらえているかどうか確認できます。
 
 もし、間違いがあれば、論点を説明しなおすことができます。',
-	'reflect-bulleted-subject' => '[{{サイト名}}]  あなたの論点は$2によって要約されました。',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] 投稿が$2によって要約されました。',
+	'reflect-responded' => 'こんにちは、$1さん。
+
+$2が、彼らの投稿の論点に関する、$1さんの要約に返答しました。
+
+作成された要約：「$6」
+彼らの返答メッセージ：「$5」
+
+この返答をスレッド中で読むには、<$4>をご覧ください。',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2が、要約の箇条書きに返答しました',
 );
 
 /** Colognian (Ripoarisch)

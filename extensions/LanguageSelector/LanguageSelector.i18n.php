@@ -788,10 +788,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author MF-Warburg
  */
 $messages['pt-br'] = array(
-	'languageselector' => 'Idioma',
+	'languageselector' => 'Língua',
 	'languageselector-desc' => 'Seletor de língua em todas as páginas, também para visitantes',
 	'languageselector-setlang' => 'selecionar',
 );
