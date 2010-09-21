@@ -17,7 +17,7 @@
  */
 
 if ( !defined( 'MEDIAWIKI' ) )
-    die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
+	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -76,7 +76,7 @@ class mwQrCode {
 		$parser = array_shift($params);
 
 		foreach( $params as $pair ) {
-	        $rpms = explode( '=', $pair );
+			$rpms = explode( '=', $pair );
 			if( $rpms[0] == 'ecc' ) $this->_ecc = $rpms[1];
 			if( $rpms[0] == 'size' ) $this->_size = $rpms[1];
 			if( $rpms[0] == 'boundary' ) $this->_boundary = $rpms[1];
@@ -126,8 +126,8 @@ class mwQrCode {
 	 * @return user object
 	 * */
 	private function _getBot(){
-    	global $wgQrCodeBot;
-     
+		global $wgQrCodeBot;
+	 
 		// there doesn't seem to be a decent method for checking if a user already exists...
 		$bot = User::createNew( $wgQrCodeBot );
 		if( $bot != null ){
@@ -139,7 +139,7 @@ class mwQrCode {
 			$bot->addGroup( 'bot' );
 
 		return $bot;
-     }
+	 }
 
 	/**
 	 * Handle mediawiki file repositories
