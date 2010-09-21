@@ -86,6 +86,31 @@ Rufe <$4> auf, sofern du die Antwort im entsprechenden Zusammenhang lesen möcht
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 hat auf deine Zusammenfassung einer Aussage reagiert.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'reflect-bulleted' => 'Hallo $1,
+
+$2 hat eine Aussage aus Ihrem Beitrag zum Thema „$3“ zusammengefasst.
+
+Die Zusammenfassung lautet: „$5“.
+
+Sie können überprüfen, ob $2 Ihre Aussage richtig verstanden hat, indem Sie <$4> aufrufen.
+
+Sofern ein Missverständnis vorliegt, können Sie Ihre Aussage klarstellen.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Ihr Beitrag wurde von $2 zusammengefasst',
+	'reflect-responded' => 'Hallo $1,
+
+$2 hat auf Ihre Zusammenfassung zu einer Aussage in seinem Beitrag reagiert.
+
+Die Zusammenfassung, die Sie erstellt haben: „$6“.
+Dessen Nachricht: „$5“.
+
+Rufen Sie <$4> auf, sofern Sie die Antwort im entsprechenden Zusammenhang lesen möchten.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 hat auf Ihre Zusammenfassung einer Aussage reagiert.',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

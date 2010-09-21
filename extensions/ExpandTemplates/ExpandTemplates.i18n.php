@@ -1710,7 +1710,7 @@ $messages['ru'] = array(
 	'expand_templates_preview' => 'Предпросмотр',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

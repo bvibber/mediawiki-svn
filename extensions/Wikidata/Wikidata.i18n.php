@@ -2966,12 +2966,13 @@ Bitte kontaktiere den Serveradminstrator.',
  * @author ChrisiPK
  * @author Imre
  * @author Kghbln
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'langman_not_allowed' => 'Sie haben nicht die Berechtigung die Spracheneinstellungen zu ändern.',
 	'langman_header' => 'Geben Sie den Sprachencode ein und darunter seinen englischsprachigen Namen:',
-	'importlangnames_not_allowed' => 'Sie haben keine Berechtigung um Sprachennamen zu importieren.',
+	'importlangnames_not_allowed' => 'Sie haben nich die Berechtigung, Sprachennamen zu importieren.',
 	'ow_importtsv_header' => '<p>Definitionen und Übersetzungen aus einer Textdatei, die Tabulatoren als Trenner verwendet, importieren. Diese Datei kann aus OpenOffice.org, Excel oder einem anderen Tabellenkalkulationsprogramm exportiert sein.</p>
 <p>Das Format der Datei muss mit dem Format der Dateien übereinstimmen, die auf der [[Special:ExportTSV|ExportTSV]]-Seite exportiert werden können. Wenn Sie die Spaltennamen geändert haben, wird der Import fehlschlagen. Wenn Sie die ID oder den bestimmenden Ausdruck einer festgelegten Bedeutung geändert haben, wird diese Zeile ignoriert werden. Wenn Sie Spalten hinzugefügt haben, müssen diese „definitions_iso“ oder „translations_iso“ heißen, wobei „iso“ ein ISO 693-3-Sprachcode ist.</p>
 <p>Wenn das „Testlauf“-Häkchen gesetzt ist, werden alle Änderungen, die vorgenommen werden würden, gemeldet, aber keine Änderungen wirklich durchgeführt. Es wird empfohlen, vor dem eigentlichen Import einen Testlauf durchzuführen.</p>',
@@ -11630,7 +11631,7 @@ $messages['ru'] = array(
 	'ow_shown_datasets' => 'Показанные наборы данных',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

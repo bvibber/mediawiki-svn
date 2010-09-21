@@ -2019,7 +2019,7 @@ $messages['ru'] = array(
 	'right-viewsystemstats' => 'просмотр [[Special:UserStats|статистики использования вики]]',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

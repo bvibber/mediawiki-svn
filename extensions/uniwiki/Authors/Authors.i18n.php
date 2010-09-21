@@ -543,7 +543,7 @@ $messages['ru'] = array(
 	'authors_anonymous' => 'Аноним',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

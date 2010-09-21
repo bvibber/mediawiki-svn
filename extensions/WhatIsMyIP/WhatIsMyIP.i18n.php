@@ -706,7 +706,7 @@ $messages['ru'] = array(
 	'right-whatismyip' => 'просмотр [[Special:WhatIsMyIP|собственного IP-адреса]]',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

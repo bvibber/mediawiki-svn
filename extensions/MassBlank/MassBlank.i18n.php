@@ -488,7 +488,7 @@ $messages['ru'] = array(
 	'right-massblank' => 'массовая очистка страниц',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

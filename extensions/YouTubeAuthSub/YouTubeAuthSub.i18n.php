@@ -2896,7 +2896,7 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

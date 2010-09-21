@@ -369,10 +369,11 @@ Stelle sicher, dass du nicht komplette Domains blockierst, die separate Benutzer
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'spamdifftool_cantedit' => 'Sie haben keine Berechtigung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool_cantedit' => 'Sie haben nicht die Berechtigung, die Spam-Blacklist zu bearbeiten.',
 	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicken Sie <a href='$1'>hier</a>, um fortzufahren.",
 	'spamdifftool_confirm' => "Bestätigen Sie, dass Sie diese Einträge der Spam-Blacklist hinzufügen möchten.
 (Klicken Sie <a href='$1' target='new'>hier</a>, um ein Problem zu melden.)",

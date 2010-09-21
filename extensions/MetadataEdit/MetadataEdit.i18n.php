@@ -997,7 +997,7 @@ $messages['ru'] = array(
 	'metadata_help' => 'Метаданные:',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

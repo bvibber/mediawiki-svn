@@ -1217,7 +1217,7 @@ $messages['ru'] = array(
 	'scanset_prev' => '&lt; Предыдущая',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

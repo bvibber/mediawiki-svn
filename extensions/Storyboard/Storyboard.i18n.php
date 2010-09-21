@@ -1972,7 +1972,7 @@ $messages['ru'] = array(
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

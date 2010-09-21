@@ -4055,7 +4055,7 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

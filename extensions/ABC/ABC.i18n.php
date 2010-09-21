@@ -819,7 +819,7 @@ $messages['ru'] = array(
 	'abcdownload' => 'Загрузить:',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

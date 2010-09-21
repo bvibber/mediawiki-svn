@@ -971,7 +971,7 @@ $messages['ru'] = array(
 	'fundraiserportal-tourmaline-close' => 'Больше не показывать',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

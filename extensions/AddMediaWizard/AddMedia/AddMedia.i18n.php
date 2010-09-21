@@ -1696,6 +1696,7 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author F.trott
  * @author Kghbln
  * @author The Evil IP address
  */
@@ -1704,18 +1705,26 @@ $messages['de-formal'] = array(
 	'mwe-fileexists' => 'Eine Datei dieses Namens ist bereits vorhanden. Bitte prüfen Sie <b><tt>$1</tt></b>, sofern Sie sich nicht sicher sind, ob Sie sie ersetzen möchten.',
 	'mwe-wgfogg_warning_bad_extension' => 'Sie haben eine Datei mit einer nicht unterstützten Erweiterung ausgewählt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">mehr Informationen</a>).',
 	'fogg-wont-upload-to-server' => 'Hinweis: Ihre Video-Datei wird lokal verschlüsselt werden und auf keinen Server hochgeladen',
+	'fogg-videoQuality-help' => 'Wird verwendet, um die <i>visuelle Qualität</i> des kodierten Videos einzustellen. (Wird nicht verwendet, sofern Sie die Bitrate unten in den erweiterten Einstellungen ändern.)',
 	'fogg-audioQuality-help' => 'Wird verwendet, um die <i>akustische Qualität</i> kodierter Audiodateien einzustellen (Wird nicht verwendet, sofern Sie die Bitrate unten in den erweiterten Einstellungen ändern.).',
-	'mwe-ie-inline-upload' => 'Das Inline-Hochladen ist momentan für den Internet Explorer deaktiviert. Sie können $1, dann $2',
+	'fogg-title-help' => 'Ein Titel für Ihren Clip',
+	'mwe-error_not_loggedin' => 'Sie sind nicht angemeldet oder haben keine Hochladeberechtigungen.',
+	'mwe-error-not-loggedin-file' => 'Sie scheinen nicht eingeloggt zu sein oder es gab einen Fehler in der Software. Sie können sich $1 und es nochmal versuchen.',
+	'mwe-upload-once-done' => 'Bitte $1. Sobald Sie das Hochladen beendet haben, $2',
+	'mwe-upload-refresh' => 'aktualisieren Sie Ihre Liste der hochzuladenden Dateien',
+	'mwe-ie-inline-upload' => 'Das Inline-Hochladen ist momentan für den Internet Explorer deaktiviert. Sie können $1, danach $2',
 	'mwe-upload-done' => 'Ihr Upload <i>sollte</i> zugänglich sein.',
 	'mwe-no-import-by-url' => 'Dieser Benutzer oder dieses Wiki <b>kann keine</b> Dateien fremder URLs importieren. <p>Müssen Sie sich anmelden?</p><p>Verfügen Sie über das notwendige Benutzerrecht „upload_by_url“?<br />Wurde $1 bei diesem Wiki aktiviert?</p>',
 	'mwe-missing_desc_see_source' => 'Diese Datei verfügt über keine Beschreibung. Bitte sehen Sie sich [$1 die Quelle] an und helfen Sie mit, sie zu beschreiben.',
 	'mwe-your-recent-uploads' => 'Ihre bisherigen Uploads nach $1',
-	'mwe-not-logged-in-uploads' => 'Es kann sein, dass Sie nicht angemeldet sind, weswegen keine aktuellen Uploads angezeigt werden können. $1 Anmeldung und $2',
+	'mwe-not-logged-in-uploads' => 'Es kann sein, dass Sie nicht angemeldet sind, weswegen keine aktuellen Uploads angezeigt werden können. Bitte $1 und $2',
 	'mwe-ie-eye-permision' => 'Sofern Sie den Internet Explorer nutzen und angemeldet sind, müssen Sie gegebenenfalls Ihre Einstellung zur Privatsphäre anpassen',
+	'mwe-loggin-link' => 'melden Sie sich an',
 	'mwe-try-again-link' => 'versuchen Sie es erneut',
 	'mwe-do-more-modification' => 'Führen Sie mehr Anpassungen durch',
 	'mwe-warning-upload-to-commons' => '$1 empfiehlt das Hochladen nach Wikimedia Commons. Laden Sie erst lokal hoch, nachdem Sie $2 gelesen haben',
 	'rsd-search-timeout' => 'Die Suchanfrage konnte nicht abgeschlossen werden. Der Server könnte ausgefallen oder ausgelastet sein. Sie können es später noch einmal versuchen',
+	'fogg-please-install-install-linktext' => 'Installieren Sie Firefogg',
 	'fogg-use_latest_firefox' => 'Bitte installieren Sie zunächst $1. <i>Besuchen Sie danach diese Seite erneut, um die <b>Firefogg</b>-Erweiterung zu installieren.</i>',
 	'fogg-passthrough_mode' => 'Die von Ihnen ausgewählte Datei ist bereits eine Ogg-Datei oder keine Videodatei',
 	'fogg-warning-firebug' => '<b>Firebug</b> kann Konflikte mit <i>Firefogg</i> verursachen. Bitte deaktivieren Sie <b>Firebug</b> auf dieser Seite.',

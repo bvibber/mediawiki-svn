@@ -1319,7 +1319,7 @@ $messages['ru'] = array(
 	'contributors-nosuchpage' => 'Страница «$1» не существует.',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

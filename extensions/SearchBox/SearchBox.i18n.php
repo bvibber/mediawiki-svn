@@ -728,7 +728,7 @@ $messages['ru'] = array(
 	'searchbox-namespaces' => 'Пространства имён:',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

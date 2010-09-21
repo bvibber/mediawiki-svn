@@ -1197,7 +1197,7 @@ $messages['ru'] = array(
 	'player-goto-file' => 'файл',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

@@ -1248,7 +1248,7 @@ $messages['ru'] = array(
 	'countedits-nocontribs' => 'Нет правок в этой вики.',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

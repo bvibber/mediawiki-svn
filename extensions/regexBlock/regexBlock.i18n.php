@@ -2807,7 +2807,7 @@ $messages['ru'] = array(
 	'right-regexblock' => 'Запретить участникам редактировать во всех вики этой вики-фермы',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

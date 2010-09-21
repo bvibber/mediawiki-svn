@@ -4702,7 +4702,7 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-mars' => 'Марс',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $wgGoogleMapsMessages['rue'] = array(

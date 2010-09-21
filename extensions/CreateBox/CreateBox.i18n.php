@@ -724,7 +724,7 @@ $messages['ru'] = array(
 <createbox>break=no</createbox>",
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

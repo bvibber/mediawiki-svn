@@ -841,7 +841,7 @@ $messages['ru'] = array(
 	'right-findspam' => 'поиск недавно добавленного спама',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

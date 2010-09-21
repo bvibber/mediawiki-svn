@@ -1645,7 +1645,7 @@ $messages['ru'] = array(
 	'right-voteadmin' => 'просматривать результаты голосования',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

@@ -2352,7 +2352,7 @@ $messages['ru'] = array(
 	'right-crosswikiblock' => 'блокировка и разблокировка участников в других вики',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

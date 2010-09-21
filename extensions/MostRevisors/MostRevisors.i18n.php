@@ -770,7 +770,7 @@ $messages['ru'] = array(
 	'mostrevisors-viewcontributors' => 'Показать основных редакторов',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

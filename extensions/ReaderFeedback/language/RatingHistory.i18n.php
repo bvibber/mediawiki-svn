@@ -1940,7 +1940,7 @@ $messages['ru'] = array(
 	'right-feedback' => 'использование формы отзывов для оценки страниц',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

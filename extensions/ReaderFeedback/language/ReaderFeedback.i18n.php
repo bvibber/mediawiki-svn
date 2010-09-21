@@ -2169,7 +2169,7 @@ $messages['ru'] = array(
 	'readerfeedback-tt-review' => 'Отправить проверку',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

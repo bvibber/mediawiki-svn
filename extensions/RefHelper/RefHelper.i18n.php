@@ -1098,7 +1098,7 @@ $messages['ru'] = array(
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

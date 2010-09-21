@@ -1440,7 +1440,7 @@ $messages['ru'] = array(
 	'right-passwordreset' => 'сброс пароля участника ([[Special:PasswordReset|служебная страница]])',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

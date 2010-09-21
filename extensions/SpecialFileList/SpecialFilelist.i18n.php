@@ -745,7 +745,7 @@ $messages['ru'] = array(
 	'filelist-image-desc' => 'по убыванию',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

@@ -6124,7 +6124,7 @@ $messages['ru'] = array(
 	'wikilog-doc-import-comment' => 'Импортированная документация Викилога',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

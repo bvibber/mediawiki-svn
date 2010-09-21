@@ -1532,7 +1532,7 @@ $messages['ru'] = array(
 	'sitematrix-fishbowl' => 'редактирование ограничено',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

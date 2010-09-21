@@ -644,7 +644,7 @@ $messages['ru'] = array(
 	'uos-title' => 'Распределение значений пользовательской настройки $1',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

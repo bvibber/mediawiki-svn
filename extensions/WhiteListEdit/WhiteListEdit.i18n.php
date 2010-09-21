@@ -3131,7 +3131,7 @@ $2',
 	'group-manager-member' => 'управляющий',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
@@ -4020,7 +4020,7 @@ $messages['zh-tw'] = array(
 	'whitelistedit' => '授權名單內的編輯用戶',
 	'whitelist' => '授權清單頁面',
 	'mywhitelistpages' => '我的頁面',
-	'whitelistfor' => '<center><b>$1</b>的當今訊息</center>',
+	'whitelistfor' => '<span style="text-align: center;"><b>$1</b>的當今訊息</span>',
 	'whitelisttablemodify' => '修訂',
 	'whitelisttablemodifyall' => '全部',
 	'whitelisttablemodifynone' => '無',

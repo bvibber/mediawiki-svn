@@ -1660,7 +1660,7 @@ $messages['ru'] = array(
 	'right-import_users' => 'импортировать сразу несколько участников',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

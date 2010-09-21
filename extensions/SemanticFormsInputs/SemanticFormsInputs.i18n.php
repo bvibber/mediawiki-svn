@@ -102,9 +102,9 @@ $messages['de'] = array(
 	'semanticformsinputs-prev' => 'Voriger Monat',
 	'semanticformsinputs-next' => 'Nächster Monat',
 	'semanticformsinputs-today' => 'Heute',
-	'semanticformsinputs-dateformatlong' => 'd. MM yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
-	'semanticformsinputs-dateformatshort' => 'dd.mm.yy', // see http://docs.jquery.com/UI/Datepicker/formatDate
-	'semanticformsinputs-firstdayofweek' => '1' // 0 - sunday, 1 - monday...
+	'semanticformsinputs-dateformatlong' => 'd. MM yy',
+	'semanticformsinputs-dateformatshort' => 'dd.mm.yy',
+	'semanticformsinputs-firstdayofweek' => '1',
 );
 
 /** Spanish (Español)

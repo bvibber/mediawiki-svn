@@ -7849,7 +7849,7 @@ $4',
 	'specialpages-group-developer' => 'Инструменты разработчика',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

@@ -401,7 +401,7 @@ $messages['ru'] = array(
 	'untidy' => 'Разупорядочить',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

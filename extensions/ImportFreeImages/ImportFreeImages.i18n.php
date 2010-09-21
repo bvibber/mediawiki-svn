@@ -1134,7 +1134,7 @@ $messages['ru'] = array(
 	'importfreeimages_size_original' => 'Исходный',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

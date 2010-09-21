@@ -1820,7 +1820,7 @@ $messages['ru'] = array(
 	'tag-logpagetext' => 'Это журнал добавления и удаления всех меток изображений.',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

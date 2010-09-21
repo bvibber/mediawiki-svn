@@ -2460,7 +2460,7 @@ $wgCustomToolbarMessages['ru'] = array(
 	'ct_user_sample' => 'Имя участника',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $wgCustomToolbarMessages['rue'] = array(

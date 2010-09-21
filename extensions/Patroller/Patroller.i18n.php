@@ -1665,7 +1665,7 @@ $messages['ru'] = array(
 	'right-patroller' => 'Патрулирование страниц',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

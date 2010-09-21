@@ -130,3 +130,10 @@ $messages['ru'] = array(
 	'rdfio-rdfimport-desc' => 'Специальная страница для импорта семантических данных в формате RDF/XML',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'rdfimport' => 'RDF импортлау',
+);
+

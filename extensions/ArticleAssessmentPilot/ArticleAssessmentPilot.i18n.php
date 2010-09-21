@@ -268,6 +268,32 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-survey-thanks' => 'Vielen Dank für deine Rückmeldung.',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Catrope
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'articleassessment-yourfeedback' => 'Ihre Rückmeldung',
+	'articleassessment-pleaserate' => 'Bitte nehmen Sie sich kurz Zeit diesen Artikel unten auf dieser Seite einzuschätzen.',
+	'articleassessment-rating-wellsourced-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel über genügend Quellenangaben verfügt und diese zudem aus vertrauenswürdigen Quellen stammen?',
+	'articleassessment-rating-neutrality-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel eine ausgewogene Darstellung aller mit dessen Inhalt verbundenen Aspekte enthält?',
+	'articleassessment-rating-completeness-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel alle wichtigen Aspekte enthält, die mit dessen Inhalt zusammenhängen?',
+	'articleassessment-rating-readability-tooltip' => 'Haben Sie den Eindruck, dass dieser Artikel gut strukturiert sowie geschrieben wurde?',
+	'articleassessment-error' => 'Ein Fehler ist aufgetreten.
+Bitte versuchen Sie es später erneut.',
+	'articleassessment-thanks' => 'Vielen Dank! Ihre Einschätzung wurde gespeichert.',
+	'articleassessment-featurefeedback' => 'Geben Sie uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Funktion zur Einschätzung eines Artikels.',
+	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit Ihrer letzten Einschätzung ''bearbeitet''.
+Vielleicht möchten Sie ihn erneut einschätzen.",
+	'articleassessment-survey-question-whyrated' => 'Bitte lassen Sie uns wissen, warum Sie diesen Artikel heute eingeschätzt haben (Zutreffendes bitte ankreuzen):',
+	'articleassessment-survey-question-useful' => 'Glauben Sie, dass die abgegebenen Einschätzungen nützlich und verständlich sind?',
+	'articleassessment-survey-question-expert' => 'Halten Sie sich für kompetent auf dem Gebiet, mit dem sich der Inhalt dieses Artikels beschäftigt?',
+	'articleassessment-survey-question-expert-iftrue' => 'Können Sie Ihre Sachkenntnisse beschreiben?',
+	'articleassessment-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
+	'articleassessment-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
+	'articleassessment-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Peter17
@@ -358,6 +384,7 @@ Quizais queira avaliala novamente.",
 );
 
 /** Interlingua (Interlingua)
+ * @author Catrope
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -378,7 +405,7 @@ $messages['ia'] = array(
 	'articleassessment-error' => 'Un error ha occurrite.
 Per favor reproba plus tarde.',
 	'articleassessment-thanks' => 'Gratias! Tu evalutation ha essite salveguardate.',
-	'articleassessment-featurefeedback' => 'Da nos [[Special:Article Assessment Feedback|tu opinion]] super iste functionalitate.',
+	'articleassessment-featurefeedback' => 'Da nos <span class="feedbacklink">tu opinion</span> super iste functionalitate.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|evalutation|evalutationes}})',
 	'articleassessment-stalemessage-norevisioncount' => "Iste articulo ha essite ''re-elaborate'' post tu ultime evalutation.
 Es recommendate que tu lo re-evaluta.",
@@ -448,6 +475,7 @@ $messages['ja'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Catrope
  * @author Robby
  */
 $messages['lb'] = array(
@@ -468,7 +496,7 @@ $messages['lb'] = array(
 	'articleassessment-error' => 'Et ass e Feeler geschitt.
 Probéiert w.e.g. méi spéit nach emol.',
 	'articleassessment-thanks' => 'Merci! Är Bewäertung gouf gespäichert.',
-	'articleassessment-featurefeedback' => 'Gitt eis Äre [[Special:Article Assessment Feedback|Feedback]] vun dëser Fonctioun.',
+	'articleassessment-featurefeedback' => 'Gitt eis Äre <span class="feedbacklink">Feedback</span> vun dëser Fonctioun.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Bewäertung|Bewäertungen}})',
 	'articleassessment-stalemessage-norevisioncount' => "Dësen Artikel gouf zënter datt Dir e fir d'lescht nogekuckt hutt ''verännert''.
 Et kéint sinn datt dir en nei bewäerte wëllt.",
@@ -526,6 +554,7 @@ $messages['mk'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Catrope
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -547,7 +576,7 @@ $messages['nl'] = array(
 Probeer het later opnieuw.',
 	'articleassessment-thanks' => 'Bedankt!
 Uw beoordeling is opgeslagen.',
-	'articleassessment-featurefeedback' => 'Geef ons [[Special:ArticleAssessmentFeedback|terugkoppeling]] over deze functie.',
+	'articleassessment-featurefeedback' => 'Geef ons <span class="feedbacklink">terugkoppeling</span> over deze functie.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|beoordeling|beoordelingen}})',
 	'articleassessment-stalemessage-norevisioncount' => "Deze pagina is ''aangepast'' sinds uw beoordeling.
 Wilt u de pagina opnieuw beoordelen?",
@@ -749,6 +778,7 @@ Talvez queira voltar a avaliá-la.",
 );
 
 /** Russian (Русский)
+ * @author Catrope
  * @author MaxSem
  * @author Александр Сигачёв
  * @author Сrower
@@ -771,7 +801,7 @@ $messages['ru'] = array(
 	'articleassessment-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
 	'articleassessment-thanks' => 'Спасибо! Ваши оценки сохранены.',
-	'articleassessment-featurefeedback' => 'Сообщите [[Special:ArticleAssessmentFeedback|Ваше мнение]] об этой функции.',
+	'articleassessment-featurefeedback' => 'Сообщите <span class="feedbacklink">Ваше мнение</span> об этой функции.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL: $ 2 | оценка | оценки}})',
 	'articleassessment-stalemessage-norevisioncount' => 'Эта страница редактировалась после Вашего просмотра. 
 Вы можете оценить её еще раз.',

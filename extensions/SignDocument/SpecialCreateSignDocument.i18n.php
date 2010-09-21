@@ -1684,7 +1684,7 @@ $messages['ru'] = array(
 Это не может быть сделано ещё раз.',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

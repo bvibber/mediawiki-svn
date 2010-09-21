@@ -1332,7 +1332,7 @@ $messages['ru'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

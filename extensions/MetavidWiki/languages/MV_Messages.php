@@ -8724,7 +8724,7 @@ $mvMVDTypeDefaultDisp должен быть подмножеством $mvMVDTyp
 	'right-mv_edit_stream' => 'Править файлы потока',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

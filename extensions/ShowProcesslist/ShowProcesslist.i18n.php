@@ -921,7 +921,7 @@ $messages['ru'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

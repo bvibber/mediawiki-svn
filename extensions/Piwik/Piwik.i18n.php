@@ -543,7 +543,7 @@ $messages['ru'] = array(
 	'right-viewpiwik' => 'просмотр [[Special:Piwik|статистики Piwik]]',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

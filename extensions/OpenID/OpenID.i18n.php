@@ -4624,7 +4624,7 @@ OpenID позволяет вам заходить на различные веб
 	'openid-provider-label-other-username' => 'Введите ваше имя участника $1',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

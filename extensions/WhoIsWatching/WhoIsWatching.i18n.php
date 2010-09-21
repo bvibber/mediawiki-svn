@@ -725,7 +725,7 @@ $messages['ru'] = array(
 	'specialwhoiswatchingaddbtn' => 'Добавить выбранных участников',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(

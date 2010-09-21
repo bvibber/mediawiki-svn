@@ -1187,7 +1187,7 @@ $messages['ru'] = array(
 	'slippymap_clicktoactivate' => 'Нажмите, чтобы активировать карту',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
