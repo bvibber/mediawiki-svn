@@ -492,7 +492,7 @@
 			},
 			'withJUI': function( callback ) {
 				if ( typeof $.ui == 'undefined' ) {
-					$.getScript( wgScriptPath + '/extensions/UsabilityInitiative/js/js2stopgap/jui.combined.min.js', callback );
+					$.getScript( wgArticleAssessmentJUIPath, callback );
 				} else {
 					callback();
 				}

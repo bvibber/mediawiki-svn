@@ -32,6 +32,13 @@ class ArticleAssessmentPilotHooks {
 
 		return true;
 	}
+	
+	public static function addVariables( &$vars ) {
+		global $wgArticleAssessmentJUIPath, $wgExtensionAssetsPath;
+		$vars['wgArticleAssessmentJUIPath'] = $wgArticleAssessmentJUIPath ? $wgArticleAssessmentJUIPath :
+			"$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js";
+		return true;
+	}
 
 	/**
 	 * Make sure the tables exist for parser tests
@@ -77,6 +84,10 @@ class ArticleAssessmentPilotHooks {
 			);
 		}
 
+		global $wgArticleAssessmentNeedJUICSS;
+		if ( $wgArticleAssessmentNeedJUICSS ) {
+			self::$styleFiles[] = array( 'src' => 'css/jquery-ui-1.7.2.css', 'version' => '1.7.2y' );
+		}
 		foreach ( self::$styleFiles as $style ) {
 			$out->addExtensionStyle( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
@@ -109,7 +120,7 @@ class ArticleAssessmentPilotHooks {
 			'articleassessment-results-hide',
 			'articleassessment-survey-title',
 			'articleassessment-survey-thanks',
-			);
+		);
 
 		foreach ( self::$messages as $i => $message ) {
 			// TODO: Not parsing or even preprocessing the messages would be more efficient,

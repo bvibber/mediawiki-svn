@@ -11,6 +11,12 @@ $wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty string (as per default configuration)
 $wgArticleAssessmentCategory = '';
 
+// Path to jQuery UI
+$wgArticleAssessmentJUIPath = null; // Defaults to "$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js"
+
+// Set to false if jQuery UI's CSS is already included through other means
+$wgArticleAssessmentNeedJUICSS = true;
+
 // Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiQueryArticleAssessment'] = $dir . 'api/ApiQueryArticleAssessment.php';
@@ -23,6 +29,7 @@ $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables'
 
 // Hooks
 $wgHooks['BeforePageDisplay'][] = 'ArticleAssessmentPilotHooks::addResources';
+$wgHooks['MakeGlobalVariablesScript'][] = 'ArticleAssessmentPilotHooks::addVariables';
 
 // API modules
 $wgAPIListModules['articleassessment'] = 'ApiQueryArticleAssessment';
