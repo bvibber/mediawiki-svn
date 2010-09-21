@@ -74,16 +74,16 @@ class ClickTrackingHooks {
 	public static function resourceLoaderRegisterModules() {
 		ResourceLoader::register( array(
 			'jquery.clickTracking' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/jquery.clickTracking.js',
+				'scripts' => 'extensions/ClickTracking/modules/jquery.clickTracking.js',
 				'dependencies' => 'jquery.cookie',
 			) ),
 			'ext.clickTracking' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.js',
+				'scripts' => 'extensions/ClickTracking/modules/ext.clickTracking.js',
 				'dependencies' => 'jquery.clickTracking',
 			) ),
 			'ext.clickTracking.special' => new ResourceLoaderFileModule( array(
-				'scripts' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.special.js',
-				'styles' => 'extensions/UsabilityInitiative/ClickTracking/modules/ext.clickTracking.special.css',
+				'scripts' => 'extensions/ClickTracking/modules/ext.clickTracking.special.js',
+				'styles' => 'extensions/ClickTracking/modules/ext.clickTracking.special.css',
 				'dependencies' => array( 'jquery.ui.datepicker', 'jquery.ui.dialog' ),
 			) ),
 		) );
