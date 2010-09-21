@@ -102,6 +102,9 @@
 	float: right;
 	background: url(../images/question.gif) 0 50% no-repeat;
 }
+.article-assessment-wrapper .rating-field-hint:hover {
+	background: url(../images/question-hover.gif) 0 50% no-repeat;
+}
 
 .article-assessment-wrapper .article-assessment-flash {
 	float: left;
