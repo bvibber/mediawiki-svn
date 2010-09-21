@@ -28,20 +28,8 @@ class DoubleWiki {
 	 * Constructor
 	 */
 	function __construct() {
-		global $wgParser, $wgHooks;
-		$wgParser->setHook( 'iw_align' , array( &$this, 'iw_align' ) );
+		global $wgHooks;
 		$wgHooks['OutputPageBeforeHTML'][] = array( &$this, 'addMatchedText' );
-	}
-
-	/*
-	 * Wrap the list of matched phrases into a hidden element.
-	 */
-	function iw_align( $input, $args, $parser ) { 
-		if ( isset( $args['lang'] ) ) {
-			$lang = $args['lang'];
-			return "<div id=\"align-$lang\" style=\"display:none;\">\n" . trim( $input ). "\n</div>";
-		}
-		return '';
 	}
 
 	/*
@@ -51,7 +39,7 @@ class DoubleWiki {
 		$pattern = "/<div id=\"align-$lang\" style=\"display:none;\">\n<p>([^<]*?)<\/p>\n<\/div>/is"; 
 		if( ! preg_match( $pattern, $text, $m ) ) return ;
 		$text = str_replace( $m[1], '', $text );
-		$line_pattern = "/\s*([^\|\n]*?)\s*\|\s*([^\|\n]*?)\s*\n/i"; 
+		$line_pattern = "/\s*([^:\n]*?)\s*:\s*([^:\n]*?)\s*\n/i"; 
 		preg_match_all( $line_pattern, $m[1], $items, PREG_SET_ORDER );
 		foreach( $items as $n => $i ) {
 			$text = str_replace( $i[1], "<span id=\"dw-$n\" title=\"{$i[2]}\"/>".$i[1], $text );
