@@ -14,35 +14,50 @@
  * @copyright © 2007 Aran Dunkley
  * @licence GNU General Public Licence 2.0 or later
  */
-if (!defined('MEDIAWIKI')) die('Not an entry point.');
+if( !defined( 'MEDIAWIKI' ) ) die( "Not an entry point." );
 
-define('PDFBOOK_VERSION', '1.0.4, 2010-01-05');
+define( 'PDFBOOK_VERSION', "1.0.5, 2010-09-19" );
 
 $wgExtensionFunctions[]        = 'wfSetupPdfBook';
 $wgHooks['LanguageGetMagic'][] = 'wfPdfBookLanguageGetMagic';
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
-	'name'	      => 'PdfBook',
-	'author'      => '[http://www.organicdesign.co.nz/nad User:Nad]',
-	'description' => 'Composes a book from articles in a category and exports as a PDF book',
-	'url'	      => 'http://www.mediawiki.org/wiki/Extension:PdfBook',
+	'name'	      => "PdfBook",
+	'author'      => "[http://www.organicdesign.co.nz/nad User:Nad]",
+	'description' => "Composes a book from articles in a category and exports as a PDF book",
+	'url'	      => "http://www.mediawiki.org/wiki/Extension:PdfBook",
 	'version'     => PDFBOOK_VERSION
 );
+
+# Set this to true in LocalSettings to add PdfBook to the action tabs
+$wgPdfBookTab = false;
+
+# The text displayed in the pdf tab, can be set to another value in Localsettings.
+$wgTabText = 'PDF';
+
 
 class PdfBook {
 
 	function __construct() {
 		global $wgHooks, $wgParser, $wgPdfBookMagic;
-		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
+		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgPdfBookTab;
 		$wgHooks['UnknownAction'][] = $this;
+
+		# Hooks for pre-Vector and Vector addtabs.
+		if ( $wgPdfBookTab ) {
+			$wgHooks['SkinTemplateTabs'][] = $this ;
+			$wgHooks['SkinTemplateNavigation'][] = $this;
+		}
 
 		# Add a new pdf log type
 		$wgLogTypes[]             = 'pdf';
 		$wgLogNames  ['pdf']      = 'pdflogpage';
 		$wgLogHeaders['pdf']      = 'pdflogpagetext';
 		$wgLogActions['pdf/book'] = 'pdflogentry';
+
 	}
+
 
 	/**
 	 * Perform the export operation
@@ -51,13 +66,13 @@ class PdfBook {
 		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgRequest;
 		global $wgServer, $wgArticlePath, $wgScriptPath, $wgUploadPath, $wgUploadDirectory, $wgScript;
 
-		if ($action == 'pdfbook') {
+		if( $action == 'pdfbook' ) {
 
 			$title = $article->getTitle();
 			$opt = ParserOptions::newFromUser( $wgUser );
 
 			# Log the export
-			$msg = $wgUser->getUserPage()->getPrefixedText().' exported as a PDF book';
+			$msg = $wgUser->getUserPage()->getPrefixedText() . " exported as a PDF book";
 			$log = new LogPage( 'pdf', false );
 			$log->addEntry( 'book', $wgTitle, $msg );
 
@@ -77,10 +92,10 @@ class PdfBook {
 			$exclude = $this->setProperty( 'Exclude',     array() );
 			$width   = $this->setProperty( 'Width',       '' );
 			$width   = $width ? "--browserwidth $width" : '';
-			if ( !is_array( $exclude ) ) $exclude = split( '\\s*,\\s*', $exclude );
+			if( !is_array( $exclude ) ) $exclude = split( '\\s*,\\s*', $exclude );
  
 			# Select articles from members if a category or links in content if not
-			if ( $format == 'single' ) $articles = array( $title );
+			if( $format == 'single' ) $articles = array( $title );
 			else {
 				$articles = array();
 				if ( $title->getNamespace() == NS_CATEGORY ) {
@@ -99,7 +114,7 @@ class PdfBook {
 				else {
 					$text = $article->fetchContent();
 					$text = $wgParser->preprocess( $text, $title, $opt );
-					if ( preg_match_all( '/^\\*\\s*\\[{2}\\s*([^\\|\\]]+)\\s*.*?\\]{2}/m', $text, $links ) )
+					if ( preg_match_all( "/^\\*\\s*\\[{2}\\s*([^\\|\\]]+)\\s*.*?\\]{2}/m", $text, $links ) )
 						foreach ( $links[1] as $link ) $articles[] = Title::newFromText( $link );
 				}
 			}
@@ -116,25 +131,24 @@ class PdfBook {
 				if ( !in_array( $ttext, $exclude ) ) {
 					$article = new Article( $title );
 					$text    = $article->fetchContent();
-					$text    = preg_replace( '/<!--([^@]+?)-->/s', '@@'.'@@$1@@'.'@@', $text ); # preserve HTML comments
-					if ( $format != 'single' ) $text .= '__NOTOC__';
+					$text    = preg_replace( "/<!--([^@]+?)-->/s", "@@" . "@@$1@@" . "@@", $text ); # preserve HTML comments
+					if ( $format != 'single' ) $text .= "__NOTOC__";
 					$opt->setEditSection( false );    # remove section-edit links
 					$wgOut->setHTMLTitle( $ttext );   # use this so DISPLAYTITLE magic works
 					$out     = $wgParser->parse( $text, $title, $opt, true, true );
 					$ttext   = $wgOut->getHTMLTitle();
 					$text    = $out->getText();
-					$text    = preg_replace( '|(<img[^>]+?src=")(/.+?>)|', "$1$wgServer$2", $text );       # make image urls absolute
-					$text    = preg_replace( '|<div\s*class=[\'"]?noprint["\']?>.+?</div>|s', '', $text ); # non-printable areas
-					$text    = preg_replace( '|@{4}([^@]+?)@{4}|s', '<!--$1-->', $text );                  # HTML comments hack
-					#$text    = preg_replace('|<table|', '<table border borderwidth=2 cellpadding=3 cellspacing=0', $text);
+					$text    = preg_replace( "|(<img[^>]+?src=\")(/.+?>)|", "$1$wgServer$2", $text );      # make image urls absolute
+					$text    = preg_replace( "|<div\s*class=['\"]?noprint[\"']?>.+?</div>|s", "", $text ); # non-printable areas
+					$text    = preg_replace( "|@{4}([^@]+?)@{4}|s", "<!--$1-->", $text );                  # HTML comments hack
 					$ttext   = basename($ttext);
-					$h1      = $notitle ? '' : "<center><h1>$ttext</h1></center>";
-					$html   .= utf8_decode("$h1$text\n");
+					$h1      = $notitle ? "" : "<center><h1>$ttext</h1></center>";
+					$html   .= utf8_decode( "$h1$text\n" );
 				}
 			}
 
 			# If format=html in query-string, return html content directly
-			if ( $format == 'html' ) {
+			if( $format == 'html' ) {
 				$wgOut->disable();
 				header( "Content-Type: text/html" );
 				header( "Content-Disposition: attachment; filename=\"$book.html\"" );
@@ -147,8 +161,8 @@ class PdfBook {
 				fwrite( $fh, $html );
 				fclose( $fh );
 
-				$footer = $format == 'single' ? '...' : '.1.';
-				$toc    = $format == 'single' ? '' : " --toclevels $levels";
+				$footer = $format == 'single' ? "..." : ".1.";
+				$toc    = $format == 'single' ? "" : " --toclevels $levels";
 
 				# Send the file to the client via htmldoc converter
 				$wgOut->disable();
@@ -165,9 +179,10 @@ class PdfBook {
 			}
 			return false;
 		}
-	
+
 		return true;
 	}
+
 
 	/**
 	 * Return a property for htmldoc using global, request or passed default
@@ -179,11 +194,35 @@ class PdfBook {
 		return $default;
 	}
 
+
 	/**
-	 * Needed in some versions to prevent Special:Version from breaking
+	 * Add PDF to actions tabs in MonoBook based skins
 	 */
-	function __toString() { return 'PdfBook'; }
+	function onSkinTemplateTabs( &$skin, &$actions) {
+		global $wgTitle, $wgTabText;
+		$actions['pdfbook'] = array(
+			'class' => false,
+			'text' => $wgTabText,
+			'href' => $wgTitle->getLocalURL( "action=pdfbook&format=single" ),
+		);
+		return true;
+	}
+
+
+	/**
+	 * Add PDF to actions tabs in vector based skins
+	 */
+	function onSkinTemplateNavigation( &$skin, &$actions ) {
+		global $wgTitle, $wgTabText;
+		$actions['views']['pdfbook'] = array(
+			'class' => false,
+			'text' => $wgTabText,
+			'href' => $wgTitle->getLocalURL( "action=pdfbook&format=single" ),
+		);
+		return true;
+	}
 }
+
 
 /**
  * Called from $wgExtensionFunctions array when initialising extensions
@@ -192,6 +231,7 @@ function wfSetupPdfBook() {
 	global $wgPdfBook;
 	$wgPdfBook = new PdfBook();
 }
+
 
 /**
  * Needed in MediaWiki >1.8.0 for magic word hooks to work properly
