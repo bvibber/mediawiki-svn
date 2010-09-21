@@ -670,7 +670,6 @@ class MessageCache {
 			$popts = $this->getParserOptions();
 			$popts->setInterfaceMessage( $interface );
 			$popts->setTargetLanguage( $language );
-			$popts->setUserLang( $language );
 			$message = $this->mParser->transformMsg( $message, $popts );
 		}
 		return $message;
