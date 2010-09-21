@@ -1,17 +1,16 @@
-# Looking for WikiEditor or Vector extensions? They've been moved to extensions/WikiEditor and extensions/Vector
-# respectively. These remaining extensions have been ported to either no longer depend on the now removed code in
-# UsabilityInitiative.php. This process has left some of these extensions incompatible with MediaWiki prior to 1.17.
-# For 1.16 compatible versions (which are no longer under active development but can be used to fixing bugs on existing
-# deployments) please see the branches/usability-initiative-1_16/ (which has the latest patches) or the
-# branches/REL1_16/extensions/UsabilityInitiative branches.
+# Looking for UsabilityInitiative extensions? They've been moved to their own folders in /trunk/extensions/. Most of
+# them have been ported to use ResourceLoader. This process has left some of these extensions incompatible with
+# MediaWiki prior to 1.17. For 1.16 compatible versions (which are no longer under active development but can be used to
+# fixing bugs on existing deployments) please see the branches/usability-initiative-1_16/ (which has the latest patches)
+# or the branches/REL1_16/extensions/UsabilityInitiative branches.
 
 # Dependent on 1.17
 # * ClickTracking
 # * PrefSwitch
+# * Vector
+# * WikiEditor
 
 # Not dependent on 1.17
 # * DontSwitchMeOver
 # * PrefStats
 # * UserDailyContribs
-
-# These extensions should eventually be moved from /extensions/UsabilityInitiative/ to /extensions/
