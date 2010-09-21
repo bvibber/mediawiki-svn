@@ -335,6 +335,8 @@ function mwLoadPlayer( callback ){
 	}
 	
 	loadMwEmbed( jsPlayerRequest, function() {
+		// hide the novideojs if present
+		$j( '.videonojs' ).hide();
 		callback();
 	});
 }
