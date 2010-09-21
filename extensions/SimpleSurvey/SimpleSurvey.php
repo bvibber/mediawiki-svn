@@ -3,8 +3,11 @@
 $dir = dirname( __FILE__ ) . '/';
 
 // from prefswitch in usability initiative
-require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/UsabilityInitiative.php" );
 $prefswitchdir = dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch";
+
+// Use this to override the URL of ext.prefSwitch.{js,css} if needed
+$wgSimpleSurveyJSPath = null;
+$wgSimpleSurveyCSSPath = null;
 
 // Adds Autoload Classes
 $wgAutoloadClasses = array_merge(

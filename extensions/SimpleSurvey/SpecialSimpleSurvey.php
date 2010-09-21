@@ -87,9 +87,13 @@ class SpecialSimpleSurvey extends SpecialPage {
 
 		// Begin output
 		$this->setHeaders();
-		UsabilityInitiativeHooks::initialize();
-		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
-		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
+		
+		global $wgExtensionAssetsPath, $wgSimpleSurveyJSPath, $wgSimpleSurveyCSSPath;
+		$script = Html::linkedScript( wfAppendQuery( $wgSimpleSurveyJSPath ? $wgSimpleSurveyJSPath :
+			"$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.js", $wgPrefSwitchStyleVersion ) );
+		$wgOut->addScript( $script );
+		$wgOut->addExtensionStyle( wfAppendQuery( $wgSimpleSurveyCSSPath ? $wgSimpleSurveyCSSPath :
+			"$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.css", $wgPrefSwitchStyleVersion ) );
 		
 		// Handle various modes
 		$renderedSurvey = $this->render( $wgRequest->getVal( "survey" ) );
@@ -102,10 +106,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		// Only output the <form> and the <script>
 		if ( $wgRequest->getBool( 'raw' ) ) {
 			$wgOut->disable();
-			echo $renderedSurvey;
-			
-			global $wgExtensionAssetsPath;
-			echo Html::linkedScript( "$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/PrefSwitch.js?$wgPrefSwitchStyleVersion" );
+			echo $renderedSurvey . $script;
 		}
 	}
 
