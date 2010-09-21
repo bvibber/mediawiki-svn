@@ -52,7 +52,7 @@ class RecordAdmin {
 	 * Add record forms to page edit view
 	 */
 	function onEditPage( $editPage ) {
-		global $wgOut, $wgJsMimeType;
+		global $wgOut, $wgJsMimeType, $wgStylePath;
 
 		# Extract each of the top-level template calls in the content that have associated forms
 		# - note multiple records are now allowed in an article, but only one of each type
@@ -62,7 +62,7 @@ class RecordAdmin {
 			if( $brace['DEPTH'] == 2 ) {
 				$name = $brace['NAME'];
 				$form = Title::newFromText( $name, NS_FORM );
-				if( $form->exists() ) {
+				if( is_object( $form ) && $form->exists() ) {
 					$offset = $brace['OFFSET'];
 					$length = $brace['LENGTH'];
 					$records[$name] = substr( $content, $offset, $length );
@@ -74,6 +74,9 @@ class RecordAdmin {
 
 		# If any were found, remove them from the textbox and render their forms instead
 		if( $count > 0 ) {
+
+			# Add the prefs JS for the tabset
+			$wgOut->addScript( "<script src=\"$wgStylePath/common/prefs.js?269\"></script>" );
 
 			$editPage->textbox1 = str_replace( "\x07", "", $content );
 
