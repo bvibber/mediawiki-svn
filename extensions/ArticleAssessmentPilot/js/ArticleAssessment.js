@@ -55,8 +55,7 @@
 						<span class="article-assessment-rating-field-value">0%</span> \
 					</span> \
 					<span class="article-assessment-rating-count"></span> \
-				</div>',
-			'staleMSG': '<span class="article-assessment-stale-msg"></span>'
+				</div>'
 		},
 		
 		'fn' : {
@@ -132,6 +131,12 @@
 					.find( '.article-assessment-submit input' )
 						.attr( "value", submitbutton )
 					.end();
+				// hide the feedback link if we need to
+				if( $.cookie( 'mwArticleAssessmentHideFeedback' ) ) {
+					$structure
+						.find( '.article-assessment-rate-feedback' )
+						.hide();
+				}
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
 					var $field = $( settings.fieldHTML ),
 						$rating = $( settings.ratingHTML ),
@@ -279,8 +284,11 @@
 							.find( '.article-assessment-rating-count' )
 							.text( label );
 						if( rating.userrating ) {
+							// this user rated. Word. Show them their ratings
 							var $rateControl = $( '#' + rating.ratingdesc.replace( 'rating', 'rate' ) + ' .rating-field' );
 							$rateControl.stars( 'select', rating.userrating );
+							// oh let's show them the overall ratings too
+							$.ArticleAssessment.fn.showRatings();
 						}
 					}
 					// if the rating is more than 5 revisions old, mark it as stale
@@ -368,7 +376,7 @@
 					$( '#article-assessment .article-assessment-flash' ).remove();
 					var className = options['class'];
 					// create our new message
-					$msg = $( '<span />' )
+					$msg = $( '<div />' )
 						.addClass( 'article-assessment-flash' )
 						.html( text );
 					// if the class option was passed, add it
@@ -394,6 +402,7 @@
 								title: $.ArticleAssessment.fn.getMsg( 'articleassessment-survey-title' ),
 								close: function() {
 									$( this )
+										.dialog( 'option', 'height', 400 )
 										.find( '.article-assessment-success-msg, .article-assessment-error-msg' )
 										.remove()
 										.end()
@@ -420,7 +429,6 @@
 					.hide()
 					.end()
 					.addClass( 'loading' );
-				
 				// Submit straight to the special page. Yes, this is a dirty dirty hack
 				// Build request from form data
 				var formData = {};
@@ -450,23 +458,30 @@
 						// the submission was successful
 						var success = $( data ).find( '.simplesurvey-success' ).size() > 0;
 						// TODO: Style success-msg, error-msg
-						$( '<div />' )
+						var $msgDiv = $( '<div />' )
 							.addClass( success ? 'article-assessment-success-msg' : 'article-assessment-error-msg' )
 							.text( $.ArticleAssessment.fn.getMsg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
-						$dialogDiv.removeClass( 'loading' );
+						$dialogDiv
+							.dialog( 'option', 'height', $msgDiv.height() + 100 )
+							.removeClass( 'loading' );
 						if ( success ) {
 							// Hide the dialog link
 							$( '#article-assessment .article-assessment-rate-feedback' ).hide();
+							// set a cookie to keep the dialog link hidden
+							$.cookie( 'mwArticleAssessmentHideFeedback', true, { 'expires': 30, 'path': '/' } );
+							
 						}
 					},
 					error: function( XMLHttpRequest, textStatus, errorThrown ) {
 						// TODO: Duplicates code, factor out, maybe
-						$( '<div />' )
+						var $msgDiv = $( '<div />' )
 							.addClass( 'article-assessment-error-msg' )
 							.text( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
-						$dialogDiv.removeClass( 'loading' );
+						$dialogDiv
+							.dialog( 'option', 'height', $msgDiv.height() + 100 )
+							.removeClass( 'loading' );
 					}
 				} );
 				return false;

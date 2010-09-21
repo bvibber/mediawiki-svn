@@ -11,9 +11,6 @@
  * $Build: 35 (2010-05-01)
  *
  */
-.article-assessment-wrapper {
-	min-width: 1036px;
-}
 .article-assessment-wrapper .ui-stars-star {
 	float: left;
 	display: block;
@@ -188,6 +185,25 @@
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-name {
 	color: #9f9f9f;
 }
+
+/* Simple Survey Dialog Styling */
+#article-assessment-dialog.loading {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background: url( ../images/loading.gif ) center no-repeat;
+	text-indent: -9999px;
+	margin: 0 auto;
+}
+#article-assessment-dialog textarea {
+	margin-left: -2em;
+	padding-right: 2em;
+}
+.article-assessment-error-msg {
+	padding: 20px 0;
+}
+
+
 /* Self Clearing Floats */
 .article-assessment-wrapper .article-assessment-information:after,
 .article-assessment-wrapper .field-wrapper:after,
@@ -224,13 +240,4 @@
 .article-assessment-wrapper .article-assessment-submit,
 .article-assessment-wrapper .rating-fields {
 	display: block;
-}
-
-#article-assessment-dialog.loading {
-	display: block;
-	height: 24px;
-	width: 24px;
-	background: url( ../images/loading.gif ) center no-repeat;
-	text-indent: -9999px;
-	margin: 0 auto;
 }
