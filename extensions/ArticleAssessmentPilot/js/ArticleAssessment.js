@@ -90,7 +90,7 @@
 					articlerating = $.ArticleAssessment.fn.getMsg( 'articleassessment-articlerating' ),
 					resultshide = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-hide' ),
 					resultsshow = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-show' );
-				    submitbutton = $.ArticleAssessment.fn.getMsg( 'articleassessment-submit' );
+					submitbutton = $.ArticleAssessment.fn.getMsg( 'articleassessment-submit' );
 				$structure
 					.find( '#article-assessment-rate legend' )
 						.text( yourfeedback )
