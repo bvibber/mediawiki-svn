@@ -50,6 +50,7 @@ abstract class ApiBase {
 	const PARAM_MIN = 5; // Lowest value allowed for a parameter. Only applies if TYPE='integer'
 	const PARAM_ALLOW_DUPLICATES = 6; // Boolean, do we allow the same value to be set more than once when ISMULTI=true
 	const PARAM_DEPRECATED = 7; // Boolean, is the parameter deprecated (will show a warning)
+	const PARAM_REQUIRED = 8; // Boolean, is the parameter required?
 
 	const LIMIT_BIG1 = 500; // Fast query, std user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
@@ -299,6 +300,12 @@ abstract class ApiBase {
 					$paramSettings[self::PARAM_DEPRECATED] : false;
 				if ( $deprecated ) {
 					$desc = "DEPRECATED! $desc";
+				}
+				
+				$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ?
+					$paramSettings[self::PARAM_REQUIRED] : false;
+				if ( $required ) {
+					$desc .= $paramPrefix . "This parameter is required";
 				}
 
 				$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
@@ -565,6 +572,7 @@ abstract class ApiBase {
 			$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
 			$dupes = isset( $paramSettings[self::PARAM_ALLOW_DUPLICATES] ) ? $paramSettings[self::PARAM_ALLOW_DUPLICATES] : false;
 			$deprecated = isset( $paramSettings[self::PARAM_DEPRECATED] ) ? $paramSettings[self::PARAM_DEPRECATED] : false;
+			$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ? $paramSettings[self::PARAM_REQUIRED] : false;
 
 			// When type is not given, and no choices, the type is the same as $default
 			if ( !isset( $type ) ) {
@@ -672,6 +680,8 @@ abstract class ApiBase {
 			if ( $deprecated && $value !== false ) {
 				$this->setWarning( "The $encParamName parameter has been deprecated." );
 			}
+		} else if ( $required ) {
+			$this->dieUsageMsg( array( 'missingparam', $paramName ) );
 		}
 
 		return $value;
