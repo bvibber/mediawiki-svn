@@ -31,6 +31,7 @@ class RecordAdmin {
 
 		# Add the hooks to handle cache invalidation and edit-forms
 		$wgHooks['BeforePageDisplay'][] = $this;
+		$wgHooks['ArticleSave'][] = $this;
 		$wgHooks['ArticleSaveComplete'][] = $this;
 		$wgHooks['EditPage::showEditForm:initial'][] = array( $this, 'onEditPage' );
 
@@ -99,17 +100,23 @@ class RecordAdmin {
 						form = document.getElementById( type + '-form' );
 						tags = [ 'input', 'select', 'textarea' ];
 						for( j = 0; j < tags.length; j++ ) {
-							tag = tags[j]; alert(tag);
-							inputs = form.getElementsByTagName( tag );
+							inputs = form.getElementsByTagName( tags[j] );
 							for( k = 0; k < inputs.length; k++ ) {
 								input = inputs[k];
 								key = type + ':' + input.getAttribute('name');
-								//alert(key + ' = ' + input.value);
+								hidden = document.createElement( 'input' );
+								hidden.setAttribute( 'name', key );
+								hidden.setAttribute( 'type', 'hidden' );
+								hidden.value = escape( input.value );
+								document.getElementById( 'editform' ).appendChild( hidden );
 							}
 						}
 					}
 				}
-				addOnloadHook(raRecordForms);
+				function raAddToSubmit() {
+					document.getElementById( 'editform' ).setAttribute( 'onsubmit', 'raRecordForms()' );
+				}
+				addOnloadHook( raAddToSubmit );
 			</script>" );
 		}
 
@@ -122,12 +129,13 @@ class RecordAdmin {
 	 * Incorprate any posted record form's data into the article wikitext before saving
 	 */
 	function onArticleSave( &$article, &$user, &$text ) {
-		global $wgRequest;
-		
+
 		# Organise the posted record data
 		$data = array();
-		foreach( $wgRequest->getArray( 'ra_forms' ) as $key => $value ) {
+		foreach( $_REQUEST as $key => $value ) {
 			if( preg_match( "|(.+):ra_(.+)|", $key, $m ) ) {
+				if( is_array( $value ) ) $value = join( "\n", $value );
+				$value = urldecode( $value );
 				list( $key, $type, $field ) = $m;
 				array_key_exists( $type, $data ) ? $data[$type][$field] = $value : $data[$type] = array( $field => $value );
 			}

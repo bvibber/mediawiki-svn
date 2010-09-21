@@ -36,10 +36,7 @@ $messages['en'] = array(
 	'recordadmin-buttonreset' => 'Reset',
 	'recordadmin-searchresult' => 'Search results',
 	'recordadmin-nomatch' => 'No matching records found!',
-	'recordadmin-edit' => 'Editing $2 record "$1"',
 	'recordadmin-typeupdated' => '$1 properties updated',
-	'recordadmin-updatesuccess' => '$1 updated',
-	'recordadmin-updateerror' => 'An error occurred during update',
 	'recordadmin-buttonsave' => 'Save',
 	'recordadmin-noform' => 'There is no form associated with "$1" records!',
 	'recordadmin-createlink' => 'create one',
@@ -53,12 +50,11 @@ $messages['en'] = array(
 	'recordadmin-actions' => 'Edit',
 	'recordadmin-select' => 'Select',
 	'recordadmin-needscontent' => 'Add content...',
-	'recordadmin-editwithform' => 'Properties',
-	'recordadmin-typeinfo' => '$1 record',
 	'right-recordadmin' => 'Find and edit record pages',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No "$1"',
+	'recordadmin-edit-info' => 'This article contains templates which have their own forms which you can fill in from this tab-set',
 );
 
 /** Message documentation (Message documentation)
