@@ -1,9 +1,8 @@
-# Enhancements to the Vector skin
-#
-# This is a MediaWiki 1.17+ compatible version of the former UsabilityInitiative/Vector extension. The key differences
-# between these versions is in the usage of ResourceLoader.
-#
-# To get this working on your wiki
+# Vector provides enhancements to the Vector skin
+
+# This extension requires MediaWiki 1.17+ because it makes use of ResourceLoader.
+
+# Example LocalSettings.php additions
 
 require_once( "$IP/extensions/Vector/Vector.php" );
 
