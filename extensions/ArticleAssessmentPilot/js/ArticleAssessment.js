@@ -91,6 +91,7 @@
 					articlerating = $.ArticleAssessment.fn.getMsg( 'articleassessment-articlerating' ),
 					resultshide = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-hide' ),
 					resultsshow = $.ArticleAssessment.fn.getMsg( 'articleassessment-results-show' );
+				    submitbutton = $.ArticleAssessment.fn.getMsg( 'articleassessment-submit' );
 				$structure
 					.find( '#article-assessment-rate legend' )
 						.text( yourfeedback )
@@ -127,7 +128,10 @@
 									.click( $.ArticleAssessment.fn.hideRatings )
 								.end()
 							.end()
-						.end();
+						.end()
+					.find( '.article-assessment-submit input' )
+						.attr( "value", submitbutton )
+					.end();
 				for ( var i = 0; i < settings.fieldMessages.length; i++ ) { 
 					var $field = $( settings.fieldHTML ),
 						$rating = $( settings.ratingHTML ),
