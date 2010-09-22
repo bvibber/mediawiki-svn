@@ -80,9 +80,8 @@ class ArticleAssessmentPilotHooks {
 		global $wgRequest;
 
 		// Only show for view actions.
-		if ( $wgRequest->getVal( 'action' ) !== null && $wgRequest->getVal( 'action' ) !== 'view' ) {
-			return true;
-		} else if ( $wgRequest->getVal( 'diff' ) !== null) {
+		if ( $wgRequest->getVal( 'action', 'view' ) !== 'view' || $wgRequest->getCheck( 'diff' ) ||
+				$wgRequest->getCheck( 'oldid' ) ) {
 			return true;
 		}
 
