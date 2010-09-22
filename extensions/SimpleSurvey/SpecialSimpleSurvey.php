@@ -36,6 +36,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 
 	public function setToken() {
 		$this->tokenToCheck = wfGenerateToken( array( $this, time() ) );
+		wfSetupSession();
 		$_SESSION['wsSimpleSurveyToken'] = $this->tokenToCheck;
 	}
 
