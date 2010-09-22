@@ -5,6 +5,7 @@
  * @license: LGPL (GNU Lesser General Public License) http://www.gnu.org/licenses/lgpl.html
  *
  * @file QrCode.php
+ * @ingroup QrCode
  *
  * @author David Raison
  *
@@ -55,6 +56,14 @@ $wgQrCodeBot = 'QrCodeBot'; // Name of the 'uploading' user/bot
  * to OOP patterns.
  */
 function newQrCode() {
+	global $wgTitle;
+
+	// we're not generating QrCodes for pages in the "Special" namespace
+	// as that can lead to multiple "uploads" on i.e. Special:Ask 
+	if ( $wgTitle->getNamespace() === -1 ) {
+		return false;
+	}
+
 	$params = func_get_args();
 	$parser = array_shift($params);	// drop the parser
 
