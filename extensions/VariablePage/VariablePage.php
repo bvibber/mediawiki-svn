@@ -34,16 +34,7 @@ $wgExtensionCredits[ 'VariablePage' ][] = array(
  *			'http://foo.com/bar' => 90,
  *		);
  */
-$wgVariablePagePossibilities = array(
-	'http://wikimediafoundation.org/wiki/Support_Wikipedia' => 100
-);
-
-/**
- * You may set a custom utm_medium to be used for pages reached via VariablePage
- *
- * This can be set to whatever string you wish to use for utm_medium
- */
-$wgVariablePageUtmMedium = '';
+$wgVariablePagePossibilities = array();
 
 /**
  * The default URL to send a user to in the event that one of the URLs in 
@@ -52,7 +43,24 @@ $wgVariablePageUtmMedium = '';
  * Either this must be set or the probabilities in $wgVariablePagePossibiliites
  * must add up to 100.
  */
-$wgVariablePageDefault = '';
+$wgVariablePageDefault = 'http://wikimediafoundation.org/wiki/Support_Wikipedia';
+
+/** 
+ * If this is set to TRUE, a sidebar nav link to Special:VariablePage will be displayed
+ */
+$wgVariablePageShowSidebarLink = false;
+
+/**
+ * If you need to add a query to the sidebar nav link, set them with this.
+ *
+ * array( $key => $value ) will become ?key=value
+ */
+$wgVariablePageSidebarLinkQuery = array();
+
+/**
+ * Edit the sidebar navigation
+ */
+$wgHooks['SkinBuildSidebar'][] = 'efVariablePageSidebarLink';
 
 $dir = dirname( __FILE__ ) . '/';
 
@@ -60,3 +68,24 @@ $wgAutoloadClasses[ 'SpecialVariablePage' ] = $dir . 'VariablePage.body.php';
 $wgExtensionMessagesFiles[ 'VariablePage' ] = $dir . 'VariablePage.i18n.php';
 $wgSpecialPages[ 'VariablePage' ] = 'SpecialVariablePage';
 $wgSpecialPageGroups[ 'VariablePage' ] = 'contribution';
+
+/**
+ * Place a link to Special:VariablePage in the navigation sidebar
+ * @return bool
+ */
+function efVariablePageSidebarLink( $skin, &$bar ) {
+	global $wgVariablePageShowSidebarLink, $wgVariablePageSidebarLinkQuery;
+
+	// make sure that we should be showing a sidebar link
+	if ( $wgVariablePageShowSidebarLink ) {
+		$url = Title::makeTitle( NS_SPECIAL, wfMsg( 'variablepage' ))->getLocalUrl();
+		$bar[ "navigation" ][] = array(
+			"text" => wfMsg( 'variablepage-navlink_text' ),
+			"href" => wfAppendQuery( $url, $wgVariablePageSidebarLinkQuery ),
+			"id" => 'n-variablepage',
+			"active" => true,
+		);
+	}
+
+	return true;
+}

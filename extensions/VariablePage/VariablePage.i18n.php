@@ -13,8 +13,9 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Donate',
 	'variablepage-desc' => 'Lightweight variable page redirection',
-	'variablepage-randomurl' => 'Special:VariablePage',
 );
 
 /** Bosnian (Bosanski)
