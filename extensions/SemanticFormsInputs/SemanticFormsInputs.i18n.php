@@ -125,7 +125,7 @@ $messages['fr'] = array(
 	'semanticformsinputs-prev' => 'Précédent',
 	'semanticformsinputs-next' => 'Suivant',
 	'semanticformsinputs-today' => "Aujourd'hui",
-	'semanticformsinputs-dateformatlong' => 'j MM aa',
+	'semanticformsinputs-dateformatlong' => 'd MM yy',
 	'semanticformsinputs-dateformatshort' => 'dd / mm / yy',
 	'semanticformsinputs-firstdayofweek' => '0',
 );
