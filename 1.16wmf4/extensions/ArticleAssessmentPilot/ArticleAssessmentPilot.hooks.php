@@ -8,14 +8,30 @@
  */
 class ArticleAssessmentPilotHooks {
 	private static $styleFiles = array(
-		array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+		'raw' => array(
+			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+		),
+		'combined' => array(
+			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+		),
+		'minified' => array(
+			array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+		),
 	);
 
 	private static $scriptFiles = array(
-		array( 'src' => 'js/ArticleAssessment.js', 'version' => 2 ),
-		array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
-		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
-		array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
+		'raw' => array(
+			array( 'src' => 'js/ArticleAssessment.js', 'version' => 2 ),
+			array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
+			array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
+			array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
+		),
+		'combined' => array(
+			array( 'src' => 'js/ArticleAssessment.combined.js', 'version' => 1 )
+		),
+		'minified' => array(
+			array( 'src' => 'js/ArticleAssessment.combined.min.js', 'version' => 1 )
+		),
 	);
 
 	private static $messages = array();
@@ -64,7 +80,8 @@ class ArticleAssessmentPilotHooks {
 		global $wgRequest;
 
 		// Only show for view actions.
-		if ( $wgRequest->getVal( 'action' ) !== null && $wgRequest->getVal( 'action' ) !== 'view' ) {
+		if ( $wgRequest->getVal( 'action', 'view' ) !== 'view' || $wgRequest->getCheck( 'diff' ) ||
+				$wgRequest->getCheck( 'oldid' ) ) {
 			return true;
 		}
 
@@ -76,9 +93,9 @@ class ArticleAssessmentPilotHooks {
 			return true;
 		}
 
-		global $wgExtensionAssetsPath;
-
-		foreach ( self::$scriptFiles as $script ) {
+		global $wgExtensionAssetsPath, $wgArticleAssessmentResourceMode;
+		$mode = isset( self::$scriptFiles[$wgArticleAssessmentResourceMode] ) ? $wgArticleAssessmentResourceMode : 'minified';
+		foreach ( self::$scriptFiles[$mode] as $script ) {
 			$out->addScriptFile( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$script['src']}", $script['version']
 			);
@@ -86,9 +103,9 @@ class ArticleAssessmentPilotHooks {
 
 		global $wgArticleAssessmentNeedJUICSS;
 		if ( $wgArticleAssessmentNeedJUICSS ) {
-			self::$styleFiles[] = array( 'src' => 'css/jquery-ui-1.7.2.css', 'version' => '1.7.2y' );
+			self::$styleFiles[$mode][] = array( 'src' => 'css/jquery-ui-1.7.2.css', 'version' => '1.7.2y' );
 		}
-		foreach ( self::$styleFiles as $style ) {
+		foreach ( self::$styleFiles[$mode] as $style ) {
 			$out->addExtensionStyle( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
 			);

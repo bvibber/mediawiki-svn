@@ -11,6 +11,9 @@ $wgArticleAssessmentRatings = array( 1, 2, 3, 4 );
 // Extension is "disabled" if this field is an empty string (as per default configuration)
 $wgArticleAssessmentCategory = '';
 
+// Set to 'combined' or 'raw' if you need to debug this extension's JS
+$wgArticleAssessmentResourceMode = 'minified';
+
 // Path to jQuery UI
 $wgArticleAssessmentJUIPath = null; // Defaults to "$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js"
 

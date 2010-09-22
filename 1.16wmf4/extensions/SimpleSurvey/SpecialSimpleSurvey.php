@@ -36,6 +36,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 
 	public function setToken() {
 		$this->tokenToCheck = wfGenerateToken( array( $this, time() ) );
+		wfSetupSession();
 		$_SESSION['wsSimpleSurveyToken'] = $this->tokenToCheck;
 	}
 
@@ -90,10 +91,10 @@ class SpecialSimpleSurvey extends SpecialPage {
 		
 		global $wgExtensionAssetsPath, $wgSimpleSurveyJSPath, $wgSimpleSurveyCSSPath;
 		$script = Html::linkedScript( wfAppendQuery( $wgSimpleSurveyJSPath ? $wgSimpleSurveyJSPath :
-			"$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.js", $wgPrefSwitchStyleVersion ) );
+			"$wgExtensionAssetsPath/PrefSwitch/modules/ext.prefSwitch.js", $wgPrefSwitchStyleVersion ) );
 		$wgOut->addScript( $script );
 		$wgOut->addExtensionStyle( wfAppendQuery( $wgSimpleSurveyCSSPath ? $wgSimpleSurveyCSSPath :
-			"$wgExtensionAssetsPath/UsabilityInitiative/PrefSwitch/modules/ext.prefSwitch.css", $wgPrefSwitchStyleVersion ) );
+			"$wgExtensionAssetsPath/PrefSwitch/modules/ext.prefSwitch.css", $wgPrefSwitchStyleVersion ) );
 		
 		// Handle various modes
 		$renderedSurvey = $this->render( $wgRequest->getVal( "survey" ) );
