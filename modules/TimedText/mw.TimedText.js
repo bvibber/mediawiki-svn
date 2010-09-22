@@ -1166,7 +1166,7 @@ mw.includeAllModuleMessages();
 			var request = {
 				'action': 'parse',
 				'page': titleKey,
-				's-maxage' : 3600, 
+				'smaxage' : 3600, 
 				'maxage' : 3600
 			};
 			mw.getJSON( this.apiUrl, request, function( data ) {
@@ -1212,7 +1212,7 @@ mw.includeAllModuleMessages();
 				'apnamespace' : this.getTimedTextNS(),
 				'aplimit' : 200,
 				'prop':'revisions',
-				's-maxage' : 3600, 
+				'smaxage' : 3600, 
 				'maxage' : 3600
 			};
 			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
