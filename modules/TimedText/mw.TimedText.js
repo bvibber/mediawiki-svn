@@ -1165,7 +1165,9 @@ mw.includeAllModuleMessages();
 		loadTitleKey: function( titleKey, callback ) {
 			var request = {
 				'action': 'parse',
-				'page': titleKey
+				'page': titleKey,
+				's-maxage' : 3600, 
+				'maxage' : 3600
 			};
 			mw.getJSON( this.apiUrl, request, function( data ) {
 				if ( data && data.parse && data.parse.text['*'] ) {
@@ -1209,7 +1211,9 @@ mw.includeAllModuleMessages();
 				'apprefix' : titleKey,
 				'apnamespace' : this.getTimedTextNS(),
 				'aplimit' : 200,
-				'prop':'revisions'
+				'prop':'revisions',
+				's-maxage' : 3600, 
+				'maxage' : 3600
 			};
 			mw.getJSON( this.apiUrl, request, function( sourcePages ) {
 				// If "timedText" is not a valid namespace try "just" with prefix: 
