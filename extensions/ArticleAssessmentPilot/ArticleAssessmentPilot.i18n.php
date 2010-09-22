@@ -206,22 +206,44 @@ Priziañ anezhi en-dro ho pefe c'hoant marteze.",
  * @author CERminator
  */
 $messages['bs'] = array(
+	'articleassessment' => 'Ocjenjivanje članaka',
+	'articleassessment-desc' => 'Ocjenjivanje članaka (probna verzija)',
 	'articleassessment-yourfeedback' => 'Vaše povratne informacije',
+	'articleassessment-pleaserate' => 'Molimo odvojite trenutak vremena da ispod ocijenite ovu stranicu.',
 	'articleassessment-submit' => 'Pošalji',
 	'articleassessment-rating-wellsourced' => 'Dobro referencirano:',
 	'articleassessment-rating-neutrality' => 'Neutralnost:',
 	'articleassessment-rating-completeness' => 'Završenost:',
 	'articleassessment-rating-readability' => 'Čitljivost:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Da li smatrate da ova stranica ima dovoljno izvora i da su oni iz provjerljivih izvora?',
+	'articleassessment-rating-neutrality-tooltip' => 'Da li smatrate da ova stranica prikazuje neutralni prikaz iz svih perspektiva o temi?',
+	'articleassessment-rating-completeness-tooltip' => 'Da li mislite da ova stranica pokriva osnovna područja teme koja bi trebala?',
+	'articleassessment-rating-readability-tooltip' => 'Da li mislite da je ova stranica dobro organizirana i dobro napisana?',
 	'articleassessment-articlerating' => 'Rejting stranice',
 	'articleassessment-error' => 'Desila se greška.
 Molimo pokušajte kasnije.',
 	'articleassessment-thanks' => 'Hvala! Vaše ocjene su sačuvane.',
+	'articleassessment-featurefeedback' => 'Dajte nam <span class="feedbacklink">povratne podatke</span> o ovoj mogućnosti.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|ocjena|ocjene|ocjena}})',
+	'articleassessment-stalemessage-norevisioncount' => "Ova stranica je ''provjerena'' od kako ste je posljednji put pregledali.
+Da li je želite ocijeniti ponovo.",
 	'articleassessment-results-show' => '(Rezultati sakriveni. <span class="showlink">Prikaži</span> ih.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Sakrij rezultate</span>)',
+	'articleassessment-survey-question-whyrated' => 'Molimo recite nam zašto se ocijenili danas ovu stranicu (označite sve koje se može primijeniti):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Želio sam da pridonesem sveukupnoj ocjeni stranice',
+	'articleassessment-survey-answer-whyrated-development' => 'Nadam se da će moja ocjena imati pozitivan odjek na uređivanje stranice',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Želim da pridonosim na projektu {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Volim dijeliti svoje mišljenje',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Nisam dao ocjene danas, ali sam želio da dadnem povratne podatke o mogućnostima',
 	'articleassessment-survey-answer-whyrated-other' => 'Ostalo',
+	'articleassessment-survey-question-useful' => 'Da li vjerujete da su date ocjene korisne i jasne?',
 	'articleassessment-survey-question-useful-iffalse' => 'Zašto?',
+	'articleassessment-survey-question-expert' => 'Da li Vi sebe smatrate ekspertom u oblasti o kojoj ovaj članak piše?',
+	'articleassessment-survey-question-expert-iftrue' => 'Možete li opisati svoju eksperizu?',
+	'articleassessment-survey-question-comments' => 'Da li imate dodatnih komentara?',
 	'articleassessment-survey-submit' => 'Pošalji',
+	'articleassessment-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
+	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
 );
 
 /** German (Deutsch)
@@ -230,8 +252,8 @@ Molimo pokušajte kasnije.',
 $messages['de'] = array(
 	'articleassessment' => 'Artikeleinschätzung',
 	'articleassessment-desc' => 'Ermöglicht die Einschätzung von Artikeln (Pilotversion)',
-	'articleassessment-yourfeedback' => 'Deine Rückmeldung',
-	'articleassessment-pleaserate' => 'Bitte nehme dir kurz Zeit diesen Artikel unten auf dieser Seite einzuschätzen.',
+	'articleassessment-yourfeedback' => 'Deine Einschätzung',
+	'articleassessment-pleaserate' => 'Bitte nimm dir kurz Zeit, diesen Artikel einzuschätzen.',
 	'articleassessment-submit' => 'Speichern',
 	'articleassessment-rating-wellsourced' => 'Gut belegt:',
 	'articleassessment-rating-neutrality' => 'Neutral:',
@@ -245,7 +267,7 @@ $messages['de'] = array(
 	'articleassessment-error' => 'Ein Fehler ist aufgetreten.
 Bitte versuche es später erneut.',
 	'articleassessment-thanks' => 'Vielen Dank! Deine Einschätzung wurde gespeichert.',
-	'articleassessment-featurefeedback' => 'Gebe uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Funktion zur Einschätzung eines Artikels.',
+	'articleassessment-featurefeedback' => 'Gib uns bitte eine <span class="feedbacklink">Rückmeldung</span> zu dieser Möglichkeit der Einschätzung eines Artikels.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Einschätzung|Einschätzungen}})',
 	'articleassessment-stalemessage-norevisioncount' => "Dieser Artikel wurde seit deiner letzten Einschätzung ''bearbeitet''.
 Vielleicht möchtest du ihn erneut einschätzen.",
@@ -254,7 +276,7 @@ Vielleicht möchtest du ihn erneut einschätzen.",
 	'articleassessment-survey-question-whyrated' => 'Bitte lasse uns wissen, warum du diesen Artikel heute eingeschätzt hast (Zutreffendes bitte ankreuzen):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Ich wollte mich an der Einschätzung des Artikels beteiligen',
 	'articleassessment-survey-answer-whyrated-development' => 'Ich hoffe, dass meine Einschätzung die künftige Entwicklung des Artikels positiv beeinflusst',
-	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ich wollte mich hier ({{SITENAME}}) beteiligen',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ich wollte mich an {{SITENAME}} beteiligen',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Ich teile meine Einschätzung gerne mit',
 	'articleassessment-survey-answer-whyrated-didntrate' => 'Ich habe heute keine Einschätzung vorgenommen, wollte allerdings eine Rückmeldung zu dieser Funktion zur Einschätzung des Artikels geben',
 	'articleassessment-survey-answer-whyrated-other' => 'Anderes',
@@ -381,6 +403,50 @@ Quizais queira avaliala novamente.",
 	'articleassessment-survey-submit' => 'Enviar',
 	'articleassessment-survey-title' => 'Responda algunhas preguntas',
 	'articleassessment-survey-thanks' => 'Grazas por encher a enquisa.',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'articleassessment' => 'Artikelyyschetzig',
+	'articleassessment-desc' => 'Macht d Yyschetzig vu Artikel megli (Pilotversion)',
+	'articleassessment-yourfeedback' => 'Dyy Yyschetzig',
+	'articleassessment-pleaserate' => 'Bitte nimm Dir churz Zyt un tue dää Artikel yyschetze.',
+	'articleassessment-submit' => 'Ibertrage',
+	'articleassessment-rating-wellsourced' => 'Guet beleit:',
+	'articleassessment-rating-neutrality' => 'Neutral:',
+	'articleassessment-rating-completeness' => 'Vollständig:',
+	'articleassessment-rating-readability' => 'Verständli:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Hesch Du dr Yydruck, ass es in däm Artikel gnue Quällenaagabe het un ass mer däne Quälle cha tröue?',
+	'articleassessment-rating-neutrality-tooltip' => 'Hesch Du dr Yydruck, ass dää Artikel e uusgwogeni Darstellig isch vu allne Aschpäkt, wu mit däm Thema verbunde sin?',
+	'articleassessment-rating-completeness-tooltip' => 'Hesch Du dr Yydruck, ass in däm Artikel aali Aschpäkt ufgfiert sin, wu mit däm Thema zämmehange?',
+	'articleassessment-rating-readability-tooltip' => 'Hesch Du dr Yydruck, ass dää Artikel guet strukturiert un gschribe isch?',
+	'articleassessment-articlerating' => 'Yyschetzig vum Artikel',
+	'articleassessment-error' => 'E Fähler isch ufträtte.
+Bitte versuech s nomol.',
+	'articleassessment-thanks' => 'Dankschen! Dyy Yyschetzig isch gspycheret wore.',
+	'articleassessment-featurefeedback' => 'Gib s bitte ne <span class="feedbacklink">Ruckmäldig</span> zue däre Funktion.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|Yyschetzig|Yyschetzige}})',
+	'articleassessment-stalemessage-norevisioncount' => "Dää Artikel isch syt Dyyre letschte Yyschetzig ''bearbeitet'' wore.
+Villicht witt e nomol yyschetze.",
+	'articleassessment-results-show' => '(Ergebnis sin uusbländet. <span class="showlink">Yyblände</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Ergebnis uusblände</span>)',
+	'articleassessment-survey-question-whyrated' => 'Bitte loss es is wisse, wurum Du dää Artikel hite yygschetzt hesch (bitte aachryzle, was zuetrifft):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Ich haa welle mitmache bi dr Yyschetzig vu däm Artikel',
+	'articleassessment-survey-answer-whyrated-development' => 'Ich hoffe, ass myy Yyschetzig e positive Yyfluss het uf di chimftig Entwicklig vum Artikel',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ich haa welle mitmache bi {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Ich tue gärn myy Meinig teile',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Ich haa hite kei Yyschetzig vorgnuu, haa aber e Ruckmäldig zue däre Funktion welle gee',
+	'articleassessment-survey-answer-whyrated-other' => 'Anderi',
+	'articleassessment-survey-question-useful' => 'Glaubsch, ass d Yyschetzige, wu abgee wore sin, nitzli un verständli sin?',
+	'articleassessment-survey-question-useful-iffalse' => 'Wurum?',
+	'articleassessment-survey-question-expert' => 'Haltesch Du di fir kompetänt uf em Biet vum Syteinhalt?',
+	'articleassessment-survey-question-expert-iftrue' => 'Chasch Du dyy Sachchänntnis bschryybe?',
+	'articleassessment-survey-question-comments' => 'Hesch no meh Aamerkige?',
+	'articleassessment-survey-submit' => 'Ibertrage',
+	'articleassessment-survey-title' => 'Bitte gib Antworte uf e paar Froge',
+	'articleassessment-survey-thanks' => 'Dankschen fir Dyy Ruckmäldig.',
 );
 
 /** Interlingua (Interlingua)
@@ -551,6 +617,50 @@ $messages['mk'] = array(
 	'articleassessment-survey-submit' => 'Поднеси',
 	'articleassessment-survey-title' => 'Ве молиме одговорете на неколку прашања',
 	'articleassessment-survey-thanks' => 'Ви благодариме што ја пополнивте анкетата.',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'articleassessment' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം',
+	'articleassessment-desc' => 'ലേഖനത്തിന്റെ മൂല്യനിർണ്ണയം (പ്രാരംഭ പതിപ്പ്)',
+	'articleassessment-yourfeedback' => 'താങ്കളുടെ അഭിപ്രായങ്ങൾ',
+	'articleassessment-pleaserate' => 'താഴെ ഈ താളിന്റെ മൂല്യനിർണ്ണയം നടത്താൻ ഒരു നിമിഷം ചിലവാക്കുക.',
+	'articleassessment-submit' => 'സമർപ്പിക്കുക',
+	'articleassessment-rating-wellsourced' => 'സ്രോതസ്സധിഷ്ഠിതം:',
+	'articleassessment-rating-neutrality' => 'നിഷ്പക്ഷം:',
+	'articleassessment-rating-completeness' => 'സമ്പൂർണ്ണം:',
+	'articleassessment-rating-readability' => 'വായനായോഗ്യം:',
+	'articleassessment-rating-wellsourced-tooltip' => 'ഈ താളിൽ വിശ്വസനീയങ്ങളായ സ്രോതസ്സുകളെ ആശ്രയിക്കുന്ന ആവശ്യമായത്ര അവലംബങ്ങൾ ഉണ്ടെന്ന് താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articleassessment-rating-neutrality-tooltip' => 'ഈ താളിൽ വിഷയത്തിന്റെ എല്ലാ വശത്തിനും അർഹമായ പ്രാതിനിധ്യം ലഭിച്ചതായി താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articleassessment-rating-completeness-tooltip' => 'ഈ താൾ അത് ഉൾക്കൊള്ളേണ്ട എല്ലാ മേഖലകളും ഉൾക്കൊള്ളുന്നതായി താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articleassessment-rating-readability-tooltip' => 'ഈ താൾ നന്നായി ക്രമീകരിക്കപ്പെട്ടതും നന്നായി എഴുതപ്പെട്ടതുമാണെന്ന് താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articleassessment-articlerating' => 'താളിന്റെ നിലവാരം',
+	'articleassessment-error' => 'എന്തോ പിഴവുണ്ടായിരിക്കുന്നു.
+ദയവായി വീണ്ടും ശ്രമിക്കുക.',
+	'articleassessment-thanks' => 'നന്ദി! താങ്കൾ നടത്തിയ മൂല്യനിർണ്ണയം സേവ് ചെയ്തിരിക്കുന്നു.',
+	'articleassessment-featurefeedback' => 'ഈ സൗകര്യത്തെക്കുറിച്ചുള്ള <span class="feedbacklink">അഭിപ്രായങ്ങൾ</span> അറിയിക്കുക.',
+	'articleassessment-noratings' => '$1 ({{PLURAL:$2|ഒരു നിലവാരമിടൽ|$2 നിലവാരമിടലുകൾ}})',
+	'articleassessment-stalemessage-norevisioncount' => "താങ്കൾ നിലവാരമിട്ട ശേഷം ഈ താൾ ''മെച്ചപ്പെടുത്തിയിരിക്കുന്നു''
+ആവശ്യമെങ്കിൽ താങ്കൾക്ക് വീണ്ടും നിലവാരമിടാവുന്നതാണ്.",
+	'articleassessment-results-show' => '(ഫലങ്ങൾ ദൃശ്യമല്ല. അവ <span class="showlink">പ്രദർശിപ്പിക്കുക</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">ഫലങ്ങൾ മറയ്ക്കുക</span>)',
+	'articleassessment-survey-question-whyrated' => 'ഈ താളിന് താങ്കൾ ഇന്ന് നിലവാരമിട്ടതെന്തുകൊണ്ടാണെന്ന് ദയവായി പറയാമോ (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'താളിൽ ആകപ്പാടെയുള്ള നിലവാര നിർണ്ണയം ചെയ്യാൻ ഞാനാഗ്രഹിക്കുന്നു',
+	'articleassessment-survey-answer-whyrated-development' => 'ഞാനിട്ട നിലവാരം താളിന്റെ വികസനത്തിൽ ക്രിയാത്മകമായ ഫലങ്ങൾ സൃഷ്ടിക്കുമെന്ന് കരുതുന്നു',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'ഞാൻ {{SITENAME}} സംരംഭത്തിൽ സംഭാവന ചെയ്യാൻ ആഗ്രഹിക്കുന്നു',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'എന്റെ അഭിപ്രായം പങ്ക് വെയ്ക്കുന്നതിൽ സന്തോഷമേയുള്ളു',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'ഞാനിന്ന് നിലവാരനിർണ്ണയം നടത്തിയിട്ടില്ല, പക്ഷേ ഈ സൗകര്യം സംബന്ധിച്ച അഭിപ്രായം അറിയിക്കാൻ ആഗ്രഹിക്കുന്നു',
+	'articleassessment-survey-answer-whyrated-other' => 'മറ്റുള്ളവ',
+	'articleassessment-survey-question-useful' => 'നൽകിയിരിക്കുന്ന നിലവാരം ഉപകാരപ്രദവും വ്യക്തവുമാണെന്ന് താങ്കൾ കരുതുന്നുണ്ടോ?',
+	'articleassessment-survey-question-useful-iffalse' => 'എന്തുകൊണ്ട്?',
+	'articleassessment-survey-question-expert' => 'ഈ താളിലെ വിഷയത്തിൽ താങ്കൾ വിദഗ്ദ്ധനാണെന്ന് താങ്കൾ സ്വയം കരുതുന്നുണ്ടോ?',
+	'articleassessment-survey-question-expert-iftrue' => 'താങ്കളുടെ വൈദഗ്ദ്ധ്യം വിവരിക്കാമോ?',
+	'articleassessment-survey-question-comments' => 'താങ്കൾക്ക് മറ്റെന്തെങ്കിലും അഭിപ്രായങ്ങൾ പങ്ക് വെയ്ക്കാനുണ്ടോ?',
+	'articleassessment-survey-submit' => 'സമർപ്പിക്കുക',
+	'articleassessment-survey-title' => 'ദയവായി ഏതാനം ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുക',
+	'articleassessment-survey-thanks' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
 );
 
 /** Dutch (Nederlands)
@@ -801,7 +911,7 @@ $messages['ru'] = array(
 	'articleassessment-error' => 'Произошла ошибка. 
 Пожалуйста, повторите попытку позже.',
 	'articleassessment-thanks' => 'Спасибо! Ваши оценки сохранены.',
-	'articleassessment-featurefeedback' => 'Сообщите <span class="feedbacklink">Ваше мнение</span> об этой функции.',
+	'articleassessment-featurefeedback' => 'Сообщите <span class="feedbacklink">ваше мнение</span> об этой функции.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL: $ 2 | оценка | оценки}})',
 	'articleassessment-stalemessage-norevisioncount' => 'Эта страница редактировалась после Вашего просмотра. 
 Вы можете оценить её еще раз.',
@@ -891,5 +1001,7 @@ Xin hãy thử lại sau.',
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Ẩn kết quả</span>)',
+	'articleassessment-survey-answer-whyrated-other' => 'Khác',
+	'articleassessment-survey-question-useful-iffalse' => 'Tạo sao?',
 );
 

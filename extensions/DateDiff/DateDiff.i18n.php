@@ -158,6 +158,13 @@ $messages['pt-br'] = array(
 	'datediff-desc' => 'Tomar duas datas e retornar todos os dias intermediários',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'datediff-desc' => 'Pigghie doje date e retorne tutte le sciurne indermedie',
+);
+
 /** Russian (Русский)
  * @author MaxSem
  */

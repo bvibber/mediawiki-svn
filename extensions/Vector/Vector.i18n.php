@@ -863,6 +863,8 @@ $messages['krc'] = array(
 $messages['ksh'] = array(
 	'vector' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
 	'vector-desc' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
+	'vector-collapsiblenav-preference' => 'Zohlohße, Ußwahle em Ußsinn „Vektor“ zoh_ze_klappe',
+	'vector-collapsiblenav-more' => 'Mieh Shprooche',
 	'vector-editwarning-warning' => 'Wann de vun hee dä Sigg fott jeihß, doh künnte all Ding Änderunge aan dä Sigg verschött jonn.
 Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann kriß de se nieh mieh wider. Jangk doför en dä Affschnett „Beim Bearbeide“ en Dinge Enshtellunge.',
 	'vector-editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',

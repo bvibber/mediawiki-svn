@@ -568,6 +568,13 @@ $messages['sv'] = array(
 	'charinsert-desc' => 'Gör det möjligt att infoga [[MediaWiki:Edittools|specialtecken]] i redigeringsrutan med hjälp av JavaScript',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'charinsert-desc' => '[[MediaWiki:Edittools|inserting non-standard characters]] என்பதற்கான சாவாநிரல்மொழிப் பெட்டியை உருவாக்க உதவுகின்றது',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -67,6 +67,13 @@ $messages['ja'] = array(
 	'variablepage-desc' => '軽い可変ページのリダイレクト',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'variablepage-desc' => 'Ein eijfache Ömleidung op ongerscheidlijje Sigge.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

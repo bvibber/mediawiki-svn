@@ -1133,6 +1133,7 @@ Diverrañ eus ar c\'hemmoù :
 
 $4',
 	'code-stats' => 'stadegoù',
+	'code-stats-header' => "Stadegoù an dastumlec'h $1",
 	'code-stats-staus-breakdown' => 'Niver a azgweladur hervez ar stad',
 	'code-stats-count' => 'Niver a adweladennoù',
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",

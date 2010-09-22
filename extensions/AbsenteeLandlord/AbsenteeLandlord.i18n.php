@@ -698,6 +698,14 @@ $messages['sv'] = array(
 	'absenteelandlord-desc' => 'Låser automatiskt wikins databas om alla administratörer är frånvarande under en viss tid',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'absenteelandlord-reason' => 'ஆட்சிச்செயலர்கள் செயலற்று இருந்தமையால் தரவுத்தளம் தானியங்கியாய்ப் பூட்டப்பட்டுள்ளது',
+	'absenteelandlord-desc' => 'எல்லா ஆட்சிச்செயலர்களும் செயலற்று சிலகாலம் இருந்தால் விக்கித் தரவுத்தளம் தானே பூட்டிவிடும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

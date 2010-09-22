@@ -1023,6 +1023,7 @@ $messages['br'] = array(
 	'prefswitch-survey-question-dislike' => "Petra n'en deus ket plijet deoc'h en arc'hweladurioù nevez ?",
 	'prefswitch-survey-question-whyoff' => 'Perak goulenn paouez gant ar perzhioù nevez ?
 Dibabit kement tra hag a zegouezh.',
+	'prefswitch-survey-question-globaloff' => "Ha c'hoant ho peus diweredekaat an arc'hweladurioù hollek-mañ ?",
 	'prefswitch-survey-answer-whyoff-hard' => 'Start e oa da embreger.',
 	'prefswitch-survey-answer-whyoff-didntwork' => "Ne'z ae ket plaen en-dro.",
 	'prefswitch-survey-answer-whyoff-notpredictable' => "Ne'z ae ket en-dro en un doare poellek.",

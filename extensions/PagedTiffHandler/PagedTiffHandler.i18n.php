@@ -471,6 +471,28 @@ $messages['no'] = array(
 	'tiff-file-info-size' => '(side $5, $1 x $2 piksler, filstørrelse: $3, MIME-type: $4)',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'tiff-desc' => 'Obsługa przeglądania plików w formacie TIFF',
+	'tiff_no_metadata' => 'Nie można odczytać metadanych z TIFF',
+	'tiff_page_error' => 'Numer strony poza zakresem',
+	'tiff_too_many_embed_files' => 'Grafika zawiera zbyt wiele osadzonych plików.',
+	'tiff_sourcefile_too_large' => 'Miniaturki nie zostaną wygenerowane.',
+	'tiff_targetfile_too_large' => 'Zbyt duża rozdzielczość pliku docelowego.
+Miniaturki nie zostaną wygenerowane.',
+	'tiff_file_too_large' => 'Przesłany plik jest zbyt duży i został odrzucony.',
+	'tiff_out_of_service' => 'Przesłany plik nie może być przetworzony.
+ImageMagick nie jest dostępny.',
+	'tiff_too_much_meta' => 'Metadane wymagają zbyt wiele przestrzeni.',
+	'tiff_error_cached' => 'Plik może zostać przetworzony dopiero po zakończeniu buforowania.',
+	'tiff_size_error' => 'Zgłoszony rozmiar pliku nie przystaje do jego rzeczywistego rozmiaru.',
+	'tiff_script_detected' => 'Przesłany plik zawiera skrypty.',
+	'tiff_bad_file' => 'Przesłany plik zawiera błędy – $1',
+	'tiff-file-info-size' => '(strona $5, $1 × $2 pikseli, rozmiar pliku – $3, typ MIME – $4)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

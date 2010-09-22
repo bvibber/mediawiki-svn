@@ -235,6 +235,7 @@ $messages['bs'] = array(
 	'cb_edit_left_hint' => 'Premjesti lijevo, ako je moguće',
 	'cb_edit_right_hint' => 'Premjesti desno, ako je moguće',
 	'cb_edit_remove_hint' => 'Obriši, ako je moguće',
+	'cb_edit_append_hint' => 'Ubaci operator na posljednju poziciju',
 );
 
 /** German (Deutsch)
@@ -370,6 +371,45 @@ Cambie ou actualice o seu navegador, se fose posible.',
 	'cb_edit_clear_hint' => 'Limpar a expresión actual (selecciona todas)',
 	'cb_edit_paste_hint' => 'Pegar o operador na posición actual, se fose posible',
 	'cb_edit_paste_right_hint' => 'Pegar o operador na seguinte posición, se fose posible',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categorybrowser' => 'Kategoriebrowser',
+	'categorybrowser-desc' => 'Ergänzt e [[Special:CategoryBrowser|Spezialsyte]], wu di umfangryychschte Kategorie chenne uusgwehlt wäre un zum Navigiere in emne iber e Aax-Interface',
+	'cb_requires_javascript' => 'Go dr Kategoriebrowser nutze mueß JavaScript im Browser aktiviert syy.',
+	'cb_ie6_warning' => 'Dr Editor fir Bedingige funktioniert nit bim Internet Explorer 6.0 oder ere friejere Version.
+S Browse mit vordefinierte Bedingige sott aber normalerwyys funktioniere.
+Wänn megli, tue Dyy Browser aktualisiere oder wächsle.',
+	'cb_show_no_parents_only' => 'Nume Kategorie ohni ibergordneti Kategori aazeige',
+	'cb_cat_name_filter' => 'E Kategori noch em Name sueche:',
+	'cb_cat_name_filter_clear' => 'Zum Zrucksetze vum Filter no Kategoriname do klicke',
+	'cb_cat_name_filter_ci' => 'Uuabhängig vu dr Groß-/Chleischryybig',
+	'cb_copy_line_hint' => 'Zum Kopiere un Yyfiege vu Operatore in di uusgwehlte Uusdruck, d Schaltfleche [+] un [>+] bruche',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|Unterkategori|Unterkategorie}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|Syte|Syte}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|Datei|Dateie}}',
+	'cb_has_parentcategories' => 'ibergordnete Kategorie (wänn s het)',
+	'cb_previous_items_link' => 'Vorigi',
+	'cb_next_items_link' => 'Negschti',
+	'cb_next_items_stats' => ' (ab $1)',
+	'cb_cat_subcats' => 'Unterkategorie',
+	'cb_cat_pages' => 'Syte',
+	'cb_cat_files' => 'Dateie',
+	'cb_apply_button' => 'Aawände',
+	'cb_all_op' => 'Alli',
+	'cb_or_op' => 'oder',
+	'cb_and_op' => 'un',
+	'cb_edit_left_hint' => 'No links bewege (wänn megli)',
+	'cb_edit_right_hint' => 'No rächts bewege (wänn megli)',
+	'cb_edit_remove_hint' => 'Lesche (wänn megli)',
+	'cb_edit_copy_hint' => 'Operator in d Zwischenablag kopiere',
+	'cb_edit_append_hint' => 'Operator an dr letschte Position yyfiege',
+	'cb_edit_clear_hint' => 'Aktuälli Uusdruck uuseneh (alli uuswehle)',
+	'cb_edit_paste_hint' => 'Operator an dr aktuälle Position yyfiege (wänn megli)',
+	'cb_edit_paste_right_hint' => 'Operator an dr negschte Position yyfiege (wänn megli)',
 );
 
 /** Interlingua (Interlingua)

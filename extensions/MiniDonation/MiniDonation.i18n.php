@@ -196,7 +196,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'donationform-desc' => 'Engade a etiqueta <code>&lt;donateform&gt;</code> para soportar as doazóns mediante PayPal',
-	'donationform-submit' => 'Doar mediante PayPal',
+	'donationform-submit' => 'Doar mediante o PayPal',
 );
 
 /** Swiss German (Alemannisch)

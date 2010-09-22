@@ -294,18 +294,23 @@ $messages['bs'] = array(
 	'spamregex-currently-blocked' => "'''Trenutno blokirane fraze:'''",
 	'spamregex-move' => 'Razlog koji ste unijeli sadrži blokiranu frazu.',
 	'spamregex-no-currently-blocked' => "'''Nema blokiranih fraza.'''",
+	'spamregex-log' => "* '''$1''' $2 ([{{SERVER}}$3&text=$4 ukloni]) dodano od strane $5 dana $6 u $7",
+	'spamregex-page-title-1' => 'Blokiranje fraze koristeći obične izraze',
 	'spamregex-unblock-success' => 'Deblokada uspješna',
 	'spamregex-unblock-message' => "Fraza '''$1''' je deblokirana za uređivanje.",
 	'spamregex-block-success' => 'Blokada uspješna',
 	'spamregex-block-message' => "Fraza '''$1''' je blokirana.",
 	'spamregex-warning-1' => 'Navedite frazu za blokiranje.',
 	'spamregex-error-1' => 'Nevaljan regularni izraz.',
+	'spamregex-warning-2' => 'Molimo odaberite najmanje jedan način blokade',
 	'spamregex-already-blocked' => '"$1" je već blokiran',
 	'spamregex-phrase-block' => 'Fraza za blokadu:',
 	'spamregex-phrase-block-text' => 'blokirana fraza u tekstu stranice',
 	'spamregex-phrase-block-summary' => 'blokirana fraza u sažetku',
+	'spamregex-block-submit' => 'Blokiraj&nbsp;ovu&nbsp;frazu',
 	'spamregex-text' => '(Tekst)',
 	'spamregex-summary-log' => '(Sažetak)',
+	'right-spamregex' => 'Blokiranje spam fraza putem [[Special:SpamRegex]]',
 );
 
 /** Catalan (Català)

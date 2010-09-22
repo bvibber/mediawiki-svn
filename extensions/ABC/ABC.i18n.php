@@ -927,8 +927,10 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
+	'abc-desc' => 'ABC இசை வடிவமைக்க, <code>&lt;abc&gt;</code> என்னும் நிரல் ஒட்டைச் சேர்க்கின்றது',
 	'abcdownload' => 'பதிவிறக்கம் செய்:',
 );
 

@@ -936,6 +936,13 @@ $messages['ml'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികൾ കാണുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'adminlinks_users' => 'Pengguna',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

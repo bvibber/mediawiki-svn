@@ -388,6 +388,13 @@ $messages['sv'] = array(
 	'localisationupdate-desc' => 'Håller de lokaliserade meddelandena så uppdaterade som möjligt',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'localisationupdate-desc' => 'உட்சூழலுக்கான செய்திகளை கூடியமட்டிலும் இன்றையநிலையில் வைக்கப்பட்டுள்ளன',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

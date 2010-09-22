@@ -397,7 +397,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'recordadmin' => 'Aufzeichnungsadministrierung',
-	'recordadmin-desc' => 'Suchen, Abfragen, Formulare und Berichte zu Daten aus in Vorlagen eingebetteten Parametern',
+	'recordadmin-desc' => 'Ermöglicht Suchen, Abfragen, Formulare und Berichte zu Daten aus in Vorlagen eingebetteten Parametern',
 	'recordadmin-specialdesc' => 'Stellt eine [[Special:RecordAdmin|Spezialseite]] bereit mit der Seiten mit Hilfe zugehöriger Formulare ermittelt und erstellt werden können',
 	'recordadmin-noforms' => 'Momentan gibt es keine Formulare mit denen Seiten ermittelt und erstellt werden können',
 	'recordadmin-select' => 'Auswählen',
@@ -435,6 +435,7 @@ $messages['de'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Keine „$1“',
 	'recordadmin-edit-info' => 'Diese Seite enthält Vorlagen, die über eigene Formulare verfügen und über diese Registerkarte ausgefüllt werden können.',
+	'recordadmin-properties' => 'Attribute',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -794,6 +795,7 @@ $messages['gl'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe ningún "$1"',
 	'recordadmin-edit-info' => 'Esta páxina contén os modelos que teñen os seus propios formularios, cos que encher desde este conxunto de lapelas',
+	'recordadmin-properties' => 'Propiedades',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1320,6 +1322,7 @@ $messages['mk'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нема „$1“',
 	'recordadmin-edit-info' => 'Оваа страница содржи шаблони кои имаат свои обрасци што можете да ги пополните од овој збир јазичиња.',
+	'recordadmin-properties' => 'Својства',
 );
 
 /** Mongolian (Монгол)
@@ -1401,6 +1404,7 @@ $messages['nl'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Geen "$1"',
 	'recordadmin-edit-info' => 'Deze pagina bevat sjablonen die hun eigen formulieren hebben die u hier in kunt vullen.',
+	'recordadmin-properties' => 'Eigenschappen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1591,6 +1595,7 @@ $messages['pl'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Nie „$1”',
 	'recordadmin-edit-info' => 'Ta strona zawiera szablony z formularzami, które można wypełnić korzystając z tego zestawu gotowych odpowiedzi',
+	'recordadmin-properties' => 'Właściwości',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1637,6 +1642,7 @@ $messages['pms'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Pa gnun "$1"',
 	'recordadmin-edit-info' => "Sta pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'it peule ampinì da sto tab-set",
+	'recordadmin-properties' => 'Proprietà',
 );
 
 /** Pashto (پښتو)
@@ -1716,7 +1722,9 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'recordadmin' => 'Administração de registros',
-	'recordadmin-desc' => 'Uma [[Special:RecordAdmin|página especial]] para encontrar e editar páginas de registros usando um formulário',
+	'recordadmin-desc' => 'Pesquisa, consultas, formulários e relatórios de dados da wiki derivados de parâmetros de predefinições',
+	'recordadmin-specialdesc' => 'Uma [[Special:RecordAdmin|página especial]] para pesquisar e criar páginas usando formulários associados',
+	'recordadmin-noforms' => 'Não existem formulários definidos para uso na pesquisa e criação de páginas',
 	'recordadmin-select' => 'Selecione o tipo de registro a gerenciar',
 	'recordadmin-createtype' => 'Introduza o nome do novo tipo de registo a criar',
 	'recordadmin-recordtype' => 'Tipo de registro',
@@ -1751,6 +1759,8 @@ $messages['pt-br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Não {{PLURAL:$1|existe|existem}} "$1"',
+	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.',
+	'recordadmin-properties' => 'Propriedades',
 );
 
 /** Romanian (Română)
@@ -1827,6 +1837,7 @@ $messages['ru'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Нет «$1»',
 	'recordadmin-edit-info' => 'Эта страница содержит шаблоны, которые имеют свои собственные формы, которые можно заполнить с этого набора вкладок',
+	'recordadmin-properties' => 'Свойства',
 );
 
 /** Rusyn (Русиньскый)
