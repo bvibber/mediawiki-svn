@@ -254,7 +254,7 @@ mw.SequencerTools.prototype = {
 					'dur' : {
 						'value' : '0:02',
 						'editType' : 'time'
-					},
+					}
 				},
 				'fadeColor':{
 					'extends':'fade',
@@ -886,9 +886,7 @@ mw.SequencerTools.prototype = {
 				}
 				
 				
-				var onInputChange = function( sliderIndex, timeValue ){
-					// Register the change
-					_this.editWidgets.trimTimeline.onChange( _this, smilElement );
+				var onInputChange = function( sliderIndex, timeValue ){	
 					// Update the slider
 					if( fullClipDuration ){
 						$j('#'+_this.sequencer.id + '_trimTimeline' )
@@ -898,6 +896,17 @@ mw.SequencerTools.prototype = {
 									timeToSlider( timeValue )
 							);					
 					}
+					// Directly update the smil xml from the user Input
+					if( sliderIndex == 0 ){
+						// Update clipBegin 
+						_this.editableTypes['time'].update( _this, smilElement, 'clipBegin',  timeValue );
+					} else {					
+						// Update dur
+						_this.editableTypes['time'].update( _this, smilElement, 'dur',   timeValue );
+					}
+					
+					// Register the change
+					_this.editWidgets.trimTimeline.onChange( _this, smilElement );
 				}
 				
 				// Add a trim binding: 				 
@@ -910,7 +919,7 @@ mw.SequencerTools.prototype = {
 				 $j('#' + _this.getEditToolInputId( 'trim', 'dur') ) 
 				.change( function(){			
 					var timeValue = smil.parseTime(  $j(this).val() ) + 
-					 smil.parseTime( $j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') ).val() );
+					smil.parseTime( $j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') ).val() );
 					onInputChange( 1, timeValue );
 				});
 				 
