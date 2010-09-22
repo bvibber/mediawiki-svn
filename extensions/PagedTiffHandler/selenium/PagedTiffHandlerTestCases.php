@@ -6,7 +6,7 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase {
 	public function runTest() {
 
 		// check whether Multipage.tiff is already uploaded
-		$this->open( Selenium::getBaseUrl() .
+		$this->open( $this->getUrl() .
 			'/index.php?title=Image:Multipage.tiff' );
 
 		$source = $this->getAttribute( "//div[@id='bodyContent']//ul@id" );
@@ -15,7 +15,7 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase {
 		}
 
 		// Check for language
-		$this->open( Selenium::getBaseUrl() .
+		$this->open( $this->getUrl() .
 			'/api.php?action=query&meta=userinfo&uiprop=options&format=xml');
 
 		$lang = $this->getAttribute( "//options/@language" );
@@ -28,8 +28,8 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase {
 
 	public function tearDown() {
 		if ( $this->prerequisiteError ) {
-			$this->selenium->stop();
-			die( 'failed: ' . $this->prerequisiteError . "\n" );
+			//$this->selenium->stop();
+			throw new MWException( 'failed: ' . $this->prerequisiteError . "\n" );
 		}
 	}
 }
@@ -37,7 +37,7 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase {
 class SeleniumUploadTiffTest extends SeleniumTestCase {
 	public function uploadFile( $filename ) {
 
-		$this->open( Selenium::getBaseUrl() .
+		$this->open( $this->getUrl() .
 			'/index.php?title=Special:Upload' );
 		$this->type( 'wpUploadFile', dirname( __FILE__ ) .
 			"\\testImages\\" . $filename );
@@ -104,7 +104,7 @@ class SeleniumDeleteTiffTest extends SeleniumTestCase {
 
 	public function runTest() {
 		
-		$this->open( Selenium::getBaseUrl() . '/index.php?title=Image:'
+		$this->open( $this->getUrl() . '/index.php?title=Image:'
 			. ucfirst( $this->filename ) . '&action=delete' );
 		$this->type( 'wpReason', 'Remove test file' );
 		$this->click( 'mw-filedelete-submit' );
@@ -123,7 +123,7 @@ class SeleniumEmbedTiffTest extends SeleniumTestCase { //PHPUnit_Extensions_Sele
 		
 		parent::tearDown();
 		// Clear EmbedTiffTest page for future tests
-		$this->open( Selenium::getBaseUrl() .
+		$this->open( $this->getUrl() .
 			'/index.php?title=EmbedTiffTest&action=edit' );
 		$this->type( 'wpTextbox1', '' );
 		$this->click( 'wpSave' );
@@ -131,7 +131,7 @@ class SeleniumEmbedTiffTest extends SeleniumTestCase { //PHPUnit_Extensions_Sele
 
 	public function preparePage( $text ) {
 		
-		$this->open( Selenium::getBaseUrl() .
+		$this->open( $this->getUrl() .
 			'/index.php?title=EmbedTiffTest&action=edit' );
 		$this->type( 'wpTextbox1', $text );
 		$this->click( 'wpSave' );
@@ -144,7 +144,7 @@ class SeleniumTiffPageTest extends SeleniumTestCase {
 	public function tearDown() {
 		parent::tearDown();
 		// Clear EmbedTiffTest page for future tests
-		$this->open( Selenium::getBaseUrl() . '/index.php?title=Image:'
+		$this->open( $this->getUrl() . '/index.php?title=Image:'
 			. $this->image . '&action=edit' );
 		$this->type( 'wpTextbox1', '' );
 		$this->click( 'wpSave' );
@@ -153,7 +153,7 @@ class SeleniumTiffPageTest extends SeleniumTestCase {
 	public function prepareImagePage( $image, $text ) {
 		
 		$this->image = $image;
-		$this->open( Selenium::getBaseUrl() . '/index.php?title=Image:'
+		$this->open( $this->getUrl() . '/index.php?title=Image:'
 				. $image . '&action=edit' );
 		$this->type( 'wpTextbox1', $text );
 		$this->click( 'wpSave' );
@@ -170,7 +170,7 @@ class SeleniumDisplayInCategoryTest extends SeleniumTiffPageTest {
 					"[[Category:Wiki]]\n" );
 
 		
-		$this->open( Selenium::getBaseUrl() . '/index.php?title=Category:Wiki' );
+		$this->open( $this->getUrl() . '/index.php?title=Category:Wiki' );
 
 		// Ergebnis chekcen
 		$source = $this->getAttribute(
