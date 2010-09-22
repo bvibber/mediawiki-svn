@@ -20,6 +20,7 @@
 #ifndef MWLISTENER_H_
 #define MWLISTENER_H_
 
+struct MWLINKCOLLECTION_struct;
 
 /**
  * This interface should be implemented by the client application.
@@ -40,6 +41,10 @@ typedef struct MWLISTENER_struct
     void * (*newData)(void);
     void   (*freeData)(void *);
     void   (*resetData)(void *);
+
+    void   (*linkResolver)(struct MWLINKCOLLECTION_struct *linkCollection, void *data);
+    void   (*setLinkResolverData)(void *listenerData, void **linkResolverData);
+
     void * (*getResult)(struct MWLISTENER_struct * listener);
 
 
@@ -95,15 +100,15 @@ typedef struct MWLISTENER_struct
     void (*endTableBody)(struct MWLISTENER_struct * listener);
     void (*beginHeading)(struct MWLISTENER_struct * listener, int level, pANTLR3_STRING anchor, pANTLR3_VECTOR attributes);
     void (*endHeading)(struct MWLISTENER_struct * listener);
-    void (*beginInternalLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkTitle);
+    void (*beginInternalLink)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*endInternalLink)(struct MWLISTENER_struct * listener);
-    void (*onInternalLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkUrl);
+    void (*onInternalLink)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*beginExternalLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkUrl);
     void (*endExternalLink)(struct MWLISTENER_struct * listener);
     void (*onExternalLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkUrl);
-    void (*beginMediaLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+    void (*beginMediaLink)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*endMediaLink)(struct MWLISTENER_struct * listener);
-    void (*onMediaLink)(struct MWLISTENER_struct * listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+    void (*onMediaLink)(struct MWLISTENER_struct * listener, pANTLR3_VECTOR attr);
     void (*onTagExtension)(struct MWLISTENER_struct * listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
     void (*beginTableOfContents)(struct MWLISTENER_struct * listener);
     void (*endTableOfContents)(struct MWLISTENER_struct * listener);

@@ -1,3 +1,22 @@
+/*
+ * Copyright 2010  Andreas Jonsson
+ *
+ * This file is part of libmwparser.
+ *
+ * Libmwparser is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include <glib.h>
 #include <antlr3.h>
 #include <mwlinkcollection.h>
@@ -10,7 +29,7 @@ struct MWLINKCOLLECTION_struct
     GList *tokens;
 };
 
-typedef struct {
+typedef struct LCKEY_struct {
     MWLINKTYPE type;
     pANTLR3_STRING linkTitle;
 } LCKEY;
@@ -52,7 +71,7 @@ lckeyCmp(gconstpointer a, gconstpointer b, gpointer unused)
     return strncmp((char *)k1->linkTitle->chars, (char *)k2->linkTitle->chars, k1->linkTitle->len);
 }
 
-typedef struct {
+typedef struct LCVAL_struct {
     GList *tokenList;
 } LCVAL;
 
@@ -134,7 +153,7 @@ MWLinkCollectionAdd(MWLINKCOLLECTION *collection, MWLINKTYPE type, pANTLR3_STRIN
         lckeyFree(key);
         key = origKey;
     }
-    val->tokenList = g_list_prepend(val->tokenList, val);
+    val->tokenList = g_list_prepend(val->tokenList, token);
     collection->tokens = g_list_prepend(collection->tokens, val->tokenList);
     g_tree_insert(collection->inverseTree, val->tokenList, key);
 }
@@ -166,3 +185,70 @@ MWLinkCollectionRewind(MWLINKCOLLECTION *collection, MWLINKCOLLECTION_MARK mark)
     } while(!last);
 }
 
+struct CALLBACKDATA {
+    int (*callback)(MWLCKEY *key, void *data);
+    void *data;
+};
+
+static gboolean
+callCallback(gpointer key, gpointer value, gpointer data)
+{
+    struct CALLBACKDATA *cb = data;
+    return cb->callback(key, cb->data);
+}
+
+void
+MWLinkCollectionTraverse(MWLINKCOLLECTION *linkCollection,
+                         int (*callback)(MWLCKEY *key, void *data),
+                         void *callbackData)
+{
+    struct CALLBACKDATA cb = { callback, callbackData };
+    g_tree_traverse(linkCollection->tree, callCallback, G_IN_ORDER, &cb);
+}
+
+static void setMediaLinkResolution(gpointer data, gpointer userdata)
+{
+    pANTLR3_COMMON_TOKEN t = data;
+    MWLINKRESOLUTION *resolution = userdata;
+    pANTLR3_VECTOR attr = t->custom;
+    attr->set(attr, attr->count - 2, resolution, MWLinkResolutionFree, true);
+}
+
+static void setLinkResolution(gpointer data, gpointer userdata)
+{
+    pANTLR3_COMMON_TOKEN t = data;
+    MWLINKRESOLUTION *resolution = userdata;
+    pANTLR3_VECTOR attr = t->custom;
+    attr->set(attr, attr->count - 1, resolution, MWLinkResolutionFree, true);
+}
+
+void
+MWLinkCollectionResolve(MWLINKCOLLECTION *linkCollection, MWLCKEY *key, MWLINKRESOLUTION *resolution)
+{
+    LCVAL *val = g_tree_lookup(linkCollection->tree, key);
+    if (val != NULL) {
+        if (key->type == MWLT_MEDIA) {
+            g_list_foreach(val->tokenList, setMediaLinkResolution, resolution);
+        } else {
+            g_list_foreach(val->tokenList, setLinkResolution, resolution);
+        }
+    }
+}
+
+const char *
+MWLCKeyGetLinkTitle(MWLCKEY *lckey)
+{
+    return (char*)lckey->linkTitle->chars;
+}
+
+MWLINKTYPE
+MWLCKeyGetLinkType(MWLCKEY *lckey)
+{
+    return lckey->type;
+}
+
+int
+MWLinkCollectionNumLinks(MWLINKCOLLECTION *collection)
+{
+    return g_tree_nnodes(collection->tree);
+}

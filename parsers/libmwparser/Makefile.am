@@ -13,15 +13,12 @@ SUBDIRS = tests wrapper
 
 ANTLR_LEXER  = mwWikitextLexer
 ANTLR_PARSER = mwWikitextParser
-ANTLR_LEXER_DELEGATES =
 
 ANTLR_GRAMMARS = $(ANTLR_LEXER:=.g) $(ANTLR_PARSER:=.g)
 
 ANTLR_SOURCES = $(ANTLR_LEXER:=.c) $(ANTLR_PARSER:=.c) $(ANTLR_LEXER:=.h) $(ANTLR_PARSER:=.h)
 
-ANTLR_LEXER_DELEGATE_SOURCES =
-
-CLEANFILES = $(ANTLR_LEXER_DELEGATE_SOURCES) $(ANTLR_LEXER_DELEGATES:=.tokens) $(ANTLR_SOURCES) mwlexerpredicates.h mwlexerpredicatedefs.inc
+CLEANFILES = $(ANTLR_SOURCES) mwlexerpredicates.h mwlexerpredicatedefs.inc
 
 lib_LTLIBRARIES = libmwparser.la
 
@@ -51,9 +48,11 @@ libmwparser_la_SOURCES		=		\
 	include/mwkeyvalue.h			\
 	include/mwlexercontext.h		\
 	include/mwlinkcollection.h              \
+	include/mwlinkresolution.h              \
 	include/mwlinks.h			\
 	include/mwlistener.h			\
 	include/mwparser.h			\
+	include/mwmedialinkoption.h             \
 	include/mwparsercontext.h		\
 	include/mwtables.h			\
         include/mwtagext.h			\
@@ -66,7 +65,9 @@ libmwparser_la_SOURCES		=		\
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+	src/mwlinkresolution.c                  \
 	src/mwlinkcollection.c                  \
+	src/mwmedialinkoption.c                 \
         src/mwparser.c				\
 	src/mwparsercontext.c			\
         src/mwtagext.c				\
@@ -82,11 +83,11 @@ EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DE
 	src/mwlexerpredicatedefs.php									\
 	antlr.patch
 
-libmwparser_la_LIBS = $(GLIB_LIBS)
-
 libmwparser_la_CFLAGS = $(GLIB_CFLAGS) -std=gnu99 -Wall -Wno-unused-variable
 
 libmwparser_la_LDFLAGS = -release $(PACKAGE_VERSION)
+
+libmwparser_la_LIBADD = $(GLIB_LIBS) $(ANTLR3C_LIBS);
 
 INCLUDES = -I$(top_srcdir)/include
 

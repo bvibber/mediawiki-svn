@@ -88,6 +88,9 @@ typedef struct MWLEXERCONTEXT_struct
     bool (*isMediaLinkTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
     bool (*setLegalTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const char *perlRegexp);
     bool (*setMediaLinkTitleRegexp)(struct MWLEXERCONTEXT_struct *context, const char *perlRegexp);
+    void (*resolveLinks)(struct MWLEXERCONTEXT_struct *context);
+    void (*linkResolver)(MWLINKCOLLECTION *linkCollection, void *data);
+    void *linkResolverData;
 }
     MWLEXERCONTEXT;
 

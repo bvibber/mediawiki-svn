@@ -26,6 +26,7 @@
 #include <mwheadings.h>
 #include <mwhtml.h>
 #include <mwlinks.h>
+#include <mwlexercontext.h>
 #include <assert.h>
 #include "mwWikitextParser.h"
 
@@ -130,7 +131,7 @@ getTuple(pANTLR3_VECTOR v, size_t tupleSize, void *tuple[], int offset)
 }
 
 
-MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
+MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener, MWLEXERCONTEXT *lexerContext)
 {
     MWPARSERCONTEXT *context = ANTLR3_MALLOC(sizeof(*context));
     pmwWikitextParser psr = parser;
@@ -212,6 +213,14 @@ MWPARSERCONTEXT * MWParserContextNew(void * parser, const MWLISTENER *listener)
     if (context->listener.newData != NULL) {
         context->listener.data = context->listener.newData();
         NULL_FAIL(context->listener.data);
+    }
+
+    if (context->listener.setLinkResolverData != NULL) {
+        context->listener.setLinkResolverData(context->listener.data, &lexerContext->linkResolverData);
+    }
+
+    if (context->listener.linkResolver != NULL) {
+        lexerContext->linkResolver = context->listener.linkResolver;
     }
 
     context->reset(context);

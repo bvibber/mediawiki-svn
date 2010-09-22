@@ -556,22 +556,26 @@ table_of_contents_item:
 
 begin_table_of_contents_item: 
        (h = BEGIN_HEADING { CX->beginTableOfContentsItem(CX, $h->HEADING_LEVEL, $h->getText($h)); })
+/*
     |  (h = HTML_H1_OPEN  { CX->beginTableOfContentsItem(CX, 1, $h->getText($h)); })
     |  (h = HTML_H2_OPEN  { CX->beginTableOfContentsItem(CX, 2, $h->getText($h)); })
     |  (h = HTML_H3_OPEN  { CX->beginTableOfContentsItem(CX, 3, $h->getText($h)); })
     |  (h = HTML_H4_OPEN  { CX->beginTableOfContentsItem(CX, 4, $h->getText($h)); })
     |  (h = HTML_H5_OPEN  { CX->beginTableOfContentsItem(CX, 5, $h->getText($h)); })
     |  (h = HTML_H6_OPEN  { CX->beginTableOfContentsItem(CX, 6, $h->getText($h)); })
+*/
     ;
 
 end_table_of_contents_item:
        (END_HEADING   { CX->endTableOfContentsItem(CX); })
+/*
     |(((HTML_H1_CLOSE { CX->endTableOfContentsItem(CX); })
     |  (HTML_H2_CLOSE { CX->endTableOfContentsItem(CX); })
     |  (HTML_H3_CLOSE { CX->endTableOfContentsItem(CX); })
     |  (HTML_H4_CLOSE { CX->endTableOfContentsItem(CX); })
     |  (HTML_H5_CLOSE { CX->endTableOfContentsItem(CX); })
     |  (HTML_H6_CLOSE { CX->endTableOfContentsItem(CX); }))|EOF)
+*/
     ;
 
 link_element: internal_link | external_link | media_link

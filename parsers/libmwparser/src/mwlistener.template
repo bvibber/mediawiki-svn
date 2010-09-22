@@ -2,6 +2,7 @@
 #include <mwkeyvalue.h>
 #include <mwlistener.h>
 #include <wchar.h>
+#include <mwlinkresolution.h>
 
 /*
  * A note on memory management:  All parameters of type pANTLR3_STRING
@@ -73,15 +74,15 @@ static void PREFIX`BeginHtmlBlockquote'(MWLISTENER *listener, pANTLR3_VECTOR att
 static void PREFIX`EndHtmlBlockquote'(MWLISTENER *listener);
 static void PREFIX`BeginHtmlCenter'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHtmlCenter'(MWLISTENER *listener);
-static void PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndInternalLink'(MWLISTENER *listener);
-static void PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`BeginExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl);
 static void PREFIX`EndExternalLink'(MWLISTENER *listener);
 static void PREFIX`OnExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl);
-static void PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void PREFIX`EndMediaLink'(MWLISTENER *listener);
-static void PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void PREFIX`OnTagExtension'(MWLISTENER *listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void PREFIX`BeginHtmlU'(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void PREFIX`EndHtmlU'(MWLISTENER *listener);
@@ -142,6 +143,19 @@ const MWLISTENER LISTENER_NAME = {
     .newData                  = PREFIX`New',
     .freeData                 = PREFIX`Free',
     .resetData                = PREFIX`Reset',
+    /**
+     * If the listener provides a link resolver implementation,
+     * it will be called after the lexer is done, before the parser
+     * runs.
+     *
+     * The link resolver should use the link collection API to walk
+     * the link collection and fill out the missing information
+     * about the links.  If this is done, the listener will directly obtain
+     * the information about the links in the relevant methods. (I.e.,
+     * beginInternalLink, onInternalLink, beginMediaLink, and onMediaLink).
+     */
+    .linkResolver             = NULL,
+    .setLinkResolverData      = NULL,
     .getResult                = PREFIX`GetResult',
     .onWord                   = PREFIX`OnWord',
     .onSpecial                = PREFIX`OnSpecial',
@@ -506,11 +520,19 @@ PREFIX`EndHeading'(MWLISTENER *listener)
  * link targetting the page with the given title.
  *
  * @param listener
- * @param linkTitle
+ * @param attr The link does not take any actual attributes, but
+ * the ordinary arguments are packed into the attribute vector
+ * in the order linkTitle, linkAnchor, linkTitle
  */
 static void
-PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+PREFIX`BeginInternalLink'(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
 }
 
 /**
@@ -530,11 +552,19 @@ PREFIX`EndInternalLink'(MWLISTENER *listener)
  * TODO: pass link trail and prefix as arguments to this method.
  *
  * @param listener
- * @param linkTitle
+ * @param attr The link does not take any actual attributes, but
+ * the ordinary arguments are packed into the attribute vector
+ * in the order linkTitle, linkAnchor, linkTitle
  */
 static void
-PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+PREFIX`OnInternalLink'(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
 }
 
 /**
@@ -581,12 +611,21 @@ PREFIX`OnExternalLink'(MWLISTENER *listener, pANTLR3_STRING linkUrl)
  * Also, note that media links may nest one level.
  *
  * @param listener
- * @param linkTitle
- * @param attr
+ * @param attr In the attribute vector additional parameters are
+ * packed in the order attributes, linkTitle, linkAnchor,
+ * linkResolution, attributeLinkResolution.
  */
 static void
-PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+PREFIX`BeginMediaLink'(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle =   attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
 }
 
 /**
@@ -606,12 +645,21 @@ PREFIX`EndMediaLink'(MWLISTENER *listener)
  * for PREFIX`BeginMediaLink'.
  *
  * @param listener
- * @param linkTitle
- * @param attr
+ * @param attr In the attribute vector additional parameters are
+ * packed in the order attributes, linkTitle, linkAnchor,
+ * linkResolution, attributeLinkResolution.
  */
 static void
-PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+PREFIX`OnMediaLink'(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle =   attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
 }
 
 /**

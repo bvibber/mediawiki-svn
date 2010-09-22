@@ -21,6 +21,8 @@
 #include <tracingcontext.h>
 #include <mwkeyvalue.h>
 #include <wchar.h>
+#include <mwlinkresolution.h>
+#include <mwmedialinkoption.h>
 
 static const int INDENT_SPACES = 4;
 
@@ -81,15 +83,15 @@ static void TCBeginHtmlBlockquote(MWLISTENER *listener, pANTLR3_VECTOR attribute
 static void TCEndHtmlBlockquote(MWLISTENER *listener);
 static void TCBeginHtmlCenter(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlCenter(MWLISTENER *listener);
-static void TCBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void TCBeginInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndInternalLink(MWLISTENER *listener);
-static void TCOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void TCOnInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
 static void TCEndExternalLink(MWLISTENER *listener);
 static void TCOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
-static void TCBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void TCBeginMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCEndMediaLink(MWLISTENER *listener);
-static void TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void TCOnMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void TCOnTagExtension(MWLISTENER *listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void TCBeginHtmlU(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlU(MWLISTENER *listener);
@@ -129,6 +131,7 @@ static void * TCNew(void);
 static void TCFree(void *tcontext);
 
 static void TCPrintAttributes(pANTLR3_VECTOR attributes);
+static void TCPrintMediaLinkOptions(MEDIALINKOPTION *mlOption);
 static void TCPrintIndent(MWLISTENER *listener);
 static void TCIncreaseIndent(MWLISTENER *listener);
 static void TCDecreaseIndent(MWLISTENER *listener);
@@ -153,6 +156,8 @@ const MWLISTENER mwParserTracingListener = {
     .newData                  = TCNew,
     .freeData                 = TCFree,
     .resetData                = NULL,
+    .linkResolver             = NULL,
+    .setLinkResolverData      = NULL,
     .onWord                   = TCOnWord,
     .onSpecial                = TCOnSpecial,
     .onSpace                  = TCOnSpace,
@@ -416,8 +421,14 @@ TCEndHeading(MWLISTENER *listener)
 }
 
 static void
-TCBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+TCBeginInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
     TCPrintIndent(listener);
     printf("BEGIN INTERNAL LINK[%s]\n", linkTitle->chars);
     TCIncreaseIndent(listener);
@@ -432,8 +443,14 @@ TCEndInternalLink(MWLISTENER *listener)
 }
 
 static void
-TCOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+TCOnInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
     TCPrintIndent(listener);
     printf("INTERNAL LINK[%s]\n", linkTitle->chars);
 }
@@ -462,11 +479,20 @@ TCOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
 }
 
 static void
-TCBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr)
+TCBeginMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle =   attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MEDIALINKOPTION *mlOption  = attr->get(attr, attr->count - 1);
     TCPrintIndent(listener);
-    printf("BEGIN MEDIA LINK[%s]", linkUrl->chars);
-    TCPrintAttributes(attr);
+    printf("BEGIN MEDIA LINK[%s]", linkTitle->chars);
+    TCPrintMediaLinkOptions(mlOption);
     printf("\n");
     TCIncreaseIndent(listener);
 }
@@ -480,10 +506,18 @@ TCEndMediaLink(MWLISTENER *listener)
 }
 
 static void
-TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr)
+TCOnMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle =   attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
     TCPrintIndent(listener);
-    printf("MEDIA LINK[%s]", linkUrl->chars);
+    printf("MEDIA LINK[%s]", linkTitle->chars);
     TCPrintAttributes(attr);
     printf("\n");
 }
@@ -680,6 +714,101 @@ TCPrintAttributes(pANTLR3_VECTOR attributes)
             } else {
                 printf(" %s", p->key->chars);
             }
+        }
+    }
+}
+
+static void
+TCPrintMediaLinkOptions(MEDIALINKOPTION *mlOption)
+{
+    if (mlOption != NULL) {
+        const char *frame;
+        switch (mlOption->frame) {
+        case LOF_NONE:
+            frame = "none";
+            break;
+        case LOF_FRAME:
+            frame = "frame";
+            break;
+        case LOF_FRAMELESS:
+            frame = "frameless";
+            break;
+        case LOF_THUMBNAIL:
+            frame = "thumbnail";
+            break;
+        default:
+            frame = "invalid";
+            break;
+        }
+
+        const char *halign;
+        switch(mlOption->halign) {
+        case LOHA_NONE:
+            halign = "none";
+            break;
+        case LOHA_LEFT:
+            halign = "left";
+            break;
+        case LOHA_RIGHT:
+            halign = "right";
+            break;
+        case LOHA_CENTER:
+            halign = "center";
+            break;
+        default:
+            halign = "illegal";
+            break;
+        }
+
+        const char *valign;
+        switch (mlOption->valign) {
+        case LOVA_NONE:
+            valign = "none";
+            break;
+        case LOVA_BASELINE:
+            valign = "baseline";
+            break;
+        case LOVA_SUB:
+            valign = "sub";
+            break;
+        case LOVA_SUPER:
+            valign = "super";
+            break;
+        case LOVA_TOP:
+            valign = "top";
+            break;
+        case LOVA_TEXT_TOP:
+            valign = "text-top";
+            break;
+        case LOVA_MIDDLE:
+            valign = "middle";
+            break;
+        case LOVA_BOTTOM:
+            valign = "bottom";
+            break;
+        case LOVA_TEXT_BOTTOM:
+            valign = "text-bottom";
+            break;
+        default:
+            valign = "illegal";
+            break;
+        }
+
+        printf("frame: %s, halign: %s, valign: %s", frame, halign, valign);
+        if (mlOption->upright) {
+            printf(", upright");
+        }
+        if (mlOption->border) {
+            printf(", border");
+        }
+        if (mlOption->alt != NULL) {
+            printf(", alt='%s'", mlOption->alt->chars);
+        }
+        if (mlOption->width != NULL) {
+            printf(", width: %s", mlOption->width->chars);
+        }
+        if (mlOption->height != NULL) {
+            printf(", height: %s", mlOption->height->chars);
         }
     }
 }
@@ -1192,5 +1321,4 @@ TCDecreaseIndent(MWLISTENER *listener)
 {
     TC(listener)->indent -= INDENT_SPACES;
 }
-
 

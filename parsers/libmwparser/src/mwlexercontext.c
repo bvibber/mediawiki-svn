@@ -39,6 +39,7 @@ static const wchar_t *mwAntlr3stows(MWLEXERCONTEXT *context, pANTLR3_STRING stri
 static void  mwFreeStringConversionState(void *state);
 static bool setLegalTitleRegexp(MWLEXERCONTEXT *context, const char *perlRegexp);
 static bool setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const char *perlRegexp);
+static void resolveLinks(MWLEXERCONTEXT *context);
 
 MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
 {
@@ -122,6 +123,9 @@ MWLEXERCONTEXT *MWLexerContextNew(pANTLR3_LEXER lexer)
     context->registerTagExtension         = registerTagExtension;
     context->setLegalTitleRegexp          = setLegalTitleRegexp;
     context->setMediaLinkTitleRegexp      = setMediaLinkTitleRegexp;
+    context->resolveLinks                 = resolveLinks;
+    context->linkResolver                 = NULL;
+    context->linkResolverData             = NULL;
 
     if (!context->reset(context)) {
         context->free(context);
@@ -447,4 +451,13 @@ setMediaLinkTitleRegexp(MWLEXERCONTEXT *context, const char *regexp)
     }
 
     return true;
+}
+
+static void
+resolveLinks(MWLEXERCONTEXT *context)
+{
+    if (context->linkResolver != NULL
+        && MWLinkCollectionNumLinks(context->linkCollection) > 0) {
+        context->linkResolver(context->linkCollection, context->linkResolverData);
+    }
 }

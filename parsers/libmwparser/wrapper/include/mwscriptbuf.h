@@ -2,8 +2,20 @@
 #define _MWSCRIPT_BUF_H
 
 #include <mwattributes.h>
+#include <mwscriptmalloc.h>
+
+struct MWSCRIPTBUF_struct;
+
+static inline void appendBytes(struct MWSCRIPTBUF_struct *buf, const char *bytes, size_t numBytes);
 
 #define BUFSIZE 4096
+
+typedef struct MWSCRIPTBUF_INDEX_struct
+{
+    int row;
+    int col;
+}
+    MWSCRIPTBUF_INDEX;
 
 #ifdef TARGET_LANGUAGE_PERL
 
@@ -20,6 +32,29 @@ typedef struct MWSCRIPTBUF_struct
     char *p;
 }
     MWSCRIPTBUF;
+
+static inline MWSCRIPTBUF_INDEX
+getIndex(MWSCRIPTBUF *buf)
+{
+    MWSCRIPTBUF_INDEX index = {
+        /* av_len returns the highest _index_ in the array */
+        av_len(buf->av),
+        buf->p - buf->buf,
+    };
+    return index;
+}
+
+static inline void
+copyAppendRegion(MWSCRIPTBUF *buf, MWSCRIPTBUF_INDEX start, MWSCRIPTBUF_INDEX end)
+{
+    int row;
+    for (row = start.row; row <= end.row; row++) {
+        SV *sv = *(av_fetch(buf->av, row, 0));
+        int startCol = row == start.row ? start.col : 0;
+        int endCol   = row ==   end.row ?   end.col : SvCUR(sv);
+        appendBytes(buf, SvPVX(sv) + startCol, endCol - startCol);
+    }
+}
 
 
 static inline void *
@@ -99,6 +134,30 @@ typedef struct MWSCRIPTBUF_struct
     char *p;
 }
     MWSCRIPTBUF;
+
+static inline MWSCRIPTBUF_INDEX
+getIndex(MWSCRIPTBUF *buf)
+{
+    MWSCRIPTBUF_INDEX index = {
+        buf->av->value.ht->nNumOfElements - 1,
+        buf->p - buf->buf,
+    };
+    return index;
+}
+
+static inline void
+copyAppendRegion(MWSCRIPTBUF *buf, MWSCRIPTBUF_INDEX start, MWSCRIPTBUF_INDEX end)
+{
+    int row;
+    for (row = start.row; row <= end.row; row++) {
+        zval **tmp;
+        int ret = zend_hash_index_find(buf->av->value.ht, row, (void **) &tmp);
+        zval *sv = *tmp;
+        int startCol = row == start.row ? start.col : 0;
+        int endCol   = row ==   end.row ?   end.col : sv->value.str.len - 1;
+        appendBytes(buf, sv->value.str.val + startCol, endCol - startCol);
+    }
+}
 
 static inline void *
 scriptBufResult(MWSCRIPTBUF *buf)
@@ -182,7 +241,7 @@ initBuffer(MWSCRIPTBUF * buf)
 static inline void
 appendAntlr3String(MWSCRIPTBUF *buf, pANTLR3_STRING string)
 {
-    appendBytes(buf, (char *)string->chars, string->size);
+    appendBytes(buf, (char *)string->chars, string->size - 1);
 }
 
 static inline void
@@ -199,7 +258,7 @@ appendAttrVector(MWSCRIPTBUF *buf, const char *element, pANTLR3_VECTOR attr)
 
 #define APPEND_ATTR_VECTOR(element, attr) (appendAttrVector(BUF, element, attr))
 
-#define APPEND_CONST_STRING(string) (appendBytes(BUF, string, sizeof(string)))
+#define APPEND_CONST_STRING(string) (appendBytes(BUF, string, sizeof(string) - 1))
 
 #define APPEND_STRING(string) (appendBytes(BUF, string, strlen(string)))
 
@@ -213,6 +272,8 @@ appendAttrVector(MWSCRIPTBUF *buf, const char *element, pANTLR3_VECTOR attr)
         }                                                       \
     } while (0)
 
+struct MWLINKCOLLECTION_struct;
 
+void MWScriptCallbackResolveLinks(struct MWLINKCOLLECTION_struct *linkCollection, void *data);
 
 #endif

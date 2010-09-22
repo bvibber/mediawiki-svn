@@ -152,6 +152,7 @@ typedef enum
 #include <mwlexercontext.h>
 #include <mwutils.h>
 #include <mwkeyvalue.h>
+#include <mwmedialinkoption.h>
 }
 
 @lexer::members{
@@ -288,11 +289,19 @@ eofAction(void *param)
 {
     MWLEXERCONTEXT *context = param;
     speculationSuccess(context, &context->indentSpeculation);
+    bool willFail = context->headingSpeculation.active 
+                 || context->internalLinkSpeculation.active
+                 || context->mediaLinkSpeculation[0].active
+                 || context->mediaLinkSpeculation[1].active;
     SPECULATION_FAILURE(context,
                         &context->headingSpeculation,
                         &context->internalLinkSpeculation,
                         &context->mediaLinkSpeculation[0],
                         &context->mediaLinkSpeculation[1]);
+
+    if (!willFail) {
+        context->resolveLinks(context);
+    }
 }
 
 
@@ -302,8 +311,8 @@ eofAction(void *param)
 fragment
 NOWIKI
 @init{ 
-    ANTLR3_MARKER nowikiStart;
-    ANTLR3_MARKER nowikiEnd;
+    ANTLR3_MARKER nowikiStart = 0;
+    ANTLR3_MARKER nowikiEnd = 0;
     pANTLR3_VECTOR attrs = NULL;
 }:
     N O W I K I  (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
@@ -333,8 +342,8 @@ options{
 fragment
 HTML_PRE
 @init{ 
-    ANTLR3_MARKER preStart;
-    ANTLR3_MARKER preEnd;
+    ANTLR3_MARKER preStart = 0;
+    ANTLR3_MARKER preEnd = 0;
     pANTLR3_VECTOR attrs = NULL;
 }:
     {!CX->htmlPreDisabled}?=> P R E (SPACE_TAB ATTRIBUTE_LIST_HTML[&attrs]? )? '>'
@@ -385,8 +394,8 @@ BEGIN_HEADING
 
 END_HEADING
 @init {
-    ANTLR3_MARKER mark;
-    ANTLR3_MARKER endHeadingText;
+    ANTLR3_MARKER mark = 0;
+    ANTLR3_MARKER endHeadingText = 0;
 }: 
    {!CX->wikitextHeadingCloseDisabled}?=> '=' {mark = MARK();endHeadingText = GETCHARINDEX();}
     ( ({CX->headingLevel == 1}?=>   END_HEADING_EOL[mark])
@@ -416,9 +425,9 @@ END_HEADING_EOL[ANTLR3_MARKER mark]:
 
 INDENTED_LIST_TABLE
 @init{
-    ANTLR3_MARKER listStart;
-    ANTLR3_MARKER tableStart;
-    ANTLR3_MARKER spaceStart;
+    ANTLR3_MARKER listStart = 0;
+    ANTLR3_MARKER tableStart = 0;
+    ANTLR3_MARKER spaceStart = 0;
 }:
     {BOL}?=>
     {
@@ -543,14 +552,15 @@ TABLE_CELL_INLINE
  */
 INTERNAL_LINK
 @init{
-    ANTLR3_MARKER mark;
+    ANTLR3_MARKER mark = 0;
     pANTLR3_STRING linkTitle;
     pANTLR3_STRING linkAnchor=NULL;
     bool isCompleteLink = false;
     bool success = true;
-    bool alreadyInInternalLink;
-    bool isMediaLink;
+    bool alreadyInInternalLink = false;
+    bool isMediaLink = false;
     pANTLR3_VECTOR attr = NULL;
+    MEDIALINKOPTION *mlOption = NULL;
     pANTLR3_STRING attrLink = NULL;
 }:  {!CX->mediaLinkOpenDisabled && !alreadyTried(CX, &CX->internalLinkSpeculation)
         /*
@@ -592,7 +602,7 @@ INTERNAL_LINK
             ('#' INTERNAL_LINK_ANCHOR[&linkAnchor])?
             (
                  ']]' {isCompleteLink=true;}
-               | '|' ({isMediaLink}?=> MEDIA_LINK_ATTRIBUTES[&attr, &attrLink] | )
+               | '|' ({isMediaLink}?=> MEDIA_LINK_OPTIONS[&mlOption, &attrLink] | )
                | {success = false;}
             )
            )
@@ -621,8 +631,17 @@ INTERNAL_LINK
                  * We'll pack the link title in the attribute vector.
                  * The parser will unpack it and send it as a separate
                  * parameter to the client.
+                 *
+                 * Argument convention:
+                 *
+                 * options, linkTitle, linkAnchor, linkResolution, attributeLinkResolution
                  */
+
+                attr->add(attr, mlOption, MWMediaLinkOptionFree);
                 attr->add(attr, linkTitle, NULL);
+                attr->add(attr, linkAnchor, NULL);
+                attr->add(attr, NULL, NULL);
+                attr->add(attr, NULL, NULL);
                 token->custom = attr;
                 if (isCompleteLink) {
                     token->setType(token, MEDIA_LINK);
@@ -634,7 +653,16 @@ INTERNAL_LINK
             } else if (CX->isLegalTitle(CX, linkTitle)) {
                 MWLinkCollectionAdd(CX->linkCollection, MWLT_INTERNAL, linkTitle, token);
                 speculationAbort(CX, &CX->mediaLinkSpeculation[CX->mediaLinkOpenNestingLevel]);
-                token->custom = linkTitle;
+                /*
+                 * Convention for passing attributes to internal link:
+                 *
+                 * linkTitle, linkAnchor, linkResolution
+                 */
+                pANTLR3_VECTOR v = CX->vectorFactory->newVector(CX->vectorFactory);
+                v->add(v, linkTitle, NULL);
+                v->add(v, linkAnchor, NULL);
+                v->add(v, NULL, NULL);
+                token->custom = v;
                 if (isCompleteLink) {
                     speculationAbort(CX, &CX->internalLinkSpeculation);
                 } else {
@@ -674,94 +702,90 @@ INTERNAL_LINK_FAIL_CONDITION: {CX->internalLinkSpeculation.active}?=>
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr, pANTLR3_STRING *link]:
-    ((MEDIA_LINK_ATTRIBUTE[NULL]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[NULL, NULL])=>
-     (MEDIA_LINK_ATTRIBUTE[attr]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[attr, link])
-     SKIP_SPACE)
-     (
-      ('|' MEDIA_LINK_ATTRIBUTE[NULL]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[NULL, NULL])=>
-      '|' (MEDIA_LINK_ATTRIBUTE[attr]|MEDIA_LINK_ATTRIBUTE_WITH_VALUE[attr, link])
-     )*
+MEDIA_LINK_OPTIONS[MEDIALINKOPTION **mlOption, pANTLR3_STRING *link]:
+
+    (
+     (SKIP_SPACE (MEDIA_LINK_OPTION[NULL]    |MEDIA_LINK_OPTION_WITH_VALUE[NULL,     NULL])
+           SKIP_SPACE ('|'|{PEEK(1, ']') && PEEK(2, ']')}?=>) )=>
+      SKIP_SPACE (MEDIA_LINK_OPTION[mlOption]|MEDIA_LINK_OPTION_WITH_VALUE[mlOption, link])
+           SKIP_SPACE ('|'|{PEEK(1, ']') && PEEK(2, ']')}?=>) 
+    )*
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTE[pANTLR3_VECTOR *attrs]
+MEDIA_LINK_OPTION[MEDIALINKOPTION **mlOption]
 @init{
-   ANTLR3_MARKER start;
+   ANTLR3_MARKER start = 0;
 }:
     {
-        start = GETCHARINDEX();
+        if (*mlOption == NULL) {
+            *mlOption = MWMediaLinkOptionNew();
+        }
     }
-    ( 'thumbnail'
-     |'left'
-     |'right'
-     |'none'
-     |'center'
-     |'frame'
-     |'framed'
-     |'frameless'
-     |'upright'
-     |'border'
-     |'baseline'
-     |'sub'
-     |'super'
-     |'top'
-     |'text-top'
-     |'middle'
-     |'bottom')
-    {
-        MWKEYVALUE kv = { SUBSTR1(start), NULL };
-        addAttribute(CX, attrs, kv);
-    }
+    ( ('thumbnail'   { (*mlOption)->frame     = LOF_THUMBNAIL;    })
+     |('left'        { (*mlOption)->halign    = LOHA_LEFT;        })
+     |('right'       { (*mlOption)->halign    = LOHA_RIGHT;       })
+     |('none'        { (*mlOption)->halign    = LOHA_NONE;        })
+     |('center'      { (*mlOption)->halign    = LOHA_CENTER;      })
+     |('frame'       { (*mlOption)->frame     = LOF_FRAME;        })
+     |('framed'      { (*mlOption)->frame     = LOF_FRAME;        })
+     |('frameless'   { (*mlOption)->frame     = LOF_FRAMELESS;    })
+     |('upright'     { (*mlOption)->upright   = true;             })
+     |('border'      { (*mlOption)->border    = true;             })
+     |('baseline'    { (*mlOption)->valign    = LOVA_BASELINE;    })
+     |('sub'         { (*mlOption)->valign    = LOVA_SUB;         })
+     |('super'       { (*mlOption)->valign    = LOVA_SUPER;       })
+     |('top'         { (*mlOption)->valign    = LOVA_TOP;         })
+     |('text-top'    { (*mlOption)->valign    = LOVA_TEXT_TOP;    })
+     |('middle'      { (*mlOption)->valign    = LOVA_MIDDLE;      })
+     |('bottom'      { (*mlOption)->valign    = LOVA_BOTTOM;      })
+     |('text-bottom' { (*mlOption)->valign    = LOVA_TEXT_BOTTOM; }))
     ;
 
 fragment
-MEDIA_LINK_ATTRIBUTE_WITH_VALUE[pANTLR3_VECTOR *attrs, pANTLR3_STRING *link]
+MEDIA_LINK_OPTION_WITH_VALUE[MEDIALINKOPTION **mlOption, pANTLR3_STRING *link]
 @init{
-    ANTLR3_MARKER startKey;
-    ANTLR3_MARKER endKey;
-    ANTLR3_MARKER startVal;
+    ANTLR3_MARKER startVal = 0;
     bool hasHeight = false;
     bool hasWidth  = false;
     bool isLink    = false;
-    ANTLR3_MARKER startVal1;
-    ANTLR3_MARKER endVal1;
-    ANTLR3_MARKER startVal2;
-    ANTLR3_MARKER endVal2;
+    ANTLR3_MARKER startVal1 = 0;
+    ANTLR3_MARKER endVal1 = 0;
+    ANTLR3_MARKER startVal2 = 0;
+    ANTLR3_MARKER endVal2 = 0;
 }:
     {
-        startKey = GETCHARINDEX();
+        if (*mlOption == NULL) {
+            *mlOption = MWMediaLinkOptionNew();
+        }
     }
-    ((( 'al'  { endKey = GETCHARINDEX(); } 't=' 
-      | 'lin' { endKey = GETCHARINDEX(); isLink = true; } 'k=') 
-         { startVal = GETCHARINDEX(); } (MEDIA_LINK_ATTRIBUTE_VALUE_CHAR | {PEEK(1, ']') && !PEEK(2, ']')}?=> ']')*)
+    ((((  'alt=' 
+      | ('link=' { isLink = true; }) )
+         { startVal = GETCHARINDEX(); } (MEDIA_LINK_OPTION_VALUE_CHAR | {PEEK(1, ']') && !PEEK(2, ']')}?=> ']')*)
       {
           pANTLR3_STRING val = SUBSTR1(startVal);
-          MWKEYVALUE kv = { SUBSTR2(startKey, endKey), val };
-          addAttribute(CX, attrs, kv);
           if (isLink) {
               *link = val;
+          } else {
+              (*mlOption)->alt = val;
           }
       }
     )
     | (({startVal1 = GETCHARINDEX(); } (({hasWidth=true; endVal1 = GETCHARINDEX();} DECIMAL_DIGIT)* 'x' {hasHeight=true;})?
         {startVal2 = GETCHARINDEX(); }  ({ endVal2 = GETCHARINDEX(); } DECIMAL_DIGIT)+ 'px')
        {
-           pANTLR3_STRING width = CX->stringFactory->newStr8(CX->stringFactory, "width");
            if (hasHeight) {
-               pANTLR3_STRING height = CX->stringFactory->newStr8(CX->stringFactory, "height");
-               MWKEYVALUE h = { height, SUBSTR2(startVal2, endVal2) };
                if (hasWidth) {
-                   MWKEYVALUE w = { width,  SUBSTR2(startVal1, endVal1) };
-                   addAttribute(CX, attrs, w);
+                   (*mlOption)->width = SUBSTR2(startVal1, endVal1);
                }
-               addAttribute(CX, attrs, h);
+               (*mlOption)->height = SUBSTR2(startVal2, endVal2);
            } else {
-               MWKEYVALUE w = { width, SUBSTR2(startVal2, endVal2) };
-               addAttribute(CX, attrs, w);
+
+               (*mlOption)->width = SUBSTR2(startVal2, endVal2);
            }
        }
       )
+    )
     ;
 
 END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled}?=> ']]'
@@ -783,8 +807,8 @@ EXTERNAL_LINK
 @init{
     bool success = true;
     bool complete = true;
-    ANTLR3_MARKER urlStart;
-    ANTLR3_MARKER urlEnd;
+    ANTLR3_MARKER urlStart = 0;
+    ANTLR3_MARKER urlEnd = 0;
 }:                 {!CX->externalLinkOpenDisabled && !alreadyTried(CX, &CX->externalLinkSpeculation)}?=>
     {
         speculationInitiate(CX, &CX->externalLinkSpeculation);
@@ -798,7 +822,7 @@ EXTERNAL_LINK
             pANTLR3_STRING url = SUBSTR2(urlStart, urlEnd);
             pANTLR3_COMMON_TOKEN token = NEW_TOK(EXTERNAL_LINK, url);
             token->custom = url;
-            MWLinkCollectionAdd(CX->linkCollection, MWLT_EXTERNAL, url, token);
+            //MWLinkCollectionAdd(CX->linkCollection, MWLT_EXTERNAL, url, token);
             if (!complete) {
                 token->setType(token, BEGIN_EXTERNAL_LINK);
                 onExternalLinkOpen(CX);
@@ -854,7 +878,7 @@ URL_PROTOCOL:
 fragment
 INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
 @init{
-   ANTLR3_MARKER start;
+   ANTLR3_MARKER start = 0;
 }:
     {
        start = GETCHARINDEX();
@@ -868,7 +892,7 @@ INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
 fragment
 INTERNAL_LINK_ANCHOR[pANTLR3_STRING *linkAnchor]
 @init{
-    ANTLR3_MARKER start;
+    ANTLR3_MARKER start = 0;
 }:
     {
        start = GETCHARINDEX();
@@ -881,7 +905,7 @@ INTERNAL_LINK_ANCHOR[pANTLR3_STRING *linkAnchor]
 
 HTML_ENTITY
 @init{
-    ANTLR3_MARKER mark;
+    ANTLR3_MARKER mark = 0;
     bool success = false;
 }:
     '&'
@@ -940,8 +964,8 @@ NON_PRINTABLE: (NON_PRINTABLE_CHAR)+ {MW_HIDE();}
 
 HTML_OPEN_TAG
 @init{
-    ANTLR3_MARKER bodyStart;
-    ANTLR3_MARKER bodyEnd;
+    ANTLR3_MARKER bodyStart = 0;
+    ANTLR3_MARKER bodyEnd = 0;
     CX->inHtmlPre = false;
     CX->inNowiki = false;
     pANTLR3_VECTOR attrs = NULL;
@@ -978,17 +1002,17 @@ HTML_OPEN_TAG
 fragment
 TAG_EXTENSION
 @init{
-    ANTLR3_MARKER mark;
-    ANTLR3_MARKER nameStart;
-    ANTLR3_MARKER nameEnd;
-    ANTLR3_MARKER bodyStart;
-    ANTLR3_MARKER bodyEnd;
+    ANTLR3_MARKER mark = 0;
+    ANTLR3_MARKER nameStart = 0;
+    ANTLR3_MARKER nameEnd = 0;
+    ANTLR3_MARKER bodyStart = 0;
+    ANTLR3_MARKER bodyEnd = 0;
     bool success = true;
     bool empty = false;
     pANTLR3_STRING name;
     pANTLR3_VECTOR attr = NULL;
     pANTLR3_STRING body = NULL;
-    MWPARSER_TAGEXT *tagExt;
+    MWPARSER_TAGEXT *tagExt = NULL;
 }:
     {
         mark = MARK();
@@ -1031,9 +1055,9 @@ TAG_EXTENSION
 fragment
 TAG_EXTENSION_BODY[pANTLR3_STRING name, ANTLR3_MARKER *bodyEnd]
 @init{
-    ANTLR3_MARKER start;
-    ANTLR3_MARKER end;
-    ANTLR3_MARKER tmpBodyEnd;
+    ANTLR3_MARKER start = 0;
+    ANTLR3_MARKER end = 0;
+    ANTLR3_MARKER tmpBodyEnd = 0;
 }:
       (('</' ((LETTER)=> LETTER)+)=> '</' {start = GETCHARINDEX();} ((LETTER)=> {tmpBodyEnd = end = GETCHARINDEX();} LETTER)+ ((SPACE_TAB_CHAR)=> {tmpBodyEnd = GETCHARINDEX();} SPACE_TAB_CHAR)*
         (('>')=> '>' ({name->compareS(name, SUBSTR2(start, end)) == 0}?=> | {*bodyEnd = tmpBodyEnd;} TAG_EXTENSION_BODY[name, bodyEnd])
@@ -1131,7 +1155,7 @@ HTML_OPEN_TAG_INTERNAL[pANTLR3_VECTOR *attrs]
 
 HTML_CLOSE_TAG
 @init{
-    ANTLR3_MARKER endHeadingText;
+    ANTLR3_MARKER endHeadingText = 0;
 }:
     {
         endHeadingText = GETCHARINDEX();
@@ -1239,7 +1263,7 @@ fragment
 ATTRIBUTE_LIST_TABLE[pANTLR3_VECTOR *attrs]
 @init{
     MWKEYVALUE attr;
-    bool       success;
+    bool       success = false;
 }:
     SKIP_SPACE
     (
@@ -1264,8 +1288,8 @@ fragment
 ATTRIBUTE_LIST_TABLE_CELL[pANTLR3_VECTOR *attrs]
 @init{
     MWKEYVALUE attr;
-    bool       success;
-    ANTLR3_MARKER mark;
+    bool       success = false;
+    ANTLR3_MARKER mark = 0;
 }:
     {
         mark = MARK();
@@ -1304,7 +1328,7 @@ fragment
 ATTRIBUTE_LIST_HTML[pANTLR3_VECTOR *attrs]
 @init{
     MWKEYVALUE attr;
-    bool       success;
+    bool       success = false;
 }:
     (
        (
@@ -1340,7 +1364,7 @@ ATTRIBUTE[MWKEYVALUE *attr, bool *success]:
 fragment
 ATTRIBUTE_NAME[pANTLR3_STRING *name]
 @init{
-    ANTLR3_MARKER start;
+    ANTLR3_MARKER start = 0;
 }:
     { start = GETCHARINDEX(); } 
     (('xml:')=>'xml:'|('xmlns:')=>'xmlns:')? (LETTER|DECIMAL_DIGIT)+ 
@@ -1348,7 +1372,10 @@ ATTRIBUTE_NAME[pANTLR3_STRING *name]
     ;
  
 fragment
-ATTRIBUTE_VALUE[pANTLR3_STRING *value] @init{ ANTLR3_MARKER start; }:
+ATTRIBUTE_VALUE[pANTLR3_STRING *value]
+@init{
+    ANTLR3_MARKER start = 0;
+}:
     (
         ('"' 
            { start = GETCHARINDEX(); } 
@@ -1420,7 +1447,7 @@ fragment NON_WHITESPACE_OR_GT_OR_SLASH_CHAR:   ~(SPACE_TAB_CHAR | NEWLINE_CHAR |
 fragment NON_WHITESPACE_OR_BAR_OR_OPEN_BRACKET_CHAR: ~(SPACE_TAB_CHAR | NEWLINE_CHAR | '|' | '[' |'!'|
                               '-'|
                               '}');
-fragment MEDIA_LINK_ATTRIBUTE_VALUE_CHAR: ~(NON_PRINTABLE_CHAR|'|'|']');
+fragment MEDIA_LINK_OPTION_VALUE_CHAR: ~(NON_PRINTABLE_CHAR|'|'|']');
 fragment SKIP_SPACE:          ((SPACE_TAB_CHAR)=> SPACE_TAB_CHAR)*;
 fragment LETTER:              UCASE_LETTER | LCASE_LETTER;
 fragment HTML_ENTITY_CHARS:   HTML_ENTITY_CHAR+;

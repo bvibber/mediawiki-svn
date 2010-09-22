@@ -88,9 +88,9 @@ typedef struct MWPARSERCONTEXT_struct
     void (*beginHtmlCenter)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endHtmlCenter)(struct MWPARSERCONTEXT_struct * context);
 
-    void (*beginInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkTitle);
+    void (*beginInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*endInternalLink)(struct MWPARSERCONTEXT_struct * context);
-    void (*onInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkTitle);
+    void (*onInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*beginExternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkUrl);
     void (*endExternalLink)(struct MWPARSERCONTEXT_struct * context);
     void (*onExternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkUrl);
@@ -214,10 +214,15 @@ typedef struct MWPARSERCONTEXT_struct
 }
     MWPARSERCONTEXT;
 
+struct MWLEXERCONTEXT_struct;
+
 /**
- * Constructor for the parser context super class.  
+ * Constructor for the parser context class.
+ * @param parser pointer to the antlr generated parser.
+ * @param listener pointer to listener implementation.
+ * @param lexerContext pointer to lexer context.
  */
-MWPARSERCONTEXT * MWParserContextNew(void* parser, const MWLISTENER *listener);
+MWPARSERCONTEXT * MWParserContextNew(void* parser, const MWLISTENER *listener, struct MWLEXERCONTEXT_struct *lexerContext);
 
 /**
  * Put this macro at the beginning of begin methods that should not be

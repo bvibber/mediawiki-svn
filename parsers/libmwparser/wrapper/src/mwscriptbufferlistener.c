@@ -4,7 +4,10 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <mwscriptbuf.h>
-
+#include <mwlinkresolution.h>
+#include <mwlinkcollection.h>
+#include <mwlinkresolvercallback.h>
+#include <mwmedialinkoption.h>
 
 /*
  * A note on memory management:  All parameters of type pANTLR3_STRING
@@ -76,15 +79,15 @@ static void SBBeginHtmlBlockquote(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlBlockquote(MWLISTENER *listener);
 static void SBBeginHtmlCenter(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlCenter(MWLISTENER *listener);
-static void SBBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void SBBeginInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndInternalLink(MWLISTENER *listener);
-static void SBOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void SBOnInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
 static void SBEndExternalLink(MWLISTENER *listener);
 static void SBOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
-static void SBBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void SBBeginMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndMediaLink(MWLISTENER *listener);
-static void SBOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void SBOnMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBOnTagExtension(MWLISTENER *listener, const char * name, pANTLR3_STRING body, pANTLR3_VECTOR attr);
 static void SBBeginHtmlU(MWLISTENER *listener, pANTLR3_VECTOR attr);
 static void SBEndHtmlU(MWLISTENER *listener);
@@ -123,6 +126,8 @@ static void * SBNew(void);
 static void SBReset(void *data);
 static void SBFree(void *data);
 static void * SBGetResult(MWLISTENER *listener);
+static void SBLinkResolver(MWLINKCOLLECTION *linkCollection, void *data);
+static void SBSetLinkResolverData(void *listenerData, void **linkResolverData);
 
 /**
  * Data storage for the listener.
@@ -132,6 +137,16 @@ typedef struct SCRIPT_BUF_struct
     MWSCRIPTBUF buf;
     pANTLR3_STRING_FACTORY stringFactory;
     int headingLevel;
+    void *scriptCallbackData;
+
+    bool renderMarkup;
+    const char *height;
+    const char *width;
+    const char *url;
+    const char *imageUrl;
+    const char *alt;
+    int mediaLinkEndDivs;
+    MWSCRIPTBUF_INDEX startCaption;
 } 
     SCRIPT_BUF;
 
@@ -150,6 +165,8 @@ const MWLISTENER mwScriptBufferListener = {
     .newData                  = SBNew,
     .freeData                 = SBFree,
     .resetData                = SBReset,
+    .linkResolver             = SBLinkResolver,
+    .setLinkResolverData      = SBSetLinkResolverData,
     .getResult                = SBGetResult,
     .onWord                   = SBOnWord,
     .onSpecial                = SBOnSpecial,
@@ -281,6 +298,13 @@ SBNew()
         return NULL;
     }
 
+    data->scriptCallbackData = NULL;
+    data->renderMarkup = true;
+    data->height = NULL;
+    data->width = NULL;
+    data->url = NULL;
+    data->imageUrl = NULL;
+
     return data;
 }
 
@@ -319,6 +343,17 @@ static void *
 SBGetResult(MWLISTENER *listener)
 {
     return scriptBufResult(BUF);
+}
+
+static void SBLinkResolver(MWLINKCOLLECTION *linkCollection, void *data)
+{
+    MWLinkResolverCallback(linkCollection, data);
+}
+
+static void SBSetLinkResolverData(void *listenerData, void **linkResolverData)
+{
+    SCRIPT_BUF *buf = listenerData;
+    *linkResolverData = buf->scriptCallbackData;
 }
 
 /**
@@ -423,16 +458,26 @@ SBOnNewline(MWLISTENER *listener)
 static void
 SBOnBr(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
-    APPEND_CONST_STRING("<br/>");
+    if (DATA->renderMarkup) {
+        APPEND_CONST_STRING("<br/>");
+    }
 }
 
-#define HTML_TAG(name) do {                     \
-    if (attr == NULL) {                         \
-        APPEND_CONST_STRING("<" name ">");      \
-    } else {                                    \
-        APPEND_CONST_STRING("<" name);          \
-        APPEND_ATTR_VECTOR(name, attr);         \
-        APPEND_CONST_STRING(">");               \
+#define HTML_TAG(name) do {                             \
+        if (DATA->renderMarkup) {                       \
+            if (attr == NULL) {                         \
+                APPEND_CONST_STRING("<" name ">");      \
+            } else {                                    \
+                APPEND_CONST_STRING("<" name);          \
+                APPEND_ATTR_VECTOR(name, attr);         \
+                APPEND_CONST_STRING(">");               \
+            }                                           \
+        }                                               \
+} while (0)
+
+#define HTML_END(name) do {                     \
+    if (DATA->renderMarkup) {                   \
+        APPEND_CONST_STRING("</" name ">");     \
     }                                           \
 } while (0)
 
@@ -456,7 +501,7 @@ SBBeginParagraph(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndParagraph(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</p>");
+    HTML_END("p");
 }
 
 /**
@@ -499,7 +544,7 @@ SBBeginItalic(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndItalic(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</i>");
+    HTML_END("i");
 }
 
 /**
@@ -522,7 +567,7 @@ SBBeginBold(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndBold(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</b>");
+    HTML_END("b");
 }
 
 /**
@@ -533,7 +578,9 @@ SBEndBold(MWLISTENER *listener)
 static void
 SBBeginPre(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("<pre>");
+    if (DATA->renderMarkup) {
+        APPEND_CONST_STRING("<pre>");
+    }
 }
 
 /**
@@ -544,7 +591,7 @@ SBBeginPre(MWLISTENER *listener)
 static void
 SBEndPre(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</pre>");
+    HTML_END("pre");
 }
 
 /**
@@ -593,25 +640,57 @@ SBEndHeading(MWLISTENER *listener)
 {
     switch (DATA->headingLevel) {
     case 1:
-        APPEND_CONST_STRING("</h1>");
+        HTML_END("h1");
         break;
     case 2:
-        APPEND_CONST_STRING("</h2>");
+        HTML_END("h2");
         break;
     case 3:
-        APPEND_CONST_STRING("</h3>");
+        HTML_END("h3");
         break;
     case 4:
-        APPEND_CONST_STRING("</h4>");
+        HTML_END("h4");
         break;
     case 5:
-        APPEND_CONST_STRING("</h5>");
+        HTML_END("h5");
         break;
     case 6:
-        APPEND_CONST_STRING("</h6>");
+        HTML_END("h6");
         break;
     default:
         assert(false);
+    }
+}
+
+static void
+renderInternalLinkOpen(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_STRING linkAnchor, MWLINKRESOLUTION *linkResolution)
+{
+    if (DATA->renderMarkup) {
+#ifndef NDEBUG
+        if (linkResolution == NULL) {
+            APPEND_CONST_STRING("<a style=\"color: pink;\" title=\"UNRESOLVED INTERNAL LINK [");
+            APPEND_ANTLR3_STRING(linkTitle);
+            if (linkAnchor != NULL) {
+                APPEND_CONST_STRING("#");
+                /* TODO verify anchor */
+                APPEND_ANTLR3_STRING(linkAnchor);
+            }
+            APPEND_CONST_STRING("]\">");
+        } else
+#endif
+            {
+                APPEND_CONST_STRING("<a href=\"");
+                APPEND_STRING(linkResolution->url);
+                if (linkAnchor != NULL) {
+                    APPEND_CONST_STRING("#");
+                    APPEND_ANTLR3_STRING(linkAnchor);
+                }
+                APPEND_CONST_STRING("\"");
+                if (linkResolution->color == MWLINKCOLOR_RED) {
+                    APPEND_CONST_STRING(" class=\"new\"");
+                }
+                APPEND_CONST_STRING(">");
+            }
     }
 }
 
@@ -620,14 +699,21 @@ SBEndHeading(MWLISTENER *listener)
  * link targetting the page with the given title.
  *
  * @param listener
- * @param linkTitle
+ * @param attr The link does not take any actual attributes, but
+ * the ordinary arguments are packed into the attribute vector
+ * in the order linkTitle, linkAnchor, linkTitle
  */
 static void
-SBBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+SBBeginInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
-    APPEND_CONST_STRING("<!-- BEGIN INTERNAL LINK [");
-    APPEND_ANTLR3_STRING(linkTitle);
-    APPEND_CONST_STRING("] -->");
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+
+    renderInternalLinkOpen(listener, linkTitle, linkAnchor, linkResolution);
 }
 
 /**
@@ -638,8 +724,9 @@ SBBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
 static void
 SBEndInternalLink(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("<!-- END INTERNAL LINK -->");
+    HTML_END("a");
 }
+
 
 /**
  * A complete internal link has been encountered.  The link title
@@ -648,14 +735,24 @@ SBEndInternalLink(MWLISTENER *listener)
  * TODO: pass link trail and prefix as arguments to this method.
  *
  * @param listener
- * @param linkTitle
+ * @param attr The link does not take any actual attributes, but
+ * the ordinary arguments are packed into the attribute vector
+ * in the order linkTitle, linkAnchor, linkTitle
  */
 static void
-SBOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
+SBOnInternalLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
-    APPEND_CONST_STRING("<!-- INTERNAL LINK [");
-    APPEND_ANTLR3_STRING(linkTitle);
-    APPEND_CONST_STRING("] -->");
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkAnchor       = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    pANTLR3_STRING linkTitle        = attr->get(attr, attr->count - 1);
+    attr->remove(attr, attr->count - 1);
+    if (DATA->renderMarkup) {
+        renderInternalLinkOpen(listener, linkTitle, linkAnchor, linkResolution);
+    }
+    SBOnSpecial(listener, linkTitle);
+    SBEndInternalLink(listener);
 }
 
 /**
@@ -668,10 +765,12 @@ SBOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
 static void
 SBBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
 {
-    APPEND_CONST_STRING("<a href=\"");
-    /* TODO URL validation */
-    APPEND_ANTLR3_STRING(linkUrl);
-    APPEND_CONST_STRING("\">");
+    if (DATA->renderMarkup) {
+        APPEND_CONST_STRING("<a class=\"external text\" rel=\"nofollow\" href=\"");
+        /* TODO URL validation */
+        APPEND_ANTLR3_STRING(linkUrl);
+        APPEND_CONST_STRING("\">");
+    }
 }
 
 /**
@@ -682,7 +781,7 @@ SBBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
 static void
 SBEndExternalLink(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</a>");
+    HTML_END("a");
 }
 
 /**
@@ -695,12 +794,135 @@ SBEndExternalLink(MWLISTENER *listener)
 static void
 SBOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
 {
-    APPEND_CONST_STRING("<a href=\"");
-    /* TODO URL validation */
-    APPEND_ANTLR3_STRING(linkUrl);
+    if (DATA->renderMarkup) {
+        APPEND_CONST_STRING("<a class=\"external text\" rel=\"nofollow\" href=\"");
+        /* TODO URL validation */
+        APPEND_ANTLR3_STRING(linkUrl);
+        APPEND_CONST_STRING("\">");
+    }
+    SBOnSpecial(listener, linkUrl);
+    HTML_END("a");
+}
+
+static void
+renderMediaLinkOpen(MWLISTENER *listener,
+                    MEDIALINKOPTION *mlOption,
+                    pANTLR3_STRING linkTitle,
+                    pANTLR3_STRING linkAnchor,
+                    MWLINKRESOLUTION *linkResolution,
+                    MWLINKRESOLUTION *attributeLinkResolution)
+{
+    if (linkResolution != NULL) {
+        pANTLR3_STRING title = linkTitle;
+        pANTLR3_STRING alt   = linkTitle;
+        const char *width;
+        const char *height;
+        bool renderFrame     = mlOption != NULL && mlOption->frame != LOF_NONE;
+
+        if (mlOption != NULL && mlOption->width != NULL) {
+            width = (char *) mlOption->width->toUTF8(mlOption->width)->chars;
+        } else {
+            width = linkResolution->imageWidth;
+        }
+
+        if (mlOption != NULL && mlOption->height != NULL) {
+            height = (char *) mlOption->height->toUTF8(mlOption->height)->chars;
+        } else {
+            height = linkResolution->imageHeight;
+        }
+
+        if (renderFrame) {
+            DATA->mediaLinkEndDivs = 3;
+            if (mlOption->halign == LOHA_CENTER) {
+                DATA->mediaLinkEndDivs = 4;
+                APPEND_CONST_STRING("<div class=\"center\"><div class=\"thumb none\">");
+            } else if (mlOption->halign == LOHA_LEFT) {
+                APPEND_CONST_STRING("<div class=\"thumb tleft\">");
+            } else {
+                APPEND_CONST_STRING("<div class=\"thumb tright\">");
+            }
+            APPEND_CONST_STRING("<div class=\"thumbinner\">");
+            APPEND_CONST_STRING("<a class=\"image\" title=\"");
+            APPEND_ANTLR3_STRING(title);
+            APPEND_CONST_STRING("\" href=\"");
+            APPEND_STRING(linkResolution->url);
+            APPEND_CONST_STRING("\"><img ");
+            if (width != NULL) {
+                APPEND_CONST_STRING("width=\"");
+                APPEND_STRING(width);
+                APPEND_CONST_STRING("\" ");
+            }
+            if (height != NULL) {
+                APPEND_CONST_STRING("height=\"");
+                APPEND_STRING(height);
+                APPEND_CONST_STRING("\" ");
+            }
+            //            APPEND_CONST_STRING("\" border=\"");
+            //            APPEND_STRING(border);
+            APPEND_CONST_STRING("src=\"");
+            APPEND_STRING(linkResolution->imageUrl);
+            APPEND_CONST_STRING("\" alt=\"");
+            APPEND_ANTLR3_STRING(alt);
+            APPEND_CONST_STRING("\"/></a>");
+            APPEND_CONST_STRING("<div class=\"thumbcaption\">");
+        } else {
+
+            APPEND_CONST_STRING("<a title=\"");
+            DATA->height   = height;
+            DATA->width    = width;
+            DATA->url      = linkResolution->url;
+            DATA->imageUrl = linkResolution->imageUrl;
+            DATA->alt      = mlOption == NULL ? NULL : mlOption->alt;
+            DATA->renderMarkup = false;
+            DATA->startCaption = getIndex(&DATA->buf);
+        }
+    } 
+#ifndef NDEBUG
+    else {
+        APPEND_CONST_STRING("<a style=\"color: pink;\" title=\"UNRESOLVED MEDIA LINK [");
+        APPEND_ANTLR3_STRING(linkTitle);
+        if (linkAnchor != NULL) {
+            APPEND_CONST_STRING("#");
+            /* TODO verify anchor */
+            APPEND_ANTLR3_STRING(linkAnchor);
+        }
+        APPEND_CONST_STRING("]\">");
+    }
+#endif
+}
+
+static void
+renderCloseMediaLinkNoframe(MWLISTENER *listener)
+{
+    DATA->renderMarkup = true;
+    MWSCRIPTBUF_INDEX endCaption = getIndex(&DATA->buf);
+    APPEND_CONST_STRING("\" class=\"image\" href=\"");
+    APPEND_STRING(DATA->url);
     APPEND_CONST_STRING("\">");
-    /* TODO escape URL */
-    APPEND_ANTLR3_STRING(linkUrl);
+    if (DATA->imageUrl != NULL) {
+        APPEND_CONST_STRING("<img ");
+        if (DATA->width != NULL) {
+            APPEND_CONST_STRING("width=\"");
+            APPEND_STRING(DATA->width);
+            APPEND_CONST_STRING("\" ");
+        }
+        if (DATA->height != NULL) {
+            APPEND_CONST_STRING("height=\"");
+            APPEND_STRING(DATA->height);
+            APPEND_CONST_STRING("\" ");
+        }
+        APPEND_CONST_STRING("src=\"");
+        APPEND_STRING(DATA->imageUrl);
+        APPEND_CONST_STRING("\" alt=\"");
+    }
+    if (DATA->alt != NULL) {
+        APPEND_STRING(DATA->alt);
+    } else {
+        copyAppendRegion(&DATA->buf, DATA->startCaption, endCaption);
+    }
+    if (DATA->imageUrl != NULL) {
+        APPEND_CONST_STRING("\"/>");
+    }
     APPEND_CONST_STRING("</a>");
 }
 
@@ -714,12 +936,22 @@ SBOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
  * Also, note that media links may nest one level.
  *
  * @param listener
- * @param linkTitle
- * @param attr
+ * @param attr In the attribute vector additional parameters are
+ * packed in the order options, linkTitle, linkAnchor,
+ * linkResolution, attributeLinkResolution.
  */
 static void
-SBBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+SBBeginMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 2);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 3);
+    pANTLR3_STRING linkTitle =   attr->get(attr, attr->count - 4);
+    MEDIALINKOPTION *mlOption =  attr->get(attr, attr->count - 5);
+    
+    if (DATA->renderMarkup) {
+        renderMediaLinkOpen(listener, mlOption, linkTitle, linkAnchor, linkResolution, attributeLinkResolution);
+    }
 }
 
 /**
@@ -730,6 +962,14 @@ SBBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR 
 static void
 SBEndMediaLink(MWLISTENER *listener)
 {
+    if (!DATA->renderMarkup) {
+        renderCloseMediaLinkNoframe(listener);
+    } else {
+        int i;
+        for (i = 0; i < DATA->mediaLinkEndDivs; i++) {
+            HTML_END("div");
+        }
+    }
 }
 
 /**
@@ -739,12 +979,23 @@ SBEndMediaLink(MWLISTENER *listener)
  * for SBBeginMediaLink.
  *
  * @param listener
- * @param linkTitle
- * @param attr
+ * @param attr In the attribute vector additional parameters are
+ * packed in the order options, linkTitle, linkAnchor,
+ * linkResolution, attributeLinkResolution.
  */
 static void
-SBOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR attr)
+SBOnMediaLink(MWLISTENER *listener, pANTLR3_VECTOR attr)
 {
+    MWLINKRESOLUTION *attributeLinkResolution  = attr->get(attr, attr->count - 1);
+    MWLINKRESOLUTION *linkResolution = attr->get(attr, attr->count - 2);
+    pANTLR3_STRING linkAnchor =  attr->get(attr, attr->count - 3);
+    pANTLR3_STRING linkTitle  =  attr->get(attr, attr->count - 4);
+    MEDIALINKOPTION *mlOption =  attr->get(attr, attr->count - 5);
+
+    if (DATA->renderMarkup) {
+        renderMediaLinkOpen(listener, mlOption, linkTitle, linkAnchor, linkResolution, attributeLinkResolution);
+        SBEndMediaLink(listener);
+    }
 }
 
 /**
@@ -761,12 +1012,13 @@ SBOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkTitle, pANTLR3_VECTOR att
 static void
 SBOnTagExtension(MWLISTENER *listener, const char *name, pANTLR3_STRING body, pANTLR3_VECTOR attr)
 {
-    APPEND_CONST_STRING("<!-- TAG EXTENSION[");
-    printf("name: %p, body: %p\n", name, body);
-    APPEND_STRING(name);
-    APPEND_CONST_STRING("] -->");
-    SBOnSpecial(listener, body);
-    APPEND_CONST_STRING("<!-- END TAG EXTENSION -->");
+    if (DATA->renderMarkup) {
+        APPEND_CONST_STRING("<!-- TAG EXTENSION[");
+        APPEND_STRING(name);
+        APPEND_CONST_STRING("] -->");
+        SBOnSpecial(listener, body);
+        APPEND_CONST_STRING("<!-- END TAG EXTENSION -->");
+    }
 }
 
 /**
@@ -798,7 +1050,7 @@ SBBeginBulletList(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndBulletList(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</ul>");
+    HTML_END("ul");
 }
 
 /**
@@ -821,7 +1073,7 @@ SBBeginBulletListItem(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndBulletListItem(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</li>");
+    HTML_END("li");
 }
 
 /**
@@ -846,7 +1098,7 @@ SBBeginEnumerationList(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndEnumerationList(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</ol>");
+    HTML_END("ol");
 }
 
 /**
@@ -869,7 +1121,7 @@ SBBeginEnumerationItem(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndEnumerationItem(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</li>");
+    HTML_END("li");
 }
 
 /**
@@ -894,7 +1146,7 @@ SBBeginDefinitionList(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndDefinitionList(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</dl>");
+    HTML_END("dl");
 }
 
 /**
@@ -917,7 +1169,7 @@ SBBeginDefinedTermItem(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndDefinedTermItem(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</dt>");
+    HTML_END("dt");
 }
 
 /**
@@ -940,7 +1192,7 @@ SBBeginDefinitionItem(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndDefinitionItem(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</dd>");
+    HTML_END("dd");
 }
 
 /**
@@ -1014,7 +1266,7 @@ SBBeginTable(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTable(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</table>");
+    HTML_END("table");
 }
 
 /**
@@ -1037,7 +1289,7 @@ SBBeginTableRow(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTableRow(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</tr>");
+    HTML_END("tr");
 }
 
 /**
@@ -1060,7 +1312,7 @@ SBBeginTableCell(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTableCell(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</td>");
+    HTML_END("td");
 }
 
 /**
@@ -1083,7 +1335,7 @@ SBBeginTableHeading(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTableHeading(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</th>");
+    HTML_END("th");
 }
 
 /**
@@ -1106,7 +1358,7 @@ SBBeginTableCaption(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTableCaption(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</caption>");
+    HTML_END("caption");
 }
 
 
@@ -1130,7 +1382,7 @@ SBBeginTableBody(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndTableBody(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</tbody>");
+    HTML_END("tbody");
 }
 
 /**
@@ -1192,7 +1444,7 @@ SBBeginHtmlDiv(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlDiv(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</div>");
+    HTML_END("div");
 }
 
 /**
@@ -1215,7 +1467,7 @@ SBBeginHtmlBlockquote(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlBlockquote(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</blockquote>");
+    HTML_END("blockquote");
 }
 
 /**
@@ -1238,7 +1490,7 @@ SBBeginHtmlCenter(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlCenter(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</center>");
+    HTML_END("center");
 }
 
 /**
@@ -1261,7 +1513,7 @@ SBBeginHtmlU(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlU(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</u>");
+    HTML_END("u");
 }
 
 /**
@@ -1284,7 +1536,7 @@ SBBeginHtmlDel(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlDel(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</del>");
+    HTML_END("del");
 }
 
 /**
@@ -1307,7 +1559,7 @@ SBBeginHtmlIns(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlIns(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</ins>");
+    HTML_END("ins");
 }
 
 /**
@@ -1330,7 +1582,7 @@ SBBeginHtmlFont(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlFont(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</font>");
+    HTML_END("font");
 }
 
 /**
@@ -1353,7 +1605,7 @@ SBBeginHtmlBig(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlBig(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</big>");
+    HTML_END("big");
 }
 
 /**
@@ -1376,7 +1628,7 @@ SBBeginHtmlSmall(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlSmall(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</small>");
+    HTML_END("small");
 }
 
 /**
@@ -1399,7 +1651,7 @@ SBBeginHtmlSub(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlSub(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</sub>");
+    HTML_END("sub");
 }
 
 /**
@@ -1422,7 +1674,7 @@ SBBeginHtmlSup(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlSup(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</sup>");
+    HTML_END("sup");
 }
 
 /**
@@ -1445,7 +1697,7 @@ SBBeginHtmlCite(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlCite(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</cite>");
+    HTML_END("cite");
 }
 
 /**
@@ -1468,7 +1720,7 @@ SBBeginHtmlCode(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlCode(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</code>");
+    HTML_END("code");
 }
 
 /**
@@ -1491,7 +1743,7 @@ SBBeginHtmlStrike(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlStrike(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</strike>");
+    HTML_END("strike");
 }
 
 /**
@@ -1514,7 +1766,7 @@ SBBeginHtmlStrong(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlStrong(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</strong>");
+    HTML_END("strong");
 }
 
 /**
@@ -1537,7 +1789,7 @@ SBBeginHtmlSpan(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlSpan(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</span>");
+    HTML_END("span");
 }
 
 /**
@@ -1560,7 +1812,7 @@ SBBeginHtmlTt(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlTt(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</tt>");
+    HTML_END("tt");
 }
 
 /**
@@ -1583,7 +1835,7 @@ SBBeginHtmlVar(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlVar(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</var>");
+    HTML_END("var");
 }
 
 /**
@@ -1606,7 +1858,7 @@ SBBeginHtmlAbbr(MWLISTENER *listener, pANTLR3_VECTOR attr)
 static void
 SBEndHtmlAbbr(MWLISTENER *listener)
 {
-    APPEND_CONST_STRING("</abbr>");
+    HTML_END("abbr");
 }
 
 
@@ -1623,5 +1875,5 @@ SBOnHtmlPre(MWLISTENER *listener, pANTLR3_STRING body, pANTLR3_VECTOR attr)
 {
     HTML_TAG("pre");
     SBOnSpecial(listener, body);
-    APPEND_CONST_STRING("</pre>");
+    HTML_END("pre");
 }

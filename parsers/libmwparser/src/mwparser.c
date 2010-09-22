@@ -58,7 +58,7 @@ MWPARSER *MWParserNew(const MWLISTENER *listener, MWPARSER_INPUT_STREAM *input)
         return NULL;
     }
 
-    mwparser->parserContext = MWParserContextNew(parser, listener);
+    mwparser->parserContext = MWParserContextNew(parser, listener, mwparser->lexerContext);
     if (mwparser->parserContext == NULL) {
         MWParserFree(mwparser);
         return NULL;

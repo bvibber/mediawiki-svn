@@ -77,12 +77,15 @@ am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libmwparser_la_LIBADD =
+am__DEPENDENCIES_1 =
+libmwparser_la_DEPENDENCIES = $(am__DEPENDENCIES_1) $(ANTLR3C_LIBS);
 am_libmwparser_la_OBJECTS = libmwparser_la-mwattributes.lo \
 	libmwparser_la-mwbasicevents.lo libmwparser_la-mwformats.lo \
 	libmwparser_la-mwheadings.lo libmwparser_la-mwhtml.lo \
 	libmwparser_la-mwlexercontext.lo libmwparser_la-mwlinks.lo \
-	libmwparser_la-mwlinkcollection.lo libmwparser_la-mwparser.lo \
+	libmwparser_la-mwlinkresolution.lo \
+	libmwparser_la-mwlinkcollection.lo \
+	libmwparser_la-mwmedialinkoption.lo libmwparser_la-mwparser.lo \
 	libmwparser_la-mwparsercontext.lo libmwparser_la-mwtagext.lo \
 	libmwparser_la-mwtables.lo libmwparser_la-tracingcontext.lo
 am__objects_1 = libmwparser_la-mwWikitextLexer.lo
@@ -90,7 +93,7 @@ am__objects_2 = libmwparser_la-mwWikitextParser.lo
 am__objects_3 =
 am__objects_4 = $(am__objects_1) $(am__objects_2) $(am__objects_3) \
 	$(am__objects_3)
-nodist_libmwparser_la_OBJECTS = $(am__objects_4) $(am__objects_3)
+nodist_libmwparser_la_OBJECTS = $(am__objects_4)
 libmwparser_la_OBJECTS = $(am_libmwparser_la_OBJECTS) \
 	$(nodist_libmwparser_la_OBJECTS)
 libmwparser_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
@@ -237,6 +240,7 @@ SWIG = @SWIG@
 SWIG_LIB = @SWIG_LIB@
 TARGET_LANGUAGE = @TARGET_LANGUAGE@
 TARGET_LANGUAGE_CFLAGS = @TARGET_LANGUAGE_CFLAGS@
+TARGET_LANGUAGE_LDFLAGS = @TARGET_LANGUAGE_LDFLAGS@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -297,11 +301,9 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = tests wrapper
 ANTLR_LEXER = mwWikitextLexer
 ANTLR_PARSER = mwWikitextParser
-ANTLR_LEXER_DELEGATES = 
 ANTLR_GRAMMARS = $(ANTLR_LEXER:=.g) $(ANTLR_PARSER:=.g)
 ANTLR_SOURCES = $(ANTLR_LEXER:=.c) $(ANTLR_PARSER:=.c) $(ANTLR_LEXER:=.h) $(ANTLR_PARSER:=.h)
-ANTLR_LEXER_DELEGATE_SOURCES = 
-CLEANFILES = $(ANTLR_LEXER_DELEGATE_SOURCES) $(ANTLR_LEXER_DELEGATES:=.tokens) $(ANTLR_SOURCES) mwlexerpredicates.h mwlexerpredicatedefs.inc
+CLEANFILES = $(ANTLR_SOURCES) mwlexerpredicates.h mwlexerpredicatedefs.inc
 lib_LTLIBRARIES = libmwparser.la
 nodist_libmwparser_la_SOURCES = $(ANTLR_SOURCES) $(ANTLR_LEXER_DELEGATE_SOURCES)
 libmwparser_la_SOURCES = \
@@ -314,9 +316,11 @@ libmwparser_la_SOURCES = \
 	include/mwkeyvalue.h			\
 	include/mwlexercontext.h		\
 	include/mwlinkcollection.h              \
+	include/mwlinkresolution.h              \
 	include/mwlinks.h			\
 	include/mwlistener.h			\
 	include/mwparser.h			\
+	include/mwmedialinkoption.h             \
 	include/mwparsercontext.h		\
 	include/mwtables.h			\
         include/mwtagext.h			\
@@ -329,7 +333,9 @@ libmwparser_la_SOURCES = \
 	src/mwhtml.c				\
 	src/mwlexercontext.c			\
 	src/mwlinks.c				\
+	src/mwlinkresolution.c                  \
 	src/mwlinkcollection.c                  \
+	src/mwmedialinkoption.c                 \
         src/mwparser.c				\
 	src/mwparsercontext.c			\
         src/mwtagext.c				\
@@ -342,9 +348,9 @@ EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DE
 	src/mwlexerpredicatedefs.php									\
 	antlr.patch
 
-libmwparser_la_LIBS = $(GLIB_LIBS)
 libmwparser_la_CFLAGS = $(GLIB_CFLAGS) -std=gnu99 -Wall -Wno-unused-variable
 libmwparser_la_LDFLAGS = -release $(PACKAGE_VERSION)
+libmwparser_la_LIBADD = $(GLIB_LIBS) $(ANTLR3C_LIBS);
 INCLUDES = -I$(top_srcdir)/include
 include_HEADERS = config.h
 ANTLR_PRODUCTS = 
@@ -455,7 +461,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwhtml.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwlexercontext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwlinkcollection.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwlinkresolution.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwlinks.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwmedialinkoption.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwparser.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwparsercontext.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmwparser_la-mwtables.Plo@am__quote@
@@ -532,12 +540,26 @@ libmwparser_la-mwlinks.lo: src/mwlinks.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -c -o libmwparser_la-mwlinks.lo `test -f 'src/mwlinks.c' || echo '$(srcdir)/'`src/mwlinks.c
 
+libmwparser_la-mwlinkresolution.lo: src/mwlinkresolution.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -MT libmwparser_la-mwlinkresolution.lo -MD -MP -MF $(DEPDIR)/libmwparser_la-mwlinkresolution.Tpo -c -o libmwparser_la-mwlinkresolution.lo `test -f 'src/mwlinkresolution.c' || echo '$(srcdir)/'`src/mwlinkresolution.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libmwparser_la-mwlinkresolution.Tpo $(DEPDIR)/libmwparser_la-mwlinkresolution.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwlinkresolution.c' object='libmwparser_la-mwlinkresolution.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -c -o libmwparser_la-mwlinkresolution.lo `test -f 'src/mwlinkresolution.c' || echo '$(srcdir)/'`src/mwlinkresolution.c
+
 libmwparser_la-mwlinkcollection.lo: src/mwlinkcollection.c
 @am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -MT libmwparser_la-mwlinkcollection.lo -MD -MP -MF $(DEPDIR)/libmwparser_la-mwlinkcollection.Tpo -c -o libmwparser_la-mwlinkcollection.lo `test -f 'src/mwlinkcollection.c' || echo '$(srcdir)/'`src/mwlinkcollection.c
 @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libmwparser_la-mwlinkcollection.Tpo $(DEPDIR)/libmwparser_la-mwlinkcollection.Plo
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwlinkcollection.c' object='libmwparser_la-mwlinkcollection.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -c -o libmwparser_la-mwlinkcollection.lo `test -f 'src/mwlinkcollection.c' || echo '$(srcdir)/'`src/mwlinkcollection.c
+
+libmwparser_la-mwmedialinkoption.lo: src/mwmedialinkoption.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -MT libmwparser_la-mwmedialinkoption.lo -MD -MP -MF $(DEPDIR)/libmwparser_la-mwmedialinkoption.Tpo -c -o libmwparser_la-mwmedialinkoption.lo `test -f 'src/mwmedialinkoption.c' || echo '$(srcdir)/'`src/mwmedialinkoption.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libmwparser_la-mwmedialinkoption.Tpo $(DEPDIR)/libmwparser_la-mwmedialinkoption.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='src/mwmedialinkoption.c' object='libmwparser_la-mwmedialinkoption.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -c -o libmwparser_la-mwmedialinkoption.lo `test -f 'src/mwmedialinkoption.c' || echo '$(srcdir)/'`src/mwmedialinkoption.c
 
 libmwparser_la-mwparser.lo: src/mwparser.c
 @am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmwparser_la_CFLAGS) $(CFLAGS) -MT libmwparser_la-mwparser.lo -MD -MP -MF $(DEPDIR)/libmwparser_la-mwparser.Tpo -c -o libmwparser_la-mwparser.lo `test -f 'src/mwparser.c' || echo '$(srcdir)/'`src/mwparser.c
