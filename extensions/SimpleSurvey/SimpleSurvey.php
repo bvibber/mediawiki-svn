@@ -3,7 +3,11 @@
 $dir = dirname( __FILE__ ) . '/';
 
 // from prefswitch in usability initiative
-$prefswitchdir = dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch";
+$prefswitchdir = dirname( dirname( __FILE__ ) ) . "/PrefSwitch";
+// Horrible back for back compat with pre-r73480 installs
+if ( !is_dir( $prefswitchdir ) ) {
+	$prefswitchdir = dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch";
+}
 
 // Use this to override the URL of ext.prefSwitch.{js,css} if needed
 $wgSimpleSurveyJSPath = null;
