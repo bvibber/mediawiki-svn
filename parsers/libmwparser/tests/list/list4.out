@@ -1,0 +1,20 @@
+BEGIN ARTICLE
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+            BEGIN ENUMERATION LIST
+                BEGIN ENUMERATION LIST ITEM
+                    WORD[subitem]
+                END ENUMERATION LIST ITEM
+                BEGIN ENUMERATION LIST ITEM
+                    WORD[subitem]
+                END ENUMERATION LIST ITEM
+            END ENUMERATION LIST
+        END BULLET LIST ITEM
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+            SPACE[ ]
+            WORD[continuation]
+        END BULLET LIST ITEM
+    END BULLET LIST
+END ARTICLE

@@ -200,6 +200,13 @@ AT_CHECK([testtext ${srcdir}/list/list3.in > tempoutput && diff ${srcdir}/list/l
 
 AT_CLEANUP
 
+AT_SETUP([list4])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/list/list4.in > tempoutput && diff ${srcdir}/list/list4.out tempoutput])
+
+AT_CLEANUP
+
 AT_SETUP([hr])
 
 AT_DATA([tempoutput], [])

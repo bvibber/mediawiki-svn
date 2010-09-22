@@ -721,7 +721,7 @@ onListElement(MWPARSERCONTEXT *context, pANTLR3_STRING type)
         }
         closeLists(context, i);
     }
-    if (s != NULL && s->len == type->len && i == s->len) {
+    if (s != NULL && s->len >= type->len && i == type->len) {
         ANTLR3_UCHAR c = type->charAt(type, type->len - 1);
         CASE(c, '*') { LSTNR->endBulletListItem(LSTNR);    LSTNR->beginBulletListItem(LSTNR, NULL);  } else
         CASE(c, '#') { LSTNR->endEnumerationItem(LSTNR);   LSTNR->beginEnumerationItem(LSTNR, NULL); } else
@@ -730,7 +730,7 @@ onListElement(MWPARSERCONTEXT *context, pANTLR3_STRING type)
         } else {
             assert(false); // Invalid character representing a list item.
         }
-        if (type->charAt(type, type->len - 1) != s->charAt(s, s->len - 1)) {
+        if (type->len < s->len || type->charAt(type, type->len - 1) != s->charAt(s, s->len - 1)) {
             updateListState(context, type, s->len - 1);
         }
     } else {

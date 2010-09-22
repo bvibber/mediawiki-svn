@@ -12,6 +12,8 @@ BEGIN ARTICLE
                     WORD[item]
                 END BULLET LIST ITEM
             END BULLET LIST
+        END BULLET LIST ITEM
+        BEGIN BULLET LIST ITEM
             WORD[bar]
             BEGIN ENUMERATION LIST
                 BEGIN ENUMERATION LIST ITEM
