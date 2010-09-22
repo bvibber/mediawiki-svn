@@ -863,6 +863,7 @@ mw.SequencerTools.prototype = {
 			// Return the trimTimeline edit widget
 			'draw': function( _this, target, smilElement ){
 				var smil = _this.sequencer.getSmil();
+				var sliderScale = 10000000
 				// check if thumbs are supported 
 				if( _this.sequencer.getSmil().getRefType( smilElement ) == 'video' ){ 
 					$j(target).append(
@@ -878,10 +879,10 @@ mw.SequencerTools.prototype = {
 				
 				// Some slider functions
 				var sliderToTime = function( sliderval ){
-					return parseInt( fullClipDuration * ( sliderval / 100000 ) );
+					return parseInt( fullClipDuration * ( sliderval / sliderScale ) );
 				}
 				var timeToSlider = function( time ){					
-					return parseInt( ( time / fullClipDuration ) * 100000 );
+					return parseInt( ( time / fullClipDuration ) * sliderScale );
 				}
 				
 				
@@ -939,7 +940,7 @@ mw.SequencerTools.prototype = {
 						.slider({
 							range: true,
 							min: 0,
-							max: 100000,
+							max: sliderScale,
 							values: sliderValues,
 							slide: function(event, ui) {	
 							
