@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.01',
+	'version' => '0.02',
 	'author' =>'David Raison', 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -35,7 +35,7 @@ $wgHooks['LanguageGetMagic'][] = 'wfQrCodeLanguageGetMagic';
 
 function efQrcodeSetup(){
 	global $wgParser;
-	$wgParser->setFunctionHook( 'qrcode', array(new QrCode, 'showCode' ));
+	$wgParser->setFunctionHook( 'qrcode', array(new MwQrCode, 'showCode' ));
 }
 
 function wfQrCodeLanguageGetMagic( &$magicWords, $langCode='en' ) {
@@ -49,7 +49,7 @@ $wgQrCodeSize = 4;	// pixel size of black squares
 $wgQrCodeBoundary = 2;	// boundary around square
 $wgQrCodeBot = 'QrCodeBot';
 	
-class QrCode {
+class MwQrCode {
 
 	private $_dstFileName;	// what the file will be named?
 	private $_label;		// What will the qrcode contain?
