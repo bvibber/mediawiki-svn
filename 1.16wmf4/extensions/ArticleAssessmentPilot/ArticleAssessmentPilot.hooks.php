@@ -21,16 +21,16 @@ class ArticleAssessmentPilotHooks {
 
 	private static $scriptFiles = array(
 		'raw' => array(
-			array( 'src' => 'js/ArticleAssessment.js', 'version' => 2 ),
+			array( 'src' => 'js/ArticleAssessment.js', 'version' => 3 ),
 			array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
 			array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
 			array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
 		),
 		'combined' => array(
-			array( 'src' => 'js/ArticleAssessment.combined.js', 'version' => 1 )
+			array( 'src' => 'js/ArticleAssessment.combined.js', 'version' => 2 )
 		),
 		'minified' => array(
-			array( 'src' => 'js/ArticleAssessment.combined.min.js', 'version' => 1 )
+			array( 'src' => 'js/ArticleAssessment.combined.min.js', 'version' => 2 )
 		),
 	);
 

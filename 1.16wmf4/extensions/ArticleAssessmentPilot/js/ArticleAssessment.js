@@ -93,10 +93,10 @@
 					submitbutton = $.ArticleAssessment.fn.getMsg( 'articleassessment-submit' );
 				$structure
 					.find( '#article-assessment-rate legend' )
-						.text( yourfeedback )
+						.html( yourfeedback )
 						.end()
 					.find( '.article-assessment-rate-instructions' )
-						.text( instructions )
+						.html( instructions )
 						.end()
 					.find( '.article-assessment-rate-feedback' )
 						.html( feedback )
@@ -108,7 +108,7 @@
 							.end()
 						.end()
 					.find( '#article-assessment-ratings legend' )
-						.text( articlerating )
+						.html( articlerating )
 						.end()
 					.find( '.article-assessment-show-ratings' )
 						.html( resultsshow )
@@ -150,7 +150,7 @@
 						.find( 'label' )
 							.attr( 'for', 'rating_' + field )
 							.attr( 'original-title', hint )
-							.text( label )
+							.html( label )
 							.end()
 						.find( 'select' )
 							.attr( 'id', 'rating_' + field )
@@ -159,10 +159,10 @@
 					$rating
 						.attr( 'id',  'articleassessment-rating-' + field )
 						.find( '.article-assessment-rating-field-name' )
-							.text( label )
+							.html( label )
 							.end()
 						.find( '.article-assessment-rating-count' )
-							.text( count );
+							.html( count );
 					// append the field and rating html
 					$structure
 						.find( '.article-assessment-rating-fields' )
@@ -283,7 +283,7 @@
 							.text( total )
 							.end()
 							.find( '.article-assessment-rating-count' )
-							.text( label );
+							.html( label );
 						if( rating.userrating ) {
 							// this user rated. Word. Show them their ratings
 							var $rateControl = $( '#' + rating.ratingdesc.replace( 'rating', 'rate' ) + ' .rating-field' );
@@ -461,7 +461,7 @@
 						// TODO: Style success-msg, error-msg
 						var $msgDiv = $( '<div />' )
 							.addClass( success ? 'article-assessment-success-msg' : 'article-assessment-error-msg' )
-							.text( $.ArticleAssessment.fn.getMsg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
+							.html( $.ArticleAssessment.fn.getMsg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv
 							.dialog( 'option', 'height', $msgDiv.height() + 100 )
@@ -478,7 +478,7 @@
 						// TODO: Duplicates code, factor out, maybe
 						var $msgDiv = $( '<div />' )
 							.addClass( 'article-assessment-error-msg' )
-							.text( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ) )
+							.html( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
 						$dialogDiv
 							.dialog( 'option', 'height', $msgDiv.height() + 100 )
