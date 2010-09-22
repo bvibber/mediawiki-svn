@@ -75,7 +75,7 @@ libmwparser_la_SOURCES		=		\
 	src/tracingcontext.c
 
 src/mwparsercontext.c src/mwparser.c: mwWikitextParser.h
-src/mwlexercontext.c mwparser.c: mwWikitextLexer.h
+src/mwlexercontext.c mwparser.c: mwWikitextLexer.h mwlexerpredicates.h mwlexerpredicatedefs.inc
 
 EXTRA_DIST = $(ANTLR_LEXER:%=src/%.g) $(ANTLR_PARSER:%=src/%.g) $(ANTLR_LEXER_DELEGATES:%=src/%.g)	\
 	src/mwlexerpredicates.php									\

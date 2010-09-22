@@ -1098,7 +1098,7 @@ debug_echo:
 	echo $(libmwparser_la_OBJECTS)
 
 src/mwparsercontext.c src/mwparser.c: mwWikitextParser.h
-src/mwlexercontext.c mwparser.c: mwWikitextLexer.h
+src/mwlexercontext.c mwparser.c: mwWikitextLexer.h mwlexerpredicates.h mwlexerpredicatedefs.inc
 
 %.tokens %.c %Lexer.c %Parser.c %Lexer.h %Parser.h %.h: %.g
 	$(ANTLR) -fo $(top_builddir) $(ANTLR_OPTIONS) $<

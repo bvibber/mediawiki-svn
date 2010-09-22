@@ -2,7 +2,6 @@
 #define _MWSCRIPT_BUF_H
 
 #include <mwattributes.h>
-#include <mwscriptmalloc.h>
 
 struct MWSCRIPTBUF_struct;
 

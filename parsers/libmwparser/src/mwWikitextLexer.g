@@ -595,7 +595,7 @@ INTERNAL_LINK
            mark = MARK();
         }
         (
-           SPACE_TAB_CHAR*
+           ((SPACE_TAB_CHAR)=> SPACE_TAB_CHAR)*
            (
             INTERNAL_LINK_TITLE[&linkTitle]
             SPACE_TAB_CHAR* {isMediaLink = CX->isMediaLinkTitle(CX, linkTitle);}
@@ -883,7 +883,7 @@ INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
     {
        start = GETCHARINDEX();
     }
-    (~(NEWLINE_CHAR|SPACE_TAB_CHAR|'|'|'['|']'|NON_PRINTABLE_CHAR))+
+    (~(NEWLINE_CHAR|TAB_CHAR|'|'|'['|']'|NON_PRINTABLE_CHAR))+
     {
        *linkTitle = SUBSTR1(start);
     }

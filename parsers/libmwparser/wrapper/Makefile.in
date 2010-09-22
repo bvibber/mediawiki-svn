@@ -242,7 +242,7 @@ libmwp_la_SOURCES = \
 
 nodist_libmwp_la_SOURCES = mwp_wrap.c
 libmwp_la_CFLAGS = $(TARGET_LANGUAGE_CFLAGS) $(GLIB_CFLAGS) -Wall -Wno-unused
-libmwp_la_LDFLAGS = $(TARGET_LANGUAGE_LDFLAGS) $(GLIB_LDFLAGS) -lmwparser
+libmwp_la_LDFLAGS = $(TARGET_LANGUAGE_LDFLAGS) $(GLIB_LDFLAGS) -lmwparser -release $(PACKAGE_VERSION)
 libmwp_la_LIBADD = 
 INCLUDES = -I$(srcdir)/include -I$(top_srcdir)/include
 include_HEADERS = $(top_builddir)/config.h
