@@ -510,10 +510,10 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		}
 	},	
 	getApiTitleKey: function(){
-		return wgTitle;
+		return wgPageName;
 	},
 	getTitle: function(){
-		return wgTitle.replace( 'Sequence:', '').replace('_', ' ');
+		return wgPageName.replace( 'Sequence:', '').replace('_', ' ');
 	},
 	// Get the api url ( for now use whatever the page context is ) 
 	getApiUrl: function(){
