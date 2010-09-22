@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r149';
+var mwRemoteVersion = 'r150';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -170,7 +170,7 @@ function doPageSpecificRewrite() {
 					
 					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
 						'action': wgAction,
-						'titleKey' : wgTitle,
+						'titleKey' : wgPageName,
 						'target' : '#bodyContent'
 					});
 					window.mwSequencerRemote.drawUI();						

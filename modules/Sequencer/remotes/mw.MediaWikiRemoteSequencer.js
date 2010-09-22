@@ -60,18 +60,23 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 			$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
 		});
 		
-		$j( embedPlayer ).bind( 'pause', function() {		
-			mw.remoteSequencerAddEditOverlay( embedPlayerId )
+		$j( embedPlayer ).bind( 'pause', function() {
+			// don't display if near the end of playback ( causes double fade in conflict with ended event ) 		
+			mw.remoteSequencerAddEditOverlay( embedPlayerId );
+			
 			// xxx should use getter setter
 			embedPlayer.controlBuilder.displayOptionsMenuFlag = true;		
 			return true;
 		});
 		
-		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){			
+		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){
+			if( embedPlayer.currentTime != 0 ){
+				return ;
+			}
 			// pause event should fire 
 			mw.remoteSequencerAddEditOverlay( embedPlayerId );
 			
-			// show the credits screen after 3 seconds 1/2 second to fade in
+			// show the credits screen after 3 seconds 1/2 seconds
 			setTimeout(function(){				
 				$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
 				embedPlayer.$interface.find('.k-menu').fadeIn('fast');
@@ -136,7 +141,7 @@ mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 				'background' : 'none repeat scroll 0 0 #FFF',
 				'color' : 'black',
 				'opacity': 0.9,
-				'z-index': 999
+				'z-index': 1
 			})						
 			.append(
 				$j('<div />')

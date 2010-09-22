@@ -2981,8 +2981,8 @@ mw.EmbedPlayer.prototype = {
 		_this.volume = this.getPlayerElementVolume();
 		
 		// update the mute state from the player element
-		if( _this.muted != _this.getPlayerElementMuted() ){
-			mw.log("monitor:: muted does not mach embed player" );
+		if( _this.muted != _this.getPlayerElementMuted() && ! _this.isStopped() ){
+			mw.log( "EmbedPlayer::monitor: muted does not mach embed player" );
 			_this.toggleMute();
 			// Make sure they match: 
 			_this.muted = _this.getPlayerElementMuted(); 

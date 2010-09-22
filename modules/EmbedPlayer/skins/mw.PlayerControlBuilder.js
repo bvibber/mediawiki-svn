@@ -605,7 +605,7 @@ mw.PlayerControlBuilder.prototype = {
 			.animate( { 
 				'bottom' : 10 
 			}, 'slow' );
-
+		
 	},
 	
 	/**
@@ -613,7 +613,7 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	showControlBar: function(){
 		var animateDuration = 'slow';	
-		$j( this.embedPlayer.getPlayerElement() ).css('z-index', '1')	
+		$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' )	
 		mw.log( 'showControlBar' );
 		// Move up text track if present
 		this.embedPlayer.$interface.find( '.track' )
@@ -625,7 +625,7 @@ mw.PlayerControlBuilder.prototype = {
 			); 
 		
 		// Show interface controls
-		this.embedPlayer.$interface.find( '.control-bar')
+		this.embedPlayer.$interface.find( '.control-bar' )
 			.fadeIn( animateDuration );			
 	},
 	

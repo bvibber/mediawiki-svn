@@ -204,7 +204,7 @@
 					'title' : _this.titleKey,
 					'text' : _this.wrapSequencerWikiText( sequenceXML ),
 					'token': token
-				};
+				};				
 				mw.getJSON( _this.getApiUrl(), request, function( data ) {
 					if( data.edit && data.edit.result == 'Success' ) {
 						// Update the latest local variables
