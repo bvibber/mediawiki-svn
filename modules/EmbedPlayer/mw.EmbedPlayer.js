@@ -2489,6 +2489,9 @@ mw.EmbedPlayer.prototype = {
 		} else if( this.apiTitleKey ) {			
 			iframeUrl += 'apiTitleKey=' + escape( this.apiTitleKey ) + '&';
 			if ( this.apiProvider ) {
+				if( mw.parseUri( document.URL ).host == 'commons.wikimedia.org'){
+					 this.apiProvider = 'commons';
+				}
 				iframeUrl += 'apiProvider=' + escape( this.apiProvider ) + '&';
 			}
 		} else {			
