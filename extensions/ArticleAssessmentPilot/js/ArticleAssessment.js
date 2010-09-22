@@ -270,7 +270,8 @@
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
-				if ( data.query && data.query.articleassessment && data.query.articleassessment.length > 0 ) {
+				if ( typeof data.query != 'undefined' && typeof data.query.articleassessment != 'undefined' &&
+						typeof data.query.articleassessment[0] != 'undefined' ) {
 					for ( var r in data.query.articleassessment[0].ratings ) {
 						var rating = data.query.articleassessment[0].ratings[r],
 							$rating = $( '#' + rating.ratingdesc ),
