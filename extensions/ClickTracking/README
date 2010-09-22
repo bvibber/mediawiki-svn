@@ -5,6 +5,9 @@
 
 # Example LocalSettings.php additions
 
+# to track a dynamic action, be sure that $j.trackAction("something to identify action") is called in JS
+# to track an action that has state information associated with it, fire $j.trackActionWithInfo("action", "state information");
+
 require_once("$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.php");
 // Track 1 in every 10 clicks; set to 1 to track all clicks, -1 to disable
 $wgClickTrackThrottle = 10;
