@@ -365,7 +365,10 @@ mw.SmilLayout.prototype = {
 			'id' : this.smil.getSmilElementPlayerID( smilElement ), 
 			'src' : this.smil.getAssetUrl( $j( smilElement ).attr( 'src' ) )
 		} )
-		.css( 'display', 'none');
+		.css( {
+			'width': '0px',
+			'height' : '0px'
+		});
 	},
 	
 	/**
