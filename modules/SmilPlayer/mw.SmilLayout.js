@@ -135,7 +135,10 @@ mw.SmilLayout.prototype = {
 					.attr('id', _this.smil.getSmilElementPlayerID( smilElement ) )
 					.css({
 						'width':'100%',
-						'height':'100%'
+						'height':'100%',
+						'position' : 'absolute',
+						'top' : '0px',
+						'left' : '0px'
 					})
 				$regionTarget.append( $target )
 				this.drawSmilElementToTarget( smilElement, $target );
