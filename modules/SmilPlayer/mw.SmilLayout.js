@@ -589,8 +589,13 @@ mw.SmilLayout.prototype = {
 			'id' : this.smil.getSmilElementPlayerID( smilImg ), 
 			'src' : this.smil.getAssetUrl( $j( smilImg ).attr( 'src' ) )
 		} )
-		// default width 100%
-		.css('width', '100%')
+		// default width 100% upper left
+		.css({
+			'position' : 'absolute',
+			'top' : '0px',
+			'left' : '0px',
+			'width': '100%'
+		})
 			
 		return $image;	
 	},

@@ -120,9 +120,15 @@
 		},		
 		wrapSequencerWikiText : function( xmlString ){
 			var _this = this;
-			if( !_this.currentSequencePage || !_this.currentSequencePage.pageStart ){
+			if( !_this.currentSequencePage ){
+				_this.currentSequencePage= {};
+			}
+			if( !_this.currentSequencePage.pageStart ){ 			
 				 _this.currentSequencePage.pageStart ="\nTo edit or view this sequence " + 
 					'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page'; 
+			}
+			if(!_this.currentSequencePage.pageEnd ){
+				_this.currentSequencePage.pageEnd ='';
 			}
 			return _this.currentSequencePage.pageStart + 
 				"\n\n<!-- " + SEQUENCER_PAYLOADKEY + "\n" + 

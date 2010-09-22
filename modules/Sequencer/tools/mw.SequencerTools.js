@@ -120,7 +120,7 @@ mw.SequencerTools.prototype = {
 		'time' : {
 			update : function( _this, smilElement, attributeName, value){
 				// Validate time
-				var seconds = _this.sequencer.getSmil().parseTime( value );
+				var seconds = _this.sequencer.getSmil().parseTime( value );				
 				$j( smilElement ).attr( attributeName, mw.seconds2npt( seconds ) );
 				// Update the clip duration :
 				_this.sequencer.getEmbedPlayer().getDuration( true );
@@ -859,6 +859,9 @@ mw.SequencerTools.prototype = {
 						updateDurationThumb()
 					)
 				}
+				
+				// Register the edit state for undo / redo 
+				_this.sequencer.getActionsEdit().registerEdit();
 			},
 			// Return the trimTimeline edit widget
 			'draw': function( _this, target, smilElement ){
@@ -885,28 +888,37 @@ mw.SequencerTools.prototype = {
 					return parseInt( ( time / fullClipDuration ) * sliderScale );
 				}
 				
-				
+				// Special flag to prevent slider updates from propgating if the change was based on user input
+				var onInputChangeFlag = false;
 				var onInputChange = function( sliderIndex, timeValue ){	
-					// Update the slider
+					onInputChangeFlag = true;
 					if( fullClipDuration ){
+						// Update the slider
+						var sliderTime = ( sliderIndex == 0 )? timeToSlider( timeValue ) : 
+							timeToSlider( timeValue + smil.parseTime( $j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') ).val() ) );
+						
 						$j('#'+_this.sequencer.id + '_trimTimeline' )
-							.slider( 
-									"values", 
-									sliderIndex, 
-									timeToSlider( timeValue )
-							);					
+							.slider(
+								"values", 
+								sliderIndex, 
+								sliderTime
+							);										
 					}
+					// restore the onInputChangeFlag
+					onInputChangeFlag = false;
+					
 					// Directly update the smil xml from the user Input
-					if( sliderIndex == 0 ){
+					if( sliderIndex == 0 ){						
 						// Update clipBegin 
 						_this.editableTypes['time'].update( _this, smilElement, 'clipBegin',  timeValue );
 					} else {					
 						// Update dur
 						_this.editableTypes['time'].update( _this, smilElement, 'dur',   timeValue );
 					}
+					mw.log(' should update inx:' + sliderIndex + ' set to: ' + timeValue);
 					
 					// Register the change
-					_this.editWidgets.trimTimeline.onChange( _this, smilElement );
+					_this.editWidgets.trimTimeline.onChange( _this, smilElement );					
 				}
 				
 				// Add a trim binding: 				 
@@ -918,8 +930,7 @@ mw.SequencerTools.prototype = {
 				
 				 $j('#' + _this.getEditToolInputId( 'trim', 'dur') ) 
 				.change( function(){			
-					var timeValue = smil.parseTime(  $j(this).val() ) + 
-					smil.parseTime( $j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') ).val() );
+					var timeValue = smil.parseTime(  $j(this).val() );						
 					onInputChange( 1, timeValue );
 				});
 				 
@@ -961,20 +972,16 @@ mw.SequencerTools.prototype = {
 								);
 							},
 							change: function( event, ui ) {
-								var attributeValue = 0, sliderIndex  = 0;
-								
-								// Update clipBegin 
-								_this.editableTypes['time'].update( _this, smilElement, 'clipBegin',  sliderToTime( ui.values[ 0 ] ) );
-								
-								// Update dur
-								_this.editableTypes['time'].update( _this, smilElement, 'dur',   sliderToTime( ui.values[ 1 ]- ui.values[0] ) );
-																				
-								// update the widget display
-								_this.editWidgets.trimTimeline.onChange( _this, smilElement );
-								
-								// Register the edit state for undo / redo 
-								_this.sequencer.getActionsEdit().registerEdit();
-								
+								if( ! onInputChangeFlag ){
+									// Update clipBegin 
+									_this.editableTypes['time'].update( _this, smilElement, 'clipBegin',  sliderToTime( ui.values[ 0 ] ) );
+									
+									// Update dur
+									_this.editableTypes['time'].update( _this, smilElement, 'dur',   sliderToTime( ui.values[ 1 ]- ui.values[0] ) );
+																					
+									// update the widget display
+									_this.editWidgets.trimTimeline.onChange( _this, smilElement );				
+								}								
 							}
 						})
 					);
