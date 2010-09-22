@@ -55,6 +55,7 @@ $messages['en'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No "$1"',
 	'recordadmin-edit-info' => 'This page contains templates which have their own forms which you can fill in from this tab-set',
+	'recordadmin-properties' => 'Properties',
 );
 
 /** Message documentation (Message documentation)

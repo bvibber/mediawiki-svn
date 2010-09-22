@@ -76,19 +76,24 @@ class RecordAdmin {
 		if( $count > 0 ) {
 
 			# Add the prefs JS for the tabset
-			$wgOut->addScript( "<script src=\"$wgStylePath/common/prefs.js?269\"></script>" );
+			#$wgOut->addScript( "<script src=\"$wgStylePath/common/prefs.js\"></script>" );
 
 			$editPage->textbox1 = str_replace( "\x07", "", $content );
 
 			$jsFormsList = array();
-			$tabset = "";
+			$tabset = "<div class=\"tabset\">";
+			$tabset .= "<fieldset><legend>" . wfMsg( 'recordadmin-properties' ) . "</legend>";
+			$tabset .= wfMsg( 'recordadmin-edit-info' ) . "</fieldset>";
 			foreach( $records as $type => $record ) {
 				$jsFormsList[] = "'$type'";
 				$this->preProcessForm( $type );
 				$this->examineForm();
 				$this->populateForm( $this->valuesFromText( $record ) );
+				$tabset .= "<fieldset><legend>$type " . strtolower( wfMsg( 'recordadmin-properties' ) ) . "</legend>\n";
 				$tabset .= "<form id=\"$type-form\" class=\"$type-record recordadmin\">$this->form</form>\n";
+				$tabset .= "</fieldset>";
 			}
+			$tabset .= "</div>";
 			$jsFormsList = join( ', ', $jsFormsList );
 
 			# Add the tabset before the normal edit form
