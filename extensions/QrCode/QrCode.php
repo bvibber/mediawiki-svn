@@ -12,33 +12,33 @@
  * which is, in turn, based on C libqrencode library
  * Copyright (C) 2006-2010 by Kentaro Fukuchi
  * http://megaui.net/fukuchi/works/qrencode/index.en.html
- * 
- *
  */
 
-if ( !defined( 'MEDIAWIKI' ) )
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This is a MediaWiki extension, and must be run from within MediaWiki.' );
+}
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
 	'version' => '0.02',
-	'author' =>'David Raison', 
+	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
 );
 
 $wgAutoloadClasses['QRcode'] = dirname(__FILE__) . '/phpqrcode/qrlib.php';
-$wgExtensionFunctions[] = "efQrcodeSetup";
 $wgExtensionMessagesFiles['QrCode'] = dirname(__FILE__) .'/QrCode.i18n.php';
-$wgHooks['LanguageGetMagic'][] = 'wfQrCodeLanguageGetMagic';
 
-function efQrcodeSetup(){
-	global $wgParser;
-	$wgParser->setFunctionHook( 'qrcode', array(new MwQrCode, 'showCode' ));
+$wgHooks['LanguageGetMagic'][] = 'wfQrCodeLanguageGetMagic';
+$wgHooks['ParserFirstCallInit'][] = 'efQrcodeRegisterFunction';
+
+function efQrcodeRegisterFunction( Parser &$parser ) {
+	$parser->setFunctionHook( 'qrcode', array( new MWQrCode(), 'showCode' ) );
+	return true;
 }
 
-function wfQrCodeLanguageGetMagic( &$magicWords, $langCode='en' ) {
+function wfQrCodeLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 	$magicWords['qrcode'] = array( 0, 'qrcode' );
 	return true;
 }
@@ -49,7 +49,7 @@ $wgQrCodeSize = 4;	// pixel size of black squares
 $wgQrCodeBoundary = 2;	// boundary around square
 $wgQrCodeBot = 'QrCodeBot';
 	
-class MwQrCode {
+class MWQrCode {
 
 	private $_dstFileName;	// what the file will be named?
 	private $_label;		// What will the qrcode contain?
@@ -112,7 +112,7 @@ class MwQrCode {
 	 * @return output of the _publish method
 	 */
 	private function _generate(){
-		global $wgTmpDirectory;
+		global $wgTmpDirectory, $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary;
 		$tmpName = tempnam( $wgTmpDirectory, 'qrcode' );
 
 		QRcode::png( $this->_label, $tmpName, $this->_ecc, $this->_size, $this->_boundary );
@@ -164,4 +164,5 @@ class MwQrCode {
 			return true;
 		}
 	}
+	
 }
