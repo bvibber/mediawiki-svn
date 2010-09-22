@@ -129,7 +129,7 @@
 							.end()
 						.end()
 					.find( '.article-assessment-submit input' )
-						.attr( "value", submitbutton )
+						.val( submitbutton )
 					.end();
 				// hide the feedback link if we need to
 				if( $.cookie( 'mwArticleAssessmentHideFeedback' ) ) {
