@@ -138,15 +138,20 @@ class ArticleAssessmentPilotHooks {
 			'articleassessment-survey-title',
 			'articleassessment-survey-thanks',
 		);
-		
-		$messages = array();
+
 		foreach ( self::$messages as $i => $message ) {
-			$messages[$message] = wfMsgExt( $message, array( 'parsemag' ) );
+			// TODO: Not parsing or even preprocessing the messages would be more efficient,
+			// but we can't do that until we have such nice things as JS-side {{PLURAL}}
+			// Should be OK for now in a limited deployment scenario
+			$escapedMessageValue = Xml::escapeJsString( wfMsgExt( $message, array( 'parseinline' ) ) );
+			$escapedMessageKey = Xml::escapeJsString( $message );
+			self::$messages[$i] =
+				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
 		}
 		// Add javascript to document
-		if ( count( $messages ) > 0 ) {
+		if ( count( self::$messages ) > 0 ) {
 			$out->addScript( Html::inlineScript(
-				'$j.ArticleAssessment.fn.addMessages( ' . FormatJson::encode( $messages ) . ' );'
+				'$j.ArticleAssessment.fn.addMessages({' . implode( ',', self::$messages ) . '});'
 			) );
 		}
 
