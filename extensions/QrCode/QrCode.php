@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.03',
+	'version' => '0.05',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -109,9 +109,10 @@ class MWQrCode {
 		global $wgTitle;
 
 		// Check for a provided label and use the page URL as default.
+		// Also strip all non-alphanumeric characters
 		if ( $label ) {
 			$this->_label = $label;
-			$append = '-'.$label;
+			$append = '-'.preg_replace("/\W+/", "", $label);
 		} else {
 			$this->_label = $wgTitle->getFullURL();
 			$append = '';
