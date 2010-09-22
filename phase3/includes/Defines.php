@@ -63,6 +63,7 @@ define('NS_HELP', 12);
 define('NS_HELP_TALK', 13);
 define('NS_CATEGORY', 14);
 define('NS_CATEGORY_TALK', 15);
+define('NS_STASH', 16);
 /**
  * NS_IMAGE and NS_IMAGE_TALK are the pre-v1.14 names for NS_FILE and
  * NS_FILE_TALK respectively, and are kept for compatibility.

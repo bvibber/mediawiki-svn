@@ -492,6 +492,7 @@ class MimeMagic {
 	}
 
 	private function doGuessMimeType( $file, $ext ) { # TODO: remove $ext param
+		wfDebug( __METHOD__ . " in guess mime type for $file, $ext " );
 		// Read a chunk of the file
 		wfSuppressWarnings();
 		$f = fopen( $file, "rt" );

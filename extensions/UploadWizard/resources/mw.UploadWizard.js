@@ -1,3 +1,4 @@
+
 /**
  * Sort of an abstract class for deeds
  */
@@ -107,7 +108,7 @@ mw.GroupProgressBar.prototype = {
 					}
 				}
 			} );
-			mw.log( 'hasdata:' + hasData + ' endstatecount:' + endStateCount );
+			//mw.log( 'hasdata:' + hasData + ' endstatecount:' + endStateCount );
 			// sometimes, the first data we have just tells us that it's over. So only show the bar
 			// if we have good data AND the fraction is less than 1.
 			if ( hasData && fraction < 1.0 ) {
@@ -352,11 +353,12 @@ mw.UploadWizardLicenseInput.prototype = {
  * Represents the upload -- in its local and remote state. (Possibly those could be separate objects too...)
  * This is our 'model' object if we are thinking MVC. Needs to be better factored, lots of feature envy with the UploadWizard
  * states:
- *   'new' 'transporting' 'transported' 'details' 'submitting-details' 'complete'  
+ *   'new' 'transporting' 'transported' 'details' 'submitting-details' 'complete' 'failed' 
  * should fork this into two -- local and remote, e.g. filename
  */
-mw.UploadWizardUpload = function( filesDiv ) {
+mw.UploadWizardUpload = function( api, filesDiv ) {
 	var _this = this;
+	_this.api = api;
 	_this.state = 'new';
 	_this.transportWeight = 1;  // default
 	_this.detailsWeight = 1; // default
@@ -367,6 +369,9 @@ mw.UploadWizardUpload = function( filesDiv ) {
 	_this.originalFilename = undefined;
 	_this.mimetype = undefined;
 	_this.extension = undefined;
+
+	// XXX
+	// this is sure starting to look like we should compose of UI, handler.
 		
 	// details 		
 	_this.ui = new mw.UploadWizardUploadInterface( _this, filesDiv );
@@ -374,7 +379,7 @@ mw.UploadWizardUpload = function( filesDiv ) {
 	// handler -- usually ApiUploadHandler
 	// _this.handler = new ( mw.UploadWizard.config[  'uploadHandlerClass'  ] )( _this );
 	// _this.handler = new mw.MockUploadHandler( _this );
-	_this.handler = new mw.ApiUploadHandler( _this );
+	_this.handler = new mw.ApiUploadHandler( _this, api );
 };
 
 mw.UploadWizardUpload.prototype = {
@@ -390,7 +395,7 @@ mw.UploadWizardUpload.prototype = {
 	start: function() {
 		var _this = this;
 		_this.setTransportProgress(0.0);
-		_this.ui.start();
+		//_this.ui.start();
 		_this.handler.start();	
 	},
 
@@ -407,6 +412,7 @@ mw.UploadWizardUpload.prototype = {
 		// we signal to the wizard to update itself, which has to delete the final vestige of 
 		// this upload (the ui.div). We have to do this silly dance because we 
 		// trigger through the div. Triggering through objects doesn't always work.
+		// TODO fix -- this now works in jquery 1.4.2
 		$j( this.ui.div ).trigger( 'removeUploadEvent' );
 	},
 
@@ -424,8 +430,19 @@ mw.UploadWizardUpload.prototype = {
 	},
 
 	/**
+	 * Stop the upload -- we have failed for some reason 
+	 */
+	setFailed: function( code ) { 
+		/* stop the upload progress */
+		this.state = 'failed';
+		this.transportProgress = 0;
+		this.ui.showFailed( code );
+	},
+
+	/**
 	 * To be executed when an individual upload finishes. Processes the result and updates step 2's details 
 	 * @param result	the API result in parsed JSON form
+	 * XXX needs refactor --- new api needs error handler instead
 	 */
 	setTransported: function( result ) {
 		var _this = this;
@@ -448,10 +465,14 @@ mw.UploadWizardUpload.prototype = {
 
 			// and other errors that result in a stash
 		} else {
-			alert("failure!");
-			// we may want to tag or otherwise queue it as an upload to retry
+			if ( result.error ) {
+				alert( "error : " + result.error.code + " : " + result.error.info );
+			} 
+			this.ui.showFailed();
+			alert("huh?");
+			// TODO now we should tag the upload as failed
+			// if can recover, should maybe allow re-uploading.
 		}
-		
 	
 	},
 
@@ -479,6 +500,7 @@ mw.UploadWizardUpload.prototype = {
 		var _this = this;
 
 		_this.filename = result.upload.filename;
+		// XXX global?
 		_this.title = wgFormattedNamespaces[wgNamespaceIds['file']] + ':' + _this.filename;
 
 		_this.extractImageInfo( result.upload.imageinfo );
@@ -537,8 +559,6 @@ mw.UploadWizardUpload.prototype = {
 			return;
 		}
 
-		var apiUrl = mw.UploadWizard.config.apiUrl;
-
 		var params = {
                         'titles': _this.title,
                         'prop':  'imageinfo',
@@ -546,7 +566,8 @@ mw.UploadWizardUpload.prototype = {
                         'iiprop': 'url'
                 };
 
-		mw.getJSON( apiUrl, params, function( data ) {
+		debugger;
+		this.api.get( params, function( data ) {
 			if ( !data || !data.query || !data.query.pages ) {
 				mw.log(" No data? ");
 				// XXX do something about the thumbnail spinner, maybe call the callback with a broken image.
@@ -609,8 +630,6 @@ mw.UploadWizardUpload.prototype = {
 		$j( selector ).loadingSpinner();
 		_this.getThumbnail( width, callback );
 	}
-
-
 	
 };
 
@@ -717,16 +736,16 @@ mw.UploadWizardUploadInterface.prototype = {
 	/**
  	 *
 	 */ 
-	showIndicatorMessage: function( classToRemove, classToAdd, msgKey ) {
+	showIndicatorMessage: function( statusClass, msgKey ) {
 		var _this = this;
 		var $indicator = $j( _this.div ).find( '.mwe-upwiz-file-indicator' );
-		if ( classToRemove ) {
-			$indicator.removeClass( classToRemove );
-		}
-		if ( classToAdd ) {
-			$indicator.addClass( classToAdd );
-		}
-		$indicator.html( gM( msgKey ) );
+		$j.each( $indicator.attr( 'class' ).split( /\s+/ ), function( i, className ) {
+			if ( className.match( /^mwe-upwiz-status/ ) ) {
+				$indicator.removeClass( className );
+			}
+		} );
+		$indicator.addClass( 'mwe-upwiz-status-' + statusClass )
+			  .html( gM( msgKey ) );
 		$j( _this.div ).find( '.mwe-upwiz-visible-file-filename' )
 				.css( 'margin-right', ( $indicator.outerWidth() + 24 ).toString() + 'px' );
 		$indicator.css( 'visibility', 'visible' ); 
@@ -737,15 +756,23 @@ mw.UploadWizardUploadInterface.prototype = {
 	 * @param fraction	The fraction of progress. Float between 0 and 1
 	 */
 	showTransportProgress: function() {
-		this.showIndicatorMessage( null, 'mwe-upwiz-status-progress', 'mwe-upwiz-uploading' );
+		this.showIndicatorMessage( 'progress', 'mwe-upwiz-uploading' );
 		// update individual progress bar with fraction?
 	},
 
 	/**
-	 * Execute when this upload is transported; cleans up interface. 
+	 * Show that upload is transported
 	 */
 	showTransported: function() {
-		this.showIndicatorMessage( 'mwe-upwiz-status-progress', 'mwe-upwiz-status-completed', 'mwe-upwiz-transported' );
+		this.showIndicatorMessage( 'completed', 'mwe-upwiz-transported' );
+	},
+
+	/** 
+	 * Show that transport has failed
+	 */
+	showFailed: function( code ) {
+		this.showIndicatorMessage( 'failed', 'mwe-upwiz-failed' );
+		//add a "retry" button, too?
 	},
 
 	/**
@@ -1813,7 +1840,6 @@ mw.UploadWizardDetails.prototype = {
 			action: 'edit',
 			// XXX this is problematic, if the upload wizard is idle for a long time the token expires.
 			// should obtain token just before uploading
-			token: mw.UploadWizard.config[  'token'  ],
 			title: _this.upload.title,
 			// section: 0, ?? causing issues?
 			text: wikiText,
@@ -1841,7 +1867,7 @@ mw.UploadWizardDetails.prototype = {
 		};
 
 		_this.upload.state = 'submitting-details';
-		mw.getJSON( params, callback );
+		_this.api.post( params, callback );
 	},
 
 	/**
@@ -1866,11 +1892,9 @@ mw.UploadWizardDetails.prototype = {
 			reason: "User edited page with " + mw.UploadWizard.userAgent,
 			movetalk: '',
 			noredirect: '', // presume it's too new 
-			token: mw.UploadWizard.config[ 'token' ]
 		};
 		mw.log(params);
-		// despite the name, getJSON magically changes this into a POST request (it has a list of methods and what they require).
-		mw.getJSON( params, function( data ) {
+		_this.api.post( params, function( data ) {
 			// handle errors later
 			// possible error data: { code = 'missingtitle' } -- orig filename not there
 			// and many more
@@ -1902,7 +1926,7 @@ mw.UploadWizardDetails.prototype = {
                         'iiprop': 'timestamp|url|user|size|sha1|mime|metadata'
                 };
 		// XXX timeout callback?
-		mw.getJSON( params, function( data ) {
+		this.api.get( params, function( data ) {
 			if ( data && data.query && data.query.pages ) {
 				if ( ! data.query.pages[-1] ) {
 					for ( var page_id in data.query.pages ) {
@@ -1939,6 +1963,7 @@ mw.UploadWizardDetails.prototype = {
 mw.UploadWizard = function( config ) {
 
 	this.uploads = [];
+	this.api = new mw.Api( { url: config.apiUrl } );
 
 	// making a sort of global for now, should be done by passing in config or fragments of config when needed
 	// elsewhere
@@ -1950,6 +1975,7 @@ mw.UploadWizard = function( config ) {
 
 };
 
+mw.UploadWizard.DEBUG = true;
 
 mw.UploadWizard.userAgent = "UploadWizard (alpha)";
 
@@ -2260,7 +2286,7 @@ mw.UploadWizard.prototype = {
 			return false;
 		}
 
-		var upload = new mw.UploadWizardUpload( _this, '#mwe-upwiz-files' );
+		var upload = new mw.UploadWizardUpload( _this.api, '#mwe-upwiz-files' );
 		_this.uploadToAdd = upload;
 
 		upload.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
@@ -3168,54 +3194,6 @@ mw.UploadWizardUtil = {
 
 ( function( $j ) {
 
-	$j.fn.tipsyPlus = function( optionsArg ) {
-		// use extend!
-		var titleOption = 'title';
-		var htmlOption = false;
-
-		var options = $j.extend( 
-			{ type: 'help', shadow: true },
-			optionsArg
-		);
-
-		var el = this;
-
-		if (options.plus) {
-			htmlOption = true;
-			titleOption = function() {
-				return $j( '<span />' ).append(
-					$j( this ).attr( 'original-title' ),
-					$j( '<a class="mwe-upwiz-tooltip-link"/>' )
-						.attr( 'href', '#' )
-						.append( gM( 'mwe-upwiz-tooltip-more-info' ) )
-						.mouseenter( function() {
-							el.data('tipsy').sticky = true;
-						} )
-						.mouseleave( function() {
-							el.data('tipsy').sticky = false;
-						} )
-						.click( function() {
-							// show the wiki page with more
-							alert( options.plus );
-							// pass this in as a closure to be called on dismiss
-							el.focus();
-							el.data('tipsy').sticky = false;
-						} )
-				);
-			};
-		}
-
-		return this.tipsy( { 
-			gravity: 'w', 
-			trigger: 'focus',
-			title: titleOption,
-			html: htmlOption,
-			type: options.type,
-			shadow: options.shadow
-		} );
-
-	};
-
 	/**
 	 * Create 'remove' control, an X which highlights in some standardized way.
 	 */
@@ -3286,16 +3264,6 @@ mw.UploadWizardUtil = {
 		this.addClass( 'mwe-upwiz-required-field' );
 		return this.prepend( $j( '<span/>' ).append( '*' ).addClass( 'mwe-upwiz-required-marker' ) );
 	};
-
-	/**
-	 * Upper-case the first letter of a string. XXX move to common library
-	 * @param string
-	 * @return string with first letter uppercased.
-	 */
-	mw.ucfirst = function( s ) {
-		return s.substring(0,1).toUpperCase() + s.substr(1);
-	};
-
 
 
 	/**

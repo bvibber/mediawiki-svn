@@ -11,6 +11,7 @@
 
 class SpecialUploadWizard extends SpecialPage {
 
+
 	// $request is the request (usually wgRequest)
 	// $par is everything in the URL after Special:UploadWizard. Not sure what we can use it for
 	public function __construct( $request=null, $par=null ) {
@@ -50,7 +51,10 @@ class SpecialUploadWizard extends SpecialPage {
 		$this->outputHeader();
 
 		/* Doing resource loading the old-fashioned way for now until there's some kind of script-loading
-		   strategy that everyone agrees on, or is available generally */
+		   strategy that everyone agrees on, or is available generally 
+		   Essentially this list of scripts has to be topologically-sorted by hand, that is, the depended-upon stuff 
+		   comes first. There can be no circular dependencies.
+		*/
 		$scripts = array( 
 			// jquery is already loaded by vector.
 			// "resources/jquery-1.4.2.js",
@@ -62,18 +66,24 @@ class SpecialUploadWizard extends SpecialPage {
 	
 			// interface helping stuff
 			"resources/jquery/jquery.tipsy.js",
+			"resources/jquery/jquery.tipsyPlus.js",
 			"resources/jquery/jquery.morphCrossfade.js",
 			"resources/jquery/jquery.validate.js",
 			"resources/jquery/jquery.arrowSteps.js",
 			"resources/jquery/jquery.mwCoolCats.js",
 			"resources/jquery/jquery.autocomplete.js",
+			"resources/jquery/jquery.spinner.js",
 
 			// our application...
 		
-			// miscellaneous utilities	
+			// miscellaneous utilities
+			"resources/mw.js",
+			"resources/mw.Log.js",
 			"resources/mw.Utilities.js",
 			"resources/mw.UtilitiesTime.js",
-			"resources/mw.Log.js",
+			"resources/mw.Uri.js",
+			"resources/mw.Api.js",
+			"resources/mw.Api.edit.js",
 			// "resources/mw.MockUploadHandler.js",
 			
 			// message parsing and such
@@ -86,6 +96,7 @@ class SpecialUploadWizard extends SpecialPage {
 			"resources/mw.IframeTransport.js",
 			"resources/mw.ApiUploadHandler.js",
 			"resources/mw.DestinationChecker.js",
+
 			// the thing that does most of it
 			"resources/mw.UploadWizard.js",
 
@@ -122,6 +133,7 @@ class SpecialUploadWizard extends SpecialPage {
 	
 		// where the uploadwizard will go
 		// TODO import more from UploadWizard itself.
+		// "createInterface" call?
 		$wgOut->addHTML(
 			'<div id="upload-licensing" class="upload-section" style="display: none;">Licensing tutorial</div>'
 			. '<div id="upload-wizard" class="upload-section"><div class="loadingSpinner"></div></div>'
@@ -234,13 +246,4 @@ class UploadWizardSimpleForm extends UploadForm {
 
 }
 
-/*
-// XXX UploadWizard extension, do this in the normal SpecialPage way once JS2 issue resolved
-function wfSpecialUploadWizard( $par ) {
-	global $wgRequest;
-	// can we obtain $request from here?
-	// $this->loadRequest( is_null( $request ) ? $wgRequest : $request );
-	$o = new SpecialUploadWizard( $wgRequest, $par );
-	$o->execute();
-}
-*/
+

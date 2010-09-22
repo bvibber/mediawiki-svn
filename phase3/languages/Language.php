@@ -192,9 +192,12 @@ class Language {
 	function __construct() {
 		$this->mConverter = new FakeConverter( $this );
 		// Set the code to the name of the descendant
-		if ( get_class( $this ) == 'Language' ) {
+		if ( $this->mCode ) {
+			return $this->mCode;
+		} elseif ( get_class( $this ) == 'Language' ) {
 			$this->mCode = 'en';
 		} else {
+			// XXX this is a bad idea, to assume regular naming -- can't pass in test or other custom objects 
 			$this->mCode = str_replace( '_', '-', strtolower( substr( get_class( $this ), 8 ) ) );
 		}
 		self::getLocalisationCache();
@@ -2553,6 +2556,11 @@ class Language {
 	 * @return string Correct form of plural for $count in this language
 	 */
 	function convertPlural( $count, $forms ) {
+		
+		// print '<pre>';
+		// var_dump( debug_backtrace() ); 
+		// print '</pre>';
+		// die( "the end" );
 		if ( !count( $forms ) ) {
 			return '';
 		}

@@ -893,7 +893,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				switch( $errno ) {
 					case 1045:
 					case 2000:
-						echo( "failed due to authentication errors. Check passwords.</li>" );
+						echo( "failed due to authentication errors. Check passwords. (Error [$errno] $errtx)</li>" );
 						if( $conf->Root ) {
 							# The superuser details are wrong
 							$errs["RootUser"] = "Check username";

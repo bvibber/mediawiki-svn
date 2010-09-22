@@ -35,6 +35,7 @@ Add to humanity's knowledge by uploading files that could be used for an educati
 	'mwe-upwiz-add-file-0' => 'Click here to upload a file',
 	'mwe-upwiz-browse' => 'Browse...',
 	'mwe-upwiz-transported' => 'OK',
+	'mwe-upwiz-failed' => 'Failed',
 	'mwe-upwiz-click-here' => 'Click here to select a file',
 	'mwe-upwiz-uploading' => 'uploading...',
 	'mwe-upwiz-editing' => 'editing...',
@@ -150,6 +151,12 @@ Make it longer than $1 {{PLURAL:$1|character|characters}}.',
 	'mwe-upwiz-error-bad-chars' => 'This field contains symbols that are not allowed.
 Please do not use wikitext or HTML here.',
 	'mwe-upwiz-error-date' => 'Please enter a valid date in YYYY-MM-DD format, or pick a date from the popup calendar.',
+
+	/* API error messages */
+	'mwe-api-error-token-missing' => 'The server did not return a token.',
+	'mwe-api-error-http-timeout' => 'The server didn\'t return a response in time.',
+	'mwe-api-error-http-error' => 'We couldn\'t communicate properly with the server.',
+	
 	/* LICENSES */
 	/* surprisingly we don't seem to have strings for these yet */
 	'mwe-upwiz-license-cc-by-sa-3.0' => 'Creative Commons Attribution ShareAlike 3.0',
@@ -161,6 +168,7 @@ Please do not use wikitext or HTML here.',
 	'mwe-upwiz-categories' => 'Categories',
 	'mwe-upwiz-categories-add' => 'Add',
 	'mwe-upwiz-category-remove' => 'Remove this category'
+
 );
 
 /** Message documentation (Message documentation)

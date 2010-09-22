@@ -83,5 +83,9 @@ mw.UploadWizardPage = function() {
 }
 
 $j( document ).ready( function() {
+	// sets up plural and so on. Seems like a bad design to have to do this, though.
+	mw.Language.magicSetup();
+	
+	// show page. 
 	mw.UploadWizardPage();
 } );

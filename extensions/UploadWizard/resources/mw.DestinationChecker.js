@@ -125,6 +125,7 @@ mw.DestinationChecker.prototype = {
 		_this.spinner( true );
 		
 		// Setup the request -- will return thumbnail data if it finds one
+		// XXX do not use iiurlwidth as it will create a thumbnail
 		var request = {
 			'titles': 'File:' + name,
 			'prop':  'imageinfo',

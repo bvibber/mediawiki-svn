@@ -29,6 +29,7 @@ $wgExtensionCredits['jsModule'][] = array(
 );
 
 
+
 $dir = dirname(__FILE__) . '/';
 
 $wgExtensionMessagesFiles['UploadWizard'] = $dir . 'UploadWizard.i18n.php';
@@ -36,6 +37,7 @@ $wgExtensionAliasesFiles['UploadWizard'] = $dir . 'UploadWizard.alias.php';
 
 # Require modules, includeing the special page
 $wgAutoloadLocalClasses[ 'SpecialUploadWizard' ] = $dir . 'SpecialUploadWizard.php';
+$wgAutoloadLocalClasses[ 'SessionStash' ] = $dir . 'SessionStash.php';
 $wgAutoloadLocalClasses[ 'UploadWizardMessages' ] = $dir . 'UploadWizardMessages.php';
 
 # Let the special page be a special center of unique specialness
@@ -47,4 +49,6 @@ $wgResourceLoaderNamedPaths[ 'UploadWizardPage' ] = 'extensions/UploadWizard/Upl
 
 // Set up the javascript path for the loader and localization file.
 $wgExtensionJavascriptModules[ 'UploadWizard' ] = 'extensions/UploadWizard';
+
+
 
