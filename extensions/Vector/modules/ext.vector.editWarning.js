@@ -3,7 +3,7 @@
  */
 $(document).ready( function() {
 	// Check if EditWarning is enabled and if we need it
-	if ( $( '#wpTextbox1' ).size() == 0 ) {
+	if ( $( '#wpTextbox1' ) == null ) {
 		return true;
 	}
 	// Get the original values of some form elements
