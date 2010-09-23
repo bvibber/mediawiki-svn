@@ -23,15 +23,14 @@ mw.SwarmTransport = {
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent " + swapedPlayerId);
 					_this.addSwarmSource( embedPlayer, callback );
-				} else {								
-					// No swarm support just directly issue the callback 
-					callback();	
-				}
+				}								
+				// Don't block on swarm request, directly do the callback
+				callback();	
 			} );
 			
 			// Check if we have a "recommend" binding and provide an xpi install link			
 			mw.log('SwarmTransport::bind:addControlBindingsEvent');
-			$j( embedPlayer ).bind( 'addControlBindingsEvent', function(){				
+			$j( embedPlayer ).bind( 'addControlBindingsEvent', function(){
 				if( mw.getConfig( 'SwarmTransport.Recommend' ) &&  
 					typeof window['swarmTransport'] == 'undefined' &&
 					$j.browser.mozilla ) 
@@ -87,14 +86,14 @@ mw.SwarmTransport = {
 					callback();
 					return ;
 				} 					
-				mw.log( 'SwarmTransport: addSwarmSource for: ' + source.getSrc()  + "\n\nGot:" + data.torrent );				
+				mw.log( 'SwarmTransport: addSwarmSource for: ' + source.getSrc()  + "\n\nGot:" + data.torrent );	
+				// XXX need to update prefrence
 				embedPlayer.mediaElement.tryAddSource( 
 					$j('<source />')
 					.attr( {
 						'type' : 'video/swarmTransport',
 						'title': gM('mwe-swarmtransport-stream-ogg'), 
-						'src': 'tribe://' + data.torrent,
-						'default' : true // Mark as default source
+						'src': 'tribe://' + data.torrent						
 					} )
 					.get( 0 )
 				);				

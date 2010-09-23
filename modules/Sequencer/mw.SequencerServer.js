@@ -73,7 +73,7 @@
 				
 			}
 			if( this.isConfigured() ){
-				mw.log("Error: Sequencer server needs a full serverConfig to be initialized")
+				mw.log("Error: Sequencer server needs a full serverConfig to be initialized");
 				return false;
 			}
 		},
@@ -107,7 +107,7 @@
 			var _this = this; 						
 			mw.getTitleText( this.getApiUrl(), this.getTitleKey(), function( smilPage ){				
 				// Check for remote payload wrapper 
-				// XXX need to support multipe pages in single context 		
+				// XXX need to support multiple pages in single context 		
 				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates )
@@ -164,7 +164,7 @@
 				'pageEnd' : $j.trim( 
 					pageText.substring( pageText.indexOf(endKey) + endKey.length  )
 				)
-			}
+			};
 		},
 		
 		
@@ -185,7 +185,7 @@
 		},
 		// Check if the sequence was saved in this edit session
 		hasSequenceBeenSavedOrPublished: function(){
-			return this.sequenceSaved || this.sequencePublished
+			return ( this.sequenceSaved || this.sequencePublished );
 		},
 		// Get a save token, if unable to do so return false 
 		getSaveToken: function( callback ){
@@ -196,7 +196,7 @@
 			}
 			mw.getToken( this.getApiUrl(), this.getTitleKey(), function( saveToken ){
 				_this.saveToken = saveToken;
-				callback ( _this.saveToken )
+				callback ( _this.saveToken );
 			});
 		},
 		
