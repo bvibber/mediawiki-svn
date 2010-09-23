@@ -110,7 +110,7 @@ mw.Smil.prototype = {
 	loadFromString: function( smilXmlString ) {
 		// Load the parsed string into the local "dom"
 		this.$dom = $j( this.getXMLDomObject( smilXmlString ) );
-		mw.log("Smil::loadFromString: loaded smil dom: " + this.$dom.length + "\n" + smilXmlString );
+		mw.log("Smil::loadFromString: loaded smil dom: " + this.$dom.children().length + "\n" + smilXmlString );
 	},
 	/**
 	 * Update the smil dom via an xmlString
@@ -298,7 +298,7 @@ mw.Smil.prototype = {
 			return 0;
 		}		
 		if ( this.duration == null || forceRefresh === true ) {
-			var orgDuration = this.duration
+			var orgDuration = this.duration;
 			this.duration = this.getBody().getDuration( forceRefresh );
 			// Trigger the duration change event: 
 			if( orgDuration !=  this.duration ){
@@ -404,7 +404,7 @@ mw.Smil.prototype = {
 			// Escape link output as to not include scirpt execution
 			$j(link).attr('href', 
 				mw.escapeQuotesHTML( $j(link).attr('href') )
-			)
+			);
 		});		
 		
 		// Make every asset url absolute and restrict domain of assets 
@@ -413,17 +413,17 @@ mw.Smil.prototype = {
 			if( $j(node).attr('src') ){
 				$j(node).attr('src', 
 					_this.getAssetUrl( $j(node).attr('src') )
-				)
+				);
 			}
 			if( $j(node).attr('data') ){
 				$j(node).attr('data', 
 					_this.getAssetUrl(  $j(node).attr('src') )
-				)
+				);
 			}
-			// xxx don't know if we really need a form inside of smil. 
+			// remove form action
 			if( $j(node).attr('action') ){
 				if( $j(node).attr('action').toLowerCase().indexOf('javascript') != -1 ){
-					 $j(node).attr('action')= null;
+					 $j(node).attr('action',  '');
 				} else {
 					$j(node).attr('action', 
 						_this.getAssetUrl( $j(node).attr('src') )

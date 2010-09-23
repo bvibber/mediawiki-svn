@@ -301,16 +301,17 @@ mw.EmbedPlayerSmil = {
 	* @param callback 
 	*/
 	getSmil: function( callback ){
+		var _this = this;
 		if( !this.smil ) {
 			// Create the Smil engine object 
 			this.smil = new mw.Smil( this );
 			
 			// Load the smil 
 			this.smil.loadFromUrl( this.getSrc(), function(){
-				callback( this.smil ); 
+				callback( _this.smil ); 
 			});			
 		} else { 
-			callback( this.smil );
+			callback( _this.smil );
 		}
 	},
 	

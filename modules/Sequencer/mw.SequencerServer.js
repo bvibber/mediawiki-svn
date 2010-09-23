@@ -108,7 +108,7 @@
 			mw.getTitleText( this.getApiUrl(), this.getTitleKey(), function( smilPage ){				
 				// Check for remote payload wrapper 
 				// XXX need to support multiple pages in single context 		
-				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );
+				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );				
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates )
 				if( _this.currentSequencePage.sequenceXML ){
@@ -118,8 +118,7 @@
 					_this.serverSmilXml = '';
 				}
 				
-				// Cache the pre / post bits
-				
+				// Cache the pre / post bits				
 				callback( _this.serverSmilXml  );	
 			})
 		},		
