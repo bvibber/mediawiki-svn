@@ -166,7 +166,7 @@ mw.Sequencer.prototype = {
 			_this.getMenu().drawMenu();
 			
 			// initialize the edit stack to support undo / redo actions  
-			_this.getActionsEdit().setupEditStack();
+			_this.getActionsEdit().setupEditStack();			
 		});
 			
 	},

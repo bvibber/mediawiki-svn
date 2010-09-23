@@ -110,8 +110,13 @@
 				// XXX need to support multipe pages in single context 		
 				_this.currentSequencePage =  _this.parseSequencerPage( smilPage );
 				// Cache the latest serverSmil ( for local change checks ) 
-				// ( save requests automatically respond with warnings on other user updates ) 
-				_this.serverSmilXml = _this.currentSequencePage.sequenceXML ;
+				// ( save requests automatically respond with warnings on other user updates )
+				if( _this.currentSequencePage.sequenceXML ){
+					_this.serverSmilXml = _this.currentSequencePage.sequenceXML ;
+				} else {
+					// empty result
+					_this.serverSmilXml = '';
+				}
 				
 				// Cache the pre / post bits
 				
@@ -143,8 +148,8 @@
 			var endKey = SEQUENCER_PAYLOADKEY + ' -->';
 			// If the key is not found fail
 			if( !pageText || pageText.indexOf( startKey ) == -1  ||  pageText.indexOf(endKey) == -1 ){
-				mw.log("Error could not find sequence payload");
-				return '';
+				mw.log( "Error could not find sequence payload" );
+				return {};
 			}			
 			// trim the output:
 			return {

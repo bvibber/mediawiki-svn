@@ -363,7 +363,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			poster_attr = '';		
 			pheight = 0;
 		}else{
-			var poster_attr = 'poster = "' + $pimg.attr( 'src' ) + '" ';
+			var poster_attr = ' poster = "' + $pimg.attr( 'src' ) + '" ';
 			var pheight = $pimg.attr( 'height' );
 		}
 		
