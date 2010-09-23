@@ -78,7 +78,8 @@ function efVariablePageSidebarLink( $skin, &$bar ) {
 
 	// make sure that we should be showing a sidebar link
 	if ( $wgVariablePageShowSidebarLink ) {
-		$url = Title::makeTitle( NS_SPECIAL, wfMsg( 'variablepage' ) )->getLocalUrl();
+		//$url = Title::makeTitle( NS_SPECIAL, wfMsg( 'variablepage' ) )->getLocalUrl();
+		$url = SpecialPage::getTitleFor( 'VariablePage')->getLocalUrl();
 		$bar['navigation'][] = array(
 			'text' => wfMsg( 'variablepage-navlink_text' ),
 			'href' => wfAppendQuery( $url, $wgVariablePageSidebarLinkQuery ),
