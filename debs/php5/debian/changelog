@@ -1,9 +1,114 @@
-php5 (5.2.4-2ubuntu5.7wm1) hardy; urgency=low
+php5 (5.2.4-2ubuntu5.12wm1) hardy; urgency=low
+
   * Added CDB
   * -O3
-  * -ggdb3 with no stripping \o/
+  * -ggdb3 with no stripping
 
- -- Domas Mituzas <domas@wikimedia.org>  Sun, 13 Sep 2009 16:03:45 +0300
+ -- Ryan Lane <rlane@wikimedia.org>  Thu, 23 Sep 2010 20:01:00 +0000
+
+php5 (5.2.4-2ubuntu5.12) hardy-security; urgency=low
+
+  * SECURITY UPDATE: denial of service via xmlrpc crafted argument
+    - debian/patches/CVE-2010-0397.patch: make sure method_name isn't empty
+      in ext/xmlrpc/xmlrpc-epi-php.c, add test to
+      ext/xmlrpc/tests/bug51288.phpt.
+    - CVE-2010-0397
+  * SECURITY UPDATE: weak entropy in Linear Congruential Generator (LCG)
+    - debian/patches/CVE-2010-1128.patch: add more entropy in
+      ext/standard/lcg.c.
+    - CVE-2010-1128
+  * SECURITY UPDATE: safe_mode bypass via trailing slash in dir pathnames
+    - debian/patches/CVE-2010-1129.patch: properly validate pathname in
+      ext/standard/file.c.
+    - CVE-2010-1129
+  * SECURITY UPDATE: safe_mode bypass via semicolon in session_save_path
+    - debian/patches/CVE-2010-1130.patch: check for semicolon in
+      ext/session/session.c.
+    - CVE-2010-1130
+  * SECURITY UPDATE: arbitrary code execution via empty SQL query
+    - debian/patches/CVE-2010-1868.patch: use ecalloc instead of emalloc in
+      ext/sqlite/sqlite.c.
+    - CVE-2010-1868
+  * SECURITY UPDATE: denial of service via fnmatch stack consumption
+    - debian/patches/CVE-2010-1917.patch: limit size of pattern in
+      ext/standard/file.c.
+    - CVE-2010-1917
+  * SECURITY UPDATE: sensitive information disclosure or arbitrary code
+    execution via use-after-free in SplObjectStorage unserializer
+    - debian/patches/CVE-2010-2225.patch: fix logic in
+      ext/spl/spl_observer.c.
+    - CVE-2010-2225
+  * SECURITY UPDATE: sensitive information disclosure via error messages
+    - debian/patches/CVE-2010-2531.patch: don't display data when flushing
+      output buffer in ext/standard/{var.c,php_var.h}. 
+    - CVE-2010-2531
+  * SECURITY UPDATE: arbitrary session variable modification via crafted
+    session variable name
+    - debian/patches/CVE-2010-3065.patch: handle PS_UNDEF_MARKER marker in
+      ext/session/session.c.
+    - CVE-2010-3065
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 20 Sep 2010 08:13:12 -0400
+
+php5 (5.2.4-2ubuntu5.10) hardy-security; urgency=low
+
+  * SECURITY UPDATE: information disclosure and denial of service via
+    zend_restore_ini_entry_cb function. 
+    - debian/patches/CVE-2009-2626.patch: make sure new_value exists in
+      main/main.c, gracefully handle failure in Zend/zend_ini.c.
+    - CVE-2009-2626
+  * SECURITY UPDATE: Cross-site scripting via incomplete htmlspecialchars
+    filtering
+    - debian/patches/CVE-2009-4142.patch: rewrite handling logic in
+      ext/standard/html.c, add ext/standard/tests/strings/bug49785.phpt
+      test script.
+    - CVE-2009-4142
+  * SECURITY UPDATE: restrictions bypass via incorrect session data
+    handling
+    - debian/patches/CVE-2009-4143.patch: protect from interrupt
+      corruption in ext/session/session.c.
+    - CVE-2009-4143
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 06 Jan 2010 09:39:23 -0500
+
+php5 (5.2.4-2ubuntu5.9) hardy-security; urgency=low
+
+  * SECURITY UPDATE: file truncation via key with null byte
+    - debian/patches/CVE-2008-7068.patch: make sure key and value are sane
+      in ext/dba/libinifile/inifile.c.
+    - CVE-2008-7068
+  * SECURITY UPDATE: certificate spoofing via null-byte certs (LP: #446313)
+    - debian/patches/CVE-2009-3291.patch: validate certificate's CN length
+      in ext/openssl/openssl.c.
+    - CVE-2009-3291
+  * SECURITY UPDATE: denial of service via malformed exif images
+    (LP: #446313)
+    - debian/patches/CVE-2009-3292.patch: check length, return codes, and
+      nesting level in ext/exif/exif.c.
+    - CVE-2009-3292
+  * SECURITY UPDATE: safe_mode bypass via tempam function
+    - debian/patches/CVE-2009-3557.patch: check for safe_mode in
+      ext/standard/file.c.
+    - CVE-2009-3557
+  * SECURITY UPDATE: open_basedir restrictions bypass via posix_mkfifo
+    - debian/patches/CVE-2009-3558.patch: check for open_basedir in
+      ext/posix/posix.c.
+    - CVE-2009-3558
+  * SECURITY UPDATE: denial of service via large number of files in
+    form-data POST request.
+    - debian/patches/CVE-2009-4017.patch: introduce new "max_file_uploads"
+      directive and enforce in main/main.c, main/rfc1867.c.
+    - ATTENTION: this update changes previous php5 behaviour by limiting
+      the number of files in a POST request to 50. This may be increased
+      by adding a "max_file_uploads" directive to the php.ini configuration
+      file. 
+    - CVE-2009-4017
+  * SECURITY UPDATE: safe_mode_protected_env_vars bypass via proc_open()
+    - debian/patches/CVE-2009-4018.patch: add safe_mode check in
+      ext/standard/proc_open.c
+    - CVE-2009-4018
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 26 Nov 2009 08:07:41 -0500
 
 php5 (5.2.4-2ubuntu5.7) hardy-security; urgency=low
 
