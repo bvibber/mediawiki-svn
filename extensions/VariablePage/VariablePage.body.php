@@ -23,14 +23,14 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 	
 		$query = array();
 		if ( strlen( $lang ) ) $query[ 'language' ] = $lang;
-		if ( strlen( $utm_source )) $query[ 'utm_source' ] = $utm_source;
-		if ( strlen( $utm_medium )) $query[ 'utm_medium' ] = $utm_medium;
-		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
-		if ( strlen( $referrer )) $query[ 'referrer' ] = $referrer;
+		if ( strlen( $utm_source ) ) $query[ 'utm_source' ] = $utm_source;
+		if ( strlen( $utm_medium ) ) $query[ 'utm_medium' ] = $utm_medium;
+		if ( strlen( $utm_campaign ) ) $query[ 'utm_campaign' ] = $utm_campaign;
+		if ( strlen( $referrer ) ) $query[ 'referrer' ] = $referrer;
 
 		// determine the URL to which we will redirect the user
 		$url = $this->determinePage( $wgVariablePagePossibilities );
-		$wgOut->redirect( wfAppendQuery( $url, $query ));
+		$wgOut->redirect( wfAppendQuery( $url, $query ) );
 	}
 
 	/**
@@ -80,10 +80,10 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 			$total_probability += $probability;
 		}
 
-		if ( $total_probability != 100 && !strlen( $wgVariablePageDefault )) {
-			return FALSE;
+		if ( $total_probability != 100 && !strlen( $wgVariablePageDefault ) ) {
+			return false;
 		} else {
-			return TRUE;
+			return true;
 		}
 	}
 }
