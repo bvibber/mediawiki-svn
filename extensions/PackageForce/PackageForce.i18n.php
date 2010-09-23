@@ -99,6 +99,22 @@ $messages['br'] = array(
 	'pf-header-approve' => 'Aprouiñ',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pf-desc' => '[[Special:PackageForce|Skidanje paketea]] korisnih šablona/itd.',
+	'pf-admin-menu-default' => 'Pretpostavljeno',
+	'pf-admin-menu-unsortedtemplates' => 'Šabloni još nisu poredani',
+	'pf-admin-link-editlink-page' => 'Uredi stranicu',
+	'pf-header-documentation' => 'Dokumentacija',
+	'pf-header-in_packages' => 'Paketi',
+	'pf-header-edit' => 'Uredi link',
+	'pf-header-type' => 'Vrsta stranice',
+	'pf-header-page_title' => 'Naslov',
+	'pf-header-approve' => 'Odobri',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'pf-header-documentation' => 'Dokumentace',

@@ -357,6 +357,7 @@ $messages['bs'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Bez "$1"',
 	'recordadmin-edit-info' => 'Ova stranica sadrži šablone sa vlastitim obrascima koje možete popuniti iz ovog seta jezičaka',
+	'recordadmin-properties' => 'Svojstva',
 );
 
 /** Catalan (Català)
@@ -1713,6 +1714,7 @@ $messages['pt'] = array(
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" não {{PLURAL:$1|existe|existem}}',
 	'recordadmin-edit-info' => 'Esta página contém predefinições que têm formulários próprios, os quais pode preencher a partir deste grupo de separadores.',
+	'recordadmin-properties' => 'Propriedades',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2065,7 +2067,9 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'recordadmin' => 'Pangangasiwa ng tala (rekord)',
-	'recordadmin-desc' => 'Isang [[Special:RecordAdmin|natatanging pahina]] para sa paghahanap at pagbabago ng pahina ng mga tala/rekord na gumagamit ng isang pormularyo',
+	'recordadmin-desc' => 'Paghahanap, mga pagtatanong, mga pormularyo at pag-uulat ng dato ng wiki na hinango mula sa mga parametro ng suleras',
+	'recordadmin-specialdesc' => 'Isang [[Special:RecordAdmin|natatanging pahina]] para sa paghahanp at paglikha ng mga pahina na ginagamitan ng kaugnay na mga pormularyo',
+	'recordadmin-noforms' => 'Kasalukuyang walang mga pormularyong tinukoy upang gamitin para sa paghahanap at paglikha',
 	'recordadmin-select' => 'Piliin ang uri ng tala/rekord na hahanapin',
 	'recordadmin-createtype' => 'Ipasok ang pangalan ng isang bagong uri ng talaang lilikhain',
 	'recordadmin-recordtype' => 'uri ng talaan',
@@ -2100,6 +2104,8 @@ $messages['tl'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Walang "$1"',
+	'recordadmin-edit-info' => 'Ang pahinang ito ay naglalaman ng mga suleras na mayroong sarili nilang mga pormularyo na maaari mong punuin mula sa takdang-panglaylay na ito',
+	'recordadmin-properties' => 'Mga katangiang-ari',
 );
 
 /** Turkish (Türkçe)

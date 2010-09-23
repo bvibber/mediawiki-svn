@@ -1589,10 +1589,11 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'passwordreset-username' => 'பயனர் பெயர்',
+	'passwordreset-username' => 'பயனர் பெயர்:',
 );
 
 /** Telugu (తెలుగు)

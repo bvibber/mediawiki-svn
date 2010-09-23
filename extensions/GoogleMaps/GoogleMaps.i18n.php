@@ -5472,11 +5472,26 @@ $wgGoogleMapsMessages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $wgGoogleMapsMessages['ta'] = array(
+	'gm-remove' => 'நீக்கு',
+	'gm-caption' => 'தலைப்பு',
+	'gm-width' => 'அகலம்',
+	'gm-height' => 'உயரம்',
+	'gm-large' => 'பெரிய',
+	'gm-medium' => 'நடுத்தரம்',
+	'gm-small' => 'சிறிய',
+	'gm-no-zoom-control' => 'ஏதுமில்லை',
+	'gm-yes' => 'ஆம்',
+	'gm-no' => 'இல்லை',
 	'gm-search' => 'தேடுக',
 	'gm-save-path' => 'சேமி',
+	'gm-kml-loading' => 'ஏற்றப்படுகிறது...',
+	'gm-earth' => 'பூமி',
+	'gm-moon' => 'சந்திரன்',
+	'gm-mars' => 'செவ்வாய்க் கிரகம்',
 );
 
 /** Telugu (తెలుగు)

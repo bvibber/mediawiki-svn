@@ -191,9 +191,10 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Yanajin66
+ * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticformsinputs-desc' => ' [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]サイトのための追加入力',
+	'semanticformsinputs-desc' => ' [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]のための追加の入力タイプ',
 	'semanticformsinputs-wrongformat' => '間違った形式です。',
 	'semanticformsinputs-close' => '閉じる',
 	'semanticformsinputs-prev' => '前へ',

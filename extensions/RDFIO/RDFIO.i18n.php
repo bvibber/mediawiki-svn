@@ -70,6 +70,14 @@ $messages['gsw'] = array(
 	'specialarc2admin' => '„ARC2 RDF“-Spyycher-Administrationssyte',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'rdfio-desc' => 'Functionalitate extendite de importation e exportation RDF, incluse un puncto de fin pro SPARQL, pro Semantic MediaWiki',
+	'rdfimport' => 'Importation RDF',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

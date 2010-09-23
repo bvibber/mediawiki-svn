@@ -291,15 +291,18 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
 	'extensiondistributor' => 'Pellgargañ an astenn MediaWiki',
+	'extensiondistributor-desc' => 'Astenn evit dasparzh dielloù en ur mare bennak eus an astennoù',
 	'extdist-not-configured' => 'Mar plij keflunit $wgExtDistTarDir ha $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => "N'eus ket eus kavlec'h evit an eilad labour kefluniet !",
 	'extdist-no-such-extension' => 'N\'eus ket eus an astenn "$1"',
 	'extdist-no-such-version' => 'N\'eus ket eus an astenn "$1" en doare "$2".',
 	'extdist-choose-extension' => "Dibabit peseurt astenn ho peus c'hoant pellgargañ :",
+	'extdist-wc-empty' => "Kavlec'h eiladoù kefluniet al labour en deus astenn dasparzh ebet!",
 	'extdist-submit-extension' => "Kenderc'hel",
 	'extdist-current-version' => 'Doare diorroiñ (trunk)',
 	'extdist-choose-version' => "<big>Emaoc'h o pellgargañ an astenn <b>$1</b>.</big>
@@ -309,9 +312,33 @@ Dibabit ho stumm MediaWiki.
 Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neuze ma n'emañ ket ho stumm amañ, pe m'hoc'h eus ezhomm arc'hweladurioù ziwezhañ an astenn, klaskit implijout ar stumm a-vremañ.",
 	'extdist-no-versions' => 'Dizimplijadus eo an astenn bet dibabet ($1) e stumm ebet !',
 	'extdist-submit-version' => "Kenderc'hel",
+	'extdist-no-remote' => "N'eus ket tu da dizhout ar c'hliant subversion a-bell.",
+	'extdist-remote-error' => "Fazi gant ar c'hliant subversion a-bell : <pre>$1</pre>",
+	'extdist-remote-invalid-response' => "Respont direizh eus ar c'hliant subverion a-bell.",
 	'extdist-svn-error' => "Ur fazi 'zo bet gant ''Subversion'' : <pre>$1</pre>",
 	'extdist-svn-parse-error' => 'Diposubl eo tretañ ar roadennoù XML troet eus "svn info": <pre>$1</pre>',
 	'extdist-tar-error' => "Tar en deus adtroet ar c'hod dont er-maez $1 :",
+	'extdist-created' => "Un eilad eus ar stumm <b>$2</b> eus <b>$1</b> astenn evit MediaWiki <b>$3</b> a zo bet krouet. Ho pellgargadenn a rank kregiñ a-benn 5 eilenn.
+
+Url an eilad zo:
+:$4
+Gallout a ra bezañ implijet evit pellgargañ war-du  ur servijer, met trugarez da chom hep skrivañ anezho en ho sinedoù peogwir ne vo ket hizivikaet hag e vo dilamet a-c'houdevezh.
+
+An diell tar a vo tennet en ho kavlec'h. Da skouer en ur reizhiad evel Unix:
+
+<pre>
+tar -xzf $5 -C /var/www/mediawiki/extensions
+</pre>
+
+Gant Windows, gallout a rit implij [http://www.7-zip.org/ 7-zip] evit tennañ an dielloù.
+
+M'emañ ho wiki war ur servijer a-bell, tennit an diell en ur c'havlec'h padennek en ho urzhiataer lec'hel, ha da c'houde ezporzhiañ '''holl''' an dielloù tennet er c'havlec'h astenn war ar servijer.
+
+Astennoù 'zo o  deus ezhomm eus un diell anvet ExtensionFunctions.php, lec'hiet er c'havlec'h <tt>extensions/ExtensionFunctions.php</tt>, hag a zo  evit an astenn ispisial-mañ en uskavlec'h. An eilad evit an astenn-mañ a zo ennañ un diell tar, tennet diwar ./ExtensionFunctions.php. Na zisoñjit ket da ezporzhiañ an diell en ho servijer a-bell.
+
+Goude bezañ bet tennet an diell, ezhomm ho po enrollañ an astenn e LocalSettings.php. Teulliadur an astenn a rank kaout kemennadurioù d'ober kement-mañ.
+
+M'ho peus goulennoù diwar-benn an reizhiad dasparzh an astennoù-mañ, kit war [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Tapout un astenn all',
 );
 

@@ -593,6 +593,13 @@ $messages['sv'] = array(
 	'breadcrumbs-desc' => 'Visar användarens väg genom wikin',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'breadcrumbs-desc' => 'பயனர்களின் தொடர்பு வழிகளை விக்கியின் மூலம் காட்டுகிறது',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

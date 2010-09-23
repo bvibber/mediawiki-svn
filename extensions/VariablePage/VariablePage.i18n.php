@@ -29,6 +29,8 @@ $messages['bs'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Spenden',
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
@@ -43,6 +45,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'variablepage' => 'Páxina variable',
+	'variablepage-navlink_text' => 'Doar',
 	'variablepage-desc' => 'Redirección lixeira de páxina variable',
 );
 
@@ -85,6 +89,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'variablepage' => 'ПроменливаСтраница',
+	'variablepage-navlink_text' => 'Донирајте',
 	'variablepage-desc' => 'Леко променливо пренасочување на страници',
 );
 
@@ -92,6 +98,8 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'variablepage' => 'Variabele pagina',
+	'variablepage-navlink_text' => 'Donaties',
 	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
 );
 
@@ -99,6 +107,8 @@ $messages['nl'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'variablepage' => 'Zmienna strona',
+	'variablepage-navlink_text' => 'Darowizny',
 	'variablepage-desc' => 'Prosta strona przekierowująca losowo',
 );
 
@@ -106,6 +116,8 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'variablepage' => 'PàginaVariabla',
+	'variablepage-navlink_text' => 'Doné',
 	'variablepage-desc' => 'Rediression ëd pàgina variàbila ëd peis linger',
 );
 
@@ -113,6 +125,8 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'variablepage' => 'Página Variável',
+	'variablepage-navlink_text' => 'Donativo',
 	'variablepage-desc' => 'Redireccionamento ligeiro de páginas variáveis',
 );
 
@@ -120,6 +134,8 @@ $messages['pt'] = array(
  * @author Giro720
  */
 $messages['pt-br'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Doar',
 	'variablepage-desc' => 'Redirecionamento ligeiro de páginas variáveis',
 );
 
@@ -127,6 +143,8 @@ $messages['pt-br'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'variablepage' => 'ПеременнаяСтраница',
+	'variablepage-navlink_text' => 'Пожертвовать',
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
 );
 

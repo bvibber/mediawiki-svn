@@ -291,6 +291,10 @@ $messages['bs'] = array(
 	'spamregex-desc' => '[[Special:SpamRegex|Izdvajanje]] neželjenih fraza u uređenim stranicama, na osnovu regularnih izraza',
 	'spamregex-error-unblocking' => 'Greška pri deblokadi "$1". Moguće je da nema takve šeme.',
 	'spamregex-summary' => 'Tekst je pronađen u sažetku stranice',
+	'spamregex-intro' => 'Koristite ovaj obrazac za efektivno blokiranje izraza od njihovog spremanja u tekst stranice.
+Ako tekst sadrži dati izraz, izmjena se neće sačuvati i bit će prikazano obrazloženje korisniku koji pokušava spremiti stranicu.
+Preporučuje se oprez, da izrazi ne budu previše kratki niti previše uobičajeni.',
+	'spamregex-page-title' => 'Spam filter za blokiranje neželjenih izraza',
 	'spamregex-currently-blocked' => "'''Trenutno blokirane fraze:'''",
 	'spamregex-move' => 'Razlog koji ste unijeli sadrži blokiranu frazu.',
 	'spamregex-no-currently-blocked' => "'''Nema blokiranih fraza.'''",
@@ -298,6 +302,7 @@ $messages['bs'] = array(
 	'spamregex-page-title-1' => 'Blokiranje fraze koristeći obične izraze',
 	'spamregex-unblock-success' => 'Deblokada uspješna',
 	'spamregex-unblock-message' => "Fraza '''$1''' je deblokirana za uređivanje.",
+	'spamregex-page-title-2' => 'Blokiranje fraze od spremanja koristeći redovne izraze',
 	'spamregex-block-success' => 'Blokada uspješna',
 	'spamregex-block-message' => "Fraza '''$1''' je blokirana.",
 	'spamregex-warning-1' => 'Navedite frazu za blokiranje.',

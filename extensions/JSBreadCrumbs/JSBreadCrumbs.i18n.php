@@ -301,3 +301,16 @@ $messages['ru'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Не более 20 «хлебных крошек»',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'jsbreadcrumbs-desc' => 'Nagdaragdag ng isang bulaos ng mga pispis ng tinapay sa ilalim ng bareta ng panglaylay',
+	'jsbreadcrumbs-leading-description' => 'Bakas ng paglilibot',
+	'prefs-jsbreadcrumbs' => 'Mga Pispis ng tinapay',
+	'prefs-jsbreadcrumbs-showsite' => 'Isama ang pangalan ng sityo sa mga pispis ng tinapay (magagamit kapag ginamit sa kahabaan ng mga wiki)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Ipakita ang mga pispis ng tinapay',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Bilang ng mga pispis ng tinapay',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Pinakamaraming 20 mga himulmol ng tinapay',
+);
+
