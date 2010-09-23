@@ -12,7 +12,7 @@ EOT;
 	exit( 1 );
 }
 
-$wgExtensionCredits[ 'VariablePage' ][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'VariablePage',
 	'version' => '0.1',
