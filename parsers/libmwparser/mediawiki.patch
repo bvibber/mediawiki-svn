@@ -1,0 +1,478 @@
+Index: includes/parser/Parser.php
+===================================================================
+--- includes/parser/Parser.php	(revision 69308)
++++ includes/parser/Parser.php	(arbetskopia)
+@@ -7,6 +7,9 @@
+  * File for Parser and related classes
+  */
+ 
++include_once('MediaWiki/mwp.php');
++include_once('LinkResolver.php');
++define('USE_LIBMWPARSER', true);
+ 
+ /**
+  * PHP Parser - Processes wiki markup (which uses a more user-friendly
+@@ -114,6 +117,7 @@
+ 	var $mRevisionTimestamp; # The timestamp of the specified revision ID
+ 	var $mRevIdForTs;   # The revision ID which was used to fetch the timestamp
+ 
++
+ 	/**
+ 	 * Constructor
+ 	 *
+@@ -262,13 +266,17 @@
+ 		wfProfileIn( __METHOD__ );
+ 		wfProfileIn( $fname );
+ 
++
+ 		if ( $clearState ) {
+ 			$this->clearState();
+ 		}
+ 
+ 		$this->mOptions = $options;
+ 		$this->setTitle( $title ); # Page title has to be set for the pre-processor
++                $rawTitle = $title;
+ 
++                $rawText = $text;
++
+ 		$oldRevisionId = $this->mRevisionId;
+ 		$oldRevisionTimestamp = $this->mRevisionTimestamp;
+ 		if ( $revid !== null ) {
+@@ -281,143 +289,156 @@
+ 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$this->mStripState ) );
+ 		$text = $this->internalParse( $text );
+ 
+-		$text = $this->mStripState->unstripGeneral( $text );
++                if (!USE_LIBMWPARSER) {
++                    $text = $this->mStripState->unstripGeneral( $text );
+ 
+-		# Clean up special characters, only run once, next-to-last before doBlockLevels
+-		$fixtags = array(
+-			# french spaces, last one Guillemet-left
+-			# only if there is something before the space
+-			'/(.) (?=\\?|:|;|!|%|\\302\\273)/' => '\\1&#160;\\2',
+-			# french spaces, Guillemet-right
+-			'/(\\302\\253) /' => '\\1&#160;',
+-			'/&#160;(!\s*important)/' => ' \\1', # Beware of CSS magic word !important, bug #11874.
+-		);
+-		$text = preg_replace( array_keys( $fixtags ), array_values( $fixtags ), $text );
++                    # Clean up special characters, only run once, next-to-last before doBlockLevels
++                        $fixtags = array(
++                                         # french spaces, last one Guillemet-left
++                                         # only if there is something before the space
++                                         '/(.) (?=\\?|:|;|!|%|\\302\\273)/' => '\\1&#160;\\2',
++                                         # french spaces, Guillemet-right
++                                         '/(\\302\\253) /' => '\\1&#160;',
++                                         '/&#160;(!\s*important)/' => ' \\1', # Beware of CSS magic word !important, bug #11874.
++                                         );
++                    $text = preg_replace( array_keys( $fixtags ), array_values( $fixtags ), $text );
+ 
+-		$text = $this->doBlockLevels( $text, $linestart );
++                    $text = $this->doBlockLevels( $text, $linestart );
+ 
+-		$this->replaceLinkHolders( $text );
++                    $this->replaceLinkHolders( $text );
+ 
+-		/**
+-		 * The page doesn't get language converted if
+-		 * a) It's disabled
+-		 * b) Content isn't converted
+-		 * c) It's a conversion table
+-		 */
+-		if ( !( $wgDisableLangConversion
+-				|| isset( $this->mDoubleUnderscores['nocontentconvert'] )
+-				|| $this->mTitle->isConversionTable() ) ) {
++                    /**
++                     * The page doesn't get language converted if
++                     * a) It's disabled
++                     * b) Content isn't converted
++                     * c) It's a conversion table
++                     */
++                    if ( !( $wgDisableLangConversion
++                            || isset( $this->mDoubleUnderscores['nocontentconvert'] )
++                            || $this->mTitle->isConversionTable() ) ) {
+ 
+ 			# The position of the convert() call should not be changed. it
+-			# assumes that the links are all replaced and the only thing left
+-			# is the <nowiki> mark.
++                            # assumes that the links are all replaced and the only thing left
++                            # is the <nowiki> mark.
+ 
+-			$text = $wgContLang->convert( $text );
+-		}
++                            $text = $wgContLang->convert( $text );
++                    }
+ 
+-		/**
+-		 * A page get its title converted except:
+-		 * a) Language conversion is globally disabled
+-		 * b) Title convert is globally disabled
+-		 * c) The page is a redirect page
+-		 * d) User request with a "linkconvert" set to "no"
+-		 * e) A "nocontentconvert" magic word has been set
+-		 * f) A "notitleconvert" magic word has been set
+-		 * g) User sets "noconvertlink" in his/her preference
+-		 *
+-		 * Note that if a user tries to set a title in a conversion
+-		 * rule but content conversion was not done, then the parser
+-		 * won't pick it up.  This is probably expected behavior.
+-		 */
+-		if ( !( $wgDisableLangConversion
+-				|| $wgDisableTitleConversion
+-				|| isset( $this->mDoubleUnderscores['nocontentconvert'] )
+-				|| isset( $this->mDoubleUnderscores['notitleconvert'] )
+-				|| $this->mOutput->getDisplayTitle() !== false ) ) 
+-		{
+-			$convruletitle = $wgContLang->getConvRuleTitle();
+-			if ( $convruletitle ) {
++                    /**
++                     * A page get its title converted except:
++                     * a) Language conversion is globally disabled
++                     * b) Title convert is globally disabled
++                     * c) The page is a redirect page
++                     * d) User request with a "linkconvert" set to "no"
++                     * e) A "nocontentconvert" magic word has been set
++                     * f) A "notitleconvert" magic word has been set
++                     * g) User sets "noconvertlink" in his/her preference
++                     *
++                     * Note that if a user tries to set a title in a conversion
++                     * rule but content conversion was not done, then the parser
++                     * won't pick it up.  This is probably expected behavior.
++                     */
++                    if ( !( $wgDisableLangConversion
++                            || $wgDisableTitleConversion
++                            || isset( $this->mDoubleUnderscores['nocontentconvert'] )
++                            || isset( $this->mDoubleUnderscores['notitleconvert'] )
++                            || $this->mOutput->getDisplayTitle() !== false ) ) 
++                        {
++                            $convruletitle = $wgContLang->getConvRuleTitle();
++                            if ( $convruletitle ) {
+ 				$this->mOutput->setTitleText( $convruletitle );
+-			} else {
++                            } else {
+ 				$titleText = $wgContLang->convertTitle( $title );
+ 				$this->mOutput->setTitleText( $titleText );
+-			}
+-		}
++                            }
++                        }
+ 
+-		$text = $this->mStripState->unstripNoWiki( $text );
++                    $text = $this->mStripState->unstripNoWiki( $text );
+ 
+-		wfRunHooks( 'ParserBeforeTidy', array( &$this, &$text ) );
++                    wfRunHooks( 'ParserBeforeTidy', array( &$this, &$text ) );
+ 
+-//!JF Move to its own function
++                    //!JF Move to its own function
+ 
+-		$uniq_prefix = $this->mUniqPrefix;
+-		$matches = array();
+-		$elements = array_keys( $this->mTransparentTagHooks );
+-		$text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
++                    $uniq_prefix = $this->mUniqPrefix;
++                    $matches = array();
++                    $elements = array_keys( $this->mTransparentTagHooks );
++                    $text = self::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+ 
+-		foreach ( $matches as $marker => $data ) {
++                    foreach ( $matches as $marker => $data ) {
+ 			list( $element, $content, $params, $tag ) = $data;
+ 			$tagName = strtolower( $element );
+ 			if ( isset( $this->mTransparentTagHooks[$tagName] ) ) {
+-				$output = call_user_func_array( $this->mTransparentTagHooks[$tagName], array( $content, $params, $this ) );
++                            $output = call_user_func_array( $this->mTransparentTagHooks[$tagName], array( $content, $params, $this ) );
+ 			} else {
+-				$output = $tag;
++                            $output = $tag;
+ 			}
+ 			$this->mStripState->general->setPair( $marker, $output );
+-		}
+-		$text = $this->mStripState->unstripGeneral( $text );
++                    }
++                    $text = $this->mStripState->unstripGeneral( $text );
+ 
+-		$text = Sanitizer::normalizeCharReferences( $text );
++                    $text = Sanitizer::normalizeCharReferences( $text );
+ 
+-		if ( ( $wgUseTidy && $this->mOptions->mTidy ) || $wgAlwaysUseTidy ) {
++                    if ( ( $wgUseTidy && $this->mOptions->mTidy ) || $wgAlwaysUseTidy ) {
+ 			$text = MWTidy::tidy( $text );
+-		} else {
++                    } else {
+ 			# attempt to sanitize at least some nesting problems
+-			# (bug #2702 and quite a few others)
+-			$tidyregs = array(
+-				# ''Something [http://www.cool.com cool''] -->
+-				# <i>Something</i><a href="http://www.cool.com"..><i>cool></i></a>
+-				'/(<([bi])>)(<([bi])>)?([^<]*)(<\/?a[^<]*>)([^<]*)(<\/\\4>)?(<\/\\2>)/' =>
+-				'\\1\\3\\5\\8\\9\\6\\1\\3\\7\\8\\9',
+-				# fix up an anchor inside another anchor, only
+-				# at least for a single single nested link (bug 3695)
+-				'/(<a[^>]+>)([^<]*)(<a[^>]+>[^<]*)<\/a>(.*)<\/a>/' =>
+-				'\\1\\2</a>\\3</a>\\1\\4</a>',
+-				# fix div inside inline elements- doBlockLevels won't wrap a line which
+-				# contains a div, so fix it up here; replace
+-				# div with escaped text
+-				'/(<([aib]) [^>]+>)([^<]*)(<div([^>]*)>)(.*)(<\/div>)([^<]*)(<\/\\2>)/' =>
+-				'\\1\\3&lt;div\\5&gt;\\6&lt;/div&gt;\\8\\9',
+-				# remove empty italic or bold tag pairs, some
+-				# introduced by rules above
+-				'/<([bi])><\/\\1>/' => '',
+-			);
++                            # (bug #2702 and quite a few others)
++                            $tidyregs = array(
++                                              # ''Something [http://www.cool.com cool''] -->
++                                              # <i>Something</i><a href="http://www.cool.com"..><i>cool></i></a>
++                                              '/(<([bi])>)(<([bi])>)?([^<]*)(<\/?a[^<]*>)([^<]*)(<\/\\4>)?(<\/\\2>)/' =>
++                                              '\\1\\3\\5\\8\\9\\6\\1\\3\\7\\8\\9',
++                                              # fix up an anchor inside another anchor, only
++                                              # at least for a single single nested link (bug 3695)
++                                              '/(<a[^>]+>)([^<]*)(<a[^>]+>[^<]*)<\/a>(.*)<\/a>/' =>
++                                              '\\1\\2</a>\\3</a>\\1\\4</a>',
++                                              # fix div inside inline elements- doBlockLevels won't wrap a line which
++                                              # contains a div, so fix it up here; replace
++                                              # div with escaped text
++                                              '/(<([aib]) [^>]+>)([^<]*)(<div([^>]*)>)(.*)(<\/div>)([^<]*)(<\/\\2>)/' =>
++                                              '\\1\\3&lt;div\\5&gt;\\6&lt;/div&gt;\\8\\9',
++                                              # remove empty italic or bold tag pairs, some
++                                              # introduced by rules above
++                                              '/<([bi])><\/\\1>/' => '',
++                                              );
+ 
+ 			$text = preg_replace(
+-				array_keys( $tidyregs ),
+-				array_values( $tidyregs ),
+-				$text );
+-		}
+-		global $wgExpensiveParserFunctionLimit;
+-		if ( $this->mExpensiveFunctionCount > $wgExpensiveParserFunctionLimit ) {
++                                             array_keys( $tidyregs ),
++                                             array_values( $tidyregs ),
++                                             $text );
++                    }
++                    global $wgExpensiveParserFunctionLimit;
++                    if ( $this->mExpensiveFunctionCount > $wgExpensiveParserFunctionLimit ) {
+ 			$this->limitationWarn( 'expensive-parserfunction', $this->mExpensiveFunctionCount, $wgExpensiveParserFunctionLimit );
+-		}
++                    }
+ 
+-		wfRunHooks( 'ParserAfterTidy', array( &$this, &$text ) );
++                    wfRunHooks( 'ParserAfterTidy', array( &$this, &$text ) );
+ 
+-		# Information on include size limits, for the benefit of users who try to skirt them
+-		if ( $this->mOptions->getEnableLimitReport() ) {
+-			$max = $this->mOptions->getMaxIncludeSize();
+-			$PFreport = "Expensive parser function count: {$this->mExpensiveFunctionCount}/$wgExpensiveParserFunctionLimit\n";
+-			$limitReport =
+-				"NewPP limit report\n" .
+-				"Preprocessor node count: {$this->mPPNodeCount}/{$this->mOptions->mMaxPPNodeCount}\n" .
+-				"Post-expand include size: {$this->mIncludeSizes['post-expand']}/$max bytes\n" .
+-				"Template argument size: {$this->mIncludeSizes['arg']}/$max bytes\n".
+-				$PFreport;
+-			wfRunHooks( 'ParserLimitReport', array( $this, &$limitReport ) );
+-			$text .= "\n<!-- \n$limitReport-->\n";
+-		}
++                    # Information on include size limits, for the benefit of users who try to skirt them
++                    if ( $this->mOptions->getEnableLimitReport() ) {
++                        $max = $this->mOptions->getMaxIncludeSize();
++                        $PFreport = "Expensive parser function count: {$this->mExpensiveFunctionCount}/$wgExpensiveParserFunctionLimit\n";
++                        $limitReport =
++                            "NewPP limit report\n" .
++                            "Preprocessor node count: {$this->mPPNodeCount}/{$this->mOptions->mMaxPPNodeCount}\n" .
++                            "Post-expand include size: {$this->mIncludeSizes['post-expand']}/$max bytes\n" .
++                            "Template argument size: {$this->mIncludeSizes['arg']}/$max bytes\n".
++                            $PFreport;
++                        wfRunHooks( 'ParserLimitReport', array( $this, &$limitReport ) );
++                        $text .= "\n<!-- \n$limitReport-->\n";
++                    }
++                } else {
++                    # libmwparse
++                    $istream = new_MWParserInput($text);
++                    
++                    $parser = new_MWParser($istream);
++
++                    $text = implode('', MWParseArticle($parser));
++                    delete_MWParser($parser);
++                    delete_MWParserInput($istream);
++
++                }
++                
+ 		$this->mOutput->setText( $text );
+ 
+ 		$this->mRevisionId = $oldRevisionId;
+@@ -1051,38 +1072,42 @@
+ 			$text = $frame->expand( $dom );
+ 		} else {
+ 			# if $frame is not provided, then use old-style replaceVariables
+-			$text = $this->replaceVariables( $text );
++                        if (!USE_LIBMWPARSER) {
++                               $text = $this->replaceVariables( $text );
++                        }
+ 		}
+ 
+-		$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ), false, array_keys( $this->mTransparentTagHooks ) );
+-		wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text, &$this->mStripState ) );
++                if (!USE_LIBMWPARSER) {
++                    $text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ), false, array_keys( $this->mTransparentTagHooks ) );
++                    wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text, &$this->mStripState ) );
+ 
+-		# Tables need to come after variable replacement for things to work
+-		# properly; putting them before other transformations should keep
+-		# exciting things like link expansions from showing up in surprising
+-		# places.
+-		$text = $this->doTableStuff( $text );
++                    # Tables need to come after variable replacement for things to work
++                                                                                    # properly; putting them before other transformations should keep
++                                                                                                    # exciting things like link expansions from showing up in surprising
++                                                                                                    # places.
++                                                                                                    $text = $this->doTableStuff( $text );
+ 
+-		$text = preg_replace( '/(^|\n)-----*/', '\\1<hr />', $text );
+-
++                    $text = preg_replace( '/(^|\n)-----*'.'/', '\\1<hr />', $text );
++                }
+ 		$text = $this->doDoubleUnderscore( $text );
+-
+-		$text = $this->doHeadings( $text );
+-		if ( $this->mOptions->getUseDynamicDates() ) {
++                if (!USE_LIBMWPARSER) {
++                    $text = $this->doHeadings( $text );
++                    if ( $this->mOptions->getUseDynamicDates() ) {
+ 			$df = DateFormatter::getInstance();
+ 			$text = $df->reformat( $this->mOptions->getDateFormat(), $text );
+-		}
+-		$text = $this->replaceInternalLinks( $text );
+-		$text = $this->doAllQuotes( $text );
+-		$text = $this->replaceExternalLinks( $text );
++                    }
++                    $text = $this->replaceInternalLinks( $text );
++                    $text = $this->doAllQuotes( $text );
++                    $text = $this->replaceExternalLinks( $text );
+ 
+-		# replaceInternalLinks may sometimes leave behind
+-		# absolute URLs, which have to be masked to hide them from replaceExternalLinks
+-		$text = str_replace( $this->mUniqPrefix.'NOPARSE', '', $text );
++                    # replaceInternalLinks may sometimes leave behind
++                        # absolute URLs, which have to be masked to hide them from replaceExternalLinks
++                        $text = str_replace( $this->mUniqPrefix.'NOPARSE', '', $text );
+ 
+-		$text = $this->doMagicLinks( $text );
+-		$text = $this->formatHeadings( $text, $origText, $isMain );
+-
++                    $text = $this->doMagicLinks( $text );
++                    $text = $this->formatHeadings( $text, $origText, $isMain );
++                    
++                }
+ 		wfProfileOut( __METHOD__ );
+ 		return $text;
+ 	}
+Index: includes/parser/LinkResolver.php
+===================================================================
+--- includes/parser/LinkResolver.php	(revision 0)
++++ includes/parser/LinkResolver.php	(revision 0)
+@@ -0,0 +1,103 @@
++<?php
++
++include_once('MediaWiki/mwp.php');
++
++# TODO add support for GetLinkColors hook here
++
++function MWParserLinkResolverCallback($linkCollection) {
++        $lcKeys = MWLinkCollectionGet($linkCollection);
++        $linkCache = LinkCache::singleton();
++        $dbr = wfGetDB( DB_SLAVE );
++        $page = $dbr->tableName( 'page' );
++
++        $links = array();
++
++        foreach ($lcKeys as $lcKey) {
++                $type = MWLCKeyGetLinkType($lcKey);
++                if ($type == MWLT_EXTERNAL) {
++                        continue;
++                }
++                $title = Title::newFromText(MWLCKeyGetLinkTitle($lcKey));
++                if ($type == MWLT_INTERNAL) {
++                        $ns = $title->getNamespace();
++                        $links[$title->getDBKey()] = $lcKey;
++
++                        # Not in the link cache, add it to the query
++                                if ( !isset( $current ) ) {
++                                        $current = $ns;
++                                        $query =  "SELECT page_id, page_namespace, page_title, page_is_redirect, page_len, page_latest";
++                                        $query .= " FROM $page WHERE (page_namespace=$ns AND page_title IN(";
++                                } elseif ( $current != $ns ) {
++                                $current = $ns;
++                                $query .= ")) OR (page_namespace=$ns AND page_title IN(";
++                        } else {
++                                $query .= ', ';
++                        }
++
++                        $query .= $dbr->addQuotes( $title->getDBkey() );
++                } elseif ($type == MWLT_MEDIA) {
++                        $linkResolution = new_MWLINKRESOLUTION();
++                        $time = false;
++                        // TODO File hook
++                        $img  = wfFindFile( $title, array( 'time' => $time ) );
++                        $alt = htmlspecialchars( $title->getText(),  ENT_QUOTES );
++                        MWLINKRESOLUTION_alt_set($linkResolution, $alt);
++                        MWLINKRESOLUTION_url_set($linkResolution,  $title->getLocalURL() );
++                        if ($img) {
++                                MWLINKRESOLUTION_imageUrl_set($linkResolution, htmlspecialchars($img->getURL()));
++                                MWLINKRESOLUTION_c_class_set($linkResolution, 'internal');
++                                if ($img->getWidth()) {
++                                        MWLINKRESOLUTION_imageWidth_set($linkResolution, $img->getWidth());
++                                }
++                                if ($img->getHeight()) {
++                                        MWLINKRESOLUTION_imageHeight_set($linkResolution, $img->getHeight());
++                                }
++                        } else {
++                                MWLINKRESOLUTION_c_class_set($linkResolution, 'new');
++                        }
++                        MWLinkCollectionResolve($linkCollection, $lcKey, $linkResolution);
++                }
++        }
++
++        if ( $query ) {
++                $query .= '))';
++
++                wfDebugLog('linkresolver', "Link resolver callback query: '$query'");
++                $res = $dbr->query( $query, __METHOD__ );
++
++                # Fetch data and form into an associative array
++                # non-existent = broken
++                while ( $s = $dbr->fetchObject($res) ) {
++                        $title = Title::makeTitle( $s->page_namespace, $s->page_title );
++                        $lcKey = $links[$title->getDBKey()];
++                        unset($links[$title->getDBKey()]);
++                        wfDebugLog('linkresolver', 'Resolving ' . MWLCKeyGetLinkTitle($lcKey) . ' to ' . $title->getLocalURL());
++                        $linkResolution = new_MWLINKRESOLUTION();
++                        MWLINKRESOLUTION_url_set($linkResolution, $title->getLocalURL());
++                        $linkCache->addGoodLinkObj( $s->page_id, $title, $s->page_len, $s->page_is_redirect, $s->page_latest );
++                        MWLINKRESOLUTION_color_set($linkResolution, MWLINKCOLOR_BLUE);
++                        MWLinkCollectionResolve($linkCollection, $lcKey, $linkResolution);
++                }
++                unset( $res );
++        }
++
++        foreach ($links as $lcKey) {
++                $title = Title::newFromText(MWLCKeyGetLinkTitle($lcKey));
++                $linkResolution = new_MWLINKRESOLUTION();
++
++                if ($title->isKnown()) {
++                        MWLINKRESOLUTION_url_set($linkResolution, $title->getLocalURL());
++                        MWLINKRESOLUTION_color_set($linkResolution, MWLINKCOLOR_BLUE);
++                } else {
++                        MWLINKRESOLUTION_url_set($linkResolution, $title->getLocalURL('action=edit&redlink=1'));
++                        MWLINKRESOLUTION_color_set($linkResolution, MWLINKCOLOR_RED);
++                }
++                MWLinkCollectionResolve($linkCollection, $lcKey, $linkResolution);
++        }
++
++
++        wfProfileOut( __METHOD__ );
++
++}
++
++?>
+\ No newline at end of file
