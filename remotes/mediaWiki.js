@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r151';
+var mwRemoteVersion = 'r152';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -397,11 +397,11 @@ function rewrite_for_OggHandler( vidIdList ) {
 		
 		// If in a gallery box or filehistory we will be displaying the video larger in a lightbox
 		if( $j( '#' + vidId ).parents( '.gallerybox,.filehistory' ).length ){
-			// Update the width to 420 and keep scale
 			pwidth = 400;
+			// Update the width to 400 and keep scale			
 			if( pheight != 0 ) {
-				pheight = pwidth * (  $j( '#' + vidId ).height() / $j( '#' + vidId ).width() );
-			}						
+				pheight = pwidth * (  $j( '#' + vidId + ' img' ).height() / $j( '#' + vidId + ' img' ).width() );
+			}							
 		}
 		
 		if ( src ) {
@@ -459,10 +459,9 @@ function rewrite_for_OggHandler( vidIdList ) {
 						.addClass( 'play-btn-large' )
 						.buttonHover()
 						.click( function(){		
-							var _this = this;
-									
+							var _this = this;							
 							var dialogHeight = ( pheight == 0 	)? 175 :
-												( pheight + 30 );
+												( pheight + 130 );
 							var buttons = {};
 							buttons[ gM( 'mwe-ok' ) ] = function(){
 								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
@@ -482,9 +481,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 							})							
 							
 							// Update the embed code to use the mwEmbed player: 		
-							$j( '#mwe_' + vidId ).embedPlayer( function(){								
-								var embedPlayer = $j( '#mwe_' + vidId ).get(0);
-								embedPlayer.play();
+							$j( '#mwe_' + vidId ).embedPlayer( { 'autoplay' : true }, function(){								
+								var embedPlayer = $j( '#mwe_' + vidId ).get(0);								
 								// Show the control bar for two seconds (auto play is confusing without it )
 								embedPlayer.controlBuilder.showControlBar();
 								// hide the controls if they should they are overlayed on the video
