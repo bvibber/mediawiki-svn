@@ -13,24 +13,24 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 
 	public function execute() {
 		global $wgOut, $wgRequest;
-		global $wgVariablePagePossibilities, $wgVariablePageUtmMedium;
+		global $wgVariablePagePossibilities;
 
 		$lang = ( preg_match( '/^[A-Za-z-]+$/', $wgRequest->getVal( 'lang' ) ) ) ? $wgRequest->getVal( 'lang' ) : 'en' ;
 		$utm_source = $wgRequest->getVal( 'utm_source' );
-		$utm_medium = ( strlen($wgVariablePageUtmMedium )) ? $wgVariablePageUtmMedium : $wgRequest->getVal( 'utm_medium' );
+		$utm_medium = $wgRequest->getVal( 'utm_medium' );
 		$utm_campaign = $wgRequest->getVal( 'utm_campaign' );
-		$referrer = $wgRequest->getHeader( 'referrer' );
+		$referrer = ( $wgRequest->getVal( 'referrer' )) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' );
 	
 		$query = array();
 		if ( strlen( $lang ) ) $query[ 'language' ] = $lang;
-		if ( strlen( $utm_source )) $query[ 'utm_source' ] = $utm_source;
-		if ( strlen( $utm_medium )) $query[ 'utm_medium' ] = $utm_medium;
-		if ( strlen( $utm_campaign )) $query[ 'utm_campaign' ] = $utm_campaign;
-		if ( strlen( $referrer )) $query[ 'referrer' ] = $referrer;
+		if ( strlen( $utm_source ) ) $query[ 'utm_source' ] = $utm_source;
+		if ( strlen( $utm_medium ) ) $query[ 'utm_medium' ] = $utm_medium;
+		if ( strlen( $utm_campaign ) ) $query[ 'utm_campaign' ] = $utm_campaign;
+		if ( strlen( $referrer ) ) $query[ 'referrer' ] = $referrer;
 
 		// determine the URL to which we will redirect the user
 		$url = $this->determinePage( $wgVariablePagePossibilities );
-		$wgOut->redirect( wfAppendQuery( $url, $query ));
+		$wgOut->redirect( wfAppendQuery( $url, $query ) );
 	}
 
 	/**
@@ -80,10 +80,10 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 			$total_probability += $probability;
 		}
 
-		if ( $total_probability != 100 && !strlen( $wgVariablePageDefault )) {
-			return FALSE;
+		if ( $total_probability != 100 && !strlen( $wgVariablePageDefault ) ) {
+			return false;
 		} else {
-			return TRUE;
+			return true;
 		}
 	}
 }

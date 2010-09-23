@@ -13,8 +13,9 @@ $messages = array();
  * @author Arthur Richards
  */
 $messages['en'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Donate',
 	'variablepage-desc' => 'Lightweight variable page redirection',
-	'variablepage-randomurl' => 'Special:VariablePage',
 );
 
 /** Bosnian (Bosanski)
@@ -31,6 +32,13 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'variablepage-desc' => 'Redirection de page légère et variable',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -38,11 +46,32 @@ $messages['gl'] = array(
 	'variablepage-desc' => 'Redirección lixeira de páxina variable',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'variablepage-desc' => 'Lychti variabli Wyterleitige',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'variablepage-desc' => '軽い可変ページのリダイレクト',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'variablepage-desc' => 'Ein eijfache Ömleidung op ongerscheidlijje Sigge.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -64,6 +93,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'variablepage-desc' => 'Prosta strona przekierowująca losowo',
 );
 
 /** Piedmontese (Piemontèis)
@@ -92,5 +128,12 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
 );
 
