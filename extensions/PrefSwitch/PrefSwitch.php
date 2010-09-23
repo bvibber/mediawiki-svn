@@ -85,6 +85,7 @@ foreach ( $wgPrefSwitchSurveys as &$survey ) {
 			'ff1' => 'prefswitch-survey-answer-browser-ff1',
 			'ff2' => 'prefswitch-survey-answer-browser-ff2',
 			'ff3' => 'prefswitch-survey-answer-browser-ff3',
+			'ff4' => 'prefswitch-survey-answer-browser-ff4',
 			'cb' => 'prefswitch-survey-answer-browser-cb',
 			'cd' => 'prefswitch-survey-answer-browser-cd',
 			'c1' => 'prefswitch-survey-answer-browser-c1',
