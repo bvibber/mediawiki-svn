@@ -53,9 +53,13 @@ function AdvancedSearchLocalizedPageName( &$specialPageArray, $code ) {
 	return true;
 }
 
-function AdvancedSearchSchemaUpdate() {
-	global $wgExtNewTables;
+function AdvancedSearchSchemaUpdate( $updater = null ) {
 	$dir = dirname( __FILE__ ) . '/';
-	$wgExtNewTables[] = array( 'categorysearch', $dir . 'categorysearch.sql' );
+	if ( $updater === null ) {
+		global $wgExtNewTables;
+		$wgExtNewTables[] = array( 'categorysearch', $dir . 'categorysearch.sql' );
+	} else {
+		$updater->addExtensionUpdate( array( 'addTable', 'categorysearch', $dir . 'categorysearch.sql', true ) );
+	}
 	return true;
 }
