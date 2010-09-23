@@ -12,7 +12,7 @@ EOT;
 	exit( 1 );
 }
 
-$wgExtensionCredits[ 'VariablePage' ][] = array(
+$wgExtensionCredits['specialpage'][] = array(
 	'path' => __FILE__,
 	'name' => 'VariablePage',
 	'version' => '0.1',
@@ -66,6 +66,7 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses[ 'SpecialVariablePage' ] = $dir . 'VariablePage.body.php';
 $wgExtensionMessagesFiles[ 'VariablePage' ] = $dir . 'VariablePage.i18n.php';
+$wgExtensionAliasesFiles[ 'VariablePage' ] = $dir . 'VariablePage.alias.php';
 $wgSpecialPages[ 'VariablePage' ] = 'SpecialVariablePage';
 $wgSpecialPageGroups[ 'VariablePage' ] = 'contribution';
 
@@ -78,10 +79,10 @@ function efVariablePageSidebarLink( $skin, &$bar ) {
 
 	// make sure that we should be showing a sidebar link
 	if ( $wgVariablePageShowSidebarLink ) {
-		$url = Title::makeTitle( NS_SPECIAL, wfMsg( 'variablepage' ) )->getLocalUrl();
+		$title = SpecialPage::getTitleFor( 'VariablePage' );
 		$bar['navigation'][] = array(
 			'text' => wfMsg( 'variablepage-navlink_text' ),
-			'href' => wfAppendQuery( $url, $wgVariablePageSidebarLinkQuery ),
+			'href' => $title->getLocalUrl( $wgVariablePageSidebarLinkQuery ),
 			'id' => 'n-variablepage',
 			'active' => true,
 		);

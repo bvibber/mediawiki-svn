@@ -11,7 +11,7 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		}
 	}
 
-	public function execute() {
+	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 		global $wgVariablePagePossibilities;
 
@@ -51,7 +51,7 @@ class SpecialVariablePage extends UnlistedSpecialPage {
 		 * We use a # larger than 100 to increase 'randomness'
 		 */
 		$random_number = mt_rand( 0, 100*100 );
-		$offset = 0;  
+		$offset = 0;
 
 		foreach ( $page_possibilities as $url => $probability ) {
 			$offset += $probability * 100;
