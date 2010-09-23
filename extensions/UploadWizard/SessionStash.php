@@ -1,14 +1,4 @@
 <?php
-/** 
- * SessionStash is intended to accomplish a few things:
- *   - enable applications to temporarily stash files without publishing them to the wiki.
- *      - Several parts of MediaWiki do this in similar ways: UploadBase, UploadWizard, and FirefoggChunkedExtension
- *        the idea is to unify them all here
- *   - enable applications to find said files later, as long as the session or temp files haven't been purged. 
- *   - enable the uploading user (and *ONLY* the uploading user) to access said files, and thumbnails of said files, via a URL.
- *     We accomplish this by making the session serve as a URL->file mapping, on the assumption that nobody else can access 
- *     the session, even the uploading user.
- */
 
 class SessionStash {
 	// repository that this uses to store temp files
@@ -17,12 +7,9 @@ class SessionStash {
 	// array of initialized objects obtained from session (lazily initialized upon getFile())
 	private $files = array();  
 
-	// the base URL for files in the stash
-	private $baseUrl;
-	
-	// TODO: Once UploadBase starts using this, switch to use these constants rather than UploadBase::SESSION*
-	// const SESSION_VERSION = 2;
-	// const SESSION_KEYNAME = 'wsUploadData';
+	const SESSION_VERSION = 2;
+	const SESSION_KEYNAME = 'wsUploadData';
+	const SESSION_THUMB_KEYNAME = 'wsUploadDataThumb';
 
 	/**
 	 * Represents the session which contain temporarily stored files.
@@ -40,15 +27,14 @@ class SessionStash {
 			throw new MWException( 'session not available' );
 		}
 
-		if ( ! array_key_exists( UploadBase::SESSION_KEYNAME, $_SESSION ) ) {
-			$_SESSION[UploadBase::SESSION_KEYNAME] = array();
+		if ( ! array_key_exists( self::SESSION_KEYNAME, $_SESSION ) ) {
+			$_SESSION[self::SESSION_KEYNAME] = array();
 		}
-		
-		$this->baseUrl = SpecialPage::getTitleFor( 'SessionStash' )->getLocalURL(); 
 	}
 
 	public function getBaseUrl() { 
-		return $this->baseUrl;
+		// XXX do this better
+		return '/wiki/Special:SessionStash';
 	}
 
 	/** 
@@ -59,9 +45,9 @@ class SessionStash {
 	 */
 	public function getFile( $key ) { 
 		if ( !array_key_exists( $key, $this->files ) ) {
-			$stashData = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
+			$stashData = $_SESSION[self::SESSION_KEYNAME][$key];
 
-			if ($stashData['version'] !== UploadBase::SESSION_VERSION ) {
+			if ($stashData['version'] !== self::SESSION_VERSION ) {
 				throw new MWException( 'session item schema does not match current software' );
 			}
 			
@@ -110,7 +96,7 @@ class SessionStash {
 			'mTempPath' => $stashPath,
 			'mFileSize' => $fileSize,
 			'mFileProps' =>	$fileProps,
-			'version' => UploadBase::SESSION_VERSION
+			'version' => self::SESSION_VERSION
 		);
 
 		// put extended info into the session (this changes from application to application).
@@ -121,7 +107,7 @@ class SessionStash {
 			}
 		}
 
-		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $stashData;
+		$_SESSION[self::SESSION_KEYNAME][$key] = $stashData;
 		
 		wfDebug( "SESSION\n=====\n " . print_r( $_SESSION, 1 ) . "\n" );
 		
@@ -170,9 +156,6 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * Find or guess extension -- ensuring that our extension matches our mime type.
 	 * Since these files are constructed from php tempnames they may not start off 
 	 * with an extension
-	 * This does not override getExtension because things like getMimeType already call getExtension,
-	 * and that results in infinite recursion. So, we preemptively *set* the extension so getExtension can find it.
-	 * For obvious reasons this should be called as early as possible, as part of initialization
 	 */
 	public function setExtension() { 	
 		// Does this have an extension?
@@ -196,7 +179,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 			throw 'cannot determine extension';
 		}
 
-		$this->extension = parent::normalizeExtension( $extension );
+		return parent::normalizeExtension( $extension );
 	}
 
 	/**
@@ -205,7 +188,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * buggy code elsewhere that expects a boolean 'suffix'
 	 *
 	 * @param {String|false} name of thumbnail (e.g. "120px-123456.jpg" ), or false to just get the path
-	 * @return {String} path thumbnail should take on filesystem, or containing directory if thumbname is false
+	 * @param {String} path thumbnail should take on filesystem, or containing directory if thumbname is false
 	 */
 	public function getThumbPath( $thumbName=false ) { 
 		$path = dirname( $this->path );
@@ -268,7 +251,6 @@ class SessionStashFile extends UnregisteredLocalFile {
 	/**
 	 * Return the URL of the file, if for some reason we wanted to download it
  	 * We tend not to do this for the original file, but we do want thumb icons
-	 * @return {String} url
 	 */
 	public function getUrl() {
 		if ( !isset( $this->url ) ) {
@@ -286,7 +268,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	public function transform( $params, $flags=0 ) { 
 
 		// force it to get a thumbnail right away
-		$flags |= self::RENDER_NOW;
+		$flags &= self::RENDER_NOW;
 
 		// returns a ThumbnailImage object containing the url and path. Note. NOT A FILE OBJECT.
 		$thumb = parent::transform( $params, $flags );
@@ -300,10 +282,12 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		$stashedThumbFile = $this->sessionStash->stashFile( $key, $thumb->path );
-		$thumb->url = $stashedThumbFile->getUrl();
+		$thumb->url = $this->sessionStash->getBaseUrl() . '/' . $key . "." . $stashedThumbFile->extension;
 
 		return $thumb;	
 
 	}
 
 }
+
+?>
