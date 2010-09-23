@@ -866,7 +866,7 @@ mw.SequencerTools.prototype = {
 			// Return the trimTimeline edit widget
 			'draw': function( _this, target, smilElement ){
 				var smil = _this.sequencer.getSmil();
-				var sliderScale = 10000000
+				var sliderScale = 2000 // assume slider is never more than 2000 pixles wide. 
 				// check if thumbs are supported 
 				if( _this.sequencer.getSmil().getRefType( smilElement ) == 'video' ){ 
 					$j(target).append(

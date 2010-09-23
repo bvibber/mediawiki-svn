@@ -950,6 +950,7 @@ mw.includeAllModuleMessages();
 				if( time >= caption.start  && 
 					time <= caption.end ) {
 					this.prevIndex = i;
+					//mw.log("Start cap time: " + caption.start + ' End time: ' + caption.end );
 					return caption.content;
 				}
 			}
