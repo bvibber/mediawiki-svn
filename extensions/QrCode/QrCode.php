@@ -112,7 +112,7 @@ class MWQrCode {
 		// Also strip all non-alphanumeric characters
 		if ( $label ) {
 			$this->_label = $label;
-			$append = '-'.preg_replace("/\W+/", "", $label);
+			$append = '-'.preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
 		} else {
 			$this->_label = $wgTitle->getFullURL();
 			$append = '';
