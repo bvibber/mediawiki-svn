@@ -437,7 +437,7 @@ mw.SmilLayout.prototype = {
 				
 		var request = {
 			'action' : 'parse',
-			'text': wikiTextTemplateCall,
+			'text': wikiTextTemplateCall
 		};
 		// Check if we have the titleKey for the sequence and use that as context title
 		var titleKey = this.smil.getEmbedPlayer().apiTitleKey;
@@ -618,13 +618,13 @@ mw.SmilLayout.prototype = {
 		if( img.naturalWidth ){
 			callback(  {
 				'width' : img.naturalWidth,
-				'height' : img.naturalHeight,
+				'height' : img.naturalHeight
 			} )
 		} else {
 			$j( img ).load(function(){
 				callback( {
 					'width' : this.naturalWidth,
-					'height' : this.naturalHeight,
+					'height' : this.naturalHeight
 				} )
 			});
 		}
@@ -967,7 +967,7 @@ mw.SmilLayout.prototype = {
 						
 		// convert named font sizes to em: 
 		if( this.emFontSizeMap[ cssAttributes['font-size'] ] ){
-			cssAttributes['font-size'] = sizeMap[ cssAttributes['font-size'] ];
+			cssAttributes['font-size'] = this.emFontSizeMap[ cssAttributes['font-size'] ];
 		}
 		
 		// If the font size is pixel based parent span will have no effect,
