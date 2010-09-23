@@ -27,8 +27,8 @@ $messages['qqq'] = array(
 	'semanticformsinputs-close' => '{{Identical|Close}}',
 	'semanticformsinputs-prev' => '{{Identical|Previous}}',
 	'semanticformsinputs-next' => '{{Identical|Next}}',
-	'semanticformsinputs-dateformatlong' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
-	'semanticformsinputs-dateformatshort' => 'See http://docs.jquery.com/UI/Datepicker/formatDate',
+	'semanticformsinputs-dateformatlong' => 'This is a machine-readable date format string! It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate',
+	'semanticformsinputs-dateformatshort' => 'This is a machine-readable date format string! It is used by a function to format a date. It will not be read by a human user. Do not translate each letter literally! Instead insert the date format for your language using the english-based letters. See http://docs.jquery.com/UI/Datepicker/formatDate',
 );
 
 /** Afrikaans (Afrikaans)
@@ -125,7 +125,6 @@ $messages['fr'] = array(
 	'semanticformsinputs-prev' => 'Précédent',
 	'semanticformsinputs-next' => 'Suivant',
 	'semanticformsinputs-today' => "Aujourd'hui",
-	'semanticformsinputs-dateformatlong' => 'd MM yy',
 	'semanticformsinputs-dateformatshort' => 'dd / mm / yy',
 	'semanticformsinputs-firstdayofweek' => '0',
 );
