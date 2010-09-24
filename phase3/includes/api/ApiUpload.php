@@ -182,13 +182,14 @@ class ApiUpload extends ApiBase {
 	 * @return bool
 	 */
 	protected function selectUploadModule() {
+		global $wgAllowAsyncCopyUploads;
 		$request = $this->getMain()->getRequest();
 
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
 			'sessionkey', 'file', 'url', 'statuskey' );
 
-		if ( $this->mParams['statuskey'] ) {
+		if ( $wgAllowAsyncCopyUploads && $this->mParams['statuskey'] ) {
 			// Status request for an async upload
 			$sessionData = UploadFromUrlJob::getSessionData( $this->mParams['statuskey'] );
 			if ( !isset( $sessionData['result'] ) ) {
