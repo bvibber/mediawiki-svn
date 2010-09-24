@@ -216,6 +216,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		this.action =  options.action;
 		this.titleKey = options.titleKey;
 		this.target =  options.target;
+		this.catLinks = options.catLinks;
 	},	
 	
 	drawUI: function() {
@@ -310,7 +311,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	displayPlayerEmbed: function(){
 		var _this = this;
 		// load the embedPlayer module: 
-		mw.load('EmbedPlayer', function(){
+		mw.load( 'EmbedPlayer', function(){
 			// Check if the sequence has been flattened and is up to date:
 			var request = {
 				'action': 'query',
@@ -394,6 +395,9 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					} 
 				}
 				var width = ( imageinfo && imageinfo.thumbwidth )?imageinfo.thumbwidth : '400px';
+				
+				// Copy the category links if present
+	
 				// Display embed sequence
 				$j( _this.target ).empty().append(
 					$j('<div />')
@@ -437,7 +441,15 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					
 					// Add a clear both to give content body height
 					$j('<div />').css( { 'clear': 'both' } )
+					
 				)
+				// add cat links if set;
+				if( _this.catLinks ){
+					$j( _this.target ).append(
+						$j('<div />').html(  _this.catLinks )
+					);
+				}
+				
 				// Rewrite the player
 				$j('#embedSequencePlayer').embedPlayer();				
 			}); // load json player data			

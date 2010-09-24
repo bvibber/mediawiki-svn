@@ -153,6 +153,7 @@ function doPageSpecificRewrite() {
 			document.URL.indexOf('&diff=') == -1
 		){
 			if( wgAction == 'view' ){
+				var catLinksHtml = document.getElementById('catlinks');
 				mwSetPageToLoading();
 			}
 			if( wgAction == 'edit' ){
@@ -171,7 +172,8 @@ function doPageSpecificRewrite() {
 					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
 						'action': wgAction,
 						'titleKey' : wgPageName,
-						'target' : '#bodyContent'
+						'target' : '#bodyContent',
+						'catLinks' : catLinksHtml
 					});
 					window.mwSequencerRemote.drawUI();						
 				
@@ -272,7 +274,7 @@ function doPageSpecificRewrite() {
 */
 function mwSetPageToLoading(){
 	mwAddCommonStyleSheet();
-	var body = document.getElementById('bodyContent');
+	var body = document.getElementById( 'bodyContent' );
 	var oldBodyHTML = body.innerHTML;
 	body.innerHTML = '<div class="loadingSpinner"></div>';	
 	return oldBodyHTML;
