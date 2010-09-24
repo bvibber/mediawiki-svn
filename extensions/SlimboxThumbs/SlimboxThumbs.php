@@ -19,7 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'SlimboxThumbs_VERSION', '0.1' );
+define( 'SlimboxThumbs_VERSION', '0.2' );
 
 // Register the extension credits.
 $wgExtensionCredits['other'][] = array(
@@ -50,7 +50,7 @@ require_once 'SlimboxThumbs_Settings.php';
  */
 if ( $slimboxThumbsFilesDir ) {
     $slimboxThumbsFilesDir = rtrim( trim( $slimboxThumbsFilesDir ), '/' );  // strip whitespace, then any trailing /
-    // $wgHooks['BeforeParserrenderImageGallery'][] = 'efSBTTestForGallery'; // this seems to fail on some pages :(
+    $wgHooks['BeforeParserrenderImageGallery'][] = 'efSBTTestForGallery'; // this seems to fail on some pages :(
     $hasGallery = true; // temporary fix
     $wgHooks['BeforePageDisplay'][] = 'efSBTAddScripts';
     $wgHooks['BeforePageDisplay'][] = 'efSBTAddSlimboxCode';
@@ -58,19 +58,20 @@ if ( $slimboxThumbsFilesDir ) {
 
 function efSBTTestForGallery( $parser, $gallery ) {
         global $hasGallery;
-        if ( $gallery instanceof ImageGallery )
-               return $hasGallery = true;
-        return false;
+        $hasGallery = $gallery instanceof ImageGallery;
+        return $hasGallery;
 }
 
 function efSBTDebugVar( $varName, $var ) {
     return "\n\n<!--\n$varName: " . str_replace( '--', '__', print_r( $var, true ) ) . "\n-->\n\n";
 }
 
-// this is a callback function that gets called by efBeforePageDisplay()
+// This is a callback function that gets called by efBeforePageDisplay().
 function efRewriteThumbImage( $matches ) {
     global $wgOut, $slimboxThumbsDebug;
+    
     if ( $slimboxThumbsDebug ) { global $wgContLang; }
+    
     $titleObj = Title::newFromText( rawurldecode( $matches[2] ) );
     $image = wfFindFile( $titleObj, false, false, true ); # # wfFindFile($titleObj,false,false,true) to bypass cache
         $output =  $matches[1]
@@ -85,7 +86,7 @@ function efRewriteThumbImage( $matches ) {
         return $output;
 }
 
-// rewrite the gallery code
+// Rewrite the gallery code.
 function efRewriteGalleryImage( $matches ) {
         global $wgOut, $slimboxThumbsDebug, $slimboxDefaultWidth;
         $titleObj = Title::newFromText( rawurldecode( $matches[2] ) );
@@ -134,9 +135,11 @@ function efSBTAddScripts( $out ) {
 
 function efSBTAddSlimboxCode( $out, $skin ) {
         global $slimboxThumbsFilesDir, $wgContLang, $hasGallery;
-        
+
         // We don't want to run regular expressions if there's no gallery here.
-        if ( !$hasGallery ) return false;
+        if ( !$hasGallery ) {
+        	return false;
+        }
 
         # # ideally we'd do this with XPath, but we'd need valid XML for that, so we'll do it with some ugly regexes
         # # (could use a regex to pull out all div.thumb, maybe they're valid XML? ...probably not)
@@ -166,7 +169,7 @@ function efSBTAddSlimboxCode( $out, $skin ) {
                 /sx';
         
     $allDone = preg_replace_callback( $pattern, 'efRewriteGalleryImage', $thumbnailsDone );
-    
+
     $out->clearHTML();
     $out->addHTML( $allDone );
 
