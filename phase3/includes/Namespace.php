@@ -25,8 +25,7 @@ $wgCanonicalNamespaceNames = array(
 	NS_HELP             => 'Help',
 	NS_HELP_TALK        => 'Help_talk',
 	NS_CATEGORY         => 'Category',
-	NS_CATEGORY_TALK    => 'Category_talk',
-	NS_STASH	    => 'Stash'
+	NS_CATEGORY_TALK    => 'Category_talk'
 );
 
 /// @todo UGLY UGLY
