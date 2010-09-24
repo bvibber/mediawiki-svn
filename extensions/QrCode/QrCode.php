@@ -56,16 +56,14 @@ $wgQrCodeBot = 'QrCodeBot'; // Name of the 'uploading' user/bot
  * to OOP patterns.
  */
 function newQrCode() {
-	global $wgTitle;
+	$params = func_get_args();
+	$parser = array_shift($params);	// drop the parser
 
 	// we're not generating QrCodes for pages in the "Special" namespace
 	// as that can lead to multiple "uploads" on i.e. Special:Ask 
-	if ( $wgTitle->getNamespace() === NS_SPECIAL ) {
+	if ( $parser->getTitle()->getNamespace() === NS_SPECIAL ) {
 		return false;
 	}
-
-	$params = func_get_args();
-	$parser = array_shift($params);	// drop the parser
 
 	foreach( $params as $pair ) {
 		$rpms = explode( '=', $pair );
