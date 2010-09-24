@@ -7,7 +7,6 @@
 
 // Wrap in mw to not pollute global namespace
 ( function( mw ) {
-	
 
 mw.addMessageKeys( [
 	"mwe-sequencer-no-sequence-create",

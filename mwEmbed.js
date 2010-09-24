@@ -60,7 +60,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		var mwConfig = { };
 	}
 	
-	// Local scope mwUserConfig var. Stores user configuration
+	// mw scope mwUserConfig var. Stores user configuration
 	var mwUserConfig = { };
 	
 	/**
@@ -1957,66 +1957,68 @@ mw.absoluteUrl = function( src, contextUrl ) {
 				if ( ! window[ '$j' ] ) {
 					window[ '$j' ] = jQuery.noConflict();				
 				}
-				
-				// Get module loader.js, and language files
-				// ( will hit callback directly if set via resource loader )
-				mw.checkModuleLoaderFiles( function() {
-													
-					// Set the User language
-					if( typeof wgUserLanguage != 'undefined' && mw.isValidLang( wgUserLanguage) ) {				
-						mw.setConfig( 'userLanguage', wgUserLanguage );
-					}else{
-						// Grab it from the included url
-						var langKey = mw.parseUri( mw.getMwEmbedSrc() ).queryKey['uselang'];
-						if ( langKey && mw.isValidLang( langKey ) ) {	
-							mw.setConfig( 'userLanguage', langKey);
-						}
-					}					
-					
-					// Update the image path
-					mw.setConfig( 'imagesPath', mw.getMwEmbedPath() + 'skins/common/images/' );	
-					
-					// Set up AJAX to not send dynamic URLs for loading scripts
-					$j.ajaxSetup( {
-						cache: true
-					} );
-					
-					// Update the magic keywords
-					mw.Language.magicSetup();
-					
-					// Set up mvEmbed utility jQuery bindings
-					mw.dojQueryBindings();					
-					
-					
-					// Special Hack for conditional jquery ui inclusion ( once
-					// Usability extension
-					// registers the jquery.ui skin in mw.style 		
-					if( mw.hasJQueryUiCss() ){
-						mw.style[ 'ui_' + mw.getConfig( 'jQueryUISkin' ) ] = true;						
-					}		
-					
-					
-					// Make sure style sheets are loaded:
-					mw.load( ['mw.style.mwCommon'] , function(){											
-						// Run all the setup function hooks
-						// NOTE: setup functions are added via addSetupHook
-						// calls
-						// and must include a callback.
-						//
-						// Once complete we can run .ready() queued functions
-						function runSetupFunctions() {							
-							if( mwSetupFunctions.length ) {
-								mwSetupFunctions.shift()( function() {
-									runSetupFunctions();
-								} );
-							}else{
-								mw.runReadyFunctions();
+				// Setup user config: 
+				mw.setupUserConfig( function(){
+					// Get module loader.js, and language files
+					// ( will hit callback directly if set via resource loader )
+					mw.checkModuleLoaderFiles( function() {
+														
+						// Set the User language
+						if( typeof wgUserLanguage != 'undefined' && mw.isValidLang( wgUserLanguage) ) {				
+							mw.setConfig( 'userLanguage', wgUserLanguage );
+						}else{
+							// Grab it from the included url
+							var langKey = mw.parseUri( mw.getMwEmbedSrc() ).queryKey['uselang'];
+							if ( langKey && mw.isValidLang( langKey ) ) {	
+								mw.setConfig( 'userLanguage', langKey);
 							}
-						}
-						runSetupFunctions();		
-					} );
-					
-				} );									
+						}					
+						
+						// Update the image path
+						mw.setConfig( 'imagesPath', mw.getMwEmbedPath() + 'skins/common/images/' );	
+						
+						// Set up AJAX to not send dynamic URLs for loading scripts
+						$j.ajaxSetup( {
+							cache: true
+						} );
+						
+						// Update the magic keywords
+						mw.Language.magicSetup();
+						
+						// Set up mvEmbed utility jQuery bindings
+						mw.dojQueryBindings();					
+						
+						
+						// Special Hack for conditional jquery ui inclusion ( once
+						// Usability extension
+						// registers the jquery.ui skin in mw.style 		
+						if( mw.hasJQueryUiCss() ){
+							mw.style[ 'ui_' + mw.getConfig( 'jQueryUISkin' ) ] = true;						
+						}		
+						
+						
+						// Make sure style sheets are loaded:
+						mw.load( ['mw.style.mwCommon'] , function(){											
+							// Run all the setup function hooks
+							// NOTE: setup functions are added via addSetupHook
+							// calls
+							// and must include a callback.
+							//
+							// Once complete we can run .ready() queued functions
+							function runSetupFunctions() {							
+								if( mwSetupFunctions.length ) {
+									mwSetupFunctions.shift()( function() {
+										runSetupFunctions();
+									} );
+								}else{
+									mw.runReadyFunctions();
+								}
+							}
+							runSetupFunctions();		
+						} );
+						
+					} );									
+				});
 			});
 		});
 	};

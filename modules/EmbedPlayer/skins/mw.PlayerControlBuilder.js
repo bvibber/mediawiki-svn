@@ -613,6 +613,8 @@ mw.PlayerControlBuilder.prototype = {
 	*/
 	showControlBar: function(){
 		var animateDuration = 'slow';	
+		if(! this.embedPlayer )
+			return ;
 		$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' )	
 		mw.log( 'showControlBar' );
 		// Move up text track if present

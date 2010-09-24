@@ -22,7 +22,12 @@ mw.SwarmTransport = {
 				if( typeof window['swarmTransport'] != 'undefined' ){					
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent " + swapedPlayerId);
-					_this.addSwarmSource( embedPlayer, callback );
+					_this.addSwarmSource( embedPlayer, function(){
+						// Update the source if paused					
+						if( embedPlayer.paused ) {
+							embedPlayer.mediaElement.autoSelectSource();
+						}
+					});									
 				}								
 				// Don't block on swarm request, directly do the callback
 				callback();	
@@ -87,13 +92,14 @@ mw.SwarmTransport = {
 					return ;
 				} 					
 				mw.log( 'SwarmTransport: addSwarmSource for: ' + source.getSrc()  + "\n\nGot:" + data.torrent );	
-				// XXX need to update prefrence
+				// XXX need to update preference
 				embedPlayer.mediaElement.tryAddSource( 
 					$j('<source />')
 					.attr( {
 						'type' : 'video/swarmTransport',
 						'title': gM('mwe-swarmtransport-stream-ogg'), 
-						'src': 'tribe://' + data.torrent						
+						'src': 'tribe://' + data.torrent,
+						'default' : true
 					} )
 					.get( 0 )
 				);				

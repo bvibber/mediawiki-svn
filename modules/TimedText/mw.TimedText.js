@@ -22,7 +22,7 @@ mw.includeAllModuleMessages();
 	 */
 	mw.TimedText = function( embedPlayer, options ) {
 		return this.init( embedPlayer, options);
-	}
+	};
 	mw.TimedText.prototype = {
 		
 		/** 
@@ -102,7 +102,7 @@ mw.includeAllModuleMessages();
 		 */
 		init: function( embedPlayer, options ) {
 			var _this = this;
-			mw.log("TimedText: init() ")
+			mw.log("TimedText: init() ");
 			this.embedPlayer = embedPlayer;	
 			this.options = options;
 			
@@ -463,7 +463,7 @@ mw.includeAllModuleMessages();
 				// Close the loader:
 				mw.closeLoaderDialog();
 				_this.editText.showUI();
-			})
+			});
 		},
 		
 		/**
@@ -480,7 +480,7 @@ mw.includeAllModuleMessages();
 			var _this = this;
 			return $j.getLineItem( gM( 'mwe-timedtext-add-timed-text'), 'script', function() {
 				_this.showTimedTextEditUI( 'add' );
-			} )
+			} );
 		},
 		
 		/**
@@ -521,7 +521,7 @@ mw.includeAllModuleMessages();
 	 		if( mw.Language.names[ lang_key ]) {
 	 			return mw.Language.names[ lang_key ];
 	 		}
-	 		return false
+	 		return false;
 	 	},
 		
 		/** 
@@ -551,7 +551,7 @@ mw.includeAllModuleMessages();
 						function() {
 							_this.selectLayout( layoutMode );
 						} ) 
-					)
+					);
 			});
 			return $ul;
 		},
@@ -614,7 +614,7 @@ mw.includeAllModuleMessages();
 			source.load( function() {
 				// Refresh the interface: 
 				_this.refreshDisplay();
-			})
+			});
 		},
 		
 		/**
@@ -626,7 +626,7 @@ mw.includeAllModuleMessages();
 			// Refresh the Menu (if it has a target to refresh) 
 			if( this.menuTarget ) {
 				mw.log('bind menu refresh display');
-				this.bindMenu(  this.menuTarget, false )
+				this.bindMenu(  this.menuTarget, false );
 			}
 			// Issues a "monitor" command to update the timed text for the new layout
 			this.monitor();
