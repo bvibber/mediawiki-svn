@@ -60,7 +60,7 @@ function newQrCode() {
 
 	// we're not generating QrCodes for pages in the "Special" namespace
 	// as that can lead to multiple "uploads" on i.e. Special:Ask 
-	if ( $wgTitle->getNamespace() === -1 ) {
+	if ( $wgTitle->getNamespace() === NS_SPECIAL ) {
 		return false;
 	}
 
