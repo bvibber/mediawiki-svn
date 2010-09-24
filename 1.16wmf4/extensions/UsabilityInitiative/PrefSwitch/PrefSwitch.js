@@ -27,16 +27,20 @@ $j(document).ready( function() {
 		}
 		// Detect operating system
 		var os = 'other';
-		switch ( $j.os.name ) {
-			case 'win': os = 'windows'; break;
-			case 'mac': os = 'macos'; break;
-			case 'linux': os = 'linux'; break;
+		if ( typeof $j.os != 'undefined' && typeof $j.os.name != 'undefined' ) {
+			switch ( $j.os.name ) {
+				case 'win': os = 'windows'; break;
+				case 'mac': os = 'macos'; break;
+				case 'linux': os = 'linux'; break;
+			}
 		}
-		switch ( $j.browser.name ) {
-			case 'iemobile': os = 'windowsmobile'; break;
-			case 'iphone': os = 'iphoneos'; break;
-			case 'ipod': os = 'iphoneos'; break;
-			case 'ipad': os = 'iphoneos'; break;
+		if ( typeof $j.browser != 'undefined' && typeof $j.browser.name != 'undefined' ) {
+			switch ( $j.browser.name ) {
+				case 'iemobile': os = 'windowsmobile'; break;
+				case 'iphone': os = 'iphoneos'; break;
+				case 'ipod': os = 'iphoneos'; break;
+				case 'ipad': os = 'iphoneos'; break;
+			}
 		}
 		return {
 			'survey-browser': browser, 'survey-os': os, 'survey-res-x': screen.width, 'survey-res-y': screen.height
