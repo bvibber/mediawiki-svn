@@ -49,8 +49,7 @@ class UploadWizardMessages {
 			$messagesForJs[ $key ] = wfMsgGetKey( $key, /*DB*/true, $language, /*Transform*/false ); 
 		}
 
-		$json = new Services_JSON();
-		$messagesJson = $json->encode( $messagesForJs );
+		$messagesJson = FormatJson::encode( $messagesForJs );
 		return 'mw.addMessages(' . $messagesJson . ');';
 	}
 
@@ -69,5 +68,3 @@ class UploadWizardMessages {
 	}
 
 }
-
-?>
