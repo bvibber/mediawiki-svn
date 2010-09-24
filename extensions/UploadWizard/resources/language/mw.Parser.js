@@ -19,8 +19,8 @@ var LINK_SWAP_STRING = 'ZreplaceZ';
 	 * @param {Object} magicSet key:callback
 	 */
 	mw.addTemplateTransform = function( magicSet ) {
-		for ( var i in magicSet ) {
-			pMagicSet[ i ] = magicSet[i];
+		for ( var name in magicSet ) {
+			pMagicSet[name] = magicSet[name];
 		}
 	};
 
@@ -111,7 +111,7 @@ var LINK_SWAP_STRING = 'ZreplaceZ';
 				paramSet.splice( 0, 1 );
 				if ( paramSet.length ) {
 					templateObject.param = new Array();
-					for ( var pInx in paramSet ) {
+					for ( var pInx = 0; pInx < paramSet.length; pInx++ ) {
 						var paramString = paramSet[ pInx ];
 						// check for empty param
 						if ( paramString == '' ) {
@@ -206,7 +206,7 @@ var LINK_SWAP_STRING = 'ZreplaceZ';
 
 				if ( node['child'] ) {
 					// swap all the kids:
-					for ( var i in node['child'] ) {
+					for ( var i = 0; i < node['child'].length; i++ ) {
 						var nodeText = recurse_magic_swap( node['child'][i] );
 						// swap it into current
 						if ( node.text ) {
@@ -249,7 +249,7 @@ var LINK_SWAP_STRING = 'ZreplaceZ';
 			var tmplSet = new Array();
 			function getMatchingTmpl( node ) {
 				if ( node['child'] ) {
-					for ( var i in node['child'] ) {
+					for ( var i = 0; i < node['child'].length; i++ ) {
 						getMatchingTmpl( node['child'] );
 					}
 				}
