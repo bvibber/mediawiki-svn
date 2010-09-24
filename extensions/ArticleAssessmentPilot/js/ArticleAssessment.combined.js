@@ -463,9 +463,14 @@
 							.addClass( success ? 'article-assessment-success-msg' : 'article-assessment-error-msg' )
 							.html( $.ArticleAssessment.fn.getMsg( success? 'articleassessment-survey-thanks' : 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
-						$dialogDiv
-							.dialog( 'option', 'height', $msgDiv.height() + 100 )
-							.removeClass( 'loading' );
+						$dialogDiv.removeClass( 'loading' );
+						
+						// This is absurdly unnecessary from the looks of it, but it seems this is somehow
+						// needed in certain cases.
+						$.ArticleAssessment.fn.withJUI( function() {
+							$dialogDiv.dialog( 'option', 'height', $msgDiv.height() + 100 )
+						} );
+						
 						if ( success ) {
 							// Hide the dialog link
 							$( '#article-assessment .article-assessment-rate-feedback' ).hide();
