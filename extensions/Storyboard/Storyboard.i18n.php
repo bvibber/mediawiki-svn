@@ -126,7 +126,16 @@ $messages['af'] = array(
 	'storyboard-name' => 'Storiebord',
 	'storyboard-desc' => "Bied 'n landingsbladsy vir skenkers, 'n bladsy waar verhale ingestuur kan word en 'n koppelvlak om stories te beheer",
 	'right-storyreview' => 'Hersien, wysig, publiseer en verberg stories',
+	'storyboard-unpublished' => 'Ongepubliseer',
+	'storyboard-published' => 'Gepubliseer',
+	'storyboard-hidden' => 'Versteek',
 	'storyboard-publish' => 'Publiseer',
+	'storyboard-viewstories' => 'Wys verhale',
+	'storyboard-thestory' => 'Die verhaal',
+	'storyboard-language' => 'Taal',
+	'storyboard-location' => 'U ligging',
+	'storyboard-occupation' => 'U beroep',
+	'storyboard-story' => 'U verhaal',
 );
 
 /** Gheg Albanian (Gegë)

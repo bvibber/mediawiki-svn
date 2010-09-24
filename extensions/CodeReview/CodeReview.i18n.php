@@ -6175,6 +6175,7 @@ $4',
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'code-change-added' => 'поладозь:',
 	'code-authors' => 'теицянзо',
 	'code-author-name' => 'Совавтт теицянь лем:',
 	'code-author-link' => 'аравтомс сюлмавома пе?',
@@ -6184,13 +6185,17 @@ $messages['myv'] = array(
 	'code-field-author' => 'Теицязо',
 	'code-field-user' => 'Мелень-арьсемань каицязо',
 	'code-field-timestamp' => 'Ковчизэ',
+	'code-field-path' => 'Яннэ',
 	'code-rev-author' => 'Теицязо:',
 	'code-rev-date' => 'Ковчизэ:',
+	'code-rev-diff' => 'Мейсэ явовить верзиятне',
 	'code-rev-purge-link' => 'панемс',
 	'code-status-new' => 'од',
 	'code-status-fixme' => 'витемак',
 	'code-pathsearch-path' => 'Яннэсь:',
+	'code-stats' => 'статистикат',
 	'repoadmin-new-button' => 'Шкик-теик',
+	'repoadmin-edit-button' => 'Маштови',
 );
 
 /** Nahuatl (Nāhuatl)

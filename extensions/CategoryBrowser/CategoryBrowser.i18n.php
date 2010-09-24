@@ -838,6 +838,15 @@ Paki bago o itaas ang antas ng iyong pantingin-tingin, kung maaari.',
 	'cb_edit_paste_right_hint' => 'Idikit ang bantas sa kasunod na posisyon, kung maaari',
 );
 
+/** Turkish (Türkçe)
+ * @author CnkALTDS
+ */
+$messages['tr'] = array(
+	'categorybrowser' => 'Kategori tarayıcısı',
+	'cb_previous_items_link' => 'Önceki',
+	'cb_next_items_link' => 'Sonraki',
+);
+
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ильнар
  */

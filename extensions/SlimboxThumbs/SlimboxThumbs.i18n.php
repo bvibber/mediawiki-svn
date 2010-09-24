@@ -24,6 +24,13 @@ $messages['be-tarask'] = array(
 	'slimboxthumbs-desc' => 'Паказвае выяву поўнага памеру з [http://www.digitalia.be/software/slimbox2 Slimbox 2], калі націснуць на мініятуру',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'slimboxthumbs-desc' => 'Diskouez a ra ar skeudennoù er ment gwir gant [http://www.digitalia.be/software/slimbox2 Slimbox 2] pa gliker war ar skeudennig',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

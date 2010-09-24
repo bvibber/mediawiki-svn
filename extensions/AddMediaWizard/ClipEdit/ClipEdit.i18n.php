@@ -1219,6 +1219,14 @@ $messages['sv'] = array(
 	'mwe-clipedit-layout' => 'Layout',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'mwe-clipedit-sc_duration' => 'இடைப்பட்ட காலம்',
+	'mwe-clipedit-duration' => 'இடைப்பட்ட காலம்:',
+);
+
 /** Telugu (తెలుగు) */
 $messages['te'] = array(
 	'mwe-clipedit-sc_duration' => 'నిడివి',

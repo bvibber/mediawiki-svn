@@ -864,6 +864,13 @@ $messages['sv'] = array(
 	'sitenotice-desc' => 'Låter användare dölja meddelanden i sitenotice',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'sitenotice_close' => 'நீக்கு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

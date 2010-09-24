@@ -1353,6 +1353,7 @@ $messages['myv'] = array(
 	'dt_viewxml_categories' => 'Категорият',
 	'dt_viewxml_namespaces' => 'Лем потмот',
 	'dt_xml_page' => 'Лопа',
+	'dt_xml_template' => 'Лопа парцун',
 	'dt_xml_field' => 'Пакся',
 	'dt_xml_name' => 'Лемезэ',
 	'dt_xml_title' => 'Конякс',

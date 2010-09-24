@@ -1572,10 +1572,10 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'usagestatisticsinterval' => 'Йутко',
+	'usagestatisticsinterval' => 'Йуткось:',
 	'usagestatisticstype' => 'Тип',
-	'usagestatisticsstart' => 'Ушодома чи',
-	'usagestatisticsend' => 'Прядома чи',
+	'usagestatisticsstart' => 'Ушодома ковчись:',
+	'usagestatisticsend' => 'Прядома ковчись:',
 	'usagestatisticsbadstartend' => '<b>Аволь истямо <i>ушодома</i> ды/эли <i>прядома</i> ковчи!</b>',
 	'usagestatisticsintervalday' => 'Чи',
 	'usagestatisticsintervalweek' => 'Тарго',

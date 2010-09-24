@@ -694,6 +694,13 @@ Perubahan yang anda lakukan di laman ini mungkin hilang sekiranya anda tinggalka
 	'ajaxlogin-create' => 'Cipta akaun',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'ajaxlogin-create' => 'Шкамс-теемс совамотарка',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -980,6 +987,13 @@ Du kan förlora din redigering om du lämnar den här sidan nu.',
 	'al-nosuchuser' => 'Det finns ingen användare men namnet "$1".
 Användarnamn skiljer på versaler och gemener.
 Kontrollera din stavning.',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'ajaxlogin-create' => 'கணக்கு ஒன்றை உருவாக்கவும்',
 );
 
 /** Telugu (తెలుగు)

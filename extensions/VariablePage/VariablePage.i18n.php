@@ -18,11 +18,31 @@ $messages['en'] = array(
 	'variablepage-desc' => 'Lightweight variable page redirection',
 );
 
+/** Breton (Brezhoneg)
+ * @author Gwendal
+ */
+$messages['br'] = array(
+	'variablepage' => 'PajennArgemmus',
+	'variablepage-navlink_text' => 'Ober un donezon',
+	'variablepage-desc' => 'Adheñcherezh pajennoù argemmus ha skañv',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
+	'variablepage' => 'StranicaVarijabli',
+	'variablepage-navlink_text' => 'Doniraj',
 	'variablepage-desc' => 'Lahko varijabilno preusmjeravanje stranice',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'variablepage' => 'ProměnliváStránka',
+	'variablepage-navlink_text' => 'Přispět',
+	'variablepage-desc' => 'Jednoduchá proměnlivá přesměrovací stránka',
 );
 
 /** German (Deutsch)
@@ -54,6 +74,8 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Spände',
 	'variablepage-desc' => 'Lychti variabli Wyterleitige',
 );
 
@@ -61,6 +83,8 @@ $messages['gsw'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'variablepage' => 'Pagina variabile',
+	'variablepage-navlink_text' => 'Donationes',
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
 );
 
@@ -152,6 +176,17 @@ $messages['ru'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'variablepage' => 'Pabagubaong Pahina',
+	'variablepage-navlink_text' => 'Mag-abuloy',
 	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'variablepage' => 'TrangBiến',
+	'variablepage-navlink_text' => 'Quyên góp',
+	'variablepage-desc' => 'Trang đổi hướng biến nhẹ nhàng',
 );
 

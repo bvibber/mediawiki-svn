@@ -89,6 +89,14 @@ $messages['bg'] = array(
 	'authors_anonymous' => 'Анонимни',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'authors_authors' => 'Pananulis',
+	'authors_anonymous' => 'Kada bangaran',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

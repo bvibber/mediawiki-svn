@@ -2620,6 +2620,7 @@ $messages['jv'] = array(
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'contributionhistory' => 'წვლილის ისტორია',
@@ -2640,6 +2641,8 @@ $messages['ka'] = array(
 	'contribstats-value-under' => '$1-ის ქვეშ',
 	'contribstats-value-from' => '$1 - $2-დან',
 	'contribstats-value-over' => '$1-ზე',
+	'contributiontrackingstatistics' => 'თანხის შეგროვების სტატისტიკა',
+	'contribstats-day-totals' => 'სულ დღეში',
 	'contribstats-week' => 'კვირა',
 	'contribstats-banner' => 'ლოზუნგი',
 	'contribstats-donations' => 'შეწირულობები',
@@ -3233,6 +3236,15 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'contrib-hist-name' => 'Лемезэ',
+	'contrib-hist-amount' => 'Зяро',
+	'contribstats-day' => 'Чи',
+	'contribstats-month' => 'Ков',
+	'contribstats-currency' => 'Валюта',
+	'contribstats-amount' => 'Зяро (USD)',
+	'contribstats-contributions' => 'Путовксонзо',
+	'contribstats-week' => 'Тарго',
+	'contribstats-template' => 'Лопа парцун',
 	'fundraiserstats-date' => 'Ковчизэ',
 );
 

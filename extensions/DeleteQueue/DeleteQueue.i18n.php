@@ -4061,6 +4061,10 @@ $messages['mwl'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'deletequeue-delnom-otherreason' => 'Лия тувтал',
+	'deletequeue-delnom-extra' => 'Поладкс информациясь:',
+	'deletequeue-review-delete' => 'Нардамс те лопанть.',
+	'deletequeue-review-reason' => 'Арсемат-мельть:',
 	'deletequeue-review-newreason' => 'Од тувталось:',
 	'deletequeue-review-newextra' => 'Поладкс информациясь:',
 	'deletequeue-list-queue' => 'Чиполань пулось:',

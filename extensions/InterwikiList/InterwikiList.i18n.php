@@ -490,6 +490,13 @@ $messages['mk'] = array(
 	'interwikilist-prefix' => 'Интервики префикс:',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'interwikilist-filter' => 'Сувтеметь-мезть',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

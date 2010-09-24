@@ -976,6 +976,13 @@ $messages['mr'] = array(
 	'invitations-invite-success' => 'तुम्ही यशस्वीरित्या $1 ला हे फीचर वापरण्यासाठी आमंत्रित केलेले आहे!',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'invitations-inviteform-submit' => 'Тердемс',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author SPQRobin

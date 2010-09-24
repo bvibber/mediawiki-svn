@@ -599,6 +599,13 @@ $messages['mn'] = array(
 	'commentbox-regex' => '/\\n==\\s*Сэтгэгдлүүдs*==\\s*\\n/i',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'commentbox-first-comment-heading' => '== Арсемат-мельть ==',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -851,7 +851,7 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'edituser-username' => 'Лемезэ',
+	'edituser-username' => 'Теицянь леметь:',
 	'edituser-dosearch' => 'Вешнэмс',
 );
 

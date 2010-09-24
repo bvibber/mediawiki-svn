@@ -215,6 +215,25 @@ $messages['be-tarask'] = array(
 	
 $1",
 	'fbconnect-merge' => 'Аб’яднаць Ваш вікі-рахунак з Вашым ідэнтыфікатарам Facebook',
+	'fbconnect-logoutbox' => '$1
+	
+Гэта, таксама, выведзе Вас з сыстэмы Facebook і усіх злучаных зь ім сайтаў, уключаючы {{GRAMMAR:вінавальны|{{SITENAME}}}}.',
+	'fbconnect-listusers-header' => 'Правы $1 і $2 аўтаматычна перанесеныя ад кіраўніка і адміністратара групы Facebook $3.
+
+Для атрыманьня дадатковай інфармацыі, калі ласка, зьвяжыцеся са стваральнікам групы $4.',
+	'fbconnect-error' => 'Памылка праверкі',
+	'fbconnect-errortext' => 'Узьнікла памылка падчас праверкі са злучэньнем Facebook.',
+	'fbconnect-cancel' => 'Дзеяньне адмененае',
+	'fbconnect-canceltext' => 'Папярэдняе дзеяньне было адмененае ўдзельнікам.',
+	'fbconnect-invalid' => 'Няслушная ўстаноўка',
+	'fbconnect-invalidtext' => 'Выбар, зроблены на папярэдняй старонцы, быў няслушны.',
+	'fbconnect-success' => 'Праверка Facebook адбылася пасьпяхова',
+	'fbconnect-successtext' => 'Вы пасьпяхова ўвайшлі ў сыстэму праз злучэньне Facebook.',
+	'fbconnect-nickname' => 'Мянушка',
+	'fbconnect-fullname' => 'Поўнае імя',
+	'fbconnect-email' => 'Адрас электроннай пошты',
+	'fbconnect-language' => 'Мова',
+	'fbconnect-timecorrection' => 'Карэкцыя часавага пасу (гадзінаў)',
 );
 
 /** Breton (Brezhoneg)
@@ -387,6 +406,10 @@ Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Sp
  * @author Toliño
  */
 $messages['gl'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'group-fb-user' => 'Usuarios do Facebook Connect',
+	'group-fb-user-member' => 'Usuario do Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:Usuarios do Facebook Connect',
 	'group-fb-groupie' => 'Membros do grupo',
 	'group-fb-groupie-member' => 'Membro do grupo',
 	'grouppage-fb-groupie' => '{{ns:project}}:Membros do grupo',
@@ -396,15 +419,29 @@ $messages['gl'] = array(
 	'group-fb-admin' => 'Administradores do grupo',
 	'group-fb-admin-member' => 'Administrador do grupo',
 	'grouppage-fb-admin' => '{{ns:project}}:Administradores do grupo',
+	'fbconnect-connect' => 'Identificarse co Facebook Connect',
 	'fbconnect-convert' => 'Conectar esta conta co Facebook',
 	'fbconnect-logout' => 'Desconectarse do Facebook',
 	'fbconnect-link' => 'Volver a facebook.com',
 	'fbconnect-title' => 'Conectar a conta co Facebook',
+	'fbconnect-click-to-login' => 'Prema para acceder a este sitio mediante o Facebook',
+	'fbconnect-click-to-connect-existing' => 'Prema para conectar a súa conta no Facebook con $1',
 	'fbconnect-conv' => 'Comodidade',
+	'fbconnect-fbml' => 'Lingua de formato do Facebook',
 	'fbconnect-comm' => 'Comunicación',
+	'fbconnect-welcome' => 'Benvido, usuario do Facebook Connect!',
+	'fbconnect-loginbox' => "Ou '''acceda ao sistema''' co Facebook:
+	
+$1",
+	'fbconnect-merge' => 'Fusionar a súa conta wiki co ID do Facebook',
 	'fbconnect-error' => 'Erro de verificación',
+	'fbconnect-errortext' => 'Houbo un erro durante a comprobación co Facebook Connect.',
 	'fbconnect-cancel' => 'Acción cancelada',
+	'fbconnect-canceltext' => 'O usuario cancelou a acción anterior.',
 	'fbconnect-invalid' => 'Opción incorrecta',
+	'fbconnect-invalidtext' => 'A selección feita na páxina anterior era incorrecta.',
+	'fbconnect-success' => 'Verificación do Facebook correcta',
+	'fbconnect-successtext' => 'Accedeu ao sistema correctamente co Facebook Connect.',
 	'fbconnect-nickname' => 'Alcume',
 	'fbconnect-fullname' => 'Nome completo',
 	'fbconnect-email' => 'Enderezo de correo electrónico',
@@ -412,6 +449,9 @@ $messages['gl'] = array(
 	'fbconnect-timecorrection' => 'Corrección da zona horaria (horas)',
 	'fbconnect-chooselegend' => 'Elección do nome de usuario',
 	'fbconnect-chooseinstructions' => 'Todos os usuarios precisan un alcume; pode escoller un de entre as opcións de embaixo.',
+	'fbconnect-invalidname' => 'O alcume elixido xa está tomado ou non é válido.
+Escolla un diferente.',
+	'fbconnect-choosenick' => 'O nome do seu perfil no Facebook ($1)',
 	'fbconnect-choosefirst' => 'O seu nome ($1)',
 	'fbconnect-choosefull' => 'O seu nome completo ($1)',
 	'fbconnect-chooseauto' => 'Un nome xerado automaticamente ($1)',
@@ -419,6 +459,10 @@ $messages['gl'] = array(
 	'fbconnect-chooseexisting' => 'Unha conta existente neste wiki',
 	'fbconnect-chooseusername' => 'Nome de usuario:',
 	'fbconnect-choosepassword' => 'Contrasinal:',
+	'fbconnect-updateuserinfo' => 'Actualice a seguinte información persoal:',
+	'fbconnect-error-creating-user' => 'Erro ao crear o usuario na base de datos local.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Un hook (extensión) abortou a creación da conta con esta mensaxe: $1',
+	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Perfil no Facebook',
 );
 
@@ -506,6 +550,15 @@ Si tu vole usar Facebook Connect pro aperir un session in le futuro, tu pote [[S
 	'fbconnect-link-to-profile' => 'Profilo de Facebook',
 	'fbconnect-prefsheader' => "Pro determinar le eventos que pote inserer un entrata in tu lista de novas a Facebook, <a id='fbConnectPushEventBar_show' href='#'>monstra preferentias</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>cela preferentias</a>",
 	'fbconnect-prefs-can-be-updated' => 'Tu pote sempre actualisar istes per visitar le scheda "$1" de tu pagina de preferentias.',
+);
+
+/** Italian (Italiano)
+ * @author Ric
+ */
+$messages['it'] = array(
+	'fbconnect-link' => 'Torna a facebook.com',
+	'fbconnect-click-to-login' => 'Fare clic per accedere a questo sito tramite Facebook',
+	'fbconnect-click-to-connect-existing' => 'Clicca per collegare il tuo account Facebook a $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -630,6 +683,13 @@ $1",
 	'fbconnect-link-to-profile' => 'Профил на Facebook',
 	'fbconnect-prefsheader' => "Контролирање кои настани ќе истакнат некоја ставка на Вашето емитување на новости на Facebook: <a id='fbConnectPushEventBar_show' href='#'>прикажи нагодувања</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>сокриј нагодувања</a>",
 	'fbconnect-prefs-can-be-updated' => 'Овие можете да ги подновите во секое време во јазичето „$1“ во Вашата страница за нагодувања.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'group-fb-groupie-member' => 'Куронь ломань',
 );
 
 /** Dutch (Nederlands)

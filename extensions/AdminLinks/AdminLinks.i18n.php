@@ -1338,6 +1338,14 @@ $messages['sv'] = array(
 	'right-adminlinks' => 'Se länken till [[Special:AdminLinks|Administrationslänkarna]]',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'adminlinks_general' => 'பொதுவான',
+	'adminlinks_users' => 'பயனர்கள்',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  * @author Veeven

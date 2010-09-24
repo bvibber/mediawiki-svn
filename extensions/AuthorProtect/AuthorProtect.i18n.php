@@ -1087,8 +1087,8 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'authorprotect-expiry' => 'Таштомома шказо',
-	'authorprotect-reason' => 'Тувтал',
+	'authorprotect-expiry' => 'Таштомома шказо:',
+	'authorprotect-reason' => 'Тувталось:',
 );
 
 /** Nahuatl (Nāhuatl)

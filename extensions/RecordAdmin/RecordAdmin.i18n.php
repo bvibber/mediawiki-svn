@@ -312,6 +312,7 @@ $messages['br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" ebet',
+	'recordadmin-properties' => 'Perzhioù',
 );
 
 /** Bosnian (Bosanski)
@@ -819,7 +820,9 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'recordadmin' => 'Ufzeichnigsverwaltig',
-	'recordadmin-desc' => 'E [[Special:RecordAdmin|speziälli Syte]] zum Finde un Bearbeite vu dr Ufzeichnigssyte mit eme Formular',
+	'recordadmin-desc' => 'Sueche, Abfroge, Formular un Bricht zue Wikidate us Vorlage-Parameter',
+	'recordadmin-specialdesc' => 'E [[Special:RecordAdmin|Spezialsyte]] zum Finde un Aalege vu Syte mit eme zuegherige Formular',
+	'recordadmin-noforms' => 'Zur Zyt git s kei Formular zum Suehce un Aalege vu Syte',
 	'recordadmin-select' => 'Wehl dr Ufzeichnigstyp, wu soll verwaltet wäre',
 	'recordadmin-createtype' => 'Trag dr Name yy vun eme neje Ufzeichnigstyp, wu soll aagleit wäre',
 	'recordadmin-recordtype' => 'Ufzeichnigstyp',
@@ -854,6 +857,8 @@ $messages['gsw'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Kei „$1“',
+	'recordadmin-edit-info' => 'In däre Syte het s Vorlage mit eigene Formular, wu Du iber die Regischtercharte chasch uusfille',
+	'recordadmin-properties' => 'Eigeschafte',
 );
 
 /** Hausa (هَوُسَ) */
@@ -1035,6 +1040,8 @@ $messages['ia'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Non existe "$1"',
+	'recordadmin-edit-info' => 'Iste pagina contine patronos que ha lor proprie formularios le quales tu pote completar ab iste gruppo de schedas',
+	'recordadmin-properties' => 'Proprietates',
 );
 
 /** Indonesian (Bahasa Indonesia)

@@ -463,6 +463,13 @@ $messages['ml'] = array(
 	'mwe-cancel' => 'റദ്ദാക്കുക',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'mwe-loading_txt' => 'Йовкстамозо моли…',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

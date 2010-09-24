@@ -81,6 +81,13 @@ $messages['bg'] = array(
 Тя съдържа всички страници в категория „$1“ както и всички подкатегории на категорията „$1“, ако такива са налични.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'autocreatecategorypages-desc' => 'Ulah tungkaran kataguri nang hilang utumatis wayah manyimpan',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

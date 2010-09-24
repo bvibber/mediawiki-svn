@@ -467,6 +467,7 @@ $messages['mk'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'discussionthreading-replysection' => 'пандомс',
 	'discussionthreading-threadnewsection' => 'од',
 );
 

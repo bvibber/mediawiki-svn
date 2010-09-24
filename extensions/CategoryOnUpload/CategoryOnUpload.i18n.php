@@ -125,6 +125,14 @@ $messages['cs'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'categoryonupload-desc' => 'Yn annog defnyddwyr i ddewis categori wrth uwchlwytho ffeil',
+	'categoryonupload-label' => 'Categori:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

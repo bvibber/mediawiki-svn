@@ -982,6 +982,19 @@ $messages['ms'] = array(
 	'amazonplus-cp-none' => 'Tiada',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'amazonplus-german' => 'немецень',
+	'amazonplus-french' => 'кранцузонь',
+	'amazonplus-japanese' => 'япононь',
+	'amazonplus-new' => 'од',
+	'amazonplus-cp-none' => 'Арась мезе невтемс',
+	'amazonplus-more' => 'седе ламо',
+	'amazonplus-less' => 'седе аламо',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1379,6 +1392,16 @@ $messages['sv'] = array(
 	'amazonplus-cp-none' => 'Ingen',
 	'amazonplus-more' => 'mer',
 	'amazonplus-less' => 'mindre',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'amazonplus-new' => 'புதிய',
+	'amazonplus-cp-none' => 'ஏதுமில்லை',
+	'amazonplus-more' => 'மேலும்',
+	'amazonplus-less' => 'குறைவாக',
 );
 
 /** Telugu (తెలుగు)

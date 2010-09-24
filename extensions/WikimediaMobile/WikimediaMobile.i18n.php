@@ -329,6 +329,13 @@ $messages['tl'] = array(
 	'wikimediamobile-desc' => 'Ang mga tungkuling pangsuporta ng MediaWiki para sa proyektong mobil na Wikipedia ay nakalangkay sa http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikimediamobile-desc' => 'Викимедиянең мобиль проекты өчен MediaWiki өстәлмәләрен http://github.com/hcatlin/wikimedia-mobile сылтамасы аша табып була',
+);
+
 /** Ukrainian (Українська)
  * @author JenVan
  */

@@ -197,6 +197,14 @@ $messages['mk'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Создај',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Поладт лопа те кужонтень',
+	'articletocategory2-create-article-under-category-button' => 'Тейть-шкак',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -307,5 +315,12 @@ $messages['tl'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Likhain',
 	'articletocategory2-create-category-under-category-text' => 'Magdagdag ng isang kategorya sa kategoryang ito',
 	'articletocategory2-create-category-under-category-button' => 'Likhain',
+);
+
+/** Turkish (Türkçe)
+ * @author CnkALTDS
+ */
+$messages['tr'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Oluştur',
 );
 

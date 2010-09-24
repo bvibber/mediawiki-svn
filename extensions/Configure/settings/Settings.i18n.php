@@ -12511,6 +12511,18 @@ $messages['ms'] = array(
 	'configure-setting-wgActionPaths-key' => 'Tindakan',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'configure-setting-wgExtraLanguageNames-key' => 'Келень код',
+	'configure-setting-wgSpecialPageGroups' => 'Башка лопань курот',
+	'configure-setting-wgSpecialPageGroups-key' => 'Куро',
+	'configure-setting-wgDebugLogGroups-value' => 'Файла',
+	'configure-setting-wgHooks' => 'Кечказт',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Лем потмо',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

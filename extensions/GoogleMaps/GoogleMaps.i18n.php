@@ -3693,6 +3693,7 @@ $wgGoogleMapsMessages['myv'] = array(
 	'gm-hide-map' => 'кекшик картанть',
 	'gm-back' => 'мекев',
 	'gm-kml-include-link' => 'поладомс картантень',
+	'gm-kml-loading' => 'йовкстамозо моли...',
 	'gm-earth' => 'Мода-мастор',
 	'gm-moon' => 'Ков',
 	'gm-mars' => 'Марс',
@@ -5476,8 +5477,10 @@ $wgGoogleMapsMessages['szl'] = array(
  * @author Trengarasu
  */
 $wgGoogleMapsMessages['ta'] = array(
+	'gm-balloon-title' => 'தலைப்பு:',
 	'gm-remove' => 'நீக்கு',
 	'gm-caption' => 'தலைப்பு',
+	'gm-map' => 'வரைபடம்',
 	'gm-width' => 'அகலம்',
 	'gm-height' => 'உயரம்',
 	'gm-large' => 'பெரிய',
@@ -5488,6 +5491,7 @@ $wgGoogleMapsMessages['ta'] = array(
 	'gm-no' => 'இல்லை',
 	'gm-search' => 'தேடுக',
 	'gm-save-path' => 'சேமி',
+	'gm-line-width' => 'அகலம்',
 	'gm-kml-loading' => 'ஏற்றப்படுகிறது...',
 	'gm-earth' => 'பூமி',
 	'gm-moon' => 'சந்திரன்',

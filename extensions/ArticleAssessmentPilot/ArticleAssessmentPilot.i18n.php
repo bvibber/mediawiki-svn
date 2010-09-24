@@ -246,6 +246,50 @@ Da li je želite ocijeniti ponovo.",
 	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'articleassessment' => 'Hodnocení článku',
+	'articleassessment-desc' => 'Hodnocení článků (pilotní verze)',
+	'articleassessment-yourfeedback' => 'Váš názor',
+	'articleassessment-pleaserate' => 'Věnujte prosím chvilku ohodnocení této stránky.',
+	'articleassessment-submit' => 'Odeslat',
+	'articleassessment-rating-wellsourced' => 'Podloženost:',
+	'articleassessment-rating-neutrality' => 'Nezaujatost:',
+	'articleassessment-rating-completeness' => 'Úplnost:',
+	'articleassessment-rating-readability' => 'Čitelnost:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Máte pocit, že tato stránka dostatečně odkazuje na zdroje a použité zdroje jsou důvěryhodné?',
+	'articleassessment-rating-neutrality-tooltip' => 'Máte pocit, že tato stránka spravedlivě pokrývá všechny pohledy na dané téma?',
+	'articleassessment-rating-completeness-tooltip' => 'Máte pocit, že tato stránka pokrývá všechny důležité části tématu?',
+	'articleassessment-rating-readability-tooltip' => 'Máte pocit, že tato stránka je správně organizována a dobře napsána?',
+	'articleassessment-articlerating' => 'Hodnocení stránky',
+	'articleassessment-error' => 'Došlo k chybě.
+Zkuste to prosím později.',
+	'articleassessment-thanks' => 'Děkujeme! Vaše hodnocení bylo uloženo.',
+	'articleassessment-featurefeedback' => 'Sdělte nám svůj <span class="feedbacklink">názor</span> na tuto funkci.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|hodnocení|hodnocení}})',
+	'articleassessment-stalemessage-norevisioncount' => "Od chvíle, co jste stránku {{GENDER:|hodnotil|hodnotila|hodnotili}}, byla ''upravena''.
+Možná ji budete chtít ohodnotit znovu.",
+	'articleassessment-results-show' => '(Výsledky jsou skryty. <span class="showlink">Zobrazit</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Skrýt výsledky</span>)',
+	'articleassessment-survey-question-whyrated' => 'Proč jste dnes hodnotili tuto stránku (zaškrtněte všechny platné možnosti)?',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Chtěl jsem ovlivnit výsledné ohodnocení stránky',
+	'articleassessment-survey-answer-whyrated-development' => 'Doufám, že mé hodnocení pozitivně ovlivní budoucí vývoj stránky',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Chtěl jsem pomoci {{grammar:3sg|{{SITENAME}}}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Rád sděluji svůj názor',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Dnes jsem nehodnotil, ale chtěl jsem poskytnout svůj názor na tuto funkci',
+	'articleassessment-survey-answer-whyrated-other' => 'Jiný důvod',
+	'articleassessment-survey-question-useful' => 'Myslíte si, že poskytovaná hodnocení jsou užitečná a pochopitelná?',
+	'articleassessment-survey-question-useful-iffalse' => 'Proč?',
+	'articleassessment-survey-question-expert' => 'Považujete se za odborníka na téma, o kterém tato stránka pojednává?',
+	'articleassessment-survey-question-expert-iftrue' => 'Můžete popsat svou odbornost?',
+	'articleassessment-survey-question-comments' => 'Máte nějaké další komentáře?',
+	'articleassessment-survey-submit' => 'Odeslat',
+	'articleassessment-survey-title' => 'Odpovězte prosím na několik otázek',
+	'articleassessment-survey-thanks' => 'Děkujeme za vyplnění průzkumu.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -447,6 +491,21 @@ Villicht witt e nomol yyschetze.",
 	'articleassessment-survey-submit' => 'Ibertrage',
 	'articleassessment-survey-title' => 'Bitte gib Antworte uf e paar Froge',
 	'articleassessment-survey-thanks' => 'Dankschen fir Dyy Ruckmäldig.',
+);
+
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'articleassessment-rating-wellsourced-tooltip' => 'Mislite li da ova stranica ima dovoljno citata koji imaju pouzdane izvore?',
+	'articleassessment-rating-readability-tooltip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
+	'articleassessment-error' => 'Došlo je do pogreške. 
+Molimo, pokušajte ponovno kasnije.',
+	'articleassessment-results-show' => '(Rezultati su skriveni. <span class="showlink">Pokažite</span> ih.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Sakrij rezultate</span>)',
+	'articleassessment-survey-question-useful-iffalse' => 'Zašto?',
+	'articleassessment-survey-question-expert' => 'Smatrate li se stručnjakom za područje koje obrađuje ova stranica?',
+	'articleassessment-survey-question-expert-iftrue' => 'Možete li opisati svoju stručnost?',
 );
 
 /** Interlingua (Interlingua)
@@ -724,6 +783,15 @@ $messages['ms'] = array(
 	'articleassessment-thanks' => 'Terima kasih! Penilaian anda telah disimpan.',
 	'articleassessment-featurefeedback' => 'Beri kami <span class="feedbacklink">maklum balas</span> mengenai ciri ini.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|penilaian|penilaian}})',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'articleassessment-survey-answer-whyrated-other' => 'Лия',
+	'articleassessment-survey-question-useful-iffalse' => 'Мезекс?',
+	'articleassessment-survey-submit' => 'Максомс',
 );
 
 /** Dutch (Nederlands)
@@ -1041,6 +1109,14 @@ Maaari mo itong antasang muli.",
 	'articleassessment-survey-thanks' => 'Salamat sa pagsagot sa mga pagtatanong.',
 );
 
+/** Turkish (Türkçe)
+ * @author CnkALTDS
+ */
+$messages['tr'] = array(
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
+	'articleassessment-survey-question-useful-iffalse' => 'Neden?',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -1064,7 +1140,10 @@ Xin hãy thử lại sau.',
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Ẩn kết quả</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Tôi muốn đóng góp vào {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Tôi thích đưa ý kiến của tôi',
 	'articleassessment-survey-answer-whyrated-other' => 'Khác',
 	'articleassessment-survey-question-useful-iffalse' => 'Tạo sao?',
+	'articleassessment-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
 );
 

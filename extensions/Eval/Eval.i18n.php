@@ -439,6 +439,13 @@ $messages['mr'] = array(
 	'eval_code' => 'कोड',
 );
 
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'eval_code' => 'Код',
+);
+
 /** Dutch (Nederlands)
  * @author Annabel
  * @author SPQRobin

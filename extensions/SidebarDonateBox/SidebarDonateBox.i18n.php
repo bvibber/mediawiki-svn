@@ -212,6 +212,13 @@ $messages['tl'] = array(
 	'sidebardonatebox-desc' => 'Nagdaragdag ng isang pasadyang kahong ambagan sa baretang panggilid',
 );
 
+/** Turkish (Türkçe)
+ * @author CnkALTDS
+ */
+$messages['tr'] = array(
+	'sidebardonatebox-desc' => 'Kenar çubuğuna özel bir bağış kutusu ekler',
+);
+
 /** Ukrainian (Українська)
  * @author Alex Khimich
  */

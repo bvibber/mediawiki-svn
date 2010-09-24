@@ -1027,6 +1027,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'form' => 'Форма',
 	'formsave' => 'Ванстомс',
 );
 
