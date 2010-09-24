@@ -50,8 +50,8 @@ class ArticleAssessmentPilotHooks {
 	}
 	
 	public static function addVariables( &$vars ) {
-		global $wgArticleAssessmentJUIPath, $wgExtensionAssetsPath;
-		$vars['wgArticleAssessmentJUIPath'] = $wgArticleAssessmentJUIPath ? $wgArticleAssessmentJUIPath :
+		global $wgArticleAssessmentJUIJSPath, $wgExtensionAssetsPath;
+		$vars['wgArticleAssessmentJUIPath'] = $wgArticleAssessmentJUIJSPath ? $wgArticleAssessmentJUIJSPath :
 			"$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js";
 		return true;
 	}
@@ -101,10 +101,10 @@ class ArticleAssessmentPilotHooks {
 			);
 		}
 
-		global $wgArticleAssessmentNeedJUICSS;
-		if ( $wgArticleAssessmentNeedJUICSS ) {
-			self::$styleFiles[$mode][] = array( 'src' => 'css/jquery-ui-1.7.2.css', 'version' => '1.7.2y' );
-		}
+		global $wgArticleAssessmentJUICSSPath;
+		$out->addExtensionStyle( ( $wgArticleAssessmentJUICSSPath ? $wgArticleAssessmentJUICSSPath :
+			"$wgExtensionAssetsPath/ArticleAssessmentPilot/css/jquery-ui-1.7.2.css" ) . '?1.7.2y'
+		);
 		foreach ( self::$styleFiles[$mode] as $style ) {
 			$out->addExtensionStyle( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"

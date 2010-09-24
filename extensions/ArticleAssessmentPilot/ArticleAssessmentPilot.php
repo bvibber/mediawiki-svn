@@ -14,11 +14,11 @@ $wgArticleAssessmentCategory = '';
 // Set to 'combined' or 'raw' if you need to debug this extension's JS
 $wgArticleAssessmentResourceMode = 'minified';
 
-// Path to jQuery UI
-$wgArticleAssessmentJUIPath = null; // Defaults to "$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js"
+// Path to jQuery UI's JS
+$wgArticleAssessmentJUIJSPath = null; // Defaults to "$wgExtensionAssetsPath/ArticleAssessmentPilot/js/jui.combined.min.js"
 
-// Set to false if jQuery UI's CSS is already included through other means
-$wgArticleAssessmentNeedJUICSS = true;
+// Path to jQuery UI's CSS
+$wgArticleAssessmentJUICSSPath = null; // Defaults to "$wgExtensionAssetsPath/ArticleAssessmentPilot/css/jquery-ui-1.7.2.css"
 
 // Auto-load files
 $dir = dirname( __FILE__ ) . '/';
