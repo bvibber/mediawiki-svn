@@ -7,7 +7,6 @@
  */
 class LanguageAr extends Language {
 	function convertPlural( $count, $forms ) {
-		echo "in the Arabic convertPlural<br/>";
 		if ( !count( $forms ) ) { return ''; }
 		$forms = $this->preConvertPlural( $forms, 6 );
 
