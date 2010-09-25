@@ -468,6 +468,13 @@ $messages['sv'] = array(
 	'googleadsense-desc' => 'Lägger till [http://www.google.com/adsense Google AdSense] till sidpanelen',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'googleadsense-desc' => 'பக்கப் பட்டியில் [http://www.google.com/adsense Google AdSense] சேர்க்கின்றது',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

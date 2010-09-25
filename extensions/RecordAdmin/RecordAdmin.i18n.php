@@ -672,6 +672,7 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Peter17
  * @author PieRRoMaN
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'recordadmin' => 'Gestion des enregistrements',
@@ -712,6 +713,8 @@ $messages['fr'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Aucun « $1 »',
+	'recordadmin-edit-info' => 'Cette page contient des modèles qui ont leurs propres formulaires que vous pouvez remplir depuis ce jeu d’onglets',
+	'recordadmin-properties' => 'Propriétés',
 );
 
 /** Franco-Provençal (Arpetan)

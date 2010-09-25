@@ -5865,6 +5865,17 @@ Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2
 	'viewapc-usercache-cleared' => "'''''Appliceringscachen rensad.'''''",
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'viewapc-display-mtime' => 'மாற்றப்பட்டுள்ளது',
+	'viewapc-display-creation_time' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-display-deletion_time' => 'நீக்கப்பட்டது',
+	'viewapc-display-no-delete' => 'நீக்கப்படவில்லை',
+	'viewapc-ls-header-name' => 'பெயர்',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  * @author Veeven

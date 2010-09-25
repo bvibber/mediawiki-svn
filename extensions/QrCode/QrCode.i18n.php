@@ -36,6 +36,13 @@ $messages['de'] = array(
 	'qrcode-desc' => 'Erzeugt QR Code-Grafiken und fügt diese der Seite hinzu',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'qrcode-desc' => 'Genera y añade imágenes de código QR a una página wiki',
+);
+
 /** French (Français)
  * @author Crochet.david
  */

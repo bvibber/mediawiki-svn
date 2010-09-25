@@ -495,17 +495,47 @@ Villicht witt e nomol yyschetze.",
 
 /** Croatian (Hrvatski)
  * @author Herr Mlinka
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'articleassessment' => 'Ocjenjivanje članaka',
+	'articleassessment-desc' => 'Ocjenjivanje članaka (probna inačica)',
+	'articleassessment-yourfeedback' => 'Vaše povratne informacije',
+	'articleassessment-pleaserate' => 'Molimo vas odvojite trenutak vremena kako bi ocijenili stranicu u nastavku.',
+	'articleassessment-submit' => 'Pošalji',
+	'articleassessment-rating-wellsourced' => 'Dobro potkrijepljeno izvorima:',
+	'articleassessment-rating-neutrality' => 'Neutralnost:',
+	'articleassessment-rating-completeness' => 'Zaokruženost (pokrivanja teme):',
+	'articleassessment-rating-readability' => 'Čitljivost:',
 	'articleassessment-rating-wellsourced-tooltip' => 'Mislite li da ova stranica ima dovoljno citata koji imaju pouzdane izvore?',
+	'articleassessment-rating-neutrality-tooltip' => 'Mislite li da ova stranica prikazuje temu neutralno iz svih perspektiva?',
+	'articleassessment-rating-completeness-tooltip' => 'Mislite li da ova stranica pokriva osnovna područja teme koja bi trebala biti pokrivena?',
 	'articleassessment-rating-readability-tooltip' => 'Mislite li da je ova stranica dobro organizirana i dobro napisana?',
+	'articleassessment-articlerating' => 'Ocjena stranice',
 	'articleassessment-error' => 'Došlo je do pogreške. 
 Molimo, pokušajte ponovno kasnije.',
+	'articleassessment-thanks' => 'Hvala! Vaše ocjene su sačuvane.',
+	'articleassessment-featurefeedback' => 'Dajte nam <span class="feedbacklink">povratne informacije</span> o mogućnosti ocjenjivanja članaka.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|ocjena|ocjene|ocjena}})',
+	'articleassessment-stalemessage-norevisioncount' => "Ova stranica je ''uređivana'' nakon vašeg ocjenjivanja.
+Možda ju želite ocijeniti ponovo.",
 	'articleassessment-results-show' => '(Rezultati su skriveni. <span class="showlink">Pokažite</span> ih.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Sakrij rezultate</span>)',
+	'articleassessment-survey-question-whyrated' => 'Molimo recite nam zašto ste ocijenili danas ovu stranicu (označite sve što se može primijeniti):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Želio sam pridonijeti sveukupnoj ocjeni stranice',
+	'articleassessment-survey-answer-whyrated-development' => 'Nadam se da će moja ocjena imati pozitivno uticati na razvoj stranice',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Želim pridonijeti projektu {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Volim dijeliti svoje mišljenje',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Nisam dao ocjene danas, ali sam želio dati mišljenje o dogradnji',
+	'articleassessment-survey-answer-whyrated-other' => 'Ostalo',
+	'articleassessment-survey-question-useful' => 'Jesu li dane ocjene korisne i jasne?',
 	'articleassessment-survey-question-useful-iffalse' => 'Zašto?',
 	'articleassessment-survey-question-expert' => 'Smatrate li se stručnjakom za područje koje obrađuje ova stranica?',
 	'articleassessment-survey-question-expert-iftrue' => 'Možete li opisati svoju stručnost?',
+	'articleassessment-survey-question-comments' => 'Imate li neki dodatni komentar?',
+	'articleassessment-survey-submit' => 'Pošalji',
+	'articleassessment-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
+	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
 );
 
 /** Interlingua (Interlingua)
@@ -633,6 +663,14 @@ $messages['ko'] = array(
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => '내 의견을 공유하고 싶어서',
 	'articleassessment-survey-answer-whyrated-didntrate' => '오늘 평가를 하지는 않았지만 이 기능에 대해 피드백을 남기고 싶어서',
 	'articleassessment-survey-answer-whyrated-other' => '기타',
+	'articleassessment-survey-question-useful' => '당신은 평가한 것이 유용하고 명확할 것이라 생각하십니까?',
+	'articleassessment-survey-question-useful-iffalse' => '왜 그렇게 생각하십니까?',
+	'articleassessment-survey-question-expert' => '당신은 이 문서가 다루고 있는 분야에 대해 전문가라고 생각하십니까?',
+	'articleassessment-survey-question-expert-iftrue' => '당신의 전문 지식에 대해 설명해주실 수 있습니까?',
+	'articleassessment-survey-question-comments' => '다른 의견이 있으십니까?',
+	'articleassessment-survey-submit' => '제출',
+	'articleassessment-survey-title' => '몇 가지 질문에 답해 주시기 바랍니다.',
+	'articleassessment-survey-thanks' => '설문에 응해 주셔서 감사합니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -664,15 +702,31 @@ Et kéint sinn datt dir en nei bewäerte wëllt.",
 	'articleassessment-results-show' => '(D\'Resultater si verstopp. Resultater <span class="showlink">weisen</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Resultater verstoppen</span>)',
 	'articleassessment-survey-question-whyrated' => 'Sot eis w.e.g. firwat datt Dir dës säit bewäert hutt (klickt alles u wat zoutrëfft):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Ech wollt zur allgemenger Bewäertung vun der Säit bedroen',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ech wollt mech un {{SITENAME}} bedeelegen',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Ech deele meng Meenung gäre mat',
 	'articleassessment-survey-answer-whyrated-other' => 'Anerer',
 	'articleassessment-survey-question-useful' => "Mengt Dir datt d'Bewäertungen hei nëtzlech a kloer sinn?",
 	'articleassessment-survey-question-useful-iffalse' => 'Firwat?',
+	'articleassessment-survey-question-expert' => 'Betruecht Dir Iech selwer als Expert am Gebitt dat op dëser Säit behandelt gëtt?',
 	'articleassessment-survey-question-comments' => 'Hutt Dir nach aner Bemierkungen?',
 	'articleassessment-survey-submit' => 'Späicheren',
 	'articleassessment-survey-title' => 'Beäntwert w.e.g. e puer Froen',
 	'articleassessment-survey-thanks' => 'Merci datt Dir eis Ëmfro ausgefëllt hutt.',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'articleassessment' => 'Paginabeoordeiling',
+	'articleassessment-desc' => 'Paginabeoordeiling (tesversie)',
+	'articleassessment-yourfeedback' => 'Diene feedback',
+	'articleassessment-pleaserate' => "Gaef e.t.b. 'n beoordeiling van dees pagina.",
+	'articleassessment-submit' => 'Slaon óp',
+	'articleassessment-rating-wellsourced' => 'Good van brónne veurzeen:',
+	'articleassessment-rating-neutrality' => 'Neutraal:',
+	'articleassessment-rating-completeness' => 'Compleet:',
 );
 
 /** Macedonian (Македонски)
@@ -1032,7 +1086,7 @@ $messages['ru'] = array(
 	'articleassessment-submit' => 'Отправить',
 	'articleassessment-rating-wellsourced' => 'Источники:',
 	'articleassessment-rating-neutrality' => 'Нейтральность:',
-	'articleassessment-rating-completeness' => 'Завершённость:',
+	'articleassessment-rating-completeness' => 'Полнота:',
 	'articleassessment-rating-readability' => 'Читаемость:',
 	'articleassessment-rating-wellsourced-tooltip' => 'Считаете ли вы, что на этой странице достаточно ссылок на источники, что источники являются достоверными?',
 	'articleassessment-rating-neutrality-tooltip' => 'Считаете ли вы, что эта страница объективно отражает все точки зрения по данной теме?',

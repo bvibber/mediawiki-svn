@@ -352,6 +352,13 @@ $messages['sv'] = array(
 	'autoincrement-desc' => 'En variabelkrok som lägger till den automatiskt ökande variabeln <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'autoincrement-desc' => '<nowiki>{{AUTOINCREMENT}}</nowiki> என்னும் தானே கூட்டிக்கொள்ளச் செய்யும் தொற்று மாறி',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  */

@@ -503,6 +503,18 @@ $messages['sv'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] måste vara minst {{PLURAL:$1|ett tecken|$1 tecken}} långt.',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'transliterator-desc' => 'எழுத்துப் பெயர்ப்பதற்கு ஏற்ற பிரிப்பான் செயற்கூற்றைத் தருகின்றது',
+	'transliterator-error-ambiguous' => '[[MediaWiki:$2]] இல் <code>$1</code> என்னும் தெளிவற்ற (பலபொருள் கொள்ளத்தக்க) விதி',
+	'transliterator-error-syntax' => '[[MediaWiki:$2]] இல் <code>$1</code> என்னும் பிழையான நிரல் தொடர்',
+	'transliterator-error-rulecount' => '[[MediaWiki:$2]] இல் $1 {{PLURAL:$1|rule|rules}} விதிகளுக்கும் மேல் உள்ளது',
+	'transliterator-error-rulesize' => ' [[MediaWiki:$2]] இல் <code>$1</code>  என்னும் விதியில் இடப்புறம் $3 {{PLURAL:$3|character|characters}} எழுத்துகளுக்கு மேல் உள்ளன',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] குறைந்தது $1 {{PLURAL:$1|character|characters}} முன்னொட்டு எழுத்துகள் நீளமேனும் இருக்க வேண்டும்',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

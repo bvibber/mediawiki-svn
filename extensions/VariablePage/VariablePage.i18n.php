@@ -79,6 +79,15 @@ $messages['gsw'] = array(
 	'variablepage-desc' => 'Lychti variabli Wyterleitige',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'variablepage' => 'Promjenjiva_stranica',
+	'variablepage-navlink_text' => 'Doniraj',
+	'variablepage-desc' => 'Lako preusmjeravanje promjenjive stranice',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -92,6 +101,8 @@ $messages['ia'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'variablepage' => '可変ページ',
+	'variablepage-navlink_text' => '寄付',
 	'variablepage-desc' => '軽い可変ページのリダイレクト',
 );
 
@@ -106,6 +117,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'variablepage-navlink_text' => 'Maacht en Don',
 	'variablepage-desc' => 'Erméiglecht eng ressourcschounend variabel Viruleedung vu Säiten',
 );
 
@@ -116,6 +128,15 @@ $messages['mk'] = array(
 	'variablepage' => 'ПроменливаСтраница',
 	'variablepage-navlink_text' => 'Донирајте',
 	'variablepage-desc' => 'Леко променливо пренасочување на страници',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'variablepage' => 'ചരതാളുകൾ',
+	'variablepage-navlink_text' => 'സംഭാവന ചെയ്യുക',
+	'variablepage-desc' => 'ലഘുഭാര തിരിച്ചുവിടൽ ചരതാൾ',
 );
 
 /** Dutch (Nederlands)
@@ -161,6 +182,13 @@ $messages['pt-br'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Doar',
 	'variablepage-desc' => 'Redirecionamento ligeiro de páginas variáveis',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'variablepage-navlink_text' => 'Qarana',
 );
 
 /** Russian (Русский)

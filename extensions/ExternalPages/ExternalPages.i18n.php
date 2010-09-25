@@ -279,6 +279,8 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'externalpages' => 'Vanjske stranice',
+	'externalpages-desc' => 'Preuzima i prikazuje stranice iz ostalih projekata Wikimedia zaklade',
 	'externalpages-bad-page' => 'Specificirana nepostojeća stranica',
 	'externalpages-no-page' => 'Stranica nije navedena',
 );

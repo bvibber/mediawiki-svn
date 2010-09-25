@@ -402,6 +402,90 @@ $messages['de-formal'] = array(
 Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
 );
 
+/** French (Français)
+ * @author Verdy p
+ */
+$messages['fr'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Permet aux utilisateurs de [[Special:Connect|se connecter]] avec leurs comptes [http://www.facebook.com Facebook]. Offre une authentification basée sur les groupes Facebook et l’utilisation de FBML dans le texte wiki',
+	'group-fb-user' => 'Utilisateurs de Facebook Connect',
+	'group-fb-user-member' => 'Utilisateur de Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:Utilisateurs de Facebook Connect',
+	'group-fb-groupie' => 'Membres de groupe',
+	'group-fb-groupie-member' => 'Membre de groupe',
+	'grouppage-fb-groupie' => '{{ns:project}}:Membres de groupe',
+	'group-fb-officer' => 'Responsables de groupe',
+	'group-fb-officer-member' => 'Responsable de groupe',
+	'grouppage-fb-officer' => '{{ns:project}}:Responsables de groupe',
+	'group-fb-admin' => 'Administrateurs de groupe',
+	'group-fb-admin-member' => 'Administrateur de groupe',
+	'grouppage-fb-admin' => '{{ns:project}}:Administrateurs de groupe',
+	'fbconnect-connect' => 'Se connecter avec Facebook Connect',
+	'fbconnect-convert' => 'Connecter ce compte avec Facebook',
+	'fbconnect-logout' => 'Se déconnecter de Facebook',
+	'fbconnect-link' => 'Retour à Facebook.com',
+	'fbconnect-title' => 'Connecter un compte avec Facebook',
+	'fbconnect-intro' => 'Ce wiki est activé avec Facebook Connect, une évolution récente de la plateforme Facebook.
+Cela signifie que lorsque vous êtes connecté, en plus des [[Wikipedia:Help:Logging in#Why log in?|avantages]] dont vous bénéficiez lorsque vous vous connectez, vous pourrez profiter de quelques fonctionnalités supplémentaires...',
+	'fbconnect-click-to-login' => 'Cliquez pour accéder à ce site via Facebook',
+	'fbconnect-click-to-connect-existing' => 'Cliquez ici pour connecter votre compte Facebook à $1',
+	'fbconnect-conv' => 'Commodité',
+	'fbconnect-convdesc' => 'Les utilisateurs connectés sont automatiquement inscrits. 
+Si l’autorisation est donnée, alors ce wiki peut même utiliser Facebook en tant que mandataire de messagerie afin que vous puissiez continuer à recevoir les notifications importantes sans révéler votre adresse courriel.',
+	'fbconnect-fbml' => 'Langage de balisage Facebook',
+	'fbconnect-fbmldesc' => 'Facebook a fourni un tas de balises intégrées qui va afficher des données dynamiques. 
+Nombre de ces balises peuvent être inclues dans le texte wiki et seront rendues différemment selon l’utilisateur connecté qui les visualisent.',
+	'fbconnect-comm' => 'Communication',
+	'fbconnect-commdesc' => "Facebook Connect inaugure un tout nouveau niveau de mise en réseau.
+Voyez qui de vos amis utilisent le wiki, et éventuellement partagez vos actions avec vos amis par l'intermédiaire du fil de nouvelles Facebook.",
+	'fbconnect-welcome' => 'Bienvenue, utilisateur de Facebook Connect !',
+	'fbconnect-loginbox' => "Ou '''connexion''' avec Facebook :
+
+$1",
+	'fbconnect-merge' => 'Fusionner votre compte wiki avec votre identifiant Facebook',
+	'fbconnect-logoutbox' => '$1
+
+Cela permettra également vous déconnecter de Facebook et tous les sites connectés, y compris ce wiki.',
+	'fbconnect-listusers-header' => 'Les privilèges $1 et $2 sont automatiquement transférés depuis les titres d’administrateurs et responsables du groupe Facebook $3.
+
+Pour plus d’informations, veuillez contacter le créateur du groupe $4.',
+	'fbconnect-error' => 'Erreur de vérification',
+	'fbconnect-errortext' => 'Une erreur s’est produite lors de la vérification avec Facebook Connect.',
+	'fbconnect-cancel' => 'Action annulée',
+	'fbconnect-canceltext' => 'L’action précédente a été annulée par l’utilisateur.',
+	'fbconnect-invalid' => 'Option invalide',
+	'fbconnect-invalidtext' => 'La sélection faite à la page précédente était invalide.',
+	'fbconnect-success' => 'Vérification Facebook réussie',
+	'fbconnect-successtext' => 'Vous avez été connecté avec succès avec Facebook Connect.',
+	'fbconnect-nickname' => 'Pseudonyme',
+	'fbconnect-fullname' => 'Nom complet',
+	'fbconnect-email' => 'Adresse courriel',
+	'fbconnect-language' => 'Langue',
+	'fbconnect-timecorrection' => 'Ajustement de fuseau horaire (en heures)',
+	'fbconnect-chooselegend' => 'Choix du nom d’utilisateur',
+	'fbconnect-chooseinstructions' => 'Tous les utilisateurs ont besoin d’un pseudonyme ; vous pouvez en choisir un à partir des choix ci-dessous.',
+	'fbconnect-invalidname' => 'Le pseudonyme que vous avez choisi est déjà pris ou n’est pas un pseudonyme valide.
+Veuillez en choisir un autre.',
+	'fbconnect-choosenick' => 'Votre nom de profil Facebook ($1)',
+	'fbconnect-choosefirst' => 'Votre prénom ($1)',
+	'fbconnect-choosefull' => 'Votre nom complet ($1)',
+	'fbconnect-chooseauto' => 'Un nom créé automatiquement ($1)',
+	'fbconnect-choosemanual' => 'Un nom de votre choix :',
+	'fbconnect-chooseexisting' => 'Un compte existant sur ce wiki',
+	'fbconnect-chooseusername' => 'Nom d’utilisateur :',
+	'fbconnect-choosepassword' => 'Mot de passe :',
+	'fbconnect-updateuserinfo' => 'Mettre à jour les renseignements personnels suivants :',
+	'fbconnect-alreadyloggedin' => "'''Vous êtes déjà connecté, $1 !''' 
+
+Si vous souhaitez utiliser Facebook Connect pour vous connecter à l’avenir, vous pouvez [[Special:Connect/Convert|convertir votre compte pour utiliser Facebook Connect]].",
+	'fbconnect-error-creating-user' => 'Erreur de création de l’utilisateur dans la base de données locale.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Un crochet (extension) a abandonné la création de compte avec le message : $1',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Profil Facebook',
+	'fbconnect-prefsheader' => 'Pour contrôler quels évènements vont générer un élément inclus dans votre flux de nouvelles Facebook, <a id="fbConnectPushEventBar_show" href="#">montrer les préférences</a> <a id="fbConnectPushEventBar_hide" href="#" style="display:none">cacher les préférences</a>',
+	'fbconnect-prefs-can-be-updated' => 'Vous pouvez mettre à jour ces éléments à tout moment en visitant l’onglet « $1 » de votre page de préférences.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -1091,6 +1175,7 @@ Muitos destes elementos podem ser incuídos no texto wiki e serão apresentados 
  */
 $messages['ru'] = array(
 	'group-fb-groupie-member' => 'Группа участников',
+	'group-fb-admin' => 'Группа администраторов',
 	'fbconnect-cancel' => 'Действие отменено',
 	'fbconnect-invalid' => 'Неверный параметр',
 	'fbconnect-success' => 'Проверка через Facebook закончилась успешно',

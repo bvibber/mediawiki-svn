@@ -673,11 +673,11 @@ Për piasì, ch'a cangia o ch'a modìfica sò navigador, se possìbil.",
 	'cb_edit_left_hint' => 'Va a snista, se possìbil',
 	'cb_edit_right_hint' => 'Va a drita, se possìbil',
 	'cb_edit_remove_hint' => 'Scancelé, se possìbil',
-	'cb_edit_copy_hint' => 'Còpia operador a la tastera',
-	'cb_edit_append_hint' => "Ansëriss operador ant l'ùltima posission",
-	'cb_edit_clear_hint' => 'Scansela espression corenta (selession-a tut)',
-	'cb_edit_paste_hint' => 'Còpia operador ant la posission corenta, se possìbil',
-	'cb_edit_paste_right_hint' => "Còpia operador ant la posission d'apress, se possìbil",
+	'cb_edit_copy_hint' => "Copié l'operador an sla giojera",
+	'cb_edit_append_hint' => "Anserì l'operador ant l'ùltima posission",
+	'cb_edit_clear_hint' => "Scancelé l'espression corenta (selessioné tut)",
+	'cb_edit_paste_hint' => "Ancolé l'operador ant la posission corenta, se possìbil",
+	'cb_edit_paste_right_hint' => "Ancolé l'operador ant la posission apress, se possìbil",
 );
 
 /** Portuguese (Português)

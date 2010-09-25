@@ -44,6 +44,19 @@ $messages['de'] = array(
 	'specialarc2admin' => '„ARC2 RDF“-Speicher-Administrationsseite',
 );
 
+/** French (Français)
+ * @author Verdy p
+ */
+$messages['fr'] = array(
+	'rdfio-desc' => 'Fonctionnalité étendue d’importation/exportation RDF, comprenant un point de terminaison SPARQL, pour MediaWiki Sémantique',
+	'rdfimport' => 'Importation RDF',
+	'rdfio-arc2admin-desc' => 'Page d’administration du dépôt RDF ARC2, pour MediaWiki Sémantique',
+	'rdfio-rdfimport-desc' => 'Une page spéciale permettant d’importer des données sémantiques au format RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Un point de terminaison SPARQL fourni par le SMWRDFConnector',
+	'sparqlendpoint' => 'Point de terminaison SPARQL',
+	'specialarc2admin' => 'Page d’administration du dépôt RDF ARC2',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
