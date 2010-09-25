@@ -114,7 +114,21 @@ class ApiUpload extends ApiBase {
 			} catch (Exception $e) { 
 				$this->dieUsage( 'Obtaining stash file failed: ' . $e->getText(), 'stashfailed' );
 			}
-		
+			
+			// return data to the client similar to an imageinfo call
+			$props = array( 
+				'url' => true, 
+				'size' => true, 
+				'sha1' => true, 
+				'mime' => true, 
+				'bitdepth' => true,
+				'metadata' => true 
+			);
+
+			$result[ 'imageinfo' ] = ApiQueryImageInfo::getInfo( $file, $props, $this->getResult(), null );
+			// XXX get the rest of the image info including exif data and so on
+ 
+	
 			// move all this to the session, so it can look up the thumbnail itself, and return opaque url 
 			// with proper extension.
 
@@ -127,20 +141,14 @@ class ApiUpload extends ApiBase {
 					$thumbWidth = $thumbWidthParam;
 				}
 			}
-			if ( ! $thumb = $file->getThumbnail( $thumbWidth ) ) { 
+			$thumbnailImage = null;
+			if ( ! $thumbnailImage = $file->getThumbnail( $thumbWidth ) ) { 
 				$this->dieUsageMsg( 'Could not obtain thumbnail', 'nothumb' );
 			}
 			
-			// get thumbnail urls from the SessionRepo, add to results
-			// XXX make this more like the usual imageinfo / thumbnail info API
-			$result[ 'thumbnail' ] = array(
-				'url' => $thumb->getUrl(),
-				'width' => $thumb->getWidth(),
-				'height' => $thumb->getHeight(),
-			); 
+			$thumbFile = $thumbnailImage->thumbnailFile;
+			$result[ 'thumbnailimageinfo' ] = ApiQueryImageInfo::getInfo( $thumbFile, $props, $this->getResult(), null );
 
-
-			// XXX get the rest of the image info including exif data and so on
 			
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 

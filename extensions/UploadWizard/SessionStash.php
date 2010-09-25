@@ -123,7 +123,7 @@ class SessionStash {
 
 		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $stashData;
 		
-		wfDebug( "SESSION\n=====\n " . print_r( $_SESSION, 1 ) . "\n" );
+		//wfDebug( "SESSION\n=====\n " . print_r( $_SESSION, 1 ) . "\n" );
 		
 		return $this->getFile( $key );
 	}
@@ -278,10 +278,26 @@ class SessionStashFile extends UnregisteredLocalFile {
 	}
 
 	/**
-	 * Override transform to replace the url with a SessionStash url
+	 * Parent classes use this method, for no obvious reason, to return the path (relative to wiki root, I assume). 
+	 * But with this class, the URL is unrelated to the path.
+	 *
+	 * @return {String} url
+	 */
+	public function getFullUrl() { 
+		return $this->getUrl();
+	}
+
+
+	/**
+	 * Typically, transform() returns a ThumbnailImage, which you can think of as being the exact
+	 * equivalent of an HTML thumbnail on Wikipedia. So its URL is the full-size file, not the thumbnail's URL.
+	 *
+	 * Here we override transform() to stash the thumbnail file, and then 
+	 * provide a way to get at the stashed thumbnail file to extract properties such as its URL
+	 *
 	 * @param {Array} parameters suitable for File::transform()
 	 * @param {Bitmask} flags suitable for File::transform()
-	 * @return {ThumbnailImage} with modified url
+	 * @return {ThumbnailImage} with additional File thumbnailFile property
 	 */
 	public function transform( $params, $flags=0 ) { 
 
@@ -292,15 +308,17 @@ class SessionStashFile extends UnregisteredLocalFile {
 		$thumb = parent::transform( $params, $flags );
 
 		$key = $this->thumbName($params);
-		// remove extension, so it's stored under '120px-123456'
+
+		// remove extension, so it's stored in the session under '120px-123456'
 		// this makes it uniform with the other session key for the original, '123456'
 		$n = strrpos( $key, '.' );	
 		if ( $n !== false ) {
 			$key = substr( $key, 0, $n );
 		}
 
+		// stash the thumbnail File, and provide our caller with a way to get at its properties
 		$stashedThumbFile = $this->sessionStash->stashFile( $key, $thumb->path );
-		$thumb->url = $stashedThumbFile->getUrl();
+		$thumb->thumbnailFile = $stashedThumbFile;
 
 		return $thumb;	
 
