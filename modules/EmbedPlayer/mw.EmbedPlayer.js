@@ -862,14 +862,7 @@ mediaSource.prototype = {
 		
 		// Return the mime type string if not known type.
 		return this.mimeType;
-	},
-	
-	/** Index accessor function.
-	*	@return {Integer} the source's index within the enclosing mediaElement container.
-	*/
-	getIndex : function() {
-		return this.index;
-	},
+	},	
 	
 	/** 
 	 * 
@@ -1605,7 +1598,7 @@ mw.EmbedPlayer.prototype = {
 		// only load from api if sources are empty: 
 		if ( _this.apiTitleKey && this.mediaElement.sources.length == 0) {
 			// Load media from external data
-			mw.log( 'EmbedPlayer::checkPlayerSources: loading apiTitleKey data' );		
+			mw.log( 'EmbedPlayer::checkPlayerSources: loading apiTitleKey:' + _this.apiTitleKey );		
 			_this.loadSourceFromApi( function(){				
 				finishCheckPlayerSources();
 			} );
@@ -1639,10 +1632,10 @@ mw.EmbedPlayer.prototype = {
 			'iiprop': 'url|size|dimensions|metadata',
 			'iiurlwidth': _this.width,
 			'redirects' : true // automatically resolve redirects
-		} 
-	
+		};
+
 		// Run the request:
-		mw.getJSON( mw.getApiProviderURL( this.apiProvider ), request, function( data ){
+		mw.getJSON( mw.getApiProviderURL( _this.apiProvider ), request, function( data ){
 			if ( data.query.pages ) {
 				for ( var i in data.query.pages ) {
 					if( i == '-1' ) {
@@ -2815,7 +2808,7 @@ mw.EmbedPlayer.prototype = {
 	* Update volume function ( called from interface updates )
 	* @param {float} percent Percent of full volume
 	*/
-	setVolume: function( percent ) {
+	setVolume: function( percent, dissableTrigger ) {
 		// ignore NaN percent:
 		if( isNaN( percent ) ){
 			return ;
@@ -2831,7 +2824,7 @@ mw.EmbedPlayer.prototype = {
 		// Update the playerElement volume	
 		this.setPlayerElementVolume( percent );
 		
-		//mw.log(" setVolume:: " + percent + ' this.volume is: ' + this.volume);	
+		//mw.log(" setVolume:: " + percent + ' this.volume is: ' + this.volume);		
 		$j( this ).trigger('volumeChanged', percent );
 	},
 	
@@ -2973,7 +2966,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Check if volume was set outside of embed player function
 		//mw.log( ' this.volume: ' + _this.volume + '  prev Volume:: ' + _this.previousVolume );
-		if( _this.volume != _this.previousVolume ) {				
+		if( Math.round( _this.volume * 100 ) != Math.round( _this.previousVolume * 100 ) ) {				
 			_this.setInterfaceVolume( _this.volume );
 			$j( this ).trigger('volumeChanged', _this.volume );
 		}
@@ -3450,7 +3443,7 @@ mediaPlayers.prototype =
 		for ( var i = 0; i < this.players.length; i++ ) {
 			if ( this.players[i].id == playerId ) {
 				selectedPlayer = this.players[i];
-				mw.log( 'choosing ' + playerId + ' for ' + mimeType );
+				mw.log( 'EmbedPlayer::setPlayerPreference: choosing ' + playerId + ' for ' + mimeType );
 				this.preference[ mimeType ] = playerId;		
 				mw.setUserConfig( 'playerPref', this.preference );
 				break;
@@ -3464,7 +3457,7 @@ mediaPlayers.prototype =
 				if ( embed.mediaElement.selectedSource && ( embed.mediaElement.selectedSource.mimeType == mimeType ) )
 				{
 					embed.selectPlayer( selectedPlayer );
-					mw.log( 'using ' + embed.selectedPlayer.getName() + ' for ' + embed.mediaElement.selectedSource.getTitle() );
+					mw.log( 'EmbedPlayer::setPlayerPreference:  using ' + embed.selectedPlayer.getName() + ' for ' + embed.mediaElement.selectedSource.getTitle() );
 				}
 			}
 		}

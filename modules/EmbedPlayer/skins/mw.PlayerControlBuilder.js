@@ -250,7 +250,7 @@ mw.PlayerControlBuilder.prototype = {
 	/**
 	* Get the fullscreen text css
 	*/
-	getFullscreenTextCss: function() {
+	getInterfaceSizeTextCss: function() {
 		// Some arbitrary scale relative to window size
 		var textSize = ( $j( window ).width() / 8 ) + 20;
 		if( textSize < 95 )  textSize = 95;
@@ -375,7 +375,7 @@ mw.PlayerControlBuilder.prototype = {
 		.animate( _this.getFullscreenPlayerCss() );
 		
 		// Resize the timed text font size per window width	
-		$interface.find( '.track' ).css( _this.getFullscreenTextCss() );		
+		$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss() );		
 		
 		// Reposition play-btn-large ( this is unfortunately not easy to position with 'margin': 'auto'
 		$interface.find('.play-btn-large').animate( _this.getFullscreenPlayButtonCss() )		
@@ -421,7 +421,7 @@ mw.PlayerControlBuilder.prototype = {
 				$interface.find('.play-btn-large').css(  _this.getFullscreenPlayButtonCss() );
 				
 				// Update the timed text size  
-				$interface.find( '.track' ).css( _this.getFullscreenTextCss() );
+				$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss() );
 			}
 		});
 		
@@ -615,7 +615,9 @@ mw.PlayerControlBuilder.prototype = {
 		var animateDuration = 'slow';	
 		if(! this.embedPlayer )
 			return ;
-		$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' )	
+		if( this.embedPlayer.getPlayerElement ){
+			$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' )
+		}
 		mw.log( 'showControlBar' );
 		// Move up text track if present
 		this.embedPlayer.$interface.find( '.track' )
@@ -1176,7 +1178,9 @@ mw.PlayerControlBuilder.prototype = {
 	* @param {Object} $target jQuery target for output
 	*/
 	getPlayerSelect: function( ) {		
-		mw.log('getPlayerSelect::');		
+		mw.log('ControlBuilder::getPlayerSelect: source:' + 
+				this.embedPlayer.mediaElement.selectedSource.getSrc() +
+				' player: ' + this.embedPlayer.selectedPlayer.id );		
 		
 		var embedPlayer = this.embedPlayer;
 		
@@ -1190,22 +1194,22 @@ mw.PlayerControlBuilder.prototype = {
 
 		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
 			
-			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );			
-			var is_selected = ( source == embedPlayer.mediaElement.selectedSource );			
+			var isPlayable = (typeof mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() ) == 'object' );			
+			var is_selected = ( source.getSrc() == embedPlayer.mediaElement.selectedSource.getSrc() );						
 			
 			$playerSelect.append( 
 				$j( '<h2 />' )
 				.text( source.getTitle() )
 			);
 			
-			if ( playable ) {
+			if ( isPlayable ) {
 				$playerList = $j('<ul />');
 				// output the player select code:
 		
 				var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
 
-				for ( var i = 0; i < supportingPlayers.length ; i++ ) {									
-									
+				for ( var i = 0; i < supportingPlayers.length ; i++ ) {		
+
 					// Add link to select the player if not already selected )
 					if( embedPlayer.selectedPlayer.id == supportingPlayers[i].id && is_selected ) {	
 						// Active player ( no link )

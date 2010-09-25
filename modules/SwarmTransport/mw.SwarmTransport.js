@@ -25,7 +25,7 @@ mw.SwarmTransport = {
 					_this.addSwarmSource( embedPlayer, function(){
 						// Update the source if paused					
 						if( embedPlayer.paused ) {
-							embedPlayer.mediaElement.autoSelectSource();
+							embedPlayer.setupSourcePlayer();
 						}
 					});									
 				}								

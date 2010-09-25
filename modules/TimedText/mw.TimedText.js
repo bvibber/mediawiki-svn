@@ -769,12 +769,11 @@ mw.includeAllModuleMessages();
 						$j('<span \>')
 					)									
 				
-				// If in fullscreen mode update the text size: 
-				if( this.embedPlayer.controlBuilder.fullscreenMode ){
-					$track.css(
-						this.embedPlayer.controlBuilder.getFullscreenTextCss()
-					);					
-				}
+				// Scale the text Relative to player size:  			
+				$track.css(
+					this.embedPlayer.controlBuilder.getInterfaceSizeTextCss()
+				);					
+				
 				$playerTarget.append( $track );
 				// Resize the interface for layoutMode == 'ontop' ( if not in fullscreen )  
 				// NOTE this shoudl be a call to controlBuilder not handled here inline
