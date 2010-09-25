@@ -552,15 +552,15 @@ mw.UploadHandler.prototype = {
 	* @param {String} source The source filed			
 	*/
 	getCommentText: function( comment, license, copyStatus, source ) {				
-		var pageText = '== ' + gM( 'filedesc' ) + " ==\n" + comment + "\n";
+		var pageText = '== ' + gM( 'mwe-filedesc' ) + " ==\n" + comment + "\n";
 		if( copyStatus ){
-			pageText +=  '== ' + gM( 'filestatus' ) + " ==\n" + copyStatus + "\n";
+			pageText +=  '== ' + gM( 'mwe-filestatus' ) + " ==\n" + copyStatus + "\n";
 		}
 		if( source ){
-			pageText += '== ' + gM( 'filesource' ) + " ==\n" + source  + "\n";
+			pageText += '== ' + gM( 'mwe-filesource' ) + " ==\n" + source  + "\n";
 		}
 		if ( license ) {
-			pageText += '== ' + gM( 'license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
+			pageText += '== ' + gM( 'mwe-license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
 		}		
 		return pageText;
 	},
