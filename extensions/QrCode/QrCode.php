@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.05',
+	'version' => '0.06',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -188,7 +188,7 @@ class MWQrCode {
 		$saveName = $localfile->getName();
 
 		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" )
-			.' by the QrCode Extension for page '.$this->_title->getFullText().'.';
+			.' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
 
 		$status = $localfile->upload( $tmpName, $this->_uploadComment, $pageText,
 					 File::DELETE_SOURCE, false, false, $this->_getBot() );
