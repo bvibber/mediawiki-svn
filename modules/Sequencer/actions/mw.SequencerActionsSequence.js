@@ -350,16 +350,19 @@ mw.SequencerActionsSequence.prototype = {
 			})
 
 		);		
+		
 		// Embed the player and continue application flow			
 		$j('#publishVideoTarget').embedPlayer({
 			'controls' : false
 		}, function(){
-			// this should be depreciated ( hidden interface bug in mwEmbed ) 
-			$j('#publishVideoTarget').parent().show();
-			
+								
 			// wait 100ms before starting the firefogg render ( avoids page lock 
 			// and ensures we don't get a loading spinner for first frame of render) 
 			setTimeout(function(){
+				
+				// this should be depreciated ( hidden interface bug in mwEmbed ?) 
+				$j('#publishVideoTarget').parent().show();
+				
 				// Start up the render
 				var foggRender = $j('#publishVideoTarget').firefoggRender({
 					'statusTarget' : '#firefoggStatusTarget',

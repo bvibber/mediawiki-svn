@@ -3545,13 +3545,13 @@ mw.EmbedTypes = {
 			 // VLC
 			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 				 this.players.addPlayer( vlcPlayer );
-			 }			 
+			 }
 				 
 			 // Java ActiveX
 			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
 				 this.players.addPlayer( cortadoPlayer );
 			 }
-	
+			 
 			 // quicktime (currently off) 
 			 // if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
 			 //	this.players.addPlayer(quicktimeActiveXPlayer);			 
