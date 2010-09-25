@@ -41,10 +41,11 @@ mw.SmilLayout.prototype = {
 	/**
 	 * Setup the layout if not already setup
 	 */
-	setupLayout: function( $renderTarget ){
+	setupLayout: function( $renderTarget ){		
 		if( ! $renderTarget.find( '.smilRootLayout').length ) {
 			$renderTarget.append( this.getRootLayout() );
 		}
+		this.$rootLayout =$renderTarget.find( '.smilRootLayout');		
 	},
 	
 	getTargetAspectRatio:function(){
@@ -56,8 +57,8 @@ mw.SmilLayout.prototype = {
 	 */
 	getRootLayout: function(){
 		var _this = this;
-		mw.log( "SmilLayout::getRootLayout:" );
-		if( !this.$rootLayout ){						
+		mw.log( "SmilLayout::getRootLayout:" );		
+		if( !this.$rootLayout ) {					
 			// Setup target Size:
 			this.targetWidth = this.smil.embedPlayer.getWidth();
 			this.targetHeight = this.smil.embedPlayer.getHeight();		
@@ -336,14 +337,13 @@ mw.SmilLayout.prototype = {
 	/**
 	 * Hide a smilElement in the layout
 	 */	
-	hideElement: function( smilElement ){
-		if( this.$rootLayout ){
-			// Check that the element is already in the dom
-			var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
-			if( $targetElement.length ){
-				// Issue a quick hide request
-				$targetElement.hide();
-			}
+	hideElement: function( smilElement ){		
+		mw.log(" hide: " + this.smil.getSmilElementPlayerID( smilElement ));
+		// Check that the element is already in the dom
+		var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
+		if( $targetElement.length ){
+			// Issue a quick hide request
+			$targetElement.hide();
 		}
 	},
 	

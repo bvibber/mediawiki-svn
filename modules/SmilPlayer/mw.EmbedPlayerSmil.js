@@ -311,7 +311,7 @@ mw.EmbedPlayerSmil = {
 				callback( _this.smil ); 
 			});			
 		} else { 
-			callback( _this.smil );
+			callback( this.smil );
 		}
 	},
 	

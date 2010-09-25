@@ -158,9 +158,9 @@ mw.Smil.prototype = {
 	/**
 	 * Render a specific time
 	 */
-	renderTime : function(time, callback) {
+	renderTime : function(time, callback) {		
 		// Setup the layout if not already setup:
-		this.getLayout().setupLayout(this.embedPlayer.getRenderTarget());
+		this.getLayout().setupLayout( this.embedPlayer.getRenderTarget() );
 
 		// Update the render target with bodyElements for the requested time
 		this.getBody().renderTime( time );

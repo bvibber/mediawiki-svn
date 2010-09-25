@@ -19,7 +19,7 @@ mw.SwarmTransport = {
 			// Setup the "embedCode" binding to swap in an updated url			
 			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {		
 				// Confirm SwarmTransport add-on is available ( defines swarmTransport var )  
-				if( _this.getPluginLibrary() ){					
+				if( _this.getPluginLibrary() ){		
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent " + swapedPlayerId);
 					_this.addSwarmSource( embedPlayer, function(){
@@ -69,7 +69,7 @@ mw.SwarmTransport = {
 		}
 		// Look for swarm player:
 		if( mw.EmbedTypes.testActiveX( 'P2PNext.SwarmPlayer' ) ){
-			return 'Vlc';
+			return 'SwarmVlc';
 		}
 		return false;
 	},

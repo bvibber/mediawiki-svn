@@ -120,7 +120,7 @@
 				
 				// Cache the pre / post bits				
 				callback( _this.serverSmilXml  );	
-			})
+			});
 		},		
 		wrapSequencerWikiText : function( xmlString ){
 			var _this = this;
@@ -205,7 +205,7 @@
 			mw.log("SequenceServer::Save: " + saveSummary );
 			this.getSaveToken( function( token ){
 				if( !token ){
-					callback( false, 'could not get edit token')
+					callback( false, 'could not get edit token');
 					return ;
 				}
 				var request = {
@@ -218,7 +218,7 @@
 				mw.getJSON( _this.getApiUrl(), request, function( data ) {
 					if( data.edit && data.edit.result == 'Success' ) {
 						// Update the latest local variables
-						_this.saveSummary = saveSummary
+						_this.saveSummary = saveSummary;
 						_this.sequenceSaved = true;
 						_this.serverSmilXml = sequenceXML;
 						callback( true );
@@ -226,8 +226,8 @@
 						// xxx Should have more error handling ( conflict version save etc )
 						callback( false, 'failed to save to server');
 					}
-				})
-			})
+				});
+			});
 		},			
 		
 		/**
@@ -299,9 +299,9 @@
 				var pageText = '';
 				// Check if we should use commons asset description template:
 				if( mw.parseUri( _this.getApiUrl() ).host == 'commons.wikimedia.org' ){
-					pageText = _this.getCommonsDescriptionText()
+					pageText = _this.getCommonsDescriptionText();
 				} else {
-					pageText = _this.getBaseFileDescription()
+					pageText = _this.getBaseFileDescription();
 				}
 				var request = {
 					'action': 'edit',
@@ -318,7 +318,7 @@
 						callback( false );
 					}
 				});
-			})
+			});
 		},
 		
 		getBaseFileDescription: function(){					
@@ -351,12 +351,12 @@
 					return '0' + num;
 				}
 				return num;
-			}
+			};
 			var dt = new Date();
 			descText+='|Date=' +  dt.getFullYear() + '-' + 
 						pad2(dt.getMonth()+1) + '-' + 
 						pad2(dt.getDate()) + "\n" +
-				"|Author=Last edit by [[User:" + _this.getUserName() + "]]\n" +  
+				"|Author=Published by [[User:" + _this.getUserName() + "]]\n" +  
 				"For full editor list see history page of [[" + _this.getTitleKey() + "]] \n" +
 				"|Permission={{Cc-by-sa-3.0}} and {{GFDL|migration=redundant}}" + "\n" +				
 				"}}";
@@ -418,7 +418,7 @@
 						'filename': _this.getVideoFileName(),
 						'comment': 'Published [[' + _this.getTitleKey() + ']] : ' + saveSummary,
 						'ignorewarnings' : true
-					}
+					};
 					// Return the apiUrl and request
 					callback( _this.getApiUrl(), request );
 				});
