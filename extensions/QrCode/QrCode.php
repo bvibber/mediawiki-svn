@@ -85,8 +85,9 @@ class MWQrCode {
 
 	private $_parser;	// simply a link to the parser object
 	private $_title;	// the current page's title object
+	private $_label;	// contents of the qrcode
 	private $_dstFileName;	// what the file will be named?
-	private $_label;		// What will the qrcode contain?
+	private $_uploadComment;	// comment to be added to the upload
 	private $_ecc;			// error correction
 	private $_size;			// qrcode size
 	private $_margin;		// qrcode margin
@@ -113,8 +114,10 @@ class MWQrCode {
 		// Also strip all non-alphanumeric characters
 		if ( $label ) {
 			$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
+			$this->_uploadComment = $label;	// should we sanitize this?
 		} else {
 			$this->_label = $this->_title->getFullURL();
+			$this->_uploadComment = 'Encoded URL for '.$this->_title->getFullText();
 		}
 
 		// Use this page's title as part of the filename (Also regenerates qrcodes when the label changes).
@@ -183,16 +186,18 @@ class MWQrCode {
 		$ft = Title::makeTitleSafe( NS_FILE, $this->_dstFileName );
 		$localfile = wfLocalFile( $ft );	// Get an object referring to a locally registered file. 
 		$saveName = $localfile->getName();
+
 		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" )
 			.' by the QrCode Extension for page '.$this->_title->getFullText().'.';
-		$status = $localfile->upload( $tmpName, $this->_label, $pageText, File::DELETE_SOURCE, false, false, $this->_getBot() );
+
+		$status = $localfile->upload( $tmpName, $this->_uploadComment, $pageText,
+					 File::DELETE_SOURCE, false, false, $this->_getBot() );
 
 		if( !$status->isGood() ){
 			$wgOut->addWikiText( $status->getWikiText() );
 			return false;
 		} else {
-			// now that we generated the file, let's display it
-			return $this->_displayImage( $ft );
+			return $this->_displayImage( $ft );	// display the generated file
 		}
 	}
 	
