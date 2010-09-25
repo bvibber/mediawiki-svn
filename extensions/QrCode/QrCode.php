@@ -56,11 +56,11 @@ $wgQrCodeBot = 'QrCodeBot'; // Name of the 'uploading' user/bot
  * to OOP patterns.
  */
 function newQrCode() {
+
 	$params = func_get_args();
-	$parser = array_shift($params);	// drop the parser
+	$parser = array_shift($params);	// we'll need the parser later
 
 	// we're not generating QrCodes for pages in the "Special" namespace
-	// as that can lead to multiple "uploads" on i.e. Special:Ask 
 	if ( $parser->getTitle()->getNamespace() === NS_SPECIAL ) {
 		return false;
 	}
@@ -72,7 +72,8 @@ function newQrCode() {
 		if( $rpms[0] == 'boundary' ) $margin = $rpms[1];
 		if( $rpms[0] == 'label' ) $label = $rpms[1];
 	}
-	$newQrCode = new MWQrCode( $ecc, $size, $margin );
+
+	$newQrCode = new MWQrCode( $parser, $ecc, $size, $margin );
 	return $newQrCode->showCode( $label );
 }
 	
@@ -82,6 +83,8 @@ function newQrCode() {
  */
 class MWQrCode {
 
+	private $_parser;	// simply a link to the parser object
+	private $_title;	// the current page's title object
 	private $_dstFileName;	// what the file will be named?
 	private $_label;		// What will the qrcode contain?
 	private $_ecc;			// error correction
@@ -91,8 +94,10 @@ class MWQrCode {
 	/**
 	 * Set qrcode properties
 	 */
-	public function __construct( $ecc = false, $size = false, $margin = false ) {
+	public function __construct( $parser, $ecc = false, $size = false, $margin = false ) {
 		global $wgQrCodeECC, $wgQrCodeSize, $wgQrCodeBoundary, $wgQrCodeBot;
+		$this->_parser = $parser;
+		$this->_title = $parser->getTitle();
 		$this->_ecc = ( $ecc ) ? $ecc : $wgQrCodeECC;
 		$this->_size = ( $size ) ? $size : $wgQrCodeSize;
 		$this->_margin = ( $margin ) ? $margin : $wgQrCodeBoundary;
@@ -104,20 +109,16 @@ class MWQrCode {
 	 * first generate then publish it.
 	 */
 	public function showCode( $label = false ){
-		global $wgTitle;
-
 		// Check for a provided label and use the page URL as default.
 		// Also strip all non-alphanumeric characters
 		if ( $label ) {
-			$this->_label = $label;
-			$append = '-'.preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
+			$this->_label = preg_replace("/[^0-9a-zA-Z_]+/", "", $label);
 		} else {
-			$this->_label = $wgTitle->getFullURL();
-			$append = '';
+			$this->_label = $this->_title->getFullURL();
 		}
 
 		// Use this page's title as part of the filename (Also regenerates qrcodes when the label changes).
-		$this->_dstFileName = 'QR-'.$wgTitle->getDBKey().$append.'.png';
+		$this->_dstFileName = 'QR-'.md5($this->_label).'.png';
 
 		$file = wfFindFile( $this->_dstFileName );	// Shortcut for RepoGroup::singleton()->findFile() 
 		if(  $file && $file->isVisible() ){
@@ -182,7 +183,8 @@ class MWQrCode {
 		$ft = Title::makeTitleSafe( NS_FILE, $this->_dstFileName );
 		$localfile = wfLocalFile( $ft );	// Get an object referring to a locally registered file. 
 		$saveName = $localfile->getName();
-		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" ).' by the QrCode Extension.';
+		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" )
+			.' by the QrCode Extension for page '.$this->_title->getFullText().'.';
 		$status = $localfile->upload( $tmpName, $this->_label, $pageText, File::DELETE_SOURCE, false, false, $this->_getBot() );
 
 		if( !$status->isGood() ){
