@@ -122,7 +122,7 @@ class ApiArticleAssessment extends ApiBase {
 	 */
 	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue ) {
 		$dbw = wfGetDB( DB_MASTER );
-		
+
 		$timestamp = $dbw->timestamp();
 
 		$dbw->insert(
@@ -179,7 +179,7 @@ class ApiArticleAssessment extends ApiBase {
 			),
 			'anontoken' => null,
 		);
-		
+
 		foreach( $wgArticleAssessmentRatings as $rating ) {
 			$ret["r{$rating}"] = array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -209,7 +209,7 @@ class ApiArticleAssessment extends ApiBase {
 			'Submit article assessments'
 		);
 	}
-	
+
 	public function mustBePosted() {
 		return true;
 	}

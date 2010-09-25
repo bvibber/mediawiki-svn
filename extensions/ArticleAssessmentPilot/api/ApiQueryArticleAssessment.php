@@ -26,7 +26,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 
 		if ( $params['userrating'] ) {
 			global $wgUser;
-			
+
 			$leftJoinConds = array(
 					'aa_page_id=aap_page_id',
 					'aa_rating_id=aap_rating_id',
@@ -95,7 +95,7 @@ class ApiQueryArticleAssessment extends ApiQueryBase {
 		//Only can actually be "stale" if the user has rated the article before
 		if ( $params['userrating'] && $userRatedArticle ) {
 			$dbr = wfGetDb( DB_SLAVE );
-			
+
 			global $wgArticleAssessmentStaleCount;
 
 			$res = $dbr->select(
