@@ -3545,12 +3545,13 @@ mw.EmbedTypes = {
 			 // VLC
 			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 				 this.players.addPlayer( vlcPlayer );
-			 }
+			 }			 
 				 
 			 // Java ActiveX
 			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
 				 this.players.addPlayer( cortadoPlayer );
 			 }
+	
 			 // quicktime (currently off) 
 			 // if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
 			 //	this.players.addPlayer(quicktimeActiveXPlayer);			 
@@ -3669,7 +3670,7 @@ mw.EmbedTypes = {
 	* @param {String} name Name of ActiveXObject to look for 
 	*/
 	testActiveX : function ( name ) {
-		mw.log(" test testActiveX: " + name);
+		mw.log("EmbedPlayer::detect: test testActiveX: " + name);
 		var hasObj = true;
 		try {
 			// No IE, not a class called "name", it's a variable

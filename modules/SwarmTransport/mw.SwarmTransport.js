@@ -19,7 +19,7 @@ mw.SwarmTransport = {
 			// Setup the "embedCode" binding to swap in an updated url			
 			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {		
 				// Confirm SwarmTransport add-on is available ( defines swarmTransport var )  
-				if( typeof window['swarmTransport'] != 'undefined' ){					
+				if( _this.getPluginLibrary() ){					
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent " + swapedPlayerId);
 					_this.addSwarmSource( embedPlayer, function(){
@@ -36,10 +36,7 @@ mw.SwarmTransport = {
 			// Check if we have a "recommend" binding and provide an xpi install link			
 			mw.log('SwarmTransport::bind:addControlBindingsEvent');
 			$j( embedPlayer ).bind( 'addControlBindingsEvent', function(){
-				if( mw.getConfig( 'SwarmTransport.Recommend' ) &&  
-					typeof window['swarmTransport'] == 'undefined' &&
-					$j.browser.mozilla ) 
-				{
+				if( mw.getConfig( 'SwarmTransport.Recommend' )  && _this.getPluginLibrary() ){
 					embedPlayer.controlBuilder.doWarningBindinng( 
 						'recommendSwarmTransport',
 						_this.getRecomendSwarmMessage()						
@@ -52,16 +49,29 @@ mw.SwarmTransport = {
 		
 		// Add the swarmTransport player to available player types: 
 		$j( mw ).bind( 'EmbedPlayerManagerReady', function( event ) {
+			var playerLib = _this.getPluginLibrary();
 			// Add the swarmTransport playerType	
-			mw.EmbedTypes.players.defaultPlayers['video/swarmTransport'] = ['Native'];
+			mw.EmbedTypes.players.defaultPlayers['video/swarmTransport'] = [ playerLib ];
 			
 			// Build the swarm Transport Player
-			var swarmTransportPlayer = new mediaPlayer( 'swarmTransportPlayer', ['video/swarmTransport' ], 'Native' );
+			var swarmTransportPlayer = new mediaPlayer( 'swarmTransportPlayer', ['video/swarmTransport' ], playerLib );
 			
 			// Add the swarmTransport "player"
 			mw.EmbedTypes.players.addPlayer( swarmTransportPlayer );	
 		});
 					
+	},
+	// check if the swam player exists and return its associated player library 
+	getPluginLibrary: function(){
+		// Check for swarmTransport global in javascript ( firefox ) 
+		if( typeof window['swarmTransport'] != 'undefined' ){
+			return 'Native';
+		}
+		// Look for swarm player:
+		if( mw.EmbedTypes.testActiveX( 'P2PNext.SwarmPlayer' ) ){
+			return 'Vlc';
+		}
+		return false;
 	},
 	
 	addSwarmSource: function( embedPlayer, callback ) {

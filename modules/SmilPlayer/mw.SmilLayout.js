@@ -284,7 +284,7 @@ mw.SmilLayout.prototype = {
 				.find( 'canvas')
 					.get(0)	
 					.getContext('2d')
-					.drawImage( drawElement, 0, 0)				
+					.drawImage( drawElement, 0, 0);			
 			} catch (e){
 				mw.log("Error:: getVideoCanvasThumb : could not draw canvas image");
 			}
@@ -310,7 +310,7 @@ mw.SmilLayout.prototype = {
 				drawFrame( drawElement );
 				// Remove the temporary node from dom
 				$j( drawElement ).remove();
-			})			
+			});		
 		}
 	},
 	
@@ -337,11 +337,13 @@ mw.SmilLayout.prototype = {
 	 * Hide a smilElement in the layout
 	 */	
 	hideElement: function( smilElement ){
-		// Check that the element is already in the dom
-		var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
-		if( $targetElement.length ){
-			// Issue a quick hide request
-			$targetElement.hide();
+		if( this.$rootLayout ){
+			// Check that the element is already in the dom
+			var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
+			if( $targetElement.length ){
+				// Issue a quick hide request
+				$targetElement.hide();
+			}
 		}
 	},
 	
