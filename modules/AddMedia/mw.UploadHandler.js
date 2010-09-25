@@ -535,7 +535,7 @@ mw.UploadHandler.prototype = {
 			
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
 			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
-			this.rewriteDescriptionText = false;
+			//this.rewriteDescriptionText = false;
 		}		
 		mw.log( 'getUploadDescription:: new val:' + comment_value  );		
 		return comment_value;
