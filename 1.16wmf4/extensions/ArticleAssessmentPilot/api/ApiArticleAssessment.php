@@ -182,10 +182,11 @@ class ApiArticleAssessment extends ApiBase {
 		
 		foreach( $wgArticleAssessmentRatings as $rating ) {
 			$ret["r{$rating}"] = array(
-				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
+				ApiBase::PARAM_MAX2 => 5,
 			);
 		}
 		return $ret;
