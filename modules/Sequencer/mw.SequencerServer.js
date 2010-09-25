@@ -362,7 +362,7 @@
 				"}}";
 			
 			// Add Published Sequence category ( for now ) 
-			descText += "\n[[Category:Published Sequence]]\n";
+			descText += "\n[[Category:Published sequences]]\n";
 			
 			return descText;
 		},
