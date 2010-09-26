@@ -66,7 +66,7 @@ If permission is given, then this wiki can even use Facebook as an e-mail proxy 
 	'fbconnect-fbmldesc' => 'Facebook has provided a bunch of built-in tags that will render dynamic data.
 Many of these tags can be included in wiki text, and will be rendered differently depending on which connected user they are being viewed by.',
 	'fbconnect-comm'     => 'Communication',
-	'fbconnect-commdesc' => 'Facebook connect users in a whole new level of networking.
+	'fbconnect-commdesc' => 'Facebook Connect ushers in a whole new level of networking.
 See which of your friends are using the wiki, and optionally share your actions with your friends through the Facebook news feed.',
 	'fbconnect-welcome'  => 'Welcome, Facebook Connect user!',
 	'fbconnect-loginbox' => "Or '''login''' with Facebook:
