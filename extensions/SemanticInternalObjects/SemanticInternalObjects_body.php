@@ -310,13 +310,14 @@ class SIOHandler {
 		}
 	}
 
-	public static function updateData( $subject ) {
+	public static function updateData( $sqlStore, $data ) {
 		$sioSQLStore = new SIOSQLStore();
 		// Find all "pages" in the SMW IDs table that are internal
 		// objects for this page, and delete their properties from
 		// the SMW tables.
 		// Then save the current contents of the $mInternalObjects
 		// array.
+		$subject = $data->getSubject();
 		$pageName = $subject->getDBKey();
 		$namespace = $subject->getNamespace();
 		$idsForDeletion = SIOSQLStore::getIDsForDeletion( $pageName, $namespace );
