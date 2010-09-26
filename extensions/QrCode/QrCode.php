@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.07',
+	'version' => '0.08',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -33,6 +33,7 @@ $wgExtensionMessagesFiles['QrCode'] = dirname(__FILE__) .'/QrCode.i18n.php';
 
 $wgHooks['LanguageGetMagic'][] = 'wfQrCodeLanguageGetMagic';
 $wgHooks['ParserFirstCallInit'][] = 'efQrcodeRegisterFunction';
+$wgJobClasses['uploadQrCode'] = 'UploadQrCodeJob';
 
 function efQrcodeRegisterFunction( Parser &$parser ) {
 	$parser->setFunctionHook( 'qrcode', 'newQrCode' );
@@ -60,10 +61,8 @@ function newQrCode() {
 	$params = func_get_args();
 	$parser = array_shift($params);	// we'll need the parser later
 
-	// we're not generating QrCodes for pages in the "Special" namespace
-	if ( $parser->getTitle()->getNamespace() === NS_SPECIAL ) {
-		return false;
-	}
+	// Handling "Undefined variable" notices
+	$margin = $ecc = $size = $boundary = $label = false;
 
 	foreach( $params as $pair ) {
 		$rpms = explode( '=', $pair );
@@ -102,7 +101,6 @@ class MWQrCode {
 		$this->_ecc = ( $ecc ) ? $ecc : $wgQrCodeECC;
 		$this->_size = ( $size ) ? $size : $wgQrCodeSize;
 		$this->_margin = ( $margin ) ? $margin : $wgQrCodeBoundary;
-		$this->_qrCodeBot = $wgQrCodeBot;	// cannot be overwritten by a function call
 	}
 
 	/**
@@ -122,9 +120,9 @@ class MWQrCode {
 
 		// Use this page's title as part of the filename (Also regenerates qrcodes when the label changes).
 		$this->_dstFileName = 'QR-'.md5($this->_label).'.png';
-
 		$file = wfFindFile( $this->_dstFileName );	// Shortcut for RepoGroup::singleton()->findFile() 
-		if(  $file && $file->isVisible() ){
+
+		if( $file && $file->isVisible() ){
 			return $this->_displayImage( $file );
 		} else {
 			return $this->_generate();
@@ -142,7 +140,8 @@ class MWQrCode {
 
 	/**
 	 * Generate the qrcode using the phpqrcode library
-	 * @return output of the _publish method
+	 * Then queue the generation of the image in the jobqueue.
+	 * @return boolean result of job insertion.
 	 */
 	private function _generate(){
 		global $wgTmpDirectory;
@@ -152,55 +151,70 @@ class MWQrCode {
 		wfDebug( "QrCode::_generate: Generated qrcode file $tmpName with ecc ".$this->_ecc
 			.", ".$this->_size." and boundary ".$this->_margin.".\n" );
 
-		return $this->_publish( $tmpName );
+		$jobParams = array( 'tmpName' => $tmpName, 'dstName' => $this->_dstFileName, 'comment' => $this->_uploadComment );
+		$job = new UploadQrCodeJob( $this->_title, $jobParams );
+		if( $job->insert() ) {
+			return true;
+		}	
 	}
-	
+}
+
+class UploadQrCodeJob extends Job {
+
+
+	public function __construct( $title, $params, $id = 0 ) {
+		$this->_dstFileName = $params['dstName'];
+		$this->_tmpName = $params['tmpName'];
+		$this->_uploadComment = $params['comment'];
+		$this->_title = $title;
+		parent::__construct( 'uploadQrCode', $title, $params, $id );
+	}
+
+	/**
+	 * Handle the mediawiki file upload process
+	 * @return boolean status of file "upload"
+	 */
+	public function run() {
+
+		$mUpload = new UploadFromFile();
+		$mUpload->initialize( $this->_dstFileName, $this->_tmpName, null );	// we don't know the filesize, how could we?
+
+		$pageText = 'QrCode '.$this->_dstFileName.', generated on '.date( "r" )
+                        .' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
+
+		wfDebug( 'UploadQrCodeJob::run: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
+		$status = $mUpload->performUpload( $this->_uploadComment, $pageText, false, $this->_getBot() );
+		
+		if ( $status->isGood() ) {
+			return true;
+		} else {
+			$wgOut->addWikiText( $status->getWikiText() );
+			return false;
+		}
+	}
+
 	/**
 	 * Create or select a bot user to attribute the code generation to
 	 * @return user object
 	 * @note there doesn't seem to be a decent method for checking if a user already exists
 	 * */
 	private function _getBot(){
-		$bot = User::createNew( $this->_qrCodeBot );
+		global $wgQrCodeBot;
+
+		$bot = User::createNew( $wgQrCodeBot );
 		if( $bot != null ){
-			wfDebug( 'QrCode::_getBot: Created new user '.$this->_qrCodeBot."\n" );
+			wfDebug( 'UploadQrCode::_getBot: Created new user '.$wgQrCodeBot."\n" );
 			//$bot->setPassword( '' );   // doc says empty password disables, but this triggers an exception
 		} else {
-			$bot = User::newFromName( $this->_qrCodeBot );
+			$bot = User::newFromName( $wgQrCodeBot );
 		}   
 
 		if( !$bot->isAllowed( 'bot' ) ) {	// User::isBot() has been deprecated
 			$bot->addGroup( 'bot' );
-			wfDebug( 'QrCode::_getBot: Added user '.$this->_qrCodeBot.' to Bot group'."\n" );
+			wfDebug( 'UploadQrCode::_getBot: Added user '.$wgQrCodeBot.' to the Bot group'."\n" );
 		}
 
 		return $bot;
 	 }
-
-	/**
-	 * Handle mediawiki file repositories
-	 * @param $tmpName, the file's temporary name
-	 * @return boolean false on failure or wikitext on success
-	 */
-	private function _publish( $tmpName ){
-		global $wgOut;
-
-		$mUpload = new UploadFromFile();
-		$mUpload->initialize( $this->_dstFileName, $tmpName, null );	// we don't know the filesize, how could we?
-
-		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" )
-                        .' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
-
-		wfDebug( 'QrCode::_publish: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
-		$status = $mUpload->performUpload( $this->_uploadComment, $pageText, false, $this->_getBot() );
-		
-		if ( $status->isGood() ) {
-			$file = $mUpload->getLocalFile();
-			return $this->_displayImage( $file );
-		} else {
-			$wgOut->addWikiText( $status->getWikiText() );
-			return false;
-		}
-	}
 	
 }
