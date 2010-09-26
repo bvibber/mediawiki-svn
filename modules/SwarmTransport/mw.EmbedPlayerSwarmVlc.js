@@ -27,11 +27,14 @@ mw.EmbedPlayerSwarmVlc = {
 		}, 100 );
 	}
 };
+
 // Inherit the vlc object 
 if( typeof mw.EmbedPlayerVlc == 'undefined' ){
 	mw.log("Error:: EmbedPLayerVlc not defefined ");
 } else {
-	for(var i in mw.EmbedPlayerVlc.prototype ){
-		mw.EmbedPlayerSwarmVlc
+	for( var i in mw.EmbedPlayerVlc ){
+		if( !mw.EmbedPlayerSwarmVlc[ i ] ){
+			mw.EmbedPlayerSwarmVlc[ i ] = mw.EmbedPlayerVlc[i];
+		}
 	};
 }

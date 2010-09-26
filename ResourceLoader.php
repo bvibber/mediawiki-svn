@@ -197,7 +197,7 @@ class ResourceLoader {
 		if ( $this->errorMsg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'if(console.log)console.log(\'Error With ResourceLoader ::' .
+			echo 'if(console && console.log)console.log(\'Error With ResourceLoader ::' .
 					 str_replace( "\n", '\'+"\n"+' . "\n'",
 					 	xml::escapeJsString( $this->errorMsg )
 					 ) . '\');'."\n";

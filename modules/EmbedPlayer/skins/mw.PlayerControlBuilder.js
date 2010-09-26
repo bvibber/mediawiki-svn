@@ -722,7 +722,11 @@ mw.PlayerControlBuilder.prototype = {
 		
 		$j( embedPlayer ).hoverIntent({
 			'timeout': 2000,
-			'over': function() {			
+			'over': function() {
+				// don't do the overlay if already playing
+				if( embedPlayer.isPlaying() ){
+					return ;
+				}
 				if ( $j( '#warningOverlay_' + embedPlayer.id ).length == 0 ) {					
 					
 					$j( this ).append(

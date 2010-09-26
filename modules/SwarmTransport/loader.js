@@ -9,7 +9,7 @@
 	
 	mw.addResourcePaths( {
 		"mw.SwarmTransport" : "mw.SwarmTransport.js",
-		"mw.EmbedPlayerSwamVlc" : "mw.EmbedPlayerSwamVlc.js"
+		"mw.EmbedPlayerSwarmVlc" : "mw.EmbedPlayerSwarmVlc.js"
 	});
 
 	mw.setDefaultConfig({

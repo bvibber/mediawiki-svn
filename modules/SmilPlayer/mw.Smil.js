@@ -125,6 +125,7 @@ mw.Smil.prototype = {
 		// Remove any non-smil nodes that are in the page dom
 		this.getBody().syncPageDom();
 	},
+	
 	// simple XML DOMParser object parser wrapper
 	// xxx Add error handling 
 	getXMLDomObject: function( smilXmlString ){
@@ -171,8 +172,7 @@ mw.Smil.prototype = {
 
 	/**
 	 * We use animateTime instead of a tight framerate loop so that we can
-	 * optimize with css transformations
-	 * 
+	 * optimize with browser css transformations 
 	 */
 	animateTime : function(time, timeDelta) {
 		// mw.log("Smil::animateTime: " + time + ' delta: ' + timeDelta );
