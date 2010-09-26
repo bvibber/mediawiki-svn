@@ -125,8 +125,7 @@ class MWQrCode {
 
 		$file = wfFindFile( $this->_dstFileName );	// Shortcut for RepoGroup::singleton()->findFile() 
 		if(  $file && $file->isVisible() ){
-			$ft = $file->getTitle();
-			return $this->_displayImage( $ft );
+			return $this->_displayImage( $file );
 		} else {
 			return $this->_generate();
 		}
@@ -136,8 +135,9 @@ class MWQrCode {
 	 * This only creates the wikitext to display an image.
 	 * @return wikitext for image display
 	 */
-	private function _displayImage( $fileTitle ){
-		return '[['.$fileTitle->getFullText().']]';
+	private function _displayImage( $file ){
+		$ft = $file->getTitle();
+		return '[['.$ft->getFullText().']]';
 	}
 
 	/**
@@ -184,22 +184,22 @@ class MWQrCode {
 	 */
 	private function _publish( $tmpName ){
 		global $wgOut;
-		
-		$ft = Title::makeTitleSafe( NS_FILE, $this->_dstFileName );
-		$localfile = wfLocalFile( $ft );	// Get an object referring to a locally registered file. 
-		$saveName = $localfile->getName();
+
+		$mUpload = new UploadFromFile();
+		$mUpload->initialize( $this->_dstFileName, $tmpName, null );	// we don't know the filesize, how could we?
 
 		$pageText = 'QrCode '.$saveName.', generated on '.date( "r" )
-			.' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
+                        .' by the QrCode Extension for page [['.$this->_title->getFullText().']].';
 
-		$status = $localfile->upload( $tmpName, $this->_uploadComment, $pageText,
-					 File::DELETE_SOURCE, false, false, $this->_getBot() );
-
-		if( !$status->isGood() ){
+		wfDebug( 'QrCode::_publish: Uploading qrcode, c: '.$this->_uploadComment . ' t: ' . $pageText."\n" );
+		$status = $mUpload->performUpload( $this->_uploadComment, $pageText, false, $this->_getBot() );
+		
+		if ( $status->isGood() ) {
+			$file = $mUpload->getLocalFile();
+			return $this->_displayImage( $file );
+		} else {
 			$wgOut->addWikiText( $status->getWikiText() );
 			return false;
-		} else {
-			return $this->_displayImage( $ft );	// display the generated file
 		}
 	}
 	
