@@ -2750,6 +2750,31 @@ $messages['fr'] = array(
 	'mwe-review-upload' => 'Vérifier {{PLURAL:$1|le téléversement de fichier|les téléversements de fichiers}}',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 de $2',
+	'mwe-upload-unknown-size' => 'Talye encognua',
+	'mwe-cancel-confim' => 'Éte-vos de sûr de volêr anular ?',
+	'mwe-successfulupload' => 'Tèlèchargement reussi',
+	'mwe-uploaderror' => 'Èrror pendent lo tèlèchargement',
+	'mwe-uploadwarning' => 'Avèrtissement pendent lo tèlèchargement',
+	'mwe-unknown-error' => 'Èrror encognua :',
+	'mwe-return-to-form' => 'Tornar u formulèro',
+	'mwe-file-exists-duplicate' => 'Cél fichiér est un doblo de ceti fichiér :',
+	'mwe-fileexists-thumb' => 'Fichiér ègzistent',
+	'mwe-ignorewarning' => 'Ignorar l’avèrtissement et pués sôvar quand mémo lo fichiér',
+	'mwe-file-thumbnail-no' => 'Lo nom du fichiér comence per <b><code>$1</code></b>',
+	'mwe-go-to-resource' => 'Alar a la pâge de la ressôrsa',
+	'mwe-upload-misc-error' => 'Èrror encognua pendent lo tèlèchargement',
+	'mwe-thumbnail-more' => 'Agrantir',
+	'mwe-license-header' => 'Licence',
+	'mwe-filedesc' => 'Rèsumâ',
+	'mwe-filesource' => 'Sôrsa :',
+	'mwe-filestatus' => 'Statut des drêts d’ôtor :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

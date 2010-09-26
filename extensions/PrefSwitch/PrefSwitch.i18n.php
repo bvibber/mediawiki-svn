@@ -3548,6 +3548,7 @@ Zo by nam pomhał, je polěpšić, wupjelń prošu slědowace opcionelne posudź
  * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
+ * @author Misibacsi
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -3571,6 +3572,7 @@ $messages['hu'] = array(
 	'prefswitch-survey-question-dislike' => 'Mi nem tetszett az új funkciókból?',
 	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
 Jelöld be az összes indokodat.',
+	'prefswitch-survey-question-globaloff' => 'Szeretné ezeket a tulajdonságokat mindenhol kikapcsolni?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nem működött megfelelően.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nem működött kiszámíthatóan.',

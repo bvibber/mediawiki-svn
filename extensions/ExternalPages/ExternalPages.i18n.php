@@ -587,6 +587,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'externalpages' => 'బయటి పేజీలు',
+	'externalpages-desc' => 'సుదూర WMF గూళ్ళ నుండి పుటలను తెచ్చి చూపిస్తుంది',
 	'externalpages-bad-page' => 'తప్పుడు పేజీని ఇచ్చారు',
 	'externalpages-no-page' => 'పేజీని పేర్కొనలేదు',
 );

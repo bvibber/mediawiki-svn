@@ -45,9 +45,10 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'qrcode-desc' => 'Génère et ajoute le code QR des images à une page wiki',
+	'qrcode-desc' => 'Génère et ajoute des images « QR Code » à une page wiki',
 );
 
 /** Galician (Galego)

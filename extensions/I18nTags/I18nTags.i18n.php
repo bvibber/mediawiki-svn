@@ -129,9 +129,11 @@ $messages['fi'] = array(
 	'i18ntags-desc' => 'Tarjoaa i18n-elementtejä numeroiden muotoiluun, kielioppiin ja monikkoihin millä tahansa saatavilla olevalla kielellä.',
 );
 
-/** French (Français) */
+/** French (Français)
+ * @author Verdy p
+ */
 $messages['fr'] = array(
-	'i18ntags-desc' => 'Permet l’accès des fonctions i18n pour le format des nombres, la grammaire et le pluriel dans chaque langue disponible.',
+	'i18ntags-desc' => 'Permet l’accès aux fonctions i18n pour le formatage des nombres, la grammaire et les accords de pluriel dans chaque langue disponible',
 );
 
 /** Galician (Galego)

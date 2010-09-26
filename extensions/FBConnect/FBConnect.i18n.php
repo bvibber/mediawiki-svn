@@ -663,22 +663,30 @@ $messages['lb'] = array(
 	'fbconnect-title' => 'Kont mat Facebook verbannen',
 	'fbconnect-click-to-connect-existing' => 'Klickt fir Äre Facebook-Kont mat $1 ze verbannen',
 	'fbconnect-conv' => 'Bequemlechkeet',
+	'fbconnect-fbml' => 'Facebook-Markup Sprooch',
 	'fbconnect-comm' => 'Kommunikatioun',
 	'fbconnect-welcome' => 'Wëllkomm, Facebook-Connect-Benotzer!',
 	'fbconnect-merge' => 'Verbannt Äre Wiki-Kont mat Ärer Facebook-ID',
 	'fbconnect-usernameprefix' => 'Facebook-Benotzer',
+	'fbconnect-error' => 'Feeler bei der Iwwerpréifung',
 	'fbconnect-cancel' => 'Aktioun ofgebrach',
 	'fbconnect-nickname' => 'Spëtznumm',
 	'fbconnect-fullname' => 'Ganzen Numm',
 	'fbconnect-email' => 'E-Mailadress',
 	'fbconnect-language' => 'Sprooch',
+	'fbconnect-chooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt Iech een aus den Optiounen hei drënner eraussichen.',
 	'fbconnect-choosenick' => 'Äre Facbook-Profilnumm ($1)',
 	'fbconnect-choosefirst' => 'Äre Virnumm ($1)',
 	'fbconnect-choosefull' => 'Äre ganzen Numm ($1)',
+	'fbconnect-chooseauto' => 'En Numm deen automatesch generéiert gouf ($1)',
 	'fbconnect-choosemanual' => 'En Numm vun Ärer Wiel:',
 	'fbconnect-chooseexisting' => 'E Benotzerkont deen et op dëser Wiki gëtt',
 	'fbconnect-chooseusername' => 'Benotzernumm:',
 	'fbconnect-choosepassword' => 'Passwuert:',
+	'fbconnect-updateuserinfo' => 'Dës perséinlech Informatioun aktualiséieren:',
+	'fbconnect-alreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
+
+Wann Dir Facebook-Connect benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:Connect/Convert|Äre Benotzerkont ëmwandelen Fir Facebook-Connect ze benotzen]].",
 	'fbconnect-prefstext' => 'Facebook-Connect',
 	'fbconnect-link-to-profile' => 'Facebook-Profil',
 );
@@ -1167,6 +1175,26 @@ Muitos destes elementos podem ser incuídos no texto wiki e serão apresentados 
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Perfil no Facebook',
 	'fbconnect-prefs-can-be-updated' => 'Pode actualizar estes elementos a qualquer altura, no separador "$1" das suas preferências.',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'fbconnect-comm' => 'Comunicação',
+	'fbconnect-error' => 'Erro de verificação',
+	'fbconnect-cancel' => 'Operação cancelada',
+	'fbconnect-canceltext' => 'A operação anterior foi cencelada pelo usuário.',
+	'fbconnect-invalid' => 'Opção inválida',
+	'fbconnect-nickname' => 'Apelido',
+	'fbconnect-fullname' => 'Nome completo',
+	'fbconnect-email' => 'Endereço de e-mail',
+	'fbconnect-language' => 'Língua',
+	'fbconnect-choosefirst' => 'Seu primeiro nome ($1)',
+	'fbconnect-choosefull' => 'Seu nome completo ($1)',
+	'fbconnect-choosemanual' => 'Um nome de sua escolha:',
+	'fbconnect-chooseusername' => 'Nome de usuário:',
+	'fbconnect-choosepassword' => 'Senha:',
 );
 
 /** Russian (Русский)

@@ -2663,11 +2663,12 @@ Nowša wersija $2 steji na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 /** Hungarian (Magyar)
  * @author Dani
  * @author Glanthor Reviol
+ * @author Misibacsi
  */
 $messages['hu'] = array(
 	'apc' => 'APC-információ',
 	'apc-desc' => "[[Special:APC|APC gyorstótár megtekintése és beállítása]] ''MediaWiki''vel",
-	'right-apc' => 'a Special:APC összes funkciójának használata',
+	'right-apc' => 'Az [[Special:APC|APC]] összes funkciójának használata',
 	'viewapc-apc-not-available' => 'A gyorítótárinformációk nem elérhetőek.
 Úgy tűnik, hogy az APC nem fut.',
 	'viewapc-clear-confirm' => 'Szeretnéd kiüríteni a gyorsítótárat?',

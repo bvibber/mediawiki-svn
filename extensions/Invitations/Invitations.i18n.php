@@ -1408,6 +1408,7 @@ $messages['te'] = array(
 	'invitations-feature-pagetitle' => 'ఆహ్వాన నిర్వహణ - $1',
 	'invitations-feature-access' => '<i>$1</i>ని వాడడానికి ప్రస్తుతం మీకు అనుమతి ఉంది.',
 	'invitations-feature-numleft' => 'మీ దగ్గర  ఇంకా  {{PLURAL:$2|ఒక ఆహ్వానము ఉంది|$2 ఆహ్వనాలలో<b>$1</b> మిగిలివున్నాయి}}.',
+	'invitations-feature-notallowed' => '<i>$1</i>ని ఉపయోగించడానికి మీకు అనుమతి లేదు.',
 	'invitations-inviteform-title' => '$1ని వాడడానికి ఓ వాడుకరిని ఆహ్వానించండి',
 	'invitations-inviteform-username' => 'ఆహ్వానించాల్సిన వాడుకరి',
 	'invitations-inviteform-submit' => 'ఆహ్వానించు',

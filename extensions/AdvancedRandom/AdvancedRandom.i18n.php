@@ -429,6 +429,13 @@ $messages['mk'] = array(
 Може да се користи како [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] за добивање на случајна страница за разговор на некоја избрана статија, или пак како [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] за добивање на случајна GFDL податотека',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'advancedrandom' => 'നൂതന ക്രമരഹിതം',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

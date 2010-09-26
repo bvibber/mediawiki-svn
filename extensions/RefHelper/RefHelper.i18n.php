@@ -1170,9 +1170,13 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'refhelper-refcreate_failure' => '[[$1]] అనే పుట ఇప్పటికే ఉంది!',
 	'refhelper-label_authorsurname' => 'ఇంటిపేరు:',
+	'refhelper-title' => 'శీర్షిక:',
 	'refhelper-pages' => 'పేజీలు:',
 	'refhelper-year' => 'సంవత్సరం:',
+	'refhelper-category' => 'వర్గం $1:',
+	'refhelper-create' => 'సృష్టించు',
 	'refhelper-search' => 'వెతుకు',
 );
 

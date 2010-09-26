@@ -1289,6 +1289,8 @@ $messages['te'] = array(
 	'errorhandler-error-user-error' => 'వాడుకరి పొరపాటు',
 	'errorhandler-error-user-warning' => 'వాడుకరి హెచ్చరిక',
 	'errorhandler-error-user-notice' => 'వాడుకరి గమనిక',
+	'errorhandler-msg-text' => '$1 : $2 $3 లో ($4వ పంక్తి)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> <b>$3</b>లో (<b>$4</b>వ పంక్తి)',
 	'errorhandler-trace-line' => '$1 (లైను $2): $3',
 );
 

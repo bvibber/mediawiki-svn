@@ -1149,6 +1149,8 @@ $messages['te'] = array(
 	'onlinestatus-js-changed' => 'మీ స్థితిని "$1"కి మార్చాం',
 	'onlinestatus-tab' => 'స్థితి',
 	'onlinestatus-toggles-desc' => 'మీ స్థితి:',
+	'onlinestatus-toggles-explain' => 'మీరు ఆన్‌లైనులో ఉన్నారో లేదో ఇతర వాడుకరులకు మీ వాడుకరి పుటలో చూపించే అవకాశాన్ని కల్పిస్తుంది.',
+	'onlinestatus-toggles-show' => 'నా వాడుకరి పుటలో ఆన్‌లైన్ స్థితిని చూపించు',
 );
 
 /** Tagalog (Tagalog)

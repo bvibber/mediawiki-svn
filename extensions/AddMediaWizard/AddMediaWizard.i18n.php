@@ -318,6 +318,13 @@ $messages['mk'] = array(
 	'addmediawizard-desc' => 'Помошник за додавање мултимедијални содржини, изработен од Kaltura во соработка со Фондацијата Викимедија.',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'addmediawizard-desc' => 'വിക്കിമീഡിയ ഫൗണ്ടേഷനും കൾടറയും പരസ്പരപങ്കാളിത്തത്തോടെ വികസിപ്പിച്ചെടുത്ത മീഡിയാ ചേർക്കൽ സഹായി',
+);
+
 /** Malay (Bahasa Melayu)
  * @author CoolCityCat
  */

@@ -160,6 +160,7 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Gwendal
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'articleassessment' => 'Priziadenn pennadoù',
@@ -178,7 +179,7 @@ $messages['br'] = array(
 	'articleassessment-articlerating' => 'Priziadenn ar bajenn',
 	'articleassessment-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
-	'articleassessment-thanks' => 'Trugarez! Ho priziadenn zo bet enrollet.',
+	'articleassessment-thanks' => 'Trugarez ! Ho priziadenn zo bet enrollet.',
 	'articleassessment-featurefeedback' => 'Roit deomp ho <span class="feedbacklink">soñjoù</span> diwar-benn an arc\'hweladur-mañ.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|briziadenn|priziadenn}})',
 	'articleassessment-stalemessage-norevisioncount' => "Ar bajenn-mañ a zo bet ''adwelet'' abaoe ho priziadenn.
@@ -536,6 +537,23 @@ Možda ju želite ocijeniti ponovo.",
 	'articleassessment-survey-submit' => 'Pošalji',
 	'articleassessment-survey-title' => 'Molimo odgovorite na nekoliko pitanja',
 	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
+);
+
+/** Hungarian (Magyar)
+ * @author Misibacsi
+ */
+$messages['hu'] = array(
+	'articleassessment-yourfeedback' => 'Visszajelzés',
+	'articleassessment-submit' => 'Küldés',
+	'articleassessment-rating-neutrality' => 'Semleges:',
+	'articleassessment-rating-completeness' => 'Teljes:',
+	'articleassessment-rating-readability' => 'Olvashatóság:',
+	'articleassessment-articlerating' => 'Az oldal értékelése',
+	'articleassessment-error' => 'Hiba történt. 
+ Kérjük, próbálkozzon később.',
+	'articleassessment-survey-answer-whyrated-other' => 'Egyéb',
+	'articleassessment-survey-question-useful-iffalse' => 'Miért?',
+	'articleassessment-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
 );
 
 /** Interlingua (Interlingua)
@@ -1117,6 +1135,31 @@ $messages['ru'] = array(
 	'articleassessment-survey-submit' => 'Отправить',
 	'articleassessment-survey-title' => 'Пожалуйста, ответьте на несколько вопросов',
 	'articleassessment-survey-thanks' => 'Спасибо за участие в опросе.',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'articleassessment' => 'Ыстатыйаны сыаналааһын',
+	'articleassessment-desc' => 'Ыстатыйаны сыаналааһын (тургутуллар барыла)',
+	'articleassessment-yourfeedback' => 'Эн санааҥ',
+	'articleassessment-pleaserate' => 'Бука диэн, сынньана таарыйа, бу ыстатыйаны сыаналаа эрэ',
+	'articleassessment-submit' => 'Ыытарга',
+	'articleassessment-rating-wellsourced' => 'Источниктар:',
+	'articleassessment-rating-neutrality' => 'Тэҥ сыһыан:',
+	'articleassessment-rating-completeness' => 'Толорута:',
+	'articleassessment-rating-readability' => 'Ааҕыллыыта:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Бу сирэйгэ баар билии источниктара төһө толору бэриллибиттэрий уонна онтуктара төһө бигэлэрий?',
+	'articleassessment-rating-neutrality-tooltip' => 'Бу сирэй бу тиэмэҕэ баар туох баар санаалары барыларын тэҥҥэ биэрбит дуо?',
+	'articleassessment-rating-completeness-tooltip' => 'Бу тиэмэ сүрүн суолталара ыстатыйаҕа толору арыллыбыттар дуо?',
+	'articleassessment-rating-readability-tooltip' => 'Бу сирэй сөпкө аттарыллан, бэркэ суруллубут дии саныыгын дуо?',
+	'articleassessment-articlerating' => 'Сирэйи сыаналааһын',
+	'articleassessment-error' => 'Алҕас таҕыста.
+Бука диэн хойутуу хос боруобалаар.',
+	'articleassessment-thanks' => 'Махтал! Сыанабылыҥ бигэргэтилиннэ.',
+	'articleassessment-featurefeedback' => 'Бу туһунан <span class="feedbacklink">бэйэҥ санааҕын</span> эт эрэ.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|сыанабыл|ахсааннаах сыанабыл}})',
 );
 
 /** Tagalog (Tagalog)

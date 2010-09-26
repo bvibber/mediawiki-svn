@@ -56,9 +56,12 @@ $messages['de'] = array(
 
 /** French (Français)
  * @author Peter17
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'variablepage-desc' => 'Redirection de page légère et variable',
+	'variablepage' => 'PageVariable',
+	'variablepage-navlink_text' => 'Faire un don',
+	'variablepage-desc' => 'Redirection légère vers une page variable',
 );
 
 /** Galician (Galego)
@@ -117,8 +120,9 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Maacht en Don',
-	'variablepage-desc' => 'Erméiglecht eng ressourcschounend variabel Viruleedung vu Säiten',
+	'variablepage-desc' => 'Erméiglecht eng ressourceschounend variabel Viruleedung vu Säiten',
 );
 
 /** Macedonian (Македонски)

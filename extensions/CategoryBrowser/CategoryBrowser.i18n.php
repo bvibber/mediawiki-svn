@@ -799,6 +799,26 @@ $messages['ru'] = array(
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categorybrowser' => 'వర్గ విహారిణి',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|ఉపవర్గం|ఉపవర్గాలు}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
+	'cb_previous_items_link' => 'గత',
+	'cb_next_items_link' => 'తదుపరి',
+	'cb_next_items_stats' => ' ($1 నుండి)',
+	'cb_cat_subcats' => 'ఉపవర్గాలు',
+	'cb_cat_pages' => 'పుటలు',
+	'cb_cat_files' => 'దస్త్రాలు',
+	'cb_apply_button' => 'ఆపాదించు',
+	'cb_all_op' => 'అన్నీ',
+	'cb_or_op' => 'లేదా',
+	'cb_and_op' => 'మరియు',
+	'cb_edit_remove_hint' => 'వీలైతే, తొలగించు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

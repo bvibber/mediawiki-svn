@@ -2049,6 +2049,8 @@ $messages['te'] = array(
 	'imagetagging-inthisimage' => 'ఈ బొమ్మలో: $1',
 	'imagetagging-new' => '<sup><span style="color:red">కొత్తది!</span></sup>',
 	'imagetagging-tagcancel-button' => 'రద్దుచేయి',
+	'imagetagging-imagetag-seemoreimages' => '"$1" యొక్క మరిన్ని చిత్రాలను చూడండి ($2)',
+	'imagetagging-taggedimages-title' => '"$1" యొక్క చిత్రాలు',
 );
 
 /** Tetum (Tetun)

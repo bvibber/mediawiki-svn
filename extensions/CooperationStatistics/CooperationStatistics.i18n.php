@@ -771,7 +771,7 @@ Från [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperati
 $messages['te'] = array(
 	'cooperationstatistics' => 'సహకార గణాంకాలు',
 	'cooperationstatistics-tablearticle' => 'పేజీల సంఖ్య',
-	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
 );
 
 /** Tagalog (Tagalog)

@@ -75,6 +75,13 @@ $messages['cs'] = array(
 	'geolite-desc' => 'Jednoduché přesměrování GeoIp',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'geolite-desc' => 'Ailgyfeiriad GeoIP Pwysau Ysgafn',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

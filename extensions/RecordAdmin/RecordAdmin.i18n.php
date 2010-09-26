@@ -2051,6 +2051,7 @@ $messages['te'] = array(
 	'recordadmin-viewlink' => 'చూడు',
 	'recordadmin-editlink' => 'మార్చు',
 	'recordadmin-actions' => 'చర్యలు',
+	'recordadmin-properties' => 'లక్షణాలు',
 );
 
 /** Thai (ไทย)
