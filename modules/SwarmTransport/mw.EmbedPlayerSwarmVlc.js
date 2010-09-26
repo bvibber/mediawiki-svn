@@ -11,8 +11,9 @@ mw.EmbedPlayerSwarmVlc = {
 		var _this = this;		
 		var oggHttpSource = this.mediaElement.getSources( 'video/ogg' )[0];
 		$j( this ).html(
-			'<object classid="clsid:98FF91C0-A3B8-11DF-8555-0002A5D5C51B" ' +				
-				'id="' + this.pid + '" events="True" height="' + this.getHeight() + '" width="' + this.getWidth() + '"' +
+			'<object classid="clsid:98FF91C0-A3B8-11DF-8555-0002A5D5C51B" ' +
+				'name="' + this.pid + '" ' + 
+				'id="' + this.pid + '" events="True" height="' + this.getPlayerHeight() + '" width="' + this.getPlayerWidth() + '"' +
 				'>' +					
 					'<param name="ShowDisplay" value="True" />' +
 					'<param name="AutoLoop" value="False" />' +
@@ -23,6 +24,11 @@ mw.EmbedPlayerSwarmVlc = {
 			'</object>'
 		);
 		setTimeout( function() {
+			// make sure the object is the correct size ( IE appears  to do weird stuff with object tags )
+			$j( '#' + _this.pid ).css( {
+				'width' : _this.getPlayerWidth(),
+				'height' : _this.getPlayerHeight()
+			})
 			_this.monitor();
 		}, 100 );
 	}
@@ -33,7 +39,7 @@ if( typeof mw.EmbedPlayerVlc == 'undefined' ){
 	mw.log("Error:: EmbedPLayerVlc not defefined ");
 } else {
 	for( var i in mw.EmbedPlayerVlc ){
-		if( !mw.EmbedPlayerSwarmVlc[ i ] ){
+		if( typeof mw.EmbedPlayerSwarmVlc[ i ] == 'undefined' ){
 			mw.EmbedPlayerSwarmVlc[ i ] = mw.EmbedPlayerVlc[i];
 		}
 	};

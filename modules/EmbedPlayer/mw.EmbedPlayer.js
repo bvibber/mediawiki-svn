@@ -3526,12 +3526,14 @@ mw.EmbedTypes = {
 		try{
 			var javaEnabled = navigator.javaEnabled();
 		} catch ( e ){
+			
 		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
 		var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
+		
 		// Opera will switch off javaEnabled in preferences if java can't be found.
 		// And it doesn't register an application/x-java-applet mime type like Mozilla does.
-		if ( javaEnabled ) {
+		if ( javaEnabled && ( navigator.appName == 'Opera' ) ) {
 			this.players.addPlayer( cortadoPlayer );
 		}
 		
