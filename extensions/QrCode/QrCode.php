@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'QrCode',
-	'version' => '0.06',
+	'version' => '0.07',
 	'author' => array( 'David Raison' ), 
 	'url' => 'http://www.mediawiki.org/wiki/Extension:QrCode',
 	'descriptionmsg' => 'qrcode-desc'
@@ -149,7 +149,8 @@ class MWQrCode {
 		$tmpName = tempnam( $wgTmpDirectory, 'qrcode' );
 
 		QRcode::png( $this->_label, $tmpName, $this->_ecc, $this->_size, $this->_margin );
-		wfDebug( "Generated qrcode file $tmpName with ecc ".$this->_ecc.", ".$this->_size." and boundary ".$this->_margin.".\n" );
+		wfDebug( "QrCode::_generate: Generated qrcode file $tmpName with ecc ".$this->_ecc
+			.", ".$this->_size." and boundary ".$this->_margin.".\n" );
 
 		return $this->_publish( $tmpName );
 	}
@@ -162,14 +163,15 @@ class MWQrCode {
 	private function _getBot(){
 		$bot = User::createNew( $this->_qrCodeBot );
 		if( $bot != null ){
+			wfDebug( 'QrCode::_getBot: Created new user '.$this->_qrCodeBot."\n" );
 			//$bot->setPassword( '' );   // doc says empty password disables, but this triggers an exception
 		} else {
 			$bot = User::newFromName( $this->_qrCodeBot );
-			wfDebug( 'Created new user '.$this->_qrCodeBot );
 		}   
-		if( !$bot->isBot() ) {
+
+		if( !$bot->isAllowed( 'bot' ) ) {	// User::isBot() has been deprecated
 			$bot->addGroup( 'bot' );
-			wfDebug( 'Added user '.$this->_qrCodeBot.' to Bot group' );
+			wfDebug( 'QrCode::_getBot: Added user '.$this->_qrCodeBot.' to Bot group'."\n" );
 		}
 
 		return $bot;
@@ -178,7 +180,7 @@ class MWQrCode {
 	/**
 	 * Handle mediawiki file repositories
 	 * @param $tmpName, the file's temporary name
-	 * @return boolean value for success or failure of file "upload"
+	 * @return boolean false on failure or wikitext on success
 	 */
 	private function _publish( $tmpName ){
 		global $wgOut;
