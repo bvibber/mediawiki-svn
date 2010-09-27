@@ -251,10 +251,10 @@ mw.PlayerControlBuilder.prototype = {
 	* Get the fullscreen text css
 	*/
 	getInterfaceSizeTextCss: function() {
-		// Some arbitrary scale relative to window size
-		var textSize = ( $j( window ).width() / 8 ) + 20;
+		// Some arbitrary scale relative to window size ( 400px wide is text size 105% )
+		var textSize = this.embedPlayer.$interface.width() / 3.8;		
 		if( textSize < 95 )  textSize = 95;
-		if( textSize > 250 ) textSize = 250;
+		if( textSize > 200 ) textSize = 200;
 		//mw.log(' win size is: ' + $j( window ).width() + ' ts: ' + textSize );
 		return {
 			'font-size' : textSize + '%'
@@ -365,7 +365,10 @@ mw.PlayerControlBuilder.prototype = {
 					mw.log(' should update position: ' +  $j( this ).css( 'position' ) );
 				}
 			} );
-		} )
+			
+			// Resize the timed text font size per new player width	
+			$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss() );		
+		} );
 		
 		// Set the player height width: 
 		$j( embedPlayer ).css( {
@@ -373,9 +376,7 @@ mw.PlayerControlBuilder.prototype = {
 		} )
 		// Animate a zoom ( while keeping aspect )
 		.animate( _this.getFullscreenPlayerCss() );
-		
-		// Resize the timed text font size per window width	
-		$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss() );		
+				
 		
 		// Reposition play-btn-large ( this is unfortunately not easy to position with 'margin': 'auto'
 		$interface.find('.play-btn-large').animate( _this.getFullscreenPlayButtonCss() )		
@@ -482,6 +483,9 @@ mw.PlayerControlBuilder.prototype = {
 			// Restore the body scroll bar
 			$j('body').css( 'overflow', 'auto' );
 			
+			// Resize the timed text font size per window width	
+			$interface.find( '.track' ).css( _this.getInterfaceSizeTextCss() );
+			
 		} );
 		mw.log( 'restore embedPlayer:: ' + embedPlayer.getWidth() + ' h: ' + embedPlayer.getHeight());
 		// Restore the player: 
@@ -496,11 +500,7 @@ mw.PlayerControlBuilder.prototype = {
 			'left' 	: ( ( embedPlayer.getPlayerWidth() - this.getComponentWidth( 'playButtonLarge' ) ) / 2 ),
 			'top'	: ( ( embedPlayer.getPlayerHeight() -this.getComponentHeight( 'playButtonLarge' ) ) / 2 )
 		} );
-		
-		// Restore text size: 
-		$interface.find( '.track' ).css({
-			'font-size' : '100%'
-		})
+				
 	},
 	
 	/**
@@ -616,7 +616,7 @@ mw.PlayerControlBuilder.prototype = {
 		if(! this.embedPlayer )
 			return ;
 		if( this.embedPlayer.getPlayerElement ){
-			$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' )
+			$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
 		}
 		mw.log( 'showControlBar' );
 		// Move up text track if present
