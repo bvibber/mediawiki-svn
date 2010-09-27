@@ -174,9 +174,9 @@ mw.EmbedPlayerVlc = {
 		if ( !this.playerElement )
 			return ;
 		try{
-			mw.log( 'state:' + this.playerElement.input.state);
-			mw.log('time: ' + this.playerElement.input.time);
-			mw.log('pos: ' + this.playerElement.input.position);
+			//mw.log( 'state:' + this.playerElement.input.state);
+			//mw.log('time: ' + this.playerElement.input.time);
+			//mw.log('pos: ' + this.playerElement.input.position);
 			if ( this.playerElement.log.messages.count > 0 ) {
 				// there is one or more messages in the log
 				var iter = this.playerElement.log.messages.iterator();
@@ -302,9 +302,12 @@ mw.EmbedPlayerVlc = {
 	*/
 	pause : function() {
 		this.parent_pause(); // update the interface if paused via native control
-		if ( this.getPlayerElement() ) {
-			alter('togglePause:' + document[this.pid].playlist.togglePause );
-			document[this.pid].playlist.togglePause();
+		if ( this.getPlayerElement() ) {			
+			try{
+				this.playerElement.playlist.togglePause();				
+			} catch( e ){
+				mw.log("EmbedPlayerVlc could not pause video " + e);
+			}
 		}
 	},
 	
@@ -355,12 +358,8 @@ mw.EmbedPlayerVlc = {
 	/**
 	* Get the embed vlc object
 	*/ 
-	getPlayerElement : function() {
-		if( $j.browser.msie ){
-			this.playerElement = document[this.pid];
-		}else{
-			this.playerElement = $j( '#' + this.pid ).get(0);
-		}
+	getPlayerElement : function() {	
+		this.playerElement = $j( '#' + this.pid ).get(0);
 		return this.playerElement;		
 	}
 };

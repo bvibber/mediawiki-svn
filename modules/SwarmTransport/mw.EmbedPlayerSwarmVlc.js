@@ -13,7 +13,7 @@ mw.EmbedPlayerSwarmVlc = {
 		$j( this ).html(
 			'<object classid="clsid:98FF91C0-A3B8-11DF-8555-0002A5D5C51B" ' +
 				'name="' + this.pid + '" ' + 
-				'id="' + this.pid + '" events="True" height="' + this.getPlayerHeight() + '" width="' + this.getPlayerWidth() + '"' +
+				'id="' + this.pid + '" events="True" target="" ' +
 				'>' +					
 					'<param name="ShowDisplay" value="True" />' +
 					'<param name="AutoLoop" value="False" />' +
