@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="phpundercontrol.org" default="build" basedir=".">
-  <target name="build" depends="uptodate,init,test-static,apidoc,phpunit" />
+  <target name="build" depends="uptodate,init,apidoc,phpunit" />
   <property file="build.properties"/>
 
   <!--
@@ -57,13 +57,9 @@
   </target>
 
   <target name="test-static" depends="prepare">
-    <parallel>
-      <antcall target="lint" />
-      <!-- <antcall target="checkstyle" /> -->
-    </parallel>
-    <!-- Took this out of the parallel run b/c of memory requirements -->
-    <!-- <antcall target="phpmd" /> -->
-    <!-- Do not run phpmd and pdepend parallel, there is a concurrency problem -->
+    <antcall target="lint" />
+    <antcall target="checkstyle" />
+    <antcall target="phpcb" />
     <!-- <antcall target="pdepend" /> -->
   </target>
 
@@ -124,14 +120,14 @@
   </target>
 
   <target name="phpunit" depends="prepare">
-    <exec executable="./phpunit" dir="${sourcedir}/maintenance/tests" failonerror="true">
-      <arg line="--log-junit ${builddir}/logs/junit.xml --coverage-clover ${builddir}/logs/phpunit.coverage.xml --coverage-html ${builddir}/coverage" />
+    <exec executable="phpunit" dir="${sourcedir}/maintenance/tests/phpunit" failonerror="true">
+      <arg line="--configuration suite.xml --log-junit ${builddir}/logs/junit.xml --coverage-clover ${builddir}/logs/phpunit.coverage.xml --coverage-html ${builddir}/coverage" />
     </exec>
   </target>
 
   <target name="phpcb">
     <exec executable="phpcb" dir="${sourcedir}">
-      <arg line="--log ${builddir}/logs --output ${builddir}/php-code-browser"/>
+      <arg line="--log ${builddir}/logs --source ${sourcedir} --output ${builddir}/php-code-browser"/>
     </exec>
   </target>
 

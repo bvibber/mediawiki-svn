@@ -23,17 +23,19 @@
       <merge dir="projects/${project.name}/build/logs"/>
       <delete every="1" unit="WEEK" />
       <gzip every="1" unit="DAY" />
-      <deleteartifacts every="1" unit="day" />
+      <deleteartifacts every="1" unit="DAY" />
     </log>
     <publishers>
+      <!-- disable this till we write a script to delete old artifacts. It takes up too much disk space per build.
+      <onsuccess>
       <artifactspublisher dir="projects/${project.name}/build/api"
                           dest="artifacts/${project.name}" subdirectory="api"/>
       <artifactspublisher dir="projects/${project.name}/build/coverage"
                           dest="artifacts/${project.name}" subdirectory="coverage"/>
-      <execute command="phpcb --log projects/${project.name}/build/logs
-                        --source projects/${project.name}/source
-                        --output projects/${project.name}/build/${project.name}"/>
-      <!-- <artifactspublisher dir="projects/${project.name}/build/php-code-browser" dest="artifacts/${project.name}" subdirectory="php-code-browser"/> -->
+      <artifactspublisher dir="projects/${project.name}/build/php-code-browser" dest="artifacts/${project.name}" subdirectory="php-code-browser"/>
+      </onsuccess>
+      -->
+
       <!-- <execute command="/usr/bin/phpuc graph logs/${project.name} artifacts/${project.name}"/> -->
       <!--
               Sends simple text emails after a project build. For nicer html emails,
