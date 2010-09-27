@@ -71,7 +71,7 @@ $messages['bpy'] = array(
  */
 $messages['br'] = array(
 	'dontswitchmeover-desc' => "Penndibab a dalvez d'an implijerien da zivizout hag-eñ e fell dezho mirout an tres dibabet ganto p'eo bet cheñchet an tres dre ziouer.",
-	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
+	'dontswitchmeover-pref' => 'Arabat cheñch tres ma etrefas pa cheñch ar gwiskadur dre ziouer',
 );
 
 /** Bosnian (Bosanski)

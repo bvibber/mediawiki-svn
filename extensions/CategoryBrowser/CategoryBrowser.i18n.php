@@ -214,10 +214,14 @@ $messages['bs'] = array(
 	'categorybrowser' => 'Preglednik kategorija',
 	'categorybrowser-desc' => 'Omogućuje [[Special:CategoryBrowser|posebnu stranicu]] za filtriranje najviše napunjenih kategorija te navigacija u njima putem AJAX interfejsa',
 	'cb_requires_javascript' => 'Proširenje za preglednik kategorija zahtjeva da JavaScript bude omogućen u pregledniku.',
+	'cb_ie6_warning' => 'Uređivač uslova ne radi u pregledniku Internet Explorer 6.0 ili ranijim verzijama.
+Međutim, pregledanje predefiniranih uslova bi trebalo raditi normalno.
+Molimo promijenite ili ažurirajte verziju vašeg preglednika, ako je moguće.',
 	'cb_show_no_parents_only' => 'Prikaži samo kategorije koje nemaju nadkategoriju',
 	'cb_cat_name_filter' => 'Pretraga kategorija po nazivu:',
 	'cb_cat_name_filter_clear' => 'Pritisnite za čišćenje filtera naziva kategorije',
 	'cb_cat_name_filter_ci' => 'Ne razlikuje velika slova',
+	'cb_copy_line_hint' => 'Koristite dugmad [+] i [>+] za kopiranje i lijepljenje operatora na odabrani izraz',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategorije|podkategorija}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|stranica|stranice|stranica}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteke|datoteka}}',
@@ -235,7 +239,11 @@ $messages['bs'] = array(
 	'cb_edit_left_hint' => 'Premjesti lijevo, ako je moguće',
 	'cb_edit_right_hint' => 'Premjesti desno, ako je moguće',
 	'cb_edit_remove_hint' => 'Obriši, ako je moguće',
+	'cb_edit_copy_hint' => 'Kopiraj operator u privremenu ostavu',
 	'cb_edit_append_hint' => 'Ubaci operator na posljednju poziciju',
+	'cb_edit_clear_hint' => 'Očisti trenutni izraz (odaberi sve)',
+	'cb_edit_paste_hint' => 'Zalijepi operator na trenutnu poziciju, ako je moguće',
+	'cb_edit_paste_right_hint' => 'Zalijepi operator na slijedeću poziciju, ako je moguće',
 );
 
 /** German (Deutsch)

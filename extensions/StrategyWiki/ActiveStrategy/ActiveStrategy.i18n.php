@@ -48,8 +48,8 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'activestrategy' => 'Strolladoù labour oberiant',
-	'active-strategy-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar strollad labour',
+	'activestrategy' => 'Strategiezh oberiant',
+	'active-strategy-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar steuñvekadur strategel',
 	'active-strategy-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 	'nedits' => '$1 {{PLURAL:$1|kemm|kemm}}',
 );

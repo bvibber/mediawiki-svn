@@ -23,6 +23,14 @@ $messages['qqq'] = array(
 	'commentpages-desc' => '{{desc}}',
 );
 
+/** Jamaican Creole English (Jamaican Creole English)
+ * @author Yocahuna
+ */
+$messages['jam'] = array(
+	'commentpages-desc' => 'Kament piej fi di mien niemspies',
+	'nstab-comments' => 'Kamenchri',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

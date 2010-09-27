@@ -18,6 +18,16 @@ $messages['en'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store admin page',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'rdfio-desc' => 'Пашырае магчымасьці імпарту/экспарту RDF, уключаючы канчатковы пункт SPARQL, для сэмантычнай MediaWiki',
+	'rdfimport' => 'Імпарт RDF',
+	'rdfio-arc2admin-desc' => 'Старонка кіраваньня для сховішча ARC2 RDF для сэмантычнай MediaWiki',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

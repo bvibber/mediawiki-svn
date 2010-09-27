@@ -57,7 +57,7 @@ $messages['br'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Dre ziouer',
 	'categorymultisort-sortkey' => "Alc'hwez didoueziañ :",
 	'categorymultisort-go' => 'Mont',
-	'categorymultisort-default-sortkey' => "Alc'hwez didoueziañ dre ziouer:",
+	'categorymultisort-default-sortkey' => "Alc'hwez didoueziañ dre ziouer :",
 	'prefs-category' => 'Rummad',
 );
 

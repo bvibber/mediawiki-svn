@@ -3270,6 +3270,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Heldergeovane
  * @author Malafaya
+ * @author Waldir
  */
 $messages['pt'] = array(
 	'voctrain_Hello_World' => 'OLÁ WIKI!',
@@ -3311,7 +3312,7 @@ $messages['pt'] = array(
 	'voctrain_list_of_questions_and_answers' => 'lista de questões e respostas',
 	'voctrain_Answer_s_' => 'Resposta(s)',
 	'voctrain_logout' => 'sair',
-	'voctrain_Powered_by' => 'Promovido por',
+	'voctrain_Powered_by' => 'Potenciado por',
 	'voctrain_Exercise_complete' => 'Exercício completado',
 	'voctrain_Exercise_terminated' => 'Exercício terminado',
 	'voctrain_Start_a_new_exercise' => 'Iniciar um novo exercício',

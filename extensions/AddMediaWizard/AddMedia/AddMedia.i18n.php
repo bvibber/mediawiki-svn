@@ -7075,6 +7075,7 @@ $messages['ta'] = array(
 
 /** Telugu (తెలుగు)
  * @author Veeven
+ * @author ఆదిహిందు
  */
 $messages['te'] = array(
 	'mwe-upload-unknown-size' => 'తెలియని పరిమాణం',
@@ -7103,7 +7104,9 @@ $messages['te'] = array(
 	'mwe-summary' => 'సారాశం',
 	'mwe-date-of-work' => 'కృతి యొక్క తేదీ',
 	'mwe-ignore-any-warnings' => 'హెచ్చరికలను పట్టించుకోవద్దు',
-	'mwe-upload-in-progress' => 'ఎక్కింపు జరుగుతోంది (ఈ కిటికీని మూసేయకండి)',
+	'mwe-upload-in-progress' => 'ఎగుమతి జరుగుతోంది (ఈ కిటికీని మూసేయకండి)',
+	'mwe-uploaded-status' => 'ఎగుమతి అయింది',
+	'mwe-uploaded-time-remaining' => 'మిగిలిన సమయం',
 	'rsd_box_layout' => 'పెట్టె అమరిక',
 	'rsd_list_layout' => 'జాబితా అమరిక',
 	'rsd_results_desc' => '$1 నుండి $2 వరకు ఫలితాలు',
@@ -7117,6 +7120,7 @@ $messages['te'] = array(
 	'mwe-results_from' => '$1 నుండి ఫలితాలు',
 	'mwe-your-recent-uploads' => '$1 లోనికి ఇటీవలి మీ ఎక్కింపులు',
 	'mwe-no_recent_uploads' => 'ఇటీవలి ఎక్కింపులు లేవు',
+	'mwe-try-again-link' => 'మళ్లీ ప్రయత్నించండి',
 	'mwe-resource_page_desc' => 'వనరు పేజీ వివరణ:',
 	'rsd-wiki_commons-title' => 'వికీమీడియా కామన్స్',
 	'rsd-this_wiki-title' => 'ఈ వికీ',

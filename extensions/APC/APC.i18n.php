@@ -5880,10 +5880,13 @@ $messages['ta'] = array(
 /** Telugu (తెలుగు)
  * @author Ravichandra
  * @author Veeven
+ * @author ఆదిహిందు
  */
 $messages['te'] = array(
 	'apc' => 'APC సమాచారం',
+	'viewapc-mode-version-check' => 'వర్షన్ సరిచూసుకోండి',
 	'viewapc-info-general' => 'సాధారణ సమాచారం',
+	'viewapc-start-time' => 'ప్రారంభ సమయం',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
 	'viewapc-hits' => 'సందర్శనలు',
 	'viewapc-rps' => 'క్షణానికి $1 అభ్యర్థనలు',
@@ -5894,12 +5897,20 @@ $messages['te'] = array(
 	'viewapc-display-device' => 'పరికరం',
 	'viewapc-display-info' => 'పేరు',
 	'viewapc-display-type' => 'రకం',
+	'viewapc-display-mtime' => 'మార్చబడినది',
+	'viewapc-display-creation_time' => 'సృష్టించబడినది',
+	'viewapc-display-deletion_time' => 'తొలగించబడినది',
+	'viewapc-display-no-delete' => 'తొలగించబడలేదు',
 	'viewapc-display-mem_size' => 'పరిమాణం',
 	'viewapc-ls-options-legend' => 'ఎంపికలు',
 	'viewapc-ls-submit' => 'వెళ్ళు!',
 	'viewapc-ls-header-name' => 'పేరు',
 	'viewapc-ls-header-size' => 'పరిమాణం',
+	'viewapc-ls-header-created' => 'సృష్టించబడినది',
+	'viewapc-ls-header-deleted' => 'తొలగించబడినది',
+	'viewapc-ls-header-timeout' => 'సమయం పూర్తయింది',
 	'viewapc-ls-delete' => '[ఇప్పుడే తొలగించు]',
+	'viewapc-ls-scope-deleted' => 'తొలగించబడినది',
 	'viewapc-ls-scope-both' => 'రెండూ',
 	'viewapc-ls-sort-size' => 'పరిమాణం',
 	'viewapc-ls-sort-name' => 'పేరు',
