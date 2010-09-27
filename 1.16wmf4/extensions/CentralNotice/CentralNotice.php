@@ -1,31 +1,5 @@
 <?php
 
-// Override this URL to point to the central notice text loader...
-// This guy gets loaded from every page on every wiki, so caching helps!
-// /
-// Can be set to a directory where static files will be made --
-// match that up with $wgNoticeStaticDirectory and use rebuildTemplates.php
-// to fill out the directory tree.
-//
-// Default: Local path to Special:NoticeText
-//
-// Loads: $wgNoticeCentralPath/<project>/<lang>/centralnotice.js
-//
-$wgNoticeCentralPath = false;
-
-// Whether to use local notice loader
-$wgNoticeUseLocalNotice = false;
-
-// This guy does much the same, but with the local sitenotice/anonnotice.
-// Static generation isn't quite supported yet.
-//
-// Default: Local path to Special:NoticeLocal
-//
-// Loads: $wgNoticeLocalPath/sitenotice.js
-//   -or- $wgNoticeLocalPath/anonnotice.js
-//
-$wgNoticeLocalPath = false;
-
 // Override these per-wiki to pass on via the loader to the text system
 // for localization by language and project.
 // Actual user language is used for localization; $wgNoticeLang is used
@@ -33,8 +7,7 @@ $wgNoticeLocalPath = false;
 $wgNoticeLang = $wgLanguageCode;
 $wgNoticeProject = 'wikipedia';
 
-// List of available projects, which will be used to generate static
-// output .js in the batch generation...
+// List of available projects
 $wgNoticeProjects = array(
 	'wikipedia',
 	'wiktionary',
@@ -49,24 +22,16 @@ $wgNoticeProjects = array(
 	'wikispecies',
 );
 
-// Local filesystem path under which static .js output is written
-// for the central notice system.
-//
-// $wgNoticeCentralDirectory = "/mnt/uploads/centralnotice";
-//
-$wgNoticeCentralDirectory = false;
-
-// Local filesystem path under which static .js output is written
-// for this wiki's local sitenotice and anonnotice.
-//
-// $wgNoticeLocalDirectory = "/mnt/uploads/sitenotice/$wgDBname";
-//
-$wgNoticeLocalDirectory = false;
-
 // Enable the notice-hosting infrastructure on this wiki...
 // Leave at false for wikis that only use a sister site for the control.
 // All remaining options apply only to the infrastructure wiki.
 $wgNoticeInfrastructure = true;
+
+// The name of the database which hosts the centralized campaign data
+$wgCentralDBname = 'metawiki';
+
+// The path to Special Pages on the wiki that hosts the CentralNotice infrastructure
+$wgCentralPagePath = 'http://meta.wikimedia.org/wiki/';
 
 // Enable the loader itself
 // Allows to control the loader visibility, without destroying infrastructure
@@ -114,7 +79,7 @@ $wgGroupPermissions['sysop']['centralnotice-translate'] = true; // Only sysops c
 
 function efCentralNoticeSetup() {
 	global $wgHooks, $wgNoticeInfrastructure, $wgAutoloadClasses, $wgSpecialPages;
-	global $wgCentralNoticeLoader, $wgNoticeUseLocalNotice;
+	global $wgCentralNoticeLoader;
 
 	$dir = dirname( __FILE__ ) . '/';
 
@@ -122,103 +87,88 @@ function efCentralNoticeSetup() {
 		$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCentralNoticeSchema';
 		$wgHooks['BeforePageDisplay'][] = 'efCentralNoticeLoader';
 		$wgHooks['MakeGlobalVariablesScript'][] = 'efCentralNoticeDefaults';
-
-		if ( $wgNoticeUseLocalNotice ) {
-			$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
-			$wgAutoloadClasses['SpecialNoticeLocal'] = $dir . 'SpecialNoticeLocal.php';
-			$wgHooks['SiteNoticeBefore'][] = 'efCentralNoticeDisplayBefore';
-		} else {
-			$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplayAfter';
-		}
+		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplay';
 	}
-
-	$wgAutoloadClasses['NoticePage'] = $dir . 'NoticePage.php';
+	
+	$wgSpecialPages['BannerLoader'] = 'SpecialBannerLoader';
+	$wgAutoloadClasses['SpecialBannerLoader'] = $dir . 'SpecialBannerLoader.php';
+	
+	$wgSpecialPages['BannerListLoader'] = 'SpecialBannerListLoader';
+	$wgAutoloadClasses['SpecialBannerListLoader'] = $dir . 'SpecialBannerListLoader.php';
+	
+	$wgSpecialPages['BannerController'] = 'SpecialBannerController';
+	$wgAutoloadClasses['SpecialBannerController'] = $dir . 'SpecialBannerController.php';
 
 	if ( $wgNoticeInfrastructure ) {
 		$wgSpecialPages['CentralNotice'] = 'CentralNotice';
 		$wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
 		$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialCentralNotice.php';
-
-		$wgSpecialPages['NoticeText'] = 'SpecialNoticeText';
-		$wgAutoloadClasses['SpecialNoticeText'] = $dir . 'SpecialNoticeText.php';
-
+		
 		$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 		$wgAutoloadClasses['SpecialNoticeTemplate'] = $dir . 'SpecialNoticeTemplate.php';
+		
+		$wgSpecialPages['BannerAllocation'] = 'SpecialBannerAllocation';
+		$wgAutoloadClasses['SpecialBannerAllocation'] = $dir . 'SpecialBannerAllocation.php';
 		
 		$wgAutoloadClasses['CentralNoticeDB'] = $dir . 'CentralNotice.db.php';
 		$wgAutoloadClasses['TemplatePager'] = $dir . 'TemplatePager.php';
 	}
 }
 
-function efCentralNoticeSchema() {
-	global $wgDBtype, $wgExtNewTables, $wgExtNewFields;
-	
+function efCentralNoticeSchema( $updater = null ) {
 	$base = dirname( __FILE__ );
-	if ( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'cn_notices', $base . '/CentralNotice.sql' );
-		$wgExtNewFields[] = array( 'cn_notices', 'not_preferred', $base . '/patches/patch-notice_preferred.sql' );
-		$wgExtNewTables[] = array( 'cn_notice_languages', $base . '/patches/patch-notice_languages.sql' );
-		$wgExtNewFields[] = array( 'cn_templates', 'tmp_display_anon', $base . '/patches/patch-template_settings.sql' );
+	if ( $updater === null ) {
+		global $wgDBtype, $wgExtNewTables, $wgExtNewFields;
+
+		if ( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'cn_notices', $base . '/CentralNotice.sql' );
+			$wgExtNewFields[] = array( 'cn_notices', 'not_preferred', $base . '/patches/patch-notice_preferred.sql' );
+			$wgExtNewTables[] = array( 'cn_notice_languages', $base . '/patches/patch-notice_languages.sql' );
+			$wgExtNewFields[] = array( 'cn_templates', 'tmp_display_anon', $base . '/patches/patch-template_settings.sql' );
+			$wgExtNewTables[] = array( 'cn_notice_countries', $base . '/patches/patch-notice_countries.sql' );
+		}
+	} else {
+		if ( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'cn_notices', $base . '/CentralNotice.sql' ) );
+			$updater->addExtensionUpdate( array( 'addField', 'cn_notices', 'not_preferred', $base . '/patches/patch-notice_preferred.sql' ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'cn_notice_languages', $base . '/patches/patch-notice_languages.sql' ) );
+			$updater->addExtensionUpdate( array( 'addField', 'cn_templates', 'tmp_display_anon', $base . '/patches/patch-template_settings.sql' ) );
+			$updater->addExtensionUpdate( array( 'addTable', 'cn_notice_countries', $base . '/patches/patch-notice_countries.sql' ) );
+		}
 	}
 	return true;
 }
 
 function efCentralNoticeLoader( $out, $skin ) {
-	global $wgUser, $wgOut, $wgLang;
-	global $wgNoticeProject, $wgNoticeCentralPath, $wgNoticeLocalPath, $wgNoticeUseLocalNotice;
+	global $wgUser, $wgOut;
 
-	$lang = $wgLang->getCode();
-	$centralNotice = "$wgNoticeProject/$lang/centralnotice.js";
+	$centralLoader = SpecialPage::getTitleFor( 'BannerController' )->getLocalUrl();
 
-	if ( $wgNoticeCentralPath === false ) {
-		$centralLoader = SpecialPage::getTitleFor( 'NoticeText', $centralNotice )->getLocalUrl();
-	} else {
-		$centralLoader = "$wgNoticeCentralPath/$centralNotice";
-	}
-
-	// Load the notice text from <head>
+	// Insert the geo IP lookup into the <head>
+	$wgOut->addScriptFile( 'http://geoiplookup.wikimedia.org/' );
+	
+	// Insert the banner controller Javascript into the <head>
 	$wgOut->addScriptFile( $centralLoader );
-
-	if ( $wgNoticeUseLocalNotice ) {
-		$localNotice = ( is_object( $wgUser ) && $wgUser->isLoggedIn() )
-			? 'sitenotice.js'
-			: 'anonnotice.js';
-		if ( $wgNoticeLocalPath === false ) {
-			$localLoader = SpecialPage::getTitleFor( 'NoticeLocal', $localNotice )->getLocalUrl();
-		} else {
-			$localLoader = "$wgNoticeLocalPath/$localNotice";
-		}
-		$wgOut->addScriptFile( $localLoader );
-	}
 
 	return true;
 }
 
 function efCentralNoticeDefaults( &$vars ) {
-	global $wgNoticeUseLocalNotice;
-
-	// Initialize these variables to empty, so if the notice script fails
-	// we don't have any surprises.
-	$vars['wgNotice'] = '';
-	if ( $wgNoticeUseLocalNotice ) {
-		$vars['wgNoticeLocal'] = '';
-	}
+	global $wgNoticeProject;
+	// Initialize global Javascript variables. We initialize Geo with empty values so if the geo
+	// IP lookup fails we don't have any surprises.
+	$geo = (object)array();
+	$geo->{'city'} = '';
+	$geo->{'country'} = '';
+	$vars['Geo'] = $geo; // change this to wgGeo as soon as Mark updates on his end
+	$vars['wgNoticeProject'] = $wgNoticeProject;
 	return true;
 }
 
-function efCentralNoticeDisplayAfter( &$notice ) {
-	// Slip in load of the data...
+function efCentralNoticeDisplay( &$notice ) {
+	// setup siteNotice div
 	$notice =
-		Html::inlineScript( "if (wgNotice != '') document.writeln(wgNotice);" ) .
+		'<!-- centralNotice loads here -->'. // hack for IE8 to collapse empty div
 		$notice;
 	return true;
-}
-
-function efCentralNoticeDisplayBefore( &$notice ) {
-	// Slip in load of the data...
-	$notice = Html::inlineScript(
-		"if (wgNotice != '') document.writeln(wgNotice);" .
-		" if (wgNoticeLocal != '') document.writeln(wgNoticeLocal);"
-	);
-	return false;
 }
