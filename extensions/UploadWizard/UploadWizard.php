@@ -35,10 +35,15 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['UploadWizard'] = $dir . 'UploadWizard.i18n.php';
 $wgExtensionAliasesFiles['UploadWizard'] = $dir . 'UploadWizard.alias.php';
 
+# hooks!
+$wgAutoloadClasses['UploadWizardHooks'] = dirname( __FILE__ ) . '/UploadWizard.hooks.php';
+$wgHooks['selectUploadModule'][] = 'UploadWizardHooks::selectUploadModule';
+
 # Require modules, includeing the special page
 $wgAutoloadLocalClasses[ 'SpecialUploadWizard' ] = $dir . 'SpecialUploadWizard.php';
 $wgAutoloadLocalClasses[ 'SessionStash' ] = $dir . 'SessionStash.php';
 $wgAutoloadLocalClasses[ 'UploadWizardMessages' ] = $dir . 'UploadWizardMessages.php';
+$wgAutoloadLocalClasses[ 'UploadFromFileToStash' ] = $dir . 'UploadFromFileToStash.php';
 
 # Let the special page be a special center of unique specialness
 $wgSpecialPages['UploadWizard'] = 'SpecialUploadWizard';

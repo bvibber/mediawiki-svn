@@ -84,7 +84,7 @@ class SessionStash {
 	 * @param {String} name - this is used for directory hashing when storing. Otherwise not important
 	 * @param {String} path - path to file you want stashed
 	 * @param {Array} data - other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or version as keys here
-	 * @return {SessionStashItem} item
+	 * @return {SessionStashFile} file
 	 */
 	public function stashFile( $key, $path, $data=array() ) {
 		if ( !$key ) {

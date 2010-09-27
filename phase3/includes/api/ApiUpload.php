@@ -84,103 +84,33 @@ class ApiUpload extends ApiBase {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
+		// Check warnings if necessary
+		$warnings = $this->getApiWarnings();
 
-		//xdebug_start_trace();
-		// die("right before xdebug_break");
-		// xdebug_break();
-
-		if ( $this->mParams['stash'] ) {
-			wfDebug( "in stash\n" );
-			$result = array();
-
-			$warnings = $this->getApiWarnings();
-			if ( $warnings ) {
-				// is it really necessary to say 'result=warning' ?
-				$result['result'] = 'Warning';
-				$result['warnings'] = $warnings;
-			}
-
-			// this saves the file to a temp area and 
-			// stores the path in the session
-			$key = $this->mUpload->stashSession();
-			if ( !$key ) {
+		if ( $warnings ) {
+			$sessionKey = $this->mUpload->stashSession();
+			if ( !$sessionKey ) {
 				$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
-			} 
-			$result['sessionkey'] = $key;
-
-			try { 
-				$stash = new SessionStash();
-				$file = $stash->getFile( $key );
-			} catch (Exception $e) { 
-				$this->dieUsage( 'Obtaining stash file failed: ' . $e->getText(), 'stashfailed' );
 			}
-			
-			// return data to the client similar to an imageinfo call
-			$props = array( 
-				'url' => true, 
-				'size' => true, 
-				'sha1' => true, 
-				'mime' => true, 
-				'bitdepth' => true,
-				'metadata' => true 
-			);
 
-			$result[ 'imageinfo' ] = ApiQueryImageInfo::getInfo( $file, $props, $this->getResult(), null );
-			// XXX get the rest of the image info including exif data and so on
- 
-	
-			// move all this to the session, so it can look up the thumbnail itself, and return opaque url 
-			// with proper extension.
+			$result['sessionkey'] = $sessionKey;
 
-			// thumbnail
-			// XXX get default thumbnail width. Isn't this a global? Can't find in docs.
-			$thumbWidth = 120;
-			if ( array_key_exists( 'thumbWidth', $this->mParams ) ) { 
-				$thumbWidthParam = ( int )( $this->mParams['thumbWidth'] );
-				if ( $thumbWidthParam > 0 and $thumbWidthParam <= $file->getWidth() ) {
-					$thumbWidth = $thumbWidthParam;
-				}
-			}
-			$thumbnailImage = null;
-			if ( ! $thumbnailImage = $file->getThumbnail( $thumbWidth ) ) { 
-				$this->dieUsageMsg( 'Could not obtain thumbnail', 'nothumb' );
-			}
-			
-			$thumbFile = $thumbnailImage->thumbnailFile;
-			$result[ 'thumbnailimageinfo' ] = ApiQueryImageInfo::getInfo( $thumbFile, $props, $this->getResult(), null );
-
-			
+			// is it really necessary to say 'result=warning'
+			$result['result'] = 'Warning';
+			$result['warnings'] = $warnings;
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 
 		} else {
-
-			// Check warnings if necessary
-			$warnings = $this->getApiWarnings();
-
-			if ( $warnings ) {
-				$sessionKey = $this->mUpload->stashSession();
-				if ( !$sessionKey ) {
-					$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
-				}
-
-				$result['sessionkey'] = $sessionKey;
-
-				// is it really necessary to say 'result=warning'
-				$result['result'] = 'Warning';
-				$result['warnings'] = $warnings;
-				$this->getResult()->addValue( null, $this->getModuleName(), $result );
-
-			} else {
-				// Perform the upload
-				$result = $this->performUpload();
-				$this->getResult()->addValue( null, $this->getModuleName(), $result );
-			}
-
+			// Perform the upload
+			$result = $this->performUpload();
 		}
 
+		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+		
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
 	}
+
 
 	/**
 	 * Select an upload module and set it to mUpload. Dies on failure. If the
@@ -211,12 +141,14 @@ class ApiUpload extends ApiBase {
 			return false;
 			
 		} 
-		
+
+
 		// The following modules all require the filename parameter to be set
 		if ( is_null( $this->mParams['filename'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
 		}
-		
+			
+
 		if ( $this->mParams['sessionkey'] ) {
 			// Upload stashed in a previous request
 			$sessionData = $request->getSessionData( UploadBase::getSessionKeyName() );
@@ -231,7 +163,11 @@ class ApiUpload extends ApiBase {
 
 
 		} elseif ( isset( $this->mParams['file'] ) ) {
-			$this->mUpload = new UploadFromFile();
+			if ( isset( $this->mParams['stash'] ) and $this->mParams['stash'] ) {
+				$this->mUpload = new UploadFromFileToStash();
+			} else {
+				$this->mUpload = new UploadFromFile();
+			}
 			$this->mUpload->initialize(
 				$this->mParams['filename'],
 				$request->getUpload( 'file' )
@@ -455,7 +391,10 @@ class ApiUpload extends ApiBase {
 
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();
+
+		wfDebug( __METHOD__ . " result so far " . print_r( $result, 1 ) );
 		$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
+		wfDebug( __METHOD__ . " result with imageinfo " . print_r( $result, 1 ) );
 
 		return $result;
 	}
@@ -495,6 +434,10 @@ class ApiUpload extends ApiBase {
 			'url' => null,
 
 			'sessionkey' => null,
+
+			/* This is for UploadFromFileToStash.php in extensions/UploadWizard
+	 		   We can't add this dynamically?
+			   suggests that we should either define our own method or make this all core */
 			'stash' => array(
 				ApiBase::PARAM_DFLT => false,
 			)
