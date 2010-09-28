@@ -63,9 +63,7 @@
 	background: #f7f7f7;
 	float: left;
 }
-.article-assessment-wrapper #article-assessment-ratings {
-	width: 320px;
-}
+
 .article-assessment-wrapper #article-assessment-rate {
 	width: 650px;
 	margin-right: 10px;
@@ -180,7 +178,7 @@
 	display: none;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-count {
-	display: none;
+	opacity: 0;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-name {
 	color: #9f9f9f;

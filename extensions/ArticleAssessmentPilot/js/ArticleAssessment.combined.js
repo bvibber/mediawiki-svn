@@ -268,7 +268,8 @@
 				} );
 			},
 			'afterGetRatingData' : function( data ) {
-				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
+				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings,
+					userHasRated = false;
 				// add the correct data to the markup
 				if ( typeof data.query != 'undefined' && typeof data.query.articleassessment != 'undefined' &&
 						typeof data.query.articleassessment[0] != 'undefined' ) {
@@ -285,12 +286,15 @@
 							.find( '.article-assessment-rating-count' )
 							.html( label );
 						if( rating.userrating ) {
+							userHasRated = true;
 							// this user rated. Word. Show them their ratings
 							var $rateControl = $( '#' + rating.ratingdesc.replace( 'rating', 'rate' ) + ' .rating-field' );
 							$rateControl.stars( 'select', rating.userrating );
-							// oh let's show them the overall ratings too
-							$.ArticleAssessment.fn.showRatings();
 						}
+					}
+					// show the ratings if the user has rated
+					if( userHasRated ) {
+						$.ArticleAssessment.fn.showRatings();
 					}
 					// if the rating is more than 5 revisions old, mark it as stale
 					if ( typeof data.query.articleassessment[0].stale != 'undefined' ) {
@@ -485,9 +489,10 @@
 							.addClass( 'article-assessment-error-msg' )
 							.html( $.ArticleAssessment.fn.getMsg( 'articleassessment-error' ) )
 							.appendTo( $dialogDiv );
-						$dialogDiv
-							.dialog( 'option', 'height', $msgDiv.height() + 100 )
-							.removeClass( 'loading' );
+						$dialogDiv.removeClass( 'loading' );
+						$.ArticleAssessment.fn.withJUI( function() {
+							$dialogDiv.dialog( 'option', 'height', $msgDiv.height() + 100 )
+						} );
 					}
 				} );
 				return false;
