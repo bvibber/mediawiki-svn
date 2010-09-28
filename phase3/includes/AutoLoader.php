@@ -667,12 +667,12 @@ $wgAutoloadLocalClasses = array(
 	'UserloginTemplate' => 'includes/templates/Userlogin.php',
 
 	# includes/upload
+	'SessionStash' => 'includes/upload/SessionStash.php',
 	'UploadBase' => 'includes/upload/UploadBase.php',
 	'UploadFromStash' => 'includes/upload/UploadFromStash.php',
 	'UploadFromFile' => 'includes/upload/UploadFromFile.php',
 	'UploadFromFileToStash' => 'includes/upload/UploadFromFileToStash.php',
 	'UploadFromUrl' => 'includes/upload/UploadFromUrl.php',
-	'SessionStash' => 'includes/upload/SessionStash.php',
 
 	# languages
 	'Language' => 'languages/Language.php',
