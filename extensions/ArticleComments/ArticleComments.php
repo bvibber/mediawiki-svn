@@ -93,9 +93,9 @@ function wfArticleCommentsParserHook( $text, $params = array(), &$parser ) {
  * @param Title $title The title of the article on which the form will appear.
  * @param Array $params A hash of parameters containing rendering options.
  */
-function displayArticleCommentForm( $nsList = null, $title = null, $params = array() ) {
+function displayArticleCommentForm( $title = null, $params = array() ) {
 
-    global $wgRequest;
+    global $wgRequest, $wgArticleCommentsNSDisplayList;
     
     # Short circuit for anything other than action=view or action=purge
     if ($wgRequest->getVal('action') && 
@@ -103,20 +103,17 @@ function displayArticleCommentForm( $nsList = null, $title = null, $params = arr
         $wgRequest->getVal('action')!='purge'
     ) return;
     
+    # Short-circuit if displayl ist is undefined or null
+    if ($wgArticleCommentsNSDisplayList==null) return;
+
     # Use wgTitle if title is not specified
     if ($title==null) {
         global $wgTitle;
         $title = $wgTitle;
     }
 
-    # Use wgArticleCommentsNSDisplayList if nsList is not specified
-    if ($nsList==null) {
-        global $wgArticleCommentsNSDisplayList;
-        $nsList = $wgArticleCommentsNSDisplayList;
-        $nsList = ($nsList==null?array(NS_MAIN):$nsList);
-    }
-
     # Ensure that the namespace list is an actual list
+    $nsList = $wgArticleCommentsNSDisplayList;
     if (!is_array($nsList)) $nsList = array($nsList);
     
     # Display the form
@@ -355,11 +352,12 @@ function specialProcessComment() {
     }
     
     
-    # Check if talk NS is in the Namespace whitelist
-    global $wgArticleCommentsNSWhitelist;
+    # Check if talk NS is in the Namespace display list
+    # Note: if so, then there's no need to confirm that <comments /> appears in the article or talk page.
+    global $wgArticleCommentsNSDisplayList;
     $skipCheck = (
-        is_array($wgArticleCommentsNSWhitelist) ?
-        in_array($talkTitle->getNamespace(),$wgArticleCommentsNSWhitelist):
+        is_array($wgArticleCommentsNSDisplayList) ?
+        in_array($talkTitle->getNamespace(),$wgArticleCommentsNSDisplayList):
         false
     );
 
