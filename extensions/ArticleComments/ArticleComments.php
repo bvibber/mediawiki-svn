@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.3
+ * @version 0.4
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -10,8 +10,8 @@
  *     This is a MediaWiki (http://www.mediawiki.org/) extension which adds support
  *     for comment sections within article pages, or directly into all pages.
  * Requirements:
- *     This extension is made to work with MediaWiki 1.6.x, 1.8.x or 1.9.x running against
- *     PHP 4.3.x, 5.x or higher.
+ *     MediaWiki 1.6.x, 1.8.x, 1.9.x or higher
+ *     PHP 4.x, 5.x or higher
  * Installation:
  *     1. Drop this script (ArticleComments.php) in $IP/extensions
  *         Note: $IP is your MediaWiki install dir.
@@ -22,6 +22,9 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.4:
+ *         Updated default spam filtering code.
+ *         Abstracted Spam filter via hook (ArticleCommentsSpamCheck) to aid future spam checkers
  *     version 0.3:
  *         Added rudimentary spam filtering based on common abuses.
  *     version 0.2:
@@ -68,7 +71,7 @@ $wgExtensionCredits['other'][] = array(
     'author'=>'Jim R. Wilson - wilson.jim.r &lt;at&gt; gmail.com',
     'url'=>'http://jimbojw.com/wiki/index.php?title=ArticleComments',
     'description'=>'Enables comment sections on article pages.',
-    'version'=>'0.3'
+    'version'=>'0.4'
 );
 
 # Add Extension Functions
@@ -239,12 +242,14 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
 
 # Attach Hooks
 $wgHooks['ParserAfterTidy'][] = 'wfProcessEncodedContent';
+$wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
 
 /**
  * Processes HTML comments with encoded content.
  * Usage: $wgHooks['OutputPageBeforeHTML'][] = 'wfProcessEncodedContent';
- * @param $out Handle to an OutputPage object (presumably $wgOut).
- * @param $test Article/Output text.
+ * @param OutputPage $out Handle to an OutputPage object presumably $wgOut (passed by reference).
+ * @param String $text Article/Output text (passed by reference)
+ * @return Boolean Always tru to give other hooking methods a chance to run.
  */
 function wfProcessEncodedContent($out, $text) {
     $text = preg_replace(
@@ -379,18 +384,12 @@ function specialProcessComment() {
         );
         return;
     }
-    
-    # Rudimentary spam protection
-    $spampatterns = array(
-        '%\\[url=(https?|ftp)://%smi',
-        '%<a +href=[\'"]?(https?|ftp)://%smi'
-    );
+
+    # Run spam checks
     $isspam = false;
-    foreach ($spampatterns as $sp) {
-        foreach (array($comment, $commenterName, $commenterURL) as $field) {
-            $isspam = $isspam || preg_match($sp, $field);
-        }
-    }
+	wfRunHooks( 'ArticleCommentsSpamCheck', array( $comment , $commenterName, $commenterURL, &$isspam ) );
+
+    # If it's spam - it's gone!
     if ($isspam) {
         $wgOut->setPageTitle(wfMsgForContent($ac.'submission-failed'));
         $wgOut->addWikiText(
@@ -400,7 +399,7 @@ function specialProcessComment() {
         );
         return;
     }
-
+    
     # Initialize the talk page's content.
     if ( $talkContent == '' ) {
         $talkContent = wfMsgForContent($ac.'talk-page-starter', $title->getPrefixedText() );
@@ -435,6 +434,47 @@ function specialProcessComment() {
     $wgOut->setPageTitle(wfMsgForContent($ac.'submission-succeeded'));
     $wgOut->addWikiText(wfMsgForContent($ac.'submission-success', $title->getPrefixedText()));
     $wgOut->addWikiText(wfMsgForContent($ac.'submission-view-all', $talkTitle->getPrefixedText()));
+}
+
+/**
+ * Checks ArticleComment fields for SPAM.
+ * Usage: $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
+ * @param String $comment The comment body submitted (passed by value)
+ * @param String $commenterName Name of commenter (passed by value)
+ * @param String $commenterURL Website URL provided for comment (passed by value)
+ * @param Boolean $isspam Whether the comment is spam (passed by reference)
+ * @return Boolean Always true to indicate other hooking methods may continue to check for spam.
+ */
+function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL, $isspam) {
+
+    # Short-circuit if spam has already been determined
+    if ($isspam) return true;
+
+    # Rudimentary spam protection
+    $spampatterns = array(
+        '%\\[url=(https?|ftp)://%smi',
+        '%<a\\s+[^>]*href\\s*=\\s*[\'"]?(https?|ftp)://%smi'
+    );
+    foreach ($spampatterns as $sp) {
+        foreach (array($comment, $commenterName, $commenterURL) as $field) {
+            $isspam = $isspam || preg_match($sp, $field);
+        }
+    }
+    
+    # Check for bad input for commenterName (seems to be a popular spam location)
+    $spampatterns = array(
+        '%(https?|ftp)://%smi',
+        '%(\\n|\\r)%smi'
+    );
+    foreach ($spampatterns as $sp) {
+        $isspam = $isspam || preg_match($sp, $commenterName);
+    }
+    
+    # Fail for length violations
+    $isspam = $isspam || strlen($commenterName)>255 || strlen($commenterURL)>300;
+    
+    # Give other implementors a chance.
+    return true;
 }
 
 //</source>
