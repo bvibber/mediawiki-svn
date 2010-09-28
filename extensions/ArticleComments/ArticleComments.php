@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.2
+ * @version 0.3
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -22,6 +22,8 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.3:
+ *         Added rudimentary spam filtering based on common abuses.
  *     version 0.2:
  *         Fixed form post method to use localized version of "Special"
  *         Added option for making the form automatically visible (no "Leave a comment..." link)
@@ -66,7 +68,7 @@ $wgExtensionCredits['other'][] = array(
     'author'=>'Jim R. Wilson - wilson.jim.r &lt;at&gt; gmail.com',
     'url'=>'http://jimbojw.com/wiki/index.php?title=ArticleComments',
     'description'=>'Enables comment sections on article pages.',
-    'version'=>'0.2'
+    'version'=>'0.3'
 );
 
 # Add Extension Functions
@@ -283,6 +285,7 @@ function setupSpecialProcessComment() {
     $wgMessageCache->addMessage('article-comments-prefilled-comment-text', '');
     $wgMessageCache->addMessage('article-comments-user-is-blocked', 'Your user account is currently blocked from editing [[$1]].');
     $wgMessageCache->addMessage('article-comments-new-comment', "\n== \$1 ==\n\n<div class='commentBlock'>\n\$2\n\n--\$3 \$4\n</div>\n");
+    $wgMessageCache->addMessage('article-comments-no-spam', "At least one of the submitted fields was flagged as spam.");
     $wgMessageCache->addMessage('processcomment', 'Process Article Comment');
 }
 
@@ -372,6 +375,27 @@ function specialProcessComment() {
         $wgOut->addWikiText(
             "<div class='errorbox'>".
             wfMsgForContent($ac.'no-comments', $title->getPrefixedText()).
+            "</div>"
+        );
+        return;
+    }
+    
+    # Rudimentary spam protection
+    $spampatterns = array(
+        '%\\[url=(https?|ftp)://%smi',
+        '%<a +href=[\'"]?(https?|ftp)://%smi'
+    );
+    $isspam = false;
+    foreach ($spampatterns as $sp) {
+        foreach (array($comment, $commenterName, $commenterURL) as $field) {
+            $isspam = $isspam || preg_match($sp, $field);
+        }
+    }
+    if ($isspam) {
+        $wgOut->setPageTitle(wfMsgForContent($ac.'submission-failed'));
+        $wgOut->addWikiText(
+            "<div class='errorbox'>".
+            wfMsgForContent($ac.'no-spam').
             "</div>"
         );
         return;
