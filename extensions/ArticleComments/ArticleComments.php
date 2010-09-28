@@ -363,8 +363,8 @@ function specialProcessComment() {
 
     # Check whether the article or its talk page contains a <comments /> flag
     if (!$skipCheck &&
-        preg_match('/<comments( +[^>]*)?/>/', $articleContent)===0 &&
-        preg_match('/<comments( +[^>]*)?/>/', $talkContent)===0
+        preg_match('/<comments( +[^>]*)?\\/>/', $articleContent)===0 &&
+        preg_match('/<comments( +[^>]*)?\\/>/', $talkContent)===0
     ) {
         $wgOut->setPageTitle(wfMsgForContent($ac.'submission-failed'));
         $wgOut->addWikiText(
