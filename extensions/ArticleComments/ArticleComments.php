@@ -307,7 +307,7 @@ function specialProcessComment() {
     $titleKey = $_POST['titleKey'];
     $titleNS = intval($_POST['titleNS']);
     $commenterName = $_POST['commenterName'];
-    $commenterURL = $_POST['commenterURL'];
+    $commenterURL = isset($_POST['commenterURL']) ? $_POST['commenterURL'] : '';
     $comment = $_POST['comment'];
 
     # Perform validation checks on supplied fields
@@ -480,4 +480,3 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
 }
 
 //</source>
-?>
