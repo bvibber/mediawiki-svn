@@ -94,7 +94,6 @@ function wfArticleCommentsParserHook( $text, $params = array(), &$parser ) {
 
 /**
  * Echos out a comment form depending on the page action and namespace.
- * @param mixed $nsList An Namespace (int) or array of such values for which this method will dispaly the form.
  * @param Title $title The title of the article on which the form will appear.
  * @param Array $params A hash of parameters containing rendering options.
  */
