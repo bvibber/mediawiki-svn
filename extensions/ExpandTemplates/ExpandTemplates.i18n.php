@@ -399,13 +399,14 @@ Den gør det ved at kalde det relevante analysetrin i MediaWiki-softwaren.',
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  * @author Raimond Spekking
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'expandtemplates' => 'Vorlagen expandieren',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandiert Vorlagen, Parser-Funktionen und Variablen]] zu vollständigem Wikitext und zeigt die gerenderte Vorschau',
+	'expandtemplates-desc' => 'Ergänzt eine [[Special:ExpandTemplates|Spezialseite]] zum Anzeigen von Vorlagen, Parserfunktionen und Variablen in Wikitext und zeigt deren Vorschau',
 	'expand_templates_intro' => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <code><nowiki>{{</nowiki>#if:…}}</code> und Variablen wie <code><nowiki>{{</nowiki>CURRENTDAY}}</code> werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
 	'expand_templates_title' => 'Kontexttitel, für {{PAGENAME}} etc.:',
 	'expand_templates_input' => 'Eingabefeld:',

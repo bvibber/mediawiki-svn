@@ -54,6 +54,13 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'variablepage-navlink_text' => 'Donar',
+);
+
 /** French (Français)
  * @author Peter17
  * @author Verdy p
@@ -152,6 +159,13 @@ $messages['nl'] = array(
 	'variablepage-desc' => "Lichtgewicht variabele doorverwijzing voor pagina's",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'variablepage-navlink_text' => 'Doner',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -162,12 +176,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'variablepage' => 'PàginaVariabla',
 	'variablepage-navlink_text' => 'Doné',
-	'variablepage-desc' => 'Rediression ëd pàgina variàbila ëd peis linger',
+	'variablepage-desc' => 'Ridiression legera vers na pàgina variàbil',
 );
 
 /** Portuguese (Português)

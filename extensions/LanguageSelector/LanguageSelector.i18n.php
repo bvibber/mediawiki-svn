@@ -225,11 +225,12 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'languageselector' => 'Sprache',
-	'languageselector-desc' => 'Sprachenauswahl auf jeder Seite, auch für Besucher',
+	'languageselector-desc' => 'Ermöglicht, auch für Besucher des Wikis, die Auswahl der Sprache auf jeder Seite',
 	'languageselector-setlang' => 'setzen',
 );
 

@@ -2238,6 +2238,15 @@ $messages['sw'] = array(
 	'ct-update-table' => 'Sasisha jedwali',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'ct-beginner' => 'ஆரம்பநிலையில் உள்ளவர்',
+	'ct-intermediate' => 'இடைப்பட்ட நிலையில் உள்ளவர்',
+	'ct-expert' => 'முதிர்ந்த நிலையில் உள்ளவர்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

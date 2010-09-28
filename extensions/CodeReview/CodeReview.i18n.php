@@ -8717,6 +8717,39 @@ $messages['sw'] = array(
 	'repoadmin-edit-button' => 'Sawa',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'code-change-removed' => 'நீக்கப்பட்டது:',
+	'code-change-added' => 'சேர்க்கப்பட்டது:',
+	'code-old-status' => 'பழைய நிலைமை',
+	'code-new-status' => 'புதிய நிலைமை',
+	'code-field-status' => 'நிலைமை',
+	'code-field-timestamp' => 'தேதி',
+	'code-field-comments' => 'குறிப்புகள்',
+	'code-field-path' => 'வழி',
+	'code-field-text' => 'குறிப்பு',
+	'code-field-select' => 'தேர்வு செய்',
+	'code-rev-author' => 'ஆசிரியர்:',
+	'code-rev-date' => 'தேதி:',
+	'code-rev-comment-preview' => 'முன்தோற்றம்',
+	'code-rev-inline-preview' => 'முன்தோற்றம்:',
+	'code-rev-diff' => 'வித்தியாசம்',
+	'code-rev-diff-link' => 'வேறுபாடு',
+	'code-status-new' => 'புதிய',
+	'code-status-reverted' => 'முன்நிலையாக்கப்பட்டது',
+	'code-status-resolved' => 'தீர்வு காணப்பட்டது',
+	'code-status-ok' => 'ஆம்',
+	'code-status-verified' => 'சரிபார்க்கப்பட்டது',
+	'code-status-old' => 'பழைய',
+	'code-pathsearch-path' => 'வழி:',
+	'codereview-reply-link' => 'பதில்',
+	'code-stats' => 'புள்ளிவிவரங்கள்',
+	'repoadmin-new-button' => 'உருவாக்கவும்',
+	'repoadmin-edit-button' => 'ஆம்',
+);
+
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
  * @author Kiranmayee

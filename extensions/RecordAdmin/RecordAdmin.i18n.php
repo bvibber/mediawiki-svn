@@ -82,6 +82,7 @@ $messages['qqq'] = array(
 	'recordadmin-export-pdf' => '{{Optional}}',
 	'recordadmin-notset' => 'Parameters:
 * $1 is string of one or more comma separated field names.',
+	'recordadmin-properties' => '{{Identical|Property}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -209,7 +210,9 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'recordadmin' => 'Кіраваньне запісамі',
-	'recordadmin-desc' => '[[Special:RecordAdmin|Спэцыяльная старонка]] якая ўжываецца для знаходжаньня і рэдагаваньня старонкамі запісаў з дапамогай форм',
+	'recordadmin-desc' => 'Пошук, запыты, формы і справаздачы па вікі-зьвестках, атрыманым з парамэтраў шаблёну',
+	'recordadmin-specialdesc' => '[[Special:RecordAdmin|Спэцыяльная старонка]], якая ўжываецца для пошуку і стварэньня старонак з дапамогай асацыяваных формаў',
+	'recordadmin-noforms' => 'Цяпер няма вызначаных формаў для пошуку і стварэньня',
 	'recordadmin-select' => 'Выберыце тып запісаў для кіраваньня',
 	'recordadmin-createtype' => 'Для стварэньня новага тыпу запісаў увядзіце яго назву',
 	'recordadmin-recordtype' => 'тып запісаў',
@@ -244,6 +247,8 @@ $messages['be-tarask'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Няма $1',
+	'recordadmin-edit-info' => 'Гэтая старонка ўтрымлівае шаблёны, якія маюць уласныя формы, якія Вы можаце запоўніць з гэтага набору',
+	'recordadmin-properties' => 'Уласьцівасьці',
 );
 
 /** Bulgarian (Български)

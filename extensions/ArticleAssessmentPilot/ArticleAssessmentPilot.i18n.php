@@ -172,10 +172,10 @@ $messages['br'] = array(
 	'articleassessment-rating-neutrality' => 'Diberzh :',
 	'articleassessment-rating-completeness' => 'Graet :',
 	'articleassessment-rating-readability' => 'Lennus :',
-	'articleassessment-rating-wellsourced-tooltip' => "Hag-eñ e soñjoc'h emañ ar bajenn-mañ gant trawalc'h a arroudennoù?  Ha diwar mammennoù sirius e teuont?",
+	'articleassessment-rating-wellsourced-tooltip' => "Hag-eñ e soñjoc'h emañ ar bajenn-mañ gant trawalc'h a arroudennoù ? Ha diwar mammennoù sirius e teuont ?",
 	'articleassessment-rating-neutrality-tooltip' => "Hag-eñ e soñjoc'h e pled ar bajenn-mañ d'un doare reizh ha gant ur sav-gwel ar sujed ?",
-	'articleassessment-rating-completeness-tooltip' => "Hag-eñ e soñjoc'h he deus ar bajenn-mañ goleet temoù pouezusañ ar sujed?",
-	'articleassessment-rating-readability-tooltip' => "Hag-eñ e soñjoc'h emañ ar bajenn-mañ aozet mat ha skrivet mat?",
+	'articleassessment-rating-completeness-tooltip' => "Hag-eñ e soñjoc'h he deus ar bajenn-mañ goloet temoù pouezusañ ar sujed ?",
+	'articleassessment-rating-readability-tooltip' => "Hag-eñ e soñjoc'h emañ ar bajenn-mañ aozet mat ha skrivet mat ?",
 	'articleassessment-articlerating' => 'Priziadenn ar bajenn',
 	'articleassessment-error' => "Ur fazi zo bet.
 Klaskit en-dro diwezhatoc'h.",
@@ -193,11 +193,11 @@ Priziañ anezhi en-dro ho pefe c'hoant marteze.",
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Plijout a ra din reiñ ma ali',
 	'articleassessment-survey-answer-whyrated-didntrate' => "N'am eus ket priziet ar bajenn hiziv, reiñ ma soñj diwar-benn an arc'hweladur an hini eo",
 	'articleassessment-survey-answer-whyrated-other' => 'All',
-	'articleassessment-survey-question-useful' => "Hag-eñ e soñjoc'h ez eo ar briziadennoù roet talvoudus ha sklaer?",
+	'articleassessment-survey-question-useful' => "Hag-eñ e soñjoc'h ez eo ar briziadennoù roet talvoudus ha sklaer ?",
 	'articleassessment-survey-question-useful-iffalse' => 'Perak ?',
 	'articleassessment-survey-question-expert' => "Hag-eñ e soñjoc'h emaoc'h arbennigour war an dachenn pledet er bajenn ?",
-	'articleassessment-survey-question-expert-iftrue' => 'Gallout a rit diskrivañ ho prizacherezh?',
-	'articleassessment-survey-question-comments' => 'Evezhiadennoù all ho pefe?',
+	'articleassessment-survey-question-expert-iftrue' => 'Gallout a rit diskrivañ ho prizacherezh ?',
+	'articleassessment-survey-question-comments' => 'Evezhiadennoù all ho pefe ?',
 	'articleassessment-survey-submit' => 'Kas',
 	'articleassessment-survey-title' => "Trugarez da respont d'un nebeut goulennoù",
 	'articleassessment-survey-thanks' => 'Trugarez da vezañ leuniet ar goulennaoueg.',
@@ -359,6 +359,19 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
 	'articleassessment-survey-question-comments' => 'Haben Sie noch weitere Anmerkungen?',
 	'articleassessment-survey-title' => 'Bitte beantworten Sie uns ein paar Fragen',
 	'articleassessment-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
+);
+
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'articleassessment-rating-neutrality' => 'Neutro:',
+	'articleassessment-rating-completeness' => 'Completo:',
+	'articleassessment-rating-readability' => 'Legible:',
+	'articleassessment-results-hide' => '(<span class="hidelink">Esconder resultados</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Quería contribuir a {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-other' => 'Otro',
+	'articleassessment-survey-question-useful-iffalse' => '¿Por qué?',
 );
 
 /** French (Français)
@@ -957,32 +970,33 @@ Możesz ocenić ją ponownie.",
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'articleassessment' => "Valutassion ëd j'artìcoj",
-	'articleassessment-desc' => "Vërsion pilòta dla valutassion ëd j'artìcoj",
-	'articleassessment-yourfeedback' => 'Tò artorn',
-	'articleassessment-pleaserate' => 'Për piasì pija un moment për valuté sta pàgina sota.',
+	'articleassessment-desc' => "Version pilòta dla valutassion ëd j'artìcoj",
+	'articleassessment-yourfeedback' => 'Sò coment',
+	'articleassessment-pleaserate' => "Për piasì, ch'a dédica un moment për valuté la pàgina sì-sota.",
 	'articleassessment-submit' => 'Spediss',
-	'articleassessment-rating-wellsourced' => 'Bon-e-Sorgiss:',
+	'articleassessment-rating-wellsourced' => 'Con dle bon-e sorgiss:',
 	'articleassessment-rating-neutrality' => 'Neutral:',
 	'articleassessment-rating-completeness' => 'Completa:',
 	'articleassessment-rating-readability' => 'Lesìbil:',
-	'articleassessment-rating-wellsourced-tooltip' => "Pensës-to che sto artìcol a l'abia basta citassion e che ste citassion a rivo da sorziss sigure?",
-	'articleassessment-rating-neutrality-tooltip' => 'Pensës-to che sto artìcol a mosta na giusta rapresentassion ëd tute le prospetive ant sua edission?',
-	'articleassessment-rating-completeness-tooltip' => "Pensës-to che sto artìcol a coata le aire essensial ëd l'argoment com a dovrìa?",
-	'articleassessment-rating-readability-tooltip' => 'Pensës-to che sto artìcol a sia bin-organisà e bin scrivù?',
-	'articleassessment-articlerating' => "Valutassion ëd l'artìcol",
-	'articleassessment-error' => "Un eror a l'é capità.
-Për piasì preuva torna pi tard.",
+	'articleassessment-rating-wellsourced-tooltip' => "Pens-lo che st'artìcol a l'abia a basta ëd citassion e che ste citassion a rivo da 'd sorgiss fidà?",
+	'articleassessment-rating-neutrality-tooltip' => 'Pens-lo che sta pàgina a smon-a na giusta rapresentassion ëd tuti ij pont ëd vista dla chestion?',
+	'articleassessment-rating-completeness-tooltip' => "Pens-lo che sta pàgina a coata ij tema essensiaj ëd l'argoment com a dovrìa?",
+	'articleassessment-rating-readability-tooltip' => 'Pens-lo che sta pàgina a sia bin organisà e bin scrivùa?',
+	'articleassessment-articlerating' => 'Valutassion ëd la pàgina',
+	'articleassessment-error' => "A l'é capitaje n'eror.
+Për piasì, ch'a preuva torna pi tard.",
 	'articleassessment-thanks' => 'Mersì! Toe valutassion a son ëstàite salvà.',
-	'articleassessment-featurefeedback' => 'Dane <span class="feedbacklink">artorn</span> a propòsit dë sta funsion.',
+	'articleassessment-featurefeedback' => 'Ch\'an manda dij <span class="feedbacklink">coment</span> a propòsit ëd costa fonsionalità.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|valutassion|valutassion}})',
-	'articleassessment-stalemessage-norevisioncount' => "Sto artìcol a l'é stàit ''revisionà'' da quand ch'it l'has revisionalo.
-It podrìe vorejlo revaluté.",
-	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Mostlo</span>.)',
-	'articleassessment-results-hide' => '(<span class="hidelink">Stërma arzultà</span>)',
+	'articleassessment-stalemessage-norevisioncount' => "Sta pàgina a l'é stàita ''revisionà'' da quand ch'a l'ha revisionala chiel.
+A podrìa vorèj valutela torna.",
+	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Smonje</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Stërmé j\'arzultà</span>)',
 	'articleassessment-survey-question-whyrated' => "Për piasì fane savèj përchè it l'has valutà sta pàgina ancheuj (signa tut lòn ch'a centra):",
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'I veui contribuì a la valutassin antera dla pàgina',
 	'articleassessment-survey-answer-whyrated-development' => 'I sper che mia valutassion a peussa toché positivament ël dësvilup ëd la pàgina',
@@ -1160,6 +1174,15 @@ $messages['sah'] = array(
 	'articleassessment-thanks' => 'Махтал! Сыанабылыҥ бигэргэтилиннэ.',
 	'articleassessment-featurefeedback' => 'Бу туһунан <span class="feedbacklink">бэйэҥ санааҕын</span> эт эрэ.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|сыанабыл|ахсааннаах сыанабыл}})',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'articleassessment-survey-answer-whyrated-other' => 'மற்றவை',
+	'articleassessment-survey-question-useful-iffalse' => 'ஏன் ?',
+	'articleassessment-survey-submit' => 'சமர்ப்பி',
 );
 
 /** Tagalog (Tagalog)

@@ -722,6 +722,17 @@ $messages['ru'] = array(
 	'dplforum-toomany' => 'Форум DPL: Слишком много категорий!',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'dplforum-by' => '$1 гиэнэ',
+	'dplforum-edited' => '— бүтэһик көннөнүү',
+	'dplforum-never' => 'Хаһан да туттума',
+	'dplforum-toofew' => 'DPL кэпсэтэр сирэ: Категорията нааһаа аҕыйах!',
+	'dplforum-toomany' => 'DPL кэпсэтэр сирэ: Категорията наһаа элбэх!',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  * @author Santu

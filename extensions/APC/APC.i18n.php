@@ -1129,6 +1129,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Leithian
  * @author Pill
  * @author Purodha
@@ -1138,7 +1139,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  */
 $messages['de'] = array(
 	'apc' => 'APC-Informationen',
-	'apc-desc' => 'APC-Cache mit MediaWiki [[Special:APC|einsehen und bearbeiten]]',
+	'apc-desc' => 'Ergänzt eine [[Special:APC|Spezialseite]] zum einsehen und bearbeiten des APC-Cache',
 	'right-apc' => 'Alle Funktionen von [[Special:APC|APC]] verwenden',
 	'viewapc-apc-not-available' => 'Keine Cache-Informationen verfügbar.
 APC wird scheinbar nicht ausgeführt.',

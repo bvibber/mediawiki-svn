@@ -4424,6 +4424,19 @@ $messages['sw'] = array(
 	'contribstats-average' => 'Wastani',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contrib-hist-name' => 'பெயர்',
+	'contrib-hist-date' => 'நேரமும் தேதியும்',
+	'contrib-hist-amount' => 'தொகை',
+	'contrib-hist-anonymous' => 'அடையாளமற்றவர்',
+	'contribstats-day' => 'நாள்',
+	'contribstats-month' => 'மாதம்',
+	'fundraiserstats-date' => 'தேதி',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author చక్రవర్తి

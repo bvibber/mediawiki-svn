@@ -850,6 +850,13 @@ $messages['rue'] = array(
 	'findspam-ok' => 'ОК',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'findspam' => 'Спаам көрдөөһүн',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

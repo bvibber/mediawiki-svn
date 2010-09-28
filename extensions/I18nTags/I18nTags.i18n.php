@@ -87,10 +87,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'i18ntags-desc' => 'Zugriff auf die i18n-Funktionen zur Zahlenformatierung, Plural- und Grammatikbildung in jeder verfügbaren Sprache',
+	'i18ntags-desc' => 'Ermöglicht den Zugriff auf die I18N-Funktionen zur Zahlenformatierung sowie der Plural- und Grammatikbildung in jeder verfügbaren Sprache',
 );
 
 /** Lower Sorbian (Dolnoserbski)

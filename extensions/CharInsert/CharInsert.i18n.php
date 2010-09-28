@@ -111,10 +111,11 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'charinsert-desc' => 'Erlaubt die Erstellung einer JavaScript gesteuerten Leiste zum [[MediaWiki:Edittools|Einfügen von Sonderzeichen]]',
+	'charinsert-desc' => 'Ermöglicht die Erstellung einer JavaScript-gesteuerten Leiste zum [[MediaWiki:Edittools|Einfügen von Sonderzeichen]]',
 );
 
 /** Zazaki (Zazaki)

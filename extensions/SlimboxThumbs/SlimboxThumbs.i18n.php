@@ -108,6 +108,13 @@ $messages['nl'] = array(
 	'slimboxthumbs-desc' => 'Geeft bij klikken op miniaturen afbeeldingen op de volledige grootte weer met [http://www.digitalia.be/software/slimbox2 Slimbox 2]',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'slimboxthumbs-desc' => 'Viser bilder i full størrelse med [http://www.digitalia.be/software/slimbox2 Slimbox 2] når man klikker på miniatyrbilder',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

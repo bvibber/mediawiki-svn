@@ -763,7 +763,7 @@ $messages['nso'] = array(
  */
 $messages['oc'] = array(
 	'inspectcache' => "Inspeccion de l'Amagatal",
-	'inspectcache-desc' => "Un esplech simple de debogatge per inspectar los elements dins l'amagatal partejat.",
+	'inspectcache-desc' => "Una aisina simpla de desbugatge per inspectar los elements dins l'escondedor partejat.",
 	'inspectcache-general' => 'Escondedor general',
 	'inspectcache-parser' => 'Escondedor dels parsers',
 	'inspectcache-message' => 'Escondedor dels messatges',

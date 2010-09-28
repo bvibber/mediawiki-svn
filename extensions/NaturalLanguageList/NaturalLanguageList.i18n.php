@@ -58,10 +58,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author LWChris
  */
 $messages['de'] = array(
-	'nll-desc' => 'Einfache Formatierung von Listen in natürlicher Sprache',
+	'nll-desc' => 'Ermöglicht die einfache Erzeugung von Listen',
 	'nll-lastseparator' => ' und',
 );
 

@@ -26,6 +26,10 @@ $messages['be-tarask'] = array(
 	'rdfio-desc' => 'Пашырае магчымасьці імпарту/экспарту RDF, уключаючы канчатковы пункт SPARQL, для сэмантычнай MediaWiki',
 	'rdfimport' => 'Імпарт RDF',
 	'rdfio-arc2admin-desc' => 'Старонка кіраваньня для сховішча ARC2 RDF для сэмантычнай MediaWiki',
+	'rdfio-rdfimport-desc' => 'Спэцыяльная старонка для імпарту сэмантычных зьвестак у фармаце RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Канчатковы пункт SPARQL прадстаўленая SMWRDFConnector',
+	'sparqlendpoint' => 'Канчатковы пункт SPARQL',
+	'specialarc2admin' => 'Старонка кіраваньня сховішча ARC2 RDF',
 );
 
 /** Bosnian (Bosanski)
