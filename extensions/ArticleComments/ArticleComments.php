@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.4
+ * @version 0.4.1
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -22,6 +22,8 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.4.1:
+ *         Updated default spam filtering code. (now matches <a> tags in commenterName)
  *     version 0.4:
  *         Updated default spam filtering code.
  *         Abstracted Spam filter via hook (ArticleCommentsSpamCheck) to aid future spam checkers
@@ -71,7 +73,7 @@ $wgExtensionCredits['other'][] = array(
     'author'=>'Jim R. Wilson - wilson.jim.r &lt;at&gt; gmail.com',
     'url'=>'http://jimbojw.com/wiki/index.php?title=ArticleComments',
     'description'=>'Enables comment sections on article pages.',
-    'version'=>'0.4'
+    'version'=>'0.4.1'
 );
 
 # Add Extension Functions
@@ -264,7 +266,7 @@ $wgExtensionFunctions[] = 'setupSpecialProcessComment';
 function setupSpecialProcessComment() {
     global $IP, $wgMessageCache;
     require_once($IP.'/includes/SpecialPage.php');
-    SpecialPage::addPage(new SpecialPage('ProcessComment', '', false, 'specialProcessComment', false));
+    SpecialPage::addPage(new SpecialPage('ProcessComment', '', true, 'specialProcessComment', false));
 
     # Messages used in this extension
     $wgMessageCache->addMessage('article-comments-title-field', 'Title');
@@ -462,6 +464,7 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
     
     # Check for bad input for commenterName (seems to be a popular spam location)
     $spampatterns = array(
+        '%<a\\s+%smi',
         '%(https?|ftp)://%smi',
         '%(\\n|\\r)%smi'
     );
