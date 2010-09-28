@@ -130,8 +130,9 @@ function displayArticleCommentForm( $title = null, $params = array() ) {
  */
 function wfArticleCommentForm( $title = null, $params = array() ) {
 
-    global $wgScript, $wgContLang, $wgArticleCommentDefaults;
-
+    global $wgScript, $wgArticleCommentDefaults, $wgContentLang, $wgContLang;
+    $wcl = ($wgContentLang ? $wgContentLang : $wgContLang);
+ 
     # Merge in global defaults if specified    
     if (is_array($wgArticleCommentDefaults) &&
         !empty($wgArticleCommentDefaults)) {
@@ -149,7 +150,7 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
     }
     
     $ac = 'article-comments-';
-    $formAction = $wgScript.'?title='.$wgContLang->getNsText(NS_SPECIAL).':ProcessComment';
+    $formAction = $wgScript.'?title='.$wcl->getNsText(NS_SPECIAL).':ProcessComment';
 
     # Build out the comment form.
     $content = 
@@ -163,7 +164,7 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
         '<input type="text" id="commenterName" name="commenterName" /></p>'.
         ($params['showurlfield']=='false' || $params['showurlfield']===false?'':
             '<p>'.wfMsgForContent($ac.'url-field').'<br />'.
-            '<input type="text" id="commenterURL" name="commenterURL" /></p>'
+            '<input type="text" id="commenterURL" name="commenterURL" value="http://" /></p>'
         ).
         '<p>'.wfMsgForContent($ac.'comment-field').'<br />'.
         '<textarea id="comment" name="comment" style="width:30em" rows="5">'.
@@ -290,7 +291,8 @@ function setupSpecialProcessComment() {
 */
 function specialProcessComment() {
 
-    global $wgOut, $wgContLang, $wgParser, $wgUser;
+    global $wgOut, $wgParser, $wgUser, $wgContentLang, $wgContLang;
+    $wcl = ($wgContentLang ? $wgContentLang : $wgContLang);
 
     # Retrieve submitted values
     $titleKey = $_POST['titleKey'];
@@ -381,8 +383,8 @@ function specialProcessComment() {
     }
     
     # Determine signature components
-    $d = $wgContLang->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
-    if ($commenterURL) $sigText = "[$commenterURL $commenterName]";
+    $d = $wcl->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
+    if ($commenterURL && $commenterURL!='http://') $sigText = "[$commenterURL $commenterName]";
     else if ($wgUser->isLoggedIn()) $sigText = $wgParser->getUserSig( $wgUser );
     else $sigText = $commenterName;
  
