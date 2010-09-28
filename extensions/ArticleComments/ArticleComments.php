@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.4.2
+ * @version 0.4.3
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -22,6 +22,9 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.4.3:
+ *         Added new insertion feature, comments will now be inserted before <!--COMMENTS_ABOVE--> if present
+ *         Or, after <!--COMMENTS_BELOW--> if present (the latter causes reverse chronological comment ordering).
  *     version 0.4.2:
  *         Updated default spam filtering code to check all fields against $wgSpamRegex, if specified.
  *     version 0.4.1:
@@ -413,17 +416,28 @@ function specialProcessComment() {
     if ($commenterURL && $commenterURL!='http://') $sigText = "[$commenterURL $commenterName]";
     else if ($wgUser->isLoggedIn()) $sigText = $wgParser->getUserSig( $wgUser );
     else $sigText = $commenterName;
+    
+    # Search for insertion point, or append most recent comment.
+    $commentText = wfMsgForContent(
+        $ac.'new-comment',
+        wfMsgForContent($ac.'commenter-said', $commenterName),
+        $comment,
+        $sigText,
+        $d
+    );
+    $posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
+    if ($posAbove===false) $posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
+    if ($posAbove!==false) {
+        # Insert comments above HTML marker
+        $talkContent = substr( $talkContent, 0, $posAbove ) . $commentText . substr( $talkContent, $posAbove );
+    } else if ($posBelow!==false) {
+        # Insert comments below HTML marker
+        $talkContent = substr( $talkContent, 0, $posBelow + 21 ) . $commentText . substr( $talkContent, $posBelow + 21 );
+    } else {
+        # No marker found, append to bottom (default)
+        $talkContent .= $commentText;
+    }
  
-    # Append most recent comment
-    $talkContent .= 
-        wfMsgForContent(
-            $ac.'new-comment',
-            wfMsgForContent($ac.'commenter-said', $commenterName),
-            $comment,
-            $sigText,
-            $d
-        );
-
     # Update the talkArticle with the new comment
     $summary = wfMsgForContent($ac.'summary', $commenterName);
     if (method_exists($talkArticle, 'doEdit')) {
