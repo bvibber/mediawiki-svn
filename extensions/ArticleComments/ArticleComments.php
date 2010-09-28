@@ -264,7 +264,7 @@ $wgExtensionFunctions[] = 'setupSpecialProcessComment';
 function setupSpecialProcessComment() {
     global $IP, $wgMessageCache;
     require_once($IP.'/includes/SpecialPage.php');
-    SpecialPage::addPage(new SpecialPage('ProcessComment', '', true, 'specialProcessComment', false));
+    SpecialPage::addPage(new SpecialPage('ProcessComment', '', false, 'specialProcessComment', false));
 
     # Messages used in this extension
     $wgMessageCache->addMessage('article-comments-title-field', 'Title');
