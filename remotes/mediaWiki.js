@@ -465,12 +465,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 							var dialogHeight = ( pheight == 0 	)? 175 :
 												( pheight + 130 );
 							var buttons = {};
-							buttons[ gM( 'mwe-ok' ) ] = function(){
-								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
-								// stop the player ( more healthy way to remove the video from the dom )
-								if( embedPlayer ) {
-									embedPlayer.stop();
-								}
+							buttons[ gM( 'mwe-ok' ) ] = function(){							
 								// close the dialog
 								$j(this).dialog( 'close' ).remove();
 							};
@@ -479,8 +474,15 @@ function rewrite_for_OggHandler( vidIdList ) {
 								'content' : html_out,
 								'buttons' : buttons,
 								'height' : dialogHeight,
-								'width' : 430
-							})							
+								'width' : 430,
+								'close': function(event, ui) { 									
+									var embedPlayer = $j( '#mwe_' + vidId ).get(0);
+									// stop the player before we close the dialog
+									if( embedPlayer ) {
+										embedPlayer.stop();
+									}
+								}	
+							});					
 							
 							// Update the embed code to use the mwEmbed player: 		
 							$j( '#mwe_' + vidId ).embedPlayer( { 'autoplay' : true }, function(){								
