@@ -149,7 +149,7 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
     }
     
     $ac = 'article-comments-';
-    $formAction = $wgScript.'/'.$wgContLang->getNsText(NS_SPECIAL).':ProcessComment';
+    $formAction = $wgScript.'?title='.$wgContLang->getNsText(NS_SPECIAL).':ProcessComment';
 
     # Build out the comment form.
     $content = 
