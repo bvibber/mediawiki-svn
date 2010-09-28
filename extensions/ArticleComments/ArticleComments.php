@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.4.3
+ * @version 0.4.4
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -89,7 +89,7 @@ function wfArticleCommentsParserSetup() {
     global $wgParser;
     $wgParser->setHook( 'comments', 'wfArticleCommentsParserHook' );
 }
-function wfArticleCommentsParserHook( $text, $params = array(), &$parser ) {
+function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
 
     # Generate a comment form for display
     $commentForm = wfArticleCommentForm( $parser->mTitle, $params );
