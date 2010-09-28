@@ -156,6 +156,9 @@ function setupSpecialProcessComment() {
     $wgMessageCache->addMessage('article-comments-talk-page-starter', "<noinclude>Comments on [[$1]]\n<comments />\n----- __NOEDITSECTION__</noinclude>\n");
     $wgMessageCache->addMessage('article-comments-commenter-said', '$1 said ...');
     $wgMessageCache->addMessage('article-comments-summary', 'Comment provided by $1 - via ArticleComments extension');
+    $wgMessageCache->addMessage('article-comments-submission-succeeded', 'Comment submission succeeded');
+    $wgMessageCache->addMessage('article-comments-submission-success', 'You have successfully submitted a comment for [[$1]]');
+    $wgMessageCache->addMessage('article-comments-submission-view-all', 'You may view all comments on that article [[$1|here]]');
     $wgMessageCache->addMessage('processcomment', 'Process Article Comment');
 }
 
@@ -240,7 +243,8 @@ function specialProcessComment() {
     # Determine signature components
     $d = $wgContLang->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
     if ($commenterURL) $sigText = "[$commenterURL $commenterName]";
-    else $sigText = $wgParser->getUserSig( $wgUser );
+    else if ($wgUser->isLoggedIn()) $sigText = $wgParser->getUserSig( $wgUser );
+    else $sigText = $commenterName;
  
     # Append most recent comment
     $talkContent .= "\n== ".wfMsgForContent($ac.'commenter-said', $commenterName)." ==\n\n";
@@ -259,9 +263,9 @@ function specialProcessComment() {
         return;
     }
 
-    $wgOut->setPageTitle("Comment Submission Success!");
-    $wgOut->addWikiText("You have successfully commented on [[".$title->getPrefixedText()."]].\n\n");
-    $wgOut->addWikiText("You may view all comments on that article [[".$talkTitle->getPrefixedText()."|here]]");
+    $wgOut->setPageTitle(wfMsgForContent($ac.'submission-succeeded'));
+    $wgOut->addWikiText(wfMsgForContent($ac.'submission-success', $title->getPrefixedText()));
+    $wgOut->addWikiText(wfMsgForContent($ac.'submission-view-all', $talkTitle->getPrefixedText()));
 }
 
 //</source>
