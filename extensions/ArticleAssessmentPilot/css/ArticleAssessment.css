@@ -178,7 +178,8 @@
 	display: none;
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-count {
-	opacity: 0;
+	visibility: hidden;
+	
 }
 .article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-name {
 	color: #9f9f9f;
