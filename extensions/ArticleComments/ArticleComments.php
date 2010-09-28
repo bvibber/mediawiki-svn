@@ -2,7 +2,7 @@
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.4.1
+ * @version 0.4.2
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -22,6 +22,8 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.4.2:
+ *         Updated default spam filtering code to check all fields against $wgSpamRegex, if specified.
  *     version 0.4.1:
  *         Updated default spam filtering code. (now matches <a> tags in commenterName)
  *     version 0.4:
@@ -450,6 +452,15 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
 
     # Short-circuit if spam has already been determined
     if ($isspam) return true;
+    $fields = array($comment, $commenterName, $commenterURL);
+    
+    # Run everything through $wgSpamRegex if it has been specified
+    global $wgSpamRegex;
+    if ($wgSpamRegex) {
+        foreach ($fields as $field) {
+            if ( preg_match( $wgSpamRegex, $field ) ) return $isspam = true;
+        }
+    }
 
     # Rudimentary spam protection
     $spampatterns = array(
@@ -458,7 +469,7 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
     );
     foreach ($spampatterns as $sp) {
         foreach (array($comment, $commenterName, $commenterURL) as $field) {
-            $isspam = $isspam || preg_match($sp, $field);
+            if ( preg_match($sp, $field) ) return $isspam = true;
         }
     }
     
@@ -468,14 +479,12 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
         '%(https?|ftp)://%smi',
         '%(\\n|\\r)%smi'
     );
-    foreach ($spampatterns as $sp) {
-        $isspam = $isspam || preg_match($sp, $commenterName);
-    }
+    foreach ($spampatterns as $sp) if ( preg_match($sp, $commenterName) ) return $isspam = true;
     
     # Fail for length violations
-    $isspam = $isspam || strlen($commenterName)>255 || strlen($commenterURL)>300;
+    if ( strlen($commenterName)>255 || strlen($commenterURL)>300 ) return $isspam = true;
     
-    # Give other implementors a chance.
+    # We made it this far, leave $isspam alone and give other implementors a chance.
     return true;
 }
 
