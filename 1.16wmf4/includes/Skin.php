@@ -425,6 +425,7 @@ class Skin extends Linker {
 			'wgNamespaceIds' => $wgContLang->getNamespaceIds(),
 			'wgSiteName' => $wgSitename,
 			'wgCategories' => $wgOut->getCategories(),
+			'wgDBname' => $wgDBname,
 		);
 		if ( $wgContLang->hasVariants() ) {
 			$vars['wgUserVariant'] = $wgContLang->getPreferredVariant();
@@ -438,7 +439,6 @@ class Skin extends Linker {
 
 		if( $wgUseAjax && $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ) {
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
-			$vars['wgDBname'] = $wgDBname;
 			$vars['wgSearchNamespaces'] = SearchEngine::userNamespaces( $wgUser );
 			$vars['wgMWSuggestMessages'] = array( wfMsg( 'search-mwsuggest-enabled' ), wfMsg( 'search-mwsuggest-disabled' ) );
 		}
