@@ -84,8 +84,8 @@ class ArticleEmblemsHooks {
 	/*
 	 * ResourceLoaderRegisterModules hook
 	 */
-	public static function resourceLoaderRegisterModules() {
-		ResourceLoader::register(
+	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		$resourceLoader->register(
 			'ext.articleEmblems',
 			new ResourceLoaderFileModule( array(
 				'styles' => 'extensions/ArticleEmblems/modules/ext.articleEmblems.css',

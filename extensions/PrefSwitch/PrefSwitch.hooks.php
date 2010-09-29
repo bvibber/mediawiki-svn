@@ -83,9 +83,9 @@ class PrefSwitchHooks {
 	/*
 	 * ResourceLoaderRegisterModules hook
 	 */
-	public static function resourceLoaderRegisterModules() {
+	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		foreach ( self::$modules as $name => $resources ) {
-			ResourceLoader::register( $name, new ResourceLoaderFileModule( $resources ) );
+			$resourceLoader->register( $name, new ResourceLoaderFileModule( $resources ) );
 		}
 		return true;
 	}
