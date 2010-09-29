@@ -140,11 +140,11 @@ function efCentralNoticeSchema( $updater = null ) {
 }
 
 function efCentralNoticeLoader( $out, $skin ) {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $wgCentralDBname;
 
 	$centralLoader = SpecialPage::getTitleFor( 'BannerController' )->getLocalUrl();
 
-	$dbr = wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE, array(), $wgCentralDBname );
 	$row = $dbr->selectRow( 'cn_notices', 'not_name', array( 'not_enabled = 1', 'not_geo = 1' ) );
 	if ( $row ) {
 		$wgOut->addScriptFile( 'http://geoiplookup.wikimedia.org/' );
