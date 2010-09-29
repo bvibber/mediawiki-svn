@@ -1,8 +1,9 @@
-<?php //{{MediaWikiExtension}}<source lang="php">
+<?php
 /*
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
- * @version 0.4.4
+ * @author Platonides
+ * @version 0.5
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -10,8 +11,7 @@
  *     This is a MediaWiki (http://www.mediawiki.org/) extension which adds support
  *     for comment sections within article pages, or directly into all pages.
  * Requirements:
- *     MediaWiki 1.6.x, 1.8.x, 1.9.x or higher
- *     PHP 4.x, 5.x or higher
+ *     MediaWiki 1.16.x or higher
  * Installation:
  *     1. Drop this script (ArticleComments.php) in $IP/extensions
  *         Note: $IP is your MediaWiki install dir.
@@ -22,6 +22,8 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.5:
+ *         Updated to work with MediaWiki 1.16+
  *     version 0.4.3:
  *         Added new insertion feature, comments will now be inserted before <!--COMMENTS_ABOVE--> if present
  *         Or, after <!--COMMENTS_BELOW--> if present (the latter causes reverse chronological comment ordering).
@@ -78,22 +80,52 @@ $wgExtensionCredits['other'][] = array(
     'author'=>'Jim R. Wilson - wilson.jim.r &lt;at&gt; gmail.com',
     'url'=>'http://jimbojw.com/wiki/index.php?title=ArticleComments',
     'description'=>'Enables comment sections on article pages.',
-    'version'=>'0.4.1'
+    'version'=>'0.5'
 );
 
 # Add Extension Functions
-$wgExtensionFunctions[] = 'wfArticleCommentsParserSetup';
+$wgExtensionMessagesFiles['ArticleComments'] = dirname( __FILE__ ) . "/ArticleComments.i18n.php";
+
+
+# Attach Hooks
+$wgHooks['ParserFirstCallInit'][] = 'wfArticleCommentsParserSetup';
+$wgHooks['SkinAfterContent'][] = 'wfArticleCommentsAfterContent';
+$wgHooks['ParserAfterTidy'][] = 'wfProcessEncodedContent';
+$wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
+
+/**
+ * Comment options
+ * May be overriden as parameters to the <comment> tag
+ */
+$wgArticleCommentDefaults = array(
+	'showurlfield' => true, # Provide an URL field ?
+	'noscript' => false, # Set to true to not include any ArticleComments related JavaScript
+	'hideform' => true # Should the comment field be hidden by default?
+	);
+
+/**
+ * List of namespaces on which a comment field is automatically added.
+ * Eg. $wgArticleCommentsNSDisplayList[] = NS_MAIN;
+ */
+$wgArticleCommentsNSDisplayList = array();
+
+# Sets up special page to handle comment submission
+$wgExtensionFunctions[] = 'setupSpecialProcessComment';
+
+function setupSpecialProcessComment() {
+    SpecialPage::addPage( new SpecialPage( 'ProcessComment', '', true, 'specialProcessComment', false ) );
+}
 
 # Sets up the ArticleComments Parser hook for <comments />
-function wfArticleCommentsParserSetup() {
-    global $wgParser;
-    $wgParser->setHook( 'comments', 'wfArticleCommentsParserHook' );
+function wfArticleCommentsParserSetup( &$parser ) {
+    $parser->setHook( 'comments', 'wfArticleCommentsParserHook' );
+    return true;
 }
-function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
 
+function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
     # Generate a comment form for display
     $commentForm = wfArticleCommentForm( $parser->mTitle, $params );
-    
+
     # Hide content from the Parser using base64 to avoid mangling.
     # Note: Content will be decoded after Tidy has finished its processing of the page.
     return '<pre>@ENCODED@'.base64_encode($commentForm).'@ENCODED@</pre>';
@@ -104,7 +136,7 @@ function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
  * @param Title $title The title of the article on which the form will appear.
  * @param Array $params A hash of parameters containing rendering options.
  */
-function displayArticleCommentForm( $title = null, $params = array() ) {
+function wfArticleCommentsAfterContent( $data, $skin ) {
 
     global $wgRequest, $wgArticleCommentsNSDisplayList;
     
@@ -112,16 +144,16 @@ function displayArticleCommentForm( $title = null, $params = array() ) {
     if ($wgRequest->getVal('action') && 
         $wgRequest->getVal('action')!='view' &&
         $wgRequest->getVal('action')!='purge'
-    ) return;
+    ) return true;
     
-    # Short-circuit if displayl ist is undefined or null
-    if ($wgArticleCommentsNSDisplayList==null) return;
+    # Short-circuit if displaylist is undefined, empty or null
+    if ($wgArticleCommentsNSDisplayList == null)
+		return true;
 
-    # Use wgTitle if title is not specified
-    if ($title==null) {
-        global $wgTitle;
-        $title = $wgTitle;
-    }
+	$title = $skin->getTitle();
+    if ( !$title->exists() ) {
+		return true;
+	}
 
     # Ensure that the namespace list is an actual list
     $nsList = $wgArticleCommentsNSDisplayList;
@@ -129,20 +161,20 @@ function displayArticleCommentForm( $title = null, $params = array() ) {
     
     # Display the form
     if (in_array($title->getNamespace(), $nsList)) {
-        echo(wfArticleCommentForm($title, $params));
+        $data .= wfArticleCommentForm($title, $params);
     }
     
+    return true;
 }
 
 /**
- * Generates and returns an ArticleComment form.
+ * Generates and returns an ArticleComment form html.
  * @param Title $title The title of the article on which the form will appear.
  * @param Array $params A hash of parameters containing rendering options.
  */
-function wfArticleCommentForm( $title = null, $params = array() ) {
+function wfArticleCommentForm( $title, $params = array() ) {
 
-    global $wgScript, $wgArticleCommentDefaults, $wgContentLang, $wgContLang;
-    $wcl = ($wgContentLang ? $wgContentLang : $wgContLang);
+    global $wgScript, $wgArticleCommentDefaults, $wgContLang;
  
     # Merge in global defaults if specified    
     if (is_array($wgArticleCommentDefaults) &&
@@ -154,34 +186,28 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
         $params = array_merge($tmp, $params);
     }
     
-    # Use wgTitle if title is not specified
-    if ($title==null) {
-        global $wgTitle;
-        $title = $wgTitle;
-    }
-    
     $ac = 'article-comments-';
-    $formAction = $wgScript.'?title='.$wcl->getNsText(NS_SPECIAL).':ProcessComment';
+    $formAction = $wgScript.'?title='.$wgContLang->getNsText(NS_SPECIAL).':ProcessComment';
 
     # Build out the comment form.
     $content = 
         '<div id="commentForm">'.
-        '<form method="post" action="'.$formAction.'">'.
+        '<form method="post" action="'. htmlspecialchars( $formAction ) .'">'.
         '<input type="hidden" id="titleKey" name="titleKey" '.
-        'value="'.$title->getDBKey().'" />'.
+        'value="'. htmlspecialchars( $title->getDBKey() ) . '" />'.
         '<input type="hidden" id="titleNS" name="titleNS" '.
-        'value="'.$title->getNamespace().'" />'.
-        '<p>'.wfMsgForContent($ac.'name-field').'<br />'.
+        'value="'. htmlspecialchars( $title->getNamespace() ) .'" />'.
+        '<p>'.wfMsgExt($ac.'name-field', array( 'parseinline', 'content' ) ).'<br />'.
         '<input type="text" id="commenterName" name="commenterName" /></p>'.
         ($params['showurlfield']=='false' || $params['showurlfield']===false?'':
-            '<p>'.wfMsgForContent($ac.'url-field').'<br />'.
+            '<p>'.wfMsgExt($ac.'url-field', array( 'parseinline', 'content' ) ).'<br />'.
             '<input type="text" id="commenterURL" name="commenterURL" value="http://" /></p>'
         ).
-        '<p>'.wfMsgForContent($ac.'comment-field').'<br />'.
+        '<p>'.wfMsgExt($ac.'comment-field', array( 'parseinline', 'content' ) ).'<br />'.
         '<textarea id="comment" name="comment" style="width:30em" rows="5">'.
         '</textarea></p>'.
         '<p><input id="submit" type="submit" '.
-        'value="'.wfMsgForContent($ac.'submit-button').'" /></p>'.
+        'value="'.htmlspecialchars( wfMsgForContent($ac.'submit-button') ) .'" /></p>'.
         '</form></div>';
         
     # Short-circuit if noScript has been set to anything other than false
@@ -246,10 +272,6 @@ function wfArticleCommentForm( $title = null, $params = array() ) {
     return $content;
 }
 
-# Attach Hooks
-$wgHooks['ParserAfterTidy'][] = 'wfProcessEncodedContent';
-$wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
-
 /**
  * Processes HTML comments with encoded content.
  * Usage: $wgHooks['OutputPageBeforeHTML'][] = 'wfProcessEncodedContent';
@@ -259,45 +281,11 @@ $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
  */
 function wfProcessEncodedContent($out, $text) {
     $text = preg_replace(
-        '/<pre>@ENCODED@([0-9a-zA-Z\\+\\/]+=*)@ENCODED@<\\/pre>/e',
+        '/<pre>\n@ENCODED@([0-9a-zA-Z\\+\\/]+=*)@ENCODED@\n<\\/pre>/e',
         'base64_decode("$1")',
         $text
     );
     return true;
-}
-
-# Sets up special page to handle comment submission
-$wgExtensionFunctions[] = 'setupSpecialProcessComment';
-function setupSpecialProcessComment() {
-    global $IP, $wgMessageCache;
-    require_once($IP.'/includes/SpecialPage.php');
-    SpecialPage::addPage(new SpecialPage('ProcessComment', '', true, 'specialProcessComment', false));
-
-    # Messages used in this extension
-    $wgMessageCache->addMessage('article-comments-title-field', 'Title');
-    $wgMessageCache->addMessage('article-comments-name-string', 'Name');
-    $wgMessageCache->addMessage('article-comments-name-field', 'Name (required): ');
-    $wgMessageCache->addMessage('article-comments-url-field', 'Website: ');
-    $wgMessageCache->addMessage('article-comments-comment-string', 'Comment');
-    $wgMessageCache->addMessage('article-comments-comment-field', 'Comment: ');
-    $wgMessageCache->addMessage('article-comments-submit-button', 'Submit');
-    $wgMessageCache->addMessage('article-comments-leave-comment-link', 'Leave a comment ...');
-    $wgMessageCache->addMessage('article-comments-invalid-field', 'The $1 provided <nowiki>[$2]</nowiki> is invalid.');
-    $wgMessageCache->addMessage('article-comments-required-field', '$1 field is required.');
-    $wgMessageCache->addMessage('article-comments-submission-failed', 'Comment Submission Failed');
-    $wgMessageCache->addMessage('article-comments-failure-reasons', 'Sorry, your comment submission failed for the following reason(s):');
-    $wgMessageCache->addMessage('article-comments-no-comments', 'Sorry, the article &quot;[[$1]]&quot; is not accepting comments at this time.');
-    $wgMessageCache->addMessage('article-comments-talk-page-starter', "<noinclude>Comments on [[$1]]\n<comments />\n----- __NOEDITSECTION__</noinclude>\n");
-    $wgMessageCache->addMessage('article-comments-commenter-said', '$1 said ...');
-    $wgMessageCache->addMessage('article-comments-summary', 'Comment provided by $1 - via ArticleComments extension');
-    $wgMessageCache->addMessage('article-comments-submission-succeeded', 'Comment submission succeeded');
-    $wgMessageCache->addMessage('article-comments-submission-success', 'You have successfully submitted a comment for [[$1]]');
-    $wgMessageCache->addMessage('article-comments-submission-view-all', 'You may view all comments on that article [[$1|here]]');
-    $wgMessageCache->addMessage('article-comments-prefilled-comment-text', '');
-    $wgMessageCache->addMessage('article-comments-user-is-blocked', 'Your user account is currently blocked from editing [[$1]].');
-    $wgMessageCache->addMessage('article-comments-new-comment', "\n== \$1 ==\n\n<div class='commentBlock'>\n\$2\n\n--\$3 \$4\n</div>\n");
-    $wgMessageCache->addMessage('article-comments-no-spam', "At least one of the submitted fields was flagged as spam.");
-    $wgMessageCache->addMessage('processcomment', 'Process Article Comment');
 }
 
 /**
@@ -305,8 +293,7 @@ function setupSpecialProcessComment() {
 */
 function specialProcessComment() {
 
-    global $wgOut, $wgParser, $wgUser, $wgContentLang, $wgContLang;
-    $wcl = ($wgContentLang ? $wgContentLang : $wgContLang);
+    global $wgOut, $wgParser, $wgUser, $wgContLang;
 
     # Retrieve submitted values
     $titleKey = $_POST['titleKey'];
@@ -412,7 +399,7 @@ function specialProcessComment() {
     }
     
     # Determine signature components
-    $d = $wcl->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
+    $d = $wgContLang->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
     if ($commenterURL && $commenterURL!='http://') $sigText = "[$commenterURL $commenterName]";
     else if ($wgUser->isLoggedIn()) $sigText = $wgParser->getUserSig( $wgUser );
     else $sigText = $commenterName;
@@ -425,6 +412,7 @@ function specialProcessComment() {
         $sigText,
         $d
     );
+    
     $posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
     if ($posAbove===false) $posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
     if ($posAbove!==false) {
@@ -501,5 +489,3 @@ function defaultArticleCommentSpamCheck($comment, $commenterName, $commenterURL,
     # We made it this far, leave $isspam alone and give other implementors a chance.
     return true;
 }
-
-//</source>
