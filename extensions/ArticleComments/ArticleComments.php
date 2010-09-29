@@ -161,7 +161,7 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
     
     # Display the form
     if (in_array($title->getNamespace(), $nsList)) {
-        $data .= wfArticleCommentForm($title, $params);
+        $data .= wfArticleCommentForm( $title );
     }
     
     return true;
@@ -173,47 +173,42 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
  * @param Array $params A hash of parameters containing rendering options.
  */
 function wfArticleCommentForm( $title, $params = array() ) {
+	global $wgArticleCommentDefaults;
 
-    global $wgScript, $wgArticleCommentDefaults, $wgContLang;
- 
-    # Merge in global defaults if specified    
-    if (is_array($wgArticleCommentDefaults) &&
-        !empty($wgArticleCommentDefaults)) {
-        $tmp = array();
-        foreach ($wgArticleCommentDefaults as $k=>$v) {
-            $tmp[strtolower($k)] = $v;
-        }
-        $params = array_merge($tmp, $params);
-    }
-    
+	# Merge in global defaults if specified    
+	$tmp = $wgArticleCommentDefaults;
+	foreach ( $params as $k => $v ) {
+		$tmp[strtolower($k)] = (bool)strcasecmp( $v, "false" );
+	}
+	$params = $tmp;
     $ac = 'article-comments-';
-    $formAction = $wgScript.'?title='.$wgContLang->getNsText(NS_SPECIAL).':ProcessComment';
 
-    # Build out the comment form.
-    $content = 
-        '<div id="commentForm">'.
-        '<form method="post" action="'. htmlspecialchars( $formAction ) .'">'.
-        '<input type="hidden" id="titleKey" name="titleKey" '.
-        'value="'. htmlspecialchars( $title->getDBKey() ) . '" />'.
-        '<input type="hidden" id="titleNS" name="titleNS" '.
-        'value="'. htmlspecialchars( $title->getNamespace() ) .'" />'.
-        '<p>'.wfMsgExt($ac.'name-field', array( 'parseinline', 'content' ) ).'<br />'.
-        '<input type="text" id="commenterName" name="commenterName" /></p>'.
-        ($params['showurlfield']=='false' || $params['showurlfield']===false?'':
-            '<p>'.wfMsgExt($ac.'url-field', array( 'parseinline', 'content' ) ).'<br />'.
-            '<input type="text" id="commenterURL" name="commenterURL" value="http://" /></p>'
-        ).
-        '<p>'.wfMsgExt($ac.'comment-field', array( 'parseinline', 'content' ) ).'<br />'.
-        '<textarea id="comment" name="comment" style="width:30em" rows="5">'.
-        '</textarea></p>'.
-        '<p><input id="submit" type="submit" '.
-        'value="'.htmlspecialchars( wfMsgForContent($ac.'submit-button') ) .'" /></p>'.
-        '</form></div>';
-        
+	# Build out the comment form.
+	$content = '<div id="commentForm">';
+	$content .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => SpecialPage::getTitleFor( 'ProcessComment' )->getLocalURL() ) );
+
+	$content .= '<p>';
+	$content .= Html::hidden( 'commentArticle', $title->getPrefixedDBkey() );
+
+	$content .= '<label for="commenterName">' . wfMsgExt($ac.'name-field', array( 'parseinline', 'content' ) ) . Html::element('br') . '</label>';
+	$content .= Html::input( 'commenterName', '', 'text', array( 'id'=>'commenterName' ) );
+	$content .= '</p>';
+
+	if ( $params['showurlfield'] ) {
+		$content .=  '<p><label for="commenterURL">' . wfMsgExt($ac.'url-field', array( 'parseinline', 'content' ) ) . Html::element('br') . '</label>';
+		$content .= Html::input( 'commenterURL', 'http://', 'text', array( 'id'=>'commenterURL' ) );
+		$content .= '</p>';
+	}
+	
+	$content .= '<p><label for="comment">'.wfMsgExt($ac.'comment-field', array( 'parseinline', 'content' ) ) . Html::element('br') . '</label>';
+	
+	$content .= '<textarea id="comment" name="comment" style="width:30em" rows="5">' . '</textarea></p>';
+
+	$content .= '<p>' . Html::input( 'comment-submit', wfMsgForContent( $ac.'submit-button' ), 'submit' ) . '</p>';
+	$content .= '</form></div>';
+
     # Short-circuit if noScript has been set to anything other than false
-    if (isset($params['noscript']) && 
-        $params['noscript']!=='false' &&
-        $params['noscript']) {
+    if ( $params['noscript'] ) {
         return $content;
     }
 
@@ -234,7 +229,7 @@ function wfArticleCommentForm( $title, $params = array() ) {
     # Prefill comment text if it has been specified by a system message
     # Note: This is done dynamically with JavaScript since it would be annoying
     # for JS-disabled browsers to have the prefilled text (since they'd have
-    # to manually delete it).
+    # to manually delete it) and would break parser output caching
     $pretext = wfMsgForContent($ac.'prefilled-comment-text');
     if ($pretext) {
         $content .=
@@ -301,13 +296,19 @@ function specialProcessComment() {
     $commenterName = $_POST['commenterName'];
     $commenterURL = isset($_POST['commenterURL']) ? $_POST['commenterURL'] : '';
     $comment = $_POST['comment'];
+    global $wgRequest;
+    
+    $titleText = $wgRequest->getVal( 'commentArticle' );
+	$title = Title::newFromText( $titleText );
 
     # Perform validation checks on supplied fields
     $ac = 'article-comments-';
     $messages = array();
-    if (!$titleKey) $messages[] = wfMsgForContent(
-        $ac.'invalid-field', wfMsgForContent($ac.'title-field'), $titleKey
-    );
+    if ( $titleText === '' || !$title) {
+		$messages[] = wfMsgForContent(
+        $ac.'invalid-field', wfMsgForContent($ac.'title-field'), $titleKey );
+	}
+	
     if (!$commenterName) $messages[] = wfMsgForContent(
         $ac.'required-field', wfMsgForContent($ac.'name-string'));
     if (!$comment) $messages[] = wfMsgForContent(
@@ -324,13 +325,10 @@ function specialProcessComment() {
     }
 
     # Setup title and talkTitle object
-    $title = Title::newFromDBkey($titleKey);
-    $title->mNamespace = $titleNS - ($titleNS % 2);
-    $article = new Article($title);
+    $article = new Article( $title );
 
-    $talkTitle = Title::newFromDBkey($titleKey);
-    $talkTitle->mNamespace = $titleNS + 1 - ($titleNS % 2);
-    $talkArticle = new Article($talkTitle);
+    $talkTitle = $title->getTalkPage();
+    $talkArticle = new Article( $talkTitle );
 
     # Check whether user is blocked from editing the talk page
     if ($wgUser->isBlockedFrom($talkTitle)) {
@@ -344,7 +342,7 @@ function specialProcessComment() {
 
     # Retrieve article content
     $articleContent = '';
-    if ( $article->exists() ) {
+    if ( $title->exists() ) {
         $articleContent = $article->getContent();
     }
 
