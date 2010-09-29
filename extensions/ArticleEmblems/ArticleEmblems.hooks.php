@@ -23,6 +23,14 @@ class ArticleEmblemsHooks {
 		return true;
 	}
 
+	/**
+	 * ParserTestTables hook
+	 */
+	public static function parserTestTables( &$tables ) {
+		$tables[] = 'articleemblems';
+		return true;
+	}
+
 	/*
 	 * ParserInit hook
 	 */
