@@ -27,7 +27,7 @@
 					<option value="5">5</option> \
 				</select> \
 			</div>',
-			'structureHTML': '<div class="article-assessment-wrapper"> \
+			'structureHTML': '<div class="article-assessment-wrapper nonopopups"> \
 				<form action="rate" method="post" id="article-assessment"> \
 					<fieldset id="article-assessment-rate"> \
 						<legend></legend> \
