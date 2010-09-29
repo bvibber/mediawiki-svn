@@ -1398,6 +1398,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'amazonplus-used' => 'பயன்படுத்தப்பட்டது',
 	'amazonplus-new' => 'புதிய',
 	'amazonplus-cp-none' => 'ஏதுமில்லை',
 	'amazonplus-more' => 'மேலும்',

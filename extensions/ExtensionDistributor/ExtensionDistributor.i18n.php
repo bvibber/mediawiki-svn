@@ -2689,6 +2689,14 @@ Om du har några frågor om programtilläggets distributionssystem, gå till [[E
 	'extdist-want-more' => 'Hämta andra tillägg',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'extdist-submit-extension' => 'தொடரவும்',
+	'extdist-submit-version' => 'தொடரவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

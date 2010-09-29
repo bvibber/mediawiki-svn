@@ -813,7 +813,7 @@ $messages['sv'] = array(
 $messages['ta'] = array(
 	'searchbox-desc' => 'தேடும் படிவங்களை இத்துடன் சேர்த்துக்கொள்ளவும்',
 	'searchbox-search' => 'தேடுக',
-	'searchbox-go' => 'செல்க',
+	'searchbox-go' => 'செல்',
 	'searchbox-namespaces' => 'பெயர்வெளி:',
 );
 

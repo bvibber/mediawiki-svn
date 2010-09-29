@@ -1430,6 +1430,13 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "Kuhariri" kwenye mapendekezo
 	'vector-simplesearch-containing' => 'ya maneno...',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'vector-simplesearch-search' => 'தேடு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -18,6 +18,22 @@ $messages['en'] = array(
 	'variablepage-desc' => 'Lightweight variable page redirection',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'variablepage-navlink_text' => '{{Identical|Donate}}',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'variablepage' => 'ПераменнаяСтаронка',
+	'variablepage-navlink_text' => 'Ахвяраваць',
+	'variablepage-desc' => 'Простае перанакінаваньне на розныя старонкі',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  */

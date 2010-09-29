@@ -5871,11 +5871,24 @@ Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'viewapc-start-time' => 'ஆரம்ப நேரம்',
+	'viewapc-display-value' => 'மதிப்பு',
+	'viewapc-display-info' => 'பெயர்',
 	'viewapc-display-mtime' => 'மாற்றப்பட்டுள்ளது',
 	'viewapc-display-creation_time' => 'உருவாக்கப்பட்டுவிட்டது',
 	'viewapc-display-deletion_time' => 'நீக்கப்பட்டது',
 	'viewapc-display-no-delete' => 'நீக்கப்படவில்லை',
+	'viewapc-ls-submit' => 'செல்!',
 	'viewapc-ls-header-name' => 'பெயர்',
+	'viewapc-ls-header-created' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-ls-header-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-scope-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-scope-both' => 'இரண்டும்',
+	'viewapc-ls-sort-size' => 'அளவு',
+	'viewapc-ls-sort-name' => 'பெயர்',
+	'viewapc-ls-sort-created' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-ls-sort-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-limit-none' => 'அனைத்தும்',
 );
 
 /** Telugu (తెలుగు)

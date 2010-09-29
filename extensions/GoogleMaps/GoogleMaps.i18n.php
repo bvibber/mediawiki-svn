@@ -4777,6 +4777,20 @@ $wgGoogleMapsMessages['rue'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$wgGoogleMapsMessages['sah'] = array(
+	'gm-balloon-title' => 'Аата:',
+	'gm-balloon-link-article' => 'Бу сирэйгэ сигэ (булгуччута суох):',
+	'gm-make-marker' => 'Маркер (биики-разметканы туттуохха сөп):',
+	'gm-remove' => 'Соторго',
+	'gm-caption' => 'Маркер',
+	'gm-tab-title' => 'Баһын аата',
+	'gm-tab' => 'Бэлиэ',
+	'gm-start-path' => 'маршруутун саҕалыырга',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

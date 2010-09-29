@@ -252,6 +252,7 @@ $1",
 
 Калі Вы жадаеце выкарыстоўваць злучэньне Facebook для ўваходаў у будучыні, Вы можаце [[Special:Connect/Convert|пераўтварыць Ваш рахунак на выкарыстаньне злучэньня Facebook]].",
 	'fbconnect-error-creating-user' => 'Адбылася памылка падчас стварэньня рахунку карыстальніка ў лякальнай базе зьвестак.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Перахопнік (пашырэньне) адмяніў стварэньне рахунку з паведамленьнем: $1',
 	'fbconnect-prefstext' => 'Злучэньне Facebook',
 	'fbconnect-link-to-profile' => 'Профіль у Facebook',
 	'fbconnect-prefs-can-be-updated' => 'Вы можаце зьмяніць гэта ў любы момант, наведаўшы закладку «$1» на Вашай старонцы ўстановак.',
@@ -687,14 +688,20 @@ $messages['lb'] = array(
 	'fbconnect-fbml' => 'Facebook-Markup Sprooch',
 	'fbconnect-comm' => 'Kommunikatioun',
 	'fbconnect-welcome' => 'Wëllkomm, Facebook-Connect-Benotzer!',
+	'fbconnect-loginbox' => "Oder op Facebook '''aloggen''':
+
+$1",
 	'fbconnect-merge' => 'Verbannt Äre Wiki-Kont mat Ärer Facebook-ID',
 	'fbconnect-usernameprefix' => 'Facebook-Benotzer',
 	'fbconnect-error' => 'Feeler bei der Iwwerpréifung',
 	'fbconnect-cancel' => 'Aktioun ofgebrach',
+	'fbconnect-success' => 'Facebook Iwwerpréifung mat Succès',
 	'fbconnect-nickname' => 'Spëtznumm',
 	'fbconnect-fullname' => 'Ganzen Numm',
 	'fbconnect-email' => 'E-Mailadress',
 	'fbconnect-language' => 'Sprooch',
+	'fbconnect-timecorrection' => "Verbesserung fir d'Zäitzon (Stonnen)",
+	'fbconnect-chooselegend' => 'Eraussiche vum Benotzernumm',
 	'fbconnect-chooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt Iech een aus den Optiounen hei drënner eraussichen.',
 	'fbconnect-choosenick' => 'Äre Facbook-Profilnumm ($1)',
 	'fbconnect-choosefirst' => 'Äre Virnumm ($1)',
@@ -708,6 +715,7 @@ $messages['lb'] = array(
 	'fbconnect-alreadyloggedin' => "'''Dir sidd schonn ageloggt, $1!'''
 
 Wann Dir Facebook-Connect benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:Connect/Convert|Äre Benotzerkont ëmwandelen Fir Facebook-Connect ze benotzen]].",
+	'fbconnect-error-creating-user' => 'Feeler beim Uleeë vum Benotzer an der lokaler Datebank.',
 	'fbconnect-prefstext' => 'Facebook-Connect',
 	'fbconnect-link-to-profile' => 'Facebook-Profil',
 );

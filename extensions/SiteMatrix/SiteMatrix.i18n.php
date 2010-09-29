@@ -1737,6 +1737,14 @@ $messages['szl'] = array(
 	'sitematrix-sitetotal' => 'Do kupy',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'sitematrix-sitetotal' => 'மொத்தம்',
+	'sitematrix-private' => 'தனிப்பட்ட',
+);
+
 /** Telugu (తెలుగు)
  * @author Mpradeep
  * @author Veeven

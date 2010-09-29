@@ -951,6 +951,7 @@ $messages['hu'] = array(
 	'importxml' => 'XML importálás',
 	'dt_import_selectfile' => 'Kérlek válaszd ki az importálandó $1 fájlt:',
 	'dt_import_encodingtype' => 'Kódolás típusa',
+	'dt_import_summarydesc' => 'Az importálás összefoglalója:',
 	'dt_import_editsummary' => '$1 importálás',
 	'dt_import_importing' => 'Importálás…',
 	'dt_import_success' => '{{PLURAL:$1|egy|$1}} lap fog készülni a(z) $2 fájlból.',

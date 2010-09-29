@@ -526,6 +526,7 @@ $messages['lb'] = array(
 	'cb_edit_left_hint' => 'No lénks réckelen, wa méiglech',
 	'cb_edit_right_hint' => 'No riets réckelen, wa méiglech',
 	'cb_edit_remove_hint' => 'Läschen, wa méiglech',
+	'cb_edit_copy_hint' => 'Operateur an den Tëschespäicher kopéieren',
 	'cb_edit_clear_hint' => 'Aktuellen Ausdrock ewechhuelen (alles uwielen)',
 );
 
@@ -805,6 +806,20 @@ $messages['ru'] = array(
 	'cb_edit_clear_hint' => 'Очистить текущее выражение (выбрать всё)',
 	'cb_edit_paste_hint' => 'Вставить оператор в текущую позицию, если возможно',
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'cb_previous_items_link' => 'முந்தைய',
+	'cb_next_items_link' => 'அடுத்தது',
+	'cb_cat_subcats' => 'துணைப் பகுப்புகள்',
+	'cb_cat_pages' => 'பக்கங்கள்',
+	'cb_cat_files' => 'கோப்புக்கள்',
+	'cb_all_op' => 'அனைத்தும்',
+	'cb_or_op' => 'அல்லது',
+	'cb_and_op' => 'மற்றும்',
 );
 
 /** Telugu (తెలుగు)

@@ -1931,6 +1931,15 @@ $messages['szl'] = array(
 	'expand_templates_ok' => 'OK',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'expand_templates_output' => 'முடிவுகள்',
+	'expand_templates_ok' => 'ஆம்',
+	'expand_templates_preview' => 'முன்தோற்றம்',
+);
+
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Mpradeep

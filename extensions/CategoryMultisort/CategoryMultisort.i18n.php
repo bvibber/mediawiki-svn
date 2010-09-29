@@ -439,6 +439,14 @@ $messages['sv'] = array(
 	'prefs-category' => 'Kategori',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'categorymultisort-go' => 'செல்',
+	'prefs-category' => 'பகுப்பு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

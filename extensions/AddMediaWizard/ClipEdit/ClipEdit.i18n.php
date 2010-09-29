@@ -162,10 +162,12 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'mwe-clipedit-crop' => 'Isjecanje slike',
+	'mwe-clipedit-apply_crop' => 'Primijeni isijecanje na sliku',
 	'mwe-clipedit-insert_image_page' => 'Ubaci u stranicu',
 	'mwe-clipedit-insert_into_sequence' => 'Ubaci u niz',
 	'mwe-clipedit-preview_insert' => 'Pregled ubacivanja',
 	'mwe-clipedit-cancel_image_insert' => 'Odustani od ubacivanja',
+	'mwe-clipedit-sc_attributes' => 'Uređivanje podataka snimke',
 	'mwe-clipedit-sc_overlays' => 'Slojevi',
 	'mwe-clipedit-sc_audio' => 'Kontrola zvuka',
 	'mwe-clipedit-sc_duration' => 'Trajanje',
@@ -1224,6 +1226,9 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'mwe-clipedit-sc_duration' => 'இடைப்பட்ட காலம்',
+	'mwe-clipedit-start_time' => 'ஆரம்ப நேரம்',
+	'mwe-clipedit-end_time' => 'முடியும் நேரம்',
+	'mwe-clipedit-inline-description' => 'தலைப்பு',
 	'mwe-clipedit-duration' => 'இடைப்பட்ட காலம்:',
 );
 

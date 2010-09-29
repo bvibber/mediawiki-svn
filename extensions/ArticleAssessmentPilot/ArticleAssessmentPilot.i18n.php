@@ -553,6 +553,7 @@ Možda ju želite ocijeniti ponovo.",
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Misibacsi
  */
 $messages['hu'] = array(
@@ -561,9 +562,9 @@ $messages['hu'] = array(
 	'articleassessment-rating-neutrality' => 'Semleges:',
 	'articleassessment-rating-completeness' => 'Teljes:',
 	'articleassessment-rating-readability' => 'Olvashatóság:',
-	'articleassessment-articlerating' => 'Az oldal értékelése',
+	'articleassessment-articlerating' => 'A lap értékelése',
 	'articleassessment-error' => 'Hiba történt. 
- Kérjük, próbálkozzon később.',
+Kérjük, próbálkozz később.',
 	'articleassessment-survey-answer-whyrated-other' => 'Egyéb',
 	'articleassessment-survey-question-useful-iffalse' => 'Miért?',
 	'articleassessment-survey-thanks' => 'Köszönjük a kérdőív kitöltését!',
@@ -1180,6 +1181,10 @@ $messages['sah'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'articleassessment-submit' => 'சமர்ப்பி',
+	'articleassessment-rating-neutrality' => 'நடுநிலையானது:',
+	'articleassessment-rating-completeness' => 'முழுதும்:',
+	'articleassessment-rating-readability' => 'படிக்கக்கூடியது:',
 	'articleassessment-survey-answer-whyrated-other' => 'மற்றவை',
 	'articleassessment-survey-question-useful-iffalse' => 'ஏன் ?',
 	'articleassessment-survey-submit' => 'சமர்ப்பி',

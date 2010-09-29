@@ -8515,7 +8515,7 @@ $messages['mk'] = array(
 <p>Ако е штиклирана „проба“, сите преземени дејства ќе бидат пријавени, но всушност нема да бидат извршени никакви промени.
 Ви препорачуваме да направите проба пред вистински да увезувате.</p>',
 	'ow_importtsv_not_allowed' => 'Немате дозвола да вршите TSV увоз.',
-	'ow_importtsv_importing' => 'Увоз на TSV податоци',
+	'ow_importtsv_importing' => 'Увоз на TSV-податоци',
 	'ow_importtsv_import_failed' => 'Увозот не успеа',
 	'ow_importtsv_file' => 'TSV податотека:',
 	'ow_importtsv_test_run' => 'Проба:',

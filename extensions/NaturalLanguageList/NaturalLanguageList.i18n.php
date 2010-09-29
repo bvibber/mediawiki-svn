@@ -49,6 +49,14 @@ $messages['br'] = array(
 	'nll-lastseparator' => '&#32;ha&#32;',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'nll-desc' => 'Lahko formatiranje spiskova u prirodnim jezicima',
+	'nll-lastseparator' => '&#32;i&#32;',
+);
+
 /** Danish (Dansk)
  * @author Svip
  */

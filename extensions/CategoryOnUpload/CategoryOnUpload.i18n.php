@@ -625,6 +625,13 @@ $messages['sv'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'categoryonupload-label' => 'பகுப்பு:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

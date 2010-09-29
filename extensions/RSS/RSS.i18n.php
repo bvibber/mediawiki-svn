@@ -45,6 +45,15 @@ $messages['br'] = array(
 	'rss-empty' => 'Dibosupl eo kargañ gwazh RSS eus $1 !',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rss-desc' => 'Prikazuje RSS fid na wiki stranici',
+	'rss-error' => 'Nije uspjelo učitavanje RSS fida iz $1: $2',
+	'rss-empty' => 'Nije uspjelo učitavanje RSS fida iz $1!',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

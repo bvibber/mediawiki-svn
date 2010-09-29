@@ -6861,6 +6861,13 @@ Tafadhali chagua vifungu vyote vinavyohusika.',
 Urudi <span class="plainlinks">[$1 $2]</span>.',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'prefswitch-survey-answer-whyoff-other' => 'வேறு காரணம்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

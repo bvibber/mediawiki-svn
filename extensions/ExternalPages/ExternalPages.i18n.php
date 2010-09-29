@@ -582,6 +582,14 @@ $messages['sv'] = array(
 	'externalpages-no-page' => 'Ingen sida angiven',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'externalpages' => 'வெளிப்பக்கங்கள்',
+	'externalpages-no-page' => 'எந்தவொரு பக்கத்தைப்பற்றியும் குறிப்பிடப்படவில்லை',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
