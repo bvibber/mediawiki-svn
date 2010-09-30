@@ -33,13 +33,9 @@ class SpecialSessionStash extends SpecialPage {
 
 	// $request is the request (usually wgRequest)
 	// $subpage is everything in the URL after Special:SessionStash
-	public function __construct( $request=null, $subpage=null ) {
-		global $wgRequest;
-
+	public function __construct( $request = null, $subpage = null ) {
                 parent::__construct( 'SessionStash', 'upload' );
-
 		$this->stash = new SessionStash();
-
 	}
 
 	/**
@@ -55,7 +51,6 @@ class SpecialSessionStash extends SpecialPage {
 		// prevent callers from doing standard HTML output -- we'll take it from here
 		$wgOut->disable();
 
-		// global $wgScriptPath, $wgLang, $wgUser, $wgOut;
 		wfDebug( __METHOD__ . " in subpage for $subPage \n" );
 
 		try { 
@@ -67,16 +62,14 @@ class SpecialSessionStash extends SpecialPage {
 			return true;
 
 		} catch( SessionStashFileNotFoundException $e ) {
-			wfHttpError( 404, self::$HttpErrors[404], $e->getCode(), $e->getMessage() );
-
+			$code = 404;
 		} catch( SessionStashBadPathException $e ) {
-			wfHttpError( 403, self::$HttpErrors[403], $e->getCode(), $e->getMessage() );
-
+			$code = 403;
 		} catch( Exception $e ) {
-			wfHttpError( $code, self::$HttpErrors[$code], $e->getCode(), $e->getMessage() );
-
+			$code = 500;
 		}
 			
+		wfHttpError( $code, self::$HttpErrors[$code], $e->getCode(), $e->getMessage() );
 		return false;
 	}
 
@@ -106,11 +99,11 @@ class SpecialSessionStash extends SpecialPage {
 	 * @param {File} file
 	 */		
 	private function outputFile( $file ) { 
-		header( 'Content-Type: ' . $file->getMimeType() );
-		header( 'Content-Transfer-Encoding: binary' );
-		header( 'Expires: Sun, 17-Jan-2038 19:14:07 GMT' );
-		header( 'Pragma: public' );
-		header( 'Content-Length: ' . $file->getSize() );
+		header( 'Content-Type: ' . $file->getMimeType(), true );
+		header( 'Content-Transfer-Encoding: binary', true );
+		header( 'Expires: Sun, 17-Jan-2038 19:14:07 GMT', true );
+		header( 'Pragma: public', true );
+		header( 'Content-Length: ' . $file->getSize(), true );
 		readfile( $file->getPath() );
 	}
 }

@@ -31,7 +31,7 @@ class SessionStash {
 	 * Designed to be compatible with the session stashing code in UploadBase (should replace eventually)
 	 * @param {FileRepo} optional -- repo in which to store files. Will choose LocalRepo if not supplied.
 	 */
-	public function __construct( $repo=null ) { 
+	public function __construct( $repo = null ) { 
 
 		if ( is_null( $repo ) ) {
 			$repo = RepoGroup::singleton()->getLocalRepo();
@@ -81,7 +81,7 @@ class SessionStash {
 	
 			// guards against PHP class changing while session data doesn't
 			if ($stashData['version'] !== UploadBase::SESSION_VERSION ) {
-				return self::$error['outdated session version'];
+				throw new MWException( 'outdated session version' );
 			}
 			
 			// The path is flattened in with the other random props so we have to dig it out.
@@ -108,7 +108,7 @@ class SessionStash {
 	 * @param {Array} data - other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or version as keys here
 	 * @return {SessionStashFile} file
 	 */
-	public function stashFile( $key, $path, $data=array() ) {
+	public function stashFile( $key, $path, $data = array() ) {
 		if ( !$key ) {
 			$key = mt_rand( 0, 0x7fffffff );
 		}
@@ -196,36 +196,6 @@ class SessionStashFile extends UnregisteredLocalFile {
 	}
 
 	/**
-	 * Test if a path looks like it's in the right place
-	 *
-	 * @param {String} $path 
-	 * @return {Boolean}
-	 */
-	public function isPathValid( $path ) {
-
-                if ( strval( $filename ) == '' ) { 
-                        return false; 
-                } 
-
-                /** 
-	 	 * Lifted this bit from extensions/WebStore::validateFilename.
-                 * Use the same traversal protection as Title::secureAndSplit() 
-                 */ 
-                if ( strpos( $filename, '.' ) !== false && 
-                     ( $filename === '.' || $filename === '..' || 
-                       strpos( $filename, './' ) === 0  || 
-                       strpos( $filename, '../' ) === 0 || 
-                       strpos( $filename, '/./' ) !== false || 
-                       strpos( $filename, '/../' ) !== false ) ) { 
-                        return false; 
-                } 
-
-		
-		return true;
-
-	}
-
-	/**
 	 * A method needed by the file transforming and scaling routines in File.php
 	 * We do not necessarily care about doing the description at this point
 	 * @return {String} the empty string
@@ -275,7 +245,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * @param {String|false} name of thumbnail (e.g. "120px-123456.jpg" ), or false to just get the path
 	 * @return {String} path thumbnail should take on filesystem, or containing directory if thumbname is false
 	 */
-	public function getThumbPath( $thumbName=false ) { 
+	public function getThumbPath( $thumbName = false ) { 
 		$path = dirname( $this->path );
 		if ( $thumbName !== false ) {
 			$path .= "/$thumbName";
@@ -311,7 +281,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * @param {String} basename of thumbnail file -- however, we don't want to use the file exactly
 	 * @return {String} URL to access thumbnail, or URL with partial path
 	 */
-	public function getThumbUrl( $thumbName=false ) { 
+	public function getThumbUrl( $thumbName = false ) { 
 		$path = $this->sessionStash->getBaseUrl();
 		$extension = $this->getExtension();
 		if ( $thumbName !== false ) {
@@ -367,7 +337,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * @param {Bitmask} flags suitable for File::transform()
 	 * @return {ThumbnailImage} with additional File thumbnailFile property
 	 */
-	public function transform( $params, $flags=0 ) { 
+	public function transform( $params, $flags = 0 ) { 
 
 		// force it to get a thumbnail right away
 		$flags |= self::RENDER_NOW;
