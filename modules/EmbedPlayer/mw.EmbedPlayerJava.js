@@ -220,7 +220,7 @@ mw.EmbedPlayerJava = {
 		this.parent_play();
 		if ( this.playerElement ) {
 			try{
-			this.playerElement.play();
+				this.playerElement.play();
 			}catch( e ){
 				mw.log("EmbedPlayerJava::Could not issue play request");
 			}
