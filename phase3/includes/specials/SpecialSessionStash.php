@@ -87,7 +87,7 @@ class SpecialSessionStash extends SpecialPage {
 	 * @return {File} file object
 	 * @throws MWException, SessionStashFileNotFoundException, SessionStashBadPathException
 	 */
-	private function getStashFile( $subPage );
+	private function getStashFile( $subPage ) {
 		// due to an implementation quirk (and trying to be compatible with older method) 
 		// the stash key doesn't have an extension 
 		$key = $subPage;
