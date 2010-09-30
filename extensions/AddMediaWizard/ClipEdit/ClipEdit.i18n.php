@@ -429,6 +429,40 @@ $messages['fr'] = array(
 	'mwe-clipedit-layout_left' => "Disposition de l'image à gauche",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'mwe-clipedit-crop' => 'Rognér l’émâge',
+	'mwe-clipedit-apply_crop' => 'Aplicar la rognura a l’émâge',
+	'mwe-clipedit-reset_crop' => 'Tornar inicialisar la rognura',
+	'mwe-clipedit-insert_image_page' => 'Entrebetar dens la pâge',
+	'mwe-clipedit-insert_into_sequence' => 'Entrebetar dens la sèquence',
+	'mwe-clipedit-preview_insert' => 'Prèvisualisar l’entrebetâ',
+	'mwe-clipedit-cancel_image_insert' => 'Anular l’entrebetâ',
+	'mwe-clipedit-sc_attributes' => 'Changiér los dètalys du clipe',
+	'mwe-clipedit-sc_inoutpoints' => 'Dèfenir des pouents d’entrâ-sortia',
+	'mwe-clipedit-sc_overlays' => 'Revetures',
+	'mwe-clipedit-sc_audio' => 'Contrôlo ôdiô',
+	'mwe-clipedit-sc_duration' => 'Temps',
+	'mwe-clipedit-template_properties' => 'Propriètâts du modèlo',
+	'mwe-clipedit-custom_title' => 'Titro pèrsonalisâ',
+	'mwe-clipedit-edit_properties' => 'Changiér les propriètâts',
+	'mwe-clipedit-other_properties' => 'Ôtres propriètâts',
+	'mwe-clipedit-resource_page' => 'Pâge de la ressôrsa :',
+	'mwe-clipedit-set_in_out_points' => 'Dèfenir des pouents d’entrâ-sortia',
+	'mwe-clipedit-start_time' => 'Hora de comencement',
+	'mwe-clipedit-end_time' => 'Hora de fin',
+	'mwe-clipedit-preview_inout' => 'Prèvisualisar los pouents d’entrâ-sortia',
+	'mwe-clipedit-edit-tools' => 'Outils de changement',
+	'mwe-clipedit-inline-description' => 'Lègenda',
+	'mwe-clipedit-edit-video-tools' => 'Outils de changement de les vidèôs :',
+	'mwe-clipedit-duration' => 'Temps :',
+	'mwe-clipedit-layout' => 'Misa en pâge',
+	'mwe-clipedit-layout_right' => 'Misa en pâge de l’émâge a drêta',
+	'mwe-clipedit-layout_left' => 'Misa en pâge de l’émâge a gôche',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

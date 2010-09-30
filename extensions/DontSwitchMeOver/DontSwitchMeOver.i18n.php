@@ -209,6 +209,13 @@ $messages['hsb'] = array(
 	'dontswitchmeover-pref' => 'Změnjenje šata njedowolić, hdyž so standardny šat změni',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'dontswitchmeover-pref' => 'Ne módosuljon az általam beállított felület, ha változik az alapértelmezett.',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

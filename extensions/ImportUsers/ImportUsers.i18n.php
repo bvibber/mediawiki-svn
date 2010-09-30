@@ -1839,10 +1839,11 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'importusers-log-summary-all' => 'அனைத்து',
+	'importusers-log-summary-all' => 'அனைத்தும்',
 );
 
 /** Telugu (తెలుగు)

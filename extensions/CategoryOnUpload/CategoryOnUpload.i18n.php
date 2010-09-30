@@ -629,6 +629,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'categoryonupload-desc' => 'கோப்பை பதிவேற்றும் சமயத்தில் பகுப்பைத் தேர்வு செய்ய பயனரைத் தூண்டுகிறது',
 	'categoryonupload-label' => 'பகுப்பு:',
 );
 

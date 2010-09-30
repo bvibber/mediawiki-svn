@@ -3013,10 +3013,11 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'regexblock-view-all' => 'அனைத்து',
+	'regexblock-view-all' => 'அனைத்தும்',
 );
 
 /** Telugu (తెలుగు)

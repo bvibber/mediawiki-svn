@@ -1474,7 +1474,7 @@ We gaan er snel naar kijken.
 U kunt [$2 gepubliceerde verhalen lezen] als u dat wilt.',
 	'storyreview' => 'Verhalen beoordelen',
 	'storyboard-deleteimage' => 'Afbeelding verwijderen',
-	'storyboard-done' => 'Klaar',
+	'storyboard-done' => 'Afgerond',
 	'storyboard-working' => 'Bezig met verwerken...',
 	'storyboard-imagedeletionconfirm' => 'Weet u zeker dat u de afbeelding bij het verhaal permanent wilt verwijderen?',
 	'storyboard-imagedeleted' => 'Afbeelding verwijderd',

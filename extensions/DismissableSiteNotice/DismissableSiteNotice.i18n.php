@@ -869,6 +869,7 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'sitenotice_close' => 'நீக்கு',
+	'sitenotice-desc' => 'தள அறிவிப்புக்களை முடித்துவிட பயனருக்கு அனுமதியளிக்கிறது',
 );
 
 /** Telugu (తెలుగు)
