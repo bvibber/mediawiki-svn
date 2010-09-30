@@ -40,7 +40,7 @@ abstract class ApiQueryBase extends ApiBase {
 
 	private $mQueryModule, $mDb, $tables, $where, $fields, $options, $join_conds;
 
-	public function __construct( ApiQuery $query, $moduleName, $paramPrefix = '' ) {
+	public function __construct( ApiBase $query, $moduleName, $paramPrefix = '' ) {
 		parent::__construct( $query->getMain(), $moduleName, $paramPrefix );
 		$this->mQueryModule = $query;
 		$this->mDb = null;
@@ -168,7 +168,7 @@ abstract class ApiQueryBase extends ApiBase {
 	/**
 	 * Same as addWhere(), but add the WHERE clauses only if a condition is met
 	 * @param $value mixed See addWhere()
-	 * @param $condition boolIf false, do nothing
+	 * @param $condition bool If false, do nothing
 	 * @return bool $condition
 	 */
 	protected function addWhereIf( $value, $condition ) {

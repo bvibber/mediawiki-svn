@@ -1,8 +1,8 @@
 // IE fixes javascript
 
 window.isMSIE55 = ( window.showModalDialog && window.clipboardData && window.createPopup );
-window.doneIETransform;
-window.doneIEAlphaFix;
+window.doneIETransform = undefined;
+window.doneIEAlphaFix = undefined;
 
 if ( document.attachEvent ) {
 	document.attachEvent( 'onreadystatechange', hookit );

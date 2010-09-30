@@ -181,8 +181,7 @@ abstract class ApiBase {
 		if ( isset( $data['warnings'][$this->getModuleName()] ) ) {
 			// Don't add duplicate warnings
 			$warn_regex = preg_quote( $warning, '/' );
-			if ( preg_match( "/{$warn_regex}(\\n|$)/", $data['warnings'][$this->getModuleName()]['*'] ) )
-			{
+			if ( preg_match( "/{$warn_regex}(\\n|$)/", $data['warnings'][$this->getModuleName()]['*'] ) ) {
 				return;
 			}
 			$oldwarning = $data['warnings'][$this->getModuleName()]['*'];
@@ -552,7 +551,7 @@ abstract class ApiBase {
 	 * Return true if we're to watch the page, false if not, null if no change.
 	 * @param $watchlist String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
 	 * @param $titleObj Title the page under consideration
-	 * @param $userOption The user option to consider when $watchlist=preferences.
+	 * @param $userOption String The user option to consider when $watchlist=preferences.
 	 * 	If not set will magically default to either watchdefault or watchcreations
 	 * @returns mixed
 	 */
@@ -590,7 +589,7 @@ abstract class ApiBase {
 	 * Set a watch (or unwatch) based the based on a watchlist parameter.
 	 * @param $watch String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
 	 * @param $titleObj Title the article's title to change
-	 * @param $userOption The user option to consider when $watch=preferences
+	 * @param $userOption String The user option to consider when $watch=preferences
 	 */
 	protected function setWatch ( $watch, $titleObj, $userOption = null ) {
 		$value = $this->getWatchlistValue( $watch, $titleObj, $userOption );

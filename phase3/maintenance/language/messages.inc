@@ -3217,6 +3217,10 @@ $wgMessageStructure = array(
 		'htmlform-reset',
 		'htmlform-selectorother-other',
 	),
+	'sqlite' => array(
+		'sqlite-has-fts',
+		'sqlite-no-fts',
+	),
 );
 
 /** Comments for each block */
@@ -3428,4 +3432,5 @@ Variants for Chinese language",
 	'comparepages'          => 'Special:ComparePages',
 	'db-error-messages'     => 'Database error messages',
 	'html-forms'            => 'HTML forms',
+	'sqlite'                => 'SQLite database support',
 );

@@ -188,6 +188,8 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Get the ApiResult object associated with current request
+	 *
+	 * @return ApiResult
 	 */
 	public function getResult() {
 		return $this->mResult;
@@ -202,6 +204,8 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Get the result formatter object. Only works after setupExecuteAction()
+	 *
+	 * @return ApiFormatBase
 	 */
 	public function getPrinter() {
 		return $this->mPrinter;
@@ -220,7 +224,7 @@ class ApiMain extends ApiBase {
 	/**
 	 * Set the type of caching headers which will be sent.
 	 *
-	 * @param $mode One of:
+	 * @param $mode String One of:
 	 *    - 'public':     Cache this object in public caches, if the maxage or smaxage
 	 *         parameter is set, or if setCacheMaxAge() was called. If a maximum age is
 	 *         not provided by any of these means, the object will be private.
@@ -530,7 +534,7 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Set up the module for response
-	 * @return Object the module that will handle this action
+	 * @return ApiBase The module that will handle this action
 	 */
 	protected function setupModule() {
 		// Instantiate the module requested by the user
@@ -583,7 +587,7 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Check for sufficient permissions to execute
-	 * @param $module object An Api module
+	 * @param $module ApiBase An Api module
 	 */
 	protected function checkExecutePermissions( $module ) {
 		global $wgUser;
@@ -607,7 +611,7 @@ class ApiMain extends ApiBase {
 
 	/**
 	 * Check POST for external response and setup result printer
-	 * @param $module object An Api module
+	 * @param $module ApiBase An Api module
 	 * @param $params Array an array with the request parameters
 	 */
 	protected function setupExternalResponse( $module, $params ) {
@@ -637,7 +641,9 @@ class ApiMain extends ApiBase {
 
 		$this->checkExecutePermissions( $module );
 
-		if ( !$this->checkMaxLag( $module, $params ) ) return;
+		if ( !$this->checkMaxLag( $module, $params ) ) {
+			return;
+		}
 
 		if ( !$this->mInternalMode ) {
 			$this->setupExternalResponse( $module, $params );

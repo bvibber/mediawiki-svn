@@ -51,8 +51,6 @@ class SpecialSessionStash extends SpecialPage {
 		// prevent callers from doing standard HTML output -- we'll take it from here
 		$wgOut->disable();
 
-		wfDebug( __METHOD__ . " in subpage for $subPage \n" );
-
 		try { 
 			$file = $this->getStashFile( $subPage );
 			if ( $file->getSize() > $this->maxServeFileSize ) {

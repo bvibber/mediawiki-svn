@@ -358,7 +358,9 @@ class Skin extends Linker {
 
 	static function makeVariablesScript( $data ) {
 		if ( $data ) {
-			return Html::inlineScript( 'mediaWiki.config.set(' . FormatJson::encode( $data ) . ');' );
+			return Html::inlineScript(
+				ResourceLoader::makeLoaderConditionalScript( ResourceLoader::makeConfigSetScript( $data ) )
+			);
 		} else {
 			return '';
 		} 
@@ -1056,7 +1058,7 @@ class Skin extends Linker {
 	function subPageSubtitle() {
 		$subpages = '';
 
-		if ( !wfRunHooks( 'SkinSubPageSubtitle', array( &$subpages ) ) ) {
+		if ( !wfRunHooks( 'SkinSubPageSubtitle', array( &$subpages, $this ) ) ) {
 			return $subpages;
 		}
 
@@ -2044,7 +2046,7 @@ class Skin extends Linker {
 
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0 ? true : false
+			'exists' => $title->getArticleID() != 0,
 		);
 	}
 

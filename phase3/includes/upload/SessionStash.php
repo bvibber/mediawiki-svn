@@ -70,10 +70,7 @@ class SessionStash {
 	 */
 	public function getFile( $key ) { 
 		if ( !isset( $this->files[$key] ) ) {
-			wfDebug( "checking key = <$key> is in session\n" );
 			if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME][$key] ) ) {
-				wfDebug( "checking key = <$key> is in session - it isn't\n" );
-				wfDebug( print_r( $_SESSION[UploadBase::SESSION_KEYNAME], 1 ) );
 				throw new SessionStashFileNotFoundException();
 			}
 
@@ -145,8 +142,6 @@ class SessionStash {
 
 		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $stashData;
 		
-		//wfDebug( "SESSION\n=====\n " . print_r( $_SESSION, 1 ) . "\n" );
-		
 		return $this->getFile( $key );
 	}
 }
@@ -179,10 +174,8 @@ class SessionStashFile extends UnregisteredLocalFile {
 			throw new SessionStashBadPathException();
 		}
 
-		wfDebug( "checking if path exists and is good: $path " );
 		// check if path exists! and is a plain file.
 		if ( ! $repo->fileExists( $path, $repo::FILES_ONLY ) ) {
-			wfDebug( "checking if path exists and is good: $path  -- no!! " );
 			throw new SessionStashFileNotFoundException();
 		}
 

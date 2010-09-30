@@ -78,7 +78,9 @@ class CSSMin {
 	 * Remaps CSS URL paths and automatically embeds data URIs for URL rules preceded by an /* @embed * / comment
 	 *
 	 * @param $source string CSS data to remap
-	 * @param $path string File path where the source was read from
+	 * @param $local string File path where the source was read from
+	 * @param $remote string URL path to the file
+	 * @param $embed ???
 	 * @return string Remapped CSS data
 	 */
 	public static function remap( $source, $local, $remote, $embed = true ) {
@@ -91,7 +93,7 @@ class CSSMin {
 			$post = $match['post'][0];
 			$file = "{$local}/{$match['file'][0]}";
 			$url = "{$remote}/{$match['file'][0]}";
-			// Only proceed if we can access the fill
+			// Only proceed if we can access the file
 			if ( file_exists( $file ) ) {
 				// Add version parameter as a time-stamp in ISO 8601 format, using Z for the timezone, meaning GMT
 				$url .= '?' . gmdate( 'Y-m-d\TH:i:s\Z', round( filemtime( $file ), -2 ) );
@@ -139,7 +141,7 @@ class CSSMin {
 	/**
 	 * Removes whitespace from CSS data
 	 *
-	 * @param $source string CSS data to minify
+	 * @param $css string CSS data to minify
 	 * @return string Minified CSS data
 	 */
 	public static function minify( $css ) {

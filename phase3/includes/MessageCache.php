@@ -546,6 +546,10 @@ class MessageCache {
 		}
 
 		$lang = wfGetLangObj( $langcode );
+		if ( !$lang ) {
+			throw new MWException( "Bad lang code $langcode given" );
+		}
+
 		$langcode = $lang->getCode();
 
 		$message = false;

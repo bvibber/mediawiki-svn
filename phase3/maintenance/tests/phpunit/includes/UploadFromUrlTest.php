@@ -25,7 +25,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 		}
 	}
 
-	protected function doApiRequest( $params ) {
+	protected function doApiRequest( $params, $unused = null ) {
 		$sessionId = session_id();
 		session_write_close();
 		
@@ -132,7 +132,6 @@ class UploadFromUrlTest extends ApiTestSetup {
 		}
 		$this->assertTrue( $exception, "Got exception" );
 
-		self::$user->addGroup( '*' );
 		self::$user->addGroup( 'sysop' );
 		$exception = false;
 		$data = $this->doApiRequest( array(

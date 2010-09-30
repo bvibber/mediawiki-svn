@@ -648,7 +648,7 @@ window.mediaWiki = new ( function( $ ) {
 			dependencies = resolve( dependencies );
 			// If all dependencies are met, execute ready immediately
 			if ( filter( ['ready'], dependencies ).compare( dependencies ) ) {
-				if ( typeof ready !== 'function' ) {
+				if ( typeof ready === 'function' ) {
 					ready();
 				}
 			}
@@ -735,9 +735,10 @@ window.mediaWiki = new ( function( $ ) {
 				}
 				return;
 			}
-			if ( module in registry ) {
-				registry[module].state = state;
+			if ( !( module in registry ) ) {
+				that.register( module );
 			}
+			registry[module].state = state;
 		};
 		
 		/**

@@ -15,17 +15,22 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @author Trevor Parscal
  * @author Roan Kattouw
  */
+
+defined( 'MEDIAWIKI' ) || die( 1 );
 
 /**
  * Object passed around to modules which contains information about the state 
  * of a specific loader request
  */
 class ResourceLoaderContext {
+
 	/* Protected Members */
 
+	protected $resourceLoader;
 	protected $request;
 	protected $modules;
 	protected $language;
@@ -39,9 +44,10 @@ class ResourceLoaderContext {
 
 	/* Methods */
 
-	public function __construct( WebRequest $request ) {
+	public function __construct( ResourceLoader $resourceLoader, WebRequest $request ) {
 		global $wgLang, $wgDefaultSkin, $wgResourceLoaderDebug;
 
+		$this->resourceLoader = $resourceLoader;
 		$this->request = $request;
 		// Interperet request
 		$this->modules = explode( '|', $request->getVal( 'modules' ) );
@@ -67,6 +73,10 @@ class ResourceLoaderContext {
 		}
 	}
 
+	public function getResourceLoader() {
+		return $this->resourceLoader;
+	}
+	
 	public function getRequest() {
 		return $this->request;
 	}
