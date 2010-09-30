@@ -3,11 +3,13 @@
  * SessionStash is intended to accomplish a few things:
  *   - enable applications to temporarily stash files without publishing them to the wiki.
  *      - Several parts of MediaWiki do this in similar ways: UploadBase, UploadWizard, and FirefoggChunkedExtension
- *        the idea is to unify them all here
+ *        And there are several that reimplement stashing from scratch, in idiosyncratic ways. The idea is to unify them all here.
+ *	  Mostly all of them are the same except for storing some custom fields, which we subsume into the data array.
  *   - enable applications to find said files later, as long as the session or temp files haven't been purged. 
  *   - enable the uploading user (and *ONLY* the uploading user) to access said files, and thumbnails of said files, via a URL.
  *     We accomplish this by making the session serve as a URL->file mapping, on the assumption that nobody else can access 
- *     the session, even the uploading user.
+ *     the session, even the uploading user. See SpecialSessionStash, which implements a web interface to some files stored this way.
+ *
  */
 
 class SessionStash {
@@ -34,6 +36,11 @@ class SessionStash {
 		if ( is_null( $repo ) ) {
 			$repo = RepoGroup::singleton()->getLocalRepo();
 		}
+
+		// sanity check repo. If we want to mock the repo later this should be modified.
+		if ( ! is_dir( $repo->getZonePath( 'temp' ) ) ) {
+			throw new MWException( 'invalid repo or cannot read repo temp dir' );
+		}
 		$this->repo = $repo;
 
 		if ( ! isset( $_SESSION ) ) {
@@ -47,6 +54,10 @@ class SessionStash {
 		$this->baseUrl = SpecialPage::getTitleFor( 'SessionStash' )->getLocalURL(); 
 	}
 
+	/**
+	 * Get the base of URLs by which one can access the files 
+	 * @return {String} url
+	 */
 	public function getBaseUrl() { 
 		return $this->baseUrl;
 	}
@@ -55,14 +66,22 @@ class SessionStash {
 	 * Get a file from the stash.
 	 * May throw exception if session data cannot be parsed due to schema change.
 	 * @param {Integer} key
-	 * @return {null|SessionStashItem} null if no such item, or the item
+	 * @return {null|SessionStashItem} null if no such item or item out of date, or the item
 	 */
 	public function getFile( $key ) { 
-		if ( !array_key_exists( $key, $this->files ) ) {
-			$stashData = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
+		if ( !isset( $this->files[$key] ) ) {
+			wfDebug( "checking key = <$key> is in session\n" );
+			if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME][$key] ) ) {
+				wfDebug( "checking key = <$key> is in session - it isn't\n" );
+				wfDebug( print_r( $_SESSION[UploadBase::SESSION_KEYNAME], 1 ) );
+				throw new SessionStashFileNotFoundException();
+			}
 
+			$stashData = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
+	
+			// guards against PHP class changing while session data doesn't
 			if ($stashData['version'] !== UploadBase::SESSION_VERSION ) {
-				throw new MWException( 'session item schema does not match current software' );
+				return self::$error['outdated session version'];
 			}
 			
 			// The path is flattened in with the other random props so we have to dig it out.
@@ -74,7 +93,10 @@ class SessionStash {
 					$data[ $stashKey ] = $stashVal;
 				}
 			} 
-			$this->files[$key] = new SessionStashFile( $this, $this->repo, $path, $key, $data );
+
+			$file = new SessionStashFile( $this, $this->repo, $path, $key, $data );
+			$this->files[$key] = $file;
+
 		}
 		return $this->files[$key];
 	}
@@ -145,15 +167,61 @@ class SessionStashFile extends UnregisteredLocalFile {
 		$this->sessionStash = $stash;
 		$this->sessionKey = $key;
 		$this->sessionData = $data;
+		
+		// resolve mwrepo:// urls
 		if ( $repo->isVirtualUrl( $path ) ) {
 			$path = $repo->resolveVirtualUrl( $path );	
 		}
+
+		// check if path appears to be sane, no parent traverals, and is in this repo's temp zone.
+		if ( ( ! $repo->validateFilename( $path ) ) || 
+			( strpos( $path, $repo->getZonePath( 'temp' ) ) !== 0 ) ) {
+			throw new SessionStashBadPathException();
+		}
+
+		wfDebug( "checking if path exists and is good: $path " );
+		// check if path exists! and is a plain file.
+		if ( ! $repo->fileExists( $path, $repo::FILES_ONLY ) ) {
+			wfDebug( "checking if path exists and is good: $path  -- no!! " );
+			throw new SessionStashFileNotFoundException();
+		}
+
 		parent::__construct( false, $repo, $path, false );
 
 		// we will be initializing from some tmpnam files that don't have extensions.
 		// most of MediaWiki assumes all uploaded files have good extensions. So, we fix this.
 		$this->name = basename( $this->path );
 		$this->setExtension();
+
+	}
+
+	/**
+	 * Test if a path looks like it's in the right place
+	 *
+	 * @param {String} $path 
+	 * @return {Boolean}
+	 */
+	public function isPathValid( $path ) {
+
+                if ( strval( $filename ) == '' ) { 
+                        return false; 
+                } 
+
+                /** 
+	 	 * Lifted this bit from extensions/WebStore::validateFilename.
+                 * Use the same traversal protection as Title::secureAndSplit() 
+                 */ 
+                if ( strpos( $filename, '.' ) !== false && 
+                     ( $filename === '.' || $filename === '..' || 
+                       strpos( $filename, './' ) === 0  || 
+                       strpos( $filename, '../' ) === 0 || 
+                       strpos( $filename, '/./' ) !== false || 
+                       strpos( $filename, '/../' ) !== false ) ) { 
+                        return false; 
+                } 
+
+		
+		return true;
 
 	}
 
@@ -193,7 +261,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		if ( is_null( $extension ) ) {
-			throw 'cannot determine extension';
+			throw new MWException( 'cannot determine extension' );
 		}
 
 		$this->extension = parent::normalizeExtension( $extension );
@@ -325,3 +393,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	}
 
 }
+
+class SessionStashFileNotFoundException extends MWException {};
+class SessionStashBadPathException extends MWException {};
+
