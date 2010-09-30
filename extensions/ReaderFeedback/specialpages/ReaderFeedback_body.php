@@ -230,7 +230,7 @@ class ReaderFeedbackPage extends UnlistedSpecialPage
 		static $stackDepth = 0;
 		$userVoted = false;
 		# Use page_latest if $revId not given
-		$revId = $revId ? $revId : $title->getLatestRevID( GAID_FOR_UPDATE );
+		$revId = $revId ? $revId : $title->getLatestRevID( Title::GAID_FOR_UPDATE );
 		$rev = Revision::newFromTitle( $title, $revId );
 		if( !$rev ) return false; // shouldn't happen; just in case
 		# Check if this revision is by this user...

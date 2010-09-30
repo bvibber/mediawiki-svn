@@ -243,7 +243,7 @@ class WikilogComment
 		if ( $this->mCommentTitle ) {
 			return $this->mCommentTitle;
 		} else if ( $this->mCommentPage ) {
-			return Title::newFromID( $this->mCommentPage, GAID_FOR_UPDATE );
+			return Title::newFromID( $this->mCommentPage, Title::GAID_FOR_UPDATE );
 		} else {
 			$it = $this->mItem->mTitle;
 			return Title::makeTitle(

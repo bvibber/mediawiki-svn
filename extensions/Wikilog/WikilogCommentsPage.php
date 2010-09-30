@@ -399,7 +399,7 @@ class WikilogCommentsPage
 				array( 'content', 'parsemag' ),
 				$comment->mUserText
 			);
-			$id = $title->getArticleID( GAID_FOR_UPDATE );
+			$id = $title->getArticleID( Title::GAID_FOR_UPDATE );
 			if ( $this->doDeleteArticle( $reason, false, $id ) ) {
 				$comment->deleteComment();
 				$log->addEntry( 'c-reject', $title, '' );
