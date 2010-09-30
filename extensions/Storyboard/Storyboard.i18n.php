@@ -1465,7 +1465,7 @@ We gaan er snel naar kijken.
 U kunt [$2 gepubliceerde verhalen lezen] als u dat wilt.',
 	'storyreview' => 'Verhalen beoordelen',
 	'storyboard-deleteimage' => 'Afbeelding verwijderen',
-	'storyboard-done' => 'Klaar',
+	'storyboard-done' => 'Afgerond',
 	'storyboard-working' => 'Bezig met verwerken...',
 	'storyboard-imagedeletionconfirm' => 'Weet u zeker dat u de afbeelding bij het verhaal permanent wilt verwijderen?',
 	'storyboard-imagedeleted' => 'Afbeelding verwijderd',
@@ -2120,12 +2120,28 @@ Varför inte dela med dig av det?',
  * @author Veeven
  */
 $messages['te'] = array(
+	'right-storyreview' => 'కథనాల సమీక్ష, కూర్పు, ప్రచురణ, మరియు దాచడం చేయగలగడం',
+	'storyboard-unpublished' => 'అప్రచురితం',
+	'storyboard-published' => 'ప్రచురితం',
 	'storyboard-publish' => 'ప్రచురించు',
+	'storyboard-hide' => 'దాచు',
+	'storyboard-authorname' => 'రచయిత పేరు',
+	'storyboard-authorlocation' => 'రచయిత ప్రాంతం',
+	'storyboard-authoroccupation' => 'రచయిత వృత్తి',
+	'storyboard-authoremail' => 'రచయిత ఈ-మెయిలు చిరునామా',
+	'storyboard-thestory' => 'కథనం',
+	'storyboard-storystate' => 'స్థితి',
 	'storyboard-language' => 'భాష',
 	'storyboard-yourname' => 'మీ పేరు (తప్పనిసరి)',
+	'storyboard-photo' => 'మీ ఫొటో ఉందా?
+మాతో పంచుకోకూడదా?',
 	'storyboard-email' => 'మీ ఈ-మెయిలు చిరునామా (తప్పనిసరి)',
+	'storyboard-storytitle' => 'క్లుప్త, వివరణాత్మకమైన శీర్షిక (తప్పనిసరి)',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|అక్షరం మిగిలివుంది|అక్షరాలు మిగిలివున్నాయి}})',
+	'storyboard-cannotbelonger' => 'మీ కథనం <b>$1</b> {{PLURAL:$1|అక్షరం|అక్షరాలు}} చాలా పెద్దగా ఉంది!',
 	'storyboard-changetitle' => 'శీర్షికని మార్చండి.',
 	'storyboard-done' => 'పూర్తయ్యింది',
+	'storyboard-deletestory' => 'తొలగించు',
 	'storyboard-storydeletionconfirm' => 'మీరు నిజంగానే ఈ కథనాన్ని తొలగించాలనుకుంటున్నారా?',
 );
 

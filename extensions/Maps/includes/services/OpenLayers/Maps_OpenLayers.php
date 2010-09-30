@@ -36,17 +36,15 @@ class MapsOpenLayers extends MapsMappingService {
 	}	
 	
 	/**
-	 * @see MapsMappingService::initParameterInfo
+	 * @see MapsMappingService::addParameterInfo
 	 * 
-	 * @since 0.5
+	 * @since 0.7
 	 */	
-	protected function initParameterInfo( array &$params ) {
+	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
-		
-		//$params['zoom']->addCriterion( new CriterionInRange( 0, 19 ) );
-		//$params['zoom']->setDefault( self::getDefaultZoom() );		
+		$params['zoom']->addCriteria( new CriterionInRange( 0, 19 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
 		$params['controls'] = new ListParameter(
 			'controls',
@@ -58,9 +56,7 @@ class MapsOpenLayers extends MapsMappingService {
 				new CriterionInArray( self::getControlNames() ),
 			)			
 		);
-
-		// TODO
-		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['layers'] = new ListParameter(
 			'layers',
@@ -71,14 +67,9 @@ class MapsOpenLayers extends MapsMappingService {
 			array(
 				new CriterionInArray( self::getLayerNames( true ) ),
 			)			
-		);	
-
-		// TODO
-		$params['layers']->outputTypes = array(
-			'unique_items' => array( 'unique_items' ),
-			'olgroups' => array( 'olgroups' ),
-			'filtered_array' => array( 'filtered_array', self::getLayerNames() )
-		);		
+		);
+		$params['layers']->addManipulations( new MapsParamOLLayers() );
+		$params['layers']->setDoManipulationOfDefault( true );
 	}
 	
 	/**
@@ -192,7 +183,7 @@ class MapsOpenLayers extends MapsMappingService {
 			$this->loadDependencyWhenNeeded( $layer );
 			$layerStr[] = is_array( $egMapsOLAvailableLayers[$layer] ) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
 		}
-		
+
 		return count( $layerStr ) == 0 ? '' : 'new ' . implode( ',new ', $layerStr );
 	}
 	
@@ -216,30 +207,6 @@ class MapsOpenLayers extends MapsMappingService {
 			// Register that it's added so it does not get done multiple times.
 			self::$loadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
 		}
-	}
-	
-	/**
-	 * Removed the layer groups from the layer list, and adds their members back in.
-	 * 
-	 * @param array $layers
-	 * @param string $name
-	 * @param array $parameters
-	 */
-	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
-		global $egMapsOLLayerGroups;
-		
-		$unpacked = array();
-		
-		foreach ( $layers as $layerOrGroup ) {
-			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
-				$unpacked = array_merge( $unpacked, $egMapsOLLayerGroups[$layerOrGroup] );
-			}
-			else {
-				$unpacked[] = $layerOrGroup;
-			}
-		}
-		
-		$layers = $unpacked;
 	}
 	
 }																	

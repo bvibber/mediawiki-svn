@@ -518,9 +518,19 @@ class OAIRepo {
 		return null;
 	}
 
+	static function identifierPrefix() {
+		static $prefix = false;
+		if ( !$prefix ) {
+			global $wgServer, $wgDBname;
+			wfSuppressWarnings();
+			$prefix = "oai:" . parse_url( $wgServer, PHP_URL_HOST ) . ":$wgDBname:";
+			wfRestoreWarnings();
+		}
+		return $prefix;
+	}
+
 	function stripIdentifier( $identifier ) {
-		global $wgServerName, $wgDBname;
-		$prefix = "oai:$wgServerName:$wgDBname:";
+		$prefix = self::identifierPrefix();
 		if( substr( $identifier, 0, strlen( $prefix ) ) == $prefix ) {
 			$pageid = substr( $identifier, strlen( $prefix ) );
 			if( preg_match( '/^\d+$/', $pageid ) ) {
@@ -773,8 +783,7 @@ class WikiOAIRecord extends OAIRecord {
 	}
 
 	function getIdentifier() {
-		global $wgDBname, $wgServerName;
-		return "oai:$wgServerName:$wgDBname:{$this->_id}";
+		return OAIRepo::identifierPrefix() . $this->_id;
 	}
 
 	function getDatestamp() {

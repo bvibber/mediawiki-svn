@@ -18,6 +18,20 @@ $messages['en'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store admin page',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'rdfio-desc' => 'Пашырае магчымасьці імпарту/экспарту RDF, уключаючы канчатковы пункт SPARQL, для сэмантычнай MediaWiki',
+	'rdfimport' => 'Імпарт RDF',
+	'rdfio-arc2admin-desc' => 'Старонка кіраваньня для сховішча ARC2 RDF для сэмантычнай MediaWiki',
+	'rdfio-rdfimport-desc' => 'Спэцыяльная старонка для імпарту сэмантычных зьвестак у фармаце RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Канчатковы пункт SPARQL прадстаўленая SMWRDFConnector',
+	'sparqlendpoint' => 'Канчатковы пункт SPARQL',
+	'specialarc2admin' => 'Старонка кіраваньня сховішча ARC2 RDF',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -42,6 +56,19 @@ $messages['de'] = array(
 	'rdfio-sparqlendpoint-desc' => 'Stellt eine SPARQL-Anknüpfung für den SMWRDFConnector bereit',
 	'sparqlendpoint' => 'SPARQL-Anknüpfung',
 	'specialarc2admin' => '„ARC2 RDF“-Speicher-Administrationsseite',
+);
+
+/** French (Français)
+ * @author Verdy p
+ */
+$messages['fr'] = array(
+	'rdfio-desc' => 'Fonctionnalité étendue d’importation/exportation RDF, comprenant un point de terminaison SPARQL, pour MediaWiki Sémantique',
+	'rdfimport' => 'Importation RDF',
+	'rdfio-arc2admin-desc' => 'Page d’administration du dépôt RDF ARC2, pour MediaWiki Sémantique',
+	'rdfio-rdfimport-desc' => 'Une page spéciale permettant d’importer des données sémantiques au format RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Un point de terminaison SPARQL fourni par le SMWRDFConnector',
+	'sparqlendpoint' => 'Point de terminaison SPARQL',
+	'specialarc2admin' => 'Page d’administration du dépôt RDF ARC2',
 );
 
 /** Galician (Galego)

@@ -1049,7 +1049,7 @@ $messages['br'] = array(
 	'code-author-unlink' => 'diliammañ ?',
 	'code-author-unlinksuccess' => 'Diliammet eo bet an aozer $1',
 	'code-author-badtoken' => "Fazi en dalc'h e-ser seveniñ an ober-mañ.",
-	'code-author-total' => 'Niver hollek a oberourien : $1',
+	'code-author-total' => 'Niver hollek a aozerien : $1',
 	'code-browsing-path' => "Hentad an adweladennoù a-benn '''$1'''",
 	'code-field-id' => 'Adweladenn',
 	'code-field-author' => 'Aozer',
@@ -1133,7 +1133,10 @@ Diverrañ eus ar c\'hemmoù :
 
 $4',
 	'code-stats' => 'stadegoù',
-	'code-stats-staus-breakdown' => 'Niver a azgweladur hervez ar stad',
+	'code-stats-header' => "Stadegoù an dastumlec'h $1",
+	'code-stats-main' => "D'an deiziad $1, an dastummlec'h en doa $2 {{PLURAL:$2|adweladenn|adweladenn}} gant [[Special:Code/$3/author|$4 {{PLURAL:$4|oberour|oberour}}]].",
+	'code-stats-staus-breakdown' => 'Niver a adweladennoù dre stad',
+	'code-stats-fixme-breakdown' => 'Arnodenn an adweladennoù da reizhañ gant an oberour',
 	'code-stats-count' => 'Niver a adweladennoù',
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
 	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
@@ -6172,6 +6175,7 @@ $4',
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'code-change-added' => 'поладозь:',
 	'code-authors' => 'теицянзо',
 	'code-author-name' => 'Совавтт теицянь лем:',
 	'code-author-link' => 'аравтомс сюлмавома пе?',
@@ -6181,13 +6185,17 @@ $messages['myv'] = array(
 	'code-field-author' => 'Теицязо',
 	'code-field-user' => 'Мелень-арьсемань каицязо',
 	'code-field-timestamp' => 'Ковчизэ',
+	'code-field-path' => 'Яннэ',
 	'code-rev-author' => 'Теицязо:',
 	'code-rev-date' => 'Ковчизэ:',
+	'code-rev-diff' => 'Мейсэ явовить верзиятне',
 	'code-rev-purge-link' => 'панемс',
 	'code-status-new' => 'од',
 	'code-status-fixme' => 'витемак',
 	'code-pathsearch-path' => 'Яннэсь:',
+	'code-stats' => 'статистикат',
 	'repoadmin-new-button' => 'Шкик-теик',
+	'repoadmin-edit-button' => 'Маштови',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -8707,6 +8715,42 @@ $messages['sw'] = array(
 	'codereview-batch-submit' => 'Wasilisha',
 	'repoadmin-new-button' => 'Anzisha',
 	'repoadmin-edit-button' => 'Sawa',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'code-change-removed' => 'நீக்கப்பட்டது:',
+	'code-change-added' => 'சேர்க்கப்பட்டது:',
+	'code-old-status' => 'பழைய நிலைமை',
+	'code-new-status' => 'புதிய நிலைமை',
+	'code-field-status' => 'நிலைமை',
+	'code-field-timestamp' => 'தேதி',
+	'code-field-comments' => 'குறிப்புகள்',
+	'code-field-path' => 'வழி',
+	'code-field-text' => 'குறிப்பு',
+	'code-field-select' => 'தேர்வு செய்',
+	'code-rev-author' => 'ஆசிரியர்:',
+	'code-rev-date' => 'தேதி:',
+	'code-rev-modified-d' => 'நீக்கப்பட்டது',
+	'code-rev-modified-m' => 'மாற்றப்பட்டுள்ளது',
+	'code-rev-status' => 'நிலைமை:',
+	'code-rev-comment-preview' => 'முன்தோற்றம்',
+	'code-rev-inline-preview' => 'முன்தோற்றம்:',
+	'code-rev-diff' => 'வித்தியாசம்',
+	'code-rev-diff-link' => 'வேறுபாடு',
+	'code-status-new' => 'புதிய',
+	'code-status-reverted' => 'முன்நிலையாக்கப்பட்டது',
+	'code-status-resolved' => 'தீர்வு காணப்பட்டது',
+	'code-status-ok' => 'ஆம்',
+	'code-status-verified' => 'சரிபார்க்கப்பட்டது',
+	'code-status-old' => 'பழைய',
+	'code-pathsearch-path' => 'வழி:',
+	'codereview-reply-link' => 'பதில்',
+	'code-stats' => 'புள்ளிவிவரங்கள்',
+	'repoadmin-new-button' => 'உருவாக்கவும்',
+	'repoadmin-edit-button' => 'ஆம்',
 );
 
 /** Telugu (తెలుగు)

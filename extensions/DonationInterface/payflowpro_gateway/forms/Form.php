@@ -26,15 +26,76 @@ abstract class PayflowProGateway_Form {
 	 */
 	public $form_errors;
 
-	abstract public function generateFormBody();
+	/**
+	 * The full path to CSS for the current form
+	 * @var string
+	 */
+	protected $style_path;
+	
+	abstract public function generateFormStart();
 	abstract public function generateFormSubmit();
+	abstract public function generateFormEnd();
 	
 	public function __construct( &$data, &$error ) {
-		global $wgPayflowGatewayTest;
+		global $wgPayflowGatewayTest, $wgOut;
 
 		$this->test = $wgPayflowGatewayTest;
 		$this->form_data =& $data;
 		$this->form_errors =& $error;
+		
+		/**
+		 *  add form-specific css - the path can be set using $this->setStylePath,
+		 *  which should be called before loading this constructor
+		 */
+		if ( !strlen( $this->getStylePath())) {
+			$this->setStylePath();
+		}
+		$wgOut->addExtensionStyle( $this->getStylePath() );
+	}
+	
+	/**
+	 * Set the path to the CSS file for the form
+	 * 
+	 * This should be a full path, perhaps taking advantage of $wgScriptPath.
+	 * If you do not pass the path to the method, the style path will default
+	 * to the default css in css/Form.css
+	 * @param string $style_path
+	 */
+	public function setStylePath( $style_path=null ) {
+		global $wgScriptPath;
+		if ( !$style_path ) {
+			// load the default form CSS if the style path not explicitly set
+			$style_path = $wgScriptPath . '/extensions/DonationInterface/payflowpro_gateway/forms/css/Form.css';
+		}
+		$this->style_path = $style_path;
+	}
+	
+	/**
+	 * Get the path to CSS
+	 * @return String
+	 */
+	public function getStylePath() {
+		return $this->style_path;
+	}
+	
+	/**
+	 * Generates the donation footer ("There are other ways to give...")
+	 * @returns string of HTML
+	 */
+	public function generateDonationFooter() {
+		global $wgScriptPath;
+		$form = '';
+		$form .= Xml::openElement( 'div', array( 'class' => 'payflow-cc-form-section', 'id' => 'payflowpro_gateway-donate-addl-info' ));
+		$form .= Xml::openElement( 'div', array( 'id' => 'payflowpro_gateway-donate-addl-info-secure-logos' ));
+		$form .= Xml::tags( 'p', array( 'class' => '' ), Xml::openElement( 'img', array( 'src' => $wgScriptPath . "/extensions/DonationInterface/payflowpro_gateway/includes/rapidssl_ssl_certificate.gif" )));	
+		$form .= Xml::closeElement( 'div' ); // close div#payflowpro_gateway-donate-addl-info-secure-logos
+		$form .= Xml::openElement( 'div', array( 'id' => 'payflowpro_gateway-donate-addl-info-text' ));
+		$form .= Xml::tags( 'p', array( 'class' => '' ), wfMsg( 'payflowpro_gateway-otherways' ));
+		$form .= Xml::tags( 'p', array( 'class' => '' ), wfMsg( 'payflowpro_gateway-credit-storage-processing' ) );
+		$form .= Xml::tags( 'p', array( 'class' => ''), wfMsg( 'payflowpro_gateway-question-comment' ) );
+		$form .= Xml::closeElement( 'div' ); // close div#payflowpro_gateway-donate-addl-info-text
+		$form .= Xml::closeElement( 'div' ); // close div#payflowpro_gateway-donate-addl-info
+		return $form;
 	}
 	
 	/**
@@ -52,9 +113,18 @@ abstract class PayflowProGateway_Form {
 	 */
 	public function generateCountryDropdown() {
 		$country_options = '';
+
+		// create a new array of countries with potentially translated country names for alphabetizing later
+		foreach ( $this->getCountries() as $iso_value => $full_name ) {
+			$countries[ $iso_value ] = wfMsg( 'payflowpro_gateway-country-dropdown-' . $iso_value );
+		}
+		
+		// alphabetically sort the country names
+		// @fixme we should probably set locale and do a locale string sort
+		asort( $countries, SORT_STRING );
 		
 		// generate a dropdown option for each country
-		foreach ( $this->getCountries() as $iso_value => $full_name ) {
+		foreach ( $countries as $iso_value => $full_name ) {
 			$selected = ( $iso_value == $this->form_data[ 'country' ] ) ? true : false;
 			$country_options .= Xml::option( $full_name, $iso_value, $selected );
 		}
@@ -177,7 +247,7 @@ abstract class PayflowProGateway_Form {
 		// generate dropdown of state opts
 		foreach ( $states as $value => $state_name ) {
 			$selected = ( $this->form_data[ 'state' ] == $value ) ? true : false;
-			$state_opts .= Xml::option( $state_name, $value, $selected );
+			$state_opts .= Xml::option( wfMsg( 'payflowpro_gateway-state-dropdown-' . $value ), $value, $selected );
 		}
 
 		$state_menu = Xml::openElement(
@@ -233,14 +303,14 @@ abstract class PayflowProGateway_Form {
 			global $wgRequest;
 
 			$hidden_fields =  array(
-				'utm_source' => $this->form_data[ 'utm_source' ] . $wgRequest->getText( 'utm_source_id' ),
+				'utm_source' => $this->form_data[ 'utm_source' ],
 				'utm_medium' => $this->form_data[ 'utm_medium' ],
 				'utm_campaign' => $this->form_data[ 'utm_campaign' ],
 		 		'language' => $this->form_data[ 'language' ],
 				'referrer' => $this->form_data[ 'referrer' ],
 				'comment' => $this->form_data[ 'comment' ],
-				'comment-option' => $this->form_data[ 'anonymous' ],
-				'email' => $this->form_data[ 'optout' ],
+				'comment-option' => $this->form_data[ 'comment-option' ],
+				'email-opt' => $this->form_data[ 'email-opt' ],
 				'process' => 'CreditCard',
 				'payment_method' => 'processed',
 				'token' => $this->form_data[ 'token' ],
@@ -266,6 +336,4 @@ abstract class PayflowProGateway_Form {
 		}
 		return $this->hidden_fields;
 	}
-
-
 }

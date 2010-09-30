@@ -77,25 +77,27 @@ abstract class MapsBasePointMap {
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
 	 * @param array $params
+	 * @param Parser $parser
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( array $params ) {
+	public final function getMapHtml( array $params, Parser $parser ) {
 		$this->setMapProperties( $params );
 		
 		$this->setMarkerData();
 
 		$this->setCentre();
 		
+		// TODO
 		if ( count( $this->markerData ) <= 1 && $this->zoom == 'null' ) {
 			$this->zoom = $this->service->getDefaultZoom();
 		}
 		
 		$this->markerJs = $this->service->createMarkersJs( $this->markerData );
 		
-		$this->addSpecificMapHTML();
+		$this->addSpecificMapHTML( $parser );
 		
-		$this->service->addDependencies( $this->parser );
+		$this->service->addDependencies( $parser );
 		
 		return $this->output;
 	}
@@ -159,18 +161,21 @@ abstract class MapsBasePointMap {
 			
 			$this->markerData[] = $markerData;
 		}
+		
 	}
 
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
 	 */
-	private function setCentre() {
-		if ( empty( $this->centre ) ) {
+	protected function setCentre() {
+		global $egMapsDefaultMapCentre;
+		
+		if ( $this->centre === false ) {
 			if ( count( $this->markerData ) == 1 ) {
 				// If centre is not set and there is exactly one marker, use its coordinates.
 				$this->centreLat = Xml::escapeJsString( $this->markerData[0][0] );
-				$this->centreLon = Xml::escapeJsString( $this->markerData[0][1] );
+				$this->centreLon = Xml::escapeJsString( $this->markerData[0][1] );				
 			}
 			elseif ( count( $this->markerData ) > 1 ) {
 				// If centre is not set and there are multiple markers, set the values to null,
@@ -178,10 +183,10 @@ abstract class MapsBasePointMap {
 				$this->centreLat = 'null';
 				$this->centreLon = 'null';
 			}
-			else {
-				// If centre is not set and there are no markers, use the default latitude and longitutde.
-				$this->setCentreDefaults();
+			else  {
+				$this->setCentreToDefault();
 			}
+			
 		}
 		else { // If a centre value is set, geocode when needed and use it.
 			$this->centre = MapsGeocoders::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
@@ -192,18 +197,30 @@ abstract class MapsBasePointMap {
 				$this->centreLon = Xml::escapeJsString( $this->centre['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				$this->setCentreDefaults();
+				$this->setCentreToDefault();
 			}
 		}
+
 	}
 	
 	/**
-	 * Sets the centre latitude and longitutde to the defaults.
+	 * Attempts to set the centreLat and centreLon fields to the Maps default.
+	 * When this fails (aka the default is not valid), an exception is thrown.
+	 * 
+	 * @since 0.7
 	 */
-	private function setCentreDefaults() {
-		global $egMapsMapLat, $egMapsMapLon;
-		$this->centreLat = $egMapsMapLat;
-		$this->centreLon = $egMapsMapLon;
+	protected function setCentreToDefault() {
+		global $egMapsDefaultMapCentre;
+		
+		$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $this->geoservice, $this->service->getName() );
+		
+		if ( $centre === false ) {
+			throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+		}
+		else {
+			$this->centreLat = Xml::escapeJsString( $centre['lat'] );
+			$this->centreLon = Xml::escapeJsString( $centre['lon'] );			
+		}
 	}
 	
 }

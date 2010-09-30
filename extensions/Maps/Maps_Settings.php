@@ -90,7 +90,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	include_once $egMapsDir . 'includes/services/OSM/OSM.php';	
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
-	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers, osm.
 	$egMapsAvailableServices = array(
 		'googlemaps2',
 		'googlemaps3',
@@ -378,9 +377,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		# Array of String. The default layers for Open Layers. This value will only be
 		# used when the user does not provide one.
-		# Available values: google, bing, yahoo, openlayers, nasa
 		$egMapsOLLayers = array(
-			'openlayers-wms'
+			'osmarender',
+			'osm-cyclemap',
+			'osm-mapnik'
+		
 		);
 		
 		# The difinitions for the layers that should be available for the user.
@@ -396,9 +397,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'osmarender' => array( 'OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm' ),
 			'osm-mapnik' => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
 			'osm-cyclemap' => array( 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ),
-		
-			'openlayers-wms' => array( 'OpenLayers.Layer.WMS( "OpenLayers WMS", "http://labs.metacarta.com/wms/vmap0",
-				{layers: "basic", "sphericalMercator":true} )', 'ol-wms' ),
 		
 			'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",
 				{layers: "landsat7", "sphericalMercator":true} )',
@@ -430,7 +428,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>",
+			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>",
 		);
 	
 	

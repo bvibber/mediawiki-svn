@@ -856,7 +856,7 @@ $messages['frp'] = array(
 	'ct-beginner' => 'Comencient',
 	'ct-intermediate' => 'Entèrmèdièro',
 	'ct-expert' => 'Èxpèrt',
-	'ct-date-range' => 'Portâ de la dâta',
+	'ct-date-range' => 'Plage de dâtes',
 	'ct-editing' => 'Aprés étre changiê per :',
 	'ct-anon-users' => 'Utilisators pas encartâs',
 	'ct-user-contribs' => 'Contribucions totâles ux utilisators',
@@ -2236,6 +2236,16 @@ $messages['sw'] = array(
 	'ct-user-contribs' => 'Jumla ya michango ya mtumiaji',
 	'ct-and' => 'na',
 	'ct-update-table' => 'Sasisha jedwali',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'ct-beginner' => 'ஆரம்பநிலையில் உள்ளவர்',
+	'ct-intermediate' => 'இடைப்பட்ட நிலையில் உள்ளவர்',
+	'ct-expert' => 'முதிர்ந்த நிலையில் உள்ளவர்',
+	'ct-and' => 'மற்றும்',
 );
 
 /** Telugu (తెలుగు)

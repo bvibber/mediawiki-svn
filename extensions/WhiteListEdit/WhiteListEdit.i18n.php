@@ -3541,10 +3541,11 @@ Ta zajta mo zastosowańy yno lů użytkowńikůw na kerych nałożůno uograńic
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
-	'whitelisttablemodifyall' => 'அனைத்து',
+	'whitelisttablemodifyall' => 'அனைத்தும்',
 );
 
 /** Telugu (తెలుగు)

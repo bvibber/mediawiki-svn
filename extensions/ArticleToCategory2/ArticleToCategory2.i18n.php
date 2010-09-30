@@ -290,6 +290,14 @@ $messages['sv'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Skapa',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'articletocategory2-create-article-under-category-button' => 'உருவாக்கவும்',
+	'articletocategory2-create-category-under-category-button' => 'உருவாக்கவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -61,7 +61,7 @@ class MapsDisplayMap extends ParserHook {
 		
 		$params = MapsMapper::getCommonParameters();
 		
-		$params['mappingservice']->default = $egMapsDefaultServices['display_map'];
+		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_map'] );
 		
 		$params['coordinates'] = new Parameter(
 			'coordinates', 
@@ -105,18 +105,12 @@ class MapsDisplayMap extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		// Get the instance of the service class. 
-		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
+		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( $this->getName() );
-		
-		if ( $mapClass === false ) {
-			return ''; // TODO
-		}
-		else {
-			return ''; // TODO
-			//return $mapClass->getMapHtml( $parameters );
-		}
+
+		return $mapClass->getMapHtml( $parameters, $this->parser );
 	}	
 		
 }

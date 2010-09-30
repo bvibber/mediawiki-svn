@@ -39,11 +39,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
-	'logofunctions-desc' => "Ouzhpennañ un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
+	'logofunctions-desc' => "Ouzhpennañ a ra un arc'hwel d'ar parser diwar-benn logo ar wiki",
 	'logofunctions-filenotexist' => "Fazi : N'eus ket eus [[File:$1]]",
 );
 

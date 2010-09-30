@@ -57,7 +57,7 @@ $messages['br'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Dre ziouer',
 	'categorymultisort-sortkey' => "Alc'hwez didoueziañ :",
 	'categorymultisort-go' => 'Mont',
-	'categorymultisort-default-sortkey' => "Alc'hwez didoueziañ dre ziouer:",
+	'categorymultisort-default-sortkey' => "Alc'hwez didoueziañ dre ziouer :",
 	'prefs-category' => 'Rummad',
 );
 
@@ -437,6 +437,14 @@ $messages['sv'] = array(
 	'categorymultisort-go' => 'Gå till',
 	'categorymultisort-default-sortkey' => 'Standard sorteringsnyckel',
 	'prefs-category' => 'Kategori',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'categorymultisort-go' => 'செல்',
+	'prefs-category' => 'பகுப்பு',
 );
 
 /** Telugu (తెలుగు)

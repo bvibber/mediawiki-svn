@@ -134,7 +134,10 @@ $messages['be-tarask'] = array(
 	'validator_error_empty_argument' => 'Парамэтар $1 ня можа мець пустое значэньне.',
 	'validator_error_must_be_number' => 'Парамэтар $1 можа быць толькі лікам.',
 	'validator_error_must_be_integer' => 'Парамэтар $1 можа быць толькі цэлым лікам.',
+	'validator-error-must-be-float' => 'Парамэтар $1 можа быць толькі лікам з плаваючай коскай.',
 	'validator_error_invalid_range' => 'Парамэтар $1 павінен быць паміж $2 і $3.',
+	'validator-error-invalid-length' => 'Парамэтар $1 павінен мець даўжыню $2.',
+	'validator-error-invalid-length-range' => 'Парамэтар $1 павінен мець даўжыню паміж $2 і $3.',
 	'validator_error_invalid_argument' => 'Значэньне $1 не зьяўляецца слушным для парамэтру $2.',
 	'validator_list_error_empty_argument' => 'Парамэтар $1 ня можа прымаць пустыя значэньні.',
 	'validator_list_error_must_be_number' => 'Парамэтар $1 можа ўтрымліваць толькі лікі.',
@@ -814,10 +817,10 @@ $messages['pms'] = array(
 	'validator_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
 	'validator_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'validator_error_must_be_integer' => "Ël paràmetr $1 a peul mach esse n'antregh.",
-	'validator-error-must-be-float' => 'Ël paràmetr $1 a peul mach esse un nùmer floating point.',
+	'validator-error-must-be-float' => 'Ël paràmetr $1 a peul mach esse un nùmer an vìrgola mòbil.',
 	'validator_error_invalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
-	'validator-error-invalid-length' => 'Ël paràmetr $1 a deuv avèj na lunghëssa ëd $2.',
-	'validator-error-invalid-length-range' => 'Ël paràmetr $1 a deuv avèj na lunghëssa an tra $2 e $3.',
+	'validator-error-invalid-length' => 'Ël paràmetr $1 a dev avèj na longheur ëd $2.',
+	'validator-error-invalid-length-range' => 'Ël paràmetr $1 a dev avèj na longheur antra $2 e $3.',
 	'validator_error_invalid_argument' => "Ël valor $1 a l'é pa bon për ël paràmetr $2.",
 	'validator_list_error_empty_argument' => 'Ël paràmetr $1 a aceta pa dij valor veuid.',
 	'validator_list_error_must_be_number' => 'Ël paràmetr $1 a peul mach conten-e dij nùmer.',
@@ -958,6 +961,7 @@ $messages['sv'] = array(
 
 /** Telugu (తెలుగు)
  * @author Ravichandra
+ * @author Veeven
  */
 $messages['te'] = array(
 	'validator_error_unknown_argument' => '$1 అనేది సరైన పరామితి కాదు.',
@@ -967,6 +971,8 @@ $messages['te'] = array(
 	'validator_error_must_be_integer' => '$1 పరామితి ఒక పూర్ణసంఖ్య అయిఉండాలి',
 	'validator_error_invalid_range' => '$1 పరామితి $2,  $3 మద్యలో ఉండాలి.',
 	'validator_error_invalid_argument' => '$2 పరామితి కోసం $1 విలువ సరైంది కాదు',
+	'validator_list_error_must_be_number' => '$1 పరామితి ఖచ్చితంగా సంఖ్యలను మాత్రమే కలిగివుండాలి.',
+	'validator_list_error_must_be_integer' => '$1 పరామితి పూర్ణసంఖ్యలను మాత్రమే కలిగివుండాలి.',
 );
 
 /** Tagalog (Tagalog)
@@ -978,10 +984,14 @@ $messages['tl'] = array(
 	'validator_warning_parameters' => 'May {{PLURAL:$1|mali|mga mali}} sa sintaks mo.',
 	'validator_error_unknown_argument' => 'Ang $1 ay isang hindi tanggap na parametro.',
 	'validator_error_required_missing' => 'Hindi ibinigay ang kailangang parametro na $1.',
+	'validator-error-override-argument' => 'Sinubukang pangingibabawan ang parametrong $1 (halaga: $2) ng halagang "$3"',
 	'validator_error_empty_argument' => 'Hindi dapat na isang halagang walang laman ang parametrong $1.',
 	'validator_error_must_be_number' => 'Dapat na bilang lang ang parametrong $1.',
 	'validator_error_must_be_integer' => 'Dapat na tambilang lang ang parametrong $1.',
+	'validator-error-must-be-float' => 'Ang parametrong $1 ay maaaring isang lumulutang na bilang ng punto lamang.',
 	'validator_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang parametrong $1.',
+	'validator-error-invalid-length' => 'Ang parametrong $1 ay dapat na may isang haba na $2.',
+	'validator-error-invalid-length-range' => 'Ang parametrong $1 ay dapat na may isang haba na nasa pagitan ng $2 at $3.',
 	'validator_error_invalid_argument' => 'Ang halagang $1 ay hindi tanggap para sa parametrong $2.',
 	'validator_list_error_empty_argument' => 'Hindi tumatanggap ng halagang walang laman ang parametrong $1.',
 	'validator_list_error_must_be_number' => 'Dapat na naglalaman lang ng mga bilang ang parametrong $1.',
@@ -989,7 +999,8 @@ $messages['tl'] = array(
 	'validator_list_error_invalid_range' => 'Dapat na nasa pagitan ng $2 at $3 ang lahat ng mga halaga ng parametrong $1.',
 	'validator_list_error_invalid_argument' => 'Hindi tanggap ang isa o higit pang mga halaga para sa parametrong $1.',
 	'validator_list_omitted' => 'Tinanggal {{PLURAL:$2|na ang|na ang mga}} {{PLURAL:$2|halaga|halaga}} ng $1.',
-	'validator_error_accepts_only' => 'Tumatanggap lang ang parametrong $1 ng {{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
+	'validator_error_accepts_only' => 'Ang halagang "$4" ay hindi tanggap para sa parametrong $1.  Tumatanggap lamang ito ng 
+{{PLURAL:$3|ganitong halaga|ganitong mga halaga}}: $2.',
 );
 
 /** Turkish (Türkçe)

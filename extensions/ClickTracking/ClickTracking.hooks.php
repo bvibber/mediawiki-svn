@@ -71,8 +71,8 @@ class ClickTrackingHooks {
 	 *
 	 * Adds modules to ResourceLoader
 	 */
-	public static function resourceLoaderRegisterModules() {
-		ResourceLoader::register( array(
+	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		$resourceLoader->register( array(
 			'jquery.clickTracking' => new ResourceLoaderFileModule( array(
 				'scripts' => 'extensions/ClickTracking/modules/jquery.clickTracking.js',
 				'dependencies' => 'jquery.cookie',

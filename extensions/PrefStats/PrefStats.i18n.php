@@ -2613,6 +2613,18 @@ Bonyeza kitu ili kuangalia takwimu zake.',
 	'prefstats-legend-in' => 'Waliochagua kushiriki',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'prefstats-factor-hour' => 'மணி',
+	'prefstats-factor-sixhours' => 'ஆறு மணி நேரம்',
+	'prefstats-factor-day' => 'நாள்',
+	'prefstats-factor-week' => 'வாரம்',
+	'prefstats-factor-twoweeks' => 'இரண்டு வாரங்கள்',
+	'prefstats-factor-fourweeks' => 'நான்கு வாரங்கள்',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Ravichandra

@@ -157,9 +157,18 @@ class Parameter {
 	 * 
 	 * @since 0.4
 	 * 
-	 * @param array of ValidationError
+	 * @var array of ValidationError
 	 */
 	protected $errors = array();
+	
+	/**
+	 * Indicates if the parameter manipualations should be applied to the default value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @var boolean
+	 */
+	protected $applyManipulationsToDefault = false;
 	
 	/**
 	 * Returns a new instance of Parameter by converting a Validator 3.x-style parameter array definition.
@@ -385,8 +394,6 @@ class Parameter {
 			}
 		}
 		else {
-			$this->value =  $this->originalValue;
-			
 			$success = $this->validateCriteria();
 		}
 
@@ -451,6 +458,18 @@ class Parameter {
 	 */			
 	public function getValue() {
 		return $this->value;
+	}
+	
+	/**
+	 * Returns a list of dependencies the parameter has, in the form of 
+	 * other parameter names.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @return array
+	 */		
+	public function getDependencies() {
+		return $this->dependencies;
 	}
 	
 	/**
@@ -593,6 +612,29 @@ class Parameter {
 	 */
 	public function hasAlias( $alias ) {
 		return in_array( $alias, $this->getAliases() );
+	}
+	
+	/**
+	 * Sets the default parameter value. Null indicates no default,
+	 * and therefore makes the parameter required.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param mixed $default
+	 */
+	public function setDefault( $default ) {
+		$this->default = $default;
+	}
+	
+	/**
+	 * Set if the parameter manipualations should be applied to the default value.
+	 * 
+	 * @since 0.4
+	 * 
+	 * @param boolean $doOrDoNot
+	 */
+	public function setDoManipulationOfDefault( $doOrDoNot ) {
+		$this->applyManipulationsToDefault = $doOrDoNot;
 	}
 	
 }

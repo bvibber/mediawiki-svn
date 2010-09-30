@@ -6,7 +6,6 @@
 class SpecialBannerController extends UnlistedSpecialPage {
 	protected $sharedMaxAge = 7200; // Cache for 2 hours on the server side
 	protected $maxAge = 7200; // Cache for 2 hours on the client side
-	protected $contentType = 'text/javascript';
 
 	function __construct() {
 		// Register special page
@@ -34,7 +33,8 @@ class SpecialBannerController extends UnlistedSpecialPage {
 	 * Generate the HTTP response headers for the banner controller
 	 */
 	function sendHeaders() {
-		header( "Content-type: $this->contentType; charset=utf-8" );
+		global $wgJsMimeType;
+		header( "Content-type: $wgJsMimeType; charset=utf-8" );
 		header( "Cache-Control: public, s-maxage=$this->sharedMaxAge, max-age=$this->maxAge" );
 	}
 
@@ -42,9 +42,12 @@ class SpecialBannerController extends UnlistedSpecialPage {
 	 * Generate the body for a static Javascript file
 	 */
 	function getOutput() {
+		global $wgCentralPagePath;
+		
 		$js = $this->getScriptFunctions() . $this->getToggleScripts();
 		$js .= <<<EOT
 ( function( $ ) {
+	$.ajaxSetup({ cache: true });
 	$.centralNotice = {
 		'data': {
 			'getVars': {}
@@ -52,15 +55,11 @@ class SpecialBannerController extends UnlistedSpecialPage {
 		'fn': {
 			'loadBanner': function( bannerName ) {
 				// Get the requested banner
-				var bannerPage = 'Special:BannerLoader?banner='+bannerName+'&userlang='+wgContentLanguage+'&sitename='+wgNoticeProject;
-				var bannerURL = wgArticlePath.replace( '$1', bannerPage );
-				var request = $.ajax( {
-					url: bannerURL,
-					dataType: 'html',
-					success: function( data ) {
-						$.centralNotice.fn.displayBanner( data );
-					}
-				});
+				var bannerPage = 'Special:BannerLoader?banner='+bannerName+'&userlang='+wgUserLanguage+'&db='+wgDBname+'&sitename='+wgSiteName+'&country='+Geo.country;
+EOT;
+		$js .= "\n\t\t\t\tvar bannerScript = '<script type=\"text/javascript\" src=\"".Xml::escapeJsString( $wgCentralPagePath )."' + bannerPage + '\"></script>';\n";
+		$js .= <<<EOT
+				$( '#siteNotice' ).prepend( '<div id="centralNotice" class="' + ( wgNoticeToggleState ? 'expanded' : 'collapsed' ) + '">'+bannerScript+'</div>' );
 			},
 			'loadBannerList': function( geoOverride ) {
 				var bannerListURL;
@@ -108,11 +107,6 @@ class SpecialBannerController extends UnlistedSpecialPage {
 					selectedBanner.name
 				);
 			},
-			'displayBanner': function( bannerHTML ) {
-				// Inject the banner html into the page
-				$( '#siteNotice' )
-					.prepend( '<div id="centralNotice" class="' + ( wgNoticeToggleState ? 'expanded' : 'collapsed' ) + '">' + bannerHTML + '</div>' );
-			},
 			'getQueryStringVariables': function() {
 				document.location.search.replace( /\??(?:([^=]+)=([^&]*)&?)/g, function () {
 					function decode( s ) {
@@ -158,6 +152,9 @@ document.writeln($encShowStyle);\n\n";
 
 	function getScriptFunctions() {
 		$script = "
+function insertBanner(bannerJson) {
+	jQuery('div#centralNotice').prepend( bannerJson.banner );
+}
 function toggleNotice() {
 	var notice = document.getElementById('centralNotice');
 	if (!wgNoticeToggleState) {

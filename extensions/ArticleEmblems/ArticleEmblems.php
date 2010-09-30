@@ -24,6 +24,7 @@ $wgAutoloadClasses['ArticleEmblemsHooks'] = dirname( __FILE__ ) . '/ArticleEmble
 $wgExtensionMessagesFiles['ArticleEmblems'] = dirname( __FILE__ ) . '/ArticleEmblems.i18n.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleEmblemsHooks::loadExtensionSchemaUpdates';
 $wgHooks['ParserFirstCallInit'][] = 'ArticleEmblemsHooks::parserInit';
+$wgHooks['ParserTestTables'][] = 'ArticleEmblemsHooks::parserTestTables';
 $wgHooks['ArticleViewHeader'][] = 'ArticleEmblemsHooks::articleViewHeader';
 $wgHooks['ArticleSaveComplete'][] = 'ArticleEmblemsHooks::articleSaveComplete';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ArticleEmblemsHooks::resourceLoaderRegisterModules';

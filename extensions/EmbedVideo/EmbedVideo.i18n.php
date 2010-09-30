@@ -45,6 +45,13 @@ $messages['br'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo en deus resevet an arventenn ledander direizh "$1".',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'embedvideo-missing-params' => 'EmbedVideo nedostaje neophodni parametar.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

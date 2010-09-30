@@ -2870,6 +2870,15 @@ $messages['sw'] = array(
 	'coll-help' => 'Msaada',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'coll-disable' => 'செயலிழக்கச் செய்',
+	'coll-help' => 'உதவி',
+	'coll-suggest_empty' => 'ஒன்றுமில்லாத',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven
@@ -2891,7 +2900,7 @@ $messages['te'] = array(
 	'coll-clear_collection_tooltip' => 'ప్రస్తుత పుస్తకంలో నుండి అన్ని వికీ పేజీలను తీసివేయి',
 	'coll-help' => 'సహాయం',
 	'coll-helppage' => 'Help:పుస్తకాలు',
-	'coll-n_pages' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
+	'coll-n_pages' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
 	'coll-printable_version_pdf' => 'PDF కూర్పు',
 	'coll-remove_page_tooltip' => 'ప్రస్తుత వికీ పేజీని నా పుస్తకం నుండి తొలగించు',
 	'coll-show_collection' => 'పుస్తకముని చూపించు',

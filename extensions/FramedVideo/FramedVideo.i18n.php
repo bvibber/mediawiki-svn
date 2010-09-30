@@ -891,7 +891,13 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'framedvideo_error_no_id_given' => '"id" పరామితిని ఇవ్వలేదు.',
+	'framedvideo_error_width_too_big' => '"width" పరామితికి ఇచ్చిన విలువ చాలా పెద్దది.',
+	'framedvideo_error_height_too_big' => '"height" పరామితికి ఇచ్చిన విలువ చాలా పెద్దది.',
+	'framedvideo_error_no_integer' => '"$1"కి ఇచ్చిన విలువ ధన సంఖ్య కాదు.',
+	'framedvideo_error_limit' => 'ఇవ్వగలిగే గరిష్ఠ విలువ $1.',
 	'framedvideo_helppage' => 'Help:వీడియో',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|సంజ్ఞావళి గురించి మరింత]].',
 );
 
 /** Tagalog (Tagalog)

@@ -84,40 +84,28 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
-		
-		// TODO
-		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
+		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultMapCentre;
 		
 		$params = MapsMapper::getCommonParameters();
 		
-		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
+		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_point'] );
+		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
-		$params['coordinates'] = new Parameter(
-			'coordinates', 
-			Parameter::TYPE_STRING,
-			null,
-			array( 'coords', 'location', 'locations', 'address', 'addresses' ),
-			array(
-				new CriterionIsLocation(),
-			)
-		);
+		$params['coordinates'] = new ListParameter( 'coordinates', ';' );
+		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
+		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
+		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
+		$params['coordinates']->lowerCaseValue = false;		
 		
-		$params['coordinates']->lowerCaseValue = false;
-		
-		// TODO
-		$params['coordinates']->outputTypes = array( 'coordinateSet' => array( 'coordinateSet', '~' ) );	
-
 		$params['centre'] = new Parameter(
 			'centre',
 			Parameter::TYPE_STRING,
-			'', // TODO
+			false,
 			array( 'center' ),
 			array(
 				new CriterionIsLocation(),
 			)			
 		);
-		
 		$params['centre']->lowerCaseValue = false;
 		
 		$params['title'] = new Parameter(
@@ -125,7 +113,6 @@ class MapsDisplayPoint extends ParserHook {
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		
 		$params['title']->lowerCaseValue = false;
 		
 		$params['label'] = new Parameter(
@@ -134,7 +121,6 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		
 		$params['label']->lowerCaseValue = false;
 		
 		$params['icon'] = new Parameter(
@@ -146,7 +132,6 @@ class MapsDisplayPoint extends ParserHook {
 				New CriterionNotEmpty()
 			)
 		);	
-
 		$params['icon']->lowerCaseValue = false;
 		
 		return $params;
@@ -176,18 +161,12 @@ class MapsDisplayPoint extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		// Get the instance of the service class. 
-		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
+		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 		
-		if ( $mapClass === false ) {
-			return ''; // TODO
-		}
-		else {
-			return ''; // TODO
-			//return $mapClass->getMapHtml( $parameters );
-		}
+		return $mapClass->getMapHtml( $parameters, $this->parser );
 	}	
 			
 }

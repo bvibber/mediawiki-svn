@@ -778,6 +778,13 @@ $messages['bg'] = array(
 	'centralnotice-preferred' => 'Предпочитано',
 );
 
+/** Bihari (भोजपुरी)
+ * @author Ganesh
+ */
+$messages['bh'] = array(
+	'centralnotice-edit-template' => 'बैनर सम्पादन',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -876,7 +883,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'centralnotice' => 'Melestradurezh an alioù kreiz',
-	'noticetemplate' => 'Patrom an alioù kreiz',
+	'noticetemplate' => 'Melestradurezh an alioù kreiz',
+	'bannerallocation' => 'Melestradurezh an alioù kreiz',
 	'centralnotice-desc' => "Ouzhpennañ a ra ur c'hemenn kreiz e laez ar pajennoù (sitenotice).",
 	'centralnotice-summary' => "Talvezout a ra ar vodulenn-mañ da zegas kemmoù en arventennoù ar pennkemennoù.
 Implijet e c'hall bezañ evit ouzhpennañ kemennoù pe tennañ kuit re gozh ivez .",
@@ -885,13 +893,16 @@ Implijet e c'hall bezañ evit ouzhpennañ kemennoù pe tennañ kuit re gozh ivez
 	'centralnotice-end-date' => 'Deiziad termen',
 	'centralnotice-enabled' => 'Gweredekaet',
 	'centralnotice-modify' => 'Kas',
+	'centralnotice-save-banner' => 'Enrollañ ar giton',
 	'centralnotice-preview' => 'Rakwelet',
 	'centralnotice-add-new' => 'Ouzhpennañ un ali kreiz nevez',
 	'centralnotice-remove' => 'Dilemel',
 	'centralnotice-translate-heading' => 'Troidigezh eus $1',
 	'centralnotice-manage' => 'Merañ an alioù kreiz',
+	'centralnotice-manage-templates' => 'Merañ ar gitonoù',
 	'centralnotice-add' => 'Ouzhpennañ',
 	'centralnotice-add-notice' => "Ouhzpennañ ur c'hemenn",
+	'centralnotice-edit-notice' => "Kemmañ ar c'houlzad",
 	'centralnotice-add-template' => 'Ouzhpennañ ur patrom',
 	'centralnotice-show-notices' => 'Diskouez ar menegoù',
 	'centralnotice-list-templates' => 'Rollañ ar patromoù',
@@ -906,15 +917,18 @@ Implijet e c'hall bezañ evit ouzhpennañ kemennoù pe tennañ kuit re gozh ivez
 	'centralnotice-templates' => 'Patromoù',
 	'centralnotice-weight' => 'Pouez',
 	'centralnotice-locked' => 'Prennet',
+	'centralnotice-notice' => 'Koulzad',
+	'centralnotice-notice-heading' => 'Koulzad : $1',
 	'centralnotice-notices' => 'Kemennoù',
 	'centralnotice-notice-exists' => "Bez ez eus dija eus an ali-se.
 N'eo ket bet ouzhpennet neuze",
+	'centralnotice-no-language' => "Yezh ebet a zo bet dibabet evit ar c'houlzad. N'eo ket bet ouzhpennet.",
 	'centralnotice-template-exists' => "Bez' ez eus ar patrom-mañ c'hoazh.
 N'eo ket bet ouzhpennet.",
-	'centralnotice-notice-doesnt-exist' => "N'eus ket seus an ali-mañ.
+	'centralnotice-notice-doesnt-exist' => "N'eus ket eus ar c'houlzad-mañ",
+	'centralnotice-remove-notice-doesnt-exist' => "N'eus ket eus an ali-mañ.
 N'eus netra da zilemel",
-	'centralnotice-remove-notice-doesnt-exist' => "N'eus ket seus an ali-mañ.
-N'eus netra da zilemel",
+	'centralnotice-banner-doesnt-exist' => "N'eus ket eus ar giton-mañ",
 	'centralnotice-template-still-bound' => "Liammet eo c'hoazh ar patrom gant un ali.
 N'eo ket bet dilammet.",
 	'centralnotice-template-body' => 'Korf ar patrom :',
@@ -924,11 +938,12 @@ N'eo ket bet dilammet.",
 	'centralnotice-hours' => 'Eur',
 	'centralnotice-min' => 'Munutenn',
 	'centralnotice-project-lang' => 'Yezh ar raktres',
-	'centralnotice-select' => 'Diuzit : $1',
+	'centralnotice-select' => 'Diuzañ : $1',
 	'centralnotice-top-ten-languages' => 'An 10 yezh implijetañ',
 	'centralnotice-project-name' => 'Anv ar raktres',
 	'centralnotice-start-date' => 'Deiziad kregiñ',
 	'centralnotice-start-time' => 'Eur kregiñ (UTC)',
+	'centralnotice-end-time' => 'Deiziad fin (UTC)',
 	'centralnotice-assigned-templates' => 'Patromoù deverket',
 	'centralnotice-no-templates' => "N'eus bet kavet patrom ebet.
 Ouzhpennit un nebeud re !",
@@ -967,8 +982,8 @@ Ouzhpennit unan da heul.",
 	'centralnotice-hide-button' => 'Bouton {{int:centralnotice-shared-hide}}',
 	'centralnotice-collapse-button' => 'Bouton {{int:centralnotice-shared-collapse}}',
 	'centralnotice-expand-button' => 'Bouton {{int:centralnotice-shared-expand}}',
-	'centralnotice-translate-button' => 'Bouton sikour evit an droidigezh',
-	'centralnotice-donate-button' => 'Bouton donezonadur',
+	'centralnotice-translate-button' => 'Bouton sikour treiñ',
+	'centralnotice-donate-button' => 'Bouton donezonoù',
 	'centralnotice-expanded-banner' => 'Banniel astennet',
 	'centralnotice-collapsed-banner' => 'Banniel berraet',
 	'centralnotice-banner-display' => 'Diskwel da :',
@@ -977,8 +992,15 @@ Ouzhpennit unan da heul.",
 	'centralnotice-banner-type' => 'Doare banniel :',
 	'centralnotice-banner-hidable' => 'Statek/Masklus',
 	'centralnotice-banner-collapsible' => 'Digreskus',
+	'centralnotice-geotargeted' => "Geolec'hiet",
 	'centralnotice-countries' => 'Broioù',
+	'centralnotice-allocation' => 'Skorenn',
+	'centralnotice-view-allocation' => 'Gwelout skorenn ar giton',
+	'centralnotice-allocation-instructions' => "Dibabit an endro e-lec'h m'ho pefe c'hoant da welet skorenn ar giton evit :",
+	'centralnotice-project-language' => 'Yezh ar raktres',
 	'centralnotice-country' => 'Bro',
+	'centralnotice-no-allocation' => 'Giton skorennet ebet.',
+	'centralnotice-allocation-description' => 'Skorenn giton evit $1.$2 e $3:',
 	'centralnotice-percentage' => 'Dregantad',
 	'right-centralnotice-admin' => 'Merañ an alioù kreiz',
 	'right-centralnotice-translate' => 'Treiñ an alioù kreiz',
@@ -1224,6 +1246,7 @@ $messages['ckb'] = array(
 $messages['cs'] = array(
 	'centralnotice' => 'Správa centralizovaných oznámení',
 	'noticetemplate' => 'Správa centralizovaných oznámení',
+	'bannerallocation' => 'Správa centralizovaných oznámení',
 	'centralnotice-desc' => 'Přidává centrální zprávu do záhlaví',
 	'centralnotice-summary' => 'Pomocí tohoto modulu můžete upravovat momentálně nastavená centralizovaná oznámení.
 Také zde můžete přidávat nová či odstraňovat stará.',
@@ -1324,6 +1347,14 @@ Níže můžete vytvořit nové.',
 	'centralnotice-banner-collapsible' => 'Sbalitelný',
 	'centralnotice-geotargeted' => 'Zeměpisně cílené',
 	'centralnotice-countries' => 'Země',
+	'centralnotice-allocation' => 'Přidělení',
+	'centralnotice-view-allocation' => 'Zobrazit přidělení bannerů',
+	'centralnotice-allocation-instructions' => 'Vyberte si prostředí, pro které chcete zobrazit přidělení bannerů:',
+	'centralnotice-project-language' => 'Jazyk projektu',
+	'centralnotice-country' => 'Země',
+	'centralnotice-no-allocation' => 'Žádné bannery nejsou přiděleny.',
+	'centralnotice-allocation-description' => 'Přidělení bannerů na $1.$2 v $3:',
+	'centralnotice-percentage' => 'Procenta',
 	'right-centralnotice-admin' => 'Správa centralizovaných oznámení',
 	'right-centralnotice-translate' => 'Překlad centralizovaných oznámení',
 	'action-centralnotice-admin' => 'spravovat centralizovaná oznámení',
@@ -2004,6 +2035,7 @@ Afiŝu noticon suben',
  * @author Locos epraix
  * @author McDutchie
  * @author Muro de Aguas
+ * @author Peter17
  * @author Remember the dot
  * @author Sanbec
  */
@@ -2102,9 +2134,9 @@ Añade uno debajo',
 	'centralnotice-clone-name' => 'Nombre:',
 	'centralnotice-preview-all-template-translations' => 'Previsualizar todas las traducciones disponibles de la plantilla',
 	'centralnotice-insert' => 'Insertar: $1',
-	'centralnotice-hide-button' => 'Ocultar botón',
-	'centralnotice-collapse-button' => 'Colapsar botón',
-	'centralnotice-expand-button' => 'Expandir botón',
+	'centralnotice-hide-button' => '{{int:centralnotice-shared-hide}} botón',
+	'centralnotice-collapse-button' => '{{int:centralnotice-shared-collapse}} botón',
+	'centralnotice-expand-button' => '{{int:centralnotice-shared-expand}} botón',
 	'centralnotice-translate-button' => 'Botón de ayuda a la traducción',
 	'centralnotice-donate-button' => 'Botón de donación',
 	'centralnotice-expanded-banner' => 'Banner expandido',
@@ -2115,6 +2147,9 @@ Añade uno debajo',
 	'centralnotice-banner-type' => 'Tipo de banner:',
 	'centralnotice-banner-hidable' => 'Estático/Ocultable',
 	'centralnotice-banner-collapsible' => 'Colapsable',
+	'centralnotice-project-language' => 'Idioma del proyecto',
+	'centralnotice-country' => 'País',
+	'centralnotice-percentage' => 'Porcentaje',
 	'right-centralnotice-admin' => 'Gestionar avisos centrales',
 	'right-centralnotice-translate' => 'Traducir avisos centrales',
 	'action-centralnotice-admin' => 'gestionar avisos centrales',
@@ -2128,7 +2163,7 @@ Añade uno debajo',
  */
 $messages['et'] = array(
 	'centralnotice' => 'Keskuse teadete haldamine',
-	'noticetemplate' => 'Keskuse teate mall',
+	'noticetemplate' => 'Keskuse teadete haldamine',
 	'centralnotice-desc' => 'Lisab keskse võrgukohateatesüsteemi.',
 	'centralnotice-summary' => 'See komponent võimaldab muuta praegu üles seatud keskuse teateid.
 Samuti saab sellega teateid lisada või vanu teateid eemaldada.',
@@ -2603,6 +2638,13 @@ Ajoutez-en ci-dessous.',
 	'centralnotice-geotargeted' => 'Géolocalisé',
 	'centralnotice-countries' => 'Pays',
 	'centralnotice-allocation' => 'Allocation',
+	'centralnotice-view-allocation' => 'Voir la disposition de bannière',
+	'centralnotice-allocation-instructions' => 'Choisissez l’environnement pour lequel vous souhaitez afficher la disposition de bannière :',
+	'centralnotice-project-language' => 'Langue du projet',
+	'centralnotice-country' => 'Pays',
+	'centralnotice-no-allocation' => 'Pas de bannières disposées.',
+	'centralnotice-allocation-description' => 'Disposition de bannière pour $1.$2 en $3 :',
+	'centralnotice-percentage' => 'Pourcentage',
 	'right-centralnotice-admin' => 'Gérer les avis centraux',
 	'right-centralnotice-translate' => 'Traduire les avis centraux',
 	'action-centralnotice-admin' => 'gérer les avis centraux',
@@ -2686,7 +2728,7 @@ Il at pas étâ apondu.',
 Il at pas étâ enlevâ.',
 	'centralnotice-overlap' => 'L’avis côvre tot ou ben partia du temps d’un ôtro avis.
 Il at pas étâ apondu.',
-	'centralnotice-invalid-date-range' => 'Entèrvalo de dâtes fôx por l’avis.
+	'centralnotice-invalid-date-range' => 'Plage de dâtes envalida.
 Il at pas étâ betâ a jorn.',
 	'centralnotice-null-string' => 'Empossiblo d’apondre un avis vouedo.
 Il at pas étâ apondu.',
@@ -3115,6 +3157,7 @@ $messages['hi'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Herr Mlinka
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -3231,6 +3274,13 @@ Dodajte jednu ispod',
 	'centralnotice-geotargeted' => 'Geociljano',
 	'centralnotice-countries' => 'Države',
 	'centralnotice-allocation' => 'Dodjela',
+	'centralnotice-view-allocation' => 'Prikaži raspodjelu obavijesti',
+	'centralnotice-allocation-instructions' => 'Odaberi okruženje za koje želite vidjeti dodjelu obavijesti:',
+	'centralnotice-project-language' => 'Jezik projekta',
+	'centralnotice-country' => 'Država',
+	'centralnotice-no-allocation' => 'Nema dodijeljenih obavijesti.',
+	'centralnotice-allocation-description' => 'Dodjela obavijesti za $1.$2 u $3:',
+	'centralnotice-percentage' => 'Postotak',
 	'right-centralnotice-admin' => 'Uređivanje središnjih obavijesti',
 	'right-centralnotice-translate' => 'Prevođenje središnjih obavijesti',
 	'action-centralnotice-admin' => 'uređivanje središnjih obavijesti',
@@ -3358,6 +3408,7 @@ Přidaj někajku',
 /** Hungarian (Magyar)
  * @author BáthoryPéter
  * @author Dani
+ * @author Misibacsi
  */
 $messages['hu'] = array(
 	'centralnotice' => 'Központi üzenet adminisztráció',
@@ -3440,6 +3491,8 @@ Itt adhatsz hozzá újakat.',
 	'centralnotice-clone-name' => 'Név:',
 	'centralnotice-preview-all-template-translations' => 'A sablon összes fordításának megtekintése',
 	'centralnotice-banner-anonymous' => 'Névtelen szerkesztők',
+	'centralnotice-project-language' => 'A projekt nyelve',
+	'centralnotice-percentage' => 'Százalék',
 	'right-centralnotice-admin' => 'központi üzenetek beállítása',
 	'right-centralnotice-translate' => 'központi üzenetek fordítása',
 	'action-centralnotice-admin' => 'központi üzenetek beállítása',
@@ -3564,6 +3617,13 @@ Adde un hic infra.',
 	'centralnotice-geotargeted' => 'Localisation geographic',
 	'centralnotice-countries' => 'Paises',
 	'centralnotice-allocation' => 'Allocation',
+	'centralnotice-view-allocation' => 'Vider allocation de bandieras',
+	'centralnotice-allocation-instructions' => 'Selige le ambiente pro le qual tu vole vider le allocation de bandieras:',
+	'centralnotice-project-language' => 'Lingua del projecto',
+	'centralnotice-country' => 'Pais',
+	'centralnotice-no-allocation' => 'Nulle bandiera allocate.',
+	'centralnotice-allocation-description' => 'Allocation de bandieras pro $1.$2 in $3:',
+	'centralnotice-percentage' => 'Percentage',
 	'right-centralnotice-admin' => 'Gerer avisos central',
 	'right-centralnotice-translate' => 'Traducer avisos central',
 	'action-centralnotice-admin' => 'gerer avisos central',
@@ -3746,6 +3806,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
@@ -3753,7 +3814,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'centralnotice' => 'Gestione avviso centralizzato',
-	'noticetemplate' => 'Template avvisi centralizzati',
+	'noticetemplate' => 'Gestione avviso centralizzato',
 	'centralnotice-desc' => 'Aggiunge un avviso centralizzato a inizio pagina (sitenotice)',
 	'centralnotice-summary' => 'Questo modulo permette di modificare gli avvisi centralizzati. Puoi essere inoltre usato per aggiungere o rimuovere vecchi avvisi.',
 	'centralnotice-query' => 'Modifica avvisi attuali',
@@ -3761,6 +3822,7 @@ $messages['it'] = array(
 	'centralnotice-end-date' => 'Data di fine',
 	'centralnotice-enabled' => 'Attivato',
 	'centralnotice-modify' => 'Invia',
+	'centralnotice-save-banner' => 'Salva banner',
 	'centralnotice-preview' => 'Anteprima',
 	'centralnotice-add-new' => 'Aggiungi un nuovo avviso centralizzato',
 	'centralnotice-remove' => 'Rimuovi',
@@ -3776,6 +3838,8 @@ $messages['it'] = array(
 	'centralnotice-translate' => 'Traduci',
 	'centralnotice-english' => 'Inglese',
 	'centralnotice-banner-name' => 'Nome template',
+	'centralnotice-banner' => 'Banner',
+	'centralnotice-banner-heading' => 'Banner: $1',
 	'centralnotice-templates' => 'Template',
 	'centralnotice-weight' => 'Dimensione',
 	'centralnotice-locked' => 'Bloccato',
@@ -3812,12 +3876,19 @@ Non aggiorno',
 	'centralnotice-no-notices-exist' => 'Non esiste alcun avviso. Aggiungine uno di seguito',
 	'centralnotice-no-templates-translate' => 'Non ci sono template per cui modificare le traduzioni',
 	'centralnotice-number-uses' => 'Usi',
+	'centralnotice-settings' => 'Impostazioni',
 	'centralnotice-edit-template' => 'Modifica template',
 	'centralnotice-message' => 'Messaggio',
 	'centralnotice-message-not-set' => 'Messaggio non impostato',
 	'centralnotice-clone' => 'Clona',
 	'centralnotice-clone-notice' => 'Crea una copia del template',
+	'centralnotice-clone-name' => 'Nome:',
 	'centralnotice-preview-all-template-translations' => 'Mostra tutte le traduzioni disponibili del template',
+	'centralnotice-banner-anonymous' => 'Utenti anonimi',
+	'centralnotice-countries' => 'Paesi',
+	'centralnotice-project-language' => 'Lingua progetto',
+	'centralnotice-country' => 'Nazione',
+	'centralnotice-percentage' => 'Percentuale',
 	'right-centralnotice-admin' => 'Gestisce gli avvisi centralizzati',
 	'right-centralnotice-translate' => 'Traduce avvisi centralizzati',
 	'action-centralnotice-admin' => 'gestire gli avvisi centralizzati',
@@ -4250,6 +4321,8 @@ $messages['ko'] = array(
 	'centralnotice-clone-notice' => '이 틀의 사본을 만들기',
 	'centralnotice-clone-name' => '이름:',
 	'centralnotice-preview-all-template-translations' => '템플렛의 모든 번역 미리 보기',
+	'centralnotice-project-language' => '프로젝트 언어',
+	'centralnotice-country' => '국가',
 	'right-centralnotice-admin' => '중앙 공지 관리',
 	'right-centralnotice-translate' => '중앙 공지 번역',
 	'action-centralnotice-admin' => '중앙 공지를 관리하기',
@@ -4306,9 +4379,12 @@ Di kam_mer nit fott nämme.',
 	'centralnotice-hours' => 'Shtund',
 	'centralnotice-min' => 'Menutt',
 	'centralnotice-project-lang' => 'Däm Projäk sing Shprooch',
+	'centralnotice-select' => 'Ußsöhke: $1',
+	'centralnotice-top-ten-languages' => 'Bövverste zehn Shprooche',
 	'centralnotice-project-name' => 'Däm Projäk singe Name',
 	'centralnotice-start-date' => 'Et Annfangsdattum',
 	'centralnotice-start-time' => 'De Aanfangszick (UTC)',
+	'centralnotice-end-time' => 'De UTC Zick för et Engk',
 	'centralnotice-assigned-templates' => 'Zojedeilte Schablone',
 	'centralnotice-no-templates' => 'Mer han kein Schablone.
 Kanns ävver welshe dobei don.',
@@ -4333,13 +4409,16 @@ Fott eß fott, dä kam_mer '''nit''' widder zeröck holle!",
 	'centralnotice-no-notices-exist' => 'Mer han kein Nohreschte.
 De kanns ävver welshe dobei don.',
 	'centralnotice-no-templates-translate' => 'Mer hann kein Schablone, woh mer Översäzunge för beärbeide künnt.',
-	'centralnotice-number-uses' => 'Jebruch',
+	'centralnotice-number-uses' => 'mol jebruch',
+	'centralnotice-settings' => 'Enshtällonge',
 	'centralnotice-edit-template' => 'Schablon beärbeide',
 	'centralnotice-message' => 'Nohresch',
 	'centralnotice-message-not-set' => 'De Nohresch es nit jesaz',
 	'centralnotice-clone' => 'Kopi maache',
 	'centralnotice-clone-notice' => 'Maach en Kopi fun dä Schabloon',
 	'centralnotice-preview-all-template-translations' => 'Vör-Aansich fun all dä Övversäzunge fun dä Schablon',
+	'centralnotice-countries' => 'Länder',
+	'centralnotice-country' => 'Land',
 	'right-centralnotice-admin' => 'Zentraal Nohreschte verwallde',
 	'right-centralnotice-translate' => 'Zentraal Nohreschte övversäze',
 	'action-centralnotice-admin' => 'zentraal Nohreschte ze verwallde',
@@ -5125,7 +5204,7 @@ $messages['mt'] = array(
 $messages['myv'] = array(
 	'centralnotice-add' => 'Поладомс',
 	'centralnotice-add-template' => 'Поладомс лопа парцун',
-	'centralnotice-banner-name' => 'Лопа парцунонь лем',
+	'centralnotice-banner-name' => 'Баннеранть лемезэ:',
 	'centralnotice-templates' => 'Лопа парцунт',
 	'centralnotice-weight' => 'Сталмо',
 	'centralnotice-template-body' => 'Лопа парцунонть рунгозо:',
@@ -5938,7 +6017,7 @@ Ch'a na gionta un-a sì-sota.",
 	'centralnotice-banner-type' => 'Sòrt ëd tilèt:',
 	'centralnotice-banner-hidable' => 'Stàtich/Stërmàbil',
 	'centralnotice-banner-collapsible' => 'Strenzìbil',
-	'centralnotice-geotargeted' => 'Geotargeted',
+	'centralnotice-geotargeted' => 'Geolocalisà',
 	'centralnotice-countries' => 'Pais',
 	'centralnotice-allocation' => 'Alocassion',
 	'centralnotice-view-allocation' => 'Varda alocassin ëd la bara',
@@ -6266,7 +6345,8 @@ Adicione um abaixo',
  */
 $messages['qu'] = array(
 	'centralnotice' => 'Chawpi willay kamachiy',
-	'noticetemplate' => 'Chawpi willay plantilla',
+	'noticetemplate' => 'Chawpi willay kamachiy',
+	'bannerallocation' => 'Chawpi willay kamachiy',
 	'centralnotice-desc' => 'Tukuy ruraykamaykunapaq chawpi willayta yapan',
 	'centralnotice-summary' => "Kay wakina tupuwanqa qampa kachkaq chawpi willayniykikunatam allinchayta atinki.
 Paywanmi mawk'a willaykunatapas yapayta icha qichuyta atinki.",
@@ -6325,6 +6405,7 @@ Manam qichusqa kanqachu.',
 	'centralnotice-project-name' => 'Ruraykamaypa sutin',
 	'centralnotice-start-date' => "Qallarisqanpa p'unchawnin",
 	'centralnotice-start-time' => 'Qallarisqanpa pachan (UTC)',
+	'centralnotice-end-time' => 'Puchukay pacha (UTC)',
 	'centralnotice-assigned-templates' => 'Haypusqa plantillakuna',
 	'centralnotice-no-templates' => 'Manam tarisqachu plantillakuna.
 Yapay!',
@@ -6373,6 +6454,9 @@ Kay qatiqpi hukta yapay',
 	'centralnotice-banner-type' => 'Unancha laya:',
 	'centralnotice-banner-hidable' => 'Ranuy/Pakana',
 	'centralnotice-banner-collapsible' => 'Thuñichina',
+	'centralnotice-countries' => 'Mama llaqtakuna',
+	'centralnotice-project-language' => 'Ruraykamaypa rimaynin',
+	'centralnotice-country' => 'Mama llaqta',
 	'right-centralnotice-admin' => 'Chawpi willaykunata kamachiy',
 	'right-centralnotice-translate' => "Chawpi willaykunata t'ikray",
 	'action-centralnotice-admin' => 'chawpi willaykunata kamachiy',
@@ -7256,6 +7340,34 @@ $messages['sw'] = array(
 	'centralnotice-clone-name' => 'Jina:',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'centralnotice-end-date' => 'முடிவுத்தேதி',
+	'centralnotice-enabled' => 'பயன்பாட்டில் உள்ளது',
+	'centralnotice-modify' => 'சமர்ப்பி',
+	'centralnotice-preview' => 'முன்தோற்றம்',
+	'centralnotice-remove' => 'நீக்கு',
+	'centralnotice-add' => 'சேர்க்கவும்',
+	'centralnotice-english' => 'ஆங்கிலம்',
+	'centralnotice-weight' => 'எடை',
+	'centralnotice-locked' => 'மூடப்பட்டது',
+	'centralnotice-day' => 'நாள்',
+	'centralnotice-year' => 'ஆண்டு',
+	'centralnotice-month' => 'மாதம்',
+	'centralnotice-hours' => 'மணி',
+	'centralnotice-min' => 'நிமிடம்',
+	'centralnotice-project-lang' => 'திட்டத்தின் மொழி',
+	'centralnotice-top-ten-languages' => 'உயர்நிலையில் உள்ள 10 மொழிகள்',
+	'centralnotice-project-name' => 'திட்டத்தின் பெயர்',
+	'centralnotice-weights' => 'எடைகள்',
+	'centralnotice-number-uses' => 'பயன்பாடுகள்',
+	'centralnotice-clone-name' => 'பெயர்:',
+	'centralnotice-project-language' => 'திட்டத்தின் மொழி',
+	'centralnotice-country' => 'நாடு',
+);
+
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Veeven
@@ -8013,7 +8125,7 @@ $messages['udm'] = array(
  */
 $messages['uk'] = array(
 	'centralnotice' => 'Управління централізованими сповіщеннями',
-	'noticetemplate' => 'Шаблон централізованого повідомлення',
+	'noticetemplate' => 'Управління централізованими сповіщеннями',
 	'centralnotice-desc' => 'Додає загальне повідомлення сайту',
 	'centralnotice-summary' => 'Цей модуль дозволяє вам змінювати ваші поточні централізовані повідомлення.
 Він також може використовуватися для додавання нових і видалення старих повідомлень.',

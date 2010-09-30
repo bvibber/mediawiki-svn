@@ -174,15 +174,26 @@ function wfAjaxGetCollection() {
 
 $wgAjaxExportList[] = 'wfAjaxGetCollection';
 
-function wfAjaxPostCollection( $collection = '' ) {
+function wfAjaxPostCollection( $collection = '', $redirect = '' ) {
 	$json = new Services_JSON( SERVICES_JSON_LOOSE_TYPE );
 	if ( session_id() == '' ) {
 		wfSetupSession();
 	}
 	$collection = $json->decode( $collection );
+	$collection['enabled'] = true;
 	$_SESSION['wsCollection'] = $collection;
-	$r = new AjaxResponse( $json->encode( array( 'collection' => $collection ) ) );
-	$r->setContentType( 'application/json' );
+	$r = new AjaxResponse();
+	if ( $redirect ) {
+		$title = Title::newFromText( $redirect );
+		$redirecturl = $title->getFullURL();
+		$r->setResponseCode( 302 );
+		header( 'Location: ' . $redirecturl );
+	} else {
+		$title = SpecialPage::getTitleFor( 'Book' );
+		$redirecturl = $title->getFullURL();
+		$r->setContentType( 'application/json' );
+		$r->addText( $json->encode( array( 'redirect_url' => $redirecturl ) ) );
+	}
 	return $r;
 }
 

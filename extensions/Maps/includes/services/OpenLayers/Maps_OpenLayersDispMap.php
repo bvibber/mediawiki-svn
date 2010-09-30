@@ -1,26 +1,21 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with OpenLayers
+ * Class for handling the display_map parser function with OpenLayers.
  *
  * @file Maps_OpenLayersDispMap.php
  * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
-		
+
 		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
 
 		$mapName = $this->service->getMapId();
@@ -36,8 +31,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 		
 		$langCode = $wgLang->getCode();
 		
-		$this->parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -53,7 +47,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
 	}
 
 }

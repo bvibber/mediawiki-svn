@@ -413,6 +413,7 @@ $messages['bcl'] = array(
  */
 $messages['be-tarask'] = array(
 	'indexpages' => 'Сьпіс індэксных старонак',
+	'pageswithoutscans' => 'Старонкі без сканаў',
 	'proofreadpage_desc' => 'Дазваляе ў зручным выглядзе параўноўваць тэкст і адсканаваны арыгінал',
 	'proofreadpage_namespace' => 'Старонка',
 	'proofreadpage_index_namespace' => 'Індэкс',
@@ -464,6 +465,7 @@ $messages['be-tarask'] = array(
 	'proofreadpage_specialpage_legend' => 'Пошук індэксных старонак',
 	'proofreadpage_source' => 'Крыніца',
 	'proofreadpage_source_message' => 'Сканаваная вэрсія, якая выкарыстоўвалася для стварэньня гэтага тэксту',
+	'right-pagequality' => 'зьмяненьне сьцяжка якасьці старонкі',
 );
 
 /** Bulgarian (Български)
@@ -1479,6 +1481,7 @@ Huomautuksia||10',
  */
 $messages['fr'] = array(
 	'indexpages' => "Liste des pages d'index",
+	'pageswithoutscans' => 'Pages sans fac-similés',
 	'proofreadpage_desc' => 'Permet une comparaison facile entre le texte et sa numérisation originale',
 	'proofreadpage_namespace' => 'Page',
 	'proofreadpage_index_namespace' => 'Index',
@@ -1530,6 +1533,7 @@ Remarques||10',
 	'proofreadpage_specialpage_legend' => 'Rechercher dans les pages d’index',
 	'proofreadpage_source' => 'Source',
 	'proofreadpage_source_message' => 'Édition numérisée dont est issu ce texte',
+	'right-pagequality' => 'Modifier le drapeau de qualité de la page',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1887,6 +1891,7 @@ $messages['hi'] = array(
  */
 $messages['hr'] = array(
 	'indexpages' => 'Popis sadržaja stranica',
+	'pageswithoutscans' => 'Stranice bez skeniranih slika',
 	'proofreadpage_desc' => 'Omogućava jednostavnu usporedbu teksta i izvornog skena',
 	'proofreadpage_namespace' => 'Stranica',
 	'proofreadpage_index_namespace' => 'Sadržaj',
@@ -1938,6 +1943,7 @@ Napomene||10',
 	'proofreadpage_specialpage_legend' => 'Pretraživanje stranica kataloga',
 	'proofreadpage_source' => 'Izvor',
 	'proofreadpage_source_message' => 'Skenirana inačica rabljena za ovaj tekst',
+	'right-pagequality' => 'Izmijeni zastavicu kvalitete stranice',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2907,10 +2913,11 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'indexpages' => 'Список на индексни страници',
+	'pageswithoutscans' => 'Страници без скенови',
 	'proofreadpage_desc' => 'Овозможува едноставна споредба на текстот со скенираниот оригинал',
 	'proofreadpage_namespace' => 'Страница',
 	'proofreadpage_index_namespace' => 'Индекс',
-	'proofreadpage_image' => 'слика',
+	'proofreadpage_image' => 'Слика',
 	'proofreadpage_index' => 'Индекс',
 	'proofreadpage_index_expected' => 'Грешка: се очекува индекс',
 	'proofreadpage_nosuch_index' => 'Грешка: нема таков индекс',
@@ -2929,9 +2936,9 @@ $messages['mk'] = array(
 	'proofreadpage_nextpage' => 'Следна страница',
 	'proofreadpage_prevpage' => 'Претходна страница',
 	'proofreadpage_header' => 'Заглавие (без вклучување):',
-	'proofreadpage_body' => 'Содржина на страница (се трансклудира):',
+	'proofreadpage_body' => 'Содржина на страница (за превметнување):',
 	'proofreadpage_footer' => 'Подножје (не се вклучува):',
-	'proofreadpage_toggleheaders' => 'превклучи ја видливоста на noinclude пасусите',
+	'proofreadpage_toggleheaders' => 'промена на видливоста на пасусите со „noinclude“',
 	'proofreadpage_quality0_category' => 'Без текст',
 	'proofreadpage_quality1_category' => 'Непрегледана',
 	'proofreadpage_quality2_category' => 'Проблематично',
@@ -2958,6 +2965,7 @@ $messages['mk'] = array(
 	'proofreadpage_specialpage_legend' => 'Пребарување на индексни страници',
 	'proofreadpage_source' => 'Извор',
 	'proofreadpage_source_message' => 'Скенирано издание за востановување на овој текст',
+	'right-pagequality' => 'Измени ознака за квалитет на страницата',
 );
 
 /** Malayalam (മലയാളം)
@@ -3425,6 +3433,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'indexpages' => 'Spis stron indeksów',
+	'pageswithoutscans' => 'Strony bez skanów',
 	'proofreadpage_desc' => 'Umożliwia łatwe porównanie treści ze skanem oryginału',
 	'proofreadpage_namespace' => 'Strona',
 	'proofreadpage_index_namespace' => 'Indeks',
@@ -3476,6 +3485,7 @@ Uwagi||10',
 	'proofreadpage_specialpage_legend' => 'Szukaj stron indeksowych',
 	'proofreadpage_source' => 'Źródło',
 	'proofreadpage_source_message' => 'Zeskanowane wydanie wykorzystane do przygotowania tego tekstu',
+	'right-pagequality' => 'Zmienianie statusu uwierzytelnienia strony',
 );
 
 /** Piedmontese (Piemontèis)
@@ -4326,6 +4336,19 @@ $messages['szl'] = array(
 	'proofreadpage_image' => 'Uobrozek',
 	'proofreadpage_nextpage' => 'Nostympno zajta',
 	'proofreadpage_prevpage' => 'Popředńo zajta',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'proofreadpage_namespace' => 'பக்கம்',
+	'proofreadpage_image' => 'படம்',
+	'proofreadpage_nologin' => 'புகுபதிகை செய்யப்படவில்லை',
+	'proofreadpage_nextpage' => 'அடுத்த பக்கம்',
+	'proofreadpage_prevpage' => 'முந்தைய பக்கம்',
+	'proofreadpage_index_listofpages' => 'பக்கங்களின் பட்டியல்',
+	'proofreadpage_page_status' => 'பக்கத்தின் நிலைமை',
 );
 
 /** Telugu (తెలుగు)

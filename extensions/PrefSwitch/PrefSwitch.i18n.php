@@ -2911,7 +2911,7 @@ Volyéd chouèsir tot cen que convint.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Cen fonccione pas bien.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Cen s’est pas passâ coment prèvu.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'J’é pas amâ son aparence.',
-	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'J’é pas amâ les ongllètes novèles et la novèla disposicion.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'J’é pas amâ les ongllètes novèles et la misa en pâge.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'J’é pas amâ la bârra d’outils novèla.',
 	'prefswitch-survey-answer-whyoff-other' => 'Ôtra rêson :',
 	'prefswitch-survey-question-browser' => 'Quint navigator utilisâd-vos ?',
@@ -3546,6 +3546,7 @@ Zo by nam pomhał, je polěpšić, wupjelń prošu slědowace opcionelne posudź
  * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
+ * @author Misibacsi
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -3569,6 +3570,7 @@ $messages['hu'] = array(
 	'prefswitch-survey-question-dislike' => 'Mi nem tetszett az új funkciókból?',
 	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
 Jelöld be az összes indokodat.',
+	'prefswitch-survey-question-globaloff' => 'Szeretné ezeket a tulajdonságokat mindenhol kikapcsolni?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nem működött megfelelően.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nem működött kiszámíthatóan.',
@@ -4215,6 +4217,7 @@ $messages['ko'] = array(
 	'prefswitch-survey-question-dislike' => '새 기능에 대해 어떤 점이 마음에 들지 않으셨습니까?',
 	'prefswitch-survey-question-whyoff' => '새로운 기능을 끄는 이유가 무엇인가요?
 해당하는 모든 항목을 선택해주세요.',
+	'prefswitch-survey-question-globaloff' => '모든 위키에서 새 기능을 끄고 싶으십니까?',
 	'prefswitch-survey-answer-whyoff-hard' => '사용하기에 너무 어렵다.',
 	'prefswitch-survey-answer-whyoff-didntwork' => '기능이 제대로 작동하지 않는다.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '기능이 예상한 대로 동작하지 않는다.',
@@ -4226,6 +4229,7 @@ $messages['ko'] = array(
 	'prefswitch-survey-answer-browser-other' => '다른 브라우저:',
 	'prefswitch-survey-question-os' => '어떤 운영 체제(OS)를 사용하고 있나요?',
 	'prefswitch-survey-answer-os-other' => '다른 운영 체제:',
+	'prefswitch-survey-answer-globaloff-yes' => '예, 모든 위키에서 새 기능을 끄겠습니다.',
 	'prefswitch-survey-question-res' => '어느 정도의 모니터 해상도를 사용하고 있나요?',
 	'prefswitch-title-on' => '새 기능',
 	'prefswitch-title-switched-on' => '즐겁게 이용하십시오!',
@@ -6853,6 +6857,13 @@ Tafadhali chagua vifungu vyote vinavyohusika.',
 	'prefswitch-success-feedback' => 'Mwitiko wako umetumwa',
 	'prefswitch-return' => '<hr style="clear:both">
 Urudi <span class="plainlinks">[$1 $2]</span>.',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'prefswitch-survey-answer-whyoff-other' => 'வேறு காரணம்:',
 );
 
 /** Telugu (తెలుగు)

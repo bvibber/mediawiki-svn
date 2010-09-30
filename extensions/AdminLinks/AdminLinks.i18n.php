@@ -936,6 +936,13 @@ $messages['ml'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|കാര്യനിവാഹക കണ്ണികളിലേക്കുള്ള]] കണ്ണികൾ കാണുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Zamwan
+ */
+$messages['ms'] = array(
+	'adminlinks_users' => 'Pengguna',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -1329,6 +1336,25 @@ $messages['sv'] = array(
 	'adminlinks_browsesearch' => 'Bläddring och sökning',
 	'adminlinks_importexport' => 'Importering och exportering',
 	'right-adminlinks' => 'Se länken till [[Special:AdminLinks|Administrationslänkarna]]',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'adminlinks' => 'செயலாட்சியர் தொடுப்புகள்',
+	'adminlinks-desc' => 'செயலாட்சியர்களுக்கு உதவும் தொடுப்புகளைக் கொண்டிருக்கும் [[Special:AdminLinks|special page]] ஐ சேர்க்கின்றது',
+	'adminlinks_documentation' => '$1 உக்கான விளக்கவுரை',
+	'adminlinks_general' => 'பொதுவான',
+	'adminlinks_editsidebar' => 'பக்கப் பட்டியைத் தொகு',
+	'adminlinks_editcss' => 'CSS கோப்பைத் தொகு',
+	'adminlinks_editmainpagename' => 'முதற்பக்கத்தைத் தொகுக்கும் பெயர்',
+	'adminlinks_users' => 'பயனர்கள்',
+	'adminlinks_createuser' => 'பயனர் உருவாக்கு',
+	'adminlinks_browsesearch' => 'உலவு தேடு',
+	'adminlinks_importexport' => 'உள்ளிறக்கு வெளிச்செலுத்து',
+	'right-adminlinks' => '[[Special:AdminLinks|Admin links]] உக்கான தொடுப்புகளைப் பார்',
 );
 
 /** Telugu (తెలుగు)

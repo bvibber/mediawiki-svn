@@ -1910,6 +1910,16 @@ $messages['sv'] = array(
 	'right-closewikis' => 'Stäng wikier',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'closewikis-page-close-wiki' => 'விக்கி:',
+	'closewikis-page-close-submit' => 'மூடுக',
+	'closewikis-page-reopen-wiki' => 'விக்கி:',
+	'closewikis-page-reopen-reason' => 'காரணம்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

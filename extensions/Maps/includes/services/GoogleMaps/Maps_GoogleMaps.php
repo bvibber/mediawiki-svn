@@ -1,29 +1,29 @@
 <?php
 
 /**
- * File holding the MapsGoogleMaps class.
- *
- * @file Maps_GoogleMaps.php
- * @ingroup MapsGoogleMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class holding information and functionallity specific to Google Maps v2.
  * This infomation and features can be used by any mapping feature. 
  * 
  * @since 0.1
  * 
+ * @file Maps_GoogleMaps.php
  * @ingroup MapsGoogleMaps
  * 
  * @author Jeroen De Dauw
  */
 class MapsGoogleMaps extends MapsMappingService {
+	
+	/**
+	 * A list of supported overlays.
+	 * 
+	 * @var array
+	 */
+	protected static $overlayData = array(
+		'photos' => '0',
+		'videos' => '1',
+		'wikipedia' => '2',
+		'webcams' => '3'
+	);		
 	
 	/**
 	 * Constructor.
@@ -38,21 +38,15 @@ class MapsGoogleMaps extends MapsMappingService {
 	}
 	
 	/**
-	 * @see MapsMappingService::initParameterInfo
+	 * @see MapsMappingService::addParameterInfo
 	 * 
-	 * @since 0.5
+	 * @since 0.7
 	 */
-	protected function initParameterInfo( array &$params ) {
-		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
+	public function addParameterInfo( array &$params ) {
+		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls, $egMapsGMapOverlays;
 		
-		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
-		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
-		
-		// TODO
-		//Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
-
-		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
-		//$params['zoom']->setDefault( self::getDefaultZoom() );
+		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );
 		
 		$params['controls'] = new ListParameter(
 			'controls',
@@ -64,46 +58,38 @@ class MapsGoogleMaps extends MapsMappingService {
 				new CriterionInArray( self::getControlNames() ),
 			)			
 		);
-
-		// TODO
-		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
-			$egMapsGoogleMapsType,// FIXME: default value should not be used when not present in types parameter.
+			$egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
 			array(),
 			array(
-				new CriterionInArray( self::getTypeNames() ),
+				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			),
 			array( 'types' )		
 		);
-
-		// TODO
-		$params['type']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );
+		$params['type']->addManipulations( new MapsParamGMapType() );
 
 		$params['types'] = new ListParameter(
 			'types',
 			ListParameter::DEFAULT_DELIMITER,
 			Parameter::TYPE_STRING,
-			$egMapsGoogleMapsTypes, // FIXME: default value should not be used when not present in types parameter.
+			$egMapsGoogleMapsTypes,
 			array(),
 			array(
-				new CriterionInArray( self::getTypeNames() ),
+				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			)
 		);
-
-		// TODO
-		$params['types']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );			
+		$params['types']->addManipulations( new MapsParamGMapType(), new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsGoogleAutozoom
 		);
-		
-		// TODO
-		$params['autozoom']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
+		$params['autozoom']->addManipulations( new ParamManipulationBoolstr() );
 		
 		$params['kml'] = new ListParameter(
 			'kml',
@@ -111,9 +97,18 @@ class MapsGoogleMaps extends MapsMappingService {
 			Parameter::TYPE_STRING,
 			array() // TODO
 		);		
-		
-		// TODO
-		$params['kml']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['kml']->addManipulations( new ParamManipulationImplode( ',', "'" ) );
+
+		$params['overlays'] = new ListParameter(
+			'overlays',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsGMapOverlays,
+			array(),
+			array(
+				new CriterionGoogleOverlay( self::$overlayData )
+			)
+		);
 	}
 	
 	/**
@@ -170,7 +165,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * 
 	 * @var array
 	 */ 
-	protected static $mapTypes = array(
+	public static $mapTypes = array(
 		'normal' => 'G_NORMAL_MAP',
 		'satellite' => 'G_SATELLITE_MAP',
 		'hybrid' => 'G_HYBRID_MAP',
@@ -184,27 +179,6 @@ class MapsGoogleMaps extends MapsMappingService {
 		'mars-elevation' => 'G_MARS_ELEVATION_MAP',
 		'mars-infrared' => 'G_MARS_INFRARED_MAP'
 	);
-
-	/**
-	 * A list of supported overlays.
-	 * 
-	 * @var array
-	 */
-	protected static $overlayData = array(
-		'photos' => '0',
-		'videos' => '1',
-		'wikipedia' => '2',
-		'webcams' => '3'
-	);
-
-	/**
-	 * Returns the names of all supported map types.
-	 * 
-	 * @return array
-	 */
-	public static function getTypeNames() {
-		return array_keys( self::$mapTypes );
-	}
 	
 	/**
 	 * Returns the names of all supported controls. 
@@ -231,53 +205,6 @@ class MapsGoogleMaps extends MapsMappingService {
 			'nav',
 			'searchbar'
 		);
-	}
-
-	/**
-	 * Returns the names of all supported map overlays.
-	 * 
-	 * @return array
-	 */
-	public static function getOverlayNames() {
-		return array_keys( self::$overlayData );
-	}
-	
-	/**
-	 * Returns whether the provided value is a valid google overlay.
-	 * 
-	 * @param $value
-	 * 
-	 * @return boolean
-	 */
-	public static function isGOverlay( $value, $name, array $parameters ) {
-		$value = explode( '-', $value );
-		if ( count( $value ) > 2 ) return false;
-		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
-		return in_array( $value[0], self::getOverlayNames() );
-	}
-
-	/**
-	 * Changes the map type name into the corresponding Google Maps API v2 identifier.
-	 *
-	 * @param string $type
-	 * 
-	 * @return string
-	 */
-	public static function setGMapType( &$type, $name, array $parameters ) {
-		$type = self::$mapTypes[$type];
-	}
-	
-	/**
-	 * Changes the map type names into the corresponding Google Maps API v2 identifiers.
-	 * 
-	 * @param array $types
-	 * 
-	 * @return array
-	 */
-	public static function setGMapTypes( array &$types, $name, array $parameters ) {
-		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
-			$types[$i] = self::$mapTypes[ $types[$i] ];
-		}
 	}
 	
 	/**

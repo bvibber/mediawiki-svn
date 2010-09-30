@@ -23,6 +23,14 @@ class ArticleEmblemsHooks {
 		return true;
 	}
 
+	/**
+	 * ParserTestTables hook
+	 */
+	public static function parserTestTables( &$tables ) {
+		$tables[] = 'articleemblems';
+		return true;
+	}
+
 	/*
 	 * ParserInit hook
 	 */
@@ -76,8 +84,8 @@ class ArticleEmblemsHooks {
 	/*
 	 * ResourceLoaderRegisterModules hook
 	 */
-	public static function resourceLoaderRegisterModules() {
-		ResourceLoader::register(
+	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
+		$resourceLoader->register(
 			'ext.articleEmblems',
 			new ResourceLoaderFileModule( array(
 				'styles' => 'extensions/ArticleEmblems/modules/ext.articleEmblems.css',

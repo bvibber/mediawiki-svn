@@ -376,7 +376,7 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
  */
 $messages['de'] = array(
 	'vector' => 'Verbesserungen für die Vektor-Benutzeroberfläche',
-	'vector-desc' => 'Verbesserungen an der Vektor-Benutzeroberfläche',
+	'vector-desc' => 'Stellt Verbesserungen für die Benutzeroberfläche „Vector“ zur Verfügung',
 	'vector-collapsiblenav-preference' => 'Zusammenklappen von Items im Navigationsmenü des Vektor-Skins aktivieren',
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass die Änderungen verloren gehen.
@@ -1426,6 +1426,13 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "Kuhariri" kwenye mapendekezo
 	'vector-editwarning-preference' => 'Unionyeshe ilani ninapotaka kutoka kwenye ukurasa ninouhariri, bila kuhifadhi mabadiliko',
 	'vector-simplesearch-search' => 'Kutafuta',
 	'vector-simplesearch-containing' => 'ya maneno...',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'vector-simplesearch-search' => 'தேடு',
 );
 
 /** Telugu (తెలుగు)

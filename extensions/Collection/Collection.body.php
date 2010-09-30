@@ -339,12 +339,10 @@ class SpecialCollection extends SpecialPage {
 
 		$coll = CollectionSession::getCollection();
 		$dialogtxt = wfMsg( 'coll-load_local_book' );
-		$redirecturl = SkinTemplate::makeSpecialUrl( 'Book' );
 
 		$wgOut->addScript( 
 			"<script type=\"$wgJsMimeType\">\n" . 
 			"var collection_dialogtxt = " . Xml::encodeJsVar( $dialogtxt ) . ";\n" .
-			"var collection_redirect_url = " . Xml::encodeJsVar( $redirecturl ) . ";\n" .
 			"</script>" );
 
 		$wgOut->mScripts .= <<<EOS
@@ -1188,7 +1186,7 @@ EOS
 		if ( $content_disposition ) {
 			header( 'Content-Disposition: ' . $content_disposition );
 		} else {
-			$ct_enc = split( ';', $content_type );
+			$ct_enc = explode( ';', $content_type );
 			$ct = $ct_enc[0];
 			if ( isset( $wgCollectionContentTypeToFilename[$ct] ) ) {
 				header( 'Content-Disposition: ' . 'inline; filename=' . $wgCollectionContentTypeToFilename[$ct] );

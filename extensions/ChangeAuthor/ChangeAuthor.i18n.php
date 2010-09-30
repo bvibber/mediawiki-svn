@@ -2069,6 +2069,14 @@ $messages['sv'] = array(
 	'right-changeauthor' => 'Ändra författaren för en version',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'changeauthor-pagenameform-go' => 'செல்',
+	'changeauthor-comment' => 'கருத்து:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  * @author వైజాసత్య

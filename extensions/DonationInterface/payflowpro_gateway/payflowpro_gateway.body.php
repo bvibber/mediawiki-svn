@@ -99,16 +99,15 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		}
 		
 		// track the number of attempts the user has made
-		$numAttempt = ( $wgRequest->getText( 'numAttempt' ) == '' ) ? '0' : $wgRequest->getText( 'numAttempt' );
+		$numAttempt = $wgRequest->getVal( 'numAttempt', 0 );
 
 		// Get array of default account values necessary for Payflow 
 		require_once( 'includes/payflowUser.inc' );
 
 		$payflow_data = payflowUser();
 
-		// Populate from data
+		// Populate form data
 		$data = $this->fnGetFormData( $amount, $numAttempt, $token, $payflow_data['order_id'] );
-		
 		// Check form for errors and display 
 		// match token
 		$token_check = ( $wgRequest->getText( 'token' ) ) ? $wgRequest->getText( 'token' ) : $token;
@@ -177,12 +176,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 * The message at the top of the form can be edited in the payflow_gateway.i18.php file
 	 */
 	public function fnPayflowDisplayForm( &$data, &$error ) {
-		global $wgOut, $wgScriptPath;
-		
-		// we only want to load this JS if the form is being rendered
-		$wgOut->addHeadItem( 'validatescript', '<script type="text/javascript" language="javascript" src="' . 
-				     $wgScriptPath . 
- 				     '/extensions/DonationInterface/payflowpro_gateway/validate_input.js"></script>' );
+		global $wgOut;	
 
 		// save contrib tracking id early to track abondonment
 		if ( $data[ 'numAttempt' ] == '0' ) {
@@ -191,11 +185,12 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				wfDebugLog( 'payflowpro_gateway', 'Unable to save data to the contribution_tracking table ' . $when );
 			}
 		}
-	
+
 		$form_class = $this->getFormClass();
 		$form_obj = new $form_class( $data, $error );  	
-		$form = $form_obj->generateFormBody();
+		$form = $form_obj->generateFormStart();
 		$form .= $form_obj->generateFormSubmit();
+		$form .= $form_obj->generateFormEnd();
 		$wgOut->addHTML( $form );
 	}
 
@@ -207,7 +202,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	public function setFormClass( $class_name=NULL ) {
 		if ( !$class_name ) {
 			global $wgRequest, $wgPayflowGatewayDefaultForm;
-			$form_class = ( strlen( $wgRequest->getText( 'form_name' ))) ? $wgRequest->getText( 'form_name' ) : $wgPayflowGatewayDefaultForm;
+			$form_class = $wgRequest->getText( 'form_name', $wgPayflowGatewayDefaultForm );
 		
 			// make sure our form class exists before going on, if not try loading default form class
 			$class_name = "PayflowProGateway_Form_" . $form_class;
@@ -327,7 +322,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				break;
 				
 			case 'discover':
-				// pattern for Visa
+				// pattern for Discover
 				$pattern = '/^6(?:011|5[0-9]{2})[0-9]{12}$/';
 
 				// if pattern doesn't match
@@ -355,6 +350,9 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	private function fnPayflowProcessTransaction( $data, $payflow_data ) {
 		global $wgOut, $wgDonationTestingMode, $wgPayflowGatewayUseHTTPProxy, $wgPayflowGatewayHTTPProxy;
 
+		// update contribution tracking
+		$this->updateContributionTracking( $data );
+		
 		// create payflow query string, include string lengths
 		$queryArray = array(
 			'TRXTYPE' => $payflow_data['trxtype'],
@@ -454,7 +452,6 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 */
 	private function fnPayflowGetResults( $data, $result ) {
 		global $wgOut;
-
 		// prepare NVP response for sorting and outputting 
 		$responseArray = array();
 		
@@ -484,7 +481,6 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		// interpret result code, return
 		// approved (1), denied (2), try again (3), general error (4)
 		$errorCode = $this->fnPayflowGetResponseMsg( $resultCode, $responseMsg );
-
 		// if approved, display results and send transaction to the queue
 		if( $errorCode == '1' ) {
 			$this->fnPayflowDisplayApprovedResults( $data, $responseArray, $responseMsg );
@@ -587,9 +583,17 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		$transaction['country_name'] = $countries[$data['country']];
 		$transaction['country_code'] = $data['country'];
 		// put all data into one array
+		$optout = $this->determineOptOut($data);
+		$data[ 'anonymous' ] = $optout[ 'anonymous' ];
+		$data[ 'optout' ] = $optout[ 'optout' ];
 		$transaction += array_merge( $data, $responseArray );
 		
-		// hook to call stomp functions
+		/**
+		 * hook to call stomp functions
+		 * 
+		 * Sends transaction to Stomp-based queueing service,
+		 * eg ActiveMQ
+		 */
 		wfRunHooks( 'gwStomp', array( $transaction ) );
 
 		if ( $wgExternalThankYouPage ) {
@@ -682,9 +686,22 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		$this->fnPayflowUnsetEditToken();
 	}
 	
+	/**
+	 * Determine proper opt-out settings for contribution tracking
+	 * 
+	 * because the form elements for comment anonymization and email opt-out
+	 * are backwards (they are really opt-in) relative to contribution_tracking
+	 * (which is opt-out), we need to reverse the values
+	 */
+	function determineOptOut( $data ) {
+		$optout[ 'optout' ] = ( $data[ 'email-opt' ] == "1" ) ? '0' : '1';
+		$optout[ 'anonymous' ] = ( $data[ 'comment-option' ] == "1" ) ? '0' : '1';
+		return $optout;
+	}
+	
 	function fnPayflowSaveContributionTracking( &$data ) {
-		$data['optout'] = ($data['optout'] == "1") ? '0' : '1';
-		$data['anonymous'] = ($data['anonymous'] == "1") ? '0' : '1';
+		// determine opt-out settings
+		$optout = $this->determineOptOut( $data );
 
 		$db = payflowGatewayConnection();
 			
@@ -695,11 +712,11 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		$tracked_contribution = array(
 			'note' => $data['comment'],
 			'referrer' => $data['referrer'],
-			'anonymous' => $data['anonymous'],
+			'anonymous' => $optout[ 'anonymous' ],
 			'utm_source' => $data['utm_source'],
 			'utm_medium' => $data['utm_medium'],
 			'utm_campaign' => $data['utm_campaign'],
-			'optout' => $data['optout'],
+			'optout' => $optout[ 'optout' ],
 			'language' => $data['language'],
 			'ts' => $ts,
 		);
@@ -715,8 +732,9 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		if ($db->insert( 'contribution_tracking', $tracked_contribution ) ) {
 			$data['contribution_tracking_id'] = $db->insertId();
 		 	return true;
-		} else { return false; }
-		
+		} else { 
+			return false; 
+		}		
 	}
 	
 	function fnPayflowReturnCurrencies() {
@@ -817,7 +835,9 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 */
 	public function fnGetFormData( $amount, $numAttempt, $token, $order_id ) {
 		global $wgPayflowGatewayTest, $wgRequest;
-		if ( !$numAttempt && $wgPayflowGatewayTest ) { // if we're in testing mode, prepopulate the form
+		
+		// if we're in testing mode and an action hasn't yet be specified, prepopulate the form
+		if ( !$wgRequest->getText( 'action', false ) && !$numAttempt && $wgPayflowGatewayTest ) {
 			// define arrays of cc's and cc #s for random selection
 			$cards = array( 'american' );
 			$card_nums = array(
@@ -826,14 +846,14 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				),
 			);
 
-			// randomly select a credit cards
+			// randomly select a credit card
 			$card_index = array_rand( $cards );
 
 			// randomly select a credit card #
 			$card_num_index = array_rand( $card_nums[ $cards[ $card_index ]] );
 
 			$data = array(
-				'amount' => $amount,
+				'amount' => ( $amount != "0.00" ) ? $amount : "30.00",
 				'email' => 'test@example.com',
 				'fname' => 'Tester',
 				'mname' => 'T.',
@@ -852,13 +872,13 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				'order_id' => $order_id, 
 				'numAttempt' => $numAttempt,
 				'referrer' => 'http://www.baz.test.com/index.php?action=foo&action=bar',
-				'utm_source' => '.Spam.Support.cc',
+				'utm_source' => $this->getUtmSource(),
 				'utm_medium' => $wgRequest->getText( 'utm_medium' ),
 				'utm_campaign' => $wgRequest->getText( 'utm_campaign' ),
 				'language' => 'en',
-				'comment' => 'This sure is neat',
-				'anonymous' => $wgRequest->getText( 'comment-option' ),
-				'optout' => $wgRequest->getText( 'email' ),
+				'comment' => ($wgRequest->getVal( 'comment' )) ? $wgRequest->getVal( 'comment' ) : 'This sure is neat',
+				'comment-option' => $wgRequest->getText( 'comment-option' ),
+				'email-opt' => $wgRequest->getText( 'email-opt' ),
 				'test_string' => $wgRequest->getText( 'process' ),
 				'token' => $token,
 				'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
@@ -885,14 +905,15 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				'payment_method' => $wgRequest->getText( 'payment_method' ),
 				'order_id' => $order_id,
 				'numAttempt' => $numAttempt,
-				'referrer' => $wgRequest->getText( 'referrer' ),
-				'utm_source' => $wgRequest->getText( 'utm_source' ),
+				'referrer' => ( $wgRequest->getVal( 'referrer' )) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' ),
+				'utm_source' => $this->getUtmSource(),
 				'utm_medium' => $wgRequest->getText( 'utm_medium' ),
 				'utm_campaign' => $wgRequest->getText( 'utm_campaign' ),
-				'language' => $wgRequest->getText( 'language' ),
+				// try to honr the user-set language (uselang), otherwise the language set in the URL (language)
+				'language' => $wgRequest->getText( 'uselang', $wgRequest->getText( 'language' )), 
 				'comment' => $wgRequest->getText( 'comment' ),
-				'anonymous' => $wgRequest->getText( 'comment-option' ),
-				'optout' => $wgRequest->getText( 'email' ),
+				'comment-option' => $wgRequest->getText( 'comment-option' ),
+				'email-opt' => $wgRequest->getText( 'email-opt' ),
 				'test_string' => $wgRequest->getText( 'process' ), //for showing payflow string during testing
 				'token' => $token,
 				'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
@@ -920,5 +941,91 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'zip' => '',
 			'emailAdd' => '',
 		);
+	}
+
+	/**
+	 * Get the utm_source string
+	 *
+	 * Checks to see if the utm_source is set properly for the credit card
+	 * form including any cc form variants (identified by utm_source_id).  If
+	 * anything cc form related is out of place for the utm_source, this
+	 * will fix it.
+	 *
+	 * the utm_source is structured as: banner.landing_page.payment_instrument
+	 *
+	 * @return string The full utm_source
+	 */
+	public function getUtmSource() {
+		global $wgRequest;
+
+		// fetch whatever was passed in as the utm_source
+		$utm_source = $wgRequest->getText( 'utm_source' );
+		
+		/**
+		 * if we have a utm_source_id, then the user is on a single-step credit card form.
+		 * if that's the case, we treat the single-step credit card form as a landing page, 
+		 * which we label as cc#, where # = the utm_source_id
+		 */
+		$utm_source_id = $wgRequest->getVal( 'utm_source_id', 0 );
+		
+		// this is how the CC portion of the utm_source should be defined
+		$correct_cc_source = ( $utm_source_id ) ? 'cc' . $utm_source_id . '.cc' : 'cc';
+		
+		// check to see if the utm_source is already correct - if so, return
+		if ( preg_match('/' . str_replace( ".", "\.", $correct_cc_source ) . '$/', $utm_source)) {
+			return $utm_source;
+		}
+		
+		// split the utm_source into its parts for easier manipulation
+		$source_parts = explode( ".", $utm_source );
+		
+		// if there are no sourceparts element, then the banner portion of the string needs to be set.
+		// since we don't know what it is, set it to an empty string
+		if ( !count( $source_parts )) $source_parts[0] = '';
+		
+		// if the utm_source_id is set, set the landing page portion of the string to cc# 
+		$source_parts[1] = ( $utm_source_id ) ? 'cc' . $utm_source_id : ( isset( $source_parts[1] ) ? $source_parts[1] : '');
+		
+		// the payment instrument portion should always be 'cc' if this method is being accessed
+		$source_parts[2] = 'cc';		
+		
+		// return a reconstructed string
+		return implode( ".", $source_parts );
+	}
+
+	public function updateContributionTracking( &$data ) {
+		// ony update contrib tracking if we're coming from a single-step landing page 
+		// which we know with cc# in utm_source
+		if ( !preg_match( "/cc[0-9]/", $data[ 'utm_source' ] )) {
+			return;
+		}
+
+		
+		// determine opt-out settings
+		$optout = $this->determineOptOut( $data );
+		
+		$db = payflowGatewayConnection();
+			
+		if (!$db) { return true ; }
+
+		$tracked_contribution = array(
+			'note' => $data['comment'],
+			'referrer' => $data['referrer'],
+			'anonymous' => $optout[ 'anonymous' ],
+			'utm_source' => $data['utm_source'],
+			'utm_medium' => $data['utm_medium'],
+			'utm_campaign' => $data['utm_campaign'],
+			'optout' => $optout[ 'optout' ],
+			'language' => $data['language'],
+		);
+		
+		// Make all empty strings NULL
+		foreach ($tracked_contribution as $key => $value) {
+			if ($value === '') {
+				$tracked_contribution[$key] = null;
+			}
+		}
+
+		$db->update( 'contribution_tracking', $tracked_contribution, array( 'id' => $data[ 'contribution_tracking_id' ] ));
 	}
 } // end class

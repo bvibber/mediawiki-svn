@@ -502,9 +502,16 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Maikking
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'multiboilerplate-submit' => 'Prześlij',
+	'multiboilerplate-desc' => 'Pozwala w czasie edycji strony wybrać z rozwijalnej listy umieszczonej powyżej formularza edycji jedną ze zdefiniowanych wcześniej treści strony',
+	'multiboilerplate-legend' => 'Wybierz treść do wstawienia',
+	'multiboilerplate-submit' => 'Wstaw',
+	'boilerplates' => 'Dostępne wcześniej zdefiniowane treści',
+	'multiboilerplate-special-pagetext' => 'Te szablony mogą zostać załadowane w czasie tworzenia nowej strony. (<span class=plainlinks>[{{fullurl:Strona nie istnieje|action=edit}} próba]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Wstępnie zdefiniowane treści znajdują się w LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Wstępnie zdefiniowane treści stron znajdują się w [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Piedmontese (Piemontèis)

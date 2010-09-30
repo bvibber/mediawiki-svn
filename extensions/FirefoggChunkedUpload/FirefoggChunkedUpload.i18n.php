@@ -40,6 +40,13 @@ $messages['ca'] = array(
 	'firefoggcu-desc' => 'Protocol de Càrrega Fragmentada de Firefogg',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'firefoggcu-desc' => 'Protocol Chunked Uwchlwytho Firefogg',
+);
+
 /** German (Deutsch)
  * @author Purodha
  * @author Umherirrender

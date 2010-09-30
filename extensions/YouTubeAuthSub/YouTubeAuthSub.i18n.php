@@ -3433,6 +3433,7 @@ Czekej.',
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author அருட்செல்வன்
  */
 $messages['ta'] = array(
@@ -3444,7 +3445,7 @@ $messages['ta'] = array(
 	'youtubeauthsub_password' => 'யூடியூப் கடவுச்சொல்',
 	'youtubeauthsub_username' => 'யூடியூப் பயனர்பெயர்',
 	'youtubeauthsub_keywords' => 'குறிச்சொற்கள்',
-	'youtubeauthsub_category' => 'வகைபாடு',
+	'youtubeauthsub_category' => 'பகுப்பு',
 	'youtubeauthsub_submit' => 'சமர்ப்பி',
 	'youtubeauthsub_clickhere' => 'யூடியூபில் நுழைவதற்கு இங்கே சொடுக்கவும்',
 	'youtubeauthsub_uploadbutton' => 'பதிவேற்றம்',

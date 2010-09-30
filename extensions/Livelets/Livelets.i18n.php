@@ -57,9 +57,10 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'livelets-desc' => "Permet aux pages incluses d'être chargées après le contenu principal de la page et d'être mises à jour dynamiquement grâce à Ajax.",
+	'livelets-desc' => 'Permet de charger le contenu principal d’une page avant d’y charger et inclure d’autres pages qui seront mises à jour dynamiquement grâce à Ajax.',
 );
 
 /** Galician (Galego)

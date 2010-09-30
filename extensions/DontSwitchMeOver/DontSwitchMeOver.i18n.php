@@ -71,7 +71,7 @@ $messages['bpy'] = array(
  */
 $messages['br'] = array(
 	'dontswitchmeover-desc' => "Penndibab a dalvez d'an implijerien da zivizout hag-eñ e fell dezho mirout an tres dibabet ganto p'eo bet cheñchet an tres dre ziouer.",
-	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
+	'dontswitchmeover-pref' => 'Arabat cheñch tres ma etrefas pa cheñch ar gwiskadur dre ziouer',
 );
 
 /** Bosnian (Bosanski)
@@ -207,6 +207,13 @@ $messages['hr'] = array(
 $messages['hsb'] = array(
 	'dontswitchmeover-desc' => 'Nastajenje za wužiwarjow, zo by podało, hač chcedźa swoje šatowe nastajenje, hdyž so standardny šat změni.',
 	'dontswitchmeover-pref' => 'Změnjenje šata njedowolić, hdyž so standardny šat změni',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'dontswitchmeover-pref' => 'Ne módosuljon az általam beállított felület, ha változik az alapértelmezett.',
 );
 
 /** Interlingua (Interlingua)

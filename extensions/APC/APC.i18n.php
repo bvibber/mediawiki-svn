@@ -1129,6 +1129,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Leithian
  * @author Pill
  * @author Purodha
@@ -1138,7 +1139,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  */
 $messages['de'] = array(
 	'apc' => 'APC-Informationen',
-	'apc-desc' => 'APC-Cache mit MediaWiki [[Special:APC|einsehen und bearbeiten]]',
+	'apc-desc' => 'Ergänzt eine [[Special:APC|Spezialseite]] zum einsehen und bearbeiten des APC-Cache',
 	'right-apc' => 'Alle Funktionen von [[Special:APC|APC]] verwenden',
 	'viewapc-apc-not-available' => 'Keine Cache-Informationen verfügbar.
 APC wird scheinbar nicht ausgeführt.',
@@ -2663,11 +2664,12 @@ Nowša wersija $2 steji na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 /** Hungarian (Magyar)
  * @author Dani
  * @author Glanthor Reviol
+ * @author Misibacsi
  */
 $messages['hu'] = array(
 	'apc' => 'APC-információ',
 	'apc-desc' => "[[Special:APC|APC gyorstótár megtekintése és beállítása]] ''MediaWiki''vel",
-	'right-apc' => 'a Special:APC összes funkciójának használata',
+	'right-apc' => 'Az [[Special:APC|APC]] összes funkciójának használata',
 	'viewapc-apc-not-available' => 'A gyorítótárinformációk nem elérhetőek.
 Úgy tűnik, hogy az APC nem fut.',
 	'viewapc-clear-confirm' => 'Szeretnéd kiüríteni a gyorsítótárat?',
@@ -5865,13 +5867,40 @@ Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2
 	'viewapc-usercache-cleared' => "'''''Appliceringscachen rensad.'''''",
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'viewapc-start-time' => 'ஆரம்ப நேரம்',
+	'viewapc-display-value' => 'மதிப்பு',
+	'viewapc-display-info' => 'பெயர்',
+	'viewapc-display-mtime' => 'மாற்றப்பட்டுள்ளது',
+	'viewapc-display-creation_time' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-display-deletion_time' => 'நீக்கப்பட்டது',
+	'viewapc-display-no-delete' => 'நீக்கப்படவில்லை',
+	'viewapc-ls-submit' => 'செல்!',
+	'viewapc-ls-header-name' => 'பெயர்',
+	'viewapc-ls-header-created' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-ls-header-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-scope-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-scope-both' => 'இரண்டும்',
+	'viewapc-ls-sort-size' => 'அளவு',
+	'viewapc-ls-sort-name' => 'பெயர்',
+	'viewapc-ls-sort-created' => 'உருவாக்கப்பட்டுவிட்டது',
+	'viewapc-ls-sort-deleted' => 'நீக்கப்பட்டது',
+	'viewapc-ls-limit-none' => 'அனைத்தும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  * @author Veeven
+ * @author ఆదిహిందు
  */
 $messages['te'] = array(
 	'apc' => 'APC సమాచారం',
+	'viewapc-mode-version-check' => 'వర్షన్ సరిచూసుకోండి',
 	'viewapc-info-general' => 'సాధారణ సమాచారం',
+	'viewapc-start-time' => 'ప్రారంభ సమయం',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
 	'viewapc-hits' => 'సందర్శనలు',
 	'viewapc-rps' => 'క్షణానికి $1 అభ్యర్థనలు',
@@ -5882,12 +5911,20 @@ $messages['te'] = array(
 	'viewapc-display-device' => 'పరికరం',
 	'viewapc-display-info' => 'పేరు',
 	'viewapc-display-type' => 'రకం',
+	'viewapc-display-mtime' => 'మార్చబడినది',
+	'viewapc-display-creation_time' => 'సృష్టించబడినది',
+	'viewapc-display-deletion_time' => 'తొలగించబడినది',
+	'viewapc-display-no-delete' => 'తొలగించబడలేదు',
 	'viewapc-display-mem_size' => 'పరిమాణం',
 	'viewapc-ls-options-legend' => 'ఎంపికలు',
 	'viewapc-ls-submit' => 'వెళ్ళు!',
 	'viewapc-ls-header-name' => 'పేరు',
 	'viewapc-ls-header-size' => 'పరిమాణం',
+	'viewapc-ls-header-created' => 'సృష్టించబడినది',
+	'viewapc-ls-header-deleted' => 'తొలగించబడినది',
+	'viewapc-ls-header-timeout' => 'సమయం పూర్తయింది',
 	'viewapc-ls-delete' => '[ఇప్పుడే తొలగించు]',
+	'viewapc-ls-scope-deleted' => 'తొలగించబడినది',
 	'viewapc-ls-scope-both' => 'రెండూ',
 	'viewapc-ls-sort-size' => 'పరిమాణం',
 	'viewapc-ls-sort-name' => 'పేరు',

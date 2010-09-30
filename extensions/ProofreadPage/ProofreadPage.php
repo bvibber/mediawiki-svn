@@ -14,17 +14,10 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
-#
-#
-# 
-# 
-# 
-# 
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "ProofreadPage extension\n" );
 }
-
 
 $wgExtensionFunctions[] = 'wfProofreadPage';
 
@@ -44,17 +37,14 @@ $wgExtensionCredits['other'][] = array(
 );
 
 # special page
-$wgAutoloadClasses['ProofreadPages'] = dirname( __FILE__ ) . '/SpecialProofreadPages.php';
+$wgAutoloadClasses['ProofreadPages'] = $dir . 'SpecialProofreadPages.php';
 $wgSpecialPages['IndexPages'] = 'ProofreadPages';
 $wgSpecialPageGroups['IndexPages'] = 'pages';
 
 # special page
-$wgAutoloadClasses['PagesWithoutScans'] = dirname( __FILE__ ) . '/SpecialPagesWithoutScans.php';
+$wgAutoloadClasses['PagesWithoutScans'] = $dir . 'SpecialPagesWithoutScans.php';
 $wgSpecialPages['PagesWithoutScans'] = 'PagesWithoutScans';
 $wgSpecialPageGroups['PagesWithoutScans'] = 'maintenance';
-
-# Bump the version number every time you change proofread.js
-$wgProofreadPageVersion = 27;
 
 # Group allowed to modify pagequality
 $wgGroupPermissions['user']['pagequality'] = true;

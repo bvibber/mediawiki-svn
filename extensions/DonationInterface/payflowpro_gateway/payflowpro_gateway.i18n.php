@@ -97,12 +97,6 @@ In some instances, the code is located on the left side of the card, but is alwa
 	'payflowpro_gateway-donate-click' => 'After clicking "{{int:payflowpro_gateway-donor-submit}}", your credit card information will be processed.',
 	'payflowpro_gateway-otherways' => 'There are <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">other ways to give, including PayPal, check, or mail</a>.',
 	'payflowpro_gateway-credit-storage-processing' => 'We do not store your credit card information, and your personal data is subject to our <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privacy policy</a>.',
-	'donate_interface-GBP' => 'GBP: British Pound',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: U.S. Dollar',
-	'donate_interface-AUD' => 'AUD: Australian Dollar',
-	'donate_interface-CAD' => 'CAD: Canadian Dollar',
-	'donate_interface-JPY' => 'JPY: Japanese Yen',
 	'payflowpro_gateway-token-mismatch' => 'Your session has expired.  Please try filling out and submitting the form again.',
 	'payflowpro_gateway-cc-form-header-personal' => 'Billing information',
 	'payflowpro_gateway-cc-form-header-payment' => 'Payment information',
@@ -181,6 +175,8 @@ $messages['af'] = array(
 	'payflowprogateway' => 'Ondersteun Wikipedia',
 	'payflowpro_gateway-desc' => 'Kredietkaart-verwerking via PayPal se PayFlow Pro',
 	'payflowpro_gateway-accessible' => 'Hierdie bladsy is slegs vanaf die donasie-bladsy toeganklik.',
+	'payflowpro_gateway-form-message' => "Gebruik die vorm hieronder om met 'n kredietkaart te skenk, of",
+	'payflowpro_gateway-paypal-button' => 'Skenk via PayPal',
 	'payflowpro_gateway-form-message-2' => 'Keer terug na die <a href="/index.php?title=Donate">skenkingsblad</a> om die bedrag of geldeenheid te wysig.',
 	'payflowpro_gateway-donor-legend' => 'Skenker-inligting',
 	'payflowpro_gateway-card-legend' => 'Kredietkaart-inligting',
@@ -256,16 +252,10 @@ U sal tipies \'n reeks nommers sien, maar net die laaste drie syfers is die CVV-
 In sommige gevalle is die kode aan die linkerkant van die kaart, maar steeds bo die rekeningnommer.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Vrae of kommentaar? Kontak: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'U kreditkaartinligting sal verwerk word sodra u op "{{int:payflowpro_gateway-donor-submit}}" kliek.',
-	'payflowpro_gateway-credit-storage-processing' => 'Daar is <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ander maniere om te gee, insluitend PayPal, tjek, of pos</a>. <br />
-Ons stoor nie u kredietkaart se inligting nie, en u persoonlike inligting is onderhewig aan ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privaatheidsbeleid</a>.',
-	'donate_interface-GBP' => 'GBP: Britse pond',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Amerikaanse dollar',
-	'donate_interface-AUD' => 'AUD: Australiese dollar',
-	'donate_interface-CAD' => 'CAD: Kanadese dollar',
-	'donate_interface-JPY' => 'JPY: Japannese jen',
+	'payflowpro_gateway-otherways' => 'Daar is <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ander maniere om te gee, insluitend PayPal, tjek, of per pos</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Ons stoor nie u kredietkaart se inligting nie, en u persoonlike inligting is onderhewig aan ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privaatheidsbeleid</a>.',
 	'payflowpro_gateway-token-mismatch' => 'U sessie het verval. Voltooi die vorm in en dien dit weer in.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Persoonlike inligting',
+	'payflowpro_gateway-cc-form-header-personal' => 'Betalingsinligting',
 	'payflowpro_gateway-cc-form-header-payment' => 'Betalingsinligting',
 );
 
@@ -276,6 +266,7 @@ $messages['aln'] = array(
 	'payflowprogateway' => 'Asistenca Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal kartë krediti të përpunimit Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Kjo faqe është i arritshëm vetëm nga faqja e dhurimit.',
+	'payflowpro_gateway-form-message' => 'Jepni kontributin tuaj me kartë krediti.',
 	'payflowpro_gateway-form-message-2' => 'Për të ndryshuar sasinë ose valutë, të kthehen në <a href="/index.php?title=Donate">faqen donacion</a>',
 	'payflowpro_gateway-donor-legend' => 'informacionin e Donatorëve',
 	'payflowpro_gateway-card-legend' => 'informacion Credit card',
@@ -321,6 +312,7 @@ $messages['ar'] = array(
 	'payflowprogateway' => 'ادعم ويكيميديا',
 	'payflowpro_gateway-desc' => 'معالجة PayPal Payflow Pro لبطاقات الائتمان',
 	'payflowpro_gateway-accessible' => 'يمكن الوصول إلى هذه الصفحة فقط من صفحة التبرعات.',
+	'payflowpro_gateway-form-message' => 'ساهم ببطاقة ائتمانك.',
 	'payflowpro_gateway-form-message-2' => 'لتغيير المقدار أو العملة، ارجع إلى <a href="/index.php?title=جمع_تبرعات">صفحة التبرعات</a>.',
 	'payflowpro_gateway-donor-legend' => 'معلومات المُتبرع',
 	'payflowpro_gateway-card-legend' => 'معلومات بطاقة الائتمان',
@@ -398,14 +390,7 @@ $messages['ar'] = array(
 في بعض الحالات، الكود موجود على الجانب الأيسر للبطاقة، لكن دائما أعلى رقم الحساب.</p><br />',
 	'payflowpro_gateway-question-comment' => 'ويكيبيديا مشروع لمؤسسة ويكيميديا. أسئلة أو تعليقات؟ اتصل بمؤسسة ويكيميديا: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'بعد الضغط على "{{int:payflowpro_gateway-donor-submit}}"، معلومات بطاقتك الائتمانية ستتم معالجتها.',
-	'payflowpro_gateway-credit-storage-processing' => 'توجد <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/ar">وسائل أخرى للتبرع من بينها PayPal والشيكات والبريد</a>.
-نحن لا نخزن معلومات بطاقتك الائتمانية، وبياناتك الشخصية معرضة ل<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">سياستنا للخصوصية</a>.',
-	'donate_interface-GBP' => 'GBP: الجنيه الإسترليني',
-	'donate_interface-EUR' => 'EUR: اليورو',
-	'donate_interface-USD' => 'USD: الدولار الأمريكي',
-	'donate_interface-AUD' => 'AUD: الدولار الأسترالي',
-	'donate_interface-CAD' => 'CAD: الدولار الكندي',
-	'donate_interface-JPY' => 'JPY: الين الياباني',
+	'payflowpro_gateway-credit-storage-processing' => 'تنحن لا نخزن معلومات بطاقتك الائتمانية، وبياناتك الشخصية معرضة ل<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">سياستنا للخصوصية</a>.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -415,6 +400,7 @@ $messages['arz'] = array(
 	'payflowprogateway' => 'ادعم ويكيميديا',
 	'payflowpro_gateway-desc' => 'معالجه PayPal Payflow Pro لبطاقات الائتمان',
 	'payflowpro_gateway-accessible' => 'يمكن الوصول إلى هذه الصفحه فقط من صفحه التبرعات.',
+	'payflowpro_gateway-form-message' => 'ساهم ببطاقه ائتمانك.',
 	'payflowpro_gateway-form-message-2' => 'لتغيير المقدار أو العمله، ارجع إلى <a href="/index.php?title=جمع_تبرعات">صفحه التبرعات</a>.',
 	'payflowpro_gateway-donor-legend' => 'معلومات المُتبرع',
 	'payflowpro_gateway-card-legend' => 'معلومات بطاقه الائتمان',
@@ -491,12 +477,6 @@ $messages['arz'] = array(
 	'payflowpro_gateway-donate-click' => 'بعد الضغط على "{{int:payflowpro_gateway-donor-submit}}"، معلومات بطاقتك الائتمانيه ستتم معالجتها.',
 	'payflowpro_gateway-credit-storage-processing' => 'نحن لا نخزن معلومات بطاقتك الائتمانيه، وبياناتك الشخصيه معرضه لتوجد <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/ar">وسائل أخرى للتبرع من بينها PayPal والشيكات والبريد</a>.
 <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">سياستنا للخصوصية</a>.',
-	'donate_interface-GBP' => 'GBP: الجنيه الإسترليني',
-	'donate_interface-EUR' => 'EUR: اليورو',
-	'donate_interface-USD' => 'USD: الدولار الأمريكي',
-	'donate_interface-AUD' => 'AUD: الدولار الأسترالي',
-	'donate_interface-CAD' => 'CAD: الدولار الكندي',
-	'donate_interface-JPY' => 'JPY: الين الياباني',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -507,6 +487,8 @@ $messages['be-tarask'] = array(
 	'payflowprogateway' => 'Падтрымаць фундацыю «Вікімэдыя»',
 	'payflowpro_gateway-desc' => 'Апрацоўка крэдытных картак PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Гэта старонка даступна толькі са старонкі ахвяраваньняў.',
+	'payflowpro_gateway-form-message' => 'Выкарыстоўвайце гэтую форму для ахвяраваньня з крэдытнай карткі, ці',
+	'payflowpro_gateway-paypal-button' => 'Ахвяраваць праз PayPal',
 	'payflowpro_gateway-form-message-2' => 'Каб зьмяніць суму ці валюту, вярніцеся на <a href="/index.php?title=Donate">старонку ахвяраваньняў</a>',
 	'payflowpro_gateway-donor-legend' => 'Зьвесткі пра ахвяравальніка',
 	'payflowpro_gateway-card-legend' => 'Інфармацыя пра крэдытную картку',
@@ -568,7 +550,7 @@ $messages['be-tarask'] = array(
 	'payflowpro_gateway-response-125-2' => 'Вашая крэдытная картка ня можа быць пацьверджана. Калі ласка, упэўніцеся што ўся пададзеная інфармацыя супадае з профілем Вашай крэдытнай карткі, альбо паспрабуйце іншую крэдытную картку. Вы можаце паспрабаваць адзін з <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">іншых спосабаў ахвяраваньня</a>, альбо зьвязацца з намі праз <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Дзякуй за Вашую падтрымку.',
 	'payflowpro_gateway-response-default' => 'Пад час апрацоўкі Вашай транзакцыі ўзьнікла памылка.
 Калі ласка, паспрабуйце ізноў пазьней.',
-	'php-response-declined' => 'Ваша транзакцыя была адменена.',
+	'php-response-declined' => 'Ваша транзакцыя ня можа быць прынятая.',
 	'payflowpro_gateway-thankyou' => 'Дзякуй за Вашае ахвяраваньне!',
 	'payflowpro_gateway-post-transaction' => 'Падрабязнасьці пра транзакцыю',
 	'payflowpro_gateway-submit-button' => 'Ахвяраваць',
@@ -582,16 +564,10 @@ $messages['be-tarask'] = array(
 У некаторых выпадках, код знаходзіцца ў левым баку карткі, але заўсёды над нумарам рахунку.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Маеце пытаньні альбо камэнтары? Зьвяртайцеся на <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Апрацоўка інфармацыі па Вашай крэдытнай картцы пачнецца пасьля націску на кнопку «{{int:payflowpro_gateway-donor-submit}}».',
-	'payflowpro_gateway-credit-storage-processing' => 'Існуюць <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">іншыя спосабы зрабіць ахвяраваньне, уключаючы PayPal, чэк ці паштовы перавод</a>.
-Мы не захоўваем інфармацыю пра Вашыя крэдытныя карткі, а Вашыя асабістыя зьвесткі знаходзяцца пад абаронай нашай <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">палітыкі прыватнасьці</a>.',
-	'donate_interface-GBP' => 'GBP: брытанскі фунт',
-	'donate_interface-EUR' => 'EUR: эўра',
-	'donate_interface-USD' => 'USD: даляр ЗША',
-	'donate_interface-AUD' => 'AUD: аўстралійскі даляр',
-	'donate_interface-CAD' => 'CAD: канадзкі даляр',
-	'donate_interface-JPY' => 'JPY: японская ена',
+	'payflowpro_gateway-otherways' => 'Існуюць <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">іншыя спосабы зрабіць ахвяраваньне, уключаючы PayPal, чэк ці паштовы перавод</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Мы не захоўваем інфармацыю пра Вашыя крэдытныя карткі, а Вашыя асабістыя зьвесткі знаходзяцца пад абаронай нашай <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">палітыкі прыватнасьці</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Вашая сэсія скончылася. Калі ласка, паспрабуйце запоўніць і адправіць форму яшчэ раз.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Асабістыя зьвесткі',
+	'payflowpro_gateway-cc-form-header-personal' => 'Плацёжныя зьвесткі',
 	'payflowpro_gateway-cc-form-header-payment' => 'Інфармацыя пра аплату',
 );
 
@@ -602,6 +578,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'payflowprogateway' => 'Подкрепете Уикимедия',
 	'payflowpro_gateway-accessible' => 'Тази страница е достъпна само от страницата за дарение.',
+	'payflowpro_gateway-form-message' => 'Помогнете с кредитната си карта.',
 	'payflowpro_gateway-form-message-2' => 'За да промените сумата или вида валута, върнете се на <a href="/index.php?title=Donate">страницата за дарение</a>',
 	'payflowpro_gateway-donor-legend' => 'Данни за дарителя',
 	'payflowpro_gateway-card-legend' => 'Данни за кредитна карта',
@@ -664,14 +641,7 @@ $messages['bg'] = array(
 	'payflowpro_gateway-submit-button' => 'Даряване',
 	'payflowpro_gateway-question-comment' => 'Уикипедия е проект на Фондация Уикимедия. Имате въпроси или забележки? Свържете се с Фондация Уикимедия: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'След натискане на "{{int:payflowpro_gateway-donor-submit}}", данните от кредитната ви карта ще бъдат обработени.',
-	'payflowpro_gateway-credit-storage-processing' => 'Има и <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">други начини да дарите, включително PayPal, с чек или по пощата</a>.
-Ние не пазим информация за вашата кредитна карта. Личните ви данни са обект на защита от нашата <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">политика за личните данни</a>.',
-	'donate_interface-GBP' => 'GBP: британска лира',
-	'donate_interface-EUR' => 'EUR: евро',
-	'donate_interface-USD' => 'USD: американски долар',
-	'donate_interface-AUD' => 'AUD: австралийски долар',
-	'donate_interface-CAD' => 'CAD: канадски долар',
-	'donate_interface-JPY' => 'JPY: японска йена',
+	'payflowpro_gateway-credit-storage-processing' => 'Ние не пазим информация за вашата кредитна карта. Личните ви данни са обект на защита от нашата <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">политика за личните данни</a>.',
 );
 
 /** Bengali (বাংলা)
@@ -723,6 +693,8 @@ $messages['br'] = array(
 	'payflowprogateway' => 'Harpit Wikimedia',
 	'payflowpro_gateway-desc' => 'Treterezh dre gartenn-gred PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => "N'haller mont d'ar bajenn-mañ nemet dre pajenn an donezonoù",
+	'payflowpro_gateway-form-message' => 'Implijit an daore a-is evit reiñ gant ho kartenn-gred, pe',
+	'payflowpro_gateway-paypal-button' => 'Ober ur prof gant PayPal',
 	'payflowpro_gateway-form-message-2' => 'A-benn cheñch ar sammad pe ar moneiz, distroit da <a href="/index.php?title=Donate">bajenn an donezonoù</a>',
 	'payflowpro_gateway-donor-legend' => 'Titouroù war ar madoberour',
 	'payflowpro_gateway-card-legend' => 'Titouroù war ar gartenn-gred',
@@ -798,16 +770,10 @@ Un heuliad sifroù a ya d'ober ar varrenn sinañ met n'eus nemet an 3 sifr diwez
 A-wezhioù emañ ar c'hod war tu kleiz ar gartenn met atav emañ a-us d'an niverenn-gont.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Goulennoù pe soñjoù ? Darempred: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Goude bezañ kliket war   "{{int:payflowpro_gateway-donor-submit}}", e vo kemeret e kont titouroù ho kartenn-gred.',
-	'payflowpro_gateway-credit-storage-processing' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">Doareoù all zo da reiñ, evel gant PayPal, dre chekenn pe dre lizher</a>.
-Ne viromp ket roadennoù ho kartenn-gred ha gwarezet eo an titouroù personel a resevomp dre hor <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politikerezh pevrezded</a>.',
-	'donate_interface-GBP' => 'GBP : Lur saoz',
-	'donate_interface-EUR' => 'EUR : Euro',
-	'donate_interface-USD' => 'USD : Dollar SUA',
-	'donate_interface-AUD' => 'AUD : Dollar aostralian',
-	'donate_interface-CAD' => 'CAD : Dollar kanadian',
-	'donate_interface-JPY' => 'JPY : Yen Japan',
+	'payflowpro_gateway-otherways' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">Doareoù all zo da reiñ, evel gant PayPal, dre chekenn pe dre lizher</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Ne viromp ket roadennoù ho kartenn-gred ha gwarezet eo an titouroù personel a resevomp dre hor <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politikerezh pevrezded</a>.',
 	'payflowpro_gateway-token-mismatch' => "Ho talc'h a zo deuet d'an termen. Klaskit mar plij da leuniañ ha da gas en-dro ar furmskrid.",
-	'payflowpro_gateway-cc-form-header-personal' => 'Titouroù personel',
+	'payflowpro_gateway-cc-form-header-personal' => 'Titouroù paeañ',
 	'payflowpro_gateway-cc-form-header-payment' => 'Titouroù paeañ',
 );
 
@@ -818,6 +784,8 @@ $messages['bs'] = array(
 	'payflowprogateway' => 'Podržite Wikimediju',
 	'payflowpro_gateway-desc' => 'Procesiranje kreditnih kartica preko PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Ova stranica je dostupna samo sa stranice za donacije.',
+	'payflowpro_gateway-form-message' => 'Koristite obrazac ispod za donaciju vašom kreditnom karticom, ili',
+	'payflowpro_gateway-paypal-button' => 'Donirajte putem PayPal',
 	'payflowpro_gateway-form-message-2' => 'Da biste promijenili iznos ili valutu, vratite se na <a href="/index.php?title=Donate">stranicu za donacije</a>',
 	'payflowpro_gateway-donor-legend' => 'Donatorske informacije',
 	'payflowpro_gateway-card-legend' => 'Informacije o kreditnoj kartici',
@@ -893,16 +861,10 @@ Obićno će panel za potpis imati serijske brojeve, ali samo zadnje tri cifre č
 U nekim slučajevima, kod se nalazi na lijevoj strani kartice, ali je uvijek iznad broja računa.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Pitanja ili komentari? Kontaktirajte: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Nakon što kliknete na "{{int:payflowpro_gateway-donor-submit}}", vaše informacije o kreditnoj kartici će biti obrađene.',
-	'payflowpro_gateway-credit-storage-processing' => 'Ovdje su <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">drugi načini da donirate, uključujući PayPal, ček ili mail</a>.<br />
-Mi ne čuvamo informacije o vašoj kreditnoj kartici a vaši lični podaci su zaštićeni našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pravilima o privatnosti</a>.',
-	'donate_interface-GBP' => 'GBP: Britanska funta',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Američki dolar',
-	'donate_interface-AUD' => 'AUD: Australijski dolar',
-	'donate_interface-CAD' => 'CAD: Kanadski dolar',
-	'donate_interface-JPY' => 'JPY: Japanski jen',
+	'payflowpro_gateway-otherways' => 'Ovdje su <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">drugi načini da donirate, uključujući PayPal, ček ili mail</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Mi ne čuvamo informacije o vašoj kreditnoj kartici a vaši lični podaci su zaštićeni našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pravilima o privatnosti</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Vaša sesija je istekla. Molimo pokušajte ispuniti i poslati obrazac ponovo.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Lične informacije',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informacije o plaćanju',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informacije o plaćanju',
 );
 
@@ -915,6 +877,7 @@ $messages['ca'] = array(
 	'payflowprogateway' => 'Doneu suport a Wikimedia',
 	'payflowpro_gateway-desc' => 'Processament de targetes de crèdit amb PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Aquesta pàgina només és accessible des de la pàgina de donatius.',
+	'payflowpro_gateway-form-message' => 'Contribuïu amb la targeta de crèdit.',
 	'payflowpro_gateway-form-message-2' => 'Per canviar la quantitat o la moneda, torneu a <a href="/index.php?title=Donate">la pàgina de donatius</a>',
 	'payflowpro_gateway-donor-legend' => 'Dades del donant',
 	'payflowpro_gateway-card-legend' => 'Informació de la targeta de crèdit',
@@ -987,14 +950,7 @@ Habitualment el panell de signatura tindrà una sèrie de números, però només
 En alguns casos, el codi es troba al costat esquerre, però sempre per damunt del número de compte.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Preguntes o comentaris? Contacte: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Després de fer clic a «{{int:payflowpro_gateway-donor-submit}}» la informació de la targeta de crèdit serà processada.',
-	'payflowpro_gateway-credit-storage-processing' => 'Hi ha <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">altres maneres de fer donatius, incloent PayPal, xecs, o per correu</a>.<br />
-Nosaltres no emmagatzemem la informació de la targeta de crèdit, i les vostres dades personals estan subjectes a la nostra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privadesa</a>.',
-	'donate_interface-GBP' => 'GBP: Lliura esterlina',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dòlar americà',
-	'donate_interface-AUD' => 'AUD: Dòlar australià',
-	'donate_interface-CAD' => 'CAD: Dòlar canadenc',
-	'donate_interface-JPY' => 'JPY: Ien japonès',
+	'payflowpro_gateway-credit-storage-processing' => 'Nosaltres no emmagatzemem la informació de la targeta de crèdit, i les vostres dades personals estan subjectes a la nostra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privadesa</a>.',
 );
 
 /** Czech (Česky)
@@ -1004,6 +960,8 @@ $messages['cs'] = array(
 	'payflowprogateway' => 'Podpora nadace Wikimedia',
 	'payflowpro_gateway-desc' => 'Zpracování kreditních karet PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Tato stránka je přístupná pouze ze stránky pro přispívání.',
+	'payflowpro_gateway-form-message' => 'Pomocí níže uvedeného formuláře můžete přispět kreditní kartou nebo',
+	'payflowpro_gateway-paypal-button' => 'Darovat prostřednictvím služby PayPal',
 	'payflowpro_gateway-form-message-2' => 'Částku či měnu můžete změnit <a href="/index.php?title=Donate">zpět na přispívací stránce</a>',
 	'payflowpro_gateway-donor-legend' => 'Údaje o dárci',
 	'payflowpro_gateway-card-legend' => 'Údaje o kreditní kartě',
@@ -1065,7 +1023,7 @@ Pro dokončení transakce nás kontaktujte.',
 	'payflowpro_gateway-response-125-2' => 'Vaši kreditní kartu se nepodařilo ověřit. Zkontrolujte, že všechny uvedené informace odpovídají údajům o vaší kartě, nebo zkuste použít jinou kartu. Můžete také využít našich <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">dalších způsobů, jak přispět,</a> nebo nám napište na <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Děkujeme za vaši podporu.',
 	'payflowpro_gateway-response-default' => 'Při zpracovávání vaší transakce došlo k chybě.
 Zkuste to znovu o něco později.',
-	'php-response-declined' => 'Vaše transakce byla zamítnuta.',
+	'php-response-declined' => 'Vaše transakce nemohla být přijata.',
 	'payflowpro_gateway-thankyou' => 'Děkujeme za váš příspěvek!',
 	'payflowpro_gateway-post-transaction' => 'Podrobnosti transakce',
 	'payflowpro_gateway-submit-button' => 'Přispět',
@@ -1079,16 +1037,10 @@ U podpisu zpravidla bývá řada čísel, ale jen tři poslední číslice tvoř
 Někdy bývá kód umístěn na levé straně karty, ale vždy je nad číslem účtu.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Otázky či připomínky? Napište na <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Jakmile kliknete na „{{int:payflowpro_gateway-donor-submit}}“, budou vámi zadané údaje o kreditní kartě zpracovány.',
-	'payflowpro_gateway-credit-storage-processing' => 'Možné jsou <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/cs">jiné způsoby, jak přispět, včetně PayPalu, šeků či pošty</a>.<br />
-Údaje o vaší kreditní kartě neuchováváme a na veškeré osobní údaje se vztahují naše <a href="Donor Privacy Policy">pravidla ochrany soukromí</a>.',
-	'donate_interface-GBP' => 'GBP: Britská libra',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Americký dolar',
-	'donate_interface-AUD' => 'AUD: Australský dolar',
-	'donate_interface-CAD' => 'CAD: Kanadský dolar',
-	'donate_interface-JPY' => 'JPY: Japonský jen',
+	'payflowpro_gateway-otherways' => 'Možné jsou <a href="http://wikimediafoundation.org/wiki/Ways_To_Give/cs">jiné způsoby, jak přispět, včetně PayPalu, šeků či pošty</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Údaje o vaší kreditní kartě neuchováváme a na veškeré osobní údaje se vztahují naše <a href="Donor Privacy Policy">pravidla ochrany soukromí</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Platnost vašeho sezení vypršela. Zkuste prosím znovu formulář vyplnit a odeslat.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Osobní údaje',
+	'payflowpro_gateway-cc-form-header-personal' => 'Údaje o platbě',
 	'payflowpro_gateway-cc-form-header-payment' => 'Údaje o platbě',
 );
 
@@ -1100,6 +1052,7 @@ $messages['cy'] = array(
 	'payflowprogateway' => 'Cefnogwch Wikimedia',
 	'payflowpro_gateway-desc' => 'Prosesu cerdyn credyd gyda PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => "Dim ond o'r dudalen rhoi arian y gellir dod at y dudalen hon.",
+	'payflowpro_gateway-form-message' => "Cyfrannwch atom yma trwy ddefnyddio'ch cerdyn credyd.",
 	'payflowpro_gateway-form-message-2' => 'Os ydych am newid y swm neu\'r math o arian breiniol, ewch yn ôl at y <a href="/index.php?title=Donate">dudalen rhoi</a>.',
 	'payflowpro_gateway-donor-legend' => 'Gwybodaeth am y rhoddwr',
 	'payflowpro_gateway-card-legend' => 'Gwybodaeth am y cerdyn credyd',
@@ -1175,14 +1128,7 @@ Fel arfer mae rhes o rifau yn y blwch arwyddo, ond y tri digid olaf yn unig sydd
 Weithiau, fe welwch y cod ar ochr chwith y cerdyn, ond mae bob amser uwchben rhif y cyfrif.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Oes cwestiynau neu sylwadau gennych? Cysylltwch â Sefydliad Wikimedia: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Caiff manylion eich cerdyn credyd eu prosesu wedi i chi bwyso\'r botwm "{{int:payflowpro_gateway-donor-submit}}".',
-	'payflowpro_gateway-credit-storage-processing' => 'Mae <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ffyrdd eraill o roi i gael, megis PayPal, siec, neu drwy\'r post</a>.<br />
-Nid ydym yn cadw manylion eich cerdyn credyd, ac mae\'ch data personol yn cael ei drin yn ôl gofynion ein <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polisi preifatrwydd</a>.',
-	'donate_interface-GBP' => 'GBP: Punt Prydain',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Doler U.D.A.',
-	'donate_interface-AUD' => 'AUD: Doler Awstralia',
-	'donate_interface-CAD' => 'CAD: Doler Canada',
-	'donate_interface-JPY' => 'JPY: Yen Japan',
+	'payflowpro_gateway-credit-storage-processing' => 'Nid ydym yn cadw manylion eich cerdyn credyd, ac mae\'ch data personol yn cael ei drin yn ôl gofynion ein <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polisi preifatrwydd</a>.',
 	'payflowpro_gateway-token-mismatch' => "Daeth eich sesiwn i ben. Rhowch gynnig arall ar lenwi a chyflwyno'r ffurflen.",
 );
 
@@ -1196,11 +1142,13 @@ Nid ydym yn cadw manylion eich cerdyn credyd, ac mae\'ch data personol yn cael e
  */
 $messages['de'] = array(
 	'payflowprogateway' => 'Wikimedia unterstützen',
-	'payflowpro_gateway-desc' => 'PayPal-Payflow-Pro-Kreditkartenabwicklung',
+	'payflowpro_gateway-desc' => 'Ermöglicht die Spendenabwicklung per „Payflow Pro“ von PayPal oder per Kreditkarte',
 	'payflowpro_gateway-accessible' => 'Diese Seite kann nur über die Spendenseite erreicht werden.',
+	'payflowpro_gateway-form-message' => 'Verwende das untenstehende Formular, um per Kreditkarte zu spenden, oder',
+	'payflowpro_gateway-paypal-button' => 'Spende per PayPal',
 	'payflowpro_gateway-form-message-2' => 'Um den Betrag oder die Währung zu ändern, kannst du zur <a href="/index.php?title=Donate">Spendenseite</a> zurückkehren.',
-	'payflowpro_gateway-donor-legend' => 'Spender-Information',
-	'payflowpro_gateway-card-legend' => 'Kreditkarten-Information',
+	'payflowpro_gateway-donor-legend' => 'Spenderinformationen',
+	'payflowpro_gateway-card-legend' => 'Kreditkarteninformationen',
 	'payflowpro_gateway-amount-legend' => 'Spendenbetrag:',
 	'payflowpro_gateway-cvv-link' => 'Beispiel',
 	'payflowpro_gateway-donor-amount' => 'Betrag:',
@@ -1261,7 +1209,7 @@ Bitte nimm mit uns Kontakt auf, um deine Transaktion abzuschließen.',
 Bitte versuche es später noch einmal.',
 	'php-response-declined' => 'Deine Transaktion konnte nicht akzeptiert werden.',
 	'payflowpro_gateway-thankyou' => 'Vielen Dank für deine Spende!',
-	'payflowpro_gateway-post-transaction' => 'Transaktions-Details',
+	'payflowpro_gateway-post-transaction' => 'Transaktionsdetails',
 	'payflowpro_gateway-submit-button' => 'Spenden',
 	'payflowpro_gateway-cvv-explain' => '<h4>Was ist CVV?</h4>
 <p>Cardholder Verification Value (CVV): Diese drei- oder vierstelligen Nummern helfen festzustellen, ob sich die tatsächliche Karte im Besitz des Kartenhalters befindet. Dies hilft bei der Verhinderung unautorisierter oder betrügerischer Verwendung.</p>
@@ -1273,16 +1221,10 @@ In manchen Fällen befindet sich der Code auf der linken Seite der Karte, jedoch
 </p><br />',
 	'payflowpro_gateway-question-comment' => 'Fragen oder Kommentare? E-Mail-Kontakt: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Nach dem Klick auf „{{int:payflowpro_gateway-donor-submit}}“ werden deine Kreditkarteninformationen verarbeitet.',
-	'payflowpro_gateway-credit-storage-processing' => 'Es gibt auch <a href="http://wikimediafoundation.org/wiki/Donate/Ways_to_Give/en">andere Wege zu Spenden, einschließlich PayPal, Scheck oder Überweisung</a>.
-Wir speichern deine Kreditkarteninformationen nicht, und deine persönlichen Daten unterliegen unseren <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Datenschutzbestimmungen</a>.',
-	'donate_interface-GBP' => 'GBP: Britisches Pfund',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: US-Dollar',
-	'donate_interface-AUD' => 'AUD: Australischer Dollar',
-	'donate_interface-CAD' => 'CAD: Kanadischer Dollar',
-	'donate_interface-JPY' => 'JPY: Japanischer Yen',
+	'payflowpro_gateway-otherways' => 'Es gibt auch <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/de">andere Wege zum Spenden, inklusive PayPal, Scheck oder Überweisung</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Wir speichern deine Kreditkarteninformationen nicht, und deine persönlichen Daten unterliegen unseren <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Datenschutzbestimmungen</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Deine Sitzung ist inzwischen abgelaufen. Bitte fülle das Formular erneut aus und sende es nochmals ab.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Persönliche Informationen',
+	'payflowpro_gateway-cc-form-header-personal' => 'Zahlungsinformationen',
 	'payflowpro_gateway-cc-form-header-payment' => 'Zahlungsinformationen',
 );
 
@@ -1291,6 +1233,7 @@ Wir speichern deine Kreditkarteninformationen nicht, und deine persönlichen Dat
  * @author Kghbln
  */
 $messages['de-formal'] = array(
+	'payflowpro_gateway-form-message' => 'Verwenden Sie das untenstehende Formular, um per Kreditkarte zu spenden, oder',
 	'payflowpro_gateway-form-message-2' => 'Um den Betrag oder die Währung zu ändern, können Sie zur <a href="/index.php?title=Donate">Spendenseite</a> zurückkehren.',
 	'payflowpro_gateway-error-msg-email' => '** Bitte geben Sie eine gültige E-Mail-Adresse ein **',
 	'payflowpro_gateway-error-msg-amex' => '** Bitte geben Sie eine korrekte American-Express-Kartennummer ein **',
@@ -1317,8 +1260,7 @@ Bitte versuchen Sie es später noch einmal.',
 	'php-response-declined' => 'Ihre Transaktion konnte nicht akzeptiert werden.',
 	'payflowpro_gateway-thankyou' => 'Vielen Dank für Ihre Spende!',
 	'payflowpro_gateway-donate-click' => 'Nach dem Klick auf „{{int:payflowpro_gateway-donor-submit}}“ werden Ihre Kreditkarteninformationen verarbeitet.',
-	'payflowpro_gateway-credit-storage-processing' => 'Es gibt auch <a href="http://wikimediafoundation.org/wiki/Donate/Ways_to_Give/en">andere Wege zu Spenden, einschließlich PayPal, Scheck oder Überweisung</a>.
-Wir speichern Ihre Kreditkarteninformationen nicht, und Ihre persönlichen Daten unterliegen unseren <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Datenschutzbestimmungen</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Wir speichern Ihre Kreditkarteninformationen nicht, und Ihre persönlichen Daten unterliegen unseren <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Datenschutzbestimmungen</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Ihre Sitzung ist inzwischen abgelaufen. Bitte füllen Sie das Formular erneut aus und senden Sie es nochmals ab.',
 );
 
@@ -1330,6 +1272,7 @@ $messages['diq'] = array(
 	'payflowprogateway' => 'Wikimediya rê destek bide',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro prosesa kardê krediyi',
 	'payflowpro_gateway-accessible' => 'Ena pela teyna pelê bexş kerdişi ra a beno.',
+	'payflowpro_gateway-form-message' => 'Pê kardê krediyê xo bexş bike',
 	'payflowpro_gateway-form-message-2' => 'Eka ti wazenê dowiz ya zi bexş xo bivurne,  <a href="/index.php?title=Donate">the donation page</a> ra peyser şi',
 	'payflowpro_gateway-donor-legend' => 'Enformasyonê bexş dayogi',
 	'payflowpro_gateway-card-legend' => 'Enformasyonê Kard ê Krediti',
@@ -1403,12 +1346,6 @@ Ma rica kenê reyna dest bi bike.',
 <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Klik ra tepiya "{{int:payflowpro_gateway-donor-submit}}", mıameley enformasyonê karta krediyê şıma beno.',
 	'payflowpro_gateway-credit-storage-processing' => 'Ma melumatê karta krediyê şıma qeyd nêkenime, u melumatê şımawo şexsi bınê idarey <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privacy policy</a>ê ma dero.',
-	'donate_interface-GBP' => 'GBP: Poundê Ingilizi',
-	'donate_interface-EUR' => 'EUR: Ewro',
-	'donate_interface-USD' => 'USD: Dolarê Emerikayi',
-	'donate_interface-AUD' => 'AUD: Dolarê Awistralyayi',
-	'donate_interface-CAD' => 'CAD: Dolarê Kanadayi',
-	'donate_interface-JPY' => 'JPY: Yenê Japoni',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1418,6 +1355,7 @@ $messages['dsb'] = array(
 	'payflowprogateway' => 'Wikimediju pódprěś',
 	'payflowpro_gateway-desc' => 'Pśeźěłowanje kreditoweje kórty PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Toś ten bok jo jano wót bok darow pśistupny.',
+	'payflowpro_gateway-form-message' => 'Pśinosuj ze swójeju kreditoweju kórtu.',
 	'payflowpro_gateway-form-message-2' => 'Aby změnił sumu abo pjenjeze, wroś se k <a href="/index.php?title=Donate">bokoju darow</a>',
 	'payflowpro_gateway-donor-legend' => 'Informacije wó darje',
 	'payflowpro_gateway-card-legend' => 'Informacije wó kreditowej kórśe',
@@ -1493,14 +1431,7 @@ Typiski pódpismowy wobcerk změjo rědy numerow, ale jano slědne tśi městna 
 Wótergi kod jo na lěwem boku kórty, ale jo pśecej wušej kontowego numera.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipedija jo projekt załožby Wikimedia Foundation. Pšašanja abo komentary? Staj se ze załožbu Wikimedia Foundation do zwiska: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Pó kliknjenju na "{{int:payflowpro_gateway-donor-submit}}", budu se informacije twójeje kreditneje kórty pśeźěłowaś.',
-	'payflowpro_gateway-credit-storage-processing' => 'Su <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">druge pósćiwańske móžnosći, na pś. PayPal, šek abo post</a>.
-Njeskładujomy informacije twójeje kreditneje kórty a twóje wósobinske daty pódlaže našym <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pšawidłam priwatnosći</a>.',
-	'donate_interface-GBP' => 'GBP. Britiski punt',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: US-dollar',
-	'donate_interface-AUD' => 'AUD: Awstralski dollar',
-	'donate_interface-CAD' => 'CAD: Kanadiski dollar',
-	'donate_interface-JPY' => 'JPY: Japański yen',
+	'payflowpro_gateway-credit-storage-processing' => 'Njeskładujomy informacije twójeje kreditneje kórty a twóje wósobinske daty pódlaže našym <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pšawidłam priwatnosći</a>.',
 );
 
 /** Greek (Ελληνικά)
@@ -1553,12 +1484,6 @@ $messages['el'] = array(
 	'payflowpro_gateway-response-126' => 'Εκκρεμεί έγκριση της συναλλαγής σας.',
 	'payflowpro_gateway-response-4' => 'Άκυρο ποσό.',
 	'payflowpro_gateway-submit-button' => 'Δώρησε',
-	'donate_interface-GBP' => 'GBP: Βρετανική λίρα',
-	'donate_interface-EUR' => 'EUR: Ευρώ',
-	'donate_interface-USD' => 'USD: Δολάριο Η.Π.Α.',
-	'donate_interface-AUD' => 'AUD: Δολάριο Αυστραλίας',
-	'donate_interface-CAD' => 'CAD: Δολάριο Καναδά',
-	'donate_interface-JPY' => 'JPY: Ιαπωνικό Γεν',
 );
 
 /** British English (British English)
@@ -1586,6 +1511,7 @@ $messages['eo'] = array(
 	'payflowprogateway' => 'Subtenu Vikimedion',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kreditkcarta proceso',
 	'payflowpro_gateway-accessible' => 'Ĉi tiu paĝo estas alirebla nur el la donacpaĝo.',
+	'payflowpro_gateway-form-message' => 'Kontribuu per via kreditkarto.',
 	'payflowpro_gateway-form-message-2' => 'Por ŝanĝi monsumon aŭ valuton, bonvolu reiri al <a href="/index.php?title=Donate">la donacpaĝo</a>',
 	'payflowpro_gateway-donor-legend' => 'Informoj pri la donacanto',
 	'payflowpro_gateway-card-legend' => 'Informoj pri la kreditkarto',
@@ -1659,14 +1585,7 @@ Ofte la nomskrib-panelo havas serion de numeroj, sed nur la lastaj tri ciferojs 
 Iufoje, la kodo estas lokata maldekstre, sed ĝi ĉiam estas super la kontnumero.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Vikipedio estas projekto de la Fondaĵo Wikimedia. Ĉu demandoj aŭ komentoj? Kontaktu la Fondaĵo Wikimedia: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Post klakante "{{int:payflowpro_gateway-donor-submit}}", via kreditkarta informo estos traktata.',
-	'payflowpro_gateway-credit-storage-processing' => 'Estas <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/eo">aliaj rimedoj por donaci, inkluzive Paypal, ĉekojn kaj retmesaĝojn</a>.
-Ni ne tenos informon pri via kreditkaro, kaj via personaj datenoj estas regulita de nia <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">regularo pri privateco</a>.',
-	'donate_interface-GBP' => 'GBP: Brita pundo',
-	'donate_interface-EUR' => 'EUR: Eŭro',
-	'donate_interface-USD' => 'USD: Usona dolaro',
-	'donate_interface-AUD' => 'AUD: Aŭstralia dolaro',
-	'donate_interface-CAD' => 'CAD: Kanada dolaro',
-	'donate_interface-JPY' => 'JPY: Japana eno',
+	'payflowpro_gateway-credit-storage-processing' => 'Ni ne tenos informon pri via kreditkaro, kaj via personaj datenoj estas regulita de nia <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">regularo pri privateco</a>.',
 );
 
 /** Spanish (Español)
@@ -1675,6 +1594,7 @@ Ni ne tenos informon pri via kreditkaro, kaj via personaj datenoj estas regulita
  * @author Dferg
  * @author Diego Grez
  * @author Drini
+ * @author Locos epraix
  * @author MisterWiki
  * @author Translationista
  */
@@ -1682,6 +1602,8 @@ $messages['es'] = array(
 	'payflowprogateway' => 'Apoya Wikimedia',
 	'payflowpro_gateway-desc' => 'Procesando tarjeta de crédito PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Esta página es sólo accesible desde la página de donaciones.',
+	'payflowpro_gateway-form-message' => 'Utilice el siguiente formulario para donar con tarjeta de crédito, o',
+	'payflowpro_gateway-paypal-button' => 'Dona a través de PayPal',
 	'payflowpro_gateway-form-message-2' => 'Para cambiar monto o moneda, regrese a la <a href="/index.php?title=Donate">página de donación</a>',
 	'payflowpro_gateway-donor-legend' => 'Datos del donante:',
 	'payflowpro_gateway-card-legend' => 'Datos de la tarjeta de crédito:',
@@ -1742,7 +1664,7 @@ Por favor contáctanos para continuar la transacción.',
 	'payflowpro_gateway-response-125-2' => 'Tu tarjeta de crédito no pudo ser validada. Por favor verifique que toda la información dada coincide con tu perfil de tarjeta de crédito, o prueba con una tarjeta diferente. Puedes usar también una de nuestras <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">otras formas de dar</a> o contactarnos a <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Gracias por tu apoyo.',
 	'payflowpro_gateway-response-default' => 'Hubo un error procesando tu transacción.
 Por favor intente mas tarde.',
-	'php-response-declined' => 'Tu transacción ha sido rechazada.',
+	'php-response-declined' => 'Su transacción no puede ser aceptada.',
 	'payflowpro_gateway-thankyou' => 'Gracias por tu donación!',
 	'payflowpro_gateway-post-transaction' => 'Detalles de la transacción',
 	'payflowpro_gateway-submit-button' => 'Donar',
@@ -1756,14 +1678,7 @@ Típicamente el panel de firma tendra una serie de números, pero sólo los últ
 En algunas ocasiones, el código se encuentra en la parte izquierda de la tarjeta, pero esta siempre sobre el número de cuenta.</p><br />',
 	'payflowpro_gateway-question-comment' => '¿Preguntas o comentarios? Contacto: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Después de que cliquees "{{int:payflowpro_gateway-donor-submit}}", tu información de tu tarjeta de crédito será procesada.',
-	'payflowpro_gateway-credit-storage-processing' => 'Aquí hay <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">otras formas de aportar, incluyendo PayPal, cheque o mail</a>.
-Nosotros no guardamos tu información de tarjeta de crédito, y tus datos personales están sujetos a nuestra <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">política de privacidad</a>.',
-	'donate_interface-GBP' => 'GBP: Libra esterlina',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dólar estadounidense',
-	'donate_interface-AUD' => 'AUD: Dólar australiano',
-	'donate_interface-CAD' => 'CAD: Dólar canadiense',
-	'donate_interface-JPY' => 'JPY: Yen japonés',
+	'payflowpro_gateway-credit-storage-processing' => 'Nosotros no guardamos tu información de tarjeta de crédito, y tus datos personales están sujetos a nuestra <a href="http://wikimediafoundation.org/wiki/Política_de_privacidad_para_donantes">política de privacidad</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Tu sesión ha expirado. Intente llenar y enviar el formulario otra vez.',
 );
 
@@ -1774,6 +1689,7 @@ Nosotros no guardamos tu información de tarjeta de crédito, y tus datos person
 $messages['et'] = array(
 	'payflowprogateway' => 'Wikimedia toetamine',
 	'payflowpro_gateway-accessible' => 'See lehekülg on ligipääsetav ainult annetuslehekülje kaudu.',
+	'payflowpro_gateway-form-message' => 'Kasuta allolevat vormi krediitkaardiga annetamiseks või',
 	'payflowpro_gateway-form-message-2' => 'Summa või vääringu muutmiseks naase <a href="/index.php?title=Donate">annetusleheküljele</a>.',
 	'payflowpro_gateway-donor-legend' => 'Annetaja info',
 	'payflowpro_gateway-card-legend' => 'Krediitkaardi info',
@@ -1827,20 +1743,13 @@ Aitäh annetamast.',
 	'payflowpro_gateway-response-112' => 'Aadress või turvakood on vale.',
 	'payflowpro_gateway-response-default' => 'Sinu ülekande töötlemisel tekkis viga.
 Palun ürita hiljem uuesti.',
-	'php-response-declined' => 'Sinu ülekanne on tagasi lükatud.',
+	'php-response-declined' => 'Sinu ülekannet ei saa vastu võtta.',
 	'payflowpro_gateway-thankyou' => 'Täname Sind annetuse eest!',
 	'payflowpro_gateway-post-transaction' => 'Ülekande üksikasjad',
 	'payflowpro_gateway-submit-button' => 'Anneta',
 	'payflowpro_gateway-question-comment' => 'Küsimusi või kommentaare? Võta ühendust: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Kui oled klõpsanud "{{int:payflowpro_gateway-donor-submit}}", lähevad su krediitkaardiandmed käiku.',
-	'payflowpro_gateway-credit-storage-processing' => 'Samuti on võimalik <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">annetada PayPali abil, tšekiga või e-kirja teel</a>.<br />
-Me ei talleta sinu krediitkaardiandmeid ja sinu isiklike andmete kasutamine on piiratud meie <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privaatsuspõhimõtetega</a>.',
-	'donate_interface-GBP' => 'GBP: Suurbritannia naelsterling',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: USA dollar',
-	'donate_interface-AUD' => 'AUD: Austraalia dollar',
-	'donate_interface-CAD' => 'CAD: Kanada dollar',
-	'donate_interface-JPY' => 'JPY: Jaapani jeen',
+	'payflowpro_gateway-credit-storage-processing' => 'Me ei talleta sinu krediitkaardiandmeid ja sinu isiklike andmete kasutamine on piiratud meie <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privaatsuspõhimõtetega</a>.',
 );
 
 /** Basque (Euskara)
@@ -1892,12 +1801,6 @@ $messages['eu'] = array(
 	'payflowpro_gateway-response-4' => 'Kopuru okerra.',
 	'payflowpro_gateway-thankyou' => 'Mileser zure dohaintzagatik!',
 	'payflowpro_gateway-submit-button' => 'Dohaintza egin',
-	'donate_interface-GBP' => 'GBP: Britainiar libra',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Estatubatuar dolar',
-	'donate_interface-AUD' => 'AUD: Australiar dolar',
-	'donate_interface-CAD' => 'CAD: Kanadiar dolar',
-	'donate_interface-JPY' => 'JPY: Japoniar yen',
 );
 
 /** Persian (فارسی)
@@ -1909,6 +1812,7 @@ $messages['fa'] = array(
 	'payflowprogateway' => 'حمایت از ویکی‌مدیا',
 	'payflowpro_gateway-desc' => 'پردازش کارت اعتباری PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'این صفحه تنها از صفحهٔ کمک مالی قابل‌دسترس است.',
+	'payflowpro_gateway-form-message' => 'شرکت کردن بوسیله کارت اعتباری شما.',
 	'payflowpro_gateway-form-message-2' => 'برای تغییر مقدار یا نرخ، به <a href="/index.php?title=Donate">صفحه اهدا</a> بازگردید.',
 	'payflowpro_gateway-donor-legend' => 'اطلاعات هدیه‌کننده',
 	'payflowpro_gateway-card-legend' => 'اطلاعات کارت اعتباری',
@@ -1983,14 +1887,7 @@ $messages['fa'] = array(
 در برخی موارد، کد در سمت چپ کارت قرار دارد، اما همواره در بالای شمارهٔ حساب است.</p><br />',
 	'payflowpro_gateway-question-comment' => 'ویکی‌پدیا پروژه‌ای از بنیاد ویکی‌مدیاست. پرسش‌ها یا نظرها؟ با بنیاد ویکی‌مدیا تماس بگیرید: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'پس از کلیک بر «{{int:payflowpro_gateway-donor-submit}}»، اطلاعات کارت اعتباری شما پردازش خواهد شد.',
-	'payflowpro_gateway-credit-storage-processing' => 'آنجا هست <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">راههای دیگر دریافت وجه، شامل استفاده از پای‌پل، علامت‌گذاری و یا رایانامه</a>
-ما اطلاعات کارت اعتباری شما را ذخیره نمی‌کنیم، و اطلاعات خصوصی شما موضوع <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">سیاست حفظ اسرار</a> ماست.',
-	'donate_interface-GBP' => 'GBP: پوند انگلیس',
-	'donate_interface-EUR' => 'EUR: یورو',
-	'donate_interface-USD' => 'USD: دلار آمریکا',
-	'donate_interface-AUD' => 'AUD: دلار استرالیا',
-	'donate_interface-CAD' => 'CAD: دلار کانادا',
-	'donate_interface-JPY' => 'JPY: ین ژاپن',
+	'payflowpro_gateway-credit-storage-processing' => 'ما اطلاعات کارت اعتباری شما را ذخیره نمی‌کنیم، و اطلاعات خصوصی شما موضوع <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">سیاست حفظ اسرار</a> ماست.',
 	'payflowpro_gateway-token-mismatch' => 'نشست شما منقضی شده است. لطفا با پر کردن و ارسال فرم، دوباره سعی کنید.',
 );
 
@@ -2003,6 +1900,7 @@ $messages['fi'] = array(
 	'payflowprogateway' => 'Tue Wikimediaa',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro -luottokorttikäsittely.',
 	'payflowpro_gateway-accessible' => 'Tämä sivu on käytettävissä vain lahjoitussivulta.',
+	'payflowpro_gateway-form-message' => 'Osallistu luottokortillasi.',
 	'payflowpro_gateway-form-message-2' => 'Muuttaaksesi summaa tai valuuttaa, palaa <a href="/index.php?title=Donate">lahjoitussivulle</a>',
 	'payflowpro_gateway-donor-legend' => 'Lahjoittajan tiedot',
 	'payflowpro_gateway-card-legend' => 'Luottokortin tiedot',
@@ -2076,14 +1974,7 @@ Tyypillisesti allekirjoitusalueella on sarja numeroita, mutta vain kolme viimeis
 Joissain tapauksissa numero sijaitsee kortin vasemmalla puolella, mutta se on aina tilinumeron yläpuolella.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipedia on Wikimedia Foundationin hanke. Kysymyksiä tai kommentteja? Ota yhteyttä Wikimedia Foundationiin: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Luottokorttitietosi käsitellään sen jälkeen, kun napsautat ”{{int:payflowpro_gateway-donor-submit}}”.',
-	'payflowpro_gateway-credit-storage-processing' => 'On myös <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">muita tapoja antaa, mm. PayPal, šekki tai posti</a>.
-Emme tallenna luottokorttitietoja, ja henkilökohtaisia tietojasi suojaavat <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">tietoturvaperiaatteemme</a>.',
-	'donate_interface-GBP' => 'GBP: Englannin punta',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Yhdysvaltain dollari',
-	'donate_interface-AUD' => 'AUD: Australian dollari',
-	'donate_interface-CAD' => 'CAD: Kanadan dollari',
-	'donate_interface-JPY' => 'JPY: Japanin jeni',
+	'payflowpro_gateway-credit-storage-processing' => 'Emme tallenna luottokorttitietoja, ja henkilökohtaisia tietojasi suojaavat <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">tietoturvaperiaatteemme</a>.',
 );
 
 /** French (Français)
@@ -2092,11 +1983,14 @@ Emme tallenna luottokorttitietoja, ja henkilökohtaisia tietojasi suojaavat <a h
  * @author IAlex
  * @author Peter17
  * @author PieRRoMaN
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'payflowprogateway' => 'Soutenez Wikimedia',
 	'payflowpro_gateway-desc' => 'Traitement par carte de crédit PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => "Cette page n'est accessible que depuis la page de donation.",
+	'payflowpro_gateway-form-message' => 'Utilisez le formulaire ci-dessous pour donner avec une carte de crédit, ou bien',
+	'payflowpro_gateway-paypal-button' => 'Faire un don avec PayPal',
 	'payflowpro_gateway-form-message-2' => 'Pour changer le montant ou la devise, retournez à <a href="/index.php?title=Donate">la page de donation</a>',
 	'payflowpro_gateway-donor-legend' => 'Informations sur le donateur',
 	'payflowpro_gateway-card-legend' => 'Informations sur la carte de crédit',
@@ -2158,7 +2052,7 @@ Veuillez nous contacter pour poursuivre votre transaction.',
 	'payflowpro_gateway-response-125-2' => 'Votre carte bancaire n\'a pas pu être validée. Veuillez vérifier que les informations fournies correspondent au profil de votre carte bancaire, ou essayez avec une autre carte. Vous pouvez aussi utiliser d\'<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">autres solutions pour faire un don</a> ou nous contacter à l\'adresse <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Nous vous remercions de votre soutien.',
 	'payflowpro_gateway-response-default' => 'Une erreur est survenue lors du traitement de votre transaction.
 Veuillez réessayer plus tard.',
-	'php-response-declined' => 'Votre transaction a été déclinée.',
+	'php-response-declined' => 'Votre transaction n’a pu être acceptée.',
 	'payflowpro_gateway-thankyou' => 'Merci pour votre don !',
 	'payflowpro_gateway-post-transaction' => 'Détails de la transaction',
 	'payflowpro_gateway-submit-button' => 'Faire un don',
@@ -2171,17 +2065,11 @@ Typiquement, la barre pour la signature contient une série de nombres, mais seu
 <p>Le code est <i>toujours</i> suité <i>au-dessus</i> du numéro de compte surélevé au recto de la carte.
 Dans certains cas, le code est situé sur le côté gauche de la carte, mais il est toujours au-dessus du numéro de compte.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Questions ou commentaires ? Contact : <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
-	'payflowpro_gateway-donate-click' => 'Après avoir cliqué sur le bouton « Faire un don », les informations de votre carte de crédit seront traitées.',
-	'payflowpro_gateway-credit-storage-processing' => 'Il ya <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">d\'autres façons de donner, y compris PayPal, chèque, ou par courrier</a>. <br />
-Nous ne stockons pas vos informations de carte de crédit et vos données personnelles sont soumises à notre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politique de confidentialité</a> .',
-	'donate_interface-GBP' => 'GBP : livre sterling',
-	'donate_interface-EUR' => 'EUR : euro',
-	'donate_interface-USD' => 'USD : dollar américain',
-	'donate_interface-AUD' => 'AUD : dollar australien',
-	'donate_interface-CAD' => 'CAD : dollar canadien',
-	'donate_interface-JPY' => 'JPY : yen japonais',
+	'payflowpro_gateway-donate-click' => 'Après avoir cliqué sur le bouton « {{int:payflowpro_gateway-donor-submit}} », les informations de votre carte de crédit seront traitées.',
+	'payflowpro_gateway-otherways' => 'Il y a <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/fr">d’autres moyens de donner, notamment par PayPal, par chèque ou par courrier postal</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Nous ne stockons pas vos informations de carte de crédit et vos données personnelles sont soumises à notre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politique de confidentialité</a> .',
 	'payflowpro_gateway-token-mismatch' => 'Votre session a expiré. Veuillez essayer de remplir et d’envoyer à nouveau le formulaire.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Informations personnelles',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informations de facturation',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informations de paiement',
 );
 
@@ -2192,6 +2080,7 @@ $messages['frp'] = array(
 	'payflowprogateway' => 'Sotegnéd Wikimedia',
 	'payflowpro_gateway-desc' => 'Trètament per cârta de crèdit PayPal Payflow Pro.',
 	'payflowpro_gateway-accessible' => 'Ceta pâge est accèssibla ren que dês la pâge de donacion.',
+	'payflowpro_gateway-form-message' => 'Utilisâd lo formulèro ce-desot por balyér avouéc una cârta de crèdit, ou ben',
 	'payflowpro_gateway-form-message-2' => 'Por changiér lo montent ou ben la monéya, tornâd a la <a href="/index.php?title=Donate">pâge de donacion</a>',
 	'payflowpro_gateway-donor-legend' => 'Enformacions sur lo donator',
 	'payflowpro_gateway-card-legend' => 'Enformacions sur la cârta de crèdit',
@@ -2249,20 +2138,13 @@ Vos volyéd veriér vers nos por porsiuvre voutra transaccion.',
 	'payflowpro_gateway-response-125' => 'Voutra transaccion at étâ refusâ per los Sèrviços de prèvencion de les frôdes.',
 	'payflowpro_gateway-response-default' => 'Una èrror est arrevâ pendent lo trètament de voutra transaccion.
 Volyéd tornar èprovar pués aprés.',
-	'php-response-declined' => 'Voutra transaccion pôt pas étre accèptâ.',
+	'php-response-declined' => 'Voutra transaccion at pas possu étre accèptâ.',
 	'payflowpro_gateway-thankyou' => 'Grant-marci por voutron don !',
 	'payflowpro_gateway-post-transaction' => 'Dètalys de la transaccion',
 	'payflowpro_gateway-submit-button' => 'Balyér',
 	'payflowpro_gateway-question-comment' => 'Quèstions ou ben comentèros ? Veriéd-vos vers : <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Aprés avêr clicâ dessus « {{int:payflowpro_gateway-donor-submit}} », les enformacions de voutra cârta de crèdit seront trètâs.',
-	'payflowpro_gateway-credit-storage-processing' => 'Y at d’<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ôtres façons de balyér, per PayPal, per ch·èque ou ben per pôsta avouéc</a>.<br />
-Nos encartens pas voutres enformacions de cârta de crèdit, et pués voutres balyês a sè sont somêses a noutra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidencialitât</a>.',
-	'donate_interface-GBP' => 'GBP : livra stèrlingue',
-	'donate_interface-EUR' => 'EUR : erô',
-	'donate_interface-USD' => 'USD : dolar amèriquen',
-	'donate_interface-AUD' => 'AUD : dolar ôstralien',
-	'donate_interface-CAD' => 'CAD : dolar canadien',
-	'donate_interface-JPY' => 'JPY : yène j·aponês',
+	'payflowpro_gateway-credit-storage-processing' => 'Nos encartens pas voutres enformacions de cârta de crèdit, et pués voutres balyês a sè sont somêses a noutra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidencialitât</a>.',
 );
 
 /** Irish (Gaeilge)
@@ -2280,6 +2162,8 @@ $messages['gl'] = array(
 	'payflowprogateway' => 'Apoia a Wikimedia',
 	'payflowpro_gateway-desc' => 'Procesamento por tarxeta de crédito PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Esta páxina só é accesible a través da páxina de doazóns.',
+	'payflowpro_gateway-form-message' => 'Use o formulario que aparece a continuación para doar mediante tarxeta de crédito ou',
+	'payflowpro_gateway-paypal-button' => 'Doe mediante o PayPal',
 	'payflowpro_gateway-form-message-2' => 'Para cambiar a cantidade ou a moeda, volve á <a href="/index.php?title=Donate">páxina de doazóns</a>',
 	'payflowpro_gateway-donor-legend' => 'Información do doante',
 	'payflowpro_gateway-card-legend' => 'Información da tarxeta de crédito',
@@ -2355,16 +2239,10 @@ Normalmente, a zona da sinatura ten unha serie de números, pero só os tres úl
 Nalgunhas ocasións, o código está localizado no lado esquerdo da tarxeta, pero está sempre por riba do número de conta.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Tes algunha pregunta ou comentario? Ponte en contacto: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Despois de premeres en "{{int:payflowpro_gateway-donor-submit}}", procesarase a información da túa tarxeta de crédito.',
-	'payflowpro_gateway-credit-storage-processing' => 'Existen outros <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">xeitos de doar, incluíndo o PayPal, os cheques ou o correo postal</a>.<br />
-Non gardamos información da túa tarxeta de crédito, e os teus datos persoais están suxeitos á nosa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de protección de datos</a>.',
-	'donate_interface-GBP' => 'GBP: libra esterlina',
-	'donate_interface-EUR' => 'EUR: euro',
-	'donate_interface-USD' => 'USD: dólar estadounidense',
-	'donate_interface-AUD' => 'AUD: dólar australiano',
-	'donate_interface-CAD' => 'CAD: dólar canadense',
-	'donate_interface-JPY' => 'JPY: ien xaponés',
+	'payflowpro_gateway-otherways' => 'Existen outros <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">xeitos de doar, incluíndo o PayPal, os cheques ou o correo postal</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Non gardamos información da túa tarxeta de crédito, e os teus datos persoais están suxeitos á nosa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de protección de datos</a>.',
 	'payflowpro_gateway-token-mismatch' => 'A súa sesión caducou. Intente encher e enviar o formulario de novo.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Información persoal',
+	'payflowpro_gateway-cc-form-header-personal' => 'Información de facturación',
 	'payflowpro_gateway-cc-form-header-payment' => 'Información do pagamento',
 );
 
@@ -2375,6 +2253,8 @@ $messages['gsw'] = array(
 	'payflowprogateway' => 'Wikimedia unterstitze',
 	'payflowpro_gateway-desc' => 'Kreditcharte verwände iber PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Uf die Syte cha mer nume uus zuegryfe vu dr Spändesyte.',
+	'payflowpro_gateway-form-message' => 'Nimm des Formular do unte zum Spände per Kreditcharte oder',
+	'payflowpro_gateway-paypal-button' => 'Spänden iber PayPal',
 	'payflowpro_gateway-form-message-2' => 'Go d Hechi oder d Währig vum Betrag ändere, gang zruck uf <a href="/index.php?title=Donate">d Spändesyte</a>',
 	'payflowpro_gateway-donor-legend' => 'Spänderinformation',
 	'payflowpro_gateway-card-legend' => 'Kreditcharteninformation',
@@ -2436,7 +2316,7 @@ Bitte nimm Kontakt zuen is uf go Dyy Transaktio wyterfiere.',
 	'payflowpro_gateway-response-125-2' => 'Dyy Kreditcharte het nit chenne validert wäre. Bitte iberprief, eb alli Infomatione, wu Du aagee hesch, zue Dyyre Kreditcharte passe oder versuech s mit ere andre Charte. Du chasch au ne <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">andre Wäg ebis z spände</a> versueche oder nimm Kontakt uf zue uns iber <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Dankschen fir Dyy Unterstitzig.',
 	'payflowpro_gateway-response-default' => 'S het e Fähler gee bi dr Uusfierig vu Dyyre Transaktion.
 Bitte versuech s speter nonemol.',
-	'php-response-declined' => 'Dyy Transaktion isch abbroche wore.',
+	'php-response-declined' => 'Dyy Transaktion het nit chenne akzäptiert wäre.',
 	'payflowpro_gateway-thankyou' => 'Dankschen fir Dyyni Spände!',
 	'payflowpro_gateway-post-transaction' => 'Transaktions-Detail',
 	'payflowpro_gateway-submit-button' => 'Spände',
@@ -2450,16 +2330,10 @@ Normalerwyys het s im Unterschriftechäschtli e paar Zahle, aber nume di letscht
 In e Teil Fäll stoht dr Code uf dr lionke Syte vu dr Charte, aber alliwyl iber dr Kontonummere. </p><br />',
 	'payflowpro_gateway-question-comment' => 'Froge oder Kommentar? E-Mail-Kontakt: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Wänn du uf „Spände“ druckt hesch, wäre d Date vu Dyyre Kreditcharte verarbeitet.',
-	'payflowpro_gateway-credit-storage-processing' => 'S git au <a href="http://wikimediafoundation.org/wiki/Donate/Ways_to_Give/en">anderi Wäg zue Spände, mitsamt PayPal, Scheck oder Iberwyysig</a>.
-Mir spyychere Dyyni Kreditcharteninformatione nit, un Dyy persenligi Date unterlige unsere <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Dateschutzbstimmige</a>.',
-	'donate_interface-GBP' => 'GBP: Britischi Pfund',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Amerikanischi Dollar',
-	'donate_interface-AUD' => 'AUD: Auschtralischi Dollar',
-	'donate_interface-CAD' => 'CAD: Kanadischi Dollar',
-	'donate_interface-JPY' => 'JPY: Japanischi Yen',
+	'payflowpro_gateway-otherways' => 'S git au <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/de">anderi Wäg zum Spände, inklusive PayPal, Scheck oder Iberwyysig</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Mir spyychere Dyyni Kreditcharteninformatione nit, un Dyy persenligi Date unterlige unsere <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Dateschutzbstimmige</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Dyy Sitzig isch abglofe. Bitte fill s Formular nomol uus un schick s nomol ab.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Informatione zue dr Person',
+	'payflowpro_gateway-cc-form-header-personal' => 'Zahligsinformatione',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informatione zue dr Zahlig',
 );
 
@@ -2470,6 +2344,7 @@ Mir spyychere Dyyni Kreditcharteninformatione nit, un Dyy persenligi Date unterl
 $messages['he'] = array(
 	'payflowprogateway' => 'הבעת תמיכה בוויקימדיה',
 	'payflowpro_gateway-accessible' => 'דף זה נגיש אך ורק דרך דף התרומה.',
+	'payflowpro_gateway-form-message' => 'תרומות מאובטחות באמצעות כרטיס אשראי.',
 	'payflowpro_gateway-form-message-2' => 'כדי לשנות סכום או מטבע, יש לחזור אל <a href="/index.php?title=Donate">דף התרומה</a>',
 	'payflowpro_gateway-donor-legend' => 'פרטי התורם',
 	'payflowpro_gateway-card-legend' => 'נתוני כרטיס האשראי',
@@ -2529,13 +2404,6 @@ $messages['he'] = array(
 	'payflowpro_gateway-submit-button' => 'תרומה',
 	'payflowpro_gateway-question-comment' => 'ויקיפדיה הינה מיזם של קרן ויקימדיה. שאלות או הערות? אנא צרו קשר עם קרן ויקימדיה (באנגלית בלבד): <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'לאחר הלחיצה על {{int:payflowpro_gateway-donor-submit}}", נתוני כרטיס האשראי שלכם יעובדו.',
-	'donate_interface-GBP' => 'GBP: לירה שטרלינג',
-	'donate_interface-EUR' => 'EUR: אירו
-�',
-	'donate_interface-USD' => 'USD: דולר אמריקאי',
-	'donate_interface-AUD' => 'AUD: דולר אוסטרלי',
-	'donate_interface-CAD' => 'CAD: דולר קנדי',
-	'donate_interface-JPY' => 'JPY: יין יפני',
 );
 
 /** Croatian (Hrvatski)
@@ -2546,6 +2414,8 @@ $messages['hr'] = array(
 	'payflowprogateway' => 'Podržite Wikimediju',
 	'payflowpro_gateway-desc' => 'PayPal PayFlow Pro obrada kreditnih kartica',
 	'payflowpro_gateway-accessible' => 'Ova stranica je dostupna samo iz stranice za donacije.',
+	'payflowpro_gateway-form-message' => 'Koristite donji obrazac za doniranje putem kreditne kartice, ili',
+	'payflowpro_gateway-paypal-button' => 'Donirajte putem PayPal-a',
 	'payflowpro_gateway-form-message-2' => 'Za promjenu iznosa ili valute, povratak na <a href="/index.php?title=Donate">stranicu donacija</a>',
 	'payflowpro_gateway-donor-legend' => 'Informacija o donatoru',
 	'payflowpro_gateway-card-legend' => 'Informacija o kreditnoj kartici',
@@ -2607,7 +2477,7 @@ Molimo kontaktirajte nas da biste mogli nastaviti vašu transakciju.',
 	'payflowpro_gateway-response-125-2' => 'Vaša kreditna kartica nije mogla biti provjerena. Molimo provjerite da li svi navedeni podaci odgovaraju profilu vaše kreditne kartice ili pokušajte drugu karticu. Također možete koristiti neki od naših <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">drugih načina za doniranje</a> ili nas kontaktirajte na <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Hvala vam za vašu podršku.',
 	'payflowpro_gateway-response-default' => 'Došlo je do pogreške u obradi vaše transakcije.
 Molimo pokušajte kasnije.',
-	'php-response-declined' => 'Vaša transakcija je odbijena.',
+	'php-response-declined' => 'Vaša je transakcija odbijena.',
 	'payflowpro_gateway-thankyou' => 'Hvala Vam na donaciji!',
 	'payflowpro_gateway-post-transaction' => 'Detalji transakcije',
 	'payflowpro_gateway-submit-button' => 'Doniraj',
@@ -2621,16 +2491,10 @@ Obično će potpisno područje imati i serijske brojeve, ali samo zadnje tri zna
 U nekim slučajevima, kod se nalazi na lijevoj strani kartice, ali je uvijek iznad broja računa.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Pitanja ili komentari? Kontaktirajte: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Nakon što kliknete na "{{int:payflowpro_gateway-donor-submit}}", informacije o vašoj kreditnoj kartici biti će obrađene.',
-	'payflowpro_gateway-credit-storage-processing' => 'Postoje i <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">drugi načini za doniranje, uključujući PayPal, ček ili poštom</a>.<br />
-Mi ne pohranjujemo informacije o vašoj kreditnoj kartici, a vaši osobni podaci su zaštićeni našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pravilima o privatnosti</a>.',
-	'donate_interface-GBP' => 'GBP: britanska funta',
-	'donate_interface-EUR' => 'EUR: euro',
-	'donate_interface-USD' => 'USD: američki dolar',
-	'donate_interface-AUD' => 'AUD: australski dolar',
-	'donate_interface-CAD' => 'CAD: kanadski dolar',
-	'donate_interface-JPY' => 'JPY: japanski jen',
+	'payflowpro_gateway-otherways' => 'Postoje <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">i drugi načini za pomoć, uključujući PayPal, ček ili poštom</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Mi ne pohranjujemo informacije o vašoj kreditnoj kartici, a vaši osobni podaci su zaštićeni našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">pravilima o privatnosti</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Vaša sesija je istekla. Molimo pokušajte ponovo popuniti i podnijeti obrazac.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Osobni podaci',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informacije o plaćanju',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informacije o plaćanju',
 );
 
@@ -2641,6 +2505,7 @@ $messages['hsb'] = array(
 	'payflowprogateway' => 'Wikimediju podpěrać',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro předźěłowanje kreditneje karty',
 	'payflowpro_gateway-accessible' => 'Tuta stronje je jenož wot strony darow přistupna.',
+	'payflowpro_gateway-form-message' => 'Přinošujće z pomocu swojeje kreditneje karty.',
 	'payflowpro_gateway-form-message-2' => 'Zo byšće sumu abo měnu změnił, wróćće so k <a href="/index.php?title=Donate">stronje darow</a>',
 	'payflowpro_gateway-donor-legend' => 'Darjenske informacije',
 	'payflowpro_gateway-card-legend' => 'Informacije kreditneje karty',
@@ -2716,17 +2581,11 @@ Typisce podpismowy wobłuk změje rjady ličbow, ale jenož poslednje tři měst
 Druhdy kod je na lěwym boku karty, ale je přeco wyše kontoweho čisła.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipedija je projekt załožby Wikimedia foundation. Prašenja abo komentary? Staj so ze załožbu Wikimedia Foundation do zwiska: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Po kliknjenju na "{{int:payflowpro_gateway-donor-submit}}" budu so twoje informacije kreditneje karty předźěłować.',
-	'payflowpro_gateway-credit-storage-processing' => 'Su tež <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">druhe móžnosće, zo byšće darił, na přikład PayPal, šek abo póst</a>.
-Njeskładujemy informacije twojeje kreditneje karty a twoje wosobinske daty podleža našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">prawidłam priwatnośce</a>.',
-	'donate_interface-GBP' => 'GBP: Britiski punt',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: US-dolar',
-	'donate_interface-AUD' => 'AUD: Awstralski dolar',
-	'donate_interface-CAD' => 'CAD: Kanadiski dolar',
-	'donate_interface-JPY' => 'JPY: Japanski yen',
+	'payflowpro_gateway-credit-storage-processing' => 'Njeskładujemy informacije twojeje kreditneje karty a twoje wosobinske daty podleža našim <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">prawidłam priwatnośce</a>.',
 );
 
 /** Hungarian (Magyar)
+ * @author BáthoryPéter
  * @author Dani
  * @author Glanthor Reviol
  * @author Misibacsi
@@ -2735,6 +2594,8 @@ $messages['hu'] = array(
 	'payflowprogateway' => 'Támogasd a Wikimédiát',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro hitelkártya feldolgozása',
 	'payflowpro_gateway-accessible' => 'Ez a lap csak az adományozás lapról érhető el.',
+	'payflowpro_gateway-form-message' => 'Hitelkártyás adományozáshoz használd az alábbi űrlapot, vagy',
+	'payflowpro_gateway-paypal-button' => 'Adakozás PayPalon keresztül',
 	'payflowpro_gateway-form-message-2' => 'Az összeg vagy a pénznem megváltoztatásához lépj vissza <a href="/index.php?title=Donate">az adományozási lapra</a>',
 	'payflowpro_gateway-donor-legend' => 'Adományozói információk',
 	'payflowpro_gateway-card-legend' => 'Hitelkártya információk',
@@ -2807,14 +2668,7 @@ Később próbáld meg újra.',
 <p>A kód MINDIG a kártya előoldalán található domborított (kiemelkedő) bankszámlaszám FELETT található. Néhány esetben a kód a kártya bal oldalán található, de mindig a bankszámlaszám felett.</p><br />',
 	'payflowpro_gateway-question-comment' => 'A Wikipédia a Wikimédia Alapítvány projektje. Kérdéseid vagy megjegyzéseid vannak? A következő címen léphetsz kapcsolatba velünk: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Az „Adományozás” gombra való kattintás után a bankkártya-adataid fel lesznek dolgozva.',
-	'payflowpro_gateway-credit-storage-processing' => 'Ne feledd, <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">számos más módon adakozhatsz, például PayPal, csekk vagy levél segítségével is</a>.
-Nem tároljuk a bankkártyáddal kapcsolatos információkat, a személyes adataidat pedig a <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Jogi nyilatkozatunkban</a> leírtak szerint kezeljük.',
-	'donate_interface-GBP' => 'GBP: brit font',
-	'donate_interface-EUR' => 'EUR: euró',
-	'donate_interface-USD' => 'USD: amerikai dollár',
-	'donate_interface-AUD' => 'AUD: ausztrál dollár',
-	'donate_interface-CAD' => 'CAD: kanadai dollár',
-	'donate_interface-JPY' => 'JPY: japán jen',
+	'payflowpro_gateway-credit-storage-processing' => 'Nem tároljuk a bankkártyáddal kapcsolatos információkat, a személyes adataidat pedig a <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Jogi nyilatkozatunkban</a> leírtak szerint kezeljük.',
 	'payflowpro_gateway-cc-form-header-personal' => 'Személyes információk',
 	'payflowpro_gateway-cc-form-header-payment' => 'Fizetési információk',
 );
@@ -2826,6 +2680,8 @@ $messages['ia'] = array(
 	'payflowprogateway' => 'Supporta Wikimedia',
 	'payflowpro_gateway-desc' => 'Processamento per carta de credito PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Iste pagina es solmente accessibile ab le pagina de donation.',
+	'payflowpro_gateway-form-message' => 'Usa le formulario hic infra pro donar con un carta de credito, o',
+	'payflowpro_gateway-paypal-button' => 'Donar per PayPal',
 	'payflowpro_gateway-form-message-2' => 'Pro cambiar le quantitate o le moneta, retorna al <a href="/index.php?title=Donate">pagina de donation</a>',
 	'payflowpro_gateway-donor-legend' => 'Informationes del donator',
 	'payflowpro_gateway-card-legend' => 'Informationes del carta de credito',
@@ -2887,7 +2743,7 @@ Per favor contacta nos pro continuar le transaction.',
 	'payflowpro_gateway-response-125-2' => 'Le validation de tu carta de credito non ha succedite. Per favor verifica que tote le informationes fornite corresponde al profilo de tu carta de credito, o proba un altere carta. Tu pote tamben usar un de nostre <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">altere modos de donar</a> o contactar nos a <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Gratias pro tu supporto.',
 	'payflowpro_gateway-response-default' => 'Un error occurreva durante le tractamento de tu transaction.
 Per favor reproba plus tarde.',
-	'php-response-declined' => 'Le transaction ha essite refusate.',
+	'php-response-declined' => 'Le transaction non poteva esser acceptate.',
 	'payflowpro_gateway-thankyou' => 'Gratias pro tu donation!',
 	'payflowpro_gateway-post-transaction' => 'Detalios del transaction',
 	'payflowpro_gateway-submit-button' => 'Donar',
@@ -2900,17 +2756,11 @@ Typicamente le pannello de signatura ha un serie de numeros, ma solmente le ulti
 <p>Le codice es <i>sempre</i> situate <i>supra</i> le numero de conto in relievo super le facie del carta.
 In alcun casos, le codice se trova al sinistra del carta, ma es sempre supra le numero de conto.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Questiones o commentos? Contacta: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
-	'payflowpro_gateway-donate-click' => 'Post cliccar "Donar", le informationes de tu carta de credito essera processate.',
-	'payflowpro_gateway-credit-storage-processing' => 'Il ha <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/ia">altere modos de donar, como PayPal, cheque o posta</a>.<br />
-Nos non retene le informationes de tu carta de credito, e tu datos personal es subjecte a nostre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidentialitate</a>.',
-	'donate_interface-GBP' => 'GBP: libra sterling',
-	'donate_interface-EUR' => 'EUR: euro',
-	'donate_interface-USD' => 'USD: dollar statounitese',
-	'donate_interface-AUD' => 'AUD: dollar australian',
-	'donate_interface-CAD' => 'CAD: dollar canadian',
-	'donate_interface-JPY' => 'JPY: yen japonese',
+	'payflowpro_gateway-donate-click' => 'Post cliccar "{{int:payflowpro_gateway-donor-submit}}", le informationes de tu carta de credito essera processate.',
+	'payflowpro_gateway-otherways' => 'Il ha <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/ia">altere modos de donar, como PayPal, cheque o posta</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Nos non retene le informationes de tu carta de credito, e tu datos personal es subjecte a nostre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidentialitate</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Tu session ha expirate. Per favor tenta completar e submitter le formulario de novo.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Informationes personal',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informationes de facturation',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informationes de pagamento',
 );
 
@@ -2922,6 +2772,7 @@ $messages['id'] = array(
 	'payflowprogateway' => 'Dukung Wikimedia',
 	'payflowpro_gateway-desc' => 'Pemrosesan kartu credit PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Halaman ini hanya dapat diakses dari halaman donasi.',
+	'payflowpro_gateway-form-message' => 'Berkontribusi dengan kartu kredit Anda.',
 	'payflowpro_gateway-form-message-2' => 'Untuk mengganti nilai atau mata uang, kembali ke <a href="/index.php?title=Donate">halaman donasi</a>',
 	'payflowpro_gateway-donor-legend' => 'Informasi donor',
 	'payflowpro_gateway-card-legend' => 'Informasi kartu kredit',
@@ -2997,14 +2848,7 @@ Umumnya panel tanda tangan akan memiliki serangkaian angka, tetapi hanya tiga di
 Dalam beberapa kasus, kode ini terletak di sisi kiri kartu, tetapi selalu di atas nomor rekening.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipedia adalah suatu proyek dari Wikimedia Foundation. Pertanyaan atau komentar? Hubungi Wikimedia Foundation: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Setelah mengeklik "Donate", informasi kartu kredit Anda akan diproses.',
-	'payflowpro_gateway-credit-storage-processing' => 'Ada <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">cara lain untuk menyumbang, termasuk PayPal, cek, atau surat.</a>
-Kami tidak menyimpan informasi kartu kredit dan data pribadi Anda sesuai dengan <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">kebijakan privasi</a> kami.',
-	'donate_interface-GBP' => 'GBP: Pound Britania',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dolar A.S.',
-	'donate_interface-AUD' => 'AUD: Dolar Australia',
-	'donate_interface-CAD' => 'CAD: Dolar Kanada',
-	'donate_interface-JPY' => 'JPY: Yen Jepang',
+	'payflowpro_gateway-credit-storage-processing' => 'Kami tidak menyimpan informasi kartu kredit dan data pribadi Anda sesuai dengan <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">kebijakan privasi</a> kami.',
 	'payflowpro_gateway-token-mismatch' => 'Sesi Anda telah berakhir. Silakan coba mengisi formulir dan mengirimkannya lagi.',
 );
 
@@ -3026,11 +2870,6 @@ $messages['io'] = array(
 	'payflowpro_gateway-error-msg-state' => 'stato',
 	'payflowpro_gateway-response-4' => 'Ne-valida sumo.',
 	'payflowpro_gateway-submit-button' => 'Donacez',
-	'donate_interface-GBP' => 'GBP: Britaniana Pundo',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Usana Dolaro',
-	'donate_interface-AUD' => 'AUD: Australiana Dolaro',
-	'donate_interface-CAD' => 'CAD: Kanadana Dolaro',
 );
 
 /** Italian (Italiano)
@@ -3095,12 +2934,6 @@ Si prega di riprovare più tardi.",
 	'payflowpro_gateway-post-transaction' => 'Dettagli della transazione',
 	'payflowpro_gateway-submit-button' => 'Dona',
 	'payflowpro_gateway-question-comment' => 'Wikipedia è un progetto della Wikimedia Foundation. Domande o commenti? Contatta la Wikimedia Foundation: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
-	'donate_interface-GBP' => 'GBP: Sterlina inglese',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dollaro U.S.',
-	'donate_interface-AUD' => 'AUD: Dollaro australiano',
-	'donate_interface-CAD' => 'CAD: Dollaro canadese',
-	'donate_interface-JPY' => 'JPY: Yen giapponese',
 );
 
 /** Japanese (日本語)
@@ -3111,6 +2944,8 @@ $messages['ja'] = array(
 	'payflowprogateway' => 'ウィキメディアを支援する',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro クレジットカード処理',
 	'payflowpro_gateway-accessible' => 'このページは寄付ページからのみ参照できます。',
+	'payflowpro_gateway-form-message' => '以下のフォームを利用してクレジットカードで寄付する、あるいは',
+	'payflowpro_gateway-paypal-button' => 'PayPal経由で寄付',
 	'payflowpro_gateway-form-message-2' => '金額や通貨を変更するには、<a href="/index.php?title=Donate">寄付ページ</a>に戻ってください',
 	'payflowpro_gateway-donor-legend' => '寄付者情報',
 	'payflowpro_gateway-card-legend' => 'クレジットカード情報',
@@ -3174,7 +3009,7 @@ $messages['ja'] = array(
 	'payflowpro_gateway-response-125-2' => 'あなたのクレジットカードの妥当性が確認できませんでした。入力した情報すべてがクレジットカードの情報と一致しているか検証するか、または別のカードを試してください。<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">他の寄付方法</a>のどれかを利用したり、我々に <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a> で連絡を取ることもできます。ご支援ありがとうございます。',
 	'payflowpro_gateway-response-default' => 'あなたの取引を処理している際にエラーがおきました。
 後で再び試行してください。',
-	'php-response-declined' => 'あなたの取引は拒否されました。',
+	'php-response-declined' => 'お取引が承認されませんでした。',
 	'payflowpro_gateway-thankyou' => 'ご寄付ありがとうございました！',
 	'payflowpro_gateway-post-transaction' => '取引詳細',
 	'payflowpro_gateway-submit-button' => '寄付',
@@ -3186,16 +3021,10 @@ $messages['ja'] = array(
 <p>この数値は<b>常に</b>、カード表面の浮き彫りになった会員番号の<b>上部に</b>記載されています。場合によっては、カード左側に記載されていることもありますが、常に会員番号の上部にあります。</p><br />',
 	'payflowpro_gateway-question-comment' => '質問や意見がありますか？<a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>にご連絡ください。',
 	'payflowpro_gateway-donate-click' => '「{{int:payflowpro_gateway-donor-submit}}」をクリックした後にあなたのクレジットカード情報は処理されます。',
-	'payflowpro_gateway-credit-storage-processing' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">PayPal や小切手、郵便など他の送金方法</a>もあります。
-我々はあなたのクレジットカード情報を保管せず、またあなたの個人情報は<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">個人情報保護方針</a>の対象です。',
-	'donate_interface-GBP' => 'GBP: イギリス・ポンド',
-	'donate_interface-EUR' => 'EUR: ユーロ',
-	'donate_interface-USD' => 'USD: アメリカ合衆国ドル',
-	'donate_interface-AUD' => 'AUD: オーストラリア・ドル',
-	'donate_interface-CAD' => 'CAD: カナダ・ドル',
-	'donate_interface-JPY' => 'JPY: 日本円',
+	'payflowpro_gateway-otherways' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/ja">PayPalや小切手、郵送などその他の送金方法</a>もあります。',
+	'payflowpro_gateway-credit-storage-processing' => '我々はあなたのクレジットカード情報を保管せず、またあなたの個人情報は<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">個人情報保護方針</a>の対象です。',
 	'payflowpro_gateway-token-mismatch' => 'セッションが期限切れです。もう一度入力して、フォームを送信してください。',
-	'payflowpro_gateway-cc-form-header-personal' => '個人情報',
+	'payflowpro_gateway-cc-form-header-personal' => '課金情報',
 	'payflowpro_gateway-cc-form-header-payment' => '支払情報',
 );
 
@@ -3248,12 +3077,6 @@ $messages['ka'] = array(
 	'payflowpro_gateway-response-24' => 'თქვენი საკრედიტო ბარათის ნომერი ან ვადის გასვლის თარიღი არასწორია.',
 	'payflowpro_gateway-thankyou' => 'გმადლობთ შეწირვისათვის!',
 	'payflowpro_gateway-submit-button' => 'შეწირულობები',
-	'donate_interface-GBP' => 'GBP: ბრიტანული გირვანქა სტერლინგი',
-	'donate_interface-EUR' => 'EUR: ევრო',
-	'donate_interface-USD' => 'USD: აშშ დოლარი',
-	'donate_interface-AUD' => 'AUD: ავსტრალიური დოლარი',
-	'donate_interface-CAD' => 'CAD: კანადური დოლარი',
-	'donate_interface-JPY' => 'JPY: იაპონური იენი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -3341,14 +3164,7 @@ $messages['km'] = array(
 In some instances, the code is located on the left side of the card, but is always above the account number.</p><br />',
 	'payflowpro_gateway-question-comment' => 'មានសំនួរឬក៏មតិយោបល់? សូមទាក់ទងទៅ៖ <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'បន្ទាប់ពីចុច "{{int:payflowpro_gateway-donor-submit}}" ព័ត៌មានរបស់ក្រេឌីតកាតរបស់អ្នកនឹងត្រូវបានផ្ញើចេញទៅ។',
-	'payflowpro_gateway-credit-storage-processing' => 'មាន<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">វិធីផ្សេងទៀតក្នុងការធ្វើការបរិច្ចាគ ដូចជា PayPal, មូលប្បទានប័ត្រ, ឬ សំបុត្រ</a>។<br />
-យើងខ្ញុំមិនរក្សាទុកព័ត៌មានក្រេឌីតកាតរបស់លោកអ្នកទេ ហើយព័ត៌មានផ្ទាល់ខ្លួនរបស់អ្នកនឹងត្រូវការពារដោយ<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">គោលការភាពឯកជន</a>របស់យើងខ្ញុំ។',
-	'donate_interface-GBP' => 'GBP៖ ផោនអង់គ្លេស',
-	'donate_interface-EUR' => 'EUR៖ យូរ៉ូ',
-	'donate_interface-USD' => 'USD៖ ដុល្លារអាមេរិក',
-	'donate_interface-AUD' => 'AUD៖ ដុល្លារអូស្ត្រាលី',
-	'donate_interface-CAD' => 'CAD៖ ដុល្លារកាណាដា',
-	'donate_interface-JPY' => 'JPY៖ យ៉េនជប៉ុន',
+	'payflowpro_gateway-credit-storage-processing' => 'យើងខ្ញុំមិនរក្សាទុកព័ត៌មានក្រេឌីតកាតរបស់លោកអ្នកទេ ហើយព័ត៌មានផ្ទាល់ខ្លួនរបស់អ្នកនឹងត្រូវការពារដោយ<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">គោលការភាពឯកជន</a>របស់យើងខ្ញុំ។',
 	'payflowpro_gateway-cc-form-header-personal' => 'ព័ត៌មានផ្ទាល់ខ្លួន',
 	'payflowpro_gateway-cc-form-header-payment' => 'ព័ត៌មានពីការបង់ប្រាក់',
 );
@@ -3370,6 +3186,7 @@ $messages['ko'] = array(
 	'payflowprogateway' => '위키미디어를 지지해주세요',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro 신용 카드 처리 시스템',
 	'payflowpro_gateway-accessible' => '이 페이지는 기부 페이지에서만 접근 가능합니다.',
+	'payflowpro_gateway-form-message' => '신용 카드를 통해 기부해 주세요.',
 	'payflowpro_gateway-form-message-2' => '금액이나 통화를 바꾸시려면 <a href="/index.php?title=Donate">기부 페이지</a>로 돌아가십시오.',
 	'payflowpro_gateway-donor-legend' => '기부자 정보',
 	'payflowpro_gateway-card-legend' => '신용 카드 정보',
@@ -3444,14 +3261,7 @@ $messages['ko'] = array(
 어떤 경우에는 코드가 카드 왼쪽에 있을 수는 있지만 항상 카드 번호 위에 위치해 있습니다.</p><br />',
 	'payflowpro_gateway-question-comment' => '위키백과는 위키미디어 재단의 프로젝트 중 하나입니다. 질문이나 의견이 있으신가요? 위키미디어 재단에 문의해주세요: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => '"{{int:payflowpro_gateway-donor-submit}}"를 클릭하면, 당신의 신용 카드 정보가 처리될 것입니다.',
-	'payflowpro_gateway-credit-storage-processing' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">PayPal, 수표, 우편 등 다른 기부 방법</a>도 있습니다.
-우리는 신용 카드 정보를 저장하지 않으며 당신의 개인 정보는 <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">개인정보 정책</a>을 따릅니다.',
-	'donate_interface-GBP' => 'GBP: 영국 파운드',
-	'donate_interface-EUR' => 'EUR: 유로',
-	'donate_interface-USD' => 'USD: 미국 달러',
-	'donate_interface-AUD' => 'AUD: 호주 달러',
-	'donate_interface-CAD' => 'CAD: 캐나다 달러',
-	'donate_interface-JPY' => 'JPY: 일본 엔',
+	'payflowpro_gateway-credit-storage-processing' => '우리는 신용 카드 정보를 저장하지 않으며 당신의 개인 정보는 <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">개인정보 정책</a>을 따릅니다.',
 );
 
 /** Colognian (Ripoarisch)
@@ -3461,6 +3271,7 @@ $messages['ksh'] = array(
 	'payflowprogateway' => 'Donn Wikimedia ongerschtöze',
 	'payflowpro_gateway-desc' => 'Met <i lang="en">PayPal Payflow Pro</i> vun Kredditkaate afhallde.',
 	'payflowpro_gateway-accessible' => 'Heh di Sigg es bloß vun de Schpändesigg uß zo han.',
+	'payflowpro_gateway-form-message' => 'Donn met Dinge Kreddittkaat beidraare.',
 	'payflowpro_gateway-form-message-2' => 'Öm dä Bedraach udder de Zoot Jeld ze ändere, jangk retuur op di <a href="/index.php?title=Donate">Sigg övver et Schpände</a>.',
 	'payflowpro_gateway-donor-legend' => 'Enfommazjuhne övver der Schpänder',
 	'payflowpro_gateway-card-legend' => 'Enfommazjuhne övver et Schpände',
@@ -3486,24 +3297,28 @@ $messages['ksh'] = array(
 	'payflowpro_gateway-donor-submit' => '{{int:Payflowpro gateway-submit-button}}',
 	'payflowpro_gateway-donor-currency-msg' => 'Di Spende es en $1 jemaat woode.',
 	'payflowpro_gateway-error-msg' => 'Beß esu joot un jif Ding $1 enn',
-	'payflowpro_gateway-error-msg-js' => 'Beß esu joot un jif Ding enn',
+	'payflowpro_gateway-error-msg-js' => 'Beß esu joot, un jif',
 	'payflowpro_gateway-error-msg-invalid-amount' => '**Jif ene jöltijje Bedraach en**',
 	'payflowpro_gateway-error-msg-email' => '**Jif ene jöltijje Addräß för de <i lang="en">e-mail</i> en**',
 	'payflowpro_gateway-error-msg-amex' => '**Bes esu joot un jif ene jöltijje Nommer för en <i lang="en">American Express</i> Kaat en**',
 	'payflowpro_gateway-error-msg-mc' => '**Bes esu joot un jif ene jöltijje Nommer för en <i lang="en">MasterCard</i> Kaat en**',
 	'payflowpro_gateway-error-msg-visa' => '**Bes esu joot un jif ene jöltijje Nommer för en <i lang="en">Visa</i> Kaat en**',
 	'payflowpro_gateway-error-msg-discover' => '**Bes esu joot un jif ene jöltijje Nommer för en <i lang="en">Discover</i> Kaat en**',
-	'payflowpro_gateway-error-msg-amount' => 'Bedraach',
-	'payflowpro_gateway-error-msg-emailAdd' => 'Addräß för de <i lang="en">e-mail</i>',
-	'payflowpro_gateway-error-msg-fname' => 'Vörnahme',
-	'payflowpro_gateway-error-msg-lname' => 'Nohnaame',
-	'payflowpro_gateway-error-msg-street' => 'Schrohß un Nommer',
-	'payflowpro_gateway-error-msg-city' => 'Schtadt',
-	'payflowpro_gateway-error-msg-state' => 'Schtaat',
-	'payflowpro_gateway-error-msg-zip' => 'Poßleizahl',
-	'payflowpro_gateway-error-msg-card_num' => 'Dä Kredditkaat ier Nommer',
-	'payflowpro_gateway-error-msg-expiration' => 'Wann di Kaat ußläuf',
-	'payflowpro_gateway-error-msg-cvv' => 'Dä <i lang="en">CVV</i> vun dä hengere Sigg vun Dinge Kaat',
+	'payflowpro_gateway-error-msg-amount' => 'enne Bedraach en.',
+	'payflowpro_gateway-error-msg-emailAdd' => 'en Addräß för Ding <i lang="en">e-mail</i> enn.',
+	'payflowpro_gateway-error-msg-fname' => 'Dinge Vörnahme en.',
+	'payflowpro_gateway-error-msg-lname' => '
+Dinge Nohnaame en.',
+	'payflowpro_gateway-error-msg-street' => 'Ding Schrohß un Nommer en.',
+	'payflowpro_gateway-error-msg-city' => '
+de Schtadt en, woh De wonns.',
+	'payflowpro_gateway-error-msg-state' => 'dä Schtaat en, woh De wonns.',
+	'payflowpro_gateway-error-msg-zip' => 'Ding Poßleizahl enn.',
+	'payflowpro_gateway-error-msg-card_num' => 'Dinge Kredditkaat ier Nommer en.',
+	'payflowpro_gateway-error-msg-expiration' => 'en, wann Ding Kaat ußläuf.',
+	'payflowpro_gateway-error-msg-cvv' => 'dä <i lang="en">CVV</i> vun dä hengere Sigg vun Dinge Kaat en.',
+	'payflowpro_gateway-error-msg-captcha' => 'De enjejovve Beshtäjejong es verkeht. Donn et noch ens versöhke.',
+	'payflowpro_gateway-error-msg-captcha-please' => 'Öm Ding Kedditkaad afzeseschere, donn di Boochstabe un Zeijsche enjävve, di De heh drövver sühs.',
 	'payflowpro_gateway-response-0' => 'Ding Zahlung es beschtäätesch woode.
 Mer donn uns bedangke för Ding Schpänd!',
 	'payflowpro_gateway-response-126' => 'Ding Zahlung moß noch beschtäätesch wääde.',
@@ -3534,12 +3349,6 @@ Versöhk et schpääder noch ens.',
 	'payflowpro_gateway-donate-click' => 'Wann De op „{{int:Payflowpro gateway-submit-button}}“ jekleck häs, wääde Ding Kredittkaatedaate beärbeit.',
 	'payflowpro_gateway-credit-storage-processing' => 'Mer sellver donn Ding Kreddittkaetdaate nit faßhallde, un för Ding päsöönlesch Daate ham_mer uns
 <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Rääjelle för der Daateschotz un de Jeheimhaldung</a>.',
-	'donate_interface-GBP' => 'GBP: Änglesche Pongk',
-	'donate_interface-EUR' => 'EUR: Euros',
-	'donate_interface-USD' => 'USD:  Dollars uß de USA',
-	'donate_interface-AUD' => 'AUD: Austraalesche Dollars',
-	'donate_interface-CAD' => 'CAD: Kanaadesche Dollars',
-	'donate_interface-JPY' => 'JPY: Japaanesche Yen',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3549,6 +3358,8 @@ $messages['lb'] = array(
 	'payflowprogateway' => 'Ënnerstëtzt Wikimedia',
 	'payflowpro_gateway-desc' => 'Behandele vun der Kreditkaart PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Dës Säit ass nëmmen vun der Säit vun den Donë méiglech.',
+	'payflowpro_gateway-form-message' => 'Benotzt de Formulaire hei drënner fir en Don mat enger Kreditkaart ze maachen, oder',
+	'payflowpro_gateway-paypal-button' => 'Don iwwer PayPal',
 	'payflowpro_gateway-form-message-2' => "Fir de Betrag oder d'Währung z'änneren gitt w.e.g. zréck op <a href=\"/index.php?title=Donate\">d'Säit vum Don</a>",
 	'payflowpro_gateway-donor-legend' => 'Informatiounen iwwer den Donateur',
 	'payflowpro_gateway-card-legend' => "Informatiounen iwwert d'Kreditkaart",
@@ -3610,7 +3421,7 @@ Kontaktéiert eis w.e.g. fir mat Ärer Transaktioun weiderzefueren.',
 	'payflowpro_gateway-response-125-2' => 'Är Kreditkaart konnt net validéiert ginn. Kuckt w.e.g. no ob all déi Informatiounen déi Dir uginn hutt mat dem Profil vun Ärer Kreditkaart iwwereneestëmmt oder probéiert mat enger anerer Kaart. Dir kënnt och op eng vun eisen anere <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">Manéiere fir ze spenden</a> benotzen oder eis iwwer <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a> kontaktéieren. Merci fir Är Ënnerstëtzung.',
 	'payflowpro_gateway-response-default' => 'Et gouf e Feeler beim Verschaffe vun Ärer Transaktioun.
 Probéiert et w.e.g. spéider nach eng Kéier.',
-	'php-response-declined' => 'Är Transactioun gouf net akzeptéiert.',
+	'php-response-declined' => 'Är Transaktioun konnt net akzeptéiert ginn.',
 	'payflowpro_gateway-thankyou' => 'Merci fir Ären Don!',
 	'payflowpro_gateway-post-transaction' => 'Detailer vun der Transaktioun',
 	'payflowpro_gateway-submit-button' => 'Maacht en Don',
@@ -3624,16 +3435,10 @@ Normalerweis stinn am Feld vun der Ënnerschrëft eng Rei vun Zifferen, awer në
 Heiandsdo, steet de Code op der lenker Säit vun der Kaart, awer e steet ëmmer iwwer der Kontonummer.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Froen oder Bemierkungen? Kontaktéiert: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Nodeems Dir op "{{int:payflowpro_gateway-donor-submit}}" geklickt hutt gin d\'Informatioune vun Ärer Kreditkaart verschafft.',
-	'payflowpro_gateway-credit-storage-processing' => 'Et gëtt <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">aner Méiglechkeete fir eppes ze ginn, PayPal, Scheck oder Mail</a>.<br />
-Mir späicheren d\'Informatioune vun Ärer Kreditkaart net, an Är perséinlech Daten ënnerleien eisen <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Dateschutz Richtlinnen</a>.',
-	'donate_interface-GBP' => 'GBP: Britesched Pond',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: U.S. Dollar',
-	'donate_interface-AUD' => 'AUD: Australeschen Dollar',
-	'donate_interface-CAD' => 'CAD: Kanadeschen Dollar',
-	'donate_interface-JPY' => 'JPY: Japanesche Yen',
+	'payflowpro_gateway-otherways' => 'Et gëtt <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">Manéiere fir en Don ze maachen, wéi PayPal, check, oder Mail</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Mir späicheren d\'Informatioune vun Ärer Kreditkaart net, an Är perséinlech Daten ënnerleien eisen <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">Dateschutz Richtlinnen</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Är Seance ass ofgelaf. Versich w.e.g. nach eng Kéier auszefëllen an de Formulaire nach emol ze schécken.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Perséinlech Informatiounen',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informatiounen fir bezuelen',
 	'payflowpro_gateway-cc-form-header-payment' => "Informatiounen iwwert d'Bezuelen",
 );
 
@@ -3686,12 +3491,6 @@ $messages['li'] = array(
 	'payflowpro_gateway-submit-button' => 'Gaef',
 	'payflowpro_gateway-question-comment' => 'Vraoge of opmirkinge? Nöm den kóntak óp mit <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Dien creditkaartinformatie weurt verwirk naodesse óp "{{int:payflowpro_gateway-donor-submit}}" kliks.',
-	'donate_interface-GBP' => 'GBP: Britsje póndj',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: VS-dóller',
-	'donate_interface-AUD' => 'AUD: Australisje dóller',
-	'donate_interface-CAD' => 'CAD: Kannedese dóller',
-	'donate_interface-JPY' => 'JPY: Japansje yen',
 );
 
 /** Macedonian (Македонски)
@@ -3702,6 +3501,8 @@ $messages['mk'] = array(
 	'payflowprogateway' => 'Поддржете ја Викимедија',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro обработка на податоците за плаќање со кредитна картичка',
 	'payflowpro_gateway-accessible' => 'До оваа страница се доаѓа само преку страницата за донирање.',
+	'payflowpro_gateway-form-message' => 'Употребете го образецот подолу за донирање со кредитна картичка, или',
+	'payflowpro_gateway-paypal-button' => 'Донирајте преку PayPal',
 	'payflowpro_gateway-form-message-2' => 'За да го промените износот или валутата, вратете се на <a href="/index.php?title=Donate">страницата за донирање</a>',
 	'payflowpro_gateway-donor-legend' => 'Податоци за дарителот',
 	'payflowpro_gateway-card-legend' => 'Податоци за кредитната картичка',
@@ -3778,16 +3579,10 @@ $messages['mk'] = array(
 Во некои случаи кодот е сместен на левата страна од картичката, но секогаш е над бројот на картичката.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Имате некои прашања или примедби? Обратете ни се на: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Откако ќе кликнете на "{{int:payflowpro_gateway-donor-submit}}", ќе бидат обработени податоците од вашата кредитна картичка.',
-	'payflowpro_gateway-credit-storage-processing' => 'Постојат <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">други начини на дарување како PayPal, со чек, или по пошта</a>.<br />
-Ние не ги чуваме податоците од кредитните картички, а вашите лични податоци подложат на нашите <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">правилата за приватност</a>.',
-	'donate_interface-GBP' => 'GBP: Британска фунта',
-	'donate_interface-EUR' => 'EUR: Евро',
-	'donate_interface-USD' => 'USD: Американски долар',
-	'donate_interface-AUD' => 'AUD: Австралиски долар',
-	'donate_interface-CAD' => 'CAD: Канадски долар',
-	'donate_interface-JPY' => 'JPY: Јапонски јен',
+	'payflowpro_gateway-otherways' => 'Постојат <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">и други начини на дарување како PayPal, со чек или по пошта</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Ние не ги чуваме податоците од кредитните картички, а вашите лични податоци подложат на нашите <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">правилата за приватност</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Сесијата ви истече.  Пополнете го образецот и поднесете го повторно.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Лични податоци',
+	'payflowpro_gateway-cc-form-header-personal' => 'Наплатни податоци',
 	'payflowpro_gateway-cc-form-header-payment' => 'Лични податоци',
 );
 
@@ -3798,6 +3593,8 @@ $messages['ml'] = array(
 	'payflowprogateway' => 'വിക്കിമീഡിയയെ പിന്തുണയ്ക്കുക',
 	'payflowpro_gateway-desc' => 'പേപാൽ പേഫ്ലോ പ്രോ ക്രെഡിറ്റ് കാർഡ് ഉപയുക്തമാക്കുന്നു',
 	'payflowpro_gateway-accessible' => 'സംഭാവനാ താളിൽ നിന്നുമാത്രമേ ഈ താൾ ലഭ്യമാവുകയുള്ളു.',
+	'payflowpro_gateway-form-message' => 'ക്രെഡിറ്റ് കാർഡ് ഉപയോഗിച്ച് സംഭാവന ചെയ്യാൻ താഴെയുള്ള ഫോം ഉപയോഗിക്കുക, അല്ലെങ്കിൽ',
+	'payflowpro_gateway-paypal-button' => 'പേപാൽ വഴി സം‌ഭാവന ചെയ്യുക',
 	'payflowpro_gateway-form-message-2' => 'തുകയോ നാണയമോ മാറ്റാനായി <a href="/index.php?title=Donate">സംഭാവനാ താളിലേയ്ക്ക്</a> തിരിച്ചുപോവുക',
 	'payflowpro_gateway-donor-legend' => 'സംഭാവന ചെയ്യുന്നയാളുടെ വിവരങ്ങൾ',
 	'payflowpro_gateway-card-legend' => 'ക്രെഡിറ്റ് കാർഡ് വിവരങ്ങൾ',
@@ -3877,17 +3674,26 @@ $messages['ml'] = array(
 ചിലയവസരങ്ങളിൽ, രഹസ്യവാക്ക് കാർഡിന്റെ ഇടത്തുഭാഗത്തായി ആണുണ്ടാവുക, പക്ഷേ എപ്പോഴും അക്കൗണ്ട് നമ്പരിന്റെ മുകളിലായിരിക്കും.</p><br />',
 	'payflowpro_gateway-question-comment' => 'എന്തെങ്കിലും ചോദ്യങ്ങളോ അഭിപ്രായങ്ങളോ ഉണ്ടോ? ബന്ധപ്പെടുക:<a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => '"{{int:payflowpro_gateway-donor-submit}}" ഞെക്കുമ്പോൾ, താങ്കളുടെ ക്രെഡിറ്റ് കാർഡ് വിവരങ്ങൾ ഉപയോഗപ്പെടുത്തുന്നതാണ്.',
-	'payflowpro_gateway-credit-storage-processing' => 'സംഭാവനകൾക്കായി <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">പേപാൽ, ചെക്ക്, എഴുത്തുകൾ തുടങ്ങി മറ്റു മാർഗ്ഗങ്ങളും ഉപയോഗിക്കാവുന്നതാണ്</a>.
-ഞങ്ങൾ താങ്കളുടെ ക്രെഡിറ്റ് കാർഡ് വിവരങ്ങൾ സൂക്ഷിച്ചു വെയ്ക്കില്ല, താങ്കളുടെ സ്വകാര്യ വിവരങ്ങൾ ഞങ്ങളുടെ <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">സ്വകാര്യതാനയത്തിൽ</a> പെടുന്നു.',
-	'donate_interface-GBP' => 'GPB: ബ്രിട്ടീഷ് പൗണ്ട്',
-	'donate_interface-EUR' => 'EUR: യൂറോ',
-	'donate_interface-USD' => 'USD: യു.എസ്. ഡോളർ',
-	'donate_interface-AUD' => 'AUD: ഓസ്ട്രേലിയൻ ഡോളർ',
-	'donate_interface-CAD' => 'CAD: കനേഡിയൻ ഡോളർ',
-	'donate_interface-JPY' => 'JPY: ജാപ്പനീസ് യെൻ',
+	'payflowpro_gateway-otherways' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">പേപാൽ, ചെക്ക്, എഴുത്തുകൾ തുടങ്ങിയ മറ്റു മാർഗ്ഗങ്ങളും ഉപയോഗിക്കാവുന്നതാണ്</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'ഞങ്ങൾ താങ്കളുടെ ക്രെഡിറ്റ് കാർഡ് വിവരങ്ങൾ സൂക്ഷിച്ചു വെയ്ക്കില്ല, താങ്കളുടെ സ്വകാര്യ വിവരങ്ങൾ ഞങ്ങളുടെ <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">സ്വകാര്യതാനയത്തിൽ</a> പെടുന്നു.',
 	'payflowpro_gateway-token-mismatch' => 'താങ്കളുടെ സെഷൻ അവസാനിച്ചിരിക്കുന്നു. ദയവായി ഫോം വീണ്ടും പൂരിപ്പിച്ച് സമർപ്പിക്കുവാൻ ശ്രമിക്കുക.',
-	'payflowpro_gateway-cc-form-header-personal' => 'വ്യക്തിഗത വിവരങ്ങൾ',
+	'payflowpro_gateway-cc-form-header-personal' => 'ബില്ലിങ് വിവരങ്ങൾ',
 	'payflowpro_gateway-cc-form-header-payment' => 'പണം നൽകലിന്റെ വിവരങ്ങൾ',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'payflowpro_gateway-donor-name' => 'Леметь:',
+	'payflowpro_gateway-donor-street' => 'Ульцат:',
+	'payflowpro_gateway-donor-city' => 'Ошот:',
+	'payflowpro_gateway-donor-state' => 'Штатот:',
+	'payflowpro_gateway-donor-country' => 'Масторот/йонксот:',
+	'payflowpro_gateway-donor-address' => 'Сёрма паргот:',
+	'payflowpro_gateway-error-msg-city' => 'ошот',
+	'payflowpro_gateway-error-msg-state' => 'штатот',
+	'payflowpro_gateway-error-msg-zip' => 'индексэть',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -3898,6 +3704,7 @@ $messages['nds-nl'] = array(
 	'payflowprogateway' => 'Steun Wikimedia',
 	'payflowpro_gateway-desc' => 'Kredietkaortverwarking via PayPal PayFlow Pro',
 	'payflowpro_gateway-accessible' => 'Disse pagina ku-j allinnig bekieken via de doneteurspagina.',
+	'payflowpro_gateway-form-message' => 'Draag bie mit de kredietkaorte.',
 	'payflowpro_gateway-form-message-2' => 'Um \'t bedrag of de munteenheid te wiezigen, gao-j weerumme naor de <a href="/index.php?title=Donate">doneteurspagina</a>.',
 	'payflowpro_gateway-donor-legend' => 'Doneteursinfermasie',
 	'payflowpro_gateway-card-legend' => 'Kredietkaortgegevens',
@@ -3971,14 +3778,7 @@ Meestentieds staon der meer ciefers in dat gebied, mar allinnig de leste dree ci
 In sommige gevallen steet de code an de linkerzied van de kaorte, mar dit steet altied boven 't nummer van de kaorte.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Wikipedie is a prejek van de Wikimedia Foundation. A-j vragen of opmarkingen hebben, dan mu-j effen kontak opnemen mit de Wikimedia Foundation: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Naoda-j op "{{int:payflowpro_gateway-donor-submit}}" klikken, wönnen joew kredietkaortgegevens verwark.',
-	'payflowpro_gateway-credit-storage-processing' => 'Der bin oek <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">aandere menieren um geld te geven, zoas PayPal, cheque, of netpos</a>.
-Joew kredietkaortgevens wönnen neet op-esleugen, en joew persoonlijke infermasie vuilt onder ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">gegevensbeleid</a>.',
-	'donate_interface-GBP' => 'GBP: Britse pond',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Amerikaanse dollar',
-	'donate_interface-AUD' => 'AUD: Australische dollar',
-	'donate_interface-CAD' => 'CAD: Kannedese dollar',
-	'donate_interface-JPY' => 'JPY: Jepanse yen',
+	'payflowpro_gateway-credit-storage-processing' => 'Joew kredietkaortgevens wönnen neet op-esleugen, en joew persoonlijke infermasie vuilt onder ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">gegevensbeleid</a>.',
 );
 
 /** Dutch (Nederlands)
@@ -3989,6 +3789,8 @@ $messages['nl'] = array(
 	'payflowprogateway' => 'Steun Wikimedia',
 	'payflowpro_gateway-desc' => 'Creditcardverwerking via PayPal PayFlow Pro',
 	'payflowpro_gateway-accessible' => 'Deze pagina is alleen toegankelijk via de donateurspagina.',
+	'payflowpro_gateway-form-message' => 'Gebruik het formulier hieronder om te doneren met een creditcard, of',
+	'payflowpro_gateway-paypal-button' => 'Via PayPal doneren',
 	'payflowpro_gateway-form-message-2' => 'Keer terug naar de <a href="/index.php?title=Donate">donateurspagina</a> om het bedrag of de valuta te wijzigen.',
 	'payflowpro_gateway-donor-legend' => 'Donateursinformatie',
 	'payflowpro_gateway-card-legend' => 'Creditcardinformatie',
@@ -4064,16 +3866,10 @@ Meestal staan er meer cijfers in dat gebied, maar alleen de drie laatste cijfers
 In sommige gevallen staat de code aan de linkerkant van de kaart, maar deze staat altijd boven het kaartnummer.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Vragen of opmerkingen? Neem dan contact op met <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Uw creditkaartinformatie wordt verwerkt zodra u op "{{int:payflowpro_gateway-donor-submit}}" klikt.',
-	'payflowpro_gateway-credit-storage-processing' => 'Er zijn <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">andere manieren om te geven, waaronder PayPal, per cheque of per post</a>.<br />
-We slaan uw creditkaartgegevens niet op en uw persoonlijke gegevens vallen onder ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privacybeleid</a>.',
-	'donate_interface-GBP' => 'GBP: Britse pond',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Amerikaanse dollar',
-	'donate_interface-AUD' => 'AUD: Australische dollar',
-	'donate_interface-CAD' => 'CAD: Canadese dollar',
-	'donate_interface-JPY' => 'JPY: Japanse yen',
+	'payflowpro_gateway-otherways' => 'Er zijn <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">andere manieren om te doneren, inclusief PayPal, cheque of per post</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'We slaan uw creditkaartgegevens niet op en uw persoonlijke gegevens vallen onder ons <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">privacybeleid</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Uw sessie is verlopen. Vul het formulier opnieuw in en sla het daarna op.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Persoonlijke informatie',
+	'payflowpro_gateway-cc-form-header-personal' => 'Betalingsinformatie',
 	'payflowpro_gateway-cc-form-header-payment' => 'Betalingsinformatie',
 );
 
@@ -4084,6 +3880,7 @@ $messages['nn'] = array(
 	'payflowprogateway' => 'Støtt Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kredittkorthandsaming',
 	'payflowpro_gateway-accessible' => 'Denne sida er berre tilgjengeleg frå sida for gåver.',
+	'payflowpro_gateway-form-message' => 'Gje gjennom kredittkortet ditt.',
 	'payflowpro_gateway-card-legend' => 'Kredittkortinformasjon',
 	'payflowpro_gateway-amount-legend' => 'Gåvebeløp:',
 	'payflowpro_gateway-cvv-link' => 'Døme',
@@ -4110,14 +3907,7 @@ Takk for gåva di!',
 	'payflowpro_gateway-response-125' => 'Overføringa di har vorte avvist av tenesta som skal hindra svindel.',
 	'payflowpro_gateway-submit-button' => 'Gje',
 	'payflowpro_gateway-donate-click' => 'Etter å ha klikka  "{{int:payflowpro_gateway-donor-submit}}", vil kredittinformasjonen din verta gjennomgått.',
-	'payflowpro_gateway-credit-storage-processing' => 'Det er <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/nb"> andre måtar å gje på, som til dømes PayPal, sjekk eller post</a>.
-Me lagrar ikkje informasjon om kredittkortet ditt, og persondata er underlagt våre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">retningsliner for personvern</a>.',
-	'donate_interface-GBP' => 'GBP: Britiske pund',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: USA-dollar',
-	'donate_interface-AUD' => 'AUD: Australske dollar',
-	'donate_interface-CAD' => 'CAD: Kanadiske dollar',
-	'donate_interface-JPY' => 'JPY: Japanske yen',
+	'payflowpro_gateway-credit-storage-processing' => 'Me lagrar ikkje informasjon om kredittkortet ditt, og persondata er underlagt våre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">retningsliner for personvern</a>.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -4129,6 +3919,8 @@ $messages['no'] = array(
 	'payflowprogateway' => 'Støtt Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kredittkortbehandling',
 	'payflowpro_gateway-accessible' => 'Denne siden er bare tilgjengelig fra giversiden.',
+	'payflowpro_gateway-form-message' => 'Bruk skjemaet nedenfor for å donere med et kredittkort, eller',
+	'payflowpro_gateway-paypal-button' => 'Doner med PayPal',
 	'payflowpro_gateway-form-message-2' => 'For å endre beløp eller valuta, gå til <a href="/index.php?title=Donate">giversiden</a>',
 	'payflowpro_gateway-donor-legend' => 'Giverinformasjon',
 	'payflowpro_gateway-card-legend' => 'Kredittkortinformasjon',
@@ -4190,7 +3982,7 @@ Kontakt oss for å fortsette din transaksjon.',
 	'payflowpro_gateway-response-125-2' => 'Kredittkortet ditt kunne i godkjennes. Vennligst sjekk at alle opplysningene stemmer overens med dine kredittkortopplysninger, eller prøv et annet kort. Du kan også bruke en av våre <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">alternative måter</a> eller kontakt oss på <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Takk for din støtte.',
 	'payflowpro_gateway-response-default' => 'Det oppsto en feil under behandlingen av din transaksjon.
 Vennligst prøv igjen senere.',
-	'php-response-declined' => 'Din transaksjon har blitt avvist.',
+	'php-response-declined' => 'Din transaksjon kunne ikke aksepteres.',
 	'payflowpro_gateway-thankyou' => 'Takk for din donasjon!',
 	'payflowpro_gateway-post-transaction' => 'Transaksjonsdetaljer.',
 	'payflowpro_gateway-submit-button' => 'Gi',
@@ -4204,16 +3996,10 @@ Signaturområdet vil som oftest ha en serie tall, men kun de tre siste sifrene u
 I enkelte tilfeller er koden plassert på venstre side av kortet, men alltid over kontonummeret.</p></br >',
 	'payflowpro_gateway-question-comment' => 'Spørsmål eller kommentarer? Kontakt: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Etter å ha klikket «{{int:payflowpro_gateway-donor-submit}}» vil din kredittkortinformasjon bli gjennomgått.',
-	'payflowpro_gateway-credit-storage-processing' => 'Det er <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">andre måter å gi på, inklusive PayPal, sjekk eller post</a>.<br />
-Vi lagrer ikke din kredittkortinformasjon, og persondata er underlagt våre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">retningslinjer for personvern</a>.',
-	'donate_interface-GBP' => 'GBP: Britiske pund',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: U.S. Dollar',
-	'donate_interface-AUD' => 'AUD: Australske dollar',
-	'donate_interface-CAD' => 'CAD: Kanadiske dollar',
-	'donate_interface-JPY' => 'JPY: Japanske yen',
+	'payflowpro_gateway-otherways' => 'Det finnes <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/nb">andre måter å gi på, inklusive PayPal, sjekk eller post</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Vi lagrer ikke din kredittkortinformasjon, og persondata er underlagt våre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">retningslinjer for personvern</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Økten din har utløpt. Prøv å fylle ut og sende inn skjemaet på nytt.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Personlig informasjon',
+	'payflowpro_gateway-cc-form-header-personal' => 'Faktureringsinformasjon',
 	'payflowpro_gateway-cc-form-header-payment' => 'Betalingsinformasjon',
 );
 
@@ -4224,6 +4010,7 @@ $messages['oc'] = array(
 	'payflowprogateway' => 'Sostenètz Wikimedia',
 	'payflowpro_gateway-desc' => 'Tractament par carta de credit PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Aquesta pagina es pas accessibla que dempuèi la pagina de donacion.',
+	'payflowpro_gateway-form-message' => 'Contribuissètz amb vòstre carta de credit.',
 	'payflowpro_gateway-form-message-2' => 'Per cambiar lo montant o la devisa, tornatz a <a href="/index.php?title=Donate">la pagina de donacion</a>',
 	'payflowpro_gateway-donor-legend' => 'Informacions sul donator',
 	'payflowpro_gateway-card-legend' => 'Informacions sus la carta de credit',
@@ -4297,14 +4084,7 @@ Tipicament, la barra per la signatura conten una seria de nombres, mas solas las
 Dins d'unes cases, lo còde es situat sul costat d'esquèrra de la carta, mas es totjorn en dessús del numèro de compte.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Wikipèdia es un projècte de la Wikimedia Foundation. De questions o de comentaris ? Contactatz la Wikimedia Foundation : <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Aprèp aver clicat sus "{{int:payflowpro_gateway-donor-submit}}", las informacions de vòstra carta de credit seràn tractadas.',
-	'payflowpro_gateway-credit-storage-processing' => 'I a <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/oc">d\'autres mejans de donar, notadament PayPal, per chèc o per corrièr postal</a>.
-Salvam pas las donadas de vòstra carta de credit e vòstras informacions personalas son somesas a nòstra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidencialitat</a>.',
-	'donate_interface-GBP' => 'GBP : liura sterling',
-	'donate_interface-EUR' => 'EUR : èuro',
-	'donate_interface-USD' => 'USD : dolar american',
-	'donate_interface-AUD' => 'AUD : dolar australian',
-	'donate_interface-CAD' => 'CAD : dolar canadian',
-	'donate_interface-JPY' => 'JPY : yen japonés',
+	'payflowpro_gateway-credit-storage-processing' => 'Salvam pas las donadas de vòstra carta de credit e vòstras informacions personalas son somesas a nòstra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">politica de confidencialitat</a>.',
 );
 
 /** Deitsch (Deitsch)
@@ -4320,11 +4100,6 @@ $messages['pdc'] = array(
 	'payflowpro_gateway-donor-country' => 'Land/Gegend:',
 	'payflowpro_gateway-donor-address' => 'Adress:',
 	'payflowpro_gateway-error-msg-lname' => 'Familie-Naame',
-	'donate_interface-GBP' => 'GBP: Britisch Pfund',
-	'donate_interface-EUR' => 'EUR: Eiro',
-	'donate_interface-USD' => 'USD: U.S. Dollar',
-	'donate_interface-AUD' => 'AUD: Australische Dollar',
-	'donate_interface-CAD' => 'CAD: Kanadische Dollar',
 );
 
 /** Polish (Polski)
@@ -4337,6 +4112,8 @@ $messages['pl'] = array(
 	'payflowprogateway' => 'Pomóż Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal obsługa kart kredytowych Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Strona dostępna jest wyłącznie ze strony darowizn.',
+	'payflowpro_gateway-form-message' => 'Użyj poniższego formularza aby wpłacić darowiznę kartą kredytową lub',
+	'payflowpro_gateway-paypal-button' => 'Darowizna przez PayPal',
 	'payflowpro_gateway-form-message-2' => 'Aby zmienić kwotę lub walutę powróć do <a href="/index.php?title=Donate">strony składania darowizn</a>',
 	'payflowpro_gateway-donor-legend' => 'Informacje o darczyńcach',
 	'payflowpro_gateway-card-legend' => 'Informacje o karcie kredytowej',
@@ -4412,16 +4189,10 @@ Zazwyczaj w miejscu podpisu znajduje się długi ciąg cyfr, ale tylko trzy osta
 W niektórych przypadkach, kod znajduje się po lewej stronie karty, ale zawsze powyżej numeru rachunku bankowego.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Pytania lub komentarze? Kontakt – <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Po kliknięciu „{{int:payflowpro_gateway-donor-submit}}” zostaną przetworzone informacje o karcie kredytowej.',
-	'payflowpro_gateway-credit-storage-processing' => 'Istnieją <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/pl">inne sposoby złożenia darowizny jak PayPal, czek bankowy czy przekaz pocztowy.</a>
-Nie przechowujemy informacji o kartach kredytowych ani danych osobowych zgodnie z naszą <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polityką prywatności.</a>',
-	'donate_interface-GBP' => 'GBP – funt brytyjski',
-	'donate_interface-EUR' => 'EUR – euro',
-	'donate_interface-USD' => 'USD – dolar amerykański',
-	'donate_interface-AUD' => 'AUD – dolar australijski',
-	'donate_interface-CAD' => 'CAD – dolar kanadyjski',
-	'donate_interface-JPY' => 'JPY – jen japoński',
+	'payflowpro_gateway-otherways' => 'Są również <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/pl">inne metody zrobienia darowizny jak PayPal, czek lub poczta</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Nie przechowujemy informacji o kartach kredytowych ani danych osobowych zgodnie z naszą <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polityką prywatności.</a>',
 	'payflowpro_gateway-token-mismatch' => 'Sesja wygasła. Spróbuj jeszcze raz wypełnić i przesłać formularz.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Dane osobowe',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informacje o wpłatach',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informacja o wpłacie',
 );
 
@@ -4433,6 +4204,8 @@ $messages['pms'] = array(
 	'payflowprogateway' => 'Sosten-e Wikimedia',
 	'payflowpro_gateway-desc' => 'Tratament ëd le carte ëd crédit PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => "Sta pàgina-sì a l'é mach acessìbil da la pàgina ëd donassion",
+	'payflowpro_gateway-form-message' => 'Dòvra ël formolari sota për doné con na carta ëd crédit, o',
+	'payflowpro_gateway-paypal-button' => 'Fé na donassion con PayPal',
 	'payflowpro_gateway-form-message-2' => 'Për cangé amport o moneda, torna andré a <a href="/index.php?title=Donate">la pàgina dle donassion</a>',
 	'payflowpro_gateway-donor-legend' => 'Anformassion dël donator',
 	'payflowpro_gateway-card-legend' => 'Anformassion ëd la carta ëd crédit',
@@ -4494,7 +4267,7 @@ Për piasì contatne për continué toa transassion.',
 	'payflowpro_gateway-response-125-2' => 'Toa carta ëd crédit a peul pa esse validà. Për piasì verìfica che tute j\'anformassion dàite a corispondo a tò profil ëd carta ëd crédit, o preuva na carta diferenta. It peule ëdcò dovré un-a dle nòstre <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">àutre manere ëd dé</a> o contatene a <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>. Mersì për tò sosten.',
 	'payflowpro_gateway-response-default' => "A l'é staje n'eror an processand toa transassion.
 Për piasì prova torna pì tard.",
-	'php-response-declined' => "Toa transassion a l'é stàita arfudà.",
+	'php-response-declined' => 'Toa transassion a peul pa esse acetà.',
 	'payflowpro_gateway-thankyou' => 'mersì për toa donassion!',
 	'payflowpro_gateway-post-transaction' => 'Detaj dla transassion',
 	'payflowpro_gateway-submit-button' => 'Doné',
@@ -4508,16 +4281,10 @@ Normalment l'area ëd firma a l'ha na serie ëd nùmer, ma mach j'ùltime tre gi
 Chèiche vire, ël còdes a l'é posissionà an sla snista dla carta, ma a l'é sempe dzora al nùmer ëd cont.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Chestion o coment? Contat: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Apress avèj sgnacà "{{int:payflowpro_gateway-donor-submit}}", toe anformassion ëd la carta ëd crédit a saran processà.',
-	'payflowpro_gateway-credit-storage-processing' => 'A-i son <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">d\'àutre manere ëd fé d\'oferte, comprèis PayPal, s-cianchet, o pòsta</a>.
-Noi i memorisoma pa j\'anformassion ëd soa carta ëd crédit, e ij sò dat përsonaj a son soget a nòstre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">régole ëd confidensialità</a>.',
-	'donate_interface-GBP' => 'GBP: Sterlin-e anglèise',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dòlar U.S.',
-	'donate_interface-AUD' => 'AUD: Dòlar Australian',
-	'donate_interface-CAD' => 'CAD: Dòlar Canadèis',
-	'donate_interface-JPY' => 'JPY: Yen Giaponèis',
+	'payflowpro_gateway-otherways' => 'A-i é <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">àutre manere ëd doné, comprèis PayPal, s-cianchet, o pòsta</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Noi i memorisoma pa j\'anformassion ëd soa carta ëd crédit, e ij sò dat përsonaj a son soget a nòstre <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">régole ëd confidensialità</a>.',
 	'payflowpro_gateway-token-mismatch' => "Soa session a l'é terminà. Për piasì, ch'a preuva a ampinì e a mandé torna ël formolari.",
-	'payflowpro_gateway-cc-form-header-personal' => 'Anformassion përsonaj',
+	'payflowpro_gateway-cc-form-header-personal' => 'Anformassion dël pagament',
 	'payflowpro_gateway-cc-form-header-payment' => 'Anformassion ëd pagament',
 );
 
@@ -4557,8 +4324,6 @@ $messages['ps'] = array(
 	'payflowpro_gateway-error-msg-expiration' => 'د کرېډټ کارډ پای نېټه',
 	'payflowpro_gateway-error-msg-cvv' => 'د کرېډټ کارډ د شا CVV',
 	'payflowpro_gateway-submit-button' => 'بسپنه ورکول',
-	'donate_interface-EUR' => 'EUR: اېرو',
-	'donate_interface-USD' => 'USD: امريکايي ډالر',
 );
 
 /** Portuguese (Português)
@@ -4571,6 +4336,8 @@ $messages['pt'] = array(
 	'payflowprogateway' => 'Apoie a Wikimedia',
 	'payflowpro_gateway-desc' => 'Processamento de cartões de crédito pela plataforma PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Esta página só é acessível a partir da página de donativos.',
+	'payflowpro_gateway-form-message' => 'Use o formulário abaixo para fazer um donativo com cartão de crédito, ou',
+	'payflowpro_gateway-paypal-button' => 'Donativos através do PayPal',
 	'payflowpro_gateway-form-message-2' => 'Para alterar o montante ou a divisa, volte à <a href="/index.php?title=Donate">página de donativos</a>',
 	'payflowpro_gateway-donor-legend' => 'Informação do benfeitor',
 	'payflowpro_gateway-card-legend' => 'Informação do cartão de crédito',
@@ -4646,16 +4413,10 @@ Tipicamente, a zona da assinatura contém vários números mas só os 3 últimos
 Por vezes o código aparece do lado esquerdo, mas está sempre acima do número de conta.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Tem perguntas ou comentários? Contacte: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Após clicar "{{int:payflowpro_gateway-donor-submit}}", a informação do seu cartão de crédito será processada.',
-	'payflowpro_gateway-credit-storage-processing' => 'Há <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/pt">outras formas de contribuir, incluindo por PayPal, cheque ou correio</a>.<br />
-Não armazenamos informação do seu cartão de crédito e ou seus dados particulares estão sujeitos à nossa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privacidade</a>.',
-	'donate_interface-GBP' => 'GBP: Libra Esterlina',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dólar dos E.U.A.',
-	'donate_interface-AUD' => 'AUD: Dólar Australiano',
-	'donate_interface-CAD' => 'CAD: Dólar Canadiano',
-	'donate_interface-JPY' => 'JPY: Iene (Japão)',
+	'payflowpro_gateway-otherways' => 'Pode <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">fazer um donativo por outras vias, incluíndo pelo PayPal, por cheque, ou por correio</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Não armazenamos informação do seu cartão de crédito e os seus dados particulares estão sujeitos à nossa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privacidade</a>.',
 	'payflowpro_gateway-token-mismatch' => 'A sua sessão expirou. Tente preencher e submeter o formulário outra vez, por favor.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Informação particular',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informação de facturação',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informações do pagamento',
 );
 
@@ -4668,6 +4429,8 @@ $messages['pt-br'] = array(
 	'payflowprogateway' => 'Ajude a Wikimedia',
 	'payflowpro_gateway-desc' => 'Processamento de cartões de crédito pela plataforma PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Esta página só é acessível a partir da página de donativos.',
+	'payflowpro_gateway-form-message' => 'Utilize o formulário abaixo para doar com cartão de crédito ou',
+	'payflowpro_gateway-paypal-button' => 'Doe pelo PayPal',
 	'payflowpro_gateway-form-message-2' => 'Para alterar a quantia ou a unidade monetária, volte à <a href="/index.php?title=Donate">página de doação</a>',
 	'payflowpro_gateway-donor-legend' => 'Dados do doador',
 	'payflowpro_gateway-card-legend' => 'Informação do cartão de crédito',
@@ -4743,16 +4506,10 @@ Tipicamente, a zona da assinatura contém vários números mas só os 3 últimos
 Por vezes o código aparece do lado esquerdo, mas está sempre acima do número de conta.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Você tem perguntas ou comentários? Contate: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Após clicar "{{int:payflowpro_gateway-donor-submit}}", a informação do seu cartão de crédito será processada.',
-	'payflowpro_gateway-credit-storage-processing' => 'Há <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/pt">outras formas de contribuir, incluindo por PayPal, cheque ou correio</a>.<br />
-Não armazenamos informação do seu cartão de crédito e ou seus dados particulares estão sujeitos à nossa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privacidade</a>.',
-	'donate_interface-GBP' => 'GBP: Libra esterlina',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dólar americano',
-	'donate_interface-AUD' => 'AUD: Dólar australiano',
-	'donate_interface-CAD' => 'CAD: Dólar canadense',
-	'donate_interface-JPY' => 'JPY: Iene (Japão)',
+	'payflowpro_gateway-otherways' => 'Há <a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/pt">outras formas de contribuir, incluindo por PayPal, cheque ou correio</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Não armazenamos informação do seu cartão de crédito e ou seus dados particulares estão sujeitos à nossa <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">política de privacidade</a>.',
 	'payflowpro_gateway-token-mismatch' => 'A sua sessão expirou. Tente preencher e submeter o formulário outra vez, por favor.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Informações pessoais',
+	'payflowpro_gateway-cc-form-header-personal' => 'Informações da fatura',
 	'payflowpro_gateway-cc-form-header-payment' => 'Informações do pagamento',
 );
 
@@ -4815,12 +4572,6 @@ Vă mulțumim pentru donație !',
 	'payflowpro_gateway-thankyou' => 'Mulțumesc pentru donația ta !',
 	'payflowpro_gateway-post-transaction' => 'Detaliile tranzacției',
 	'payflowpro_gateway-submit-button' => 'Donați',
-	'donate_interface-GBP' => 'GBP: Liră sterlină',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dolar american',
-	'donate_interface-AUD' => 'AUD: Dolar australian',
-	'donate_interface-CAD' => 'CAD: Dolar canadian',
-	'donate_interface-JPY' => 'JPY: Yen japonez',
 );
 
 /** Tarandíne (Tarandíne)
@@ -4842,12 +4593,6 @@ $messages['roa-tara'] = array(
 	'payflowpro_gateway-error-msg-zip' => "codece d'avviamende postale",
 	'payflowpro_gateway-response-4' => 'Importe invalide.',
 	'payflowpro_gateway-submit-button' => 'Dduène',
-	'donate_interface-GBP' => "GBP: Sterline 'nglese",
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dollaro americane',
-	'donate_interface-AUD' => 'AUD: Dollaro australiane',
-	'donate_interface-CAD' => 'CAD: Dollaro canadese',
-	'donate_interface-JPY' => 'JPY: Yen giapponese',
 );
 
 /** Russian (Русский)
@@ -4860,6 +4605,8 @@ $messages['ru'] = array(
 	'payflowprogateway' => 'Поддержка Викимедиа',
 	'payflowpro_gateway-desc' => 'Обработка кредитных карт PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Эта страница доступна только со страницы сбора пожертвований.',
+	'payflowpro_gateway-form-message' => 'Используйте данную форму для пожертвования с помощью кредитной карты, или',
+	'payflowpro_gateway-paypal-button' => 'Пожертвуйте через PayPal',
 	'payflowpro_gateway-form-message-2' => 'Чтобы изменить сумму или валюту, вернитесь к <a href="/index.php?title=Donate">странице пожертвований</a>',
 	'payflowpro_gateway-donor-legend' => 'Сведения о жертвователе',
 	'payflowpro_gateway-card-legend' => 'Информация о кредитной карте',
@@ -4935,16 +4682,10 @@ $messages['ru'] = array(
 В некоторых случаях этот код расположен на левой стороне карты, но всегда выше номера счёта.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Имеются вопросы, замечания? Обращайтесь <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'После нажатия кнопки «{{int:payflowpro_gateway-donor-submit}}» начнётся обработка информации о вашей кредитной карте.',
-	'payflowpro_gateway-credit-storage-processing' => 'Существуют <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">другие способы сделать пожертвование, в том числе PayPal, чек, банковский перевод</a>.
-Мы не храним сведений о вашей кредитной карте, в отношении ваших личных данных действует <a href="http://wikimediafoundation.org/wiki/Политика_конфиденциальности_жертвователей">политика конфиденциальности</a>.',
-	'donate_interface-GBP' => 'GBP: британский фунт стерлингов',
-	'donate_interface-EUR' => 'EUR: евро',
-	'donate_interface-USD' => 'USD: доллар США',
-	'donate_interface-AUD' => 'AUD: австралийский доллар',
-	'donate_interface-CAD' => 'CAD: канадский доллар',
-	'donate_interface-JPY' => 'JPY: японская йена',
+	'payflowpro_gateway-otherways' => 'Есть <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">другие способы сделать пожертвование</a>, в том числе через PayPal, чек, почту.',
+	'payflowpro_gateway-credit-storage-processing' => 'Мы не храним сведений о вашей кредитной карте, в отношении ваших личных данных действует <a href="http://wikimediafoundation.org/wiki/Политика_конфиденциальности_жертвователей">политика конфиденциальности</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Ваш сеанс истёк. Пожалуйста, заполните форму ещё раз.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Личные сведения',
+	'payflowpro_gateway-cc-form-header-personal' => 'Платёжные сведения',
 	'payflowpro_gateway-cc-form-header-payment' => 'Информация об оплате',
 );
 
@@ -4972,6 +4713,7 @@ $messages['si'] = array(
 	'payflowprogateway' => 'විකිමාධ්‍යයට අනුග්‍රහය දක්වන්න',
 	'payflowpro_gateway-desc' => 'පේපැල් පේ‍ෆ්ලෝ ප්‍රෝ ක්‍රෙඩිට් කාඩ් පත සැකසෙමිනි',
 	'payflowpro_gateway-accessible' => 'මෙම පිටුව වෙත ප්‍රවේශ්‍ය විය හැක්කේ පරිත්‍යාග පිටුවෙන් පමණි.',
+	'payflowpro_gateway-form-message' => 'ඔබගේ න්‍රෙඩිට් කාඩ් ප‍ත භාවිත කොට දායක වන්න.',
 	'payflowpro_gateway-form-message-2' => 'අගය හෝ ව්‍යවහාර මුදල වෙනස් කෙරුමට,  <a href="/index.php?title=Donate"> පරිත්‍යාග පිටුව වෙත නැවත යන්න</a>',
 	'payflowpro_gateway-donor-legend' => 'දායකයාගේ තොරතුරු',
 	'payflowpro_gateway-card-legend' => 'ක්‍රෙඩිට් කාඩ් පතෙහි තොරතුරු',
@@ -5032,12 +4774,6 @@ $messages['si'] = array(
 	'php-response-declined' => 'ඔබගේ ගනුදෙනුව ප්‍රතික්‍ෂේප කර ඇත.',
 	'payflowpro_gateway-post-transaction' => 'ගනුදෙනු විස්තර',
 	'payflowpro_gateway-submit-button' => 'පරිත්‍යාග කරන්න',
-	'donate_interface-GBP' => 'මබ්‍රිප: බ්‍රිතාන්‍ය පවුම්',
-	'donate_interface-EUR' => 'යුරෝ: යුරෝ',
-	'donate_interface-USD' => 'ඇඩො: එ.ජ. ඩොලර්',
-	'donate_interface-AUD' => 'ඔඩො: ඕස්ට්‍රේලියානු ඩොලර්',
-	'donate_interface-CAD' => 'කැඩො: කැනේඩියානු ඩොලර්',
-	'donate_interface-JPY' => 'ජයෙ: ජපාන යෙන්',
 );
 
 /** Slovak (Slovenčina)
@@ -5047,6 +4783,7 @@ $messages['sk'] = array(
 	'payflowprogateway' => 'Podporte nadáciu Wikimedia',
 	'payflowpro_gateway-desc' => 'Spracovanie kreditnej karty PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Táto stránka je prístupná iba zo stránky darov.',
+	'payflowpro_gateway-form-message' => 'Prispejte pomocou kreditnej karty.',
 	'payflowpro_gateway-form-message-2' => 'Ak chcete zmeniť sumu alebo menu, vráťte sa na <a href="/index.php?title=Donate">stránku darov</a>',
 	'payflowpro_gateway-donor-legend' => 'Informácie o darcovi',
 	'payflowpro_gateway-card-legend' => 'Informácie o kreditnej karte',
@@ -5120,14 +4857,7 @@ Políčko pre podpis zvyčajne obsahuje postupnosť čísiel, ale iba posledné 
 V niektorých prípadoch sa kód nachádza na ľavej strane karty, ale vždy nad číslom účtu.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipédia je projekt Wikimedia Foundation. Máte otázky alebo komentáre? Kontaktujte Wikimedia Foundation: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Po kliknutí na „{{int:payflowpro_gateway-donor-submit}}“ sa informácie o vašej kreditnej karte spracujú.',
-	'payflowpro_gateway-credit-storage-processing' => 'Existujú aj <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ďalšie spôsoby darovania vrátane cez PayPal, šekom alebo poštou</a>.
-Neukladáme informácie o vašej kreditnej karte a vaše osobné údaje podliehajú našej politike <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">ochrany osobných údajov</a>.',
-	'donate_interface-GBP' => 'GBP: britská libra',
-	'donate_interface-EUR' => 'EUR: euro',
-	'donate_interface-USD' => 'USD: americký dolár',
-	'donate_interface-AUD' => 'AUD: austrálsky dolár',
-	'donate_interface-CAD' => 'CAD: kanadský dolár',
-	'donate_interface-JPY' => 'JPY: japonský jen',
+	'payflowpro_gateway-credit-storage-processing' => 'Neukladáme informácie o vašej kreditnej karte a vaše osobné údaje podliehajú našej politike <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">ochrany osobných údajov</a>.',
 );
 
 /** Slovenian (Slovenščina)
@@ -5173,12 +4903,6 @@ $messages['sl'] = array(
 	'payflowpro_gateway-thankyou' => 'Zahvaljujemo se vam za vaš prispevek!',
 	'payflowpro_gateway-post-transaction' => 'Podrobnosti transakcije',
 	'payflowpro_gateway-submit-button' => 'Prispevajte',
-	'donate_interface-GBP' => 'GBP: britanski funt',
-	'donate_interface-EUR' => 'EUR: evro',
-	'donate_interface-USD' => 'USD: ameriški dolar',
-	'donate_interface-AUD' => 'AUD: avstralski dolar',
-	'donate_interface-CAD' => 'CAD: kanadski dolar',
-	'donate_interface-JPY' => 'JPY: japonski jen',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -5217,11 +4941,6 @@ $messages['sr-ec'] = array(
 	'payflowpro_gateway-error-msg-zip' => 'поштански код',
 	'payflowpro_gateway-error-msg-card_num' => 'број кредитне карте',
 	'payflowpro_gateway-submit-button' => 'Донирајте',
-	'donate_interface-EUR' => 'EUR: Евро',
-	'donate_interface-USD' => 'USD: Амерички долар',
-	'donate_interface-AUD' => 'AUD: Аустралијски долар',
-	'donate_interface-CAD' => 'CAD: Канадски долар',
-	'donate_interface-JPY' => 'JPY: Јапански јен',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
@@ -5258,11 +4977,6 @@ $messages['sr-el'] = array(
 	'payflowpro_gateway-error-msg-zip' => 'poštanski kod',
 	'payflowpro_gateway-error-msg-card_num' => 'broj kreditne karte',
 	'payflowpro_gateway-submit-button' => 'Donirajte',
-	'donate_interface-EUR' => 'EUR: Evro',
-	'donate_interface-USD' => 'USD: Američki dolar',
-	'donate_interface-AUD' => 'AUD: Australijski dolar',
-	'donate_interface-CAD' => 'CAD: Kanadski dolar',
-	'donate_interface-JPY' => 'JPY: Japanski jen',
 );
 
 /** Swedish (Svenska)
@@ -5274,6 +4988,7 @@ $messages['sv'] = array(
 	'payflowprogateway' => 'Stöd Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kreditkortsbearbetning',
 	'payflowpro_gateway-accessible' => 'Denna sida är endast åtkomlig från givarsidan.',
+	'payflowpro_gateway-form-message' => 'Ge ett bidrag med ditt kreditkort.',
 	'payflowpro_gateway-form-message-2' => 'För att ändra belopp eller valuta, gå till <a href="/index.php?title=Donate">givarsidan</a>',
 	'payflowpro_gateway-donor-legend' => 'Givarinformation',
 	'payflowpro_gateway-card-legend' => 'Kreditkortsinformation',
@@ -5349,14 +5064,7 @@ Oftast har signaturområdet en serie tal, men endast de tre sista siffrorna utg�
 I vissa fall finns koden på vänstra sidan av koret, men alltid ovanför kontonumret.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Frågor eller kommentarer? Kontakt: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Efter att ha klickat "{{int:payflowpro_gateway-donor-submit}}", kommer din kreditkortsinformation hanteras',
-	'payflowpro_gateway-credit-storage-processing' => 'Det finns <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">andra sätt att ge, inklusive PayPal, check, eller mejl</a>.<br />
-Vi sparar inte din kreditkortsinformation, och dina personliga uppgifter är underställda vår <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">integritetspolicy</a>.',
-	'donate_interface-GBP' => 'GBP: Brittiska pund',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: USA-dollar',
-	'donate_interface-AUD' => 'AUD: Australiska dollar',
-	'donate_interface-CAD' => 'CAD: Canadensiska dollar',
-	'donate_interface-JPY' => 'JPY: Japanska yen',
+	'payflowpro_gateway-credit-storage-processing' => 'Vi sparar inte din kreditkortsinformation, och dina personliga uppgifter är underställda vår <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">integritetspolicy</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Din sessionstid har gått ut. Försök att fylla i och skicka in formuläret igen.',
 	'payflowpro_gateway-cc-form-header-personal' => 'Personlig information',
 	'payflowpro_gateway-cc-form-header-payment' => 'Betalningsinformation',
@@ -5380,12 +5088,39 @@ $messages['sw'] = array(
 	'payflowpro_gateway-submit-button' => 'Michango',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'payflowpro_gateway-cvv-link' => 'எடுத்துக்காட்டு',
+	'payflowpro_gateway-donor-amount' => 'தொகை:',
+	'payflowpro_gateway-donor-email' => 'மின்னஞ்சல் முகவரி:',
+	'payflowpro_gateway-donor-fname' => 'முதல் பெயர்:',
+	'payflowpro_gateway-donor-mname' => 'நடுப்பெயர்:',
+	'payflowpro_gateway-donor-lname' => 'அப்பா/குடும்ப பெயர்:',
+	'payflowpro_gateway-donor-name' => 'பெயர்:',
+	'payflowpro_gateway-donor-city' => 'நகரம்:',
+	'payflowpro_gateway-donor-state' => 'மாநிலம்:',
+	'payflowpro_gateway-donor-postal' => 'அஞ்சல் எண்:',
+	'payflowpro_gateway-donor-country' => 'நாடு/மண்டலம்:',
+	'payflowpro_gateway-donor-address' => 'முகவரி:',
+	'payflowpro_gateway-error-msg-emailAdd' => 'மின்னஞ்சல் முகவரி',
+	'payflowpro_gateway-error-msg-fname' => 'முதல் (தங்கள்) பெயர்',
+	'payflowpro_gateway-error-msg-lname' => 'அப்பா/குடும்பப் பெயர்',
+	'payflowpro_gateway-error-msg-street' => 'தெரு முகவரி',
+	'payflowpro_gateway-error-msg-city' => 'நகரம்',
+	'payflowpro_gateway-error-msg-state' => 'மாநிலம்',
+	'payflowpro_gateway-error-msg-zip' => 'அஞ்சல் எண்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
 	'payflowprogateway' => 'వికీమీడియాకి తోడ్పడండి',
 	'payflowpro_gateway-accessible' => 'ఈ పేజీ కేవలం విరాళపు పేజీ నుండి మాత్రమే అందుబాటులో ఉంటుంది.',
+	'payflowpro_gateway-form-message' => 'మీ క్రెడిట్ కార్డుతో చెల్లించండి.',
+	'payflowpro_gateway-paypal-button' => 'పేపాల్ ద్వారా విరాళమివ్వండి',
 	'payflowpro_gateway-form-message-2' => 'విరాళపు మొత్తాన్ని లేదా మారకద్రవ్యాన్ని మార్చుకోడానికి, తిరిగి <a href="/index.php?title=Donate">విరాళపు పేజీ</a>కి వెళ్ళండి',
 	'payflowpro_gateway-donor-legend' => 'దాత సమాచారం',
 	'payflowpro_gateway-card-legend' => 'క్రెడిట్ కార్డు సమాచారం',
@@ -5436,17 +5171,12 @@ $messages['te'] = array(
 	'payflowpro_gateway-response-112' => 'మీ చిరునామా లేదా CVV సంఖ్య (భద్రతా సంకేతం) సరైనది కాదు.',
 	'payflowpro_gateway-response-125' => 'మీ లావాదేవీని మోసాల నియంత్రణా సేవలు తిరస్కరించాయి.',
 	'payflowpro_gateway-response-default' => 'మీ లావాదేవీని జరిపించడంలో పొరపాటు దొర్లింది. దయచేసి కాసేపాగి మళ్ళీ ప్రయత్నించండి.',
-	'php-response-declined' => 'మీ లావాదేవీని తిరస్కరించారు.',
+	'php-response-declined' => 'మీ లావాదేవీని అంగీకరించలేక పోయారు.',
 	'payflowpro_gateway-thankyou' => 'మీ విరాళానికి కృతజ్ఞతలు!',
 	'payflowpro_gateway-post-transaction' => 'లావాదేవీ వివరాలు',
 	'payflowpro_gateway-submit-button' => 'విరాళమివ్వు',
-	'payflowpro_gateway-question-comment' => 'వికీపీడియా అనేది వికీమీడియా ఫౌండేషన్ యొక్క ప్రాజెక్టు. సందేశాలు లేదా సూచనలు ఉన్నాయా? వికీమీడియా ఫౌండేషన్ని సంప్రదించండి: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
-	'donate_interface-GBP' => 'GBP: బ్రిటీష్ పౌండ్',
-	'donate_interface-EUR' => 'EUR: యూరో',
-	'donate_interface-USD' => 'USD: అమెరికా డాలర్',
-	'donate_interface-AUD' => 'AUD: ఆస్ట్రేలియా డాలర్',
-	'donate_interface-CAD' => 'CAD: కెనడా డాలర్',
-	'donate_interface-JPY' => 'JPY: జపనీస్ యెన్',
+	'payflowpro_gateway-question-comment' => 'సందేహాలూ లేదా సూచనలు ఉన్నాయా? సంప్రదించండి: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
+	'payflowpro_gateway-cc-form-header-payment' => 'చెల్లింపు సమాచారం',
 );
 
 /** Thai (ไทย)
@@ -5456,6 +5186,7 @@ $messages['th'] = array(
 	'payflowprogateway' => 'สนับสนุนวิกิมีเดีย',
 	'payflowpro_gateway-desc' => 'บริกาีร PayPal Payflow Pro สำหรับบัตรเครดิต',
 	'payflowpro_gateway-accessible' => 'หน้านี้สามารถเข้าถึงได้จากหน้าบริจาคเท่านั้น',
+	'payflowpro_gateway-form-message' => 'บริจาคโดยหักเงินจากบัตรเครดิต',
 	'payflowpro_gateway-form-message-2' => 'ถ้าต้องการจะเปลี่ยนแปลงจำนวนเงินหรือสกุลเงิน กรูรกลับไปยัง<a href="/index.php?title=Donate">หน้าบริจาค</a>',
 	'payflowpro_gateway-donor-legend' => 'ข้อมูลผู้บริจาค',
 	'payflowpro_gateway-card-legend' => 'ข้อมูลบัครเครดิต',
@@ -5529,14 +5260,7 @@ $messages['th'] = array(
 ในบางกรณี รหัสจะอยู่ด้านซ้ายของบัตร แต่รหัสจะอยู่เหนือหมายเลขบัตรเสมอ</p><br />',
 	'payflowpro_gateway-question-comment' => 'วิกิพีเดียเป็นหนึ่งในโครงการในมูลนิธิวิกิมีเดีย หากมีข้อสงสัยหรือติชมประการใด กรุณาติดต่อที่ <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'หลังจากคลิก "{{int:payflowpro_gateway-donor-submit}}" บัตรเครดิตของคุณจะเข้าสู่กระบวนการตัดยอด',
-	'payflowpro_gateway-credit-storage-processing' => 'และยังมี<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">วิธีอื่นๆ ที่จะบริจาค อาทิ จ่ายด้วย PayPal, เช็ค, หรือธนาณัติ</a>.
-เราจะไม่เก็บข้อมูลของบัครเครดิตของคุณไว้ และข้อมูลส่วนตัวของคุณจะถูกนำไปใช้ภายใต้<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">นโยบายการรักษาความเป็นส่วนตัว</a>',
-	'donate_interface-GBP' => 'GBP: ปอนด์อังกฤษ',
-	'donate_interface-EUR' => 'EUR: ยูโร',
-	'donate_interface-USD' => 'USD: ดอลลาร์สหรัฐ',
-	'donate_interface-AUD' => 'AUD: ดอลลาร์ออสเตรเลีย',
-	'donate_interface-CAD' => 'CAD: ดอลลาร์แคนาดา',
-	'donate_interface-JPY' => 'JPY: เยนญี่ปุ่น',
+	'payflowpro_gateway-credit-storage-processing' => 'เราจะไม่เก็บข้อมูลของบัครเครดิตของคุณไว้ และข้อมูลส่วนตัวของคุณจะถูกนำไปใช้ภายใต้<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">นโยบายการรักษาความเป็นส่วนตัว</a>',
 );
 
 /** Turkmen (Türkmençe)
@@ -5546,6 +5270,7 @@ $messages['tk'] = array(
 	'payflowprogateway' => 'Wikimediany goldaň',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kredit kartynyň işlenişi',
 	'payflowpro_gateway-accessible' => 'Bu sahypa diňe bagyş sahypasyndan baryp bolýar.',
+	'payflowpro_gateway-form-message' => 'Kredit kartyňyz bilen goşant goşuň.',
 	'payflowpro_gateway-form-message-2' => 'Mukdary ýa-da walýutany üýtgetmek üçin <a href="/index.php?title=Donate">bagyş sahypasyna</a> gaýdyp baryň',
 	'payflowpro_gateway-donor-legend' => 'Bagyş ediji hakda maglumat',
 	'payflowpro_gateway-card-legend' => 'Kredit karty maglumaty',
@@ -5608,12 +5333,6 @@ Soňra gaýtadan synaň.',
 	'payflowpro_gateway-post-transaction' => 'Geleşik jikme-jiklikleri',
 	'payflowpro_gateway-submit-button' => 'Bagyş et',
 	'payflowpro_gateway-donate-click' => '"{{int:payflowpro_gateway-donor-submit}}" düwmesine tyklanyňyzdan soňra, kredit karty maglumatyňyz işlenjekdir.',
-	'donate_interface-GBP' => 'GBP: britan funt sterlingi',
-	'donate_interface-EUR' => 'EUR: ýewro',
-	'donate_interface-USD' => 'USD: ABŞ dollary',
-	'donate_interface-AUD' => 'AUD: awstraliýa dollary',
-	'donate_interface-CAD' => 'CAD: kanada dollary',
-	'donate_interface-JPY' => 'JPY: ýapon ýenasy',
 );
 
 /** Tagalog (Tagalog)
@@ -5623,6 +5342,8 @@ $messages['tl'] = array(
 	'payflowprogateway' => 'Tangkilikin ang Wikimedia',
 	'payflowpro_gateway-desc' => 'Pagsasagawa ng tarheng pang-utang ng PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Mapupuntahan lamang ang pahinang ito mula sa pahina ng pag-aabuloy.',
+	'payflowpro_gateway-form-message' => 'Gamitin ang pormularyo sa ibaba upang mag-abuloy sa pamamagitan ng isang tarhetang pang-utang, o',
+	'payflowpro_gateway-paypal-button' => 'Mag-abuloy sa pamamagitan ng PayPal',
 	'payflowpro_gateway-form-message-2' => 'Upang mabago ang halaga o karaniwang salapi, bumalik sa <a href="/index.php?title=Donate">pahina ng donasyon</a>',
 	'payflowpro_gateway-donor-legend' => 'Kabatirang pangnag-abuloy',
 	'payflowpro_gateway-card-legend' => 'Kabatirang pangtarhetang pang-utang',
@@ -5684,7 +5405,7 @@ Mangyaring makipag-ugnayan sa amin upang maipagpatuloy ang transaksyon mo.',
 	'payflowpro_gateway-response-125-2' => 'Hindi mapapatunayan ang iyong tarhetang pang-utang.  Mangyaring patunayan na tumutugma ang lahat ng ibinigay na kabatiran sa iyong talaksan ng kasaysayan na pangtarhetang pang-utang, o sumubok ng ibang tarheta.  Maaari mo ring gamitin ang isa sa aming <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ibang mga paraan ng pagbibigay</a> o makipag-ugnayan sa amin sa href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>.  Salamat sa pagtangkilik mo.',
 	'payflowpro_gateway-response-default' => 'Nagkaroon ng kamalian sa pagsasagawa ng transaksyon mo.
 Mangyaring subukan uli mamaya.',
-	'php-response-declined' => 'Tinanggihan ang iyong transaksyon.',
+	'php-response-declined' => 'Hindi matatanggap ang iyong transaksyon.',
 	'payflowpro_gateway-thankyou' => 'Salamat sa abuloy mo!',
 	'payflowpro_gateway-post-transaction' => 'Mga detalye ng transaksyon',
 	'payflowpro_gateway-submit-button' => 'Mag-abuloy',
@@ -5698,16 +5419,10 @@ Karaniwang mayroong magkakasunod na mga bilang ang panig ng lagda, subalit ang t
 Sa ilang mga pagkakataon, nakalagay ang kodigo sa kaliwang gilid ng tarheta, subalit palaging nasa itaas ng bilang na pang-akawnt.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Magtatanong o pupuna?  Makipag-ugnayan sa: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Pagkaraang pindutin ang "{{int:payflowpro_gateway-donor-submit}}", isasagawa na ang iyong kabatiran na pangtarheta ng pangungutang.',
-	'payflowpro_gateway-credit-storage-processing' => 'May <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">iba pang paraang ng pagbibigay, kabilang ang PayPal, tseke, o liham</a>.<br />
-Hindi namin itinatabi ang iyong kabatiran na pangtarhetang pang-utang, at ang iyong datong pansarili ay nasa ilalim ng <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">patakaran ng pagkapribado</a>.',
-	'donate_interface-GBP' => 'GBP: Libra ng Britanya',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dolyar ng Estados Unidos',
-	'donate_interface-AUD' => 'AUD: Dolyar ng Australia',
-	'donate_interface-CAD' => 'CAD: Doyar ng Kanada',
-	'donate_interface-JPY' => 'JPY: Yen ng Hapon',
+	'payflowpro_gateway-otherways' => 'May <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">ibang mga paraan upang makapagbigay, kasama ang PayPal, tseke, o liham</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Hindi namin itinatabi ang iyong kabatiran na pangtarhetang pang-utang, at ang iyong datong pansarili ay nasa ilalim ng <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">patakaran ng pagkapribado</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Nagwakas na ang laang oras para sa iyo.  Mangyaring paki subukang punan at ipasang muli ang pormularyo.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Kabatirang pangsarili',
+	'payflowpro_gateway-cc-form-header-personal' => 'Kabatiran sa pagbabayad',
 	'payflowpro_gateway-cc-form-header-payment' => 'Kabatiran sa pagbabayad',
 );
 
@@ -5719,6 +5434,7 @@ $messages['tr'] = array(
 	'payflowprogateway' => "Wikimedia'yı destekleyin",
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro kredi kartı işlemi',
 	'payflowpro_gateway-accessible' => 'Bu sayfa sadece bağış sayfasından erişilebilirdir.',
+	'payflowpro_gateway-form-message' => 'Kredi kartınızla katkıda bulunun.',
 	'payflowpro_gateway-form-message-2' => 'Miktarı ya da para birimini değiştirmek için <a href="/index.php?title=Donate">bağış sayfasına</a> geri dönün',
 	'payflowpro_gateway-donor-legend' => 'Bağışçı bilgisi',
 	'payflowpro_gateway-card-legend' => 'Kredi kartı bilgisi',
@@ -5792,14 +5508,7 @@ Genellikle imza alanında bir seri numara vardır, ancak sadece son üç hane CV
 Bazı durumlarda, kod kartın sol tarafındadır, ama her zaman hesap numarasının üstündedir.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Wikipedia, Wikimedia Vakfı\'nın bir projesidir. Soru veya yorum? Wikimedia Vakfı ile irtibat kurun: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => '"{{int:payflowpro_gateway-donor-submit}}" düğmesine tıkladıktan sonra, kredi kartı bilginiz işlenecektir.',
-	'payflowpro_gateway-credit-storage-processing' => '<a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">Vermenin başka yolları da vardır, PayPal, çek, ya da posta gibi</a>.
-Kredi kartı bilginizi saklamıyoruz, ve kişisel veriniz <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">gizlilik ilkemize</a> tabidir.',
-	'donate_interface-GBP' => 'GBP: İngiliz Sterlini',
-	'donate_interface-EUR' => 'EUR: Avro',
-	'donate_interface-USD' => 'USD: Amerikan Doları',
-	'donate_interface-AUD' => 'AUD: Avustralya Doları',
-	'donate_interface-CAD' => 'CAD: Kanada Doları',
-	'donate_interface-JPY' => 'JPY: Japon Yeni',
+	'payflowpro_gateway-credit-storage-processing' => 'Kredi kartı bilginizi saklamıyoruz, ve kişisel veriniz <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">gizlilik ilkemize</a> tabidir.',
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
@@ -5809,6 +5518,7 @@ $messages['tt-cyrl'] = array(
 	'payflowprogateway' => 'Викимедиа проектына ярдәм итү',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro кредит карталарын куллану',
 	'payflowpro_gateway-accessible' => 'Бу сәхифә бары тик ярдәм җыю битендә генә ачыла.',
+	'payflowpro_gateway-form-message' => 'Үзегезнең  кредит картыгыз ярдәмендә иганә ясагыз.',
 	'payflowpro_gateway-form-message-2' => 'Акчаның күләмен яки акча берәмлеген алмаштыру өчен <a href="/index.php?title=Donate">иганәләр битенә кайтыгыз</a>',
 	'payflowpro_gateway-donor-legend' => 'Иганә турында мәгълүмат',
 	'payflowpro_gateway-card-legend' => 'Крдеит картасы турында мәгълүмат',
@@ -5869,6 +5579,7 @@ $messages['uk'] = array(
 	'payflowprogateway' => 'Підтримай Вікімедіа',
 	'payflowpro_gateway-desc' => 'Обробка кредитних карт PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Ця сторінка доступна тільки зі сторінки збору пожертвувань.',
+	'payflowpro_gateway-form-message' => 'Скористайтесь цією формою, щоб зробити пожертву з кредитної карти, або',
 	'payflowpro_gateway-form-message-2' => 'Щоб змінити суму або валюту, поверніться до <a href="/index.php?title=Donate">сторінки пожертвувань</a>',
 	'payflowpro_gateway-donor-legend' => 'Інформація про жертводавця',
 	'payflowpro_gateway-card-legend' => 'Інформація про кредитну картку',
@@ -5928,20 +5639,13 @@ $messages['uk'] = array(
 	'payflowpro_gateway-response-125-2' => 'Ваша кредитна картка не може бути підтверджена. Будь ласка, переконайтеся, що всі заповнені дані відповідають профілю вашої кредитної картки або скористайтесь іншою карткою. Ви також можете скористатись одним з <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">інших способів пожертвування</a> або зв\'язатись з нами електронною поштою <a href="mailto:donate@wikimedia.org">donate@wikimedia.org.</a> Дякуємо за вашу підтримку.',
 	'payflowpro_gateway-response-default' => 'Під час обробки вашої транзакції виникла помилка.
 Будь ласка, спробуйте пізніше.',
-	'php-response-declined' => 'Ваша транзакція відхилена.',
+	'php-response-declined' => 'Ваша транзакція не може бути прийнята.',
 	'payflowpro_gateway-thankyou' => 'Дякуємо за ваше пожертвування!',
 	'payflowpro_gateway-post-transaction' => 'Деталі транзакції',
 	'payflowpro_gateway-submit-button' => 'Пожертвувати',
 	'payflowpro_gateway-question-comment' => 'В випадку запитань та коментарів зв\'яжіться з Фондом Вікімедіа: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Після натискання "{{int:payflowpro_gateway-donor-submit}}" інформацію про кредитну картку буде оброблено.',
-	'payflowpro_gateway-credit-storage-processing' => 'Є <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">інші способи внесків, у тому числі PayPal, чек або поштовий переказ.</a>
-Ми не зберігаємо інформацію про вашу кредитну картку, і ваші особисті дані є об\'єктом нашої <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">політики конфіденційності</a>.',
-	'donate_interface-GBP' => 'GBP: англійський фунт стерлінгів',
-	'donate_interface-EUR' => 'EUR: євро',
-	'donate_interface-USD' => 'USD: долар США',
-	'donate_interface-AUD' => 'AUD: австралійський долар',
-	'donate_interface-CAD' => 'CAD: канадський долар',
-	'donate_interface-JPY' => 'JPY: японська єна',
+	'payflowpro_gateway-credit-storage-processing' => 'Ми не зберігаємо інформацію про вашу кредитну картку, і ваші особисті дані є об\'єктом нашої <a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">політики конфіденційності</a>.',
 );
 
 /** Vèneto (Vèneto)
@@ -5951,6 +5655,7 @@ $messages['vec'] = array(
 	'payflowprogateway' => 'Juta Wikimedia',
 	'payflowpro_gateway-desc' => 'Tratamento de carte de credito PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Sta pagina la se pol védar sol che da la pagina de donassion.',
+	'payflowpro_gateway-form-message' => 'Contribuissi co la to carta de credito.',
 	'payflowpro_gateway-form-message-2' => 'Par canbiar l\'inporto o el scheo, torna indrìo a la <a href="/index.php?title=Donate">pagina de donassion</a>',
 	'payflowpro_gateway-donor-legend' => 'Informassion sul donator',
 	'payflowpro_gateway-card-legend' => 'Informassion su la carta de credito',
@@ -6022,14 +5727,7 @@ De solito in tel spassio de la firma se cata na serie de nùmari, ma solo i ulti
 Qualche olta, el còdese el xe dala parte sinistra de la carta, ma senpre de sora del nùmaro de carta.</p><br />",
 	'payflowpro_gateway-question-comment' => 'Wikipedia el xe un projeto de la Fondassion Wikimedia. Domande o comenti? Scrìveghe a la Fondassion Wikimedia: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Strucando "{{int:payflowpro_gateway-donor-submit}}", le informassion su la to carta de credito le vegnarà elaborà.',
-	'payflowpro_gateway-credit-storage-processing' => 'Ghe xe anca <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en">altre maniere par donar, come PayPal, co un assegno, o par posta</a>.
-Noantri no se salvémo mia i dati de la to carta de credito, e i to dati personali i xe sogeti a la nostra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polìtega de riservadessa</a>.',
-	'donate_interface-GBP' => 'GBP: Sterlina britànega',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Dolaro merican',
-	'donate_interface-AUD' => 'AUD: Dolaro australian',
-	'donate_interface-CAD' => 'CAD: Dolaro canadese',
-	'donate_interface-JPY' => 'JPY: Yen zaponese',
+	'payflowpro_gateway-credit-storage-processing' => 'Noantri no se salvémo mia i dati de la to carta de credito, e i to dati personali i xe sogeti a la nostra <a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">polìtega de riservadessa</a>.',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -6040,6 +5738,8 @@ $messages['vi'] = array(
 	'payflowprogateway' => 'Hỗ trợ Wikimedia',
 	'payflowpro_gateway-desc' => 'Xử lý thẻ tín dụng dùng PayPal Payflow Pro',
 	'payflowpro_gateway-accessible' => 'Trang này chỉ truy cập được từ trang quyên góp.',
+	'payflowpro_gateway-form-message' => 'Điền biểu mẫu ở dưới để đóng góp bằng thẻ tín dụng, hoặc',
+	'payflowpro_gateway-paypal-button' => 'Quyên góp dùng PayPal',
 	'payflowpro_gateway-form-message-2' => 'Để thay đổi số tiền hoặc loại tiền, trở lại <a href="/index.php?title=Donate/vi&uselang=vi">trang quyên góp</a>',
 	'payflowpro_gateway-donor-legend' => 'Thông tin người tặng',
 	'payflowpro_gateway-card-legend' => 'Thông tin thẻ tín dụng',
@@ -6113,16 +5813,10 @@ Xin hãy thử lại vào lần sau.',
 <p>Mã số <strong>lúc nào</strong> cũng nằm <strong>ở trên</strong> số tài khoản in nổi trên mặt phải. Đôi khi mã số nằm vào bên trái của mặt phải nhưng vẫn còn nằm ở trên số tài khoản.</p><br />',
 	'payflowpro_gateway-question-comment' => 'Có thắc mắc hay gợi ý? Hãy liên lạc với Wikimedia Foundation: <a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => 'Sau khi nhấn chuột vào “{{int:payflowpro_gateway-donor-submit}}”, thông tin thẻ tín dụng của bạn sẽ được xử lý.',
-	'payflowpro_gateway-credit-storage-processing' => 'Cũng có <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en?uselang=vi">những cách khác để tặng tiền, bao gồm PayPal, séc, hoặc thư</a>.<br />
-Chúng tôi không lưu giữ thông tin thẻ tín dụng của bạn, và dữ liệu cá nhân của bạn được sử dụng theo <a href="http://wikimediafoundation.org/wiki/Quy_%C4%91%E1%BB%8Bnh_quy%E1%BB%81n_ri%C3%AAng_t%C6%B0?uselang=vi">quy định quyền riêng tư</a>.',
-	'donate_interface-GBP' => 'GBP: Bảng Anh',
-	'donate_interface-EUR' => 'EUR: Euro',
-	'donate_interface-USD' => 'USD: Đô la Mỹ',
-	'donate_interface-AUD' => 'AUD: Đô la Úc',
-	'donate_interface-CAD' => 'CAD: Đô la Canada',
-	'donate_interface-JPY' => 'JPY: Yên Nhật',
+	'payflowpro_gateway-otherways' => 'Cũng có <a href="http://wikimediafoundation.org/wiki/Ways_to_Give/en?uselang=vi">những cách khác để tặng tiền, bao gồm PayPal, séc, hoặc thư</a>.',
+	'payflowpro_gateway-credit-storage-processing' => 'Chúng tôi không lưu giữ thông tin thẻ tín dụng của bạn, và dữ liệu cá nhân của bạn được sử dụng theo <a href="http://wikimediafoundation.org/wiki/Quy_%C4%91%E1%BB%8Bnh_quy%E1%BB%81n_ri%C3%AAng_t%C6%B0?uselang=vi">quy định quyền riêng tư</a>.',
 	'payflowpro_gateway-token-mismatch' => 'Phiên của bạn đã hết hạn. Xin hãy thử điền và nộp đơn một lần nữa.',
-	'payflowpro_gateway-cc-form-header-personal' => 'Thông tin cá nhân',
+	'payflowpro_gateway-cc-form-header-personal' => 'Thông tin thanh toán',
 	'payflowpro_gateway-cc-form-header-payment' => 'Thông tin trả tiền',
 );
 
@@ -6150,6 +5844,7 @@ $messages['yue'] = array(
 	'payflowprogateway' => '支持 Wikimedia',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro 信用咭處理',
 	'payflowpro_gateway-accessible' => '呢一版只可以由捐錢版存取。',
+	'payflowpro_gateway-form-message' => '用你嘅信用咭貢獻。',
 	'payflowpro_gateway-form-message-2' => '要改金額或者貨幣，返去<a href="/index.php?title=Donate">捐錢版</a>',
 	'payflowpro_gateway-donor-legend' => '捐錢者資料',
 	'payflowpro_gateway-card-legend' => '信用咭資料',
@@ -6224,14 +5919,7 @@ $messages['yue'] = array(
 響一啲嘅情況，個碼會響張咭嘅左手邊，但係都一定會響戶口冧吧嘅上面。</p><br />',
 	'payflowpro_gateway-question-comment' => '維基百科係Wikimedia Foundation嘅其中一個計劃。問或解？聯絡Wikimedia Foundation：<a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => '當撳咗 "{{int:payflowpro_gateway-donor-submit}}" 之後，你嘅信用咭資料將會被處理。',
-	'payflowpro_gateway-credit-storage-processing' => '重有<a href="http://wikimediafoundation.org/wiki/Donate/Ways_to_Give/yue">其它方法去畀，包��PayPal、支票或者郵寄</a>。
-基於我哋嘅<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">私隱政策</a>，我哋唔會保存你嘅信用咭資料，同埋你嘅個人資料。',
-	'donate_interface-GBP' => 'GBP: 英鎊',
-	'donate_interface-EUR' => 'EUR: 歐元',
-	'donate_interface-USD' => 'USD: 美元',
-	'donate_interface-AUD' => 'AUD: 澳大利亞元',
-	'donate_interface-CAD' => 'CAD: 加拿大元',
-	'donate_interface-JPY' => 'JPY: 日圓',
+	'payflowpro_gateway-credit-storage-processing' => '基於我哋嘅<a href="http://wikimediafoundation.org/wiki/Wikimedia:Privacy_policy">私隱政策</a>，我哋唔會保存你嘅信用咭資料，同埋你嘅個人資料。',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -6243,6 +5931,7 @@ $messages['zh-hans'] = array(
 	'payflowprogateway' => '支持维基媒体',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro信用卡处理',
 	'payflowpro_gateway-accessible' => '本页只能从资助页面访问',
+	'payflowpro_gateway-form-message' => '用您的信用卡捐助。',
 	'payflowpro_gateway-form-message-2' => '要更改数额或币种，请返回<a href="/index.php?title=Donate">资助页面</a>',
 	'payflowpro_gateway-donor-legend' => '捐助人信息',
 	'payflowpro_gateway-card-legend' => '信用卡信息',
@@ -6317,14 +6006,7 @@ $messages['zh-hans'] = array(
 某些情况下CCV会印制在左侧。但一定是平印在卡号上方。</p><br />',
 	'payflowpro_gateway-question-comment' => '维基百科是维基媒体基金会的一个项目。若有问题或意见，请联系维基媒体基金会：<a href="mailto:donate@wikimedia.org">donate@wikimedia.org</a>',
 	'payflowpro_gateway-donate-click' => '在点击“{{int:payflowpro_gateway-donor-submit}}”后，我们就会对您提交的信用卡信息进行处理。',
-	'payflowpro_gateway-credit-storage-processing' => '此外还可以通过<a href="http://wikimediafoundation.org/wiki/Donate/WaysToGive/zh-hans">其他途径捐助，包括PayPal，支票或邮件</a>。
-我们不储存您的信用卡信息，并且您的个人信息也会遵循我们的<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">隐私政策</a>。',
-	'donate_interface-GBP' => 'GBP: 英镑',
-	'donate_interface-EUR' => 'EUR: 欧元',
-	'donate_interface-USD' => 'USD: 美元',
-	'donate_interface-AUD' => 'AUD: 澳大利亚元',
-	'donate_interface-CAD' => 'CAD: 加拿大元',
-	'donate_interface-JPY' => 'JPY: 日圆',
+	'payflowpro_gateway-credit-storage-processing' => '我们不储存您的信用卡信息，并且您的个人信息也会遵循我们的<a href="http://wikimediafoundation.org/wiki/Donor_Privacy_Policy">隐私政策</a>。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -6335,6 +6017,7 @@ $messages['zh-hant'] = array(
 	'payflowprogateway' => '支持維基媒體',
 	'payflowpro_gateway-desc' => 'PayPal Payflow Pro信用卡處理',
 	'payflowpro_gateway-accessible' => '本頁只能從資助頁面訪問',
+	'payflowpro_gateway-form-message' => '用您的信用卡捐助。',
 	'payflowpro_gateway-form-message-2' => '要更改數額或幣種，請返回<a href="/index.php?title=Donate">資助頁面</a>',
 	'payflowpro_gateway-donor-legend' => '捐助人信息',
 	'payflowpro_gateway-card-legend' => '信用卡信息',
@@ -6396,11 +6079,5 @@ $messages['zh-hant'] = array(
 	'payflowpro_gateway-thankyou' => '感謝您的捐贈！',
 	'payflowpro_gateway-post-transaction' => '交易詳情',
 	'payflowpro_gateway-submit-button' => '捐助',
-	'donate_interface-GBP' => 'GBP: 英鎊',
-	'donate_interface-EUR' => 'EUR: 歐元',
-	'donate_interface-USD' => 'USD: 美元',
-	'donate_interface-AUD' => 'AUD: 澳大利亞元',
-	'donate_interface-CAD' => 'CAD: 加拿大元',
-	'donate_interface-JPY' => 'JPY: 日圓',
 );
 

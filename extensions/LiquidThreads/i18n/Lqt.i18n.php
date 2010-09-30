@@ -2597,7 +2597,7 @@ bet savet d'an $3 da $4.
 
 E lenn a c'hallit ober war <$6>
 
-Testenn ar respont a zo:
+Testenn ar respont zo :
 $7",
 	'lqt-quote-intro' => "D'an $2 da $3, eo bet skrivet gant [[User:$1|$1]] :",
 	'lqt-quote' => 'Menegiñ',
@@ -9529,7 +9529,7 @@ La firma è mostrata automaticamente.',
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'lqt-desc' => 'トークページをスレッド形式の議論ページにする',
+	'lqt-desc' => 'トークページにスレッド形式の議論を追加する',
 	'lqt_movethread' => 'スレッドを別のページに移動',
 	'lqt_deletethread' => 'スレッドの削除と復帰',
 	'lqt_contents_title' => '目次',
@@ -9544,15 +9544,15 @@ $messages['ja'] = array(
 * インターウィキ用接頭辞や名前空間名と衝突している',
 	'lqt_empty_subject' => '表題を入力する必要があります。',
 	'lqt_reply' => '返答',
-	'lqt-parent' => '上位カテゴリ',
+	'lqt-parent' => '上位メッセージ',
 	'lqt_delete' => '削除',
 	'lqt_undelete' => '復帰',
-	'lqt_permalink' => 'この発言',
-	'lqt_fragment' => '$2 における$1の一部',
+	'lqt_permalink' => 'この発言へのリンク',
+	'lqt_fragment' => '$2における$1の一部',
 	'lqt_discussion_link' => '議論',
 	'lqt_from_talk' => '$1 より',
-	'lqt_newer' => '←新しいもの',
-	'lqt_older' => '古いもの→',
+	'lqt_newer' => '←新',
+	'lqt_older' => '古→',
 	'lqt-history-title' => 'スレッド履歴',
 	'lqt_hist_comment_edited' => 'コメントの[$2 編集]',
 	'lqt_hist_summary_changed' => '要約の変更',
@@ -9594,7 +9594,8 @@ $messages['ja'] = array(
 	'lqt_protectedfromreply_link' => '保護',
 	'lqt_subject' => '表題:',
 	'lqt_noreason' => '理由は付記されていません。',
-	'lqt_move_placeholder' => 'このスレッドは、スレッド「$1」が別ページへ移動したことを示すプレースホルダーです。この移動は $3 $4 に $2 によって行われました。スレッドは現在 $5 にあります。',
+	'lqt_move_placeholder' => 'スレッド「$1」は、ここから、$5へ移動されました。
+この移動は$3$4に、$2によって行われました。',
 	'lqt_thread_deleted_for_sysops' => "このスレッドは'''削除'''されており、{{int:group-sysop}}だけが内容を見ることができます。",
 	'lqt_thread_deleted' => 'このスレッドは削除されました。',
 	'lqt_summary_notice' => 'この議論は少なくとも$2{{PLURAL:$2|日間}}進展がありません。議論が終結しているなら、$1のも良いでしょう。',
@@ -16621,6 +16622,39 @@ $messages['szl'] = array(
 	'lqt_move_move' => 'Przećep',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'lqt_add_header' => 'தலைப்பைக் கொடுக்கவும்',
+	'lqt_empty_subject' => 'தாங்கள் இதற்கான ஒரு தலைப்பைக் கொடுக்கவும்',
+	'lqt_reply' => 'பதில் அளி',
+	'lqt_delete' => 'நீக்கவும்',
+	'lqt_undelete' => 'நீக்கத்தை நிறுத்து',
+	'lqt_protectedfromreply_link' => 'காக்கப்பட்டது',
+	'lqt_subject' => 'பொருள்:',
+	'lqt_move_torename_edit' => 'இதைத் தொகுக்கவும்',
+	'lqt_move_move' => 'நகர்த்தவும்',
+	'lqt-title' => 'தலைப்பு',
+	'lqt-summary' => 'சுருக்கம்',
+	'lqt-older' => 'பழையது',
+	'lqt-newer' => 'புதியது',
+	'lqt-thread-created' => 'உருவாக்கப்பட்டுவிட்டது',
+	'lqt-history-time' => 'நேரம்',
+	'lqt-history-user' => 'பயனர்',
+	'lqt-history-action' => 'செயல்',
+	'lqt-header-actions' => 'செயல்கள்',
+	'lqt-movethread' => 'நகர்த்தவும்',
+	'lqt-menu-trigger' => 'மேலும்',
+	'lqt-merge-submit' => 'இணைக்கவும்',
+	'lqt-ajax-update-link' => 'புதுப்பி',
+	'lqt-cancel-subject-edit' => 'விட்டுவிடு',
+	'lqt-drag-save' => 'உறுதிப்படுத்து',
+	'lqt-drag-reason' => 'காரணம்:',
+	'lqt-talkpage-history-tab' => 'தலைப்பு',
+	'lqt-reply-subpage' => 'பதில்',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven
@@ -16728,6 +16762,7 @@ $messages['te'] = array(
 	'lqt_split_badsubject' => 'మీరు ఇచ్చిన విషయం సరైనది కాదు.',
 	'lqt-no-threads' => 'ఈ పుటలో ఇంకా చర్చాహారాలేమీ లేవు.',
 	'lqt-delete-parent-deleted' => 'పైన చర్చ తొలగించడమైనది ($1)',
+	'lqt-delete-replies-done' => 'ఈ చర్చాహారానికి వచ్చిన అన్ని స్పందనలను కూడా తొలగించాం.',
 	'lqt-movethread' => 'తరలించు',
 	'lqt-menu-trigger' => 'మరిన్ని',
 	'lqt-newmessages-from' => '$1 నుండి',

@@ -28,7 +28,11 @@ $wgNoticeProjects = array(
 $wgNoticeInfrastructure = true;
 
 // The name of the database which hosts the centralized campaign data
-$wgCentralDBname = 'metawiki';
+$wgCentralDBname = '';
+
+// The path to Special Pages on the wiki that hosts the CentralNotice infrastructure
+// For example 'http://meta.wikimedia.org/wiki/'
+$wgCentralPagePath = '';
 
 // Enable the loader itself
 // Allows to control the loader visibility, without destroying infrastructure
@@ -85,6 +89,7 @@ function efCentralNoticeSetup() {
 		$wgHooks['BeforePageDisplay'][] = 'efCentralNoticeLoader';
 		$wgHooks['MakeGlobalVariablesScript'][] = 'efCentralNoticeDefaults';
 		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplay';
+		$wgHooks['SkinAfterBottomScripts'][] = 'efCentralNoticeGeoLoader';
 	}
 	
 	$wgSpecialPages['BannerLoader'] = 'SpecialBannerLoader';
@@ -95,20 +100,20 @@ function efCentralNoticeSetup() {
 	
 	$wgSpecialPages['BannerController'] = 'SpecialBannerController';
 	$wgAutoloadClasses['SpecialBannerController'] = $dir . 'SpecialBannerController.php';
+	
+	$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialCentralNotice.php';
+	$wgAutoloadClasses['CentralNoticeDB'] = $dir . 'CentralNotice.db.php';
+	$wgAutoloadClasses['TemplatePager'] = $dir . 'TemplatePager.php';
 
 	if ( $wgNoticeInfrastructure ) {
 		$wgSpecialPages['CentralNotice'] = 'CentralNotice';
 		$wgSpecialPageGroups['CentralNotice'] = 'wiki'; // Wiki data and tools"
-		$wgAutoloadClasses['CentralNotice'] = $dir . 'SpecialCentralNotice.php';
-		
+
 		$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 		$wgAutoloadClasses['SpecialNoticeTemplate'] = $dir . 'SpecialNoticeTemplate.php';
-		
+
 		$wgSpecialPages['BannerAllocation'] = 'SpecialBannerAllocation';
 		$wgAutoloadClasses['SpecialBannerAllocation'] = $dir . 'SpecialBannerAllocation.php';
-		
-		$wgAutoloadClasses['CentralNoticeDB'] = $dir . 'CentralNotice.db.php';
-		$wgAutoloadClasses['TemplatePager'] = $dir . 'TemplatePager.php';
 	}
 }
 
@@ -137,16 +142,26 @@ function efCentralNoticeSchema( $updater = null ) {
 }
 
 function efCentralNoticeLoader( $out, $skin ) {
-	global $wgUser, $wgOut;
+	global $wgUser, $wgOut, $wgCentralDBname;
 
 	$centralLoader = SpecialPage::getTitleFor( 'BannerController' )->getLocalUrl();
-
-	// Insert the geo IP lookup into the <head>
-	$wgOut->addScriptFile( 'http://geoiplookup.wikimedia.org/' );
 	
 	// Insert the banner controller Javascript into the <head>
 	$wgOut->addScriptFile( $centralLoader );
 
+	return true;
+}
+
+function efCentralNoticeGeoLoader( $skin, &$text ) {
+	global $wgCentralDBname;
+	if ( $wgCentralDBname ) {
+		$dbr = wfGetDB( DB_SLAVE, array(), $wgCentralDBname );
+		$row = $dbr->selectRow( 'cn_notices', 'not_name', array( 'not_enabled = 1', 'not_geo = 1' ) );
+		if ( $row ) {
+			// Insert the geo IP lookup
+			$text .= '<script type="text/javascript" src="http://geoiplookup.wikimedia.org/"></script>';
+		}
+	}
 	return true;
 }
 

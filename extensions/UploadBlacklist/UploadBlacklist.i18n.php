@@ -96,6 +96,13 @@ $messages['cs'] = array(
 	'uploadblacklist-desc' => 'Přidává funkcionalitu černé listiny pro načítání souborů',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'uploadblacklist-desc' => 'Yn ychwanegu nodwedd uwchlwytho rhestr ddu',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'uploadblacklist-desc' => 'Fügt eine schwarze Liste für die Hochladen-Funktion hinzu',
