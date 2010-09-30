@@ -36,7 +36,7 @@ if( mwReqParam['debug'] ) {
 }
 
 //mwReqParam['debug'] = false;
-mwUseScriptLoader = true;
+//mwUseScriptLoader = true;
 //mwRemoteVersion = Math.random();
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
@@ -122,7 +122,9 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Timed text display:
-	if ( wgPageName.indexOf( "TimedText:" ) === 0 ) {
+	if ( wgPageName.indexOf( "TimedText:" ) === 0 
+			&& 
+		document.URL.indexOf('&diff=') == -1) {
 		if( wgAction == 'view' ){
 			var orgBody = mwSetPageToLoading();
 			//load the "player" ( includes call to  loadMwEmbed )
