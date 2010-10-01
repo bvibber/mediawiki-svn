@@ -123,6 +123,16 @@ $messages['fr'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Créer',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Apondre una pâge a cela catègorie',
+	'articletocategory2-create-article-under-category-button' => 'Fâre',
+	'articletocategory2-create-category-under-category-text' => 'Apondre una catègorie a cela catègorie',
+	'articletocategory2-create-category-under-category-button' => 'Fâre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

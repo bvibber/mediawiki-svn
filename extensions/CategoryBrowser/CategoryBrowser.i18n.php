@@ -342,6 +342,32 @@ $messages['fr'] = array(
 	'cb_edit_paste_right_hint' => "Coller, si possible, l'opérateur à la position suivante",
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorybrowser' => 'Navigator de catègories',
+	'cb_cat_name_filter' => 'Rechèrche de catègories per lo nom :',
+	'cb_cat_name_filter_ci' => 'Pas sensiblo a la câssa',
+	'cb_has_subcategories' => '$1 sot-catègorie{{PLURAL:$1||s}}',
+	'cb_has_pages' => '$1 pâge{{PLURAL:$1||s}}',
+	'cb_has_files' => '$1 fichiér{{PLURAL:$1||s}}',
+	'cb_has_parentcategories' => 'catègorie mâre (s’ègziste)',
+	'cb_previous_items_link' => 'Devant',
+	'cb_next_items_link' => 'Aprés',
+	'cb_next_items_stats' => '(dês $1)',
+	'cb_cat_subcats' => 'sot-catègories',
+	'cb_cat_pages' => 'pâges',
+	'cb_cat_files' => 'fichiérs',
+	'cb_apply_button' => 'Aplicar',
+	'cb_all_op' => 'Totes',
+	'cb_or_op' => 'ou ben',
+	'cb_and_op' => 'et',
+	'cb_edit_left_hint' => 'Dèplaciér a gôche, se possiblo',
+	'cb_edit_right_hint' => 'Dèplaciér a drêta, se possiblo',
+	'cb_edit_remove_hint' => 'Suprimar, se possiblo',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -608,6 +634,45 @@ Gebruik een andere browser of werkt deze bij, als mogelijk.',
 	'cb_edit_clear_hint' => 'Huidige expressie wissen (alles selecteren)',
 	'cb_edit_paste_hint' => 'Als mogelijk de operator op de huidige positie invoegen',
 	'cb_edit_paste_right_hint' => 'Als mogelijk de operator op de volgende positie invoegen',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'categorybrowser' => 'Kategorileser',
+	'categorybrowser-desc' => 'Tilbyr en [[Special:CategoryBrowser|spesialside]] til å filtrere ut de mest populære kategoriene og til å navigere dem ved hjelp av et AJAX-grensesnitt',
+	'cb_requires_javascript' => 'Kategorileserutvidelsen krever at JavaScript er aktivert i nettleseren.',
+	'cb_ie6_warning' => 'Vilkårseditoren virker ikke i Internet Explorer 6.0 eller tidligere versjoner.
+Imidlertid, lesing av forhåndsdefinerte vilkår bør virke normalt.
+Endre eller oppgrader nettleseren din, om mulig.',
+	'cb_show_no_parents_only' => 'Bare vis kategorier uten foreldre',
+	'cb_cat_name_filter' => 'Søk etter kategori ved navn:',
+	'cb_cat_name_filter_clear' => 'Trykk for å tømme kategorinavnefileteret',
+	'cb_cat_name_filter_ci' => 'Tar ikke hensyn til store eller små bokstaver',
+	'cb_copy_line_hint' => 'Bruk [+]- og [>+]-knappene for å kopiere og lime inn operatorer i det valgte uttrykket',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|underkategori|underkategorier}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|side|sider}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|fil|filer}}',
+	'cb_has_parentcategories' => 'foreldrekategorier (om noen)',
+	'cb_previous_items_link' => 'Forrige',
+	'cb_next_items_link' => 'Neste',
+	'cb_next_items_stats' => ' (fra $1)',
+	'cb_cat_subcats' => 'underkategorier',
+	'cb_cat_pages' => 'sider',
+	'cb_cat_files' => 'filer',
+	'cb_apply_button' => 'Bruk',
+	'cb_all_op' => 'Alle',
+	'cb_or_op' => 'eller',
+	'cb_and_op' => 'og',
+	'cb_edit_left_hint' => 'Flytt til venstre, om mulig',
+	'cb_edit_right_hint' => 'Flytt til høyre, om mulig',
+	'cb_edit_remove_hint' => 'Slett, om mulig',
+	'cb_edit_copy_hint' => 'Kopier operator til utklippstavle',
+	'cb_edit_append_hint' => 'Sett inn operator til siste posisjon',
+	'cb_edit_clear_hint' => 'Tøm nåværende uttrykk (velg alle)',
+	'cb_edit_paste_hint' => 'Lim operator inn i nåværende posisjon, om mulig',
+	'cb_edit_paste_right_hint' => 'Lim operator inn i neste posisjon, om mulig',
 );
 
 /** Polish (Polski)

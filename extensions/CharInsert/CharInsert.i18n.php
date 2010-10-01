@@ -192,6 +192,13 @@ $messages['fr'] = array(
 	'charinsert-desc' => 'Permet la création d’une boîte JavaScript pour l’[[MediaWiki:Edittools|insertion de caractères absents des claviers usuels]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'charinsert-desc' => 'Pèrmèt la crèacion d’una bouèta JavaScript por l’[[MediaWiki:Edittools|entrebetâ de caractèros absents des cllaviérs d’usâjo]].',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -247,6 +247,14 @@ $messages['fr'] = array(
 	'categoryintersection-results' => 'La recherche a retourné $1 résultat{{PLURAL:$1||s}}.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categoryintersection' => 'Entèrsèccion de catègories',
+	'categoryintersection-doit' => 'Liste les pâges dens totes cetes catègories',
+);
+
 /** Galician (Galego)
  * @author Kobazulo
  * @author Toliño

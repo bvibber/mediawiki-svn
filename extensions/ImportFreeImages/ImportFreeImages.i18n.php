@@ -1275,6 +1275,18 @@ $messages['sw'] = array(
 	'importfreeimages_size_small' => 'Ndogo',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'importfreeimages_owner' => 'ஆசிரியர்',
+	'importfreeimages_size_square' => 'சதுரம்',
+	'importfreeimages_size_thumbnail' => 'படத்தின் கட்டைவிரல் அளவு தோற்றம்',
+	'importfreeimages_size_small' => 'சிறிய',
+	'importfreeimages_size_medium' => 'நடுத்தரம்',
+	'importfreeimages_size_original' => 'மூலம்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

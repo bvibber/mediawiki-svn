@@ -185,6 +185,13 @@ $messages['hil'] = array(
 	'gnuplot-desc' => 'Nagadugang ang tag <code><nowiki><gnuplot></nowiki></code> para magamit ang Gnuplot',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'gnuplot-desc' => 'Dodaje tag <code><nowiki><gnuplot></nowiki></code> za korištenje Gnuplota.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

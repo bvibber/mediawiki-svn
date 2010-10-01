@@ -287,6 +287,18 @@ $messages['fr'] = array(
 	'categorywatch-autocat' => 'Suivie automatiquement par $1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorywatch-emailsubject' => 'Activitât en rapôrt avouéc la catègorie siuvua « $1 »',
+	'categorywatch-catmovein' => 'at dèplaciê la pâge $1 vers la catègorie $2 dês $3',
+	'categorywatch-catmoveout' => 'at dèplaciê la pâge $1 en defôr de la catègorie $2 vers $3',
+	'categorywatch-catadd' => 'at apondu la pâge $1 a la catègorie $2',
+	'categorywatch-catsub' => 'at enlevâ la pâge $1 de la catègorie $2',
+	'categorywatch-autocat' => 'Siuvua ôtomaticament per $1',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -237,7 +237,12 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'semanticformsinputs-desc' => 'Ekstra inndatatyper for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Feil format.',
+	'semanticformsinputs-close' => 'Lukk',
+	'semanticformsinputs-prev' => 'Forrige',
+	'semanticformsinputs-next' => 'Neste',
+	'semanticformsinputs-today' => 'I dag',
 );
 
 /** Polish (Polski)

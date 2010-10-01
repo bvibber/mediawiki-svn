@@ -2892,6 +2892,7 @@ $messages['frp'] = array(
 	'mwe-ftype-oga' => 'Fichiér ôdiô Ogg',
 	'mwe-ftype-ogg' => 'Fichiér vidèô Ogg',
 	'mwe-ftype-unk' => 'Format de fichiér encognu',
+	'rsd-kaltura-title' => 'Totes les sôrses',
 	'rsd-this_wiki-title' => 'Ceti vouiqui',
 	'rsd-this_wiki-desc' => 'Lo vouiqui local',
 	'rsd-archive_org-desc' => 'L’Internet Archive, una bibliotèca numerica de chouses culturâles',

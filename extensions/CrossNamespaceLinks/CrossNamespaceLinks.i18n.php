@@ -695,7 +695,7 @@ $messages['ml'] = array(
 	'crossnamespacelinks' => 'അന്തർ-നാമമേഖല കണ്ണികൾ',
 	'crossnamespacelinks-desc' => '{{SITENAME}} സം‌രംഭത്തിൽ നിലവിലില്ലാത്ത [[Special:CrossNamespaceLinks|നാമമേഖലകളിലെ കണ്ണികളുടെ പട്ടിക പ്രദർശിപ്പിക്കുക]]',
 	'crossnamespacelinks-summary' => 'മുഖ്യ നാമമേഖലയിൽ നിന്നു മറ്റു നാമമേഖലകളിലുള്ള താളുകളിലേക്ക് ({{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} എന്നീ നാമമേഖലകൾ ഒഴിച്ച്) കണ്ണി ചേർക്കപ്പെട്ടിരിക്കുന്ന താളുകളിലെ കണ്ണികളുടെ പട്ടിക ഈ താൾ പ്രദർശിപ്പിക്കുന്നു. (ഇങ്ങനെ കണ്ണി കൊടുക്കുന്നത് ആശാസ്യകരമല്ല)',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|lകണ്ണി|കണ്ണികൾ}} $3-ലേക്ക്',
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|കണ്ണി|കണ്ണികൾ}} $3-ലേക്ക്',
 );
 
 /** Mongolian (Монгол)

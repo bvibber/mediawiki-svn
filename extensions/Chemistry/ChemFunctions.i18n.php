@@ -411,6 +411,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'chemicalsources' => 'Sôrses por la ch·imie',
+	'chemicalsource-desc' => 'Apond la balisa <nowiki><chemform></nowiki>, por les formules ch·imiques.',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pâge spèciâla]] de les sôrses por la ch·imie.',
 	'chemFunctions_ListPage' => 'Sôrses por la ch·imie',
 	'chemFunctions_DataList' => 'Siut una lista de lims vers des setos que pôvont aduire des enformacions a propôs de les substances ch·imiques que vos rechèrchiéd.
 
@@ -419,6 +421,7 @@ $messages['frp'] = array(
 	'chemFunctions_CAS' => 'Numerô CAS',
 	'chemFunctions_ATCCode' => 'Code ATC',
 	'chemFunctions_ECNumber' => 'Numerô CE',
+	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Nom IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform, entrent fôtif !',
 );

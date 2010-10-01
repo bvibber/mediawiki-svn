@@ -204,6 +204,14 @@ $messages['fr'] = array(
 	'categorystepper-start' => '(Début de catégorie)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorystepper-end' => '(Fin de catègorie)',
+	'categorystepper-start' => '(Comencement de catègorie)',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

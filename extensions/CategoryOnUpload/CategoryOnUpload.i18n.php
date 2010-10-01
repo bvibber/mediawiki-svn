@@ -207,6 +207,13 @@ $messages['fr'] = array(
 	'categoryonupload-label' => 'Catégorie :',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categoryonupload-label' => 'Catègorie :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

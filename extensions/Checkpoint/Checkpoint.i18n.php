@@ -138,6 +138,16 @@ $messages['fr'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enregistrer un point de contrôle]])',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'checkpoint' => 'Sôvar et pués continuar lo changement',
+	'checkpoint-desc' => 'Pèrmèt de sôvar un changement et pués de continuar a changiér.',
+	'checkpoint-tooltip' => 'Sôvar voutron progrès et pués continuar a changiér la pâge',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|sôvar un pouent de contrôlo]])',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

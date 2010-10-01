@@ -150,6 +150,24 @@ $messages['fr'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical : traditionnel',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin : pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin : bopomofô',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin : Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin : MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin : tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonês : j·yuteping',
+	'categorymultisort-sortkey-name-stroke' => 'Trèt',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Trèt : simplifiâ',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Trèt : tradicionâl',
+	'categorymultisort-sortkey-name-radical' => 'Radicâl',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radicâl : simplifiâ',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radicâl : tradicionâl',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

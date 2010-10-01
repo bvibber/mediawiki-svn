@@ -1468,7 +1468,8 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'recordadmin' => 'Oppføringshåndtering',
-	'recordadmin-desc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og redigere oppføringer ved å bruke et skjema',
+	'recordadmin-desc' => 'Søk, spørringer, skjema og rapportering av wikidata hentet fra malparametre',
+	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og opprette sider ved å bruke tilknyttede skjema',
 	'recordadmin-select' => 'Velg',
 	'recordadmin-createtype' => 'Skriv inn navnet på en ny oppføringstype som du vil opprette',
 	'recordadmin-recordtype' => 'oppføringstype',
@@ -1503,6 +1504,7 @@ $messages['no'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Ingen «$1»',
+	'recordadmin-properties' => 'Egenskaper',
 );
 
 /** Occitan (Occitan)

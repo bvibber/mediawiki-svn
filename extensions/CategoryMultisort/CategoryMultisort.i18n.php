@@ -153,6 +153,17 @@ $messages['fr'] = array(
 	'prefs-category' => 'Catégorie',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Per dèfôt',
+	'categorymultisort-sortkey' => 'Cllâf de tri :',
+	'categorymultisort-go' => 'Listar',
+	'categorymultisort-default-sortkey' => 'Cllâf de tri per dèfôt :',
+	'prefs-category' => 'Catègorie',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

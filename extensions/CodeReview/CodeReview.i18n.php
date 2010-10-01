@@ -1759,7 +1759,7 @@ Volle URL: $3
 
 $4',
 	'code-stats' => 'Statistiken',
-	'code-stats-header' => 'Repositoriumsstatistik für $1',
+	'code-stats-header' => 'Statistik des Repositoriums „$1“',
 	'code-stats-main' => 'Mit Stand $1 wurden von [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autoren}}]] $2 {{PLURAL:$2|Revision|Revisionen}} im Repositorium durchgeführt.',
 	'code-stats-staus-breakdown' => 'Anzahl der Revisionen pro Status',
 	'code-stats-fixme-breakdown' => 'Aufschlüsselung der FIXMEs pro Autor',
@@ -4289,7 +4289,7 @@ $messages['ia'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'statos',
 	'code-tags' => 'etiquettas',
-	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de nomine. Le contos del wiki local es monstrate inter parentheses.',
+	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de nomine. Le contos del wiki local es monstrate inter parentheses. Le datos pote venir del cache.',
 	'code-author-haslink' => 'Iste autor es ligate al usator $1 de iste wiki',
 	'code-author-orphan' => 'Iste autor ha nulle ligamine con un conto wiki',
 	'code-author-dolink' => 'Ligar iste autor con un usator del wiki:',
@@ -4302,6 +4302,7 @@ $messages['ia'] = array(
 	'code-author-unlinksuccess' => 'Le autor $1 ha essite disligate',
 	'code-author-badtoken' => 'Error de session durante le tentativa de executar iste action.',
 	'code-author-total' => 'Numero total de autores: $1',
+	'code-author-lastcommit' => 'Ultime data de commit',
 	'code-browsing-path' => "Navigation per versiones in '''$1'''",
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Autor',
@@ -4385,7 +4386,7 @@ Summario del commit:
 
 $4',
 	'code-stats' => 'statisticas',
-	'code-stats-header' => 'Statisticas de deposito pro $1',
+	'code-stats-header' => 'Statisticas pro le deposito $1',
 	'code-stats-main' => 'Al data de $1, le deposito ha $2 {{PLURAL:$2|version|versiones}} per [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
 	'code-stats-staus-breakdown' => 'Numero de versiones per stato',
 	'code-stats-fixme-breakdown' => 'Separation de corrigenda per autor',
@@ -6366,7 +6367,8 @@ $messages['nl'] = array(
 	'code-status' => 'statussen',
 	'code-tags' => 'labels',
 	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, gesorteerd op commitnaam.
-Lokale wikigebruikers worden binnen haakjes weergegeven.',
+Lokale wikigebruikers worden binnen haakjes weergegeven.
+De gegevens kunnen uit een cache komen.',
 	'code-author-haslink' => 'Deze auteur is gekoppeld aan de wikigebruiker $1',
 	'code-author-orphan' => 'Deze auteur is niet gekoppeld aan een wikigebruiker',
 	'code-author-dolink' => 'Deze auteur met een wikigebruiker koppelen:',
@@ -6379,6 +6381,7 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-author-unlinksuccess' => 'De auteur $1 is ontkoppeld.',
 	'code-author-badtoken' => 'Sessiefout tijdens het uitvoeren van de handeling.',
 	'code-author-total' => 'Totaal aantal auteurs: $1',
+	'code-author-lastcommit' => 'Laatste commitdatum',
 	'code-browsing-path' => "Versies in '''$1''' aan het bekijken",
 	'code-field-id' => 'Versie',
 	'code-field-author' => 'Auteur',
@@ -6725,6 +6728,8 @@ Kommentar:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Påfølgende endringer',
 	'codereview-email-body2' => 'Bruker «$1» gjorde oppfølgende endringer til $2.
+
+Full nettadresse til oppfølgende revisjon: $5
 
 Full nettadresse: $3
 

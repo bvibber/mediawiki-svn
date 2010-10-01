@@ -1189,12 +1189,13 @@ Não julgue um contribuidor pela contagem das suas edições.",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'countedits' => 'Contador de edições',
 	'countedits-desc' => '[[Special:CountEdits|Página especial]] que conta as edições de utilizadores e fornece uma lista dos dez maiores contribuidores',
 	'countedits-warning' => "'''Atenção:''' Não julgue um livro pela sua capa. Não julgue um contribuidor pela contagem de suas edições.",
-	'countedits-username' => 'Utilizador:',
+	'countedits-username' => 'Usuário:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Não foi encontrado um utilizador com o nome $1.',
 	'countedits-resultheader' => 'Resultados para $1',

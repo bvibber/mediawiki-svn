@@ -673,3 +673,11 @@ $messages['yi'] = array(
 	'nstab-comments' => 'קאמענטאַר',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'commentpages-desc' => '主命名空间的评论页',
+	'nstab-comments' => '注释',
+);
+

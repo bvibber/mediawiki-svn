@@ -417,6 +417,13 @@ En cas de problèmes, vous pouvez essayer <b>{{#special:call}}/DebuG</b>',
 	'call-save-failed' => 'Le texte suivant n’a pu être publié vers la page <big>[[$1]]</big> car cette page existe déjà.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'call' => 'Apèl',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

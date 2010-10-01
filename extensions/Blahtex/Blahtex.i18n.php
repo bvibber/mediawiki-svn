@@ -1137,6 +1137,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'math_noblahtex' => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1.',
+	'blahtext-desc' => 'Sortia MathML por les balises &lt;math&gt;.',
 	'math_AmbiguousInfix' => 'La posicion de « $1 » est pas cllâra.
 Tâchiéd d’apondre des balises de ples « { ... } » por la rendre ples cllâra.',
 	'math_CannotChangeDirectory' => 'Pôt pas changiér de dossiér de travâly.',

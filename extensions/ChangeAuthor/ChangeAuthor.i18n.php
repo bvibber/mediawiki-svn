@@ -775,6 +775,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'changeauthor' => 'Changiér l’ôtor de les vèrsions',
+	'changeauthor-desc' => 'Pèrmèt de changiér lo nom a l’ôtor de yon ou ben un mouél de changements.',
 	'changeauthor-title' => 'Changiér l’ôtor d’una vèrsion',
 	'changeauthor-search-box' => 'Rechèrchiér des vèrsions',
 	'changeauthor-pagename-or-revid' => 'Titro de la pâge ou numerô de la vèrsion :',
@@ -787,8 +788,10 @@ $messages['frp'] = array(
 	'changeauthor-revview' => 'Vèrsion #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Ègziste gins d’articllo avouéc lo titro « $1 ».',
 	'changeauthor-success' => 'Voutra requéta at étâ trètâ avouéc reusséta.',
+	'changeauthor-logentry' => 'Changement a l’ôtor de $2 de $1 dês $3 de vers $4',
 	'changeauthor-logpagename' => 'Jornal des changements fêts per l’ôtor',
 	'changeauthor-rev' => 'v$1',
+	'right-changeauthor' => 'Changiér l’ôtor d’una vèrsion',
 );
 
 /** Western Frisian (Frysk)

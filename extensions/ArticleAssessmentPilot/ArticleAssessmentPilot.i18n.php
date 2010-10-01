@@ -419,6 +419,28 @@ Vous pourriez vouloir l’évaluer à nouveau.',
 	'articleassessment-survey-thanks' => 'Merci d’avoir rempli le questionnaire.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'articleassessment' => 'Èstimacion d’articllo',
+	'articleassessment-desc' => 'Èstimacion d’articllo (vèrsion pilote)',
+	'articleassessment-yourfeedback' => 'Voutron avis',
+	'articleassessment-submit' => 'Sometre',
+	'articleassessment-rating-wellsourced' => 'Bien fondâ :',
+	'articleassessment-rating-neutrality' => 'Netro :',
+	'articleassessment-rating-completeness' => 'Complèt :',
+	'articleassessment-rating-readability' => 'Liésiblo :',
+	'articleassessment-articlerating' => 'Èstimacion de la pâge',
+	'articleassessment-featurefeedback' => 'Balyéd-nos voutron <span class="feedbacklink">avis</span> sur cela fonccionalitât.',
+	'articleassessment-noratings' => '$1 ($2 èstimacion{{PLURAL:$2||s}})',
+	'articleassessment-results-show' => '(Rèsultats cachiês. Los <span class="showlink">fâre vêre</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Cachiér los rèsultats</span>)',
+	'articleassessment-survey-answer-whyrated-other' => 'Ôtra',
+	'articleassessment-survey-question-useful-iffalse' => 'Porquè ?',
+	'articleassessment-survey-submit' => 'Sometre',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -613,6 +635,21 @@ Es recommendate que tu lo re-evaluta.",
 	'articleassessment-survey-submit' => 'Submitter',
 	'articleassessment-survey-title' => 'Per favor responde a alcun questiones',
 	'articleassessment-survey-thanks' => 'Gratias pro completar le questionario.',
+);
+
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'articleassessment-submit' => 'Invia',
+	'articleassessment-rating-wellsourced' => 'Ben documentata:',
+	'articleassessment-rating-neutrality' => 'Neutrale:',
+	'articleassessment-rating-completeness' => 'Completa:',
+	'articleassessment-error' => 'Si è verificato un errore. 
+Si prega di riprovare più tardi.',
+	'articleassessment-survey-answer-whyrated-other' => 'Altro',
+	'articleassessment-survey-question-useful-iffalse' => 'Perché?',
+	'articleassessment-survey-submit' => 'Invia',
 );
 
 /** Japanese (日本語)
@@ -998,7 +1035,7 @@ Për piasì, ch'a preuva torna pi tard.",
 A podrìa vorèj valutela torna.",
 	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Smonje</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Stërmé j\'arzultà</span>)',
-	'articleassessment-survey-question-whyrated' => "Për piasì fane savèj përchè it l'has valutà sta pàgina ancheuj (signa tut lòn ch'a centra):",
+	'articleassessment-survey-question-whyrated' => "Për piasì, ch'an fasa savèj përchè a l'ha valutà costa pàgina ancheuj (ch'a marca tut lòn ch'a-i intra):",
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'I veui contribuì a la valutassin antera dla pàgina',
 	'articleassessment-survey-answer-whyrated-development' => 'I sper che mia valutassion a peussa toché positivament ël dësvilup ëd la pàgina',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'I veui contribuì a {{SITENAME}}',
