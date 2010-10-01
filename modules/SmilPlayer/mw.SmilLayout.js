@@ -101,6 +101,7 @@ mw.SmilLayout.prototype = {
 		
 		// Check for quick "show" path:
 		var $targetElement = $j( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
+		
 		if( $targetElement.length ){
 			$targetElement.show();
 			return ;
@@ -108,6 +109,7 @@ mw.SmilLayout.prototype = {
 		var $regionTarget = this.getRegionTarget( smilElement );		
 		// Make sure we have a $regionTarget
 		if( !$regionTarget ){
+			mw.log("Error missing regionTarget");
 			return ;
 		}
 							
@@ -115,6 +117,7 @@ mw.SmilLayout.prototype = {
 		_this.drawPlayerSmilElement(smilElement, $regionTarget );
 		
 	},
+	
 	/**
 	 * Add the transformed smil element to the $regionTarget
 	 * 
@@ -141,7 +144,7 @@ mw.SmilLayout.prototype = {
 						'top' : '0px',
 						'left' : '0px'
 					})
-				$regionTarget.append( $target )
+				$regionTarget.append( $target );
 				this.drawSmilElementToTarget( smilElement, $target );
 				return ;
 			break;
@@ -177,7 +180,7 @@ mw.SmilLayout.prototype = {
 		
 		switch ( this.smil.getRefType( smilElement )  ){
 			case 'video':
-				this.getVideoCanvasThumb(smilElement, $target,  relativeTime, callback )		
+				this.getVideoCanvasThumb( smilElement, $target,  relativeTime, callback );
 				return ;
 			break;
 			case 'img':
@@ -338,7 +341,7 @@ mw.SmilLayout.prototype = {
 	 * Hide a smilElement in the layout
 	 */	
 	hideElement: function( smilElement ){		
-		mw.log(" hide: " + this.smil.getSmilElementPlayerID( smilElement ));
+		//mw.log(" hide: " + this.smil.getSmilElementPlayerID( smilElement ));
 		// Check that the element is already in the dom
 		var $targetElement = this.$rootLayout.find( '#' + this.smil.getSmilElementPlayerID( smilElement ) );
 		if( $targetElement.length ){
@@ -518,14 +521,7 @@ mw.SmilLayout.prototype = {
 					})
 				});					
 			})
-			// Switch any named font-size attribute to em
-			$htmlLayout.find('[style]').each( function(inx, node){			
-				if( $j(node).css('font-size') ){
-					$j(node).css('font-size', 
-						( fontScalePercent * parseFloat( $j(node).css('font-size') ) ) + 'px'
-					); 				
-				}
-			})	
+			
 			// Strip any links for thumbs of player
 			$htmlLayout.find('a').attr('href', '#');
 		}
