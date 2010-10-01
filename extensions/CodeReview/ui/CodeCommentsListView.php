@@ -61,7 +61,6 @@ class CodeCommentsTablePager extends SvnTablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgLang;
 		switch( $name ) {
 		case 'cc_rev_id':
 			return $this->mView->mSkin->link(
