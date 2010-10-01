@@ -1,15 +1,19 @@
 <?php
 /**
  * Usability Initiative Click Tracking extension
- * 
+ *
  * @file
  * @ingroup Extensions
- * 
+ *
  * @author Nimish Gautam <ngautam@wikimedia.org>
  * @author Trevor Parscal <tparscal@wikimedia.org>
  * @license GPL v2 or later
  * @version 0.1.1
  */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'This is not a valid entry point to MediaWiki.' );
+}
 
 /* Configuration */
 
@@ -32,18 +36,32 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'clicktracking-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:UsabilityInitiative'
 );
-$wgAutoloadClasses['ClickTrackingHooks'] = dirname( __FILE__ ) . '/ClickTracking.hooks.php';
-$wgAutoloadClasses['ApiClickTracking'] = dirname( __FILE__ ) . '/ApiClickTracking.php';
-$wgAutoloadClasses['SpecialClickTracking'] = dirname( __FILE__ ) . '/SpecialClickTracking.php';
-$wgAutoloadClasses['ApiSpecialClickTracking'] = dirname( __FILE__ ) . '/ApiSpecialClickTracking.php';
+
+$dir = dirname( __FILE__ ) . '/';
+// Autoload classes
+$wgAutoloadClasses['ClickTrackingHooks'] = $dir . 'ClickTracking.hooks.php';
+$wgAutoloadClasses['ApiClickTracking'] = $dir . 'ApiClickTracking.php';
+$wgAutoloadClasses['SpecialClickTracking'] = $dir . 'SpecialClickTracking.php';
+$wgAutoloadClasses['ApiSpecialClickTracking'] = $dir . 'ApiSpecialClickTracking.php';
+
+// Hooked functions
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ClickTrackingHooks::loadExtensionSchemaUpdates';
 $wgHooks['BeforePageDisplay'][] = 'ClickTrackingHooks::beforePageDisplay';
 $wgHooks['MakeGlobalVariablesScript'][] = 'ClickTrackingHooks::makeGlobalVariablesScript';
 $wgHooks['ResourceLoaderRegisterModules'][] = 'ClickTrackingHooks::resourceLoaderRegisterModules';
 $wgHooks['ParserTestTables'][] = 'ClickTrackingHooks::parserTestTables';
+
+// API modules
 $wgAPIModules['clicktracking'] = 'ApiClickTracking';
 $wgAPIModules['specialclicktracking'] = 'ApiSpecialClickTracking';
+
+// New special page
 $wgSpecialPages['ClickTracking'] = 'SpecialClickTracking';
+
+// New user right, required to use Special:ClickTracking
+$wgAvailableRights[] = 'clicktrack';
 $wgGroupPermissions['sysop']['clicktrack'] = true;
-$wgExtensionMessagesFiles['ClickTracking'] = dirname( __FILE__ ) . '/ClickTracking.i18n.php';
-$wgExtensionAliasesFiles['ClickTracking'] = dirname( __FILE__ ) . '/ClickTracking.alias.php';
+
+// i18n
+$wgExtensionMessagesFiles['ClickTracking'] = $dir . 'ClickTracking.i18n.php';
+$wgExtensionAliasesFiles['ClickTracking'] = $dir . 'ClickTracking.alias.php';

@@ -1,6 +1,6 @@
 <?php
 /**
- * Click tracking API extension
+ * Click tracking API module
  *
  * @file
  * @ingroup API
@@ -24,35 +24,35 @@ class ApiClickTracking extends ApiBase {
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
-		$session_id = $params['token'];
+		$sessionId = $params['token'];
 
 		$additional = null;
 
-		if ( isset( $params['additional'] )  && strlen( $params['additional'] ) > 0 ){
+		if ( isset( $params['additional'] ) && strlen( $params['additional'] ) > 0 ) {
 			$additional = $params['additional'];
 		}
 
 		// Event ID lookup table
 		// FIXME: API should already have urldecode()d
-		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
+		$eventId = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
 
-		$is_logged_in = $wgUser->isLoggedIn();
+		$isLoggedIn = $wgUser->isLoggedIn();
 		$now = time();
-		$granularity1 = $is_logged_in ?
+		$granularity1 = $isLoggedIn ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity1 ) : 0;
 
-		$granularity2 = $is_logged_in ?
+		$granularity2 = $isLoggedIn ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity2 ) : 0;
 
-		$granularity3 = $is_logged_in ?
+		$granularity3 = $isLoggedIn ?
 			ClickTrackingHooks::getEditCountSince( $now - $wgClickTrackContribGranularity3 ) : 0;
 
 		ClickTrackingHooks::trackEvent(
-			$session_id,  // randomly generated session ID
-			$is_logged_in, 						 // is the user logged in?
+			$sessionId,  // randomly generated session ID
+			$isLoggedIn, 						 // is the user logged in?
 			$wgTitle->getNamespace(), 			 // what namespace are they editing?
-			$event_id,							 // event ID passed in
-			( $is_logged_in ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
+			$eventId,							 // event ID passed in
+			( $isLoggedIn ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
 			$granularity1, // contributions made in granularity 1 time frame
 			$granularity2, // contributions made in granularity 2 time frame
 			$granularity3,  // contributions made in granularity 3 time frame
@@ -99,19 +99,19 @@ class ApiClickTracking extends ApiBase {
 			'token'  => 'unique edit ID for this edit session',
 			'redirectto' => 'URL to redirect to (only used for links that go off the page)',
 			'additional' => 'additional info for the event, like state information'
-			);
+		);
 	}
 
 	public function getDescription() {
 		return array(
 			'Track user clicks on JavaScript items.'
-			);
+		);
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-		array( 'missingparam', 'eventid' ),
-		array( 'missingparam', 'token' ),
+			array( 'missingparam', 'eventid' ),
+			array( 'missingparam', 'token' ),
 		) );
 	}
 
