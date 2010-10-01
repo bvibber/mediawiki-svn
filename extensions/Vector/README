@@ -7,7 +7,7 @@
 require_once( "$IP/extensions/Vector/Vector.php" );
 
 # Before configuring this extension, see Vector.php and become familiar with the initial state and structure of the
-# $wgVectorFeatures configuration variable. Essentially it's an array or arrays, keyed by feature name, each containing
+# $wgVectorFeatures configuration variable. Essentially it's an array of arrays, keyed by feature name, each containing
 # global and user keys with boolean values. "global" indicates that it should be turned on for everyone always, while
 # user indicates that users should be allowed to turn it on or off in their user preferences.
 
