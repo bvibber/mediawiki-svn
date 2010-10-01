@@ -25,7 +25,7 @@
 	 * @param {string} id event identifier
 	 */
 	$.trackAction = function( id ) {
-		$j.post(
+		$.post(
 			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
 				'eventid': id,
@@ -40,7 +40,7 @@
 	 * @param {string} info additional information to be stored with the click
 	 */
 	$.trackActionWithInfo = function( id, info ) {
-		$j.post(
+		$.post(
 			mediaWiki.config.get( 'wgScriptPath' ) + '/api.php', {
 				'action': 'clicktracking',
 				'eventid': id,
