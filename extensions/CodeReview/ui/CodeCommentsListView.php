@@ -36,7 +36,9 @@ class CodeCommentsTablePager extends SvnTablePager {
 		return $field == 'cr_timestamp';
 	}
 
-	function getDefaultSort() { return 'cc_timestamp'; }
+	function getDefaultSort() {
+		return 'cc_timestamp';
+	}
 
 	function getQueryInfo() {
 		return array(

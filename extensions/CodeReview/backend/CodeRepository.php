@@ -113,20 +113,22 @@ class CodeRepository {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'code_rev',
-			array( 'cr_author' ),
+			array( 'cr_author', 'MAX(cr_timestamp) AS time' ),
 			array( 'cr_repo_id' => $this->getId() ),
 			__METHOD__,
 			array( 'GROUP BY' => 'cr_author',
 				'ORDER BY' => 'cr_author', 'LIMIT' => 500 )
 		);
 		$authors = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$authors[] = $row->cr_author;
+		foreach( $res as $row ) {
+			if ( $row->cr_author !== null ) {
+				$authors[] = array( 'author' => $row->cr_author, 'lastcommit' => $row->time );
+			}
 		}
 		$wgMemc->set( $key, $authors, 3600 * 24 );
 		return $authors;
 	}
-	
+
 	public function getAuthorCount() {
 		return count( $this->getAuthorList() );
 	}
