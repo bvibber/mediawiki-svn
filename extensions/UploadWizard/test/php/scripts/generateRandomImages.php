@@ -1,9 +1,17 @@
 <?php
 
-/* Because MediaWiki tests the uniqueness of media upload content, and filenames, it is sometimes useful to generate
-   files that are guaranteed (or at least very likely) to be unique in both those ways.
-   This generates a number of filenames with random names and random content (colored circles) */
-
+/* 
+ * generateRandomImages -- does what it says on the tin.
+ *
+ * Because MediaWiki tests the uniqueness of media upload content, and filenames, it is sometimes useful to generate
+ * files that are guaranteed (or at least very likely) to be unique in both those ways.
+ * This generates a number of filenames with random names and random content (colored circles) 
+ *
+ * Requires Imagick, the ImageMagick library for PHP.
+ *  
+ * @file
+ * @author Neil Kandalgaonkar <neilk@wikimedia.org>
+ */
 
 $defaults = array( 
 	'dict' => "/usr/share/dict/words",
