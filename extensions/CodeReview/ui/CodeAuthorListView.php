@@ -12,7 +12,7 @@ class CodeAuthorListView extends CodeView {
 		$authors = $this->mRepo->getAuthorList();
 		$repo = $this->mRepo->getName();
 		$text = wfMsg( 'code-authors-text' ) . "\n\n";
-		$text .= '<strong>' . wfMsg( 'code-author-total', $wgLang->formatNum( count( $authors ) ) )  . "</strong>\n";
+		$text .= '<strong>' . wfMsg( 'code-author-total', $wgLang->formatNum( $this->mRepo->getAuthorCount() ) )  . "</strong>\n";
 		foreach ( $authors as $committer ) {
 			if ( $committer ) {
 				$text .= "* [[Special:Code/$repo/author/$committer|$committer]]";
