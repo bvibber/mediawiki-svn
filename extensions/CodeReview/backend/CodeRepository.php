@@ -128,28 +128,7 @@ class CodeRepository {
 	}
 	
 	public function getAuthorCount() {
-		global $wgMemc;
-		$key = wfMemcKey( 'codereview', 'authorcount', $this->getId() );
-		$authorsCount = $wgMemc->get( $key );
-		if ( is_int( $authorsCount ) ) {
-			return $authorsCount;
-		}
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->select(
-			'code_authors',
-			array( 'COUNT(cr_author) AS author_count' ),
-			array( 'cr_repo_id' => $this->getId() ),
-			__METHOD__
-		);
-
-		if ( !$row ) {
-			throw new MWException( 'Failed to load expected author count' );
-		}
-		
-		$authorsCount = intval( $row->author_count );
-		
-		$wgMemc->set( $key, $authorsCount, 3600 * 24 );
-		return $authorsCount;
+		return count( $this->getAuthorList() );
 	}
 
 	public function getTagList() {
