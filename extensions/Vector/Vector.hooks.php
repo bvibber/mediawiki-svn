@@ -174,8 +174,9 @@ class VectorHooks {
 				isset( $feature['preferences'] ) &&
 				( !isset( $wgVectorFeatures[$name] ) || $wgVectorFeatures[$name]['user'] )
 			) {
-				foreach ( $feature['preferences'] as $key => $options )
-				$defaultPreferences[$key] = $options;
+				foreach ( $feature['preferences'] as $key => $options ) {
+					$defaultPreferences[$key] = $options;
+				}
 			}
 		}
 		return true;
