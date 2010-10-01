@@ -136,7 +136,7 @@ Commit summary:
 $4',
 	
 	'code-stats' => 'statistics',
-	'code-stats-header' => 'Repository statistics for $1',
+	'code-stats-header' => 'Statistics for repository $1',
 	'code-stats-main' => 'As of $1, the repository has $2 {{PLURAL:$2|revision|revisions}} by [[Special:Code/$3/author|$4 {{PLURAL:$4|author|authors}}]].',
 	'code-stats-staus-breakdown' => 'Number of revisions per state',
 	'code-stats-fixme-breakdown' => 'Breakdown of fixmes per author',
