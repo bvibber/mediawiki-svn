@@ -181,7 +181,6 @@ function wfArticleCommentForm( $title, $params = array() ) {
 		$tmp[strtolower( $k )] = (bool)strcasecmp( $v, "false" );
 	}
 	$params = $tmp;
-	$ac = 'article-comments-';
 
 	# Build out the comment form.
 	$content = '<div id="commentForm">';
@@ -190,21 +189,21 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	$content .= '<p>';
 	$content .= Html::hidden( 'commentArticle', $title->getPrefixedDBkey() );
 
-	$content .= '<label for="commenterName">' . wfMsgExt( $ac . 'name-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+	$content .= '<label for="commenterName">' . wfMsgExt( 'article-comments-name-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
 	$content .= Html::input( 'commenterName', '', 'text', array( 'id' => 'commenterName' ) );
 	$content .= '</p>';
 
 	if ( $params['showurlfield'] ) {
-		$content .=  '<p><label for="commenterURL">' . wfMsgExt( $ac . 'url-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+		$content .=  '<p><label for="commenterURL">' . wfMsgExt( 'article-comments-url-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
 		$content .= Html::input( 'commenterURL', 'http://', 'text', array( 'id' => 'commenterURL' ) );
 		$content .= '</p>';
 	}
 
-	$content .= '<p><label for="comment">' . wfMsgExt( $ac . 'comment-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+	$content .= '<p><label for="comment">' . wfMsgExt( 'article-comments-comment-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
 
 	$content .= '<textarea id="comment" name="comment" style="width:30em" rows="5">' . '</textarea></p>';
 
-	$content .= '<p>' . Html::input( 'comment-submit', wfMsgForContent( $ac . 'submit-button' ), 'submit' ) . '</p>';
+	$content .= '<p>' . Html::input( 'comment-submit', wfMsgForContent( 'article-comments-submit-button' ), 'submit' ) . '</p>';
 	$content .= '</form></div>';
 
 	# Short-circuit if noScript has been set to anything other than false
@@ -230,7 +229,7 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	# Note: This is done dynamically with JavaScript since it would be annoying
 	# for JS-disabled browsers to have the prefilled text (since they'd have
 	# to manually delete it) and would break parser output caching
-	$pretext = wfMsgForContent( $ac . 'prefilled-comment-text' );
+	$pretext = wfMsgForContent( 'article-comments-prefilled-comment-text' );
 	if ( $pretext ) {
 		$content .=
 			'var comment = document.getElementById("comment");' . "\n" .
@@ -259,7 +258,7 @@ function wfArticleCommentForm( $title, $params = array() ) {
 			'p.innerHTML="<a href=\'javascript:void(0)\' onclick=\'' .
 			'document.getElementById(\\"commentForm\\").style.display=\\"block\\";' .
 			'this.style.display=\\"none\\";false' .
-			'\'>' . wfMsgForContent( $ac . 'leave-comment-link' ) . '</a>";' . "\n" .
+			'\'>' . wfMsgForContent( 'article-comments-leave-comment-link' ) . '</a>";' . "\n" .
 			'cf.parentNode.insertBefore(p,cf);' . "\n";
 	}
 
@@ -304,30 +303,29 @@ function specialProcessComment() {
 	$title = Title::newFromText( $titleText );
 
 	# Perform validation checks on supplied fields
-	$ac = 'article-comments-';
 	$messages = array();
 
 	if ( !$wgRequest->wasPosted() )
-		$messages[] = wfMsgForContent( $ac . 'not-posted' );
+		$messages[] = wfMsgForContent( 'article-comments-not-posted' );
 
 	if ( $titleText === '' || !$title ) {
 		$messages[] = wfMsgForContent(
-		$ac . 'invalid-field', wfMsgForContent( $ac . 'title-string' ), $titleText );
+		'article-comments-invalid-field', wfMsgForContent( 'article-comments-title-string' ), $titleText );
 	}
 
 	if ( !$commenterName ) $messages[] = wfMsgForContent(
-		$ac . 'required-field', wfMsgForContent( $ac . 'name-string' ) );
+		'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
 
 	if ( !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) )
 		$messages[] = wfMsgForContent(
-		$ac . 'invalid-field', wfMsgForContent( $ac . 'url-string' ), $commenterURL );
+		'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
 
 	if ( !$comment ) $messages[] = wfMsgForContent(
-		$ac . 'required-field', wfMsgForContent( $ac . 'comment-string' ) );
+		'article-comments-required-field', wfMsgForContent( 'article-comments-comment-string' ) );
 	if ( !empty( $messages ) ) {
-		$wgOut->setPageTitle( wfMsgForContent( $ac . 'submission-failed' ) );
+		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>";
-		$wikiText .= wfMsgForContent( $ac . 'failure-reasons' ) . "\n\n";
+		$wikiText .= wfMsgForContent( 'article-comments-failure-reasons' ) . "\n\n";
 		foreach ( $messages as $message ) {
 			$wikiText .= "* $message\n";
 		}
@@ -343,10 +341,10 @@ function specialProcessComment() {
 
 	# Check whether user is blocked from editing the talk page
 	if ( $wgUser->isBlockedFrom( $talkTitle ) ) {
-		$wgOut->setPageTitle( wfMsgForContent( $ac . 'submission-failed' ) );
+		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>";
-		$wikiText .= wfMsgForContent( $ac . 'failure-reasons' ) . "\n\n";
-		$wikiText .= '* ' . wfMsgForContent( $ac . 'user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
+		$wikiText .= wfMsgForContent( 'article-comments-failure-reasons' ) . "\n\n";
+		$wikiText .= '* ' . wfMsgForContent( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
 		$wgOut->addWikiText( $wikiText . "</div>" );
 		return;
 	}
@@ -378,10 +376,10 @@ function specialProcessComment() {
 		preg_match( '/<comments( +[^>]*)?\\/>/', $articleContent ) === 0 &&
 		preg_match( '/<comments( +[^>]*)?\\/>/', $talkContent ) === 0
 	) {
-		$wgOut->setPageTitle( wfMsgForContent( $ac . 'submission-failed' ) );
+		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
 			"<div class='errorbox'>" .
-			wfMsgForContent( $ac . 'no-comments', $title->getPrefixedText() ) .
+			wfMsgForContent( 'article-comments-no-comments', $title->getPrefixedText() ) .
 			"</div>"
 		);
 		return;
@@ -393,10 +391,10 @@ function specialProcessComment() {
 
 	# If it's spam - it's gone!
 	if ( $isspam ) {
-		$wgOut->setPageTitle( wfMsgForContent( $ac . 'submission-failed' ) );
+		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
 			"<div class='errorbox'>" .
-			wfMsgForContent( $ac . 'no-spam' ) .
+			wfMsgForContent( 'article-comments-no-spam' ) .
 			"</div>"
 		);
 		return;
@@ -404,7 +402,7 @@ function specialProcessComment() {
 
 	# Initialize the talk page's content.
 	if ( $talkContent == '' ) {
-		$talkContent = wfMsgForContent( $ac . 'talk-page-starter', $title->getPrefixedText() );
+		$talkContent = wfMsgForContent( 'article-comments-talk-page-starter', $title->getPrefixedText() );
 	}
 
 	# Determine signature components
@@ -414,8 +412,8 @@ function specialProcessComment() {
 
 	# Search for insertion point, or append most recent comment.
 	$commentText = wfMsgForContent(
-		$ac . 'new-comment',
-		wfMsgForContent( $ac . 'commenter-said', $commenterName ),
+		'article-comments-new-comment',
+		wfMsgForContent( 'article-comments-commenter-said', $commenterName ),
 		$comment,
 		$sigText,
 		'~~~~~'
@@ -435,12 +433,12 @@ function specialProcessComment() {
 	}
 
 	# Update the talkArticle with the new comment
-	$summary = wfMsgForContent( $ac . 'summary', $commenterName );
+	$summary = wfMsgForContent( 'article-comments-summary', $commenterName );
 	$talkArticle->doEdit( $talkContent, $summary );
 
-	$wgOut->setPageTitle( wfMsgForContent( $ac . 'submission-succeeded' ) );
-	$wgOut->addWikiText( wfMsgForContent( $ac . 'submission-success', $title->getPrefixedText() ) );
-	$wgOut->addWikiText( wfMsgForContent( $ac . 'submission-view-all', $talkTitle->getPrefixedText() ) );
+	$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-succeeded' ) );
+	$wgOut->addWikiText(  wfMsgForContent( 'article-comments-submission-success', $title->getPrefixedText() ) );
+	$wgOut->addWikiText(  wfMsgForContent( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() ) );
 }
 
 /**
