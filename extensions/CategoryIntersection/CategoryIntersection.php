@@ -95,12 +95,18 @@ function CategoryIntersectionArticleDelete ( &$article, &$user, &$reason ) {
 # new tables needed (based on how ReaderFeedback extension does it)
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCategoryIntersectionSchemaUpdates';
 
-function efCategoryIntersectionSchemaUpdates() {
-        global $wgDBtype, $wgExtNewTables;
-        $base = dirname( __FILE__ );
-        if ( $wgDBtype == 'mysql' ) {
-                $wgExtNewTables[] = array( 'categoryintersections', "$base/CategoryIntersection.sql" );
-        }
-        return true;
+function efCategoryIntersectionSchemaUpdates( $updater = null ) {
+	$base = dirname( __FILE__ );
+	if ( $updater === null ) {
+		global $wgDBtype, $wgExtNewTables;
+		if ( $wgDBtype == 'mysql' ) {
+			$wgExtNewTables[] = array( 'categoryintersections', "$base/CategoryIntersection.sql" );
+		}
+	} else {
+		if ( $updater->getDB()->getType() == 'mysql' ) {
+			$updater->addExtensionUpdate( array( 'addTable', 'categoryintersections', "$base/CategoryIntersection.sql", true ) );
+		}
+	}
+	return true;
 }
 
