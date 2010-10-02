@@ -8,6 +8,10 @@
  * Author: Austin Che <http://openwetware.org/wiki/User:Austin_J._Che>
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'This is not a valid entry point to MediaWiki.' );
+}
+
 $wgExtensionFunctions[] = "wfPreferencesExtension";
 $wgExtensionCredits['specialpage'][] = array(
     'name' => 'PreferencesExtension',
@@ -28,8 +32,7 @@ define('PREF_CUSTOM_HTML_T', 6);
  
 // each element of the following should be an array that can have keys:
 // name, section, type, size, validate, load, save, html, min, max, default
-if (!isset($wgExtensionPreferences))
-     $wgExtensionPreferences = array();
+$wgExtensionPreferences = array();
  
 function wfPreferencesExtension()
 {
