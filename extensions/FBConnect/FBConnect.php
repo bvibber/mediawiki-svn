@@ -5,12 +5,12 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,21 +23,21 @@
  * Info is available at http://www.mediawiki.org/wiki/Extension:FBConnect
  * and at http://wiki.developers.facebook.com/index.php/MediaWiki
  *
- * Limited support is available at  http://www.mediawiki.org/wiki/Extension_talk:FBConnect
+ * Limited support is available at http://www.mediawiki.org/wiki/Extension_talk:FBConnect
  * and at http://wiki.developers.facebook.com/index.php/Talk:MediaWiki
  *
  * @file
+ * @ingroup Extensions
  * @author Garrett Bruin
  * @copyright Copyright © 2008 Garrett Brown
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
- * @ingroup Extensions
  */
 
 
 /*
  * Not a valid entry point, skip unless MEDIAWIKI is defined.
  */
-if ( !defined( 'MEDIAWIKI' )) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
 }
 
@@ -61,16 +61,16 @@ $wgExtensionCredits['specialpage'][] = array(
 /*
  * Initialization of the autoloaders and special extension pages.
  */
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 require_once $dir . 'config.default.php';
 require_once $dir . 'php-sdk/facebook.php';
-if (!empty( $wgFbIncludePreferencesExtension ) && version_compare($wgVersion, '1.16', '<')) {
+if ( !empty( $wgFbIncludePreferencesExtension ) && version_compare( $wgVersion, '1.16', '<' ) ) {
 	require_once $dir . 'PreferencesExtension.php';
 }
 
 $wgExtensionFunctions[] = 'FBConnect::init';
 
-if( !empty( $wgFbEnablePushToFacebook ) ){
+if( !empty( $wgFbEnablePushToFacebook ) ) {
 	// Need to include it explicitly instead of autoload since it has initialization code of its own.
 	// This should be done after FBConnect::init is added to wgExtensionFunctions so that FBConnect
 	// gets fully initialized first.
@@ -98,7 +98,7 @@ define( 'APCOND_FB_ISADMIN',   'fb*a' );
 $wgGroupPermissions['fb-user'] = $wgGroupPermissions['user'];
 
 // If we are configured to pull group info from Facebook, then create the group permissions
-if ($wgFbUserRightsFromGroup) {
+if ( $wgFbUserRightsFromGroup ) {
 	$wgGroupPermissions['fb-groupie'] = $wgGroupPermissions['user'];
 	$wgGroupPermissions['fb-officer'] = $wgGroupPermissions['bureaucrat'];
 	$wgGroupPermissions['fb-admin'] = $wgGroupPermissions['sysop'];
@@ -119,7 +119,7 @@ $wgAutopromote['autoconfirmed'] = array( '&', array( APCOND_EDITCOUNT, &$wgAutoC
 
 /**
  * Class FBConnect
- * 
+ *
  * This class initializes the extension, and contains the core non-hook,
  * non-authentification code.
  */
@@ -132,27 +132,27 @@ class FBConnect {
 	public static function init() {
 		global $wgXhtmlNamespaces, $wgSharedTables, $facebook, $wgHooks;
 		global $wgFbOnLoginJsOverride;
-		
+
 		// The xmlns:fb attribute is required for proper rendering on IE
 		$wgXhtmlNamespaces['fb'] = 'http://www.facebook.com/2008/fbml';
-		
+
 		// Facebook/username associations should be shared when $wgSharedDB is enabled
 		$wgSharedTables[] = 'user_fbconnect';
-		
+
 		// Create our Facebook instance and make it available through $facebook
 		$facebook = new FBConnectAPI();
-		
+
 		// Install all public static functions in class FBConnectHooks as MediaWiki hooks
-		$hooks = self::enumMethods('FBConnectHooks');
+		$hooks = self::enumMethods( 'FBConnectHooks' );
 		foreach( $hooks as $hookName ) {
 			$wgHooks[$hookName][] = "FBConnectHooks::$hookName";
 		}
 
 		// Allow configurable over-riding of the onLogin handler.
-		if(!empty($wgFbOnLoginJsOverride)){
+		if( !empty( $wgFbOnLoginJsOverride ) ) {
 			self::$fbOnLoginJs = $wgFbOnLoginJsOverride;
 		} else {
-			self::$fbOnLoginJs = "window.location.reload(true);";
+			self::$fbOnLoginJs = 'window.location.reload(true);';
 		}
 	}
 
@@ -173,35 +173,37 @@ class FBConnect {
 			// If PHP's version doesn't support the Reflection API, then exit
 			die( 'PHP version (' . phpversion() . ') must be great enough to support the Reflection API' );
 			// Or list the extensions here manually...
-			$hooks = array('AuthPluginSetup', 'UserLoadFromSession',
-			               'RenderPreferencesForm', 'PersonalUrls',
-			               'ParserAfterTidy', 'BeforePageDisplay', /*...*/ );
+			$hooks = array(
+				'AuthPluginSetup', 'UserLoadFromSession',
+				'RenderPreferencesForm', 'PersonalUrls',
+				'ParserAfterTidy', 'BeforePageDisplay', /*...*/
+			);
 		}
 		return $hooks;
 	}
-	
+
 	/**
 	 * Return the code for the permissions attribute (with leading space) to use on all fb:login-buttons.
 	 */
-	public static function getPermissionsAttribute(){
+	public static function getPermissionsAttribute() {
 		global $wgFbExtendedPermissions;
-		$attr = "";
-		if(!empty($wgFbExtendedPermissions)){
-			$attr = " perms=\"".implode(",", $wgFbExtendedPermissions)."\"";
+		$attr = '';
+		if( !empty( $wgFbExtendedPermissions ) ) {
+			$attr = ' perms="' . implode( ',', $wgFbExtendedPermissions ) . '"';
 		}
 		return $attr;
 	} // end getPermissionsAttribute()
-	
+
 	/**
 	 * Return the code for the onlogin attribute which should be appended to all fb:login-button's in this
 	 * extension.
 	 *
 	 * TODO: Generate the entire fb:login-button in a function in this class.  We have numerous buttons now.
 	 */
-	public static function getOnLoginAttribute(){
-		$attr = "";
-		if(!empty(self::$fbOnLoginJs)){
-			$attr = " onlogin=\"".self::$fbOnLoginJs."\"";
+	public static function getOnLoginAttribute() {
+		$attr = '';
+		if( !empty( self::$fbOnLoginJs ) ) {
+			$attr = ' onlogin="' . self::$fbOnLoginJs . '"';
 		}
 		return $attr;
 	} // end getOnLoginAttribute()
