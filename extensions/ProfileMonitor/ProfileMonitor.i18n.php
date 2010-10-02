@@ -800,8 +800,10 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'profiling-ok' => 'ښه',
+	'profiling-data-process' => 'پروسه',
 	'profiling-data-count' => 'شمېرل',
 	'profiling-data-time' => 'وخت (ټول)',
+	'profiling-data-average' => 'وخت (منځالی)',
 );
 
 /** Portuguese (Português)
@@ -1027,7 +1029,7 @@ $messages['ug-arab'] = array(
 	'profiling-ok' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

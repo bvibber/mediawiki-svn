@@ -2,7 +2,7 @@
 /*
  * WikiArticleFeeds.php - A MediaWiki extension for converting regular pages into feeds.
  * @author Jim R. Wilson
- * @version 0.6.5
+ * @version 0.6.6
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php 
  * -----------------------------------------------------------------------
@@ -10,7 +10,7 @@
  *     This is a MediaWiki (http://www.mediawiki.org/) extension which adds support
  *     for publishing RSS or Atom feeds generated from standard wiki articles.
  * Requirements:
- *     MediaWiki 1.6.x or higher
+ *     MediaWiki 1.12.x or higher
  *     PHP 4.x, 5.x or higher
  * Installation:
  *     1. Drop this script (WikiArticleFeeds.php) in $IP/extensions
@@ -35,6 +35,8 @@
  *         {{#itemTags:dogs, cats}}
  *         {{#itemTags:dogs|cats}}
  * Version Notes:
+ *     version 0.6.6:
+ *         Updated version requirement to MediaWiki 1.12 and up.
  *     version 0.6.5:
  *         Simplified many regular expression to get it working on MW 1.16
  *     version 0.6.4:
@@ -99,7 +101,7 @@
 # Confirm MW environment
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'WIKIARTICLEFEEDS_VERSION', '0.6.4' );
+define( 'WIKIARTICLEFEEDS_VERSION', '0.6.6' );
 
 # Bring in supporting classes
 require_once( "$IP/includes/Feed.php" );
@@ -116,7 +118,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-
 $wgExtensionMessagesFiles['WikiArticleFeeds'] = $dir . 'WikiArticleFeeds.i18n.php';
 
 /**
@@ -165,30 +166,11 @@ class WikiArticleFeedsParser {
 # Create global instance
 $wgWikiArticleFeedsParser = new WikiArticleFeedsParser();
 // FIXME: update after 1.16 branching for new style magic words. This extension has not been branched yet.
-if ( version_compare( $wgVersion, '1.7', '<' ) ) {
-	# Hack solution to resolve 1.6 array parameter nullification for hook args
-	function wfWAFParserItemTagsMagic( &$magicWords ) {
-		global $wgWikiArticleFeedsParser;
-		$wgWikiArticleFeedsParser->itemTagsMagic( $magicWords );
-		return true;
-	}
-	function wfWAFParserPlaceholderCorrections( $parser, &$text ) {
-		global $wgWikiArticleFeedsParser;
-		$wgWikiArticleFeedsParser->itemTagsPlaceholderCorrections( $parser, $text );
-		return true;
-	}
-	$wgHooks['LanguageGetMagic'][] = 'wfWAFParserItemTagsMagic';
-	$wgHooks['ParserBeforeTidy'][] = 'wfWAFParserPlaceholderCorrections';
-} else {
-	$wgHooks['LanguageGetMagic'][] = array( $wgWikiArticleFeedsParser, 'itemTagsMagic' );
-	$wgHooks['ParserBeforeTidy'][] = array( $wgWikiArticleFeedsParser, 'itemTagsPlaceholderCorrections' );
-}
+$wgHooks['LanguageGetMagic'][] = array( $wgWikiArticleFeedsParser, 'itemTagsMagic' );
+$wgHooks['ParserBeforeTidy'][] = array( $wgWikiArticleFeedsParser, 'itemTagsPlaceholderCorrections' );
 
 # Add Extension Functions
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) )
-	$wgHooks['ParserFirstCallInit'][] = 'wfWikiArticleFeedsParserSetup';
-else
-	$wgExtensionFunctions[] = 'wfWikiArticleFeedsParserSetup';
+$wgHooks['ParserFirstCallInit'][] = 'wfWikiArticleFeedsParserSetup';
 
 # Sets up the WikiArticleFeeds Parser hooks
 function wfWikiArticleFeedsParserSetup() {

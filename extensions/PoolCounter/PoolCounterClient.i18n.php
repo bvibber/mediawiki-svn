@@ -76,9 +76,10 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
-	'poolcounter-desc' => 'Stellt einen MediaWiki-Client für den Daemon „poolcounter.py“ als Zählwerk eines Computerclusters bereit',
+	'poolcounter-desc' => 'Stellt einen Klienten für MediaWiki für den Hintergrundprozeß „poolcounter.py“ eines Computerclusters bereit',
 	'poolcounter-connection-error' => 'Fehler beim Verbinden zum Server $1, auf dem sich das Zählwerk des Computerclusters befindet',
 	'poolcounter-read-error' => 'Fehler beim Lesen vom Server, auf dem sich das Zählwerk des Computerclusters befindet',
 	'poolcounter-write-error' => 'Fehler beim Schreiben auf dem Server, auf dem sich das Zählwerk des Computerclusters befindet',
@@ -212,11 +213,11 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'poolcounter-desc' => 'Ene MediaWiki <i lang="en">client</i> för dat Hengerjrondprojramm <code>poolcounter.py</code> för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde.',
-	'poolcounter-connection-error' => 'Beim Verbendung Opnämme met däm ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde: $1',
-	'poolcounter-read-error' => 'Beim Lässe vum ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
-	'poolcounter-write-error' => 'Beim Schriive noh däm ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
-	'poolcounter-remote-error' => 'Dä ßööver för de Bereitschaff vun enem Pöngel vun Prozessore ze verwallde hät dä Fähler „$1“ jemeldt.',
+	'poolcounter-desc' => 'Ene MediaWiki <i lang="en">client</i> för dat Hengerjrondprojramm <code lang="en">poolcounter.py</code> för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde.',
+	'poolcounter-connection-error' => 'Beim Verbenge met däm ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde: $1',
+	'poolcounter-read-error' => 'Beim Lässe vum ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
+	'poolcounter-write-error' => 'Beim Schriive noh däm ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
+	'poolcounter-remote-error' => 'Dä ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde hät dä Fähler „$1“ jemeldt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

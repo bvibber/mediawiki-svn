@@ -35,6 +35,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'passwordreset-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'passwordreset-nopassmatch' => '{{Identical|Passwords do not match}}',
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',
 	'passwordreset-newpass' => '{{Identical|New password}}',
@@ -789,6 +790,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Rex
  */
@@ -797,7 +799,7 @@ $messages['id'] = array(
 	'passwordreset-desc' => "[[Special:PasswordReset|Wiki pengaturan ulang kunci pengguna]] - diperlukan hak 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nama pengguna tidak sah',
 	'passwordreset-emptyusername' => 'Nama pengguna tidak diisi',
-	'passwordreset-nopassmatch' => 'Sandi tidak sesuai',
+	'passwordreset-nopassmatch' => 'Sandi tidak cocok',
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
 	'passwordreset-newpass' => 'Kata sandi baru:',
@@ -1062,7 +1064,7 @@ $messages['ml'] = array(
 	'passwordreset-desc' => "[[Special:PasswordReset|വിക്കി ഉപയോക്താക്കളുടെ രഹസ്യവാക്കുകൾ പുനഃക്രമീകരിക്കുക]] - 'passwordreset' പദവി ആവശ്യമാണ്",
 	'passwordreset-invalidusername' => 'അസാധുവായ ഉപയോക്തൃനാമം',
 	'passwordreset-emptyusername' => 'ശൂന്യമായ ഉപയോക്തൃനാമം',
-	'passwordreset-nopassmatch' => 'രഹസ്യ വാക്കുകൾ തമ്മിൽ യോജിക്കുന്നില്ല',
+	'passwordreset-nopassmatch' => 'രഹസ്യവാക്കുകൾ തമ്മിൽ യോജിക്കുന്നില്ല',
 	'passwordreset-username' => 'ഉപയോക്തൃനാമം:',
 	'passwordreset-newpass' => 'പുതിയ രഹസ്യവാക്ക്:',
 	'passwordreset-confirmpass' => 'രഹസ്യവാക്ക് ഉറപ്പിക്കുക:',
@@ -1445,6 +1447,25 @@ $messages['rue'] = array(
 	'passwordreset-newpass' => 'Нове гесло:',
 );
 
+/** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
+ */
+$messages['si'] = array(
+	'passwordreset' => 'මුරපදය වෙනස් කරන්න',
+	'passwordreset-invalidusername' => 'පරිශීලක නාමය වලංගු නොවේ.',
+	'passwordreset-emptyusername' => 'පරිශීලක නාමය හිස් කරන්න',
+	'passwordreset-nopassmatch' => 'මුරපදයන් සමාන නොවේ.',
+	'passwordreset-badtoken' => 'වලංගු නොවන සංස්කරණ සංඥාව',
+	'passwordreset-username' => 'පරිශීලක නාමය:',
+	'passwordreset-newpass' => 'නව මුර-පදය:',
+	'passwordreset-confirmpass' => 'මුර-පදය සනාථ කිරීම:',
+	'passwordreset-submit' => 'මුර-පදය යළි පිහිටුවන්න',
+	'passwordreset-success' => '$1 ලෙස මුර-පදය යළි පිහිටුවිණි.',
+	'passwordreset-disableuser' => 'පරිශීලක ගිණුම අක්‍රිය කරන්න ද?',
+	'passwordreset-accountdisabled' => 'ගිණුම අක්‍රීය කෙරිණි.',
+	'disabledusers' => 'අක්‍රීය පරිශීලකයන්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1693,11 +1714,18 @@ $messages['ug-arab'] = array(
 	'passwordreset-username' => 'ئىشلەتكۇچى ئىسمى:',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
 	'passwordreset-username' => 'Ishletkuchi ismi:',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'passwordreset-nopassmatch' => 'Паролі не співпадають',
 );
 
 /** Urdu (اردو)

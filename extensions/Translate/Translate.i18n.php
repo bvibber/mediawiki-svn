@@ -21,6 +21,7 @@ $messages['en'] = array(
 	'translate-task-view'                 => 'View all messages from',
 	'translate-task-untranslated'         => 'View all untranslated messages from',
 	'translate-task-optional'             => 'View optional messages from',
+	'translate-task-suggestions'          => 'View messages with suggestions from translation memory',
 	'translate-task-untranslatedoptional' => 'View untranslated optional messages from',
 	'translate-task-problematic'          => 'View messages that have problems',
 	'translate-task-review'               => 'Review changes to',
@@ -1886,6 +1887,7 @@ $messages['be-tarask'] = array(
 	'translate-task-view' => 'Праглядзець усе паведамленьні',
 	'translate-task-untranslated' => 'Праглядзець неперакладзеныя паведамленьні',
 	'translate-task-optional' => 'Праглядзець неабавязковыя паведамленьні',
+	'translate-task-suggestions' => 'Паказаць паведамленьні з падказкамі з памяці перакладаў',
 	'translate-task-untranslatedoptional' => 'Праглядзець неперакладзеныя неабавязковыя паведамленьні',
 	'translate-task-problematic' => 'Праглядзець праблемныя паведамленьні',
 	'translate-task-review' => 'Праверыць зьмены',
@@ -2377,6 +2379,7 @@ $messages['bpy'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -2388,6 +2391,7 @@ $messages['br'] = array(
 	'translate-task-view' => 'Welet an holl gemennadennoù evit',
 	'translate-task-untranslated' => 'Welet an holl gemennadennoù didro evit',
 	'translate-task-optional' => 'Welet an holl gemennadennoù diret evit',
+	'translate-task-suggestions' => "Gwelout ar c'hemennadoù gant atizoù memor an droidigezh",
 	'translate-task-untranslatedoptional' => "Gwelet ar c'hemennadennoù diret n'int ket bet troet evit",
 	'translate-task-problematic' => "Gwelet ar c'hemennadennoù kudennek",
 	'translate-task-review' => "Adwelet ma c'hemmoù evit",
@@ -2553,7 +2557,7 @@ En o zouez ar c'hemennadennoù merket evel dispredet.",
 	'translate-percentage-complete' => 'Echu',
 	'translate-percentage-complete-tooltip' => "An dregantad a gemennadennoù er strollad-mañ hag a zo bet troet ha n'int ket dispredet.",
 	'translate-percentage-fuzzy' => 'Dispredet',
-	'translate-percentage-fuzzy-tooltip' => "An dregantad a gemennadennoù zo bet troet er strollad-maén hag a zo bet merket evel dispredet.
+	'translate-percentage-fuzzy-tooltip' => "An dregantad a gemennadennoù zo bet troet er strollad-mañ hag a zo bet merket evel dispredet.
 Merket e vez kemennadennoù zo evel dispredet pe peogwir eo bet cheñchet ar gemennadenn orin e saozneg pe peogwir eo bet c'hwitet ar gwiriekadur emgefre.",
 	'translate-nothing-to-do' => "Evit doare eo bet kaset da benn kement troidigezh posupl.
 Broudet oc'h da adwelet ar c'hemennadennoù adal [[Special:Translate|{{int:translate}}]].",
@@ -3153,7 +3157,7 @@ $messages['ch'] = array(
 	'translate-page-navigation-legend' => 'Nabegasion',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  * @author رزگار
@@ -3234,6 +3238,8 @@ $messages['cs'] = array(
 	'translate-page-settings-legend' => 'Nastavení',
 	'translate-page-task' => 'Chci',
 	'translate-page-group' => 'skupina',
+	'translate-page-group-tooltip' => 'Název skupiny zpráv.
+Pokud skupina obsahuje podmnožinu či nadmnožinu zpráv z jiných skupin, zobrazuje se tučně.',
 	'translate-page-language' => 'Jazyk',
 	'translate-page-limit' => 's&nbsp;omezením',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|zpráva|zprávy|zpráv}} na stránce',
@@ -3258,6 +3264,7 @@ $messages['cs'] = array(
 	'translate-edit-warnings' => 'Upozornění na neúplný překlad',
 	'translate-edit-tmsugs' => 'Návrhy z překladové paměti',
 	'translate-edit-tmmatch' => '$1% shoda',
+	'translate-use-suggestion' => 'Vložit tento návrh do okna pro překlad. Nahradí se jím veškerý stávající obsah.',
 	'translate-edit-goto-no-prev' => 'Toto je první zpráva',
 	'translate-edit-goto-no-next' => 'Toto je poslední zpráva',
 	'translate-edit-goto-prev' => 'Editovat předchozí zprávu',
@@ -3332,6 +3339,7 @@ Implicitní seznam (''default'') závisí na vašem jazyce.",
 	'translationstats' => 'Statistika překladů',
 	'translate-stats-edits' => 'Úpravy',
 	'translate-stats-users' => 'Překladatelé',
+	'translate-stats-registrations' => 'Registrace',
 	'translate-statsf-intro' => 'Pomocí tohoto formuláře můžete tvořit jednoduché statistiky. Všechny hodnoty mají horní a spodní hranici.',
 	'translate-statsf-options' => 'Možnosti grafu',
 	'translate-statsf-width' => 'Šířka v pixelech:',
@@ -3368,9 +3376,15 @@ Implicitní seznam (''default'') závisí na vašem jazyce.",
 	'translate-suppress-complete' => 'Nevypisovat úplně přeložené skupiny zpráv',
 	'translate-language' => 'Jazyk',
 	'translate-total' => 'Zprávy',
+	'translate-total-tooltip' => 'Celkový počet zpráv v této skupině.',
 	'translate-untranslated' => 'Nepřeložené',
+	'translate-untranslated-tooltip' => 'Celkový počet nepřeložených zpráv v této skupině.
+Zahrnuje zprávy označené jako zastaralé.',
 	'translate-percentage-complete' => 'Dokončené',
+	'translate-percentage-complete-tooltip' => 'Podíl zpráv v této skupině, které jsou přeloženy a nejsou označeny jako zastaralé.',
 	'translate-percentage-fuzzy' => 'Zastaralé',
+	'translate-percentage-fuzzy-tooltip' => 'Podíl zpráv v této skupině, které jsou přeloženy a jsou označeny jako zastaralé.
+Zprávy se označují jako zastaralé v případě, že se zdrojová anglická zpráva změnila, protože nevyhověly automatické kontrole nebo protože je někdo označil jako zastaralé.',
 	'translate-nothing-to-do' => 'Vypadá to, že všechny možné překlady jsou hotové.
 Teď doporučujeme zkontrolovat hlášení pomocí stránky [[Special:Translate|{{int:translate}}]].',
 	'supportedlanguages' => 'Podporované jazyky',
@@ -3655,6 +3669,7 @@ $messages['de'] = array(
 	'translate-task-view' => 'Zeige alle Systemnachrichten der',
 	'translate-task-untranslated' => 'Zeige alle nicht übersetzten Systemnachrichten der',
 	'translate-task-optional' => 'Zeige optionale Systemnachrichten der',
+	'translate-task-suggestions' => 'Nachrichten mit Vorschlägen aus dem Übersetzungsspeicher anzeigen',
 	'translate-task-untranslatedoptional' => 'Zeige nicht übersetzte optionale Systemnachrichten der',
 	'translate-task-problematic' => 'Zeige Systemnachrichten mit Problemen',
 	'translate-task-review' => 'Prüfe Änderungen der',
@@ -3933,9 +3948,10 @@ Details: $1',
 
 /** Swiss High German (Schweizer Hochdeutsch)
  * @author MichaelFrey
+ * @author The Evil IP address
  */
 $messages['de-ch'] = array(
-	'translate-edit-no-information' => "''Diese Systemnachricht hat noch keine Dokumentation. Wenn du weisst, wo und welchem Zusammenhang sie benutzt wird, kannst du anderen Übersetzern helfen, indem du eine Dokumentation hinzufügst.''",
+	'translate-edit-no-information' => "''Diese Systemnachricht hat noch keine Dokumentation. Wenn du weisst, wo und in welchem Zusammenhang sie benutzt wird, kannst du anderen Übersetzern helfen, indem du eine Dokumentation hinzufügst.''",
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -3995,6 +4011,7 @@ $messages['dsb'] = array(
 	'translate-task-view' => 'Wšykne powěsći pokazaś',
 	'translate-task-untranslated' => 'Njepśełožone powěsći pokazaś',
 	'translate-task-optional' => 'Opcionelne powěsći pokazaś',
+	'translate-task-suggestions' => 'Powěźeńki z naraźenjami z psełožowańskego składowaka zwobrazniś',
 	'translate-task-untranslatedoptional' => 'Pokazaś njepśełožone opcionalne powěsći z',
 	'translate-task-problematic' => 'Powěsći pokazaś, kótarež maju problemy',
 	'translate-task-review' => 'Změny pśeglědaś',
@@ -4782,6 +4799,7 @@ $messages['es'] = array(
 	'translate-task-view' => 'Ver todos los mensajes de',
 	'translate-task-untranslated' => 'Ver todos los mensajes sin traducir de',
 	'translate-task-optional' => 'Ver los mensajes opcionales de',
+	'translate-task-suggestions' => 'Ver mensajes con sugerencias de la memoria de traducción',
 	'translate-task-untranslatedoptional' => 'Ver mensajes opcionales no traducidos de',
 	'translate-task-problematic' => 'Ver los mensajes que tienen problemas',
 	'translate-task-review' => 'Revisar cambios en',
@@ -5629,7 +5647,7 @@ $1',
 	'translate-gs-code' => 'Koodi',
 	'translate-gs-continent' => 'Maanosa',
 	'translate-gs-speakers' => 'Puhujat',
-	'translate-gs-score' => 'Tilanne',
+	'translate-gs-score' => 'Pisteet',
 	'translate-gs-multiple' => 'Useita',
 	'translate-gs-count' => 'Määrä',
 	'translate-gs-total' => 'Yhteensä',
@@ -5653,6 +5671,7 @@ $1',
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
+ * @author Yumeki
  */
 $messages['fr'] = array(
 	'translate' => 'Traduire',
@@ -5663,6 +5682,7 @@ $messages['fr'] = array(
 	'translate-task-view' => 'Voir tous les messages du',
 	'translate-task-untranslated' => 'Voir tous les messages non traduits du',
 	'translate-task-optional' => 'Voir les messages facultatifs du',
+	'translate-task-suggestions' => 'Voir les messages avec les suggestions de la mémoire de traduction',
 	'translate-task-untranslatedoptional' => 'Voir les messages facultatifs non traduits du',
 	'translate-task-problematic' => 'Voir les messages ayant des problèmes',
 	'translate-task-review' => 'Revoir les modifications au',
@@ -5979,6 +5999,7 @@ $messages['frp'] = array(
 	'translate-task-view' => 'Vêre tôs los mèssâjos de la',
 	'translate-task-untranslated' => 'Vêre tôs los mèssâjos pas traduits de la',
 	'translate-task-optional' => 'Vêre los mèssâjos u chouèx de la',
+	'translate-task-suggestions' => 'Vêre los mèssâjos avouéc los consèlys de la mèmouère de traduccion de la',
 	'translate-task-untranslatedoptional' => 'Vêre los mèssâjos u chouèx pas traduits de la',
 	'translate-task-problematic' => 'Vêre los mèssâjos que sont pas de sûr de la',
 	'translate-task-review' => 'Revêre los changements a la',
@@ -6139,7 +6160,7 @@ Totes les valors ont des limites d’amont et desot.',
 	'languagestats-recenttranslations' => 'novèles traduccions',
 	'translate-language-code' => 'Code lengoua',
 	'translate-language-code-field-name' => 'Code lengoua :',
-	'translate-suppress-complete' => 'Pas fâre vêre les tropes de mèssâjos traduits complètament',
+	'translate-suppress-complete' => 'Pas fâre vêre les tropes de mèssâjos tot traduites',
 	'translate-language' => 'Lengoua',
 	'translate-total' => 'Mèssâjos',
 	'translate-total-tooltip' => 'La soma totâla de mèssâjos dens ceta tropa.',
@@ -6150,10 +6171,10 @@ Cen encllut los mèssâjos qu’ont étâ marcâs coment dèpassâs.',
 	'translate-percentage-complete-tooltip' => 'Lo porcentâjo de mèssâjos dens ceta tropa qu’ont étâ traduits et pas marcâs coment dèpassâs.',
 	'translate-percentage-fuzzy' => 'Dèpassâs',
 	'translate-percentage-fuzzy-tooltip' => 'Lo porcentâjo de mèssâjos dens ceta tropa qu’ont étâ traduits et pués marcâs coment dèpassâs.
-Los mèssâjos sont marcâs coment dèpassâs seye perce que la sôrsa en anglès at étâ changiê ou ben adonc un contrôlo ôtomatico at pas reussi.',
+Los mèssâjos sont marcâs coment dèpassâs seye perce que lo mèssâjo sôrsa en anglès at étâ changiê ou ben adonc un contrôlo ôtomatico at pas reussi.',
 	'translate-nothing-to-do' => 'Totes les traduccions possibles semblont avêr étâ fêtes.
 Vos éte encoragiê a revêre los mèssâjos dês [[Special:Translate|{{int:translate}}]].',
-	'translate-languagestats-groups' => ' # Apondéd des identifiants de tropes de mèssâjos, yon per legne por limitar les tropes
+	'translate-languagestats-groups' => ' # Apondéd des numerôs de tropes de mèssâjos, yon per legne por limitar les tropes
  # que sont montrâs dessus Special:LanguageStats. Les tropes pas ègzistentes seront
  # ignorâs.',
 	'supportedlanguages' => 'Lengoues recognues',
@@ -6336,6 +6357,7 @@ $messages['gl'] = array(
 	'translate-task-view' => 'Ver todas as mensaxes de',
 	'translate-task-untranslated' => 'Ver todas as mensaxes sen traducir de',
 	'translate-task-optional' => 'Ver as mensaxes opcionais de',
+	'translate-task-suggestions' => 'Ver as mensaxes coas suxestións da memoria de tradución',
 	'translate-task-untranslatedoptional' => 'Ver as mensaxes opcionais non traducidas de',
 	'translate-task-problematic' => 'Ver as mensaxes que teñen problemas en',
 	'translate-task-review' => 'Revisar os cambios en',
@@ -7117,6 +7139,11 @@ $messages['gv'] = array(
 	'translate-edit-in-other-languages' => 'Çhaghteraght ayns çhengaghyn elley',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'translate-magic-cm-comment' => 'Bahasi:',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -7550,6 +7577,7 @@ $messages['hsb'] = array(
 	'translate-task-view' => 'Pokazaj wšě zdźělenki',
 	'translate-task-untranslated' => 'Pokazaj njepřełožene zdźělenki',
 	'translate-task-optional' => 'Pokazaj opcionalne zdźělenki',
+	'translate-task-suggestions' => 'Zdźělenki z namjetami z přełožowanskeho składowaka zwobraznić',
 	'translate-task-untranslatedoptional' => 'Wobhladać sej njepřełožene opcionelne zdźělenki z',
 	'translate-task-problematic' => 'Zdźělenki pokazać, kotrež maja problemy',
 	'translate-task-review' => 'Přepruwuj změny za',
@@ -8190,6 +8218,7 @@ $messages['ia'] = array(
 	'translate-task-view' => 'Vider tote le messages del',
 	'translate-task-untranslated' => 'Vider tote le messages non traducite del',
 	'translate-task-optional' => 'Vider le messages optional del',
+	'translate-task-suggestions' => 'Vider messages con suggestiones del memoria de traductiones',
 	'translate-task-untranslatedoptional' => 'Vider le messages optional non traducite de',
 	'translate-task-problematic' => 'Vider le messages que ha problemas',
 	'translate-task-review' => 'Revider le modificationes al',
@@ -8740,7 +8769,7 @@ Detil: $1",
 $messages['ig'] = array(
 	'translate' => 'Kuwaria na asụsụ ozor',
 	'translate-edit' => 'rüwá',
-	'translate-talk' => 'kuwa okwu',
+	'translate-talk' => 'okwu',
 	'translate-page-settings-legend' => 'Otu ihe dị',
 	'translate-page-task' => 'M chorí',
 	'translate-page-group' => 'Ọtú',
@@ -8749,7 +8778,7 @@ $messages['ig'] = array(
 	'translate-submit' => 'Ga wèré',
 	'translate-page-navigation-legend' => 'Otú Uzọr',
 	'translate-page-showing-none' => 'Ozi adighi I zi.',
-	'translate-next' => 'Ihü nke di nso',
+	'translate-next' => 'Ihü sò',
 	'translate-page-edit' => 'rüwá',
 	'translate-optional' => '(ichóró)',
 	'translate-ignored' => '(atùfùghịrị)',
@@ -8762,7 +8791,7 @@ $messages['ig'] = array(
 	'translate-statsf-width' => 'Íbụ ime ogụgụ pixel:',
 	'translate-statsf-height' => 'Ógólógó ime ogụgụ pixel:',
 	'translate-statsf-scale-days' => 'Ubochi',
-	'translate-statsf-scale-hours' => 'Nkeji Unochi',
+	'translate-statsf-scale-hours' => 'Àmànì',
 	'translate-statsf-count' => 'Güo ógólógó:',
 	'translate-statsf-count-edits' => 'Ogụgụ orü',
 	'translate-statsf-count-users' => 'Ndi na su asụsụ di ngwamme',
@@ -8782,7 +8811,7 @@ $messages['ig'] = array(
 	'translate-gs-continent' => 'Obodo ukwu',
 	'translate-gs-speakers' => 'Ndi na su',
 	'translate-gs-multiple' => 'Onuogụgụ kachara otụ',
-	'translate-gs-total' => 'Olé níle',
+	'translate-gs-total' => 'Òlé níle',
 );
 
 /** Iloko (Ilokano)
@@ -9115,6 +9144,7 @@ $messages['ja'] = array(
 	'translate-task-view' => 'すべてのメッセージ',
 	'translate-task-untranslated' => '未翻訳メッセージ',
 	'translate-task-optional' => '任意翻訳のメッセージ',
+	'translate-task-suggestions' => '翻訳メモリーの提案があるメッセージ',
 	'translate-task-untranslatedoptional' => '未翻訳の任意翻訳メッセージ',
 	'translate-task-problematic' => '問題のあるメッセージ',
 	'translate-task-review' => '更新反映待ちのメッセージ',
@@ -9637,7 +9667,7 @@ $messages['kaa'] = array(
 	'right-translate' => "Awdarma interfeysi ja'rdeminde o'zgertiw",
 );
 
-/** Kabardian (Cyrillic) ()
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
  * @author Тамэ Балъкъэрхэ
  */
 $messages['kbd-cyrl'] = array(
@@ -10350,8 +10380,8 @@ $messages['ksh'] = array(
 	'translate-ignored' => '(övverjange)',
 	'translate-edit-definition' => 'De Ojinaal Nohresch',
 	'translate-edit-contribute' => 'beijdraare',
-	'translate-edit-no-information' => "''Mer han kein Dokementazjohn för dat Täxshtöck.
-Wann De weijß, wann un woh dit Shtöck jenou jebruch weed, dann kanns De de Anndere hellefe, un jet för_et ennjävve.''",
+	'translate-edit-no-information' => "Mer han kein Dokementazjohn för dat Täxshtöck.
+Wann De weijß, wann un woh dat Shtöck jenou jebruch weed, dann kanns De dä Anndere hellefe, un jet för_et ennjävve.''",
 	'translate-edit-information' => 'Ennfommazjohne övver de Nohresch „$2“ ($1)',
 	'translate-edit-in-other-languages' => 'Di Nohresch „$1“ in annder Shprooche',
 	'translate-edit-committed' => 'Es aktowäll övversaz met',
@@ -10382,7 +10412,7 @@ Do moß en de Jrop „Övversäzer“ sen, för hee Änderonge maache ze könne.
 	'translate-magic-nothing-to-export' => 'Et jit nix ze expoteeere.',
 	'translate-magic-cm-to-be' => 'Soll wääde',
 	'translate-magic-cm-current' => 'Eß jäz',
-	'translate-magic-cm-original' => 'Orrijinaal',
+	'translate-magic-cm-original' => 'Ojinahl',
 	'translate-magic-cm-comment' => 'Koot zesamme jefaß, Quell',
 	'translate-magic-cm-save' => 'Seschere',
 	'translate-magic-cm-updatedusing' => 'Övver [[Special:AdvancedTranslate|{{#special:magic}}]] jeänndert.',
@@ -10577,6 +10607,7 @@ $messages['lb'] = array(
 	'translate-task-view' => 'All Systemmessagen uweisen',
 	'translate-task-untranslated' => 'All net iwwersate Systemmessagen uweisen',
 	'translate-task-optional' => 'Optional Messagen uweisen',
+	'translate-task-suggestions' => 'Weis Message mat Virschléi vun der Iwwersetzungs-Memoire',
 	'translate-task-untranslatedoptional' => 'Weis déi net-iwwersaten optional Systemmessage vu(n)',
 	'translate-task-problematic' => 'Systemmessage weisen wou et Problemer gëtt',
 	'translate-task-review' => 'Ännerungen uweisen',
@@ -11090,6 +11121,7 @@ $messages['mg'] = array(
 	'right-translate' => 'Manova ny interface fandikana',
 	'right-translate-manage' => 'Mitantana ny gropy fandikana',
 	'right-translate-import' => 'Mampiditra ny fandikana na offline aza',
+	'translate-sidebar-alltrans' => "Amin'ny teny vahiny",
 );
 
 /** Eastern Mari (Олык Марий)
@@ -11118,6 +11150,7 @@ $messages['mk'] = array(
 	'translate-task-view' => 'Преглед на сите пораки',
 	'translate-task-untranslated' => 'Преглед на сите непреведени пораки',
 	'translate-task-optional' => 'Преглед на изборни пораки од',
+	'translate-task-suggestions' => 'Преглед на пораки со предлози од преводното памтило',
 	'translate-task-untranslatedoptional' => 'Преглед на непреведени изборни пораки од',
 	'translate-task-problematic' => 'Преглед на пораки кои имаат некој проблем',
 	'translate-task-review' => 'Преглед на промени',
@@ -11444,7 +11477,7 @@ $messages['ml'] = array(
 	'translate-edit-warnings' => 'അപൂർണ്ണമായ പരിഭാഷയെക്കുറിച്ചുള്ള മുന്നറിയിപ്പ്',
 	'translate-magic-pagename' => 'മീഡിയവിക്കി വിപുലീകൃത തർജ്ജമ',
 	'translate-magic-submit' => 'സമർപ്പിക്കുക',
-	'translate-magic-cm-export' => 'എക്സ്പോർട്ട്',
+	'translate-magic-cm-export' => 'കയറ്റുമതി ചെയ്യുക',
 	'translate-magic-cm-current' => 'നിലവിലുള്ളത്',
 	'translate-magic-cm-original' => 'മൂലകൃതി',
 	'translate-magic-cm-comment' => 'അഭിപ്രായം:',
@@ -11454,7 +11487,7 @@ $messages['ml'] = array(
 	'translate-magic-words' => 'മാന്ത്രിക പദങ്ങൾ',
 	'translate-magic-namespace' => 'നാമമേഖല നാമങ്ങൾ',
 	'translationchanges' => 'പരിഭാഷയിലെ മാറ്റങ്ങൾ',
-	'translationchanges-export' => 'എക്സ്പോർട്ട്',
+	'translationchanges-export' => 'കയറ്റുമതി ചെയ്യുക',
 	'translationchanges-change' => '$1: $2 ചെയ്തത് $3',
 	'translate-checks-plural' => 'നിർ‌വചനം <nowiki>{{PLURAL:}}</nowiki> ഉപയോഗിക്കുന്നു, പക്ഷെ പരിഭാഷ ഉപയോഗിക്കുന്നില്ല.',
 	'translate-pref-nonewsletter' => 'ഇമെയിൽ വാർത്താപത്രികകൾ എനിക്ക് അയയ്ക്കേണ്ടതില്ല',
@@ -11906,6 +11939,7 @@ $messages['nl'] = array(
 	'translate-task-view' => 'alle berichten bekijken',
 	'translate-task-untranslated' => 'alle onvertaalde berichten bekijken',
 	'translate-task-optional' => 'optionele berichten bekijken',
+	'translate-task-suggestions' => 'berichten met vertaalsuggesties bekijken',
 	'translate-task-untranslatedoptional' => 'onvertaalde optionele berichten bekijken',
 	'translate-task-problematic' => 'vertalingen met problemen bekijken',
 	'translate-task-review' => 'wijzigingen controleren',
@@ -12407,6 +12441,7 @@ $messages['no'] = array(
 	'translate-task-view' => 'Vis alle meldinger fra',
 	'translate-task-untranslated' => 'Vis alle uoversatte meldinger fra',
 	'translate-task-optional' => 'Vis valgfrie beskjeder fra',
+	'translate-task-suggestions' => 'Se meldinger med forslag fra oversettelsesminnet',
 	'translate-task-untranslatedoptional' => 'Vis uoversatte valgfrie meldinger fra',
 	'translate-task-problematic' => 'Vis beskjeder som har problemer',
 	'translate-task-review' => 'Revider endringer av',
@@ -13018,6 +13053,7 @@ $messages['pdc'] = array(
 	'translate-stats-users' => 'Iwwersetzer',
 	'translate-statsf-scale-days' => 'Daag',
 	'translate-statsf-scale-hours' => 'Schtund',
+	'translate-statsf-submit' => 'Aagucke',
 	'translate-sidebar-alltrans' => 'In annere Schprooche',
 	'translations' => 'Alle Iwwersetzinge',
 	'translate-translations-none' => 'Keene Iwwersetzingen fer „$1“ vorhande',
@@ -13344,6 +13380,7 @@ $messages['pms'] = array(
 	'translate-task-view' => 'smon-e tuti ij messagi ëd',
 	'translate-task-untranslated' => 'Smon-e tuti ij messagi nen virà ëd',
 	'translate-task-optional' => 'Smon-e ij messagi opsionaj ëd',
+	'translate-task-suggestions' => 'Vëdde ij mëssagi con ij sugeriment ëd la memòria ëd tradussion',
 	'translate-task-untranslatedoptional' => 'Vëdde ij mëssagi facoltativ nen voltà da',
 	'translate-task-problematic' => "S-ciairé ij mëssagi ch'a l'han dij problema",
 	'translate-task-review' => 'Controlé le modìfiche a',
@@ -13771,6 +13808,7 @@ $messages['pt'] = array(
 	'translate-task-view' => 'Ver todas as mensagens de',
 	'translate-task-untranslated' => 'Ver todas as mensagens não traduzidas de',
 	'translate-task-optional' => 'Ver mensagens opcionais de',
+	'translate-task-suggestions' => 'Ver mensagens com sugestões da memória de tradução',
 	'translate-task-untranslatedoptional' => 'Ver mensagens opcionais não traduzidas de',
 	'translate-task-problematic' => 'Ver mensagens com problemas',
 	'translate-task-review' => 'Rever alterações de',
@@ -14657,6 +14695,7 @@ $messages['ru'] = array(
 	'translate-task-view' => 'Просмотреть все сообщения',
 	'translate-task-untranslated' => 'Просмотреть непереведённые сообщения',
 	'translate-task-optional' => 'Просмотреть необязательные сообщения',
+	'translate-task-suggestions' => 'Просмотр сообщений с предложениями от памяти переводов',
 	'translate-task-untranslatedoptional' => 'Просмотреть непереведённые необязательные сообщения',
 	'translate-task-problematic' => 'Просмотреть проблемные сообщения',
 	'translate-task-review' => 'Проверить изменения',
@@ -17793,7 +17832,7 @@ $messages['tt-cyrl'] = array(
 	'languagestats' => 'Тел статистикасы',
 );
 
-/** Uighur (Uyghurche‎ / ئۇيغۇرچە) */
+/** Uighur (ئۇيغۇرچە / Uyghurche‎) */
 $messages['ug'] = array(
 	'translate-edit' => 'uzgartish',
 	'translate-talk' => 'monazire',
@@ -17929,7 +17968,7 @@ $messages['ug-arab'] = array(
 	'translate-gs-total' => 'جەمئى',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -17947,6 +17986,7 @@ $messages['ug-latn'] = array(
  * @author Ahonc
  * @author Aleksandrit
  * @author Apromix
+ * @author Hypers
  * @author NickK
  * @author Prima klasy4na
  * @author Test
@@ -17961,6 +18001,7 @@ $messages['uk'] = array(
 	'translate-task-view' => 'Переглянути всі повідомлення',
 	'translate-task-untranslated' => 'Переглянути неперекладені повідомлення',
 	'translate-task-optional' => "Переглянути необов'язкові повідомлення",
+	'translate-task-suggestions' => "Перегляд повідомлень з пропозиціями від пам'яті перекладу",
 	'translate-task-untranslatedoptional' => "Переглянути неперекладені необов'язкові повідомлення",
 	'translate-task-problematic' => 'Переглянути проблемні повідомлення',
 	'translate-task-review' => 'Перевірити зміни',
@@ -18006,6 +18047,7 @@ $messages['uk'] = array(
 	'translate-edit-warnings' => 'Попередження про неповні переклади',
 	'translate-edit-tmsugs' => "Пропозиції з пам'яті перекладів",
 	'translate-edit-tmmatch' => '$1% відповідність',
+	'translate-use-suggestion' => 'Вставити цю пропозицію в поле перекладу. Це замінить увесь поточний зміст.',
 	'translate-edit-goto-no-prev' => 'Немає попереднього повідомлення',
 	'translate-edit-goto-no-next' => 'Немає наступного повідомлення',
 	'translate-edit-goto-prev' => 'Редагувати попереднє повідомлення',
@@ -18119,8 +18161,13 @@ $messages['uk'] = array(
 	'translate-total' => 'Повідомлення',
 	'translate-total-tooltip' => 'Загальна кількість повідомлень у цій групі повідомлень.',
 	'translate-untranslated' => 'Неперекладені',
+	'translate-untranslated-tooltip' => 'Загальна кількість неперекладених повідомлень у цій групі повідомлень.
+Вона включає повідомлення, які були помічені як застарілі.',
 	'translate-percentage-complete' => 'Готово',
+	'translate-percentage-complete-tooltip' => 'Частка повідомлень у групі, які були перекладені та не помічені як застарілі.',
 	'translate-percentage-fuzzy' => 'Застаріло',
+	'translate-percentage-fuzzy-tooltip' => 'Частка повідомлень у групі, які були перекладені та були відмічені як застарілі.
+Повідомлення відмічені застарілими, оскільки англомовне оригінальне повідомлення змінилося, автоматизована перевірка повідомлення не вдалася, або хтось позначив їх як застарілі.',
 	'translate-nothing-to-do' => 'Очевидно, всі можливі переклади вже зроблені.
 Ви можете перевірити повідомлення з допомогою [[Special:Translate|{{int:translate}}]].',
 	'supportedlanguages' => 'Підтримувані мови',
@@ -18133,6 +18180,10 @@ $messages['uk'] = array(
 Якщо ви перекладач на певну мову, але у відповідному списку вас нема, додайте своє ім\'я до списку перекладачів на [[:Category:Languages|порталі]] цієї мови.
 На бічній панель знаходиться посилання на портал мови вашого інтерфейсу.',
 	'supportedlanguages-translators' => '{{PLURAL:$2|Перекладач|Перекладачі}}: $1',
+	'supportedlanguages-noportal-title' => 'Не визначено простір імен порталу',
+	'supportedlanguages-noportal' => 'Адміністратор вікі не визначив NS_PORTAL, тому ця сторінка не працює.
+На цій сторінці з\'явиться список мовних порталів для всіх порталів, які відповідають визначеним кодам мов, а також підсторінка "translators".
+Підсторінка "translators" повинна містити шаблон [[:{{ns:template}}:User|User]], з ім\'ям користувача в якості параметра.',
 	'supportedlanguages-recenttranslations' => 'останні переклади',
 	'translate-save' => 'Зберегти ($1)',
 	'translate-jssti-add' => 'Додати в список',

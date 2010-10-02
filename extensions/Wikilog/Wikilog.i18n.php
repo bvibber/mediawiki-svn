@@ -1451,6 +1451,14 @@ $messages['ca'] = array(
 	'wikilog-history-lc' => 'historial',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'wikilog-view-summary' => 'پوختە',
+	'wikilog-form-category' => 'پۆل:',
+	'wikilog-submit' => 'ناردن',
+	'wikilog-delete-lc' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -2078,6 +2086,7 @@ $messages['en-gb'] = array(
 /** Esperanto (Esperanto)
  * @author Airon90
  * @author Lucas
+ * @author LyzTyphone
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -2123,6 +2132,7 @@ $messages['eo'] = array(
 	'wikilog-summary-uncategorized' => 'Nekategoriiga',
 	'wikilog-summary-more' => '[[$3|→ Daŭre legi...]]',
 	'wikilog-edit-fieldset-legend' => 'Vikiblog-agordoj',
+	'wikilog-comment-permalink' => '$1 ĉe $2',
 	'wikilog-comment-note-edited' => 'laste ŝanĝita je la $1 je $2',
 	'wikilog-comment-anonsig' => '$3 (anonima)',
 	'wikilog-comment-pending' => 'Ĉi tiu komento atendas aprobadon.',
@@ -2142,7 +2152,7 @@ $messages['eo'] = array(
 	'wikilog-invalid-param' => 'Malvalida parametro: $1.',
 	'wikilog-invalid-author' => 'Malvalida aŭtoro: $1.',
 	'wikilog-invalid-date' => 'Nevalida dato: $1.',
-	'wikilog-invalid-tag' => 'Malvalida etikedo: $1',
+	'wikilog-invalid-tag' => 'Malvalida markilo: $1',
 	'wikilog-invalid-file' => 'Malvalida dosiero: $1.',
 	'wikilog-file-not-found' => 'Mankanta dosiero: $1.',
 	'wikilog-not-an-image' => 'Dosiero ne estas bildo: $1.',
@@ -2552,7 +2562,7 @@ Kommentti näkyy vasta kun moderaattori on tarkistanut sen.',
  * @author Yekrats
  */
 $messages['fr'] = array(
-	'wikilog-desc' => 'Ajoute des fonctionnalités de blogue, créant un wiki-blog hybride',
+	'wikilog-desc' => 'Ajoute des fonctionnalités de blogue, créant un hybride wiki-blogue',
 	'wikilog-auto' => 'Vikilogo Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Poster des commentaires sur les articles de wikilog',
@@ -2683,6 +2693,124 @@ Le commentaire n’apparaîtra qu’après avoir été vérifié par un modérat
 	'wikilog-page-lc' => 'page',
 	'wikilog-history-lc' => 'historique',
 	'wikilog-doc-import-comment' => 'Documentation importée de wikilog',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikilog-desc' => 'Apond des fonccionalitâts de blogo, fassent un hibrido vouiqui-blogo.',
+	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
+	'right-wl-postcomment' => 'Postar des comentèros sur los articllos de Wikilog',
+	'right-wl-moderation' => 'Moderacion des comentèros sur los articllos de Wikilog',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Jornal de les accions dessus Wikilog',
+	'wikilog-log-pagetext' => 'Ce-desot sè trove una lista de les accions dessus Wikilog.',
+	'wikilog-log-cmt-approve' => 'comentèro aprovâ « [[$1]] »',
+	'wikilog-log-cmt-reject' => 'comentèro refusâ « [[$1]] »',
+	'wikilog-log-cmt-rejdel' => 'At refusâ lo comentèro dessus Wikilog de [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Accions dessus Wikilog',
+	'wikilog-information' => 'Enformacion sur Wikilog',
+	'wikilog-post-count-published' => 'Y at {{PLURAL:$1|yon articllo publeyê|$1 articllos publeyês}} sur cél wikilog',
+	'wikilog-post-count-drafts' => 'Y at {{PLURAL:£1|yon articllo pas publeyê (brolyon)|$1 articllos pas publeyês (brolyons)}}',
+	'wikilog-post-count-all' => 'En tot, y at {{PLURAL:$1|yon articllo|$1 articllos}}.',
+	'wikilog-new-item' => 'Fâre un articllo novél de Wikilog',
+	'wikilog-new-item-go' => 'Fâre',
+	'wikilog-item-name' => 'Nom de l’articllo :',
+	'wikilog-published' => 'Publeyê',
+	'wikilog-updated' => 'Betâ a jorn',
+	'wikilog-draft' => 'Brolyon',
+	'wikilog-authors' => 'Ôtors',
+	'wikilog-wikilog' => 'Wikilog',
+	'wikilog-title' => 'Titro',
+	'wikilog-actions' => 'Accions',
+	'wikilog-comments' => 'Comentèros',
+	'wikilog-replies' => 'Rèponses',
+	'wikilog-view-archives' => 'Arch·ives',
+	'wikilog-view-summary' => 'Rèsumâ',
+	'wikilog-draft-title-mark' => '(brolyon)',
+	'wikilog-anonymous-mark' => '(anonimo)',
+	'wikilog-pager-newest' => 'los ples novéls',
+	'wikilog-pager-oldest' => 'los ples vielys',
+	'wikilog-pager-prev' => 'devant',
+	'wikilog-pager-next' => 'aprés',
+	'wikilog-pager-first' => 'premiére',
+	'wikilog-pager-last' => 'dèrriére',
+	'wikilog-pager-empty' => '(nion èlèment)',
+	'wikilog-no-comments' => 'gins de comentèro',
+	'wikilog-has-comments' => '{{PLURAl:$1|yon comentèro|$1 comentèros}}',
+	'wikilog-summary-footer' => 'Postâ per $7 dens [[$1|$2]] lo $8 a $9, $10.',
+	'wikilog-summary-footer-single' => 'Postâ per $7 lo $8 a $9, $10.',
+	'wikilog-summary-uncategorized' => 'Pas catègorisâ',
+	'wikilog-summary-categories' => 'Rengiê dens $2',
+	'wikilog-summary-more' => '[[$3|→ liére la suita...]]',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discutar]])',
+	'wikilog-edit-hint' => 'Changiér l’articllo du wikilog : $1',
+	'wikilog-edit-fieldset-legend' => 'Chouèx de Wikilog :',
+	'wikilog-edit-signpub' => 'Signér et publeyér cél articllo',
+	'wikilog-comment-permalink' => '$1 a $2',
+	'wikilog-comment-note-item' => 'at postâ a $1',
+	'wikilog-comment-note-edited' => 'dèrriér changement lo $1 a $2',
+	'wikilog-comment-anonsig' => '$3 (anonimo)',
+	'wikilog-comment-pending' => 'Cél comentèro est en atenta d’una aprobacion.',
+	'wikilog-comment-deleted' => 'Cél comentèro at étâ suprimâ.',
+	'wikilog-comment-omitted-x' => 'Comentèro oubliâ (#$1).',
+	'wikilog-comment-autosumm' => 'Novél comentèro de $1 : $2',
+	'wikilog-reply-to-comment' => 'Postar una rèponsa a cél comentèro',
+	'wikilog-comment-page' => 'Alar a la pâge de cél comentèro',
+	'wikilog-comment-edit' => 'Changiér cél comentèro',
+	'wikilog-comment-delete' => 'Suprimar cél comentèro',
+	'wikilog-comment-history' => 'Vêre l’historico des comentèros',
+	'wikilog-comment-approve' => 'Aprovar cél comentèro (accion drêta)',
+	'wikilog-comment-reject' => 'Refusar cél comentèro (accion drêta)',
+	'wikilog-newtalk-text' => '<!-- pâge voueda fêta per Wikilog -->',
+	'wikilog-newtalk-summary' => 'fêt ôtomaticament per Wikilog',
+	'wikilog-feed-ns-title' => '$1 articllos Wikilog',
+	'wikilog-feed-description' => 'Liére los pôstes los ples novéls dens cél fil.',
+	'wikilog-comment-feed-title1' => 'Comentèro de $2 (# $1)',
+	'wikilog-comment-feed-title2' => 'Comentèro de $2 a $3 (# $1)',
+	'wikilog-comment-feed-description' => 'Liére los comentèros los ples novéls dens cél fil.',
+	'wikilog-title-comments' => 'Comentèros - $1',
+	'wikilog-error-msg' => 'Wikilog : $1',
+	'wikilog-error-title' => 'Èrror de Wikilog',
+	'wikilog-invalid-param' => 'Paramètre envalido : $1.',
+	'wikilog-invalid-author' => 'Ôtor envalido : $1.',
+	'wikilog-invalid-date' => 'Dâta envalida : $1.',
+	'wikilog-invalid-tag' => 'Balisa envalida : $1.',
+	'wikilog-invalid-file' => 'Fichiér envalido : $1.',
+	'wikilog-file-not-found' => 'Fichiér pas ègzistent : $1.',
+	'wikilog-not-an-image' => 'Lo fichiér est pas una émâge : $1.',
+	'wikilog-comment-is-empty' => 'Lo comentèro postâ est vouedo.',
+	'wikilog-comment-too-long' => 'Lo comentèro postâ est trop long.',
+	'wikilog-comment-invalid-name' => 'Lo nom balyê est pas valido.',
+	'wikilog-post-comment' => 'Postar un novél comentèro',
+	'wikilog-post-reply' => 'Postar una rèponsa novèla',
+	'wikilog-form-legend' => 'Chèrchiér des pôstes de Wikilog',
+	'wikilog-form-wikilog' => 'Wikilog :',
+	'wikilog-form-category' => 'Catègorie :',
+	'wikilog-form-name' => 'Nom :',
+	'wikilog-form-author' => 'Ôtor :',
+	'wikilog-form-tag' => 'Balisa :',
+	'wikilog-form-date' => 'Dâta :',
+	'wikilog-form-status' => 'Statut :',
+	'wikilog-form-preview' => 'Prèvisualisacion :',
+	'wikilog-form-comment' => 'Comentèro :',
+	'wikilog-show-all' => 'Tôs los pôstes',
+	'wikilog-show-published' => 'Publeyês',
+	'wikilog-show-drafts' => 'Brolyons',
+	'wikilog-submit' => 'Sometre',
+	'wikilog-preview' => 'Prèvisualisar',
+	'wikilog-edit-lc' => 'changiér',
+	'wikilog-reply-lc' => 'rèpondre',
+	'wikilog-delete-lc' => 'suprimar',
+	'wikilog-approve-lc' => 'aprovar',
+	'wikilog-reject-lc' => 'refusar',
+	'wikilog-page-lc' => 'pâge',
+	'wikilog-history-lc' => 'historico',
+	'wikilog-doc-import-comment' => 'Documentacion importâ de Wikilog',
 );
 
 /** Galician (Galego)
@@ -2977,6 +3105,15 @@ Dr Kommentar erschynt ärscht, wänn er dur e Moderator zuegloo isch.',
 	'wikilog-page-lc' => 'Syte',
 	'wikilog-history-lc' => 'Versionsgschicht',
 	'wikilog-doc-import-comment' => 'Importierti Wikilog-Dokumäntation',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'wikilog-new-item-go' => 'Ƙirƙira',
+	'wikilog-view-summary' => 'Taƙaici',
+	'wikilog-form-category' => 'Rukuni:',
+	'wikilog-delete-lc' => 'soke',
+	'wikilog-page-lc' => 'shafi',
 );
 
 /** Hebrew (עברית)
@@ -4106,6 +4243,7 @@ $messages['lb'] = array(
 	'wikilog-comment-approve' => 'Dës Bemierkung approuvéieren (gëtt direkt gemaach)',
 	'wikilog-newtalk-text' => '<!-- eidel Säit déi vu Wikilog ugeluecht gouf-->',
 	'wikilog-newtalk-summary' => 'automatesch ugeluecht vu Wikilog',
+	'wikilog-feed-ns-title' => '$1 Wikilog-Artikelen',
 	'wikilog-comment-feed-title1' => 'Bemierkung vum $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Bemierkung vum $2 zu $3 (#$1)',
 	'wikilog-title-comments' => 'Bemierkungen - $1',
@@ -4898,7 +5036,9 @@ $messages['pdc'] = array(
 	'wikilog-form-name' => 'Naame:',
 	'wikilog-form-author' => 'Schreiwer:',
 	'wikilog-form-tag' => 'Daag:',
+	'wikilog-form-preview' => 'Aagucke:',
 	'wikilog-form-comment' => 'Anmaerricking:',
+	'wikilog-preview' => 'Devor aagucke',
 	'wikilog-edit-lc' => 'ennere',
 	'wikilog-page-lc' => 'Blatt',
 );
@@ -5209,6 +5349,7 @@ $messages['ps'] = array(
 	'wikilog-pager-first' => 'لومړني',
 	'wikilog-pager-last' => 'وروستني',
 	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
+	'wikilog-summary-uncategorized' => 'ناوېشلي',
 	'wikilog-edit-fieldset-legend' => 'د ويکي يادښت خوښنې:',
 	'wikilog-comment-anonsig' => '$3 (ورکنومی)',
 	'wikilog-comment-deleted' => 'دا تبصره ړنګه شوې.',
@@ -6115,6 +6256,7 @@ $messages['sl'] = array(
 	'wikilog-edit-hint' => 'Uredi članek wikiloga: $1',
 	'wikilog-edit-fieldset-legend' => 'Možnosti wikiloga:',
 	'wikilog-edit-signpub' => 'Podpiši in objavi ta članek',
+	'wikilog-comment-permalink' => '$1 ob $2',
 	'wikilog-comment-anonsig' => '$3 (brezimnež)',
 	'wikilog-comment-pending' => 'Ta pripomba čaka na odobritev.',
 	'wikilog-comment-deleted' => 'Ta pripomba je bila izbrisana.',
@@ -6852,6 +6994,7 @@ Yorum, bir moderatör tarafından incelendikten sonra görülecek.',
  * @author Aleksandrit
  * @author JenVan
  * @author Prima klasy4na
+ * @author Riwnodennyk
  * @author Тест
  */
 $messages['uk'] = array(
@@ -6915,8 +7058,17 @@ $messages['uk'] = array(
 	'wikilog-form-name' => 'Назва:',
 	'wikilog-form-author' => 'Автор:',
 	'wikilog-form-tag' => 'Мітка:',
+	'wikilog-form-status' => 'Стан:',
+	'wikilog-form-preview' => 'Попередній перегляд:',
+	'wikilog-form-comment' => 'Коментар:',
+	'wikilog-show-drafts' => 'Чернетки',
+	'wikilog-submit' => 'Надіслати',
 	'wikilog-edit-lc' => 'редагувати',
 	'wikilog-reply-lc' => 'відповісти',
+	'wikilog-delete-lc' => 'видалити',
+	'wikilog-approve-lc' => 'схвалити',
+	'wikilog-page-lc' => 'сторінка',
+	'wikilog-history-lc' => 'історія',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -6990,9 +7142,15 @@ $messages['yi'] = array(
 $messages['zh-hans'] = array(
 	'wikilog-new-item-go' => '创建',
 	'wikilog-item-name' => '文章名称：',
+	'wikilog-updated' => '已更新',
+	'wikilog-draft' => '草稿箱',
+	'wikilog-authors' => '作者',
 	'wikilog-title' => '标题',
 	'wikilog-actions' => '操作',
+	'wikilog-comments' => '注释',
 	'wikilog-replies' => '回复',
+	'wikilog-view-archives' => '新闻列表',
+	'wikilog-view-summary' => '摘要',
 	'wikilog-draft-title-mark' => '草稿',
 	'wikilog-anonymous-mark' => '（匿名）',
 	'wikilog-pager-newest' => '最新',
@@ -7065,6 +7223,8 @@ $messages['zh-hans'] = array(
 	'wikilog-form-date' => '日期：',
 	'wikilog-form-status' => '状态：',
 	'wikilog-form-preview' => '预览：',
+	'wikilog-form-comment' => '评论：',
+	'wikilog-show-drafts' => '草稿',
 	'wikilog-submit' => '提交',
 	'wikilog-preview' => '预览',
 	'wikilog-edit-lc' => '编辑',
@@ -7080,9 +7240,15 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'wikilog-new-item-go' => '創建',
 	'wikilog-item-name' => '文章名稱：',
+	'wikilog-published' => '穩定',
+	'wikilog-updated' => '已更新',
+	'wikilog-authors' => '作者',
 	'wikilog-title' => '標題',
 	'wikilog-actions' => '操作',
+	'wikilog-comments' => '註解',
 	'wikilog-replies' => '回復',
+	'wikilog-view-archives' => '清單模式',
+	'wikilog-view-summary' => '摘要',
 	'wikilog-draft-title-mark' => '草稿',
 	'wikilog-anonymous-mark' => '（匿名）',
 	'wikilog-pager-newest' => '最新',
@@ -7155,6 +7321,9 @@ $messages['zh-hant'] = array(
 	'wikilog-form-date' => '日期：',
 	'wikilog-form-status' => '狀態：',
 	'wikilog-form-preview' => '預覽：',
+	'wikilog-form-comment' => '註解:',
+	'wikilog-show-published' => '穩定',
+	'wikilog-show-drafts' => '草稿',
 	'wikilog-submit' => '提交',
 	'wikilog-preview' => '預覽',
 	'wikilog-edit-lc' => '編輯',

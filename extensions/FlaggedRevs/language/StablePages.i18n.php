@@ -21,6 +21,7 @@ Edits made by other users are not displayed to readers by default until an autho
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Raymond
  * @author Umherirrender
  */
 $messages['qqq'] = array(
@@ -132,6 +133,7 @@ $messages['br'] = array(
 Ne vo degemeret ar c'hemmoù-se nemet pa vint bet adlennet gant un aozer aotreet evit se.",
 	'stablepages-none' => "N'eus pajenn ebet er roll-mañ.",
 	'stablepages-config' => 'Kefluniañ',
+	'stablepages-indef' => 'Padelezh termen amfin hepken',
 );
 
 /** Bosnian (Bosanski)
@@ -314,7 +316,7 @@ Aussi, les modifications faites par les autres utilisateurs ne sont pas affiché
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'stablepages' => 'Pâges stâbles.',
+	'stablepages' => 'Pâges qu’utilisont la validacion des changements',
 	'stablepages-list' => 'Vê-que una lista de les pâges que sont rètrentes de façon que solament quârques utilisators la pôvont changiér sen qu’una rèvision seye nècèssèra.
 Los changements fêts per los ôtros utilisators sont pas montrâs per dèfôt ux liésors tant qu’un utilisator ôtorisâ los èye revus.',
 	'stablepages-none' => 'Y at gins de pâge dens ceta lista.',
@@ -440,12 +442,13 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Blaisorblade
  * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'stablepages' => "Pagine che utilizzano l'approvazione delle modifiche",
-	'stablepages-list' => 'Di seguito sono elencate le pagine configurate in modo tale che solo determinati utenti possono fare modifiche che non necessitano di revisione. Le altre modifiche non sono pubblicate fino a quando un utente autorizzato non le revisioni.',
+	'stablepages-list' => 'Di seguito sono elencate le pagine cui solo determinati utenti possono fare modifiche che non necessitano di revisione. Le modifiche di altri utenti non sono mostrate ai lettori, di default, fino a quando un utente autorizzato non le revisioni.',
 	'stablepages-none' => 'Non ci sono pagine in questo elenco',
 	'stablepages-config' => 'Configurazione',
 );
@@ -639,8 +642,8 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'stablepages' => 'Strony wykorzystujące oznaczanie zmian',
-	'stablepages-list' => 'Poniżej znajduje się lista stron, które skonfigurowano tak, że tylko niektórzy użytkownicy mogą wprowadzać na nich zmiany, które nie wymagają przejrzenia.
-Niektóre edycje nie będą domyślnie wyświetlane czytelnikom do momentu oznaczenia ich przez uprawnionego użytkownika.',
+	'stablepages-list' => 'Poniżej znajduje się lista stron, które skonfigurowano tak, że tylko określeni użytkownicy mogą wprowadzać do nich zmiany niewymagające oznaczenia.
+Edycje dokonane przez innych użytkowników nie będą domyślnie wyświetlane czytelnikom do momentu oznaczenia ich przez uprawnionego użytkownika.',
 	'stablepages-none' => 'Brak stron na tej liście',
 	'stablepages-config' => 'Konfiguracja',
 );
@@ -900,6 +903,7 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Shinjiman
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'stablepages' => '页面已经通过审核',

@@ -566,6 +566,19 @@ $messages['ch'] = array(
 	'regexblock-view-go' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'regexblock-form-reason' => 'هۆکار:',
+	'regexblock-view-go' => 'بڕۆ',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'regexblock-form-username' => 'IP число или по́льꙃєватєлꙗ и́мѧ :',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -1070,7 +1083,7 @@ Cree un nome de usuario diferente ou [[$1|contacte con nós]] para falar sobre o
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'regexblock-form-reason' => 'Faírina',
+	'regexblock-form-reason' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1153,6 +1166,12 @@ $messages['gv'] = array(
 	'regexblock-form-reason' => 'Fa:',
 	'regexblock-view-go' => 'Gow',
 	'regexblock-view-reason' => 'fa: $1',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'regexblock-form-reason' => 'Dalili:',
+	'regexblock-view-all' => 'Duka',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1860,6 +1879,7 @@ Warscheinlech gëtt et esou e Benotzer net.',
 );
 
 /** Moksha (Мокшень)
+ * @author Jarmanj Turtash
  * @author Khazar II
  */
 $messages['mdf'] = array(
@@ -2472,9 +2492,19 @@ A peul esse che a-i sia pa col utent.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'regexblock-already-blocked' => 'پر $1 د پخوا نه بنديز لګېدلی.',
+	'regexblock-block-log' => "په کارن نوم او يا د '''$1''' په IP پتې بنديز لګېدلی.",
+	'regexblock-block-success' => 'بنديز په برياليتوب سره ولګېده',
+	'regexblock-currently-blocked' => 'د دم مهال بنديز لګېدلې پتې:',
+	'regexblock-expire-duration' => '1 ساعت،2 ساعتونه،4 ساعتونه،6 ساعتونه،1 ورځ3 ورځې،1 اونۍ،2 اونۍ،1 مياشت،3 مياشتې،6 مياشتې،1 کال، لامحدوده',
 	'regexblock-form-username' => 'IP پته يا کارن-نوم:',
 	'regexblock-form-reason' => 'سبب:',
 	'regexblock-form-expiry' => 'د پای نېټه:',
+	'regexblock-form-account-block' => 'د نوؤ کارن-حسابونو په جوړېدو بنديز لګول',
+	'regexblock-form-submit' => 'په دې کارن بنديز لګول',
+	'regexblock-form-submit-expiry' => 'لطفاً يوه نوې پای موده وټاکۍ.',
+	'regexblock-nodata-found' => 'اومتوک و نه موندل شو',
+	'regexblock-unblock-success' => 'بنديز په برياليتوب سره ليري شو',
 	'regexblock-view-all' => 'ټول',
 	'regexblock-view-go' => 'ورځه',
 	'regexblock-view-reason' => 'سبب: $1',
@@ -3156,7 +3186,7 @@ $messages['ug-arab'] = array(
 	'regexblock-view-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -3170,6 +3200,11 @@ $messages['uk'] = array(
 	'regexblock-form-username' => "IP-адреса або ім'я користувача:",
 	'regexblock-form-reason' => 'Причина:',
 	'regexblock-form-expiry' => 'Закінчення:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'regexblock-form-reason' => 'وجہ:',
 );
 
 /** Veps (Vepsan kel')

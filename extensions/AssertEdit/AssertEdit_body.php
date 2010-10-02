@@ -13,7 +13,7 @@ class AssertEdit
 	}
 	static function assert_bot() {
 		global $wgUser;
-		return $wgUser->isBot();
+		return $wgUser->isAllowed( 'bot' );
 	}
 	static function assert_exists() {
 		global $wgTitle;

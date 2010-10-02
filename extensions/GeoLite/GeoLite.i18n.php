@@ -223,6 +223,13 @@ $messages['lb'] = array(
 	'geolite-desc' => 'Liicht Viruleedung op GeoIP',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'geolite-desc' => 'Fihodinana maivana Geolp',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

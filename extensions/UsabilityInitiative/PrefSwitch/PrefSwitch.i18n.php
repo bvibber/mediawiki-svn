@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'prefswitch-survey-true' => 'Yes',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Turn new features off',
+	'prefswitch-survey-submit-global-off' => 'Turn new features off on all wikis',
 	'prefswitch-survey-cancel-off' => 'If you would like to continue using the new features, you can return to $1.',
 	'prefswitch-survey-submit-feedback' => 'Send feedback',
 	'prefswitch-survey-cancel-feedback' => 'If you do not want to provide feedback, you can return to $1.',
@@ -147,6 +148,7 @@ It is not in used at the referred page, as of 16 May 2010.
 It is not in used at the referred page, as of 16 May 2010.
 
 {{Identical|No}}',
+	'prefswitch-survey-submit-global-off' => 'This message may still change',
 	'prefswitch-survey-cancel-feedback' => '$1 is a link to the main page of the wiki in question.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Should be generic enough to be used as an option for questions:
 *{{msg-mw|Optin-survey-question-whyoptout}}
@@ -155,8 +157,8 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 	'prefswitch-return' => 'Parameters:
-* $1 is a URL
-* $2 is ...',
+* $1 is a URL to the page came from
+* $2 is the title of the page came from',
 	'prefswitch-main' => 'The three default screenshots are in English and kept on Wikimedia Commons. If you want them to be in your language you will either need to create them yourself, and upload them onto Wikimedia Commons, or ask for help to make these from colleagues on your home wiki.',
 	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
@@ -313,6 +315,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author Samer
  * @author عمرو
  */
 $messages['ar'] = array(
@@ -323,6 +326,7 @@ $messages['ar'] = array(
 	'prefswitch-survey-true' => 'نعم',
 	'prefswitch-survey-false' => 'لا',
 	'prefswitch-survey-submit-off' => 'عطّل المزايا الجديدة',
+	'prefswitch-survey-submit-global-off' => 'عطل الخصائص الجديدة عن جميع الويكيات',
 	'prefswitch-survey-cancel-off' => 'إذا أردت الاستمرار في استخدام المزايا الجديدة، فإمكانك الرجوع إلى $1.',
 	'prefswitch-survey-submit-feedback' => 'أرسل ملاحظات',
 	'prefswitch-survey-cancel-feedback' => 'إذا لم ترغب في تقديم الملاحظات، فبإمكانك الرجوع إلى $1.',
@@ -415,6 +419,7 @@ $messages['be-tarask'] = array(
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-submit-off' => 'Выключыць новыя магчымасьці',
+	'prefswitch-survey-submit-global-off' => 'Выключыць новыя магчымасьці ва ўсіх разьдзелах',
 	'prefswitch-survey-cancel-off' => 'Калі Вы жадаеце працягваць выкарыстаньне новых магчымасьцяў, Вы можаце вярнуцца да $1.',
 	'prefswitch-survey-submit-feedback' => 'Даслаць водгук',
 	'prefswitch-survey-cancel-feedback' => 'Калі Вы не жадаеце дасылаць водгук, Вы можаце вярнуцца да $1.',
@@ -600,18 +605,109 @@ $messages['bn'] = array(
 	'prefswitch-feedbackpage' => 'Project:ব্যবহারকারীর অভিজ্ঞতালব্ধ মতামত',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'prefswitch' => 'ইউজাবিলিটি ইনিশিয়েটিভ পছনর সুইচ',
+	'prefswitch-desc' => 'আতাকুরার পছন বাসানির হের দে',
+	'prefswitch-jswarning' => 'মনে থইস স্কিনহান সিলকরানির লগে লগে, কাম যানার কা তর [[User:$1/$2.js|মনোবুক জাভাস্ক্রিপ্টরে]] কপি কর [[{{ns:user}}:$1/vector.js]]-এহান <!-- নাইলে [[{{ns:user}}:$1/common.js]]--> নেনা থক।',
+	'prefswitch-csswarning' => 'তর [[User:$1/$2.css|সিলকরিসত $2 স্টাইল]] আরতা প্রযোজ্য নাইব। তি ভেক্টর স্কিনর সিলপার সিএসএস-র কা [[{{ns:user}}:$1/vector.css]] হঙকরানি পারর।',
+	'prefswitch-survey-true' => 'হায়',
+	'prefswitch-survey-false' => 'না',
+	'prefswitch-survey-submit-off' => 'নুৱা বৈশিষ্ট্য থা নাদি',
+	'prefswitch-survey-submit-global-off' => 'নুৱা বৈশিষ্ট হাব্বি উইকিত থা নাদি',
+	'prefswitch-survey-cancel-off' => 'নুৱা বৈশিষ্টহানি ব্যবহার করানি মনেইলে $1-হাত আলথকে যানা পাররাই।',
+	'prefswitch-survey-submit-feedback' => 'প্রতিক্রিয়া দিয়াপেঠা',
+	'prefswitch-survey-cancel-feedback' => 'প্রতিক্রিয়া দিয়াপেঠানি না মনেইলে $1 -হাত আলথকে যানা পাররাই।',
+	'prefswitch-survey-question-like' => 'নুৱা বৈশিষ্ট্যহানির মা তি কিহান পছন করিসিলেতা?',
+	'prefswitch-survey-question-dislike' => 'নুৱা বৈশিষ্ট্যহানির মা তি কিহান পছন না করিসিলেতা?',
+	'prefswitch-survey-question-whyoff' => 'তি কিয়া নুৱা বৈশিষ্টহানি ঝিপিলেতা?
+যেতা থক অতা বাস।',
+	'prefswitch-survey-answer-whyoff-hard' => 'এতাল কাম করানি চিলুইসে।',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'এতা হবা করে কাম নাকরের।',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'এতা মি চাসিলু অসারে কাম না করের।',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'এহানর অঙতাহান মর পছন নাইল।',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'নুৱা ট্যাব বারো অঙতা মর পছন নাইল।',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'নুৱা টুলবারগ মর পছন নাইল।',
+	'prefswitch-survey-answer-whyoff-other' => 'আর আর কারন:',
+	'prefswitch-survey-question-browser' => 'তুমি কিসাদে ব্রাউজার ব্যবহার কররাইগ?',
+	'prefswitch-survey-answer-browser-other' => 'আরাক ব্রাউজার আগ:',
+	'prefswitch-survey-question-os' => 'তুমি কিসাদে অপারেটিং সিস্টেম ব্যবহার কররাইগ?',
+	'prefswitch-survey-answer-os-other' => 'আরাক অপারেটিং সিস্টেম আহান:',
+	'prefswitch-survey-question-res' => 'তুমার পর্দাহানর রেজ্যুলেশন কতি?',
+	'prefswitch-title-on' => 'নুৱা বৈশিষ্টহানি',
+	'prefswitch-title-switched-on' => 'কালাকপেলই!',
+	'prefswitch-title-off' => 'নুৱা বৈশিষ্ট্যহানি ঝিপা',
+	'prefswitch-title-switched-off' => 'থাকাত',
+	'prefswitch-title-feedback' => 'প্রতিক্রিয়া',
+	'prefswitch-success-on' => 'নুৱা বৈশিষ্ট্যহানি চালু ইল। আমি নিঙকররাঙ নুৱা বৈশিষ্ট্যহানি তুমারে পেলকরতই। তি যেপাগাউ পাতার গজর "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" লিংকহানাত ক্লিক করিয়া আগর অঙতাত আলুয়া যানা পাররাই।',
+	'prefswitch-success-off' => 'নুৱা বৈশিষ্ট্যহানি ঝিপানি ইল। নুৱা বৈশিষ্ট্যহানি চা দেনার সারুকে থাকাত। তুমি যেপাগাউ পাতার গজর "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" লিংকহানাত ক্লিক করিয়া আগর অঙতাত আলুয়া যানা পাররাই।',
+	'prefswitch-success-feedback' => 'তুমার প্রতিক্রিয়াহান দিয়াপেঠানি ইল।',
+	'prefswitch-return' => '<hr style="clear:both">
+আলথকে যাগা <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| উইকিপিডিয়ার নুৱা নেভিগেশন ইন্টারফেসের স্ক্রিনশটহান <small>[[Media:VectorNavigation-en.png|(ডাঙর কর)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| মূল পতানি ইন্টারফেসর স্ক্রিনশটহান <small>[[Media:VectorEditorBasic-en.png|(ডাঙর কর)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| লিংকর মা হমানির কা নুৱা ডায়ালগ বাক্স সিজিলর স্ক্রিনশটহান
+|}
+|}
+উইকিমিডিয়া ফাউন্ডেশনর ইউজার এক্সপেরিয়েন্স টিম শিংলুপেত্ত আহিসে আতাকুরার লগে আকপাকে তুমার কা কামহান আরাকউ সুজা করানির কাম চলের। আমি হারৌহান্ন আমার উন্নয়নর অঙতা কতহান তুমার লগে ভাগা-ভাগি কররাঙ, অতার মা আসে উইকিমিডিয়া প্রকল্পর নুৱা অঙতা, সিদা বারো সমৃদ্ধ পতানির প্যানেল। এরে নুৱা অঙতা নুৱা অবদানকারীর কা অকরানির কা আরাকউ সিদা ভূমিকা থইতই, বারো [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study গেলগা বসরহান লয়া নানান পরীক্ষা-নিরীক্ষা]ল এরে অঙতাত আহিল। আমার প্রকল্পহানির ব্যবহারর মিমাঙে উন্নয়ন সাধন উইকিমিডিয়া ফাউন্ডেশন অগ্রাধিকার বুলিয়া বিবেচনা করের বারো আমিয়ৌ ভবিষ্যতে আরাকউ হালনাগাদ তুমার লগে ভাগাভাগি করতাঙাই। এহানর বারে আরকৌ হারপানির কা উইকিমিডিয়ার [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia ব্লগ পোস্ট চেইক]।
+
+=== যেতা সিলুইল ===
+* '''নেভিগেশন:''' আমি পাতাহানর হাজানিহান বারো পতানির অঙতাহান উন্নয়ন করলাঙ। পাতাহানর গজর ট্যাবগি ইজ্জু করে হারপানিত পাঙকরতই যে তি মূল না য়্যারীর পাতাত আসত, অতা বুলতে তি পাতাহান পাকররহান না পতারহান অহান বাগেইতই।
+* '''পতানির প্যানেলর উন্নয়ন:''' আমি পতানির প্যানেলহানরে তর কা আরাকউ ইজ্জু করে হাকরলাঙ। এপাগা পাতাহানর পতানিহান আগেত্ত আরাকউ নুঙি ইল।
+* '''লিংক উইজার্ড:''' ইজ্জু পদ্ধতি আহানল উইকির পাতা আহাত, লগে বারেদের ওয়েবসাইটর পাতার তুল লিংক তিলকরানি পারতেই।
+* '''বিসারানির অঙতার উন্নয়ন:''' তুমি বিসারারাই পাতা অহান তরা করে পানা বারো অহানর পরামর্শের অঙতাত উন্নয়ন করানি অইল।
+* '''আর আর নুৱা সুবিধাহানি:''' আমি টেবিল উইজার্ড বুলিয়া সুবিধা আহান বরিলাঙ। এহান্ন তুমি নুঙি করে পাতা আহানাত টেবিল বরানি পারতারাই। অতা বুলতেউ ইকা বিসারানি বারো সিলকরানির সুবিধা তিলকরলাঙ, যেহানে পাতা পতানি অহান নুঙা করে দিতই।
+* '''উইকিপিডিয়ার লোগোগ:''' আমি আমার লোগোগ খানি আহান পতিলাঙ। [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d উইকিমিডিয়া ব্লগ]হানাত আরাকৌ হবাকরে পাকরিক।",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} ট্যাবহান''' এপাগা তারার থাপাক নাপকরিসে।
+* '''{{int:move}} ট্যাবহান''' এপাগা বিসারিনর বাক্সগর কাদাহার ড্রপডাউন মাতাঙে আসে।",
+	'prefswitch-main-feedback' => '===ফিডব্যাক?===
+আমি তুমারাঙত হুনানির খৌরাঙ থরাঙ। তুমি আমার [[$1|ফিডব্যাক পাতা]]ত চেই, বারো তুমি যদি সফটওয়্যারর উন্নয়নর কা আমার চলের হন্নার বারে খৌরাঙ করিয়া থাইলে, মুল ফাতকরিয়া হারপানির কা [http://usability.wikimedia.org ইউজাবিলিটি উইকি]ত বুলন আহান দিক।',
+	'prefswitch-main-anon' => '===মরে আলথকে নেগা===
+নুৱা বৈশিষ্ট্যাহানি ঝিপানি মনেইলে, [$1 এহাত ক্লিক করিক]। কাম এহানর কা পয়লাকাই লগ-ইন নাইলে নুৱা অ্যাকাউন্ট খুলানি মাতানি অইতই।',
+	'prefswitch-main-on' => '===মরে আলথকে নেইগা!===
+[$2 নুৱা বৈশিষ্ট্যাহানি ঝিপানির কা এহাত ক্লিক করিক]।',
+	'prefswitch-main-off' => '===অতা ব্যবহার করিক!===
+নুৱা বৈশিষ্ট্যাহানি চালু করানি মনেইলে, [$1 এহাত ক্লিক করিক]।',
+	'prefswitch-survey-intro-feedback' => 'আপনা আসিরাঙত হারপানি মনারাঙ।
+"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ক্লিক করানির আগে তলর ঐচ্ছিক জরিপ ফরমহান পূরণ করিক।',
+	'prefswitch-survey-intro-off' => 'নুৱা বৈশিষ্ট্যহানি চা দেনার সারুকে থাকাত।
+এহানর উন্নয়নর কা আমারে পাঙলাক করানির কা "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" লিংকহানাত ক্লিক করানির আগে তলর ঐচ্ছিক জরিপ ফর্মহান পূরণ করানি পাররাঙ।',
+	'prefswitch-feedbackpage' => 'Project:আতাকুরার অভিজ্ঞতাল পাসি মতামত',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Gwendal
  * @author Kouign-amann
  * @author Y-M D
  */
 $messages['br'] = array(
 	'prefswitch' => 'Cheñch dibaboù an intrudu implijadusted',
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
-	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|JavaScript $2]] a rank bezañ kopiet davet [[User:$1/vector.js]] <!-- pe [[User:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro.",
+	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|$2 JavaScript]] a rank bezañ kopiet davet [[{{ns:user}}:$1/vector.js]] <!-- pe [[{{ns:user}}:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro.",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
+	'prefswitch-survey-submit-global-off' => "Diweredekaat an arc'hweladurioù nevez evit an holl wiki",
 	'prefswitch-survey-cancel-off' => "Mar fell deoc'h kenderc'hel d'ober gant ar perzhioù nevez e c'hallit distreiñ da $1.",
 	'prefswitch-survey-submit-feedback' => 'Roit ho soñj',
 	'prefswitch-survey-cancel-feedback' => "Mar ne fell ket deoc'h reiñ ho soñj e c'hallit distreiñ da $1.",
@@ -767,7 +863,7 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
 	'prefswitch-feedbackpage' => "Project:Comentaris sobre l'experiència d'usuari",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -823,6 +919,7 @@ $messages['cs'] = array(
 	'prefswitch-survey-true' => 'Ano',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Vypnout nové funkce',
+	'prefswitch-survey-submit-global-off' => 'Vypnout nové funkce na všech wiki',
 	'prefswitch-survey-cancel-off' => 'Pokud chcete i nadále používat nové vlastnosti, můžete se vrátit na stránku $1.',
 	'prefswitch-survey-submit-feedback' => 'Odeslat názor',
 	'prefswitch-survey-cancel-feedback' => 'Pokud nám nechcete sdělit svůj názor, můžete se vrátit na $1.',
@@ -908,6 +1005,7 @@ $messages['cu'] = array(
 	'prefswitch-survey-true' => 'да',
 	'prefswitch-survey-false' => 'нѣ́тъ',
 	'prefswitch-survey-answer-browser-other' => 'ино съмотри́ло :',
+	'prefswitch-title-switched-off' => 'благода́рьщвлѭ',
 );
 
 /** Welsh (Cymraeg)
@@ -1083,6 +1181,7 @@ For at hjælpe os med at forbedre dem, udfyld venligst det valgfrie undersøgels
  * @author Als-Holder
  * @author Kghbln
  * @author Merlissimo
+ * @author Metalhead64
  * @author The Evil IP address
  */
 $messages['de'] = array(
@@ -1093,6 +1192,7 @@ $messages['de'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nein',
 	'prefswitch-survey-submit-off' => 'Neue Features abschalten',
+	'prefswitch-survey-submit-global-off' => 'Neue Features auf allen Wikis deaktivieren',
 	'prefswitch-survey-cancel-off' => 'Wenn du die neuen Features weiter verwenden willst, kannst du zu $1 zurückkehren.',
 	'prefswitch-survey-submit-feedback' => 'Feedback geben',
 	'prefswitch-survey-cancel-feedback' => 'Wenn du kein Feedback geben möchtest, kannst du zu $1 zurückkehren.',
@@ -1172,22 +1272,47 @@ Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus, bevor
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author KagerMtc
  * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de-formal'] = array(
+	'prefswitch' => 'Nutzerspezifische Regelungen',
+	'prefswitch-desc' => 'Nutzerspezifische Regelungen',
+	'prefswitch-jswarning' => 'Bedenken Sie, dass mit der Skin-Änderung Ihr [[User:$1/$2.js|$2-JavaScript]] nach [[{{ns:user}}:$1/vector.js]] <!-- oder [[{{ns:user}}:$1/common.js]] --> kopiert werden muss, um weiter funktionieren zu können.',
+	'prefswitch-csswarning' => 'Ihre [[User:$1/$2.css|angepassten $2-Styles]] werden nicht mehr ausgeführt. Sie können angepasstes CSS für Vector auf [[{{ns:user}}:$1/vector.css]] einfügen.',
+	'prefswitch-survey-true' => 'Ja',
+	'prefswitch-survey-false' => 'Nein',
+	'prefswitch-survey-submit-off' => 'Ohne neue Gestaltungsformen',
 	'prefswitch-survey-cancel-off' => 'Wenn Sie die neuen Features weiter verwenden wollen, können Sie zu $1 zurückkehren.',
+	'prefswitch-survey-submit-feedback' => 'Feedback',
 	'prefswitch-survey-cancel-feedback' => 'Wenn Sie kein Feedback geben möchten, können Sie zu $1 zurückkehren.',
 	'prefswitch-survey-question-like' => 'Was gefiel Ihnen an den Features?',
 	'prefswitch-survey-question-dislike' => 'Was mochten Sie an den Features nicht?',
 	'prefswitch-survey-question-whyoff' => 'Warum schalten Sie die neuen Features ab?
 Bitte wählen Sie alle zutreffenden Punkte aus.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Die Gestaltungsformen waren zu komplex.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Die Gestaltungsformen funktionierten nicht.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Die Gestaltungsformen funktionierten nicht vorhersehbar.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Die Gestaltungsformen gefallen mir nicht.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Ich mochte die neuen Tabs und das Layout nicht.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ich mochte die neue Funktionsbar nicht',
+	'prefswitch-survey-answer-whyoff-other' => 'Anderer Grund:',
 	'prefswitch-survey-question-browser' => 'Welchen Browser verwenden Sie?',
+	'prefswitch-survey-answer-browser-other' => 'Anderer Browser',
 	'prefswitch-survey-question-os' => 'Welches Betriebssystem verwenden Sie?',
+	'prefswitch-survey-answer-os-other' => 'Anderes Betriebssystem:',
 	'prefswitch-survey-question-res' => 'Was ist Ihre Bildschirmauflösung?',
-	'prefswitch-success-on' => 'Die neuen Funktionalitäten sind jetzt aktiv. Wir wünschen Ihnen viel Freude bei deren Verwendung. Sie können sie jederzeit deaktivieren, indem Sie auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta verlassen]]“ oben auf der Webseite klicken.',
+	'prefswitch-title-on' => 'Neue Gestaltungsformen',
+	'prefswitch-title-switched-on' => 'Viel Spaß!',
+	'prefswitch-title-off' => 'Ohne neue Gestatungsformen',
+	'prefswitch-title-switched-off' => 'Vielen Dank',
+	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'Die neuen Funktionalitäten sind jetzt aktiv. Wir wünschen Ihnen viel Freude bei deren Verwendung. Sie können sie jederzeit deaktivieren, indem Sie auf den Link „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ oben auf der Webseite klicken.',
 	'prefswitch-success-off' => 'Die neuen Funktionalitäten sind jetzt inaktiv. Vielen Dank, dass Sie sie verwendet haben. Sie können sie jederzeit aktivieren, indem Sie auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta aktivieren]]“ oben auf der Webseite klicken.',
 	'prefswitch-success-feedback' => 'Ihr Feedback wurde versandt.',
+	'prefswitch-return' => '<hr style="clear:both">
+Return to <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
@@ -1220,16 +1345,19 @@ Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen 
 * '''Suche:''' Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von dir gesuchten Seite kommen.
 * '''Weiteres:''' Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.
 * '''Wikipedia-Puzzle-Globus''': wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
-	'prefswitch-main-feedback' => "===Feedback?===
-Wir würden gerne von Ihnen hören. Bitte benutzen Sie unsere [[\$1|Feedback-Seite]] oder, falls Sie an unseren momentanen Arbeit zur Verbesserung der Software interessiert sind, besuchen Sie das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.",
+	'prefswitch-main-feedback' => '===Feedback?===
+Wir würden gerne von Ihnen hören. Bitte benutzen Sie unsere [[$1|Feedback-Seite]] oder, falls Sie an unseren momentanen Arbeit zur Verbesserung der Software interessiert sind, besuchen Sie das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.',
 	'prefswitch-main-anon' => '===Zurück===
 Sofern Sie die neuen Funktionen deaktivieren möchten, dann [$1 klicken Sie hier]. Sie werden dann gebeten sich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
 	'prefswitch-main-on' => '=== Bring mich zurück! ===
 Wenn Sie die neuen Features abschalten möchten, [$2 klicken Sie hier].',
+	'prefswitch-main-off' => '=== Versuchen Sie es! ===
+Wenn Sie die neuen Gestaltungsformen nutzen möchten, [$1 klicken Sie hier].',
 	'prefswitch-survey-intro-feedback' => 'Wir würden uns freuen, von Ihnen zu hören.
 Bitte füllen Sie die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ klicken.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features.
 Damit wir besser werden können, füllen Sie bitte die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ klicken.',
+	'prefswitch-feedbackpage' => 'Project: Nutzer-Feedback-Initiative',
 );
 
 /** Zazaki (Zazaki)
@@ -1333,6 +1461,7 @@ $messages['dsb'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wótšaltowaś',
+	'prefswitch-survey-submit-global-off' => 'Nowe funkcije na wšych wikijach znjemóžniś',
 	'prefswitch-survey-cancel-off' => 'Jolic coš nowe funkcije dalej wužywaś, móžoš se k $1 wrośiś.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłaś',
 	'prefswitch-survey-cancel-feedback' => 'Jolic njocoš měnjenje pósłaś, móžoš se do $1 wrośiś.',
@@ -1432,6 +1561,7 @@ $messages['el'] = array(
 	'prefswitch-survey-true' => 'Ναι',
 	'prefswitch-survey-false' => 'Όχι',
 	'prefswitch-survey-submit-off' => 'Απενεργοποίηση καινούργιων λειτουργιών',
+	'prefswitch-survey-submit-global-off' => 'Απενεργοποίηση των νέων χαρακτηριστικών σε όλα τα βικιεγχειρήματα',
 	'prefswitch-survey-cancel-off' => 'Αν θέλετε να συνεχίσετε να χρησιμοποιείτε τα νέα χαρακτηριστικά, μπορείτε να επιστρέψετε στο $1.',
 	'prefswitch-survey-submit-feedback' => 'Αποστολή σχολίων',
 	'prefswitch-survey-cancel-feedback' => 'Αν δεν θέλετε να δώσετε σχόλια, μπορείτε να επιστρέψετε στο $1.',
@@ -1617,6 +1747,7 @@ $messages['es'] = array(
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Desactivar las nuevas características',
+	'prefswitch-survey-submit-global-off' => 'Deshabilitar nuevas características en todos los wikis',
 	'prefswitch-survey-cancel-off' => 'Si desea continuar utilizando las nuevas características puede volver a $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentario',
 	'prefswitch-survey-cancel-feedback' => 'Si no desea enviar sus comentarios puede volver a $1.',
@@ -2033,6 +2164,7 @@ Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely ennen k
  * @author Jean-Frédéric
  * @author Kropotkine 113
  * @author Peter17
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'prefswitch' => "Commutateur de préférences de l'initiative d'utilisabilité",
@@ -2042,6 +2174,7 @@ $messages['fr'] = array(
 	'prefswitch-survey-true' => 'Oui',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Désactiver les nouvelles fonctionnalités',
+	'prefswitch-survey-submit-global-off' => 'Désactiver les nouvelles fonctionnalités sur tous les wikis',
 	'prefswitch-survey-cancel-off' => 'Si vous voulez continuer à utiliser les nouvelles fonctionnalités, vous pouvez revenir à $1',
 	'prefswitch-survey-submit-feedback' => 'Envoyer des commentaires',
 	'prefswitch-survey-cancel-feedback' => 'Si vous ne voulez pas faire de commentaires, vous pouvez revenir à $1.',
@@ -2049,10 +2182,10 @@ $messages['fr'] = array(
 	'prefswitch-survey-question-dislike' => "Qu'est-ce que vous n'avez pas apprécié dans les fonctionnalités ?",
 	'prefswitch-survey-question-whyoff' => 'Pourquoi voulez-vous désactiver les nouvelles fonctionnalités ?
 Veuillez choisir tout ce qui convient.',
-	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de l’utiliser.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de les utiliser.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ça ne fonctionne pas correctement.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Cela ne s’est pas passé comme prévu.',
-	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Je n’ai pas aimé son apparence.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Je n’ai pas aimé leur apparence.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Je n’ai pas aimé les nouveaux onglets et la nouvelle disposition.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Je n’ai pas aimé la nouvelle barre d’outils.',
 	'prefswitch-survey-answer-whyoff-other' => 'Autre raison :',
@@ -2066,8 +2199,8 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-title-off' => 'Désactiver les nouvelles fonctionnalités',
 	'prefswitch-title-switched-off' => 'Merci',
 	'prefswitch-title-feedback' => 'Réaction',
-	'prefswitch-success-on' => 'Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous apprécierez les nouvelles fonctionnalités. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » en haut de la page.',
-	'prefswitch-success-off' => "Les nouvelles fonctionnalités sont maintenant désactivées. Merci d'avoir essayé les nouvelles fonctionnalités. Vous pouvez toujours les remettre sur en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » en haut de la page.",
+	'prefswitch-success-on' => 'Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous les apprécierez. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » en haut de la page.',
+	'prefswitch-success-off' => 'Les nouvelles fonctionnalités sont maintenant désactivées. Merci de les avoir essayées. Vous pouvez toujours les ré-activer en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » en haut de la page.',
 	'prefswitch-success-feedback' => 'Vos commentaires ont été envoyés.',
 	'prefswitch-return' => '<hr style="clear:both">
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
@@ -2093,16 +2226,16 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 | Capture d’écran de la nouvelle boîte de dialogue pour insérer des liens
 |}
 |}
-L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience Team'') a travaillé en collaboration avec des volontaires de la communauté pour vous rendre les choses plus simples. Nous sommes heureux de nous partageons avec vous ces améliorations, notamment une nouvelle apparence et une simplification des fonctions de modification. Ces changements sont effectués pour que les nouveaux contributeurs puissent débuter plus facilement, et ils sont basés sur notre [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study tests utilisateurs menés sur l’année passée]. Améliorer l’utilisabilité de nos projets est une priorité de la Fondation Wikimédia, et nous vous ferons part de nos futures avancées. Pour plus de détails, veuillez consulter le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia billet de blog Wikimédia]. 
+L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience Team'') a travaillé en collaboration avec des volontaires de la communauté pour vous rendre les choses plus simples. Nous sommes heureux de partager avec vous ces améliorations, notamment une nouvelle apparence et une simplification des fonctions de modification. Ces changements sont effectués pour que les nouveaux contributeurs puissent débuter plus facilement, et ils sont basés sur nos [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study tests utilisateurs menés l’année passée]. Améliorer l’utilisabilité de nos projets est une priorité de la Fondation Wikimédia, et nous vous ferons part de nos futures avancées. Pour plus de détails, veuillez consulter le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia billet de blogue Wikimédia].
 
 === Les nouveautés ===
 
 * '''Navigation :''' nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous consultez ou modifiez une page.
 * '''Améliorations de la barre d’outils de modification :''' nous avons réorganisé la barre d’outils de modification pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
-* '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de Wikipédia ainsi que des liens vers des sites externes.
+* '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de wikis ainsi que des liens vers des sites externes.
 * '''Amélioration de la recherche :''' nous avons amélioré les suggestions de recherche pour vous aider à trouver la page que vous recherchez plus rapidement.
 * '''Autres fonctionnalités nouvelles :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
-* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
+* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue de Wikimedia].",
 	'prefswitch-main-logged-changes' => "* L’'''onglet {{int:watch}}''' est à présent une étoile.
 * L’'''onglet {{int:move}}''' est à présent dans le menu déroulant à côté du champ de recherche.",
 	'prefswitch-main-feedback' => '=== Retours d’expérience ===
@@ -2112,7 +2245,7 @@ Si vous souhaitez désactiver les nouvelles fonctionnalités, [$1 cliquez ici]. 
 	'prefswitch-main-on' => '=== Sortez-moi de là ! ===
 [$2 Cliquez ici pour désactiver les nouvelles fonctionnalités].',
 	'prefswitch-main-off' => '=== Essayez-les ! ===
-Si vous souhaitez activer les nouvelles  fonctionnalités, veuillez [$1 cliquer ici].',
+Si vous souhaitez activer les nouvelles fonctionnalités, veuillez [$1 cliquer ici].',
 	'prefswitch-survey-intro-feedback' => 'Nous aimerions connaître vos impressions.
 Si vous le désirez, vous pouvez remplir le sondage ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]] ».',
 	'prefswitch-survey-intro-off' => "Merci d'avoir essayé nos nouvelles fonctionnalités.
@@ -2131,6 +2264,7 @@ $messages['frp'] = array(
 	'prefswitch-survey-true' => 'Ouè',
 	'prefswitch-survey-false' => 'Nan',
 	'prefswitch-survey-submit-off' => 'Dèsactivar les novèles fonccionalitâts',
+	'prefswitch-survey-submit-global-off' => 'Dèsactivar les novèles fonccionalitâts sur tôs los vouiquis',
 	'prefswitch-survey-cancel-off' => 'Se vos voléd continuar a utilisar les novèles fonccionalitâts, vos pouede tornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Balyéd voutron avis',
 	'prefswitch-survey-cancel-feedback' => 'Se vos voléd pas balyér voutron avis, vos pouede tornar a $1.',
@@ -2155,6 +2289,8 @@ Volyéd chouèsir tot cen que convint.',
 	'prefswitch-title-off' => 'Dèsactivar les novèles fonccionalitâts',
 	'prefswitch-title-switched-off' => 'Grant-marci',
 	'prefswitch-title-feedback' => 'Avis',
+	'prefswitch-success-on' => 'Ora, les novèles fonccionalitâts sont activâs. Nos èsperens que vos les aprèciyeréd. Vos pouede adés tornar arriér en cliquent sur lo lim « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » d’amont la pâge.',
+	'prefswitch-success-off' => 'Ora, les novèles fonccionalitâts sont dèsactivâs. Grant-marci de les avêr èprovâs. Vos les pouede adés reactivar en cliquent sur lo lim « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » d’amont la pâge.',
 	'prefswitch-success-feedback' => 'Voutros avis ont étâ mandâs.',
 	'prefswitch-return' => '<hr style="clear:both">
 Tornar a <span class="plainlinks">[$1 $2]</span>.',
@@ -2274,6 +2410,7 @@ $messages['gl'] = array(
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Desactivar as novas características',
+	'prefswitch-survey-submit-global-off' => 'Desactivar as novas características en todos os wikis',
 	'prefswitch-survey-cancel-off' => 'Se quere seguir usando as novas características, pode volver a "$1".',
 	'prefswitch-survey-submit-feedback' => 'Dea a súa opinión',
 	'prefswitch-survey-cancel-feedback' => 'Se non quere dar a súa opinión, pode volver a "$1".',
@@ -2362,6 +2499,7 @@ $messages['gsw'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Nei',
 	'prefswitch-survey-submit-off' => 'Neji Funktione abschalte',
+	'prefswitch-survey-submit-global-off' => 'Neji Funktione uf allne Wiki deaktiviere',
 	'prefswitch-survey-cancel-off' => 'Wänn di neje Funktione wyter bruche witt, chasch zu $1 zruckgoh.',
 	'prefswitch-survey-submit-feedback' => 'Ruckmäldig gee',
 	'prefswitch-survey-cancel-feedback' => 'Wänn kei Ruckmäldig witt gee, chasch zue $1 zruckgoh.',
@@ -2440,6 +2578,11 @@ Bitte fill di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-
 	'prefswitch-survey-intro-off' => 'Dankschen fir s Uusprobiere vu unsre neje Funktione.
 Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ drucksch.',
 	'prefswitch-feedbackpage' => 'Project:Benutzerfrejndligkeits-Initiative/Ruckmäldig',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'prefswitch-survey-answer-whyoff-other' => 'Wani dalili:',
 );
 
 /** Hebrew (עברית)
@@ -2544,6 +2687,7 @@ $messages['hsb'] = array(
 	'prefswitch-survey-true' => 'Haj',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wupinyć',
+	'prefswitch-survey-submit-global-off' => 'Nowe funkcije na wšěch wikijach znjemóžnić',
 	'prefswitch-survey-cancel-off' => 'Jeli by rady nowe funkcije dale wužiwał, móžeš so k $1 wróćić.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłać',
 	'prefswitch-survey-cancel-feedback' => 'Jeli nochceš měnjenje dodać, móžeš so do $1 wróćić.',
@@ -2724,6 +2868,7 @@ $messages['ia'] = array(
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disactivar le nove functiones',
+	'prefswitch-survey-submit-global-off' => 'Disactivar nove functionalitate in tote le wikis',
 	'prefswitch-survey-cancel-off' => 'Si tu vole continuar a usar le nove functiones, tu pote retornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Dar nos tu opinion',
 	'prefswitch-survey-cancel-feedback' => 'Si tu non vole dar nos tu opinion, tu pote retornar a $1.',
@@ -2813,6 +2958,7 @@ $messages['id'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
+	'prefswitch-survey-submit-global-off' => 'Nonaktifkan fitur baru di semua wiki',
 	'prefswitch-survey-cancel-off' => 'Jika Anda ingin terus menggunakan fitur baru ini, Anda dapat kembali ke $1.',
 	'prefswitch-survey-submit-feedback' => 'Kirim umpan balik',
 	'prefswitch-survey-cancel-feedback' => 'Jika Anda tidak ingin memberikan umpan balik, Anda dapat kembali ke $1.',
@@ -2896,6 +3042,7 @@ Untuk membantu kami memperbaikinya, silakan isi survei opsional di bawah ini seb
 $messages['ig'] = array(
 	'prefswitch-survey-true' => 'Eeh',
 	'prefswitch-survey-false' => 'Mbà',
+	'prefswitch-title-switched-on' => 'Na nke ómá!',
 	'prefswitch-title-switched-off' => 'Imẹẹla',
 );
 
@@ -2915,6 +3062,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Blaisorblade
  * @author Nemo bis
  * @author Una giornata uggiosa '94
  */
@@ -2926,6 +3074,7 @@ $messages['it'] = array(
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disattiva le nuove funzioni',
+	'prefswitch-survey-submit-global-off' => 'Attiva nuove caratteristiche su tutti i wiki',
 	'prefswitch-survey-cancel-off' => 'Se vuoi continuare ad usare le nuove funzioni, puoi tornare a $1.',
 	'prefswitch-survey-submit-feedback' => 'Invia feedback',
 	'prefswitch-survey-cancel-feedback' => 'Se non vuoi fornire un feedback, puoi tornare a $1.',
@@ -3016,6 +3165,7 @@ $messages['ja'] = array(
 	'prefswitch-survey-true' => 'はい',
 	'prefswitch-survey-false' => 'いいえ',
 	'prefswitch-survey-submit-off' => '新機能を停止する',
+	'prefswitch-survey-submit-global-off' => '全てのウィキで新機能を停止する',
 	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$1に戻ってください。',
 	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
 	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$1に戻ってください。',
@@ -3217,6 +3367,7 @@ $messages['ko'] = array(
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
 	'prefswitch-survey-submit-off' => '새로운 기능 끄기',
+	'prefswitch-survey-submit-global-off' => '모든 위키에서 새 기능을 끄기',
 	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1(으)로 돌아가실 수 있습니다.',
 	'prefswitch-survey-submit-feedback' => '피드백 남기기',
 	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1(으)로 돌아가시면 됩니다.',
@@ -3415,6 +3566,7 @@ $messages['lb'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Neen',
 	'prefswitch-survey-submit-off' => 'Déi nei Fonctiounen ausschalten',
+	'prefswitch-survey-submit-global-off' => 'Nei Fonctiounen op alle Wikien ausschalten',
 	'prefswitch-survey-cancel-off' => 'Wann Dir déi nei Fonctioune weiderbenotze wëllt, kënnt Dir op $1 zeréckgoen.',
 	'prefswitch-survey-submit-feedback' => 'Schéckt eis Är Meenung',
 	'prefswitch-survey-cancel-feedback' => 'Wann Dir Är Reaktioun net wëllt matdeelen da kënnt dir op $1 zeréckgoen.',
@@ -3490,6 +3642,7 @@ Wann Dir déi nei Fonctiounen ausprobéiere wëllt, da <span  class="plainlinks"
 Fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus éier Dir op "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" klickt.',
 	'prefswitch-survey-intro-off' => 'Merci datt dir déi nei Fonctiounen ausprobéiert hutt.
 Fir eis ze hëllefen besser ze ginn, fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus éier dir op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" klickt.',
+	'prefswitch-feedbackpage' => 'Project:Benotzer Erfarung Feedback',
 );
 
 /** Latvian (Latviešu)
@@ -3512,6 +3665,7 @@ $messages['mk'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-submit-off' => 'Исклучи нови функции',
+	'prefswitch-survey-submit-global-off' => 'Исклучи нови можности на сите викија',
 	'prefswitch-survey-cancel-off' => 'Ако сакате да продолжите со користење на новите функции, можете да се вратите на $1.',
 	'prefswitch-survey-submit-feedback' => 'Ваши примедби',
 	'prefswitch-survey-cancel-feedback' => 'Ако не сакате да искажете примедби, можете да се вратите на $1.',
@@ -3602,6 +3756,7 @@ $messages['ml'] = array(
 	'prefswitch-survey-true' => 'അതെ',
 	'prefswitch-survey-false' => 'വേണ്ട',
 	'prefswitch-survey-submit-off' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
+	'prefswitch-survey-submit-global-off' => 'പുതിയ സവിശേഷതകൾ എല്ലാ വിക്കികളിലും പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-survey-cancel-off' => 'പുതിയ സവിശേഷതകൾ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നെങ്കിൽ, $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
 	'prefswitch-survey-submit-feedback' => 'അഭിപ്രായം അറിയിക്കുക',
 	'prefswitch-survey-cancel-feedback' => 'അഭിപ്രായങ്ങൾ പങ്ക് വെയ്ക്കാനാഗ്രഹമില്ലെങ്കിൽ, താങ്കൾക്ക് $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
@@ -3705,6 +3860,8 @@ $messages['mr'] = array(
 	'prefswitch-title-switched-on' => '↓ मजा करा!',
 	'prefswitch-title-switched-off' => '↓ धन्यवाद
 ↓ आभारी आहे',
+	'prefswitch-title-feedback' => '↓ उलट टपाल
+↓ संदेश परतावा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3718,6 +3875,7 @@ $messages['ms'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Padamkan ciri-ciri baru',
+	'prefswitch-survey-submit-global-off' => 'Padamkan fungsi dan ciri-ciri baru untuk semua wiki',
 	'prefswitch-survey-cancel-off' => 'Seandainya anda ingin terus menggunakan Beta, sila kembali ke $1',
 	'prefswitch-survey-submit-feedback' => 'Hantarkan maklumbalas',
 	'prefswitch-survey-cancel-feedback' => 'Seandainya anda tidak ingin menghantar maklumbalas, kembali ke $1',
@@ -3765,7 +3923,7 @@ $messages['ms'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-| Tampilan kotak dialog untuk kegunaan pautan.
+| Tampilan kotak dialog untuk kegunaan pautan
 |}
 |}
 '''Wikimedia Foundation's User Experience Team''' telah bekerjasama dengan para pengguna daripada komuniti untuk memudahkan kepenggunaan Wikipedia. Kami ingin berkongsi pembaharuan yang telah dilaksanakan, termasuk bentuk muka laman yang baru, ringkas dan ciri-ciri yang padat. Pembaharuan ini bertujuan untuk memudahkan pengguna-pengguna baru untuk menyumbang dalam Wikipedia. Kami telah menjalankan [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study temu-bual dan penyelidikan] dengan para pengguna sepanjang tahun lepas. Peningkatan kepengguaan Wikipedia dan projek-projek berkembarnya merupakan keutamaan Yayasan Wikimedia dan kami akan mengumumkan sebarang pembaharuan yang akan datang. Untuk maklumat yang lebih lanjut, sila layari [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia laman blog Wikimedia]. 
@@ -3783,10 +3941,10 @@ $messages['ms'] = array(
 Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cadangan_pengguna |pandangan, pendapat dan cadangan]] kepada kami. Sekiranya anda ingin menyumbang kepakaran anda untuk meningkatkan mutu perisian dan Wikipedia, sila layari [http://usability.wikimedia.org Usability wiki] untuk maklumat lebih lanjut.',
 	'prefswitch-main-anon' => '===Kembali===
 [$1 Klik sini untuk mematikan ciri-ciri baru]. Anda perlu log masuk atau membuat akuan baru terlebih dahulu.',
-	'prefswitch-main-on' => '↓ ===Kembali!===
+	'prefswitch-main-on' => '↓ ===Kembali kepada asal===
 [$2 Klik di sini untuk memadamkan ciri-ciri baru].',
 	'prefswitch-main-off' => '==Cubalah!===
-[$1 Klik di sini untuk mengaktifkan ciri-ciri baru].',
+Klik [$ 1 di sini untuk mengaktifkan] ciri-ciri baru',
 	'prefswitch-survey-intro-feedback' => 'Kami ingin mengetahui maklum balas anda. 
 Sila hantarkan soal selidk di bawah.',
 	'prefswitch-survey-intro-off' => 'Terima kasih kerana cuba menggunakan ciri-ciri baru. 
@@ -3914,6 +4072,7 @@ U kunt de CSS-stijlen voor Vector aanpassen in de pagina [[{{ns:user}}:$1/vector
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-submit-off' => 'Nieuwe mogelijkheden uitschakelen',
+	'prefswitch-survey-submit-global-off' => "Nieuwe mogelijkheden in alle wiki's uitschakelen",
 	'prefswitch-survey-cancel-off' => 'Als u de nieuwe mogelijkheden wilt blijven gebruiken, kunt u terugkeren naar $1',
 	'prefswitch-survey-submit-feedback' => 'Terugkoppeling geven',
 	'prefswitch-survey-cancel-feedback' => 'Als u geen terugkoppeling wilt geven, kunt u teruggaan naar $1.',
@@ -4082,6 +4241,7 @@ For å hjelpa oss med å betra dei, fyll gjerne ut den valfrie undersøkinga und
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -4092,6 +4252,7 @@ $messages['no'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nei',
 	'prefswitch-survey-submit-off' => 'Slå av nye funksjoner',
+	'prefswitch-survey-submit-global-off' => 'Slå av nye funksjoner på alle wikier',
 	'prefswitch-survey-cancel-off' => 'Om du vil fortsette å bruke de nye funksjonene kan du gå tilbake til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send tilbakemelding',
 	'prefswitch-survey-cancel-feedback' => 'Hvis du ikke ønsker å gi tilbakemelding kan du gå tilbake til $1.',
@@ -4176,9 +4337,13 @@ $messages['pdc'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-answer-whyoff-other' => 'Annerer Grund:',
+	'prefswitch-title-on' => 'Neie Features',
+	'prefswitch-title-switched-on' => 'Viel Schpass!',
+	'prefswitch-title-switched-off' => 'Danke',
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Nux
  * @author Saper
  * @author Sp5uhe
@@ -4191,6 +4356,7 @@ $messages['pl'] = array(
 	'prefswitch-survey-true' => 'Tak',
 	'prefswitch-survey-false' => 'Nie',
 	'prefswitch-survey-submit-off' => 'Wyłącz nowe funkcje',
+	'prefswitch-survey-submit-global-off' => 'Wyłącz nowe funkcje we wszystkich projektach wiki',
 	'prefswitch-survey-cancel-off' => 'Jeśli chcesz nadal korzystać z nowych funkcji, możesz powrócić do $1.',
 	'prefswitch-survey-submit-feedback' => 'Wyślij opinię',
 	'prefswitch-survey-cancel-feedback' => 'Jeśli nie chcesz przesłać swojej opinii, możesz powrócić do $1.',
@@ -4280,6 +4446,7 @@ $messages['pms'] = array(
 	'prefswitch-survey-true' => 'É',
 	'prefswitch-survey-false' => 'Nò',
 	'prefswitch-survey-submit-off' => 'Disativa le funsionalità neuve',
+	'prefswitch-survey-submit-global-off' => 'Gava le funsionalità neuve da dzora a tute le wiki',
 	'prefswitch-survey-cancel-off' => "S'a veul continué a dovré le possibilità neuve, a peul torné a $1.",
 	'prefswitch-survey-submit-feedback' => 'Mandé dij sugeriment',
 	'prefswitch-survey-cancel-feedback' => "S'a veul pa dé ëd sugeriment, a peul torné a $1.",
@@ -4389,6 +4556,7 @@ $messages['pt'] = array(
 	'prefswitch-survey-true' => 'Sim',
 	'prefswitch-survey-false' => 'Não',
 	'prefswitch-survey-submit-off' => 'Desligar as funcionalidades novas',
+	'prefswitch-survey-submit-global-off' => 'Desligar as funcionalidades novas em todas as wikis',
 	'prefswitch-survey-cancel-off' => 'Se quiser continuar a usar as funcionalidades novas, pode voltar à $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentário',
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
@@ -4705,6 +4873,7 @@ Pentru a ne ajuta să le perfecționăm vă rugăm să răspundeți la sondajul 
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author G0rn
  * @author Kaganer
  * @author Александр Сигачёв
@@ -4717,6 +4886,7 @@ $messages['ru'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Нет',
 	'prefswitch-survey-submit-off' => 'Выключить новые возможности',
+	'prefswitch-survey-submit-global-off' => 'Выключить новые возможности во всех вики',
 	'prefswitch-survey-cancel-off' => 'Если вы хотите продолжить использовать новые возможности, вы можете вернуться к $1.',
 	'prefswitch-survey-submit-feedback' => 'Отправить отзыв',
 	'prefswitch-survey-cancel-feedback' => 'Если вы не хотите оставить отзыв о прототипе, вы можете вернуться к $1.',
@@ -4982,9 +5152,13 @@ $messages['sc'] = array(
 $messages['si'] = array(
 	'prefswitch-survey-true' => 'ඔව්',
 	'prefswitch-survey-false' => 'නැත',
+	'prefswitch-survey-submit-feedback' => 'බීටා අනුවාදය පිලිබඳ ප්‍රතිපෝෂණය',
 	'prefswitch-survey-answer-whyoff-other' => 'වෙනත් හේතුවක්:',
 	'prefswitch-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
 	'prefswitch-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
+	'prefswitch-survey-question-os' => 'ඔබ භාවිතා කරනු ලබන්නේ කුමන මෙහෙයුම් පද්ධතිය ද?',
+	'prefswitch-survey-answer-os-other' => 'අනෙක් මෙහෙයුම් පද්ධතිය:',
+	'prefswitch-title-on' => 'බීටා අනුවාදයේ ලක්ෂණ',
 	'prefswitch-title-switched-on' => 'ප්‍රීති වන්න!',
 	'prefswitch-title-switched-off' => 'ස්තුතියි',
 );
@@ -5086,11 +5260,20 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj, pred
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
+	'prefswitch-survey-submit-off' => 'Искључи нове могућности',
+	'prefswitch-survey-submit-global-off' => 'Искључи нове могућности на свим викијима',
+	'prefswitch-survey-cancel-off' => 'Ако бисте желели да продужите са коришћењем бета-верзије, можете се вратити на $1.',
+	'prefswitch-survey-submit-feedback' => 'Пошаљи повратне информације',
+	'prefswitch-survey-question-like' => 'Шта вам се свидело у вези са бета верзијом?',
+	'prefswitch-survey-question-dislike' => 'Шта вам се није свидело у вези са бета верзијом?',
+	'prefswitch-survey-question-whyoff' => 'Зашто напуштате бета-верзију?
+Молимо Вас, означите све што је на то утицало.',
 	'prefswitch-survey-answer-whyoff-other' => 'Други разлог:',
 	'prefswitch-survey-question-browser' => 'Који браузер користите?',
 	'prefswitch-survey-answer-browser-other' => 'Други браузер:',
@@ -5101,6 +5284,8 @@ $messages['sr-ec'] = array(
 	'prefswitch-title-switched-on' => 'Уживајте!',
 	'prefswitch-title-off' => 'Искључи нове могућности',
 	'prefswitch-title-switched-off' => 'Хвала',
+	'prefswitch-title-feedback' => 'Повратне информације',
+	'prefswitch-success-feedback' => 'Повратне информације су послате',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
@@ -5410,12 +5595,38 @@ $messages['th'] = array(
 $messages['tk'] = array(
 	'prefswitch-survey-true' => 'Hawa',
 	'prefswitch-survey-false' => 'Ýok',
+	'prefswitch-survey-submit-off' => 'Täze funksiýalary ýap',
+	'prefswitch-survey-submit-global-off' => 'Täze funksiýalary ähli wikilerde ýap',
+	'prefswitch-survey-cancel-off' => 'Eger täze funksiýalary ulanmaga dowam etjek bolsaňyz, $1 sahypasyna dolanyp bilersiňiz.',
 	'prefswitch-survey-submit-feedback' => 'Seslenme iber',
+	'prefswitch-survey-cancel-feedback' => 'Eger seslenme bildiresiňiz gelmeýän bolsa, $1 sahypasyna dolanyp bilersiňiz.',
+	'prefswitch-survey-question-like' => 'Täze funksiýalarda size näme ýarady?',
+	'prefswitch-survey-question-dislike' => 'Täze funksiýalarda size näme ýaramady?',
+	'prefswitch-survey-question-whyoff' => 'Täze funksiýalary näme üçin ýapýarsyňyz?
+Ähli gabat gelýänleri saýlaň.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Funksiýalary ulanmak örän çylşyrymly.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Funksiýalar bolmalysy ýaly işlemeýär.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Funksiýalar öňünden çak edip bolar ýaly işlemedi.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Funksiýalaryň görünişini halamadym.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Täze salmalary we sahypalamany halamadym.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Täze gural panelini halamadym.',
 	'prefswitch-survey-answer-whyoff-other' => 'Başga sebäp:',
+	'prefswitch-survey-question-browser' => 'Nähili brauzer ulanýarsyňyz?',
 	'prefswitch-survey-answer-browser-other' => 'Başga brauzer:',
+	'prefswitch-survey-question-os' => 'Nähili operasion ulgam ulanýarsyňyz?',
+	'prefswitch-survey-answer-os-other' => 'Başga operasion ulgam:',
+	'prefswitch-survey-question-res' => 'Ekran çözgüdiňiz näçe?',
 	'prefswitch-title-on' => 'Täze funksiýalar',
+	'prefswitch-title-switched-on' => 'Hezilini görüň!',
+	'prefswitch-title-off' => 'Täze funksiýalary ýap',
 	'prefswitch-title-switched-off' => 'Sag boluň',
 	'prefswitch-title-feedback' => 'Seslenme',
+	'prefswitch-success-feedback' => 'Seslenmäňiz iberildi.',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]</span> sahypasyna dolan',
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} salmasy'''nda indi ýyldyz bar.
+* '''{{int:move}} salmasy''' indi gözleg paneliniň ýanyndaky açylýan menýuda.",
+	'prefswitch-feedbackpage' => 'Project:Ulanyjynyň tejribe seslenmesi',
 );
 
 /** Tagalog (Tagalog)
@@ -5677,15 +5888,19 @@ $messages['ug-arab'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Olvin
+ * @author Riwnodennyk
  * @author Тест
  */
 $messages['uk'] = array(
+	'prefswitch' => 'Перемикач налаштувань Ініціативи практичності',
 	'prefswitch-desc' => 'Дозволяє користувачам змінювати параметри налаштувань',
 	'prefswitch-jswarning' => "Пам'ятайте, що при зміні теми оформлення ваш [[User:$1/$2.js|$2 JavaScript]]  треба скопіювати до [[{{ns:user}}:$1/vector.js]] <!-- або [[{{ns:user}}:$1/common.js]]-->, щоб він продовжив працювати.",
 	'prefswitch-csswarning' => 'Ваші [[User:$1/$2.css|власні стилі для $2]] не працюватимуть під новим оформленням. Ви можете додати власні CSS для "векторного" оформлення на [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Ні',
 	'prefswitch-survey-submit-off' => 'Вимкнути нові можливості',
+	'prefswitch-survey-submit-global-off' => 'Відімкнути нові можливості на всіх віках',
 	'prefswitch-survey-cancel-off' => 'Якщо ви бажаєте продовжити користуватися новими можливостями, ви можете повернутися до $1.',
 	'prefswitch-survey-submit-feedback' => 'Надіслати відгук',
 	'prefswitch-survey-cancel-feedback' => 'Якщо ви бажаєте надіслати відгук, ви можете повернутися до $1.',
@@ -5695,6 +5910,7 @@ $messages['uk'] = array(
 Виберіть усе, що підходить.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Нові можливості заскладні для користування.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Нові можливості не функціонуюють коректно.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Працює непередбачувано',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Мені не подобається як воно виглядає.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Мені не подобаються нові закладки та композиція.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Мені не подобається нова панель засобів.',
@@ -5709,9 +5925,57 @@ $messages['uk'] = array(
 	'prefswitch-title-off' => 'Відключити нові можливості',
 	'prefswitch-title-switched-off' => 'Дякуємо',
 	'prefswitch-title-feedback' => "Зворотний зв'язок",
+	'prefswitch-success-on' => 'Нові можливості ввімкнено. Сподіваємось, що Вам сподобається. Ви можете відключитися від програми в будь-який час, натиснувши на посилання "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"  у верхній частині екрана.',
+	'prefswitch-success-off' => 'Нові можливості вимкнено. Дякуємо за випробування. Ви можете повернутися до них у будь-який час, натиснувши на посилання "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"  у верхній частині екрана.',
 	'prefswitch-success-feedback' => 'Ваш відгук відправлено.',
 	'prefswitch-return' => '<hr style="clear:both">
 Повернутися до <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-uk.png|401px|]]
+|-
+| Вигляд вікна Вікіпедії в новій оболонці <small>[[Media:VectorNavigation-uk.png|(збільшити)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-uk.png|401px|]]
+|-
+| Вигляд вікна редагування <small>[[Media:VectorEditorBasic-uk.png|(збільшити)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-uk.png|401px|]]
+|-
+| Вигляд нового інтерфейсу вставлення посилань
+|}
+|}
+Команда користувацького досвіду з фонду Вкіпедія працювала разом із добровольцями на тим, як зробити Ваше користивування простішим. Ми раді запропонувати Вам деякі поліпшення, зокрема новий вигляд, відчуття та спрощення інтерфейсу редагування. Ці зміну мають за мету полегшити перші кроки новоприбулим користувачам, і ґрунтуються на нашому [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study випробуваннях практичності протягом останнього року]. Покращення практичність наших проєктів — один із пріоритетів фонду Вікімедія, і ми впроваджуватимемо оновлення й у майбутньому. Для більш докладної інформації відвідайте наш [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запис у блодзі].
+
+=== Деякі нововпроваджені зміни ===
+* '''Навігація:''' Ми покращили навігацію в читанні та редагуванні сторінок. Відтепер вкладки вгорі докладніше дають зрозуміти, чи Ви переглядаєте статтю, або ж її сторінку обговорення, а також чи Ви переглядаєте, або ж редагуєте сторінку.
+* '''Поліпшена панель редагувань:''' Ми переробили панель редагувань, аби полегшити користування нею. Відтепер, оформлення сторінок простіше та зрозуміліше.
+* '''Інтерфейс посилань:''' Простий у використанні пристрій надає можливість як додавати посилання на інші вікі-сторінки, так і на зовнішні сайти.
+* '''Поліпшений пошук:''' Ми поліпшили пошукові пропонови, аби Ви могли швидше відшукати потрібне.
+* '''Інші новинки:''' Ми впровадили майстер таблиць, щоби полегшити створення таблиць та замінити можливість спрощувати редагування сторінки.
+* '''Логотип Вікіпедії:''' Ми оновили наш логотип. Довідайтесь більше на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блодзі Вікіпедії].",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}}''' відтепер у формі зірки.
+* '''{{int:move}} tab''' знаходиться у випадалці поруч із коміркою пошуку.",
+	'prefswitch-main-feedback' => '=== Відгуки ===
+Ми раді чути їх від Вас. Будь ласка, перейдіть на [[$1|сторінку відгуків]], або ж, якщо Ви зацікавленні у покращенні програмного забезпечення, відвідайте наш [http://usability.wikimedia.org вікі-проект «usability»] для подальшої інформації.',
+	'prefswitch-main-anon' => '===Повернутися до колишньої облонки===
+Натисніть[$1 тут, аби вимкнути нові можливості]. Для цього Вам потрібно увійти або зареєструватися.',
+	'prefswitch-main-on' => '===Повернути назад===
+[$2 Натисніть тут, якщо бажаєте вимкнути нові можливості].',
+	'prefswitch-main-off' => '===Спробуйте!=== 
+ [$1 Клацніть тут для увімкнення нової оболонки].',
+	'prefswitch-survey-intro-feedback' => 'Нам важлива Ваша думка.
+Чи не могли б Ви пройти необов\'язкове опитування, перш ніж натиснете "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Дякуємо за випробування наших нових можливостей.
+Аби їх удосконалити, будь ласка, заповніть форму "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:Користувацькі відгуки щодо нової оболонки',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -5726,6 +5990,7 @@ $messages['vi'] = array(
 	'prefswitch-survey-true' => 'Có',
 	'prefswitch-survey-false' => 'Không',
 	'prefswitch-survey-submit-off' => 'Tắt các tính năng mới',
+	'prefswitch-survey-submit-global-off' => 'Tắt các tính năng tại tất cả các wiki',
 	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
 	'prefswitch-survey-submit-feedback' => 'Gửi phản hồi',
 	'prefswitch-survey-cancel-feedback' => 'Nếu bạn không muốn phản hồi, bạn có thể trở lại $1.',
@@ -6259,5 +6524,12 @@ $messages['zh-hant'] = array(
 	'prefswitch-survey-intro-feedback' => "我們將非常樂意聽取您的意見。請填寫下面的'''可選'''的調查，然後點擊[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]\"。",
 	'prefswitch-survey-intro-off' => '感謝您試用我們的新功能。為了幫助我們改進，請填寫下面的可選的調查，然後點擊"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"。',
 	'prefswitch-feedbackpage' => 'Project:Vector用戶反饋',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Liangent
+ */
+$messages['zh-tw'] = array(
+	'prefswitch-success-off' => '新功能已經關閉了。感謝您的試用，你可以隨時開啟這些新功能，只需要按本頁頁頂的[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]便可以了。',
 );
 

@@ -527,7 +527,7 @@ $messages['ca'] = array(
 	'webstore_php_error' => "S'han trobat errors PHP:",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1010,6 +1010,20 @@ $1',
 $1',
 	'webstore_php_error' => 'Les erreurs PHP suivantes sont survenues :',
 	'webstore_no_handler' => 'Aucun gestionnaire ne prend en charge ce type MIME.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'inplace_access_disabled' => 'L’accès a ceti sèrviço est dèsactivâ por tôs los cliants.',
+	'inplace_scaler_not_enough_params' => 'Pas prod de paramètres.',
+	'webstore_invalid_zone' => 'Zona « $1 » envalida.',
+	'webstore_curl' => 'Èrror dês cURL : $1',
+	'webstore_404' => 'Fichiér entrovâblo.',
+	'webstore_php_warning' => 'Avèrtissement PHP : $1',
+	'webstore_metadata_not_found' => 'Fichiér entrovâblo : $1',
+	'webstore_postfile_not_found' => 'Fichiér a encartar entrovâblo.',
 );
 
 /** Irish (Gaeilge)

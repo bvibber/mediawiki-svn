@@ -325,11 +325,7 @@ class EmailContactForm {
 
 			wfDebug( "$fname: sending mail from ".$from->toString()." to ".$to->toString()." replyto ".($replyto==null?'-/-':$replyto->toString())."\n" );
 
-			#HACK: in MW 1.9, replyto must be a string, in MW 1.10 it must be an object!
-			$ver = preg_replace( '![^\d._+]!', '', $GLOBALS['wgVersion'] );
-			$replyaddr = $replyto == null
-					? null : version_compare( $ver, '1.10', '<' )
-						? $replyto->toString() : $replyto;
+			$replyaddr = $replyto == null ? null : $replyto;
 
 			$mailResult = userMailer( $to, $from, $subject, $this->text, $replyaddr );
 

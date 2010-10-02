@@ -754,6 +754,11 @@ $messages['gu'] = array(
 	'tooltip-drafts-save' => 'મુસદ્દા તરીકે સાચવો',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'drafts-view-article' => 'Shafi',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1425,8 +1430,14 @@ It veus-to continué?',
 $messages['ps'] = array(
 	'drafts' => 'ګارلیکونه',
 	'drafts-view-article' => 'مخ',
+	'drafts-view-existing' => 'شته ګارليکونه',
+	'drafts-view-notice' => 'د دې مخ لپاره تاسې $1 لرۍ.',
+	'drafts-view-notice-link' => '$1 {{PLURAL:$1|ګارليک|ګارليکونه}}',
 	'drafts-save' => 'د يوه ګارليک په توګه خوندي کول',
 	'drafts-save-save' => 'ګارليک خوندي کول',
+	'drafts-save-saved' => 'خوندي شو',
+	'drafts-save-saving' => 'د خوندي کېدلو په حال کې',
+	'tooltip-drafts-save' => 'د يوه ګارليک په توګه خوندي کول',
 );
 
 /** Portuguese (Português)
@@ -1791,7 +1802,7 @@ Devam etmek istiyor musunuz?',
 	'tooltip-drafts-save' => 'Taslak olarak kaydet',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -154,7 +154,7 @@ $messages['ca'] = array(
 	'userimages-noimages' => '$1 no ha carregat imatges.',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -764,6 +764,16 @@ $messages['tg-cyrl'] = array(
 $messages['tg-latn'] = array(
 	'userimages-caption' => 'Aksho tavassuti $1 borguzorī şudaand',
 	'userimages-noimages' => '$1 doroi borguzorihoi akse nest.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'userimages-desc' => 'สร้างแกลเลอรี่รูปภาพที่ผู้ใช้อัปโหลดพร้อมด้วย <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'รูปภาพที่คุณ $1 อัปโหลด',
+	'userimages-noname' => 'ชื่อผู้ใช้ไม่ถูกต้องหรือไม่มีชื่อผู้ใช้',
+	'userimages-noimages' => 'คุณ $1 ยังไม่เคยอัปโหลดรูปภาพ',
 );
 
 /** Tagalog (Tagalog)

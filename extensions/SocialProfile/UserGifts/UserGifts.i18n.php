@@ -210,6 +210,7 @@ $messages['aln'] = array(
  */
 $messages['an'] = array(
 	'g-cancel' => 'Cancelar',
+	'g-small' => 'Chicot',
 );
 
 /** Arabic (العربية)
@@ -773,11 +774,12 @@ $messages['ca'] = array(
 	'g-your-profile' => 'El teu perfil',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
 	'g-go-back' => 'گەڕانەوە بۆ دواوە',
+	'g-next' => 'پاش',
 );
 
 /** German (Deutsch)
@@ -1813,6 +1815,11 @@ un ändere Dyyni Yystellige go d E-Mail-Benochrichtigunge verhindere.',
 	'right-giftadmin' => 'Leg neji Gschänk aa un bearbeit sonigi, wu s scho het',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'g-cancel' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -2229,6 +2236,7 @@ e cambia tu configurationes pro disactivar le notificationes in e-mail.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kandar
@@ -2294,7 +2302,7 @@ Sangat mudah.',
 	'g-new' => 'baru',
 	'g-next' => 'Selanjutnya',
 	'g-previous' => 'Sebelumnya',
-	'g-remove' => 'Singkirkan',
+	'g-remove' => 'Hapus',
 	'g-remove-gift' => 'Singkirkan hadiah ini',
 	'g-remove-message' => 'Anda yakin ingin menyingkirkan hadiah "$1"?',
 	'g-recent-recipients' => 'Penerima hadiah yang sama baru-baru ini',
@@ -4059,6 +4067,7 @@ To ga bo odstranilo tudi od uporabnikov, ki so ga morda prejeli.',
 	'g-error-message-login' => 'Za podarjanje daril se morate prijaviti',
 	'g-error-message-no-user' => 'Uporabnik, ki si ga želite ogledati, ne obstaja.',
 	'g-error-message-to-yourself' => 'Darila ne morete podariti sebi.',
+	'g-error-title' => 'Ups, ubrali ste napačno smer!',
 	'g-file-instructions' => 'Vaša slika mora biti jpeg, png ali gif (brez animiranih gifov) in v velikosti ne sme presegati 100kb.',
 	'g-from' => 'od <a href="$1">$2</a>',
 	'g-gift' => 'darilo',
@@ -4693,6 +4702,11 @@ ve e-posta bildirimlerini devre dışı bırakmak için ayarlarınızı değişt
  */
 $messages['uk'] = array(
 	'g-next' => 'Наступний',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'g-cancel' => 'منسوخ',
 );
 
 /** Veps (Vepsan kel')

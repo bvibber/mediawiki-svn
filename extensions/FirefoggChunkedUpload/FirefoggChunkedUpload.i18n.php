@@ -41,10 +41,11 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'firefoggcu-desc' => 'Hochlade-Protokoll für Firefogg-Stücke',
+	'firefoggcu-desc' => 'Etappenweises Protokoll zum Hochladen für Firefogg',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -136,6 +137,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'firefoggcu-desc' => 'Firefogg 一括アップロードプロトコル',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'firefoggcu-desc' => 'Dem Firefogg sing Protokoll zum Huhlaade en Etappe.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

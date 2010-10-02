@@ -24,7 +24,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	'name'           => 'Poem',
 	'author'         => array( 'Nikola Smolenski', 'Brion Vibber', 'Steve Sanbeg' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Poem',
-	'description'    => 'Adds <tt>&lt;poem&gt;</tt> tag for poem formatting',
 	'descriptionmsg' => 'poem-desc',
 );
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";

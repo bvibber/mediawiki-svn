@@ -466,7 +466,7 @@ class SpecialPageTranslation extends SpecialPage {
 		$changed = array();
 
 		$pageId = $page->getTitle()->getArticleId();
-		foreach ( $sections as $s ) {
+		foreach ( array_values( $sections ) as $index => $s ) {
 			if ( $s->type === 'changed' ) {
 				// Allow silent changes to avoid fuzzying unnecessary.
 				if ( !$wgRequest->getCheck( "tpt-sect-{$s->id}-action-nofuzzy" ) ) {
@@ -478,8 +478,10 @@ class SpecialPageTranslation extends SpecialPage {
 				'trs_page' => $pageId,
 				'trs_key' => $s->name,
 				'trs_text' => $s->getText(),
+				'trs_order' => $index
 			);
 		}
+
 
 		// Don't add stuff if no changes, use the plain null instead for prettiness
 		if ( !count( $changed ) ) {
@@ -487,6 +489,12 @@ class SpecialPageTranslation extends SpecialPage {
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
+		if ( !$dbw->fieldExists( 'translate_sections', 'trs_order', __METHOD__ ) ) {
+			error_log( 'Field trs_order does not exists. Please run update.php.' );
+			foreach ( array_keys( $inserts ) as $index ) {
+				unset( $inserts[$index]['trs_order'] );
+			}
+		}
 		$dbw->delete( 'translate_sections', array( 'trs_page' => $page->getTitle()->getArticleId() ), __METHOD__ );
 		$dbw->insert( 'translate_sections', $inserts, __METHOD__ );
 

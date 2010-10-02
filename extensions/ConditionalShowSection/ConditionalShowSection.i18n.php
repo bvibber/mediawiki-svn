@@ -176,7 +176,7 @@ $messages['ja'] = array(
 	'conditionalshowsection-desc' => 'ある部分のウィキテキストの表示・非表示を条件によって切り替えられる cshow タグを追加する',
 );
 
-/** Kabardian (Cyrillic) ()
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
  * @author Тамэ Балъкъэрхэ
  */
 $messages['kbd-cyrl'] = array(

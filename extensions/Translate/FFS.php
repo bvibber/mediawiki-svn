@@ -163,6 +163,7 @@ class SimpleFFS implements FFS {
 
 		if ( $sourceText !== false ) {
 			$sourceData = $this->readFromVariable( $sourceText );
+
 			if ( isset( $sourceData['AUTHORS'] ) ) {
 				$collection->addCollectionAuthors( $sourceData['AUTHORS'] );
 			}
@@ -447,38 +448,52 @@ abstract class JavaScriptFFS extends SimpleFFS {
 		);
 	}
 
-	public function writeIntoVariable( MessageCollection $collection ) {
-		$r = $this->header( $collection->code, $collection->getAuthors() );
+	public function writeReal( MessageCollection $collection ) {
+		$header = $this->header( $collection->code, $collection->getAuthors() );
 
 		$mangler = $this->group->getMangler();
 
 		// Get and write messages.
+		$body = '';
 		foreach ( $collection as $message ) {
+			if( strlen( $message->translation() ) === 0 ) {
+				continue;
+			}
+
 			$key = $mangler->unmangle( $message->key() );
 			$key = $this->transformKey( Xml::escapeJsString( $key ) );
 
 			$translation = Xml::escapeJsString( $message->translation() );
 
-			$r .= "    {$key}: \"{$translation}\",\n\n";
+			$body .= "\t{$key}: \"{$translation}\",\n";
+		}
+
+		if( strlen( $body ) === 0 ) {
+			return false;
 		}
 
 		// Strip last comma, re-add trailing newlines.
-		$r = substr( $r, 0, - 3 );
-		$r .= "\n\n";
+		$body = substr( $body, 0, -2 );
+		$body .= "\n";
 
-		return $r . $this->footer();
+		return $header . $body . $this->footer();
 	}
 
 	protected function authorsList( $authors ) {
-		if( count( $authors ) === 0 ) return '';
+		if( count( $authors ) === 0 ) {
+			return '';
+		}
 
+		$authorsList = '';
 		foreach ( $authors as $author ) {
 			$authorsList .= " *  - $author\n";
 		}
-		return "/* Translators:\n$authorsList */\n\n";
+
+		// Remove trailing newline, and return.
+		return substr( " * Translators:\n$authorsList", 0, -1 );
 	}
 
-	private static function unescapeJsString( $string ) {
+	protected static function unescapeJsString( $string ) {
 		// See ECMA 262 section 7.8.4 for string literal format
 		$pairs = array(
 			"\\" => "\\\\",
@@ -523,11 +538,13 @@ class OpenLayersFFS extends JavaScriptFFS {
  * license.  See http://svn.openlayers.org/trunk/openlayers/license.txt for the
  * full text of the license. */
 
-$authorsList/**
+/**
  * @requires OpenLayers/Lang.js
  */
 
 /**
+$authorsList
+ *
  * Namespace: OpenLayers.Lang["$code"]
  * Dictionary for $name.  Keys for entries are used in calls to
  *     <OpenLayers.Lang.translate>.  Entry bodies are normal strings or
@@ -539,7 +556,7 @@ EOT;
 	}
 
 	protected function footer() {
-		return '});';
+		return "});\n";
 	}
 }
 
@@ -549,12 +566,26 @@ class ShapadoJsFFS extends JavaScriptFFS {
 	}
 
 	protected function header( $code, $authors ) {
+		global $wgSitename;
+
+		$name = TranslateUtils::getLanguageName( $code );
+		$native = TranslateUtils::getLanguageName( $code, true );
 		$authorsList = $this->authorsList( $authors );
-		return "{$authorsList}var I18n = {\n\n";
+
+		return <<<EOT
+/** Messages for $name ($native)
+ *  Exported from $wgSitename
+ *
+{$authorsList}
+ */
+
+var I18n = {
+
+EOT;
 	}
 
 	protected function footer() {
-		return '};';
+		return "};\n\n";
 	}
 }
 

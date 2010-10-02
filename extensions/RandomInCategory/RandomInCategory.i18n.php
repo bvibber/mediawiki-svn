@@ -168,6 +168,12 @@ $messages['ch'] = array(
 	'randomincategory-submit' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'randomincategory-label' => 'پۆل:',
+	'randomincategory-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -358,6 +364,11 @@ $messages['gv'] = array(
 	'randomincategory-toolbox' => 'Duillag gyn tort',
 	'randomincategory-label' => 'Ronney:',
 	'randomincategory-submit' => 'Gow',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'randomincategory-label' => 'Rukuni:',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1026,7 +1037,7 @@ $messages['ug-arab'] = array(
 	'randomincategory-submit' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

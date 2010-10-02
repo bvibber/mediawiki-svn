@@ -106,6 +106,16 @@ $messages['bn'] = array(
 	'wikieditor-loading' => 'আনা হচ্ছে',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor' => 'উচ উইকিটেক্সট পাতানির ইন্টারফেসহান',
+	'wikieditor-desc' => 'উইকি-টেক্ট পতানির কা সালকরানি একরব অসারে ইন্টারফেস বারো আরাকউ ফিচার দিতই মডিউল',
+	'wikieditor-wikitext-tab' => 'উইকিটেক্সট',
+	'wikieditor-loading' => 'আনরাঙ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -148,7 +158,7 @@ $messages['ce'] = array(
 	'wikieditor-loading' => 'Чуйолуш',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -406,6 +416,13 @@ $messages['ig'] = array(
 	'wikieditor-loading' => 'Ọ na biá',
 );
 
+/** Icelandic (Íslenska)
+ * @author Krun
+ */
+$messages['is'] = array(
+	'wikieditor-wikitext-tab' => 'Wiki-texti',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -466,6 +483,7 @@ $messages['ksh'] = array(
 	'wikieditor' => 'Fottjeschredde Eddiror för de WikiTäx',
 	'wikieditor-desc' => 'Brängk en Müjjeleschkeit för Wikitäx enzejävve un ze ändere en et Wiki, di mer ußboue kann, un noch allerhand Kröhmsches met dobei hät.',
 	'wikieditor-wikitext-tab' => 'Wikitäx',
+	'wikieditor-loading' => 'Am Lade',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
@@ -600,6 +618,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Laade',
 );
 

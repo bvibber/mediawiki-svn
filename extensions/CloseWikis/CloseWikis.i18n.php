@@ -344,6 +344,11 @@ $messages['ce'] = array(
 	'closewikis-page-reopen-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'closewikis-page-reopen-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung
@@ -747,6 +752,11 @@ $messages['gsw'] = array(
 	'closewikis-log-reopen' => 'het $2 wider ufgmacht',
 	'right-editclosedwikis' => 'Zuegmachti Wiki bearbeite',
 	'right-closewikis' => 'Wiki zuemache',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'closewikis-page-reopen-reason' => 'Dalili:',
 );
 
 /** Hebrew (עברית)
@@ -1392,6 +1402,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'closewikis-page-close-submit' => 'Zumache',
 	'closewikis-page-reopen-reason' => 'Grund:',
 );
 
@@ -1970,6 +1981,11 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'closewikis-page-reopen-reason' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'closewikis-page-reopen-reason' => 'وجہ:',
 );
 
 /** Veps (Vepsan kel')

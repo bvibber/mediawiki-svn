@@ -21,12 +21,46 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class SpecialUpdate extends SpecialPage {
 
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.1
+	 */	
 	public function __construct() {
-		parent::__construct( 'Update' );
+		parent::__construct( 'Update', 'siteadmin' );
 	}
 
+	/**
+	 * Main method.
+	 * 
+	 * @since 0.1 
+	 * 
+	 * @param $arg String
+	 */	
 	public function execute( $arg ) {
+		global $wgOut, $wgUser;
 		
+		$wgOut->setPageTitle( wfMsg( 'update-title' ) );
+		
+		// If the user is authorized, display the page, if not, show an error.
+		if ( $this->userCanExecute( $wgUser ) ) {
+			$this->showCoreStatus();
+			$this->showExtensionStatuses();
+		} else {
+			$this->displayRestrictionError();
+		}			
+	}
+	
+	protected function showCoreStatus() {
+		$repository = wfGetRepository();
+		
+		// TODO
+	}
+	
+	protected function showExtensionStatuses() {
+		$repository = wfGetRepository();
+		
+		// TODO
 	}
 	
 }

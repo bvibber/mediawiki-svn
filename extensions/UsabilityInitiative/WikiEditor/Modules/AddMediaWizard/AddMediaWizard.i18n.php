@@ -57,6 +57,13 @@ $messages['bn'] = array(
 	'wikieditor-addMediaWizard-preference' => '"Add media wizard" গ্যাজেট সক্রিয়',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Add media wizard" গ্যাজেট থাকর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -71,7 +78,7 @@ $messages['ca'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilita el giny «Assistent per afegir multimèdia»',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

@@ -63,7 +63,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'babel' => 'Header of Babel box. Parameter $1 is the name of the page it is used on, for GENDER support.',
+	'babel' => "Header of Babel box. Parameter $1 is the name of the page it is used on, for GENDER support. The header is shown in the content language of the site, not the interface language set in a user's preferences.",
 	'babel-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'babel-url' => 'The page name at which more information about the babel system can be found. Do not translate the namespace Project:.',
 	'babel-autocreate-text-main' => 'Text describing a category, at the top of the category page. 
@@ -132,27 +132,27 @@ $messages['kea'] = array(
  * @author GerardM
  */
 $messages['ary'] = array(
-	'babel' => 'Meĝlomaṫ Babil ĝla l-mosṫeĥdim',
+	'babel' => 'Meĝlomaṫ Babil ĝel l-mosṫeĥdim',
 	'babel-desc' => 'Zid l-fonksyon <code>#babel</code> baċ ṫṣayeb otomaṫikiyan sendoq Babil o ṫeĝmel fih modélaṫ maḫelliyin.',
 	'babel-url' => 'Project:Babel',
 	'babel-autocreate-abort' => "Smiyṫ l-mosṫeĥdim li deĥĥelṫi mosṫeĥdama le l-ĥṫiraĝ l-'otomaṫiki dyal l-katégoryaṫ [[$1|Babil]] o ma imkenlikċ ṫċejlo.",
 	'babel-autocreate-reason' => 'Ĥṫiraĝ otomaṫiki dyal l-katégori [[$1|Babel]].',
-	'babel-autocreate-text-levels' => 'L-mosṫeĥdimin li fe had l-katégori ĝendhom mosṫawa $1 fe had l-loġa : $2.',
-	'babel-autocreate-text-main' => 'L-mosṫeĥdimin li fe had l-katégori ĝendhom meĝrifa fe had l-loġa : $1.',
+	'babel-autocreate-text-levels' => 'L-mosṫeĥdimin li fe had n-noĝ ĝendhom mosṫawa $1 fe had l-loġa : $2.',
+	'babel-autocreate-text-main' => 'L-mosṫeĥdimin li fe had n-noĝ ĝendhom meĝrifa fe had l-loġa : $1.',
 	'babel-directionality' => 'rtl',
 	'babel-0' => 'Had l-mosṫeĥdim ma ĝendo [[$1|ḫṫa]] meĝrifa fe l-loġa [[$2|l-Meġribiya]] (ola kayfhemha be soĝoba).',
 	'babel-1' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|asasi]] fe [[$2|l-Meġribiya]].',
-	'babel-2' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|mṫweṣet]] fe [[$2|l-Meġribiya]].',
-	'babel-3' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|mṫqedem]] fe [[$2|l-Meġribiya]].',
+	'babel-2' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|meṫweṣṣet]] fe [[$2|l-Meġribiya]].',
+	'babel-3' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|meṫqeddem]] fe [[$2|l-Meġribiya]].',
 	'babel-4' => "Had l-mosṫeĥdim ĝendo mosṫawa [[$1|qrib le loġaṫ l-'om]] fe [[$2|l-Meġribiya]].",
 	'babel-5' => 'Had l-mosṫeĥdim ĝendo meĝrifa [[$1|ḫṫirafiya]] fe [[$2|l-Meġribiya]].',
 	'babel-N' => "Had l-mosṫeĥdim kayfhem l-loġa [[$2|l-Meġribiya]] bḫal [[$1|loġṫo l-'om]].",
 	'babel-0-n' => 'Had l-mosṫeĥdim ma ĝendo [[$1|ḫṫa]] meĝrifa fe l-loġa [[$2|l-Meġribiya]] (ola kayfhemha be soĝoba).',
 	'babel-1-n' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|asasi]] fe [[$2|l-Meġribiya]].',
-	'babel-2-n' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|mṫweṣet]] fe [[$2|l-Meġribiya]].',
-	'babel-3-n' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|mṫqedem]] fe [[$2|l-Meġribiya]].',
-	'babel-4-n' => "Had l-mosṫeĥdim ĝendo mosṫawa [[$1|qrib le loġaṫ l-'om]] fe [[$2|l-Meġribiya]].",
-	'babel-5-n' => 'Had l-mosṫeĥdim ĝendo meĝrifa [[$1|ḫṫirafiya]] fe [[$2|l-Meġribiya]].',
+	'babel-2-n' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|meṫweṣṣet]] fe [[$2|l-Meġribiya]].',
+	'babel-3-n' => 'Had l-mosṫeĥdim ĝendo mosṫawa [[$1|meṫqeddem]] fe [[$2|l-Meġribiya]].',
+	'babel-4-n' => "Had l-mosṫeĥdim ĝendo mosṫawa [[$1|qrib le loġṫo l-'om]] fe [[$2|l-Meġribiya]].",
+	'babel-5-n' => 'Had l-mosṫeĥdim ĝendo meĝrifa [[$1|ḫṫirafiya]] dyal [[$2|l-Meġribiya]].',
 	'babel-N-n' => "Had l-mosṫeĥdim kayfhem l-loġa [[$2|l-Meġribiya]] bḫal [[$1|loġto l-'om]].",
 );
 
@@ -757,7 +757,7 @@ $messages['ce'] = array(
 	'babel-N-n' => 'Хlокху декъашхочо [[$1|шейра]] буьйцу шай [[$2|Нохчийн]] мотт.',
 );
 
-/** Sorani (Soranî / کوردی)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author GerardM
  */
@@ -2554,6 +2554,7 @@ $messages['lzz'] = array(
 );
 
 /** Moksha (Мокшень)
+ * @author Jarmanj Turtash
  * @author Khazar II
  */
 $messages['mdf'] = array(
@@ -3871,6 +3872,10 @@ $messages['sv'] = array(
  * @author Malangali
  */
 $messages['sw'] = array(
+	'babel' => 'Maelezo ya Babeli ya mtumiaji',
+	'babel-url' => 'Project:Babeli',
+	'babel-autocreate-abort' => 'Huwezi kusajili jina la mtumiaji ulilotaja kwa sababu linatumika tayari katika shughuli ya kuanzisha jamii za [[$1|Babeli]] kiotomati.',
+	'babel-autocreate-reason' => 'Ukurasa wa jamii ya [[$1|Babeli]] unaanzishwa moja kwa moja.',
 	'babel-autocreate-text-levels' => 'Watumiaji katika jamii hii wanaonyesha kwamba wanaongea lugha ya $2 kwa kiwango cha $1.',
 	'babel-autocreate-text-main' => 'Watumiaji katika jamii hii wanadai kwamba wana ujuzi wa lugha ya $1.',
 	'babel-0' => 'Mtumiaji huyu [[$1|hajui]] [[$2|$3]] (au anaelewa kidogo sana).',
@@ -4603,6 +4608,7 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Dalt
  * @author Gzdavidwong
  * @author Jimmy xu wrk
  * @author Shinjiman
@@ -4615,20 +4621,20 @@ $messages['zh-hans'] = array(
 	'babel-autocreate-reason' => '自动建立[[$1|巴别]]分类页。',
 	'babel-autocreate-text-levels' => '在此分类中的用户具有语言$2的$1能力。',
 	'babel-autocreate-text-main' => '此分类中的用户能理解语言$1。',
-	'babel-0' => '这位用户[[$1|无]][[$2|$3]]的知识（或很难地去明白它）。',
-	'babel-1' => '这位用户有[[$1|基本]]的[[$2|$3]]知识。',
-	'babel-2' => '这位用户有[[$1|中等]]的[[$2|$3]]知识。',
-	'babel-3' => '这位用户有[[$1|高等]]的[[$2|$3]]知识。',
-	'babel-4' => '这位用户有[[$1|接近母语讲者]]的[[$2|$3]]知识。',
-	'babel-5' => '这位用户有[[$1|专业]]的[[$2|$3]]知识。',
-	'babel-N' => '这位用户明白[[$2|$3]]的[[$1|母语]]。',
-	'babel-0-n' => '这位用户[[$1|无]][[$2|简化中文字]]的知识（或很难地去明白它）。',
-	'babel-1-n' => '这位用户有[[$1|基本]]的[[$2|简化中文字]]知识。',
-	'babel-2-n' => '这位用户有[[$1|中等]]的[[$2|简化中文字]]知识。',
-	'babel-3-n' => '这位用户有[[$1|高等]]的[[$2|简化中文字]]知识。',
-	'babel-4-n' => '这位用户有[[$1|接近母语讲者]]的[[$2|简化中文字]]知识。',
-	'babel-5-n' => '这位用户有[[$1|专业]]的[[$2|简化中文字]]知识。',
-	'babel-N-n' => '这位用户明白以[[$1|母语]]为主的[[$2|简化中文字]]。',
+	'babel-0' => '这位用户[[$1|不懂]]或很难理解[[$2|$3]]。',
+	'babel-1' => '这位用户的[[$2|$3]]达到[[$1|初级水平]]。',
+	'babel-2' => '这位用户的[[$2|$3]]达到[[$1|中级水平]]。',
+	'babel-3' => '这位用户的[[$2|$3]]达到[[$1|高级水平]]。',
+	'babel-4' => '这位用户的[[$2|$3]]达到[[$1|接近母语水平]]。',
+	'babel-5' => '这位用户的[[$2|$3]]达到[[$1|专业水平]]。',
+	'babel-N' => '[[$2|$3]]是这位用户的[[$1|母语]]。',
+	'babel-0-n' => '这位用户[[$1|不懂]]或很难理解[[$2|简体中文]]。',
+	'babel-1-n' => '这位用户的[[$2|简体中文]]达到[[$1|初级水平]]。',
+	'babel-2-n' => '这位用户的[[$2|简体中文]]达到[[$1|中级水平]]。',
+	'babel-3-n' => '这位用户的[[$2|简体中文]]达到[[$1|高级]]水平。',
+	'babel-4-n' => '这位用户的[[$2|简体中文]]达到[[$1|接近母语水平]]。',
+	'babel-5-n' => '这位用户的[[$2|简体中文]]达到[[$1|专业水平]]。',
+	'babel-N-n' => '[[$2|简体中文]]是这位用户的[[$1|母语]]。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

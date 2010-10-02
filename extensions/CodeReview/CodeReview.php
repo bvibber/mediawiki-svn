@@ -155,6 +155,13 @@ $wgCodeReviewMaxDiffSize = 500000;
  */
 $wgCodeReviewDeferredPaths = array();
 
+/**
+ * UDP comment and status changes notification
+ */
+$wgCRUDPAddress = false;
+$wgCRUDPPort = false;
+$wgCRUDPPrefix = '';
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 

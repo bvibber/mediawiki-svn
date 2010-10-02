@@ -319,7 +319,7 @@ $messages['ca'] = array(
 	'wminc-prefinfo-code' => 'El codi de llengua ISO 639',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -600,8 +600,22 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'wminc-desc' => 'Sistèmo de vouiqui d’èprôva por Wikimedia Covosa.',
+	'wminc-viewuserlang' => 'Vêre la lengoua a l’utilisator et lo vouiqui d’èprôva',
 	'wminc-viewuserlang-user' => 'Nom d’utilisator :',
 	'wminc-viewuserlang-go' => 'Alar trovar',
+	'wminc-testwiki' => 'Vouiqui d’èprôva :',
+	'wminc-testwiki-none' => 'Nion / tôs',
+	'wminc-prefinfo-language' => 'Voutra lengoua d’entèrface - endèpendenta de cela de voutron vouiqui d’èprôva',
+	'wminc-prefinfo-code' => 'Lo code ISO 639 de la lengoua',
+	'wminc-prefinfo-project' => 'Chouèsésséd lo projèt Wikimedia (lo chouèx Covosa est dèstinâ ux utilisators que font un travâly g·ènèral)',
+	'wminc-prefinfo-error' => 'Vos éd chouèsi un projèt qu’at fôta d’un code lengoua.',
+	'wminc-warning-unprefixed' => "'''Atencion :''' la pâge que vos changiéd at gins de prèfixo !",
+	'wminc-warning-suggest' => 'Vos pouede fâre la pâge a [[$1]].',
+	'wminc-warning-suggest-move' => 'Vos pouede [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} renomar ceta pâge vers $1].',
+	'right-viewuserlang' => 'Vêre la [[Special:ViewUserLang|lengoua a l’utilisator et lo vouiqui d’èprôva]]',
+	'randombytest' => 'Pâge a l’hasârd per lo vouiqui d’èprôva',
+	'randombytest-nopages' => 'Voutron vouiqui d’èprôva contint gins de pâge dens l’èspâço de noms : $1.',
 );
 
 /** Galician (Galego)
@@ -1533,6 +1547,7 @@ $messages['sl'] = array(
 	'wminc-testwiki' => 'Preizkusni wiki:',
 	'wminc-testwiki-none' => 'Nič/Vse',
 	'wminc-prefinfo-code' => 'Koda jezika ISO 639',
+	'wminc-warning-suggest' => 'Ustvarite lahko stran na [[$1]].',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -1803,24 +1818,25 @@ $messages['yue'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author Shinjiman
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'wminc-desc' => '维基孵育场的测试wiki系统',
+	'wminc-desc' => '维基孵育场测试wiki系统',
 	'wminc-viewuserlang' => '查看用户语言与测试wiki',
 	'wminc-viewuserlang-user' => '用户名：',
 	'wminc-viewuserlang-go' => '转到',
-	'wminc-testwiki' => '测试wiki:',
+	'wminc-testwiki' => '测试wiki：',
 	'wminc-testwiki-none' => '无/所有',
-	'wminc-prefinfo-language' => '您的接口语言 - 在您的测试wiki中为独立的',
+	'wminc-prefinfo-language' => '你的界面语言-从你的测试wiki独立',
 	'wminc-prefinfo-code' => 'ISO 639语言代码',
-	'wminc-prefinfo-project' => '选择维基媒体计划 （孵育场选项用作一般用途）',
-	'wminc-prefinfo-error' => '您已选择一个需要语言代码的计划。',
-	'wminc-warning-unprefixed' => '警告: 您编辑的页面尚未加入前缀！',
-	'wminc-warning-suggest' => '您可以在[[$1]]开新页面。',
-	'wminc-warning-suggest-move' => '您可以[{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} 移动这个页面到$1]。',
-	'right-viewuserlang' => '查看[[Special:ViewUserLang|用户语言和测试维基]]',
-	'randombytest' => '测试维基上的随机页面',
-	'randombytest-nopages' => '在你的测试网页的$1名字空间中，没有页面。',
+	'wminc-prefinfo-project' => '选择维基媒体项目 （孵育场选项用作一般用途）',
+	'wminc-prefinfo-error' => '你选择了需要语言代码的项目。',
+	'wminc-warning-unprefixed' => "'''警告：'''你正在编辑的页面没有前缀！",
+	'wminc-warning-suggest' => '你可以在[[$1]]创建新页面。',
+	'wminc-warning-suggest-move' => '你可以[{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} 移动本页面至$1]。',
+	'right-viewuserlang' => '请查看[[Special:ViewUserLang|用户语言与测试wiki]]',
+	'randombytest' => '测试wiki随机页面',
+	'randombytest-nopages' => '你的测试wiki名称空间$1中没有页面。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

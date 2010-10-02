@@ -133,7 +133,7 @@ $messages['ce'] = array(
 	'wikieditor-previewDialog-loading' => 'Чуйолуш…',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -161,6 +161,7 @@ $messages['csb'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-previewDialog-preference' => 'Galluogi blwch deialog rhagolygon',
 	'wikieditor-previewDialog-tab' => 'Rhagolwg',
 	'wikieditor-previewDialog-loading' => "Wrthi'n llwytho...",
 );
@@ -259,8 +260,10 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
+	'wikieditor-previewDialog-preference' => 'فعال کردن پنجره‌های تعاملی پیش‌نمایش',
 	'wikieditor-previewDialog-tab' => 'پیش‌نمایش',
 	'wikieditor-previewDialog-loading' => 'در حال بارگذاری...',
 );
@@ -444,6 +447,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'wikieditor-previewDialog-preference' => 'Donn de Frooch noh ene Aansish vöraf aanschallde',
 	'wikieditor-previewDialog-tab' => '{{int:preview}}',
 	'wikieditor-previewDialog-loading' => 'Ben aam Laade{{int:ellipsis}}',
 );
@@ -694,9 +698,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-previewDialog-tab' => 'Претпреглед',
 	'wikieditor-previewDialog-loading' => 'Учитавање...',
 );
 
@@ -717,6 +723,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-previewDialog-preference' => 'Wezesha kisanduku cha kudhibiti hakikisho',
 	'wikieditor-previewDialog-tab' => 'Hakiki',
 	'wikieditor-previewDialog-loading' => 'Inapakiwa...',
 );

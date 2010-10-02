@@ -1020,6 +1020,14 @@ $messages['ce'] = array(
 	'deletequeue-case-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'deletequeue-delnom-otherreason' => 'هۆکاری دیکە',
+	'deletequeue-vote-submit' => 'ناردن',
+	'deletequeue-list-search' => 'گەڕان',
+	'deletequeue-case-reason' => 'هۆکار:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */
@@ -2487,6 +2495,15 @@ Du chasch Dyy eige Stimm zue dr Leschig [{{fullurl:{{FULLPAGENAME}}|action=delvo
  */
 $messages['gv'] = array(
 	'deletequeue-list-header-discusspage' => 'Duillag resoonaght',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'deletequeue-delnom-otherreason' => 'Wani dalili',
+	'deletequeue-list-search' => 'Nema',
+	'deletequeue-list-header-page' => 'Shafi',
+	'deletequeue-case-page' => 'Shafi:',
+	'deletequeue-case-reason' => 'Dalili:',
 );
 
 /** Hawaiian (Hawai`i)
@@ -4879,6 +4896,7 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  */
 $messages['ps'] = array(
 	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-queue-speedy' => 'چټکه ړنګېدنه',
 	'deletequeue-review-delete' => 'دا مخ ړنګول.',
 	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-reason' => 'تبصرې:',
@@ -6338,7 +6356,7 @@ $messages['tr'] = array(
 	'deletequeue-case-needs-review' => 'Bu durum [[$1|inceleme]] gerektirmektedir.',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -6356,6 +6374,11 @@ $messages['uk'] = array(
 	'deletequeue-vote-submit' => 'Відправити',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-case-reason' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'deletequeue-case-reason' => 'وجہ:',
 );
 
 /** Veps (Vepsan kel')

@@ -311,7 +311,7 @@ $messages['ca'] = array(
 	'spamregex-already-blocked' => '«$1» ja està blocat',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -671,6 +671,11 @@ Bii aber vorsichtig, Phrase sotte nit z churz oder zue allgmein syy.',
 	'spamregex-text' => '(Täxt)',
 	'spamregex-summary-log' => '(Zämmefassig)',
 	'right-spamregex' => 'Sperr nit gwinschti Phrase iber [[Special:SpamRegex]]',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'spamregex-summary-log' => '(Taƙaici)',
 );
 
 /** Hebrew (עברית)
@@ -1047,6 +1052,7 @@ $messages['lb'] = array(
 );
 
 /** Moksha (Мокшень)
+ * @author Jarmanj Turtash
  * @author Khazar II
  */
 $messages['mdf'] = array(

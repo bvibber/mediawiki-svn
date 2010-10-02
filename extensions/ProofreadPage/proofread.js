@@ -150,6 +150,11 @@ function pr_make_edit_area(container,text){
 		 self.proofreadpage_quality = 1;
 		 self.proofreadpage_username = "";
 	}
+	//detect the container div
+	if( pageHeader.match("^<div class=\"pagetext\">") && pageFooter.match("</div>$") ) {
+		pageHeader = pageHeader.substr(22,pageHeader.length);
+		pageFooter = pageFooter.substr(0,pageFooter.length-6);
+	}
 
 	//escape & character
 	pageBody = pageBody.split("&").join("&amp;")
@@ -870,6 +875,15 @@ function pr_init() {
 			proofreadPageIsEdit);
 	}
 	else pr_setup();
+
+	//add css classes to the container div
+	var c = document.getElementById("pagequality"); 
+	if(c) { 
+		c = c.nextSibling; 
+		if(c.className=="pagetext") {
+			c.className += " "+self.proofreadPageCss; 
+		}
+	}
 }
 
 
@@ -903,11 +917,19 @@ function pr_add_quality(form,value){
 
 function pr_add_quality_buttons(){
 
-	if( !proofreadPageAddButtons ) return;
 	var ig  = document.getElementById("wpWatchthis");
 	if( !ig ) ig = document.getElementById("wpSummary");
 	if( !ig ) return;
 	var f = document.createElement("span");
+	ig.parentNode.insertBefore(f,ig.nextSibling.nextSibling.nextSibling);
+
+	if( !proofreadPageAddButtons ) {
+		f.innerHTML = 
+		    ' <input type="hidden" name="wpProofreader" value="' + self.proofreadpage_username + '">'
+		    +'<input type="hidden" name="quality" value=' + self.proofreadpage_quality + ' >';
+		return;
+	}
+
 	f.innerHTML = 
 ' <input type="hidden" name="wpProofreader" value="'+self.proofreadpage_username+'">'
 +'<span class="quality0"> <input type="radio" name="quality" value=0 onclick="pr_add_quality(this.form,0)" tabindex=4> </span>'
@@ -916,8 +938,6 @@ function pr_add_quality_buttons(){
 +'<span class="quality3"> <input type="radio" name="quality" value=3 onclick="pr_add_quality(this.form,3)" tabindex=4> </span>'
 +'<span class="quality4"> <input type="radio" name="quality" value=4 onclick="pr_add_quality(this.form,4)" tabindex=4> </span>';
 	f.innerHTML = f.innerHTML + '&nbsp;' + escapeQuotesHTML(proofreadPageMessageStatus);
-
-	ig.parentNode.insertBefore(f,ig.nextSibling.nextSibling.nextSibling);
 
 	if( ! ( ( self.proofreadpage_quality == 4 ) || ( ( self.proofreadpage_quality == 3 ) && ( self.proofreadpage_username != proofreadPageUserName ) ) ) ) {
 		document.editform.quality[4].parentNode.style.cssText = 'display:none';

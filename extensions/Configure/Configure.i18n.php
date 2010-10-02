@@ -1615,6 +1615,14 @@ $messages['ch'] = array(
 	'configure-section-specialpages' => 'Manespesiat na påhina',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'configure-form-reason' => 'هۆکار:',
+	'configure-js-remove' => 'سڕینەوە',
+	'configure-section-search' => 'گەڕان',
+	'configure-throttle-action-move' => 'گواستنەوە',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Kuvaly
@@ -2532,6 +2540,7 @@ $messages['el'] = array(
 	'configure-condition-operator-not' => 'Όχι',
 	'configure-condition-name' => 'Προϋπόθεση',
 	'configure-condition-requirement' => 'Απαίτηση',
+	'configure-condition-name-2' => 'Ελάχιστη ηλικία',
 	'configure-condition-name-4' => 'Μέσα στις ομάδες',
 	'configure-autopromote-noconds' => 'Κανένα προαπαιτούμενο',
 	'configure-condition-description-3' => 'Η ηλεκτρονική διεύθυνση επιβεβαιώθηκε',
@@ -3807,6 +3816,14 @@ Bitte leg si aa fier configure.sql drin uus oder korrigier ihre Name.',
  */
 $messages['gv'] = array(
 	'configure-edit-core' => 'MediaWiki',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'configure-form-reason' => 'Dalili:',
+	'configure-js-remove' => 'Soke',
+	'configure-section-search' => 'Binciko',
+	'configure-throttle-action-move' => 'Gusarwa',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -5945,6 +5962,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-performance' => 'Leeschtung',
 	'configure-section-upload' => 'Eroplueden',
 	'configure-section-sharedupload' => 'Gemeinsamt Eroplueden',
+	'configure-section-mime' => 'MIME-Typen',
 	'configure-section-images' => 'Biller',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-parser' => 'Parser',
@@ -5957,10 +5975,12 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-extension' => 'Erweiderungen',
 	'configure-section-search' => 'Sich',
 	'configure-section-copyright' => 'Copyright',
+	'configure-section-htcp' => 'HTCP multicast',
 	'configure-section-misc' => 'Verschiddenes',
 	'configure-section-filter' => 'Filter',
 	'configure-section-mw-extensions' => 'MediaWiki-Erweiderungen',
 	'configure-section-external-tools' => 'Extern Toolen',
+	'configure-section-filesystem' => 'Interaktioun mam Fichierssystem a mam Shell vum -betriibssystem',
 	'configure-section-thumbnail' => 'Bild miniaturiséieren',
 	'configure-section-output' => 'Resultat',
 	'configure-select-wiki' => 'Wiki-Auswiel',
@@ -6560,7 +6580,7 @@ $messages['mr'] = array(
 	'configure-desc' => 'वेब वर आधारित इंटरफेस वापरून नोंदणी केलेल्या सदस्यांना विकि कॉन्फिगर करण्याची परवानगी द्या',
 	'configure-desc-group' => 'गट',
 	'configure-desc-key' => 'चावी',
-	'configure-desc-ns' => 'नामविश्वे',
+	'configure-desc-ns' => 'नामविश्व',
 	'configure-desc-val' => 'किंमत',
 	'configure-summary' => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी [http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
 	'configure-btn-save' => 'सेटिंग्स जतन करा',
@@ -7519,6 +7539,7 @@ $messages['pdc'] = array(
 	'configure-ext-use' => 'Yuuse',
 	'configure-form-reason' => 'Grund:',
 	'configure-js-remove' => 'Lösche',
+	'configure-old-changes' => 'Enneringe',
 	'configure-old-summary' => '$1 vun $2 $4 $3',
 	'configure-section-pages' => 'Bledder',
 	'configure-section-paths' => 'Paade',
@@ -10097,7 +10118,7 @@ $messages['ug-arab'] = array(
 	'configure-section-externalauth' => 'سىرتقى دەلىللەش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -10182,6 +10203,11 @@ $messages['uk'] = array(
 	'configure-throttle-action-edit' => 'Змінити',
 	'configure-condition-operator-xor' => 'Виключне АБО',
 	'configure-farmer-settings' => '[[Special:Configure|Конфігурувати цю вікі]].',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'configure-form-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

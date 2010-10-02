@@ -164,6 +164,11 @@ $messages['ca'] = array(
 	'showprocesslist-info' => 'Info',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'showprocesslist-user' => 'بەکارهێنەر',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'showprocesslist-user' => 'Utilizatore',
@@ -507,7 +512,7 @@ $messages['ig'] = array(
 	'showprocesslist-user' => "Ọ'bànifé",
 	'showprocesslist-host' => 'Onye ji ímé a rü',
 	'showprocesslist-db' => 'Njikota Ómárí',
-	'showprocesslist-time' => 'Ogẹ',
+	'showprocesslist-time' => 'Ógẹ',
 	'showprocesslist-state' => 'Otụolé',
 	'showprocesslist-info' => 'Ómárí',
 );

@@ -524,6 +524,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'contrib-hist-name' => 'নাম',
 	'contrib-hist-date' => 'সময় ও তারিখ',
+	'contrib-hist-amount' => 'পরিমাণ',
 	'contribstats-day' => 'দিন',
 	'contribstats-month' => 'মাস',
 	'contribstats-currency' => 'মুদ্রা',
@@ -535,6 +536,7 @@ $messages['bn'] = array(
 	'contribstats-percentage-ytd' => 'শতকরা (YTD)',
 	'contribstats-total-ytd' => 'মোট (YTD)',
 	'fundraiserstats-date' => 'তারিখ',
+	'fundraiserstats-contributions' => 'অবদান',
 	'fundraiserstats-total' => 'মোট (USD)',
 	'fundraiserstats-avg' => 'গড় (USD)',
 	'fundraiserstats-max' => 'সর্বোচ্চ (USD)',
@@ -1005,7 +1007,7 @@ $messages['diq'] = array(
 	'contribstats-clicks' => 'Klikan',
 	'contribstats-donations' => 'Yardimê pere',
 	'contribstats-conversion' => 'Reytinê vurnayîşî (%)',
-	'contribstats-template' => 'Template',
+	'contribstats-template' => 'Şablon',
 	'contribstats-nodata' => 'Data çini yo',
 	'contribstats-landingpage' => 'Pelê erdi',
 	'contribstats-donatepage' => 'Pelê bexşi',
@@ -1940,6 +1942,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author Rotemliss
  * @author YaronSh
@@ -1979,7 +1982,7 @@ $messages['he'] = array(
 	'contribstats-value-from' => 'בין $1 ל־$2',
 	'contribstats-value-over' => 'יותר מ־$1',
 	'contributiontrackingstatistics' => 'סטטיסטיקות מעקב אחרי תרומות',
-	'contribstats-day-totals' => 'סך הכול להיום',
+	'contribstats-day-totals' => 'סך הכול ליום',
 	'contribstats-week' => 'שבוע',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|סיכום לשבוע זה|סיכומים שבועיים עבור $1 השבועות האחרונים כולל}}',
 	'contribstats-payment-type' => 'אופן התשלום',
@@ -4158,15 +4161,26 @@ $messages['sl'] = array(
 	'contribstats-value-over' => 'Nad $1',
 	'contribstats-day-totals' => 'Skupaj za dan',
 	'contribstats-week' => 'Teden',
+	'contribstats-payment-type' => 'Način plačila',
 	'contribstats-banner' => 'Pasica',
+	'contribstats-payment-type-hits' => 'Zadetkov načinov plačila',
 	'contribstats-clicks' => 'Kliki',
 	'contribstats-donations' => 'Prispevki',
+	'contribstats-conversion' => 'Menjalno razmerje (%)',
 	'contribstats-template' => 'Predloga',
+	'contribstats-nodata' => 'Ni podatkov',
 	'contribstats-average' => 'Povprečje',
+	'contribstats-paypal-donations' => 'Prispevki PayPal',
 	'contribstats-credit-card' => 'Kreditna kartica',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dan $1 $2',
+	'fundraiserstats-contributions' => 'Prispevki',
 	'fundraiserstats-total' => 'Skupaj (USD)',
 	'fundraiserstats-avg' => 'Povprečje (USD)',
+	'fundraiserstats-max' => 'Največje (USD)',
+	'fundraiserstats-tab-totals' => 'Skupaj (USD)',
+	'fundraiserstats-tab-averages' => 'Povprečja (USD)',
+	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

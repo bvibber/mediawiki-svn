@@ -10,6 +10,10 @@
  * @author Jeroen De Dauw
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * Filesystem class for file and folder manipulation over FTP.
  * 

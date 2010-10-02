@@ -166,6 +166,21 @@ $messages['bn'] = array(
 	'wikieditor-publish-dialog-goback' => 'ফিরে যাও',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-publish-preference' => 'কাকেয়ে-কাকেয়ে ফঙকরানিহান থা কর',
+	'wikieditor-publish-button-publish' => 'ফঙকর',
+	'wikieditor-publish-button-cancel' => 'বাতিল করেদে',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} হাত ফঙকর',
+	'wikieditor-publish-dialog-summary' => 'পতানির বারে (তি কিহান পতাসত্তা অহানর বারে বাট্টি করে মাতেদে):',
+	'wikieditor-publish-dialog-minor' => 'হুরু-মুরু পতানিহান',
+	'wikieditor-publish-dialog-watch' => 'পাতাএহান খিয়ালে থ',
+	'wikieditor-publish-dialog-publish' => 'ফঙকর',
+	'wikieditor-publish-dialog-goback' => 'আলথকে যাগা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -221,7 +236,7 @@ $messages['ce'] = array(
 	'wikieditor-publish-button-cancel' => 'Цаоьшу',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -649,8 +664,11 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'wikieditor-publish-button-publish' => 'Bìpụta',
 	'wikieditor-publish-button-cancel' => 'Kàchá',
-	'wikieditor-publish-dialog-publish' => 'Wéfùtà',
+	'wikieditor-publish-dialog-minor' => 'Orü ntà',
+	'wikieditor-publish-dialog-publish' => 'Bìpụta',
+	'wikieditor-publish-dialog-goback' => 'Gá na àzú',
 );
 
 /** Ido (Ido)
@@ -661,6 +679,13 @@ $messages['io'] = array(
 	'wikieditor-publish-dialog-minor' => 'Mikra chanjo',
 	'wikieditor-publish-dialog-watch' => 'Surveyar ca pagino',
 	'wikieditor-publish-dialog-goback' => 'Retroirar',
+);
+
+/** Icelandic (Íslenska)
+ * @author Krun
+ */
+$messages['is'] = array(
+	'wikieditor-publish-button-cancel' => 'Hætta við',
 );
 
 /** Italian (Italiano)
@@ -966,6 +991,8 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'wikieditor-publish-dialog-minor' => 'Nur Gleenigkeete sinn gennert',
+	'wikieditor-publish-dialog-watch' => 'Des Blatt watsche',
+	'wikieditor-publish-dialog-goback' => 'Zerrick',
 );
 
 /** Polish (Polski)
@@ -1074,7 +1101,7 @@ $messages['qu'] = array(
 $messages['ro'] = array(
 	'wikieditor-publish-preference' => 'Activează publicarea pas cu pas',
 	'wikieditor-publish-button-publish' => 'Salvează pagina',
-	'wikieditor-publish-button-cancel' => 'Renunţă',
+	'wikieditor-publish-button-cancel' => 'Renunță',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
@@ -1205,6 +1232,7 @@ $messages['sr-ec'] = array(
 	'wikieditor-publish-button-cancel' => 'Поништи',
 	'wikieditor-publish-dialog-summary' => 'Опис измене (укратко опишите шта сте изменили):',
 	'wikieditor-publish-dialog-minor' => 'Мала измена',
+	'wikieditor-publish-dialog-watch' => 'Надгледај ову страницу',
 	'wikieditor-publish-dialog-publish' => 'Објави',
 	'wikieditor-publish-dialog-goback' => 'Врати се',
 );
@@ -1342,17 +1370,18 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author NickK
+ * @author Olvin
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'wikieditor-publish-preference' => 'Увімкнути покрокову публікацію',
-	'wikieditor-publish-button-publish' => 'Зберегти',
+	'wikieditor-publish-preference' => 'Увімкнути публікацію крок за кроком',
+	'wikieditor-publish-button-publish' => 'Опублікувати',
 	'wikieditor-publish-button-cancel' => 'Скасувати',
 	'wikieditor-publish-dialog-title' => 'Опублікувати на {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Опис редагування (короткий опис змін, зроблених вами):',
 	'wikieditor-publish-dialog-minor' => 'Незначне редагування',
 	'wikieditor-publish-dialog-watch' => 'Спостерігати за цією сторінкою',
-	'wikieditor-publish-dialog-publish' => 'Зберегти',
+	'wikieditor-publish-dialog-publish' => 'Опублікувати',
 	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 

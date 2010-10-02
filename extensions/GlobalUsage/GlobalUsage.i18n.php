@@ -20,7 +20,7 @@ $messages['en'] = array(
 	'globalusage-no-results' => '[[:$1]] is not used on other wikis.',
 	'globalusage-on-wiki' => 'Usage on $2',
 	'globalusage-of-file' => 'The following other wikis use this file:',
-	'globalusage-more' => 'View [[{{#Special:GlobalUsage}}/$1|more global usage]] of this file.',
+	'globalusage-more' => 'View [[{{#Special:GlobalUsage}}/$1|global usage]] of this file.',
 	'globalusage-filterlocal' => 'Do not show local usage',
 );
 
@@ -250,6 +250,11 @@ $messages['ca'] = array(
  */
 $messages['ch'] = array(
 	'globalusage-ok' => 'Aligao',
+);
+
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'globalusage-ok' => 'گەڕان',
 );
 
 /** Czech (Česky)
@@ -537,6 +542,11 @@ $messages['gu'] = array(
  */
 $messages['gv'] = array(
 	'globalusage-ok' => 'Ronsaghey',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'globalusage-ok' => 'Nema',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -1414,6 +1424,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author NickK
+ * @author Тест
  */
 $messages['uk'] = array(
 	'globalusage' => 'Глобальне використання файлу',
@@ -1422,7 +1433,7 @@ $messages['uk'] = array(
 	'globalusage-ok' => 'Пошук',
 	'globalusage-text' => 'Пошук глобального використання файлу',
 	'globalusage-no-results' => '[[:$1]] не використовується в інших вікі.',
-	'globalusage-on-wiki' => 'Використання [[:File:$1|$1]] в $2',
+	'globalusage-on-wiki' => 'Використання в $2',
 	'globalusage-of-file' => 'Цей файл використовують такі інші вікі:',
 	'globalusage-more' => 'Переглянути [[{{#Special:GlobalUsage}}/$1|повний список глобального використання]] цього файлу.',
 	'globalusage-filterlocal' => 'Не показувати локальне використання',

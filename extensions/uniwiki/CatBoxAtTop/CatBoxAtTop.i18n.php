@@ -113,7 +113,7 @@ $messages['ca'] = array(
 	'catboxattop-categories' => 'Categories',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

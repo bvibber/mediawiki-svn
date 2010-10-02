@@ -338,6 +338,13 @@ $messages['sk'] = array(
 	'randomimage-desc' => 'Poskytuje náhodný výber multimediálnych súborov pomocou značky <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'randomimage-desc' => 'Omogoča izbirnika naključne predstavnosti z uporabo <code>&lt;randomimage /&gt;</code>',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

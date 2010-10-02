@@ -1,5 +1,25 @@
 <?php
 
+##############################################################################
+# XMLRC extension for MediaWiki
+# 
+#  Copyright (c) 2010, Wikimedia Deutschland; Author: Daniel Kinzler
+#  All rights reserved.
+# 
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+##############################################################################
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
 	echo "XMLRC extension";
@@ -17,39 +37,26 @@ $wgExtensionCredits['other'][] = array(
 # Internationalisation file
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['XMLRC'] = $dir . 'XMLRC.i18n.php';
-#$wgExtensionAliasesFiles['XMLRC'] = $dir . 'XMLRC.alias.php';
 
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_File',
-  'file' => '/tmp/rc.xml',
-);
+$wgXMLRCTransport = null;
 
-/*
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_XMPP',
-  'channel' => 'recentchanges',
-  'nickname' => $wgSitename,
-  'host' => 'localhost',
-  'port' => 5347,
-  'user' => 'mediawiki',
-  'server' => 'localhost',
-  'resource' => 'recentchanges',
-  'password' => 'yourpassword',
-  'include_path' => './xmpphp',
-);
-*/
+#$wgXMLRCTransport = array(
+#  'class' => 'XMLRC_File',
+#  'file' => '/tmp/rc.xml',
+#);
 
-/*
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_UDP',
-  'address' => 'localhost',
-  'port' => 12345,
-);
-*/
+#$wgXMLRCTransport = array(
+#  'class' => 'XMLRC_UDP',
+#  'port' => 4455,
+#  'address' => '127.0.0.1',
+#);
+
+$wgXMLRCProperties = 'user|comment|flags|timestamp|title|ids|sizes|redirect|loginfo|tags'; # sensible default
+# $wgXMLRCProperties = 'title|timestamp|ids'; # default as per the API
+# $wgXMLRCProperties = 'user|comment|parsedcomment|flags|timestamp|title|ids|sizes|redirect|loginfo|tags'; # everything except "patrolled", which is verboten
 
 $wgAutoloadClasses[ 'XMLRC' ] = "$dir/XMLRC.class.php";
 $wgAutoloadClasses[ 'XMLRC_Transport' ] = "$dir/XMLRC.class.php";
-$wgAutoloadClasses[ 'XMLRC_XMPP' ] = "$dir/XMLRC_XMPP.class.php";
 $wgAutoloadClasses[ 'XMLRC_UDP' ] = "$dir/XMLRC_UDP.class.php";
 $wgAutoloadClasses[ 'XMLRC_File' ] = "$dir/XMLRC_File.class.php";
 

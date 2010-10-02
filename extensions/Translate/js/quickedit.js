@@ -62,6 +62,11 @@ function trlOpenJsEdit( page, group ) {
 		});
 
 		form.find( ".mw-translate-edit-area" ).focus();
+		addAccessKeys( form );
+		var b = form.find(".mw-translate-save"); b.val( b.val() + " (a)" );
+		var b = form.find(".mw-translate-next"); b.val( b.val() + " (s)" );
+		var b = form.find(".mw-translate-skip"); b.val( b.val() + " (d)" );
+		var b = form.find(".mw-translate-history"); b.val( b.val() + " (h)" );
 
 		form.ajaxForm({
 			dataType: "json",
@@ -89,10 +94,26 @@ function trlOpenJsEdit( page, group ) {
 		},
 		resizeStop: function(event, ui) {
 			dialogwidth = jQuery("#"+ id).width();
+		},
+		focus: function(event, ui) {
+			addAccessKeys( dialog );
+		},
+		close: function(event, ui) {
+			addAccessKeys( jQuery([]) );
 		}
 	});
 
 	return false;
+}
+
+function addAccessKeys(dialog) {
+	jQuery("[accesskey=a], [accesskey=s], [accesskey=d], [accesskey=h]").each(
+		function(i) { jQuery(this).removeAttr( "accesskey" ); }
+	);
+	dialog.find(".mw-translate-save").attr( "accesskey", "a" ).attr( "title", "[" + tooltipAccessKeyPrefix + "a]" );
+	dialog.find(".mw-translate-next").attr( "accesskey", "s" ).attr( "title", "[" + tooltipAccessKeyPrefix + "s]" );
+	dialog.find(".mw-translate-skip").attr( "accesskey", "d" ).attr( "title", "[" + tooltipAccessKeyPrefix + "d]" );
+	dialog.find(".mw-translate-history").attr( "accesskey", "h" ).attr( "title", "[" + tooltipAccessKeyPrefix + "h]" );
 }
 
 function trlVpWidth() {

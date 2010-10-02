@@ -241,6 +241,13 @@ $messages['ru'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Один или несколько почтовых кодов не могут быть геокодированы, они были исключены из карты.',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'ukgeocoding_couldNotGeocode' => 'ไม่สามารถหาที่ตั้งของรหัสไปรษณีย์บางรายการได้ และจะไม่ปรากฎบนแผนที่',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

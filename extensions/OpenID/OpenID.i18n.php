@@ -885,6 +885,12 @@ podeu triar-ne un de les opcions a continuació.',
 	'openid-provider-label-other-username' => "Introduïu el vostre $1 nom d'usuari",
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'openiddelete-button' => 'پشتدار بکەرەوە',
+	'openid-urls-delete' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský
@@ -922,12 +928,14 @@ Prosím, poraďte se se [[Special:ListUsers/sysop|správcem]].',
 	'openidemail' => 'E-mailová adresa:',
 	'openidlanguage' => 'Jazyk',
 	'openidtimezone' => 'Časové pásmo',
+	'openidchooselegend' => 'Volba uživatelského jména',
 	'openidchooseinstructions' => 'Kyždý uživatel musí mít přezdívku; můžete si vybrat z níže uvedených možností.',
 	'openidchoosefull' => 'Vaše celé jméno ($1)',
 	'openidchooseurl' => 'Jméno na základě vašeho OpenID ($1)',
 	'openidchooseauto' => 'Automaticky vytvořené jméno ($1)',
 	'openidchoosemanual' => 'Jméno, které si vyberete:',
 	'openidchooseexisting' => 'Existující účet na této wiki',
+	'openidchooseusername' => 'Uživatelské jméno:',
 	'openidchoosepassword' => 'heslo:',
 	'openidconvertinstructions' => 'Tento formulář vám umožňuje změnit váš učet, aby používal OpenID URL, nebo přidat více URL OpenID.',
 	'openidconvertoraddmoreids' => 'Převést na OpenID nebo přidat jinou OpenID URL',
@@ -1371,6 +1379,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Lucas
  * @author Michawiki
  * @author Yekrats
@@ -1439,7 +1448,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 	'openiddelete-sucess' => 'La OpenID estis sukcese forigita de via konto.',
 	'openiddelete-error' => 'Eraro okazis dum forigado de la OpenID de via konto.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-agordoj',
-	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzula paĝo, se vi ensalutas kun OpenID.',
+	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzantopaĝo, se vi ensalutas kun OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam, kiam mi ensalutos:',
 	'openid-urls-desc' => 'Indentigoj OpenID asociigita kun via konto:',
 	'openid-urls-action' => 'Ago',
@@ -2032,6 +2041,11 @@ $messages['gv'] = array(
 	'openidemail' => 'Enmys post-L',
 	'openidlanguage' => 'Çhengey',
 	'openidchoosepassword' => 'fockle yn arrey:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'openid-urls-delete' => 'Soke',
 );
 
 /** Hawaiian (Hawai`i)
@@ -2664,6 +2678,7 @@ Anda tidak akan dapat masuk log tanpa OpenID.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'openidoptional' => 'I cho, ka I chogị',
 	'openidchoosepassword' => 'Okwúngáfè:',
 	'openid-urls-delete' => 'Gbakashia',
 );
@@ -3165,6 +3180,12 @@ Ohne <i lang="en">OpenID</i> künnts De nit mieh enlogge.',
 	'openid-provider-label-other-username' => 'Donn Dinge Metmaachername vun $1 aanjevve',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin)) */
+$messages['ku-latn'] = array(
+	'openidlanguage' => 'Ziman',
+	'openidtimezone' => 'Navçeya demê',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
@@ -3459,6 +3480,7 @@ $messages['mr'] = array(
 	'openidfullname' => 'पूर्णनाव',
 	'openidemail' => 'इमेल पत्ता',
 	'openidlanguage' => 'भाषा',
+	'openidtimezone' => 'वेळक्षेत्र',
 	'openidchooseinstructions' => 'सर्व सदस्यांना टोपणनाव असणे आवश्यक आहे;
 तुम्ही खाली दिलेल्या नावांमधून एक निवडू शकता.',
 	'openidchoosefull' => 'तुमचे पूर्ण नाव ($1)',
@@ -3466,6 +3488,7 @@ $messages['mr'] = array(
 	'openidchooseauto' => 'एक आपोआप तयार झालेले नाव ($1)',
 	'openidchoosemanual' => 'तुमच्या आवडीचे नाव:',
 	'openidchooseexisting' => 'या विकिवरील अस्तित्वात असलेले सदस्य खाते:',
+	'openidchooseusername' => 'सदस्यनाम:',
 	'openidchoosepassword' => 'परवलीचा शब्द:',
 	'openidconvertinstructions' => 'हा अर्ज तुम्हाला ओपनID URL वापरण्यासाठी तुमचे सदस्यनाव बदलण्याची परवानगी देतो.',
 	'openidconvertsuccess' => 'ओपनID मध्ये बदल पूर्ण झालेले आहेत',
@@ -3493,7 +3516,9 @@ $messages['mr'] = array(
 ; [http://openid.yahoo.com/ याहू!] : जर तुमच्याकडे याहू! चे खाते असेल, तर तुम्ही वरील पृष्ठपेटीमध्ये याहू! ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. याहू! ओपनID URL ची रुपरेषा ''<nowiki>https://me.yahoo.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे.
 ; [http://dev.aol.com/aol-and-63-million-openids एओएल] : जर तुमच्याकडे [http://www.aol.com/ एओएल]चे खाते असेल, जसे की [http://www.aim.com/ एम] खाते, तुम्ही {{SITENAME}} वर वरील पृष्ठपेटीमध्ये एओएल ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. एओएल ओपनID URL ची रुपरेषा ''<nowiki>http://openid.aol.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे. तुमच्या सदस्यनावात अंतर (space) चालणार नाही.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html ब्लॉगर], [http://faq.wordpress.com/2007/03/06/what-is-openid/ वर्डप्रेस.कॉम], [http://www.livejournal.com/openid/about.bml लाईव्ह जर्नल], [http://bradfitz.vox.com/library/post/openid-for-vox.html वॉक्स] : जर यापैकी कुठेही तुमचा ब्लॉग असेल, तर वरील पृष्ठपेटीमध्ये तुमच्या ब्लॉगची URL भरा. उदाहरणार्थ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', किंवा ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+	'openiddelete-button' => 'खात्री करा',
 	'openid-pref-hide' => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा ओपनID लपवा.',
+	'openid-urls-delete' => 'वगळा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3569,6 +3594,13 @@ $messages['nah'] = array(
 	'openidemail' => 'E-mailcān',
 	'openidlanguage' => 'Tlahtōlli',
 	'openidchoosepassword' => 'tlahtōlichtacāyōtl:',
+);
+
+/** Nepali (नेपाली) */
+$messages['ne'] = array(
+	'openidemail' => 'इमेल ठेगाना',
+	'openidlanguage' => 'भाषा',
+	'openidtimezone' => 'समय क्षेत्र',
 );
 
 /** Dutch (Nederlands)
@@ -4175,6 +4207,8 @@ $messages['ps'] = array(
 	'openidchoosepassword' => 'پټنوم:',
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
 	'openidbadusername' => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
+	'openiddelete-button' => 'تاييد',
+	'openid-urls-action' => 'چاره',
 	'openid-urls-delete' => 'ړنګول',
 	'openidsigninorcreateaccount' => 'ننوتل او يا نوی کارن-حساب جوړول',
 	'openid-provider-label-google' => 'د Google د کارن-حساب په مرسته ننوتل',
@@ -4767,6 +4801,15 @@ $messages['sl'] = array(
 	'openidlogin' => 'Prijavite se z OpenID',
 	'openidserver' => 'Strežnik OpenID',
 	'openidxrds' => 'Datoteka Yadis',
+	'openidconvert' => 'Pretvornik OpenID',
+	'openiderror' => 'Napaka med preverjanjem',
+	'openidconfigerror' => 'Napaka konfiguracije OpenID',
+	'openidcancel' => 'Preverjanje je bilo preklicano',
+	'openidcanceltext' => 'Preverjanje URL OpenID je bilo preklicano.',
+	'openidfailure' => 'Preverjanje ni uspelo',
+	'openidfailuretext' => 'Preverjanje URL OpenID ni uspelo. Sporočilo o napaki: »$1«',
+	'openidsuccess' => 'Preverjanje je uspelo',
+	'openidsuccesstext' => 'Preverjanje URL OpenID je uspelo.',
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidoptional' => 'Izbirno',
 	'openidrequired' => 'Zahtevano',
@@ -4774,13 +4817,25 @@ $messages['sl'] = array(
 	'openidfullname' => 'Polno ime',
 	'openidemail' => 'E-poštni naslov',
 	'openidlanguage' => 'Jezik',
+	'openidtimezone' => 'Časovni pas',
+	'openidchooselegend' => 'Izbira uporabniškega imena',
 	'openidchoosenick' => 'Vaš vzdevek ($1)',
 	'openidchoosefull' => 'Vaše polno ime ($1)',
+	'openidchooseauto' => 'Samodejno ustvarjeno ime ($1)',
+	'openidchoosemanual' => 'Ime po vaši izbiri:',
 	'openidchooseusername' => 'Uporabniško ime:',
 	'openidchoosepassword' => 'Geslo:',
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-button' => 'Potrdi',
+	'openid-urls-action' => 'Dejanje',
+	'openid-urls-delete' => 'Izbriši',
+	'openid-add-url' => 'Dodaj nov OpenID',
+	'openidsigninorcreateaccount' => 'Prijavite se ali ustvarite nov račun',
+	'openid-provider-label-openid' => 'Vnesite svoj URL OpenID',
+	'openid-provider-label-google' => 'Prijavite se s svojim računom Google',
+	'openid-provider-label-yahoo' => 'Prijavite se s svojim računom Yahoo',
+	'openid-provider-label-other-username' => 'Vnesite svoje uporabniško ime $1',
 );
 
 /** Lower Silesian (Schläsch)
@@ -5090,6 +5145,11 @@ Du skulle inte kunna logga in utan ett OpenID.',
 	'openid-provider-label-yahoo' => 'Logga in genom att använda ditt Yahoo-konto',
 	'openid-provider-label-aol' => 'Skriv in ditt AOL-skärmnamn',
 	'openid-provider-label-other-username' => 'Skriv in ditt $1-användarnamn',
+);
+
+/** Tamil (தமிழ்) */
+$messages['ta'] = array(
+	'openidrequired' => 'தேவைபடுகிறது',
 );
 
 /** Telugu (తెలుగు)
@@ -5416,7 +5476,7 @@ $messages['ug-arab'] = array(
 	'openidlanguage' => 'تىل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

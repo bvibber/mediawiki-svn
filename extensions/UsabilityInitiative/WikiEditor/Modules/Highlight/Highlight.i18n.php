@@ -66,6 +66,13 @@ $messages['bn'] = array(
 	'wikieditor-highlight-preference' => 'সম্পাদনার সময় সিন্ট্যাক্স দৃষ্টিগোচরকরণ সক্রিয় করো',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-highlight-preference' => 'পতানির সময়ত সিন্ট্যাক্স আহির মুঙে থদে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -182,9 +189,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'wikieditor-highlight-preference' => 'Activer la coloration syntaxique lors dans la fenêtre de modification',
+	'wikieditor-highlight-preference' => 'Activer la coloration syntaxique de la fenêtre de modification',
 );
 
 /** Franco-Provençal (Arpetan)

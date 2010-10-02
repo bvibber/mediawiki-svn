@@ -206,6 +206,11 @@ $messages['ca'] = array(
 	'security-type-namespace' => 'espai de noms',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'security-type-category' => 'پۆل',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Kghbln
@@ -428,6 +433,12 @@ $messages['gsw'] = array(
 	'security-type-category' => 'Kategorii',
 	'security-type-namespace' => 'Namensruum',
 	'security-restricttogroup' => 'Zuegriff uf Inhalt bschränkt uf Mitgliider vu „$1“',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'security-type-category' => 'rukuni',
+	'security-type-namespace' => 'sararin suna',
 );
 
 /** Hebrew (עברית)

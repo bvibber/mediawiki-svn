@@ -332,6 +332,11 @@ $messages['ch'] = array(
 	'importusers-uploadfile' => "Na'kåtga hulu' i atkibu",
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'importusers-log-summary' => 'پوختە',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -700,6 +705,12 @@ $messages['gv'] = array(
 	'importusers-password' => "dt'ockle arrey",
 	'importusers-email' => 'post-L',
 	'importusers-realname' => 'feer-ennym',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'importusers-log-summary' => 'Taƙaici',
+	'importusers-log-summary-all' => 'Duka',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -1969,7 +1980,7 @@ $messages['ug-arab'] = array(
 	'importusers-email' => 'ئېلخەت',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -265,6 +265,7 @@ $messages['ar'] = array(
 	'tpt-sections-deleted' => 'وحدات الترجمة المحذوفة',
 	'tpt-sections-template' => 'قالب صفحة ترجمة',
 	'tpt-badtitle' => 'اسم الصّفحة المعطى ($1) ليس عنوانا صحيحا',
+	'tpt-nosuchpage' => 'الصفحة $1 غير موجودة',
 	'tpt-oldrevision' => '$2 ليست آخر نسخة للصّفحة [[$1]].
 فقط آخر النسخ يمكن أن تؤشّر للترجمة.',
 	'tpt-notsuitable' => 'الصفحة $1 غير مناسبة للترجمة.
@@ -277,6 +278,7 @@ $messages['ar'] = array(
 	'tpt-mark-summary' => 'علَّم هذه النسخة للترجمة',
 	'tpt-edit-failed' => 'تعذّر تحديث الصفحة: $1',
 	'tpt-already-marked' => 'آخر نسخة من هذه الصفحة مُعلّمة بالفعل للترجمة.',
+	'tpt-unmarked' => 'الصفحة $1 لم تعد مُعلّمة للترجمة',
 	'tpt-list-nopages' => 'لا صفحات مُعلّمة للترجمة أو جاهزة للتعليم للترجمة.',
 	'tpt-old-pages' => 'إحدى نسخ {{PLURAL:$1||هذه الصفحة|هاتان الصفحتان|هذه الصفحات}} عُلّمت للترجمة.',
 	'tpt-new-pages' => '{{PLURAL:$1|هذه الصفحة تحتوي|هذه الصفحات تحتوي}} على نص بوسوم ترجمة، لكن لا نسخة من {{PLURAL:$1|هذه الصفحة|هذه الصفحات}} معلمة حاليا للترجمة.',
@@ -715,7 +717,7 @@ $messages['ce'] = array(
 	'tpt-languages-legend' => 'Кхин меттанаш:',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  * @author رزگار
  */
@@ -733,6 +735,7 @@ $messages['ckb'] = array(
 	'translate-tag-translate-link-desc' => 'وەرگێڕانی ئەم پەڕە',
 	'translate-tag-markthis' => 'نیشان‌کردنی ئەم لاپەڕەیە بۆ وەرگێڕان',
 	'tpt-languages-legend' => 'زمانەکانی دیکە:',
+	'pt-movepage-reason' => 'هۆکار:',
 );
 
 /** Czech (Česky)
@@ -963,9 +966,11 @@ Bitte prüfe das Übersetzungs-Logbuch auf Fehlermeldungen, bzw. die Vollzugsnac
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
+	'tpt-action-nofuzzy' => 'Setzen Sie die Übersetzungen nicht außer Kraft',
 	'tpt-notsuitable' => 'Die Seite $1 ist nicht zum Übersetzen geeignet.
 Stellen Sie sicher, dass ein <nowiki><translate></nowiki>-Tag und gültige Syntax verwendet wird.',
 	'tpt-showpage-intro' => 'Untenstehend sind neue, vorhandene und gelöschte Abschnitte aufgelistet.
@@ -1398,7 +1403,7 @@ Käännösosion teksti: <pre>$1</pre>',
 	'pt-log-mark' => '{{GENDER:$2|merkitsi}} version $3 sivusta [[:$1]] käännettäväksi',
 	'pt-log-unmark' => '{{GENDER:$2|poisti}} sivun "[[:$1]]" käännösjärjestelmästä',
 	'pt-log-moveok' => '{{GENDER:$2|sai valmiiksi}} käännettävän sivun $1 siirtämisen uudelle nimelle',
-	'pt-log-movenok' => 'Käännettävän sivun siirtämisessä tapahtui virhe siirrettäessä sivua [[:$1]] nimelle [[:$3]]',
+	'pt-log-movenok' => '{{GENDER:$2}}Käännettävän sivun siirtämisessä tapahtui virhe siirrettäessä sivua [[:$1]] nimelle [[:$3]]',
 	'pt-movepage-title' => 'Käännettävän sivun $1 siirtäminen',
 	'pt-movepage-blockers' => 'Käännettävää sivua ei voi siirtää uudelle nimelle {{PLURAL:$1|seuraavasta syystä|seuraavista syistä}}:',
 	'pt-movepage-block-base-exists' => 'Kohdesivu [[:$1]] on olemassa.',
@@ -1875,6 +1880,11 @@ $messages['gu'] = array(
 	'tpt-languages-legend' => 'અન્ય ભાષાઓ:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'pt-movepage-reason' => 'Dalili:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -2342,7 +2352,6 @@ ma {{PLURAL:$1|l'ultima versione non può essere marcata|le ultime versioni non 
 	'tpt-target-page' => 'Questa pagina non può essere aggiornata manualmente. Questa pagina è una traduzione della pagina [[$1]] e la traduzione può essere aggiornata tramite [$2 lo strumento di traduzione].',
 	'tpt-unknown-page' => 'Questo namespace è riservato alle traduzioni del contenuto delle pagine.
 La pagina che stai cercando di modificare non sembra corrispondere ad alcuna pagina segnata per la traduzione.',
-	'tpt-move-impossible' => 'Non è ancora possibile spostare le pagine marcate per la traduzione.',
 );
 
 /** Japanese (日本語)
@@ -2464,7 +2473,7 @@ $messages['ka'] = array(
 	'tpt-diff-new' => 'ახალი ტექსტი',
 );
 
-/** Kabardian (Cyrillic) ()
+/** Kabardian (Cyrillic) (къэбэрдеибзэ/qabardjajəbza (Cyrillic))
  * @author Тамэ Балъкъэрхэ
  */
 $messages['kbd-cyrl'] = array(
@@ -2566,7 +2575,7 @@ $messages['ksh'] = array(
 	'tpt-languages-legend' => 'Ander Shprooche:',
 	'tpt-target-page' => 'Hee di Sigg kam_mer nit vun Hand ändere. Dat hee es en Översäzungß_Sigg vun dä Sigg [[$1]]. De Övversäzung kam_mer övver däm Wiki sing [$2 Övversäzungß_Wärkzüsch] op der neußte Shtand bränge.',
 	'tpt-unknown-page' => 'Dat Appachtemang hee es för Sigge vum Enhallt vum Wiki ze Övversäze jedaach. Di Sigg, di de jraad ze ändere versöhks, schingk ävver nit met ööhnds en Sigg ze donn ze han, di för zem Övversäze makeet es.',
-	'tpt-install' => 'Lohß op Dingem Wiki singem ßööver dat Skrip <code>php maintenance/update.php</code> loufe, udder schmiiß dat Enreeschdungsprojramm övver et Web aan, öm de Müjjeleschkeit för Sigge ze övversäze en däm Wiki aan et Loufe ze bränge.',
+	'tpt-install' => 'Lohß op Dingem Wiki singem ẞööver dat Skrip <code>php maintenance/update.php</code> loufe, udder schmiiß dat Enreeschdungsprojramm övver et Web aan, öm de Müjjeleschkeit för Sigge ze övversäze en däm Wiki aan et Loufe ze bränge.',
 	'tpt-render-summary' => 'Ändere, öm op de neue Version fun de Ojinaal_Sigg ze kumme',
 	'tpt-download-page' => 'Sigge met Övversäzunge expotteere',
 );
@@ -2651,6 +2660,10 @@ Text vum Abschnitt: <pre>$1</pre>',
 	'pt-movepage-block-base-invalid' => "D'Basiszilsäit huet kee valabelen Titel.",
 	'pt-movepage-block-tp-exists' => "D'Iwwersetzungszilsäit [[:$2]] gëtt et schonn.",
 	'pt-movepage-block-tp-invalid' => 'Den Numm vun der iwwersater Zilsäit fir [[:$1]] wier net valabel (ze laang?).',
+	'pt-movepage-block-section-exists' => 'Den Zilabschnitt [[:$2]] gëtt et schonn.',
+	'pt-movepage-block-section-invalid' => 'Den Numm vum Abschnitt vun der Zilsäit fir [[:$1]] wier net valabel (ze laang?).',
+	'pt-movepage-block-subpage-exists' => "D'Zil-Ënnersäit [[:$2]] gëtt et schonn.",
+	'pt-movepage-block-subpage-invalid' => 'Den Titel vun der Zil-Ënnersäit fir [[:$1]] wier net valabel (ze laang?).',
 	'pt-movepage-list-pages' => 'Lëscht vun de Säite fir ze réckelen',
 	'pt-movepage-list-translation' => 'Iwwersetzungssäiten',
 	'pt-movepage-list-section' => 'Abschnitter vu Säiten',
@@ -3223,7 +3236,6 @@ Przed oznaczeniem tej wersji do tłumaczenia, aby uniknąć niepotrzebnej pracy 
 Jest ona tłumaczeniem strony [[$1]], a tłumaczenie może zostać zmienione za pomocą [$2 narzędzia tłumacza].',
 	'tpt-unknown-page' => 'Ta przestrzeń nazw jest zarezerwowana dla tłumaczeń stron z zawartością.
 Strona, którą próbujesz edytować, prawdopodobnie nie odpowiada żadnej stronie oznaczonej do tłumaczenia.',
-	'tpt-move-impossible' => 'Przenoszenie stron oznaczonych jako przeznaczone do tłumaczenia nie jest jeszcze możliwe.',
 	'tpt-install' => 'Uruchom php maintenance/update.php lub przeprowadź instalację webową, aby włączyć opcję tłumaczenia stron.',
 	'tpt-render-summary' => 'Aktualizowanie w celu dopasowania nowej wersji strony źródłowej',
 	'tpt-download-page' => 'Wyeksportuj stronę z tłumaczeniami',
@@ -4303,10 +4315,12 @@ Bu sürümü çeviri için işaretlemeden önce, çevirmenlere gereksiz iş çı
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
 	'pagetranslation' => 'Битләр тәрҗемәсе',
+	'tpt-diff-new' => 'Яңа текст',
 	'tpt-translate-this' => 'бу битне тәрҗемә итү',
 	'translate-tag-translate-link-desc' => 'Бу битне тәрҗемә итү',
 );
@@ -4338,6 +4352,7 @@ $messages['ug-arab'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Riwnodennyk
  * @author Тест
  */
 $messages['uk'] = array(
@@ -4371,6 +4386,15 @@ $messages['uk'] = array(
 	'tpt-download-page' => 'Експортувати сторінку з перекладами',
 	'pt-log-name' => 'Журнал перекладу сторінок',
 	'pt-log-mark' => '{{GENDER:$2|позначив|позначила}} для перекладу версію $3 сторінки "[[:$1]]"',
+	'pt-movepage-blockers' => 'Сторінка перекладу не може бути перейменована через {{PLURAL:$1|помилку|помилки}}:',
+	'pt-movepage-list-pages' => 'Перелік сторінок до перейменування',
+	'pt-movepage-new' => "Нове ім'я:",
+	'pt-movepage-reason' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'pt-movepage-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)
@@ -4474,6 +4498,7 @@ Phần văn bản: <pre>$1</pre>',
 	'pt-movepage-list-section' => 'Trang phần',
 	'pt-movepage-list-other' => 'Những trang phụ khác',
 	'pt-movepage-list-count' => 'Tổng cộng có $1 trang để di chuyển.',
+	'pt-movepage-legend' => 'Di chuyển trang dịch được',
 	'pt-movepage-current' => 'Tên hiện hành:',
 	'pt-movepage-new' => 'Tên mới:',
 	'pt-movepage-reason' => 'Lý do:',
@@ -4528,11 +4553,17 @@ $messages['zh-hans'] = array(
 	'tpt-templatediff' => '页面模板已改变。',
 	'tpt-diff-old' => '上一个文字',
 	'tpt-diff-new' => '下一个文字',
+	'tpt-sections-oldnew' => '新的和现存的翻译单元',
+	'tpt-sections-deleted' => '已删除的翻译模块',
 	'tpt-sections-template' => '翻译页面模版',
+	'tpt-action-nofuzzy' => '不要使翻译作废',
+	'tpt-badtitle' => '提供的页面名($1 )不是有效的标题。',
+	'tpt-nosuchpage' => '页面$1 不存在。',
 	'tpt-translate-this' => '翻译此页',
 	'translate-tag-translate-link-desc' => '翻译本页',
 	'tpt-languages-legend' => '其他语言：',
 	'tpt-download-page' => '汇出含翻译的页面',
+	'pt-movepage-logreason' => '可翻译页面$1 的部分。',
 	'pt-locked-page' => '此页面已被锁定，因为可翻译页面正在被移动。',
 );
 

@@ -182,6 +182,12 @@ $messages['ca'] = array(
 	'editcount_total' => 'Total',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'editcount_username' => 'بەکارهێنەر:',
+	'editcount_submit' => 'ناردن',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'editcount_username' => 'Utilizatore:',
@@ -515,7 +521,7 @@ $messages['id'] = array(
 $messages['ig'] = array(
 	'editcount' => 'Ngụkọta orü',
 	'editcount_username' => "Ọ'bànifé:",
-	'editcount_total' => 'Ọnụ ogụ nílé',
+	'editcount_total' => 'Òlé níle',
 );
 
 /** Icelandic (Íslenska) */

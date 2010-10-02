@@ -220,7 +220,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'contributionseditcount' => 'Este usuario ten $1 edicións.',
+	'contributionseditcount' => 'Este usuario fixo {{PLURAL:$1|unha edición|$1 edicións}}.',
 	'contributionseditcount-desc' => 'Mostra a conta de edicións na [[Special:Contributions|páxina de contribucións dun usuario]]',
 );
 
@@ -379,7 +379,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+	'contributionseditcount' => 'Dëse Benotzer huet {{PLURAL:$1|eng Kontributioun|$1 Kontributiounen}}.',
 	'contributionseditcount-desc' => 'Weist e Compteur vun den [[Special:Contributions|Ännerungen vun de Benotzer]]',
 );
 
@@ -465,9 +465,10 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount' => 'Denne brukeren har gjort {{PLURAL:$1|én redigering|$1 redigeringer}}.',
 	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions|bidragsoversikten]]',
 );
 
@@ -497,11 +498,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'contributionseditcount' => "St'utent-sì a l'ha fait $1 modìfiche.",
+	'contributionseditcount' => "St'utent-sì a l'ha fàit {{PLURAL:$1|na modìfica|$1 modìfiche}}.",
 	'contributionseditcount-desc' => "A fa vëdde an contator ëd modìfiche an sla [[Special:Contributions|pàgina dle contribussion ëd l'utent]]",
 );
 
@@ -513,10 +515,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'contributionseditcount' => 'Este utilizador tem $1 edições.',
+	'contributionseditcount' => 'Este utilizador fez {{PLURAL:$1|uma edição|$1 edições}}.',
 	'contributionseditcount-desc' => 'Mostra uma contagem de edições na [[Special:Contributions|página de contribuições do utilizador]]',
 );
 
@@ -625,11 +628,12 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'contributionseditcount' => 'இப்பயன்ர் $1 தொகுப்புக்களைச் செய்துள்ளார்.',
-	'contributionseditcount-desc' => '[[Special:Contributions|பயனர் பங்களிப்புகள்]] பக்கத்தில் தொகுப்பு எண்ணிக்கையைக் காட்டும்',
+	'contributionseditcount-desc' => '[[Special:Contributions|சிறப்பு:பயனர் பங்களிப்புகளின் பக்கம்]] பற்றிய தொகுப்பு எண்ணிக்கையைக் காட்டுகிறது',
 );
 
 /** Telugu (తెలుగు)

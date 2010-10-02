@@ -29,7 +29,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '0.1',
 	'author' => 'Svip',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PackageForce',
-	'description' => 'Special page to download packages of useful templates/etc.',
 	'descriptionmsg' => 'pf-desc',
 );
 

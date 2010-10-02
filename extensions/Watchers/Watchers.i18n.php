@@ -251,7 +251,7 @@ $messages['ca'] = array(
 	'watchers_less_than_x' => 'Menys de $1 {{PLURAL:$1|usuaris|usuaris}} tenen aquesta pàgina a la seva llista de seguiment.',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -494,7 +494,7 @@ $messages['hsb'] = array(
 	'watchers_error_article' => '<b>Zmylk:</b> Strona njeeksistuje.',
 	'watchers-error-invalid-page' => "'''Zmylk''' \"\$1\" je njepłaćiwy titul strony.",
 	'watchers_header' => '{{PLURAL:$2|Wužiwar|Wužiwarjej|Wužiwarjo|Wužiwarjo}}, {{PLURAL:$2|kotryž|kotrajž|kotřiž|kotřiž}} "[[:$1]]" {{PLURAL:$2|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuja}}',
-	'watchers_noone_watches' => 'Nichtó tutu stronu njewobkedźbuje.',
+	'watchers_noone_watches' => 'Nichtó stronu [[:$1]] njewobkedźbuje.',
 	'watchers_x_or_more' => '$1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} abo wjace {{PLURAL:$1|wobkedźbuje|wobkedźbujetej|wobkedźbuja|wobkedźbuje}} stronu [[:$2]].',
 	'watchers_less_than_x' => 'Mjenje hač $1 {{PLURAL:$1|wužiwar|wužiwarjej|wužiwarjo|wužiwarjow}} {{PLURAL:$1|wobkedźbuje|wobkedźbujetaj|wobkedźbuja|wobkedźbuje}} tutu stronu.',
 	'watchers-num' => '$1 {{PLURAL:$1|wužiwar wobkedźbuje|wužiwarjej wobkedźbujetej|wužiwarjo wobkedźbuja|wužiwarjow wobkedźbuje}} stronu [[:$2]].',
@@ -727,6 +727,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
  * @author Gunnernett
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'watchers' => 'Overvakarar',
@@ -734,7 +735,7 @@ $messages['nn'] = array(
 	'watchers_link_title' => 'Kven overvaker denne sida?',
 	'watchers_error_article' => '<b>Feil:</b> Sida finst ikkje.',
 	'watchers_header' => '{{PLURAL:$2|Brukar|Brukarar}} som overvakar «[[:$1]]»',
-	'watchers_noone_watches' => 'Ingen overvaker denne sida.',
+	'watchers_noone_watches' => 'Ingen overvaker sida [[:$1]].',
 	'watchers_x_or_more' => '$1 eller fleire {{PLURAL:$1|brukarar|brukarar}} overvakar denne sida.',
 	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|brukarar|brukar}} overvaker denne sida.',
 );
@@ -751,7 +752,7 @@ $messages['no'] = array(
 	'watchers_error_article' => '<b>Feil:</b> Siden finnes ikke.',
 	'watchers-error-invalid-page' => "'''Feil:''' «$1» er en ugyldig sidetittel.",
 	'watchers_header' => '{{PLURAL:$2|Person|Personer}} som overvåker «[[:$1]]»',
-	'watchers_noone_watches' => 'Ingen overvåker denne siden.',
+	'watchers_noone_watches' => 'Ingen overvåker siden [[:$1]].',
 	'watchers_x_or_more' => '$1 eller flere {{PLURAL:$1|personer|personer}} overvåker denne siden.',
 	'watchers_less_than_x' => 'Mindre enn $1 {{PLURAL:$1|personer|personer}} overvåker denne siden.',
 	'watchers-num' => '$1 {{PLURAL:$1|bruker|brukere}} har siden [[:$2]] på sin overvåkningsliste.',

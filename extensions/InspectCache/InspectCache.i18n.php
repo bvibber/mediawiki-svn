@@ -173,6 +173,11 @@ $messages['ca'] = array(
 	'inspectcache-list' => 'Llista',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'inspectcache-delete' => 'سڕینەوە',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -380,6 +385,11 @@ $messages['gsw'] = array(
 $messages['gv'] = array(
 	'inspectcache-delete' => 'Scryss',
 	'inspectcache-list' => 'Rolley',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'inspectcache-delete' => 'Soke',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -598,6 +608,7 @@ $messages['ksh'] = array(
 	'inspectcache-delete' => 'Fottschmieße!',
 	'inspectcache-deleted' => 'Fottjeschmeße <i lang="en">cache</i>',
 	'inspectcache-list' => 'Opleßte!',
+	'right-inspectcache' => 'Enndrääsch em <i lang="en">cache</i> beluure udder fott schmieße',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -160,6 +160,12 @@ $messages['ca'] = array(
 	'searchbox-go' => 'Vés-hi',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'searchbox-search' => 'گەڕان',
+	'searchbox-go' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -177,6 +183,16 @@ $messages['csb'] = array(
 	'searchbox-desc' => 'Zezwôlô na dodanié fòrmùlara szëkbë',
 	'searchbox-search' => 'Szëkba',
 	'searchbox-go' => 'Biéj',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'searchbox-desc' => 'Yn galluogi cynnwys ffurflenni chwilio',
+	'searchbox-search' => 'Chwilier',
+	'searchbox-go' => 'Eler',
+	'searchbox-namespaces' => 'Parthau:',
 );
 
 /** German (Deutsch) */
@@ -330,6 +346,11 @@ $messages['gu'] = array(
 $messages['gv'] = array(
 	'searchbox-search' => 'Ronsaghey',
 	'searchbox-go' => 'Gow',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'searchbox-search' => 'Nema',
 );
 
 /** Hawaiian (Hawai`i)
@@ -777,8 +798,10 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
+	'searchbox-desc' => 'தேடும் படிவங்களை இத்துடன் சேர்த்துக்கொள்ளவும்',
 	'searchbox-search' => 'தேடுக',
 	'searchbox-go' => 'செல்க',
 	'searchbox-namespaces' => 'பெயர்வெளி:',
@@ -838,7 +861,7 @@ $messages['ug-arab'] = array(
 	'searchbox-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -355,6 +355,15 @@ Revisi terkini akan ditampilkan.',
 	'right-viewlinktolatest' => 'Lihat penjelasan di atas halaman yang memiliki revisi disetujui',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'approvedrevs-approve' => 'kwé',
+	'approvedrevs-unapprove' => 'ékwèkwàlà',
+	'approvedpages' => 'Ihü hé kwèrè',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -367,11 +376,15 @@ $messages['lb'] = array(
 	'approvedrevs-approvesuccess' => 'Dës Versioun vun der Säit gouf als nogekuckte Versioun fräiginn.',
 	'approvedrevs-unapprovesuccess' => 'Et gëtt vun dëser Säit  keng nogekuckte Versioun méi.
 Dofir gëtt déi rezentst Versioun gewisen.',
+	'approvedrevs-approveaction' => '$2 als nogekuckt Versioun fir "[[$1]]" festleeën',
+	'approvedrevs-unapproveaction' => 'nogekuckt Versioun fir "[[$1]]" zréckzéien',
 	'approvedrevs-notlatest' => 'Dëst ass déi nogekuckte Versioun vun dëser Säit; et ass net déi rezentst.',
+	'approvedrevs-approvedandlatest' => 'Dëst ass esouwuel déi nogekuckt wéi och déi rezentst Versioun vun dëser Säit.',
 	'approvedrevs-viewlatest' => 'Déi rezentst Versioun weisen.',
 	'approvedpages' => 'Nogekuckte Säiten',
 	'approvedrevs-approvedpages-docu' => 'Dës Säiten an der Wiki hunn eng nogekuckte Versioun.',
 	'right-approverevisions' => 'Eng bestëmmte Versioun vun enger Säit als nogekuckt markéieren',
+	'right-viewlinktolatest' => 'Kuckt den Erklärungstext uewen op de Säiten déi nogekuckt Versiounen hunn',
 );
 
 /** Macedonian (Македонски)
@@ -442,6 +455,30 @@ I stedet vil den nyeste revisjonen bli vist.',
 	'approvedrevs-approvedpages-docu' => 'De følgende sidene er de som har en godkjent revisjon i wikien.',
 	'right-approverevisions' => 'Sett en viss revisjon av en wikiside som godkjent',
 	'right-viewlinktolatest' => 'Vis forklarende tekst på toppen av sider som har en godkjent revisjon',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'approvedrevs-desc' => 'Ampòsta na sola revision ëd na pàgina com aprovà',
+	'approvedrevs-logname' => "Registr d'aprovassion dle revision",
+	'approvedrevs-logdesc' => "Sto-sì a l'é ël registr dle revision ch'a son ëstàite aprovà.",
+	'approvedrevs-approve' => 'apreuva',
+	'approvedrevs-unapprove' => 'apreuva pa',
+	'approvedrevs-approvesuccess' => "Costa revision-sì ëd la pàgina a l'é stàita ampostà com la version aprovà.",
+	'approvedrevs-unapprovesuccess' => 'A-i é pa pi na version aprovà për sta pàgina-sì.
+Al pòst, a sarà mostrà la revision pi recenta.',
+	'approvedrevs-approveaction' => 'a l\'ha marcà $2 tanme revision aprovà për "[[$1]]"',
+	'approvedrevs-unapproveaction' => 'gava ampostassion ëd la revision aprovà për "[[$1]]"',
+	'approvedrevs-notlatest' => "Costa a l'é la revision aprovà ëd sa pàgina; a l'é pa la pi recenta.",
+	'approvedrevs-approvedandlatest' => "Costa a l'é la revision aprovà ëd sa pàgina, e a l'é ëdcò la pi recenta.",
+	'approvedrevs-viewlatest' => 'Varda la revision pi recenta.',
+	'approvedpages' => 'Pàgine aprovà',
+	'approvedrevs-approvedpages-docu' => "Cole sì-sota a son le pàgine ant la wiki che a l'han na revision aprovà.",
+	'right-approverevisions' => 'Ampòsta na certa revision ëd na pàgina wiki com aprovà',
+	'right-viewlinktolatest' => "Vëdde ël test dë spiegassion an cò dle pàgine ch'a l'han na revision aprovà",
 );
 
 /** Portuguese (Português)

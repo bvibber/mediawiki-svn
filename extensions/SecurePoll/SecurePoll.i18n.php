@@ -893,6 +893,8 @@ $messages['bn'] = array(
 	'securepoll-thanks' => 'ধন্যবাদ, আপনার ভোট সংরক্ষণ করা হয়েছে।',
 	'securepoll-return' => '$1 এ ফিরে যাও।',
 	'securepoll-jump' => 'ভোটিং সার্ভারে যাও',
+	'securepoll-unanswered-questions' => 'আপনাকে অবশ্যই সব প্রশ্নের উত্তর দিতে হবে।',
+	'securepoll-list-title' => 'ভোটের তালিকা: $1',
 	'securepoll-header-timestamp' => 'সময়',
 	'securepoll-header-voter-name' => 'নাম',
 	'securepoll-header-voter-domain' => 'ডোমেইন',
@@ -915,6 +917,7 @@ $messages['bn'] = array(
 	'securepoll-subpage-vote' => 'ভোট',
 	'securepoll-subpage-translate' => 'অনুবাদ করুন',
 	'securepoll-subpage-list' => 'তালিকা',
+	'securepoll-average-score' => 'গড় স্কোর',
 );
 
 /** Breton (Brezhoneg)
@@ -1310,6 +1313,12 @@ Podeu triar entre comptar els resultats presents a la base de dades, o de compta
 $messages['ce'] = array(
 	'securepoll-strike-reason' => 'Бахьан:',
 	'securepoll-header-reason' => 'Бахьан',
+);
+
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'securepoll-strike-reason' => 'هۆکار:',
+	'securepoll-header-reason' => 'هۆکار',
 );
 
 /** Czech (Česky)
@@ -3014,7 +3023,7 @@ $messages['frp'] = array(
 	'securepoll-invalid-page' => 'Sot-pâge « <nowiki>$1</nowiki> » envalida',
 	'securepoll-need-admin' => 'Vos dête étre un administrator de l’èlèccion por ègzécutar ceta accion.',
 	'securepoll-too-few-params' => 'Pas prod de paramètres de sot-pâge (lim envalido).',
-	'securepoll-invalid-election' => '« $1 » est pas un identifiant d’èlèccion valido.',
+	'securepoll-invalid-election' => '« $1 » est pas un numerô d’èlèccion valido.',
 	'securepoll-welcome' => '<strong>Benvegnua $1 !</strong>',
 	'securepoll-not-started' => 'L’èlèccion at p’oncor comenciê.
 Comencierat lo $2 a $3.',
@@ -3061,7 +3070,7 @@ Vos dête balyér un rang entre-mié 1 et 999 a tôs los chouèx.',
 	'securepoll-remote-auth-error' => 'Èrror pendent la rècupèracion de les enformacions de voutron compto dês lo sèrvor.',
 	'securepoll-remote-parse-error' => 'Èrror pendent l’entèrprètacion de la rèponsa d’ôtorisacion du sèrvor.',
 	'securepoll-api-invalid-params' => 'Paramètres envalidos.',
-	'securepoll-api-no-user' => 'Nion utilisator avouéc l’identifiant balyê at étâ trovâ.',
+	'securepoll-api-no-user' => 'Nion utilisator avouéc lo numerô balyê at étâ trovâ.',
 	'securepoll-api-token-mismatch' => 'Jeton de sècuritât difèrent, branchement empossiblo.',
 	'securepoll-not-logged-in' => 'Vos vos dête branchiér por votar dens ceta èlèccion.',
 	'securepoll-too-few-edits' => 'Dèsolâ, vos pouede pas votar. Vos dête avêr fêt u muens {{PLURAL:$1|yon changement|$1 changements}} por votar dens ceta èlèccion, vos en totalisâd $2.',
@@ -3085,7 +3094,7 @@ Vos dête balyér un rang entre-mié 1 et 999 a tôs los chouèx.',
 	'securepoll-strike-token-mismatch' => 'Pèrta de les balyês de sèance',
 	'securepoll-details-link' => 'Dètalys',
 	'securepoll-details-title' => 'Dètalys du voto : #$1',
-	'securepoll-invalid-vote' => '« $1 » est pas un ID de voto valido',
+	'securepoll-invalid-vote' => '« $1 » est pas un numerô de voto valido',
 	'securepoll-header-voter-type' => 'Tipo u votent',
 	'securepoll-voter-properties' => 'Propriètâts u votent',
 	'securepoll-strike-log' => 'Jornal des traçâjos',
@@ -3426,6 +3435,12 @@ Du chasch wehle zwische dr Uuszellig vu dr aktuällen Ergebnis in dr Datebank un
 	'securepoll-strength-matrix' => 'Pfad Sterkimatrix',
 	'securepoll-ranks' => 'Schlussreihefolg',
 	'securepoll-average-score' => 'Durschnittlige Stand',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'securepoll-strike-cancel' => 'Soke',
+	'securepoll-header-reason' => 'Dalili',
 );
 
 /** Hebrew (עברית)
@@ -4347,9 +4362,15 @@ Anda dapat memilih antara menghitung dari hasil suara yang terdapat di basis dat
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'securepoll-header-timestamp' => 'Ógẹ',
+	'securepoll-header-voter-name' => 'Áhà',
 	'securepoll-strike-reason' => 'Mgbághapụtà:',
 	'securepoll-strike-cancel' => 'Kàchá',
+	'securepoll-details-link' => 'Nkȯwa',
+	'securepoll-header-action' => 'Ọmé',
 	'securepoll-header-reason' => 'Mgbaghaputa',
+	'securepoll-submit-translate' => 'Dịnwanye mmā',
+	'securepoll-language-label' => 'Nwèré asụsụ:',
 	'securepoll-submit-select-lang' => 'Kuwaria na asụsụ ozor',
 	'securepoll-header-title' => 'Áhà',
 	'securepoll-subpage-vote' => 'Votu',
@@ -5050,7 +5071,7 @@ Do moß alle Müjjeleschkeite ene Rang zwesche 1 un 999 jevve.',
 	'securepoll-dump-no-urandom' => 'Mer künne <code>/dev/random</code> nit opmaache.
 Öm dä Afshtemmer ze schötze, don mer verschlößelte Datesäz bloß dann ußjävve,
 wann mer se met enem seschere, zohfällije Dateshtrom verwörfelle künne.',
-	'securepoll-urandom-not-supported' => 'Hee dä ßööver kann kein Zohfallszahle för et Verschößele maache.
+	'securepoll-urandom-not-supported' => 'Hee dä ẞööver kann kein Zohfallszahle för et Verschößele maache.
 Öm et Wahljeheimnis ze bewaahre, sin de verschößelte Opzeichnunge vun der Stemme bloß dann öffentlich ze han, wann mer se en ene seshere zofällije Reijefollsh zeije künne.',
 	'securepoll-translate-title' => 'Övveräze: $1',
 	'securepoll-invalid-language' => '„<code>$1</code>“ es enne onjöltijje Shprooche_Kood',
@@ -6969,6 +6990,7 @@ It peule serne sia ëd conté j'arzultà present ant ël database, sia ëd cont�
 $messages['ps'] = array(
 	'securepoll-submit' => 'رايه سپارل',
 	'securepoll-return' => '$1 ته ورګرځېدل',
+	'securepoll-unanswered-questions' => 'تاسې بايد ټولې پوښتنې ځواب کړۍ.',
 	'securepoll-header-timestamp' => 'وخت',
 	'securepoll-header-voter-name' => 'نوم',
 	'securepoll-header-voter-domain' => 'شپول',
@@ -7987,7 +8009,19 @@ Začetek je načrtovan dne $2 ob $3.',
 	'securepoll-submit' => 'Pošlji glas',
 	'securepoll-thanks' => 'Hvala, vaš glas je bil zabeležen.',
 	'securepoll-return' => 'Vrnitev na $1',
+	'securepoll-encrypt-error' => 'Šifriranje zapisa vašega glasu je spodletelo.
+Vaš glas ni bil zabeležen!
+
+$1',
 	'securepoll-no-gpg-home' => 'Ne morem ustvariti domače mape GPG.',
+	'securepoll-secret-gpg-error' => 'Napaka pri izvajanju GPG.
+Uporabite $wgSecurePollShowErrorDetail=true; v LocalSettings.php za prikaz več informacij.',
+	'securepoll-full-gpg-error' => 'Napaka pri izvajanju GPG:
+
+Ukaz: $1
+
+Napaka:
+<pre>$2</pre>',
 	'securepoll-gpg-config-error' => 'Ključi GPG so konfigurirani nepravilno.',
 	'securepoll-gpg-parse-error' => 'Napaka pri tolmačenju izhoda GPG.',
 	'securepoll-no-decryption-key' => 'Konfiguriran ni noben dešifrirni ključ.
@@ -7995,22 +8029,31 @@ Ne morem dešifrirati.',
 	'securepoll-jump' => 'Pojdi na glasovalni strežnik',
 	'securepoll-bad-ballot-submission' => 'Vaš glas je bil neveljaven: $1',
 	'securepoll-unanswered-questions' => 'Odgovoriti morate na vsa vprašanja.',
+	'securepoll-invalid-rank' => 'Neveljavna uvrstitev. Kandidatom morate določiti uvrstitev med 1 in 999.',
+	'securepoll-unranked-options' => 'Nekatere možnosti niso bile uvrščene.
+Vsem možnostim morate določiti uvrstitev med 1 in 999.',
 	'securepoll-invalid-score' => 'Ocena mora biti število med $1 in $2.',
 	'securepoll-api-invalid-params' => 'Neveljavni parametri.',
+	'securepoll-api-no-user' => 'Najden ni bil noben uporabnik z danim ID.',
 	'securepoll-not-logged-in' => 'Za glasovanje na teh volitvah se morate prijaviti.',
 	'securepoll-header-timestamp' => 'Čas',
 	'securepoll-header-voter-name' => 'Uporabnik',
 	'securepoll-header-voter-domain' => 'Domena',
 	'securepoll-header-ua' => 'Uporabniški agent',
+	'securepoll-header-strike' => 'Prečrtaj',
 	'securepoll-header-details' => 'Podrobnosti',
+	'securepoll-strike-button' => 'Prečrtaj',
+	'securepoll-unstrike-button' => 'Odčrtaj',
 	'securepoll-strike-reason' => 'Razlog:',
 	'securepoll-strike-cancel' => 'Prekliči',
+	'securepoll-strike-error' => 'Napaka pri izvajanju prečrtanja/odčrtanja: $1',
 	'securepoll-strike-token-mismatch' => 'Podatki seje so izgubljeni',
 	'securepoll-details-link' => 'Podrobnosti',
 	'securepoll-details-title' => 'Podrobnosti glasovanja: #$1',
 	'securepoll-invalid-vote' => '»$1« ni veljaven volilni ID',
 	'securepoll-header-voter-type' => 'Vrsta volivca',
 	'securepoll-voter-properties' => 'Podrobnosti volivca',
+	'securepoll-strike-log' => 'Dnevnik črtanja',
 	'securepoll-header-action' => 'Dejanje',
 	'securepoll-header-reason' => 'Razlog',
 	'securepoll-header-admin' => 'Admin',
@@ -8026,6 +8069,7 @@ Ne morem dešifrirati.',
 	'securepoll-header-end-date' => 'Datum zaključka',
 	'securepoll-subpage-vote' => 'Glasuj',
 	'securepoll-subpage-translate' => 'Prevedi',
+	'securepoll-subpage-list' => 'Seznam',
 	'securepoll-subpage-dump' => 'Odloži',
 	'securepoll-subpage-tally' => 'Evidentiraj',
 	'securepoll-tally-title' => 'Evidenca: $1',
@@ -9025,6 +9069,9 @@ $messages['ur'] = array(
 <pre>$1</pre>',
 	'securepoll-thanks' => 'شکریہ، آپ کی رائے محفوظ کرلی گئی.',
 	'securepoll-return' => 'واپس بطرف $1',
+	'securepoll-strike-reason' => 'وجہ:',
+	'securepoll-strike-cancel' => 'منسوخ',
+	'securepoll-header-reason' => 'وجہ',
 );
 
 /** Vèneto (Vèneto)

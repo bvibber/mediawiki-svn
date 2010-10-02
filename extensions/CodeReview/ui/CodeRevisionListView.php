@@ -95,7 +95,7 @@ class CodeRevisionListView extends CodeView {
 
 		// Automatically refresh
 		// This way of getting GET parameters is horrible, but effective.
-		$fields = array_merge( $_GET, $_POST );
+		$fields = $wgRequest->getValues();
 		foreach ( array_keys( $fields ) as $key ) {
 			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' )
 				unset( $fields[$key] );

@@ -837,6 +837,16 @@ $messages['id'] = array(
 	'sitematrix-fishbowl' => 'penyuntingan tidak diperbolehkan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'sitematrix-language' => 'Asụsụ',
+	'sitematrix-total' => "'''Ọgụgụ nílé: $1'''",
+	'sitematrix-sitetotal' => 'Òlé níle',
+	'sitematrix-private' => 'zonàrì ñkịtị',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1860,7 +1870,7 @@ $messages['ug-arab'] = array(
 	'sitematrix-language' => 'تىل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

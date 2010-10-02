@@ -154,6 +154,11 @@ $messages['ca'] = array(
 	'mostrevisors-viewcontributors' => 'Mostra els editors principals',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'mostrevisors-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  */
@@ -355,6 +360,11 @@ $messages['gsw'] = array(
 	'mostrevisors-hideredir' => 'Wyterleitigssyte verstecke',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|Bearbeiter|Bearbeiter}}',
 	'mostrevisors-viewcontributors' => 'Hauptbyyträger zeige',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'mostrevisors-namespace' => 'Sararin suna:',
 );
 
 /** Hebrew (עברית)
@@ -684,6 +694,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mostrevisors-limitlinks' => 'تر $1 پورې مخونه ښکاره کړی',
 	'mostrevisors-namespace' => 'نوم-تشيال:',
 	'mostrevisors-submit' => 'ورځه',
 );

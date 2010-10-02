@@ -81,6 +81,13 @@ $messages['dsb'] = array(
 	'cassandra-desc' => 'Wersijowy tekst w datowej bance [http://cassandra.apache.org/ Apache Cassandra] składowaś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Michawiki
+ */
+$messages['eo'] = array(
+	'cassandra-desc' => 'Konservi versian tekston en la datumbazo [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */

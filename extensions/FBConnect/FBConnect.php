@@ -44,7 +44,7 @@ if ( !defined( 'MEDIAWIKI' )) {
 /*
  * FBConnect version.
  */
-define( 'MEDIAWIKI_FBCONNECT_VERSION', '2.0.2' );
+define( 'MEDIAWIKI_FBCONNECT_VERSION', '2.1.0' );
 
 /*
  * Add information about this extension to Special:Version.
@@ -152,13 +152,6 @@ class FBConnect {
 			self::$fbOnLoginJs = $wgFbOnLoginJsOverride;
 		} else {
 			self::$fbOnLoginJs = "window.location.reload(true);";
-		}
-
-		// ParserFirstCallInit was introduced in modern (1.12+) MW versions so as to
-		// avoid unstubbing $wgParser on setHook() too early, as per r35980
-		if (!defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' )) {
-			global $wgParser;
-			wfRunHooks( 'ParserFirstCallInit', $wgParser );
 		}
 	}
 

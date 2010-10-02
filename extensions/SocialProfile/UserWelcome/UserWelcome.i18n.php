@@ -261,7 +261,7 @@ $messages['ca'] = array(
 	'mp-request-new-message' => 'nou missatge',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -675,7 +675,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'mp-welcome-upload' => 'Tinyé elú',
+	'mp-welcome-upload' => 'Tinyénélú',
 	'mp-welcome-edit' => 'Rüwa',
 	'mp-welcome-logged-in' => 'Kedú $1',
 	'mp-request-new-message' => 'ozi ohúrù',

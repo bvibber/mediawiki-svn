@@ -57,6 +57,9 @@ evt: {
 	ready: function( context, event ) {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
+		if ( !context.$content ) {
+			return;
+		}
 		context.$content.parent()
 			.blur( function() {
 				var context = event.data.context;
@@ -295,6 +298,9 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
+		//temporarily commenting this out because it is causing all kinds of cursor 
+		//and text jumping issues in IE. WIll get back to this --pdhanda
+		/*
 		var div = context.fn.beforeSelection( 'wikiEditor-toc-header' );
 		if ( div === null ) {
 			// beforeSelection couldn't figure it out, keep the old highlight state
@@ -309,6 +315,7 @@ fn: {
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.toc.$toc.offset().top;
+			
 			var scrollTop = context.modules.toc.$toc.scrollTop();
 			var divHeight = context.modules.toc.$toc.height();
 			var sectionHeight = sectionLink.height();
@@ -319,6 +326,7 @@ fn: {
 				// Scroll down
 				context.modules.toc.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
+		*/
 	},
 	
 	/**
@@ -461,8 +469,11 @@ fn: {
 						// Bring user's eyes to the point we've now jumped to
 						context.fn.highlightLine( $( wrapper ) );
 						// Highlight the clicked link
-						$.wikiEditor.modules.toc.fn.unhighlight( context );
+						//remove highlighting of toc after a second. Temporary hack till the highlight works --pdhanda
+						//$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );
+						//$( this ).removeClass( 'current' );
+						setTimeout( function() { $.wikiEditor.modules.toc.fn.unhighlight( context ) }, 1000 );
 						
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );

@@ -170,6 +170,11 @@ $messages['br'] = array(
 	'sphinxPspellError' => 'Dibosupl lañsañ astenn pspell.',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'sphinxSearchButton' => 'گەڕان',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -381,6 +386,11 @@ $messages['gsw'] = array(
 	'sphinxSearchFailed' => 'Abfrog fähl gschlaa: $1',
 	'sphinxSearchWarning' => 'Warnig: $1',
 	'sphinxPspellError' => 'Het d pspell-Erwyterig nit chenne ufruefe',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'sphinxSearchButton' => 'Nema',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

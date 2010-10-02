@@ -13,7 +13,6 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Force Preview',
 	'version' => '1.2',
 	'author' => 'Ryan Schmidt',
-	#'description' => 'Force preview for unprivelaged users',
 	'descriptionmsg' => 'forcepreview-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ForcePreview',
 );

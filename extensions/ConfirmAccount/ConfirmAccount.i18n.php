@@ -1639,6 +1639,11 @@ $messages['ca'] = array(
 	'usercredentials-bio' => 'Biografia:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'confirmaccount-submit' => 'پشتدار بکەرەوە',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -3326,7 +3331,8 @@ Se vos souhètâd pas més encllure ceti, lèssiéd lo champ vouedo.',
 	'requestaccount-tos' => 'J’é liesu et pués j’accèpto les [[{{MediaWiki:Requestaccount-page}}|condicions d’usâjo]] de {{SITENAME}}.
 Lo nom que j’é buchiê dens lo champ « Veré nom » est franc mon prôpro nom.',
 	'requestaccount-submit' => 'Demanda de compto utilisator',
-	'requestaccount-sent' => 'Voutra demanda de compto utilisator at étâ mandâ avouéc reusséta et pués at étâ betâ dens la lista d’atenta d’aprobacion.',
+	'requestaccount-sent' => 'Voutra demanda de compto at étâ mandâ avouéc reusséta et pués at étâ betâ dens la lista d’atenta d’aprobacion.
+Un mèssâjo de confirmacion at étâ mandâ a voutra adrèce èlèctronica.',
 	'request-account-econf' => 'Voutra adrèce èlèctronica at étâ confirmâ et serat listâ d’ense dens voutra demanda de compto utilisator.',
 	'requestaccount-email-subj' => 'Confirmacion de l’adrèce èlèctronica por {{SITENAME}}',
 	'requestaccount-email-body' => 'Quârqu’un, probâblament vos, at fêt, dês l’adrèce IP $1, una demanda de compto utilisator « $2 » avouéc ceta adrèce èlèctronica sur lo seto {{SITENAME}}.
@@ -3360,7 +3366,7 @@ Los comptos accèptâs seront fêts et pués enlevâs de ceta lista. Los comptos
 	'confirmaccount-showrej' => 'Demandes refusâs',
 	'confirmaccount-showheld' => 'Demandes resèrvâs',
 	'confirmaccount-showexp' => 'Demandes èxpirâs',
-	'confirmaccount-review' => 'Aprobacion/Refus',
+	'confirmaccount-review' => 'Revêre',
 	'confirmaccount-name' => 'Nom d’utilisator',
 	'confirmaccount-real' => 'Nom :',
 	'confirmaccount-email' => 'Mèl. :',
@@ -4373,7 +4379,8 @@ Móžeš swoje wužiwarske mjeno pod [[Special:Preferences|Nastajenja]] změnić
 	'requestaccount-emaildup' => 'Druhe předležace kontowe požadanje samsnu e-mejlowu adresu wužiwa.',
 	'requestaccount-exts' => 'Datajowy typ přiwěška je njedowoleny.',
 	'requestaccount-resub' => 'Twoja žiwjenjoběhowa dataja dyrbi so z přičinow wěstoty znowa wubrać. Wostaj polo prózdne, jeli hižo nochceš tajku zapřijimać.',
-	'requestaccount-tos' => 'Sym wužiwarske wuměnjenja strony {{SITENAME}} přečitał a budu do nich dźeržeć.',
+	'requestaccount-tos' => 'Sym [[{{MediaWiki:Requestaccount-page}}|wužiwarske wuměnjenja]] strony {{SITENAME}} přečitał a budu je dodźeržować.
+Mjeno, kotrež sym pod "Woprawdźite mjeno" podał je woprawdźe moje swójske woprawdźite mjeno.',
 	'requestaccount-submit' => 'Wužiwarske konto sej žadać',
 	'requestaccount-sent' => 'Twoje kontowe požadanje bu wuspěšnje wotpósłane a dyrbi so nětko přepruwować. Wobrućenska e-mejl bu na twoju e-mejlowu adresu pósłana.',
 	'request-account-econf' => 'Twoja e-mejlowa adresa bu wobkrućena a budźe so w twojim kontowym požadanju nalistować.',
@@ -6102,6 +6109,7 @@ Wann de Vun dä Sigg hee fott jeihß, oohne se afzelehne udder beshtähtejje, bl
 	'confirmaccount-spam' => 'SPAM (don kei <i lang="en">e-mail</i> eruß schecke)',
 	'confirmaccount-reason' => 'Kommentaa för en de <i lang="en">e-mail</i> met eren ze donn, die dä Aanfroorer kritt:',
 	'confirmaccount-ip' => 'IP-Address:',
+	'confirmaccount-legend' => 'Dä Zohjang beshtääteje udder afflehne',
 	'confirmaccount-submit' => 'Beshtähtejje',
 	'confirmaccount-needreason' => 'Do moß ene Jrond en däm Feld unge endraare.',
 	'confirmaccount-canthold' => 'Di Aanfrooch es entweder zerökjeshtallt udder fottjeschmeße.',
@@ -7275,7 +7283,7 @@ Wellicht is de aanvraag al afgehandeld.',
 	'confirmaccount-name' => 'Gebruikersnaam',
 	'confirmaccount-real' => 'Naam:',
 	'confirmaccount-email' => 'E-mail:',
-	'confirmaccount-reqtype' => 'Positie:',
+	'confirmaccount-reqtype' => 'Functie:',
 	'confirmaccount-pos-0' => 'auteur',
 	'confirmaccount-pos-1' => 'redacteur',
 	'confirmaccount-bio' => 'Biografie:',
@@ -11147,7 +11155,7 @@ $messages['ug-arab'] = array(
 	'usercredentials-email' => 'ئېلخەت:',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

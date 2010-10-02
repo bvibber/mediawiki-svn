@@ -1265,6 +1265,14 @@ $messages['ce'] = array(
 	'globalblocking-unblock-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'globalblocking-block-reason' => 'هۆکار:',
+	'globalblocking-block-reasonotherlist' => 'هۆکاری دیکە',
+	'globalblocking-unblock-reason' => 'هۆکار:',
+	'globalblocking-whitelist-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Mormegil
@@ -1781,8 +1789,8 @@ Protokol blokěrowanjow jo dołojce pódał slědujuce ako referencu:',
  */
 $messages['ee'] = array(
 	'globalblocking-block-expiry' => 'Nuwuwu:',
-	'globalblocking-blocked' => "'''\$1''' (''\$2'') xemɔ na wòƒe 'IP address' le wikiwo katã dzi.<br/>
-Nusita wòwoɔ enye be ''\"\$3\"''.<br/>
+	'globalblocking-blocked' => "'''\$1''' (''\$2'') xemɔ na wòƒe 'IP address' le wikiwo katã dzi.<br />
+Nusita wòwoɔ enye be ''\"\$3\"''.<br />
 Mɔxexea ''\$4''.",
 );
 
@@ -2985,6 +2993,14 @@ $messages['gv'] = array(
 	'globalblocking-unblock-reason' => 'Fa:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'globalblocking-block-reason' => 'Dalili:',
+	'globalblocking-block-reasonotherlist' => 'Wani dalili',
+	'globalblocking-unblock-reason' => 'Dalili:',
+	'globalblocking-whitelist-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -3827,6 +3843,9 @@ Log pemblokiran disediakan di bawah ini sebagai rujukan:',
  */
 $messages['ig'] = array(
 	'globalblocking-block-reason' => 'Mgbághapụtà:',
+	'globalblocking-block-expiry' => 'Gbá okà:',
+	'globalblocking-block-options' => 'I cho, ka I chogị:',
+	'globalblocking-list-unblock' => 'wéfù',
 	'globalblocking-unblock-reason' => 'Mgbághapụtà:',
 	'globalblocking-whitelist-reason' => 'Mgbághapụtà:',
 );
@@ -5043,7 +5062,7 @@ $messages['ml'] = array(
 	'globalblocking-list-expiry' => 'കാലാവധി $1',
 	'globalblocking-list-anononly' => 'അജ്ഞാത ഉപയോക്താക്കളെ മാത്രം',
 	'globalblocking-list-unblock' => 'സ്വതന്ത്രമാക്കുക',
-	'globalblocking-list-whitelisted' => '$1 ഇതിനെ പ്രാദേശികമായി നിർ‌വീര്യമാക്കിയിക്കുന്നു: $2',
+	'globalblocking-list-whitelisted' => '$1 ഇതിനെ പ്രാദേശികമായി നിർവീര്യമാക്കിയിക്കുന്നു: $2',
 	'globalblocking-list-whitelist' => 'പ്രാദേശിക സ്ഥിതി',
 	'globalblocking-list-modify' => 'പുനർനിശ്ചയിക്കുക',
 	'globalblocking-list-noresults' => 'ആവശ്യപ്പെട്ട ഐ.പി. വിലാസത്തെ തടഞ്ഞിട്ടില്ല.',
@@ -5103,7 +5122,7 @@ $messages['ml'] = array(
 	'removeglobalblock' => 'ആഗോള തടയൽ നീക്കുക',
 	'right-globalblock' => 'ആഗോള തടയൽ നടത്തുക',
 	'right-globalunblock' => 'ആഗോള തടയൽ മാറ്റുക',
-	'right-globalblock-whitelist' => 'ആഗോള തടയലിനെ പ്രാദേശികമായി നിർ‌വീര്യമാക്കുക',
+	'right-globalblock-whitelist' => 'ആഗോള തടയലിനെ പ്രാദേശികമായി നിർവീര്യമാക്കുക',
 	'right-globalblock-exempt' => 'ആഗോള തടയലുകളെ പാർശ്വവത്കരിച്ചു ഗമിക്കുക',
 );
 
@@ -8109,6 +8128,13 @@ $messages['uk'] = array(
 	'right-globalunblock' => 'зняття глобальних блокувань',
 	'right-globalblock-whitelist' => 'Локальне відключення глобального блокування',
 	'right-globalblock-exempt' => 'Обхід глобальних блокувань',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'globalblocking-block-reason' => 'وجہ:',
+	'globalblocking-unblock-reason' => 'وجہ:',
+	'globalblocking-whitelist-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

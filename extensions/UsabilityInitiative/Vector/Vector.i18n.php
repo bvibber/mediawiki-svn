@@ -82,6 +82,14 @@ $messages['bn'] = array(
 	'vector-desc' => 'ভেক্টর স্কিনের ইন্টারফেস উপাদানের উন্নতি সাধন',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'vector' => 'ভেক্টরর কা আতাকুরার ইন্টারফেসহার উন্নতি করানিহান',
+	'vector-desc' => 'ভেক্টর স্কিনর ইন্টারফেস মাথেলর উন্নতি করানি।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -529,6 +537,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'vector' => 'Vector üçin interfeýs gowulandyrmalary',
 );
 
 /** Tagalog (Tagalog)

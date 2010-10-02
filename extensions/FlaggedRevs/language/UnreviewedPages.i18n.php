@@ -270,6 +270,11 @@ $messages['ca'] = array(
 	'unreviewed-recent' => "(menys d'una hora)",
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'unreviewed-category' => 'پۆل:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung
@@ -611,6 +616,11 @@ $messages['gsw'] = array(
 	'unreviewed-recent' => '(weniger wie ei Stund)',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'unreviewed-category' => 'Rukuni:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -760,6 +770,9 @@ $messages['ig'] = array(
 	'unreviewed-category' => 'Ébéonọr:',
 	'unreviewed-diff' => 'lèwárí',
 	'unreviewed-unwatched' => '(ēléghịdị)',
+	'unreviewed-hours' => '({{PLURAL:$1|àmànì|àmànì}} $1)',
+	'unreviewed-days' => '({{PLURAL:$1|chi|chi}} $1)',
+	'unreviewed-recent' => '(bènata àmànì 1)',
 );
 
 /** Ido (Ido)
@@ -1524,13 +1537,17 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Kanags
+ * @author TRYPPN
  */
 $messages['ta'] = array(
 	'unreviewedpages' => 'பார்வையிடப்படாத பக்கங்கள்',
 	'unreviewed-legend' => 'மீள்பார்வையிடப்படாத பகுதிகளைக் கொண்ட பக்கங்கள்',
 	'unreviewed-category' => 'பகுப்பு:',
 	'unreviewed-diff' => 'முன்தோற்றம்',
+	'unreviewed-unwatched' => '(கவனிக்கப்படமாட்டாது)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|பயனர்|பயனர்கள்}} பார்வையிடுகிறார்கள்)',
+	'unreviewed-list' => 'இங்கே கொடுக்கப்பட்ட பக்கங்களின் உள்ளடக்கங்களை குறிப்பிடப்பட்ட அளவுக்கு இன்னும் பரிசீலனை செய்யப்படவில்லை.',
+	'unreviewed-none' => 'தாங்கள் குறிப்பிட்ட விதிமுறைகளுக்கு உட்பட்ட பக்கங்கள் தற்சமயம் ஏதுமில்லை.',
 	'unreviewed-viewing' => '(மீள் பார்வைக்காக)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|மணித்தியாலம்|மணித்தியாலங்கள்}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|நாள்|நாட்கள்}})',

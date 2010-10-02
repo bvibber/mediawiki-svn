@@ -1314,7 +1314,7 @@ $messages['ch'] = array(
 	'ur-main-page' => 'Fanhaluman',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -3075,6 +3075,11 @@ Ha, Du witt gar kei E-Mail meh vun is iberchu?
 
 Druck $4
 un ändere Dyyni Yystellige go d E-Mail-Benochrichtigunge abschalte.',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'ur-cancel' => 'Soke',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -7886,7 +7891,7 @@ $4 bağlantısına tıklayın
 ve e-posta bildirimlerini devre dışı bırakmak için ayarlarınızı değiştirin.',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -7899,6 +7904,11 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'ur-next' => 'наступний',
 	'ur-remove' => 'Вилучити',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'ur-cancel' => 'منسوخ',
 );
 
 /** Veps (Vepsan kel')

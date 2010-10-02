@@ -1,6 +1,26 @@
 <?php
 
 class PayflowProGateway extends UnlistedSpecialPage {
+	
+	/**
+	 * Defines the action to take on a PFP transaction.
+	 *
+	 * Possible values include 'process', 'challenge', 
+	 * 'review', 'reject'.  These values can be set during
+	 * data processing validation, for instance.
+	 *
+	 * Hooks are exposed to handle the differet actions.
+	 *
+	 * Defaults to 'process'.
+	 * @var string
+	 */
+	public $action = 'process';
+
+	/**
+	 * Holds the information from a Payflow transaction
+	 * @var array
+	 */
+	public $payflow_transaction = NULL;
 
 	/**
 	 * Constructor - set up the new special page
@@ -80,6 +100,8 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'optout' => '',
 			'token' => $token,
 			'contribution_tracking_id' => '',
+			'data_hash' => '',
+			'action' => '',
 		);
 
 		$error[] = '';
@@ -98,7 +120,6 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		
 		// track the number of attempts the user has made
 		$numAttempt = ( $wgRequest->getText( 'numAttempt' ) == '' ) ? '0' : $wgRequest->getText( 'numAttempt' );
-		
 		// Populate from data
 		$data = array(
 			'amount' => $amount,
@@ -117,7 +138,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'cvv' => $wgRequest->getText( 'cvv' ),
 			'currency' => $wgRequest->getText( 'currency_code' ),
 			'payment_method' => $wgRequest->getText( 'payment_method' ),
-			'order_id' => null, //will be set with $payflow_data
+			'order_id' => $wgRequest->getText( 'orderid' ), //will be set with $payflow_data
 			'numAttempt' => $numAttempt,
 			'referrer' => $wgRequest->getText( 'referrer' ),
 			'utm_source' => $wgRequest->getText( 'utm_source' ),
@@ -129,6 +150,8 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'optout' => $wgRequest->getText( 'email' ),
 			'test_string' => $wgRequest->getText( 'process' ), //for showing payflow string during testing
 			'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
+			'data_hash' => $wgRequest->getText( 'data_hash' ),
+			'action' => $wgRequest->getText( 'action' ),
 		);
 		
 		// Get array of default account values necessary for Payflow 
@@ -137,7 +160,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		$payflow_data = payflowUser();
 
 		// assign this order ID to the $data array as well
-		$data['order_id'] = $payflow_data['order_id'];
+		if ( strlen( $data['order_id'] ) < 1 ) $data['order_id'] = $payflow_data['order_id'];
 
 		// Check form for errors and display 
 		// match token
@@ -145,40 +168,70 @@ class PayflowProGateway extends UnlistedSpecialPage {
 
 		if( $success ) {
 			if( $data['payment_method'] == 'processed' ) {
+				//increase the count of attempts
+				++$data['numAttempt'];
+				
 				// Check form for errors and redisplay with messages
 				$form_errors = $this->fnPayflowValidateForm( $data, $error );
-					if( $form_errors ) {
-						$this->fnPayflowDisplayForm( $data, $error );
-					} else {
-						// The submitted data is valid, so process it
-						//increase the count of attempts
-						++$data['numAttempt'];
+				if( $form_errors ) {
+					$this->fnPayflowDisplayForm( $data, $error );
+				} else { // The submitted form data is valid, so process it
+					// allow any external validators to have their way with the data	
+					wfRunHooks( 'PayflowGatewayValidate', array( &$this, &$data ));
+
+					// if the transaction was flagged for review
+					if ( $this->action == 'review' ) {
+						// expose a hook for external handling of trxns flagged for review
+						wfRunHooks( 'PayflowGatewayReview', array( &$this, &$data ));
+					}
+
+					// if the transaction was flagged to be 'challenged'
+					if ( $this->action == 'challenge' ) {
+						// expose a hook for external handling of trxns flagged for challenge (eg captcha)
+						wfRunHooks( 'PayflowGatewayChallenge', array( &$this, &$data ));
+					}
+
+					// if the transaction was flagged for rejection
+					if ( $this->action == 'reject' ) {
+						// expose a hook for external handling of trxns flagged for rejection
+						wfRunHooks( 'PayflowGatewayReject', array( &$this, &$data ));
+
+						$this->fnPayflowDisplayDeclinedResults( '' );
+					}
+
+					// if the transaction was flagged for processing
+					if ( $this->action == 'process' ) {
+						// expose a hook for external handling of trxns ready for processing
+						wfRunHooks( 'PayflowGatewayProcess', array( &$this, &$data ));
 						$this->fnPayflowProcessTransaction( $data, $payflow_data );
 					}
-				} else {
+
+					// expose a hook for any post processing
+					wfRunHooks( 'PayflowGatewayPostProcess', array( &$this, &$data ));
+				}
+			} else {
 				//Display form for the first time
 				$this->fnPayflowDisplayForm($data, $error);
 			}
 		} 
-
 	}
 
 	/**
-	 * Displays form to user
+	 * Build the submission form sans submit button
 	 *
-	 * @param $data Array: array of posted user input
-	 * @param $error Array: array of error messages returned by validate_form function
-	 *
-	 * The message at the top of the form can be edited in the payflow_gateway.i18.php file
+	 * This allows for additional form elements/processing to be handled
+	 * by extra modules (eg during 'challenge' action)
+	 * 
+	 * See $this->fnPayflowDisplayForm
 	 */
-	private function fnPayflowDisplayForm( $data, &$error ) {
+	public function fnPayflowGenerateFormBody( $data, &$error ) {
 		require_once( 'includes/stateAbbreviations.inc' );
 		require_once( 'includes/countryCodes.inc' );
 	
 		global $wgOut, $wgLang, $wgWikipediaForeverTheme;
 
 		// save contrib tracking id early to track abondonment
-		if ( $data[ 'numAttempt' ] == 0 ) {
+		if ( $data[ 'numAttempt' ] == '0' ) {
 			if ( !$tracked = $this->fnPayflowSaveContributionTracking( $data ) ) {
 				$when = time();
 				wfDebugLog( 'payflowpro_gateway', 'Unable to save data to the contribution_tracking table ' . $when );
@@ -387,10 +440,19 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			Xml::hidden( 'token', $data['token'] ) .
 			Xml::hidden( 'orderid', $data['order_id'] ) .
 			Xml::hidden( 'numAttempt', $data['numAttempt'] ) .
-			Xml::hidden( 'contribution_tracking_id', $data['contribution_tracking_id'] );
-				
+			Xml::hidden( 'contribution_tracking_id', $data['contribution_tracking_id'] ) .
+			Xml::hidden( 'data_hash', $data[ 'data_hash' ] ) .
+			Xml::hidden( 'action', $data[ 'action' ] );
+		return $form;
+	}
+
+	/**
+ 	 * Build the submit portion of the submission form
+	 * See $this->fnPayflowDiplayForm
+	 */
+	public function fnPayflowGenerateFormSubmit( $data, &$error ) {
 		// submit button and close form
-		$form .= Xml::openElement( 'div', array( 'class' => 'mw-donate-submessage' ) ) .
+		$form = Xml::openElement( 'div', array( 'class' => 'mw-donate-submessage' ) ) .
 			wfMsg( 'payflowpro_gateway-donate-click' ) . 
 			Xml::tags( 'div', array( 'id' => 'mw-donate-submit-button' ), 	
 				Xml::submitButton( wfMsg( 'payflowpro_gateway-submit-button' ) ) ) .
@@ -400,8 +462,23 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				wfMsg( 'payflowpro_gateway-question-comment' ) ) .
 			Xml::closeElement( 'form' ) .
 			Xml::closeElement( 'div' ) .
+			Xml::closeElement( 'div' ).
 			Xml::closeElement( 'div' );
+		return $form;
+	}
 
+	/**
+	 * Build and displays form to user
+	 *
+	 * @param $data Array: array of posted user input
+	 * @param $error Array: array of error messages returned by validate_form function
+	 *
+	 * The message at the top of the form can be edited in the payflow_gateway.i18.php file
+	 */
+	public function fnPayflowDisplayForm( $data, &$error ) {
+		global $wgOut;
+		$form = $this->fnPayflowGenerateFormBody( &$data, &$error );
+		$form .= $this->fnPayflowGenerateFormSubmit( &$data, &$error );
 		$wgOut->addHTML( $form );
 	}
 
@@ -436,7 +513,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		foreach( $data as $key => $value ) {
 			if( $value == '' || $data['state'] == 'YY' ) {
 				// ignore fields that are not required
-				if( $msg[$key] ) {
+				if( isset($msg[$key]) ) {
 					$error[$key] = "**" . wfMsg( 'payflowpro_gateway-error-msg', $msg[$key] ) . "**<br />";
 					$error_result = '1';
 				}
@@ -540,7 +617,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'LASTNAME' => $data['lname'],
 			'STREET' => $data['street'],
 			'ZIP' => $data['zip'],
-			'INVNUM' => $payflow_data['order_id'],
+			'INVNUM' => $data['order_id'],
 			'CVV2' => $data['cvv'],
 			'CURRENCY' => $data['currency'],
 			'VERBOSITY' => $payflow_data['verbosity'],
@@ -560,7 +637,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		$headers[] = 'Content-Type: text/namevalue';
 		$headers[] = 'Content-Length : ' . strlen( $payflow_query );
 		$headers[] = 'X-VPS-Client-Timeout: 45';
-		$headers[] = 'X-VPS-Request-ID:' . $payflow_data['order_id'];
+		$headers[] = 'X-VPS-Request-ID:' . $data['order_id'];
 		$ch = curl_init();
 		$paypalPostTo = isset ( $wgDonationTestingMode ) ? 'testingurl' : 'paypalurl'; 
 		curl_setopt( $ch, CURLOPT_URL, $payflow_data[ $paypalPostTo ] );
@@ -752,6 +829,9 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		
 		// hook to call stomp functions
 		wfRunHooks( 'gwStomp', array( &$transaction ) );
+
+		// set the object property for the transaction
+		$this->payflow_transaction = $transaction;
 
 		if ( $wgExternalThankYouPage ) {
 			$wgOut->redirect( $wgExternalThankYouPage . "/" . $data['language'] );

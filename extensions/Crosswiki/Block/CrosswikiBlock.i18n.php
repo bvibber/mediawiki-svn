@@ -459,6 +459,12 @@ $messages['ce'] = array(
 	'crosswikiunblock-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'crosswikiblock-reason' => 'هۆکار:',
+	'crosswikiunblock-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -520,6 +526,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -532,7 +539,7 @@ Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob 
 	'crosswikiblock-expiry' => 'Sperrdauer:',
 	'crosswikiblock-reason' => 'Grund:',
 	'crosswikiblock-submit' => 'IP-Adresse/Benutzer sperren',
-	'crosswikiblock-anononly' => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
+	'crosswikiblock-anononly' => 'Sperre nur unangemeldete Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
 	'crosswikiblock-nocreate' => 'Erstellung von Benutzerkonten verhindern',
 	'crosswikiblock-autoblock' => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
 	'crosswikiblock-noemail' => 'E-Mail-Versand sperren',
@@ -1012,6 +1019,12 @@ Zrugg zue:
 $messages['gv'] = array(
 	'crosswikiblock-reason' => 'Fa:',
 	'crosswikiunblock-reason' => 'Fa:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'crosswikiblock-reason' => 'Dalili:',
+	'crosswikiunblock-reason' => 'Dalili:',
 );
 
 /** Hawaiian (Hawai`i)
@@ -2156,7 +2169,7 @@ Artorna a:
 $messages['ps'] = array(
 	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
-	'crosswikiblock-submit' => 'پدې کارن بنديز لګول',
+	'crosswikiblock-submit' => 'په دې کارن بنديز لګول',
 	'crosswikiunblock-reason' => 'سبب:',
 );
 
@@ -2837,6 +2850,12 @@ $messages['uk'] = array(
 	'crosswikiblock-reason' => 'Причина:',
 	'crosswikiblock-submit' => 'Заблокувати цього користувача',
 	'crosswikiunblock-reason' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'crosswikiblock-reason' => 'وجہ:',
+	'crosswikiunblock-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

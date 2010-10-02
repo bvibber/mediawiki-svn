@@ -238,9 +238,10 @@ $messages['bcl'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'timedmedia-desc' => 'Апрацоўшчык файлаў Ogg Theora і Vorbis з прайгравальнікам JavaScript',
+	'timedmedia-desc' => 'Апрацоўшчык сынхранізаваных файлаў (відэа, аўдыя, timedText) зь перакадаваньнем у Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Аўдыё-файл Ogg $1, $2',
 	'timedmedia-short-video' => 'Відэа-файл у фармаце Ogg $1, $2',
 	'timedmedia-short-general' => 'Мэдыя-файл Ogg $1, $2',
@@ -668,7 +669,7 @@ Vous pouvez <a href="$1">télécharger le clip</a> ou <a href="http://www.mediaw
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'timedmedia-desc' => 'Assistance por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript.',
+	'timedmedia-desc' => 'Assistance por los fichiérs multimèdia que dèfilont (vidèô, ôdiô, tèxto sincronisâ) avouéc transcodâjo en Ogg Theora / Vorbis.',
 	'timedmedia-short-audio' => 'Fichiér son Ogg $1, $2',
 	'timedmedia-short-video' => 'Fichiér vidèô Ogg $1, $2',
 	'timedmedia-short-general' => 'Fichiér multimèdia Ogg $1, $2',
@@ -1202,6 +1203,8 @@ $messages['lb'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg-Toun-/Video-Fichier, $1, Dauer: $2, $4×$5 Pixel, $3)',
 	'timedmedia-long-general' => '(Ogg Media-Fichier, Dauer $2, $3)',
 	'timedmedia-long-error' => '(Ongëltegen Ogg-Fichier: $1)',
+	'timedmedia-no-player-js' => 'Pardon, Äre Browser huet entweder JavaScript ausgeschalt oder en huet kee Player-Programm deen ënnerstëtzt gëtt.<br />
+Dir kënnt <a href="$1"> de Clip eroflueden</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Player-Programm erofluede</a> fir de Clip an Ärem Browser ze spillen.',
 	'timedmedia-more' => 'Méi ...',
 	'timedmedia-dismiss' => 'Zoumaachen',
 	'timedmedia-download' => 'Fichier eroflueden',
@@ -1674,6 +1677,7 @@ $messages['roa-tara'] = array(
 	'timedmedia-dismiss' => 'Chiude',
 	'timedmedia-download' => 'Scareche stu file',
 	'timedmedia-desc-link' => "'Mbormaziune sus a stu file",
+	'timedmedia-oggThumb-failed' => 'oggThumn ha fallite a ccrejà le miniature.',
 );
 
 /** Russian (Русский)

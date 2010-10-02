@@ -41,15 +41,6 @@ $3',
 $messages['qqq'] = array(
 	'validationstatistics' => '{{Flagged Revs}}',
 	'validationstatistics-users' => '{{Flagged Revs}}',
-	'validationstatistics-time' => '{{FlaggedRevs}}
-This message is shown on [http://de.wikipedia.org/wiki/Spezial:Markierungsstatistik?uselang={{UILANGCODE}} Special:ValidationStatistics].
-
-* $1: the average time in hhmmss
-* $2: average lag in hhmmss
-* $3: the median in hhmmss
-* $4: a table in HTML syntax.
-* $5: the date of the last update
-* $6: the time of the last update',
 	'validationstatistics-table' => '{{Flagged Revs}}',
 	'validationstatistics-ns' => '{{Flagged Revs}}
 {{Identical|Namespace}}',
@@ -203,6 +194,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -211,7 +203,7 @@ $messages['br'] = array(
 
 An Aozerien hag an Adlennerien a zo implijerien staliet a c'hell gwiriañ adweladennoù ar pajennoù.",
 	'validationstatistics-lastupdate' => "''Ar roadennoù da-heul a zo bet hizivaet d'an $1 da $2.''",
-	'validationstatistics-table' => "A-is emañ diskouezet ar stadegoù evit pep esaouenn anv, ''nemet'' evit ar pajennoù adkas.",
+	'validationstatistics-table' => "A-is emañ diskouezet ar stadegoù adwelout evit pep esaouenn anv, ''nemet'' evit ar pajennoù adkas.",
 	'validationstatistics-ns' => 'Esaouenn anv',
 	'validationstatistics-total' => 'Pajennoù',
 	'validationstatistics-stable' => 'Adwelet',
@@ -260,19 +252,16 @@ $messages['ca'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}''' té actualment '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|usuari|usuaris}} amb drets d'[[{{MediaWiki:Validationpage}}|Editor]].
 
 Els Editors són usuaris experimentats que poden validar les revisions de les pàgines.",
-	'validationstatistics-time' => "''Les següents dades van ser actualitzades per darrera vegada el dia $5 a les $6.''
-
-Es consideren revisades aquelles edicions que han estat validades per usuaris establerts.
-
-La mitja d'espera de les edicions d'''usuaris no registrats'' per a ser revisades és de '''$1'''; la mitjana és de '''$3'''.
-$4
-El retard mig per a [[Special:OldReviewedPages|pàgines amb edicions no revisades pendents]] és '''$2'''.
-Aquestes pàgines es consideren ''obsoletes''. De la mateixa manera, es consideren com a ''sincronitzades'' quan no hi ha modificacions pendents de revisió.",
 	'validationstatistics-ns' => "Nom d'espai",
 	'validationstatistics-total' => 'Pàgines',
 	'validationstatistics-stable' => "S'ha revisat",
 	'validationstatistics-latest' => 'Sincronitzat',
 	'validationstatistics-synced' => 'Sincronitzat/Revisat',
+);
+
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'validationstatistics-user' => 'بەکارهێنەر',
 );
 
 /** Czech (Česky)
@@ -427,15 +416,6 @@ $messages['el'] = array(
  */
 $messages['en-gb'] = array(
 	'validationstatistics' => 'Page review statistics',
-	'validationstatistics-time' => "''The following data was last updated on $5 at $6.''
-
-Edits that have been checked by established users are considered to be reviewed.
-
-The average wait for edits by ''users that have not logged in'' to be reviewed is '''$1'''; the median is '''$3'''.  
-$4
-The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
-These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.",
 );
 
 /** Esperanto (Esperanto)
@@ -604,18 +584,18 @@ $3",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'validationstatistics' => 'Statistiques de validacion.',
+	'validationstatistics' => 'Statistiques de rèvision de les pâges',
 	'validationstatistics-users' => "'''{{SITENAME}}''' at ora '''[[Special:ListUsers/editor|$1]]''' utilisator{{PLURAL:$1||s}} avouéc los drêts de [[{{MediaWiki:Validationpage}}|contributor]].
 
 Los contributors sont des utilisators ètablis que pôvont controlar les vèrsions de les pâges.",
-	'validationstatistics-table' => "Les statistiques por châque èspâço de noms sont montrâs ce-desot, a l’''èxcllusion'' de les pâges de redirèccion.",
+	'validationstatistics-table' => "Les statistiques de rèvision de les pâges por châque èspâço de noms sont montrâs ce-desot, ''mas pas'' les pâges de redirèccion.",
 	'validationstatistics-ns' => 'Èspâço de noms',
 	'validationstatistics-total' => 'Pâges',
 	'validationstatistics-stable' => 'Revua',
 	'validationstatistics-latest' => 'Sincronisâ',
 	'validationstatistics-synced' => 'Sincronisâ / Revua',
 	'validationstatistics-old' => 'Dèpassâ',
-	'validationstatistics-utable' => 'Vê-que la lista des 5 mèlyors rèvisors dens l’hora passâ.',
+	'validationstatistics-utable' => 'Vê-que la lista des 5 rèvisors los ples bons dens l’hora passâ.',
 	'validationstatistics-user' => 'Utilisator',
 	'validationstatistics-reviews' => 'Rèvisions',
 );
@@ -711,6 +691,11 @@ $3",
 $messages['gu'] = array(
 	'validationstatistics-total' => 'પાનાં',
 	'validationstatistics-stable' => 'પરામર્શિત',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'validationstatistics-ns' => 'Sararin suna',
 );
 
 /** Hebrew (עברית)
@@ -881,7 +866,12 @@ $3",
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'validationstatistics' => 'Nlé màkà orüba ihü',
+	'validationstatistics-ns' => 'Ámááhà',
 	'validationstatistics-total' => 'Ihü',
+	'validationstatistics-stable' => 'Hé léfùrù ya',
+	'validationstatistics-user' => "Ọ'bànifé",
+	'validationstatistics-reviews' => 'Nléfù',
 );
 
 /** Ido (Ido)
@@ -902,6 +892,7 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Blaisorblade
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
@@ -909,11 +900,11 @@ $messages['is'] = array(
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'validationstatistics' => 'Statistiche di convalidazione',
+	'validationstatistics' => 'Statistiche di revisione',
 	'validationstatistics-users' => "{{SITENAME}}''' ha attualmente '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utente|utenti}} con diritti di [[{{MediaWiki:Validationpage}}|Editore]] e '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utente|utenti}} con diritti di [[{{MediaWiki:Validationpage}}|Revisore]].
 
 Gli editori sono utenti stabili che possono coonvalidare le revisioni nelle pagine",
-	'validationstatistics-table' => "Le statistiche per ciascun namespace sono mostrate di seguito, ''a esclusione'' delle pagine di redirect.",
+	'validationstatistics-table' => "Le statistiche di revisione per ciascun namespace sono mostrate di seguito, ''a esclusione'' delle pagine di redirect.",
 	'validationstatistics-ns' => 'Namespace',
 	'validationstatistics-total' => 'Pagine',
 	'validationstatistics-stable' => 'Revisionate',

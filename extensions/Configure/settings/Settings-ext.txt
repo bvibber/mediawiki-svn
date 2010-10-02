@@ -169,6 +169,7 @@ url = http://www.mediawiki.org/wiki/Extension:CategoryTree
 
 CategoryWatch
 settings[] = wgCategoryWatchNotifyEditor: bool, wgCategoryWatchUseAutoCat: bool
+settings[] = wgCategoryWatchUseAutoCatRealName: bool
 url = http://www.mediawiki.org/wiki/Extension:CategoryWatch
 
 CategoryFeed
@@ -255,11 +256,12 @@ settings[] = wgCodeReviewENotif: bool, wgCodeReviewImgRegex: text
 settings[] = wgSubversionProxy: text, wgSubversionProxyTimeout: int
 settings[] = wgSubversionUser: text, wgSubversionPassword: text
 settings[] = wgCodeReviewImportBatchSize: int, wgWikiSVN: text
-settings[] = wgCodeReviewSharedSecret: text, wgSubversionOptions: text
-settings[] = wgCodeReviewCommentWatcher: text, wgCodeReviewMaxDiffSize: int
-settings[] = wgCodeReviewTestsTimeout: int, wgCodeReviewDeferredPaths: array
+settings[] = wgSubversionOptions: text, wgCodeReviewCommentWatcher: text
+settings[] = wgCodeReviewMaxDiffSize: int, wgCodeReviewDeferredPaths: array
+settings[] = wgCRUDPAddress: text, wgCRUDPPort: int, wgCRUDPPrefix: text
 array[] = wgCodeReviewDeferredPaths: simple
 empty[] = wgCodeReviewSharedSecret: false, wgCodeReviewCommentWatcher: false
+empty[] = wgCRUDPAddress: false, wgCRUDPPort: false
 schema = true
 url = http://www.mediawiki.org/wiki/Extension:CodeReview
 
@@ -1027,6 +1029,8 @@ WikiTextLoggedInOut
 url = http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut
 
 Woopra
+settings[] = wgWoopraSitekey: text
+empty[] = wgWoopraSitekey: false
 url = http://www.mediawiki.org/wiki/Extension:Woopra
 
 YouTubeAuthSub

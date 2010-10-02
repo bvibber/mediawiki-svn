@@ -180,6 +180,7 @@ Punche o botón 'entazaga' d'o suyo navegador ta tornar ta l'editor de pachinas.
  * @author Meno25
  * @author Mido
  * @author OsamaK
+ * @author Samer
  */
 $messages['ar'] = array(
 	'captcha-edit' => 'لتعديل هذه الصفحة، من فضلك قم بحل المسألة الرياضية البسيطة بالأسفل وأدخل الإجابة في الصندوق ([[Special:Captcha/help|مزيد من المعلومات]]):',
@@ -191,6 +192,7 @@ $messages['ar'] = array(
 	'captcha-createaccount-fail' => 'كود تأكيد غير صحيح أو مفقود.',
 	'captcha-create' => 'لإنشاء هذه الصفحة، من فضلك حل المسألة الرياضية التالية وأدخل
 الإجابة في الصندوق ([[Special:Captcha/help|مزيد من المعلومات]]):',
+	'captcha-sendemail' => 'للمساعدة في الحماية ضد السخام الأتوماتيكي، رجاءً حُل مسألة الجمع البسيطة أدناه وأدخل الإجابة في المربع ([[Special:Captcha/help|مزيد من المعلومات]]):',
 	'captcha-sendemail-fail' => 'كود تأكيد غير صحيح أو مفقود',
 	'captchahelp-title' => 'مساعدة الكابتشا',
 	'captchahelp-cookies-needed' => 'ستحتاج إلى أن تكون الكوكيز مفعلة في متصفحك لكي يعمل هذا',
@@ -958,11 +960,12 @@ Presione el botón 'atrás' en su navegador para retornar al editor de página."
  * @author Pikne
  */
 $messages['et'] = array(
-	'captcha-edit' => 'Selle lehekülje muutmiseks lahendage palun lihtne tehe ja sisestage vastus kasti ([[Special:Captcha/help|täpsem teave]]).',
+	'captcha-edit' => 'Selle lehekülje muutmiseks lahenda palun lihtne tehe ja sisesta vastus kasti ([[Special:Captcha/help|lisateave]]).',
 	'captcha-desc' => 'Lihtne robotilõks',
-	'captcha-addurl' => 'Teie muudatuses on uusi linke; kaitseks spämmi vastu peate sisestama järgneval pildil olevad sõnad:<br /> ([[Special:Captcha/help|Mis see on?]])',
+	'captcha-addurl' => 'Sinu muudatus sisaldab uusi välislinke.
+Palun lahenda allpool lihtne tehe ja sisesta vastus kasti. Abinõu on kaitseks automaadistatud rämpsmuudatuste vastu ([[Special:Captcha/help|lisateave]]):',
 	'captcha-badlogin' => 'Kaitseks automaatsete parooliäraarvajate vastu, palun lahenda see lihtne tehe ja sisesta vastus kasti ([[Special:Captcha/help|täpsem teave]]):',
-	'captcha-createaccount' => 'Palun lahendage lihtne tehe ja sisestage vastus kasti. Abinõu on kaitseks kontode automaatse loomise vastu ([[Special:Captcha/help|täpsem teave]]).',
+	'captcha-createaccount' => 'Palun lahenda lihtne tehe ja sisesta vastus kasti. Abinõu on kaitseks kontode automaatse loomise vastu ([[Special:Captcha/help|lisateave]]):',
 	'captcha-createaccount-fail' => 'Puuduv või valesti sisestatud kinnituskood.',
 	'captcha-create' => 'Lehekülje loomiseks lahenda palun lihtne tehe ja sisesta vastus kasti
 ([[Special:Captcha/help|täpsem teave]]):',
@@ -2083,7 +2086,7 @@ $messages['ml'] = array(
 യാന്ത്രിക സ്പാമിനെതിരെയുള്ള സം‌രക്ഷണത്തിന്റെ ഭാഗമായി, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ലഘു ഗണിത ക്രിയ ചെയ്ത് അതിന്റെ ഉത്തരം താഴെയുള്ള പെട്ടിയിൽ ടൈപ്പു ചെയ്യുക ([[Special:Captcha/help|കൂടുതൽ വിവരങ്ങൾ]]):',
 	'captcha-badlogin' => 'യാന്ത്രിക രഹസ്യവാക്ക് പൊളിക്കലിനെതിരായുള്ള സം‌രക്ഷണത്തിന്റെ ഭാഗമായി, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ലഘു ഗണിത ക്രിയ ചെയ്ത് അതിന്റെ ഉത്തരം താഴെയുള്ള പെട്ടിയിൽ ടൈപ്പു ചെയ്യുക ([[Special:Captcha/help|കൂടുതൽ വിവരങ്ങൾ]]):',
 	'captcha-createaccount' => 'യാന്ത്രിക അംഗത്വം സൃഷ്ടിക്കലിനെതിരെയുള്ള സം‌രക്ഷണത്തിന്റെ ഭാഗമായി, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ലഘു ഗണിത ക്രിയ ചെയ്ത് അതിന്റെ ഉത്തരം താഴെയുള്ള പെട്ടിയിൽ ടൈപ്പു ചെയ്യുക ([[Special:Captcha/help|കൂടുതൽ വിവരങ്ങൾ]]):',
-	'captcha-createaccount-fail' => 'അസാധുവായതോ കാൺ‌മാനില്ലാത്തതോ ആയ സ്ഥിരീകരണ കോഡ്.',
+	'captcha-createaccount-fail' => 'അസാധുവായതോ കാൺമാനില്ലാത്തതോ ആയ സ്ഥിരീകരണ കോഡ്.',
 	'captcha-create' => 'ഈ താൾ സൃഷ്ടിക്കുവാൻ, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന കൂട്ടൽ ക്രിയയുടെ ഉത്തരം താഴെയുള്ള പെട്ടിയിൽ എഴുതുക  ([[Special:Captcha/help|കൂടുതൽ വിവരങ്ങൾക്ക്]]):',
 	'captcha-sendemail' => 'യാന്ത്രികമായ പാഴ് എഴുത്ത് ഉൾപ്പെടുത്തലിനുള്ള പ്രതിരോധമെന്ന നിലയിൽ, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ലഘു ഗണിതപ്രശ്നത്തിന്റെ ഉത്തരം പെട്ടിയിൽ എഴുതുക ([[Special:Captcha/help|കൂടുതൽ വിവരങ്ങൾ]]):',
 	'captcha-sendemail-fail' => 'തെറ്റായതോ ലഭ്യമല്ലാത്തതോ ആയ സ്ഥിരീകരണ കോഡ്.',
@@ -2143,6 +2146,7 @@ $messages['mr'] = array(
 	'captcha-createaccount' => 'आपोआप होणार्‍या सदस्य नोंदणीपासून वाचण्यासाठी, खाली दिलेले सोपे गणित सोडवून त्याचे उत्तर दिलेल्या पृष्ठपेटी मध्ये लिहा ([[Special:Captcha/help|अधिक माहिती]]):',
 	'captcha-createaccount-fail' => 'चुकीचा अथवा रिकामा सहमती कोड',
 	'captcha-create' => 'हे पान तयार करण्यासाठी, खाली दिलेले सोपे गणित सोडवून त्याचे उत्तर दिलेल्या पृष्ठपेटी मध्ये लिहा ([[Special:Captcha/help|अधिक माहिती]]):',
+	'captcha-sendemail-fail' => 'चुकीचा अथवा रिकामा सहमती कोड',
 	'captchahelp-title' => 'कॅप्टचा साहाय्य',
 	'captchahelp-cookies-needed' => 'हे काम करण्यासाठी तुम्ही कूकीज (cookies) एनेबल केलेल्या असणे गरजेचे आहे.',
 	'captchahelp-text' => "ज्या संकेतस्थळांवर जसे की हा विकि, सर्वसामान्य लोकांकडून संपादने करण्याची परवानगी असते, तिथे आपोआप होणारी स्वत:च्या संकेतस्थळांचे दुवे देणारी संपादने (Spam) कायम होत असतात.
@@ -2857,6 +2861,7 @@ Shtypni butonin "prapa" ("back") të shfletuesit tuaj për tu kthyer tek faqja e
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'captcha-edit' => 'За измену ове стране, реши једноставан збри испод и унеси одговор у кутију ([[Special:Captcha/help|детаљније]]):',
@@ -2866,8 +2871,9 @@ $messages['sr-ec'] = array(
 	'captcha-createaccount' => 'У циљу заштите од аутоматског стварања налога, реши једноставан збир доле и унеси га у кутију ([[Special:Captcha/help|детаљније]]):',
 	'captcha-createaccount-fail' => 'Неправилан или непостојећи код за потврду.',
 	'captcha-create' => 'За стварање стране реши једноставан збир доле и унеси га у кутију ([[Special:Captcha/help|детаљније]]):',
-	'captchahelp-title' => 'помоћ за капчу',
-	'captchahelp-cookies-needed' => 'Да би ово урадио, неопходно је да су ти колачићи омогућени у браузеру.',
+	'captcha-sendemail-fail' => 'Неправилан или непостојећи код за потврду.',
+	'captchahelp-title' => 'Помоћ око потврдног кôда',
+	'captchahelp-cookies-needed' => 'Да бисте успешно завршили ову радњу, неопходно је да су Вам колачићи омогућени у прегледачу.',
 	'right-skipcaptcha' => 'Изведи акције капче без потребе да се прође кроз капчу.',
 );
 
@@ -3174,6 +3180,7 @@ Sayfa düzenleyiciye dönmek için tarayıcınızın 'geri' tuşuna basınız.",
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author NickK
+ * @author Riwnodennyk
  * @author Тест
  */
 $messages['uk'] = array(
@@ -3186,6 +3193,7 @@ $messages['uk'] = array(
 	'captcha-createaccount-fail' => 'Неправильний або відсутній код підтвердження.',
 	'captcha-create' => 'Щоб створити сторінку, будь ласка, виконайте просту арифметичну дію і введіть відповідь у текстове поле ([[Special:Captcha/help|докладніше]]):',
 	'captcha-sendemail-fail' => 'Неправильний або відсутній код підтвердження.',
+	'captcha-disabledinapi' => 'Ця дія потребує перевірки на "бота чи людину", тому не може бути здійснена за допомогою API.',
 	'captchahelp-title' => 'Довідка про CAPTCHA',
 	'captchahelp-cookies-needed' => 'Вам потрібно ввімкнути куки у браузері, щоб ця функція запрацювала.',
 	'captchahelp-text' => 'Веб-сайти, що дозволяють додавати або змінювати свій вміст, у тому числі вікі, часто стають ціллю спамерів, які використовують програми для автоматичного додавання посилань.

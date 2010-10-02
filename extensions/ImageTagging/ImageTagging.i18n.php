@@ -837,6 +837,12 @@ $messages['gu'] = array(
 	'tag-logpagetext' => 'આ ઉમેરાયેલ કે દુર કરાયેલ તમામ ચિત્ર અંકિતકનીં નોંધ છે.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'imagetagging-article' => 'Shafi:',
+	'imagetagging-tagcancel-button' => 'Soke',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity
@@ -1214,6 +1220,7 @@ Donn drop wade, bes dä Vörjang fädesch es, dä jraad em Jang es.',
  */
 $messages['lb'] = array(
 	'taggedimages' => 'Markéiert Biller',
+	'imagetagging-desc' => "Erméiglecht et Benotzer fir Deeler vun agebonne Biller erauszesichen a se mat enger Säit z'associéieren",
 	'imagetagging-addimagetag' => 'Markéierung op dëst Bild derbäisetzen',
 	'imagetagging-article' => 'Säit:',
 	'imagetagging-articletotag' => 'Säit fir ze markéieren',
@@ -2084,11 +2091,16 @@ $messages['tr'] = array(
 	'tag-logpagename' => 'Etiketleme kaydı',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
 	'imagetagging-article' => 'Bet:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'imagetagging-tagcancel-button' => 'منسوخ',
 );
 
 /** Veps (Vepsan kel')

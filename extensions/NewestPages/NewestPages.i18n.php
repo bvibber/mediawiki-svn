@@ -235,6 +235,11 @@ $messages['ch'] = array(
 	'newestpages-submit' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'newestpages-submit' => 'بڕۆ',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -500,6 +505,11 @@ $messages['gsw'] = array(
  */
 $messages['gv'] = array(
 	'newestpages-submit' => 'Gow',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'newestpages-namespace' => 'Sararin suna:',
 );
 
 /** Hebrew (עברית)
@@ -1435,7 +1445,7 @@ $messages['ug-arab'] = array(
 	'newestpages-submit' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

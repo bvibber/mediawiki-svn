@@ -322,6 +322,7 @@ The signature is shown automatically.',
 /** Message documentation (Message documentation)
  * @author Aotake
  * @author Bennylin
+ * @author Blaisorblade
  * @author Crt
  * @author Dani
  * @author Darth Kule
@@ -483,7 +484,8 @@ Parameters are:
 * $3 is a date
 * $4 is a time
 * $5 is the title of a talk page with the thread $2
-* $6 is a permalink URL',
+* $6 is a permalink URL
+* $7 is a reply text',
 	'lqt-quote-intro' => 'Used as a header in thread entries.
 * $1 is a user name
 * $2 is a date
@@ -1661,8 +1663,9 @@ $messages['be-tarask'] = array(
 
 Вы можаце паглядзець яе на <$6>",
 	'lqt-enotif-reply' => "Вітаем, $1!
+
 Гэта паведамленьне з {{GRAMMAR:родны|{{SITENAME}}}} пра новы адказ '$2' на старонцы $5, 
-створаны у $4 $3.
+створаны ў $4 $3.
 
 Вы можаце паглядзець яго на <$6>.
 
@@ -2114,6 +2117,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -2319,7 +2323,10 @@ He lenn a c'hallit war <$6>",
 Setu ur c'hemenn a-berzh {{SITENAME}} a embann ez eus ur respont nevez da '$2' war $5,
 bet savet d'an $3 da $4.
 
-E lenn a c'hallit ober war <$6>",
+E lenn a c'hallit ober war <$6>
+
+Testenn ar respont a zo:
+$7",
 	'lqt-quote-intro' => "D'an $2 da $3, eo bet skrivet gant [[User:$1|$1]] :",
 	'lqt-quote' => 'Menegiñ',
 	'lqt-search-legend' => 'Klask kaozeadennoù war ar bajenn-mañ',
@@ -2913,6 +2920,20 @@ $messages['ch'] = array(
 	'lqt_discussion_link' => 'kombetsasion',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'lqt_delete' => 'سڕینەوە',
+	'lqt_undelete' => 'گەڕاندنەوەی سڕین',
+	'lqt_move_move' => 'گواستنەوە',
+	'lqt-summary' => 'پوختە',
+	'lqt-history-user' => 'بەکارهێنەر',
+	'lqt-movethread' => 'گواستنەوە',
+	'lqt-search-button' => 'گەڕان',
+	'lqt-save-subject' => 'پاشەکەوت',
+	'lqt-drag-save' => 'پشتدار بکەرەوە',
+	'lqt-drag-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský
@@ -3117,10 +3138,14 @@ bylo v $5 založeno nové vlákno „$2“.
 
 Můžete si ho prohlédnout na <$6>.',
 	'lqt-enotif-reply' => 'Vážený uživateli $1,
+
 Toto je oznámení z {{grammar:2sg|{{SITENAME}}}}, že $3 v $4
 byla v $5 přidána nová odpověď na „$2“.
 
-Můžete si ji prohlédnout na <$6>.',
+Můžete si ji prohlédnout na <$6>.
+
+Text odpovědi:
+$7',
 	'lqt-quote-intro' => '$2 v $3 {{GENDER:$1|napsal|napsala|napsal}} [[User:$1|$1]]:',
 	'lqt-quote' => 'Citovat',
 	'lqt-search-legend' => 'Hledat v diskusích na této stránce',
@@ -3504,6 +3529,7 @@ Die Signatur wird automatisch ergänzt.',
  * @author ChrisiPK
  * @author Giftpflanze
  * @author Imre
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'lqt_invalid_subject' => 'Der Betreff, den Sie eingegeben haben, ist ungültig.
@@ -3538,7 +3564,10 @@ Sie können ihn auf <$6> einsehen.',
 	'lqt-enotif-reply' => 'Hallo $1,
 dies ist eine Benachrichtigung von {{SITENAME}}, dass am $3 um $4 auf $5 ein neue Antwort auf den Diskussionsstrang „$2“ geschrieben wurde.
 
-Sie können sie auf <$6> einsehen.',
+Sie können sie auf <$6> einsehen.
+
+Die Antwort lautet:
+$7',
 	'lqt-sign-not-necessary' => 'Es ist nicht notwendig, Ihre Antwort mit vier Tilden zu signieren.
 Die Signatur wird automatisch ergänzt.',
 	'lqt-ajax-no-subject' => 'Sie müssen einen Betreff angeben.',
@@ -4020,7 +4049,10 @@ Móžoš jo na <$6> wiźeś",
 	'lqt-enotif-reply' => "Witaj $1,
 to jo zdźělenje wót {{GRAMMAR:genitiw|{{SITENAME}}}}, až jo se nowe wótegrono k '$2' na $5 $3 $4 napórało.
 
-Móžoš jo na <$6> wiźeś",
+Móžoš jo na <$6> wiźeś
+
+Tekst wótegrona jo:
+$7",
 	'lqt-quote-intro' => '$2 $3 jo [[User:$1|$1]] {{GENDER:$1|napisał|napisała|napisał}}:',
 	'lqt-quote' => 'Citěrowaś',
 	'lqt-search-legend' => 'Diskusije na toś tom boku pśepytaś',
@@ -4492,7 +4524,10 @@ Vi povas vidi ĝin ĉe <$6>",
 Jen sciigo de {{SITENAME}} pri nova respondo al '$2' en $5,
 estis kreita je $3, $4.
 
-You can see it at <$6>",
+Vi povas vidi ĝin ĉe <$6>
+
+La teksto de la respondo estas:
+$7",
 	'lqt-quote-intro' => 'Je $2, $3, [[User:$1|$1]] skribis:',
 	'lqt-quote' => 'Citi',
 	'lqt-search-legend' => 'Serĉi diskutojn en ĉi tiu paĝo',
@@ -4525,6 +4560,7 @@ La subskribo estas aŭtomate montrita.',
 	'lqt-drag-setsortkey' => 'Modifi la pozicio de afiŝo en la paĝo',
 	'lqt-drag-bump' => 'Movi afiŝon al supero de diskuto-paĝo',
 	'lqt-drag-save' => 'Konfirmi',
+	'lqt-drag-title' => 'Konfirmi trenadon',
 	'lqt-drag-reason' => 'Kialo:',
 	'lqt-drag-subject' => 'Temo por nova fadeno:',
 	'lqt-edit-signature' => '(redakti subskribon)',
@@ -4766,11 +4802,14 @@ Para evitarlo, divídalas a partir de este hilo antes de eliminarlas.',
 	'lqt-enotif-newthread' => "Hola $1, esta es una notificación de {{SITENAME}} de que un nuevo hilo '$2' ha sido creado en $5, el $3 a las $4.
 
 Puede verlo en <$6>",
-	'lqt-enotif-reply' => "Hola, $1:
+	'lqt-enotif-reply' => "Hola $1,
 
 Esta es una notificación de {{SITENAME}}. Se ha creado una nueva respuesta a '$2' en $5 el $3 a las $4.
 
-Puedes verla en <$6>",
+Puedes verla en <$6>
+
+El texto de la respuesta es:
+$7",
 	'lqt-quote-intro' => 'El día $2 a las $3, [[User:$1|$1]] escribió:',
 	'lqt-quote' => 'Citar',
 	'lqt-search-legend' => 'Discusiones de búsqueda en esta página',
@@ -5018,9 +5057,12 @@ Selle kirjaga teatatakse võrgukohast {{SITENAME}}, et aruteluleheküljel „$5�
 See on leitav asukohast <$6>.',
 	'lqt-enotif-reply' => 'Tere, $1!
 
-Selle kirjaga teatatakse võrgukohast {{SITENAME}}, et aruteluleheküljel „$5“ loodi kuupäeval $3, kell $4 lõimele „$2“ uus vastus.
+Selle kirjaga teatatakse {{GRAMMAR:elative|{{SITENAME}}}}, et aruteluleheküljel „$5“ loodi kuupäeval $3, kell $4 lõimele „$2“ uus vastus.
 
-See on leitav asukohast <$6>.',
+See on leitav asukohast <$6>.
+
+Vastus on järgmine:
+$7',
 	'lqt-quote-intro' => 'Kuupäeval $2, kell $3 kirjutas [[User:$1|$1]]:',
 	'lqt-search-label' => 'Otsitav:',
 	'lqt-search-button' => 'Otsi',
@@ -5676,10 +5718,13 @@ a été créée le $3 à $4.
 
 Vous pouvez le voir à « $6 »',
 	'lqt-enotif-reply' => "Bonjour $1,
-Ceci est une notification de {{SITENAME}}, qu'une nouvelle réponse à « $2 » sur $5,
+Ceci est une notification de {{SITENAME}}, qu'une nouvelle réponse à « $2 » sur $5
 a été créée le $3 à $4.
 
-Vous pouvez le voir a « $6 »",
+Vous pouvez le voir sur « $6 »
+
+Le texte de la réponse est :
+$7",
 	'lqt-quote-intro' => 'Le $2 à $3, [[User:$1|$1]] a écrit :',
 	'lqt-quote' => 'Citer',
 	'lqt-search-legend' => 'Rechercher des discussions sur cette page',
@@ -5880,13 +5925,15 @@ Ceta opèracion est revèrsibla.',
 	'lqt-date-info' => 'Ceti lim est dèsactivâ perce que vos éte aprés vêre los fils dês totes les dâtes.',
 	'lqt-newmessages-context' => 'Fil complèt',
 	'lqt-thread-created' => 'Fêt',
-	'lqt-history-time' => 'Dâta',
+	'lqt-history-time' => 'Hora',
 	'lqt-history-user' => 'Utilisator',
 	'lqt-history-action' => 'Activitât',
 	'lqt-history-comment' => 'Comentèro',
 	'lqt-history-thread' => 'Fil de discussion',
-	'lqt-thread-edited-author' => 'Changiê per l’ôtor',
-	'lqt-thread-edited-others' => 'Changiê per d’ôtros utilisators',
+	'lqt-thread-edited-author' => 'Changiê per l’ôtor.<br />
+Dèrriér changement : $1',
+	'lqt-thread-edited-others' => 'Changiê per {{PLURAL:$2|un ôtro utilisator|$2 utilisators}}.<br />
+Dèrriér changement : $1',
 	'lqt-header-actions' => 'Accions',
 	'lqt_summarize_link' => 'Rèsumar',
 	'lqt-summarize-intro' => 'Rèsumar lo sujèt ce-dessus dens la bouèta d’èdicion.
@@ -5938,10 +5985,13 @@ at étâ fêta lo $3 a $4.
 
 Vos lo pouede vêre a « $6 »',
 	'lqt-enotif-reply' => 'Bonjorn $1,
-O est una notificacion de {{SITENAME}}, qu’una novèla rèponsa a « $2 » dessus $5,
+O est una notificacion de {{SITENAME}}, qu’una rèponsa novèla a « $2 » dessus $5
 at étâ fêta lo $3 a $4.
 
-Vos lo pouede vêre a « $6 »',
+Vos la pouede vêre dessus <$6>
+
+Lo tèxto de la rèponsa est :
+$7',
 	'lqt-quote-intro' => 'Lo $2 a $3, [[User:$1|$1]] at ècrit :',
 	'lqt-quote' => 'Citar',
 	'lqt-search-legend' => 'Rechèrchiér des discussions sur ceta pâge',
@@ -6166,8 +6216,8 @@ Se xa foi rematada, ao mellor quere $1.',
 	'lqt_nosuchthread' => 'O fío que especificou non existe.',
 	'lqt_nosuchthread_title' => 'Non existe tal fío',
 	'lqt_threadrequired' => 'Ten que especificar un fío no URL.',
-	'lqt_move_movingthread' => 'Movendo $1.
-Este fío é parte de $2.',
+	'lqt_move_movingthread' => 'Está a piques de mover "$1".
+Este fío forma parte de "$2".',
 	'lqt_move_torename' => 'Para mudarlle o nome a este fío, $1 e cambie o campo "Asunto".',
 	'lqt_move_torename_edit' => 'edíteo',
 	'lqt_move_destinationtitle' => 'Título da páxina de conversa de destino:',
@@ -6196,7 +6246,7 @@ Este fío é parte de $2.',
 	'lqt_header_warning_new_discussion' => 'comezar unha nova conversa',
 	'lqt_sorting_order' => 'Organizar:',
 	'lqt_sort_newest_changes' => 'os últimos modificados primeiro',
-	'lqt_sort_newest_threads' => 'novos fíos primeiro',
+	'lqt_sort_newest_threads' => 'os novos fíos primeiro',
 	'lqt_sort_oldest_threads' => 'os fíos máis vellos primeiro',
 	'lqt-title' => 'Título',
 	'lqt-summary' => 'Resumo',
@@ -6592,7 +6642,10 @@ Du chasch e säh uf <$6>",
 Des isch e Nochricht vu {{SITENAME}}, ass e neji Antwort uf '$2' iber $5,
 aagleit woren isch uf $3 am $4.
 
-Du chasch si säh uf <$6>",
+Du chasch si säh uf <$6>
+
+D Antwort isch:
+$7",
 	'lqt-quote-intro' => 'Am $2 am $3, het [[User:$1|$1]] gschribe:',
 	'lqt-quote' => 'Zitiere',
 	'lqt-search-legend' => 'Dursuech d Diskussionsbyytreg uf däre Syte',
@@ -6706,6 +6759,18 @@ $messages['gv'] = array(
 	'lqt_hist_deleted' => 'Scryssit',
 	'lqt_summary_notice_link' => 'screeu giare-choontey',
 	'lqt_newmessages' => 'Çhaghteraghtyn noa',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'lqt_delete' => 'Soke',
+	'lqt_move_move' => 'Gusarwa',
+	'lqt-summary' => 'Taƙaici',
+	'lqt-movethread' => 'Gusarwa',
+	'lqt-search-button' => 'Nema',
+	'lqt-save-subject' => 'Nema',
+	'lqt-cancel-subject-edit' => 'Soke',
+	'lqt-drag-reason' => 'Dalili:',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -7379,9 +7444,12 @@ to je zdźělenka wot {{GRAMMAR:genitiw|{{SITENAME}}}}, zo je so nowa nitka na $
 
 Móžeš ju na <$6> widźeć.",
 	'lqt-enotif-reply' => "Witaj $1,
-to je zdźělenka wot {{GRAMMAR:genitiw|{{SITENAME}}}}, zo je so nowa wotmołwa k '$2' na $5 $3 $4 wutworiła.
+to je zdźělenka z {{GRAMMAR:genitiw|{{SITENAME}}}}, zo je so nowa wotmołwa k '$2' na $5 $3 $4 wutworiła.
 
-Móžeš ju na <$6> widźeć",
+Móžeš ju na <$6> widźeć
+
+Tekst wotmołwy je:
+$7",
 	'lqt-quote-intro' => 'Dnja $2 $3 je [[User:$1|$1]] {{GENDER:$1|napisał|napisała|napisał}}:',
 	'lqt-quote' => 'Citować',
 	'lqt-search-legend' => 'Diskusije na tutej stronje přepytać',
@@ -7907,7 +7975,10 @@ Tu pote vider lo a <$6>",
 Isto es un notification ab {{SITENAME}} que un nove responsa a '$2' in $5,
 esseva create le $3 a $4.
 
-Tu pote vider lo a <$6>",
+Tu pote vider lo a <$6>
+
+Le texto del responsa es:
+$7",
 	'lqt-quote-intro' => 'Le $2 a $3, [[User:$1|$1]] scribeva:',
 	'lqt-quote' => 'Citar',
 	'lqt-search-legend' => 'Cercar in discussiones in iste pagina',
@@ -8178,10 +8249,13 @@ telah dibuat pada $3 pukul $4.
 
 Anda dapat melihatnya di <$6>",
 	'lqt-enotif-reply' => "Hai $1,
-Ini adalah pemberitahuan dari {{SITENAME}} bahwa suatu balasan terhadap '$2' di $5,
-telah dibuat pada $3 pukul $4.
+Ini adalah pemberitahuan dari {{SITENAME}} bahwa balasan baru untuk '$2' di $5,
+dibuat tanggal $3 pukul $4.
 
-Anda dapat melihatnya di <$6>",
+Anda dapat melihatnya di <$6>
+
+Teks balasan berisi:
+$7",
 	'lqt-quote-intro' => 'Pada $2 pukul $3, [[User:$1|$1]] menulis:',
 	'lqt-quote' => 'Kutip',
 	'lqt-search-legend' => 'Cari diskusi pada halaman ini',
@@ -8250,18 +8324,40 @@ Tanda tangan akan dimunculkan secara otomatis.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'lqt_contents_title' => 'Ihe dị ime',
 	'lqt_delete' => 'Gbakashia',
+	'lqt_undelete' => 'Á gbàkashikwà',
+	'lqt_permalink' => 'Jikodo na',
+	'lqt_newer' => 'ohürù',
+	'lqt_older' => 'íchié →',
+	'lqt_hist_deleted' => 'Gbakashịrị',
+	'lqt_hist_undeleted' => 'Ọ gbákashikwà',
+	'lqt_hist_moved_talkpage' => 'Páfụrụ',
 	'lqt_youhavenewmessages' => 'I nwere [[$1|ozi ohúrù]].',
+	'lqt_subject' => 'Gbàsịrị:',
+	'lqt_move_torename_edit' => 'rüo ya',
+	'lqt_move_move' => 'Páfụ',
 	'lqt-read-message-tooltip' => 'Wéfu ahiri nka na ozi ohúrù.
 Madu nwere I ki hü ya na ihü akíkó nke sinambu.',
+	'lqt-history-user' => "Ọ'bànifé",
+	'lqt-split-submit' => 'Wa',
+	'lqt-movethread' => 'Páfụ',
 	'lqt-menu-trigger' => 'Nà nké ozór',
+	'lqt-quote' => 'Kȯpùtà',
 	'lqt-search-button' => 'Chöwá',
+	'searchprofile-threads' => 'Akíkó',
+	'lqt-ajax-update-link' => 'Dịnwanye mmā',
+	'lqt-thread-link-url' => 'Jikodo URL:',
 	'lqt-save-subject' => 'Donyéré',
 	'lqt-cancel-subject-edit' => 'Kàchá',
+	'lqt-drag-drop-zone' => 'Dòsé nga',
+	'lqt-drag-save' => 'Sị Í kwèrè',
 	'lqt-drag-reason' => 'Mgbághapụtà:',
+	'lqt-preview-signature' => '(lètú)',
 	'lqt-newmessages-n' => 'Ozi ohúrù ($1)',
 	'lqt_newmessages' => 'Ozi ohúrù',
 	'lqt_newmessages-title' => 'Ozi ohúrù',
+	'lqt-talkpage-history-subtitle' => 'Màkà $1',
 );
 
 /** Ido (Ido)
@@ -8377,6 +8473,7 @@ Síðast breytt: $1',
 
 /** Italian (Italiano)
  * @author Aushulz
+ * @author Blaisorblade
  * @author Civvì
  * @author Darth Kule
  * @author F. Cosoleto
@@ -8587,7 +8684,10 @@ Puoi leggerlo a <$6>",
 Questa notifica da {{SITENAME}} ti segnala che una nuova risposta a '$2' su $5,
 è stato creata il $3 alle $4.
 
-Puoi leggerla a <$6>",
+Puoi leggerla a <$6>
+
+Il testo della risposta è:
+$7",
 	'lqt-quote-intro' => 'Il $2 alle $3, [[User:$1|$1]] ha scritto:',
 	'lqt-quote' => 'Cita',
 	'lqt-search-legend' => 'Cerca discussioni in questa pagina',
@@ -8846,9 +8946,12 @@ $messages['ja'] = array(
 
 <$6> で確認できます。',
 	'lqt-enotif-reply' => 'こんにちは、$1 さん。
-これは {{SITENAME}} からの、$5 でスレッド「$2」への新しい返信が $3 $4 にあったことのお知らせです。
+これは {{SITENAME}} からの、$5でスレッド「$2」への新しい返信が$3の$4にあったことのお知らせです。
 
-<$6> で確認できます。',
+<$6> で確認できます。
+
+返信メッセージは次のとおりです：
+$7',
 	'lqt-quote-intro' => '$2 $3に[[User:$1|$1]]が書きました:',
 	'lqt-quote' => '引用',
 	'lqt-search-legend' => 'このページ上の議論を検索する',
@@ -9499,7 +9602,10 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-enotif-reply' => "$1님 안녕하세요.
 {{SITENAME}}에서 $5 문서의 '$2' 스레드에 $3 $4에 새 답변이 올라왔습니다.
 
-해당하는 글을 <$6>에서 볼 수 있습니다.",
+해당하는 글을 <$6>에서 볼 수 있습니다.
+
+답변의 내용은 다음과 같습니다:
+$7",
 	'lqt-quote-intro' => '[[User:$1|$1]] 사용자가 $2 $3에 남긴 글:',
 	'lqt-quote' => '인용',
 	'lqt-search-legend' => '이 문서에 있는 토론 검색하기',
@@ -10509,8 +10615,8 @@ $messages['ml'] = array(
 	'lqt_hist_view_whole_thread' => 'ചരടിന്റെ പൂർണ്ണരൂപത്തിന്റെ നാൾവഴി കാണുക',
 	'lqt_hist_no_revisions_error' => 'ഈ ചരടിന് പഴയ നാൾപ്പതിപ്പുകൾ ഇല്ല.',
 	'lqt_hist_past_last_page_error' => 'താളുകളുടെ നിലനിൽക്കുന്ന ചരിത്രത്തിനപ്പുറമാണ് താങ്കൾ.',
-	'lqt_hist_tooltip_newer_disabled' => 'താങ്കൾ ആദ്യത്തെ താളിലായതിനാൽ ഈ കണ്ണി നിർ‌വീര്യമാക്കി.',
-	'lqt_hist_tooltip_older_disabled' => 'താങ്കൾ അവസാനത്തെ താളിലായതിനാൽ ഈ കണ്ണി നിർ‌വീര്യമാക്കി.',
+	'lqt_hist_tooltip_newer_disabled' => 'താങ്കൾ ആദ്യത്തെ താളിലായതിനാൽ ഈ കണ്ണി നിർവീര്യമാക്കി.',
+	'lqt_hist_tooltip_older_disabled' => 'താങ്കൾ അവസാനത്തെ താളിലായതിനാൽ ഈ കണ്ണി നിർവീര്യമാക്കി.',
 	'lqt_hist_split' => 'പുതിയൊരു ചരടായി വിഘടിപ്പിച്ച് മറുപടി നൽകുക',
 	'lqt_hist_edited_subject' => 'വിഷയം "$2" എന്നതിൽ നിന്ന് "$3" എന്നാക്കി മാറ്റി',
 	'lqt_hist_edited_subject_corrupt' => 'വിഷയം മാറ്റിയിരിക്കുന്നു',
@@ -10554,7 +10660,7 @@ $messages['ml'] = array(
 	'lqt_threadrequired' => 'URL-ൽ ഒരു ചരട് ചേർത്തിരിക്കണം',
 	'lqt_move_movingthread' => '$1 മാറ്റുന്നു.
 ഈ ചരട് $2 എന്നതിന്റെ ഭാഗമാണ്‌.',
-	'lqt_move_torename' => "ഈ ചരട് പുനർ‌നാമകരണം ചെയ്യാൻ, $1 ചെയ്തു 'തലക്കുറി' മാറ്റുക",
+	'lqt_move_torename' => "ഈ ചരട് പുനർനാമകരണം ചെയ്യാൻ, $1 ചെയ്തു 'തലക്കുറി' മാറ്റുക",
 	'lqt_move_torename_edit' => 'തിരുത്തുക',
 	'lqt_move_destinationtitle' => 'ലക്ഷ്യ സം‌വാദം താളിന്റെ തലക്കെട്ട്:',
 	'lqt_move_move' => 'തലക്കെട്ടു്‌ മാറ്റുക',
@@ -10671,9 +10777,11 @@ $5 താളിൽ, '$2' എന്നൊരു ചരട് $4, $3-യിൽ സ
 
 താങ്കൾക്ക് അത് <$6> എന്ന കണ്ണിയിൽ കാണാവുന്നതാണ്.",
 	'lqt-enotif-reply' => "പ്രിയ $1,
-$5 താളിലെ '$2' എന്നതിനു പുതിയൊരു മറുപടി $4 $3-യിൽ ഉണ്ടായിരിക്കുന്നു എന്നറിയിക്കാൻ {{SITENAME}} അയയ്ക്കുന്നതാണിത്.
+$5 താളിലെ '$2' എന്നതിനു പുതിയൊരു മറുപടി $4 $3-യിൽ ഉണ്ടായിരിക്കുന്നു എന്നറിയിക്കാൻ {{SITENAME}} അയയ്ക്കുന്ന അറിയിപ്പാണിത്.
 
-ഇത് താങ്കൾക്ക് ഇവിടെ കാണാം <$6>",
+ഇത് താങ്കൾക്ക് ഇവിടെ കാണാം <$6>
+
+മറുപടിയെഴുത്ത്: $7",
 	'lqt-quote-intro' => '$2 $3-ൽ [[User:$1|$1]] എഴുതി:',
 	'lqt-quote' => 'ഉദ്ധരണി',
 	'lqt-search-legend' => 'ഈ താളിലെ സംവാദങ്ങൾ തിരയുക',
@@ -12000,6 +12108,7 @@ $messages['pdc'] = array(
 	'lqt-thread-link-url' => 'Gleecher-URL:',
 	'lqt-thread-link-title' => 'Wikitext-Gleecher:',
 	'lqt-drag-reason' => 'Grund:',
+	'lqt-preview-signature' => '(Aagucke)',
 	'lqt-newmessages-n' => 'Neiichkeede ($1)',
 	'lqt_newmessages' => 'Neiichkeede',
 	'lqt-talkpage-history-subtitle' => 'Fer $1',
@@ -12214,11 +12323,14 @@ To jest powiadomienie z {{GRAMMAR:D.lp|{{SITENAME}}}} o tym, że
 o $4 $3 utworzono nowy wątek '$2' na stronie dyskusji $5.
 
 Możesz go zobaczyć pod adresem <$6>",
-	'lqt-enotif-reply' => "Witaj $1!
-To jest powiadomienie z {{GRAMMAR:D.lp|{{SITENAME}}}} o tym, że
-o $4 $3 ktoś odpowiedział w wątku '$2' na stronie dyskusji $5.
+	'lqt-enotif-reply' => 'Witaj $1!
+To jest powiadomienie z {{GRAMMAR:D.lp|{{SITENAME}}}} o tym, że ktoś odpowiedział w wątku „$2” na stronie $5,
+o $3 dnia $4. 
 
-Możesz zobaczyć tę odpowiedź pod adresem <$6>",
+Możesz zobaczyć wątek pod adresem <$6>
+
+Treść odpowiedzi znajduje się pod adresem
+$7',
 	'lqt-quote-intro' => 'Dnia $2 o $3 [[User:$1|$1]] napisał(a):',
 	'lqt-quote' => 'Cytuj',
 	'lqt-search-legend' => 'Szukaj dyskusji na tej stronie',
@@ -12586,6 +12698,7 @@ $messages['ps'] = array(
 	'lqt-title' => 'سرليک',
 	'lqt-summary' => 'لنډيز',
 	'lqt-email-undo' => 'ناکړل',
+	'lqt-new-messages' => '✒ تاسې نوي پيغامونه لرۍ.',
 	'lqt-thread-created' => 'جوړ شو',
 	'lqt-history-time' => 'وخت',
 	'lqt-history-user' => 'کارن',
@@ -12602,6 +12715,7 @@ $messages['ps'] = array(
 	'lqt-save-subject' => 'خوندي کول',
 	'lqt-cancel-subject-edit' => 'ناګارل',
 	'lqt-drag-reason' => 'سبب:',
+	'lqt-edit-signature' => '(لاسليک سمول)',
 	'lqt-feed-title-replies' => '{{SITENAME}} — ځوابونه',
 	'lqt-newmessages-n' => 'نوي پيغامونه ($1)',
 	'lqt_newmessages' => 'نوي پيغامونه',
@@ -12818,9 +12932,13 @@ Esta é uma notificação da {{SITENAME}} de que foi criado um tópico novo na p
 
 Pode vê-lo em <$6>",
 	'lqt-enotif-reply' => "Olá $1,
-Esta é uma notificação da {{SITENAME}} de que foi criada uma resposta nova ao tópico '$2', na página $5, a $3 às $4.
+Esta é uma notificação da {{SITENAME}} de que foi criada uma resposta nova ao tópico '$2', na página $5,
+a $3 às $4.
 
-Pode vê-la em <$6>",
+Pode vê-la em <$6>
+
+O texto da resposta é:
+$7",
 	'lqt-quote-intro' => 'A $2 às $3, [[User:$1|$1]] escreveu:',
 	'lqt-quote' => 'Citar',
 	'lqt-search-legend' => 'Pesquise as discussões nesta página',
@@ -13580,7 +13698,10 @@ Tu puè vedè a <$6>",
 	'lqt-enotif-reply' => "Cià $1,
 Queste jè 'na notifiche da {{SITENAME}} ca 'na resposta nova a '$2' sus a $5, ha state ccrejate 'u $3 a le $4.
 
-Tu puè vedè a <$6>",
+Tu puè vedè a <$6>
+
+'U teste d'a resposte jè:
+$7",
 	'lqt-quote-intro' => "'U $2 a le $3, [[User:$1|$1]] ha scritte:",
 	'lqt-quote' => 'Cite',
 	'lqt-search-legend' => "Cirche le 'ngazzaminde sus a sta pàgene",
@@ -14074,9 +14195,9 @@ $messages['sah'] = array(
 	'lqt-history-action' => 'Көҕө',
 	'lqt-history-comment' => 'Этии',
 	'lqt-history-thread' => 'Салаа',
-	'lqt-thread-edited-author' => 'Бу ааптар уларыппыт<br/>
+	'lqt-thread-edited-author' => 'Бу ааптар уларыппыт<br />
 Бүтэһик уларытыы: $1',
-	'lqt-thread-edited-others' => '$2 кыттааччы уларыппыт<br/>
+	'lqt-thread-edited-others' => '$2 кыттааччы уларыппыт<br />
 Бүтэһик уларытыы: $1',
 	'lqt-header-actions' => 'Дьайыылар',
 	'lqt_summarize_link' => 'Түмүк таһаарыы',
@@ -14129,7 +14250,10 @@ $messages['sah'] = array(
 	'lqt-enotif-reply' => 'Дорообо, $1.
 Бу $3 $4 {{SITENAME}} саайка баар $5 сирэй «$2» салаатыгар саҥа хоруй баар буолбутун туһунан биллэрии. 
 
-Бу аадырыска <$6> көрүөххүн сөп.',
+Бу аадырыска <$6> көрүөххүн сөп.
+
+Хоруй тиэкиһэ:
+$7',
 	'lqt-quote-intro' => '$2 $3, [[User:$1|$1]] суруйбут:',
 	'lqt-quote' => 'Цитааталааһын',
 	'lqt-search-legend' => 'Бу сирэйгэ баар ырытыылары көрдөөһүн',
@@ -14467,20 +14591,49 @@ Podpis sa zobrazí automaticky.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'lqt-desc' => 'Doda možnost razprav na pogovorne strani',
+	'lqt_movethread' => 'Premakni razpravo na drugo stran',
+	'lqt_deletethread' => 'Izbriši ali obnovi razpravo',
+	'lqt_toc_thread_title' => 'Naslov razprave',
+	'lqt_toc_thread_author' => 'Začel',
 	'lqt_toc_thread_replycount' => 'Odgovori',
+	'lqt_toc_thread_modified' => 'Zadnja sprememba',
+	'lqt_add_header' => 'Dodaj glavo',
+	'lqt_new_thread' => 'Začni novo razpravo',
 	'lqt_empty_subject' => 'Vnesti morate zadevo.',
 	'lqt_reply' => 'Odgovori',
 	'lqt-parent' => 'Starš',
 	'lqt_delete' => 'Izbriši',
 	'lqt_undelete' => 'Obnovi',
+	'lqt_permalink' => 'Trajna povezava',
 	'lqt_fragment' => 'Odlomek $1 iz $2',
 	'lqt_discussion_link' => 'razprave',
 	'lqt_from_talk' => 'Iz $1',
 	'lqt_newer' => '← novejše',
 	'lqt_older' => 'starejše →',
+	'lqt-history-title' => 'Zgodovina razprave',
+	'lqt_hist_thread_created' => 'Ustvarjena nova razprava',
 	'lqt_hist_deleted' => 'Izbrisano',
 	'lqt_hist_undeleted' => 'Obnovljeno',
 	'lqt_hist_moved_talkpage' => 'Prestavljeno',
+	'lqt_hist_tooltip_newer_disabled' => 'Povezava je onemogočena, ker ste na prvi strani.',
+	'lqt_hist_tooltip_older_disabled' => 'Povezava je onemogočena, ker ste na zadnji strani.',
+	'lqt_hist_edited_subject' => 'Sprememba zadeve iz »$2« v »$3«',
+	'lqt_hist_edited_subject_corrupt' => 'Sprememba zadeve',
+	'lqt_hist_split_from' => 'Razcep na novo razpravo',
+	'lqt_hist_root_blanked' => 'Odstranitev besedila komentarja',
+	'lqt_revision_as_of' => 'Redakcija dne $2 ob $3.',
+	'lqt_change_new_thread' => 'To je začetna redakcija razprave.',
+	'lqt_change_reply_created' => '[$1 Poudarjena pripomba] je bila ustvarjena v tej redakciji.',
+	'lqt_change_edited_root' => '[$1 Poudarjena pripomba] je bila spremenjena v tej redakciji.',
+	'lqt_change_edited_summary' => 'Povzetek razprave je bil spremenjen',
+	'lqt_change_deleted' => '[$1 Razprava] ali njen starš sta bila izbrisana',
+	'lqt_change_undeleted' => '[$1 Označena objava] je obnovljena',
+	'lqt_change_moved' => '[$1 Razprava] je prestavljena na drugo stran z razpravami',
+	'lqt_change_split' => '[$1 Razprava] je bila razcepljena iz druge razprave',
+	'lqt_change_edited_subject' => 'Zadeva razprave je spremenjena iz »$2« v »$3«',
+	'lqt_change_merged_from' => '[$1 Odgovor] na razpravo je prestavljen na drugo razpravo',
+	'lqt_change_merged_to' => '[$1 Označeni odgovor] je prestavljen na drugo razpravo',
 	'lqt_change_root_blanked' => 'Besedilo [$1 komentarja] je bilo odstranjeno.',
 	'lqt_youhavenewmessages' => 'Imate [[$1|nova sporočila]].',
 	'lqt_subject' => 'Zadeva:',
@@ -16674,6 +16827,16 @@ $7",
 	'lqt-reply-subpage' => 'відповідь',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'lqt_contents_title' => 'فہرست',
+	'lqt_toc_thread_modified' => 'آخری دفع جب تبدیل کیا گیا',
+	'lqt_delete' => 'حذف کرو',
+	'lqt_discussion_link' => 'تبادلہٴ خیال',
+	'lqt-cancel-subject-edit' => 'منسوخ',
+	'lqt-drag-reason' => 'وجہ:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
@@ -17180,10 +17343,13 @@ Bạn có thể sử dụng cú pháp wiki trong tóm tắt. Khi nào xong, hãy
 
 Bạn có thể đọc nó tại <$6>',
 	'lqt-enotif-reply' => 'Chào $1,
-Đây là lời thông báo từ {{SITENAME}} rằng "$2" có trả lời mới về $5,
+Đây là lời thông báo từ {{SITENAME}} rằng “$2” có trả lời mới về $5,
 vào ngày $3 lúc $4.
 
-Bạn có thể đọc nó tại <$6>',
+Bạn có thể đọc nó tại <$6>
+
+The text of the reply is:
+$7',
 	'lqt-quote-intro' => 'Ngày $2 lúc $3, [[User:$1|Thành viên:$1]] viết:',
 	'lqt-quote' => 'Trích dẫn',
 	'lqt-search-legend' => 'Tìm kiếm thảo luận tại trang này',

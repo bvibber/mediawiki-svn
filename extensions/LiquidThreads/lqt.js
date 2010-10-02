@@ -179,6 +179,7 @@ var liquidThreads = {
 				$j( '#wpTextbox1' ).wikiEditor( 'addModule', { 'toolbar': liquidThreads.toolbar.config, 'dialogs': liquidThreads.toolbar.dialogs } );
 				// cleanup unnecessary things from the old toolbar
 				$j( '#editpage-specialchars' ).remove();
+				$j( '#wpTextbox1' ).focus()
 			} else {
 				// Add old toolbar
 				mwSetupToolbar()
@@ -1167,6 +1168,10 @@ var liquidThreads = {
 		// Now one underneath every thread except the drag thread
 		$j('.lqt_thread').not( $thread ).each( function() {
 			var $curThread = $j( this );
+			// don't put any drop zones under child threads
+			if ( $j.contains( $thread[0], $curThread[0] ) ) return;
+			// don't put it right next to the thread
+			if ( $curThread.find( '.lqt-thread-replies:first > .lqt_thread:last' )[0] == $thread[0] ) return;
 			var repliesElement = liquidThreads.getRepliesElement( $curThread );
 			repliesElement.contents().filter('.lqt-replies-finish').before( createDropZone( 'now', $curThread.data( 'thread-id' ) ) );
 		} );

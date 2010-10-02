@@ -632,10 +632,12 @@ $messages['ca'] = array(
 	'tasks_status_closed' => 'Tancat',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
+	'tasks_delete' => 'سڕینەوە',
+	'tasks_search_form_title' => 'گەڕان',
 	'tasks_previous' => 'پێشوو',
 	'tasks_next' => 'دواتر',
 );
@@ -1513,6 +1515,14 @@ Wänn Du in e paar Sekunden imfall nit wytergleitet wirsch, no druck $1.',
 	'tasks_logpagetext' => 'In däm Logbuech stehn d Änderige an Ufgabe.',
 	'tasks_logentry' => 'Fir „[[$1]]“',
 	'tasks-pref-showtaskcomments' => 'Ufgabe-Diskussionssyte yybinde.',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'tasks_form_comment' => 'Bahasi',
+	'tasks_delete' => 'Soke',
+	'tasks_table_header_page' => 'Shafi',
+	'tasks_search_form_title' => 'Nema',
 );
 
 /** Hawaiian (Hawai`i)
@@ -3853,7 +3863,7 @@ $messages['tr'] = array(
 	'tasks_logentry' => '"[[$1]]" için',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

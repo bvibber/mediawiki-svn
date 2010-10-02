@@ -43,7 +43,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'logofunctions-desc' => "Ouzhpenn un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
+	'logofunctions-desc' => "Ouzhpennañ un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
 	'logofunctions-filenotexist' => "Fazi : N'eus ket eus [[File:$1]]",
 );
 
@@ -235,7 +235,7 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'logofunctions-desc' => "Aggiunge 'a funzione de analizzatore pe 'mbostà 'u loghe de Uicchi",
+	'logofunctions-desc' => "Aggiunge 'a funzione de analizzatore pu loghe de Uicchi",
 	'logofunctions-filenotexist' => "Errore: [[File:$1]] non g'esiste.",
 );
 

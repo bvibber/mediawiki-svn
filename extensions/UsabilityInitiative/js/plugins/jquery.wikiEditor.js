@@ -413,36 +413,50 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var offset = 0;
 			var oldLength = context.fn.getContents().length;
+			var positionFromEnd = oldLength - cursorPos[1];
 			
 			//give everything the wikiEditor class so that we can easily pick out things without that class as pasted 
 			context.$content.find( '*' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
 			}
+			
 			setTimeout( function() {
-				
 				// Kill stuff we know we don't want
 				context.$content.find( 'script,style,img,input,select,textarea,hr,button,link,meta' ).remove();
-				
-				//anything without wikiEditor class was pasted.
-				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				var nodeToDelete = [];
+				var pastedContent = [];
 				var firstDirtyNode;
-				if  ( $selection.length == 0 ) {
-					firstDirtyNode = context.fn.getOffset( cursorPos[0] ).node;
+				var $lastDirtyNode;
+				var elementAtCursor;
+				if ( $.browser.msie && !context.offsets ) {
+					elementAtCursor = null;
 				} else {
-					firstDirtyNode = $selection.eq( 0 )[0];
+					elementAtCursor = context.fn.getOffset( cursorPos[0] );
 				}
+				if ( elementAtCursor == null || elementAtCursor.node == null ) {
+					context.$content.prepend( '<p class = wikiEditor></p>' );
+					firstDirtyNode 	= context.$content.children()[0];
+				} else {
+					firstDirtyNode = elementAtCursor.node;
+				}
+				
+				//this is ugly but seems like the best way to handle the case where we select and replace all editor contents
+				try {
+					firstDirtyNode.parentNode;
+				} catch ( err ) {
+					context.$content.prepend( '<p class = wikiEditor></p>' );
+					firstDirtyNode 	= context.$content.children()[0];
+				}
+				
 				while ( firstDirtyNode != null ) {
-					//go up till we find the top pasted node
-					while ( firstDirtyNode.parentNode.nodeName != 'BODY' 
-						 && ! $( firstDirtyNode.parentNode ).hasClass( 'wikiEditor' ) 
+					//we're going to replace the contents of the entire parent node. 
+					while ( firstDirtyNode.parentNode && firstDirtyNode.parentNode.nodeName != 'BODY' 
+						 && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) 
 						) {
 						firstDirtyNode = firstDirtyNode.parentNode;
 					}
-					
 					//go back till we find the first pasted node
 					while ( firstDirtyNode.previousSibling != null
 							&& ! $( firstDirtyNode.previousSibling ).hasClass( 'wikiEditor' )
@@ -455,36 +469,27 @@ if ( !context || typeof context == 'undefined' ) {
 						}
 					}
 					
-					var $lastDirtyNode = $( firstDirtyNode );
+					if ( firstDirtyNode.previousSibling != null ) {
+						$lastDirtyNode 	= $( firstDirtyNode.previousSibling );
+					} else {
+						$lastDirtyNode 	= $( firstDirtyNode );
+					}
+				
 					var cc = makeContentCollector( $.browser, null );
-					while ( firstDirtyNode != null && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+					while ( firstDirtyNode != null ) {
 						cc.collectContent(firstDirtyNode);
+						cc.notifyNextNode(firstDirtyNode.nextSibling); 
 						
-						cc.notifyNextNode(firstDirtyNode.nextSibling);
-						pastedContent = cc.getLines();
-						if ((pastedContent.length <= 1 || pastedContent[pastedContent.length - 1] !== "")
-								&& firstDirtyNode.nextSibling) {
-							nodeToDelete.push( firstDirtyNode );
-							firstDirtyNode = firstDirtyNode.nextSibling;
-							cc.collectContent(firstDirtyNode);
-							cc.notifyNextNode(firstDirtyNode.nextSibling);
-						}
 						nodeToDelete.push( firstDirtyNode );
+						
 						firstDirtyNode = firstDirtyNode.nextSibling;
+						if ( $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+							break;
+						}
 					}
+					
 					var ccData = cc.finish();
-					var pastedContent = ccData.lines;
-					if ( pastedContent.length == 0 && firstDirtyNode ) {
-						offset += $( firstDirtyNode ).text().length;
-					}
-					
-					if ( nodeToDelete.length > 0 ) {
-						$lastDirtyNode = $( nodeToDelete[nodeToDelete.length - 1] );
-					}
-					
-					var testVal = '';
-					testVal = $( nodeToDelete[0] ).text();
-					
+					pastedContent = ccData.lines;
 					var pastedPretty = '';
 					for ( var i = 0; i < pastedContent.length; i++ ) {
 						//escape html
@@ -497,45 +502,58 @@ if ( !context || typeof context == 'undefined' ) {
 							pastedPretty = leadingSpace + pastedPretty.substring(index, pastedPretty.length);
 						}
 						
-						$newElement = $( '<p class="wikiEditor" ></p>' );
+						
+						if( !pastedPretty && $.browser.msie && i == 0 ) {
+							continue;
+						}
+						$newElement = $( '<p class="wikiEditor pasted" ></p>' );
 						if ( pastedPretty ) {
-							$newElement.html( '<span class = "wikiEditor">' + pastedPretty + '</span>' );
+							$newElement.html( pastedPretty );
 						} else {
 							$newElement.html( '<br class="wikiEditor">' );
 						}
 						$newElement.insertAfter( $lastDirtyNode );
-						offset += pastedPretty.length;
+						
 						$lastDirtyNode = $newElement;
+						
 					}
 					
+					//now delete all the original nodes that we prettified already
 					while ( nodeToDelete.length > 0 ) {
-						$( nodeToDelete.pop() ).remove();
+						$deleteNode = $( nodeToDelete.pop() );
+						$deleteNode.remove();
 					}
 					
-					//find the next node that may not be the next sibling (in IE)
+					//anything without wikiEditor class was pasted.
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 					if  ( $selection.length == 0 ) {
-						firstDirtyNode = null;
+						break;
 					} else {
 						firstDirtyNode = $selection.eq( 0 )[0];
 					}
 				}
-				
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				
-				//context.$content.find( '*' ).addClass( 'wikiEditor' );
-				
 				//now place the cursor at the end of pasted content
-				var restoreTo = cursorPos[1] + offset;
+				var newLength = context.fn.getContents().length;
+				var newPos = newLength - positionFromEnd;
 				
-				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
+				context.fn.purgeOffsets();
+				context.fn.setSelection( { start: newPos, end: newPos } );
+				
+				context.fn.scrollToCaretPosition();
+				
 
 		}, 0 );
 		return true;
 		},
 		'ready': function( event ) {
 			// Initialize our history queue
-			context.history.push( { 'html': context.$content.html(), 'sel':  context.fn.getCaretPosition() } );
+			if ( context.$content ) {
+				context.history.push( { 'html': context.$content.html(), 'sel':  context.fn.getCaretPosition() } );
+			} else {
+				context.history.push( { 'html': '', 'sel':  context.fn.getCaretPosition() } );
+			}
 			return true;
 		}
 	};
@@ -555,15 +573,16 @@ if ( !context || typeof context == 'undefined' ) {
 			if ( typeof event.data == 'undefined' ) {
 				event.data = {};
 			}
+			
 			// Allow filtering to occur
 			if ( name in context.evt ) {
 				if ( !context.evt[name]( event ) ) {
 					return false;
 				}
 			}
-			
 			var returnFromModules = null; //they return null by default
 			// Pass the event around to all modules activated on this context
+			
 			for ( var module in context.modules ) {
 				if (
 					module in $.wikiEditor.modules &&
@@ -734,6 +753,9 @@ if ( !context || typeof context == 'undefined' ) {
 				classname = '';
 			}
 			var e = null, offset = null;
+			if ( $.browser.msie && !context.$iframe[0].contentWindow.document.body ) {
+				return null;
+			}
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -1231,6 +1253,9 @@ if ( !context || typeof context == 'undefined' ) {
 		'getContents': function() {
 			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
 			// This seems to convince IE while not affecting display
+			if ( !context.$content ) {
+				return '';
+			}
 			var html;
 			if ( $.browser.msie ) {
 				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
@@ -1847,6 +1872,7 @@ if ( typeof context.$iframe === 'undefined' && args[0] == 'addModule' && typeof 
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
 		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
 				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {
+			
 			context.fn.setupIframe();
 			break;
 		}

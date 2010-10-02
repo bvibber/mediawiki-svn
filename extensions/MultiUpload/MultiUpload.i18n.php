@@ -1472,6 +1472,15 @@ Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-p
 	'multiupload-blank' => 'Nie je vybraný žiadny súbor',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'multipleupload' => 'Naložite več datotek',
+	'multipleupload-saveallfiles' => 'Shrani vse datoteke',
+	'multiupload-toolbox' => 'Naložite več datotek',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

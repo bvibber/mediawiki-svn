@@ -1157,6 +1157,13 @@ $messages['ch'] = array(
 	'checkuser-search-submit' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'checkuser-reason' => 'هۆکار:',
+	'checkuser-search' => 'گەڕان',
+	'checkuser-search-submit' => 'گەڕان',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'group-checkuser' => 'Controllori',
@@ -1248,6 +1255,7 @@ Níže jsou použité IP adresy (nejvýše 5000, seřazené podle adresy):',
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'checkuser-target' => 'IP число или по́льꙃєватєлꙗ и́мѧ :',
 	'checkuser-search' => 'иска́ниѥ',
 	'checkuser-search-submit' => 'ищи́',
 );
@@ -1396,6 +1404,7 @@ For at sikre programmelets ydeevne kan maksimalt 5000 redigeringer returneres. B
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  * @author Pill
  * @author Purodha
@@ -1443,8 +1452,8 @@ Aus Performance-Gründen werden maximal 5000 Bearbeitungen ausgegeben. Benutze C
 	'checkuser-wasblocked' => 'ehemals gesperrt',
 	'checkuser-localonly' => 'nicht zusammengeführt',
 	'checkuser-massblock' => 'Ausgewählte Benutzer sperren',
-	'checkuser-massblock-text' => 'Die ausgewählten Benutzerkonten werden dauerhaft gesperrt (Autoblock ist aktiv und die Anlage neuer Benutzerkonten wird unterbunden).
-IP-Adressen werden für eine Woche gesperrt (nur für anonyme Benutzer, die Anlage neuer Benutzerkonten wird unterbunden).',
+	'checkuser-massblock-text' => 'Die ausgewählten Benutzerkonten werden dauerhaft gesperrt (Autoblock ist aktiv, die Anlage neuer Benutzerkonten wird unterbunden).
+IP-Adressen werden für eine Woche gesperrt (nur für unangemeldete Benutzer, die Anlage neuer Benutzerkonten wird unterbunden).',
 	'checkuser-blocktag' => 'Inhalt der Benutzerseite ersetzen durch:',
 	'checkuser-blocktag-talk' => 'Diskussionsseiten ersetzen durch:',
 	'checkuser-massblock-commit' => 'Ausgewählte Benutzer sperren',
@@ -2330,7 +2339,7 @@ $messages['frp'] = array(
 	'checkuser-nomatch' => 'Rechèrches que balyont ren.',
 	'checkuser-check' => 'Rechèrche',
 	'checkuser-log-fail' => 'Empossiblo d’apondre l’entrâ du jornal.',
-	'checkuser-nolog' => 'Niona entrâ dens lo jornal.',
+	'checkuser-nolog' => 'Gins de fichiér jornal trovâ.',
 	'checkuser-blocked' => 'Blocâ',
 	'checkuser-gblocked' => 'Blocâ dens l’ensemblo',
 	'checkuser-locked' => 'Vèrrolyê',
@@ -2516,7 +2525,7 @@ Aquí están os enderezos IP usados (máximo 5.000, ordenados por enderezo):',
 
 /** Gothic (Gothic) */
 $messages['got'] = array(
-	'checkuser-reason' => 'Faírina',
+	'checkuser-reason' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -2629,6 +2638,14 @@ $messages['gv'] = array(
 	'checkuser-reason' => 'Fa:',
 	'checkuser-search' => 'Ronsaghey',
 	'checkuser-search-submit' => 'Ronsaghey',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'checkuser-reason' => 'Dalili:',
+	'checkuser-search' => 'Nema',
+	'checkuser-all' => 'duka',
+	'checkuser-search-submit' => 'Nema',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -2792,6 +2809,7 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  * @author Ex13
  * @author SpeedyGonsales
+ * @author Tivek
  */
 $messages['hr'] = array(
 	'checkuser-summary' => 'Ovaj alat pretražuje nedavne promjene i pronalazi IP adrese suradnika ili prikazuje uređivanja/ime suradnika ako je zadana IP adresa. Suradnici i uređivanja mogu biti dobiveni po XFF zaglavljima dodavanjem "/xff" na kraj IP adrese. Podržane su IPv4 (CIDR 16-32) i IPv6 (CIDR 96-128) adrese. Rezultat ima maksimalno 5.000 zapisa iz tehničkih razloga. Rabite ovaj alat u skladu s pravilima.',
@@ -2808,7 +2826,7 @@ $messages['hr'] = array(
 	'checkuser-showlog' => 'Pokaži evidenciju',
 	'checkuser-log' => 'Evidencija provjere suradnika',
 	'checkuser-query' => 'Provjeri nedavne promjene',
-	'checkuser-target' => 'Suradnik ili IP',
+	'checkuser-target' => 'IP adresa ili suradnik:',
 	'checkuser-users' => 'Suradnička imena',
 	'checkuser-edits' => 'Uređivanja IP-a',
 	'checkuser-ips' => 'IP adrese',
@@ -3211,6 +3229,7 @@ $messages['ig'] = array(
 	'group-checkuser-member' => "Lé ọ'bànifé anya",
 	'checkuser-reason' => 'Mgbághapụtà:',
 	'checkuser-showlog' => 'Zí ndétu nchétá',
+	'checkuser-users' => "Wèté ọ'bànifé",
 	'checkuser-edits' => 'Gá nwèté orü shí IP',
 	'checkuser-ips' => 'Gá nwèté ónúọgụgụ IP',
 	'checkuser-account' => "Gá nwèté orü ọ'bànifé",
@@ -3225,6 +3244,7 @@ $messages['ig'] = array(
 	'checkuser-search-submit' => 'Chöwá',
 	'checkuser-search-initiator' => 'onyé bịdòrò',
 	'checkuser-search-target' => 'nkèọnejé',
+	'checkuser-log-subpage' => 'Ndetu-nchétá',
 	'checkuser-log-useredits' => '$1 nwèrè orü màkà $2',
 );
 
@@ -3429,7 +3449,7 @@ IPv4 (16から32ビットのCIDR表記) と IPv6 (96から128ビットのCIDR表
 	'checkuser-search-submit' => '検索',
 	'checkuser-search-initiator' => '調査実行者',
 	'checkuser-search-target' => '調査対象者',
-	'checkuser-ipeditcount' => '全利用者 -$1',
+	'checkuser-ipeditcount' => '全利用者からの編集回数～$1',
 	'checkuser-log-subpage' => 'ログ',
 	'checkuser-log-return' => '利用者調査のメインフォームへ戻る',
 	'checkuser-limited' => "'''パフォーマンスの都合から結果は省略されています。'''",
@@ -3944,11 +3964,11 @@ $messages['krj'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'checkuser-summary' => 'Met däm Werkzüch he kam_mer de IP Addresse fun Metmaacher fenge, di en de {{int:Recentchanges}} shtonn, un mer kann de Metmaacher-Date un Änderonge fenge för en IP-Adress.
+	'checkuser-summary' => 'Met däm Werkzüch he kam_mer de <i en="en">IP </i>-Addresse fun Metmaacher fenge, di en de {{int:Recentchanges}} shtonn, un mer kann de Metmaacher-Date un Änderonge fenge för en <i lang="en">IP</i>-Adress.
 
-Metmaacher un ier Änderong för an IP-Address wäde övver <i lang="en">XFF-header</i> jezeich, wam_mer aan di IP-Address en „<code>/xff</code>“ aanhängk. Wobei wäde IPv4 (CIDR 16-32) un IPv6 (CIDR 96-128) ongershtöz. Leßte jon beß 5000 Änderonge, öm der ßööver nit zo doll ze beschäfteje.
+Metmaacher un ier Änderong för an <i lang="en">IP</i>-Address wäde övver <i lang="en">XFF-header</i> jezeich, wam_mer aan di <i lang="en">IP</i>-Address en „<code>/xff</code>“ aanhängk. Dobei wäde <i lang="en">IPv4 (CIDR 16-32)</i> un <i lang="en">IPv6 (CIDR 96-128)</i> ongershtöz. Leßte jon beß 5000 Änderonge, öm der ẞööver nit zo doll ze beschäfteje.
 
-Donn op de Räjelle för dat Werrkzeuch obacht jevve, un et nit bruche, wann De nit darrefs!',
+Donn op de Räjelle för dat Werrkzeuch obach jevve, un et nit bruche, wann De nit darrefs!',
 	'checkuser-desc' => 'Metmaacher met däm Rääsch dozoh könne de IP-Adresse un annder Date fun de Metmaacher pröfe.',
 	'checkuser-logcase' => 'Dat Söke em Logboch deit zwesche jruße un kleine Bochshtave ongerscheide.',
 	'checkuser' => 'Metmaacher Pröfe',
@@ -4428,7 +4448,7 @@ $messages['ml'] = array(
 	'checkuser-user-nonexistent' => 'ഇങ്ങനൊരു ഉപയോക്താവ് വിക്കിയിൽ നിലവിലില്ല.',
 	'checkuser-search-form' => '$1, $2 ആയ പ്രവർത്തനരേഖാ ഇനങ്ങൾ കണ്ടെത്തുന്നു',
 	'checkuser-search-submit' => 'തിരയൂ',
-	'checkuser-search-initiator' => 'മുൻ‌കൈ എടുക്കുന്ന ആൾ',
+	'checkuser-search-initiator' => 'മുൻകൈ എടുക്കുന്ന ആൾ',
 	'checkuser-search-target' => 'ലക്ഷ്യം',
 	'checkuser-ipeditcount' => '~$1എല്ലാ ഉപയോക്താക്കളിൽ നിന്നും',
 	'checkuser-log-subpage' => 'പ്രവർത്തനരേഖ',
@@ -4483,12 +4503,14 @@ IPv4 (CIDR 16-32) आणि IPv6 (CIDR 96-128) वापरता येऊ श�
 	'checkuser-edits' => 'अंकपत्त्याची संपादने शोधा',
 	'checkuser-ips' => 'अंकपत्ते शोधा',
 	'checkuser-search' => 'शोधा',
+	'checkuser-all' => 'सर्व',
 	'checkuser-empty' => 'लॉग मध्ये एकही नोंद नाही',
 	'checkuser-nomatch' => 'नोंदी सापडल्या नाहीत',
 	'checkuser-check' => 'पडताळा',
 	'checkuser-log-fail' => 'लॉगमध्ये नोंद वाढविता आलेली नाही.',
 	'checkuser-nolog' => 'लॉग संचिका सापडलेली नाही.',
 	'checkuser-blocked' => 'ब्लॉक केलेले आहे',
+	'checkuser-locked' => 'कुलुपबंद',
 	'checkuser-too-many' => 'खूप निकाल आलेले आहेत, कृपया शोधशब्दांमध्ये योग्य बदल करा. खाली वापरलेल्या अंकपत्त्यांची यादी आहे (जास्तीत जास्त ५०००, अनुक्रमे):',
 	'checkuser-user-nonexistent' => 'हे सदस्यनाम अस्तित्त्वात नाही.',
 	'checkuser-search-form' => 'अशा नोंदी शोधा जिथे $1 हा $2 आहे.',
@@ -4503,6 +4525,7 @@ IPv4 (CIDR 16-32) आणि IPv6 (CIDR 96-128) वापरता येऊ श�
 	'checkuser-log-ipusers' => '$1 कडे $2 साठीचे सदस्य आहेत',
 	'checkuser-log-ipedits-xff' => '$1 कडे XFF $2 साठीची संपादने आहेत',
 	'checkuser-log-ipusers-xff' => '$1 कडे XFF $2 साठीचे सदस्य आहेत',
+	'checkuser-log-useredits' => '$1 कडे $2 साठीची संपादने आहेत',
 );
 
 /** Malay (Bahasa Melayu)
@@ -4584,6 +4607,8 @@ Bagi pengguna tanpa nama, alamat IP-nya akan disekat selama seminggu, dengan pen
  * @author Chrisportelli
  */
 $messages['mt'] = array(
+	'checkuser-contribs' => 'ikkontrolla l-indirizzi IP tal-utent',
+	'group-checkuser' => 'Kontrollatur',
 	'group-checkuser-member' => 'Kontrollatur',
 );
 
@@ -6137,6 +6162,7 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Verlor
  * @author Јованвб
@@ -6150,7 +6176,7 @@ $messages['sr-ec'] = array(
 	'checkuser-desc' => 'Даје сарадницима са одговарајућим правима могућност да провере ИП адресе сарадника и друге информације.',
 	'checkuser-logcase' => 'Претрага лога је осетљива на мала и велика слова.',
 	'checkuser' => 'Чекјузер',
-	'checkuser-contribs' => 'Провери корисникове IP адресе.',
+	'checkuser-contribs' => 'Провери корисникове ИП адресе',
 	'group-checkuser' => 'Чекјузери',
 	'group-checkuser-member' => 'Чекјузер',
 	'right-checkuser' => 'Проверава сарадничке ИП адресе и друге информације.',
@@ -6158,9 +6184,9 @@ $messages['sr-ec'] = array(
 	'grouppage-checkuser' => '{{ns:project}}:Чекјузер',
 	'checkuser-reason' => 'Разлог:',
 	'checkuser-showlog' => 'Прикажи лог.',
-	'checkuser-log' => 'Лог чекјузера.',
+	'checkuser-log' => 'Извештај чекјузера',
 	'checkuser-query' => 'Упит на скорашње измене.',
-	'checkuser-target' => 'Корисничко име  или ИП адреса',
+	'checkuser-target' => 'Корисничко име или ИП адреса:',
 	'checkuser-users' => 'Прикупљање сарадничких имена.',
 	'checkuser-edits' => 'Прикупљање измена од стране ИП адресе.',
 	'checkuser-ips' => 'Прикупља ИП адресе.',
@@ -6173,13 +6199,13 @@ $messages['sr-ec'] = array(
 	'checkuser-all' => 'све',
 	'checkuser-cidr-label' => 'Пронађи уобичајени опсег и захваћене адресе за списак IP адреса.',
 	'checkuser-cidr-res' => 'Уобичајени CIDR',
-	'checkuser-empty' => 'Лог не садржи ништа.',
+	'checkuser-empty' => 'Извештај не садржи ниједну ставку.',
 	'checkuser-nomatch' => 'Нема погодака.',
 	'checkuser-nomatch-edits' => 'Нису нађена поклапања.
 Последња измена је била на $1 у $2.',
 	'checkuser-check' => 'Провера',
-	'checkuser-log-fail' => 'Није било могуће додати податак у лог.',
-	'checkuser-nolog' => 'Ниједан фајл с логовима није пронађен.',
+	'checkuser-log-fail' => 'Додавање податка у извештај није могуће.',
+	'checkuser-nolog' => 'Није пронађен ниједан извештај.',
 	'checkuser-blocked' => 'Блокиран',
 	'checkuser-gblocked' => 'Блокиран глобално',
 	'checkuser-locked' => 'Закључано',
@@ -6193,19 +6219,19 @@ IP адресе ће бити блокиране на недељу дана за
 	'checkuser-massblock-commit' => 'Блокирај изабраног корисника',
 	'checkuser-block-success' => "'''{{PLURAL:$2|Корисник|Корисници}} $1 {{PLURAL:$2|је сада блокиран|су сада блокирани}}.'''",
 	'checkuser-block-failure' => "'''Нема блокираних корисника.'''",
-	'checkuser-block-limit' => 'Превише корисника је изабрано.',
+	'checkuser-block-limit' => 'Изабрано је превише корисника.',
 	'checkuser-block-noreason' => 'Морате дати разлог за блок.',
 	'checkuser-noreason' => 'Морате да наведете разлог за овај упит.',
 	'checkuser-accounts' => '$1 {{PLURAL:$1|нови налог|нових налога}}',
 	'checkuser-too-many' => 'Нађено је превише резултата (према процени захтева). Молимо Вас да сузите CIDR.
 Овде су коришћене IP адресе (највише 5.000, сортираних по адреси):',
 	'checkuser-user-nonexistent' => 'Тражени сарадник не постоји.',
-	'checkuser-search-form' => 'Претрага лога где је $1 једнако $2.',
+	'checkuser-search-form' => 'Претражи извештај где је $1 једнако $2.',
 	'checkuser-search-submit' => 'Претрага',
 	'checkuser-search-initiator' => 'покретач',
 	'checkuser-search-target' => 'циљ',
 	'checkuser-ipeditcount' => '~$1 од свих сарадника',
-	'checkuser-log-subpage' => 'лог',
+	'checkuser-log-subpage' => 'извештај',
 	'checkuser-log-return' => 'Повратак на основну форму чекјузера.',
 	'checkuser-limited' => "'''Ови резултати су скраћени због перформанси.'''",
 	'checkuser-log-userips' => '$1 је добио ИП адресе за $2',
@@ -6215,7 +6241,7 @@ IP адресе ће бити блокиране на недељу дана за
 	'checkuser-log-ipusers-xff' => '$1 је добио сараднике за XFF $2',
 	'checkuser-log-useredits' => '$1 преузео измене од $2',
 	'checkuser-autocreate-action' => 'је аутоматски направљен',
-	'checkuser-email-action' => 'послат је мејл кориснику "$1"',
+	'checkuser-email-action' => 'е-порука је послата кориснику „$1“',
 	'checkuser-reset-action' => 'обнови лозинку за корисника "$1"',
 );
 
@@ -7127,6 +7153,11 @@ IP-адреси користувачів, які не увійшли до сис
 	'checkuser-autocreate-action' => 'створений автоматично',
 	'checkuser-email-action' => 'надіслав листа користувачеві «$1»',
 	'checkuser-reset-action' => 'скинув пароль для користувача $1',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'checkuser-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

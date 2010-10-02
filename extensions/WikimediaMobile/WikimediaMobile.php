@@ -19,7 +19,7 @@ $wgExtensionMessagesFiles['WikimediaMobile'] = $dir . 'WikimediaMobile.i18n.php'
 /**
  * Increment this when the JS file changes
  */
-$egWikimediaMobileVersion = '2';
+$wgWikimediaMobileVersion = '2';
 
 /**
  * The base URL of the mobile gateway
@@ -27,19 +27,19 @@ $egWikimediaMobileVersion = '2';
 $wgWikimediaMobileUrl = 'http://en.m.wikipedia.org/wiki';
 
 
-$wgHooks['BeforePageDisplay'][] = 'efWikimediaMobileAddJs';
-$wgHooks['MakeGlobalVariablesScript'][] = 'efWikimediaMobileVars';
+$wgHooks['BeforePageDisplay'][] = 'wfWikimediaMobileAddJs';
+$wgHooks['MakeGlobalVariablesScript'][] = 'wfWikimediaMobileVars';
 
 function wfWikimediaMobileAddJs( &$outputPage, &$skin ) {
-	global $wgOut, $wgExtensionAssetsPath, $egWikimediaMobileVersion;
+	global $wgOut, $wgExtensionAssetsPath, $wgWikimediaMobileVersion;
 	
 	$wgOut->addScript( Html::linkedScript( 
-		"$egExtensionAssetsPath/WikimediaMobile/MobileRedirect.js?$egWikimediaMobileVersion"
+		"$wgExtensionAssetsPath/WikimediaMobile/MobileRedirect.js?$wgWikimediaMobileVersion"
 	) );
 	return true;
 }
 
-function efWikimediaMobileVars( &$vars ) {
+function wfWikimediaMobileVars( &$vars ) {
 	global $wgWikimediaMobileUrl;
 	$vars['wgWikimediaMobileUrl'] = $wgWikimediaMobileUrl;
 	return true;

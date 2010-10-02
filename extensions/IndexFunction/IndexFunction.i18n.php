@@ -221,6 +221,12 @@ $messages['ca'] = array(
 	'index-hide-detail' => 'Oculta la llista de pàgines',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'index-search' => 'گەڕان:',
+	'index-submit' => 'ناردن',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author MF-Warburg
@@ -512,6 +518,11 @@ Bitte nimm „$1“ us em <nowiki>{{#index:}}</nowiki> uf dr obe ufgfierte  {{PL
 Tipp di erschte paar Buehcstabe yy un druck dr „Abschicke“-Chnopf go Sytetitel un Verzeichnisyytreg suech, wu mit däre Zeichechette aafange',
 	'index-details-explain' => 'Yytreg mit Bege sin Verzeichnisyytreg.
 Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'index-search' => 'Nema',
 );
 
 /** Hebrew (עברית)

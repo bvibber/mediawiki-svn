@@ -257,6 +257,13 @@ $messages['id'] = array(
 	'fixedimage-desc' => 'Menambahkan tag <code>&lt;fundraising&gt;</code> sebagai sebuah gambar',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'fixedimage-desc' => 'Nè tínyé ọdụ <code>&lt;esusu&gt;</code> kà nhuunuche',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

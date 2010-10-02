@@ -365,6 +365,36 @@ Vide $2 pro un registro de vacuationes recente.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Plenar]] le tabella de paginas vacuate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'purewikideletion' => 'Penghapusan wiki murni',
+	'randomexcludeblank' => 'Halaman acak (tidak termasuk kosong)',
+	'populateblankedpagestable' => 'Isi tabel halaman yang dikosongkan',
+	'purewikideletion-desc' => 'Antara lain, menyebabkan halaman yang dikosongkan menjadi pranala merah',
+	'purewikideletion-pref-watchblank' => 'Tambahkan halaman yang saya kosongkan ke daftar pantauan',
+	'purewikideletion-pref-watchunblank' => 'Tambahkan halaman yang saya takjadi kosongkan ke daftar pantauan',
+	'purewikideletion-blanked' => "Versi sebelumnya dari halaman ini dikosongkan oleh [[User:$1|$1]] ([[User talk:$1|bicara]]) ([[Special:Contributions/$1|kontrib]]) pada tanggal $5 pukul $6.
+
+Alasan pengosongan adalah: ''<nowiki>$3</nowiki>''.
+
+Anda dapat [{{fullurl:{{FULLPAGENAMEE}}|action=history}} melihat versi terdahulu halaman ini], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} menyunting versi terakhir], atau menyunting halaman baru menggunakan kotak putih di bawah.",
+	'blank-log' => 'kosong',
+	'blank-log-name' => 'Log pengosongan',
+	'blank-log-header' => 'Berikut adalah daftar pengosongan dan takjadi pengosongan halaman.',
+	'blank-log-entry-blank' => 'dikosongkan $1',
+	'blank-log-entry-unblank' => 'tidak dikosongkan $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|log pengosongan]]',
+	'purewikideletion-blanknologin' => 'Belum masuk log',
+	'purewikideletion-blanknologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk mengosongkan suatu halaman.',
+	'purewikideletion-unblanknologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk takjadi kosongkan suatu halaman.',
+	'purewikideletion-blankedtext' => '[[$1]] telah dikosongkan.
+Lihat $2 untuk catatan pengosongan terkini.',
+	'purewikideletion-population-done' => 'Berhasil mengisi tabel blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Isi]] tabel halaman yang dikosongkan',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
@@ -483,6 +513,37 @@ U kunt de [{{fullurl:{{FULLPAGENAMEE}}|action=history}} geschiedenis van de pagi
 Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 	'purewikideletion-population-done' => 'De tabel blanked_page is gevuld.',
 	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'purewikideletion' => 'Pura scancelassion wiki',
+	'randomexcludeblank' => 'Pàgina a cas (ma pa veuida)',
+	'populateblankedpagestable' => 'Ampinì la tàula dle pàgine vujdà',
+	'purewikideletion-desc' => "Tra j'àutre còse, le pàgine dësvuidà a son colegà an ross",
+	'purewikideletion-pref-watchblank' => "Gionta le pàgine che i dësveuido a lòn ch'i ten-o sot euj",
+	'purewikideletion-pref-watchunblank' => "Gionté le pàgine andoa i gavo ël dësvujdament a lòn ch'i ten-o sot-euj",
+	'purewikideletion-blanked' => "Na version veja dë sta pàgina-sì a l'é stàita dësvuidà da [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) ël $5 a $6.
+
+La rason dàita për dësvuidé a l'era: ''<nowiki>$3</nowiki>''.
+
+A peul [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vardé la stòria dla pàgina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modifiché l'ùltima version], o anserì na pàgina neuva ant lë spassi bianch sì-sota.",
+	'blank-log' => 'dësveuida',
+	'blank-log-name' => 'Registr dij dësvuidament',
+	'blank-log-header' => 'Sota a-i é na lista ëd pàgine dësvuidà e torna ampinìe.',
+	'blank-log-entry-blank' => 'dësvuidà $1',
+	'blank-log-entry-unblank' => "a l'ha gavà ël dësvujdament $1",
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registr dij dësvuidament]]',
+	'purewikideletion-blanknologin' => 'Nen rintrà ant ël sistema',
+	'purewikideletion-blanknologintext' => "A dev esse n'utent registrà e [[Special:UserLogin|intrà ant ël sistema]] për dësvuidé na pàgina.",
+	'purewikideletion-unblanknologintext' => "A dev esse n'utent registrà e [[Special:UserLogin|intrà ant ël sistema]] për gavé ël dësvujdament ëd na pàgina.",
+	'purewikideletion-blankedtext' => "[[$1]] a l'é stàita dësvuidà.
+Vardé $2 për na lista dij dësvuidament recent.",
+	'purewikideletion-population-done' => 'Ampiniment ëd la tàula blanked_page fàit.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Ampinì]] la tàula dle pàgine dësvuidà',
 );
 
 /** Pashto (پښتو)

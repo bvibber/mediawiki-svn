@@ -25,7 +25,6 @@ $wgExtensionCredits['other'][] = array(
 	'version'         => '1.0.0',
 	'author'          => 'Robert Leverington for whatleadership.com',
 	'url'             => 'http://www.mediawiki.org/wiki/Extension:PeopleCategories',
-	'description'     => 'Changes displayed page names from "Firstname Lastname" to "Lastname, Firstname" on specified category pages.',
 	'descriptionmsg'  => 'peoplecategories-desc'
 );
 

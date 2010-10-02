@@ -180,6 +180,9 @@ class CodeRevision {
 				__METHOD__
 			);
 		}
+
+		$this->sendStatusToUDP( $status, $oldStatus );
+
 		return true;
 	}
 
@@ -213,6 +216,7 @@ class CodeRevision {
 			__METHOD__,
 			array( 'IGNORE' )
 		);
+
 		// Already exists? Update the row!
 		$newRevision = $dbw->affectedRows() > 0;
 		if ( !$newRevision ) {
@@ -228,6 +232,7 @@ class CodeRevision {
 				__METHOD__
 			);
 		}
+
 		// Update path tracking used for output and searching
 		if ( $this->mPaths ) {
 			$data = array();
@@ -240,6 +245,7 @@ class CodeRevision {
 			}
 			$this->insertChunks( $dbw, 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
 		// Update bug references table...
 		$affectedBugs = array();
 		if ( preg_match_all( '/\bbug (\d+)\b/', $this->mMessage, $m ) ) {
@@ -254,6 +260,7 @@ class CodeRevision {
 			}
 			$dbw->insert( 'code_bugs', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
 		// Get the revisions this commit references...
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
@@ -264,6 +271,7 @@ class CodeRevision {
 				}
 			}
 		}
+
 		// Also, get previous revisions that have bugs in common...
 		if ( count( $affectedBugs ) ) {
 			$res = $dbw->select( 'code_bugs',
@@ -280,6 +288,7 @@ class CodeRevision {
 				$affectedRevs[] = intval( $row->cb_from );
 			}
 		}
+
 		// Filter any duplicate revisions
 		if ( count( $affectedRevs ) ) {
 			$data = array();
@@ -294,14 +303,25 @@ class CodeRevision {
 			}
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
+		global $wgEnableEmail;
 		// Email the authors of revisions that this follows up on
-		if ( $newRevision && count( $affectedRevs ) > 0 ) {
+		if ( $wgEnableEmail && $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
-			$user = $this->mRepo->authorWikiUser( $this->mAuthor );
-			$committer = $user ? $user->getName() : htmlspecialchars( $this->mAuthor );
+			$commitAuthor = $this->getWikiUser();
+			$commitAuthorId = $commitAuthor->getId();
+			$committer = $commitAuthor ? $commitAuthor->getName() : htmlspecialchars( $this->mAuthor );
 			// Get the authors of these revisions
 			$res = $dbw->select( 'code_rev',
-				array( 'cr_author', 'cr_id' ),
+				array( 
+					'cr_repo_id',
+					'cr_id',
+					'cr_author',
+					'cr_timestamp',
+					'cr_message',
+					'cr_status',
+					'cr_path',
+				),
 				array(
 					'cr_repo_id' => $this->mRepoId,
 					'cr_id'      => $affectedRevs,
@@ -312,22 +332,38 @@ class CodeRevision {
 				__METHOD__,
 				array( 'USE INDEX' => 'PRIMARY' )
 			);
+
 			// Get repo and build comment title (for url)
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$url = $title->getFullUrl();
-			wfLoadExtensionMessages( 'CodeReview' );
+
 			foreach ( $res as $row ) {
-				$user = $this->mRepo->authorWikiUser( $row->cr_author );
-				// User must exist on wiki and have a valid email addy
-				if ( !$user || !$user->canReceiveEmail() ) {
-					continue;
+				$revision = CodeRevision::newFromRow( $row );
+				$users = $revision->getCommentingUsers();
+				
+				$revisionAuthor = $revision->getWikiUser();
+				
+				//Add the followup revision author if they have not already been added as a commentor (they won't want dupe emails!)
+				if ( !array_key_exists( $revisionAuthor->getId(), $users ) ) {
+					$users[$revisionAuthor->getId()] = $revisionAuthor;
 				}
-				// Send message in receiver's language
-				$lang = array( 'language' => $user->getOption( 'language' ) );
-				$user->sendMail(
-					wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
-					wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
-				);
+
+				//Notify commenters and revision author of followup revision
+				foreach ( $users as $userId => $user ) {
+					// No sense in notifying the author of this rev if they are a commenter/the author on the target rev
+					if ( $commitAuthorId == $user->getId() ) {
+						continue;
+					}	
+
+					if ( $user->canReceiveEmail() ) {
+						// Send message in receiver's language
+						$lang = array( 'language' => $user->getOption( 'language' ) );
+						$user->sendMail(
+							wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
+							wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
+						);
+					}
+				}
 			}
 		}
 		$dbw->commit();
@@ -389,14 +425,17 @@ class CodeRevision {
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$title->setFragment( "#c{$commentId}" );
 			$url = $title->getFullUrl();
+
 			foreach ( $users as $userId => $user ) {
 				// No sense in notifying this commenter
 				if ( $wgUser->getId() == $user->getId() ) {
 					continue;
 				}
-				// Send message in receiver's language
-				$lang = array( 'language' => $user->getOption( 'language' ) );
+
 				if ( $user->canReceiveEmail() ) {
+					// Send message in receiver's language
+					$lang = array( 'language' => $user->getOption( 'language' ) );
+				
 					$user->sendMail(
 						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->getIdString() ),
 						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->getIdStringUnique(), $text )
@@ -404,6 +443,8 @@ class CodeRevision {
 				}
 			}
 		}
+
+		$this->sendCommentToUDP( $commentId, $text, $url );
 
 		return $commentId;
 	}
@@ -451,7 +492,6 @@ class CodeRevision {
 			array(
 				'cc_id',
 				'cc_text',
-				'cc_parent',
 				'cc_user',
 				'cc_user_text',
 				'cc_timestamp',
@@ -468,7 +508,6 @@ class CodeRevision {
 		foreach ( $result as $row ) {
 			$comments[] = CodeComment::newFromRow( $this, $row );
 		}
-		$result->free();
 		return $comments;
 	}
 
@@ -495,8 +534,31 @@ class CodeRevision {
 		foreach ( $result as $row ) {
 			$changes[] = CodePropChange::newFromRow( $this, $row );
 		}
-		$result->free();
 		return $changes;
+	}
+	
+	public function getPropChangeUsers() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'code_prop_changes',
+			'DISTINCT(cpc_user)',
+			array(
+				'cpc_repo_id' => $this->mRepoId,
+				'cpc_rev_id' => $this->mId,
+			),
+			__METHOD__
+		);
+		$users = array();
+		foreach ( $result as $row ) {
+			$users[$row->cpc_user] = User::newFromId( $row->cpc_user );
+		}
+		return $users;
+	}
+	
+	/**
+	* "Review" being revision commenters, and people who set/removed tags and changed the status
+	*/
+	public function getReviewContributingUsers() {
+		return array_merge( $this->getCommentingUsers(), $this->getPropChangeUsers() );
 	}
 
 	protected function getCommentingUsers() {
@@ -721,6 +783,42 @@ class CodeRevision {
 			return intval( $row->cr_id );
 		} else {
 			return false;
+		}
+	}
+
+	protected function sendCommentToUDP( $commentId, $text, $url = null ) {
+		global $wgCodeReviewUDPAddress, $wgCodeReviewUDPPort, $wgCodeReviewUDPPrefix, $wgLang, $wgUser;
+
+		if( $wgCodeReviewUDPAddress ) {
+			if( is_null( $url ) ) {
+				$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
+				$title->setFragment( "#c{$commentId}" );
+				$url = $title->getFullUrl();
+			}
+
+			$line = wfMsg( 'code-rev-message' ) . " \00314(" . $this->mRepo->getName() .
+					")\003 \0037" . $this->getIdString() . "\003 \00303" . RecentChange::cleanupForIRC( $wgUser->getName() ) .
+					"\003: \00310" . RecentChange::cleanupForIRC( $wgLang->truncate( $text, 100 ) ) . "\003 " . $url;
+			
+			RecentChange::sendToUDP( $line, $wgCodeReviewUDPAddress, $wgCodeReviewUDPPrefix, $wgCodeReviewUDPPort );
+		}
+	}
+
+	protected function sendStatusToUDP( $status, $oldStatus ) {
+		global $wgCodeReviewUDPAddress, $wgCodeReviewUDPPort, $wgCodeReviewUDPPrefix, $wgUser;
+		
+		if( $wgCodeReviewUDPAddress ) {
+			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->getId() );
+			$url = $title->getFullUrl();
+
+			$line = wfMsg( 'code-rev-status' ) . " \00314(" . $this->mRepo->getName() .
+					")\00303 " . RecentChange::cleanupForIRC( $wgUser->getName() ) . "\003 " .
+					/* Remove three apostrophes as they are intended for the parser  */
+					str_replace( "'''", '', wfMsg( 'code-change-status', "\0037" . $this->getIdString() . "\003" ) ) .
+					": \00315" . wfMsg( 'code-status-' . $oldStatus ) . "\003 -> \00310" .
+					wfMsg( 'code-status-' . $status ) . "\003 " . $url;
+
+			RecentChange::sendToUDP( $line, $wgCodeReviewUDPAddress, $wgCodeReviewUDPPrefix, $wgCodeReviewUDPPort );
 		}
 	}
 }

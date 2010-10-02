@@ -441,6 +441,14 @@ $messages['id'] = array(
 	'backforth-prev' => 'Sebelumnya ($1)',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'backforth-next' => 'Nke ozor ($1)',
+	'backforth-prev' => 'Nke àzú ($1)',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

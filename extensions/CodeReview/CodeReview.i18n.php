@@ -265,7 +265,6 @@ $messages['af'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Notas',
-	'code-field-tests' => 'Toetse',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Opmerking',
 	'code-field-select' => 'Kies',
@@ -339,17 +338,10 @@ $messages['aln'] = array(
 	'code-release-badrange' => 'Varg është tepër i madh!',
 	'codereview-subtitle' => 'Për $1',
 	'codereview-reply-link' => 'përgjigje',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|testet}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|testeve}}, $3 dështuar {{PLURAL:$4|test|testeve}}:',
-	'codereview-tests-running' => 'Test raste janë të ...',
-	'codereview-tests-aborted' => 'Test drejtuar ndërprerë.',
-	'codereview-tests-failed' => 'Gabim',
 	'codereview-email-subj' => '[$1] [$2]: koment i ri shtuar',
 	'codereview-email-body' => 'User "$1" postuar nje koment mbi $3. Plotë URL: $2 Komenti: $4',
 	'codereview-email-subj2' => 'Ndryshime [$1] [$2]: Ndiqni-up',
 	'codereview-email-body2' => 'User "$1" bërë ndjekjen ndryshime tek $2. Plotë URL: $3 përmbledhje angazhohen: $4',
-	'codereview-email-subj3' => '[$1] [$2]: testimi automatik i zbuluar regresionit',
-	'codereview-email-body3' => 'Testimi automatik i ka zbuluar një regres për shkak të ndryshimeve në $1. plotë URL: $2 përmbledhje angazhohen: $3',
 	'repoadmin' => 'Depo Administrata',
 	'repoadmin-new-legend' => 'Krijo një depo të re',
 	'repoadmin-new-label' => 'Emri depo:',
@@ -945,10 +937,6 @@ $messages['bg'] = array(
 	'code-release-badrange' => 'Обхватът е твърде голям!',
 	'codereview-subtitle' => 'За $1',
 	'codereview-reply-link' => 'отговаряне',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успешен тест|успешни теста}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешен тест|успешни теста}}, $3 {{PLURAL:$4|неуспешен|неуспешни}}:',
-	'codereview-tests-running' => 'Тестовете са стартирани...',
-	'codereview-tests-aborted' => 'Стартираният тест беше прекъснат.',
 	'codereview-email-subj' => '[$1] [$2]: Беше добавен нов коментар',
 	'codereview-email-body' => 'Потребител „$1“ публикува коментар за $3.
 
@@ -1037,7 +1025,7 @@ $messages['br'] = array(
 	'code-author-unlink' => 'diliammañ ?',
 	'code-author-unlinksuccess' => 'Diliammet eo bet an aozer $1',
 	'code-author-badtoken' => "Fazi en dalc'h e-ser seveniñ an ober-mañ.",
-	'code-author-total' => 'Niver hollek a oberer',
+	'code-author-total' => 'Niver hollek a oberourien : $1',
 	'code-browsing-path' => "Hentad an adweladennoù a-benn '''$1'''",
 	'code-field-id' => 'Adweladenn',
 	'code-field-author' => 'Aozer',
@@ -1117,9 +1105,9 @@ URL klok : $3
 Diverrañ eus ar c\'hemmoù :
 
 $4',
-	'code-stats' => 'Stadegoù',
+	'code-stats' => 'stadegoù',
 	'code-stats-staus-breakdown' => 'Niver a azgweladur hervez ar stad',
-	'code-stats-count' => 'Niver a azgweladur',
+	'code-stats-count' => 'Niver a adweladennoù',
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
 	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
 	'repoadmin-new-label' => 'Anv ar sanailh :',
@@ -1164,7 +1152,7 @@ $messages['bs'] = array(
 	'code-authors' => 'autori',
 	'code-status' => 'statusi',
 	'code-tags' => 'oznake',
-	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po nedavnim doprinosima. Lokalni wiki računi su prikazani pod navodnicima.',
+	'code-authors-text' => 'Ispod je spisak autora repozitorijuma poredanih po imenima. Lokalni wiki računi su prikazani pod navodnicima.',
 	'code-author-haslink' => 'Ovaj autor je povezan wiki korisničkim računom $1',
 	'code-author-orphan' => 'Ovaj autor nije povezan sa wiki računom',
 	'code-author-dolink' => 'Poveži ovog autora sa wiki korisnikom:',
@@ -1218,8 +1206,12 @@ $messages['bs'] = array(
 	'code-status-ok' => 'u redu',
 	'code-status-verified' => 'potvrđeno',
 	'code-status-deferred' => 'odloženo',
+	'code-status-old' => 'staro',
 	'code-pathsearch-legend' => 'Pretraga revizija u ovom repozitoriju po putanji',
 	'code-pathsearch-path' => 'Putanja:',
+	'code-revfilter-cr_status' => 'Stanje = $1',
+	'code-revfilter-cr_author' => 'Autor = $1',
+	'code-revfilter-clear' => 'Očisti filtere',
 	'code-rev-submit' => 'Spremi izmjene',
 	'code-rev-submit-next' => 'Spremi i prikaži slijedeći nerješeni',
 	'code-batch-status' => 'Promijeni status:',
@@ -1249,6 +1241,7 @@ Puni URL: $3
 Napravljeni sažetak:
 
 $4',
+	'code-stats' => 'statistike',
 	'repoadmin' => 'Administracija repozitorijuma',
 	'repoadmin-new-legend' => 'Napravi novi repozitorijum',
 	'repoadmin-new-label' => 'Naziv repozitorija:',
@@ -1302,7 +1295,6 @@ $messages['ca'] = array(
 	'code-field-status' => 'Estat',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notes',
-	'code-field-tests' => 'Proves',
 	'code-field-path' => 'Ruta',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionau',
@@ -1350,6 +1342,11 @@ $4',
 	'right-codereview-remove-tag' => 'Elimina etiquetes de les revisions',
 	'right-codereview-post-comment' => 'Afegeix comentaris a les revisions',
 	'specialpages-group-developer' => 'Eines de desenvolupador',
+);
+
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'codereview-batch-submit' => 'ناردن',
 );
 
 /** Czech (Česky)
@@ -1714,7 +1711,7 @@ $4',
 	'code-stats' => 'Statistiken',
 	'code-stats-header' => 'Repositoriumsstatistik für $1',
 	'code-stats-main' => 'Mit Stand $1 wurden von [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autoren}}]] $2 {{PLURAL:$2|Revision|Revisionen}} im Repositorium durchgeführt.',
-	'code-stats-staus-breakdown' => 'Anzahl der Revisionen pro Staat',
+	'code-stats-staus-breakdown' => 'Anzahl der Revisionen pro Status',
 	'code-stats-fixme-breakdown' => 'Aufschlüsselung der FIXMEs pro Autor',
 	'code-stats-count' => 'Anzahl der Revisionen',
 	'repoadmin' => 'Repositoriumsadministration',
@@ -2104,6 +2101,7 @@ $messages['el'] = array(
 	'code-status-ok' => 'εντάξει',
 	'code-status-verified' => 'επιβεβαιωμένο',
 	'code-status-deferred' => 'αναβλήθηκε',
+	'code-status-old' => 'παλαιά',
 	'code-pathsearch-legend' => 'Αναζήτηση αναθεωρήσεων σε αυτό το αποθηκευτήριο κατά διαδρομή',
 	'code-pathsearch-path' => 'Διαδρομή:',
 	'code-revfilter-cr_status' => 'Κατάσταση = $1',
@@ -2137,6 +2135,7 @@ $4',
 Υποβολή περίληψης:
 
 $4',
+	'code-stats' => 'στατιστικές',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -2272,6 +2271,7 @@ Plena URL: $3
 Resumo de ŝanĝoj:
 
 $4',
+	'code-stats' => 'statistiko',
 	'repoadmin' => 'Administrado de Kodujo',
 	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
@@ -3056,7 +3056,7 @@ $messages['frp'] = array(
 	'code-authors' => 'ôtors',
 	'code-status' => 'ètats',
 	'code-tags' => 'balises',
-	'code-authors-text' => 'Ce-desot sè trove una lista ux ôtors de dèpôts dens l’ôrdre de les novèles publecacions. Los comptos du vouiqui local sont montrâs entre-mié parentèses.',
+	'code-authors-text' => 'Vê-que una lista ux ôtors de dèpôts triyês per nom. Los comptos du vouiqui local sont montrâs entre-mié parentèses.',
 	'code-author-haslink' => 'Cél ôtor est liyê u compto $1 de ceti vouiqui',
 	'code-author-orphan' => 'Cél ôtor at gins de lim avouéc un compto vouiqui',
 	'code-author-dolink' => 'Associyér cél ôtor a un utilisator vouiqui local :',
@@ -3561,6 +3561,12 @@ $4',
 	'right-codereview-set-status' => 'Revisionsstatus ändere',
 	'right-codereview-link-user' => 'Autore uf Wiki-Benutzer vergleiche',
 	'specialpages-group-developer' => 'Entwicklerwärchzyyg',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'code-rev-message' => 'Bahasi:',
+	'repoadmin-new-button' => 'Ƙirƙira',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -4335,7 +4341,7 @@ $messages['id'] = array(
 	'code-batch-tags' => 'Ubah tag:',
 	'codereview-batch-title' => 'Ubah semua revisi terpilih',
 	'codereview-batch-submit' => 'Kirim',
-	'code-releasenotes' => 'Catatan pelepasan',
+	'code-releasenotes' => 'catatan pelepasan',
 	'code-release-legend' => 'Buat catatan rilis',
 	'code-release-startrev' => 'Memulai rev:',
 	'code-release-endrev' => 'Akhir rev:',
@@ -5151,7 +5157,7 @@ $messages['ksh'] = array(
 	'code-authors' => 'de Schriiver',
 	'code-status' => 'Shtattuße',
 	'code-tags' => 'Makeerunge',
-	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, en dä Reijefolch, wie se zoläz jät jespeichert hann. Metmaacher hee aam Wiki sen en Klammere met dobei.',
+	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, zotteet noh dänne iehre Name doh. De Name als Metmaacher hee em Wiki sen en Klammere met dobei, woh et se jitt.',
 	'code-author-haslink' => 'Dä Schriiver es em Wiki mem Metmaacher $1 verlengk',
 	'code-author-orphan' => 'Dä Schriiver es nit met enem Metmaacher em Wiki verlengk',
 	'code-author-dolink' => 'Donn dä Schriiver hee met enem Metmaacher em Wiki verlengke:',
@@ -5195,6 +5201,7 @@ $messages['ksh'] = array(
 	'code-rev-inline-preview' => 'Vör-Ansich:',
 	'code-rev-diff' => 'Ungerscheid',
 	'code-rev-diff-link' => '{{int:code-rev-diff}}',
+	'code-rev-diff-too-large' => 'De Ungerscheid senn zoh vill för se heh aanzezeije.',
 	'code-rev-purge-link' => 'Donn dä Zweschespeicher leddisch maache',
 	'code-status-new' => 'neu',
 	'code-status-fixme' => 'unjedonn',
@@ -5205,6 +5212,10 @@ $messages['ksh'] = array(
 	'code-status-deferred' => 'spääder',
 	'code-pathsearch-legend' => 'Söhk en däm Repositorijum noh Versione, övver dänne iere Pahdt',
 	'code-pathsearch-path' => 'Pahdt:',
+	'code-pathsearch-filter' => 'Ußjesöhk noh:',
+	'code-revfilter-cr_status' => 'Stattus = $1',
+	'code-revfilter-cr_author' => 'Schriever = $1',
+	'code-revfilter-clear' => 'Donn de Ußwahl fottschmieße',
 	'code-rev-submit' => 'Änderunge faßhallde',
 	'code-rev-submit-next' => 'Don dat faßhallde, un jangk nohm nächste unjelöste Kumflick',
 	'code-batch-status' => 'Shtattus ändere:',
@@ -5234,6 +5245,11 @@ Loor op de URL: $3
 Singe Kommentaa dozo:
 
 $4',
+	'code-stats' => 'Statistike',
+	'code-stats-header' => 'Statistike vum Repositorijum $1',
+	'code-stats-main' => 'Bes aam $6 öm $5 Uhr {{PLURAL:$4|hät [[Special:Code/$3/author|eine Schriever]]|han [[Special:Code/$3/author|$4 Schriever]]}} {{PLURAL:$2|ein Änderung|$2 Änderunge}} em Repositorijum jemaat.',
+	'code-stats-staus-breakdown' => 'Aanzahl Versione per Stattus',
+	'code-stats-count' => 'Aanzahl Versione',
 	'repoadmin' => 'Repositorijums-Verwalldung',
 	'repoadmin-new-legend' => 'E neu Repositorijum aanlääje',
 	'repoadmin-new-label' => 'Däm Repositorijum singe Name:',
@@ -5289,6 +5305,7 @@ $messages['lb'] = array(
 	'code-author-link' => 'verlinken?',
 	'code-author-unlink' => 'Link ophiewen?',
 	'code-author-unlinksuccess' => 'Den Auteur $1 ass net méi verlinkt',
+	'code-author-total' => 'Total vun der Zuel vun Auteuren: $1',
 	'code-field-id' => 'Revisioun',
 	'code-field-author' => 'Auteur',
 	'code-field-user' => 'Commentateur',
@@ -5366,6 +5383,7 @@ Resumé vun der Ännerung:
 
 $4',
 	'code-stats' => 'Statistiken',
+	'code-stats-count' => 'Zuel vun de Versiounen',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
 	'repoadmin-edit-view' => 'Pad op ViewVC:',
@@ -6668,6 +6686,8 @@ $messages['pdc'] = array(
 	'code-rev-message' => 'Anmaerricking:',
 	'code-rev-modified-d' => 'gelöscht',
 	'code-rev-modified-m' => 'gennert',
+	'code-rev-comment-preview' => 'Aagucke',
+	'code-rev-inline-preview' => 'Aagucke:',
 	'code-status-new' => 'nei',
 	'code-status-ok' => 'OK',
 	'codereview-subtitle' => 'Fer $1',
@@ -6981,7 +7001,6 @@ $messages['ps'] = array(
 	'code-field-status' => 'دريځ',
 	'code-field-timestamp' => 'نېټه',
 	'code-field-comments' => 'يادښتونه',
-	'code-field-tests' => 'آزمېښتونه',
 	'code-field-text' => 'يادښت',
 	'code-field-select' => 'ټاکل',
 	'code-rev-author' => 'ليکوال:',
@@ -7324,7 +7343,6 @@ $messages['ro'] = array(
 	'code-statuschanges' => 'schimbări de statut',
 	'code-authors' => 'autori',
 	'code-tags' => 'etichete',
-	'code-tests' => 'Cazuri de test',
 	'code-author-name' => 'Introduceți un nume de utilizator:',
 	'code-field-id' => 'Revizie',
 	'code-field-author' => 'Autor',
@@ -7332,7 +7350,6 @@ $messages['ro'] = array(
 	'code-field-status' => 'Statut',
 	'code-field-timestamp' => 'Dată',
 	'code-field-comments' => 'Note',
-	'code-field-tests' => 'Teste',
 	'code-field-path' => 'Cale',
 	'code-field-text' => 'Notă',
 	'code-field-select' => 'Alege',
@@ -7609,7 +7626,6 @@ $messages['rue'] = array(
 	'code-field-status' => 'Став',
 	'code-field-timestamp' => 'Датум',
 	'code-field-comments' => 'Познамкы',
-	'code-field-tests' => 'Тесты',
 	'code-field-path' => 'Стежка',
 	'code-field-text' => 'Познамка',
 	'code-field-select' => 'Выбрати',
@@ -8044,7 +8060,6 @@ $messages['sr-ec'] = array(
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Датум',
 	'code-field-comments' => 'Напомене',
-	'code-field-tests' => 'Тестови',
 	'code-field-path' => 'Путања',
 	'code-field-text' => 'Напомена',
 	'code-field-select' => 'Изабери',
@@ -8088,9 +8103,6 @@ $messages['sr-ec'] = array(
 	'code-release-badrange' => 'Опсег је превелик!',
 	'codereview-subtitle' => 'За $1',
 	'codereview-reply-link' => 'одговори',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успео тест|успела теста|успела теста|успела теста|успелих тестова}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успео тест|успела теста|успела теста|успела теста|успелих тестова}}, $3 {{PLURAL:$4|неуспео тест|неуспела теста|неуспела теста|неуспела теста|неуспелих тестова}}',
-	'codereview-tests-failed' => 'Није прошло',
 	'codereview-email-subj' => '[$1] [$2]: Нови коментар додат',
 	'repoadmin-new-button' => 'Направи',
 	'repoadmin-edit-bug' => 'Путања до Багзиле:',
@@ -8137,7 +8149,6 @@ $messages['sr-el'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Napomene',
-	'code-field-tests' => 'Testovi',
 	'code-field-path' => 'Putanja',
 	'code-field-text' => 'Napomena',
 	'code-field-select' => 'Izaberi',
@@ -8181,9 +8192,6 @@ $messages['sr-el'] = array(
 	'code-release-badrange' => 'Opseg je prevelik!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'odgovori',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|uspeo test|uspela testa|uspela testa|uspela testa|uspelih testova}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|uspeo test|uspela testa|uspela testa|uspela testa|uspelih testova}}, $3 {{PLURAL:$4|neuspeo test|neuspela testa|neuspela testa|neuspela testa|neuspelih testova}}',
-	'codereview-tests-failed' => 'Nije prošlo',
 	'codereview-email-subj' => '[$1] [$2]: Novi komentar dodat',
 	'repoadmin-new-button' => 'Napravi',
 	'repoadmin-edit-bug' => 'Putanja do Bagzile:',
@@ -8461,7 +8469,6 @@ $messages['te'] = array(
 	'code-field-status' => 'స్థితి',
 	'code-field-timestamp' => 'తేదీ',
 	'code-field-comments' => 'గమనికలు',
-	'code-field-tests' => 'పరీక్షలు',
 	'code-field-text' => 'గమనిక',
 	'code-rev-author' => 'రచయిత:',
 	'code-rev-date' => 'తేది:',
@@ -9129,7 +9136,7 @@ $messages['ug-arab'] = array(
 	'repoadmin-edit-button' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -9143,6 +9150,7 @@ $messages['ug-latn'] = array(
  * @author Aleksandrit
  * @author NickK
  * @author Prima klasy4na
+ * @author Riwnodennyk
  * @author Тест
  */
 $messages['uk'] = array(
@@ -9220,6 +9228,7 @@ $messages['uk'] = array(
 	'code-status-ok' => 'ОК',
 	'code-status-verified' => 'перевірено',
 	'code-status-deferred' => 'відкладено',
+	'code-status-old' => 'застарілий',
 	'code-pathsearch-legend' => 'Пошук в цьому сховищі конкретних редакцій за їх адресою',
 	'code-pathsearch-path' => 'Шлях:',
 	'code-pathsearch-filter' => 'Застосований фільтр:',
@@ -9255,6 +9264,7 @@ $4',
 Опис змін:
 
 $4',
+	'code-stats' => 'статистика',
 	'repoadmin' => 'Управління сховищем програмного коду',
 	'repoadmin-new-legend' => 'Створити нове сховище',
 	'repoadmin-new-label' => 'Назва сховища:',
@@ -9798,6 +9808,7 @@ $4',
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',
@@ -9907,6 +9918,7 @@ URL链接：$3
 提交摘要：
 
 $4',
+	'code-stats' => '统计',
 	'repoadmin' => '储存库管理',
 	'repoadmin-new-legend' => '建立新的储存库',
 	'repoadmin-new-label' => '储存库名称：',

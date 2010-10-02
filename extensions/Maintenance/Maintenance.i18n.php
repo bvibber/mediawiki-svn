@@ -804,6 +804,12 @@ $messages['ce'] = array(
 	'maintenance-reason' => 'Бахьан',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'maintenance-reason' => 'هۆکار',
+	'maintenance-confirm' => 'پشتدار بکەرەوە',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -1737,6 +1743,11 @@ Verschieben abbroche',
  */
 $messages['gu'] = array(
 	'maintenance-name' => 'સભ્ય નામ',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'maintenance-reason' => 'Dalili',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -3709,6 +3720,8 @@ $messages['ps'] = array(
 	'maintenance-reason' => 'سبب',
 	'maintenance-invalidname' => 'ناسم کارن-نوم!',
 	'maintenance-userexists' => 'دا کارن د پخوا نه ثبت دی!',
+	'maintenance-deleted' => 'ړنګ شو',
+	'maintenance-stats-edits' => 'د سمونو شمېر: $1',
 	'maintenance-stats-pages' => 'د مخونو شمېر: $1',
 	'maintenance-stats-users' => 'د کارنانو شمېر: $1',
 	'maintenance-stats-admins' => 'د پازوالانو شمېر: $1',
@@ -4701,7 +4714,7 @@ $messages['ug-arab'] = array(
 	'maintenance-name' => 'ئىشلەتكۇچى ئىسمى',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -4715,6 +4728,11 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'maintenance-reason' => 'Причина',
 	'maintenance-confirm' => 'Підтвердити',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'maintenance-reason' => 'وجہ',
 );
 
 /** Veps (Vepsan kel')

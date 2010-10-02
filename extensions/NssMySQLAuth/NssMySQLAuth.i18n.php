@@ -525,7 +525,7 @@ $messages['ia'] = array(
 	'nss-no-mail' => 'Non inviar e-mail',
 	'nss-welcome-mail' => 'Un conto con le nomine de usator $1 e contrasigno $2 ha essite create pro te.',
 	'nss-welcome-mail-subject' => 'Creation de contos',
-	'nss-db-error' => 'Error durante le lection del base de datos de authentication',
+	'nss-db-error' => 'Error durante le lectura del base de datos de authentication',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -824,6 +824,7 @@ $messages['ps'] = array(
 	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
+	'nss-create-account-header' => 'نوی کارن-حساب جوړول',
 	'nss-create-account' => 'کارن-حساب جوړول',
 	'nss-no-mail' => 'برېښليک مه رالېږۍ',
 );

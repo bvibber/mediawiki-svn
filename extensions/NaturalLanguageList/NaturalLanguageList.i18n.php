@@ -22,8 +22,8 @@ $messages['en'] = array (
  */
 $messages['qqq'] = array(
 	'nll-desc' => '{{desc}}',
-	'nll-separator' => '{{Optional}}<br/>Please include any necessary spacing: <code>,&amp;#32;</code>',
-	'nll-lastseparator' => '{{Identical/And}}<br/>Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
+	'nll-separator' => '{{Optional}}<br />Please include any necessary spacing: <code>,&amp;#32;</code>',
+	'nll-lastseparator' => '{{Identical/And}}<br />Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
 );
 
 /** Afrikaans (Afrikaans)
@@ -225,6 +225,13 @@ $messages['pms'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'nll-lastseparator' => '&#32;او&#32;',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -284,6 +291,13 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'nll-desc' => 'Madaling pagpopormat ng mga talaan sa likas na mga wika',
 	'nll-lastseparator' => '&#32;at&#32;',
+);
+
+/** Ukrainian (Українська)
+ * @author Riwnodennyk
+ */
+$messages['uk'] = array(
+	'nll-lastseparator' => '&#32;і&#32;',
 );
 
 /** Vietnamese (Tiếng Việt)

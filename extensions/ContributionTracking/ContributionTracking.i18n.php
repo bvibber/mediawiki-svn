@@ -823,6 +823,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'contrib-tracking-error' => 'Errore',
+	'contrib-tracking-error-text' => 'Module de sottomissione invalide',
 	'contrib-tracking-button' => 'Condinue',
 );
 
@@ -876,7 +877,11 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'contributiontracking-desc' => 'Sledenje prispevkov za zbiralca sredstev Wikimedie',
+	'contributiontracking' => 'Sledenje prispevkov',
 	'contrib-tracking-error' => 'Napaka',
+	'contrib-tracking-error-text' => 'Neveljavni oddan obrazec',
+	'contrib-tracking-submitting' => 'Pošiljanje predelovalcu plačil ...',
 	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
 	'contrib-tracking-button' => 'Nadaljuj',
 );

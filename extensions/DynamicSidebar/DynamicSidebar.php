@@ -41,7 +41,6 @@ $wgExtensionCredits['other'][] = array(
 	'version' => '1.0a',
 	'author' => 'Ryan Lane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DynamicSidebar',
-	'description' => 'Provides dynamic sidebars based on user pages, groups, and categories.',
 	'descriptionmsg' => 'dynamicsidebar-desc',
 );
 

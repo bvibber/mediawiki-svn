@@ -310,19 +310,20 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'adminlinks' => 'Links für Administratoren',
-	'adminlinks-desc' => '[[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
+	'adminlinks-desc' => 'Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
 	'adminlinks_documentation' => 'Dokumentation von „$1“',
 	'adminlinks_general' => 'Allgemein',
-	'adminlinks_editsidebar' => 'Sidebar bearbeiten',
+	'adminlinks_editsidebar' => 'Seitenleiste bearbeiten',
 	'adminlinks_editcss' => 'CSS-Dateien bearbeiten',
 	'adminlinks_editmainpagename' => 'Name der Hauptseite bearbeiten',
 	'adminlinks_users' => 'Benutzer',
-	'adminlinks_createuser' => 'Benutzer erstellen',
+	'adminlinks_createuser' => 'Benutzerkonto anlegen',
 	'adminlinks_browsesearch' => 'Durchsehen und Suchen',
 	'adminlinks_importexport' => 'Importieren und Exportieren',
 	'right-adminlinks' => 'Link nach [[Special:AdminLinks|Links für Administratoren]] sehen',

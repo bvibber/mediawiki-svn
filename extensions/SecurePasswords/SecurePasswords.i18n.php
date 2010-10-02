@@ -609,7 +609,7 @@ A deuv:",
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'securepasswords-desc' => 'Cria resumos criptográficos das palavras-chave mais seguros e adiciona um verificador da solidez da palavra-chave',
+	'securepasswords-desc' => 'Cria resumos criptográficos mais seguros para as palavras-chave e adiciona um verificador da segurança da palavra-chave',
 	'securepasswords-valid' => 'A sua palavra-chave é inválida ou demasiado curta.
 Tem de:',
 	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|carácter|caracteres}} de comprimento',

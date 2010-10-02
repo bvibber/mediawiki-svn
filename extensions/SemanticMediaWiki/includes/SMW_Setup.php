@@ -5,9 +5,10 @@
  * @ingroup SMW
  */
 
-require_once( 'SMW_GlobalFunctions.php' );
-
 define( 'SMW_VERSION', '1.5.2 alpha-1' );
+define( 'SEMANTIC_EXTENSION_TYPE', true );
+
+require_once( 'SMW_GlobalFunctions.php' );
 
 /**
  * Function to switch on Semantic MediaWiki. This function must be called in
@@ -25,7 +26,8 @@ define( 'SMW_VERSION', '1.5.2 alpha-1' );
  * @return true
  */
 function enableSemantics( $namespace = null, $complete = false ) {
-	global $smwgIP, $smwgNamespace, $wgExtensionFunctions, $wgAutoloadClasses, $wgSpecialPages, $wgSpecialPageGroups, $wgHooks, $wgExtensionMessagesFiles, $wgJobClasses, $wgExtensionAliasesFiles;
+	global $wgVersion, $wgExtensionFunctions, $wgAutoloadClasses, $wgSpecialPages, $wgSpecialPageGroups, $wgHooks, $wgExtensionMessagesFiles;
+	global $smwgIP, $smwgNamespace, $wgJobClasses, $wgExtensionAliasesFiles, $wgServerName;
 	
 	// The dot tells that the domain is not complete. It will be completed
 	// in the Export since we do not want to create a title object here when
@@ -46,7 +48,16 @@ function enableSemantics( $namespace = null, $complete = false ) {
 
 	$wgHooks['ParserTestTables'][] = 'smwfOnParserTestTables';
 	$wgHooks['AdminLinks'][] = 'smwfAddToAdminLinks';
-
+	
+	if ( version_compare( $wgVersion, '1.17alpha', '>=' ) ) {
+		// For MediaWiki 1.17 alpha and later.
+		$wgHooks['ExtensionTypes'][] = 'smwfAddSemanticExtensionType';
+	}
+	else {
+		// For pre-MediaWiki 1.17 alpha.
+		$wgHooks['SpecialVersionExtensionTypes'][] = 'smwfOldAddSemanticExtensionType';		
+	}
+	
 	// Register special pages aliases file
 	$wgExtensionAliasesFiles['SemanticMediaWiki'] = $smwgIP . 'languages/SMW_Aliases.php';
 
@@ -227,10 +238,10 @@ function smwfSetupExtension() {
 		$smwgMW_1_14 = false; // assume <= 1.13 API
 	}
 
-	///// credits (see "Special:Version") /////
-	$wgExtensionCredits['parserhook'][] = array(
+	// Registration of the extension credits, see Special:Version.
+	$wgExtensionCredits['semantic'][] = array(
 		'path' => __FILE__,
-		'name' => 'Semantic&#160;MediaWiki',
+		'name' => 'Semantic MediaWiki',
 		'version' => SMW_VERSION,
 		'author' => "[http://korrekt.org Markus&#160;Krötzsch], [http://simia.net Denny&#160;Vrandecic] and [http://www.ohloh.net/p/smw/contributors others]. Maintained by [http://www.aifb.kit.edu/web/Wissensmanagement/en AIFB Karlsruhe].",
 		'url' => 'http://semantic-mediawiki.org',
@@ -242,7 +253,36 @@ function smwfSetupExtension() {
 }
 
 /**
- * Adds links to Admin Links page
+ * Adds the 'semantic' extension type to the type list.
+ * 
+ * @since 1.5.2
+ * 
+ * @param $aExtensionTypes Array
+ * 
+ * @return true
+ */
+function smwfAddSemanticExtensionType( array &$aExtensionTypes ) {
+	smwfLoadExtensionMessages( 'SemanticMediaWiki' );
+	$aExtensionTypes = array_merge( array( 'semantic' => wfMsg( 'version-semantic' ) ), $aExtensionTypes );
+	return true;
+}
+
+/**
+ * @see smwfAddSemanticExtensionType
+ * 
+ * @since 1.5.2
+ * 
+ * @param $oSpecialVersion SpecialVersion
+ * @param $aExtensionTypes Array
+ * 
+ * @return true
+ */
+function smwfOldAddSemanticExtensionType( SpecialVersion &$oSpecialVersion, array &$aExtensionTypes ) {
+	return smwfAddSemanticExtensionType( $aExtensionTypes );
+}
+
+/**
+ * Adds links to Admin Links page.
  **/
 function smwfAddToAdminLinks( &$admin_links_tree ) {
 	smwfLoadExtensionMessages( 'SemanticMediaWiki' );
@@ -415,11 +455,13 @@ function smwfAddMagicWords( &$magicWords, $langCode ) {
  */
 function smwfInitContentLanguage( $langcode ) {
 	global $smwgIP, $smwgContLang;
+	
 	if ( !empty( $smwgContLang ) ) { return; }
 	wfProfileIn( 'smwfInitContentLanguage (SMW)' );
 
 	$smwContLangFile = 'SMW_Language' . str_replace( '-', '_', ucfirst( $langcode ) );
 	$smwContLangClass = 'SMWLanguage' . str_replace( '-', '_', ucfirst( $langcode ) );
+	
 	if ( file_exists( $smwgIP . 'languages/' . $smwContLangFile . '.php' ) ) {
 		include_once( $smwgIP . 'languages/' . $smwContLangFile . '.php' );
 	}

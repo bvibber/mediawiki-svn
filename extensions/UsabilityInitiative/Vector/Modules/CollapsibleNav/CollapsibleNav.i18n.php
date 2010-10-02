@@ -72,6 +72,14 @@ $messages['bn'] = array(
 	'vector-collapsiblenav-more' => 'আরও ভাষা',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'vector-collapsiblenav-preference' => 'ভেক্টর স্কিনহানার থিপকরানি একরব নেভিগেশন মেনু থা কর',
+	'vector-collapsiblenav-more' => 'আরাকউ ঠার',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -90,7 +98,7 @@ $messages['ca'] = array(
 	'vector-collapsiblenav-more' => 'Més llengües',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -111,6 +119,14 @@ $messages['cs'] = array(
  */
 $messages['cu'] = array(
 	'vector-collapsiblenav-more' => 'дроу́ꙃи ѩꙁꙑци́',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vector-collapsiblenav-preference' => "Galluogi crebachu'r ddewislen lywio yn y wedd Vector",
+	'vector-collapsiblenav-more' => 'Rhagor o ieithoedd',
 );
 
 /** Danish (Dansk)
@@ -309,6 +325,13 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'vector-collapsiblenav-more' => 'Plusa lingui',
+);
+
+/** Icelandic (Íslenska)
+ * @author Krun
+ */
+$messages['is'] = array(
+	'vector-collapsiblenav-more' => 'Fleiri tungumál',
 );
 
 /** Italian (Italiano)
@@ -552,6 +575,13 @@ $messages['sah'] = array(
 	'vector-collapsiblenav-more' => 'Өссө тыллар',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'vector-collapsiblenav-more' => 'තවත් භාෂාවන්',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
@@ -610,6 +640,13 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'vector-collapsiblenav-more' => 'ภาษาอื่นๆ',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'vector-collapsiblenav-more' => 'Has köp dil',
 );
 
 /** Tagalog (Tagalog)

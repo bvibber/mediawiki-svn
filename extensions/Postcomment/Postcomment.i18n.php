@@ -819,6 +819,7 @@ $messages['ps'] = array(
 	'postcomment_notloggedin' => 'تاسې نه ياست ننوتلي.',
 	'postcomment_youareloggedinas' => 'تاسې د $1 په نوم غونډال ته ننوتلی',
 	'postcomment_leavemessagefor' => 'د $1 لپاره يو پيغام پرېږدی',
+	'postcomment_said' => 'ووييل',
 	'postcomment_invalidrequest' => 'ناسمه غوښتنه.',
 	'postcomment_replyto' => '$1 ته ځواب ورکول',
 );

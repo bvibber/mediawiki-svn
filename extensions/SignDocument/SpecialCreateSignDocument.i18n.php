@@ -754,6 +754,12 @@ Bsuech bitte [{{fullurl:{{#Special:SignDocument}}|doc=$2}} die Syte] go s uuspro
 Zweimol goht nit.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'createsigndoc-pagename' => 'Shafi:',
+	'createsigndoc-create' => 'Ƙirƙira',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -949,7 +955,7 @@ $messages['ig'] = array(
 	'createsigndoc-phone' => 'Onuogụgụ nkpo go:',
 	'createsigndoc-bday' => 'Ogẹ òmúmú:',
 	'createsigndoc-introtext' => 'Ndubata:',
-	'createsigndoc-hidden' => 'Zonariri',
+	'createsigndoc-hidden' => 'Zonarịrị',
 	'createsigndoc-optional' => 'I cho, ka I chogị',
 	'createsigndoc-create' => 'Ké',
 	'createsigndoc-error-generic' => 'Nsogbu: $1',
@@ -1928,7 +1934,7 @@ $messages['tr'] = array(
 	'createsigndoc-error-generic' => 'Hata: $1',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

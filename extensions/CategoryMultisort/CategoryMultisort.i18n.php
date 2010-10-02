@@ -48,12 +48,21 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Dre ziouer',
+	'categorymultisort-sortkey' => "Alc'hwez didoueziañ :",
 	'categorymultisort-go' => 'Mont',
+	'categorymultisort-default-sortkey' => "Alc'hwez didoueziañ dre ziouer:",
 	'prefs-category' => 'Rummad',
+);
+
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'categorymultisort-go' => 'بڕۆ',
+	'prefs-category' => 'پۆل',
 );
 
 /** German (Deutsch)
@@ -145,6 +154,11 @@ $messages['gsw'] = array(
 	'categorymultisort-go' => 'Uusfiere',
 	'categorymultisort-default-sortkey' => 'Standardsortierkriterium:',
 	'prefs-category' => 'Kategorii',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'prefs-category' => 'Rukuni',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

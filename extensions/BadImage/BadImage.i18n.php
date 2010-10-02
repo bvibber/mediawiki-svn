@@ -435,6 +435,11 @@ $messages['ce'] = array(
 	'badimages-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'badimages-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -940,6 +945,11 @@ $messages['gv'] = array(
 	'badimages-reason' => 'Fa:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'badimages-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -1176,6 +1186,7 @@ $messages['ig'] = array(
 	'badimage-desc' => 'Dòró ihe ndetu nhuunuche njö nwèríkí me na nke NkáWiki',
 	'badimages-add-btn' => 'Tinyé',
 	'badimages-added' => '$1 banyèrè ndetu.',
+	'badimages-count' => "Ọ {{PLURAL:$1|di|di}} {{PLURAL:$1|nhuunuche|nhuunuche}} '''$1''' nọr na ndétu nhuunuche ojö.",
 	'badimages-name' => 'Áhà:',
 	'badimages-not-added' => 'Enweghíkí tinyé nhunuuche',
 	'badimages-not-removed' => 'Enweghíkí puzie nhunuuche',
@@ -2615,6 +2626,11 @@ $messages['uk'] = array(
 	'badimages-log-remove' => '[[$1]] вилучене зі списку небажаних зображень',
 	'badimages-page' => '{{ns:help}}:Список небажаних зображень',
 	'right-badimages' => 'Оновити список небажаних зображень',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'badimages-reason' => 'وجہ:',
 );
 
 /** Veps (Vepsan kel')

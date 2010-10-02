@@ -36,13 +36,6 @@ $messages['qqq'] = array(
 	'imagemap_desc' => 'Short description of the Imagemap extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Alamnirvana
- */
-$messages['bjn'] = array(
-	'imagemap_invalid_coord' => 'Nyunyuk: koordinat kada sah pada baris ka $1, musti barupa angka',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin
@@ -197,6 +190,13 @@ $messages['bg'] = array(
 	'imagemap_invalid_desc' => 'Грешка: невалидна спецификация на описанието (desc), което трябва да бъде някое от следните: <code>$1</code>',
 	'imagemap_description' => 'Информация за изображението',
 	'imagemap_poly_odd' => 'Грешка: открит е многоъгълник (poly) с нечетен брой координати на ред $1',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
+ */
+$messages['bjn'] = array(
+	'imagemap_invalid_coord' => 'Nyunyuk: koordinat kada sah pada baris ka $1, musti barupa angka',
 );
 
 /** Bengali (বাংলা)
@@ -1060,7 +1060,7 @@ $messages['ml'] = array(
 	'imagemap_bad_image' => 'പിഴവ്: ഈ താളിൽ ചിത്രം കരിമ്പട്ടികയിലാണ്',
 	'imagemap_no_link' => 'പിഴവ്: $1-മത്തെ വരിയുടെ അവസാനം സാധുവായ കണ്ണി കാണുന്നില്ല',
 	'imagemap_invalid_title' => 'പിഴവ്: $1 വരിയിൽ അസാധുവായ തലക്കെട്ട്',
-	'imagemap_missing_coord' => 'പിഴവ്: $1 വരിയിൽ രൂപത്തിന് ആവശ്യമുള്ളത്ര നിർദ്ദേശാങ്കങ്ങൾ നിർ‌വചിച്ചിട്ടില്ല.',
+	'imagemap_missing_coord' => 'പിഴവ്: $1 വരിയിൽ രൂപത്തിന് ആവശ്യമുള്ളത്ര നിർദ്ദേശാങ്കങ്ങൾ നിർവചിച്ചിട്ടില്ല.',
 	'imagemap_unrecognised_shape' => 'പിഴവ്: $1 വരിയിൽ മനസ്സിലാക്കാൻ പറ്റാത്ത രൂപം. ഓരോ വരിയും ഇനി പറയുന്ന ഒന്നു കൊണ്ടു വേണം തുടങ്ങാൻ: default, rect, circle അഥവാ poly',
 	'imagemap_no_areas' => 'പിഴവ്: കുറഞ്ഞത് ഒരു വിസ്തീർണ്ണ നിർദ്ദേശമെങ്കിലും കൊടുത്തിരിക്കണം',
 	'imagemap_invalid_coord' => 'പിഴവ്: $1 വരിയിൽ അസാധുവായ നിർദ്ദേശാങ്കം. നിർബന്ധമായും അത് ഒരു സംഖ്യയായിരിക്കണം.',
@@ -1480,6 +1480,10 @@ $messages['sl'] = array(
 	'imagemap_no_image' => 'Napaka: v prvi vrstici morate navesti sliko',
 	'imagemap_invalid_image' => 'Napaka: slika je neveljavna ali ne obstaja',
 	'imagemap_bad_image' => 'Napaka: slika je na tej strani na črnem seznamu',
+	'imagemap_invalid_title' => 'Napaka: neveljaven naslov v povezavi v vrstici $1',
+	'imagemap_missing_coord' => 'Napaka: ni dovolj koordinat za obliko v vrstici $1',
+	'imagemap_invalid_coord' => 'Napaka: neveljavna koordinata v vrstici $1, mora biti število',
+	'imagemap_invalid_desc' => 'Napaka: neveljavno določilo desc, mora biti eno izmed: <code>$1</code>',
 	'imagemap_description' => 'O tej sliki',
 );
 

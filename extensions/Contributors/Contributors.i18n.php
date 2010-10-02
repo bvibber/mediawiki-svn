@@ -529,6 +529,11 @@ $messages['gv'] = array(
 	'contributors-submit' => 'Taishbyney',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'contributors-submit' => 'Nuna',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

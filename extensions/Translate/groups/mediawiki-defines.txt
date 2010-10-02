@@ -126,6 +126,7 @@ ignored = centralauth-editset-item-ro
 
 Central Notice
 aliasfile = CentralNotice/CentralNotice.alias.php
+optional = centralnotice-language-listing
 
 Change Author
 aliasfile = ChangeAuthor/ChangeAuthor.alias.php
@@ -973,8 +974,6 @@ file = SemanticForms/languages/SF_Messages.php
 aliasfile = SemanticForms/languages/SF_Aliases.php
 magicfile = SemanticForms/languages/SF_Magic.php
 
-Semantic Gallery
-
 Semantic Internal Objects
 magicfile = SemanticInternalObjects/SemanticInternalObjects.i18n.magic.php
 
@@ -1218,6 +1217,8 @@ Upload Blacklist
 
 Upload Wizard
 aliasfile = UploadWizard/UploadWizard.alias.php
+optional = linktest, pluraltest, magictest, namespacedtest
+optional = extremelycomplextest, internallinktest
 ignored = mwe-upwiz-license-pd-us
 
 Unicode Converter
@@ -1298,6 +1299,11 @@ file = UsabilityInitiative/ClickTracking/ClickTracking.i18n.php
 aliasfile = UsabilityInitiative/ClickTracking/ClickTracking.alias.php
 descmsg = clicktracking-desc
 
+Usability Initiative - Dont Switch Me Over
+file = UsabilityInitiative/DontSwitchMeOver/DontSwitchMeOver.i18n.php
+id = ext-ui-dontswitchmeover
+descmsg = updatemyprefs-desc
+
 Usability Initiative - Opt In
 id = ext-ui-optin
 file = UsabilityInitiative/OptIn/OptIn.i18n.php
@@ -1339,11 +1345,6 @@ Usability Initiative - Pref Switch Link
 id = ext-ui-prefswitchlink
 descmsg = prefswitch-desc
 file = UsabilityInitiative/PrefSwitch/PrefSwitchLink.i18n.php
-
-Usability Initiative - 	Update My Prefs
-file = UsabilityInitiative/UpdateMyPrefs/UpdateMyPrefs.i18n.php
-id = ext-ui-updatemyprefs
-descmsg = updatemyprefs-desc
 
 Usability Initiative - User Daily Contribs
 file = UsabilityInitiative/UserDailyContribs/UserDailyContribs.i18n.php
@@ -1521,5 +1522,7 @@ ignored = wm-license-lgpl-2.1-full-link, wm-license-lgpl-3-full-link
 Wiki Text Logged In Out
 
 Woopra
+
+XMLRC
 
 YouTube Auth Sub

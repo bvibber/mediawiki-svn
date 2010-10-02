@@ -312,6 +312,7 @@ $wgGoogleMapsMessages['am'] = array(
  */
 $wgGoogleMapsMessages['an'] = array(
 	'gm-zoom-control' => 'Navego',
+	'gm-small' => 'Chicota',
 	'gm-no-zoom-control' => 'Garra',
 	'gm-yes' => 'Sí',
 	'gm-no' => 'No',
@@ -900,6 +901,12 @@ $wgGoogleMapsMessages['ch'] = array(
 	'gm-search' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$wgGoogleMapsMessages['ckb'] = array(
+	'gm-search' => 'گەڕان',
+	'gm-save-path' => 'پاشەکەوت',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -979,6 +986,7 @@ $wgGoogleMapsMessages['cs'] = array(
  * @author ОйЛ
  */
 $wgGoogleMapsMessages['cu'] = array(
+	'gm-no' => 'нѣ́тъ',
 	'gm-search' => 'ищи́',
 );
 
@@ -2201,6 +2209,11 @@ $wgGoogleMapsMessages['gv'] = array(
 	'gm-save-path' => 'Sauail',
 );
 
+/** Hausa (هَوُسَ) */
+$wgGoogleMapsMessages['ha'] = array(
+	'gm-search' => 'Nema',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -2704,7 +2717,7 @@ $wgGoogleMapsMessages['id'] = array(
  */
 $wgGoogleMapsMessages['ig'] = array(
 	'gm-balloon-title' => 'Ishi:',
-	'gm-remove' => 'wefu',
+	'gm-remove' => 'wéfù',
 	'gm-tab' => 'Ntabi',
 	'gm-searching' => 'ö na cha...',
 	'gm-width' => 'Àsáa',
@@ -2712,7 +2725,7 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-zoom-control' => 'Otú Uzọr',
 	'gm-large' => 'Ukwu',
 	'gm-medium' => 'Di ntạ di ukwu',
-	'gm-small' => 'Ntakịrị',
+	'gm-small' => 'Ntàkiri',
 	'gm-no-zoom-control' => 'Efù',
 	'gm-yes' => 'Eeh',
 	'gm-no' => 'Mbà',
@@ -4842,18 +4855,62 @@ $wgGoogleMapsMessages['scn'] = array(
 
 /** Sinhala (සිංහල)
  * @author Asiri wiki
+ * @author තඹරු විජේසේකර
  */
 $wgGoogleMapsMessages['si'] = array(
+	'gm-incompatible-browser-link' => 'නිර්දේශිත වෙබ් බ්‍රවුසර ලැයිස්තුවක පෙන්වීමට ක්ලික් කරන්න',
+	'gm-balloon-title' => 'ශීර්ෂය:',
+	'gm-balloon-link-article' => 'පිටු සබැඳිය (අවශ්‍ය ම නොවේ)',
+	'gm-make-marker' => 'නම',
+	'gm-remove' => 'ඉවත්කරන්න',
+	'gm-caption' => 'නම',
+	'gm-start-path' => 'නව පථයක් අරඹන්න',
+	'gm-trace-area' => 'ප්‍රදේශයක් අනුරේඛනය කරන්න',
+	'gm-no-maps' => 'මෙහි පුරණය වීමට කිසිදු සිතයමක් නැත.',
+	'gm-refresh-list' => 'ලයිස්තුව ප්‍රති පුරණය',
+	'gm-load-map' => 'සිතියමක් පුරණය කරන්න',
+	'gm-clip-result' => 'සිතියමකට එක්කරන්න',
+	'gm-no-results' => 'සමාවන්න, කිසිදු ප්‍රතිඵලයක් අඩංගු නොවේ.',
+	'gm-searching' => 'සොයමින් පවතී...',
+	'gm-map' => 'සිතියම',
+	'gm-are-you-sure' => 'ඔබට විශ්වාසද?',
+	'gm-clear-all-points' => 'සියළු ලකුණු කිරීම් මකා දමන්න',
+	'gm-refresh-points' => 'ලකුණු කිරීම් යළි පුරණය කරන්න.',
 	'gm-width' => 'පළල',
 	'gm-height' => 'උස',
+	'gm-scale-control' => 'විශාලත්‍වය',
+	'gm-overview-control' => 'දළ විශ්ලේෂණය',
+	'gm-selector-control' => 'සිතියම්/චන්‍ද්‍රිකාව තෝරනය',
+	'gm-zoom-control' => 'යාත්‍රණය',
 	'gm-large' => 'විශාල',
 	'gm-medium' => 'මධ්‍යම',
 	'gm-small' => 'කුඩා',
+	'gm-no-zoom-control' => 'කිසිවක් නොමැත',
+	'gm-yes' => 'ඔව්',
+	'gm-no' => 'නැත',
+	'gm-search-preface' => 'සළකුණු කිරීමට සිතියම ක්ලික් කරන්න හෝ නගරයකට, රටකට, ලිපිනයකට හෝ ව්‍යාපාරයකට යන්න',
+	'gm-geocode-preface' => 'සළකුණු කිරීමට සිතියම ක්ලික් කරන්න හෝ නගරයකට, රටකට, ලිපිනයකටයන්න',
+	'gm-no-search-preface' => 'සළකුණු කිරීමට සිතියම ක්ලික් කරන්න.',
 	'gm-search' => 'සොයන්න',
+	'gm-clear-search' => 'සෙවුම් ඉතිහාසය මකන්න',
 	'gm-meters' => 'මීටර',
 	'gm-miles' => 'හැතැප්ම',
 	'gm-save-path' => 'සුරකින්න',
+	'gm-edit-path' => 'සළකුණු එක්කරන්න',
+	'gm-show-path' => 'සළකුණු පෙන්වන්න',
+	'gm-color-path' => 'වර්ණය වෙනස් කරන්න',
+	'gm-color-fill' => 'පිරවුම් වර්ණ වෙනස් කරන්න',
+	'gm-remove-fill' => 'පිරවුම් ඉවත් කරන්න',
+	'gm-fill-color' => 'පිරවුම් වර්ණය',
+	'gm-line-color' => 'ඉරි වර්ණය',
+	'gm-opacity' => 'පාරාන්‍ධතාව',
+	'gm-line-width' => 'පළල',
+	'gm-make-map' => 'සිතියමක් නිමවන්න',
+	'gm-hide-map' => 'සිතියම සඟවන්න',
+	'gm-back' => 'ආපස්සට යන්න',
+	'gm-kml-include-link' => 'සිතියමකට එක් කරන්න',
 	'gm-kml-loading' => 'බා ගත‍ වෙමින් පවතී...',
+	'gm-kml-export' => 'මෙම සිතියම KMLයකට නිර්යාත කරන්න',
 	'gm-earth' => 'පෘථිවිය',
 	'gm-moon' => 'චන්ද්‍රයා',
 	'gm-mars' => 'අඟහරු',
@@ -4999,21 +5056,22 @@ $wgGoogleMapsMessages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-desc' => 'Лако прави мапе, помоћу Викифицираних маркера',
 	'gm-incompatible-browser' => 'Како би видели мапу која се приказује овде, морате да користите компатибилан веб браузер.',
-	'gm-incompatible-browser-link' => 'Кликните овде да видите списак компатибилних браузера.',
-	'gm-no-editor' => 'Жао нам је, ваш браузер не подржава интерактивне мапе. Пробајте последњу верзију <a href="http://www.microsoft.com/ie">Интернет Експлорера</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Фајерфокса</a> (Windows, Mac, and Linux).',
+	'gm-incompatible-browser-link' => 'Кликните овде да погледате списак сагласних прегледача.',
+	'gm-no-editor' => 'Жао нам је, али Ваш прегледач не подржава интерактивне мапе. Пробајте последње издање <a href="http://www.microsoft.com/ie">интернет експлорера</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">фајерфокса</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Наслов:',
-	'gm-balloon-link-article' => 'Веза ка овој страници (опционо):',
-	'gm-make-marker' => 'Наслов (вики код):',
+	'gm-balloon-link-article' => 'Веза ка овој страници (необавезно):',
+	'gm-make-marker' => 'Наслов (вики кôд):',
 	'gm-remove' => 'уклони',
 	'gm-caption' => 'Назив',
-	'gm-tab-title' => 'Наслов таба',
-	'gm-tab' => 'Таб',
+	'gm-tab-title' => 'Наслов језичка',
+	'gm-tab' => 'Језичак',
 	'gm-start-path' => 'започни путању',
 	'gm-trace-area' => 'прати неки површину',
 	'gm-save-point' => 'Сними &amp; затвори',

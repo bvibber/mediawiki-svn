@@ -601,6 +601,7 @@ $messages['avk'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'semanticforms-desc' => 'Формы для даданьня і рэдагаваньня сэмантычных зьвестак',
@@ -680,7 +681,7 @@ $messages['be-tarask'] = array(
 	'sf_formedit_createtitle' => 'Стварыць $1: $2',
 	'sf_formedit_badurl' => "Гэтая старонка для рэдагаваньня праз форму. Вам неабходна пазначыць назву формы і мэтавую старонку ў URL-адрасе;
 гэта павінна выглядаць наступным чынам: 'Special:FormEdit?form=&lt;назва формы&gt;&target=&lt;мэтавая старонка&gt;' альбо  'Special:FormEdit/&lt;назва формы&gt;/&lt;мэтавая старонка&gt;'.",
-	'sf_formedit_altforms' => 'Замест гэтага Вы можаце дадаць гэту старонку з дапамогай наступных формаў:',
+	'sf_formedit_altforms' => 'Замест гэтага Вы можаце дадаць старонку з дапамогай наступных формаў:',
 	'sf_formedit_altformsonly' => 'Калі ласка, выберыце адну з наступных формаў для даданьня гэтай старонкі:',
 	'sf_formcreate' => 'Стварыць з дапамогай формы',
 	'sf_viewform' => 'Паказаць форму',
@@ -1111,6 +1112,11 @@ si la pàgina amb aquest nom ja existeix, s'obrirà un formulari per editar-la."
 	'right-editrestrictedfields' => 'Edita els camps restringits del formulari',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'sf_createtemplate_deletefield' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1294,7 +1300,7 @@ Für mehrere Optionen nutzen Sie bitte die Seite $1.',
 	'sf_formedit_badurl' => 'Dies ist die Seite zum Bearbeiten mit einem Formular. Sie müssen den Namen eines Formulars und die zu bearbeitende Zielseite in der URL angeben. Es sollte aussehen wie „Special:FormEdit?form=&lt;Formularname&gt;&target=&lt;Zielseite&gt;“ oder „Special:FormEdit/&lt;Formularname&gt;/&lt;Zielseite&gt;“.',
 	'sf_formedit_altforms' => 'Alternativ können Sie diese Seite mit einem der folgenden Formulare erstellen:',
 	'sf_formedit_altformsonly' => 'Bitte wählen Sie eines der folgenden Formulare aus, um diese Seite zu erstellen:',
-	'sf_formerrors_header' => 'Ihre Eingabe ist fehlerhaft; weiteres siehe unten',
+	'sf_formerrors_header' => 'Ihre Eingabe ist fehlerhaft oder unvollständig. Siehe hierzu die Hinweise unten neben dem Formularfeld.',
 	'sf_template_docufooter' => 'Bearbeiten Sie diese Seite, um den Vorlagentext zu sehen.',
 	'sf_form_docu' => 'Dies ist das „$1“-Formular.
 Um eine Seite mit diesem Formular zu erstellen, geben Sie den Seitennamen unten ein;
@@ -1581,9 +1587,9 @@ $messages['eo'] = array(
 	'sf_createclass_listofvalues' => 'Listo de valoroj',
 	'formstart' => 'Aldoni paĝon kun kamparo',
 	'sf_formstart_badform' => 'Eraro: neniu kampara paĝo estis trovita ĉe $1',
-	'sf_formstart_createoredit' => 'Aldonu aŭ redaktu',
+	'sf_formstart_createoredit' => 'Krei aŭ redakti',
 	'formedit' => 'Redaktu kun kamparo',
-	'sf_formedit_createtitle' => 'Aldonu $1: $2',
+	'sf_formedit_createtitle' => 'Krei $1: $2',
 	'sf_formedit_altformsonly' => 'Bonvolu elekti unu el la jenaj kamparoj aldoni ĉi paĝon:',
 	'sf_formcreate' => 'Krei per formularo',
 	'sf_viewform' => 'Rigardi kamparon',
@@ -2446,6 +2452,11 @@ $messages['gv'] = array(
 	'sf_createtemplate_deletefield' => 'Scryss',
 	'createcategory' => 'Croo ronney',
 	'sf_createcategory_name' => 'Ennym:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'sf_createtemplate_deletefield' => 'Soke',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -6700,7 +6711,7 @@ $messages['zh-tw'] = array(
 	'semanticforms-desc' => '用來新增及編輯語意資料的表單',
 	'specialpages-group-sf_group' => '語意表單',
 	'createproperty' => '新增性質',
-	'sf_createproperty_linktoform' => '此一性質將連結至使用此表單的頁面：<br>
+	'sf_createproperty_linktoform' => '此一性質將連結至使用此表單的頁面：<br />
 This property will link to pages that use the form:',
 	'sf_createproperty_allowedvalsinput' => '如果您希望此欄位只能輸入特定的值,請將那些值輸入此處，並以半型的逗號(,)分隔，萬一您所指定的值中已包含了半型逗號，請在該逗號前加上一個反斜線(\\,)：',
 	'sf_createproperty_propname' => '名稱：',
@@ -6754,7 +6765,7 @@ This property will link to pages that use the form:',
 	'sf_createcategory_defaultform' => '預設的表單',
 	'sf_createcategory_makesubcategory' => '令此項分類成為某一分類項下的子分類(選擇性使用)',
 	'createclass' => '建立類別(class)',
-	'sf_createclass_docu' => '使用$1頁面，於此處輸入所有資料，以建立單一類別的性質、模板、表單和分類<br>
+	'sf_createclass_docu' => '使用$1頁面，於此處輸入所有資料，以建立單一類別的性質、模板、表單和分類<br />
 Enter all the data here to create the properties, template, form and category for a single class. For more options, use the pages $1 instead.',
 	'sf_createclass_allowedvalues' => '允許值',
 	'sf_createclass_listofvalues' => '列出值(List of values)',
@@ -6781,7 +6792,7 @@ Enter all the data here to create the properties, template, form and category fo
 	'sf_formedit_addanother' => '新增其他',
 	'sf_formedit_none' => '無',
 	'runquery' => '執行查詢',
-	'sf_runquery_badurl' => "您必須在URL中指定某表單，該URL應該看起來像是'特殊:執行查詢/&lt;表單名稱&gt;'.<br>
+	'sf_runquery_badurl' => "您必須在URL中指定某表單，該URL應該看起來像是'特殊:執行查詢/&lt;表單名稱&gt;'.<br />
 You must specify a form name in the URL;
 the URL should look like 'Special:RunQuery/&lt;form name&gt;'.",
 	'sf_runquery_title' => '執行查詢: $1',

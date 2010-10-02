@@ -438,6 +438,11 @@ $messages['ca'] = array(
 	'readerfeedback-tier-poor' => 'Pobre',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'readerfeedback-submit' => 'ناردن',
+);
+
 /** Czech (Česky)
  * @author Beren
  * @author Danny B.
@@ -1268,6 +1273,8 @@ $messages['id'] = array(
 $messages['ig'] = array(
 	'readerfeedback-overall' => 'Nà íshí níle',
 	'readerfeedback-level-0' => 'Ụbịàm',
+	'readerfeedback-level-1' => 'Dì ànị',
+	'readerfeedback-level-2' => 'Dị asọ anya',
 	'readerfeedback-level-3' => 'Élú ukwu',
 	'readerfeedback-submit' => 'Dànyé',
 	'readerfeedback-finished' => 'Daalụ!',
@@ -1881,7 +1888,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'readerfeedback-completeness' => 'بشپړتابه',
 	'readerfeedback-overall' => 'ټولټال',
+	'readerfeedback-level-none' => '(ناډاډه)',
 	'readerfeedback-submit' => 'سپارل',
 	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
@@ -2175,6 +2184,36 @@ $messages['sk'] = array(
 	'tooltip-ca-ratinghist' => 'Hodnotenie tejto stránky čitateľmi',
 	'specialpages-group-feedback' => 'Názor čitateľa',
 	'readerfeedback-tt-review' => 'Odoslať kontrolu',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'readerfeedback' => 'Kaj menite o tej strani?',
+	'readerfeedback-text' => "''Prosimo, vzemite si trenutek za ocenitev te strani spodaj. Vaša povratna informacija je dragocena in nam bo pomagala izboljšati našo spletno stran.''",
+	'readerfeedback-reliability' => 'Zanesljivost',
+	'readerfeedback-completeness' => 'Celovitost',
+	'readerfeedback-npov' => 'Nevtralnost',
+	'readerfeedback-presentation' => 'Predstavitev',
+	'readerfeedback-overall' => 'Celotno',
+	'readerfeedback-level-none' => '(negotovo)',
+	'readerfeedback-level-0' => 'Slabo',
+	'readerfeedback-level-1' => 'Nizko',
+	'readerfeedback-level-2' => 'Pošteno',
+	'readerfeedback-level-3' => 'Visoko',
+	'readerfeedback-level-4' => 'Izvrstno',
+	'readerfeedback-submit' => 'Potrdi',
+	'readerfeedback-main' => 'Ocenjevati je mogoče samo vsebinske strani.',
+	'readerfeedback-submitting' => 'Potrjevanje …',
+	'readerfeedback-finished' => 'Hvala!',
+	'readerfeedback-tagfilter' => 'Oznaka:',
+	'readerfeedback-tierfilter' => 'Ocena:',
+	'readerfeedback-tier-high' => 'Visoko',
+	'readerfeedback-tier-medium' => 'Zmerno',
+	'readerfeedback-tier-poor' => 'Slabo',
+	'specialpages-group-feedback' => 'Mnenje obiskovalca',
+	'readerfeedback-tt-review' => 'Pošlji pregled',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

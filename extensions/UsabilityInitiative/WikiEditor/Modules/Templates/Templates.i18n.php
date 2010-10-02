@@ -58,6 +58,13 @@ $messages['bn'] = array(
 	'wikieditor-templates-preference' => 'টেম্পলেট ভাঁজ হওয়া সক্রিয়',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-templates-preference' => 'টেম্পলেট থিপ করানি থা কর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -72,7 +79,7 @@ $messages['ca'] = array(
 	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

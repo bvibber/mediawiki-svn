@@ -838,7 +838,7 @@ Opjepaß: Dat op jruuße Wikis sing Zick doore.',
 Mer jonn fröm op de Shtandatt-Ußwahl.',
 	'refreshspecial-db-error' => 'Dat es donevve jejange: Mer hatte ene Datebangk-Fähler.',
 	'refreshspecial-no-page' => 'Esu en Söndersigg ham_mer nit.',
-	'refreshspecial-slave-lagged' => 'Ene nohjeschaldte ßööver eß hengerher aam hingke, mer sen am waade&nbsp;...',
+	'refreshspecial-slave-lagged' => 'Ene nohjeschaldte ẞööver eß hengerher aam hingke, mer sen am waade&nbsp;&hellip;',
 	'refreshspecial-reconnected' => 'De Verbendong es widder do.',
 	'refreshspecial-reconnecting' => 'De Verbendong es fott. Weed widder opjebout in 10 Sekunde&nbsp;...',
 	'refreshspecial-page-result' => 'hät {{PLURAL:$1|ein Reih|$1 Reije|kein einzije Reih}} en',
@@ -1085,6 +1085,16 @@ Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"
 	'refreshspecial-page-result' => 'trovà $1 {{PLURAL:$1|riga|righe}} an',
 	'refreshspecial-total-display' => "Agiornà $1 {{PLURAL:$1|pàgina|pàgine}} për un total ëd $2 {{PLURAL:$2|riga|righe}} ant un temp ëd $3 (ël temp total d'esecussion dlë script a l'é $4)",
 	'right-refreshspecial' => 'Agiorna pàgine speciaj',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'refreshspecial-title' => 'ځانګړي مخونه تاندول',
+	'refreshspecial-select-all-pages' => 'ټول مخونه ټاکل',
+	'refreshspecial-link-back' => 'بېرته ځانګړي مخ ته ورستنېدل',
+	'right-refreshspecial' => 'ځانګړي مخونه تاندول',
 );
 
 /** Portuguese (Português)

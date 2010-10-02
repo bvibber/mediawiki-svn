@@ -359,7 +359,7 @@ $messages['ca'] = array(
 	'todo-form-submit' => 'Tramet una consulta',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -809,6 +809,11 @@ $4',
 	'todo-form-submit' => 'Aafrog ibergee',
 	'right-todo' => 'Ufgabe-Lischt haa',
 	'right-todosubmit' => 'S Rächt vum e Benutzer yyschränke, e Ufgabe-Lischt z haa',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'todo-list-cancel' => 'Soke',
 );
 
 /** Hebrew (עברית)
@@ -1484,6 +1489,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'todo-new-queue' => 'Nei',
+	'todo-list-change' => 'Ennere',
 );
 
 /** Polish (Polski)
@@ -2012,6 +2018,11 @@ $messages['tr'] = array(
 	'todo-form-details' => 'Detaylar:',
 	'todo-form-submit' => 'Sorguyu gir',
 	'right-todosubmit' => 'Kullanıcının yapılacaklar listesi haklarını kısıtla',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'todo-list-cancel' => 'منسوخ',
 );
 
 /** Veps (Vepsan kel')

@@ -26,28 +26,6 @@ require( 'extensions/GoogleMaps/export/GoogleMapsImgExporter.php' );
 require( 'extensions/GoogleMaps/SpecialGoogleMapsKML.php' );
 require( 'extensions/GoogleMaps/GoogleMaps.body.php' );
 
-/**
- * This function is for rendering a <googlemap> tag on MW 1.5.
- * It cannot be an object function. (Compare to the render16 function
- * of the GoogleMaps class.)
- *
- * @param $pContent string - the content of the <googlemap> tag
- * @param $pArgv array - an array of attribute name/value pairs for the
- *  tag
- *
- * @return string - the HTML string to output for the <googlemap> tag
- **/
-function wfGoogleMaps_Render15 ( $pContent, $pArgv ) {
-	global $wgGoogleMaps, $wgParser;
-	// get the global parser and pass through to the main render function
-	return $wgGoogleMaps->render( $pContent, $pArgv, $wgParser, $wgParser );
-}
-
-function wfGoogleMaps_RenderKmlLink15 ( $pContent, $pArgv ) {
-	global $wgGoogleMaps;
-	return $wgGoogleMaps->renderKmlLink( $pContent, $pArgv );
-}
-
 function wfGoogleMaps_CommentJS(&$pParser, &$pText) {
     global $wgGoogleMaps;
     return $wgGoogleMaps->commentJS($pParser, $pText);
@@ -64,7 +42,7 @@ function wfGoogleMaps_Install() {
 	global $wgGoogleMapsKey, $wgGoogleMapsKeys, $wgGoogleMapsDisableEditorsMap, $wgGoogleMapsEnablePaths,
 		$wgGoogleMapsDefaults, $wgGoogleMapsMessages, $wgGoogleMapsCustomMessages, $wgGoogleMapsUrlPath,
 		$wgXhtmlNamespaces, $wgGoogleMapsTemplateVariables, $wgJsMimeType, $wgLanguageCode, $wgContLang,
-		$wgParser, $wgProxyKey, $wgVersion, $wgGoogleMaps, $wgHooks, $wgScriptPath, $wgSpecialPages,
+		$wgParser, $wgProxyKey, $wgGoogleMaps, $wgHooks, $wgScriptPath, $wgSpecialPages,
 		$wgTitle;
 	// set up some default values for the various extension configuration parameters
 	// to keep from getting PHP notices if running in strict mode
@@ -118,11 +96,7 @@ function wfGoogleMaps_Install() {
 
 	// add the google mime types
 	$magic = null;
-	if( version_compare( $wgVersion, "1.8" ) >= 0 ) {
-		$magic = MimeMagic::singleton( );
-	} else {
-		$magic = wfGetMimeMagic( );
-	}
+	$magic = MimeMagic::singleton( );
 	$magic->mExtToMime['kml'] = 'application/vnd.google-earth.kml+xml';
 	$magic->mExtToMime['kmz'] = 'application/vnd.google-earth.kmz';
 
@@ -142,16 +116,13 @@ function wfGoogleMaps_Install() {
 		$wgTitle );
 
 	// This hook will add the interactive editing map to the article edit page.
-	// This hook was introduced in MW 1.6
         $editHook = array( $wgGoogleMaps, 'editForm' );
-	if( version_compare( $wgVersion, "1.6" ) >= 0 ) {
-		if( !$wgGoogleMapsDisableEditorsMap ) {
-			if( isset( $wgHooks['EditPage::showEditForm:initial'] )
-				&& is_array( $wgHooks['EditPage::showEditForm:initial'] ) ) {
-					array_unshift( $wgHooks['EditPage::showEditForm:initial'], $editHook );
-			} else {
-				$wgHooks['EditPage::showEditForm:initial'] = array( $editHook );
-			}
+	if( !$wgGoogleMapsDisableEditorsMap ) {
+		if( isset( $wgHooks['EditPage::showEditForm:initial'] )
+			&& is_array( $wgHooks['EditPage::showEditForm:initial'] ) ) {
+				array_unshift( $wgHooks['EditPage::showEditForm:initial'], $editHook );
+		} else {
+			$wgHooks['EditPage::showEditForm:initial'] = array( $editHook );
 		}
 	}
 
@@ -167,13 +138,8 @@ function wfGoogleMaps_Install() {
 	// This hook will be called any time the parser encounters a <googlemap>
 	// tag in an article.  This will render the actual Google map code in
 	// the article.
-	if( version_compare( $wgVersion, "1.6" ) >= 0 ) {
-		$wgParser->setHook( 'googlemap', array( $wgGoogleMaps, 'render16' ) );
-		$wgParser->setHook( 'googlemapkml', array( $wgGoogleMaps, 'renderKmlLink' ) );
-	} else {
-		$wgParser->setHook( 'googlemap', 'wfGoogleMaps_Render15' );
-		$wgParser->setHook( 'googlemapkml', 'wfGoogleMaps_RenderKmlLink15' );
-	}
+	$wgParser->setHook( 'googlemap', array( $wgGoogleMaps, 'render16' ) );
+	$wgParser->setHook( 'googlemapkml', array( $wgGoogleMaps, 'renderKmlLink' ) );
 
 	// Set up the special page
 	$wgSpecialPages['GoogleMapsKML'] = array('GoogleMapsKML', 'GoogleMapsKML');

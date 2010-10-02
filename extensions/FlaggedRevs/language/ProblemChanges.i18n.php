@@ -109,6 +109,11 @@ $messages['ca'] = array(
 	'problemchanges-category' => 'Categoria:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'problemchanges-category' => 'پۆل:',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský
@@ -231,7 +236,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'problemchanges' => 'Revêre los changements balisâs.',
+	'problemchanges' => 'Changements balisâs en atenta',
 	'problemchanges-legend' => 'Listar les pâges avouéc des changements balisâs en atenta de rèvision',
 	'problemchanges-none' => 'Ora, y at gins de pâge que corrèspond a cetos critèros',
 	'problemchanges-category' => 'Catègorie :',
@@ -262,6 +267,11 @@ $messages['gsw'] = array(
 	'problemchanges-legend' => 'Lischt vu Syte mit markierte Bearbeitige, wu nonig prieft sin',
 	'problemchanges-none' => 'Zur Zyt träffe fir kei Syte die Kriterie zue',
 	'problemchanges-category' => 'Kategorii:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'problemchanges-category' => 'Rukuni:',
 );
 
 /** Hebrew (עברית)
@@ -329,6 +339,13 @@ $messages['id'] = array(
 	'problemchanges-category' => 'Kategori:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'problemchanges-category' => 'Ébéonọr:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -338,10 +355,11 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Blaisorblade
  * @author Melos
  */
 $messages['it'] = array(
-	'problemchanges' => 'Revisiona le modifiche che hanno etichette',
+	'problemchanges' => 'Modifiche non controllate con etichette',
 	'problemchanges-legend' => 'Elenco delle pagine con modifiche etichettate in attesa di revisione',
 	'problemchanges-none' => 'Al momento non ci sono pagine che soddisfino tale criterio.',
 	'problemchanges-category' => 'Categoria:',

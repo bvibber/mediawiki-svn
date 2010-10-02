@@ -160,12 +160,43 @@ $messages['ia'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al plus 20 micas de pan',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'jsbreadcrumbs-desc' => 'Menambahkan jejak remahroti di bawah kotak tab',
+	'jsbreadcrumbs-leading-description' => 'Jejak navigasi',
+	'prefs-jsbreadcrumbs' => 'Remah Roti',
+	'prefs-jsbreadcrumbs-showsite' => 'Masukkan nama situs di remah roti (berguna ketika digunakan lintas wiki)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Tampilkan remah roti',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Jumlah remah roti',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimum 20 remah roti',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'jsbreadcrumbs-desc' => 'パンくずリストをタブバーの下に追加する',
+	'jsbreadcrumbs-leading-description' => '案内追跡',
+	'prefs-jsbreadcrumbs' => 'パンくずリスト',
+	'prefs-jsbreadcrumbs-showsite' => 'サイト名をパンくずリストに含める（ウィキを横断的に利用する場合に便利）',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'パンくずリストを表示',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'パンくずリストの数',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => '最大20個のパンくずリスト',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'jsbreadcrumbs-desc' => "Setzt eng Lëscht vun Navigatiounslinken ënnert d'Läischt vun den Navigatiounsongleten derbäi",
 	'jsbreadcrumbs-leading-description' => 'Navigatiounspad',
+	'prefs-jsbreadcrumbs' => 'Navigatiounslinken (bread crumbs)',
+	'prefs-jsbreadcrumbs-showsite' => 'Den Numm vum Site an den Navigatiounslinken drasetzen (nëtzlech wann et tëschent verschidde Wikie benotzt gëtt)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Navigatiounslinken (bread crumbs) weisen',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Zuel vun den Navigatiounslinken (bread crumbs)',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximal 20 Navigatiounslinken',
 );
 
 /** Macedonian (Македонски)

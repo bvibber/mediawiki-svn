@@ -66,6 +66,13 @@ $messages['bn'] = array(
 	'userdailycontribs-desc' => 'ক্লিক ট্র্যাকিং এক্সটেশনের জন্য ব্যবহারকারীগণের দৈনিক অবদানসমূহ',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'userdailycontribs-desc' => 'ক্লিক ট্র্যাকিং এক্সটেশনর কা আতাকুরার হারিদির অবদানহানি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

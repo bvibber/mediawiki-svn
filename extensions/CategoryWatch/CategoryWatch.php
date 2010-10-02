@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'CATEGORYWATCH_VERSION', '1.2.0, 2010-07-15' );
+define( 'CATEGORYWATCH_VERSION', '1.2.1, 2010-08-05' );
 
 # Whether or not to also send notificaton to the person who made the change
 $wgCategoryWatchNotifyEditor = true;
@@ -48,7 +48,7 @@ class CategoryWatch {
 	/**
 	 * Get a list of categories before article updated
 	 */
-	function onArticleSave( &$article, &$user, &$text ) {
+	function onArticleSave( &$article, &$user, $text ) {
 		global $wgCategoryWatchUseAutoCat, $wgCategoryWatchUseAutoCatRealName;
 
 		$this->before = array();
@@ -86,7 +86,7 @@ class CategoryWatch {
 	/**
 	 * Find changes in categorisation and send messages to watching users
 	 */
-	function onArticleSaveComplete( &$article, &$user, &$text, &$summary, &$medit ) {
+	function onArticleSaveComplete( &$article, &$user, $text, $summary, $medit ) {
 
 		# Get cats after update
 		$this->after = array();

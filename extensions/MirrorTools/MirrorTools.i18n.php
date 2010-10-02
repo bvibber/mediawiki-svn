@@ -19,23 +19,40 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author McDutchie
  * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'mirrortools' => "http://www.mediawiki.org/wiki/Extension:MirrorTools
+
+This extension extends various API classes to allow revisions to be added with arbitrary user names (and, in a later version, timestamps). This aids in mirroring of another wiki's content.",
 	'mirrortools-desc' => '{{desc}}',
 	'right-mirroredit' => '{{doc-right|mirroredit}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'mirrortools' => 'MirrorTools',
 	'mirrortools-desc' => 'Дазваляе рэдагаваньні праз API ад імя любога ўдзельніка',
-	'right-mirroredit' => 'рэдагаваць праз API ад імя любога ўдзельніка',
+	'right-mirroredit' => 'рэдагаваньне праз API ад імя любога ўдзельніка',
 	'group-MirrorTools' => 'Карыстальнікі Mirror tool',
 	'group-MirrorTools-member' => 'карыстальнік Mirror tool',
 	'grouppage-MirrorTools' => '{{ns:project}}:Карыстальнікі Mirror tool',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'mirrortools' => 'OstilhMelezour',
+	'mirrortools-desc' => "Aotreañ ar c'hemmoù dre an API da vezañ graet dindan forzh peseurt anv implijer",
+	'right-mirroredit' => 'Kemmañ dre an API dindan forzh peseurt anv implijer',
+	'group-MirrorTools' => 'Implijerien an ostilh melezour',
+	'group-MirrorTools-member' => 'implijer an ostilh melezour',
+	'grouppage-MirrorTools' => '{{ns:project}}: Implijerien an ostilh melezour',
 );
 
 /** German (Deutsch)
@@ -50,11 +67,59 @@ $messages['de'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Bearbeiter',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Zmóžnja změny pśez API pód wužywarskim mjenim',
+	'right-mirroredit' => 'Pśez API pód wužywarskim mjenim wobźěłaś',
+	'group-MirrorTools' => 'Wužywarje głědałkowego rěda',
+	'group-MirrorTools-member' => 'Wužywaŕ głědałkowego rěda',
+	'grouppage-MirrorTools' => '{{ns:project}}:Wužywarje głědałkowego rěda',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Permite editar a través de API a ser hechas bajo cualquier nombre de usuario',
+	'right-mirroredit' => 'Editar a través de API bajo cualquier nombre de usuario',
+	'group-MirrorTools' => 'Usuario de Mirror tool',
+	'group-MirrorTools-member' => 'usuario de mirror tool',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usuario de Mirror tool',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
 $messages['eu'] = array(
 	'mirrortools' => 'MirrorTools',
+);
+
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'mirrortools' => 'OutilsMiroir',
+	'mirrortools-desc' => 'Autorise les modifications via l’API à être faites sous n’importe quel nom d’utilisateur',
+	'right-mirroredit' => 'Modifier via l’API sous n’importe quel nom d’utilisateur',
+	'group-MirrorTools' => 'Utilisateurs de l’outil miroir',
+	'group-MirrorTools-member' => 'utilisateur de l’outil miroir',
+	'grouppage-MirrorTools' => '{{ns:project}}:Utilisateurs de l’outil miroir',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mirrortools' => 'Ferramentas de espello',
+	'mirrortools-desc' => 'Permite que calquera usuario realice edicións a través da API',
+	'right-mirroredit' => 'Editar baixo calquera nome de usuario a través da API',
+	'group-MirrorTools' => 'Usuarios das ferramentas de espello',
+	'group-MirrorTools-member' => 'Usuario das ferramentas de espello',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usuarios das ferramentas de espello',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -69,11 +134,49 @@ $messages['hsb'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužiwarjo špiheloweho nastroja',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mirrortools' => 'Instrumentos pro duplication',
+	'mirrortools-desc' => 'Permitte facer modificationes via API sub qualcunque nomine de usator',
+	'right-mirroredit' => 'Modificar via API sub qualcunque nomine de usator',
+	'group-MirrorTools' => 'Usatores del instrumentos pro duplication',
+	'group-MirrorTools-member' => 'usator del instrumentos pro duplication',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usatores del instrumentos pro duplication',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Memungkinkan suntingan melalui API menggunakan nama pengguna apa pun',
+	'right-mirroredit' => 'Sunting melalui API menggunakan nama pengguna apa pun',
+	'group-MirrorTools' => 'Pengguna peralatan cermin',
+	'group-MirrorTools-member' => 'pengguna peralatan cermin',
+	'grouppage-MirrorTools' => '{{ns:project}}:Pengguna peralatan cermin',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'mirrortools' => 'ミラーツール',
+	'mirrortools-desc' => 'API経由の編集を、任意の利用者名で行なうことを許可する',
+	'right-mirroredit' => 'API経由で任意の利用者名で編集',
+	'group-MirrorTools' => 'ミラーツール利用者',
+	'group-MirrorTools-member' => 'ミラーツール利用者',
+	'grouppage-MirrorTools' => '{{ns:project}}:ミラーツール利用者',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'mirrortools' => 'Mirror-Fonctiounen',
+	'mirrortools-desc' => 'Erlaabt et Ännerungen iwwer API ënner all Benotzernumm ze maachen',
+	'right-mirroredit' => 'Iwwer API ënner all Benotzernumm änneren',
 	'group-MirrorTools' => 'Mirror-Fonctiouns Benotzer',
 	'group-MirrorTools-member' => 'Mirror-Fonctiouns Benotzer',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Fonctiouns Benotzer',
@@ -105,12 +208,13 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'mirrortools' => 'MirrorTools',
-	'mirrortools-desc' => 'A përmëtt ëd fé modìfiche via API sota minca nòm utent',
-	'right-mirroredit' => 'Modìfica via API sota minca nòm utent',
+	'mirrortools-desc' => 'A përmët ëd fé dle modìfiche via API con qualsëssìa nòm utent',
+	'right-mirroredit' => 'Modìfica via API sota qualsëssìa nòm utent',
 	'group-MirrorTools' => "Utent ëd l'utiss Mirror",
 	'group-MirrorTools-member' => "Utent ëd l'utiss mirror",
 	'grouppage-MirrorTools' => "{{ns:project}}:Utent ëd l'utiss Mirror",
@@ -132,6 +236,11 @@ $messages['pt'] = array(
  * @author Eleferen
  */
 $messages['ru'] = array(
+	'mirrortools' => 'Инструмент Зеркалирования',
+	'mirrortools-desc' => 'Позволяет вносить изменения через API, под любым именем пользователя',
 	'right-mirroredit' => 'Править через API под любым именем пользователя',
+	'group-MirrorTools' => 'Пользователи инструмента зеркалирования',
+	'group-MirrorTools-member' => 'пользователь инструмента зеркалирования',
+	'grouppage-MirrorTools' => '{{ns:project}}: Пользователи инструмента зеркалирования',
 );
 

@@ -169,7 +169,7 @@ $messages['ang'] = array(
 	'youtubeauthsub_keywords' => 'Cǣȝƿord',
 	'youtubeauthsub_category' => 'Flocc',
 	'youtubeauthsub_submit' => 'Forþsendan',
-	'youtubeauthsub_clickhere' => 'Hēr cnæppan to inmeldian to YouTube',
+	'youtubeauthsub_clickhere' => 'Hēr cnæppan to inmeldienne to YouTube',
 	'youtubeauthsub_tokenerror' => 'Ƿōh scieppende þafunge tācn, fande nīƿian.',
 	'youtubeauthsub_authsubinstructions' => 'To forþsendenne scēaƿe, þū scealt formest to YouTube inmeldian.',
 	'youtubeauthsub_uploadhere' => 'Þīnu scēaƿe forþsendan fram hēr:',
@@ -538,7 +538,7 @@ Si us plau, tingues paciència.",
 	'youtubeauthsub_jserror_nodesc' => 'Si us plau, introdueixi una descripció per al vídeo.',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1121,12 +1121,31 @@ Veuillez patienter.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'youtubeauthsub' => 'Tèlèchargiér una vidèô YouTube',
+	'youtubeauthsub-desc' => 'Pèrmèt ux utilisators de [[Special:YouTubeAuthSub|tèlèchargiér des vidèôs]] tot drêt dessus YouTube.',
+	'youtubeauthsub_info' => 'Por tèlèchargiér una vidèô dessus YouTube por l’apondre a una pâge, rensègnéd cetes enformacions :',
 	'youtubeauthsub_title' => 'Titro',
 	'youtubeauthsub_description' => 'Dèscripcion',
 	'youtubeauthsub_password' => 'Mot de pâssa dessus YouTube',
+	'youtubeauthsub_username' => 'Nom d’utilisator dessus YouTube',
+	'youtubeauthsub_keywords' => 'Mots cllâfs',
 	'youtubeauthsub_category' => 'Catègorie',
 	'youtubeauthsub_submit' => 'Sometre',
+	'youtubeauthsub_clickhere' => 'Clicâd ique por vos branchiér dessus YouTube',
+	'youtubeauthsub_tokenerror' => 'Èrror pendent la demanda d’ôtorisacion, tâchiéd de rafrèchir la pâge.',
+	'youtubeauthsub_authsubinstructions' => 'Por tèlèchargiér una vidèô, vos vos devréd d’abôrd branchiér dessus YouTube.',
+	'youtubeauthsub_uploadhere' => 'Tèlèchargiér voutra vidèô dês ique :',
 	'youtubeauthsub_uploadbutton' => 'Tèlèchargiér',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vêde cela vidèô]',
+	'youtubeauthsub_summary' => 'Tèlèchargiér una vidèô YouTube',
+	'youtubeauthsub_uploading' => 'Voutra vidèô est aprés étre tèlèchargiê.
+Volyéd pacientar.',
+	'youtubeauthsub_viewpage' => 'Ôtrament, vos pouede [[$1|vêre voutra vidèô]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Volyéd buchiér yon ou ben un mouél de mots cllâfs.',
+	'youtubeauthsub_jserror_notitle' => 'Volyéd buchiér un titro por la vidèô.',
+	'youtubeauthsub_jserror_nodesc' => 'Volyéd buchiér una dèscripcion por la vidèô.',
 );
 
 /** Western Frisian (Frysk)
@@ -1247,11 +1266,22 @@ Bitte ha e chly Geduld.',
 	'youtubeauthsub_jserror_nodesc' => 'Bitte gib e Bschryybig für s Video aa.',
 );
 
+/** Gujarati (ગુજરાતી) */
+$messages['gu'] = array(
+	'youtubeauthsub_title' => 'શિર્ષક',
+	'youtubeauthsub_category' => 'શ્રેણી',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
 $messages['gv'] = array(
 	'youtubeauthsub' => 'Laadey neese feeshan YouTube',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'youtubeauthsub_category' => 'Rukuni',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1514,6 +1544,7 @@ Silakan menunggu.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'youtubeauthsub' => 'Bo nlènlé YouTube na élu',
 	'youtubeauthsub_title' => 'Ishi edemede',
 	'youtubeauthsub_description' => 'Nkȯwá',
 	'youtubeauthsub_password' => 'Okwúngáfè YouTube',
@@ -1523,10 +1554,11 @@ $messages['ig'] = array(
 	'youtubeauthsub_submit' => 'Dànyé',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
-	'youtubeauthsub_uploadbutton' => 'Tinyéelú',
+	'youtubeauthsub_uploadbutton' => 'Tinyénélú',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Le enyónyó-na-jé nka]',
+	'youtubeauthsub_summary' => 'Nè bo nlènlé YouTube na élu',
 	'youtubeauthsub_uploading' => 'Enyónyó-na-jé gi na nyiri elú.
 Biko nweré nkásị obi.',
 );
@@ -2560,6 +2592,7 @@ $messages['ps'] = array(
 	'youtubeauthsub_description' => 'څرګندونه',
 	'youtubeauthsub_password' => 'د يوټيوب پټنوم',
 	'youtubeauthsub_username' => 'د يوټيوب کارن-نوم',
+	'youtubeauthsub_keywords' => 'آروييونه',
 	'youtubeauthsub_category' => 'وېشنيزه',
 	'youtubeauthsub_submit' => 'سپارل',
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
@@ -2582,6 +2615,7 @@ $messages['ps'] = array(
 
 لطفاً لږ صبر وکړی.',
 	'youtubeauthsub_viewpage' => 'په اختياري توګه، تاسې [[$1|خپله ويډيو کتلای شی]].',
+	'youtubeauthsub_jserror_nokeywords' => 'لطفاً يوه او يا څو آروييونه وليکۍ.',
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
 	'youtubeauthsub_jserror_nodesc' => 'مهرباني وکړۍ د ويډيو څرګندونه مو وکړۍ.',
 );
@@ -3295,6 +3329,7 @@ $messages['ta'] = array(
 	'youtubeauthsub_category' => 'வகைபாடு',
 	'youtubeauthsub_submit' => 'சமர்ப்பி',
 	'youtubeauthsub_clickhere' => 'யூடியூபில் நுழைவதற்கு இங்கே சொடுக்கவும்',
+	'youtubeauthsub_uploadbutton' => 'பதிவேற்றம்',
 );
 
 /** Telugu (తెలుగు)
@@ -3729,6 +3764,13 @@ $messages['war'] = array(
 	'youtubeauthsub_category' => 'Kaarangay',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'youtubeauthsub_title' => '标题',
+	'youtubeauthsub_description' => '描述',
+	'youtubeauthsub_category' => '分类',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
@@ -3762,6 +3804,15 @@ $messages['yo'] = array(
 	'youtubeauthsub_username' => 'Orúkọ oníṣe Youtube',
 	'youtubeauthsub_category' => 'Ẹ̀ka',
 	'youtubeauthsub_uploadbutton' => 'Ìrùsókè',
+);
+
+/** Cantonese (粵語) */
+$messages['yue'] = array(
+	'youtubeauthsub_title' => '標題',
+	'youtubeauthsub_description' => '描述',
+	'youtubeauthsub_category' => '分類',
+	'youtubeauthsub_submit' => '遞交',
+	'youtubeauthsub_uploadbutton' => '上載',
 );
 
 /** Zhuang (Vahcuengh)
@@ -3863,5 +3914,11 @@ YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看�
 	'youtubeauthsub_jserror_nokeywords' => '請輸入一個或以上的關鍵詞。',
 	'youtubeauthsub_jserror_notitle' => '請輸入影片標題',
 	'youtubeauthsub_jserror_nodesc' => '請輸入影片描述。',
+);
+
+/** Zulu (isiZulu) */
+$messages['zu'] = array(
+	'youtubeauthsub_category' => 'Uhlobo',
+	'youtubeauthsub_submit' => 'Yisa',
 );
 

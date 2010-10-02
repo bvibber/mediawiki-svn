@@ -115,6 +115,11 @@ $messages['ca'] = array(
 	'categoryonupload-label' => 'Categoria:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'categoryonupload-label' => 'پۆل:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -219,6 +224,11 @@ $messages['gsw'] = array(
 $messages['gv'] = array(
 	'categoryonupload-desc' => 'Jannoo greinnaghey ymmyderyn dy reih ronney as ad cur coadan neese',
 	'categoryonupload-label' => 'Ronney:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'categoryonupload-label' => 'Rukuni:',
 );
 
 /** Hebrew (עברית)

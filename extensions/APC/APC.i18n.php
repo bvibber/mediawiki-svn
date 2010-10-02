@@ -1004,6 +1004,11 @@ $messages['ce'] = array(
 	'viewapc-ls-delete' => '[Дlадайá]',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'viewapc-ls-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -1094,7 +1099,7 @@ Zdá se, že APC neběží.',
 	'viewapc-ls-scope-both' => 'Obě',
 	'viewapc-ls-sort-hits' => 'Zásahy',
 	'viewapc-ls-sort-size' => 'Velikost',
-	'viewapc-ls-sort-name' => 'Nzev',
+	'viewapc-ls-sort-name' => 'Název',
 	'viewapc-ls-sort-accessed' => 'Poslední přístup',
 	'viewapc-ls-sort-modified' => 'Poslední změny',
 	'viewapc-ls-sort-created' => 'Vytvořeno',
@@ -2280,6 +2285,11 @@ Di nejer Version $2 chasch uf http://pecl.php.net/package/APC/$2 abelade.',
 	'viewapc-usercache-cleared' => "'''''Aawändigs-Cache gläärt.'''''",
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'viewapc-ls-limit-none' => 'Duka',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity
@@ -2999,7 +3009,7 @@ $messages['ig'] = array(
 	'viewapc-display-value' => 'Onuogụgụ',
 	'viewapc-display-filename' => 'Áhà ákwúkwú orunotu',
 	'viewapc-display-info' => 'Áhà',
-	'viewapc-display-type' => 'Nkè',
+	'viewapc-display-type' => 'Ùdị',
 	'viewapc-display-num_hits' => 'Kúrú',
 	'viewapc-display-mem_size' => 'Ívụ',
 	'viewapc-ls-options-legend' => 'I cho, ka I chogị',
@@ -3009,12 +3019,12 @@ $messages['ig'] = array(
 	'viewapc-ls-header-size' => 'Ívụ',
 	'viewapc-ls-header-created' => 'Kèrè',
 	'viewapc-ls-delete' => '[Gbakashia ubuwá]',
-	'viewapc-ls-scope-deleted' => 'Gbakashiala',
+	'viewapc-ls-scope-deleted' => 'Gbakashịrị',
 	'viewapc-ls-scope-both' => 'Nké abụo',
 	'viewapc-ls-sort-size' => 'Ívụ',
 	'viewapc-ls-sort-name' => 'Áhà',
 	'viewapc-ls-sort-created' => 'Kèrè',
-	'viewapc-ls-sort-deleted' => 'Gbakashiala',
+	'viewapc-ls-sort-deleted' => 'Gbakashịrị',
 	'viewapc-ls-sort-timeout' => 'Ogẹ afüolé',
 	'viewapc-ls-limit-none' => 'Haníle',
 );
@@ -6132,7 +6142,7 @@ $messages['ug-arab'] = array(
 	'viewapc-ls-submit' => 'كۆچۈش!',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -106,6 +106,13 @@ $messages['af'] = array(
 	'ga-small' => 'Klein',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'ga-small' => 'Chicot',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -483,7 +490,7 @@ $messages['ca'] = array(
 	'ga-title' => 'Premis de $1',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1649,7 +1656,7 @@ $messages['ksh'] = array(
 	'ga-goback' => 'Jangk Retuur',
 	'ga-imagesbelow' => 'Hee drunger sin Ding Belder, die hee jebruch wäde',
 	'ga-img' => 'Beld dobei donn udder ußtuusche',
-	'ga-large' => 'Jrooß',
+	'ga-large' => 'Jruß',
 	'ga-medium' => 'Meddel bes kleijn',
 	'ga-mediumlarge' => 'Meddel bes jrooß',
 	'ga-new' => 'Neu',

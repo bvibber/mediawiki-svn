@@ -1722,6 +1722,12 @@ $messages['gu'] = array(
 	'sign-email' => 'ઇ મેલ:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'sign-viewfield-reviewcomment' => 'Bahasi',
+	'sign-review-comment' => 'Bahasi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -4770,7 +4776,7 @@ $messages['ug-arab'] = array(
 	'sign-viewfield-email' => 'ئېلخەت',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

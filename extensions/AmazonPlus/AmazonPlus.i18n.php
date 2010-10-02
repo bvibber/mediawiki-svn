@@ -1475,6 +1475,20 @@ $messages['tr'] = array(
 	'amazonplus-less' => 'daha az',
 );
 
+/** Ukrainian (Українська)
+ * @author Riwnodennyk
+ */
+$messages['uk'] = array(
+	'amazonplus-nores' => 'Помилка: Не знайдено!',
+	'amazonplus-german' => 'німецька',
+	'amazonplus-french' => 'французька',
+	'amazonplus-japanese' => 'японська',
+	'amazonplus-amazon' => 'ціна з Amazon',
+	'amazonplus-new' => 'нове',
+	'amazonplus-more' => 'більше',
+	'amazonplus-less' => 'менше',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

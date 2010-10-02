@@ -635,10 +635,14 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
 	'templatelink' => '模板链接',
+	'templatelink_desc' => '这个扩展可以将一个模版作为新页面来展示。',
+	'templatelink_empty' => '你必须提供一个参数。',
+	'templatelink_newtitle' => '$1 (已引用)',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

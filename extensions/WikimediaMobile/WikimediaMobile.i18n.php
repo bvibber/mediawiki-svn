@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'wikimediamobile-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'wikimediamobile-desc' => 'Ondersteunende funksies in MediaWiki vir die projek Wikipedia-mobiel by http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
@@ -299,9 +306,11 @@ $messages['vi'] = array(
 	'wikimediamobile-desc' => 'Các hàm MediaWiki hỗ trợ dự án Wikimedia Di động được đăng cai tại http://github.com/hcatlin/wikimedia-mobile',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Xiaomingyan
+ */
 $messages['zh-hans'] = array(
-	'wikimediamobile-desc' => 'MediaWiki支援Wikimedia-mobile职能计画，请至http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'MediaWiki对Wikimedia-mobile项目的支持功能存放在http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

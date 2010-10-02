@@ -606,6 +606,11 @@ $messages['ce'] = array(
 	'interwiki_addbutton' => 'Тlетоха',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'interwiki_reasonfield' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Mormegil
@@ -661,6 +666,13 @@ Pravděpodobně neexistuje.',
 	'interwiki_logpagetext' => 'Toto je seznam změn [[Special:Interwiki|tabulky interwiki]].',
 	'right-interwiki' => 'Editování interwiki záznamů',
 	'action-interwiki' => 'změnit tento záznam interwiki',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'interwiki_0' => 'нѣ́тъ',
 );
 
 /** Welsh (Cymraeg)
@@ -1238,7 +1250,7 @@ Ademais, existe un [[Special:Log/interwiki|rexistro dos cambios]] realizados á 
  * @author Omnipaedista
  */
 $messages['got'] = array(
-	'interwiki_reasonfield' => 'Faírina',
+	'interwiki_reasonfield' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1345,6 +1357,11 @@ $messages['gu'] = array(
  */
 $messages['gv'] = array(
 	'interwiki_reasonfield' => 'Fa:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'interwiki_reasonfield' => 'Dalili:',
 );
 
 /** Hawaiian (Hawai`i)
@@ -3626,6 +3643,11 @@ $messages['uk'] = array(
 	'interwiki_0' => 'ні',
 	'interwiki_edit' => 'Редагувати',
 	'interwiki_reasonfield' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'interwiki_reasonfield' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

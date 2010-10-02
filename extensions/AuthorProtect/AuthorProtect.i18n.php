@@ -259,6 +259,12 @@ $messages['ce'] = array(
 	'authorprotect-reason' => 'Бахьан',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'authorprotect-expiry' => 'ھەتا:',
+	'authorprotect-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Reaperman
@@ -342,7 +348,7 @@ $messages['de-formal'] = array(
  * @author Mirzali
  */
 $messages['diq'] = array(
-	'authorprotect-reason' => 'Sebeb',
+	'authorprotect-reason' => 'Sebeb:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -398,8 +404,8 @@ $messages['eo'] = array(
 	'authorprotect-confirm' => 'Ŝanĝi nivelojn de protektado',
 	'authorprotect-edit' => 'Limigi redaktadon por aŭtoroj',
 	'authorprotect-move' => 'Limigi movado por aŭtoroj',
-	'authorprotect-expiry' => 'Findato',
-	'authorprotect-reason' => 'Kialo',
+	'authorprotect-expiry' => 'Findato:',
+	'authorprotect-reason' => 'Kialo:',
 	'authorprotect-intro' => 'Utiligu ĉi tiun kamparon por ŝlosi ĉi tiu paĝo kontraŭ ne-aŭtoroj',
 	'authorprotect-success' => 'Protektado sukcesis!',
 	'authorprotect-failure' => 'Protektado malsukcesis',
@@ -530,8 +536,8 @@ $messages['frp'] = array(
 	'authorprotect-confirm' => 'Changiér lo nivél de protèccion',
 	'authorprotect-edit' => 'Rètrendre l’èdicion ux ôtors',
 	'authorprotect-move' => 'Rètrendre lo changement de nom ux ôtors',
-	'authorprotect-expiry' => 'Temps d’èxpiracion',
-	'authorprotect-reason' => 'Rêson',
+	'authorprotect-expiry' => 'Èxpire :',
+	'authorprotect-reason' => 'Rêson :',
 	'authorprotect-intro' => 'Utilisâd ceti formulèro por vèrrolyér cela pâge des nan-ôtors.',
 	'authorprotect-success' => 'Protèccion reussia !',
 	'authorprotect-failure' => 'Falyita de la protèccion',
@@ -606,6 +612,12 @@ $messages['gv'] = array(
 	'protect-level-author' => 'Coadee veih neu-ughtaryn',
 	'restriction-level-author' => 'Coadit liorish yn ughtar',
 	'right-authorprotect' => 'Coadee duillagyn ughtarit',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'authorprotect-expiry' => "Wa'adi:",
+	'authorprotect-reason' => 'Dalili:',
 );
 
 /** Hebrew (עברית)
@@ -917,7 +929,7 @@ $messages['ksh'] = array(
 	'authorprotect-confirm' => 'Schötze',
 	'authorprotect-edit' => 'Don et Ändere op de Schriiver fun dä Sigg beschränke',
 	'authorprotect-move' => 'Donn et Ömnenne op Schriiver aan dä Sigg beschränke',
-	'authorprotect-expiry' => 'Sperre beß en',
+	'authorprotect-expiry' => 'Sperre beß en:',
 	'authorprotect-reason' => 'Jrond:',
 	'authorprotect-intro' => 'Hee met kanns de di Sigg jäje annder Metmaacher schötze, die kein Schriiver ann er sin',
 	'authorprotect-success' => 'Et Schötze es jelonge!',
@@ -1554,6 +1566,11 @@ $messages['uk'] = array(
 	'protect-level-author' => 'Захист від не-авторів',
 	'restriction-level-author' => 'Авторський захист',
 	'right-authorprotect' => 'Захист авторських сторінок',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'authorprotect-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

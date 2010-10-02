@@ -1118,6 +1118,8 @@ Peringkatnya adalah sebagai berikut:
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'ratinghistory-period' => 'Ótù ógẹ:',
+	'ratinghistory-month' => 'önwa gárá',
 	'ratinghistory-3months' => 'önwa 3 nke gáráni',
 	'ratinghistory-year' => 'afọr gáráni',
 	'ratinghistory-3years' => 'afọr 3 nke gáráni',
@@ -1955,6 +1957,29 @@ $messages['sk'] = array(
 '''[1]''' - Slabé; '''[2]''' - Nízke; '''[3]''' - Dobré; '''[4]''' - Vysoké; '''[5]''' - Výborné;",
 	'ratinghistory-graph-scale' => "'''Počet kontrol za deň''' <font color=\"red\">''(červenou)''</font> je zobrazený  v mierke ''1:\$1''.",
 	'right-feedback' => 'Hodnotenie stránok prostredníctvom formulára',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ratinghistory' => 'Zgodovina ocen strani',
+	'ratinghistory-leg' => 'Podatki zgodovine ocen za [[:$1|$1]]',
+	'ratinghistory-tab' => 'ocenjevanje',
+	'ratinghistory-link' => 'Ocenjevanje strani',
+	'ratinghistory-period' => 'Časovno obdobje:',
+	'ratinghistory-month' => 'zadnji mesec',
+	'ratinghistory-3months' => 'zadnje tri mesece',
+	'ratinghistory-year' => 'zadnje leto',
+	'ratinghistory-3years' => 'zadnja tri leta',
+	'ratinghistory-ave' => 'Povp.: $1',
+	'ratinghistory-chart' => 'Ocene bralcev skozi čas',
+	'ratinghistory-users' => 'Uporabniki, ki so ocenili',
+	'ratinghistory-graph' => '$2 »$3« ($1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}})',
+	'ratinghistory-svg' => 'Prikaži kot SVG',
+	'ratinghistory-table-rating' => 'Ocena',
+	'ratinghistory-table-votes' => 'Glasovi',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – Slabo; '''(2)''' – Nizko; '''(3)''' – Pošteno; '''(4)''' – Visoko; '''(5)''' – Izvrstno;",
 );
 
 /** Albanian (Shqip)

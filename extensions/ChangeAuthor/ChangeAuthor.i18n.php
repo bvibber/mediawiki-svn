@@ -467,6 +467,11 @@ $messages['ch'] = array(
 	'changeauthor-pagenameform-go' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'changeauthor-pagenameform-go' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -773,7 +778,7 @@ $messages['frp'] = array(
 	'changeauthor-pagename-or-revid' => 'Titro de la pâge ou numerô de la vèrsion :',
 	'changeauthor-pagenameform-go' => 'Alar',
 	'changeauthor-comment' => 'Comentèro :',
-	'changeauthor-changeauthors-multi' => 'Changiér ôtor(s)',
+	'changeauthor-changeauthors-multi' => 'Changiér {{PLURAL:$1|l’ôtor|los ôtors}}',
 	'changeauthor-changeauthors-single' => 'Changiér l’ôtor',
 	'changeauthor-invalid-username' => 'Nom d’utilisator « $1 » envalido.',
 	'changeauthor-nosuchuser' => 'Pas d’utilisator « $1 ».',
@@ -874,6 +879,11 @@ $messages['gsw'] = array(
 $messages['gv'] = array(
 	'changeauthor-pagenameform-go' => 'Gow',
 	'changeauthor-comment' => 'Cohaggloo:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'changeauthor-comment' => 'Bahasi:',
 );
 
 /** Hebrew (עברית)
@@ -2219,7 +2229,7 @@ $messages['ug-arab'] = array(
 	'changeauthor-pagenameform-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

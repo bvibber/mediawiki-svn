@@ -117,7 +117,7 @@ define( 'TRANSLATE_FUZZY', '!!FUZZY!!' );
 /**
  * Define various web services that provide translation suggestions.
  * Example for tmserver translation memory from translatetoolkit.
- * $wgTranslateTranslationServices['local'] = array(
+ * $wgTranslateTranslationServices['tmserver'] = array(
  *   'server' => 'http://127.0.0.1',
  *   'port' => 54321,
  *   'timeout-sync' => 3,
@@ -164,6 +164,7 @@ $wgTranslateTasks = array(
 	'view'                 => 'ViewMessagesTask',
 	'untranslated'         => 'ViewUntranslatedTask',
 	'optional'             => 'ViewOptionalTask',
+	'suggestions'          => 'ViewWithSuggestionsTask',
 //	'untranslatedoptional' => 'ViewUntranslatedOptionalTask',
 	'review'               => 'ReviewMessagesTask',
 	'reviewall'            => 'ReviewAllMessagesTask',
@@ -254,6 +255,7 @@ $wgTranslateGroupStructure = array(
 	'/^ext-ui/' => array( 'ext', 'usabilityinitiative' ),
 	'/^ext/' => array( 'ext' ),
 	'/^wikia/' => array( 'wikia' ),
+	'/^out-ihris/' => array( 'ihris' ),
 	'/^out-mantis/' => array( 'mantis' ),
 	'/^out-okawix/' => array( 'okawix' ),
 	'/^out-osm/' => array( 'osm' ),

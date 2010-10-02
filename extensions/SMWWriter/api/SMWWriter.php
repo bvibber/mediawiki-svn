@@ -79,7 +79,7 @@ class SMWWriterData {
 		$count = count( $values );
 		$without = null;
 		for ( $i = 0; $i < $count; $i++ )
-			if ($values[$i]->getHash() === $value->getHash()) {
+			if ($values[$i] != '' && $values[$i]->getHash() === $value->getHash()) {
 				unset( $this->data[$propertyname][$i] );
 				break;
 			}
@@ -120,11 +120,11 @@ class SMWWriterData {
 	public function copySemanticData( SMWSemanticData $data ) {
 		$properties = $data->getProperties();
 		foreach ( $properties as $property ) {
-			if ( $property->isUserDefined() ) {
+			// if ( $property->isUserDefined() ) { // TODO Rethink!
 				$values = $data->getPropertyValues($property);
 				foreach ( $values as $value )
 					$this->addPropertyValue($property, $value);
-			}
+			// } // TODO Rethink!
 		}
 	}
 	
@@ -506,7 +506,7 @@ class SMWWriter {
 	 * @return boolean true if everything is OK
 	 */
 	private function checkSubject(Title $remove, Title $add) {
-		if ( !$add->equals($this->title) ) return false;
+		// if ( !$add->equals($this->title) ) return false; // TODO Rethink!
 		if ( $remove->exists() ) {
 			if ( !$remove->equals($this->title) ) return false;
 		} else {
@@ -689,7 +689,7 @@ class SMWWriter {
 			$value = SMWWriterData::resolveRedirect( $value );
 		$count = count( $values );
 		for ( $i = 0; $i < $count; $i++ )
-			if ($values[$i]->getHash() === $value->getHash()) {
+			if ($values[$i] != '' && $values[$i]->getHash() === $value->getHash()) {
 				unset( $values[$i] );
 				$values = array_values($values);
 				return $values;

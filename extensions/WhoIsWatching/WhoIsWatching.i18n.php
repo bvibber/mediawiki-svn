@@ -308,6 +308,17 @@ Veuillez utiliser la page [[MediaWiki:Number_of_watching_users_pageview]] pour d
 	'specialwhoiswatchingaddbtn' => 'Ajouter les utilisateurs sélectionnés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'whoiswatching' => 'Qui siut una pâge vouiqui',
+	'whoiswatching-desc' => 'Balye una lista ux utilisators que siuvont una pâge vouiqui.',
+	'specialwhoiswatchingthepage' => 'Qui siut %s',
+	'specialwhoiswatchingaddusers' => 'Apondre los utilisators por siuvre la pâge',
+	'specialwhoiswatchingaddbtn' => 'Apondre los utilisators chouèsis',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño
@@ -909,9 +920,16 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'specialwhoiswatchingthepage' => '谁正观看%s',
+	'whoiswatching' => '正在监视某wiki页面的用户',
+	'whoiswatching-desc' => '提供正在监视某wiki页面的用户名列表',
+	'specialwhoiswatchingthepage' => '正在监视用户%s',
+	'specialwhoiswatchingusage' => '本特殊页面不能对自己生效。
+请使用[[MediaWik:Number_of_watching_users_pageview]]页面定义本特殊页面的切入点。',
+	'specialwhoiswatchingaddusers' => '添加用户以监视本页面',
+	'specialwhoiswatchingaddbtn' => '添加已选择用户',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

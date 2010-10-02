@@ -271,6 +271,11 @@ $messages['ce'] = array(
 	'deletebatch-delete' => 'Дlадайá',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'deletebatch-delete' => 'سڕینەوە',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
@@ -570,6 +575,11 @@ D Datei, wu soll uffeglade wäre, sott pro Zyyle ei Sytetitel haa un s cha optio
 	'deletebatch-select-yourself' => 'Du',
 	'deletebatch-no-page' => 'Bitte gib äntwäder zmindescht ei Syten aa, wu glescht soll wäre, oder wehl e Datei, wu s e Lischt din het vu Syte, wu glescht solle wäre.',
 	'right-deletebatch' => 'E Zyylete vu Syte lesche',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'deletebatch-delete' => 'Soke',
 );
 
 /** Hebrew (עברית)

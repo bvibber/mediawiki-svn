@@ -109,6 +109,16 @@ $messages['bn'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'বাতিল',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-template-editor-preference' => 'উইকি টেম্পলেটের ফরমহানি পতানি থা কর',
+	'wikieditor-template-editor-dialog-title' => 'টেম্পলেট পতা',
+	'wikieditor-template-editor-dialog-submit' => 'আপডেট কর',
+	'wikieditor-template-editor-dialog-cancel' => 'বাতিল করেদে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -150,7 +160,7 @@ $messages['ce'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -366,6 +376,11 @@ $messages['gsw'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Abbräche',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author YaronSh
@@ -422,6 +437,8 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Rüwa àtụ',
+	'wikieditor-template-editor-dialog-submit' => 'Dịnwanye mmā',
 	'wikieditor-template-editor-dialog-cancel' => 'Kàchá',
 );
 
@@ -431,6 +448,13 @@ $messages['ig'] = array(
 $messages['io'] = array(
 	'wikieditor-template-editor-dialog-submit' => 'Aktualigar',
 	'wikieditor-template-editor-dialog-cancel' => 'Anular',
+);
+
+/** Icelandic (Íslenska)
+ * @author Krun
+ */
+$messages['is'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Hætta við',
 );
 
 /** Italian (Italiano)
@@ -884,6 +908,11 @@ $messages['uk'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Редагувати шаблон',
 	'wikieditor-template-editor-dialog-submit' => 'Оновити',
 	'wikieditor-template-editor-dialog-cancel' => 'Скасувати',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'منسوخ',
 );
 
 /** Vèneto (Vèneto)

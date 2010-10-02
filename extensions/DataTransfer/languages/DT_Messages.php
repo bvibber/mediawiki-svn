@@ -300,6 +300,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -321,6 +322,7 @@ $messages['br'] = array(
 	'importxml' => 'Enporzhiañ  XML',
 	'dt_import_selectfile' => 'Dibabit ar restr $1 da enporzhiañ :',
 	'dt_import_encodingtype' => 'Seurt enkodadur',
+	'dt_import_summarydesc' => 'Diverradenn an enporzh :',
 	'dt_import_editsummary' => 'Enporzhiadur $1',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
 	'dt_import_success' => '$1 {{PLURAL:$1|bajenn|pajenn}} a vo krouet diwar ar restr $2.',
@@ -807,6 +809,12 @@ $messages['gv'] = array(
 	'dt_xml_freetext' => 'Teks seyr',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'dt_xml_namespace' => 'Sararin suna',
+	'dt_xml_page' => 'Shafi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -1168,6 +1176,7 @@ $messages['ksh'] = array(
 	'importxml' => '<i lang="en">XML</i> Empotteere',
 	'dt_import_selectfile' => 'Söhk de <i lang="en">$1</i>-Dattei för zem Empotteere uß:',
 	'dt_import_encodingtype' => 'Zoot Kodeerung för de Bohchshtahbe un Zeishe',
+	'dt_import_summarydesc' => 'Zesammefassung vun däm Empoot:',
 	'dt_import_editsummary' => 'uss ene <i lang="en">$1</i>-Datei empotteet',
 	'dt_import_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
 	'dt_import_success' => '{{PLURAL:$1|Ein Sigg weed_uß|$1 Sigge weede uß|Kein einzelne Sigg weed_uß}} dä <i lang="en">$2</i>-Dattei empotteet.',
@@ -2024,7 +2033,7 @@ $messages['tr'] = array(
 	'right-datatransferimport' => 'Verileri içe aktarır',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -2160,7 +2169,7 @@ $messages['zh-tw'] = array(
 	'dt_import_importing' => '匯入中...',
 	'dt_import_success' => '將從該$2檔匯入$1{{PLURAL:$1|頁面頁面}}。',
 	'importcsv' => '匯入CSV檔',
-	'dt_importcsv_badheader' => "錯誤：$1欄位的標題「$2」或必須為「$3」，「$4」或表單「模板名稱[欄位名稱]」<br>
+	'dt_importcsv_badheader' => "錯誤：$1欄位的標題「$2」或必須為「$3」，「$4」或表單「模板名稱[欄位名稱]」<br />
 Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
 );
 

@@ -155,7 +155,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'hidens-desc' => 'Ververgt de naamruimte in de paginanaam van de browser en op de pagina als een pagina in zich in de aangegeven naamruimte bebindt of als de parserfunctie <code><nowiki>{{#hidens:}}</nowiki></code> wordt aangeroepen',
+	'hidens-desc' => 'Verbergt de naamruimte in de paginanaam van de browser en op de pagina als een pagina in zich in de aangegeven naamruimte bevindt of als de parserfunctie <code><nowiki>{{#hidens:}}</nowiki></code> wordt aangeroepen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

@@ -3,6 +3,8 @@
  * Created on 24.6.2009
  *
  * Author: ning
+ * 
+ * FIXME: extension fails miserably for custom extension paths
  */
 if ( !defined( 'MEDIAWIKI' ) ) die;
 
@@ -150,11 +152,18 @@ function smwgNMSetupExtension() {
 	}
 
 	// Register Credits
-	$wgExtensionCredits['parserhook'][] = array(
-	'name' => 'Semantic&#160;NotifyMe&#160;Extension', 'version' => SMW_NM_VERSION,
-			'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
-			'url' => 'http://wiking.vulcan.com/dev',
-			'description' => 'Notify wiki user with specified queries.' );
+	$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
+		'name' => 'Semantic&#160;NotifyMe&#160;Extension',
+		'version' => SMW_NM_VERSION,
+		'author' => array(
+			'Ning Hu',
+			'Justin Zhang',
+			'[http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang].' .
+			'Sponsored by [http://projecthalo.com Project Halo] and [http://www.vulcan.com Vulcan Inc.]'
+		),
+		'url' => 'http://wiking.vulcan.com/dev',
+		'description' => 'Notify wiki user with specified queries.'
+	);
 
 	return true;
 }

@@ -1394,6 +1394,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1485,7 +1486,8 @@ Pe bezañ aotreet da <a href="$3">Ouzhpennañ ar froud</a>.',
 	'mvd_default_mismatch' => 'Fazi er restr arventennoù',
 	'mv_data_page_title' => '$1 evit $2 adal $3',
 	'mv_time_separator' => '$1 da $2',
-	'mv_list_streams' => 'Roll gwazhioù metavid',
+	'mv_list_streams' => 'Roll froudadoù MetaVid',
+	'mv_list_streams_page' => 'Roll froudadoù MetaVid',
 	'mv_list_streams_docu' => 'Ar froudadoù-mañ zo anezho :',
 	'mv_list_streams_none' => "N'eus froudad ebet",
 	'video_feed_cat' => 'Bouetañ ar video evit ar rummad :',
@@ -2571,6 +2573,7 @@ $messages['eo'] = array(
  * @author Imre
  * @author Jatrobat
  * @author Locos epraix
+ * @author McDutchie
  * @author Pertile
  * @author Sanbec
  * @author Translationista
@@ -2706,7 +2709,7 @@ Saltar a visualización de flujo: $2',
 	'mv_adjust_default_reason' => 'Ajuste de interface de MetaVid',
 	'mv_adjust_old_title_missing' => 'La página que estás tratando de mover de ($1) no existe',
 	'mv_adjust_ok_move' => 'Éxito, ajustando...',
-	'mv_start_desc' => 'Empezar tiempo',
+	'mv_start_desc' => 'Tiempo de inicio',
 	'mv_end_desc' => 'Terminar tiempo',
 	'mv_edit_metadata' => 'Editar metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
@@ -5011,6 +5014,7 @@ atau Anda mungkin ingin <a href="$3">Tambahkan aliran</a>.',
 	'mv_tool_navigate_title' => 'Jelajahi aliran penuh',
 	'mv_tool_export' => 'Ekspor',
 	'mv_tool_export_title' => 'Ekspor metadata aliran',
+	'mv_tool_embed' => 'Tanam',
 	'mv_results_found' => 'Hasil video <b>$1</b> hingga <b>$2</b> dari <b>$3</b>',
 	'mv_tool_mang_layers' => 'Kelola lapisan',
 	'mv_update_layers' => 'Perbarui lapisan',
@@ -5679,7 +5683,7 @@ De Aansich för der nommaale Metmaacher es op dä Sigg: $1',
 	'mv_path_type_url_anx' => 'kumplätte Medije-URL',
 	'mv_path_type_wiki_title' => 'Medije-Tittel em Wiki',
 	'mv_path_type_url_file' => 'Donn de kumplätte <i lang="en">URL</i> vun en Meedijedattei övver et Söhke heh em Wiki eruß fenge',
-	'mv_path_type_mp4_stream' => 'MP4 Dahteshtrohm-ßööver',
+	'mv_path_type_mp4_stream' => 'ẞööver fö dä MP4 Dahteshtrohm',
 	'mv_path_type_label' => 'Tüp fun enem Paad',
 	'mv_base_offset_label' => 'Aanfangs-Afshtand',
 	'mv_duration_label' => 'Door',
@@ -6359,6 +6363,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -6371,7 +6376,7 @@ $messages['ml'] = array(
 	'mv_upload_file' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mv_external_file' => 'ബാഹ്യ പ്രമാണം',
 	'mv_tool_search' => 'തിരയൂ',
-	'mv_tool_export' => 'എക്സ്പോർട്ട്',
+	'mv_tool_export' => 'കയറ്റുമതി ചെയ്യുക',
 	'mv_watch_clip' => 'ക്ലിപ്പ് കാണുക',
 	'mv_time_separator' => '$1 മുതൽ $2 വരെ',
 	'mv_play' => 'പ്രവർത്തിപ്പിക്കുക',
@@ -7841,8 +7846,10 @@ $messages['ps'] = array(
 	'mv_remove' => 'غورځول',
 	'mv_start_desc' => 'د پيل وخت',
 	'mv_end_desc' => 'د پای وخت',
+	'mv_existing_categories' => '{{PLURAL:$1|وېشنيزه|وېشنيزې}}:',
 	'mv_viewnext' => 'کتل ($1)',
 	'mediasearch' => 'د رسنۍ پلټنه',
+	'mv_results_for' => 'د $1 پايلې',
 	'mv_video_search' => 'ويډيو پلټل',
 	'mv_search_match' => 'متن پلټل',
 	'mv_search_categories' => 'وېشنيزې',
@@ -7850,16 +7857,23 @@ $messages['ps'] = array(
 	'mv_search_and' => 'او',
 	'mv_search_or' => 'يا',
 	'mv_date_last_week' => 'تېره اوونۍ',
+	'mv_category_results' => 'د وېشنيزې پايلې',
+	'mv_people_results' => 'د خلکو پايلې',
 	'mv_most_recent' => 'تر ټولو تازه',
 	'mv_most_viewed' => 'ډېر کتل شوی',
 	'mv_category' => 'وېشنيزه',
+	'mv_view_wiki_page' => 'د ويکي مخ کتل',
 	'mv_media_search' => 'د رسنۍ پلټنه',
 	'mv_sequence_add' => 'کليپونه ورګډول',
 	'mv_sequence_add_manual' => 'د نوم له مخې ورګډول',
 	'mv_sequence_add_search' => 'د پلټنې له مخې ورګډول',
 	'mv_sequence_add_search_desc' => 'د رسنيو د پلټنې له مخې کليپونه ورګډول',
+	'mv_days' => '$1 {{PLURAL:$1|ورځ|ورځې}}',
+	'mv_hours' => '$1 {{PLURAL:$1|ساعت|ساعتونه}}',
 	'mv_hours_singular' => '1 ساعت',
+	'mv_minutes' => '$1 {{PLURAL:$1|دقيقه|دقيقې}}',
 	'mv_minutes_singular' => '1 دقيقه',
+	'mv_seconds' => '$1 {{PLURAL:$1|ثانيه|ثانيې}}',
 	'mv_seconds_singular' => '1 ثانيه',
 	'mv_stream_length' => 'د ټولې ويډيو اوږدوالی:',
 	'mv_add_clip_by_name' => 'د نوم له مخې يو کليپ ورګډول',
@@ -8062,7 +8076,7 @@ Saltar para vista de stream: $2',
 	'mv_view_in_stream_interface' => 'Ver na interface de stream',
 	'mv_view_wiki_page' => 'Ver página wiki',
 	'mv_error_mvd_not_found' => 'Erro: mvd não encontrado',
-	'mv_edit_sequence' => 'Editando Sequência:$1',
+	'mv_edit_sequence' => 'A editar a sequência:$1',
 	'mv_sequence_player_title' => 'reprodutor de sequência',
 	'mv_resource_not_found' => "Recurso '''$1''' não encontrado",
 	'mv_resource_not_supported' => "Tipo de recurso '''$1''' não suportado",

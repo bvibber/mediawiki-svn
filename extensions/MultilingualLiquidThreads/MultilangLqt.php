@@ -34,3 +34,6 @@ $wgHooks['LiquidThreadsAfterReplyMetadataUpdates'][] = 'MultilangLqtHooks::saveS
 $wgHooks['LiquidThreadsEndOfShowNewThreadForm'][] = 'MultilangLqtHooks::showLanguageSelector';
 $wgHooks['LiquidThreadsShowReplyForm'][] = 'MultilangLqtHooks::showLanguageSelector';
 
+$wgPageProps['use-liquid-threads'] = 'Whether or not the page uses LiquidThreads';
+
+

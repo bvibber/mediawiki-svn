@@ -388,6 +388,14 @@ $messages['mk'] = array(
 	'right-userrights-shared' => 'Раководете ги заедничките кориснички права',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'gblrights-pagetext' => 'Dan huwa reġistru tat-tibdil kollu li sar fit-tabella tad-drittijiet globali tal-familja tas-siti wiki',
+	'gblrights-rights-entry' => "biddel is-sħubija għall-gruppi globali ta' $1 minn $2 għal $3",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

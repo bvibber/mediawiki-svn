@@ -32,6 +32,7 @@ $messages['en'] = array(
 	'smw_concept_cache_miss'  => 'The concept "$1" can not be used at the moment, since the wiki configuration requires it to be computed off-line.
 If the problem does not go away after some time, ask your site administrator to make this concept available.',
 	'smw_noinvannot'        => 'Values cannot be assigned to inverse properties.',
+	'version-semantic'      => 'Semantic extensions',
 
 	// URIs that should not be used in objects in cases where users can provide URIs
 	'smw_uri_blacklist' => " http://www.w3.org/1999/02/22-rdf-syntax-ns#\n http://www.w3.org/2000/01/rdf-schema#\n http://www.w3.org/2002/07/owl#",
@@ -1041,6 +1042,7 @@ $messages['be-tarask'] = array(
 	'smw_multiple_concepts' => 'Кожная старонка канцэпцыі можа мець толькі адно вызначэньне канцэпцыі.',
 	'smw_concept_cache_miss' => 'Канцэпцыя «$1» ня можа быць выкарыстаная ў гэты момант, таму што канфігурацыя {{GRAMMAR:родны|{{SITENAME}}}} патрабуе, каб яна вылічалася аф-лайн. Калі гэта праблема ня зьнікне празь некаторы час, запытайце Вашага адміністратара сайта ўключыць гэтую канцэпцыю.',
 	'smw_noinvannot' => 'Значэньні ня можа быць прызначаныя ў адваротныя уласьцівасьці.',
+	'version-semantic' => 'Сэмантычныя пашырэньні',
 	'smw_baduri' => 'Спасылкі на форму «$1» не дазволеныя.',
 	'smw_printername_auto' => 'Аўтаматычна',
 	'smw_printername_count' => 'Падлік вынікаў',
@@ -1314,9 +1316,11 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
+	'smw-desc' => "Aesaat monedusted ho wiki - evit ar mekanikoù ''hag'' an dud ([http://semantic-mediawiki.org/wiki/Help:User_manual diellerezh enlinenn])",
 	'smw_edithelp' => 'Skoazell a ra evit skrivañ darempredoù ha perzhioù',
 	'smw_viewasrdf' => 'Gwelet evel RDF',
 	'smw_finallistconjunct' => ', ha',
@@ -1328,6 +1332,7 @@ $messages['br'] = array(
 	'smw_concept_description' => 'Deskrivadur eus ar meizad « $1 »',
 	'smw_multiple_concepts' => "Pep pajenn meizad na c'hell kaout nemet un dermenadur.",
 	'smw_noinvannot' => "Ne c'hell ket an talvoudennoù bezañ derannet evit eilpennañ perzhioù.",
+	'version-semantic' => 'Astennoù steroniezh',
 	'smw_baduri' => 'An URLoù er stumm « $1 » n"int ket aotreet.',
 	'smw_printername_auto' => 'Emgefre',
 	'smw_printername_count' => "Kontañ an disoc'hoù",
@@ -1786,6 +1791,11 @@ $messages['ch'] = array(
 	'smw_browse_go' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'smw_browse_go' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Kjbenes
  * @author Matěj Grabovský
@@ -1957,6 +1967,7 @@ $messages['de'] = array(
 	'smw_concept_cache_miss' => 'Das Konzept „$1“ kann im Moment nicht angewendet werden, da die Wiki-Konfiguration offline berechnet werden muss.
 Falls sich das Problem nicht nach einiger Zeit von selbst erledigt, bitte Deinen Websiteadministrator, dieses Konzept zu ermöglichen.',
 	'smw_noinvannot' => 'Inversen Attributen können keine Werte zugewiesen werden.',
+	'version-semantic' => 'Softwareerweiterungen (Semantic MediaWiki)',
 	'smw_baduri' => 'URIs der Form „$1“ sind nicht zulässig.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automatisch',
@@ -2214,6 +2225,7 @@ $messages['dsb'] = array(
 	'smw_concept_cache_miss' => 'Koncept "$1" njedajo se we wokugnuśu wužywaś, dokulaž wikijowa konfiguracija trjeba jón za pśeźěłowanje off-line.
 Jolic problem se njezgubujo pó wěstem casu, pšos swójogo sedłowego administratora, aby wón toś ten koncept k dispoziciji stajił.',
 	'smw_noinvannot' => 'Gódnoty njedaju se nawopacnym kakosćam pśipokazaś.',
+	'version-semantic' => 'Semantiske rozšyrjenja',
 	'smw_baduri' => 'URI formy "$1" njejsu dowólone.',
 	'smw_printername_auto' => 'Awtomatiski',
 	'smw_printername_count' => 'Wuslědki licyś',
@@ -2688,6 +2700,7 @@ $messages['es'] = array(
 	'smw_concept_cache_miss' => 'El concepto "$1" no puede ser utilizado en este momento, ya que la configuración wiki exige que sea computado sin conexión.
 Si el problema persiste después de pasado algún tiempo, solicita al administrador de tu sitio que haga este concepto disponible.',
 	'smw_noinvannot' => 'Los valores no pueden asignarse a propiedades inversas.',
+	'version-semantic' => 'Extensiones semánticas',
 	'smw_baduri' => 'Lo sentimos. Las URIs del dominio $1 no están disponibles en este emplazamiento',
 	'smw_printername_auto' => 'Automático',
 	'smw_printername_count' => 'Contar resultados',
@@ -3129,6 +3142,7 @@ Uutta ei käynnistetä.',
  * @author IAlex
  * @author McDutchie
  * @author Meithal
+ * @author Peter17
  * @author PieRRoMaN
  * @author Pierre Matringe
  * @author Sherbrooke
@@ -3151,6 +3165,7 @@ $messages['fr'] = array(
 	'smw_multiple_concepts' => 'Chaque page de concept ne peut avoir qu’une seule définition.',
 	'smw_concept_cache_miss' => 'Le concept « $1 » ne peut être utilisé en ce moment, puisque la configuration du wiki requiert qu’il soit lancé hors-ligne. Si le problème persiste après quelques instants, demander à votre administrateur du site de rendre disponible ce concept.',
 	'smw_noinvannot' => 'Les valeurs ne peuvent pas être allouées pour inverser des propriétés.',
+	'version-semantic' => 'Extensions sémantiques',
 	'smw_baduri' => 'Désolé. Les URIs du domaine « $1 » ne sont pas disponible à cet emplacement.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automatique',
@@ -3404,6 +3419,7 @@ $messages['gl'] = array(
 	'smw_multiple_concepts' => 'Cada páxina de conceptos só pode conter unha definición dun concepto.',
 	'smw_concept_cache_miss' => 'O concepto "$1" non pode ser usado desde que a configuración do wiki o require para calcular a desconexión. Se o problema non se resolve en breve, pregúntelle ao administrador do wiki para que o concepto poida estar dispoñible.',
 	'smw_noinvannot' => 'Non se poden asignar os valores para inverter as propiedades.',
+	'version-semantic' => 'Extensións semánticas',
 	'smw_baduri' => 'Sentímolo, os URIs da forma “$1” non están permitidos.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automático',
@@ -3665,6 +3681,7 @@ $messages['gsw'] = array(
 	'smw_concept_cache_miss' => 'S Konzäpt „$1“ cha im Momänt nit aagwändet wäre, wel d Wiki-Konfiguration offline grächnet muess wäre.
 Wänn s Probläm imfall noch eme Rung nit verschwindet, no bitt Dyy Syteverwalter, des Konzäpt megli z mache.',
 	'smw_noinvannot' => 'Wärt chenne nit mit umgchehrte Eigeschafte gchännzeichnet wäre',
+	'version-semantic' => 'Semantischi Erwyterige',
 	'smw_baduri' => 'URI mit dr Form „$1“ sin nit zuelässig.',
 	'smw_printername_auto' => 'Automatisch',
 	'smw_printername_count' => 'Zellerergebnis',
@@ -3690,6 +3707,9 @@ Wänn s Probläm imfall noch eme Rung nit verschwindet, no bitt Dyy Syteverwalte
 	'smw_paramdesc_sep' => 'S Trännzeiche fir Wärt',
 	'smw_paramdesc_template' => 'Dr Name vu dr Vorlag, wu Uusdruck dermit solle aazeigt wäre',
 	'smw_paramdesc_columns' => 'D Aazahl vu dr Spalte go Ergebnis aazeige (Standard isch $1)',
+	'smw_paramdesc_userparam' => 'E Wärt, wu bi jedem Vorlageufruef ibergee wird, wänn e Vorlag brucht wird',
+	'smw_paramdesc_introtemplate' => 'Dr Vorlagename, wu vor dr Abfrogergebnis aazeigt wird, wänn s git',
+	'smw_paramdesc_outrotemplate' => 'Dr Vorlagename, wu no dr Abfrogergebnis soll aazeigt wäre, wänn s het',
 	'smw_paramdesc_embedformat' => 'Dr HTML-Befähl zum Iberschrifte definiere',
 	'smw_paramdesc_embedonly' => 'Kei Iberschrifte aazeige',
 	'smw_paramdesc_rsstitle' => 'Dr Text, wu as Titel fir dr Kanal soll brucht wäre',
@@ -4218,7 +4238,139 @@ Prije korištenja napravite kopiju svojih podataka.',
 	'smw_type_header' => 'Svojstva tipa "$1".',
 	'smw_typearticlecount' => '{{PLURAL:$1|Prikazano je $1 svojstvo koje koristi|Prikazana su $1 svojstva koja koriste|Prikazano je $1 svojstava koja koriste}} ovaj tip.',
 	'smw_attribute_header' => 'Stranice koje koriste svojstvo "$1".',
+	'smw_attributearticlecount' => 'Prikazano {{PLURAL:$1|$1 stranica koja koristi|$1 stranice koje koriste|$1 stranica koje koriste}} ovo svojstvo.',
+	'smw_subproperty_header' => 'Podsvojstva',
+	'smw_subpropertyarticlecount' => 'Ovo svojstvo ima {{PLURAL:$1|sljedeće podsvojstvo|sljedeća $1 podsvojstva|sljedećih $1 podsvojstava}}:',
+	'smw_concept_header' => 'Stranice koncepta "$1"',
+	'smw_conceptarticlecount' => 'Prikazano $1 {{PLURAL:$1|stranica koja pripada|stranice koje pripadaju|stranica koje pripadaju}} tom konceptu.',
+	'exportrdf' => 'Izvezi stranice u RDF',
+	'smw_exportrdf_docu' => 'Na ovoj stranici možete dobiti podatke o nekoj stranici u RDF formatu. 
+Da biste izvezli stranice unesite njihove naslove u prozor za uređivanje ispod, jedan naslov po retku.',
+	'smw_exportrdf_recursive' => 'Rekurzivno izvezi sve srodne stranice.
+Imajte na umu da bi rezultat mogao biti velik!',
+	'smw_exportrdf_backlinks' => 'Također izvezi sve stranice koje se referenciraju na izvezene stranice. 
+Generira RDF za pregled i pretraživanje.',
+	'smw_exportrdf_lastdate' => 'Ne izvozi stranice koje nisu izmijenjene od navedenog datuma.',
+	'smw_exportrdf_submit' => 'Izvezi',
+	'properties' => 'Svojstva',
+	'smw_properties_docu' => 'U wikiju se koriste sljedeća svojstva.',
+	'smw_property_template' => '$1 tipa $2 ($3)',
+	'smw_propertylackspage' => 'Svako svojstvo mora biti opisano na svojoj stranici!',
+	'smw_propertylackstype' => 'Za ovo svojstvo nije naveden tip (od sad na dalje pretpostavljam tip $1).',
+	'smw_propertyhardlyused' => 'Ovo se svojstvo gotovo ne koristi u wikiji!',
+	'unusedproperties' => 'Nekorištena svojstva',
+	'smw_unusedproperties_docu' => 'Sljedeća svojstva postoje, no ne koristi ih ni jedna stranica.',
+	'smw_unusedproperty_template' => '$1 tipa $2',
+	'wantedproperties' => 'Tražena svojstva',
+	'smw_wantedproperties_docu' => 'Sljedeća svojstva se koriste u wikiju, no još nemaju svoje stranice koje bi ih opisale.',
+	'smw_wantedproperty_template' => '$1 ($2 {{PLURAL:$2|korištenje|korištenja|korištenja}})',
+	'tooltip-purge' => 'Kliknite ovdje kako biste osvježili sve upite i predloške na ovoj stranici',
+	'smw_purge' => 'Osvježi',
+	'types' => 'Tipovi',
+	'smw_types_docu' => 'Slijedi popis svih tipova podataka koji mogu biti dodijeljeni svojstvima.
+Svaki tip podatka ima stranicu koja može pružiti dodatne informacije.',
+	'smw_typeunits' => 'Mjerne jedinice tipa "$1": $2',
+	'semanticstatistics' => 'Statistika o semantici',
+	'smw_semstats_text' => "Ovaj wiki sadrži '''$1''' {{PLURAL:$1|vrijednost svojstva|vrijednosti svojstava|vrijednosti svojstava}} za ukupno '''$2''' [[Special:Properties|{{PLURAL:$2|svojstvo|različita svojstva|različitih svojstava}}]].
+'''$3''' {{PLURAL:$3|svojstvo ima|svojstva imaju|svojstava imaju}} vlastitu stranicu i '''$4''' {{PLURAL:$3|ima|od njih imaju|od njih imaju}} zadan tip podatka.
+Neka od postojećih svojstava su možda [[Special:UnusedProperties|nekorištena svojstva]].
+Svojstva koja još uvijek nemaju stranicu nalaze se na [[Special:WantedProperties|popisu traženih svojstava]].",
+	'uriresolver' => 'URI razrješitelj',
+	'smw_uri_doc' => 'URI razrješitelj implementira <a href="http://www.w3.org/2001/tag/issues.html#httpRange-14">W3C traženje TAGova na httpRange-14</a> koje brine da se ljudi ne pretvore u web stranice.',
+	'ask' => 'Smenatička pretraga',
+	'smw_ask_sortby' => 'Razvrstavanje po stupcu (opcionalno)',
+	'smw_ask_ascorder' => 'Rastuće',
+	'smw_ask_descorder' => 'padajuće',
+	'smw_ask_submit' => 'Nađi rezultate',
+	'smw_ask_editquery' => '[Uredi upit]',
+	'smw_add_sortcondition' => '[Dodaj uvjet na razvrstavanje]',
+	'smw_ask_hidequery' => 'Sakrij upit',
+	'smw_ask_help' => 'Pomoć za upite',
+	'smw_ask_queryhead' => 'Upit',
+	'smw_ask_printhead' => 'Dodatni podaci za prikazati',
+	'smw_ask_printdesc' => '(dodaj jedno svojstvo po retku)',
+	'smw_ask_format_as' => 'Formatiraj kao:',
+	'smw_ask_defaultformat' => 'prvotno',
+	'smw_ask_otheroptions' => 'Ostale opcije',
+	'smw_ask_show_embed' => 'Prikaži kôd za umetanje',
+	'smw_ask_hide_embed' => 'Sakrij kôd za umetanje',
+	'smw_ask_embed_instr' => 'Da biste umetnuli ovaj upit u stranicu koristite kôd dolje.',
+	'searchbyproperty' => 'Traži po svojstvu',
+	'smw_sbv_docu' => 'Traži sve stranice koje imaju zadano svojstvo i vrijednost.',
+	'smw_sbv_novalue' => 'Unesite valjanu vrijednost za svojstvo ili pogledajte sve vrijednosti za "$1".',
+	'smw_sbv_displayresult' => 'Popis svih stranica koje imaju svojstvo "$1" vrijednosti "$2".',
+	'smw_sbv_displayresultfuzzy' => 'Popis svih stranica koje imaju svojstvo "$1" vrijednosti "$2".
+Budući da je rezultata malo, također su prikazane i bliske vrijednosti.',
+	'smw_sbv_property' => 'Svojstvo:',
+	'smw_sbv_value' => 'Vrijednost:',
+	'smw_sbv_submit' => 'Nađi rezultate',
+	'browse' => 'Pregledaj wiki',
+	'smw_browselink' => 'Pregledaj svojstva',
+	'smw_browse_article' => 'Unesite ime stranice od koje ćete početi pregledavanje.',
 	'smw_browse_go' => 'Kreni',
+	'smw_browse_show_incoming' => 'prikaži svojstva koja povezuju ovamo',
+	'smw_browse_hide_incoming' => 'sakrij svojstva koja povezuju ovamo',
+	'smw_browse_no_outgoing' => 'Ova stranica nema svojstva.',
+	'smw_browse_no_incoming' => 'Nijedno svojstvo ne povezuje na ovu stranicu.',
+	'smw_inverse_label_default' => '$1 od',
+	'smw_inverse_label_property' => 'Oznaka inverznog svojstva',
+	'pageproperty' => 'Pretraživanje svojstava stranica',
+	'smw_pp_docu' => 'Pretraži sve vrijednosti nekog svojstva na zadanoj stranici.
+Unesite stranicu i svojstvo.',
+	'smw_pp_from' => 'Sa stranice',
+	'smw_pp_type' => 'Svojstvo',
+	'smw_pp_submit' => 'Nađi rezultate',
+	'smw_result_prev' => 'Prethodni',
+	'smw_result_next' => 'Sljedeći',
+	'smw_result_results' => 'Rezultati',
+	'smw_result_noresults' => 'Nema rezultata.',
+	'smwadmin' => 'Administratorske funkcije za Semantic MediaWiki',
+	'smw_smwadmin_settingup' => 'Postavljam spremište za Semantic MediaWiki',
+	'smw_smwadmin_setupsuccess' => 'Spremište je uspješno postavljeno.',
+	'smw_smwadmin_return' => 'Vrati se na $1',
+	'smw_smwadmin_updatestarted' => 'Pokrenut je novi proces osvježavanja semantičkih podataka.
+Svi spremljeni podaci će biti ponovno izgrađeni ili popravljeni ako je to potrebno.
+Napredak osvježavanja možete pratiti na ovoj posebnoj stranici.',
+	'smw_smwadmin_updatenotstarted' => 'Već se izvršava proces osvježavanja.
+Ne pokrećem novi.',
+	'smw_smwadmin_updatestopped' => 'Svi postojeći procesi osvježavanja su zaustavljeni.',
+	'smw_smwadmin_updatenotstopped' => 'Da biste zaustavili proces osvježavanja, označite u potvrdnom okviru da ste zaista sigurni.',
+	'smw_smwadmin_docu' => 'Ova posebna stranica pomaže prilikom instalacije i nadogradnje <a href="http://semantic-mediawiki.org">Semantic MediaWiki</a>.
+Ne zaboravite napraviti sigurnosnu kopiju važnih podataka prije izvršavanja administrativnih funkcija.',
+	'smw_smwadmin_db' => 'Instalacija i nadgradnja baze podataka',
+	'smw_smwadmin_dbdocu' => 'Semantic MediaWiki zahtijeva određena proširenja MediaWiki baze podataka za čuvanje semantičkih podataka.
+Funkcija ispod osigurava da je vaša baza pravilno postavljena.
+Ovaj korak ne utječe na ostatak MediaWiki baze podataka i lako se može poništiti ukoliko to želite.
+Ova se funkcija može izvršiti više puta bez ikakvih štetnih posljedica, no potrebna je samo kod instalacije ili nadgradnje.',
+	'smw_smwadmin_permissionswarn' => 'Ako operacija ne uspije i vrati SQL grešku, baza podataka koju koristi Vaš wiki (provjerite svoj LocalSettings.php) vjerojatno nema dovoljna prava.
+Učinite jedno od sljedećeg: dodijelite ovom korisniku dodatna prava za stvaranje i brisanje tablica, privremeno unesite administratorsko korisničko ime i lozinku Vaše baze podataka u LocalSettings.php, ili pokrenite skriptu za održavanje <tt>SMW_setup.php</tt> koja će koristiti prava iz AdminSettings.php.',
+	'smw_smwadmin_dbbutton' => 'Inicijaliziraj ili nadogradi tablice',
+	'smw_smwadmin_announce' => 'Najavite svoj wiki',
+	'smw_smwadmin_announcedocu' => 'Semantic MediaWiki pruža web uslugu koja prikazuje i najavljuje nove semantičke wikije.
+Time se vodi popis javnih web stranica i projekata koji koriste Semantic MediaWiki, uglavnom kako bi <a href="http://semantic-mediawiki.org/wiki/SMW_Project">Projekt Semantic MediaWiki</a> dobio pregled tipičnih upotreba Semantic MediaWiki.
+Vidi početnu stranicu Semantic MediaWiki za <a href="http://semantic-mediawiki.org/wiki/Registry">više informacija o ovoj usluzi</a>.',
+	'smw_smwadmin_announcebutton' => 'Pritisnite sljedeći gumb kako biste poslali URL svog wikija na tu uslugu.
+Usluga neće registrirati wikije koji nisu javno dostupni i skupljat će samo javno dostupne podatke.',
+	'smw_smwadmin_datarefresh' => 'Popravljanje i nadgradnja podataka',
+	'smw_smwadmin_datarefreshdocu' => 'Moguće je povratiti sve semantičke podatke Semantic MediaWiki na osnovi trenutnog tekstualnog wikija, što možete koristiti za popravak pokvarenih podataka ili osvježivanje podataka u slučaju internih promjena softvera.
+Osvježavanje se izvršava stranicu po stranicu i neće biti gotovo odmah.
+Prikaz dolje sadrži popis svih osvježavanja u tijeku i omogućuje Vam da zaustavite ili pokrenete osvježavanje (osim ako to nije onemogućio administrator).',
+	'smw_smwadmin_datarefreshprogress' => '<strong>Osvježavanje je već u tijeku.</strong>
+Normalno je da osvježavanje napreduje sporo jer se podaci osvježavaju u malim obrocima svaki put kad korisnik pristupi wikiju.
+Da bi ovo osvježavanje završilo čim prije, možete pokrenuti MediaWiki skriptu za održavanje <tt>runJobs.php</tt> (koristite opciju <tt>--maxjobs 1000</tt> kako biste ograničili broj zasebnih osvježavanja po jednoj seriji).
+Procjena napretka osvježavanja:',
+	'smw_smwadmin_datarefreshbutton' => 'Pokreni osvježavanje podataka',
+	'smw_smwadmin_datarefreshstop' => 'Zaustavi ovo osvježavanje',
+	'smw_smwadmin_datarefreshstopconfirm' => 'Da, siguran sam.',
+	'smw_smwadmin_support' => 'Zatražite pomoć',
+	'smw_smwadmin_supportdocu' => 'U slučaju problema poslužite se sljedećim izvorima:',
+	'smw_smwadmin_installfile' => 'U slučaju problema s Vašom instalacijom pogledajte naputke u datoteci <a href="http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/SemanticMediaWiki/INSTALL">INSTALL</a>.',
+	'smw_smwadmin_smwhomepage' => 'Potpuna korisnička dokumentacija za Semantic MediaWiki nalazi se na <a href="http://semantic-mediawiki.org"><b>semantic-mediawiki.org</b></a>.',
+	'smw_smwadmin_mediazilla' => 'Greške (bugove) možete prijaviti na <a href="https://bugzilla.wikimedia.org/">Bugzilli</a>.',
+	'smw_smwadmin_questions' => 'Ukoliko imate pitanja ili prijedloge, pridružite se raspravi na <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=semediawiki-user">korisničkom forumu Semantic MediaWiki</a>.',
+	'smw_adminlinks_datastructure' => 'Struktura podataka',
+	'smw_adminlinks_displayingdata' => 'Prikaz podataka',
+	'smw_adminlinks_inlinequerieshelp' => 'Pomoć za umetnute upite',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -4240,6 +4392,7 @@ $messages['hsb'] = array(
 	'smw_concept_cache_miss' => 'Koncept "$1" njeda so tuchwilu wužiwać, dokelž wikijowa konfiguracija jón za předźěłowanje offline trjeba.
 Jeli so problem po wěstym času njezhubi, woprašej so sydłoweho administratora, zo by wón tutón koncept k dispoziciji stajił.',
 	'smw_noinvannot' => 'Hódnoty njedadźa so nawopačnym kajkosćam připokazać.',
+	'version-semantic' => 'Semantiske rozšěrjenja',
 	'smw_baduri' => 'URI formy "$1" njejsu dowolene.',
 	'smw_printername_auto' => 'Awtomatiski',
 	'smw_printername_count' => 'Wuslědki ličić',
@@ -4745,6 +4898,7 @@ $messages['ia'] = array(
 	'smw_multiple_concepts' => 'Cata pagina de concepto pote haber un sol definition de concepto.',
 	'smw_concept_cache_miss' => 'Le concepto "$1" non pote esser usate al momento, post que le configuration del wiki require que illo sia computate foras de linea. Si le problema non dispare post alcun tempore, demanda al administrator de tu sito de render disponibile iste concepto.',
 	'smw_noinvannot' => 'Le valores non pote esser assignate al proprietates inverse.',
+	'version-semantic' => 'Extensiones semantic',
 	'smw_baduri' => 'Le adresses URI del forma "$1" non es permittite.',
 	'smw_rss_link' => 'RSS',
 	'smw_csv_link' => 'CSV',
@@ -4994,6 +5148,7 @@ $messages['id'] = array(
 	'smw_concept_cache_miss' => 'Konsep "$1" tidak dapat digunakan saat ini karena konfigurasi wiki membutuhkannya untuk dihitung secara luring.
 Jika masalah ini tidak hilang setelah beberapa waktu, mintalah pengelola situs untuk membuat konsep ini tersedia.',
 	'smw_noinvannot' => 'Nilai tidak dapat diberikan pada properti inversi.',
+	'version-semantic' => 'Ekstensi semantik',
 	'smw_baduri' => 'URI berbentuk "$1" tidak diperbolehkan.',
 	'smw_printername_auto' => 'Otomatis',
 	'smw_printername_count' => 'Hasil perhitungan',
@@ -6176,6 +6331,7 @@ Mer donn jetz nit noch ein aanshtüße!',
 $messages['lb'] = array(
 	'smw-desc' => "Är Wiki méi accessibel machen - fir Maschinnen ''a'' Menschen ([http://semantic-mediawiki.org/wiki/Help:User_manual online documentation])",
 	'smw_edithelp' => "D'Hellëf vun den Eegeschaften änneren",
+	'smw_viewasrdf' => 'RDF-Feed',
 	'smw_finallistconjunct' => ', an',
 	'smw_factbox_head' => 'Fakten iwwer $1',
 	'smw_isspecprop' => 'Dëse Eegeschaft ass eng Spezial-Eegschaft an dëser Wiki.',
@@ -6183,6 +6339,7 @@ $messages['lb'] = array(
 	'smw_isaliastype' => 'Dësen Typ vun donnéeën ass keen Alias fir den Typ vun Donnéeën "$1".',
 	'smw_concept_description' => 'Beschreiwung vum Konzept "$1"',
 	'smw_multiple_concepts' => 'Op jiddwer Konzeptsäit ka just eng Definitioun vun engem Konzept stoen.',
+	'version-semantic' => 'Softwareerweiderungen (Semantic MediaWiki)',
 	'smw_baduri' => 'URIë vun der Form "$1" sinn net erlaabt.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automatesch',
@@ -6313,6 +6470,7 @@ Et ka keen neien ugefaang ginn.',
 	'smw_smwadmin_datarefreshstop' => 'Dësn Update stoppen',
 	'smw_smwadmin_datarefreshstopconfirm' => 'Jo, ech si sécher.',
 	'smw_smwadmin_support' => 'Ënnerstëtzung kréien',
+	'smw_smwadmin_supportdocu' => 'Verschidde Quellen kéinten Iech bei Problemer hëllefen:',
 	'smw_smwadmin_smwhomepage' => 'Déi komplett Benotzerdokumentatioun vu Semantic MediaWiki fannt Dir op b><a href="http://semantic-mediawiki.org">semantic-mediawiki.org</a></b>.',
 	'smw_smwadmin_mediazilla' => 'Feeler kënnen op <a href="https://bugzilla.wikimedia.org/">Bugzilla</a> gemellt ginn.',
 	'smw_smwadmin_questions' => 'Wann dir nach Froen oder Propositiounen hutt, da bedeelegt Iech un der Diskussioun op dem <a href="http://sourceforge.net/mailarchive/forum.php?forum_name=semediawiki-user">Semantic MediaWiki Benotzer-Forum</a>.',
@@ -6339,6 +6497,7 @@ $messages['mk'] = array(
 	'smw_concept_cache_miss' => 'Концептот „$1“ во моментов не може да се користи, бидејќи местењата на викито бараат тој да се пресмета вон интернет.
 Ако проблемот не исчезне по извесно време, побарајте од вашиот администратор да го овозможи тој концепт.',
 	'smw_noinvannot' => 'На обратните својства не можат да им се назначуваат вредности.',
+	'version-semantic' => 'Семантички додатоци',
 	'smw_baduri' => 'URI-ja од обликот „$1“ не се дозволени.',
 	'smw_printername_auto' => 'Автоматски',
 	'smw_printername_count' => 'Резултати од пребројувањето',
@@ -6770,6 +6929,7 @@ $messages['nl'] = array(
 	'smw_concept_cache_miss' => 'Het concept "$1" kan op het moment niet gebruikt worden omdat de dit volgende de instellingen van de wiki offline berekend moet worden.
 Als het probleem over enige tijd nog niet verholpen is, vraag de beheerder dan om dit concept beschikbaar te maken.',
 	'smw_noinvannot' => 'Waarden kunnen niet toegekend worden aan omgekeerde eigenschappen.',
+	'version-semantic' => 'Semantische uitbreidingen',
 	'smw_baduri' => "URI's uit de reeks “$1” zijn hier niet beschikbaar.",
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automatisch',
@@ -7864,6 +8024,7 @@ $messages['pms'] = array(
 	'smw_concept_cache_miss' => "Ël concet «$1» a peul pa esse dovrà ant ës moment, përchè la configurassion ëd la wiki a ciama ch'a sia calcolà fòra ëd linia.
 Se ël problema a van nen via an chèich moment, ciamé a l'aministrator ëd sò sit ëd rende 's concet disponìbil.",
 	'smw_noinvannot' => 'Ij valor a peulo pa esse assignà a le proprietà anverse.',
+	'version-semantic' => 'Estension semàntiche',
 	'smw_baduri' => 'URI dla forma "$1" a son pa përmëttù.',
 	'smw_printername_auto' => 'Automàtich',
 	'smw_printername_count' => "Conta dj'arzultà",
@@ -8109,7 +8270,7 @@ $messages['ps'] = array(
 	'smw_result_prev' => 'پخواني',
 	'smw_result_next' => 'راتلونکي',
 	'smw_result_results' => 'پايلې',
-	'smw_result_noresults' => 'اوبښۍ، هېڅ کومه پايله نشته.',
+	'smw_result_noresults' => 'بې پايلو.',
 	'smw_smwadmin_return' => '$1 ته ورګرځېدل',
 	'smw_smwadmin_datarefreshstopconfirm' => 'هو، زه ډاډه يم.',
 );
@@ -8137,6 +8298,7 @@ $messages['pt'] = array(
 	'smw_multiple_concepts' => 'Cada página de conceito pode possuir apenas uma definição de conceito.',
 	'smw_concept_cache_miss' => "O conceito \"\$1\" não pode ser usado neste momento, porque a configuração da wiki requer que ele seja calculado ''off-line''. Caso o problema não seja resolvido dentro de algum tempo, peça a um administrador da wiki que disponibilize este conceito.",
 	'smw_noinvannot' => 'Valores não podem ser atribuídos a propriedades inversas.',
+	'version-semantic' => 'Extensões semânticas',
 	'smw_baduri' => 'Desculpe, URIs da forma “$1” não são permitidos.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automático',
@@ -8664,6 +8826,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Ferrer
  * @author Innv
  * @author Lockal
@@ -8685,6 +8848,7 @@ $messages['ru'] = array(
 	'smw_multiple_concepts' => 'Страница представления может содержать только одно определение представления.',
 	'smw_concept_cache_miss' => 'Представление «$1» в настоящий момент не может быть использовано, так как настройка вики-сайта требует, чтобы его результат определялся в фоновом режиме. Если данное сообщение не исчезнет через некоторое время, обратитесь к администратору вики-сайта для включения данного представления.',
 	'smw_noinvannot' => 'Обратным свойствам не могут быть присвоены значения.',
+	'version-semantic' => 'Семантическое расширение (Semantic MediaWiki)',
 	'smw_baduri' => 'Извините, но ссылки из диапазона "$1" не доступны отсюда.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Автоматически',
@@ -10261,7 +10425,7 @@ $messages['ug-arab'] = array(
 	'smw_browse_go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  * @author Minh Nguyen
  * @author Vinhtantran

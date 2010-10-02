@@ -88,13 +88,20 @@ $messages['an'] = array(
 	'spamdifftool_submit_buttom' => 'Ninviar',
 );
 
+/** Old English (Ænglisc) */
+$messages['ang'] = array(
+	'spamdifftool_submit_buttom' => 'Forþsendan',
+);
+
 /** Arabic (العربية)
  * @author Meno25
+ * @author Samer
  */
 $messages['ar'] = array(
 	'spamdifftool' => 'التحكم في قائمة السبام السوداء',
 	'spamdifftool-desc' => 'يوفر طريقة أساسية لإضافة مدخلات جديدة للقائمة السوداء للسبام من صفحات الفرق',
 	'spamdifftool_cantedit' => 'عذرا - أنت لا تمتلك الصلاحية لتعديل قائمة السبام السوداء.',
+	'spamdifftool-no-title' => "'''خطأ:''' لم يحدد عنوان صفحة.",
 	'spamdifftool_notext' => "لا يوجد نص لإضافته إلى قائمة السبام السوداء.
 اضغط <a href='$1'>هنا</a> للمتابعة.",
 	'spamdifftool_confirm' => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء.
@@ -272,11 +279,12 @@ $messages['ca'] = array(
 	'spamdifftool_submit_buttom' => 'Envia',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
 	'spamdifftool_option_none' => 'هیچ‌شتێک',
+	'spamdifftool_submit_buttom' => 'ناردن',
 );
 
 /** Czech (Česky)
@@ -799,6 +807,11 @@ Klik <a href='$1'>di sini</a> untuk kembali.",
 	'spamdifftool_submit_buttom' => 'Kirim',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'spamdifftool_submit_buttom' => 'Dànyé',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -907,6 +920,7 @@ $messages['ksh'] = array(
 	'spamdifftool' => 'De „schwazze Leß“ för SPAM beärbeide',
 	'spamdifftool-desc' => 'Ene Wääsch för neu Enndräsch en de „schwazze Leß“ för SPAM ze krijje, fun de Sigge met de Ongerscheede zwesche Versijohne uß.',
 	'spamdifftool_cantedit' => 'Schadt — Do häß nit dat Rääsch, de „schwazze Leß“ jäje der <i lang="en">SPAM</i> ze ändere.',
+	'spamdifftool-no-title' => "'''Fähler:''' heh es keine Siggetittel aanjejovve.",
 	'spamdifftool_notext' => 'Mer han keine Tex för en de „schwazze Leß“ jäje der <i lang="en">SPAM</i> eren ze donn.
 
 <a href="$1">Wigger maache!</a>',
@@ -1434,6 +1448,15 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 	'spamdifftool_submit_buttom' => 'Odoslať',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'spamdifftool_option_none' => 'nič',
+	'spamdifftool_block' => 'Blokiraj:',
+	'spamdifftool_submit_buttom' => 'Pošlji',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
@@ -1518,6 +1541,12 @@ Undvik att helt blockera domäner som är värd för många olika användare, s�
 	'spamdifftool_option_none' => 'ingenting',
 	'spamdifftool_block' => 'Blockera:',
 	'spamdifftool_submit_buttom' => 'Lägg till',
+);
+
+/** Tamil (தமிழ்) */
+$messages['ta'] = array(
+	'spamdifftool_option_none' => 'ஒன்றுமில்லை',
+	'spamdifftool_submit_buttom' => 'சமர்ப்பி',
 );
 
 /** Telugu (తెలుగు)

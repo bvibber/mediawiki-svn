@@ -55,15 +55,13 @@ class SpecialSpamDiffTool extends UnlistedSpecialPage {
 				if ( $wgUser->getID() > 0 ) 
 					$watch = $wgUser->isWatched( $sb );
 				if ( $insert ) {
-					$a->doEdit( $text, wfMsgForContent( 'spamdifftool_summary' ), EDIT_NEW
-						| EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY, false, null, $watch, false, '', true );
+					$a->insertNewArticle( $text, wfMsgForContent( 'spamdifftool_summary' ), false, $watch );
 				} else {
-					$a->doEdit( $text, wfMsgForContent( 'spamdifftool_summary' ), EDIT_UPDATE
-						| EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY, false, null, $watch, false, '', true );
+					$a->updateArticle( $text, wfMsgForContent( 'spamdifftool_summary' ), false, $watch );
 				}
 				$returnto = $wgRequest->getVal( 'returnto' );
 				if ( $returnto != null && $returnto != '' )
-					$wgOut->redirect( $wgScript . "?" . urldecode( $returnto ) ); // clear the redirect set by doEdit
+					$wgOut->redirect( $wgScript . "?" . urldecode( $returnto ) ); // clear the redirect set by updateArticle
 				return;
 			}
 			$vals = $wgRequest->getValues();

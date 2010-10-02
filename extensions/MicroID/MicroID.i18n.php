@@ -431,6 +431,14 @@ $messages['tr'] = array(
 	'tog-microid' => 'Hesabı dış hizmetlerle onaylamak için bir <a href="http://microid.org/">MicroID</a> yayınla',
 );
 
+/** Ukrainian (Українська)
+ * @author Riwnodennyk
+ */
+$messages['uk'] = array(
+	'microid-desc' => 'Додає [http://www.microid.org/ MicroID] до сторінок користувачів задля підтвердження акаунту з допомогою зовнішніх сервісів',
+	'tog-microid' => 'Опублікуйте <a href="http://microid.org/">MicroID</a> , щоби підтвердити акаунт із зовнішніми сервісами',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

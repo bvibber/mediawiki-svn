@@ -163,7 +163,7 @@ function pr_navigation( $title ) {
 	$default_header = wfMsgGetKey( 'proofreadpage_default_header', true, true, false );
 	$default_footer = wfMsgGetKey( 'proofreadpage_default_footer', true, true, false );
 
-	$err = array( '', '', '', '', '' );
+	$err = array( '', '', '', '', '', '' );
 	$index_title = Title::newFromText( $title->pr_index_title );
 	if ( !$index_title ) {
 		return $err;
@@ -225,14 +225,16 @@ function pr_navigation( $title ) {
 	}
 
 	// Header and Footer 
+	// use a js dictionary for style, width, header footer
 	$header = $attributes['header'] ? $attributes['header'] : $default_header; 
 	$footer = $attributes['footer'] ? $attributes['footer'] : $default_footer; 
 	foreach ( $attributes as $key => $val ) {
 		$header = str_replace( "{{{{$key}}}}", $val, $header );
 		$footer = str_replace( "{{{{$key}}}}", $val, $footer );
 	}
+	$css = $attributes['css'] ? $attributes['css'] : "";
 
-	return array( $index_url, $prev_url, $next_url, $header, $footer );
+	return array( $index_url, $prev_url, $next_url, $header, $footer, $css );
 
 }
 
@@ -416,7 +418,7 @@ function pr_preparePage( $out, $m, $isEdit ) {
 		$thumbURL = '';
 	}
 
-	list( $index_url, $prev_url, $next_url, $header, $footer ) = pr_navigation( $wgTitle );
+	list( $index_url, $prev_url, $next_url, $header, $footer, $css ) = pr_navigation( $wgTitle );
 
 	$jsFile = htmlspecialchars( "$wgScriptPath/extensions/ProofreadPage/proofread.js?$wgProofreadPageVersion" );
 
@@ -433,6 +435,7 @@ function pr_preparePage( $out, $m, $isEdit ) {
 		'proofreadPageFooter' => $footer,
 		'proofreadPageAddButtons' => $wgUser->isAllowed('pagequality'),
 		'proofreadPageUserName' => $wgUser->getName(),
+		'proofreadPageCss' => $css,
 	);
 	$varScript = Skin::makeVariablesScript( $jsVars );
 
@@ -744,6 +747,10 @@ function pr_renderPages( $input, $args, &$parser ) {
 	if ( preg_match( "/^$index_namespace:(.*?)(\/([0-9]*)|)$/", $parser->Title()->getPrefixedText() ) ) {
 		return "";
 	}
+	# abort too if the tag is in the page namespace
+	if ( preg_match( "/^$page_namespace:(.*?)(\/([0-9]*)|)$/", $parser->Title()->getPrefixedText() ) ) {
+		return "";
+	}
 	if( ! $index ) { 
 		return '<strong class="error">' . wfMsgForContent( 'proofreadpage_index_expected' ) . '</strong>';
 	}
@@ -887,7 +894,7 @@ function pr_parse_page( $text ) {
 	$page_regexp = "/^<noinclude>(.*?)<\/noinclude>(.*?)<noinclude>(.*?)<\/noinclude>$/s";
         if( !preg_match( $page_regexp, $text, $m ) ) {
 		pr_load_index( $wgTitle );
-		list( $index_url, $prev_url, $next_url, $header, $footer ) = pr_navigation( $wgTitle );
+		list( $index_url, $prev_url, $next_url, $header, $footer, $css ) = pr_navigation( $wgTitle );
 		$new_text = "<noinclude><pagequality level=\"1\" user=\"$username\" />"
 			."$header\n\n\n</noinclude>$text<noinclude>\n$footer</noinclude>";
 		return array( -1, null, $new_text ); 
@@ -940,9 +947,9 @@ function  pr_formData( $editpage, $request ) {
 	if( in_array( $editpage->quality , array( "0", "1", "2", "3", "4" ) ) ) {
 		//format the page
 		$text = "<noinclude><pagequality level=\"".$editpage->quality."\" user=\"".$editpage->username."\" />"
-			.$editpage->header."\n\n\n</noinclude>"
+			."<div class=\"pagetext\">".$editpage->header."\n\n\n</noinclude>"
 			.$editpage->textbox1
-			."<noinclude>\n".$editpage->footer."</noinclude>";
+			."<noinclude>\n".$editpage->footer."</div></noinclude>";
 		$editpage->textbox1 = $text;
 	} else {
 		//replace deprecated template
@@ -1258,6 +1265,10 @@ function pr_update_pr_index( $index, $deletedpage=null ) {
 			$page = $dbr->strencode( str_replace( ' ' , '_' , $links[1][$i] ) );
 			if($page != $deletedpage) array_push( $pages, $page );
 		}
+	}
+
+	if( $n==0 ) {
+		return;
 	}
 
 	$catlinks = $dbr->tableName( 'categorylinks' );

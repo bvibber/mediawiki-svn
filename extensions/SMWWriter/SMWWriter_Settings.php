@@ -1,28 +1,8 @@
 <?php
+
 /**
- * Initializing file for Semantic MediaWiki Writer extension.
- *
- * @file
- * @ingroup SMWWriter
+ * Old entry point for the SMWWriter extension. 
+ * Deprecated. Use SMWWriter.php instead.
  */
-if( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
 
-define('SMWWRITER_VERSION', '1.5.0 beta');
-
-$smwwgIP = $IP . '/extensions/SMWWriter';
-
-include_once( "$smwwgIP/api/SMWWriter.php" );
-include_once( "$smwwgIP/api/SMWWriter_API.php" );
-
-global $wgExtensionCredits;
-
-$wgExtensionCredits['other'][]= array(
-	'path' => __FILE__,
-	'name' => 'SMWWriter',
-	'version' => SMWWRITER_VERSION,
-	'author' => array( '[http://simia.net Denny&#160;Vrandecic]' ),
-	'url' => 'http://semantic-mediawiki.org/wiki/Semantic_MediaWiki_Writer',
-	'description' => 'API for editing metadata in Semantic MediaWiki'
-);
+require_once dirname( __FILE__ ) . '/../SMWWriter.php';

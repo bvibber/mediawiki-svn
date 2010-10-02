@@ -36,8 +36,9 @@
  * some help text and a list of all supported languages.
  */
 
-if( !defined( 'MEDIAWIKI' ) )
+if( !defined( 'MEDIAWIKI' ) ) {
 	die();
+}
 
 $wgExtensionCredits['parserhook']['SyntaxHighlight_GeSHi'] = array(
 	'path'           => __FILE__,
@@ -52,8 +53,15 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['SyntaxHighlight_GeSHi'] = $dir . 'SyntaxHighlight_GeSHi.i18n.php';
 $wgAutoloadClasses['SyntaxHighlight_GeSHi'] = $dir . 'SyntaxHighlight_GeSHi.class.php';
 $wgHooks['ShowRawCssJs'][] = 'SyntaxHighlight_GeSHi::viewHook';
-$wgHooks['SpecialVersionExtensionTypes'][] = 'SyntaxHighlight_GeSHi::hSpecialVersion_GeSHi';
 $wgHooks['ParserFirstCallInit'][] = 'efSyntaxHighlight_GeSHiSetup';
+
+if ( version_compare( $wgVersion, '1.17alpha', '>=' ) ) {
+	// For MediaWiki 1.17 alpha and later.
+	$wgHooks['ExtensionTypes'][] = 'SyntaxHighlight_GeSHi::hSpecialVersion_GeSHi';
+} else {
+	// For pre-MediaWiki 1.17 alpha.
+	$wgHooks['SpecialVersionExtensionTypes'][] = 'SyntaxHighlight_GeSHi::hOldSpecialVersion_GeSHi';
+}
 
 /**
  * Register parser hook

@@ -1606,8 +1606,20 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'replacetext' => 'متن ځايناستول',
 	'replacetext_originaltext' => 'آرنی متن:',
+	'replacetext_replacementtext' => 'د متن ځايناستوب:',
+	'replacetext_categorysearch' => 'يوازې په وېشنيزه کې ځايناستول:',
+	'replacetext_prefixsearch' => 'يوازې په مختاړي لرونکيو مخونو کې ځايناستول:',
+	'replacetext_editpages' => 'د مخ په مېنځپانګه کې متن ځايناستول',
+	'replacetext_movepages' => 'د شونتيا په وخت کې، د مخ د سرليک متن ځايناستول',
+	'replacetext_nonamespace' => 'تاسې بايد لږ تر لږه يو نوم-تشيال وټاکۍ.',
+	'replacetext_cannotmove' => 'دا {{PLURAL:$1|لاندې مخ|لانديني مخونه}} د لېږدولو وړ نه دي:',
+	'replacetext_formovedpages' => 'د لېږدل شويو مخونو لپاره:',
 	'replacetext_watchmovedpages' => 'همدا مخونه کتل',
+	'replacetext_invertselections' => 'ټاکنې سرچپه کول',
+	'replacetext_replace' => 'ځايناستول',
+	'replacetext_editsummary' => 'متن ځايناستول - له "$1" نه "$2" ته',
 );
 
 /** Portuguese (Português)
@@ -2182,5 +2194,19 @@ $messages['zh-hant'] = array(
 	'replacetext_cancel' => '（按下瀏覽器上的 "返回" 按鈕可以取消操作）',
 	'replacetext_editsummary' => '替換文字 - 「$1」替換為「$2」',
 	'right-replacetext' => '對整個維基進行文字替換。',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Roc michael
+ */
+$messages['zh-tw'] = array(
+	'replacetext' => '取代文字',
+	'replacetext-desc' => '提供[[Special:ReplaceText|特殊頁面]]以利管理員以「尋找及取代」的方式更改所有文章頁面內的內容。',
+	'replacetext_docu' => '取代儲存在此Wiki系統內所有頁面上的文字字串，請將「原始文字」及「取代的文字」分別填入下面的兩個欄位之中，按下「取代按鈕」後生效，您所作的修改會顯示在「歷史」頁面上，以對您自己編輯行為負責。',
+	'replacetext_replace' => '取代',
+	'replacetext_noreplacement' => '因無任何頁面內含有「$1」。',
+	'replacetext_blankwarning' => '因為取代字串是空白的，這將造成難以復原的結果！您要繼續嗎？',
+	'replacetext_continue' => '繼續',
+	'replacetext_editsummary' => '取代文字 - 「$1」 取代為 「$2」',
 );
 

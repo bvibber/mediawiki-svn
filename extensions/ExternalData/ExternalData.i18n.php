@@ -455,11 +455,11 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'getdata' => 'Date holle!',
-	'externaldata-desc' => 'Äloup, Date em <i lang="en">CSV</i> Fomaat, em <i lang="en">JSON</i> Fomaat, un em <i lang="en">XML</i> Fomaat fun <i lang="en">URLs</i> un vun Wiki-Sigge ze holle.',
+	'externaldata-desc' => 'Määt et müjjelich, Date en beshtemmpte Fomaate fun främbde <i lang="en">URLs</i>, Daatebangke, un ander Quälle ze holle.',
 	'externaldata-ldap-unable-to-connect' => 'Kann nit noh $1 verbenge',
 	'externaldata-json-decode-not-supported' => '<span style="text-transform: uppercase">Fähler:</span> De Fungxuhn <code lang="en">json_decode()</code> weedt vun heh dä Version vun <i lang="en">PHP</i> nit ongerschtöz.',
 	'externaldata-xml-error' => 'Fähler em XML, op Reih $2: $1',
-	'externaldata-db-incomplete-information' => '<span style="text-transform: uppercase">Fähler:</span> De Enfomazjuhne vör di ßööver Kännong sin nit kumplätt.',
+	'externaldata-db-incomplete-information' => '<span style="text-transform: uppercase">Fähler:</span> De Enfomazjuhne vör di ẞööver-Kännong sin nit kumplätt.',
 	'externaldata-db-could-not-get-url' => 'Kunnt {{PLURAL:$1|noh eimohl Versöhke|och noh $1 Mohl Versöhke|ohne enne Versöhk}} nix vun däm <i lang="en">URL</i> krijje.',
 	'externaldata-db-unknown-type' => '<span style="text-transform: uppercase">Fähler:</span> Di Zoot Datebangk es unbikannt.',
 	'externaldata-db-could-not-connect' => '<span style="text-transform: uppercase">Fähler:</span> Kunnt kein Verbendung noh dä Datebangk krijje.',

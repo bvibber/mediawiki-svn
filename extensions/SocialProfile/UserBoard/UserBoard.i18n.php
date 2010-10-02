@@ -521,6 +521,11 @@ $messages['ca'] = array(
 	'userboard_sendbutton' => 'envia',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'userboard_delete' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1310,6 +1315,11 @@ Ha, Du wetsch gar keini E-Mail meh vun is iberchu?
 
 Druck $4
 un ändere Dyyni Yystellige go E-Mail-Benochrichtigunge abstelle.',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'userboard_delete' => 'Soke',
 );
 
 /** Hakka (Hak-kâ-fa)

@@ -1592,6 +1592,7 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
@@ -1600,6 +1601,9 @@ $messages['ta'] = array(
 	'bookinfo-result-author' => 'ஆசிரியர்:',
 	'bookinfo-result-publisher' => 'வெளியீட்டாளர்:',
 	'bookinfo-result-year' => 'ஆண்டு:',
+	'bookinfo-error-invalidisbn' => 'தவறான ISBN எண்ணைக் கொடுத்துள்ளீர்கள்',
+	'bookinfo-error-nosuchitem' => 'தாங்கள் தேடுவது இங்கில்லை (அல்லது) அதனைக் கண்டுபிடிக்க முடியவில்லை',
+	'bookinfo-error-noresponse' => 'எந்தவித பதிலும் இல்லை (அல்லது) கொடுக்கப்பட்ட நேர அளவு முடிந்து விட்டது',
 );
 
 /** Telugu (తెలుగు)

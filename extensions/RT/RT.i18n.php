@@ -449,6 +449,9 @@ $messages['ksh'] = array(
 	'rt-badlimit' => 'Dinge Versooch met „$1“ för dä Parrameeter „<code lang="en">LIMIT (l)</code>“ wor nix. De häts en Zahl aanjävve möße.',
 	'rt-badorderby' => 'Dinge Versooch met „$1“ för dä Parrameeter „<code lang="en">ORDER BY (ob)</code>“ wohr nix. De häts en shtandatt Feld aanjävve möße. Loor Der de Dokkemäntazjuhn aan, wat dat es.',
 	'rt-badstatus' => 'Dinge Versooch met „$1“ för dä Parrameeter „<code lang="en">status (s)</code>“ wohr nix. De häts e shtandatt Feld aanjävve möße. Loor Der de Dokkemäntazjuhn aan, wat dat es.',
+	'rt-badcfield' => 'Dä Parrameeter för e selfsjemaat Feld es nix: Dat moß eijfach ei Woot sin.
+Loor Der de Dokkemäntazjuhn aan, wat domet es.
+Do hatts „$1“ probeet.',
 	'rt-badqueue' => 'Dinge Versooch met „$1“ för dä Parrameeter „<code lang="en">queue (q)</code>“ wohr nix. De häts e eijnfach Woot aanjävve möße.',
 	'rt-badowner' => 'Dinge Versooch met „$1“ för dä Parrameeter „<code lang="en">owner (o)</code>“ wohr nix. De häts ene jöltijje Name för ene Metmaacher aanjävve möße.',
 	'rt-nomatches' => 'Mer hann kein zopaß Aanforderunge (ov <i lang="en">tickets</i>) em RT (<i lang="en">Request Tracker</i>) för de Aanforderungs-Verfoljung jevonge.',

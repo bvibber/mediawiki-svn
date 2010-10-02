@@ -121,10 +121,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'antibot-desc' => 'Einfaches Framework für Spambot-Prüfungen',
+	'antibot-desc' => 'Stellt ein einfaches System zum Schutz vor Spambots und Payloads bereit',
 );
 
 /** Zazaki (Zazaki)
@@ -499,10 +500,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'antibot-desc' => 'Једноставни фрејмворк за спамбот-провере и реаговање на одређене квоте активности',
+	'antibot-desc' => 'Једноставан оквир за провере о непожељним роботима и реаговање на одређене квоте активности',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

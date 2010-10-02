@@ -248,6 +248,11 @@ $messages['ch'] = array(
 	'editmsg-search' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'editmsg-search' => 'گەڕان',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
@@ -553,6 +558,11 @@ $messages['gu'] = array(
 $messages['gv'] = array(
 	'editmsg-search' => 'Ronsaghey',
 	'editmsg-new-search' => 'Ronsaght noa',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'editmsg-search' => 'Nema',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -914,6 +924,18 @@ $messages['lt'] = array(
  */
 $messages['lv'] = array(
 	'editmsg-search' => 'Meklēt',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'editmessages' => 'Hanova hafatra',
+	'editmsg-target' => 'Hafatra tanjona:',
+	'editmsg-search' => 'Hikaroka',
+	'editmsg-show-list' => "Fanehoana ny sanda ho an'ny anaran-kafatra « $1 »",
+	'editmsg-get-patch' => 'Hamorona patch',
+	'editmsg-new-search' => 'Karoka vaovao',
 );
 
 /** Eastern Mari (Олык Марий)

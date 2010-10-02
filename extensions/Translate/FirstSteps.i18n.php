@@ -1460,6 +1460,102 @@ $messages['pl'] = array(
 	'translate-fs-email-title' => 'Potwierdź swój adres e‐mail',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'firststeps' => 'Prim pass',
+	'firststeps-desc' => "[[Special:FirstSteps|Pàgina special]] për anandié j'utent an sna wiki dovrand l'estension Translate",
+	'translate-fs-pagetitle-done' => ' - fàit!',
+	'translate-fs-pagetitle' => 'Guida për parte - $1',
+	'translate-fs-signup-title' => "Ch'as anscriva",
+	'translate-fs-settings-title' => 'Configura ij tò gust',
+	'translate-fs-userpage-title' => 'Crea toa pàgina utent',
+	'translate-fs-permissions-title' => "Ch'a ciama ij përmess ëd tradutor",
+	'translate-fs-target-title' => "Ch'a ancamin-a a volté!",
+	'translate-fs-email-title' => 'Che an conferma soa adrëssa ëd pòsta eletrònica',
+	'translate-fs-intro' => "Bin ëvnù an sl'assistent dij prim pass ëd {{SITENAME}}.
+A sarà guidà pass për pass ant ël process dë vnì un tradutor.
+A la fin a sarà bon a volté ij ''mëssagi dj'antërfasse'' ëd tùit ij proget gestì da {{SITENAME}}.",
+	'translate-fs-signup-text' => "[[Image:HowToStart1CreateAccount.png|frame]]
+
+Ël prim pass a l'é d'anscriv-se.
+
+L'arconossiment për soe tradussion a l'é atribuì a sò stranòm d'utent.
+La figura a la drita a mostra com ampinì ij camp.
+
+Se nopà a l'é già anscrivusse, $1ch'a rintra ant ël sistema$2.
+Na vira ch'a l'é anscrivusse, për piasì ch'a artorna a sta pàgina-sì.
+
+$3Ch'as anscriva$4",
+	'translate-fs-settings-text' => "A dovrìa adess andé ai sò gust e
+almanch cangé soa lenga d'antërfacia a la lenga ant la qual a veul volté.
+
+Soa lenga d'antërfacia a l'é dovrà com la lenga ëd destinassion dë stàndard.
+A l'é bel fé dësmentié ëd cangé la lenga a cola giusta, parèj a l'é motobin arcomandà d'ampostela adess.
+
+Dagià ch'a-i é, a peul ëdcò ciamé al programa dë smon-e le tradussion ant j'àutre lenghe ch'a conòss.
+Costa ampostassion a peul esse trovà sota la tichëtta \"{{int:prefs-editing}}\".
+Ch'as senta lìber d'esploré ëdcò d'àutre ampostassion.
+
+Ch'a vada a soa [[Special:Preferences|pàgina dij gust]] adess e ch'a artorna peui a sta pàgina-sì.",
+	'translate-fs-settings-skip' => "I l'heu fàit.
+I von anans.",
+	'translate-fs-userpage-text' => "Adess a dev creé na pàgina utent.
+
+Për piasì ch'a scriva quaicòs a propòsit ëd chiel; ch'i ch'a l'é e lòn ch'a fa.
+Sòn a giutërà la comunità {{SITENAME}} a travajé ansema.
+A {{SITENAME}} a-i é ëd përson-e da tut ël mond ch'a travajo su lenghe e proget diferent.
+
+Ant ël camp preampostà dzora, ant la prima linia a vëd <nowiki>{{#babel:en-2}}</nowiki>.
+Për piasì ch'a lo completa con soa conossensa dla lenga.
+Ël nùmer dapress dël còdes dla lenga a descriv com ch'a conòss la lenga.
+J'alternative a son:
+* 1 - un pòch
+* 2 - conossensa ëd bas
+* 3 - bon-a conossensa
+* 4 - livel ëd parlant nativ
+* 5 - a deuvra la lenga professionalment, për esempi a l'é un tradutor professionista.
+
+S'a l'é un parlant nativ ëd la lenga, ch'a lassa perde ël livel ëd conossensa, e ch'a deuvra mach ël còdes ëd la lenga.
+Esempi: s'a l'é un parlant nativ Tamil, bon Anglèis, e pòch Swahili, a dovrìa scrive:
+<code><nowiki>{{#babel:ta|en-3|sw-1}}</nowiki></code>
+
+S'a conòss pa ël còdes ëd na lenga, adess a l'é un bon moment për sërchelo.
+A peul dovré la lista sì-sota.",
+	'translate-fs-userpage-submit' => 'Crea mia pàgina utent',
+	'translate-fs-userpage-done' => "Bin fàit! Adess it l'has na pàgina utent.",
+	'translate-fs-permissions-text' => "Adess a dev fé n'arcesta d'esse giontà a la partìa dij tradutor.
+
+Antramentre ch'i coregioma ël còdes, për piasì ch'a vada a [[Project:Translator]] e ch'a fasa conforma a j'istrussion.
+Peui ch'a torna andré a sta pàgina-sì.
+
+Apress d'avèj fàit soa arcesta, un dij mèmber volontari dl'echip a controlërà soa arcesta e a l'aprovërà prima ch'a peul.
+Për piasì, ch'a pòrta passiensa.
+
+<del>Ch'a contròla che l'arcesta sì-sota a sia compilà për da bin e peui ch'a sgnaca ël boton d'arcesta.</del>",
+	'translate-fs-target-text' => "Congratulassion!
+Adess a peul ancaminé a volté!
+
+Ch'a l'abia pa tëmma s'as sent anco' neuv e confus.
+A [[Project list]] a-i é na presentassion dij proget ch'a peul contribuì a volté.
+Vàire proget a l'han na curta pàgina ëd descrission con un colegament \"''Vòlta ës proget''\", ch'a lo pòrta a na pàgina ch'a lista tùit ij mëssagi nen voltà.
+Na lista ëd tute le partìe ëd mëssagi con lë [[Special:LanguageStats|stat corent ëd tradussion për na lenga]] a l'é ëdcò disponìbil.
+
+S'a pensa ch'a l'ha dabzògn ëd capì ëd pi prima d'ancaminé a volté, a peul lese le [[FAQ|chestion ciamà ëd soens]].
+Për maleur, dle vire la documentassion a peul esse veja.
+S'a-i é quaicòs ch'a pensa ch'a podrìa esse bon a fé, ma a tiess pa a trové coma, ch'as gene pa a ciamelo a la [[Support|pàgina d'agiut]].
+
+A peul ëdcò contaté ij tradutor amis ëd la midema lenga a la [[Portal_talk:\$1|pàgina ëd discussion]] ëd [[Portal:\$1|sò portal ëd la lenga]]'.
+S'a l'ha pa anco' falo, [[Special:Preferences|ch'a cangia la lenga ëd soa antërfacia utent a la lenga ant la qual a veul fé dle tradussion]], an manera che la wiki a sia bon-a a smon-e ij colegament pi amportant për chiel.",
+	'translate-fs-email-text' => "Për piasì, ch'a buta soa adrëssa ëd pòsta eletrònica ant ij [[Special:Preferences|sò gust]] e ch'a la conferma dal mëssagi che i l'oma mandaje.
+
+Sòn a përmët a j'àutri utent ëd contatelo për pòsta eletrònica.
+A arseivrà ëdcò na litra d'anformassion, al pi na vira al mèis.
+S'a veul pa arsèive le litre d'anformassion, a peule serne ëd nò ant la tichëtta \"{{int:prefs-personal}}\" dij sò [[Special:Preferences|gust]].",
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -2151,6 +2247,7 @@ $messages['ug-arab'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Hypers
  * @author Тест
  */
 $messages['uk'] = array(
@@ -2163,6 +2260,9 @@ $messages['uk'] = array(
 	'translate-fs-permissions-title' => 'Зробіть запит на права перекладача',
 	'translate-fs-target-title' => 'Почніть перекладати!',
 	'translate-fs-email-title' => 'Підтвердіть вашу адресу електронної пошти',
+	'translate-fs-intro' => 'Ласкаво просимо до майстра "перші кроки" проекту {{SITENAME}}.
+Крок за кроком майстер проведе вас шляхом становлення як перекладача.
+Зрештою, ви зможете перекладати інтерфейсні повідомлення усіх проектів, що підтримуються на {{SITENAME}}.',
 	'translate-fs-userpage-submit' => 'Створити мою сторінку користувача',
 );
 
@@ -2268,14 +2368,90 @@ Nếu bạn không muốn nhận thư tin tức, bạn có thể bỏ nó ra kh�
  */
 $messages['zh-hans'] = array(
 	'firststeps' => '第一步',
+	'firststeps-desc' => '让用户开始wiki翻译的[[Special:FirstSteps|引导页面]]',
 	'translate-fs-pagetitle-done' => ' - 完成！',
+	'translate-fs-pagetitle' => '$1 入门向导',
 	'translate-fs-signup-title' => '注册',
 	'translate-fs-settings-title' => '设置你的选项',
 	'translate-fs-userpage-title' => '创建你的用户页面',
 	'translate-fs-permissions-title' => '请求翻译者权限',
 	'translate-fs-target-title' => '开始翻译！',
 	'translate-fs-email-title' => '确认您的邮箱地址',
+	'translate-fs-intro' => "欢迎来到 {{SITENAME}}入门向导。
+你会被指导如何成为一名翻译者。
+最后你将可以翻译{{SITENAME}}里所有项目的''界面消息''.",
+	'translate-fs-signup-text' => '[[Image:HowToStart1CreateAccount.png|frame]]
+
+首先你必须注册。
+
+翻译行为将基于用户名记录。
+右边的图片指示了如何在网页里填表。
+
+如果你已经注册了，请$1 登录$2 。
+当你完成注册后，请回到此页面。
+
+$3 注册$4',
+	'translate-fs-settings-text' => '现在你应该到选项页面并且至少将界面语言设置成你希望翻译成的语言。
+
+你的界面语言将会是默认的翻译目标语言。
+设置语言很容易被忘记，所以我们建议你现在就去设置。
+
+你也可以要求软件显示你懂得的其他语言，这可以在"{{int:prefs-editing}}"进行设置。
+自由探索其他设置选项吧。
+
+到[[Special:Preferences|设置页面]]完成设置，并返回此页面。',
+	'translate-fs-settings-skip' => '我完成了。继续进行。',
+	'translate-fs-userpage-text' => '现在你需要创建用户页面。
+
+请写一些关于你的东西，比如，你是谁？你希望干些什么？
+这会帮助凝聚{{SITENAME}}用户群体。
+在{{SITENAME}}有来自世界各地的用户在翻译不同的语言和项目。
+
+
+在已经填好的文字区域中的第一行你会看到<nowiki>{{#babel:en-2}}</nowiki>。
+继续填入其他你懂得的语言知识。
+跟在语言代码后面的表示你通晓这门语言的程度。
+他们表示：
+* 1 - 懂得一点点；
+* 2 - 懂得基本知识；
+* 3 - 能很好的掌握；
+* 4 - 母语水平；
+* 5 - 专业水平，比如说你是专业语言学家。
+
+如果你使用某种语言作为母语，不要填写通晓程度代码。
+样例：如果你的母语是中文，能说英语说的很好，还会一点日语，那么你应该写：
+<code><nowiki>{{#babel:zh|en-3|ja-1}}</nowiki></code>
+
+如果你还不知道一门语言的代码，现在是时候查找一下了。
+你可以使用下面的列表。',
 	'translate-fs-userpage-submit' => '创建我的用户页面',
 	'translate-fs-userpage-done' => '很好！现在你有了一个用户页面。',
+	'translate-fs-permissions-text' => '你现在需要提交申请以加入翻译组。
+
+请到[[Project:Translator]]页面，并跟随上面的指引。
+然后，回到此页面。
+
+在你提交申请之后，其中一名志愿者员工会检查您的申请并尽快批准。
+请耐心点。',
+	'translate-fs-target-text' => '恭喜！
+你现在可以进行翻译了。
+
+如果你还觉得初来乍到，有些困惑，别害怕，开始翻译吧。
+
+ [[Project list|项目列表]] 列出了所有你可以进行贡献的项目。
+每个项目都有一条简短的描述，以及能显示所有未翻译条目的“翻译此项目”的链接。
+你也可以查看某个语言下[[Special:LanguageStats|所有项目的翻译状态]]。
+
+如果你需要在开始翻译前了解更多，请查看[[]FAQ]。
+不幸的是，某些文档有时是过时的。
+如果你想帮忙却不知到怎么办，请大胆的到[[Support|技术支持页面]]提问。
+
+你也可以在[[Portal:$1|你的翻译语言]]的[[Portal_talk:$1|讨论页]]联系和你翻译同样语言的人。
+请确保你已经在[[Special:Preferences|选项里变更你的用户界面语言]]，这样Wiki也能给你展示最合适的链接。',
+	'translate-fs-email-text' => '请在[[Special:Preferences|选项]]页面留下电子邮箱地址并进行验证。
+
+这能让其他用户通过电子邮件联系你。
+你也会收到至多每月一次的电子通讯。
+如果你不想收到通讯，你可以在[[Special:Preferences|选项]]"页面的{{int:prefs-personal}}"标签选择停止接收。',
 );
 

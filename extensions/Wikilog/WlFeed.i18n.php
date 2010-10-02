@@ -114,6 +114,13 @@ $messages['fr'] = array(
 	'wlfeed-desc' => 'Classes de génération de flux améliorés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wlfeed-desc' => 'Cllâsses de g·ènèracion de flux mèlyorâs',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -242,8 +249,8 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
- * @author Daemorris
  * @author 555
+ * @author Daemorris
  */
 $messages['pt-br'] = array(
 	'wlfeed-desc' => "Classes melhoradas de geração de ''feeds''",

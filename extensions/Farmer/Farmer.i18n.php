@@ -1103,6 +1103,15 @@ $messages['ch'] = array(
 	'farmer-mainpage' => 'Fanhaluman',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'farmer-confirmsetting-reason' => 'هۆکار',
+	'farmer-button-confirm' => 'پشتدار بکەرەوە',
+	'farmer-button-submit' => 'ناردن',
+	'farmer-createwiki-reason' => 'هۆکار',
+	'farmer-delete-form-submit' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -1125,6 +1134,7 @@ $messages['cs'] = array(
 $messages['cu'] = array(
 	'farmer-createwiki-form-help' => 'по́мощь',
 	'farmer-delete-form-submit' => 'поничьжє́ниѥ',
+	'farmer-no' => 'нѣ́тъ',
 );
 
 /** Danish (Dansk)
@@ -2450,6 +2460,13 @@ $messages['gv'] = array(
 	'farmer-extensions-register-includefile' => 'Goaill stiagh y coadan',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'farmer-confirmsetting-reason' => 'Dalili',
+	'farmer-createwiki-reason' => 'Dalili',
+	'farmer-delete-form-submit' => 'Soke',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -3652,7 +3669,7 @@ Wann De dat heh lësse kannß, dann eß Ding Wiki öhndlesch opjesaz.
 	'farmer-createwiki' => 'E Wikki aanlääje',
 	'farmer-createwiki-text' => 'Donn jetz e [[$1|neu Wiki aanlääje]]!',
 	'farmer-administration' => 'Ene Shtall voll MediaWiki Wikis verwallde',
-	'farmer-administration-extension' => 'ßoffwäer-Zosätz verwallde',
+	'farmer-administration-extension' => 'Projramm_Zosätz verwallde',
 	'farmer-administration-extension-text' => 'Don de [[$1|enshtalleete Zosatz-Projramme verwallde]].',
 	'farmer-admimistration-listupdate' => 'Leß met Wikis op der neuste Shtand bränge',
 	'farmer-admimistration-listupdate-text' => 'Donn de {{SITENAME}} ier [[$1|Wiki Leß ändere]].',
@@ -3732,8 +3749,8 @@ Dä Text beschrief Ding Wiki, un weed en dä Leß met de Wikis aanjezeich.',
 	'farmer-setpermission' => 'Räächte sätze',
 	'farmer-defaultskin' => 'Standat-Övverfläsch',
 	'farmer-defaultskin-button' => 'Standat-Övverfläsch Endraare!',
-	'farmer-extensions' => 'Aktive Zosäz för dem Wiki sing ßofwäer',
-	'farmer-extensions-button' => 'Donn de aktive Zosatz-ßoffwäer setze',
+	'farmer-extensions' => 'Aktive Zosäz för dem Wiki sing ẞofffwäer',
+	'farmer-extensions-button' => 'Donn de aktive Zosatzprojramme faßlääje',
 	'farmer-extensions-extension-denied' => 'Do häs nit dat Rääsch, hee die Müjjleschkeit ze bruche.
 Doför möötß De ald en dä Metmaacher-Jropp <code lang="en">farmeradmin</code> sin.',
 	'farmer-extensions-invalid' => 'Onjöltijje Zosatz zom Wiki',
@@ -3742,7 +3759,8 @@ Mer han die Datei nit jefonge, die enjefööch wäde mööt.',
 	'farmer-extensions-available' => 'Zosätz zom Wiki, die zor Wahl stonn',
 	'farmer-extensions-noavailable' => 'Kein Zosätz zom Wiki enjedraare',
 	'farmer-extensions-register' => 'Ene Zosatz zom Wiki endraare',
-	'farmer-extensions-register-text1' => 'Met hee däm Fomulaa kanns De ene Zosatz för dem Wiki sing ßofwäer för Ding MediaWiki Farm opnämme lohße. Wann dat jemaat es, dann künne all de Wikis se bruche.',
+	'farmer-extensions-register-text1' => 'Met hee däm Fomulaa kanns De ene Zosatz för dem Wiki sing ẞoffwäer för Dinge MediaWiki-Shtall opnämme lohße.
+Wann dat jemaat es, dann künne alle Wikis se bruche.',
 	'farmer-extensions-register-text2' => 'Em <i lang="en">include file</i> Parrameter, do jif dä Name för en <code>.php</code> Datei esu aan, wie De die och en dä Datei <code>LocalSettings.php</code> endraare wööds.',
 	'farmer-extensions-register-text3' => 'Wann en däm Name fun dä Dattëj <code>$root</code> dren shtish, dann shtëjt dat för dat Aanfangß_Fo\'zëjshnėß fun_de MedijaWikki ßofwäe.',
 	'farmer-extensions-register-text4' => 'Em Momang sen jez de Paade för Dateie per <code>include</code> ze lade:',
@@ -6595,7 +6613,7 @@ $messages['ug-arab'] = array(
 	'farmer-createwiki-user' => 'ئىشلەتكۇچى ئىسمى',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -6614,6 +6632,12 @@ $messages['uk'] = array(
 	'farmer-createwiki-reason' => 'Причина',
 	'farmer-basic-title1' => 'Заголовок',
 	'farmer-basic-description' => 'Опис',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'farmer-confirmsetting-reason' => 'وجہ',
+	'farmer-createwiki-reason' => 'وجہ',
 );
 
 /** Veps (Vepsan kel')

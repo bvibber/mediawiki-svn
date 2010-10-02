@@ -398,6 +398,13 @@ $messages['ca'] = array(
 	'recordadmin-editlink' => 'modifica',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'recordadmin-submit' => 'ناردن',
+	'recordadmin-buttonsearch' => 'گەڕان',
+	'recordadmin-buttonsave' => 'پاشەکەوت',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Kghbln
@@ -582,7 +589,7 @@ $messages['eo'] = array(
 	'recordadmin-modified' => 'Modifita',
 	'recordadmin-actions' => 'Agoj',
 	'recordadmin-needscontent' => 'Aldoni enhavon...',
-	'recordadmin-editwithform' => 'Redakti per formularo',
+	'recordadmin-editwithform' => 'Ecoj',
 	'recordadmin-typeinfo' => '$1 rekordo',
 );
 
@@ -882,6 +889,12 @@ $messages['gsw'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Kei „$1“',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'recordadmin-buttonsearch' => 'Nema',
+	'recordadmin-buttoncreate' => 'Ƙirƙira',
 );
 
 /** Hawaiian (Hawai`i)
@@ -1745,6 +1758,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'recordadmin-select' => 'ټاکل',
+	'recordadmin-newsearch' => 'د $1 نوې پلټنه',
 	'recordadmin-submit' => 'سپارل',
 	'recordadmin-createsuccess' => '$1 جوړ شو',
 	'recordadmin-buttonsearch' => 'پلټنه',
@@ -1752,11 +1766,13 @@ $messages['ps'] = array(
 	'recordadmin-searchresult' => 'د پلټنې پايلې',
 	'recordadmin-buttonsave' => 'خوندي کول',
 	'recordadmin-createlink' => 'يو جوړول',
+	'recordadmin-summary-typecreated' => 'نوی $1 جوړ شو',
 	'recordadmin-viewlink' => 'کتل',
 	'recordadmin-editlink' => 'سمول',
 	'recordadmin-created' => 'جوړ شوي',
 	'recordadmin-modified' => 'بدلېدلي',
 	'recordadmin-actions' => 'کړنې',
+	'recordadmin-needscontent' => 'مېنځپانګه ورګډول ...',
 	'recordadmin-editwithform' => 'ځانتياوې',
 );
 

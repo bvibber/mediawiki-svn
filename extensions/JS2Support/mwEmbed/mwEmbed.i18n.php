@@ -25,9 +25,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Nike
  */
 $messages['qqq'] = array(
 	'mwe-loading_txt' => '{{Identical|Loading}}',
+	'mwe-size-gigabytes' => 'Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).',
 	'mwe-error_load_lib' => 'Parameters:
 * $1 Corresponds to the JavaScript file that was not retrievable or does not define its class name.
 * $2 Is the class name that was associated with the JavaScript file that was not found or could not be retrieved.',
@@ -280,6 +282,11 @@ $messages['gsw'] = array(
 	'mwe-enable-gadget-done' => 'Beta-Version vum Multimedia-Hälferli isch aktiviert wore',
 	'mwe-must-login-gadget' => 'Go s Hälferli aktiviere chenne, muesch di <a target="_new" href="$1">aamälde</a>',
 	'mwe-test-plural' => '{{PLURAL:$1|$1 Tescht|$1 Tescht}} uusgfiert',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'mwe-cancel' => 'Soke',
 );
 
 /** Hebrew (עברית)
@@ -666,6 +673,11 @@ $messages['tr'] = array(
 	'mwe-load-drag-item' => 'Sürüklenen öğe yükleniyor',
 	'mwe-ok' => 'Tamam',
 	'mwe-cancel' => 'İptal',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'mwe-cancel' => 'منسوخ',
 );
 
 /** Vèneto (Vèneto)

@@ -1263,6 +1263,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'scanset-desc' => 'Ogled preslikanih strani slik iz zbirk CD/DVD Andreasa Grosza',
 	'scanset_next' => 'Naslednji &gt;',
 	'scanset_prev' => '&lt; Prejšnji',
 );

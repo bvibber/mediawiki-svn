@@ -511,6 +511,11 @@ $messages['gv'] = array(
 	'player-goto-file' => 'coadan',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'player-goto-page' => 'Shafi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */
@@ -1382,7 +1387,7 @@ $messages['tr'] = array(
 	'player-goto-file' => 'Dosya',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

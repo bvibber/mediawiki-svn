@@ -408,6 +408,11 @@ $messages['gv'] = array(
 	'cleanchanges-language' => 'Çhengey:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'cleanchanges-language-na' => 'Duka',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */
@@ -1084,7 +1089,7 @@ $messages['ug-arab'] = array(
 	'cleanchanges-language' => 'تىل:',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

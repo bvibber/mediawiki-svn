@@ -336,6 +336,11 @@ $messages['ce'] = array(
 	'patrol-revert-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'patrol-revert-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -692,7 +697,7 @@ $messages['gl'] = array(
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'patrol-revert-reason' => 'Faírina',
+	'patrol-revert-reason' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -736,6 +741,11 @@ $messages['gsw'] = array(
  */
 $messages['gv'] = array(
 	'patrol-revert-reason' => 'Fa:',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'patrol-revert-reason' => 'Dalili:',
 );
 
 /** Hawaiian (Hawai`i)
@@ -2000,6 +2010,11 @@ $messages['uk'] = array(
 	'patrol-reverting' => 'Відкіт: $1',
 	'group-patroller' => 'Патрульні',
 	'group-patroller-member' => 'патрульний',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'patrol-revert-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

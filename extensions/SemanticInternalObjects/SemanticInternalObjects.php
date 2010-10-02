@@ -1,6 +1,6 @@
 <?php
 /**
- * Initialization file for SemanticInternalObjects
+ * Initialization file for SemanticInternalObjects.
  *
  * @file
  * @ingroup SemanticInternalObjects
@@ -11,7 +11,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 define( 'SIO_VERSION', '0.6' );
 
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'parserhook'][] = array(
 	'path' => __FILE__,
 	'name'	=> 'Semantic Internal Objects',
 	'version'	=> SIO_VERSION,
@@ -38,7 +38,7 @@ function siofRegisterParserFunctions( &$parser ) {
 	return true; // always return true, in order not to stop MW's hook processing!
 }
 
-function siofLanguageGetMagic( &$magicWords, $langCode = "en" ) {
+function siofLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 	switch ( $langCode ) {
 	default:
 		$magicWords['set_internal'] = array ( 0, 'set_internal' );

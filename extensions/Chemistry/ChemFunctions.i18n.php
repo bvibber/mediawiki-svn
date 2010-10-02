@@ -697,6 +697,7 @@ $messages['ko'] = array(
 $messages['ksh'] = array(
 	'chemicalsources' => 'Schimesche Quelle',
 	'chemicalsource-desc' => 'Brengk dä <code><nowiki><chemform></nowiki></code> Befähl för Formelle us de Schimie en et Wiki.',
+	'chemicalsources-desc' => 'En [[Special:ChemicalSources|{{int:Specialpage}}]] för Quälle uß de Schimie.',
 	'chemFunctions_ListPage' => 'Schimesche Quelle',
 	'chemFunctions_DataList' => 'Hee noh kumme Lenks op Sigge, woh mer Enfomazjuhne her krijje kann över der schimesche Shtoff, woh Ühr jrad noh am luure sitt:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbendung $MIXCASNameFormula op NIST</a><br />

@@ -200,7 +200,7 @@ $messages['ch'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬) */
+/** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'metadata_help' => 'دراوه‌ی مێتا:',
 );
@@ -644,6 +644,7 @@ $messages['krc'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'metadataedit-desc' => 'Deiht beim Sigge_Ändere de Saachjruppe, de Lenks op Sigge en ander Shproche, un de zohjelohße Schablone en en extra Feld.',
 	'metadata_help' => 'Metta-Daate:',
 );
 

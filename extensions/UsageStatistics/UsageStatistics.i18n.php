@@ -465,7 +465,7 @@ $messages['ca'] = array(
 	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -857,10 +857,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'usagestatisticsinterval' => 'Entèrvalo',
-	'usagestatisticstype' => 'Tipo',
-	'usagestatisticsstart' => 'Dâta de comencement',
-	'usagestatisticsend' => 'Dâta de fin',
+	'usagestatisticsinterval' => 'Entèrvalo :',
+	'usagestatisticstype' => 'Tipo :',
+	'usagestatisticsstart' => 'Dâta de comencement :',
+	'usagestatisticsend' => 'Dâta de fin :',
 	'usagestatisticssubmit' => 'Fâre les statistiques',
 	'usagestatisticsintervalday' => 'Jorn',
 	'usagestatisticsintervalweek' => 'Semana',
@@ -990,6 +990,11 @@ $messages['gu'] = array(
 	'usagestatistics-editindividual' => 'વ્યક્તિગત સભ્ય $1 સંપાદનના આંકડાઓ',
 	'usagestatistics-editpages' => 'વ્યક્તિગત સભ્ય $1 પાનાઓના આંકડાઓ',
 	'right-viewsystemstats' => 'જુઓ [[Special:UserStats|વિકિ વપરાશના આંકડા]]',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'usagestatisticsnamespace' => 'Sararin suna:',
 );
 
 /** Hebrew (עברית)
@@ -1589,7 +1594,7 @@ $messages['nl'] = array(
 	'usagestatisticsexcluderedirects' => 'Doorverwijzingen uitsluiten',
 	'usagestatistics-namespace' => 'Dit zijn statistieken over de naamruimte [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => 'Over [[Special:ListRedirects|doorverwijzingen]] wordt niet gerapporteerd.',
-	'usagestatisticstype' => 'Type',
+	'usagestatisticstype' => 'Type:',
 	'usagestatisticsstart' => 'Begindatum:',
 	'usagestatisticsend' => 'Einddatum:',
 	'usagestatisticssubmit' => 'Statistieken weergeven',

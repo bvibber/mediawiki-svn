@@ -222,6 +222,13 @@ $messages['pms'] = array(
 	'rped-wikipedia-url' => 'http://pms.wikipedia.org/wiki/$1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'rped-wikipedia-url' => 'http://ps.wikipedia.org/wiki/$1',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

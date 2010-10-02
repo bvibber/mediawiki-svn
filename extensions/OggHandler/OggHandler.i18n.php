@@ -600,10 +600,11 @@ $messages['ca'] = array(
 	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
+	'ogg-more' => 'زیاتر',
 	'ogg-dismiss' => 'بەستن',
 );
 
@@ -1110,13 +1111,13 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'ogg-desc' => 'Assistance por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript.',
-	'ogg-short-audio' => 'Fichiér son Ogg $1, $2',
-	'ogg-short-video' => 'Fichiér vidèô Ogg $1, $2',
-	'ogg-short-general' => 'Fichiér multimèdia Ogg $1, $2',
-	'ogg-long-audio' => '(Fichiér son Ogg $1, temps $2, $3)',
-	'ogg-long-video' => '(Fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3)',
-	'ogg-long-multiplexed' => '(Fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, $3)',
-	'ogg-long-general' => '(Fichiér multimèdia Ogg, temps $2, $3)',
+	'ogg-short-audio' => 'fichiér son Ogg $1, $2',
+	'ogg-short-video' => 'fichiér vidèô Ogg $1, $2',
+	'ogg-short-general' => 'fichiér multimèdia Ogg $1, $2',
+	'ogg-long-audio' => '(fichiér son Ogg $1, temps $2, $3)',
+	'ogg-long-video' => '(fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3)',
+	'ogg-long-multiplexed' => '(fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, en tot $3)',
+	'ogg-long-general' => '(fichiér multimèdia Ogg, temps $2, $3)',
 	'ogg-long-error' => '(Fichiér Ogg envalido : $1)',
 	'ogg-play' => 'Liére',
 	'ogg-pause' => 'Pousa',
@@ -1535,9 +1536,15 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'ogg-play' => 'Dọ',
+	'ogg-pause' => "Zùy'íké",
+	'ogg-stop' => 'Kwùshí',
 	'ogg-more' => 'Ozókwá...',
+	'ogg-dismiss' => 'Mèchié',
 );
 
 /** Ido (Ido)
@@ -2475,6 +2482,7 @@ $messages['pa'] = array(
  */
 $messages['pdc'] = array(
 	'ogg-more' => 'Mehr…',
+	'ogg-dismiss' => 'Zumache',
 	'ogg-download' => 'Feil runnerlaade',
 );
 
@@ -2887,6 +2895,8 @@ $messages['sl'] = array(
 	'ogg-stop' => 'Ustavi',
 	'ogg-play-video' => 'Predvajaj video',
 	'ogg-play-sound' => 'Predvajaj zvok',
+	'ogg-no-player' => 'Oprostite, kaže da vaš sistem nima nameščenega programja nobenega podprtega predvajalnika.
+Prosimo, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">prenesite predvajalnik</a>.',
 	'ogg-player-videoElement' => 'Vgrajena podpora brskalnika',
 	'ogg-player-oggPlugin' => 'Vtičnik brskalnika',
 	'ogg-player-thumbnail' => 'Samo stoječa slika',
@@ -3439,7 +3449,7 @@ $messages['vi'] = array(
 	'ogg-use-player' => 'Chọn chương trình chơi:',
 	'ogg-more' => 'Thêm nữa…',
 	'ogg-dismiss' => 'Đóng',
-	'ogg-download' => 'Tải tập tin xuống',
+	'ogg-download' => 'Tải về tập tin',
 	'ogg-desc-link' => 'Chi tiết của tập tin này',
 	'ogg-oggThumb-version' => 'OggHandler cần oggThumb, phiên bản $1 trở lên.',
 	'ogg-oggThumb-failed' => 'oggThumb bị thất bại trong việc tạo hình thu nhỏ.',

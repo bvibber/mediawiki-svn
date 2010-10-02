@@ -33,13 +33,5 @@ require_once( $dir . "EmbedVideo.Services.php" );
 $wgExtensionMessagesFiles['embedvideo'] = $dir . 'EmbedVideo.i18n.php';
 
 $wgHooks['ParserFirstCallInit'][] = "EmbedVideo::setup";
-if ( version_compare( $wgVersion, '1.7', '<' ) ) {
-	# Hack solution to resolve 1.6 array parameter nullification for hook args
-	function wfEmbedVideoLanguageGetMagic( &$magicWords ) {
-		EmbedVideo::parserFunctionMagic( $magicWords );
-		return true;
-	}
-	$wgHooks['LanguageGetMagic'][] = 'wfEmbedVideoLanguageGetMagic';
-} else {
-	$wgHooks['LanguageGetMagic'][] = 'EmbedVideo::parserFunctionMagic';
-}
+$wgHooks['LanguageGetMagic'][] = 'EmbedVideo::parserFunctionMagic';
+

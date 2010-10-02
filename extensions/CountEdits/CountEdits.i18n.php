@@ -664,8 +664,12 @@ Jangan menilai seorang kontributor berdasarkan jumlah suntingannya.",
 	'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'countedits' => 'Güó orü',
+	'countedits-username' => "Áhà ọ'bànifé:",
 	'countedits-ok' => 'Ngwanu',
 );
 
@@ -1518,7 +1522,7 @@ $messages['ug-arab'] = array(
 	'countedits-ok' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -569,6 +569,14 @@ $messages['pms'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ratedpages-none' => 'په همدې لړليک کې هېڅ کوم مخ نشته',
+	'ratedpages-count' => '$1 {{PLURAL:$1|مخليدنه|مخليدنې}}',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Hamilton Abreu
@@ -656,6 +664,15 @@ $messages['sk'] = array(
 	'ratedpages-none' => 'V tomto zozname sa nenachádzajú žiadne stránky',
 	'ratedpages-graphs' => 'údaje o hodnotení',
 	'ratedpages-count' => '$1 {{PLURAL:$1|hodnotenie|hodnotenia|hodnotení}}',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ratedpages-none' => 'Na tem seznamu ni strani.',
+	'ratedpages-graphs' => 'podatki ocenjevanja',
+	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

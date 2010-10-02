@@ -56,7 +56,7 @@ class SmoothGallery {
 		$this->galleriesArray = $galleriesArray;
 	}
 
-	function setParser( &$parser ) {
+	function setParser( $parser ) {
 		$this->parser = $parser;
 	}
 
@@ -195,11 +195,8 @@ class SmoothGallery {
 				continue;
 			}
 
-			if ( version_compare( $wgVersion, "1.11", '<' ) ) {
-				$plain_gallery->add( $image["image_object"], $image["description"] ); // TODO: use text
-			} else {
-				$plain_gallery->add( $image["image_object"]->getTitle(), $image["description"] ); // TODO: use text
-			}
+			$plain_gallery->add( $image["image_object"]->getTitle(), $image["description"] ); // TODO: use text
+
 			$i++;
 		}
 
@@ -277,7 +274,7 @@ class SmoothGallery {
 		return $output;
 	}
 
-	static function setGalleryHeaders(  &$outputPage ) {
+	static function setGalleryHeaders(  $outputPage ) {
 		global $wgSmoothGalleryExtensionPath;
 
 		$extensionpath = $wgSmoothGalleryExtensionPath;
@@ -307,7 +304,7 @@ class SmoothGallery {
 		return true;
 	}
 
-	static function setGallerySetHeaders(  &$outputPage ) {
+	static function setGallerySetHeaders(  $outputPage ) {
 		global $wgSmoothGalleryExtensionPath;
 
 		$extensionpath = $wgSmoothGalleryExtensionPath;

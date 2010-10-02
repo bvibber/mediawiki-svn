@@ -2899,10 +2899,11 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'extensiondistributor' => 'Tải bộ mở rộng MediaWiki về',
+	'extensiondistributor' => 'Tải về bộ mở rộng MediaWiki',
 	'extensiondistributor-desc' => 'Bộ mở rộng để phân phối các bản lưu trữ ảnh của các bộ mở rộng',
 	'extdist-not-configured' => 'Xin hãy cấu hình $wgExtDistTarDir và $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Không tồn tại thư mục sao chép hiện hành đã được cấu hình!',

@@ -88,6 +88,10 @@ to the $path variable, like "/usr/share/php" or "/usr/local/share/php".
 
 == Installation ==
 
+First, make sure that you have everytging listed at
+
+    http://www.mediawiki.org/wiki/Extension:OpenID/README#Pre-requisites
+
 To install, copy all the files in the archive you downloaded to the OpenID
 subdirectory of the extensions subdirectory of your MediaWiki installation. Note
 that the software depends on having its code all in the "OpenID" sub-directory;

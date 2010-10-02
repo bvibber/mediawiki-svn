@@ -4,6 +4,8 @@ $messages = array();
 
 /** English */
 $messages['en'] = array (
+	'ta-desc'                => 'Recreation of popular templates in PHP',
+
 	# citation separators
 	'ta-citesep-section'     => '.',               # separator between sections
 	'ta-citesep-end'         => '.',               # final separator (not really a separator)
