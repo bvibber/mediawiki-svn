@@ -29,9 +29,6 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['SpecialTalk'] =  $dir . 'SpecialTalk.i18n.php';
 
 function wfSpecialTalk() {
-	wfUsePHP( 5.1 );
-	wfUseMW( '1.6alpha' );
-	
 	class SpecialTalk {
 		public function __construct() {
 			global $wgHooks;
