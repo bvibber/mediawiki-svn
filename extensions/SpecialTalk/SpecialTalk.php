@@ -15,10 +15,18 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionFunctions[] = 'wfSpecialTalk';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Special talk',
+	'name' => 'SpecialTalk',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:SpecialTalk',
+	'version' => '1.0.',
+	'descriptionmsg' => 'specialtalk-desc',
 	'description' => 'Adds a talk tab to Special Pages',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
+
+$dir = dirname( __FILE__ ) . '/';
+
+// Extension messages.
+$wgExtensionMessagesFiles['SpecialTalk'] =  $dir . 'SpecialTalk.i18n.php';
 
 function wfSpecialTalk() {
 	wfUsePHP( 5.1 );
