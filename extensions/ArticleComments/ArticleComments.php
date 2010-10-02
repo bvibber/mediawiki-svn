@@ -316,7 +316,7 @@ function specialProcessComment() {
 	if ( !$commenterName ) $messages[] = wfMsgForContent(
 		'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
 
-	if ( !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) )
+	if ( ( $commenterURL != '' ) && !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) )
 		$messages[] = wfMsgForContent(
 		'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
 
@@ -450,17 +450,23 @@ function specialProcessComment() {
  * @param Boolean $isspam Whether the comment is spam (passed by reference)
  * @return Boolean Always true to indicate other hooking methods may continue to check for spam.
  */
-function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL, $isspam ) {
+function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL, &$isspam ) {
 
-	# Short-circuit if spam has already been determined
-	if ( $isspam ) return true;
+	if ( $isspam ) {
+		# This module only marks comments as spam (other modules may unspam)
+		return true;
+	}
+
 	$fields = array( $comment, $commenterName, $commenterURL );
 
 	# Run everything through $wgSpamRegex if it has been specified
 	global $wgSpamRegex;
 	if ( $wgSpamRegex ) {
 		foreach ( $fields as $field ) {
-			if ( preg_match( $wgSpamRegex, $field ) ) return $isspam = true;
+			if ( preg_match( $wgSpamRegex, $field ) ) {
+				$isspam = true;
+				return true;
+			}
 		}
 	}
 
@@ -470,21 +476,33 @@ function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL
 		'%<a\\s+[^>]*href\\s*=\\s*[\'"]?\\s*(https?|ftp)://%smi'
 	);
 	foreach ( $spampatterns as $sp ) {
-		foreach ( array( $comment, $commenterName, $commenterURL ) as $field ) {
-			if ( preg_match( $sp, $field ) ) return $isspam = true;
+		foreach ( $fields as $field ) {
+			if ( preg_match( $sp, $field ) ) { echo "Is spam! ";
+				$isspam = true;
+				return true;
+			}
 		}
 	}
 
 	# Check for bad input for commenterName (seems to be a popular spam location)
+	# These patterns are more general than those above
 	$spampatterns = array(
 		'%<a\\s+%smi',
 		'%(https?|ftp)://%smi',
 		'%(\\n|\\r)%smi'
 	);
-	foreach ( $spampatterns as $sp ) if ( preg_match( $sp, $commenterName ) ) return $isspam = true;
+	foreach ( $spampatterns as $sp ) {
+		if ( preg_match( $sp, $commenterName ) ) {
+			$isspam = true;
+			return true;
+		}
+	}
 
 	# Fail for length violations
-	if ( strlen( $commenterName ) > 255 || strlen( $commenterURL ) > 300 ) return $isspam = true;
+	if ( strlen( $commenterName ) > 255 || strlen( $commenterURL ) > 300 ) {
+		$isspam = true;
+		return true;
+	}
 
 	# We made it this far, leave $isspam alone and give other implementors a chance.
 	return true;
