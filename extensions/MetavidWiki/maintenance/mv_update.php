@@ -13,7 +13,7 @@ $dbclass = 'Database' . ucfirst( $wgDBtype ) ;
 $wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
 
 //first run the mv_tables.sql
-dbsource('mv_tables.sql');
+$wgDatabase->sourceFile( 'mv_tables.sql' );
 
 // do mvd_index text removal update:
 // check if mvd_index has text field

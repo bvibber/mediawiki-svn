@@ -73,7 +73,7 @@ class MVAdmin extends SpecialPage {
 				require_once( "$IP/install-utils.inc" );
 
 				print '<p><b>Creating database tables</b><p><pre>';
-				dbsource( "extensions/MetavidWiki/maintenance/mv_tables.sql" );
+				wfGetDB( DB_MASTER )->sourceFile( "extensions/MetavidWiki/maintenance/mv_tables.sql" );
 
 				print '</p><p><b>Creating templates</b><pre>';
 				upTemplates( false );
