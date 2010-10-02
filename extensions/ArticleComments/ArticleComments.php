@@ -305,27 +305,30 @@ function specialProcessComment() {
 	# Perform validation checks on supplied fields
 	$messages = array();
 
-	if ( !$wgRequest->wasPosted() )
-		$messages[] = wfMsgForContent( 'article-comments-not-posted' );
-
-	if ( $titleText === '' || !$title ) {
-		$messages[] = wfMsgForContent(
-		'article-comments-invalid-field', wfMsgForContent( 'article-comments-title-string' ), $titleText );
+	if ( !$wgRequest->wasPosted() ) {
+		$messages[] = wfMsg( 'article-comments-not-posted' );
 	}
 
-	if ( !$commenterName ) $messages[] = wfMsgForContent(
-		'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
+	if ( $titleText === '' || !$title ) {
+		$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-title-string' ), $titleText );
+	}
 
-	if ( ( $commenterURL != '' ) && !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) )
-		$messages[] = wfMsgForContent(
-		'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
+	if ( !$commenterName ) {
+		$messages[] = wfMsg( 'article-comments-required-field', wfMsgForContent( 'article-comments-name-string' ) );
+	}
 
-	if ( !$comment ) $messages[] = wfMsgForContent(
-		'article-comments-required-field', wfMsgForContent( 'article-comments-comment-string' ) );
+	if ( ( $commenterURL != '' ) && !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) ) {
+		$messages[] = wfMsg( 'article-comments-invalid-field', wfMsgForContent( 'article-comments-url-string' ), $commenterURL );
+	}
+
+	if ( !$comment ) {
+		$messages[] = wfMsg('article-comments-required-field', wfMsg( 'article-comments-comment-string' ) );
+	}
+
 	if ( !empty( $messages ) ) {
-		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
+		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>";
-		$wikiText .= wfMsgForContent( 'article-comments-failure-reasons' ) . "\n\n";
+		$wikiText .= wfMsg( 'article-comments-failure-reasons' ) . "\n\n";
 		foreach ( $messages as $message ) {
 			$wikiText .= "* $message\n";
 		}
@@ -341,10 +344,10 @@ function specialProcessComment() {
 
 	# Check whether user is blocked from editing the talk page
 	if ( $wgUser->isBlockedFrom( $talkTitle ) ) {
-		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
+		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>";
-		$wikiText .= wfMsgForContent( 'article-comments-failure-reasons' ) . "\n\n";
-		$wikiText .= '* ' . wfMsgForContent( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
+		$wikiText .= wfMsg( 'article-comments-failure-reasons' ) . "\n\n";
+		$wikiText .= '* ' . wfMsg( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
 		$wgOut->addWikiText( $wikiText . "</div>" );
 		return;
 	}
@@ -379,7 +382,7 @@ function specialProcessComment() {
 		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
 			"<div class='errorbox'>" .
-			wfMsgForContent( 'article-comments-no-comments', $title->getPrefixedText() ) .
+			wfMsg( 'article-comments-no-comments', $title->getPrefixedText() ) .
 			"</div>"
 		);
 		return;
@@ -391,10 +394,10 @@ function specialProcessComment() {
 
 	# If it's spam - it's gone!
 	if ( $isspam ) {
-		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
+		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
 			"<div class='errorbox'>" .
-			wfMsgForContent( 'article-comments-no-spam' ) .
+			wfMsg( 'article-comments-no-spam' ) .
 			"</div>"
 		);
 		return;
@@ -436,9 +439,9 @@ function specialProcessComment() {
 	$summary = wfMsgForContent( 'article-comments-summary', $commenterName );
 	$talkArticle->doEdit( $talkContent, $summary );
 
-	$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-succeeded' ) );
-	$wgOut->addWikiText(  wfMsgForContent( 'article-comments-submission-success', $title->getPrefixedText() ) );
-	$wgOut->addWikiText(  wfMsgForContent( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() ) );
+	$wgOut->setPageTitle( wfMsg( 'article-comments-submission-succeeded' ) );
+	$wgOut->addWikiText(  wfMsg( 'article-comments-submission-success', $title->getPrefixedText() ) );
+	$wgOut->addWikiText(  wfMsg( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() ) );
 }
 
 /**
