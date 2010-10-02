@@ -520,7 +520,25 @@ mw.SmilLayout.prototype = {
 						 'height' :imageTargetHeight
 					})
 				});					
-			})
+			});
+			// Switch any named font-size attribute to em 	 
+             /*$htmlLayout.find('[style]').each( function(inx, node){ 	 
+                 if( $j(node).css('font-size') ){ 	 
+                	 if( _this.emFontSizeMap[ $j(node).css('font-size') ] ){
+                		 $j(node).css('font-size', _this.emFontSizeMap[ $j(node).css('font-size') ] );
+                	 } else {
+                		//@@ todo translate absolute pixle size to relative 
+                	 }	 
+                 } 	 
+             });*/
+			// Switch any named font-size attribute to relative pixle size 	 
+            $htmlLayout.find('[style]').each( function(inx, node){ 	 
+                if( $j(node).css('font-size') ){ 	 
+                    $j(node).css('font-size', 	 
+                         ( fontScalePercent * parseFloat( $j(node).css('font-size') ) ) + 'px' 	 
+                    ); 	 
+                } 	 
+            })
 			
 			// Strip any links for thumbs of player
 			$htmlLayout.find('a').attr('href', '#');
@@ -953,7 +971,7 @@ mw.SmilLayout.prototype = {
 			'textColor' : 'color',
 			'textFontSize' : 'font-size',
 			'textFontStyle' : 'font-style'			
-		}		 
+		};
 		
 		var cssAttributes = {};
 		for(var i =0; i < $smilElement[0].attributes.length; i++ ){
