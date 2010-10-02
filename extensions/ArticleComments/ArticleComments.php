@@ -288,29 +288,40 @@ function wfProcessEncodedContent($out, $text) {
 */
 function specialProcessComment() {
 
-    global $wgOut, $wgParser, $wgUser, $wgContLang;
+    global $wgOut, $wgParser, $wgUser, $wgContLang, $wgRequest;
 
     # Retrieve submitted values
-    $titleKey = $_POST['titleKey'];
-    $titleNS = intval($_POST['titleNS']);
-    $commenterName = $_POST['commenterName'];
-    $commenterURL = isset($_POST['commenterURL']) ? $_POST['commenterURL'] : '';
-    $comment = $_POST['comment'];
-    global $wgRequest;
-    
     $titleText = $wgRequest->getVal( 'commentArticle' );
+    $commenterName = $wgRequest->getVal( 'commenterName' );
+    $commenterURL = trim( $wgRequest->getVal( 'commenterURL' ) );
+    $comment = $wgRequest->getVal( 'comment' );
+    
+	// The default value is the same as not providing a URL
+	if ( $commenterURL == 'http://' ) {
+		$commenterURL = '';
+	}
+
 	$title = Title::newFromText( $titleText );
 
     # Perform validation checks on supplied fields
     $ac = 'article-comments-';
     $messages = array();
+
+	if ( !$wgRequest->wasPosted() )
+		$messages[] = wfMsgForContent( $ac.'not-posted' );
+
     if ( $titleText === '' || !$title) {
 		$messages[] = wfMsgForContent(
-        $ac.'invalid-field', wfMsgForContent($ac.'title-field'), $titleKey );
+        $ac.'invalid-field', wfMsgForContent($ac.'title-string'), $titleText );
 	}
 	
     if (!$commenterName) $messages[] = wfMsgForContent(
         $ac.'required-field', wfMsgForContent($ac.'name-string'));
+
+	if ( !preg_match( "/^(" . wfUrlProtocols() . ')' . Parser::EXT_LINK_URL_CLASS . '+$/', $commenterURL ) )
+		$messages[] = wfMsgForContent(
+        $ac.'invalid-field', wfMsgForContent($ac.'url-string'), $commenterURL );
+
     if (!$comment) $messages[] = wfMsgForContent(
         $ac.'required-field', wfMsgForContent($ac.'comment-string'));
     if (!empty($messages)) {
@@ -397,8 +408,7 @@ function specialProcessComment() {
     }
     
     # Determine signature components
-    $d = $wgContLang->timeanddate( date( 'YmdHis' ), false, false) . ' (' . date( 'T' ) . ')';
-    if ($commenterURL && $commenterURL!='http://') $sigText = "[$commenterURL $commenterName]";
+    if ($commenterURL != '') $sigText = "[$commenterURL $commenterName]";
     else if ($wgUser->isLoggedIn()) $sigText = $wgParser->getUserSig( $wgUser );
     else $sigText = $commenterName;
     
@@ -408,7 +418,7 @@ function specialProcessComment() {
         wfMsgForContent($ac.'commenter-said', $commenterName),
         $comment,
         $sigText,
-        $d
+        '~~~~~'
     );
     
     $posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
@@ -424,15 +434,9 @@ function specialProcessComment() {
         $talkContent .= $commentText;
     }
  
-    # Update the talkArticle with the new comment
-    $summary = wfMsgForContent($ac.'summary', $commenterName);
-    if (method_exists($talkArticle, 'doEdit')) {
-        $talkArticle->doEdit($talkContent, $summary);
-    } else {
-        $method = ($talkArticle->exists() ? 'updateArticle' : 'insertNewArticle' );
-        $talkArticle->$method($talkContent, $summary, false, false);
-        return;
-    }
+	# Update the talkArticle with the new comment
+	$summary = wfMsgForContent($ac.'summary', $commenterName);
+	$talkArticle->doEdit($talkContent, $summary);
 
     $wgOut->setPageTitle(wfMsgForContent($ac.'submission-succeeded'));
     $wgOut->addWikiText(wfMsgForContent($ac.'submission-success', $title->getPrefixedText()));
