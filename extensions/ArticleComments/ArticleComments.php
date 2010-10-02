@@ -480,7 +480,7 @@ function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL
 	);
 	foreach ( $spampatterns as $sp ) {
 		foreach ( $fields as $field ) {
-			if ( preg_match( $sp, $field ) ) { echo "Is spam! ";
+			if ( preg_match( $sp, $field ) ) {
 				$isspam = true;
 				return true;
 			}
