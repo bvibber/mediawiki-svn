@@ -221,6 +221,14 @@ $messages['fr'] = array(
 	'nstab-comments' => 'Commentaire',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'commentpages-desc' => 'Pâges de comentèros por l’èspâço de noms principâl.',
+	'nstab-comments' => 'Comentèro',
+);
+
 /** Galician (Galego)
  * @author Alma
  */

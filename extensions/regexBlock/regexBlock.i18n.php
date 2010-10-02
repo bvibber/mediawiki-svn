@@ -807,6 +807,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author LyzTyphone
  * @author Michawiki
  * @author Yekrats
  */
@@ -819,7 +820,7 @@ $messages['eo'] = array(
 	'regexblock-form-reason' => 'Kialo:',
 	'regexblock-form-expiry' => 'Findato:',
 	'regexblock-form-match' => 'Preciza kongruo',
-	'regexblock-form-submit' => 'Forbari ĉi tiun uzanton',
+	'regexblock-form-submit' => 'Bloki la uzanton',
 	'regexblock-form-submit-regex' => 'Malvalida regulara esprimo.',
 	'regexblock-unblock-success' => 'Malforbaro sukcesis',
 	'regexblock-unblock-log' => "Salutnomo aŭ IP-adreso '''$1''' estis restarigita.",

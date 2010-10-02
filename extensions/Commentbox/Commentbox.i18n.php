@@ -314,6 +314,22 @@ Vous avez un commentaire sur cette page ? Ajoutez-le ici ou <span class="plainli
 	'commentbox-error-empty-comment' => 'Les commentaires vides ne sont pas autorisés !',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'commentbox-desc' => 'Apond una bouèta de comentèro dens quârques pâges.',
+	'commentbox-savebutton' => 'Encartar lo comentèro',
+	'commentbox-name' => 'Nom :',
+	'commentbox-log' => 'Novéls comentèros',
+	'commentbox-first-comment-heading' => '== Comentèros ==',
+	'commentbox-regex' => '/\\n==\\s*Comentèros\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Èrror pendent la crèacion du comentèro',
+	'commentbox-error-page-nonexistent' => 'Ceta pâge ègziste pas !',
+	'commentbox-error-namespace' => 'Los comentèros sont pas ôtorisâs dens ceti èspâço de noms !',
+	'commentbox-error-empty-comment' => 'Los comentèros vouedos sont pas ôtorisâs !',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

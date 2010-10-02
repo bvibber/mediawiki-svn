@@ -373,8 +373,10 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'searchbox-desc' => 'Dozvoli uključivanje obrazaca za traženje',
 	'searchbox-search' => 'Traži',
 	'searchbox-go' => 'Idi',
 	'searchbox-namespaces' => 'Imenski prostor:',

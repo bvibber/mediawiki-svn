@@ -113,6 +113,13 @@ $messages['el'] = array(
 	'javascript-desc' => 'Προσθέτει το uniwiki.js σε κάθε σελίδα που περιέχει κώσικα JavaScript κοινό με τις επεκτάσεις Uniwiki',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'javascript-desc' => 'Aldonas uniwiki.js al ĉiu paĝo kiu enhavas kodon JavaScript kunuzitan inter kromprogramoj de Uniwiki',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

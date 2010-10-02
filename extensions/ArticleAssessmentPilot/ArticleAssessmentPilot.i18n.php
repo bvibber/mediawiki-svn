@@ -361,6 +361,13 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
 	'articleassessment-survey-thanks' => 'Vielen Dank für Ihre Rückmeldung.',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'articleassessment-survey-question-useful-iffalse' => 'Kial?',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */
@@ -796,6 +803,8 @@ $messages['li'] = array(
 	'articleassessment-rating-wellsourced' => 'Good van brónne veurzeen:',
 	'articleassessment-rating-neutrality' => 'Neutraal:',
 	'articleassessment-rating-completeness' => 'Compleet:',
+	'articleassessment-survey-answer-whyrated-other' => 'Anges',
+	'articleassessment-survey-question-useful-iffalse' => 'Wróm?',
 );
 
 /** Macedonian (Македонски)

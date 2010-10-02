@@ -698,6 +698,39 @@ $messages['fr'] = array(
 	'right-closewikis' => 'Clôturer les wikis',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'closewikis-desc' => 'Pèrmèt de cllôre los setos vouiqui dens la fèrma vouiqui.',
+	'closewikis-page' => 'Cllôre lo vouiqui',
+	'closewikis-page-close' => 'Cllôre lo vouiqui',
+	'closewikis-page-close-wiki' => 'Vouiqui :',
+	'closewikis-page-close-dreason' => 'Rêson (montrâ) :',
+	'closewikis-page-close-reason' => 'Rêson (encartâ) :',
+	'closewikis-page-close-submit' => 'Cllôre',
+	'closewikis-page-close-success' => 'Vouiqui cllôs avouéc reusséta',
+	'closewikis-page-reopen' => 'Tornar uvrir lo vouiqui',
+	'closewikis-page-reopen-wiki' => 'Vouiqui :',
+	'closewikis-page-reopen-reason' => 'Rêson :',
+	'closewikis-page-reopen-submit' => 'Tornar uvrir',
+	'closewikis-page-reopen-success' => 'Vouiqui tornâ uvrir avouéc reusséta',
+	'closewikis-page-err-nowiki' => 'Lo vouiqui spècefiâ est fôx',
+	'closewikis-page-err-closed' => 'Lo vouiqui est ja cllôs',
+	'closewikis-page-err-opened' => 'Lo vouiqui est pas cllôs',
+	'closewikis-list' => 'Lista des vouiquis cllôs',
+	'closewikis-list-intro' => 'Ceta lista contint los vouiquis cllôs per los stevârds.',
+	'closewikis-list-header-wiki' => 'Vouiqui',
+	'closewikis-list-header-by' => 'Cllôs per',
+	'closewikis-list-header-timestamp' => 'Cllôs lo',
+	'closewikis-list-header-dispreason' => 'Rêson balyê',
+	'closewikis-log' => 'Jornal de cllotura des vouiquis',
+	'closewikis-log-close' => 'at cllôs $2',
+	'closewikis-log-reopen' => 'at tornâ uvrir $2',
+	'right-editclosedwikis' => 'Changiér los vouiquis cllôs',
+	'right-closewikis' => 'Cllôre los vouiquis',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

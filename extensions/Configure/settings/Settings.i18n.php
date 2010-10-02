@@ -6531,6 +6531,16 @@ $messages['fr'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Port pour le profileur UDP',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'configure-setting-wgSitename' => 'Nom du seto',
+	'configure-setting-wgActionPaths' => 'URLs por châque accion',
+	'configure-setting-wgActionPaths-key' => 'Accion',
+	'configure-setting-wgActionPaths-value' => 'Modèlo d’URL',
+);
+
 /** Galician (Galego)
  * @author Gallaecio
  * @author Kobazulo

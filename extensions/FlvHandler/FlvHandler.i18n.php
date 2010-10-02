@@ -64,6 +64,14 @@ $messages['ca'] = array(
 	'flv-long-desc' => '(Vídeo en Flash, $1 × $2 píxels, mida del fitxer: $3)',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'flvhandler_desc' => 'Umožňuje používat soubory formátu Flash Video (.flv) jako standardní soubory (např. <nowiki>[[</nowiki>{{ns:file}}:Video.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1×$2 pixelů, velikost souboru: $3)',
+);
+
 /** German (Deutsch)
  * @author PasO
  */

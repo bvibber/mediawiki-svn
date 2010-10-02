@@ -657,6 +657,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Castelobranco
+ * @author LyzTyphone
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -667,7 +668,7 @@ Bonvolu verigi se vi rajtas agi en ĉi vikio kaj viaj agoj sekvas ĉiujn kondutm
 	'crosswikiblock-target' => 'IP-adreso aŭ uzanto-nomo kaj cela vikio:',
 	'crosswikiblock-expiry' => 'Findato:',
 	'crosswikiblock-reason' => 'Kialo:',
-	'crosswikiblock-submit' => 'Forbari ĉi tiun uzanton',
+	'crosswikiblock-submit' => 'Bloki la uzanton',
 	'crosswikiblock-anononly' => 'Forbari nur anonimajn uzantojn',
 	'crosswikiblock-nocreate' => 'Preventi kreadon de kontoj',
 	'crosswikiblock-autoblock' => 'Aŭtomate forbaru la lastan IP-adreson uzatan de ĉi uzanto, kaj iujn ajn postajn el kiujn ili provas redakti.',
