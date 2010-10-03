@@ -4330,6 +4330,18 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'compare-rev2'     => 'Revision 2',
 'compare-submit'   => 'Compare',
 
+# Special:GlobalFileUsage
+'globalfileusage'      => 'Global file usage',
+'globalfileusage-for'  => 'Global file usage for "$1"',
+'globalfileusage-desc' => '[[Special:GlobalFileUsage|Special page]] to view global file usage',
+'globalfileusage-ok'   => 'Search',
+'globalfileusage-text' => 'Search global file usage',
+'globalfileusage-no-results' => '[[$1]] is not used on other wikis.',
+'globalfileusage-on-wiki' => 'Usage on $2',
+'globalfileusage-of-file' => 'The following other wikis use this file:',
+'globalfileusage-more' => 'View [[{{#Special:GlobalUsage}}/$1|more global usage]] of this file.',
+'globalfileusage-filterlocal' => 'Do not show local usage',
+
 # Special:GlobalTemplateUsage
 'globaltemplateusage'      => 'Global template usage',
 'globaltemplateusage-for'  => 'Global template usage for "$1"',
