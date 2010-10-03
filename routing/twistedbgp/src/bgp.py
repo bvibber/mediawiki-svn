@@ -1918,6 +1918,16 @@ class NaiveBGPPeering(BGPPeering):
         self.advertised = set()
         self.toAdvertise = set()
     
+    def completeInit(self, protocol):
+        """
+        Called by FSM when BGP resources should be initialized.
+        """
+        
+        BGPPeering.completeInit(self, protocol)
+        
+        # Clear the existing set, it may get reused
+        self.advertised = set()
+    
     def sendAdvertisements(self):
         """
         Called when the BGP session has been established and is
