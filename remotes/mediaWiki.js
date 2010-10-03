@@ -49,7 +49,7 @@ if( !preMwEmbedReady ){
 if( !mw.ready){
 	mw.ready = function( fn ){
 		preMwEmbedReady.push( fn );
-	}
+	};
 }
 // Setup a preMwEmbedConfig var
 if( ! preMwEmbedConfig ) {
@@ -65,7 +65,7 @@ if( !mw.setConfig ){
 				preMwEmbedConfig[ i ] = set[i];
 			}
 		}
-	}
+	};
 }
 
 
@@ -103,6 +103,7 @@ function doPageSpecificRewrite() {
 	// Add media wizard ( only if not on a sequence page
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
 		if( wgPageName.indexOf( "Sequence:" ) != 0 ){
+			// Add a timeout to give a chance for wikieditor to build out. 
 			setTimeout(function(){
 				loadMwEmbed( [ 
 					'mw.RemoteSearchDriver',
@@ -124,7 +125,11 @@ function doPageSpecificRewrite() {
 	// Timed text display:
 	if ( wgPageName.indexOf( "TimedText:" ) === 0 
 			&& 
-		document.URL.indexOf('&diff=') == -1) {
+			( 	document.URL.indexOf('&diff=') == -1
+				&&
+				document.URL.indexOf('?diff=') == -1
+			)
+		){
 		if( wgAction == 'view' ){
 			var orgBody = mwSetPageToLoading();
 			//load the "player" ( includes call to  loadMwEmbed )
@@ -152,7 +157,11 @@ function doPageSpecificRewrite() {
 		// If on a view page set content to "loading" 
 		if( ( wgAction == 'view' || wgAction == 'edit' ) 
 			&& 
-			document.URL.indexOf('&diff=') == -1
+			( 
+				document.URL.indexOf('&diff=') == -1
+				&&
+				document.URL.indexOf('?diff=') == -1
+			)
 		){
 			if( wgAction == 'view' ){
 				var catLinksHtml = document.getElementById('catlinks');
@@ -180,7 +189,7 @@ function doPageSpecificRewrite() {
 					window.mwSequencerRemote.drawUI();						
 				
 					//setTimeout(function(){
-				})
+				});
 			}
 			
 		}
@@ -208,7 +217,7 @@ function doPageSpecificRewrite() {
 		];
 		var scriptUrl = mwEmbedHostPath + '/remotes/' + scriptName + '?' + mwGetReqArgs();
 		loadMwEmbed(libraries, function() { 
-			mw.load( scriptUrl ) 
+			mw.load( scriptUrl );
 		} );
 		return ;
 	}
@@ -255,7 +264,7 @@ function doPageSpecificRewrite() {
 					'titleKey' : sequenceTitle,
 					'target' : '#bodyContent'
 				});
-				window.mwSequencerRemote.showViewFlattenedFile()
+				window.mwSequencerRemote.showViewFlattenedFile();
 			}
 			
 			// Do utility rewrite of OggHandler content:
@@ -511,7 +520,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			// Issue an async request to rewrite the next clip
 			if ( vidIdList.length != 0 ) {
 				setTimeout( function() {					
-					procVidId( vidIdList.pop() )
+					procVidId( vidIdList.pop() );
 				}, 1 );
 			}
 		}		
@@ -534,7 +543,7 @@ function getRemoteEmbedPath() {
 				reqStr = s.src.substr( s.src.indexOf( '?' ) );
 				scriptPath = s.src.substr( 0,  s.src.indexOf( '?' ) ).replace( '/mediaWiki.js', '' );
 			} else {
-				scriptPath = s.src.replace( '/mediaWiki.js', '' )
+				scriptPath = s.src.replace( '/mediaWiki.js', '' );
 			}
 			// Use the external_media_wizard path:
 			return [scriptPath + '/..', reqStr];
@@ -577,7 +586,7 @@ function loadMwEmbed( classSet, callback ) {
 		callback = classSet;
 	}	
 	if ( typeof MW_EMBED_VERSION != 'undefined' ) {
-		mw.load( classSet, callback)
+		mw.load( classSet, callback);
 		return ;
 	}
 	// Inject mwEmbed 	
@@ -642,10 +651,10 @@ function loadMwEmbed( classSet, callback ) {
 					// Load the class set as part of mwReady callback
 					mw.load( classSet, function(){
 						callback();
-					})
+					});
 				});
 			}
-		}
+		};
 		waitForJQueryUpgrade();
 	}		
 }
@@ -667,7 +676,7 @@ function waitMwEmbedReady( callback ) {
 			// All enabled pages should check if we have the gadget already installed 
 			// if not offer a convenient button
 			mwCheckForGadget();
-		})
+		});
 	}
 }
 /**
@@ -775,8 +784,8 @@ function mwSubmitGadgetPref( gadget_id ){
 				$j('#gadget-form-loader')
 				.text( gM( 'mwe-enable-gadget-done' ) );
 			}
-		} )
-	})
+		} );
+	});
 }
 function mwGetFormFromPage( pageHTML ){
 	var form = {};
@@ -811,7 +820,7 @@ function mwCheckFormDatagadget( formData, gadget_id ){
 function mwCheckObjectPath ( libVar ) {
 	if ( !libVar )
 		return false;
-	var objPath = libVar.split( '.' )
+	var objPath = libVar.split( '.' );
 	var cur_path = '';
 	for ( var p = 0; p < objPath.length; p++ ) {
 		cur_path = ( cur_path == '' ) ? cur_path + objPath[p] : cur_path + '.' + objPath[p];
