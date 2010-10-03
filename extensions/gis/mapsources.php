@@ -61,11 +61,7 @@ class map_sources {
 		global $wgOut, $wgUser, $wgContLang, $wgRequest;
 
 		if (($e = $this->p->get_error()) != "") {
-			$wgOut->addHTML(
-			       "<p>" . htmlspecialchars( $e ) . "</p>");
-			$wgOut->output();
-			wfErrorExit();
-			return "";
+			throw new FatalError( htmlspecialchars( $e ) );
 		}
 
 		$attr = $this->p->get_attr();
@@ -215,11 +211,9 @@ class map_sources {
 			$bsarticle = new Article( $bstitle );
 		}
 		if ($bsarticle->getID() == 0) {
-			$wgOut->addHTML( "<p>Please add this page: " .
-				$sk->makeBrokenLinkObj( $bstitle ).".</p>");
-			$wgOut->output();
-			wfErrorExit();
-			return "";
+			$wgOut->addHTML( );
+			throw new FatalError( "<p>Please add this page: " .
+				$sk->makeBrokenLinkObj( $bstitle ) . ".</p>" );
 		}
 		$bstext = $bsarticle->getContent( false ); # allow redir
 

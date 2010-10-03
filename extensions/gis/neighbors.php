@@ -57,11 +57,7 @@ class neighbors {
 		$wgOut->setPagetitle( "Neighbors" );
 
 		if (($e = $this->p->get_error()) != "") {
-			$wgOut->addHTML(
-			       "<p>" . htmlspecialchars( $e ) . "</p>");
-			$wgOut->output();
-			wfErrorExit();
-			return;
+			throw new FatalError( htmlspecialchars( $e ) );
 		}
 
 		$wgOut->addWikiText( $this->make_output() );
