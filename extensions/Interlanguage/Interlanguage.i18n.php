@@ -12,6 +12,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'interlanguage-desc' => 'Grabs interlanguage links from another wiki',
+	'interlanguage-pagelinksexplanation' => 'Pages with interlanguage links:',
 );
 
 /** Message documentation (Message documentation)
