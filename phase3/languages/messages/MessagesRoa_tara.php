@@ -37,7 +37,7 @@ $messages = array(
 'tog-editsection'             => 'Abilite le cangiaminde a sezione ausanne [cange]',
 'tog-editsectiononrightclick' => "Abilite le cngiaminde d'a sezione ausanne 'u pulsande destre d'u mouse cazzanne sus a 'u titele (Javascript)",
 'tog-showtoc'                 => "Fa vedè 'a taggelle de le condenute (pe le pàggene cu cchiù de 3 testete)",
-'tog-rememberpassword'        => "Arrencuerdete 'u nome mije sus a stu combiuter (pe 'nu massime de $1 {{PLURAL:$1|sciurne|sciurne}})",
+'tog-rememberpassword'        => "Arrencuerdete 'u nome mije sus a stu browser (pe 'nu massime de $1 {{PLURAL:$1|sciurne|sciurne}})",
 'tog-watchcreations'          => "Mitte le pàggene ca je agghje ccrejete jndr'à le pàggene condrollete",
 'tog-watchdefault'            => "Mitte le pàggene ca je agghje cangete jndr'à le pàggene condrolleteAdd pages I edit to my watchlist",
 'tog-watchmoves'              => "Mitte le pàggene ca je agghje spustete jndr'à le pàggene condrollete",
@@ -254,6 +254,8 @@ Troppe utinde stonne a provene a vedè sta pàgene.
 Pe piacere aspitte 'nu picche e pò pruève 'n'otra vote a trasè jndr'à sta pàgene.
 
 $1",
+'pool-queuefull'    => "'A code de le sondagge jè chiene",
+'pool-errorunknown' => 'Errore scanusciute',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sus a {{SITENAME}}',
@@ -920,6 +922,7 @@ Pe piacere condrolle l'archivije.",
 Vide 'a [[Special:IPBlockList|liste de le IP bloccate]] pa liste de le operazziune corrende de espulsione e blocche.",
 
 # Revision move
+'revmove-legend'         => "'Mboste 'a pàgene de destinazione e 'u riepileghe",
 'revmove-reasonfield'    => 'Mutive:',
 'revmove-titlefield'     => 'Pàgene de destinazione:',
 'revmove-badparam-title' => 'Parametre sbagliate',
@@ -959,6 +962,7 @@ Vide Bbuene ca ausanne le collegaminde de navigazzione sta culonne avène azzera
 # Diffs
 'history-title'            => 'Liste de le versiune de "$1"',
 'difference'               => "(Differenze 'mbrà versiune)",
+'difference-multipage'     => "(Differenze 'mbrà le pàggene)",
 'lineno'                   => 'Linea $1:',
 'compareselectedversions'  => 'Combronde le versiune selezionete',
 'showhideselectedversions' => 'Fà vedè/scunne le revisiune selezionate',
@@ -1304,6 +1308,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'action-userrights'           => "cange tutte le deritte de l'utende",
 'action-userrights-interwiki' => "cange le deritte de l'utende de l'utinde de le otre Uicchi",
 'action-siteadmin'            => "blocche o sblocche 'u database",
+'action-revisionmove'         => 'spuèste le revisiune',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|cangiaminde|cangiaminde}}',
@@ -1311,14 +1316,9 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'recentchanges-legend'              => 'Opzione pe le cangiaminde recende',
 'recentchangestext'                 => 'Tracce le cchiù recednde cangiaminde de Uicchi sus a sta pàgene.',
 'recentchanges-feed-description'    => "Tracce le urteme cangiaminde sus 'a sta Uicchipedie jndr'à quiste feed.",
-'recentchanges-label-legend'        => 'Legende: $1',
-'recentchanges-legend-newpage'      => '$1 - pàgena nove',
 'recentchanges-label-newpage'       => "Stu cangiamende ha ccrejate 'na pàgena nove",
-'recentchanges-legend-minor'        => '$1 - Cangiamende stuèdeche',
 'recentchanges-label-minor'         => "Quiste ète 'nu cangiamende stuèdeche",
-'recentchanges-legend-bot'          => '$1 - cangiamende de bot',
 'recentchanges-label-bot'           => "Stu cangiamende ha state fatte da 'nu bot",
-'recentchanges-legend-unpatrolled'  => '$1 - cangiamende non condrollate',
 'recentchanges-label-unpatrolled'   => "Stu cangiamende non g'à state angore condrollate",
 'rcnote'                            => "Sotte {{PLURAL:$1|jè '''1''' cangiamende|sonde le urteme '''$1''' cangiaminde}} jndr'à l'urteme{{PLURAL:$2|sciurne|'''$2''' sciurne}}, jndr'à $5, $4.",
 'rcnotefrom'                        => "Sotte stonne le cangiaminde da '''$2''' (fine a '''$1''' mustrete).",
@@ -2682,6 +2682,8 @@ Ce l'esegue sus a 'u sisteme tue pò essere ca se combromette.",
 'show-big-image-thumb' => '<small>Dimenziune de sta andeprime: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'infinite',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frame}}',
+'file-info-png-looped' => 'infinite',
+'file-info-png-repeat' => 'eseguite $1 {{PLURAL:$1|vote|vote}}',
 'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frame}}',
 
 # Special:NewFiles

@@ -330,7 +330,9 @@ class EditPage {
 		$permErrors = $this->getEditPermissionErrors();
 		if ( $permErrors ) {
 			wfDebug( __METHOD__ . ": User can't edit\n" );
-			$this->readOnlyPage( $this->getContent( false ), true, $permErrors, 'edit' );
+			$content = $this->getContent( null );
+			$content = $content === '' ? null : $content;
+			$this->readOnlyPage( $content, true, $permErrors, 'edit' );
 			wfProfileOut( __METHOD__ );
 			return;
 		} else {
@@ -867,7 +869,7 @@ class EditPage {
 		wfProfileOut( __METHOD__ . '-checks' );
 
 		# If article is new, insert it.
-		$aid = $this->mTitle->getArticleID( GAID_FOR_UPDATE );
+		$aid = $this->mTitle->getArticleID( Title::GAID_FOR_UPDATE );
 		if ( 0 == $aid ) {
 			// Late check for create permission, just in case *PARANOIA*
 			if ( !$this->mTitle->userCan( 'create' ) ) {
@@ -1173,7 +1175,7 @@ class EditPage {
 	 *                      parameter; will be called during form output
 	 *                      near the top, for captchas and the like.
 	 */
-	function showEditForm( $formCallback=null ) {
+	function showEditForm( $formCallback = null ) {
 		global $wgOut, $wgUser, $wgTitle, $wgEnableInterwikiTranscluding, $wgEnableInterwikiTemplatesTracking;
 
 		# If $wgTitle is null, that means we're in API mode.
@@ -2149,6 +2151,9 @@ HTML
 	 */
 	static function getEditToolbar() {
 		global $wgStylePath, $wgContLang, $wgLang, $wgOut;
+		global $wgUseTeX, $wgEnableUploads, $wgForeignFileRepos;
+
+		$imagesAvailable = $wgEnableUploads || count( $wgForeignFileRepos );
 
 		/**
 
@@ -2208,7 +2213,7 @@ HTML
 				'tip'    => wfMsg( 'headline_tip' ),
 				'key'    => 'H'
 			),
-			array(
+			$imagesAvailable ? array(
 				'image'  => $wgLang->getImageFile( 'button-image' ),
 				'id'     => 'mw-editbutton-image',
 				'open'   => '[[' . $wgContLang->getNsText( NS_FILE ) . ':',
@@ -2216,8 +2221,8 @@ HTML
 				'sample' => wfMsg( 'image_sample' ),
 				'tip'    => wfMsg( 'image_tip' ),
 				'key'    => 'D'
-			),
-			array(
+			) : false,
+			$imagesAvailable ? array(
 				'image'  => $wgLang->getImageFile( 'button-media' ),
 				'id'     => 'mw-editbutton-media',
 				'open'   => '[[' . $wgContLang->getNsText( NS_MEDIA ) . ':',
@@ -2225,8 +2230,8 @@ HTML
 				'sample' => wfMsg( 'media_sample' ),
 				'tip'    => wfMsg( 'media_tip' ),
 				'key'    => 'M'
-			),
-			array(
+			) : false,
+			$wgUseTeX ?	array(
 				'image'  => $wgLang->getImageFile( 'button-math' ),
 				'id'     => 'mw-editbutton-math',
 				'open'   => "<math>",
@@ -2234,7 +2239,7 @@ HTML
 				'sample' => wfMsg( 'math_sample' ),
 				'tip'    => wfMsg( 'math_tip' ),
 				'key'    => 'C'
-			),
+			) : false,
 			array(
 				'image'  => $wgLang->getImageFile( 'button-nowiki' ),
 				'id'     => 'mw-editbutton-nowiki',
@@ -2267,6 +2272,8 @@ HTML
 
 		$script = '';
 		foreach ( $toolarray as $tool ) {
+			if ( !$tool ) continue;
+
 			$params = array(
 				$image = $wgStylePath . '/common/images/' . $tool['image'],
 				// Note that we use the tip both for the ALT tag and the TITLE tag of the image.
@@ -2286,7 +2293,7 @@ HTML
 		}
 		
 		$wgOut->addScript( Html::inlineScript(
-			"if ( mediaWiki !== undefined ) { mediaWiki.loader.using( 'mediawiki.legacy.edit', function() { $script } ); }"
+			"if ( window.mediaWiki ) { $script }"
 		) );
 		
 		$toolbar .= "\n</div>";

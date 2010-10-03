@@ -576,6 +576,9 @@ Trop d’utilisateurs cherchent à consulter cette page.
 Veuillez attendre un moment avant de retenter l’accès à cette page.
 
 $1',
+'pool-timeout'      => 'Délai dépassé durant l’attente du verrou',
+'pool-queuefull'    => 'La file de travail est pleine',
+'pool-errorunknown' => 'Erreur inconnue',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'À propos de {{SITENAME}}',
@@ -817,6 +820,11 @@ Ignorez ce message si ce compte a été créé par erreur.',
 Veuillez attendre avant d’essayer à nouveau.',
 'loginlanguagelabel'         => 'Langue : $1',
 'suspicious-userlogout'      => 'Votre demande de déconnexion a été refusée car il semble qu’elle a été envoyée par un navigateur cassé ou la mise en cache d’un proxy.',
+'ratelimit-excluded-ips'     => ' # <!-- leave this line exactly as it is --><pre>
+# La syntaxe est comme suit: 
+#   * Tout ce qui est entre un caractère "#" et la fin de la ligne est un commentaire. 
+#   * Toute ligne non vide est une adresse IP exclue de la limitation de fréquence.
+ # </pre><!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Niveau de sécurité du mot de passe : $1',
@@ -1187,9 +1195,10 @@ Vous n’y avez pas accès.',
 'revdelete-concurrent-change' => 'Erreur lors de la modification de l’élément daté du $1 à $2 : son statut a été changé par quelqu’un d’autre pendant que vous le modifiez.
 Vérifiez les journaux.',
 'revdelete-only-restricted'   => 'Erreur lors de la suppression de l’entrée datée du $1 à $2 : vous ne pouvez pas supprimer ces éléments aux administrateurs sans également sélectionner des autres options de suppression.',
-'revdelete-reason-dropdown'   => '* Raisons courantes de suppression
-** Violation des droits d’auteurs
-** Renseignements personnels inappropriés',
+'revdelete-reason-dropdown'   => '* Raisons courantes de suppression :
+** Violation des droits d’auteurs ;
+** Renseignements personnels inappropriés ;
+** Informations potentiellement diffamatoires.',
 'revdelete-otherreason'       => 'Autre raison / raison supplémentaire :',
 'revdelete-reasonotherlist'   => 'Autre raison',
 'revdelete-edit-reasonlist'   => 'Modifier les motifs fréquents de suppression',
@@ -1255,8 +1264,8 @@ Assurez-vous que cette opération conservera la continuité de l’historique de
 'compareselectedversions'  => 'Comparer les versions sélectionnées',
 'showhideselectedversions' => 'Afficher/masquer les versions sélectionnées',
 'editundo'                 => 'défaire',
-'diff-multi'               => "({{PLURAL:$1|Une version intermédiaire|$1 versions intermédiaires}} {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}} sont masquées)",
-'diff-multi-manyusers'     => '($1 révisions intermédiaires par plus de 100 utilisateurs sont masquées)',
+'diff-multi'               => '({{PLURAL:$1|Une révision intermédiaire|$1 révision intermédiaires}} par {{PLURAL:$2|un utilisateur|$2 utilisateurs}} {{PLURAL:$1|est masquée|sont masquées}})',
+'diff-multi-manyusers'     => "({{PLURAL:$1|Une révision intermédiaire|$1 révisions intermédiaires}} par plus {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}} {{PLURAL:$1|est masquée|sont masquées}})",
 
 # Search results
 'searchresults'                    => 'Résultats de la recherche',
@@ -1602,14 +1611,9 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'recentchanges-legend'              => 'Options des modifications récentes',
 'recentchangestext'                 => 'Piste les changements les plus récents du wiki sur cette page.',
 'recentchanges-feed-description'    => 'Suivre les dernières modifications de ce wiki dans un flux.',
-'recentchanges-label-legend'        => 'Légende : $1.',
-'recentchanges-legend-newpage'      => '$1 - nouvelle page',
 'recentchanges-label-newpage'       => 'Cette modification a créé une nouvelle page',
-'recentchanges-legend-minor'        => '$1 - modification mineure',
 'recentchanges-label-minor'         => 'Cette modification est mineure',
-'recentchanges-legend-bot'          => '$1 - modification faite par un robot',
 'recentchanges-label-bot'           => 'Cette modification a été effectuée par un robot.',
-'recentchanges-legend-unpatrolled'  => '$1 - modification non patrouillée',
 'recentchanges-label-unpatrolled'   => 'Cette modification n’a pas encore été patrouillée.',
 'rcnote'                            => 'Voici {{PLURAL:$1|la dernière modification effectuée|les $1 dernières modifications effectuées}} durant {{PLURAL:$2|la dernière journée|les <b>$2</b> derniers jours}} jusqu’à $5 le $4.',
 'rcnotefrom'                        => "Voici les modifications effectuées depuis le '''$2''' ('''$1''' au maximum).",
@@ -2158,7 +2162,7 @@ L’adresse électronique que vous avez indiquée dans [[Special:Preferences|vos
 'defemailsubject'      => 'Courriel de {{SITENAME}}',
 'usermaildisabled'     => 'L’envoi de courriels entre utilisateurs est désactivé',
 'usermaildisabledtext' => 'Vous ne pouvez pas envoyer de courriels à d’autres utilisateurs sur ce wiki',
-'noemailtitle'         => 'Aucune adresse électronique',
+'noemailtitle'         => 'Aucune adresse de courriel',
 'noemailtext'          => 'Cet utilisateur n’a pas spécifié une adresse de courriel valide.',
 'nowikiemailtitle'     => 'Pas de courriel autorisé',
 'nowikiemailtext'      => 'Cet utilisateur a choisi de ne pas recevoir de courriel de la part d’autre utilisateurs.',
@@ -3603,5 +3607,9 @@ Entrez le nom du fichier sans le préfixe « {{ns:file}}: ».',
 'htmlform-submit'              => 'Soumettre',
 'htmlform-reset'               => 'Défaire les modifications',
 'htmlform-selectorother-other' => 'Autre',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 avec recherche en texte intégral supportée',
+'sqlite-no-fts'  => '$1 sans recherche en texte intégral supportée',
 
 );

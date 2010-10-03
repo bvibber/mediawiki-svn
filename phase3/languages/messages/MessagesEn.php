@@ -295,6 +295,7 @@ $magicWords = array(
 	'nse'                    => array( 0,    'NSE:'                   ),
 	'localurl'               => array( 0,    'LOCALURL:'              ),
 	'localurle'              => array( 0,    'LOCALURLE:'             ),
+	'linkurl'                => array( 0,    'LINKURL:'               ),
 	'articlepath'            => array( 0,	 'ARTICLEPATH'            ),
 	'server'                 => array( 0,    'SERVER'                 ),
 	'servername'             => array( 0,    'SERVERNAME'             ),
@@ -2006,14 +2007,9 @@ You can also choose to let others contact you through your user or talk page wit
 'recentchanges-legend'              => 'Recent changes options',
 'recentchangestext'                 => 'Track the most recent changes to the wiki on this page.',
 'recentchanges-feed-description'    => 'Track the most recent changes to the wiki in this feed.',
-'recentchanges-label-legend'        => 'Legend: $1.',
-'recentchanges-legend-newpage'      => '$1 - new page',
 'recentchanges-label-newpage'       => 'This edit created a new page',
-'recentchanges-legend-minor'        => '$1 - minor edit',
 'recentchanges-label-minor'         => 'This is a minor edit',
-'recentchanges-legend-bot'          => '$1 - bot edit',
 'recentchanges-label-bot'           => 'This edit was performed by a bot',
-'recentchanges-legend-unpatrolled'  => '$1 - unpatrolled edit',
 'recentchanges-label-unpatrolled'   => 'This edit has not yet been patrolled',
 'rcnote'                            => "Below {{PLURAL:$1|is '''1''' change|are the last '''$1''' changes}} in the last {{PLURAL:$2|day|'''$2''' days}}, as of $5, $4.",
 'rcnotefrom'                        => "Below are the changes since '''$2''' (up to '''$1''' shown).",
@@ -4375,5 +4371,9 @@ This site is experiencing technical difficulties.',
 'htmlform-submit'              => 'Submit',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 with full-text search support',
+'sqlite-no-fts'  => '$1 without full-text search support',
 
 );

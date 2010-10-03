@@ -244,7 +244,7 @@ $messages = array(
 'tog-editsection'             => 'Rediger avsnitt ved hjelp av [rediger]-lenke',
 'tog-editsectiononrightclick' => 'Rediger avsnitt ved å høyreklikke på avsnittsoverskrift (JavaScript)',
 'tog-showtoc'                 => 'Vis innholdsfortegnelse (for sider med mer enn tre seksjoner)',
-'tog-rememberpassword'        => 'Husk meg på denne datamaskinen (i maks $1 {{PLURAL:$1|dag|dager}})',
+'tog-rememberpassword'        => 'Husk meg i denne nettleseren (i høyst $1 {{PLURAL:$1|dag|dager}})',
 'tog-watchcreations'          => 'Overvåk sider jeg oppretter',
 'tog-watchdefault'            => 'Overvåk alle sider jeg redigerer',
 'tog-watchmoves'              => 'Overvåk sider jeg flytter',
@@ -463,6 +463,9 @@ For mange brukere forsøker å se denne siden.
 Vennligst vent en stund før du prøver å besøke denne siden på nytt.
 
 $1',
+'pool-timeout'      => 'Tidsavbudd mens man ventet på låsing',
+'pool-queuefull'    => 'Køen er full',
+'pool-errorunknown' => 'Ukjent feil',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Om {{SITENAME}}',
@@ -696,6 +699,11 @@ Du kan ignorere denne beskjeden dersom kontoen ble opprettet ved en feil.',
 'login-throttled'            => 'Du har prøvd å logge inn med denne kontoen for mange ganger. Vent før du prøver igjen.',
 'loginlanguagelabel'         => 'Språk: $1',
 'suspicious-userlogout'      => 'Din forespørsel om å logge ut ble nektet fordi den så ut til å ha bli sendt av en ødelagt nettleser eller en mellomtjener.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Syntaks er som følger:
+#   * Alt fra tegnet «#» til enden av linja er en kommentar
+#   * Hver ikke-tomme linje er en IP-adresse som er unntatt hastighetsbegrensningen
+ #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Passordstyrke: $1',
@@ -1134,7 +1142,8 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'compareselectedversions'  => 'Sammenlign valgte revisjoner',
 'showhideselectedversions' => 'Vis/skjul valgte versjoner',
 'editundo'                 => 'angre',
-'diff-multi'               => '({{PLURAL:$1|Én mellomrevisjon|$1 mellomrevisjoner}} ikke vist.)',
+'diff-multi'               => '({{PLURAL:$1|Én mellomrevisjon|$1 mellomrevisjoner}} av {{PLURAL:$2|én bruker|$2 brukere}} vises ikke)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Én mellomrevisjon|$1 mellomrevisjoner}} av mer enn $2 {{PLURAL:$2|bruker|brukere}} vises ikke)',
 
 # Search results
 'searchresults'                    => 'Søkeresultat',
@@ -1480,14 +1489,9 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'recentchanges-legend'              => 'Alternativ for siste endringer',
 'recentchangestext'                 => 'Vis de siste endringene til denne siden',
 'recentchanges-feed-description'    => 'Følg med på siste endringer i denne wikien med denne matingen.',
-'recentchanges-label-legend'        => 'Forklaring: $1.',
-'recentchanges-legend-newpage'      => '$1 – ny side',
 'recentchanges-label-newpage'       => 'Denne redigeringen opprettet en ny side',
-'recentchanges-legend-minor'        => '$1 – mindre endring',
 'recentchanges-label-minor'         => 'Dette er en mindre endring',
-'recentchanges-legend-bot'          => '$1 – botendring',
 'recentchanges-label-bot'           => 'Denne redigeringen ble gjort av en bot',
-'recentchanges-legend-unpatrolled'  => '$1 – upatruljert endring',
 'recentchanges-label-unpatrolled'   => 'Denne redigeringen har ikke blitt patruljert ennå',
 'rcnote'                            => "Nedenfor vises {{PLURAL:$1|'''1''' endring|de siste '''$1''' endringene}} fra {{PLURAL:$2|det siste døgnet|de siste '''$2''' døgnene}}, per $5 $4.",
 'rcnotefrom'                        => "Nedenfor er endringene fra '''$2''' (opp til '''$1''' vises).",
@@ -3445,5 +3449,9 @@ Skriv inn filnavn uten «{{ns:file}}:»-prefikset.',
 'htmlform-submit'              => 'Lagre',
 'htmlform-reset'               => 'Omgjør endringer',
 'htmlform-selectorother-other' => 'Andre',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 med støtte for fulltekstsøk',
+'sqlite-no-fts'  => '$1 uten støtte for fulltekstsøk',
 
 );

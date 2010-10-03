@@ -101,8 +101,10 @@ class Message {
 	 * @return Message: $this
 	 */
 	public function __construct( $key, $params = array() ) {
+		global $wgLang;
 		$this->key = $key;
 		$this->parameters = array_values( $params );
+		$this->language = $wgLang;
 	}
 
 	/**
@@ -125,7 +127,8 @@ class Message {
 	 * @return Message: $this
 	 */
 	public function params( /*...*/ ) {
-		$this->parameters = array_merge( $this->parameters, array_values( func_get_args() ) );
+		$args_values = array_values( func_get_args() );
+		$this->parameters = array_merge( $this->parameters, $args_values );
 		return $this;
 	}
 
@@ -156,7 +159,9 @@ class Message {
 		if( $lang instanceof Language ){
 			$this->language = $lang;
 		} elseif ( is_string( $lang ) ) {
-			$this->language = Language::factory( $lang );
+			if( $this->language->getCode() != $lang ) {
+				$this->language = Language::factory( $lang );
+			}
 		} else {
 			$type = gettype( $lang );
 			throw new MWException( __METHOD__ . " must be "
@@ -172,8 +177,9 @@ class Message {
 	 * @return Message: $this
 	 */
 	public function inContentLanguage() {
+		global $wgContLang;
 		$this->interface = false;
-		$this->language = null;
+		$this->language = $wgContLang;
 		return $this;
 	}
 
@@ -264,7 +270,7 @@ class Message {
 
 	/**
 	 * Returns the message text. {{-transformation is done and the result
-	 * is excaped excluding any raw parameters.
+	 * is escaped excluding any raw parameters.
 	 * @return String: Escaped message text.
 	 */
 	public function escaped() {
@@ -309,8 +315,8 @@ class Message {
 	 * @return Wikitext parsed into HTML
 	 */
 	protected function parseText( $string ) {
-		global $wgOut;
-		if ( $this->language !== null ) {
+		global $wgOut, $wgLang, $wgContLang;
+		if ( $this->language !== $wgLang && $this->language !== $wgContLang ) {
 			# FIXME: remove this limitation
 			throw new MWException( 'Can only parse in interface or content language' );
 		}

@@ -55,9 +55,8 @@ window.mediaWiki = new ( function( $ ) {
 		 * An object which allows single and multiple get/set/exists functionality on a list of key / value pairs
 		 * 
 		 * @param {boolean} global whether to get/set/exists values on the window object or a private object
-		 * @param {function} parser function to perform extra processing before while getting a value which accepts
-		 * value and options parameters where value is a string to be parsed and options is an object of options for the
-		 * parser
+		 * @param {function} parser function to perform extra processing; in the form of function( value, options )
+		 * where value is the data to be parsed and options is additional data passed through to the parser
 		 */
 		'configuration': function( global, parser ) {
 			
@@ -87,7 +86,7 @@ window.mediaWiki = new ( function( $ ) {
 			this.get = function( selection, options ) {
 				if ( typeof selection === 'object' ) {
 					var results = {};
-					for ( s in selection ) {
+					for ( var s in selection ) {
 						if ( selection.hasOwnProperty( s ) ) {
 							if ( typeof s === 'string' ) {
 								return that.get( values[s], selection[s] );
@@ -230,24 +229,18 @@ window.mediaWiki = new ( function( $ ) {
 		/* Private Methods */
 		
 		/**
-		 * Generates an ISO8601 string from a UNIX timestamp
+		 * Generates an ISO8601 "basic" string from a UNIX timestamp
 		 */
 		function formatVersionNumber( timestamp ) {
-			var date = new Date();
-			date.setTime( timestamp * 1000 );
-			function pad1( n ) {
-				return n < 10 ? '0' + n : n
+			function pad( a, b, c ) {
+				return [a < 10 ? '0' + a : a, b < 10 ? '0' + b : b, c < 10 ? '0' + c : c].join( '' );
 			}
-			function pad2( n ) {
-				return n < 10 ? '00' + n : ( n < 100 ? '0' + n : n );     
-			}
-			return date.getUTCFullYear() + '-' +
-				pad1( date.getUTCMonth() + 1 ) + '-' +
-				pad1( date.getUTCDate() ) + 'T' +
-				pad1( date.getUTCHours() ) + ':' +
-				pad1( date.getUTCMinutes() ) + ':' +
-				pad1( date.getUTCSeconds() ) +
-				'Z';
+			var d = new Date()
+			d.setTime( timestamp * 1000 );
+			return [
+				pad( d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate() ), 'T',
+				pad( d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds() ), 'Z'
+			].join( '' );
 		}
 		
 		/**
@@ -502,16 +495,27 @@ window.mediaWiki = new ( function( $ ) {
 						);
 					}
 				} else {
-					// Calculate the highest timestamp
-					var version = 0;
+					// Split into groups
+					var groups = {};
 					for ( var b = 0; b < batch.length; b++ ) {
-						if ( registry[batch[b]].version > version ) {
-							version = registry[batch[b]].version;
+						var group = registry[batch[b]].group;
+						if ( !( group in groups ) ) {
+							groups[group] = [];
 						}
+						groups[group][groups[group].length] = batch[b];
 					}
-					requests[requests.length] = $.extend(
-						{ 'modules': batch.join( '|' ), 'version': formatVersionNumber( version ) }, base
-					);
+					for ( var group in groups ) {
+						// Calculate the highest timestamp
+						var version = 0;
+						for ( var g = 0; g < groups[group].length; g++ ) {
+							if ( registry[groups[group][g]].version > version ) {
+								version = registry[groups[group][g]].version;
+							}
+						}
+						requests[requests.length] = $.extend(
+							{ 'modules': groups[group].join( '|' ), 'version': formatVersionNumber( version ) }, base
+						);
+					}
 				}
 				// Clear the batch - this MUST happen before we append the script element to the body or it's
 				// possible that the script will be locally cached, instantly load, and work the batch again,
@@ -541,7 +545,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * Registers a module, letting the system know about it and it's dependencies. loader.js files contain calls
 		 * to this function.
 		 */
-		this.register = function( module, version, dependencies, status ) {
+		this.register = function( module, version, dependencies, group ) {
 			// Allow multiple registration
 			if ( typeof module === 'object' ) {
 				for ( var m = 0; m < module.length; m++ ) {
@@ -557,12 +561,13 @@ window.mediaWiki = new ( function( $ ) {
 			if ( typeof module !== 'string' ) {
 				throw new Error( 'module must be a string, not a ' + typeof module );
 			}
-			if ( typeof registry[module] !== 'undefined' && typeof status === 'undefined' ) {
+			if ( typeof registry[module] !== 'undefined' ) {
 				throw new Error( 'module already implemeneted: ' + module );
 			}
 			// List the module as registered
 			registry[module] = {
-				'state': typeof status === 'string' ? status : 'registered',
+				'state': 'registered',
+				'group': typeof group === 'string' ? group : null,
 				'dependencies': [],
 				'version': typeof version !== 'undefined' ? parseInt( version ) : 0
 			};
@@ -636,7 +641,7 @@ window.mediaWiki = new ( function( $ ) {
 			dependencies = resolve( dependencies );
 			// If all dependencies are met, execute ready immediately
 			if ( filter( ['ready'], dependencies ).compare( dependencies ) ) {
-				if ( typeof ready !== 'function' ) {
+				if ( typeof ready === 'function' ) {
 					ready();
 				}
 			}
@@ -670,12 +675,12 @@ window.mediaWiki = new ( function( $ ) {
 				if ( modules.substr( 0, 7 ) == 'http://' || modules.substr( 0, 8 ) == 'https://' ) {
 					if ( type === 'text/css' ) {
 						setTimeout(  function() {
-							$( 'head' ).append( '<link rel="stylesheet" type="text/css" href="' + modules + '" />' );
+							$( 'head' ).append( '<link rel="stylesheet" type="text/css" />' ).attr( 'href', modules );
 						}, 0 );
 						return true;
 					} else if ( type === 'text/javascript' || typeof type === 'undefined' ) {
 						setTimeout(  function() {
-							$( 'body' ).append( '<script type="text/javascript" src="' + modules + '"></script>' );
+							$( 'body' ).append( '<script type="text/javascript"></script>'  ).attr( 'src', modules )
 						}, 0 );
 						return true;
 					}
@@ -723,9 +728,10 @@ window.mediaWiki = new ( function( $ ) {
 				}
 				return;
 			}
-			if ( module in registry ) {
-				registry[module].state = state;
+			if ( !( module in registry ) ) {
+				that.register( module );
 			}
+			registry[module].state = state;
 		};
 		
 		/**

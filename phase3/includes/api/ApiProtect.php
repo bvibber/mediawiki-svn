@@ -42,8 +42,6 @@ class ApiProtect extends ApiBase {
 		global $wgUser, $wgRestrictionLevels;
 		$params = $this->extractRequestParams();
 
-		$titleObj = null;
-
 		$titleObj = Title::newFromText( $params['title'] );
 		if ( !$titleObj ) {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
@@ -209,8 +207,12 @@ class ApiProtect extends ApiBase {
 		) );
 	}
 
+	public function needsToken() {
+		return true;
+	}
+
 	public function getTokenSalt() {
-		return null;
+		return '';
 	}
 
 	protected function getExamples() {

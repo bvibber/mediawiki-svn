@@ -437,6 +437,9 @@ Te veel gebruikers probeer om na hierdie bladsy te kyk.
 Wag asseblief 'n rukkie voordat u weer probeer om die bladsy op te roep.
 
 $1",
+'pool-timeout'      => "Die maksimum wagtyd vir 'n databasisversperring is oorskry.",
+'pool-queuefull'    => 'Die poel se wagtou is vol',
+'pool-errorunknown' => 'Onbekende fout',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Inligting oor {{SITENAME}}',
@@ -680,6 +683,11 @@ Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
 Wag asseblief alvorens u weer probeer.",
 'loginlanguagelabel'         => 'Taal: $1',
 'suspicious-userlogout'      => "U versoek om af te teken is geïgnoreer omdat dit lyk asof dit deur 'n gebreekte webleser of instaanbediener gestuur is.",
+'ratelimit-excluded-ips'     => ' #<!-- los hierdie reël soos hy is --> <pre>
+# Die sintaks is as volg:
+#   * Alle teks vanaf die karakter "#" tot die einde van die reëls word as \'n opmerking gesien
+#   * Elke nie-leë reël is \'n IP-adres waarop geen snelheidsbeperkings van toepassing is nie
+ #</pre> <!-- laat hierdie reël soos hy is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Geskatte wagwoordsterkte: $1',
@@ -1125,7 +1133,8 @@ Let op dat die gebruik van navigasieskakels hierdie kolom se waardes sal herstel
 'compareselectedversions'  => 'Vergelyk gekose weergawes',
 'showhideselectedversions' => 'Wys/versteek gekose weergawes',
 'editundo'                 => 'maak ongedaan',
-'diff-multi'               => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} word nie gewys nie.)',
+'diff-multi'               => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} deur {{PLURAL:$2|een gebruiker|$2 gebruikers}} word nie gewys nie)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Een tussenin wysiging|$1 tussenin wysigings}} deur meer as $2 {{PLURAL:$2|gebruiker|gebruikers}} nie gewys nie)',
 
 # Search results
 'searchresults'                    => 'soekresultate',
@@ -1473,14 +1482,9 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'recentchanges-legend'              => 'Opsies vir onlangse wysigings',
 'recentchangestext'                 => 'Volg die mees onlangse wysigings aan die wiki op die bladsy.',
 'recentchanges-feed-description'    => 'Spoor die mees onlangse wysigings op die wiki na in die voer.',
-'recentchanges-label-legend'        => 'Sleutel: $1.',
-'recentchanges-legend-newpage'      => '$1 - nuwe bladsy',
 'recentchanges-label-newpage'       => "Met die wysiging is 'n nuwe bladsy geskep",
-'recentchanges-legend-minor'        => '$1 - klein wysiging',
 'recentchanges-label-minor'         => "Hierdie is 'n klein wysiging",
-'recentchanges-legend-bot'          => '$1 - robotwysiging',
 'recentchanges-label-bot'           => "Hierdie wysiging was deur 'n bot uitgevoer",
-'recentchanges-legend-unpatrolled'  => '$1 - ongekontroleerde wysiging',
 'recentchanges-label-unpatrolled'   => 'Die wysiging is nog nie gekontroleer nie',
 'rcnote'                            => "Hier volg die laaste {{PLURAL:$1|'''$1''' wysiging|'''$1''' wysigings}} vir die afgelope {{PLURAL:$2|dag|'''$2''' dae}}, soos vanaf $4, $5.",
 'rcnotefrom'                        => 'Hier onder is die wysigings sedert <b>$2</b> (tot by <b>$1</b> word gewys).',
@@ -3428,5 +3432,9 @@ Verskaf die lêernaam sonder die "{{ns:file}}:" voorvoegsel.',
 'htmlform-submit'              => 'Dien in',
 'htmlform-reset'               => 'Maak wysigings ongedaan',
 'htmlform-selectorother-other' => 'Ander',
+
+# SQLite database support
+'sqlite-has-fts' => 'Weergawe $1 met ondersteuning vir vol-teks soektogte ("full-text search")',
+'sqlite-no-fts'  => 'Weergawe $1 sonder ondersteuning vir vol-teks soektogte ("full-text search")',
 
 );

@@ -1522,14 +1522,9 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'recentchanges-legend'              => 'Tùy chọn thay đổi gần đây',
 'recentchangestext'                 => 'Xem các thay đổi gần đây nhất tại wiki trên trang này.',
 'recentchanges-feed-description'    => 'Theo dõi các thay đổi gần đây nhất của wiki dùng feed này.',
-'recentchanges-label-legend'        => 'Giải thích: $1.',
-'recentchanges-legend-newpage'      => '$1 - trang mới',
 'recentchanges-label-newpage'       => 'Bản sửa này tạo ra trang mới',
-'recentchanges-legend-minor'        => '$1 - sửa đổi nhỏ',
 'recentchanges-label-minor'         => 'Đây là một sửa đổi nhỏ',
-'recentchanges-legend-bot'          => '$1 - sửa đổi bot',
 'recentchanges-label-bot'           => 'Sửa đổi này do bot thực hiện',
-'recentchanges-legend-unpatrolled'  => '$1 - sửa đổi chưa tuần tra',
 'recentchanges-label-unpatrolled'   => 'Sửa đổi này chưa được tuần tra',
 'rcnote'                            => "Dưới đây là {{PLURAL:$1|'''1''' thay đổi|'''$1''' thay đổi gần nhất}} trong {{PLURAL:$2|ngày qua|'''$2''' ngày qua}}, tính tới $5, $4.",
 'rcnotefrom'                        => "Thay đổi từ '''$2''' (hiển thị tối đa '''$1''' thay đổi).",
@@ -2946,7 +2941,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 * focallength',
 
 # EXIF tags
-'exif-imagewidth'                  => 'Bề ngang',
+'exif-imagewidth'                  => 'Chiều ngang',
 'exif-imagelength'                 => 'Chiều cao',
 'exif-bitspersample'               => 'Bit trên mẫu',
 'exif-compression'                 => 'Kiểu nén',
@@ -2956,7 +2951,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'exif-planarconfiguration'         => 'Cách xếp dữ liệu',
 'exif-ycbcrsubsampling'            => 'Tỉ lệ lấy mẫu con của Y so với C',
 'exif-ycbcrpositioning'            => 'Định vị Y và C',
-'exif-xresolution'                 => 'Phân giải theo bề ngang',
+'exif-xresolution'                 => 'Phân giải theo chiều ngang',
 'exif-yresolution'                 => 'Phân giải theo chiều cao',
 'exif-resolutionunit'              => 'Đơn vị phân giải X và Y',
 'exif-stripoffsets'                => 'Vị trí dữ liệu hình',
@@ -2981,7 +2976,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'exif-colorspace'                  => 'Không gian màu',
 'exif-componentsconfiguration'     => 'Ý nghĩa thành phần',
 'exif-compressedbitsperpixel'      => 'Độ nén (bit/điểm)',
-'exif-pixelydimension'             => 'Bề ngang hợp lệ',
+'exif-pixelydimension'             => 'Chiều ngang hợp lệ',
 'exif-pixelxdimension'             => 'Chiều cao hợp lệ',
 'exif-makernote'                   => 'Ghi chú của nhà sản xuất',
 'exif-usercomment'                 => 'Lời bình của tác giả',
@@ -3542,5 +3537,9 @@ Hãy cho vào tên của tập tin, trừ tiền tố “{{ns:file}}:”.',
 'htmlform-submit'              => 'Đăng',
 'htmlform-reset'               => 'Hủy các thay đổi',
 'htmlform-selectorother-other' => 'Khác',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 với sự hỗ trợ tìm kiếm toàn văn',
+'sqlite-no-fts'  => '$1 không có hỗ trợ tìm kiếm toàn văn',
 
 );

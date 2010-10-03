@@ -349,6 +349,9 @@ Mae gormod o ddefnyddwyr am weld y dudalen hon ar unwaith.
 Arhoswch ychydig cyn ceisio mynd at y dudalen hon eto.
 
 $1',
+'pool-timeout'      => "Daeth yr amser i'w ben wrth aros am y clo",
+'pool-queuefull'    => "Mae'r cwt gydgyfrannu'n llawn",
+'pool-errorunknown' => 'Gwall anhysbys',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Ynglŷn â {{SITENAME}}',
@@ -582,6 +585,11 @@ Rhydd ichi anwybyddu\'r neges hon os mai camgymeriad oedd creu\'r cyfrif.',
 Oedwch ychydig cyn mentro eto.',
 'loginlanguagelabel'         => 'Iaith: $1',
 'suspicious-userlogout'      => 'Gwrthodwyd eich cais i allgofnodi oherwydd ei fod yn ymddangos mai gweinydd wedi torri neu ddirprwy gelc a anfonodd y cais.',
+'ratelimit-excluded-ips'     => " #<!-- gadewch y llinell hwn yn union fel y mae --> <pre>
+# Dylai'r cystrawen fod fel hyn:
+#   * Sylw yw popeth o gymeriad \"#\" hyd at ddiwedd y llinell
+#   * Cyfeiriad IP sy'n cael ei gau allan o'r cyfyngiad cyfradd yw pob un llinell sydd ddim yn wag
+ #</pre> <!-- gadewch y llinell hwn yn union fel y mae -->",
 
 # JavaScript password checks
 'password-strength'            => 'Amcangyfrif o gryfder y cyfrinair: $1',
@@ -859,7 +867,7 @@ Gall fod iddi gael ei dileu neu ei hailenwi.
 Gallwch [[Special:Search|chwilio'r]] wici am dudalennau eraill perthnasol.",
 
 # Revision deletion
-'rev-deleted-comment'         => '(sylwad wedi ei ddiddymu)',
+'rev-deleted-comment'         => '(sylw wedi ei ddileu)',
 'rev-deleted-user'            => '(enw defnyddiwr wedi ei ddiddymu)',
 'rev-deleted-event'           => '(tynnwyd gweithred y lòg)',
 'rev-deleted-user-contribs'   => '[tynnwyd enw defnyddiwr neu gyfeiriad IP i ffwrdd - ni ddangosir y golygiad ar y rhestr cyfraniadau]',
@@ -1372,14 +1380,9 @@ Gallwch hefyd adael i eraill anfon e-bost atoch trwy'r cyswllt ar eich tudalen d
 'recentchanges-legend'              => "Dewisiadau'r newidiadau diweddar",
 'recentchangestext'                 => "Dilynwch y newidiadau diweddaraf i'r wici ar y dudalen hon.",
 'recentchanges-feed-description'    => "Dilynwch y newidiadau diweddaraf i'r wici gyda'r porthiant hwn.",
-'recentchanges-label-legend'        => 'Eglurhad: $1.',
-'recentchanges-legend-newpage'      => '$1 - tudalen newydd',
 'recentchanges-label-newpage'       => 'Dechreuwyd tudalen newydd wrth olygu',
-'recentchanges-legend-minor'        => '$1 - mân olygiad',
 'recentchanges-label-minor'         => 'Mân olygiad',
-'recentchanges-legend-bot'          => '$1 - golygiad gan fot',
 'recentchanges-label-bot'           => 'Golygwyd gan fot',
-'recentchanges-legend-unpatrolled'  => '$1 - golygiad heb dderbyn ymweliad patrôl eto',
 'recentchanges-label-unpatrolled'   => "Nid yw'r golygiad hwn wedi derbyn ymweliad patrôl eto",
 'rcnote'                            => "Isod mae'r '''$1''' newid diweddaraf yn ystod y {{PLURAL:$2|diwrnod|diwrnod|deuddydd|tridiau|'''$2''' diwrnod|'''$2''' diwrnod}} diwethaf, hyd at $5, $4.",
 'rcnotefrom'                        => "Isod rhestrir pob newid ers '''$2''' (hyd at '''$1''' ohonynt).",
@@ -1516,7 +1519,7 @@ Gwiriwch y gosodiad ar file_uploads.',
 'sourcefilename'              => "Enw'r ffeil wreiddiol:",
 'sourceurl'                   => 'URL y gwreiddiol:',
 'destfilename'                => 'Enw ffeil y cyrchfan:',
-'upload-maxfilesize'          => 'Maint mwyaf ffeil: $1',
+'upload-maxfilesize'          => 'Maint ffeil mwyaf: $1',
 'upload-description'          => 'Disgrifiad y ffeil',
 'upload-options'              => 'Dewisiadau uwchlwytho',
 'watchthisupload'             => 'Gwylier y ffeil hon',
@@ -1588,7 +1591,7 @@ Efallai yr hoffech rhoi cynnig arni ar adeg llai prysur.',
 
 'license'            => 'Trwyddedu:',
 'license-header'     => 'Trwyddedu',
-'nolicense'          => "Dim un wedi'i ddewis",
+'nolicense'          => 'Dim un a ddewiswyd',
 'license-nopreview'  => '(Dim rhagolwg ar gael)',
 'upload_source_url'  => " (URL dilys, ar gael i'r cyhoedd)",
 'upload_source_file' => ' (ffeil ar eich cyfrifiadur)',
@@ -3291,5 +3294,9 @@ Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 'htmlform-submit'              => 'Gosoder',
 'htmlform-reset'               => 'Datod y newidiadau',
 'htmlform-selectorother-other' => 'Arall',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 gyda chymorth chwilio yr holl destun',
+'sqlite-no-fts'  => '$1 heb gymorth chwiliad yr holl destun',
 
 );

@@ -52,7 +52,7 @@ class MessageCache {
 	 * better sample, but also takes longer to adapt changes. The counts
 	 * are aggregrated per day, regardless of the value of this variable.
 	 */
-	protected static $mAdaptiveDataAge = 604800;
+	protected static $mAdaptiveDataAge = 604800; // Is 7*24*3600
 
 	/**
 	 * Filter the tail of less used messages that are requested more seldom
@@ -546,6 +546,10 @@ class MessageCache {
 		}
 
 		$lang = wfGetLangObj( $langcode );
+		if ( !$lang ) {
+			throw new MWException( "Bad lang code $langcode given" );
+		}
+
 		$langcode = $lang->getCode();
 
 		$message = false;

@@ -72,11 +72,13 @@ class ShortPagesPage extends QueryPage {
 		# the page must exist for it to have been pulled out of the table
 		if( $this->isCached() ) {
 			$batch = new LinkBatch();
-			while( $row = $db->fetchObject( $res ) )
+			foreach ( $res as $row ) {
 				$batch->add( $row->namespace, $row->title );
+			}
 			$batch->execute();
-			if( $db->numRows( $res ) > 0 )
+			if ( $db->numRows( $res ) > 0 ) {
 				$db->dataSeek( $res, 0 );
+			}
 		}
 	}
 
@@ -101,7 +103,7 @@ class ShortPagesPage extends QueryPage {
 		$plink = $this->isCached()
 					? $skin->link( $title )
 					: $skin->linkKnown( $title );
-		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ), $wgLang->formatNum( htmlspecialchars( $result->value ) ) );
+		$size = wfMessage( 'nbytes', $wgLang->formatNum( $result->value ) )->escaped();
 
 		return $title->exists()
 				? "({$hlink}) {$dm}{$plink} {$dm}[{$size}]"

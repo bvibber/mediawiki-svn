@@ -155,14 +155,14 @@ $messages = array(
 'tog-editsection'             => 'Modifega de łe sesion tramite el cołegamento [modifega]',
 'tog-editsectiononrightclick' => 'Modifega de łe sesion tramite clic destro sol titoło (el richiede JavaScript)',
 'tog-showtoc'                 => "Mostra l'indexe par łe pajine con pì de 3 sesion",
-'tog-rememberpassword'        => 'Ricorda ła password so sto computer (el richiede de asetare i cookies) (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'tog-rememberpassword'        => 'Tiente in mente la me password so sto computer (par un massimo de $1 {{PLURAL:$1|zorno|zorni}})',
 'tog-watchcreations'          => 'Zonta łe pajine creae a i oservai spesałi',
 'tog-watchdefault'            => 'Zonta łe pajine modifegae a i oservai spesałi',
 'tog-watchmoves'              => 'Zonta łe pajine spostae a i oservai spesałi',
 'tog-watchdeletion'           => 'Zonta łe pajine scansełae a i oservai spesałi',
 'tog-previewontop'            => "Mostra l'anteprima sora ła caseła de modifega e no soto",
 'tog-previewonfirst'          => "Mostra l'anteprima par ła prima modifega",
-'tog-nocache'                 => 'Disativa ła "cache" par łe pajine',
+'tog-nocache'                 => 'Disativa ła cache par łe pajine del browser',
 'tog-enotifwatchlistpages'    => 'Segnałame via e-mail łe modifeghe a łe pajine oservae',
 'tog-enotifusertalkpages'     => 'Segnałame via e-mail łe modifeghe a ła me pajina de discusion',
 'tog-enotifminoredits'        => 'Segnałame via e-mail anca łe modifeghe minori',
@@ -554,6 +554,7 @@ L'acount el xè sta creà coretamente. No dismentegare de personałizare łe [[S
 'gotaccount'                 => "Te ghe zà n'aceso? '''$1'''.",
 'gotaccountlink'             => 'Entra',
 'createaccountmail'          => 'par e-mail',
+'createaccountreason'        => 'Motivassion:',
 'badretype'                  => 'Łe password inserie no e coinside tra loro.',
 'userexists'                 => 'El nome utente inserio xè zà utiłizà.
 Sceji on nome utente difarente.',
@@ -607,6 +608,15 @@ Se l\'acesso el xe stà creà par sbaglio, se pol ignorar sto messagio.',
 Spèta un tocheto prima de proàr da novo.',
 'loginlanguagelabel'         => 'Lengua: $1',
 'suspicious-userlogout'      => 'Ła to richiesta de disconesion xè sta negà parché e a senbra invià da on browser non funsionante o on proxy de caching.',
+
+# JavaScript password checks
+'password-strength'            => 'Stima de la robusteza de la password: $1',
+'password-strength-bad'        => 'TRISTA',
+'password-strength-mediocre'   => 'cussì cussì',
+'password-strength-acceptable' => "pole 'ndar ben",
+'password-strength-good'       => 'bona',
+'password-retype'              => 'Scrivi da novo la password',
+'password-retype-mismatch'     => 'La password no le corisponde',
 
 # Password reset dialog
 'resetpass'                 => 'Cànbia la password',
@@ -944,6 +954,8 @@ $1",
 'logdelete-failure'           => "'''No se riesse a inpostar la visibilità 'ntel registro:'''
 $1",
 'revdel-restore'              => 'Canbia ła visibilità',
+'revdel-restore-deleted'      => 'revision scancelà',
+'revdel-restore-visible'      => 'revision visibili',
 'pagehist'                    => 'Cronologia de la pagina',
 'deletedhist'                 => 'Cronologia scancelà',
 'revdelete-content'           => 'contenuto',
@@ -975,6 +987,14 @@ No ti gà acesso su de ela.',
 # Suppression log
 'suppressionlog'     => 'Registro dei ocultamenti',
 'suppressionlogtext' => "Qua soto se cata na lista de le ultime scancelazioni e blochi che riguarda contenuti sconti dai aministradori. Varda la [[Special:IPBlockList|lista dei IP blocà]] par védar l'elenco dei blochi atualmente ativi.",
+
+# Revision move
+'moverevlogentry'        => 'gà spostà {{PLURAL:$3|na revision|$3 revision}} da $1 a $2',
+'revisionmove'           => 'Sposta revision da "$1"',
+'revmove-reasonfield'    => 'Motivassion:',
+'revmove-titlefield'     => 'Pagina de destinassion:',
+'revmove-badparam-title' => 'Parametri mia validi',
+'revmove-nullmove-title' => 'Titolo mia valido',
 
 # History merging
 'mergehistory'                     => 'Union cronologie',
@@ -1008,11 +1028,12 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 # Diffs
 'history-title'            => "Cronołosia de łe modifeghe de ''$1''",
 'difference'               => '(Difarense fra łe revision)',
+'difference-multipage'     => '(Difarensa tra le pagine)',
 'lineno'                   => 'Riga $1:',
 'compareselectedversions'  => 'Confronta łe version sełesionae',
 'showhideselectedversions' => 'Mostra/scondi version selessionà',
 'editundo'                 => 'anuła',
-'diff-multi'               => '({{PLURAL:$1|Una revision intermedia non mostrà|$1 revision intermedie non mostrà}}.)',
+'diff-multi'               => '({{PLURAL:$1|Una revision intermedia|$1 revision intermedie}} de {{PLURAL:$2|un utente|$2 utenti}} mia mostrà)',
 
 # Search results
 'searchresults'                    => 'Risultati de ła riserca',
@@ -1349,14 +1370,9 @@ In più te pol anca farte contatar da altri tramite la to pagina personale o la 
 'recentchanges-legend'              => 'Opsion ulteme modifeghe',
 'recentchangestext'                 => 'Sta pàxena la presenta łe ultime modifeghe aportàe ai contenuti de el sito.',
 'recentchanges-feed-description'    => 'Sto feed riporta łe modifeghe pì resenti a i contenui del sito.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - pagina nova',
 'recentchanges-label-newpage'       => 'Sta modifica la ga creà na pagina nova',
-'recentchanges-legend-minor'        => '$1 - modifica picenina',
 'recentchanges-label-minor'         => 'Sta qua la xe na modifica picenina',
-'recentchanges-legend-bot'          => '$1 - modifica bot',
 'recentchanges-label-bot'           => 'Sta modifica el la ga fata un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - modifica mia verificà',
 'recentchanges-label-unpatrolled'   => 'Sta modifica no la xe stà gnancora verificà',
 'rcnote'                            => "De seguito {{PLURAL:$1|xè elencà ła modifega pì resente aportà|xè elencae łe '''$1''' modifeghe pì resenti aportae}} al sito {{PLURAL:$2|ne łe ulteme 24 ore|ne i scorsi '''$2''' jorni}}; i dati xè ajornai a łe $5 del $4.",
 'rcnotefrom'                        => " Qui di seguito sono elencate le modifiche da '''$2''' (fino a '''$1''').",
@@ -1595,7 +1611,7 @@ Qua soto vien mostrà la descrission presente in te la [$2 pàxena de descrissio
 'filerevert'                => 'Ripristina $1',
 'filerevert-legend'         => 'Ripristina file',
 'filerevert-intro'          => "Te stè par ripristinar el file '''[[Media:$1|$1]]''' a la [versione $4 del $2, $3].",
-'filerevert-comment'        => 'Comento:',
+'filerevert-comment'        => 'Motivassion:',
 'filerevert-defaultcomment' => 'Xe stà ripristinà la version del $1, $2',
 'filerevert-submit'         => 'Ripristina',
 'filerevert-success'        => "'''El file [[Media:$1|$1]]''' el xe stà ripristinà a la [$4 version del $2, $3].",
@@ -1881,6 +1897,7 @@ La e-mail che te ghè indicà ne le [[Special:Preferences|to preferense]] la veg
 # Watchlist
 'watchlist'            => 'Oservai spesałi',
 'mywatchlist'          => 'oservai spesałi',
+'watchlistfor2'        => 'De $1 $2',
 'nowatchlist'          => "No te ghè indicà pagine da tegner d'ocio.",
 'watchlistanontext'    => "Per vardar e modifegar l'ełenco de i osservati speciałi bisogna $1.",
 'watchnologin'         => 'Acesso mia efetuà',
@@ -2082,7 +2099,7 @@ Se dopo ła scancełazion xè stà creà na nova pàxena col stesso titoło, łe
 'undeleteviewlink'             => 'varda',
 'undeletereset'                => 'Reinposta',
 'undeleteinvert'               => 'Inverti selession',
-'undeletecomment'              => 'Comento:',
+'undeletecomment'              => 'Motivassion:',
 'undeletedarticle'             => 'ga recuperà "[[$1]]"',
 'undeletedrevisions'           => '{{PLURAL:$1|Una revision recuperà|$1 revision recuperà}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|Una revision|$1 revision}} e $2 file recuperà',
@@ -2523,6 +2540,7 @@ Salvalo sul to computer e càrghelo qua.',
 'tooltip-upload'                  => 'Intaca el caricamento',
 'tooltip-rollback'                => '"Rollback" anuła łe me modifeghe a sta pajina de l\'ultimo contribudore co on soło clic.',
 'tooltip-undo'                    => '"Anuła" parmete de anułare sta modifega e apre el moduło de modifega en modałità de anteprima. Parmete de inserire na modivasion ne l\'ojeto de ła modifega.',
+'tooltip-preferences-save'        => 'Salve le preferense',
 
 # Metadata
 'nodublincore'      => 'Metadati Dublin Core RDF non ativi su sto server.',
@@ -3086,6 +3104,13 @@ Doparar l\'anteprima standard.',
 'version-hook-subscribedby'        => 'Sotoscrizioni',
 'version-version'                  => '(Version $1)',
 'version-license'                  => 'Licensa',
+'version-poweredby-credits'        => "Sta wiki la va con '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'altri',
+'version-license-info'             => "MediaWiki xe un software lìbaro; te pol redistribuirlo e/o modificarlo secondo i termini de la Licensa Publica Zeneral GNU publicà da la Free Software Foundation; secondo la version 2 de la Licensa, o (a scelta tua) una qualunque altra version sucessiva.
+
+MediaWiki el xe distribuìo sperando che el possa vegner utile, ma SENSA NISSUNA GARANSIA; sensa gnanca la garansia inplicita de COMERCIALIZASSION o de ADATAMENTO A UN USO PARTICOLARE. Varda la Licensa Publica Zeneral GNU par ulteriori detagli.
+
+Insieme co sto programa te dovaressi 'ver ricevùo na copia de la Licensa Publica Zeneral GNU; se nò, scrìveghe a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA o [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html và a lèzartela online].",
 'version-software'                 => 'Software instalà',
 'version-software-product'         => 'Prodoto',
 'version-software-version'         => 'Version',
@@ -3154,6 +3179,14 @@ Inserissi el nome del file senza el prefisso \"{{ns:file}}:\"",
 'tags-hitcount-header'    => 'Modifiche che gà dei tag',
 'tags-edit'               => 'modìfega',
 'tags-hitcount'           => '$1 {{PLURAL:$1|modìfega|modìfeghe}}',
+
+# Special:ComparePages
+'comparepages'   => 'Confronta le pagine',
+'compare-page1'  => 'Pagina 1',
+'compare-page2'  => 'Pagina 2',
+'compare-rev1'   => 'Revisión 1',
+'compare-rev2'   => 'Revisión 2',
+'compare-submit' => 'Confronta',
 
 # Database error messages
 'dberr-header'      => 'Sta wiki la ga un problema',

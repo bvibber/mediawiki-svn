@@ -116,7 +116,7 @@ class ApiUpload extends ApiBase {
 			// Status request for an async upload
 			$sessionData = UploadFromUrlJob::getSessionData( $this->mParams['statuskey'] );
 			if ( !isset( $sessionData['result'] ) ) {
-				$this->dieUsage();	
+				$this->dieUsage( 'No result in session data', 'missingresult');
 			}
 			if ( $sessionData['result'] == 'Warning' ) {
 				$sessionData['warnings'] = $this->transformWarnings( $sessionData['warnings'] );
@@ -285,7 +285,7 @@ class ApiUpload extends ApiBase {
 
 		if ( isset( $warnings['duplicate'] ) ) {
 			$dupes = array();
-			foreach ( $warnings['duplicate'] as $key => $dupe ) {
+			foreach ( $warnings['duplicate'] as $dupe ) {
 				$dupes[] = $dupe->getName();
 			}
 			$this->getResult()->setIndexedTagName( $dupes, 'duplicate' );
@@ -457,6 +457,10 @@ class ApiUpload extends ApiBase {
 			array( 'code' => 'stashfailed', 'info' => 'Stashing temporary file failed' ),
 			array( 'code' => 'internal-error', 'info' => 'An internal error occurred' ),
 		) );
+	}
+
+	public function needsToken() {
+		return true;
 	}
 
 	public function getTokenSalt() {

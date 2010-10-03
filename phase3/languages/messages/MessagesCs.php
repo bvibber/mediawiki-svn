@@ -579,6 +579,9 @@ Tuto stránku si právě prohlíží příliš mnoho uživatelů.
 Před tím, než ji zkusíte načíst znovu, chvíli počkejte.
 
 $1',
+'pool-timeout'      => 'Při čekání na zámek vypršel časový limit',
+'pool-queuefull'    => 'Fronta ve fondu je plná',
+'pool-errorunknown' => 'Neznámá chyba',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O&nbsp;{{grammar:6sg|{{SITENAME}}}}',
@@ -1600,14 +1603,9 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'recentchanges-legend'              => 'Možnosti posledních změn',
 'recentchangestext'                 => 'Sledujte poslední změny na {{grammar:6sg|{{SITENAME}}}} na této stránce.',
 'recentchanges-feed-description'    => 'Na tomto kanále sledujte poslední změny na {{grammar:6sg|{{SITENAME}}}}.',
-'recentchanges-label-legend'        => 'Legenda: $1',
-'recentchanges-legend-newpage'      => '$1 – nová stránka',
 'recentchanges-label-newpage'       => 'Touto editací byla založena nová stránka',
-'recentchanges-legend-minor'        => '$1 – malá editace',
 'recentchanges-label-minor'         => 'Toto je malá editace',
-'recentchanges-legend-bot'          => '$1 – editace bota',
 'recentchanges-label-bot'           => 'Tuto editaci provedl bot',
-'recentchanges-legend-unpatrolled'  => '$1 – neprověřená editace',
 'recentchanges-label-unpatrolled'   => 'Tato změna dosud nebyla prověřena',
 'rcnote'                            => 'Níže {{plural:$1|je poslední|jsou poslední|je posledních}} <strong>$1</strong> {{plural:$1|změna|změny|změn}} za {{PLURAL:$2|poslední|poslední|posledních}} <strong>$2</strong> {{plural:$2|den|dny|dnů}} před $4, $5.',
 'rcnotefrom'                        => 'Níže {{PLURAL:$1|je|jsou|je}} nejvýše <b>$1</b> {{PLURAL:$1|změna|změny|změn}} od <b>$2</b>.',
@@ -1872,7 +1870,7 @@ Níže jsou zobrazeny informace, které obsahuje jeho [$2 tamější stránka s 
 'filepage-nofile-link'      => 'Soubor s tímto názvem neexistuje, ale můžete [$1 ho načíst].',
 'uploadnewversion-linktext' => 'Načíst novou verzi tohoto souboru',
 'shared-repo-from'          => 'z {{grammar:2sg|$1}}',
-'shared-repo'               => 'sdílené úložiště',
+'shared-repo'               => 'sdíleného úložiště',
 
 # File reversion
 'filerevert'                => 'Vrátit zpět $1',
@@ -3581,5 +3579,9 @@ Zadejte jméno souboru bez označení "{{ns:file}}:".',
 'htmlform-submit'              => 'Odeslat',
 'htmlform-reset'               => 'Vrátit změny',
 'htmlform-selectorother-other' => 'Jiná hodnota',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 s podporou plnotextového vyhledávání',
+'sqlite-no-fts'  => '$1 bez podpory plnotextového vyhledávání',
 
 );

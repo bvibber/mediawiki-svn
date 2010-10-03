@@ -148,14 +148,19 @@ class DatabaseSqlite extends DatabaseBase {
 	 * @return String
 	 */
 	function getFulltextSearchModule() {
+		static $cachedResult = null;
+		if ( $cachedResult !== null ) {
+			return $cachedResult;
+		}
+		$cachedResult = false;
 		$table = 'dummy_search_test';
 		$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
 
 		if ( $this->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {
 			$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
-			return 'FTS3';
+			$cachedResult = 'FTS3';
 		}
-		return false;
+		return $cachedResult;
 	}
 
 	/**
@@ -266,6 +271,8 @@ class DatabaseSqlite extends DatabaseBase {
 	 * Use MySQL's naming (accounts for prefix etc) but remove surrounding backticks
 	 */
 	function tableName( $name ) {
+		// table names starting with sqlite_ are reserved
+		if ( strpos( $name, 'sqlite_' ) === 0 ) return $name;
 		return str_replace( '`', '', parent::tableName( $name ) );
 	}
 
@@ -467,6 +474,13 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
+	 * @return string User-friendly database information
+	 */
+	public function getServerInfo() {
+		return wfMsg( $this->getFulltextSearchModule() ? 'sqlite-has-fts' : 'sqlite-no-fts', $this->getServerVersion() );
+	}
+
+	/**
 	 * Get information about a given field
 	 * Returns false if the field does not exist.
 	 */
@@ -540,8 +554,8 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
-	 * Called by the installer script (when modified according to the MediaWikiLite installation instructions)
-	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using dbsource (which calls db->sourceFile)
+	 * Called by the installer script
+	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using DatabaseBase::sourceFile()
 	 */
 	public function setup_database() {
 		global $IP;

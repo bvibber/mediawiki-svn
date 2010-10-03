@@ -372,7 +372,7 @@ po [{{fullurl:{{FULLPAGENAME}}|action=edit}} chanjya an folen-ma]</span>.',
 'permissionserrorstext-withaction' => 'Nyns eus cubmyes dhewgh dhe $2, rag an {{PLURAL:$1|cheson|chesonys}} a-sew:',
 
 # "Undo" feature
-'undo-summary' => 'Diswul amendyans $1 gans [[Special:Contributions/$2|$2]] ([[User talk:$2|keskows]])',
+'undo-summary' => 'Diswras amendyans $1 gans [[Special:Contributions/$2|$2]] ([[User talk:$2|kescows]])',
 
 # History pages
 'viewpagelogs'           => 'Gweles covnotednow an folen-ma',
@@ -537,11 +537,7 @@ Gwrewgh assaya dhe rag-gorra agas govyn gen ''all:'' rag whila yn pub le (a-bart
 'recentchanges-legend'           => 'Dewisyansow an chanjyow a-dhiwedhes',
 'recentchangestext'              => "Sewya an chanjyow diwettha eus dhe'n wiki war'n folen-ma.",
 'recentchanges-feed-description' => "Sewya an chanjyow diwettha dhe'n wiki y'n feed-ma.",
-'recentchanges-label-legend'     => 'Alwhedh: $1.',
-'recentchanges-legend-newpage'   => '$1 - folen nowyth',
-'recentchanges-legend-minor'     => '$1 - chanj bian',
 'recentchanges-label-minor'      => 'Hemm yw chanj bian',
-'recentchanges-legend-bot'       => '$1 - chanj gans bot',
 'rclistfrom'                     => 'Disqwedhes chanjyow nowyth ow talleth a-dhia $1.',
 'rcshowhideminor'                => '$1 chanjyow bian',
 'rcshowhidebots'                 => '$1 botow',
@@ -704,7 +700,7 @@ Yth yw folednow eus war agas [[Special:Watchlist|rol golyas]] yn '''tew'''.",
 'actioncomplete'        => 'An gwryans yw cowlwres',
 'deletedtext'           => '"<nowiki>$1</nowiki>" yw dileys.
 Gwelewgh $2 rag covath a dhileansow a-dhiwedhes.',
-'deletedarticle'        => 'a dhileys "[[$1]]"',
+'deletedarticle'        => 'a dhileas "[[$1]]"',
 'dellogpage'            => 'Covnoten dileyansow',
 'deletecomment'         => 'Acheson:',
 'deleteotherreason'     => 'Acheson aral/keworransel:',
@@ -722,7 +718,7 @@ Gwelewgh $2 rag covath a dhileansow a-dhiwedhes.',
 'protect_expiry_old'      => "Yma'n termyn diweth y'n termyn eus passyes.",
 'protect-level-sysop'     => 'Menysteryon hepken',
 'protect-summary-cascade' => 'ow froslabma',
-'protect-expiring'        => 'a wra diwedha $1 (UTC)',
+'protect-expiring'        => 'y whra diwedha $1 (UTC)',
 'restriction-type'        => 'Cubmyas:',
 'pagesize'                => '(bayt)',
 

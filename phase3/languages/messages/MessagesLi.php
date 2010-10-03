@@ -389,6 +389,9 @@ Te väöl gebroekers perberen óm dees pazjena te bekieke.
 Wach estebleef nag efkes veudet g'r óppernuuj toegank verzeuk te kriege toet dees pazjena.
 
 $1",
+'pool-timeout'      => "Timeout-wachte veur 't sloete",
+'pool-queuefull'    => 'De wachrie van de pool is vól',
+'pool-errorunknown' => 'Ónbekènde fout',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Euver {{SITENAME}}',
@@ -875,7 +878,7 @@ De door $3 opgegaeve reje is ''$2''",
 'page_last'              => 'lèste',
 'histlegend'             => 'Verklaoring aafkortinge: (wijz) = versjil mit actueile versie, (vörrige) = versjil mit vörrige versie, K = kleine verangering',
 'history-fieldset-title' => 'Door de historie blajere',
-'history-show-deleted'   => 'Nör gwösj',
+'history-show-deleted'   => 'Inkel eweggesjaf',
 'histfirst'              => 'Aajste',
 'histlast'               => 'Nuujste',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -1412,14 +1415,9 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'recentchanges-legend'              => 'Opties veur recènte verangeringe',
 'recentchangestext'                 => 'op dees pazjena kins doe de recènte verangeringe in deze wiki betrachte.',
 'recentchanges-feed-description'    => 'Volg de meis recente bewerkinge in deze wiki via deze feed.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - Nuuj pagina',
 'recentchanges-label-newpage'       => "Mit dees verangering is 'n nuuj pagina aangemaak",
-'recentchanges-legend-minor'        => '$1 - klein verangering',
 'recentchanges-label-minor'         => "Dit is 'n klein bewirking",
-'recentchanges-legend-bot'          => '$1 - botbewirking',
 'recentchanges-label-bot'           => "Dees bewirking is oetgeveurd door 'ne bot",
-'recentchanges-legend-unpatrolled'  => '$1 - ongekónterleerde bewirking',
 'recentchanges-label-unpatrolled'   => 'Dees bewirking is nog neet gekónterleerd',
 'rcnote'                            => "Hiejónger {{PLURAL:$1|steit de lètste bewirking|staon de lètste '''$1''' bewirkinge}} van de aafgeloupe {{PLURAL:$2|daag|'''$2''' daag}}, op $4, um $5.",
 'rcnotefrom'                        => "Verangeringe sins <b>$2</b> (mit 'n maximum van <b>$1</b> verangeringe).",
@@ -1858,7 +1856,7 @@ Controleer of se wellich n fout höbs gemaak bie de inveur.',
 'log-title-wildcard'   => "Zeuk pagina's die met deze naam beginne",
 
 # Special:AllPages
-'allpages'          => "Alle pazjena's",
+'allpages'          => "Alle pagina's",
 'alphaindexline'    => '$1 nao $2',
 'nextpage'          => 'Volgende pazjena ($1)',
 'prevpage'          => 'Vörge pazjena ($1)',
@@ -3098,9 +3096,9 @@ $1',
 
 # Delete conflict
 'deletedwhileediting' => "'''Waorsjoewing''': Dees pazjena is gewis naodats doe bis begós mit bewirke!",
-'confirmrecreate'     => "Gebroeker [[User:$1|$1]] ([[User talk:$1|euverlèk]]) heet dit artikel gewis naodats doe mèt bewirke begós mèt de rae:
+'confirmrecreate'     => "Gebroeker [[User:$1|$1]] ([[User talk:$1|euverlèk]]) heet dees pagina eweggesjaf naodats doe mèt bewirke begós mèt de rae:
 : ''$2''
-Bevèsteg estebleef dats te dees pazjena ech obbenuujts wils make.",
+Bevesteg estebleef dats te dees pazjena ech obbenuujts wils aanmake.",
 'recreate'            => 'Pazjena obbenuujts make',
 
 # action=purge
@@ -3296,5 +3294,9 @@ Gaef de bestandjsnaam zónger \'t "{{ns:file}}:" veurvoogsel.',
 'htmlform-submit'              => 'Slaon óp',
 'htmlform-reset'               => 'Maak verangeringe óngedaon',
 'htmlform-selectorother-other' => 'Anges',
+
+# SQLite database support
+'sqlite-has-fts' => 'Zeuk versie $1 mit óngersteuning veur "full-text"',
+'sqlite-no-fts'  => 'Zeuk versie $1 zónger óngersteuning veur "fulltext"',
 
 );

@@ -510,6 +510,9 @@ Príliš veľa používateľov sa pokúša zobraziť túto stránku.
 Prosím, počkajte chvíľu predtým, než sa pokúsite na túto stránku dostať znova.
 
 $1',
+'pool-timeout'      => 'Bol prekročený vyhradený čas čakania na zámok',
+'pool-queuefull'    => 'Front je plný',
+'pool-errorunknown' => 'Neznáma chyba',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O {{GRAMMAR:lokál|{{SITENAME}}}}',
@@ -751,6 +754,11 @@ Ak bol účet vytvorený omylom, túto správu môžete ignorovať.',
 Prosím, počkajte predtým, než to skúsite znova.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 'suspicious-userlogout'      => 'Vaša požiadavka odhlásiť sa bola zamietnutá, pretože to vyzerá, že ju poslal pokazený prehliadač alebo proxy server.',
+'ratelimit-excluded-ips'     => ' #<!-- ponechajte tento riadok presne tak, ako je --> <pre>
+# Syntax je nasledovná:
+#  * všetko od znaku „#“ po koniec riadka je komentár
+#  * každý neprázdny riadok je IP adresa vyňatá z obmedzení rýchlosti
+ #</pre> <!-- ponechajte tento riadok presne tak, ako je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Odhadovaná sila hesla: $1',
@@ -1204,7 +1212,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'showhideselectedversions' => 'Zobraziť/skryť vybrané revízie',
 'editundo'                 => 'vrátiť',
 'diff-multi'               => '{{PLURAL:$1|Jedna medziľahlá revízia|$1 medziľahlé revízie|$1 medziľahlých revízií}} od {{PLURAL:$2|jedného používateľa|$2 používateľov}} {{PLURAL:$1|nie je zobrazená|nie sú zobrazené|nie je zobrazených}}.',
-'diff-multi-manyusers'     => '($1 medziľahlých revízií od viac ako 100 používateľov nie je zobrazených)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|$1 medziľahlá revízia|$1 medziľahlé revízie|$1 medziľahlých revízií}} od viac ako {{PLURAL:$2|$2 používateľa|$2 používateľov}} {{PLURAL:$1|nie je zobrazená|nie sú zobrazené|nie je zobrazených}})',
 
 # Search results
 'searchresults'                    => 'Výsledky vyhľadávania',
@@ -1547,14 +1555,9 @@ Musí obsahovať menej ako $1 {{PLURAL:$1|znak|znaky|znakov}}.',
 'recentchanges-legend'              => 'Možnosti posledných zmien',
 'recentchangestext'                 => 'Pomocou tejto stránky sledujete posledné úpravy wiki.',
 'recentchanges-feed-description'    => 'Sledovať posledné úpravy tejto wiki týmto kanálom.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nová stránka',
 'recentchanges-label-newpage'       => 'Táto úprava vytvorila novú stránku.',
-'recentchanges-legend-minor'        => '$1 - drobná úprava',
 'recentchanges-label-minor'         => 'Toto je drobná úprava',
-'recentchanges-legend-bot'          => '$1 - úprava bota',
 'recentchanges-label-bot'           => 'Túto úpravy vykonal robot',
-'recentchanges-legend-unpatrolled'  => '$1 - nestrážená úprava',
 'recentchanges-label-unpatrolled'   => 'Táto úprava zatiaľ nebola strážená',
 'rcnote'                            => "Tu {{PLURAL:$1|je posledná úprava|sú posledné '''$1''' úpravy|je posledných '''$1''' úprav}} počas {{PLURAL:$2|posledného dňa|posledných '''$2''' dní}} z $4, $5.",
 'rcnotefrom'                        => "Nižšie sú zobrazené úpravy od '''$2''' (do '''$1''').",
@@ -3519,5 +3522,9 @@ Zadajte názov súboru bez predpony „{{ns:file}}:“.',
 'htmlform-submit'              => 'Odoslať',
 'htmlform-reset'               => 'Vrátiť zmeny',
 'htmlform-selectorother-other' => 'Iné',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 s podporou vyhľadávania v plnom texte',
+'sqlite-no-fts'  => '$1 bez podpory vyhľadávania v plnom texte',
 
 );

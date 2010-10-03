@@ -137,7 +137,7 @@ $messages = array(
 'tog-editsection'             => 'Atalak [aldatu] loturen bitartez aldatzeko aukera gaitu',
 'tog-editsectiononrightclick' => 'Atalen izenburuetan klik eginez atala<br />aldatzea gaitu (JavaScript)',
 'tog-showtoc'                 => 'Edukien taula erakutsi (3 goiburukotik gorako orrialdeentzako)',
-'tog-rememberpassword'        => 'Nire saioa ordenagailu honetan gogoratu ({{PLURAL:$1|egun baterako| $1 egunako}} gehienez)',
+'tog-rememberpassword'        => 'Nire saioa ordenagailu honetan gorde ({{PLURAL:$1|egun baterako| $1 egunerako}} gehienez)',
 'tog-watchcreations'          => 'Sortzen ditudan orrialdeak nire segimendu zerrendara gehitu',
 'tog-watchdefault'            => 'Aldatzen ditudan orrialdeak nire segimendu zerrendara gehitu',
 'tog-watchmoves'              => 'Izena aldatutako orrialdeak segimendu zerrendan erakutsi',
@@ -356,6 +356,7 @@ Erabiltzaile gehiegi ari da orrialde hau ikusi nahiean.
 Mesedez itxaron ezazu unetxo bat orrialde honetara berriz sartzen saiatu baino lehen.
 
 $1',
+'pool-errorunknown' => 'Errore ezezaguna',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}}(e)ri buruz',
@@ -1019,7 +1020,7 @@ Kontura zaitez nabigazio loturek, zutabea ezabatu dezakela.',
 'compareselectedversions'  => 'Hautatutako bertsioak alderatu',
 'showhideselectedversions' => 'Erakutsi/izkutatu aukeratutako berrikuspenak',
 'editundo'                 => 'desegin',
-'diff-multi'               => '({{PLURAL:$1|Ez da tarteko berrikuspen 1|Ez dira tarteko $1 berrikuspen}} erakusten.)',
+'diff-multi'               => '({{PLURAL:$1|Ez da tarteko berrikuspen bat|Ez dira tarteko $1 berrikuspen}} erakusten {{PLURAL:$2|lankide batena|$2 lankiderena}}.)',
 
 # Search results
 'searchresults'                    => 'Bilaketaren emaitzak',
@@ -1359,14 +1360,9 @@ Gainera beste lankideek zurekin kontakta dezakete zure lankide edo lankide_eztab
 'recentchanges-legend'              => 'Azken aldaketen aukerak',
 'recentchangestext'                 => 'Orrialde honetan wiki honetan egindako azken aldaketak erakusten dira.',
 'recentchanges-feed-description'    => 'Sindikazio honetan wikian eginiko azkeneko aldaketak jarrai daitezke.',
-'recentchanges-label-legend'        => 'Legenda: $1',
-'recentchanges-legend-newpage'      => '$1 - orrialde berria',
 'recentchanges-label-newpage'       => 'Aldaketa honek orrialde berri bat sortu du',
-'recentchanges-legend-minor'        => '$1 - aldaketa txikia',
 'recentchanges-label-minor'         => 'Hau aldaketa txikia da',
-'recentchanges-legend-bot'          => '$1 - bot aldaketa',
 'recentchanges-label-bot'           => 'Aldaketa hau bot batek egin du',
-'recentchanges-legend-unpatrolled'  => '$1 - patruilatu gabeko aldaketa',
 'recentchanges-label-unpatrolled'   => 'Aldaketa hau ez da oraindik patruilatua izan',
 'rcnote'                            => "Beheko azken {{PLURAL:$2|eguneko|'''$2''' egunetako}} azken {{PLURAL:$1|aldaketa|'''$1''' aldaketak}} hurrengo datan egin ziren: $5, $4.",
 'rcnotefrom'                        => 'Jarraian azaltzen diren aldaketak data honetatik aurrerakoak dira: <b>$2</b> (gehienez <b>$1</b> erakusten dira).',
@@ -1413,12 +1409,12 @@ Gainera beste lankideek zurekin kontakta dezakete zure lankide edo lankide_eztab
 'upload_directory_missing'    => 'Igoeren direktorioa ($1) ezin da aurkitu eta web zerbitzariak ezin du sortu.',
 'upload_directory_read_only'  => 'Web zerbitzariak ez dauka igoera direktorioan ($1) idazteko baimenik.',
 'uploaderror'                 => 'Errorea igotzerakoan',
-'uploadtext'                  => "Fitxategiak igotzeko beheko formularioa erabil dezakezu. Aurretik igotako irudiak ikusi edo bilatzeko [[Special:FileList|igotako fitxategien zerrendara]] jo. Igoerak eta ezabatutakoak [[Special:Log/upload|igoera erregistroan]] zerrendatzen dira.
+'uploadtext'                  => "Fitxategiak igotzeko beheko formularioa erabil dezakezu. 
+Aurretik igotako irudiak ikusi edo bilatzeko [[Special:FileList|igotako fitxategien zerrendara]] jo. Igoerak [[Special:Log/upload|igoera erregistroan]] ikus daitezke eta ezabatutakoak [[Special:Log/delete|ezabaketa erregistroan]] zerrendatzen dira.
 
 Orrialde baten irudi bat txertatzeko, erabili kode hauetako bat:
-'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fitxategia.jpg]]</nowiki>''',
-'''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Fitxategia.png|testu alternatiboa]]</nowiki>''' edo
-'''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Fitxategia.ogg]]</nowiki>''' irudia zuzenean erabiltzeko.",
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''',
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|alt text]]</nowiki></tt>''' * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' irudia zuzenean erabiltzeko.",
 'upload-permitted'            => 'Baimendutako fitxategi motak: $1.',
 'upload-preferred'            => 'Fitxategi mota hobetsiak: $1.',
 'upload-prohibited'           => 'Debekatutako fitxategi motak: $1.',
@@ -1508,7 +1504,7 @@ Aukera ezazu, mesedez, fitxategi izen deskriptiboago bat.",
 'upload-success-subj'         => 'Igoera arrakastatsua',
 'upload-success-msg'          => 'Zure [$2] igoera arrakastatsua izan da. Hemen duzu eskuragarri: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Igoera-arazoa',
-'upload-failure-msg'          => 'Hurrengo arazoa egon da zure igoerarekin:
+'upload-failure-msg'          => 'Hurrengo arazoa egon da zure [$2] igoerarekin:
 
 $1',
 'upload-warning-subj'         => 'Igoera oharra',

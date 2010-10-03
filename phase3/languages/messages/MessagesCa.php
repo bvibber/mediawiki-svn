@@ -416,6 +416,9 @@ Massa usuaris estan tractant d'accedir a aquesta pàgina.
 Per favor, esperau una mica abans de tornar a accedir a aquesta pàgina.
 
 $1",
+'pool-timeout'      => "Temps d'espera per al blocatge",
+'pool-queuefull'    => 'La cua de treball és plena',
+'pool-errorunknown' => 'Error desconegut',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Quant al projecte {{SITENAME}}',
@@ -1443,14 +1446,9 @@ També podeu contactar amb altres usuaris a través de la vostra pàgina d'usuar
 'recentchanges-legend'              => 'Opcions de canvis recents',
 'recentchangestext'                 => 'Seguiu els canvis recents del projecte {{SITENAME}} en aquesta pàgina.',
 'recentchanges-feed-description'    => 'Segueix en aquest canal els canvis més recents del wiki.',
-'recentchanges-label-legend'        => 'Llegenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova pàgina',
 'recentchanges-label-newpage'       => 'Aquesta modificació inicià una pàgina',
-'recentchanges-legend-minor'        => '$1 - modificació menor',
 'recentchanges-label-minor'         => 'Aquesta és una modificació menor',
-'recentchanges-legend-bot'          => "$1 - modificació d'un bot",
 'recentchanges-label-bot'           => 'Aquesta modificació fou feta per un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - modificació sense patrullar',
 'recentchanges-label-unpatrolled'   => 'Aquesta modificació encara no ha estat patrullada',
 'rcnote'                            => 'A continuació hi ha {{PLURAL:$1|el darrer canvi|els darrers <strong>$1</strong> canvis}} en {{PLURAL:$2|el darrer dia|els darrers <strong>$2</strong> dies}}, actualitzats a les $5 del $4.',
 'rcnotefrom'                        => 'A sota hi ha els canvis des de <b>$2</b> (es mostren fins <b>$1</b>).',
@@ -3380,5 +3378,9 @@ Introduïu el nom del fitxer sense el prefix «{{ns:file}}:».",
 'htmlform-submit'              => 'Tramet',
 'htmlform-reset'               => 'Desfés els canvis',
 'htmlform-selectorother-other' => 'Altres',
+
+# SQLite database support
+'sqlite-has-fts' => '$1, amb suport de búsqueda de text íntegre',
+'sqlite-no-fts'  => '$1, sense supor de búsqueda de text íntegre',
 
 );

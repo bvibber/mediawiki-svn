@@ -398,6 +398,8 @@ Re a implijerien a glask mont war ar bajenn-mañ war un dro.
 Gortozit ur pennadig a-raok klask mont war ar bjann-mañ en-dro.
 
 $1',
+'pool-timeout'      => "Timeout zo o c'hortoz evit klozañ",
+'pool-queuefull'    => 'Soulgarget eo ar servijerioù',
 'pool-errorunknown' => 'Fazi dianav',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -637,6 +639,11 @@ Na daolit ket evezh ouzh ar c\'hemenn-mañ m\'eo bet krouet ar gont dre fazi.',
 Gortozit a-raok klask en-dro.",
 'loginlanguagelabel'         => 'Yezh : $1',
 'suspicious-userlogout'      => 'Distaolet eo bet ho koulenn digevreañ rak kaset e oa bet gant ur merdeer direizhet pe krubuilhadenn ur proksi, evit doare.',
+'ratelimit-excluded-ips'     => " #<!-- laoskit al linenn-mañ tre evel m'emañ --> <pre>
+# Setu penaos emañ an ereadur :
+#  * Kement tra war-lerc'h an arouezenn \"#\" zo un urzhiad, betek penn all al linenn
+#  * Kement linenn n'eo ket goullo zo ur chomlec'h IP e-maez ar feur termen
+  #</pre> <!-- laoskit al linenn-mañ tre evel m'emañ -->",
 
 # JavaScript password checks
 'password-strength'            => 'Live surentez ar ger-tremen : $1',
@@ -1079,6 +1086,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'showhideselectedversions' => 'Diskouez/Kuzhat ar stummoù diuzet',
 'editundo'                 => 'disteuler',
 'diff-multi'               => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant {{PLURAL:$2|un implijer|$2 implijer}} kuzhet.)",
+'diff-multi-manyusers'     => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant muioc'h evit $2 {{PLURAL:$2|implijer|implijer}} kuzhet.)",
 
 # Search results
 'searchresults'                    => "Disoc'h ar c'hlask",
@@ -1424,14 +1432,9 @@ Gallout a rit lezel tud all da vont e darempred ganeoc'h dre ho pajennoù implij
 'recentchanges-legend'              => "Dibarzhioù ar c'hemmoù diwezhañ",
 'recentchangestext'                 => "Dre ar bajenn-mañ e c'hallit heuliañ ar c'hemmoù diwezhañ bet degaset d'ar wiki.",
 'recentchanges-feed-description'    => "Heuilhit ar c'hemmoù diwezhañ er wiki el lusk-mañ.",
-'recentchanges-label-legend'        => "Alc'hwez : $1.",
-'recentchanges-legend-newpage'      => '$1 - pajenn nevez',
 'recentchanges-label-newpage'       => "Gant ar c'hemm-mañ e vo krouet ur bajenn nevez.",
-'recentchanges-legend-minor'        => '$1 - kemm dister',
 'recentchanges-label-minor'         => "Ur c'hemm dister eo hemañ",
-'recentchanges-legend-bot'          => '$1 - kemm degaset gant ur robot',
 'recentchanges-label-bot'           => "Gant ur bot eo bet degaset ar c'hemm-mañ.",
-'recentchanges-legend-unpatrolled'  => "$1 - kemm n'eo ket bet gwiriet",
 'recentchanges-label-unpatrolled'   => "N'eo ket bet gwiriet ar c'hemm-mañ evit c'hoazh.",
 'rcnote'                            => "Setu aze an {{PLURAL:$1|'''1''' change|'''$1''' kemm diwezhañ}} bet c'hoarvezet e-pad an {{PLURAL:$2|deiz|'''$2''' deiz}} diwezhañ, savet d'an $4 da $5.",
 'rcnotefrom'                        => "Setu aze roll ar c'hemmoù c'hoarvezet abaoe an '''$2''' ('''$1''' d'ar muiañ).",
@@ -1598,7 +1601,7 @@ PICT # misc.
 
 $1",
 'upload-warning-subj'         => "Kemmen diwall e-pad ar c'hargañ",
-'upload-warning-msg'          => "Ur gudenn a zo bet e-kerzh ho ezporzhiadur eus [$2]. Galloud a c'heller distreiñ d'ar [[Special:Upload/stash/$1|furmskrid ezporzhiañ]] evit renkañ ar gudenn.",
+'upload-warning-msg'          => "Ur gudenn zo bet e-kerzh hoc'h ezporzhiadur eus [$2]. Gallout a c'heller distreiñ d'ar [[Special:Upload/stash/$1|furmskrid ezporzhiañ]] evit renkañ ar gudenn.",
 
 'upload-proto-error'        => 'Protokol direizh',
 'upload-proto-error-text'   => 'Rekis eo an URLoù a grog gant <code>http://</code> pe <code>ftp://</code> evit enporzhiañ.',
@@ -3400,5 +3403,9 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'htmlform-submit'              => 'Kas',
 'htmlform-reset'               => "Dizober ar c'hemmoù",
 'htmlform-selectorother-other' => 'Unan all',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 gant enklask eus an destenn a-bezh embreget',
+'sqlite-no-fts'  => '$1 hep enklask eus an destenn a-bezh embreget',
 
 );

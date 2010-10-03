@@ -82,7 +82,6 @@ class ApiDelete extends ApiBase {
 				$this->dieUsageMsg( reset( $retval ) ); // We don't care about multiple errors, just report one of them
 			}
 
-			$watch = 'nochange';
 			// Deprecated parameters
 			if ( $params['watch'] ) {
 				$watch = 'watch';
@@ -245,6 +244,10 @@ class ApiDelete extends ApiBase {
 			array( 'notanarticle' ),
 			array( 'hookaborted', 'error' ),
 		) );
+	}
+
+	public function needsToken() {
+		return true;
 	}
 
 	public function getTokenSalt() {

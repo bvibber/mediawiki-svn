@@ -42,8 +42,6 @@ class ApiUndelete extends ApiBase {
 		global $wgUser;
 		$params = $this->extractRequestParams();
 
-		$titleObj = null;
-
 		if ( !$wgUser->isAllowed( 'undelete' ) ) {
 			$this->dieUsageMsg( array( 'permdenied-undelete' ) );
 		}
@@ -143,6 +141,10 @@ class ApiUndelete extends ApiBase {
 			array( 'invalidtitle', 'title' ),
 			array( 'cannotundelete' ),
 		) );
+	}
+
+	public function needsToken() {
+		return true;
 	}
 
 	public function getTokenSalt() {

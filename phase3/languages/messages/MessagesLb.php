@@ -393,6 +393,9 @@ Zevill Benotzer versichen dës Säit ze gesinn.
 Waart w.e.g. e bëssen ier Dir versicht dës Säit nach emol opzeruffen.
 
 $1",
+'pool-timeout'      => "Timeout bis d'Spär opgehuewen ass",
+'pool-queuefull'    => 'Pool.Queue ass voll',
+'pool-errorunknown' => 'Onbekannte Feeler',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Iwwer {{SITENAME}}',
@@ -632,6 +635,11 @@ Falls dëse Benotzerkont ongewollt ugeluecht ginn ass kënnt Dir dës Noriicht e
 Waart w.e.g. ier Dir et nach eng Kéier versicht.",
 'loginlanguagelabel'         => 'Sprooch: $1',
 'suspicious-userlogout'      => 'Är Ufro fir Iech auszeloggen gouf refuséiert well et esou ausgesäit wéi wann se vun engem Futtise Browser oder Proxy-Tëschespäicher kënnt.',
+'ratelimit-excluded-ips'     => '   #<!-- Dës Linn onverännert loossen --> <pre>
+#  Syntax:
+#  * Alles vun engem #-Zeechen u bis zum Enn vun där Zeil ass eng Bemierkung
+#  * All Linn déi net eidel ass, ass eng IP-Adress fir déi de Rate Limit net gëllt
+   #</pre> <!-- Dës Linn onverännert loossen -->',
 
 # JavaScript password checks
 'password-strength'            => 'Geschate Stäerkt vum Passwuert: $1',
@@ -1423,14 +1431,9 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op Ärer Be
 'recentchanges-legend'              => 'Optioune vun de rezenten Ännerungen',
 'recentchangestext'                 => "Op dëser Säit kënnt Dir déi rezent Ännerungen op '''{{SITENAME}}''' gesinn.",
 'recentchanges-feed-description'    => 'Verfollegt mat dësem Feed déi rezent Ännerungen op {{SITENAME}}.',
-'recentchanges-label-legend'        => 'Legend: $1.',
-'recentchanges-legend-newpage'      => '$1 - nei Säit',
 'recentchanges-label-newpage'       => 'Dës Ännerung huet eng nei Säit ugeluecht',
-'recentchanges-legend-minor'        => '$1 - kleng Ännerung',
 'recentchanges-label-minor'         => 'Dëst ass eng kleng Ännerung',
-'recentchanges-legend-bot'          => '$1 - Ännerung duerch e Bot',
 'recentchanges-label-bot'           => 'Dës Ännerung gouf vun engem Bot gemaacht',
-'recentchanges-legend-unpatrolled'  => '$1 - net-nogekuckten Ännerung',
 'recentchanges-label-unpatrolled'   => 'Dës Ännerung gouf nach net nogekuckt',
 'rcnote'                            => "Hei {{PLURAL:$1|ass déi lescht Ännerung|sinn déi lescht '''$1''' Ännerungen}} {{PLURAL:$2|vum leschten Dag|vun de leschten '''$2''' Deeg}}, Stand: $4 ëm $5 Auer.",
 'rcnotefrom'                        => "Ugewise ginn d'Ännerunge vum '''$2''' un (maximal '''$1''' Ännerunge gi gewisen).",

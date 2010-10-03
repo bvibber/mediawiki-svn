@@ -68,7 +68,7 @@ class DatabaseMssql extends DatabaseBase {
 
 		global $wgDBport;
 
-		if ( !strlen( $user ) ) { # # e.g. the class is being loaded
+		if ( !strlen( $user ) ) { # e.g. the class is being loaded
 			return;
 		}
 
@@ -152,7 +152,7 @@ class DatabaseMssql extends DatabaseBase {
 		if ( $stmt == false ) {
 			$message = "A database error has occurred.  Did you forget to run maintenance/update.php after upgrading?  See: http://www.mediawiki.org/wiki/Manual:Upgrading#Run_the_update_script\n" .
 				"Query: " . htmlentities( $sql ) . "\n" .
-				"Function: " . __FUNCTION__ . "\n";
+				"Function: " . __METHOD__ . "\n";
 			// process each error (our driver will give us an array of errors unlike other providers)
 			foreach ( sqlsrv_errors() as $error ) {
 				$message .= $message . "ERROR[" . $error['code'] . "] " . $error['message'] . "\n";
@@ -830,21 +830,18 @@ class DatabaseMssql extends DatabaseBase {
 		}
 		$this->doQuery( "DROP TABLE $ctest" );
 
-		$res = dbsource( "../maintenance/mssql/tables.sql", $this );
+		$res = $this->sourceFile( "../maintenance/mssql/tables.sql" );
+		if ( $res !== true ) {
+			echo " <b>FAILED</b></li>";
+			dieout( htmlspecialchars( $res ) );
+		}
 
-		# # Update version information
-		$mwv = $this->addQuotes( $wgVersion );
-		$pgv = $this->addQuotes( $this->getServerVersion() );
-		$pgu = $this->addQuotes( $this->mUser );
-		$pgp = $this->addQuotes( $wgDBport );
-		$dbn = $this->addQuotes( $this->mDBname );
-
-		# # Avoid the non-standard "REPLACE INTO" syntax
+		# Avoid the non-standard "REPLACE INTO" syntax
 		$f = fopen( "../maintenance/interwiki.sql", 'r' );
 		if ( $f == false ) {
 			dieout( "<li>Could not find the interwiki.sql file" );
 		}
-		# # We simply assume it is already empty as we have just created it
+		# We simply assume it is already empty as we have just created it
 		$SQL = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
 		while ( ! feof( $f ) ) {
 			$line = fgets( $f, 1024 );
@@ -986,7 +983,7 @@ class DatabaseMssql extends DatabaseBase {
 		return implode( ' ', array( $straightJoins, $otherJoins ) );
 	}
 
-	function strencode( $s ) { # # Should not be called by us
+	function strencode( $s ) { # Should not be called by us
 		return str_replace( "'", "''", $s );
 	}
 

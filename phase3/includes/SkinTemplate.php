@@ -217,7 +217,7 @@ class SkinTemplate extends Skin {
 			$tpl->setRef( 'xhtmldefaultnamespace', $wgXhtmlDefaultNamespace );
 			$tpl->set( 'xhtmlnamespaces', $wgXhtmlNamespaces );
 			$tpl->set( 'html5version', $wgHtml5Version );
-			$tpl->set( 'headlinks', $out->getHeadLinks() );
+			$tpl->set( 'headlinks', $out->getHeadLinks( $this->getSkinName() ) );
 			$tpl->set( 'csslinks', $out->buildCssLinks() );
 
 			if( $wgUseTrackbacks && $out->isArticleRelated() ) {
@@ -659,7 +659,7 @@ class SkinTemplate extends Skin {
 		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0 ? true : false
+			'exists' => $title->getArticleID() != 0,
 		);
 	}
 
@@ -669,7 +669,7 @@ class SkinTemplate extends Skin {
 		self::checkTitle( $title, $name );
 		return array(
 			'href' => $title->getLocalURL( $urlaction ),
-			'exists' => $title->getArticleID() != 0 ? true : false
+			'exists' => $title->getArticleID() != 0,
 		);
 	}
 

@@ -281,7 +281,7 @@ lcont nek  tuyskar .
 'yourname'                => 'smiyt o-msxdam:',
 'yourpassword'            => 'awal iḥdan:',
 'yourpasswordagain'       => 'Зawd ara awal iḥdan:',
-'remembermypassword'      => 'Askti nu ukcum ɣ lurdinaturad (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'remembermypassword'      => 'Askti nu ukcum ɣ Urdinaturad (Iɣ kullu tggut $1 {{PLURAL:$1|Ass|Ass}})',
 'yourdomainname'          => 'Taɣult nek',
 'externaldberror'         => 'Imma tlla ɣin kra lafut ɣu ukcumnk ulla urak ittuyskar at tsbddelt lkontnk nbrra.',
 'login'                   => 'Kcm ɣid',
@@ -365,7 +365,7 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'revertmerge' => 'ḥiyyd tazdayt',
 
 # Diffs
-'history-title' => 'Asakud n umcggr',
+'history-title' => 'Asakud n umcggr n « $1 »',
 'difference'    => 'laḥna gr tamzwarut d tamǧarut',
 'lineno'        => 'Izriri $1:',
 'editundo'      => 'Urri',
@@ -554,6 +554,9 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 # Special:LinkSearch
 'linksearch' => 'Izdayn n brra',
 
+# Special:Log/newusers
+'newuserlogpage' => '↓ Aɣmis n willi mmurzmn imiḍan amsqdac',
+
 # Watchlist
 'mywatchlist' => 'Umuɣ inu lli tsaggaɣ',
 'watch'       => 'zaydtin i tochwafin-niw',
@@ -595,11 +598,25 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 'mycontris'     => 'Tiwuriwin inu',
 'year'          => 'Z usggas (d urbur):',
 
-'sp-contributions-talk' => 'assays',
+'sp-contributions-newbies'             => '↓ Ad ur tmlt abla tiwuriwin n wiyyaḍ',
+'sp-contributions-newbies-sub'         => '↓ Z imiḍan (comptes) imaynutn',
+'sp-contributions-newbies-title'       => '↓ Tiwuriwin n umqdac z imḍan imaynutn',
+'sp-contributions-blocklog'            => '↓ Tinɣmas n willi ttuyqqanin (blocage)',
+'sp-contributions-deleted'             => '↓ Tiwuriwin lli ittuykkasnin',
+'sp-contributions-logs'                => '↓ Iɣmisn',
+'sp-contributions-talk'                => '↓ Sgdl (discuter)',
+'sp-contributions-userrights'          => '↓ Sgiddi izrfan',
+'sp-contributions-blocked-notice'      => '↓ Amsqdac ad ittuysbddad. Maf ittuysbddad illa ɣ uɣmmis n n willi n sbid. Mayad ɣ trit ad tsnt maɣ',
+'sp-contributions-blocked-notice-anon' => '↓ Tansa yad IP ttuysbddad. Maf ittuysbddad illa ɣ uɣmmis n n willi n sbid. Mayad ɣ trit ad tsnt maɣ',
+'sp-contributions-search'              => '↓ Cnubc f tiwuriwin',
+'sp-contributions-username'            => '↓ Tansa IP niɣ assaɣ nu umsqdac:',
+'sp-contributions-toponly'             => '↓ Ad urtmlt adla mat ittuyẓran tigira yad',
+'sp-contributions-submit'              => '↓ Cabba (Sigl)',
+'sp-contributions-explain'             => '↓',
 
 # What links here
 'whatlinkshere'            => 'May izdayn ɣid',
-'whatlinkshere-title'      => 'Tasniwin li izdayn d "$1"',
+'whatlinkshere-title'      => 'Tisniwin li izdayn d "$1"',
 'whatlinkshere-page'       => 'Tasna:',
 'whatlinkshere-backlink'   => '← $1',
 'linkshere'                => "Tasnawinad ar slkamnt i '''[[:$1]]''':",
@@ -667,8 +684,12 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 'tooltip-n-help'                  => 'Adɣar n w-aws',
 'tooltip-t-whatlinkshere'         => 'Umuɣ n kullu tisnatin n Wiki lid ilkkmn ɣid',
 'tooltip-t-recentchangeslinked'   => 'Imbddln imaynutn n tisnatin li ittylkamn s tasna yad',
+'tooltip-feed-rss'                => 'Usuddm (Flux) n tasna yad',
+'tooltip-feed-atom'               => 'Usuddm Atum n tasna yad',
+'tooltip-t-contributions'         => 'Ẓr umuɣ n tiwuriwin n umsqdac ad',
+'tooltip-t-emailuser'             => 'Ṣafd tabrat umsqdac ad',
 'tooltip-t-upload'                => 'sɣlid ifaylutn',
-'tooltip-t-specialpages'          => 'kolchi tiwriqin tesbtarin',
+'tooltip-t-specialpages'          => 'Umuɣ n tisniwin timẓlayin',
 'tooltip-t-print'                 => 'Lqim uziggz n tasna yad',
 'tooltip-t-permalink'             => 'Azday bdda i lqim n tasna yad',
 'tooltip-ca-nstab-main'           => 'Ẓr mayllan ɣ tasna',
@@ -717,6 +738,9 @@ Wiyyaḍ raggis ḥbun s ɣiklli sttin kkan gantn
 'exif-gaincontrol-0' => 'walo',
 
 'exif-subjectdistancerange-0' => 'orityawssan',
+
+# External editor support
+'edit-externally-help' => '(Ẓṛ [http://www.mediawiki.org/wiki/Manual:External_editors/fr les instructions d’installation] bac ad taf uggar n inɣmisn)',
 
 # 'all' in various places, this might be different for inflected languages
 'namespacesall' => 'kullu',

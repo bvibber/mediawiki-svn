@@ -253,7 +253,7 @@ $messages = array(
 'tog-editsection'             => 'Modifica delle sezioni tramite il collegamento [modifica]',
 'tog-editsectiononrightclick' => 'Modifica delle sezioni tramite clic destro sul titolo (richiede JavaScript)',
 'tog-showtoc'                 => "Mostra l'indice per le pagine con più di 3 sezioni",
-'tog-rememberpassword'        => 'Ricorda la password su questo computer (per un massimo di $1 {{PLURAL:$1|giorno|giorni}})',
+'tog-rememberpassword'        => 'Ricorda la password su questo browser (per un massimo di $1 {{PLURAL:$1|giorno|giorni}})',
 'tog-watchcreations'          => 'Aggiungi le pagine create agli osservati speciali',
 'tog-watchdefault'            => 'Aggiungi le pagine modificate agli osservati speciali',
 'tog-watchmoves'              => 'Aggiungi le pagine spostate agli osservati speciali',
@@ -475,6 +475,7 @@ Troppi utenti stanno tentando di visualizzare questa pagina.
 Attendere qualche minuto prima di riprovare a caricare la pagina.
 
 $1',
+'pool-errorunknown' => 'Errore sconosciuto',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Informazioni su {{SITENAME}}',
@@ -1132,7 +1133,8 @@ $1",
 'compareselectedversions'  => 'Confronta le versioni selezionate',
 'showhideselectedversions' => 'Mostra/nascondi versioni selezionate',
 'editundo'                 => 'annulla',
-'diff-multi'               => '({{PLURAL:$1|Una revisione intermedia non mostrata|$1 revisioni intermedie non mostrate}}.)',
+'diff-multi'               => '({{PLURAL:$1|Una revisione intermedia|$1 revisioni intermedie}} di {{PLURAL:$2|un utente|$2 utenti}} non mostrate)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Una revisione intermedia|$1 revisioni intermedie}} di oltre $2 {{PLURAL:$2|utente|utenti}} non mostrate)',
 
 # Search results
 'searchresults'                    => 'Risultati della ricerca',
@@ -1473,14 +1475,9 @@ L'operazione non può essere annullata.",
 'recentchanges-legend'              => 'Opzioni ultime modifiche',
 'recentchangestext'                 => 'Questa pagina presenta le modifiche più recenti ai contenuti del sito.',
 'recentchanges-feed-description'    => 'Questo feed riporta le modifiche più recenti ai contenuti del sito.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nuova pagina',
 'recentchanges-label-newpage'       => 'Questa modifica ha creato una nuova pagina',
-'recentchanges-legend-minor'        => '$1 - modifica minore',
 'recentchanges-label-minor'         => 'Questa è una modifica minore',
-'recentchanges-legend-bot'          => '$1 - modifica bot',
 'recentchanges-label-bot'           => 'Questa modifica è stata effettuata da un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - modifica non verificata',
 'recentchanges-label-unpatrolled'   => 'Questa modifica non è stata ancora verificata',
 'rcnote'                            => "Di seguito {{PLURAL:$1|è elencata la modifica più recente apportata|sono elencate le '''$1''' modifiche più recenti apportate}} al sito {{PLURAL:$2|nelle ultime 24 ore|negli scorsi '''$2''' giorni}}; i dati sono aggiornati alle $5 del $4.",
 'rcnotefrom'                        => "Di seguito sono elencate le modifiche apportate a partire da '''$2''' (fino a '''$1''').",
@@ -1635,7 +1632,7 @@ PICT # misc.
 'upload-success-subj'         => 'Caricamento completato',
 'upload-success-msg'          => "L'upload da [$2] è riuscito. Il file è disponibile qui: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => "Problema nell'upload",
-'upload-failure-msg'          => 'Si è verificato un problema con il caricamento:
+'upload-failure-msg'          => 'Si è verificato un problema con il caricamento da [$2]:
 
 $1',
 'upload-warning-subj'         => 'Avviso di caricamento',
@@ -3388,5 +3385,9 @@ Inserire il nome del file senza il prefisso \"{{ns:file}}:\"",
 'htmlform-submit'              => 'Invia',
 'htmlform-reset'               => 'Annulla modifiche',
 'htmlform-selectorother-other' => 'Altro',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 con la possibilità di ricerca completa nel testo',
+'sqlite-no-fts'  => '$1 senza la possibilità di ricerca completa nel testo',
 
 );

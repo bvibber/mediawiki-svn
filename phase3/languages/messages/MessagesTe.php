@@ -371,6 +371,7 @@ $messages = array(
 ఈ పేజీని వీక్షించడానికి కొద్దిసేపు నిరీక్షించండి.
 
 $1',
+'pool-errorunknown' => 'గుర్తుతెలియని పొరపాటు',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} గురించి',
@@ -614,6 +615,11 @@ $2',
 మళ్ళీ ప్రయత్నించే ముందు కాసేపు వేచివుండండి.',
 'loginlanguagelabel'         => 'భాష: $1',
 'suspicious-userlogout'      => 'సరిగా పనిచేయని విహారిణి లేదా కాషింగ్ ప్రాక్సీ వల్ల పంపబడడం చేత, నిష్క్రమించాలనే మీ అభ్యర్థనని నిరాకరించారు.',
+'ratelimit-excluded-ips'     => ' #<!-- ఈ పంక్తిని ఉన్నదున్నట్లు ఇలాగే వదిలివేయండి --> <pre>
+# ఇక్కడ రాయాల్సిన విధానం ఇదీ:
+#  * "#" అనే అక్షరం నుండి ఆ పంక్తి చివరివరకూ వ్యాఖ్యానం
+#  * ఖాళీగా లేని ప్రతీ పంక్తీ మూల్యాంకన పరిమితి నుండి మినహాయించాల్సిన ఐపీ చిరునామా
+  #</pre> <!-- ఈ పంక్తిని ఉన్నదున్నట్లు ఇలాగే వదిలివేయండి -->',
 
 # JavaScript password checks
 'password-strength'            => 'అంచనావేసిన సంకేతపదపు  బలం: $1',
@@ -1393,14 +1399,9 @@ $1",
 'recentchanges-legend'              => 'ఇటీవలి మార్పుల ఎంపికలు',
 'recentchangestext'                 => 'వికీలో ఇటీవలి కాలంలో జరిగిన మార్పులను ఈ పేజీలో చూడండి.',
 'recentchanges-feed-description'    => 'ఈ ఫీడు ద్వారా వికీలో జరుగుతున్న మార్పుల గురించి ఎప్పటికప్పుడు సమాచారాన్ని పొందండి.',
-'recentchanges-label-legend'        => 'సూచిక: $1.',
-'recentchanges-legend-newpage'      => '$1 - కొత్త పేజీ',
 'recentchanges-label-newpage'       => 'ఈ మార్పు కొత్త పేజీని సృష్టించింది',
-'recentchanges-legend-minor'        => '$1 - చిన్న మార్పు',
 'recentchanges-label-minor'         => 'ఇది ఒక చిన్న మార్పు',
-'recentchanges-legend-bot'          => '$1 - బాటు చేసిన మార్పు',
 'recentchanges-label-bot'           => 'ఈ మార్పును ఒక బాటు చేసింది',
-'recentchanges-legend-unpatrolled'  => '$1 - నిఘాలో లేని మార్పు',
 'recentchanges-label-unpatrolled'   => 'ఈ దిద్దుబాటు మీద నిఘా లేదు',
 'rcnote'                            => "$4 నాడు $5 సమయానికి, గత {{PLURAL:$2|ఒక్క రోజులో|'''$2''' రోజులలో}} చేసిన చివరి {{PLURAL:$1|ఒక్క మార్పు కింద ఉంది|'''$1''' మార్పులు కింద ఉన్నాయి}}.",
 'rcnotefrom'                        => '<b>$2</b> నుండి జరిగిన మార్పులు (<b>$1</b> వరకు చూపబడ్డాయి).',
@@ -3292,5 +3293,9 @@ $1',
 'htmlform-submit'              => 'సమర్పించు',
 'htmlform-reset'               => 'మార్పులను రద్దుచెయ్యి',
 'htmlform-selectorother-other' => 'ఇతర',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 పూర్తి-పాఠ్య అన్వేషణ తోడ్పాటుతో',
+'sqlite-no-fts'  => '$1 పూర్తి-పాఠ్య అన్వేషణ తోడ్పాటు లేకుండా',
 
 );

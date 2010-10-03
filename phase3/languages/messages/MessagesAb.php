@@ -213,6 +213,7 @@ $messages = array(
 'searchresultshead' => 'Аҧшаара',
 'uid'               => 'Алахәыла ID:',
 'yourlanguage'      => 'Абызшәа:',
+'prefs-signature'   => 'Анапынҵамҭа',
 
 # Groups
 'group-user' => 'Алахәылацәа',
@@ -222,9 +223,8 @@ $messages = array(
 'grouppage-sysop' => '{{ns:project}}:Администраторцәа',
 
 # Recent changes
-'recentchanges'                => 'Арҽеира ҿыцқәа',
-'recentchanges-legend-newpage' => '$1 — адаҟьа ҿыц',
-'newpageletter'                => 'Ҿ',
+'recentchanges' => 'Арҽеира ҿыцқәа',
+'newpageletter' => 'Ҿ',
 
 # Recent changes linked
 'recentchangeslinked'         => 'Еимадоу ариашарақәа',

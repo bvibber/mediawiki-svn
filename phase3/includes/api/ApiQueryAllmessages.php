@@ -54,7 +54,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		$prop = array_flip( (array)$params['prop'] );
 
 		// Determine which messages should we print
-		$messages_target = array();
 		if ( in_array( '*', $params['messages'] ) ) {
 			$message_names = array_keys( Language::getMessagesFor( 'en' ) );
 			sort( $message_names );
@@ -122,7 +121,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 				}
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $a );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'from', $name );
+					$this->setContinueEnumParameter( 'from', $message );
 					break;
 				}
 			}

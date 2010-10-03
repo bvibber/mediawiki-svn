@@ -548,6 +548,9 @@ Demasiados usuarios están tratando de ver esta página.
 Por favor espera un momento antes de tratar de acceder nuevamente a esta página.
 
 $1',
+'pool-timeout'      => 'Tiempo limite agotado para el bloqueo',
+'pool-queuefull'    => 'La cola de trabajo está llena',
+'pool-errorunknown' => 'Error desconocido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
@@ -787,6 +790,11 @@ Puedes ignorar este mensaje si esta cuenta fue creada erróneamente.',
 'login-throttled'            => 'Has intentado demasiadas veces iniciar sesión. Por favor espera antes de intentarlo nuevamente.',
 'loginlanguagelabel'         => 'Idioma: $1',
 'suspicious-userlogout'      => 'Su solicitud de desconexión ha sido denegada debido a que parece que ésta ha sido envidada desde un navegador defectuoso o un proxy caché.',
+'ratelimit-excluded-ips'     => ' #<!-- Deja esta línea exactamente como esta --> <pre>
+# La sintaxis es la siguiente:
+#  * Todo desde el carácter "#" hasta el final de la línea es un comentario
+#  * Todo línea no vacía es una dirección IP excluida del límite de frecuencia
+ #</pre> <!-- Deja esta línea exactamente como esta -->',
 
 # JavaScript password checks
 'password-strength'            => 'Dificultad estimada de la contraseña: $1',
@@ -1584,14 +1592,9 @@ También puede permitir a otros usuarios que te contacten a través de tu págin
 'recentchanges-legend'              => 'Opciones sobre cambios recientes',
 'recentchangestext'                 => 'Sigue los cambios más recientes de la wiki en esta página.',
 'recentchanges-feed-description'    => 'Seguir los cambios más recientes en el wiki en este feed.',
-'recentchanges-label-legend'        => 'Leyenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - página nueva',
 'recentchanges-label-newpage'       => 'Esta edición creó una nueva página',
-'recentchanges-legend-minor'        => '$1 - edición menor',
 'recentchanges-label-minor'         => 'Esta es una edición menor',
-'recentchanges-legend-bot'          => '$1 - edición de bot',
 'recentchanges-label-bot'           => 'Esta edición fue realizada por un robot',
-'recentchanges-legend-unpatrolled'  => '$1 - edición sin patrullar',
 'recentchanges-label-unpatrolled'   => 'Esta edición todavía no se ha patrullado',
 'rcnote'                            => "Debajo {{PLURAL:$1|hay '''1''' cambio efectuado|están los últimos '''$1''' cambios efectuados}} en  {{PLURAL:$2|el último día|los últimos '''$2''' días}}, hasta el $4, $5.",
 'rcnotefrom'                        => 'A continuación se muestran los cambios desde <b>$2</b> (hasta <b>$1</b>).',
@@ -3520,5 +3523,9 @@ Ingrese el nombre del archivo sin el prefijo "{{ns:file}}:".',
 'htmlform-submit'              => 'Enviar',
 'htmlform-reset'               => 'Deshacer cambios',
 'htmlform-selectorother-other' => 'Otro',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 con soporte para búsqueda de texto completo',
+'sqlite-no-fts'  => '$1 sin soporte para búsqueda de texto completo',
 
 );
