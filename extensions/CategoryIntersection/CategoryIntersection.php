@@ -34,6 +34,8 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgHooks['LinksUpdate'][] = 'CategoryIntersectionLinksUpdate';
 $wgHooks['ArticleDelete'][] = 'CategoryIntersectionArticleDelete';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCategoryIntersectionSchemaUpdates';
+$wgHooks['ParserTestTables'][] = 'efCategoryIntersectionParserTestTables';
 
 $wgAutoloadClasses['CategoryIntersection'] = $dir . 'CategoryIntersection_body.php'; # Tell MediaWiki to load the extension body.
 $wgExtensionMessagesFiles['CategoryIntersection'] = $dir . 'CategoryIntersection.i18n.php';
@@ -93,8 +95,6 @@ function CategoryIntersectionArticleDelete ( &$article, &$user, &$reason ) {
 }
 
 # new tables needed (based on how ReaderFeedback extension does it)
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCategoryIntersectionSchemaUpdates';
-
 function efCategoryIntersectionSchemaUpdates( $updater = null ) {
 	$base = dirname( __FILE__ );
 	if ( $updater === null ) {
@@ -110,3 +110,7 @@ function efCategoryIntersectionSchemaUpdates( $updater = null ) {
 	return true;
 }
 
+function efCategoryIntersectionParserTestTables( &$tables ) {
+	$tables[] = 'categoryintersections';
+	return true;
+}
