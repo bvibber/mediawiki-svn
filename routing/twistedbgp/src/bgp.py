@@ -1926,7 +1926,7 @@ class NaiveBGPPeering(BGPPeering):
         BGPPeering.completeInit(self, protocol)
         
         # (Re)init the existing set, they may get reused
-        self.toAdvertise += self.advertised
+        self.toAdvertise |= self.advertised
         self.advertised = set()
     
     def sendAdvertisements(self):
