@@ -522,30 +522,23 @@ mw.SmilLayout.prototype = {
 				});					
 			});
 			// Switch any named font-size attribute to em 	 
-             /*$htmlLayout.find('[style]').each( function(inx, node){ 	 
-                 if( $j(node).css('font-size') ){ 	 
+             $htmlLayout.find('[style]').each( function(inx, node){ 	 
+                 if( $j(node).css('font-size') ){ 
                 	 if( _this.emFontSizeMap[ $j(node).css('font-size') ] ){
                 		 $j(node).css('font-size', _this.emFontSizeMap[ $j(node).css('font-size') ] );
-                	 } else {
-                		//@@ todo translate absolute pixle size to relative 
+                	 } else if( $j(node).css('font-size').indexOf('px') != -1 ) {
+                		// Translate absolute pixel size to relative 
+						$j(node).css('font-size', 	 
+							( ( fontScalePercent * .5 )  * parseFloat( $j(node).css('font-size') ) ) + 'px' 	 
+						); 
                 	 }	 
                  } 	 
-             });*/
-			// Switch any named font-size attribute to relative pixle size 	 
-            $htmlLayout.find('[style]').each( function(inx, node){ 	 
-                if( $j(node).css('font-size') ){ 	 
-                    $j(node).css('font-size', 	 
-                         ( fontScalePercent * parseFloat( $j(node).css('font-size') ) ) + 'px' 	 
-                    ); 	 
-                } 	 
-            })
+             });
 			
 			// Strip any links for thumbs of player
 			$htmlLayout.find('a').attr('href', '#');
 		}
-				
-		
-		
+
 		// Return the cdata
 		return $j('<div />')			
 			// Wrap in font-size percentage relative to virtual size
