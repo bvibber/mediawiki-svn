@@ -72,9 +72,19 @@ $messages['de'] = array(
 
 /** Spanish (Español)
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Donar',
+	'variablepage-desc' => 'Redirección de página variable ligera',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'variablepage' => 'صفحه متغیر',
 );
 
 /** French (Français)
@@ -179,7 +189,9 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Doner',
+	'variablepage-desc' => 'Lettvektsomdirigeringer av variabelsider',
 );
 
 /** Polish (Polski)

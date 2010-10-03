@@ -4277,6 +4277,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
 	'configure' => 'Konfiguracija wikija',
@@ -4288,10 +4289,11 @@ $messages['hr'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Ekstenzije',
 	'configure-ext-doc' => 'Vidi dokumentaciju na mreži',
-	'configure-ext-schemachange' => "'''Upozorenje:''' ova ekstenzija zahtjeva ažuriranje baze podataka za ispravan rad!",
+	'configure-ext-schemachange' => "'''Upozorenje:''' ova ekstenzija zahtjeva [http://www.mediawiki.org/wiki/Manual:Update.php ažuriranje baze podataka] za ispravan rad!",
 	'configure-ext-settings' => 'Postavke',
 	'configure-ext-use-extension' => 'Koristi ovu ekstenziju',
 	'configure-ext-use' => 'Koristi',
+	'configure-form-reason' => 'Razlog:',
 	'configure-summary' => 'Ova posebna stranica vam omogućava konfiguriranje ovog wikija, vidi [http://www.mediawiki.org/wiki/Manual:Configuration_settings Postavke konfiguracije] za više informacija.',
 	'configure-btn-save' => 'Spremi postavke',
 	'configure-db-error' => 'Baza podataka koju ste postavili za čuvanje konfiguracije ($1) ne postoji.
@@ -4308,6 +4310,8 @@ Molimo postavite ju za pisanje za PHP kako biste koristili ekstenziju.',
 	'configure-js-remove-row' => 'Izbriši ovaj unos',
 	'configure-js-get-image-url' => 'Pretvori ime datoteke u URL',
 	'configure-js-image-error' => 'Dogodila se greška prilikom hvatanja URL-a. Molimo provjerit dali datoteka postoji.',
+	'configure-js-biglist-show' => '[prikaži pojedinosti]',
+	'configure-js-biglist-hide' => '[sakrij pojedinosti]',
 	'configure-no-diff' => 'Nema promjena između odabranih inačica.',
 	'configure-no-directory' => 'Mapa korištena za spremanje postavki, <tt<$1</tt>, ne postoji.
 Molimo stvorite ju ili promijenite za korištenje ekstenzije.',

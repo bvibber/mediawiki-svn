@@ -555,6 +555,13 @@ $messages['he'] = array(
 	'mwe-clipedit-preview_inout' => 'תצוגה מקדימה של נקודות הכניסה-יציאה',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'mwe-clipedit-duration' => 'Trajanje:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

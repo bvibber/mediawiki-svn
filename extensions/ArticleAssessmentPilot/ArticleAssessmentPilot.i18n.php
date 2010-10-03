@@ -803,6 +803,12 @@ $messages['li'] = array(
 	'articleassessment-rating-wellsourced' => 'Good van brónne veurzeen:',
 	'articleassessment-rating-neutrality' => 'Neutraal:',
 	'articleassessment-rating-completeness' => 'Compleet:',
+	'articleassessment-rating-readability' => 'Laesber:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Vinjs se det dees pagina zat brónne haet en det de brónne betroewber zeen?',
+	'articleassessment-rating-neutrality-tooltip' => "Vinjs se det dees pagina 'n ieërlike waergaaf is van alle invalsheuk veur dit óngerwerp?",
+	'articleassessment-rating-completeness-tooltip' => 'Vinjs se det dees pagina de essentie van dit óngerwerp bestriek?',
+	'articleassessment-rating-readability-tooltip' => "Vinjs se det dees pagina 'ne krekten ópboew haet en good is gesjreve?",
+	'articleassessment-articlerating' => 'Paginawaardering',
 	'articleassessment-survey-answer-whyrated-other' => 'Anges',
 	'articleassessment-survey-question-useful-iffalse' => 'Wróm?',
 );
@@ -970,6 +976,50 @@ Wilt u de pagina opnieuw beoordelen?",
 	'articleassessment-survey-submit' => 'Opslaan',
 	'articleassessment-survey-title' => 'Beantwoord alstublieft een paar vragen',
 	'articleassessment-survey-thanks' => 'Bedankt voor het beantwoorden van de vragen.',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'articleassessment' => 'Artikkelvurdering',
+	'articleassessment-desc' => 'Artikkelvurdering (pilotversjon)',
+	'articleassessment-yourfeedback' => 'Din tilbakemelding',
+	'articleassessment-pleaserate' => 'Vennligst ta deg tid til å vurdere denne siden nedenfor.',
+	'articleassessment-submit' => 'Send',
+	'articleassessment-rating-wellsourced' => 'Gode kildehenvisninger:',
+	'articleassessment-rating-neutrality' => 'Nøytral:',
+	'articleassessment-rating-completeness' => 'Komplett:',
+	'articleassessment-rating-readability' => 'Lesbar:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Føler du at denne siden har tilstrekkelig med siteringer og at disse siteringene kommer fra pålitelige kilder?',
+	'articleassessment-rating-neutrality-tooltip' => 'Føler du at denne siden viser en rettferdig representasjon av alle perspektiv på problemet?',
+	'articleassessment-rating-completeness-tooltip' => 'Føler du at denne siden dekker de grunnleggende emneområdene som det burde?',
+	'articleassessment-rating-readability-tooltip' => 'Føler du at denne siden er godt organisert og godt skrevet?',
+	'articleassessment-articlerating' => 'Sidevurdering',
+	'articleassessment-error' => 'En feil har oppstått.
+Prøv igjen senere.',
+	'articleassessment-thanks' => 'Takk! Din vurdering har blitt lagret.',
+	'articleassessment-featurefeedback' => 'Gi oss <span class="feedbacklink">tilbakemelding</span> på denne funksjonen.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|vurdering|vurderinger}})',
+	'articleassessment-stalemessage-norevisioncount' => "Denne siden har blitt ''revidert'' siden du siste vurderte den.
+Du vil kanskje vurdere den på nytt.",
+	'articleassessment-results-show' => '(Resultat skjult. <span class="showlink">Vis</span> dem.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Skjul resultat</span>)',
+	'articleassessment-survey-question-whyrated' => 'Gi oss beskjed om hvorfor du vurderte denne siden idag (huk av alle som passer):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Jeg ønsket å bidra til den generelle vurderingen av denne siden',
+	'articleassessment-survey-answer-whyrated-development' => 'Jeg håper at min vurdering vil påvirke utviklingen av siden positivt',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Jeg ønsket å bidra til {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Jeg liker å dele min mening',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Jeg ga ingen vurderinger idag, men ønsket å gi tilbakemelding på denne funksjonen',
+	'articleassessment-survey-answer-whyrated-other' => 'Annet',
+	'articleassessment-survey-question-useful' => 'Tror du at vurderingene som blir gitt er nyttige og klare?',
+	'articleassessment-survey-question-useful-iffalse' => 'Hvorfor?',
+	'articleassessment-survey-question-expert' => 'Anser du degselv for å være en ekspert på feltet som denne siden dekker?',
+	'articleassessment-survey-question-expert-iftrue' => 'Kan du beskrive din ekspertise?',
+	'articleassessment-survey-question-comments' => 'Har du noen ytterligere kommentarer?',
+	'articleassessment-survey-submit' => 'Send',
+	'articleassessment-survey-title' => 'Svar på noen få spørsmål',
+	'articleassessment-survey-thanks' => 'Takk for at du fylte ut undersøkelsen.',
 );
 
 /** Polish (Polski)

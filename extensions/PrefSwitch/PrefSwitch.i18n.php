@@ -2594,6 +2594,7 @@ $messages['fa'] = array(
 	'prefswitch-survey-question-dislike' => 'از چه چیزی از ویژگی‌های جدید خوشتان نیامد؟',
 	'prefswitch-survey-question-whyoff' => 'چرا ویژگی‌های جدید را غیرفعال کردید؟
 لطفاً همهٔ مورادی را که صدق می‌کنند، انتخاب کنید.',
+	'prefswitch-survey-question-globaloff' => 'آیا می‌خواهید ویژگی‌ها را به صورت سراسری خاموش کنید؟',
 	'prefswitch-survey-answer-whyoff-hard' => 'ویژگی‌ها برای استفاده خیلی سخت است.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'ویژگی فعالیت‌های لازم را انجام نمی‌دهد.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'ویژگی آن‌طور که انتظار می‌رفت نیست.',
@@ -2628,6 +2629,7 @@ $messages['fa'] = array(
 	'prefswitch-survey-answer-os-windowsmobile' => 'ویندوز موبایل',
 	'prefswitch-survey-answer-os-linux' => 'لینوکس',
 	'prefswitch-survey-answer-os-other' => 'سیستم عامل دیگر:',
+	'prefswitch-survey-answer-globaloff-yes' => 'بله، ویژگی‌ها را در تمام ویکی‌ها خاموش کن',
 	'prefswitch-survey-question-res' => 'وضوح صفحهٔ نمایش‌تان چیست؟',
 	'prefswitch-title-on' => 'ویژگی‌های جدید',
 	'prefswitch-title-switched-on' => 'لذت ببرید!',

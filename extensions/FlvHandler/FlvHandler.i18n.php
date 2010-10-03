@@ -359,6 +359,14 @@ $messages['sr-el'] = array(
 	'flv-long-desc' => '(Fleš video, $1 × $2 piksela, veličina fajla: $3)',
 );
 
+/** Tamil (தமிழ்)
+ * @author செல்வா
+ */
+$messages['ta'] = array(
+	'flvhandler_desc' => 'உடன்காட்டு நிகழ்படக் (பிளாசு வீடியோ) கோப்புகளை வழக்கமான கோப்புகளாக சேர்க்க அனுமதி (எ.கா: <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(உடன்நிகழ் நிகழ்படம் (பிளாசு வீடியோ) $1 × $2 படவணுக்கள், கோப்பின் அளவு: $3)',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

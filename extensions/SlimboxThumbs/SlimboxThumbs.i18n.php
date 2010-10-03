@@ -17,6 +17,13 @@ $messages['en'] = array(
 	'slimboxthumbs-desc' => 'Displays full-size images with [http://www.digitalia.be/software/slimbox2 Slimbox 2] when clicking on thumbnails'
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'slimboxthumbs-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -85,6 +92,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'slimboxthumbs-desc' => '画像のサムネイルをクリックしたときに[http://www.digitalia.be/software/slimbox2 Slimbox 2]を使って、フルサイズで表示する',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'slimboxthumbs-desc' => 'Zeich e Beld en de ojinaale Jrüüße met [http://www.digitalia.be/software/slimbox2 Slimbox 2] aan, wam_mer op e Mini-Belldsche klicke deiht.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

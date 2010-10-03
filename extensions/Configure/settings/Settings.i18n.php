@@ -3407,6 +3407,7 @@ $messages['br'] = array(
 	'configure-setting-wgMaxPPNodeCount' => 'Niver uhelañ a skoulmoù a vo parset gant ar rakprosesor',
 	'configure-setting-wgMaxTemplateDepth' => 'Harz donder ar patromoù evit ar rakprosesor',
 	'configure-setting-wgParserConf' => 'Kefluniadur ar parser',
+	'configure-setting-wgParserCacheExpireTime' => 'Prantad termen krubuilh ar parser',
 	'configure-setting-wgParserTestFiles' => 'Restroù da lakaat da vont en-dro evit parserTests.php',
 	'configure-setting-wgAmericanDates' => 'Implijout "May 12" e plas "12 May" e saozneg',
 	'configure-setting-wgForceUIMsgAsContentMsg' => 'Anv kemennadennoù UI da implijout evel kemennadenn danvez',
@@ -3503,6 +3504,7 @@ $messages['br'] = array(
 	'configure-setting-wgAPICacheHelp' => 'Kuzhat testenn skoazell an API',
 	'configure-setting-wgAPIMaxResultSize' => "Ment uhelañ (en oktedoù) evit un disoc'h API",
 	'configure-setting-wgDisableQueryPageUpdate' => 'Pajennoù arbennik diweredekaet',
+	'configure-setting-wgDisableSearchUpdate' => 'Diweredekaat an hizivadennoù evit klask',
 	'configure-setting-wgDisableTextSearch' => 'Diweredekaat an enklaskoù en destenn glok',
 	'configure-setting-wgFixArabicUnicode' => 'Naetaat an heuliadoù Unicode dispredet en testennoù arabek',
 	'configure-setting-wgFixMalayalamUnicode' => 'Naetaat an heuliadoù Unicode dispredet en testennoù malayalamek',
@@ -3518,12 +3520,14 @@ $messages['br'] = array(
 	'configure-setting-wgSessionName' => "Anv an dalc'h",
 	'configure-setting-wgSquidServers' => "Ur roll eus ar servijerioù proksi (chomlec'hioù IP ma vez tu) da spurjañ pa vez kemmoù",
 	'configure-setting-wgUseSquid' => 'Gweredekaat Squid',
+	'configure-setting-wgAllowSlowParserFunctions' => "Aotren arc'hwelioù ar parser gorrek",
 	'configure-setting-wgAPIListModules' => 'Astennoù modulennoù roll an API',
 	'configure-setting-wgAutoloadClasses' => "Lerc'hiadur ar restroù rumm",
 	'configure-setting-wgAvailableRights' => 'Roll ar gwirioù da gaout',
 	'configure-setting-wgDisableInternalSearch' => "Diweredekaat ar c'hlask diabarzh",
 	'configure-setting-wgExtensionAliasesFiles' => 'Aliasoù evit ar pajennoù arbennik pourchaset gant an astennoù',
 	'configure-setting-wgExtensionAssetsPath' => "URL kavlec'h an astennoù",
+	'configure-setting-wgExtensionCredits' => 'Roll hollek kredoù an astennoù',
 	'configure-setting-wgExtensionFunctions' => "Arc'hwelioù an astennoù",
 	'configure-setting-wgExtensionMessagesFiles' => 'Restroù kemennadennoù an astennoù',
 	'configure-setting-wgExternalStores' => 'Kefluniadur ar stokañ diavaez',
@@ -8088,6 +8092,7 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Herr Mlinka
  */
 $messages['hr'] = array(
 	'configure-setting-wgSitename' => 'Naziv projekta',
@@ -8127,6 +8132,7 @@ $messages['hr'] = array(
 	'configure-setting-wgEnableUserEmail' => 'Omogući suradnik-suradniku e-mail',
 	'configure-setting-wgPasswordSender' => 'E-mail adresa podsjetnika za lozinke',
 	'configure-setting-wgSMTP' => 'SMTP server',
+	'configure-setting-wgLocaltimezone' => 'Lokalna vremenska zona',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -11729,6 +11735,7 @@ $messages['lb'] = array(
 	'configure-setting-wgMaximumMovedPages' => 'Maximal Zuel vu Säiten déi mateneen geréckelt kënne ginn wann Ënnersäiten mat enger Säit geréckelt ginn',
 	'configure-setting-wgMemoryLimit' => 'Déi minimal Gréisst vum Späicher dee MediaWiki "brauch"',
 	'configure-setting-wgMiserMode' => 'E puer Functionalitéiten déi Performance-intensiv sinn ausschalten',
+	'configure-setting-wgCacheVaryCookies' => 'Eng Lëscht vu Cookien déi den Tëschespäicher veränneren',
 	'configure-setting-wgCookieExpiration' => 'Liewensdauer vun HTTP-Cookien',
 	'configure-setting-wgCookieSecure' => 'Sécher Cookien',
 	'configure-setting-wgDisableCookieCheck' => 'Session-Cookien deasaktivéieren',

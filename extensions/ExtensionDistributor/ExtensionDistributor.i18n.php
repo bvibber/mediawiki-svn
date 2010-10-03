@@ -302,7 +302,7 @@ $messages['br'] = array(
 	'extdist-no-such-extension' => 'N\'eus ket eus an astenn "$1"',
 	'extdist-no-such-version' => 'N\'eus ket eus an astenn "$1" en doare "$2".',
 	'extdist-choose-extension' => "Dibabit peseurt astenn ho peus c'hoant pellgargañ :",
-	'extdist-wc-empty' => "Kavlec'h eiladoù kefluniet al labour en deus astenn dasparzh ebet!",
+	'extdist-wc-empty' => "Kavlec'h eiladoù kefluniet al labour en deus astenn dasparzh ebet !",
 	'extdist-submit-extension' => "Kenderc'hel",
 	'extdist-current-version' => 'Doare diorroiñ (trunk)',
 	'extdist-choose-version' => "<big>Emaoc'h o pellgargañ an astenn <b>$1</b>.</big>
@@ -320,9 +320,9 @@ Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neu
 	'extdist-tar-error' => "Tar en deus adtroet ar c'hod dont er-maez $1 :",
 	'extdist-created' => "Un eilad eus ar stumm <b>$2</b> eus <b>$1</b> astenn evit MediaWiki <b>$3</b> a zo bet krouet. Ho pellgargadenn a rank kregiñ a-benn 5 eilenn.
 
-Url an eilad zo:
+Url an eilad zo :
 :$4
-Gallout a ra bezañ implijet evit pellgargañ war-du  ur servijer, met trugarez da chom hep skrivañ anezho en ho sinedoù peogwir ne vo ket hizivikaet hag e vo dilamet a-c'houdevezh.
+Gallout a ra bezañ implijet evit pellgargañ war-du ur servijer, met trugarez da chom hep skrivañ anezho en ho sinedoù peogwir ne vo ket hizivaet hag e vo dilamet a-c'houdevezh.
 
 An diell tar a vo tennet en ho kavlec'h. Da skouer en ur reizhiad evel Unix:
 

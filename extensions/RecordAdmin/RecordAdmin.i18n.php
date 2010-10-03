@@ -282,7 +282,9 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'recordadmin' => 'Mererezh an enrolladennoù',
-	'recordadmin-desc' => 'Ur [[Special:RecordAdmin|bajenn dibar]] da gavout ha da gemmañ pajennoù enrollet en ur ober gant ur furmskrid',
+	'recordadmin-desc' => 'Deveret eo an Enklaskoù, ar rekedoù, ar furmskridoù hag ar rentaoù-kont war roadennoù ar wiki eus arventennoù ar patrom.',
+	'recordadmin-specialdesc' => 'Ur [[Special:RecordAdmin|bajenn dibar]] da gavout ha da sevel pajennoù en ur ober gant furmskridoù stag.',
+	'recordadmin-noforms' => "Evit ar mare n'eus bet termenet furmskrid ebet da implijout evit ar c'hlask har ar c'hrouiñ",
 	'recordadmin-select' => 'Diuzañ',
 	'recordadmin-createtype' => 'Ebarzhiñ anv ur seurt enrolladennoù nevez evit e grouiñ',
 	'recordadmin-recordtype' => 'seurt enrolladenn',
@@ -317,6 +319,7 @@ $messages['br'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1" ebet',
+	'recordadmin-edit-info' => "Er bajenn-mañ ez eus patromoù dezho o furmskridoù o-unan a c'hallit leuniañ adalek an strobad ivinelloù-mañ.",
 	'recordadmin-properties' => 'Perzhioù',
 );
 

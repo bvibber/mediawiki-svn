@@ -143,6 +143,19 @@ $messages['nl'] = array(
 	'specialarc2admin' => 'ARC2 RDF-opslag beheren',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'rdfio-desc' => 'Utvidet RDF Import/Eksport-funksjonalitet, inkludert SPARQL-endepunkt, for Semantic MediaWiki',
+	'rdfimport' => 'RDF Import',
+	'rdfio-arc2admin-desc' => 'Administrasjonsside for ARC2 RDF Store for Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'En spesialside for import av semantiske data i formatet RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Et SPARQL-endepunkt levert av SMWRDFConnector',
+	'sparqlendpoint' => 'SPARQL-endepunkt',
+	'specialarc2admin' => 'ARC2 RDF Store-administrasjonsside',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

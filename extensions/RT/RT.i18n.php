@@ -466,6 +466,8 @@ $messages['lb'] = array(
 	'rt-desc' => 'Interface fir RT (Request Tracker)',
 	'rt-inactive' => "D'RT-Erweiderung ass net aktiv",
 	'rt-badquery' => "D'RT-Erweiderung hat bäi der Kommunikatioun mat der RT-Datebank e Problem",
+	'rt-badlimit' => "Parameter \"LIMIT (l)\" net valabel: Et muss eng Zuel sinn.
+Dir hutt '''\$1''' probéiert",
 	'rt-nomatches' => 'Et goufe keng RT Tickete fonnt déi dorop passen',
 );
 

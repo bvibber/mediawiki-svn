@@ -42,6 +42,13 @@ $messages['br'] = array(
 	'xmlrc-desc' => "Kas a ra kemennadennoù diwar-benn ar cheñchamantoù d'ar furmad XML, dre UDP, Jabber pe dre doareoù all",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'xmlrc-desc' => 'Slanje obavještenja o promjenama u vidu XML, putem UDP, Jabber ili drugim sredstvima.',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

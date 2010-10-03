@@ -140,6 +140,13 @@ $messages['ja'] = array(
 	'parserwiki-desc' => 'ウィキ内で文法を定義し、定義した文法をそのウィキへ情報を入力するのに使えるようにする',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'parserwiki-desc' => 'Määt et müjjelesch, en fomaale Jrammatek eem Wiki opzestelle, un di dann ze bruche, öm Enfommazjuhne en et Wiki enzejävve.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

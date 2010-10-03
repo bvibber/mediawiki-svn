@@ -309,6 +309,7 @@ $messages['bs'] = array(
 	'masseditregex-matchtxt' => 'Traži:',
 	'masseditregex-replacetxt' => 'Zamijeni sa:',
 	'masseditregex-executebtn' => 'Izvrši',
+	'masseditregex-err-nopages' => 'Morate navesti barem jednu stranicu koja se treba mijenjati.',
 	'masseditregex-before' => 'Prije',
 	'masseditregex-after' => 'Poslije',
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|izmjena|izmjene|izmjena}}',
@@ -319,6 +320,7 @@ $messages['bs'] = array(
 	'masseditregex-hint-headreplace' => 'Zamjena',
 	'masseditregex-hint-headeffect' => 'Efekat',
 	'masseditregex-listtype-intro' => 'Ovo je spisak:',
+	'masseditregex-listtype-pagenames' => 'Nazivi stranica (uredite ove stranice)',
 	'masseditregex-editfailed' => 'Uređivanje neuspjelo:',
 	'masseditregex-tooltip-execute' => 'Primijeni ove izmjene na svaku stranicu',
 );

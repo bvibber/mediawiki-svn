@@ -34,6 +34,13 @@ $messages['be-tarask'] = array(
 	'livelets-desc' => 'Дазваляе дадаваць да старонак пасьля асноўнага зьместу зьвесткі, якія дынамічна абнаўляюцца праз Ajax',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'livelets-desc' => 'Talvezout a ra da gargañ danvez pennañ ur bajenn a-raok kargañ hag enframmañ enni pajennoù all a vo hizivaet ent dinamek a-drugarez da Ajax.',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -43,6 +50,7 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
 	'livelets-desc' => 'Ermöglicht es, Seiten nach dem Laden der Hauptseite in deren Inhalte zu transkludieren und diese dynamisch mit Hilfe von Ajax zu aktualisieren',
@@ -72,6 +80,7 @@ $messages['gl'] = array(
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Purodha
  */
 $messages['gsw'] = array(
 	'livelets-desc' => 'Macht s megli, Syte noch em Lade vu dr Houptsyte in dr Inhalt vun ere z transkludiere un die dynamisch mit Hilf vu Ajax z aktualisiere',
@@ -89,6 +98,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'livelets-desc' => 'いくつかのページを、ページの主な内容が読み込まれた後に、取り込まれるよう設定し、それらをAjaxを使って動的に更新できるようにする',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'livelets-desc' => 'Määt et müjjelech, Sigge en ander Sigge enzefööje, di noh däm eijentlesche Siggeenhalt jelaade wääde un sesch dynaamesch met Ajax ändere un op ene neue Shtand bränge lohße.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

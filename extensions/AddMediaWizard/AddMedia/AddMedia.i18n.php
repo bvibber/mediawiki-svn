@@ -3422,8 +3422,30 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 od $2',
 	'mwe-upload-unknown-size' => 'Nepoznata veličina',
+	'mwe-cancel-confim' => 'Jeste li sigurni da želite odustati?',
 	'mwe-unknown-error' => 'Nepoznata pogreška:',
+	'mwe-fileexists-thumb' => 'Postojeća datoteka',
+	'mwe-filedesc' => 'Sažetak',
+	'mwe-filesource' => 'Izvor:',
+	'fogg-date-title' => 'Datum',
+	'fogg-location-title' => 'Lokacija',
+	'mwe-select_file' => 'Odaberite datoteku',
+	'mwe-summary' => 'Sažetak',
+	'mwe-uploaded-time-remaining' => 'Preostalo vrijeme: $1',
+	'mwe-try-again-link' => 'pokušajte ponovno',
+	'mwe-ftype-svg' => 'SVG vektor datoteka',
+	'mwe-ftype-jpg' => 'JPEG slikovna datoteka',
+	'mwe-ftype-png' => 'PNG slikovna datoteka',
+	'mwe-ftype-oga' => 'Ogg audio datoteka',
+	'mwe-ftype-ogg' => 'Ogg video datoteka',
+	'fogg-select_file' => 'Odaberite datoteku',
+	'fogg-select_new_file' => 'Odaberite novu datoteku',
+	'fogg-select_url' => 'Odaberite URL',
+	'fogg-installed' => 'Firefogg je instaliran.',
+	'fogg-not-installed' => 'Firefogg nije instaliran ili nije osposobljen.',
+	'fogg-please-install-install-linktext' => 'Instalirajte Firefogg',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -4901,6 +4923,7 @@ $messages['lb'] = array(
 	'rsd_do_insert' => 'Drasetzen',
 	'mwe-cc_by_title' => 'Attributioun',
 	'mwe-cc_nc_title' => 'Net-kommerziell',
+	'mwe-cc_nd_title' => 'Keng verännert Wierker',
 	'mwe-unknown_license' => 'Onbekannte Lizenz',
 	'mwe-results_from' => 'Resultater vu(n) $1',
 	'mwe-your-recent-uploads' => 'Är Fichieren déi Dir rezent op $1 eropgelueden hutt',

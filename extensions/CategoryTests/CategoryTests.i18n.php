@@ -280,6 +280,13 @@ $messages['lb'] = array(
 	'categorytests-desc' => 'Fonctioune fir Teste vu Kategorien',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'categorytests-desc' => 'Functies veur categorieteste',
+);
+
 /** Latgalian (Latgaļu)
  * @author Dark Eagle
  */

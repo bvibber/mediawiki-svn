@@ -309,10 +309,14 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Karthi.dr
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'articletocategory2-desc' => 'ஒவ்வொரு பகுப்பிலும் ஒரு உள்ளீட்டுப்  பெட்டியை இடுவதன் மூலம் இப்பகுப்பில் நேரடியாக புதிய  பக்கமொன்றை  உருவாக்க வழிகோலும்',
+	'articletocategory2-create-article-under-category-text' => 'இப்பகுப்பில் ஒரு பக்கத்தைச் சேர்க்கவும்',
 	'articletocategory2-create-article-under-category-button' => 'உருவாக்கவும்',
+	'articletocategory2-create-category-under-category-text' => 'இப்பகுப்பில் ஒரு பகுப்பைச் சேர்க்கவும்',
 	'articletocategory2-create-category-under-category-button' => 'உருவாக்கவும்',
 );
 

@@ -646,6 +646,14 @@ $messages['he'] = array(
 	'amazonplus-less' => 'פחות',
 );
 
+/** Croatian (Hrvatski)
+ * @author Herr Mlinka
+ */
+$messages['hr'] = array(
+	'amazonplus-more' => 'više',
+	'amazonplus-less' => 'manje',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

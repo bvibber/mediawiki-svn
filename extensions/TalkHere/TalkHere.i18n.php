@@ -1010,6 +1010,10 @@ Sajtens operatörer kan inte ta ansvar för innehållet i vissa kommentarer.',
  * @author Veeven
  */
 $messages['te'] = array(
+	'talkhere-desc' => 'చర్చాపుటని పుటలో చేరుస్తుంది',
+	'talkhere-foottext' => 'ఈ పై వ్యాఖ్యలు ఈ సైటు సందర్శకులవి.
+
+ఆ వ్యాఖ్యల లోని విషయానికి ఈ సైటు నిర్వాహకులు భాద్యులు కారు.',
 	'talkhere-talkpage' => 'చర్చా పేజీ',
 	'talkhere-notalk' => "''(ఇంకా వ్యాఖ్యలు లేవు)''",
 	'talkhere-addcomment' => 'వ్యాఖ్యానించండి',

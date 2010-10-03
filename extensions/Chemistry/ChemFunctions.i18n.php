@@ -1229,6 +1229,16 @@ $messages['sv'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: Fel i indata!',
 );
 
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ */
+$messages['ta'] = array(
+	'chemicalsources' => 'வேதியியல் மூலங்கள்',
+	'chemFunctions_ListPage' => 'வேதியியல் மூலங்கள்',
+	'chemFunctions_Formula' => 'வாய்பாடு',
+	'chemFunctions_Name' => 'IUPAC பெயர்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

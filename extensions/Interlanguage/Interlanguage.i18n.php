@@ -54,7 +54,8 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'interlanguage-desc' => 'Dastum a ra liammoù etreyezhoù adalek ur wiki all',
+	'interlanguage-desc' => 'Talvezout a ra da zastum liammoù etreyezhoù adalek ur wiki all',
+	'interlanguage-pagelinksexplanation' => 'Pejannoù enno liammoù etreezhoù :',
 );
 
 /** Bosnian (Bosanski)
@@ -94,9 +95,11 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'interlanguage-desc' => 'Coge vínculos interidiomáticos de otro wiki',
+	'interlanguage-pagelinksexplanation' => 'Páginas con enlaces interidioma:',
 );
 
 /** Basque (Euskara)
@@ -182,6 +185,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'interlanguage-desc' => 'Collige ligamines interlingual ex un altere wiki',
+	'interlanguage-pagelinksexplanation' => 'Paginas con ligamines de linguas:',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -252,6 +256,7 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'interlanguage-desc' => 'Haalt intertaalverwijzingen uit een andere wiki',
+	'interlanguage-pagelinksexplanation' => "Pagina's met taalverwijzingen:",
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -266,6 +271,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'interlanguage-desc' => 'Henter språklenker fra andre wikier',
+	'interlanguage-pagelinksexplanation' => 'Sider med språklenker:',
 );
 
 /** Occitan (Occitan)
@@ -319,11 +325,13 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author MaxSem
  * @author Prima klasy4na
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'interlanguage-desc' => 'Захватывает межъязыковые ссылки из другой вики',
+	'interlanguage-pagelinksexplanation' => 'Страницы с межъязыковыми ссылками:',
 );
 
 /** Yakut (Саха тыла)

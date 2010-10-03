@@ -366,6 +366,32 @@ U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 heeft gereageerd op uw bondige samenvatting',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'reflect-desc' => 'Forbedring av trådede kommentarer',
+	'reflect-bulleted' => 'Hei $1,
+
+$2 har oppsummert et poeng du kom med i tråden «$3».
+
+Deres oppsummering: «$5».
+
+Du kan bekrefte hvorvidt $2 tok poenget ditt riktig ved å gå til <$4>.
+
+Du vil være i stand til klargjøre poenget ditt om det skulle være en misforståelse.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Ditt poeng ble oppsummert av $2',
+	'reflect-responded' => 'Hei $1,
+
+$2 har svart på ditt sammendrag av et poeng de gjorde.
+
+Sammendraget du lagde: «$6».
+Deres melding: «$5».
+
+Om du vil lese dette svaret i kontekst, gå til <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 har svart på ditt sammendragspunkt',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

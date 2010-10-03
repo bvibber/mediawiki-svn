@@ -169,6 +169,7 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  * @author Y-M D
  */
@@ -182,6 +183,7 @@ Mar plij, cheñchit pe hizivit ho merdeer.",
 	'cb_show_no_parents_only' => 'Diskouez ar rummadoù emzivad',
 	'cb_cat_name_filter' => "O klask war-lec'h rummadoù hervez o anv :",
 	'cb_cat_name_filter_clear' => 'Pouezit evit dizober sil anv ar rummad',
+	'cb_cat_name_filter_ci' => 'Diseblant ouzh ar pennlizherenoù',
 	'cb_copy_line_hint' => 'Implijit ar boutonoù [+] ha [>+] evit eilañ ha pegañ an oberataerioù er jedad dibabet',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|isrummad|isrummad}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|pajenn|pajenn}}',

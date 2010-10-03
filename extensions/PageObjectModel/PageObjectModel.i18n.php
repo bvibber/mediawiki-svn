@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'pageobjectmodel-desc' => 'Adds a set of classes for abstraction of MediaWiki syntax to allow easy extraction and manipulation of pages within other programs',
 );
 
+/** Message documentation (Message documentation)
+ * @author Purodha
+ */
+$messages['qqq'] = array(
+	'pageobjectmodel-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
@@ -102,6 +109,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'pageobjectmodel-desc' => '他のプログラム内での、ページの簡単な抽出や操作を許可するために、MediaWiki構文の抽象化クラスを追加する。',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'pageobjectmodel-desc' => 'Brängk en Reih vun Klasse för vum MediaWiki affzesinn en et Wiki, för eine eijfaache Expoot vun Daate un der Zohjreff un et Ändere met ander Projramme müjjelesch ze maache.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

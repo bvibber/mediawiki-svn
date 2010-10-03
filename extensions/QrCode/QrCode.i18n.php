@@ -31,6 +31,13 @@ $messages['be-tarask'] = array(
 	'qrcode-desc' => 'Стварае і дадае выявы QR Code на вікі-старонкі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'qrcode-desc' => 'Genel hag ouzhpennañ a ra skeudennoù "kod QR" d\'ur bajenn wiki',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'qrcode-desc' => 'Erzeugt QR Code-Grafiken und fügt diese der Seite hinzu',
@@ -77,6 +84,13 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'qrcode-desc' => 'ウィキのページに、QRコードを生成し追加する',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'qrcode-desc' => 'Määt Belldscher met QR Koods un bout se och en dem Wiki sing Sigge en.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

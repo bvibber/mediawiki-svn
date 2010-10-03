@@ -1278,6 +1278,7 @@ You can enter an optional '''Destination filename''' and provide a '''Summary'''
 Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleupload-page}}|file deletion policy]].",
 	'multiupload-fileuploaded' => 'دوتنه مو پورته شوه.',
 	'multiupload-toolbox' => 'ګڼ شمېر دوتنې پورته کول',
+	'multiupload-blank' => 'کومه دوتنه نه ده ټاکل شوې',
 );
 
 /** Portuguese (Português)
