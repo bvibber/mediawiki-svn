@@ -13,7 +13,7 @@ $messages = array();
  * @author Purodha <http://ksh.wikipedia.org/wiki/User:Purodha>
  */
 $messages['en'] = array(
-	'specialtalk-desc'   => 'Adds a talk tab to [[Special:Specialpages|special pages]]',
+	'specialtalk-desc'   => 'Adds a talk tab to [[Special:SpecialPages|special pages]]',
 );
 
 /** Message documentation (Message documentation)
