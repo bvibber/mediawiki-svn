@@ -18,7 +18,11 @@ class UploadFromFileToStash extends UploadFromFile {
 	 * Instead, we store it in the SessionStash, and return metadata about the file
 	 * We also create a thumbnail, which is visible only to the uploading user.
 	 *
-	 * @return {Status} result
+	 * @param {String} $comment optional -- should not be used, here for parent class compatibility
+	 * @param {String} $pageText: optional -- should not be used, here only for parent class compatibility
+	 * @param {Boolean} $watch: optional -- whether to watchlist this item, should be unused, only here for parent class compatibility
+	 * @param {User} $uer: optional -- current user, should not be used, only here for parent class compatibility
+	 * @return {Status} $status
 	 */
 	public function performUpload( $comment, $pageText, $watch, $user ) { 
 		$status = new Status();
@@ -31,8 +35,11 @@ class UploadFromFileToStash extends UploadFromFile {
 				'mFileProps' => $this->mFileProps 
 			);
 
+			if ( ! is_uploaded_file( $this->mLocalFile ) ) {
+				throw new MWException( 'badpath' );
+			}
 			// we now change the value of the local file
-			$this->mLocalFile = $stash->stashFile( false, $this->mTempPath, $data );
+			$this->mLocalFile = $stash->stashFile( $this->mTempPath, $data );
 			$status->setResult( true, $this->mLocalFile );
 
 		} catch ( Exception $e ) { 

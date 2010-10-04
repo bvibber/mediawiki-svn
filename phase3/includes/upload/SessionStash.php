@@ -62,29 +62,33 @@ class SessionStash {
 	}
 
 	/** 
-	 * Get a file from the stash.
-	 * May throw exception if session data cannot be parsed due to schema change.
+	 * Get a file and its metadata from the stash.
+	 * May throw exception if session data cannot be parsed due to schema change, or key not found.
 	 * @param {Integer} $key: key
-	 * @return {null|SessionStashItem} null if no such item or item out of date, or the item
+	 * @throws SessionStashFileNotFoundException
+	 * @throws MWException
+	 * @return {SessionStashItem} null if no such item or item out of date, or the item
 	 */
 	public function getFile( $key ) { 
 		if ( !isset( $this->files[$key] ) ) {
 			if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME][$key] ) ) {
-				return $this->files[$key] = null;
+				throw new SessionStashFileNotFoundException();
 			}
 
-			$stashData = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
-	
+			$data = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
+wfDebug( "SESSION DATA: \n");
+wfDebug( print_r( $data, 1 ) );	
 			// guards against PHP class changing while session data doesn't
-			if ($stashData['version'] !== UploadBase::SESSION_VERSION ) {
-				return $this->files[$key] = null;
+			if ($data['version'] !== UploadBase::SESSION_VERSION ) {
+				throw new MWException( 'outdated session version' );
 			}
-			
-			// The path is flattened in with the other random props so we have to dig it out.
-			$path = $stashData['mTempPath'];
-			$data = array_diff_key( $data, array( 'mTempPath' => true ) );
+		
+			// separate the stashData into the path, and then the rest of the data
+			$path = $data['mTempPath'];
+			unset( $data['mTempPath'] );
 
 			$file = new SessionStashFile( $this, $this->repo, $path, $key, $data );
+wfDebug( "file = " . print_r( $file, 1 ) );
 			$this->files[$key] = $file;
 
 		}
@@ -93,16 +97,24 @@ class SessionStash {
 
 	/**
 	 * Stash a file in a temp directory and record that we did this in the session, along with other parameters.
-	 * @param {Integer} $key: unique key. Used for directory hashing when storing, otherwise not important
+	 * We store data in a flat key-val namespace because that's how UploadBase did it. This also means we have to
+	 * ensure that the key-val pairs in $data do not overwrite other required fields.
+	 *
 	 * @param {String} $path: path to file you want stashed
-	 * @param {Array} $data: other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or 'version' as keys here
+	 * @param {Array} $data: optional, other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or 'version' as keys here
+	 * @param {String} $key: optional, unique key for this session. Used for directory hashing when storing, otherwise not important
 	 * @return {null|SessionStashFile} file, or null on failure
 	 */
-	public function stashFile( $key, $path, $data = array() ) {
-		if ( !$key ) {
-			// FIXME: Doesn't sound like a good idea if $key is to be unique
-			// Also, why is this an integer rather than a string?
-			$key = mt_rand( 0, 0x7fffffff );
+	public function stashFile( $path, $data = array(), $key = null ) {
+		if ( ! file_exists( $path ) ) {
+			throw new SessionStashBadPathException();
+		}
+                $fileProps = File::getPropsFromPath( $path );
+
+		// If no key was supplied, use content hash. Also has the nice property of collapsing multiple identical files
+		// uploaded this session, which could happen if uploads had failed.
+		if ( is_null( $key ) ) {
+			$key = $fileProps['sha1'];
 		}
 
 		// if not already in a temporary area, put it there 
@@ -111,46 +123,43 @@ class SessionStash {
 			return null;
 		}
 		$stashPath = $status->value;
-
-                
-                // get props
-                $fileProps = File::getPropsFromPath( $path );
-		$fileSize = $fileProps['size'];
 		 		
-		// standard info we always store.
+		// required info we always store. Must trump any other application info in data()
 		// 'mTempPath', 'mFileSize', and 'mFileProps' are arbitrary names
 		// chosen for compatibility with UploadBase's way of doing this.
-		$stashData = array( 
+		$requiredData = array( 
 			'mTempPath' => $stashPath,
-			'mFileSize' => $fileSize,
+			'mFileSize' => $fileProps['size'],
 			'mFileProps' =>	$fileProps,
 			'version' => UploadBase::SESSION_VERSION
 		);
 
-		// put extended info into the session (this changes from application to application).
-		// UploadWizard wants different things than say FirefoggChunkedUpload.
-		// Order is relevant: in case of a key collision, the value from $stashData wins
-		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $data + $stashData;
+		// now, merge required info and extra data into the session. (The extra data changes from application to application.
+		// UploadWizard wants different things than say FirefoggChunkedUpload.)
+		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = array_merge( $data, $requiredData );
 		
 		return $this->getFile( $key );
 	}
 }
 
 class SessionStashFile extends UnregisteredLocalFile {
-	public $sessionStash;
-	public $sessionKey;
-	public $sessionData;
+	private $sessionStash;
+	private $sessionKey;
+	private $sessionData;
 	private $urlName;
 
 	/**
 	 * A LocalFile wrapper around a file that has been temporarily stashed, so we can do things like create thumbnails for it
 	 * Arguably UnregisteredLocalFile should be handling its own file repo but that class is a bit retarded currently
+	 * @param {SessionStash} $stash: SessionStash, useful for obtaining config, stashing transformed files
 	 * @param {FileRepo} $repo: repository where we should find the path
 	 * @param {String} $path: path to file
+	 * @param {String} $key: key to store the path and any stashed data under
+	 * @param {String} $data: any other data we want stored with this file
 	 * @throws SessionStashBadPathException
 	 * @throws SessionStashFileNotFoundException
 	 */
-	public function __construct( $stash, $repo, $path, $key, $data ) { // FIXME: document $stash, $key, $data --RK
+	public function __construct( $stash, $repo, $path, $key, $data ) { 
 		$this->sessionStash = $stash;
 		$this->sessionKey = $key;
 		$this->sessionData = $data;
@@ -269,7 +278,6 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 */
 	public function getThumbUrl( $thumbName = false ) { 
 		$path = $this->sessionStash->getBaseUrl();
-		$extension = $this->getExtension(); // Unused. Should this be appended to $path ? --RK
 		if ( $thumbName !== false ) {
 			$path .= '/' . rawurlencode( $thumbName );
 		}
@@ -279,10 +287,9 @@ class SessionStashFile extends UnregisteredLocalFile {
 	/** 
 	 * The basename for the URL, which we want to not be related to the filename.
 	 * Will also be used as the lookup key for a thumbnail file.
-	 * @param {Array} optional transformation parameters
 	 * @return {String} base url name, like '120px-123456.jpg'
 	 */
-	public function getUrlName() { // FIXME: Docs say this has a parameter, but it doesn't --RK
+	public function getUrlName() { 
 		if ( ! $this->urlName ) {
 			$this->urlName = $this->sessionKey . '.' . $this->getExtension();
 		}
@@ -330,7 +337,6 @@ class SessionStashFile extends UnregisteredLocalFile {
 
 		// returns a ThumbnailImage object containing the url and path. Note. NOT A FILE OBJECT.
 		$thumb = parent::transform( $params, $flags );
-
 		$key = $this->thumbName($params);
 
 		// remove extension, so it's stored in the session under '120px-123456'
@@ -341,7 +347,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		// stash the thumbnail File, and provide our caller with a way to get at its properties
-		$stashedThumbFile = $this->sessionStash->stashFile( $key, $thumb->path );
+		$stashedThumbFile = $this->sessionStash->stashFile( $thumb->path, array(), $key );
 		$thumb->thumbnailFile = $stashedThumbFile;
 
 		return $thumb;	
