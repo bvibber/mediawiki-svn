@@ -76,8 +76,6 @@ class SessionStash {
 			}
 
 			$data = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
-wfDebug( "SESSION DATA: \n");
-wfDebug( print_r( $data, 1 ) );	
 			// guards against PHP class changing while session data doesn't
 			if ($data['version'] !== UploadBase::SESSION_VERSION ) {
 				throw new MWException( 'outdated session version' );
@@ -88,7 +86,6 @@ wfDebug( print_r( $data, 1 ) );
 			unset( $data['mTempPath'] );
 
 			$file = new SessionStashFile( $this, $this->repo, $path, $key, $data );
-wfDebug( "file = " . print_r( $file, 1 ) );
 			$this->files[$key] = $file;
 
 		}
