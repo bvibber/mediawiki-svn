@@ -11,7 +11,6 @@
  *     the session, even the uploading user. See SpecialSessionStash, which implements a web interface to some files stored this way.
  *
  */
-
 class SessionStash {
 	// repository that this uses to store temp files
 	protected $repo; 
@@ -27,9 +26,9 @@ class SessionStash {
 	// const SESSION_KEYNAME = 'wsUploadData';
 
 	/**
-	 * Represents the session which contain temporarily stored files.
-	 * Designed to be compatible with the session stashing code in UploadBase (should replace eventually)
-	 * @param {FileRepo} optional -- repo in which to store files. Will choose LocalRepo if not supplied.
+	 * Represents the session which contains temporarily stored files.
+	 * Designed to be compatible with the session stashing code in UploadBase (should replace it eventually)
+	 * @param {FileRepo} $repo: optional -- repo in which to store files. Will choose LocalRepo if not supplied.
 	 */
 	public function __construct( $repo = null ) { 
 
@@ -47,7 +46,7 @@ class SessionStash {
 			throw new MWException( 'session not available' );
 		}
 
-		if ( ! array_key_exists( UploadBase::SESSION_KEYNAME, $_SESSION ) ) {
+		if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME] ) ) {
 			$_SESSION[UploadBase::SESSION_KEYNAME] = array();
 		}
 		
@@ -65,31 +64,25 @@ class SessionStash {
 	/** 
 	 * Get a file from the stash.
 	 * May throw exception if session data cannot be parsed due to schema change.
-	 * @param {Integer} key
+	 * @param {Integer} $key: key
 	 * @return {null|SessionStashItem} null if no such item or item out of date, or the item
 	 */
 	public function getFile( $key ) { 
 		if ( !isset( $this->files[$key] ) ) {
 			if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME][$key] ) ) {
-				throw new SessionStashFileNotFoundException();
+				return $this->files[$key] = null;
 			}
 
 			$stashData = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
 	
 			// guards against PHP class changing while session data doesn't
 			if ($stashData['version'] !== UploadBase::SESSION_VERSION ) {
-				throw new MWException( 'outdated session version' );
+				return $this->files[$key] = null;
 			}
 			
 			// The path is flattened in with the other random props so we have to dig it out.
-			$data = array();
-			foreach( $stashData as $stashKey => $stashVal ) {
-				if ( $stashKey === 'mTempPath' ) {
-					$path = $stashVal;
-				} else {
-					$data[ $stashKey ] = $stashVal;
-				}
-			} 
+			$path = $stashData['mTempPath'];
+			$data = array_diff_key( $data, array( 'mTempPath' => true ) );
 
 			$file = new SessionStashFile( $this, $this->repo, $path, $key, $data );
 			$this->files[$key] = $file;
@@ -100,20 +93,22 @@ class SessionStash {
 
 	/**
 	 * Stash a file in a temp directory and record that we did this in the session, along with other parameters.
-	 * @param {String} name - this is used for directory hashing when storing. Otherwise not important
-	 * @param {String} path - path to file you want stashed
-	 * @param {Array} data - other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or version as keys here
-	 * @return {SessionStashFile} file
+	 * @param {Integer} $key: unique key. Used for directory hashing when storing, otherwise not important
+	 * @param {String} $path: path to file you want stashed
+	 * @param {Array} $data: other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or 'version' as keys here
+	 * @return {null|SessionStashFile} file, or null on failure
 	 */
 	public function stashFile( $key, $path, $data = array() ) {
 		if ( !$key ) {
+			// FIXME: Doesn't sound like a good idea if $key is to be unique
+			// Also, why is this an integer rather than a string?
 			$key = mt_rand( 0, 0x7fffffff );
 		}
 
 		// if not already in a temporary area, put it there 
 		$status = $this->repo->storeTemp( basename($path), $path );
 		if( !$status->isOK() ) {
-			return false;
+			return null;
 		}
 		$stashPath = $status->value;
 
@@ -134,13 +129,8 @@ class SessionStash {
 
 		// put extended info into the session (this changes from application to application).
 		// UploadWizard wants different things than say FirefoggChunkedUpload.
-		foreach ($data as $stashKey => $stashValue) {
-			if ( !array_key_exists( $stashKey, $data ) ) {
-				$stashData[$stashKey] = $stashValue;
-			}
-		}
-
-		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $stashData;
+		// Order is relevant: in case of a key collision, the value from $stashData wins
+		$_SESSION[UploadBase::SESSION_KEYNAME][$key] = $data + $stashData;
 		
 		return $this->getFile( $key );
 	}
@@ -155,10 +145,12 @@ class SessionStashFile extends UnregisteredLocalFile {
 	/**
 	 * A LocalFile wrapper around a file that has been temporarily stashed, so we can do things like create thumbnails for it
 	 * Arguably UnregisteredLocalFile should be handling its own file repo but that class is a bit retarded currently
-	 * @param {FileRepo} repository where we should find the path
-	 * @param {String} path to file
+	 * @param {FileRepo} $repo: repository where we should find the path
+	 * @param {String} $path: path to file
+	 * @throws SessionStashBadPathException
+	 * @throws SessionStashFileNotFoundException
 	 */
-	public function __construct( $stash, $repo, $path, $key, $data ) {
+	public function __construct( $stash, $repo, $path, $key, $data ) { // FIXME: document $stash, $key, $data --RK
 		$this->sessionStash = $stash;
 		$this->sessionKey = $key;
 		$this->sessionData = $data;
@@ -168,9 +160,9 @@ class SessionStashFile extends UnregisteredLocalFile {
 			$path = $repo->resolveVirtualUrl( $path );	
 		}
 
-		// check if path appears to be sane, no parent traverals, and is in this repo's temp zone.
+		// check if path appears to be sane, no parent traversals, and is in this repo's temp zone.
 		if ( ( ! $repo->validateFilename( $path ) ) || 
-			( strpos( $path, $repo->getZonePath( 'temp' ) ) !== 0 ) ) {
+				( strpos( $path, $repo->getZonePath( 'temp' ) ) !== 0 ) ) {
 			throw new SessionStashBadPathException();
 		}
 
@@ -200,14 +192,15 @@ class SessionStashFile extends UnregisteredLocalFile {
 	/**
 	 * Find or guess extension -- ensuring that our extension matches our mime type.
 	 * Since these files are constructed from php tempnames they may not start off 
-	 * with an extension
-	 * This does not override getExtension because things like getMimeType already call getExtension,
-	 * and that results in infinite recursion. So, we preemptively *set* the extension so getExtension can find it.
+	 * with an extension.
+	 * This does not override getExtension() because things like getMimeType() already call getExtension(),
+	 * and that results in infinite recursion. So, we preemptively *set* the extension so getExtension() can find it.
 	 * For obvious reasons this should be called as early as possible, as part of initialization
 	 */
 	public function setExtension() { 	
 		// Does this have an extension?
 		$n = strrpos( $this->path, '.' );
+		$extension = null;
 		if ( $n !== false ) {
 			$extension = $n ? substr( $this->path, $n + 1 ) : '';
 		} else {
@@ -235,7 +228,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * The actual argument is the result of thumbName although we seem to have 
 	 * buggy code elsewhere that expects a boolean 'suffix'
 	 *
-	 * @param {String|false} name of thumbnail (e.g. "120px-123456.jpg" ), or false to just get the path
+	 * @param {String|false} $thumbName: name of thumbnail (e.g. "120px-123456.jpg" ), or false to just get the path
 	 * @return {String} path thumbnail should take on filesystem, or containing directory if thumbname is false
 	 */
 	public function getThumbPath( $thumbName = false ) { 
@@ -250,7 +243,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * Return the file/url base name of a thumbnail with the specified parameters
 	 *
 	 * @param {Array} $params: handler-specific parameters
-	 * @return {String} base name for URL, like '120px-12345.jpg'
+	 * @return {String|null} base name for URL, like '120px-12345.jpg', or null if there is no handler
 	 */
 	function thumbName( $params ) {
 		if ( !$this->getHandler() ) {
@@ -258,7 +251,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 		$extension = $this->getExtension();
 		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType(), $params );
-		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getUrlName();
+		$thumbName = $this->getHandler()->makeParamString( $params ) . '-' . $this->getUrlName();
 		if ( $thumbExt != $extension ) {
 			$thumbName .= ".$thumbExt";
 		}
@@ -271,12 +264,12 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * the thumbnail urls be predictable. However, in our model the URL is not based on the filename
 	 * (that's hidden in the session)
 	 *
-	 * @param {String} basename of thumbnail file -- however, we don't want to use the file exactly
+	 * @param {String} $thumbName: basename of thumbnail file -- however, we don't want to use the file exactly
 	 * @return {String} URL to access thumbnail, or URL with partial path
 	 */
 	public function getThumbUrl( $thumbName = false ) { 
 		$path = $this->sessionStash->getBaseUrl();
-		$extension = $this->getExtension();
+		$extension = $this->getExtension(); // Unused. Should this be appended to $path ? --RK
 		if ( $thumbName !== false ) {
 			$path .= '/' . rawurlencode( $thumbName );
 		}
@@ -289,7 +282,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * @param {Array} optional transformation parameters
 	 * @return {String} base url name, like '120px-123456.jpg'
 	 */
-	public function getUrlName() {
+	public function getUrlName() { // FIXME: Docs say this has a parameter, but it doesn't --RK
 		if ( ! $this->urlName ) {
 			$this->urlName = $this->sessionKey . '.' . $this->getExtension();
 		}
@@ -326,8 +319,8 @@ class SessionStashFile extends UnregisteredLocalFile {
 	 * Here we override transform() to stash the thumbnail file, and then 
 	 * provide a way to get at the stashed thumbnail file to extract properties such as its URL
 	 *
-	 * @param {Array} parameters suitable for File::transform()
-	 * @param {Bitmask} flags suitable for File::transform()
+	 * @param {Array} $params: parameters suitable for File::transform()
+	 * @param {Bitmask} $flags: flags suitable for File::transform()
 	 * @return {ThumbnailImage} with additional File thumbnailFile property
 	 */
 	public function transform( $params, $flags = 0 ) { 
