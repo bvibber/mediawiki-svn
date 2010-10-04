@@ -4466,7 +4466,7 @@ Zréck op <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
-| E Screenshot vum neie navigatiounsinterface vu Wikipedia<small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+| E Screenshot vum neien Navigatiounsinterface vu Wikipedia<small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -4483,14 +4483,14 @@ Zréck op <span class="plainlinks">[$1 $2]</span>.',
 | E Screenshot vun der neier Dialogkëscht fir Linken anzeginn
 |}
 |}
-D'Equipe vun der Bnotzererfahrung vun der Wikimedia Foundation huet mat Fräiwëllege vun der Communautéit zesummegeschafft fir et fir Iech méi einfach ze maachen. Mir si frou fir e puer Verbesserunge bekannt ze maachen, inklusiv vun engem neie ''look and feel'' a vereinfachten Ännerungsfonctiounen. Dës Ännerungen si geduecht fir et neie Mataarbechter méi einfach ze maachen fir unzekommen a si baséieren op eisem [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Benotzerfrëndlechkeets-Test dee mir d'lescht Joer gemaach hunn]. D'Verbessere vun der Benotzerfrëndlechkeet ass eng vun de Prioritéite vun der Wikimedia Foundation a mir wäerte weider Aktualisatiounen demnächst bekannt ginn. Fir méi Informatiounen, gitt op de Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Blog].
+D'Equipe vun der Benotzererfarung vun der Wikimedia Foundation huet mat Fräiwëllege vun der Communautéit zesummegeschafft fir et fir Iech méi einfach ze maachen. Mir si frou fir e puer Verbesserunge bekannt ze maachen, inklusiv vun engem neie ''look and feel'' a vereinfachten Ännerungsfonctiounen. Dës Ännerungen si geduecht fir et neie Mataarbechter méi einfach ze maachen fir unzekommen a si baséieren op eisem [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Benotzerfrëndlechkeets-Test dee mir d'lescht Joer gemaach hunn]. D'Verbessere vun der Benotzerfrëndlechkeet ass eng vun de Prioritéite vun der Wikimedia Foundation a mir wäerte weider Aktualisatiounen demnächst bekannt ginn. Fir méi Informatiounen, gitt op de Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Blog].
 
 ===Hei ass dat wat geännert huet===
 * '''Navigatioun:''' Mir hunn d'Navigatioun fir Säiten ze liesen an z'änneren verbessert. D'Ongleten uewen op all Säit definéiere méi kloer ob een eng Säit oder eng Diskussiounssäit kuckt an ob een eng Säit kuckt oder ännert.
 * '''Verbesserunge vun der Ännerungstoolbar:''' Mir hunn d'Ännerungstoolbar reorganiséiert fir se méi einfach kënnen ze benotzen. Elo ass d'Formatéiere vu Säiten méi einfach a méi intuitiv.
 * '''Linkwizard:''' En Tool den einfach ze benotzen ass fir Linken op aner Wikipedia-Säiten a Linken op aner Siten dobäizesetzen.
 * '''Verbesserunge bei der Sich:''' Mir hunn d'Virschléi bei der Sich verbessert fir datt Dir déi Säit no där Dir sicht méi séier fannt.
-* '''Aner nei Fonctiounen:''' Mir hunn och en Assistent fir Tabellen agefouert deen et méi einfach mécht fir Tabellen unzeleën an eng Sich- an Ersetzungs-Fonctioun fir d'Ännere vu Säiten ze vereinfachen.
+* '''Aner nei Fonctiounen:''' Mir hunn och en Assistent fir Tabellen agefouert deen et méi einfach mécht fir Tabellen unzeleeën an eng Sich- an Ersetzungs-Fonctioun fir d'Ännere vu Säiten ze vereinfachen.
 * '''Wikipedia Logo''': Mir hunn de Wikipedia-Logo aktualiséiert, liest méi doriwwer am [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia Blog.]",
 	'prefswitch-main-logged-changes' => "* Den '''{{int:watch}} Tab''' ass elo ee Stäer.
 * Den '''{{int:move}} Tab''' ass elo an der Dropdown-Lëscht niewent der Sich-Këscht.",
@@ -5028,6 +5028,7 @@ $messages['mr'] = array(
 /** Malay (Bahasa Melayu)
  * @author CoolCityCat
  * @author Diagramma Della Verita
+ * @author Platonides
  */
 $messages['ms'] = array(
 	'prefswitch' => 'Keutamaan Peralihan Inisiatif Kepenggunaan',
@@ -5105,7 +5106,7 @@ Kembali ke <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-logged-changes' => "* Bahagian '''tab {{int:watch}} ''' kini berbentuk bintang.
 * Bahagian '''tab {{int:move}}''' kini terletak bersebelahan dengan bar carian.",
 	'prefswitch-main-feedback' => '===Cadangaan?===
-Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cadangan_pengguna |pandangan, pendapat dan cadangan]] kepada kami. Sekiranya anda ingin menyumbang kepakaran anda untuk meningkatkan mutu perisian dan Wikipedia, sila layari [http://usability.wikimedia.org Usability wiki] untuk maklumat lebih lanjut.',
+Kami ingin mendengar cadangan anda. Sila kemukakan [[$1|pandangan, pendapat dan cadangan]] kepada kami. Sekiranya anda ingin menyumbang kepakaran anda untuk meningkatkan mutu perisian dan Wikipedia, sila layari [http://usability.wikimedia.org Usability wiki] untuk maklumat lebih lanjut.',
 	'prefswitch-main-anon' => '===Kembali===
 [$1 Klik sini untuk mematikan ciri-ciri baru]. Anda perlu log masuk atau membuat akuan baru terlebih dahulu.',
 	'prefswitch-main-on' => '===Kembali kepada asal===

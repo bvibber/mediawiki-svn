@@ -163,11 +163,13 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'mwe-clipedit-crop' => 'Isjecanje slike',
 	'mwe-clipedit-apply_crop' => 'Primijeni isijecanje na sliku',
+	'mwe-clipedit-reset_crop' => 'Ponište isijecanje',
 	'mwe-clipedit-insert_image_page' => 'Ubaci u stranicu',
 	'mwe-clipedit-insert_into_sequence' => 'Ubaci u niz',
 	'mwe-clipedit-preview_insert' => 'Pregled ubacivanja',
 	'mwe-clipedit-cancel_image_insert' => 'Odustani od ubacivanja',
 	'mwe-clipedit-sc_attributes' => 'Uređivanje podataka snimke',
+	'mwe-clipedit-sc_inoutpoints' => 'Postavi tačke ulaz-izlaz',
 	'mwe-clipedit-sc_overlays' => 'Slojevi',
 	'mwe-clipedit-sc_audio' => 'Kontrola zvuka',
 	'mwe-clipedit-sc_duration' => 'Trajanje',
@@ -176,14 +178,17 @@ $messages['bs'] = array(
 	'mwe-clipedit-edit_properties' => 'Uredi svojstva',
 	'mwe-clipedit-other_properties' => 'Ostala svojstva',
 	'mwe-clipedit-resource_page' => 'Izvorna stranica:',
+	'mwe-clipedit-set_in_out_points' => 'Postavi tačke ulaz-izlaz',
 	'mwe-clipedit-start_time' => 'Vrijeme početka',
 	'mwe-clipedit-end_time' => 'Vrijeme završetka',
+	'mwe-clipedit-preview_inout' => 'Pregled tačaka ulaz-izlaz',
 	'mwe-clipedit-edit-tools' => 'Uređivanje alata',
 	'mwe-clipedit-inline-description' => 'Opis',
 	'mwe-clipedit-edit-video-tools' => 'Uredi video alate:',
 	'mwe-clipedit-duration' => 'Trajanje:',
 	'mwe-clipedit-layout' => 'Izgled',
 	'mwe-clipedit-layout_right' => 'Izgled sa slikom na desnoj strani',
+	'mwe-clipedit-layout_left' => 'Izgled sa slikom na lijevoj strani',
 );
 
 /** Czech (Česky) */

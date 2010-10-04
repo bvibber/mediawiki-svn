@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'specialtalk-desc' => '{{desc}}',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'specialtalk-desc' => 'Дадае закладку абмеркаваньня да [[Special:SpecialPages|спэцыяльных старонак]]',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -54,6 +61,13 @@ $messages['es'] = array(
  */
 $messages['gl'] = array(
 	'specialtalk-desc' => 'Engade unha lapela de conversa nas [[Special:SpecialPages|páxinas especiais]]',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'specialtalk-desc' => 'Fiegt e Diskussionsryter yy bi dr [[Special:SpecialPages|Spezialsyte]]',
 );
 
 /** Interlingua (Interlingua) */
@@ -107,6 +121,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'specialtalk-desc' => 'Acrescenta um separador de discussão às [[Special:SpecialPages|páginas especiais]]',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'specialtalk-desc' => 'Добавляет закладку обсуждения на [[Special:SpecialPages|служебные страницы]]',
 );
 
 /** Tagalog (Tagalog) */

@@ -1625,9 +1625,9 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'recordadmin' => "Aministrassion d'anotassion",
-	'recordadmin-desc' => 'Arserca, query, formolari e rapòrt ëd dat dla wiki derivà da paràmetr dë stamp',
-	'recordadmin-specialdesc' => 'Na [[Special:RecordAdmin|pàgina special]] për trové e creé pàgine an dovrand ij formolari associà',
-	'recordadmin-noforms' => 'A-i é pa gnun formolari al moment definì për serché e creé',
+	'recordadmin-desc' => 'Arserca, arceste, formolari e rapòrt ëd dat dla wiki derivà da paràmetr dë stamp',
+	'recordadmin-specialdesc' => 'Na [[Special:RecordAdmin|pàgina special]] për trové e creé dle pàgine an dovrand ij formolari associà',
+	'recordadmin-noforms' => 'A-i é gnun formolari al moment definì për sërché e creé',
 	'recordadmin-select' => 'Selession-a',
 	'recordadmin-createtype' => "Anseriss ël nòm ëd na neuva sòrt d'anotassion da creé",
 	'recordadmin-recordtype' => "sòrt d'anotassion",
@@ -1662,7 +1662,7 @@ $messages['pms'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Pa gnun "$1"',
-	'recordadmin-edit-info' => "Sta pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'it peule ampinì da sto tab-set",
+	'recordadmin-edit-info' => "Costa pàgina a conten djë stamp che a l'han ij sò pròpi formolari ch'a peul compilé da st'ansem ëd quàder",
 	'recordadmin-properties' => 'Proprietà',
 );
 

@@ -1099,12 +1099,13 @@ Jeśli chcesz w przyszłości używać Facebook Connect do logowania się, może
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'fbconnect' => 'Conession Facebook',
-	'fbconnect-desc' => "A abìlita j'utent a [[Special:Connect|Conëttse]] con ij sò cont [http://www.facebook.com Facebook].
-A eufr autenticassion basà an sle partìe Facebook e ël dovragi ëd FBML an test wiki",
+	'fbconnect-desc' => "A abìlita j'utent a [[Special:Connect|intré]] ant ij sò cont [http://www.facebook.com Facebook].
+A eufr n'autenticassion basà an sle partìe Facebook e l'utilisassion ëd FBML ant ël test wiki",
 	'group-fb-user' => 'Utent ëd Facebook Connect',
 	'group-fb-user-member' => 'Utent ëd Facebook Connect',
 	'grouppage-fb-user' => '{{ns:project}}:Utent ëd Facebook Connect',
@@ -1114,74 +1115,74 @@ A eufr autenticassion basà an sle partìe Facebook e ël dovragi ëd FBML an te
 	'group-fb-officer' => 'Ufissiaj dla partìa',
 	'group-fb-officer-member' => 'Ufissiaj dla partìa',
 	'grouppage-fb-officer' => '{{ns:project}}:Ufissiaj dla partìa',
-	'group-fb-admin' => 'Aministrador ëd la partìa',
-	'group-fb-admin-member' => 'Aministrador ëd la partìa',
-	'grouppage-fb-admin' => '{{ns:project}}:Aministrador ëd la partìa',
-	'fbconnect-connect' => 'Intra con Facebook Connect',
+	'group-fb-admin' => 'Aministrator ëd la partìa',
+	'group-fb-admin-member' => 'Aministrator ëd la partìa',
+	'grouppage-fb-admin' => '{{ns:project}}:Aministrator ëd la partìa',
+	'fbconnect-connect' => 'Intré an Facebook Connect',
 	'fbconnect-convert' => 'Colega sto cont con Facebook',
 	'fbconnect-logout' => 'Seurt da Facebook',
 	'fbconnect-link' => 'André a Facebook.com',
-	'fbconnect-title' => 'Colega cont con Facebook',
+	'fbconnect-title' => 'Coleghé un cont con Facebook',
 	'fbconnect-intro' => "Sta wiki a l'é abilità con Facebook Connect, la pròssima evolussion dla piataforma Facebook.
-Sossì a veul dì che quand ch'it ses colegà, an gionta ai [[Wikipedia:Help:Logging in#Why log in?|benefissi]] normaj ch'it vëdde quand it intre, it podras pijé vantagi ëd quàich funsion extra...",
+Sossì a veul dì che quand ch'a l'é colegà, an dzorpì dij [[Wikipedia:Help:Logging in#Why log in?|benefissi]] normaj ch'a vëd quand ch'a intra ant ël sistema, a podrà benefissié ëd chèiche funsion suplementar...",
 	'fbconnect-click-to-login' => 'Sgnaca për intré ant sto sit via Facebook',
-	'fbconnect-click-to-connect-existing' => 'Sgnaca për celeghé a tò cont Facebook a $1',
+	'fbconnect-click-to-connect-existing' => "Ch'a sgnaca ambelessì për coleghé sò cont Facebook a $1",
 	'fbconnect-conv' => 'Conveniensa',
-	'fbconnect-convdesc' => "J'utent colegà a son intrà automaticament.
-Se a son dàit ij përmess, antlora sta wiki a peul ëdcò dovré Facebook con un proxy e-mail an manera ch'it peusse continué a arseive notìfiche amportante sensa arvelé toa adrëssa e-mail.",
+	'fbconnect-convdesc' => "J'utent colegà a automaticament intrà ant ël sistema.
+Se a son ësmonù ij përmess, antlora sta wiki a peul ëdcò dovré Facebook coma un mandatari ëd pòsta eletrònica an manera ch'a peula continué a arsèive le notìfiche amportante sensa arvelé soa adrëssa ëd pòsta eletrònica.",
 	'fbconnect-fbml' => 'Lenga dij marcador ëd Facebook',
-	'fbconnect-fbmldesc' => "Facebok a l'ha dàit un mucc ëd tag built-in che a presento data dinàmich.
-Motobin dë sti tag a peulo esse anserì an test wiki, e a saran presentà an manera diferenta an dipendensa on which connected user they are being viewed by.",
+	'fbconnect-fbmldesc' => "Facebok a l'ha dàit un mucc ëd tichëtte antëgrà che a presento dij dàit dinàmich.
+Vàire ëd se tichëtte a peulo esse anserìe ant ël test wiki, e a saran ësmonùe a sconda dl'utent colegà ch'a-j vëdd.",
 	'fbconnect-comm' => 'Comunicassion',
-	'fbconnect-commdesc' => "Facebook a colega j'utent ant n'anter level neuv ëd rej.
-Varda chi dij tò amis a stan dovrand la wiki, e opsionalment condivid toe assion con ij tò amis via ij feed ëd neuve ëd Facebook.",
+	'fbconnect-commdesc' => "Facebook a men-a j'utent an livel tut neuv ëd rej.
+Ch'a vëdda chi dij sò amis a son an camin ch'a deuvro la wiki, e miraco ch'a condivida soe assion con ij sò amis për mojen dël fil ëd neuve ëd Facebook.",
 	'fbconnect-welcome' => 'Bin ëvnù, utent ëd Facebook Connect!',
-	'fbconnect-loginbox' => "O '''intra''' con Facebook:
+	'fbconnect-loginbox' => "O '''intré ant ël sistema''' con Facebook:
 
 $1",
-	'fbconnect-merge' => 'Mës-cia tò cont wiki con tò ID Facebook',
+	'fbconnect-merge' => 'Mës-cé sò cont wiki con sò identificativ Facebook',
 	'fbconnect-logoutbox' => '$1
 
-Sossì at farà ëdcò seurte da Facebook e tùit ij sit colegà, compreis sta wiki.',
-	'fbconnect-listusers-header' => "Ij privilegi ëd $1 e $2 a son automaticament trasferì dai tìtoj d'uficial e d'aministrador ëd la partìa ëd Facebook $3.
+Sòn a lo farà ëdcò seurte da Facebook e da tùit ij sit colegà, comprèisa sta wiki.',
+	'fbconnect-listusers-header' => "Ij privilegi ëd $1 e $2 a son automaticament trasferì dai tìtoj d'ufissial e d'aministrator ëd la partìa ëd Facebook $3.
 
-Për savèjne ëd pi, për piasì contata ël creador dla partìa $4.",
+Për savèjne ëd pi, për piasì ch'a contata ël creator dla partìa $4.",
 	'fbconnect-error' => 'Eror ëd verìfica',
-	'fbconnect-errortext' => "A l'é capitaje n'eror an mente dla verìfica con Facebook Connect.",
-	'fbconnect-cancel' => 'Assion scanselà',
-	'fbconnect-canceltext' => "L'assion ëd prima a l'é stàita scanselà da l'utent.",
+	'fbconnect-errortext' => "A l'é capitaje n'eror durant la verìfica con Facebook Connect.",
+	'fbconnect-cancel' => 'Assion anulà',
+	'fbconnect-canceltext' => "L'assion ëd prima a l'é stàita anulà da l'utent.",
 	'fbconnect-invalid' => 'Opsion pa bon-a.',
 	'fbconnect-invalidtext' => "La selession fàita an sla pàgina ëd prima a l'era pa bon-a.",
 	'fbconnect-success' => "La verìfica ëd Facebook a l'é andàita bin",
-	'fbconnect-successtext' => 'It sen intrà da bin con Facebook Connect.',
+	'fbconnect-successtext' => "A l'é intrà ant ël sistema për da bin con Facebook Connect.",
 	'fbconnect-nickname' => 'Stranòm',
 	'fbconnect-fullname' => 'Nòm complet',
 	'fbconnect-email' => 'Adrëssa ëd pòsta eletrònica',
 	'fbconnect-language' => 'Lenga',
 	'fbconnect-timecorrection' => 'Coression dël fus orari (ore)',
-	'fbconnect-chooselegend' => 'Sërnùa dël nòm utent',
+	'fbconnect-chooselegend' => "Sernia ëd lë stranòm d'utent",
 	'fbconnect-chooseinstructions' => "Tùit j'utent a l'han dabzògn ëd në stranòm,
 a peul sern-ne un da j'opsion sì-sota.",
-	'fbconnect-invalidname' => "Lë stranòm ch'it l'has sërnù a l'é già pijà o a l'é pa në stranòm bon.
-Për piasì sern-ne un diferent.",
+	'fbconnect-invalidname' => "Lë stranòm ch'a l'ha sernù a l'é già pijà o a l'é pa në stranòm bon.
+Për piasì ch'a na serna n'àutr.",
 	'fbconnect-choosenick' => 'Tò nòm ëd profil Facebook ($1)',
 	'fbconnect-choosefirst' => 'Tò nòm ($1)',
 	'fbconnect-choosefull' => 'Tò nòm complet ($1)',
 	'fbconnect-chooseauto' => 'Un nòm generà da sol ($1)',
-	'fbconnect-choosemanual' => 'Un nòm sërnù da ti:',
+	'fbconnect-choosemanual' => "Në stranòm ch'a veul chiel:",
 	'fbconnect-chooseexisting' => 'Un cont esistent an sta wiki-sì',
-	'fbconnect-chooseusername' => 'Nòm utent:',
+	'fbconnect-chooseusername' => "Stranòm d'utent:",
 	'fbconnect-choosepassword' => 'Ciav:',
 	'fbconnect-updateuserinfo' => "Modìfica j'anformassion përsonaj ch'a ven-o:",
 	'fbconnect-alreadyloggedin' => "'''A l'é già intrà ant ël sistema, $1!'''
 
 S'a veul dovré Facebook Connect për intré ant l'avnì, a peul [[Special:Connect/Convert|convertì sò cont për dovré Facebook Connect]].",
-	'fbconnect-error-creating-user' => "Eror an creand l'utent ant ël database local.",
-	'fbconnect-error-user-creation-hook-aborted' => "n'hook (estension) a l'ha abortì la creassion dël cont con ël mëssagi:$1",
-	'fbconnect-prefstext' => 'Conession Facebook',
+	'fbconnect-error-creating-user' => "Eror ant la creassion ëd l'utent ant la base ëd dàit local.",
+	'fbconnect-error-user-creation-hook-aborted' => "Un gancio (estension) a l'ha fàit abortì la creassion dël cont con ël mëssagi:$1",
+	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Profil ëd Facebook',
-	'fbconnect-prefsheader' => "Për controlé che event a posserà un element a tò feed ëd neuve ëd Facebook, <a id='fbConnectPushEventBar_show' href='#'>mosta tò gust</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>stërma gust</a>",
-	'fbconnect-prefs-can-be-updated' => 'It peule modifiché sossì quand it veule an visitand ël tab "$1" ëd la pàgina dij tò gust.',
+	'fbconnect-prefsheader' => "Për controlé che event a mandran n'element a sò fluss ëd neuve ëd Facebook, <a id='fbConnectPushEventBar_show' href='#'>smon-e ij sò gust</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>stërmé ij sò gust</a>",
+	'fbconnect-prefs-can-be-updated' => 'A peul modifiché sòn quand ch\'a veul an visitand la tichëtta "$1" ëd la pàgina dij sò gust.',
 );
 
 /** Portuguese (Português)

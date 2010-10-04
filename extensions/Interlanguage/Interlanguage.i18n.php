@@ -48,6 +48,7 @@ $messages['be'] = array(
  */
 $messages['be-tarask'] = array(
 	'interlanguage-desc' => 'Захоплівае міжмоўныя спасылкі зь іншай вікі',
+	'interlanguage-pagelinksexplanation' => 'Старонкі са спасылкамі на іншыя моўныя вэрсіі:',
 );
 
 /** Breton (Brezhoneg)
@@ -63,6 +64,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'interlanguage-desc' => 'Preuzima međujezičke linkove sa druge wiki',
+	'interlanguage-pagelinksexplanation' => 'Stranice sa interwiki linkovima:',
 );
 
 /** Catalan (Català)
@@ -73,10 +75,12 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author PasO
  */
 $messages['de'] = array(
-	'interlanguage-desc' => 'Holt Interlanguage-Links aus einem anderen Wiki',
+	'interlanguage-desc' => 'Ermöglicht den Abruf von Links zu verbundenen Wikis in anderen Sprachen',
+	'interlanguage-pagelinksexplanation' => 'Seiten mit Links zu verbundenen Wikis in anderen Sprachen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -128,6 +132,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'interlanguage-desc' => 'Permite a obtención de ligazóns interlingüísticas desde outro wiki',
+	'interlanguage-pagelinksexplanation' => 'Páxinas con ligazóns interlingüísticas:',
 );
 
 /** Swiss German (Alemannisch)
@@ -135,6 +140,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'interlanguage-desc' => 'Holt Interwikigleicher us eme andere Wiki',
+	'interlanguage-pagelinksexplanation' => 'Syte mit Links zu andere Sprache',
 );
 
 /** Manx (Gaelg)
@@ -228,6 +234,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'interlanguage-desc' => "Erlaabt et d'Linke tëschent Sproochen vun enger anerer Wiki z'iwwerhuelen",
+	'interlanguage-pagelinksexplanation' => 'Säite mat Linke mat anere Sproochen:',
 );
 
 /** Latvian (Latviešu)
@@ -242,6 +249,7 @@ $messages['lv'] = array(
  */
 $messages['mk'] = array(
 	'interlanguage-desc' => 'Презема меѓујазични врски од друго вики',
+	'interlanguage-pagelinksexplanation' => 'Страници со меѓујазични врски:',
 );
 
 /** Malayalam (മലയാളം)
@@ -312,9 +320,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'interlanguage-desc' => 'Obtém interwikis de idiomas a partir de outra wiki',
+	'interlanguage-pagelinksexplanation' => 'Páginas com links interidiomas:',
 );
 
 /** Tarandíne (Tarandíne)
@@ -386,6 +396,7 @@ $messages['te'] = array(
  */
 $messages['tl'] = array(
 	'interlanguage-desc' => 'Kumukuha ng mga kawing na pang-interwika mula sa ibang wiki',
+	'interlanguage-pagelinksexplanation' => 'Mga pahinang may mga kawing na pang-ugnayan ng wika:',
 );
 
 /** Turkish (Türkçe)

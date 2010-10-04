@@ -1407,6 +1407,9 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'amazonplus-used' => 'பயன்படுத்தப்பட்டது',
+	'amazonplus-german' => 'ஜெர்மன்',
+	'amazonplus-french' => 'பிரெஞ்சு',
+	'amazonplus-japanese' => 'ஜப்பானீஸ்',
 	'amazonplus-new' => 'புதிய',
 	'amazonplus-cp-none' => 'ஏதுமில்லை',
 	'amazonplus-more' => 'மேலும்',

@@ -1442,7 +1442,7 @@ $messages['mk'] = array(
 	'ratinghistory-table' => 'Преглед на оценки од читателите',
 	'ratinghistory-users' => 'Корисници кои дале оценки',
 	'ratinghistory-graph' => '$2 од "$3" ($1 {{PLURAL:$1|оценка|оценки}})',
-	'ratinghistory-svg' => 'Поглед како SVG',
+	'ratinghistory-svg' => 'Преглед како SVG',
 	'ratinghistory-table-rating' => 'Оцена',
 	'ratinghistory-table-votes' => 'Гласови',
 	'ratinghistory-none' => 'Нема доволно податоци од оценувачите за исцртување на графиконот во овој момент.',
@@ -1568,6 +1568,7 @@ De '''gemiddelde waardering van de aangegeven periode''' is het gemiddelde van a
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Ranveig
  */
 $messages['nn'] = array(
 	'ratinghistory' => 'Sidevurderingshistorikk',
@@ -1589,7 +1590,7 @@ $messages['nn'] = array(
 	'ratinghistory-svg' => 'Syn som SVG',
 	'ratinghistory-table-rating' => 'Vurdering',
 	'ratinghistory-table-votes' => 'Røyster',
-	'ratinghistory-none' => 'Det finst på noverande tidspunkt ikkje nok lesarvurderingar til å teikna ein graf.',
+	'ratinghistory-none' => 'Det finst nett no ikkje nok lesarvurderingar til å teikna ein graf.',
 	'ratinghistory-legend' => "Den '''daglege gjennomsnittsvurderinga''' <font color=\"blue\">''(blått)''</font> og  
 '''gjennomsnittet for det valte intervallet''' per dag <font color=\"green\">''(grønt)''</font> er teikna inn på grafane under etter dato.
 

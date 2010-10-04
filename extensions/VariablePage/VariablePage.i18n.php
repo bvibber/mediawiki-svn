@@ -208,7 +208,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'variablepage' => 'PàginaVariabla',
+	'variablepage' => 'PàginaVariàbil',
 	'variablepage-navlink_text' => 'Doné',
 	'variablepage-desc' => 'Ridiression legera vers na pàgina variàbil',
 );
@@ -254,6 +254,13 @@ $messages['tl'] = array(
 	'variablepage' => 'Pabagubaong Pahina',
 	'variablepage-navlink_text' => 'Mag-abuloy',
 	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'variablepage-navlink_text' => 'Dona',
 );
 
 /** Vietnamese (Tiếng Việt)

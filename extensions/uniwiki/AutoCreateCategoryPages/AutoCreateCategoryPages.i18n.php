@@ -583,6 +583,13 @@ Här listas alla artiklar som placerats i kategorin "$1", samt eventuella underk
 	'autocreatecategorypages-editor' => 'Automatisk kategoriskapning',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'autocreatecategorypages-desc' => 'விடுபட்டுப்போன பகுப்பு பக்கங்களை சேமிக்கும் போது தானாகவே உருவாக்கவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

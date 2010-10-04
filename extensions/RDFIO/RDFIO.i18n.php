@@ -170,16 +170,17 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'rdfio-desc' => 'Funsionaità esteisa RDF Import/Export, compreis endpoint SPARQL, për Semantic MediaWiki',
-	'rdfimport' => 'Import RDF',
-	'rdfio-arc2admin-desc' => "Pàgina d'aministrassion për lë Store ARC2 RDF për Semantic MediaWiki",
+	'rdfio-desc' => "Fonsionalità estèisa RDF d'amportassion e esportassion, comprendenta un pont final SPARQL, për MediaWiki Semàntica",
+	'rdfimport' => 'Amportassion RDF',
+	'rdfio-arc2admin-desc' => "Pàgina d'aministrassion për ël depòsit ARC2 RDF për MediaWiki Semàntica",
 	'rdfio-rdfimport-desc' => 'Na pàgina Special për amporté dat semàntich an formà RDF/XML',
-	'rdfio-sparqlendpoint-desc' => "N'Endpoit SPARQL dàit dal SMWRDFConnector",
-	'sparqlendpoint' => 'Endpoint SPARQL',
-	'specialarc2admin' => "Pàgina d'aministrassion dë Store ARC2 RDF",
+	'rdfio-sparqlendpoint-desc' => 'Un pont final SPARQL dàit dal SMWRDFConnector',
+	'sparqlendpoint' => 'Pont final SPARQL',
+	'specialarc2admin' => "Pàgina d'aministrassion dël depòsit ARC2 RDF",
 );
 
 /** Portuguese (Português)

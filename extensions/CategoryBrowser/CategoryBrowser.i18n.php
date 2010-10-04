@@ -533,6 +533,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'categorybrowser' => 'Kategoriebrowser',
+	'categorybrowser-desc' => 'Mécht eng [[Special:CategoryBrowser|Spezialsäit]] fir déi Kategorie mat de meeschten Elementer erauszefilteren a mat engem AJAX-Interface driwwer ze navigéieren',
 	'cb_requires_javascript' => "D'Erweiderung Kategriebrowser brauch ageschalte Javascript am Browser.",
 	'cb_show_no_parents_only' => 'Nëmme Kategorie weisen déi keng Kategorie driwwer hunn',
 	'cb_cat_name_filter' => 'Sich no enger Kategorie nom Numm:',
@@ -541,6 +542,7 @@ $messages['lb'] = array(
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|Ënnerkategorie|Ënnerkategorien}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|Säit|Säiten}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|Fichier|Fichieren}}',
+	'cb_has_parentcategories' => 'iwwergeuerdent Kategorie (wann et eng gëtt)',
 	'cb_previous_items_link' => 'Vireg',
 	'cb_next_items_link' => 'Nächst',
 	'cb_next_items_stats' => '(vu(n) $1)',

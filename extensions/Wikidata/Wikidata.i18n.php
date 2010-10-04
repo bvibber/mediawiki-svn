@@ -8548,7 +8548,7 @@ $messages['mk'] = array(
 	'ow_noedit_title' => 'Нема дозвола за уредување',
 	'ow_noedit' => 'Не ви е дозволено да уредувате страници во збирот податоци „$1“.
 Погледајте ги [[{{MediaWiki:Ow editing policy url}}|нашите правила за уредување]].',
-	'ow_uipref_datasets' => 'Основен поглед:',
+	'ow_uipref_datasets' => 'Основен изглед:',
 	'ow_uiprefs' => 'Викидата',
 	'ow_none_selected' => 'Ништо не е одбрано',
 	'transaction' => 'Википодатоци: Дневник на трансакции',

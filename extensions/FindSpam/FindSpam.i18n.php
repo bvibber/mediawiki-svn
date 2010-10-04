@@ -958,7 +958,10 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'findspam' => 'வீண்செய்திகளை கண்டுபிடி',
+	'findspam-ip' => 'ஐ.பி. முகவரி:',
 	'findspam-ok' => 'ஆம்',
+	'findspam-notextfound' => 'எந்தவித பங்களிப்புகளும் காணப்படவில்லை',
+	'right-findspam' => 'அண்மையில் வந்துசேர்ந்த வீண்செய்திகளைத் தேடவும்',
 );
 
 /** Telugu (తెలుగు)

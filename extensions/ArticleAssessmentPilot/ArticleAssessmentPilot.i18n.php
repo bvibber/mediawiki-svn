@@ -365,6 +365,8 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'articleassessment-yourfeedback' => 'Via komento',
+	'articleassessment-survey-answer-whyrated-other' => 'Alia',
 	'articleassessment-survey-question-useful-iffalse' => 'Kial?',
 );
 
@@ -652,6 +654,7 @@ $messages['it'] = array(
 	'articleassessment-rating-wellsourced' => 'Ben documentata:',
 	'articleassessment-rating-neutrality' => 'Neutrale:',
 	'articleassessment-rating-completeness' => 'Completa:',
+	'articleassessment-rating-readability' => 'Leggibile:',
 	'articleassessment-error' => 'Si è verificato un errore. 
 Si prega di riprovare più tardi.',
 	'articleassessment-survey-answer-whyrated-other' => 'Altro',
@@ -1095,20 +1098,20 @@ A podrìa vorèj valutela torna.",
 	'articleassessment-results-show' => '(Arzultà stërmà. <span class="showlink">Smonje</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Stërmé j\'arzultà</span>)',
 	'articleassessment-survey-question-whyrated' => "Për piasì, ch'an fasa savèj përchè a l'ha valutà costa pàgina ancheuj (ch'a marca tut lòn ch'a-i intra):",
-	'articleassessment-survey-answer-whyrated-contribute-rating' => 'I veui contribuì a la valutassin antera dla pàgina',
-	'articleassessment-survey-answer-whyrated-development' => 'I sper che mia valutassion a peussa toché positivament ël dësvilup ëd la pàgina',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'I vorìa contribuì a la valutassion global ëd la pàgina',
+	'articleassessment-survey-answer-whyrated-development' => 'I spero che mia valutassion a peussa toché positivament ël dësvlup ëd la pàgina',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'I veui contribuì a {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Am pias condivide mia opinion',
-	'articleassessment-survey-answer-whyrated-didntrate' => "I l'heu pa dàit valutassion ancheuj, ma i veui dé d'artorn an sla funsion",
+	'articleassessment-survey-answer-whyrated-didntrate' => "I l'heu pa dàit ëd valutassion ancheuj, ma i vorìa dé un coment an sla fonsionalità",
 	'articleassessment-survey-answer-whyrated-other' => 'Àutr',
 	'articleassessment-survey-question-useful' => 'Chërdës-to che le valutassion dàite a sio ùtij e ciàire?',
 	'articleassessment-survey-question-useful-iffalse' => 'Përchè?',
-	'articleassessment-survey-question-expert' => "Considërës-to ti midem n'espert ant ël camp che sta pàgina a coata?",
+	'articleassessment-survey-question-expert' => "As consìdera chiel midem n'espert ant ël camp che sta pàgina a coata?",
 	'articleassessment-survey-question-expert-iftrue' => 'Peuss-to descrive toa esperiensa?',
-	'articleassessment-survey-question-comments' => "L'has-to quaich coment adissionaj?",
+	'articleassessment-survey-question-comments' => "Ha-lo d'àutri coment?",
 	'articleassessment-survey-submit' => 'Spediss',
-	'articleassessment-survey-title' => 'Për piasì arspond a quaich custion',
-	'articleassessment-survey-thanks' => 'Mersì për avej vempì ël questionari.',
+	'articleassessment-survey-title' => "Për piasì, ch'a risponda a chèich chestion",
+	'articleassessment-survey-thanks' => "Mersì d'avèj compilà ël questionari.",
 );
 
 /** Portuguese (Português)
@@ -1336,6 +1339,17 @@ Maaari mo itong antasang muli.",
 $messages['tr'] = array(
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Fikirlerimi paylaşmayı seviyorum',
 	'articleassessment-survey-question-useful-iffalse' => 'Neden?',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'articleassessment-submit' => 'Manda',
+	'articleassessment-rating-wellsourced' => 'Ben fornìa de fonti:',
+	'articleassessment-rating-neutrality' => 'Neutrale:',
+	'articleassessment-rating-completeness' => 'Conpleta:',
+	'articleassessment-rating-readability' => 'Legibile:',
 );
 
 /** Vietnamese (Tiếng Việt)

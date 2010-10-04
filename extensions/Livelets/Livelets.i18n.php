@@ -53,7 +53,7 @@ $messages['bs'] = array(
  * @author Purodha
  */
 $messages['de'] = array(
-	'livelets-desc' => 'Ermöglicht es, Seiten nach dem Laden der Hauptseite in deren Inhalte zu transkludieren und diese dynamisch mit Hilfe von Ajax zu aktualisieren',
+	'livelets-desc' => 'Ermöglicht es, nach dem Laden einer Seite, Inhalte anderer Seiten in deren Inhalte zu transkludieren und diese dynamisch mit Hilfe von Ajax zu aktualisieren',
 );
 
 /** Spanish (Español)
@@ -83,7 +83,7 @@ $messages['gl'] = array(
  * @author Purodha
  */
 $messages['gsw'] = array(
-	'livelets-desc' => 'Macht s megli, Syte noch em Lade vu dr Houptsyte in dr Inhalt vun ere z transkludiere un die dynamisch mit Hilf vu Ajax z aktualisiere',
+	'livelets-desc' => 'Macht s megli, Syte in andri Syte yyzfiege, wu noch em eigetlige Syteinhalt glade wäre un wu dynamisch mit Hilf vu Ajax aktualisiert chenne wäre',
 );
 
 /** Interlingua (Interlingua)

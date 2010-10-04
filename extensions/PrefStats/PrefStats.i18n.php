@@ -1755,7 +1755,7 @@ $messages['mk'] = array(
 ** $3 {{PLURAL:$3|корисник во меѓувреме ја оневозможил|корисници во меѓувреме ја оневозможиле}}
 * Вкупно $4 {{PLURAL:$4|корисник ја има вклучено оваа можност|корисници ја имаат вклучено оваа можност}}',
 	'prefstats-xaxis' => 'Времетрање (часови)',
-	'prefstats-factors' => 'Поглед по: $1',
+	'prefstats-factors' => 'Преглед за: $1',
 	'prefstats-factor-hour' => 'час',
 	'prefstats-factor-sixhours' => 'шест часа',
 	'prefstats-factor-day' => 'ден',
@@ -2623,6 +2623,8 @@ $messages['ta'] = array(
 	'prefstats-factor-week' => 'வாரம்',
 	'prefstats-factor-twoweeks' => 'இரண்டு வாரங்கள்',
 	'prefstats-factor-fourweeks' => 'நான்கு வாரங்கள்',
+	'prefstats-legend-out' => 'விருப்பத்துடன் வெளியேறு',
+	'prefstats-legend-in' => 'விருப்பத்துடன் வந்துசேர்',
 );
 
 /** Telugu (తెలుగు)

@@ -169,7 +169,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'negref-desc' => "Liwwert en Tag deen et erlaabt fir d'Plaz vun engem <nowiki><ref/></nowiki> Tag bannert engem Text, dee vu Bnotzer agi gëtt, festzelleeën, dëst fir datt verschidde Schabloune korrekt fonctionnéieren.",
+	'negref-desc' => "Liwwert en Tag deen et erlaabt fir d'Plaz vun engem <nowiki><ref/></nowiki> Tag bannent engem Text, dee vu Benotzer agi gëtt, festzeleeën, dëst fir datt verschidde Schabloune korrekt fonctionnéieren.",
 );
 
 /** Macedonian (Македонски)

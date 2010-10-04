@@ -1280,10 +1280,12 @@ $messages['sw'] = array(
  */
 $messages['ta'] = array(
 	'importfreeimages_owner' => 'ஆசிரியர்',
+	'importfreeimages_next' => 'அடுத்த $1',
 	'importfreeimages_size_square' => 'சதுரம்',
 	'importfreeimages_size_thumbnail' => 'படத்தின் கட்டைவிரல் அளவு தோற்றம்',
 	'importfreeimages_size_small' => 'சிறிய',
 	'importfreeimages_size_medium' => 'நடுத்தரம்',
+	'importfreeimages_size_large' => 'பெரிய',
 	'importfreeimages_size_original' => 'மூலம்',
 );
 
