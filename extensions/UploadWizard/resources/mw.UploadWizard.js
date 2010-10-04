@@ -198,29 +198,31 @@ mw.UploadWizardUpload.prototype = {
 	 * Fetch a thumbnail for this upload of the desired width. 
 	 * It is assumed you don't call this until it's been transported.
  	 *
+	 * The success message from the API should have included enough information to make thumbnails already.
+ 	 *
+	 * But, if we don't have the thumbnail, try to fetch it by invoking a thumbnail URL pattern.
 	 * We create the thumbnail by passing a special URL which creates the thumbnail on the fly and returns the image contents. 
 	 * If the original image URL is http://foo.com/bar/baz/xyz.jpg, and the desired width is 120 pixels, 
 	 * the thumbnail URL is http://foo.com/bar/baz/120px-xyz.jpg
+ 	 * N.B. in general thumbnails have the same mime-type as the original, but NOT ALWAYS. Getting a thumbnail in this way may
+	 * cause conflicts between extension & mime-type.
 	 * 
 	 * @param width - desired width of thumbnail (height will scale to match)
 	 * @param callback - callback to execute once thumbnail has been obtained -- must accept Image object
 	 */
 	getThumbnail: function( width, callback ) {
-		var _this = this;
-		key = "width" + width;
-		if ( mw.isDefined( _this._thumbnails[key] ) && typeof _this._thumbnails[key] === 'Image' ) {
-			callback( _this._thumbnails[key] );
+		var key = "width" + width;
+		if ( mw.isDefined( this._thumbnails[key] ) && typeof this._thumbnails[key] === 'Image' ) {
+			callback( this._thumbnails[key] );
 		} else {
-			var thumbUrl = _this.imageinfo.url.replace( /(.*)/([^\/]+)$/, "$1/" + width + "px-" + $2 );
-			_this._thumbnails[ "width" + width ] = new Image( thumbUrl );
-			var image = new Image();  
-			image.onload = function(){ 
-				_this._thumbnails[key] = image; 
-				callback( image );
+			var thumbUrl = this.imageinfo.url.replace( /(.*)\/([^\/]+)$/, "$1/" + width + "px-$2" );
+			this._thumbnails[key] = new Image();
+			var _this = this;
+			this._thumbnails[key].onload = function(){ 
+				callback( _this._thumbnails[key] );
 			}
-			image.src = thumbUrl;
+			this._thumbnails[key].src = thumbUrl;
 		}
-		
 	},
 
 
