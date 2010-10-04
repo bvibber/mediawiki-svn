@@ -87,7 +87,33 @@ class SpecialSessionStash extends SpecialPage {
                         $key = $n ? substr( $subPage, 0, $n ) : $subPage;
 		}
 		
-		$file = $this->stash->getFile( $key );
+		try {
+			$file = $this->stash->getFile( $key );
+		} catch ( SessionStashFileNotFoundException $e ) { 
+			// if we couldn't find it, and it looks like a thumbnail,
+			// and it looks like we have the original, go ahead and generate it
+			$matches = array();
+			if ( ! preg_match( '/^(\d+)px-(\S+)$/', $key, $matches ) ) {
+				// that doesn't look like a thumbnail. re-raise exception 
+				throw $e;
+			}
+
+			$width = $matches[1];
+			$origKey = $matches[2];
+
+			// do not trap exceptions, if not found let exceptions propagate to caller.
+			$origFile = $this->stash->getFile( $origKey );
+
+			// ok we're here so the original must exist. Generate the thumbnail. 
+			// because the file is a SessionStashFile, this thumbnail will also be stashed,
+			// and a thumbnailFile will be created in the thumbnailImage composite object
+			$thumbnailImage = null;
+			if ( ! $thumbnailImage = $origFile->getThumbnail( $width ) ) { 
+				throw new MWException( 'Could not obtain thumbnail' );
+			}
+			$file = $thumbnailImage->thumbnailFile;
+		}
+ 
 		return $file;
 	}
 

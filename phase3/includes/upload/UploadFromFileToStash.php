@@ -14,20 +14,6 @@
 class UploadFromFileToStash extends UploadFromFile {
 
 	/**
-	 * Return the primary uploaded file (when in stash)
-	 * @return {File}
-	public function getLocalFile() {
-		if ( ! is_a( $this->mLocalFile, 'File' ) ) {
-			wfDebug( __METHOD__ );
-			wfDebug( print_r( debug_backtrace(), 1 ) );
-			throw new MWException( 'file not in stash yet' );
-		}
-		return $this->mLocalFile;
-	}
-	 */
-
-
-	/**
 	 * Overrides performUpload, which normally adds the file to the database and makes it publicly available.
 	 * Instead, we store it in the SessionStash, and return metadata about the file
 	 * We also create a thumbnail, which is visible only to the uploading user.
@@ -79,19 +65,6 @@ class UploadFromFileToStash extends UploadFromFile {
 				$thumbWidth = $thumbWidthParam;
 			}
 		}
-
-		$thumbnailImage = null;
-
-		// because the file is a SessionStashFile, this thumbnail will also be stashed,
- 		// and a thumbnailFile will be created
-		if ( ! $thumbnailImage = $this->getLocalFile()->getThumbnail( $thumbWidth ) ) { 
-			$this->dieUsageMsg( 'Could not obtain thumbnail', 'nothumb' );
-		}
-		
-		$thumbFile = $thumbnailImage->thumbnailFile;
-
-		$imageInfo[ 'thumbnail' ] = $this->getImageInfoForFile( $thumbFile, $result );
-
 		return $imageInfo;
 	}
 };
