@@ -7,8 +7,6 @@
 class SpecialGlobalFileUsage extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'GlobalFileUsage', 'globalfileusage' );
-
-		wfLoadExtensionMessages( 'globalfileusage' );
 	}
 
 	/**
@@ -26,8 +24,7 @@ class SpecialGlobalFileUsage extends SpecialPage {
 
 		$this->showForm();
 
-		if ( is_null( $this->target ) )
-		{
+		if ( is_null( $this->target ) )	{
 			$wgOut->setPageTitle( wfMsg( 'globalfileusage' ) );
 			return;
 		}
@@ -88,10 +85,11 @@ class SpecialGlobalFileUsage extends SpecialPage {
 		$query = new GlobalUsageQuery( $this->target );
 
 		// Extract params from $wgRequest
-		if ( $wgRequest->getText( 'from' ) )
+		if ( $wgRequest->getText( 'from' ) ) {
 			$query->setOffset( $wgRequest->getText( 'from' ) );
-		elseif ( $wgRequest->getText( 'to' ) )
+		} elseif ( $wgRequest->getText( 'to' ) ) {
 			$query->setOffset( $wgRequest->getText( 'to' ), true );
+		}
 		$query->setLimit( $wgRequest->getInt( 'limit', 50 ) );
 		$query->filterLocal( $this->filterLocal );
 
@@ -121,8 +119,9 @@ class SpecialGlobalFileUsage extends SpecialPage {
 						'globalfileusage-on-wiki', 'parseinline',
 						$targetName, WikiMap::getWikiName( $wiki ) )
 					. "</h2><ul>\n" );
-			foreach ( $result as $item )
+			foreach ( $result as $item ) {
 				$wgOut->addHtml( "\t<li>" . self::formatItem( $item ) . "</li>\n" );
+			}
 			$wgOut->addHtml( "</ul>\n" );
 		}
 		$wgOut->addHtml( '</div>' );
@@ -134,10 +133,11 @@ class SpecialGlobalFileUsage extends SpecialPage {
 	 * Helper to format a specific item
 	 */
 	public static function formatItem( $item ) {
-		if ( !$item['namespace'] )
+		if ( !$item['namespace'] ) {
 			$page = $item['title'];
-		else
+		} else {
 			$page = "{$item['namespace']}:{$item['title']}";
+		}
 
 		$link = WikiMap::makeForeignLink( $item['wiki'], $page,
 				str_replace( '_', ' ', $page ) );

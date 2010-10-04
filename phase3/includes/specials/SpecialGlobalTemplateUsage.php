@@ -27,8 +27,7 @@ class SpecialGlobalTemplateUsage extends SpecialPage {
 
 		$this->showForm();
 
-		if ( is_null( $this->target ) )
-		{
+		if ( is_null( $this->target ) )	{
 			$wgOut->setPageTitle( wfMsg( 'globaltemplateusage' ) );
 			return;
 		}

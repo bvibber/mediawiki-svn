@@ -19,10 +19,11 @@ class GlobalUsageQuery {
 	public function __construct( $target ) {
 		global $wgGlobalDatabase;
 		$this->db = wfGetDB( DB_SLAVE, array(), $wgGlobalDatabase );
-		if ( $target instanceof Title && $target->getNamespace( ) == NS_FILE )
+		if ( $target instanceof Title && $target->getNamespace( ) == NS_FILE ) {
 			$this->target = $target->getDBKey();
-		else
+		} else {
 			$this->target = $target;
+		}
 		$this->offset = array();
 
 	}
@@ -34,11 +35,13 @@ class GlobalUsageQuery {
 	 * @param $reversed bool True if this is the upper offset
 	 */
 	public function setOffset( $offset, $reversed = null ) {
-		if ( !is_null( $reversed ) )
+		if ( !is_null( $reversed ) ) {
 			$this->reversed = $reversed;
+		}
 		
-		if ( !is_array( $offset ) )
+		if ( !is_array( $offset ) ) {
 			$offset = explode( '|', $offset );
+		}
 
 		if ( count( $offset ) == 3 ) {
 			$this->offset = $offset;
@@ -71,10 +74,11 @@ class GlobalUsageQuery {
 	 * 
 	 */
 	public function getContinueFileString() {
-		if ( $this->hasMore() )
+		if ( $this->hasMore() ) {
 			return "{$this->lastRow->gil_to}|{$this->lastRow->gil_wiki}|{$this->lastRow->gil_page}";
-		else
+		} else {
 			return '';
+		}
 	}
 	
 	/**
@@ -84,10 +88,11 @@ class GlobalUsageQuery {
 	 *
 	 */
 	public function getContinueTemplateString() {
-		if ( $this->hasMore() )
+		if ( $this->hasMore() ) {
 			return "{$this->lastRow->gtl_to_title}|{$this->lastRow->gtl_from_wiki}|{$this->lastRow->gtl_from_page}";
-		else
+		} else {
 			return '';
+		}
 	}
 	
 	/**
@@ -217,9 +222,10 @@ class GlobalUsageQuery {
 		// Add target image(s)
 		$where = array( 'gil_to' => $this->target );
 		
-		if ( $this->filterLocal )
+		if ( $this->filterLocal ) {
 			// Don't show local file usage
 			$where[] = 'gil_wiki != ' . $this->db->addQuotes( wfWikiId() );
+		}
 
 		// Set the continuation condition
 		$order = 'ASC';
@@ -268,10 +274,12 @@ class GlobalUsageQuery {
 		// Always return the result in the same order; regardless whether reversed was specified
 		// reversed is really only used to determine from which direction the offset is
 		$rows = array();
-		foreach ( $res as $row )
+		foreach ( $res as $row ) {
 			$rows[] = $row;
-		if ( $this->reversed )
+		}
+		if ( $this->reversed ) {
 			$rows = array_reverse( $rows );
+		}
 		
 		// Build the result array
 		$count = 0;
@@ -286,10 +294,12 @@ class GlobalUsageQuery {
 				break;
 			}
 
-			if ( !isset( $this->result[$row->gil_to] ) )
+			if ( !isset( $this->result[$row->gil_to] ) ) {
 				$this->result[$row->gil_to] = array();
-			if ( !isset( $this->result[$row->gil_to][$row->gil_wiki] ) )
+			}
+			if ( !isset( $this->result[$row->gil_to][$row->gil_wiki] ) ) {
 				$this->result[$row->gil_to][$row->gil_wiki] = array();
+			}
 
 			$this->result[$row->gil_to][$row->gil_wiki][] = array(
 				'image'	=> $row->gil_to,
