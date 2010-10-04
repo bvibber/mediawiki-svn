@@ -277,7 +277,7 @@ class SpecialPrefSwitch extends SpecialPage {
 				}				
 			}
 			$wgOut->addWikiMsgArray(
-					'prefswitch-main-feedback', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
+					'prefswitch-main-feedback', wfMsgForContent( 'prefswitch-feedbackpage' ), array( 'parse' )
 				);
 			$state = self::userState( $wgUser );
 			switch ( $state ) {
