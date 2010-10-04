@@ -253,7 +253,7 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addHtml( $html );
 		} else {
 			$wgOut->addWikiMsgArray(
-				'prefswitch-main', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
+				'prefswitch-main', wfMsgForContent( 'prefswitch-feedbackpage' ), array( 'parse' )
 			);
 			if ($wgUser->isLoggedIn()) {
 				$wgOut->addWikiMsgArray(
