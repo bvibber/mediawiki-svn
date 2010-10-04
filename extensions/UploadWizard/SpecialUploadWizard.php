@@ -97,6 +97,14 @@ class SpecialUploadWizard extends SpecialPage {
 			"resources/mw.ApiUploadHandler.js",
 			"resources/mw.DestinationChecker.js",
 
+			// interface libraries
+			"resources/mw.GroupProgressBar.js", 
+
+			// upload concepts
+			"resources/mw.UploadWizardDeed.js",
+			"resources/mw.UploadWizardLicenseInput.js",
+			"resources/mw.UploadWizardUtil.js",
+
 			// the thing that does most of it
 			"resources/mw.UploadWizard.js",
 
