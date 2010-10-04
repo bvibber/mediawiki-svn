@@ -153,6 +153,7 @@ $4',
 	'repoadmin-edit-view' => 'ViewVC path:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'The repository "[[Special:Code/$1|$1]]" has been successfully modified.',
+	'repoadmin-nav' => 'repository administration',
 
 	'right-repoadmin' => 'Manage code repositories',
 	'right-codereview-use' => 'Use of Special:Code',

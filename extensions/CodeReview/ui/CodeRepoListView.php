@@ -33,6 +33,9 @@ class CodeRepoListView {
 		$links[] = "[[Special:Code/$name/status|" . wfMsgHtml( 'code-status' ) . "]]";
 		$links[] = "[[Special:Code/$name/releasenotes|" . wfMsgHtml( 'code-releasenotes' ) . "]]";
 		$links[] = "[[Special:Code/$name/stats|" . wfMsgHtml( 'code-stats' ) . "]]";
+		if( $wgUser->isAllowed( 'repoadmin' ) ) {
+			$links[] = "[[Special:RepoAdmin/$name|" . wfMsgHtml( 'repoadmin-nav' ) . "]]";
+		}
 		$text = "'''[[Special:Code/$name|$name]]''' " . wfMsg( 'parentheses', $wgLang->pipeList( $links ) );
 		return $text;
 	}
