@@ -804,12 +804,15 @@ $.stars = {
 		/*
 		 * Clean up to avoid memory leaks in certain versions of IE 6
 		 */
-		$(window).unload(function(){
-			self.$cancel.unbind('.stars');
-			self.$stars.unbind('.stars');
-			self.$form.unbind('.stars');
-			self.$selec = self.$rboxs = self.$stars = self.$value = self.$cancel = self.$form = null;
-		});
+		// CHANGE: Only do this in IE, so as not to break bfcache in Firefox --catrope
+		if ( window.attachEvent && !window.addEventListener ) {
+			$(window).unload(function(){
+				self.$cancel.unbind('.stars');
+				self.$stars.unbind('.stars');
+				self.$form.unbind('.stars');
+				self.$selec = self.$rboxs = self.$stars = self.$value = self.$cancel = self.$form = null;
+			});
+		}
 		/*
 		 * Star selection helpers
 		 */
