@@ -64,6 +64,7 @@ class VectorHooks {
 				'jquery.client',
 				'jquery.suggestions',
 				'jquery.autoEllipsis',
+				'jquery.placeholder',
 			),
 			'group' => 'ext.vector',
 		),

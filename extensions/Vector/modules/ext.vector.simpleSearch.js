@@ -1,6 +1,6 @@
 /* JavaScript for SimpleSearch extension */
 
-// Disable mwsuggest.js's effect on searchInput 
+// XXX: Disable mwsuggest.js's effect on searchInput 
 if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefined' ) {
 	os_autoload_inputs = [];
 	os_autoload_forms = [];
@@ -8,6 +8,7 @@ if ( typeof os_autoload_inputs !== 'undefined' && os_autoload_forms !== 'undefin
 
 $( document ).ready( function() {
 	
+	// Compatibility map
 	var map = {
 		'browsers': {
 			// Left-to-right languages
@@ -33,81 +34,56 @@ $( document ).ready( function() {
 		return true;
 	}
 	
-	// Placeholder text
-	// if the placeholder attribute is supported, use it
-	if ( 'placeholder' in document.createElement( 'input' ) ) {
-		$( 'div#simpleSearch > input#searchInput' )
-			.attr( 'placeholder', mediaWiki.msg.get( 'vector-simplesearch-search' ) );
-	} else {
-		$( 'div#simpleSearch > input#searchInput' )
-			.each( function() {
-				var $input = $( this );
-				$input
-					.bind( 'blur', function() {
-						if ( $input.val().length == 0 ) {
-							$input
-								.val( mediaWiki.msg.get( 'vector-simplesearch-search' ) )
-								.addClass( 'placeholder' );
-							}
-						} )
-					.bind( 'focus', function() {
-						if ( $input.hasClass( 'placeholder' ) ) {
-							$input.val( '' ).removeClass( 'placeholder' );
-						}
-					} )
-					.parents( 'form' )
-						.bind( 'submit', function() {
-							$input.trigger( 'focus' );
-						} );
-				if ( $input.val() == '' ) {
-					$input.trigger( 'blur' );
+	// Placeholder text for SimpleSearch box
+	$( 'div#simpleSearch > input#searchInput' ).placeholder( mediaWiki.msg.get( 'vector-simplesearch-search' ) );
+	
+	// General suggestions functionality for all search boxes
+	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' )
+		.suggestions( {
+			fetch: function( query ) {
+				var $this = $(this);
+				var request = $.ajax( {
+					url: wgScriptPath + '/api.php',
+					data: {
+						'action': 'opensearch',
+						'search': query,
+						'namespace': 0,
+						'suggest': ''
+					},
+					dataType: 'json',
+					success: function( data ) {
+						$this.suggestions( 'suggestions', data[1] );
+					}
+				});
+				$(this).data( 'request', request );
+			},
+			cancel: function () {
+				var request = $(this).data( 'request' );
+				// If the delay setting has caused the fetch to have not even happend yet, the request object will
+				// have never been set
+				if ( request && typeof request.abort == 'function' ) {
+					request.abort();
+					$(this).removeData( 'request' );
 				}
-			} );
-	}
-	$( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
-		fetch: function( query ) {
-			var $this = $(this);
-			var request = $.ajax( {
-				url: wgScriptPath + '/api.php',
-				data: {
-					'action': 'opensearch',
-					'search': query,
-					'namespace': 0,
-					'suggest': ''
-				},
-				dataType: 'json',
-				success: function( data ) {
-					$this.suggestions( 'suggestions', data[1] );
+			},
+			result: {
+				select: function( $input ) {
+					$input.closest( 'form' ).submit();
 				}
-			});
-			$(this).data( 'request', request );
-		},
-		cancel: function () {
-			var request = $(this).data( 'request' );
-			// If the delay setting has caused the fetch to have not even happend yet, the request object will
-			// have never been set
-			if ( request && typeof request.abort == 'function' ) {
-				request.abort();
-				$(this).removeData( 'request' );
-			}
-		},
-		result: {
-			select: function( $textbox ) {
-				$textbox.closest( 'form' ).submit();
-			}
-		},
-		delay: 120,
-		positionFromLeft: $( 'body' ).is( '.rtl' ),
-		highlightInput: true
-	} )
+			},
+			delay: 120,
+			positionFromLeft: $( 'body' ).is( '.rtl' ),
+			highlightInput: true
+		} )
 		.bind( 'paste cut', function( e ) {
 			// make sure paste and cut events from the mouse trigger the keypress handler and cause the suggestions to update
 			$( this ).trigger( 'keypress' );
 		} );
+	// Special suggestions functionality for skin-provided search box
 	$( '#searchInput' ).suggestions( {
 		result: {
-			select: function( $textbox ) {
-				$textbox.closest( 'form' ).submit();
+			select: function( $input ) {
+				$input.closest( 'form' ).submit();
 			}
 		},
 		special: {
@@ -130,11 +106,11 @@ $( document ).ready( function() {
 						.autoEllipsis();
 				}
 			},
-			select: function( $textbox ) {
-				$textbox.closest( 'form' ).append(
+			select: function( $input ) {
+				$input.closest( 'form' ).append(
 					$( '<input />' ).attr( { 'type': 'hidden', 'name': 'fulltext', 'value': 1 } )
 				);
-				$textbox.closest( 'form' ).submit();
+				$input.closest( 'form' ).submit();
 			}
 		},
 		$region: $( '#simpleSearch' )
