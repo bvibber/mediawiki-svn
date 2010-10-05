@@ -38,7 +38,9 @@
 	mw.addModuleLoader( 'AddMedia.UploadForm', [
 			[
 				'mw.UploadForm',
-				'$j.ui'				
+				'$j.ui',
+				'$j.widget',
+				'$j.ui.mouse'
 			],
 			[
 				'$j.ui.datepicker'
@@ -57,7 +59,10 @@
 				'$j.browserTest', // ( textSelection uses browserTest ) 
 				'$j.ui'
 			], [
-				'$j.ui.resizable',
+				'$j.widget',
+				'$j.ui.mouse',
+				'$j.ui.resizable',				
+				'$j.ui.position',
 				'$j.ui.draggable',
 				'$j.ui.dialog',
 				'$j.ui.tabs',
@@ -70,10 +75,13 @@
 		[
 			'mw.UploadHandler',
 			'mw.UploadInterface',
-			'$j.ui'
+			'$j.ui',
+			'$j.ui.mouse',
+			'$j.widget'
 		],
 		[
 			'$j.ui.progressbar',
+			'$j.ui.position',			
 			'$j.ui.dialog',
 			'$j.ui.draggable'
 		]

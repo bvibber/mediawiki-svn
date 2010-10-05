@@ -28,32 +28,52 @@ mediaWikiSearch.prototype = {
 	* @param {String} title Title of the resource to be added
 	* @param {Function} callback Function called once title resource acquired   
 	*/ 
-	addByTitle:function( title , callback, redirect_count ) {
+	getByTitle:function( title , callback ) {
 	
-		mw.log( "AddByTitle::" + title );
+		mw.log( "MediaWikiSearch:: getByTitle:" + title );
 		
-		var _this = this;
-		if ( !redirect_count )
-			redirect_count = 0;
-		if ( redirect_count > 5 ) {
-			mw.log( 'Error: addByTitle too many redirects' );
-			callback( false );
-			return false;
-		}
+		var _this = this;	
+				
 		var request = {
-			'titles':'File:' + title,
-			'prop':'imageinfo|revisions|categories',
-			'iiprop':'url|mime|size',
-			'iiurlwidth': parseInt( this.rsd.thumb_width ),
-			'rvprop':'content',
+			'titles' : 'File:' + title.replace(/File:|Image:/ig, ''),
+			'prop' : 'imageinfo|revisions|categories',
+			'iiprop' : 'url|mime|size|metadata',
+			'iiurlwidth' : parseInt( this.rsd.thumb_width ),
+			'rvprop' : 'content',
 			'redirects' : true
 		}
-		mw.getJSON(this.provider.apiUrl, request, function( data ) {				
+		mw.getJSON( this.provider.apiUrl, request, function( data ) {				
 			// call addSingleResult
 			callback( _this.addSingleResult( data ) );
 		});
 	},
-		
+	
+	getResourceFromUrl: function( url, callback  ){		
+		var title = this.getTitleKeyFromMwUrl( url );
+		if( !title) {
+			callback( false );
+			return ;
+		} 
+		this.getByTitle(title , callback );				
+	},
+	/**
+	 * Does best effort to get the title key from a mediawiki url 
+	 */
+	getTitleKeyFromMwUrl: function( url ){
+		// try for title key param 
+		var titleKey = mw.parseUri( url ).queryKey['title'];
+		if( titleKey ){
+			return titleKey;
+		}
+		// else try for title url map
+		titleKey = url.replace( this.provider.detailsUrl.replace( '$1', ''), '' );
+		if( titleKey != url ){
+			return titleKey;
+		}
+		mw.log("Error: mediaWikiSearch:: getResourceFromUrl could not get title form url: " + url );
+		return false;
+	},
+	
 	/**
 	* Get recent upload by user and add them as results 
 	*
@@ -88,7 +108,7 @@ mediaWikiSearch.prototype = {
 			var resourceQuery = {				
 				'titles'	: titleStr,
 				'prop'		: 'imageinfo|revisions|categories',
-				'iiprop'	: 'url|mime|size',
+				'iiprop'	: 'url|mime|size|metadata',
 				'iiurlwidth': parseInt( _this.rsd.thumb_width ),
 				'rvprop':'content'
 			};
@@ -122,7 +142,7 @@ mediaWikiSearch.prototype = {
 			'gsrlimit':  this.provider.limit,
 			'gsroffset': this.provider.offset,
 			'prop':'imageinfo|revisions|categories',
-			'iiprop':'url|mime|size',
+			'iiprop':'url|mime|size|metadata',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		};
@@ -183,14 +203,18 @@ mediaWikiSearch.prototype = {
 				}
 				
 				// Get the url safe titleKey from the descriptionurl
-				var titleKey = page.imageinfo[0].descriptionurl.split( '/' );
-				titleKey = unescape( titleKey[ titleKey.length - 1 ] );				
+				var titleKey = page.imageinfo[0].descriptionurl.split( '/' )
+					;
+				titleKey = unescape( 
+						titleKey[ titleKey.length - 1 ]
+						.replace( 'index.php?title=', '') 
+					);				
 				
 				var resource = 	{
 					'id'		 : page_id,
 					'titleKey'	 : titleKey,
 					'link'		 : page.imageinfo[0].descriptionurl,
-					'title'		 : page.title.replace(/File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
+					'title'		 : page.title.replace(/Image:|File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
 					'poster'	 : page.imageinfo[0].thumburl,
 					'thumbwidth' : page.imageinfo[0].thumbwidth,
 					'thumbheight': page.imageinfo[0].thumbheight,
@@ -201,10 +225,17 @@ mediaWikiSearch.prototype = {
 					'desc'		 : page.revisions[0]['*'],
 					// add pointer to parent search obj:
 					'pSobj'		 :_this,
+					
 					'meta': {
 						'categories':page.categories
 					}
-				};				
+				};		
+				
+				for( var i in page.imageinfo[0].metadata ){
+					if( page.imageinfo[0].metadata[i].name == 'length' ){
+						resource.duration = page.imageinfo[0].metadata[i].value;
+					}
+				}				
 				
 				/*
 				 //to use once we get the wiki-text parser in shape
@@ -247,8 +278,10 @@ mediaWikiSearch.prototype = {
 				this.resultsObj[page_id] = resource;
 				
 				// If returnFirst flag:
-				if ( returnFirst )
+				// xxx this is kind of hacky .. we should have abstract getter / adder to result list
+				if ( returnFirst ){
 					return this.resultsObj[page_id];
+				}
 				
 				
 				this.num_results++;

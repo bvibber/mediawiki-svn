@@ -56,7 +56,7 @@ baseRemoteSearch.prototype = {
 	num_results		: 0,
 
 	/**
-	* Initialise the baseRemoteSearch 
+	* Initialize the baseRemoteSearch 
 	* @param {Object} options The set of options for the remote search class
 	*/
 	init: function( options ) {	
@@ -65,6 +65,10 @@ baseRemoteSearch.prototype = {
 			this[i] = options[i];
 		}
 		return this;
+	},
+	
+	getResourceFromUrl: function( url, callback ){
+		mw.log("Error getResourceFromUrl must be implemented by remoteSearch provider");	
 	},
 	
 	/**
