@@ -437,7 +437,8 @@
 				// Submit straight to the special page. Yes, this is a dirty dirty hack
 				// Build request from form data
 				var formData = {};
-				$dialogDiv.find( 'input' ).each( function() {
+				$dialogDiv.find( 'input[type=text], input[type=radio]:checked, input[type=checkbox]:checked, ' +
+						'input[type=hidden], textarea' ).each( function() {
 					var name = $( this ).attr( 'name' );
 					if ( name !== '' ) {
 						if ( name.substr( -2 ) == '[]' ) {
