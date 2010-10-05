@@ -149,7 +149,7 @@ class SpecialPage {
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
 		'Upload'                    => 'SpecialUpload',
-		'SessionStash'              => array( 'SpecialSessionStash', 'SessionStash', 'upload' ),
+		'SessionStash'              => 'SpecialSessionStash',
 
 		# Wiki data and tools
 		'Statistics'                => 'SpecialStatistics',

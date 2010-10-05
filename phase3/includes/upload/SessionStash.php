@@ -121,7 +121,7 @@ class SessionStash {
 		}
 		$stashPath = $status->value;
 		 		
-		// required info we always store. Must trump any other application info in data()
+		// required info we always store. Must trump any other application info in $data
 		// 'mTempPath', 'mFileSize', and 'mFileProps' are arbitrary names
 		// chosen for compatibility with UploadBase's way of doing this.
 		$requiredData = array( 
