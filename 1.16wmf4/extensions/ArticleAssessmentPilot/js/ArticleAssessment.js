@@ -132,7 +132,7 @@
 						.val( submitbutton )
 					.end();
 				// hide the feedback link if we need to
-				if( $.cookie( 'mwArticleAssessmentHideFeedback' ) ) {
+				if( $.cookie( 'mwArticleAssessmentHideFeedbackLink' ) ) {
 					$structure
 						.find( '.article-assessment-rate-feedback' )
 						.hide();
@@ -476,7 +476,7 @@
 							// Hide the dialog link
 							$( '#article-assessment .article-assessment-rate-feedback' ).hide();
 							// set a cookie to keep the dialog link hidden
-							$.cookie( 'mwArticleAssessmentHideFeedback', true, { 'expires': 30, 'path': '/' } );
+							$.cookie( 'mwArticleAssessmentHideFeedbackLink', true, { 'expires': 30, 'path': '/' } );
 							
 						}
 					},
