@@ -88,6 +88,7 @@ function efCentralNoticeSetup() {
 		$wgHooks['BeforePageDisplay'][] = 'efCentralNoticeLoader';
 		$wgHooks['MakeGlobalVariablesScript'][] = 'efCentralNoticeDefaults';
 		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplay';
+		$wgHooks['SkinAfterBottomScripts'][] = 'efCentralNoticeGeoLoader';
 	}
 	
 	$wgSpecialPages['BannerLoader'] = 'SpecialBannerLoader';
@@ -144,15 +145,16 @@ function efCentralNoticeLoader( $out, $skin ) {
 
 	$centralLoader = SpecialPage::getTitleFor( 'BannerController' )->getLocalUrl();
 
-	$dbr = wfGetDB( DB_SLAVE, array(), $wgCentralDBname );
-	$row = $dbr->selectRow( 'cn_notices', 'not_name', array( 'not_enabled = 1', 'not_geo = 1' ) );
-	if ( $row ) {
-		$wgOut->addScriptFile( 'http://geoiplookup.wikimedia.org/' );
-	}
 	
 	// Insert the banner controller Javascript into the <head>
 	$wgOut->addScriptFile( $centralLoader );
 
+	return true;
+}
+
+function efCentralNoticeGeoLoader( $skin, &$text ) {
+	// Insert the geo IP lookup
+	$text .= '<script type="text/javascript" src="http://geoiplookup.wikimedia.org/"></script>';
 	return true;
 }
 

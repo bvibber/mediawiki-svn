@@ -1,4 +1,4 @@
-function selectLanguages(selectAll) {
+function selectLanguages( selectAll ) {
 	var selectBox = document.getElementById('project_languages[]');
 	var firstSelect = selectBox.options.length - 1;
 	for (var i = firstSelect; i >= 0; i--) {
@@ -20,11 +20,14 @@ function insertButton( buttonType ) {
 	var bannerField = document.getElementById('templateBody');
 	switch( buttonType ) {
 	case 'translate':
-	  var buttonValue = '[<a href="http://meta.wikimedia.org/wiki/CentralNotice">{{int:centralnotice-shared-help-translate}}</a>]';
-	  break;
+		var buttonValue = '[<a href="http://meta.wikimedia.org/wiki/CentralNotice">{{int:centralnotice-shared-help-translate}}</a>]';
+		break;
 	case 'hide':
-	  var buttonValue = '[<a href="#" onclick="toggleNotice();return false">{{int:centralnotice-shared-hide}}</a>]';
-	  break;
+		var buttonValue = '[<a href="#" onclick="toggleNotice();return false">{{int:centralnotice-shared-hide}}</a>]';
+		break;
+	case 'close':
+		var buttonValue = '<a href="#" onclick="toggleNotice();return false">{{MediaWiki:centralnotice-shared-close}}</a>';
+		break;
 	}
 	if (document.selection) {
 		// IE support
@@ -42,6 +45,18 @@ function insertButton( buttonType ) {
 		bannerField.value += buttonValue;
 	}
 	bannerField.focus();
+}
+function validateBannerForm( form ) {
+	var output = '';
+	var pos = form.templateBody.value.indexOf("document.write");
+	if( pos > -1 ) {
+		output += documentWriteError + '\n';
+	}
+	if( output ) {
+		alert( output );
+		return false;
+	}
+	return true;
 }
 // Handle revealing the geoMultiSelector when the geotargetted checkbox is checked
 ( function( $ ) {

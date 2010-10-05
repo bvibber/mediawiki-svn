@@ -25,6 +25,12 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		// Add style file to the output headers
 		$wgOut->addExtensionStyle( "$wgScriptPath/extensions/CentralNotice/centralnotice.css" );
 		
+		// Add localized script error messages
+		$scriptVars = array(
+			'documentWriteError' => wfMsg( 'centralnotice-documentwrite-error' )
+		);
+		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );
+		
 		// Add script file to the output headers
 		$wgOut->addScriptFile( "$wgScriptPath/extensions/CentralNotice/centralnotice.js" );
 
@@ -213,7 +219,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		// Build HTML
 		$htmlOut = '';
 		$htmlOut .= Xml::openElement( 'fieldset', array( 'class' => 'prefsection' ) );
-		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
+		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post', 'onsubmit' => 'return validateBannerForm(this)' ) );
 		$htmlOut .= Xml::element( 'h2', null, wfMsg( 'centralnotice-add-template' ) );
 		$htmlOut .= Xml::hidden( 'wpMethod', 'addTemplate' );
 		$htmlOut .= Xml::tags( 'p', null,
@@ -241,6 +247,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-banner' ) );
 		$htmlOut .= wfMsg( 'centralnotice-edit-template-summary' );
 		$buttons = array();
+		$buttons[] = '<a href="#" onclick="insertButton(\'close\');return false;">' . wfMsg( 'centralnotice-close-button' ) . '</a>';
 		$buttons[] = '<a href="#" onclick="insertButton(\'hide\');return false;">' . wfMsg( 'centralnotice-hide-button' ) . '</a>';
 		$buttons[] = '<a href="#" onclick="insertButton(\'translate\');return false;">' . wfMsg( 'centralnotice-translate-button' ) . '</a>';
 		$htmlOut .= Xml::tags( 'div',
@@ -460,7 +467,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 	
 			// Show edit form
 			if ( $this->editable ) {
-				$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
+				$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post', 'onsubmit' => 'return validateBannerForm(this)' ) );
 				$htmlOut .= Xml::hidden( 'wpMethod', 'editTemplate' );
 			}
 			
@@ -488,6 +495,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-edit-template' ) );
 				$htmlOut .= wfMsg( 'centralnotice-edit-template-summary' );
 				$buttons = array();
+				$buttons[] = '<a href="#" onclick="insertButton(\'close\');return false;">' . wfMsg( 'centralnotice-close-button' ) . '</a>';
 				$buttons[] = '<a href="#" onclick="insertButton(\'hide\');return false;">' . wfMsg( 'centralnotice-hide-button' ) . '</a>';
 				$buttons[] = '<a href="#" onclick="insertButton(\'translate\');return false;">' . wfMsg( 'centralnotice-translate-button' ) . '</a>';
 				$htmlOut .= Xml::tags( 'div',
