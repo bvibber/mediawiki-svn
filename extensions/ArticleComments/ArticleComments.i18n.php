@@ -34,7 +34,7 @@ $messages['en'] = array(
 	'article-comments-user-is-blocked' => 'Your user account is currently blocked from editing [[$1]].',
 	'article-comments-new-comment' => "\n== \$1 ==\n\n<div class='commentBlock'>\n\$2\n\n--\$3 \$4\n</div>\n",
 	'article-comments-no-spam' => 'At least one of the submitted fields was flagged as spam.',
-	'processcomment' => 'Process qrticle comment',
+	'processcomment' => 'Process article comment',
 );
 
 $messages['qqq'] = array(
