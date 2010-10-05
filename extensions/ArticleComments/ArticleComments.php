@@ -16,7 +16,7 @@
  *     1. Drop this script (ArticleComments.php) in $IP/extensions
  *         Note: $IP is your MediaWiki install dir.
  *     2. Enable the extension by adding this line to your LocalSettings.php:
- *            require_once('extensions/ArticleComments.php');
+ *            require_once( "$IP/extensions/ArticleComments/ArticleComments.php" );
  * Usage:
  *     Once installed, you may utilize ArticleComments by adding the following flag in the article text:
  *         <comments />
@@ -76,10 +76,11 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 # Credits
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'ArticleComments',
-	'author' => 'Jim R. Wilson - wilson.jim.r &lt;at&gt; gmail.com',
+	'author' => 'Jim R. Wilson - wilson.jim.r <at> gmail.com',
 	'url' => 'http://jimbojw.com/wiki/index.php?title=ArticleComments',
-	'description' => 'Enables comment sections on article pages.',
+	'descriptionmsg' => 'article-comments-desc',
 	'version' => '0.5'
 );
 
@@ -112,6 +113,7 @@ $wgArticleCommentsNSDisplayList = array();
 # Sets up special page to handle comment submission
 $wgExtensionFunctions[] = 'setupSpecialProcessComment';
 
+// FIXME: Use of SpecialPage::addPage is deprecated.
 function setupSpecialProcessComment() {
 	SpecialPage::addPage( new SpecialPage( 'ProcessComment', '', true, 'specialProcessComment', false ) );
 }

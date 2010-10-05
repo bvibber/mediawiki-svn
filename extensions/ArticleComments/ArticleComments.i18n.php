@@ -9,6 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'article-comments-desc' => 'Enables comment sections on article pages',
 	'article-comments-title-string' => 'title',
 	'article-comments-name-string' => 'Name',
 	'article-comments-name-field' => 'Name (required):',
@@ -20,7 +21,7 @@ $messages['en'] = array(
 	'article-comments-leave-comment-link' => 'Leave a comment ...',
 	'article-comments-invalid-field' => 'The $1 provided <nowiki>[$2]</nowiki> is invalid.',
 	'article-comments-required-field' => '$1 field is required.',
-	'article-comments-submission-failed' => 'Comment Submission Failed',
+	'article-comments-submission-failed' => 'Comment submission failed',
 	'article-comments-failure-reasons' => 'Sorry, your comment submission failed for the following reason(s):',
 	'article-comments-no-comments' => 'Sorry, the article "[[$1]]" is not accepting comments at this time.',
 	'article-comments-talk-page-starter' => "<noinclude>Comments on [[$1]]\n<comments />\n----- __NOEDITSECTION__</noinclude>\n",
@@ -33,7 +34,7 @@ $messages['en'] = array(
 	'article-comments-user-is-blocked' => 'Your user account is currently blocked from editing [[$1]].',
 	'article-comments-new-comment' => "\n== \$1 ==\n\n<div class='commentBlock'>\n\$2\n\n--\$3 \$4\n</div>\n",
 	'article-comments-no-spam' => 'At least one of the submitted fields was flagged as spam.',
-	'processcomment' => 'Process Article Comment',
+	'processcomment' => 'Process qrticle comment',
 );
 
 $messages['qqq'] = array(
