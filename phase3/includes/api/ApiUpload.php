@@ -392,9 +392,53 @@ class ApiUpload extends ApiBase {
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();
 
-		wfDebug( __METHOD__ . " result so far " . print_r( $result, 1 ) );
 		$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
-		wfDebug( __METHOD__ . " result with imageinfo " . print_r( $result, 1 ) );
+
+
+	/**
+	 * Get image info, but also add one or more thumbnails.  Relies a lot on SessionStashFile's
+	 * modified transform().
+	 * This method also has to pass in an API result, which is a rather bad idea and breaks
+ 	 * separation of concerns, but that's how the rest of the code works :(
+	 *
+	 * @param {ApiResult} result
+	 * @return {Mixed} image info, mostly key-value but also including thumbnails with similar sets of sub-properties
+	 */
+
+		// XXX get default thumbnail width. 
+		// perhaps when initializing... Isn't this a global? Can't find it anywhere in docs.
+		$defaultThumbWidth = 120;
+		if ( isset( $this->mParams['thumbwidth'] ) ) {
+			$thumbnails = array();
+			if ( $this->mParams['thumbwidth'] ) {
+				$widths = explode( ',', $this->mParams['thumbwidth'] );
+			} else {
+				$widths = array( $defaultThumbWidth ); // magic number grrrrr....
+			}
+
+			foreach ( $widths as $width ) {
+				$thumbnailKey = $width . "px";
+				if ( $thumbnails[$thumbnailKey] ) {
+					continue;
+				}
+				$width = max( 1, min( $file->getWidth(), $width ) );
+			
+				// because the file is a SessionStashFile, this thumbnail will also be stashed,
+				// and a thumbnailFile will be created
+				if ( ! $thumbnailImage = $file->getThumbnail( $width ) ) { 
+					$this->dieUsageMsg( 'Could not obtain thumbnail', 'nothumb' );
+				}
+				
+				// now also return metadata about thumbnails, with all possible properties
+				$thumbnailFile = $thumbnailImage->thumbnailFile;
+				$allPropertyNames = array_flip( ApiQueryImageInfo::getPropertyNames() );
+				$thumbnails[$thumbnailKey] = ApiQueryImageInfo::getInfo( $thumbnailFile, $allPropertyNames, $result );
+			
+			}
+			$result['thumbnails'] = $thumbnails;
+		}
+
+
 
 		return $result;
 	}
@@ -434,10 +478,7 @@ class ApiUpload extends ApiBase {
 			'url' => null,
 
 			'sessionkey' => null,
-
-			/* This is for UploadFromFileToStash.php in extensions/UploadWizard
-	 		   We can't add this dynamically?
-			   suggests that we should either define our own method or make this all core */
+			'thumbwidth' => null,
 			'stash' => array(
 				ApiBase::PARAM_DFLT => false,
 			)
@@ -466,7 +507,8 @@ class ApiUpload extends ApiBase {
 			'file' => 'File contents',
 			'url' => 'Url to fetch the file from',
 			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',
-			'stash' => 'If set to a true value, the server will not add the file to the repository and stash it temporarily.'
+			'stash' => 'If set to a true value, the server will not add the file to the repository and stash it temporarily.',
+			'thumbwidth' => 'thumbwidths'
 		);
 
 		global $wgAllowAsyncCopyUploads;

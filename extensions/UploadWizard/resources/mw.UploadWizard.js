@@ -308,6 +308,10 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 					.bind( 'mouseleave', function(e) { _this.removeFileCtrlHover(e); } );
 */
 
+
+	// XXX this is abit horrible as here we are anticipating what thumbnails we're going to need :(
+	_this.thumbnailParam = $j('<input type="hidden" name="thumbwidth" value="120,80" />');
+
 	// the css trickery (along with css) 
 	// here creates a giant size file input control which is contained within a div and then
 	// clipped for overflow. The effect is that we have a div (ctrl-container) we can position anywhere
@@ -319,7 +323,9 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 			.append( _this.fileCtrlContainer
 				.append( _this.fileInputCtrl ) 
 			)
-			.append( _this.filenameCtrl ).get( 0 );
+			.append( _this.filenameCtrl )
+			.append( _this.thumbnailParam )
+			.get( 0 );
 
 
 	$j( _this.div ).append( _this.form );

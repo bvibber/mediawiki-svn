@@ -34,10 +34,6 @@ class UploadFromFileToStash extends UploadFromFile {
 				'watch' => $watch,
 				'mFileProps' => $this->mFileProps 
 			);
-
-			if ( ! is_uploaded_file( $this->mLocalFile ) ) {
-				throw new MWException( 'badpath' );
-			}
 			// we now change the value of the local file
 			$this->mLocalFile = $stash->stashFile( $this->mTempPath, $data );
 			$status->setResult( true, $this->mLocalFile );
@@ -50,28 +46,4 @@ class UploadFromFileToStash extends UploadFromFile {
 		return $status;
 	}
 
-	/**
-	 * Get image info, but also add a thumbnail.  Relies a lot on SessionStashFile...
-	 * This method also has to pass in an API result, which is a rather bad idea and breaks
- 	 * separation of concerns, but that's how the rest of the code works :(
-	 *
-	 * @param {ApiResult} result
-	 * @return {Array} key-val pair of image info, including thumbnail
-	 */
-	public function getImageInfo( $result ) {
-
-		$imageInfo = parent::getImageInfo( $result );
-
-		// XXX get default thumbnail width. 
-		// perhaps when initializing... Isn't this a global? Can't find it anywhere in docs.
-		$thumbWidth = 120;
-
-		if ( isset( $this->mParams['thumbWidth'] ) ) {
-			$thumbWidthParam = ( int )( $this->mParams['thumbWidth'] );
-			if ( $thumbWidthParam > 0 and $thumbWidthParam <= $file->getWidth() ) {
-				$thumbWidth = $thumbWidthParam;
-			}
-		}
-		return $imageInfo;
-	}
 };
