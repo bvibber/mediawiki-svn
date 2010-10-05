@@ -1200,29 +1200,19 @@ abstract class UploadBase {
 	/**
 	 * Gets image info about the file just uploaded. 
 	 *
-	 * @param {ApiResult} 
-	 * @return {Array} image info
-	 */
-	public function getImageInfo( $result ) {
-		return $this->getImageInfoForFile( $this->getLocalFile(), $result );
-	}
-
-	/**
-	 * Gets image info about any file object (useful for some API functions which return information
-	 * about several files (such as the original and a thumbnail).
-	 *
 	 * Also has the effect of setting metadata to be an 'indexed tag name' in returned API result if 
 	 * 'metadata' was requested. Oddly, we have to pass the "result" object down just so it can do that
 	 * with the appropriate format, presumably. 
 	 *
-	 * @param {File} file object
 	 * @param {ApiResult} 
 	 * @return {Array} image info
 	 */
-	protected function getImageInfoForFile( $file, $result ) {
+	public function getImageInfo( $result ) {
+		$file = $this->getLocalFile();
 		$imParam = ApiQueryImageInfo::getPropertyNames();
 		return ApiQueryImageInfo::getInfo( $file, array_flip( $imParam ), $result );
 	}
+
 
 	public function convertVerifyErrorToStatus( $error ) {
 		$code = $error['status'];
