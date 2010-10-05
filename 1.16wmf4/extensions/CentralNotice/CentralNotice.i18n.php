@@ -7483,8 +7483,6 @@ $messages['sw'] = array(
 	'centralnotice-clone-name' => 'Jina:',
 );
 
-<<<<<<< .working
-=======
 /** Tamil (தமிழ்)
  * @author TRYPPN
  */
