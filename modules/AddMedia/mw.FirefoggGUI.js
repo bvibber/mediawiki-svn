@@ -219,13 +219,13 @@ mw.FirefoggGUI.prototype = {
 			'group'     : "quality"
 		},
 		'width': {
-			'range'     : { 'min': 0, 'max': 1080 },
+			'range'     : { 'min': 0, 'max': 4096 },
 			'step'      : 4,
 			'type'      : 'slider',
 			'group'     : "quality"
 		},
 		'height': {
-			'range'     : { 'min': 0, 'max' : 1080 },
+			'range'     : { 'min': 0, 'max' : 3072 },
 			'step'      : 4,
 			'type'      : "slider",
 			'group'     : "quality"
