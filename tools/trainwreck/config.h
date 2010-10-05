@@ -35,4 +35,6 @@ extern int unsynced;
 extern regex_t *db_regex;
 extern regex_t *ignore_regex;
 
+extern int binlog_v4;
+
 #endif	/* !TW_CONFIG_H */

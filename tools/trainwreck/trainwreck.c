@@ -569,9 +569,10 @@ logentry_t	*ent;
 		 * 4 bytes: execution time
 		 * 1 byte: length of database name
 		 * 2 bytes: error code
+		 * 2 bytes: status block length (v4 only)
 		 * rest of data is database name, NUL, query
 		 */
-		if (len <= 11) {
+		if (len <= 11 || (binlog_v4 && len <= 13)) {
 			logmsg("binlog is truncated");
 			goto err;
 		}
@@ -583,6 +584,16 @@ logentry_t	*ent;
 		ADVANCE(1);
 
 		ADVANCE(2);
+		if (binlog_v4) {
+		int	statuslen = uint2korr(buf);
+			ADVANCE(2);
+			if (len < statuslen) {
+				logmsg("binlog is truncated");
+				goto err;
+			}
+			ADVANCE(statuslen);
+		}
+
 		if (len <= namelen + 2) {
 			logmsg("binlog is truncated");
 			goto err;

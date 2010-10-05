@@ -34,6 +34,8 @@ char *statedir;
 int autostart;
 int unsynced;
 
+int binlog_v4;
+
 static void do_ignore_errno(unsigned);
 
 static void
@@ -112,6 +114,16 @@ char	 line[1024];
 			autostart = atoi(value);
 		} else if (!strcmp(opt, "fsync")) {
 			unsynced = !atoi(value);
+		} else if (!strcmp(opt, "binlog-version")) {
+		int	vers = atoi(value);
+			if (vers == 3)
+				binlog_v4 = 0;
+			else if (vers == 4)
+				binlog_v4 = 1;
+			else {
+				fprintf(stderr, "unknown binlog version %d\n", vers);
+				return -1;
+			}
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));
