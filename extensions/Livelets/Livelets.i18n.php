@@ -93,6 +93,13 @@ $messages['ia'] = array(
 	'livelets-desc' => 'Permitte le transclusion de paginas que se carga post le contento principal del pagina e que pote actualisar se dynamicamente con Ajax',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'livelets-desc' => 'Memungkinkan halaman ditransklusikan yang memuat setelah konten halaman utama dan dapat memutakhirkan secara dinamis dengan Ajax',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

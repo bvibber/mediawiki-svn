@@ -196,9 +196,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  */
 $messages['id'] = array(
 	'interlanguage-desc' => 'Ambil pranala antarbahasa dari wiki lain',
+	'interlanguage-pagelinksexplanation' => 'Halaman dengan pranala antarbahasa:',
 );
 
 /** Igbo (Igbo)
@@ -227,6 +229,7 @@ $messages['ja'] = array(
  */
 $messages['ksh'] = array(
 	'interlanguage-desc' => 'Hollt de Lenks zwesche de Shprooche vun enem ander Wiki.',
+	'interlanguage-pagelinksexplanation' => 'Atikele met Lenks op ander Shprooche',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -301,6 +304,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'interlanguage-desc' => 'A cheuj anliure antërlenga da àutre wiki',
+	'interlanguage-pagelinksexplanation' => 'Pàgine con colegament antërlenga:',
 );
 
 /** Pashto (پښتو)
@@ -316,6 +320,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'interlanguage-desc' => 'Extrai os links interlínguas de outra wiki',
+	'interlanguage-pagelinksexplanation' => 'Páginas com links interlínguas:',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -646,20 +646,81 @@ Es recommendate que tu lo re-evaluta.",
 	'articleassessment-survey-thanks' => 'Gratias pro completar le questionario.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'articleassessment' => 'Penilaian artikel',
+	'articleassessment-desc' => 'Penilaian artikel (versi percobaan)',
+	'articleassessment-yourfeedback' => 'Umpan balik Anda',
+	'articleassessment-pleaserate' => 'Mohon luangkan waktu untuk menilai halaman di bawah.',
+	'articleassessment-submit' => 'Kirim',
+	'articleassessment-rating-wellsourced' => 'Sumber terpercaya:',
+	'articleassessment-rating-neutrality' => 'Netral:',
+	'articleassessment-rating-completeness' => 'Selesai:',
+	'articleassessment-rating-readability' => 'Dapat dibaca:',
+	'articleassessment-articlerating' => 'Peringkat halaman',
+	'articleassessment-error' => 'Kesalahan terjadi.
+Silakan coba lagi.',
+	'articleassessment-thanks' => 'Terima kasih! Penilaian Anda telah disimpan.',
+	'articleassessment-featurefeedback' => 'Beri kami <span class="feedbacklink">umpan balik</span> tentang fitur ini.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|penilaian|penilaian}})',
+	'articleassessment-results-show' => '(Hasil disembunyikan. <span class="showlink">Tampilkan</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Sembunyikan hasil</span>)',
+	'articleassessment-survey-answer-whyrated-development' => 'Saya harap penilaian saya akan memberi dampak positif terhadap pengembangan halaman ini',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Saya ingin berkontribusi ke {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Saya ingin berbagi pendapat',
+	'articleassessment-survey-answer-whyrated-other' => 'Lainnya',
+	'articleassessment-survey-question-useful-iffalse' => 'Mengapa?',
+	'articleassessment-survey-question-expert-iftrue' => 'Dapatkah Anda menjelaskan keahlian Anda?',
+	'articleassessment-survey-question-comments' => 'Apakah Anda memiliki komentar tambahan?',
+	'articleassessment-survey-submit' => 'Kirim',
+	'articleassessment-survey-title' => 'Silakan jawab beberapa pertanyaan',
+	'articleassessment-survey-thanks' => 'Terima kasih telah mengisi survei ini.',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */
 $messages['it'] = array(
+	'articleassessment' => 'Valutazione pagina',
+	'articleassessment-desc' => 'Valutazione pagina (versione pilota)',
+	'articleassessment-yourfeedback' => 'La tua opinione',
+	'articleassessment-pleaserate' => "Per favore, concedici un po' del tuo tempo per valutare questa pagina qui sotto.",
 	'articleassessment-submit' => 'Invia',
 	'articleassessment-rating-wellsourced' => 'Ben documentata:',
 	'articleassessment-rating-neutrality' => 'Neutrale:',
 	'articleassessment-rating-completeness' => 'Completa:',
 	'articleassessment-rating-readability' => 'Leggibile:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Ritieni che questa pagina abbia citazioni sufficienti e che queste citazioni provengano da fonti attendibili?',
+	'articleassessment-rating-neutrality-tooltip' => 'Ritieni che questa pagina mostri una rappresentazione equa di tutti i punti di vista sul tema?',
+	'articleassessment-rating-completeness-tooltip' => 'Ritieni che questa pagina copra le aree tematiche essenziali che dovrebbe?',
+	'articleassessment-rating-readability-tooltip' => 'Ritieni che questa pagina sia ben organizzata e ben scritta?',
+	'articleassessment-articlerating' => 'Giudizio pagina',
 	'articleassessment-error' => 'Si è verificato un errore. 
 Si prega di riprovare più tardi.',
+	'articleassessment-thanks' => 'Grazie! Il tuo voto è stato salvato.',
+	'articleassessment-featurefeedback' => 'Inviaci i tuoi <span class="feedbacklink">commenti</span> su questa funzionalità.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|voto|voti}})',
+	'articleassessment-stalemessage-norevisioncount' => "Questa pagina è stata ''modificata'' dal tuo ultimo giudizio.
+Probabilmente vuoi valutarla di nuovo.",
+	'articleassessment-results-show' => '(Risultati nascosti. <span class="showlink">Mostrali</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Nascondi risultati</span>)',
+	'articleassessment-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Ho voluto contribuire alla valutazione complessiva della pagina',
+	'articleassessment-survey-answer-whyrated-development' => 'Spero che il mio voto influenzi positivamente lo sviluppo della pagina',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ho voluto contribuire a {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Mi piace condividere la mia opinione',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Non ho fornito valutazioni oggi, ma ho voluto lasciare un feedback sulla funzionalità',
 	'articleassessment-survey-answer-whyrated-other' => 'Altro',
+	'articleassessment-survey-question-useful' => 'Pensi che le valutazioni fornite siano utili e chiare?',
 	'articleassessment-survey-question-useful-iffalse' => 'Perché?',
+	'articleassessment-survey-question-expert' => 'Ti consideri un esperto nel settore a cui appartiene il tema di questa pagina?',
+	'articleassessment-survey-question-expert-iftrue' => 'Ci puoi descrivere le tue competenze?',
+	'articleassessment-survey-question-comments' => 'Hai altri commenti?',
 	'articleassessment-survey-submit' => 'Invia',
+	'articleassessment-survey-title' => 'Per favore, rispondi ad alcune domande',
+	'articleassessment-survey-thanks' => 'Grazie per aver compilato il questionario.',
 );
 
 /** Japanese (日本語)

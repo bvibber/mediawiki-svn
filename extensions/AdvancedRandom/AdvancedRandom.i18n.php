@@ -233,6 +233,13 @@ $messages['frp'] = array(
 Pôt étre utilisâ coment [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] por avêr per hasârd la pâge de discussion d’un articllo de qualitât, ou ben coment [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] por avêr un fichiér desot licence de documentacion abada GNU (GFDL).',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'advancedrandom' => 'Tuairmseach adhartach',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

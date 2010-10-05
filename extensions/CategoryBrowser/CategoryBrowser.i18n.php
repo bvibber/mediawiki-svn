@@ -487,6 +487,14 @@ Per favor cambia o actualisa le navigator del web, si possibile.',
 	'cb_edit_paste_right_hint' => 'Collar le operator in le sequente position, si possibile',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'cb_previous_items_link' => 'Sebelumnya',
+	'cb_next_items_link' => 'Selanjutnya',
+);
+
 /** Japanese (日本語)
  * @author Tommy6
  * @author Yanajin66
@@ -886,9 +894,13 @@ $messages['ta'] = array(
 	'cb_cat_subcats' => 'துணைப் பகுப்புகள்',
 	'cb_cat_pages' => 'பக்கங்கள்',
 	'cb_cat_files' => 'கோப்புக்கள்',
+	'cb_apply_button' => 'பயன்பாட்டிற்கு கொண்டுவா',
 	'cb_all_op' => 'அனைத்தும்',
 	'cb_or_op' => 'அல்லது',
 	'cb_and_op' => 'மற்றும்',
+	'cb_edit_left_hint' => 'முடிந்தால் இடது பக்கம் நகர்த்தவும்',
+	'cb_edit_right_hint' => 'முடிந்தால் வலது பக்கம் நகர்த்தவும்',
+	'cb_edit_remove_hint' => 'முடிந்தால் நீக்கவும்',
 );
 
 /** Telugu (తెలుగు)

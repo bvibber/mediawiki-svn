@@ -680,12 +680,29 @@ Si tu vole usar Facebook Connect pro aperir un session in le futuro, tu pote [[S
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Ric
  */
 $messages['it'] = array(
+	'group-fb-groupie' => 'Membri del gruppo',
+	'group-fb-groupie-member' => 'Membri del gruppo',
 	'fbconnect-link' => 'Torna a facebook.com',
 	'fbconnect-click-to-login' => 'Fare clic per accedere a questo sito tramite Facebook',
 	'fbconnect-click-to-connect-existing' => 'Clicca per collegare il tuo account Facebook a $1',
+	'fbconnect-comm' => 'Comunicazione',
+	'fbconnect-error' => 'Errore di verifica',
+	'fbconnect-nickname' => 'Nickname',
+	'fbconnect-fullname' => 'Nome completo',
+	'fbconnect-email' => 'Indirizzo e-mail',
+	'fbconnect-language' => 'Lingua',
+	'fbconnect-chooselegend' => 'Scelta del nome utente',
+	'fbconnect-chooseinstructions' => 'Tutti gli utenti hanno bisogno di un nickname; puoi sceglierne uno dalle opzioni seguenti.',
+	'fbconnect-choosefirst' => 'Il tuo nome ($1)',
+	'fbconnect-choosefull' => 'Il tuo nome completo ($1)',
+	'fbconnect-chooseauto' => 'Un nome auto-generato ($1)',
+	'fbconnect-choosemanual' => 'Un nome di tua scelta:',
+	'fbconnect-chooseusername' => 'Nome utente:',
+	'fbconnect-choosepassword' => 'Password:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

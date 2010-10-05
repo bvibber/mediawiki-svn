@@ -79,6 +79,13 @@ $messages['ia'] = array(
 	'qrcode-desc' => 'Genera e adde imagines con codice QR a un pagina wiki',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'qrcode-desc' => 'Membuat dan menambahkan gambar QR Code ke halaman wiki',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

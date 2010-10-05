@@ -3192,8 +3192,10 @@ $wgCustomToolbarMessages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $wgCustomToolbarMessages['vi'] = array(
+	'ct-desc' => 'Thêm thanh công cụ mở rộng',
 	'ct_bold_sample' => 'Văn bản in đậm',
 	'ct_bold_tip_ins' => 'Chèn chữ đậm',
 	'ct_bold_tip_wrap' => 'In đậm văn bản này',
@@ -3204,21 +3206,35 @@ $wgCustomToolbarMessages['vi'] = array(
 	'ct_italic_caption' => 'Xiên',
 	'ct_internal_sample' => 'TênTrang',
 	'ct_internal_tip_ins' => 'Chènn liên kết nội bộ',
+	'ct_internal_tip_wrap' => 'Chuyển đoạn văn bản này thành liên kết trong',
 	'ct_internal_caption' => 'Liên kết nội bộ',
+	'ct_external_tip_ins' => 'Chèn một liên kết ngoài',
+	'ct_external_tip_wrap' => 'Chuyển đoạn văn bản này thành liên kết ngoài',
 	'ct_external_caption' => 'Liên kết ngoài',
 	'ct_image_tip' => 'Chèn hình ảnh',
 	'ct_image_caption' => 'Thêm hình',
 	'ct_attachment_tip' => 'Chèn tập tin đính kèm',
 	'ct_attachment_caption' => 'Thêm tập tin đính kèm',
 	'ct_math_sample' => 'Chèn công thức LaTeX vào đây',
+	'ct_math_tip_ins' => 'Chèn công thức toán học (LaTeX)',
+	'ct_math_tip_wrap' => 'Chuyển đoạn văn bản này công thức toán học (LaTeX)',
 	'ct_math_caption' => 'Biểu thức',
+	'ct_nowiki_sample' => 'Chèn văn bản chưa định dạng vào đây',
+	'ct_nowiki_tip_ins' => 'Bỏ qua định dạng wiki',
+	'ct_nowiki_tip_wrap' => 'Bỏ qua định dạng wiki trong văn bản này',
 	'ct_nowiki_caption' => 'Không wiki',
+	'ct_horizontal_tip' => 'Chèn dòng kẻ ngang (không nên lạm dụng)',
 	'ct_horizontal_caption' => 'Đường gạch ngang',
 	'ct_upload' => 'Tải liên $1',
 	'ct_select' => 'Chọn $1 để tải lên:',
+	'ct_caption' => 'Thêm chú thích (tùy chọn):',
+	'ct_link' => 'Thêm tên liên kết (tùy chọn):',
 	'ct_submit' => 'Đi!',
 	'ct_close' => 'Đóng cửa sổ',
+	'ct_success' => 'Tập tin tải lên thành công!',
+	'ct_popupblocked' => 'Popup tải lên bị ngăn không cho mở. Vui lòng kiểm tra trình chặn popup.',
 	'ct_user_user' => 'Người dùng',
+	'ct_user_tip' => 'Chèn một liên kết vào trang thành viên',
 	'ct_user_caption' => 'Liên kết người dùng',
 	'ct_user_sample' => 'Tên người dùng',
 );

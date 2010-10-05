@@ -172,6 +172,17 @@ $messages['ia'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Crear',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'articletocategory2-desc' => 'Meletakkan kotak masukan di setiap halaman kategori yang memungkinkan pembuatan halaman baru secara langsung ke kategori itu',
+	'articletocategory2-create-article-under-category-text' => 'Tambahkan halaman ke kategori ini',
+	'articletocategory2-create-article-under-category-button' => 'Buat',
+	'articletocategory2-create-category-under-category-text' => 'Tambahkan kategori ke kategori ini',
+	'articletocategory2-create-category-under-category-button' => 'Buat',
+);
+
 /** Japanese (日本語)
  * @author Yanajin66
  * @author 青子守歌

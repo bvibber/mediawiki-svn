@@ -87,6 +87,13 @@ $messages['ia'] = array(
 	'slimboxthumbs-desc' => 'Visualisa imagines in plen grandor con [http://www.digitalia.be/software/slimbox2 Slimbox 2] post clic sur miniaturas',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'slimboxthumbs-desc' => 'Menampilkan gambar ukuran penuh dengan [http://www.digitalia.be/software/slimbox2 Slimbox 2] ketika mengklik gambar versi kecil.',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

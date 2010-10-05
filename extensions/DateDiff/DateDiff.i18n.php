@@ -87,6 +87,13 @@ $messages['ia'] = array(
 	'datediff-desc' => 'Prende duo datas e retorna tote le dies inter illos',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'datediff-desc' => 'Mengambil dua tanggal dan mengembalikan semua hari pertengahan',
+);
+
 /** Japanese (日本語)
  * @author Yanajin66
  */

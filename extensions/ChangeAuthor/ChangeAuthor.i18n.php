@@ -2076,8 +2076,11 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'changeauthor-search-box' => 'திருத்தங்களைத் தேடு',
+	'changeauthor-pagename-or-revid' => 'பக்கத்தின் பெயர் அல்லது திருத்தத்தின் அடையாள எண்:',
 	'changeauthor-pagenameform-go' => 'செல்',
 	'changeauthor-comment' => 'கருத்து:',
+	'changeauthor-changeauthors-single' => 'ஆசிரியரை மாற்றவும்',
 );
 
 /** Telugu (తెలుగు)

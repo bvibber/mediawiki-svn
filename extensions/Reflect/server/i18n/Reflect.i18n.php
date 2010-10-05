@@ -311,6 +311,14 @@ Dir kënnt nokucken ob de $2 Äre Standpunkt richteg verstan huet wann Dir op <$
 
 Dir kënnt Äre Punkt och kloerstelle wann et e Mëssverständnis gëtt.',
 	'reflect-bulleted-subject' => '[{{SITENAME}}] Är Meenung gouf vum $2 resuméiert',
+	'reflect-responded' => 'Salut $1, 
+	
+$2 huet op Äre Resumé zu enger Ausso vu sengem Standpunkt reagéiert.
+
+De Resumé deen Dir gemaach hutt: "$6". 
+Säi Message: "$5".
+
+Wann dir de Message am Kontext liese wëllt, da gitt op <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 huet op Äre Resumé vun enger Bemierkung geäntwert.',
 );
 

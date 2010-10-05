@@ -2697,6 +2697,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Civvì
  * @author Darth Kule
@@ -2745,7 +2746,7 @@ puoi sceglierne uno dalle opzioni seguenti.',
 	'openidchooseurl' => 'Un nome scelto dal tuo OpenID ($1)',
 	'openidchooseauto' => 'Un nome auto-generato ($1)',
 	'openidchoosemanual' => 'Un nome di tua scelta:',
-	'openidchooseexisting' => 'Un account esistente su questa wiki:',
+	'openidchooseexisting' => 'Un account esistente su questa wiki',
 	'openidchooseusername' => 'Nome utente:',
 	'openidchoosepassword' => 'Password:',
 	'openidconvertinstructions' => 'Questo modulo permette di cambiare il proprio account per usare un URL OpenID o aggiungere altri URL OpenID.',

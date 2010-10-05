@@ -587,6 +587,7 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'externalpages' => 'வெளிப்பக்கங்கள்',
+	'externalpages-desc' => 'எங்கோ இருக்கும் WMF தளங்களிலிருந்து பக்கங்களைத் தேடிப்பிடித்து காட்டுகிறது',
 	'externalpages-bad-page' => 'தவறான பக்கத்தைப்பற்றி குறிப்பிடப்பட்டுள்ளது',
 	'externalpages-no-page' => 'எந்தவொரு பக்கத்தைப்பற்றியும் குறிப்பிடப்படவில்லை',
 );

@@ -170,6 +170,13 @@ $messages['fr'] = array(
 	'addmediawizard-desc' => 'Ajouter un assistant pour les média, développé dans un partenariat entre Kaltura et la Wikimedia Foundation',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'addmediawizard-desc' => "Draoidh cur ris nam meadhanan, 'ga leasachadh le Kaltura ann an com-pàirteachas le Fonndas Wikimedia",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

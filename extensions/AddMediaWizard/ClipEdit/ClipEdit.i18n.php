@@ -1271,11 +1271,18 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'mwe-clipedit-preview_insert' => 'உள்ளீடு செய்யப்பட்டவைகளை முன்தோற்றமாகப் பார்க்கவும்',
+	'mwe-clipedit-cancel_image_insert' => 'உள்ளீடு செய்தவைகளை விட்டுவிடவும்',
 	'mwe-clipedit-sc_duration' => 'இடைப்பட்ட காலம்',
+	'mwe-clipedit-custom_title' => 'தனிப்பட்ட விருப்பத் தலைப்பு',
 	'mwe-clipedit-start_time' => 'ஆரம்ப நேரம்',
 	'mwe-clipedit-end_time' => 'முடியும் நேரம்',
+	'mwe-clipedit-edit-tools' => 'தொகுப்பிற்கான கருவிகள்',
 	'mwe-clipedit-inline-description' => 'தலைப்பு',
 	'mwe-clipedit-duration' => 'இடைப்பட்ட காலம்:',
+	'mwe-clipedit-layout' => 'வடிவமைப்பு',
+	'mwe-clipedit-layout_right' => 'வலதுபுறத்தில் உள்ள படத்தின் வடிவமைப்பு',
+	'mwe-clipedit-layout_left' => 'இடதுபுறத்தில் உள்ள படத்தின் வடிவமைப்பு',
 );
 
 /** Telugu (తెలుగు) */

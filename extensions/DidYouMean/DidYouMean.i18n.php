@@ -374,6 +374,13 @@ $messages['ms'] = array(
 	'didyoumean-desc' => 'Letak pautan ke laman dengan tajuk "serupa"',
 );
 
+/** Burmese (မြန်မာဘာသာ)
+ * @author Lionslayer
+ */
+$messages['my'] = array(
+	'didyoumean-desc' => '"ဆင်တူသော" ခေါင်းစဉ်များရှိသော စာမျက်နှာများသို့သွားသည့် လင့်များ ပေါင်းထည့်ရန်',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

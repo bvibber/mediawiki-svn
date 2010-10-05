@@ -958,6 +958,7 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'findspam' => 'வீண்செய்திகளை கண்டுபிடி',
+	'findspam-desc' => 'இந்த [[Special:FindSpam|சிறப்பு பக்கம்]] அண்மையில் வந்துசேர்ந்த வீண்செய்திகளை கண்டுபிடிக்க அனுமதிக்கிறது',
 	'findspam-ip' => 'ஐ.பி. முகவரி:',
 	'findspam-ok' => 'ஆம்',
 	'findspam-notextfound' => 'எந்தவித பங்களிப்புகளும் காணப்படவில்லை',

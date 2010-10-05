@@ -109,6 +109,7 @@ $messages['ba'] = array(
 	'ajaxshoweditors-desc' => 'Бер үк битте мөхәррирләүсе ҡатнашыусыларҙы күрһәтә',
 	'ajax-se-title' => 'Әлеге ваҡытта мөхәррирләйҙәр:',
 	'ajax-se-pending' => 'яңыртыуҙы көтөү... (ошонда баҫығыҙ йәки мөхәррирләй башлағыҙ)',
+	'ajax-se-idling' => '($1 элек)',
 	'ajax-se-pagedoesnotexist' => 'был бит юҡ',
 	'ajax-se-userinvalid' => 'Хата: ҡатнашыусы дөрөҫ түгел',
 	'ajax-se-usernotfound' => 'Хата: ҡатнашыусы табылманы',
@@ -1158,10 +1159,13 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'ajax-se-title' => 'தற்போது தொகுக்கப்படுகிறது:',
 	'ajax-se-idling' => '($1 செக்கன்களுக்கு முன்)',
+	'ajax-se-pagedoesnotexist' => 'இப்பக்கம் இன்னும் உருவாக்கப்படவில்லை',
 );
 
 /** Telugu (తెలుగు)

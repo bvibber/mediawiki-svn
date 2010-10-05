@@ -75,6 +75,13 @@ $messages['ia'] = array(
 	'specialtalk-desc' => 'Adde un pagina de discussion a [[Special:SpecialPages|paginas special]]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'specialtalk-desc' => 'Tambahkan tab pembicaraan ke [[Special:SpecialPages|halaman istimewa]]',
+);
+
 /** Colognian (Ripoarisch) */
 $messages['ksh'] = array(
 	'specialtalk-desc' => 'Deiht ene „{{int:talk}}“ lenk op de [[Special:SpecialPages|Extra Sigge]].',
@@ -109,6 +116,13 @@ $messages['no'] = array(
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'specialtalk-desc' => 'Dodaje zakładkę „Dyskusja” do [[Special:SpecialPages|stron specjalnych]]',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'specialtalk-desc' => 'A gionta na tichëtta ëd discussion a le [[Special:SpecialPages|pàgine speciaj]]',
 );
 
 /** Portuguese (Português) */
