@@ -18,7 +18,7 @@
 
 class SpecialSessionStash extends SpecialPage {
 
-	static $HttpErrors = array(
+	static $HttpErrors = array( // FIXME: Use OutputPage::getStatusMessage() --RK
 		400 => 'Bad Request',
 		403 => 'Access Denied',
 		404 => 'File not found',
@@ -33,6 +33,7 @@ class SpecialSessionStash extends SpecialPage {
 
 	// $request is the request (usually wgRequest)
 	// $subpage is everything in the URL after Special:SessionStash
+	// FIXME: These parameters don't match SpecialPage::__construct()'s params at all, and are unused --RK
 	public function __construct( $request = null, $subpage = null ) {
                 parent::__construct( 'SessionStash', 'upload' );
 		$this->stash = new SessionStash();
@@ -42,11 +43,16 @@ class SpecialSessionStash extends SpecialPage {
 	 * If file available in stash, cats it out to the client as a simple HTTP response.
 	 * n.b. Most sanity checking done in SessionStashLocalFile, so this is straightforward.
 	 * 
-	 * @param {String} subpage, e.g. in http://sample.com/wiki/Special:SessionStash/foo.jpg, the "foo".
+	 * @param {String} $subPage: subpage, e.g. in http://example.com/wiki/Special:SessionStash/foo.jpg, the "foo.jpg" part
   	 * @return {Boolean} success 
 	 */
 	public function execute( $subPage ) {
-		global $wgOut;
+		global $wgOut, $wgUser;
+		
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
 
 		// prevent callers from doing standard HTML output -- we'll take it from here
 		$wgOut->disable();
@@ -93,6 +99,9 @@ class SpecialSessionStash extends SpecialPage {
 			// if we couldn't find it, and it looks like a thumbnail,
 			// and it looks like we have the original, go ahead and generate it
 			$matches = array();
+			// FIXME: This code assumes all kinds of constraints apply to file keys:
+			// they can't contain whitespace, and keys for original files can't contain dashes.
+			// These assumptions should be documented and/or enforced --RK
 			if ( ! preg_match( '/^(\d+)px-(\S+)$/', $key, $matches ) ) {
 				// that doesn't look like a thumbnail. re-raise exception 
 				throw $e;
@@ -108,7 +117,7 @@ class SpecialSessionStash extends SpecialPage {
 			// because the file is a SessionStashFile, this thumbnail will also be stashed,
 			// and a thumbnailFile will be created in the thumbnailImage composite object
 			$thumbnailImage = null;
-			if ( ! $thumbnailImage = $origFile->getThumbnail( $width ) ) { 
+			if ( !( $thumbnailImage = $origFile->getThumbnail( $width ) ) ) { 
 				throw new MWException( 'Could not obtain thumbnail' );
 			}
 			$file = $thumbnailImage->thumbnailFile;
@@ -127,7 +136,7 @@ class SpecialSessionStash extends SpecialPage {
 		header( 'Content-Transfer-Encoding: binary', true );
 		header( 'Expires: Sun, 17-Jan-2038 19:14:07 GMT', true );
 		header( 'Pragma: public', true );
-		header( 'Content-Length: ' . $file->getSize(), true );
+		header( 'Content-Length: ' . $file->getSize(), true ); // FIXME: PHP can handle Content-Length for you just fine --RK
 		readfile( $file->getPath() );
 	}
 }
