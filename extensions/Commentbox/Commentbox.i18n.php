@@ -908,6 +908,13 @@ Har du en kommentar till den här sidan? Lägg till den här eller <span class="
 	'commentbox-error-empty-comment' => 'Tomma kommentarer är inte tillåtna!',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'commentbox-name' => 'பெயர்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

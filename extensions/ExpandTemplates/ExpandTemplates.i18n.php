@@ -1654,9 +1654,10 @@ $messages['qu'] = array(
  * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'expandtemplates' => 'Extinde formatele',
+	'expandtemplates' => 'Extindere formate',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Extinde formatele, funcțiile parser și variabilele]] pentru a vedea extins textul wiki și pentru a previzualiza modul de redare a paginii',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Ieșire XML',
@@ -2216,6 +2217,7 @@ $messages['yi'] = array(
 	'expandtemplates' => 'פרואוו מוסטערן',
 	'expand_templates_input' => 'אײַנגעבן טעקסט',
 	'expand_templates_output' => 'רעזולטאט',
+	'expand_templates_xml_output' => 'XML אויסגאָב',
 	'expand_templates_ok' => 'אויספֿירן',
 	'expand_templates_preview' => 'פֿאראויסשטעלונג',
 );

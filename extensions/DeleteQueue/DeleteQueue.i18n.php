@@ -6573,6 +6573,7 @@ $messages['wuu'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'deletequeue-review-delete' => 'אויסמעקן דעם בלאַט',
 	'deletequeue-list-search' => 'זוכן',
 	'deletequeue-list-header-expiry' => 'אויסגיין',
 	'deletequeue-case-reason' => 'אורזאַך:',

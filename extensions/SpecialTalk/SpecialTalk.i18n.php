@@ -56,6 +56,13 @@ $messages['es'] = array(
 	'specialtalk-desc' => 'Añade una pestaña de discusión a la [[Special:SpecialPages|special pages]]',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'specialtalk-desc' => 'Ajoute un onglet « discussion » aux [[Special:SpecialPages|pages spéciales]]',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

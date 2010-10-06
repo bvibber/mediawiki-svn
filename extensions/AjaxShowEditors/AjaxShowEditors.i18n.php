@@ -1166,6 +1166,8 @@ $messages['ta'] = array(
 	'ajax-se-title' => 'தற்போது தொகுக்கப்படுகிறது:',
 	'ajax-se-idling' => '($1 செக்கன்களுக்கு முன்)',
 	'ajax-se-pagedoesnotexist' => 'இப்பக்கம் இன்னும் உருவாக்கப்படவில்லை',
+	'ajax-se-userinvalid' => 'தவறு: சரியான பயனர் அல்ல',
+	'ajax-se-usernotfound' => 'தவறு: பயனரைக் கண்டுபிடிக்க முடியவில்லை',
 );
 
 /** Telugu (తెలుగు)

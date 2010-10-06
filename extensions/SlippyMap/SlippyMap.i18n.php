@@ -1276,12 +1276,13 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'slippymap_desc' => "Nagpapahintulot sa paggamit ng tatak na <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> upang maipakita/mapalitaw ang isang pampuwesto/pangkinaroroonang (''slippy'') mapa ng OpenLayers.  Nanggaling ang mga mapa mula sa [http://openstreetmap.org openstreetmap.org]",
+	'slippymap_desc' => 'Nagpapahintulot sa paggamit ng tatak na <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> nagpapahintulot sa pagbabaon ng mga mapang hindi gumagalaw at masigla.  Sumusuporta ng maramihang mga palingkuran ng mapa kabilang ang [http://openstreetmap.org openstreetmap.org] at NASA Worldwind',
 	'slippymap_error' => 'Kamaliang $1: $2',
 	'slippymap_errors' => 'Mga kamaliang $1:',
 	'slippymap_code' => 'Kodigo ng wiki ("wiki-kodigo") para sa tanawin ng mapang ito:',
 	'slippymap_button_code' => 'Kuhanin ang kodigo ng wiki',
 	'slippymap_resetview' => 'Muling itakda ang tanawin',
+	'slippymap_clicktoactivate' => 'Pindutin upang buhayin ang mapa',
 );
 
 /** Vietnamese (Tiếng Việt)

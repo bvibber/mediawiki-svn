@@ -1454,12 +1454,28 @@ $messages['te'] = array(
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
 );
 
-/** Tagalog (Tagalog) */
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
 $messages['tl'] = array(
 	'masseditregex-matchtxt' => 'Hanapin ang:',
 	'masseditregex-replacetxt' => 'Palitan ng:',
 	'masseditregex-executebtn' => 'Isakatuparan',
+	'masseditregex-before' => 'Dati',
+	'masseditregex-after' => 'Pagkaraan',
+	'masseditregex-hint-headmatch' => 'Itugma',
 	'masseditregex-hint-headreplace' => 'Palitan',
+	'masseditregex-hint-headeffect' => 'Epekto',
+	'masseditregex-listtype-intro' => 'Ito ay isang talaan ng:',
+	'masseditregex-listtype-pagenames' => 'Mga pangalan ng pahina (baguhin ang mga pahinang ito)',
+	'masseditregex-listtype-pagename-prefixes' => 'Mga unlapi ng pangalan ng pahina (baguhin ang mga pahina na may mga pangalan nagsisimula sa tekstong ganito)',
+	'masseditregex-listtype-categories' => 'Pangalan ng mga kategorya (baguhin ang bawat isang pahinang may ganitong mga kategorya; hindi pinapansin ang pagpili ng puwang na pampangalan)',
+	'masseditregex-listtype-backlinks' => 'Mga kawing-pabalik (baguhin ang mga pahinang umuugnay sa mga ito)',
+	'masseditregex-namespace-intro' => 'Ang lahat ng mga pahinang ito ay nasa loob ng ganitong puwang ng pangalan:',
+	'masseditregex-exprnomatch' => 'Ang pagsasaad na "$1" ay hindi tumugma sa anumang mga pahina.',
+	'masseditregex-badregex' => 'Hindi tanggap na regex:',
+	'masseditregex-editfailed' => 'Nabigo ang pagpatnugot:',
+	'masseditregex-tooltip-execute' => 'Gamitin ang mga pagbabagong ito sa bawat pahina',
 );
 
 /** Turkish (Türkçe)

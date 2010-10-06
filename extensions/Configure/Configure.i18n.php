@@ -9772,6 +9772,19 @@ $messages['sw'] = array(
 	'configure-throttle-action-move' => 'Sogeza',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'configure-desc-ns' => 'பெயர்வெளி',
+	'configure-desc-val' => 'மதிப்பு',
+	'configure-ext-use' => 'பயன்படுத்து',
+	'configure-form-reason' => 'காரணம்:',
+	'configure-old-changes' => 'மாற்றங்கள்',
+	'configure-section-pages' => 'பக்கங்கள்',
+	'configure-section-paths' => 'வழிகள்',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven
@@ -10739,6 +10752,7 @@ $messages['wuu'] = array(
  */
 $messages['yi'] = array(
 	'configure-js-remove' => 'אויסמעקן',
+	'configure-old-changes' => 'ענדערונגען',
 	'configure-section-email' => 'ע-פאסט',
 	'configure-section-enotif' => 'ע־פאסט אָנזאָג',
 	'configure-section-localization' => 'לאקאַליזאַציע',
@@ -10747,12 +10761,14 @@ $messages['yi'] = array(
 	'configure-section-css-js' => 'CSS און JavaScript',
 	'configure-section-namespaces' => 'נאָמענטיילן',
 	'configure-section-category' => 'קאַטעגאָריעס',
+	'configure-section-groups' => 'גרופּעס',
 	'configure-section-users' => 'באַניצער',
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
 	'configure-view' => 'זען',
 	'configure-throttle-action-edit' => 'רעדאַקטירן',
 	'configure-throttle-action-rollback' => 'צוריקדרייען',
+	'configure-condition-description-3' => 'ע-פּאָסט באַשטעטיקט',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -1168,6 +1168,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'imagetagging-article' => 'ಪುಟ:',
 	'imagetagging-imghistory' => 'ಇತಿಹಾಸ',
 	'imagetagging-images' => 'ಚಿತ್ರಗಳು',
 );
@@ -2248,6 +2249,7 @@ $messages['wuu'] = array(
  */
 $messages['yi'] = array(
 	'imagetagging-imghistory' => 'היסטאריע',
+	'imagetagging-images' => 'בילדער',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -10572,6 +10572,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'mv_tool_search' => 'זוכן',
+	'mv_edit' => 'רעדאַקטירן',
 	'mv_history' => 'היסטאריע',
 );
 

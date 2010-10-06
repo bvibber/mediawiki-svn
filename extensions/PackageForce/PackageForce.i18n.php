@@ -205,6 +205,7 @@ $messages['es'] = array(
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -219,7 +220,7 @@ $messages['fi'] = array(
 	'pf-admin-link-approve' => 'Hyväksy sivu',
 	'pf-header-documentation' => 'Dokumentaatio',
 	'pf-header-in_packages' => 'Paketit',
-	'pf-header-edit' => 'Muokkaa linkkiä',
+	'pf-header-edit' => 'Linkin muokkaus',
 	'pf-header-type' => 'Sivun tyyppi',
 	'pf-header-page_title' => 'Otsikko',
 	'pf-header-approve' => 'Hyväksy',
@@ -695,6 +696,7 @@ $messages['tl'] = array(
  */
 $messages['yi'] = array(
 	'pf-admin-link-editlink-page' => 'רעדאַקטירן בלאַט',
+	'pf-admin-link-approve' => 'באַשטעטיקן בלאַט',
 	'pf-header-documentation' => 'דאָקומענטאַציע',
 );
 

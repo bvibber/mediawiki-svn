@@ -196,6 +196,14 @@ $messages['ko'] = array(
 	'right-editalluserpages' => '모든 사용자 문서를 편집',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'userpageeditprotection-desc' => 'Deiht et Ändere aan Metmacher ier Sigge op de Metmaacher sellver un beshtemmpte zohjelohße Metmaacher beschrängke.',
+	'right-editalluserpages' => 'Metmaacher ier Sigge ändere',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -2042,7 +2042,7 @@ $messages['vi'] = array(
 	'importusers-user-present-not-update' => "Thành viên '''$1''' đã tồn tại. Không cập nhật.",
 	'importusers-user-invalid-format' => 'Dữ liệu thành viên tại dòng #$1 có định dạng sai hoặc bỏ trống. Bỏ qua.',
 	'importusers-log' => 'Nhật trình nhập thành viên',
-	'importusers-log-summary' => 'Tóm tắt',
+	'importusers-log-summary' => 'Tóm lược',
 	'importusers-log-summary-all' => 'Tất cả',
 	'importusers-log-summary-added' => 'Được thêm vào',
 	'importusers-log-summary-updated' => 'Đã cập nhật',
@@ -2087,6 +2087,7 @@ $messages['yi'] = array(
 	'importusers-form-button' => 'אימפארט',
 	'importusers-log-summary-all' => 'אַלע',
 	'importusers-log-summary-added' => 'צוגעלייגט',
+	'importusers-log-summary-updated' => 'דערהײַנטיגט',
 	'importusers-password' => 'פאַסווארט',
 );
 

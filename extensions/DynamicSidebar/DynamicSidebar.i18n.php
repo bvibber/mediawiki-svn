@@ -83,6 +83,13 @@ $messages['eu'] = array(
 	'dynamicsidebar-desc' => 'Lankide orrialde, talde eta kategorietan oinarritutako barra dinamikoak eskaintzen ditu',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'dynamicsidebar-desc' => 'Mahdollistaa dynaamiset sivupalkit riippuen käyttäjästä, käyttäjäryhmästä tai luokasta',
+);
+
 /** French (Français)
  * @author IAlex
  */

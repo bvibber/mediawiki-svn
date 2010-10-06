@@ -1417,6 +1417,9 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'articleassessment' => 'Đánh giá bài',
+	'articleassessment-desc' => 'Đánh giá bài (phiên bản thử nghiệm)',
+	'articleassessment-yourfeedback' => 'Phản hồi của bạn',
 	'articleassessment-pleaserate' => 'Xin hãy dành một chút thì giờ để đánh giá trang này ở dưới:',
 	'articleassessment-submit' => 'Đánh giá',
 	'articleassessment-rating-wellsourced' => 'Đầy đủ nguồn:',
@@ -1431,15 +1434,22 @@ $messages['vi'] = array(
 	'articleassessment-error' => 'Đã gặp lỗi.
 Xin hãy thử lại sau.',
 	'articleassessment-thanks' => 'Cám ơn! Đánh giá của bạn đã được lưu.',
+	'articleassessment-featurefeedback' => 'Hãy <span class="feedbacklink">phản hồi</span> về tính năng này.',
 	'articleassessment-noratings' => '$1 ($2 đánh giá)',
 	'articleassessment-stalemessage-norevisioncount' => "Bài này đã được ''chỉnh sửa'' sau lần cuối bạn xem xét nó.
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Ẩn kết quả</span>)',
+	'articleassessment-survey-answer-whyrated-development' => 'Tôi hy vọng rằng đánh giá của tôi sẽ có ảnh hưởng tích cực đến sự phát triển của trang',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Tôi muốn đóng góp vào {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Tôi thích đưa ý kiến của tôi',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Tôi không đánh giá hôm nay, nhưng vẫn muốn phản hồi về tính năng',
 	'articleassessment-survey-answer-whyrated-other' => 'Khác',
+	'articleassessment-survey-question-useful' => 'Bạn có tin rằng các đánh giá được cung cấp là hữu ích và dễ hiểu?',
 	'articleassessment-survey-question-useful-iffalse' => 'Tạo sao?',
+	'articleassessment-survey-question-comments' => 'Bạn có ý kiến bổ sung?',
+	'articleassessment-survey-submit' => 'Gửi',
 	'articleassessment-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
+	'articleassessment-survey-thanks' => 'Cám ơn bạn đã điền khảo sát.',
 );
 

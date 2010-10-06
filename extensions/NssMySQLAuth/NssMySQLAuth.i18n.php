@@ -1144,6 +1144,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'am-username' => 'באַניצער נאָמען',
+	'am-email' => 'ע-פאסט',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -313,6 +313,13 @@ $messages['ja'] = array(
 	'right-massblank' => 'ページの一括白紙化',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'massblank-blankcomment' => 'ಕಾರಣ:',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

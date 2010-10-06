@@ -909,7 +909,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
-	'authorprotect-reason' => 'ಕಾರಣ',
+	'authorprotect-reason' => 'ಕಾರಣ:',
 );
 
 /** Korean (한국어)
@@ -1497,6 +1497,13 @@ $messages['sv'] = array(
 	'protect-level-author' => 'Skydda från andra än författaren',
 	'restriction-level-author' => 'författarskyddad',
 	'right-authorprotect' => 'Skydda författade sidor',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'authorprotect-reason' => 'காரணம்:',
 );
 
 /** Telugu (తెలుగు)

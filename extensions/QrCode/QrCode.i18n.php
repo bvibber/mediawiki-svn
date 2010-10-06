@@ -50,6 +50,13 @@ $messages['es'] = array(
 	'qrcode-desc' => 'Genera y añade imágenes de código QR a una página wiki',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'qrcode-desc' => 'Luo ja lisää QR-koodeja wikisivuille',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Verdy p

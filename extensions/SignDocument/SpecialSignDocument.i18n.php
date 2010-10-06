@@ -2600,6 +2600,7 @@ $messages['kn'] = array(
 	'sign-viewfield-realname' => 'ಹೆಸರು',
 	'sign-viewfield-address' => 'ವಿಳಾಸ',
 	'sign-viewfield-city' => 'ನಗರ',
+	'sign-viewfield-state' => 'ರಾಜ್ಯ',
 	'sign-viewfield-country' => 'ದೇಶ',
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 	'sign-viewfield-age' => 'ವಯಸ್ಸು',

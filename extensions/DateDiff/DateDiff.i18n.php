@@ -59,6 +59,13 @@ $messages['es'] = array(
 	'datediff-desc' => 'Toma dos fechas y devuelve todos los días intermedios',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'datediff-desc' => 'Tuottaa kaikki päivät kahden päivämäärän välillä',
+);
+
 /** French (Français)
  * @author Sherbrooke
  */

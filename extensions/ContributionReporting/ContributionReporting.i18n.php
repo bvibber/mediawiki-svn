@@ -2726,6 +2726,7 @@ $messages['kn'] = array(
 	'contrib-hist-date' => 'ಸಮಯ ಮತ್ತು ದಿನಾಂಕ',
 	'contrib-hist-anonymous' => 'ಅನಾಮಧೇಯ',
 	'contribstats-month' => 'ತಿಂಗಳು',
+	'contribstats-template' => 'ಟೆಂಪ್ಲೇಟು',
 	'fundraiserstats-date' => 'ದಿನಾಂಕ',
 );
 
@@ -5147,6 +5148,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'contrib-hist-name' => 'נאָמען',
+	'contribstats-day' => 'טאָג',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

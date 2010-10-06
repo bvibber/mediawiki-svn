@@ -473,6 +473,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  * @author Varusmies
  * @author ZeiP
@@ -489,6 +490,7 @@ $messages['fi'] = array(
 	'adminlinks_createuser' => 'Luo uusi käyttäjä',
 	'adminlinks_browsesearch' => 'Selaaminen ja hakeminen',
 	'adminlinks_importexport' => 'Tuonti ja vienti',
+	'right-adminlinks' => 'Nähdä linkki sivulle [[Special:AdminLinks|ylläpitäjien linkit]]',
 );
 
 /** French (Français)

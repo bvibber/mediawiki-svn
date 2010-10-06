@@ -767,6 +767,13 @@ $messages['km'] = array(
 	'player-goto-file' => 'ឯកសារ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'player-goto-page' => 'ಪುಟ',
+);
+
 /** Korean (한국어)
  * @author Albamhandae
  */
@@ -1478,6 +1485,13 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'player-goto-page' => 'Pad',
 	'player-goto-file' => 'ragiv',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'player-goto-file' => 'טעקע',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

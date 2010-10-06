@@ -1577,6 +1577,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'amazonplus-used' => 'געניצט',
 	'amazonplus-german' => 'דײַטשיש',
 	'amazonplus-french' => 'פֿראַנצויזיש',
 	'amazonplus-japanese' => 'יאַפאַניש',

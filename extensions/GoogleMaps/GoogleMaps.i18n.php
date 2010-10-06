@@ -6297,6 +6297,7 @@ $wgGoogleMapsMessages['vo'] = array(
 $wgGoogleMapsMessages['yi'] = array(
 	'gm-balloon-title' => 'טיטל:',
 	'gm-searching' => 'זוכנדיג…',
+	'gm-small' => 'קליין',
 	'gm-no-zoom-control' => 'קיין',
 	'gm-yes' => 'יאָ',
 	'gm-no' => 'ניין',

@@ -478,6 +478,13 @@ $messages['km'] = array(
 	'cooperationstatistics-tablearticle' => 'ចំនួន​ទំព័រ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|ಪುಟ|ಪುಟಗಳು}',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

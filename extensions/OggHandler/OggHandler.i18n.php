@@ -3125,6 +3125,17 @@ $messages['sw'] = array(
 	'ogg-dismiss' => 'Funga',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'ogg-stop' => 'நிறுத்து',
+	'ogg-more' => 'மேலும்...',
+	'ogg-dismiss' => 'மூடுக',
+	'ogg-download' => 'கோப்பை பதிவிறக்கம் செய்',
+	'ogg-desc-link' => 'இந்த கோப்பைப் பற்றி',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

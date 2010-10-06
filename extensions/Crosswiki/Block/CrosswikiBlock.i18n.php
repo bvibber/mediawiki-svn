@@ -2980,6 +2980,7 @@ $messages['yi'] = array(
 	'crosswikiblock-expiry' => 'אויסגיין:',
 	'crosswikiblock-reason' => 'אורזאַך:',
 	'crosswikiunblock-reason' => 'אורזאַך:',
+	'crosswikiblock-nousername' => 'קיין באַניצער־נאָמען נישט אַרײַנגעגעבן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

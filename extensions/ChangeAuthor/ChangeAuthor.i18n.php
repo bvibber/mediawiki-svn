@@ -2081,6 +2081,8 @@ $messages['ta'] = array(
 	'changeauthor-pagenameform-go' => 'செல்',
 	'changeauthor-comment' => 'கருத்து:',
 	'changeauthor-changeauthors-single' => 'ஆசிரியரை மாற்றவும்',
+	'changeauthor-nosuchuser' => '"$1" என்று ஒரு பயனர் இல்லை.',
+	'changeauthor-nosuchtitle' => '"$1" என்று ஒரு பக்கம் இல்லை.',
 );
 
 /** Telugu (తెలుగు)

@@ -1599,6 +1599,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'editmessages' => 'רעדאקטירן מעלדונגען',
+	'editmsg-target' => 'ציל מעלדונג:',
 	'editmsg-search' => 'זוכן',
 	'editmsg-new-search' => 'ניי זוכן',
 );

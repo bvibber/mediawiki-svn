@@ -1216,6 +1216,7 @@ $messages['bs'] = array(
 	'mwe-cc_pd_title' => 'Javno vlasništvo',
 	'mwe-unknown_license' => 'Nepoznata licenca',
 	'mwe-results_from' => 'Rezultati od $1',
+	'mwe-try-again-link' => 'pokušaj ponovno',
 	'mwe-resource_page_desc' => 'Opis izvorišne stranice:',
 	'mwe-local_resource_title' => 'Naslov lokalnog izvora:',
 	'mwe-watch_this_page' => 'Prati ovu stranicu',
@@ -1227,7 +1228,7 @@ $messages['bs'] = array(
 	'mwe-ftype-png' => 'PNG slikovna datoteka',
 	'mwe-ftype-oga' => 'Ogg zvučna datoteka',
 	'mwe-ftype-ogg' => 'Ogg video datoteka',
-	'rsd-kaltura-title' => 'Svi izvori',
+	'rsd-kaltura-title' => 'Kaltura pretraga (svi izvori)',
 	'rsd-this_wiki-title' => 'Ovaj wiki',
 	'fogg-select_file' => 'Odaberi datoteku',
 	'fogg-select_new_file' => 'Odaberi novu datoteku',
@@ -1687,7 +1688,7 @@ $messages['de'] = array(
 	'mwe-ftype-ogg' => 'Ogg-Videodatei',
 	'mwe-ftype-unk' => 'Unbekanntes Dateiformat',
 	'rsd-wiki_commons' => 'Wikimedia Commons, ein Archiv frei lizenzierter Medieninhalte zu Zwecken der Bildung (Bilder, Ton- und Videoclips)',
-	'rsd-kaltura-title' => 'Alle Quellen',
+	'rsd-kaltura-title' => 'Suche mit Kaltura (alle Quellen)',
 	'rsd-kaltura' => 'Gebündelte Suche nach frei lizenzierten Medien bei mehreren Suchprovidern mit Hilfe von Kaltura',
 	'rsd-this_wiki-title' => 'Dieses Wiki',
 	'rsd-this_wiki-desc' => 'Das lokale Wiki',
@@ -4044,7 +4045,7 @@ $messages['ia'] = array(
 	'mwe-ftype-ogg' => 'File de video Ogg',
 	'mwe-ftype-unk' => 'Formato de file incognite',
 	'rsd-wiki_commons' => 'Wikimedia Commons, un archivo de contento multimedial educative sub licentia libere (imagines, audio e video)',
-	'rsd-kaltura-title' => 'Tote le origines',
+	'rsd-kaltura-title' => 'Recerca Kaltura (tote le origines)',
 	'rsd-kaltura' => 'Kaltura, recerca aggregate pro multimedia a licentia libere trans multiple motores de recerca',
 	'rsd-this_wiki-title' => 'Iste wiki',
 	'rsd-this_wiki-desc' => 'Le wiki local',
@@ -4674,6 +4675,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'fogg-title-title' => 'ಶೀರ್ಷಿಕೆ',
 	'fogg-date-title' => 'ದಿನಾಂಕ',
+	'fogg-contact-title' => 'ಸಂಪರ್ಕ',
 	'mwe-summary' => 'ಸಾರಾಂಶ',
 );
 
@@ -5966,7 +5968,7 @@ $messages['pl'] = array(
 	'mwe-ftype-ogg' => 'Plik wideo Ogg',
 	'mwe-ftype-unk' => 'Nieznany format pliku',
 	'rsd-wiki_commons' => 'Wikimedia Commons – archiwum edukacyjnych multimediów dostępnych na wolnych licencjach (grafiki, pliki dźwiękowe i filmy)',
-	'rsd-kaltura-title' => 'Wszystkie źródła',
+	'rsd-kaltura-title' => 'Wyszukiwarka Kaltura (wszystkie źródła)',
 	'rsd-kaltura' => 'Metawyszukiwarka Kaltura do wyszukiwania multimediów na wolnych licencjach w zasobach różnorodnych usługodawców',
 	'rsd-this_wiki-title' => 'Ta wiki',
 	'rsd-this_wiki-desc' => 'Lokalna instalacja wiki',
@@ -6174,7 +6176,7 @@ $messages['pms'] = array(
 	'mwe-ftype-ogg' => 'Archivi filmà Ogg',
 	'mwe-ftype-unk' => "Formà d'archivi pa conossù",
 	'rsd-wiki_commons' => "Wikimedia Commons, n'archivi ëd contnù ëd mojen sota licensa lìbera për l'educassion (figure, tòch sonor e filmà)",
-	'rsd-kaltura-title' => 'Tute le sorgiss',
+	'rsd-kaltura-title' => 'Arserca ëd Kaltura (tute le sorgiss)',
 	'rsd-kaltura' => "Arserca agregà Kaltura për mojen sota licensa lìbera su vàire fornidor d'arserca",
 	'rsd-this_wiki-title' => 'Sta wiki-sì',
 	'rsd-this_wiki-desc' => 'La wiki local',
@@ -6770,7 +6772,7 @@ $messages['ru'] = array(
 	'mwe-ftype-unk' => 'Неизвестный формат файла',
 	'rsd-wiki_commons-title' => 'Викисклад',
 	'rsd-wiki_commons' => 'Викисклад (Wikimedia Commons) — архив доступных под свободными лицензиями учебных медиа-материалов (изображениё, аудио и видео)',
-	'rsd-kaltura-title' => 'Все источники',
+	'rsd-kaltura-title' => 'Поиск Kaltura (все источники)',
 	'rsd-kaltura' => 'Агрегированный поиск Kaltura по свободно-лицензированным медиа с помощью нескольких поисковых систем',
 	'rsd-this_wiki-title' => 'Эта вики',
 	'rsd-this_wiki-desc' => 'Локальная вики',
@@ -7252,6 +7254,14 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'mwe-upload-unknown-size' => 'தெரியாத அளவு',
+	'mwe-cancel-confim' => 'தாங்கள் இதனை விட்டுவிடவேண்டும் என்று உறுதியாக உள்ளீர்களா ?',
+	'mwe-successfulupload' => 'பதிவேற்றம் வெற்றிகரமாக முடிந்தது',
+	'mwe-uploaderror' => 'பதிவேற்றத் தவறு',
+	'mwe-uploadwarning' => 'பதிவேற்றல் எச்சரிக்கை',
+	'mwe-unknown-error' => 'அறியப்படாத தவறு:',
+	'mwe-return-to-form' => 'படிவத்திற்குத் திரும்பவும்',
+	'mwe-file-exists-duplicate' => 'இந்த கோப்பைப் போல கீழே காணும் கோப்பும் உள்ளது:',
 	'mwe-fileexists-thumb' => 'இருக்கின்ற கோப்பு',
 	'mwe-thumbnail-more' => 'பெரிதாக்கு',
 	'mwe-filedesc' => 'சுருக்கம்',
@@ -7271,12 +7281,16 @@ $messages['ta'] = array(
 	'mwe-link-login' => 'புகுபதிகை',
 	'mwe-watch-this-file' => 'இந்த கோப்பினைக் கவனி',
 	'mwe-ignore-any-warnings' => 'எச்சரிக்கைகளை புறக்கணி',
+	'mwe-upload-in-progress' => 'பதிவேற்றம் நடந்து கொண்டுள்ளது (இந்த சாளரத்தை மூடவேண்டாம்)',
 	'mwe-uploaded-status' => 'பதிவேற்றப்பட்டுவிட்டது',
+	'rsd_box_layout' => 'வடிவமைப்பு பெட்டி',
+	'rsd_list_layout' => 'வடிவமைப்பை பட்டியலிடவும்',
 	'rsd_results_next' => 'அடுத்தது',
 	'rsd_results_prev' => 'முந்தைய',
 	'mwe-upload_tab' => 'கோப்பைப் பதிவேற்று',
 	'rsd_layout' => 'வடிவமைப்பு:',
 	'mwe-link' => 'இணைப்பு',
+	'rsd_do_insert' => 'உள்ளீடு செய்யவும்',
 	'mwe-results_from' => '$1-க்கான முடிவுகள்',
 	'mwe-your-recent-uploads' => '$1-க்கான தங்களுடைய அண்மைய பதிவேற்றங்கள்',
 	'mwe-no_recent_uploads' => 'அண்மையில் எந்தவொரு பதிவேற்றமும் செய்யப்படவில்லை',
@@ -7291,6 +7305,8 @@ $messages['ta'] = array(
 	'fogg-select_file' => 'கோப்பைத் தேர்ந்தெடுக்கவும்',
 	'fogg-select_new_file' => 'புதிய கோப்பைத் தேர்ந்தெடுக்கவும்',
 	'fogg-hidepreview' => 'முன்தோற்றத்தை மறைக்கவும்',
+	'mwe-upload-multi' => 'பதிவேற்றவும் {{PLURAL:$1|கோப்பு|கோப்புக்கள்}}',
+	'mwe-review-upload' => 'மறுபார்வை செய்யவேண்டிய கோப்புக்கள் {{PLURAL:$1|பதிவேற்றம்|பதிவேற்றங்கள்}}',
 );
 
 /** Telugu (తెలుగు)
@@ -7413,6 +7429,7 @@ $messages['tl'] = array(
 	'fogg-videoBitrate-title' => 'Antas ng bit ng bidyo',
 	'fogg-videoBitrate-help' => 'Itinatakda ng antas ng bit ng bidyo ang antas ng bit ng pagsasatitik para sa bidyo sa (kb/s)',
 	'fogg-twopass-title' => 'Pagsasatitik na dalawa ang pagdaan',
+	'fogg-twopass-help' => 'Ang dalawahang pasadang pagsasatitik ay nagpapahintulot na mas panayang kalidad sa pamamagitan ng paggawa ng dalawang pasada sa ibabaw ng talaksan ng bidyo',
 	'fogg-framerate-title' => 'Antas ng kuwadro',
 	'fogg-aspect-title' => 'Aspeto ng ugnayan ng dami',
 	'fogg-keyframeInterval-title' => 'Pagitan ng kuwadro ng susi',
@@ -7728,6 +7745,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author Hypers
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 з $2',
@@ -7901,7 +7919,7 @@ $messages['uk'] = array(
 	'mwe-ftype-unk' => 'Невідомий формат файлу',
 	'rsd-wiki_commons-title' => 'ВікіСховище',
 	'rsd-wiki_commons' => 'ВікіСховище, архів освітнього медіа-контенту (зображення, звук та відеокліпи) з вільними ліцензіями',
-	'rsd-kaltura-title' => 'Всі джерела',
+	'rsd-kaltura-title' => 'Пошук Kaltura (всі джерела)',
 	'rsd-kaltura' => 'Агрегований пошук вільно-ліцензованого медіа <i>Kaltura</i> за допомогою кількох пошукових систем',
 	'rsd-this_wiki-title' => 'Ця вікі',
 	'rsd-this_wiki-desc' => 'Локальна вікі',
@@ -8172,6 +8190,13 @@ $messages['vo'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 se $2',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'fogg-copyright-title' => 'קאפירעכט',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chinalace
  */
@@ -8270,3 +8295,4 @@ $messages['zh-hant'] = array(
 	'fogg-savebandwidth-desc' => '低帶寬Theora或Vorbis編碼164 kbit/s，最寬200相素',
 	'fogg-highquality-desc' => '高質量Theora或Vorbis編輯，最寬1080相素',
 );
+

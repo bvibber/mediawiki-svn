@@ -726,6 +726,8 @@ $messages['lb'] = array(
 	'fbconnect-conv' => 'Bequemlechkeet',
 	'fbconnect-fbml' => 'Facebook-Markup Sprooch',
 	'fbconnect-comm' => 'Kommunikatioun',
+	'fbconnect-commdesc' => "Facebook-Connect erlaabt e ganz neien Niveau vu Networking.
+Kuckt wie vun Äre Frënn d'Wiki benotzt, a virun allem deelt Är Aktioune mat Äre Frënn iwwer d'Facebook-Newsfeed.",
 	'fbconnect-welcome' => 'Wëllkomm, Facebook-Connect-Benotzer!',
 	'fbconnect-loginbox' => "Oder op Facebook '''aloggen''':
 

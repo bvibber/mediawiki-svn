@@ -1710,6 +1710,8 @@ Fulükolös oni.',
  */
 $messages['yi'] = array(
 	'formsave' => 'אויפֿהיטן',
+	'formarticleexists' => 'בלאַט עקזיסטירט',
+	'formarticleexiststext' => 'דער בלאַט [[$1]] עקזיסטירט שוין.',
 	'formbadpagename' => 'נישט געהעריגער בלאַט נאָמען',
 );
 

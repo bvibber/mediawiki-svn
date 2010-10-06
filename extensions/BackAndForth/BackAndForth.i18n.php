@@ -1010,6 +1010,13 @@ $messages['vo'] = array(
 	'backforth-prev' => 'Büik ($1)',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'backforth-next' => 'נעקסטע ($1)',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'backforth-next' => '下一篇 ($1)',

@@ -1061,6 +1061,13 @@ $messages['vo'] = array(
 	'languageselector' => 'Pük',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'languageselector' => 'שפראַך',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

@@ -4121,6 +4121,7 @@ $messages['kn'] = array(
 	'wikilog-preview' => 'ಮುನ್ನೋಟ',
 	'wikilog-edit-lc' => 'ಸಂಪಾದಿಸಿ',
 	'wikilog-delete-lc' => 'ಅಳಿಸು',
+	'wikilog-page-lc' => 'ಪುಟ',
 	'wikilog-history-lc' => 'ಇತಿಹಾಸ',
 );
 

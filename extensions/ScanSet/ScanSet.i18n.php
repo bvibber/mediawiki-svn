@@ -1572,6 +1572,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'scanset_next' => 'קומענדיק &gt;',
+	'scanset_prev' => '&lt; פֿריערדיקער',
 );
 
 /** Cantonese (粵語)

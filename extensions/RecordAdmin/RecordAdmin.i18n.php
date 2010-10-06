@@ -2209,6 +2209,7 @@ $messages['yi'] = array(
 	'recordadmin-buttonsearch' => 'זוכן',
 	'recordadmin-buttonsave' => 'אויפֿהיטן',
 	'recordadmin-editlink' => 'ענדערן',
+	'recordadmin-created' => ' געשאַפֿן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

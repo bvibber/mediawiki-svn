@@ -4095,6 +4095,7 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'tasks_noone' => 'קיינער',
 	'tasks_delete' => 'אויסמעקן',
+	'tasks_table_header_page' => 'בלאַט',
 	'tasks_search_form_title' => 'זוכן',
 );
 

@@ -734,6 +734,13 @@ $messages['vo'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Primön fadi nulik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'discussionthreading-replysection' => 'אָנרופֿן',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'discussionthreading-replysection' => '回复',

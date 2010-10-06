@@ -6870,7 +6870,10 @@ Urudi <span class="plainlinks">[$1 $2]</span>.',
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'prefswitch-survey-true' => 'ஆம்',
+	'prefswitch-survey-false' => 'இல்லை',
 	'prefswitch-survey-answer-whyoff-other' => 'வேறு காரணம்:',
+	'prefswitch-title-switched-off' => 'நன்றி',
 );
 
 /** Telugu (తెలుగు)
@@ -7639,6 +7642,7 @@ $messages['uk'] = array(
 );
 
 /** Vèneto (Vèneto)
+ * @author Candalua
  * @author Vajotwo
  */
 $messages['vec'] = array(
@@ -7667,6 +7671,7 @@ Se prega de sełesionare tute łe modivasion pertinenti.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => "Nol me piaxeva l'aspeto.",
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'No me piaxevano łe nove schede e el layout.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nol me piaxeva ła nova bara de i strumenti.',
+	'prefswitch-survey-answer-whyoff-other' => 'Altra motivassion:',
 	'prefswitch-survey-question-browser' => 'Quałe browser te ste doparando?',
 	'prefswitch-survey-answer-browser-other' => 'Altro browser:',
 	'prefswitch-survey-question-os' => 'Quałe sistema operativo te ste doparando?',

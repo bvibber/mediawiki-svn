@@ -815,6 +815,13 @@ $messages['vo'] = array(
 	'categorywatch-catsub' => 'ämoükon padi: $1 se klad: $2',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'categorywatch-catadd' => '$1 איז געווארן צוגעשטעלט צו קאַטעגאריע $2',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
  * @author Gzdavidwong

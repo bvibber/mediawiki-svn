@@ -447,7 +447,7 @@ $messages['de'] = array(
 	'dt_xml_name' => 'Name',
 	'dt_xml_title' => 'Titel',
 	'dt_xml_id' => 'ID',
-	'dt_xml_freetext' => 'Freier Text',
+	'dt_xml_freetext' => 'Freitext',
 	'importxml' => 'XML importieren',
 	'dt_import_selectfile' => 'Bitte die zu importierende $1-Datei auswählen:',
 	'dt_import_encodingtype' => 'Encoding-Typ',
@@ -630,6 +630,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
+ * @author Nike
  * @author Str4nd
  * @author Vililikku
  */
@@ -652,6 +653,7 @@ $messages['fi'] = array(
 	'importxml' => 'XML-tuonti',
 	'dt_import_selectfile' => 'Valitse $1-tiedosto tuotavaksi:',
 	'dt_import_encodingtype' => 'Merkistötyyppi',
+	'dt_import_summarydesc' => 'Tuonnin yhteenveto',
 	'dt_import_editsummary' => '$1-tuonti',
 	'dt_import_importing' => 'Tuodaan...',
 	'dt_import_success' => '$1 {{PLURAL:$1|sivu|sivua}} luodaan $2-tiedostosta.',
@@ -1158,6 +1160,8 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'dt_viewxml_categories' => 'ವರ್ಗಗಳು',
 	'dt_xml_pages' => 'ಪುಟಗಳು',
+	'dt_xml_page' => 'ಪುಟ',
+	'dt_xml_template' => 'ಟೆಂಪ್ಲೇಟು',
 	'dt_xml_name' => 'ಹೆಸರು',
 	'dt_xml_title' => 'ಶೀರ್ಷಿಕೆ',
 );

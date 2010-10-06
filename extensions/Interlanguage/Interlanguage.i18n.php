@@ -121,10 +121,12 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Peter17
  * @author Verdy p
  */
 $messages['fr'] = array(
 	'interlanguage-desc' => 'Permet de collecter les liens interlangues d’un autre wiki',
+	'interlanguage-pagelinksexplanation' => 'Pages avec des liens inter-langues :',
 );
 
 /** Galician (Galego)
@@ -300,11 +302,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'interlanguage-desc' => 'A cheuj anliure antërlenga da àutre wiki',
-	'interlanguage-pagelinksexplanation' => 'Pàgine con colegament antërlenga:',
+	'interlanguage-pagelinksexplanation' => "Pàgine con dj'anliure antra lenghe:",
 );
 
 /** Pashto (پښتو)
@@ -413,9 +416,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'interlanguage-desc' => 'Імпортує міжмовні посилання з іншої вікі',
+	'interlanguage-pagelinksexplanation' => 'Сторінки з посиланнями на іншомовні версії:',
 );
 
 /** Vietnamese (Tiếng Việt)
