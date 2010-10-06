@@ -186,9 +186,7 @@ function doPageSpecificRewrite() {
 						'target' : '#bodyContent',
 						'catLinks' : catLinksHtml
 					});
-					window.mwSequencerRemote.drawUI();						
-				
-					//setTimeout(function(){
+					window.mwSequencerRemote.drawUI();
 				});
 			}
 			

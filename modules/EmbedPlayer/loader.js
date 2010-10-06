@@ -6,12 +6,13 @@
 * Default player module configuration 
 */
 ( function( mw ) {
-	window['MW_EMBED_LIBRARY_PAGE'] = 'http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library';
 	
 	mw.setDefaultConfig( {		
 		// If the player controls should be overlaid on top of the video ( if supported by playback method)
 		// can be set to false per embed player via overlayControls attribute 
 		'EmbedPlayer.OverlayControls' : true,
+		
+		'EmbedPlayer.LibraryPage':  'http://www.kaltura.org/project/HTML5_Video_Media_JavaScript_Library',
 		
 		// A default apiProvider ( ie where to lookup subtitles, video properties etc )
 		// NOTE: Each player instance can also specify a specific provider  
