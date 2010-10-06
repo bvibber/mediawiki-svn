@@ -55,7 +55,7 @@ diff -ur ircd-ratbox-2.2.8/modules/core/m_message.c ircd-ratbox-notalk-2.2.8/mod
  		}
  	}
 +	*/
-+	if (IsOper(client_p))
++	if (IsOper(client_p) || IsServer(client_p))
 +	{
 +		sendto_channel_flags(client_p, ALL_MEMBERS, source_p, chptr,
 +				"%s %s :%s",
