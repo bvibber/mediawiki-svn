@@ -46,15 +46,7 @@ CREATE TABLE /*_*/code_rev (
   cr_message blob,
 
   -- Status key for how this thang is...
-  -- 'new': Hasn't yet been reviewed
-  -- 'fixme': This revision has some problem which needs to be resolved
-  -- 'reverted': Was completely reverted by a later revision
-  -- 'resolved': Issues with this rev have been since resolved
-  -- 'ok': Reviewed, no issues spotted
-  -- 'verified': Reviewed and tested, no issues spotted
-  -- 'deferred': Not reviewed at this time (usually non-Wikimedia extension)
-  -- 'old': Predates the extension/doesn't require review
-  cr_status enum('new', 'fixme', 'reverted', 'resolved', 'ok', 'verified', 'deferred', 'old') not null default 'new',
+  cr_status varchar(25) not null default 'new',
 
   -- Base path of this revision :
   -- * if the revision change only one file, the file path

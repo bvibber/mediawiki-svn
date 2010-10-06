@@ -173,10 +173,8 @@ function efCodeReviewSchemaUpdates( $updater ) {
 		$updater->addExtensionUpdate( array( 'addField', 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql", true ) );
 		$updater->addExtensionUpdate( array( 'addIndex', 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql", true ) );
 
-		// $updater->addExtensionUpdate( array( 'addField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_status.sql", true ) ); // FIXME FIXME this is a change to options... don't know how
-
-		if ( !$updater->updateRowExists( 'add old to code_rev enum' ) ) {
-			$updater->addExtensionUpdate( array( 'modifyField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql", true ) );
+		if ( !$updater->updateRowExists( 'make cr_status varchar' ) ) {
+			$updater->addExtensionUpdate( array( 'modifyField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_status_varchar.sql", true ) );
 		}
 
 		$updater->addExtensionUpdate( array( 'addTable', 'code_bugs', "$base/archives/code_bugs.sql", true ) );
