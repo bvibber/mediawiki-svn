@@ -124,7 +124,6 @@ $wgAutoloadLocalClasses = array(
 	'HTMLInfoField' => 'includes/HTMLForm.php',
 	'Http' => 'includes/HttpFunctions.php',
 	'HttpRequest' => 'includes/HttpFunctions.php',
-	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
 	'ImageHistoryList' => 'includes/ImagePage.php',
 	'ImageHistoryPseudoPager' => 'includes/ImagePage.php',
@@ -178,6 +177,7 @@ $wgAutoloadLocalClasses = array(
 	'PatrolLog' => 'includes/PatrolLog.php',
 	'PoolCounter' => 'includes/PoolCounter.php',
 	'PoolCounter_Stub' => 'includes/PoolCounter.php',
+	'PoolCounterWork' => 'includes/PoolCounter.php',
 	'Preferences' => 'includes/Preferences.php',
 	'PrefixSearch' => 'includes/PrefixSearch.php',
 	'Profiler' => 'includes/Profiler.php',
@@ -334,7 +334,6 @@ $wgAutoloadLocalClasses = array(
 	'ApiUpload' => 'includes/api/ApiUpload.php',
 	'ApiWatch' => 'includes/api/ApiWatch.php',
 
-	'Spyc' => 'includes/api/ApiFormatYaml_spyc.php',
 	'UsageException' => 'includes/api/ApiMain.php',
 
 	# includes/extauth
@@ -358,6 +357,7 @@ $wgAutoloadLocalClasses = array(
 	'DatabasePostgres' => 'includes/db/DatabasePostgres.php',
 	'DatabaseSqlite' => 'includes/db/DatabaseSqlite.php',
 	'DatabaseSqliteStandalone' => 'includes/db/DatabaseSqlite.php',
+	'DatabaseType' => 'includes/db/DatabaseType.php',
 	'DBConnectionError' => 'includes/db/Database.php',
 	'DBError' => 'includes/db/Database.php',
 	'DBObject' => 'includes/db/Database.php',
@@ -452,6 +452,10 @@ $wgAutoloadLocalClasses = array(
 	'RefreshLinksJob' => 'includes/job/RefreshLinksJob.php',
 	'RefreshLinksJob2' => 'includes/job/RefreshLinksJob.php',
 	'UploadFromUrlJob' => 'includes/job/UploadFromUrlJob.php',
+
+	# includes/libs
+	'IEContentAnalyzer' => 'includes/libs/IEContentAnalyzer.php',
+	'Spyc' => 'includes/libs/spyc.php',
 
 	# includes/media
 	'BitmapHandler' => 'includes/media/Bitmap.php',
@@ -600,6 +604,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialBlankpage' => 'includes/specials/SpecialBlankpage.php',
 	'SpecialBlockme' => 'includes/specials/SpecialBlockme.php',
 	'SpecialBookSources' => 'includes/specials/SpecialBooksources.php',
+	'SpecialCategories' => 'includes/specials/SpecialCategories.php',
 	'SpecialComparePages' => 'includes/specials/SpecialComparePages.php',
 	'SpecialExport' => 'includes/specials/SpecialExport.php',
 	'SpecialFilepath' => 'includes/specials/SpecialFilepath.php',

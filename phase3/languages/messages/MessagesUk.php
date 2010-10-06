@@ -11,6 +11,7 @@
  * @author AS
  * @author Ahonc
  * @author Aleksandrit
+ * @author Alex Khimich
  * @author AlexSm
  * @author Dubyk
  * @author EugeneZelenko
@@ -150,7 +151,7 @@ $magicWords = array(
 	'subjectpagenamee'      => array( '1', 'НАЗВА_СТАТТІ_2', 'НАЗВАНИЕ_СТРАНИЦЫ_СТАТЬИ_2', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'msg'                   => array( '0', 'ПОВІД:', 'ПОВІДОМЛЕННЯ:', 'СООБЩЕНИЕ:', 'СООБЩ:', 'MSG:' ),
 	'subst'                 => array( '0', 'ПІДСТ:', 'ПІДСТАНОВКА:', 'ПОДСТАНОВКА:', 'ПОДСТ:', 'SUBST:' ),
-	'safesubst'             => array( '0', 'БЕЗПЕЧНА_ПІДСТАНОВКА:', 'SAFESUBST:' ),
+	'safesubst'             => array( '0', 'БЕЗПЕЧНА_ПІДСТАНОВКА:', 'ЗАЩПОДСТ:', 'SAFESUBST:' ),
 	'msgnw'                 => array( '0', 'ПОВІД_БЕЗ_ВІКІ:', 'СООБЩ_БЕЗ_ВИКИ:', 'MSGNW:' ),
 	'img_thumbnail'         => array( '1', 'міні', 'мініатюра', 'мини', 'миниатюра', 'thumbnail', 'thumb' ),
 	'img_manualthumb'       => array( '1', 'міні=$1', 'мініатюра=$1', 'мини=$1', 'миниатюра=$1', 'thumbnail=$1', 'thumb=$1' ),
@@ -1182,6 +1183,7 @@ $1",
 # Diffs
 'history-title'            => 'Історія змін сторінки «$1»',
 'difference'               => '(відмінності між версіями)',
+'difference-multipage'     => '(Різниця між сторінками)',
 'lineno'                   => 'Рядок $1:',
 'compareselectedversions'  => 'Порівняти вибрані версії',
 'showhideselectedversions' => 'Показати/приховати обрані версії',
@@ -1713,7 +1715,7 @@ PICT # різні
 'upload-success-subj'         => 'Завантаження успішно завершено',
 'upload-success-msg'          => 'Ваше завантаження з [$2] було успішним. Воно доступне тут: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Проблема із завантаженням',
-'upload-failure-msg'          => 'З вашим завантаженням виникла проблема:
+'upload-failure-msg'          => 'З вашим завантаженням від [$2] виникла проблема:
 
 $1',
 'upload-warning-subj'         => 'Попередження при завантаженні',
@@ -2086,7 +2088,7 @@ $1',
 # E-mail user
 'mailnologin'          => 'Відсутня адреса для відправки',
 'mailnologintext'      => 'Ви повинні [[Special:UserLogin|ввійти до системи]] і мати підтверджену адресу електронної пошти у ваших [[Special:Preferences|налаштуваннях]], щоб мати змогу надсилати електронну пошту іншим користувачам.',
-'emailuser'            => 'Надіслати листа цьому користувачеві',
+'emailuser'            => 'Надіслати листа',
 'emailpage'            => 'Лист користувачеві',
 'emailpagetext'        => 'Заповнивши наведену нижче форму, можна надіслати повідомлення цьому користувачу.
 Електронна адреса, яку ви зазначили у [[Special:Preferences|своїх налаштуваннях]], буде зазначена в полі «Від кого» листа, тому одержувач матиме можливість відповісти безпосередньо вам.',
@@ -3392,6 +3394,13 @@ $1',
 'version-hook-subscribedby'        => 'Підписаний на',
 'version-version'                  => '(Версія $1)',
 'version-license'                  => 'Ліцензія',
+'version-poweredby-credits'        => "Ця Вікі працює на системі управління вмістом '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'інші',
+'version-license-info'             => 'MediaWiki є вільним програмним забезпеченням, ви можете його розповсюджувати та / або модифікувати його відповідно до умов GNU General Public License, яка опублікованя фондом вільного програмного забезпечення; або версії 2 Ліцензії, або (на Ваш розсуд) будь-якої наступної версії. 
+
+ MediaWiki поширюється в надії, що вона буде корисною, але БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ, навіть без неявної гарантії КОМЕРЦІЙНОЇ ПРИДАТНОСТІ чи для певної мети. Див GNU General Public License для більш докладної інформації. 
+
+ Ви повинні були отримати [{{SERVER}}{{SCRIPTPATH}}/COPYING копію GNU General Public License] разом з цією програмою, якщо немає, напишіть у Free Software Foundation, Inc 51 Franklin Street, Fifth Floor , Boston, MA 02110-1301, США або [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html прочитайте її онлайн].',
 'version-software'                 => 'Установлене програмне забезпечення',
 'version-software-product'         => 'Продукт',
 'version-software-version'         => 'Версія',

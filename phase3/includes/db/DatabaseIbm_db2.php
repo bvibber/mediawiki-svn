@@ -1076,10 +1076,8 @@ EOF;
 		// assume success
 		$res = true;
 		// If we are not in a transaction, we need to be for savepoint trickery
-		$didbegin = 0;
 		if (! $this->mTrxLevel) {
 			$this->begin();
-			$didbegin = 1;
 		}
 
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES ';
@@ -1438,7 +1436,7 @@ EOF;
 	 * Returns link to IBM DB2 free download
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	public function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return "[http://www.ibm.com/software/data/db2/express/?s_cmp=ECDDWW01&s_tact=MediaWiki IBM DB2]";
 	}
 	

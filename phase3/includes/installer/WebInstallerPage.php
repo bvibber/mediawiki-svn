@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base code for web installer pages.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Abstract class to define pages for the web installer.
@@ -20,8 +26,8 @@ abstract class WebInstallerPage {
 	/**
 	 * Constructor.
 	 * 
-	 * @param WebInstaller $parent
-	 */	
+	 * @param $parent WebInstaller
+	 */
 	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;
 	}
@@ -218,6 +224,15 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 		$types = "<ul class=\"config-settings-block\">\n";
 		$settings = '';
 		$defaultType = $this->getVar( 'wgDBtype' );
+
+		$dbSupport = '';
+		foreach( $this->parent->getDBTypes() as $type ) {
+			$db = 'Database' . ucfirst( $type );
+			$dbSupport .= wfMsgNoTrans( "config-support-$type", $db::getSoftwareLink() ) . "\n";
+		}
+		$this->addHTML( $this->parent->getInfoBox(
+			wfMsg( 'config-support-info', $dbSupport ) ) );
+
 		foreach ( $this->parent->getVar( '_CompiledDBs' ) as $type ) {
 			$installer = $this->parent->getDBInstaller( $type );
 			$types .=
@@ -287,6 +302,7 @@ class WebInstaller_Upgrade extends WebInstallerPage {
 		}
 
 		if ( $this->parent->request->wasPosted() ) {
+			$installer->preUpgrade();
 			$this->addHTML(
 				'<div id="config-spinner" style="display:none;"><img src="../skins/common/images/ajax-loader.gif" /></div>' .
 				'<script>jQuery( "#config-spinner" )[0].style.display = "block";</script>' .

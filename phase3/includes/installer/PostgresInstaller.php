@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * PostgreSQL-specific installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
+ 
 /**
  * Class for setting up the MediaWiki database using Postgres.
  * 
@@ -142,5 +148,10 @@ class PostgresInstaller extends DatabaseInstaller {
 \$wgDBport           = \"{$port}\";
 \$wgDBmwschema       = \"{$schema}\";
 \$wgDBts2schema      = \"{$ts2}\";";
+	}
+
+	public function doUpgrade() {
+		// TODO
+		return false;
 	}
 }

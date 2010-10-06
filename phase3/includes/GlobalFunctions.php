@@ -227,9 +227,10 @@ function wfArrayDiff2_cmp( $a, $b ) {
 /**
  * Seed Mersenne Twister
  * No-op for compatibility; only necessary in PHP < 4.2.0
+ * @deprecated. Remove in 1.18
  */
 function wfSeedRandom() {
-	/* No-op */
+	wfDeprecated(__FUNCTION__);
 }
 
 /**
@@ -1951,7 +1952,7 @@ define( 'TS_DB2', 8 );
 function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 	$uts = 0;
 	$da = array();
-	if ( $ts == 0 ) {
+	if ( $ts === 0 ) {
 		$uts = time();
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D', $ts, $da ) ) {
 		# TS_DB
@@ -1972,6 +1973,9 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		# TS_POSTGRES
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/', $ts, $da ) ) {
 		# TS_POSTGRES
+	} elseif ( preg_match( '/^[A-Z][a-z]{2}, \d\d [A-Z][a-z]{2} \d{4} \d\d:\d\d:\d\d/', $ts ) ) {
+		# TS_RFC2822
+		$uts = strtotime( $ts );
 	} else {
 		# Bogus value; fall back to the epoch...
 		wfDebug("wfTimestamp() fed bogus time value: $outputtype; $ts\n");
@@ -2159,10 +2163,10 @@ function &wfGetMimeMagic() {
 }
 
 /**
- * Tries to get the system directory for temporary files. For PHP >= 5.2.1,
- * we'll use sys_get_temp_dir(). The TMPDIR, TMP, and TEMP environment
- * variables are then checked in sequence, and if none are set /tmp is
- * returned as the generic Unix default.
+ * Tries to get the system directory for temporary files. The TMPDIR, TMP, and
+ * TEMP environment variables are then checked in sequence, and if none are set
+ * try sys_get_temp_dir() for PHP >= 5.2.1. All else fails, return /tmp for Unix
+ * or C:\Windows\Temp for Windows and hope for the best.
  * It is common to call it with tempnam().
  *
  * NOTE: When possible, use instead the tmpfile() function to create
@@ -2171,17 +2175,17 @@ function &wfGetMimeMagic() {
  * @return String
  */
 function wfTempDir() {
-	if( function_exists( 'sys_get_temp_dir' ) ) {
-		return sys_get_temp_dir();
-	}
 	foreach( array( 'TMPDIR', 'TMP', 'TEMP' ) as $var ) {
 		$tmp = getenv( $var );
 		if( $tmp && file_exists( $tmp ) && is_dir( $tmp ) && is_writable( $tmp ) ) {
 			return $tmp;
 		}
 	}
-	# Hope this is Unix of some kind!
-	return '/tmp';
+	if( function_exists( 'sys_get_temp_dir' ) ) {
+		return sys_get_temp_dir();
+	}
+	# Usual defaults
+	return wfIsWindows() ? 'C:\Windows\Temp' : '/tmp';
 }
 
 /**
@@ -2454,7 +2458,7 @@ function wfShellExec( $cmd, &$retval = null ) {
 		if ( $time > 0 && $mem > 0 ) {
 			$script = "$IP/bin/ulimit4.sh";
 			if ( is_executable( $script ) ) {
-				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
+				$cmd = '/bin/bash ' . escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
 	} elseif ( php_uname( 's' ) == 'Windows NT' &&
@@ -3465,11 +3469,12 @@ function wfArrayMap( $function, $input ) {
  * @return PackageRepository
  */
 function wfGetRepository() {
-	global $wgRepository, $wgRepositoryApiLocation;
+	global $wgRepositoryApiLocation;
+	static $repository = false;
 	
-	if ( !isset( $wgRepository ) ) {
-		$wgRepository = new DistributionRepository( $wgRepositoryApiLocation );
+	if ( $repository === false ) {
+		$repository = new DistributionRepository( $wgRepositoryApiLocation );
 	}
 	
-	return $wgRepository;
-} 
+	return $repository;
+}

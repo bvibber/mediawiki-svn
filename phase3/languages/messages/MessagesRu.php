@@ -15,6 +15,7 @@
  * @author Amikeco
  * @author Chilin
  * @author Claymore
+ * @author DCamer
  * @author Don Alessandro
  * @author Eleferen
  * @author EugeneZelenko
@@ -171,6 +172,7 @@ $magicWords = array(
 	'subjectpagenamee'      => array( '1', 'НАЗВАНИЕ_СТРАНИЦЫ_СТАТЬИ_2', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'msg'                   => array( '0', 'СООБЩЕНИЕ:', 'СООБЩ:', 'MSG:' ),
 	'subst'                 => array( '0', 'ПОДСТАНОВКА:', 'ПОДСТ:', 'SUBST:' ),
+	'safesubst'             => array( '0', 'ЗАЩПОДСТ:', 'SAFESUBST:' ),
 	'msgnw'                 => array( '0', 'СООБЩ_БЕЗ_ВИКИ:', 'MSGNW:' ),
 	'img_thumbnail'         => array( '1', 'мини', 'миниатюра', 'thumbnail', 'thumb' ),
 	'img_manualthumb'       => array( '1', 'мини=$1', 'миниатюра=$1', 'thumbnail=$1', 'thumb=$1' ),
@@ -203,6 +205,7 @@ $magicWords = array(
 	'server'                => array( '0', 'СЕРВЕР', 'SERVER' ),
 	'servername'            => array( '0', 'НАЗВАНИЕ_СЕРВЕРА', 'SERVERNAME' ),
 	'scriptpath'            => array( '0', 'ПУТЬ_К_СКРИПТУ', 'SCRIPTPATH' ),
+	'stylepath'             => array( '0', 'ПУТЬ_К_СТИЛЮ', 'STYLEPATH' ),
 	'grammar'               => array( '0', 'ПАДЕЖ:', 'GRAMMAR:' ),
 	'gender'                => array( '0', 'ПОЛ:', 'GENDER:' ),
 	'notitleconvert'        => array( '0', '__БЕЗ_ПРЕОБРАЗОВАНИЯ_ЗАГОЛОВКА__', '__NOTITLECONVERT__', '__NOTC__' ),
@@ -215,6 +218,7 @@ $magicWords = array(
 	'revisionday'           => array( '1', 'ДЕНЬ_ВЕРСИИ', 'REVISIONDAY' ),
 	'revisionday2'          => array( '1', 'ДЕНЬ_ВЕРСИИ_2', 'REVISIONDAY2' ),
 	'revisionmonth'         => array( '1', 'МЕСЯЦ_ВЕРСИИ', 'REVISIONMONTH' ),
+	'revisionmonth1'        => array( '1', 'МЕСЯЦ_ВЕРСИИ_1', 'REVISIONMONTH1' ),
 	'revisionyear'          => array( '1', 'ГОД_ВЕРСИИ', 'REVISIONYEAR' ),
 	'revisiontimestamp'     => array( '1', 'ОТМЕТКА_ВРЕМЕНИ_ВЕРСИИ', 'REVISIONTIMESTAMP' ),
 	'revisionuser'          => array( '1', 'ВЕРСИЯ_УЧАСНИКА', 'REVISIONUSER' ),
@@ -256,6 +260,9 @@ $magicWords = array(
 	'staticredirect'        => array( '1', '__СТАТИЧЕСКОЕ_ПЕРЕНАПРАВЛЕНИЕ__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'УРОВЕНЬ_ЗАЩИТЫ', 'PROTECTIONLEVEL' ),
 	'formatdate'            => array( '0', 'форматдаты', 'formatdate', 'dateformat' ),
+	'url_path'              => array( '0', 'ПУТЬ', 'PATH' ),
+	'url_wiki'              => array( '0', 'ВИКИ', 'WIKI' ),
+	'url_query'             => array( '0', 'ЗАПРОС', 'QUERY' ),
 );
 
 $imageFiles = array(
@@ -1194,6 +1201,7 @@ $1",
 # Diffs
 'history-title'            => '$1 — история изменений',
 'difference'               => '(Различия между версиями)',
+'difference-multipage'     => '(Различия между страницами)',
 'lineno'                   => 'Строка $1:',
 'compareselectedversions'  => 'Сравнить выбранные версии',
 'showhideselectedversions' => 'Показать/скрыть выбранные версии',
@@ -1718,7 +1726,7 @@ PICT # различные
 'upload-success-subj'         => 'Загрузка успешно завершена',
 'upload-success-msg'          => 'Ваша загрузка [$2] прошла успешно. Вы можете посмотреть результат здесь: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Проблема загрузки',
-'upload-failure-msg'          => 'Обнаружена проблема с вашей загрузкой:
+'upload-failure-msg'          => 'Обнаружена проблема с вашей загрузкой из [$2]:
 
 $1',
 'upload-warning-subj'         => 'Предупреждение при загрузке',
@@ -3456,6 +3464,13 @@ $1',
 'version-hook-subscribedby'        => 'Подписан на',
 'version-version'                  => '(Версия $1)',
 'version-license'                  => 'Лицензия',
+'version-poweredby-credits'        => "Эта вики работает на движке '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'другие',
+'version-license-info'             => 'MediaWiki является свободным программным обеспечением, которое вы можете распространять и/или изменять в соответствии с условиями лицензии GNU General Public License, опубликованной фондом свободного программного обеспечения; второй версии, либо любой более поздней версии.
+
+MediaWiki распространяется в надежде, что она будет полезной, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, даже без подразумеваемых гарантий КОММЕРЧЕСКОЙ ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЕННОЙ ЦЕЛИ. См. лицензию GNU General Public License для более подробной информации.
+
+Вы должны были получить [{{SERVER}}{{SCRIPTPATH}}/COPYING копию GNU General Public License] вместе с этой программой, если нет, то напишите Free Software Foundation, Inc., по адресу: 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA или [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html прочтите её онлайн].',
 'version-software'                 => 'Установленное программное обеспечение',
 'version-software-product'         => 'Продукт',
 'version-software-version'         => 'Версия',

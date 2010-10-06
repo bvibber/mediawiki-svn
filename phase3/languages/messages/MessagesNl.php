@@ -181,14 +181,14 @@ $magicWords = array(
 	'fullurl'               => array( '0', 'VOLLEDIGEURL', 'FULLURL:' ),
 	'fullurle'              => array( '0', 'VOLLEDIGEURLE', 'FULLURLE:' ),
 	'lcfirst'               => array( '0', 'KLEERSTE:', 'LCFIRST:' ),
-	'ucfirst'               => array( '0', 'GLEERSTE:', 'UCFIRST:' ),
+	'ucfirst'               => array( '0', 'GLEERSTE:', 'HLEERSTE:', 'UCFIRST:' ),
 	'lc'                    => array( '0', 'KL:', 'LC:' ),
 	'uc'                    => array( '0', 'HL:', 'UC:' ),
 	'raw'                   => array( '0', 'RAUW:', 'RUW:', 'RAW:' ),
 	'displaytitle'          => array( '1', 'TOONTITEL', 'TITELTONEN', 'DISPLAYTITLE' ),
 	'rawsuffix'             => array( '1', 'V', 'R' ),
 	'newsectionlink'        => array( '1', '__NIEUWESECTIELINK__', '__NIEUWESECTIEKOPPELING__', '__NEWSECTIONLINK__' ),
-	'nonewsectionlink'      => array( '1', '__GEENNIEUWKOPJEVERWIJZING__', '__NONEWSECTIONLINK__' ),
+	'nonewsectionlink'      => array( '1', '__GEENNIEUWESECTIELINK__', '__GEENNIEUWKOPJEVERWIJZING__', '__NONEWSECTIONLINK__' ),
 	'currentversion'        => array( '1', 'HUIDIGEVERSIE', 'CURRENTVERSION' ),
 	'urlencode'             => array( '0', 'URLCODEREN', 'CODEERURL', 'URLENCODE:' ),
 	'anchorencode'          => array( '0', 'ANKERCODEREN', 'CODEERANKER', 'ANCHORENCODE' ),
@@ -261,7 +261,7 @@ $specialPageAliases = array(
 	'Protectedpages'            => array( 'BeveiligdePaginas', 'BeveiligdePagina\'s', 'BeschermdePaginas', 'BeschermdePagina’s', 'BeschermdePagina\'s' ),
 	'Protectedtitles'           => array( 'BeveiligdeTitels', 'BeschermdeTitels' ),
 	'Allpages'                  => array( 'AllePaginas', 'AllePagina’s', 'AllePagina\'s' ),
-	'Prefixindex'               => array( 'Voorvoegselindex', 'Prefixindex' ),
+	'Prefixindex'               => array( 'Voorvoegselindex' ),
 	'Ipblocklist'               => array( 'Blokkeerlijst', 'IP-blokkeerlijst', 'IPblokkeerlijst', 'IpBlokkeerlijst' ),
 	'Unblock'                   => array( 'Deblokkeren' ),
 	'Specialpages'              => array( 'SpecialePaginas', 'SpecialePagina’s', 'SpecialePagina\'s' ),
@@ -308,6 +308,8 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'VerwijderdeBijdragen' ),
 	'Tags'                      => array( 'Labels' ),
 	'Activeusers'               => array( 'ActieveGebruikers' ),
+	'RevisionMove'              => array( 'VersieVerplaatsen' ),
+	'ComparePages'              => array( 'PaginasVergelijken', 'Pagina\'sVergelijken' ),
 );
 
 $linkTrail = '/^([a-zäöüïëéèà]+)(.*)$/sDu';
@@ -1289,6 +1291,7 @@ Let op dat het gebruiken van de navigatieverwijzingen deze kolom opnieuw instelt
 # Diffs
 'history-title'            => 'Geschiedenis van "$1"',
 'difference'               => '(Verschil tussen bewerkingen)',
+'difference-multipage'     => "(Verschil tussen pagina's)",
 'lineno'                   => 'Regel $1:',
 'compareselectedversions'  => 'Aangevinkte versies vergelijken',
 'showhideselectedversions' => 'Geselecteerde versies weergeven/verbergen',
@@ -1828,9 +1831,9 @@ MGP # Pentax
 PICT # overig
  #</pre> <!-- leave this line exactly as it is -->',
 'upload-success-subj'         => 'Het bestand is toegevoegd',
-'upload-success-msg'          => 'Uw uploaden van [$2] is geslaagd en is beschikbaar: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Uw upload van [$2] is geslaagd en is beschikbaar: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Uploadprobleem',
-'upload-failure-msg'          => 'Er was een probleem met uw upload:
+'upload-failure-msg'          => 'Er was een probleem met uw upload van [$2]:
 
 $1',
 'upload-warning-subj'         => 'Uploadwaarschuwing',
@@ -3575,6 +3578,13 @@ U kunt ook [[Special:Watchlist/edit|het standaard bewerkingsscherm gebruiken]].'
 'version-hook-subscribedby'        => 'Geabonneerd door',
 'version-version'                  => '(Versie $1)',
 'version-license'                  => 'Licentie',
+'version-poweredby-credits'        => "Deze wiki wordt aangedreven door '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'anderen',
+'version-license-info'             => 'MediaWiki is vrije software; u kunt MediaWiki verspreiden en/of aanpassen onder de voorwaarden van de GNU General Public License zoals gepubliceerd door de Free Software Foundation; ofwel versie 2 van de Licentie, of - naar uw wens - enige latere versie.
+
+MediaWiki wordt verspreid in de hoop dat het nuttig is, maar ZONDER ENIGE GARANTIE; zonder zelfs de implicitiete garantie van VERKOOPBAARHEID of GESCHIKHEID VOOR ENIG DOEL IN HET BIJZONDER. Zie de GNU General Public License voor meer informatie.
+
+Samen met dit programma hoort u een [{{SERVER}}{{SCRIPTPATH}}/COPYING kopie van de GNU General Public License] te hebben ontvangen; zo niet, schrijf dan naar de Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA of [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html lees de licentie online].',
 'version-software'                 => 'Geïnstalleerde software',
 'version-software-product'         => 'Product',
 'version-software-version'         => 'Versie',

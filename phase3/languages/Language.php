@@ -1,9 +1,13 @@
 <?php
 /**
- * @defgroup Language Language
+ * Internationalisation code
  *
  * @file
  * @ingroup Language
+ */
+
+/**
+ * @defgroup Language Language
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -34,8 +38,8 @@ if ( function_exists( 'mb_strtoupper' ) ) {
  */
 class FakeConverter {
 	var $mLang;
-	function FakeConverter( $langobj ) { $this->mLang = $langobj; }
-	function autoConvertToAllVariants( $text ) { return $text; }
+	function __construct( $langobj ) { $this->mLang = $langobj; }
+	function autoConvertToAllVariants( $text ) { return array( $this->mLang->getCode() => $text ); }
 	function convert( $t ) { return $t; }
 	function convertTitle( $t ) { return $t->getPrefixedText(); }
 	function getVariants() { return array( $this->mLang->getCode() ); }
@@ -46,7 +50,7 @@ class FakeConverter {
 	function getParsedTitle() { return ''; }
 	function markNoConversion( $text, $noParse = false ) { return $text; }
 	function convertCategoryKey( $key ) { return $key; }
-	function convertLinkToAllVariants( $text ) { return array( $this->mLang->getCode() => $text ); }
+	function convertLinkToAllVariants( $text ) { return autoConvertToAllVariants( $text ); }
 	function armourMath( $text ) { return $text; }
 }
 
@@ -241,12 +245,12 @@ class Language {
 	 */
 	function getNamespaces() {
 		if ( is_null( $this->namespaceNames ) ) {
-			global $wgExtraNamespaces, $wgMetaNamespace, $wgMetaNamespaceTalk;
+			global $wgMetaNamespace, $wgMetaNamespaceTalk, $wgExtraNamespaces;
 
 			$this->namespaceNames = self::$dataCache->getItem( $this->mCode, 'namespaceNames' );
-			if ( $wgExtraNamespaces ) {
-				$this->namespaceNames = $wgExtraNamespaces + $this->namespaceNames;
-			}
+			$validNamespaces = MWNamespace::getCanonicalNamespaces();
+
+			$this->namespaceNames = $wgExtraNamespaces + $this->namespaceNames + $validNamespaces;
 
 			$this->namespaceNames[NS_PROJECT] = $wgMetaNamespace;
 			if ( $wgMetaNamespaceTalk ) {
@@ -255,6 +259,13 @@ class Language {
 				$talk = $this->namespaceNames[NS_PROJECT_TALK];
 				$this->namespaceNames[NS_PROJECT_TALK] =
 					$this->fixVariableInNamespace( $talk );
+			}
+			
+			# Sometimes a language will be localised but not actually exist on this wiki.
+			foreach( $this->namespaceNames as $key => $text ) {
+				if ( !isset( $validNamespaces[$key] ) ) {
+					unset( $this->namespaceNames[$key] );
+				}
 			}
 
 			# The above mixing may leave namespaces out of canonical order.
@@ -1614,7 +1625,6 @@ class Language {
 			}
 		} else {
 			if ( $this->isMultibyte( $str ) ) {
-				list( $wikiUpperChars ) = $this->getCaseMaps();
 				$x = $first ? '^' : '';
 				return preg_replace_callback(
 					"/$x([a-z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",
@@ -1654,7 +1664,6 @@ class Language {
 			}
 		} else {
 			if ( $this->isMultibyte( $str ) ) {
-				list( , $wikiLowerChars ) = self::getCaseMaps();
 				$x = $first ? '^' : '';
 				return preg_replace_callback(
 					"/$x([A-Z]|[\\xc0-\\xff][\\x80-\\xbf]*)/",

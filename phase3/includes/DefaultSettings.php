@@ -1509,6 +1509,13 @@ $wgUseLocalMessageCache = false;
 $wgLocalMessageCacheSerialized = true;
 
 /**
+ * Instead of caching everything, keep track which messages are requested and
+ * load only most used messages. This only makes sense if there is lots of
+ * interface messages customised in the wiki (like hundreds in many languages).
+ */
+$wgAdaptiveMessageCache = false;
+
+/**
  * Localisation cache configuration. Associative array with keys:
  *     class:       The class to use. May be overridden by extensions.
  *
@@ -1553,7 +1560,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '300';
+$wgStyleVersion = '301';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -2295,7 +2302,10 @@ $wgMetaNamespaceTalk = false;
 /**
  * Additional namespaces. If the namespaces defined in Language.php and
  * Namespace.php are insufficient, you can create new ones here, for example,
- * to import Help files in other languages.
+ * to import Help files in other languages. You can also override the namespace
+ * names of existing namespaces. Extensions developers should use
+ * $wgCanonicalNamespaceNames.
+ *
  * PLEASE  NOTE: Once you delete a namespace, the pages in that namespace will
  * no longer be accessible. If you rename it, then you can access them through
  * the new namespace name.
@@ -2309,7 +2319,7 @@ $wgMetaNamespaceTalk = false;
 #	      102 => "Aide",
 #	      103 => "Discussion_Aide"
 #	      );
-$wgExtraNamespaces = null;
+$wgExtraNamespaces = array();
 
 /**
  * Namespace aliases

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base core installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Base core installer class.
@@ -171,7 +177,7 @@ abstract class CoreInstaller extends Installer {
 	/**
 	 * TODO: document
 	 *
-	 * @param Status $status
+	 * @param $status Status
 	 */
 	public abstract function showStatusMessage( Status $status );
 
@@ -307,8 +313,8 @@ abstract class CoreInstaller extends Installer {
 	/**
 	 * Actually perform the installation.
 	 *
-	 * @param Array $startCB A callback array for the beginning of each step
-	 * @param Array $endCB A callback array for the end of each step
+	 * @param $startCB A callback array for the beginning of each step
+	 * @param $endCB A callback array for the end of each step
 	 *
 	 * @return Array of Status objects
 	 */
@@ -431,6 +437,9 @@ abstract class CoreInstaller extends Installer {
 		// Extended debugging. Maybe disable before release?
 		$GLOBALS['wgShowSQLErrors'] = true;
 		$GLOBALS['wgShowDBErrorBacktrace'] = true;
+
+		// Allow multiple ob_flush() calls
+		$GLOBALS['wgDisableOutputCompression'] = true;
 	}
 
 	/**

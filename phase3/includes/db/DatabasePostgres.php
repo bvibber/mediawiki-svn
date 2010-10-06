@@ -96,7 +96,7 @@ class DatabasePostgres extends DatabaseBase {
 	var $numeric_version = null;
 	var $mAffectedRows = null;
 
-	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
+	function __construct($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
 	{
 
@@ -1143,7 +1143,7 @@ class DatabasePostgres extends DatabaseBase {
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return "[http://www.postgresql.org/ PostgreSQL]";
 	}
 

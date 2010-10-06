@@ -26,7 +26,7 @@
  *
  * @ingroup SpecialPage
  */
-class SpecialRecentchangeslinked extends SpecialRecentchanges {
+class SpecialRecentchangeslinked extends SpecialRecentChanges {
 	var $rclTargetTitle;
 
 	function __construct(){
@@ -114,7 +114,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 				$query_options, $opts['tagfilter'] );
 		}
 
-		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options ) ) )
+		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options, &$select ) ) )
 			return false;
 
 		if( $ns == NS_CATEGORY && !$showlinkedto ) {

@@ -28,9 +28,10 @@
  */
 class WantedPagesPage extends WantedQueryPage {
 	var $nlinks;
-
-	function __construct() {
+	function __construct( $inc = false, $nlinks = true ) {
 		SpecialPage::__construct( 'Wantedpages' );
+		$this->setListoutput( $inc );
+		$this->nlinks = $nlinks;
 	}
 		
 	function execute( $par ) {

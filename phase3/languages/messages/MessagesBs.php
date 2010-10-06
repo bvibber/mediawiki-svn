@@ -202,14 +202,14 @@ $magicWords = array(
 	'img_width'             => array( '1', '$1piksel', '$1p', '$1px' ),
 	'img_center'            => array( '1', 'centar', 'c', 'center', 'centre' ),
 	'img_framed'            => array( '1', 'okvir', 'ram', 'framed', 'enframed', 'frame' ),
-	'img_frameless'         => array( '1', 'bez okvira', 'frameless' ),
+	'img_frameless'         => array( '1', 'bez_okvira', 'frameless' ),
 	'img_page'              => array( '1', 'stranica=$1', 'stranica $1', 'page=$1', 'page $1' ),
-	'img_upright'           => array( '1', 'na gore', 'na gore=$1', 'na gore$1', 'upright', 'upright=$1', 'upright $1' ),
+	'img_upright'           => array( '1', 'na_gore', 'na_gore=$1', 'na_gore $1', 'upright', 'upright=$1', 'upright $1' ),
 	'img_border'            => array( '1', 'granica', 'border' ),
-	'img_baseline'          => array( '1', 'pocetna linija', 'baseline' ),
+	'img_baseline'          => array( '1', 'pocetna_linija', 'baseline' ),
 	'img_sub'               => array( '1', 'odjeljak', 'sub' ),
 	'img_top'               => array( '1', 'vrh', 'top' ),
-	'img_text_top'          => array( '1', 'vrh teksta', 'text-top' ),
+	'img_text_top'          => array( '1', 'vrh_teksta', 'text-top' ),
 	'img_middle'            => array( '1', 'sredina', 'middle' ),
 	'img_bottom'            => array( '1', 'dugme', 'bottom' ),
 	'img_text_bottom'       => array( '1', 'tekst-dugme', 'text-bottom' ),
@@ -1214,6 +1214,7 @@ Korištenje navigacionih linkova će resetovati ovaj stupac.',
 # Diffs
 'history-title'            => 'Historija izmjena stranice "$1"',
 'difference'               => '(Razlika između revizija)',
+'difference-multipage'     => '(Razlika između stranica)',
 'lineno'                   => 'Linija $1:',
 'compareselectedversions'  => 'Uporedite označene verzije',
 'showhideselectedversions' => 'Pokaži/sakrij odabrane verzije',
@@ -1739,7 +1740,7 @@ PICT # razni
 'upload-success-subj'         => 'Uspješno slanje',
 'upload-success-msg'          => 'Vaša datoteka iz [$2] je uspješno postavljena. Dostupna je ovdje: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problem pri postavljanju',
-'upload-failure-msg'          => 'Nastao je problem s Vašim postavljanjem:
+'upload-failure-msg'          => 'Nastao je problem s Vašim postavljanjem sa [$2]:
 
 $1',
 'upload-warning-subj'         => 'Upozorenje pri slanju',
@@ -3515,6 +3516,13 @@ Također možete [[Special:Watchlist/edit|koristiti standardni uređivač]].',
 'version-hook-subscribedby'        => 'Pretplaćeno od',
 'version-version'                  => '(Verzija $1)',
 'version-license'                  => 'Licenca',
+'version-poweredby-credits'        => "Ova wiki je zasnovana na '''[http://www.mediawiki.org/ MediaWiki]''', autorska prava zadržana © 2001-$1 $2.",
+'version-poweredby-others'         => 'ostali',
+'version-license-info'             => 'Mediawiki je slobodni softver, možete ga redistribuirati i/ili mijenjati pod uslovima GNU opće javne licence kao što je objavljeno od strane Fondacije Slobodnog Softvera, bilo u verziji 2 licence, ili (po vašoj volji) nekoj od kasniji verzija.
+
+Mediawiki se distriburia u nadi da će biti korisna, ali BEZ IKAKVIH GARANCIJA, čak i bez ikakvih posrednih garancija o KOMERCIJALNOSTI ili DOSTUPNOSTI ZA ODREĐENU SVRHU. Pogledajte GNU opću javnu licencu za više detalja.
+
+Trebali biste dobiti [{{SERVER}}{{SCRIPTPATH}}/KOPIJU GNU opće javne licence] zajedno s ovim programom, ako niste, pišite Fondaciji Slobodnog Softvera na adresu  Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA ili je pročitajte [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html online].',
 'version-software'                 => 'Instalirani softver',
 'version-software-product'         => 'Proizvod',
 'version-software-version'         => 'Verzija',

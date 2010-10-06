@@ -10,6 +10,54 @@
  * @author Ukabia
  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Nká',
+	NS_SPECIAL          => 'Ihü_kárírí',
+	NS_TALK             => 'Okwu',
+	NS_USER             => 'Ọ\'bànifé',
+	NS_USER_TALK        => 'Okwu_ọ\'bànifé',
+	NS_PROJECT_TALK     => 'Okwu_$1',
+	NS_FILE             => 'Ákwúkwó_orünotu',
+	NS_FILE_TALK        => 'Okwu_ákwúkwó_orünotu',
+	NS_MEDIAWIKI        => 'NkáWiki',
+	NS_MEDIAWIKI_TALK   => 'Okwu_NkáWiki',
+	NS_TEMPLATE         => 'Àtụ',
+	NS_TEMPLATE_TALK    => 'Okwu_àtụ',
+	NS_HELP             => 'Nkwádọ',
+	NS_HELP_TALK        => 'Okwu_nkwádọ',
+	NS_CATEGORY         => 'Ébéonọr',
+	NS_CATEGORY_TALK    => 'Okwu_ébéonọr',
+);
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Ọ\'bàniféÍBànyé' ),
+	'Userlogout'                => array( 'Ọ\'bàniféÍFụtá' ),
+	'Preferences'               => array( 'Ọtúm_dọsẹrẹ_ihem' ),
+	'Upload'                    => array( 'TinyéIheNélú' ),
+	'Allpages'                  => array( 'IhüNílé' ),
+	'Specialpages'              => array( 'IhüKá' ),
+	'Export'                    => array( 'MēKọFùtá' ),
+	'Undelete'                  => array( 'Ábàkàshịkwàlà' ),
+	'Import'                    => array( 'BàÍfé' ),
+	'Mypage'                    => array( 'IhüNkèm' ),
+	'Mytalk'                    => array( 'OkwuNkèm' ),
+	'Filepath'                  => array( 'UzọrAkwúkwóOrünotu' ),
+	'Blankpage'                 => array( 'HịcháIhü' ),
+);
+
+$magicWords = array(
+	'redirect'              => array( '0', '#KÚFÙ', '#REDIRECT' ),
+	'fullpagename'          => array( '1', 'ÁHÀNÍLÉNKÈIHÜ', 'FULLPAGENAME' ),
+	'msg'                   => array( '0', 'OZI:', 'MSG:' ),
+	'img_right'             => array( '1', 'áká_ịkẹngạ', 'right' ),
+	'img_left'              => array( '1', 'áká_èkpè', 'left' ),
+	'img_top'               => array( '1', 'élú', 'top' ),
+	'img_middle'            => array( '1', 'ẹtítì', 'middle' ),
+	'img_text_bottom'       => array( '1', 'okpúrù-ede', 'text-bottom' ),
+	'displaytitle'          => array( '1', 'ZIÍSHÍ', 'DISPLAYTITLE' ),
+	'pagesize'              => array( '1', 'ÀSÁIHÜ', 'PAGESIZE' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Okpürụ ahiri jikodo:',
@@ -1299,7 +1347,7 @@ Biko tinyé ha nà áká gi.'''",
 'movedto'                 => 'ó shifụrụ gá',
 'movetalk'                => 'Páfù ihü okwu nke ya',
 'move-subpages'           => 'Páfù ihü-n-ímé (nè rú $1)',
-'move-talk-subpages'      => 'Páfù ihü-n-ímé nke ihü okwu (nè rú &1)',
+'move-talk-subpages'      => 'Páfù ihü-n-ímé nke ihü okwu (nè rú $1)',
 'movepage-page-moved'     => 'Ihü $1 a páfùrù gá $2.',
 'movepage-page-unmoved'   => 'Ihü $1 énweghịkị páfù gá $2.',
 '1movedto2'               => 'páfùrù [[$1]] gá [[$2]]',

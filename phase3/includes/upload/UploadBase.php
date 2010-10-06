@@ -344,9 +344,8 @@ abstract class UploadBase {
 		$this->mFileProps = File::getPropsFromPath( $this->mTempPath, $this->mFinalExtension );
 		$this->checkMacBinary();
 
-		# magically determine mime type
+		$mime = $this->mFileProps[ 'mime' ];
 		$magic = MimeMagic::singleton();
-		$mime = $magic->guessMimeType( $this->mTempPath, false );
 
 		# check mime type, if desired
 		$status = $this->verifyMimeType( $magic, $mime );
@@ -371,6 +370,12 @@ abstract class UploadBase {
 		if ( $virus ) {
 			return array( 'uploadvirus', $virus );
 		}
+
+		wfRunHooks( 'UploadVerifyFile', array( $this, $mime, &$status ) );
+		if ( $status !== true ) {
+			return $status;
+		}
+
 		wfDebug( __METHOD__ . ": all clear; passing.\n" );
 		return true;
 	}

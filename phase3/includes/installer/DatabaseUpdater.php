@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * DBMS-specific updater helper.
+ *
+ * @file
+ * @ingroup Deployment
+ */
+ 
 /*
  * Class for handling database updates. Roughly based off of updaters.inc, with
  * a few improvements :)
@@ -52,7 +58,7 @@ abstract class DatabaseUpdater {
 			$this->getOldGlobalUpdates() );
 		foreach ( $this->updates as $params ) {
 			$func = array_shift( $params );
-			if( method_exists( $this, $func ) ) {
+			if( !is_array( $func ) && method_exists( $this, $func ) ) {
 				$func = array( $this, $func );
 			}
 			call_user_func_array( $func, $params );
@@ -92,7 +98,7 @@ abstract class DatabaseUpdater {
 	 * version these like we do with our core updates, so they have to go
 	 * in 'always'
 	 */
-	private function getOldGlobalUpdates() {
+	protected function getOldGlobalUpdates() {
 		global $wgUpdates, $wgExtNewFields, $wgExtNewTables,
 			$wgExtModifiedFields, $wgExtNewIndexes, $wgSharedDB, $wgSharedTables;
 
@@ -212,6 +218,24 @@ abstract class DatabaseUpdater {
 			wfOut( "Adding $index key to table $table... " );
 			$this->applyPatch( $patch, $fullpath );
 			wfOut( "ok\n" );
+		}
+	}
+
+	/**
+	 * Drop a field from an existing table
+	 *
+	 * @param $table String Name of the table to modify
+	 * @param $field String Name of the old field
+	 * @param $patch String Path to the patch file
+	 * @param $fullpath Boolean Whether to treat $patch path as a relative or not
+	 */
+	function dropField( $table, $field, $patch, $fullpath = false ) {
+		if ( $this->db->fieldExists( $table, $field ) ) {
+			wfOut( "Table $table contains $field field. Dropping... " );
+			$this->applyPatch( $patch, $fullpath );
+			wfOut( "ok\n" );
+		} else {
+			wfOut( "...$table table does not contain $field field.\n" );
 		}
 	}
 }

@@ -969,6 +969,7 @@ Ch'a varda mach che a-i ven-a nen fòra un rabel ant la continuità stòrica.",
 # Diffs
 'history-title'            => 'Cronologìa dle modìfiche ëd "$1"',
 'difference'               => '(Diferense antra revision)',
+'difference-multipage'     => '(Diferense tra pàgine)',
 'lineno'                   => 'Riga $1:',
 'compareselectedversions'  => 'Paragon-a le version selessionà',
 'showhideselectedversions' => 'Smon-e/stërmé le version selessionà',
@@ -1414,12 +1415,12 @@ Beiché la [[Special:NewFiles|galarìa dj'archivi neuv]] për na presentassion p
 {{PLURAL:\$3|La sòrt preferìa a l'é|Le sòrt preferìe a son}} \$2.",
 'filetype-banned-type'        => "'''\".\$1\"''' a l'é na sòrt d'archivi proibìa.
 {{PLURAL:\$3|Cola consentìa a l'é|Cole consentìe a son}} \$2.",
-'filetype-missing'            => "A l'archivi a-j manca l'estension (pr'es. \".jpg\").",
+'filetype-missing'            => "A l'archivi a-j manca l'estension (pr'esempi \".jpg\").",
 'empty-file'                  => "L'archivi ch'a l'ha mandà a l'era veuid.",
 'file-too-large'              => "L'archivi ch'a l'ha mandà a l'era tròp gròss.",
-'filename-tooshort'           => "Ël nòm ëd l'archivi a l'é tròp curtt.",
+'filename-tooshort'           => "Ël nòm ëd l'archivi a l'é tròp curt.",
 'filetype-banned'             => "Costa sòrt d'archivi a l'é proibìa.",
-'verification-error'          => "Cost archivi a passa pa la verìfica dj'archivi.",
+'verification-error'          => "Cost archivi a l'ha pa passà la verìfica dj'archivi.",
 'hookaborted'                 => "La modìfica ch'a l'ha provà a fé a l'é stàita blocà dal gancio ëd n'estension.",
 'illegal-filename'            => "Ël nòm dl'archivi a l'é nen consentì.",
 'overwrite'                   => "Dzorascrive ansima a n'archivi esistent a l'é nen përmëttù.",
@@ -1431,51 +1432,51 @@ Beiché la [[Special:NewFiles|galarìa dj'archivi neuv]] për na presentassion p
 'emptyfile'                   => "L'archivi che a l'ha pen-a carià a smija veujd.
 Sòn a podrìa esse rivà përchè che chiel a l'ha scrivù mal ël nòm dl'archivi midem.
 Për piasì che a contròla se a l'é pro cost l'archivi che a veul carié.",
-'fileexists'                  => "N'archivi con ës nòm-sì a-i é già, për piasì che as contròla '''<tt>[[:$1]]</tt>''' se a l'é pa sigur dë volej cangelo.
+'fileexists'                  => "N'archivi con ës nòm-sì a-i é già, për piasì che a contròla '''<tt>[[:$1]]</tt>''' se a l'é pa sigur dë vorèj cangelo.
 [[$1|thumb]]",
-'filepageexists'              => "La pàgina ëd descrission për st'archivi-sì a l'é già stàita creà an '''<tt>[[:$1]]</tt>''', mach ch'a-i é pa gnun archivi ch'as ciama parej.
+'filepageexists'              => "La pàgina ëd descrission për st'archivi-sì a l'é già stàita creà an '''<tt>[[:$1]]</tt>''', mach ch'a-i é gnun archivi ch'as ciama parèj.
 Lòn ch'a buta për somari as ës-ciairerà nen ant la pàgina ëd descrission.
-Për podej buté sò somari a l'ha da modifichesse la pàgina a man.
+Për podèj buté sò somari a l'ha da modifichesse la pàgina a man.
 [[$1|thumb]]",
-'fileexists-extension'        => "N'archivi con ës nòm-s a-i é già: [[$2|thumb]]
+'fileexists-extension'        => "N'archivi con ës nòm-sì a-i é già: [[$2|thumb]]
 * Nòm dl'archivi ch'as carìa: '''<tt>[[:$1]]</tt>'''
 * Nòm dl'archivi ch'a-i é già: '''<tt>[[:$2]]</tt>'''
 Për piasì, ch'a serna un nòm diferent.",
-'fileexists-thumbnail-yes'    => "L'archivi a-j ëmsija a na ''figurin-a''. [[$1|thumb]]
+'fileexists-thumbnail-yes'    => "L'archivi a jë smija a na ''figurin-a''. [[$1|thumb]]
 Për piasì, ch'a contròla l'archivi '''<tt>[[:$1]]</tt>'''.
 S'a l'é la midema figura a amzura pijn-a, a veul dì ch'a fa nen dë manca dë carié na figurin-a.",
 'file-thumbnail-no'           => "Ël nòm dl'archivi as anandia con '''<tt>$1</tt>'''.
-A-j ësmija a na ''figurin-a''.
+A jë smija a na ''figurin-a''.
 Se a l'ha na figura a amzura pijn-a a l'é mej ch'a carìa cola-lì, dësnò ch'a-j cangia nòm a l'archivi, për piasì.",
 'fileexists-forbidden'        => "Belavans n'archivi con ës nòm-sì a-i é già, donca ël nòm as peul pa pì dovresse.
-Se it veule ancó cariè tò file, për piasì torna andré e dòvra un nòm neuv. [[File:$1|thumb|center|$1]]",
-'fileexists-shared-forbidden' => "Belavans n'archivi con ës nòm-sì ant la diretriss dj'archivi condivis a-i é già.
-Se it veule ancó carié tò file, për piasì torna andré e dòvra un nòm diferent. [[File:$1|thumb|center|$1]]",
-'file-exists-duplicate'       => "Sto file-sì a l'é un duplicà ëd cost {{PLURAL:$1|file|file}}:",
+Se a veul ancó cariè sò archivi, për piasì ch'a torna andré e ch'a deuvra n'àutr nòm. [[File:$1|thumb|center|$1]]",
+'fileexists-shared-forbidden' => "Belavans n'archivi con ës nòm-sì ant la diretris dj'archivi condivis a-i é già.
+Se a veul ancó carié sò archivi, për piasì ch'a torna andré e ch'a deuvra un nòm diferent. [[File:$1|thumb|center|$1]]",
+'file-exists-duplicate'       => "S'archivi a l'é un duplicà ëd {{PLURAL:$1|cost-sì|costi-sì}}:",
 'file-deleted-duplicate'      => "N'archivi idéntich a cost-sì ([[$1]]) a l'é scàit ëscancelà an passà.
 A dovrìa controlé la stòria djë scancelament ëd l'archivi prima ëd carielo torna.",
 'uploadwarning'               => 'Avis che i soma dapress a carié',
-'uploadwarning-text'          => 'Për piasì modìfica la descrission dël file sota e preuva torna.',
-'savefile'                    => "Salva l'archivi",
+'uploadwarning-text'          => "Për piasì, ch'a modìfica la descrission ëd l'archivi sì-sota e ch'a preuva torna.",
+'savefile'                    => "Salvé l'archivi",
 'uploadedimage'               => 'a l\'ha carià "[[$1]]"',
 'overwroteimage'              => 'a l\'ha carìa na version neuva ëd "[[$1]]"',
-'uploaddisabled'              => 'Càrich blocà',
-'copyuploaddisabled'          => "Ël cariament a travers n'adrëssa dl'aragnà a l'é disabilità.",
-'uploadfromurl-queued'        => "Sò cariament a l'é stàit butà an coa.",
+'uploaddisabled'              => 'Càrich blocà.',
+'copyuploaddisabled'          => "Ël càrich për mojen ëd n'adrëssa dl'aragnà a l'é disabilità.",
+'uploadfromurl-queued'        => "Sò càrich a l'é stàit butà an coa.",
 'uploaddisabledtext'          => "La possibilità ëd carié dj'archivi a l'é staita disabilità.",
-'php-uploaddisabledtext'      => "Ël caricament ëd file a l'é disabilità an PHP.
-Për piasì controla l'ampostassion file_uploads.",
-'uploadscripted'              => "St'archivi-sì a l'ha andrinta chèich-còs (dël còdes HTML ò pura dlë script) che a podrìe esse travajà mal da chèich programa ëd navigassion (browser).",
+'php-uploaddisabledtext'      => "Ij cariament d'archivi a son disabilità an PHP.
+Për piasì, ch'a controla l'ampostassion file_uploads.",
+'uploadscripted'              => "St'archivi-sì a l'ha andrinta chèich-còs (dël còdes HTML ò pura un senari) che a podrìa esse travajà mal da chèich programa ëd navigassion.",
 'uploadvirus'                 => "St'archivi-sì a l'han andrinta un '''vìrus!''' Detaj: $1",
 'upload-source'               => 'Archivi sorgiss',
 'sourcefilename'              => "Nòm dl'archivi sorgiss:",
-'sourceurl'                   => 'URL sorgiss',
+'sourceurl'                   => "Adrëssa dl'aragnà sorgiss:",
 'destfilename'                => "Nòm dl'archivi ëd destinassion:",
-'upload-maxfilesize'          => 'Dimension massima dël file: $1.',
+'upload-maxfilesize'          => "Dimension màssima ëd l'archivi: $1.",
 'upload-description'          => "Descrission dl'archivi",
 'upload-options'              => 'Opsion për carié',
-'watchthisupload'             => "Ten d'euj sto file-sì.",
-'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é gia stait caria e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
+'watchthisupload'             => "Ten-e d'euj s'archivi.",
+'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é già stàit carià e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
 'upload-wasdeleted'           => "'''Dosman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
 
 Për piasì, ch'a contròla s'a val la pen-a dë felo.
@@ -1498,7 +1499,7 @@ PICT # vàire marche diferente
 'upload-success-subj'         => 'Carià con sucess',
 'upload-success-msg'          => "A l'ha carià da [$2] për da bin. Lòn ch'a l'ha carià a l'é disponìbil ambelessì: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => 'Problema a carié',
-'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià:
+'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià da [$2]:
 
 $1",
 'upload-warning-subj'         => 'Avis che i soma dapress a carié',
@@ -3194,6 +3195,13 @@ As peul ëdcò [[Special:Watchlist/edit|dovré l'editor sòlit]].",
 'version-hook-subscribedby'        => 'A son scrivusse',
 'version-version'                  => '(Version $1)',
 'version-license'                  => 'Licensa',
+'version-poweredby-credits'        => "Sta wiki-sì a l'é basà su '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'àutri',
+'version-license-info'             => "MediaWiki a l'é un programa lìber; a peul passelo an gir e/o modifichelo sota le condission dla Licensa Pùblica General GNU coma publicà da la Free Software Foundation; o la version 2 dla licensa o (a soa decision) qualsëssìa version apress.
+
+MediaWiki a l'é distribuì ant la speransa che a sia ùtil, ma SENSA GNUN-A GARANSÌA; sensa gnanca la garansìa implìcita ëd COMERSIABILITA' o d'ADATAMENT A UN BUT PARTICOLAR. Ch'a lesa la Licensa General Pùblica GNU per pi 'd detaj.
+
+A dovrìa avèj arseivù [{{SERVER}}{{SCRIPTPATH}}/COPYING na còpia dla Licensa Pùblica General GNU] ansema a sto programa-sì; dësnò, ch'a scriva a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA o [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html ch'a la lesa an linia].",
 'version-software'                 => 'Programa anstalà',
 'version-software-product'         => 'Prodot',
 'version-software-version'         => 'Version',

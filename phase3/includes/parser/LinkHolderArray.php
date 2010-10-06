@@ -1,5 +1,13 @@
 <?php
+/**
+ * Holder of replacement pairs for wiki links
+ *
+ * @file
+ */
 
+/**
+ * @ingroup Parser
+ */
 class LinkHolderArray {
 	var $internals = array(), $interwikis = array();
 	var $size = 0;
@@ -151,7 +159,7 @@ class LinkHolderArray {
 		$current = null;
 		foreach ( $this->internals as $ns => $entries ) {
 			foreach ( $entries as $index => $entry ) {
-				$key = 	"$ns:$index";
+				$key = "$ns:$index";
 				$title = $entry['title'];
 				$pdbk = $entry['pdbk'];
 
@@ -164,6 +172,8 @@ class LinkHolderArray {
 				# Check if it's a static known link, e.g. interwiki
 				if ( $title->isAlwaysKnown() ) {
 					$colours[$pdbk] = '';
+				} elseif ( $ns == NS_SPECIAL ) {
+					$colours[$pdbk] = 'new';
 				} elseif ( ( $id = $linkCache->getGoodLinkID( $pdbk ) ) != 0 ) {
 					$colours[$pdbk] = $sk->getLinkColour( $title, $threshold );
 					$output->addLink( $title, $id );
@@ -322,7 +332,7 @@ class LinkHolderArray {
 		}
 		
 		// Now do the conversion and explode string to text of titles
-		$titlesAllVariants = $wgContLang->convertLinkToAllVariants( $titlesToBeConverted );
+		$titlesAllVariants = $wgContLang->autoConvertToAllVariants( $titlesToBeConverted );
 		$allVariantsName = array_keys( $titlesAllVariants );
 		foreach ( $titlesAllVariants as &$titlesVariant ) {
 			$titlesVariant = explode( "\0", $titlesVariant );
@@ -346,7 +356,7 @@ class LinkHolderArray {
 		$categoryMap = array(); // maps $category_variant => $category (dbkeys)
 		$varCategories = array(); // category replacements oldDBkey => newDBkey
 		foreach( $output->getCategoryLinks() as $category ){
-			$variants = $wgContLang->convertLinkToAllVariants( $category );
+			$variants = $wgContLang->autoConvertToAllVariants( $category );
 			foreach($variants as $variant){
 				if($variant != $category){
 					$variantTitle = Title::newFromDBkey( Title::makeName(NS_CATEGORY,$variant) );

@@ -31,8 +31,7 @@ class DatabaseMysql extends DatabaseBase {
 		global $wgAllDBsAreLocalhost;
 		wfProfileIn( __METHOD__ );
 
-		# Test for missing mysql.so
-		# First try to load it
+		# Load mysql.so if we don't have it
 		wfDl( 'mysql' );
 
 		# Fail now
@@ -253,8 +252,9 @@ class DatabaseMysql extends DatabaseBase {
 	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
 		$options['EXPLAIN'] = true;
 		$res = $this->select( $table, $vars, $conds, $fname, $options );
-		if ( $res === false )
+		if ( $res === false ) {
 			return false;
+		}
 		if ( !$this->numRows( $res ) ) {
 			return 0;
 		}
@@ -362,7 +362,7 @@ class DatabaseMysql extends DatabaseBase {
 		return 'LOW_PRIORITY';
 	}
 
-	function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return '[http://www.mysql.com/ MySQL]';
 	}
 

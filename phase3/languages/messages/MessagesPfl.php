@@ -9,6 +9,7 @@
  *
  * @author Als-Holder
  * @author SPS
+ * @author Xqt
  */
 
 $fallback = 'de';
@@ -257,7 +258,7 @@ Erklärung: '''({{int:cur}})''' = Unnerschied zu jetzert,
 
 # Revision deletion
 'rev-delundel'     => 'zaich/versteckel',
-'revdelete-submit' => 'Uff die aussgewählt Version owende',
+'revdelete-submit' => 'Uff die aussgewählt {{PLURAL:$1|Version|Versione}} owende',
 'revdel-restore'   => 'Sichtbarkeit ännere',
 
 # Merge log

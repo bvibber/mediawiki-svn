@@ -163,6 +163,15 @@ $specialPageAliases = array(
 	'Badtitle'                  => array( 'TítůloNegro' ),
 );
 
+$magicWords = array(
+	'redirect'              => array( '0', '#DIRIJAR', '#DIRECCIÓN', '#REDIRECCIÓN', '#REDIRECCION', '#REDIRECT' ),
+	'fullpagename'          => array( '1', 'NOMBREDEHOJACOMPLETA', 'NOMBREDEPÁGINACOMPLETA', 'NOMBREDEPAGINACOMPLETA', 'NOMBREDEPÁGINAENTERA', 'NOMBREDEPAGINAENTERA', 'FULLPAGENAME' ),
+	'subpagename'           => array( '1', 'NOMBREDEHOJICA', 'NOMBREDESUBPAGINA', 'NOMBREDESUBPÁGINA', 'SUBPAGENAME' ),
+	'msg'                   => array( '0', 'MSJ:', 'MSG:' ),
+	'img_left'              => array( '1', 'cierda', 'izquierda', 'izda', 'izq', 'left' ),
+	'img_none'              => array( '1', 'dinguna', 'dinguno', 'ninguna', 'nada', 'no', 'ninguno', 'none' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Echar liña dêbbaxo de los linkes:',
@@ -332,7 +341,7 @@ $messages = array(
 'create-this-page'  => 'Cria esta hoja',
 'delete'            => 'Efassa',
 'deletethispage'    => 'Efassa esta hoja',
-'undelete_short'    => 'Abolta $1 trocamientos',
+'undelete_short'    => 'Abolta $1 {{PLURAL:$1|trocamientos|trocamientos}}',
 'protect'           => 'Abriga',
 'protect_change'    => 'Troca el abrigamiento',
 'protectthispage'   => 'Abriga esta hoja',

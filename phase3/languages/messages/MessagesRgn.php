@@ -55,7 +55,9 @@ $messages = array(
 'tog-watchlisthideanons'      => " ↓ In tla lèsta da tnì d'occ, nascond al mudèfic d'j utent senza nom",
 'tog-watchlisthidepatrolled'  => "↓ Nascond tòt al mudèfic za cuntrulèdi in tla lèsta dal pàgin da tnì d'occ",
 'tog-ccmeonemails'            => "↓ Mènd'm una còpia d'j mesèg ch'a spedèss a j étar druvador",
+'tog-diffonly'                => "↓ T'an fëga avdé e' contnù dla pàgina dop e' cunfront tra l'versiòn",
 'tog-showhiddencats'          => "↓ Fa'm avdé al categurèj nascosti",
+'tog-norollbackdiff'          => "↓ T'an fèga avdé al diferenzi dop d'avé recuperè l'ultma versiòn",
 
 # Dates
 'january'       => 'Znèr',
@@ -201,7 +203,7 @@ Par piasé, fa raport a un [[Special:ListUsers/sysop|aministrador]] cun la nota 
 # Login and logout pages
 'yourname'                => 'Soranòm:',
 'yourpassword'            => 'Paróla segreta:',
-'remembermypassword'      => "Regèstra la mi parola d'ordin sora ste computer",
+'remembermypassword'      => "Regèstra la mi parola d'ordin sora ste computer (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'login'                   => 'Va dentar',
 'nav-login-createaccount' => 'Va dentar / Èla la prèma volta?',
 'userlogin'               => 'Vèn dentar/A sit nov?',

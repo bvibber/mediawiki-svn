@@ -809,6 +809,7 @@ $wgMessageStructure = array(
 	'diffs' => array(
 		'history-title',
 		'difference',
+		'difference-multipage',
 		'lineno',
 		'compareselectedversions',
 		'showhideselectedversions',
@@ -3138,6 +3139,9 @@ $wgMessageStructure = array(
 		'version-version',
 		'version-svn-revision',
 		'version-license',
+		'version-poweredby-credits',
+		'version-poweredby-others',
+		'version-license-info',
 		'version-software',
 		'version-software-product',
 		'version-software-version',

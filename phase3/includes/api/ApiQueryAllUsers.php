@@ -108,7 +108,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		$this->addOption( 'LIMIT', $sqlLimit );
 
-		$this->addFields( 'u1.user_name' );
+		$this->addFields( array(
+			'u1.user_name',
+			'u1.user_id'
+		) );
 		$this->addFieldsIf( 'u1.user_editcount', $fld_editcount );
 		$this->addFieldsIf( 'u1.user_registration', $fld_registration );
 
@@ -132,7 +135,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		// The setContinue... is more complex because of this, and takes into account the higher sql limit
 		// to make sure all rows that belong to the same user are received.
 
-		$row = $db->fetchObject( $res );
 		foreach ( $res as $row ) {
 			$count++;
 
@@ -156,7 +158,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 				// Record new user's data
 				$lastUser = $row->user_name;
-				$lastUserData = array( 'name' => $lastUser );
+				$lastUserData = array(
+					'name' => $lastUser,
+					'userid' => $row->user_id,
+				);
 				if ( $fld_blockinfo && !is_null( $row->blocker_name ) ) {
 					$lastUserData['blockedby'] = $row->blocker_name;
 					$lastUserData['blockreason'] = $row->ipb_reason;
@@ -182,6 +187,15 @@ class ApiQueryAllUsers extends ApiQueryBase {
 			if ( $fld_groups && !is_null( $row->ug_group2 ) ) {
 				$lastUserData['groups'][] = $row->ug_group2;
 				$result->setIndexedTagName( $lastUserData['groups'], 'g' );
+			}
+		}
+
+		if ( is_array( $lastUserData ) ) {
+			$fit = $result->addValue( array( 'query', $this->getModuleName() ),
+				null, $lastUserData );
+			if ( !$fit ) {
+				$this->setContinueEnumParameter( 'from',
+					$this->keyToTitle( $lastUserData['name'] ) );
 			}
 		}
 

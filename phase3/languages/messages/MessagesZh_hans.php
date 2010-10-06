@@ -9,6 +9,7 @@
  *
  * @author Bencmq
  * @author Biŋhai
+ * @author Chenxiaoqino
  * @author Chinalace
  * @author Fantasticfears
  * @author Franklsf95
@@ -26,6 +27,7 @@
  * @author PhiLiP
  * @author Shinjiman
  * @author Shizhao
+ * @author Tommyang
  * @author Wilsonmess
  * @author Wmr89502270
  * @author Wong128hk
@@ -36,7 +38,7 @@
 $fallback8bitEncoding = 'windows-936';
 
 $namespaceNames = array(
-	NS_MEDIA            => '媒体',
+	NS_MEDIA            => '媒体文件',
 	NS_SPECIAL          => '特殊',
 	NS_TALK             => '讨论',
 	NS_USER             => '用户',
@@ -131,9 +133,10 @@ $specialPageAliases = array(
 	'Allpages'                  => array( '所有页面' ),
 	'Prefixindex'               => array( '前缀索引' ),
 	'Ipblocklist'               => array( '封禁列表' ),
+	'Unblock'                   => array( '解除封禁' ),
 	'Specialpages'              => array( '特殊页面' ),
 	'Contributions'             => array( '用户贡献' ),
-	'Emailuser'                 => array( '电邮用户' ),
+	'Emailuser'                 => array( '邮件用户' ),
 	'Confirmemail'              => array( '确认电子邮件' ),
 	'Whatlinkshere'             => array( '链入页面' ),
 	'Recentchangeslinked'       => array( '链出更改' ),
@@ -153,7 +156,7 @@ $specialPageAliases = array(
 	'Userrights'                => array( '用户权限' ),
 	'MIMEsearch'                => array( 'MIME搜索' ),
 	'FileDuplicateSearch'       => array( '搜索重复文件' ),
-	'Unwatchedpages'            => array( '未被监视的页面' ),
+	'Unwatchedpages'            => array( '未受监视页面' ),
 	'Listredirects'             => array( '重定向页面列表' ),
 	'Revisiondelete'            => array( '删除或恢复版本' ),
 	'Unusedtemplates'           => array( '未使用模板' ),
@@ -166,7 +169,7 @@ $specialPageAliases = array(
 	'Popularpages'              => array( '热点页面' ),
 	'Search'                    => array( '搜索' ),
 	'Resetpass'                 => array( '修改密码' ),
-	'Withoutinterwiki'          => array( '没有跨语言链接的页面' ),
+	'Withoutinterwiki'          => array( '无跨wiki链接页面' ),
 	'MergeHistory'              => array( '合并历史' ),
 	'Filepath'                  => array( '文件路径' ),
 	'Invalidateemail'           => array( '不可识别的电邮地址' ),
@@ -214,7 +217,7 @@ $messages = array(
 'tog-hideminor'               => '在最近更改中隐藏小修改',
 'tog-hidepatrolled'           => '在最近更改中隐藏已巡查编辑',
 'tog-newpageshidepatrolled'   => '在新页面列表中隐藏已巡查页面',
-'tog-extendwatchlist'         => '增强监视列表以显示包括最近更改的所有更改',
+'tog-extendwatchlist'         => '展开监视列表以显示包括最近更改的所有更改',
 'tog-usenewrc'                => '启用增强最近更改（JavaScript）',
 'tog-numberheadings'          => '标题自动编号',
 'tog-showtoolbar'             => '显示编辑工具条（JavaScript）',
@@ -476,7 +479,7 @@ $1',
 
 'badaccess'        => '权限错误',
 'badaccess-group0' => '你被禁止执行你刚才请求的操作。',
-'badaccess-groups' => '您刚才请求的操作只有以下用户组的用户才能使用： $1',
+'badaccess-groups' => '您刚才请求的操作只有{{PLURAL:$2|这个用户组|以下用户组}}中的用户才能使用： $1',
 
 'versionrequired'     => '需要版本为$1的MediaWiki',
 'versionrequiredtext' => '需要版本为$1的MediaWiki才能使用本页。请见[[Special:Version|版本页面]]。',
@@ -679,6 +682,8 @@ $2',
 
 # JavaScript password checks
 'password-strength'            => '预估密码强度： $1',
+'password-strength-bad'        => '差',
+'password-strength-mediocre'   => '一般',
 'password-strength-acceptable' => '可接受',
 'password-strength-good'       => '好',
 'password-retype'              => '再次输入密码',
@@ -1103,6 +1108,7 @@ $1",
 # Diffs
 'history-title'            => '“$1”的修订历史',
 'difference'               => '（修订版本间差异）',
+'difference-multipage'     => '页面间的差异',
 'lineno'                   => '第$1行：',
 'compareselectedversions'  => '比较选定的修订版本',
 'showhideselectedversions' => '显示／隐藏选定的修订版本',
@@ -1602,12 +1608,13 @@ $1",
 为方便起见，这一个文件的删除记录已经在下面提供:",
 'filename-bad-prefix'         => '您上传的文件名称是以<strong>“$1”</strong>作为开头，通常这种没有含意的文件名称是由数码相机中自动编排。请在您的文件中重新选择一个更加有意义的文件名称。',
 'upload-success-subj'         => '上传成功',
-'upload-success-msg'          => '您的上传可以在这里找到：[[:{{ns:file}}:$1]]',
+'upload-success-msg'          => '您的自[$2]的上传可以在这里找到：[[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => '上传错误',
 'upload-failure-msg'          => '有一个问题与您的上传有关：
 
 $1',
 'upload-warning-subj'         => '上传警告',
+'upload-warning-msg'          => '您自[$2]的上传出错了。您可以返回[[Special:Upload/stash/$1|上传表单]]并更正问题。',
 
 'upload-proto-error'        => '协议错误',
 'upload-proto-error-text'   => '远程上传要求 URL 以 <code>http://</code> 或 <code>ftp://</code> 开头。',
@@ -2006,6 +2013,7 @@ Template:消除歧義',
 # Watchlist
 'watchlist'            => '监视列表',
 'mywatchlist'          => '监视列表',
+'watchlistfor2'        => '$1 用户的$2',
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
 'watchnologin'         => '未登录',
@@ -3293,6 +3301,8 @@ $1',
 'version-hook-subscribedby'        => '署名',
 'version-version'                  => '（版本$1）',
 'version-license'                  => '授权',
+'version-poweredby-credits'        => "这个 Wiki 由 '''[http://www.mediawiki.org/ MediaWiki]''' 驱动，版权所有 © 2001-$1 $2。",
+'version-poweredby-others'         => '其他',
 'version-software'                 => '已安装软件',
 'version-software-product'         => '产品',
 'version-software-version'         => '版本',
