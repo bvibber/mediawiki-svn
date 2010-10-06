@@ -41,11 +41,11 @@ $messages['en'] = array(
 	'fogg-cg-advVideo' => 'Advanced video encoding controls',
 	'fogg-cg-advAudio' => 'Advanced audio encoding controls',
 	'fogg-preset-custom' => 'Custom settings',
-	'fogg-webvideo-desc' => 'Ogg Web video Theora, Vorbis (600 kbit\/s and 400px maximum width)',
-	'fogg-savebandwidth-desc' => 'Ogg Low bandwidth Theora, Vorbis (164 kbit\/s and 200px maximum width)',
-	'fogg-highquality-desc' => 'Ogg High quality Theora, Vorbis (1080px maximum width)',
-	'fogg-webvideo-webm-desc' => 'Webm Web video VP8 (600 kbit\/s and 480px maximum width)',
-	'fogg-highquality-webm-desc' => 'Webm High quality VP8 (1080px maximum width)',
+	'fogg-webvideo-desc' => 'Ogg web video Theora, Vorbis (600 kbit/s and 400px maximum width)',
+	'fogg-savebandwidth-desc' => 'Ogg low bandwidth Theora, Vorbis (164 kbit/s and 200px maximum width)',
+	'fogg-highquality-desc' => 'Ogg high quality Theora, Vorbis (1080px maximum width)',
+	'fogg-webvideo-webm-desc' => 'WebM web video VP8 (600 kbit/s and 480px maximum width)',
+	'fogg-highquality-webm-desc' => 'WebM high quality VP8 (1080px maximum width)',
 	'fogg-videoQuality-title' => 'Video quality',
 	'fogg-videoQuality-help' => 'Used to set the <i>visual quality</i> of the encoded video (not used if you set bitrate in advanced controls below).',
 	'fogg-starttime-title' => 'Start second',
@@ -67,13 +67,18 @@ $messages['en'] = array(
 	'fogg-twopass-title' => 'Two pass encoding',
 	'fogg-twopass-help' => 'Two pass encoding enables more constant quality by making two passes over the video file',
 	'fogg-framerate-title' => 'Frame rate',
-	'fogg-framerate-help' => 'The video frame rate. More about <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">frame rate</a>.',
+	'fogg-framerate-help' => 'The video frame rate.
+More about <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">frame rate</a>.',
 	'fogg-aspect-title' => 'Aspect ratio',
-	'fogg-aspect-help' => 'The video aspect ratio can be 4:3 or 16:9. More about <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratios</a>.',
+	'fogg-aspect-help' => 'The video aspect ratio can be 4:3 or 16:9.
+More about <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratios</a>.',
 	'fogg-keyframeInterval-title' => 'Key frame interval',
-	'fogg-keyframeInterval-help' => 'The keyframe interval in frames. Note: Most codecs force keyframes if the difference between frames is greater than keyframe encode size. More about <a href="http://en.wikipedia.org/wiki/I-frame">keyframes</a>.',
+	'fogg-keyframeInterval-help' => 'The keyframe interval in frames.
+Note: Most codecs force keyframes if the difference between frames is greater than keyframe encode size.
+More about <a href="http://en.wikipedia.org/wiki/I-frame">keyframes</a>.',
 	'fogg-denoise-title' => 'Denoise filter',
-	'fogg-denoise-help' => 'Denoise input video. More about <a href="http://en.wikipedia.org/wiki/Video_denoising">denoise</a>.',
+	'fogg-denoise-help' => 'Denoise input video.
+More about <a href="http://en.wikipedia.org/wiki/Video_denoising">denoise</a>.',
 	'fogg-novideo-title' => 'No video',
 	'fogg-novideo-help' => 'disable video in the output',
 	'fogg-audioBitrate-title' => 'Audio bitrate',
@@ -97,9 +102,10 @@ $messages['en'] = array(
 	'fogg-license-help' => 'The license of the clip (preferably a Creative Commons URL).',
 	'fogg-contact-title' => 'Contact',
 	'fogg-contact-help' => 'Contact link',
-	'fogg-missing-webm-support' => 'Please use a [$1 webm compatible] browsers to preview results of webm videos',
+	'fogg-missing-webm-support' => 'Please use a [$1 WebM compatible] browser to preview results of WebM videos',
 	'fogg-gui-title' => 'Make web video',
-	'mwe-imported_from' => '$1 imported from [$2 $3]. See the original [$4 resource page] for more information.',
+	'mwe-imported_from' => '$1 imported from [$2 $3].
+See the original [$4 resource page] for more information.',
 	'mwe-import-description' => '$1, imported from $2',
 	'mwe-select_file' => 'Select file',
 	'mwe-select_ownwork' => 'I am uploading entirely my own work, and licensing it under:',
@@ -109,17 +115,20 @@ $messages['en'] = array(
 	'mwe-summary' => 'Summary',
 	'mwe-date-of-work' => 'Date of the work',
 	'mwe-error_not_loggedin' => 'You do not appear to be logged in or do not have upload privileges.',
-	'mwe-error-not-loggedin-file' => 'You do not appear to be logged in or there was an error in the software. You can $1 and try again',
+	'mwe-error-not-loggedin-file' => 'You do not appear to be logged in or there was an error in the software.
+You can $1 and try again',
 	'mwe-link-login' => 'login',
 	'mwe-watch-this-file' => 'Watch this file',
 	'mwe-ignore-any-warnings' => 'Ignore any warnings',
 	'mwe-i-would-like-to' => 'I would like to',
 	'mwe-upload-own-file' => 'Upload my own work to $1',
 	'mwe-upload-not-my-file' => 'Upload media that is not my own work to $1',
-	'mwe-upload-once-done' => 'Please $1. Once you have completed your upload, $2',
+	'mwe-upload-once-done' => 'Please $1.
+Once you have completed your upload, $2',
 	'mwe-upload-in-new-win-link' => 'upload in the new window or tab',
 	'mwe-upload-refresh' => 'refresh your upload list',
-	'mwe-ie-inline-upload' => 'Inline uploading is currently disabled for Internet Explorer. You can $1, then $2',
+	'mwe-ie-inline-upload' => 'Inline uploading is currently disabled for Internet Explorer.
+You can $1, then $2',
 	'mwe-upload-in-progress' => 'Upload in progress (do not close this window)',
 	'mwe-uploaded-status' => 'Uploaded',
 	'mwe-transcoded-status' => 'Transcoded',
@@ -147,14 +156,19 @@ $messages['en'] = array(
 	'mwe-cc_sa_title' => 'Share Alike',
 	'mwe-cc_pd_title' => 'Public Domain',
 	'mwe-unknown_license' => 'Unknown license',
-	'mwe-no-import-by-url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.<p>Do you need to login?</p><p>Is upload_by_url permission set for you?<br />Does the wiki have $1 enabled?</p>',
+	'mwe-no-import-by-url' => 'This user or wiki <b>cannot</b> import assets from remote URLs.
+<p>Do you need to login?</p>
+<p>Is upload_by_url permission set for you?
+Does the wiki have $1 enabled?</p>',
 	'mwe-no-import-by-url-linktext' => '$wgAllowCopyUploads',
 	'mwe-results_from' => 'Results from $1',
-	'mwe-missing_desc_see_source' => 'This asset is missing a description. Please check the [$1 source] and help describe it.',
+	'mwe-missing_desc_see_source' => 'This asset is missing a description.
+Please check the [$1 source] and help describe it.',
 	'rsd_config_error' => 'Add media wizard configuration error: $1',
 	'mwe-your-recent-uploads' => 'Your recent uploads to $1',
 	'mwe-no_recent_uploads' => 'No recent uploads',
-	'mwe-not-logged-in-uploads' => 'You may not be logged in so no recent uploads can be displayed. $1 login and $2',
+	'mwe-not-logged-in-uploads' => 'You may not be logged in so no recent uploads can be displayed.
+$1 login and $2',
 	'mwe-ie-eye-permision' => 'If using Internet Explorer and logged in, you may need to adjust your privacy settings',
 	'mwe-loggin-link' => 'Please login',
 	'mwe-try-again-link' => 'try again',
@@ -182,7 +196,7 @@ $messages['en'] = array(
 	'mwe-ftype-unk' => 'Unknown file format',
 	'rsd-wiki_commons-title' => 'Wikimedia Commons',
 	'rsd-wiki_commons' => 'Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)',
-	'rsd-kaltura-title' => 'Kaltura search( all sources )',
+	'rsd-kaltura-title' => 'Kaltura search (all sources)',
 	'rsd-kaltura' => 'Kaltura aggregated search for free-licensed media across multiple search providers',
 	'rsd-this_wiki-title' => 'This wiki',
 	'rsd-this_wiki-desc' => 'The local wiki',
@@ -192,7 +206,9 @@ $messages['en'] = array(
 	'rsd-flickr-desc' => 'Flickr.com, an online photo sharing site',
 	'rsd-metavid-title' => 'Metavid.org',
 	'rsd-metavid-desc' => 'Metavid.org, a community archive of US House and Senate floor proceedings',
-	'rsd-search-timeout' => 'The search request did not complete. The server may be down experiencing heavy load. You can try again later',
+	'rsd-search-timeout' => 'The search request did not complete.
+The server may be down experiencing heavy load.
+You can try again later',
 	'mwe-upload-transcoded-status' => 'Transcoded',
 	'mwe-upload-transcode-in-progress' => 'Transcode and upload in progress (do not close this window)',
 	'fogg-transcoding' => 'Encoding video',
@@ -206,14 +222,16 @@ $messages['en'] = array(
 	'fogg-please-install' => '$1. More $2',
 	'fogg-please-install-install-linktext' => 'Install Firefogg',
 	'fogg-please-install-about-linktext' => 'about Firefogg',
-	'fogg-use_latest_firefox' => 'Please first install $1. <i>Then revisit this page to install the <b>Firefogg</b> extension.</i>',
+	'fogg-use_latest_firefox' => 'Please first install $1.
+<i>Then revisit this page to install the <b>Firefogg</b> extension.</i>',
 	'fogg-latest-firefox' => 'latest Firefox',
 	'fogg-passthrough_mode' => 'Your selected file is already ogg or not a video file',
 	'fogg-encoding-done' => 'Encoding complete',
 	'fogg-badtoken' => 'Token is not valid',
 	'fogg-preview' => 'Preview video',
 	'fogg-hidepreview' => 'Hide preview',
-	'fogg-warning-firebug' => '<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page.',
+	'fogg-warning-firebug' => '<b>Firebug</b> can cause conflicts with <i>Firefogg</i>.
+Please disable <b>Firebug</b> for this page.',
 	'mwe-upload-multi' => 'Upload {{PLURAL:$1|file|files}}',
 	'mwe-review-upload' => 'Review file {{PLURAL:$1|upload|uploads}}',
 );
