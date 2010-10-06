@@ -397,12 +397,6 @@ class ApiMain extends ApiBase {
 				header( 'Cache-Control: private' );
 				return;
 			} // else no XVO and anonymous, send public headers below
-		} else /* if public */ {
-			// Give a debugging message if the user object is unstubbed on a public request
-			global $wgUser;
-			if ( !( $wgUser instanceof StubUser ) ) {
-				wfDebug( __METHOD__ . " \$wgUser is unstubbed on a public request!\n" );
-			}
 		}
 
 		// If nobody called setCacheMaxAge(), use the (s)maxage parameters
@@ -741,23 +735,23 @@ class ApiMain extends ApiBase {
 		return array(
 			'',
 			'',
-			'******************************************************************',
-			'**                                                              **',
-			'**  This is an auto-generated MediaWiki API documentation page  **',
-			'**                                                              **',
-			'**                  Documentation and Examples:                 **',
-			'**               http://www.mediawiki.org/wiki/API              **',
-			'**                                                              **',
-			'******************************************************************',
+			'******************************************************************************************',
+			'**                                                                                      **',
+			'**              This is an auto-generated MediaWiki API documentation page              **',
+			'**                                                                                      **',
+			'**                            Documentation and Examples:                               **',
+			'**                         http://www.mediawiki.org/wiki/API                            **',
+			'**                                                                                      **',
+			'******************************************************************************************',
 			'',
-			'Status:          All features shown on this page should be working, but the API',
-			'                 is still in active development, and  may change at any time.',
-			'                 Make sure to monitor our mailing list for any updates',
+			'Status:                All features shown on this page should be working, but the API',
+			'                       is still in active development, and  may change at any time.',
+			'                       Make sure to monitor our mailing list for any updates',
 			'',
-			'Documentation:   http://www.mediawiki.org/wiki/API',
-			'Mailing list:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api',
-			'Api Announcements:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce',
-			'Bugs & Requests: http://bugzilla.wikimedia.org/buglist.cgi?component=API&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&order=bugs.delta_ts',
+			'Documentation:         http://www.mediawiki.org/wiki/API',
+			'Mailing list:          http://lists.wikimedia.org/mailman/listinfo/mediawiki-api',
+			'Api Announcements:     http://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce',
+			'Bugs & Requests:       http://bugzilla.wikimedia.org/buglist.cgi?component=API&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&order=bugs.delta_ts',
 			'',
 			'',
 			'',

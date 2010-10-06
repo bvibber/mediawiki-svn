@@ -9,39 +9,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-require_once 'userDupes.inc';
-# Extension updates
-require_once( "$IP/includes/Hooks.php" );
-
-/**
- * @deprecated. Do not use, ever.
- */
-$wgUpdates = array();
-
-
-# For extensions only, should be populated via hooks
-# $wgDBtype should be checked to specifiy the proper file
-$wgExtNewTables = array(); // table, dir
-$wgExtNewFields = array(); // table, column, dir
-$wgExtPGNewFields = array(); // table, column, column attributes; for PostgreSQL
-$wgExtPGAlteredFields = array(); // table, column, new type, conversion method; for PostgreSQL
-$wgExtNewIndexes = array(); // table, index, dir
-$wgExtModifiedFields = array(); // table, index, dir
-
-# Helper function: check if the given key is present in the updatelog table.
-# Obviously, only use this for updates that occur after the updatelog table was
-# created!
-function update_row_exists( $key ) {
-	global $wgDatabase;
-	$row = $wgDatabase->selectRow(
-		'updatelog',
-		'1',
-		array( 'ul_key' => $key ),
-		__FUNCTION__
-	);
-	return (bool)$row;
-}
-
 function modify_field( $table, $field, $patch, $fullpath = false ) {
 	global $wgDatabase;
 	if ( !$wgDatabase->tableExists( $table ) ) {
@@ -74,41 +41,8 @@ function drop_index_if_exists( $table, $index, $patch, $fullpath = false ) {
 	}
 }
 
-function do_all_updates( $shared = false, $purge = true ) {
-	global $wgDatabase, $wgDBtype;
-
-	$updater = DatabaseUpdater::newForDb( $wgDatabase, $shared );
-
-	wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$updater ) );
-
-	$updater->doUpdates();
-
-	if ( !defined( 'MW_NO_SETUP' ) ) {
-		define( 'MW_NO_SETUP', true );
-	}
-
-	foreach( $updater->getPostDatabaseUpdateMaintenance() as $maint ) {
-		call_user_func_array( array( new $maint, 'execute' ), array() );
-	}
-
-	if ( $wgDBtype === 'postgres' ) {
-		return;
-	}
-
-	do_stats_init();
-
-	if ( $purge ) {
-		purge_cache();
-	}
-}
-
 function archive( $name ) {
-	global $wgDBtype, $IP;
-	if ( file_exists( "$IP/maintenance/$wgDBtype/archives/$name" ) ) {
-		return "$IP/maintenance/$wgDBtype/archives/$name";
-	} else {
-		return "$IP/maintenance/archives/$name";
-	}
+	return DatabaseBase::patchPath( $name );
 }
 
 function do_interwiki_update() {
@@ -484,6 +418,7 @@ function fix_ancient_imagelinks() {
 
 function do_user_unique_update() {
 	global $wgDatabase;
+	require_once( "userDupes.inc" );
 	$duper = new UserDupes( $wgDatabase );
 	if ( $duper->hasUniqueIndex() ) {
 		wfOut( "...already have unique user_name index.\n" );
@@ -768,15 +703,6 @@ function do_active_users_init() {
 	wfOut( "...ss_active_users user count set...\n" );
 }
 
-function purge_cache() {
-	global $wgDatabase;
-	# We can't guarantee that the user will be able to use TRUNCATE,
-	# but we know that DELETE is available to us
-	wfOut( "Purging caches..." );
-	$wgDatabase->delete( 'objectcache', '*', __METHOD__ );
-	wfOut( "done.\n" );
-}
-
 /**
  * Adding page_restrictions table, obsoleting page.page_restrictions.
  * Migrating old restrictions to new table
@@ -837,12 +763,23 @@ function do_populate_rev_len() {
 	$task->execute();
 }
 
+function do_cl_fields_update() {
+	if ( update_row_exists( 'cl_fields_update' ) ) {
+		wfOut( "...categorylinks up-to-date.\n" );
+		return;
+	}
+	wfOut( 'Updating categorylinks (again)...' );
+	global $wgDatabase;
+	$wgDatabase->sourceFile( archive( 'patch-categorylinks-better-collation2.sql' ) );
+	wfOut( "done.\n" );
+}
+
 function do_collation_update() {
-	global $wgDatabase, $wgCollationVersion;
+	global $wgDatabase, $wgCategoryCollation;
 	if ( $wgDatabase->selectField(
 		'categorylinks',
 		'COUNT(*)',
-		'cl_collation != ' . $wgDatabase->addQuotes( $wgCollationVersion ),
+		'cl_collation != ' . $wgDatabase->addQuotes( $wgCategoryCollation ),
 		__FUNCTION__
 	) == 0 ) {
 		wfOut( "...collations up-to-date.\n" );

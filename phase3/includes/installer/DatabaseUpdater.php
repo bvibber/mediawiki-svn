@@ -30,12 +30,45 @@ abstract class DatabaseUpdater {
 		'DeleteDefaultMessages'
 	);
 
-	protected function __construct( $db, $shared ) {
+	/**
+	 * Constructor
+	 *
+	 * @param $db DatabaseBase object to perform updates on
+	 * @param $shared bool Whether to perform updates on shared tables
+	 *
+	 * @TODO @FIXME Make $wgDatabase go away.
+	 */
+	protected function __construct( DatabaseBase &$db, $shared ) {
+		global $wgDatabase;
+		$wgDatabase = $db;
 		$this->db = $db;
 		$this->shared = $shared;
+		$this->initOldGlobals();
+		wfRunHooks( 'LoadExtensionSchemaUpdates', array( $this ) );
 	}
 
-	public static function newForDB( $db, $shared ) {
+	/**
+	 * Initialize all of the old globals. One day this should all become
+	 * something much nicer
+	 */
+	private function initOldGlobals() {
+		global $wgUpdates, $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields,
+			$wgExtPGAlteredFields, $wgExtNewIndexes, $wgExtModifiedFields;
+
+		// Deprecated. Do not use, ever.
+		$wgUpdates = array();
+
+		# For extensions only, should be populated via hooks
+		# $wgDBtype should be checked to specifiy the proper file
+		$wgExtNewTables = array(); // table, dir
+		$wgExtNewFields = array(); // table, column, dir
+		$wgExtPGNewFields = array(); // table, column, column attributes; for PostgreSQL
+		$wgExtPGAlteredFields = array(); // table, column, new type, conversion method; for PostgreSQL
+		$wgExtNewIndexes = array(); // table, index, dir
+		$wgExtModifiedFields = array(); // table, index, dir
+	}
+
+	public static function newForDB( &$db, $shared = false ) {
 		$type = $db->getType();
 		if( in_array( $type, Installer::getDBTypes() ) ) {
 			$class = ucfirst( $type ) . 'Updater';
@@ -51,7 +84,11 @@ abstract class DatabaseUpdater {
 		return $this->postDatabaseUpdateMaintenance;
 	}
 
-	public function doUpdates() {
+	/**
+	 * Do all the updates
+	 * @param $purge bool Whether to clear the objectcache table after updates
+	 */
+	public function doUpdates( $purge = true ) {
 		global $IP, $wgVersion;
 		require_once( "$IP/maintenance/updaters.inc" );
 		$this->updates = array_merge( $this->getCoreUpdateList(),
@@ -65,6 +102,10 @@ abstract class DatabaseUpdater {
 			flush();
 		}
 		$this->setAppliedUpdates( $wgVersion, $this->updates );
+
+		if( $purge ) {
+			$this->purgeCache();
+		}
 	}
 
 	protected function setAppliedUpdates( $version, $updates = array() ) {
@@ -94,9 +135,7 @@ abstract class DatabaseUpdater {
 	 * Before 1.17, we used to handle updates via stuff like $wgUpdates,
 	 * $wgExtNewTables/Fields/Indexes. This is nasty :) We refactored a lot
 	 * of this in 1.17 but we want to remain back-compatible for awhile. So
-	 * load up these old global-based things into our update list. We can't
-	 * version these like we do with our core updates, so they have to go
-	 * in 'always'
+	 * load up these old global-based things into our update list.
 	 */
 	protected function getOldGlobalUpdates() {
 		global $wgUpdates, $wgExtNewFields, $wgExtNewTables,
@@ -165,7 +204,7 @@ abstract class DatabaseUpdater {
 		if ( $isFullPath ) {
 			$this->db->sourceFile( $path );
 		} else {
-			$this->db->sourceFile( archive( $path ) );
+			$this->db->sourceFile( DatabaseBase::patchPath( $path ) );
 		}
 	}
 
@@ -238,10 +277,15 @@ abstract class DatabaseUpdater {
 			wfOut( "...$table table does not contain $field field.\n" );
 		}
 	}
-}
 
-class OracleUpdater extends DatabaseUpdater {
-	protected function getCoreUpdateList() {
-		return array();
+	/**
+	 * Purge the objectcache table
+	 */
+	protected function purgeCache() {
+		# We can't guarantee that the user will be able to use TRUNCATE,
+		# but we know that DELETE is available to us
+		wfOut( "Purging caches..." );
+		$this->db->delete( 'objectcache', '*', __METHOD__ );
+		wfOut( "done.\n" );
 	}
 }

@@ -298,11 +298,11 @@ abstract class UploadBase {
 
 	/**
 	 * Verify the mime type
-	 * @param $magic MagicMime object
+	 *
 	 * @param $mime string representing the mime
 	 * @return mixed true if the file is verified, an array otherwise
 	 */
-	protected function verifyMimeType( $magic, $mime ) {
+	protected function verifyMimeType( $mime ) {
 		global $wgVerifyMimeType;
 		if ( $wgVerifyMimeType ) {
 			wfDebug ( "\n\nmime: <$mime> extension: <{$this->mFinalExtension}>\n\n");
@@ -319,6 +319,8 @@ abstract class UploadBase {
 			$fp = fopen( $this->mTempPath, 'rb' );
 			$chunk = fread( $fp, 256 );
 			fclose( $fp );
+
+			$magic = MimeMagic::singleton();
 			$extMime = $magic->guessTypesForExtension( $this->mFinalExtension );
 			$ieTypes = $magic->getIEMimeTypes( $this->mTempPath, $chunk, $extMime );
 			foreach ( $ieTypes as $ieType ) {
@@ -344,11 +346,9 @@ abstract class UploadBase {
 		$this->mFileProps = File::getPropsFromPath( $this->mTempPath, $this->mFinalExtension );
 		$this->checkMacBinary();
 
-		$mime = $this->mFileProps[ 'mime' ];
-		$magic = MimeMagic::singleton();
-
 		# check mime type, if desired
-		$status = $this->verifyMimeType( $magic, $mime );
+		$mime = $this->mFileProps[ 'file-mime' ];
+		$status = $this->verifyMimeType( $mime );
 		if ( $status !== true ) {
 			return $status;
 		}
@@ -369,6 +369,15 @@ abstract class UploadBase {
 		$virus = $this->detectVirus( $this->mTempPath );
 		if ( $virus ) {
 			return array( 'uploadvirus', $virus );
+		}
+
+		$handler = MediaHandler::getHandler( $mime );
+		if ( $handler ) {
+			$handlerStatus = $handler->verifyUpload( $this->mTempPath );
+			if ( !$handlerStatus->isOK() ) {
+				$errors = $handlerStatus->getErrorsArray();
+				return reset( $errors );
+			}
 		}
 
 		wfRunHooks( 'UploadVerifyFile', array( $this, $mime, &$status ) );

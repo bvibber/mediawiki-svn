@@ -441,17 +441,6 @@ $messages = array(
 'vector-action-protect'          => 'Zamknúť',
 'vector-action-undelete'         => 'Obnoviť',
 'vector-action-unprotect'        => 'Odomknúť',
-'vector-namespace-category'      => 'Kategória',
-'vector-namespace-help'          => 'Pomocník',
-'vector-namespace-image'         => 'Súbor',
-'vector-namespace-main'          => 'Stránka',
-'vector-namespace-media'         => 'Stránka súboru',
-'vector-namespace-mediawiki'     => 'Správa',
-'vector-namespace-project'       => 'Stránka projektu',
-'vector-namespace-special'       => 'Špeciálna stránka',
-'vector-namespace-talk'          => 'Diskusia',
-'vector-namespace-template'      => 'Šablóna',
-'vector-namespace-user'          => 'Používateľská stránka',
 'vector-simplesearch-preference' => 'Povoliť rozšírené návrhy hľadania (iba pre tému Vector)',
 'vector-view-create'             => 'Vytvoriť',
 'vector-view-edit'               => 'Upraviť',
@@ -1209,6 +1198,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 # Diffs
 'history-title'            => 'História revízií „$1“',
 'difference'               => '(Rozdiel medzi revíziami)',
+'difference-multipage'     => '(Rozdiel medzi stránkami)',
 'lineno'                   => 'Riadok $1:',
 'compareselectedversions'  => 'Porovnať označené verzie',
 'showhideselectedversions' => 'Zobraziť/skryť vybrané revízie',
@@ -1506,7 +1496,6 @@ Musí obsahovať menej ako $1 {{PLURAL:$1|znak|znaky|znakov}}.',
 'right-override-export-depth' => 'Exportovať stránky vrátane okdazovaných stránok do hĺbky 5 odkazov',
 'right-sendemail'             => 'Posielať e-mail ostatným používateľom',
 'right-revisionmove'          => 'Presunúť revízie',
-'right-selenium'              => 'Spustiť testy Selenium',
 
 # User rights log
 'rightslog'      => 'Záznam používateľských práv',
@@ -1728,7 +1717,7 @@ PICT # rôzne
 'upload-success-subj'         => 'Nahranie bolo úspešné',
 'upload-success-msg'          => 'Nahranie súboru [$2]prebehlo úspešne. Je dostupný tu: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problém s nahrávaním',
-'upload-failure-msg'          => 'Vyskytol sa problém s vašim nahrávaním:
+'upload-failure-msg'          => 'Vyskytol sa problém s vašim nahrávaním z [$2]:
 
 $1',
 'upload-warning-subj'         => 'Upozornenie pri nahrávaní',
@@ -3423,6 +3412,13 @@ Tiež môžete [[Special:Watchlist/edit|použiť štandardný editor]].',
 'version-hook-subscribedby'        => 'Pripojené',
 'version-version'                  => '(Verzia $1)',
 'version-license'                  => 'Licencia',
+'version-poweredby-credits'        => "Táto wiki beží na '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'ďalší',
+'version-license-info'             => 'MediaWiki je slobodný softvér; môžete ho šíriť a / alebo modifikovať podľa podmienok GNU General Public License, ktorú vydala Free Software Foundation; a to buď verzie 2 tejto licencie alebo (podľa vášho uváženia) ktorejkoľvek neskoršej verzie. 
+
+MediaWiki je šírený v nádeji, že bude užitočný, avšak BEZ AKEJKOĽVEK ZÁRUKY; neposkytujú sa ani implicitné záruky PREDAJNOSTI alebo VHODNOSTI NA URČITÝ ÚČEL. Ďalšie informácie nájdete v GNU General Public License.
+
+Spolu s týmto programom by ste obdržať [{{SERVER}}{{SCRIPTPATH}}/COPYING kópiu GNU General Public License]. Ak nie, napíšte na adresu Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA alebo [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html si ju prečítajte online].',
 'version-software'                 => 'Nainštalovaný softvér',
 'version-software-product'         => 'Produkt',
 'version-software-version'         => 'Verzia',

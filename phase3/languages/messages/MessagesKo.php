@@ -451,17 +451,6 @@ $messages = array(
 'vector-action-protect'          => '보호',
 'vector-action-undelete'         => '되살리기',
 'vector-action-unprotect'        => '보호 해제',
-'vector-namespace-category'      => '분류',
-'vector-namespace-help'          => '도움말',
-'vector-namespace-image'         => '파일',
-'vector-namespace-main'          => '문서',
-'vector-namespace-media'         => '미디어 문서',
-'vector-namespace-mediawiki'     => '메시지',
-'vector-namespace-project'       => '프로젝트 문서',
-'vector-namespace-special'       => '특수 문서',
-'vector-namespace-talk'          => '토론',
-'vector-namespace-template'      => '틀',
-'vector-namespace-user'          => '사용자 문서',
 'vector-simplesearch-preference' => '향상된 검색어 제안 사용하기 (벡터 스킨 전용)',
 'vector-view-create'             => '생성',
 'vector-view-edit'               => '편집',
@@ -1489,7 +1478,6 @@ $1",
 'right-override-export-depth' => '5단계로 링크된 문서를 포함하여 문서를 내보내기',
 'right-sendemail'             => '다른 사용자에게 이메일 보내기',
 'right-revisionmove'          => '특정 판 옮기기',
-'right-selenium'              => '셀레늄 테스트 실행',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -1713,7 +1701,7 @@ PICT # 기타
 'upload-success-subj'         => '올리기 성공',
 'upload-success-msg'          => '파일을 [$2]에서 성공적으로 올렸습니다. 당신이 올린 파일이 여기 있습니다: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => '올리기 실패',
-'upload-failure-msg'          => '파일을 올리는 중 문제가 발생했습니다:
+'upload-failure-msg'          => '[$2]에서 파일을 올리는 중 문제가 발생했습니다:
 
 $1',
 'upload-warning-subj'         => '파일 올리기 경고',

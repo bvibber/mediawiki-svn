@@ -196,26 +196,16 @@ $messages = array(
 'faqpage'        => 'Project:ብጊየጥ',
 
 # Vector skin
-'vector-action-addsection'   => 'ርዕስ ጨምር',
-'vector-action-delete'       => 'አጥፋ',
-'vector-action-move'         => 'ለማዛወር',
-'vector-action-protect'      => 'ለመቆለፍ',
-'vector-action-undelete'     => 'አታጥፋ',
-'vector-action-unprotect'    => 'አለመቆለፍ',
-'vector-namespace-category'  => 'መደብ',
-'vector-namespace-help'      => 'እርዳታ ገጽ',
-'vector-namespace-image'     => 'ፋይል',
-'vector-namespace-main'      => 'መጣጥፍ',
-'vector-namespace-media'     => 'ፋይል',
-'vector-namespace-mediawiki' => 'መልዕክት',
-'vector-namespace-special'   => 'ልዩ ገጽ',
-'vector-namespace-talk'      => 'ውይይት',
-'vector-namespace-template'  => 'መለጠፊያ',
-'vector-namespace-user'      => 'የተጠቃሚው ገጽ',
-'vector-view-create'         => 'አዲስ ፍጠር',
-'vector-view-edit'           => 'አርም',
-'vector-view-history'        => ' ታሪኩን አሳይ',
-'vector-view-view'           => ' የተነበበ',
+'vector-action-addsection' => 'ርዕስ ጨምር',
+'vector-action-delete'     => 'አጥፋ',
+'vector-action-move'       => 'ለማዛወር',
+'vector-action-protect'    => 'ለመቆለፍ',
+'vector-action-undelete'   => 'አታጥፋ',
+'vector-action-unprotect'  => 'አለመቆለፍ',
+'vector-view-create'       => 'አዲስ ፍጠር',
+'vector-view-edit'         => 'አርም',
+'vector-view-history'      => ' ታሪኩን አሳይ',
+'vector-view-view'         => ' የተነበበ',
 
 'errorpagetitle'    => 'ስህተት',
 'returnto'          => '(ወደ $1 ለመመለስ)',
@@ -1453,8 +1443,8 @@ $NEWPAGE
 'delete-confirm'         => '«$1» ለማጥፋት',
 'delete-legend'          => 'ለማጥፋት',
 'historywarning'         => 'ማስጠንቀቂያ፦ ለዚሁ ገጽ የዕትም ታሪክ ደግሞ ሊጠፋ ነው! :',
-'confirmdeletetext'      => 'ይህን ገጽ ከነ ሙሉ የለውጥ ታሪኩ ሊያጠፉት ነው::
-እባክዎን ይህን የሚያደርጉት አስበውበትና አምነውበት መሆኑን፣ እናም በ[[{{MediaWiki:Policy-url}}|መተዳደሪያ ደንብ]] መሰረት መሆኑን ያደጋግጡልን።',
+'confirmdeletetext'      => 'ይህን ገጽ ከነ ሙሉ የለውጥ ታሪኩ ሊያጠፉት ነው።
+እባክዎን ይህን የሚያደርጉት አስበውበት፣ በ[[{{MediaWiki:Policy-url}}|መተዳደሪያ ደንብም]] መሰረት መሆኑን ያረጋግጡ።',
 'actioncomplete'         => 'ተፈጽሟል',
 'deletedtext'            => '«<nowiki>$1</nowiki>» ጠፍቷል።
 

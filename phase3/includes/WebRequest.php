@@ -563,15 +563,23 @@ class WebRequest {
 		global $wgUser;
 
 		$limit = $this->getInt( 'limit', 0 );
-		if( $limit < 0 ) $limit = 0;
+		if( $limit < 0 ) {
+			$limit = 0;
+		}
 		if( ( $limit == 0 ) && ( $optionname != '' ) ) {
 			$limit = (int)$wgUser->getOption( $optionname );
 		}
-		if( $limit <= 0 ) $limit = $deflimit;
-		if( $limit > 5000 ) $limit = 5000; # We have *some* limits...
+		if( $limit <= 0 ) {
+			$limit = $deflimit;
+		}
+		if( $limit > 5000 ) {
+			$limit = 5000; # We have *some* limits...
+		}
 
 		$offset = $this->getInt( 'offset', 0 );
-		if( $offset < 0 ) $offset = 0;
+		if( $offset < 0 ) {
+			$offset = 0;
+		}
 
 		return array( $limit, $offset );
 	}
@@ -625,10 +633,10 @@ class WebRequest {
 		$file = new WebRequestUpload( $this, $key );
 		return $file->getName();
 	}
-	
+
 	/**
 	 * Return a WebRequestUpload object corresponding to the key
-	 * 
+	 *
 	 * @param @key string
 	 * @return WebRequestUpload
 	 */
@@ -686,8 +694,9 @@ class WebRequest {
 	 * @return Mixed
 	 */
 	public function getSessionData( $key ) {
-		if( !isset( $_SESSION[$key] ) )
+		if( !isset( $_SESSION[$key] ) ) {
 			return null;
+		}
 		return $_SESSION[$key];
 	}
 
@@ -727,7 +736,7 @@ class WebRequest {
 		$ext = substr( $pi, $dotPos );
 		return !in_array( $ext, array( $wgScriptExtension, '.php', '.php5' ) );
 	}
-	
+
 	/**
 	 * Parse the Accept-Language header sent by the client into an array
 	 * @return array( languageCode => q-value ) sorted by q-value in descending order
@@ -740,15 +749,15 @@ class WebRequest {
 		if ( !$acceptLang ) {
 			return array();
 		}
-		
+
 		// Return the language codes in lower case
 		$acceptLang = strtolower( $acceptLang );
-		
+
 		// Break up string into pieces (languages and q factors)
 		$lang_parse = null;
 		preg_match_all( '/([a-z]{1,8}(-[a-z]{1,8})?|\*)\s*(;\s*q\s*=\s*(1|0(\.[0-9]+)?)?)?/',
 			$acceptLang, $lang_parse );
-		
+
 		if ( !count( $lang_parse[1] ) ) {
 			return array();
 		}
@@ -777,10 +786,10 @@ class WebRequestUpload {
 	protected $request;
 	protected $doesExist;
 	protected $fileInfo;
-	
+
 	/**
 	 * Constructor. Should only be called by WebRequest
-	 * 
+	 *
 	 * @param $request WebRequest The associated request
 	 * @param $key string Key in $_FILES array (name of form field)
 	 */
@@ -791,26 +800,26 @@ class WebRequestUpload {
 			$this->fileInfo = $_FILES[$key];
 		}
 	}
-	
+
 	/**
 	 * Return whether a file with this name was uploaded.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function exists() {
 		return $this->doesExist;
 	}
-	
+
 	/**
 	 * Return the original filename of the uploaded file
-	 * 
+	 *
 	 * @return mixed Filename or null if non-existent
 	 */
 	public function getName() {
 		if ( !$this->exists() ) {
 			return null;
 		}
-		
+
 		global $wgContLang;
 		$name = $this->fileInfo['name'];
 
@@ -821,51 +830,51 @@ class WebRequestUpload {
 		wfDebug( __METHOD__ . ": {$this->fileInfo['name']} normalized to '$name'\n" );
 		return $name;
 	}
-	
+
 	/**
 	 * Return the file size of the uploaded file
-	 * 
+	 *
 	 * @return int File size or zero if non-existent
 	 */
 	public function getSize() {
 		if ( !$this->exists() ) {
 			return 0;
 		}
-		
+
 		return $this->fileInfo['size'];
 	}
-	
+
 	/**
 	 * Return the path to the temporary file
-	 * 
+	 *
 	 * @return mixed Path or null if non-existent
 	 */
 	public function getTempName() {
 		if ( !$this->exists() ) {
 			return null;
 		}
-		
+
 		return $this->fileInfo['tmp_name'];
 	}
-	
+
 	/**
 	 * Return the upload error. See link for explanation
 	 * http://www.php.net/manual/en/features.file-upload.errors.php
-	 * 
+	 *
 	 * @return int One of the UPLOAD_ constants, 0 if non-existent
 	 */
 	public function getError() {
 		if ( !$this->exists() ) {
 			return 0; # UPLOAD_ERR_OK
 		}
-		
+
 		return $this->fileInfo['error'];
 	}
-	
+
 	/**
 	 * Returns whether this upload failed because of overflow of a maximum set
 	 * in php.ini
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function isIniSizeOverflow() {
@@ -879,7 +888,7 @@ class WebRequestUpload {
 			# post_max_size is exceeded
 			return true;
 		}
-		
+
 		return false;
 	}
 }
@@ -936,7 +945,25 @@ class FauxRequest extends WebRequest {
 	}
 
 	public function appendQuery( $query ) {
-		$this->notImplemented( __METHOD__ );
+		global $wgTitle;
+		$basequery = '';
+		foreach( $this->data as $var => $val ) {
+			if ( $var == 'title' ) {
+				continue;
+			}
+			if ( is_array( $val ) ) {
+				/* This will happen given a request like
+				 * http://en.wikipedia.org/w/index.php?title[]=Special:Userlogin&returnto[]=Main_Page
+				 */
+				continue;
+			}
+			$basequery .= '&' . urlencode( $var ) . '=' . urlencode( $val );
+		}
+		$basequery .= '&' . $query;
+
+		# Trim the extra &
+		$basequery = substr( $basequery, 1 );
+		return $wgTitle->getLocalURL( $basequery );
 	}
 
 	public function getHeader( $name ) {

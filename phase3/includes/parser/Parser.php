@@ -2264,11 +2264,7 @@ class Parser {
 					if ( $preOpenMatch and !$preCloseMatch ) {
 						$this->mInPre = true;
 					}
-					if ( $closematch ) {
-						$inBlockElem = false;
-					} else {
-						$inBlockElem = true;
-					}
+					$inBlockElem = !$closematch;
 				} elseif ( !$inBlockElem && !$this->mInPre ) {
 					if ( ' ' == substr( $t, 0, 1 ) and ( $this->mLastSection === 'pre' || trim( $t ) != '' ) ) {
 						# pre
@@ -2789,8 +2785,8 @@ class Parser {
 			case 'directionmark':
 				return $wgContLang->getDirMark();
 			case 'contentlanguage':
-				global $wgContLanguageCode;
-				return $wgContLanguageCode;
+				global $wgLanguageCode;
+				return $wgLanguageCode;
 			default:
 				$ret = null;
 				if ( wfRunHooks( 'ParserGetVariableValueSwitch', array( &$this, &$this->mVarCache, &$index, &$ret, &$frame ) ) ) {
@@ -3786,7 +3782,6 @@ class Parser {
 
 			if ( $toclevel ) {
 				$prevlevel = $level;
-				$prevtoclevel = $toclevel;
 			}
 			$level = $matches[1][$headlineCount];
 

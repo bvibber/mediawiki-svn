@@ -1,10 +1,17 @@
 <?php
+/**
+ * Deleted file in the 'filearchive' table
+ *
+ * @file
+ * @ingroup FileRepo
+ */
 
 /**
- * @ingroup Media
+ * Class representing a row of the 'filearchive' table
+ *
+ * @ingroup FileRepo
  */
-class ArchivedFile
-{
+class ArchivedFile {
 	/**#@+
 	 * @private
 	 */
@@ -218,7 +225,7 @@ class ArchivedFile
 	 * Return the FileStore storage group
 	 */
 	public function getGroup() {
-		return $file->group;
+		return $this->group;
 	}
 
 	/**

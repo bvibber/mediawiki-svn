@@ -131,9 +131,6 @@ $messages = array(
 'qbmyoptions'    => 'Ásahusat',
 'qbspecialpages' => 'Doaibmasiiddut',
 
-# Vector skin
-'vector-namespace-image' => 'Fiila',
-
 'errorpagetitle'    => 'Feaila',
 'returnto'          => 'Máhcat siidui $1.',
 'tagline'           => '{{SITENAME}}',
@@ -888,7 +885,7 @@ Also see [[Special:WantedCategories|wanted categories]].',
 'actioncomplete'    => 'Doaibma lea dahkkon',
 'deletedtext'       => '"<nowiki>$1</nowiki>" lea sihkojuvvon.
 Siiddus $2 lea listu maŋimus sihkomiin.',
-'deletedarticle'    => 'sihkoi siiddu $1',
+'deletedarticle'    => 'sihkoi siiddu [[$1]]',
 'dellogpage'        => 'Sihkkunlogga',
 'dellogpagetext'    => 'Vuolábealde lea logga maŋimus sihkkumiin.',
 'deletionlog'       => 'sihkkunlogga',

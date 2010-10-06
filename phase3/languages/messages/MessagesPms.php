@@ -206,17 +206,6 @@ dj'artìcoj ancó pa scrit",
 'vector-action-protect'          => 'Protegg',
 'vector-action-undelete'         => 'Arcùpera',
 'vector-action-unprotect'        => 'Sprotegg',
-'vector-namespace-category'      => 'Categorìa',
-'vector-namespace-help'          => "Pàgina d'agiut",
-'vector-namespace-image'         => 'Archivi',
-'vector-namespace-main'          => 'Pàgina',
-'vector-namespace-media'         => 'Pàgina con mojen',
-'vector-namespace-mediawiki'     => 'Mëssagi',
-'vector-namespace-project'       => 'Pàgina ëd proget',
-'vector-namespace-special'       => 'Pàgina special',
-'vector-namespace-talk'          => 'Discussion',
-'vector-namespace-template'      => 'Stamp',
-'vector-namespace-user'          => 'Pàgina utent',
 'vector-simplesearch-preference' => "Abilité ij sugeriment d'arserca ameliorà (mach për la pel Vector)",
 'vector-view-create'             => 'Crea',
 'vector-view-edit'               => 'Modìfica',
@@ -1274,7 +1263,6 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'right-override-export-depth' => 'Esporté le pàgine ancludend le pàgine colegà fin-a a na profondeur ëd 5',
 'right-sendemail'             => "Mandé un mëssagi an pòsta eletrònica a j'àutri utent",
 'right-revisionmove'          => 'Tramudé le revision',
-'right-selenium'              => 'Fé marcé le preuve Selenium',
 
 # User rights log
 'rightslog'      => "Argistr dij drit ëd j'utent",
@@ -1477,7 +1465,7 @@ Për piasì, ch'a controla l'ampostassion file_uploads.",
 'upload-options'              => 'Opsion për carié',
 'watchthisupload'             => "Ten-e d'euj s'archivi.",
 'filewasdeleted'              => "N'archivi con ës nòm-sì a l'é già stàit carià e peui scancelà. Për piasì, che a verìfica $1 anans che carielo n'àutra vira.",
-'upload-wasdeleted'           => "'''Dosman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
+'upload-wasdeleted'           => "'''Dossman: a l'é antramentr ch'a carìa torna n'archivi ch'a l'era dëscancelasse.'''
 
 Për piasì, ch'a contròla s'a val la pen-a dë felo.
 Për soa comodità, ambelessì a-i son ij dat dla scancelament:",
@@ -1490,7 +1478,7 @@ CIMG # Casio
 DSC_ # Nikon
 DSCF # Fuji
 DSCN # Nikon
-DUW # chèich celular
+DUW # chèich sacociàbil
 IMG # genérich
 JD # Jenoptik
 MGP # Pentax
@@ -1502,34 +1490,34 @@ PICT # vàire marche diferente
 'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià da [$2]:
 
 $1",
-'upload-warning-subj'         => 'Avis che i soma dapress a carié',
+'upload-warning-subj'         => "Avis antramentre ch'as caria",
 'upload-warning-msg'          => "A-i era un problema con lòn ch'a l'ha carià da [$2]. A peul artorné al [[Special:Upload/stash/$1|formolari për carié]] për corege ël problema.",
 
 'upload-proto-error'        => 'Protocòl cioch',
 'upload-proto-error-text'   => "Për carié da dij servent lontan a venta buté dj'anliure ch'as anandio për <code>http://</code> ò pura <code>ftp://</code>.",
 'upload-file-error'         => 'Eror antern',
 'upload-file-error-text'    => "A l'é rivaie n'eror antern dëmentrè che as fasìa n'archivi provisòri ant sël servent.
-Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrador]].",
+Për piasì, ch'as butà an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
 'upload-misc-error'         => "Eror nen identificà antramentr ch'as cariava",
 'upload-misc-error-text'    => "A l'é staie n'eror nen identificà dëmentrè ch'as cariava chèich-còs.
 Për piasì, ch'a varda che soa anliura a sia bon-a e che a l'arsponda e peuj ch'a preuva torna.
-Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:ListUsers/sysop|aministrador]].",
-'upload-too-many-redirects' => "L'URT a l'avìa tròpe rediression",
+Se a-i riva sossì n'àotra vira, ch'as buta an comunicassion con n'[[Special:ListUsers/sysop|aministrator]].",
+'upload-too-many-redirects' => "L'adrëssa dl'aragnà a l'avìa tròpe ridiression",
 'upload-unknown-size'       => 'Dimension pa conossùa',
-'upload-http-error'         => "A l'é stàit-ie n'eror HTTP: $1.",
+'upload-http-error'         => "A l'é staje n'eror HTTP: $1.",
 
 # img_auth script messages
 'img-auth-accessdenied' => 'Acess negà',
 'img-auth-nopathinfo'   => "PATH_INFO mancant.
-Tò server a l'é pa ampostà për passé sta anformassion-sì.
-A peul esse basà an sij CGI e a peul pa apogé img_auth.
-Varda http://www.mediawiki.org/wiki/Manual:Image_Authorization.",
-'img-auth-notindir'     => "Ël path ciamà a l'é pa ant la directory configurà për carié.",
+Sò servent a l'é nen ampostà për passé costa anformassion.
+Peul desse ch'a sia basà an sij CGI e a peul pa mantnì img_auth.
+Ch'a bèica http://www.mediawiki.org/wiki/Manual:Image_Authorization.",
+'img-auth-notindir'     => "Ël senté ciamà a l'é pa ant ël dossié configurà për carié.",
 'img-auth-badtitle'     => 'As peul pa fesse un tìtol bon për "$1".',
-'img-auth-nologinnWL'   => 'It ses pa intrà e "$1" a l\'é pa ant la whitelist.',
-'img-auth-nofile'       => 'Ël file "$1" a esist pa.',
-'img-auth-isdir'        => 'It ses an mente ch\'it preuve a andé ant na directory "$1".
-As peul mach acede ai file.',
+'img-auth-nologinnWL'   => 'A l\'é pa intrà ant ël sistema e "$1" a l\'é pa ant la lista bianca.',
+'img-auth-nofile'       => 'L\'archivi "$1" a esist pa.',
+'img-auth-isdir'        => 'A l\'é an camin ch\'a preuve a intré ant un dossié "$1".
+As peul mach avèj acess a j\'archivi.',
 'img-auth-streaming'    => 'Streaming "$1".',
 'img-auth-public'       => "La funsion d'img_auth.php a l'é ëd dé an output file da na wiki privà.
 Sta wiki-sì a l'é configurà com na wiki pùblica.

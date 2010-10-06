@@ -13,6 +13,7 @@
  * @author AlexSm
  * @author Alexander Sigachov (alexander.sigachov@gmail.com)
  * @author Amikeco
+ * @author Assele
  * @author Chilin
  * @author Claymore
  * @author DCamer
@@ -439,17 +440,6 @@ $messages = array(
 'vector-action-protect'          => 'Защитить',
 'vector-action-undelete'         => 'Восстановить',
 'vector-action-unprotect'        => 'Снять защиту',
-'vector-namespace-category'      => 'Категория',
-'vector-namespace-help'          => 'Справочная страница',
-'vector-namespace-image'         => 'Файл',
-'vector-namespace-main'          => 'Страница',
-'vector-namespace-media'         => 'Медиа-страница',
-'vector-namespace-mediawiki'     => 'Сообщение',
-'vector-namespace-project'       => 'О проекте',
-'vector-namespace-special'       => 'Служебная страница',
-'vector-namespace-talk'          => 'Обсуждение',
-'vector-namespace-template'      => 'Шаблон',
-'vector-namespace-user'          => 'Страница участника',
 'vector-simplesearch-preference' => 'Включить расширенные поисковые подсказки (только для оформления «Векторное»)',
 'vector-view-create'             => 'Создание',
 'vector-view-edit'               => 'Правка',
@@ -1503,7 +1493,6 @@ $1",
 'right-override-export-depth' => 'экспортирование страниц, включая связанные страницы с глубиной до 5',
 'right-sendemail'             => 'отправлять электронную почту другим участникам',
 'right-revisionmove'          => 'перенос версий страниц',
-'right-selenium'              => 'запуск проверок Selenium',
 
 # User rights log
 'rightslog'      => 'Журнал прав участника',

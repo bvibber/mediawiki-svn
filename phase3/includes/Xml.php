@@ -46,8 +46,9 @@ class Xml {
 		if( is_null( $attribs ) ) {
 			return null;
 		} elseif( is_array( $attribs ) ) {
-			foreach( $attribs as $name => $val )
+			foreach( $attribs as $name => $val ) {
 				$out .= " {$name}=\"" . Sanitizer::encodeAttribute( $val ) . '"';
+			}
 			return $out;
 		} else {
 			throw new MWException( 'Expected attribute array, got something else in ' . __METHOD__ );
@@ -133,10 +134,12 @@ class Xml {
 		if( !is_null( $all ) )
 			$namespaces = array( $all => wfMsg( 'namespacesall' ) ) + $namespaces;
 		foreach( $namespaces as $index => $name ) {
-			if( $index < NS_MAIN )
+			if( $index < NS_MAIN ) {
 				continue;
-			if( $index === 0 )
+			}
+			if( $index === 0 ) {
 				$name = wfMsg( 'blanknamespace' );
+			}
 			$options[] = self::option( $name, $index, $index === $selected );
 		}
 
@@ -211,14 +214,14 @@ class Xml {
 	 * @return array of label and select
 	 */
 	public static function languageSelector( $selected, $customisedOnly = true ) {
-		global $wgContLanguageCode;
+		global $wgLanguageCode;
 		/**
 		 * Make sure the site language is in the list; a custom language code
 		 * might not have a defined name...
 		 */
 		$languages = Language::getLanguageNames( $customisedOnly );
-		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
-			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		if( !array_key_exists( $wgLanguageCode, $languages ) ) {
+			$languages[$wgLanguageCode] = $wgLanguageCode;
 		}
 		ksort( $languages );
 
@@ -227,7 +230,7 @@ class Xml {
 		 * Otherwise, no default is selected and the user ends up
 		 * with an Afrikaans interface since it's first in the list.
 		 */
-		$selected = isset( $languages[$selected] ) ? $selected : $wgContLanguageCode;
+		$selected = isset( $languages[$selected] ) ? $selected : $wgLanguageCode;
 		$options = "\n";
 		foreach( $languages as $code => $name ) {
 			$options .= Xml::option( "$code - $name", $code, ($code == $selected) ) . "\n";
@@ -749,9 +752,15 @@ class XmlSelect {
 	protected $attributes = array();
 
 	public function __construct( $name = false, $id = false, $default = false ) {
-		if ( $name ) $this->setAttribute( 'name', $name );
-		if ( $id ) $this->setAttribute( 'id', $id );
-		if ( $default !== false ) $this->default = $default;
+		if ( $name ) {
+			$this->setAttribute( 'name', $name );
+		}
+		if ( $id ) {
+			$this->setAttribute( 'id', $id );
+		}
+		if ( $default !== false ) {
+			$this->default = $default;
+		}
 	}
 
 	public function setDefault( $default ) {

@@ -434,17 +434,6 @@ $messages = array(
 'vector-action-protect'          => 'Zaštiti',
 'vector-action-undelete'         => 'Vrati obrisano',
 'vector-action-unprotect'        => 'Oslobodi zaštitu',
-'vector-namespace-category'      => 'Kategorija',
-'vector-namespace-help'          => 'Stranica pomoći',
-'vector-namespace-image'         => 'Datoteka',
-'vector-namespace-main'          => 'Stranica',
-'vector-namespace-media'         => 'Stranica medije',
-'vector-namespace-mediawiki'     => 'Poruka',
-'vector-namespace-project'       => 'Stranica projekta',
-'vector-namespace-special'       => 'Posebna stranica',
-'vector-namespace-talk'          => 'Razgovor',
-'vector-namespace-template'      => 'Šablon',
-'vector-namespace-user'          => 'Korisnička stranica',
 'vector-simplesearch-preference' => 'Omogući napredne sugestije pretrage (samo vector koža)',
 'vector-view-create'             => 'Napravi',
 'vector-view-edit'               => 'Uređivanje',
@@ -945,7 +934,7 @@ nemojte ih slati ovdje. Takođe, slanje članka podrazumijeva i vašu izjavu da 
 'copyrightwarning2'                => "Zapamtite da svi doprinosi na stranici {{SITENAME}} može biti izmijenjen, promijenjen ili uklonjen od strane ostalih korisnika. Ako ne želite da ovo desi sa Vašim tekstom, onda ga nemojte slati ovdje.<br />
 Također nam garantujete da ste ovo Vi napisali, ili da ste ga kopirali iz javne domene ili sličnog slobodnog izvora informacija (pogledajte $1 za više detalja).
 '''NE ŠALJITE AUTORSKIM PRAVOM ZAŠTIĆENE TEKSTOVE BEZ DOZVOLE!'''",
-'longpagewarning'                  => "'''PAŽNJA''': Ova stranica ima $1 kilobajta;
+'longpagewarning'                  => "'''Pažnja''': Ova stranica ima $1 kilobajta;
 neki preglednici mogu imati problema kad uređujete stranice skoro ili veće od 32 kilobajta.
 Molimo Vas da razmotrite razbijanje stranice na manje dijelove.",
 'longpageerror'                    => "'''Greška: Tekst, koji ste poslali, je dug $1 kilobajta, što je veće od maksimuma, koji iznosi $2 kilobajta.
@@ -1517,7 +1506,6 @@ Također omogućuje drugim korisnicima da vas kontaktiraju preko Vaše korisnič
 'right-override-export-depth' => 'Izvoz stranica uključujući povezane stranice do dubine od 5 linkova',
 'right-sendemail'             => 'Slanje e-maila drugim korisnicima',
 'right-revisionmove'          => 'Premještanje revizija',
-'right-selenium'              => 'Pokretanje selenijum testova',
 
 # User rights log
 'rightslog'      => 'Zapisnik korisničkih prava',

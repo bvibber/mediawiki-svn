@@ -687,20 +687,20 @@ class Linker {
 		if ( $title instanceof Title ) {
 			wfProfileIn( __METHOD__ );
 			$currentExists = $time ? ( wfFindFile( $title ) != false ) : false;
-			if ( ( $wgUploadMissingFileUrl || $wgEnableUploads ) && !$currentExists ) {
-				if ( $text == '' )
-					$text = htmlspecialchars( $title->getPrefixedText() );
 
+			list( $inside, $trail ) = self::splitTrail( $trail );
+			if ( $text == '' )
+				$text = htmlspecialchars( $title->getPrefixedText() );
+
+			if ( ( $wgUploadMissingFileUrl || $wgEnableUploads ) && !$currentExists ) {
 				$redir = RepoGroup::singleton()->getLocalRepo()->checkRedirect( $title );
+
 				if ( $redir ) {
 					wfProfileOut( __METHOD__ );
-					return $this->makeKnownLinkObj( $title, $text, $query, $trail, $prefix );
+					return $this->linkKnown( $title, "$prefix$text$inside", array(), $query ) . $trail;
 				}
 
 				$href = $this->getUploadUrl( $title, $query );
-
-
-				list( $inside, $trail ) = self::splitTrail( $trail );
 
 				wfProfileOut( __METHOD__ );
 				return '<a href="' . htmlspecialchars( $href ) . '" class="new" title="' .
@@ -708,7 +708,7 @@ class Linker {
 								htmlspecialchars( $prefix . $text . $inside, ENT_NOQUOTES ) . '</a>' . $trail;
 			} else {
 				wfProfileOut( __METHOD__ );
-				return $this->makeKnownLinkObj( $title, $text, $query, $trail, $prefix );
+				return $this->linkKnown( $title, "$prefix$text$inside", array(), $query ) . $trail;
 			}
 		} else {
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
@@ -774,12 +774,9 @@ class Linker {
 	 * Usage example: $skin->specialLink( 'recentchanges' )
 	 */
 	function specialLink( $name, $key = '' ) {
-		global $wgContLang;
-
 		if ( $key == '' ) { $key = strtolower( $name ); }
-		$pn = $wgContLang->ucfirst( $name );
-		return $this->makeKnownLink( $wgContLang->specialPage( $pn ),
-		  wfMsg( $key ) );
+
+		return $this->linkKnown( SpecialPage::getTitleFor( $name ) , wfMsg( $key ) );
 	}
 
 	/**
@@ -1331,16 +1328,7 @@ class Linker {
 		   '<table id="toc" class="toc"><tr><td>'
 		 . '<div id="toctitle"><h2>' . $title . "</h2></div>\n"
 		 . $toc
-		 # no trailing newline, script should not be wrapped in a
-		 # paragraph
-		 . "</ul>\n</td></tr></table>"
-		 . Html::inlineScript(
-			'if (window.showTocToggle) {'
-			. ' var tocShowText = "' . Xml::escapeJsString( wfMsg( 'showtoc' ) ) . '";'
-			. ' var tocHideText = "' . Xml::escapeJsString( wfMsg( 'hidetoc' ) ) . '";'
-			. ' showTocToggle();'
-			. ' } ' )
-		. "\n";
+		 . "</ul>\n</td></tr></table>\n";
 	}
 
 	/**

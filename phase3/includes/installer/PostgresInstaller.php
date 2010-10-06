@@ -112,31 +112,7 @@ class PostgresInstaller extends DatabaseInstaller {
 		return $status;
 	}
 
-	function getSettingsForm() {
-		return false;
-	}
-
-	function submitSettingsForm() {
-		return Status::newGood();
-	}
-
 	function setupDatabase() {
-	}
-
-	function createTables() {
-		$status = $this->getConnection();
-		if ( !$status->isOK() ) {
-			return $status;
-	}
-		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
-
-		global $IP;
-		$err = $this->db->sourceFile( "$IP/maintenance/postgres/tables.sql" );
-		if ( $err !== true ) {
-			//@todo or...?
-			$this->db->reportQueryError( $err, 0, $sql, __FUNCTION__ );
-		}
-		return Status::newGood();
 	}
 
 	function getLocalSettings() {
@@ -150,8 +126,12 @@ class PostgresInstaller extends DatabaseInstaller {
 \$wgDBts2schema      = \"{$ts2}\";";
 	}
 
-	public function doUpgrade() {
-		// TODO
-		return false;
+	public function preUpgrade() {
+		global $wgDBuser, $wgDBpassword;
+
+		# Normal user and password are selected after this step, so for now
+		# just copy these two
+		$wgDBuser = $this->getVar( '_InstallUser' );
+		$wgDBpassword = $this->getVar( '_InstallPassword' );
 	}
 }

@@ -82,6 +82,7 @@ class SvgHandler extends ImageHandler {
 	public function rasterize( $srcPath, $dstPath, $width, $height ) {
 		global $wgSVGConverters, $wgSVGConverter, $wgSVGConverterPath;
 		$err = false;
+		$retval = '';
 		if ( isset( $wgSVGConverters[$wgSVGConverter] ) ) {
 			$cmd = str_replace(
 				array( '$path/', '$width', '$height', '$input', '$output' ),

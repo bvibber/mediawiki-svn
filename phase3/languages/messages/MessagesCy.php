@@ -280,17 +280,6 @@ $messages = array(
 'vector-action-protect'          => 'Diogelu',
 'vector-action-undelete'         => 'Adfer',
 'vector-action-unprotect'        => 'Dad-ddiogelu',
-'vector-namespace-category'      => 'Categori',
-'vector-namespace-help'          => 'Tudalen gymorth',
-'vector-namespace-image'         => 'Ffeil',
-'vector-namespace-main'          => 'Tudalen',
-'vector-namespace-media'         => 'Tudalen cyfrwng',
-'vector-namespace-mediawiki'     => 'Neges',
-'vector-namespace-project'       => 'Tudalen brosiect',
-'vector-namespace-special'       => 'Tudalen arbennig',
-'vector-namespace-talk'          => 'Sgwrs',
-'vector-namespace-template'      => 'Nodyn',
-'vector-namespace-user'          => 'Tudalen defnyddiwr',
 'vector-simplesearch-preference' => 'Galluogi awgrymiadau chwilio uwch (gwedd Vector yn unig)',
 'vector-view-create'             => 'Dechrau',
 'vector-view-edit'               => 'Golygu',
@@ -1332,7 +1321,6 @@ Gallwch hefyd adael i eraill anfon e-bost atoch trwy'r cyswllt ar eich tudalen d
 'right-override-export-depth' => 'Allforio tudalennau gan gynnwys tudalennau cysylltiedig hyd at ddyfnder o 5',
 'right-sendemail'             => 'Anfon e-bost at ddefnyddwyr eraill',
 'right-revisionmove'          => 'Symud diwygiadau',
-'right-selenium'              => 'Gwneud profion Seleniwm',
 
 # User rights log
 'rightslog'      => 'Lòg galluoedd defnyddiwr',
@@ -3202,7 +3190,7 @@ Gallwch hefyd [[Special:Watchlist/edit|ddefnyddio\'r rhestr arferol]].',
 
 Cyhoeddir MediaWiki yn y gobaith y bydd o ddefnydd, ond HEB UNRHYW WARANT; heb hyd yn oed gwarant ymhlyg o FARCHNADWYEDD nag o FOD YN ADDAS AT RYW BWRPAS ARBENNIG. Gweler y GNU General Public License am fanylion pellach.
 
-Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Public License] gyda'r rhaglen hon; os nad ydych, ysgrifennwch at Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, neu [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html darllenwch amdano ar y we].",
+Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Public License] gyda'r rhaglen hon; os nad ydych, ysgrifennwch at Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, neu [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html gallwch ei ddarllen ar y we].",
 'version-software'                 => 'Meddalwedd gosodedig',
 'version-software-product'         => 'Cynnyrch',
 'version-software-version'         => 'Fersiwn',

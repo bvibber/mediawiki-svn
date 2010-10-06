@@ -307,7 +307,6 @@ $specialPageAliases = array(
 	'Activeusers'               => array( 'משתמשים_פעילים' ),
 	'RevisionMove'              => array( 'העברת_גרסאות' ),
 	'ComparePages'              => array( 'השוואת_דפים' ),
-	'Selenium'                  => array( 'סלניום' ),
 	'Badtitle'                  => array( 'כותרת_שגויה' ),
 );
 
@@ -502,17 +501,6 @@ $messages = array(
 'vector-action-protect'          => 'הגנה',
 'vector-action-undelete'         => 'ביטול מחיקה',
 'vector-action-unprotect'        => 'הסרת הגנה',
-'vector-namespace-category'      => 'קטגוריה',
-'vector-namespace-help'          => 'דף עזרה',
-'vector-namespace-image'         => 'קובץ',
-'vector-namespace-main'          => 'דף',
-'vector-namespace-media'         => 'דף מדיה',
-'vector-namespace-mediawiki'     => 'הודעה',
-'vector-namespace-project'       => 'דף מיזם',
-'vector-namespace-special'       => 'דף מיוחד',
-'vector-namespace-talk'          => 'שיחה',
-'vector-namespace-template'      => 'תבנית',
-'vector-namespace-user'          => 'דף משתמש',
 'vector-simplesearch-preference' => 'הפעלת הצעות החיפוש המשופרות (בעיצוב וקטור בלבד)',
 'vector-view-create'             => 'יצירה',
 'vector-view-edit'               => 'עריכה',
@@ -742,7 +730,7 @@ $2',
 'yourname'                   => 'שם משתמש:',
 'yourpassword'               => 'סיסמה:',
 'yourpasswordagain'          => 'הקש סיסמה שנית:',
-'remembermypassword'         => 'זכירת הכניסה שלי במחשב זה (למשך עד {{PLURAL:$1|יום אחד|$1 ימים|יומיים}})',
+'remembermypassword'         => 'זכירת הכניסה שלי בדפדפן זה (למשך עד {{PLURAL:$1|יום אחד|$1 ימים|יומיים}})',
 'yourdomainname'             => 'התחום שלך:',
 'externaldberror'            => 'הייתה שגיאה בבסיס הנתונים של ההזדהות, או שאינכם רשאים לעדכן את חשבונכם החיצוני.',
 'login'                      => 'כניסה לחשבון',
@@ -1559,7 +1547,6 @@ $1",
 'right-override-export-depth' => 'ייצוא דפים כולל דפים מקושרים עד עומק של חמישה',
 'right-sendemail'             => 'שליחת דואר אלקטרוני למשתמשים אחרים',
 'right-revisionmove'          => 'העברת גרסאות',
-'right-selenium'              => 'הרצת מבחני סלניום',
 
 # User rights log
 'rightslog'      => 'יומן תפקידים',
@@ -3540,7 +3527,7 @@ $1',
 'filepath-page'    => 'הקובץ:',
 'filepath-submit'  => 'הצגה',
 'filepath-summary' => 'דף זה מציג את הנתיב המלא לקבצים שהועלו.
-תמונות מוצגות ברזולוציה מלאה, ואילו סוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
+תמונות מוצגות ברזולוציה מלאה, וסוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
 
 יש להקליד את שם הקובץ ללא הקידומת "{{ns:file}}:".',
 

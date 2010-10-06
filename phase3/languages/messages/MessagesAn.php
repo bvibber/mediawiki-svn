@@ -287,17 +287,6 @@ $messages = array(
 'vector-action-protect'          => 'Protecher',
 'vector-action-undelete'         => 'Restaurar',
 'vector-action-unprotect'        => 'Desprotecher',
-'vector-namespace-category'      => 'Categoría',
-'vector-namespace-help'          => "Pachina d'aduya",
-'vector-namespace-image'         => 'Fichero',
-'vector-namespace-main'          => 'Pachina',
-'vector-namespace-media'         => 'Pachina multimedia',
-'vector-namespace-mediawiki'     => 'Mensache',
-'vector-namespace-project'       => "Pachina d'o prochecto",
-'vector-namespace-special'       => 'Pachina especial',
-'vector-namespace-talk'          => 'Discusión',
-'vector-namespace-template'      => 'Plantilla',
-'vector-namespace-user'          => "Pachina d'usuario",
 'vector-simplesearch-preference' => "Habilitar socherencias de busca amilloradas (nomás ta l'apariencia Vector)",
 'vector-view-create'             => 'Creyar',
 'vector-view-edit'               => 'Editar',
@@ -1023,6 +1012,7 @@ Asegure-se que iste cambio no trencará a continidat de l'historial d'a pachina.
 # Diffs
 'history-title'            => 'Historial de versions de "$1"',
 'difference'               => '(Esferencias entre versions)',
+'difference-multipage'     => '(Diferencia entre pachinas)',
 'lineno'                   => 'Linia $1:',
 'compareselectedversions'  => 'Confrontar as versions trigatas',
 'showhideselectedversions' => 'Amostrar/amagar as versions trigadas',
@@ -1321,7 +1311,6 @@ Habría de tener menos de $1 {{PLURAL:$1|carácter|carácters}}.',
 'right-override-export-depth' => 'Exporta pachinas que incluigan as enlazadas dica un fundaria de 5',
 'right-sendemail'             => 'Ninviar un correu electronico a atros usuarios',
 'right-revisionmove'          => 'Tresladar versions',
-'right-selenium'              => 'Executar os tests Selenium',
 
 # User rights log
 'rightslog'      => "Rechistro de cambios en os dreitos d'os usuarios",
@@ -1536,7 +1525,7 @@ PICT # misz.
 'upload-success-subj'         => 'Cargata correctament',
 'upload-success-msg'          => 'A carga de [$2] ha surtiu con exito. Ye disponible aquí: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema en a carga',
-'upload-failure-msg'          => 'I ha habiu bell problema con a suya carga:
+'upload-failure-msg'          => 'I ha habiu un problema con o a suya carga dende [$2]:
 
 $1',
 'upload-warning-subj'         => 'Alvertencia de carga',
@@ -3157,6 +3146,13 @@ Tamién puede fer servir o [[Special:Watchlist/edit|editor estándar]].",
 'version-hook-subscribedby'        => 'Suscrito por',
 'version-version'                  => '(Versión $1)',
 'version-license'                  => 'Licencia',
+'version-poweredby-credits'        => "Iste wiki funciona gracias a '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'atros',
+'version-license-info'             => "MediaWiki ye software libre, puet redistribuyir-lo y/u modificar-lo baixo os terminos d'a Licencia Publica Cheneral GNU publicada por a Free Software Foundation, ya siga d'a suya versión 2 u (a la suya esleción) qualsiquier versión posterior. 
+
+MediaWiki se distribuye con l'asperanza d'estar d'utilidat, pero SIN GARRA GUARANCIA; nian a guarancia implicita de COMERCIALIZACIÓN u ADEQUACIÓN TA UNA FINALIDAT DETERMINADA. En trobará más detalles en a Licencia Publica General GNU.
+
+Con iste programa ha d'haber recibiu [{{SERVER}}{{SCRIPTPATH}}/COPYING una copia d'a Licencia Publica Cheneral GNU]; si no ye asinas, endrece-se a la Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA u bien [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html la leiga en linia].",
 'version-software'                 => 'Software instalato',
 'version-software-product'         => 'Producto',
 'version-software-version'         => 'Versión',

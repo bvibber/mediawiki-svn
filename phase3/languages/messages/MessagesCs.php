@@ -510,17 +510,6 @@ $messages = array(
 'vector-action-protect'          => 'Zamknout',
 'vector-action-undelete'         => 'Obnovit',
 'vector-action-unprotect'        => 'Odemknout',
-'vector-namespace-category'      => 'Kategorie',
-'vector-namespace-help'          => 'Nápověda',
-'vector-namespace-image'         => 'Soubor',
-'vector-namespace-main'          => 'Stránka',
-'vector-namespace-media'         => 'Stránka souboru',
-'vector-namespace-mediawiki'     => 'Hlášení',
-'vector-namespace-project'       => 'Projektová stránka',
-'vector-namespace-special'       => 'Speciální stránka',
-'vector-namespace-talk'          => 'Diskuse',
-'vector-namespace-template'      => 'Šablona',
-'vector-namespace-user'          => 'Uživatelská stránka',
 'vector-simplesearch-preference' => 'Zapnout rozšířené návrhy hledání (pouze vzhled Vektor)',
 'vector-view-create'             => 'Založit',
 'vector-view-edit'               => 'Editovat',
@@ -1555,7 +1544,6 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'right-override-export-depth' => 'Exportovat stránky včetně odkazovaných stránek až do hloubky 5',
 'right-sendemail'             => 'Odesílání e-mailů ostatním uživatelům',
 'right-revisionmove'          => 'Přesouvání verzí',
-'right-selenium'              => 'Spouštění testů v Seleniu',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
@@ -1771,7 +1759,7 @@ PICT # různé
 'upload-success-subj'         => 'Načtení úspěšně provedeno!',
 'upload-success-msg'          => 'Soubor vámi načtený z [$2] je dostupný na [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problém s načítaným souborem',
-'upload-failure-msg'          => 'U vámi načítaného souboru se vyskytl problém:
+'upload-failure-msg'          => 'U souboru vámi načítaného z [$2] se vyskytl problém:
 
 $1',
 'upload-warning-subj'         => 'Upozornění k načítání',
@@ -2304,7 +2292,7 @@ Stiskněte tlačítko „zpět“, obnovte stránku, ze které jste přišli a z
 'prot_1movedto2'              => 'Stránka [[$1]] přemístěna na stránku [[$2]]',
 'protect-legend'              => 'Potvrdit zamčení',
 'protectcomment'              => 'Důvod:',
-'protectexpiry'               => 'Čas vypršení',
+'protectexpiry'               => 'Čas vypršení:',
 'protect_expiry_invalid'      => 'Čas vypršení je chybný.',
 'protect_expiry_old'          => 'Čas vypršení již minul.',
 'protect-unchain-permissions' => 'Zpřístupnit další nastavení zámku',
