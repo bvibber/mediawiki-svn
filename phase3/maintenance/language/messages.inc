@@ -456,6 +456,7 @@ $wgMessageStructure = array(
 		'loginlanguagelabel',
 		'loginlanguagelinks',
 		'suspicious-userlogout',
+		'ratelimit-excluded-ips',
 	),
 	'passwordstrength' => array(
 		'password-strength',
@@ -804,6 +805,7 @@ $wgMessageStructure = array(
 		'showhideselectedversions',
 		'editundo',
 		'diff-multi',
+		'diff-multi-manyusers',
 	),
 	'search' => array(
 		'search-summary',

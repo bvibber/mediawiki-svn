@@ -142,6 +142,12 @@ $wgScript           = false;
 $wgRedirectScript   = false; ///< defaults to
 /**@}*/
 
+/**
+ * The URL path to load.php.
+ *
+ * Defaults to "{$wgScriptPath}/load{$wgScriptExtension}".
+ */
+$wgLoadScript           = false;
 
 /************************************************************************//**
  * @name   URLs and file paths
@@ -496,6 +502,10 @@ $wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/File:";
 /**
  * This is the list of preferred extensions for uploading files. Uploading files
  * with extensions not in this list will trigger a warning.
+ *
+ * WARNING: If you add any OpenOffice or Microsoft Office file formats here, 
+ * such as odt or doc, and untrusted users are allowed to upload files, then 
+ * your wiki will be vulnerable to cross-site request forgery (CSRF). 
  */
 $wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg' );
 
@@ -533,12 +543,18 @@ $wgMimeTypeBlacklist = array(
 	'application/x-opc+zip',
 );
 
-/** This is a flag to determine whether or not to check file extensions on upload. */
+/** 
+ * This is a flag to determine whether or not to check file extensions on upload.
+ *
+ * WARNING: setting this to false is insecure for public wikis.
+ */
 $wgCheckFileExtensions = true;
 
 /**
  * If this is turned off, users may override the warning for files not covered
  * by $wgFileExtensions.
+ *
+ * WARNING: setting this to false is insecure for public wikis. 
  */
 $wgStrictFileExtensions = true;
 
@@ -1629,17 +1645,30 @@ $wgUseETag = false;
 $wgClockSkewFudge = 5;
 
 /**
- * Maximum time in seconds to cache resources served by the resource loader on
- * the client side (e.g. in the browser cache).
+ * Maximum time in seconds to cache versioned resources served by the resource
+ * loader on the client side (e.g. in the browser cache).
  */
-$wgResourceLoaderClientMaxage = 30*24*60*60; // 30 days
+$wgResourceLoaderVersionedClientMaxage = 30 * 24 * 60 * 60; // 30 days
 
 /**
- * Maximum time in seconds to cache resources served by the resource loader on
- * the server side. This means Squid/Varnish but also any other public proxy
- * cache between the client and MediaWiki.
+ * Maximum time in seconds to cache versioned resources served by the resource
+ * loader on the server side. This means Squid/Varnish but also any other public
+ * proxy cache between the client and MediaWiki.
  */
-$wgResourceLoaderServerMaxage = 30*24*60*60; // 30 days
+$wgResourceLoaderVersionedServerMaxage = 30 * 24 * 60 * 60; // 30 days
+
+/**
+ * Maximum time in seconds to cache unversioned resources served by the resource
+ * loader on the client.
+ */
+$wgResourceLoaderUnversionedClientMaxage = 5 * 60; // 5 minutes
+
+/**
+ * Maximum time in seconds to cache unversioned resources served by the resource
+ * loader on the server. This means Squid/Varnish but also any other public
+ * proxy cache between the client and MediaWiki.
+ */
+$wgResourceLoaderUnversionedServerMaxage = 5 * 60; // 5 minutes
 
 /**
  * Enable data URL embedding (experimental). This variable is very temporary and
@@ -2256,14 +2285,6 @@ $wgVectorUseIconWatch = false;
  * Show the name of the current variant as a label in the variants drop-down menu
  */
 $wgVectorShowVariantName = false;
-
-/**
- * Add extra stylesheets for Vector - This is only being used so that we can play around with different options while
- * keeping our CSS code in the SVN and not having to change the main Vector styles. This will probably go away later on.
- * null = add no extra styles
- * array = list of style paths relative to skins/vector/
- */
-$wgVectorExtraStyles = null;
 
 /**
  * Display user edit counts in various prominent places.
@@ -3386,6 +3407,8 @@ $wgRateLimitsExcludedGroups = array();
 /**
  * Array of IPs which should be excluded from rate limits.
  * This may be useful for whitelisting NAT gateways for conferences, etc.
+ * Wiki administrators can add additional IP addresses via
+ * [[MediaWiki:Ratelimit-excluded-ips]]
  */
 $wgRateLimitsExcludedIPs = array();
 
@@ -4369,6 +4392,8 @@ $wgExceptionHooks = array();
  * the API help page.
  */
 $wgPageProps = array(
+	'displaytitle' => 'Value of the {{DISPLAYTITLE}} tag',
+	'defaultsort' => 'Value of the {{DEFAULTSORT}} tag',
 	'hiddencat' => 'Whether or not the page has a category with the __HIDDENCAT__ magic word',
 );
 

@@ -315,7 +315,7 @@ $messages = array(
 'tog-editsection'             => 'Activar los lims « [changiér] » por changiér una sèccion',
 'tog-editsectiononrightclick' => 'Fâre un clic drêt sur un titro de sèccion pèrmèt de changiér ceta (at fôta de JavaScript)',
 'tog-showtoc'                 => 'Fâre vêre la trâbla de les matiéres (por les pâges qu’ont més de 3 sèccions)',
-'tog-rememberpassword'        => 'Sè rapelar de mon branchement sur ceti ordenator (por $1 jorn{{PLURAL:$1||s}} u més)',
+'tog-rememberpassword'        => 'Sè rapelar de mon branchement sur ceti navigator (por $1 jorn{{PLURAL:$1||s}} u més)',
 'tog-watchcreations'          => 'Apondre les pâges que fé a ma lista de survelyence',
 'tog-watchdefault'            => 'Apondre les pâges que chanjo a ma lista de survelyence',
 'tog-watchmoves'              => 'Apondre les pâges que renomo a ma lista de survelyence',
@@ -703,7 +703,7 @@ Oubliâd pas de pèrsonalisar voutres [[Special:Preferences|prèferences dessus 
 'yourname'                   => 'Voutron nom d’utilisator :',
 'yourpassword'               => 'Mot de pâssa :',
 'yourpasswordagain'          => 'Confirmâd lo mot de pâssa :',
-'remembermypassword'         => 'Sè rapelar de mon branchement sur ceti ordenator (por $1 jorn{{PLURAL:$1||s}} u més)',
+'remembermypassword'         => 'Sè rapelar de mon branchement sur ceti navigator (por $1 jorn{{PLURAL:$1||s}} u més)',
 'yourdomainname'             => 'Voutron domêno :',
 'externaldberror'            => 'Ou ben una èrror est arrevâ avouéc la bâsa de balyês d’ôtentificacion de defôr, ou ben vos éte pas ôtorisâ a betar a jorn voutron compto de defôr.',
 'login'                      => 'Branchement',
@@ -1258,7 +1258,8 @@ Notâd bien que l’usâjo des lims de navigacion tornerat inicialisar cela colo
 'compareselectedversions'  => 'Comparar les vèrsions chouèsies',
 'showhideselectedversions' => 'Fâre vêre / cachiér les vèrsions chouèsies',
 'editundo'                 => 'dèfâre',
-'diff-multi'               => '({{PLURAL:$1|Yona vèrsion entèrmèdièra cachiê|$1 vèrsions entèrmèdières cachiês}}.)',
+'diff-multi'               => '({{PLURAL:$1|Yona vèrsion entèrmèdièra|$1 vèrsions entèrmèdières}} per {{PLURAL:$2|yon utilisator|$2 utilisators}} {{PLURAL:$1|est pas montrâ|sont pas montrâs}})',
+'diff-multi-manyusers'     => '($1 vèrsions entèrmèdières per més de 100 utilisators sont pas montrâs)',
 
 # Search results
 'searchresults'                    => 'Rèsultats de la rechèrche',

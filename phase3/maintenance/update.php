@@ -24,17 +24,18 @@ class UpdateMediaWiki extends Maintenance {
 	}
 
 	public function getDbType() {
-		return self::DB_ADMIN;
+		return Maintenance::DB_ADMIN;
 	}
 
 	public function execute() {
-		global $wgVersion, $wgTitle;
+		global $wgVersion, $wgTitle, $wgLang;
 
+		$wgLang = Language::factory( 'en' );
 		$wgTitle = Title::newFromText( "MediaWiki database updater" );
 
 		$this->output( "MediaWiki {$wgVersion} Updater\n\n" );
 
-		if ( !isset( $options['skip-compat-checks'] ) ) {
+		if ( !$this->hasOption( 'skip-compat-checks' ) ) {
 			install_version_checks();
 		} else {
 			$this->output( "Skipping compatibility checks, proceed at your own risk (Ctrl+C to abort)\n" );
@@ -59,21 +60,11 @@ class UpdateMediaWiki extends Maintenance {
 		$updater = DatabaseUpdater::newForDb( $db, $shared );
 		$updater->doUpdates( $purge );
 
-		if ( !defined( 'MW_NO_SETUP' ) ) {
-			define( 'MW_NO_SETUP', true );
-		}
-
 		foreach( $updater->getPostDatabaseUpdateMaintenance() as $maint ) {
-			call_user_func_array( array( new $maint, 'execute' ), array() );
+			$this->runChild( $maint )->execute();
 		}
 
-		if ( $db->getType() === 'postgres' ) {
-			return;
-		}
-
-		do_stats_init();
-
-		$this->output( "Done.\n" );
+		$this->output( "\nDone.\n" );
 	}
 
 	protected function afterFinalSetup() {

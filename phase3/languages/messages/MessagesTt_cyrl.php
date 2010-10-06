@@ -180,7 +180,7 @@ $messages = array(
 'tog-editsection'             => 'Һәр бүлектә «үзгәртү» сылтамасы күрсәтелсен',
 'tog-editsectiononrightclick' => 'Бүлек исеменә тычканның уң чирттермәсе белән төрткәч үзгәртү бите ачылсын (JavaScript кирәк)',
 'tog-showtoc'                 => 'Эчтәлек күрсәтелсен (3 тән күбрәк башламлы битләрдә)',
-'tog-rememberpassword'        => 'Хисап язмамны бу санакта $1 {{PLURAL:$1|көн|көн|көн}}гә кадәр хәтерләнсен',
+'tog-rememberpassword'        => 'Хисап язмамны бу браузерда сакларга ($1 {{PLURAL:$1|көн|көн|көн}}гә кадәр хәтерләнсен)',
 'tog-watchcreations'          => 'Төзегән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchdefault'            => 'Үзгәрткән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchmoves'              => 'Күчергән битләрем күзәтү исемлегемә өстәлсен',
@@ -370,7 +370,7 @@ $messages = array(
 'unprotectthispage' => 'Бу битнең яклауын бетерү',
 'newpage'           => 'Яңа бит',
 'talkpage'          => 'Бит турында фикер алышу',
-'talkpagelinktext'  => 'бәхәс',
+'talkpagelinktext'  => 'Бәхәс',
 'specialpage'       => 'Махсус бит',
 'personaltools'     => 'Шәхси кораллар',
 'postcomment'       => 'Яңа бүлек',
@@ -1491,7 +1491,10 @@ PICT # төрле
 'specialloguserlabel'  => 'Кулланучы:',
 'speciallogtitlelabel' => 'Башлам:',
 'log'                  => 'Көндәлекләр',
-'all-logs-page'        => 'Барлык журналлар',
+'all-logs-page'        => 'Барлык көндәлекләр',
+'alllogstext'          => '{{SITENAME}} сәхифәсенең гомуми көндәлекләре исемлеге.
+Сез нәтиҗәләрне көндәлек төре, кулланучы исеме (хәреф зурлыгын истә тотыгыз) яки куззаллаган бит (шулай ук хәреф зурлыгын истә тотыгыз) буенча тәртипкә салырга мөмкин.',
+'logempty'             => 'Кирәкле язмалар көндәлектә юк.',
 
 # Special:AllPages
 'allpages'       => 'Барлык битләр',
@@ -1572,6 +1575,7 @@ PICT # төрле
 'watch'             => 'Күзәтү',
 'watchthispage'     => 'Бу битне күзәтү',
 'unwatch'           => 'Күзәтмәскә',
+'notanarticle'      => 'Мәкалә түгел',
 'watchlist-details' => 'Күзәтү исемлегегездә, бәхәс битләрен санамыйча, {{PLURAL:$1|$1 бит|$1 бит}} бар.',
 'wlshowlast'        => 'Баягы $1 сәгать $2 көн эчендә яки $3ны күрсәт',
 'watchlist-options' => 'Күзәтү исемлеге көйләүләре',
@@ -1894,9 +1898,9 @@ $1',
 'tooltip-t-upload'                => 'Файлларны йөкләү',
 'tooltip-t-specialpages'          => 'Барлык махсус битләр исемлеге',
 'tooltip-t-print'                 => 'Бу битнең бастыру версиясе',
-'tooltip-t-permalink'             => 'Битнең бу юрамасыга даими сылтама',
+'tooltip-t-permalink'             => 'Битнең бу юрамасына даими сылтама',
 'tooltip-ca-nstab-main'           => 'Мәкаләнең эчтәлеге',
-'tooltip-ca-nstab-user'           => 'Кулланучының битене карарга',
+'tooltip-ca-nstab-user'           => 'Кулланучының шәхси бите',
 'tooltip-ca-nstab-media'          => 'Медиа-файл',
 'tooltip-ca-nstab-special'        => 'Бу махсус бит, сез аны үзгәртү алмыйсыз',
 'tooltip-ca-nstab-project'        => 'Проектның бите',
@@ -1955,8 +1959,20 @@ $1',
 'markedaspatrolledtext' => 'Сайланган [[:$1]] мәкаләсенең әлеге юрамасы тикшерелгән дип тамгаланды.',
 
 # Patrol log
-'patrol-log-auto' => '(автоматик рәвештә)',
-'patrol-log-diff' => ' $1 юрама',
+'patrol-log-page'      => 'Тикшерү көндәлеге',
+'patrol-log-header'    => 'Бу тикшерелгән битләрнең көндәлеге.',
+'patrol-log-line'      => '$2 $3 битеннән $1ны тикшерде',
+'patrol-log-auto'      => '(автоматик рәвештә)',
+'patrol-log-diff'      => '$1 юрама',
+'log-show-hide-patrol' => '$1 тикшерү көндәлеге',
+
+# Image deletion
+'deletedrevision'       => '$1 битенең иске юрамасы бетерелде',
+'filedeleteerror-short' => 'Файлны бетерү хатасы: $1',
+'filedeleteerror-long'  => 'Файлны бетерү вакытында хаталар чыкты:
+
+$1',
+'filedelete-missing'    => '«$1» исемле файлны бетерергә мөмкин түгел, чөнки ул юк.',
 
 # Browsing diffs
 'previousdiff' => '← Алдагы үзгәртү',

@@ -26,29 +26,31 @@ class ResourceLoaderContext {
 	/* Protected Members */
 
 	protected $request;
-	protected $server;
 	protected $modules;
 	protected $language;
 	protected $direction;
 	protected $skin;
+	protected $user;
 	protected $debug;
 	protected $only;
+	protected $version;
 	protected $hash;
 
 	/* Methods */
 
-	public function __construct( WebRequest $request, $server ) {
+	public function __construct( WebRequest $request ) {
 		global $wgLang, $wgDefaultSkin;
 
 		$this->request = $request;
-		$this->server = $server;
 		// Interperet request
 		$this->modules = explode( '|', $request->getVal( 'modules' ) );
 		$this->language = $request->getVal( 'lang' );
 		$this->direction = $request->getVal( 'dir' );
 		$this->skin = $request->getVal( 'skin' );
-		$this->debug = $request->getVal( 'debug' ) === 'true' || $request->getBool( 'debug' );
+		$this->user = $request->getVal( 'user' );
+		$this->debug = $request->getBool( 'debug' ) && $request->getVal( 'debug' ) === 'true';
 		$this->only = $request->getVal( 'only' );
+		$this->version = $request->getVal( 'version' );
 
 		// Fallback on system defaults
 		if ( !$this->language ) {
@@ -68,10 +70,6 @@ class ResourceLoaderContext {
 		return $this->request;
 	}
 
-	public function getServer() {
-		return $this->server;
-	}
-
 	public function getModules() {
 		return $this->modules;
 	}
@@ -88,12 +86,20 @@ class ResourceLoaderContext {
 		return $this->skin;
 	}
 
+	public function getUser() {
+		return $this->user;
+	}
+
 	public function getDebug() {
 		return $this->debug;
 	}
 
 	public function getOnly() {
 		return $this->only;
+	}
+
+	public function getVersion() {
+		return $this->version;
 	}
 
 	public function shouldIncludeScripts() {
@@ -110,6 +116,8 @@ class ResourceLoaderContext {
 
 	public function getHash() {
 		return isset( $this->hash ) ?
-			$this->hash : $this->hash = implode( '|', array( $this->language, $this->skin, $this->debug ) );
+			$this->hash : $this->hash = implode( '|', array(
+				$this->language, $this->direction, $this->skin, $this->user, $this->debug, $this->only, $this->version
+			) );
 	}
 }

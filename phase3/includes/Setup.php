@@ -29,6 +29,7 @@ if ( !isset( $wgVersion ) ) {
 // Set various default paths sensibly...
 if( $wgScript === false ) $wgScript = "$wgScriptPath/index$wgScriptExtension";
 if( $wgRedirectScript === false ) $wgRedirectScript = "$wgScriptPath/redirect$wgScriptExtension";
+if( $wgLoadScript === false ) $wgLoadScript = "$wgScriptPath/load$wgScriptExtension";
 
 if( $wgArticlePath === false ) {
 	if( $wgUsePathInfo ) {
@@ -181,7 +182,6 @@ wfSuppressWarnings();
 date_default_timezone_set( date_default_timezone_get() );
 wfRestoreWarnings();
 
-$wgIP = false; # Load on demand
 # Can't stub this one, it sets up $_GET and $_REQUEST in its constructor
 $wgRequest = new WebRequest;
 

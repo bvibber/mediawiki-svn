@@ -1,14 +1,16 @@
 <?php
 
+require_once 'api/ApiSetup.php';
 
 class UploadFromUrlTest extends ApiTestSetup {
 
 	public function setUp() {
-		global $wgEnableUploads, $wgAllowCopyUploads;
+		global $wgEnableUploads, $wgAllowCopyUploads, $wgAllowAsyncCopyUploads;
 		parent::setup();
 
 		$wgEnableUploads = true;
 		$wgAllowCopyUploads = true;
+		$wgAllowAsyncCopyUploads = true;
 		wfSetupSession();
 
 		ini_set( 'log_errors', 1 );
@@ -244,6 +246,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 		) );
 		
 		$job = Job::pop();
+		$this->assertEquals( 'UploadFromUrlJob', get_class( $job ) );
 		$job->run();
 		
 		$this->assertTrue( wfLocalFile( 'UploadFromUrlTest.png' )->exists() );		

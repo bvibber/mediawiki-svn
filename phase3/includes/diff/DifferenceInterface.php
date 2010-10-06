@@ -812,10 +812,34 @@ CONTROL;
 		}
 
 		$n = $this->mTitle->countRevisionsBetween( $oldid, $newid );
-		if ( !$n )
+		if ( !$n ) {
 			return '';
-
-		return wfMsgExt( 'diff-multi', array( 'parseinline' ), $n );
+		} else {
+			global $wgLang;
+			$dbr = wfGetDB( DB_SLAVE );
+			
+			// Actually, the limit is $limit + 1. We do this so we can detect
+			// if there are > 100 authors in a given revision range. If they
+			// are, $limit will be passed to diff-multi-manyusers for l10n.
+			$limit = 100;
+			$res = $dbr->select( 'revision', 'DISTINCT rev_user_text',
+				array(
+					'rev_page = ' . $this->mOldRev->getPage(),
+					'rev_id > ' . $this->mOldRev->getId(),
+					'rev_id < ' . $this->mNewRev->getId()
+				), __METHOD__,
+				array( 'LIMIT' => $limit + 1 )
+			);
+			$numUsers = $dbr->numRows( $res );
+			if( $numUsers > $limit ) {
+				$msg = 'diff-multi-manyusers';
+				$numUsers = $limit;
+			} else {
+				$msg = 'diff-multi';
+			}
+			return wfMsgExt( $msg, array( 'parseinline' ), $wgLang->formatnum( $n ),
+				$wgLang->formatnum( $numUsers ) );
+		}
 	}
 
 

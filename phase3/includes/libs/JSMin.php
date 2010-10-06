@@ -42,7 +42,7 @@
  * @copyright 2008 Ryan Grove <ryan@wonko.com> (PHP port)
  * @license http://opensource.org/licenses/mit-license.php MIT License
  * @version 1.1.1 (2008-03-02)
- * @link http://code.google.com/p/jsmin-php/
+ * @link http://github.com/rgrove/jsmin-php/
  */
 
 class JSMin {
@@ -60,10 +60,8 @@ class JSMin {
 	// -- Public Static Methods --------------------------------------------------
 
 	public static function minify( $js ) {
-		wfProfileIn( __METHOD__ );
 		$jsmin = new JSMin( $js );
 		$ret = $jsmin->min();
-		wfProfileOut( __METHOD__ );
 		return $ret;
 	}
 

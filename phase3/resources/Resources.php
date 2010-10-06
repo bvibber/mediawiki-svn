@@ -6,10 +6,14 @@ ResourceLoader::register( array(
 	
 	'site' => new ResourceLoaderSiteModule,
 	'startup' => new ResourceLoaderStartUpModule,
+	'user' => new ResourceLoaderUserModule,
+	'user.preferences' => new ResourceLoaderUserPreferencesModule,
 	
 	/* Skins */
 	
-	'vector' => new ResourceLoaderFileModule( array( 'styles' => 'skins/vector/main-ltr.css' ) ),
+	'vector' => new ResourceLoaderFileModule(
+		array( 'styles' => array( 'skins/vector/screen.css' => array( 'media' => 'screen' ) ) )
+	),
 	
 	/* jQuery */
 	
@@ -17,8 +21,39 @@ ResourceLoader::register( array(
 	
 	/* jQuery Plugins */
 	
-	'jquery.tabIndex' => new ResourceLoaderFileModule( array( 'scripts' => 'resources/jquery/jquery.tabIndex.js' ) ),
-	'jquery.cookie' => new ResourceLoaderFileModule( array( 'scripts' => 'resources/jquery/jquery.cookie.js' ) ),
+	'jquery.async' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.async.js' )
+	),
+	'jquery.autoEllipsis' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.autoEllipsis.js' )
+	),
+	'jquery.color' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.color.js' )
+	),
+	'jquery.cookie' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.cookie.js' )
+	),
+	'jquery.delayedBind' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.delayedBind.js' )
+	),
+	'jquery.expandableField' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.expandableField.js' )
+	),
+	'jquery.highlightText' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.highlightText.js' )
+	),
+	'jquery.suggestions' => new ResourceLoaderFileModule(
+		array(
+			'scripts' => 'resources/jquery/jquery.suggestions.js',
+			'styles' => 'resources/jquery/jquery.suggestions.css',
+		)
+	),
+	'jquery.tabIndex' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.tabIndex.js' )
+	),
+	'jquery.textSelection' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.textSelection.js' )
+	),
 	
 	/* jQuery UI */
 	
@@ -284,7 +319,7 @@ ResourceLoader::register( array(
 		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.commonPrint' => new ResourceLoaderFileModule( array(
-		'scripts' => 'skins/common/commonPrint.css',
+		'styles' => array( 'skins/common/commonPrint.css' => array( 'media' => 'print' ) ),
 	) ),
 	'mediawiki.legacy.config' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/config.js',
@@ -323,6 +358,7 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.mwsuggest' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/mwsuggest.js',
 		'dependencies' => 'mediawiki.legacy.wikibits',
+		'messages' => array( 'search-mwsuggest-enabled', 'search-mwsuggest-disabled' ),
 	) ),
 	'mediawiki.legacy.password' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/password.js',
@@ -350,7 +386,10 @@ ResourceLoader::register( array(
 		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.shared' => new ResourceLoaderFileModule( array(
-		'styles' => array( 'skins/common/shared.css', 'skins/common/oldshared.css' ),
+		'styles' => array( 'skins/common/shared.css' => array( 'media' => 'screen' ) ),
+	) ),
+	'mediawiki.legacy.oldshared' => new ResourceLoaderFileModule( array(
+		'styles' => array( 'skins/common/oldshared.css' => array( 'media' => 'screen' ) ),
 	) ),
 	'mediawiki.legacy.upload' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/upload.js',
@@ -359,5 +398,8 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.wikibits' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/wikibits.js',
 		'messages' => array( 'showtoc', 'hidetoc' ),
+	) ),
+	'mediawiki.legacy.wikiprintable' => new ResourceLoaderFileModule( array(
+		'styles' => array( 'skins/common/wikiprintable.css' => array( 'media' => 'print' ) ),
 	) ),
 ) );

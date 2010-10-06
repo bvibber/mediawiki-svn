@@ -22,46 +22,9 @@
 
 /**
  * Dynamic JavaScript and CSS resource loading system
- *
- * @example
- * 	// Registers a module with the resource loading system
- * 	ResourceLoader::register( 'foo', array(
- * 		// Script or list of scripts to include when implementating the module (required)
- * 		'script' => 'resources/foo/foo.js',
- * 		// List of scripts or lists of scripts to include based on the current language
- * 		'locales' => array(
- * 			'en-gb' => 'resources/foo/locales/en-gb.js',
- * 		),
- * 		// Script or list of scripts to include only when in debug mode
- * 		'debug' => 'resources/foo/debug.js',
- * 		// If this module is going to be loaded before the mediawiki module is ready such as jquery or the mediawiki
- * 		// module itself, it can be included without special loader wrapping - this will also limit the module to not be
- * 		// able to specify needs, custom loaders, styles, themes or messages (any of the options below) - raw scripts
- * 		// get registered as 'ready' after the mediawiki module is ready, so they can be named as dependencies
- * 		'raw' => false,
- * 		// Modules or list of modules which are needed and should be used when generating loader code
- * 		'needs' => 'resources/foo/foo.js',
- * 		// Script or list of scripts which will cause loader code to not be generated - if you are doing something fancy
- * 		// with your dependencies this gives you a way to use custom registration code
- * 		'loader' => 'resources/foo/loader.js',
- * 		// Style-sheets or list of style-sheets to include
- * 		'style' => 'resources/foo/foo.css',
- * 		// List of style-sheets or lists of style-sheets to include based on the skin - if no match is found for current
- * 		// skin, 'default' is used - if default doesn't exist nothing is added
- * 		'themes' => array(
- * 			'default' => 'resources/foo/themes/default/foo.css',
- * 			'vector' => 'resources/foo/themes/vector.foo.css',
- * 		),
- * 		// List of keys of messages to include
- * 		'messages' => array( 'foo-hello', 'foo-goodbye' ),
- * 		// Subclass of ResourceLoaderModule to use for custom modules
- * 		'class' => 'ResourceLoaderSiteJSModule',
- * 	) );
- * @example
- * 	// Responds to a resource loading request
- * 	ResourceLoader::respond( $wgRequest, $wgServer . wfScript( 'load' ) );
  */
 class ResourceLoader {
+
 	/* Protected Static Members */
 
 	// @var array list of module name/ResourceLoaderModule object pairs
@@ -186,7 +149,9 @@ class ResourceLoader {
 		foreach ( self::$modules as $name => $module ) {
 			// Support module loader scripts
 			if ( ( $loader = $module->getLoaderScript() ) !== false ) {
-				$scripts .= $loader;
+				$deps = FormatJson::encode( $module->getDependencies() );
+				$version = wfTimestamp( TS_ISO_8601, round( $module->getModifiedTime( $context ), -2 ) );
+				$scripts .= "( function( name, version, dependencies ) { $loader } )( '$name', '$version', $deps );";
 			}
 			// Automatically register module
 			else {
@@ -226,6 +191,9 @@ class ResourceLoader {
 	 * @param $context ResourceLoaderContext object
 	 */
 	public static function respond( ResourceLoaderContext $context ) {
+		global $wgResourceLoaderVersionedClientMaxage, $wgResourceLoaderVersionedServerMaxage;
+		global $wgResourceLoaderUnversionedServerMaxage, $wgResourceLoaderUnversionedClientMaxage;
+
 		// Split requested modules into two groups, modules and missing
 		$modules = array();
 		$missing = array();
@@ -238,33 +206,31 @@ class ResourceLoader {
 			}
 		}
 
-		// Calculate the mtime and caching maxages for this request. We need this, 304 or no 304
-		$mtime = 1;
-		$maxage = PHP_INT_MAX;
-		$smaxage = PHP_INT_MAX;
+		// If a version wasn't specified we need a shorter expiry time for updates to propagate to clients quickly
+		if ( is_null( $context->getVersion() ) ) {
+			$maxage = $wgResourceLoaderUnversionedClientMaxage;
+			$smaxage = $wgResourceLoaderUnversionedServerMaxage;
+		}
+		// If a version was specified we can use a longer expiry time since changing version numbers causes cache misses
+		else {
+			$maxage = $wgResourceLoaderVersionedClientMaxage;
+			$smaxage = $wgResourceLoaderVersionedServerMaxage;
+		}
 
+		// To send Last-Modified and support If-Modified-Since, we need to detect the last modified time
+		$mtime = 1;
 		foreach ( $modules as $name ) {
 			$mtime = max( $mtime, self::$modules[$name]->getModifiedTime( $context ) );
-			$maxage = min( $maxage, self::$modules[$name]->getClientMaxage() );
-			$smaxage = min( $smaxage, self::$modules[$name]->getServerMaxage() );
 		}
 
-		// Output headers
-		if ( $context->getOnly() === 'styles' ) {
-			header( 'Content-Type: text/css' );
-		} else {
-			header( 'Content-Type: text/javascript' );
-		}
-
+		header( 'Content-Type: ' . ( $context->getOnly() === 'styles' ? 'text/css' : 'text/javascript' ) );
 		header( 'Last-Modified: ' . wfTimestamp( TS_RFC2822, $mtime ) );
-		$expires = wfTimestamp( TS_RFC2822, min( $maxage, $smaxage ) + time() );
-		header( "Cache-Control: public, maxage=$maxage, s-maxage=$smaxage" );
-		header( "Expires: $expires" );
+		header( "Cache-Control: public, max-age=$maxage, s-maxage=$smaxage" );
+		header( 'Expires: ' . wfTimestamp( TS_RFC2822, min( $maxage, $smaxage ) + time() ) );
 
-		// Check if there's an If-Modified-Since header and respond with a 304 Not Modified if possible
+		// If there's an If-Modified-Since header, respond with a 304 appropriately
 		$ims = $context->getRequest()->getHeader( 'If-Modified-Since' );
-
-		if ( $ims !== false && wfTimestamp( TS_UNIX, $ims ) == $mtime ) {
+		if ( $ims !== false && $mtime >= wfTimestamp( TS_UNIX, $ims ) ) {
 			header( 'HTTP/1.0 304 Not Modified' );
 			header( 'Status: 304 Not Modified' );
 			return;
@@ -275,7 +241,7 @@ class ResourceLoader {
 
 		// Pre-fetch blobs
 		$blobs = $context->shouldIncludeMessages() ?
-			MessageBlobStore::get( $modules, $context->getLanguage() ) : array();
+		MessageBlobStore::get( $modules, $context->getLanguage() ) : array();
 
 		// Generate output
 		foreach ( $modules as $name ) {
@@ -287,16 +253,19 @@ class ResourceLoader {
 			}
 
 			// Styles
-			$styles = '';
+			$styles = array();
 
 			if (
-				$context->shouldIncludeStyles() &&
-				( $styles .= self::$modules[$name]->getStyle( $context ) ) !== ''
+				$context->shouldIncludeStyles() && ( count( $styles = self::$modules[$name]->getStyles( $context ) ) )
 			) {
-				if ( self::$modules[$name]->getFlip( $context ) ) {
-					$styles = self::filter( 'flip-css', $styles );
+				foreach ( $styles as $media => $style ) {
+					if ( self::$modules[$name]->getFlip( $context ) ) {
+						$styles[$media] = self::filter( 'flip-css', $style );
+					}
+					if ( !$context->getDebug() ) {
+						$styles[$media] = self::filter( 'minify-css', $style );
+					}
 				}
-				$styles = $context->getDebug() ? $styles : self::filter( 'minify-css', $styles );
 			}
 
 			// Messages
@@ -304,14 +273,25 @@ class ResourceLoader {
 
 			// Output
 			if ( $context->getOnly() === 'styles' ) {
-				echo $styles;
+				if ( $context->getDebug() ) {
+					echo "/* $name */\n";
+					foreach ( $styles as $media => $style ) {
+						echo "@media $media {\n" . str_replace( "\n", "\n\t", "\t" . $style ) . "\n}\n";
+					}
+				} else {
+					foreach ( $styles as $media => $style ) {
+						if ( strlen( $style ) ) {
+							echo "@media $media{" . $style . "}";
+						}
+					}
+				}
 			} else if ( $context->getOnly() === 'scripts' ) {
 				echo $scripts;
 			} else if ( $context->getOnly() === 'messages' ) {
 				echo "mediaWiki.msg.set( $messages );\n";
 			} else {
-				$styles = Xml::escapeJsString( $styles );
-				echo "mediaWiki.loader.implement( '$name', function() {{$scripts}},\n'$styles',\n$messages );\n";
+				$styles = FormatJson::encode( $styles );
+				echo "mediaWiki.loader.implement( '$name', function() {{$scripts}},\n$styles,\n$messages );\n";
 			}
 		}
 
@@ -324,7 +304,7 @@ class ResourceLoader {
 			}
 
 			$statuses = FormatJson::encode( $statuses );
-			echo "mediaWiki.loader.state( $statuses );";
+			echo "mediaWiki.loader.state( $statuses );\n";
 		}
 
 		// Register missing modules

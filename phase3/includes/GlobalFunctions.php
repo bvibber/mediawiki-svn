@@ -1452,14 +1452,6 @@ function wfExpandUrl( $url ) {
 }
 
 /**
- * This is obsolete, use SquidUpdate::purge()
- * @deprecated
- */
-function wfPurgeSquidServers( $urlArr ) {
-	SquidUpdate::purge( $urlArr );
-}
-
-/**
  * Windows-compatible version of escapeshellarg()
  * Windows doesn't recognise single-quotes in the shell, but the escapeshellarg()
  * function puts single quotes in regardless of OS.
@@ -3339,9 +3331,8 @@ function wfCountDown( $n ) {
  *              characters before hashing.
  */
 function wfGenerateToken( $salt = '' ) {
- 	$salt = serialize( $salt );
-
- 	return md5( mt_rand( 0, 0x7fffffff ) . $salt );
+	$salt = serialize( $salt );
+	return md5( mt_rand( 0, 0x7fffffff ) . $salt );
 }
 
 /**

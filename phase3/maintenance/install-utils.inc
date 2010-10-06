@@ -180,14 +180,7 @@ function readlineEmulation( $prompt ) {
 function dbsource( $fname, $db = false ) {
 	wfDeprecated( __METHOD__ );
 	if ( !$db ) {
-		// Try $wgDatabase, which is used in the install and update scripts
-		global $wgDatabase;
-		if ( isset( $wgDatabase ) ) {
-			$db = $wgDatabase;
-		} else {
-			// No? Well, we must be outside of those scripts, so use the standard method
-			$db = wfGetDB( DB_MASTER );
-		}
+		$db = wfGetDB( DB_MASTER );
 	}
 	$error = $db->sourceFile( $fname );
 	if ( $error !== true ) {
@@ -196,19 +189,9 @@ function dbsource( $fname, $db = false ) {
 	}
 }
 
-/**
- * Helper function: check if the given key is present in the updatelog table.
- * Obviously, only use this for updates that occur after the updatelog table was
- * created!
- */
-function update_row_exists( $key ) {
-	$row = wfGetDB( DB_MASTER )->selectRow(
-		'updatelog',
-		'1',
-		array( 'ul_key' => $key ),
-		__FUNCTION__
-	);
-	return (bool)$row;
+function archive( $name ) {
+	wfDeprecated( __METHOD__ );
+	return DatabaseBase::patchPath( $name );
 }
 
 /**

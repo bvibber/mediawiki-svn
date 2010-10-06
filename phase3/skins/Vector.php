@@ -47,19 +47,8 @@ class SkinVector extends SkinTemplate {
 	 * @param $out OutputPage object
 	 */
 	function setupSkinUserCss( OutputPage $out ){
-		global $wgVectorExtraStyles;
-
 		parent::setupSkinUserCss( $out );
-		
 		$out->addModuleStyles( 'vector' );
-
-		// Add extra stylesheets
-		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
-		if ( is_array( $wgVectorExtraStyles ) ) {
-			foreach ( $wgVectorExtraStyles as $style ) {
-				$out->addStyle( "vector/$style", 'screen' );
-			}
-		}
 	}
 
 	/**
@@ -560,10 +549,10 @@ class VectorTemplate extends QuickTemplate {
 			<div style="clear:both"></div>
 		</div>
 		<!-- /footer -->
+		<?php $this->html( 'bottomscripts' ); /* JS call to runBodyOnloadHook */ ?>
 		<!-- fixalpha -->
 		<script type="<?php $this->text('jsmimetype') ?>"> if ( window.isMSIE55 ) fixalpha(); </script>
 		<!-- /fixalpha -->
-		<?php $this->html( 'bottomscripts' ); /* JS call to runBodyOnloadHook */ ?>
 		<?php $this->html( 'reporttime' ) ?>
 		<?php if ( $this->data['debug'] ): ?>
 		<!-- Debug output: <?php $this->text( 'debug' ); ?> -->

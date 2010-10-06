@@ -2198,7 +2198,7 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgLang;
 
 		if ( $sk->commonPrintStylesheet() ) {
-			$this->addStyle( 'common/wikiprintable.css', 'print' );
+			$this->addModuleStyles( 'mediawiki.legacy.wikiprintable' );
 		}
 		$sk->setupUserCss( $this );
 
@@ -2281,21 +2281,57 @@ class OutputPage {
 	}
 	
 	static function makeResourceLoaderLink( $skin, $modules, $only ) {
-		global $wgUser, $wgLang, $wgRequest;
+		global $wgUser, $wgLang, $wgRequest, $wgLoadScript;
 		// TODO: Should this be a static function of ResourceLoader instead?
+		// TODO: Divide off modules starting with "user", and add the user parameter to them
 		$query = array(
-			'modules' => implode( '|', array_unique( (array) $modules ) ),
 			'lang' => $wgLang->getCode(),
-			'debug' => $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false',
+			'debug' => ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) == 'true' ) ? 'true' : 'false',
 			'skin' => $wgUser->getSkin()->getSkinName(),
 			'only' => $only,
 		);
-		// Automatically select style/script elements
-		if ( $only === 'styles' ) {
-			return Html::linkedStyle( wfAppendQuery( wfScript( 'load' ), $query ) );
-		} else {
-			return Html::linkedScript( wfAppendQuery( wfScript( 'load' ), $query ) );
+		$moduleGroups = array( null => array(), 'user' => array() );
+		foreach ( (array) $modules as $name ) {
+			$moduleGroups[strpos( $name, 'user' ) === 0 ? 'user' : null][] = $name;
 		}
+		$links = '';
+		foreach ( $moduleGroups as $group => $modules ) {
+			if ( count( $modules ) ) {
+				sort( $modules );
+				$query['modules'] = implode( '|', array_unique( (array) $modules ) );
+				if ( $group === 'user' ) {
+					$query['user'] = $wgUser->getName();
+				}
+				// Users might change their stuff on-wiki like site or user pages, or user preferences; we need to find
+				// the highest timestamp of these user-changable modules so we can ensure cache misses upon change
+				$timestamp = 0;
+				foreach ( $modules as $name ) {
+					$module = ResourceLoader::getModule( $name );
+					if (
+						$module instanceof ResourceLoaderWikiModule ||
+						$module instanceof ResourceLoaderUserPreferencesModule
+					) {
+						$timestamp = max(
+							$timestamp,
+							$module->getModifiedTime( new ResourceLoaderContext( new FauxRequest( $query ) ) )
+						);
+					}
+				}
+				// Add a version parameter if any of the modules were user-changable
+				if ( $timestamp ) {
+					$query['version'] = wfTimestamp( TS_ISO_8601, round( $timestamp, -2 ) );
+				}
+				// Make queries uniform in order
+				ksort( $query );
+				// Automatically select style/script elements
+				if ( $only === 'styles' ) {
+					$links .= Html::linkedStyle( wfAppendQuery( $wgLoadScript, $query ) );
+				} else {
+					$links .= Html::linkedScript( wfAppendQuery( $wgLoadScript, $query ) );
+				}
+			}
+		}
+		return $links;
 	}
 	
 	/**
@@ -2307,14 +2343,17 @@ class OutputPage {
 	 * @return String: HTML fragment
 	 */
 	function getHeadScripts( Skin $sk ) {
-		global $wgUser, $wgRequest, $wgJsMimeType;
+		global $wgUser, $wgRequest;
 		global $wgUseSiteJs;
 		
 		// Statup - this will immediately load jquery and mediawiki modules
 		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
-		// Configuration
+		
+		// Configuration -- This could be merged together with the load and go, but makeGlobalVariablesScript returns a
+		// whole script tag -- grumble grumble...
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		// Support individual script requests in debug mode
+		
+		// Script and Messages "only"
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
 			// Scripts
 			foreach ( $this->getModuleScripts() as $name ) {
@@ -2334,14 +2373,15 @@ class OutputPage {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
 			}
 		}
+		
+		// Modules - let the client calculate dependencies and batch requests as it likes
 		if ( $this->getModules() ) {
-			// Modules - let the client calculate dependencies and batch requests as it likes
 			$modules = FormatJson::encode( $this->getModules() );
 			$scripts .= Html::inlineScript(
-				"if ( mediaWiki !== undefined ) { mediaWiki.loader.load( {$modules} ); }"
+				"if ( mediaWiki !== undefined ) { mediaWiki.loader.load( {$modules} ); mediaWiki.loader.go(); }"
 			);
 		}
-		// TODO: User Scripts should be included using the resource loader
+		
 		// Add user JS if enabled
 		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );
@@ -2349,22 +2389,14 @@ class OutputPage {
 				# XXX: additional security check/prompt?
 				$this->addInlineScript( $wgRequest->getText( 'wpTextbox1' ) );
 			} else {
-				$userpage = $wgUser->getUserPage();
-				foreach( array( 'common', $sk->getSkinName() ) as $name ) {
-					$scriptpage = Title::makeTitleSafe( NS_USER, $userpage->getDBkey() . '/' . $name . '.js' );
-					if ( $scriptpage && $scriptpage->exists() && ( $scriptpage->getLength() > 0 ) ) {
-						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
-						$this->addScriptFile( $userjs, $scriptpage->getLatestRevID() );
-					}
-				}
+				$scripts .= self::makeResourceLoaderLink( $sk, 'user', 'scripts' );
 			}
 		}
 		$scripts .= "\n" . $this->mScripts;
-		// This should be at the bottom of the body - below ALL other scripts
-		$scripts .= Html::inlineScript( "if ( mediaWiki !== undefined ) { mediaWiki.loader.go(); }" );
+		
 		// Add site JS if enabled
 		if ( $wgUseSiteJs ) {
-			$scripts .= self::makeResourceLoaderLink( $sk, 'sitejs', 'scripts' );
+			$scripts .= self::makeResourceLoaderLink( $sk, 'site', 'scripts' );
 		}
 		
 		return $scripts;
