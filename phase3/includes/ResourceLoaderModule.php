@@ -27,6 +27,11 @@ abstract class ResourceLoaderModule {
 	/* Protected Members */
 
 	protected $name = null;
+	
+	// In-object cache for file dependencies
+	protected $fileDeps = array();
+	// In-object cache for message blob mtime
+	protected $msgBlobMtime = array();
 
 	/* Methods */
 
@@ -91,6 +96,16 @@ abstract class ResourceLoaderModule {
 		// Stub, override expected
 		return array();
 	}
+	
+	/**
+	 * Get the group this module is in.
+	 * 
+	 * @return string of group name
+	 */
+	public function getGroup() {
+		// Stub, override expected
+		return null;
+	}
 
 	/**
 	 * Get the loader JS for this module, if set.
@@ -99,7 +114,7 @@ abstract class ResourceLoaderModule {
 	 */
 	public function getLoaderScript() {
 		// Stub, override expected
-		return '';
+		return false;
 	}
 
 	/**
@@ -121,7 +136,73 @@ abstract class ResourceLoaderModule {
 		// Stub, override expected
 		return array();
 	}
+	
+	/**
+	 * Get the files this module depends on indirectly for a given skin.
+	 * Currently these are only image files referenced by the module's CSS.
+	 *
+	 * @param $skin String: skin name
+	 * @return array of files
+	 */
+	public function getFileDependencies( $skin ) {
+		// Try in-object cache first
+		if ( isset( $this->fileDeps[$skin] ) ) {
+			return $this->fileDeps[$skin];
+		}
 
+		$dbr = wfGetDB( DB_SLAVE );
+		$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
+				'md_module' => $this->getName(),
+				'md_skin' => $skin,
+			), __METHOD__
+		);
+		if ( !is_null( $deps ) ) {
+			$this->fileDeps[$skin] = (array) FormatJson::decode( $deps, true );
+		}
+		return $this->fileDeps[$skin];
+	}
+	
+	/**
+	 * Set preloaded file dependency information. Used so we can load this
+	 * information for all modules at once.
+	 * @param $skin string Skin name
+	 * @param $deps array Array of file names
+	 */
+	public function setFileDependencies( $skin, $deps ) {
+		$this->fileDeps[$skin] = $deps;
+	}
+	
+	/**
+	 * Get the last modification timestamp of the message blob for this
+	 * module in a given language.
+	 * @param $lang string Language code
+	 * @return int UNIX timestamp, or 0 if no blob found
+	 */
+	public function getMsgBlobMtime( $lang ) {
+		if ( !count( $this->getMessages() ) )
+			return 0;
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$msgBlobMtime = $dbr->selectField( 'msg_resource', 'mr_timestamp', array(
+				'mr_resource' => $this->getName(),
+				'mr_lang' => $lang
+			), __METHOD__
+		);
+		$this->msgBlobMtime[$lang] = $msgBlobMtime ? wfTimestamp( TS_UNIX, $msgBlobMtime ) : 0;
+		return $this->msgBlobMtime[$lang];
+	}
+	
+	/**
+	 * Set a preloaded message blob last modification timestamp. Used so we
+	 * can load this information for all modules at once.
+	 * @param $lang string Language code
+	 * @param $mtime int UNIX timestamp or 0 if there is no such blob
+	 */
+	public function setMsgBlobMtime( $lang, $mtime ) {
+		$this->msgBlobMtime[$lang] = $mtime;
+	}
+	
+	
 	/* Abstract Methods */
 	
 	/**
@@ -146,6 +227,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	protected $scripts = array();
 	protected $styles = array();
 	protected $messages = array();
+	protected $group;
 	protected $dependencies = array();
 	protected $debugScripts = array();
 	protected $languageScripts = array();
@@ -170,7 +252,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * 	array(
 	 * 		// Required module options (mutually exclusive)
 	 * 		'scripts' => 'dir/script.js' | array( 'dir/script1.js', 'dir/script2.js' ... ),
-	 *
+	 * 
 	 * 		// Optional module options
 	 * 		'languageScripts' => array(
 	 * 			'[lang name]' => 'dir/lang.js' | '[lang name]' => array( 'dir/lang1.js', 'dir/lang2.js' ... )
@@ -190,6 +272,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * 			...
 	 * 		),
 	 * 		'messages' => array( 'message1', 'message2' ... ),
+	 * 		'group' => 'stuff',
 	 * 	)
 	 */
 	public function __construct( $options = array() ) {
@@ -203,6 +286,9 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 					break;
 				case 'messages':
 					$this->messages = (array)$value;
+					break;
+				case 'group':
+					$this->group = (string)$value;
 					break;
 				case 'dependencies':
 					$this->dependencies = (array)$value;
@@ -253,7 +339,16 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	public function addMessages( $messages ) {
 		$this->messages = array_merge( $this->messages, (array)$messages );
 	}
-
+	
+	/**
+	 * Sets the group of this module.
+	 *
+	 * @param $group string group name
+	 */
+	public function setGroup( $group ) {
+		$this->group = $group;
+	}
+	
 	/**
 	 * Add dependencies. Dependency information is taken into account when
 	 * loading a module on the client side. When adding a module on the
@@ -380,7 +475,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 		// Only store if modified
 		if ( $files !== $this->getFileDependencies( $context->getSkin() ) ) {
 			$encFiles = FormatJson::encode( $files );
-			$dbw = wfGetDb( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->replace( 'module_deps',
 				array( array( 'md_module', 'md_skin' ) ), array(
 					'md_module' => $this->getName(),
@@ -401,6 +496,10 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 
 	public function getMessages() {
 		return $this->messages;
+	}
+
+	public function getGroup() {
+		return $this->group;
 	}
 
 	public function getDependencies() {
@@ -430,6 +529,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 		if ( isset( $this->modifiedTime[$context->getHash()] ) ) {
 			return $this->modifiedTime[$context->getHash()];
 		}
+		wfProfileIn( __METHOD__ );
 		
 		// Sort of nasty way we can get a flat list of files depended on by all styles
 		$styles = array();
@@ -454,21 +554,12 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $context->getSkin() )
 		);
+		
+		wfProfileIn( __METHOD__.'-filemtime' );
 		$filesMtime = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
-		// Only get the message timestamp if there are messages in the module
-		$msgBlobMtime = 0;
-		if ( count( $this->messages ) ) {
-			// Get the mtime of the message blob
-			// TODO: This timestamp is queried a lot and queried separately for each module. Maybe it should be put in memcached?
-			$dbr = wfGetDb( DB_SLAVE );
-			$msgBlobMtime = $dbr->selectField( 'msg_resource', 'mr_timestamp', array(
-					'mr_resource' => $this->getName(),
-					'mr_lang' => $context->getLanguage()
-				), __METHOD__
-			);
-			$msgBlobMtime = $msgBlobMtime ? wfTimestamp( TS_UNIX, $msgBlobMtime ) : 0;
-		}
-		$this->modifiedTime[$context->getHash()] = max( $filesMtime, $msgBlobMtime );
+		wfProfileOut( __METHOD__.'-filemtime' );
+		$this->modifiedTime[$context->getHash()] = max( $filesMtime, $this->getMsgBlobMtime( $context->getLanguage() ) );
+		wfProfileOut( __METHOD__ );
 		return $this->modifiedTime[$context->getHash()];
 	}
 
@@ -557,43 +648,6 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	}
 
 	/**
-	 * Get the files this module depends on indirectly for a given skin.
-	 * Currently these are only image files referenced by the module's CSS.
-	 *
-	 * @param $skin String: skin name
-	 * @return array of files
-	 */
-	protected function getFileDependencies( $skin ) {
-		// Try in-object cache first
-		if ( isset( $this->fileDeps[$skin] ) ) {
-			return $this->fileDeps[$skin];
-		}
-
-		// Now try memcached
-		global $wgMemc;
-
-		$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $skin );
-		$deps = $wgMemc->get( $key );
-
-		if ( !$deps ) {
-			$dbr = wfGetDb( DB_SLAVE );
-			$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
-					'md_module' => $this->getName(),
-					'md_skin' => $skin,
-				), __METHOD__
-			);
-			if ( !$deps ) {
-				$deps = '[]'; // Empty array so we can do negative caching
-			}
-			$wgMemc->set( $key, $deps );
-		}
-
-		$this->fileDeps = FormatJson::decode( $deps, true );
-
-		return $this->fileDeps;
-	}
-
-	/**
 	 * Get the contents of a set of files and concatenate them, with
 	 * newlines in between. Each file is used only once.
 	 *
@@ -601,7 +655,12 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return String: concatenated contents of $files
 	 */
 	protected static function concatScripts( $files ) {
-		return implode( "\n", array_map( 'file_get_contents', array_map( array( __CLASS__, 'remapFilename' ), array_unique( (array) $files ) ) ) );
+		return implode( "\n", 
+			array_map( 
+				'file_get_contents', 
+				array_map( 
+					array( __CLASS__, 'remapFilename' ), 
+					array_unique( (array) $files ) ) ) );
 	}
 
 	protected static function organizeFilesByOption( $files, $option, $default ) {
@@ -636,7 +695,10 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 		$styles = self::organizeFilesByOption( $styles, 'media', 'all' );
 		foreach ( $styles as $media => $files ) {
 			$styles[$media] =
-				implode( "\n", array_map( array( __CLASS__, 'remapStyle' ), array_unique( (array) $files ) ) );
+				implode( "\n", 
+					array_map( 
+						array( __CLASS__, 'remapStyle' ), 
+						array_unique( (array) $files ) ) );
 		}
 		return $styles;
 	}
@@ -785,6 +847,12 @@ class ResourceLoaderSiteModule extends ResourceLoaderWikiModule {
 		}
 		return $pages;
 	}
+	
+	/* Methods */
+	
+	public function getGroup() {
+		return 'site';
+	}
 }
 
 /**
@@ -808,12 +876,18 @@ class ResourceLoaderUserModule extends ResourceLoaderWikiModule {
 		}
 		return array();
 	}
+	
+	/* Methods */
+	
+	public function getGroup() {
+		return 'user';
+	}
 }
 
 /**
  * Module for user preference customizations
  */
-class ResourceLoaderUserPreferencesModule extends ResourceLoaderModule {
+class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 
 	/* Protected Members */
 
@@ -835,40 +909,48 @@ class ResourceLoaderUserPreferencesModule extends ResourceLoaderModule {
 		if ( $user ) {
 			return $this->modifiedTime[$hash] = $user->getTouched();
 		} else {
-			return 0;
+			return 1;
 		}
+	}
+
+	public function getScript( ResourceLoaderContext $context ) {
+		$user = User::newFromName( $context->getUser() );
+		if ( $user instanceof User ) {
+			$options = FormatJson::encode( $user->getOptions() );
+		} else {
+			$options = FormatJson::encode( User::getDefaultOptions() );
+		}
+		return "mediaWiki.user.options.set( $options );";
 	}
 
 	public function getStyles( ResourceLoaderContext $context ) {
 		global $wgAllowUserCssPrefs;
 		if ( $wgAllowUserCssPrefs ) {
 			$user = User::newFromName( $context->getUser() );
-			if ( $user === false ) {
-				$user = User::newFromId( 0 );
-			}
-
+			$options = $user instanceof User ? $user->getOptions() : User::getDefaultOptions();
+			
 			$rules = array();
-			if ( ( $underline = $user->getOption( 'underline' ) ) < 2 ) {
-				$rules[] = "a { text-decoration: " . ( $underline ? 'underline' : 'none' ) . "; }";
+			if ( $options['underline'] < 2 ) {
+				$rules[] = "a { text-decoration: " . ( $options['underline'] ? 'underline' : 'none' ) . "; }";
 			}
-			if ( $user->getOption( 'highlightbroken' ) ) {
+			if ( $options['highlightbroken'] ) {
 				$rules[] = "a.new, #quickbar a.new { color: #CC2200; }\n";
 			} else {
 				$rules[] = "a.new, #quickbar a.new, a.stub, #quickbar a.stub { color: inherit; }";
 				$rules[] = "a.new:after, #quickbar a.new:after { content: '?'; color: #CC2200; }";
 				$rules[] = "a.stub:after, #quickbar a.stub:after { content: '!'; color: #772233; }";
 			}
-			if ( $user->getOption( 'justify' ) ) {
+			if ( $options['justify'] ) {
 				$rules[] = "#article, #bodyContent, #mw_content { text-align: justify; }\n";
 			}
-			if ( !$user->getOption( 'showtoc' ) ) {
+			if ( !$options['showtoc'] ) {
 				$rules[] = "#toc { display: none; }\n";
 			}
-			if ( !$user->getOption( 'editsection' ) ) {
+			if ( !$options['editsection'] ) {
 				$rules[] = ".editsection { display: none; }\n";
 			}
-			if ( ( $fontstyle = $user->getOption( 'editfont' ) ) !== 'default' ) {
-				$rules[] = "textarea { font-family: $fontstyle; }\n";
+			if ( $options['editfont'] !== 'default' ) {
+				$rules[] = "textarea { font-family: {$options['editfont']}; }\n";
 			}
 			return array( 'all' => implode( "\n", $rules ) );
 		}
@@ -880,6 +962,10 @@ class ResourceLoaderUserPreferencesModule extends ResourceLoaderModule {
 
 		return $wgContLang->getDir() !== $context->getDirection();
 	}
+	
+	public function getGroup() {
+		return 'user';
+	}
 }
 
 class ResourceLoaderStartUpModule extends ResourceLoaderModule {
@@ -890,9 +976,11 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 	/* Protected Methods */
 	
 	protected function getConfig( $context ) {
-		global $wgLoadScript, $wgScript, $wgStylePath, $wgScriptExtension, $wgArticlePath, $wgScriptPath, $wgServer,
-			$wgContLang, $wgBreakFrames, $wgVariantArticlePath, $wgActionPaths, $wgUseAjax, $wgVersion,
-			$wgEnableAPI, $wgEnableWriteAPI, $wgDBname, $wgEnableMWSuggest, $wgSitename, $wgFileExtensions;
+		global $wgLoadScript, $wgScript, $wgStylePath, $wgScriptExtension, 
+			$wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgBreakFrames, 
+			$wgVariantArticlePath, $wgActionPaths, $wgUseAjax, $wgVersion, 
+			$wgEnableAPI, $wgEnableWriteAPI, $wgDBname, $wgEnableMWSuggest, 
+			$wgSitename, $wgFileExtensions;
 
 		// Pre-process information
 		$separatorTransTable = $wgContLang->separatorTransformTable();
@@ -961,7 +1049,12 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 			// Build configuration
 			$config = FormatJson::encode( $this->getConfig( $context ) );
 			// Add a well-known start-up function
-			$scripts .= "window.startUp = function() { $registration mediaWiki.config.set( $config ); };";
+			$scripts .= <<<JAVASCRIPT
+window.startUp = function() {
+	$registration
+	mediaWiki.config.set( $config ); 
+};
+JAVASCRIPT;
 			// Build load query for jquery and mediawiki modules
 			$query = array(
 				'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
@@ -979,9 +1072,9 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 			// Build HTML code for loading jquery and mediawiki modules
 			$loadScript = Html::linkedScript( $wgLoadScript . '?' . wfArrayToCGI( $query ) );
 			// Add code to add jquery and mediawiki loading code; only if the current client is compatible
-			$scripts .= "if ( isCompatible() ) { document.write( '$loadScript' ); }";
+			$scripts .= "if ( isCompatible() ) { document.write( " . FormatJson::encode( $loadScript ) . "); }\n";
 			// Delete the compatible function - it's not needed anymore
-			$scripts .= "delete window['isCompatible'];";
+			$scripts .= "delete window['isCompatible'];\n";
 		}
 
 		return $scripts;
@@ -1005,5 +1098,11 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 		global $wgContLang;
 
 		return $wgContLang->getDir() !== $context->getDirection();
+	}
+	
+	/* Methods */
+	
+	public function getGroup() {
+		return 'startup';
 	}
 }

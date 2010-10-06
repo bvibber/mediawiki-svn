@@ -583,6 +583,9 @@ Zu viele Benutzer versuchen, diese Seite zu besuchen.
 Bitte warte einige Minuten, bevor du es noch einmal versuchst.
 
 $1',
+'pool-timeout'      => 'Timeout bis die Sperrung aufgehoben ist',
+'pool-queuefull'    => 'Poolwarteschlange ist voll',
+'pool-errorunknown' => 'Unbekannter Fehler',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Über {{SITENAME}}',
@@ -823,6 +826,11 @@ Falls das Benutzerkonto irrtümlich angelegt wurde, kannst du diese Nachricht ig
 Bitte warte, bevor du es erneut probierst.',
 'loginlanguagelabel'         => 'Sprache: $1',
 'suspicious-userlogout'      => 'Deine Abmeldeanfrage wurde verweigert, da sie vermutlich von einem defekten Browser oder einem Cache-Proxy gesendet wurde.',
+'ratelimit-excluded-ips'     => ' #<!-- Diese Zeile darf nicht verändert werden! --> <pre>
+#  Syntax:
+#  * Alles von einem #-Zeichen bis zum Ende der Zeile ist ein Kommentar
+#  * Jede nicht-leere Zeile ist eine IP-Adresse, die von der Begrenzung ausgenommen ist
+ #</pre> <!-- Diese Zeile darf nicht verändert werden! -->',
 
 # JavaScript password checks
 'password-strength'            => 'Geschätzte Passwortstärke: $1',
@@ -1151,7 +1159,7 @@ Andere Administratoren auf {{SITENAME}} haben Zugriff auf den versteckten Inhalt
 'revdelete-hide-text'         => 'Text der Version verstecken',
 'revdelete-hide-image'        => 'Dateiinhalt verstecken',
 'revdelete-hide-name'         => 'Logbuch-Aktion verstecken',
-'revdelete-hide-comment'      => 'Bearbeitungskommentar verstecken',
+'revdelete-hide-comment'      => 'Bearbeitungszusammenfassung verstecken',
 'revdelete-hide-user'         => 'Benutzername/IP-Adresse des Bearbeiters verstecken',
 'revdelete-hide-restricted'   => 'Daten auch vor Administratoren und anderen unterdrücken',
 'revdelete-radio-same'        => '(nicht ändern)',
@@ -1262,8 +1270,8 @@ Stelle sicher, dass die Versionsgeschichte einer Seite historisch korrekt ist.',
 'compareselectedversions'  => 'Gewählte Versionen vergleichen',
 'showhideselectedversions' => 'Gewählte Versionen zeigen/verstecken',
 'editundo'                 => 'rückgängig',
-'diff-multi'               => '({{PLURAL:$1|1 dazwischenliegende Version|$1 dazwischenliegende Versionen}} von {{PLURAL:$2|1 Benutzer|$2 Benutzer}} werden nicht angezeigt)',
-'diff-multi-manyusers'     => '({{PLURAL:$1|$1 dazwischenliegende Versionen}} von 100+ {{PLURAL:$2|Benutzern}}, die nicht angezeigt werden)',
+'diff-multi'               => '({{PLURAL:$1|Eine dazwischenliegende Version|$1 dazwischenliegende Versionen}} von {{PLURAL:$2|einem Benutzer|$2 Benutzern}} {{PLURAL:$1|wird|werden}} nicht angezeigt)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|$1 dazwischenliegende Versionen}} von mehr als {{PLURAL:$2|$2 Benutzern}}, die nicht angezeigt werden)',
 
 # Search results
 'searchresults'                    => 'Suchergebnisse',
@@ -1608,14 +1616,9 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'recentchanges-legend'              => 'Anzeigeoptionen',
 'recentchangestext'                 => "Auf dieser Seite kannst du die letzten Änderungen auf '''{{SITENAME}}''' nachverfolgen.",
 'recentchanges-feed-description'    => 'Verfolge mit diesem Feed die letzten Änderungen in {{SITENAME}}.',
-'recentchanges-label-legend'        => 'Legende: $1.',
-'recentchanges-legend-newpage'      => '$1 - neue Seite',
 'recentchanges-label-newpage'       => 'Neue Seite',
-'recentchanges-legend-minor'        => '$1 - kleine Änderung',
 'recentchanges-label-minor'         => 'Kleine Änderung',
-'recentchanges-legend-bot'          => '$1 - Änderung durch einen Bot',
 'recentchanges-label-bot'           => 'Änderung durch einen Bot',
-'recentchanges-legend-unpatrolled'  => '$1 - nicht-kontrollierte Änderung',
 'recentchanges-label-unpatrolled'   => 'Nicht-kontrollierte Änderung',
 'rcnote'                            => "{{PLURAL:$1|'''1''' Änderung|'''$1''' Änderungen}} in den {{PLURAL:$2|letzten 24 Stunden|letzten '''$2''' Tagen}}.
 Stand: $4, $5 Uhr.",

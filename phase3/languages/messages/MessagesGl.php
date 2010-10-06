@@ -435,6 +435,9 @@ Hai moitos usuarios intentando ver esta páxina.
 Por favor, agarde un anaco antes de intentar acceder á páxina de novo.
 
 $1',
+'pool-timeout'      => 'Tempo límite de espera para o peche',
+'pool-queuefull'    => 'A cola está chea',
+'pool-errorunknown' => 'Erro descoñecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Acerca de {{SITENAME}}',
@@ -481,7 +484,7 @@ $1',
 'thisisdeleted'           => 'Quere ver ou restaurar $1?',
 'viewdeleted'             => 'Quere ver $1?',
 'restorelink'             => '{{PLURAL:$1|unha edición borrada|$1 edicións borradas}}',
-'feedlinks'               => 'Sindicalización:',
+'feedlinks'               => 'Fonte de novas:',
 'feed-invalid'            => 'Tipo de fonte de novas inválido.',
 'feed-unavailable'        => 'As fontes de noticias non están dispoñibles',
 'site-rss-feed'           => 'Fonte de novas RSS de $1',
@@ -688,6 +691,11 @@ Pode facer caso omiso desta mensaxe se se creou esta conta por erro.',
 Por favor, agarde antes de probar outra vez.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Rexeitouse a súa petición de saír do sistema porque semella que a enviou un navegador roto ou a caché dun proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- Deixe esta liña tal e como está --> <pre>
+# A sintaxe é a seguinte:
+#   * Todo o que vaia despois dun carácter "#" ata o final da liña é un comentario
+#   * Toda liña que non estea en branco é un enderezo IP excluído do límite
+  #</pre> <!-- Deixe esta liña tal e como está -->',
 
 # JavaScript password checks
 'password-strength'            => 'Fortaleza estimada do contrasinal: $1',
@@ -1144,7 +1152,8 @@ Asegúrese de que esta modificación da páxina mantén a continuidade históric
 'compareselectedversions'  => 'Comparar as versións seleccionadas',
 'showhideselectedversions' => 'Mostrar/Agochar as versións seleccionadas',
 'editundo'                 => 'desfacer',
-'diff-multi'               => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial.)',
+'diff-multi'               => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial {{PLURAL:$2|feita por un usuario|feitas por $2 usuarios}}.)',
+'diff-multi-manyusers'     => '(Non se {{PLURAL:$1|mostra unha revisión|mostran $1 revisións}} do historial {{PLURAL:$2|feita por máis dun usuario|feitas por máis de $2 usuarios}}.)',
 
 # Search results
 'searchresults'                    => 'Resultados da procura',
@@ -1492,14 +1501,9 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'recentchanges-legend'              => 'Opcións dos cambios',
 'recentchangestext'                 => 'Sigue, nesta páxina, as modificacións máis recentes no wiki.',
 'recentchanges-feed-description'    => 'Siga os cambios máis recentes deste wiki nesta fonte de novas.',
-'recentchanges-label-legend'        => 'Lenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova páxina',
 'recentchanges-label-newpage'       => 'Esta edición creou unha nova páxina',
-'recentchanges-legend-minor'        => '$1 - edición pequena',
 'recentchanges-label-minor'         => 'Esta é unha edición pequena',
-'recentchanges-legend-bot'          => '$1 - edición feita por un bot',
 'recentchanges-label-bot'           => 'Esta edición foi realizada por un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - edición non patrullada',
 'recentchanges-label-unpatrolled'   => 'Esta edición aínda non foi comprobada',
 'rcnote'                            => "Embaixo {{PLURAL:$1|amósase '''1''' cambio|amósanse os últimos '''$1''' cambios}} {{PLURAL:$2|no último día|nos últimos '''$2''' días}} ata as $5 do $4.",
 'rcnotefrom'                        => "A continuación amósanse os cambios desde as '''$4''' do '''$3''' (móstranse ata '''$1''').",

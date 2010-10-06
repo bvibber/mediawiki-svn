@@ -410,6 +410,9 @@ Preveč uporabnikov skuša obiskati to stran.
 Prosimo za potrpežljivost, obiščite nas spet kmalu.
 
 $1',
+'pool-timeout'      => 'Časovno obdobje čakanja na zaklep',
+'pool-queuefull'    => 'Čakalna vrsta zaloge je polna',
+'pool-errorunknown' => 'Neznana napaka',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O {{GRAMMAR:dajalnik|{{SITENAME}}}}',
@@ -663,6 +666,11 @@ To sporočilo lahko prezrete, če je bil račun ustvarjen pomotoma.',
 Prosimo počakajte, preden poskusite znova.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaša zahteva za odjavo je bila zavrnjena, saj kaže, da je bila poslana iz pokvarjenega brskalnika ali proxyja s predpomnilnikom.',
+'ratelimit-excluded-ips'     => ' #<!-- pustite to vrstico takšno, kot je --> <pre>
+# Skladnja je sledeča:
+#   * Vse od znaka »#« do konca vrstice je pripomba
+#   * Vsaka neprazna vrstica je IP-naslov izključen iz omejitve ocenjevanja
+ #</pre> <!-- pustite to vrstico takšno, kot je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Ocenjena moč gesla: $1',
@@ -1111,7 +1119,8 @@ Upoštevajte, da bo uporaba navigacijskih gumbov ponastavila ta stolpec.',
 'compareselectedversions'  => 'Primerjaj izbrani redakciji',
 'showhideselectedversions' => 'Prikaži/skrij izbrane redakcije',
 'editundo'                 => 'razveljavi',
-'diff-multi'               => '({{PLURAL:$1|$1 vmesna redakcija ni prikazana|$1 vmesni redakciji nista prikazani|$1 vmesne redakcije niso prikazane|$1 vmesnih redakcij ni prikazanih}})',
+'diff-multi'               => '({{PLURAL:$1|$1 vmesna redakcija|$1 vmesni redakciji|$1 vmesne redakcije|$1 vmesnih redakcij}} {{PLURAL:$2|$2 uporabnika|$2 uporabnikov}} {{PLURAL:$1|ni prikazana|nista prikazani|niso prikazane|ni prikazanih}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|$1 vmesna redakcija|$1 vmesni redakciji|$1 vmesne redakcije|$1 vmesnih redakcij}} več kot $2 {{PLURAL:$2|uporabnika|uporabnikov}} {{PLURAL:$1|ni prikazana|nista prikazani|niso prikazane|ni prikazanih}})',
 
 # Search results
 'searchresults'                    => 'Izid iskanja',
@@ -1461,15 +1470,10 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'recentchanges-legend'              => 'Možnosti zadnjih sprememb',
 'recentchangestext'                 => 'Na tej strani lahko spremljajte najnedavnejše spremembe wikija.',
 'recentchanges-feed-description'    => 'Spremljajte najnovejše spremembe wikija prek tega vira.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova stran',
 'recentchanges-label-newpage'       => 'S tem urejanjem je bila ustvarjena nova stran',
-'recentchanges-legend-minor'        => '$1 - manjše urejanje',
 'recentchanges-label-minor'         => 'To je manjše urejanje',
-'recentchanges-legend-bot'          => '$1 - urejanja bota',
 'recentchanges-label-bot'           => 'To urejanje je bilo izvedeno z botom',
-'recentchanges-legend-unpatrolled'  => '$1 - ne-patruljirano urejanje',
-'recentchanges-label-unpatrolled'   => 'To urejanje še ni bila pregledano',
+'recentchanges-label-unpatrolled'   => 'To urejanje še ni bilo pregledano',
 'rcnote'                            => "Prikazujem {{PLURAL:$1|zadnjo spremembo|zadnji '''$1''' spremembi|zadnje '''$1''' spremembe|zadnjih '''$1''' sprememb|zadnjih '''$1''' sprememb}} v {{PLURAL:$2|zadnjem|zadnjih|zadnjih|zadnjih|zadnjih}} '''$2''' {{PLURAL:$2|dnevu|dneh|dneh|dneh|dneh}}, od $5, $4.",
 'rcnotefrom'                        => "Navedene so spremembe od '''$2''' dalje (prikazujem jih do '''$1''').",
 'rclistfrom'                        => 'Prikaži spremembe od $1 naprej',

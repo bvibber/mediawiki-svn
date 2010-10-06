@@ -2281,54 +2281,57 @@ class OutputPage {
 	}
 	
 	static function makeResourceLoaderLink( $skin, $modules, $only ) {
-		global $wgUser, $wgLang, $wgRequest, $wgLoadScript;
+		global $wgUser, $wgLang, $wgRequest, $wgLoadScript, $wgResourceLoaderDebug;
 		// TODO: Should this be a static function of ResourceLoader instead?
 		// TODO: Divide off modules starting with "user", and add the user parameter to them
 		$query = array(
 			'lang' => $wgLang->getCode(),
-			'debug' => ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) == 'true' ) ? 'true' : 'false',
+			'debug' => $wgRequest->getFuzzyBool( 'debug', $wgResourceLoaderDebug ) ? 'true' : 'false',
 			'skin' => $wgUser->getSkin()->getSkinName(),
 			'only' => $only,
 		);
-		$moduleGroups = array( null => array(), 'user' => array() );
+		// Remove duplicate module requests
+		$modules = array_unique( (array) $modules );
+		// Sort module names so requests are more uniform
+		sort( $modules );
+		// Create keyed-by-group list of module objects from modules list
+		$groups = array();
 		foreach ( (array) $modules as $name ) {
-			$moduleGroups[strpos( $name, 'user' ) === 0 ? 'user' : null][] = $name;
+			$module = ResourceLoader::getModule( $name );
+			$group = $module->getGroup();
+			if ( !isset( $groups[$group] ) ) {
+				$groups[$group] = array();
+			}
+			$groups[$group][$name] = $module;
 		}
 		$links = '';
-		foreach ( $moduleGroups as $group => $modules ) {
-			if ( count( $modules ) ) {
-				sort( $modules );
-				$query['modules'] = implode( '|', array_unique( (array) $modules ) );
-				if ( $group === 'user' ) {
-					$query['user'] = $wgUser->getName();
-				}
-				// Users might change their stuff on-wiki like site or user pages, or user preferences; we need to find
-				// the highest timestamp of these user-changable modules so we can ensure cache misses upon change
+		foreach ( $groups as $group => $modules ) {
+			$query['modules'] = implode( '|', array_keys( $modules ) );
+			// Special handling for user group
+			if ( $group === 'user' && $wgUser->isLoggedIn() ) {
+				$query['user'] = $wgUser->getName();
+			}
+			// Special handling for user and site groups; because users might change their stuff on-wiki like site or
+			// user pages, or user preferences; we need to find the highest timestamp of these user-changable modules so
+			// we can ensure cache misses on change
+			if ( $group === 'user' || $group === 'site' ) {
+				// Create a fake request based on the one we are about to make so modules return correct times
+				$request = new ResourceLoaderContext( new FauxRequest( $query ) );
+				// Get the maximum timestamp
 				$timestamp = 0;
-				foreach ( $modules as $name ) {
-					$module = ResourceLoader::getModule( $name );
-					if (
-						$module instanceof ResourceLoaderWikiModule ||
-						$module instanceof ResourceLoaderUserPreferencesModule
-					) {
-						$timestamp = max(
-							$timestamp,
-							$module->getModifiedTime( new ResourceLoaderContext( new FauxRequest( $query ) ) )
-						);
-					}
+				foreach ( $modules as $module ) {
+					$timestamp = max( $timestamp, $module->getModifiedTime( $request ) );
 				}
-				// Add a version parameter if any of the modules were user-changable
-				if ( $timestamp ) {
-					$query['version'] = wfTimestamp( TS_ISO_8601, round( $timestamp, -2 ) );
-				}
-				// Make queries uniform in order
-				ksort( $query );
-				// Automatically select style/script elements
-				if ( $only === 'styles' ) {
-					$links .= Html::linkedStyle( wfAppendQuery( $wgLoadScript, $query ) );
-				} else {
-					$links .= Html::linkedScript( wfAppendQuery( $wgLoadScript, $query ) );
-				}
+				// Add a version parameter so cache will break when things change
+				$query['version'] = wfTimestamp( TS_ISO_8601, round( $timestamp, -2 ) );
+			}
+			// Make queries uniform in order
+			ksort( $query );
+			// Automatically select style/script elements
+			if ( $only === 'styles' ) {
+				$links .= Html::linkedStyle( wfAppendQuery( $wgLoadScript, $query ) ) . "\n";
+			} else {
+				$links .= Html::linkedScript( wfAppendQuery( $wgLoadScript, $query ) ) . "\n";
 			}
 		}
 		return $links;
@@ -2343,8 +2346,7 @@ class OutputPage {
 	 * @return String: HTML fragment
 	 */
 	function getHeadScripts( Skin $sk ) {
-		global $wgUser, $wgRequest;
-		global $wgUseSiteJs;
+		global $wgUser, $wgRequest, $wgUseSiteJs, $wgResourceLoaderDebug;
 		
 		// Statup - this will immediately load jquery and mediawiki modules
 		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
@@ -2354,7 +2356,7 @@ class OutputPage {
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		
 		// Script and Messages "only"
-		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+		if ( $wgRequest->getFuzzyBool( 'debug', $wgResourceLoaderDebug ) ) {
 			// Scripts
 			foreach ( $this->getModuleScripts() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
@@ -2378,19 +2380,24 @@ class OutputPage {
 		if ( $this->getModules() ) {
 			$modules = FormatJson::encode( $this->getModules() );
 			$scripts .= Html::inlineScript(
-				"if ( mediaWiki !== undefined ) { mediaWiki.loader.load( {$modules} ); mediaWiki.loader.go(); }"
-			);
+				"if ( window.mediaWiki ) { mediaWiki.loader.load( {$modules} ); mediaWiki.loader.go(); }"
+			) . "\n";
 		}
 		
-		// Add user JS if enabled
-		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
+		// Add user JS if enabled - trying to load user.options as a bundle if possible
+		$userOptionsAdded = false;
+		if ( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );
 			if( $this->mTitle && $this->mTitle->isJsSubpage() && $sk->userCanPreview( $action ) ) {
 				# XXX: additional security check/prompt?
 				$this->addInlineScript( $wgRequest->getText( 'wpTextbox1' ) );
 			} else {
-				$scripts .= self::makeResourceLoaderLink( $sk, 'user', 'scripts' );
+				$scripts .= self::makeResourceLoaderLink( $sk, array( 'user', 'user.options' ), 'scripts' );
+				$userOptionsAdded = true;
 			}
+		}
+		if ( !$userOptionsAdded ) {
+			$scripts .= self::makeResourceLoaderLink( $sk, 'user.options', 'scripts' );
 		}
 		$scripts .= "\n" . $this->mScripts;
 		
@@ -2447,7 +2454,7 @@ class OutputPage {
 	 * @return string HTML tag links to be put in the header.
 	 */
 	public function getHeadLinks( $sk ) {
-		global $wgFeed, $wgRequest;
+		global $wgFeed, $wgRequest, $wgResourceLoaderDebug;
 
 		// Ideally this should happen earlier, somewhere. :P
 		$this->addDefaultMeta();
@@ -2518,7 +2525,7 @@ class OutputPage {
 		}
 
 		// Support individual script requests in debug mode
-		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+		if ( $wgRequest->getFuzzyBool( 'debug', $wgResourceLoaderDebug ) ) {
 			foreach ( $this->getModuleStyles() as $name ) {
 				$tags[] = self::makeResourceLoaderLink( $sk, $name, 'styles' );
 			}

@@ -482,6 +482,9 @@ $messages = array(
 Калі ласка, пачакайце і паспрабуйце зайсьці пазьней.
 
 $1',
+'pool-timeout'      => 'Скончыўся час чаканьня блякаваньня',
+'pool-queuefull'    => 'Чарга запытаў поўная',
+'pool-errorunknown' => 'Невядомая памылка',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Пра {{GRAMMAR:вінавальны|{{SITENAME}}}}',
@@ -723,6 +726,11 @@ $2',
 Калі ласка, пачакайце, перад тым, як паспрабаваць ізноў.',
 'loginlanguagelabel'         => 'Мова: $1',
 'suspicious-userlogout'      => 'Ваш запыт на выхад з сыстэмы быў адхілены, таму што выглядае, што ён быў дасланы пашкоджаным браўзэрам альбо кэшаваным проксі-сэрвэрам.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Сынтаксіс наступны:
+#  * Усё, што пачынаецца з «#» і да канца радку, зьяўляецца камэнтарам
+#  * Кожны непусты радок зьяўляюцца IP-адрасам, на які не распаўсюджваецца абмежаваньне хуткасьці
+  #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Устойлівасьць паролю: $1',
@@ -1167,7 +1175,7 @@ $1",
 'showhideselectedversions' => 'Паказаць/схаваць вызначаныя вэрсіі',
 'editundo'                 => 'адмяніць',
 'diff-multi'               => '($1 {{PLURAL:$1|прамежная вэрсія|прамежныя вэрсіі|прамежных вэрсіяў}} $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} {{PLURAL:$1|не паказаная|не паказаныя|не паказаныя}})',
-'diff-multi-manyusers'     => '($1 {{PLURAL:$1|прамежная вэрсія|прамежныя вэрсіі|прамежных вэрсіяў}} больш за 100 удзельнікаў {{PLURAL:$1|не паказаная|не паказаныя|не паказаныя}})',
+'diff-multi-manyusers'     => '($1 {{PLURAL:$1|прамежная вэрсія|прамежныя вэрсіі|прамежных вэрсіяў}} $2 {{PLURAL:$2|удзельніка|удзельнікаў|удзельнікаў}} {{PLURAL:$1|не паказаная|не паказаныя|не паказаныя}})',
 
 # Search results
 'searchresults'                    => 'Вынікі пошуку',
@@ -1512,14 +1520,9 @@ $1",
 'recentchanges-legend'              => 'Устаноўкі апошніх зьменаў',
 'recentchangestext'                 => 'Сачыце за апошнімі зьменамі ў {{GRAMMAR:месны|{{SITENAME}}}} на гэтай старонцы.',
 'recentchanges-feed-description'    => 'Сачыць за апошнімі зьменамі ў {{GRAMMAR:месны|{{SITENAME}}}} праз гэтую стужку.',
-'recentchanges-label-legend'        => 'Легенда: $1.',
-'recentchanges-legend-newpage'      => '$1 — новая старонка',
 'recentchanges-label-newpage'       => 'Гэтым рэдагаваньнем была створаная новая старонка',
-'recentchanges-legend-minor'        => '$1 — дробнае рэдагаваньне',
 'recentchanges-label-minor'         => 'Гэтае рэдагаваньне — дробнае',
-'recentchanges-legend-bot'          => '$1 — рэдагаваньне робата',
 'recentchanges-label-bot'           => 'Гэтае рэдагаваньне зробленае робатам',
-'recentchanges-legend-unpatrolled'  => '$1 — не патруляванае рэдагаваньне',
 'recentchanges-label-unpatrolled'   => 'Гэтае рэдагаваньне яшчэ не было адпатруляваным',
 'rcnote'                            => "Ніжэй {{PLURAL:$1|пададзена '''$1''' апошняя зьмена|пададзеныя '''$1''' апошнія зьмены|пададзеныя '''$1''' апошніх зьменаў}} за {{PLURAL:$2|апошні '''$2''' дзень|апошнія '''$2''' дні|апошнія '''$2''' дзён}}, па стане на $5, $4.",
 'rcnotefrom'                        => "Ніжэй знаходзяцца зьмены з '''$2''' (да '''$1''' на старонку).",

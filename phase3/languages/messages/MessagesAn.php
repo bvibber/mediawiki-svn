@@ -586,6 +586,11 @@ Si a cuenta s\'ha creyato por error, simplament ignore iste mensache.',
 'login-throttled'            => 'Ha feito masiaus intentos ta encetar una sesión. Por favor, aspere antes de prebar de fer-lo unatra vegada.',
 'loginlanguagelabel'         => 'Idioma: $1',
 'suspicious-userlogout'      => "S'ha denegau a suya demanda de zarrar a sesión ya que pareix que la ninvió un navegador defectuoso u bell proxy amagau.",
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# A sintaxi ye asinas:
+#  * Tot o que bi ha dende un carácter "#" dica a fin d\'a linia ye un comentario
+#  * Qualsiquier linia que no sía en blanco corresponde a una adreza IP excluyida d\'o limite de velocidat
+   #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => "Livel de seguranza d'a contrasenya: $1",
@@ -1018,7 +1023,8 @@ Asegure-se que iste cambio no trencará a continidat de l'historial d'a pachina.
 'compareselectedversions'  => 'Confrontar as versions trigatas',
 'showhideselectedversions' => 'Amostrar/amagar as versions trigadas',
 'editundo'                 => 'desfer',
-'diff-multi'               => "(S'ha amagato {{PLURAL:$1|una edición entremeya|$1 edicions entremeyas}}.)",
+'diff-multi'               => "(No s'amuestra {{PLURAL:$1|una edición entremeya feita|$1 edicions entremeyas feitas}} por {{PLURAL:$2|un usuario|$2 usuarios}}).",
+'diff-multi-manyusers'     => "(No s'amuestra {{PLURAL:$1|una edición entremeya|$1 edicions entremeyas}} feitas por más {{PLURAL:$2|d'un usuario|de $2 usuarios}})",
 
 # Search results
 'searchresults'                    => "Resultau d'a busca",
@@ -1362,14 +1368,9 @@ Habría de tener menos de $1 {{PLURAL:$1|carácter|carácters}}.',
 'recentchanges-legend'              => 'Opcions sobre a pachina de zaguers cambeos',
 'recentchangestext'                 => "Siga os cambeos más recients d'a wiki en ista pachina.",
 'recentchanges-feed-description'    => "Seguir os cambios más recients d'o wiki en ista fuent de noticias.",
-'recentchanges-label-legend'        => 'Leyenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - pachina nueva',
 'recentchanges-label-newpage'       => 'Ista edición ha creyau una nueva pachina',
-'recentchanges-legend-minor'        => '$1 - edición menor',
 'recentchanges-label-minor'         => 'Ista ye una edición menor',
-'recentchanges-legend-bot'          => '$1 - edición de bot',
 'recentchanges-label-bot'           => 'Ista edición fue feita por un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - edición sin patrullar',
 'recentchanges-label-unpatrolled'   => "Esta edición encara no s'ha controlato",
 'rcnote'                            => "Contino {{PLURAL:$1|s'amuestra o unico cambeo feito|s'amuestran os zaguers '''$1''' cambeos feitos}} en {{PLURAL:$2|o zaguer día|os zaguers '''$2''' días}}, dica o $5, $4.",
 'rcnotefrom'                        => "Contino s'amuestran os cambeos dende '''$2''' (dica '''$1''').",

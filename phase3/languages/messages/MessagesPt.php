@@ -525,6 +525,9 @@ Há demasiados utilizadores a tentar visionar esta página.
 Espere um pouco antes de tentar aceder à página novamente, por favor.
 
 $1',
+'pool-timeout'      => 'Tempo limite de espera para o bloqueio excedido',
+'pool-queuefull'    => 'A pool queue está cheia',
+'pool-errorunknown' => 'Erro desconhecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sobre a {{SITENAME}}',
@@ -772,6 +775,11 @@ Se a conta foi criada por engano, pode ignorar esta mensagem.',
 Aguarde antes de tentar novamente, por favor.',
 'loginlanguagelabel'         => 'Língua: $1',
 'suspicious-userlogout'      => 'O seu pedido para sair foi negado porque parece ter sido enviado por um browser danificado ou por um proxy com cache.',
+'ratelimit-excluded-ips'     => ' #<!-- deixe esta linha exactamente como está --> <pre>
+# A sintaxe é a seguinte:
+#  * Tudo desde um símbolo de cardinal (#) até ao fim da linha é um comentário
+#  * Qualquer linha que não esteja em branco é um endereço IP isento dos limites de velocidade de operação
+ #</pre> <!-- deixe esta linha exactamente como está -->',
 
 # JavaScript password checks
 'password-strength'            => 'Estimativa da segurança da palavra-chave: $1',
@@ -1241,7 +1249,7 @@ Note que, se usar os links de navegação, os botões de opção voltarão aos v
 'compareselectedversions'  => 'Compare as versões seleccionadas',
 'showhideselectedversions' => 'Mostrar/ocultar versões selecionadas',
 'editundo'                 => 'desfazer',
-'diff-multi'               => '({{PLURAL:$1|uma edição intermédia|$1 edições intermédias}} de {{PLURAL:$2|um utilizador|$2 utilizadores}} {{PLURAL:$1|não apresentada|não apresentadas}})',
+'diff-multi'               => '({{PLURAL:$1|Uma edição intermédia|$1 edições intermédias}} de {{PLURAL:$2|um utilizador|$2 utilizadores}} {{PLURAL:$1|não apresentada|não apresentadas}})',
 'diff-multi-manyusers'     => '({{PLURAL:$1|Uma edição intermédia|$1 edições intermédias}} de mais de {{PLURAL:$2|um utilizador|$2 utilizadores}} não {{PLURAL:$1|apresentada|apresentadas}})',
 
 # Search results
@@ -1592,14 +1600,9 @@ Também permite que outros entrem em contacto consigo através da sua página de
 'recentchanges-legend'              => 'Opções das mudanças recentes',
 'recentchangestext'                 => 'Acompanhe nesta página as mudanças mais recentes da wiki.',
 'recentchanges-feed-description'    => "Acompanhe neste ''feed'' as mudanças mais recentes da wiki.",
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - página nova',
 'recentchanges-label-newpage'       => 'Esta edição criou uma página nova',
-'recentchanges-legend-minor'        => '$1 - edição menor',
 'recentchanges-label-minor'         => 'Esta é uma edição menor',
-'recentchanges-legend-bot'          => '$1 - edição de robô',
 'recentchanges-label-bot'           => 'Esta edição foi feita por um robô',
-'recentchanges-legend-unpatrolled'  => '$1 - edição não patrulhada',
 'recentchanges-label-unpatrolled'   => 'Esta edição ainda não foi patrulhada',
 'rcnote'                            => "A seguir {{PLURAL:$1|está listada '''uma''' alteração ocorrida|estão listadas '''$1''' alterações ocorridas}} {{PLURAL:$2|no último dia|nos últimos '''$2''' dias}}, a partir das $5 de $4.",
 'rcnotefrom'                        => 'Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).',
@@ -2713,8 +2716,8 @@ Se desejar, pode utilizar um link (por exemplo, [[{{#Special:Export}}/{{MediaWik
 'allmessagesname'               => 'Nome',
 'allmessagesdefault'            => 'Texto padrão',
 'allmessagescurrent'            => 'Texto actual',
-'allmessagestext'               => 'Esta é uma lista das mensagens de sistema disponíveis no espaço nominal {{ns:mediawiki}}.
-Por favor, visite [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [http://translatewiki.net translatewiki.net] se deseja participar na localização do MediaWiki.',
+'allmessagestext'               => 'Esta é a lista das mensagens de sistema disponíveis no espaço nominal MediaWiki.
+Se deseja colaborar na localização genérica do MediaWiki, visite [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e a [http://translatewiki.net translatewiki.net].',
 'allmessagesnotsupportedDB'     => "Esta página não pode ser utilizada, uma vez que '''\$wgUseDatabaseMessages''' foi desativado.",
 'allmessages-filter-legend'     => 'Filtro',
 'allmessages-filter'            => 'Filtrar pelo estado de personalização:',

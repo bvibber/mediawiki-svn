@@ -1283,7 +1283,7 @@ SQL;
 	}
 
 	function setup_database() {
-		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
+		global $wgDBmwschema, $wgDBuser;
 
 		// Make sure that we can write to the correct schema
 		// If not, Postgres will happily and silently go to the next search_path item
@@ -1310,16 +1310,6 @@ SQL;
 			print " <b>FAILED</b></li>\n";
 			dieout( htmlspecialchars( $res ) );
 		}
-
-		# Update version information
-		$mwv = $this->addQuotes( $wgVersion);
-		$pgv = $this->addQuotes( $this->getServerVersion() );
-		$pgu = $this->addQuotes( $this->mUser );
-		$mws = $this->addQuotes( $wgDBmwschema );
-		$tss = $this->addQuotes( $wgDBts2schema );
-		$pgp = $this->addQuotes( $wgDBport );
-		$dbn = $this->addQuotes( $this->mDBname );
-		$ctype = $this->addQuotes( pg_fetch_result( $this->doQuery( 'SHOW lc_ctype' ), 0, 0 ) );
 
 		echo '<li>Populating interwiki table... ';
 		# Avoid the non-standard "REPLACE INTO" syntax

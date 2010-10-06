@@ -393,6 +393,7 @@ Zevill Benotzer versichen dës Säit ze gesinn.
 Waart w.e.g. e bëssen ier Dir versicht dës Säit nach emol opzeruffen.
 
 $1",
+'pool-errorunknown' => 'Onbekannte Feeler',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Iwwer {{SITENAME}}',
@@ -1078,7 +1079,7 @@ Denkt w.e.g drunn datt d'Navigatiounslinken d'Wiel vun de Versiounen nees zréck
 'showhideselectedversions' => 'Erausgesichte Versioune weisen/verstoppen',
 'editundo'                 => 'zréck',
 'diff-multi'               => '({{PLURAL:$1|Eng Tëscheversioun|$1 Tëscheversioune}} vun {{PLURAL:$2|engem|$2}} Benotzer {{PLURAL:$1|¨gëtt|ginn}} net gewisen)',
-'diff-multi-manyusers'     => '($1 Tëscheversioune vu méi wéi 100 Benotzer ginn net gewisen)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Eng Tëscheversioun|$1 Tëscheversioune}} vu méi wéi $2 {{PLURAL:$2|Benotzer|Benotzer}} ginn net gewisen)',
 
 # Search results
 'searchresults'                    => 'Resultat vun der Sich',
@@ -1423,14 +1424,9 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op Ärer Be
 'recentchanges-legend'              => 'Optioune vun de rezenten Ännerungen',
 'recentchangestext'                 => "Op dëser Säit kënnt Dir déi rezent Ännerungen op '''{{SITENAME}}''' gesinn.",
 'recentchanges-feed-description'    => 'Verfollegt mat dësem Feed déi rezent Ännerungen op {{SITENAME}}.',
-'recentchanges-label-legend'        => 'Legend: $1.',
-'recentchanges-legend-newpage'      => '$1 - nei Säit',
 'recentchanges-label-newpage'       => 'Dës Ännerung huet eng nei Säit ugeluecht',
-'recentchanges-legend-minor'        => '$1 - kleng Ännerung',
 'recentchanges-label-minor'         => 'Dëst ass eng kleng Ännerung',
-'recentchanges-legend-bot'          => '$1 - Ännerung duerch e Bot',
 'recentchanges-label-bot'           => 'Dës Ännerung gouf vun engem Bot gemaacht',
-'recentchanges-legend-unpatrolled'  => '$1 - net-nogekuckten Ännerung',
 'recentchanges-label-unpatrolled'   => 'Dës Ännerung gouf nach net nogekuckt',
 'rcnote'                            => "Hei {{PLURAL:$1|ass déi lescht Ännerung|sinn déi lescht '''$1''' Ännerungen}} {{PLURAL:$2|vum leschten Dag|vun de leschten '''$2''' Deeg}}, Stand: $4 ëm $5 Auer.",
 'rcnotefrom'                        => "Ugewise ginn d'Ännerunge vum '''$2''' un (maximal '''$1''' Ännerunge gi gewisen).",

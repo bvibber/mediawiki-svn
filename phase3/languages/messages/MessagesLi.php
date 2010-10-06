@@ -389,6 +389,9 @@ Te väöl gebroekers perberen óm dees pazjena te bekieke.
 Wach estebleef nag efkes veudet g'r óppernuuj toegank verzeuk te kriege toet dees pazjena.
 
 $1",
+'pool-timeout'      => "Timeout-wachte veur 't sloete",
+'pool-queuefull'    => 'De wachrie van de pool is vól',
+'pool-errorunknown' => 'Ónbekènde fout',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Euver {{SITENAME}}',
@@ -624,6 +627,11 @@ Negeer dit berich as deze gebroeker zonger dien medewete is aangemaak.',
 Doe mós effe wachte ierdets te 't obbenuuts kens perbere.",
 'loginlanguagelabel'         => 'Taol: $1',
 'suspicious-userlogout'      => "Die verzeuk óm aaf te mèlje is genegeerdj gewaoren, ómdet 't liek det 't verzeuk is verzónje dórch 'ne browser of cacheproxy dae kepót is.",
+'ratelimit-excluded-ips'     => " #<!-- laot deze regel wie d'r is --> <pre>
+# De syntaxis is es volg:
+#   * Alle teks vanaaf 't \"#\"-teike toet 't ènj van de regels weurt gezeen es opmèrking
+#   * Edere neet-laege regel is 'n IP-adres woróp gein snelheidsbepèrkinge van toepassing zeen
+ #</pre> <!-- laot deze regel wie d'r is -->",
 
 # JavaScript password checks
 'password-strength'            => 'Gesjatdje wachwaordjstèrkdje: $1',
@@ -870,7 +878,7 @@ De door $3 opgegaeve reje is ''$2''",
 'page_last'              => 'lèste',
 'histlegend'             => 'Verklaoring aafkortinge: (wijz) = versjil mit actueile versie, (vörrige) = versjil mit vörrige versie, K = kleine verangering',
 'history-fieldset-title' => 'Door de historie blajere',
-'history-show-deleted'   => 'Nör gwösj',
+'history-show-deleted'   => 'Inkel eweggesjaf',
 'histfirst'              => 'Aajste',
 'histlast'               => 'Nuujste',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -1057,7 +1065,8 @@ Wees zeker det deze wieziging de gesjiedenisdoorloupendheid van de pagina zal be
 'compareselectedversions'  => 'Vergeliek geselecteerde versies',
 'showhideselectedversions' => 'Tuin/versjtaek geselecteerde versies',
 'editundo'                 => 'maak óngedaon',
-'diff-multi'               => '({{PLURAL:$1|éin tusseligkede versie wörd|$1 tusseligkede versies waere}} neet getuund)',
+'diff-multi'               => '({{PLURAL:$1|Ein tusseligkende versie|$1 Tusseligkende versies}} dórch {{PLURAL:$2|eine gebroeker|$2 gebroekers}} {{PLURAL:$1|weurt|waere}} neet getuund)',
+'diff-multi-manyusers'     => '($1 tösseligkende versies door mier es $2 gebroekers waere neet waergaeve)',
 
 # Search results
 'searchresults'                    => 'Zeukresultate',
@@ -1406,14 +1415,9 @@ Deze informatie is zichbaar veur angere gebroekers.',
 'recentchanges-legend'              => 'Opties veur recènte verangeringe',
 'recentchangestext'                 => 'op dees pazjena kins doe de recènte verangeringe in deze wiki betrachte.',
 'recentchanges-feed-description'    => 'Volg de meis recente bewerkinge in deze wiki via deze feed.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - Nuuj pagina',
 'recentchanges-label-newpage'       => "Mit dees verangering is 'n nuuj pagina aangemaak",
-'recentchanges-legend-minor'        => '$1 - klein verangering',
 'recentchanges-label-minor'         => "Dit is 'n klein bewirking",
-'recentchanges-legend-bot'          => '$1 - botbewirking',
 'recentchanges-label-bot'           => "Dees bewirking is oetgeveurd door 'ne bot",
-'recentchanges-legend-unpatrolled'  => '$1 - ongekónterleerde bewirking',
 'recentchanges-label-unpatrolled'   => 'Dees bewirking is nog neet gekónterleerd',
 'rcnote'                            => "Hiejónger {{PLURAL:$1|steit de lètste bewirking|staon de lètste '''$1''' bewirkinge}} van de aafgeloupe {{PLURAL:$2|daag|'''$2''' daag}}, op $4, um $5.",
 'rcnotefrom'                        => "Verangeringe sins <b>$2</b> (mit 'n maximum van <b>$1</b> verangeringe).",
@@ -1852,7 +1856,7 @@ Controleer of se wellich n fout höbs gemaak bie de inveur.',
 'log-title-wildcard'   => "Zeuk pagina's die met deze naam beginne",
 
 # Special:AllPages
-'allpages'          => "Alle pazjena's",
+'allpages'          => "Alle pagina's",
 'alphaindexline'    => '$1 nao $2',
 'nextpage'          => 'Volgende pazjena ($1)',
 'prevpage'          => 'Vörge pazjena ($1)',
@@ -3092,9 +3096,9 @@ $1',
 
 # Delete conflict
 'deletedwhileediting' => "'''Waorsjoewing''': Dees pazjena is gewis naodats doe bis begós mit bewirke!",
-'confirmrecreate'     => "Gebroeker [[User:$1|$1]] ([[User talk:$1|euverlèk]]) heet dit artikel gewis naodats doe mèt bewirke begós mèt de rae:
+'confirmrecreate'     => "Gebroeker [[User:$1|$1]] ([[User talk:$1|euverlèk]]) heet dees pagina eweggesjaf naodats doe mèt bewirke begós mèt de rae:
 : ''$2''
-Bevèsteg estebleef dats te dees pazjena ech obbenuujts wils make.",
+Bevesteg estebleef dats te dees pazjena ech obbenuujts wils aanmake.",
 'recreate'            => 'Pazjena obbenuujts make',
 
 # action=purge

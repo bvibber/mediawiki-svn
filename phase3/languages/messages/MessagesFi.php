@@ -303,7 +303,7 @@ $messages = array(
 'tog-editsection'             => 'Näytä muokkauslinkit jokaisen osion yläpuolella',
 'tog-editsectiononrightclick' => 'Muokkaa osioita napsauttamalla otsikkoa hiiren oikealla painikkeella (JavaScript)',
 'tog-showtoc'                 => 'Näytä sisällysluettelo sivuille, joilla yli 3 otsikkoa',
-'tog-rememberpassword'        => 'Muista kirjautumiseni tällä koneella (enintään $1 {{PLURAL:$1|päivä|päivää}})',
+'tog-rememberpassword'        => 'Muista kirjautumisen tässä selaimessa (enintään $1 {{PLURAL:$1|päivä|päivää}})',
 'tog-watchcreations'          => 'Lisää luomani sivut tarkkailulistalle',
 'tog-watchdefault'            => 'Lisää muokkaamani sivut tarkkailulistalle',
 'tog-watchmoves'              => 'Lisää siirtämäni sivut tarkkailulistalle',
@@ -533,6 +533,9 @@ Liian monta käyttäjää yrittää tarkastella tätä sivua.
 Odota hetki ennen kuin yrität uudelleen.
 
 $1',
+'pool-timeout'      => 'Lukon aikakatkaisu.',
+'pool-queuefull'    => 'Lukkojono on täysi.',
+'pool-errorunknown' => 'Tuntematon virhe.',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Tietoja {{GRAMMAR:elative|{{SITENAME}}}}',
@@ -1173,7 +1176,7 @@ Uuden ja vanhan sivun muutoksien pitää muodostaa jatkumo – ne eivät saa men
 'compareselectedversions'  => 'Vertaile valittuja versioita',
 'showhideselectedversions' => 'Näytä tai piilota valitut versiot',
 'editundo'                 => 'kumoa',
-'diff-multi'               => '(Versioiden välissä {{PLURAL:$1|yksi muu muokkaus|$1 muuta muokkausta}}.)',
+'diff-multi'               => '(Versioiden välissä on {{PLURAL:$1|yksi muu muokkaus|$1  muuta muokkausta, jotka on tehnyt {{PLURAL:$2|yksi käyttäjä|$2 eri käyttäjää}}}}.)',
 
 # Search results
 'searchresults'                    => 'Hakutulokset',
@@ -1518,14 +1521,9 @@ Tässä satunnaisesti tuotettu arvo, jota voit käyttää: $1',
 'recentchanges-legend'              => 'Tuoreiden muutosten asetukset',
 'recentchangestext'                 => 'Tällä sivulla voi seurata tuoreita {{GRAMMAR:illative|{{SITENAME}}}} tehtyjä muutoksia.',
 'recentchanges-feed-description'    => 'Tällä sivulla voi seurata tuoreita {{GRAMMAR:illative|{{SITENAME}}}} tehtyjä muutoksia.',
-'recentchanges-label-legend'        => 'Merkkien selitykset: $1',
-'recentchanges-legend-newpage'      => '$1 – uusi sivu',
 'recentchanges-label-newpage'       => 'Tämä muutos loi uuden sivun',
-'recentchanges-legend-minor'        => '$1 – pieni muutos',
 'recentchanges-label-minor'         => 'Tämä on pieni muutos',
-'recentchanges-legend-bot'          => '$1 – botin muutos',
 'recentchanges-label-bot'           => 'Tämän muutoksen suoritti botti',
-'recentchanges-legend-unpatrolled'  => '$1 – tarkastamaton muutos',
 'recentchanges-label-unpatrolled'   => 'Tätä muutosta ei ole vielä tarkastettu',
 'rcnote'                            => 'Alla on {{PLURAL:$1|yksi muutos|$1 tuoreinta muutosta}} {{PLURAL:$2|yhden päivän|$2 viime päivän}} ajalta $4 kello $5 asti.',
 'rcnotefrom'                        => 'Alla on muutokset <b>$2</b> lähtien. Enintään <b>$1</b> merkintää näytetään.',
@@ -1664,9 +1662,9 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 Harkitse, haluatko jatkaa tämän tiedoston tallentamista. Tiedoston poistoloki näkyy tässä:",
 'filename-bad-prefix'         => "Tallentamasi tiedoston nimi alkaa merkkijonolla '''$1''', joka on yleensä digitaalikameroiden automaattisesti antama nimi, joka ei kuvaa tiedoston sisältöä. Anna tiedostolle kuvaavampi nimi.",
 'upload-success-subj'         => 'Tallennus onnistui',
-'upload-success-msg'          => 'Tallennuksesi on saatavilla täällä: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Tallennuksesi [$2] onnistui. Tiedosto on saatavilla täällä: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Tallennusongelma',
-'upload-failure-msg'          => 'Tallennuksessasi esiintyi ongelma:
+'upload-failure-msg'          => 'Tiedoston tallentaminen osoitteesta [$2] ei onnistunut:
 
 $1',
 'upload-warning-subj'         => 'Tallennusvaroitus',
@@ -3292,10 +3290,11 @@ Voit myös muokata listaa [[Special:Watchlist/edit|tavalliseen tapaan]].',
 'version-hook-subscribedby'        => 'Kytkökset',
 'version-version'                  => '(Versio $1)',
 'version-license'                  => 'Lisenssi',
+'version-poweredby-credits'        => "Tämä wiki käyttää '''[http://www.mediawiki.org/ MediaWikiä]'''. Copyright © 2001–$1 $2.",
 'version-poweredby-others'         => 'muut',
 'version-license-info'             => 'MediaWiki on vapaa ohjelmisto – voit levittää sitä ja/tai muokata sitä Free Software Foundationin GNU General Public Licensen ehdoilla, joko version 2 tai halutessasi mikä tahansa myöhemmän version mukaisesti.
 
-MediaWikiä levitetään siinä toivossa, että se olisi hyödyllinen, mutta ILMAN MITÄÄN TAKUUTA; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Katso lisätietoja GNU General Public Licensestä.
+MediaWikiä levitetään siinä toivossa, että se olisi hyödyllinen, mutta ilman mitään takuuta; ilman edes hiljaista takuuta kaupallisesti hyväksyttävästä laadusta tai soveltuvuudesta tiettyyn tarkoitukseen. Katso GPL-lisenssistä lisää yksityiskohtia.
 
 Sinun olisi pitänyt saada [{{SERVER}}{{SCRIPTPATH}}/COPYING kopio GNU General Public Licensestä] tämän ohjelman mukana. Jos et saanut kopiota, kirjoita siitä osoitteeseen Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA tai [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html lue se Internetissä].',
 'version-software'                 => 'Asennettu ohjelmisto',

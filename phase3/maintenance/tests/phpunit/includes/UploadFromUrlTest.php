@@ -1,7 +1,10 @@
 <?php
 
-require_once 'api/ApiSetup.php';
+require_once dirname( __FILE__ ) . '/api/ApiSetup.php';
 
+/**
+ * @group Broken
+ */
 class UploadFromUrlTest extends ApiTestSetup {
 
 	public function setUp() {
@@ -277,7 +280,8 @@ class UploadFromUrlTest extends ApiTestSetup {
 		$this->assertFalse( $job );
 		
 		return;
-		
+
+		/**
 		// Broken until using leavemessage with ignorewarnings is supported
 		$job->run();
 		
@@ -285,8 +289,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 		
 		$talkRev = Revision::newFromTitle( $talk );
 		$this->assertTrue( $talkRev->getSize() > $talkSize, 'New message left' );
-
-		
+		*/
 	}
 	
 	/**

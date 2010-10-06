@@ -20,7 +20,8 @@
  */
 
 /**
- * Object passed around to modules which contains information about the state of a specific loader request
+ * Object passed around to modules which contains information about the state 
+ * of a specific loader request
  */
 class ResourceLoaderContext {
 	/* Protected Members */
@@ -39,7 +40,7 @@ class ResourceLoaderContext {
 	/* Methods */
 
 	public function __construct( WebRequest $request ) {
-		global $wgLang, $wgDefaultSkin;
+		global $wgLang, $wgDefaultSkin, $wgResourceLoaderDebug;
 
 		$this->request = $request;
 		// Interperet request
@@ -48,7 +49,7 @@ class ResourceLoaderContext {
 		$this->direction = $request->getVal( 'dir' );
 		$this->skin = $request->getVal( 'skin' );
 		$this->user = $request->getVal( 'user' );
-		$this->debug = $request->getBool( 'debug' ) && $request->getVal( 'debug' ) === 'true';
+		$this->debug = $request->getFuzzyBool( 'debug', $wgResourceLoaderDebug );
 		$this->only = $request->getVal( 'only' );
 		$this->version = $request->getVal( 'version' );
 
@@ -115,9 +116,12 @@ class ResourceLoaderContext {
 	}
 
 	public function getHash() {
-		return isset( $this->hash ) ?
-			$this->hash : $this->hash = implode( '|', array(
-				$this->language, $this->direction, $this->skin, $this->user, $this->debug, $this->only, $this->version
+		if ( isset( $this->hash ) ) {
+			$this->hash = implode( '|', array(
+				$this->language, $this->direction, $this->skin, $this->user, 
+				$this->debug, $this->only, $this->version
 			) );
+		}
+		return $this->hash;
 	}
 }

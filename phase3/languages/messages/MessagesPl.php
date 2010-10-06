@@ -468,6 +468,9 @@ Zbyt wielu użytkowników próbuje wyświetlić tę stronę.
 Poczekaj chwilę przed ponowną próbą dostępu do tej strony.
 
 $1',
+'pool-timeout'      => 'Zbyt długi czas oczekiwania na blokadę',
+'pool-queuefull'    => 'Kolejka zadań jest pełna',
+'pool-errorunknown' => 'Błąd nieznany',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O {{GRAMMAR:MS.lp|{{SITENAME}}}}',
@@ -716,6 +719,11 @@ Możesz zignorować tę wiadomość, jeśli konto zostało utworzone przez pomy�
 Odczekaj chwilę zanim ponowisz próbę.',
 'loginlanguagelabel'         => 'Język: $1',
 'suspicious-userlogout'      => 'Żądanie wylogowania zostało odrzucone ponieważ wygląda na to, że zostało wysłane przez uszkodzoną przeglądarkę lub buforujący serwer proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- nie modyfikuj tej linii --> <pre>
+# Składnia jest następująca:
+# * Wszystko od znaku „#” do końca linii uznawane jest za komentarz
+# * Każda niepusta linia, zawiera adres IP wyłączony z ograniczenia przepustowości
+ #</pre> <!-- nie modyfikuj tej linii -->',
 
 # JavaScript password checks
 'password-strength'            => 'Szacowane bezpieczeństwo hasła – $1',
@@ -1172,7 +1180,7 @@ Użycie linków nawigacyjnych kasuje wybór w kolumnie.',
 'showhideselectedversions' => 'Pokaż lub ukryj zaznaczone wersje',
 'editundo'                 => 'anuluj edycję',
 'diff-multi'               => '(Nie pokazano $1 wersji {{PLURAL:$1|utworzonej|utworzonych}} przez {{PLURAL:$2|jednego użytkownika|$2 użytkowników}})',
-'diff-multi-manyusers'     => '(Nie pokazano $1 wersji utworzonych przez ponad 100 użytkowników)',
+'diff-multi-manyusers'     => '(Nie pokazano $1 {{PLURAL:$1|pośredniej wersji utworzonej|pośrednich wersji utworzonych}} przez {{PLURAL:$2|jednego użytkownika|$2 użytkowników}})',
 
 # Search results
 'searchresults'                    => 'Wyniki wyszukiwania',
@@ -1519,14 +1527,9 @@ Jeśli zdecydujesz się je podać, zostaną użyte, by udokumentować Twoje auto
 'recentchanges-legend'              => 'Opcje ostatnich zmian',
 'recentchangestext'                 => 'Ta strona przedstawia historię ostatnich zmian w tej wiki.',
 'recentchanges-feed-description'    => 'Obserwuj najświeższe zmiany w tej wiki.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 – nowa strona',
 'recentchanges-label-newpage'       => 'W tej edycji utworzono nową stronę',
-'recentchanges-legend-minor'        => '$1 – drobna zmiana',
 'recentchanges-label-minor'         => 'W tej edycji dokonano drobnych zmian',
-'recentchanges-legend-bot'          => '$1 – edycja bota',
 'recentchanges-label-bot'           => 'Ta edycja została wykonana przez bota',
-'recentchanges-legend-unpatrolled'  => '$1 – niesprawdzona edycja',
 'recentchanges-label-unpatrolled'   => 'Ta edycja nie została jeszcze sprawdzona',
 'rcnote'                            => "Poniżej {{PLURAL:$1|znajduje się '''1''' ostatnia zmiana wykonana|znajdują się ostatnie '''$1''' zmiany wykonane|znajduje się ostatnich '''$1''' zmian wykonanych}} w ciągu {{PLURAL:$2|ostatniego dnia|ostatnich '''$2''' dni}}, licząc od $5 dnia $4.",
 'rcnotefrom'                        => "Poniżej pokazano zmiany wykonane po '''$2''' (nie więcej niż '''$1''' pozycji).",

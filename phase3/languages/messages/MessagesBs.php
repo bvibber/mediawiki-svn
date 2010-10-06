@@ -498,11 +498,14 @@ $messages = array(
 'jumpto'            => 'Idi na:',
 'jumptonavigation'  => 'navigacija',
 'jumptosearch'      => 'traži',
-'view-pool-error'   => 'Žao nam je, serveris u trenutno preopterećeni.
+'view-pool-error'   => 'Žao nam je, serveri su trenutno preopterećeni.
 Previše korisnika pokušava da pregleda ovu stranicu.
 Molimo pričekajte trenutak prije nego što ponovno pokušate pristupiti ovoj stranici.
 
 $1',
+'pool-timeout'      => 'Zaustavi čekanje na zaključavanje',
+'pool-queuefull'    => 'Red na pool je prenapunjen',
+'pool-errorunknown' => 'Nepoznata greška',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O projektu {{SITENAME}}',
@@ -746,6 +749,11 @@ Možete ignorisati ovu poruku, ako je korisnički račun napravljen greškom.',
 Molimo Vas da sačekate prije nego što pokušate ponovo.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer je poslan preko pokvarenog preglednika ili keširanog proksija.',
+'ratelimit-excluded-ips'     => ' #<!-- ostavite ovaj red onakav kakav je  --> <pre>
+# Sintaksa je slijedeća:
+#   * Sve od znaka "#" do kraja reda je komentar
+#   * Svaki neprazni red je IP adresa isključena od ograničenja brzine
+ #</pre> <!-- ostavite ovaj red onakav kakav je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Procijenjena snaga šifre: $1',
@@ -1209,7 +1217,7 @@ Korištenje navigacionih linkova će resetovati ovaj stupac.',
 'showhideselectedversions' => 'Pokaži/sakrij odabrane verzije',
 'editundo'                 => 'ukloni ovu izmjenu',
 'diff-multi'               => '({{plural:$1|Nije prikazana jedna međurevizija|Nisu prikazane $1 međurevizije|Nije prikazano $1 međurevizija}} od {{PLURAL:$2|jednog korisnika|$2 korisnika}})',
-'diff-multi-manyusers'     => '($1 međurevizija od više od 100+ korisnika nije prikazano)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Jedna međurevizija|$1 međurevizije|$1 međurevizija}} od više od $2 {{PLURAL:$2|korisnika|korisnika}} {{PLURAL:$1|nije prikazana|nisu prikazane}})',
 
 # Search results
 'searchresults'                    => 'Rezultati pretrage',
@@ -1557,14 +1565,9 @@ Također omogućuje drugim korisnicima da vas kontaktiraju preko Vaše korisnič
 'recentchanges-legend'              => 'Postavke nedavnih izmjena',
 'recentchangestext'                 => 'Na ovoj stranici možete pratiti nedavne izmjene.',
 'recentchanges-feed-description'    => 'Na ovoj stranici možete pratiti nedavne izmjene.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova stranica',
 'recentchanges-label-newpage'       => 'Ovom izmjenom se pravi nova stranica',
-'recentchanges-legend-minor'        => '$1 - mala izmjena',
 'recentchanges-label-minor'         => 'Ovo je mala izmjena',
-'recentchanges-legend-bot'          => '$1 - izmjena bota',
 'recentchanges-label-bot'           => 'Ova izmjenu je načinio bot',
-'recentchanges-legend-unpatrolled'  => '$1 - nepatrolirana izmjena',
 'recentchanges-label-unpatrolled'   => 'Ova izmjena još nije patrolirana',
 'rcnote'                            => "Ispod {{PLURAL:$1|je '''$1''' promjena|su '''$1''' zadnje promjene|su '''$1''' zadnjih promjena}} u {{PLURAL:$2|posljednjem '''$2''' danu|posljednja '''$2''' dana|posljednjih '''$2''' dana}}, od $4, $5.",
 'rcnotefrom'                        => 'Ispod su izmjene od <b>$2</b> (do <b>$1</b> prikazano).',

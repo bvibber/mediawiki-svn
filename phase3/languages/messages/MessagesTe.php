@@ -371,6 +371,7 @@ $messages = array(
 ఈ పేజీని వీక్షించడానికి కొద్దిసేపు నిరీక్షించండి.
 
 $1',
+'pool-errorunknown' => 'గుర్తుతెలియని పొరపాటు',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{SITENAME}} గురించి',
@@ -614,6 +615,11 @@ $2',
 మళ్ళీ ప్రయత్నించే ముందు కాసేపు వేచివుండండి.',
 'loginlanguagelabel'         => 'భాష: $1',
 'suspicious-userlogout'      => 'సరిగా పనిచేయని విహారిణి లేదా కాషింగ్ ప్రాక్సీ వల్ల పంపబడడం చేత, నిష్క్రమించాలనే మీ అభ్యర్థనని నిరాకరించారు.',
+'ratelimit-excluded-ips'     => ' #<!-- ఈ పంక్తిని ఉన్నదున్నట్లు ఇలాగే వదిలివేయండి --> <pre>
+# ఇక్కడ రాయాల్సిన విధానం ఇదీ:
+#  * "#" అనే అక్షరం నుండి ఆ పంక్తి చివరివరకూ వ్యాఖ్యానం
+#  * ఖాళీగా లేని ప్రతీ పంక్తీ మూల్యాంకన పరిమితి నుండి మినహాయించాల్సిన ఐపీ చిరునామా
+  #</pre> <!-- ఈ పంక్తిని ఉన్నదున్నట్లు ఇలాగే వదిలివేయండి -->',
 
 # JavaScript password checks
 'password-strength'            => 'అంచనావేసిన సంకేతపదపు  బలం: $1',
@@ -1050,7 +1056,8 @@ $1",
 'compareselectedversions'  => 'ఎంచుకున్న సంచికలను పోల్చిచూడు',
 'showhideselectedversions' => 'ఎంచుకున్న కూర్పులను చూపించు/దాచు',
 'editundo'                 => 'మార్పుని రద్దుచెయ్యి',
-'diff-multi'               => '(మధ్యలో ఉన్న {{PLURAL:$1|ఒక కూర్పును|$1 కూర్పులను}} చూపించటం లేదు.)',
+'diff-multi'               => '({{PLURAL:$2|ఒక వాడుకరి|$2 వాడుకరుల}} యొక్క {{PLURAL:$1|ఒక మధ్యంతర కూర్పును|$1 మధ్యంతర కూర్పులను}} చూపించట్లేదు)',
+'diff-multi-manyusers'     => '$2 మంది పైన ({{PLURAL:$2|ఒక వాడుకరి|వాడుకరుల}} యొక్క {{PLURAL:$1|ఒక మధ్యంతర కూర్పును|$1 మధ్యంతర కూర్పులను}} చూపించట్లేదు)',
 
 # Search results
 'searchresults'                    => 'అన్వేషణ ఫలితాలు',
@@ -1392,14 +1399,9 @@ $1",
 'recentchanges-legend'              => 'ఇటీవలి మార్పుల ఎంపికలు',
 'recentchangestext'                 => 'వికీలో ఇటీవలి కాలంలో జరిగిన మార్పులను ఈ పేజీలో చూడండి.',
 'recentchanges-feed-description'    => 'ఈ ఫీడు ద్వారా వికీలో జరుగుతున్న మార్పుల గురించి ఎప్పటికప్పుడు సమాచారాన్ని పొందండి.',
-'recentchanges-label-legend'        => 'సూచిక: $1.',
-'recentchanges-legend-newpage'      => '$1 - కొత్త పేజీ',
 'recentchanges-label-newpage'       => 'ఈ మార్పు కొత్త పేజీని సృష్టించింది',
-'recentchanges-legend-minor'        => '$1 - చిన్న మార్పు',
 'recentchanges-label-minor'         => 'ఇది ఒక చిన్న మార్పు',
-'recentchanges-legend-bot'          => '$1 - బాటు చేసిన మార్పు',
 'recentchanges-label-bot'           => 'ఈ మార్పును ఒక బాటు చేసింది',
-'recentchanges-legend-unpatrolled'  => '$1 - నిఘాలో లేని మార్పు',
 'recentchanges-label-unpatrolled'   => 'ఈ దిద్దుబాటు మీద నిఘా లేదు',
 'rcnote'                            => "$4 నాడు $5 సమయానికి, గత {{PLURAL:$2|ఒక్క రోజులో|'''$2''' రోజులలో}} చేసిన చివరి {{PLURAL:$1|ఒక్క మార్పు కింద ఉంది|'''$1''' మార్పులు కింద ఉన్నాయి}}.",
 'rcnotefrom'                        => '<b>$2</b> నుండి జరిగిన మార్పులు (<b>$1</b> వరకు చూపబడ్డాయి).',
@@ -3189,6 +3191,11 @@ $1',
 'version-license'                  => 'లైసెన్సు',
 'version-poweredby-credits'        => "ఈ వికీ  '''[http://www.mediawiki.org/ మీడియావికీ]'''చే శక్తిమంతం, కాపీహక్కులు  © 2001-$1 $2.",
 'version-poweredby-others'         => 'ఇతరులు',
+'version-license-info'             => 'మీడియావికీ అన్నది స్వేచ్ఛా మృదూపకరణం; మీరు దీన్ని పునఃపంపిణీ చేయవచ్చు మరియు/లేదా ఫ్రీ సాఫ్ట్&zwnj;వేర్ ఫౌండేషన్ ప్రచురించిన గ్నూ జనరల్ పబ్లిక్ లైసెస్సు వెర్షను 2 లేదా (మీ ఎంపిక ప్రకారం) అంతకంటే కొత్త వెర్షను యొక్క నియమాలకు లోబడి మార్చుకోవచ్చు.
+
+మీడియావికీ ప్రజోపయోగ ఆకాంక్షతో పంపిణీ చేయబడుతుంది, కానీ ఎటువంటి వారంటీ లేకుండా; కనీసం ఏదైనా ప్రత్యేక ఉద్దేశానికి సరిపడుతుందని గానీ లేదా వస్తుత్వం యొక్క అంతర్నిహిత వారంటీ లేకుండా. మరిన్ని వివరాలకు గ్నూ జనరల్ పబ్లిక్ లైసెన్సుని చూడండి.
+
+ఈ ఉపకరణంతో పాటు మీకు [{{SERVER}}{{SCRIPTPATH}}/COPYING గ్నూ జనరల్ పబ్లిక్ లైసెన్సు  యొక్క ఒక కాపీ] అందివుండాలి; లేకపోతే, Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA అన్న చిరునామాకి వ్రాయండి లేదా [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html జాలం లోనే చదవండి].',
 'version-software'                 => 'ప్రవేశపెట్టిన సాఫ్టువేర్లు',
 'version-software-product'         => 'ప్రోడక్టు',
 'version-software-version'         => 'వెర్షను',

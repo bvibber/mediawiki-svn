@@ -65,6 +65,7 @@
  * @author PhiLiP
  * @author Platonides
  * @author Prima klasy4na
+ * @author Prometheus.pyrphoros
  * @author Purodha
  * @author Raymond
  * @author Ryan Schmidt
@@ -366,6 +367,7 @@ Also used as title of [[Special:Search]] page in [[Special:SpecialPages]].
 
 {{Identical|Unprotect}}',
 'unprotectthispage' => '{{Identical|Unprotect this page}}',
+'newpage'           => '{{Identical|New page}}',
 'talkpagelinktext'  => 'Used as name of links going to talk page in some places, like in [[Special:RecentChanges]], [[Special:Allmessages]], [[Special:Logs]], and [[Special:Watchlist/edit]].
 
 {{Identical|Talk}}',
@@ -397,6 +399,9 @@ See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].',
 'jumptosearch'      => 'Part of the "jump to" navigation links. Hidden by default in monobook skin. The format is: [[MediaWiki:Jumpto/{{SUBPAGENAME}}|{{int:jumpto}}]] [[MediaWiki:Jumptonavigation/{{SUBPAGENAME}}|{{int:jumptonavigation}}]], {{int:jumptosearch}}.
 
 {{Identical|Search}}',
+'pool-timeout'      => 'Part of {{msg-mw|view-pool-error}}.',
+'pool-queuefull'    => 'Part of {{msg-mw|view-pool-error}}.',
+'pool-errorunknown' => 'Part of {{msg-mw|view-pool-error}}.',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Used as the label of the link that appears at the footer of every page on the wiki (in most of  the skins) and leads to the page that contains the site description. The link target is {{msg-mw|aboutpage}}.
@@ -1158,10 +1163,9 @@ See also {{msg-mw|difference}}.',
 
 *Parameter $1 is the number of revisions
 *Parameter $2 is the number of users making those revisions",
-'diff-multi-manyusers'     => "This message appears in the revision history of a page when comparing two versions which aren't consecutive, and the intermediate revisions have been edited by more than 100 users
-
-*Parameter $1 is the number of revisions, will always be 101 or more.
-*Parameter $2 is the number of users we've found, which was limited at 100",
+'diff-multi-manyusers'     => "This message appears in the revision history of a page when comparing two versions which aren't consecutive, and the intermediate revisions have been edited by more than 100 users. Parameters:
+* $1 is the number of revisions, will always be 101 or more.
+* $2 is the number of users that were found, which was limited at 100.",
 
 # Search results
 'searchresults-title'            => 'Appears as page title in the html header of the search result special page.',
@@ -1619,22 +1623,17 @@ This action allows editing of all of the "user rights", not just the rights of t
 'action-revisionmove'         => '{{doc-action|revisionmove}}',
 
 # Recent changes
-'nchanges'                         => 'Appears on the [[Special:RecentChanges]] special page in brackets after pages having more than one change on that date. $1 is the number of changes on that day.',
-'recentchanges'                    => 'The text of the link in sidebar going to the special page [[Special:RecentChanges]]. Also the page title of that special page.
+'nchanges'                        => 'Appears on the [[Special:RecentChanges]] special page in brackets after pages having more than one change on that date. $1 is the number of changes on that day.',
+'recentchanges'                   => 'The text of the link in sidebar going to the special page [[Special:RecentChanges]]. Also the page title of that special page.
 
 {{Identical|Recent changes}}',
-'recentchanges-legend'             => 'Legend of the fieldset of [[Special:RecentChanges]]',
-'recentchangestext'                => 'Text in recent changes',
-'recentchanges-label-legend'       => 'Used at [[Special:RecentChanges]] and [[Special:Watchlist]].',
-'recentchanges-legend-newpage'     => '* $1 - message {{msg-mw|newpageletter}} ({{int:newpageletter}})',
-'recentchanges-label-newpage'      => 'Tooltip for {{msg-mw|newpageletter}}',
-'recentchanges-legend-minor'       => '* $1 - message {{msg-mw|minoreditletter}} ({{int:minoreditletter}})',
-'recentchanges-label-minor'        => 'Tooltip for {{msg-mw|newpageletter}}',
-'recentchanges-legend-bot'         => '* $1 - message {{msg-mw|boteditletter}} ({{int:boteditletter}})',
-'recentchanges-label-bot'          => 'Tooltip for {{msg-mw|boteditletter}}',
-'recentchanges-legend-unpatrolled' => '* $1 - message {{msg-mw|unpatrolledletter}} ({{int:unpatrolledletter}})',
-'recentchanges-label-unpatrolled'  => 'Tooltip for {{msg-mw|unpatrolledletter}}',
-'rcnote'                           => 'Used on [[Special:RecentChanges]].
+'recentchanges-legend'            => 'Legend of the fieldset of [[Special:RecentChanges]]',
+'recentchangestext'               => 'Text in recent changes',
+'recentchanges-label-newpage'     => 'Tooltip for {{msg-mw|newpageletter}}',
+'recentchanges-label-minor'       => 'Tooltip for {{msg-mw|newpageletter}}',
+'recentchanges-label-bot'         => 'Tooltip for {{msg-mw|boteditletter}}',
+'recentchanges-label-unpatrolled' => 'Tooltip for {{msg-mw|unpatrolledletter}}',
+'rcnote'                          => 'Used on [[Special:RecentChanges]].
 * $1 is the number of changes shown,
 * $2 is the number of days for which the changes are shown,
 * $3 is a date and time (deprecated),
@@ -1643,50 +1642,50 @@ This action allows editing of all of the "user rights", not just the rights of t
 
  <!--Example: "\'\'Below are the last 50 changes in the last 7 days, as of 14:48, 24 January 2008.\'\'"-->
  Example: "\'\'{{int:rcnote/en|50|7||24 January 2008|14:48}}\'\'"',
-'rcnotefrom'                       => 'This message is displayed at [[Special:RecentChanges]] when viewing recentchanges from some specific time. The corrosponding message is {{msg-mw|Rclistfrom}} (without split of date and time, [[bugzilla:19104|Bug 19104]]).
+'rcnotefrom'                      => 'This message is displayed at [[Special:RecentChanges]] when viewing recentchanges from some specific time. The corrosponding message is {{msg-mw|Rclistfrom}} (without split of date and time, [[bugzilla:19104|Bug 19104]]).
 
 Parameter $1 is the maximum number of changes that are displayed.
 Parameter $2 is a date and time.
 Parameter $3 is a date.
 Parameter $4 is a time.',
-'rclistfrom'                       => 'Used on [[Special:RecentChanges]]. Parameter $1 is a link to the revision of a specific date and time. The date and the time are the link description (without split of date and time, [[bugzilla:19104|Bug 19104]]). The corrosponding message is {{msg-mw|Rcnotefrom}}.',
-'rcshowhideminor'                  => "Option text in [[Special:RecentChanges]]. Parameters:
+'rclistfrom'                      => 'Used on [[Special:RecentChanges]]. Parameter $1 is a link to the revision of a specific date and time. The date and the time are the link description (without split of date and time, [[bugzilla:19104|Bug 19104]]). The corrosponding message is {{msg-mw|Rcnotefrom}}.',
+'rcshowhideminor'                 => "Option text in [[Special:RecentChanges]]. Parameters:
 * $1 is the 'show/hide' command, with the text taken from either {{msg-mw|show}} or {{msg-mw|hide}}.",
-'rcshowhidebots'                   => "Option text in [[Special:RecentChanges]]. Parameters:
+'rcshowhidebots'                  => "Option text in [[Special:RecentChanges]]. Parameters:
 * $1 is the 'show/hide' command, with the text taken from either {{msg-mw|show}} or {{msg-mw|hide}}.
 {{Identical|$1 bots}}",
-'rcshowhideliu'                    => 'Option text in [[Special:RecentChanges]]',
-'rcshowhideanons'                  => "Option text in [[Special:RecentChanges]]. Parameters:
+'rcshowhideliu'                   => 'Option text in [[Special:RecentChanges]]',
+'rcshowhideanons'                 => "Option text in [[Special:RecentChanges]]. Parameters:
 * $1 is the 'show/hide' command, with the text taken from either {{msg-mw|show}} or {{msg-mw|hide}}.",
-'rcshowhidepatr'                   => "Option text in [[Special:RecentChanges]]. Parameters:
+'rcshowhidepatr'                  => "Option text in [[Special:RecentChanges]]. Parameters:
 * $1 is the 'show/hide' command, with the text taken from either {{msg-mw|show}} or {{msg-mw|hide}}.",
-'rcshowhidemine'                   => "Option text in [[Special:RecentChanges]]. Parameters:
+'rcshowhidemine'                  => "Option text in [[Special:RecentChanges]]. Parameters:
 * $1 is the 'show/hide' command, with the text taken from either {{msg-mw|show}} or {{msg-mw|hide}}.",
-'rclinks'                          => "Used on [[Special:RecentChanges]].
+'rclinks'                         => "Used on [[Special:RecentChanges]].
 * '''\$1''' is a list of different choices with number of pages to be shown.<br />&nbsp;Example: \"''50{{int:pipe-separator}}100{{int:pipe-separator}}250{{int:pipe-separator}}500\".
 * '''\$2''' is a list of clickable links with a number of days for which recent changes are to be displayed.<br />&nbsp;Example: \"''1{{int:pipe-separator}}3{{int:pipe-separator}}7{{int:pipe-separator}}14{{int:pipe-separator}}30''\".
 * '''\$3''' is a block of text that consists of other messages.<br />&nbsp;Example: \"''Hide minor edits{{int:pipe-separator}}Show bots{{int:pipe-separator}}Hide anonymous users{{int:pipe-separator}}Hide logged-in users{{int:pipe-separator}}Hide patrolled edits{{int:pipe-separator}}Hide my edits''\"
 List elements are separated by {{msg-mw|pipe-separator}} each. Each list element is, or contains, a link.",
-'diff'                             => 'Short form of "differences". Used on [[Special:RecentChanges]], [[Special:Watchlist]], ...',
-'hist'                             => 'Short form of "history". Used on [[Special:RecentChanges]], [[Special:Watchlist]], ...',
-'hide'                             => 'Option text in [[Special:RecentChanges]], and in [[Special:WhatLinksHere]]
+'diff'                            => 'Short form of "differences". Used on [[Special:RecentChanges]], [[Special:Watchlist]], ...',
+'hist'                            => 'Short form of "history". Used on [[Special:RecentChanges]], [[Special:Watchlist]], ...',
+'hide'                            => 'Option text in [[Special:RecentChanges]], and in [[Special:WhatLinksHere]]
 
 {{Identical|Hide}}',
-'show'                             => '{{Identical|Show}}',
-'minoreditletter'                  => "Very short form of \"'''minor edit'''\". Used in [[Special:RecentChanges]], [[Special:Watchlist]], [[Special:Contributions]] and history pages.",
-'newpageletter'                    => "Very short form of \"'''new page'''\". Used in [[Special:RecentChanges]], [[Special:Watchlist]] and [[Special:Contributions]].",
-'boteditletter'                    => 'Abbreviation of "bot". Appears in [[Special:RecentChanges]] and [[Special:Watchlist]].',
-'unpatrolledletter'                => '{{optional}}
+'show'                            => '{{Identical|Show}}',
+'minoreditletter'                 => "Very short form of \"'''minor edit'''\". Used in [[Special:RecentChanges]], [[Special:Watchlist]], [[Special:Contributions]] and history pages.",
+'newpageletter'                   => "Very short form of \"'''new page'''\". Used in [[Special:RecentChanges]], [[Special:Watchlist]] and [[Special:Contributions]].",
+'boteditletter'                   => 'Abbreviation of "bot". Appears in [[Special:RecentChanges]] and [[Special:Watchlist]].',
+'unpatrolledletter'               => '{{optional}}
 
 Used in {{msg-mw|Recentchanges-label-legend}}, meaning "unpatrolled".',
-'sectionlink'                      => '{{optional}}',
-'rc_categories'                    => "Probably to do with 'recent changes' special page, either in a particular skin, or for a particular user group.
+'sectionlink'                     => '{{optional}}',
+'rc_categories'                   => "Probably to do with 'recent changes' special page, either in a particular skin, or for a particular user group.
 
 I guess that this should appear before an input box where you can specify that recent changes should be shown for pages belonging to certain categories only. You name the categories in the input box, and separate them by a pipe character. If this is right, then you should be able to use 'restrict' instead of 'limit', or even 'show pages in the following categories only'.",
-'rc-change-size'                   => '{{optional}}
+'rc-change-size'                  => '{{optional}}
 
 Does not work under $wgMiserMode ([[mwr:48986|r48986]]).',
-'newsectionsummary'                => 'Default summary when adding a new section to a page.',
+'newsectionsummary'               => 'Default summary when adding a new section to a page.',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Title of [[Special:RecentChangesLinked]] and display name of page on [[Special:SpecialPages]].',
@@ -1761,6 +1760,12 @@ $1 is the value in KB/MB/GB',
 Parameters:
 * $1 is a link to the deletion log, with the text from {{msg|deletionlog}}.',
 'filename-prefix-blacklist'   => "Do not translate the file name prefixes before the hash mark (#). Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The first line of this messages has one (1) leading space.",
+'upload-success-msg'          => '$1 is the local file name after uploading
+$2 is the url the file was uploaded from, when using upload-by-url.',
+'upload-failure-msg'          => '$1 is the specific error message
+$2 is the url the file tried to upload from, when using upload-by-url.',
+'upload-warning-msg'          => '$1 is the url the file was uploaded from, when using upload-by-url
+$2 is the session key for the upload',
 
 'upload-proto-error-text' => '"Remote upload" is explained on [http://en.wikipedia.org/wiki/Uploading_and_downloading#Remote_upload Wikipedia].',
 'upload-file-error'       => 'Unused on core [http://svn.wikimedia.org/viewvc/mediawiki/trunk/phase3/includes/specials/SpecialUpload.php?r1=53161&r2=53282].
@@ -2077,7 +2082,8 @@ $1 is a page title",
 'usercreated'             => 'Used in [[Special:ListUsers]].
 * <code>$1</code> is a date
 * <code>$2</code> is a time',
-'newpages'                => 'Name of special page displayed in [[Special:SpecialPages]]',
+'newpages'                => 'Name of special page displayed in [[Special:SpecialPages]]
+{{Identical|New page}}',
 'newpages-username'       => '{{Identical|Username}}',
 'ancientpages'            => 'The page title of [[Special:Ancientpages]]. [[mw:Manual:Interface/Special pages title|mw manual]]',
 'move'                    => 'Name of Move tab. Should be in the imperative mood.
@@ -2394,6 +2400,10 @@ Additionally available:
 'protectlogtext'              => 'Text in [[Special:Log/protect]].',
 'protectedarticle'            => 'Text describing an action on [[Special:Log]]. $1 is a page title.',
 'modifiedarticleprotection'   => 'Text describing an action on [[Special:Log]]. $1 is a page title.',
+'movedarticleprotection'      => 'This is a log entry. It appears in the log if a protected page is renamed.
+
+Example:
+<code>00:51, 16 September 2010 Siebrand +(Talk • contribs • block) moved protection settings from "User:Siebrand/prot-move" to "User:Siebrand/prot-moved" ‎ (User:Siebrand/prot-move moved to User:Siebrand/prot-moved: prot_move test.)</code>',
 'protect-title'               => 'Title for the protection form. $1 is the title of the page to be (un)protected.',
 'prot_1movedto2'              => 'Message description: [[mw:Manual:Interface/1movedto2]]',
 'protect-backlink'            => '{{optional|Translate it only if you have to change it, i.e. for RTL wikis}}
@@ -2456,8 +2466,8 @@ This message was something like "unlock move protection" in the past.',
 {{Identical|Create}}',
 
 # Restriction levels
-'restriction-level-sysop'         => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
-'restriction-level-autoconfirmed' => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
+'restriction-level-sysop'         => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level' and in brackets after each page name entry. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
+'restriction-level-autoconfirmed' => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level', and in brackets after each page name entry. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
 'restriction-level-all'           => "Used on [[Special:ProtectedPages]] and [[Special:ProtectedTitles]]. An option in the drop-down box 'Restriction level'. See the [http://www.mediawiki.org/wiki/Project:Protected_titles help page on Mediawiki] and on [http://meta.wikimedia.org/wiki/Protect Meta] for more information.",
 
 # Undelete
@@ -3743,4 +3753,7 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 
 {{Identical|Other}}',
 
+# SQLite
+'sqlite-has-fts'    => 'Shown on Special:Version, $1 is version',
+'sqlite-no-fts'     => 'Shown on Special:Version, $1 is version',
 );

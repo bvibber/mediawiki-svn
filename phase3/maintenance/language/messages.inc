@@ -247,6 +247,9 @@ $wgMessageStructure = array(
 		'jumptonavigation',
 		'jumptosearch',
 		'view-pool-error',
+		'pool-timeout',
+		'pool-queuefull',
+		'pool-errorunknown',
 	),
 	'links' => array(
 		'aboutsite',
@@ -1159,14 +1162,9 @@ $wgMessageStructure = array(
 		'recentchanges-legend',
 		'recentchangestext',
 		'recentchanges-feed-description',
-		'recentchanges-label-legend',
-		'recentchanges-legend-newpage',
 		'recentchanges-label-newpage',
-		'recentchanges-legend-minor',
 		'recentchanges-label-minor',
-		'recentchanges-legend-bot',
 		'recentchanges-label-bot',
-		'recentchanges-legend-unpatrolled',
 		'recentchanges-label-unpatrolled',
 		'rcnote',
 		'rcnotefrom',
@@ -3219,6 +3217,10 @@ $wgMessageStructure = array(
 		'htmlform-reset',
 		'htmlform-selectorother-other',
 	),
+	'sqlite' => array(
+		'sqlite-has-fts',
+		'sqlite-no-fts',
+	),
 );
 
 /** Comments for each block */
@@ -3430,4 +3432,5 @@ Variants for Chinese language",
 	'comparepages'          => 'Special:ComparePages',
 	'db-error-messages'     => 'Database error messages',
 	'html-forms'            => 'HTML forms',
+	'sqlite'                => 'SQLite database support',
 );

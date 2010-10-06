@@ -579,6 +579,9 @@ Tuto stránku si právě prohlíží příliš mnoho uživatelů.
 Před tím, než ji zkusíte načíst znovu, chvíli počkejte.
 
 $1',
+'pool-timeout'      => 'Při čekání na zámek vypršel časový limit',
+'pool-queuefull'    => 'Fronta ve fondu je plná',
+'pool-errorunknown' => 'Neznámá chyba',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'O&nbsp;{{grammar:6sg|{{SITENAME}}}}',
@@ -815,6 +818,11 @@ Pokud byl účet vytvořen omylem, považujte tuto zprávu za bezpředmětnou.',
 Počkejte chvíli, než to zkusíte znovu.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 'suspicious-userlogout'      => 'Váš požadavek na odhlášení byl odmítnut, neboť to vypadá, že ho poslal rozbitý prohlížeč nebo cachující proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- Nechte tento řádek přesně tak jak je --> <pre>
+# Syntaxe je následující:
+#  * Všechno od znaku „#“ do konce řádku je komentář
+#  * Každý neprázdný řádek je IP adresa, na kterou se nevztahuje rychlostní omezení
+ #</pre> <!-- Nechte tento řádek přesně tak jak je -->',
 
 # JavaScript password checks
 'password-strength'            => 'Odhad síly hesla: $1',
@@ -1250,7 +1258,7 @@ Ujistěte se, že tato změna udrží souvislost a posloupnost verzí v historii
 'showhideselectedversions' => 'Zobrazit/skrýt vybrané revize',
 'editundo'                 => 'zrušit editaci',
 'diff-multi'               => '({{PLURAL:$1|Není zobrazena 1 mezilehlá verze|Nejsou zobrazeny $1 mezilehlé verze|Není zobrazeno $1 mezilehlých verzí}} od {{PLURAL:$2|1 uživatele|$2 uživatelů}}.)',
-'diff-multi-manyusers'     => '(Není zobrazeno $1 mezilehlých verzí od více než sta uživatelů.)',
+'diff-multi-manyusers'     => '(Není zobrazeno $1 mezilehlých verzí od více než $2 {{PLURAL:$2|uživatele|uživatelů}}.)',
 
 # Search results
 'searchresults'                    => 'Výsledky hledání',
@@ -1595,14 +1603,9 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'recentchanges-legend'              => 'Možnosti posledních změn',
 'recentchangestext'                 => 'Sledujte poslední změny na {{grammar:6sg|{{SITENAME}}}} na této stránce.',
 'recentchanges-feed-description'    => 'Na tomto kanále sledujte poslední změny na {{grammar:6sg|{{SITENAME}}}}.',
-'recentchanges-label-legend'        => 'Legenda: $1',
-'recentchanges-legend-newpage'      => '$1 – nová stránka',
 'recentchanges-label-newpage'       => 'Touto editací byla založena nová stránka',
-'recentchanges-legend-minor'        => '$1 – malá editace',
 'recentchanges-label-minor'         => 'Toto je malá editace',
-'recentchanges-legend-bot'          => '$1 – editace bota',
 'recentchanges-label-bot'           => 'Tuto editaci provedl bot',
-'recentchanges-legend-unpatrolled'  => '$1 – neprověřená editace',
 'recentchanges-label-unpatrolled'   => 'Tato změna dosud nebyla prověřena',
 'rcnote'                            => 'Níže {{plural:$1|je poslední|jsou poslední|je posledních}} <strong>$1</strong> {{plural:$1|změna|změny|změn}} za {{PLURAL:$2|poslední|poslední|posledních}} <strong>$2</strong> {{plural:$2|den|dny|dnů}} před $4, $5.',
 'rcnotefrom'                        => 'Níže {{PLURAL:$1|je|jsou|je}} nejvýše <b>$1</b> {{PLURAL:$1|změna|změny|změn}} od <b>$2</b>.',

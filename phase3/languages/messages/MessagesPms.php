@@ -275,6 +275,9 @@ Tròpi utent a son an camin ch'a preuvo a lese sta pàgina-sì.
 Për piasì, speta un pòch prima ëd prové torna a vardé sta pàgina-sì.
 
 $1",
+'pool-timeout'      => 'Timeout an spetand ël lock',
+'pool-queuefull'    => "La coa dël pool a l'é pien-a",
+'pool-errorunknown' => 'Eror pa conossù',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A propòsit ëd {{SITENAME}}',
@@ -515,6 +518,11 @@ Se sòn a l\'é rivà për eror, a peul lassé sté e fe gnente sensa problema.'
 Për piasì speta prima ëd prové torna.",
 'loginlanguagelabel'         => 'Lenga: $1',
 'suspicious-userlogout'      => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
+'ratelimit-excluded-ips'     => " #<!-- leave this line exactly as it is --> <pre>
+# La sintass a l'é com ch'a ven:
+#   * Minca ròba da un caràter \"#\" a la fin ëd la linia a l'é un coment
+#   * Minca linia pa-bianca a l'é n'adrëssa IP gavà dal lìmit ëd valutassion
+ #</pre> <!-- leave this line exactly as it is -->",
 
 # JavaScript password checks
 'password-strength'            => 'Fòrsa stimà dla ciav: $1',
@@ -964,7 +972,7 @@ Ch'a varda mach che a-i ven-a nen fòra un rabel ant la continuità stòrica.",
 'showhideselectedversions' => 'Smon-e/stërmé le version selessionà',
 'editundo'                 => "buta 'me ch'a l'era",
 'diff-multi'               => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
-'diff-multi-manyusers'     => '($1 revisions antërmedie revisions da 100+ utent pa mostà)',
+'diff-multi-manyusers'     => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
 
 # Search results
 'searchresults'                    => "Arzultà dl'arserca",
@@ -1314,14 +1322,9 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'recentchanges-legend'              => "Opsion dj'ùltime modìfiche",
 'recentchangestext'                 => 'An costa pàgina as ten cont dle modìfiche pì recente a la wiki.',
 'recentchanges-feed-description'    => 'Trassé le modìfiche dla wiki pì davzin-e ant ël temp an cost fluss.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - pàgina neuva',
 'recentchanges-label-newpage'       => "Sta modìfica-sì a l'ha creà na neuva pàgina",
-'recentchanges-legend-minor'        => '$1 - modìfica cita',
 'recentchanges-label-minor'         => "Costa a l'é na modìfica cita",
-'recentchanges-legend-bot'          => '$1 - modìfica ëd trigomiro',
 'recentchanges-label-bot'           => "Sa modìfica a l'é stàita fàita da un trigomiro",
-'recentchanges-legend-unpatrolled'  => '$1 - modìfica nen verificà',
 'recentchanges-label-unpatrolled'   => "Sta modìfica-sì a l'é pa ancó stàita verificà",
 'rcnote'                            => "Ambelessì sota a-i {{PLURAL:$1|é '''1''' modìfica|son j'ùltime '''$1''' modìfiche}} ant j'ùltim {{PLURAL:$2|di|'''$2''' di}}, a parte da $5 dël $4.",
 'rcnotefrom'                        => ' Ambelessì sota a-i é la lista dle modìfiche da <b>$2</b> (fin-a a <b>$1</b>).',
@@ -1527,32 +1530,32 @@ Për na sicurëssa otimal, img_auth.php a l'é disabilità.",
 
 # HTTP errors
 'http-invalid-url'      => "Adrëssa dl'aragnà pa bon-a: $1.",
-'http-invalid-scheme'   => 'J\'adrësse dl\'aragnà con lë schema "$1" a son pa sostnùe',
-'http-request-error'    => "Arcesta Http falìa për n'eror pa conossù.",
+'http-invalid-scheme'   => 'J\'adrësse dl\'aragnà con ël prefiss "$1" a son pa mantnùe.',
+'http-request-error'    => "L'arcesta Http a l'é falìa për n'eror pa conossù.",
 'http-read-error'       => 'Eror ëd letura HTTP.',
-'http-timed-out'        => "L'arcesta HTTP a l'ha finì ël temp.",
-'http-curl-error'       => "Eror an sërcand l'URL: $1.",
-'http-host-unreachable' => "L'anliura a l'arspond pa",
+'http-timed-out'        => "L'arcesta HTTP a l'ha finì sò temp.",
+'http-curl-error'       => "Eror an sërcand d'arcuperé l'adrëssa dl'aragnà: $1.",
+'http-host-unreachable' => "L'anliura a rispond pa.",
 'http-bad-status'       => "A l'é staje un problema durant l'arcesta HTTP: $1 $2",
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => "L'anliura a l'arspond pa",
-'upload-curl-error6-text'  => "L'anliura che a l'ha butà a la travaja pa. Për piasì, ch'a contròla che st'anliura a la sia scrita giusta e che ël sit al funsion-a.",
-'upload-curl-error28'      => "A l'é finìe ël temp chas peul dovresse për carié",
-'upload-curl-error28-text' => "Ël sit a-i buta tròp temp a arspònde. Për piasì, ch'a contròla che a funsion-a, ch'a speta na minuta e peuj che a torna a prové. A peul esse che a-j ven-a a taj serne un moment che ës sit a sia nen tant crarià ëd tràfich.",
+'upload-curl-error6-text'  => "L'anliura che a l'ha butà a marcia pa. Për piasì, ch'a contròla che st'anliura a sia scrita giusta e che ël sit a marcia.",
+'upload-curl-error28'      => "A l'é finìje ël temp ch'as peul dovresse për carié",
+'upload-curl-error28-text' => "Ël sit a-i buta tròp temp a arsponde. Për piasì, ch'a contròla che a l'é an pé, ch'a speta na minuta e peuj che a torna a prové. A peul esse che a-j ven-a a taj serne un moment che ës sit a sia nen tant carià ëd tràfich.",
 
 'license'            => 'Licensa:',
 'license-header'     => 'Licensa',
-'nolicense'          => 'Pa gnun-a selession faita',
+'nolicense'          => 'Gnun-a selession fàita',
 'license-nopreview'  => "(Gnun-a preuva ch'as peula smon-se)",
-'upload_source_url'  => "  (n'anliura bon-a e che as peula dovresse)",
-'upload_source_file' => " (n'archivi da sò calcolator)",
+'upload_source_url'  => "(n'anliura bon-a e che as peula dovresse)",
+'upload_source_file' => "(n'archivi da sò ordinator)",
 
 # Special:ListFiles
-'listfiles-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a ëstàit carià.
+'listfiles-summary'     => "Sta pàgina special-sì a la smon tuti j'archivi ch'a son ëstàit carià.
 Për sòlit j'ùltim carià a resto an sima.
-Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé órdin.",
-'listfiles_search_for'  => "Arsërca për nòm d'archivi multimojen:",
+Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé l'órdin.",
+'listfiles_search_for'  => "Arserché un nòm d'archivi multimojen:",
 'imgfile'               => 'archivi',
 'listfiles'             => 'Lista dle figure',
 'listfiles_date'        => 'Data',
@@ -3173,7 +3176,7 @@ As peul ëdcò [[Special:Watchlist/edit|dovré l'editor sòlit]].",
 'version-specialpages'             => 'Pàgine speciaj',
 'version-parserhooks'              => 'Gancio dlë scompositor',
 'version-variables'                => 'Variàbij',
-'version-other'                    => 'Aùtr',
+'version-other'                    => 'Àutr',
 'version-mediahandlers'            => 'Gestor multimojen',
 'version-hooks'                    => 'Gancio',
 'version-extension-functions'      => "Fonsion dj'estension",

@@ -187,7 +187,7 @@ $messages = array(
 'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisninger',
 'tog-editsectiononrightclick' => 'Redigér afsnit ved at højreklikke på deres titler (JavaScript)',
 'tog-showtoc'                 => 'Vis indholdsfortegnelse (på sider med mere end tre afsnit)',
-'tog-rememberpassword'        => 'Husk min adgangskode på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
+'tog-rememberpassword'        => 'Husk mit login på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'tog-watchcreations'          => 'Tilføj sider jeg opretter til min overvågningsliste',
 'tog-watchdefault'            => 'Tilføj sider jeg redigerer til min overvågningsliste',
 'tog-watchmoves'              => 'Tilføj sider jeg flytter til min overvågningsliste',
@@ -401,6 +401,7 @@ For mange brugere prøver at vise denne side.
 Vent et øjeblik, før du prøver at vise denne side ige.
 
 $1',
+'pool-errorunknown' => 'Ukendt fejl',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Om {{SITENAME}}',
@@ -639,6 +640,11 @@ Du kan ignorere denne besked hvis kontoen blev oprettet ved en fejl.',
 Vent venligst før du prøver igen.',
 'loginlanguagelabel'         => 'Sprog: $1',
 'suspicious-userlogout'      => 'Din anmodning om at logge ud blev nægtet, fordi det ser ud som den blev sendt af en ødelagt browser eller caching proxy.',
+'ratelimit-excluded-ips'     => '#<!-- leave this line exactly as it is --> <pre>
+# Syntax er som følger:
+# * Alt fra et "#"-tegn til slutningen af linjen er en kommentar
+# * Alle ikke-tomme linjer er en IP-adresse udelukket fra hastigheds begrænsningen
+#</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Anslået passwordstyrke: $1',
@@ -1085,7 +1091,8 @@ Vær opmæksom på at bevare kontinuiteten i sidehistorikken.
 'compareselectedversions'  => 'Sammenlign valgte versioner',
 'showhideselectedversions' => 'Vis/skjul udvalgte versioner',
 'editundo'                 => 'fjern redigering',
-'diff-multi'               => '(Versionssammenligningen medtager {{plural:$1|en mellemliggende version|$1 mellemliggende versioner}}.)',
+'diff-multi'               => '({{PLURAL:$1|En mellemliggende version|$1 mellemliggende versioner}} af {{PLURAL:$2|en bruger|$2 brugere}} ikke vist)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|En mellemliggende version|$1 mellemliggende versioner}} af mere end $2 {{PLURAL:$2|bruger|brugere}} ikke vist)',
 
 # Search results
 'searchresults'                    => 'Søgeresultater',
@@ -1431,14 +1438,9 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 'recentchanges-legend'              => 'Indstillinger for seneste ændringer',
 'recentchangestext'                 => "På denne side kan du følge de seneste ændringer på '''{{SITENAME}}'''.",
 'recentchanges-feed-description'    => 'Med dette feed kan du følge de seneste ændringer på {{SITENAME}}.',
-'recentchanges-label-legend'        => 'Tegnforklaring: $1.',
-'recentchanges-legend-newpage'      => '$1 – ny side',
 'recentchanges-label-newpage'       => 'Denne redigering oprettede en ny side',
-'recentchanges-legend-minor'        => '$1 – mindre ændring',
 'recentchanges-label-minor'         => 'Dette er en mindre ændring',
-'recentchanges-legend-bot'          => '$1 – botændring',
 'recentchanges-label-bot'           => 'Denne redigering blev udført af en bot',
-'recentchanges-legend-unpatrolled'  => '$1 – upatruljeret ændring',
 'recentchanges-label-unpatrolled'   => 'Denne redigering er endnu ikke blevet patruljeret',
 'rcnote'                            => "Herunder ses {{PLURAL:$1|'''1''' ændring|de sidste '''$1''' ændringer}} fra {{PLURAL:$2|i dag|de sidste '''$2''' dage}} fra den $4, kl. $5.",
 'rcnotefrom'                        => "Nedenfor er op til '''$1''' ændringer siden '''$2''' vist.",

@@ -524,6 +524,9 @@ Muitos usuários estão tentando ver esta página.
 Aguarde um instante antes de tentar acessar esta página novamente.
 
 $1',
+'pool-timeout'      => 'Tempo limite de espera para o bloqueio excedido',
+'pool-queuefull'    => 'A pool queue está cheia',
+'pool-errorunknown' => 'Erro desconhecido',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Sobre {{SITENAME}}',
@@ -762,8 +765,13 @@ Você pode ignorar esta mensagem caso a conta tenha sido criada por engano.',
 'usernamehasherror'          => 'Nome de usuário não pode conter o símbolo de cardinal (#).',
 'login-throttled'            => 'Você fez tentativas demais de se autenticar com esta conta recentemente.
 Por favor aguarde antes de tentar novamente.',
-'loginlanguagelabel'         => 'Idioma: $1',
+'loginlanguagelabel'         => 'Língua: $1',
 'suspicious-userlogout'      => 'Sua solicitação para sair foi negada porque aparentemente foi enviada por um navegador danificado ou por um servidor proxy com cache.',
+'ratelimit-excluded-ips'     => ' #<!-- deixe esta linha exatamente como está --> <pre>
+# A sintaxe é a seguinte:
+#  * Tudo desde o caractere "#" até ao fim da linha é um comentário
+#  * Qualquer linha que não esteja em branco é um endereço de IP isento dos limites de velocidade de operação
+ #</pre> <!-- deixe esta linha exatamente como está  -->',
 
 # JavaScript password checks
 'password-strength'            => 'Nível de segurança da senha: $1',
@@ -1216,7 +1224,8 @@ Certifique-se de que tal alteração manterá a continuidade das ações.',
 'compareselectedversions'  => 'Compare as versões selecionadas',
 'showhideselectedversions' => 'Mostrar/esconder versões selecionadas',
 'editundo'                 => 'desfazer',
-'diff-multi'               => '({{PLURAL:$1|uma edição intermediária não está sendo exibida|$1 edições intermediárias não estão sendo exibidas}}.)',
+'diff-multi'               => '({{PLURAL:$1|Uma edição intermediária|$1 edições intermediárias}} de {{PLURAL:$2|um usuário|$2 usuários}} {{PLURAL:$1|não apresentada|não apresentadas}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Uma edição intermediária|$1 edições intermediárias}} de mais de {{PLURAL:$2|um usuário|$2 usuário}} não {{PLURAL:$1|apresentada|apresentadas}})',
 
 # Search results
 'searchresults'                    => 'Resultados de pesquisa',
@@ -1315,7 +1324,7 @@ Note que os índices do sistema de busca externo poderão conter referências de
 'prefs-misc'                    => 'Diversos',
 'prefs-resetpass'               => 'Alterar senha',
 'prefs-email'                   => 'Opções de email',
-'prefs-rendering'               => 'Layout',
+'prefs-rendering'               => 'Aparência',
 'saveprefs'                     => 'Salvar',
 'resetprefs'                    => 'Eliminar as alterações não-salvas',
 'restoreprefs'                  => 'Restaurar todas as configurações padrão',
@@ -1373,7 +1382,7 @@ Esta ação não pode ser desfeita.',
 'prefs-memberingroups'          => 'Membro {{PLURAL:$1|do grupo|dos grupos}}:',
 'prefs-registration'            => 'Hora de registro:',
 'yourrealname'                  => 'Nome verdadeiro:',
-'yourlanguage'                  => 'Idioma:',
+'yourlanguage'                  => 'Língua:',
 'yourvariant'                   => 'Variante:',
 'yournick'                      => 'Assinatura:',
 'prefs-help-signature'          => 'Ao inserir comentários em páginas de discussão, assine-os colocando quatro tiles (<nowiki>~~~~</nowiki>) no fim dos comentários. Ao salvar, estes serão convertidos na sua assinatura mais a data e a hora da edição.',
@@ -1389,7 +1398,7 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'prefs-help-realname'           => 'O fornecimento de seu Nome verdadeiro é opcional, mas, caso decida o revelar, este será utilizado para lhe dar crédito pelo seu trabalho.',
 'prefs-help-email'              => "O fornecimento de um endereço de ''e-mail'' é opcional, mas permite que uma nova senha lhe seja enviada caso você esqueça sua senha. Você pode ainda preferir deixar que os usuários entrem em contato consigo através de sua página de usuário ou discussão sem ter de revelar sua identidade.",
 'prefs-help-email-required'     => 'O endereço de e-mail é requerido.',
-'prefs-info'                    => 'Informação básica',
+'prefs-info'                    => 'Informações básicas',
 'prefs-i18n'                    => 'Internacionalização',
 'prefs-signature'               => 'Assinatura',
 'prefs-dateformat'              => 'Formato de data',
@@ -1562,14 +1571,9 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'recentchanges-legend'              => 'Opções das mudanças recentes',
 'recentchangestext'                 => 'Veja as mais novas mudanças na {{SITENAME}} nesta página.',
 'recentchanges-feed-description'    => 'Acompanhe as Mudanças recentes deste wiki por este feed.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova página',
 'recentchanges-label-newpage'       => 'Esta edição criou uma nova página',
-'recentchanges-legend-minor'        => '$1 - edição menor',
 'recentchanges-label-minor'         => 'Esta é uma edição menor',
-'recentchanges-legend-bot'          => '$1 - edição de robô',
 'recentchanges-label-bot'           => 'Esta edição foi feita por um robô',
-'recentchanges-legend-unpatrolled'  => '$1 - edição não patrulhada',
 'recentchanges-label-unpatrolled'   => 'Esta edição ainda não foi patrulhada',
 'rcnote'                            => "A seguir {{PLURAL:$1|está listada '''uma''' alteração ocorrida|estão listadas '''$1''' alterações ocorridas}} {{PLURAL:$2|no último dia|nos últimos '''$2''' dias}}, a partir das $5 de $4.",
 'rcnotefrom'                        => 'Abaixo estão as mudanças desde <b>$2</b> (mostradas até <b>$1</b>).',
@@ -2668,7 +2672,7 @@ Acesse [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [ht
 'allmessages-filter-all'        => 'Todas',
 'allmessages-filter-modified'   => 'Modificadas',
 'allmessages-prefix'            => 'Filtrar por prefixo:',
-'allmessages-language'          => 'Idioma:',
+'allmessages-language'          => 'Língua:',
 'allmessages-filter-submit'     => 'Ir',
 
 # Thumbnails

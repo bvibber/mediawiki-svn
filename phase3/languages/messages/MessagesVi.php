@@ -495,6 +495,9 @@ Có quá nhiều thành viên đang cố gắng xem trang này.
 Xin hãy đợi một lát rồi thử truy cập lại vào trang.
 
 $1',
+'pool-timeout'      => 'Hết thời gian chờ đợi khóa',
+'pool-queuefull'    => 'Đầy hàng đợi khối ứng dụng (pool queue)',
+'pool-errorunknown' => 'Lỗi lạ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Giới thiệu {{SITENAME}}',
@@ -725,6 +728,11 @@ Xin hãy bỏ qua thông báo này nếu tài khoản này không phải do bạ
 Xin hãy đợi chốc lát rồi thử lại.',
 'loginlanguagelabel'         => 'Ngôn ngữ: $1',
 'suspicious-userlogout'      => 'Đã bỏ qua yêu cầu đăng xuất bạn, hình như được gửi từ trình duyệt hoặc máy proxy nhớ đệm hư.',
+'ratelimit-excluded-ips'     => ' #<!-- xin để dòng này đừng thay đổi --> <pre>
+# Cú pháp như sau:
+#   * Mọi thứ bắt đầu bằng ký tự “$” là lời chú thích
+#   * Mọi hàng không trắng là một địa chỉ IP được loại trừ khỏi bị giới hạn tỷ lệ
+ #</pre> <!-- xin để dòng này đừng thay đổi -->',
 
 # JavaScript password checks
 'password-strength'            => 'Độ mạnh ước lượng của mật khẩu: $1',
@@ -1514,14 +1522,9 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'recentchanges-legend'              => 'Tùy chọn thay đổi gần đây',
 'recentchangestext'                 => 'Xem các thay đổi gần đây nhất tại wiki trên trang này.',
 'recentchanges-feed-description'    => 'Theo dõi các thay đổi gần đây nhất của wiki dùng feed này.',
-'recentchanges-label-legend'        => 'Giải thích: $1.',
-'recentchanges-legend-newpage'      => '$1 - trang mới',
 'recentchanges-label-newpage'       => 'Bản sửa này tạo ra trang mới',
-'recentchanges-legend-minor'        => '$1 - sửa đổi nhỏ',
 'recentchanges-label-minor'         => 'Đây là một sửa đổi nhỏ',
-'recentchanges-legend-bot'          => '$1 - sửa đổi bot',
 'recentchanges-label-bot'           => 'Sửa đổi này do bot thực hiện',
-'recentchanges-legend-unpatrolled'  => '$1 - sửa đổi chưa tuần tra',
 'recentchanges-label-unpatrolled'   => 'Sửa đổi này chưa được tuần tra',
 'rcnote'                            => "Dưới đây là {{PLURAL:$1|'''1''' thay đổi|'''$1''' thay đổi gần nhất}} trong {{PLURAL:$2|ngày qua|'''$2''' ngày qua}}, tính tới $5, $4.",
 'rcnotefrom'                        => "Thay đổi từ '''$2''' (hiển thị tối đa '''$1''' thay đổi).",
@@ -1560,7 +1563,7 @@ Các trang trong [[Special:Watchlist|danh sách bạn theo dõi]] được '''t�
 
 # Upload
 'upload'                      => 'Tải tập tin lên',
-'uploadbtn'                   => 'Tải lên',
+'uploadbtn'                   => 'Tải tập tin lên',
 'reuploaddesc'                => 'Hủy tác vụ tải và quay lại mẫu tải tập tin lên',
 'upload-tryagain'             => 'Lưu miêu tả tập tin được sửa đổi',
 'uploadnologin'               => 'Chưa đăng nhập',
@@ -2938,7 +2941,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 * focallength',
 
 # EXIF tags
-'exif-imagewidth'                  => 'Bề ngang',
+'exif-imagewidth'                  => 'Chiều ngang',
 'exif-imagelength'                 => 'Chiều cao',
 'exif-bitspersample'               => 'Bit trên mẫu',
 'exif-compression'                 => 'Kiểu nén',
@@ -2948,7 +2951,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'exif-planarconfiguration'         => 'Cách xếp dữ liệu',
 'exif-ycbcrsubsampling'            => 'Tỉ lệ lấy mẫu con của Y so với C',
 'exif-ycbcrpositioning'            => 'Định vị Y và C',
-'exif-xresolution'                 => 'Phân giải theo bề ngang',
+'exif-xresolution'                 => 'Phân giải theo chiều ngang',
 'exif-yresolution'                 => 'Phân giải theo chiều cao',
 'exif-resolutionunit'              => 'Đơn vị phân giải X và Y',
 'exif-stripoffsets'                => 'Vị trí dữ liệu hình',
@@ -2973,7 +2976,7 @@ Những thông tin khác mặc định sẽ được ẩn đi.
 'exif-colorspace'                  => 'Không gian màu',
 'exif-componentsconfiguration'     => 'Ý nghĩa thành phần',
 'exif-compressedbitsperpixel'      => 'Độ nén (bit/điểm)',
-'exif-pixelydimension'             => 'Bề ngang hợp lệ',
+'exif-pixelydimension'             => 'Chiều ngang hợp lệ',
 'exif-pixelxdimension'             => 'Chiều cao hợp lệ',
 'exif-makernote'                   => 'Ghi chú của nhà sản xuất',
 'exif-usercomment'                 => 'Lời bình của tác giả',

@@ -535,6 +535,7 @@ Trop d’utilisators chèrchont a arrevar a ceta pâge.
 Volyéd atendre un moment devant que vos tâchiéd de tornar arrevar a ceta pâge.
 
 $1',
+'pool-errorunknown' => 'Èrror encognua',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A propôs de {{SITENAME}}',
@@ -1259,7 +1260,7 @@ Notâd bien que l’usâjo des lims de navigacion tornerat inicialisar cela colo
 'showhideselectedversions' => 'Fâre vêre / cachiér les vèrsions chouèsies',
 'editundo'                 => 'dèfâre',
 'diff-multi'               => '({{PLURAL:$1|Yona vèrsion entèrmèdièra|$1 vèrsions entèrmèdières}} per {{PLURAL:$2|yon utilisator|$2 utilisators}} {{PLURAL:$1|est pas montrâ|sont pas montrâs}})',
-'diff-multi-manyusers'     => '($1 vèrsions entèrmèdières per més de 100 utilisators sont pas montrâs)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Yona vèrsion entèrmèdièra|$1 vèrsions entèrmèdières}} per més de $2 utilisator{{PLURAL:$2||s}} {{PLURAL:$1|est pas montrâ|sont pas montrâs}})',
 
 # Search results
 'searchresults'                    => 'Rèsultats de la rechèrche',
@@ -1609,14 +1610,9 @@ Vos pouede asse-ben dècidar de lèssiér los ôtros sè veriér vers vos avoué
 'recentchanges-legend'              => 'Chouèx des dèrriérs changements',
 'recentchangestext'                 => 'Siude los dèrriérs changements du vouiqui sur ceta pâge.',
 'recentchanges-feed-description'    => 'Siude los dèrriérs changements du vouiqui dens ceti flux.',
-'recentchanges-label-legend'        => 'Lègenda : $1.',
-'recentchanges-legend-newpage'      => '$1 - pâge novèla',
 'recentchanges-label-newpage'       => 'Ceti changement at fêt una pâge novèla.',
-'recentchanges-legend-minor'        => '$1 - petiôt changement',
 'recentchanges-label-minor'         => 'Ceti changement est petiôt.',
-'recentchanges-legend-bot'          => '$1 - changement fêt per un bot',
 'recentchanges-label-bot'           => 'Ceti changement at étâ fêt per un bot.',
-'recentchanges-legend-unpatrolled'  => '$1 - changement pas survelyê',
 'recentchanges-label-unpatrolled'   => 'Ceti changement at p’oncor étâ survelyê.',
 'rcnote'                            => "Vê-que {{PLURAL:$1|lo dèrriér changement fêt|los '''$1''' dèrriérs changements fêts}} pendent {{PLURAL:$2|lo jorn passâ|los '''$2''' jorns passâs}} tant qu’a $5 lo $4.",
 'rcnotefrom'                        => "Vê-que los changements fêts dês lo '''$2''' ('''$1''' u més).",

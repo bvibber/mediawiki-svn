@@ -1,13 +1,13 @@
 <?php
 
-ResourceLoader::register( array(
+return array(
 
 	/* Special resources who have their own classes */
 	
 	'site' => new ResourceLoaderSiteModule,
 	'startup' => new ResourceLoaderStartUpModule,
 	'user' => new ResourceLoaderUserModule,
-	'user.preferences' => new ResourceLoaderUserPreferencesModule,
+	'user.options' => new ResourceLoaderUserOptionsModule,
 	
 	/* Skins */
 	
@@ -26,6 +26,12 @@ ResourceLoader::register( array(
 	),
 	'jquery.autoEllipsis' => new ResourceLoaderFileModule(
 		array( 'scripts' => 'resources/jquery/jquery.autoEllipsis.js' )
+	),
+	'jquery.client' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.client.js' )
+	),
+	'jquery.collapsibleTabs' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.collapsibleTabs.js' )
 	),
 	'jquery.color' => new ResourceLoaderFileModule(
 		array( 'scripts' => 'resources/jquery/jquery.color.js' )
@@ -74,24 +80,22 @@ ResourceLoader::register( array(
 	) ),
 	'jquery.ui.widget' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.widget.js',
-		'dependencies' => 'jquery.ui.core',
 	) ),
 	'jquery.ui.mouse' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.mouse.js',
-		'dependencies' => 'jquery',
+		'dependencies' => 'jquery.ui.widget',
 	) ),
 	'jquery.ui.position' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.position.js',
-		'dependencies' => 'jquery',
 	) ),
 	// Interactions
 	'jquery.ui.draggable' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.draggable.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.mouse', 'jquery.ui.widget' ),
 	) ),
 	'jquery.ui.droppable' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.droppable.js',
-		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.draggable' ),
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.mouse', 'jquery.ui.widget', 'jquery.ui.draggable' ),
 	) ),
 	'jquery.ui.resizable' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.resizable.js',
@@ -99,7 +103,7 @@ ResourceLoader::register( array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.resizable.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.resizable.css',
 		),
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.mouse' ),
 	) ),
 	'jquery.ui.selectable' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.selectable.js',
@@ -107,16 +111,16 @@ ResourceLoader::register( array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.selectable.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.selectable.css',
 		),
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.mouse' ),
 	) ),
 	'jquery.ui.sortable' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.sortable.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.mouse' ),
 	) ),
 	// Widgets
 	'jquery.ui.accordion' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.accordion.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.accordion.css',
@@ -202,7 +206,15 @@ ResourceLoader::register( array(
 	) ),
 	'jquery.ui.dialog' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.dialog.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array(
+			'jquery.ui.core',
+			'jquery.ui.widget',
+			'jquery.ui.button',
+			'jquery.ui.draggable',
+			'jquery.ui.mouse',
+			'jquery.ui.position',
+			'jquery.ui.resizable',
+		),
 		'skinStyles' => array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.dialog.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.dialog.css',
@@ -210,7 +222,7 @@ ResourceLoader::register( array(
 	) ),
 	'jquery.ui.progressbar' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.progressbar.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.progressbar.css',
@@ -226,7 +238,7 @@ ResourceLoader::register( array(
 	) ),
 	'jquery.ui.tabs' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/jquery.ui/jquery.ui.tabs.js',
-		'dependencies' => 'jquery.ui.core',
+		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery.ui/themes/default/jquery.ui.tabs.css',
 			'vector' => 'resources/jquery.ui/themes/vector/jquery.ui.tabs.css',
@@ -291,12 +303,6 @@ ResourceLoader::register( array(
 	'mediawiki' => new ResourceLoaderFileModule( array(
 		'scripts' => 'resources/mediawiki/mediawiki.js',
 		'debugScripts' => 'resources/mediawiki/mediawiki.log.js',
-	) ),
-	
-	/* MediaWiki Utilities */
-	
-	'mediawiki.util.client' => new ResourceLoaderFileModule( array(
-		'scripts' => 'resources/mediawiki.util/mediawiki.util.client.js',
 	) ),
 	
 	/* MediaWiki Legacy */
@@ -402,4 +408,4 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.wikiprintable' => new ResourceLoaderFileModule( array(
 		'styles' => array( 'skins/common/wikiprintable.css' => array( 'media' => 'print' ) ),
 	) ),
-) );
+);

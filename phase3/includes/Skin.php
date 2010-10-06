@@ -516,7 +516,7 @@ class Skin extends Linker {
 
 		// Per-user preference styles
 		if ( $wgAllowUserCssPrefs ) {
-			$out->addModuleStyles( 'user.preferences' );
+			$out->addModuleStyles( 'user.options' );
 		}
 
 		wfProfileOut( __METHOD__ );
@@ -1160,7 +1160,7 @@ class Skin extends Linker {
 					SpecialPage::getTitleFor( 'Userlogout' ), wfMsg( 'logout' ),
 					array(), array( 'returnto' => $returnTo )
 				),
-				$this->specialLink( 'preferences' ),
+				$this->specialLink( 'Preferences' ),
 			) );
 		}
 
@@ -1214,7 +1214,7 @@ class Skin extends Linker {
 
 		$s = array(
 			$this->mainPageLink(),
-			$this->specialLink( 'recentchanges' )
+			$this->specialLink( 'Recentchanges' )
 		);
 
 		if ( $wgOut->isArticleRelated() ) {

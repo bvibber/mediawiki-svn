@@ -701,12 +701,10 @@ Jekk jogħġbok, erġa' pprova.",
 'password-name-match'        => 'Il-password trid tkun differenti mill-isem tal-utent tiegħek.',
 'mailmypassword'             => 'Ibgħatli password ġdida',
 'passwordremindertitle'      => 'Password temporanju ġdid għal {{SITENAME}}',
-'passwordremindertext'       => 'Xi ħadd (probabbilment int, mill-indirizz tal-IP $1) għamel rikjesta għal password ġdida għal {{SITENAME}} ($4).<br />
-Inħolqot password temporanja għall-utent "$2" u din hi "$3".
-Huwa opportun li inti tidħol issa u tbiddel immedjatament il-password tiegħek.<br />
-Din il-password il-ġdida se tiskadi fi żmien {{PLURAL:$5|ġurnata|$5 ijiem}}.
+'passwordremindertext'       => 'Xi ħadd (probabbilment int, mill-indirizz IP $1) għamel rikjesta għal password ġdida għal {{SITENAME}} ($4). Password temporanja għall-utent "$2" ġiet maħluqa u din hi "$3".
+Huwa opportun li inti tidħol issa u tbiddel immedjatament il-password tiegħek. Din il-password il-ġdida se tiskadi fi żmien {{PLURAL:$5|ġurnata|$5 ijiem}}.
 
-Jekk xi ħadd ieħor għamel din ir-rikjesta jew jekk int ftakart il-password tiegħek u issa ma tridx tbiddilha, int tista\' ma tagħtix każ dan il-messaġġ u tkompli bl-użu tal-password l-antika.',
+Jekk xi ħadd ieħor għamel din ir-rikjesta jew jekk int ftakart il-password tiegħek u issa ma tridx tbiddilha, int tista\' ma tagħtix każ dan il-messaġġ u tkompli tuża\' l-password l-antika.',
 'noemail'                    => 'M\'hemm l-ebda indirizz ta\' posta elettronika għall-utent "$1".',
 'noemailcreate'              => 'Huwa neċessarju li tipprovdi indirizz elettroniku validu',
 'passwordsent'               => 'Il-password il-ġdida ntbagħtet fl-indirizz tal-posta elettronika ta\' "$1".
@@ -1430,14 +1428,9 @@ Innota però li l-werreja tal-kontenut ta' {{SITENAME}} f'dawn is-siti, jistgħu
 'recentchanges-legend'              => 'Opzjonijiet tat-tibdil riċenti',
 'recentchangestext'                 => 'Din il-paġna turi l-modifiki l-aktar riċenti għal kontenut tas-sit.',
 'recentchanges-feed-description'    => "Dan il-feed jirraporta l-modifiki l-aktar riċenti fil-kontenut ta' dan is-sit.",
-'recentchanges-label-legend'        => 'Leġġenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - paġna ġdida',
 'recentchanges-label-newpage'       => 'Din il-modifika ħolqot paġna ġdida',
-'recentchanges-legend-minor'        => '$1 - modifika minuri',
 'recentchanges-label-minor'         => 'Din hi modifika minuri',
-'recentchanges-legend-bot'          => "$1 - modifika ta' bot",
 'recentchanges-label-bot'           => 'Din il-modifika ġiet effettwata minn bot',
-'recentchanges-legend-unpatrolled'  => '$1 - modifika mhux verifikata',
 'recentchanges-label-unpatrolled'   => 'Din il-modifika għadha ma ġietx verifikata',
 'rcnote'                            => "Hawn taħt {{PLURAL:$1|tinsab l-aktar modifika riċenti|jinsabu l-'''$1''' modifiki riċenti}} għas-sit fl-aħħar {{PLURAL:$2|24 siegħa|'''$2''' ġranet}}, id-dati ġew aġġornati fil-$5 ta' $4.",
 'rcnotefrom'                        => "Ħawn taħt jinsabu l-modifiki minn '''$2''' (sa '''$1''').",
@@ -1813,8 +1806,7 @@ Kun af li siti elettroniċi oħra jistgħu jorbtu b'ħolqa diretta lejn il-fajl,
 'speciallogtitlelabel' => 'Titlu:',
 'log'                  => 'Reġistri',
 'all-logs-page'        => 'Ir-reġistri pubbliċi kollha',
-'alllogstext'          => "Preżentazzjoni unifikata tar-reġistri kollha ta' {{SITENAME}}.<br />
-Tista' tqassar il-kriterji ta' tfittxija billi tagħżel it-tip ta' log, l-isem tal-utent, jew il-paġna affetwata (it-tnejn tal-aħħar huma sensittivi għal kif jinkitbu l-karattri).",
+'alllogstext'          => "Preżentazzjoni unifikata tar-reġistri kollha ta' {{SITENAME}}. Tista' tqassar il-kriterji ta' tfittxija billi tagħżel it-tip ta' reġistru, l-isem tal-utent, jew il-paġna affetwata (it-tnejn tal-aħħar huma sensittivi għal kif jinkitbu l-karattri).",
 'logempty'             => "Ir-reġistru m'għandu l-ebda element li jaqbel mat-tfittxija tiegħek.",
 'log-title-wildcard'   => "Tfittxija ta' titli li jibdew b'dan it-test",
 
@@ -2164,8 +2156,8 @@ $1',
 'whatlinkshere-page'       => 'Paġna:',
 'linkshere'                => "Il-paġni segwenti jorbtu lejn '''[[:$1]]''':",
 'nolinkshere'              => "L-ebda paġna ma twassal għal '''[[:$1]]'''.",
-'nolinkshere-ns'           => "L-Ebda paġni li jippontaw għal '''[[:$1]]''' fin-namespace magħżula.",
-'isredirect'               => 'Paġna ta Rindirizz',
+'nolinkshere-ns'           => "L-ebda paġna ma tipponta lejn '''[[:$1]]''' fl-ispazju tal-isem magħżul.",
+'isredirect'               => "paġna ta' rindirizz",
 'istemplate'               => 'inklużjoni',
 'isimage'                  => 'ħolqa tal-istampa',
 'whatlinkshere-prev'       => '{{PLURAL:$1|preċedent|$1 preċedenti}}',
@@ -2332,7 +2324,7 @@ Jekk jogħġbok, agħżel isem ieħor.",
 'talkexists'                   => "'''Il-paġna tmexxiet sewwa, iżda mhux il-paġna tad-diskussjoni, peress diġà teżisti waħda b'dan it-titlu.
 Jekk jogħġbok, waħħad iż-żewġ paġni manwalment.'''",
 'movedto'                      => 'Imċaqlaq għal',
-'movetalk'                     => 'Ċaqlaq ukoll il-paġni tad-diskussjoni',
+'movetalk'                     => "Mexxi wkoll il-paġna ta' diskussjoni",
 'move-subpages'                => 'Mexxi s-sottopaġni (sa $1)',
 'move-talk-subpages'           => "Mexxi is-sottopaġni kollha tal-paġna ta' diskussjoni (sa $1)",
 'movepage-page-exists'         => 'Il-Paġna $1 ġa teżisti u ma tistax tiġi awtomatikament miktub fuqha.',
@@ -2365,7 +2357,7 @@ ma tistax iċaqlaq paġna fuqha nnifsa.',
 'imagetypemismatch'            => 'L-Estenżjoni l-ġdida tal-fajl ma taqbilx mat-tip tagħha.',
 'imageinvalidfilename'         => 'L-Isem tal-fajl destinat mhux validu',
 'fix-double-redirects'         => 'Aġġorna kwalunkwe rindirizz li jippunta lejn it-titlu l-oriġinali',
-'move-leave-redirect'          => 'Oħloq riindirizz wara t-tmexxija',
+'move-leave-redirect'          => 'Oħloq rindirizz wara t-tmexxija',
 
 # Export
 'export'            => 'Esporta paġni',
@@ -2615,10 +2607,11 @@ Kull azzjonijiet ta' importazzjoni tal-transwiki jiġu reġistrati fil-[[Special
 'markedaspatrollederror-noautopatrol' => "Int m'għandhekx id-drittijiet neċessarji biex timmarka l-modifiki tiegħek bħala verifikati.",
 
 # Patrol log
-'patrol-log-page' => 'Modifiki verifikati',
-'patrol-log-line' => 'immarka r-$1 tal-paġna $2 bħala verifikata $3',
-'patrol-log-auto' => '(verifika awtomatika)',
-'patrol-log-diff' => 'reviżjoni $1',
+'patrol-log-page'      => 'Modifiki verifikati',
+'patrol-log-line'      => 'immarka r-$1 tal-paġna $2 bħala verifikata $3',
+'patrol-log-auto'      => '(verifika awtomatika)',
+'patrol-log-diff'      => 'reviżjoni $1',
+'log-show-hide-patrol' => '$1 r-reġistru tal-modifiki verifikati',
 
 # Image deletion
 'deletedrevision'                 => 'Reviżjoni preċedenti, mħassra: $1',

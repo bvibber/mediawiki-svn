@@ -365,6 +365,9 @@ Troppo de usatores tenta vider iste pagina.
 Per favor attende un momento ante que tu essaya acceder novemente a iste pagina.
 
 $1',
+'pool-timeout'      => 'Tempore limite excedite attendente le serratura',
+'pool-queuefull'    => 'Le cauda de ressources commun es plen',
+'pool-errorunknown' => 'Error incognite',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'A proposito de {{SITENAME}}',
@@ -619,6 +622,11 @@ Tu pote ignorar iste message si iste conto ha essite create in error.',
 Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
+'ratelimit-excluded-ips'     => ' #<!-- non modificar in alcun modo iste linea --> <pre>
+# Le syntaxe es lo sequente:
+#  * Toto a partir de un character "#" usque al fin del linea es un commento
+#  * Omne linea non vacue es un adresse IP excludite del limite de frequentia
+  #</pre> <!-- non modificar in alcun modo iste linea -->',
 
 # JavaScript password checks
 'password-strength'            => 'Estimation del securitate del contrasigno: $1',
@@ -1433,14 +1441,9 @@ Si tu opta pro dar lo, isto essera usate pro dar te attribution pro tu contribut
 'recentchanges-legend'              => 'Optiones del modificationes recente',
 'recentchangestext'                 => 'Seque le plus recente modificationes a {{SITENAME}} in iste pagina.',
 'recentchanges-feed-description'    => 'Seque le modificationes le plus recente al wiki in iste syndication.',
-'recentchanges-label-legend'        => 'Legenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nove pagina',
 'recentchanges-label-newpage'       => 'Iste modification creava un nove pagina',
-'recentchanges-legend-minor'        => '$1 - modification minor',
 'recentchanges-label-minor'         => 'Iste es un modification minor',
-'recentchanges-legend-bot'          => '$1 - modification robot',
 'recentchanges-label-bot'           => 'Iste modification ha essite effectuate per un robot',
-'recentchanges-legend-unpatrolled'  => '$1 - modification non patruliate',
 'recentchanges-label-unpatrolled'   => 'Iste modification non ha ancora essite patruliate',
 'rcnote'                            => "Infra es {{PLURAL:$1|'''1''' modification|le ultime '''$1''' modificationes}} in le ultime {{PLURAL:$2|die|'''$2''' dies}}, actualisate le $4 a $5.",
 'rcnotefrom'                        => 'infra es le modificationes a partir de <b>$2</b> (usque a <b>$1</b>).',

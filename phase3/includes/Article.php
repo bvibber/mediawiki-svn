@@ -2607,7 +2607,7 @@ class Article {
 				$protect_description = '';
 				foreach ( $limit as $action => $restrictions ) {
 					if ( !isset( $expiry[$action] ) )
-						$expiry[$action] = 'infinite';
+						$expiry[$action] = Block::infinity();
 
 					$encodedExpiry[$action] = Block::encodeExpiry( $expiry[$action], $dbw );
 					if ( $restrictions != '' ) {
@@ -4455,7 +4455,6 @@ class Article {
 	 *
 	 * @param $parserOutput mixed ParserOptions object, or boolean false
 	 **/
-
 	protected function doCascadeProtectionUpdates( $parserOutput ) {
 		if ( !$this->isCurrent() || wfReadOnly() || !$this->mTitle->areRestrictionsCascading() ) {
 			return;
@@ -4623,7 +4622,7 @@ class PoolWorkArticleView extends PoolCounterWork {
 	private $mArticle;
 	
 	function __construct( $article, $key, $useParserCache, $parserOptions ) {
-		parent::__construct( __CLASS__, $key );
+		parent::__construct( 'ArticleView', $key );
 		$this->mArticle = $article;
 		$this->cacheable = $useParserCache;
 		$this->parserOptions = $parserOptions;
@@ -4661,11 +4660,7 @@ class PoolWorkArticleView extends PoolCounterWork {
 		$wgOut->enableClientCache( false );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 		
-		if ( $status instanceof Status ) {
-			$errortext = $status->getWikiText( false, 'view-pool-error' );
-		} else {
-			$errortext = wfMsgNoTrans( 'view-pool-error', '' );
-		}
+		$errortext = $status->getWikiText( false, 'view-pool-error' );
 		$wgOut->addWikiText( '<div class="errorbox">' . $errortext . '</div>' );
 		
 		return false;

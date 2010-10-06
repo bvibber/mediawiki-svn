@@ -38,6 +38,7 @@
  * @author MaxSem
  * @author Putnik
  * @author Sk
+ * @author TarzanASG
  * @author Temuri rajavi
  * @author VasilievVV
  * @author Ytsukeng Fyvaprol
@@ -509,6 +510,9 @@ $messages = array(
 Пожалуйста, подождите и повторите попытку обращения к странице позже.
 
 $1',
+'pool-timeout'      => 'Истекло время ожидания блокировки',
+'pool-queuefull'    => 'Накопитель запросов полон',
+'pool-errorunknown' => 'Неизвестная ошибка',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Описание {{grammar:genitive|{{SITENAME}}}}',
@@ -753,6 +757,11 @@ $2',
 Пожалуйста, подождите, перед тем, как попробовать снова.',
 'loginlanguagelabel'         => 'Язык: $1',
 'suspicious-userlogout'      => 'Ваш запрос на завершение сеанса отклонён, так как он похож на запрос, отправленный некорректным браузером или кэширующим прокси.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Описание синтаксиса:
+#   * Строки, начинающиеся с символа "#", считаются комментариями
+#   * Каждая непустая строка считается IP-адресом, на который не действуют ограничения скорости
+ #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Оценка стойкости пароля: $1',
@@ -811,7 +820,8 @@ $2',
 'showpreview'                      => 'Предварительный просмотр',
 'showlivepreview'                  => 'Быстрый предпросмотр',
 'showdiff'                         => 'Внесённые изменения',
-'anoneditwarning'                  => "'''Внимание''': Вы не представились системе. Ваш IP-адрес будет записан в историю изменений этой страницы.",
+'anoneditwarning'                  => "'''Внимание.''' Вы не представились системе.
+Ваш IP-адрес будет записан в историю изменений этой страницы.",
 'anonpreviewwarning'               => "''Вы не представились системе. Сохранение приведёт к записи вашего IP-адреса в историю изменений страницы.''",
 'missingsummary'                   => "'''Напоминание.''' Вы не дали краткого описания изменений. При повторном нажатии на кнопку «Записать страницу», ваши изменения будут сохранены без комментария.",
 'missingcommenttext'               => 'Пожалуйста, введите ниже ваше сообщение.',
@@ -1544,14 +1554,9 @@ $1",
 'recentchanges-legend'              => 'Настройки свежих правок',
 'recentchangestext'                 => 'Ниже в хронологическом порядке перечислены последние изменения на страницах {{grammar:genitive|{{SITENAME}}}}.',
 'recentchanges-feed-description'    => 'Отслеживать последние изменения в вики в этом потоке.',
-'recentchanges-label-legend'        => 'Легенда: $1.',
-'recentchanges-legend-newpage'      => '$1 — новая страница',
 'recentchanges-label-newpage'       => 'Этой правкой была создана новая страница.',
-'recentchanges-legend-minor'        => '$1 — малое изменение',
 'recentchanges-label-minor'         => 'Это малозначимое изменение',
-'recentchanges-legend-bot'          => '$1 — правка бота',
 'recentchanges-label-bot'           => 'Эта правка сделана ботом',
-'recentchanges-legend-unpatrolled'  => '$1 — неотпатрулированная правка',
 'recentchanges-label-unpatrolled'   => 'Эту правку ещё не отпатрулировали',
 'rcnote'                            => "{{PLURAL:$1|Последнее '''$1''' изменение|Последние '''$1''' изменения|Последние '''$1''' изменений}} за '''$2''' {{PLURAL:$2|день|дня|дней}}, на момент времени $5 $4.",
 'rcnotefrom'                        => 'Ниже перечислены изменения с <strong>$2</strong> (по <strong>$1</strong>).',

@@ -203,6 +203,8 @@ $wgAutoloadLocalClasses = array(
 	'ResourceLoaderWikiModule' => 'includes/ResourceLoaderModule.php',
 	'ResourceLoaderFileModule' => 'includes/ResourceLoaderModule.php',
 	'ResourceLoaderSiteModule' => 'includes/ResourceLoaderModule.php',
+	'ResourceLoaderUserModule' => 'includes/ResourceLoaderModule.php',
+	'ResourceLoaderUserOptionsModule' => 'includes/ResourceLoaderModule.php',
 	'ResourceLoaderStartUpModule' => 'includes/ResourceLoaderModule.php',
 	'ReverseChronologicalPager' => 'includes/Pager.php',
 	'Revision' => 'includes/Revision.php',
@@ -452,7 +454,6 @@ $wgAutoloadLocalClasses = array(
 	'SqliteUpdater' => 'includes/installer/SqliteUpdater.php',
 	'OracleInstaller' => 'includes/installer/OracleInstaller.php',
 	'OracleUpdater' => 'includes/installer/OracleUpdater.php',
-	'Update' => 'includes/installer/Update.php',
 
 	# includes/job
 	'DoubleRedirectJob' => 'includes/job/DoubleRedirectJob.php',
@@ -632,7 +633,6 @@ $wgAutoloadLocalClasses = array(
 	'SpecialRecentChanges' => 'includes/specials/SpecialRecentchanges.php',
 	'SpecialRecentchangeslinked' => 'includes/specials/SpecialRecentchangeslinked.php',
 	'SpecialSearch' => 'includes/specials/SpecialSearch.php',
-	'SpecialSelenium' => 'includes/specials/SpecialSelenium.php',
 	'SpecialSpecialpages' => 'includes/specials/SpecialSpecialpages.php',
 	'SpecialStatistics' => 'includes/specials/SpecialStatistics.php',
 	'SpecialTags' => 'includes/specials/SpecialTags.php',
@@ -703,7 +703,6 @@ $wgAutoloadLocalClasses = array(
 	'UserDupes' => 'maintenance/userDupes.inc',
 
 	# maintenance/tests/selenium
-	'SimpleSeleniumTestSuite' => 'maintenance/tests/selenium/SimpleSeleniumTestSuite.php',
 	'Selenium' => 'maintenance/tests/selenium/Selenium.php',
 	'SeleniumLoader' => 'maintenance/tests/selenium/SeleniumLoader.php',
 	'SeleniumTestCase' => 'maintenance/tests/selenium/SeleniumTestCase.php',
@@ -711,6 +710,7 @@ $wgAutoloadLocalClasses = array(
 	'SeleniumTestHTMLLogger' => 'maintenance/tests/selenium/SeleniumTestHTMLLogger.php',
 	'SeleniumTestListener' => 'maintenance/tests/selenium/SeleniumTestListener.php',
 	'SeleniumTestSuite' => 'maintenance/tests/selenium/SeleniumTestSuite.php',
+	'SeleniumConfig' => 'maintenance/tests/selenium/SeleniumConfig.php',
 
 	# maintenance/language
 	'csvStatsOutput' => 'maintenance/language/StatOutputs.php',

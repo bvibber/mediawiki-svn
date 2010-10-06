@@ -858,6 +858,9 @@ Too many users are trying to view this page.
 Please wait a while before you try to access this page again.
 
 $1',
+'pool-timeout'      => 'Timeout waiting for the lock',
+'pool-queuefull'    => 'Pool queue is full',
+'pool-errorunknown' => 'Unknown error',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'About {{SITENAME}}',
@@ -1134,7 +1137,7 @@ Please wait before trying again.',
 * Italiano|it
 * Nederlands|nl', # do not translate or duplicate this message to other languages
 'suspicious-userlogout'      => 'Your request to log out was denied because it looks like it was sent by a broken browser or caching proxy.',
-'ratelimit-excluded-ips'      => ' #<!-- leave this line exactly as it is --> <pre>
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
 # Syntax is as follows:
 #   * Everything from a "#" character to the end of the line is a comment
 #   * Every non-blank line is an IP address excluded from the rate limit
@@ -2000,14 +2003,9 @@ You can also choose to let others contact you through your user or talk page wit
 'recentchanges-legend'              => 'Recent changes options',
 'recentchangestext'                 => 'Track the most recent changes to the wiki on this page.',
 'recentchanges-feed-description'    => 'Track the most recent changes to the wiki in this feed.',
-'recentchanges-label-legend'        => 'Legend: $1.',
-'recentchanges-legend-newpage'      => '$1 - new page',
 'recentchanges-label-newpage'       => 'This edit created a new page',
-'recentchanges-legend-minor'        => '$1 - minor edit',
 'recentchanges-label-minor'         => 'This is a minor edit',
-'recentchanges-legend-bot'          => '$1 - bot edit',
 'recentchanges-label-bot'           => 'This edit was performed by a bot',
-'recentchanges-legend-unpatrolled'  => '$1 - unpatrolled edit',
 'recentchanges-label-unpatrolled'   => 'This edit has not yet been patrolled',
 'rcnote'                            => "Below {{PLURAL:$1|is '''1''' change|are the last '''$1''' changes}} in the last {{PLURAL:$2|day|'''$2''' days}}, as of $5, $4.",
 'rcnotefrom'                        => "Below are the changes since '''$2''' (up to '''$1''' shown).",
@@ -4345,5 +4343,9 @@ This site is experiencing technical difficulties.',
 'htmlform-submit'              => 'Submit',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
+
+# SQLite support
+'sqlite-has-fts'               => '$1 with full-text search support',
+'sqlite-no-fts'                => '$1 without full-text search support',
 
 );

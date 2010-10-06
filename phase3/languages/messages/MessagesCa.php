@@ -416,6 +416,9 @@ Massa usuaris estan tractant d'accedir a aquesta pàgina.
 Per favor, esperau una mica abans de tornar a accedir a aquesta pàgina.
 
 $1",
+'pool-timeout'      => "Temps d'espera per al blocatge",
+'pool-queuefull'    => 'La cua de treball és plena',
+'pool-errorunknown' => 'Error desconegut',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Quant al projecte {{SITENAME}}',
@@ -651,6 +654,11 @@ Si no hi teniu cap relació i aquest compte ha estat creat per error, simplement
 Si us plau, esperi abans de tornar-ho a intentar.",
 'loginlanguagelabel'         => 'Llengua: $1',
 'suspicious-userlogout'      => "S'ha denegat la vostra petició per tancar la sessió ja què sembla que va ser enviada per un navegador defectuós o un proxy cau.",
+'ratelimit-excluded-ips'     => "#<!-- deixeu aquesta línia tal com està --> <pre>
+# La sintaxí és la següent:
+#   * Totes les línies que comencen amb un # es consideren comentaris
+#   * Tota línia no buida és una adreça IP que s'exclou del càlcul del límit de velocitat
+#</pre> <!-- deixeu aquesta línia tal com està -->",
 
 # JavaScript password checks
 'password-strength'            => 'Força estimada de la contrasenya: $1',
@@ -1093,7 +1101,7 @@ Assegureu-vos que aquest canvi mantindrà la continuïtat històrica de la pàgi
 'showhideselectedversions' => 'Mostrar/ocultar les versions seleccionades',
 'editundo'                 => 'desfés',
 'diff-multi'               => '({{PLURAL:$1|Hi ha una revisió intermèdia |Hi ha $1 revisions intermèdies}} sense mostrar fetes per {{PLURAL:$2|un usuari|$2 usuaris}})',
-'diff-multi-manyusers'     => '(hi ha $1 revisions intermèdies sense mostrar fetes per més de 100 usuaris)',
+'diff-multi-manyusers'     => "({{PLURAL:$1|Hi ha una revisió intermèdia|Hi ha $1 revisions intermèdies}} sense mostrar fetes per més {{PLURAL:$2|d'un usuari|de $2 usuaris}})",
 
 # Search results
 'searchresults'                    => 'Resultats de la cerca',
@@ -1438,14 +1446,9 @@ També podeu contactar amb altres usuaris a través de la vostra pàgina d'usuar
 'recentchanges-legend'              => 'Opcions de canvis recents',
 'recentchangestext'                 => 'Seguiu els canvis recents del projecte {{SITENAME}} en aquesta pàgina.',
 'recentchanges-feed-description'    => 'Segueix en aquest canal els canvis més recents del wiki.',
-'recentchanges-label-legend'        => 'Llegenda: $1.',
-'recentchanges-legend-newpage'      => '$1 - nova pàgina',
 'recentchanges-label-newpage'       => 'Aquesta modificació inicià una pàgina',
-'recentchanges-legend-minor'        => '$1 - modificació menor',
 'recentchanges-label-minor'         => 'Aquesta és una modificació menor',
-'recentchanges-legend-bot'          => "$1 - modificació d'un bot",
 'recentchanges-label-bot'           => 'Aquesta modificació fou feta per un bot',
-'recentchanges-legend-unpatrolled'  => '$1 - modificació sense patrullar',
 'recentchanges-label-unpatrolled'   => 'Aquesta modificació encara no ha estat patrullada',
 'rcnote'                            => 'A continuació hi ha {{PLURAL:$1|el darrer canvi|els darrers <strong>$1</strong> canvis}} en {{PLURAL:$2|el darrer dia|els darrers <strong>$2</strong> dies}}, actualitzats a les $5 del $4.',
 'rcnotefrom'                        => 'A sota hi ha els canvis des de <b>$2</b> (es mostren fins <b>$1</b>).',

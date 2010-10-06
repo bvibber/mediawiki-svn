@@ -317,7 +317,7 @@ $messages = array(
 'tog-editsection'             => 'Aktivera redigering av avsnitt genom [redigera]-länkar',
 'tog-editsectiononrightclick' => 'Aktivera redigering av avsnitt genom högerklick på underrubriker (Javascript)',
 'tog-showtoc'                 => 'Visa innehållsförteckning (för sidor som har minst fyra rubriker)',
-'tog-rememberpassword'        => 'Spara min inloggning på den här datorn (i max $1 {{PLURAL:$1|dag|dagar}})',
+'tog-rememberpassword'        => 'Kom ihåg min inloggning på den här webbläsaren (i maximalt $1 {{PLURAL:$1|dag|dagar}})',
 'tog-watchcreations'          => 'Lägg till sidor jag skapar i min bevakningslista',
 'tog-watchdefault'            => 'Lägg till sidor jag redigerar i min bevakningslista',
 'tog-watchmoves'              => 'Lägg till sidor jag flyttar i min bevakningslista',
@@ -776,6 +776,11 @@ Du kan ignorera detta meddelande om kontot skapats av misstag.',
 Vänta innan du försöker igen.',
 'loginlanguagelabel'         => 'Språk: $1',
 'suspicious-userlogout'      => 'Din begäran om att logga ut nekades eftersom det ser ut som det skickades av en trasig webbläsare eller cachande proxy.',
+'ratelimit-excluded-ips'     => ' #<!-- leave this line exactly as it is --> <pre>
+# Syntaxen är följande:
+#  * Allt från ett "#" tecken till slutet av raden är en kommentar
+#  * Varje icke-tom rad är en IP-adress som exkluderas från hastighetsbegränsningen
+ #</pre> <!-- leave this line exactly as it is -->',
 
 # JavaScript password checks
 'password-strength'            => 'Beräknad styrka på lösenord: $1',
@@ -1221,11 +1226,13 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 # Diffs
 'history-title'            => 'Versionshistorik för "$1"',
 'difference'               => '(Skillnad mellan versioner)',
+'difference-multipage'     => '(Skillnad mellan sidor)',
 'lineno'                   => 'Rad $1:',
 'compareselectedversions'  => 'Jämför angivna versioner',
 'showhideselectedversions' => 'Visa/dölj valda versioner',
 'editundo'                 => 'gör ogjord',
-'diff-multi'               => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} visas inte.)',
+'diff-multi'               => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} av {{PLURAL:$2|en användare|$2 användare}} visas inte)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|En mellanliggande version|$1 mellanliggande versioner}} av mer än $2 {{PLURAL:$2|en användare|$2 användare}} visas inte)',
 
 # Search results
 'searchresults'                    => 'Sökresultat',
@@ -1572,14 +1579,9 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'recentchanges-legend'              => 'Alternativ för senaste ändringarna',
 'recentchangestext'                 => 'Följ de senaste ändringarna i wikin på denna sida.',
 'recentchanges-feed-description'    => 'Följ de senaste ändringarna i wikin genom den här matningen.',
-'recentchanges-label-legend'        => 'Förklaring: $1',
-'recentchanges-legend-newpage'      => '$1 - ny sida',
 'recentchanges-label-newpage'       => 'Denna redigering skapade en ny sida',
-'recentchanges-legend-minor'        => '$1 - mindre ändring',
 'recentchanges-label-minor'         => 'Detta är en mindre ändring',
-'recentchanges-legend-bot'          => '$1 - botredigering',
 'recentchanges-label-bot'           => 'Denna redigering gjordes av en bot',
-'recentchanges-legend-unpatrolled'  => '$1 - okontrollerad redigering',
 'recentchanges-label-unpatrolled'   => 'Denna redigering har inte blivit kontrollerad ännu',
 'rcnote'                            => "Nedan visas {{PLURAL:$1|'''1''' ändring|de senaste '''$1''' ändringarna}} från {{PLURAL:$2|det senaste dygnet|de senaste '''$2''' dygnen}}, per $4, kl. $5.",
 'rcnotefrom'                        => "Nedan visas ändringar sedan '''$2''' (upp till '''$1''' visas).",
@@ -1745,7 +1747,7 @@ PICT # allmänt bildprefix
 'upload-success-subj'         => 'Uppladdningen lyckades',
 'upload-success-msg'          => 'Din uppladdning från [$2] lyckades. Den finns tillgänglig här: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Uppladdningsproblem',
-'upload-failure-msg'          => 'Det uppstod ett problem med din uppladdning:
+'upload-failure-msg'          => 'Det uppstod ett problem med din uppladdning från [$2]:
 
 $1',
 'upload-warning-subj'         => 'Uppladdningsvarning',
@@ -3432,7 +3434,13 @@ Du kan också [[Special:Watchlist/edit|använda standardeditorn]].',
 'version-hook-subscribedby'        => 'Används av',
 'version-version'                  => '(Version $1)',
 'version-license'                  => 'Licens',
+'version-poweredby-credits'        => "Den här wikin drivs av '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
 'version-poweredby-others'         => 'andra',
+'version-license-info'             => 'MediaWiki är fri programvara; du kan distribuera det och/eller modifiera det under villkoren i GNU General Public License, publicerad av Free Software Foundation; antingen version 2 av licensen, eller (om du önskar) någon senare version. 
+
+MediaWiki distribueras i hopp om att det ska vara användbart, men UTAN NÅGON GARANTI, även utan underförstådd garanti om SÄLJBARHET eller LÄMPLIGHET FÖR ETT VISST SYFTE. Se GNU General Public License för fler detaljer. 
+
+Du bör ha fått [{{SERVER}}{{SCRIPTPATH}}/COPYING en kopia av GNU General Public License] tillsammans med detta program; om inte, skriv till Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA eller [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html läs den online].',
 'version-software'                 => 'Installerad programvara',
 'version-software-product'         => 'Produkt',
 'version-software-version'         => 'Version',

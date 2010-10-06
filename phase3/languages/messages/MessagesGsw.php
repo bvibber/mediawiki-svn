@@ -131,7 +131,7 @@ $messages = array(
 'tog-editsection'             => 'Gleicher aazeige für ds Bearbeite vo einzelnen Absätz',
 'tog-editsectiononrightclick' => 'Einzelni Absätz ändere mit Rächtsclick (Javascript)',
 'tog-showtoc'                 => 'Inhaltsverzeichnis aazeige bi Artikle mit meh als drei Überschrifte',
-'tog-rememberpassword'        => 'Uf däm Computer duurhaft aamälde (Maximal fir $1 {{PLURAL:$1|Tag|Täg}})',
+'tog-rememberpassword'        => 'Mit däm Browser duurhaft aamälde (Maximal fir $1 {{PLURAL:$1|Tag|Täg}})',
 'tog-watchcreations'          => 'Sälber gmachti Sytene beobachte',
 'tog-watchdefault'            => 'Vo dir nöi gmachti oder verändereti Syte beobachte',
 'tog-watchmoves'              => 'Sälber verschobeni Sytene beobachte',
@@ -346,6 +346,10 @@ S versueche grad zvyl Benutzer die Syte aazluege.
 Bitte wart e paar Minute, voreb Du s nomol versuechsch.
 
 $1',
+'pool-timeout'      => '
+Di maximal Wartezyt fir e Lock isch umme',
+'pool-queuefull'    => 'D Warteschlang isch voll',
+'pool-errorunknown' => 'Nit bekannte Fähler',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Über {{GRAMMAR:akkusativ|{{SITENAME}}}}',
@@ -588,6 +592,11 @@ Wänn s Benutzerkonto us Versäh aaglait woren isch, chasch die Nochricht ignori
 'login-throttled'            => 'Du hesch z vilmol vergebli versuecht, Di aazmälde. Bitte wart, voreb Du s non emol versuechsch.',
 'loginlanguagelabel'         => 'Sproch: $1',
 'suspicious-userlogout'      => 'Dyy Versuech di abzmälde isch abbroche wore, wel s uusgsäh het, wie wänn s vun eme bschedigte Browser oder eme Cacheproxy uus gsändet woren isch.',
+'ratelimit-excluded-ips'     => ' #<!-- Die Zyyle derf nit gänderet wäre! --> <pre>
+#  Syntax:
+#   * Alles vun eme #-Zeiche bis zum Änd vu dr Zyyle isch e Kommentar
+#   * Jedi nit-lääri Zyyle isch e IP-Adräss, wu vu dr Begränzig uusgnuu isch
+ #</pre> <!-- Die Zyyle derf nit gänderet wäre! -->',
 
 # JavaScript password checks
 'password-strength'            => 'Gschätzti Passwortsterki: $1',
@@ -1030,7 +1039,8 @@ Stell sicher, ass d Versionsgschicht vun eme Artikel historisch korrekt isch.',
 'compareselectedversions'  => 'Usgwählti Versione verglyche',
 'showhideselectedversions' => 'Uusgwehlti Versione zeige/verstecke',
 'editundo'                 => 'rückgängig',
-'diff-multi'               => '(Der Versioneverglych zeigt ou d Änderige vo {{PLURAL:$1|1 Version|$1 Versione}} derzwüsche.)',
+'diff-multi'               => '({{PLURAL:$1|Ei Version|$1 Versione}} vu {{PLURAL:$2|eim Benutzer|$2 Benutzer}}, {{PLURAL:$1|wu derzwische lyt, wird|wu derzwische lige, wäre}} nit aazeigt)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Ei Version|$1 Versione}} vu meh {{PLURAL:$2|eim Benutzer|$2 Benutzer}}, {{PLURAL:$1|wu derzwische lyt un nit aazeigt wird|wu derzwische lige un nit aazeigt wäre}})',
 
 # Search results
 'searchresults'                    => 'Suech-Ergäbnis',
@@ -1373,14 +1383,9 @@ Des cha nimmi ruckgängig gmacht wäre.',
 'recentchanges-legend'              => 'Optione vu dr Aazeig',
 'recentchangestext'                 => 'Uff däre Syte chönne Si die letschte Änderige in däm Wiki aaluege.',
 'recentchanges-feed-description'    => 'Di letschten Änderige vo {{SITENAME}} i däm Feed abonniere.',
-'recentchanges-label-legend'        => 'Legänd: $1.',
-'recentchanges-legend-newpage'      => '$1 - neji Syte',
 'recentchanges-label-newpage'       => 'Die Bearbeitig het e neji Syte aagleit',
-'recentchanges-legend-minor'        => '$1 - chleini Änderig',
 'recentchanges-label-minor'         => 'Des isch e chleini Änderig',
-'recentchanges-legend-bot'          => '$1 - Bott-Bearbeitig',
 'recentchanges-label-bot'           => 'Die Bearbeitig isch dur e Bott uusgfiert wore',
-'recentchanges-legend-unpatrolled'  => '$1 - nit-gsichteti Bearbeitig',
 'recentchanges-label-unpatrolled'   => 'Die Bearbeitig isch nonig vun eme Fäldhieter aagluegt wore',
 'rcnote'                            => "Azeigt {{PLURAL:$1|wird '''1''' Änderig|wärde di letschte '''$1''' Änderige}} {{PLURAL:$2|vom letschte Tag|i de letschte '''$2''' Täg}} (Stand: $4, $5)",
 'rcnotefrom'                        => 'Des sin d Ändrige syter <b>$2</b> (bis zem <b>$1</b> zeigt).',

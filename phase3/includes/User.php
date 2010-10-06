@@ -2006,7 +2006,7 @@ class User {
 
 		if ( $oname == 'skin' ) {
 			# Clear cached skin, so the new one displays immediately in Special:Preferences
-			unset( $this->mSkin );
+			$this->mSkin = null;
 		}
 
 		// Explicitly NULL values should refer to defaults
@@ -2761,9 +2761,9 @@ class User {
 	function getMaxID() {
 		static $res; // cache
 
-		if ( isset( $res ) )
+		if ( isset( $res ) ) {
 			return $res;
-		else {
+		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 			return $res = $dbr->selectField( 'user', 'max(user_id)', false, __METHOD__ );
 		}

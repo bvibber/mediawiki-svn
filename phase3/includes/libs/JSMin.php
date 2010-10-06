@@ -49,8 +49,17 @@ class JSMin {
 	const ORD_LF    = 10;
 	const ORD_SPACE = 32;
 
+	// Action constants
+	const OUTPUT = 1;
+	const DELETE_A = 2;
+	const DELETE_B = 3;
+
+	/** Current character */
 	protected $a           = '';
+
+	/** Next character */
 	protected $b           = '';
+
 	protected $input       = '';
 	protected $inputIndex  = 0;
 	protected $inputLength = 0;
@@ -60,7 +69,7 @@ class JSMin {
 	// -- Public Static Methods --------------------------------------------------
 
 	public static function minify( $js ) {
-		$jsmin = new JSMin( $js );
+		$jsmin = new self( $js );
 		$ret = $jsmin->min();
 		return $ret;
 	}
@@ -68,41 +77,55 @@ class JSMin {
 	// -- Public Instance Methods ------------------------------------------------
 
 	public function __construct( $input ) {
+		// Fix line endings
 		$this->input       = str_replace( "\r\n", "\n", $input );
+		// Replace tabs and other control characters (except LF) with spaces
+		$this->input = preg_replace( '/[\x00-\x09\x0b-\x1f]/', ' ', $this->input );
 		$this->inputLength = strlen( $this->input );
 	}
 
 	// -- Protected Instance Methods ---------------------------------------------
 
+	/**
+	 * Do something! What you do is determined by the argument:
+	 *		- self::OUTPUT     Output A. Copy B to A. Get the next B.
+	 *		- self::DELETE_A   Copy B to A. Get the next B. (Delete A).
+	 *		- self::DELETE_B   Get the next B. (Delete B).
+	 *  action treats a string as a single character. Wow!
+	 *  action recognizes a regular expression if it is preceded by ( or , or =.
+	 */
 	protected function action( $d ) {
 		switch( $d ) {
-			case 1:
+			case self::OUTPUT:
 				$this->output .= $this->a;
 
-			case 2:
+			case self::DELETE_A:
 				$this->a = $this->b;
 
 				if ( $this->a === "'" || $this->a === '"' ) {
+					$interestingChars = $this->a . "\\\n";
+					$this->output .= $this->a;
 					for ( ; ; ) {
-						$this->output .= $this->a;
-						$this->a       = $this->get();
+						$runLength = strcspn( $this->input, $interestingChars, $this->inputIndex );
+						$this->output .= substr( $this->input, $this->inputIndex, $runLength );
+						$this->inputIndex += $runLength;
+						$c = $this->get();
 
-						if ( $this->a === $this->b ) {
+						if ( $c === $this->b ) {
 							break;
 						}
 
-						if ( ord( $this->a ) <= self::ORD_LF ) {
+						if ( $c === "\n" || $c === null ) {
 							throw new JSMinException( 'Unterminated string literal.' );
 						}
 
-						if ( $this->a === '\\' ) {
-							$this->output .= $this->a;
-							$this->a       = $this->get();
+						if ( $c === '\\' ) {
+							$this->output .= $c . $this->get();
 						}
 					}
 				}
 
-			case 3:
+			case self::DELETE_B:
 				$this->b = $this->next();
 
 				if ( $this->b === '/' && (
@@ -113,6 +136,9 @@ class JSMin {
 					$this->output .= $this->a . $this->b;
 
 					for ( ; ; ) {
+						$runLength = strcspn( $this->input, "/\\\n", $this->inputIndex );
+						$this->output .= substr( $this->input, $this->inputIndex, $runLength );
+						$this->inputIndex += $runLength;
 						$this->a = $this->get();
 
 						if ( $this->a === '/' ) {
@@ -120,7 +146,7 @@ class JSMin {
 						} elseif ( $this->a === '\\' ) {
 							$this->output .= $this->a;
 							$this->a       = $this->get();
-						} elseif ( ord( $this->a ) <= self::ORD_LF ) {
+						} elseif ( $this->a === "\n" || $this->a === null ) {
 							throw new JSMinException( 'Unterminated regular expression ' .
 									'literal.' );
 						}
@@ -133,69 +159,55 @@ class JSMin {
 		}
 	}
 
+	/**
+	 * Return the next character from the input. Watch out for lookahead. If
+     * the character is a control character, translate it to a space or
+     * linefeed.
+	 */
 	protected function get() {
-		$c = $this->lookAhead;
-		$this->lookAhead = null;
-
-		if ( $c === null ) {
-			if ( $this->inputIndex < $this->inputLength ) {
-				$c = substr( $this->input, $this->inputIndex, 1 );
-				$this->inputIndex += 1;
-			} else {
-				$c = null;
-			}
+		if ( $this->inputIndex < $this->inputLength ) {
+			return $this->input[$this->inputIndex++];
+		} else {
+			return null;
 		}
-
-		if ( $c === "\r" ) {
-			return "\n";
-		}
-
-		if ( $c === null || $c === "\n" || ord( $c ) >= self::ORD_SPACE ) {
-			return $c;
-		}
-
-		return ' ';
 	}
 
+	/**
+	 * Return true if the character is a letter, digit, underscore,
+	 * dollar sign, or non-ASCII character.
+	 */
 	protected function isAlphaNum( $c ) {
 		return ord( $c ) > 126 || $c === '\\' || preg_match( '/^[\w\$]$/', $c ) === 1;
 	}
 
+	/**
+	 * Copy the input to the output, deleting the characters which are
+	 * insignificant to JavaScript. Comments will be removed. Tabs will be
+	 * replaced with spaces. Carriage returns will be replaced with linefeeds.
+	 * Most spaces and linefeeds will be removed.
+	 */
 	protected function min() {
 		$this->a = "\n";
-		$this->action( 3 );
+		$this->action( self::DELETE_B );
 
 		while ( $this->a !== null ) {
 			switch ( $this->a ) {
 				case ' ':
 					if ( $this->isAlphaNum( $this->b ) ) {
-						$this->action( 1 );
+						$this->action( self::OUTPUT );
 					} else {
-						$this->action( 2 );
+						$this->action( self::DELETE_A );
 					}
 					break;
 
 				case "\n":
 					switch ( $this->b ) {
-						case '{':
-						case '[':
-						case '(':
-						case '+':
-						case '-':
-							$this->action( 1 );
-							break;
-
 						case ' ':
-							$this->action( 3 );
+							$this->action( self::DELETE_B );
 							break;
 
 						default:
-							if ( $this->isAlphaNum( $this->b ) ) {
-								$this->action( 1 );
-							}
-							else {
-								$this->action( 2 );
-							}
+							$this->action( self::OUTPUT );
 					}
 					break;
 
@@ -203,87 +215,67 @@ class JSMin {
 					switch ( $this->b ) {
 						case ' ':
 							if ( $this->isAlphaNum( $this->a ) ) {
-								$this->action( 1 );
+								$this->action( self::OUTPUT );
 								break;
 							}
 
-							$this->action( 3 );
+							$this->action( self::DELETE_B );
 							break;
-
-						case "\n":
-							switch ( $this->a ) {
-								case '}':
-								case ']':
-								case ')':
-								case '+':
-								case '-':
-								case '"':
-								case "'":
-									$this->action( 1 );
-									break;
-
-								default:
-									if ( $this->isAlphaNum( $this->a ) ) {
-										$this->action( 1 );
-									}
-									else {
-										$this->action( 3 );
-									}
-							}
-							break;
-
 						default:
-							$this->action( 1 );
+							$this->action( self::OUTPUT );
 							break;
 					}
 			}
 		}
 
-		return $this->output;
+		// Remove initial line break
+		if ( $this->output[0] !== "\n" ) {
+			throw new JSMinException( 'Unexpected lack of line break.' );
+		}
+		if ( $this->output === "\n" ) {
+			return '';
+		} else {
+			return substr( $this->output, 1 );
+		}
 	}
 
+	/**
+	 * Get the next character, excluding comments.
+	 */
 	protected function next() {
-		$c = $this->get();
+		if ( $this->inputIndex >= $this->inputLength ) {
+			return null;
+		}
+		$c = $this->input[$this->inputIndex++];
+
+		if ( $this->inputIndex >= $this->inputLength ) {
+			return $c;
+		}
 
 		if ( $c === '/' ) {
-			switch( $this->peek() ) {
+			switch( $this->input[$this->inputIndex] ) {
 				case '/':
-					for ( ; ; ) {
-						$c = $this->get();
-
-						if ( ord( $c ) <= self::ORD_LF ) {
-							return $c;
-						}
-					}
-
+					$this->inputIndex += strcspn( $this->input, "\n", $this->inputIndex ) + 1;
+					return "\n";
 				case '*':
-					$this->get();
-
-					for ( ; ; ) {
-						switch( $this->get() ) {
-							case '*':
-								if ( $this->peek() === '/' ) {
-									$this->get();
-									return ' ';
-								}
-								break;
-
-							case null:
-								throw new JSMinException( 'Unterminated comment.' );
-						}
+					$endPos = strpos( $this->input, '*/', $this->inputIndex + 1 );
+					if ( $endPos === false ) {
+						throw new JSMinException( 'Unterminated comment.' );
 					}
-
+					$numLines = substr_count( $this->input, "\n", $this->inputIndex, 
+						$endPos - $this->inputIndex );
+					$this->inputIndex = $endPos + 2;
+					if ( $numLines ) {
+						return str_repeat( "\n", $numLines );
+					} else {
+						return ' ';
+					}
 				default:
 					return $c;
 			}
 		}
 
 		return $c;
-	}
-
-	protected function peek() {
-		$this->lookAhead = $this->get();
-		return $this->lookAhead;
 	}
 }
 

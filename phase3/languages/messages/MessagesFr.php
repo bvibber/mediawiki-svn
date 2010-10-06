@@ -576,6 +576,7 @@ Trop d’utilisateurs cherchent à consulter cette page.
 Veuillez attendre un moment avant de retenter l’accès à cette page.
 
 $1',
+'pool-errorunknown' => 'Erreur inconnue',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'À propos de {{SITENAME}}',
@@ -1255,8 +1256,8 @@ Assurez-vous que cette opération conservera la continuité de l’historique de
 'compareselectedversions'  => 'Comparer les versions sélectionnées',
 'showhideselectedversions' => 'Afficher/masquer les versions sélectionnées',
 'editundo'                 => 'défaire',
-'diff-multi'               => "({{PLURAL:$1|Une version intermédiaire|$1 versions intermédiaires}} {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}} sont masquées)",
-'diff-multi-manyusers'     => '($1 révisions intermédiaires par plus de 100 utilisateurs sont masquées)',
+'diff-multi'               => '({{PLURAL:$1|Une révision intermédiaire|$1 révision intermédiaires}} par {{PLURAL:$2|un utilisateur|$2 utilisateurs}} {{PLURAL:$1|est masquée|sont masquées}})',
+'diff-multi-manyusers'     => "({{PLURAL:$1|Une révision intermédiaire|$1 révisions intermédiaires}} par plus {{PLURAL:$2|d'un utilisateur|de $2 utilisateurs}} {{PLURAL:$1|est masquée|sont masquées}})",
 
 # Search results
 'searchresults'                    => 'Résultats de la recherche',
@@ -1602,14 +1603,9 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'recentchanges-legend'              => 'Options des modifications récentes',
 'recentchangestext'                 => 'Piste les changements les plus récents du wiki sur cette page.',
 'recentchanges-feed-description'    => 'Suivre les dernières modifications de ce wiki dans un flux.',
-'recentchanges-label-legend'        => 'Légende : $1.',
-'recentchanges-legend-newpage'      => '$1 - nouvelle page',
 'recentchanges-label-newpage'       => 'Cette modification a créé une nouvelle page',
-'recentchanges-legend-minor'        => '$1 - modification mineure',
 'recentchanges-label-minor'         => 'Cette modification est mineure',
-'recentchanges-legend-bot'          => '$1 - modification faite par un robot',
 'recentchanges-label-bot'           => 'Cette modification a été effectuée par un robot.',
-'recentchanges-legend-unpatrolled'  => '$1 - modification non patrouillée',
 'recentchanges-label-unpatrolled'   => 'Cette modification n’a pas encore été patrouillée.',
 'rcnote'                            => 'Voici {{PLURAL:$1|la dernière modification effectuée|les $1 dernières modifications effectuées}} durant {{PLURAL:$2|la dernière journée|les <b>$2</b> derniers jours}} jusqu’à $5 le $4.',
 'rcnotefrom'                        => "Voici les modifications effectuées depuis le '''$2''' ('''$1''' au maximum).",
