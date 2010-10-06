@@ -18,10 +18,10 @@ class UploadFromFileToStash extends UploadFromFile {
 	 * Instead, we store it in the SessionStash, and return metadata about the file
 	 * We also create a thumbnail, which is visible only to the uploading user.
 	 *
-	 * @param {String} $comment optional -- should not be used, here for parent class compatibility
+	 * @param {String} $comment: optional -- should not be used, here for parent class compatibility
 	 * @param {String} $pageText: optional -- should not be used, here only for parent class compatibility
 	 * @param {Boolean} $watch: optional -- whether to watchlist this item, should be unused, only here for parent class compatibility
-	 * @param {User} $uer: optional -- current user, should not be used, only here for parent class compatibility
+	 * @param {User} $user: optional -- current user, should not be used, only here for parent class compatibility
 	 * @return {Status} $status
 	 */
 	public function performUpload( $comment, $pageText, $watch, $user ) { 

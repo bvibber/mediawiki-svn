@@ -80,7 +80,7 @@ class ApiUpload extends ApiBase {
 		// Check permission to upload this file
 		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
 		if ( $permErrors !== true ) {
-			// Todo: stash the upload and allow choosing a new name
+			// TODO: stash the upload and allow choosing a new name
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
@@ -90,14 +90,17 @@ class ApiUpload extends ApiBase {
 		if ( $warnings ) {
 			$sessionKey = $this->mUpload->stashSession();
 			if ( !$sessionKey ) {
+				// FIXME: This should not be fatal: the user should be able to see the warnings --RK
 				$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
 			}
 
 			$result['sessionkey'] = $sessionKey;
 
 			// is it really necessary to say 'result=warning'
+			// FIXME: $warnings is already of the form array( 'result' => 'Warning', 'warnings' => ... ) --RK
 			$result['result'] = 'Warning';
 			$result['warnings'] = $warnings;
+			// FIXME: This double-adds $result , added again just below the else block --RK
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 
 		} else {
@@ -163,7 +166,7 @@ class ApiUpload extends ApiBase {
 
 
 		} elseif ( isset( $this->mParams['file'] ) ) {
-			if ( isset( $this->mParams['stash'] ) and $this->mParams['stash'] ) {
+			if ( $this->mParams['stash'] ) {
 				$this->mUpload = new UploadFromFileToStash();
 			} else {
 				$this->mUpload = new UploadFromFile();
@@ -287,12 +290,12 @@ class ApiUpload extends ApiBase {
 				// Add indices
 				$this->getResult()->setIndexedTagName( $warnings, 'warning' );
 
+				// FIXME: This duplicates logic from transformWarnings(), then *calls* transformWarnings() --RK
 				if ( isset( $warnings['duplicate'] ) ) {
 					$dupes = array();
 					foreach ( $warnings['duplicate'] as $key => $dupe ) {
 						$dupes[] = $dupe->getName();
 					}
-					// despite 'set' in the name of this function, it just formats $dupes
 					$this->getResult()->setIndexedTagName( $dupes, 'duplicate' );
 					$warnings['duplicate'] = $dupes;
 				}
@@ -394,19 +397,10 @@ class ApiUpload extends ApiBase {
 
 		$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
 
-
-	/**
-	 * Get image info, but also add one or more thumbnails.  Relies a lot on SessionStashFile's
-	 * modified transform().
-	 * This method also has to pass in an API result, which is a rather bad idea and breaks
- 	 * separation of concerns, but that's how the rest of the code works :(
-	 *
-	 * @param {ApiResult} result
-	 * @return {Mixed} image info, mostly key-value but also including thumbnails with similar sets of sub-properties
-	 */
-
 		// XXX get default thumbnail width. 
 		// perhaps when initializing... Isn't this a global? Can't find it anywhere in docs.
+		// XXX It's a user preference, see $wgThumbLimits and the thumbsize user preference.
+		// The pref is only observed by Linker.php AFAICT and a few other places hardcode 120x120px --RK
 		$defaultThumbWidth = 120;
 		if ( isset( $this->mParams['thumbwidth'] ) ) {
 			$thumbnails = array();
@@ -476,12 +470,9 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => false,
 			'file' => null,
 			'url' => null,
-
 			'sessionkey' => null,
+			'stash' => false,
 			'thumbwidth' => null,
-			'stash' => array(
-				ApiBase::PARAM_DFLT => false,
-			)
 		);
 
 		global $wgAllowAsyncCopyUploads;
@@ -507,7 +498,7 @@ class ApiUpload extends ApiBase {
 			'file' => 'File contents',
 			'url' => 'Url to fetch the file from',
 			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',
-			'stash' => 'If set to a true value, the server will not add the file to the repository and stash it temporarily.',
+			'stash' => 'If set, the server will not add the file to the repository and stash it temporarily.'
 			'thumbwidth' => 'thumbwidths'
 		);
 
