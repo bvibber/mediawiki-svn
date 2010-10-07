@@ -28,8 +28,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Darth Kule
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'contributiontracking-desc' => '{{desc}}',
 	'contrib-tracking-error' => '{{Identical|Error}}',
 	'contrib-tracking-button' => '{{Identical|Continue}}',
 );
@@ -46,12 +48,12 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'contributiontracking-desc' => "Seguimiento de contrebuzions d'a replegad de fondos de Wikimedia",
-	'contributiontracking' => 'Seguimiento de contrebuzions',
+	'contributiontracking-desc' => "Seguimiento de contrebucions d'a replegad de fondos de Wikimedia",
+	'contributiontracking' => 'Seguimiento de contrebucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Error en o formulario',
-	'contrib-tracking-submitting' => 'Nimbiando ta o prozesador de pagos...',
-	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donazión en PayPal.',
+	'contrib-tracking-submitting' => 'Ninviando ta o procesador de pagos...',
+	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donación en PayPal.',
 	'contrib-tracking-button' => 'Continar',
 );
 
@@ -126,6 +128,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'contrib-tracking-error' => 'ত্রুটি',
+	'contrib-tracking-button' => 'অগ্রসর হোন',
 );
 
 /** Breton (Brezhoneg)
@@ -155,10 +158,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'contributiontracking-desc' => 'Contribució de seguiment per a la recaptació de fons de Wikimedia',
 	'contributiontracking' => 'Rastreig de contribucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Enviament de formulari no vàlid',
@@ -226,6 +231,11 @@ $messages['dsb'] = array(
 	'contrib-tracking-button' => 'Dalej',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'contrib-tracking-error' => 'Vodada',
+);
+
 /** Greek (Ελληνικά)
  * @author Konsnos
  * @author Omnipaedista
@@ -247,7 +257,7 @@ $messages['eo'] = array(
 	'contributiontracking-desc' => 'Kontribuada atentilo por la monkampajno Wikimedia',
 	'contributiontracking' => 'Kontribua kontrolado',
 	'contrib-tracking-error' => 'Eraro',
-	'contrib-tracking-error-text' => 'Nevalida enigo',
+	'contrib-tracking-error-text' => 'Malvalida enigo',
 	'contrib-tracking-submitting' => 'Sendante al mona traktejo...',
 	'contrib-tracking-continue' => 'Se vi ne aŭtomate estus alidirektita, klaku la butonon por fini vian donacon ĉe PayPal.',
 	'contrib-tracking-button' => 'Daŭrigi',
@@ -465,6 +475,11 @@ $messages['id'] = array(
 	'contrib-tracking-button' => 'Lanjutkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'contrib-tracking-error' => 'Nsogbú',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -549,7 +564,7 @@ $messages['ko'] = array(
 	'contrib-tracking-button' => '계속',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -562,7 +577,7 @@ $messages['ksh'] = array(
 	'contrib-tracking-button' => 'Wigger',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -636,7 +651,7 @@ $messages['ml'] = array(
 	'contrib-tracking-error' => 'പിഴവ്',
 	'contrib-tracking-error-text' => 'ഫോം സമർപ്പണം അസാധുവായ വിധത്തിലാണ്',
 	'contrib-tracking-submitting' => 'പണമടയ്ക്കാനായി സമർപ്പിക്കുന്നു...',
-	'contrib-tracking-continue' => 'താങ്കൾ സ്വതവേ തിരിച്ചുവിടപ്പെട്ടില്ലങ്കിൽ, പേയ്‌‌പാൽ വഴിയുള്ള താങ്കളുടെ സംഭാവന പൂർത്തിയാക്കാനായി ബട്ടൺ ഞെക്കുക.',
+	'contrib-tracking-continue' => 'താങ്കൾ സ്വതേ തിരിച്ചുവിടപ്പെട്ടില്ലങ്കിൽ, പേയ്‌‌പാൽ വഴിയുള്ള താങ്കളുടെ സംഭാവന പൂർത്തിയാക്കാനായി ബട്ടൺ ഞെക്കുക.',
 	'contrib-tracking-button' => 'തുടരുക',
 );
 
@@ -745,7 +760,7 @@ $messages['pl'] = array(
 	'contrib-tracking-error' => 'Błąd',
 	'contrib-tracking-error-text' => 'Niewłaściwy format danych wejściowych',
 	'contrib-tracking-submitting' => 'Przesyłanie danych do systemu płatności...',
-	'contrib-tracking-continue' => 'Jeśli nie zostałeś/-aś przeniesiony/-a automatycznie, kliknij przycisk by dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
+	'contrib-tracking-continue' => 'Jeśli nie {{GENDER:|zostałeś przeniesiony|zostałaś przeniesiona|przeniesiono Cię}} automatycznie, kliknij przycisk aby dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
 	'contrib-tracking-button' => 'Kontynuuj',
 );
 
@@ -762,17 +777,25 @@ $messages['pms'] = array(
 	'contrib-tracking-button' => 'Continua',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contrib-tracking-error' => 'تېروتنه',
+);
+
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'contributiontracking-desc' => 'Seguimento de doações para a coleta de fundos da Wikimedia',
-	'contributiontracking' => 'Seguimento de doações',
+	'contributiontracking-desc' => 'Monitorização de donativos para a angariação de fundos da Wikimedia',
+	'contributiontracking' => 'Monitorização de donativos',
 	'contrib-tracking-error' => 'Erro',
-	'contrib-tracking-error-text' => 'Submissão de formulário inválido',
-	'contrib-tracking-submitting' => 'Em submissão ao processador de pagamentos...',
-	'contrib-tracking-continue' => 'Se você não for redireccionado automaticamente, clique no botão para completar a sua doação no PayPal.',
+	'contrib-tracking-error-text' => 'Envio de formulário inválido',
+	'contrib-tracking-submitting' => 'A enviar ao processador de pagamentos...',
+	'contrib-tracking-continue' => 'Se não for redireccionado automaticamente, clique no botão para completar o seu donativo no PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 
@@ -795,7 +818,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
-	'contrib-tracking-button' => 'Continuaţi',
+	'contrib-tracking-button' => 'Continuați',
 );
 
 /** Tarandíne (Tarandíne)
@@ -803,6 +826,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'contrib-tracking-error' => 'Errore',
+	'contrib-tracking-error-text' => 'Module de sottomissione invalide',
 	'contrib-tracking-button' => 'Condinue',
 );
 
@@ -832,6 +856,13 @@ $messages['sah'] = array(
 	'contrib-tracking-button' => 'Салгыы',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'contrib-tracking-error' => 'දෝෂය',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -843,6 +874,19 @@ $messages['sk'] = array(
 	'contrib-tracking-submitting' => 'Odosiela sa na spracovanie platieb...',
 	'contrib-tracking-continue' => 'Ak nebudete automaticky presmerovaný, kliknite na tlačidlo, čím dokončíte váš príspevok prostredníctvom PayPal.',
 	'contrib-tracking-button' => 'Pokračovať',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'contributiontracking-desc' => 'Sledenje prispevkov za zbiralca sredstev Wikimedie',
+	'contributiontracking' => 'Sledenje prispevkov',
+	'contrib-tracking-error' => 'Napaka',
+	'contrib-tracking-error-text' => 'Neveljavni oddan obrazec',
+	'contrib-tracking-submitting' => 'Pošiljanje predelovalcu plačil ...',
+	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
+	'contrib-tracking-button' => 'Nadaljuj',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -872,6 +916,11 @@ $messages['sv'] = array(
 	'contrib-tracking-submitting' => 'Skickar till betalningshanterare...',
 	'contrib-tracking-continue' => 'Om du inte kommer vidare automatiskt, klicka på knappen för att slutföra din donation hos PayPal.',
 	'contrib-tracking-button' => 'Fortsätt',
+);
+
+/** Swahili (Kiswahili) */
+$messages['sw'] = array(
+	'contrib-tracking-error' => 'Hitilafu',
 );
 
 /** Telugu (తెలుగు)
@@ -1018,11 +1067,13 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Liangent
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'contrib-tracking-error' => '错误',
 	'contrib-tracking-error-text' => '无效的表单提交',
 	'contrib-tracking-submitting' => '正在提交到支付处理器……',
+	'contrib-tracking-continue' => '若阁下没有被重定向至PayPal页面，请点击按钮以完成您的捐助。',
 	'contrib-tracking-button' => '继续',
 );
 

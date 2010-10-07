@@ -35,7 +35,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 			'utm_source' => $wgRequest->getText('utm_source', null),
 			'utm_medium' => $wgRequest->getText('utm_medium', null),
 			'utm_campaign' => $wgRequest->getText('utm_campaign', null),
-			'optout' => ($wgRequest->getCheck('email', 0) ? 0 : 1),
+			'optout' => ($wgRequest->getCheck('email-opt', 0) ? 0 : 1),
 			'language' => $wgRequest->getText('language', null),
 			'ts' => $ts,
 		);
@@ -48,9 +48,10 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Store the contribution data
-		$db->insert( 'contribution_tracking', $tracked_contribution );
-		
-		$contribution_tracking_id = $db->insertId();
+		if ( !$wgRequest->getVal( 'contribution_tracking_id', 0 )) {
+			$db->insert( 'contribution_tracking', $tracked_contribution );
+		}
+		$contribution_tracking_id = $wgRequest->getVal( 'contribution_tracking_id', $db->insertId());
 		
 		$returnText = $wgRequest->getText( 'returnto', "Donate-thanks/$language" );
 		$returnTitle = Title::newFromText( $returnText );
@@ -79,6 +80,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 			$repost['return'] = $returnto;
 			
 			$repost['currency_code'] = $wgRequest->getText( 'currency_code', 'USD' );
+			
+			// additional fields to pass to PayPal from single-step credit card form
+			$repost[ 'first_name' ] = $wgRequest->getText( 'fname', null );
+			$repost[ 'last_name' ] = $wgRequest->getText( 'lname', null );
+			$repost[ 'email' ] = $wgRequest->getText( 'email', null );
 		}
 		else if ( $gateway == 'moneybookers' ) {
 			$action = 'https://www.moneybookers.com/app/payment.pl';
