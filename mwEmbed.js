@@ -2187,7 +2187,7 @@ mw.absoluteUrl = function( src, contextUrl ) {
 				return ;
 			}
 				
-			// Load the launage if set
+			// Load the language if set
 			mw.load( langLoaderRequest, function(){			
 				mw.log( 'Done moduleLoaderCheck request' );			
 				addLocalSettings();
