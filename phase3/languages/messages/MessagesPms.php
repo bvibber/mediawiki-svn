@@ -55,7 +55,7 @@ dj'artìcoj ancó pa scrit",
 'tog-editsection'             => "Abìlita la modìfica dle session con j'anliure [modìfica]",
 'tog-editsectiononrightclick' => 'Abilité la modìfica dle session ën sgnacand-je ansima<br />  al tìtol col tast drit dël rat (a-i va Javascript)',
 'tog-showtoc'                 => "Buta le tàole dij contnù<br />(për j'artìcoj che l'han pì che 3 session)",
-'tog-rememberpassword'        => 'Vis-te mia ciav ansima a sto browser-sì (për al pi $1 {{PLURAL:$1|di|di}})',
+'tog-rememberpassword'        => "Visesse ëd mia ciav ansima a 's navigador (për al pi $1 {{PLURAL:$1|di|di}})",
 'tog-watchcreations'          => 'Gionta le pàgine che i creo mi a la lista ëd lòn che im ten-o sot euj',
 'tog-watchdefault'            => "Gionta le pàgine che i modìfico mi a la lista dle ròbe ch'i ten-o sot-euj",
 'tog-watchmoves'              => 'Gionta le pàgine che i tramudo a lòn che im ten-o sot euj',
@@ -275,8 +275,8 @@ Tròpi utent a son an camin ch'a preuvo a lese sta pàgina-sì.
 Për piasì, speta un pòch prima ëd prové torna a vardé sta pàgina-sì.
 
 $1",
-'pool-timeout'      => 'Timeout an spetand ël lock',
-'pool-queuefull'    => "La coa dël pool a l'é pien-a",
+'pool-timeout'      => "Ël temp a l'é finì antramentre ch'a së spetava la saradura",
+'pool-queuefull'    => "La coa ëd travaj a l'é pien-a",
 'pool-errorunknown' => 'Eror pa conossù',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -519,9 +519,9 @@ Për piasì speta prima ëd prové torna.",
 'loginlanguagelabel'         => 'Lenga: $1',
 'suspicious-userlogout'      => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
 'ratelimit-excluded-ips'     => " #<!-- leave this line exactly as it is --> <pre>
-# La sintass a l'é com ch'a ven:
-#   * Minca ròba da un caràter \"#\" a la fin ëd la linia a l'é un coment
-#   * Minca linia pa-bianca a l'é n'adrëssa IP gavà dal lìmit ëd valutassion
+# La sintassi a l'é parèj:
+#   * Tut lòn ch'a part da 'n caràter \"#\" a la fin ëd la linia a l'é un coment
+#   * Minca linia nen veuida a l'é n'adrëssa IP gavà dal lìmit ëd frequensa
  #</pre> <!-- leave this line exactly as it is -->",
 
 # JavaScript password checks
@@ -971,8 +971,8 @@ Ch'a varda mach che a-i ven-a nen fòra un rabel ant la continuità stòrica.",
 'compareselectedversions'  => 'Paragon-a le version selessionà',
 'showhideselectedversions' => 'Smon-e/stërmé le version selessionà',
 'editundo'                 => "buta 'me ch'a l'era",
-'diff-multi'               => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
-'diff-multi-manyusers'     => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|$2 utent}} pa mostrà.)",
+'diff-multi'               => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} ëd {{PLURAL:$2|n'utent|$2 utent}} pa mostrà)",
+'diff-multi-manyusers'     => "({{PLURAL:$1|Na revision antërmedia|$1 revision antërmedie}} da pi che $2 {{PLURAL:$2|n'utent|utent}} pa mostrà)",
 
 # Search results
 'searchresults'                    => "Arzultà dl'arserca",
@@ -1557,46 +1557,46 @@ Për sòlit j'ùltim carià a resto an sima.
 Ch'a-i bata 'n colp col rat ansima a j'antestassion dle colòne për cangé l'órdin.",
 'listfiles_search_for'  => "Arserché un nòm d'archivi multimojen:",
 'imgfile'               => 'archivi',
-'listfiles'             => 'Lista dle figure',
+'listfiles'             => "Lista d'archivi",
 'listfiles_date'        => 'Data',
 'listfiles_name'        => 'Nòm',
 'listfiles_user'        => 'Utent',
-'listfiles_size'        => 'Amzura an byte',
+'listfiles_size'        => 'Amzura an otet',
 'listfiles_description' => 'Descrission',
-'listfiles_count'       => 'Vërsion',
+'listfiles_count'       => 'Version',
 
 # File description page
-'file-anchor-link'                  => 'Figura',
+'file-anchor-link'                  => 'Archivi',
 'filehist'                          => "Stòria dl'archivi",
-'filehist-help'                     => "Ch'a-i daga un colp col rat ant sna cobia data/ora për ës-ciairé coma restèissa l'archivi ant col moment-là.",
+'filehist-help'                     => "Ch'a-i daga un colp col rat ant sna cobia data/ora për ës-ciairé coma a restèissa l'archivi ant col moment-là.",
 'filehist-deleteall'                => 'dëscancelé tut',
-'filehist-deleteone'                => 'scansela',
-'filehist-revert'                   => "buté torna 'me ch'a lera",
+'filehist-deleteone'                => 'scancelé',
+'filehist-revert'                   => "buté torna 'me ch'a l'era",
 'filehist-current'                  => "dël dì d'ancheuj",
 'filehist-datetime'                 => 'Data e Ora',
-'filehist-thumb'                    => 'Miniatura',
-'filehist-thumbtext'                => 'Miniatura dla vërsion dle $1',
-'filehist-nothumb'                  => 'Gnun-e miniature',
+'filehist-thumb'                    => 'Miniadura',
+'filehist-thumbtext'                => 'Miniadura dla version ëd $1',
+'filehist-nothumb'                  => 'Gnun-e miniadure',
 'filehist-user'                     => 'Utent',
 'filehist-dimensions'               => 'Amzure',
 'filehist-filesize'                 => "Amzure dl'archivi",
-'filehist-comment'                  => 'Oget',
-'filehist-missing'                  => 'File mancant',
-'imagelinks'                        => 'Anliure al file',
-'linkstoimage'                      => "{{PLURAL:$1|La pàgina sì sota a l'ha |$1 Le pàgine sì sota a l'han }} andrinta dj'anliure a cost file-sì:",
-'linkstoimage-more'                 => "Pì che $1 {{PLURAL:$1|pàgina a colega|pàgine a colego}} sto file-sì.
-La lista sota a mosta mach {{PLURAL:$1|la prima pàgina ch'a colega|le prime $1 pàgine ch'acolego}} sto file-sì.
-A-i é n'[[Special:WhatLinksHere/$2|elench complet]].",
+'filehist-comment'                  => 'Coment',
+'filehist-missing'                  => 'Archivi mancant',
+'imagelinks'                        => "Anliure a l'archivi",
+'linkstoimage'                      => "{{PLURAL:$1|La pàgina sì-sota a l'ha|Le $1 pàgine sì-sota a l'han}} andrinta dj'anliure a cost archivi:",
+'linkstoimage-more'                 => "Pì che $1 {{PLURAL:$1|pàgina|pàgine}} a l'han dj'anliure a cost archivi.
+La lista sì-sota a smon mach {{PLURAL:$1|la prima pàgina ch'a l'ha|le prime $1 pàgine ch'a l'han}} d'anliure a s'archivi.
+A l'é disponìbil na [[Special:WhatLinksHere/$2|lista completa]].",
 'nolinkstoimage'                    => "Pa gnun-a pàgina che a l'abia n'anliura a sta figura-sì.",
-'morelinkstoimage'                  => 'Varda [[Special:WhatLinksHere/$1|àutri colegament]] a sto file sì.',
-'redirectstofile'                   => 'Sota a-i {{PLURAL:$1|é un|son $1}} redirect a sto file-sì:',
-'duplicatesoffile'                  => 'Sota a-i {{PLURAL:$1|é un|son $1}} duplicà dë sto file-sì ([[Special:FileDuplicateSearch/$2|pì ëd detaj]]):',
+'morelinkstoimage'                  => "Vëdde [[Special:WhatLinksHere/$1|d'àutri colegament]] a s'archivi.",
+'redirectstofile'                   => "Sì-sota a-i {{PLURAL:$1|é n'archivi|son $1 archivi}} ch'a armando a cost-sì:",
+'duplicatesoffile'                  => "{{PLURAL:$1|L'archivi sì-dapress a l'é un|Ij $1 archivi sì-dapress a son dij}} duplicà ëd s'archivi ([[Special:FileDuplicateSearch/$2|pì ëd detaj]]):",
 'sharedupload'                      => "St'archivi-sì a ven da $1 e a peul esse dovrà da d'àutri proget.",
-'sharedupload-desc-there'           => "Sto file sì a riva da $1 e a peul esse dovrà da dj'àutri proget.
-Për piasì varda la [$2 pàgina ëd descrission dël file] per d'àutre anformassion.",
-'sharedupload-desc-here'            => "Sto file-sì a riva da $1 e a peul esse dovrà për dj'àutri proget.
-La descrission an sla soa [$2 pàgina ëd dëscrission dël file] a l'é mostà sota.",
-'filepage-nofile'                   => 'Un file con sto nòm-sì a esist pa.',
+'sharedupload-desc-there'           => "Cost archivi a riva da $1 e a peul esse dovrà da d'àutri proget.
+Për piasì, vëdde la [$2 pàgina ëd descrission ëd l'archivi] per d'àutre anformassion.",
+'sharedupload-desc-here'            => "Cost archivi a riva da $1 e a peul esse dovrà da dj'àutri proget.
+La descrission an soa [$2 pàgina ëd dëscrission ëd l'archivi] a l'é smonùa sì-sota.",
+'filepage-nofile'                   => 'A esist gnun archivi con ës nòm.',
 'filepage-nofile-link'              => 'Un file con sto nòm-sì a esist pa, ma it peule [$1 carielo].',
 'uploadnewversion-linktext'         => "Carié na version neuva dë st'archivi-sì",
 'shared-repo-from'                  => 'da $1',
@@ -3293,5 +3293,9 @@ Ch'a bata 'l nòm dl'archivi sensa pa bute-ie 'l prefiss \"{{ns:file}}:\".",
 'htmlform-submit'              => 'Spediss',
 'htmlform-reset'               => 'Scansela ij cambiament',
 'htmlform-selectorother-other' => 'Àutr',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 con arserca an test pien mantnùa',
+'sqlite-no-fts'  => '$1 sensa arserca an test pien mantnùa',
 
 );

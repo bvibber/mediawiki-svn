@@ -16,7 +16,7 @@ require_once dirname( __FILE__ ) . '/normal/UtfNormalUtil.php';
 /**
  * Compatibility functions
  *
- * We more or less support PHP 5.0.x and up.
+ * We support PHP 5.1.x and up.
  * Re-implementations of newer functions or functions in non-standard
  * PHP extensions may be included here.
  */
@@ -928,7 +928,8 @@ function wfMsgExt( $key, $options ) {
  * Just like exit() but makes a note of it.
  * Commits open transactions except if the error parameter is set
  *
- * @deprecated Please return control to the caller or throw an exception
+ * @deprecated Please return control to the caller or throw an exception. Will
+ *             be removed in 1.19.
  */
 function wfAbruptExit( $error = false ) {
 	static $called = false;
@@ -937,6 +938,7 @@ function wfAbruptExit( $error = false ) {
 	}
 	$called = true;
 
+	wfDeprecated( __FUNCTION__ );
 	$bt = wfDebugBacktrace();
 	if( $bt ) {
 		for( $i = 0; $i < count( $bt ); $i++ ) {
@@ -957,9 +959,11 @@ function wfAbruptExit( $error = false ) {
 }
 
 /**
- * @deprecated Please return control the caller or throw an exception
+ * @deprecated Please return control the caller or throw an exception. Will
+ *             be removed in 1.19.
  */
 function wfErrorExit() {
+	wfDeprecated( __FUNCTION__ );
 	wfAbruptExit( true );
 }
 
@@ -1957,6 +1961,13 @@ define( 'TS_POSTGRES', 7 );
 define( 'TS_DB2', 8 );
 
 /**
+ * ISO 8601 basic format with no timezone: 19860209T200000Z
+ *
+ * This is used by ResourceLoader
+ */
+define( 'TS_ISO_8601_BASIC', 9 );
+
+/**
  * @param $outputtype Mixed: A timestamp in one of the supported formats, the
  *                    function will autodetect which format is supplied and act
  *                    accordingly.
@@ -1983,6 +1994,8 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 				str_replace( '+00:00', 'UTC', $ts ) ) );
 	} elseif ( preg_match( '/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.*\d*)?Z$/', $ts, $da ) ) {
 		# TS_ISO_8601
+	} elseif ( preg_match( '/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(?:\.*\d*)?Z$/', $ts, $da ) ) {
+		#TS_ISO_8601_BASIC
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d*[\+\- ](\d\d)$/', $ts, $da ) ) {
 		# TS_POSTGRES
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/', $ts, $da ) ) {
@@ -2014,6 +2027,8 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 			return gmdate( 'Y-m-d H:i:s', $uts );
 		case TS_ISO_8601:
 			return gmdate( 'Y-m-d\TH:i:s\Z', $uts );
+		case TS_ISO_8601_BASIC:
+			return gmdate( 'Ymd\THis\Z', $uts );
 		// This shouldn't ever be used, but is included for completeness
 		case TS_EXIF:
 			return gmdate( 'Y:m:d H:i:s', $uts );
@@ -2449,19 +2464,21 @@ function wfShellExec( $cmd, &$retval = null ) {
 		$disabled = false;
 		if( wfIniGetBool( 'safe_mode' ) ) {
 			wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
-			$disabled = true;
+			$disabled = 'safemode';
 		}
 		$functions = explode( ',', ini_get( 'disable_functions' ) );
 		$functions = array_map( 'trim', $functions );
 		$functions = array_map( 'strtolower', $functions );
 		if ( in_array( 'passthru', $functions ) ) {
 			wfDebug( "passthru is in disabled_functions\n" );
-			$disabled = true;
+			$disabled = 'passthru';
 		}
 	}
 	if ( $disabled ) {
 		$retval = 1;
-		return 'Unable to run external programs in safe mode.';
+		return $disabled == 'safemode' ?
+			'Unable to run external programs in safe mode.' :
+			'Unable to run external programs, passthru() is disabled.';
 	}
 
 	wfInitShellLocale();
@@ -3086,7 +3103,7 @@ function &wfGetLBFactory() {
 /**
  * Find a file.
  * Shortcut for RepoGroup::singleton()->findFile()
- * @param $title Either a string or Title object
+ * @param $title String or Title object
  * @param $options Associative array of options:
  *     time:           requested time for an archived image, or false for the
  *                     current version. An image object will be returned which was

@@ -345,7 +345,7 @@ class WebRequest {
 	 * @return Boolean
 	 */
 	public function getBool( $name, $default = false ) {
-		return $this->getVal( $name, $default ) ? true : false;
+		return (bool)$this->getVal( $name, $default );
 	}
 	
 	/**
@@ -358,7 +358,7 @@ class WebRequest {
 	 * @return Boolean
 	 */
 	public function getFuzzyBool( $name, $default = false ) {
-		return $this->getBool( $name, $default ) && $this->getVal( $name ) !== 'false';
+		return $this->getBool( $name, $default ) && strcasecmp( $this->getVal( $name ), 'false' ) !== 0;
 	}
 
 	/**

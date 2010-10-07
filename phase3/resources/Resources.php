@@ -48,6 +48,9 @@ return array(
 	'jquery.highlightText' => new ResourceLoaderFileModule(
 		array( 'scripts' => 'resources/jquery/jquery.highlightText.js' )
 	),
+	'jquery.placeholder' => new ResourceLoaderFileModule(
+		array( 'scripts' => 'resources/jquery/jquery.placeholder.js' )
+	),
 	'jquery.suggestions' => new ResourceLoaderFileModule(
 		array(
 			'scripts' => 'resources/jquery/jquery.suggestions.js',
@@ -304,6 +307,16 @@ return array(
 		'scripts' => 'resources/mediawiki/mediawiki.js',
 		'debugScripts' => 'resources/mediawiki/mediawiki.log.js',
 	) ),
+	'mediawiki.specials.preferences' => new ResourceLoaderFileModule( array(
+		'scripts' => 'resources/mediawiki/mediawiki.specials.preferences.js',
+	) ),
+	'mediawiki.specials.search' => new ResourceLoaderFileModule( array(
+		'scripts' => 'resources/mediawiki/mediawiki.specials.search.js',
+	) ),
+	'mediawiki.views.history' => new ResourceLoaderFileModule( array(
+		'scripts' => 'resources/mediawiki/mediawiki.views.history.js',
+		'dependencies' => 'mediawiki.legacy.history',
+	) ),
 	
 	/* MediaWiki Legacy */
 	
@@ -389,6 +402,7 @@ return array(
 	) ),
 	'mediawiki.legacy.search' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/search.js',
+		'styles' => 'skins/common/search.css',
 		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.shared' => new ResourceLoaderFileModule( array(

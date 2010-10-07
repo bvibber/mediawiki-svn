@@ -56,23 +56,23 @@ $wgServer = '';
 
 /** @cond file_level_code */
 if( isset( $_SERVER['SERVER_NAME'] ) ) {
-	$wgServerName = $_SERVER['SERVER_NAME'];
+	$serverName = $_SERVER['SERVER_NAME'];
 } elseif( isset( $_SERVER['HOSTNAME'] ) ) {
-	$wgServerName = $_SERVER['HOSTNAME'];
+	$serverName = $_SERVER['HOSTNAME'];
 } elseif( isset( $_SERVER['HTTP_HOST'] ) ) {
-	$wgServerName = $_SERVER['HTTP_HOST'];
+	$serverName = $_SERVER['HTTP_HOST'];
 } elseif( isset( $_SERVER['SERVER_ADDR'] ) ) {
-	$wgServerName = $_SERVER['SERVER_ADDR'];
+	$serverName = $_SERVER['SERVER_ADDR'];
 } else {
-	$wgServerName = 'localhost';
+	$serverName = 'localhost';
 }
 
 $wgProto = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
 
-$wgServer = $wgProto.'://' . $wgServerName;
+$wgServer = $wgProto.'://' . $serverName;
 # If the port is a non-standard one, add it to the URL
 if(    isset( $_SERVER['SERVER_PORT'] )
-	&& !strpos( $wgServerName, ':' )
+	&& !strpos( $serverName, ':' )
     && (    ( $wgProto == 'http' && $_SERVER['SERVER_PORT'] != 80 )
 	 || ( $wgProto == 'https' && $_SERVER['SERVER_PORT'] != 443 ) ) ) {
 
@@ -968,14 +968,16 @@ $wgDjvuOutputExtension = 'jpg';
 /**
  * Site admin email address.
  */
-$wgEmergencyContact = 'wikiadmin@' . $wgServerName;
+$wgEmergencyContact = 'wikiadmin@' . $serverName;
 
 /**
  * Password reminder email address.
  *
  * The address we should use as sender when a user is requesting his password.
  */
-$wgPasswordSender	= 'MediaWiki Mail <apache@' . $wgServerName . '>';
+$wgPasswordSender	= 'MediaWiki Mail <apache@' . $serverName . '>';
+
+unset($serverName); # Don't leak local variables to global scope
 
 /**
  * Dummy address which should be accepted during mail send action.
@@ -1661,10 +1663,23 @@ $wgResourceLoaderMaxage = array(
 );
 
 /**
+ * Whether to embed private modules inline with HTML output or to bypass caching and check the user parameter against
+ * $wgUser to prevent unauthorized access to private modules.
+ */
+$wgResourceLoaderInlinePrivateModules = true;
+
+/**
  * The default debug mode (on/off) for of ResourceLoader requests. This will still
  * be overridden when the debug URL parameter is used.
  */
 $wgResourceLoaderDebug = false;
+
+/**
+ * Enable embedding of certain resources using Edge Side Includes. This will
+ * improve performance but only works if there is something in front of the
+ * web server (e..g a Squid or Varnish server) configured to process the ESI.
+ */
+$wgResourceLoaderUseESI = false;
 
 /**
  * Enable data URL embedding (experimental). This variable is very temporary and
@@ -3518,7 +3533,7 @@ $wgSessionName = false;
  */
 $wgUseTeX = false;
 /** Location of the texvc binary */
-$wgTexvc = './math/texvc';
+$wgTexvc = $IP . '/math/texvc';
 /**
   * Texvc background color
   * use LaTeX color format as used in \special function
@@ -3723,8 +3738,8 @@ $wgUseTrackbacks = false;
  * Use full paths.
  */
 $wgParserTestFiles = array(
-	"$IP/maintenance/parserTests.txt",
-	"$IP/maintenance/ExtraParserTests.txt"
+	"$IP/maintenance/tests/parser/parserTests.txt",
+	"$IP/maintenance/tests/parser/ExtraParserTests.txt"
 );
 
 /**
@@ -3763,6 +3778,8 @@ $wgAdvancedSearchHighlighting = false;
 /**
  * Regexp to match word boundaries, defaults for non-CJK languages
  * should be empty for CJK since the words are not separate
+ *
+ * @todo FIXME: checks for lower than required PHP version (5.1.x).
  */
 $wgSearchHighlightBoundaries = version_compare("5.1", PHP_VERSION, "<")? '[\p{Z}\p{P}\p{C}]'
 	: '[ ,.;:!?~!@#$%\^&*\(\)+=\-\\|\[\]"\'<>\n\r\/{}]'; // PHP 5.0 workaround

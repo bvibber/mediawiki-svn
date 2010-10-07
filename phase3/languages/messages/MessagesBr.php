@@ -398,7 +398,7 @@ Re a implijerien a glask mont war ar bajenn-mañ war un dro.
 Gortozit ur pennadig a-raok klask mont war ar bjann-mañ en-dro.
 
 $1',
-'pool-timeout'      => "Timeout zo o c'hortoz evit klozañ",
+'pool-timeout'      => "Aet eur dreist d'an termen gortoz evit ar stankadenn",
 'pool-queuefull'    => 'Soulgarget eo ar servijerioù',
 'pool-errorunknown' => 'Fazi dianav',
 
@@ -642,7 +642,7 @@ Gortozit a-raok klask en-dro.",
 'ratelimit-excluded-ips'     => " #<!-- laoskit al linenn-mañ tre evel m'emañ --> <pre>
 # Setu penaos emañ an ereadur :
 #  * Kement tra war-lerc'h an arouezenn \"#\" zo un urzhiad, betek penn all al linenn
-#  * Kement linenn n'eo ket goullo zo ur chomlec'h IP e-maez ar feur termen
+#  * Kement linenn n'eo ket goullo zo ur chomlec'h IP argaset eus bevenn an aliested
   #</pre> <!-- laoskit al linenn-mañ tre evel m'emañ -->",
 
 # JavaScript password checks
@@ -1086,7 +1086,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'showhideselectedversions' => 'Diskouez/Kuzhat ar stummoù diuzet',
 'editundo'                 => 'disteuler',
 'diff-multi'               => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant {{PLURAL:$2|un implijer|$2 implijer}} kuzhet.)",
-'diff-multi-manyusers'     => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant muioc'h evit $2 {{PLURAL:$2|implijer|implijer}} kuzhet.)",
+'diff-multi-manyusers'     => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant muioc'h eget $2 {{PLURAL:$2|implijer|implijer}} kuzhet.)",
 
 # Search results
 'searchresults'                    => "Disoc'h ar c'hlask",
@@ -1601,7 +1601,7 @@ PICT # misc.
 
 $1",
 'upload-warning-subj'         => "Kemmen diwall e-pad ar c'hargañ",
-'upload-warning-msg'          => "Ur gudenn a zo bet e-kerzh ho ezporzhiadur eus [$2]. Galloud a c'heller distreiñ d'ar [[Special:Upload/stash/$1|furmskrid ezporzhiañ]] evit renkañ ar gudenn.",
+'upload-warning-msg'          => "Ur gudenn zo bet e-kerzh hoc'h ezporzhiadur eus [$2]. Gallout a c'heller distreiñ d'ar [[Special:Upload/stash/$1|furmskrid ezporzhiañ]] evit renkañ ar gudenn.",
 
 'upload-proto-error'        => 'Protokol direizh',
 'upload-proto-error-text'   => 'Rekis eo an URLoù a grog gant <code>http://</code> pe <code>ftp://</code> evit enporzhiañ.',
@@ -3403,5 +3403,9 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'htmlform-submit'              => 'Kas',
 'htmlform-reset'               => "Dizober ar c'hemmoù",
 'htmlform-selectorother-other' => 'Unan all',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 gant enklask eus an destenn a-bezh embreget',
+'sqlite-no-fts'  => '$1 hep enklask eus an destenn a-bezh embreget',
 
 );

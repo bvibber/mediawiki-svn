@@ -1193,6 +1193,14 @@ the resulting HTML is about to be displayed.
 $parserOutput: the parserOutput (object) that corresponds to the page
 $text: the text that will be displayed, in HTML (string)
 
+'OutputPageBodyAttributes': called when OutputPage::headElement is creating the body
+tag to allow for extensions to add attributes to the body of the page they might
+need. Or to allow building extensions to add body classes that aren't of high
+enough demand to be included in core.
+$out: The OutputPage which called the hook, can be used to get the real title
+$sk: The Skin that called OutputPage::headElement
+&$bodyAttrs: An array of attributes for the body tag passed to Html::openElement
+
 'OutputPageCheckLastModified': when checking if the page has been modified
 since the last visit
 &$modifiedTimes: array of timestamps.
@@ -1337,6 +1345,10 @@ $errorMsg: an html message string of an error
 $article: the page the form is shown for
 $out: OutputPage object
 
+'ResourceLoaderRegisterModules': Right before modules information is required, such as when responding to a resource
+loader request or generating HTML output.
+&$resourceLoader: ResourceLoader object
+
 'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
 &$obj: RawPage object
 &$text: The text that's going to be the output
@@ -1441,8 +1453,8 @@ $type: 'normal' or 'history' for old/diff views
 &$forContent: overridable flag if copyright footer is shown in content language. 
 
 'SkinSubPageSubtitle': At the beginning of Skin::subPageSubtitle()
-$skin: Skin object
 &$subpages: Subpage links HTML
+$skin: Skin object
 If false is returned $subpages will be used instead of the HTML
 subPageSubtitle() generates.
 If true is returned, $subpages will be ignored and the rest of

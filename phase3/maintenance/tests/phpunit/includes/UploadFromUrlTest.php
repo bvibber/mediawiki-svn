@@ -25,7 +25,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 		}
 	}
 
-	protected function doApiRequest( $params ) {
+	protected function doApiRequest( $params, $unused = null ) {
 		$sessionId = session_id();
 		session_write_close();
 		
@@ -132,7 +132,6 @@ class UploadFromUrlTest extends ApiTestSetup {
 		}
 		$this->assertTrue( $exception, "Got exception" );
 
-		self::$user->addGroup( '*' );
 		self::$user->addGroup( 'sysop' );
 		$exception = false;
 		$data = $this->doApiRequest( array(
@@ -236,7 +235,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 			$a->doDeleteArticle( '' );
 		}
 		
-		$this->assertFalse( (bool)$talk->getArticleId( GAID_FOR_UPDATE ), 'User talk does not exist' );
+		$this->assertFalse( (bool)$talk->getArticleId( Title::GAID_FOR_UPDATE ), 'User talk does not exist' );
 		
 		$data = $this->doApiRequest( array(
 			'action' => 'upload',
@@ -253,7 +252,7 @@ class UploadFromUrlTest extends ApiTestSetup {
 		$job->run();
 		
 		$this->assertTrue( wfLocalFile( 'UploadFromUrlTest.png' )->exists() );		
-		$this->assertTrue( (bool)$talk->getArticleId( GAID_FOR_UPDATE ), 'User talk exists' );
+		$this->assertTrue( (bool)$talk->getArticleId( Title::GAID_FOR_UPDATE ), 'User talk exists' );
 		
 		$this->deleteFile( 'UploadFromUrlTest.png' );
 		

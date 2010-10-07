@@ -1852,7 +1852,7 @@ Hver rad inneholder lenker til første og andre omdirigering, samt målet for de
 'brokenredirects-edit'   => 'rediger',
 'brokenredirects-delete' => 'slett',
 
-'withoutinterwiki'         => 'Sider uten lenker til andre språk',
+'withoutinterwiki'         => 'Sider uten språklenker',
 'withoutinterwiki-summary' => 'Følgende sider lenker ikke til andre språkversjoner:',
 'withoutinterwiki-legend'  => 'Prefiks',
 'withoutinterwiki-submit'  => 'Vis',
@@ -3449,5 +3449,9 @@ Skriv inn filnavn uten «{{ns:file}}:»-prefikset.',
 'htmlform-submit'              => 'Lagre',
 'htmlform-reset'               => 'Omgjør endringer',
 'htmlform-selectorother-other' => 'Andre',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 med støtte for fulltekstsøk',
+'sqlite-no-fts'  => '$1 uten støtte for fulltekstsøk',
 
 );

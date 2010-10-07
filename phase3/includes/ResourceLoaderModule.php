@@ -20,10 +20,13 @@
  * @author Roan Kattouw
  */
 
+defined( 'MEDIAWIKI' ) || die( 1 );
+
 /**
  * Abstraction for resource loader modules, with name registration and maxage functionality.
  */
 abstract class ResourceLoaderModule {
+	
 	/* Protected Members */
 
 	protected $name = null;
@@ -157,9 +160,9 @@ abstract class ResourceLoaderModule {
 			), __METHOD__
 		);
 		if ( !is_null( $deps ) ) {
-			$this->fileDeps[$skin] = (array) FormatJson::decode( $deps, true );
+			return $this->fileDeps[$skin] = (array) FormatJson::decode( $deps, true );
 		}
-		return $this->fileDeps[$skin];
+		return $this->fileDeps[$skin] = array();
 	}
 	
 	/**
@@ -202,7 +205,6 @@ abstract class ResourceLoaderModule {
 		$this->msgBlobMtime[$lang] = $mtime;
 	}
 	
-	
 	/* Abstract Methods */
 	
 	/**
@@ -215,7 +217,10 @@ abstract class ResourceLoaderModule {
 	 * @param $context ResourceLoaderContext object
 	 * @return int UNIX timestamp
 	 */
-	public abstract function getModifiedTime( ResourceLoaderContext $context );
+	public function getModifiedTime( ResourceLoaderContext $context ) {
+		// 0 would mean now
+		return 1;
+	}
 }
 
 /**
@@ -817,7 +822,7 @@ abstract class ResourceLoaderWikiModule extends ResourceLoaderModule {
 				__METHOD__ );
 
 			if ( $latest ) {
-				$modifiedTime = wfTimestamp( TS_UNIX, $modifiedTime );
+				$modifiedTime = wfTimestamp( TS_UNIX, $latest );
 			}
 		}
 
@@ -902,33 +907,44 @@ class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 		}
 
 		global $wgUser;
-		$username = $context->getUser();
-		// Avoid extra db query by using $wgUser if possible
-		$user = $wgUser->getName() === $username ? $wgUser : User::newFromName( $username );
 
-		if ( $user ) {
-			return $this->modifiedTime[$hash] = $user->getTouched();
+		if ( $context->getUser() === $wgUser->getName() ) {
+			return $this->modifiedTime[$hash] = $wgUser->getTouched();
 		} else {
 			return 1;
 		}
 	}
 
-	public function getScript( ResourceLoaderContext $context ) {
-		$user = User::newFromName( $context->getUser() );
-		if ( $user instanceof User ) {
-			$options = FormatJson::encode( $user->getOptions() );
+	/**
+	 * Fetch the context's user options, or if it doesn't match current user,
+	 * the default options.
+	 * 
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
+	protected function contextUserOptions( ResourceLoaderContext $context ) {
+		global $wgUser;
+
+		// Verify identity -- this is a private module
+		if ( $context->getUser() === $wgUser->getName() ) {
+			return $wgUser->getOptions();
 		} else {
-			$options = FormatJson::encode( User::getDefaultOptions() );
+			return User::getDefaultOptions();
 		}
-		return "mediaWiki.user.options.set( $options );";
+	}
+
+	public function getScript( ResourceLoaderContext $context ) {
+		$encOptions = FormatJson::encode( $this->contextUserOptions( $context ) );
+		return "mediaWiki.user.options.set( $encOptions );";
 	}
 
 	public function getStyles( ResourceLoaderContext $context ) {
 		global $wgAllowUserCssPrefs;
+
 		if ( $wgAllowUserCssPrefs ) {
-			$user = User::newFromName( $context->getUser() );
-			$options = $user instanceof User ? $user->getOptions() : User::getDefaultOptions();
-			
+			$options = $this->contextUserOptions( $context );
+
+			// Build CSS rules
 			$rules = array();
 			if ( $options['underline'] < 2 ) {
 				$rules[] = "a { text-decoration: " . ( $options['underline'] ? 'underline' : 'none' ) . "; }";
@@ -962,9 +978,9 @@ class ResourceLoaderUserOptionsModule extends ResourceLoaderModule {
 
 		return $wgContLang->getDir() !== $context->getDirection();
 	}
-	
+
 	public function getGroup() {
-		return 'user';
+		return 'private';
 	}
 }
 
@@ -1024,37 +1040,71 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 			'wgNamespaceIds' => $wgContLang->getNamespaceIds(),
 			'wgSiteName' => $wgSitename,
 			'wgFileExtensions' => $wgFileExtensions,
+			'wgDBname' => $wgDBname,
 		);
 		if ( $wgContLang->hasVariants() ) {
 			$vars['wgUserVariant'] = $wgContLang->getPreferredVariant();
 		}
 		if ( $wgUseAjax && $wgEnableMWSuggest ) {
 			$vars['wgMWSuggestTemplate'] = SearchEngine::getMWSuggestTemplate();
-			$vars['wgDBname'] = $wgDBname;
 		}
 		
 		return $vars;
 	}
 	
+	/**
+	 * Gets registration code for all modules
+	 *
+	 * @param $context ResourceLoaderContext object
+	 * @return String: JavaScript code for registering all modules with the client loader
+	 */
+	public static function getModuleRegistrations( ResourceLoaderContext $context ) {
+		wfProfileIn( __METHOD__ );
+		
+		$out = '';
+		$registrations = array();
+		foreach ( $context->getResourceLoader()->getModules() as $name => $module ) {
+			// Support module loader scripts
+			if ( ( $loader = $module->getLoaderScript() ) !== false ) {
+				$deps = $module->getDependencies();
+				$group = $module->getGroup();
+				$version = wfTimestamp( TS_ISO_8601_BASIC, round( $module->getModifiedTime( $context ), -2 ) );
+				$out .= ResourceLoader::makeCustomLoaderScript( $name, $version, $deps, $group, $loader );
+			}
+			// Automatically register module
+			else {
+				// Modules without dependencies or a group pass two arguments (name, timestamp) to 
+				// mediaWiki.loader.register()
+				if ( !count( $module->getDependencies() && $module->getGroup() === null ) ) {
+					$registrations[] = array( $name, $module->getModifiedTime( $context ) );
+				}
+				// Modules with dependencies but no group pass three arguments (name, timestamp, dependencies) 
+				// to mediaWiki.loader.register()
+				else if ( $module->getGroup() === null ) {
+					$registrations[] = array(
+						$name, $module->getModifiedTime( $context ),  $module->getDependencies() );
+				}
+				// Modules with dependencies pass four arguments (name, timestamp, dependencies, group) 
+				// to mediaWiki.loader.register()
+				else {
+					$registrations[] = array(
+						$name, $module->getModifiedTime( $context ),  $module->getDependencies(), $module->getGroup() );
+				}
+			}
+		}
+		$out .= ResourceLoader::makeLoaderRegisterScript( $registrations );
+		
+		wfProfileOut( __METHOD__ );
+		return $out;
+	}
+
 	/* Methods */
 
 	public function getScript( ResourceLoaderContext $context ) {
 		global $IP, $wgLoadScript;
 
-		$scripts = file_get_contents( "$IP/resources/startup.js" );
-
+		$out = file_get_contents( "$IP/resources/startup.js" );
 		if ( $context->getOnly() === 'scripts' ) {
-			// Get all module registrations
-			$registration = ResourceLoader::getModuleRegistrations( $context );
-			// Build configuration
-			$config = FormatJson::encode( $this->getConfig( $context ) );
-			// Add a well-known start-up function
-			$scripts .= <<<JAVASCRIPT
-window.startUp = function() {
-	$registration
-	mediaWiki.config.set( $config ); 
-};
-JAVASCRIPT;
 			// Build load query for jquery and mediawiki modules
 			$query = array(
 				'modules' => implode( '|', array( 'jquery', 'mediawiki' ) ),
@@ -1062,22 +1112,25 @@ JAVASCRIPT;
 				'lang' => $context->getLanguage(),
 				'skin' => $context->getSkin(),
 				'debug' => $context->getDebug() ? 'true' : 'false',
-				'version' => wfTimestamp( TS_ISO_8601, round( max(
-					ResourceLoader::getModule( 'jquery' )->getModifiedTime( $context ),
-					ResourceLoader::getModule( 'mediawiki' )->getModifiedTime( $context )
+				'version' => wfTimestamp( TS_ISO_8601_BASIC, round( max(
+					$context->getResourceLoader()->getModule( 'jquery' )->getModifiedTime( $context ),
+					$context->getResourceLoader()->getModule( 'mediawiki' )->getModifiedTime( $context )
 				), -2 ) )
 			);
-			// Uniform query order
+			// Ensure uniform query order
 			ksort( $query );
-			// Build HTML code for loading jquery and mediawiki modules
-			$loadScript = Html::linkedScript( $wgLoadScript . '?' . wfArrayToCGI( $query ) );
-			// Add code to add jquery and mediawiki loading code; only if the current client is compatible
-			$scripts .= "if ( isCompatible() ) { document.write( " . FormatJson::encode( $loadScript ) . "); }\n";
-			// Delete the compatible function - it's not needed anymore
-			$scripts .= "delete window['isCompatible'];\n";
+			
+			// Startup function
+			$configuration = FormatJson::encode( $this->getConfig( $context ) );
+			$registrations = self::getModuleRegistrations( $context );
+			$out .= "var startUp = function() {\n\t$registrations\n\tmediaWiki.config.set( $configuration );\n};";
+			
+			// Conditional script injection
+			$scriptTag = Xml::escapeJsString( Html::linkedScript( $wgLoadScript . '?' . wfArrayToCGI( $query ) ) );
+			$out .= "if ( isCompatible() ) {\n\tdocument.write( '$scriptTag' );\n}\ndelete isCompatible;";
 		}
 
-		return $scripts;
+		return $out;
 	}
 
 	public function getModifiedTime( ResourceLoaderContext $context ) {
@@ -1088,10 +1141,14 @@ JAVASCRIPT;
 			return $this->modifiedTime[$hash];
 		}
 		$this->modifiedTime[$hash] = filemtime( "$IP/resources/startup.js" );
+
 		// ATTENTION!: Because of the line above, this is not going to cause infinite recursion - think carefully
 		// before making changes to this code!
-		$this->modifiedTime[$hash] = ResourceLoader::getHighestModifiedTime( $context );
-		return $this->modifiedTime[$hash];
+		$time = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
+		foreach ( $context->getResourceLoader()->getModules() as $module ) {
+			$time = max( $time, $module->getModifiedTime( $context ) );
+		}
+		return $this->modifiedTime[$hash] = $time;
 	}
 
 	public function getFlip( $context ) {

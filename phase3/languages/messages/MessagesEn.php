@@ -295,6 +295,7 @@ $magicWords = array(
 	'nse'                    => array( 0,    'NSE:'                   ),
 	'localurl'               => array( 0,    'LOCALURL:'              ),
 	'localurle'              => array( 0,    'LOCALURLE:'             ),
+	'linkurl'                => array( 0,    'LINKURL:'               ),
 	'articlepath'            => array( 0,	 'ARTICLEPATH'            ),
 	'server'                 => array( 0,    'SERVER'                 ),
 	'servername'             => array( 0,    'SERVERNAME'             ),
@@ -4344,8 +4345,8 @@ This site is experiencing technical difficulties.',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
 
-# SQLite support
-'sqlite-has-fts'               => '$1 with full-text search support',
-'sqlite-no-fts'                => '$1 without full-text search support',
+# SQLite database support
+'sqlite-has-fts' => '$1 with full-text search support',
+'sqlite-no-fts'  => '$1 without full-text search support',
 
 );

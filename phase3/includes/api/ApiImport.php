@@ -47,7 +47,6 @@ class ApiImport extends ApiBase {
 		}
 		$params = $this->extractRequestParams();
 
-		$source = null;
 		$isUpload = false;
 		if ( isset( $params['interwikisource'] ) ) {
 			if ( !isset( $params['interwikipage'] ) ) {
@@ -153,6 +152,10 @@ class ApiImport extends ApiBase {
 			array( 'import-unknownerror', 'source' ),
 			array( 'import-unknownerror', 'result' ),
 		) );
+	}
+
+	public function needsToken() {
+		return true;
 	}
 
 	public function getTokenSalt() {

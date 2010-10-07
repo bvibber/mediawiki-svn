@@ -712,7 +712,7 @@ Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].
 'gotaccountlink'             => 'Bejelentkezés',
 'createaccountmail'          => 'e-mailben',
 'createaccountreason'        => 'Indoklás:',
-'badretype'                  => 'Az általad megadott jelszavak nem egyeznek.',
+'badretype'                  => 'A megadott jelszavak nem egyeznek.',
 'userexists'                 => 'A megadott szerkesztőnév már foglalt.
 Kérlek, válassz másikat!',
 'loginerror'                 => 'Hiba történt a bejelentkezés során',
@@ -2600,7 +2600,7 @@ Ezen esetekben a vitalapot külön, kézzel kell átnevezned a kívánságaid sz
 'pagemovedsub'                 => 'Átnevezés sikeres',
 'movepage-moved'               => "'''„$1” átnevezve „$2” névre'''",
 'movepage-moved-redirect'      => 'Átirányítás létrehozva.',
-'movepage-moved-noredirect'    => 'A régi címről nem sikerült átirányítást készíteni.',
+'movepage-moved-noredirect'    => 'A régi címről nem készült átirányítás.',
 'articleexists'                => 'Ilyen névvel már létezik lap, vagy az általad választott név érvénytelen.
 Kérlek, válassz egy másik nevet.',
 'cantmove-titleprotected'      => 'Nem nevezheted át a lapot, mert az új cím le van védve a létrehozás ellen.',
@@ -3519,5 +3519,9 @@ Add meg a fájl nevét „{{ns:file}}:” előtag nélkül.',
 'htmlform-submit'              => 'Elküldés',
 'htmlform-reset'               => 'Változtatások visszavonása',
 'htmlform-selectorother-other' => 'egyéb',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 teljes szöveges keresés támogatásával',
+'sqlite-no-fts'  => '$1 teljes szöveges keresés támogatása nélkül',
 
 );

@@ -618,9 +618,8 @@ class Language {
 	 * escaping format.
 	 *
 	 * Supported format characters are dDjlNwzWFmMntLoYyaAgGhHiscrU. See the
-	 * PHP manual for definitions. "o" format character is supported since
-	 * PHP 5.1.0, previous versions return literal o.
-	 * There are a number of extensions, which start with "x":
+	 * PHP manual for definitions. There are a number of extensions, which
+	 * start with "x":
 	 *
 	 *    xn   Do not translate digits of the next numeric format character
 	 *    xN   Toggle raw digit (xn) flag, stays set until explicitly unset
@@ -670,7 +669,6 @@ class Language {
 	 * @param $ts String: 14-character timestamp
 	 *      YYYYMMDDHHMMSS
 	 *      01234567890123
-	 * @todo emulation of "o" format character for PHP pre 5.1.0
 	 * @todo handling of "o" format character for Iranian, Hebrew, Hijri & Thai?
 	 */
 	function sprintfDate( $format, $ts ) {
@@ -845,18 +843,11 @@ class Language {
 					}
 					$num = gmdate( 'L', $unix );
 					break;
-				# 'o' is supported since PHP 5.1.0
-				# return literal if not supported
-				# TODO: emulation for pre 5.1.0 versions
 				case 'o':
 					if ( !$unix ) {
 						$unix = wfTimestamp( TS_UNIX, $ts );
 					}
-					if ( version_compare( PHP_VERSION, '5.1.0' ) === 1 ) {
-						$num = date( 'o', $unix );
-					} else {
-						$s .= 'o';
-					}
+					$num = date( 'o', $unix );
 					break;
 				case 'Y':
 					$num = substr( $ts, 0, 4 );

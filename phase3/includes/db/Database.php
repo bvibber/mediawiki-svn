@@ -1232,7 +1232,7 @@ abstract class DatabaseBase implements DatabaseType {
 	function tableExists( $table ) {
 		$table = $this->tableName( $table );
 		$old = $this->ignoreErrors( true );
-		$res = $this->query( "SELECT 1 FROM $table LIMIT 1" );
+		$res = $this->query( "SELECT 1 FROM $table LIMIT 1", __METHOD__ );
 		$this->ignoreErrors( $old );
 
 		return (bool)$res;
@@ -2353,7 +2353,7 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @return Database replication lag in seconds
 	 */
 	function getLag() {
-		return $this->mFakeSlaveLag;
+		return intval( $this->mFakeSlaveLag );
 	}
 
 	/**

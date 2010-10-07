@@ -714,7 +714,7 @@ Labda ilihamishwa au ilifutwa endapo unatazama ukurasa.',
 'loginreqtitle'                    => 'Unatakiwa kuingia kwanza',
 'loginreqlink'                     => 'uingie',
 'loginreqpagetext'                 => 'Inabidi $1 ili uweze kutazama kurasa zingine.',
-'accmailtitle'                     => 'Neno la siri limeshakutumiwa.',
+'accmailtitle'                     => 'Neno la siri limetumwa.',
 'accmailtext'                      => "Neno la siri limetolewa na programu kwa ajili ya [[User talk:$1|$1]] na limetumwa kwa $2.
 
 Unaweza kubadilisha neno la siri hili kwenye ukurasa wa ''[[Special:ChangePassword|kubadilisha neno la siri]]'' baada ya kuingia kwenye wiki.",
@@ -781,8 +781,8 @@ Usipotaka maandishi yako yaweze kuharirishwa bure na kutolewa wakati wowote, bas
 Unakuwa unaahidi kwamba maandishi unayoyaingia ni yako tu, au uliyapata kutoka bure au ni mali ya watu wote. '''USITOLEE MAKALA YALIYOHIFADHIWA HAKI ZAO ZA KUTUMIWA BILA KUPATA RUHUSA HALALI!'''",
 'copyrightwarning2'                => "Tafadhali elewa kwamba michango yote ya {{SITENAME}} inaweza kuhahariwa, kubadilishwa, au kuondolewa na wachangiaji wengine.
 Ikiwa hutaki maandishi yako yasihaririwe na yeyote, basi usiyaweke hapa.<br />
-Pia una tuahidi kwamba umeandika haya wewe mwenyewe, au umenakili kutoka katika tovuti ya umma au chanzo cha wazo sawa na hiki (tazama  $1 kwa maelezo).
-'''Usiandike makala yenye hatimiliki bila ya ruhusa halali!'''",
+Pia una tuahidi kwamba umeandika haya wewe mwenyewe, au umenakili kutoka katika tovuti ya umma au chanzo cha wazi sawa na hiki (tazama  $1 kwa maelezo).
+'''Usiandike makala yenye hakimiliki bila ya ruhusa halali!'''",
 'longpagewarning'                  => "'''ILANI: Urefu wa ukurasa huu ni kilobaiti $1; vivinjari kadhaa vinaweza kuwa na matatizo ukihariri ukurasa wenye urefu zaidi ya kb 32 hivi.
 Tafadhali fikiria kuhusu kuvunja ukurasa kwa vipande vifupi.'''",
 'longpageerror'                    => "'''Hitilafu: Maandishi uliyoyaweka yana urefu wa kilobati $1, ambayo ni marefu kuliko kiwango cha kawaida cha kilobaiti $2.'''
@@ -872,7 +872,7 @@ Labda umeshafutwa, au umebadilishwa jina.
 Jaribu [[Special:Search|kutafuta kurasa mpya zinazohusika kwenye wiki]].',
 
 # Revision deletion
-'rev-deleted-comment'         => '(muhtasari ilifutwa)',
+'rev-deleted-comment'         => '(maelezo yalifutwa)',
 'rev-deleted-user'            => '(jina la mtumiaji lilifutwa)',
 'rev-deleted-event'           => '(ingizo lilifutwa)',
 'rev-deleted-user-contribs'   => '[jina la mtumiaji au anwani wa IP umetolewa - sahihisho lilifichwa kutoka kwa orodha ya michango]',
@@ -944,7 +944,7 @@ $1",
 'revdelete-hide-current'      => 'Hitilafu ya kuficha pitio lililotengenezwa saa $2, tarehe $1: hilo ndilo pitio la sasa hivi.
 Haliwezi kufichwa.',
 'revdelete-reason-dropdown'   => '*Sababu za kufuta zinazotokea mara kwa mara
-** Ukiukaji wa hatimiliki
+** Ukiukaji wa hakimiliki
 ** Taarifa za mtu binafsi zisizofaa
 ** Taarifa zinazowezekana kwamba ni za kukashifu',
 'revdelete-otherreason'       => 'Sababu nyingine:',
@@ -958,7 +958,7 @@ Haliwezi kufichwa.',
 Tazama [[Special:IPBlockList|orodha ya uzuio wa IP]] kuona orodha ya zuio zilizopo sasa hivi.',
 
 # Revision move
-'moverevlogentry'              => 'alisogeza {{PLURAL:$3|pitio moja|mapitio $3}} kutoka $1 kwenda $2',
+'moverevlogentry'              => 'alihamisha {{PLURAL:$3|pitio moja|mapitio $3}} kutoka $1 kwenda $2',
 'revisionmove'                 => 'Hamisha mapitio kutoka "$1"',
 'revmove-legend'               => 'Weka ukurasa unaolengwa pamoja na muhtasari',
 'revmove-submit'               => 'Hamisha mapitio kwenda ukurasa uliochaguliwa',
@@ -1193,7 +1193,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'prefs-diffs'                   => 'Tofauti',
 
 # User rights
-'userrights'                   => 'Usimamizi wa haki za mtumiaji',
+'userrights'                   => 'Usimamizi wa wezo za mtumiaji',
 'userrights-lookup-user'       => 'Kusimamia kundi za watumiaji',
 'userrights-user-editname'     => 'Andika jina la mtumiaji:',
 'editusergroup'                => 'Kuhariri vikundi vya watumiaji',
@@ -1283,7 +1283,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 # User rights log
 'rightslog'      => 'Kumbukumbu za vyeo vya watumiaji',
 'rightslogtext'  => 'Hii ni kumbukumbu za mabadiliko za wezo za watumiaji.',
-'rightslogentry' => 'alibadilisha wezo za $1 aliyekuwa na uwezo wa kundi $2 awe $3',
+'rightslogentry' => 'alibadilisha wezo za $1 aliyekuwa na wezo za kundi $2 awe mwanachama wa $3',
 'rightsnone'     => '(hana)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1389,7 +1389,7 @@ Tazama [[Special:NewFiles|mkusanyiko wa mafaili mapya]] kuona picha zenyewe.',
 'filedesc'                    => 'Muhtasari',
 'fileuploadsummary'           => 'Muhtasari:',
 'filereuploadsummary'         => 'Mabadiliko ya faili:',
-'filestatus'                  => 'Hali ya hatimiliki:',
+'filestatus'                  => 'Hali ya hakimiliki:',
 'filesource'                  => 'Chanzo:',
 'uploadedfiles'               => 'Mafaili yaliyopakiwa:',
 'ignorewarning'               => 'Hifadhi bila kujali maonyo yoyote.',
@@ -1434,7 +1434,7 @@ Tafadhali chagua jina lingine.",
 'fileexists-thumbnail-yes'    => "Faili huwa ni ''picha ndogo''.
 [[$1|thumb]]
 Tafadhali utazame faili la '''<tt>[[:$1]]</tt>'''.
-Ikiwa faili hili inaonyesha picha ile ile kwa ukubwa wa kawaida hakuna haja ya kupakia faili lingine la picha ndogo.",
+Ikiwa faili hili linaonyesha picha ile ile kwa ukubwa wa kawaida hakuna haja ya kupakia faili lingine la picha ndogo.",
 'file-thumbnail-no'           => "Jina la faili linaanza na '''<tt>$1</tt>'''.
 Huwa ukubwa wake ulipunguzwa ''(ni picha ndogo)''.
 Ikiwa unao picha hii kwa ukubwa wa kawaida tafadhali upakie picha ile, la sivyo tafadhali badilisha jina la faili.",
@@ -1600,7 +1600,7 @@ Maelezo yaliyopo katika [$2 ukurasa wa maelezo ya faili] linaonyeshwa hapa.',
 'filedelete-otherreason'      => 'Sababu nyingine:',
 'filedelete-reason-otherlist' => 'Sababu nyingine',
 'filedelete-reason-dropdown'  => '*Sababu zinazotolewa mara kwa mara
-** Kosa la hatimiliki
+** Kosa la hakimiliki
 ** Faili la nakili',
 'filedelete-edit-reasonlist'  => 'Kuhariri orodha ya sababu za kufuta',
 'filedelete-maintenance'      => 'Tovuti inarekebishwa. Kwa muda huo kufuta na kurudisha mafaili haiwezikani.',
@@ -1652,11 +1652,18 @@ Kumbuka kuhakikisha kwamba hakuna viungo vingine vinavyoelekea kigezo fulani kab
 'statistics-users-active-desc' => 'Watumiaji waliofanya kazi katika siku {{PLURAL:$1|iliyopita|$1 zilizopita}}',
 'statistics-mostpopular'       => 'Kurasa zinazotazamwa sana',
 
-'disambiguations' => 'Kurasa za kuainisha maneno',
+'disambiguations'      => 'Kurasa za kuainisha maneno',
+'disambiguationspage'  => 'Template:Maana',
+'disambiguations-text' => "Kurasa zinazofuata zina viungo vinavyoelekea '''kurasa ya kutofautishana maana'''.
+Ni afadhali kiungo kiende makala inayostahili moja kwa moja.<br />
+Kurasa za kutofautishana maana ni zile zinazotumia kigezo kinachoorodheshwa katika ukurasa wa [[MediaWiki:Disambiguationspage]].",
 
 'doubleredirects'            => 'Maelekezo mawilimawili',
+'doubleredirectstext'        => 'Ukurasa huu unaorodhesha kurasa zinazoelekeza kurasa zingine za kuelekeza.
+Katika kila mstari kuna viungo vinavyokwenda katika kurasa za kuelekeza zote mbili, pamoja na ukurasa wa mwishilio mwa elekezo la pili. Ukurasa huu wa mwishilio huwa ni ukurasa unaostahili kuelekezwa kutoka kwa ukurasa wa kuelekeza wa kwanza. Vitu <del>vilivyokatwa kwa mstari</del> vimeshatatuliwa.',
 'double-redirect-fixed-move' => '[[$1]] umehamishwa.
 Sasa unaelekeza [[$2]].',
+'double-redirect-fixer'      => 'Boti ya kurekebisha maelekezo',
 
 'brokenredirects'        => 'Maelekezo yenye hitilafu',
 'brokenredirectstext'    => 'Maelekezo yafuatayo yanaelekeza katika kurasa zisizopatikana:',
@@ -1715,8 +1722,8 @@ Sasa unaelekeza [[$2]].',
 'newpages'                => 'Kurasa mpya',
 'newpages-username'       => 'Jina la mtumiaji:',
 'ancientpages'            => 'Kurasa za kale',
-'move'                    => 'Sogeza',
-'movethispage'            => 'Sogeza ukurasa huu',
+'move'                    => 'Hamisha',
+'movethispage'            => 'Hamisha ukurasa huu',
 'unusedcategoriestext'    => 'Kurasa za jamii zifuatazo zinapatikana, ingawaje hakuna ukurasa wala jamii nyingine iliyowekwa ndani ya jamii hizi.',
 'pager-newer-n'           => '{{PLURAL:$1|1 ya karibu zaidi|$1 ya karibu zaidi}}',
 'pager-older-n'           => '{{PLURAL:$1|$1 ya zamani zaidi}}',
@@ -1973,7 +1980,7 @@ ukurasa huu una mhariri mmoja tu.',
 'unprotectedarticle'          => 'alitoa ulindaji wa "[[$1]]"',
 'movedarticleprotection'      => 'alihamisha ulindaji wa "[[$2]]" hadi "[[$1]]"',
 'protect-title'               => 'Kubadilisha kiwango cha ulindaji wa "$1"',
-'prot_1movedto2'              => 'alisogeza [[$1]] hadi [[$2]]',
+'prot_1movedto2'              => 'alihamisha [[$1]] hadi [[$2]]',
 'protect-legend'              => 'Hakikisha ukingo',
 'protectcomment'              => 'Sababu:',
 'protectexpiry'               => 'Itakwisha:',
@@ -2061,8 +2068,10 @@ huenda ikawa mtu mwingine ameurudisha tayari.',
 'sp-contributions-newbies'     => 'Onyesha michango ya akaunti mpya tu',
 'sp-contributions-newbies-sub' => 'Kwa akaunti mpya',
 'sp-contributions-blocklog'    => 'Kumbukumbu ya uzuio',
+'sp-contributions-deleted'     => 'michango iliyofutwa ya mtumiaji',
 'sp-contributions-logs'        => 'kumbukumbu',
 'sp-contributions-talk'        => 'majadiliano',
+'sp-contributions-userrights'  => 'usimamizi wa wezo za mtumiaji',
 'sp-contributions-search'      => 'Tafuta michango',
 'sp-contributions-username'    => 'Anwani ya IP au jina la mtumiaji:',
 'sp-contributions-submit'      => 'Tafuta',
@@ -2140,7 +2149,7 @@ huenda ikawa mtu mwingine ameurudisha tayari.',
 
 # Move page
 'move-page'                    => 'Hamisha $1',
-'move-page-legend'             => 'Sogeza ukurasa',
+'move-page-legend'             => 'Kuhamisha ukurasa',
 'movepagetext'                 => "Tumia fomu hapo chini ili kubadilisha jina la ukurasa, pamoja na kuhamisha historia yake yote katika jina jipya lile lile.
 Jina la awali litahamishwa na kuelekezwa kwa ukurasa wa jina jipya.
 Unaweza kurekebisha maelekezo yanayokwenda kwenye ukurasa wa zamani kwa kujiendesha.
@@ -2172,7 +2181,7 @@ Kama tayari kuna ukurasa au ukifuta tiki, itabidi usogeze au uunganishe ukurasa 
 'cant-move-to-user-page'       => 'Huna ruhusa ya kuhamisha ukurasa katika ukurasa wa mtumiaji (isipokuwa katika ukurasa tanzu wa mtumiaji).',
 'newtitle'                     => 'Kuelekeza jina jipya:',
 'move-watch'                   => 'Fuatilia ukurasa huu',
-'movepagebtn'                  => 'Sogeza ukurasa',
+'movepagebtn'                  => 'Hamisha ukurasa',
 'pagemovedsub'                 => 'Umefaulu kuhamisha ukurasa',
 'movepage-moved'               => '\'\'\'"$1" imesogezwa kwenye "$2"\'\'\'',
 'movepage-moved-redirect'      => 'Elekezo limetengenezwa.',
@@ -2181,7 +2190,7 @@ jina ulilochagua ni batilifu.
 Chagua jina lengine.',
 'talkexists'                   => "'''Ukurasa wenyewe ulisogezwa salama, lakini ukurasa wake wa majadiliano haujasogezwa kwa sababu tayari kuna ukurasa wenye jina lake.  Tafadhali ziunganishe kwa mkono.'''",
 'movedto'                      => 'imesogezwa hadi',
-'movetalk'                     => 'Sogeza ukurasa wake wa majadiliano',
+'movetalk'                     => 'Hamisha ukurasa wake wa majadiliano',
 'move-subpages'                => 'Hamisha kurasa tanzu (hadi $1)',
 'move-talk-subpages'           => 'Hamisha kurasa tanzu za ukurasa wa majadiliano (hadi $1)',
 '1movedto2'                    => '[[$1]] umesogezwa hapa [[$2]]',
@@ -2201,7 +2210,7 @@ Chagua jina lengine.',
 'imagenocrossnamespace'        => 'Faili linaweza kuhamishwa katika eneo la wiki la faili tu.',
 'nonfile-cannot-move-to-file'  => 'Ni mafaili tu yanayoweza kuhamishwa katika eneo la faili',
 'imageinvalidfilename'         => 'Jina la faili la mwishilio ni batili',
-'fix-double-redirects'         => 'Sasisha maelekezo yanayoelekeza jina lililopita la faili',
+'fix-double-redirects'         => 'Sasisha maelekezo yanayoelekeza jina la awali la faili',
 'move-leave-redirect'          => 'Weka elekezo mahali pake',
 'protectedpagemovewarning'     => "'''Ilani:''' Ukurasa huu umelindwa, kwa hiyo ni watumiaji wenye wezo za wakabidhi tu wanaoweza  kuuhamisha.
 Kumbukumbu ya mwisho inaandikwa chini:",
@@ -2307,7 +2316,7 @@ Tafadhali jaribu tena.',
 'tooltip-ca-unprotect'            => 'Kuondoa tunzo la ukurasa',
 'tooltip-ca-delete'               => 'Futa ukurasa huu',
 'tooltip-ca-undelete'             => 'Rudisha masahihisho yaliyofanyiwa katika ukurasa huu kabla haujafutwa',
-'tooltip-ca-move'                 => 'Sogeza ukurasa huu',
+'tooltip-ca-move'                 => 'Kuhamisha ukurasa huu',
 'tooltip-ca-watch'                => 'Fuatilia ukurasa huu kwenye maangalizi yako',
 'tooltip-ca-unwatch'              => 'Futa ukurasa huu kutoka maangalizi yako',
 'tooltip-search'                  => 'Tafuta {{SITENAME}}',
@@ -2394,6 +2403,7 @@ Tafadhali jaribu tena.',
 # Media information
 'mediawarning'         => 'Ilani: Huenda faili hili lina msimbo mbaya.
 Ukilitekeleza faili, mashine yako huenda ikawa matatani.',
+'imagemaxsize'         => "Kikomo cha ukubwa wa picha:<br />''(cha kurasa za maelezo ya mafaili)''",
 'thumbsize'            => 'Ukubwa wa picha ndogo:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|ukurasa|kurasa}} $3',
 'file-info'            => '(ukubwa wa faili: $1, aina ya MIME: $2)',
@@ -2668,9 +2678,9 @@ Pia unaweza [[Special:Watchlist/edit|kutumia kihariri cha kawaida]].',
 'version-other'             => 'Zingine',
 'version-version'           => '(Toleo $1)',
 'version-license'           => 'Ruhusa',
-'version-poweredby-credits' => "Wiki hii inaendeshwa na bidhaa pepe ya '''[http://www.mediawiki.org/ MediaWiki]''', hatimiliki © 2001-$1 $2.",
+'version-poweredby-credits' => "Wiki hii inaendeshwa na bidhaa pepe ya '''[http://www.mediawiki.org/ MediaWiki]''', hakimiliki © 2001-$1 $2.",
 'version-poweredby-others'  => 'wengine',
-'version-license-info'      => 'MediaWiki ni bidhaa pepe huru; unaweza kuigawanyika pamoja na kuitumia na kuibadilisha kutokana na masharti ya leseni ya GNU General Public License inayotolewa na Free Software Foundation (Shirika la Bidhaa Pepe Huru); ama toleo 2 la hatimiliki, ama (ukitaka) toleo lolote linalofuata.
+'version-license-info'      => 'MediaWiki ni bidhaa pepe huru; unaweza kuigawanyika pamoja na kuitumia na kuibadilisha kutokana na masharti ya leseni ya GNU General Public License inayotolewa na Free Software Foundation (Shirika la Bidhaa Pepe Huru); ama toleo 2 la hakimiliki, ama (ukitaka) toleo lolote linalofuata.
 
 MediaWiki inagawanyiwa kwa kutumaini kwamba ni ya manufaa, lakini BILA JUKUMU; hata bila jukumu linalojitokeza la KUWA TAYARI KUUZIKA au KUFAA KWA KUSUDI FULANI. Tazama leseni ya GNU General Public License kuona maelezo mengine.
 

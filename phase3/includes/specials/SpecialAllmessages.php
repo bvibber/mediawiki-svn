@@ -100,19 +100,19 @@ class SpecialAllmessages extends SpecialPage {
 						'filter',
 						'unmodified',
 						'mw-allmessages-form-filter-unmodified',
-						( $this->filter == 'unmodified' ? true : false )
+						( $this->filter == 'unmodified' )
 					) .
 					Xml::radioLabel( wfMsg( 'allmessages-filter-all' ),
 						'filter',
 						'all',
 						'mw-allmessages-form-filter-all',
-						( $this->filter == 'all' ? true : false )
+						( $this->filter == 'all' )
 					) .
 					Xml::radioLabel( wfMsg( 'allmessages-filter-modified' ),
 						'filter',
 						'modified',
 						'mw-allmessages-form-filter-modified',
-					( $this->filter == 'modified' ? true : false )
+					( $this->filter == 'modified' )
 				) .
 				"</td>\n
 			</tr>
@@ -124,7 +124,7 @@ class SpecialAllmessages extends SpecialPage {
 					Xml::openElement( 'select', array( 'id' => 'mw-allmessages-form-lang', 'name' => 'lang' ) );
 
 		foreach( $languages as $lang => $name ) {
-			$selected = $lang == $this->langCode ? true : false;
+			$selected = $lang == $this->langCode;
 			$out .= Xml::option( $lang . ' - ' . $name, $lang, $selected ) . "\n";
 		}
 		$out .= Xml::closeElement( 'select' ) .
@@ -157,9 +157,6 @@ class AllmessagesTablePager extends TablePager {
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->mDefaultDirection = true; // always sort ascending
-		// We want to have an option for people to view *all* the messages, 
-		// so they can use Ctrl+F to search them.  5000 is the maximum that 
-		// will get through WebRequest::getLimitOffset().
 		$this->mLimitsShown = array( 20, 50, 100, 250, 500, 5000 );
 
 		global $wgLang, $wgContLang, $wgRequest;

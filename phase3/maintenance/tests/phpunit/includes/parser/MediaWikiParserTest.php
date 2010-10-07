@@ -2,7 +2,7 @@
 
 require_once( dirname( __FILE__ ) . '/ParserHelpers.php' );
 
-class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
+class MediaWikiParserTest extends PHPUnit_Framework_TestSuite {
 	private $count;
 	public $backend;
 
@@ -24,7 +24,7 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 		$wgMemc = new FakeMemCachedClient;
 		$this->backend->setupDatabase();
 
-		$iter = new TestFileIterator( "$IP/maintenance/parserTests.txt" );
+		$iter = new TestFileIterator( "$IP/maintenance/tests/parser/parserTests.txt" );
 		$iter->setParser( $this->backend );
 		$this->count = 0;
 

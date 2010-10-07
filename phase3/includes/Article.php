@@ -853,7 +853,7 @@ class Article {
 				$wgOut->setETag( $parserCache->getETag( $this, $parserOptions ) );
 			}
 
-			# Is is client cached?
+			# Is it client cached?
 			if ( $wgOut->checkLastModified( $this->getTouched() ) ) {
 				wfDebug( __METHOD__ . ": done 304\n" );
 				wfProfileOut( __METHOD__ );
@@ -3111,7 +3111,7 @@ class Article {
 	public function doDelete( $reason, $suppress = false ) {
 		global $wgOut, $wgUser;
 
-		$id = $this->mTitle->getArticleID( GAID_FOR_UPDATE );
+		$id = $this->mTitle->getArticleID( Title::GAID_FOR_UPDATE );
 
 		$error = '';
 		if ( wfRunHooks( 'ArticleDelete', array( &$this, &$wgUser, &$reason, &$error ) ) ) {
@@ -3171,7 +3171,7 @@ class Article {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$t = $this->mTitle->getDBkey();
-		$id = $id ? $id : $this->mTitle->getArticleID( GAID_FOR_UPDATE );
+		$id = $id ? $id : $this->mTitle->getArticleID( Title::GAID_FOR_UPDATE );
 
 		if ( $t === '' || $id == 0 ) {
 			return false;
@@ -4492,7 +4492,6 @@ class Article {
 		}
 
 		# Get the diff
-		# Note that we simulate array_diff_key in PHP <5.0.x
 		$templates_diff = array_diff_key( $poTemplates, $tlTemplates );
 
 		if ( count( $templates_diff ) > 0 ) {
