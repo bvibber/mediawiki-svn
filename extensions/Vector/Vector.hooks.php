@@ -12,8 +12,8 @@ class VectorHooks {
 	
 	protected static $modules = array(
 		'ext.vector.collapsibleNav' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.collapsibleNav.js',
-			'styles' => 'extensions/Vector/modules/ext.vector.collapsibleNav.css',
+			'scripts' => 'ext.vector.collapsibleNav.js',
+			'styles' => 'ext.vector.collapsibleNav.css',
 			'messages' => array(
 				'vector-collapsiblenav-more',
 			),
@@ -25,7 +25,7 @@ class VectorHooks {
 			'group' => 'ext.vector',
 		),
 		'ext.vector.collapsibleTabs' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.collapsibleTabs.js',
+			'scripts' => 'ext.vector.collapsibleTabs.js',
 			'dependencies' => array(
 				'jquery.collapsibleTabs',
 				'jquery.delayedBind',
@@ -33,15 +33,15 @@ class VectorHooks {
 			'group' => 'ext.vector',
 		),
 		'ext.vector.editWarning' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.editWarning.js',
+			'scripts' => 'ext.vector.editWarning.js',
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
 			'group' => 'ext.vector',
 		),
 		'ext.vector.expandableSearch' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.expandableSearch.js',
-			'styles' => 'extensions/Vector/modules/ext.vector.expandableSearch.css',
+			'scripts' => 'ext.vector.expandableSearch.js',
+			'styles' => 'ext.vector.expandableSearch.css',
 			'dependencies' => array(
 				'jquery.client',
 				'jquery.expandableField',
@@ -50,12 +50,12 @@ class VectorHooks {
 			'group' => 'ext.vector',
 		),
 		'ext.vector.footerCleanup' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.footerCleanup.js',
-			'styles' => 'extensions/Vector/modules/ext.vector.footerCleanup.css',
+			'scripts' => 'ext.vector.footerCleanup.js',
+			'styles' => 'ext.vector.footerCleanup.css',
 			'group' => 'ext.vector',
 		),
 		'ext.vector.simpleSearch' => array(
-			'scripts' => 'extensions/Vector/modules/ext.vector.simpleSearch.js',
+			'scripts' => 'ext.vector.simpleSearch.js',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
@@ -216,7 +216,9 @@ class VectorHooks {
 	 */
 	public static function resourceLoaderRegisterModules( &$resourceLoader ) {
 		foreach ( self::$modules as $name => $resources ) {
-			$resourceLoader->register( $name, new ResourceLoaderFileModule( $resources ) );
+			$resourceLoader->register(
+				$name, new ResourceLoaderFileModule( $resources, 'extensions/Vector/modules/' )
+			);
 		}
 		return true;
 	}
