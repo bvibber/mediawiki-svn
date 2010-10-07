@@ -472,7 +472,7 @@ class SpecialTradeTrack extends SpecialPage {
      * @param $request the $wgRequest object.
      */
     function validateField( $fieldName, $request ) {
-
+        global $wgLang;
         $value = $request->getVal( self::$VARIABLE_PREFIX . $fieldName );
 
         // No need to validate. This field has no tests.
@@ -486,7 +486,7 @@ class SpecialTradeTrack extends SpecialPage {
                 case 'max':
                     // Tests that the value does not exceed a threshold, defined in the array (max => threshold)
                     if ( ( isset( $value ) ) && ( strlen( $value ) > $vThreshold ) ) {
-                        $this->addError( "tradetrack-elements-$fieldName", wfMsg( self::$VALIDATION_FIELDS[$fieldName]['errmsgs'][$vType], array( $vThreshold ) ) );
+                        $this->addError( "tradetrack-elements-$fieldName", wfMsgExt( self::$VALIDATION_FIELDS[$fieldName]['errmsgs'][$vType], 'parsemag', $wgLang->formatNum( $vThreshold ) ) );
                     }
                     break;
                 case 'required':

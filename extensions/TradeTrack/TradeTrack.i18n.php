@@ -74,10 +74,10 @@ Please start again.',
 	'tradetrack-errors-other-set-but-not-checked' => 'You have entered a value for "other" but did not select it.',
 	'tradetrack-errors-missing-other-value' => 'You selected "other" but did not provide a value for it.',
 	'tradetrack-errors-other-too-long' => 'The value supplied for "other" is too long.
-The maximum length for this field is $1 characters.',
+The maximum length for this field is {{PLURAL:$1|$1 character|$1 characters}}.',
 	'tradetrack-errors-generic-empty' => 'This field is required.',
 	'tradetrack-errors-generic-too-long' => 'The value supplied for this field is too long.
-The maximum length allowed is $1 characters.',
+The maximum length allowed is {{PLURAL:$1|$1 character|$1 characters}}.',
 	'tradetrack-errors-e-mails-do-not-match' => 'The e-mail addresses supplied do not match.',
 	'tradetrack-errors-e-mail-fails-regex' => 'The e-mail address supplied is invalid.
 Please provide a valid e-mail address.',
