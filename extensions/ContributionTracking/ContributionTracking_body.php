@@ -48,9 +48,10 @@ class ContributionTracking extends UnlistedSpecialPage {
 		}
 		
 		// Store the contribution data
-		$db->insert( 'contribution_tracking', $tracked_contribution );
-		
-		$contribution_tracking_id = $db->insertId();
+		if ( !$wgRequest->getVal( 'contribution_tracking_id', 0 )) {
+			$db->insert( 'contribution_tracking', $tracked_contribution );
+		}
+		$contribution_tracking_id = $wgRequest->getVal( 'contribution_tracking_id', $db->insertId());
 		
 		$returnText = $wgRequest->getText( 'returnto', "Donate-thanks/$language" );
 		$returnTitle = Title::newFromText( $returnText );
