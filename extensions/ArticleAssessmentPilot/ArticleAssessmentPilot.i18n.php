@@ -708,7 +708,7 @@ Probabilmente vuoi valutarla di nuovo.",
 	'articleassessment-results-hide' => '(<span class="hidelink">Nascondi risultati</span>)',
 	'articleassessment-survey-question-whyrated' => 'Esprimi il motivo per cui oggi hai valutato questa pagina (puoi selezionare più opzioni):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Ho voluto contribuire alla valutazione complessiva della pagina',
-	'articleassessment-survey-answer-whyrated-development' => 'Spero che il mio voto influenzi positivamente lo sviluppo della pagina',
+	'articleassessment-survey-answer-whyrated-development' => 'Spero che il mio giudizio influenzi positivamente lo sviluppo della pagina',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ho voluto contribuire a {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Mi piace condividere la mia opinione',
 	'articleassessment-survey-answer-whyrated-didntrate' => 'Non ho fornito valutazioni oggi, ma ho voluto lasciare un feedback sulla funzionalità',
@@ -1341,13 +1341,20 @@ $messages['sah'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'articleassessment-yourfeedback' => 'தங்களின் பின்னூட்டக்கருத்துக்கள்',
 	'articleassessment-submit' => 'சமர்ப்பி',
 	'articleassessment-rating-neutrality' => 'நடுநிலையானது:',
 	'articleassessment-rating-completeness' => 'முழுதும்:',
 	'articleassessment-rating-readability' => 'படிக்கக்கூடியது:',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'இந்த தளத்திற்கு நான் பங்களிக்க வேண்டும் {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'நான் என்னுடைய கருத்துக்களை மற்றவர்களுடன் பகிர்ந்துகொள்ள விரும்புகிறேன்',
 	'articleassessment-survey-answer-whyrated-other' => 'மற்றவை',
 	'articleassessment-survey-question-useful-iffalse' => 'ஏன் ?',
+	'articleassessment-survey-question-expert-iftrue' => 'தங்களது திறமைகளை கொஞ்சம் விவரித்துக்கூற முடியுமா ?',
+	'articleassessment-survey-question-comments' => 'தாங்கள் மேலும் அதிகமான கருத்துக்களை கூற விரும்புகிறீர்களா ?',
 	'articleassessment-survey-submit' => 'சமர்ப்பி',
+	'articleassessment-survey-title' => 'தயவு செய்து ஒரு சில கேள்விகளுக்கு பதில் அளியுங்கள்',
+	'articleassessment-survey-thanks' => 'ஆய்வுக்கான படிவத்தை பூர்த்தி செய்தமைக்கு நன்றி.',
 );
 
 /** Tagalog (Tagalog)
@@ -1411,6 +1418,9 @@ $messages['vec'] = array(
 	'articleassessment-rating-neutrality' => 'Neutrale:',
 	'articleassessment-rating-completeness' => 'Conpleta:',
 	'articleassessment-rating-readability' => 'Legibile:',
+	'articleassessment-survey-answer-whyrated-other' => 'Altro',
+	'articleassessment-survey-question-useful-iffalse' => 'Parché?',
+	'articleassessment-survey-submit' => 'Manda',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1406,6 +1406,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'amazonplus-nores' => 'தவறு:  எந்தவிதமான முடிவுகளும் காணப்படவில்லை !',
 	'amazonplus-used' => 'பயன்படுத்தப்பட்டது',
 	'amazonplus-german' => 'ஜெர்மன்',
 	'amazonplus-french' => 'பிரெஞ்சு',

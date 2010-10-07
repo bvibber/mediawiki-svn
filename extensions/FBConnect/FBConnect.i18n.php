@@ -1310,11 +1310,13 @@ $messages['pt-br'] = array(
 
 /** Russian (Русский)
  * @author Eleferen
+ * @author Sergey kudryavtsev
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'group-fb-groupie-member' => 'Группа участников',
 	'group-fb-admin' => 'Группа администраторов',
+	'fbconnect-welcome' => 'Добро пожаловать, участник Facebook Connect!',
 	'fbconnect-cancel' => 'Действие отменено',
 	'fbconnect-invalid' => 'Неверный параметр',
 	'fbconnect-success' => 'Проверка через Facebook закончилась успешно',
@@ -1333,6 +1335,7 @@ $messages['ru'] = array(
 	'fbconnect-chooseusername' => 'Имя участника:',
 	'fbconnect-choosepassword' => 'Пароль:',
 	'fbconnect-updateuserinfo' => 'Обновите следующие личные сведения:',
+	'fbconnect-error-creating-user' => 'Ошибка при создании пользователя в локальной базе данных.',
 );
 
 /** Tagalog (Tagalog)

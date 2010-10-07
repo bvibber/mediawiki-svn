@@ -154,6 +154,13 @@ $messages['fr'] = array(
 	'categorytests-desc' => 'Fonctions pour des tests de catégorie',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'categorytests-desc' => 'Fonccions por des èprôves de catègorie.',
+);
+
 /** Western Frisian (Frysk)
  * @author SK-luuut
  */

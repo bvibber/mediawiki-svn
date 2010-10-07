@@ -253,6 +253,8 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'categoryintersection' => 'Entèrsèccion de catègories',
 	'categoryintersection-doit' => 'Liste les pâges dens totes cetes catègories',
+	'categoryintersection-mincategories' => 'Vos dête encllure u muens doves catègories.',
+	'categoryintersection-results' => 'La rechèrche at retornâ $1 rèsultat{{PLURAL:$1||s}}.',
 );
 
 /** Galician (Galego)

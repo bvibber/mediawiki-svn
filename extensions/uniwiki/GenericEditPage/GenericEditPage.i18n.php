@@ -1693,13 +1693,17 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'gep-emailsubject' => '[$1] Gợi ý thể loại: $2',
+	'gep-emailsuccess' => 'Cám ơn bạn đã gợi ý thể loại: $1.',
 	'gep-categories' => 'Thể loại',
 	'gep-addcategory' => 'Thêm thể loại',
 	'gep-addcategorybutton' => 'Thêm',
 	'gep-suggestcategory' => 'Đề nghị thể loại',
+	'gep-suggestcategorybutton' => 'Gợi ý',
 	'gep-sections' => 'Đoạn',
 	'gep-addsection' => 'Thêm đoạn',
 	'gep-addsectionbutton' => 'Thêm',
+	'gep-classicmode' => 'Chế độ cổ điển',
+	'gep-genericmode' => 'Chế độ thường',
 );
 
 /** Volapük (Volapük)

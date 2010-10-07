@@ -47,6 +47,13 @@ $messages['br'] = array(
 	'frontbackforced-forced' => '_(wikiliammoù_ret)',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'frontbackforced-forced' => '_(nametnuti_wikilinkovi)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

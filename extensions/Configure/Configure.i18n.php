@@ -3453,6 +3453,7 @@ $messages['frp'] = array(
 	'configure-section-pages' => 'Pâges',
 	'configure-section-paths' => 'Chemins',
 	'configure-section-db' => 'Bâsa de balyês',
+	'configure-section-load-balancing' => 'Èquilibrâjo de charge',
 	'configure-section-mysql' => 'Spècefico a MySQL',
 	'configure-section-postgres' => 'Spècefico a PostgreSQL',
 	'configure-section-sqlite' => 'Spècefico a SQLite',

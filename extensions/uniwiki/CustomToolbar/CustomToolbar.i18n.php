@@ -1433,7 +1433,7 @@ $wgCustomToolbarMessages['ia'] = array(
 	'ct_link' => 'Adde nomine de ligamine (optional):',
 	'ct_submit' => 'Ir!',
 	'ct_close' => 'Clauder fenestra',
-	'ct_success' => 'File cargate con successo!',
+	'ct_success' => 'File incargate con successo!',
 	'ct_popupblocked' => 'Le fenestra pop-up non poteva esser aperite.
 Per favor verifica que tu blocator de pop-up lo permitte.',
 	'ct_user_user' => 'Usator',

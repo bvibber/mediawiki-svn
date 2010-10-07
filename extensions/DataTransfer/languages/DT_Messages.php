@@ -1944,6 +1944,7 @@ $messages['ta'] = array(
 	'dt_xml_title' => 'தலைப்பு',
 	'dt_xml_id' => 'அடையாளம்',
 	'dt_xml_freetext' => 'எந்த கட்டுப்பாடும் இல்லா சொற்றொடர்',
+	'dt_import_importing' => 'இறக்குமதியாகிறது...',
 );
 
 /** Telugu (తెలుగు)

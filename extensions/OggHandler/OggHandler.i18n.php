@@ -2801,6 +2801,16 @@ $messages['ru'] = array(
 	'ogg-oggThumb-failed' => 'oggThumb не удалось создать миниатюру.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ogg-play' => 'Заграти',
+	'ogg-pause' => 'Пауза',
+	'ogg-stop' => 'Заставити',
+	'ogg-dismiss' => 'Заперти',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  * @author Kyraha

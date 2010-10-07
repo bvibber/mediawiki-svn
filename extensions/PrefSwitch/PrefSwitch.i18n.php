@@ -6874,6 +6874,7 @@ $messages['ta'] = array(
 	'prefswitch-survey-false' => 'இல்லை',
 	'prefswitch-survey-answer-whyoff-other' => 'வேறு காரணம்:',
 	'prefswitch-title-switched-off' => 'நன்றி',
+	'prefswitch-title-feedback' => 'பின்னூட்டம்',
 );
 
 /** Telugu (తెలుగు)
@@ -7684,6 +7685,8 @@ Se prega de sełesionare tute łe modivasion pertinenti.',
 	'prefswitch-title-switched-off' => 'Grasie',
 	'prefswitch-title-feedback' => 'Feedback',
 	'prefswitch-success-feedback' => 'El to feedback xè sta invià.',
+	'prefswitch-return' => '<hr style="clear:both">
+Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-feedbackpage' => 'Project:Coordinamento/Fruibiłidà',
 );
 

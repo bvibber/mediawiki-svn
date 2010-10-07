@@ -1434,6 +1434,7 @@ Unaweza kuondoa ilani hii ukienda kwenye sehemu ya "Kuhariri" kwenye mapendekezo
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'vector-collapsiblenav-more' => 'மேலும் அதிகமான மொழிகள்',
 	'vector-simplesearch-search' => 'தேடு',
 );
 

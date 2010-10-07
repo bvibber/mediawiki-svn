@@ -349,8 +349,11 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'categorybrowser' => 'Navigator de catègories',
+	'cb_show_no_parents_only' => 'Fâre vêre ren que les catègories sen catègorie mâre',
 	'cb_cat_name_filter' => 'Rechèrche de catègories per lo nom :',
+	'cb_cat_name_filter_clear' => 'Apoyér por èfaciér lo filtro de nom de catègorie',
 	'cb_cat_name_filter_ci' => 'Pas sensiblo a la câssa',
+	'cb_copy_line_hint' => 'Utilisâd los botons [+] et [>+] por copiyér et côlar los opèrators dens l’èxprèssion chouèsia',
 	'cb_has_subcategories' => '$1 sot-catègorie{{PLURAL:$1||s}}',
 	'cb_has_pages' => '$1 pâge{{PLURAL:$1||s}}',
 	'cb_has_files' => '$1 fichiér{{PLURAL:$1||s}}',
@@ -368,6 +371,11 @@ $messages['frp'] = array(
 	'cb_edit_left_hint' => 'Dèplaciér a gôche, se possiblo',
 	'cb_edit_right_hint' => 'Dèplaciér a drêta, se possiblo',
 	'cb_edit_remove_hint' => 'Suprimar, se possiblo',
+	'cb_edit_copy_hint' => 'Copiyér l’opèrator vers lo prèssa-papiérs',
+	'cb_edit_append_hint' => 'Entrebetar l’opèrator en dèrriére posicion',
+	'cb_edit_clear_hint' => 'Èfaciér la presenta èxprèssion (chouèsir tot)',
+	'cb_edit_paste_hint' => 'Côlar, se possiblo, l’opèrator a cela posicion',
+	'cb_edit_paste_right_hint' => 'Côlar, se possiblo, l’opèrator a ceta posicion',
 );
 
 /** Galician (Galego)

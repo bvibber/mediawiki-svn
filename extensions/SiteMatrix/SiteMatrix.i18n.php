@@ -1537,6 +1537,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'sitematrix-language' => 'Язык',
+	'sitematrix-sitetotal' => 'Цілком',
+	'sitematrix-private' => 'пріватный',
 );
 
 /** Yakut (Саха тыла)

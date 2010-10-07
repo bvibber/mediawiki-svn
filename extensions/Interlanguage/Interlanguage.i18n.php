@@ -299,6 +299,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'interlanguage-desc' => 'Przechwytuje linki do projektów w innych językach z innej wiki',
+	'interlanguage-pagelinksexplanation' => 'Strony z linkami do wersji w innych językach:',
 );
 
 /** Piedmontese (Piemontèis)

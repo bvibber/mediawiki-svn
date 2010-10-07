@@ -2617,6 +2617,9 @@ Bonyeza kitu ili kuangalia takwimu zake.',
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'prefstats' => 'விருப்பங்களின் புள்ளிவிவரங்கள்',
+	'prefstats-title' => 'விருப்பங்களின் புள்ளிவிவரங்கள்',
+	'prefstats-xaxis' => 'இடைப்பட்ட நேரம் (hours)',
 	'prefstats-factor-hour' => 'மணி',
 	'prefstats-factor-sixhours' => 'ஆறு மணி நேரம்',
 	'prefstats-factor-day' => 'நாள்',

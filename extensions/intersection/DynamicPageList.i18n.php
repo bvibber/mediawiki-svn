@@ -641,10 +641,10 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'intersection-desc' => 'Zwraca listę wypunktowaną najnowszych elementów w kategorii lub grupie kilku kategorii',
+	'intersection-desc' => 'Zwraca listę wypunktowaną najnowszych elementów w jednej kategorii lub części wspólnej kilku kategorii',
 	'intersection_toomanycats' => 'Błąd – zbyt wiele kategorii!',
 	'intersection_noresults' => 'Błąd – brak wyników!',
-	'intersection_noincludecats' => 'Błąd – musisz załączyć co najmniej jedną kategorię lub określić przestrzeń nazw!',
+	'intersection_noincludecats' => 'Błąd – musisz wybrać co najmniej jedną kategorię lub określić przestrzeń nazw!',
 );
 
 /** Piedmontese (Piemontèis)
@@ -778,6 +778,15 @@ $messages['sv'] = array(
 	'intersection_toomanycats' => 'Fel: För många kategorier!',
 	'intersection_noresults' => 'Fel: Inga resultat!',
 	'intersection_noincludecats' => 'Fel: Du måste inkludera minst en kategori eller ange en namnrymd!',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'intersection_toomanycats' => 'தவறு: மிக அதிகமான பகுப்புக்கள் !',
+	'intersection_noresults' => 'தவறு:  எந்தவிதமான முடிவுகளும் இல்லை !',
+	'intersection_noincludecats' => 'தவறு: தாங்கள் குறைந்தது ஒரு பகுப்பு அல்லது பெயர்வெளியை சேர்க்க வேண்டும் !',
 );
 
 /** Telugu (తెలుగు)
