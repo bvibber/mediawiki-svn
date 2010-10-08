@@ -444,7 +444,7 @@ EmbedPlayerManager.prototype = {
 				
 				// Pass the id to any hook that needs to interface prior to checkPlayerSources
 				mw.log("EmbedPlayer::addElement :trigger " + playerInterface.id );
-				$j( mw ).trigger ( 'newEmbedPlayerEvent',  playerInterface.id );
+				$j( mw ).trigger ( 'newEmbedPlayerEvent', $j( '#' + playerInterface.id ).get(0) );
 				
 				// Issue the checkPlayerSources call to the new player interface:
 				// make sure to use the element that is in the DOM:						
