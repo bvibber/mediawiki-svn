@@ -49,6 +49,13 @@ $messages['arz'] = array(
 	'ajaxquerypages-desc' => 'أضف بعض الأجاكس إلى صفحات الاستعلام مثل [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'ajaxquerypages-desc' => 'Sorğu səhifələrinə bəzi AJAX-lar əlavə edir, məsələn, [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Bashkir (Башҡорт)
  * @author Assele
  */

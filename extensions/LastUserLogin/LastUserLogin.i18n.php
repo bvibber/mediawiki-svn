@@ -73,6 +73,14 @@ $messages['ar'] = array(
 	'lastuserlogin_useremail' => 'بريد المستخدم الإلكتروني',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'lastuserlogin_userid' => 'İstifadəçi adı',
+	'lastuserlogin_daysago' => 'Gün əvvəl',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

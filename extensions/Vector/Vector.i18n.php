@@ -307,7 +307,7 @@ $messages['cs'] = array(
 	'vector-collapsiblenav-preference' => 'Povolit sbalování položek v navigačním menu ve vzhledu Vektor',
 	'vector-collapsiblenav-more' => 'Další jazyky',
 	'vector-editwarning-warning' => 'Opuštěním této stránky se mohou veškeré provedené změny ztratit.
-Pokud jste {{GENDER:|přihlášen|přihlášena|přihlášeni}}, můžete si toto varování vypnout na záložce „Editace“ v uživatelském nastavení.',
+Pokud jste přihlášeni, můžete si toto varování vypnout na záložce „Editace“ v uživatelském nastavení.',
 	'vector-editwarning-preference' => 'Upozornit, když budu opouštět editaci bez uložení změn',
 	'vector-simplesearch-search' => 'Hledat',
 	'vector-simplesearch-containing' => 'obsahující…',
@@ -863,7 +863,7 @@ $messages['krc'] = array(
 $messages['ksh'] = array(
 	'vector' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
 	'vector-desc' => 'Verbäßert Schnettschtäll för Minsche en dä Vektor Bovverfläsch.',
-	'vector-collapsiblenav-preference' => 'Zohlohße, Ußwahle em Ußsinn „Vektor“ zoh_ze_klappe',
+	'vector-collapsiblenav-preference' => 'Donn zohlohße, Ußwahle em Ußsinn „Vektor“ zoh_ze_klappe',
 	'vector-collapsiblenav-more' => 'Mieh Shprooche',
 	'vector-editwarning-warning' => 'Wann de vun hee dä Sigg fott jeihß, doh künnte all Ding Änderunge aan dä Sigg verschött jonn.
 Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann kriß de se nieh mieh wider. Jangk doför en dä Affschnett „Beim Bearbeide“ en Dinge Enshtellunge.',

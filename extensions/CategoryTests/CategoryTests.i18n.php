@@ -33,6 +33,13 @@ $messages['ar'] = array(
 	'categorytests-desc' => 'دوال لاختبار التاصنيف',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'categorytests-desc' => 'Kateqoriyaların yoxlanılması üçün funksiyalar',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

@@ -399,6 +399,7 @@ $messages['eo'] = array(
 	'bookinfo-result-year' => 'Jaro:',
 	'bookinfo-error-invalidisbn' => 'Nevalida ISBN entajpita.',
 	'bookinfo-error-nosuchitem' => 'Tio ne ekzistas aŭ ne estas trovebla.',
+	'bookinfo-error-nodriver' => 'Ne eblas starti taǔgan pelilon de Libro-Informo',
 	'bookinfo-error-noresponse' => 'Neniu respondo aŭ peto estis finigita.',
 	'bookinfo-purchase' => 'Aĉetu ĉi libron de $1',
 	'bookinfo-provider' => 'Datuma provizanto: $1',

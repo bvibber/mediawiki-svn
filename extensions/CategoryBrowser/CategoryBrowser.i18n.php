@@ -503,6 +503,20 @@ $messages['id'] = array(
 	'cb_next_items_link' => 'Selanjutnya',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|sottocategoria|sottocategorie}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|pagina|pagine}}',
+	'cb_cat_subcats' => 'sottocategorie',
+	'cb_cat_pages' => 'pagine',
+	'cb_apply_button' => 'Applica',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'e',
+	'cb_edit_remove_hint' => 'Cancella, se possibile',
+);
+
 /** Japanese (日本語)
  * @author Tommy6
  * @author Yanajin66

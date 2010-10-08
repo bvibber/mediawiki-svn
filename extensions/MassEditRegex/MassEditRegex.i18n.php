@@ -1458,14 +1458,26 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'masseditregex-pagelisttxt' => 'Mga pahinang pamamatnugutan (huwag gamitin ang isang puwang na pampangalan: unlapi)',
 	'masseditregex-matchtxt' => 'Hanapin ang:',
 	'masseditregex-replacetxt' => 'Palitan ng:',
 	'masseditregex-executebtn' => 'Isakatuparan',
+	'masseditregex-err-nopages' => 'Dapat kang tumukoy ng kahit na isang pahinang babaguhin.',
 	'masseditregex-before' => 'Dati',
 	'masseditregex-after' => 'Pagkaraan',
+	'masseditregex-max-preview-diffs' => 'Nakahangga ang paunang-tingin sa unang $1 {{PLURAL:$1|pagtugma|mga pagtutugma}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|pagbabago|mga pagbabago}}',
+	'masseditregex-page-not-exists' => 'Hindi umiiral ang $1',
+	'masseditregex-num-articles-changed' => '$1 napatnugot na {{PLURAL:$1|pahina|mga pahina}}',
+	'masseditregex-view-full-summary' => 'Tingnan ang buong buod ng pamamatnugot',
+	'masseditregex-hint-intro' => 'Narito ang ilang mga parunggit at mga halimbawa para sa pagsasagawa ng pangkaraniwang mga gawain:',
 	'masseditregex-hint-headmatch' => 'Itugma',
 	'masseditregex-hint-headreplace' => 'Palitan',
 	'masseditregex-hint-headeffect' => 'Epekto',
+	'masseditregex-hint-toappend' => 'Magkabit ng ilang mga teksto sa hulihan ng pahina - magaling para sa pagdaragdag ng mga pahina sa mga kategorya',
+	'masseditregex-hint-remove' => 'Tanggalin ang ilang mga teksto mula sa lahat ng mga pahinang nasa loob ng talaan',
+	'masseditregex-hint-removecat' => 'Tanggalin ang lahat ng mga kategorya mula sa isang pahina (tandaan ang pagtakas ng mga parisukat na panaklong sa loob ng wikikodigo.)
+Hindi dapat matakasan ang kapalit na mga halaga.',
 	'masseditregex-listtype-intro' => 'Ito ay isang talaan ng:',
 	'masseditregex-listtype-pagenames' => 'Mga pangalan ng pahina (baguhin ang mga pahinang ito)',
 	'masseditregex-listtype-pagename-prefixes' => 'Mga unlapi ng pangalan ng pahina (baguhin ang mga pahina na may mga pangalan nagsisimula sa tekstong ganito)',

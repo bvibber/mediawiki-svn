@@ -2089,6 +2089,7 @@ $wgCustomToolbarMessages['os'] = array(
  */
 $wgCustomToolbarMessages['pdc'] = array(
 	'ct_external_caption' => 'Gewebbgleecher',
+	'ct_nowiki_caption' => 'Ken Wiki',
 	'ct_submit' => 'Go!',
 	'ct_close' => 'Fenschder zumache',
 	'ct_user_user' => 'Yuuser',

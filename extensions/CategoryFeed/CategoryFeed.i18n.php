@@ -31,6 +31,13 @@ $messages['arz'] = array(
 	'categoryfeed-desc' => 'يستخدم أجزاء من تلقيمات أحدث التغييرات. ينشئ نسخة فى الصفحة، مفيد خصوصا لويكى الأخبار.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'categoryfeed-desc' => 'Son dəyişikliklər lentinin bəzi hissələrindən istifadə etməklə səhifənin daxilində onun versiyasını yaradır. Xüsusilə, Vikixəbərlər üçün faydalıdır.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -64,6 +64,14 @@ $messages['ast'] = array(
 	'absenteelandlord-desc' => 'Autobloquea la base de datos wiki si los alministradores tán toos inactivos dalgún tiempu',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'absenteelandlord-reason' => 'İdarəçilərin qeyri-fəallığı səbəbindən verilənlər bazası avtomatik olaraq kilidlənmişdir.',
+	'absenteelandlord-desc' => 'Müəyyən müddət ərzində idarəçilərin heç biri fəal olmadıqda viki layihənin verilənlər bazasını avtomatik kilidləyir',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  * @author Mucalexx

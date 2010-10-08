@@ -43,6 +43,13 @@ $messages['ar'] = array(
 	'addmediawizard-desc' => 'معالج إضافة الوسائط، طَوَّرَاه بالشراكة كالتورا و مؤسّسة ويكيميديا',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'addmediawizard-desc' => 'Kaltura və Vikimedia Fondunun birgə əməkdaşlığı sayəsində hazırlanmış media-fayllar əlavəçisi',
+);
+
 /** Belarusian (Беларуская)
  * @author Хомелка
  */

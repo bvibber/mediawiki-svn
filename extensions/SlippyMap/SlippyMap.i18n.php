@@ -285,13 +285,14 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Pill
  * @author Sebastian Wallroth
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'slippymap_desc' => 'Ergänzt ein <tt>&lt;slippymap&gt;</tt>-Tag zum Einbinden von statischen und dynamischen Karten. Unterstützt werden mehrere Kartendienste einschließlich [http://openstreetmap.org OpenStreetMap] und NASA Worldwind',
+	'slippymap_desc' => 'Ergänzt das <tt>&lt;slippymap&gt;</tt>-Tag zum Einbinden von statischen und dynamischen Karten. Unterstützt werden mehrere Kartendienste einschließlich [http://openstreetmap.org OpenStreetMap] und [http://worldwind.arc.nasa.gov/java/ NASA World Wind]',
 	'slippymap_error' => '$1-Fehler: $2',
 	'slippymap_errors' => '$1-Fehler:',
 	'slippymap_error_tag_content_given' => 'Der <tt>&lt;$1&gt;</tt>-Tag kennt nur Attribut-Argumente (&lt;$1 […] /&gt;), keinen Eingabetext (&lt;$1&gt; … &lt;/$1&gt;)',

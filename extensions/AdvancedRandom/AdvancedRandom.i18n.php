@@ -187,6 +187,8 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'advancedrandom' => 'Progresa hazardpaĝo',
+	'advancedrandom-desc' => 'Akiri hazardan paĝon de ĉiu nomspaco, la diskuto- aŭ ĉefo-paĝo de kiu ligas al donata paĝo.
+Povas esti uzata kiel [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] akiri diskuto-paĝon de hazarda elstara artikolo, aŭ kiel [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] akiri hazardan GFDL-dosieron.',
 );
 
 /** Spanish (Español)

@@ -2412,6 +2412,7 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
@@ -2425,7 +2426,14 @@ $messages['ta'] = array(
 	'badimages-reason' => 'காரணம்:',
 	'badimages-remove' => '(நீக்கு)',
 	'badimages-remove-btn' => 'நீக்கு',
+	'badimages-remove-confirm' => '$1-ஐ பட்டியலில் இருந்து நீக்கப்பட வேண்டும் என்பதனை தயவு செய்து உறுதிபடுத்துங்கள்:',
+	'badimages-removed' => '$1 பட்டியலில் இருந்து நீக்கப்பட்டுவிட்டது.',
+	'badimages-unprivileged' => '(இந்த பட்டியலை மாற்றுவதற்குத் தேவையான அனுமதி தங்களுக்கு இல்லை)',
 	'badimages-log-name' => 'பழுதான படிமங்களின் பட்டியல்',
+	'badimages-log-add' => '[[$1]]-ஐ சரியில்லாத பக்கங்களின் பட்டியலில் சேர்க்கப்பட்டுவிட்டது',
+	'badimages-log-remove' => '[[$1]]-ஐ சரியில்லாத படங்களின் பட்டியலில் இருந்து நீக்கப்பட்டது',
+	'badimages-page' => '{{ns:help}}:சரியில்லாத படங்களின் பட்டியல்',
+	'right-badimages' => 'சரியில்லாத படங்களின் பட்டியலை புதுப்பிக்கவும்',
 );
 
 /** Telugu (తెలుగు)

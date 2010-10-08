@@ -183,6 +183,17 @@ $messages['id'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Buat',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'articletocategory2-desc' => 'Inserisce un inputbox in ogni categoria che consente la creazione di una nuova pagina direttamente in tale categoria',
+	'articletocategory2-create-article-under-category-text' => 'Aggiungi una pagina a questa categoria',
+	'articletocategory2-create-article-under-category-button' => 'Crea',
+	'articletocategory2-create-category-under-category-text' => 'Aggiungi una categoria a questa categoria',
+	'articletocategory2-create-category-under-category-button' => 'Crea',
+);
+
 /** Japanese (日本語)
  * @author Yanajin66
  * @author 青子守歌

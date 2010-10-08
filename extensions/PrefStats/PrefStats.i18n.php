@@ -607,6 +607,7 @@ Konfigurer $wgPrefStatsTrackPrefs for at spore indstillinger.',
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Metalhead64
  * @author Omnipaedista
@@ -614,7 +615,7 @@ Konfigurer $wgPrefStatsTrackPrefs for at spore indstillinger.',
  */
 $messages['de'] = array(
 	'prefstats' => 'Einstellungsstatistiken',
-	'prefstats-desc' => 'Statistiken, wie viele Benutzer bestimmte Einstellungen aktiviert haben',
+	'prefstats-desc' => 'Ermöglicht die Anzeige von Statistiken zu den einzelnen Einstellungen der Benutzer',
 	'prefstats-title' => 'Einstellungsstatistiken',
 	'prefstats-list-intro' => 'Derzeit werden die folgenden Einstellungen aufgezeichnet.
 Klicke auf eine, um Statistiken darüber zu erhalten.',

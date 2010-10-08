@@ -58,11 +58,12 @@ $messages['arz'] = array(
 
 /** Azerbaijani (Azərbaycanca)
  * @author Gulmammad
+ * @author Sortilegus
  * @author Wertuose
  */
 $messages['az'] = array(
 	'seealso' => 'Həmçinin bax',
-	'seealso-desc' => '<code><nowiki><seealso></nowiki></code> teqi vasitəsilə lokallaşdırılmış "Həmçinin bax" başlıqları',
+	'seealso-desc' => '<code><nowiki><seealso></nowiki></code> teqi vasitəsilə lokallaşdırılmış "Həmçinin bax" başlığı',
 );
 
 /** Bavarian (Boarisch)

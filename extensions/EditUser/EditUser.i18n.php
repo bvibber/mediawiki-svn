@@ -145,6 +145,16 @@ $messages['avk'] = array(
 	'edituser-exempt' => 'Bazena favesikpata me zo robetar',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'edituser-username' => 'İstifadəçi adı:',
+	'edituser-dosearch' => 'Axtar',
+	'edituser-nouser' => 'İstifadəçi "$1" mövcud deyil',
+	'right-edituser-exempt' => 'digər istifadəçilər bu istifadəçinin nizamlamalarını redaktə edə bilməzlər',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

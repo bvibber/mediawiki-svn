@@ -24,6 +24,13 @@ $messages['qqq'] = array(
 	'qrcode-desc' => 'To find out what "QR code" is and what it is called in your language, see the "in other languages" (interwiki) links at [[wikipedia:QR Code]]',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'qrcode-desc' => 'QR şifrəli təsvirlər yaradır və onları viki səhifələrə əlavə edir',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

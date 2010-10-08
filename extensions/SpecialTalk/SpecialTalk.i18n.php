@@ -89,6 +89,13 @@ $messages['id'] = array(
 	'specialtalk-desc' => 'Tambahkan tab pembicaraan ke [[Special:SpecialPages|halaman istimewa]]',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'specialtalk-desc' => '[[Special:SpecialPages|特別ページ]]へ、トークタブを追加する',
+);
+
 /** Colognian (Ripoarisch) */
 $messages['ksh'] = array(
 	'specialtalk-desc' => 'Deiht ene „{{int:talk}}“ lenk op de [[Special:SpecialPages|Extra Sigge]].',

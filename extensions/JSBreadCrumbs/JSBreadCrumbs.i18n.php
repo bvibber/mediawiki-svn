@@ -64,6 +64,13 @@ $messages['br'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => "D'ar muiañ 20 liamm merdeiñ",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'jsbreadcrumbs-desc' => 'Dodaje trag za navigaciju putem mrvica ispod trake sa jezičcima',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

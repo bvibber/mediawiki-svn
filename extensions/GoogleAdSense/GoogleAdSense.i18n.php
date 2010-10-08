@@ -117,10 +117,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author MichaelFrey
  */
 $messages['de'] = array(
-	'googleadsense-desc' => 'Fügt [http://www.google.com/adsense Google AdSense] zur Sidebar hinzu',
+	'googleadsense-desc' => 'Ermöglicht das Einfügen von [http://www.google.com/adsense „Google AdSense“-Anzeigen] in der Seitenleiste',
 );
 
 /** Lower Sorbian (Dolnoserbski)

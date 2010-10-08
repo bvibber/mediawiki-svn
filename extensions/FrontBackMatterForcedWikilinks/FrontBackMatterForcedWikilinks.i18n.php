@@ -51,6 +51,9 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'frontbackforced-desc' => 'Omogućuje dodavanje određenih podataka na početak i kraj stranica te primjenjuje nametnute wikilinkove',
+	'frontbackforced-front' => '_(prednji_materijal)',
+	'frontbackforced-back' => '_(dodani_materijal)',
 	'frontbackforced-forced' => '_(nametnuti_wikilinkovi)',
 );
 

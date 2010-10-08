@@ -210,6 +210,8 @@ $messages['be-tarask'] = array(
 	'fbconnect-fbmldesc' => 'Facebook прадстаўляе ўбудаваныя тэгаў, якія візуалізуюць дынамічныя зьвесткі.
 Большасьць з гэтых тэгаў могуць утрымлівацца ў вікі-тэксьце, і будуць паказвацца па рознаму, у залежнасьці ад таго, які ўдзельнік іх праглядаць.',
 	'fbconnect-comm' => 'Сувязь',
+	'fbconnect-commdesc' => 'Злучэньне Facebook — новы ўзровень працы ў сетцы.
+Паглядзіце, хто з Вашых сяброў выкарыстоўвае вікі, і распавядзіце ім пра тое, што Вы робіце, праз стужку навінаў Facebook.',
 	'fbconnect-welcome' => 'Вітаем карыстальніка злучэньня Facebook!',
 	'fbconnect-loginbox' => "Ці '''увайдзіце ў сыстэму''' праз Facebook:
 	
@@ -255,6 +257,7 @@ $1",
 	'fbconnect-error-user-creation-hook-aborted' => 'Перахопнік (пашырэньне) адмяніў стварэньне рахунку з паведамленьнем: $1',
 	'fbconnect-prefstext' => 'Злучэньне Facebook',
 	'fbconnect-link-to-profile' => 'Профіль у Facebook',
+	'fbconnect-prefsheader' => "Для кантролю таго, якія падзеі будуць дадавацца у стужку навінаў Facebook, <a id='fbConnectPushEventBar_show' href='#'>паказаць устаноўкі</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>схаваць устаноўкі</a>",
 	'fbconnect-prefs-can-be-updated' => 'Вы можаце зьмяніць гэта ў любы момант, наведаўшы закладку «$1» на Вашай старонцы ўстановак.',
 );
 
@@ -703,6 +706,42 @@ $messages['it'] = array(
 	'fbconnect-choosemanual' => 'Un nome di tua scelta:',
 	'fbconnect-chooseusername' => 'Nome utente:',
 	'fbconnect-choosepassword' => 'Password:',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'fbconnect' => 'Facebook接続',
+	'fbconnect-desc' => '利用者が、[http://www.facebook.com Facebook]アカウントで[[Special:Connect|接続]]できるようにする。
+ウィキ文中のFBMLとFacebookグループに基づく申し込み認証',
+	'group-fb-user' => 'Facebook接続利用者',
+	'group-fb-user-member' => 'Facebook接続利用者',
+	'grouppage-fb-user' => '{{ns:project}}:Facebook接続利用者',
+	'group-fb-groupie' => 'グループメンバー',
+	'group-fb-groupie-member' => 'グループメンバー',
+	'grouppage-fb-groupie' => '{{ns:project}}:グループメンバー',
+	'group-fb-officer' => 'グループの役員',
+	'group-fb-officer-member' => 'グループの役員',
+	'grouppage-fb-officer' => '{{ns:project}}:グループの役員',
+	'group-fb-admin' => 'グループの管理者',
+	'group-fb-admin-member' => 'グループの管理者',
+	'grouppage-fb-admin' => '{{ns:project}}:グループの管理者',
+	'fbconnect-connect' => 'Facebook接続でログイン',
+	'fbconnect-convert' => 'このアカウントにFacebookで接続',
+	'fbconnect-logout' => 'Facebookのログアウト',
+	'fbconnect-link' => 'facebook.comに戻る',
+	'fbconnect-title' => 'Facebookでアカウントに接続',
+	'fbconnect-intro' => 'このウィキは、次世代Facebookプラットフォームである、Facebook接続が有効になっています。
+つまり、接続した時、ログイン時に使える通常の[[Wikipedia:Help:Logging in#Why log in?|利点]]に加え、いくつかの追加機能を活用することができるようになります。',
+	'fbconnect-click-to-login' => 'クリックして、Facebook経由でこのサイトにログイン',
+	'fbconnect-click-to-connect-existing' => 'クリックして、Facebookアカウントを$1に接続',
+	'fbconnect-conv' => '利便性',
+	'fbconnect-convdesc' => '接続された利用者は、自動的にログインされます。
+許可が与えられていれば、このウィキは、Facebookを電子メールのプロキシとして利用し、重要な通知を、電子メールアドレスを開示することなく受け取り続けることができるようになります。',
+	'fbconnect-fbml' => 'Facebookマークアップ言語',
+	'fbconnect-fbmldesc' => 'Facebookは、動的データの描画を行なう組み込みタグ群を提供しています。
+それらのタグの多くは、ウィキ文の中に含めることができ、どの接続利用者がそれを閲覧しているかによって、異なる描画を行なうことができます。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1314,7 +1353,15 @@ $messages['pt-br'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'group-fb-groupie-member' => 'Группа участников',
+	'fbconnect' => 'Подключение Facebook',
+	'fbconnect-desc' => 'Позволяет участникам [[Special:Connect|подключаться]] с помощью своих учётных записей на [http://www.facebook.com Facebook]. 
+Предлагает аутентификацию на основе групп Facebook и использование FBML в викитексте.',
+	'group-fb-user' => 'Участники, подключенные через Facebook',
+	'group-fb-user-member' => 'Участник, подключенный через Facebook',
+	'grouppage-fb-user' => '{{ns:project}}:Участники, подключенные через Facebook',
+	'group-fb-groupie' => 'Члены группы',
+	'group-fb-groupie-member' => 'Член группы',
+	'grouppage-fb-groupie' => '{{ns:project}}:Члены группы',
 	'group-fb-admin' => 'Группа администраторов',
 	'fbconnect-welcome' => 'Добро пожаловать, участник Facebook Connect!',
 	'fbconnect-cancel' => 'Действие отменено',

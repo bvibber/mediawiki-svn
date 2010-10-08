@@ -44,6 +44,13 @@ $messages['arz'] = array(
 	'pnghandler-desc' => 'يغير حجم PNG باستخدام pngds',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'pnghandler-desc' => 'pngds vasitəsilə PNG formatlı faylların həcmini dəyişir',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

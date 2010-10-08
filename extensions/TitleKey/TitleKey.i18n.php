@@ -50,6 +50,13 @@ $messages['ast'] = array(
 	'titlekey-desc' => 'Suxerencies de busca de prefixos de títulu',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'titlekey-desc' => 'Adın ilk hərflərinə görə ipucu axtarış sürgüsü',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

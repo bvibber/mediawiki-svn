@@ -36,6 +36,14 @@ $messages['ar'] = array(
 	'interlanguage-desc' => 'يجلب الوصلات بين اللغات من ويكي آخر',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'interlanguage-desc' => 'Digər vikidən dillərarası keçidləri tutur',
+	'interlanguage-pagelinksexplanation' => 'Dillərarası keçidləri olan səhifələr:',
+);
+
 /** Belarusian (Беларуская)
  * @author Хомелка
  */
@@ -221,9 +229,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'interlanguage-desc' => '言語間リンクをほかのウィキから取得する',
+	'interlanguage-pagelinksexplanation' => '言語間リンクのあるページ：',
 );
 
 /** Colognian (Ripoarisch)

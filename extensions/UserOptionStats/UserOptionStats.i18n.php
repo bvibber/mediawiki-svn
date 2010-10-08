@@ -196,17 +196,19 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'useroptionstats' => 'Statistiken zu Benutzereinstellungen',
-	'useroptionstats-desc' => 'Ergänzt eine [[Special:UserOptionStats|Spezialseite]], um über die Verteilung der Benutzereinstellungen des MediaWiki zu berichten',
+	'useroptionstats-desc' => 'Ergänzt eine [[Special:UserOptionStats|Spezialseite]] zur Darstellung der durch die Benutzer des Wikis gewählten Einstellungen',
 	'uos-warn' => 'PHPlot ist nicht installiert!',
 	'uos-choose' => 'Wähle eine der folgenden Einstellungen: $1',
 	'uos-unknown' => '*Standardeinstellung',
 	'uos-other' => '*Sonstige',
-	'uos-title' => 'Verteilung der gewählten Werte der Benutzereinstellung „$1“',
+	'uos-title' => 'Verteilung der gewählten Werte zur Benutzereinstellung
+„$1“',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

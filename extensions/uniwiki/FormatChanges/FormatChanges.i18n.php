@@ -445,6 +445,13 @@ $messages['oc'] = array(
 	'formatchanges-editedby' => '$1 - modificat per $2 ($3)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'formatchanges-editedby' => '$1 - geennert vun $2 ($3)',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */

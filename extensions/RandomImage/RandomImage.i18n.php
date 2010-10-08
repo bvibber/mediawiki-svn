@@ -41,6 +41,13 @@ $messages['arz'] = array(
 	'randomimage-desc' => 'يوفر ميديا عشوائية باستخدام <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'randomimage-desc' => '<code>&lt;randomimage /&gt;</code> vasitəsilə təsadüfi media seçimi etmək imkanı verir',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

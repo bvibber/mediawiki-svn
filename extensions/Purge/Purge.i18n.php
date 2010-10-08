@@ -42,6 +42,14 @@ $messages['arz'] = array(
 	'purge-desc' => 'يضيف لسان إفراغ للكاش فى كل الصفحات العادية ويتفادى تحقق الكاش للمستخدمين المجهولين مما يسمح بإفراغ الكاش بشكل سريع',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'purge' => 'təmizlə',
+	'purge-desc' => 'Bütün adi səhifələrə təmizləmə nişanını əlavə edir və keşi tez bir zamanda təmizləməyə imkan verən anonim istifadəçilər üçün təmizləmə yoxlanışını keçirir',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

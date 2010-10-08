@@ -54,6 +54,13 @@ $messages['ast'] = array(
 	'poem-desc' => 'Añade la etiqueta <code>&lt;poem&gt;</code> pal formatu de poemes',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'poem-desc' => 'Şeirlərin formatlaşdırılması üçün <code>&lt;poem&gt;</code> teqini əlavə edir',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

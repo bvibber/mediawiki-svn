@@ -1113,10 +1113,11 @@ På grund af din indvending er siden blevet flyttet til køen $1.',
  * @author Als-Holder
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'deletequeue-desc' => 'Erstellt ein [[Special:DeleteQueue|auf einer Warteschlange basierendes System zur Verwaltung von Löschungen]]',
+	'deletequeue-desc' => 'Ermöglicht ein auf einer [[Special:DeleteQueue|Auftragswarteschlange]] basierendes System zu Verwaltung von Löschungen',
 	'deletequeue-action-queued' => 'Löschung',
 	'deletequeue-action' => 'Löschung vorschlagen',
 	'deletequeue-action-title' => '„$1“ zur Löschung vorschlagen',
