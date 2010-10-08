@@ -58,7 +58,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 		if( $returnTitle ) {
 			$returnto = $returnTitle->getFullUrl();
 		} else {
-			$returnto = "http://wikimediafoundation.org/wiki/Donate-thanks/$language";
+			$returnto = "http://wikimediafoundation.org/wiki/Thank_You/$language";
 		}
 		
 		// Set the action and tracking ID fields
