@@ -13,5 +13,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	/* Editing Preference Categories */
-	'mwembed-desc' => 'MwEmbed extension provides support for mwEmbed modules and extensions',
+	'mwembed-desc' => 'Provides support for mwEmbed modules and extensions',
 );
