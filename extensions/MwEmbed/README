@@ -1,11 +1,12 @@
-= JS2 Support Extension =
+= MwEmbed Support Extension =
 
-The JS2 Support extension includes a ScriptLoader, mwEmbed javascript library
-and a repository for shared javascript like jquery.ui components. 
+The MwEmbed Support Extension includes adds support for mwEmbed modules and extension  to mwEmbed
 
-The js2-work branch has been depreciated.
+MwEmbed Support Extension was previously known as JS2Support
+
 
 == mwEmbed Stand Alone ==
+
 mwEmbed also works stand alone but does not work stand alone from a js2 support checkout. 
 You can learn more about mwEmbed stand alone in 
 /branches/mwEmbedStandAlone/README  
@@ -18,6 +19,8 @@ the core integration is sorted out.
 
 
 == Developing with JS2 ==
+
+NOTE:: THIS DOCUMENTATION NEEDS TO BE UPDATED
 
 To add the base js2 library support simply add the following to your LocalSettings.php: 
 require_once( "$IP/extensions/JS2Support/JS2Support.php" );

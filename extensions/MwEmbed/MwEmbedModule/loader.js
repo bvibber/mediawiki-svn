@@ -161,7 +161,7 @@ mw.addResourcePaths( {
 	"$j.ui.dialog"			: "libraries/jquery/jquery.ui/ui/ui.dialog.js",
 	"$j.ui.resizable"		: "libraries/jquery/jquery.ui/ui/ui.resizable.js",
 	"$j.ui.tabs"			: "libraries/jquery/jquery.ui/ui/ui.tabs.js",
-	"$j.effects"		: "libraries/jquery/jquery.ui/ui/effects.core.js",
+	"$j.effects"			: "libraries/jquery/jquery.ui/ui/effects.core.js",
 	"$j.effects.highlight"	: "libraries/jquery/jquery.ui/ui/effects.highlight.js",
 	"$j.effects.slide"		: "libraries/jquery/jquery.ui/ui/effects.slide.js",
 	"$j.ui.accordion"		: "libraries/jquery/jquery.ui/ui/ui.accordion.js",
