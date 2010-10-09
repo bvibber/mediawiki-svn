@@ -6071,6 +6071,29 @@ Du kan själv [{{fullurl:\$1|action=delvote}} bifalla eller invända] mot raderi
 	'deletequeue-case-needs-review' => 'Det här ärendet kräver [[$1|behandling]].',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'deletequeue-action-queued' => 'நீக்குதல்',
+	'deletequeue-delnom-otherreason' => 'வேறு காரணம்',
+	'deletequeue-delnom-extra' => 'மேலதிகத்தகவல்:',
+	'deletequeue-queue-speedy' => 'விரைந்து நீக்குதல்',
+	'deletequeue-queue-prod' => 'நீக்கப்படவேண்டியவை',
+	'deletequeue-review-delete' => 'பக்கத்தை நீக்கவும்.',
+	'deletequeue-review-reason' => 'கருத்துக்கள்:',
+	'deletequeue-review-newreason' => 'புதிய காரணம்:',
+	'deletequeue-review-newextra' => 'மேலதிகத்தகவல்:',
+	'deletequeue-vote-submit' => 'சமர்ப்பி',
+	'deletequeue-list-status' => 'நிலைமை:',
+	'deletequeue-list-search' => 'தேடுக',
+	'deletequeue-list-anyqueue' => '(ஏதாவது)',
+	'deletequeue-list-header-page' => 'பக்கம்',
+	'deletequeue-list-header-queue' => 'வரிசை',
+	'deletequeue-case-page' => 'பக்கம்:',
+	'deletequeue-case-reason' => 'காரணம்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

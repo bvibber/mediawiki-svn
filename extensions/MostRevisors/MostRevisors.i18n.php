@@ -666,9 +666,16 @@ $messages['pl'] = array(
 	'mostrevisors' => 'Strony z największą liczbą odwiedzających',
 	'mostrevisors-desc' => 'Lista [[Special:MostRevisors|stron z największą liczbą odwiedzających]]',
 	'mostrevisors-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą odwiedzających na tej wiki.'''",
+	'mostrevisors-limitlinks' => 'Pokaż nie więcej stron niż $1',
 	'mostrevisors-namespace' => 'Przestrzeń nazw',
+	'mostrevisors-none' => 'Nie odnaleziono wpisów.',
+	'mostrevisors-ns-header' => "'''Ta strona zawiera {{PLURAL:$1|stronę|listę $1 stron}} z największa liczbą rewizorów dla przestrzeni nazw $2.'''",
+	'mostrevisors-showing' => '{{PLURAL:$1|Jedna strona|Spis $1 stron:}}',
+	'mostrevisors-submit' => 'Dalej',
 	'mostrevisors-showredir' => 'Pokaż przekierowania',
 	'mostrevisors-hideredir' => 'Ukryj przekierowania',
+	'mostrevisors-users' => '– $1 {{PLURAL:$1|edytujący|edytujących}}',
+	'mostrevisors-viewcontributors' => 'Najważniejsi współautorzy',
 );
 
 /** Piedmontese (Piemontèis)

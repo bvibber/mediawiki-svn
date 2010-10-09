@@ -568,6 +568,15 @@ $messages['pl'] = array(
 	'purewikideletion-desc' => 'Między innymi powoduje oznaczenie czerwonym kolorem linków do pustych stron',
 	'purewikideletion-pref-watchblank' => 'Dodawaj strony, których treść usunąłem do mojej listy obserwowanych',
 	'purewikideletion-pref-watchunblank' => 'Dodawaj strony, których treść odtworzyłem do mojej listy obserwowanych',
+	'blank-log' => 'czyszczenie',
+	'blank-log-name' => 'Historia czyszczenia',
+	'blank-log-header' => 'Poniżej znajduje się spis czyszczeń i anulowania czyszczeń stron.',
+	'blank-log-entry-blank' => 'wyczyścił „$1”',
+	'blank-log-entry-unblank' => 'anulował czyszczenie „$1”',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|rejestr czyszczenia]]',
+	'purewikideletion-blanknologin' => 'Nie jesteś zalogowany',
+	'purewikideletion-blanknologintext' => 'Czyszczenie stron jest możliwe dopiero po zarejestrowaniu się i [[Special:UserLogin|zalogowaniu]].',
+	'purewikideletion-unblanknologintext' => 'Anulowanie czyszczenia stron jest możliwe dopiero po zarejestrowaniu się i [[Special:UserLogin|zalogowaniu]].',
 );
 
 /** Piedmontese (Piemontèis)

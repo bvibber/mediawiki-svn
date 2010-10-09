@@ -125,10 +125,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'poem-desc' => 'Fügt das <code>&lt;poem&gt;</code>-Tag zur Formatierung von Gedichten hinzu',
+	'poem-desc' => 'Ergänzt das <code>&lt;poem&gt;</code>-Tag zur Formatierung von Gedichten',
 );
 
 /** Zazaki (Zazaki)

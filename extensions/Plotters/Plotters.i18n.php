@@ -623,11 +623,29 @@ Definissètz una classa de tablèu que fa mens de 255 caractèrs.',
 );
 
 /** Polish (Polski)
+ * @author Sp5uhe
  * @author ToSter
  */
 $messages['pl'] = array(
+	'plotters-desc' => 'Pozwala użytkownikom korzystać z własnego kodu JavaScript w znacznikach jsplot',
+	'plotters' => 'Plotery',
+	'plotters-title' => 'Plotery',
+	'plotters-pagetext' => 'Poniżej znajduje się lista specjalnych ploterów z których mogą korzystać użytkownicy w swoich znacznikach jsplot, zgodnie z definicją [[MediaWiki:Plotters-definition]].
+Przegląd ten umożliwia łatwy dostęp do stron komunikatów systemowych, które definiują każdy ploter i kod.',
 	'plotters-uses' => 'Liczba użyć',
 	'plotters-missing-script' => 'Nie zdefiniowano skryptu.',
+	'plotters-missing-arguments' => 'Nie określono argumentów.',
+	'plotters-excessively-long-scriptname' => 'Nazwa skryptu jest zbyt długa.
+Należy zdefiniować skrypt, którego nazwa ma nie więcej niż 255 znaków.',
+	'plotters-excessively-long-preprocessorname' => 'Nazwa preprocesora jest zbyt długa.
+Należy zdefiniować preprocesor, którego nazwa ma nie więcej niż 255 znaków.',
+	'plotters-excessively-long-name' => 'Nazwa plotowania jest zbyt długa.
+Należy zdefiniować nazwę plotowania, która ma co najwyżej 255 znaków.',
+	'plotters-excessively-long-tableclass' => 'Nazwa tabeli klas jest zbyt długa.
+Należy zdefiniować nazwę tabeli klas, która ma co najwyżej 255 znaków.',
+	'plotters-no-data' => 'Nie dostarczono danych.',
+	'plotters-invalid-renderer' => 'Wybrano nieprawidłowe renderowanie.',
+	'plotters-errors' => '{{PLURAL:$1|Błąd|Błędy}} ploterów:',
 );
 
 /** Piedmontese (Piemontèis)

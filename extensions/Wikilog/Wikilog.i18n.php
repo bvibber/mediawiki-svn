@@ -6738,6 +6738,44 @@ Avmarkera denna box för att lämna artiklar som utkast.',
 	'wikilog-doc-import-comment' => 'Importerad Wikilog-dokumentatoin',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'wikilog-new-item-go' => 'உருவாக்கவும்',
+	'wikilog-item-name' => 'கட்டுரையின் பெயர்:',
+	'wikilog-published' => 'வெளியிடப்பட்டது',
+	'wikilog-updated' => 'புதிப்பிக்கப்பட்டது',
+	'wikilog-title' => 'தலைப்பு',
+	'wikilog-actions' => 'செயல்கள்',
+	'wikilog-comments' => 'கருத்துரைகள்',
+	'wikilog-replies' => 'பதில்கள்',
+	'wikilog-view-summary' => 'சுருக்கம்',
+	'wikilog-pager-newest' => 'புத்தம் புதிய',
+	'wikilog-pager-oldest' => 'மிகப் பழமையான',
+	'wikilog-pager-prev' => 'முந்தைய',
+	'wikilog-pager-next' => 'அடுத்தது',
+	'wikilog-pager-first' => 'முதல்',
+	'wikilog-pager-last' => 'கடைசி',
+	'wikilog-no-comments' => 'கருத்துக்கள் ஒன்றுமில்லை',
+	'wikilog-form-category' => 'பகுப்பு:',
+	'wikilog-form-name' => 'பெயர்:',
+	'wikilog-form-author' => 'ஆசிரியர்:',
+	'wikilog-form-date' => 'தேதி:',
+	'wikilog-form-status' => 'நிலைமை:',
+	'wikilog-form-preview' => 'முன்தோற்றம்:',
+	'wikilog-form-comment' => 'கருத்து:',
+	'wikilog-submit' => 'சமர்ப்பி',
+	'wikilog-preview' => 'முன்தோற்றம்',
+	'wikilog-edit-lc' => 'தொகு',
+	'wikilog-reply-lc' => 'பதில் அளி',
+	'wikilog-delete-lc' => 'நீக்குக',
+	'wikilog-approve-lc' => 'அனுமதிக்கவும்',
+	'wikilog-reject-lc' => 'ஒதுக்கித் தள்ளு',
+	'wikilog-page-lc' => 'பக்கம்',
+	'wikilog-history-lc' => 'வரலாறு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
