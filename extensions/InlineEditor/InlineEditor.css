@@ -1,0 +1,258 @@
+/* 
+ * Right now everything has #siteNotice in front as there's no better way, really, to include the
+ * top boxes to the page.
+ */
+
+#siteNotice {
+	text-align: inherit;
+	font-size: inherit;
+}
+
+#siteNotice div,
+#siteNotice p {
+	/* make these elements behave normal again */
+	margin: 0px;
+	padding: 0px;
+}
+
+#siteNotice div.editbox {
+	/* box on top of the page, colors are the same as the surrounding colors */
+	/* it scales with the display size */
+	font-size: 1.0em;
+	background-color: #eaf3f8;
+	border: 1px solid #A7D7F9;
+	margin-bottom: 10px;
+	padding: 10px 10px 5px;
+	max-width: 700px;
+	position: relative;
+}
+
+#siteNotice div.editbox .highlightExample {
+	/* example in the text to show how the highlights look like */
+	background-color: #a7d7f9;
+	padding: 1px 3px;
+}
+
+#siteNotice div.editbox input.summary {
+	/* summary box, scales with the editbox to a certain point */
+	display: block;
+	width: 500px;
+	max-width: 98%;
+	padding: 2px;
+	margin: 2px 0px;
+	font-size: 0.8em;
+}
+
+#siteNotice div.editbox .example, .editbox .terms {
+	/* smaller font and lighter color for less important items */
+	font-size: 0.8em;
+	color: #555;
+}
+
+#siteNotice div.editbox .side {
+	/* text besides the publish button */
+	margin-right: 150px;
+}
+
+/*#siteNotice div.editbox*/ #publish {
+	/* style the publish button to be eye-catching using a bright green color */
+	background-color: #008C00;
+	color: #fff;
+	font-size: 1.5em;
+	padding: 8px 16px 6px;
+	line-height: 1em;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	border: 1px solid green;
+	
+	/* cross (modern) browser rounded corners */
+	border-radius: 10px;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px;
+}
+
+#siteNotice div.editmode {
+	/* style the mode selection box essentially in the same way as the box above */
+	border: 1px solid #A7D7F9;
+	padding: 0px;
+	max-width: 720px;
+	margin-bottom: 10px;
+}
+
+#siteNotice div.editmode .header {
+	/* only the header has a blue background color */
+	background-color: #eaf3f8;
+	margin: 0px;
+	padding: 0px;
+	
+	/* make sure the header resizes due to the floated elements */
+	overflow: auto;
+	
+	/* make the bottom borders of the buttons collapse */
+	margin-bottom: -1px;
+}
+
+#siteNotice div.editmode .header .radio, #siteNotice div.editmode .header .button {
+	/* margin fix for old IE versions, see http://www.positioniseverything.net/explorer/doubled-margin.html */
+	display: inline;
+	float: left;
+	
+	/* have the borders here, not in the header div, to make sure it looks good on smaller displays! */
+	border-top: 1px solid #A7D7F9;
+	border-right: 1px solid #A7D7F9;
+	border-bottom: 1px solid #A7D7F9;
+	padding: 2px 6px;
+	height: 22px;
+	
+	/* collapse the top border */
+	margin-top: -1px;
+}
+
+#siteNotice div.editmode .header .button {
+	/* undo and redo buttons on the right, as well as the counter */
+	float: right;
+	border-left: 1px solid #A7D7F9;
+	border-right: none;
+}
+
+#siteNotice div.editmode .header .button a {
+	font-size: 0.9em;
+}
+
+/*#siteNotice div.editmode .header .button */ #editCounter {
+	font-size: 0.9em;
+	color: #555;
+}
+
+/*#siteNotice div.editmode .header .button */ #editCounter.changeHighlight {
+	color: #eaf3f8;
+}
+
+#siteNotice div.editmode .header .radio input {
+	/* use only the padding of .radio div, and the label margin */
+	margin: 0px;
+}
+
+#siteNotice div.editmode .header .title {
+	/* bold title on the left side of the header */
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+#siteNotice div.editmode .header .radio label {
+	/* only have a small margin on the left side */
+	font-size: 0.9em;
+	margin: 0px 0px 0px 5px;
+	
+	/* create a hand cursor, cross-browser hack: http://www.quirksmode.org/css/cursor.html */
+	cursor: pointer;
+	cursor: hand;
+}
+
+#siteNotice div.editmode .header .radio label:hover {
+	/* make the labels recognizable as clickable */
+	text-decoration: underline;
+}
+
+#siteNotice div.editmode .descriptionOuter {
+	/* have a top border which collapses with the label borders */
+	border-top: 1px solid #A7D7F9;
+	
+	/* use padding and margin only in the inner div */
+	padding: 0px;
+	margin: 0px;
+	
+	
+	/* make sure the box works correctly for the nice animation */
+	background-color: #f8f8f8;
+	position: relative;
+	overflow: hidden;
+}
+
+#siteNotice div.editmode .descriptionInner {
+	/* have the same padding as the box above */
+	padding: 10px 10px 5px;
+	margin: 0px;
+	
+	/* position all the inner descriptions at the same place for the nice animation */
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#editContent a, #editContent a:hover, #editContent a:visited, #editContent a:active {
+	/* remove the link underline because that way it looks they're clickable */
+	text-decoration: none;
+}
+
+#editContent .orig {
+	/* hide the original element */
+	display: none;
+}
+
+#editContent .editbar {
+	/* use an inline-block to support no-wrap and width; this makes sure everything is on one line
+	   the inline-block is cross-browser supported because a span is inline by default, 
+	   see http://www.quirksmode.org/css/display.html */ 
+	display: inline-block;
+	white-space: no-wrap;
+	
+	/* this is used for vertical alignment */
+	position: relative;
+	vertical-align: middle;
+	
+	margin: 2px;
+}
+
+#editContent .editbar input {
+	/* vertically align the inputs */
+	position: absolute;
+	top: 50%;
+	height: 22px;
+	margin-top: -11px;
+}
+
+#editContent .editbar textarea {
+	/* style the textarea font, as this differs heavily from browser to browser */
+	font-family: sans-serif;
+	font-size: 1.0em;
+	line-height: 1.3em;
+	margin: 0px;
+	padding: 0px;
+	height: 50px;
+	
+	/* disable resizing for browsers like Chrome, as we do this ourselves */
+	resize: none;
+}
+
+#editContent .editbar .overlay {
+	/* position the overly to cover the entire editbar */
+	height: 100%;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 100%;
+}
+
+#editContent .editbar .overlay img.spinner {
+	/* position the spinner exactly in the middle */
+	left: 50%;
+	margin-left: -8px;
+	margin-top: -8px;
+	position: absolute;
+	top: 50%;
+	width: 16px;
+	height: 16px;
+}
+
+#editContent .editbar .overlay .alpha {
+	/* have a cross-browser alpha overlay, see http://www.quirksmode.org/css/opacity.html */
+	width: 100%;
+	height: 100%;
+	background-color: #333;
+	opacity: 0.7;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	filter: alpha(opacity=70);
+}

@@ -1,0 +1,29 @@
+1.0.0 First release
+
+1.0.1 Fixed error when name is not valid
+
+1.1.0 Added parser function
+
+1.1.1 Added link in Monobook toolbox on pages in the NS_USER namespace
+
+1.2.0 Parser function now can report edits for a certain namespace, a German translation
+
+1.2.1 Fixed bugs to allow EditCount to work on 1.6.10 and above
+
+1.2.2 Adminstrators now choose parser functions and more flexible message loading
+
+1.2.3 Documented code and fixed disabling of special page bug
+
+1.2.4 Fixed profiler calls
+
+1.2.5 Fixed disabling of special page bug in MediaWiki 1.6
+
+1.2.6 Fixed SQL querys to use $wgDBPrefix
+
+1.2.7 Added Finish and Polish translation
+
+1.2.8 Fixed problems with $wgDBprefix and ISS
+
+1.2.9 Added Brazilian Portuguese, Dutch, and French translations
+
+1.2.9.1 BUGFIX removed newline + space after ?> in EditCount.i18n.php
