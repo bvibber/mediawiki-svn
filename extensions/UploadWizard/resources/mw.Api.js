@@ -55,7 +55,7 @@
 
 				// caller can supply handlers for http transport error or api errors
 				err: function( code, result ) {
-					var errorMsg = "API error: " + type + " : " + code;
+					var errorMsg = "mw.Api error: " + code;
 					mw.log( errorMsg );
 				},
 
@@ -104,7 +104,8 @@
 		 * @param {Object|Function} ajax properties, or just a success function
 		 */	
 		get: function( parameters, ajaxOptions ) {
-			ajaxOptions.type = 'get';
+			ajaxOptions = this.normalizeAjaxOptions( ajaxOptions );
+			ajaxOptions.type = 'GET';
 			this.ajax( parameters, ajaxOptions );
 		},
 
@@ -116,7 +117,8 @@
 		 * @param {Object|Function} ajax properties, or just a success function
 		 */
 		post: function( parameters, ajaxOptions ) {
-			ajaxOptions.type = 'post';
+			ajaxOptions = this.normalizeAjaxOptions( ajaxOptions );
+			ajaxOptions.type = 'POST';
 			this.ajax( parameters, ajaxOptions );
 		},
 
@@ -127,7 +129,6 @@
 		 * @param {Object} ajax properties
 		 */
 		ajax: function( parameters, ajaxOptions ) {
-			ajaxOptions = this.normalizeAjaxOptions( ajaxOptions );
 			parameters = $j.extend( {}, this.defaults.parameters, parameters );
 			ajaxOptions = $j.extend( {}, this.defaults.ajax, ajaxOptions );
 			ajaxOptions.data = parameters;
