@@ -104,7 +104,14 @@ class FormatMetadata {
 				continue;
 			}
 
-		
+			// The contact info is a multi-valued field
+			// instead of the other props which are single
+			// valued (mostly) so handle as a special case.
+			if ( $tag === 'Contact' ) {
+				$vals = self::collapseContactInfo( $vals );
+				continue;
+			}
+
 			foreach ( $vals as &$val ) {
 
 				switch( $tag ) {
@@ -616,8 +623,28 @@ class FormatMetadata {
 					break;
 					
 
+				case 'iimCategory':
+					switch( strtolower($val) ) {
+						// See pg 29 of IPTC photo
+						// metadata standard.
+						case 'ace': case 'clj':
+						case 'dis': case 'fin':
+						case 'edu': case 'evn':
+						case 'hth': case 'hum':
+						case 'lab': case 'lif':
+						case 'pol': case 'rel':
+						case 'sci': case 'soi':
+						case 'spo': case 'war':
+						case 'wea':
+							$val = self::msg(
+								'iimcategory',
+								$val
+							);
+					}
+					break;
 				// Do not transform fields with pure text.
-				// For some languages the formatNum() conversion results to wrong output like
+				// For some languages the formatNum()
+				// conversion results to wrong output like
 				// foo,bar@example,com or foo٫bar@example٫com
 				case 'ImageDescription':
 				case 'Artist':
@@ -644,10 +671,8 @@ class FormatMetadata {
 				case 'FixtureIdentifier':
 				case 'LocationDest':
 				case 'LocationDestCode':
-				case 'Contact':
 				case 'Writer':
 				case 'JPEGFileComment':
-				case 'iimCategory':
 				case 'iimSupplementalCategory':
 				case 'OriginalTransmissionRef':
 				case 'Identifier':
@@ -740,9 +765,9 @@ class FormatMetadata {
 	* @return String single value (in wiki-syntax).
 	*/
 	public static function flattenArray( $vals, $type = 'ul' ) {
-
 		if ( isset( $vals['_type'] ) ) {
 			$type = $vals['_type'];
+			unset( $vals['_type'] );
 		}
 
 		if ( !is_array( $vals ) ) {
@@ -1019,7 +1044,111 @@ class FormatMetadata {
 
 		return wfMsg( 'exif-coordinate-format', $deg, $min, $sec, $ref, $coord );
 	}
+	/**
+	 * Format the contact info field into a single value.
+	 *
+	 * @param $vals Array array with fields of the ContactInfo
+	 *    struct defined in the IPTC4XMP spec. Or potentially
+	 *    an array with one element that is a free form text
+	 *    value from the older iptc iim 1:118 prop.
+	 *
+	 * This function might be called from
+	 * JpegHandler::convertMetadataVersion which is why it is
+	 * public.
+	 *
+	 * @return String of html-ish looking wikitext
+	 */
+	public function collapseContactInfo( $vals ) {
+		if( ! ( isset( $vals['CiAdrExtadr'] )
+			|| isset( $vals['CiAdrCity'] )
+			|| isset( $vals['CiAdrCtry'] )
+			|| isset( $vals['CiEmailWork'] )
+			|| isset( $vals['CiTelWork'] )
+			|| isset( $vals['CiAdrPcode'] )
+			|| isset( $vals['CiAdrRegion'] )
+			|| isset( $vals['CiUrlWork'] )
+		) ) {
+			// We don't have any sub-properties
+			// This could happen if its using old
+			// iptc that just had this as a free-form
+			// text value.
+			// Note: We run this through htmlspecialchars
+			// partially to be consistent, and partially
+			// because people often insert >, etc into
+			// the metadata which should not be interperted
+			// but we still want to auto-link urls.
+			foreach( $vals as &$val ) {
+				$val = htmlspecialchars( $val );
+			}
+			return self::flattenArray( $vals );
+		} else {
+			// We have a real ContactInfo field.
+			// Its unclear if all these fields have to be
+			// set, so assume they do not.
+			$url = $tel = $street = $city = $country = '';
+			$email = $postal = $region = '';
 
+			// Also note, some of the class names this uses
+			// are similar to those used by hCard. This is
+			// mostly because they're sensible names. This
+			// does not (and does not attempt to) output
+			// stuff in the hCard microformat. However it
+			// might output in the adr microformat.
+
+			if ( isset( $vals['CiAdrExtadr'] ) ) {
+				// Todo: This can potentially be multi-line.
+				// Need to check how that works in XMP.
+				$street = '<span class="extended-address">'
+					. htmlspecialchars( 
+						$vals['CiAdrExtadr'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiAdrCity'] ) ) {
+				$city = '<span class="locality">'
+					. htmlspecialchars( $vals['CiAdrCity'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiAdrCtry'] ) ) {
+				$country = '<span class="country-name">'
+					. htmlspecialchars( $vals['CiAdrCtry'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiEmailWork'] ) ) {
+				$email = '[mailto:'
+					. rawurlencode(
+						$vals['CiEmailWork'] )
+					. ' <span class="email">'
+					. $vals['CiEmailWork']
+					. '</span>]';
+			}
+			if ( isset( $vals['CiTelWork'] ) ) {
+				$tel = '<span class="tel">'
+					. htmlspecialchars( $vals['CiTelWork'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiAdrPcode'] ) ) {
+				$postal = '<span class="postal-code">'
+					. htmlspecialchars( 
+						$vals['CiAdrPcode'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiAdrRegion'] ) ) {
+				// Note this is province/state.
+				$region = '<span class="region">'
+					. htmlspecialchars(
+						$vals['CiAdrRegion'] )
+					. '</span>';
+			}
+			if ( isset( $vals['CiUrlWork'] ) ) {
+				$url = '<span class="url">'
+					. htmlspecialchars( $vals['CiUrlWork'] )
+					. '</span>';
+			}
+			return wfMsg( 'exif-contact-value', $email, $url,
+				$street, $city, $region, $postal, $country,
+				$tel );
+		}
+	}
 }
 
 /** For compatability with old FormatExif class

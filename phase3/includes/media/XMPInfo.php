@@ -29,6 +29,7 @@ class XMPInfo {
 	*       * choices  - array of potential values (format of 'value' => true ). Only used with validateClosed
 	*	* rangeLow and rangeHigh - alternative to choices for numeric ranges. Again for validateClosed only.
 	*       * children - for MODE_STRUCT items, allowed children.
+	*	* structPart - Indicates that this element can only appear as a memeber of a structure.
 	*
 	* currently this just has a bunch of exif values as this class is only half-done
 	*/
@@ -73,7 +74,7 @@ class XMPInfo {
 			'FlashEnergy' => array(
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_SIMPLE,
-				'validate'  => 'validateRational'
+				'validate'  => 'validateRational',
 			),
 			'FNumber' => array(
 				'map_group' => 'exif',
@@ -161,12 +162,14 @@ class XMPInfo {
 			'Fired'             => array(
 				'map_group' => 'exif',
 				'validate'  => 'validateBoolean',
-				'mode'      => XMPReader::MODE_SIMPLE
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
 			),
 			'Function'          => array(
 				'map_group' => 'exif',
 				'validate'  => 'validateBoolean',
 				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
 			),
 			'Mode'              => array(
 				'map_group' => 'exif',
@@ -174,6 +177,7 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'choices'   => array( '0' => true, '1' => true,
 						'2' => true, '3' => true ),
+				'structPart'=> true,
 			),
 			'Return'            => array(
 				'map_group' => 'exif',
@@ -181,11 +185,13 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'choices'   => array( '0' => true,
 						'2' => true, '3' => true ),
+				'structPart'=> true,
 			),
 			'RedEyeMode'        => array(
 				'map_group' => 'exif',
 				'validate'  => 'validateBoolean',
 				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
 			),
 			/* End Flash */
 			'ISOSpeedRatings'   => array(
@@ -647,7 +653,7 @@ class XMPInfo {
 			),
 			'rights'            => array(
 				'map_group' => 'general',
-				'map_name'  => 'dc-rights',
+				'map_name'  => 'Copyright',
 				'mode'      => XMPReader::MODE_LANG,
 			),
 			// Note: source is not mapped with iptc source, since iptc
@@ -781,7 +787,163 @@ class XMPInfo {
 		'http://ns.adobe.com/xmp/note/' => array(
 			'HasExtendedXMP' => array(
 				'map_group' => 'special',
-				'mode'    => XMPReader::MODE_SIMPLE,
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+		),
+		/* Note, in iptc schemas, the legacy properties are denoted
+		 * as deprected, since other properties should used instead,
+		 * and properties marked as deprected in the standard are
+		 * are marked as general here as they don't have replacements
+		 */
+		'http://ns.adobe.com/photoshop/1.0/' => array(
+			'City' => array(
+				'map_group' => 'deprected',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'CityDest',
+			),
+			'Country' => array(
+				'map_group' => 'deprected',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'CountryDest',
+			),
+			'State' => array(
+				'map_group' => 'deprected',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'ProvinceOrStateDest',
+			),
+			'DateCreated' => array(
+				'map_group' => 'deprected',
+				// marking as deprected as the xmp prop prefered
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'DateTimeOriginal',
+				'validate'  => 'validateDate',
+				// note this prop is an XMP, not IPTC date
+			),
+			'CaptionWriter' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'Writer',
+			),
+			'Instructions' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'SpecialInstructions',
+			),
+			'TransmissionReference' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'OriginalTransmissionRef',
+			),
+			'AuthorsPosition' => array(
+				/* This corresponds with 2:85
+				 * By-line Title, which needs to be
+				 * handled weirdly to correspond
+				 * with iptc/exif. */
+				'map_group' => 'special',
+				'mode'      => XMPReader::MODE_SIMPLE
+			),
+			'Credit' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'Source' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'Urgency' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'Category' => array(
+				// Note, this prop is deprected, but in general
+				// group since it doesn't have a replacement.
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'iimCategory',
+			),
+			'SupplementalCategories' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_BAG,
+				'map_name'  => 'iimSupplementalCategory',
+			),
+		),
+		'http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/' => array(
+			'CountryCode' => array(
+				'map_group' => 'deprected',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'CountryDestCode',
+			),
+			'IntellectualGenre' => array(
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			/* Note: Scene not done. */
+			/* Note: SubjectCode (iim 2:12) not done. */
+			'Location' => array(
+				'map_group' => 'deprected',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'map_name'  => 'SublocationDest',
+			),
+			'CreatorContactInfo' => array(
+				/* Note this maps to 2:118 in iim
+				 * (Contact) field. However those field
+				 * types are slightly different - 2:118
+				 * is free form text field, where this
+				 * is more structured.
+				 */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_STRUCT,
+				'map_name'  => 'Contact',
+				'children'  => array(
+					'CiAdrExtadr' => true,
+					'CiAdrCity'   => true,
+					'CiAdrCtry'   => true,
+					'CiEmailWork' => true,
+					'CiTelWork'   => true,
+					'CiAdrPcode'  => true,
+					'CiAdrRegion' => true,
+					'CiUrlWork'   => true,
+				),
+			),
+			'CiAdrExtadr' => array( /* address */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiAdrCity' => array( /* city */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiAdrCtry' => array( /* country */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiEmailWork' => array( /* email (possibly seperated by ',') */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiTelWork' => array( /* telephone */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiAdrPcode' => array( /* postal code */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiAdrRegion' => array( /* province/state */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
+			),
+			'CiUrlWork' => array( /* url. Multiple may be seperated by comma. */
+				'map_group' => 'general',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'structPart'=> true,
 			),
 		),
 	);

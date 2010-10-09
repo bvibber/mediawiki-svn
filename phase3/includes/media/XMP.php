@@ -58,7 +58,7 @@ class XMPReader {
 	const MODE_STRUCT = 11; // structure (associative array)
 	const MODE_SEQ    = 12; // orderd list
 	const MODE_BAG    = 13; // unordered list
-	const MODE_LANG   = 14; // lang alt. TODO: implement
+	const MODE_LANG   = 14;
 	const MODE_ALT    = 15; // non-language alt. Currently not implemented, and not needed atm.
 
 	const NS_RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
@@ -123,7 +123,27 @@ class XMPReader {
 	public function getResults() {
 		// xmp-special is for metadata that affects how stuff
 		// is extracted. For example xmpNote:HasExtendedXMP.
+
+		// It is also used to handle photoshop:AuthorsPosition
+		// which is weird and really part of another property,
+		// see 2:85 in IPTC. See also pg 21 of IPTC4XMP standard.
+
 		$data = $this->results;
+
+		if ( isset( $data['xmp-special']['AuthorsPosition'] )
+			&& is_string( $data['xmp-special']['AuthorsPosition'] )
+			&& isset( $data['xmp-general']['Artist'][0] )
+		) {
+			// Note, if there is more than one creator,
+			// this only applies to first. This also will
+			// only apply to the dc:Creator prop, not the
+			// exif:Artist prop.
+
+			$data['xmp-general']['Artist'][0] = 
+				$data['xmp-special']['AuthorsPosition'] . ', '
+				. $data['xmp-general']['Artist'][0];
+		} 
+
 		unset( $data['xmp-special'] );
 
 		// Convert GPSAltitude to negative if below sea level.
@@ -603,7 +623,7 @@ class XMPReader {
 
 		} else {
 			// something else we don't recognize, like a qualifier maybe.
-			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data." );
+			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data as value of " . $this->curItem[0] );
 			array_unshift( $this->mode, self::MODE_IGNORE );
 			array_unshift( $this->curItem, $elm );
 
@@ -640,6 +660,19 @@ class XMPReader {
 		if ( $ns !== self::NS_RDF ) {
 
 			if ( isset( $this->items[$ns][$tag] ) ) {
+				if ( isset( $this->items[$ns][$tag]['structPart'] ) ) {
+					// If this element is supposed to appear only as
+					// a child of a structure, but appears here (not as
+					// a child of a struct), then something weird is
+					// happening, so ignore this element and its children.
+
+					wfDebugLog( 'XMP', "Encoutered <$ns:$tag> outside"
+						. " of its expected parent. Ignoring." );
+
+					array_unshift( $this->mode, self::MODE_IGNORE );
+					array_unshift( $this->curItem, $ns . ' ' . $tag );
+					return;
+				}
 				$mode = $this->items[$ns][$tag]['mode'];
 				array_unshift( $this->mode, $mode );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
@@ -653,6 +686,7 @@ class XMPReader {
 					throw new MWException( 'tag nested in non-whitespace characters.' );
 				}
 			} else {
+				// This element is not on our list of allowed elements so ignore.
 				array_unshift( $this->mode, self::MODE_IGNORE );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				return;

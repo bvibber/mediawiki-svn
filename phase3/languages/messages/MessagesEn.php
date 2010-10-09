@@ -3825,6 +3825,7 @@ Others will be hidden by default.
 'exif-disclaimer'                  => 'Disclaimer',
 'exif-contentwarning'              => 'Content warning',
 'exif-giffilecomment'              => 'GIF file comment',
+'exif-intellectualgenre'           => 'Type of item',
 
 
 # Make & model, can be wikified in order to link to the camera and model name
@@ -4040,6 +4041,34 @@ Others will be hidden by default.
 'exif-isospeedratings-overflow' => 'Greater than 65535',
 
 'exif-maxaperturevalue-value' => '$1 APEX (f/$2)',
+
+'exif-contact-value' => '$1
+
+$2
+<div class="adr">
+$3
+
+$4, $5, $6 $7
+</div>
+$8',
+
+'exif-iimcategory-ace' => 'Arts, culture and enterntainment',
+'exif-iimcategory-clj' => 'Crime and law',
+'exif-iimcategory-dis' => 'Disasters and accidents',
+'exif-iimcategory-fin' => 'Economy and business',
+'exif-iimcategory-edu' => 'Education',
+'exif-iimcategory-evn' => 'Environment',
+'exif-iimcategory-hth' => 'Health',
+'exif-iimcategory-hum' => 'Human interest',
+'exif-iimcategory-lab' => 'Labour',
+'exif-iimcategory-lif' => 'Lifestyle and leisure',
+'exif-iimcategory-pol' => 'Politics',
+'exif-iimcategory-rel' => 'Religion and belief',
+'exif-iimcategory-sci' => 'Science and technology',
+'exif-iimcategory-soi' => 'Social issues',
+'exif-iimcategory-spo' => 'Sports',
+'exif-iimcategory-war' => 'War, conflict and unrest',
+'exif-iimcategory-wea' => 'Weather',
 
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',

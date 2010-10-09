@@ -267,11 +267,25 @@ class IPTC {
 					}
 					break;
 
+				case '2#004':
+					// IntellectualGenere.
+					// first 4 characters are an id code
+					// That we're not really interested in.
+					if ( strlen( $val[0] < 5 ) ) {
+						wfDebugLog( 'iptc', 'IPTC: '
+							. '2:04 too short. '
+							. 'Ignoring.' );
+							break;
+					}
+					$extracted = substr( $val[0], 4 );
+					$data['IntellectualGenre'] = $extracted;
+					break;
+
 
 				// Things not currently done, and not sure if should:
 				// 2:12
 				// purposely does not do 2:125, 2:130, 2:131,
-				// 2:47, 2:50, 2:45, 2:42, 2:8, 2:4, 2:3
+				// 2:47, 2:50, 2:45, 2:42, 2:8, 2:3
 				// 2:200, 2:201, 2:202
 				// or the audio stuff (2:150 to 2:154)
 
@@ -279,6 +293,8 @@ class IPTC {
 				case '2#060':
 				case '2#063':
 				case '2#085':
+				case '2#038':
+				case '2#035':
 					//ignore. Handled elsewhere.
 					break;
 
