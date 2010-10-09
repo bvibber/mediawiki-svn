@@ -10,27 +10,27 @@
  * should fork this into two -- local and remote, e.g. filename
  */
 mw.UploadWizardUpload = function( api, filesDiv ) {
-	var _this = this;
-	_this.api = api;
-	_this.state = 'new';
-	_this.transportWeight = 1;  // default
-	_this.detailsWeight = 1; // default
-	_this._thumbnails = {};
-	_this.imageinfo = {};
-	_this.title = undefined;
-	_this.filename = undefined;
-	_this.originalFilename = undefined;
-	_this.mimetype = undefined;
-	_this.extension = undefined;
+	this.api = api;
+	this.state = 'new';
+	this.thumbnails = {};
+	this.imageinfo = {};
+	this.title = undefined;
+	this.mimetype = undefined;
+	this.extension = undefined;
 
+	this.sessionKey = undefined;
 	
+	// this should be moved to the interface, if we even keep this	
+	this.transportWeight = 1;  // default
+	this.detailsWeight = 1; // default
+
 	// details 		
-	_this.ui = new mw.UploadWizardUploadInterface( _this, filesDiv );
+	this.ui = new mw.UploadWizardUploadInterface( this, filesDiv );
 
 	// handler -- usually ApiUploadHandler
-	// _this.handler = new ( mw.UploadWizard.config[  'uploadHandlerClass'  ] )( _this );
-	// _this.handler = new mw.MockUploadHandler( _this );
-	_this.handler = new mw.ApiUploadHandler( _this, api );
+	// this.handler = new ( mw.UploadWizard.config[  'uploadHandlerClass'  ] )( this );
+	// this.handler = new mw.MockUploadHandler( this );
+	this.handler = new mw.ApiUploadHandler( this, api );
 };
 
 mw.UploadWizardUpload.prototype = {
@@ -101,7 +101,7 @@ mw.UploadWizardUpload.prototype = {
 		_this.transportProgress = 1;
 		$j( _this.ui.div ).trigger( 'transportedEvent' );
 
-		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
+		if ( result.upload && result.upload.imageinfo ) {
 			// success
 			_this.extractUploadInfo( result );	
 			_this.deedPreview.setup();
@@ -116,6 +116,7 @@ mw.UploadWizardUpload.prototype = {
 
 			// and other errors that result in a stash
 		} else {
+			// XXX handle errors better
 			if ( result.error ) {
 				alert( "error : " + result.error.code + " : " + result.error.info );
 			} 
@@ -129,18 +130,15 @@ mw.UploadWizardUpload.prototype = {
 
 
 	/**
-	 * call when the file is entered into the file input
-	 * get as much data as possible -- maybe exif, even thumbnail maybe
+	 * Called when the file is entered into the file input
+	 * Get as much data as possible -- maybe exif, even thumbnail maybe
 	 */
 	extractLocalFileInfo: function( localFilename ) {
-		var _this = this;
-		if (false) {  // FileAPI, one day
-			_this.transportWeight = getFileSize();
+		if ( false ) {  // FileAPI, one day
+			this.transportWeight = getFileSize();
 		}
-		_this.extension = mw.UploadWizardUtil.getExtension( localFilename );
-		// XXX add filename, original filename, extension, whatever else is interesting.
+		this.title = new mw.Title( mw.UploadWizardUtil.getBasename( localFilename ), 'file' );
 	},
-
 
 	/** 
  	 * Accept the result from a successful API upload transport, and fill our own info 
@@ -148,14 +146,8 @@ mw.UploadWizardUpload.prototype = {
 	 * @param result The JSON object from a successful API upload result.
 	 */
 	extractUploadInfo: function( result ) {
-		var _this = this;
-
-		_this.filename = result.upload.filename;
-		// XXX global?
-		_this.title = wgFormattedNamespaces[wgNamespaceIds['file']] + ':' + _this.filename;
-
-		_this.extractImageInfo( result.upload.imageinfo );
-
+		this.sessionKey = result.upload.sessionkey;
+		this.extractImageInfo( result.upload.imageinfo );
 	},
 
 	/**
@@ -180,9 +172,11 @@ mw.UploadWizardUpload.prototype = {
 				_this.imageinfo[key] = imageinfo[key];
 			}
 		}
-		
-		// we should already have an extension, but if we don't... 
-		if ( _this.extension === undefined ) {
+	
+		// TODO this needs to be rethought.	
+		// we should already have an extension, but if we don't...  ??
+		if ( _this.title.getExtension() === null ) {
+			/* 
 			var extension = mw.UploadWizardUtil.getExtension( _this.imageinfo.url );
 			if ( !extension ) {
 				if ( _this.imageinfo.mimetype ) {
@@ -191,6 +185,7 @@ mw.UploadWizardUpload.prototype = {
 					} 
 				}
 			}
+			*/
 		}
 	},
 
@@ -198,36 +193,43 @@ mw.UploadWizardUpload.prototype = {
 	 * Fetch a thumbnail for this upload of the desired width. 
 	 * It is assumed you don't call this until it's been transported.
  	 *
-	 * The success message from the API should have included enough information to make thumbnails already.
- 	 *
-	 * But, if we don't have the thumbnail, try to fetch it by invoking a thumbnail URL pattern.
-	 * We create the thumbnail by passing a special URL which creates the thumbnail on the fly and returns the image contents. 
-	 * If the original image URL is http://foo.com/bar/baz/xyz.jpg, and the desired width is 120 pixels, 
-	 * the thumbnail URL is http://foo.com/bar/baz/120px-xyz.jpg
- 	 * N.B. in general thumbnails have the same mime-type as the original, but NOT ALWAYS. Getting a thumbnail in this way may
-	 * cause conflicts between extension & mime-type.
-	 * 
 	 * @param width - desired width of thumbnail (height will scale to match)
 	 * @param callback - callback to execute once thumbnail has been obtained -- must accept Image object
 	 */
 	getThumbnail: function( width, callback ) {
+		var _this = this;
 		var key = "width" + width;
-		if ( mw.isDefined( this._thumbnails[key] ) && typeof this._thumbnails[key] === 'Image' ) {
-			callback( this._thumbnails[key] );
+		if ( mw.isDefined( _this.thumbnails[key] ) ) {
+			callback( _this.thumbnails[key] );
 		} else {
-			var thumbUrl = this.imageinfo.url.replace( /(.*)\/([^\/]+)$/, "$1/" + width + "px-$2" );
-			this._thumbnails[key] = new Image();
-			var _this = this;
-			this._thumbnails[key].onload = function(){ 
-				callback( _this._thumbnails[key] );
-			}
-			this._thumbnails[key].src = thumbUrl;
+			var params = {
+				'prop':	'stashimageinfo',
+				'siisessionkey': _this.sessionKey,
+				'siiurlwidth': width, 
+				'siiprop': 'url'
+			};
+
+			this.api.get( params, function( data ) {
+				if ( !data || !data.query || !data.query.stashimageinfo ) {
+					mw.log(" No data? ");
+					// XXX do something about the thumbnail spinner, maybe call the callback with a broken image.
+					return;
+				}
+				var thumbnails = data.query.stashimageinfo;
+				for ( var i = 0; i < thumbnails.length; i++ ) {
+					_this.thumbnails[key] = {
+						src: thumbnails[i].thumburl,
+						width: thumbnails[i].thumbwidth,
+						height: thumbnails[i].thumbheight
+					};
+					callback( _this.thumbnails[key] );
+				}
+			} );
 		}
 	},
 
-
 	/**
-	 *  look up thumbnail info and set it in HTML, with loading spinner
+	 * Look up thumbnail info and set it in HTML, with loading spinner
 	 * it might be interesting to make this more of a publish/subscribe thing, since we have to do this 3x
 	 * the callbacks may pile up, getting unnecessary info
 	 *
@@ -245,7 +247,7 @@ mw.UploadWizardUpload.prototype = {
 			// side effect: will replace thumbnail's loadingSpinner
 			$j( selector ).html(
 				$j('<a/>')
-					.attr( { 'href': _this.imageinfo.descriptionurl,
+					.attr( { 'href': _this.imageinfo.url,
 						 'target' : '_new' } )
 					.append(
 						$j( '<img/>' )
@@ -308,9 +310,6 @@ mw.UploadWizardUploadInterface = function( upload, filesDiv ) {
 					.bind( 'mouseleave', function(e) { _this.removeFileCtrlHover(e); } );
 */
 
-
-	// XXX this is abit horrible as here we are anticipating what thumbnails we're going to need :(
-	_this.thumbnailParam = $j('<input type="hidden" name="thumbwidth" value="120,80" />');
 
 	// the css trickery (along with css) 
 	// here creates a giant size file input control which is contained within a div and then
@@ -416,7 +415,7 @@ mw.UploadWizardUploadInterface.prototype = {
 		var _this = this;
 		_this.clearErrors();
 		_this.upload.extractLocalFileInfo( $j( _this.fileInputCtrl ).val() );
-		if ( _this.isGoodExtension( _this.upload.extension ) ) {
+		if ( _this.isGoodExtension( _this.upload.title.getExtension() ) ) {
 			_this.updateFilename();
 		} else {       
 			//_this.error( 'bad-filename-extension', ext );
@@ -480,32 +479,23 @@ mw.UploadWizardUploadInterface.prototype = {
 	 *   1 ) since the file input has been hidden with some clever CSS ( to avoid x-browser styling issues ), 
 	 *      update the visible filename
 	 *
-	 *   2 ) update the filename desired when added to MediaWiki. This should be RELATED to the filename on the filesystem,
-	 *      but it should be silently fixed so that it does not trigger uniqueness conflicts. i.e. if server has cat.jpg we change ours to cat_2.jpg.
-	 *      This is hard to do in a scalable fashion on the client; we don't want to do 12 api calls to get cat_12.jpg. 
-	 *      Ideally we should ask the SERVER for a decently unique filename related to our own. 
-	 *	So, at the moment, this is hacked with a guaranteed - unique filename instead.  
+	 *   2 ) update the underlying "title" which we are targeting to add to mediawiki. 
+	 *      TODO silently fix to have unique filename? unnecessary at this point...
 	 */
 	updateFilename: function() {
 		var _this = this;
-		var path = $j(_this.fileInputCtrl).attr('value');
+		var path = _this.fileInputCtrl.value;
 		
-	
-		// visible filename	
+		// visible filenam.
 		$j( _this.form ).find( '.mwe-upwiz-visible-file-filename-text' ).html( path );
 
-		// desired filename 
-		var filename = _this.convertPathToFilename( path );
-		_this.upload.originalFilename = filename;
-		// this is a hack to get a filename guaranteed unique.
-		uniqueFilename = mw.UploadWizard.config[  'userName'  ] + "_" + ( new Date() ).getTime() + "_" + filename;
-		$j( _this.filenameCtrl ).attr( 'value', uniqueFilename );
+		_this.upload.title = new mw.Title( mw.UploadWizardUtil.getBasename( path ), 'file' );
+		$j( _this.filenameCtrl ).val( _this.upload.title.getMain() );
 
 		if ( ! _this.isFilled ) {
 			var $div = $j( _this.div );
 			_this.isFilled = true;
 			$div.addClass( 'filled' );
-		
 				
  			// cover the div with the file input.
 			// we use the visible-file div because it has the same offsetParent as the file input
@@ -564,61 +554,12 @@ mw.UploadWizardUploadInterface.prototype = {
 	},
 
 	/**
-	 * Get the extension of the path in fileInputCtrl
-	 * @return extension as string 
-	 */
-	getExtension: function() {
-		var _this = this;
-		var path = $j(_this.fileInputCtrl).attr('value');
-		return mw.UploadWizardUtil.getExtension(path);
-	},
-
-	/**
-	 * XXX this is common utility code
-	 * used when converting contents of a file input and coming up with a suitable "filename" for mediawiki
-	 * test: what if path is length 0 
-	 * what if path is all separators
-	 * what if path ends with a separator character
-	 * what if it ends with multiple separator characters
-	 *
-	 * @param path
-	 * @return filename suitable for mediawiki as string
-	 */
-	convertPathToFilename: function( path ) {
-		if (path === undefined || path === '') {
-			return '';
-		}
-		
- 		var lastFileSeparatorIdx = Math.max(path.lastIndexOf( '/' ), path.lastIndexOf( '\\' ));
-	 	// lastFileSeparatorIdx is now -1 if no separator found, or some index in the string.
-		// so, +1, that is either 0 ( beginning of string ) or the character after last separator.
-		// caution! could go past end of string... need to be more careful
-		var filename = path.substr( lastFileSeparatorIdx + 1 );
-		return mw.UploadWizardUtil.pathToTitle( filename );
-
-
-	
- 	},
-
-	/**
-	 * XXX this is common utility code
-	 * copied because we'll probably need it... stripped from old doDestinationFill
-	 * this is used when checking for "bad" extensions in a filename. 
+	 * This is used when checking for "bad" extensions in a filename. 
 	 * @param ext
 	 * @return boolean if extension was acceptable
 	 */
 	isGoodExtension: function( ext ) {
-		var _this = this;
-		var found = false;
-		var extensions = mw.UploadWizard.config[ 'fileExtensions' ];
-		if ( extensions ) {
-			for ( var i = 0; i < extensions.length; i++ ) {
-				if ( extensions[i].toLowerCase() == ext ) {
-					found = true;
-				}
-			}
-		}
-		return found;
+		return $j.inArray( ext.toLowerCase(), mw.UploadWizard.config[ 'fileExtensions' ] ) !== -1;
 	}
 
 };	
@@ -761,12 +702,17 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 		.attr( 'title', gM( 'mwe-upwiz-tooltip-title' ) )
 		.tipsyPlus()
 		.keyup( function() { 
-			_this.setFilenameFromTitle();
+			_this.upload.title.setNameText( _this.titleInput.value );
+			// TODO update a display of filename 
 		} )
 		.growTextArea()
 		.destinationChecked( {
+			api: _this.upload.api,
 			spinner: function(bool) { _this.toggleDestinationBusy(bool); },
-			preprocess: function( name ) { return _this.getFilenameFromTitle(); }, // XXX this is no longer a pre-process
+			preprocess: function( name ) { 
+				// turn the contents of the input into a MediaWiki title ("File:foo_bar.jpg") to look up
+				return _this.upload.title.setNameText( name ).toString();
+			}, 
 			processResult: function( result ) { _this.processDestinationCheck( result ); } 
 		} );
 
@@ -957,28 +903,6 @@ mw.UploadWizardDetails.prototype = {
 	},
 
 	/**
-	 * Sets the filename from the title plus this upload's extension.
-	 */
-	setFilenameFromTitle: function() {
-		var _this = this;
-
-		_this.filename = wgFormattedNamespaces[wgNamespaceIds['file']] + ':' + _this.getFilenameFromTitle();
-		$j( '#mwe-upwiz-details-filename' ).text( _this.filename );		
-			
-	},
-
-	/**
-	 * Gets a filename from the human readable title, using upload's extension.
-	 * @return Filename
-	 */ 
-	getFilenameFromTitle: function() {
-		var _this = this;
-		var name = $j( _this.titleInput ).val();
-		return mw.UploadWizardUtil.pathToTitle( name ) + '.' + _this.upload.extension;
-	},
-
-
-	/**
 	 * show file destination field as "busy" while checking 
 	 * @param busy boolean true = show busy-ness, false = remove
 	 */
@@ -1012,7 +936,7 @@ mw.UploadWizardDetails.prototype = {
 		$j( _this.titleInput ).data( 'valid', false );
 
 		// result is NOT unique
-		var title = mw.UploadWizardUtil.fileTitleToHumanTitle( result.title );
+		var title = new mw.Title( result.title ).setNamespace( 'file' ).getNameText();
 		/* var img = result.img;
 		var href = result.href; */
 	
@@ -1179,7 +1103,6 @@ mw.UploadWizardDetails.prototype = {
 		_this.prefillSource();
 		_this.prefillAuthor(); 
 		_this.prefillTitle();
-		_this.prefillFilename();
 		_this.prefillLocation(); 
 	},
 
@@ -1231,19 +1154,7 @@ mw.UploadWizardDetails.prototype = {
 	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
 	 */
 	prefillTitle: function() {
-		var _this = this;
-		var titleExt = mw.UploadWizardUtil.titleToPath( _this.upload.originalFilename );
-		var title = titleExt.replace( /\.\w+$/, '' );
-		$j( _this.titleInput ).val( title );
-	},
-
-	/**
-	 * Set the title of the thing we just uploaded, visibly
-	 * Note: the interface's notion of "filename" versus "title" is the opposite of MediaWiki
-	 */
-	prefillFilename: function() {
-		var _this = this;
-		_this.setFilenameFromTitle();
+		$j( this.titleInput ).val( this.upload.title.getNameText() );
 	},
 
 	/**
@@ -1345,19 +1256,9 @@ mw.UploadWizardDetails.prototype = {
 				$j( _this.licenseInput ).val( copyright );
 			}
 		}
-		// if we still haven't set a copyright use the user's preferences
+		// if we still haven't set a copyright use the user's preferences?
 	},
 
-
-	/**
-	 * 
-	showErrors: function() {
-		var _this = this;
-		$j.each( _this.errors, function() {
-
-		} );
-	},
-	 */
 	
 	/**
 	 * Convert entire details for this file into wikiText, which will then be posted to the file 
@@ -1438,18 +1339,6 @@ mw.UploadWizardDetails.prototype = {
 	},
 
 	/**
-	 * Check if we are ready to post wikitext
-	deedValid: function() {
-		var _this = this;
-		return _this.upload.deedChooser.deed.valid();
-
-		// somehow, all the various issues discovered with this upload should be present in a single place
-		// where we can then check on
-		// perhaps as simple as _this.issues or _this.agenda
-	},
-	 */
-
-	/**
 	 * Post wikitext as edited here, to the file
 	 * XXX This should be split up -- one part should get wikitext from the interface here, and the ajax call
 	 * should be be part of upload
@@ -1457,29 +1346,16 @@ mw.UploadWizardDetails.prototype = {
 	submit: function( endCallback ) {
 		var _this = this;
 
-
-		// are we okay to submit?
-		// all necessary fields are ready
-		// check descriptions
-		// the filename is in a sane state
-		var desiredFilename = _this.filename;
-		shouldRename = ( desiredFilename != _this.upload.title );
-
 		// XXX check state of details for okayness ( license selected, at least one desc, sane filename )
 		var wikiText = _this.getWikiText();
 		mw.log( wikiText );
-	
+
 		var params = {
-			action: 'edit',
-			// XXX this is problematic, if the upload wizard is idle for a long time the token expires.
-			// should obtain token just before uploading
-			title: _this.upload.title,
-			// section: 0, ?? causing issues?
+			action: 'upload',
+			sessionkey: _this.upload.sessionKey,
+			filename: _this.upload.title.getMain(),
 			text: wikiText,
-			summary: "User edited page with " + mw.UploadWizard.userAgent,
-			// notminor: 1,
-			// basetimestamp: _this.upload.imageinfo.timestamp,  ( conflicts? )
-			nocreate: 1
+			summary: "User created page with " + mw.UploadWizard.userAgent
 		};
 
 		var finalCallback = function() { 
@@ -1487,74 +1363,32 @@ mw.UploadWizardDetails.prototype = {
 			_this.completeDetailsSubmission(); 
 		};	
 
-		mw.log( "editing!" );
+		mw.log( "uploading!" );
 		mw.log( params );
 		var callback = function( result ) {
 			mw.log( result );
-			mw.log( "successful edit" );
-			if ( shouldRename ) {
-				_this.rename( desiredFilename, finalCallback );	
-			} else {
-				finalCallback();
-			}
+			mw.log( "successful upload" );
+			finalCallback();
 		};
 
 		_this.upload.state = 'submitting-details';
-		_this.api.post( params, callback );
+		// XXX this can still fail with bad filename, or other 'warnings' -- capture these
+		_this.upload.api.postWithEditToken( params, callback );
 	},
 
-	/**
-	 * Rename the file
-         *
-	 *  THIS MAY NOT WORK ON ALL WIKIS. for instance, on Commons, it may be that only admins can move pages. This is another example of how
-	 *  we need an "incomplete" upload status
-	 *  we are presuming this File page is brand new, so let's not bother with the whole redirection deal. ('noredirect')
-	 *
-	 * use _this.ignoreWarningsInput (if it exists) to check if we can blithely move the file or if we have a problem if there
-	 * is a file by that name already there
-	 *
-	 * @param filename to rename this file to
- 	 */
-	rename: function( title, endCallback ) {
-		var _this = this;
-		mw.log("renaming!");
-		params = {
-			action: 'move',
-			from: _this.upload.title,
-			to: title,
-			reason: "User edited page with " + mw.UploadWizard.userAgent,
-			movetalk: '',
-			noredirect: '', // presume it's too new 
-		};
-		mw.log(params);
-		_this.api.post( params, function( data ) {
-			// handle errors later
-			// possible error data: { code = 'missingtitle' } -- orig filename not there
-			// and many more
-	
-			// which should match our request.
-			// we should update the current upload filename
-			// then call the uploadwizard with our progress
-
-			// success is
-			//  move =  from : ..., reason : ..., redirectcreated : ..., to : .... 
-			if (data !== undefined && data.move !== undefined && data.move.to !== undefined) {
-				_this.upload.title = data.move.to;
-				_this.refreshImageInfo( _this.upload, _this.upload.title, endCallback );
-			}
-		} );
-	},
 
 	/** 
-	 * Get new image info, for instance, after we renamed an image
+	 * Get new image info, for instance, after we renamed... or? published? an image
+	 * XXX deprecated?
+	 * XXX move to mw.API
 	 *
 	 * @param upload an UploadWizardUpload object
 	 * @param title  title to look up remotely
 	 * @param endCallback  execute upon completion
 	 */
-	refreshImageInfo: function( upload, title, endCallback ) {
+	getImageInfo: function( upload, callback ) {
 		var params = {
-                        'titles': title,
+                        'titles': upload.title.toString(),
                         'prop':  'imageinfo',
                         'iiprop': 'timestamp|url|user|size|sha1|mime|metadata'
                 };
@@ -1573,7 +1407,7 @@ mw.UploadWizardDetails.prototype = {
 					}
 				}	
 			}
-			endCallback();
+			callback();
 		} );
 	},
 
@@ -1820,6 +1654,7 @@ mw.UploadWizard.prototype = {
 							upload.details.div.css( 'border-bottom', '1px solid #e0e0e0' );
 						}
 
+						// only necessary if (somehow) they have beaten the check-as-you-type
 						upload.details.titleInput.checkUnique();
 					} );
 

@@ -101,6 +101,7 @@ class SpecialUploadWizard extends SpecialPage {
 			"resources/mw.GroupProgressBar.js", 
 
 			// upload concepts
+			"resources/mw.Title.js",
 			"resources/mw.UploadWizardDeed.js",
 			"resources/mw.UploadWizardLicenseInput.js",
 			"resources/mw.UploadWizardUtil.js",

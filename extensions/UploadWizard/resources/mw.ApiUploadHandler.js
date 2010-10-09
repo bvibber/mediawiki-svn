@@ -55,21 +55,23 @@ mw.ApiUploadHandler.prototype = {
 			// from the outset?
 		}
 
-		// XXX TODO - different action, like upload-stash-only or something
 		_this.addFormInputIfMissing( 'action', 'upload' );
+
+		// force stash
+		_this.addFormInputIfMissing( 'stash', 1 );
 
 		// XXX TODO - remove; if we are uploading to stash only, a comment should not be required - yet.
 		_this.addFormInputIfMissing( 'comment', 'DUMMY TEXT' );
-
-		_this.addFormInputIfMissing( 'stash', 1 );
-
+		
 		// we use JSON in HTML because according to mdale, some browsers cannot handle just JSON
 		_this.addFormInputIfMissing( 'format', 'jsonfm' );
 		
 		// XXX only for testing, so it stops complaining about dupes
+		/*
 		if ( mw.UploadWizard.DEBUG ) {
 			_this.addFormInputIfMissing( 'ignorewarnings', '1' );
 		}
+		*/
 	},
 
 	/** 
@@ -96,7 +98,7 @@ mw.ApiUploadHandler.prototype = {
 	addFormInputIfMissing: function( name, value ) {
 		if ( this.$form.find( "[name='" + name + "']" ).length === 0 ) {
 			this.$form.append( $j( '<input />' ) .attr( { 'type': "hidden", 'name': name, 'value': value } ));
-		}
+		}		
 	},
 
 	/**

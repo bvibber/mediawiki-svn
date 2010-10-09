@@ -43,7 +43,7 @@ mw.UploadWizardUtil = {
 
 	/**
 	 * remove an item from an array. Tests for === identity to remove the item
-	 *  XXX the entire rationale for this file may be wrong. 
+	 *  XXX the entire rationale for this function may be wrong. 
 	 *  XXX The jQuery way would be to query the DOM for objects, not to keep a separate array hanging around
 	 * @param items  the array where we want to remove an item
 	 * @param item	 the item to remove
@@ -57,11 +57,12 @@ mw.UploadWizardUtil = {
 		}
 	},
 
+/*
 	/** 
 	 * Capitalise first letter and replace spaces by underscores
 	 * @param filename (basename, without directories)
 	 * @return typical title as would appear on MediaWiki
-	 */
+	 /
 	pathToTitle: function ( filename ) {
 		return mw.ucfirst( $j.trim( filename ).replace(/ /g, '_' ) );
 	},
@@ -70,7 +71,7 @@ mw.UploadWizardUtil = {
 	 * Capitalise first letter and replace underscores by spaces
 	 * @param title typical title as would appear on MediaWiki
 	 * @return plausible local filename
-	 */
+	 /
 	titleToPath: function ( title ) {
 		return mw.ucfirst( $j.trim( title ).replace(/_/g, ' ' ) );
 	},
@@ -80,7 +81,7 @@ mw.UploadWizardUtil = {
 	 * Transform "File:title_with_spaces.jpg" into "title with spaces"
 	 * @param   typical title that would appear on mediawiki, with File: and extension, may include underscores
 	 * @return  human readable title
-	 */
+	 /
 	fileTitleToHumanTitle: function( title ) {
 		var extension = mw.UploadWizardUtil.getExtension( title );
 		if ( typeof extension !== 'undefined' ) {
@@ -95,21 +96,25 @@ mw.UploadWizardUtil = {
 		return mw.UploadWizardUtil.titleToPath( title );
 	},
 
-
-	/** 
- 	 * Slice extension off a path
-	 * We assume that extensions are 1-4 characters in length
-	 * @param path to file, like "foo/bar/baz.jpg"
-	 * @return extension, like ".jpg" or undefined if it doesn't look lke an extension.
+*/
+	/**
+	 * Get the basename of a path.
+	 * For error conditions, returns the empty string.
+	 *
+	 * @param {String} path
+	 * @return {String} basename
 	 */
-	getExtension: function( path ) {
-		var extension = undefined;
-		var idx = path.lastIndexOf( '.' );
-		if (idx > 0 && ( idx > ( path.length - 5 ) ) && ( idx < ( path.length - 1 ) )  ) {
-			extension = path.substr( idx + 1 ).toLowerCase();
+	getBasename: function( path ) {
+		if ( !mw.isDefined( path ) || path === null ) {
+			return '';
 		}
-		return extension;
-	},
+		
+	 	// find index of last path separator in the path, add 1. (If no separator found, yields 0)
+		// then take the entire string after that.
+		return path.substr( Math.max( path.lastIndexOf( '/' ), path.lastIndexOf( '\\' ) ) + 1 );
+ 	},
+
+
 
 	/**
 	 * Last resort to guess a proper extension
