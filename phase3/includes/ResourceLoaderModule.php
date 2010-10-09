@@ -280,43 +280,48 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * 		'group' => 'stuff',
 	 * 	)
 	 */
-	public function __construct( $options = array() ) {
+	public function __construct( $options = array(), $basePath = null ) {
 		foreach ( $options as $option => $value ) {
 			switch ( $option ) {
 				case 'scripts':
-					$this->scripts = (array)$value;
+				case 'debugScripts':
+				case 'languageScripts':
+				case 'skinScripts':
+				case 'loaders':
+					$this->{$option} = (array)$value;
+					// Automatically prefix script paths
+					if ( is_string( $basePath ) ) {
+						foreach ( $this->{$option} as $key => $value ) {
+							$this->{$option}[$key] = $basePath . $value;
+						}
+					}
 					break;
 				case 'styles':
-					$this->styles = (array)$value;
+				case 'skinStyles':
+					$this->{$option} = (array)$value;
+					// Automatically prefix style paths
+					if ( is_string( $basePath ) ) {
+						foreach ( $this->{$option} as $key => $value ) {
+							if ( is_array( $value ) ) {
+								$this->{$option}[$basePath . $key] = $value;
+								unset( $this->{$option}[$key] );
+							} else {
+								$this->{$option}[$key] = $basePath . $value;
+							}
+						}
+					}
 					break;
+				case 'dependencies':
 				case 'messages':
-					$this->messages = (array)$value;
+					$this->{$option} = (array)$value;
 					break;
 				case 'group':
 					$this->group = (string)$value;
 					break;
-				case 'dependencies':
-					$this->dependencies = (array)$value;
-					break;
-				case 'debugScripts':
-					$this->debugScripts = (array)$value;
-					break;
-				case 'languageScripts':
-					$this->languageScripts = (array)$value;
-					break;
-				case 'skinScripts':
-					$this->skinScripts = (array)$value;
-					break;
-				case 'skinStyles':
-					$this->skinStyles = (array)$value;
-					break;
-				case 'loaders':
-					$this->loaders = (array)$value;
-					break;
 			}
 		}
 	}
-
+	
 	/**
 	 * Add script files to this module. In order to be valid, a module
 	 * must contain at least one script file.
@@ -488,12 +493,6 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 					'md_deps' => $encFiles,
 				)
 			);
-			
-			// Save into memcached
-			global $wgMemc;
-			
-			$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $context->getSkin() );
-			$wgMemc->set( $key, $encFiles );
 		}
 		
 		return $styles;
@@ -728,12 +727,12 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return string Remapped CSS
 	 */
 	protected static function remapStyle( $file ) {
-		global $wgUseDataURLs, $wgScriptPath;
+		global $wgScriptPath;
 		return CSSMin::remap(
 			file_get_contents( self::remapFilename( $file ) ),
 			dirname( $file ),
 			$wgScriptPath . '/' . dirname( $file ),
-			$wgUseDataURLs
+			true
 		);
 	}
 }
@@ -1059,6 +1058,7 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 	 * @return String: JavaScript code for registering all modules with the client loader
 	 */
 	public static function getModuleRegistrations( ResourceLoaderContext $context ) {
+		global $wgCacheEpoch;
 		wfProfileIn( __METHOD__ );
 		
 		$out = '';
@@ -1073,22 +1073,23 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 			}
 			// Automatically register module
 			else {
+				$mtime = max( $module->getModifiedTime( $context ), wfTimestamp( TS_UNIX, $wgCacheEpoch ) );
 				// Modules without dependencies or a group pass two arguments (name, timestamp) to 
 				// mediaWiki.loader.register()
 				if ( !count( $module->getDependencies() && $module->getGroup() === null ) ) {
-					$registrations[] = array( $name, $module->getModifiedTime( $context ) );
+					$registrations[] = array( $name, $mtime );
 				}
 				// Modules with dependencies but no group pass three arguments (name, timestamp, dependencies) 
 				// to mediaWiki.loader.register()
 				else if ( $module->getGroup() === null ) {
 					$registrations[] = array(
-						$name, $module->getModifiedTime( $context ),  $module->getDependencies() );
+						$name, $mtime,  $module->getDependencies() );
 				}
 				// Modules with dependencies pass four arguments (name, timestamp, dependencies, group) 
 				// to mediaWiki.loader.register()
 				else {
 					$registrations[] = array(
-						$name, $module->getModifiedTime( $context ),  $module->getDependencies(), $module->getGroup() );
+						$name, $mtime,  $module->getDependencies(), $module->getGroup() );
 				}
 			}
 		}
@@ -1134,7 +1135,7 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 	}
 
 	public function getModifiedTime( ResourceLoaderContext $context ) {
-		global $IP;
+		global $IP, $wgCacheEpoch;
 
 		$hash = $context->getHash();
 		if ( isset( $this->modifiedTime[$hash] ) ) {
@@ -1144,7 +1145,7 @@ class ResourceLoaderStartUpModule extends ResourceLoaderModule {
 
 		// ATTENTION!: Because of the line above, this is not going to cause infinite recursion - think carefully
 		// before making changes to this code!
-		$time = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
+		$time = wfTimestamp( TS_UNIX, $wgCacheEpoch );
 		foreach ( $context->getResourceLoader()->getModules() as $module ) {
 			$time = max( $time, $module->getModifiedTime( $context ) );
 		}

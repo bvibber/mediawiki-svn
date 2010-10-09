@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit bootstrap="./bootstrap.php"
-		 colors="false"
+         colors="false"
          backupGlobals="false"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -19,6 +19,9 @@
 		</testsuite>
 		<testsuite name="uploadfromurl">
 			<file>./suites/UploadFromUrlTestSuite.php</file>
+		</testsuite>
+		<testsuite name="extensions">
+			<file>./suites/ExtensionsTestSuite.php</file>
 		</testsuite>
 	</testsuites>
 	<groups>
