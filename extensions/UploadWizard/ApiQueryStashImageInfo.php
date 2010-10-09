@@ -1,0 +1,146 @@
+<?php
+/**
+ * API for MediaWiki 1.16+
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ */
+
+/**
+ * A query action to get image information from temporarily stashed files.
+ *
+ * @ingroup API
+ */
+class ApiQueryStashImageInfo extends ApiQueryImageInfo {
+
+	public function __construct( $query, $moduleName ) {
+		parent::__construct( $query, $moduleName, 'sii' );
+	}
+
+	public function execute() {
+		$params = $this->extractRequestParams();
+		$modulePrefix = $this->getModulePrefix;
+		if ( is_null( $params['sessionkey'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'sessionkey' ) );
+		}
+
+		$prop = array_flip( $params['prop'] );
+
+		$scale = $this->getScale( $params );
+		
+		$result = $this->getResult();
+		
+		try {
+			$stash = new SessionStash();
+		
+			foreach ( $params['sessionkey'] as $sessionkey ) {	
+				$file = $stash->getFile( $sessionkey );
+				$imageInfo = self::getInfo( $file, $prop, $result, $scale );
+				$result->setIndexedTagName( $imageInfo, $modulePrefix );
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $imageInfo );
+				/* TODO overflow of continue */
+				if ( !$fit ) {
+					$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->fa_name ) );
+					break;
+				}
+			}
+
+		} catch ( SessionStashNotAvailableException $e ) {
+			$this->dieUsage( "Session not available", "nosession" );
+		} catch ( SessionStashFileNotFoundException $e ) {
+			$this->dieUsage( "File not found", "nosuchpageid" );
+		} catch ( SessionStashBadPathException $e ) {
+			$this->dieUsage( "Bad path", "nosuchpageid" );
+		}	
+
+	}
+
+
+	public function getAllowedParams() {
+		return array(
+			'sessionkey' => array( 
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_REQUIRED => true,
+				ApiBase::PARAM_DFLT => null
+			),
+			'prop' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => 'timestamp|user',
+				ApiBase::PARAM_TYPE => self::getPropertyNames()
+			),
+			'urlwidth' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_DFLT => -1
+			),
+			'urlheight' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_DFLT => -1
+			),
+			'continue' => null,
+		);
+	}
+
+	public function getParamDescription() {
+		$p = $this->getModulePrefix();
+		return array(
+			/* XXX figure out some way to get these from imageInfo */
+			'prop' => array(
+				'What image information to get:',
+				' timestamp    - Adds timestamp for the uploaded version',
+				' user         - Adds the user who uploaded the image version',
+				' userid       - Add the user id that uploaded the image version',
+				' comment      - Comment on the version',
+				' url          - Gives URL to the image and the description page',
+				' size         - Adds the size of the image in bytes and the height and width',
+				' dimensions   - Alias for size',
+				' sha1         - Adds sha1 hash for the image',
+				' mime         - Adds MIME of the image',
+				' thumbmime    - Adss MIME of the image thumbnail (requires url)',
+				' metadata     - Lists EXIF metadata for the version of the image',
+				' archivename  - Adds the file name of the archive version for non-latest versions',
+				' bitdepth     - Adds the bit depth of the version',
+			),
+			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
+					    'Only the current version of the image can be scaled' ),
+			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
+			'continue' => 'When more results are available, use this to continue',
+		);
+	}
+
+	public function getDescription() {
+		return 'Returns image information for stashed images';
+	}
+
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'siiurlwidth', 'info' => 'siiurlheight cannot be used without iiurlwidth' ),
+		) );
+	}
+
+	protected function getExamples() {
+		return array(
+			'api.php?action=query&prop=stashimageinfo&siisessionkey=124sd34rsdf567',
+			'api.php?action=query&prop=stashimageinfo&siisessionkey=b34edoe3|bceffd4&siiurlwidth=120&siiprop=url',
+		);
+	}
+
+	public function getVersion() {
+		return __CLASS__ . ': $Id: ApiQueryStashImageInfo.php 74019 2010-09-30 13:28:49Z neilk $';
+	}
+
+}
+
