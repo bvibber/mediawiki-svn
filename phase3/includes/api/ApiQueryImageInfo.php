@@ -36,8 +36,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiQueryImageInfo extends ApiQueryBase {
 
-	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'ii' );
+	public function __construct( $query, $moduleName, $prefix = 'ii' ) {
+		parent::__construct( $query, $moduleName, $prefix );
 	}
 
 	public function execute() {
@@ -45,17 +45,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 
 		$prop = array_flip( $params['prop'] );
 
-		if ( $params['urlheight'] != - 1 && $params['urlwidth'] == - 1 ) {
-			$this->dieUsage( 'iiurlheight cannot be used without iiurlwidth', 'iiurlwidth' );
-		}
-
-		if ( $params['urlwidth'] != - 1 ) {
-			$scale = array();
-			$scale['width'] = $params['urlwidth'];
-			$scale['height'] = $params['urlheight'];
-		} else {
-			$scale = null;
-		}
+		$scale = $this->getScale( $params );
 
 		$pageIds = $this->getPageSet()->getAllTitlesByNamespace();
 		if ( !empty( $pageIds[NS_FILE] ) ) {
@@ -182,6 +172,27 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			}
 		}
 	}
+
+	/**
+	 * From parameters, construct a 'scale' array 
+	 * @param {Array} $params 
+	 * @return {null|Array} key-val array of 'width' and 'height', or null
+	 */	
+	public function getScale( $params ) {
+		if ( $params['urlheight'] != - 1 && $params['urlwidth'] == - 1 ) {
+			$this->dieUsage( 'iiurlheight cannot be used without iiurlwidth', 'iiurlwidth' );
+		}
+
+		if ( $params['urlwidth'] != - 1 ) {
+			$scale = array();
+			$scale['width'] = $params['urlwidth'];
+			$scale['height'] = $params['urlheight'];
+		} else {
+			$scale = null;
+		}
+		return $scale;
+	}
+
 
 	/**
 	 * Get result information for an image revision
@@ -349,7 +360,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		);
 	}
 
-	public function getParamDescription() {
+	public function getBaseParamDescription() { 
 		$p = $this->getModulePrefix();
 		return array(
 			'prop' => array(
@@ -367,15 +378,20 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				' metadata     - Lists EXIF metadata for the version of the image',
 				' archivename  - Adds the file name of the archive version for non-latest versions',
 				' bitdepth     - Adds the bit depth of the version',
-            ),
-			'limit' => 'How many image revisions to return',
-			'start' => 'Timestamp to start listing from',
-			'end' => 'Timestamp to stop listing at',
+			),
 			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 					    'Only the current version of the image can be scaled' ),
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
 			'continue' => 'When more results are available, use this to continue',
 		);
+
+	}
+
+	public function getParamDescription() {
+		$description = $this->getBaseParamDescription();
+		$description['limit'] = 'How many image revisions to return';
+		$description['start'] = 'Timestamp to start listing from';
+		$description['end'] = 'Timestamp to stop listing at';
 	}
 
 	public function getDescription() {

@@ -84,34 +84,73 @@ class ApiUpload extends ApiBase {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
-		// Check warnings if necessary
+		// Check for warnings, api-formatted.
 		$warnings = $this->getApiWarnings();
 
-		if ( $warnings ) {
-			$sessionKey = $this->mUpload->stashSession();
-			if ( !$sessionKey ) {
-				// FIXME: This should not be fatal: the user should be able to see the warnings --RK
-				$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
-			}
+		// Prepare the API result
+		$result = array();
 
-			$result['sessionkey'] = $sessionKey;
-
-			// is it really necessary to say 'result=warning'
-			// FIXME: $warnings is already of the form array( 'result' => 'Warning', 'warnings' => ... ) --RK
+		if ( $warnings ) { 
 			$result['result'] = 'Warning';
-			$result['warnings'] = $warnings;
-			// FIXME: This double-adds $result , added again just below the else block --RK
-			$this->getResult()->addValue( null, $this->getModuleName(), $result );
-
+			// in case the warnings can be fixed with some further user action, let's stash this upload
+			// and return a key they can use to restart it
+			try { 
+				$result['sessionkey'] = $this->performStash();
+			} catch ( MWException $e ) { 
+				$warnings['stashfailed'] = $e->getMessage();
+			}
 		} else {
-			// Perform the upload
-			$result = $this->performUpload();
+			if ( $this->isForStash() ) {
+				// Some uploads can request they be stashed, so as not to publish them immediately.
+				// In this case, a failure to stash ought to be fatal
+				try {
+					$result['result'] = 'Success'; 
+					$result['sessionkey'] = $this->performStash();
+				} catch ( MWException $e ) { 
+					$this->dieUsage( $e->getMessage(), 'stashfailed' );
+				}
+			} else {
+				// This is the most common case -- a normal upload with no warnings
+				// $result will be formatted properly for the API already, with a status
+				$result = $this->performUpload();
+			}
+		}
+
+		if ( $warnings ) {
+			$result['warnings'] = $warnings;
+		}
+
+		if ( $result['result'] === 'Success' ) { 
+			$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 		
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
+	}
+
+	/**
+	 * Determines if the API caller has requested this file be stashed. 
+	 * @return boolean
+	 */
+	function isForStash() { 
+		return isset( $this->mParams['stash'] ) and $this->mParams['stash'];
+	}
+
+	/**
+	 * Stash the file and return the session key
+	 * Also re-raises exceptions with slightly more informative message strings (useful for API)
+	 * @throws MWException
+	 * @return {String} session key
+	 */
+	function performStash() {
+		try {
+			$sessionKey = $this->mUpload->stashSessionFile()->getSessionKey();
+		} catch ( MWException $e ) {
+			throw new MWException( 'Stashing temporary file failed: ' . get_class($e) . ' ' . $e->getMessage() );
+		}
+		return $sessionKey;
 	}
 
 
@@ -166,11 +205,7 @@ class ApiUpload extends ApiBase {
 
 
 		} elseif ( isset( $this->mParams['file'] ) ) {
-			if ( $this->mParams['stash'] ) {
-				$this->mUpload = new UploadFromFileToStash();
-			} else {
-				$this->mUpload = new UploadFromFile();
-			}
+			$this->mUpload = new UploadFromFile();
 			$this->mUpload->initialize(
 				$this->mParams['filename'],
 				$request->getUpload( 'file' )
@@ -290,10 +325,9 @@ class ApiUpload extends ApiBase {
 				// Add indices
 				$this->getResult()->setIndexedTagName( $warnings, 'warning' );
 
-				// FIXME: This duplicates logic from transformWarnings(), then *calls* transformWarnings() --RK
 				if ( isset( $warnings['duplicate'] ) ) {
 					$dupes = array();
-					foreach ( $warnings['duplicate'] as $key => $dupe ) {
+					foreach ( $warnings['duplicate'] as $dupe ) {
 						$dupes[] = $dupe->getName();
 					}
 					$this->getResult()->setIndexedTagName( $dupes, 'duplicate' );
@@ -305,49 +339,12 @@ class ApiUpload extends ApiBase {
 					unset( $warnings['exists'] );
 					$warnings[$warning['warning']] = $warning['file']->getName();
 				}
-
-				$result['result'] = 'Warning';
-				$result['warnings'] = $this->transformWarnings( $warnings );
-
-				$sessionKey = $this->mUpload->stashSession();
-				if ( !$sessionKey ) {
-					$this->dieUsage( 'Stashing temporary file failed', 'stashfailed' );
-				}
-
-				$result['sessionkey'] = $sessionKey;
-
-				return $result;
 			}
 		}
 
 		return $warnings;
 	}
-	
-	/**
-	 * Transforms a warnings array returned by mUpload->checkWarnings() into
-	 * something that can be directly used as API result
-	 */
-	protected function transformWarnings( $warnings ) {
-		// Add indices
-		$this->getResult()->setIndexedTagName( $warnings, 'warning' );
 
-		if ( isset( $warnings['duplicate'] ) ) {
-			$dupes = array();
-			foreach ( $warnings['duplicate'] as $dupe ) {
-				$dupes[] = $dupe->getName();
-			}
-			$this->getResult()->setIndexedTagName( $dupes, 'duplicate' );
-			$warnings['duplicate'] = $dupes;
-		}
-
-		if ( isset( $warnings['exists'] ) ) {
-			$warning = $warnings['exists'];
-			unset( $warnings['exists'] );
-			$warnings[$warning['warning']] = $warning['file']->getName();
-		}
-		
-		return $warnings;	
-	}
 
 	/**
 	 * Perform the actual upload. Returns a suitable result array on success;
@@ -395,44 +392,6 @@ class ApiUpload extends ApiBase {
 		$result['result'] = 'Success';
 		$result['filename'] = $file->getName();
 
-		$result['imageinfo'] = $this->mUpload->getImageInfo( $this->getResult() );
-
-		// XXX get default thumbnail width. 
-		// perhaps when initializing... Isn't this a global? Can't find it anywhere in docs.
-		// XXX It's a user preference, see $wgThumbLimits and the thumbsize user preference.
-		// The pref is only observed by Linker.php AFAICT and a few other places hardcode 120x120px --RK
-		$defaultThumbWidth = 120;
-		if ( isset( $this->mParams['thumbwidth'] ) ) {
-			$thumbnails = array();
-			if ( $this->mParams['thumbwidth'] ) {
-				$widths = explode( ',', $this->mParams['thumbwidth'] );
-			} else {
-				$widths = array( $defaultThumbWidth ); // magic number grrrrr....
-			}
-
-			foreach ( $widths as $width ) {
-				$thumbnailKey = $width . "px";
-				if ( $thumbnails[$thumbnailKey] ) {
-					continue;
-				}
-				$width = max( 1, min( $file->getWidth(), $width ) );
-			
-				// because the file is a SessionStashFile, this thumbnail will also be stashed,
-				// and a thumbnailFile will be created
-				if ( ! $thumbnailImage = $file->getThumbnail( $width ) ) { 
-					$this->dieUsageMsg( 'Could not obtain thumbnail', 'nothumb' );
-				}
-				
-				// now also return metadata about thumbnails, with all possible properties
-				$thumbnailFile = $thumbnailImage->thumbnailFile;
-				$allPropertyNames = array_flip( ApiQueryImageInfo::getPropertyNames() );
-				$thumbnails[$thumbnailKey] = ApiQueryImageInfo::getInfo( $thumbnailFile, $allPropertyNames, $result );
-			
-			}
-			$result['thumbnails'] = $thumbnails;
-		}
-
-
 
 		return $result;
 	}
@@ -472,7 +431,6 @@ class ApiUpload extends ApiBase {
 			'url' => null,
 			'sessionkey' => null,
 			'stash' => false,
-			'thumbwidth' => null,
 		);
 
 		global $wgAllowAsyncCopyUploads;
@@ -499,7 +457,6 @@ class ApiUpload extends ApiBase {
 			'url' => 'Url to fetch the file from',
 			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',
 			'stash' => 'If set, the server will not add the file to the repository and stash it temporarily.'
-			'thumbwidth' => 'thumbwidths'
 		);
 
 		global $wgAllowAsyncCopyUploads;

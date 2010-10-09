@@ -38,12 +38,12 @@ class SessionStash {
 
 		// sanity check repo. If we want to mock the repo later this should be modified.
 		if ( ! is_dir( $repo->getZonePath( 'temp' ) ) ) {
-			throw new MWException( 'invalid repo or cannot read repo temp dir' );
+			throw new SessionStashNotAvailableException();
 		}
 		$this->repo = $repo;
 
 		if ( ! isset( $_SESSION ) ) {
-			throw new MWException( 'session not available' );
+			throw new SessionStashNotAvailableException();
 		}
 
 		if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME] ) ) {
@@ -66,7 +66,7 @@ class SessionStash {
 	 * May throw exception if session data cannot be parsed due to schema change, or key not found.
 	 * @param {Integer} $key: key
 	 * @throws SessionStashFileNotFoundException
-	 * @throws MWException
+	 * @throws SessionStashBadVersionException
 	 * @return {SessionStashItem} null if no such item or item out of date, or the item
 	 */
 	public function getFile( $key ) { 
@@ -78,7 +78,7 @@ class SessionStash {
 			$data = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
 			// guards against PHP class changing while session data doesn't
 			if ($data['version'] !== UploadBase::SESSION_VERSION ) {
-				throw new MWException( 'outdated session version' );
+				throw new SessionStashBadVersionException();
 			}
 		
 			// separate the stashData into the path, and then the rest of the data
@@ -137,6 +137,7 @@ class SessionStash {
 		
 		return $this->getFile( $key );
 	}
+
 }
 
 class SessionStashFile extends UnregisteredLocalFile {
@@ -160,7 +161,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		$this->sessionStash = $stash;
 		$this->sessionKey = $key;
 		$this->sessionData = $data;
-		
+	
 		// resolve mwrepo:// urls
 		if ( $repo->isVirtualUrl( $path ) ) {
 			$path = $repo->resolveVirtualUrl( $path );	
@@ -223,7 +224,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		if ( is_null( $extension ) ) {
-			throw new MWException( 'cannot determine extension' );
+			throw new SessionStashFileException();
 		}
 
 		$this->extension = parent::normalizeExtension( $extension );
@@ -317,6 +318,14 @@ class SessionStashFile extends UnregisteredLocalFile {
 
 
 	/**
+	 * Getter for session key (the session-unique id by which this file's location & metadata is stored in the session)
+	 * @return {String} session key
+	 */
+	public function getSessionKey() {
+		return $this->sessionKey;
+	}
+
+	/**
 	 * Typically, transform() returns a ThumbnailImage, which you can think of as being the exact
 	 * equivalent of an HTML thumbnail on Wikipedia. So its URL is the full-size file, not the thumbnail's URL.
 	 *
@@ -351,8 +360,19 @@ class SessionStashFile extends UnregisteredLocalFile {
 
 	}
 
+	/**
+	 * Remove the associated temporary file
+	 * @return {Status} success
+	 */
+	public function remove() {
+		return $this->repo->freeTemp( $this->path );
+	}
+
 }
 
+class SessionStashNotAvailableException extends MWException {};
 class SessionStashFileNotFoundException extends MWException {};
 class SessionStashBadPathException extends MWException {};
+class SessionStashBadVersionException extends MWException {};
+class SessionStashFileException extends MWException {};
 
