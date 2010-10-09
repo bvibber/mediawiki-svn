@@ -37,9 +37,10 @@ $wgExtensionCredits['other'][] = array(
 );
 
 # special page
-$wgAutoloadClasses['ProofreadPages'] = $dir . 'SpecialProofreadPages.php';
-$wgSpecialPages['IndexPages'] = 'ProofreadPages';
+$wgAutoloadClasses['IndexPagesPage'] = $dir . 'SpecialProofreadPages.php';
+$wgSpecialPages['IndexPages'] = 'IndexPagesPage';
 $wgSpecialPageGroups['IndexPages'] = 'pages';
+$wgQueryPages['IndexPagesPage'] = 'IndexPages';
 
 # special page
 $wgAutoloadClasses['PagesWithoutScans'] = $dir . 'SpecialPagesWithoutScans.php';
