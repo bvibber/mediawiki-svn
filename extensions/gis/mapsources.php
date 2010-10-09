@@ -211,7 +211,6 @@ class map_sources {
 			$bsarticle = new Article( $bstitle );
 		}
 		if ($bsarticle->getID() == 0) {
-			$wgOut->addHTML( );
 			throw new FatalError( "<p>Please add this page: " .
 				$sk->makeBrokenLinkObj( $bstitle ) . ".</p>" );
 		}
