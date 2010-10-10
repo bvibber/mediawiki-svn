@@ -112,29 +112,26 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['StringFunctions'] = $dir . 'StringFunctions.i18n.php';
 
-$wgExtensionFunctions[] = 'wfStringFunctions';
+$wgHooks['ParserFirstCallInit'][] = 'wfStringFunctions';
 
 $wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsLanguageGetMagic';
 
-function wfStringFunctions() {
-	global $wgParser;
-	global $wgStringFunctionsLimitSearch;
-	global $wgStringFunctionsLimitReplace;
-	global $wgStringFunctionsLimitPad;
+$wgStringFunctionsLimitSearch  = 30;
+$wgStringFunctionsLimitReplace = 30;
+$wgStringFunctionsLimitPad     = 100;
 
-	$wgStringFunctionsLimitSearch  = 30;
-	$wgStringFunctionsLimitReplace = 30;
-	$wgStringFunctionsLimitPad     = 100;
+function wfStringFunctions( &$parser ) {
+	$parser->setFunctionHook( 'len', array( 'ExtStringFunctions', 'runLen' ) );
+	$parser->setFunctionHook( 'pos', array( 'ExtStringFunctions', 'runPos' ) );
+	$parser->setFunctionHook( 'rpos', array( 'ExtStringFunctions', 'runRPos' ) );
+	$parser->setFunctionHook( 'sub', array( 'ExtStringFunctions', 'runSub' ) );
+	$parser->setFunctionHook( 'pad', array( 'ExtStringFunctions', 'runPad' ) );
+	$parser->setFunctionHook( 'replace', array( 'ExtStringFunctions', 'runReplace' ) );
+	$parser->setFunctionHook( 'explode', array( 'ExtStringFunctions', 'runExplode' ) );
+	$parser->setFunctionHook( 'urlencode', array( 'ExtStringFunctions', 'runUrlEncode' ) );
+	$parser->setFunctionHook( 'urldecode', array( 'ExtStringFunctions', 'runUrlDecode' ) );
 
-	$wgParser->setFunctionHook( 'len', array( 'ExtStringFunctions', 'runLen' ) );
-	$wgParser->setFunctionHook( 'pos', array( 'ExtStringFunctions', 'runPos' ) );
-	$wgParser->setFunctionHook( 'rpos', array( 'ExtStringFunctions', 'runRPos' ) );
-	$wgParser->setFunctionHook( 'sub', array( 'ExtStringFunctions', 'runSub' ) );
-	$wgParser->setFunctionHook( 'pad', array( 'ExtStringFunctions', 'runPad' ) );
-	$wgParser->setFunctionHook( 'replace', array( 'ExtStringFunctions', 'runReplace' ) );
-	$wgParser->setFunctionHook( 'explode', array( 'ExtStringFunctions', 'runExplode' ) );
-	$wgParser->setFunctionHook( 'urlencode', array( 'ExtStringFunctions', 'runUrlEncode' ) );
-	$wgParser->setFunctionHook( 'urldecode', array( 'ExtStringFunctions', 'runUrlDecode' ) );
+	return true;
 }
 
 function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
