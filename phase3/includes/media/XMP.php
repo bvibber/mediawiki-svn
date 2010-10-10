@@ -1,5 +1,5 @@
 <?php
-/** Class for reading xmp data containing properties relevent to
+/** Class for reading xmp data containing properties relevant to
 * images, and spitting out an array that FormatExif accepts.
 *
 * It should be noted this is not done yet
@@ -40,7 +40,7 @@ class XMPReader {
 	/*
 	* These are various mode constants.
 	* they are used to figure out what to do
-	* with an element when its encoutered.
+	* with an element when its encountered.
 	*
 	* For example, MODE_IGNORE is used when processing
 	* a property we're not interested in. So if a new
@@ -56,7 +56,7 @@ class XMPReader {
 	// $items array to denote what type of property the item is.
 	const MODE_SIMPLE = 10;
 	const MODE_STRUCT = 11; // structure (associative array)
-	const MODE_SEQ    = 12; // orderd list
+	const MODE_SEQ    = 12; // ordered list
 	const MODE_BAG    = 13; // unordered list
 	const MODE_LANG   = 14;
 	const MODE_ALT    = 15; // non-language alt. Currently not implemented, and not needed atm.
@@ -67,7 +67,7 @@ class XMPReader {
 
 	/** Constructor.
 	*
-	* Primary job is to intialize the XMLParser
+	* Primary job is to initialize the XMLParser
 	*/
 	function __construct() {
 
@@ -107,7 +107,7 @@ class XMPReader {
 
 	/** Destroy the xml parser
 	*
-	* not sure if this is actualy needed.
+	* not sure if this is actually needed.
 	*/
 	function __destruct() {
 		// not sure if this is needed.
@@ -208,7 +208,7 @@ class XMPReader {
 					}
 
 				} else {
-					// standard specificly says, if no bom assume utf-8
+					// standard specifically says, if no bom assume utf-8
 					$this->charset = 'UTF-8';
 				}
 			}
@@ -241,7 +241,7 @@ class XMPReader {
 	 * @todo In serious need of testing
 	 * @see http://www.adobe.ge/devnet/xmp/pdfs/XMPSpecificationPart3.pdf XMP spec part 3 page 20
 	 * @param String $content XMPExtended block minus the namespace signature
-	 * @return Boolean If it succeded.
+	 * @return Boolean If it succeeded.
 	 */
 	public function parseExtended( $content ) {
 		// FIXME: This is untested. Hard to find example files
@@ -492,7 +492,7 @@ class XMPReader {
 
 		if ( $elm === self::NS_RDF . ' type' ) {
 			// these aren't really supported properly yet.
-			wfDebugLog( 'XMP', __METHOD__ . ' encoutered <rdf:type>' );
+			wfDebugLog( 'XMP', __METHOD__ . ' encountered <rdf:type>' );
 		}
 
 		if ( strpos( $elm, ' ' ) === false ) {
@@ -548,7 +548,7 @@ class XMPReader {
 
 	/** Hit an opening element while in MODE_IGNORE
 	*
-	* Mostly ignores, unless we encouter the element that we are ignoring.
+	* Mostly ignores, unless we encounter the element that we are ignoring.
 	*
 	* @param $elm String namespace . ' ' . tag name
 	*/
@@ -562,7 +562,7 @@ class XMPReader {
 	* this should always be <rdf:Bag>
 	*
 	* @param $elm String namespace . ' ' . tag
-	* @throws MWException if we have an element thats not <rdf:Bag>
+	* @throws MWException if we have an element that's not <rdf:Bag>
 	*/
 	private function startElementModeBag( $elm ) {
 		if ( $elm === self::NS_RDF . ' Bag' ) {
@@ -576,7 +576,7 @@ class XMPReader {
 	* this should always be <rdf:Seq>
 	*
 	* @param $elm String namespace . ' ' . tag
-	* @throws MWException if we have an element thats not <rdf:Seq>
+	* @throws MWException if we have an element that's not <rdf:Seq>
 	*/
 	private function startElementModeSeq( $elm ) {
 		if ( $elm === self::NS_RDF . ' Seq' ) {
@@ -590,7 +590,7 @@ class XMPReader {
 	* this should always be <rdf:Alt>
 	*
 	* @param $elm String namespace . ' ' . tag
-	* @throws MWException if we have an element thats not <rdf:Alt>
+	* @throws MWException if we have an element that's not <rdf:Alt>
 	*/
 	private function startElementModeLang( $elm ) {
 		if ( $elm === self::NS_RDF . ' Alt' ) {
@@ -605,7 +605,7 @@ class XMPReader {
 	* already opened has a child element. Could happen for a
 	* qualified element.
 	*
-	* @param $elm String namespace and tag names seperated by space.
+	* @param $elm String namespace and tag names separated by space.
 	*/
 	private function startElementModeSimple( $elm, $attribs ) {
 		if ( $elm === self::NS_RDF . ' Description' ) {
@@ -623,7 +623,7 @@ class XMPReader {
 
 		} else {
 			// something else we don't recognize, like a qualifier maybe.
-			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data as value of " . $this->curItem[0] );
+			wfDebugLog( 'XMP', __METHOD__ . " Encountered element <$elm> where only expecting character data as value of " . $this->curItem[0] );
 			array_unshift( $this->mode, self::MODE_IGNORE );
 			array_unshift( $this->curItem, $elm );
 
@@ -666,7 +666,7 @@ class XMPReader {
 					// a child of a struct), then something weird is
 					// happening, so ignore this element and its children.
 
-					wfDebugLog( 'XMP', "Encoutered <$ns:$tag> outside"
+					wfDebugLog( 'XMP', "Encountered <$ns:$tag> outside"
 						. " of its expected parent. Ignoring." );
 
 					array_unshift( $this->mode, self::MODE_IGNORE );
@@ -809,7 +809,7 @@ class XMPReader {
 			//
 			// also it seems as if exiv2 and exiftool do not support
 			// this either (That or I misunderstand the standard)
-			wfDebugLog( 'XMP', __METHOD__ . ' Encoutered <rdf:type> which isn\'t currently supported' );
+			wfDebugLog( 'XMP', __METHOD__ . ' Encountered <rdf:type> which isn\'t currently supported' );
 		}
 
 		if ( strpos( $elm, ' ' ) === false ) {
@@ -880,14 +880,14 @@ class XMPReader {
 				&& $val === 'Resource'
 				&& $this->mode[0] === self::MODE_SIMPLE )
 			{
-				// this is equivelent to having an inner rdf:Description
+				// this is equivalent to having an inner rdf:Description
 				$this->mode[0] = self::MODE_QDESC;
 			}
 
 			if ( strpos( $name, ' ' ) === false ) {
 				// This shouldn't happen, but so far some old software forgets namespace
 				// on rdf:about.
-				wfDebugLog( 'XMP', __METHOD__ . ' Encoutered non-namespaced attribute: '
+				wfDebugLog( 'XMP', __METHOD__ . ' Encountered non-namespaced attribute: '
 					. " $name=\"$val\". Skipping. " );
 				continue;
 			}
@@ -928,8 +928,8 @@ class XMPReader {
 
 			if ( is_callable( $validate ) ) {
 				call_user_func_array( $validate, array( $info, &$val, true ) );
-				// the resoning behind using &$val instead of using the return value
-				// is to be consistant between here and validating structures.
+				// the reasoning behind using &$val instead of using the return value
+				// is to be consistent between here and validating structures.
 				if ( is_null( $val ) ) {
 					wfDebugLog( 'XMP', __METHOD__ . " <$ns:$tag> failed validation." );
 					return;

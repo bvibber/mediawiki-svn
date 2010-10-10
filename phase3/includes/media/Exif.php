@@ -99,7 +99,7 @@ class Exif {
 	 * @fixme the following are broke:
 	 * SubjectArea. Need to test the more obscure tags.
 	 *
-	 * DigitalZoomRatio = 0/0 is rejected. need to determine if thats valid.
+	 * DigitalZoomRatio = 0/0 is rejected. need to determine if that's valid.
 	 * possibly should treat 0/0 = 0. need to read exif spec on that.
 	 */
 	function __construct( $file ) {
@@ -226,7 +226,7 @@ class Exif {
 				'Saturation' => Exif::SHORT,				# Saturation #p50
 				'Sharpness' => Exif::SHORT,				# Sharpness #p50
 				'DeviceSettingDescription' => Exif::IGNORE,
-				# Desice settings description. This could maybe be supported. Need to find an
+				# Device settings description. This could maybe be supported. Need to find an
 				# example file that uses this to see if it has stuff of interest in it.
 				'SubjectDistanceRange' => Exif::SHORT,			# Subject distance range #p51
 
@@ -325,7 +325,7 @@ class Exif {
 	/**
 	* Collapse some fields together.
 	* This converts some fields from exif form, to a more friendly form.
-	* For example GPS lattitude to a single number.
+	* For example GPS latitude to a single number.
 	*
 	* The rationale behind this is that we're storing data, not presenting to the user
 	* For example a longitude is a single number describing how far away you are from
@@ -429,7 +429,7 @@ class Exif {
 					break;
 			}
 			// This could possibly check to see if iconv is really installed
-			// or if we're using the compatability wraper in globalFunctions.php
+			// or if we're using the compatibility wrapper in globalFunctions.php
 			if ($charset) {
 				$val = iconv($charset, 'UTF-8//IGNORE', $val);
 			} else {

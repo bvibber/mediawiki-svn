@@ -74,7 +74,7 @@ class FormatMetadata {
 				$type = $tags[$tag]['_type'];
 				unset( $vals['_type'] );
 			} else {
-				$type = 'ul'; // default unorcdered list.
+				$type = 'ul'; // default unordered list.
 			}
 
 			//This is done differently as the tag is an array.
@@ -444,7 +444,7 @@ class FormatMetadata {
 					}
 					break;
 
-				//The GPS...Ref values are kept for compatability, probably won't be reached.
+				//The GPS...Ref values are kept for compatibility, probably won't be reached.
 				case 'GPSLatitudeRef':
 				case 'GPSDestLatitudeRef':
 					switch( $val ) {
@@ -760,7 +760,7 @@ class FormatMetadata {
 	* @param $vals Array array of values
 	* @param $type Type of array (either lang, ul, ol).
 	* lang = language assoc array with keys being the lang code
-	* ul = unorded list, ol = ordered list
+	* ul = unordered list, ol = ordered list
 	* type can also come from the '_type' member of $vals.
 	* @return String single value (in wiki-syntax).
 	*/
@@ -789,7 +789,7 @@ class FormatMetadata {
 			case 'lang':
 				global $wgContLang;
 				// Display default, followed by ContLang,
-				// followed by the rest in no paticular
+				// followed by the rest in no particular
 				// order.
 
 				// Todo: hide some items if really long list.
@@ -1075,7 +1075,7 @@ class FormatMetadata {
 			// Note: We run this through htmlspecialchars
 			// partially to be consistent, and partially
 			// because people often insert >, etc into
-			// the metadata which should not be interperted
+			// the metadata which should not be interpreted
 			// but we still want to auto-link urls.
 			foreach( $vals as &$val ) {
 				$val = htmlspecialchars( $val );
@@ -1154,7 +1154,7 @@ class FormatMetadata {
 /** For compatability with old FormatExif class
  * which some extensions use.
  *
- *@deprected
+ *@deprecated
  *
 **/
 class FormatExif {

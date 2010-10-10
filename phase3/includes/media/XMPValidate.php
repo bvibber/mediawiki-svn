@@ -3,7 +3,7 @@
 * This contains some static methods for
 * validating XMP properties. See XMPInfo and XMPReader classes.
 *
-* Each of these functions take the stame parameters
+* Each of these functions take the same parameters
 * * an info array which is a subset of the XMPInfo::items array
 * * A value (passed as reference) to validate. This can be either a
 *	simple value or an array
@@ -159,7 +159,7 @@ class XMPValidate {
 			&& isset( $val['RedEyeMode'] )
 			&& isset( $val['Return'] )
 		) ) {
-			wfDebugLog( 'XMP', __METHOD__ . " Flash structure did not have all the required compoenents" );
+			wfDebugLog( 'XMP', __METHOD__ . " Flash structure did not have all the required components" );
 			$val = null;
 		} else {
 			$val = ( "\0" | ( $val['Fired'] === 'True' )
@@ -215,7 +215,7 @@ class XMPValidate {
 			$val = null;
 		} else {
 			/*
-			 * $res is formated as follows:
+			 * $res is formatted as follows:
 			 * 0 -> full date.
 			 * 1 -> year, 2-> month, 3-> day, 4-> hour, 5-> minute, 6->second
 			 * 7-> Timezone specifier (Z or something like +12:30 )
@@ -231,7 +231,7 @@ class XMPValidate {
 				return;
 			}
 			//if hour is set, so is minute or regex above will fail.
-			//Extra check for empty string neccesary due to TZ but no second case.
+			//Extra check for empty string necessary due to TZ but no second case.
 			$res[6] = isset( $res[6] ) && $res[6] != '' ? $res[6] : '00';
 
 			if ( !isset( $res[7] ) || $res[7] === 'Z' || $res[1] >= '2038' || $res[1] < '1902' ) {

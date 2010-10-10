@@ -11,7 +11,7 @@ class JpegMetadataExtractor {
 	// A jpeg file should never even remotely have
 	// that many segments. Your average file has about 10.
 
-	/** Function to extract metadata segmants of interest from jpeg files
+	/** Function to extract metadata segments of interest from jpeg files
 	* based on GIFMetadataExtractor.
 	*
 	* we can almost use getimagesize to do this
@@ -142,7 +142,7 @@ class JpegMetadataExtractor {
 
 			if ( substr( $app13, $offset, 4 ) !== '8BIM' ) {
 				// its supposed to be 8BIM
-				// but apperently sometimes isn't esp. in
+				// but apparently sometimes isn't esp. in
 				// really old jpg's
 				$valid = false;
 			}

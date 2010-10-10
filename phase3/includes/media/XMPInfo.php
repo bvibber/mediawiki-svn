@@ -25,11 +25,11 @@ class XMPInfo {
 	* tag, including:
 	*       * map_group - what group (used for precedence during conflicts)
 	*       * mode - What type of item (self::MODE_SIMPLE usually, see above for all values)
-	*       * validate - method to validate input. Could also post-process the input. A string value is assumed to be a static mthod of XMPValidate. Can also take a array( 'className', 'methodName' ).
+	*       * validate - method to validate input. Could also post-process the input. A string value is assumed to be a static method of XMPValidate. Can also take a array( 'className', 'methodName' ).
 	*       * choices  - array of potential values (format of 'value' => true ). Only used with validateClosed
 	*	* rangeLow and rangeHigh - alternative to choices for numeric ranges. Again for validateClosed only.
 	*       * children - for MODE_STRUCT items, allowed children.
-	*	* structPart - Indicates that this element can only appear as a memeber of a structure.
+	*	* structPart - Indicates that this element can only appear as a member of a structure.
 	*
 	* currently this just has a bunch of exif values as this class is only half-done
 	*/
@@ -616,7 +616,7 @@ class XMPInfo {
 			),
 			'creator'           => array(
 				'map_group' => 'general',
-				'map_name'  => 'Artist', //map with exif Artist, iptc bylin (2:80)
+				'map_name'  => 'Artist', //map with exif Artist, iptc byline (2:80)
 				'mode'      => XMPReader::MODE_SEQ,
 			),
 			'date'              => array(
@@ -630,7 +630,7 @@ class XMPInfo {
 			),
 			/* Do not extract dc:format, as we've got better ways to determine mimetype */
 			'identifier'        => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'map_name'  => 'Identifier',
 				'mode'      => XMPReader::MODE_SIMPLE,
 			),
@@ -705,7 +705,7 @@ class XMPInfo {
 			'MetadataDate' => array(
 				'map_group' => 'general',
 				'mode'      => XMPReader::MODE_SIMPLE,
-				// map_name to be consistant with other date names.
+				// map_name to be consistent with other date names.
 				'map_name'  => 'DateTimeMetadata',
 				'validate'  => 'validateDate',
 			),
@@ -791,29 +791,29 @@ class XMPInfo {
 			),
 		),
 		/* Note, in iptc schemas, the legacy properties are denoted
-		 * as deprected, since other properties should used instead,
-		 * and properties marked as deprected in the standard are
+		 * as deprecated, since other properties should used instead,
+		 * and properties marked as deprecated in the standard are
 		 * are marked as general here as they don't have replacements
 		 */
 		'http://ns.adobe.com/photoshop/1.0/' => array(
 			'City' => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'CityDest',
 			),
 			'Country' => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'CountryDest',
 			),
 			'State' => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'ProvinceOrStateDest',
 			),
 			'DateCreated' => array(
-				'map_group' => 'deprected',
-				// marking as deprected as the xmp prop prefered
+				'map_group' => 'deprecated',
+				// marking as deprecated as the xmp prop preferred
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'DateTimeOriginal',
 				'validate'  => 'validateDate',
@@ -855,7 +855,7 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 			),
 			'Category' => array(
-				// Note, this prop is deprected, but in general
+				// Note, this prop is deprecated, but in general
 				// group since it doesn't have a replacement.
 				'map_group' => 'general',
 				'mode'      => XMPReader::MODE_SIMPLE,
@@ -869,7 +869,7 @@ class XMPInfo {
 		),
 		'http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/' => array(
 			'CountryCode' => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'CountryDestCode',
 			),
@@ -880,7 +880,7 @@ class XMPInfo {
 			/* Note: Scene not done. */
 			/* Note: SubjectCode (iim 2:12) not done. */
 			'Location' => array(
-				'map_group' => 'deprected',
+				'map_group' => 'deprecated',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'map_name'  => 'SublocationDest',
 			),
@@ -920,7 +920,7 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'structPart'=> true,
 			),
-			'CiEmailWork' => array( /* email (possibly seperated by ',') */
+			'CiEmailWork' => array( /* email (possibly separated by ',') */
 				'map_group' => 'general',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'structPart'=> true,
@@ -940,7 +940,7 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'structPart'=> true,
 			),
-			'CiUrlWork' => array( /* url. Multiple may be seperated by comma. */
+			'CiUrlWork' => array( /* url. Multiple may be separated by comma. */
 				'map_group' => 'general',
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'structPart'=> true,

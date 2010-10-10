@@ -15,7 +15,7 @@ class BitmapMetadataHandler {
 		20 => Array( 'other' ),
 		40 => Array( 'native' ),
 		60 => Array( 'iptc-good-hash', 'iptc-no-hash' ),
-		70 => Array( 'xmp-deprected' ),
+		70 => Array( 'xmp-deprecated' ),
 		80 => Array( 'xmp-general' ),
 		90 => Array( 'xmp-exif' ),
 		100 => Array( 'iptc-bad-hash' ),

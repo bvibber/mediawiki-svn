@@ -10,12 +10,12 @@ class IPTC {
         * form that can be handled by mediawiki. Generally called from
         * BitmapMetadataHandler::doApp13.
         *
-        * At the moment this is more of an outline, and is definitly
+        * At the moment this is more of an outline, and is definitely
         * not complete.
         * @todo finish for other iptc values
         * @see http://www.iptc.org/std/IIM/4.1/specification/IIMV4.1.pdf
         *
-        * @param String $data app13 block from jpeg containg iptc/iim data
+        * @param String $data app13 block from jpeg containing iptc/iim data
         * @return Array iptc metadata array
         */
         static function parse( $rawData ) {
@@ -55,7 +55,7 @@ class IPTC {
 					 * like how exif does it with
 					 * Title, person. Not sure if this is best
 					 * approach since we no longer have the two fields
-					 * seperate. each byline title entry corresponds to a
+					 * separate. each byline title entry corresponds to a
 					 * specific byline.                          */
 
 					$bylines = self::convIPTC( $val, $c );
@@ -113,10 +113,10 @@ class IPTC {
 				case '2#007': /* edit status (lead, correction, etc) */
 					$data['EditStatus'] = self::convIPTC( $val, $c );
 					break;
-				case '2#015': /* category. deprected. max 3 letters in theory, often more */
+				case '2#015': /* category. deprecated. max 3 letters in theory, often more */
 					$data['iimCategory'] = self::convIPTC( $val, $c );
 					break;
-				case '2#020': /* category. deprected. */
+				case '2#020': /* category. deprecated. */
 					$data['iimSupplementalCategory'] = self::convIPTC( $val, $c );
 					break;
 				case '2#010': /*urgency (1-8. 1 most, 5 normal, 8 low priority)*/
@@ -134,7 +134,7 @@ class IPTC {
 					$data['LocationDestCode'] = self::convIPTC( $val, $c );
 					break;
 				case '2#027':
-					/* Content location name. Full prinatable name
+					/* Content location name. Full printable name
 					 * of location of photo. */
 					$data['LocationDest'] = self::convIPTC( $val, $c );
 					break;
@@ -179,7 +179,7 @@ class IPTC {
 				case '2#103':
 					/* original transmission ref.
 					 * "A code representing the location of original transmission ac-
-					 * cording to practices of the provider."
+					 * cording to practises of the provider."
 					*/
 					$data['OriginalTransmissionRef'] = self::convIPTC( $val, $c );
 					break;
@@ -341,7 +341,7 @@ class IPTC {
 			//something wrong.
 			// Note, this rejects some valid dates according to iptc spec
 			// for example: the date 00000400 means the photo was taken in
-			// april, but the year and day is unknown. We don't process these
+			// April, but the year and day is unknown. We don't process these
 			// types of incomplete dates atm.
 			wfDebugLog( 'iptc', "IPTC: invalid time ( $time ) or date ( $date )");
 			return null;
@@ -423,15 +423,15 @@ class IPTC {
 	*/
 	static function getCharset($tag) {
 
-		//Acording to iim standard, charset is defined by the tag 1:90.
+		//According to iim standard, charset is defined by the tag 1:90.
 		//in which there are iso 2022 escape sequences to specify the character set.
-		//the iim standard seems to encourage that all neccesary escape sequences are
+		//the iim standard seems to encourage that all necessary escape sequences are
 		//in the 1:90 tag, but says it doesn't have to be.
 
-		//This is in need of more testing probably. This is definitly not complete.
+		//This is in need of more testing probably. This is definitely not complete.
 		//however reading the docs of some other iptc software, it appears that most iptc software
 		//only recognizes utf-8. If 1:90 tag is not present content is
-		// usually ascii or iso-8859-1 (and sometimes utf-8), but no garuntees.
+		// usually ascii or iso-8859-1 (and sometimes utf-8), but no guarantee.
 
 		//This also won't work if there are more than one escape sequence in the 1:90 tag
 		//or if something is put in the G2, or G3 charsets, etc. It will only reliably recognize utf-8.
@@ -539,7 +539,7 @@ class IPTC {
 				$c = 'CSN_369103';
 				break;
 			default:
-				wfDebugLog('iptc', __METHOD__ . 'Unkown charset in iptc 1:90: ' . bin2hex( $tag ) ); 
+				wfDebugLog('iptc', __METHOD__ . 'Unknown charset in iptc 1:90: ' . bin2hex( $tag ) ); 
 				//at this point just give up and refuse to parse iptc?
 				$c = false;
 		}

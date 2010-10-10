@@ -350,7 +350,7 @@ class BitmapHandler extends ImageHandler {
 	 * all that similar and usually have different
 	 * metadata needs.
 	 *
-	 * @deprected
+	 * @deprecated
 	 */
 	function getMetadata( $image, $filename ) {
 		wfDeprected( __METHOD__ );
