@@ -479,6 +479,13 @@ $messages['uk'] = array(
 	'nedits' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
 );
 
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'nedits' => '$1 {{PLURAL:$1|contributo|contributi}}',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

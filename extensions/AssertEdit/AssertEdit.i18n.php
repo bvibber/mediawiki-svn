@@ -658,6 +658,14 @@ $messages['ru'] = array(
 	'assert_edit_message' => 'Указанное утверждение ($1) не выполняется.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'assert_edit_title' => 'Тверджіня злыгало',
+	'assert_edit_message' => 'Зазначене тверджіня ($1) ся не выконує.',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

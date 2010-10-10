@@ -124,6 +124,15 @@ $messages['hr'] = array(
 	'variablepage-desc' => 'Lako preusmjeravanje promjenjive stranice',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Darić',
+	'variablepage-desc' => 'Lutowace wariabelne dalesposrědkowanje stronow',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -260,6 +269,7 @@ $messages['tl'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Dona',
 );
 

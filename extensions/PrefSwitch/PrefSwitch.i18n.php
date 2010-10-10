@@ -2715,6 +2715,7 @@ $messages['fi'] = array(
 	'prefswitch-survey-question-dislike' => 'Mistä et pitänyt uusissa ominaisuuksissa?',
 	'prefswitch-survey-question-whyoff' => 'Miksi olet poistamassa käytöstä uusia ominaisuuksia?
 Valitse kaikki sopivat.',
+	'prefswitch-survey-question-globaloff' => 'Haluatko poistaa ominaisuuden käytöstä kaikissa wikeissämme?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ominaisuudet olivat liian vaikeakäyttöisiä.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ominaisuudet eivät toimineet kunnolla.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Ominaisuudet eivät toimineet odotetusti.',
@@ -2726,6 +2727,7 @@ Valitse kaikki sopivat.',
 	'prefswitch-survey-answer-browser-other' => 'Muu selain',
 	'prefswitch-survey-question-os' => 'Mitä käyttöjärjestelmää käytät?',
 	'prefswitch-survey-answer-os-other' => 'Muu käyttöjärjestelmä',
+	'prefswitch-survey-answer-globaloff-yes' => 'Kyllä, poista ominaisuus käytöstä kaikissa wikeissä',
 	'prefswitch-survey-question-res' => 'Mikä on näyttösi resoluutio?',
 	'prefswitch-title-on' => 'Uudet ominaisuudet',
 	'prefswitch-title-switched-on' => 'Nauti!',
@@ -3476,6 +3478,7 @@ $messages['hsb'] = array(
 	'prefswitch-survey-question-dislike' => 'Što sej ći na nowych funkcijach njespodoba?',
 	'prefswitch-survey-question-whyoff' => 'Čehodla wupinaš nowe funkcije?
 Prošu wubjer wšě, kotrež maja so nałožić.',
+	'prefswitch-survey-question-globaloff' => 'Chceš tute funkcije globalnje wušaltować?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Njeda so lochko wužiwać.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Njeje porjadnje fungowało.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Njefunguje na předwidźomne wašnje.',
@@ -3487,6 +3490,7 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-survey-answer-browser-other' => 'Druhi wobhladowak:',
 	'prefswitch-survey-question-os' => 'Kotry dźěłowy system wužiwaš?',
 	'prefswitch-survey-answer-os-other' => 'Druhi dźěłowy system:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Haj, funkcije na wšěch wikijach wušaltować',
 	'prefswitch-survey-question-res' => 'Kotre je rozeznaće twojeje wobrazowki?',
 	'prefswitch-title-on' => 'Nowe funkcije',
 	'prefswitch-title-switched-on' => 'Wjesel so!',
@@ -3878,7 +3882,7 @@ $messages['it'] = array(
 	'prefswitch-desc' => 'Permetti agli utenti di cambiare set di preferenze',
 	'prefswitch-link-anon' => 'nuove funzionalità',
 	'tooltip-pt-prefswitch-link-anon' => 'Informazioni sulle nuove funzionalità',
-	'prefswitch-link-on' => 'riportami indietro',
+	'prefswitch-link-on' => 'torna alla vecchia interfaccia',
 	'tooltip-pt-prefswitch-link-on' => 'Disattiva le nuove funzionalità',
 	'prefswitch-link-off' => 'nuove funzionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Prova le nuove funzioni',
@@ -3952,9 +3956,9 @@ Lo \"User Experience Team\" della Fondazione Wikimedia, insieme ai volontari del
 * La '''linguetta {{int:move}}''' adesso è nel menu a scomparsa vicino alla barra di ricerca.",
 	'prefswitch-main-feedback' => "===Commenti?===
 Non vediamo l'ora di conoscere la tua opinione. Visita la nostra [[$1|pagina di feedback]] oppure, se sei interessato nei nostri continui sforzi per migliorare la piattaforma MediaWiki, visita [http://usability.wikimedia.org la wiki del progetto usabilità] per ulteriori informazioni.",
-	'prefswitch-main-anon' => '===Riportami indietro===
+	'prefswitch-main-anon' => '===Torna alla vecchia interfaccia===
 Se vuoi disattivare le nuove funzionalità, [$1 clicca qui]. Ti sarà chiesto di entrare o di creare un account.',
-	'prefswitch-main-on' => '===Riportami indietro===
+	'prefswitch-main-on' => '===Torna alla vecchia interfaccia===
 [$2 Clicca qui per disattivare le nuove funzionalità].',
 	'prefswitch-main-off' => '===Provale!===
 Se vuoi attivare le nuove funzioni, [$1 clicca qui].',

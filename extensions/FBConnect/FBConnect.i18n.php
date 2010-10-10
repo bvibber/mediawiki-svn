@@ -749,6 +749,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Erlaabt et Benotzer hir sech mat hire [http://www.facebook.com Facebook] Konten ze [[Special:Connect|connectéieren]].',
 	'group-fb-user' => 'Facebook-Connect-Benotzer',
 	'group-fb-user-member' => 'Facebook-Connect-Benotzer',
 	'grouppage-fb-user' => '{{ns:project}}:Facebook-Connect-Benotzer',
@@ -775,13 +776,18 @@ $1",
 	'fbconnect-logoutbox' => '$1
 
 Dëst loggt Iech och aus Facebook eraus an aus allen domat verbonnene Siten, inklusiv dës Wiki.',
+	'fbconnect-listusers-header' => "D'Rechter $1 a(n) $2 ginn automatesch vum Gestionnaire a vum Administrateur vum Facebook-Grupp $3 transferéiert.
+
+Fir méi Informatiounen, kontaktéiert w.e.g. deen den de Grupp $4 opgemaach huet.",
 	'fbconnect-usernameprefix' => 'Facebook-Benotzer',
 	'fbconnect-error' => 'Feeler bei der Iwwerpréifung',
+	'fbconnect-errortext' => 'Bäi der Iwwerpréifung mat Facebook Connect ass e Feeler geschitt.',
 	'fbconnect-cancel' => 'Aktioun ofgebrach',
 	'fbconnect-canceltext' => 'Déi Aktioun virdru gouf vum Benotzer ofgebrach.',
 	'fbconnect-invalid' => 'Net-valabel Optioun',
 	'fbconnect-invalidtext' => 'Dat wat Dir op der Säit virdrun erausgesicht hutt ass net valabel.',
 	'fbconnect-success' => 'Facebook Iwwerpréifung mat Succès',
+	'fbconnect-successtext' => 'Dir sidd elo mat Facebook Connect ageloggt.',
 	'fbconnect-nickname' => 'Spëtznumm',
 	'fbconnect-fullname' => 'Ganzen Numm',
 	'fbconnect-email' => 'E-Mailadress',
@@ -789,6 +795,8 @@ Dëst loggt Iech och aus Facebook eraus an aus allen domat verbonnene Siten, ink
 	'fbconnect-timecorrection' => "Verbesserung fir d'Zäitzon (Stonnen)",
 	'fbconnect-chooselegend' => 'Eraussiche vum Benotzernumm',
 	'fbconnect-chooseinstructions' => 'All Benotzer brauchen e Spëtznumm; Dir kënnt Iech een aus den Optiounen hei drënner eraussichen.',
+	'fbconnect-invalidname' => 'De Spëtznumm deen Dir erausgesicht hutt ass scho verginn oder et ass kee valabele Spëtznumm.
+Sicht Iech w.e.g. een Aneren.',
 	'fbconnect-choosenick' => 'Äre Facbook-Profilnumm ($1)',
 	'fbconnect-choosefirst' => 'Äre Virnumm ($1)',
 	'fbconnect-choosefull' => 'Äre ganzen Numm ($1)',
@@ -804,6 +812,7 @@ Wann Dir Facebook-Connect benotze wëllt fir Iech an Zukunft anzeloggen, da kën
 	'fbconnect-error-creating-user' => 'Feeler beim Uleeë vum Benotzer an der lokaler Datebank.',
 	'fbconnect-prefstext' => 'Facebook-Connect',
 	'fbconnect-link-to-profile' => 'Facebook-Profil',
+	'fbconnect-prefs-can-be-updated' => 'Dir kënnt dës zu all Moment aktualiséieren an deem Dir op den Tab "$1" op der Säit vun Ären Astellunge gitt.',
 );
 
 /** Macedonian (Македонски)
@@ -1449,6 +1458,15 @@ $messages['ru'] = array(
 	'fbconnect-choosepassword' => 'Пароль:',
 	'fbconnect-updateuserinfo' => 'Обновите следующие личные сведения:',
 	'fbconnect-error-creating-user' => 'Ошибка при создании пользователя в локальной базе данных.',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'fbconnect-fullname' => 'Повне мено',
+	'fbconnect-email' => 'Адреса електронічной пошты',
+	'fbconnect-language' => 'Язык',
 );
 
 /** Tagalog (Tagalog)

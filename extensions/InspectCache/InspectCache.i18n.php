@@ -624,6 +624,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'inspectcache' => 'Tëschespäicher iwwerpréifen',
+	'inspectcache-desc' => "En einfachen Tool fir d'Inhalter vum gedeelten Tëschespäicher (shared cache) nozekucken",
 	'inspectcache-general' => 'Allgemengen Tëschespäicher (cache)',
 	'inspectcache-parser' => 'Parser-Tëschespäicher',
 	'inspectcache-message' => 'Tëschespäicher (Cache) vun de Messagen',
@@ -631,6 +632,7 @@ $messages['lb'] = array(
 	'inspectcache-delete' => 'Läschen',
 	'inspectcache-deleted' => 'Cache läschen',
 	'inspectcache-list' => 'Lëscht',
+	'right-inspectcache' => 'Weisen a Läsche vum Inhalt vum Tëschespäicher (Cache)',
 );
 
 /** Lithuanian (Lietuvių)

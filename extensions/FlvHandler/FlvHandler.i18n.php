@@ -359,6 +359,13 @@ $messages['sr-el'] = array(
 	'flv-long-desc' => '(Fleš video, $1 × $2 piksela, veličina fajla: $3)',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'flv-long-desc' => '(Flash Video, $1 × $2 pixlar, filstorlek: $3)',
+);
+
 /** Tamil (தமிழ்)
  * @author செல்வா
  */

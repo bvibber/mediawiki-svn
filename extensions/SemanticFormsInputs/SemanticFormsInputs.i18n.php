@@ -207,6 +207,10 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'semanticformsinputs-desc' => "Zousätzlech Manéieren fir d'Eraginn fir [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Formulairen]",
 	'semanticformsinputs-wrongformat' => 'Falsche Format.',
+	'semanticformsinputs-close' => 'Zoumaachen',
+	'semanticformsinputs-prev' => 'Vireg',
+	'semanticformsinputs-next' => 'Nächst',
+	'semanticformsinputs-today' => 'Haut',
 );
 
 /** Macedonian (Македонски)
@@ -251,6 +255,10 @@ $messages['no'] = array(
 $messages['pl'] = array(
 	'semanticformsinputs-desc' => 'Dodatkowe typy wejściowe dla [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularzy Semantycznych]',
 	'semanticformsinputs-wrongformat' => 'Niewłaściwy format.',
+	'semanticformsinputs-close' => 'Zamknij',
+	'semanticformsinputs-prev' => 'Poprzednie',
+	'semanticformsinputs-next' => 'Następne',
+	'semanticformsinputs-today' => 'Dziś',
 );
 
 /** Piedmontese (Piemontèis)

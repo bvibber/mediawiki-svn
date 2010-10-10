@@ -1558,6 +1558,7 @@ $messages['lb'] = array(
 	'qp_error_already_used_poll_id' => "D'Ëmfro-Nummer (poll id) gouf op dëser Säit scho benotzt (id=$1).",
 	'qp_error_vote_dependance_poll' => "Stëmmt w.e.g. fir d'éischt bäi der Ëmfro $1 of.",
 	'qp_error_unanswered_span' => 'Ënnerkategorie ouni Äntwert',
+	'qp_error_non_unique_choice' => 'Dës Fro brauch eng Äntwert mat enger eenzeger Propos',
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',

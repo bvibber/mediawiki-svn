@@ -77,6 +77,13 @@ $messages['gsw'] = array(
 	'specialtalk-desc' => 'Fiegt e Diskussionsryter yy bi dr [[Special:SpecialPages|Spezialsyte]]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'specialtalk-desc' => 'Přidawa diskusijny rajtark k [[Special:SpecialPages|specialnym stronam]]',
+);
+
 /** Interlingua (Interlingua) */
 $messages['ia'] = array(
 	'specialtalk-desc' => 'Adde un pagina de discussion a [[Special:SpecialPages|paginas special]]',

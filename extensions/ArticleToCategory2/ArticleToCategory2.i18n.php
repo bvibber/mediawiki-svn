@@ -155,6 +155,16 @@ $messages['gsw'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Aalege',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Stronu k tutej kategoriji přidać',
+	'articletocategory2-create-article-under-category-button' => 'Wutworić',
+	'articletocategory2-create-category-under-category-text' => 'Kategoriju k tutej kategoriji přidać',
+	'articletocategory2-create-category-under-category-button' => 'Wutworić',
+);
+
 /** Hungarian (Magyar) */
 $messages['hu'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Létrehozás',

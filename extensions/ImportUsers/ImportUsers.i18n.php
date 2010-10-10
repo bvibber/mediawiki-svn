@@ -632,6 +632,7 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -651,7 +652,7 @@ $messages['gl'] = array(
 	'importusers-log-summary-all' => 'Todo',
 	'importusers-log-summary-added' => 'Engadido',
 	'importusers-log-summary-updated' => 'Actualizado',
-	'importusers-login-name' => 'Rexistrar nome',
+	'importusers-login-name' => 'Nome de conta',
 	'importusers-password' => 'contrasinal',
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nome real',

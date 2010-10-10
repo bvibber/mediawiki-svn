@@ -119,6 +119,7 @@ $messages['ca'] = array(
 	'transliterator-error-syntax' => 'Sintaxi incorrecta <code>$1</code> a [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Més de $1 {{PLURAL:$1|regla|regles}} a [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La regla <code>$1</code> té més {{PLURAL:$3|d'un caràcter|de $3 caràcters}} a l'esquerra a [[MediaWiki:$2]]",
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] ha de tenir com a mínim $1 {{PLURAL:$1|caràcter|caràcters}}.',
 );
 
 /** Czech (Česky)

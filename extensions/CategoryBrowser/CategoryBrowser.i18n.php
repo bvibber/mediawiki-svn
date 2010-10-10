@@ -907,6 +907,25 @@ $messages['ru'] = array(
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'cb_previous_items_link' => 'Föregående',
+	'cb_next_items_link' => 'Nästa',
+	'cb_next_items_stats' => '(från $1)',
+	'cb_cat_subcats' => 'underkategorier',
+	'cb_cat_pages' => 'sidor',
+	'cb_cat_files' => 'filer',
+	'cb_apply_button' => 'Verkställ',
+	'cb_all_op' => 'Alla',
+	'cb_or_op' => 'eller',
+	'cb_and_op' => 'och',
+	'cb_edit_left_hint' => 'Flytta åt vänster, om möjligt',
+	'cb_edit_right_hint' => 'Flytta åt höger, om möjligt',
+	'cb_edit_remove_hint' => 'Radera, om möjligt',
+);
+
 /** Tamil (தமிழ்)
  * @author TRYPPN
  */

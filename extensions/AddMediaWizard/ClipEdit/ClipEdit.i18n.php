@@ -1254,16 +1254,34 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  */
 $messages['sv'] = array(
 	'mwe-clipedit-crop' => 'Beskär bild',
 	'mwe-clipedit-apply_crop' => 'Verkställ beskärning',
 	'mwe-clipedit-reset_crop' => 'Återställ beskärning',
+	'mwe-clipedit-insert_image_page' => 'Lägg till på sida',
+	'mwe-clipedit-insert_into_sequence' => 'Lägg till i sekvensen',
+	'mwe-clipedit-preview_insert' => 'Förhandsgranska infogning',
+	'mwe-clipedit-cancel_image_insert' => 'Avbryt infogning',
+	'mwe-clipedit-sc_inoutpoints' => 'Sätt in-ut punkter',
+	'mwe-clipedit-sc_overlays' => 'Överlägg',
+	'mwe-clipedit-sc_audio' => 'Ljudkontroll',
+	'mwe-clipedit-sc_duration' => 'Varaktighet',
+	'mwe-clipedit-template_properties' => 'Mallegenskaper',
+	'mwe-clipedit-custom_title' => 'Anpassad rubrik',
 	'mwe-clipedit-edit_properties' => 'Redigera egenskaper',
 	'mwe-clipedit-other_properties' => 'Andra egenskaper',
+	'mwe-clipedit-resource_page' => 'Resurssida:',
+	'mwe-clipedit-set_in_out_points' => 'Sätt in-ut punkter',
 	'mwe-clipedit-start_time' => 'Starttid',
 	'mwe-clipedit-end_time' => 'Sluttid',
+	'mwe-clipedit-preview_inout' => 'Förhandsgranska in-ut punkter',
+	'mwe-clipedit-edit-tools' => 'Redigeringsverktyg',
+	'mwe-clipedit-inline-description' => 'Undertext',
+	'mwe-clipedit-edit-video-tools' => 'Redigera video verktyg:',
+	'mwe-clipedit-duration' => 'Varaktighet:',
 	'mwe-clipedit-layout' => 'Layout',
 );
 

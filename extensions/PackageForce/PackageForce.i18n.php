@@ -38,10 +38,14 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Purodha
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'pf-desc' => '{{desc}}',
+	'pf-desc' => '{{desc}}
+
+Hint: The linked special page allows to collect stuff and make it into downloadable packages.',
+	'pf-only-admins-allowed' => 'Do not translate "<code lang="en">packageforce-admin</code>".',
 	'pf-admin-menu-default' => '{{Identical|Default}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
 	'pf-header-page_title' => '{{Identical|Title}}',
@@ -405,6 +409,25 @@ $messages['kn'] = array(
 	'pf-header-page_title' => 'ಶೀರ್ಷಿಕೆ',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'packageforce' => '<i lang="en">PackageForce</i>',
+	'packageforceadmin' => '<i lang="en">PackageForce</i> Verwallde',
+	'pf-desc' => 'Nözlejje Schabloone un ähnlesch zo Pöngelle benge un [[Special:PackageForce|eronger laade]].',
+	'pf-only-admins-allowed' => 'Di Sigg es bloß för Metmaacher met däm Rääsch <code lang="en">packageforce-admin</code>',
+	'pf-admin-menu-default' => 'Shtandatt',
+	'pf-admin-menu-unsortedtemplates' => 'De Schabloone sin noch nit zoteet',
+	'pf-admin-link-view-documentation' => 'Beloor Der de Dokkemäntazjuhn för di Sigg',
+	'pf-header-documentation' => 'Dokkemäntazjuhn',
+	'pf-header-in_packages' => 'Pakkätte
+of
+Pöngelle',
+	'pf-header-type' => 'Zoot vun Sigg',
+	'pf-header-page_title' => 'Tittel',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -412,7 +435,7 @@ $messages['lb'] = array(
 	'packageforce' => 'PackageForce',
 	'packageforceadmin' => 'Administratioun vu PackageForce',
 	'pf-desc' => '[[Special:PackageForce|Erofluede vu Fichieren]] mat nëtzleche Schablounen asw.',
-	'pf-only-admins-allowed' => "Dës Säit ass nëmme fir Benotzer mat 'PackageForce-Admin'-Rechter.",
+	'pf-only-admins-allowed' => "Dës Säit ass nëmme fir Benotzer mat 'packageforce-admin'-Rechter.",
 	'pf-admin-menu-default' => 'Standard',
 	'pf-admin-menu-unsortedtemplates' => 'Schablounen nach net zortéiert',
 	'pf-admin-link-view-documentation' => "D'Dokumentatioun déi mat dëser Säit verbonn ass weisen.",

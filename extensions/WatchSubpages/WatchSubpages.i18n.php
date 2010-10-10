@@ -173,9 +173,9 @@ $messages['ca'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Afegeix les pàgines a la llista de seguiment',
 	'watchsubpages-desc' => "Afegeix ràpidament [[Special:WatchSubpages|totes les subpàgines]] d'una pàgina a la llista de seguiment",
 	'watchsubpages-form' => "Seleccioneu les pàgines de sota que vulgueu afegir a la vostra llista de seguiment.
-Per afegir una pàgina, marqueu la casella de selecció del costat i feu clic a «Afegeix pàgines».
+Per a afegir una pàgina, marqueu la casella de selecció del costat i feu clic a «{{int:watchsubpages-addtitles}}».
 
-Per a marcar o desmarcar múltiples pàgines, si manteniu polsada la tecla de majúscules podreu seleccionar caselles consecutives clicant a l'última del rang a ser marcat.",
+Quan marqueu o desmarqueu múltiples pàgines, si manteniu polsada la tecla de majúscules podreu seleccionar caselles consecutives clicant l'última del rang a ser marcat.",
 );
 
 /** Sorani (کوردی)

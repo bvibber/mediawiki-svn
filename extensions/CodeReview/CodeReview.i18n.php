@@ -9772,6 +9772,7 @@ $messages['vec'] = array(
 	'code-status-old' => 'vecio',
 	'code-pathsearch-legend' => 'Serca le version drento sto deposito, in base al percorso',
 	'code-pathsearch-path' => 'Percorso:',
+	'code-revfilter-cr_author' => 'Autor = $1',
 	'code-rev-submit' => 'Salva le modìfeghe',
 	'code-rev-submit-next' => 'Salva e và al prossimo che xe da justar',
 	'code-batch-status' => 'Cànbia stato:',
@@ -9803,6 +9804,7 @@ URL: $3
 Ojeto de la modifica:
 
 $4',
+	'code-stats-count' => 'Numaro de revision',
 	'repoadmin' => "'Ministrassion dei depositi",
 	'repoadmin-new-legend' => 'Crea un deposito novo',
 	'repoadmin-new-label' => 'Nome del deposito:',

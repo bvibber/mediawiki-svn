@@ -1211,12 +1211,14 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Lejonel
  * @author M.M.S.
  */
 $messages['sv'] = array(
 	'chemicalsources' => 'Kemiska källor',
 	'chemicalsource-desc' => 'Lägger till taggen <nowiki><chemform></nowiki>, för kemiska formler',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Specialsida]] för kemiska källor',
 	'chemFunctions_ListPage' => 'Kemiska källor',
 	'chemFunctions_DataList' => 'I listan härunder finns länkar till webbplatser som kan ha information om den kemiska substans du söker efter.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Förening $MIXCASNameFormula hos NIST</a><br />

@@ -32,6 +32,19 @@ $messages['be-tarask'] = array(
 	'specialarc2admin' => 'Старонка кіраваньня сховішча ARC2 RDF',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'rdfio-desc' => "Arc'hwel enporzhiañ/ezporzhiañ RDF astennet, ennañ ur poent dibenn SPARQL, evit MediaWiki  Ereadurezh",
+	'rdfimport' => 'Enporzhiañ RDF',
+	'rdfio-arc2admin-desc' => 'Pajenn verañ evit ar sanailh RDF ARC2, evit Mediawiki Ereadurezh',
+	'rdfio-rdfimport-desc' => 'Ur bajenn dibar da enporzhiañ roadennoù ereadurel er furmad RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Ur poent dibenn SPARQL porchaset gant an SMWRDFConnector',
+	'sparqlendpoint' => 'Poent dibenn SPARQL',
+	'specialarc2admin' => 'Pajenn verañ ar sanailh ARC2 RDF',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */

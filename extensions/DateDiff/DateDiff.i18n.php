@@ -87,6 +87,13 @@ $messages['gsw'] = array(
 	'datediff-desc' => 'Git alli Däg zruck, wu zwische zwee bstime Däg lige',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'datediff-desc' => 'Bjerje dwaj datumaj a wróća wšě dny mjez nimaj',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -184,6 +191,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'datediff-desc' => 'Возвращает все даты между двумя заданными.',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'datediff-desc' => 'Tar två datum och returnerar alla mellanliggande dagar',
 );
 
 /** Tagalog (Tagalog)
