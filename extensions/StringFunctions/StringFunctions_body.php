@@ -343,14 +343,6 @@ class ExtStringFunctions {
 	}
 
 	/**
-	 * {{#urlencode:value}}
-	 */
-	static function runUrlEncode( &$parser, $inStr = '' ) {
-		# encode
-		return urlencode( $inStr );
-	}
-
-	/**
 	 * {{#urldecode:value}}
 	 */
 	static function runUrlDecode( &$parser, $inStr = '' ) {
