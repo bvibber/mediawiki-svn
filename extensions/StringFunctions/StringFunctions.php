@@ -117,25 +117,24 @@ $wgExtensionFunctions[] = 'wfStringFunctions';
 $wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsLanguageGetMagic';
 
 function wfStringFunctions() {
-	global $wgParser, $wgExtStringFunctions;
+	global $wgParser;
 	global $wgStringFunctionsLimitSearch;
 	global $wgStringFunctionsLimitReplace;
 	global $wgStringFunctionsLimitPad;
 
-	$wgExtStringFunctions = new ExtStringFunctions();
 	$wgStringFunctionsLimitSearch  = 30;
 	$wgStringFunctionsLimitReplace = 30;
 	$wgStringFunctionsLimitPad     = 100;
 
-	$wgParser->setFunctionHook( 'len', array( &$wgExtStringFunctions, 'runLen' ) );
-	$wgParser->setFunctionHook( 'pos', array( &$wgExtStringFunctions, 'runPos' ) );
-	$wgParser->setFunctionHook( 'rpos', array( &$wgExtStringFunctions, 'runRPos' ) );
-	$wgParser->setFunctionHook( 'sub', array( &$wgExtStringFunctions, 'runSub' ) );
-	$wgParser->setFunctionHook( 'pad', array( &$wgExtStringFunctions, 'runPad' ) );
-	$wgParser->setFunctionHook( 'replace', array( &$wgExtStringFunctions, 'runReplace' ) );
-	$wgParser->setFunctionHook( 'explode', array( &$wgExtStringFunctions, 'runExplode' ) );
-	$wgParser->setFunctionHook( 'urlencode', array( &$wgExtStringFunctions, 'runUrlEncode' ) );
-	$wgParser->setFunctionHook( 'urldecode', array( &$wgExtStringFunctions, 'runUrlDecode' ) );
+	$wgParser->setFunctionHook( 'len', array( 'ExtStringFunctions', 'runLen' ) );
+	$wgParser->setFunctionHook( 'pos', array( 'ExtStringFunctions', 'runPos' ) );
+	$wgParser->setFunctionHook( 'rpos', array( 'ExtStringFunctions', 'runRPos' ) );
+	$wgParser->setFunctionHook( 'sub', array( 'ExtStringFunctions', 'runSub' ) );
+	$wgParser->setFunctionHook( 'pad', array( 'ExtStringFunctions', 'runPad' ) );
+	$wgParser->setFunctionHook( 'replace', array( 'ExtStringFunctions', 'runReplace' ) );
+	$wgParser->setFunctionHook( 'explode', array( 'ExtStringFunctions', 'runExplode' ) );
+	$wgParser->setFunctionHook( 'urlencode', array( 'ExtStringFunctions', 'runUrlEncode' ) );
+	$wgParser->setFunctionHook( 'urldecode', array( 'ExtStringFunctions', 'runUrlDecode' ) );
 }
 
 function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
@@ -160,7 +159,7 @@ class ExtStringFunctions {
 	 * Returns part of the perl regexp pattern that matches a marker.
 	 * Unfortunatelly, we are still backward-supporting old versions.
 	 */
-	function mwMarkerRE( &$parser ) {
+	static protected function mwMarkerRE( &$parser ) {
 		if ( defined( 'Parser::MARKER_SUFFIX' ) ) {
 			$suffix = preg_quote( Parser::MARKER_SUFFIX, '/' );
 		} elseif ( isset( $parser->mMarkerSuffix ) ) {
@@ -179,11 +178,11 @@ class ExtStringFunctions {
 	 *
 	 * Main idea: Count multibytes. Find markers. Substract.
 	 */
-	function runLen( &$parser, $inStr = '' ) {
+	static function runLen( &$parser, $inStr = '' ) {
 		$len = mb_strlen( (string)$inStr );
 
 		$count = preg_match_all (
-			'/' . $this->mwMarkerRE( $parser ) . '/',
+			'/' . self::mwMarkerRE( $parser ) . '/',
 			(string) $inStr, $matches
 		);
 
@@ -199,7 +198,7 @@ class ExtStringFunctions {
 	 * $chars is set to the resulting array of multibyte characters.
 	 * Returns count($chars).
 	 */
-	function mwSplit( &$parser, $str, &$chars ) {
+	static protected function mwSplit( &$parser, $str, &$chars ) {
 		# Get marker prefix & suffix
 		$prefix = preg_quote( $parser->mUniqPrefix, '/' );
 		if ( defined( 'Parser::MARKER_SUFFIX' ) ) {
@@ -224,7 +223,7 @@ class ExtStringFunctions {
 	 * Note: If the needle is not found, empty string is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runPos( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
+	static function runPos( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inNeedle === '' ) {
@@ -233,7 +232,7 @@ class ExtStringFunctions {
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit( $parser, $inNeedle, $needle );
+			$nSize = self::mwSplit( $parser, $inNeedle, $needle );
 
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
@@ -242,7 +241,7 @@ class ExtStringFunctions {
 		}
 
 		# convert string
-		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
+		$size = self::mwSplit( $parser, $inStr, $chars ) - $nSize;
 		$inOffset = max( intval( $inOffset ), 0 );
 
 		# find needle
@@ -270,7 +269,7 @@ class ExtStringFunctions {
 	 * Note: If the needle is not found, -1 is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runRPos( &$parser, $inStr = '', $inNeedle = '' ) {
+	static function runRPos( &$parser, $inStr = '', $inNeedle = '' ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inNeedle === '' ) {
@@ -279,7 +278,7 @@ class ExtStringFunctions {
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit( $parser, $inNeedle, $needle );
+			$nSize = self::mwSplit( $parser, $inNeedle, $needle );
 
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
@@ -288,7 +287,7 @@ class ExtStringFunctions {
 		}
 
 		# convert string
-		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
+		$size = self::mwSplit( $parser, $inStr, $chars ) - $nSize;
 
 		# find needle
 		for ( $i = $size; $i >= 0; $i-- ) {
@@ -313,9 +312,9 @@ class ExtStringFunctions {
 	 * {{#sub:value|start|length}}
 	 * Note: If length is zero, the rest of the input is returned.
 	 */
-	function runSub( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
+	static function runSub( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
 		# convert string
-		$this->mwSplit( $parser, $inStr, $chars );
+		self::mwSplit( $parser, $inStr, $chars );
 
 		# zero length
 		if ( intval( $inLength ) == 0 ) {
@@ -330,7 +329,7 @@ class ExtStringFunctions {
 	 * {{#pad:value|length|with|direction}}
 	 * Note: Length of the resulting string is limited.
 	 */
-	function runPad( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
+	static function runPad( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
 		global $wgStringFunctionsLimitPad;
 
 		# direction
@@ -362,7 +361,7 @@ class ExtStringFunctions {
 		}
 
 		# adjust for multibyte strings
-		$inLen += strlen( $inStr ) - $this->mwSplit( $parser, $inStr, $a );
+		$inLen += strlen( $inStr ) - self::mwSplit( $parser, $inStr, $a );
 
 		# pad
 		return str_pad( $inStr, $inLen, $inWith, $direction );
@@ -374,7 +373,7 @@ class ExtStringFunctions {
 	 * Note: The needle is limited to specific length.
 	 * Note: The product is limited to specific length.
 	 */
-	function runReplace( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
+	static function runReplace( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
 		global $wgStringFunctionsLimitSearch, $wgStringFunctionsLimitReplace;
 
 		if ( $inReplaceFrom === '' ) {
@@ -383,7 +382,7 @@ class ExtStringFunctions {
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit( $parser, $inReplaceFrom, $needle );
+			$nSize = self::mwSplit( $parser, $inReplaceFrom, $needle );
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
 				$needle = array_slice( $needle, 0, $nSize );
@@ -391,7 +390,7 @@ class ExtStringFunctions {
 		}
 
 		# convert product
-		$pSize = $this->mwSplit( $parser, $inReplaceTo, $product );
+		$pSize = self::mwSplit( $parser, $inReplaceTo, $product );
 		if ( $pSize > $wgStringFunctionsLimitReplace ) {
 			$pSize = $wgStringFunctionsLimitReplace;
 			$product = array_slice( $product, 0, $pSize );
@@ -405,7 +404,7 @@ class ExtStringFunctions {
 		}
 
 		# convert string
-		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
+		$size = self::mwSplit( $parser, $inStr, $chars ) - $nSize;
 
 		# replace
 		for ( $i = 0; $i <= $size; $i++ ) {
@@ -434,7 +433,7 @@ class ExtStringFunctions {
 	 * Note: The divider is limited to specific length.
 	 * Note: Empty string is returned, if there is not enough exploded chunks.
 	 */
-	function runExplode( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
+	static function runExplode( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inDiv === '' ) {
@@ -443,7 +442,7 @@ class ExtStringFunctions {
 			$dSize = 1;
 		} else {
 			# convert divider
-			$dSize = $this->mwSplit( $parser, $inDiv, $div );
+			$dSize = self::mwSplit( $parser, $inDiv, $div );
 			if ( $dSize > $wgStringFunctionsLimitSearch ) {
 				$dSize = $wgStringFunctionsLimitSearch;
 				$div = array_slice ( $div, 0, $dSize );
@@ -451,7 +450,7 @@ class ExtStringFunctions {
 		}
 
 		# convert string
-		$size = $this->mwSplit( $parser, $inStr, $chars ) - $dSize;
+		$size = self::mwSplit( $parser, $inStr, $chars ) - $dSize;
 
 		# explode
 		$inPos = intval( $inPos );
@@ -499,7 +498,7 @@ class ExtStringFunctions {
 	/**
 	 * {{#urlencode:value}}
 	 */
-	function runUrlEncode( &$parser, $inStr = '' ) {
+	static function runUrlEncode( &$parser, $inStr = '' ) {
 		# encode
 		return urlencode( $inStr );
 	}
@@ -507,7 +506,7 @@ class ExtStringFunctions {
 	/**
 	 * {{#urldecode:value}}
 	 */
-	function runUrlDecode( &$parser, $inStr = '' ) {
+	static function runUrlDecode( &$parser, $inStr = '' ) {
 		# decode
 		return urldecode( $inStr );
 	}
