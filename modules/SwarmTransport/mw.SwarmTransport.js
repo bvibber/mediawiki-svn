@@ -74,7 +74,7 @@ mw.SwarmTransport = {
 	addSwarmSource: function( embedPlayer, callback ) {
 		var _this = this;
 
-		// xxx todo: also grab the webm source if supported.  
+		// xxx todo: also grab the WebM source if supported.  
 		var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];	
 		if( ! source ){
 			mw.log("Warning: addSwarmSource: could not find video/ogg source to generate torrent from");

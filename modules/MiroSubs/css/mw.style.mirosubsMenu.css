@@ -1,4 +1,4 @@
-ui-icon-mirosubs {
+.ui-icon-mirosubs {
 	/* @embed */
-	background: #00ff00 url('universal-subs-icon-small.png') no-repeat fixed center !important;
+	background: url('universal-subs-icon-small.png') !important;
 }

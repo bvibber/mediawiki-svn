@@ -201,8 +201,7 @@ function doPageSpecificRewrite() {
 		var scriptName = null;
 		var libraries = [];		
 		scriptName = 'uploadPage.js';
-   		libraries = [
-			
+   		libraries = [			
 			'mw.UploadInterface',
 			'mw.Firefogg',		
 			'$j.ui',

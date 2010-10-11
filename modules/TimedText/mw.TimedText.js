@@ -112,7 +112,7 @@ mw.includeAllModuleMessages();
 			this.textSources = [];
 			this.textSourceSetupFlag = false;
 			
-			//Set default langauge via wgUserLanguage if set
+			//Set default language via wgUserLanguage if set
 			if( typeof wgUserLanguage != 'undefined') {
 				this.config.userLanugage = wgUserLanguage;
 			}
@@ -129,7 +129,7 @@ mw.includeAllModuleMessages();
 				return false;
 			} );
 							
-			$j( embedPlayer ).bind( 'playEvent', function() {
+			$j( embedPlayer ).bind( 'play', function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 			} );
@@ -142,6 +142,7 @@ mw.includeAllModuleMessages();
 		* @param {Function} callback Function to be called once text sources are setup. 
 		*/
 		setupTextSources: function( callback ) {
+			mw.log( 'mw.TimedText::setupTextSources');
 			var _this = this;
 			if( this.textSourceSetupFlag ) {
 				if( callback ) {
@@ -149,6 +150,8 @@ mw.includeAllModuleMessages();
 				}
 				return ;
 			}
+			this.textSourceSetupFlag = true;
+			
 			// Load textSources			
 			_this.loadTextSources( function() {
 				
@@ -157,8 +160,6 @@ mw.includeAllModuleMessages();
 			
 				// Load and parse the text value of enabled text sources:
 				_this.loadEnabledSources();
-				
-				_this.textSourceSetupFlag = true;
 				
 				if( callback ) {
 					callback();
@@ -341,10 +342,36 @@ mw.includeAllModuleMessages();
 				}	
 			}
 		},
+		
+		// Get the current source sub captions
+		getCurrentSubSource: function( callback ){
+			for( var i =0; i < this.enabledSources.length; i++ ){
+				var source = this.enabledSources[i];
+				if( source.category == 'SUB' ){
+					source.load( function(){
+						callback( source);
+					});
+				}
+			}
+			return false;
+		},
+		
+		// Get sub captions by language key:
+		getSubCaptions: function( langKey, callback ){			
+			for( var i in this.textSources ) {
+				var source = this.textSources[ i ];
+				if( source.srclang.toLowerCase() == langKey ) {
+					var source = this.textSources[ i ];
+					source.load( function(){
+						callback( source.captions );
+					});
+				}
+			}
+		},
 				
 		/**
 		* Issue a request to load all enabled Sources
-		*  Should be called anytime enabled Source list is updatd
+		*  Should be called anytime enabled Source list is updated
 		*/
 		loadEnabledSources: function() {
 			for(var i in this.enabledSources ) {
@@ -496,7 +523,6 @@ mw.includeAllModuleMessages();
 			
 			if( source.title ) {
 				return $j.getLineItem( source.title, source_icon, function() {
-					mw.log(" call selectTextSource");
 					_this.selectTextSource( source ); 
 				});
 			}
@@ -507,8 +533,7 @@ mw.includeAllModuleMessages();
 				return $j.getLineItem( 
 					gM('mwe-timedtext-key-language', [langKey, unescape( mw.Language.names[ source.srclang ] )	] ), 
 					source_icon,
-					function() {
-						mw.log(" call selectTextSource");
+					function() {						
 						_this.selectTextSource( source ); 
 					} 
 				);
@@ -592,7 +617,7 @@ mw.includeAllModuleMessages();
 		*/
 		selectTextSource: function( source ) {
 			var _this = this;
-			mw.log(" select source: " + source.srclang );			
+			mw.log("mw.TimedText:: selectTextSource: select lang: " + source.srclang );			
 			
 			// Update the config language if the source includes language
 			if( source.srclang )
@@ -607,16 +632,18 @@ mw.includeAllModuleMessages();
 			this.enabledSources = [];
 			
 			this.enabledSources.push( source );
-			//Set any existing text target to "loading"
+			// Set any existing text target to "loading"
 			if( !source.loaded ) {
 				var $playerTarget = this.embedPlayer.$interface; 			
 				$playerTarget.find('.track').text( gM('mwe-timedtext-loading-text') );
+				// Load the text:
+				source.load( function() {
+					// Refresh the interface: 
+					_this.refreshDisplay();
+				});
+			} else {
+				_this.refreshDisplay();	
 			}
-			// Load the text:
-			source.load( function() {
-				// Refresh the interface: 
-				_this.refreshDisplay();
-			});
 		},
 		
 		/**
@@ -691,7 +718,7 @@ mw.includeAllModuleMessages();
 			}		
 			
 			for(var i in sourcesWithoutCategory) {
-				$langMenu.append( sourcesWithoutCategory[i] )
+				$langMenu.append( sourcesWithoutCategory[i] );
 			}
 			
 			//Add in the "add text" to the end of the interface: 
@@ -720,7 +747,7 @@ mw.includeAllModuleMessages();
 			var $textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
 			// If we are missing the target add it: 
 			if( $textTarget.length == 0) {
-				this.addItextDiv( source.category )
+				this.addItextDiv( source.category );
 				// Re-grab the textTarget:
 				$textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
 			}
@@ -790,7 +817,7 @@ mw.includeAllModuleMessages();
 						'height': playerHeight
 					});
 				}
-			}else if ( layoutMode == 'below') {
+			} else if ( layoutMode == 'below') {
 				// Set the belowBar size to 60 pxiles: 
 				var belowBarHeight = 60; 
 				// Append before controls: 
@@ -815,13 +842,13 @@ mw.includeAllModuleMessages();
 				if( ! this.embedPlayer.controlBuilder.fullscreenMode ){
 					this.embedPlayer.$interface.animate({
 						'height': height
-					})
+					});
 				}
 				mw.log( ' height of ' + this.embedPlayer.id + ' is now: ' + $j( '#' + this.embedPlayer.id ).height() );
 			}
 			mw.log( 'should have been appended: ' + $playerTarget.find('.track').length );
 		}
-	}
+	};
 		
 	/**
 	 * TextSource object extends a base mediaSource object 
@@ -832,7 +859,7 @@ mw.includeAllModuleMessages();
 	 */
 	TextSource = function( source , textProvider) {
 		return this.init( source, textProvider );
-	}
+	};
 	TextSource.prototype = {
 	
 		//The load state:
@@ -870,13 +897,15 @@ mw.includeAllModuleMessages();
 		 */
 		load: function( callback ) {
 			var _this = this;
-						
+			
 			//check if its already loaded:
 			if( _this.loaded ) {
 				if( callback ) { 
 					callback();
 				}
-			}
+			};
+			_this.loaded = true;
+			
 			// Set parser handler: 
 			switch( this.getMIMEType() ) {
 				//Special mediaWiki srt format ( support wiki-text in srt's )
@@ -901,7 +930,7 @@ mw.includeAllModuleMessages();
 			if( this.getSrc() ) {
 				// Issue the direct load request ( if we can ) 
 				if ( !mw.isLocalDomain( this.getSrc() ) ) {
-					mw.log("Error: cant load crossDomain src:" + this.getSrc()   )
+					mw.log("Error: cant load crossDomain src:" + this.getSrc()  );
 					return ;
 				}
 				$j.get( this.getSrc(), function( data ) {
@@ -921,7 +950,9 @@ mw.includeAllModuleMessages();
 				this.textProvider.loadTitleKey( this.titleKey, function( data ) {
 					if( data ) {
 						_this.captions = handler( data );
-					}
+					}				
+					// Update the loaded state:
+					_this.loaded = true;
 					if( callback ) { 
 						callback();
 					}
@@ -958,7 +989,8 @@ mw.includeAllModuleMessages();
 			//No text found in range return false: 
 			return false;
 		}		
-	}
+	};
+	
 	/**	
 	 * parse mediaWiki html srt 
 	 * @param {Object} data XML data string to be parsed
@@ -1041,7 +1073,7 @@ mw.includeAllModuleMessages();
 		srt = srt.replace(/<[a-zA-Z\/][^>]*>/g, ''); 
 	
 		// Get captions
-		var captions = [ ];
+		var captions = [];
 		var caplist = srt.split('\n\n');
 		for (var i = 0; i < caplist.length; i=i+1) {
 	 		var caption = "";
@@ -1081,7 +1113,7 @@ mw.includeAllModuleMessages();
 		}
 	
 		return captions;
-	}
+	};
 	/** 
 	 * CMML parser handle
 	 * @param {Mixed} data String or XML tree of CMML data to be parsed
@@ -1137,8 +1169,8 @@ mw.includeAllModuleMessages();
 	];
 		
 	mw.MediaWikTrackProvider = function( options ) {
-		this.init( options )
-	}	
+		this.init( options );
+	};
 	mw.MediaWikTrackProvider.prototype = {
 		
 		// The api url:
@@ -1225,7 +1257,7 @@ mw.includeAllModuleMessages();
 						'apprefix' : _this.getCanonicalTimedTextNS() + ':' + _this.embedPlayer.apiTitleKey 
 					};
 					mw.getJSON( _this.apiUrl, request, function( sourcePages ) {
-						callback( sourcePages )
+						callback( sourcePages );
 					} );
 				} else {
 					callback( sourcePages );
@@ -1269,7 +1301,7 @@ mw.includeAllModuleMessages();
 	 	},
 	 	
 	 	/**
-	 	 * Return the namespace (if not encoded on the page return default 102 )
+	 	 * Return the namespace ( if not encoded on the page return default 102 )
 	 	 */
 	 	getTimedTextNS: function() {
 	 		if( this.timed_text_NS )
@@ -1298,9 +1330,8 @@ mw.includeAllModuleMessages();
 	 			return true;
 	 		}
 	 		return false;
-	 	}
-	 	
-	 }
+	 	}	 	
+	 };
 	
 	
 } )( window.mw );
@@ -1331,7 +1362,7 @@ mw.includeAllModuleMessages();
 				embedPlayer.timedText = new mw.TimedText( embedPlayer, options);
 			}
 			
-			//show the menu
+			// Show the timedText menu
 			if( action == 'showMenu' ) {
 				// Bind the menu to the target with autoShow = true
 				mw.log('bind menu fn.timedText');
