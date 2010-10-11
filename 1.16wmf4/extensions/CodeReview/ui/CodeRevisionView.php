@@ -7,8 +7,9 @@ class CodeRevisionView extends CodeView {
 		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
+		$this->mRevId = intval( ltrim( $rev, 'r' ) );
 		$this->mRev = $this->mRepo ?
-			$this->mRepo->getRevision( intval( ltrim( $rev, 'r' ) ) ) : null;
+			$this->mRepo->getRevision( $this->mRevId ) : null;
 		$this->mPreviewText = false;
 		# Search path for navigation links
 		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
@@ -37,12 +38,14 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 		if ( !$this->mRev ) {
+			$wgOut->addWikiMsg( 'code-rev-not-found', $this->mRevId );
 			$view = new CodeRevisionListView( $this->mRepo->getName() );
 			$view->execute();
 			return;
 		}
-		if( $this->mStatus == '' )
+		if ( $this->mStatus == '' ) {
 			$this->mStatus = $this->mRev->getStatus();
+		}
 
 		$redirectOnPost = $this->checkPostings();
 		if ( $redirectOnPost ) {
@@ -50,7 +53,7 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 
-		$wgOut->setPageTitle( wfMsgHtml('code-rev-title',$this->mRev->getId()) );
+		$wgOut->setPageTitle( wfMsgHtml( 'code-rev-title', $this->mRev->getIdStringUnique() ) );
 
 		$repoLink = $this->mSkin->link( SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ),
 			htmlspecialchars( $this->mRepo->getName() ) );
@@ -81,7 +84,7 @@ class CodeRevisionView extends CodeView {
 		$special = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mRev->getId() );
 
 		$html = '';
-		if( $this->mPath != '' ) {
+		if ( $this->mPath != '' ) {
 			$html .= wfMsgExt( 'code-browsing-path', 'parse', $this->mPath );
 		}
 		# Output form
@@ -92,12 +95,6 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$html .= $this->formatMetaData( $fields );
-		# Show test case info
-		$tests = $this->formatTests();
-		if( $tests ) {
-			$html .= "<h2 id='code-tests'>" . wfMsgHtml( 'code-tests' ) .
-				"</h2>\n" . $tests;
-		}
 		# Output diff
 		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
@@ -121,11 +118,10 @@ class CodeRevisionView extends CodeView {
 		}
 
 		if ( $this->mReplyTarget ) {
-			global $wgJsMimeType;
 			$id = intval( $this->mReplyTarget );
-			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
-				"document.getElementById('wpReplyTo$id').focus();" .
-				"});</script>\n";
+			$html .= Html::inlineScript(
+				"addOnloadHook(function(){document.getElementById('wpReplyTo$id').focus();});"
+			) . "\n";
 		}
 
 		if ( $this->canPostComments() ) {
@@ -153,11 +149,11 @@ class CodeRevisionView extends CodeView {
 
 		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
-			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, "r$prev",
-				array(), array('path' => $this->mPath) );
+			$links[] = '&lt;&#160;' . $this->mSkin->link( $prevTarget, $this->mRev->getIdString( $prev ),
+				array(), array( 'path' => $this->mPath ) );
 		}
 
-		$revText = "<b>r$rev</b>";
+		$revText = "<b>" . $this->mRev->getIdString( $rev ) . "</b>";
 		$viewvc = $this->mRepo->getViewVcBase();
 		if ( $viewvc ) {
 			$url = htmlspecialchars( "$viewvc/?view=rev&revision=$rev" );
@@ -168,8 +164,8 @@ class CodeRevisionView extends CodeView {
 
 		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
-			$links[] = $this->mSkin->link( $nextTarget, "r$next",
-				array(), array('path' => $this->mPath) ) . '&nbsp;&gt;';
+			$links[] = $this->mSkin->link( $nextTarget, $this->mRev->getIdString( $next ),
+				array(), array( 'path' => $this->mPath ) ) . '&#160;&gt;';
 		}
 
 		return $wgLang->pipeList( $links );
@@ -180,8 +176,6 @@ class CodeRevisionView extends CodeView {
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
 			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
-			$parent = $wgRequest->getIntOrNull( 'wpParent' );
-			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if ( $isPreview ) {
 				// Save the text for reference on later comment display...
@@ -190,7 +184,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return false;
 	}
-	
+
 	protected function canPostComments() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'codereview-post-comment' ) && !$wgUser->isBlocked();
@@ -239,7 +233,7 @@ class CodeRevisionView extends CodeView {
 				array_map(
 					array( $this, 'formatTag' ),
 					$tags )
-			) . '&nbsp;';
+			) . '&#160;';
 		}
 		if ( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
 			$list .= $this->addTagForm( $this->mAddTags, $this->mRemoveTags );
@@ -261,16 +255,15 @@ class CodeRevisionView extends CodeView {
 	}
 
 	static function listTags( $tags ) {
-		if ( empty( $tags ) )
+		if ( empty( $tags ) ) {
 			return "";
+		}
 		return implode( ",", $tags );
 	}
 
 	protected function statusForm() {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'codereview-set-status' ) ) {
-			$repo = $this->mRepo->getName();
-			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				self::buildStatusList( $this->mStatus, $this ) .
 				xml::closeElement( 'select' );
@@ -293,7 +286,7 @@ class CodeRevisionView extends CodeView {
 	static function addTagForm( $addTags, $removeTags ) {
 		return '<div><table><tr><td>' .
 			Xml::inputLabel( wfMsg( 'code-rev-tag-add' ), 'wpTag', 'wpTag', 20,
-				self::listTags( $addTags ) ) . '</td><td>&nbsp;</td><td>' .
+				self::listTags( $addTags ) ) . '</td><td>&#160;</td><td>' .
 			Xml::inputLabel( wfMsg( 'code-rev-tag-remove' ), 'wpRemoveTag', 'wpRemoveTag', 20,
 				self::listTags( $removeTags ) ) . '</td></tr></table></div>';
 	}
@@ -302,56 +295,6 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
-	}
-
-	protected function formatTests() {
-		$runs = $this->mRev->getTestRuns();
-		$html = '';
-		if( count( $runs ) ) {
-			foreach( $runs as $run ) {
-				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
-				if( $run->status == 'complete' ) {
-					global $wgLang;
-
-					$total = $run->countTotal;
-					$success = $run->countSuccess;
-					$failed = $total - $success;
-					$success_tests = "<span class='mw-codereview-success'>" . $wgLang->formatNum( $success ) . "</span>";
-					if( $failed ) {
-						$failed_tests = "<span class='mw-codereview-fail'>" . $wgLang->formatNum( $failed ) . "</span>";
-						$html .= wfMsgExt(
-							'codereview-tests-failed2',
-							'parse',
-							$success_tests,
-							$success,
-							$failed_tests,
-							$failed
-						);
-
-						$tests = $run->getResults( false );
-						$html .= "<ul>\n";
-						foreach( $tests as $test ) {
-							$html .= "<li>" . htmlspecialchars( $test->caseName ) . "</li>\n";
-						}
-						$html .= "</ul>\n";
-					} else {
-						$html .= wfMsgExt(
-							'codereview-tests-succeeded2',
-							'parseinline',
-							$success_tests,
-							$success
-						);
-					}
-				} elseif( $run->status == "running" ) {
-					$html .= wfMsgExt('codereview-tests-running','parse');
-				} elseif( $run->status == "abort" ) {
-					$html .= wfMsgExt('codereview-tests-aborted','parse');
-				} else {
-					// Err, this shouldn't happen?
-				}
-			}
-		}
-		return $html;
 	}
 
 	protected function formatDiff() {
@@ -385,7 +328,7 @@ class CodeRevisionView extends CodeView {
 			return $hilite->render( $diff );
 		}
 	}
-	
+
 	protected function formatImgDiff() {
 		global $wgCodeReviewImgRegex;
 		// Get image diffs
@@ -393,16 +336,16 @@ class CodeRevisionView extends CodeView {
 		$modifiedPaths = $this->mRev->getModifiedPaths();
 		foreach ( $modifiedPaths as $row ) {
 			// Typical image file?
-			if( preg_match($wgCodeReviewImgRegex,$row->cp_path) ) {
-				$imgDiffs .= 'Index: '.htmlspecialchars( $row->cp_path )."\n";
+			if ( preg_match( $wgCodeReviewImgRegex, $row->cp_path ) ) {
+				$imgDiffs .= 'Index: ' . htmlspecialchars( $row->cp_path ) . "\n";
 				$imgDiffs .= '<table border="1px" style="background:white;"><tr>';
-				if( $row->cp_action !== 'A' ) { // old
+				if ( $row->cp_action !== 'A' ) { // old
 					// What was done to it?
 					$action = $row->cp_action == 'D' ? 'code-rev-modified-d' : 'code-rev-modified-r';
 					// Link to old image
 					$imgDiffs .= $this->formatImgCell( $row->cp_path, $this->mRev->getPrevious(), $action );
 				}
-				if( $row->cp_action !== 'D' ) { // new
+				if ( $row->cp_action !== 'D' ) { // new
 					// What was done to it?
 					$action = $row->cp_action == 'A' ? 'code-rev-modified-a' : 'code-rev-modified-m';
 					// Link to new image
@@ -411,13 +354,13 @@ class CodeRevisionView extends CodeView {
 				$imgDiffs .= "</tr></table>\n";
 			}
 		}
-		if( $imgDiffs ) {
-			$html = '<h2>'.wfMsgHtml('code-rev-imagediff').'</h2>';
+		if ( $imgDiffs ) {
+			$html = '<h2>' . wfMsgHtml( 'code-rev-imagediff' ) . '</h2>';
 			$html .= "<div class='mw-codereview-imgdiff'>$imgDiffs</div>\n";
 		}
 		return $html;
 	}
-	
+
 	protected function formatImgCell( $path, $rev, $message ) {
 		$viewvc = $this->mRepo->getViewVcBase();
 		$safePath = wfUrlEncode( $path );
@@ -438,10 +381,10 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function stubDiffLoader() {
-		global $wgOut, $wgScriptPath, $wgCodeReviewStyleVersion;
+		global $wgOut, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
 		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
 		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
-		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js?$wgCodeReviewStyleVersion" );
+		$wgOut->addScriptFile( "$wgExtensionAssetsPath/CodeReview/codereview.js?$wgCodeReviewStyleVersion" );
 		$wgOut->addInlineScript(
 			"addOnloadHook(
 				function() {
@@ -473,7 +416,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<ul class='mw-codereview-changes'>$changes</ul>";
 	}
-	
+
 	protected function formatReferences() {
 		$refs = implode( "\n",
 			array_map( array( $this, 'formatReferenceInline' ), $this->mRev->getReferences() )
@@ -481,10 +424,10 @@ class CodeRevisionView extends CodeView {
 		if ( !$refs ) {
 			return false;
 		}
-		$header = '<th>'.wfMsg( 'code-field-id' ).'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-message' ) .'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-author' ).'</th>';
-		$header .= '<th>'.wfMsg( 'code-field-timestamp' ).'</th>';
+		$header = '<th>' . wfMsg( 'code-field-id' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-message' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-author' ) . '</th>';
+		$header .= '<th>' . wfMsg( 'code-field-timestamp' ) . '</th>';
 		return "<table border='1' class='TablePager'><tr>{$header}</tr>{$refs}</table>";
 	}
 
@@ -499,32 +442,32 @@ class CodeRevisionView extends CodeView {
 
 	protected function formatChangeInline( $change ) {
 		global $wgLang;
-		$revId = $change->rev->getId();
+		$revId = $change->rev->getIdString();
 		$line = $wgLang->timeanddate( $change->timestamp, true );
-		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
+		$line .= '&#160;' . $this->mSkin->userLink( $change->user, $change->userText );
 		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
 		// Uses messages 'code-change-status', 'code-change-tags'
-		$line .= '&nbsp;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
+		$line .= '&#160;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
 		$line .= " <i>[";
 		// Items that were changed or set...
 		if ( $change->removed ) {
 			$line .= '<b>' . wfMsg( 'code-change-removed' ) . '</b> ';
 			// Status changes...
-			if( $change->attrib == 'status' ) {
-				$line .= wfMsgHtml( 'code-status-'.$change->removed );
-				$line .= $change->added ? "&nbsp;" : ""; // spacing
+			if ( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-' . $change->removed );
+				$line .= $change->added ? "&#160;" : ""; // spacing
 			// Tag changes
-			} else if( $change->attrib == 'tags' ) {
+			} else if ( $change->attrib == 'tags' ) {
 				$line .= htmlspecialchars( $change->removed );
-				$line .= $change->added ? "&nbsp;" : ""; // spacing
+				$line .= $change->added ? "&#160;" : ""; // spacing
 			}
 		}
 		// Items that were changed to something else...
 		if ( $change->added ) {
 			$line .= '<b>' . wfMsg( 'code-change-added' ) . '</b> ';
 			// Status changes...
-			if( $change->attrib == 'status' ) {
-				$line .= wfMsgHtml( 'code-status-'.$change->added );
+			if ( $change->attrib == 'status' ) {
+				$line .= wfMsgHtml( 'code-status-' . $change->added );
 			// Tag changes...
 			} else {
 				$line .= htmlspecialchars( $change->added );
@@ -533,7 +476,7 @@ class CodeRevisionView extends CodeView {
 		$line .= "]</i>";
 		return "<li>$line</li>";
 	}
-	
+
 	protected function formatReferenceInline( $row ) {
 		global $wgLang;
 		$rev = intval( $row->cr_id );
@@ -542,7 +485,7 @@ class CodeRevisionView extends CodeView {
 		$css = 'mw-codereview-status-' . htmlspecialchars( $row->cr_status );
 		$date = $wgLang->timeanddate( $row->cr_timestamp, true );
 		$title = SpecialPage::getTitleFor( 'Code', "$repo/$rev" );
-		$revLink = $this->mSkin->link( $title, "r$rev" );
+		$revLink = $this->mSkin->link( $title, $this->mRev->getIdString( $rev ) );
 		$summary = $this->messageFragment( $row->cr_message );
 		$author = $this->authorLink( $row->cr_author );
 		return "<tr class='$css'><td>$revLink</td><td>$summary</td><td>$author</td><td>$date</td></tr>";
@@ -574,7 +517,7 @@ class CodeRevisionView extends CodeView {
 
 		if ( $comment->id === 0 ) {
 			$linkId = 'cpreview';
-			$permaLink = '<strong>'.wfMsgHtml('code-rev-inline-preview').'</strong> ';
+			$permaLink = '<strong>' . wfMsgHtml( 'code-rev-inline-preview' ) . '</strong> ';
 		} else {
 			$linkId = 'c' . intval( $comment->id );
 			$permaLink = $this->mSkin->link( $this->commentLink( $comment->id ), "#" );
@@ -590,7 +533,7 @@ class CodeRevisionView extends CodeView {
 			wfMsgHtml( 'code-rev-comment-by',
 				$this->mSkin->userLink( $comment->user, $comment->userText ) .
 				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
-			' &nbsp; ' .
+			' &#160; ' .
 			$wgLang->timeanddate( $comment->timestamp, true ) .
 			' ' .
 			$this->commentReplyLink( $comment->id ) .
@@ -626,8 +569,7 @@ class CodeRevisionView extends CodeView {
 			$preview = '';
 			$text = $this->text;
 		}
-		$repo = $this->mRepo->getName();
-		$rev = $this->mRev->getId();
+
 		if ( !$this->canPostComments() ) {
 			return '';
 		}

@@ -42,7 +42,6 @@ table.mw-codereview-meta td {
 	padding-left: 48px;
 }
 
-
 .mw-codereview-status-new td {
 	background: #ffffc0 !important;
 }
@@ -78,6 +77,10 @@ table.mw-codereview-meta td {
 	text-decoration: line-through !important;
 }
 .mw-codereview-status-deferred td {
+	color: #666;
+}
+
+.mw-codereview-status-old td {
 	color: #666;
 }
 

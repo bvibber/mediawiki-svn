@@ -117,14 +117,20 @@ class CodeRepository {
 			array( 'cr_repo_id' => $this->getId() ),
 			__METHOD__,
 			array( 'GROUP BY' => 'cr_author',
-				'ORDER BY' => 'time DESC', 'LIMIT' => 500 )
+				'ORDER BY' => 'cr_author', 'LIMIT' => 500 )
 		);
 		$authors = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
-			$authors[] = $row->cr_author;
+		foreach( $res as $row ) {
+			if ( $row->cr_author !== null ) {
+				$authors[] = array( 'author' => $row->cr_author, 'lastcommit' => $row->time );
+			}
 		}
 		$wgMemc->set( $key, $authors, 3600 * 24 );
 		return $authors;
+	}
+
+	public function getAuthorCount() {
+		return count( $this->getAuthorList() );
 	}
 
 	public function getTagList() {
@@ -167,29 +173,39 @@ class CodeRepository {
 			),
 			__METHOD__
 		);
-		if ( !$row )
+		if ( !$row ) {
 			throw new MWException( 'Failed to load expected revision data' );
+		}
 		return CodeRevision::newFromRow( $this, $row );
 	}
-	
+
 	/**
-	 * Load test suite information
+	 * Returns the supplied revision ID as a string ready for output, including the
+	 * appropriate (localisable) prefix (e.g. "r123" instead of 123).
 	 */
-	public function getTestSuite( $name ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'code_test_suite',
-			'*',
-			array(
-				'ctsuite_repo_id' => $this->getId(),
-				'ctsuite_name' => $name,
-			),
-			__METHOD__
-		);
-		if( $row ) {
-			return CodeTestSuite::newFromRow( $this, $row );
-		} else {
-			return null;
+	public function getRevIdString( $id ) {
+		return wfMsg( 'code-rev-id', $id );
+	}
+
+	/**
+	 * Like getRevIdString(), but if more than one repository is defined
+	 * on the wiki then it includes the repo name as a prefix to the revision ID
+	 * (separated with a period).
+	 * This ensures you get a unique reference, as the revision ID alone can be
+	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
+	 * defined then this returns the same as getRevIdString() as there
+	 * is no ambiguity.
+	 */
+	public function getRevIdStringUnique( $id ) {
+		$id = wfMsg( 'code-rev-id', $id );
+
+	// If there is more than one repo, use the repo name as well.
+		$repos = CodeRepository::getRepoList();
+		if ( count( $repos ) > 1 ) {
+			$id = $this->getName() . "." . $id;
 		}
+
+		return $id;
 	}
 
 	/**
@@ -258,11 +274,11 @@ class CodeRepository {
 		wfProfileOut( __METHOD__ );
 		return $data;
 	}
-	
+
 	/**
 	 * Set diff cache (for import operations)
 	 * @param $codeRev CodeRevision
-	 */	
+	 */
 	public function setDiffCache( CodeRevision $codeRev ) {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
@@ -377,15 +393,17 @@ class CodeRepository {
 			__METHOD__
 		);
 		$user = null;
-		if ( $wikiUser !== false )
+		if ( $wikiUser !== false ) {
 			$user = User::newFromName( $wikiUser );
-		if ( $user instanceof User )
+		}
+		if ( $user instanceof User ){
 			$res = $user;
-		else
+		} else {
 			$res = false;
+		}
 		return self::$userLinks[$author] = $res;
 	}
-	
+
 	/*
 	 * returns an author name if $name wikiuser has an author associated,
 	 * or false
@@ -393,7 +411,7 @@ class CodeRepository {
 	public function wikiUserAuthor( $name ) {
 		if ( isset( self::$authorLinks[$name] ) )
 			return self::$authorLinks[$name];
-	
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->selectField(
 			'code_authors',

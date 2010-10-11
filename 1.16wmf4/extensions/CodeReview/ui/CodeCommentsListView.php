@@ -23,6 +23,7 @@ class CodeCommentsListView extends CodeView {
 	function getPager() {
 		return new CodeCommentsTablePager( $this );
 	}
+
 	function getRepo() {
 		return $this->mRepo;
 	}
@@ -35,7 +36,9 @@ class CodeCommentsTablePager extends SvnTablePager {
 		return $field == 'cr_timestamp';
 	}
 
-	function getDefaultSort() { return 'cc_timestamp'; }
+	function getDefaultSort() {
+		return 'cc_timestamp';
+	}
 
 	function getQueryInfo() {
 		return array(
@@ -60,7 +63,6 @@ class CodeCommentsTablePager extends SvnTablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgLang;
 		switch( $name ) {
 		case 'cc_rev_id':
 			return $this->mView->mSkin->link(
@@ -72,7 +74,7 @@ class CodeCommentsTablePager extends SvnTablePager {
 					$this->mRepo->getName() . '/status/' . $value ),
 				htmlspecialchars( $this->mView->statusDesc( $value ) ) );
 		case 'cc_user_text':
-			return $this->mView->mSkin->userLink( -1, $value );
+			return $this->mView->mSkin->userLink( - 1, $value );
 		case 'cr_message':
 			return $this->mView->messageFragment( $value );
 		case 'cc_text':

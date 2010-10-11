@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'CodeReview',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CodeReview',
 	'author' => array( 'Brion Vibber', 'Aaron Schulz', 'Alexandre Emsenhuber', 'Chad Horohoe' ),
-	'descriptionmsg' => 'code-desc',
+	'descriptionmsg' => 'codereview-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -40,7 +40,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'api/ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'api/ApiCodeDiff.php';
 $wgAutoloadClasses['ApiCodeComments'] = $dir . 'api/ApiCodeComments.php';
-$wgAutoloadClasses['ApiCodeTestUpload'] = $dir . 'api/ApiCodeTestUpload.php';
+$wgAutoloadClasses['ApiCodeRevisions'] = $dir . 'api/ApiCodeRevisions.php';
 
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'backend/Subversion.php';
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'backend/DiffHighlighter.php';
@@ -52,11 +52,10 @@ $wgAutoloadClasses['CodeCommentLinker'] = $dir . 'backend/CodeCommentLinker.php'
 $wgAutoloadClasses['CodeCommentLinkerHtml'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodeCommentLinkerWiki'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'backend/CodePropChange.php';
-$wgAutoloadClasses['CodeTestSuite'] = $dir . 'backend/CodeTestSuite.php';
-$wgAutoloadClasses['CodeTestRun'] = $dir . 'backend/CodeTestRun.php';
-$wgAutoloadClasses['CodeTestResult'] = $dir . 'backend/CodeTestResult.php';
+$wgAutoloadClasses['RepoStats'] = $dir . 'backend/RepoStats.php';
 
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'ui/CodeRepoListView.php';
+$wgAutoloadClasses['CodeRepoStatsView'] = $dir . 'ui/CodeRepoStatsView.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'ui/CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionAuthorLink'] = $dir . 'ui/CodeRevisionAuthorLink.php';
 $wgAutoloadClasses['CodeRevisionCommitter'] = $dir . 'ui/CodeRevisionCommitter.php';
@@ -82,8 +81,8 @@ $wgSpecialPageGroups['RepoAdmin'] = 'developer';
 
 $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
 $wgAPIModules['codediff'] = 'ApiCodeDiff';
-$wgAPIModules['codetestupload'] = 'ApiCodeTestUpload';
 $wgAPIListModules['codecomments'] = 'ApiCodeComments';
+$wgAPIListModules['coderevisions'] = 'ApiCodeRevisions';
 
 $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
@@ -142,38 +141,58 @@ $wgCodeReviewCommentWatcher = false;
 // What images can be used for client-side side-by-side comparisons?
 $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 
-// Set to a secret string for HMAC validation of test run data uploads.
-// Should match test runner's $wgParserTestRemote['secret'].
-$wgCodeReviewSharedSecret = false;
-
 /**
  * Maximum size of diff text before it is omitted from the revision view
  */
 $wgCodeReviewMaxDiffSize = 500000;
 
 /**
- * Any base paths matching regular expressions in this array will have their
+ * Key is repository name. Value is an array of regexes
+ *
+ * Any base paths matching regular expressions in these arrays will have their
  * default status set to deferred instead of new. Helpful if you've got a part
  * of the repository you don't care about.
  */
 $wgCodeReviewDeferredPaths = array();
 
+/**
+ * UDP comment and status changes notification
+ */
+$wgCRUDPAddress = false;
+$wgCRUDPPort = false;
+$wgCRUDPPrefix = '';
+
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
-function efCodeReviewSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
-	$base = dirname(__FILE__);
-	if( $wgDBtype == 'mysql' ) {
-		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
-		$wgExtNewFields[] = array( 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql" );
-		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
-		//$wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
-		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
-		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
-	} elseif( $wgDBtype == 'postgres' ) {
+function efCodeReviewSchemaUpdates( $updater ) {
+	$base = dirname( __FILE__ );
+	switch ( $updater->getDB()->getType() ) {
+	case 'mysql':
+		$updater->addExtensionUpdate( array( 'addTable', 'code_rev', "$base/codereview.sql", true ) ); // Initial install tables
+		$updater->addExtensionUpdate( array( 'addField', 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql", true ) );
+		$updater->addExtensionUpdate( array( 'addIndex', 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql", true ) );
+
+		if ( !$updater->updateRowExists( 'make cr_status varchar' ) ) {
+			$updater->addExtensionUpdate( array( 'modifyField', 'code_rev', 'cr_status', "$base/archives/codereview-cr_status_varchar.sql", true ) );
+		}
+
+		$updater->addExtensionUpdate( array( 'addTable', 'code_bugs', "$base/archives/code_bugs.sql", true ) );
+		break;
+	case 'sqlite':
+		$updater->addExtensionUpdate( array( 'addTable', 'code_rev', "$base/codereview.sql", true ) );
+		break;
+	case 'postgres':
 		// TODO
+		break;
 	}
 	return true;
 }
 
+# Unit tests
+$wgHooks['UnitTestsList'][] = 'efCodeReviewUnitTests';
+
+function efCodeReviewUnitTests( &$files ) {
+	$files[] = dirname( __FILE__ ) . '/tests/CodeReviewTest.php';
+	return true;
+}

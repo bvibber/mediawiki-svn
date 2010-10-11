@@ -9,7 +9,6 @@ class SpecialRepoAdmin extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser;
 
-		wfLoadExtensionMessages( 'CodeReview' );
 		$this->setHeaders();
 
 		if ( !$this->userCanExecute( $wgUser ) ) {

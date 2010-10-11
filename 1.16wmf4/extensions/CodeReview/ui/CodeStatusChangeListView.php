@@ -23,6 +23,7 @@ class CodeStatusChangeListView extends CodeView {
 	function getPager() {
 		return new CodeStatusChangeTablePager( $this );
 	}
+
 	function getRepo() {
 		return $this->mRepo;
 	}
@@ -61,7 +62,7 @@ class CodeStatusChangeTablePager extends SvnTablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgUser, $wgLang;
+		global $wgLang;
 		switch( $name ) {
 		case 'cpc_rev_id':
 			return $this->mView->mSkin->link(
@@ -75,7 +76,7 @@ class CodeStatusChangeTablePager extends SvnTablePager {
 					$this->mRepo->getName() . '/status/' . $value ),
 				htmlspecialchars( $this->mView->statusDesc( $value ) ) );
 		case 'cpc_user_text':
-			return $this->mView->mSkin->userLink( -1, $value );
+			return $this->mView->mSkin->userLink( - 1, $value );
 		case 'cpc_removed':
 			return wfMsgHtml( $value ? "code-status-$value" : "code-status-new" );
 		case 'cpc_added':

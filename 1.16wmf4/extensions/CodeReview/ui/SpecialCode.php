@@ -7,17 +7,15 @@ class SpecialCode extends SpecialPage {
 	}
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest, $wgUser, $wgScriptPath, $wgCodeReviewStyleVersion;
+		global $wgOut, $wgRequest, $wgUser, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
 
-		wfLoadExtensionMessages( 'CodeReview' );
-
-		if( !$this->userCanExecute( $wgUser ) ) {
+		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;
 		}
 
 		$this->setHeaders();
-		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
+		$wgOut->addStyle( "$wgExtensionAssetsPath/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
 		# Remove stray slashes
 		$subpage = preg_replace( '/\/$/', '', $subpage );
 		if ( $subpage == '' ) {
@@ -34,6 +32,9 @@ class SpecialCode extends SpecialPage {
 					break;
 				} elseif ( $params[1] === 'author' ) {
 					$view = new CodeAuthorListView( $params[0] );
+					break;
+				} elseif ( $params[1] === 'stats' ) {
+					$view = new CodeRepoStatsView( $params[0] );
 					break;
 				} elseif ( $params[1] === 'status' ) {
 					$view = new CodeStatusListView( $params[0] );
@@ -71,10 +72,11 @@ class SpecialCode extends SpecialPage {
 					break;
 				} else {
 					# Nonsense parameters, back out
-					if ( empty( $params[1] ) )
+					if ( empty( $params[1] ) ) {
 						$view = new CodeRevisionListView( $params[0] );
-					else
+					} else {
 						$view = new CodeRevisionView( $params[0], $params[1] );
+					}
 					break;
 				}
 			case 4:
@@ -90,6 +92,13 @@ class SpecialCode extends SpecialPage {
 				$wgOut->addWikiText( wfMsg( 'nosuchactiontext' ) );
 				$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
 				return;
+			}
+
+			// If a repository was specified, but it does not exist, redirect to the
+			// repository list with an appropriate message.
+			if ( !$view->mRepo ) {
+				$view = new CodeRepoListView();
+				$wgOut->addWikiMsg( 'code-repo-not-found', wfEscapeWikiText( $params[0] ) );
 			}
 		}
 		$view->execute();
@@ -120,7 +129,7 @@ abstract class CodeView {
 		return $wgRequest->wasPosted()
 			&& $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) )
 			&& $wgUser->isAllowed( $permission );
-	}	
+	}
 
 	abstract function execute();
 
@@ -129,13 +138,15 @@ abstract class CodeView {
 	 *	of false
 	*/
 	function authorWikiUser( $author ) {
-		return $this->mRepo->authorWikiUser( $author );
+		if ( $this->mRepo )
+			return $this->mRepo->authorWikiUser( $author );
+		return false;
 	}
 
-	function authorLink( $author, $extraParams=array() ) {
+	function authorLink( $author, $extraParams = array() ) {
 		$repo = $this->mRepo->getName();
-		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );			
-		return $this->mSkin->link( $special, htmlspecialchars( $author ), array(),  $extraParams);
+		$special = SpecialPage::getTitleFor( 'Code', "$repo/author/$author" );
+		return $this->mSkin->link( $special, htmlspecialchars( $author ), array(), $extraParams );
 	}
 
 	function statusDesc( $status ) {
@@ -154,8 +165,7 @@ abstract class CodeView {
 		$lines = explode( "\n", $message, 2 );
 		$first = $lines[0];
 		$html = $this->formatMessage( $first );
-		$linker = new CodeCommentLinkerHtml( $this->mRepo );
-		return $linker->truncateHtml( $html, 80 );
+		return $wgLang->truncateHtml( $html, 80 );
 	}
 	/*
 	 * Formatted HTML array for properties display
@@ -206,7 +216,7 @@ abstract class SvnTablePager extends TablePager {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value, $row ) );
 			if ( $formatted == '' ) {
-				$formatted = '&nbsp;';
+				$formatted = '&#160;';
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$s .= "<td class=\"$class\">$formatted</td>\n";

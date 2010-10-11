@@ -1,10 +1,11 @@
 <?php
 
 /**
- * Created on Oct 29, 2008
+ * Created on July 06, 2010
  *
  * API for MediaWiki 1.8+
  *
+ * Copyright © 2010 Sam Reed
  * Copyright © 2008 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,25 +24,23 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-class ApiCodeComments extends ApiQueryBase {
+class ApiCodeRevisions extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
-		parent::__construct( $query, $moduleName, 'cc' );
+		parent::__construct( $query, $moduleName, 'cr' );
 	}
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
-			$this->dieUsage( 'You don\'t have permission to view code comments', 'permissiondenied' );
+			$this->dieUsage( 'You don\'t have permission to view code revisions', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
 
 		$this->props = array_flip( $params['prop'] );
-		if ( isset( $this->props['revision'] ) ) {
-			$this->setWarning( 'ccprop=revision has been deprecated in favor of ccprop=status' );
-		}
 
-		$listview = new CodeCommentsListView( $params['repo'] );
+		$listview = new CodeRevisionListView( $params['repo'] );
 		if ( is_null( $listview->getRepo() ) ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		}
@@ -55,12 +54,12 @@ class ApiCodeComments extends ApiQueryBase {
 
 		$pager->doQuery();
 
-		$comments = $pager->getResult();
+		$revisions = $pager->getResult();
 		$data = array();
 
 		$count = 0;
 		$lastTimestamp = 0;
-		while ( $row = $comments->fetchObject() ) {
+		while ( $row = $revisions->fetchObject() ) {
 			if ( $count == $limit ) {
 				$this->setContinueEnumParameter( 'start',
 					wfTimestamp( TS_ISO_8601, $lastTimestamp ) );
@@ -68,33 +67,40 @@ class ApiCodeComments extends ApiQueryBase {
 			}
 
 			$data[] = $this->formatRow( $row );
-			$lastTimestamp = $row->cc_timestamp;
+			$lastTimestamp = $row->cr_timestamp;
 			$count++;
 		}
-		$comments->free();
+		$revisions->free();
 
 		$result = $this->getResult();
-		$result->setIndexedTagName( $data, 'comment' );
+		$result->setIndexedTagName( $data, 'revision' );
 		$result->addValue( 'query', $this->getModuleName(), $data );
 	}
 
 	private function formatRow( $row ) {
 		$item = array();
 		if ( isset( $this->props['revid'] ) ) {
-			$item['revid'] = $row->cc_rev_id;
+			$item['revid'] = intval( $row->cr_rev_id );
 		}
-		if ( isset( $this->props['timestamp'] ) ) {
-			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cc_timestamp );
-		}
-		if ( isset( $this->props['user'] ) ) {
-			$item['user'] = $row->cc_user_text;
-		}
-		if ( isset( $this->props['revision'] ) || isset( $this->props['status'] ) ) {
+		if ( isset( $this->props['status'] ) ) {
 			$item['status'] = $row->cr_status;
 		}
-		if ( isset( $this->props['text'] ) ) {
-			ApiResult::setContent( $item, $row->cc_text );
+		if ( isset( $this->props['commentcount'] ) ) {
+			$item['commentcount'] = $row->comments;
 		}
+		if ( isset( $this->props['path'] ) ) {
+			$item['path'] = $row->cr_path;
+		}
+		if ( isset( $this->props['message'] ) ) {
+			ApiResult::setContent( $item, $row->cr_message );
+		}
+		if ( isset( $this->props['author'] ) ) {
+			$item['author'] = $row->cr_author;
+		}
+		if ( isset( $this->props['timestamp'] ) ) {
+			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cr_timestamp );
+		}
+
 		return $item;
 	}
 
@@ -116,14 +122,15 @@ class ApiCodeComments extends ApiQueryBase {
 			),
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'timestamp|user|status|revid',
+				ApiBase::PARAM_DFLT => 'revid|author|status|timestamp',
 				ApiBase::PARAM_TYPE => array(
-					'timestamp',
-					'user',
-					'status',
-					'text',
 					'revid',
-					'revision',
+					'status',
+					'commentcount',
+					'path',
+					'message',
+					'author',
+					'timestamp',
 				),
 			),
 		);
@@ -132,28 +139,28 @@ class ApiCodeComments extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'repo' => 'Name of the repository',
-			'limit' => 'How many comments to return',
+			'limit' => 'How many revisions to return',
 			'start' => 'Timestamp to start listing at',
-			'prop' => 'Which properties to return. revision is a deprecated alias for status',
+			'prop' => 'Which properties to return',
 		);
 	}
 
 	public function getDescription() {
-		return 'List comments on revisions in CodeReview';
+		return 'List revisions in CodeReview';
 	}
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'repo' ),
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view code comments' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view code revisions' ),
 			array( 'code' => 'invalidrepo', 'info' => "Invalid repo ``repo''" ),
 		) );
 	}
 
 	public function getExamples() {
 		return array(
-			'api.php?action=query&list=codecomments&ccrepo=MediaWiki',
-			'api.php?action=query&list=codecomments&ccrepo=MediaWiki&ccprop=timestamp|user|revision|text',
+			'api.php?action=query&list=coderevisions&crrepo=MediaWiki',
+			'api.php?action=query&list=coderevisions&crrepo=MediaWiki&crprop=revid|author|status|timestamp',
 		);
 	}
 

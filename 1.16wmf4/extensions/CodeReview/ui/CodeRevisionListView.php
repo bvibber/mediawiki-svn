@@ -31,15 +31,11 @@ class CodeRevisionListView extends CodeView {
 		}
 
 		$this->showForm();
-		
-		//get the total count across all pages
+
+		// Get the total count across all pages
 		$dbr = wfGetDB( DB_SLAVE );
-		$revCountRes = $this->getRevCountQuery( $dbr );
-		$revCount = 0;		 
-		if ( $revCountRes !== false ) {		
-			$revCount = $revCountRes->rev_count;
-		}
-		
+		$revCount = $this->getRevCount( $dbr );
+
 		$pager = $this->getPager();
 
 		// Build batch change interface as needed
@@ -50,12 +46,12 @@ class CodeRevisionListView extends CodeView {
 			'<table><tr><td>' .
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
-			'</td><td style="padding-left: 2em;">' . 
-			'&nbsp;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' . 
-			'</td></tr></table>' .  
+			'</td><td style="padding-left: 2em;">' .
+			'&#160;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' .
+			'</td></tr></table>' .
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
-			) . 
+			) .
 			$pager->getBody() .
 			$pager->getNavigationBar() .
 			( $this->batchForm ? $this->buildBatchInterface( $pager ) : "" ) .
@@ -99,10 +95,11 @@ class CodeRevisionListView extends CodeView {
 
 		// Automatically refresh
 		// This way of getting GET parameters is horrible, but effective.
-		$fields = array_merge( $_GET, $_POST );
+		$fields = $wgRequest->getValues();
 		foreach ( array_keys( $fields ) as $key ) {
-			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' )
+			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' ) {
 				unset( $fields[$key] );
+			}
 		}
 
 		global $wgOut;
@@ -129,7 +126,9 @@ class CodeRevisionListView extends CodeView {
 			$changeFields['code-batch-tags'] = CodeRevisionView::addTagForm( '', '' );
 		}
 
-		if ( !count( $changeFields ) ) return ''; // nothing to do here
+		if ( !count( $changeFields ) ) {
+			return ''; // nothing to do here
+		}
 
 		$changeInterface = Xml::fieldset( wfMsg( 'codereview-batch-title' ),
 				Xml::buildForm( $changeFields, 'codereview-batch-submit' ) );
@@ -152,15 +151,15 @@ class CodeRevisionListView extends CodeView {
 			"<fieldset><legend>" . wfMsgHtml( 'code-pathsearch-legend' ) . "</legend>" .
 				'<table width="100%"><tr><td>' .
 				Xml::inputlabel( wfMsg( "code-pathsearch-path" ), 'path', 'path', 55, $this->mPath ) .
-				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . 
+				'&#160;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 				'</td>'
 		);
-		if ( strlen( $this->mAppliedFilter) ) {
+		if ( strlen( $this->mAppliedFilter ) ) {
 			$wgOut->addHTML(
-				'<td>' .  
-				Xml::label(wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
-				Xml::span( $this->mAppliedFilter, '') . '</strong>&nbsp;' .
-				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) . 
+				'<td>' .
+				Xml::label( wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
+				Xml::span( $this->mAppliedFilter, '' ) . '</strong>&#160;' .
+				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) .
 				'</td>' .
 				Xml::hidden( 'title', SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ) )
 			);
@@ -173,31 +172,48 @@ class CodeRevisionListView extends CodeView {
 	function getPager() {
 		return new SvnRevTablePager( $this );
 	}
-	
-	function getRevCountQuery( $dbr ) {
+
+	/**
+	 * Get total number of revisions for this revision view
+	 *
+	 * @return int Number of revisions
+	 */
+	function getRevCount( $dbr ) {
 		$tables = array( 'code_rev' );
 		$selectFields = array( 'COUNT( DISTINCT cr_id ) AS rev_count' );
-		// count if code_rev where path matches
-		if ( strlen($this->mPath) ) {
+		// Count if code_rev where path matches
+		if ( strlen( $this->mPath ) ) {
 			$tables[] = 'code_paths';
-			$whereCond = array('cr_repo_id' => $this->mRepo->getId(),
-							'cr_id = cp_rev_id', 
+			$whereCond = array(
+							'cr_repo_id' => $this->mRepo->getId(),
+							'cr_id = cp_rev_id',
 							' cp_path' . $dbr->buildLike( $this->mPath, $dbr->anyString() ),
-							// performance
+							// Performance
 							' cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
 						);
 		// No path; count of code_rev
 		} else {
-			$whereCond = array('cr_repo_id' => $this->mRepo->getId());
+			$whereCond = array( 'cr_repo_id' => $this->mRepo->getId() );
 		}
 		$whereCond = array_merge( $whereCond, $this->getSpecializedWhereClause( $dbr ) );
-		return $dbr->selectRow( $tables, $selectFields, $whereCond );
+		$result = $dbr->selectRow( $tables, $selectFields, $whereCond );
+		if ( $result ) {
+			return $result->rev_count;
+		} else {
+			return 0;
+		}
 	}
-	
+
+	/**
+	 * @todo Document
+	 */
 	function getSpecializedWhereClause( $dbr ) {
 		return array();
 	}
-	
+
+	function getRepo() {
+		return $this->mRepo;
+	}
 }
 
 // Pager for CodeRevisionListView
@@ -223,7 +239,7 @@ class SvnRevTablePager extends SvnTablePager {
 				'fields' => $this->getSelectFields(),
 				'conds' => array(
 					'cp_repo_id' => $this->mRepo->getId(),
-					'cp_path LIKE ' . $this->mDb->addQuotes( $this->mDb->escapeLike( $this->getSVNPath() ) . '%' ),
+					'cp_path ' . $this->mDb->buildLike( $this->getSVNPath(), $this->mDb->anyString() ),
 					// performance
 					'cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 )
 				),
@@ -245,7 +261,6 @@ class SvnRevTablePager extends SvnTablePager {
 				)
 			);
 		}
-		return false;
 	}
 
 	function getSelectFields() {
@@ -265,7 +280,6 @@ class SvnRevTablePager extends SvnTablePager {
 			$this->getDefaultSort() => wfMsg( 'code-field-id' ),
 			'cr_status' => wfMsg( 'code-field-status' ),
 			'comments' => wfMsg( 'code-field-comments' ),
-			'tests' => wfMsg( 'code-field-tests' ),
 			'cr_path' => wfMsg( 'code-field-path' ),
 			'cr_message' => wfMsg( 'code-field-message' ),
 			'cr_author' => wfMsg( 'code-field-author' ),
@@ -277,12 +291,12 @@ class SvnRevTablePager extends SvnTablePager {
 		}
 		return $fields;
 	}
-	
+
 	function formatValue( $name, $value ) { } // unused
 
 	function formatRevValue( $name, $value, $row ) {
 		global $wgLang;
-		$pathQuery = ( strlen($this->mView->mPath) ) ? array('path' => $this->mView->mPath) : array();
+		$pathQuery = ( strlen( $this->mView->mPath ) ) ? array( 'path' => $this->mView->mPath ) : array();
 
 		switch( $name ) {
 		case 'selectforchange':
@@ -318,40 +332,6 @@ class SvnRevTablePager extends SvnTablePager {
 			} else {
 				return intval( $value );
 			}
-		case 'tests':
-			// fixme -- this still isn't too efficient...
-			$rev = CodeRevision::newFromRow( $this->mRepo, $row );
-			$runs = $rev->getTestRuns();
-			if( empty( $runs ) ) {
-				return '&nbsp;';
-			} else {
-				$total = 0;
-				$success = 0;
-				$progress = false;
-				foreach( $runs as $run ) {
-					$total += $run->countTotal;
-					$success += $run->countSuccess;
-					if( $run->status == 'running' ) {
-						$progress = true;
-					}
-				}
-				if( $progress ) {
-					global $wgStylePath;
-					return Xml::element( 'img', array(
-						'src' => "$wgStylePath/common/images/spinner.gif",
-						'width' => 20,
-						'height' => 20,
-						'alt' => "...",
-						'title' => "Tests in progress...",
-					));
-				}
-				if( $success == $total ) {
-					$class = 'mw-codereview-success';
-				} else {
-					$class = 'mw-codereview-fail';
-				}
-				return "<span class='$class'><strong>$success</strong>/$total</span>";
-			}
 		case 'cr_path':
 			return Xml::openElement( 'div', array( 'title' => (string)$value ) ) .
 					$this->mView->mSkin->link(
@@ -377,7 +357,7 @@ class SvnRevTablePager extends SvnTablePager {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatRevValue( $field, $value, $row ) );
 			if ( $formatted == '' ) {
-				$formatted = '&nbsp;';
+				$formatted = '&#160;';
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$s .= "<td class=\"$class\">$formatted</td>\n";

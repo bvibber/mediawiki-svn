@@ -4,26 +4,17 @@ class ApiCodeDiff extends ApiBase {
 
 	public function execute() {
 		global $wgUser, $wgCodeReviewMaxDiffSize;
-		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
-		if( !$wgUser->isAllowed('codereview-use') ) {
-			$this->dieUsage('You don\'t have permission to view code diffs','permissiondenied');
+		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
+			$this->dieUsage( 'You don\'t have permission to view code diffs', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
-
-		if ( !isset( $params['repo'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
-		}
-		if ( !isset( $params['rev'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'rev' ) );
-		}
 
 		$repo = CodeRepository::newFromName( $params['repo'] );
 		if ( !$repo ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		}
 
-		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 		$lastStoredRev = $repo->getLastStoredRev();
 
 		if ( $params['rev'] > $lastStoredRev ) {
@@ -52,10 +43,14 @@ class ApiCodeDiff extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'repo' => null,
+			'repo' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'rev' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_MIN => 1
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_REQUIRED => true,
 			)
 		);
 	}
@@ -70,7 +65,7 @@ class ApiCodeDiff extends ApiBase {
 		return array(
 			'Fetch formatted diff from CodeReview\'s backing revision control system.' );
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view code diffs' ),
