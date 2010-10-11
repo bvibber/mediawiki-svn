@@ -24,7 +24,7 @@ class CodeRepoStatsView extends CodeView {
 		);
 
 		if ( !empty( $stats->states ) ) {
-			$wgOut->wrapWikiMsg( '<h3 id="stats-revisions">$1</h3>', 'code-stats-staus-breakdown' );
+			$wgOut->wrapWikiMsg( '<h3 id="stats-revisions">$1</h3>', 'code-stats-status-breakdown' );
 			$wgOut->addHTML( '<table class="TablePager">'
 				. '<tr><th>' . wfMsgHtml( 'code-field-status' ) . '</th><th>'
 				. wfMsgHtml( 'code-stats-count' ) . '</th></tr>' );
