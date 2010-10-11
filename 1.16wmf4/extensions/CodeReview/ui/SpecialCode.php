@@ -165,7 +165,8 @@ abstract class CodeView {
 		$lines = explode( "\n", $message, 2 );
 		$first = $lines[0];
 		$html = $this->formatMessage( $first );
-		return $wgLang->truncateHtml( $html, 80 );
+		$linker = new CodeCommentLinkerHtml( $this->mRepo );
+		return $linker->truncateHtml( $html, 80 );
 	}
 	/*
 	 * Formatted HTML array for properties display
