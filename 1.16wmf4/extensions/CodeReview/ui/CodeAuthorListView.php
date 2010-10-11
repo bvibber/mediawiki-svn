@@ -24,7 +24,7 @@ class CodeAuthorListView extends CodeView {
 			if ( $committer ) {
 				$wgOut->addHTML( "<tr><td>" );
 				$author = $committer["author"];
-				$text = "[[Special:Code/$repo/author/$committer|$author]]";
+				$text = "[[Special:Code/$repo/author/$author|$author]]";
 				$user = $this->mRepo->authorWikiUser( $author );
 				if ( $user ) {
 					$title = htmlspecialchars( $user->getUserPage()->getPrefixedText() );
@@ -33,7 +33,7 @@ class CodeAuthorListView extends CodeView {
 				}
 				$wgOut->addWikiText( $text );
 
-			    $wgOut->addHTML( "</td><td>{$wgLang->timeanddate( $committer["lastcommit"], true )}</td></tr>" );
+			    $wgOut->addHTML( "</td><td>{$wgLang->timeanddate( $committer['lastcommit'], true )}</td></tr>" );
 			}
 		}
 
