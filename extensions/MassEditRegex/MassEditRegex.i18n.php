@@ -289,6 +289,8 @@ $messages['br'] = array(
 	'masseditregex-hint-headeffect' => 'Efed',
 	'masseditregex-hint-toappend' => "Ensoc'hañ un tamm testenn e fin ar bajenn - efedus evit ouzhpennañ pajennoù e rummadoù",
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
+	'masseditregex-hint-removecat' => "Lemel kuit an holl rummadoù zo en ur pennad (notit e vez lezet ar c'hrochedoù er-maez er chod wiki).
+N'haller ket lezel er-maez an talvoudennoù erlec'hiañ.",
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
 	'masseditregex-listtype-categories' => "Anv ar rummadoù (kemmañ pep pajenn a zo er rummadoù-se ; graet 'vez van eus diuzadenn an esaouenn anv)",
@@ -1458,6 +1460,8 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'masseditregex' => 'Maramihang pamamatnugot na ginagamitan ng pangkaraniwang mga pagsasaad',
+	'masseditregex-desc' => 'Gamitin ang pangkaraniwang mga pagsasaad sa [[Special:MassEditRegex|pagpapatnugot ng maraming mga pahina sa loob ng isang pagsasagawa]]',
 	'masseditregex-pagelisttxt' => 'Mga pahinang pamamatnugutan (huwag gamitin ang isang puwang na pampangalan: unlapi)',
 	'masseditregex-matchtxt' => 'Hanapin ang:',
 	'masseditregex-replacetxt' => 'Palitan ng:',

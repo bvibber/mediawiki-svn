@@ -123,6 +123,13 @@ $messages['ia'] = array(
 	'specialarc2admin' => 'Pagina de administration pro le immagazinage ARC2 RDF',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'rdfio-desc' => 'セマンティックMediaWikiのあｔめの、SPARQLエンドポイントを含む、拡張RDFのインポートおよびエクスポート機能',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

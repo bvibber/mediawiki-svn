@@ -2200,6 +2200,7 @@ $messages['eo'] = array(
 	'prefswitch-survey-question-dislike' => 'Kio malplaĉas al vi de la novaj funkcioj?',
 	'prefswitch-survey-question-whyoff' => 'Kial vi malŝaltas la novajn funkciojn?
 Bonvolu elekti ĉiujn taŭgaĵojn.',
+	'prefswitch-survey-question-globaloff' => 'Ĉu vi volas por la ecoj esti malŝaltitaj trans ĉiuj vikioj?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ĝi estis tro malfacila uzi.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ĝi ne funkciis ĝuste.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Ĝi ne funkciis laŭnorme.',
@@ -2211,6 +2212,7 @@ Bonvolu elekti ĉiujn taŭgaĵojn.',
 	'prefswitch-survey-answer-browser-other' => 'Alia retumilo:',
 	'prefswitch-survey-question-os' => 'Kiun operaciumon vi uzas?',
 	'prefswitch-survey-answer-os-other' => 'Alia operaciumo:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Jes, malŝaltu la novajn ecojn en ĉiuj vikioj',
 	'prefswitch-survey-question-res' => 'Kio estas la distingivo de via ekrano?',
 	'prefswitch-title-on' => 'Novaj funkcioj',
 	'prefswitch-title-switched-on' => 'Ĝuu!',
@@ -7691,6 +7693,14 @@ Se prega de sełesionare tute łe modivasion pertinenti.',
 	'prefswitch-success-feedback' => 'El to feedback xè sta invià.',
 	'prefswitch-return' => '<hr style="clear:both">
 Torna a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '===Torna a la vecia interfacia===
+Se te voli disativare le nove funzionalità, [$1 struca qua]. Te sarà chiesto de entrare o de creare un account.',
+	'prefswitch-main-on' => '===Torna a la vecia interfacia===
+[$2 Struca qua par disativare le nove funzionalità].',
+	'prefswitch-main-off' => '===Pròvale===
+Se te voli provar le nove funzionalità, [$1 struca qua].',
+	'prefswitch-survey-intro-off' => 'Grassie de aver provà le nostre nove funsioni.
+Par jutarne a mejorarle, par piaser conpila el seguente questionario facoltativo prima de strucar su "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"',
 	'prefswitch-feedbackpage' => 'Project:Coordinamento/Fruibiłidà',
 );
 

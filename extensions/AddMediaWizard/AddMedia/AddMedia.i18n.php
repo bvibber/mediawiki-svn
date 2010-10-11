@@ -1517,7 +1517,7 @@ $messages['de'] = array(
 	'mwe-fileexists-thumb' => 'Existierende Datei',
 	'mwe-ignorewarning' => 'Warnung ignorieren und Datei trotzdem speichern',
 	'mwe-file-thumbnail-no' => 'Der Dateiname beginnt mit <b><tt>$1</tt></b>',
-	'mwe-go-to-resource' => 'Gehe zur Quellseite',
+	'mwe-go-to-resource' => 'Zur Dateibeschreibungsseite',
 	'mwe-upload-misc-error' => 'Unbekannter Hochladefehler',
 	'mwe-wgfogg_warning_bad_extension' => 'Du hast eine Datei mit einer nicht unterstützten Erweiterung ausgewählt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">mehr Informationen</a>).',
 	'mwe-thumbnail-more' => 'Vergrößern',

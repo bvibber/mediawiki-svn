@@ -2211,8 +2211,17 @@ Bakit hindi mo ito ibahagi?',
 	'storyboard-charstomany' => 'Labis ng $1 mga panitik!',
 	'storyboard-morecharsneeded' => '$1 pang mga panitik ang kinakailangan',
 	'storyboard-charactersleft' => '$1 mga panitik ang natitira',
+	'storyboard-emailtitle' => 'Matagumpay ang pagpapasa ng kuwento',
+	'storyreview' => 'Muling pagsusuri ng kuwento',
+	'storyboard-deleteimage' => 'Burahin ang larawan',
 	'storyboard-done' => 'Nagawa na',
+	'storyboard-working' => 'Gumagawa...',
+	'storyboard-imagedeletionconfirm' => 'Nakatitiyak ka bang nais mong burahin ng pamalagian ang larawan ng kuwento?',
+	'storyboard-imagedeleted' => 'Nabura na ang larawan',
+	'storyboard-showimage' => 'Ipakita ang larawan',
+	'storyboard-hideimage' => 'Ikubli ang larawan',
 	'storyboard-deletestory' => 'Tanggalin',
+	'storyboard-storydeletionconfirm' => 'Natitiyak mo bang nais mong burahin ng pamalagian ang kuwento?',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

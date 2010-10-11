@@ -60,6 +60,32 @@ $2 адказаў на Вашае падсумаваньне яго пункту
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 адказаў на Вашае рэзюміраваньне пункту гледжаньня',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'reflect-desc' => 'Gwellaenn dedennus evit an neudennadoù kaozeal',
+	'reflect-bulleted' => 'Demat dit $1,
+	
+Un tamm diverrañ eus ar soñj embannet ganeoc\'h zo bet graet gant $2 en neudennad "$3". 
+
+An tamm diverrañ : "$5".
+
+Gwiriañ a c\'halllit hag-eñ eo bet dastumet mat ho soñjoù gant $2 en ur vont da welet war <$4>. 
+
+Gouest e viot da sklaeraat ho soñj eno e ken kaz e vije bet treuzkompren.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Un tamm diverrañ eus ho soñj zo bet graet gant $2',
+	'reflect-responded' => 'Demat dit $1, 
+	
+Ur respont zo bet graet gant $2 d\'an diverradenn graet ganeoc\'h eus e soñj.
+
+An tamm diverrañ graet ganeoc\'h : "$6". 
+Ar gemennadenn : "$5".
+
+Mar fell deoc\'h lenn ar respont er gendestenn, kit da welet <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] respontet ez eus bet gant $2 an diverradenn graet diwar-benn e soñj',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

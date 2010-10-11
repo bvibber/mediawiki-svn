@@ -206,6 +206,13 @@ $messages['he'] = array(
 	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין Kaltura וקרן ויקימדיה',
 );
 
+/** Hindi (हिन्दी)
+ * @author Rsrikanth05
+ */
+$messages['hi'] = array(
+	'addmediawizard-desc' => 'एड मीडिया विज़ार्ड, कालटूरा और विकिमेडिया संस्थान के साझेदारी की विकसित।',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */

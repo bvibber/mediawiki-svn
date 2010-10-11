@@ -452,6 +452,13 @@ $messages['he'] = array(
 אנא בדקו את האיות.',
 );
 
+/** Hindi (हिन्दी)
+ * @author Rsrikanth05
+ */
+$messages['hi'] = array(
+	'ajaxlogin-create' => ' नया खाता बनाए',
+);
+
 /** Hiligaynon (Ilonggo)
  * @author Tagimata
  */

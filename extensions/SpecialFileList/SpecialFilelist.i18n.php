@@ -714,9 +714,11 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'filelist' => 'Listă de fișiere',
+	'filelist-desc' => '[[Special:Filelist|Pagină specială]] destinată listării fișierelor încărcate',
 	'filelist-show-list' => 'Arată lista',
 	'filelist-show-gallery' => 'Arată galeria',
 	'filelist-image-desc' => 'desc',

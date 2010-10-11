@@ -55,6 +55,13 @@ $messages['br'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}: Implijerien an ostilh melezour',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'right-mirroredit' => 'Uređivanje preko API pod bilo kojim korisničkim imenom',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

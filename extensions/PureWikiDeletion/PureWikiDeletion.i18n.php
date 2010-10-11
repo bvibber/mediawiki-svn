@@ -141,6 +141,8 @@ Sellit ouzh $2 evit ur roll eus ar gwennadurioù nevez.',
  */
 $messages['bs'] = array(
 	'randomexcludeblank' => 'Slučajna stranica (neuključujući prazne)',
+	'populateblankedpagestable' => 'Popuni tabele ispražnjenih stranica',
+	'blank-log' => 'prazno',
 	'purewikideletion-blanknologin' => 'Niste prijavljeni',
 );
 

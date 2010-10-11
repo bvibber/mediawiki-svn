@@ -446,7 +446,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'vector' => 'Plibonigado de grafika interfaco por Vector',
 	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
-	'vector-collapsiblenav-preference' => 'Ŝalti kaŝeblan dekstran navigan menuon',
+	'vector-collapsiblenav-preference' => 'Ŝalti kaŝebladon de aĵoj en la dekstra navigmenuon kun etoso Vector',
 	'vector-collapsiblenav-more' => 'Pli lingvoj',
 	'vector-editwarning-warning' => 'Forlasante ĉi tiun paĝon kaŭzos al vi perdi iun ajn ŝanĝojn kiujn vi faris.
 Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de redakta tekstujo" de viaj preferoj.',

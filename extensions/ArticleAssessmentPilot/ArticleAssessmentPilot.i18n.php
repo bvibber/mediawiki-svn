@@ -958,7 +958,7 @@ $messages['ml'] = array(
 	'articleassessment-results-show' => '(ഫലങ്ങൾ ദൃശ്യമല്ല. അവ <span class="showlink">പ്രദർശിപ്പിക്കുക</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">ഫലങ്ങൾ മറയ്ക്കുക</span>)',
 	'articleassessment-survey-question-whyrated' => 'ഈ താളിന് താങ്കൾ ഇന്ന് നിലവാരമിട്ടതെന്തുകൊണ്ടാണെന്ന് ദയവായി പറയാമോ (ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക):',
-	'articleassessment-survey-answer-whyrated-contribute-rating' => 'താളിൽ ആകപ്പാടെയുള്ള നിലവാര നിർണ്ണയം ചെയ്യാൻ ഞാനാഗ്രഹിക്കുന്നു',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'താളിന്റെ ആകെ നിലവാരം നിർണ്ണയിക്കാൻ ഞാനാഗ്രഹിക്കുന്നു',
 	'articleassessment-survey-answer-whyrated-development' => 'ഞാനിട്ട നിലവാരം താളിന്റെ വികസനത്തിൽ ക്രിയാത്മകമായ ഫലങ്ങൾ സൃഷ്ടിക്കുമെന്ന് കരുതുന്നു',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'ഞാൻ {{SITENAME}} സംരംഭത്തിൽ സംഭാവന ചെയ്യാൻ ആഗ്രഹിക്കുന്നു',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'എന്റെ അഭിപ്രായം പങ്ക് വെയ്ക്കുന്നതിൽ സന്തോഷമേയുള്ളു',
@@ -1465,14 +1465,27 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'articleassessment-yourfeedback' => 'La to opinion',
 	'articleassessment-submit' => 'Manda',
 	'articleassessment-rating-wellsourced' => 'Ben fornìa de fonti:',
 	'articleassessment-rating-neutrality' => 'Neutrale:',
 	'articleassessment-rating-completeness' => 'Conpleta:',
 	'articleassessment-rating-readability' => 'Legibile:',
+	'articleassessment-articlerating' => 'Valutassion de la pagina',
+	'articleassessment-error' => 'Xe capità un eror.
+Par piaser, proa pi tardi.',
+	'articleassessment-thanks' => 'Grassie! El to voto el xe stà salvà.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|voto|voti}})',
+	'articleassessment-results-show' => '(Risultati sconti. <span class="showlink">Mòstreli</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Scondi risultati</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Go vossù contribuire a {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Me piase condivìdar la me opinion',
 	'articleassessment-survey-answer-whyrated-other' => 'Altro',
 	'articleassessment-survey-question-useful-iffalse' => 'Parché?',
+	'articleassessment-survey-question-comments' => 'Gheto altre robe da dir?',
 	'articleassessment-survey-submit' => 'Manda',
+	'articleassessment-survey-title' => 'Par piaser, rispondi a qualche domanda',
+	'articleassessment-survey-thanks' => 'Grassie de aver conpilà el questionario.',
 );
 
 /** Vietnamese (Tiếng Việt)

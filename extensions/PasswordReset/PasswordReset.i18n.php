@@ -415,6 +415,7 @@ $messages['eo'] = array(
 	'passwordreset-invalidusername' => 'Nevalida Salutnomo',
 	'passwordreset-emptyusername' => 'Malplena Salutnomo',
 	'passwordreset-nopassmatch' => 'Pasvortoj ne estas samaj',
+	'passwordreset-badtoken' => 'Malvalida redakta ĵetono',
 	'passwordreset-username' => 'Salutnomo:',
 	'passwordreset-newpass' => 'Nova pasvorto:',
 	'passwordreset-confirmpass' => 'Konfirmi pasvorton:',
@@ -424,6 +425,7 @@ $messages['eo'] = array(
 	'passwordreset-disablesuccess' => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
 	'passwordreset-accountdisabled' => 'Konto estis malŝaltita',
 	'disabledusers' => 'Malebligitaj uzantoj',
+	'disabledusers-summary' => 'Jen listo de uzantoj malŝaltitaj per PasswordReset.',
 );
 
 /** Spanish (Español)

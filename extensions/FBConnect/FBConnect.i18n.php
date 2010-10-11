@@ -742,6 +742,55 @@ $messages['ja'] = array(
 	'fbconnect-fbml' => 'Facebookマークアップ言語',
 	'fbconnect-fbmldesc' => 'Facebookは、動的データの描画を行なう組み込みタグ群を提供しています。
 それらのタグの多くは、ウィキ文の中に含めることができ、どの接続利用者がそれを閲覧しているかによって、異なる描画を行なうことができます。',
+	'fbconnect-comm' => '通信',
+	'fbconnect-commdesc' => 'Facebook接続は、ネットワーク活用のの全く新しいレベルの先駆けとなります。
+どんなフレンドがそのウィキを利用しているか探し、Facebookニュースフィードを介して、自分の行動をフレンドと共有することもできます。',
+	'fbconnect-welcome' => 'ようこそ、Facebook接続の利用者さん！',
+	'fbconnect-loginbox' => "もしくは、Facebookで'''ログイン'''：
+
+$1",
+	'fbconnect-merge' => 'FacebookのIDを使用して、ウィキ上の自分のアカウントを統合',
+	'fbconnect-logoutbox' => '$1
+
+これは、Facebookと、このウィキを含むすべての接続サイトからログアウトします。',
+	'fbconnect-listusers-header' => '$1と$2の権限は、Facebookグループ$3の役員と管理者から、自動的に転送されました。
+
+詳細情報については、グループの作成者$4に連絡してください。',
+	'fbconnect-error' => '検証エラー',
+	'fbconnect-errortext' => 'Facebook接続で認証中にエラーが発生しました。',
+	'fbconnect-cancel' => '操作がキャンセルされました',
+	'fbconnect-canceltext' => '1つまえの操作が利用者によって取り消されました。',
+	'fbconnect-invalid' => '不正なオプション',
+	'fbconnect-invalidtext' => '前のページで選択された形式は不正です。',
+	'fbconnect-success' => 'Facebook検証は成功しました',
+	'fbconnect-successtext' => 'Facebook接続でのログインに成功しました',
+	'fbconnect-nickname' => 'ニックネーム',
+	'fbconnect-fullname' => 'フルネーム',
+	'fbconnect-email' => '電子メールアドレス',
+	'fbconnect-language' => '言語',
+	'fbconnect-timecorrection' => 'タイムゾーンの補正（時間）',
+	'fbconnect-chooselegend' => '利用者名の選択',
+	'fbconnect-chooseinstructions' => 'すべての利用者はニックネームが必要です。以下の選択肢から1つを選ぶことができます。',
+	'fbconnect-invalidname' => '選択されたニックネームは既に使用されているか、有効でないニックネームです。
+別の選択肢を選んでください。',
+	'fbconnect-choosenick' => '自分のFacebookプロフィール名（$1）',
+	'fbconnect-choosefirst' => '名（$1）',
+	'fbconnect-choosefull' => '氏名（$1）',
+	'fbconnect-chooseauto' => '自動生成された名前（$1）',
+	'fbconnect-choosemanual' => '選択された名前：',
+	'fbconnect-chooseexisting' => 'このウィキに存在するアカウント',
+	'fbconnect-chooseusername' => '利用者名：',
+	'fbconnect-choosepassword' => 'パスワード：',
+	'fbconnect-updateuserinfo' => '以下の個人情報を更新する：',
+	'fbconnect-alreadyloggedin' => "'''既に$1としてログインしています！'''
+
+将来、Facebook接続を使用してログインしたい場合は、[[Special:Connect/Convert|アカウントをFacebook接続を使用するように変換する]]ことができます。",
+	'fbconnect-error-creating-user' => 'ローカルのデータベースに利用者を作成する時にエラーが発生しました。',
+	'fbconnect-error-user-creation-hook-aborted' => 'フック（拡張機能）は、次のメッセージと共にアカウントの作成を中断しました：$1',
+	'fbconnect-prefstext' => 'Facebook接続',
+	'fbconnect-link-to-profile' => 'Facebookのプロフィール',
+	'fbconnect-prefsheader' => "どのイベントがFacebookニュースフィードに項目を挿入するかを制御するために、<a id='fbConnectPushEventBar_show' href='#'>設定を表示</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>設定を非表示</a>",
+	'fbconnect-prefs-can-be-updated' => 'これらは、いつでも、設定ページの「$1」タブから更新することができます。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

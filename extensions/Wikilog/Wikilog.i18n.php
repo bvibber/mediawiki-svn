@@ -4344,6 +4344,7 @@ $messages['lb'] = array(
 	'wikilog-comment-delete' => 'Dës Bemierkung läschen',
 	'wikilog-comment-history' => 'Versioune vun der Bemierkung kucken',
 	'wikilog-comment-approve' => 'Dës Bemierkung approuvéieren (gëtt direkt gemaach)',
+	'wikilog-comment-reject' => 'Dës Bemierkung ofleenen (gëtt direkt gemaach)',
 	'wikilog-newtalk-text' => '<!-- eidel Säit déi vu Wikilog ugeluecht gouf-->',
 	'wikilog-newtalk-summary' => 'automatesch ugeluecht vu Wikilog',
 	'wikilog-feed-ns-title' => '$1 Wikilog-Artikelen',
@@ -4362,6 +4363,9 @@ $messages['lb'] = array(
 	'wikilog-comment-too-long' => "D'Bemierkung déi geschéckt gouf ass ze laang.",
 	'wikilog-comment-invalid-name' => 'Den Numm deen dir uginn hutt ass net valabel.',
 	'wikilog-no-such-article' => 'Den ugefrote Wikilog-Artikel gëtt et net.',
+	'wikilog-posting-anonymously' => "Dir sidd elo net ageloggt.
+Är Bemierkung gëtt als anonym geschéckt, an duerch Är Internetverbindung identifizéiert.
+Dir sollt entweder e Pseudonym ugi fir Är Bemierkungen z'identifizéieren oder Iech $1 fir datt en uerdentlech zugeuerdnet ka ginn.",
 	'wikilog-post-comment' => 'Eng nei Bemierkung schécken',
 	'wikilog-post-reply' => 'Eng nei Äntwert schécken',
 	'wikilog-form-wikilog' => 'Wikilog:',
