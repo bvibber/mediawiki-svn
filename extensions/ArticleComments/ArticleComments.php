@@ -3,7 +3,7 @@
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
  * @author Platonides
- * @version 0.5
+ * @version 0.5.1
  * @copyright Copyright (C) 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  * -----------------------------------------------------------------------
@@ -172,7 +172,7 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
  * @param Array $params A hash of parameters containing rendering options.
  */
 function wfArticleCommentForm( $title, $params = array() ) {
-	global $wgArticleCommentDefaults;
+	global $wgArticleCommentDefaults, $wgOut;
 
 	# Merge in global defaults if specified
 	$tmp = $wgArticleCommentDefaults;
@@ -211,10 +211,10 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	}
 
 	# Inline JavaScript to make form behavior more rich (must degrade well in JS-disabled browsers)
-	$content .= "<script type='text/javascript'>//<![CDATA[\n(function(){\n";
+	$js .= "<script type=\"text/javascript\">//<![CDATA[\n(function(){\n";
 
 	# Prefill the name field if the user is logged in.
-	$content .=
+	$js .=
 		'var prefillUserName = function(){' . "\n" .
 		'var ptu=document.getElementById("pt-userpage");' . "\n" .
 		'if (ptu) document.getElementById("commenterName").value=' .
@@ -230,7 +230,7 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	# to manually delete it) and would break parser output caching
 	$pretext = wfMsgForContent( 'article-comments-prefilled-comment-text' );
 	if ( $pretext ) {
-		$content .=
+		$js .=
 			'var comment = document.getElementById("comment");' . "\n" .
 			'comment._everFocused=false;' . "\n" .
 			'comment.innerHTML="' . htmlspecialchars( $pretext ) . '";' . "\n" .
@@ -248,9 +248,9 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	# Hides the commentForm until the "Make a comment" link is clicked
 	# Note: To disable, set $wgArticleCommentDefaults['hideForm']=false in LocalSettings.php
 	if ( !isset( $params['hideform'] ) ||
-		( $params['hideform'] != 'false' &&
+		( $params['hideform'] !== 'false' &&
 		!$params['hideform'] === false ) ) {
-		$content .=
+		$js .=
 			'var cf=document.getElementById("commentForm");' . "\n" .
 			'cf.style.display="none";' . "\n" .
 			'var p=document.createElement("p");' . "\n" .
@@ -261,7 +261,9 @@ function wfArticleCommentForm( $title, $params = array() ) {
 			'cf.parentNode.insertBefore(p,cf);' . "\n";
 	}
 
-	$content .= "})();\n//]]></script>";
+	$js .= "})();\n//]]></script>";
+	$wgOut->addScript( $js );
+	
 	return $content;
 }
 
