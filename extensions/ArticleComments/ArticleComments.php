@@ -22,6 +22,8 @@
  *         <comments />
  *     Note: Typically this would be placed at the end of the article text.
  * Version Notes:
+ *     version 0.5.1:
+ *         Removed the base64 pass
  *     version 0.5:
  *         Updated to work with MediaWiki 1.16+
  *     version 0.4.3:
@@ -81,7 +83,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Jim R. Wilson - wilson.jim.r <at> gmail.com',
 	'url' => 'http://jimbojw.com/wiki/index.php?title=ArticleComments',
 	'descriptionmsg' => 'article-comments-desc',
-	'version' => '0.5'
+	'version' => '0.5.1'
 );
 
 # Add Extension Functions
@@ -91,7 +93,6 @@ $wgExtensionMessagesFiles['ArticleComments'] = dirname( __FILE__ ) . "/ArticleCo
 # Attach Hooks
 $wgHooks['ParserFirstCallInit'][] = 'wfArticleCommentsParserSetup';
 $wgHooks['SkinAfterContent'][] = 'wfArticleCommentsAfterContent';
-$wgHooks['ParserAfterTidy'][] = 'wfProcessEncodedContent';
 $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
 
 /**
@@ -126,11 +127,7 @@ function wfArticleCommentsParserSetup( &$parser ) {
 
 function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
 	# Generate a comment form for display
-	$commentForm = wfArticleCommentForm( $parser->mTitle, $params );
-
-	# Hide content from the Parser using base64 to avoid mangling.
-	# Note: Content will be decoded after Tidy has finished its processing of the page.
-	return '<pre>@ENCODED@' . base64_encode( $commentForm ) . '@ENCODED@</pre>';
+	return  wfArticleCommentForm( $parser->mTitle, $params );
 }
 
 /**
@@ -266,22 +263,6 @@ function wfArticleCommentForm( $title, $params = array() ) {
 
 	$content .= "})();\n//]]></script>";
 	return $content;
-}
-
-/**
- * Processes HTML comments with encoded content.
- * Usage: $wgHooks['OutputPageBeforeHTML'][] = 'wfProcessEncodedContent';
- * @param OutputPage $out Handle to an OutputPage object presumably $wgOut (passed by reference).
- * @param String $text Article/Output text (passed by reference)
- * @return Boolean Always tru to give other hooking methods a chance to run.
- */
-function wfProcessEncodedContent( $out, $text ) {
-	$text = preg_replace(
-		'/<pre>\n@ENCODED@([0-9a-zA-Z\\+\\/]+=*)@ENCODED@\n<\\/pre>/e',
-		'base64_decode("$1")',
-		$text
-	);
-	return true;
 }
 
 /**
