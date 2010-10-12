@@ -174,7 +174,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		// check if path exists! and is a plain file.
-		if ( ! $repo->fileExists( $path, $repo::FILES_ONLY ) ) {
+		if ( ! $repo->fileExists( $path, FileRepo::FILES_ONLY ) ) {
 			throw new SessionStashFileNotFoundException();
 		}
 
