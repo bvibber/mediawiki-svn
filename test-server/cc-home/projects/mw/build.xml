@@ -120,7 +120,7 @@
   </target>
 
   <target name="phpunit" depends="prepare">
-    <exec executable="phpunit" dir="${sourcedir}/maintenance/tests/phpunit" failonerror="true">
+    <exec executable="./phpunit.php" dir="${sourcedir}/maintenance/tests/phpunit" failonerror="true">
       <arg line="--configuration suite.xml --log-junit ${builddir}/logs/junit.xml --coverage-clover ${builddir}/logs/phpunit.coverage.xml --coverage-html ${builddir}/coverage" />
     </exec>
   </target>
