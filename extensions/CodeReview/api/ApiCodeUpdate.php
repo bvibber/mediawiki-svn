@@ -107,6 +107,6 @@ class ApiCodeUpdate extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiCodeUpdate.php 48928 2009-03-27 18:41:20Z catrope $';
+		return __CLASS__ . ': $Id$';
 	}
 }

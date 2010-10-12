@@ -165,6 +165,6 @@ class ApiCodeRevisions extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiCodeComments.php 48777 2009-03-25 01:26:54Z aaron $';
+		return __CLASS__ . ': $Id$';
 	}
 }

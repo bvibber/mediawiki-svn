@@ -83,6 +83,6 @@ class ApiCodeDiff extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiCodeDiff.php 48777 2009-03-25 01:26:54Z aaron $';
+		return __CLASS__ . ': $Id$';
 	}
 }
