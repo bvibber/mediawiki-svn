@@ -34,10 +34,6 @@ mw.ApiUploadHandler.prototype = {
 	 * @param callback
 	 */
 	configureForm: function() {
-		if ( ! ( mw.UploadWizard.config[ 'token' ] ) ) {
-			throw new Error( "configuration", "no edit token" );	
-		}
-
 		var _this = this;
 		mw.log( "configuring form for Upload API" );
 

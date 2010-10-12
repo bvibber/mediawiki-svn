@@ -21,16 +21,12 @@ mw.UploadWizardPage = function() {
 	}
 
 	var config = { 
-		debug:  true,  
+		debug:  wgUploadWizardDebug,  
 		userName:  wgUserName,  
 		userLanguage:  wgUserLanguage, 
 		fileExtensions:  wgFileExtensions, 
 		apiUrl: apiUrl,
-
-		// XXX this is problematic, if the upload wizard is idle for a long time the token expires
-		// should get token just before uploading
-		token:  wgEditToken, 
-		
+	
 		thumbnailWidth:  120,  
 		smallThumbnailWidth:  60,  
 		maxAuthorLength: 50,
@@ -76,6 +72,10 @@ mw.UploadWizardPage = function() {
 		//	/^(\d{10}[\s_-][0-9a-f]{10}[\s_-][a-z])$/   // flickr
 		// ]
 	};
+
+	if ( !config.debug ) {
+		mw.log.level = mw.log.NONE;
+	}
 
 	var uploadWizard = new mw.UploadWizard( config );
 	uploadWizard.createInterface( '#upload-wizard' );

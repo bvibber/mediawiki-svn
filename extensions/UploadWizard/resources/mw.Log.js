@@ -2,14 +2,6 @@
 
 ( function( mw, $j ) {
 
-	// XXX we need to solve this with resource loader
-	var dependencies = { "mw": mw };
-	for ( var d in dependencies ) {
-		if ( typeof dependencies[d] === 'undefined' ) {
-			alert( "missing dependency: " + d );
-		}
-	}
-
 	/**
 	* Log a string msg to the console
 	* 
@@ -18,22 +10,31 @@
 	*
 	* @param {String} string String to output to console
 	*/
-	mw.log = function( string ) {
+	mw.log = function( s, level ) {
+		
+		if ( typeof level === 'undefined' ) {
+			level = 30;
+		}
 
-		// Add any prepend debug strings if necessary           
+		if ( level > mw.log.level ) {
+			return;
+		}	
+	
+		// Add any prepend debug ss if necessary           
 		if ( mw.log.preAppendLog ) {
-			string = mw.log.preAppendLog + string;
+			s = mw.log.preAppendLog + s;
 		}
 
 		if ( window.console ) {
-			window.console.log( string );
+			window.console.log( s );
 		} else {
 
 			/**
-			 * Old IE and non-Firebug debug: ( commented out for now ) 
+			 * Old IE and non-Firebug debug
 			 */
 			var log_elm = document.getElementById('mv_js_log');
-			if(!log_elm) {
+
+			if ( ! log_elm ) {
 				var body = document.getElementsByTagName("body")[0];
 				if (body) {
 					body.innerHTML = document.getElementsByTagName("body")[0].innerHTML +
@@ -42,19 +43,40 @@
 						'</div>';
 					log_elm = document.getElementById('mv_js_log');
 				} else {
-					mw.logBuffered += string + "\n";
+					mw.logBuffered += s + "\n";
 				}
 			}
-			if(log_elm) {
+
+			if ( log_elm ) {
 				if (mw.logBuffered.length) {
 					log_elm.value += mw.logBuffered;
 					mw.logBuffered = "";
 				}
-				log_elm.value+=string+"\n";
+				log_elm.value += s + "\n";
 			}
 
 		}
-	}
+	};
+
+	mw.log.NONE = 0;
+	mw.log.FATAL = 10;
+	mw.log.WARN = 20;
+	mw.log.INFO = 30;	
+	mw.log.level = mw.log.ALL = 100;
+
+	mw.log.fatal = function( s ) {
+		mw.log( s, mw.log.FATAL );
+	};
+
+	mw.log.warn = function( s ) {
+		mw.log( s, mw.log.WARN );
+	};
+
+	mw.log.info = function( s ) {
+		mw.log( s, mw.log.INFO );
+	};
+
+	mw.log.level = mw.log.ALL;
 
 	mw.logBuffered = "";
 

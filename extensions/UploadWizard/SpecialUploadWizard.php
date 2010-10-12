@@ -164,8 +164,11 @@ class SpecialUploadWizard extends SpecialPage {
 		global $wgUser, $wgOut;
 		global $wgUseAjax, $wgAjaxLicensePreview, $wgEnableAPI;
 		global $wgEnableFirefogg, $wgFileExtensions;
+		global $wgUploadWizardDebug;
 
 		$wgOut->addScript( Skin::makeVariablesScript( array(
+			'wgUploadWizardDebug' => !!$wgUploadWizardDebug,
+
 			// uncertain if this is relevant. Can we do license preview with API?
 			'wgAjaxLicensePreview' => $wgUseAjax && $wgAjaxLicensePreview,
 
@@ -174,10 +177,6 @@ class SpecialUploadWizard extends SpecialPage {
 			// what is acceptable in this wiki
 			'wgFileExtensions' => $wgFileExtensions,
 
-			// XXX page should fetch its own edit token
-			// our edit token
-			'wgEditToken' => $wgUser->editToken(),
-		
 			'wgSubPage' => $subPage
 
 			// XXX need to have a better function for testing viability of a filename
