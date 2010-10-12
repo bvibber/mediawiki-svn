@@ -8,6 +8,6 @@ Homepage: http://www.opendj.org
 
 Package: opendj
 Architecture: any
-Depends: openjdk-6-jre
+Depends: java6-runtime
 Description: OpenDJ Java based LDAP server
  OpenDJ is an open source community project building a free and comprehensive next generation directory service, based on LDAP and DSML standards.
