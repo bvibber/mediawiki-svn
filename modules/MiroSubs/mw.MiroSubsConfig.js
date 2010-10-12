@@ -65,6 +65,7 @@ mw.MiroSubsConfig = {
 		return {
 			// By default the config status is 'ok'
 			'status' : 'ok',
+			
 			// Default language key 'en':
 			'languageKey' : 'en',
 			
@@ -85,7 +86,7 @@ mw.MiroSubsConfig = {
 					}
 				});				
 			},
-			'permalink': 'http://myvideopermalink.com',
+			'permalink': 'http://commons.wikimedia.org',
 			// not sure if this is needed
 			'login': function( ){
 				 mirosubs.api.loggedIn( wgUserName );

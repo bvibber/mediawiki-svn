@@ -25,7 +25,7 @@ if ( typeof window.mw == 'undefined' ) {
 /**
  * Set the mwEmbedVersion
  */
-var MW_EMBED_VERSION = '1.1g';
+var MW_EMBED_VERSION = '1.1h';
 
 // Globals to pre-set ready functions in dynamic loading of mwEmbed
 if( typeof preMwEmbedReady == 'undefined'){
