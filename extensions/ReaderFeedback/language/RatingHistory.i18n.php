@@ -701,7 +701,7 @@ $messages['fa'] = array(
 	'ratinghistory' => 'تاریخچهٔ ارزیابی صفحه',
 	'ratinghistory-leg' => '[[:$1|$1]] داده‌های تاریخچهٔ ارزیابی',
 	'ratinghistory-tab' => 'نمره',
-	'ratinghistory-link' => 'درجهٔ مقاله',
+	'ratinghistory-link' => 'نمرهٔ مقاله',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">از این که فرصتی را صرف بازبینی این صفحه کردید متشکریم!</font>''",
 	'ratinghistory-period' => 'بازه زمانی:',
 	'ratinghistory-month' => 'ماه پیش',

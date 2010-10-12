@@ -6486,9 +6486,63 @@ $messages['sc'] = array(
  * @author Gmelfi
  */
 $messages['scn'] = array(
-	'prefswitch-title-on' => 'Funzioni novi',
+	'prefswitch-link-anon' => 'Funziunalità novi',
+	'tooltip-pt-prefswitch-link-anon' => 'Nfurnazzioni supra li funziunalità novi',
+	'prefswitch-link-on' => 'Arripòrtami nnarreri',
+	'tooltip-pt-prefswitch-link-on' => 'Disabbìlita li funziunalità novi',
+	'prefswitch-link-off' => 'Funziunalità novi',
+	'tooltip-pt-prefswitch-link-off' => 'Prova li funziunalità novi',
+	'prefswitch-jswarning' => "Arricòrdati ca cû canciu dâ ''skin'', lu còdici [[User:$1/$2.js|$2 JavaScript]] s'havi a cupiari comu [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> pi cuntinuari a funziunari",
+	'prefswitch-csswarning' => "Li tò [[User:$1/$2.css|stili pirsunalizzati pi $2]] nun sunnu applicati cchiù. Puoi junciri CSS pirsunalizzatu pi ''vector'' nti [[{{ns:user}}:$1/vector.css]].",
+	'prefswitch-survey-true' => 'Sì',
+	'prefswitch-survey-false' => 'No',
+	'prefswitch-survey-submit-off' => 'Disabbìlita li funziunalità novi',
+	'prefswitch-survey-cancel-off' => 'Siddu vuòi cuntinuari a usari li funziunalità novi, puoi arriturnari a $1.',
+	'prefswitch-survey-submit-feedback' => 'Manna nu feedback',
+	'prefswitch-survey-cancel-feedback' => 'Siddu nun vuoi mannari nu feedback, puoi arriturnari a $1.',
+	'prefswitch-survey-question-like' => 'Chi è ca ti piacìu ntê funziunalità novi?',
+	'prefswitch-survey-question-dislike' => 'Chi è ca nun ti piacìu ntê funziunalità novi?',
+	'prefswitch-survey-question-whyoff' => 'Pirchì stai disabbilitannu lu funziunalità novi?
+Pi favuri silizziunati tuttu chiddu ca ci centra',
+	'prefswitch-survey-question-globaloff' => 'Vuoi disabbilitari li funziunalità glubbalmenti?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Era troppu difficili di usari.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nun funziunava bonu.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nun si cumpurtava di manera cuirenti.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nun mi piacìva comu cumpariva',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "Nun mi piacìvanu li schedi novi e lu ''layout''.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nun mi piaciva la barra dî strummenta nova.',
+	'prefswitch-survey-answer-whyoff-other' => 'Àutru mutivu:',
+	'prefswitch-survey-question-browser' => 'Quali browser usi?',
+	'prefswitch-survey-answer-browser-other' => 'Àutru browser:',
+	'prefswitch-survey-question-os' => 'Quali sistema upirativu usi?',
+	'prefswitch-survey-answer-os-other' => 'Àutru sistema upirativu:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sì, disabbilita li funziunalità supra tutti li wiki',
+	'prefswitch-survey-question-res' => 'Qual eni la risuluzzioni dû tò schermu?',
+	'prefswitch-title-on' => 'Funziunalità novi',
+	'prefswitch-title-switched-on' => 'Addivèrtiti!',
+	'prefswitch-title-off' => 'Disabbìlita li funziunalità novi',
+	'prefswitch-title-switched-off' => 'Grazzi',
+	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'Li funziunalità novi sunnu attivi. Nuatri spiramu ca ti piaciunu. Puoi sempri sissabbilitàrili cliccannu supra lu link "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" supra la parti di supra dâ pàggina.',
+	'prefswitch-success-off' => 'Li funziunalità novi foru disabbilitati. Grazzi pi avìrilli pruvati. Puoi sempri riabbilitàrili cliccannu supra lu link "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" ntâ parti di supra dâ pàggina.',
+	'prefswitch-success-feedback' => 'Lu tò feedback fu mannatu.',
+	'prefswitch-return' => '<hr style="clear:both">
+Arritorna a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* La '''linguetta {{int:watch}}''' ora è na stidda.
+* La '''linguetta {{int:move}}''' ora è ntô menù a scumparuta vicinu â barra di ricerca.",
+	'prefswitch-main-feedback' => "===Feedback?===
+Nun videmu l'ura d'accanùsciri chiddu ca pensi. Visita la nostra [[$1|paggina di feddback]] o, siddu si ntirissatu ô travagghiu nostru pi rennriri megghiu la piattaforma MediaWiki, visita [http://usability.wikimedia.org la wiki dû prugettu usabilità] pi àutri nfurmazzioni.",
+	'prefswitch-main-anon' => '===Arripòrtami nnarreri===
+[$1 Clicca ccà pi disabbilitari li funziunalità novi]. Ti veni addumannatu di tràsiri o di criari nu cuntu.',
 	'prefswitch-main-on' => '===Arripòrtami narreri===
 [$2 Clicca ccà pi disabbilitari li funziuni novi].',
+	'prefswitch-main-off' => '===Prùvali===
+[$1 Clicca ccà pi abbilitari li funziunalità novi].',
+	'prefswitch-survey-intro-feedback' => 'Ni piacissi sèntiri chiddu ca pensi.
+Pi favuri, cumpila lu sundaggiu cassutta (facultativu) prima di cliccari "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Grazzi pi aviri pruvatu lu funziunalità novi.
+Pi aiutarini a fàrili megghiu, pi favuri jinci lu questiunariu facultativu cassutta prima di cliccari supra "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:Cuurdinamentu/Usabbilità',
 );
 
 /** Sinhala (සිංහල)

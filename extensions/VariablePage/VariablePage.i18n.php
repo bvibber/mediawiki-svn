@@ -85,6 +85,8 @@ $messages['es'] = array(
  */
 $messages['fa'] = array(
 	'variablepage' => 'صفحه متغیر',
+	'variablepage-navlink_text' => 'اهدا کنید',
+	'variablepage-desc' => 'تغییر مسیر سبک صفحه متغیر',
 );
 
 /** French (Français)

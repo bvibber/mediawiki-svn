@@ -923,6 +923,13 @@ $messages['sw'] = array(
 	'contrib-tracking-error' => 'Hitilafu',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contrib-tracking-button' => 'தொடரவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

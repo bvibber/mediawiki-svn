@@ -389,6 +389,50 @@ $messages['es'] = array(
 	'articleassessment-survey-question-useful-iffalse' => '¿Por qué?',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'articleassessment' => 'ارزیابی مقاله‌ها',
+	'articleassessment-desc' => 'ارزیابی مقاله‌ها (نسخهٔ آزمایشی)',
+	'articleassessment-yourfeedback' => 'نظر شما',
+	'articleassessment-pleaserate' => 'لطفاً لحظه‌ای از وقت خود را صرف نمره دادن به این صفحه از طریق بخش زیری کنید',
+	'articleassessment-submit' => 'ارسال',
+	'articleassessment-rating-wellsourced' => 'دارای منابع خوب:',
+	'articleassessment-rating-neutrality' => 'بی‌طرف:',
+	'articleassessment-rating-completeness' => 'کامل:',
+	'articleassessment-rating-readability' => 'خوانا:',
+	'articleassessment-rating-wellsourced-tooltip' => 'به نظر شما این صفحه دارای ارجاعات کافی به منابع قابل اعتماد هست؟',
+	'articleassessment-rating-neutrality-tooltip' => 'به نظر شما این صفحه دیدگاه‌های مختلف در مورد موضوعش را به طور متناسبی ارائه می‌دهد؟',
+	'articleassessment-rating-completeness-tooltip' => 'به نظر شما عنوان‌های اساسی که باید پوشش دهد را شامل می‌شود؟',
+	'articleassessment-rating-readability-tooltip' => 'به نظر شما این صفحه به خوبی ساختاربندی شده و به خوبی نوشته شده‌است؟',
+	'articleassessment-articlerating' => 'نمرهٔ مقاله',
+	'articleassessment-error' => 'خطا رخ داده است.
+لطفا بعدا دوباره تلاش کنید.',
+	'articleassessment-thanks' => 'متشکریم! نمرهٔ شما ذخیره شد.',
+	'articleassessment-featurefeedback' => 'در مورد این قابلیت به ما <span class="feedbacklink">نظر بدهید</span>.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|نمره|نمره}})',
+	'articleassessment-stalemessage-norevisioncount' => "این صفحه از آخرین باری که شما آن را بازبینی کردید ''تغییر کرده است''.
+شما می‌توانید دوباره به آن نمره دهید.",
+	'articleassessment-results-show' => '(نتایج مخفی است. <span class="showlink">نمایش نتایج</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">نهفتن نتایج</span>)',
+	'articleassessment-survey-question-whyrated' => 'لطفا به ما اطلاع دهید که چرا شما امروز به این صفحه نمره دادید (تمام موارد مرتبط را انتخاب کنید):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'می‌خواستم در نمره کلی صفحه مشارکت کنم',
+	'articleassessment-survey-answer-whyrated-development' => 'امیدوارم که نمره‌ای که دادم اثر مثبتی روی پیشرفت صفحه داشته باشد',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'می‌خواستم به {{SITENAME}} کمک کنم',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'علاقه دارم نظر خودم را به اشتراک بگذارم',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'امروز نمره‌ای ندادم، اما می‌خواهم راجع به این ویژگی نظر بدهم',
+	'articleassessment-survey-answer-whyrated-other' => 'غیره',
+	'articleassessment-survey-question-useful' => 'آیا فکر می‌کنید نمره‌های ارائه شده مفید و واضح هستند؟',
+	'articleassessment-survey-question-useful-iffalse' => 'چرا؟',
+	'articleassessment-survey-question-expert' => 'آیا خودتان را در زمینه موضوع این صفحه متخصص می‌دانید؟',
+	'articleassessment-survey-question-expert-iftrue' => 'آیا می‌توانید تخصص خود را توضیح دهید؟',
+	'articleassessment-survey-question-comments' => 'آیا هر گونه نظر اضافی دارید؟',
+	'articleassessment-survey-submit' => 'ارسال',
+	'articleassessment-survey-title' => 'لطفاً به چند پرسش پاسخ دهید',
+	'articleassessment-survey-thanks' => 'از این که نظرسنجی را تکمیل کردید متشکریم.',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Peter17

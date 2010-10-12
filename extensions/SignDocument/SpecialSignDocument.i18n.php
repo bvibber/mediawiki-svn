@@ -690,6 +690,8 @@ $messages['bs'] = array(
 	'signdocument' => 'Potpisivanje dokumenta',
 	'sign-nodocselected' => 'Molimo odaberite dokument koji želite da potpišete.',
 	'sign-selectdoc' => 'Dokument:',
+	'sign-docheader' => 'Molimo koristite ovaj obrazac za potpisivanje dokumenta "[[$1]]," prikazanog dolje.
+Pročitajte cijeli dokument i ako želite da izrazite vašu podršku, popunite neophodna polja da ga potpišete.',
 	'sign-error-nosuchdoc' => 'Dokument koji ste zahtijevali ($1) ne postoji.',
 	'sign-realname' => 'Ime:',
 	'sign-address' => 'Kućna adresa:',
@@ -720,22 +722,41 @@ $messages['bs'] = array(
 	'sign-viewfield-zip' => 'Poštanski broj',
 	'sign-viewfield-ip' => 'IP adresa',
 	'sign-viewfield-phone' => 'Telefon',
+	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Starost',
 	'sign-viewfield-options' => 'Opcije',
+	'sign-sigadmin-currentlyopen' => 'Potpisivanje ovog dokumenta je trenutno omogućeno.',
 	'sign-sigadmin-close' => 'Onemogući potpisivanje',
+	'sign-sigadmin-currentlyclosed' => 'Potpisivanje ovog dokumenta trenutno je onemogućeno.',
 	'sign-sigadmin-open' => 'Omogući potpisivanje',
 	'sign-signatures' => 'Potpisi',
 	'sign-sigadmin-closesuccess' => 'Potpisivanje uspješno onemogućeno.',
 	'sign-sigadmin-opensuccess' => 'Potpisivanje uspješno omogućeno.',
+	'sign-viewsignatures' => 'vidi potpise',
 	'sign-closed' => 'zatvoreno',
+	'sign-error-closed' => 'Potpisivanje ovog dokumenta je trenutno onemogućeno.',
 	'sig-anonymous' => "''Anonimni''",
 	'sig-private' => "''Privatno''",
 	'sign-sigdetails' => 'Detalji potpisa',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|razgovor]] • <!--
+-->[[Special:Contributions/$1|doprinosi]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|blokiraj korisnika]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} zapisnik blokiranja] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} provjera ip])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Precrtano',
 	'sign-viewfield-reviewcomment' => 'Komentar',
+	'sign-detail-uniquequery' => 'Slične stavke',
 	'sign-detail-uniquequery-run' => 'Pokreni upit',
 	'sign-review-comment' => 'Komentar',
+	'sign-uniquequery-similarname' => 'Slično ime',
 	'sign-uniquequery-similaraddress' => 'Slične adrese',
 	'sign-uniquequery-similarphone' => 'Slični telefoni',
+	'sign-uniquequery-similaremail' => 'Sličan e-mail',
 );
 
 /** Catalan (Català)

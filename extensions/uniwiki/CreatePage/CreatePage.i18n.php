@@ -1087,7 +1087,7 @@ $messages['sw'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
-	'createpage' => 'ஒரு பக்கத்தை உருவாக்குக',
+	'createpage' => 'ஒரு பக்கத்தை உருவாக்கவும்',
 	'createpage_submitbutton' => 'சமர்ப்பி',
 );
 

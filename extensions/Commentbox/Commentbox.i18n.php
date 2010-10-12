@@ -913,6 +913,8 @@ Har du en kommentar till den här sidan? Lägg till den här eller <span class="
  */
 $messages['ta'] = array(
 	'commentbox-name' => 'பெயர்:',
+	'commentbox-log' => 'புதிய கருத்துக்கள்',
+	'commentbox-first-comment-heading' => '== கருத்துக்கள் ==',
 );
 
 /** Telugu (తెలుగు)

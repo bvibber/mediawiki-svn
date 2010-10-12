@@ -9795,6 +9795,11 @@ $messages['ta'] = array(
 	'configure-old-changes' => 'மாற்றங்கள்',
 	'configure-section-pages' => 'பக்கங்கள்',
 	'configure-section-paths' => 'வழிகள்',
+	'configure-throttle-action-edit' => 'தொகு',
+	'configure-throttle-action-move' => 'நகர்த்தவும்',
+	'configure-condition-operator-or' => 'அல்லது',
+	'configure-condition-operator-and' => 'மற்றும்',
+	'configure-condition-operator-not' => 'அல்லாதது',
 );
 
 /** Telugu (తెలుగు)

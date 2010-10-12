@@ -209,6 +209,26 @@ $messages['bg'] = array(
 	'amazonplus-less' => 'по-малко',
 );
 
+/** Bengali (বাংলা)
+ * @author Samritmaity
+ */
+$messages['bn'] = array(
+	'amazonplus-nores' => 'দুঃখিত : ফলাফল পাওয়া যায় নি ।',
+	'amazonplus-noidres' => 'দুঃখিত :  কোন বস্তু-পরিচয় সংখ্যা পাওয়া যায় নি ।',
+	'amazonplus-fgcerr' => 'দুঃখিত : অাম্যাজন এর থেকে তথ্য সংগ্রহ অসফল হয়েছে ।',
+	'amazonplus-slserr' => 'দুঃখিত : অাম্যাজন এর থেকে পাওয়া শব্দ বিশ্লেষণ অসফল ।',
+	'amazonplus-used' => 'ইতিমধ্যে ব্যবহৃত',
+	'amazonplus-german' => 'জার্মান',
+	'amazonplus-french' => 'ফরাশী',
+	'amazonplus-japanese' => 'জাপানি',
+	'amazonplus-amazon' => 'আম্যাজন নির্ধারিত মূল্য',
+	'amazonplus-new' => 'নতুন',
+	'amazonplus-none' => 'এই বস্তুর অনূরূপ বস্তু বিক্রয় এর জন্য তৈরি নেই ।',
+	'amazonplus-cp-none' => 'কোনটিই নয় ।',
+	'amazonplus-more' => 'অধিকতর',
+	'amazonplus-less' => 'কম',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

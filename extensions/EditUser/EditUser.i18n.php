@@ -1212,13 +1212,14 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  * @author செல்வா
  */
 $messages['ta'] = array(
 	'edituser-desc' => 'சிறப்பு உரிமையுள்ள பயனர்கள் மற்ற பயனர்களின் விருப்பத்தேர்வுகளைத் தொகுக்க அனுமதிக்கின்றது',
 	'edituser' => 'பயனர் பக்கத்தைத் தொகு/திருத்து',
-	'edituser-username' => 'பயனர்பெயர்',
+	'edituser-username' => 'பயனர் பெயர்:',
 	'edituser-dosearch' => 'தேடுக',
 	'edituser-nouser' => ' "$1"  என்னும் பயனர் யாரும் இல்லை',
 	'edituser-exempt' => '"$1" என்னும் பயனர் தொகுப்புக்கு உட்படாது',

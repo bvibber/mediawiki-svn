@@ -1951,6 +1951,8 @@ $messages['ta'] = array(
 	'closewikis-page-close-submit' => 'மூடுக',
 	'closewikis-page-reopen-wiki' => 'விக்கி:',
 	'closewikis-page-reopen-reason' => 'காரணம்:',
+	'closewikis-page-reopen-submit' => 'திரும்பத் திறக்கவும்',
+	'closewikis-list-header-wiki' => 'விக்கி',
 );
 
 /** Telugu (తెలుగు)
