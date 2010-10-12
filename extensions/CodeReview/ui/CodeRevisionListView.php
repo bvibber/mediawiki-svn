@@ -87,7 +87,7 @@ class CodeRevisionListView extends CodeView {
 		}
 
 		if ( $wgUser->isAllowed( 'codereview-set-status' ) &&
-				$revObjects[0]->isValidStatus( $status ) ) {
+				$revObjects && $revObjects[0]->isValidStatus( $status ) ) {
 			foreach ( $revObjects as $id => $rev ) {
 				$rev->setStatus( $status, $wgUser );
 			}
