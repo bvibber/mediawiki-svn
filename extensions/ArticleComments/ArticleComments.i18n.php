@@ -32,7 +32,11 @@ $messages['en'] = array(
 	'article-comments-submission-view-all' => 'You may view all comments on that article [[$1|here]]',
 	'article-comments-prefilled-comment-text' => '',
 	'article-comments-user-is-blocked' => 'Your user account is currently blocked from editing [[$1]].',
-	'article-comments-new-comment' => "\n== \$1 ==\n\n<div class='commentBlock'>\n\$2\n\n--\$3 \$4\n</div>\n",
+	'article-comments-new-comment-heading' => "\n== {{int:article-comments-commenter-said|\$1}} ==\n\n",
+	'article-comments-comment-bad-mode' => '<div class="error">Invalid mode given for comment. Available ones are plain, normal and wiki.</div>',
+	'article-comments-comment-contents' => "<div class='commentBlock'><small>$4</small>$5--\$3</div>\n",
+	'article-comments-comment-missing-name-parameter' => 'Missing name',
+	'article-comments-comment-missing-date-parameter' => 'Missing comment date',
 	'article-comments-no-spam' => 'At least one of the submitted fields was flagged as spam.',
 	'processcomment' => 'Process article comment',
 );
@@ -41,10 +45,20 @@ $messages['qqq'] = array(
 	'article-comments-required-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being one of article-comments-*-string messages.',
 	'article-comments-submission-failed' => 'Page title when there are errors in the comment submission',
 	'article-comments-invalid-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being article-comments-title-string or article-comments-url-string messages, and $2 the wrong value.',
-	'article-comments-new-comment' => 'Text to add in the new comment.
-* $1 - Expansion of article-comments-commenter-said.
-* $2 - Comment text.
-* $3 - Commenter name, possibly linking to its web.
-* $4 - Datetime.',
+	'article-comments-new-comment-heading' => 'Wiki text which will appear above the &lt;comment&gt; tags.
+
+Available variables:
+* $1 - Commenter name.
+* $2 - Commenter url (may be empty).
+* $3 - Datetime.
+* $4 - Comment text.',
+	'article-comments-comment-contents' => 'Way in which &lt;comment&gt; tags are parsed.
+Note it is importat not to place the $5 between new-lines in order to get new lines correctly converted into new paragraphs in normal mode (wfMsgExt can\'t place it inside a <p/>).
+	
+* $1 - Commenter name.
+* $2 - Comment url.
+* $3 - User signature, if an URL is available, name linking to its web.
+* $4 - Parsed datetime.
+* $5 - Comment text.',
 );
 
