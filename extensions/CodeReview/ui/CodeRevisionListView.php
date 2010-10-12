@@ -109,7 +109,6 @@ class CodeRevisionListView extends CodeView {
 	protected function buildBatchInterface( $pager ) {
 		global $wgUser;
 
-		$changeInterface = '';
 		$changeFields = array();
 
 		if ( $wgUser->isAllowed( 'codereview-set-status' ) ) {
@@ -322,7 +321,6 @@ class SvnRevTablePager extends SvnTablePager {
 		case 'cr_message':
 			return $this->mView->messageFragment( $value );
 		case 'cr_timestamp':
-			global $wgLang;
 			return $wgLang->timeanddate( $value, true );
 		case 'comments':
 			if ( $value ) {
