@@ -36,14 +36,10 @@ class SessionStash {
 			$repo = RepoGroup::singleton()->getLocalRepo();
 		}
 
-		// sanity check repo. If we want to mock the repo later this should be modified.
-		if ( ! is_dir( $repo->getZonePath( 'temp' ) ) ) {
-			throw new SessionStashNotAvailableException();
-		}
 		$this->repo = $repo;
 
 		if ( ! isset( $_SESSION ) ) {
-			throw new SessionStashNotAvailableException();
+			throw new SessionStashNotAvailableException( 'no session var' );
 		}
 
 		if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME] ) ) {
