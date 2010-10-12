@@ -1,0 +1,13 @@
+Source: opendj
+Section: net
+Priority: extra
+Maintainer: Ryan Lane <rlane@wikimedia.org>
+Build-Depends: debhelper (>= 4), openjdk-6-jdk
+Standards-Version: 3.8.1
+Homepage: http://www.opendj.org
+
+Package: opendj
+Architecture: any
+Depends: openjdk-6-jre
+Description: OpenDJ Java based LDAP server
+ OpenDJ is an open source community project building a free and comprehensive next generation directory service, based on LDAP and DSML standards.

@@ -1,0 +1,13 @@
+#!/bin/sh -e
+
+if [ "$1" = "purge" ] ; then
+	# remove opendj user
+	if getent passwd opendj >/dev/null; then
+		deluser opendj
+	fi
+	if getent group opendj >/dev/null; then
+		delgroup opendj
+	fi
+fi
+
+#DEBHELPER#

@@ -1,0 +1,32 @@
+opendj (2.4.0-5) unstable; urgency=low
+
+  * Gave the user a home directory and shell, since all opendj commands must
+    be run as the opendj user
+
+ -- Ryan Lane <rlane@wikimedia.org>  Fri, 08 Oct 2010 11:34:00 -0600
+
+opendj (2.4.0-4) unstable; urgency=low
+
+  * Ensure init script doesn't get run on package install, and isn't in the
+    rc.* directories
+
+ -- Ryan Lane <rlane@wikimedia.org>  Thu, 07 Oct 2010 16:36:00 -0600
+
+opendj (2.4.0-3) unstable; urgency=low
+
+  * Model package more closely to that of the solaris package
+
+ -- Ryan Lane <rlane@wikimedia.org>  Wed, 06 Oct 2010 14:00:00 -0600
+
+opendj (2.4.0-2) unstable; urgency=low
+
+  * Fix issue with init script
+  * Add a check for /usr/opendj/lib/set-java-home in the postinstall
+
+ -- Ryan Lane <rlane@wikimedia.org>  Thu, 30 Sep 2010 20:00:00 +0000
+
+opendj (2.4.0-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Ryan Lane <rlane@wikimedia.org>  Thu, 16 Sep 2010 21:00:36 +0000

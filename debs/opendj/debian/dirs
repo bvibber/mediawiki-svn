@@ -1,0 +1,7 @@
+usr/opendj
+usr/opendj/tmpl_instance
+usr/opendj/tmpl_instance/config/schema
+usr/opendj/tmpl_instance/lib/extensions
+usr/opendj/tmpl_instance/classes
+etc/opendj
+var/opendj

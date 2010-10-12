@@ -1,0 +1,26 @@
+This package was debianized by Ryan Lane <rlane@wikimedia.org> on
+Thu, 16 Sep 2010 21:00:36 +0000.
+
+It was downloaded from http://www.forgerock.com
+
+Upstream Author(s):
+
+    info@forgerock.com
+
+Copyright:
+
+    Copyright (C) 2010 ForgeRock.
+
+License:
+
+    CDDL
+
+The Debian packaging is:
+
+    Copyright (C) 2010 Ryan Lane <rlane@wikimedia.org>
+
+and is licensed under the GPL version 3, 
+see `/usr/share/common-licenses/GPL-3'.
+
+# Please also look if there are files or directories which have a
+# different copyright/license attached and list them here.

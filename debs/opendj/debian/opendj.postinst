@@ -1,0 +1,28 @@
+#!/bin/sh
+set -e
+
+if ! getent group opendj >/dev/null; then
+	echo Adding group: opendj.
+	addgroup --system opendj
+fi
+
+if ! getent passwd opendj >/dev/null; then
+	echo Adding system user: opendj.
+	adduser --system --ingroup opendj --home /var/opendj --shell /bin/bash --no-create-home opendj
+	usermod -c "OpenDJ LDAP Server"	opendj
+	cp /etc/skel/.[bp]* /var/opendj
+	echo "" >> /var/opendj/.bashrc
+	echo "export PATH=$PATH:/usr/opendj/bin" >> /var/opendj/.bashrc
+fi
+
+if [ ! -d /var/opendj/instance ]; then
+  cp -R /usr/opendj/tmpl_instance /var/opendj/instance
+fi
+
+if [ -d /var/opendj ]; then
+  chown -R opendj:opendj /var/opendj
+fi
+
+#DEBHELPER#
+
+exit 0
