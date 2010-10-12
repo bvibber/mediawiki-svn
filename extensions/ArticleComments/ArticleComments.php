@@ -273,7 +273,7 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	}
 
 	# Inline JavaScript to make form behavior more rich (must degrade well in JS-disabled browsers)
-	$js .= "<script type=\"text/javascript\">//<![CDATA[\n(function(){\n";
+	$js = "<script type=\"text/javascript\">//<![CDATA[\n(function(){\n";
 
 	# Prefill the name field if the user is logged in.
 	$js .=
