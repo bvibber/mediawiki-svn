@@ -1,5 +1,5 @@
 
-// include all our module messages
+// include all module messages
 mw.includeAllModuleMessages();
 
 /** 

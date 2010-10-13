@@ -80,6 +80,7 @@ mw.setConfig( 'SmilPlayer.AssetDomainWhiteList', ['upload.wikimedia.org'] );
 
 
 
+
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 if( window.jQuery ){	
 	jQuery( document ).ready( doPageSpecificRewrite );
@@ -113,11 +114,16 @@ function doPageSpecificRewrite() {
 					'$j.ui', 
 					'$j.widget',
 					'$j.ui.mouse',
-					'$j.ui.sortable' 
+					'$j.ui.position',
+					'$j.ui.progressbar', 					
+					'$j.ui.dialog', 
+					'$j.ui.draggable',
+					'$j.ui.sortable',
+					'$j.ui.datepicker'
 				], function() {							
 						mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
 				} );		
-			},100);
+			},200);
 			return ;
 		}
 	}
@@ -641,7 +647,7 @@ function loadMwEmbed( classSet, callback ) {
 					importScriptURI( mwEmbedHostPath + '/libraries/jquery/jquery-1.4.2.js?' + mwGetReqArgs() );
 				}
 				setTimeout( waitForJQueryUpgrade, 5);
-			} else {
+			} else {				
 				// load mwEmbed js
 				importScriptURI( mwEmbedHostPath + '/mwEmbed.js?' + mwGetReqArgs() );
 				waitMwEmbedReady( function(){
