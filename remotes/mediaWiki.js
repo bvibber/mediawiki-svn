@@ -35,8 +35,8 @@ if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
 
-//mwReqParam['debug'] = false;
-//mwUseScriptLoader = true;
+mwReqParam['debug'] = false;
+mwUseScriptLoader = true;
 //mwRemoteVersion = Math.random();
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
@@ -140,20 +140,24 @@ function doPageSpecificRewrite() {
 		if( wgAction == 'view' ){
 			var orgBody = mwSetPageToLoading();
 			//load the "player" ( includes call to  loadMwEmbed )
-			mwLoadPlayer(function(){
-				// Now load MediaWiki TimedText Remote:
-				mw.load( 'RemoteMwTimedText',function(){
-					//Setup the remote configuration
-					var myRemote = new RemoteMwTimedText( {
-						'action': wgAction,
-						'title' : wgTitle,
-						'target': '#bodyContent',
-						'orgBody': orgBody
-					});	
-					// Update the UI
-					myRemote.updateUI();
+			
+			// Add a timeout to give a chance for ui core to build out ( bug with replace jquery ui )
+			setTimeout(function(){
+				mwLoadPlayer(function(){
+					// Now load MediaWiki TimedText Remote:
+					mw.load( 'RemoteMwTimedText',function(){
+						//Setup the remote configuration
+						var myRemote = new RemoteMwTimedText( {
+							'action': wgAction,
+							'title' : wgTitle,
+							'target': '#bodyContent',
+							'orgBody': orgBody
+						});	
+						// Update the UI
+						myRemote.updateUI();
+					} );
 				} );
-			} );
+			}, 100 );
 			return ;
 		}
 	}	
@@ -254,26 +258,29 @@ function doPageSpecificRewrite() {
 	if ( vidIdList.length > 0 ) {
 		// Reverse order the array so videos at the "top" get swapped first:
 		vidIdList = vidIdList.reverse();
-		mwLoadPlayer( function(){			
-			
-			// Check for flat file page: 
-			var flatFilePretext = "File:Sequence-";
-			if( wgPageName.indexOf(flatFilePretext ) === 0 
-					&& 
-				wgPageName.indexOf('.ogv') !== -1 ) 
-			{
-				var sequenceTitle = 'Sequence:' + wgPageName.substring( flatFilePretext.length, wgPageName.length - 4 );			
-				window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
-					'action': wgAction,
-					'titleKey' : sequenceTitle,
-					'target' : '#bodyContent'
-				});
-				window.mwSequencerRemote.showViewFlattenedFile();
-			}
-			
-			// Do utility rewrite of OggHandler content:
-			rewrite_for_OggHandler( vidIdList );
-		} );	
+		// Add a timeout to give a chance for ui core to build out ( bug with replace jquery ui )
+		setTimeout(function(){ 
+			mwLoadPlayer( function(){			
+				
+				// Check for flat file page: 
+				var flatFilePretext = "File:Sequence-";
+				if( wgPageName.indexOf(flatFilePretext ) === 0 
+						&& 
+					wgPageName.indexOf('.ogv') !== -1 ) 
+				{
+					var sequenceTitle = 'Sequence:' + wgPageName.substring( flatFilePretext.length, wgPageName.length - 4 );			
+					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
+						'action': wgAction,
+						'titleKey' : sequenceTitle,
+						'target' : '#bodyContent'
+					});
+					window.mwSequencerRemote.showViewFlattenedFile();
+				}
+				
+				// Do utility rewrite of OggHandler content:
+				rewrite_for_OggHandler( vidIdList );
+			} );	
+		}, 100);
 		return ;
 	}
 	
