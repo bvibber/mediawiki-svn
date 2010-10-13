@@ -88,7 +88,7 @@ mw.MiroSubsConfig = {
 
 				// Convert the miroSubs to srt				
 				var srtText = _this.miroSubs2Srt( miroSubs );			
-				_this.getSaveSummary( function( summary ){
+				$saveDialog = _this.getSaveDialogSummary( function( summary ){
 					if( summary === false ){
 						// Return to current page without saving the text 
 						location.reload(true);				
@@ -96,15 +96,23 @@ mw.MiroSubsConfig = {
 					}
 					_this.saveSrtText( srtText, summary, function(status){											
 						// No real error handling right now
-						// refresh page regardless of save or cancel
-						location.reload(true);
-						
-						/* @@todo error handling 
+						// refresh page regardless of save or cancel						
+											
 						if( status ){
-							doneSaveCallback();
+							$saveDialog
+							.dialog("option", 'title', gM('mwe-mirosubs-subs-saved') )
+							.html( gM('mwe-mirosubs-thankyou-contribution') );
 						} else {
-							cancelCallback();
-						}*/
+							$saveDialog
+							.dialog("option", 'title', gM('mwe-mirosubs-subs-saved-error') )
+							.html( gM('mwe-mirosubs-subs-saved-error') );
+						}
+						// Either way the only button is OK and it refreshes the page:
+						var button = {};
+						button[ gM('mwe-ok') ] = function(){
+							location.reload(true);
+						};
+						$saveDialog.dialog("option", "buttons", button );
 					});				
 				});
 			},
@@ -116,7 +124,7 @@ mw.MiroSubsConfig = {
 			'embedCode' : 'some code to embed'
 		};	
 	},
-	getSaveSummary: function( callback ){
+	getSaveDialogSummary: function( callback ){
 		// Add a dialog to get save summary
 		var buttons ={};
 		buttons[ gM('mwe-mirosubs-save-subs') ] = function(){
@@ -130,7 +138,9 @@ mw.MiroSubsConfig = {
 					$j('<div />')
 					.loadingSpinner()	
 				)
-			);
+			)
+			.dialog( "option", "buttons", false )
+			.dialog( "option", "title", gM('mwe-mirosubs-saving-subs') );
 		};
 		buttons[ gM('mwe-cancel') ] = function(){
 			callback( false );
@@ -138,7 +148,7 @@ mw.MiroSubsConfig = {
 		};
 		// Reduce the z-index so we can put the model ontop: 
 		//$j('.mirosubs-modal-widget-bg,.mirosubs-modal-widget').css( 'z-index', 10 );
-		mw.addDialog( {
+		var $dialog = mw.addDialog( {
 			'title' : gM("mwe-mirosubs-save-summary"), 
 			'width' : 450,
 			'content' : $j('<div />').append(
@@ -149,7 +159,8 @@ mw.MiroSubsConfig = {
 					}).val( gM('mwe-mirosubs-save-default') )
 				),
 			'buttons' : buttons
-		});		   
+		});		  
+		return $dialog;
 	},
 	saveSrtText: function( srtText, summary, callback ){
 		var _this = this;		

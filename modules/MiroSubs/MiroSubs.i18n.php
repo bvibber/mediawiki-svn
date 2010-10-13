@@ -15,5 +15,8 @@ $messages['en'] = array(
 	'mwe-mirosubs-save-summary' => 'Summary of subtitle edits',
 	'mwe-mirosubs-save-default' => 'Edited subtitles',	
 	'mwe-mirosubs-save-subs' => 'Save subtitles',
-	'mwe-mirosubs-saving-subs' => 'Saving subtitles ...'
+	'mwe-mirosubs-saving-subs' => 'Saving subtitles ...',
+	'mwe-mirosubs-subs-saved' => 'Subtitles saved',
+	'mwe-mirosubs-thankyou-contribution' => 'Thank you for your subtitle contribution',
+	'mwe-mirosubs-subs-saved-error' => 'Error in saving subtitles',
 );
