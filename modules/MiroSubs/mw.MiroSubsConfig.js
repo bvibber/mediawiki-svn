@@ -134,7 +134,7 @@ mw.MiroSubsConfig = {
 		buttons[ gM('mwe-mirosubs-save-subs') ] = function(){
 			var summary = $j('#mwe-mirosubs-save-summary').val();
 			// Append link to gadget: 
-			summary+= ' using [[Commons:UniversalSubtitles|UniversalSubs]]';
+			summary+= ' using [[Commons:Universal_Subtitles|UniversalSubs]]';
 			callback( summary );	
 			// set dialog to loading
 			$j( this ).html( $j('<div />').append( 
