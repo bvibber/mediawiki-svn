@@ -90,13 +90,15 @@ class SessionStash {
 	}
 
 	/**
-	 * Stash a file in a temp directory and record that we did this in the session, along with other parameters.
+	 * Stash a file in a temp directory and record that we did this in the session, along with other metadata.
 	 * We store data in a flat key-val namespace because that's how UploadBase did it. This also means we have to
 	 * ensure that the key-val pairs in $data do not overwrite other required fields.
 	 *
 	 * @param {String} $path: path to file you want stashed
-	 * @param {Array} $data: optional, other data you want added to the session. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or 'version' as keys here
-	 * @param {String} $key: optional, unique key for this session. Used for directory hashing when storing, otherwise not important
+	 * @param {Array} $data: optional, other data you want associated with the file. Do not use 'mTempPath', 'mFileProps', 'mFileSize', or 'version' as keys here
+	 * @param {String} $key: optional, unique key for this file in this session. Used for directory hashing when storing, otherwise not important
+	 * @throws SessionStashBadPathException
+	 * @throws SessionStashFileException
 	 * @return {null|SessionStashFile} file, or null on failure
 	 */
 	public function stashFile( $path, $data = array(), $key = null ) {
@@ -112,9 +114,21 @@ class SessionStash {
 		}
 
 		// if not already in a temporary area, put it there 
-		$status = $this->repo->storeTemp( basename($path), $path );
-		if( !$status->isOK() ) {
-			return null;
+		$status = $this->repo->storeTemp( basename( $path ), $path );
+		if( ! $status->isOK() ) {
+			// It is a convention in MediaWiki to only return one error per API exception, even if multiple errors
+			// are available. We use reset() to pick the "first" thing that was wrong, preferring errors to warnings.
+			// This is a bit lame, as we may have more info in the $status and we're throwing it away, but to fix it means
+			// redesigning API errors significantly.
+			// $status->value just contains the virtual URL (if anything) which is probably useless to the caller
+			$error = reset( $status->getErrorsArray() );
+			if ( ! count( $error ) ) {
+				$error = reset( $status->getWarningsArray() );
+				if ( ! count( $error ) ) {
+					$error = array( 'unknown', 'no error recorded' );
+				}
+			}
+			throw new SessionStashFileException( "error storing file in '$path': " . join( '; ', $error ) );
 		}
 		$stashPath = $status->value;
 		 		
