@@ -18,7 +18,7 @@
 	});
 	
 	mw.setDefaultConfig( {
-		'MiroSubs.EnableUniversalSubsEditor': false
+		'MiroSubs.EnableUniversalSubsEditor': true
 	})
 	
 	mw.addModuleLoader( 'MiroSubs', function(){
