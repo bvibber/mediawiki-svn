@@ -318,7 +318,7 @@ function mwLoadPlayer( callback ){
 		'$j.ui.button',
 		'$j.ui.draggable',		
 		'$j.ui.position',		
-		'$j.ui.resizable.js',
+		'$j.ui.resizable',
 		'$j.ui.slider', 
 		
 		'$j.ui.dialog',
