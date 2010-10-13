@@ -22,14 +22,18 @@ mw.MiroSubsConfig = {
 		this.embedPlayer = embedPlayer;
 		
 		// Set initial config
-		this.config = this.getDefaultConfig();				
+		this.config = this.getDefaultConfig();
 		
 		// Make sure we are logged in::		
 		mw.getUserName( function( userName ){
 			mw.log( "MiroSubsConfig::getUserName: " + userName );
 			if( !userName ){
-				mw.log("Error: MiroSubsConfig user not logged in");
-				callback( { 'status':'error', 'error': gM('mwe-mirosubs-not-loggedin') } );			
+				mw.addDialog({
+					'title' : gM('mwe-mirosubs-subs-please-login'),
+					'content' : gM('mwe-mirosubs-subs-please-login-desc')
+				});
+				callback( false );			
+				return false;
 			} else {
 				_this.config.username = userName;		
 				if( _this.isConfigReady( callback ) ){

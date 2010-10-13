@@ -10,8 +10,7 @@
 	});
 	// add as loader dependency  'mw.style.mirosubsMenu' 
 	
-	mw.addResourcePaths( {
-		"goog" : "mirosubs/base.min.js",
+	mw.addResourcePaths( {		
 		"mirosubs" : "mirosubs/mirosubs-api.min.js",
 		"mw.MiroSubsConfig" : "mw.MiroSubsConfig.js",
 		"mw.style.mirosubsMenu" : "css/mw.style.mirosubsMenu.css"
@@ -42,7 +41,10 @@
 						
 						// Load miro subs:
 						mw.load( 'MiroSubs', function(){				
-							mw.MiroSubsConfig.getConfig( embedPlayer , function( config ){							
+							mw.MiroSubsConfig.getConfig( embedPlayer , function( config ){
+								if( !config ){
+									return ;
+								}
 								// xxx NOTE there are some weird async display issues
 								// that only seem to be resolvable with timeouts for DOM actions							
 								setTimeout(function(){
