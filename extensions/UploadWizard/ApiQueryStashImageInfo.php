@@ -60,11 +60,11 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 			}
 
 		} catch ( SessionStashNotAvailableException $e ) {
-			$this->dieUsage( "Session not available", "nosession" );
+			$this->dieUsage( "Session not available: " . $e->getMessage(), "nosession" );
 		} catch ( SessionStashFileNotFoundException $e ) {
-			$this->dieUsage( "File not found", "nosuchpageid" );
+			$this->dieUsage( "File not found: " . $e->getMessage(), "nosuchpageid" );
 		} catch ( SessionStashBadPathException $e ) {
-			$this->dieUsage( "Bad path", "nosuchpageid" );
+			$this->dieUsage( "Bad path: " . $e->getMessage(), "nosuchpageid" );
 		}	
 
 	}

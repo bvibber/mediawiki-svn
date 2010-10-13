@@ -39,7 +39,7 @@ class SessionStash {
 		$this->repo = $repo;
 
 		if ( ! isset( $_SESSION ) ) {
-			throw new SessionStashNotAvailableException( 'no session var' );
+			throw new SessionStashNotAvailableException( 'no session variable' );
 		}
 
 		if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME] ) ) {
@@ -68,13 +68,13 @@ class SessionStash {
 	public function getFile( $key ) { 
 		if ( !isset( $this->files[$key] ) ) {
 			if ( !isset( $_SESSION[UploadBase::SESSION_KEYNAME][$key] ) ) {
-				throw new SessionStashFileNotFoundException();
+				throw new SessionStashFileNotFoundException( "key '$key' not found in session" );
 			}
 
 			$data = $_SESSION[UploadBase::SESSION_KEYNAME][$key];
 			// guards against PHP class changing while session data doesn't
 			if ($data['version'] !== UploadBase::SESSION_VERSION ) {
-				throw new SessionStashBadVersionException();
+				throw new SessionStashBadVersionException( $data['version'] . " does not match current version " . UploadBase::SESSION_VERSION );
 			}
 		
 			// separate the stashData into the path, and then the rest of the data
@@ -82,6 +82,7 @@ class SessionStash {
 			unset( $data['mTempPath'] );
 
 			$file = new SessionStashFile( $this, $this->repo, $path, $key, $data );
+			
 			$this->files[$key] = $file;
 
 		}
@@ -100,7 +101,7 @@ class SessionStash {
 	 */
 	public function stashFile( $path, $data = array(), $key = null ) {
 		if ( ! file_exists( $path ) ) {
-			throw new SessionStashBadPathException();
+			throw new SessionStashBadPathException( "path '$path' doesn't exist" );
 		}
                 $fileProps = File::getPropsFromPath( $path );
 
@@ -157,21 +158,22 @@ class SessionStashFile extends UnregisteredLocalFile {
 		$this->sessionStash = $stash;
 		$this->sessionKey = $key;
 		$this->sessionData = $data;
-	
+
 		// resolve mwrepo:// urls
 		if ( $repo->isVirtualUrl( $path ) ) {
 			$path = $repo->resolveVirtualUrl( $path );	
 		}
 
 		// check if path appears to be sane, no parent traversals, and is in this repo's temp zone.
+		$repoTempPath = $repo->getZonePath( 'temp' );
 		if ( ( ! $repo->validateFilename( $path ) ) || 
-				( strpos( $path, $repo->getZonePath( 'temp' ) ) !== 0 ) ) {
-			throw new SessionStashBadPathException();
+				( strpos( $path, $repoTempPath ) !== 0 ) ) {
+			throw new SessionStashBadPathException( "path '$path' is not valid or is not in repo temp area: '$repoTempPath'" );
 		}
 
 		// check if path exists! and is a plain file.
 		if ( ! $repo->fileExists( $path, FileRepo::FILES_ONLY ) ) {
-			throw new SessionStashFileNotFoundException();
+			throw new SessionStashFileNotFoundException( "cannot find path '$path'" );
 		}
 
 		parent::__construct( false, $repo, $path, false );
@@ -186,10 +188,12 @@ class SessionStashFile extends UnregisteredLocalFile {
 	/**
 	 * A method needed by the file transforming and scaling routines in File.php
 	 * We do not necessarily care about doing the description at this point
-	 * @return {String} the empty string
+	 * However, we also can't return the empty string, as the rest of MediaWiki demands this (and calls to imagemagick
+	 * convert require it to be there)
+	 * @return {String} dummy value
 	 */
 	public function getDescriptionUrl() {
-		return '';
+		return $this->getUrl();
 	}
 
 	/**
@@ -220,7 +224,7 @@ class SessionStashFile extends UnregisteredLocalFile {
 		}
 
 		if ( is_null( $extension ) ) {
-			throw new SessionStashFileException();
+			throw new SessionStashFileException( "extension '$extension' is null" );
 		}
 
 		$this->extension = parent::normalizeExtension( $extension );
