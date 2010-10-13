@@ -13,13 +13,13 @@
 if (!defined('MEDIAWIKI')) die('Not an entry point.');
 
 # Internationalisation file
-$wgExtensionMessagesFiles['DiscussionThreading'] =  dirname(__FILE__) . '/DiscussionThreading.i18n.php';
-
+$wgExtensionMessagesFiles['DiscussionThreading'] =  dirname( __FILE__ ) . '/DiscussionThreading.i18n.php';
+$wgExtensionFunctions[] = 'efDiscussionThreadSetup';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'DiscussionThreading',
-	'author' => array( 'Jack D. Pond', 'Daniel Brice' ),
-	'version' => '1.3',
+	'author' => array( 'Jack D. Pond' , 'Daniel Brice' ),
+	'version' => '1.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:DiscussionThreading',
 	'descriptionmsg' => 'discussionthreading-desc',
 );
@@ -36,8 +36,29 @@ $wgHooks['EditPage::showEditForm:initial'][] =  'efDiscussionThread';
 $wgHooks['EditPage::attemptSave'][] = 'efStampReply';
 $wgHooks['EditPage::showEditForm:initial'][] =  'efDiscussionThreadEdit';
 $wgHooks['EditSectionLinkForOther'][] =  'efDiscussionLink4other';
-$wgHooks['EditSectionLink'][] =  'efDiscussionLink';
 $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
+$wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
+
+# must use the deprecated efDiscussionLink hook if before MW Version 1.14
+#
+$xversion = explode( "." , $wgVersion );
+if ( $xversion[0] <= "1" && $xversion[1] < "14" ) {
+	$wgHooks['EditSectionLink'][] =  'efDiscussionLink';
+}
+unset( $xversion );
+
+/**
+ * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
+*/
+function efDiscussionThreadSetup() {
+	global $wgVersion;
+	$xversion = explode( ".",$wgVersion );
+	if ( $xversion[0] <= "1" && $xversion[1] <= "11" ) {
+		global $wgMessageCache, $messages;
+		foreach( $messages as $lang => $LangMsg )
+			$wgMessageCache->addMessages( $LangMsg, $lang );
+	} else wfLoadExtensionMessages( 'DiscussionThreading' );
+}
 
 /**
  * This function creates a linkobject for the editSectionLinkForOther function in linker
@@ -50,18 +71,17 @@ $wgHooks['AlternateEdit'][] =  'efDiscussionThreadEdit';
  * @param $result String: Returns the section [new][edit][reply] html if in a talk page - otherwise whatever came in with
  * @return  true
  */
-function efDiscussionLink4other ($callobj, $title, $section , $url , &$result)
+function efDiscussionLink4other ( $callobj , $title , $section , $url , &$result )
 {
 	global $wgSectionThreadingOn;
-	if($wgSectionThreadingOn && $title->isTalkPage() ) {
-		wfLoadExtensionMessages( 'DiscussionThreading' );
+	if( $wgSectionThreadingOn && $title->isTalkPage() ) {
 		$commenturl = '&section='.$section.'&replyto=yes';
-		$curl = $callobj->makeKnownLinkObj( $title, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl );
+		$curl = $callobj->makeKnownLinkObj( $title, wfMsg('discussionthreading-replysection' ) , 'action=edit'.$commenturl );
 		$newthreadurl = '&section=new';
-		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection'), 'action=edit'.$newthreadurl );
+		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection' ) , 'action=edit'.$newthreadurl );
 		$result =  $nurl."][".$url."][".$curl;
 	}
-	return (true);
+	return ( true );
 }
 
 /**
@@ -75,21 +95,41 @@ function efDiscussionLink4other ($callobj, $title, $section , $url , &$result)
  * @param $result String: Returns the section [new][edit][reply] html  if in a talk page - otherwise whatever came in with
  * @return  true
  */
-function efDiscussionLink ($callobj, $nt, $section, $hint='', $url , &$result)
+function efDiscussionLink ( $callobj , $nt , $section , $hint='' , $url , &$result )
+{
+	global $wgSectionThreadingOn;
+	if( $wgSectionThreadingOn && $nt->isTalkPage() ) {
+		$commenturl = '&section='.$section.'&replyto=yes';
+		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint', htmlspecialchars( $hint ) ) . '"';
+		$curl = $callobj->makeKnownLinkObj( $nt, wfMsg( 'discussionthreading-replysection' ), 'action=edit'.$commenturl , '' , '' , '' ,  $hint );
+		$newthreadurl = '&section=new';
+		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-threadnewsectionhint', htmlspecialchars( $hint ) ) . '"';
+		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection' ), 'action=edit'.$newthreadurl, '' , '' , '' ,  $hint );
+		$result = $nurl."][".$url."][".$curl;
+	}
+	return ( true );
+}
+
+function efDoDiscussionLink ( $callobj , $nt , $section , $hint='' , $result )
 {
 	global $wgSectionThreadingOn;
 	if($wgSectionThreadingOn && $nt->isTalkPage() ) {
-		wfLoadExtensionMessages( 'DiscussionThreading' );
+		$spanOpen="<span class=\"editsection\">";
+		$spanClose="</span>";
+		$strippedResults = substr( substr( $result , strlen( $spanOpen )) , 0 , -strlen( $spanClose ) );
 		$commenturl = '&section='.$section.'&replyto=yes';
-		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint', htmlspecialchars( $hint ) ) . '"';
+		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint' , htmlspecialchars( $hint ) ) . '"';
 		$curl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl, '', '', '',  $hint );
 		$newthreadurl = '&section=new';
-		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-threadnewsectionhint', htmlspecialchars( $hint ) ) . '"';
-		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-threadnewsection'), 'action=edit'.$newthreadurl, '', '', '',  $hint );
-		$result = $nurl."][".$url."][".$curl;
+		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-threadnewsectionhint' , htmlspecialchars( $hint ) ) . '"';
+		$nurl = $callobj->makeKnownLinkObj( $nt, wfMsg( 'discussionthreading-threadnewsection' ), 'action=edit'.$newthreadurl, '' , '' , '' ,  $hint );
+		$nurl = wfMsgExt( 'editsection-brackets', array( 'escape', 'replaceafter', 'language' => false ), $nurl );
+		$curl = wfMsgExt( 'editsection-brackets', array( 'escape', 'replaceafter', 'language' => false ), $curl );
+		$result = $spanOpen.$nurl.$strippedResults.$curl.$spanClose;
 	}
-	return (true);
+	return ( true );
 }
+
 
 /**
  * This function is a hook used to test to see if empty, if so, start a comment
@@ -97,17 +137,17 @@ function efDiscussionLink ($callobj, $nt, $section, $hint='', $url , &$result)
  * @param $efform form object.
  * @return  true
  */
-function efDiscussionThreadEdit ($efform) {
+function efDiscussionThreadEdit( $efform ) {
 	global $wgRequest,$wgSectionThreadingOn;
 	$efform->replytosection = '';
 	$efform->replyadded = false;
 	$efform->replytosection = $wgRequest->getVal( 'replyto' );
 	if( !$efform->mTitle->exists() ) {
-		if($wgSectionThreadingOn && $efform->mTitle->isTalkPage() ) {
+		if( $wgSectionThreadingOn && $efform->mTitle->isTalkPage() ) {
 			$efform->section = 'new';
 		}
 	}
-	return (true);
+	return ( true );
 }
 
 /**
@@ -118,20 +158,20 @@ function efDiscussionThreadEdit ($efform) {
  */
 function efDiscussionThread($efform){
 	global $wgSectionThreadingOn;
-	$wgSectionThreadingOn = isset($wgSectionThreadingOn) ? $wgSectionThreadingOn : false;
-	if ( $efform->replytosection != '' && $wgSectionThreadingOn  && !$efform->replyadded) {
-		if ($efform->replytosection != '') {
+	$wgSectionThreadingOn = isset( $wgSectionThreadingOn ) ? $wgSectionThreadingOn : false;
+	if ( $efform->replytosection != '' && $wgSectionThreadingOn  && !$efform->replyadded ) {
+		if ($efform->replytosection != '' ) {
 			$text = $efform->textbox1;
 			$matches = array();
-			preg_match( "/^(=+)(.+)\\1/mi",
-				$efform->textbox1,
+			preg_match( "/^(=+)(.+)\\1/mi" ,
+				$efform->textbox1 ,
 				$matches );
 			if( !empty( $matches[2] ) ) {
-				preg_match( "/.*(-+)\\1/mi",$matches[2],$matchsign);
+				preg_match( "/.*(-+)\\1/mi" , $matches[2] , $matchsign );
 				if (!empty($matchsign[0]) ){
-					$text = $text."\n\n".$matches[1]."=Re: ".trim($matchsign[0])." ~~~~".$matches[1]."=";
+					$text = $text."\n\n".$matches[1]."=Re: ".trim( $matchsign[0] )." ~~~~".$matches[1]."=";
 				} else {
-					$text = $text."\n\n".$matches[1]."=Re: ".trim($matches[2])." -- ~~~~".$matches[1]."=";
+					$text = $text."\n\n".$matches[1]."=Re: ".trim( $matches[2] )." -- ~~~~".$matches[1]."=";
 				}
 			} else {
 				$text = $text." -- ~~~~<br />\n\n";
@@ -139,7 +179,7 @@ function efDiscussionThread($efform){
 		   // Add an appropriate number of colons (:) to indent the body.
 		   // Include replace me text, so the user knows where to reply
 		   $replaceMeText = " Replace this text with your reply";
-		   $text .= "\n\n".str_repeat(":",strlen($matches[1])-1).$replaceMeText;
+		   $text .= "\n\n".str_repeat( ":" , strlen( $matches[1] )-1 ).$replaceMeText;
 		   // Insert javascript hook that will select the replace me text
 		   global $wgOut;
 		   $wgOut->addScript("<script type=\"text/javascript\">
@@ -162,9 +202,9 @@ function efDiscussionThread($efform){
 			$efform->replyadded = true;
 			$efform->textbox1 = $text;
 		}
-		return (true);
+		return ( true );
 	}
-	return (true);
+	return ( true );
 }
 
 /**
@@ -176,8 +216,8 @@ function efDiscussionThread($efform){
 function efStampReply($efform){
 	global $wgSectionThreadingOn;
 	$wgSectionThreadingOn = isset($wgSectionThreadingOn) ? $wgSectionThreadingOn : false;
-	if ( $efform->section == "new" && $wgSectionThreadingOn  && !$efform->replyadded) {
+	if ( $efform->section == "new" && $wgSectionThreadingOn  && !$efform->replyadded ) {
 		$efform->summary = $efform->summary." -- ~~~~";
 	}
-	return(true);
+	return( true );
 }
