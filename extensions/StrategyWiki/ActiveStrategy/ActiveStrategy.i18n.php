@@ -441,6 +441,13 @@ $messages['sv'] = array(
 	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'nedits' => '$1 {{PLURAL:$1|தொகு|தொகுத்தல்கள்}}',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -11804,6 +11804,7 @@ $messages['lb'] = array(
 	'configure-setting-wgCookieSecure' => 'Sécher Cookien',
 	'configure-setting-wgDisableCookieCheck' => 'Session-Cookien deasaktivéieren',
 	'configure-setting-wgSessionName' => 'Numm vun der Seance',
+	'configure-setting-wgSquidMaxage' => 'Timeout vum Tëschespäicher vum Squid',
 	'configure-setting-wgUseSquid' => 'Squid aktivéieren',
 	'configure-setting-wgAllowSlowParserFunctions' => 'Lues Parsefonctiounen erlaben',
 	'configure-setting-wgAPIListModules' => 'Erweiderunge vum API Lëschte-Modul',
@@ -18497,6 +18498,7 @@ $messages['sw'] = array(
 $messages['ta'] = array(
 	'configure-setting-wgSitename' => 'தளத்தின் பெயர்',
 	'configure-setting-wgActionPaths-key' => 'செயல்',
+	'configure-setting-wgArticleRobotPolicies-key' => 'பக்கத்தின் தலைப்பு',
 	'configure-setting-wgExtraLanguageNames-value' => 'பெயர்',
 	'configure-setting-wgDebugLogGroups-value' => 'கோப்பு',
 );

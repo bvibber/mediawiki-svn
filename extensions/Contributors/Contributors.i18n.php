@@ -1482,6 +1482,13 @@ $messages['sv'] = array(
 	'contributors-nosuchpage' => 'Sidan $1 existerar inte.',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contributors-submit' => 'காட்டு',
+);
+
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Kiranmayee

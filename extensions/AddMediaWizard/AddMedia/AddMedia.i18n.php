@@ -322,23 +322,32 @@ $messages['af'] = array(
 	'mwe-upload' => 'Laai lêer',
 	'mwe-destfilename' => 'Teikenlêernaam:',
 	'mwe-summary' => 'Samevatting',
+	'mwe-date-of-work' => 'Datum van die werk',
 	'mwe-error_not_loggedin' => 'U is nie aangeteken nie of het nie regte om op te mag laai nie.',
 	'mwe-link-login' => 'aanmeld',
 	'mwe-watch-this-file' => 'Hou die lêer dop',
 	'mwe-ignore-any-warnings' => 'Ignoreer enige waarskuwings',
+	'mwe-i-would-like-to' => 'Ek wil graag',
 	'mwe-upload-in-progress' => 'Besig om op te laai (moenie hierdie venster toemaak nie)',
 	'mwe-uploaded-status' => 'Opgelaai',
 	'mwe-transcoded-status' => 'Getranskodeer',
+	'mwe-uploaded-time-remaining' => 'Oorblywende tyd: $1',
 	'mwe-media_search' => 'Media-soektog',
+	'rsd_box_layout' => 'Boks-uitleg',
+	'rsd_list_layout' => 'Lys-uitleg',
 	'rsd_results_desc' => 'Resultate $1 tot $2',
+	'rsd_results_desc_total' => 'Resultate $1 tot $2 van $3',
 	'rsd_results_next' => 'Volgende',
 	'rsd_results_prev' => 'vorige',
+	'rsd_no_results' => 'Geen soekresultate vir <b>$1</b> nie',
 	'mwe-upload_tab' => 'Laai lêer',
 	'rsd_layout' => 'Uitleg:',
 	'rsd_resource_edit' => 'Wysig hulpbron: $1',
 	'mwe-link' => 'skakel',
 	'mwe-cc_by_title' => 'Naamsvermelding',
+	'mwe-cc_nc_title' => 'Geen Kommersiële Gebruik',
 	'mwe-cc_nd_title' => 'Geen afgeleide werke',
+	'mwe-cc_sa_title' => 'Gelyk Dele',
 	'mwe-cc_pd_title' => 'Publieke Domein',
 	'mwe-unknown_license' => 'Onbekend lisensie',
 	'mwe-results_from' => 'Resultate van $1',
@@ -2222,6 +2231,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Locos epraix
  * @author McDutchie
  * @author Translationista
  */
@@ -2394,7 +2404,7 @@ $messages['es'] = array(
 	'mwe-ftype-ogg' => 'Archivo de video Ogg',
 	'mwe-ftype-unk' => 'Formato de archivo desconocido',
 	'rsd-wiki_commons' => 'Wikimedia Commons, un archivo de contenido de medios educativos con licencia libre (imágenes, sonido y video clips)',
-	'rsd-kaltura-title' => 'Todas las fuentes',
+	'rsd-kaltura-title' => 'Búsqueda Kaltura (todas las fuentes)',
 	'rsd-kaltura' => 'Búsqueda añadida Kaltura para multimedia libre de licencia en múltiples provedores de búsquedas',
 	'rsd-this_wiki-title' => 'Este wiki',
 	'rsd-this_wiki-desc' => 'El wiki local',
@@ -6425,6 +6435,7 @@ $messages['pt'] = array(
  * @author 555
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -6491,16 +6502,34 @@ $messages['pt-br'] = array(
 	'fogg-organization-title' => 'Organização',
 	'fogg-organization-help' => 'Nome da organização (estúdio)',
 	'fogg-license-title' => 'Licença',
+	'mwe-imported_from' => '$1 importado de [$2 $3]. Consulte a [$4 página do recurso] original para mais informações.',
+	'mwe-import-description' => '$1, importado de $2',
 	'mwe-select_file' => 'Selecionar arquivo',
+	'mwe-select_ownwork' => 'Estou carregando uma obra de autoria completamente minha, e publicando-a nos termos da:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Compartilhamento Pela Mesma Licença (3.0)',
 	'mwe-upload' => 'Carregar arquivo',
 	'mwe-destfilename' => 'Nome do arquivo de destino',
 	'mwe-summary' => 'Sumário',
+	'mwe-date-of-work' => 'Data da obra',
+	'mwe-error-not-loggedin-file' => 'Não parece estar autenticado ou ocorreu um erro no software. Pode $1 e tentar novamente',
 	'mwe-link-login' => 'entrar',
 	'mwe-watch-this-file' => 'Vigiar este arquivo',
 	'mwe-ignore-any-warnings' => 'Ignorar todos os avisos',
+	'mwe-i-would-like-to' => 'Eu gostaria de',
+	'mwe-upload-own-file' => 'Fazer upload de obras da minha autoria para $1',
+	'mwe-upload-not-my-file' => 'Fazer upload de multimídia que não é da minha autoria para $1',
+	'mwe-upload-once-done' => 'Por favor, $1. Quando o upload terminar, $2',
+	'mwe-upload-in-new-win-link' => 'faça o upload em uma nova janela ou aba',
 	'mwe-upload-refresh' => 'atualizar minha lista de carregamentos',
+	'mwe-ie-inline-upload' => 'Uploads na própria página estão desativados para o Internet Explorer.
+Você pode $1 e depois $2',
 	'mwe-upload-in-progress' => 'Carregamento em progresso (não feche esta janela)',
+	'mwe-uploaded-status' => 'Upload terminado',
+	'mwe-transcoded-status' => 'Transcodificado',
 	'mwe-uploaded-time-remaining' => 'Tempo restante: $1',
+	'mwe-upload-done' => 'O seu upload <i>deve estar</i> disponível.',
+	'mwe-add_media_wizard' => 'Assistente de carregamento de multimídia',
+	'mwe-media_search' => 'Pesquisa de multimídia',
 	'rsd_results_desc' => 'Resultados $1 a $2',
 	'rsd_results_desc_total' => 'Resultados $1 a $2 de $3',
 	'rsd_results_next' => 'próximo',
@@ -6566,6 +6595,7 @@ $messages['pt-br'] = array(
 	'fogg-please-install-install-linktext' => 'Instalar Firefogg',
 	'fogg-please-install-about-linktext' => 'sobre o Firefogg',
 	'mwe-upload-multi' => 'Carregar {{PLURAL:$1|arquivo|arquivos}}',
+	'mwe-review-upload' => 'Revisar o upload {{PLURAL:$1|do arquivo|dos arquivos}}',
 );
 
 /** Russian (Русский)
@@ -7285,6 +7315,7 @@ $messages['ta'] = array(
 	'fogg-date-title' => 'தேதி',
 	'fogg-location-title' => 'இடம்',
 	'fogg-organization-title' => 'அமைப்பு',
+	'fogg-copyright-title' => 'பதிப்புரிமை',
 	'fogg-contact-title' => 'தொடர்பு',
 	'fogg-contact-help' => 'தொடர்பு இணைப்பு',
 	'mwe-select_file' => 'கோப்பைத் தேர்ந்தெடுக்கவும்',

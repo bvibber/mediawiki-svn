@@ -386,6 +386,13 @@ $messages['sv'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|spara checkpoint]])',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'checkpoint' => 'சேமித்த பின், தொடர்ந்து தொகுத்தலைச் செய்யவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

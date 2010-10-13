@@ -788,6 +788,19 @@ Për piasì, ch'a cangia o ch'a modìfica sò navigador, se possìbil.",
 	'cb_edit_paste_right_hint' => "Ancolé l'operador ant la posission apress, se possìbil",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categorybrowser' => 'وېشنيزه سپړونکی',
+	'cb_cat_subcats' => 'هېڅ څېرمه وېشنيزې نشته',
+	'cb_cat_pages' => 'مخونه',
+	'cb_cat_files' => 'دوتنې',
+	'cb_all_op' => 'ټول',
+	'cb_or_op' => 'يا',
+	'cb_and_op' => 'او',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

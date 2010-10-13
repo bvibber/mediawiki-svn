@@ -742,6 +742,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'د لېږلو په حال کې ...',
 	'communityvoice-ratings-scale-status-thanks' => 'ستاسې له رايې نه مننه!',
 );
 

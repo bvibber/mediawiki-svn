@@ -1948,6 +1948,7 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'closewikis-page-close-wiki' => 'விக்கி:',
+	'closewikis-page-close-dreason' => 'காரணம் (காட்டப்பட்டுள்ளது):',
 	'closewikis-page-close-submit' => 'மூடுக',
 	'closewikis-page-reopen-wiki' => 'விக்கி:',
 	'closewikis-page-reopen-reason' => 'காரணம்:',

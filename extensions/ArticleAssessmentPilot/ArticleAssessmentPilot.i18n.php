@@ -102,6 +102,7 @@ The span tag gets rewritten in JavaScript to become a link.',
  * @author Naudefj
  */
 $messages['af'] = array(
+	'articleassessment' => 'Bladsybeoordeling',
 	'articleassessment-yourfeedback' => 'U terugvoer',
 	'articleassessment-submit' => 'Dien in',
 	'articleassessment-rating-wellsourced' => 'Goed van bronne voorsien:',
@@ -109,8 +110,22 @@ $messages['af'] = array(
 	'articleassessment-rating-completeness' => 'Volledig:',
 	'articleassessment-rating-readability' => 'Leesbaar:',
 	'articleassessment-articlerating' => 'Artikel gradering',
+	'articleassessment-error' => "'n Fout het voorgekom. 
+Probeer asseblief later weer.",
+	'articleassessment-thanks' => 'Dankie! U graderings is gestoor.',
+	'articleassessment-featurefeedback' => 'Gee ons <span class="feedbacklink">terugvoer</span> oor hierdie funksie.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|beoordeling|beoordelings}})',
 	'articleassessment-results-show' => '(Resultate versteek. <span class="showlink">Wys</span> hulle.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Versteek resultate</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Ek wil bydrae tot {{site name}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Ek hou daarvan om my mening te deel',
+	'articleassessment-survey-answer-whyrated-other' => 'Ander',
+	'articleassessment-survey-question-useful-iffalse' => 'Hoekom?',
+	'articleassessment-survey-question-expert-iftrue' => 'Kan u u ondervinding beskryf?',
+	'articleassessment-survey-question-comments' => 'Het u enige addisionele kommentaar?',
+	'articleassessment-survey-submit' => 'Dien in',
+	'articleassessment-survey-title' => "Antwoord asseblief 'n paar vrae",
+	'articleassessment-survey-thanks' => 'Dankie dat u die opname ingevul het.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -336,6 +336,7 @@ Nudi autentifikaciju zasnovanu na Facebook grupama i korištenju FBML u wiki tek
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Kghbln
  */
 $messages['de'] = array(
@@ -412,7 +413,7 @@ Bitte einen anderen auswählen.',
 	'fbconnect-updateuserinfo' => 'Die folgenden persönlichen Angaben müssen aktualisiert werden:',
 	'fbconnect-alreadyloggedin' => "'''Du bist bereits angemeldet, $1!'''
 
-Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
+Sofern Facebook Connect für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
 	'fbconnect-error-creating-user' => 'Fehler beim Erstellen des Benutzers in der lokalen Datenbank.',
 	'fbconnect-error-user-creation-hook-aborted' => 'Die Schnittstelle einer Softwareerweiterung hat die Benutzerkontoerstellung mit folgender Nachricht abgebrochen: $1',
 	'fbconnect-prefstext' => 'Facebook Connect',
@@ -597,6 +598,91 @@ Se quere usar o Facebook Connect para acceder ao sistema no futuro, pode [[Speci
 	'fbconnect-link-to-profile' => 'Perfil no Facebook',
 	'fbconnect-prefsheader' => "Para controlar aqueles acontecementos que xerarán un elemento na súa fonte de novas do Facebook, <a id='fbConnectPushEventBar_show' href='#'>mostrar as preferencias</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>agochar as preferencias</a>",
 	'fbconnect-prefs-can-be-updated' => 'Pode actualizar estes elementos en calquera momento visitando a lapela "$1" da súa páxina de preferencias.',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Stellt e [[Special:Connect|Spezialsyte]] z Verfiegig, wu Benutzer dermit e Verbindig mit ihre [http://de-de.facebook.com/ Facebook-Konte] chenne härstelle.
+Macht e Authentifizierig megli, wu uf Facebook-Gruppe basiert, un dr Yysatz vu FBML in Wikitext.',
+	'group-fb-user' => 'Facebook-Connect-Benutzer',
+	'group-fb-user-member' => 'Facebook-Connect-Benutzer',
+	'grouppage-fb-user' => '{{ns:project}}:Facebook-Connect-Benutzer',
+	'group-fb-groupie' => 'Gruppemitglider',
+	'group-fb-groupie-member' => 'Gruppemitglid',
+	'grouppage-fb-groupie' => '{{ns:project}}:Gruppemitglider',
+	'group-fb-officer' => 'Gruppeverwalter',
+	'group-fb-officer-member' => 'Gruppeverwalter',
+	'grouppage-fb-officer' => '{{ns:project}}:Gruppeverwalter',
+	'group-fb-admin' => 'Gruppeammanne',
+	'group-fb-admin-member' => 'Gruppeammann',
+	'grouppage-fb-admin' => '{{ns:project}}:Gruppeammanne',
+	'fbconnect-connect' => 'Aamälde iber Facebook Connect',
+	'fbconnect-convert' => 'Des Konto mit Facebook verbinde',
+	'fbconnect-logout' => 'Us Facebook abmälde',
+	'fbconnect-link' => 'Zruck zue facebook.com',
+	'fbconnect-title' => 'Konto mit Facebook verbinde',
+	'fbconnect-intro' => 'Des Wiki het Facebook Connect, di negscht Wyterentwicklig vu dr Plattform Facebook, aktiviert.
+Des bedytet, ass mer, wänn mer aagmäldet isch, zuesätzli zue dr normale [[Wikipedia:Help:Logging in#Why log in?|Vorteil]] vun ere Aamäldig, no wyteri Funktione cha nutze...',
+	'fbconnect-click-to-login' => 'Do druf klicke zum sich aamälde iber Facebook',
+	'fbconnect-click-to-connect-existing' => 'Do druf klicke zum Dyy Facebook-Konto verbinde mit $1',
+	'fbconnect-conv' => 'Chummligkeit',
+	'fbconnect-convdesc' => 'Verbundeni Benutzer wäre automatisch aagmäldet.
+Wänn d Erlaubnis vorlyt, cha des Wiki sogar Facebook as Kommunikationsschnittstell fir E-Mail nutze, ass mer wyter wichtigi Nochrichte cha iberchuu, ohni ass mer d E-Mail-Adräss mueß uffelege.',
+	'fbconnect-fbml' => 'Facebook-Uuszeichnigssproch',
+	'fbconnect-fbmldesc' => 'Facebook stellt e Bindel vu integrierte Tag z Verfiegig, wu dynamisch erzygti Date chenne verarbeite.
+Vil vu däne Tag chenne in Wikitext yybezoge wäre. Si wäre, je no uf em Wiki aagmäldete Benutzer, individuäll mit Date versäh un uusgee.',
+	'fbconnect-comm' => 'Kommunikation',
+	'fbconnect-commdesc' => 'Facebook Connect stellt e ganz nejartigi Megligkeit vum Netzwärche z Verfiegig.
+Mer cha säh, weli vu dr eigene Frynd s Wiki nutze, un mer cha, wänn gwinscht, ihne di eigene Aktione iber dr eige Facebook-Newsfeed uusgee loo.',
+	'fbconnect-welcome' => 'Willchuu, Facebook-Connect-Benutzer!',
+	'fbconnect-loginbox' => "Oder iber Facebook '''aamälde''':
+
+$1",
+	'fbconnect-merge' => 'S Wikikonto mit dr Facebook-ID zämmefiere',
+	'fbconnect-logoutbox' => '$1
+
+Des fiert zuen ere Abmäldig vu Facebook un allne verbundene Websites, mitsamt däm Wiki.',
+	'fbconnect-listusers-header' => 'D Privilegie $1 un $2 wäre automatisch vu däne vum Gruppeverwalter un Gruppeammann vu dr Facebook-Gruppe $3 ibertrait.
+
+Fir meh Informatione cha mer Kontakt ufnee zum Gruppenaaleger $4.',
+	'fbconnect-error' => 'Iberpriefigsfähler',
+	'fbconnect-errortext' => 'E Fähler isch bi dr Iberpriefig mit Facebook Connect ufträtte.',
+	'fbconnect-cancel' => 'Aktion abbroche',
+	'fbconnect-canceltext' => 'Di vorig Aktion isch vum Benutzer abbroche wore.',
+	'fbconnect-invalid' => 'Nit giltigi Option',
+	'fbconnect-invalidtext' => 'D Uuswahl, wu uf dr vorige Syte troffe woren isch, isch nit giltig.',
+	'fbconnect-success' => 'Facebook Connect-Iberpriefig erfolgryych',
+	'fbconnect-successtext' => 'D Aamäldig iber Facebook Connect isch erfolgryych gsi.',
+	'fbconnect-nickname' => 'Benutzername',
+	'fbconnect-fullname' => 'Vollständige Name',
+	'fbconnect-email' => 'E-Mail-Adräss',
+	'fbconnect-language' => 'Sproch',
+	'fbconnect-timecorrection' => 'Zytzonekorrektur (Stunde)',
+	'fbconnect-chooselegend' => 'Benutzernameuuswahl',
+	'fbconnect-chooseinstructions' => 'Alli Benutzer bruuche ne Benutzername; Du chasch us däre Lischt ein uussueche.',
+	'fbconnect-invalidname' => 'Dr uusgwehlt Benutzername isch scho vergee oder er isch nit zuelässig.
+Bitte wehl e andere.',
+	'fbconnect-choosenick' => 'Dr Profilname uf Facebook ($1)',
+	'fbconnect-choosefirst' => 'Dyy Vorname ($1)',
+	'fbconnect-choosefull' => 'Dyy vollständige Name ($1)',
+	'fbconnect-chooseauto' => 'E automatisch aagleite Name ($1)',
+	'fbconnect-choosemanual' => 'E vu Dir gwehlte Name:',
+	'fbconnect-chooseexisting' => 'E Benutzerkonto, wu s in däm Wiki git',
+	'fbconnect-chooseusername' => 'Benutzername:',
+	'fbconnect-choosepassword' => 'Passwort:',
+	'fbconnect-updateuserinfo' => 'Die persenlige Aagabe mien aktualisiert wäre:',
+	'fbconnect-alreadyloggedin' => "'''Du bisch scho aagmäldet, $1!'''
+
+Wänn Du Facebook Connect fir s Aamälde in Zuechumft wit nutze, no chasch [[Special:Connect/Convert|Dyy Benutzerkonto no Facebook Connect konvertiere]].",
+	'fbconnect-error-creating-user' => 'Fähler bim Aalege vum Benutzer in dr lokale Datebank.',
+	'fbconnect-error-user-creation-hook-aborted' => 'D Schnittstell vun ere Softwareerwyterig het s Aalege vum Benutzerkonto abbroche mit däre Nochricht: $1',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Facebook-Profil',
+	'fbconnect-prefsheader' => "Yystellige zue dr Aktione, wu iber dr eige Facebook-Newsfeed uusgee wäre solle: <a id='fbConnectPushEventBar_show' href='#'>Yystellige aazeige</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>Yystellige uusblände</a>",
+	'fbconnect-prefs-can-be-updated' => 'Du chasch si jederzyt aktualisiere uf dr Regischtercharte „$1“ in Dyyne Yystellige.',
 );
 
 /** Interlingua (Interlingua)
@@ -816,6 +902,8 @@ $messages['lb'] = array(
 	'fbconnect-click-to-login' => 'Klickt fir Iech iwwer Facebook op dësem Site anzeloggen',
 	'fbconnect-click-to-connect-existing' => 'Klickt fir Äre Facebook-Kont mat $1 ze verbannen',
 	'fbconnect-conv' => 'Bequemlechkeet',
+	'fbconnect-convdesc' => "Verbonne Benotzer ginn automatesch ageloggt.
+Wann d'Autorisatioun virläit kann dës Wiki esouguer Facebook als E-Mail-Proxy benotzen esou datt Dir weiderhi wichteg Matdeelunge kréie kënnt ouni Är E-Mailadress präiszeginn.",
 	'fbconnect-fbml' => 'Facebook-Markup Sprooch',
 	'fbconnect-comm' => 'Kommunikatioun',
 	'fbconnect-commdesc' => "Facebook-Connect erlaabt e ganz neien Niveau vu Networking.

@@ -1196,6 +1196,7 @@ $messages['ja'] = array(
 	'storyboard-storystate' => '状態',
 	'storyboard-language' => '言語',
 	'storyboard-storymetadata' => '$1が $2$3に投稿',
+	'storyboard-storymetadatafrom' => '$1によって、$2から、$4の$3に送信',
 	'storyboard-yourname' => 'あなたの名前（必須）',
 	'storyboard-location' => 'あなたの位置',
 	'storyboard-occupation' => 'あなたの職業',
@@ -1218,6 +1219,10 @@ $messages['ja'] = array(
 	'storyboard-morecharsneeded' => '$1 文字がさらに必要です',
 	'storyboard-charactersleft' => '残り$1文字',
 	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
+	'storyboard-emailtitle' => 'ストーリーの送信に成功',
+	'storyboard-emailbody' => 'ストーリー「$1」は送信に成功しました。
+すぐに確認されます。
+[$2 公開されたストーリーを読む]こともできます。',
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',
 	'storyboard-done' => '完了',

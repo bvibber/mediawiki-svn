@@ -2361,6 +2361,7 @@ $4',
  * @author Dferg
  * @author Diego Grez
  * @author Imre
+ * @author Locos epraix
  * @author McDutchie
  * @author Omnipaedista
  * @author Pertile
@@ -2502,6 +2503,7 @@ $4',
 	'repoadmin-edit-view' => 'Ruta de ViewVC:',
 	'repoadmin-edit-button' => 'Aceptar',
 	'repoadmin-edit-sucess' => 'El repositorio «[[Special:Code/$1|$1]]» ha sido modificado correctamente.',
+	'repoadmin-nav' => 'administración del repositorio',
 	'right-repoadmin' => 'Gestionar repositorios de código',
 	'right-codereview-use' => 'Uso de especial:Código',
 	'right-codereview-add-tag' => 'Añadir nuevas etiquetas a las revisiones',

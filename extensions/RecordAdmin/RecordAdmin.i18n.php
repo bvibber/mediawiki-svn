@@ -1151,7 +1151,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'recordadmin' => '記録管理',
-	'recordadmin-desc' => 'フォームを用いて記録ページを検索および編集するための[[Special:RecordAdmin|特別ページ]]',
+	'recordadmin-desc' => 'テンプレート引数から派生したウィキデータの検索、クエリ、フォームと報告',
+	'recordadmin-specialdesc' => '関連したフォームを用いた、ページの検索と作成のための[[Special:RecordAdmin|特別ページ]]',
 	'recordadmin-noforms' => '現在、検索と作成のために使用されるフォームは存在しません',
 	'recordadmin-select' => '対処したい記録種別を選んでください',
 	'recordadmin-createtype' => '新規作成したい記録種別の名前を入力してください',
@@ -1187,6 +1188,8 @@ $messages['ja'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1"なし',
+	'recordadmin-edit-info' => 'このページは、このタブから入力できる自身のフォームを持つテンプレートを含んでいます',
+	'recordadmin-properties' => 'プロパティー',
 );
 
 /** Khmer (ភាសាខ្មែរ)

@@ -365,6 +365,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'categorymultisort-defaultsortkey-name' => 'تلواليز',
 	'categorymultisort-go' => 'ورځه',
 	'prefs-category' => 'وېشنيزه',
 );

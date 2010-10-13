@@ -428,6 +428,13 @@ $messages['mk'] = array(
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пиксели, големина на податотеката: $3, MIME-тип: $4)',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'tiff-desc' => 'ചിത്ര രൂപത്തിൽ ടിഫ് (TIFF) പ്രമാണങ്ങൾ കാണുന്നതിനുള്ള കൈകാര്യോപകരണം',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

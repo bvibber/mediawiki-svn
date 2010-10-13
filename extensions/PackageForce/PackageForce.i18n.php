@@ -126,6 +126,14 @@ $messages['cs'] = array(
 	'pf-header-approve' => 'Schválit',
 );
 
+/** Danish (Dansk)
+ * @author Emilkris33
+ */
+$messages['da'] = array(
+	'pf-admin-link-approve' => 'Godkend side',
+	'pf-header-edit' => 'Rediger link',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

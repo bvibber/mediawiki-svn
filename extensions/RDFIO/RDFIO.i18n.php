@@ -128,6 +128,12 @@ $messages['ia'] = array(
  */
 $messages['ja'] = array(
 	'rdfio-desc' => 'セマンティックMediaWikiのあｔめの、SPARQLエンドポイントを含む、拡張RDFのインポートおよびエクスポート機能',
+	'rdfimport' => 'RDF読み込み',
+	'rdfio-arc2admin-desc' => 'セマンティックMediaWikiのための、ARC2のRDFストアの管理ページ',
+	'rdfio-rdfimport-desc' => 'セマンティックなデータをRFD/XML形式で読み込むための特別ページ',
+	'rdfio-sparqlendpoint-desc' => 'SMWRDFConnectorによって提供されるSPARQLエンドポイント',
+	'sparqlendpoint' => 'SPARQLエンドポイント',
+	'specialarc2admin' => 'ARC2のRDFストア管理ページ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

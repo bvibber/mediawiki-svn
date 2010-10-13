@@ -1743,6 +1743,7 @@ $messages['szl'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'sitematrix-language' => 'மொழி',
 	'sitematrix-sitetotal' => 'மொத்தம்',
 	'sitematrix-private' => 'தனிப்பட்ட',
 );

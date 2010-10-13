@@ -927,6 +927,7 @@ $messages['sw'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'contrib-tracking-error' => 'தவறு',
 	'contrib-tracking-button' => 'தொடரவும்',
 );
 

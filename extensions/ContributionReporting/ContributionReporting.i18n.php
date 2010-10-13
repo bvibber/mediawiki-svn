@@ -4435,6 +4435,11 @@ $messages['ta'] = array(
 	'contrib-hist-anonymous' => 'அடையாளமற்றவர்',
 	'contribstats-day' => 'நாள்',
 	'contribstats-month' => 'மாதம்',
+	'contribstats-amount' => 'தொகை (USD)',
+	'contribstats-contributions' => 'பங்களிப்புக்கள்',
+	'contribstats-total' => 'மொத்தம் (USD)',
+	'contribstats-avg' => 'சராசரி (USD)',
+	'contribstats-template' => 'வார்ப்புரு',
 	'fundraiserstats-date' => 'தேதி',
 );
 

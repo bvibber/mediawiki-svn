@@ -1001,7 +1001,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'edituser-username' => 'نوم',
+	'edituser-username' => 'کارن-نوم:',
 	'edituser-dosearch' => 'پلټل',
 );
 
