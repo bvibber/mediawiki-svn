@@ -84,14 +84,13 @@ class ApiUpload extends ApiBase {
 			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 
-		// Check for warnings, api-formatted.
-		$warnings = $this->getApiWarnings();
-
 		// Prepare the API result
 		$result = array();
-
+		
+		$warnings = $this->getApiWarnings();
 		if ( $warnings ) { 
 			$result['result'] = 'Warning';
+			$result['warnings'] = $warnings;
 			// in case the warnings can be fixed with some further user action, let's stash this upload
 			// and return a key they can use to restart it
 			try { 
@@ -99,25 +98,19 @@ class ApiUpload extends ApiBase {
 			} catch ( MWException $e ) { 
 				$warnings['stashfailed'] = $e->getMessage();
 			}
-		} else {
-			if ( $this->isForStash() ) {
-				// Some uploads can request they be stashed, so as not to publish them immediately.
-				// In this case, a failure to stash ought to be fatal
-				try {
-					$result['result'] = 'Success'; 
-					$result['sessionkey'] = $this->performStash();
-				} catch ( MWException $e ) { 
-					$this->dieUsage( $e->getMessage(), 'stashfailed' );
-				}
-			} else {
-				// This is the most common case -- a normal upload with no warnings
-				// $result will be formatted properly for the API already, with a status
-				$result = $this->performUpload();
+		} elseif ( $this->mParams['stash'] ) { 
+			// Some uploads can request they be stashed, so as not to publish them immediately.
+			// In this case, a failure to stash ought to be fatal
+			try {
+				$result['result'] = 'Success'; 
+				$result['sessionkey'] = $this->performStash();
+			} catch ( MWException $e ) { 
+				$this->dieUsage( $e->getMessage(), 'stashfailed' );
 			}
-		}
-
-		if ( $warnings ) {
-			$result['warnings'] = $warnings;
+		} else {
+			// This is the most common case -- a normal upload with no warnings
+			// $result will be formatted properly for the API already, with a status
+			$result = $this->performUpload();
 		}
 
 		if ( $result['result'] === 'Success' ) { 
@@ -128,14 +121,6 @@ class ApiUpload extends ApiBase {
 		
 		// Cleanup any temporary mess
 		$this->mUpload->cleanupTempFile();
-	}
-
-	/**
-	 * Determines if the API caller has requested this file be stashed. 
-	 * @return boolean
-	 */
-	function isForStash() { 
-		return isset( $this->mParams['stash'] ) and $this->mParams['stash'];
 	}
 
 	/**
