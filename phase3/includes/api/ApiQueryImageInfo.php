@@ -366,11 +366,13 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		);
 	}
 
+
 	/**
-	 * This is broken out from getParamDescription, since some subclasses of this module use identical property parameters.
-	 * @return {Array} parameter description
+	 * Return the API documentation for the parameters. 
+	 * @return {Array} parameter documentation.
 	 */
-	public function getPropParamDescription() { 
+	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
 			'prop' => array(
 				'What image information to get:',
@@ -387,25 +389,15 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				' metadata     - Lists EXIF metadata for the version of the image',
 				' archivename  - Adds the file name of the archive version for non-latest versions',
 				' bitdepth     - Adds the bit depth of the version',
-			)
-		);
-	}
-
-	/**
-	 * Return the API documentation for the parameters. 
-	 * @return {Array} parameter documentation.
-	 */
-	public function getParamDescription() {
-		$p = $this->getModulePrefix();
-		$description = array(
+			),
 			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 					    'Only the current version of the image can be scaled' ),
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
 			'limit' => 'How many image revisions to return',
 			'start' => 'Timestamp to start listing from',
-			'end' => 'Timestamp to stop listing at'
+			'end' => 'Timestamp to stop listing at',
+			'continue' => 'If the query response includes a continue value, use it here to get another page of results'
 		);
-		return array_merge( $description, $this->getPropParamDescription() );
 	}
 
 	public function getDescription() {

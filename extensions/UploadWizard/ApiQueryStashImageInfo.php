@@ -33,10 +33,7 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$modulePrefix = $this->getModulePrefix;
-		if ( is_null( $params['sessionkey'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'sessionkey' ) );
-		}
+		$modulePrefix = $this->getModulePrefix();
 
 		$prop = array_flip( $params['prop'] );
 
@@ -50,13 +47,8 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 			foreach ( $params['sessionkey'] as $sessionkey ) {	
 				$file = $stash->getFile( $sessionkey );
 				$imageInfo = self::getInfo( $file, $prop, $result, $scale );
-				$result->setIndexedTagName( $imageInfo, $modulePrefix );
-				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $imageInfo );
-				/* TODO overflow of continue */
-				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->fa_name ) );
-					break;
-				}
+				$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), $modulePrefix );
+				$result->addValue( array( 'query', $this->getModuleName() ), null, $imageInfo );
 			}
 
 		} catch ( SessionStashNotAvailableException $e ) {
@@ -69,6 +61,23 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 
 	}
 
+	/**
+	 * Returns all valid parameters to siiprop
+	 */
+	public static function getPropertyNames() {
+		return array(
+			'timestamp',
+			'url',
+			'size',
+			'dimensions', // For backwards compatibility with Allimages
+			'sha1',
+			'mime',
+			'thumbmime',
+			'metadata',
+			'bitdepth',
+		);
+	}
+
 
 	public function getAllowedParams() {
 		return array(
@@ -79,7 +88,7 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 			),
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'timestamp|user',
+				ApiBase::PARAM_DFLT => 'timestamp|url',
 				ApiBase::PARAM_TYPE => self::getPropertyNames()
 			),
 			'urlwidth' => array(
@@ -89,8 +98,7 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 			'urlheight' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => -1
-			),
-			'continue' => null,
+			)
 		);
 	}
 
@@ -100,11 +108,23 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		$description = array(
+		return array(
+			'prop' => array(
+				'What image information to get:',
+				' timestamp    - Adds timestamp for the uploaded version',
+				' url          - Gives URL to the image and the description page',
+				' size         - Adds the size of the image in bytes and the height and width',
+				' dimensions   - Alias for size',
+				' sha1         - Adds sha1 hash for the image',
+				' mime         - Adds MIME of the image',
+				' thumbmime    - Adss MIME of the image thumbnail (requires url)',
+				' metadata     - Lists EXIF metadata for the version of the image',
+				' bitdepth     - Adds the bit depth of the version',
+			),
+			'sessionkey' => 'Session key that identifies a previous upload that was stashed temporarily.',
 			'urlwidth' => "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
-			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
+			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth"
 		);
-		return array_merge( $description, $this->getPropParamDescription() );
 	}
 
 	public function getDescription() {
