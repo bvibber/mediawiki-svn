@@ -17,7 +17,7 @@ $messages['en'] = array(
 	'contributiontotal' => 'Contribution total',
 	'contributionhistory' => 'Contribution history',
 	
-	'contrib-hist-header' => 'Real-time donor comments from around the world',
+	'contrib-hist-header' => 'Donor comments from around the world',
 	
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Time and date',
