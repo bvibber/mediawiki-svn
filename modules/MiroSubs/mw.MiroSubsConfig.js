@@ -7,6 +7,23 @@ mw.includeAllModuleMessages();
  * http://dev.universalsubtitles.org/widget/api_demo.html
  */
 mw.MiroSubsConfig = {	
+	openDialog: function( embedPlayer, dialogReadyCallback ){
+		var _this = this;
+		this.getConfig( embedPlayer , function( config ){
+			if( !config ){
+				return ;
+			}
+			// xxx NOTE there are some weird async display issues
+			// that only seem to be resolvable with timeouts for DOM actions							
+			setTimeout(function(){
+				dialogReadyCallback();															
+			}, 100);
+			// Show the dialog	
+			setTimeout(function(){
+				_this.mirosubs = mirosubs.api.openDialog( config );
+			}, 800);
+		});					
+	},
 	/**
 	 * @param {Function} callback is called with two arguments 'status', 'config'
 	 */
@@ -82,44 +99,46 @@ mw.MiroSubsConfig = {
 				mw.closeLoaderDialog();
 			},
 			'videoURL' : _this.getVideoURL(),
-			'save': function( miroSubs, doneSaveCallback, cancelCallback) {
+			'save': function( miroSubs, doneSaveCallback, cancelCallback) {				
 				// Close down the editor 
-				// @@( no way to turn off bindings )		
-				// @@FIXME add api Close dialog
-				// mirosubs.api.closeDialog();
 				doneSaveCallback();
-				$j('.mirosubs-modal-widget-bg,.mirosubs-modal-widget').hide();
+				// Close the miro subs widget: 
+				_this.mirosubs.close();				
 
-				// Convert the miroSubs to srt				
-				var srtText = _this.miroSubs2Srt( miroSubs );			
-				$saveDialog = _this.getSaveDialogSummary( function( summary ){
-					if( summary === false ){
-						// Return to current page without saving the text 
-						location.reload(true);				
-						return ;
-					}
-					_this.saveSrtText( srtText, summary, function(status){											
-						// No real error handling right now
-						// refresh page regardless of save or cancel						
-											
-						if( status ){
-							$saveDialog
-							.dialog("option", 'title', gM('mwe-mirosubs-subs-saved') )
-							.html( gM('mwe-mirosubs-thankyou-contribution') );
-						} else {
-							$saveDialog
-							.dialog("option", 'title', gM('mwe-mirosubs-subs-saved-error') )
-							.html( gM('mwe-mirosubs-subs-saved-error') );
+				// Convert the miroSubs to srt
+				// again strange issues with miroSubs give it time to close
+				setTimeout( function(){
+					var srtText = _this.miroSubs2Srt( miroSubs );			
+					$saveDialog = _this.getSaveDialogSummary( function( summary ){
+						if( summary === false ){
+							// Return to current page without saving the text 
+							location.reload(true);				
+							return ;
 						}
-						// Either way the only button is OK and it refreshes the page:
-						var button = {};
-						button[ gM('mwe-ok') ] = function(){
-							location.reload(true);
-						};
-						$saveDialog.dialog("option", "buttons", button );
-					});				
-				});
+						_this.saveSrtText( srtText, summary, function(status){											
+							// No real error handling right now
+							// refresh page regardless of save or cancel						
+												
+							if( status ){
+								$saveDialog
+								.dialog("option", 'title', gM('mwe-mirosubs-subs-saved') )
+								.html( gM('mwe-mirosubs-thankyou-contribution') );
+							} else {
+								$saveDialog
+								.dialog("option", 'title', gM('mwe-mirosubs-subs-saved-error') )
+								.html( gM('mwe-mirosubs-subs-saved-error') );
+							}
+							// Either way the only button is OK and it refreshes the page:
+							var button = {};
+							button[ gM('mwe-ok') ] = function(){
+								location.reload(true);
+							};
+							$saveDialog.dialog("option", "buttons", button );
+						});				
+					});
+				}, 100 );
 			},
+			'mediaURL': mw.getMwEmbedPath() + 'modules/MiroSubs/mirosubs/media/',			
 			'permalink': 'http://commons.wikimedia.org',
 			// not sure if this is needed
 			'login': function( ){

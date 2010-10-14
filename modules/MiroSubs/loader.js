@@ -13,7 +13,8 @@
 	mw.addResourcePaths( {		
 		"mirosubs" : "mirosubs/mirosubs-api.min.js",
 		"mw.MiroSubsConfig" : "mw.MiroSubsConfig.js",
-		"mw.style.mirosubsMenu" : "css/mw.style.mirosubsMenu.css"
+		"mw.style.mirosubsMenu" : "css/mw.style.mirosubsMenu.css",
+		"mw.style.mirosubswidget" : "mirosubs/media/css/mirosubs-widget.css"
 	});
 	
 	mw.setDefaultConfig( {
@@ -21,7 +22,7 @@
 	})
 	
 	mw.addModuleLoader( 'MiroSubs', function(){
-		var resourceList = [ "mirosubs", "mw.MiroSubsConfig" ];
+		var resourceList = [ "mirosubs", "mw.style.mirosubswidget", "mw.MiroSubsConfig" ];
 		return resourceList;
 	});
 	
@@ -30,31 +31,25 @@
 		if( mw.getConfig( 'MiroSubs.EnableUniversalSubsEditor' ) 
 			&& 
 			embedPlayer.apiTitleKey
-		){
+		){		
+			// Build out the menu in the loader ( to load mirosubs interface on-demand )
 			$j( embedPlayer ).bind( 'TimedText.BuildCCMenu', function( event, langMenu ){
-				// load the miro subs menu style ( will be part of the loader dependency later on) 
+				
+				// Load the miro subs menu style ( will be part of the loader dependency later on) 
 				mw.load(  'mw.style.mirosubsMenu' );
+				
 				$j( langMenu ).append( 
 					$j.getLineItem( gM( 'mwe-mirosubs-add-universal-subtitles'), 'mirosubs', function() {					
 						// Show loader
 						mw.addLoaderDialog( gM('mwe-mirosubs-loading-universal-subtitles') );
 						
 						// Load miro subs:
-						mw.load( 'MiroSubs', function(){				
-							mw.MiroSubsConfig.getConfig( embedPlayer , function( config ){
-								if( !config ){
-									return ;
-								}
-								// xxx NOTE there are some weird async display issues
-								// that only seem to be resolvable with timeouts for DOM actions							
-								setTimeout(function(){
-									mw.closeLoaderDialog();																		
-								}, 500);
-								// Show the dialog	
-								setTimeout(function(){
-									mirosubs.api.openDialog( config );									
-								}, 800);
-							});					
+						mw.load( 'MiroSubs', function(){
+							// Open the mirosubs dialog: 
+							mw.MiroSubsConfig.openDialog( embedPlayer, function(){
+								// dialog Ready close loader
+								mw.closeLoaderDialog();			
+							});
 						});
 						return false;
 					})
