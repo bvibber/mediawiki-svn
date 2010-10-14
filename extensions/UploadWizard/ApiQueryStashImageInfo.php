@@ -94,31 +94,17 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 		);
 	}
 
+	/**
+	 * Return the API documentation for the parameters.
+	 * @return {Array} parameter documentation.
+	 */
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
-		return array(
-			/* XXX figure out some way to get these from imageInfo */
-			'prop' => array(
-				'What image information to get:',
-				' timestamp    - Adds timestamp for the uploaded version',
-				' user         - Adds the user who uploaded the image version',
-				' userid       - Add the user id that uploaded the image version',
-				' comment      - Comment on the version',
-				' url          - Gives URL to the image and the description page',
-				' size         - Adds the size of the image in bytes and the height and width',
-				' dimensions   - Alias for size',
-				' sha1         - Adds sha1 hash for the image',
-				' mime         - Adds MIME of the image',
-				' thumbmime    - Adss MIME of the image thumbnail (requires url)',
-				' metadata     - Lists EXIF metadata for the version of the image',
-				' archivename  - Adds the file name of the archive version for non-latest versions',
-				' bitdepth     - Adds the bit depth of the version',
-			),
-			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
-					    'Only the current version of the image can be scaled' ),
+		$description = array(
+			'urlwidth' => "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
-			'continue' => 'When more results are available, use this to continue',
 		);
+		return array_merge( $description, $this->getPropParamDescription() );
 	}
 
 	public function getDescription() {

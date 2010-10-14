@@ -37,6 +37,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class ApiQueryImageInfo extends ApiQueryBase {
 
 	public function __construct( $query, $moduleName, $prefix = 'ii' ) {
+		// We allow a subclass to override the prefix, to create a related API module.
+		// Some other parts of MediaWiki construct this with a null $prefix, which used to be ignored when this only took two arguments
+		if ( is_null( $prefix ) ) {
+			$prefix = 'ii';
+		}
 		parent::__construct( $query, $moduleName, $prefix );
 	}
 
@@ -179,8 +184,9 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 * @return {null|Array} key-val array of 'width' and 'height', or null
 	 */	
 	public function getScale( $params ) {
+		$p = $this->getModulePrefix();
 		if ( $params['urlheight'] != - 1 && $params['urlwidth'] == - 1 ) {
-			$this->dieUsage( 'iiurlheight cannot be used without iiurlwidth', 'iiurlwidth' );
+			$this->dieUsage( "${p}urlheight cannot be used without {$p}urlwidth", "{$p}urlwidth" );
 		}
 
 		if ( $params['urlwidth'] != - 1 ) {
@@ -360,8 +366,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		);
 	}
 
-	public function getBaseParamDescription() { 
-		$p = $this->getModulePrefix();
+	/**
+	 * This is broken out from getParamDescription, since some subclasses of this module use identical property parameters.
+	 * @return {Array} parameter description
+	 */
+	public function getPropParamDescription() { 
 		return array(
 			'prop' => array(
 				'What image information to get:',
@@ -378,20 +387,25 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				' metadata     - Lists EXIF metadata for the version of the image',
 				' archivename  - Adds the file name of the archive version for non-latest versions',
 				' bitdepth     - Adds the bit depth of the version',
-			),
+			)
+		);
+	}
+
+	/**
+	 * Return the API documentation for the parameters. 
+	 * @return {Array} parameter documentation.
+	 */
+	public function getParamDescription() {
+		$p = $this->getModulePrefix();
+		$description = array(
 			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 					    'Only the current version of the image can be scaled' ),
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
-			'continue' => 'When more results are available, use this to continue',
+			'limit' => 'How many image revisions to return',
+			'start' => 'Timestamp to start listing from',
+			'end' => 'Timestamp to stop listing at'
 		);
-
-	}
-
-	public function getParamDescription() {
-		$description = $this->getBaseParamDescription();
-		$description['limit'] = 'How many image revisions to return';
-		$description['start'] = 'Timestamp to start listing from';
-		$description['end'] = 'Timestamp to stop listing at';
+		return array_merge( $description, $this->getPropParamDescription() );
 	}
 
 	public function getDescription() {
