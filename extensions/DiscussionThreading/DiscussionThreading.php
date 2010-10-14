@@ -41,19 +41,15 @@ $wgHooks['DoEditSectionLink'][] =  'efDoDiscussionLink';
 
 # must use the deprecated efDiscussionLink hook if before MW Version 1.14
 #
-$xversion = explode( "." , $wgVersion );
-if ( $xversion[0] <= "1" && $xversion[1] < "14" ) {
+if (version_compare( $wgVersion , '1.14.0' ) < 0 ) {
 	$wgHooks['EditSectionLink'][] =  'efDiscussionLink';
 }
-unset( $xversion );
-
 /**
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function efDiscussionThreadSetup() {
 	global $wgVersion;
-	$xversion = explode( ".",$wgVersion );
-	if ( $xversion[0] <= "1" && $xversion[1] <= "11" ) {
+	if (version_compare( $wgVersion , '1.11.0' ) < 0 ) {
 		global $wgMessageCache, $messages;
 		foreach( $messages as $lang => $LangMsg )
 			$wgMessageCache->addMessages( $LangMsg, $lang );
