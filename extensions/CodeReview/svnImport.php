@@ -8,6 +8,7 @@ require( "$IP/maintenance/Maintenance.php" );
 
 class SvnImport extends Maintenance {
 
+	/* Initialize various stuff to make this a useful command line script */
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Import revisions to Code Review from a Subversion repo";
@@ -43,6 +44,11 @@ class SvnImport extends Maintenance {
 		}
 	}
 
+	/*
+	 * Import a repository in the local database.
+	 * @param $repoName String Local name of repository
+	 * @param $start Int Revision to begin the import from (Default: null, means last stored revision);
+	 */
 	private function importRepo( $repoName, $start = null, $cacheSize = 0 ) {
 		global $wgCodeReviewImportBatchSize;
 
@@ -54,15 +60,22 @@ class SvnImport extends Maintenance {
 		}
 
 		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
+		$this->output( "Using " . get_class($svn). " adaptor\n" );
 		$lastStoredRev = $repo->getLastStoredRev();
+		$this->output( "Last stored revision: $lastStoredRev\n" );
 
 		$chunkSize = $wgCodeReviewImportBatchSize;
 
 		$startTime = microtime( true );
 		$revCount = 0;
 		$start = ( $start !== null ) ? intval( $start ) : $lastStoredRev + 1;
+		/*
+		 * FIXME: when importing only a part of a repository, the given path
+		 * might not have been created with revision 1. For example, the
+		 * mediawiki '/trunk/phase3' got created with r1284.
+		 */
 		if ( $start > ( $lastStoredRev + 1 ) ) {
-			$this->error( "Invalid starting point r{$start}" );
+			$this->error( "Invalid starting point. r{$start} is beyond last stored revision: r" . ($lastStoredRev + 1) );
 			return;
 		}
 
@@ -89,7 +102,7 @@ class SvnImport extends Maintenance {
 			}
 			if ( !is_array( $log ) ) {
 				var_dump( $log ); // @TODO: cleanup :)
-				$this->error( 'wtf', true );
+				$this->error( 'Log entry is not an array! See content above.', true );
 			}
 			foreach ( $log as $data ) {
 				$revCount++;
