@@ -135,7 +135,7 @@ api : {
 					// Save for later checking if empty
 					group = target;
 					// Tool
-					target += ' div[rel=' + data.tool + '].tool';
+					target += ' span[rel=' + data.tool + '].tool';
 				}
 			} else if ( typeof data.page == 'string' ) {
 				// Booklet page
