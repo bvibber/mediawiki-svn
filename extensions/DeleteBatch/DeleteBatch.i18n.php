@@ -1377,6 +1377,16 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'right-deletebatch' => 'Massradera sidor',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'deletebatch-caption' => 'பக்கப்பட்டியல்:',
+	'deletebatch-delete' => 'நீக்கவும்',
+	'deletebatch-page' => 'நீக்க வேண்டிய பக்கங்கள்:',
+	'deletebatch-select-yourself' => 'தாங்கள்',
+);
+
 /** Telugu (తెలుగు)
  * @author C.Chandra Kanth Rao
  * @author Veeven

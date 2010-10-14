@@ -2593,6 +2593,14 @@ $messages['szl'] = array(
 	'crosswikiunblock-reason' => 'Čymu:',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'crosswikiblock-reason' => 'காரணம்:',
+	'crosswikiunblock-reason' => 'காரணம்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

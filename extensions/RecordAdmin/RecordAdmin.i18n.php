@@ -1274,6 +1274,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'recordadmin-select' => 'Eraussichen',
 	'recordadmin-newsearch' => 'Nei $1 sichen',
+	'recordadmin-submit' => 'Schécken',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
 	'recordadmin-createsuccess' => '$1 ugeluecht',
 	'recordadmin-badtitle' => 'Schlechten Titel!',
@@ -1476,6 +1477,7 @@ $messages['no'] = array(
 	'recordadmin' => 'Oppføringshåndtering',
 	'recordadmin-desc' => 'Søk, spørringer, skjema og rapportering av wikidata hentet fra malparametre',
 	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og opprette sider ved å bruke tilknyttede skjema',
+	'recordadmin-noforms' => 'Det er ingen skjema definert til å bruke for søking og oppretting',
 	'recordadmin-select' => 'Velg',
 	'recordadmin-createtype' => 'Skriv inn navnet på en ny oppføringstype som du vil opprette',
 	'recordadmin-recordtype' => 'oppføringstype',
@@ -1510,6 +1512,7 @@ $messages['no'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Ingen «$1»',
+	'recordadmin-edit-info' => 'Denne siden innholder maler som har sine egne skjema som du kan fylle ut fra dette fane-settet',
 	'recordadmin-properties' => 'Egenskaper',
 );
 

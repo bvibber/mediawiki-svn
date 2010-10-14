@@ -139,8 +139,23 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'tiff-desc' => 'Uređivač za pregled TIFF datoteka u modu za slike',
 	'tiff_no_metadata' => 'Ne mogu se naći metapodaci iz TIFF',
+	'tiff_page_error' => 'Broj stranice nije u rasponu',
+	'tiff_too_many_embed_files' => 'Slika sadrži previše umetnutih datoteka.',
+	'tiff_sourcefile_too_large' => 'Rezolucija izvorne datoteke je prevelika.
+Neće se generirati smanjeni prikaz.',
+	'tiff_targetfile_too_large' => 'Rezolucija ciljne datoteke je prevelika.
+Neće se generirati smanjeni prikaz.',
 	'tiff_file_too_large' => 'Postavljena datoteka je prevelika ili je odbijena.',
+	'tiff_out_of_service' => 'Poslana datoteka ne može biti obrađena.
+ImageMagick nije dostupan.',
+	'tiff_too_much_meta' => 'Metapodaci koriste previše prostora.',
+	'tiff_error_cached' => 'Ova datoteka se može ponovo iscrtati samo nakon perioda keširanja.',
+	'tiff_size_error' => 'Prijavljena veličina datoteke ne odgovara njenoj stvarnoj veličini.',
+	'tiff_script_detected' => 'Poslana datoteka sadrži skripte.',
+	'tiff_bad_file' => 'Poslana datoteka sadrži greške: $1',
+	'tiff-file-info-size' => '(stranica $5, $1 × $2 piksela, veličina datoteke: $3, MIME tip: $4)',
 );
 
 /** German (Deutsch)

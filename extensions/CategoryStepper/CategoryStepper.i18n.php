@@ -56,6 +56,15 @@ $messages['arz'] = array(
 	'categorystepper-start' => '(بداية التصنيف)',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'categorystepper-desc' => 'Səhifənin aid olduğu kateqoriyanın əlifba siyahısına görə məzmununda başlanğıca və sona keçid etmək imkanı verən naviqasiya panelini göstərir',
+	'categorystepper-end' => '(kateqoriyanın sonu)',
+	'categorystepper-start' => '(kateqoriyanın başlanğıcı)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -1844,7 +1844,12 @@ $messages['sw'] = array(
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'importusers-log-summary' => 'சுருக்கம்',
 	'importusers-log-summary-all' => 'அனைத்தும்',
+	'importusers-log-summary-added' => 'சேர்க்கப்பட்டது',
+	'importusers-log-summary-updated' => 'புதிப்பிக்கப்பட்டது',
+	'importusers-login-name' => 'புகுபதிகைப் பயனர் பெயர்',
+	'importusers-password' => 'கடவுச்சொல்',
 );
 
 /** Telugu (తెలుగు)

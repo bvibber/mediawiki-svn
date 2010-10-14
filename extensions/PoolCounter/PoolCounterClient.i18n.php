@@ -224,6 +224,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'poolcounter-desc' => 'Mediawiki-Client fir de Pool-Counter-Daemon',
+	'poolcounter-connection-error' => 'Feeler beim Verbanne mam Pool-Counter-Server: $1',
 );
 
 /** Macedonian (Македонски)

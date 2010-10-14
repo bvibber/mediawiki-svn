@@ -772,6 +772,14 @@ Från [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperati
 	'cooperationstatistics-legendmore' => 'eller fler bidragsgivare.',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'cooperationstatistics-tablearticle' => 'பக்க எண்ணிக்கை',
+	'cooperationstatistics-tablevalue' => 'பதிப்பாசிரியர்களின் எண்ணிக்கை',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

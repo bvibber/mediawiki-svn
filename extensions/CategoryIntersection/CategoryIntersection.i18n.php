@@ -63,6 +63,18 @@ $messages['arz'] = array(
 	'categoryintersection-results' => 'التدوير جاب $1 {{PLURAL:$1|نتيجه|نتيجه}}.',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'categoryintersection' => 'Kateqoriyaların kəsişməsi',
+	'categoryintersection-desc' => 'Səhifədə [[Special:CategoryIntersection|kateqoriyaların kəsişməsi]] üçün heş-mənalı cədvəli dəstəkləyir',
+	'categoryintersection-doit' => 'Bu kateqoriyalardakı bütün səhifələri çıxar',
+	'categoryintersection-maxcategories' => 'Kəsişən kateqoriyaların mövcudluğunun yol verilən maksimal sayı — $1.',
+	'categoryintersection-mincategories' => 'Ən azı iki kateqoriya daxil etmək lazımdır.',
+	'categoryintersection-results' => 'Axtarış $1 {{PLURAL:$1|nəticə}} verdi.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

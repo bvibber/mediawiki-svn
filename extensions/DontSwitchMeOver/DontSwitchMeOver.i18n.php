@@ -136,6 +136,14 @@ $messages['el'] = array(
 	'dontswitchmeover-pref' => 'Να μην επιτρέπεται αλλαγή του επιλεγμένου από μένα συνόλου οπτικής οργάνωσης (skin), όταν αλλάζει το προεπιλεγμένο σύνολο οπτικής οργάνωσης (skin)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'dontswitchmeover-desc' => 'Prefero por uzantoj specifi ĉu ili deziras konservi ilian etosan agordon kiam la defaŭlta etoso estas ŝanĝita.',
+	'dontswitchmeover-pref' => 'Ne permesi al mia etoso esti ŝanĝita kiam la defaŭlta etoso ŝanĝas',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

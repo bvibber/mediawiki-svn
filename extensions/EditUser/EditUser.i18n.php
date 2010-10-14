@@ -149,10 +149,14 @@ $messages['avk'] = array(
  * @author Sortilegus
  */
 $messages['az'] = array(
+	'edituser-desc' => 'İmtiyazlı istifadəçilərə digər istifadəçilərin nizamlamalarını redaktə etmək imkanı verir',
+	'edituser' => 'İstifadəçini dəyiş',
 	'edituser-username' => 'İstifadəçi adı:',
 	'edituser-dosearch' => 'Axtar',
 	'edituser-nouser' => 'İstifadəçi "$1" mövcud deyil',
-	'right-edituser-exempt' => 'digər istifadəçilər bu istifadəçinin nizamlamalarını redaktə edə bilməzlər',
+	'edituser-exempt' => 'İstifadəçi "$1" redaktə edilə bilməz',
+	'right-edituser' => 'digər istifadəçilərin nizamlamalarının redaktəsi',
+	'right-edituser-exempt' => 'digər istifadəçilər bu istifadəçinin nizamlamalarını redaktə edə bilməz',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -106,6 +106,7 @@ $messages['avk'] = array(
  */
 $messages['az'] = array(
 	'backforth-next' => 'Sonrakı ($1)',
+	'backandforth-desc' => 'Səhifənin yuxarı küncünə əlifba sırasına görə sonrakı və əvvəlki səhifələrə keçid əlavə edir',
 	'backforth-prev' => 'Əvvəlki ($1)',
 );
 

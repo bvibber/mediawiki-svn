@@ -70,6 +70,13 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'variablepage-navlink_text' => 'Donaci',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  * @author Translationista

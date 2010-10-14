@@ -2203,6 +2203,7 @@ Maaaring tinanggal ito.',
 Bakit hindi mo ito ibahagi?',
 	'storyboard-email' => 'Tirahan mo ng e-liham (kailangan)',
 	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
+	'storyboard-agreement' => 'Sumasang-ayon ako sa paglalathala at paggamit ng kuwentong ito sa ilalim ng mga patakaran ng [http://creativecommons.org/licenses/by-sa/3.0/ Lisensiya ng Malikhaing mga Pangkaraniwang Atribusyon/Pamamahaging Magkatulad].',
 	'storyboard-charsleft' => '($1 natitirang {{PLURAL:$1|panitik|mga panitik}})',
 	'storyboard-cannotbelonger' => 'Ang kuwento mo ay mahaba ng <b>$1</b> {{PLURAL:$1|panitik|mga panitik}}!',
 	'storyboard-charsneeded' => '($1 pang {{PLURAL:$1|panitik|mga panitik}} ang  kailangan)',
@@ -2216,7 +2217,13 @@ Bakit hindi mo ito ibahagi?',
 	'storyboard-charstomany' => 'Labis ng $1 mga panitik!',
 	'storyboard-morecharsneeded' => '$1 pang mga panitik ang kinakailangan',
 	'storyboard-charactersleft' => '$1 mga panitik ang natitira',
+	'storyboard-createdsuccessfully' => 'Salamat sa pagbabahagi ng iyong kuwento sa amin!
+Susuriin namin ito maya-maya.
+Maaari kang [$1 magbasa ng nalathalang mga kuwento].',
 	'storyboard-emailtitle' => 'Matagumpay ang pagpapasa ng kuwento',
+	'storyboard-emailbody' => 'Ang iyong kuwentong pinamagatang "$1" ay matagumpay na naipasa.
+Susuriin namin ito mamaya-maya.
+Maaari kang [$2 magbasa ng nalathalang mga kuwento].',
 	'storyreview' => 'Muling pagsusuri ng kuwento',
 	'storyboard-deleteimage' => 'Burahin ang larawan',
 	'storyboard-done' => 'Nagawa na',

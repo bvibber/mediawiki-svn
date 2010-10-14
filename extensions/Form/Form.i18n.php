@@ -1510,6 +1510,14 @@ $messages['sw'] = array(
 	'formsave' => 'Hifadhi',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'formsave' => 'சேமி',
+	'formarticleexists' => 'இப்பக்கம் உள்ளது',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

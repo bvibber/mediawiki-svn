@@ -1486,7 +1486,11 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'contributors' => 'பங்களிப்பாளர்கள்',
+	'contributors-toolbox' => 'முக்கிய பங்களிப்பாளர்கள்',
+	'contributors-target' => 'தலைப்பு:',
 	'contributors-submit' => 'காட்டு',
+	'contributors-badtitle' => 'தவறான தலைப்பு.',
 );
 
 /** Telugu (తెలుగు)

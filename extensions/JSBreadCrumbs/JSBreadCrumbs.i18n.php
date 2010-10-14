@@ -240,6 +240,11 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'jsbreadcrumbs-desc' => 'Legger til et brødsmulespor under fanelinjen',
 	'jsbreadcrumbs-leading-description' => 'Navigasjonsspor',
+	'prefs-jsbreadcrumbs' => 'Brødsmuler',
+	'prefs-jsbreadcrumbs-showsite' => 'Inkluder nettstedsnavn i brødsmulene (nyttig når de skal brukes på tvers av wikier)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Vis brødsmuler',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Antall brødsmuler',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maks 20 brødsmuler',
 );
 
 /** Polish (Polski)

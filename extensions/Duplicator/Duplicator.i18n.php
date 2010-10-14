@@ -1549,6 +1549,16 @@ $messages['sv'] = array(
 	'right-duplicate' => 'Kopiera sidorna',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'duplicator-options' => 'விருப்பத்தேர்வுகள்',
+	'duplicator-source' => 'மூலம்:',
+	'duplicator-dest' => 'சேருமிடம்:',
+	'duplicator-submit' => 'ஒரே மாதிரியுள்ள (நகல் எடு)',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

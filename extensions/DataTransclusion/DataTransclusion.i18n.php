@@ -119,6 +119,13 @@ An arguzenn gentañ pe "patrom" a zo ret.',
  * @author CERminator
  */
 $messages['bs'] = array(
+	'datatransclusion-desc' => 'Uvoz i oblikovanje zapisa podataka iz vanjskih izvora podataka',
+	'datatransclusion-missing-source' => 'Nije naveden izvor podataka.
+Drugi ili "izvorni" argument je neophodan.',
+	'datatransclusion-unknown-source' => 'Naveden nevaljan izvor podataka.
+"$1" nije poznat.',
+	'datatransclusion-missing-key' => 'Nije određen ključ.
+$2 su valjani ključevi u izvoru podataka $1.',
 	'datatransclusion-bad-template-name' => 'Loše ime šablona: $1.',
 );
 

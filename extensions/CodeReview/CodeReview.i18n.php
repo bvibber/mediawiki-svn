@@ -2328,6 +2328,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Postatentaj ŝanĝoj',
 	'codereview-email-body2' => 'Uzanto "$1" faris postatentadajn ŝanĝojn al $2.
 
+Plena URL por la postatentadaj revizio: $5
+
 Plena URL: $3
 
 Resumo de ŝanĝoj:

@@ -4439,8 +4439,20 @@ $messages['ta'] = array(
 	'contribstats-contributions' => 'பங்களிப்புக்கள்',
 	'contribstats-total' => 'மொத்தம் (USD)',
 	'contribstats-avg' => 'சராசரி (USD)',
+	'contribstats-day-totals' => 'இன்றய மொத்தத் தொகை',
+	'contribstats-week' => 'வாரம்',
 	'contribstats-template' => 'வார்ப்புரு',
 	'fundraiserstats-date' => 'தேதி',
+	'fundraiserstats-contributions' => 'பங்களிப்புக்கள்',
+	'fundraiserstats-total' => 'மொத்தம் (USD)',
+	'fundraiserstats-avg' => 'சராசரி (USD)',
+	'fundraiserstats-ytd' => 'ஒட்டுமொத்த கூட்டுத்தொகை (USD)',
+	'fundraiserstats-max' => 'மிக அதிகமானது (USD)',
+	'fundraiserstats-tab-totals' => 'ஆக மொத்தம் (USD)',
+	'fundraiserstats-tab-contributions' => 'பங்களிப்புக்களின் எண்ணிக்கை',
+	'fundraiserstats-tab-averages' => 'எல்லாவற்றின் சராசரி (USD)',
+	'fundraiserstats-tab-maximums' => 'மிக அதிகமானவைகள் (USD)',
+	'fundraiserstats-tab-ytd' => 'வருடத்தின் ஆரம்பத்திலிருந்து இன்றுவரை (USD)',
 );
 
 /** Telugu (తెలుగు)

@@ -140,6 +140,7 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'rdfio-desc' => 'Erweidert RDF Import/Export Fonctionalitéit, inklusiv SPARQL-Endpunkt, fir Semantic MediaWiki',
 	'rdfimport' => 'RDF-Import',
 );
 

@@ -422,10 +422,12 @@ $messages['eo'] = array(
 	'passwordreset-submit' => 'Refari pasvorton',
 	'passwordreset-success' => 'Pasvorto estis restarigita por user_id: $1',
 	'passwordreset-disableuser' => 'Ĉu ja malebligu konton de uzanto?',
+	'passwordreset-disableuserexplain' => '(agardas malvalidan pasvortan haketon - uzanto ne povas ensaluti)',
 	'passwordreset-disablesuccess' => 'Konto de uzanto estis malebligita (uzanto-identigo: $1)',
 	'passwordreset-accountdisabled' => 'Konto estis malŝaltita',
 	'disabledusers' => 'Malebligitaj uzantoj',
 	'disabledusers-summary' => 'Jen listo de uzantoj malŝaltitaj per PasswordReset.',
+	'right-passwordreset' => 'Refari pasvorton de uzanto ([[Special:PasswordReset|speciala paĝo]])',
 );
 
 /** Spanish (Español)

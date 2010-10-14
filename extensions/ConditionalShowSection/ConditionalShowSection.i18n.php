@@ -36,6 +36,13 @@ $messages['ar'] = array(
 	'conditionalshowsection-desc' => 'إضافة وسم cshow لعرض/إخفاء شرطيا قسم من نص الويكي',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'conditionalshowsection-desc' => 'Vikimətnin bölməsinin şərti göstərilməsi və ya gizlədilməsi üçün cshow teqini əlavə edir.',
+);
+
 /** Bashkir (Башҡорт)
  * @author Haqmar
  */

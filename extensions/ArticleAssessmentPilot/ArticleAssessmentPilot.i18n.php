@@ -380,15 +380,24 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'articleassessment' => 'Takso de artikolo',
 	'articleassessment-yourfeedback' => 'Via komento',
 	'articleassessment-submit' => 'Enigi',
 	'articleassessment-rating-wellsourced' => 'Bone dokumentita:',
 	'articleassessment-rating-neutrality' => 'Neŭtrala:',
 	'articleassessment-rating-completeness' => 'Kompleta:',
 	'articleassessment-rating-readability' => 'Legebla:',
+	'articleassessment-articlerating' => 'Taksado de paĝo',
+	'articleassessment-error' => 'Eraro okazis.
+Bonvolu reprovi poste.',
+	'articleassessment-thanks' => 'Dankon! Viaj taksoj estis konservitaj.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|takso|taksoj}})',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Plaĉas al mi doni mian opinion.',
 	'articleassessment-survey-answer-whyrated-other' => 'Alia',
 	'articleassessment-survey-question-useful-iffalse' => 'Kial?',
 	'articleassessment-survey-submit' => 'Enigi',
+	'articleassessment-survey-title' => 'Bonvolu respondi al kelkaj demandoj',
+	'articleassessment-survey-thanks' => 'Dankon pro plenumante la enketon.',
 );
 
 /** Spanish (Español)
