@@ -52,7 +52,7 @@
 								}, 500);
 								// Show the dialog	
 								setTimeout(function(){
-									mirosubs.api.openDialog( config );
+									mirosubs.api.openDialog( config );									
 								}, 800);
 							});					
 						});
