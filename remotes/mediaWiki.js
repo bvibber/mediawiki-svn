@@ -124,8 +124,7 @@ function doPageSpecificRewrite() {
 				], function() {							
 						mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
 				} );		
-			},200);
-			return ;
+			},200);			
 		}
 	}
 	
@@ -255,6 +254,7 @@ function doPageSpecificRewrite() {
 			vidIdList.push( divs[i].getAttribute( "id" ) );
 		}
 	}	
+	
 	if ( vidIdList.length > 0 ) {
 		// Reverse order the array so videos at the "top" get swapped first:
 		vidIdList = vidIdList.reverse();
