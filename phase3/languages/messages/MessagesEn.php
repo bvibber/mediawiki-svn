@@ -461,6 +461,8 @@ $specialPageAliases = array(
 	'RevisionMove'              => array( 'RevisionMove' ),
 	'ComparePages'              => array( 'ComparePages' ),
 	'Badtitle'                  => array( 'Badtitle' ),
+	'Globalfileusage'           => array( 'GlobalFileUsage' ),
+	'Globaltemplateusage'       => array( 'GlobalTemplateUsage' ),
 );
 
 /**
