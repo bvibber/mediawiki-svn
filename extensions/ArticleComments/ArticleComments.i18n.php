@@ -9,7 +9,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'article-comments-desc' => 'Enables comment sections on article pages',
+	'article-comments-desc' => 'Enables comment sections on content pages',
 	'article-comments-title-string' => 'title',
 	'article-comments-name-string' => 'Name',
 	'article-comments-name-field' => 'Name (required):',
@@ -23,13 +23,13 @@ $messages['en'] = array(
 	'article-comments-required-field' => '$1 field is required.',
 	'article-comments-submission-failed' => 'Comment submission failed',
 	'article-comments-failure-reasons' => 'Sorry, your comment submission failed for the following reason(s):',
-	'article-comments-no-comments' => 'Sorry, the article "[[$1]]" is not accepting comments at this time.',
+	'article-comments-no-comments' => 'Sorry, the page "[[$1]]" is not accepting comments at this time.',
 	'article-comments-talk-page-starter' => "<noinclude>Comments on [[$1]]\n<comments />\n----- __NOEDITSECTION__</noinclude>\n",
 	'article-comments-commenter-said' => '$1 said ...',
 	'article-comments-summary' => 'Comment provided by $1 - via ArticleComments extension',
 	'article-comments-submission-succeeded' => 'Comment submission succeeded',
 	'article-comments-submission-success' => 'You have successfully submitted a comment for "[[$1]]"',
-	'article-comments-submission-view-all' => 'You may view all comments on that article [[$1|here]]',
+	'article-comments-submission-view-all' => 'You may view [[$1|all comments on that page]]',
 	'article-comments-prefilled-comment-text' => '',
 	'article-comments-user-is-blocked' => 'Your user account is currently blocked from editing "[[$1]]".',
 	'article-comments-new-comment-heading' => "\n== {{int:article-comments-commenter-said|\$1}} ==\n\n",
