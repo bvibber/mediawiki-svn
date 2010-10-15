@@ -182,7 +182,9 @@ function wfArticleCommentsParserHookComment( $text, $args, $parser, $frame ) {
 		/* Full wikitext */
 		
 	} else {
-		return wfMsgExt( 'article-comments-comment-bad-mode', array( 'parsemag', 'language' => $parser->getFunctionLang() ) ) ;
+		return Html::rawElement( 'div', array( 'class' => 'error' ),
+			wfMsgExt( 'article-comments-comment-bad-mode', array( 'parsemag', 'language' => $parser->getFunctionLang() ) )
+		);
 	}
 	
 	# Parse the content, this is later kept as-is since we do a replaceafter there.
