@@ -373,8 +373,10 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author CnkALTDS
+ * @author Karduelis
  */
 $messages['tr'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Oluştur',
+	'articletocategory2-create-category-under-category-button' => 'Oluştur',
 );
 

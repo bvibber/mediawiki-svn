@@ -2121,6 +2121,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Glavkos
  * @author Omnipaedista
  * @author ZaDiak
  * @author Περίεργος
@@ -2182,7 +2183,7 @@ $messages['el'] = array(
 	'mwe-watch_this_page' => 'Παρακολούθηση σελίδας',
 	'mwe-do_import_resource' => 'Εισαγωγή πόρων',
 	'mwe-update_preview' => 'Ενημέρωση προεπισκόπησης',
-	'mwe-upload-transcoded-status' => 'Διακωδικοποιημένο',
+	'mwe-upload-transcoded-status' => 'Μετακωδικοποιημένο',
 	'fogg-transcoding' => 'Κωδικοποίηση βίντεο σε Ogg',
 	'fogg-select_file' => 'Επιλογή αρχείου',
 	'fogg-select_new_file' => 'Επιλογή νέου αρχείου',

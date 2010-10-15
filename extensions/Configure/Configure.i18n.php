@@ -8895,6 +8895,21 @@ $messages['ru'] = array(
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Список расширений, доступных для этой вики]].',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'configure-desc-group' => 'Ґрупа',
+	'configure-desc-ns' => 'Простор назв',
+	'configure-desc-val' => 'Годнота',
+	'configure-ext-settings' => 'Параметры',
+	'configure-ext-use' => 'Хосновати',
+	'configure-form-reason' => 'Причіна:',
+	'configure-js-remove' => 'Вымазати',
+	'configure-js-biglist-hide' => '[сховати детайлы]',
+	'configure-old-changes' => 'зміны',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */

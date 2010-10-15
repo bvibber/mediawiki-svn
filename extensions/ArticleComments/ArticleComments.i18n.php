@@ -42,25 +42,70 @@ Available ones are "plain", "normal" and "wiki".',
 	'processcomment' => 'Process article comment',
 );
 
+/** Message documentation (Message documentation) */
 $messages['qqq'] = array(
+	'article-comments-invalid-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being article-comments-title-string or article-comments-url-string messages, and $2 the wrong value.',
 	'article-comments-required-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being one of article-comments-*-string messages.',
 	'article-comments-submission-failed' => 'Page title when there are errors in the comment submission',
 	'article-comments-talk-page-starter' => 'Keep the wikisyntax as is.',
-	'article-comments-invalid-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being article-comments-title-string or article-comments-url-string messages, and $2 the wrong value.',
-	'article-comments-new-comment-heading' => 'Wiki text which will appear above the &lt;comment&gt; tags.
+);
 
-Available variables:
-* $1 - Commenter name.
-* $2 - Commenter URL (may be empty).
-* $3 - Datetime.
-* $4 - Comment text.',
-	'article-comments-comment-contents' => 'Way in which &lt;comment&gt; tags are parsed.
-Note it is importat not to place the $5 between new-lines in order to get new lines correctly converted into new paragraphs in normal mode (wfMsgExt can\'t place it inside a <p/>).
-	
-* $1 - Commenter name.
-* $2 - Comment url.
-* $3 - User signature, if an URL is available, name linking to its web.
-* $4 - Parsed datetime.
-* $5 - Comment text.',
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'article-comments-desc' => 'Maak kommentaar-afdelings op artikel-bladsye beskikbaar',
+	'article-comments-title-string' => 'titel',
+	'article-comments-name-string' => 'Naam',
+	'article-comments-name-field' => 'Naam (verpligtend):',
+	'article-comments-url-field' => 'Webwerf:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Kommentaar',
+	'article-comments-comment-field' => 'Kommentaar:',
+	'article-comments-submit-button' => 'Dien in',
+	'article-comments-leave-comment-link' => "Los 'n opmerking...",
+	'article-comments-invalid-field' => 'Die $1 verskafde <nowiki>[$2]</nowiki> is ongeldig.',
+	'article-comments-required-field' => 'Die veld $1 is verpligtend.',
+	'article-comments-submission-failed' => 'Indien van kommentaar het gefaal',
+	'article-comments-failure-reasons' => 'Jammer, u kommentaar was om die volgende rede(s) onsuksesvol:',
+	'article-comments-no-comments' => 'Jammer, die artikel "[[$1]]" aanvaar nie tans kommentaar nie.',
+	'article-comments-talk-page-starter' => '<noinclude> Kommentaar op [[$1]] 
+<comments />
+ ----- __NOEDITSECTION__ </noinclude>',
+	'article-comments-commenter-said' => '$1 het gesê...',
+	'article-comments-summary' => 'Kommentaar deur $1 - via die ArticleComments-uitbreiding',
+	'article-comments-submission-succeeded' => 'Indien van kommentaar was suksesvol',
+	'article-comments-submission-success' => 'U het suksesvol \'n kommentaar vir "[[$1]]" ingedien',
+	'article-comments-submission-view-all' => 'U kan al die antwoorde op hierdie artikel [[$1|hier]] sien',
+	'article-comments-user-is-blocked' => 'U gebruiker is tans teen die redigering van "[[$1]]" geblokkeer.',
+	'article-comments-comment-bad-mode' => 'Ongeldig modes is vir kommentaar verskaf.
+Beskikbaar modusse is: "gewoon", "normaal" en "wiki".',
+	'article-comments-comment-missing-name-parameter' => 'Naam ontbreek',
+	'article-comments-comment-missing-date-parameter' => 'Geen datum vir kommentaar',
+	'article-comments-no-spam' => 'Ten minste een van die voorgelegde velde is as spam gemerk.',
+	'processcomment' => 'Verwerk kommentaar op artikel',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'article-comments-desc' => 'Activa os comentarios nas seccións dos artigos',
+	'article-comments-title-string' => 'título',
+	'article-comments-name-string' => 'Nome',
+	'article-comments-name-field' => 'Nome (obrigatorio):',
+	'article-comments-url-field' => 'Páxina web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Comentario',
+);
+
+/** Russian (Русский)
+ * @author MaxSem
+ */
+$messages['ru'] = array(
+	'article-comments-name-string' => 'Имя',
+	'article-comments-comment-string' => 'Комментарий',
+	'article-comments-comment-field' => 'Комментарий:',
+	'article-comments-leave-comment-link' => 'Написать комментарий...',
 );
 

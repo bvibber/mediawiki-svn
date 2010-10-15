@@ -133,7 +133,7 @@ $messages['af'] = array(
 	'contributionreporting-desc' => 'Lewendige verslaggewing oor Wikimedia se fondsinsameling',
 	'contributiontotal' => 'Totaal donasies',
 	'contributionhistory' => 'Bydrae geskiedenis',
-	'contrib-hist-header' => 'Opmerkings van skenkers van oor die hele wêreld',
+	'contrib-hist-header' => 'Kommentaar van skenkers oor die hele wêreld',
 	'contrib-hist-name' => 'Naam',
 	'contrib-hist-date' => 'Datum en tyd',
 	'contrib-hist-amount' => 'Bedrag',
@@ -396,7 +396,7 @@ $messages['be-tarask'] = array(
 	'contributionreporting-desc' => 'Актуальныя справаздачы пра збор ахвяраваньняў на карысьць фундацыі «Вікімэдыя»',
 	'contributiontotal' => 'Усяго ахвяраваньняў',
 	'contributionhistory' => 'Гісторыя ахвяраваньняў',
-	'contrib-hist-header' => 'Камэнтары ахвяравальнікаў з усяго сьвету ў рэальным часе',
+	'contrib-hist-header' => 'Камэнтары ахвяравальнікаў з усяго сьвету',
 	'contrib-hist-name' => 'Імя',
 	'contrib-hist-date' => 'Час і дата',
 	'contrib-hist-amount' => 'Сума',
@@ -631,7 +631,7 @@ $messages['bs'] = array(
 	'contributionreporting-desc' => 'Izvještaj uživo donacija za Wikimediju',
 	'contributiontotal' => 'Ukupni doprinos',
 	'contributionhistory' => 'Historija doprinosa',
-	'contrib-hist-header' => 'Komentari donatora iz cijelog svijeta u realnom vremenu',
+	'contrib-hist-header' => 'Komentari donatora iz cijelog svijeta',
 	'contrib-hist-name' => 'Ime',
 	'contrib-hist-date' => 'Vrijeme i datum',
 	'contrib-hist-amount' => 'Iznos',
@@ -900,7 +900,7 @@ $messages['de'] = array(
 	'contributionreporting-desc' => 'Live-Berichterstattung von der Wikimedia-Spendenkampagne',
 	'contributiontotal' => 'Spenden insgesamt',
 	'contributionhistory' => 'Spendenverlauf',
-	'contrib-hist-header' => 'Spendenkommentare in Echtzeit aus der ganzen Welt',
+	'contrib-hist-header' => 'Kommentare von Spendern aus der ganzen Welt',
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Zeit und Datum',
 	'contrib-hist-amount' => 'Betrag',
@@ -1338,7 +1338,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'contributiontotal' => 'Annetamise kogusumma',
 	'contributionhistory' => 'Annetamise ajalugu',
-	'contrib-hist-header' => 'Reaalajas kommentaarid annetajatelt üle maailma',
+	'contrib-hist-header' => 'Kommentaarid annetajatelt üle maailma',
 	'contrib-hist-name' => 'Nimi',
 	'contrib-hist-date' => 'Kellaaeg ja kuupäev',
 	'contrib-hist-amount' => 'Summa',
@@ -1653,6 +1653,7 @@ $messages['fi'] = array(
  * @author Peter17
  * @author PieRRoMaN
  * @author Quentinv57
+ * @author Sherbrooke
  * @author Toliño
  * @author Verdy p
  */
@@ -1660,7 +1661,7 @@ $messages['fr'] = array(
 	'contributionreporting-desc' => 'Rapport de suivi en direct sur la collecte de fonds de Wikimedia',
 	'contributiontotal' => 'Total des contributions',
 	'contributionhistory' => 'Historique des contributions',
-	'contrib-hist-header' => 'Commentaires en direct des donateurs à travers le monde',
+	'contrib-hist-header' => 'Commentaires des donateurs du monde entier',
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Date et heure',
 	'contrib-hist-amount' => 'Montant',
@@ -1814,7 +1815,7 @@ $messages['gl'] = array(
 	'contributionreporting-desc' => 'Informe actualizado da recadación da Wikimedia',
 	'contributiontotal' => 'Contribucións totais',
 	'contributionhistory' => 'Historial das contribucións',
-	'contrib-hist-header' => 'Comentarios en tempo real dos doantes',
+	'contrib-hist-header' => 'Comentarios dos doantes de todo o mundo',
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Data e hora',
 	'contrib-hist-amount' => 'Cantidade',
@@ -2508,12 +2509,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'contributionreporting-desc' => 'ウィキメディア財団の資金調達についてのライブ報告',
 	'contributiontotal' => '寄付総額',
 	'contributionhistory' => '寄付履歴',
-	'contrib-hist-header' => '世界中からのリアルタイムの寄付者コメント',
+	'contrib-hist-header' => '世界中からの寄付者コメント',
 	'contrib-hist-name' => '名前',
 	'contrib-hist-date' => '時刻と日付',
 	'contrib-hist-amount' => '額',
@@ -2876,7 +2878,7 @@ $messages['lb'] = array(
 	'contributionreporting-desc' => 'Live-Reportage vun der Wikimedia-Spendenaktioun',
 	'contributiontotal' => 'Total vun den Donen',
 	'contributionhistory' => 'Evolutioun vun den Donen',
-	'contrib-hist-header' => 'Bemierkungen vun Donateuren aus der ganzer Welt (real-time)',
+	'contrib-hist-header' => 'Bemierkunge vun Donateuren aus der ganzer Welt',
 	'contrib-hist-name' => 'Numm',
 	'contrib-hist-date' => 'Zäit an Datum',
 	'contrib-hist-amount' => 'Héicht vum Don',
@@ -3056,7 +3058,7 @@ $messages['mk'] = array(
 	'contributionreporting-desc' => 'Известување во живо за собирањето на средства на Викимедија',
 	'contributiontotal' => 'Вкупен износ на придонесите',
 	'contributionhistory' => 'Историја на придонеси',
-	'contrib-hist-header' => 'Коментари од дарители ширум светот во живо',
+	'contrib-hist-header' => 'Коментари од дарители ширум светот',
 	'contrib-hist-name' => 'Име',
 	'contrib-hist-date' => 'Време и датум',
 	'contrib-hist-amount' => 'Износ',
@@ -3461,7 +3463,7 @@ $messages['no'] = array(
 	'contributionreporting-desc' => 'Fortløpende rapportering om Wikimedias innsamling',
 	'contributiontotal' => 'Bidrag totalt',
 	'contributionhistory' => 'Bidragshistorikk',
-	'contrib-hist-header' => 'Forløpende giverkommentarer fra verden rundt',
+	'contrib-hist-header' => 'Giverkommentarer fra verden rundt',
 	'contrib-hist-name' => 'Navn',
 	'contrib-hist-date' => 'Tid og dato',
 	'contrib-hist-amount' => 'Beløp',
@@ -3630,7 +3632,7 @@ $messages['pl'] = array(
 	'contributionreporting-desc' => 'Bieżące sprawozdanie na temat zebranych funduszy dla Wikimedia',
 	'contributiontotal' => 'Łączna suma darowizn',
 	'contributionhistory' => 'Historia darowizn',
-	'contrib-hist-header' => 'Bieżąca lista wpłat od darczyńców z całego świata',
+	'contrib-hist-header' => 'Komentarze darczyńców z całego świata',
 	'contrib-hist-name' => 'Nazwa',
 	'contrib-hist-date' => 'Godzina i data',
 	'contrib-hist-amount' => 'Kwota',
@@ -3795,6 +3797,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author GoEThe
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -3803,7 +3806,7 @@ $messages['pt'] = array(
 	'contributionreporting-desc' => 'Relatório ao vivo da angariação de fundos da Wikimedia',
 	'contributiontotal' => 'Total de contribuições',
 	'contributionhistory' => 'Histórico de contribuições',
-	'contrib-hist-header' => 'Comentários em tempo real de benfeitores de todo o mundo',
+	'contrib-hist-header' => 'Comentários de dadores de todo o mundo',
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Hora e data',
 	'contrib-hist-amount' => 'Quantia',
@@ -4013,7 +4016,7 @@ $messages['ru'] = array(
 	'contributionreporting-desc' => 'Текущие сведения о сборе пожертвований в пользу Викимедии',
 	'contributiontotal' => 'Всего пожертвований',
 	'contributionhistory' => 'История пожертвований',
-	'contrib-hist-header' => 'Комментарии жертвователей со всего мира в реальном времени',
+	'contrib-hist-header' => 'Комментарии жертвователей со всего мира',
 	'contrib-hist-name' => 'Имя',
 	'contrib-hist-date' => 'Время и дата',
 	'contrib-hist-amount' => 'Сумма',
@@ -4964,7 +4967,7 @@ $messages['vec'] = array(
 	'contributionreporting-desc' => 'Ajornamento in tenpo reale su la racolta fondi Wikimedia',
 	'contributiontotal' => 'Contributi totali',
 	'contributionhistory' => 'Storia dei contributi',
-	'contrib-hist-header' => 'Comenti in tenpo reàle dai donatori de tuto el mondo',
+	'contrib-hist-header' => 'Comenti in tenpo reàle da tuto el mondo',
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Ora e data',
 	'contrib-hist-amount' => 'Inporto',

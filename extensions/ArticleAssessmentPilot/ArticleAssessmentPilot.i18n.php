@@ -1533,7 +1533,10 @@ $messages['tr'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'articleassessment' => 'Valutassion pagina',
+	'articleassessment-desc' => 'Valutassion pagina (version de prova)',
 	'articleassessment-yourfeedback' => 'La to opinion',
+	'articleassessment-pleaserate' => 'Par piaser, spendi du minuti par valutar sta pagina.',
 	'articleassessment-submit' => 'Manda',
 	'articleassessment-rating-wellsourced' => 'Ben fornìa de fonti:',
 	'articleassessment-rating-neutrality' => 'Neutrale:',

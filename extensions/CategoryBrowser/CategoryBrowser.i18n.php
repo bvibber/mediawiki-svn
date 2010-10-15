@@ -920,6 +920,23 @@ $messages['ru'] = array(
 	'cb_edit_paste_right_hint' => 'Вставить оператор в следующую позицию, если возможно',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатеґорія|підкатеґорії|підкатеґорій}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінкы|сторінок}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|файл|файлы|файлів}}',
+	'cb_previous_items_link' => 'Попереднї',
+	'cb_next_items_link' => 'Далшы',
+	'cb_cat_subcats' => 'підкатеґорій',
+	'cb_cat_pages' => 'сторінок',
+	'cb_cat_files' => 'файлы',
+	'cb_all_op' => 'Вшыткы',
+	'cb_or_op' => 'або',
+	'cb_and_op' => 'і',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

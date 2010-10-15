@@ -2661,6 +2661,7 @@ $messages['vec'] = array(
 	'readerfeedback-tier-poor' => 'Trista',
 	'tooltip-ca-ratinghist' => 'Valutassion dei letori par sta pagina',
 	'specialpages-group-feedback' => 'Opinion del letor',
+	'readerfeedback-tt-review' => 'Invia recension',
 );
 
 /** Veps (Vepsan kel')

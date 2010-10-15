@@ -3046,7 +3046,7 @@ Go Artikel vereffentlige oder andri Wikilog-Funktione meglig mache, muess es zer
 	'wikilog-pager-oldest' => 'eltschti',
 	'wikilog-pager-prev' => 'vorige',
 	'wikilog-pager-next' => 'negschte',
-	'wikilog-pager-first' => 'ärschte',
+	'wikilog-pager-first' => 'erschte',
 	'wikilog-pager-last' => 'letschte',
 	'wikilog-pager-empty' => '(kei Byytreg)',
 	'wikilog-no-comments' => 'kei Kommentar',
