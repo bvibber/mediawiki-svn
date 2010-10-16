@@ -150,10 +150,11 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Melancholie
  * @author Raimond Spekking
+ * @author SVG
  */
 $messages['de'] = array(
 	'seealso' => 'Siehe auch',
-	'seealso-desc' => 'Lokalisierte Siehe-auch-Überschriften mittels <code><nowiki><seealso></nowiki></code>',
+	'seealso-desc' => 'Lokalisierte Siehe-auch-Überschriften mittels <code>&lt;seealso&gt;</code>',
 );
 
 /** Lower Sorbian (Dolnoserbski)

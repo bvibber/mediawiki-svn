@@ -2177,7 +2177,7 @@ The ratings are as follows:
  */
 $messages['te'] = array(
 	'ratinghistory' => 'పేజీ రేటింగు చరిత్ర',
-	'ratinghistory-link' => 'పేజీ మూల్యాంకన',
+	'ratinghistory-link' => 'పుట మూల్యాంకన',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">ఈ పేజీని సమీక్షించడానికి సమయం వెచ్చించినందుకు ధన్యవాదాలు!</font>''",
 	'ratinghistory-period' => 'కాల వ్యవధి:',
 	'ratinghistory-month' => 'గత నెల',
@@ -2391,6 +2391,7 @@ Le valutassion le xe ste qua:
 
 '''(1)''' - Tristo assè; '''(2)''' - Tristo; '''(3)''' - Cussì-cussì; '''(4)''' - Bon; '''(5)''' - Bon assè;",
 	'ratinghistory-graph-scale' => "'''Revision par zorno'''  <font color=\"red\">''(rosso)''</font> mostrà in scala ''1:\$1''.",
+	'right-feedback' => 'Dopara sto modulo par valutar na pagina',
 );
 
 /** Veps (Vepsan kel')

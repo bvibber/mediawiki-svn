@@ -1015,7 +1015,7 @@ $messages['br'] = array(
 	'prefswitch-jswarning' => "Dalc'hit soñj e rank ho [[User:$1/$2.js|$2 JavaScript]] bezañ eilet war-du [[{{ns:user}}:$1/vector.js]] <!-- pe [[{{ns:user}}:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro, abalamour d'ar cheñchamant gwiskadur.",
 	'prefswitch-csswarning' => "Ne dalvezo ket ho [[User:$1/$2.css|stil personelaet $2]] ken. Termeniñ ur CSS personelaet evit vector a c'hallit e [[{{ns:user}}:$1/vector.css]].",
 	'prefswitch-survey-true' => 'Ya',
-	'prefswitch-survey-false' => 'Nann',
+	'prefswitch-survey-false' => 'Ket',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
 	'prefswitch-survey-cancel-off' => "Mar fell deoc'h kenderc'hel d'ober gant ar perzhioù nevez e c'hallit distreiñ da $1.",
 	'prefswitch-survey-submit-feedback' => 'Roit ho soñj',
@@ -3592,6 +3592,7 @@ Jelöld be az összes indokodat.',
 	'prefswitch-survey-answer-browser-other' => 'Más böngésző:',
 	'prefswitch-survey-question-os' => 'Melyik operációs rendszert használod?',
 	'prefswitch-survey-answer-os-other' => 'Más operációs rendszer:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Igen, kapcsolja ki a funkciókat minden wikiben',
 	'prefswitch-survey-question-res' => 'Milyen felbontású a képernyőd?',
 	'prefswitch-title-on' => 'Új funkciók',
 	'prefswitch-title-switched-on' => 'Jó szórakozást!',
@@ -4199,6 +4200,13 @@ $messages['km'] = array(
 [$2 ចុចលើទីនេះដើម្បីបិទមុខងារពិសេសថ្មីៗ]។',
 	'prefswitch-main-off' => '===សាកប្រើស៊េរីថ្មី===
 [$1 ចុចលើទីនេះដើម្បីប្រើមុខងារពិសេសថ្មីៗ]។',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'prefswitch-survey-answer-whyoff-other' => 'ಇತರ ಕಾರಣ:',
 );
 
 /** Korean (한국어)
@@ -4935,6 +4943,14 @@ $messages['ml'] = array(
 	'prefswitch-survey-intro-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിച്ചതിനു നന്ദി.
 അവ മെച്ചപ്പെടുത്തുവാൻ ഞങ്ങളെ സഹായിക്കുന്നതിനായി, ദയവായി താഴെ നൽകിയിരിക്കുന്ന ഐച്ഛിക സർവേ പൂരിപ്പിച്ച ശേഷം "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" ഞെക്കുക.',
 	'prefswitch-feedbackpage' => 'Project:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'prefswitch-survey-true' => 'Тийм',
+	'prefswitch-survey-false' => 'Үгүй',
 );
 
 /** Marathi (मराठी)
@@ -6183,6 +6199,19 @@ Vă rugăm să răspundeți la sondajul de mai jos și apoi să apăsați „[[#
 	'prefswitch-survey-intro-off' => 'Vă mulțumim că ați testat noile funcționalități.
 Pentru a ne ajuta să le perfecționăm vă rugăm să răspundeți la sondajul opțional de mai jos și apoi să apăsați „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]”.',
 	'prefswitch-feedbackpage' => 'Project:Impresii asupra utilizabilității',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'prefswitch-link-on' => 'Puerteme rrete',
+	'prefswitch-survey-true' => 'Sìne',
+	'prefswitch-survey-false' => 'None',
+	'prefswitch-survey-answer-whyoff-other' => 'Otre mutive:',
+	'prefswitch-title-switched-on' => 'Devirtete!',
+	'prefswitch-title-switched-off' => 'Rengraziaminde',
+	'prefswitch-title-feedback' => 'Giudizie',
 );
 
 /** Russian (Русский)
@@ -7715,6 +7744,8 @@ $messages['vec'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Disativa łe nove funsionałidà',
 	'prefswitch-link-off' => 'nove funsionałidà',
 	'tooltip-pt-prefswitch-link-off' => 'Prova łe nove funsionałidà',
+	'prefswitch-jswarning' => 'Tien presente che col cambiamento de la skin, el còdese [[User:$1/$2.js|JavaScript del to $2]] el dovrà vegner copià in [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> par continuar a funsionar.',
+	'prefswitch-csswarning' => 'I to [[User:$1/$2.css|stili personalizà par $2]] no i sarà pi aplicai. Te poli zontare CSS personalizà par vector in [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disativa łe nove funsionałidà',
@@ -7744,15 +7775,21 @@ Se prega de sełesionare tute łe modivasion pertinenti.',
 	'prefswitch-title-off' => 'Disativa łe nove funsionałidà',
 	'prefswitch-title-switched-off' => 'Grasie',
 	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'Le funsionalità nove le xe intacà. Speremo che te le piasa. Te podi destacarle strucando su "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" insima a la pagina.',
+	'prefswitch-success-off' => 'Le funsionalità nove le xe destacà. Grassie de verle proà. Te podi ritacarle strucando su "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" insima a la pagina.',
 	'prefswitch-success-feedback' => 'El to feedback xè sta invià.',
 	'prefswitch-return' => '<hr style="clear:both">
 Torna a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-feedback' => "===Comenti?===
+No vedemo l'ora di saver la to opinion. Visita la nostra [[$1|pagina de feedback]] opure, se te interessa i nostri continui sforsi par mejorar la piataforma MediaWiki, visita [http://usability.wikimedia.org la wiki del progeto usabilità] par ulteriori informassion.",
 	'prefswitch-main-anon' => '===Torna a la vecia interfacia===
 Se te voli disativare le nove funzionalità, [$1 struca qua]. Te sarà chiesto de entrare o de creare un account.',
 	'prefswitch-main-on' => '===Torna a la vecia interfacia===
 [$2 Struca qua par disativare le nove funzionalità].',
 	'prefswitch-main-off' => '===Pròvale===
 Se te voli provar le nove funzionalità, [$1 struca qua].',
+	'prefswitch-survey-intro-feedback' => 'Ne piasarìa saver la to opinion.
+Par piaser conpila sto questionario prima de strucar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Grassie de aver provà le nostre nove funsioni.
 Par jutarne a mejorarle, par piaser conpila el seguente questionario facoltativo prima de strucar su "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"',
 	'prefswitch-feedbackpage' => 'Project:Coordinamento/Fruibiłidà',

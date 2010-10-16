@@ -920,6 +920,7 @@ $messages['nl'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -930,11 +931,20 @@ $messages['no'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Sett inn i sekvens',
 	'mwe-clipedit-preview_insert' => 'Forhåndsvis innsetting',
 	'mwe-clipedit-cancel_image_insert' => 'Avbryt innsetting',
+	'mwe-clipedit-sc_audio' => 'Lydkontroll',
+	'mwe-clipedit-sc_duration' => 'Varighet',
 	'mwe-clipedit-template_properties' => 'Malegenskaper',
 	'mwe-clipedit-custom_title' => 'Egendefinert tittel',
 	'mwe-clipedit-edit_properties' => 'Rediger egenskaper',
 	'mwe-clipedit-other_properties' => 'Andre egenskaper',
 	'mwe-clipedit-resource_page' => 'Ressursside:',
+	'mwe-clipedit-start_time' => 'Starttid',
+	'mwe-clipedit-end_time' => 'Sluttid',
+	'mwe-clipedit-edit-tools' => 'Redigeringsverktøy',
+	'mwe-clipedit-duration' => 'Varighet',
+	'mwe-clipedit-layout' => 'Oppsett',
+	'mwe-clipedit-layout_right' => 'Bildeoppsett høyre side',
+	'mwe-clipedit-layout_left' => 'Bildeoppsett venstre side',
 );
 
 /** Occitan (Occitan) */
@@ -1110,6 +1120,31 @@ $messages['pt-br'] = array(
 	'mwe-clipedit-layout' => 'Posicionamento',
 	'mwe-clipedit-layout_right' => 'Imagem posicionada à direita',
 	'mwe-clipedit-layout_left' => 'Imagem posicionada à esquerda',
+);
+
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'mwe-clipedit-crop' => 'Decupaţi imaginea',
+	'mwe-clipedit-apply_crop' => 'Aplicați decuparea',
+	'mwe-clipedit-reset_crop' => 'Restabiliți decupajul',
+	'mwe-clipedit-insert_image_page' => 'Inseraţi în pagina',
+	'mwe-clipedit-insert_into_sequence' => 'Introduceţi în secvenţă',
+	'mwe-clipedit-preview_insert' => 'Previzualizați inserția',
+	'mwe-clipedit-cancel_image_insert' => 'Anulați inserția',
+	'mwe-clipedit-sc_audio' => 'Control audio',
+	'mwe-clipedit-sc_duration' => 'Durată',
+	'mwe-clipedit-template_properties' => 'Proprietățile formatului',
+	'mwe-clipedit-custom_title' => 'Titlu personalizat',
+	'mwe-clipedit-edit_properties' => 'Modificați proprietățile',
+	'mwe-clipedit-other_properties' => 'Alte proprietăţi',
+	'mwe-clipedit-start_time' => 'Timp de pornire',
+	'mwe-clipedit-end_time' => 'Timp de finalizare',
+	'mwe-clipedit-edit-tools' => 'Unelte de modificare',
+	'mwe-clipedit-inline-description' => 'Descriere',
+	'mwe-clipedit-edit-video-tools' => 'Editare instrumente video:',
+	'mwe-clipedit-duration' => 'Durată:',
 );
 
 /** Russian (Русский)

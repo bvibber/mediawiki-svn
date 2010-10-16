@@ -1218,6 +1218,7 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Silviubogan
  */
@@ -1230,6 +1231,8 @@ $messages['ro'] = array(
 	'amazonplus-amazon' => 'prețul amazon',
 	'amazonplus-new' => 'nou',
 	'amazonplus-cp-none' => 'Nimic',
+	'amazonplus-more' => 'mai mult',
+	'amazonplus-less' => 'mai puţin',
 );
 
 /** Tarandíne (Tarandíne)

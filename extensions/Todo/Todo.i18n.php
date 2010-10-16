@@ -1142,6 +1142,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'todo-new-queue' => 'ಹೊಸ',
+	'todo-list-cancel' => 'ರದ್ದು ಮಾಡು',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1275,6 +1276,13 @@ $messages['ml'] = array(
 	'todo-new-item' => 'പുതിയ ഇനം',
 	'todo-form-details' => 'വിശദാംശങ്ങൾ:',
 	'todo-form-submit' => 'ചോദ്യം (query) സമർപ്പിക്കുക',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'todo-list-cancel' => 'Цуцлах',
 );
 
 /** Marathi (मराठी)

@@ -1510,13 +1510,19 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Kuailong
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
+	'lookupuser' => '查询用户信息',
+	'lookupuser-intro' => '输入用户名，查看该用户的参数设置',
 	'lookupuser-nonexistent' => '错误：用户不存在',
+	'lookupuser-id' => '用户ID: <tt>#$1</tt>',
 	'lookupuser-email' => '电邮：[[Special:EmailUser/$2|$1]]',
 	'lookupuser-realname' => '真实姓名：$1',
 	'lookupuser-registration' => '注册日期：$1',
+	'lookupuser-info-authenticated' => '电子邮件验证：$1',
+	'right-lookupuser' => '查看用户设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

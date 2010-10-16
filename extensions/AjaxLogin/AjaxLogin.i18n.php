@@ -289,10 +289,19 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Eliovir
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'ajaxlogin-desc' => 'Dinamika skatolo kiu permesas al uzantoj ensaluti kaj rememorigi pasvorton',
+	'ajaxLogin1' => 'Por kompletigi vian registron, vi devas skribi novan pasvorton.
+Tio elirigos vin de tiu paĝo de redakto kaj vi povus perdi vian aktualan redakton.',
+	'ajaxLogin2' => 'Ĉu vi certas?
+Vi povas perdi viajn ŝanĝojn en ĉi tiu paĝo se vi forlasas ĉi tiun paĝon nun.',
 	'ajaxlogin-create' => 'Krei konton',
+	'al-nosuchuser' => 'Estas neniu uzanto kun la nomo "$1".
+Uzantaj nomoj estas usklecodistingaj.
+Kontrolas vian literumon.',
 );
 
 /** Spanish (Español)

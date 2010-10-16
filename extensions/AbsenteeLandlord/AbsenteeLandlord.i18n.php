@@ -755,6 +755,13 @@ $messages['tt-cyrl'] = array(
 	'absenteelandlord-desc' => 'Билгеле бер вакыт эчендә идарәчеләр үзләренең активлыкларын күрсәтмәсә вики-проект ябыла',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'absenteelandlord-reason' => 'باشقۇرغۇچى ئاكتىپ بولمىغانلىقتىن ساندان ئۆزلۈكىدىن قۇلۇپلاندى.',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

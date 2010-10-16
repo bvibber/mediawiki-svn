@@ -3599,6 +3599,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'deletequeue-delnom-otherreason' => 'ಇತರ ಕಾರಣ',
 	'deletequeue-list-status' => 'ಸ್ಥಾನಮಾನ:',
 	'deletequeue-list-search' => 'ಹುಡುಕು',
 	'deletequeue-case-reason' => 'ಕಾರಣ:',
@@ -4046,6 +4047,7 @@ $messages['mn'] = array(
 	'deletequeue-review-reason' => 'Тайлбар:',
 	'deletequeue-vote-reason' => 'Тайлбар:',
 	'deletequeue-list-search' => 'Хайх',
+	'deletequeue-case-reason' => 'Шалтгаан:',
 );
 
 /** Malay (Bahasa Melayu)

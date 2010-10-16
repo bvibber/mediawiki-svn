@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'variablepage-navlink_text' => '{{Identical|Donate}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'variablepage-navlink_text' => 'Skenk',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -87,6 +94,13 @@ $messages['es'] = array(
 	'variablepage-desc' => 'Redirección de página variable ligera',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'variablepage-navlink_text' => 'Anneta',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -140,6 +154,13 @@ $messages['hsb'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Darić',
 	'variablepage-desc' => 'Lutowace wariabelne dalesposrědkowanje stronow',
+);
+
+/** Hungarian (Magyar)
+ * @author Misibacsi
+ */
+$messages['hu'] = array(
+	'variablepage-navlink_text' => 'Adományozás',
 );
 
 /** Interlingua (Interlingua)
@@ -256,6 +277,20 @@ $messages['qu'] = array(
 	'variablepage-navlink_text' => 'Qarana',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'variablepage-navlink_text' => 'Donează',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'variablepage-navlink_text' => 'Done',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -280,6 +315,7 @@ $messages['tl'] = array(
 $messages['vec'] = array(
 	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Dona',
+	'variablepage-desc' => 'Redissionamento legero de pagine variabili',
 );
 
 /** Vietnamese (Tiếng Việt)

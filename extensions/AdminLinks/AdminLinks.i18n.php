@@ -1170,9 +1170,11 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
+	'adminlinks_general' => 'General',
 	'adminlinks_users' => 'Utilizatori',
 	'adminlinks_createuser' => 'Creează un utilizator',
 	'adminlinks_importexport' => 'Importare și exportare',

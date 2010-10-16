@@ -365,9 +365,10 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author KalmerE.
+ * @author Pikne
  */
 $messages['et'] = array(
-	'edituser-username' => 'Nimi',
+	'edituser-username' => 'Kasutajanimi:',
 	'edituser-dosearch' => 'otsi',
 );
 

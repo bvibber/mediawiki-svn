@@ -15,6 +15,13 @@ $messages['qqq'] = array(
 	'active-strategy-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'nedits' => '$1 {{PLURAL:$1|wysiging|wysigings}}',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  */
@@ -208,11 +215,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
-	'activestrategy' => 'Aktív munkacsoportok',
+	'activestrategy' => 'Aktív stratégia',
 	'active-strategy-desc' => 'Megjeleníti az egyes munkacsoport lapokon végzett szerkesztések számát',
 	'active-strategy-intro' => 'Szerkesztések száma a munkacsoport lapokon az elmúlt $1 napban.',
 	'nedits' => '{{PLURAL:$1|egy|$1}} szerkesztés',
@@ -452,6 +460,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'activestrategy' => 'క్రియాశీల వ్యూహం',
 	'nedits' => '$1 {{PLURAL:$1|మార్పు|మార్పులు}}',
 );
 
@@ -490,6 +499,9 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'activestrategy' => 'Strategia ativa',
+	'active-strategy-desc' => 'Mostra el numaro de modifiche de le pagine de pianificassion strategica',
+	'active-strategy-intro' => "Numaro de modifiche de le pagine de la task force {{PLURAL:$1|ne l'ultimo giorno|nei ultimi $1 giorni}}.",
 	'nedits' => '$1 {{PLURAL:$1|contributo|contributi}}',
 );
 

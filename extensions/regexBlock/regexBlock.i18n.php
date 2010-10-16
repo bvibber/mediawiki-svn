@@ -2043,6 +2043,13 @@ $messages['ml'] = array(
 	'regexblock-view-time' => '$1 ന്‌',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'regexblock-form-reason' => 'Шалтгаан:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

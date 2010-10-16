@@ -2062,6 +2062,7 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
+ * @author SVG
  * @author Umherirrender
  * @author W (aka Wuzur)
  */
@@ -2144,7 +2145,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-section-namespaces' => 'Namensräume',
 	'configure-section-stats' => 'Website-Statistiken',
 	'configure-section-skin' => 'Skins',
-	'configure-section-vector' => 'Vektor-Skin',
+	'configure-section-vector' => 'Vector-Skin',
 	'configure-section-category' => 'Kategorien',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Parser-Cache',
@@ -8588,6 +8589,7 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
@@ -8613,23 +8615,41 @@ $messages['ro'] = array(
 	'configure-js-search-prompt' => 'Interogare:',
 	'configure-old' => 'Versiuni vechi',
 	'configure-old-versions' => 'Listă de versiuni vechi ale configurației:',
+	'configure-old-changes' => 'schimbări',
+	'configure-old-summary' => '$1 de către $2 $4 $3',
 	'configure-saved' => 'Configurația a fost salvată',
+	'configure-backlink' => 'Revenire la formular',
+	'configure-section-robots' => 'Crawlere web',
+	'configure-section-features' => 'Caracteristici',
 	'configure-section-general' => 'Setări generale',
 	'configure-section-pages' => 'Pagini',
 	'configure-section-paths' => 'Căi',
 	'configure-section-db' => 'Baza de date',
+	'configure-section-mysql' => 'Specific MySQL',
+	'configure-section-postgres' => 'Specific PostgreSQL',
+	'configure-section-sqlite' => 'Specific SQLite',
 	'configure-section-email' => 'E-mail',
 	'configure-section-enotif' => 'Notificare e-mail',
 	'configure-section-localization' => 'Localizare',
 	'configure-section-timezone' => 'Fus orar',
 	'configure-section-zh-conversion' => 'Conversie în chineză',
+	'configure-section-debug' => 'Depanare',
+	'configure-section-site' => 'Personalizarea site-ului',
 	'configure-section-css-js' => 'CSS și JavaScript',
 	'configure-section-namespaces' => 'Spații de nume',
+	'configure-section-stats' => 'Statisticile site-ului',
+	'configure-section-skin' => 'Aspect',
+	'configure-section-vector' => 'Aspectul Vector',
 	'configure-section-category' => 'Categorii',
+	'configure-section-cache' => 'Cache',
+	'configure-section-pcache' => 'Treci peste cache',
 	'configure-section-access' => 'Acces',
 	'configure-section-groups' => 'Grupuri',
 	'configure-section-block' => 'Blocări',
+	'configure-section-proxy' => 'Servere proxy',
+	'configure-section-cookie' => 'Cookie-uri',
 	'configure-section-performance' => 'Performanță',
+	'configure-section-upload' => 'Încarcă',
 	'configure-section-mime' => 'Tipuri MIME',
 	'configure-section-images' => 'Imagini',
 	'configure-section-antivirus' => 'Antivirus',

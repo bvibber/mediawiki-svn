@@ -1571,6 +1571,7 @@ No podrás acceder sin un OpenID.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'openidoptional' => 'Valikuline',
@@ -1582,7 +1583,7 @@ $messages['et'] = array(
 	'openidtimezone' => 'Ajavöönd',
 	'openidchoosefull' => 'Sinu täisnimi ($1)',
 	'openidchoosemanual' => 'Sinu valitud nimi:',
-	'openidchooseexisting' => 'Olemasolev konto siin vikis:',
+	'openidchooseexisting' => 'Olemasolev konto selles vikis',
 	'openidchoosepassword' => 'Parool:',
 	'openidconvertyourstext' => 'See on juba Sinu avatud ID.',
 	'openidconvertothertext' => 'See on kellegi teise avatud ID.',

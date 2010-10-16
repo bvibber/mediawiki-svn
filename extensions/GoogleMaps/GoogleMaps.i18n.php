@@ -709,8 +709,8 @@ $wgGoogleMapsMessages['br'] = array(
 	'gm-medium' => 'Médio',
 	'gm-small' => 'Pequeno',
 	'gm-no-zoom-control' => 'Sem controle de zoom',
-	'gm-yes' => 'Sim',
-	'gm-no' => 'Não',
+	'gm-yes' => 'Ya',
+	'gm-no' => 'Ket',
 	'gm-search-preface' => 'Clique no mapa para adicionar um ponto, ou ir para uma cidade, pais, endereço ou comércio:',
 	'gm-geocode-preface' => 'Clique no mapa para adicionar um ponto, ou ir para uma cidade, pais ou endereço:',
 	'gm-no-search-preface' => 'Clique no mapa para adicionar um ponto.',
@@ -3511,6 +3511,7 @@ $wgGoogleMapsMessages['ml'] = array(
  */
 $wgGoogleMapsMessages['mn'] = array(
 	'gm-yes' => 'Тийм',
+	'gm-no' => 'Үгүй',
 	'gm-search' => 'Хайх',
 	'gm-kml-loading' => 'уншиж байна...',
 );

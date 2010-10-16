@@ -1171,6 +1171,7 @@ $messages['kn'] = array(
 	'imagetagging-article' => 'ಪುಟ:',
 	'imagetagging-imghistory' => 'ಇತಿಹಾಸ',
 	'imagetagging-images' => 'ಚಿತ್ರಗಳು',
+	'imagetagging-tagcancel-button' => 'ರದ್ದು ಮಾಡು',
 );
 
 /** Krio (Krio)
@@ -1326,6 +1327,13 @@ $messages['ml'] = array(
 	'imagetagging-imagetag-seemoreimages' => '"$1"ന്റെ കൂടുതൽ ചിത്രങ്ങൾ കാണുക ($2)',
 	'imagetagging-taggedimages-title' => '"$1"ന്റെ ചിത്രങ്ങൾ',
 	'imagetagging-taggedimages-displaying' => '"$4"ന്റെ  $3 ചിത്രങ്ങളിൽ  $1 - $2 വരെയുള്ള  പ്രദർശിപ്പിക്കുന്നു',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'imagetagging-tagcancel-button' => 'Цуцлах',
 );
 
 /** Marathi (मराठी)

@@ -813,11 +813,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
+	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
+	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',
 	'contrib-tracking-button' => 'Continuați',
 );
 

@@ -1762,6 +1762,14 @@ $messages['ml'] = array(
 * [[$4]]",
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'crosswikiblock-reason' => 'Шалтгаан:',
+	'crosswikiunblock-reason' => 'Шалтгаан:',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

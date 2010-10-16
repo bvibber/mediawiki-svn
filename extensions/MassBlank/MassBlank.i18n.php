@@ -362,6 +362,13 @@ $messages['mk'] = array(
 	'right-massblank' => 'Масовно празнење на страници',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'massblank-blankcomment' => 'Шалтгаан:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

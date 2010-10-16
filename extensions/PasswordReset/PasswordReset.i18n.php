@@ -1083,6 +1083,13 @@ $messages['ml'] = array(
 	'right-passwordreset' => 'ഉപയോക്താക്കളുടെ രഹസ്യവാക്ക് പുനഃക്രമീകരിക്കുക ([[Special:PasswordReset|പ്രത്യേക താൾ]])',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'passwordreset-nopassmatch' => 'Нууц үгнүүд ижил биш байна',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -1825,6 +1832,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Kuailong
  */
 $messages['zh-hans'] = array(
 	'passwordreset' => '密码重设',
@@ -1841,6 +1849,7 @@ $messages['zh-hans'] = array(
 	'passwordreset-accountdisabled' => '账户已停用',
 	'disabledusers' => '已禁用的用户',
 	'disabledusers-summary' => '这是通过PasswordReset禁用账户的用户列表。',
+	'right-passwordreset' => '重置账户密码（[[Special:PasswordReset|重置页面]]）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

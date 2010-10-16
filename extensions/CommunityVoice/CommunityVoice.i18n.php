@@ -778,10 +778,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'communityvoice' => 'Vocea Comunității',
+	'communityvoice-desc' => 'Instrumente pentru participarea în comunitate',
+	'communityvoice-ratings' => 'Evaluări',
 	'communityvoice-ratings-scale-status-sending' => 'Se trimite...',
 	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
 	'communityvoice-ratings-scale-status-thanks' => 'Mulțumim pentru vot!',
@@ -792,7 +796,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Stoche a manne...',
 	'communityvoice-ratings-scale-status-error' => 'Errore de invie!',
+	'communityvoice-ratings-scale-status-thanks' => 'Grazie pu vote!',
 );
 
 /** Russian (Русский)
@@ -900,6 +906,7 @@ $messages['te'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'పంపిస్తున్నాం...',
 	'communityvoice-ratings-scale-status-error' => 'పంపించడంలో పొరపాటు!',
 	'communityvoice-ratings-scale-status-thanks' => 'వోటేసినందుకు కృతజ్ఞతలు!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|వోటు|వోట్లు}})',
 	'communityvoice-ratings-error-no-title' => 'మెచ్చుకోలు యందు ’శీర్షిక’ అనే అంశం లేదు',
 );
 
@@ -1017,6 +1024,8 @@ $messages['zh-hans'] = array(
 	'communityvoice-ratings-scale-status-error' => '发送错误！',
 	'communityvoice-ratings-scale-status-thanks' => '感谢投票！',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 个投票)',
+	'communityvoice-ratings-error-no-category' => '分类属性的分级标签丢失。',
+	'communityvoice-ratings-error-no-title' => '分类属性标题标签丢失。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

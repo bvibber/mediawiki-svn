@@ -455,9 +455,10 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
-	'authorprotect-reason' => 'Põhjus',
+	'authorprotect-reason' => 'Põhjus:',
 	'authorprotect-success' => 'Kaitse edukas!',
 );
 

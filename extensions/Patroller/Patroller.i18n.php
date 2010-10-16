@@ -1250,6 +1250,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'patrol-revert' => 'Хуучин төлөвт шилжүүлэх',
+	'patrol-revert-reason' => 'Шалтгаан:',
 	'patrol-reverting' => 'Хуучин төлөвт шилжүүлж байна: $1',
 	'patrol-reverted-ok' => 'Засварыг хуучин төлөвт шилжүүллээ.',
 	'patrol-reverted-failed' => 'Засварыг хуучин төлөвт шилжүүлэх боломжгүй байв',

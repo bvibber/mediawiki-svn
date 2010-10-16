@@ -528,6 +528,16 @@ $messages['tl'] = array(
 	'transliterator-error-prefix' => 'Hindi dapat bababa sa $1 na {{PLURAL:$1|panitik|mga panitik}} ang haba ng [[MediaWiki:$2]].',
 );
 
+/** Ukrainian (Українська)
+ * @author Arturyatsko
+ */
+$messages['uk'] = array(
+	'transliterator-desc' => 'Забезпечує фукцію парсера для транслітерації, що можна налаштовувати',
+	'transliterator-error-ambiguous' => 'Неоднозначне правило <code>$1</code> в [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Невірний синтаксис <code>$1</code> в [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Більше $1 {{PLURAL:$1|правила|правил|правил}} в [[MediaWiki:$2]]',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

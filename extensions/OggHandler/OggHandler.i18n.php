@@ -3480,6 +3480,8 @@ $messages['vec'] = array(
 	'ogg-dismiss' => 'Sara',
 	'ogg-download' => 'Descarga el file',
 	'ogg-desc-link' => 'Informazion su sto file',
+	'ogg-oggThumb-version' => 'Par OggHandler ghe vole oggThumb version $1 o sucessiva.',
+	'ogg-oggThumb-failed' => "oggThumb no'l xe stà bon de crear la miniatura.",
 );
 
 /** Veps (Vepsan kel')

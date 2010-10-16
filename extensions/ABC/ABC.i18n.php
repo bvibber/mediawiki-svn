@@ -940,7 +940,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'abc-desc' => 'ABC సంగీతాన్ని చూపించడానికై <code>&lt;abc&gt;</code> అనే ట్యాగుని చేరుస్తుంది',
-	'abcdownload' => 'డౌన్‌లోడ్',
+	'abcdownload' => 'దింపుకోలు:',
 );
 
 /** Thai (ไทย)

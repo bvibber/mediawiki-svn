@@ -1652,6 +1652,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Cin
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Minisarm
@@ -1659,10 +1660,12 @@ $messages['qu'] = array(
 $messages['ro'] = array(
 	'expandtemplates' => 'Extindere formate',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|Extinde formatele, funcțiile parser și variabilele]] pentru a vedea extins textul wiki și pentru a previzualiza modul de redare a paginii',
+	'expand_templates_input' => 'Text sursă:',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Ieșire XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Elimină comentariile',
+	'expand_templates_remove_nowiki' => 'Suprimă etichetele <nowiki> în rezultat',
 	'expand_templates_generate_xml' => 'Arată arborele analiză XML',
 	'expand_templates_preview' => 'Previzualizare',
 );

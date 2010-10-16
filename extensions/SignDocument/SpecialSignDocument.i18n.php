@@ -636,7 +636,7 @@ Mard oc'h kevreet dre ur servijer proksi, digevreit ha grit gant ur gevreadenn v
 	'sign-viewfield-city' => 'Kêr',
 	'sign-viewfield-state' => 'Stad',
 	'sign-viewfield-country' => 'Bro',
-	'sign-viewfield-zip' => 'Kod-post',
+	'sign-viewfield-zip' => 'Kod post',
 	'sign-viewfield-ip' => "Chomlec'h IP",
 	'sign-viewfield-agent' => 'Dileuriad an implijer',
 	'sign-viewfield-phone' => 'Pellgomz',

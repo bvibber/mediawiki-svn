@@ -1316,6 +1316,13 @@ $messages['mk'] = array(
 	'right-closewikis' => 'Затворање на викија',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'closewikis-page-reopen-reason' => 'Шалтгаан:',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

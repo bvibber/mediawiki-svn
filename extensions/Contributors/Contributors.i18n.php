@@ -1005,6 +1005,13 @@ $messages['ml'] = array(
 	'contributors-nosuchpage' => '$1 എന്ന താൾ നിലവിലില്ല.',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'contributors-submit' => 'Үзүүлэх',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */

@@ -8760,6 +8760,7 @@ $messages['mn'] = array(
 	'ow_transaction_rollback_header' => 'Буцаах',
 	'ow_transaction_summary' => 'Товч агуулга',
 	'ow_Source' => 'Эх үүсвэр',
+	'ow_show' => 'Үзүүлэх',
 );
 
 /** Marathi (मराठी)

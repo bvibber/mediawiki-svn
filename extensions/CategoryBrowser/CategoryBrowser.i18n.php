@@ -587,6 +587,7 @@ $messages['lb'] = array(
 	'cb_edit_right_hint' => 'No riets réckelen, wa méiglech',
 	'cb_edit_remove_hint' => 'Läschen, wa méiglech',
 	'cb_edit_copy_hint' => 'Operateur an den Tëschespäicher kopéieren',
+	'cb_edit_append_hint' => 'Operateur u leschter Positioun drasetzen',
 	'cb_edit_clear_hint' => 'Aktuellen Ausdrock ewechhuelen (alles uwielen)',
 );
 

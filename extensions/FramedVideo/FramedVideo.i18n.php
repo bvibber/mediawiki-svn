@@ -204,8 +204,10 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Umherirrender
+ * @author ✓
  */
 $messages['de'] = array(
+	'framedvideo_position' => 'rechts',
 	'framedvideo_errors' => 'Mehrere Fehler sind aufgetreten!',
 	'framedvideo_error' => 'Ein Fehler ist aufgetreten!',
 	'framedvideo_error_unknown_type' => 'Unbekannte Video-Service-ID („$1“): prüfe den Parameter „type“.',

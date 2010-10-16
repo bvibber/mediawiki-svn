@@ -169,6 +169,14 @@ $messages['fa'] = array(
 	'dontswitchmeover-pref' => 'اجازه نده پوستهٔ من با تغییر پوستهٔ پیش‌فرض تغییر کند',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'dontswitchmeover-desc' => 'Asetus käyttäjille, jotka haluavat määrittää, haluavatko he säilyttää ulkoasuasetuksensa, kun oletusulkoasua vaihdetaan.',
+	'dontswitchmeover-pref' => 'Älä anna ulkoasuni vaihtua, kun sivuston oletusulkoasua muutetaan',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -199,6 +207,14 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'dontswitchmeover-desc' => 'Yystellig fir Benutzer, wu s megli macht, s Design vu dr Benutzeroberflechi byyzbhalte bin ere Änderig vum Standarddesign.',
 	'dontswitchmeover-pref' => 'Änderig vu myym Benutzeroberflechinedesign nit erlaube, wänn s Standarddesign gänderet wird',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'dontswitchmeover-desc' => 'העדפה למשתמשים לצורך ציון האם ברצונם לשמר את הגדרות העיצוב שלהם כאשר עיצוב בררת המחדל משתנה.',
+	'dontswitchmeover-pref' => 'אין להרשות את החלפת העיצוב שלי כאשר עיצוב בררת המחדל משתנה',
 );
 
 /** Croatian (Hrvatski)
@@ -447,6 +463,13 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'dontswitchmeover-desc' => 'Можливість для користувачів визначитись, чи вони бажають зберігати вибране оформлення вікі у випадку зміни оформлення за замовчуванням.',
 	'dontswitchmeover-pref' => 'Не змінювати вибране оформлення при зміні оформлення за замовчуванням',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'dontswitchmeover-pref' => 'No sta canbiar la me skin co vien canbià la skin de default',
 );
 
 /** Vietnamese (Tiếng Việt)

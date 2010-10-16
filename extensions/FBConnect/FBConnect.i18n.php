@@ -288,6 +288,7 @@ $messages['br'] = array(
 
 $1",
 	'fbconnect-error' => 'Fazi gwiriañ',
+	'fbconnect-cancel' => 'Ober nullet',
 	'fbconnect-invalid' => "N'haller ket dibab an dra-se",
 	'fbconnect-nickname' => 'Lesanv',
 	'fbconnect-fullname' => 'Anv klok',

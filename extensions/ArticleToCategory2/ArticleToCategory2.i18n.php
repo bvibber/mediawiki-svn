@@ -314,6 +314,16 @@ $messages['pt-br'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Criar',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Adaugă o pagină în această categorie',
+	'articletocategory2-create-article-under-category-button' => 'Creează',
+	'articletocategory2-create-category-under-category-text' => 'Adauga o categorie pentru această categorie',
+	'articletocategory2-create-category-under-category-button' => 'Creează',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
