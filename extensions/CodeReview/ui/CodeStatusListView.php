@@ -19,7 +19,7 @@ class CodeStatusListView extends CodeView {
 				SpecialPage::getTitleFor( 'Code', $name . "/status/$state" ),
 				wfMsg( "code-status-".$state )
 			);
-			$table_rows .= "<tr><td>$link</td>"
+			$table_rows .= "<tr><td class=\"mw-codereview-status-$state\">$link</td>"
 				. "<td>" . wfMsg( "code-status-desc-" . $state ) . "</td></tr>\n" ;
 		}
 		$wgOut->addHTML( '<table class="TablePager">'
