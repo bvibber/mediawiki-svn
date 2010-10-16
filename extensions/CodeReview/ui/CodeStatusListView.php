@@ -11,10 +11,21 @@ class CodeStatusListView extends CodeView {
 		global $wgOut;
 		$name = $this->mRepo->getName();
 		$states = CodeRevision::getPossibleStates();
-		$text = "== " . wfMsg ( "code-field-status" ) . " ==\n";
+		$wgOut->addWikiText( "== " . wfMsg ( "code-field-status" ) . " ==\n" );
+
+		$table_rows = '';
 		foreach ( $states as $state ) {
-			$text .= "* [[Special:Code/$name/status/$state|" . wfMsg ( "code-status-" . $state ) . "]]\n";
+			$link = $this->mSkin->link(
+				SpecialPage::getTitleFor( 'Code', $name . "/status/$state" ),
+				wfMsg( "code-status-".$state )
+			);
+			$table_rows .= "<tr><td>$link</td>"
+				. "<td>" . wfMsg( "code-status-desc-" . $state ) . "</td></tr>\n" ;
 		}
-		$wgOut->addWikiText( $text );
+		$wgOut->addHTML( '<table class="TablePager">'
+			. '<tr><th>toto</th><th>tata</th></tr>'
+			. $table_rows
+			. '</table>'   
+		);
 	}
 }
