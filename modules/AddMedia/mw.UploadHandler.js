@@ -552,7 +552,7 @@ mw.UploadHandler.prototype = {
 	* @param {String} source The source filed			
 	*/
 	getCommentText: function( comment, license, copyStatus, source ) {				
-		var pageText = '== ' + gM( 'mwe-filedesc' ) + " ==\n" + comment + "\n";
+		var pageText = '== ' + mw.Language.msgNoTrans( 'mwe-filedesc' ) + " ==\n" + comment + "\n";
 		if( copyStatus ){
 			pageText +=  '== ' + gM( 'mwe-filestatus' ) + " ==\n" + copyStatus + "\n";
 		}
@@ -560,7 +560,7 @@ mw.UploadHandler.prototype = {
 			pageText += '== ' + gM( 'mwe-filesource' ) + " ==\n" + source  + "\n";
 		}
 		if ( license ) {
-			pageText += '== ' + gM( 'mwe-license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
+			pageText += '== ' + mw.Language.msgNoTrans( 'mwe-license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
 		}		
 		return pageText;
 	},
