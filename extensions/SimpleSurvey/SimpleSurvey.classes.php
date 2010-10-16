@@ -4,13 +4,17 @@ class SimpleSurvey extends PrefSwitchSurvey {
 	/* Static Functions */
 
 	/* update schema*/
-	public static function schema(  ) {
-		global $wgExtNewTables;
-
-		$wgExtNewTables[] = array( 'prefswitch_survey',
-			dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch/PrefSwitch.sql"
-		);
-
+	public static function schema( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array(
+				'prefswitch_survey',
+				dirname( dirname( __FILE__ ) ) . "/PrefSwitch/patches/PrefSwitch.sql"
+			);
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'prefswitch_survey',
+				dirname( dirname( __FILE__ ) ) . "/PrefSwitch/patches/PrefSwitch.sql", true ) );
+		}
 		return true;
 	}
 
