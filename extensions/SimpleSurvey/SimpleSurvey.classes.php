@@ -35,7 +35,7 @@ class SimpleSurvey extends PrefSwitchSurvey {
 	 * @param $loadFromDB bool Load previous survey data from the database
 	 * @return string HTML
 	 */
-	public static function render( $questions ) {
+	public static function render( $name, $questions, $loadFromDB = false ) {
 		global $wgUser;
 
 		$html = Xml::openElement( 'dl' );
