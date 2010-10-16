@@ -185,11 +185,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 */	
 	public function getScale( $params ) {
 		$p = $this->getModulePrefix();
-		if ( $params['urlheight'] != - 1 && $params['urlwidth'] == - 1 ) {
+		if ( $params['urlheight'] != -1 && $params['urlwidth'] == -1 ) {
 			$this->dieUsage( "${p}urlheight cannot be used without {$p}urlwidth", "{$p}urlwidth" );
 		}
 
-		if ( $params['urlwidth'] != - 1 ) {
+		if ( $params['urlwidth'] != -1 ) {
 			$scale = array();
 			$scale['width'] = $params['urlwidth'];
 			$scale['height'] = $params['urlheight'];
@@ -335,11 +335,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			),
 			'urlwidth' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => - 1
+				ApiBase::PARAM_DFLT => -1
 			),
 			'urlheight' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => - 1
+				ApiBase::PARAM_DFLT => -1
 			),
 			'continue' => null,
 		);

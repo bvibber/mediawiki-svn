@@ -128,7 +128,7 @@ class SessionStash {
 					$error = array( 'unknown', 'no error recorded' );
 				}
 			}
-			throw new SessionStashFileException( "error storing file in '$path': " . join( '; ', $error ) );
+			throw new SessionStashFileException( "error storing file in '$path': " . implode( '; ', $error ) );
 		}
 		$stashPath = $status->value;
 		 		

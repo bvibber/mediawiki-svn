@@ -623,7 +623,7 @@ abstract class UploadBase {
 	 * If the user does not supply all necessary information in the first upload form submission (either by accident or
 	 * by design) then we may want to stash the file temporarily, get more information, and publish the file later.
 	 *
-         * This method will stash a file in a temporary directory for later processing, and save the necessary descriptive info
+	 * This method will stash a file in a temporary directory for later processing, and save the necessary descriptive info
 	 * into the user's session.
 	 * This method returns the file object, which also has a 'sessionKey' property which can be passed through a form or 
 	 * API request to find this stashed file again.
