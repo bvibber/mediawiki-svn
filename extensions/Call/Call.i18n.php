@@ -1078,6 +1078,13 @@ $messages['ru'] = array(
 	'call-save-failed' => 'Следующий текст НЕ был сохранён на страницу <big>[[$1]]</big>, так как данная страница уже существует.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'call' => 'Call',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

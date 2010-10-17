@@ -1230,9 +1230,11 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'deletebatch-caption' => 'Lista de pagini:',
+	'deletebatch-title' => 'Şterge lot',
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-delete' => 'Ştergere',
 	'deletebatch-page' => 'Pagini de șters:',

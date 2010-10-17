@@ -3266,6 +3266,7 @@ $messages['ha'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'prefswitch' => 'שינוי העדפות במיזם השמישות',
@@ -3299,6 +3300,7 @@ $messages['he'] = array(
 	'prefswitch-survey-answer-browser-other' => 'דפדפן אחר:',
 	'prefswitch-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
 	'prefswitch-survey-answer-os-other' => 'מערכת הפעלה אחרת:',
+	'prefswitch-survey-answer-globaloff-yes' => 'כן, כיבוי התכונות בכול אתרי הוויקי',
 	'prefswitch-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
 	'prefswitch-title-on' => 'תכונות חדשות',
 	'prefswitch-title-switched-on' => 'תיהנו!',
@@ -4951,6 +4953,7 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'prefswitch-survey-true' => 'Тийм',
 	'prefswitch-survey-false' => 'Үгүй',
+	'prefswitch-survey-answer-whyoff-other' => 'Өөр шалтгаан:',
 );
 
 /** Marathi (मराठी)
@@ -6816,6 +6819,7 @@ Balik deui ka <span class="plainlinks">[$1 $2]</span>.',
 /** Swedish (Svenska)
  * @author Ainali
  * @author Boivie
+ * @author Cohan
  * @author Dafer45
  * @author Knuckles
  * @author MagnusA
@@ -6841,6 +6845,7 @@ $messages['sv'] = array(
 	'prefswitch-survey-question-dislike' => 'Vad tyckte du inte om med de nya funktionerna?',
 	'prefswitch-survey-question-whyoff' => 'Varför stänger du av de nya funktionerna?
 Välj alla som stämmer.',
+	'prefswitch-survey-question-globaloff' => 'Vill du ha funktionerna avstängda globalt?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Det var för svårt att använda.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Det fungerade inte korrekt.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Det betedde sig inte förutsägbart.',
@@ -6852,6 +6857,7 @@ Välj alla som stämmer.',
 	'prefswitch-survey-answer-browser-other' => 'Andra webbläsare:',
 	'prefswitch-survey-question-os' => 'Vilket operativsystem använder du?',
 	'prefswitch-survey-answer-os-other' => 'Annat operativsystem:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Ja, avaktivera funktionerna på alla wikis.',
 	'prefswitch-survey-question-res' => 'Vad är din skärmupplösning?',
 	'prefswitch-title-on' => 'Nya funktioner',
 	'prefswitch-title-switched-on' => 'Njut!',
@@ -6987,6 +6993,7 @@ $messages['te'] = array(
 	'prefswitch-survey-question-dislike' => 'కొత్త సౌలభ్యాలలో మీకు నచ్చనిదేమిటి?',
 	'prefswitch-survey-question-whyoff' => 'మీరు కొత్త సౌలభ్యాలను ఎందుకు నిలిపివేసుకుంటున్నారు?
 దయచేసి వర్తించేవన్నీ ఎంచుకోండి.',
+	'prefswitch-survey-question-globaloff' => 'ఈ సౌలభ్యాలని మీరు సార్వత్రికంగా నిలిపివేసుకోవాలనుకుంటున్నారా?',
 	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'ఇది సరిగ్గా పనిచేయడం లేదు.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'ఇది అనుకున్నట్లుగా పనిచేయడం లేదు',
@@ -6998,6 +7005,7 @@ $messages['te'] = array(
 	'prefswitch-survey-answer-browser-other' => 'ఇతర విహారిణి:',
 	'prefswitch-survey-question-os' => 'మీరు వాడుతున్న నిర్వాహక వ్యవస్థ ఏది?',
 	'prefswitch-survey-answer-os-other' => 'ఇతర నిర్వాహక వ్యవస్థ:',
+	'prefswitch-survey-answer-globaloff-yes' => 'అవును, అన్ని వికీలలో ఈ సౌలభ్యాలని నిలిపివేయి',
 	'prefswitch-survey-question-res' => 'మీ తెర వైశాల్యం ఎంత?',
 	'prefswitch-title-on' => 'కొత్త సౌలభ్యాలు',
 	'prefswitch-title-switched-on' => 'ఆనందించండి!',
@@ -7780,6 +7788,38 @@ Se prega de sełesionare tute łe modivasion pertinenti.',
 	'prefswitch-success-feedback' => 'El to feedback xè sta invià.',
 	'prefswitch-return' => '<hr style="clear:both">
 Torna a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-it.png|401px|]]
+|-
+| Imagine de la nova interfacia Vector <small>[[Media:VectorNavigation-it.png|(ingrandissi)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-it.png|401px|]]
+|-
+| Imagine de la nova interfacia de modifica de base <small>[[Media:VectorEditorBasic-it.png|(ingrandissi)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-it.png|401px|]]
+|-
+| Imagine de le nove finestre par inserire colegamenti
+|}
+|}
+Lo \"User Experience Team\" de la Fondazion Wikimedia, insieme ai volontari de la comunità, el gà laorà duro par rendare le cose pi semplisi par ti. Semo entusiasti de anunciar alcuni mejoramenti, tra cui un novo aspeto grafico e dele funzion de modifica semplificà.  Mejorar l'usabilità dei progeti wiki la xe na priorità de la Fondazion Wikimedia, e daremo altri agiornamenti in futuro. Par magiori detagli, visita el relativo articolo del [http://www.frontieredigitali.it/online/?p=1703 blog Wikimedia].
+===Ecco cosa gavemo cambià===
+* '''Navigazion''': Gavemo mejorà el sistema de navigazion par lezere e modificare voci. Desso, le schede ne la parte superiore de ogni voce le indica pi ciaramente se te sì drio vardar la voce o la pagina de discussione, e se te sì drio lezar o modificar na voce.
+* '''Mejoramenti a la barra dei strumenti''': Gavemo riorganizà la bara dei strumenti de modifica par renderla pi semplice da usare. Desso, formatar le voci xe pi semplise e intuitivo.
+* '''Procedura guidà par i link''':  Uno strumento semplise da utilizar te permete de zontar link ad altre pagine de Wikipedia e link a siti esterni.
+* '''Mejoramenti a la riserca''': Gavemo mejorà i sugerimenti de la ricerca par portarte pi velocemente a la pagina che te serchi.
+* '''Altre nove funzion''': Gavemo introdoto anca na procedura guidà par le tabele par rendare la so creazion pi semplise e na funzion \"cata e sostituissi\" par semplificar la modifica de le pagine.
+* '''Globo-puzzle de Wikipedia''': Gavemo agiornà el globo-puzzle. Lezi altre informazion sul [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog Wikimedia].",
+	'prefswitch-main-logged-changes' => "* La '''lengueta {{int:watch}}''' desso la xe na stela.
+* La '''lengueta {{int:move}}''' desso la xe nel menu a scomparsa rente la bara de riserca.",
 	'prefswitch-main-feedback' => "===Comenti?===
 No vedemo l'ora di saver la to opinion. Visita la nostra [[$1|pagina de feedback]] opure, se te interessa i nostri continui sforsi par mejorar la piataforma MediaWiki, visita [http://usability.wikimedia.org la wiki del progeto usabilità] par ulteriori informassion.",
 	'prefswitch-main-anon' => '===Torna a la vecia interfacia===

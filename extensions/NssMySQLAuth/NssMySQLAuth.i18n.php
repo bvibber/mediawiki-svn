@@ -284,6 +284,7 @@ $messages['eo'] = array(
 	'am-email' => 'retpoŝto',
 	'am-active' => 'aktiva',
 	'am-updated' => 'Viaj ŝanĝoj estis sukcese ŝanĝitaj.',
+	'nss-desc' => 'Kromprogramo por aŭtentigi per libnss-mysql datumbazo. Enhavas [[Special:AccountManager|konto-administrilo]]',
 	'nss-rights' => 'rajtoj',
 	'nss-save-changes' => 'Konservi ŝanĝojn',
 	'nss-create-account-header' => 'Krei novan konton',

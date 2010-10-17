@@ -499,6 +499,18 @@ $messages['nl'] = array(
 	'pf-header-approve' => 'Goedkeuren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-admin-menu-default' => 'Standard',
+	'pf-header-documentation' => 'Dokumentasjon',
+	'pf-header-in_packages' => 'Pakkar',
+	'pf-header-page_title' => 'Tittel',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -621,6 +633,21 @@ $messages['pt-br'] = array(
 	'pf-header-type' => 'Tipo de página',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprovar',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'pf-admin-menu-default' => 'Implicit',
+	'pf-admin-link-editlink-page' => 'Modifică pagina',
+	'pf-admin-link-approve' => 'Aprobă pagina',
+	'pf-header-documentation' => 'Documentaţie',
+	'pf-header-in_packages' => 'Pachete',
+	'pf-header-edit' => 'Editează legătura',
+	'pf-header-type' => 'Tipul de pagină',
+	'pf-header-page_title' => 'Titlu',
+	'pf-header-approve' => 'Aprobă',
 );
 
 /** Russian (Русский)

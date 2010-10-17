@@ -1536,9 +1536,13 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'sitematrix' => 'Список проєктів Вікімедія',
 	'sitematrix-language' => 'Язык',
+	'sitematrix-others' => 'Іншы проєкты Фонду «Вікімедія»',
+	'sitematrix-total' => "'''Цілкове чісло: $1'''",
 	'sitematrix-sitetotal' => 'Цілком',
 	'sitematrix-private' => 'пріватный',
+	'sitematrix-fishbowl' => 'едітованя обмеджене',
 );
 
 /** Yakut (Саха тыла)

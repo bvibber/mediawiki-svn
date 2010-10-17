@@ -796,6 +796,9 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'communityvoice' => "Vôsce d'a comunitate",
+	'communityvoice-desc' => "Struminde de partecipazione a 'a comunitate",
+	'communityvoice-ratings' => 'Pundegge',
 	'communityvoice-ratings-scale-status-sending' => 'Stoche a manne...',
 	'communityvoice-ratings-scale-status-error' => 'Errore de invie!',
 	'communityvoice-ratings-scale-status-thanks' => 'Grazie pu vote!',

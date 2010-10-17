@@ -348,6 +348,14 @@ $messages['pt-br'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'checkpoint' => 'Salvează şi continuă modificarea',
+	'checkpoint-tooltip' => 'Salvează-ţi progresul şi continuă editarea paginii',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

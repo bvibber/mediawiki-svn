@@ -1356,8 +1356,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'duplicator-toolbox' => 'Duplică această pagină',
 	'duplicator-options' => 'Opțiuni',
 	'duplicator-source' => 'Sursă:',
 	'duplicator-dest' => 'Destinație:',
@@ -1369,6 +1371,7 @@ $messages['ro'] = array(
 	'duplicator-success-talknotcopied' => 'Pagina de discuții nu a putut fi copiată.',
 	'duplicator-failed' => 'Pagina nu a putut fi duplicată.
 A apărut o eroare necunoscută.',
+	'right-duplicate' => 'Duplică pagini',
 );
 
 /** Tarandíne (Tarandíne)

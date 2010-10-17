@@ -790,6 +790,13 @@ $messages['ru'] = array(
 	'backforth-prev' => 'Пред. ($1)',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'backforth-next' => 'Наст. ($1)',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

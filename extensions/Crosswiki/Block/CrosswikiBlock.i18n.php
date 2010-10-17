@@ -2280,6 +2280,7 @@ Voltar para:
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'crosswikiblock' => 'Blochează utilizator pe alt wiki',
@@ -2300,6 +2301,11 @@ Vă rugăm să verificați dacă vi se permite să acționați pe acest wiki și
 	'crosswikiblock-noreason' => 'Nici un motiv specificat.',
 	'crosswikiblock-alreadyblocked' => 'Utilizatorul $3 este deja blocat.',
 	'crosswikiblock-noblock' => 'Acest utilizator nu este blocat.',
+	'crosswikiblock-success' => "Utilizatorul '''$3''' a fost blocat cu succes.
+
+Întoarce-te la:
+* [[Special:CrosswikiBlock|Block form]]
+* [[$4]]",
 );
 
 /** Tarandíne (Tarandíne)
@@ -2867,6 +2873,7 @@ Geri dön:
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -2874,7 +2881,15 @@ $messages['uk'] = array(
 	'crosswikiblock-expiry' => 'Закінчення:',
 	'crosswikiblock-reason' => 'Причина:',
 	'crosswikiblock-submit' => 'Заблокувати цього користувача',
+	'crosswikiblock-nocreate' => 'Запобігання створення облікового запису',
+	'crosswikiblock-autoblock' => 'Автоматично блокувати останню IP адресу, використовувану цим користувачем, і будь-які подальші IP-адреси з яких вони намагаються вносити зміни',
+	'crosswikiblock-noemail' => 'Забороняти можливість для учасників відправляти електронну пошту.',
+	'crosswikiunblock' => 'Розблокувати користувача на інших вікі',
+	'crosswikiunblock-header' => 'Ця сторінка дозволяє розблокувати користувача на інших вікі. 
+Будь ласка, перевірте, чи ви маєте право діяти від цієї вікі і ваші дії відповідають всім політикам.',
+	'crosswikiunblock-user' => "Ім'я користувача, IP-адреса або блокування ID в призначенній вікі:",
 	'crosswikiunblock-reason' => 'Причина:',
+	'crosswikiunblock-submit' => 'Розблокувати цього користувача',
 );
 
 /** Urdu (اردو) */

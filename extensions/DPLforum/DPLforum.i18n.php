@@ -691,8 +691,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'dplforum-edited' => '- Ultima editare',
 	'dplforum-never' => 'Niciodată',
 );
 

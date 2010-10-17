@@ -392,15 +392,16 @@ $messages['eu'] = array(
  * @author Jack Phoenix
  * @author Mobe
  * @author Nike
+ * @author Olli
  * @author ZeiP
  */
 $messages['fi'] = array(
 	'edituser-desc' => 'Mahdollistaa oikeutettujen käyttäjien muokata toisten käyttäjien asetuksia.',
 	'edituser' => 'Muokkaa käyttäjää',
-	'edituser-username' => 'Nimi',
+	'edituser-username' => 'Käyttäjätunnus:',
 	'edituser-dosearch' => 'Hae',
-	'edituser-nouser' => 'Määriteltyä käyttäjää ei ole olemassa',
-	'edituser-exempt' => 'Määriteltyä käyttäjää ei voida muokata',
+	'edituser-nouser' => 'Käyttäjää ”$1” ei ole olemassa.',
+	'edituser-exempt' => 'Käyttäjää ”$1” ei voi muokata.',
 	'right-edituser' => 'Muokata muiden käyttäjien asetuksia',
 	'right-edituser-exempt' => 'Muut eivät voi muokata tämän käyttäjän asetuksia.',
 );
@@ -507,7 +508,7 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'edituser-desc' => 'אפשרות למשתמשים מורשים לערוך העדפות של משתמשים אחרים',
 	'edituser' => 'עריכת משתמש',
-	'edituser-username' => 'שם',
+	'edituser-username' => 'שם משתמש:',
 	'edituser-dosearch' => 'חיפוש',
 	'edituser-nouser' => 'המשתמש המבוקש אינו קיים',
 	'edituser-exempt' => 'לא ניתן לערוך את המשתמש המבוקש',

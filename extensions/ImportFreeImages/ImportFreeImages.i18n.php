@@ -924,6 +924,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Frokor
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'importfreeimages' => 'Importer frie bilete',
@@ -933,6 +934,10 @@ $messages['nn'] = array(
 	'importfreeimages_owner' => 'Skapar',
 	'importfreeimages_importthis' => 'importer',
 	'importfreeimages_next' => 'Neste $1',
+	'importfreeimages_size_small' => 'Liten',
+	'importfreeimages_size_medium' => 'Middels',
+	'importfreeimages_size_large' => 'Stor',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1090,11 +1095,18 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'importfreeimages_nophotosfound' => "Nu au fost găsite fotografii pentru criteriul dvs. de căutare '$1', vă rugăm încercaţi iar.",
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importă aceasta',
 	'importfreeimages_next' => 'Înainte $1',
+	'importfreeimages_size_thumbnail' => 'Miniatură',
+	'importfreeimages_size_small' => 'Mică',
+	'importfreeimages_size_medium' => 'Mediu',
+	'importfreeimages_size_large' => 'Mare',
+	'importfreeimages_size_original' => 'Originală',
 );
 
 /** Tarandíne (Tarandíne)

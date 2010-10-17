@@ -575,6 +575,13 @@ $messages['ru'] = array(
 	'categoryonupload-label' => 'Категория:',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'categoryonupload-label' => 'Катеґорія:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

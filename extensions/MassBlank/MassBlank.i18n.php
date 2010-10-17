@@ -387,6 +387,13 @@ Voer de gebruikersnaam of het IP-adres in voor een lijst van leeg te maken pagin
 	'right-massblank' => "Pagina's massaal leegmaken",
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'massblank-blankcomment' => 'Årsak:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -481,6 +488,13 @@ Insira o nome do usuário ou o endereço de IP para obter a lista das páginas c
 	'massblank-submit-blank' => 'Esvaziar selecionadas',
 	'massblank-blankcomment' => 'Motivo:',
 	'right-massblank' => 'Remover o conteúdo de múltiplas páginas',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'massblank-blankcomment' => 'Motiv:',
 );
 
 /** Russian (Русский)

@@ -290,8 +290,24 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Translationista
  */
 $messages['es'] = array(
+	'categorybrowser' => 'Navegador de categoría',
+	'categorybrowser-desc' => 'Proporciona una [[Special:CategoryBrowser|página especial]] para filtrar las categorías con más entradas y navegarlas con una interfaz AJAX',
+	'cb_requires_javascript' => 'La extensión del navegador de categorías requiere que Javascript esté habilitado en el navegador.',
+	'cb_ie6_warning' => 'El editor de condición no funciona en Internet Explorer 6.0 o versiones anteriores. 
+Sin embargo, la exploración de las condiciones predefinidas debería funcionar normalmente. 
+Por favor, cambia o actualiza el navegador, de ser posible.',
+	'cb_show_no_parents_only' => ' Mostrar sólo las categorías que no tienen categorías superiores',
+	'cb_cat_name_filter' => ' Buscar la categoría por el nombre:',
+	'cb_cat_name_filter_clear' => 'Haz clic aquí para limpiar el filtro del nombre de categoría',
+	'cb_cat_name_filter_ci' => 'no distingue mayúsculas de minúsculas',
+	'cb_copy_line_hint' => 'Use los botones [+] y [>+] para copiar y pegar operadores en la expresión seleccionada',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategoría|subcategorías}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|página|páginas}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|archivo|archivos}}',
+	'cb_has_parentcategories' => 'categorías superiores (si las hubiese)',
 	'cb_previous_items_link' => 'Anterior',
 	'cb_next_items_link' => 'Siguiente',
 	'cb_next_items_stats' => '(de $1)',
@@ -300,9 +316,16 @@ $messages['es'] = array(
 	'cb_cat_files' => 'archivos',
 	'cb_apply_button' => 'Aplicar',
 	'cb_all_op' => 'Todos',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'y',
 	'cb_edit_left_hint' => 'Mover a la izquierda, si es posible',
 	'cb_edit_right_hint' => 'Mover a la derecha, si es posible',
 	'cb_edit_remove_hint' => 'Borrar, si es posible',
+	'cb_edit_copy_hint' => 'Copiar el operador al portapapeles',
+	'cb_edit_append_hint' => 'Insertar el operador en la última posición',
+	'cb_edit_clear_hint' => 'Limpiar la expresión actual (seleccionar todo)',
+	'cb_edit_paste_hint' => 'Pegar el operador en la posición actual, de ser posible',
+	'cb_edit_paste_right_hint' => 'Pegar el operador en la posición siguiente, de ser posible',
 );
 
 /** French (Français)
@@ -456,6 +479,30 @@ Wänn megli, tue Dyy Browser aktualisiere oder wächsle.',
 	'cb_edit_paste_right_hint' => 'Operator an dr negschte Position yyfiege (wänn megli)',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorybrowser' => 'סייר הקטגוריות',
+	'cb_cat_name_filter_ci' => 'ללא תלות ברישיות',
+	'cb_has_subcategories' => '{{PLURAL:$1|תת־קטגוריה אחת|$1 תת־קטגוריות}}',
+	'cb_has_pages' => '{{PLURAL:$1|דף אחד|$1 דפים}}',
+	'cb_has_files' => '{{PLURAL:$1|קובץ אחד|$1 קבצים}}',
+	'cb_has_parentcategories' => 'קטגוריות אב (אם ישנן)',
+	'cb_previous_items_link' => 'הקודם',
+	'cb_next_items_link' => 'הבא',
+	'cb_cat_subcats' => 'תת־קטגוריות',
+	'cb_cat_pages' => 'דפים',
+	'cb_cat_files' => 'קבצים',
+	'cb_apply_button' => 'החלה',
+	'cb_all_op' => 'הכול',
+	'cb_or_op' => 'או',
+	'cb_and_op' => 'וגם',
+	'cb_edit_left_hint' => 'הזזה שמאלה, אם ניתן',
+	'cb_edit_right_hint' => 'הזזה ימינה, אם ניתן',
+	'cb_edit_remove_hint' => 'מחיקה, אם ניתן',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -558,6 +605,13 @@ $messages['ja'] = array(
 	'cb_edit_paste_right_hint' => '可能であれば、次の位置に演算子を貼付ける',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'cb_all_op' => 'ಎಲ್ಲಾ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -569,6 +623,7 @@ $messages['lb'] = array(
 	'cb_cat_name_filter' => 'Sich no enger Kategorie nom Numm:',
 	'cb_cat_name_filter_clear' => 'Dréckt fir de Filter vum Kategoriennumm eidelzemaachen',
 	'cb_cat_name_filter_ci' => 'Ënnerscheed tëschent groussen a klenge Buschtawen',
+	'cb_copy_line_hint' => "Benotzt d'Knäppecher [+] an [>+] fir d'Operateuren an den erausgesichten Ausdrock dranzesetzen",
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|Ënnerkategorie|Ënnerkategorien}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|Säit|Säiten}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|Fichier|Fichieren}}',
@@ -881,6 +936,24 @@ Se for possível, mude ou atualize o seu navegador, por favor.',
 	'cb_edit_paste_right_hint' => 'Inserir o operador na posição seguinte, se possível',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'cb_previous_items_link' => 'Precedentele',
+	'cb_next_items_link' => 'Următoarele',
+	'cb_cat_subcats' => 'subcategorii',
+	'cb_cat_pages' => 'pagini',
+	'cb_cat_files' => 'fişier',
+	'cb_apply_button' => 'Aplică',
+	'cb_all_op' => 'Toţi',
+	'cb_or_op' => 'sau',
+	'cb_and_op' => 'şi',
+	'cb_edit_left_hint' => 'Mută la stânga, dacă e posibil',
+	'cb_edit_right_hint' => 'Mută la dreapta, dacă e posibil',
+	'cb_edit_remove_hint' => 'Şterge, dacă e posibil',
+);
+
 /** Russian (Русский)
  * @author MaxSem
  * @author QuestPC
@@ -936,6 +1009,16 @@ $messages['rue'] = array(
 	'cb_all_op' => 'Вшыткы',
 	'cb_or_op' => 'або',
 	'cb_and_op' => 'і',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'cb_previous_items_link' => "'N arreri",
+	'cb_next_items_link' => "'N avanti",
+	'cb_cat_pages' => 'pàggini',
+	'cb_all_op' => 'Tutti',
 );
 
 /** Swedish (Svenska)

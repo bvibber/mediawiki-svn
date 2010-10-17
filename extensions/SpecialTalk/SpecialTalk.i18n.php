@@ -158,6 +158,13 @@ $messages['pt-br'] = array(
 	'specialtalk-desc' => 'Acrescenta um separador de discussão às [[Special:SpecialPages|páginas especiais]]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'specialtalk-desc' => "Aggiunge 'na schede de 'ngazzaminde a le [[Special:SpecialPages|pàggene speciale]]",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

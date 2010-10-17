@@ -612,6 +612,15 @@ $messages['nl'] = array(
 	'mostrevisors-viewcontributors' => 'De grootste bijdragers bekijken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'mostrevisors-limitlinks' => 'Vis opptil $1 sider',
+	'mostrevisors-namespace' => 'Namnerom:',
+	'mostrevisors-submit' => 'Gå',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

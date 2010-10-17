@@ -939,6 +939,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'contrib-tracking-error' => 'పొరపాటు',
+	'contrib-tracking-continue' => 'స్వయంచాలకంగా మిమ్మల్ని దారి మళ్ళించకపోతే, పేపాల్ లో మీ విరాళాన్ని పూర్తిచెయ్యడానికి మీరే బొత్తాన్ని నొక్కండి.',
 	'contrib-tracking-button' => 'కొనసాగించు',
 );
 

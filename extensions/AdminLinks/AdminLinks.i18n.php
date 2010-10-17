@@ -1172,11 +1172,17 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'adminlinks' => 'Legături administrator',
 	'adminlinks_general' => 'General',
+	'adminlinks_editsidebar' => 'Editează bara laterală',
+	'adminlinks_editcss' => 'Editează fişierul CSS',
+	'adminlinks_editmainpagename' => 'Editează numele paginii principale',
 	'adminlinks_users' => 'Utilizatori',
 	'adminlinks_createuser' => 'Creează un utilizator',
+	'adminlinks_browsesearch' => 'Răsfoieşte şi caută',
 	'adminlinks_importexport' => 'Importare și exportare',
 );
 

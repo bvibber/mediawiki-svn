@@ -237,6 +237,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'dontswitchmeover-desc' => 'Beállítási lehetőség a felhasználóknak: szeretnék-e megtartani a felületbeállítást, ha a wiki alapértelmezett felület változik.',
 	'dontswitchmeover-pref' => 'Ne módosuljon az általam beállított felület, ha változik az alapértelmezett.',
 );
 
@@ -440,6 +441,14 @@ $messages['su'] = array(
 	'dontswitchmeover-pref' => 'Lamun kulit ti dituna robah, setélan kulit kuring ulah milu robah',
 );
 
+/** Swedish (Svenska)
+ * @author Cohan
+ */
+$messages['sv'] = array(
+	'dontswitchmeover-desc' => 'Preferens för användare att ange om de vill bevara sina skin-inställningar när standard-skin ändras.',
+	'dontswitchmeover-pref' => 'Låt inte mitt skin ändras vid byte av standardskin',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -469,6 +478,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'dontswitchmeover-desc' => 'Impostazion che permete a un utente de specificar se el vole conservar la skin impostà quando la skin de default la vien cambià.',
 	'dontswitchmeover-pref' => 'No sta canbiar la me skin co vien canbià la skin de default',
 );
 

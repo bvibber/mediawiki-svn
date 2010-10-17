@@ -1489,6 +1489,21 @@ U kunt [$2 gepubliceerde verhalen lezen] als u dat wilt.',
 	'storyboard-storydeletionconfirm' => 'Weet u zeker dat u dit verhaal permanent wilt verwijderen?',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'storyboard-createdandmodified' => 'Oppretta $1, $2 og sist endra $3, $4',
+	'storyboard-authorname' => 'Namnet til forfattar',
+	'storyboard-charsleft' => '({{PLURAL:$1|eitt|$1}} teikn igjen)',
+	'storyboard-charsneeded' => '(treng {{PLURAL:$1|eitt|$1}} teikn til)',
+	'storyboard-charstomany' => '$1 teikn for mange!',
+	'storyboard-morecharsneeded' => '$1 fleire teikn trengst',
+	'storyboard-charactersleft' => '$1 teikn igjen',
+	'storyboard-deleteimage' => 'Slett bilete',
+	'storyboard-deletestory' => 'Fjern',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

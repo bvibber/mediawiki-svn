@@ -558,6 +558,13 @@ Zie ook de [[Special:MostRevisors|'''pagina's met de meeste bewerkers''']] en [[
 	'cooperationstatistics-legendmore' => 'of meer bewerkers.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|sida|sider}}',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -670,8 +677,10 @@ Veja também as [[Special:MostRevisors|'''páginas com mais editores''']] e [[Sp
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'cooperationstatistics-tablevalue' => 'Numărul de editori',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pagină|pagini}}',
 );
 

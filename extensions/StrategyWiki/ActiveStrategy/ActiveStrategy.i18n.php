@@ -119,6 +119,8 @@ $messages['dsb'] = array(
  */
 $messages['eo'] = array(
 	'activestrategy' => 'Aktiva strategio',
+	'active-strategy-desc' => 'Montras nombron de redaktoj al strategiaj planpaĝoj',
+	'active-strategy-intro' => 'Nombro de redaktoj al taskteam-paĝoj en la lasta {{PLURAL:$1|$1 tago|$1 tagoj}}.',
 	'nedits' => '$1 {{PLURAL:$1|redakto|redaktoj}}',
 );
 
@@ -144,6 +146,16 @@ $messages['fa'] = array(
 	'active-strategy-desc' => 'تعداد ویرایش‌ها را به صفحات برنامه‌ریزی راهبردی نشان می‌دهد.',
 	'active-strategy-intro' => 'تعداد ویرایش‌ها به صفحات گروه ضربت در $1 روز اخیر.',
 	'nedits' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
+);
+
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'activestrategy' => 'Aktiivinen strategia',
+	'active-strategy-desc' => 'Näyttää muokkausten määrän strategisen suunnittelun sivuille',
+	'active-strategy-intro' => 'Muokkausten määrä tehtävälistan sivuille {{PLURAL:$1|viimeisimmän $1 päivän|viimeisimpien $1 päivän}} aikana.',
+	'nedits' => '$1 {{PLURAL:$1|muokkaus|muokkausta}}',
 );
 
 /** French (Français)
@@ -412,8 +424,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author AdiJapan
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'activestrategy' => 'Strategie activă',
 	'nedits' => '$1 {{PLURAL:$1|modificare|modificări}}',
 );
 
@@ -440,10 +454,11 @@ $messages['sl'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Cohan
  * @author Dafer45
  */
 $messages['sv'] = array(
-	'activestrategy' => 'Aktiva arbetsgrupper',
+	'activestrategy' => 'Aktiv strategi',
 	'active-strategy-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
 	'active-strategy-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
 	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
@@ -509,6 +524,9 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'activestrategy' => 'Chiến lược hiện hành',
+	'active-strategy-desc' => 'Hiển thị số lần sửa đổi các trang quy hoạch chiến lược',
+	'active-strategy-intro' => 'Số lần sửa đổi các trang của lực lượng đặc nhiệm trong $1 ngày về trước.',
 	'nedits' => '$1 sửa đổi',
 );
 

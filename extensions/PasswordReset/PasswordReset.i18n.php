@@ -412,6 +412,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'passwordreset' => 'Restarigo de pasvorto',
+	'passwordreset-desc' => "[[Special:PasswordReset|Restarigas pasvortojn de vikia uzanto]] - nepras rajtojn 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nevalida Salutnomo',
 	'passwordreset-emptyusername' => 'Malplena Salutnomo',
 	'passwordreset-nopassmatch' => 'Pasvortoj ne estas samaj',

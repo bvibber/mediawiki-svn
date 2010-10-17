@@ -878,6 +878,21 @@ $messages['nl'] = array(
 U kunt de [[Special:RefHelper|referentie handmatig toevoegen]] of [[Special:RefSearch|zoeken naar een toe te voegen citaat]].',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'refhelper-refcreate_success' => 'Sida [[$1]] finst ikkje og har vorte oppretta.',
+	'refhelper-refcreate_failure' => 'Sida [[$1]] eksisterer alt.',
+	'refhelper-label_authorsurname' => 'Etternamn:',
+	'refhelper-title' => 'Tittel:',
+	'refhelper-pages' => 'Sider:',
+	'refhelper-year' => 'År:',
+	'refhelper-category' => 'Kategori $1:',
+	'refhelper-create' => 'Opprett',
+	'refhelper-search' => 'Søk',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -929,12 +944,36 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'refhelper' => 'Pomocnik od przypisów',
+	'refsearch' => 'Wyszukiwanie przypisu',
+	'refhelper-desc' => 'Pomaga tworzyć strony dla przypisów',
+	'refhelper-refsearch' => 'Wyszukiwanie przypisu',
+	'refhelper-refcreate_legend' => 'Utwórz nowy przypis',
+	'refhelper-refsearch_legend' => 'Wyszukaj przypis w PubMed',
+	'refhelper-refcreate_another' => 'Utwórz inny przypis',
+	'refhelper-refcreate_autocomment' => 'Automatyczne tworzenie strony.',
+	'refhelper-refcreate_success' => 'Strona [[$1]] nie istniała i nie została utworzona.',
+	'refhelper-refcreate_failure' => 'Strona [[$1]] już istnieje!',
+	'refhelper-label_workspace' => 'Brudnopis (obszar kopiowania i wklejania)',
+	'refhelper-label_authorforename' => '$1. Imię tego autora',
+	'refhelper-label_authorsurname' => 'Nazwisko',
 	'refhelper-title' => 'Tytuł',
-	'refhelper-pages' => 'Strony:',
+	'refhelper-journal' => 'Czasopismo',
+	'refhelper-volume' => 'Tom',
+	'refhelper-pages' => 'Strony',
 	'refhelper-year' => 'Rok',
+	'refhelper-refname' => 'Nazwa przypisu',
 	'refhelper-category' => 'Kategoria $1',
 	'refhelper-create' => 'Utwórz',
 	'refhelper-search' => 'Szukaj',
+	'refhelper-toolbox_link_create' => 'Utwórz przypis',
+	'refhelper-toolbox_link_search' => 'Utwórz przypis z wyniku wyszukiwania',
+	'refhelper-newarticle_nocitation' => 'Brak obecnie cytatu o tej nazwie.',
+	'refhelper-newarticle_suggestions' => 'Jeśli poniżej znajduje się pasujący cytat, możesz utworzyć tę stronę klikając odpowiedni przycisk „Utwórz”. 
+
+<h2>Propozycje</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Niestety brak jest jakichkolwiek propozycji przypisów.
+Możesz [[Special:RefHelper|ręcznie dodać przypis]] lub [[Special:RefSearch|wyszukać cytat do dodania]].',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1060,6 +1099,25 @@ $messages['pt-br'] = array(
 <h2>Sugestões</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Infelizmente, não foi possível sugerir nenhuma referência.
 Você pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefSearch|pesquisar a citação a adicionar]].',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'refhelper-refcreate_legend' => 'Crează nouă referinţă',
+	'refhelper-refcreate_another' => 'Crează o altă referinţă',
+	'refhelper-label_authorsurname' => 'Numele de familie:',
+	'refhelper-title' => 'Titlu:',
+	'refhelper-journal' => 'Jurnal:',
+	'refhelper-volume' => 'Volum:',
+	'refhelper-pages' => 'Pagini',
+	'refhelper-year' => 'An:',
+	'refhelper-refname' => 'Nume de referinţă:',
+	'refhelper-category' => 'Categorie $1:',
+	'refhelper-create' => 'Crează',
+	'refhelper-search' => 'Caută',
+	'refhelper-toolbox_link_create' => 'Crează referinţă',
 );
 
 /** Russian (Русский)

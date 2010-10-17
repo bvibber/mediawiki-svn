@@ -1079,6 +1079,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'importusers-log-summary' => 'ಸಾರಾಂಶ',
+	'importusers-log-summary-all' => 'ಎಲ್ಲಾ',
 	'importusers-password' => 'ಪ್ರವೇಶಪದ',
 	'importusers-email' => 'ಇ-ಅಂಚೆ',
 );
@@ -1590,15 +1591,18 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'importusers' => 'Importați utilizatori',
 	'importusers-uploadfile' => 'Încarcă fișier',
 	'importusers-form-button' => 'Importă',
+	'importusers-user-added' => "Utilizatorul '''$1''' a fost adăugat.",
 	'importusers-log-summary' => 'Rezumat',
 	'importusers-log-summary-all' => 'Total',
 	'importusers-log-summary-added' => 'Adăugat',
 	'importusers-log-summary-updated' => 'Actualizat',
+	'importusers-login-name' => 'Nume autentificare',
 	'importusers-password' => 'parolă',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nume real',

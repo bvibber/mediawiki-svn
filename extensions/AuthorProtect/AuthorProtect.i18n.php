@@ -502,6 +502,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Jaakonam
  * @author Nike
+ * @author Olli
  * @author Str4nd
  * @author Vililikku
  */
@@ -513,10 +514,13 @@ $messages['fi'] = array(
 	'authorprotect-edit' => 'Rajoita muokkaus tekijöille',
 	'authorprotect-move' => 'Rajoita siirtäminen tekijöille',
 	'authorprotect-expiry' => 'Vanhenee',
-	'authorprotect-reason' => 'Syy',
+	'authorprotect-reason' => 'Syy:',
+	'authorprotect-intro' => 'Käytä tätä lomaketta lukitaksesi sivun niiltä, jotka eivät ole tekijöitä',
 	'authorprotect-success' => 'Suojaus onnistui!',
 	'authorprotect-failure' => 'Suojaus ei onnistunut',
 	'protect-level-author' => 'Suojaa ei-tekijöiltä',
+	'restriction-level-author' => 'Tekijä-suojattu',
+	'right-authorprotect' => 'Tekijäsivujen suojaus',
 );
 
 /** French (Français)
@@ -647,8 +651,8 @@ $messages['he'] = array(
 	'authorprotect-confirm' => 'שינוי רמות ההגנה',
 	'authorprotect-edit' => 'הגבלת עריכה ליוצרים בלבד',
 	'authorprotect-move' => 'הגבלת העברה ליוצרים בלבד',
-	'authorprotect-expiry' => 'זמן הפקיעה',
-	'authorprotect-reason' => 'סיבה',
+	'authorprotect-expiry' => 'תפוגה:',
+	'authorprotect-reason' => 'סיבה:',
 	'authorprotect-intro' => 'ניתן להשתמש בטופס זה כדי להגן על דף זה מפני משתמשים שלא יצרו אותו',
 	'authorprotect-success' => 'ההגנה הופעלה בהצלחה!',
 	'authorprotect-failure' => 'הפעלת ההגנה נכשלה',
@@ -1122,6 +1126,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'authorprotect' => 'Vern sida for andre enn forfattarar av ho',
@@ -1130,8 +1135,8 @@ $messages['nn'] = array(
 	'authorprotect-confirm' => 'Endra vernenivå',
 	'authorprotect-edit' => 'Avgrens endring til forfattarar',
 	'authorprotect-move' => 'Avgrens flytting til forfattarar',
-	'authorprotect-expiry' => 'Opphøyrstid',
-	'authorprotect-reason' => 'Årsak',
+	'authorprotect-expiry' => 'Opphøyrstid:',
+	'authorprotect-reason' => 'Årsak:',
 	'authorprotect-intro' => 'Nytt dette skjemaet for å låsa sida for andre enn forfattarar',
 	'authorprotect-success' => 'Verna.',
 	'authorprotect-failure' => 'Kunne ikkje verna sida',
@@ -1362,6 +1367,14 @@ $messages['ru'] = array(
 	'right-authorprotect' => 'защита авторских страниц',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'authorprotect-expiry' => 'Кінчіть:',
+	'authorprotect-reason' => 'Причіна:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1380,6 +1393,13 @@ $messages['sah'] = array(
 	'protect-level-author' => 'Ааптар буолбатах дьонтон көмүскэл',
 	'restriction-level-author' => 'Ааптар көмүскэлэ',
 	'right-authorprotect' => 'Ааптар суруйуутун көмүскээһин',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'authorprotect-reason' => 'Mutivu:',
 );
 
 /** Slovak (Slovenčina)

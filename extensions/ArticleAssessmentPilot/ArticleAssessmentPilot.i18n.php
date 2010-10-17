@@ -382,6 +382,7 @@ Vielleicht möchten Sie ihn erneut einschätzen.",
  */
 $messages['eo'] = array(
 	'articleassessment' => 'Takso de artikolo',
+	'articleassessment-desc' => 'Artikola takso (testa versio)',
 	'articleassessment-yourfeedback' => 'Via komento',
 	'articleassessment-pleaserate' => 'Bonvolu atendi momenton por aprezi ĉi tiun suban.',
 	'articleassessment-submit' => 'Enigi',
@@ -390,14 +391,31 @@ $messages['eo'] = array(
 	'articleassessment-rating-completeness' => 'Kompleta:',
 	'articleassessment-rating-readability' => 'Legebla:',
 	'articleassessment-rating-wellsourced-tooltip' => 'Ĉu vi opinias ke ĉi tiu paĝo havas sufiĉajn citaĵojn kaj ties citaĵoj estas el fidindaj fontoj?',
+	'articleassessment-rating-neutrality-tooltip' => 'Ĉu vi opinias ke ĉi tiu paĝo donas justan prezenton de ĉiuj perspektivoj de la temo?',
+	'articleassessment-rating-completeness-tooltip' => 'Ĉu vi opinias ke ĉi tiu paĝo traktas la esencajn traktendajn tempunktojn?',
+	'articleassessment-rating-readability-tooltip' => 'Ĉu vi opinias ke ĉi tiu paĝo estas bone organizita kaj bone verkita?',
 	'articleassessment-articlerating' => 'Taksado de paĝo',
 	'articleassessment-error' => 'Eraro okazis.
 Bonvolu reprovi poste.',
 	'articleassessment-thanks' => 'Dankon! Viaj taksoj estis konservitaj.',
+	'articleassessment-featurefeedback' => 'Doni al ni <span class="feedbacklink">komentojn</span> pri ĉi tiu ilo.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|takso|taksoj}})',
+	'articleassessment-stalemessage-norevisioncount' => "Ĉi tiu paĝo estis ''revizita'' ekde vi laste revizis ĝin.
+Vi eble volus taksi ĝin denove.",
+	'articleassessment-results-show' => '(Rezultoj kaŝitaj. <span class="showlink">Montri</span> ilin.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Kaŝi rezultojn</span>)',
+	'articleassessment-survey-question-whyrated' => 'Bonvolu informigi nin  kial vi taksis ĉi tiun paĝon hodiaŭ (marku ĉion taŭgan):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Mi volis kontribui al la suma taksado de la paĝo',
+	'articleassessment-survey-answer-whyrated-development' => 'Mi esperas ke mia takso pozitive influus la disvolvadon de la paĝo',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Mi volis kontribui al {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Plaĉas al mi doni mian opinion.',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Mi ne provizas taksojn hodiaŭ, se volis doni komentojn pri la ilo',
 	'articleassessment-survey-answer-whyrated-other' => 'Alia',
+	'articleassessment-survey-question-useful' => 'Ĉu vi konsideras ke la taksoj provizitaj estas utilaj kaj klara?',
 	'articleassessment-survey-question-useful-iffalse' => 'Kial?',
+	'articleassessment-survey-question-expert' => 'Ĉu vi konsideras ke vi mem estas spertulo en la fako kiu tiun paĝo temas?',
+	'articleassessment-survey-question-expert-iftrue' => 'Bonvolu priskribi vian fako-sperton',
+	'articleassessment-survey-question-comments' => 'Ĉu vi havas iujn suplementajn komentojn?',
 	'articleassessment-survey-submit' => 'Enigi',
 	'articleassessment-survey-title' => 'Bonvolu respondi al kelkaj demandoj',
 	'articleassessment-survey-thanks' => 'Dankon pro plenumante la enketon.',
@@ -405,15 +423,47 @@ Bonvolu reprovi poste.',
 
 /** Spanish (Español)
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
+	'articleassessment' => 'Evaluación del artículo',
+	'articleassessment-desc' => 'Evaluación del artículo (versión de pruebas)',
+	'articleassessment-yourfeedback' => 'Tus comentarios',
+	'articleassessment-pleaserate' => 'Por favor, dedica unos segundos a evaluar esta página.',
+	'articleassessment-submit' => 'Enviar',
+	'articleassessment-rating-wellsourced' => 'Bien documentado:',
 	'articleassessment-rating-neutrality' => 'Neutro:',
 	'articleassessment-rating-completeness' => 'Completo:',
 	'articleassessment-rating-readability' => 'Legible:',
+	'articleassessment-rating-wellsourced-tooltip' => '¿Consideras que esta página tiene suficientes citas y que estas provienen de fuentes fiables?',
+	'articleassessment-rating-neutrality-tooltip' => '¿Consideras que esta página muestra una arepresentación justa de todas las perspectivas posibles en este tema?',
+	'articleassessment-rating-completeness-tooltip' => '¿Consideras que esta página aborda los temas esenciales del área que debería?',
+	'articleassessment-rating-readability-tooltip' => '¿Consideras que esta página está bien estructurada y bien escrita?',
+	'articleassessment-articlerating' => 'Valoración de página',
+	'articleassessment-error' => 'Ha ocurrido un error. 
+ Por favor, inténtalo de nuevo más tarde.',
+	'articleassessment-thanks' => '¡Gracias! Tu evaluación se ha guardado.',
+	'articleassessment-featurefeedback' => 'Quisiéramos tus <span class="feedbacklink">comentarios</span> acerca de esta función.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|evaluación|evaluaciones}})',
+	'articleassessment-stalemessage-norevisioncount' => "Esta página ha sido ''revisada'' desde la última vez que la valoraste.
+Quizá quisieras valorarla de nuevo.",
+	'articleassessment-results-show' => '(Resultados escondido. <span class="showlink">Mostrarlos</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Esconder resultados</span>)',
+	'articleassessment-survey-question-whyrated' => 'Por favor, dinos por qué has valorado esta página hoy (marca todas las opciones que correspondan):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Quería contribuir a la calificación global de la página',
+	'articleassessment-survey-answer-whyrated-development' => 'Espero que mi calificación afecte positivamante el desarrollo de la página',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Quería contribuir a {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Me gusta compartir mi opinión',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Hoy no evalué ninguna página. Sólo quise dejar mis comentarios sobre la funcionalidad.',
 	'articleassessment-survey-answer-whyrated-other' => 'Otro',
+	'articleassessment-survey-question-useful' => '¿Crees las valoraciones proporcionadas son útiles y claras?',
 	'articleassessment-survey-question-useful-iffalse' => '¿Por qué?',
+	'articleassessment-survey-question-expert' => '¿Te consideras un experto en el campo del que trata esta página?',
+	'articleassessment-survey-question-expert-iftrue' => '¿Puedes describir tu nivel de especialización?',
+	'articleassessment-survey-question-comments' => '¿Tienes algún comentario adicional?',
+	'articleassessment-survey-submit' => 'Enviar',
+	'articleassessment-survey-title' => 'Por favor, contesta algunas preguntas',
+	'articleassessment-survey-thanks' => 'Gracias por completar la encuesta.',
 );
 
 /** Estonian (Eesti)
@@ -421,6 +471,7 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'articleassessment-yourfeedback' => 'Sinu tagasiside',
 	'articleassessment-rating-neutrality' => 'Neutraalne:',
 	'articleassessment-rating-completeness' => 'Täielikkus:',
 	'articleassessment-rating-readability' => 'Loetavus:',
@@ -476,42 +527,43 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Nike
  * @author Olli
  */
 $messages['fi'] = array(
 	'articleassessment' => 'Artikkelin arviointi',
 	'articleassessment-desc' => 'Artikkelin arviointi (kokeiluversio)',
-	'articleassessment-yourfeedback' => 'Oma palautteesi',
-	'articleassessment-pleaserate' => 'Käyttäisitkö hetken arvioidaksesi tämän sivun alla.',
+	'articleassessment-yourfeedback' => 'Omat palautteet',
+	'articleassessment-pleaserate' => 'Käyttäisitkö hetken alla olevan sivun arviointiin.',
 	'articleassessment-submit' => 'Lähetä',
 	'articleassessment-rating-wellsourced' => 'Hyvin lähteistetty:',
 	'articleassessment-rating-neutrality' => 'Neutraali:',
 	'articleassessment-rating-completeness' => 'Täydellinen:',
 	'articleassessment-rating-readability' => 'Luettavuus:',
-	'articleassessment-rating-wellsourced-tooltip' => 'Onko tällä sivulla mielestäsi hyvät lainaukset ja kyseiset lainaukset ovat peräisin luotettavista lähteistä?',
+	'articleassessment-rating-wellsourced-tooltip' => 'Onko tällä sivulla mielestäsi hyvät lainaukset ja ovatko ne peräisin luotettavista lähteistä?',
 	'articleassessment-rating-neutrality-tooltip' => 'Käsitteleekö artikkeli mielestäsi asiaa reilusti kaikista mahdollisista näkökulmista?',
-	'articleassessment-rating-completeness-tooltip' => 'Tuntuuko sinusta, että artikkeli sisältää tarpeelliset tiedot alueista, joista sen pitäisi?',
+	'articleassessment-rating-completeness-tooltip' => 'Sisältääkö sivu mielestäsi kaikki olennaiset alueet kyseessä olevasta aiheesta?',
 	'articleassessment-rating-readability-tooltip' => 'Onko artikkeli mielestäsi hyvin järjestetty ja hyvin kirjoitettu?',
 	'articleassessment-articlerating' => 'Sivun arvostelu',
-	'articleassessment-error' => 'Ongelma ilmaantui.
+	'articleassessment-error' => 'Tapahtui virhe.
 Ole hyvä ja yritä myöhemmin uudelleen.',
-	'articleassessment-thanks' => 'Kiitos! Arvostelusi talelnnettiin.',
+	'articleassessment-thanks' => 'Kiitos! Arvostelusi tallennettiin.',
 	'articleassessment-featurefeedback' => 'Anna meille <span class="feedbacklink">palautetta</span> tästä ominaisuudesta.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|arvio|arviota}})',
-	'articleassessment-stalemessage-norevisioncount' => "Tätä sivua on ''muokattu'' viime arvostelusi jälkeen.
+	'articleassessment-stalemessage-norevisioncount' => "Tätä sivua on ''muutettu'' viimeisimmän arvostelusi jälkeen.
 Haluaisit ehkä arvostella sen uudelleen.",
-	'articleassessment-results-show' => '(Tulokset on piilotettu. <span class="showlink">Näytä</span> ne.)',
+	'articleassessment-results-show' => '(Tulokset on piilotettu. <span class="showlink">Näytä</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Piilota tulokset</span>)',
 	'articleassessment-survey-question-whyrated' => 'Kerro meille, miksi arvostelit tämän sivun tänään (lisää merkki kaikkiin, jotka pitävät paikkaansa):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Haluan vaikuttaa sivun kokonaisarvosanaan',
 	'articleassessment-survey-answer-whyrated-development' => 'Toivon, että arvosteluni vaikuttaisi positiivisesti sivun kehitykseen',
-	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Haluan osallistua {{SITENAME}} -sivuston kehitykseen',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Haluan osallistua {{SITENAME}}-sivuston kehitykseen',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Pidän mielipiteeni kertomisesta',
-	'articleassessment-survey-answer-whyrated-didntrate' => 'En antanut arvosteluja tänään, mutta halusin antaa palautetta ominaisuudesta',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'En antanut arvosteluja tänään, mutta halusin antaa palautetta arvosteluominaisuudesta',
 	'articleassessment-survey-answer-whyrated-other' => 'Muu',
 	'articleassessment-survey-question-useful' => 'Ovatko annetut arvostelut mielestäsi hyödyllisiä ja todellisia?',
 	'articleassessment-survey-question-useful-iffalse' => 'Miksi?',
-	'articleassessment-survey-question-expert' => 'Oletko mielestäsi asiantuntija siinä asiassa, jonka sivu kattaa?',
+	'articleassessment-survey-question-expert' => 'Oletko mielestäsi asiantuntija asiassa, jota käsitellään tällä sivulla?',
 	'articleassessment-survey-question-expert-iftrue' => 'Voitko kuvailla asiantuntemustasi?',
 	'articleassessment-survey-question-comments' => 'Onko sinulla muita kommentteja?',
 	'articleassessment-survey-submit' => 'Lähetä',
@@ -1250,6 +1302,14 @@ Wilt u de pagina opnieuw beoordelen?",
 	'articleassessment-survey-thanks' => 'Bedankt voor het beantwoorden van de vragen.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'articleassessment-survey-question-useful-iffalse' => 'Kvifor?',
+	'articleassessment-survey-submit' => 'Send',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -1475,43 +1535,49 @@ Talvez queira voltar a avaliá-la.",
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
+ * @author Strainu
  */
 $messages['ro'] = array(
-	'articleassessment' => 'Evaluarea articolului',
-	'articleassessment-desc' => 'Evaluarea articolului (versiunea pilot)',
-	'articleassessment-yourfeedback' => 'Feedback-ul dvs.',
-	'articleassessment-pleaserate' => 'Vă rugăm luaţi un moment pentru a evalua această pagină de mai jos.',
+	'articleassessment' => 'Evaluare articol',
+	'articleassessment-desc' => 'Evaluare articol (versiunea pilot)',
+	'articleassessment-yourfeedback' => 'Reacția dumneavoastră',
+	'articleassessment-pleaserate' => 'Vă rugăm să acordați un moment evaluării acestei pagini, mai jos.',
 	'articleassessment-submit' => 'Trimite',
 	'articleassessment-rating-wellsourced' => 'Bine referențiat:',
 	'articleassessment-rating-neutrality' => 'Neutru:',
 	'articleassessment-rating-completeness' => 'Complet:',
 	'articleassessment-rating-readability' => 'Citeț:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Considerați că această pagină are suficiente citate/note și acestea provin din surse de încredere?',
+	'articleassessment-rating-neutrality-tooltip' => 'Considerați că această pagină conține o reprezentare echitabilă a tuturor perspectivelor privitoare la subiect?',
+	'articleassessment-rating-completeness-tooltip' => 'Considerați că această pagină abordează subiectele esențiale care ar trebui acoperite?',
+	'articleassessment-rating-readability-tooltip' => 'Considerați că această pagină este bine organizată și bine scrisă?',
 	'articleassessment-articlerating' => 'Evaluarea paginii',
 	'articleassessment-error' => 'A apărut o eroare.
-Vă rugăm încercaţi din nou mai târziu.',
+Vă rugăm să încercați din nou mai târziu.',
 	'articleassessment-thanks' => 'Mulțumesc! Evaluările dvs. au fost salvate.',
 	'articleassessment-featurefeedback' => 'Dați-ne <span class="feedbacklink">feedback</span> despre această funcţie.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|evaluare|evaluări}})',
-	'articleassessment-stalemessage-norevisioncount' => "Această pagină a fost ''revizuită'' de la ultima dvs. examinare.
-Poate doriţi să o evaluaţi iar.",
+	'articleassessment-stalemessage-norevisioncount' => "Această pagină a fost ''revizuită'' de la ultima dumneavoastră examinare.
+Poate doriți să o reevaluați.",
 	'articleassessment-results-show' => '(Rezultate ascunse. <span class="showlink">Arată-le</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Ascunde rezultatele</span>)',
 	'articleassessment-survey-question-whyrated' => 'Vă rugăm să ne spuneți de ce ați evaluat această pagină astăzi (bifați tot ce se aplică):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Am vrut să contribui la evaluarea paginii',
 	'articleassessment-survey-answer-whyrated-development' => 'Sper ca evaluarea mea să afecteze pozitiv dezvoltarea paginii',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Am vrut să contribui la {{SITENAME}}',
-	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Îmi place să îmi împărtăşesc opinia',
-	'articleassessment-survey-answer-whyrated-didntrate' => 'Nu am furnizat evaluări astăzi, însă am vrut să ofer feedback în viitor',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Îmi place să îmi împărtășesc opinia',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Nu am furnizat evaluări astăzi, însă am dorit să ofer reacții pe viitor',
 	'articleassessment-survey-answer-whyrated-other' => 'Altul',
 	'articleassessment-survey-question-useful' => 'Considerați că evaluările furnizate sunt folositoare și clare?',
 	'articleassessment-survey-question-useful-iffalse' => 'De ce?',
 	'articleassessment-survey-question-expert' => 'Vă considerați un expert în domeniul pe care îl acoperă această pagină?',
-	'articleassessment-survey-question-expert-iftrue' => 'Vă puteţi descrie experienţa dvs.?',
+	'articleassessment-survey-question-expert-iftrue' => 'Ne puteți descrie expertiza dumneavoastră?',
 	'articleassessment-survey-question-comments' => 'Aveți comentarii suplimentare?',
 	'articleassessment-survey-submit' => 'Trimite',
-	'articleassessment-survey-title' => 'Vă rugăm să răspundeţi la câteva întrebări',
-	'articleassessment-survey-thanks' => 'Vă mulţumim pentru completarea sondajului.',
+	'articleassessment-survey-title' => 'Vă rugăm să răspundeți la câteva întrebări',
+	'articleassessment-survey-thanks' => 'Vă mulțumim pentru completarea sondajului.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1524,6 +1590,9 @@ $messages['roa-tara'] = array(
 	'articleassessment-rating-neutrality' => 'Neutrale:',
 	'articleassessment-rating-completeness' => 'Comblete:',
 	'articleassessment-rating-readability' => 'Leggibbele:',
+	'articleassessment-articlerating' => "Pundegge d'a pàgene",
+	'articleassessment-thanks' => "Grazie! 'A valutaziona toje ha state reggistrate.",
+	'articleassessment-results-hide' => '(<span class="hidelink">Scunne le resultate</span>)',
 	'articleassessment-survey-answer-whyrated-other' => 'Otre',
 	'articleassessment-survey-question-useful-iffalse' => 'Purcé?',
 	'articleassessment-survey-submit' => 'Conferme',
@@ -1576,6 +1645,14 @@ $messages['ru'] = array(
 	'articleassessment-survey-thanks' => 'Спасибо за участие в опросе.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'articleassessment-survey-answer-whyrated-other' => 'Інше',
+	'articleassessment-survey-question-useful-iffalse' => 'Чом?',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1599,6 +1676,36 @@ $messages['sah'] = array(
 	'articleassessment-thanks' => 'Махтал! Сыанабылыҥ бигэргэтилиннэ.',
 	'articleassessment-featurefeedback' => 'Бу туһунан <span class="feedbacklink">бэйэҥ санааҕын</span> эт эрэ.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|сыанабыл|ахсааннаах сыанабыл}})',
+	'articleassessment-stalemessage-norevisioncount' => 'Бу сирэй эн көрбүтүҥ кэннэ уларытыллыбыт.
+Өссө биирдэ сыаналыаххын сөп.',
+	'articleassessment-results-show' => '(Түмүктэрэ кистэммиттэр. <span class="showlink">Көрдөр</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Түмүктэрин кистээ</span>)',
+	'articleassessment-survey-question-whyrated' => 'Бука диэн эт эрэ, тоҕо бүгүн бу сирэйи сыаналаатыҥ (туох баар сөп түбэһэр барыллары бэлиэтээ):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Бу сирэй түмүк рейтинин уларытаары',
+	'articleassessment-survey-answer-whyrated-development' => 'Сыанам бу сирэй тупсарыгар көмөлөһүө диэн санааттан',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => '{{GRAMMAR:genitive|{{SITENAME}}}} сайдыытыгар көмөлөһүөхпүн баҕарабын',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Бэйэм санаабын дьоҥҥо биллэрэрбин сөбүлүүбүн',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Бүгүн сыана бирбэтим, ол эрээри бу функция туһунан суруйуохпун баҕарабын',
+	'articleassessment-survey-answer-whyrated-other' => 'Атын',
+	'articleassessment-survey-question-useful' => 'Баар сыанабыллар туһаланы аҕалыахтара дуо, өйдөнөллөр дуо?',
+	'articleassessment-survey-question-useful-iffalse' => 'Тоҕо?',
+	'articleassessment-survey-question-expert' => 'Бу сирэй тиэмэтигэр бэйэҕин специалист быһыытынан ааҕынаҕын дуо?',
+	'articleassessment-survey-question-expert-iftrue' => 'Эксперт быһыытынан сыана биэрэр кыахтааххын дуо?',
+	'articleassessment-survey-question-comments' => 'Ханнык эмит эбии этиилээххин дуо?',
+	'articleassessment-survey-submit' => 'Ыытарга',
+	'articleassessment-survey-title' => 'Бука диэн аҕыйах ыйытыыга хоруйдаа эрэ',
+	'articleassessment-survey-thanks' => 'Ыйытыыларга хоруйдаабыккар махтанабыт.',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'articleassessment-survey-answer-whyrated-other' => 'Àutru',
+	'articleassessment-survey-question-useful-iffalse' => 'Picchì?',
+	'articleassessment-survey-question-expert-iftrue' => "Po' diri soccu ti firi a fari?",
+	'articleassessment-survey-question-comments' => 'Vò diri autri cosi?',
+	'articleassessment-survey-title' => "Arrispunni a 'na pocu di dumanni",
 );
 
 /** Swedish (Svenska)
@@ -1670,6 +1777,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'articleassessment' => 'వ్యాసపు మూల్యాంకన',
 	'articleassessment-yourfeedback' => 'మీ ప్రతిస్పందన',
 	'articleassessment-pleaserate' => 'ఈ పుటని మూల్యాంకన చేయడానికి ఒక క్షణం వెచ్చించండి.',
 	'articleassessment-submit' => 'దాఖలుచెయ్యి',
@@ -1869,6 +1977,8 @@ Xin hãy thử lại sau.',
 Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-results-show' => '(Các kết quả được ẩn. <span class="showlink">Hiện</span> kết quả.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Ẩn kết quả</span>)',
+	'articleassessment-survey-question-whyrated' => 'Xin hãy cho chúng tôi biết lý do tại sao bạn đánh giá trang này hôm nay (kiểm tra các hộp thích hợp):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Tôi muốn có ảnh hưởng đến đánh giá tổng cộng của trang',
 	'articleassessment-survey-answer-whyrated-development' => 'Tôi hy vọng rằng đánh giá của tôi sẽ có ảnh hưởng tích cực đến sự phát triển của trang',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Tôi muốn đóng góp vào {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Tôi thích đưa ý kiến của tôi',
@@ -1876,10 +1986,21 @@ Bạn có thể muốn đánh giá nó một lần nữa.",
 	'articleassessment-survey-answer-whyrated-other' => 'Khác',
 	'articleassessment-survey-question-useful' => 'Bạn có tin rằng các đánh giá được cung cấp là hữu ích và dễ hiểu?',
 	'articleassessment-survey-question-useful-iffalse' => 'Tạo sao?',
+	'articleassessment-survey-question-expert' => 'Bạn có coi mình là chuyên gia trong lĩnh vực của trang này không?',
+	'articleassessment-survey-question-expert-iftrue' => 'Làm sao giải thích chuyên môn của bạn?',
 	'articleassessment-survey-question-comments' => 'Bạn có ý kiến bổ sung?',
 	'articleassessment-survey-submit' => 'Gửi',
 	'articleassessment-survey-title' => 'Xin vui lòng trả lời một số câu hỏi',
 	'articleassessment-survey-thanks' => 'Cám ơn bạn đã điền khảo sát.',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'articleassessment-rating-completeness' => 'Parí:',
+	'articleassessment-error' => 'Àsìṣe kan ti ṣẹlẹ̀.
+Ẹ jọ̀wọ́ ẹ gbìyànjú lẹ́ẹ̀kansíi láìpẹ́.',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

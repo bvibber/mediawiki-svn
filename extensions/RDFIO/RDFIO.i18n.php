@@ -170,6 +170,13 @@ $messages['nl'] = array(
 	'specialarc2admin' => 'ARC2 RDF-opslag beheren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'rdfimport' => 'RDF Import',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -234,6 +241,13 @@ $messages['pt-br'] = array(
 	'rdfio-sparqlendpoint-desc' => 'Um SPARQL Endpoint, fornecido pelo SMWRDFConnector',
 	'sparqlendpoint' => 'SPARQL Endpoint',
 	'specialarc2admin' => 'Página de administração do ARC2 RDF Store',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'rdfimport' => 'RDF import',
 );
 
 /** Russian (Русский)

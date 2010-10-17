@@ -2934,6 +2934,13 @@ $messages['sah'] = array(
 	'blahtext-desc' => '&lt;math&gt; тиэги MathML таһаарыы',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'math_TooManyTokens' => "Accurza n'anticchia",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

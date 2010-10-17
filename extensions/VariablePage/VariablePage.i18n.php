@@ -81,7 +81,9 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'variablepage' => 'Variebla-Paĝo',
 	'variablepage-navlink_text' => 'Donaci',
+	'variablepage-desc' => 'Malpeza alidirektado per variebla paĝo',
 );
 
 /** Spanish (Español)
@@ -108,6 +110,15 @@ $messages['fa'] = array(
 	'variablepage' => 'صفحه متغیر',
 	'variablepage-navlink_text' => 'اهدا کنید',
 	'variablepage-desc' => 'تغییر مسیر سبک صفحه متغیر',
+);
+
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Lahjoita',
+	'variablepage-desc' => 'Muuttujasivun heikko ohjaus',
 );
 
 /** French (Français)
@@ -138,6 +149,13 @@ $messages['gsw'] = array(
 	'variablepage-desc' => 'Lychti variabli Wyterleitige',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'variablepage-navlink_text' => 'תרומה',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
@@ -157,10 +175,13 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Misibacsi
  */
 $messages['hu'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Adományozás',
+	'variablepage-desc' => 'Egyszerű, változó lapátirányás',
 );
 
 /** Interlingua (Interlingua)
@@ -170,6 +191,13 @@ $messages['ia'] = array(
 	'variablepage' => 'Pagina variabile',
 	'variablepage-navlink_text' => 'Donationes',
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
+);
+
+/** Italian (Italiano)
+ * @author Aushulz
+ */
+$messages['it'] = array(
+	'variablepage-navlink_text' => 'Fai una donazione',
 );
 
 /** Japanese (日本語)
@@ -298,6 +326,21 @@ $messages['ru'] = array(
 	'variablepage' => 'ПеременнаяСтраница',
 	'variablepage-navlink_text' => 'Пожертвовать',
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
+);
+
+/** Swedish (Svenska)
+ * @author Cohan
+ */
+$messages['sv'] = array(
+	'variablepage-navlink_text' => 'Donera',
+	'variablepage-desc' => 'Lättviktsomdirigering av variabelsida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'variablepage-navlink_text' => 'విరాళమివ్వండి',
 );
 
 /** Tagalog (Tagalog)

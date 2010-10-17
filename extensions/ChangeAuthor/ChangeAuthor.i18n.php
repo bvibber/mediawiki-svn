@@ -1838,8 +1838,12 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'changeauthor' => 'Schimbă autorul reviziei',
+	'changeauthor-title' => 'Schimbă autorul unei revizii',
+	'changeauthor-search-box' => 'Caută revizii',
 	'changeauthor-pagename-or-revid' => 'Numele paginii sau ID-ul reviziei:',
 	'changeauthor-pagenameform-go' => 'Du-te',
 	'changeauthor-comment' => 'Comentariu:',
@@ -1850,6 +1854,7 @@ $messages['ro'] = array(
 	'changeauthor-revview' => 'Versiunea #$1 din $2',
 	'changeauthor-nosuchtitle' => 'Nu există o pagină numită "$1".',
 	'changeauthor-success' => 'Cererea ta a fost procesată cu succes.',
+	'right-changeauthor' => 'Schimbă autorul unei revizii',
 );
 
 /** Tarandíne (Tarandíne)

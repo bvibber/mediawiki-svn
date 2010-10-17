@@ -936,9 +936,12 @@ De kaarthoogte moet tussen $2 en $3 liggen.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'slippymap_desc' => 'Tillét bruk av merket <tt>&lt;slippymap&gt;</tt> for å syna eit «slippy map» frå OpenLayers. Karti kjem frå [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_error' => '$1-feil: $2',
+	'slippymap_errors' => '$1-feil:',
 	'slippymap_code' => 'Wikikode for denne kartvisingi:',
 	'slippymap_button_code' => 'Hent wikikode',
 	'slippymap_resetview' => 'Attendestill vising',
@@ -1019,12 +1022,25 @@ $messages['pl'] = array(
 	'slippymap_desc' => 'Pozwala na korzystanie ze znacznika <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> powodującego wyświetlenie statycznych oraz dynamicznych map. Obsługiwane są różne serwisy z mapami, w tym m.in. [http://openstreetmap.org OpenStreetMap] i NASA Worldwind.',
 	'slippymap_error' => 'Błąd w rozszerzeniu $1 – $2',
 	'slippymap_errors' => 'Błędy w rozszerzeniu $1:',
+	'slippymap_error_tag_content_given' => 'Znacznik <tt>&lt;$1&gt;</tt> przyjmuje jako argumenty wyłącznie atrybuty (&lt;$1 [...]/&gt;), a nie zwykły tekst (&lt;$1&gt; ... &lt;/$1&gt;)',
+	'slippymap_error_missing_arguments' => 'Nie podałeś żadnych atrybutów dla znacznika &lt;$1&gt;. Zobacz [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informacje na temat użycia].',
 	'slippymap_error_missing_attribute_lat' => 'Brak atrybutu <tt>lat</tt> (określenie szerokości geograficznej).',
 	'slippymap_error_missing_attribute_lon' => 'Brak atrybutu <tt>lon</tt> (określenie długości geograficznej).',
 	'slippymap_error_missing_attribute_zoom' => 'Brak atrybutu <tt>zoom</tt> (określenie skali).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>lat</tt> (szerokość geograficzna), musisz podać poprawną wartość.',
+	'slippymap_error_invalid_attribute_lon_value_nan' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>lon</tt> (długość geograficzna), musisz podać poprawną wartość.',
+	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>zoom</tt> (powiększenie), musisz podać poprawną wartość.',
+	'slippymap_error_invalid_attribute_width_value_nan' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>width</tt> (szerokość), musisz podać poprawną wartość.',
+	'slippymap_error_invalid_attribute_height_value_nan' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>height</tt> (wysokość), musisz podać poprawną wartość.',
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>mode</tt> (tryb), poprawne wartości to $2.',
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>layer</tt> (warstwa), poprawne wartości to $2.',
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>marker</tt> (znacznik), poprawne wartości to $2.',
 	'slippymap_error_unknown_attribute' => 'Nieznany atrybut <tt>$1</tt>.',
 	'slippymap_error_invalid_attribute_lat_value_out_of_range' => '<tt>$1</tt> nie jest poprawną wartością dla atrybutu <tt>lat</tt> (szerokość geograficzna). Szerokość geograficzna musi się zawierać w przedziale od -90 do 90 stopni.',
 	'slippymap_error_invalid_attribute_lon_value_out_of_range' => '<tt>$1</tt> nie jest poprawną wartością dla atrybutu <tt>lon</tt> (długość geograficzna). Długość geograficzna musi się zawierać w przedziale od -180 do 180 stopni.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>zoom</tt> (powiększenie). Wartość powiększenia musi znajdować się w zakresie od $2 do $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>width</tt> (długość). Wartość długości musi znajdować się w zakresie od $2 do $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Wartość <tt>$1</tt> jest nieprawidłowa dla atrybutu <tt>height</tt> (wysokość). Wartość wysokości musi znajdować się w zakresie od $2 do $3.',
 	'slippymap_code' => 'Kod wiki dla tego widoku mapy:',
 	'slippymap_button_code' => 'Pobierz kod wiki',
 	'slippymap_resetview' => 'Zresetuj widok',

@@ -2111,6 +2111,7 @@ $2',
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'whitelisttablemodifyall' => 'ಎಲ್ಲಾ',
 	'whitelisttablepage' => 'ವಿಕಿ ಪುಟ',
 	'whitelisttableedit' => 'ಸಂಪಾದಿಸಿ',
 	'whitelisttablenewdate' => 'ಹೊಸ ದಿನಾಂಕ:',

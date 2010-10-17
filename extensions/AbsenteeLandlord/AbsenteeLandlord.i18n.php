@@ -461,6 +461,14 @@ $messages['lv'] = array(
 	'absenteelandlord-desc' => 'Automātiski bloķē wiki-projekta datu bāzi, ja visi administratori kādu laiku ir neaktīvi',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'absenteelandlord-reason' => "Nohidiana ny banky angona noho tsi-havitrihan'ny mpandrindra.",
+	'absenteelandlord-desc' => "Manidy ny banky angona raha tsy mavitrika avokoa ny mpandrindra tanatin'ny fotoana iray",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

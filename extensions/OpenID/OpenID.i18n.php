@@ -4434,6 +4434,7 @@ Você não poderia entrar sem um OpenID.',
  * @author Memo18
  * @author Minisarm
  * @author Misterr
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'openid-desc' => 'Autentificați-vă pe acest wiki folosind un [http://openid.net/ OpenID] și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki',
@@ -4486,6 +4487,7 @@ Dacă doriți să utilizați un OpenID în viitor, puteți [[Special:OpenIDConve
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greșit.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidupdateuserinfo' => 'Actualizează informaţiile mele personale:',
 	'openiddelete' => 'Şterge OpenID',
 	'openiddelete-button' => 'Confirmă',
 	'openid-urls-action' => 'Acțiune',

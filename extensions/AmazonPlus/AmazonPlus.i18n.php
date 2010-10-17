@@ -1277,6 +1277,21 @@ $messages['ru'] = array(
 	'amazonplus-less' => 'меньше',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'amazonplus-used' => 'хоснує ся',
+	'amazonplus-german' => 'нїмецька',
+	'amazonplus-french' => 'французька',
+	'amazonplus-japanese' => 'японьска',
+	'amazonplus-amazon' => 'ціна з Amazon',
+	'amazonplus-new' => 'нове',
+	'amazonplus-cp-none' => 'Ніч',
+	'amazonplus-more' => 'веце',
+	'amazonplus-less' => 'менше',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1296,6 +1311,14 @@ $messages['sah'] = array(
 	'amazonplus-cp-none' => 'Суох',
 	'amazonplus-more' => 'өссө',
 	'amazonplus-less' => 'аҕыйат',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'amazonplus-german' => 'Tidescu',
+	'amazonplus-french' => 'Francisi',
 );
 
 /** Slovak (Slovenčina)
@@ -1541,15 +1564,23 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Riwnodennyk
  */
 $messages['uk'] = array(
+	'amazonplus-desc' => 'Настроюване розширення для відображення інформації з Amazon',
 	'amazonplus-nores' => 'Помилка: Не знайдено!',
+	'amazonplus-noidres' => 'Помилка: Не вдалося знайти ідентифікатор продукту!',
+	'amazonplus-fgcerr' => 'Помилка: Не вдалося отримати дані з Amazon!',
+	'amazonplus-slserr' => 'Помилка: Не вдалося обробити дані з Amazon!',
+	'amazonplus-used' => 'використовується',
 	'amazonplus-german' => 'німецька',
 	'amazonplus-french' => 'французька',
 	'amazonplus-japanese' => 'японська',
 	'amazonplus-amazon' => 'ціна з Amazon',
 	'amazonplus-new' => 'нове',
+	'amazonplus-none' => 'Немає екземплярів цього продукту для продажу.',
+	'amazonplus-cp-none' => 'Немає',
 	'amazonplus-more' => 'більше',
 	'amazonplus-less' => 'менше',
 );

@@ -2088,8 +2088,10 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'qp_result_error' => 'Eroare de sintaxă',
 	'qp_vote_button' => 'Votați',
 	'qp_polls_list' => 'Arătați toate sondajele',
 	'qp_users_list' => 'Arătați toți utilizatorii',
@@ -2098,6 +2100,7 @@ $messages['ro'] = array(
 	'qp_users_link' => 'Utilizatori',
 	'qp_voice_link' => 'Vocea utilizatorului',
 	'qp_voice_link_inv' => 'Vocea utilizatorului?',
+	'qp_order_by_username' => 'Ordonează după numele utilizatorilor',
 );
 
 /** Tarandíne (Tarandíne)

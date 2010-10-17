@@ -112,6 +112,17 @@ $messages['es'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Crear',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'articletocategory2-desc' => 'Laittaa syöttökentän jokaiselle luokkasivulle, joka sallii uuden sivun luonnin suoraan kyseiseen luokkaan',
+	'articletocategory2-create-article-under-category-text' => 'Lisää sivu tähän luokkaan',
+	'articletocategory2-create-article-under-category-button' => 'Luo',
+	'articletocategory2-create-category-under-category-text' => 'Lisää luokka tähän luokkaan',
+	'articletocategory2-create-category-under-category-button' => 'Luo',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -153,6 +164,16 @@ $messages['gsw'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Aalege',
 	'articletocategory2-create-category-under-category-text' => 'E Kategori zue däre Kategori zuefiege',
 	'articletocategory2-create-category-under-category-button' => 'Aalege',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'articletocategory2-create-article-under-category-text' => 'הוספת דף זה לקטגוריה',
+	'articletocategory2-create-article-under-category-button' => 'יצירה',
+	'articletocategory2-create-category-under-category-text' => 'הוספת קטגוריה לקטגוריה זו',
+	'articletocategory2-create-category-under-category-button' => 'יצירה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -258,6 +279,16 @@ $messages['nl'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Aanmaken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Legg ei side til denne kategorien',
+	'articletocategory2-create-article-under-category-button' => 'Opprett',
+	'articletocategory2-create-category-under-category-text' => 'Legg ein kategori til denne kategorien',
+	'articletocategory2-create-category-under-category-button' => 'Opprett',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -333,6 +364,13 @@ $messages['ru'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Создать',
 	'articletocategory2-create-category-under-category-text' => 'Добавить категорию в эту категорию',
 	'articletocategory2-create-category-under-category-button' => 'Создать',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Створити',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица)) */

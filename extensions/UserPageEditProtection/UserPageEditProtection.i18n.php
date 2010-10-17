@@ -292,6 +292,13 @@ $messages['pt-br'] = array(
 	'right-editalluserpages' => 'Editar páginas de usuário',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'right-editalluserpages' => 'Modifică paginile utilizatorului',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

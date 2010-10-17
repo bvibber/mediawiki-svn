@@ -663,6 +663,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'assert_edit_title' => 'Тверджіня злыгало',
+	'assertedit-desc' => 'Додає підтверджіня про хоснованя ботами',
 	'assert_edit_message' => 'Зазначене тверджіня ($1) ся не выконує.',
 );
 

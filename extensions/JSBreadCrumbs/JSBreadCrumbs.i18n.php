@@ -99,9 +99,15 @@ $messages['dsb'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'jsbreadcrumbs-leading-description' => 'Rastro de navegación',
+	'prefs-jsbreadcrumbs' => 'Recorrido de navegación',
+	'prefs-jsbreadcrumbs-showsite' => 'Incluir el nombre de la web en el recorrido de navegación (útil cuando se usa a través de wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Mostrar el recorrido de navegación',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Número de vínculos de recorrido de navegación',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Máximo, 20 vínculos de recorrido de navegación',
 );
 
 /** French (Français)

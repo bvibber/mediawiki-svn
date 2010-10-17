@@ -1651,8 +1651,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'closewikis-page' => 'Închide wiki',
+	'closewikis-page-close' => 'Închide wiki',
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Motiv (afișat):',
 	'closewikis-page-close-submit' => 'Închide',
@@ -1662,6 +1665,7 @@ $messages['ro'] = array(
 	'closewikis-page-reopen-reason' => 'Motiv:',
 	'closewikis-page-reopen-submit' => 'Redeschide',
 	'closewikis-page-reopen-success' => 'Wiki redeschis cu succes',
+	'closewikis-page-err-nowiki' => 'Wiki-ul specificat este invalid.',
 	'closewikis-page-err-closed' => 'Acest wiki e deja închis',
 	'closewikis-page-err-opened' => 'Acest wiki nu e închis',
 	'closewikis-list' => 'Listă de wiki închise',
@@ -1717,6 +1721,20 @@ $messages['ru'] = array(
 	'right-closewikis' => 'Закрытие вики',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'closewikis-page' => 'Запертя вікі',
+	'closewikis-page-close' => 'Заперти вікі',
+	'closewikis-page-close-wiki' => 'Вікі:',
+	'closewikis-page-close-dreason' => 'Причіна (про зображіня):',
+	'closewikis-page-reopen-wiki' => 'Вікі:',
+	'closewikis-page-reopen-reason' => 'Причіна:',
+	'closewikis-page-reopen-submit' => 'Знову отворити',
+	'closewikis-list-header-wiki' => 'Вікі',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1733,6 +1751,13 @@ $messages['sah'] = array(
 	'closewikis-page-reopen-success' => 'Биики сөпкө арылынна',
 	'closewikis-list-header-dispreason' => 'Көстөр төрүөтэ',
 	'closewikis-log-close' => 'сабыллыбыт $2',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'closewikis-page-reopen-reason' => 'Mutivu:',
 );
 
 /** Slovak (Slovenčina)

@@ -294,7 +294,7 @@ $messages['eu'] = array(
 $messages['fa'] = array(
 	'findspam' => 'کشف هرزنگاری',
 	'findspam-desc' => 'یک [[Special:FindSpam|صفحهٔ ویژه]] می‌افزاید که امکان کشف هرزنگاری‌های تازه را فراهم می‌کند',
-	'findspam-ip' => 'نشانی اینترنتی:',
+	'findspam-ip' => 'نشانی آی‌پی:',
 	'findspam-ok' => 'قبول',
 	'findspam-notextfound' => 'هیچ مشارکتی یافت نشد',
 );

@@ -262,6 +262,7 @@ $1",
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  * @author Y-M D
  */
@@ -269,20 +270,26 @@ $messages['br'] = array(
 	'fbconnect' => 'Facebook Connect',
 	'group-fb-user' => 'Implijerien Facebook Connect',
 	'group-fb-user-member' => 'Implijer Facebook Connect',
-	'grouppage-fb-user' => '{{ns:project}} : Implijerien Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}: Implijerien Facebook Connect',
 	'group-fb-groupie' => 'Izili ar strollad',
 	'group-fb-groupie-member' => 'Ezel ar strollad',
-	'grouppage-fb-groupie' => '{{ns:project}} : Izili ar strollad',
+	'grouppage-fb-groupie' => '{{ns:project}}: Izili ar strollad',
+	'group-fb-officer' => 'Tud karget a strolladoù',
+	'group-fb-officer-member' => 'Den karget a strolladoù',
+	'grouppage-fb-officer' => '{{ns:project}}:Tud karget a strolladoù',
 	'group-fb-admin' => 'Merourien ar strollad',
 	'group-fb-admin-member' => 'Merour ar strollad',
-	'grouppage-fb-admin' => '{{ns:project}} : Merourien ar strollad',
+	'grouppage-fb-admin' => '{{ns:project}}: Merourien ar strollad',
 	'fbconnect-connect' => 'Kevreañ gant Facebook Connect',
 	'fbconnect-convert' => "Kevreañ ar c'hont-mañ gant Facebook",
 	'fbconnect-logout' => 'Digrevreañ eus Facebook',
 	'fbconnect-link' => 'E facebook.com en-dro',
 	'fbconnect-title' => 'Kont kevreañ gant Facebook',
+	'fbconnect-intro' => "Gweredekaet eo ar wiki-mañ gant Facebook Connect, anezhañ un emdroadur nevez eus savenn Facebook.
+Talvezout a ra kement-se e c'hallit ober ho mad eus arc'hwelioù ouzhpenn pa vezit kevreet, en tu all d'ar [[Wikipedia:Help:Logging in#Why log in?|spletoù]] normal hoc'h eus pa gevreit.",
 	'fbconnect-click-to-login' => "Klikit evit kevreañ el lec'hienn-mañ dre Facebook",
 	'fbconnect-click-to-connect-existing' => 'Klikit evit kevreañ ho kont Facebook da $1',
+	'fbconnect-conv' => 'Aezamant',
 	'fbconnect-comm' => 'Daremprederezh',
 	'fbconnect-loginbox' => "Pe '''kevreañ''' gant Facebook :
 
@@ -430,6 +437,137 @@ $messages['de-formal'] = array(
 	'fbconnect-alreadyloggedin' => "'''Sie sind bereits angemeldet, $1!'''
 
 Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
+);
+
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Permite a los usuarios [[Special:Connect|conectarse]] con sus cuentas [http://www.facebook.com Facebook].
+Ofrece autenticación basada en grupos de Facebook y usa FBML en texto wiki',
+	'group-fb-user' => 'Facebook Conecta usuarios',
+	'group-fb-user-member' => 'usuario de Facebook Connect',
+	'grouppage-fb-user' => '{{ns:project}}:usuarios de Facebook Connect',
+	'group-fb-groupie' => 'Miembros del grupo',
+	'group-fb-groupie-member' => 'Miembro del grupo',
+	'grouppage-fb-groupie' => '{{ns:project}}:Miembros del grupo',
+	'group-fb-officer' => 'Agentes de grupo',
+	'group-fb-officer-member' => 'Agente de grupo',
+	'grouppage-fb-officer' => '{{ns:project}}:agentes de grupo',
+	'group-fb-admin' => 'Administradores de grupo',
+	'group-fb-admin-member' => 'Administrador de grupo',
+	'grouppage-fb-admin' => '{{ns:project}}:Administradores de grupo',
+	'fbconnect-connect' => 'Inicia sesión con Facebook Connect',
+	'fbconnect-convert' => 'Conectar esta cuenta con Facebook',
+	'fbconnect-logout' => 'Desconectarse de Facebook',
+	'fbconnect-link' => 'Volver a facebook.com',
+	'fbconnect-title' => 'Conectar esta cuenta con Facebook',
+	'fbconnect-intro' => 'Este wiki tiene Facebook Connect, ls próxima evolución de la plataforma Facebook, activado.
+Esto quiere decir que al estar conectado, además de los [[Wikipedia:Help:Logging in#Why log in?|beneficios]] normales que ves al iniciar sesión, podrás gozar de algunas características adicinales.',
+	'fbconnect-click-to-login' => 'Haz clic para acceder a este sitio a través de Facebook',
+	'fbconnect-click-to-connect-existing' => 'Haz clic para conectar tu cuenta  de Facebook  a $1',
+	'fbconnect-conv' => 'Comodidad',
+	'fbconnect-convdesc' => 'Los usuarios conectados inician sesión automáticamente.
+Si se otorga el permiso, este wiki puede inclusive utilizar Facebook como un proxy de correos electrónicos para que continúes recibiendo notificaciones importantes sin revelar tu dirección de correos electrónicos.',
+	'fbconnect-fbml' => 'Lenguaje de marcado de Facebook',
+	'fbconnect-fbmldesc' => 'Facebook ha ofrecido una cantidad de etiquetas integradas que procesará información dinámica.
+Muchas de estas etiquetas pueden ser incluidas en texto wiki y se procesarán de maneras diferenes dependiendo de qué usuario conectado esté viéndolas.',
+	'fbconnect-comm' => 'Comunicación',
+	'fbconnect-commdesc' => 'Facebook Connect marca el comienzo de un nuevo nivel de red. 
+ve cuales de tus amigos está usando el wiki, y, opcionalmente, comparte tus acciones con tus amigos a través de la fuente de noticias de Facebook.',
+	'fbconnect-welcome' => '¡Bienvenido, usuario de Facebook Connect!',
+	'fbconnect-loginbox' => "O '''accede al sistema''' con Facebook:
+	
+$1",
+	'fbconnect-merge' => 'Fusiona tu wiki cuenta con tu identificador de Facebook',
+	'fbconnect-logoutbox' => '$1
+	
+Estos también te desconectará de Facebook y de los sitios conectados, incluido este wiki.',
+	'fbconnect-listusers-header' => 'Los privilegios $1 y $2 son transferidos automáticamente de los títulos de agente y administrador del grupo $3 de Facebook.
+
+Para más información, contacta con el creador del grupo, $4.',
+	'fbconnect-error' => 'Error de verificación',
+	'fbconnect-errortext' => 'Se produjo un error durante la verificación con Facebook Connect.',
+	'fbconnect-cancel' => 'Acción cancelada',
+	'fbconnect-canceltext' => 'La acción anterior fue cancelada por el usuario.',
+	'fbconnect-invalid' => 'Opción no válida',
+	'fbconnect-invalidtext' => 'La selección hecha en la página anterior era inválida.',
+	'fbconnect-success' => 'Verificación de Facebook realizada con éxito',
+	'fbconnect-successtext' => 'Has iniciado sesión exitosamente con Facebook Connect.',
+	'fbconnect-nickname' => 'Usuario',
+	'fbconnect-fullname' => 'Nombre completo',
+	'fbconnect-email' => 'Dirección de correo electrónico',
+	'fbconnect-language' => 'Idioma',
+	'fbconnect-timecorrection' => 'Corrección de huso horario (horas)',
+	'fbconnect-chooselegend' => 'Elección del nombre de usuario',
+	'fbconnect-chooseinstructions' => 'Todos los usuarios necesitan un nombre de usuario;
+puedes escoger uno de entre las siguientes opciones.',
+	'fbconnect-invalidname' => 'El nombre de usuario que eligió ya está siendo usado o no es un nombre de usuario válido. 
+ Por favor elija uno diferente.',
+	'fbconnect-choosenick' => 'Tu nombre de perfil en Facebook ($1)',
+	'fbconnect-choosefirst' => 'Tu primer nombre ($1)',
+	'fbconnect-choosefull' => 'Tu nombre completo ($1)',
+	'fbconnect-chooseauto' => 'Un nombre generado automáticamente ($1)',
+	'fbconnect-choosemanual' => 'El nombre que elijas:',
+	'fbconnect-chooseexisting' => 'Una cuenta existente en este wiki',
+	'fbconnect-chooseusername' => 'Nombre de usuario:',
+	'fbconnect-choosepassword' => 'Contraseña:',
+	'fbconnect-updateuserinfo' => 'Actualiza la siguiente información personal:',
+	'fbconnect-alreadyloggedin' => "'''¡Ya has ingresado al sistema, $1!'''
+
+Si quieres usar Facebook Connect para ingresar en el futuro, puedes [[Special:Connect/Convert|modificar tu cuenta para utitilzar Facebook Connect]].",
+	'fbconnect-error-creating-user' => 'Ocurrió un error al crear el usuario en la base de datos local.',
+	'fbconnect-error-user-creation-hook-aborted' => 'Un gancho (extensión) abortó la creación de la cuenta con el mensaje: $1',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Perfil de Facebook',
+	'fbconnect-prefsheader' => "Para controlar qué eventos incluirán un elemento al canal de noticias, <a id='fbConnectPushEventBar_show' href='#'>mostrar preferencias</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>ocultar preferencias</a>",
+	'fbconnect-prefs-can-be-updated' => 'Puedes actualizar estos elementos en cualquier momento mediante la pestaña "$1" en tu página de preferencias.',
+);
+
+/** Finnish (Suomi)
+ * @author Nike
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'fbconnect-desc' => 'Antaa käyttäjien [[Special:Connect|yhdistää]] [http://www.facebook.com Facebook]-tilinsä sivustolle.
+Tarjoaa tunnistautumisen Facebook-ryhmiin pohjautuen ja antaa käyttää FBML-koodia wikitekstissä.',
+	'group-fb-user' => 'Facebook Connect -käyttäjät',
+	'group-fb-user-member' => 'Facebook Connect -käyttäjä',
+	'grouppage-fb-user' => '{{ns:project}}:Facebook Connect -käyttäjät',
+	'group-fb-groupie' => 'ryhmän jäsenet',
+	'group-fb-groupie-member' => 'ryhmän jäsen',
+	'grouppage-fb-groupie' => '{{ns:project}}:Ryhmän jäsenet',
+	'group-fb-officer' => 'ryhmän virkailijat',
+	'group-fb-officer-member' => 'ryhmän virkailija',
+	'grouppage-fb-officer' => '{{ns:project}}:Ryhmän virkailijat',
+	'group-fb-admin' => 'ryhmän ylläpitäjät',
+	'group-fb-admin-member' => 'ryhmän ylläpitäjä',
+	'grouppage-fb-admin' => '{{ns:project}}:Ryhmän ylläpitäjät',
+	'fbconnect-connect' => 'Kirjaudu sisään Facebook Connectin avulla',
+	'fbconnect-convert' => 'Yhdistä tämä tili Facebookiin',
+	'fbconnect-logout' => 'Kirjaudu ulos Facebookista',
+	'fbconnect-link' => 'Takaisin facebook.comiin',
+	'fbconnect-title' => 'Yhdistä tili Facebookin kanssa',
+	'fbconnect-click-to-login' => 'Kirjaudu tälle sivustolle Facebookin avulla napsauttamalla',
+	'fbconnect-choosenick' => 'Facebook-profiilisi nimi ($1)',
+	'fbconnect-choosefirst' => 'Etunimesi ($1)',
+	'fbconnect-choosefull' => 'Koko nimesi ($1)',
+	'fbconnect-chooseauto' => 'Automaattisesti luotu nimi ($1)',
+	'fbconnect-choosemanual' => 'Omavalintainen nimi:',
+	'fbconnect-chooseexisting' => 'Olemassa oleva tunnus tässä wikissä',
+	'fbconnect-chooseusername' => 'Käyttäjätunnus',
+	'fbconnect-choosepassword' => 'Salasana:',
+	'fbconnect-updateuserinfo' => 'Päivitä seuraavat henkilökohtaiset tiedot:',
+	'fbconnect-alreadyloggedin' => "'''Olet jo kirjautunut sisään, $1!'''
+
+Jos haluat käyttää Facebook Connectia kirjautuaksesi sisään tulevaisuudessa, voit [[Special:Connect/Convert|muuttaa tilisi käyttämään Facebook Connectia]].",
+	'fbconnect-error-creating-user' => 'Virhe luotaessa käyttäjää paikalliseen tietokantaan.',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Facebook-profiili',
+	'fbconnect-prefsheader' => "Hallitse, mitkä tapahtumat tulevat näkyviin Facebook-uutissyötteeseen: <a id='fbConnectPushEventBar_show' href='#'>näytä asetukset</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>piilota asetukset</a>",
+	'fbconnect-prefs-can-be-updated' => 'Voit päivittää näitä milloin tahansa siirtymällä välilehdelle »$1» asetussivullasi.',
 );
 
 /** French (Français)
@@ -684,6 +822,36 @@ Wänn Du Facebook Connect fir s Aamälde in Zuechumft wit nutze, no chasch [[Spe
 	'fbconnect-link-to-profile' => 'Facebook-Profil',
 	'fbconnect-prefsheader' => "Yystellige zue dr Aktione, wu iber dr eige Facebook-Newsfeed uusgee wäre solle: <a id='fbConnectPushEventBar_show' href='#'>Yystellige aazeige</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>Yystellige uusblände</a>",
 	'fbconnect-prefs-can-be-updated' => 'Du chasch si jederzyt aktualisiere uf dr Regischtercharte „$1“ in Dyyne Yystellige.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'fbconnect-connect' => 'כניסה עם Facebook Connect',
+	'fbconnect-logout' => 'יציאה מ־Facebook',
+	'fbconnect-link' => 'חזרה ל־facebook.com',
+	'fbconnect-title' => 'קישור חשבון ל־Facebook',
+	'fbconnect-click-to-login' => 'נא ללחוץ כדי להיכנס לאתר זה דרך Facebook',
+	'fbconnect-conv' => 'נוחות',
+	'fbconnect-fbml' => 'שפת הסימון של Facebook',
+	'fbconnect-comm' => 'תקשורת',
+	'fbconnect-nickname' => 'כינוי',
+	'fbconnect-fullname' => 'שם מלא',
+	'fbconnect-email' => 'כתובת דוא״ל',
+	'fbconnect-language' => 'שפה',
+	'fbconnect-timecorrection' => 'תיקון לאזור הזמן (שעות)',
+	'fbconnect-chooseinstructions' => 'כל המשתמשים זקוקים לכינוי; ניתן לבחור באחד מהאפשרויות שלהלן.',
+	'fbconnect-invalidname' => 'הכינוי שבחרת כבר תפוס או שאינו תקני.
+נא לנסות לבחור באחד אחר.',
+	'fbconnect-choosefirst' => 'שמך הפרטי ($1)',
+	'fbconnect-chooseauto' => 'שם שנוצר אוטומטית ($1)',
+	'fbconnect-choosemanual' => 'שם לבחירתך:',
+	'fbconnect-chooseexisting' => 'חשבון קיים בוויקי זה',
+	'fbconnect-chooseusername' => 'שם משתמש:',
+	'fbconnect-error-creating-user' => 'שגיאה ביצירת המשתמש בבסיס הנתונים המקומי.',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Facebook פרופיל',
 );
 
 /** Interlingua (Interlingua)
@@ -951,6 +1119,7 @@ Sicht Iech w.e.g. een Aneren.',
 
 Wann Dir Facebook-Connect benotze wëllt fir Iech an Zukunft anzeloggen, da kënnt Dir [[Special:Connect/Convert|Äre Benotzerkont ëmwandelen Fir Facebook-Connect ze benotzen]].",
 	'fbconnect-error-creating-user' => 'Feeler beim Uleeë vum Benotzer an der lokaler Datebank.',
+	'fbconnect-error-user-creation-hook-aborted' => "Eng Erweiderung huet d'Uleeë vum Kont ofgebrach mam Message: $1",
 	'fbconnect-prefstext' => 'Facebook-Connect',
 	'fbconnect-link-to-profile' => 'Facebook-Profil',
 	'fbconnect-prefs-can-be-updated' => 'Dir kënnt dës zu all Moment aktualiséieren an deem Dir op den Tab "$1" op der Säit vun Ären Astellunge gitt.',
@@ -1133,6 +1302,17 @@ Als u in de toekomst uw Facebook Connect wilt gebruiken om aan te melden, [[Spec
 	'fbconnect-link-to-profile' => 'Facebookprofiel',
 	'fbconnect-prefsheader' => "Bepalen welke handelingen worden toegevoegd aan uw nieuwsfeed in Facebook. <a id='fbConnectPushEventBar_show' href='#'>Voorkeuren weergeven</a><a id='fbConnectPushEventBar_hide' href='#' style='display:none'>Voorkeuren verbergen</a>.",
 	'fbconnect-prefs-can-be-updated' => 'U kunt deze te allen tijde bijwerken door naar het tabblad "$1" in uw voorkeuren te gaan.',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'fbconnect-language' => 'Språk',
+	'fbconnect-choosefirst' => 'Førenamnet ditt ($1)',
+	'fbconnect-choosefull' => 'Det fulle namnet ditt ($1)',
+	'fbconnect-chooseusername' => 'Brukarnamn:',
+	'fbconnect-choosepassword' => 'Passord:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1563,8 +1743,22 @@ Se de futuro pretende usar o Facebook Connect para entrar, pode [[Special:Connec
 	'fbconnect-prefs-can-be-updated' => 'Você pode atualizar estes elementos quando quiser através da aba "$1" das suas preferências.',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'fbconnect-nickname' => 'Pseudonim',
+	'fbconnect-fullname' => 'Numele complet',
+	'fbconnect-email' => 'Adresa de e-mail',
+	'fbconnect-language' => 'Limba',
+	'fbconnect-chooseusername' => 'Utilizator:',
+	'fbconnect-choosepassword' => 'Parolă:',
+	'fbconnect-updateuserinfo' => 'Actualiează următoarele informaţii personale:',
+);
+
 /** Russian (Русский)
  * @author Eleferen
+ * @author MaxSem
  * @author Sergey kudryavtsev
  * @author Александр Сигачёв
  */
@@ -1579,6 +1773,8 @@ $messages['ru'] = array(
 	'group-fb-groupie-member' => 'Член группы',
 	'grouppage-fb-groupie' => '{{ns:project}}:Члены группы',
 	'group-fb-admin' => 'Группа администраторов',
+	'group-fb-admin-member' => 'Администратор группы',
+	'fbconnect-link' => 'Вернуться на facebook.com',
 	'fbconnect-welcome' => 'Добро пожаловать, участник Facebook Connect!',
 	'fbconnect-cancel' => 'Действие отменено',
 	'fbconnect-invalid' => 'Неверный параметр',
@@ -1591,6 +1787,7 @@ $messages['ru'] = array(
 	'fbconnect-chooselegend' => 'Выбор имени пользователя',
 	'fbconnect-chooseinstructions' => 'У каждого участника должен быть псевдоним. Вы можете выбрать один из представленных ниже.',
 	'fbconnect-choosenick' => 'Имя вашего профиля в Facebook ($1)',
+	'fbconnect-choosefirst' => 'Ваше имя ($1)',
 	'fbconnect-choosefull' => 'Ваше полное имя ($1)',
 	'fbconnect-chooseauto' => 'Автоматически созданное имя ($1)',
 	'fbconnect-choosemanual' => 'Имя на ваш выбор:',
@@ -1599,6 +1796,7 @@ $messages['ru'] = array(
 	'fbconnect-choosepassword' => 'Пароль:',
 	'fbconnect-updateuserinfo' => 'Обновите следующие личные сведения:',
 	'fbconnect-error-creating-user' => 'Ошибка при создании пользователя в локальной базе данных.',
+	'fbconnect-prefstext' => 'Facebook Connect',
 );
 
 /** Rusyn (Русиньскый)

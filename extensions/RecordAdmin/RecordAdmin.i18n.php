@@ -1433,6 +1433,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'recordadmin' => 'Oppføringshandsaming',
@@ -1468,6 +1469,10 @@ $messages['nn'] = array(
 	'recordadmin-actions' => 'Handlingar',
 	'recordadmin-needscontent' => 'Legg til innhald',
 	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Ingen «$1»',
+	'recordadmin-properties' => 'Eigenskapar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1794,6 +1799,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'recordadmin-select' => 'Selectați',
@@ -1804,6 +1810,7 @@ $messages['ro'] = array(
 	'recordadmin-buttoncreate' => 'Creare',
 	'recordadmin-buttonreset' => 'Resetare',
 	'recordadmin-buttonsave' => 'Salvare',
+	'recordadmin-createlink' => 'crează unul',
 	'recordadmin-viewlink' => 'vedeți',
 	'recordadmin-created' => 'Creat',
 	'recordadmin-modified' => 'Modificat',

@@ -193,6 +193,15 @@ $messages['ha'] = array(
 	'prefs-category' => 'Rukuni',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorymultisort-defaultsortkey-name' => 'בררת המחדל',
+	'categorymultisort-go' => 'מעבר',
+	'prefs-category' => 'קטגוריה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -317,6 +326,14 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'prefs-category' => 'Kategori',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -395,6 +412,14 @@ $messages['pt-br'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Implicit',
+	'prefs-category' => 'Categorie',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -417,6 +442,15 @@ $messages['ru'] = array(
 	'categorymultisort-go' => 'Перейти',
 	'categorymultisort-default-sortkey' => 'Ключ сортировки по умолчанию:',
 	'prefs-category' => 'Категория',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Імпліцітне',
+	'categorymultisort-sortkey' => 'Ключ сортованя:',
+	'categorymultisort-go' => 'Перейти',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

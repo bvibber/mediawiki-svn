@@ -753,6 +753,7 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'ratedpages' => 'చదువరులు మూల్యాంకనంచేసిన పుటలు',
 	'ratedpages-none' => 'ఈ జాబితాలో పేజీలు ఏమీ లేవు',
 	'ratedpages-count' => '$1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}}',
 );
@@ -811,6 +812,8 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'ratedpages' => 'Pagina valutà dai letori',
+	'ratedpages-leg' => 'Cata le pagine valutà co un bon numaro de voti',
+	'ratedpages-list' => 'Qua ghe xe na lista de pagine ordinà secondo la valutassion dei letori.',
 	'ratedpages-none' => 'No ghe xe nissuna pagina su sta lista',
 	'ratedpages-graphs' => 'dati de le valutassion',
 	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',

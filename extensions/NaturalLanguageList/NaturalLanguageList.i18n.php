@@ -209,6 +209,13 @@ $messages['nl'] = array(
 	'nll-lastseparator' => '&#32;en&#32;',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'nll-lastseparator' => '&#32;og&#32;',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -271,6 +278,13 @@ $messages['pt-br'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'nll-lastseparator' => '&#32;şi&#32;',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -295,10 +309,11 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Nghtwlkr
  * @author Per
  */
 $messages['sv'] = array(
-	'nll-lastseparator' => ' och',
+	'nll-lastseparator' => '&#32;och&#32;',
 );
 
 /** Telugu (తెలుగు)

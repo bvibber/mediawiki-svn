@@ -464,6 +464,14 @@ $messages['nl'] = array(
 	'right-lastlogin' => 'Bekijken wanneer een gebruiker voor de laatste keer heeft aangemeld',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'lastuserlogin_userid' => 'Brukarnamn',
+	'lastuserlogin_username' => 'Verkeleg namn',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

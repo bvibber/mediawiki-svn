@@ -1372,6 +1372,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'badimages-add-btn' => 'ಸೇರಿಸು',
 	'badimages-name' => 'ಹೆಸರು:',
 	'badimages-reason' => 'ಕಾರಣ:',
 );
@@ -2117,6 +2118,16 @@ $messages['ru'] = array(
 	'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
 	'badimages-page' => '{{ns:help}}:Список нежелательных изображений',
 	'right-badimages' => 'изменение чёрного списка изображений',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'badimages-add-btn' => 'Придати',
+	'badimages-name' => 'Назва:',
+	'badimages-remove' => '(одстранити)',
+	'badimages-remove-btn' => 'Одстранити',
 );
 
 /** Yakut (Саха тыла)

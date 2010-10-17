@@ -3498,6 +3498,7 @@ $messages['kn'] = array(
 	'viewapc-ls-submit' => 'ಹೋಗು!',
 	'viewapc-ls-header-name' => 'ಹೆಸರು',
 	'viewapc-ls-sort-name' => 'ಹೆಸರು',
+	'viewapc-ls-limit-none' => 'ಎಲ್ಲಾ',
 );
 
 /** Korean (한국어)
@@ -5176,16 +5177,19 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Silviubogan
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'apc' => 'Informații APC',
 	'viewapc-clear-confirm' => 'Doriți golirea cache-ului?',
 	'viewapc-clear-user-cache' => 'Golește cache-ul utilizatorului',
+	'viewapc-clear-code-cache' => 'Curăţă cache-ul opcode',
 	'viewapc-mode-version-check' => 'Verifică versiunea',
 	'viewapc-info-general' => 'Informații generale',
 	'viewapc-apc-version' => 'Versiune APC',
 	'viewapc-php-version' => 'Versiune PHP',
 	'viewapc-shared-memory' => 'Memorie partajată',
+	'viewapc-uptime' => 'Timpul de la pornire',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fișier|fișiere}} ($2)',
 	'viewapc-misses' => 'Ratări',
 	'viewapc-requests' => 'Rată de cerere',
@@ -5377,6 +5381,37 @@ $messages['ru'] = array(
 	'viewapc-usercache-cleared' => "'''''Кеш приложений очищен.'''''",
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'viewapc-apc-version' => 'Верзія APC',
+	'viewapc-php-version' => 'Верзія PHP',
+	'viewapc-start-time' => 'Час початку',
+	'viewapc-uptime' => 'Доба біжаня',
+	'viewapc-display-inode' => 'Inode',
+	'viewapc-display-type' => 'Тіп',
+	'viewapc-display-type-file' => 'Кешованый файл',
+	'viewapc-display-num_hits' => 'Засягы',
+	'viewapc-display-mtime' => 'Зміненый',
+	'viewapc-display-creation_time' => 'Створено',
+	'viewapc-display-deletion_time' => 'Змазаный',
+	'viewapc-display-no-delete' => 'Незмазаный',
+	'viewapc-display-access_time' => 'Приступів',
+	'viewapc-display-ref_count' => 'Чісло одказів',
+	'viewapc-display-mem_size' => 'Розмір',
+	'viewapc-display-stored-value' => 'Уложена годнота',
+	'viewapc-ls-options-legend' => 'Наставлїня',
+	'viewapc-ls-submit' => 'Допереду!',
+	'viewapc-ls-header-name' => 'Назва',
+	'viewapc-ls-header-hits' => 'Засягы',
+	'viewapc-ls-header-size' => 'Розмір',
+	'viewapc-ls-sort-created' => 'Створено',
+	'viewapc-ls-sort-deleted' => 'Змазане',
+	'viewapc-ls-sort-timeout' => 'Тайм-аут',
+	'viewapc-ls-limit-none' => 'Вшыткы',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -5393,15 +5428,24 @@ $messages['sah'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Aushulz
  * @author Melos
  */
 $messages['scn'] = array(
+	'viewapc-mode-version-check' => 'Talìa virsioni',
+	'viewapc-info-general' => "'Nformazzioni ginirali",
 	'viewapc-start-time' => "Ora d'avviu",
 	'viewapc-uptime' => "Tempu d'esecuzioni",
 	'viewapc-upload-support' => 'Supportu pi lu caricamentu dô file',
 	'viewapc-filecache-info' => 'Nformazioni supra la cache dô file',
 	'viewapc-usercache-info' => 'Nformazioni supra la cache utenti',
 	'viewapc-cached-files' => 'File in cache',
+	'viewapc-display-info' => 'Nomu',
+	'viewapc-display-mtime' => 'Canciati',
+	'viewapc-ls-header-name' => 'Nomu',
+	'viewapc-ls-header-size' => 'Grannizza',
+	'viewapc-ls-scope-both' => 'Tutti e dui',
+	'viewapc-ls-limit-none' => 'Tutti',
 );
 
 /** Slovak (Slovenčina)
@@ -6328,6 +6372,7 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Alex Khimich
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
@@ -6348,7 +6393,10 @@ $messages['uk'] = array(
 	'viewapc-apc-version' => 'Версія APC',
 	'viewapc-php-version' => 'Версія PHP',
 	'viewapc-shared-memory' => "Загальна пам'ять",
+	'viewapc-shared-memory-details' => "{{PLURAL:$1|1 сегмент розміром в  $2|$1 сегменту по $2 кожен}}.<br />
+($3 пам'ять, $4 блокування)",
 	'viewapc-start-time' => 'Час початку',
+	'viewapc-uptime' => 'Час безперервної робити:',
 	'viewapc-upload-support' => 'Підтримка завантаження файлів',
 	'viewapc-filecache-info' => 'Відомості про кеш файлів',
 	'viewapc-usercache-info' => 'Відомості про кеш користувача',
@@ -6374,7 +6422,63 @@ $messages['uk'] = array(
 	'viewapc-memory-miss' => 'Промахів: $1 ($2)',
 	'viewapc-memoryfragmentation' => "Детальніше про використання пам'яті і фрагментацію",
 	'viewapc-fragmentation-info' => 'Фрагментація: $1 ($2 з $3 в $4 {{PLURAL:$4|фрагменті|фрагментах|фрагментах}})',
+	'viewapc-fragmentation-none' => 'Фрагментація: немає фрагментації',
+	'viewapc-display-attribute' => 'Атрибут',
+	'viewapc-display-value' => 'Значення',
 	'viewapc-display-filename' => 'Назва файлу',
+	'viewapc-display-device' => 'Прилад',
+	'viewapc-display-info' => "Ім'я",
+	'viewapc-display-ttl' => 'Залишилось часу',
+	'viewapc-display-inode' => 'Inode',
+	'viewapc-display-type' => 'Тип',
+	'viewapc-display-type-file' => 'Кешований файл',
+	'viewapc-display-type-user' => 'Кешування даних програми',
+	'viewapc-display-num_hits' => 'Відвідувань',
+	'viewapc-display-mtime' => 'Змінений',
+	'viewapc-display-creation_time' => 'Створено',
+	'viewapc-display-deletion_time' => 'Вилучений',
+	'viewapc-display-no-delete' => 'Не вилучений',
+	'viewapc-display-access_time' => 'Доступ',
+	'viewapc-display-ref_count' => 'Число посилань',
+	'viewapc-display-mem_size' => 'Розмір',
+	'viewapc-display-stored-value' => 'Збережене значення',
+	'viewapc-display-too-big' => "''Розмір вмісту занадто велекий для показу.''",
+	'viewapc-ls-options-legend' => 'Налаштування',
+	'viewapc-ls-options' => 'Область: $1 Сортування: $2$3$4 Пошук: $5 $6',
+	'viewapc-ls-submit' => 'Вперед!',
+	'viewapc-ls-header-name' => "Ім'я",
+	'viewapc-ls-header-hits' => 'Відвідувань',
+	'viewapc-ls-header-size' => 'Розмір',
+	'viewapc-ls-header-accessed' => 'Останній доступ',
+	'viewapc-ls-header-modified' => 'Остання зміна',
+	'viewapc-ls-header-created' => 'Створено',
+	'viewapc-ls-header-deleted' => 'Вилучений',
+	'viewapc-ls-header-timeout' => 'Тайм-аут',
+	'viewapc-ls-delete' => '[Видалити зараз]',
+	'viewapc-ls-scope-active' => 'Активний',
+	'viewapc-ls-scope-deleted' => 'Вилучений',
+	'viewapc-ls-scope-both' => 'Обидва',
+	'viewapc-ls-sort-hits' => 'Відвідувань',
+	'viewapc-ls-sort-size' => 'Розмір',
+	'viewapc-ls-sort-name' => "Ім'я",
+	'viewapc-ls-sort-accessed' => 'Останній доступ',
+	'viewapc-ls-sort-modified' => 'Останні зміни',
+	'viewapc-ls-sort-created' => 'Створено',
+	'viewapc-ls-sort-deleted' => 'Вилучений',
+	'viewapc-ls-sort-timeout' => 'Тайм-аут',
+	'viewapc-ls-limit-none' => 'Всі',
+	'viewapc-ls-more' => "''Є ще $1 {{PLURAL:$1|запис|записи|записів}}''",
+	'viewapc-ls-nodata' => "''Немає співпадаючих даних''",
+	'viewapc-delete-ok' => 'Запис кеша <nowiki>$1</nowiki> вилучена.',
+	'viewapc-delete-failed' => 'Не вдалося видалити запис кеша <nowiki>$1</nowiki>.',
+	'viewapc-version-info' => 'Інформація про версію',
+	'viewapc-version-changelog' => 'Журнал змін',
+	'viewapc-version-failed' => 'Невдалося виявити інформацію про версію.',
+	'viewapc-version-ok' => 'Ви використовуєте останню версію APC ($1)',
+	'viewapc-version-old' => 'Ви використовуєте старшу версію APC ($1). 
+Новіша версія $2 доступнна тут: http://pecl.php.net/package/APC/$2',
+	'viewapc-filecache-cleared' => "'''''Кеш файлу очищений.'''''",
+	'viewapc-usercache-cleared' => "'''''Кеш дпдатку очищений.'''''",
 );
 
 /** Veps (Vepsan kel')

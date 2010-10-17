@@ -689,6 +689,15 @@ Consulte $2 para ver um registro dos esvaziamentos recentes de páginas.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Preencher]] a tabela de páginas esvaziadas',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'blank-log' => 'gol',
+	'blank-log-name' => 'Jurnal gol',
+	'purewikideletion-blanknologin' => 'Neautentificat',
+);
+
 /** Russian (Русский)
  * @author Grigol
  * @author Александр Сигачёв

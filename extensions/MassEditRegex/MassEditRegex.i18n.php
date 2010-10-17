@@ -1313,6 +1313,7 @@ Os valores de troca não devem ser o escapados.',
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'masseditregex-matchtxt' => 'Caută:',
@@ -1323,6 +1324,7 @@ $messages['ro'] = array(
 	'masseditregex-hint-headmatch' => 'Potrivire',
 	'masseditregex-hint-headreplace' => 'Înlocuiește',
 	'masseditregex-hint-headeffect' => 'Efect',
+	'masseditregex-editfailed' => 'Editare eşuată',
 );
 
 /** Russian (Русский)

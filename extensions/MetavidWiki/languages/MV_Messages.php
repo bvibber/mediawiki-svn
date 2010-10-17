@@ -6914,6 +6914,7 @@ Zoek naar $1 om alle metadata in een reeks categorieën te bekijken.',
  * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'metavid' => 'Metavid-sida',
@@ -6934,8 +6935,8 @@ Ver venleg og rapporter dette til [[{{MediaWiki:Grouppage-sysop}}|sideoperatøre
 	'mvexportsearch' => 'Metavid eksporter',
 	'mvexportsequence' => 'Metavid eksporter sekvens',
 	'mvexportstream' => 'Metavid eksporter datastraum',
-	'mv_move_delete_msg' => 'mvd flytta til $1',
-	'mv_add_stream_page' => 'Mv legg til datastraum',
+	'mv_move_delete_msg' => 'flytta til $1',
+	'mv_add_stream_page' => 'MetaVid legg til datastraum',
 	'mv_edit_strea_docu' => '<p>Endra datastraum-<b>admin</b><br />for vanleg brukarvising/-endring, sjå sida $1',
 	'mv_add_stream_docu' => '<p>Legg til ein ny datastraum med feltet nedanfor.</p>
 <p>Meir informasjon vert gjeven på <a href="$1">hjelpesida for å leggja til datastraumar</a>.</p>',
@@ -6956,7 +6957,7 @@ Ver venleg og rapporter dette til [[{{MediaWiki:Grouppage-sysop}}|sideoperatøre
 	'mv_updated_stream_files' => 'Oppdatert datastraumfillogg',
 	'mv_removed_file_stream' => 'Fjerna datastraumfil: $1',
 	'mv_missing_stream_text' => 'Datastraumfila du etterspurde, <b>$1</b>, er ikkje tilgjengeleg.<br />Du ynskjer kanskje å sjekka <a href="$2">datastraumlista</a><br />Elles kan du òg <a href="$3">leggja til datastraumen</a>.',
-	'mv_user_cant_edit' => 'Du lyt kanskje [$1 Log in] for å endra, $2',
+	'mv_user_cant_edit' => 'Du lyt kanskje [$1 logge inn] for å endra, $2',
 	'mv_add_stream_file' => 'Legg til datastraumfil',
 	'mv_media_path' => 'mediestig',
 	'mv_file_list' => 'Datastraumfiler',
@@ -7117,7 +7118,9 @@ For alle metadata i eit kategoriområde, søk etter $1',
 	'mv_sequence_edit_visual_editor' => 'Byt til visuell endring',
 	'mv_other_options' => 'Andre val',
 	'mv_contextmenu_opt' => 'Aktiver kontekstmenyar',
+	'mv_days' => '($1 {{PLURAL:$1|dag|dagar}})',
 	'mv_hours' => '{{PLURAL:$1|éin time|$1 timar}}',
+	'mv_hours_singular' => '1 time',
 	'mv_minutes' => '{{PLURAL:$1|eitt minutt|$1 minutt}}',
 	'mv_minutes_singular' => '1 minutt',
 	'mv_seconds' => '{{PLURAL:$1|eitt sekund|$1 sekund}}',
@@ -7722,6 +7725,21 @@ $messages['pl'] = array(
 	'mv_ogg_high_quality' => 'Wysoka jakość – Ogg Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Niska jakość (internetowa) – wideo we Flashu',
 	'mv_archive_org_mp4' => 'Strumień H.264 zapakowany w archive.org MP4',
+	'mv_archive_org_link' => 'Linki do oryginałów MPEG-2 w Archive.org',
+	'mv_error_stream_missing' => '<span class="error">Błąd – brak pliku wideo przypisanego do tego strumienia.</span><br />
+Poinformuj o tym [[{{MediaWiki:Grouppage-sysop}}|administratora witryny]].',
+	'mv_stream_added' => 'Dodałeś strumień $1',
+	'mv_stream_meta' => 'Strona strumienia',
+	'mv_add_stream' => 'Dodaj strumień MetaVid',
+	'mv_edit_stream' => 'Edytuj strumień MetaVid',
+	'mvexportsearch' => 'Eksportuj MetaVid',
+	'mvexportsequence' => 'Eksportuj sekwencję MetaVid',
+	'mvexportstream' => 'Eksportuj strumień MetaVid',
+	'mv_move_delete_msg' => 'przeniesiono do $1',
+	'mv_add_stream_page' => 'Dodaj strumień MetaVid',
+	'mv_edit_strea_docu' => '<p>Edycja strumienia dla <b>administratorów</b><br />standardowy podgląd i edycję dostępną dla użytkowników znajdziesz na stronie $1</p>',
+	'mv_add_stream_docu' => '<p>Dodaj nowy strumień korzystając z poniższego pola.</p>
+<p>Więcej informacji znajduje się na <a href="$1">stronie pomocy dotyczącej dodawania strumienia</a>.</p>',
 	'mv_add_stream_submit' => 'Dodaj strumień',
 	'mv_no_stream_files' => 'Żadne pliki ze strumieniami nie istnieją',
 	'mv_edit_stream_files' => 'Edycja plików strumieni',
@@ -7735,16 +7753,76 @@ $messages['pl'] = array(
 	'mv_file_desc_label' => 'opis strumienia',
 	'mv_delete_stream_file' => 'usunięcie referencji do pliku strumienia',
 	'mv_save_changes' => 'Zapisz zmiany',
-	'mv_removed_file_stream' => 'Usunięto plik strumienia: $1',
-	'mv_file_list' => 'Pliki strumienia',
+	'mv_file_with_same_desc' => 'Błąd – już jest strumień z tym samym kluczem <i>$1</i>',
+	'mv_updated_stream_files' => 'Zaktualizowano rekord pliku strumienia',
+	'mv_removed_file_stream' => 'Usunięto plik strumienia – $1',
+	'mv_missing_stream_text' => 'Żądany strumień <b>$1</b> nie jest dostępny.<br />
+Możesz sprawdzić <a href="$2">listę strumieni</a><br />
+lub <a href="$3">dodać strumień</a>.',
+	'mv_user_cant_edit' => 'Możliwe, że musisz [$1 zalogować się] aby móc edytować; $2',
+	'mv_add_stream_file' => 'Dodaj plik strumienia',
+	'mv_media_path' => 'ścieżka do danych',
+	'mv_file_list' => 'Pliki strumieni',
 	'mv_label_stream_name' => 'Nazwa strumienia',
 	'mv_label_stream_desc' => 'Opis strumienia',
+	'add_stream_permission' => 'Nie masz wystarczających uprawnień, aby dodać nowy strumień',
+	'edit_stream_missing' => 'Brak nazwy strumienia',
+	'mv_missing_req_time' => 'Brak czasu dla zapytania',
+	'mv_missing_cat' => 'Brak nazwy kategorii',
+	'mv_stream_already_exists' => 'Strumień <a href="$2">$1</a> już istnieje',
+	'mv_summary_add_stream' => 'strumień dodany za pomocą formularza',
+	'mv_error_stream_insert' => 'wstawienie strumienia nieudane',
+	'mv_redirect_and_delete_reason' => 'usunięta strona przekierowująca',
 	'mv_remove_reason' => 'Powód usunięcia',
+	'mv_stream_delete_warrning' => "'''Usunięcie tego strumienia spowoduje usunięcie także $1 {{PLURAL:$1|część|części}} powiązanych metadanych'''<br />",
 	'mv_label_stream_type' => 'Typ strumienia',
+	'mv_metavid_file' => 'Istniejący na serwerze plik',
+	'mv_metavid_live' => 'Utwórz strumień na żywo',
 	'mv_upload_file' => 'Prześlij plik',
 	'mv_external_file' => 'Zewnętrzny plik',
 	'mv_tool_search' => 'Szukaj',
-	'mv_tool_export' => 'Eksport',
+	'mv_tool_search_title' => 'Szukaj w tym strumieniu',
+	'mv_search_transcripts_for' => 'Szukaj filmu dla $1 (ukryj tę ramkę)',
+	'mv_tool_navigate' => 'Nawigacja',
+	'mv_tool_navigate_title' => 'Nawiguj po całym strumieniu',
+	'mv_tool_export' => 'Eksportuj',
+	'mv_tool_export_title' => 'Eksportuj metadane strumienia',
+	'mv_tool_embed' => 'Dołącz',
+	'mv_tool_embed_title' => 'Opcje dołączania dla bieżącego segmentu',
+	'mv_tool_overlay' => 'Szablony nakładek',
+	'mv_tool_overlay_title' => 'Nakładki metadanych bazujące na szablonach',
+	'mv_results_found' => 'Wyszukane filmy od <b>$1</b> do <b>$2</b> z <b>$3</b>',
+	'mv_tool_mang_layers' => 'Zarządzanie warstwami',
+	'mv_update_layers' => 'Aktualizacja warstw',
+	'mv_watch_clip' => 'Odtwórz klip',
+	'mv_close_clip' => 'Zamknij klip',
+	'mv_improve_transcript' => 'Popraw transkrypcję',
+	'mv_people_matches' => 'Odnalezione osoby',
+	'mv_category_matches' => 'Odnalezione kategorie',
+	'mv_bill_matches' => 'Odnalezione dokumenty',
+	'mv_interest_group_matches' => 'Odnaleziony grupy zainteresowań',
+	'mv_click_to_edit' => 'kliknij, aby edytować',
+	'ht_en' => 'Ścieżka dialogowa',
+	'ht_en_desc' => 'Angielskojęzyczna ścieżka dialogowa.
+Ten typ nakładki przeznaczony jest dla tekstu mówionego',
+	'anno_en' => 'Adnotacje i kategorie',
+	'anno_en_desc' => 'Angielska kategoryzacja i adnotacja.
+Ta nakładka może zostać użyta do kategoryzacji sekcji filmu lub do dodania adnotacji, które nie są ścieżką dialogową',
+	'thomas_en' => 'Oficjalna ścieżka dialogowa',
+	'thomas_en_desc' => 'Oficjalna ścieżka dialogowa Thomasa z serwisu nagraniowego THOMAS.
+Synchronizacja ścieżki dialogowej z wizją według C-SPAN serwis c-spanarchives.org',
+	'mvd_default_mismatch' => 'Błąd w pliku z ustawieniami',
+	'mvd_default_mismatch_text' => 'Wystąpił błąd w pliku z ustawieniami.
+$mvMVDTypeDefaultDisp powinno być podzbiorem $mvMVDTypeAllAvailable',
+	'mv_data_page_title' => '$1 do $2 od $3',
+	'mv_time_separator' => '$1 do $2',
+	'mv_list_streams' => 'Lista strumieni MetaVid',
+	'mv_list_streams_page' => 'Lista strumieni MetaVid',
+	'mv_list_streams_docu' => 'Istnieją następujące strumienie:',
+	'mv_list_streams_none' => 'Nie istnieją żadne strumienie',
+	'mvvideofeed' => 'Eksport kanału wizji MetaVid',
+	'mvexportask' => 'Eksport semantyczny kanału wizji',
+	'video_feed_cat' => 'Kanał wizji dla kategorii',
 	'mv_play' => 'Odtwórz',
 	'mv_edit' => 'Edytuj',
 	'mv_history' => 'Historia',
@@ -8330,10 +8408,19 @@ Saltar para vista de stream: $2',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Editor de Metadados de Vídeo e Pesquisa de Conteúdos Multimídia]',
+	'metavid' => 'Página MetaVid',
+	'mv_missing_stream' => 'Stream não localizado: $1',
+	'specialpages-group-mv_group' => 'Páginas especiais MetaVidWiki',
+	'mv_warning_wiki' => '<i>Nota: as transcrições de vídeo metavid [[Help:FAQ#How_accurate_is_the_information.3F|podem conter imprecisões]], ajude-nos a construir [[Help:Participation#Improving_Archive_Accuracy|um arquivo mais perfeito]]</i>',
+	'mv_ogg_low_quality' => 'Stream para Web - Ogg Theora 300 kbit/s',
+	'mv_ogg_high_quality' => 'Alta Qualidade - Ogg Theora 900 kbit/s',
+	'mv_flash_low_quality' => 'Stream para Web - vídeo Flash',
 	'mv_duration_label' => 'Duração',
 	'mv_save_changes' => 'Salvar alterações',
 	'mv_remove_reason' => 'Motivo para a eliminação:',
@@ -8390,6 +8477,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'mv_move_delete_msg' => 'mutat la $1',
@@ -8403,6 +8491,7 @@ $messages['ro'] = array(
 	'mv_tool_navigate' => 'Navigare',
 	'mv_tool_export' => 'Export',
 	'anno_en' => 'Adnotări și categorii',
+	'mv_data_page_title' => '$1 pentru $2 de la $3',
 	'mv_play' => 'Redați',
 	'mv_edit' => 'Modifică',
 	'mv_history' => 'Istoric',
@@ -8451,6 +8540,7 @@ $messages['ro'] = array(
 	'mv_resource_not_supported' => "Tipul resursei '''$1''' nesuportat",
 	'mv_editor_options' => 'Opțiunile editorului',
 	'mv_transitions' => 'Tranziții',
+	'mv_sequence_add' => 'Adaugă clipuri',
 	'mv_sequence_add_manual' => 'Adaugă după nume',
 	'mv_sequence_add_search' => 'Adaugă după căutare',
 	'mv_seq_add_end' => 'Adaugă la sfârșitul secvenței',

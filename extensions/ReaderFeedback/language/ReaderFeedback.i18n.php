@@ -2459,6 +2459,7 @@ $messages['te'] = array(
 	'readerfeedback-tier-medium' => 'సామాన్యం',
 	'tooltip-ca-ratinghist' => 'ఈ పుట యొక్క చదువరుల మూల్యాంకనం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
+	'readerfeedback-tt-review' => 'సమీక్షని దాఖలుచేయండి',
 );
 
 /** Thai (ไทย)
@@ -2639,7 +2640,9 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'readerfeedback-desc' => 'La valutazion de le pagine la permete ai lettori de dar un giudissio soto forma de voti par categorie',
 	'readerfeedback' => "'Sa ghe ne pensito de sta pàxena?",
+	'readerfeedback-text' => "''Par piaser, valuta sta pagina. El to giudissio el xe inportante par jutarne a mejorarne el nostro sito.''",
 	'readerfeedback-reliability' => 'Afidabilità',
 	'readerfeedback-completeness' => 'Conpletessa',
 	'readerfeedback-npov' => 'Neutralità',

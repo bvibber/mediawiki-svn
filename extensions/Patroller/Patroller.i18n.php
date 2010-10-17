@@ -1671,6 +1671,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'patrol-skip' => 'Перескочіти',
+	'group-patroller' => 'Патролы',
+	'group-patroller-member' => 'патрола',
 );
 
 /** Yakut (Саха тыла)

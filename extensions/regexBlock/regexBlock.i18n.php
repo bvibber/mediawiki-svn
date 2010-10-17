@@ -1804,6 +1804,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'regexblock-form-reason' => 'ಕಾರಣ:',
+	'regexblock-view-all' => 'ಎಲ್ಲಾ',
 	'regexblock-view-go' => 'ಹೋಗು',
 );
 

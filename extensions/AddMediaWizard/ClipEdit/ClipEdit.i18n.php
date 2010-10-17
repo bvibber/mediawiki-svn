@@ -62,12 +62,16 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Majid Al-Dharrab
+ * @author Samer
  */
 $messages['ar'] = array(
 	'mwe-clipedit-crop' => 'اقتص الصورة',
 	'mwe-clipedit-apply_crop' => 'طبّق الاقتصاص على الصورة',
 	'mwe-clipedit-reset_crop' => 'صفّر الاقتصاص',
+	'mwe-clipedit-insert_image_page' => 'أدرج في الصفحة',
+	'mwe-clipedit-preview_insert' => 'عاين المدرج',
 	'mwe-clipedit-cancel_image_insert' => 'ألغِ الإدراج',
+	'mwe-clipedit-sc_overlays' => 'الطبقات الإضافية',
 	'mwe-clipedit-sc_audio' => 'تحكم الصوت',
 	'mwe-clipedit-sc_duration' => 'المدة',
 	'mwe-clipedit-template_properties' => 'خصائص القالب',
@@ -536,7 +540,9 @@ $messages['gsw'] = array(
 	'mwe-clipedit-layout_left' => 'Bild uf dr linke Syte',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
 $messages['he'] = array(
 	'mwe-clipedit-crop' => 'חיתוך תמונה',
 	'mwe-clipedit-apply_crop' => 'החלת החיתוך על התמונה',
@@ -558,6 +564,9 @@ $messages['he'] = array(
 	'mwe-clipedit-start_time' => 'זמן ההתחלה',
 	'mwe-clipedit-end_time' => 'זמן הסיום',
 	'mwe-clipedit-preview_inout' => 'תצוגה מקדימה של נקודות הכניסה-יציאה',
+	'mwe-clipedit-edit-tools' => 'כלי עריכה',
+	'mwe-clipedit-duration' => 'משך:',
+	'mwe-clipedit-layout' => 'פריסה',
 );
 
 /** Croatian (Hrvatski)
@@ -931,6 +940,9 @@ $messages['no'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Sett inn i sekvens',
 	'mwe-clipedit-preview_insert' => 'Forhåndsvis innsetting',
 	'mwe-clipedit-cancel_image_insert' => 'Avbryt innsetting',
+	'mwe-clipedit-sc_attributes' => 'Rediger klippdetalj',
+	'mwe-clipedit-sc_inoutpoints' => 'Sett inn-ut-punkt',
+	'mwe-clipedit-sc_overlays' => 'Transparenter',
 	'mwe-clipedit-sc_audio' => 'Lydkontroll',
 	'mwe-clipedit-sc_duration' => 'Varighet',
 	'mwe-clipedit-template_properties' => 'Malegenskaper',
@@ -938,9 +950,13 @@ $messages['no'] = array(
 	'mwe-clipedit-edit_properties' => 'Rediger egenskaper',
 	'mwe-clipedit-other_properties' => 'Andre egenskaper',
 	'mwe-clipedit-resource_page' => 'Ressursside:',
+	'mwe-clipedit-set_in_out_points' => 'Sett inn-ut-punkt',
 	'mwe-clipedit-start_time' => 'Starttid',
 	'mwe-clipedit-end_time' => 'Sluttid',
+	'mwe-clipedit-preview_inout' => 'Forhåndsvis inn-ut-punkt',
 	'mwe-clipedit-edit-tools' => 'Redigeringsverktøy',
+	'mwe-clipedit-inline-description' => 'Undertekst',
+	'mwe-clipedit-edit-video-tools' => 'Rediger video-verktøy:',
 	'mwe-clipedit-duration' => 'Varighet',
 	'mwe-clipedit-layout' => 'Oppsett',
 	'mwe-clipedit-layout_right' => 'Bildeoppsett høyre side',
@@ -1290,6 +1306,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Cohan
  * @author Dafer45
  */
 $messages['sv'] = array(
@@ -1300,6 +1317,7 @@ $messages['sv'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Lägg till i sekvensen',
 	'mwe-clipedit-preview_insert' => 'Förhandsgranska infogning',
 	'mwe-clipedit-cancel_image_insert' => 'Avbryt infogning',
+	'mwe-clipedit-sc_attributes' => 'Redigera klippdetalj',
 	'mwe-clipedit-sc_inoutpoints' => 'Sätt in-ut punkter',
 	'mwe-clipedit-sc_overlays' => 'Överlägg',
 	'mwe-clipedit-sc_audio' => 'Ljudkontroll',
@@ -1318,6 +1336,8 @@ $messages['sv'] = array(
 	'mwe-clipedit-edit-video-tools' => 'Redigera video verktyg:',
 	'mwe-clipedit-duration' => 'Varaktighet:',
 	'mwe-clipedit-layout' => 'Layout',
+	'mwe-clipedit-layout_right' => 'Bildlayout höger sida',
+	'mwe-clipedit-layout_left' => 'Bildlayout vänster sida',
 );
 
 /** Tamil (தமிழ்)

@@ -432,6 +432,13 @@ $messages['nl'] = array(
 	'externalpages-no-page' => 'Er is geen pagina opgegeven',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'externalpages' => 'Eksterne sider',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  * @author Nghtwlkr

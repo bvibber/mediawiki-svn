@@ -842,6 +842,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'layouts-desc' => 'Obda na novo ustvarjene strani z uredljivimi »postavitvami«, ki vzpodbudijo skupno zgradbo strani',
 	'layouts_title' => 'Ustvari stran',
 	'layouts_chooselayout' => 'Izberite postavitev za $1:',
 	'layouts_nolayout' => 'Ni postavitve',

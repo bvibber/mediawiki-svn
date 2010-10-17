@@ -557,9 +557,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'purgecache' => 'Treci peste cache',
+	'purgecache-button' => 'Curăţă',
 );
 
 /** Tarandíne (Tarandíne)

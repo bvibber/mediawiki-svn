@@ -563,6 +563,15 @@ $messages['pt-br'] = array(
 Uma nova conta de utilizador, $2, foi criada em $3 em $4.',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'newusernotifbody' => 'Salut $1,
+
+Un nou cont de utilizator, $2, a fost creat pe $3 la $4.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

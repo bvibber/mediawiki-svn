@@ -710,6 +710,14 @@ $messages['ru'] = array(
 	'intersection_noincludecats' => 'Ошибка. Вы должны включить хотя бы одну категорию или указать пространство имён!',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'intersection_toomanycats' => 'Error: дуже много катеґорій!',
+	'intersection_noresults' => 'Error: жадны резултаты!',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

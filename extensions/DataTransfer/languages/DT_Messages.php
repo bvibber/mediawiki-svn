@@ -1680,6 +1680,7 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'viewxml' => 'Vizualizează XML',
@@ -1689,6 +1690,7 @@ $messages['ro'] = array(
 	'dt_xml_namespace' => 'Spațiu de nume',
 	'dt_xml_pages' => 'Pagini',
 	'dt_xml_page' => 'Pagină',
+	'dt_xml_template' => 'Format',
 	'dt_xml_field' => 'Câmp',
 	'dt_xml_name' => 'Nume',
 	'dt_xml_title' => 'Titlu',

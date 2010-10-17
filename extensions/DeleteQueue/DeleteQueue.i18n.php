@@ -4044,6 +4044,7 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'deletequeue-delnom-otherreason' => 'Өөр шалтгаан',
 	'deletequeue-review-reason' => 'Тайлбар:',
 	'deletequeue-vote-reason' => 'Тайлбар:',
 	'deletequeue-list-search' => 'Хайх',
