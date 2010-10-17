@@ -250,7 +250,7 @@ mw.includeAllModuleMessages();
 			}
 			
 			// Try to get sources from text provider:
-			var provider_id = ( this.embedPlayer.apiProvider ) ?  this.embedPlayer.apiProvider : 'local'; 
+			var provider_id = ( this.embedPlayer.apiProvider ) ? this.embedPlayer.apiProvider : 'local'; 
 			var apiUrl = mw.getApiProviderURL( provider_id );
 			var assetKey = 	this.embedPlayer.apiTitleKey;
 			if( !apiUrl || !assetKey ) {
@@ -270,13 +270,24 @@ mw.includeAllModuleMessages();
 					var textSource = textSources[ i ];
 					// Try to insert the track source: 
 					var textElm = document.createElement( 'track' );
-					$j( textElm ).attr( {
+					$j( textElm ).attr({
 						'category' : 'SUB',
 						'srclang' 	: textSource.srclang,
 						'type' 	: _this.timedTextExtMime[ textSource.extension ],
 						'titleKey' 	: textSource.titleKey
-					} );
-					//debugger;
+					});
+					
+					// Build the url for downloading the text: 
+					$j( textElm ).attr('src', 
+						_this.textProvider.apiUrl.replace('api.php', 'index.php?title=') +
+						textSource.titleKey + '&action=raw&ctype=text/x-srt'
+					);
+					
+					// Add a title
+					$j( textElm ).attr('title', 
+						gM('mwe-timedtext-key-language', [textSource.srclang, unescape( mw.Language.names[ textSource.srclang ] )	] )
+					);
+
 					// Add the sources to the parent embedPlayer 
 					// ( in case other interfaces want to access them )
 					var embedSource = _this.embedPlayer.mediaElement.tryAddSource( textElm );	
@@ -929,9 +940,25 @@ mw.includeAllModuleMessages();
 				mw.log("Error: no handler for type: " + this.getMIMEType() );
 				return ;
 			}
-			// Try to load src via src attr:
+			
+			// Try to load src via textProvider:
+			if( this.textProvider && this.titleKey ) {
+				this.textProvider.loadTitleKey( this.titleKey, function( data ) {
+					if( data ) {
+						_this.captions = handler( data );
+					}				
+					// Update the loaded state:
+					_this.loaded = true;
+					if( callback ) { 
+						callback();
+					}
+				});
+				return ;
+			}
+			
+			// Try to load src via XHR source	
 			if( this.getSrc() ) {
-				// Issue the direct load request ( if we can ) 
+				// Issue the direct load request 
 				if ( !mw.isLocalDomain( this.getSrc() ) ) {
 					mw.log("Error: cant load crossDomain src:" + this.getSrc()  );
 					return ;
@@ -948,20 +975,7 @@ mw.includeAllModuleMessages();
 				return ;
 			}			
 			
-			// Try to load src via textProvider:
-			if( this.textProvider && this.titleKey ) {
-				this.textProvider.loadTitleKey( this.titleKey, function( data ) {
-					if( data ) {
-						_this.captions = handler( data );
-					}				
-					// Update the loaded state:
-					_this.loaded = true;
-					if( callback ) { 
-						callback();
-					}
-					return ;
-				});
-			}
+			
 		},
 		
 		/**

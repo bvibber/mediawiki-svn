@@ -929,7 +929,7 @@ mw.PlayerControlBuilder.prototype = {
 				 gM( 'mwe-embedplayer-download' ),
 				'disk',
 				function( ) {
-					ctrlObj.displayMenuOverlay( gM('mwe-embedplayer-loading_txt' ) );					
+					ctrlObj.displayMenuOverlay( gM('mwe-loading_txt' ) );					
 					// Call show download with the target to be populated
 					ctrlObj.showDownload(  		
 						ctrlObj.embedPlayer.$interface.find( '.overlay-content' ) 
@@ -1340,14 +1340,25 @@ mw.PlayerControlBuilder.prototype = {
 	showDownload: function( $target ) {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
+		
 		// Load the roe if available (to populate out download options:		
 		// mw.log('f:showDownload '+ this.roe + ' ' + this.mediaElement.addedROEData);
 		if ( embedPlayer.roe && embedPlayer.mediaElement.addedROEData == false ) {
-			$target.html( gM( 'mwe-embedplayer-loading_txt' ) );
+			$target.html( gM( 'mwe-loading_txt' ) );
 			embedPlayer.getMvJsonUrl( this.roe, function( data ) {
 			   embedPlayer.mediaElement.addROE( data );
 			   _this.showDownloadWithSources( $target );
 			} );
+			
+		// Load additional text sources via apiTitleKey: 
+		// @@ todo we should move this to timedText bindings
+		} else if( embedPlayer.apiTitleKey ) {
+			// Load text interface ( if not already loaded )
+			mw.load( 'TimedText', function() {	
+				embedPlayer.timedText.setupTextSources(function(){
+					_this.showDownloadWithSources( $target );
+				});
+			});
 		} else {
 			_this.showDownloadWithSources( $target );
 		}
@@ -1365,7 +1376,7 @@ mw.PlayerControlBuilder.prototype = {
 		$target.empty();
 		
 		var $mediaList = $j( '<ul />' );
-		var $textList =  $j( '<ul />' );
+		var $textList =  $j( '<ul />' );		
 		$j.each( embedPlayer.mediaElement.getSources(), function( index, source ) {
 			if(  source.getSrc() ) {
 				mw.log("showDownloadWithSources:: Add src: "  + source.getTitle() );
@@ -1379,7 +1390,7 @@ mw.PlayerControlBuilder.prototype = {
 				//Add link to time segment:
 				if ( source.getSrc().indexOf( '?t=' ) !== -1 ) {
 					$target.append( $dl_line );
-				} else if ( this.getMIMEType() == "text/cmml" || this.getMIMEType() == "text/x-srt" ) {
+				} else if ( this.getMIMEType().indexOf('text') === 0 ) {
 					// Add link to text list
 					$textList.append( $dl_line );
 				} else {

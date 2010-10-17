@@ -561,7 +561,7 @@ mw.UploadHandler.prototype = {
 		}
 		if ( license ) {
 			pageText += '== ' + mw.Language.msgNoTrans( 'mwe-license-header' ) + " ==\n" + '{{' + license + '}}' + "\n"; 
-		}		
+		}
 		return pageText;
 	},
 

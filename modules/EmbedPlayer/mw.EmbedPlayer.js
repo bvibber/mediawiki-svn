@@ -2639,7 +2639,7 @@ mw.EmbedPlayer.prototype = {
 	doLinkBack: function() {
 		if ( ! this.linkback && this.roe && this.mediaElement.addedROEData == false ) {
 			var _this = this;
-			this.displayMenuOverlay( gM( 'mwe-embedplayer-loading_txt' ) );
+			this.displayMenuOverlay( gM( 'mwe-loading_txt' ) );
 			this.getMvJsonUrl( this.roe, function( data ) {
 				_this.mediaElement.addROE( data );
 				_this.doLinkBack();

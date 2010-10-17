@@ -56,7 +56,8 @@ var mwEnabledModuleList = [
 	'Playlist',	
 	'SwarmTransport',
 	'SyntaxHighlighter',
-	'MiroSubs'
+	'MiroSubs',
+	'PlayerThemer'
 ];
 
 /**
