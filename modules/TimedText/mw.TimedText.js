@@ -474,7 +474,7 @@ mw.includeAllModuleMessages();
 			} else {
 				// Add a link to request timed text for this clip:
 				$menu.append( 
-					$j.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){
+					$j.getLineItem( gM( 'mwe-timedtext-request-subs'), 'comment', function(){						
 						_this.getAddSubRequest();
 					})
 				);
@@ -510,7 +510,7 @@ mw.includeAllModuleMessages();
 				// Set the loadingSpinner:
 				$j( this ).loadingSpinner();
 				// Turn off buttons while loading
-				$dialog.dialog( 'option', 'buttons', null );
+				$dialog.dialog( 'option', 'buttons', null );								
 
 				// Check if the category does not already exist:				
 				mw.getJSON( apiUrl, {'titles': videoTitle, 'prop': 'categories'}, function(data){
@@ -526,29 +526,43 @@ mw.includeAllModuleMessages();
 								}
 							}
 						}
-					}
-					// Else category not found add to category:						
-					mw.getToken( apiUrl, videoTitle, function( token ) {				
-						var request = {
-							'action' : 'edit',
-							'summary' : 'Added request for subtitles using [[Commons:MwEmbed|MwEmbed]]',
-							'title' : videoTitle,
-							'appendtext' : "\n[[Category:" + catName + "]]",
-							'token': token
-						};
-						mw.getJSON( apiUrl, request, function(data){
-							if( data.edit && data.edit.newrevid){
-								$dialog.html( gM('mwe-timedtext-request-subs-done',
-										apiUrl.replace('api.php', 'index.php') +
-										'?title=Category:' + catName.replace(' ', '_')
-									)
-								);								
-							} else {
+					}		
+					
+					// Else category not found add to category:	
+					// check if the user is logged in: 
+					mw.getUserName( apiUrl, function( userName ){
+						if( !userName ){
+							$dialog.html( gM('mwe-timedtext-request-subs-fail') );
+							return ;
+						}
+						// Get an edit token:
+						mw.getToken( apiUrl, videoTitle, function( token ) {
+							if( !token ){
 								$dialog.html( gM('mwe-timedtext-request-subs-fail') );
+								return ;
 							}
-							$dialog.dialog( 'option', 'buttons', buttonOk);
+							var request = {
+								'action' : 'edit',
+								'summary' : 'Added request for subtitles using [[Commons:MwEmbed|MwEmbed]]',
+								'title' : videoTitle,
+								'appendtext' : "\n[[Category:" + catName + "]]",
+								'token': token
+							};
+							// Do the edit request:
+							mw.getJSON( apiUrl, request, function(data){
+								if( data.edit && data.edit.newrevid){
+									$dialog.html( gM('mwe-timedtext-request-subs-done',
+											apiUrl.replace('api.php', 'index.php') +
+											'?title=Category:' + catName.replace(' ', '_')
+										)
+									);								
+								} else {
+									$dialog.html( gM('mwe-timedtext-request-subs-fail') );
+								}
+								$dialog.dialog( 'option', 'buttons', buttonOk );
+							});
 						});
-					});
+					});														
 				});				
 			};
 			buttons[ gM('mwe-cancel') ] = function(){
