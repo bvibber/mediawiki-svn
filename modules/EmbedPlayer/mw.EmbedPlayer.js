@@ -1193,9 +1193,9 @@ mediaElement.prototype = {
 	*/
 	hasStreamOfMIMEType: function( mimeType )
 	{
-		for ( source in this.sources )
+		for ( var i = 0; i < this.sources.length; i++ )
 		{
-			if ( this.sources[source].getMIMEType() == mimeType ){
+			if ( this.sources[i].getMIMEType() == mimeType ){
 				return true;
 			}
 		}
