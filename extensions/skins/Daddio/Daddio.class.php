@@ -194,4 +194,3 @@ class DaddioTemplate extends ModernTemplate {
 	} // end of execute() method
 } // end of class
 
-?>

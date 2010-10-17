@@ -231,4 +231,3 @@ class MV_SpecialCRUDStream extends SpecialPage {
 	}
 
 }
-?>

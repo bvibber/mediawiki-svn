@@ -1062,4 +1062,3 @@ function mvParsePropertiesCallback( $maches ) {
 	// replace the semantic tag with an empty string:
 	return '';
 }
-?>

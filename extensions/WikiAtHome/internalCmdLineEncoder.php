@@ -79,5 +79,3 @@ function doJobLoop(){
 			print "job not complete? (might be mixing chunkDuration types?) ";
 	}
 }
-
-?>

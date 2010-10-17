@@ -145,5 +145,3 @@ if (!$do_remove){
 $db_root->query("COMMIT");
 
 print ($do_remove)? "Removed tables\n": "Created tables\n";
-
-?>

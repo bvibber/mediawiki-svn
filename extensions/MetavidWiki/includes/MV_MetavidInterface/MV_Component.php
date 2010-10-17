@@ -117,4 +117,3 @@ if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
  		$wgOut->addHTML( "</fieldset>\n" );
 	}
  }
-?>

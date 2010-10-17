@@ -137,4 +137,3 @@ class TranslatedThread {
 		return $this->ttLang;
 	}
 }
-?>
