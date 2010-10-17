@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 //static Paths
 $dir = dirname(__FILE__) . '/';
-$jsPath = "extensions/WikiBhasha/WikiBhasha/";
+$jsPath = "extensions/WikiBhasha/src/";
 
 //add a special page 
 $wgSpecialPages['wikiBhasha'] = 'WikiBhasha';
