@@ -52,6 +52,13 @@ wikiBhasha.loadApplication = function() {
     //set the current domain is Wikipedia or not
     isWikipediaDomain = wbWikiSite.isWikiDomain(document.location.href);
 
+    //avoid launching of application on non-wiki domain articles and on any special pages from Wikipedia.
+    if ((wbWikiSite.isWikiMainPage()) || (typeof wbWikiSite.getCurrentArticleTitle() == "undefined")
+                || (!wbWikiSite.getCurrentArticleTitle()) || wgNamespaceNumber != 0) {
+        window.alert(wbLocal.nonWikiDomainMsg);
+        return;
+    }
+
     //set the direction for the content. Eg: Arabic, Hebrew are with orientation of right to left.
     wbGlobalSettings.direction = (wbGlobalSettings.isLanguageRTL(currentLanguageCode)) ? "rtl" : "ltr";
 
@@ -109,6 +116,12 @@ wikiBhasha.loadApplication = function() {
             window.alert(wbLocal.invalidBookmarklet);
             return;
         }
+    }
+
+    //check the current language is supported by application or not.
+    if (!(wbGlobalSettings.isWikiBhashaSupportedLanguage(wbGlobalSettings.mtTargetLanguageCode))) {
+        window.alert(wbLocal.unSupportedLanguage);
+        return;
     }
 
     wbGlobalSettings.setTargetLanguageValues();
