@@ -266,7 +266,7 @@ mw.includeAllModuleMessages();
 					
 			// Load the textProvider sources
 			this.textProvider.loadSources( assetKey,  function( textSources ) {
-				for( var i in textSources ) {
+				for( var i=0; i < textSources.length; i++ ) {
 					var textSource = textSources[ i ];
 					// Try to insert the track source: 
 					var textElm = document.createElement( 'track' );
@@ -325,7 +325,7 @@ mw.includeAllModuleMessages();
 			this.enabledSources = [];
 									
 			// Check if any source matches our "local"
-			for( var i in this.textSources ) {
+			for( var i=0; i < this.textSources.length; i++ ) {
 				var source = this.textSources[ i ];		
 				if( this.config.userLanugage  &&
 					this.config.userLanugage == source.srclang.toLowerCase() ) {
@@ -336,7 +336,7 @@ mw.includeAllModuleMessages();
 			}
 			// If no userLang, source try enabling English:
 			if( this.enabledSources.length == 0 ) {
-				for( var i in this.textSources ) {
+				for( var i=0; i < this.textSources.length; i++ ) {
 					var source = this.textSources[ i ];
 					if( source.srclang.toLowerCase() == 'en' ) {
 						this.enabledSources.push( source );
@@ -346,7 +346,7 @@ mw.includeAllModuleMessages();
 			}
 			// If still no source try the first source we get; 
 			if( this.enabledSources.length == 0 ) {
-				for( var i in this.textSources ) {
+				for( var i=0; i < this.textSources.length; i++ ) {
 					var source = this.textSources[ i ];
 					this.enabledSources.push( source );
 					return ;
@@ -371,7 +371,7 @@ mw.includeAllModuleMessages();
 		
 		// Get sub captions by language key:
 		getSubCaptions: function( langKey, callback ){			
-			for( var i in this.textSources ) {
+			for( var i=0; i < this.textSources.length ) {
 				var source = this.textSources[ i ];
 				if( source.srclang.toLowerCase() == langKey ) {
 					var source = this.textSources[ i ];
@@ -387,7 +387,7 @@ mw.includeAllModuleMessages();
 		*  Should be called anytime enabled Source list is updated
 		*/
 		loadEnabledSources: function() {
-			for(var i in this.enabledSources ) {
+			for(var i=0; i < this.enabledSources.length; i++ ) {
 				var enabledSource = this.enabledSources[ i ];
 				if( ! enabledSource.loaded )
 					enabledSource.load();
@@ -410,7 +410,7 @@ mw.includeAllModuleMessages();
 		* 	false if source is off
 		*/		
 		isSourceEnabled: function( source ) {
-			for(var i in this.enabledSources ) {
+			for(var i=0; i < this.enabledSources.length; i++ ) {
 				var enabledSource = this.enabledSources[i];
 				if( source.id ) {
 					if( source.id == enabledSource.id )
@@ -428,7 +428,7 @@ mw.includeAllModuleMessages();
 		* Get a source object by language, returns "false" if not found
 		*/
 		getSourceByLanguage: function ( langKey ) {
-			for(var i in this.textSources) {
+			for(var i=0; i < this.textSources.length; i++) {
 				var source = this.textSources[ i ];
 				if( source.srclang == langKey )
 					return source;
@@ -777,7 +777,7 @@ mw.includeAllModuleMessages();
 			var catSourceList = [ ];
 			// ( All sources should have a category (depreciate ) 
 			var sourcesWithoutCategory = [ ];
-			for( var i in this.textSources ) {
+			for( var i=0; i < this.textSources.length; i++ ) {
 				var source = this.textSources[ i ];
 				if( source.category ) {
 					var catKey = source.category ;
@@ -797,7 +797,7 @@ mw.includeAllModuleMessages();
 			var $langMenu = $j('<ul>');
 			// Check if we have multiple categories ( if not just list them under the parent menu item)
 			if( catSourceList.length > 1 ) {
-				for(var catKey in catSourceList) {
+				for(var catKey=0; catKey < catSourceList.length; catKey++) {
 					$catChildren = $j('<ul>');
 					for(var i in catSourceList[ catKey ]) {
 						$catChildren.append(
@@ -812,7 +812,7 @@ mw.includeAllModuleMessages();
 					);
 				}
 			} else {
-				for(var catKey in catSourceList) {
+				for(var catKey=0; catKey < catSourceList.length; catKey++) {
 					for(var i in catSourceList[ catKey ]) {
 						$langMenu.append(
 							catSourceList[ catKey ][i]
@@ -821,7 +821,7 @@ mw.includeAllModuleMessages();
 				}
 			}		
 			
-			for(var i in sourcesWithoutCategory) {
+			for(var i=0; i < sourcesWithoutCategory.length; i++) {
 				$langMenu.append( sourcesWithoutCategory[i] );
 			}
 			
@@ -1386,7 +1386,7 @@ mw.includeAllModuleMessages();
 			// look for text tracks:
 			var foundTextTracks = false;
 			var sources = [];
-			for ( var i in sourcePages.query.allpages ) {
+			for ( var i=0; i < sourcePages.query.allpages.length; i++ ) {
 				
 				var subPage = sourcePages.query.allpages[i];
 				var langKey = subPage.title.split( '.' );
