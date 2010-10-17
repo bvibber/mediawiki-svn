@@ -6,7 +6,7 @@
 ********************************************************/
 
 /*
-Copyright (c) 2010, Microsoft 
+Copyright (c) 2010, Microsoft
 All rights reserved.
 */
 
@@ -23,31 +23,31 @@ All rights reserved.
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'WikiBhasha',
-	'author' => 'Microsoft Researh',
+	'author' => 'Microsoft Research',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiBhasha',
 	'description' => 'Default description message',
 	'descriptionmsg' => 'wikibhasha-desc',
 	'version' => '1.0',
 );
 
-//static Paths
-$dir = dirname(__FILE__) . '/';
+// static Paths
+$dir = dirname( __FILE__ ) . '/';
 $jsPath = "extensions/WikiBhasha/src/";
 
-//add a special page 
+// add a special page
 $wgSpecialPages['wikiBhasha'] = 'WikiBhasha';
 $wgSpecialPageGroups['wikiBhasha'] = 'wiki';
 
 // Autoloadable classes
-$wgAutoloadClasses['wikiBhashaExt'] = $dir . 'wikiBhashaExtClass.php'; 
-$wgAutoloadClasses['wikiBhasha'] = $dir . 'wikiBhashaSpecial.php';
+$wgAutoloadClasses['wikiBhashaExt'] = $dir . 'WikiBhashaExtClass.php';
+$wgAutoloadClasses['wikiBhasha'] = $dir . 'WikiBhashaSpecial.php';
 
-//initilize wikiBhasha launch class
+// initilize wikiBhasha launch class
 $wbExtClass = new wikiBhashaExt();
 
-$wgAutoloadClasses['wikibhasha'] = $dir . 'wikibhasha_body.php'; # Location of the wikibhasha class (Tell MediaWiki to load this file)
-$wgExtensionMessagesFiles['wikibhasha'] = $dir . 'wikibhasha.i18n.php'; # Location of a messages file (Tell MediaWiki to load this file)
-$wgHooks['MonoBookTemplateToolboxEnd'][] = array( $wbExtClass, 'wikiBhashaToolbox' ); 
-$wgHooks['BeforePageDisplay'][] = array( $wbExtClass, 'wbToolbarIcon' );
+$wgAutoloadClasses['wikibhasha'] = $dir . 'WikiBhasha_body.php'; # Location of the wikibhasha class (Tell MediaWiki to load this file)
+$wgExtensionMessagesFiles['WikiBhasha'] = $dir . 'WikiBhasha.i18n.php'; # Location of a messages file (Tell MediaWiki to load this file)
+$wgExtensionAliasesFiles['WikiBhasha'] = $dir . 'WikiBhasha.alias.php'; # Location of a messages file (Tell MediaWiki to load this file)
 
-?>
+$wgHooks['MonoBookTemplateToolboxEnd'][] = array( $wbExtClass, 'wikiBhashaToolbox' );
+$wgHooks['BeforePageDisplay'][] = array( $wbExtClass, 'wbToolbarIcon' );

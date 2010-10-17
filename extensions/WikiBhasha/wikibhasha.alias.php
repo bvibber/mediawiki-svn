@@ -1,13 +1,12 @@
 <?php
-$aliases = array();
- 
-/** English */
-$aliases['en'] = array(
-	'wikibhasha' => array( 'Wikibhasha' ),
+
+$specialPageAliases = array();
+
+$specialPageAliases['en'] = array(
+	'WikiBhasha' => array( 'WikiBhasha' ),
 );
- 
-/** German (Deutsch) */
-$aliases['de'] = array(
-	'wikibhasha' => array( 'MeineErweiterung', 'Meine Erweiterung' ),
-);
-?>
+
+/**
+ * For backwards compatibility with MediaWiki 1.15 and earlier.
+ */
+$aliases =& $specialPageAliases;
