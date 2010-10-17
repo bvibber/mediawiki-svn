@@ -94,7 +94,7 @@ mediaWikiSearch.prototype = {
 			var pound = '';
 			// loop over the data and group by title
 			if ( data.query && data.query.recentchanges ) {
-				for ( var i in data.query.recentchanges ) {
+				for ( var i=0; i < data.query.recentchanges.length; i++ ) {
 					var rc = data.query.recentchanges[i];
 					if ( !titleSet[ rc.title ] ) {
 						titleSet[ rc.title ] = true;
@@ -231,7 +231,7 @@ mediaWikiSearch.prototype = {
 					}
 				};		
 				
-				for( var i in page.imageinfo[0].metadata ){
+				for( var i=0; i < page.imageinfo[0].metadata.length; i++ ){
 					if( page.imageinfo[0].metadata[i].name == 'length' ){
 						resource.duration = page.imageinfo[0].metadata[i].value;
 					}
