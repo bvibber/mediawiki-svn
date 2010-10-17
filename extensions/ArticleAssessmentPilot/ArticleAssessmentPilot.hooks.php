@@ -38,13 +38,17 @@ class ArticleAssessmentPilotHooks {
 	private static $scripts = array();
 
 	/* Static Functions */
-	public static function schema() {
-		global $wgExtNewTables;
-
-		$wgExtNewTables[] = array(
-			'article_assessment',
-			dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql'
-		);
+	public static function schema( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array(
+				'article_assessment',
+				dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql'
+			);
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'article_assessment',
+				dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql', true ) );
+		}
 
 		return true;
 	}
