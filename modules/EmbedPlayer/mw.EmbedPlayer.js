@@ -1130,7 +1130,7 @@ mediaElement.prototype = {
 			var mimeType = playableSources[source].mimeType;
 			var player =  mw.EmbedTypes.players.defaultPlayer( mimeType );
 			if ( player && player.library == 'Native'	) {
-				mw.log('Set native playback');
+				mw.log('EmbedPlayer::Set native playback');
 				this.selectedSource = playableSources[ source ];
 				return true;
 			}			
@@ -1766,8 +1766,6 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		if ( this.selectedPlayer ) {
-			mw.log( "Playback system: " + this.selectedPlayer.library );					
-						
 			// Inherit the playback system of the selected player:			
 			this.inheritEmbedPlayer();
 		} else {

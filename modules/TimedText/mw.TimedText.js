@@ -519,7 +519,7 @@ mw.includeAllModuleMessages();
 							// we only request a single page: 
 							var categories = data.query.pages[i].categories;
 							for(var j =0; j < categories.length; j++){
-								if( categories[j].title.indexOf( catName.replace('_', ' ') ) != -1 ){									
+								if( categories[j].title.indexOf( catName ) != -1 ){									
 									$dialog.html( gM('mwe-timedtext-request-already-done') );
 									$dialog.dialog( 'option', 'buttons', buttonOk);
 									return ;

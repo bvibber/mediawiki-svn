@@ -145,7 +145,7 @@ mw.PlayerControlBuilder.prototype = {
 	*/ 
 	addControlComponents: function( ) {
 		var _this = this;			
-		mw.log( 'f:controlsBuilder:: opt:' + this.options );
+		mw.log( 'PlayerControlsBuilder:: addControlComponents' );
 		
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
@@ -618,7 +618,7 @@ mw.PlayerControlBuilder.prototype = {
 		if( this.embedPlayer.getPlayerElement ){
 			$j( this.embedPlayer.getPlayerElement() ).css( 'z-index', '1' );
 		}
-		mw.log( 'showControlBar' );
+		mw.log( 'PlayerControlBuilder:: ShowControlBar' );
 		// Move up text track if present
 		this.embedPlayer.$interface.find( '.track' )
 			.animate( 
@@ -1643,7 +1643,7 @@ mw.PlayerControlBuilder.prototype = {
 		'volumeControl': {
 			'w' : 28,
 			'o' : function( ctrlObj ) {
-				mw.log( ' set up volume control for: ' + ctrlObj.embedPlayer.id );
+				mw.log( 'PlayerControlBuilder::Set up volume control for: ' + ctrlObj.embedPlayer.id );
 				$volumeOut = $j( '<span />' );
 				if ( ctrlObj.volume_layout == 'horizontal' ) {
 					$volumeOut.append(  

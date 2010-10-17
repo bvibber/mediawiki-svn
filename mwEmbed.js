@@ -2326,7 +2326,7 @@ mw.absoluteUrl = function( src, contextUrl ) {
 	 * 
 	 */
 	mw.runTriggersCallback = function( targetObject, triggerName, callback ){		
-		mw.log( ' runTriggersCallback:: ' + triggerName  );
+		mw.log( 'mw.runTriggersCallback:: ' + triggerName  );
 		// If events are not present directly run callback
 		if( ! $j( targetObject ).data( 'events' ) ||
 				! $j( targetObject ).data( 'events' )[ triggerName ] ) {
