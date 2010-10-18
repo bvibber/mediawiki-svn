@@ -1,6 +1,6 @@
 <?php
 /**
- * MwEmbed extension, supports mwEmbed based extensions
+ * MwEmbed extension, supports mwEmbed based modules
  * 
  * @file
  * @ingroup Extensions
@@ -23,7 +23,10 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'mwembed-desc',
 );
 
-$wgAutoloadClasses['MwEmbedHooks'] = dirname( __FILE__ ) . '/MwEmbed.hooks.php';
+$wgAutoloadClasses['MwEmbedResourceManager'] = dirname( __FILE__ ) . '/MwEmbedResourceManager.php';
 $wgExtensionMessagesFiles['MwEmbed'] = dirname( __FILE__ ) . '/MwEmbed.i18n.php';
 
-$wgHooks['ResourceLoaderRegisterModules'][] = 'MwEmbedHooks::resourceLoaderRegisterModules';
+// Register the core mwEmbed Module:
+MwEmbedResourceManager::registerModulePath( dirname( __FILE__ ) . '/mwEmbed' );
+
+$wgHooks['ResourceLoaderRegisterModules'][] = MwEmbedResourceManager::resourceLoaderRegisterModules;
