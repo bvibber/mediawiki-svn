@@ -102,6 +102,7 @@ $messages['dsb'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'jsbreadcrumbs-desc' => 'Añade los vínculos del recorrido de navegación bajo la barra de pestañas',
 	'jsbreadcrumbs-leading-description' => 'Rastro de navegación',
 	'prefs-jsbreadcrumbs' => 'Recorrido de navegación',
 	'prefs-jsbreadcrumbs-showsite' => 'Incluir el nombre de la web en el recorrido de navegación (útil cuando se usa a través de wikis)',

@@ -1085,6 +1085,18 @@ $messages['lt'] = array(
 	'bookinfo-purchase' => 'Pirkti šią knygą iš $1',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'bookinfo-header' => 'Grāmatas informācija',
+	'bookinfo-result-title' => 'Nosaukums:',
+	'bookinfo-result-author' => 'Autors:',
+	'bookinfo-result-publisher' => 'Izdevējs:',
+	'bookinfo-result-year' => 'Gads:',
+	'bookinfo-error-invalidisbn' => 'Ievadīts nederīgs ISBN.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

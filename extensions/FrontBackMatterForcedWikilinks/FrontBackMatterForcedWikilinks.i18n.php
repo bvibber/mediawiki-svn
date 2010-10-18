@@ -57,6 +57,15 @@ $messages['bs'] = array(
 	'frontbackforced-forced' => '_(nametnuti_wikilinkovi)',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'frontbackforced-front' => '_(front_matter)',
+	'frontbackforced-back' => '_(back_matter)',
+	'frontbackforced-forced' => '_(forced_wikilinks)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

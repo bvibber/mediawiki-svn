@@ -576,7 +576,9 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'recordadmin' => 'Administración de registros',
-	'recordadmin-desc' => 'Una [[Special:RecordAdmin|página especial]] para encontrar y editar páginas de registros usando un formulario',
+	'recordadmin-desc' => 'Búsqueda, consultas, formularios y reportes de datos de wiki derivados de parámetros de plantilla',
+	'recordadmin-specialdesc' => 'Una [[Special:RecordAdmin|página especial]] para encontrar y crear páginas de registros usando formularios asociados',
+	'recordadmin-noforms' => 'Actualmente no existen formularios definidos para usar en la búsqueda y creación de páginas',
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
 	'recordadmin-createtype' => 'Ingrese el nombre de un nuevo tipo de registro para crear',
 	'recordadmin-recordtype' => 'tipo de registro',
@@ -611,6 +613,8 @@ $messages['es'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No existe ningún "$1"',
+	'recordadmin-edit-info' => 'Esta página contiene plantillas que tienen formularios propios, los cuales puedes completar a partir de este grupo de pestañas.',
+	'recordadmin-properties' => 'Propiedades',
 );
 
 /** Estonian (Eesti)
@@ -923,6 +927,7 @@ $messages['he'] = array(
 	'recordadmin-actions' => 'פעולות',
 	'recordadmin-needscontent' => 'הוספת תוכן...',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
+	'recordadmin-properties' => 'מאפיינים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

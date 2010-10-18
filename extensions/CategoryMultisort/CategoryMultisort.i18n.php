@@ -73,6 +73,18 @@ $messages['bs'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'categorymultisort-desc' => "Permetre la visualització de les categories amb diferents claus d'ordenació",
+	'categorymultisort-defaultsortkey-name' => 'Per defecte',
+	'categorymultisort-sortkey' => "Clau d'ordenació",
+	'categorymultisort-go' => 'Anar',
+	'categorymultisort-default-sortkey' => "Clau d'ordenació predeterminada",
+	'prefs-category' => 'Categoria',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'categorymultisort-go' => 'بڕۆ',

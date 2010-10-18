@@ -1947,7 +1947,7 @@ $messages['gsw'] = array(
 	'contributionreporting-desc' => 'Live-Berichterstattig vu dr Wikimedia-Spändekampagne',
 	'contributiontotal' => 'Spände insgsamt',
 	'contributionhistory' => 'Spändeverlauf',
-	'contrib-hist-header' => 'Spändekommentar in Ächtzyt us dr ganze Wält',
+	'contrib-hist-header' => 'Spändekommentar us dr ganze Wält',
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Zyt un Datum',
 	'contrib-hist-amount' => 'Betrag',
@@ -2022,7 +2022,7 @@ $messages['he'] = array(
 	'contributionreporting-desc' => 'עדכון חי מההתרמה לוויקימדיה',
 	'contributiontotal' => 'סיכום התרומות',
 	'contributionhistory' => 'היסטוריית התרומות',
-	'contrib-hist-header' => 'הערות של תורמים מרחבי העולם מוצגות בשידור חי',
+	'contrib-hist-header' => 'הערות של תורמים מכל קצוות תבל',
 	'contrib-hist-name' => 'שם',
 	'contrib-hist-date' => 'תאריך ושעה',
 	'contrib-hist-amount' => 'סכום',
@@ -3102,6 +3102,44 @@ $messages['lt'] = array(
 	'contribstats-contributions' => 'Aukojimai',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'contributiontotal' => 'Kopējie ziedojumi',
+	'contributionhistory' => 'Ziedojumu vēsture',
+	'contrib-hist-header' => 'Ziedotāju komentāri no visas pasaules',
+	'contrib-hist-name' => 'Vārds',
+	'contrib-hist-date' => 'Laiks un datums',
+	'contrib-hist-amount' => 'Summa',
+	'contrib-hist-next' => 'Agrāki ziedojumi',
+	'contrib-hist-previous' => 'Jaunāki ziedojumi',
+	'contrib-hist-anonymous' => 'Anonīms',
+	'contributionstatistics' => 'Ziedotāju statistika',
+	'contribstats-day' => 'Diena',
+	'contribstats-month' => 'Mēnesis',
+	'contribstats-currency' => 'Valūta',
+	'contribstats-amount' => 'Summa (USD)',
+	'contribstats-contributions' => 'Ziedojumi',
+	'contribstats-total' => 'Kopā (USD)',
+	'contribstats-avg' => 'Vidēji (USD)',
+	'contribstats-max' => 'Lielākais ziedojums',
+	'contribstats-percentage-ytd' => 'Procentos (YTD)',
+	'contribstats-total-ytd' => 'Kopā (YTD)',
+	'contribstats-value-exactly' => 'Precīzi $1',
+	'contribstats-value-under' => 'Zem $1',
+	'contribstats-value-from' => 'No $1 līdz $2',
+	'contribstats-value-over' => 'Virs $1',
+	'contribstats-day-totals' => 'Kopā par dienu',
+	'contribstats-week' => 'Nedēļā',
+	'contribstats-payment-type' => 'Maksājuma veids',
+	'contribstats-clicks' => 'Klikšķi',
+	'contribstats-donations' => 'Ziedojumi',
+	'contribstats-template' => 'Veidne',
+	'contribstats-nodata' => 'Nav datu',
+	'contribstats-landingpage' => 'Piezemēšanās lapa',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -3181,7 +3219,7 @@ $messages['ml'] = array(
 	'contributionreporting-desc' => 'വിക്കിമീഡിയ ഫണ്ട്റെയ്സർ നൽകുന്ന തത്സമയ തെര്യപ്പെടുത്തൽ',
 	'contributiontotal' => 'ആകെ സംഭാവനകൾ',
 	'contributionhistory' => 'സംഭാവനകളുടെ നാൾവഴി',
-	'contrib-hist-header' => 'ലോകത്തിന്റെ നാനാഭാഗത്തു നിന്നുമുള്ള ദാതാക്കളുടെ തത്സമയ കുറിപ്പുകൾ',
+	'contrib-hist-header' => 'ലോകത്തിന്റെ നാനാഭാഗത്തു നിന്നുമുള്ള ദാതാക്കളുടെ കുറിപ്പുകൾ',
 	'contrib-hist-name' => 'പേര്',
 	'contrib-hist-date' => 'സമയവും തീയതിയും',
 	'contrib-hist-amount' => 'തുക',
@@ -4238,17 +4276,25 @@ $messages['sah'] = array(
 	'contribstats-nodata' => 'Бу туһунан туох да суох',
 	'contribstats-landingpage' => 'Түһэр сирэйэ',
 	'contribstats-donatepage' => 'Сиэртибэ сирэйэ',
+	'contribstats-average' => 'Орто',
+	'contribstats-imperfect-data' => 'Бу дааннайдар отой итэҕэтиилээх буолбаттар, тоҕо диэтэххэ сиэртибэлээччилэри кэтээһин хааччахтардаах.',
+	'contribstats-paypal-donations' => 'PayPal сиэртибэлэр',
+	'contribstats-credit-card' => 'Кирэдьиит каарталара',
+	'contribstats-fraud-note' => 'Сорох сиэртибэлэр түөкүннээн оҥоһуллаллар.',
+	'contribstats-unaudited' => 'Бэрэбиэркэни ааһа илик.',
 	'fundraiserstatistics' => 'Үп хомуйуутун хаамыыта',
 	'fundraiserstats-date' => 'Күнэ-дьыла',
 	'fundraiserstats-day' => '$1 күн $2',
 	'fundraiserstats-contributions' => 'Киирбит үп',
 	'fundraiserstats-total' => 'Барыта (USD)',
 	'fundraiserstats-avg' => 'Ортотунан (USD)',
+	'fundraiserstats-ytd' => 'Эбиллэн иһэр суумма (АХШ дуолл.)',
 	'fundraiserstats-max' => 'Саамай улахана (USD)',
 	'fundraiserstats-tab-totals' => 'Барыта (USD)',
 	'fundraiserstats-tab-contributions' => 'Үп киллэриитин ахсаана',
 	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
 	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
+	'fundraiserstats-tab-ytd' => 'Бу сылга (USD)',
 );
 
 /** Slovak (Slovenčina)

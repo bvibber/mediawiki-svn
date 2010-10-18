@@ -1616,7 +1616,19 @@ $messages['ca'] = array(
 	'configure-js-biglist-show' => '[mostra detalls]',
 	'configure-js-biglist-hide' => '[Oculta detalls]',
 	'configure-js-search-prompt' => 'Consulta:',
+	'configure-section-features' => 'Característiques',
+	'configure-section-general' => 'Configuració general',
+	'configure-section-pages' => 'Pàgines',
+	'configure-section-paths' => 'Rutes',
+	'configure-section-db' => 'Base de dades',
+	'configure-section-load-balancing' => 'Balanceig de càrrega',
+	'configure-section-mysql' => 'Específique de MySQL',
+	'configure-section-postgres' => 'Específic de PostgreSQL',
+	'configure-section-sqlite' => 'Específic de SQLite',
 	'configure-section-email' => 'Correu electrònic',
+	'configure-section-enotif' => 'Notificació per correu electrònic',
+	'configure-section-localization' => 'Localització',
+	'configure-section-timezone' => 'Fus horari',
 	'configure-section-category' => 'Categories',
 	'configure-section-cache' => 'Memòria cau',
 	'configure-section-antivirus' => 'Antivirus',
@@ -5802,6 +5814,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'configure-desc-ns' => 'ನಾಮವರ್ಗ',
 	'configure-form-reason' => 'ಕಾರಣ:',
 	'configure-js-remove' => 'ಅಳಿಸು',
 	'configure-section-pages' => 'ಪುಟಗಳು',
@@ -6087,7 +6100,7 @@ $messages['lb'] = array(
 	'configure-ext-settings-dep-errors' => 'Dës Erweiderung kann net ageschalt ginn well dës {{PLURAL:$1|Astellung|Astellungen}} en net akzeptabele Wert hunn:',
 	'configure-ext-settings-dep-error' => '$1: erfuederleche Wert: $2; aktuelle Wert: $3',
 	'configure-ext-use-extension' => 'Dës Erweiderung benotzen',
-	'configure-ext-use' => 'Notzung',
+	'configure-ext-use' => 'Gebrauch',
 	'configure-form-reason' => 'Grond:',
 	'configure-customised' => "''Dëse Parameter gouf individualiséiert''",
 	'configure-arrayinput-oneperline' => "''(e pro Linn)''",
@@ -6498,9 +6511,17 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author GreenZeb
+ * @author Papuass
  */
 $messages['lv'] = array(
+	'configure-edit-core' => 'MediaWiki',
+	'configure-form-reason' => 'Iemesls:',
+	'configure-js-search-prompt' => 'Vaicājums:',
+	'configure-old-changes' => 'izmaiņas',
+	'configure-section-timezone' => 'Laika josla',
+	'configure-section-users' => 'Lietotāji',
 	'configure-section-search' => 'Meklēt',
+	'configure-section-mw-extensions' => 'MediaWiki paplašinājumi',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -8599,6 +8620,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -8616,12 +8638,15 @@ $messages['ro'] = array(
 	'configure-customised' => "''Această setare a fost personalizată''",
 	'configure-arrayinput-oneperline' => "''(una per linie)''",
 	'configure-btn-save' => 'Salvează setările',
+	'configure-edit-old' => "'''Atenție''': modificați o versiune <strong>veche</strong> a configurației (din $1).",
 	'configure-error' => 'Configurația nu a putut fi salvată',
 	'configure-js-add' => 'Adaufă o intrare nouă',
 	'configure-js-group-exists' => 'Eroare: grupul există deja.',
 	'configure-js-prompt-group' => 'Numele noului grup:',
 	'configure-js-remove' => 'Şterge',
 	'configure-js-remove-row' => 'Şterge această intrare',
+	'configure-js-get-image-url' => 'Convertește numele fișierului în adresă URL',
+	'configure-js-image-error' => 'A apărut o eroare în timpul preluării adresei URL. Verificați dacă fișierul există.',
 	'configure-js-biglist-show' => '[arată detalii]',
 	'configure-js-biglist-hide' => '[ascunde detalii]',
 	'configure-js-summary-none' => 'Nicio setare',
@@ -8686,17 +8711,27 @@ $messages['ro'] = array(
 	'configure-view-default' => 'Setări implicite',
 	'configure-view-not-allowed' => 'Nu ţi se permite să vezi această setare',
 	'extensions' => 'Configurează extensiile',
+	'right-configure' => 'Configurează wiki-ul',
 	'right-configure-all' => 'Configurează toate setările wiki',
+	'right-configure-interwiki' => 'Configurează setările wiki străine',
 	'right-extensions' => 'Configurează extensiile',
 	'right-viewconfig' => 'Vizualizează configurația wiki',
+	'right-viewconfig-all' => 'Vezi toată configurația wiki',
+	'right-viewconfig-interwiki' => 'Vezi toată configurația străină wiki',
 	'viewconfig' => 'Vizualizează configurația wiki',
+	'configure-throttle-action-edit' => 'Modifică',
+	'configure-throttle-action-move' => 'Redenumește',
+	'configure-throttle-action-rollback' => 'Revenire',
 	'configure-throttle-action-emailuser' => 'Trimite e-mail',
 	'configure-throttle-group-anon' => 'Toți utilizatorii anonimi',
 	'configure-throttle-group-user' => 'Pe cont de utilizator',
 	'configure-throttle-group-newbie' => 'Pe cont de utilizator nou',
 	'configure-throttle-group-ip' => 'Pe adresă IP',
 	'configure-throttle-count' => 'Acțiuni permise:',
+	'configure-throttle-limit' => 'Limită',
+	'configure-throttle-none' => 'Fără limită',
 	'configure-condition-name' => 'Condiție',
+	'configure-condition-requirement' => 'Cerință',
 	'configure-condition-name-1' => 'Număr minim de modificări',
 	'configure-condition-name-2' => 'Vârstă minimă',
 	'configure-condition-name-3' => 'E-mail confirmat',
@@ -8708,6 +8743,8 @@ $messages['ro'] = array(
 	'configure-boolop-description-or' => 'Cel puțin o condiție trebuie să fie îndeplinită',
 	'configure-boolop-description-xor' => 'Exact o condiție trebuie să fie îndeplinită',
 	'configure-boolop-description-not' => 'Nici o condiție nu trebuie să fie îndeplinită',
+	'configure-farmer-settings' => '[[Special:Configure|Configurează acest wiki]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Configurează extensiile pentru acest wiki]].',
 );
 
 /** Tarandíne (Tarandíne)

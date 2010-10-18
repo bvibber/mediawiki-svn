@@ -1677,6 +1677,7 @@ $messages['ro'] = array(
 	'closewikis-log-close' => 'închis $2',
 	'closewikis-log-reopen' => 'redeschis $2',
 	'right-editclosedwikis' => 'Modifică wiki închise',
+	'right-closewikis' => 'Închide wiki-urile',
 );
 
 /** Tarandíne (Tarandíne)

@@ -621,6 +621,13 @@ $messages['lt'] = array(
 	'contrib-tracking-button' => 'Tęsti',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'contrib-tracking-button' => 'Turpināt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

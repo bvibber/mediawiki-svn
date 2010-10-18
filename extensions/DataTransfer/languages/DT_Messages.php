@@ -1159,6 +1159,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'dt_viewxml_categories' => 'ವರ್ಗಗಳು',
+	'dt_xml_namespace' => 'ನಾಮವರ್ಗ',
 	'dt_xml_pages' => 'ಪುಟಗಳು',
 	'dt_xml_page' => 'ಪುಟ',
 	'dt_xml_template' => 'ಟೆಂಪ್ಲೇಟು',

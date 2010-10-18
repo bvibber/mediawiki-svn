@@ -71,6 +71,19 @@ $messages['de'] = array(
 	'specialarc2admin' => '„ARC2 RDF“-Speicher-Administrationsseite',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'rdfio-desc' => 'Funcionalidad expandida de importación y exportación RDF, extremo SPARQL, para Semantic MediaWiki',
+	'rdfimport' => 'Importación RDF',
+	'rdfio-arc2admin-desc' => 'Página de administración del ARC2 RDF Store para Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'Una página especial para importar datos semánticos en formato RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Un extremo SPARQL proporcionado por SMWRDFConnector',
+	'sparqlendpoint' => 'Extremo SPARQL',
+	'specialarc2admin' => 'Página de administración de ARC2 RDF Store',
+);
+
 /** French (Français)
  * @author Verdy p
  */
@@ -108,6 +121,13 @@ $messages['gsw'] = array(
 	'rdfio-sparqlendpoint-desc' => 'E SPARQL-Aachnipfig fir dr SMWRDFConnector',
 	'sparqlendpoint' => 'SPARQL-Aachnipfig',
 	'specialarc2admin' => '„ARC2 RDF“-Spyycher-Administrationssyte',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'rdfimport' => 'יבוא RDF',
 );
 
 /** Interlingua (Interlingua)

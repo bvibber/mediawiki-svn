@@ -1193,6 +1193,13 @@ $messages['ml'] = array(
 	'sitematrix-fishbowl' => 'തിരുത്തൽ പരിമിതപ്പെടുത്തിയിരിക്കുന്നു',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'sitematrix-language' => 'Хэл',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

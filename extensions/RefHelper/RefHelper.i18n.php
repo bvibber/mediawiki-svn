@@ -565,6 +565,19 @@ $messages['ha'] = array(
 	'refhelper-search' => 'Nema',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'refhelper-label_authorsurname' => 'שם משפחה:',
+	'refhelper-title' => 'כותרת:',
+	'refhelper-journal' => 'יומן:',
+	'refhelper-volume' => 'כרך:',
+	'refhelper-year' => 'שנה:',
+	'refhelper-create' => 'יצירה',
+	'refhelper-search' => 'חיפוש',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

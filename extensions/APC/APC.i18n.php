@@ -3814,9 +3814,18 @@ $messages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Papuass
  * @author Xil
  */
 $messages['lv'] = array(
+	'viewapc-hits' => 'Trāpījumi',
+	'viewapc-misses' => 'Kļūdas',
+	'viewapc-rps' => '$1 pieprasījumi sekundē',
+	'viewapc-cache-efficiency' => 'Trāpījumi un kļūdas',
+	'viewapc-display-value' => 'Vērtība',
+	'viewapc-display-filename' => 'Faila nosaukums',
+	'viewapc-display-device' => 'Ierīce',
+	'viewapc-display-info' => 'Nosaukums',
 	'viewapc-ls-submit' => 'Aiziet!',
 );
 

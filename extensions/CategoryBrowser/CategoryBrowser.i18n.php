@@ -248,6 +248,22 @@ Molimo promijenite ili ažurirajte verziju vašeg preglednika, ako je moguće.',
 	'cb_edit_paste_right_hint' => 'Zalijepi operator na slijedeću poziciju, ako je moguće',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'cb_previous_items_link' => 'Anterior',
+	'cb_next_items_link' => 'Següent',
+	'cb_next_items_stats' => '(Des de $ 1)',
+	'cb_cat_subcats' => 'subcategories',
+	'cb_cat_pages' => 'pàgines',
+	'cb_cat_files' => 'fitxers',
+	'cb_apply_button' => 'Aplicar',
+	'cb_all_op' => 'Tots',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'i',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address

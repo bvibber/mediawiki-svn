@@ -1076,6 +1076,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'patrol-revert' => 'ಹಿಂದಿನಂತಾಗಿಸು',
 	'patrol-revert-reason' => 'ಕಾರಣ:',
 );
 

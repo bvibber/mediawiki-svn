@@ -294,6 +294,7 @@ $messages['dsb'] = array(
 $messages['el'] = array(
 	'chemicalsources' => 'Χημικές πηγές',
 	'chemicalsource-desc' => 'Προσθέτει την ετικέτα <nowiki><chemform></nowiki> για χημικούς τύπους',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Ειδική σελίδα]] για χημικές πηγές',
 	'chemFunctions_ListPage' => 'Χημικές πηγές',
 	'chemFunctions_DataList' => 'Παρακάτω βρίσκεται μια λίστα συνδέσμων προς ιστοτόπους που μπορεί να παρέχουν πληροφορίες περί των χημικών ουσιών που αναζητείτε.
 

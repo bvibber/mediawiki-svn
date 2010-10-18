@@ -1395,6 +1395,13 @@ Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.
 	'right-changeauthor' => "De outäör van 'n bewirking aanpasse",
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'changeauthor-changeauthors-single' => 'Mainīt autoru',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

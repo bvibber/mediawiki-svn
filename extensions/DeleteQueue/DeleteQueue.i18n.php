@@ -451,6 +451,17 @@ $messages['ar'] = array(
 	'deletequeue-case-needs-review' => 'هذه الحالة تتطلب [[$1|المراجعة]].',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'deletequeue-list-search-legend' => 'ܒܨܝܐ ܥܠ ܦܐܬܬ̈ܐ',
+	'deletequeue-list-search' => 'ܒܨܝܐ',
+	'deletequeue-list-header-page' => 'ܦܐܬܐ',
+	'deletequeue-list-header-discusspage' => 'ܦܐܬܐ ܕܕܘܪܫܐ',
+	'deletequeue-list-header-reason' => 'ܥܠܬܐ ܕܫܝܦܐ',
+);
+
 /** Araucanian (Mapudungun)
  * @author Remember the dot
  */
@@ -4773,8 +4784,12 @@ $messages['pl'] = array(
 	'right-deletediscuss-nominate' => 'Rozpoczęcie dyskusji nad usunięciem',
 	'right-deletediscuss-review' => 'Zamknięcie dyskusji nad usunięciem',
 	'right-deletequeue-vote' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia',
+	'deletequeue-queue-speedy' => 'Ekspresowe usuwanie',
+	'deletequeue-queue-prod' => 'Propozycje usunięcia',
+	'deletequeue-queue-deletediscuss' => 'Dyskusja usuwania',
 	'deletequeue-review-delete' => 'Usuń stronę.',
 	'deletequeue-review-reason' => 'Komentarze:',
+	'deletequeue-review-newreason' => 'Nowy powód',
 	'deletequeue-review-newextra' => 'Dodatkowe informacje:',
 	'deletequeue-vote-reason' => 'Komentarze:',
 	'deletequeue-vote-submit' => 'Zapisz',
@@ -4786,6 +4801,8 @@ $messages['pl'] = array(
 	'deletequeue-list-header-queue' => 'Kolejka',
 	'deletequeue-list-header-expiry' => 'Upływa',
 	'deletequeue-list-header-discusspage' => 'Strona dyskusji',
+	'deletequeue-case-intro' => 'Na tej stronie znajdziesz informacje na temat konkretnego przypadku usunięcia.',
+	'deletequeue-list-header-reason' => 'Powód usunięcia',
 	'deletequeue-case-details' => 'Podstawowe informacje',
 	'deletequeue-case-page' => 'Strona',
 	'deletequeue-case-reason' => 'Powód',
@@ -5286,6 +5303,7 @@ Você pode registrar que também apóia, ou oferecer objeção a essa eliminaç�
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'deletequeue-action-queued' => 'Ştergeri',
@@ -5294,6 +5312,7 @@ $messages['ro'] = array(
 ** Spam
 ** Întreținere
 ** În afara scopului proiectului',
+	'deletequeue-nom-alreadyqueued' => 'Această pagină se află deja într-o listă de ștergere.',
 	'deletequeue-speedy-title' => 'Marchează "$1" pentru ștergere rapidă',
 	'deletequeue-prod-title' => 'Propune ștergerea lui "$1"',
 	'deletequeue-delnom-reason' => 'Motiv pentru nominalizare:',
@@ -5301,10 +5320,15 @@ $messages['ro'] = array(
 	'right-prod-nominate' => 'Propune ștergerea paginii',
 	'deletequeue-queue-speedy' => 'Ştergere rapidă',
 	'deletequeue-queue-prod' => 'Ştergere propusă',
+	'deletequeue-review-action' => 'Acțiune de întreprins:',
+	'deletequeue-review-delete' => 'Șterge pagina.',
 	'deletequeue-review-reason' => 'Comentarii:',
 	'deletequeue-review-newreason' => 'Motiv nou:',
+	'deletequeue-review-newextra' => 'Informații suplimentare:',
 	'deletequeue-review-submit' => 'Salvați recenzie',
 	'deletequeue-review-original' => 'Motiv pentru nominalizare',
+	'deletequeue-review-badaction' => 'Ați specificat o acțiune invalidă',
+	'deletequeue-review-actiondenied' => 'Ați specificat o acțiune care este dezactivată pentru această pagină',
 	'deletequeue-vote-action' => 'Recomandare:',
 	'deletequeue-vote-reason' => 'Comentarii:',
 	'deletequeue-vote-submit' => 'Trimite',

@@ -433,6 +433,7 @@ $messages['ca'] = array(
 	'readerfeedback-level-4' => 'Exceŀlent',
 	'readerfeedback-submit' => 'Tramet',
 	'readerfeedback-finished' => 'Gràcies!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'readerfeedback-tierfilter' => 'Valoració:',
 	'readerfeedback-tier-high' => 'Alta',
 	'readerfeedback-tier-medium' => 'Moderada',

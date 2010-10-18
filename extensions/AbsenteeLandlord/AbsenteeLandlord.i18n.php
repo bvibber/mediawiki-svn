@@ -72,6 +72,14 @@ $messages['az'] = array(
 	'absenteelandlord-desc' => 'Müəyyən müddət ərzində idarəçilərin heç biri fəal olmadıqda viki layihənin verilənlər bazasını avtomatik kilidləyir',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'absenteelandlord-reason' => 'Мәғлүмәттәр базаһы хәкимдәрҙең әүҙемһеҙлеге арҡаһында үҙенән-үҙе бикләнгән.',
+	'absenteelandlord-desc' => 'Әгәр хәкимдәрҙең береһе лә ниндәйҙер ваҡыт арауығында әүҙемлек күрһәмтәһәләр, вики проекттың мәғлүмәттәр базаһын үҙенән-үҙе  бикләй',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  * @author Mucalexx

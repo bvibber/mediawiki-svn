@@ -956,6 +956,11 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'indexfunc-desc' => 'Funkcja parsera automatycznie tworząca przekierowania i strony ujednoznaczniające',
 	'indexfunc-badtitle' => 'Niepoprawny tytuł „$1”',
+	'indexfunc-editwarning' => 'Uwaga.
+Ten tytuł jest tytułem indeksu {{PLURAL:$2|strony|następujących stron:}}
+$1
+Upewnij się, że strona, którą chcesz utworzyć nie istnieje pod inną nazwą. 
+Jeśli utworzysz tę stronę, usuń tytułu z <nowiki>{{#index:}}</nowiki> dla {{PLURAL:$2|powyższej strony|powyższych stron}}.',
 	'indexfunc-index-exists' => 'Strona „$1” już istnieje',
 	'index' => 'Indeks',
 	'index-legend' => 'Szukaj w indeksie',

@@ -512,6 +512,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'mostrevisors-namespace' => 'ನಾಮವರ್ಗ:',
 	'mostrevisors-submit' => 'ಹೋಗು',
 );
 

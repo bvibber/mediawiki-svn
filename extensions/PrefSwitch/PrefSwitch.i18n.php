@@ -3289,6 +3289,7 @@ $messages['he'] = array(
 	'prefswitch-survey-question-dislike' => 'מה לא אהבתם בתכונות החדשות?',
 	'prefswitch-survey-question-whyoff' => 'למה אתם עוזבים את הגרסה החדשה?
 אנא בחרו את כל האפשרויות המתאימות.',
+	'prefswitch-survey-question-globaloff' => 'האם ברצונך לכבות את התכונות באופן כללי?',
 	'prefswitch-survey-answer-whyoff-hard' => 'היא הייתה קשה מדי לשימוש.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'היא לא פעלה כראוי.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'היא פעלה באופן בלתי צפוי.',
@@ -4654,7 +4655,7 @@ Grįžti į <span class="plainlinks">[$1 $2]</span>.',
  */
 $messages['lv'] = array(
 	'prefswitch-survey-true' => 'Jā',
-	'prefswitch-survey-false' => 'Paldies',
+	'prefswitch-survey-false' => 'Nē',
 );
 
 /** Minangkabau (Baso Minangkabau)

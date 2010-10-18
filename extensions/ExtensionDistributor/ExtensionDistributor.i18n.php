@@ -199,6 +199,13 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 	'extdist-want-more' => 'الحصول على امتداد آخر',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'extdist-want-more' => 'Башҡа киңәйеү алырға',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -890,6 +890,23 @@ Du chasch [$1 vereffentligti Botschafte] läse.',
 	'storyboard-storydeletionconfirm' => 'Bisch sicher, ass Du die Botschaft fir immer witt lesche?',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'storyboard-authoroccupation' => 'עיסוק המחבר',
+	'storyboard-storystate' => 'מצב',
+	'storyboard-yourname' => 'שמך (נדרש)',
+	'storyboard-location' => 'המיקום שלך',
+	'storyboard-photo' => 'יש לך תמונה של עצמך?
+למה לא לשתף אותה?',
+	'storyboard-charsleft' => '({{PLURAL:$1|תו אחד נותר|$1 תווים נותרו}})',
+	'storyboard-imagedeleted' => 'התמונה נמחקה',
+	'storyboard-showimage' => 'הצגת תמונה',
+	'storyboard-hideimage' => 'הסתרת התמונה',
+	'storyboard-deletestory' => 'הסרה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1387,6 +1404,13 @@ $messages['mk'] = array(
 	'storyboard-hideimage' => 'Сокриј слика',
 	'storyboard-deletestory' => 'Отстрани',
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'storyboard-language' => 'Хэл',
 );
 
 /** Marathi (मराठी)

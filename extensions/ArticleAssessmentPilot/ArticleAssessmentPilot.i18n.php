@@ -262,6 +262,24 @@ Da li je želite ocijeniti ponovo.",
 	'articleassessment-survey-thanks' => 'Hvala vam na popunjavanju ankete.',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'articleassessment-submit' => 'Enviar',
+	'articleassessment-rating-neutrality' => 'Neutre:',
+	'articleassessment-rating-completeness' => 'Completar:',
+	'articleassessment-rating-readability' => 'Llegible:',
+	'articleassessment-survey-answer-whyrated-other' => 'Altres',
+	'articleassessment-survey-question-useful-iffalse' => 'Per què?',
+	'articleassessment-survey-question-expert' => 'Et consideres un expert en el camp que aquesta pàgina cobreix?',
+	'articleassessment-survey-question-expert-iftrue' => 'Pots descriure la teva experiència?',
+	'articleassessment-survey-question-comments' => 'Tens algun comentari addicional?',
+	'articleassessment-survey-submit' => 'Trametre',
+	'articleassessment-survey-title' => 'Si us plau, contesti algunes preguntes',
+	'articleassessment-survey-thanks' => "Gràcies per omplir l'enquesta.",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -1137,6 +1155,23 @@ $messages['li'] = array(
 	'articleassessment-survey-question-useful-iffalse' => 'Wróm?',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'articleassessment-submit' => 'Iesniegt',
+	'articleassessment-rating-wellsourced' => 'Korektas atsauces:',
+	'articleassessment-rating-neutrality' => 'Neitralitāte:',
+	'articleassessment-rating-completeness' => 'Pilnīgums:',
+	'articleassessment-rating-readability' => 'Lasāmība:',
+	'articleassessment-articlerating' => 'Lapas vērtējums',
+	'articleassessment-results-hide' => '(<span class="hidelink">Paslēpt rezultātus</span>)',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Man patīk dalīties ar viedokli',
+	'articleassessment-survey-answer-whyrated-other' => 'Cits',
+	'articleassessment-survey-question-useful-iffalse' => 'Kāpēc?',
+	'articleassessment-survey-submit' => 'Iesniegt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1556,8 +1591,8 @@ $messages['ro'] = array(
 	'articleassessment-articlerating' => 'Evaluarea paginii',
 	'articleassessment-error' => 'A apărut o eroare.
 Vă rugăm să încercați din nou mai târziu.',
-	'articleassessment-thanks' => 'Mulțumesc! Evaluările dvs. au fost salvate.',
-	'articleassessment-featurefeedback' => 'Dați-ne <span class="feedbacklink">feedback</span> despre această funcţie.',
+	'articleassessment-thanks' => 'Vă mulțumim! Evaluările dumneavoastră au fost salvate.',
+	'articleassessment-featurefeedback' => 'Oferiți-ne <span class="feedbacklink">reacții</span> la această funcție.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|evaluare|evaluări}})',
 	'articleassessment-stalemessage-norevisioncount' => "Această pagină a fost ''revizuită'' de la ultima dumneavoastră examinare.
 Poate doriți să o reevaluați.",
@@ -1706,6 +1741,50 @@ $messages['scn'] = array(
 	'articleassessment-survey-question-expert-iftrue' => "Po' diri soccu ti firi a fari?",
 	'articleassessment-survey-question-comments' => 'Vò diri autri cosi?',
 	'articleassessment-survey-title' => "Arrispunni a 'na pocu di dumanni",
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'articleassessment' => 'Hodnotenie článku',
+	'articleassessment-desc' => 'Hodnotenie článku (pilotná verzia)',
+	'articleassessment-yourfeedback' => 'Vaše komentáre',
+	'articleassessment-pleaserate' => 'Prosím, venujte chvíľku ohodnoteniu tejto stránky dolu.',
+	'articleassessment-submit' => 'Odoslať',
+	'articleassessment-rating-wellsourced' => 'Dobré zdroje:',
+	'articleassessment-rating-neutrality' => 'Neutralita:',
+	'articleassessment-rating-completeness' => 'Úplnosť:',
+	'articleassessment-rating-readability' => 'Čitateľnosť:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Máte pocit, že táto stránka má dostatok citácií a že tieto citácie pochádzajú z dôveryhodných zdrojov?',
+	'articleassessment-rating-neutrality-tooltip' => 'Máte pocit, že táto stránka férovo prezentuje všetky perspektívy na danú tému?',
+	'articleassessment-rating-completeness-tooltip' => 'Máte pocit, že táto stránka pokrýva všetky dôležité témy, ktoré by mala?',
+	'articleassessment-rating-readability-tooltip' => 'Máte pocit, že táto stránka je dobre zorganizovaná a napísaná dobrým štýlom?',
+	'articleassessment-articlerating' => 'Hodnotenie stránky',
+	'articleassessment-error' => 'Vyskytla sa chyba.
+Prosím, skúste to neskôr.',
+	'articleassessment-thanks' => 'Ďakujeme! Vaše hodnotenie bolo uložené.',
+	'articleassessment-featurefeedback' => 'Pošlite nám <span class="feedbacklink">vaše komentáre</span> k tejto službe.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|hodnotenie|hodnotenia|hodnotení}})',
+	'articleassessment-stalemessage-norevisioncount' => "Táto stránka bola ''revidovaná'' odvtedy, čo ste ju naposledy skontrolovali.
+Možno ju budete chcieť znova ohodnotiť.",
+	'articleassessment-results-show' => '(Výsledky skryté. <span class="showlink">Zobraziť ich</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Skryť výsledky</span>)',
+	'articleassessment-survey-question-whyrated' => 'Prosím, dajte nám vedieť prečo ste dnes ohodnotili túto stránku (zaškrtnite všetky možnosti, ktoré považujete za pravdivé):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Chcel som prispieť k celkovému ohodnoteniu stránky',
+	'articleassessment-survey-answer-whyrated-development' => 'Dúfam, že moje hodnotenie pozitívne ovplyvní vývoj stránky',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Chcel som prispieť do {{GRAMMAR:genitív|{{SITENAME}}}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Rád sa delím o svoj názor',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Dnes som neposkytol hodnotenie, ale chcel som okomentovať túto možnosť',
+	'articleassessment-survey-answer-whyrated-other' => 'Iné',
+	'articleassessment-survey-question-useful' => 'Veríte, že poskytnuté hodnotenia sú užitočné a jasné?',
+	'articleassessment-survey-question-useful-iffalse' => 'Prečo?',
+	'articleassessment-survey-question-expert' => 'Považujete sa za experta v oblasti, ktorú pokrýva táto stránka?',
+	'articleassessment-survey-question-expert-iftrue' => 'Môžete popísať svoju expertízu?',
+	'articleassessment-survey-question-comments' => 'Máte nejaké ďalšie komentáre?',
+	'articleassessment-survey-submit' => 'Odoslať',
+	'articleassessment-survey-title' => 'Prosím, zodpovedajte niekoľko otázok',
+	'articleassessment-survey-thanks' => 'Ďakujeme za vyplnenie dotazníka.',
 );
 
 /** Swedish (Svenska)

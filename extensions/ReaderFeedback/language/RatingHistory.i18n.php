@@ -175,6 +175,26 @@ $messages['arz'] = array(
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'ratinghistory' => 'Битте баһалау тарихы',
+	'ratinghistory-tab' => 'баһа',
+	'ratinghistory-link' => 'Бит баһаһы',
+	'ratinghistory-period' => 'Ваҡыт:',
+	'ratinghistory-month' => 'һуңғы ай',
+	'ratinghistory-3months' => 'һуңғы 3 ай',
+	'ratinghistory-year' => 'һуңғы йыл',
+	'ratinghistory-3years' => 'һуңғы 3 йыл',
+	'ratinghistory-ave' => 'Уртаса: $1',
+	'ratinghistory-purge' => 'кэшты таҙартырға',
+	'ratinghistory-svg' => 'SVG итеп күрһәтелһен',
+	'ratinghistory-table-rating' => 'Баһа',
+	'ratinghistory-table-votes' => 'Тауыштар',
+	'ratinghistory-ratings' => "'''Баһалау:''' '''(1)''' — насар; '''(2)''' — түбән; '''(3)''' — уртаса; '''(4)''' — яҡшы; '''(5)''' — бик шәп;",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

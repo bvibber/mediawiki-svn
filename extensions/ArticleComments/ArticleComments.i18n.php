@@ -43,10 +43,16 @@ Available ones are "plain", "normal" and "wiki".',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Hamilton Abreu
  * @author Siebrand
  */
 $messages['qqq'] = array(
+	'article-comments-title-string' => '{{Identical|Title}}',
+	'article-comments-name-string' => '{{Identical|Name}}',
+	'article-comments-comment-string' => '{{Identical|Comment}}',
+	'article-comments-comment-field' => '{{Identical|Comment}}',
+	'article-comments-submit-button' => '{{Identical|Submit}}',
 	'article-comments-invalid-field' => 'Shown as a list below {{msg-mw|article-comments-failure-reasons}}. With $1 being {{msg-mw|article-comments-title-string}} or {{msg-mw|article-comments-url-string}} messages, and $2 the wrong value.',
 	'article-comments-required-field' => 'Shown as a list below article-comments-failure-reasons. With $1 being one of article-comments-*-string messages.',
 	'article-comments-submission-failed' => 'Page title when there are errors in the comment submission',
@@ -90,6 +96,23 @@ Beskikbare modusse is: "plain", "normal" en "wiki".',
 	'processcomment' => 'Verwerk kommentaar op artikel',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'article-comments-desc' => 'Дазваляе разьдзелы камэнтараў у старонках са зьместам',
+	'article-comments-title-string' => 'назва',
+	'article-comments-name-string' => 'Назва',
+	'article-comments-name-field' => 'Назва (абавязкова):',
+	'article-comments-url-field' => 'Ўэб-сайт:',
+	'article-comments-url-string' => 'URL-адрас',
+	'article-comments-comment-string' => 'Камэнтар',
+	'article-comments-comment-field' => 'Камэнтар:',
+	'article-comments-submit-button' => 'Даслаць',
+	'article-comments-leave-comment-link' => 'Пакінуць камэнтар…',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Gwendal
@@ -126,6 +149,41 @@ Gallout a reer ober gant ar modoù "plaen", "normal" ha "wiki".',
 	'article-comments-comment-missing-date-parameter' => 'Mankout a ra deiziad ar vurutelladenn',
 	'article-comments-no-spam' => 'Merket ez eus bet evel strob da nebeutañ unan eus ar maeziennoù bet kaset.',
 	'processcomment' => 'O plediñ gant burutelladenn ar pennad',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'article-comments-title-string' => 'naslov',
+	'article-comments-name-string' => 'Ime',
+	'article-comments-name-field' => 'Ime (obavezno):',
+	'article-comments-url-field' => 'Web stranica:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentar',
+	'article-comments-comment-field' => 'Komentar:',
+	'article-comments-submit-button' => 'Pošalji',
+	'article-comments-leave-comment-link' => 'Ostavite komentar ...',
+	'article-comments-invalid-field' => 'Navedeni $1 <nowiki>[$2]</nowiki> nije valjan.',
+	'article-comments-required-field' => '$1 polje je obavezno.',
+	'article-comments-submission-failed' => 'Slanje komentara nije uspjelo',
+	'article-comments-commenter-said' => '$1 je napisao ...',
+	'article-comments-comment-missing-name-parameter' => 'Nedostaje ime',
+	'article-comments-comment-missing-date-parameter' => 'Nedostaje datum komentara',
+);
+
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'article-comments-title-string' => 'títol',
+	'article-comments-name-field' => 'Nom (requerit):',
+	'article-comments-url-field' => 'Pàgina web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Comentari',
+	'article-comments-comment-field' => 'Comentari:',
+	'article-comments-submit-button' => 'Tramet',
+	'article-comments-leave-comment-link' => 'Deixa un comentari ...',
 );
 
 /** German (Deutsch)
@@ -408,6 +466,17 @@ $messages['lb'] = array(
 	'article-comments-comment-missing-name-parameter' => 'Den Numm feelt',
 	'article-comments-comment-missing-date-parameter' => 'Datum vun der Bemierkung feelt',
 	'processcomment' => "D'Bemierkung zum Artikel gëtt verschafft",
+);
+
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komentārs',
+	'article-comments-comment-field' => 'Komentārs:',
+	'article-comments-submit-button' => 'Iesniegt',
+	'article-comments-leave-comment-link' => 'Atstāt komentāru ...',
 );
 
 /** Macedonian (Македонски)

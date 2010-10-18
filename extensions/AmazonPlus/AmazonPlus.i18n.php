@@ -967,6 +967,13 @@ $messages['lt'] = array(
 	'amazonplus-less' => 'mažiau',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'amazonplus-amazon' => 'Amazon cena',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

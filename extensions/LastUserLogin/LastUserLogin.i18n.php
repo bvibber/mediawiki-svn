@@ -291,6 +291,17 @@ $messages['gsw'] = array(
 	'right-lastlogin' => 'D Zyt aaluege, wu ne Benutzer sich s letscht Mol aagmäldet gha het',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'lastuserlogin-desc' => 'הצגת הפעם האחרונה בה המשתמש נכנס',
+	'lastuserlogin_userid' => 'שם משתמש',
+	'lastuserlogin_username' => 'שם אמתי',
+	'lastuserlogin_useremail' => 'דוא״ל המשתמש',
+	'lastuserlogin_lastlogin' => 'הכניסה האחרונה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

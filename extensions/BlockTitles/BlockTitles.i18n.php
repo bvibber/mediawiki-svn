@@ -470,6 +470,14 @@ $messages['li'] = array(
 	'block_title_error' => "'t Is neet toegestaon om 'ne pasjena mit deze naam op te slaon.",
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'block_title_error_page_title' => 'Bloķēts nosaukums',
+	'blocktitles-desc' => 'Nodrošina vienkāršu veidu, kā novērst konkrētu nosaukumu lapu izveidi vai labošanu',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

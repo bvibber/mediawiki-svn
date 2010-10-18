@@ -83,6 +83,17 @@ $messages['bs'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Napravi',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'articletocategory2-desc' => "Posa una caixa de text en cada pàgina de la categoria que permeti la creació d'una nova pàgina directament en aquesta categoria",
+	'articletocategory2-create-article-under-category-text' => 'Afegeix una pàgina a aquesta categoria',
+	'articletocategory2-create-article-under-category-button' => 'Crear',
+	'articletocategory2-create-category-under-category-text' => 'Afegir una categoria en aquesta categoria',
+	'articletocategory2-create-category-under-category-button' => 'Crear',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Vytvořit',

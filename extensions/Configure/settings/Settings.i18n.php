@@ -7903,10 +7903,12 @@ $messages['he'] = array(
 	'configure-setting-wgDBerrorLog' => 'קובץ אליו יישמר יומן השגיאות של בסיס הנתונים',
 	'configure-setting-wgDBname' => 'שם בסיס הנתונים לשימוש',
 	'configure-setting-wgDBpassword' => 'סיסמה עבור $wgDBuser',
+	'configure-setting-wgDBadminpassword' => 'ססמה עבור $wgDBadminuser',
 	'configure-setting-wgDBport' => 'פורט החיבור לשרת של בסיס הנתונים',
 	'configure-setting-wgDBserver' => 'השם או כתובת ה־IP של שרת בסיס הנתונים',
 	'configure-setting-wgDBtype' => 'סוג בסיס הנתונים לשימוש',
 	'configure-setting-wgDBuser' => 'שם המשתמש לחיבור אל בסיס הנתונים',
+	'configure-setting-wgDBadminuser' => 'שם המשתמש של מנהל מסד הנתונים',
 	'configure-setting-wgLocalDatabases' => 'בסיסי נתונים אחרים הניתנים לניהול דרך שרת זה',
 	'configure-setting-wgSearchType' => 'סוג החיפוש שיש לבצע בבסיס הנתונים. הגדירו לשם של מחלקה כדי להשתמש במנוע חיפוש מותאם אישית',
 	'configure-setting-wgSharedDB' => 'שם בסיס הנתונים המשותף',
@@ -11065,6 +11067,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'ಹೆಸರು',
+	'configure-setting-wgXhtmlNamespaces-key' => 'ನಾಮವರ್ಗ',
 );
 
 /** Korean (한국어)
@@ -11970,6 +11973,17 @@ $messages['lb'] = array(
 	'configure-setting-wgEnotifMinorEdits' => 'E-Mail Noriichten och fir "kleng Ännerungen" (Benotzer-Astellung gëtt gewisen an de Benotzer muss d\'Optioun aktivéieren)',
 	'configure-setting-wgEnotifUseRealName' => 'De richtegen Numm aplaz vum Benotzernumm am E-Mail-Feld "Vun" bentzen',
 	'configure-setting-wgUsersNotifiedOnAllChanges' => 'Benotzernimm deenen eng Noriicht per Mail geschéckt gëtt bäi all Ännerung op engem Wiki',
+);
+
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'configure-setting-wgMediaHandlers-key' => 'MIME tips',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Lapas nosaukums',
+	'configure-setting-wgSpecialPageGroups-key' => 'Grupa',
+	'configure-setting-wgDebugLogGroups-value' => 'Fails',
+	'configure-setting-wgRightsIcon' => 'Autortiesību ikona',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -16158,8 +16172,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'configure-setting-wgSitename' => 'Nume sait',
 	'configure-setting-wgActionPaths-key' => 'Acțiune',
 	'configure-setting-wgDBname' => 'Numele bazei de date de utilizat',
 	'configure-setting-wgDBtype' => 'Tipul bazei de date de utilizat',
@@ -16183,12 +16200,17 @@ $messages['ro'] = array(
 	'configure-setting-wgDisabledActions' => 'Dezactivează acțiunile paginilor',
 	'configure-setting-wgEnableAPI' => 'Activează API',
 	'configure-setting-wgRestrictionTypes' => 'Acțiuni care pot fi restricționate',
+	'configure-setting-wgEnableEmail' => 'Activează funcționalitățile e-mailului',
 	'configure-setting-wgEnableUserEmail' => 'Activează e-mail între utilizatori',
 	'configure-setting-wgSMTP' => 'Server SMTP',
 	'configure-setting-wgDebugLogGroups-value' => 'Fișier',
 	'configure-setting-wgDisableQueryPageUpdate' => 'Pagini speciale dezactivate',
 	'configure-setting-wgFixDoubleRedirects' => 'Repară redirectările duble după mutarea paginii',
+	'configure-setting-wgCookieSecure' => 'Module cookie securizate',
+	'configure-setting-wgSessionName' => 'Numele sesiunii',
 	'configure-setting-wgUseSquid' => 'Activează Squid',
+	'configure-setting-wgAvailableRights' => 'Lista drepturilor disponibile',
+	'configure-setting-wgSQLMode' => 'Mod SQL',
 	'configure-setting-wgSpecialPages' => 'Pagini speciale personalizate',
 	'configure-setting-wgRevokePermissions-value' => 'Drepturi revocate',
 	'configure-setting-wgValidSkinNames-key' => 'Nume intern',
@@ -16198,6 +16220,8 @@ $messages['ro'] = array(
 	'configure-setting-wgAllowRealName' => 'Permite nume reale',
 	'configure-setting-wgMaxNameChars' => 'Numărul maxim de octeți în numele de utilizator',
 	'configure-setting-wgMinimalPasswordLength' => 'Lungimea minimă a parolei',
+	'configure-setting-wgUseTrackbacks' => 'Folosește trackbackurile',
+	'configure-setting-wgProxyList' => 'Adresă IP interzisă',
 	'configure-setting-wgSecretKey' => 'Cheie secretă',
 	'configure-setting-wgExternalServers' => 'Servere MySQL externe',
 	'configure-setting-wgAllowTitlesInSVG' => 'Permite titluri în fișiere SVG',

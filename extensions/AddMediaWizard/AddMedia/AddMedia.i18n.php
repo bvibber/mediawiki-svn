@@ -1198,8 +1198,14 @@ $messages['bs'] = array(
 	'fogg-cg-meta' => 'Metapodaci za isječak',
 	'fogg-cg-range' => 'Raspon šifriranja',
 	'fogg-preset-custom' => 'Prilagođene postavke',
+	'fogg-audioQuality-title' => 'Kvalitet zvuka',
+	'fogg-height-help' => 'Promijeni veličinu do zadane visine.',
+	'fogg-novideo-title' => 'Nema videa',
 	'fogg-noaudio-title' => 'Bez zvuka',
 	'fogg-title-title' => 'Naslov',
+	'fogg-title-help' => 'Naslov za vaš snimak',
+	'fogg-artist-title' => 'Ime autora',
+	'fogg-artist-help' => 'Autor ovog snimka',
 	'fogg-date-title' => 'Datum',
 	'fogg-location-title' => 'Lokacija',
 	'fogg-copyright-title' => 'Autorsko pravo',
@@ -2259,6 +2265,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Eliovir
  * @author Lucas
  * @author Michawiki
  * @author Yekrats
@@ -2272,6 +2279,20 @@ $messages['eo'] = array(
 	'mwe-uploadwarning' => 'Averto pri alŝuto',
 	'mwe-unknown-error' => 'Nekonata eraro:',
 	'mwe-return-to-form' => 'Reiri al formularo',
+	'mwe-file-exists-duplicate' => 'Ĉi tiu dosiero estas duoblo de la sekvanta dosiero:',
+	'mwe-fileexists' => 'Dosiero kun ĉi tiu nomo ekzistas jam. Bonvolu kontroli <b><code>$1</code></b> se vi cerats ke vi deziras ŝanĝi ĝin.',
+	'mwe-fileexists-thumb' => 'Ekzistanta dosiero',
+	'mwe-ignorewarning' => 'Ignori averton kaj savi dosieron ĉiuokaze',
+	'mwe-file-thumbnail-no' => 'La dosiernomo  komenciĝas kun <b><code>$1></code></b>',
+	'mwe-go-to-resource' => 'Iru al la paĝo de risurcoj',
+	'mwe-upload-misc-error' => 'Nekonata eraro dum alŝutado.',
+	'mwe-wgfogg_warning_bad_extension' => 'Vi elektis dosieron kun malsubtena kromprogramo (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">pli da informo</a>).',
+	'mwe-thumbnail-more' => 'Pligrandigi',
+	'mwe-filesource' => 'Fonto:',
+	'mwe-filestatus' => 'Statuso de kopirajto:',
+	'mwe-loading-add-media-wiz' => 'Ŝarĝante asistilon por aldoni mediojn',
+	'fogg-wont-upload-to-server' => 'Notu: Via video-dosiero estos loke ĉiferita kaj ne alŝutita al iu servilo.',
+	'fogg-save_local_file' => 'Ĉifri al Dosiero',
 	'fogg-videoQuality-title' => 'Videa kvalito',
 	'fogg-starttime-title' => 'Komenca sekundo',
 	'fogg-endtime-title' => 'Fina sekundo',
@@ -2283,7 +2304,10 @@ $messages['eo'] = array(
 	'fogg-date-title' => 'Dato',
 	'fogg-date-help' => 'La dato kiam la dosiero estis farita',
 	'fogg-location-title' => 'Loko',
+	'fogg-copyright-title' => 'Kopirajto',
+	'fogg-license-title' => 'Permisilo',
 	'fogg-license-help' => 'La licenco de la dosiero (prefere URL de Krea Komunejo).',
+	'fogg-contact-title' => 'Kontakto',
 	'mwe-select_file' => 'Elekti dosieron',
 	'mwe-upload' => 'Alŝuti dosieron',
 	'mwe-summary' => 'Resumo',
@@ -3566,6 +3590,9 @@ $messages['he'] = array(
 	'rsd_config_error' => 'שגיאה בהגדרות אשף הוספת המדיה: $1',
 	'mwe-your-recent-uploads' => 'ההעלאות האחרונות שלך ל{{grammar:תחילית|$1}}',
 	'mwe-no_recent_uploads' => 'אין העלאות לאחרונה',
+	'mwe-loggin-link' => 'נא להיכנס',
+	'mwe-try-again-link' => 'ניסיון חוזר',
+	'mwe-upload-a-file' => 'העלאת קובץ חדש',
 	'mwe-resource_page_desc' => 'תיאור דף המשאב:',
 	'mwe-local_resource_title' => 'כותרת המשאב המקומי:',
 	'mwe-watch_this_page' => 'מעקב אחרי דף זה',
@@ -3578,6 +3605,8 @@ $messages['he'] = array(
 	'mwe-ftype-oga' => 'קובץ שמע Ogg',
 	'mwe-ftype-ogg' => 'קובץ וידאו Ogg',
 	'mwe-ftype-unk' => 'מבנה הקובץ אינו מוכר',
+	'rsd-this_wiki-title' => 'הוויקי הזה',
+	'rsd-this_wiki-desc' => 'הוויקי המקומי',
 	'fogg-transcoding' => 'קידוד הווידאו ל־Ogg',
 	'fogg-select_file' => 'בחירת קובץ',
 	'fogg-select_new_file' => 'בחירת קובץ חדש',
@@ -3586,6 +3615,8 @@ $messages['he'] = array(
 	'fogg-installed' => 'Firefogg מותקן',
 	'fogg-not-installed' => 'Firefogg אינו מותקן או שאינו מופעל.',
 	'fogg-for_improved_uploads' => 'להעלאות משופרות:',
+	'fogg-please-install-install-linktext' => 'התקנת Firefogg',
+	'fogg-please-install-about-linktext' => 'על אודות Firefogg',
 	'fogg-use_latest_firefox' => 'ראשית יש להתקין את <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (ומעלה). <b>לאחר מכן יש לבקר בדף זה שוב כדי להתקין את ההרחבה <i>Firefogg</i>.</b>',
 	'fogg-latest-firefox' => 'ה־Firefox העדכני ביותר',
 	'fogg-passthrough_mode' => 'הקובץ שנבחר הוא כבר קובץ Ogg או שאינו קובץ וידאו',
@@ -5172,6 +5203,19 @@ $messages['lv'] = array(
 	'fogg-noaudio-title' => 'Nav audio',
 	'fogg-title-title' => 'Nosaukums',
 	'fogg-title-help' => 'Tava klipa nosaukums',
+	'mwe-upload' => 'Augšupielādēt failu',
+	'mwe-summary' => 'Kopsavilkums',
+	'mwe-link-login' => 'pieslēgties',
+	'mwe-watch-this-file' => 'Uzraudzīt šo failu',
+	'mwe-ignore-any-warnings' => 'Ignorēt visus brīdinājumus',
+	'mwe-uploaded-status' => 'Augšupielādēts',
+	'mwe-try-again-link' => 'mēģināt vēlreiz',
+	'mwe-ftype-svg' => 'SVG vektoru fails',
+	'mwe-ftype-jpg' => 'JPEG attēla fails',
+	'mwe-ftype-png' => 'PNG attēla fails',
+	'mwe-ftype-oga' => 'Ogg audio fails',
+	'mwe-ftype-ogg' => 'Ogg video fails',
+	'mwe-ftype-unk' => 'Nezināms faila formāts',
 );
 
 /** Malagasy (Malagasy)
@@ -7058,6 +7102,7 @@ Por favor, desabilite o <b>Firebug</b> para esta página.',
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -7067,6 +7112,7 @@ $messages['ro'] = array(
 	'mwe-uploaderror' => 'Eroare la upload',
 	'mwe-uploadwarning' => 'Avertisment la upload',
 	'mwe-unknown-error' => 'Eroare necunoscută:',
+	'mwe-return-to-form' => 'Înapoi la formular',
 	'mwe-fileexists' => 'Un fişier cu acest nume există deja. Vă rugăm să verificaţi <b><code>$1</code></b> dacă nu sunteţi sigur dacă doriţi să-l schimbaţi.',
 	'mwe-fileexists-thumb' => 'Fişier existent',
 	'mwe-thumbnail-more' => 'Extinde',
@@ -7076,6 +7122,7 @@ $messages['ro'] = array(
 	'fogg-videoQuality-title' => 'Calitate video',
 	'fogg-audioQuality-title' => 'Calitate audio',
 	'fogg-videoCodec-title' => 'Video codec',
+	'fogg-audioCodec-title' => 'Codec audio',
 	'fogg-width-title' => 'Lăţime clip',
 	'fogg-width-help' => 'Redimensionează la lăţimea dată.',
 	'fogg-height-title' => 'Înălţime clip',
@@ -7907,6 +7954,7 @@ Kontrollera [$1 källa] och hjälp till att beskriva den.',
 
 /** Tamil (தமிழ்)
  * @author TRYPPN
+ * @author செல்வா
  */
 $messages['ta'] = array(
 	'mwe-upload-unknown-size' => 'தெரியாத அளவு',
@@ -7922,7 +7970,7 @@ $messages['ta'] = array(
 	'mwe-filesource' => 'மூலம்:',
 	'fogg-title-title' => 'தலைப்பு',
 	'fogg-artist-title' => 'உருவாக்கியவரின் பெயர்',
-	'fogg-date-title' => 'தேதி',
+	'fogg-date-title' => 'நாள்',
 	'fogg-location-title' => 'இடம்',
 	'fogg-organization-title' => 'அமைப்பு',
 	'fogg-copyright-title' => 'பதிப்புரிமை',
@@ -7936,8 +7984,10 @@ $messages['ta'] = array(
 	'mwe-link-login' => 'புகுபதிகை',
 	'mwe-watch-this-file' => 'இந்த கோப்பினைக் கவனி',
 	'mwe-ignore-any-warnings' => 'எச்சரிக்கைகளை புறக்கணி',
+	'mwe-upload-own-file' => 'என்னுடைய படைப்பைப் $1 இல் பதிவேற்று',
 	'mwe-upload-in-progress' => 'பதிவேற்றம் நடந்து கொண்டுள்ளது (இந்த சாளரத்தை மூடவேண்டாம்)',
 	'mwe-uploaded-status' => 'பதிவேற்றப்பட்டுவிட்டது',
+	'mwe-uploaded-time-remaining' => '$1 இல் இன்னும் இருக்கும் நேரம்',
 	'rsd_box_layout' => 'வடிவமைப்பு பெட்டி',
 	'rsd_list_layout' => 'வடிவமைப்பை பட்டியலிடவும்',
 	'rsd_results_next' => 'அடுத்தது',

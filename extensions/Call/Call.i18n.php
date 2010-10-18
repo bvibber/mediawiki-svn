@@ -1039,8 +1039,10 @@ Em caso de problemas, você poderá experimentar <b>{{#special:call}}/DebuG</b>"
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'call' => 'Apel',
 	'call-save-success' => 'Următorul text a fost salvat la pagina <big>[[$1]]</big> .',
 );
 

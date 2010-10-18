@@ -2106,6 +2106,7 @@ $messages['he'] = array(
 	'openidchooseauto' => 'שם שנוצר אוטומטית ($1)',
 	'openidchoosemanual' => 'השם הנבחר:',
 	'openidchooseexisting' => 'חשבון קיים בוויקי זה:',
+	'openidchooseusername' => 'שם משתמש:',
 	'openidchoosepassword' => 'סיסמה:',
 	'openidconvertinstructions' => 'טופס זה מאפשר לכם לשנות את חשבון המשתמש שלכם לשימוש בכתובת OpenID או להוסיף כתובות OpenID נוספות',
 	'openidconvertoraddmoreids' => 'המרה ל־OpenID או הוספת כתובת OpenID נוספת',
@@ -3458,6 +3459,7 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'openidlanguage' => 'Хэл',
 	'openidtimezone' => 'Цагийн бүс',
 );
 

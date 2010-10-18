@@ -788,10 +788,11 @@ $messages['rif'] = array(
 
 /** Romansh (Rumantsch)
  * @author Gion
+ * @author Gion-andri
  */
 $messages['rm'] = array(
 	'abc-desc' => 'Agiunta il tag <code>&lt;abc&gt;</code> per formatar musica ABC',
-	'abcdownload' => 'Download:',
+	'abcdownload' => 'Telechargiar:',
 );
 
 /** Romanian (Română)

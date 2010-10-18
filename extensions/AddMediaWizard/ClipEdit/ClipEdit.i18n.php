@@ -195,6 +195,26 @@ $messages['bs'] = array(
 	'mwe-clipedit-layout_left' => 'Izgled sa slikom na lijevoj strani',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'mwe-clipedit-sc_audio' => "Control d'audio",
+	'mwe-clipedit-sc_duration' => 'Durada',
+	'mwe-clipedit-template_properties' => 'Propietats de la plantilla',
+	'mwe-clipedit-custom_title' => 'Títol personalitzat',
+	'mwe-clipedit-edit_properties' => 'Edita les propietats',
+	'mwe-clipedit-other_properties' => 'Altres propietats',
+	'mwe-clipedit-resource_page' => 'Pàgina de recursos:',
+	'mwe-clipedit-start_time' => "Hora d'inici",
+	'mwe-clipedit-end_time' => 'Hora de finalització',
+	'mwe-clipedit-edit-tools' => "Eines d'edició",
+	'mwe-clipedit-inline-description' => 'Llegenda',
+	'mwe-clipedit-edit-video-tools' => 'Edita les eines de vídeo:',
+	'mwe-clipedit-duration' => 'Durada:',
+	'mwe-clipedit-layout' => 'Disseny',
+);
+
 /** Czech (Česky) */
 $messages['cs'] = array(
 	'mwe-clipedit-crop' => 'Oříznout obrázek',

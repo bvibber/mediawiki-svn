@@ -201,8 +201,10 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'activestrategy' => 'האסטרטגיה הפעילה',
 	'nedits' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
 );
 

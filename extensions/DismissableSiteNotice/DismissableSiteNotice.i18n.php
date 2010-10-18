@@ -774,6 +774,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'sitenotice_close' => 'заперти',
+	'sitenotice-desc' => 'Доволює хоснователям заперти повідомлїня в заголовю сайту',
 );
 
 /** Yakut (Саха тыла)

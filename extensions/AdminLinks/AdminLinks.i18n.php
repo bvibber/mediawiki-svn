@@ -859,6 +859,16 @@ $messages['ltg'] = array(
 	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'adminlinks_users' => 'Lietotāji',
+	'adminlinks_createuser' => 'Izveidot lietotāju',
+	'adminlinks_browsesearch' => 'Pārlūkot un meklēt',
+	'adminlinks_importexport' => 'Imports un eksports',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */

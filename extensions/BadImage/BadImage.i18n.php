@@ -1556,6 +1556,15 @@ $messages['lt'] = array(
 	'badimages-removed' => '$1 buvo pašalintas iš sąrašo.',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'badimages-add-btn' => 'Pievienot',
+	'badimages-name' => 'Nosaukums:',
+	'badimages-reason' => 'Iemesls:',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

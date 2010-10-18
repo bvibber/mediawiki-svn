@@ -806,6 +806,8 @@ $messages['ro'] = array(
 	'commentbox-name' => 'Nume:',
 	'commentbox-log' => 'Comentarii noi',
 	'commentbox-first-comment-heading' => '== Comentarii ==',
+	'commentbox-regex' => '/\\n==\\s*Comentarii\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Eroare în timpul creării comentariului',
 	'commentbox-error-page-nonexistent' => 'Această pagină nu există',
 	'commentbox-error-empty-comment' => 'Comentariile goale nu sunt permise!',
 );

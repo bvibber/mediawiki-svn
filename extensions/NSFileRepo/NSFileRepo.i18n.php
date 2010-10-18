@@ -51,6 +51,13 @@ $messages['bs'] = array(
 	'nsfilerepo-desc' => 'Omogućuje osobine zasnovane na imenskim prostorima za postavljene datoteke',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'nsfilerepo-desc' => "Proporcionar les característiques basades en l'espai de noms per carregar fitxers",
+);
+
 /** German (Deutsch)
  * @author Imre
  */

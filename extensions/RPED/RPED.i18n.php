@@ -44,6 +44,15 @@ $messages['br'] = array(
 	'rped-wikipedia-url' => 'http://br.wikipedia.org/wiki/$1',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'rped' => 'Otkrivanje postojanja udaljenjih stranica',
+	'rped-desc' => 'Povezuje wikilinkove na Wikipediju ako stranica ne postoji na lokalnoj wiki ali postoji na Wikipediji',
+	'rped-wikipedia-url' => 'http://bs.wikipedia.org/wiki/$1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

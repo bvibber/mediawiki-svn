@@ -439,6 +439,31 @@ $messages['de-formal'] = array(
 Sofern OpenID für künftige Anmeldevorgänge genutzt werden soll, kann das [[Special:Connect/Convert|Benutzerkonto für die Nutzung durch Facebook Connect eingerichtet werden]].",
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'fbconnect' => 'Facebook-Konekto',
+	'fbconnect-desc' => 'Ebligas al uzantoj [[Special:Connect|Konekti]] kun iliaj [http://www.facebook.com Facebook]-kontoj.',
+	'group-fb-user' => 'Uzantoj de Facebook-Konekto',
+	'group-fb-user-member' => 'Uzanto de Facebook-Konekto',
+	'grouppage-fb-user' => '{{ns:project}}:Uzantoj de Facebook-Konekto',
+	'group-fb-groupie' => 'Membroj de grupo',
+	'group-fb-groupie-member' => 'Membro de grupo',
+	'grouppage-fb-groupie' => '{{ns:project}}:Membroj de grupo',
+	'group-fb-officer' => 'Oficiroj de grupo',
+	'group-fb-officer-member' => 'Oficiro de grupo',
+	'grouppage-fb-officer' => '{{ns:project}}:Oficiroj de grupo',
+	'group-fb-admin' => 'Administrantoj de grupo',
+	'group-fb-admin-member' => 'Administranto de grupo',
+	'grouppage-fb-admin' => '{{ns:project}}:Administrantoj de grupo',
+	'fbconnect-connect' => 'Ensaluti kun Facebook-Konekto',
+	'fbconnect-convert' => 'Konekti ĉi tiun konton kun Facebook',
+	'fbconnect-logout' => 'Elsaluti Facebook',
+	'fbconnect-link' => 'Reveni al facebook.com',
+	'fbconnect-title' => 'Konekti konton kun Facebook',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */
@@ -828,6 +853,8 @@ Wänn Du Facebook Connect fir s Aamälde in Zuechumft wit nutze, no chasch [[Spe
  * @author YaronSh
  */
 $messages['he'] = array(
+	'group-fb-user' => 'משתמשי Facebook Connect',
+	'group-fb-user-member' => 'משתמש Facebook Connect',
 	'fbconnect-connect' => 'כניסה עם Facebook Connect',
 	'fbconnect-logout' => 'יציאה מ־Facebook',
 	'fbconnect-link' => 'חזרה ל־facebook.com',
@@ -836,19 +863,29 @@ $messages['he'] = array(
 	'fbconnect-conv' => 'נוחות',
 	'fbconnect-fbml' => 'שפת הסימון של Facebook',
 	'fbconnect-comm' => 'תקשורת',
+	'fbconnect-error' => 'שגיאת אימות',
+	'fbconnect-errortext' => 'אירעה שגיאה במהלך האימות מול Facebook Connect.',
+	'fbconnect-cancel' => 'הפעולה בוטלה',
+	'fbconnect-canceltext' => 'הפעולה הקודמת בוטלה על ידי המשתמש.',
+	'fbconnect-invalid' => 'אפשרות שגויה',
+	'fbconnect-successtext' => 'נכנסת בהצלחה באמצעות Facebook Connect.',
 	'fbconnect-nickname' => 'כינוי',
 	'fbconnect-fullname' => 'שם מלא',
 	'fbconnect-email' => 'כתובת דוא״ל',
 	'fbconnect-language' => 'שפה',
 	'fbconnect-timecorrection' => 'תיקון לאזור הזמן (שעות)',
+	'fbconnect-chooselegend' => 'בחירת שם המשתמש',
 	'fbconnect-chooseinstructions' => 'כל המשתמשים זקוקים לכינוי; ניתן לבחור באחד מהאפשרויות שלהלן.',
 	'fbconnect-invalidname' => 'הכינוי שבחרת כבר תפוס או שאינו תקני.
 נא לנסות לבחור באחד אחר.',
 	'fbconnect-choosefirst' => 'שמך הפרטי ($1)',
+	'fbconnect-choosefull' => 'שמך המלא ($1)',
 	'fbconnect-chooseauto' => 'שם שנוצר אוטומטית ($1)',
 	'fbconnect-choosemanual' => 'שם לבחירתך:',
 	'fbconnect-chooseexisting' => 'חשבון קיים בוויקי זה',
 	'fbconnect-chooseusername' => 'שם משתמש:',
+	'fbconnect-choosepassword' => 'ססמה:',
+	'fbconnect-updateuserinfo' => 'עדכון הפרטים האישיים הבאים:',
 	'fbconnect-error-creating-user' => 'שגיאה ביצירת המשתמש בבסיס הנתונים המקומי.',
 	'fbconnect-prefstext' => 'Facebook Connect',
 	'fbconnect-link-to-profile' => 'Facebook פרופיל',
@@ -1063,6 +1100,12 @@ $messages['lb'] = array(
 	'group-fb-groupie' => 'Membere vum Grupp',
 	'group-fb-groupie-member' => 'Member vum Grupp',
 	'grouppage-fb-groupie' => '{{ns:project}}: Gruppememberen',
+	'group-fb-officer' => 'Responsabel vum Grupp',
+	'group-fb-officer-member' => 'Responsabel vum Grupp',
+	'grouppage-fb-officer' => '{{ns:project}}:Responsabel vum Grupp',
+	'group-fb-admin' => 'Administrateure vum Grupp',
+	'group-fb-admin-member' => 'Administrateur vum Grupp',
+	'grouppage-fb-admin' => '{{ns:project}}:Administrateure vum Grupp',
 	'fbconnect-connect' => 'Mat Facebook-Connect aloggen',
 	'fbconnect-convert' => 'Dëse Kont mat Facebook verbannen',
 	'fbconnect-logout' => 'Ofmellen op Facebook',
@@ -1209,6 +1252,13 @@ $1",
 	'fbconnect-link-to-profile' => 'Профил на Facebook',
 	'fbconnect-prefsheader' => "Контролирање кои настани ќе истакнат некоја ставка на Вашето емитување на новости на Facebook: <a id='fbConnectPushEventBar_show' href='#'>прикажи нагодувања</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>сокриј нагодувања</a>",
 	'fbconnect-prefs-can-be-updated' => 'Овие можете да ги подновите во секое време во јазичето „$1“ во Вашата страница за нагодувања.',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'fbconnect-language' => 'Хэл',
 );
 
 /** Erzya (Эрзянь)

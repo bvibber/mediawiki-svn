@@ -1230,6 +1230,7 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1239,6 +1240,7 @@ $messages['ro'] = array(
 	'deletebatch-delete' => 'Ştergere',
 	'deletebatch-page' => 'Pagini de șters:',
 	'deletebatch-file-missing' => 'Nu se poate citi fișierul dat',
+	'deletebatch-select-yourself' => 'Dumneavoastră',
 );
 
 /** Tarandíne (Tarandíne)

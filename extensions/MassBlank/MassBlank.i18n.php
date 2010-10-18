@@ -238,6 +238,14 @@ $messages['ha'] = array(
 	'massblank-blankcomment' => 'Dalili:',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'massblank-submit-user' => 'מעבר',
+	'massblank-blankcomment' => 'סיבה:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

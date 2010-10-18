@@ -903,6 +903,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'crossnamespacelinks' => 'Одказы міджі просторами назв',
+	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Список одказів міджі просторами назв]], котре бы на {{grammar:6sg|{{SITENAME}}}} не мало быти',
+	'crossnamespacelinks-summary' => 'На тій сторінцї є список одказів із сторінок в головнім просторї назв на сторінкы в іншім просторї назв (окрем просторів {{ns:special}}, {{ns:talk}}, {{ns:project}} і {{ns:template}}), котры ся не рекомендує хосновати.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|одказ|одказы|одказів}} до $3',
 );
 

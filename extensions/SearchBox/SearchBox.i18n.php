@@ -479,6 +479,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'searchbox-search' => 'ಹುಡುಕು',
 	'searchbox-go' => 'ಹೋಗು',
+	'searchbox-namespaces' => 'ನಾಮವರ್ಗಗಳು:',
 );
 
 /** Colognian (Ripoarisch)

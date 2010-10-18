@@ -302,6 +302,17 @@ $messages['gsw'] = array(
 	'pf-header-approve' => 'Gnähmige',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'pf-admin-menu-default' => 'בררת המחדל',
+	'pf-admin-link-view-documentation' => 'צפייה בתיעוד הקשור לדפים.',
+	'pf-admin-link-editlink-page' => 'עריכת דף',
+	'pf-header-documentation' => 'תיעוד',
+	'pf-header-in_packages' => 'חבילות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

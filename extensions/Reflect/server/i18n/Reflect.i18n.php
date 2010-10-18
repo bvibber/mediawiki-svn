@@ -86,6 +86,32 @@ Mar fell deoc\'h lenn ar respont er gendestenn, kit da welet <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] respontet ez eus bet gant $2 an diverradenn graet diwar-benn e soñj',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'reflect-desc' => 'Nadopunjavanje nizanih komentara',
+	'reflect-bulleted' => 'Zdravo $1,
+	
+$2 je napravio sažetak vašeg doprinosa na temu "$3". 
+
+Njihov sažetak: "$5".
+
+Možete potvrditi da li je $2 vašu izjavu dobro shvatio tako što će te posjetiti link <$4>. 
+
+Ako je bilo nejasnoća, možete objasniti vašu zamisao.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Vaš doprinos je sažet od strane $2',
+	'reflect-responded' => 'Zdravo $1, 
+	
+$2 je odgovorio na sažetak vašeg unosa koji je načinjen.
+
+Sažetak koji ste ostavili: "$6". 
+Njihova poruka: "$5".
+
+Ako želite pročitati odgovor u kontekstu, posjetite <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 je odgovorio na vašu sažetu tačku izlaganja',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

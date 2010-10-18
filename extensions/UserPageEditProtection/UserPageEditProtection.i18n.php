@@ -138,6 +138,13 @@ $messages['gsw'] = array(
 	'right-editalluserpages' => 'Benutzersyte bearbeite',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'right-editalluserpages' => 'עריכת דפי משתמש',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

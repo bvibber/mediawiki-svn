@@ -109,9 +109,15 @@ $messages['de'] = array(
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Translationista
  */
 $messages['es'] = array(
+	'semanticformsinputs-desc' => 'Tipos de entrada adicionales para [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semánticos]',
 	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
+	'semanticformsinputs-close' => 'Cerrar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Siguiente',
+	'semanticformsinputs-today' => 'Hoy',
 );
 
 /** French (Français)
@@ -158,6 +164,16 @@ $messages['gsw'] = array(
 	'semanticformsinputs-prev' => 'Vorigi',
 	'semanticformsinputs-next' => 'Negschti',
 	'semanticformsinputs-today' => 'Hit',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'semanticformsinputs-close' => 'סגירה',
+	'semanticformsinputs-prev' => 'הקודם',
+	'semanticformsinputs-next' => 'הבא',
+	'semanticformsinputs-today' => 'היום',
 );
 
 /** Hungarian (Magyar) */

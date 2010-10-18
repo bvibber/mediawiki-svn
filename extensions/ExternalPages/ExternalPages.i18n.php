@@ -55,6 +55,15 @@ $messages['ar'] = array(
 	'externalpages-no-page' => 'لم تحدد الصفحة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'externalpages' => 'Тышҡы биттәр',
+	'externalpages-bad-page' => 'Яңылыш бит күрһәтелгән',
+	'externalpages-no-page' => 'Бер бит тә күрһәтелмәгән',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

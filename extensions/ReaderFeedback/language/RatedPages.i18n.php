@@ -55,6 +55,14 @@ $messages['arz'] = array(
 	'ratedpages-graphs' => 'بيانات التقييم',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'ratedpages' => 'Уҡыусылар баһалаған биттәр',
+	'ratedpages-count' => '$1 {{PLURAL:$1|баһа|баһа}}',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

@@ -8756,9 +8756,12 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'datasearch_language' => 'Хэл:',
+	'ow_exporttsv_languages' => 'Хэлнүүд:',
 	'ow_transaction_rollback_button' => 'Буцаах',
 	'ow_transaction_rollback_header' => 'Буцаах',
 	'ow_transaction_summary' => 'Товч агуулга',
+	'ow_Language' => 'Хэл',
 	'ow_Source' => 'Эх үүсвэр',
 	'ow_show' => 'Үзүүлэх',
 );
