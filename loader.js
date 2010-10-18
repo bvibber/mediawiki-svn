@@ -97,7 +97,10 @@ mw.setDefaultConfig ( {
 	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php',
 	
 	// Set the default loader group strategy
-	'loader.groupStrategy' : 'module'
+	'loader.groupStrategy' : 'module',
+	
+	// Default appendJS string ( not used outside of wikimedia gadget system ) 
+	'Mw.AppendWithJS' : false
 		
 } );
 

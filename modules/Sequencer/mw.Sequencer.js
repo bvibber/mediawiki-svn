@@ -363,7 +363,7 @@ mw.Sequencer.prototype = {
 					.text( gM('mwe-sequencer-loading-player') ),	
 				$j('<div />')
 					.addClass( "ui-layout-south mwseq-timeline" )
-					.text( gM('mwe-sequencer-loading-timeline') )				
+					.text( gM('mwe-sequencer-loading-timeline') )
 			)
 		)
 		.children();

@@ -83,8 +83,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		// Check if we should "merge" the config
 		if( typeof value == 'object' && typeof mwConfig[ name ] == 'object' ) {
-			for( var i in value ){
-				mwConfig[ name ][ i ] = value[ i ];
+			if ( value.constructor.toString().indexOf("Array") == -1 ){
+				for( var i in value ){
+					mwConfig[ name ][ i ] = value[ i ];
+				}
+			} else {
+				// merge in the array 
+				mwConfig[ name ] = mwConfig[ name ].concat( value );
 			}
 		} else {
 			mwConfig[ name ] = value;
@@ -115,11 +120,16 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		// Check if we should "merge" the config
 		if( typeof value == 'object' && typeof mwConfig[ name ] == 'object' ) {
-			for( var i in value ){
-				if( typeof mwConfig[ name ][ i ] == 'undefined' ){
-					mwConfig[ name ][ i ] = value[ i ];
+			if ( value.constructor.toString().indexOf("Array") == -1 ){
+				for( var i in value ){
+					if( typeof mwConfig[ name ][ i ] == 'undefined' ){
+						mwConfig[ name ][ i ] = value[ i ];
+					}
 				}
-			}
+			} else {
+				// merge in the array 
+				mwConfig[ name ] = mwConfig[ name ].concat( value);
+			}			
 		}
 	};
 	
@@ -1281,8 +1291,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 */
 	mw.log = function( string ) {
 		// Add any prepend debug strings if necessary
-		if ( mw.getConfig( 'pre-append-log' ) ){
-			string = mw.getConfig( 'pre-append-log' ) + string;		
+		if ( mw.getConfig( 'Mw.LogPrepend' ) ){
+			string = mw.getConfig( 'Mw.LogPrepend' ) + string;		
 		}
 		
 		if ( window.console ) {

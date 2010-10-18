@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r165';
+var mwRemoteVersion = 'r167';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -72,17 +72,31 @@ if( !mw.setConfig ){
 /*******************************
 * Wikimedia specific config 
 ********************************/
+// The player should attribute kaltura 
+mw.setConfig( 'EmbedPlayer.KalturaAttribution', true );
+
+//The sequencer clips should include attribution 'edit sequence' link on pause
 mw.setConfig( 'Sequencer.KalturaPlayerEditOverlay', true );
-mw.setConfig( 'Sequencer.WithJsMwEmbedUrlHelper', true );
-mw.setConfig( 'EmbedPlayer.KalturaAttribution', true );	
+
+// If the swarm p2p transport stream should be used for clients that have it installed
 mw.setConfig( 'SwarmTransport.Enable', true );
+
+// Sequencer should only load asset from upload.wikimedia.org:
 mw.setConfig( 'SmilPlayer.AssetDomainWhiteList', ['upload.wikimedia.org'] );
 
+// Gadgets should append withJS to requests where we need to re-invoke the gadget on a different page
+// NOTE this is REQUIRED for apiProxy to work across projects where the user has not universally enabled the gadget
+mw.setConfig( 'Mw.AppendWithJS', 'withJS=MediaWiki:MwEmbed.js');
 
+// Allow all wikimedia regEx domains matches to support api-proxy requests  
+// NOTE remember to put $ at the end of the domain or it would match en.wikipedia.org.evil.com 
+mw.setConfig( 'ApiProxy.DomainWhiteList', 
+	[ /wikimedia\.org$/ , /wikipedia\.org$/ , /wiktionary.org$/ , /wikinews.org$/ , /wikibooks.org$/ , /wikisource.org$/ , /wikiversity.org$/ , /wikiquote.org$/ ]
+);
 
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
-if( window.jQuery ){	
+if( window.jQuery ){
 	jQuery( document ).ready( doPageSpecificRewrite );
 } else {
 	addOnloadHook( function() {	

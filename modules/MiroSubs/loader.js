@@ -41,8 +41,7 @@
 				$j( langMenu ).append( 
 					$j.getLineItem( gM( 'mwe-mirosubs-add-universal-subtitles'), 'mirosubs', function() {					
 						// Show loader
-						mw.addLoaderDialog( gM('mwe-mirosubs-loading-universal-subtitles') );
-						
+						mw.addLoaderDialog( gM('mwe-mirosubs-loading-universal-subtitles') );						
 						// Load miro subs:
 						mw.load( 'MiroSubs', function(){
 							// Open the mirosubs dialog: 
