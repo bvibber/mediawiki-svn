@@ -158,9 +158,9 @@ $wgCodeReviewDeferredPaths = array();
 /**
  * UDP comment and status changes notification
  */
-$wgCRUDPAddress = false;
-$wgCRUDPPort = false;
-$wgCRUDPPrefix = '';
+$wgCodeReviewUDPAddress = false;
+$wgCodeReviewUDPPort = false;
+$wgCodeReviewUDPPrefix = '';
 
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
