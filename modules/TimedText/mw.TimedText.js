@@ -503,6 +503,9 @@ mw.includeAllModuleMessages();
 				var catName = mw.getConfig( 'TimedText.NeedsTranscriptCategory' );
 				var $dialog = $j(this);
 				
+				var subRequestCategoryUrl = apiUrl.replace('api.php', 'index.php') +
+					'?title=Category:' + catName.replace(/ /g, '_');
+				
 				var buttonOk= {};
 				buttonOk[gM('mwe-ok')] =function(){
 					$j(this).dialog('close');
@@ -520,7 +523,7 @@ mw.includeAllModuleMessages();
 							var categories = data.query.pages[i].categories;
 							for(var j =0; j < categories.length; j++){
 								if( categories[j].title.indexOf( catName ) != -1 ){									
-									$dialog.html( gM('mwe-timedtext-request-already-done') );
+									$dialog.html( gM('mwe-timedtext-request-already-done', subRequestCategoryUrl ) );
 									$dialog.dialog( 'option', 'buttons', buttonOk);
 									return ;
 								}
@@ -551,10 +554,8 @@ mw.includeAllModuleMessages();
 							// Do the edit request:
 							mw.getJSON( apiUrl, request, function(data){
 								if( data.edit && data.edit.newrevid){
-									$dialog.html( gM('mwe-timedtext-request-subs-done',
-											apiUrl.replace('api.php', 'index.php') +
-											'?title=Category:' + catName.replace(' ', '_')
-										)
+									
+									$dialog.html( gM('mwe-timedtext-request-subs-done', subRequestCategoryUrl )
 									);								
 								} else {
 									$dialog.html( gM('mwe-timedtext-request-subs-fail') );
