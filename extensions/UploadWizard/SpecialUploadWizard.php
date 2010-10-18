@@ -38,8 +38,7 @@ class SpecialUploadWizard extends SpecialPage {
 	public function execute( $subPage ) {
 		global $wgScriptPath, $wgLang, $wgUser, $wgOut;
 
-		// canUpload and canUserUpload have side effects; 
-		// if we can't upload, will print error page to wgOut 
+		// side effects: if we can't upload, will print error page to wgOut 
 		// and return false
 		if (! ( $this->isUploadAllowed() && $this->isUserUploadAllowed( $wgUser ) ) ) {
 			return;
