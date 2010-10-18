@@ -370,8 +370,8 @@ mw.includeAllModuleMessages();
 		},
 		
 		// Get sub captions by language key:
-		getSubCaptions: function( langKey, callback ){			
-			for( var i=0; i < this.textSources.length ) {
+		getSubCaptions: function( langKey, callback ){
+			for( var i=0; i < this.textSources.length; i++ ) {
 				var source = this.textSources[ i ];
 				if( source.srclang.toLowerCase() == langKey ) {
 					var source = this.textSources[ i ];
