@@ -49,96 +49,10 @@ class SpecialUploadWizard extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		/* Doing resource loading the old-fashioned way for now until there's some kind of script-loading
-		   strategy that everyone agrees on, or is available generally 
-		   Essentially this list of scripts has to be topologically-sorted by hand, that is, the depended-upon stuff 
-		   comes first. There can be no circular dependencies.
-		*/
-		$scripts = array( 
-			// jquery is already loaded by vector.
-			// "resources/jquery-1.4.2.js",
-
-			// jquery standard stuff
-			"resources/jquery.ui/ui/ui.core.js",	
-	 		"resources/jquery.ui/ui/ui.progressbar.js",
-			"resources/jquery.ui/ui/ui.datepicker.js",
-	
-			// interface helping stuff
-			"resources/jquery/jquery.tipsy.js",
-			"resources/jquery/jquery.tipsyPlus.js",
-			"resources/jquery/jquery.morphCrossfade.js",
-			"resources/jquery/jquery.validate.js",
-			"resources/jquery/jquery.arrowSteps.js",
-			"resources/jquery/jquery.mwCoolCats.js",
-			"resources/jquery/jquery.autocomplete.js",
-			"resources/jquery/jquery.spinner.js",
-
-			// our application...
-		
-			// miscellaneous utilities
-			"resources/mw.js",
-			"resources/mw.Log.js",
-			"resources/mw.Utilities.js",
-			"resources/mw.UtilitiesTime.js",
-			"resources/mw.Uri.js",
-			"resources/mw.Api.js",
-			"resources/mw.Api.edit.js",
-			// "resources/mw.MockUploadHandler.js",
-			
-			// message parsing and such
-			"resources/language/mw.Language.js",
-			"resources/language/mw.Parser.js",
-			"resources/mw.LanguageUpWiz.js",
-
-			// workhorse libraries
-			// "resources/mw.UploadApiProcessor.js",
-			"resources/mw.IframeTransport.js",
-			"resources/mw.ApiUploadHandler.js",
-			"resources/mw.DestinationChecker.js",
-
-			// interface libraries
-			"resources/mw.GroupProgressBar.js", 
-
-			// upload concepts
-			"resources/mw.Title.js",
-			"resources/mw.UploadWizardDeed.js",
-			"resources/mw.UploadWizardLicenseInput.js",
-			"resources/mw.UploadWizardUtil.js",
-
-			// the thing that does most of it
-			"resources/mw.UploadWizard.js",
-
-			// finally the thing that launches it all
-			"UploadWizardPage.js"
-		);
-
-		if ($langCode !== 'en' ) {
-			$scripts[] = "js/language/classes/Language" . ucfirst( $langCode ) . ".js"; 
-		}
-	
-		$extensionPath = $wgScriptPath . "/extensions/UploadWizard";
-	
-		foreach ( $scripts as $script ) {
-			$wgOut->addScriptFile( $extensionPath . "/" . $script );
-		}
-		// after scripts, get the i18n.php stuff
-		$wgOut->addInlineScript( UploadWizardMessages::getMessagesJs( 'UploadWizard', $wgLang ) );
-
-		$styles = array(
-			"resources/jquery/jquery.tipsy.css",
-			"resources/uploadWizard.css",
-			"resources/jquery/jquery.arrowSteps.css",
-			"resources/jquery/jquery.mwCoolCats.css"
-		);
-
-		// TODO RTL
-		foreach ( $styles as $style ) {
-			$wgOut->addStyle( $extensionPath . "/" . $style, '', '', 'ltr' );
-		}
-		
 		$this->addJsVars( $subPage );
 		
-	
+		$wgOut->addModules( 'ext.uploadWizard' );
+		
 		// where the uploadwizard will go
 		// TODO import more from UploadWizard itself.
 		// "createInterface" call?

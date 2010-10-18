@@ -1,6 +1,8 @@
 /**
  * Sort of an abstract class for deeds
  */
+( function( $j ) {
+	
 mw.UploadWizardDeed = function() {
 	var _this = this;
 	// prevent from instantiating directly?
@@ -456,5 +458,4 @@ mw.UploadWizardDeedChooser.prototype = {
 
 };
 
-
-
+} )( jQuery );

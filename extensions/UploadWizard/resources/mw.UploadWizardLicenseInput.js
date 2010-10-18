@@ -3,6 +3,8 @@
  * @param div 
  * @param values  (optional) array of license key names to activate by default
  */
+
+( function( $j ) {
 mw.UploadWizardLicenseInput = function( selector, values ) {
 	var _this = this;
 
@@ -121,4 +123,4 @@ mw.UploadWizardLicenseInput.prototype = {
 
 };
 
-
+} )( jQuery );

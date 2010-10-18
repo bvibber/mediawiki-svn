@@ -38,7 +38,8 @@ $wgExtensionAliasesFiles['UploadWizard'] = $dir . '/UploadWizard.alias.php';
 # Require modules, includeing the special page
 foreach ( array( 'SpecialUploadWizard', 
 		 'UploadWizardMessages', 
-		 'ApiQueryStashImageInfo' ) as $module ) {
+		 'ApiQueryStashImageInfo',
+		 'UploadWizardHooks' ) as $module ) {
 	$wgAutoloadLocalClasses[$module] = $dir . "/" . $module . ".php";
 }
 $wgAPIPropModules['stashimageinfo'] = 'ApiQueryStashImageInfo';
@@ -53,5 +54,4 @@ $wgResourceLoaderNamedPaths[ 'UploadWizardPage' ] = 'extensions/UploadWizard/Upl
 // Set up the javascript path for the loader and localization file.
 $wgExtensionJavascriptModules[ 'UploadWizard' ] = 'extensions/UploadWizard';
 
-
-
+$wgHooks['ResourceLoaderRegisterModules'][] = 'UploadWizardHooks::resourceLoaderRegisterModules';

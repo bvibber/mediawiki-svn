@@ -9,6 +9,8 @@
  *   'new' 'transporting' 'transported' 'details' 'submitting-details' 'complete' 'failed' 
  * should fork this into two -- local and remote, e.g. filename
  */
+( function( $j ) {
+
 mw.UploadWizardUpload = function( api, filesDiv ) {
 	this.api = api;
 	this.state = 'new';
@@ -2107,9 +2109,6 @@ mw.UploadWizardDeedPreview.prototype = {
 		_this.upload.setThumbnail( thumbnailDiv, mw.UploadWizard.config[  'smallThumbnailWidth'  ] );
 	}
 };
-
-( function( $j ) {
-
 	/**
 	 * Create 'remove' control, an X which highlights in some standardized way.
 	 */
