@@ -96,7 +96,7 @@ class ApiUpload extends ApiBase {
 			try { 
 				$result['sessionkey'] = $this->performStash();
 			} catch ( MWException $e ) { 
-				$warnings['stashfailed'] = $e->getMessage();
+				$result['warnings']['stashfailed'] = $e->getMessage();
 			}
 		} elseif ( $this->mParams['stash'] ) { 
 			// Some uploads can request they be stashed, so as not to publish them immediately.
