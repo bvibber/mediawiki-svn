@@ -145,7 +145,7 @@ mediaWikiSearch.prototype = {
 			'iiprop':       'url|mime|size|metadata',
 			'iiurlwidth':   parseInt( this.rsd.thumb_width ),
 			'rvprop':       'content',
-			'redirects':    '';
+			'redirects':    true
 		};
 		
 		// Do the api request:  
