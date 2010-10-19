@@ -1,0 +1,51 @@
+#!/bin/bash
+
+name="$1"
+keyfile="$2"
+tmpfile=
+
+set -e
+
+if [ -z "$keyfile" ]
+then
+  echo "Usage: add-svn-user <username> <keyfile>"
+  echo "The keyfile should contain the user's SSH public key, and will be copied"
+  echo "to their ~/.ssh/authorized_keys."
+  exit 1
+fi
+
+if [ "${keyfile:0:7}" == "http://" -o "${keyfile:0:8}" == "https://" ]; then
+	echo "Fetching key file"
+	url="$keyfile"
+	tmpfile=`mktemp /tmp/add-svn-user.XXXXXXXX`
+	keyfile="$tmpfile"
+	wget -O "$keyfile" "$url"
+fi
+
+echo "Creating user $name"
+/usr/sbin/useradd -G svn -s /usr/local/bin/sillyshell "$name"
+
+echo "Creating /home/$name"
+mkdir -m 0700 "/home/$name"
+
+echo "Creating /home/$name/.ssh"
+mkdir -m 0700 "/home/$name/.ssh"
+
+echo "Creating /home/$name/.ssh/authorized_keys"
+
+if grep -q 'BEGIN SSH2 PUBLIC KEY' "$keyfile"; then
+	ssh-keygen -i -f "$keyfile" > "/home/$name/.ssh/authorized_keys"
+else
+	cp "$keyfile" "/home/$name/.ssh/authorized_keys"
+fi
+chmod 600 "/home/$name/.ssh/authorized_keys"
+
+echo "Fixing file ownership"
+chown -R "$name:$name" "/home/$name"
+
+if [ -n "$tmpfile" ]; then
+	rm -f "$tmpfile"
+fi
+
+echo "Done."
+
