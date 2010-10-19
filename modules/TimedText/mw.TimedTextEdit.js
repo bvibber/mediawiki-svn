@@ -207,7 +207,7 @@ mw.TimedTextEdit.prototype = {
 		
 		
 		$target.append( 
-			//Get a little helper input filed to update the language
+			//Get a little helper input field to update the language
 			$j('<input />')
 			.attr( {
 				'id' : "timed-text-langKey-input",
