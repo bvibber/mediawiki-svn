@@ -56,11 +56,6 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			$wgPayFlowProGatewayCSSVersion, $wgPayflowGatewayPaypalURL, 
 			$wgPayflowGatewaySalt;
 		
-		session_cache_limiter( 'nocache' );
-		$this->fnPayflowEnsureSession();
-		$this->setHeaders();
-		
-
 		$wgOut->addExtensionStyle( 
 			"{$wgScriptPath}/extensions/DonationInterface/payflowpro_gateway/payflowpro_gateway.css?284" . 
 			$wgPayFlowProGatewayCSSVersion);
@@ -85,10 +80,15 @@ class PayflowProGateway extends UnlistedSpecialPage {
 
 		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );
 		
-		// establish the edit token to prevent csrf
-		$token = $this->fnPayflowEditToken( $wgPayflowGatewaySalt ); //$wgUser->editToken( 'mrxc877668DwQQ' );
-
-
+		 $js = <<<EOT
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("div#p-logo a").attr("href","#");
+});
+</script>
+EOT;
+        $wgOut->addHeadItem( 'logolinkoverride', $js );
+		
 		// find out if amount was a radio button or textbox, set amount
 		if( isset( $_REQUEST['amount'] ) && preg_match( '/^\d+(\.(\d+)?)?$/', $wgRequest->getText( 'amount' ) ) ) {
 			$amount = $wgRequest->getText( 'amount' );
@@ -109,14 +109,32 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		require_once( 'includes/payflowUser.inc' );
 
 		$payflow_data = payflowUser();
+		
+		// if _cache_ is requested by the user, do not set a session/token; dynamic data will be loaded via ajax
+		if ( $wgRequest->getText( '_cache_', false ) ) {
+			$cache = true;
+			$token = '';
+			$token_match = false;	
+		} else {
+			$cache = false;
+			
+			// make sure we have a session open for tracking a CSRF-prevention token
+			$this->fnPayflowEnsureSession();
+					
+			// establish the edit token to prevent csrf
+			$token = self::fnPayflowEditToken( $wgPayflowGatewaySalt );
 
+			// match token
+			$token_check = ( $wgRequest->getText( 'token' ) ) ? $wgRequest->getText( 'token' ) : $token;
+			$token_match = $this->fnPayflowMatchEditToken( $token_check, $wgPayflowGatewaySalt );
+		}
+		
+		$this->setHeaders();
+		
 		// Populate form data
 		$data = $this->fnGetFormData( $amount, $numAttempt, $token, $payflow_data['order_id'] );
 		
-		// Check form for errors and display 
-		// match token
-		$token_check = ( $wgRequest->getText( 'token' ) ) ? $wgRequest->getText( 'token' ) : $token;
-		$token_match = $this->fnPayflowMatchEditToken( $token_check, $wgPayflowGatewaySalt );
+		// dispatch forms/handling
 		if( $token_match ) {
 			/**
 			 *  handle PayPal redirection 
@@ -177,8 +195,10 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				$this->fnPayflowDisplayForm( $data, $this->errors );
 			}
 		} else { 
-			// there's a token mismatch
-			$this->errors['general']['token-mismatch'] = wfMsg( 'payflowpro_gateway-token-mismatch' );
+			if ( !$cache ) {
+				// if we're not caching, there's a token mismatch
+				$this->errors['general']['token-mismatch'] = wfMsg( 'payflowpro_gateway-token-mismatch' );
+			}
 			$this->fnPayflowDisplayForm( $data, $this->errors );
 		}
 	}
@@ -1047,8 +1067,13 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				$tracked_contribution[$key] = null;
 			}
 		}
-
-		$db->update( 'contribution_tracking', $tracked_contribution, array( 'id' => $data[ 'contribution_tracking_id' ] ));
+		
+		// if contrib tracking id is not already set, we need to insert the data, otherwise update
+		if ( !$data[ 'contribution_tracking_id' ] ) {
+			$data[ 'contribution_tracking_id' ] = $this->insertContributionTracking( $tracked_contribution );
+		} else {
+			$db->update( 'contribution_tracking', $tracked_contribution, array( 'id' => $data[ 'contribution_tracking_id' ] ));
+		}
 	}
 	
 	/**

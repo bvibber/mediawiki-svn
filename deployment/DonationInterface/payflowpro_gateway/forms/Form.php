@@ -634,4 +634,65 @@ abstract class PayflowProGateway_Form {
 		$form .= '</tr>';
 		return $form;
 	}
+
+	protected function loadValidateJs() {
+		global $wgOut, $wgScriptPath;
+		$wgOut->addHeadItem( 'validatescript', '<script type="text/javascript" src="' .
+							$wgScriptPath .
+							'/extensions/DonationInterface/payflowpro_gateway/validate_input.js?284"></script>' );
+	}
+
+	protected function loadApiJs() {
+		global $wgOut, $wgScriptPath;
+		$wgOut->addHeadItem( 'pfp_api_call', '<script type="text/javascript" src="' .
+							$wgScriptPath .
+							'/extensions/DonationInterface/payflowpro_gateway/pfp_api_controller.js?284"></script>' );
+	}
+
+	/**
+	 * Generate HTML for <noscript> tags
+	 *
+	 * For displaying when a user does not have Javascript enabled in their browser.
+	 */
+	protected function getNoScript() {
+		global $wgPayflowGatewayNoScriptRedirect;
+
+		$form = '<noscript>';
+		$form .= '<div id="noscript">';
+		$form .= '<p id="noscript-msg">' . wfMsg( 'payflowpro_gateway-noscript-msg' ) . '</p>';
+		if ( $wgPayflowGatewayNoScriptRedirect ) {
+			$form .= '<p id="noscript-redirect-msg">' . wfMsg( 'payflowpro_gateway-noscript-redirect-msg' ) . '</p>';
+			$form .= '<p id="noscript-redirect-link"><a href="' . $wgPayflowGatewayNoScriptRedirect . '">' . $wgPayflowGatewayNoScriptRedirect . '</a></p>';
+		}
+		$form .= '</div>';
+		$form .= '</noscript>';
+		return $form;
+	}
+
+	/**
+	 * Determine the 'no cache' form action
+	 *
+	 * This mostly exists to ensure that the form does not try to use AJAX to
+	 * overwrite certain hidden form params that are normally overwitten for
+	 * cached versions of the form.
+	 * @return string $url The full URL for the form to post to
+	 */
+	protected function getNoCacheAction() {
+		global $wgRequest, $wgTitle;
+
+		$url = $wgRequest->getFullRequestURL();
+		$url_parts = wfParseUrl( $url );
+		$query_array = wfCgiToArray( $url_parts[ 'query' ] );
+		
+		// ensure that _cache_ does not get set in the URL
+		unset( $query_array[ '_cache_' ]);
+		
+		// make sure no other data that might overwrite posted data makes it into the URL
+		foreach ( $this->form_data as $key => $value ) {
+			unset( $query_array[ $key ] );
+		}
+			
+		// construct the submission url
+		return wfAppendQuery( $wgTitle->getLocalURL(), $query_array );
+	}
 }
