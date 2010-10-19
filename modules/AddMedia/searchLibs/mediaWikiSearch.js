@@ -231,7 +231,7 @@ mediaWikiSearch.prototype = {
 					}
 				};		
 				
-				for( var i=0; i < page.imageinfo[0].metadata.length; i++ ){
+				for( var i=0; page.imageinfo[0].metadata && i < page.imageinfo[0].metadata.length; i++ ){
 					if( page.imageinfo[0].metadata[i].name == 'length' ){
 						resource.duration = page.imageinfo[0].metadata[i].value;
 					}
