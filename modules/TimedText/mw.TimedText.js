@@ -271,16 +271,16 @@ mw.includeAllModuleMessages();
 					// Try to insert the track source: 
 					var textElm = document.createElement( 'track' );
 					$j( textElm ).attr({
-						'category' : 'SUB',
+						'category'	: 'SUB',
 						'srclang' 	: textSource.srclang,
-						'type' 	: _this.timedTextExtMime[ textSource.extension ],
+						'type'		: _this.timedTextExtMime[ textSource.extension ],
 						'titleKey' 	: textSource.titleKey
 					});
 					
 					// Build the url for downloading the text: 
 					$j( textElm ).attr('src', 
 						_this.textProvider.apiUrl.replace('api.php', 'index.php?title=') +
-						textSource.titleKey + '&action=raw&ctype=text/x-srt'
+						encodeURIComponent( textSource.titleKey ) + '&action=raw&ctype=text/x-srt'
 					);
 					
 					// Add a title
