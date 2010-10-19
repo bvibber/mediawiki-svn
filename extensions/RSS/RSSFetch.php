@@ -10,26 +10,26 @@
  * Globals - redefine these in your script to change the
  * behaviour of fetch_rss() currently, most options effect the cache
  *
- * $wgMagpieRSSCache - Should Magpie cache parsed RSS objects?
+ * $wgRSSCache - Should we cache parsed RSS objects?
  *
- * $wgMagpieRSSCacheDirectory - Where should Magpie cache parsed RSS objects?
+ * $wgRSSCacheDirectory - Where should we cache parsed RSS objects?
  * This should be a location that the webserver can write to. If this
- * directory does not already exist, Magpie will try to be smart and create it.
+ * directory does not already exist, We will try to be smart and create it.
  * This will often fail for permissions reasons.
  *
- * $wgMagpieRSSCacheAge - How long to store cached RSS objects (in seconds)?.
+ * $wgRSSCacheAge - How long to store cached RSS objects (in seconds)?.
  *
- * $wgMagpieRSSCacheFreshOnly - If remote fetch fails, throw an error
+ * $wgRSSCacheFreshOnly - If remote fetch fails, throw an error
  * instead of returning stale object?
  */
 
-$MAGPIE_ERROR = '';
+$RSS_FETCH_ERROR = '';
 
 /**
  * Return RSS object for the given URL, maintaining caching.
  *
  * NOTES ON CACHING:
- * If caching is on ($wgMagpieRSSCache) fetch_rss will first check the cache.
+ * If caching is on ($wgRSSCache) fetch_rss will first check the cache.
  *
  * NOTES ON RETRIEVING REMOTE FILES:
  * If conditional gets are on (MAGPIE_CONDITIONAL_GET_ON) fetch_rss will
@@ -37,29 +37,32 @@ $MAGPIE_ERROR = '';
  *
  * NOTES ON FAILED REQUESTS:
  * If there is an HTTP error while fetching an RSS object, the cached version
- * will be returned, if it exists (and if $wgMagpieRSSCacheFreshOnly is off)
+ * will be returned, if it exists (and if $wgRSSCacheFreshOnly is off)
  *
  * @param $url String: URL of RSS file
  * @return parsed RSS object (see RSSParse)
  */
 function fetch_rss( $url ) {
-	global $wgMagpieRSSCache, $wgMagpieRSSCacheAge, $wgMagpieRSSCacheFreshOnly;
-	global $wgMagpieRSSCacheDirectory, $wgMagpieRSSFetchTimeout;
-	global $wgMagpieRSSOutputEncoding, $wgMagpieRSSInputEncoding;
-	global $wgMagpieRSSDetectEncoding, $wgMagpieRSSUseGzip;
+	global $wgRSSCache, $wgRSSCacheAge, $wgRSSCacheFreshOnly;
+	global $wgRSSCacheDirectory, $wgRSSFetchTimeout;
+	global $wgRSSOutputEncoding, $wgRSSInputEncoding;
+	global $wgRSSDetectEncoding, $wgRSSUseGzip;
 
-	$wgMagpieRSSCache = true;
-	$wgMagpieRSSCacheAge = 60 * 60; // one hour
-	$wgMagpieRSSCacheFreshOnly = false;
-	$wgMagpieRSSCacheDirectory = '/extensions/RSS/cache';
-	$wgMagpieRSSOutputEncoding = 'ISO-8859-1';
-	$wgMagpieRSSInputEncoding = null;
-	$wgMagpieRSSDetectEncoding = true;
+	$nameValue = array('wgRSSCache' => true,
+		'wgRSSCacheAge' => 60 * 60, // one hour
+		'wgRSSCacheFreshOnly' => false,
+		'wgRSSCacheDirectory' => '/extensions/RSS/cache',
+		'wgRSSOutputEncoding' => 'ISO-8859-1',
+		'wgRSSInputEncoding' => null,
+		'wgRSSDetectEncoding' => true,
+		'wgRSSFetchTimeout' => 5, // 5 second timeout
+		'wgRSSUseGzip' => true);
 
-	$wgMagpieRSSFetchTimeout = 5; // 5 second timeout
-
-	// use gzip encoding to fetch RSS files if supported?
-	$wgMagpieRSSUseGzip = true;
+	foreach($nameValue as $n => $v) {
+		if( !isset( $GLOBALS[$n] ) ) {
+			$GLOBALS[$n] = $v;
+		}
+	}
 
 	if ( !isset( $url ) ) {
 		wfDebugLog( 'RSS', 'fetch_rss (RSSFetch.php) called without a URL!' );
@@ -67,10 +70,11 @@ function fetch_rss( $url ) {
 	}
 
 	// if cache is disabled
-	if ( !$wgMagpieRSSCache ) {
+	if ( !$wgRSSCache ) {
 		// fetch file, and parse it
 		$resp = _fetch_remote_file( $url );
-		if ( $resp->status >= 200 && $resp->status < 300 ) {
+		$errs = $resp->getErrorsArray();
+		if ( count( $errs ) == 0 ) {
 			return _response_to_rss( $resp );
 		} else {
 			wfDebugLog( 'RSS', "Failed to fetch $url and cache is off" );
@@ -82,12 +86,12 @@ function fetch_rss( $url ) {
 		// 2. if there is a hit, make sure its fresh
 		// 3. if cached obj fails freshness check, fetch remote
 		// 4. if remote fails, return stale object, or error
-		$cache = new RSSCache( $wgMagpieRSSCacheDirectory, $wgMagpieRSSCacheAge );
+		$cache = new RSSCache( $wgRSSCacheDirectory, $wgRSSCacheAge );
 
 		if ( $cache->ERROR ) {
 			wfDebugLog(
 				'RSS',
-				'MagpieRSS: cache error on RSSFetch.php! Error msg: ' .
+				'cache error on RSSFetch.php! Error msg: ' .
 					$cache->ERROR
 			);
 		}
@@ -99,7 +103,7 @@ function fetch_rss( $url ) {
 
 		// store parsed XML by desired output encoding
 		// as character munging happens at parse time
-		$cache_key = $url . $wgMagpieRSSOutputEncoding;
+		$cache_key = $url . $wgRSSOutputEncoding;
 
 		if ( !$cache->ERROR ) {
 			// return cache HIT, MISS, or STALE
@@ -112,7 +116,7 @@ function fetch_rss( $url ) {
 			if ( isset( $rss ) && $rss ) {
 				// should be cache age
 				$rss->from_cache = 1;
-				wfDebugLog( 'RSS', 'MagpieRSS: Cache HIT' );
+				wfDebugLog( 'RSS', 'Cache HIT' );
 				return $rss;
 			}
 		}
@@ -128,16 +132,17 @@ function fetch_rss( $url ) {
 			}
 		}
 
+		var_dump($request_headers);
 		$resp = _fetch_remote_file( $url, $request_headers );
 
 		if ( isset( $resp ) && $resp ) {
-			if ( $resp->status == '304' ) {
+			if ( $resp->getStatus() === 304 ) {
 				// we have the most current copy
 				wfDebugLog( 'RSS', "Got 304 for $url" );
 				// reset cache on 304 (at minutillo insistent prodding)
 				$cache->set( $cache_key, $rss );
 				return $rss;
-			} elseif ( $resp->status >= 200 && $resp->status < 300 ) {
+			} elseif ( $resp->getStatus() >= 200 && $resp->getStatus() < 300 ) {
 				$rss = _response_to_rss( $resp );
 				if ( $rss ) {
 					wfDebugLog( 'RSS', 'Fetch successful' );
@@ -147,12 +152,10 @@ function fetch_rss( $url ) {
 				}
 			} else {
 				$errormsg = "Failed to fetch $url ";
-				if ( $resp->status == '-100' ) {
-					global $wgMagpieRSSFetchTimeout;
-					$errormsg .= '(Request timed out after ' . $wgMagpieRSSFetchTimeout . ' seconds)';
+				if ( $resp->getStatus() === -100 ) {
+					global $wgRSSFetchTimeout;
+					$errormsg .= '(Request timed out after ' . $wgRSSFetchTimeout . ' seconds)';
 				} elseif ( $resp->error ) {
-					// compensate for Snoopy's annoying habbit to tacking
-					// on '\n'
 					$http_error = substr( $resp->error, 0, -2 );
 					$errormsg .= "(HTTP Error: $http_error)";
 				} else {
@@ -172,38 +175,47 @@ function fetch_rss( $url ) {
 		}
 
 		// else we totally failed
-		$MAGPIE_ERROR = $errormsg;
+		$RSS_FETCH_ERROR = $errormsg;
 		wfDebugLog(
-			'MagpieRSS (RSSFetch): we totally failed :-( Error message:' .
+			'RSSFetch: we totally failed :-( Error message:' .
 			$errormsg
 		);
 
 		return false;
-	} // end if ( !$wgMagpieRSSCache ) {
+	} // end if ( !$wgRSSCache ) {
 } // end fetch_rss()
 
 /**
  * Retrieve an arbitrary remote file.
  * @param $url String: URL of the remote file
  * @param $headers Array: headers to send along with the request
- * @return an HTTP response object (see Snoopy.class.php)
+ * @return an HTTP response object
  */
 function _fetch_remote_file( $url, $headers = '' ) {
-	global $wgMagpieRSSFetchTimeout, $wgMagpieRSSUseGzip;
-	// Snoopy is an HTTP client in PHP
-	if ( !class_exists( 'Snoopy', false ) ) {
-		require_once( dirname( __FILE__ ) . '/Snoopy.class.php' );
-	}
-	$client = new Snoopy();
-	$client->agent = 'MagpieRSS/0.72 (+http://magpierss.sourceforge.net) / MediaWiki RSS extension';
-	$client->read_timeout = $wgMagpieRSSFetchTimeout;
-	$client->use_gzip = $wgMagpieRSSUseGzip;
-	if ( is_array( $headers ) ) {
-		$client->rawheaders = $headers;
+	global $wgRSSFetchTimeout, $wgRSSUseGzip;
+
+	$client =
+		HttpRequest::factory($url, array('timeout' => $wgRSSFetchTimeout));
+	$client->setUserAgent('MediawikiRSS/0.01 (+http://www.mediawiki.org/wiki/Extension:RSS) / MediaWiki RSS extension');
+	/* $client->use_gzip = $wgRSSUseGzip; */
+	if ( is_array( $headers ) && count( $headers ) > 0 ) {
+		foreach($headers as $h) {
+			if( count( $h ) > 1 ) {
+				$client->setHeader($h[0], $h[1]);
+			} else {
+				var_dump($h);
+			}
+		}
 	}
 
-	@$client->fetch( $url );
-	return $client;
+	$fetch = $client->execute();
+
+	/* @$client->fetch( $url ); */
+	if( $fetch->isGood() ) {
+		return $client;
+	} else {
+		wfDebugLog( 'RSS', 'error fetching $url: ' . $fetch->getMessage() );
+	}
 }
 
 /**
@@ -212,45 +224,24 @@ function _fetch_remote_file( $url, $headers = '' ) {
  * @return parsed RSS object (see RSSParse) or false
  */
 function _response_to_rss( $resp ) {
-	global $wgMagpieRSSOutputEncoding, $wgMagpieRSSInputEncoding, $wgMagpieRSSDetectEncoding;
-	$rss = new MagpieRSS(
-		$resp->results,
-		$wgMagpieRSSOutputEncoding,
-		$wgMagpieRSSInputEncoding,
-		$wgMagpieRSSDetectEncoding
-	);
+	global $wgRSSOutputEncoding, $wgRSSInputEncoding, $wgRSSDetectEncoding;
+	$rss = new RSSData($resp);
 
 	// if RSS parsed successfully
 	if ( $rss && !$rss->ERROR ) {
 		// find Etag and Last-Modified
-		foreach( $resp->headers as $h ) {
-			// 2003-03-02 - Nicola Asuni (www.tecnick.com) - fixed bug "Undefined offset: 1"
-			if ( strpos( $h, ': ' ) ) {
-				list( $field, $val ) = explode( ': ', $h, 2 );
-			} else {
-				$field = $h;
-				$val = '';
-			}
-
-			if ( $field == 'ETag' ) {
-				$rss->etag = $val;
-			}
-
-			if ( $field == 'Last-Modified' ) {
-				$rss->last_modified = $val;
-			}
-		}
 
 		return $rss;
 	} else { // else construct error message
-		$errormsg = 'Failed to parse RSS file.';
+		$errormsg = 'Failed to parsex RSS file.';
 
 		if ( $rss ) {
 			$errormsg .= ' (' . $rss->ERROR . ')';
 		}
-		$MAGPIE_ERROR = $errormsg;
+		$RSS_FETCH_ERROR = $errormsg;
 		wfDebugLog( 'RSS', 'error!' . $errormsg );
 
 		return false;
 	} // end if ( $rss && !$rss->ERROR )
 }
+
