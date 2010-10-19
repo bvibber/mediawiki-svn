@@ -4,8 +4,8 @@
  * MwEmebed module resource list array
  */
 
-return array(
-	'mw.Language' => array ( 'scripts' => 'components/mwEmbed.js' ),
+return array(	
+	'mw.Language' => array ( 'scripts' => 'components/mw.Language.js' ),
 	'mw.Parser' => array ( 'scripts' => 'components/mw.Parser.js' ),
 	'mw.Api' => array ( 'scripts' => 'components/mw.Api.js' ),
 	'mwEmbed' => array( 
@@ -15,10 +15,7 @@ return array(
 		),
 		'group' => 'ext.mwEmbed',
 		'dependencies' => array(
-			'jquery',
-			'mw.Language',
-			'mw.Parser',
-			'mw.Api',
+			'jquery'			
 		),
 		'messages' => 'moduleFile',		
 		'languageScripts' => array(

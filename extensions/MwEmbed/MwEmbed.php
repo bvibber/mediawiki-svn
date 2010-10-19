@@ -8,7 +8,7 @@
  * @author Michael Dale ( michael.dale@kaltura.com )
  * @license GPL v2 or later
  * @version 0.3.0
- */
+ */   
 
 /* Configuration */
 
@@ -27,6 +27,9 @@ $wgAutoloadClasses['MwEmbedResourceManager'] = dirname( __FILE__ ) . '/MwEmbedRe
 $wgExtensionMessagesFiles['MwEmbed'] = dirname( __FILE__ ) . '/MwEmbed.i18n.php';
 
 // Register the core mwEmbed Module:
-MwEmbedResourceManager::registerModulePath( dirname( __FILE__ ) . '/mwEmbed' );
+MwEmbedResourceManager::registerModulePath( 'extensions/MwEmbed/MwEmbed' );
 
-$wgHooks['ResourceLoaderRegisterModules'][] = MwEmbedResourceManager::resourceLoaderRegisterModules;
+$wgHooks['ResourceLoaderRegisterModules'][] = 'MwEmbedResourceManager::registerModules';
+
+// The mwEmbed module is added to all pages if enabled: 
+$wgHooks['BeforePageDisplay'][] = 'MwEmbedResourceManager::addMwEmbedModule';
