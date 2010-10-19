@@ -135,16 +135,17 @@ mediaWikiSearch.prototype = {
 		// Build the image request 
 		var request = {
 			'action':'query',
-			'generator':'search',
-			'gsrsearch': search_query ,
-			'gsrnamespace':6, // (only search the "file" namespace (audio, video, images)
-			'gsrwhat': 'text',
-			'gsrlimit':  this.provider.limit,
-			'gsroffset': this.provider.offset,
-			'prop':'imageinfo|revisions|categories',
-			'iiprop':'url|mime|size|metadata',
-			'iiurlwidth': parseInt( this.rsd.thumb_width ),
-			'rvprop':'content'
+			'generator':    'search',
+			'gsrsearch':    search_query ,
+			'gsrnamespace': 6, // (only search the "file" namespace (audio, video, images)
+			'gsrwhat':      'text',
+			'gsrlimit':     this.provider.limit,
+			'gsroffset':    this.provider.offset,
+			'prop':         'imageinfo|revisions|categories',
+			'iiprop':       'url|mime|size|metadata',
+			'iiurlwidth':   parseInt( this.rsd.thumb_width ),
+			'rvprop':       'content',
+			'redirects':    '';
 		};
 		
 		// Do the api request:  
@@ -184,16 +185,9 @@ mediaWikiSearch.prototype = {
 			for ( var page_id in  data.query.pages ) {
 				var page =  data.query.pages[ page_id ];
 				
-				// Make sure the reop is shared (don't show for now it confusing things)
+				// Make sure the repo is shared (don't show for now it confusing things)
 				// @@todo support remote repository better
 				if ( page.imagerepository == 'shared' ) {
-					continue;
-				}
-				
-				// Make sure the page is not a redirect
-				if ( page.revisions && page.revisions[0] &&
-					page.revisions[0]['*'] && page.revisions[0]['*'].indexOf( '#REDIRECT' ) === 0 ) {
-					// skip page is redirect 
 					continue;
 				}
 				
