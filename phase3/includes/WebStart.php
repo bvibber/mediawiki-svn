@@ -89,16 +89,6 @@ if ( !function_exists( 'version_compare' )
 	exit;
 }
 
-# Test for PHP bug which breaks PHP 5.0.x on 64-bit...
-# As of 1.8 this breaks lots of common operations instead
-# of just some rare ones like export.
-$borked = str_replace( 'a', 'b', array( -1 => -1 ) );
-if( !isset( $borked[-1] ) ) {
-	echo "PHP 5.0.x is buggy on your 64-bit system; you must upgrade to PHP 5.1.x\n" .
-	     "or higher. ABORTING. (http://bugs.php.net/bug.php?id=34879 for details)\n";
-	exit;
-}
-
 # Start the autoloader, so that extensions can derive classes from core files
 require_once( "$IP/includes/AutoLoader.php" );
 
@@ -107,6 +97,7 @@ if ( defined( 'MW_CONFIG_CALLBACK' ) ) {
 	require_once( "$IP/includes/DefaultSettings.php" );
 
 	$callback = MW_CONFIG_CALLBACK;
+	# PHP 5.1 doesn't support "class::method" for call_user_func, so split it
 	if ( strpos( $callback, '::' ) !== false ) {
 		$callback = explode( '::', $callback, 2);
 	}
@@ -124,6 +115,11 @@ if ( defined( 'MW_CONFIG_CALLBACK' ) ) {
 	# Include site settings. $IP may be changed (hopefully before the AutoLoader is invoked)
 	require_once( "$IP/LocalSettings.php" );
 }
+
+if ( $wgEnableSelenium ) {
+	require_once( "$IP/includes/SeleniumWebSettings.php" );
+}
+
 wfProfileOut( 'WebStart.php-conf' );
 
 wfProfileIn( 'WebStart.php-ob_start' );
@@ -145,3 +141,4 @@ wfProfileOut( 'WebStart.php-ob_start' );
 if ( !defined( 'MW_NO_SETUP' ) ) {
 	require_once( "$IP/includes/Setup.php" );
 }
+

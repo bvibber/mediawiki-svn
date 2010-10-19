@@ -151,6 +151,7 @@ $magicWords = array(
 	'nse'                   => array( '0', 'מרחב שם מקודד:', 'NSE:' ),
 	'localurl'              => array( '0', 'כתובת יחסית:', 'LOCALURL:' ),
 	'localurle'             => array( '0', 'כתובת יחסית מקודד:', 'LOCALURLE:' ),
+	'linkurl'               => array( '0', 'כתובת קישור:', 'LINKURL:' ),
 	'articlepath'           => array( '0', 'נתיב הדפים', 'ARTICLEPATH' ),
 	'server'                => array( '0', 'כתובת השרת', 'שרת', 'SERVER' ),
 	'servername'            => array( '0', 'שם השרת', 'SERVERNAME' ),
@@ -1215,7 +1216,7 @@ $1",
 'revmove-norevisions'          => 'לא ציינתם גרסת יעד אחת או יותר שיש לבצע עליה פעולה זו, או שהגרסה שציינתם אינה קיימת.',
 'revmove-nullmove-title'       => 'כותרת שגויה',
 'revmove-nullmove'             => 'דף המקור אינו יכול להיות זהה לדף היעד.
-אנא חזרו לדף הקודם והקלידו שם דף שונה מ"$1".',
+אנא חזרו לדף הקודם והקלידו שם דף שונה מ"[[$1]]".',
 'revmove-success-existing'     => '{{PLURAL:$1|גרסה אחת מ[[$2]] הועברה|$1 גרסאות מ[[$2]] הועברו}} לדף הקיים [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|גרסה אחת מ[[$2]] הועברה|$1 גרסאות מ[[$2]] הועברו}} לדף החדש [[$3]].',
 
@@ -3622,5 +3623,9 @@ $1',
 'htmlform-submit'              => 'שליחה',
 'htmlform-reset'               => 'ביטול השינויים',
 'htmlform-selectorother-other' => 'אחר',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 עם תמיכה בחיפוש בטקסט מלא',
+'sqlite-no-fts'  => '$1 ללא תמיכה בחיפוש בטקסט מלא',
 
 );

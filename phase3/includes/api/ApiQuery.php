@@ -44,7 +44,7 @@ class ApiQuery extends ApiBase {
 
 	private $mPropModuleNames, $mListModuleNames, $mMetaModuleNames;
 	private $mPageSet;
-	private $params;
+	private $params, $redirects, $convertTitles;
 
 	private $mQueryPropModules = array(
 		'info' => 'ApiQueryInfo',
@@ -492,6 +492,7 @@ class ApiQuery extends ApiBase {
 	/**
 	 * Create a generator object of the given type and return it
 	 * @param $generatorName string Module name
+	 * @return ApiQueryGeneratorBase
 	 */
 	public function newGenerator( $generatorName ) {
 		// Find class that implements requested generator
@@ -513,7 +514,7 @@ class ApiQuery extends ApiBase {
 	/**
 	 * For generator mode, execute generator, and use its output as new
 	 * ApiPageSet
-	 * @param $generator string Module name
+	 * @param $generator ApiQueryGeneratorBase Generator Module
 	 * @param $modules array of module objects
 	 */
 	protected function executeGeneratorModule( $generator, $modules ) {
@@ -641,7 +642,8 @@ class ApiQuery extends ApiBase {
 			'generator' => array( 'Use the output of a list as the input for other prop/list/meta items',
 					'NOTE: generator parameter names must be prefixed with a \'g\', see examples' ),
 			'redirects' => 'Automatically resolve redirects',
-			'converttitles' => "Convert titles to other variants if necessary. Only works if the wiki's content language supports variant conversion.",
+			'converttitles' => array( "Convert titles to other variants if necessary. Only works if the wiki's content language supports variant conversion.",
+					'Languages that support variant conversion include kk, ku, gan, tg, sr, zh' ),
 			'indexpageids' => 'Include an additional pageids section listing all returned page IDs',
 			'export' => 'Export the current revisions of all given or generated pages',
 			'exportnowrap' => 'Return the export XML without wrapping it in an XML result (same format as Special:Export). Can only be used with export',

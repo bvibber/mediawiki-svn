@@ -401,6 +401,8 @@ For mange brugere prøver at vise denne side.
 Vent et øjeblik, før du prøver at vise denne side ige.
 
 $1',
+'pool-timeout'      => 'Timeout mens man venter på låsningen',
+'pool-queuefull'    => 'Pool køen er fuld',
 'pool-errorunknown' => 'Ukendt fejl',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -1048,7 +1050,7 @@ Vend tilbage til forrige side og prøv igen.',
 'revmove-norevisions'          => 'Du har ikke angivet en eller flere målversioner for at udføre denne funktion eller den angivne version eksisterer ikke.',
 'revmove-nullmove-title'       => 'Forkert titel',
 'revmove-nullmove'             => 'Slutsiden kan ikke være identisk med startsiden.
-Vend tilbage til forrige side og vælg et andet navn fra "$1".',
+Vend tilbage til forrige side og vælg et andet navn fra "[[$1]]".',
 'revmove-success-existing'     => '{{PLURAL:$1|En version fra [[$2]] er|$1 versioner fra [[$2]] er}} blevet flyttet til den eksisterende side [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|En version fra [[$2]] er|$1 versioner fra [[$2]] er}} blevet flyttet til den nyligt oprettede side [[$3]].',
 
@@ -3328,5 +3330,9 @@ Denne side oplister de tags som programmet kan mærke en redigering med, og dere
 'htmlform-submit'              => 'Gem',
 'htmlform-reset'               => 'Annuller ændringer',
 'htmlform-selectorother-other' => 'Anden',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 med fuld-tekst søgnings support',
+'sqlite-no-fts'  => '$1 uden fuld-tekst søgnings support',
 
 );

@@ -1170,7 +1170,7 @@ Klik op "Weerumme" en prebeer \'t opniej.',
 'revmove-norevisions'          => 'Je hemmen gien versies an-egeven um disse haandeling op uut te voeren of de an-egeven versie besteet neet.',
 'revmove-nullmove-title'       => 'Ongeldige paginanaam',
 'revmove-nullmove'             => 'De bronpagina en doelpagina bin \'tzelfde.
-Klik op "Weerumme" en geef een aandere pagina dan "$1" op.',
+Klik op "Weerumme" en geef een aandere pagina dan "[[$1]]" op.',
 'revmove-success-existing'     => '{{PLURAL:$1|Ene versie van [[$2]] is|$1 versies van [[$2]] bin}} verplaos naor de bestaonde pagina [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Ene versie van[[$2]] is|$1 versies van [[$2]] bin}} verplaos naor de nieje pagina [[$3]].',
 
@@ -1985,7 +1985,7 @@ Een bestaand kan hier dus ten onrechte op-eneumen ween.",
 'booksources'               => 'Boekinfermasie',
 'booksources-search-legend' => 'Zeuk infermasie over een boek',
 'booksources-go'            => 'Zeuk',
-'booksources-text'          => "Hieronder steet een lieste mit verwiezingen naor aandere websteeën dee nieje of gebruken boeken verkopen, en hemmen meschien meer infermasie over 't boek da-j zeuken:",
+'booksources-text'          => "Hieronder steet een lieste mit verwiezingen naor aandere websteeën dee nieje of wat ouwere boeken verkopen, en daor hemmen ze werschienlijk meer infermasie over 't boek da-j zeuken:",
 'booksources-invalid-isbn'  => 'De op-egeven ISBN klop neet; kiek effen nao o-j gien fout emaak hemmen bie de invoer.',
 
 # Special:Log

@@ -1,12 +1,30 @@
 <?php
 
-require_once dirname(__FILE__) . '/../../bootstrap.php';
+require_once dirname(dirname(dirname(__FILE__))). '/bootstrap.php';
 
 /**
+ * This class is not directly tested. Instead it is extended by SearchDbTest.
  * @group Stub
  */
 class SearchEngineTest extends MediaWikiTestSetup {
 	var $db, $search, $pageList;
+
+	/*
+	 * Checks for database type & version.
+	 * Will skip current test if DB does not support search.
+	 */
+	function setUp() {
+		// Search tests require MySQL or SQLite with FTS
+		# Get database type and version
+		$dbType    = $this->db->getType();
+		$dbSupported =
+			($dbType === 'mysql')
+			|| (   $dbType === 'sqlite' && $this->db->getFulltextSearchModule() == 'FTS3' );
+
+		if( !$dbSupported ) {
+			$this->markTestSkipped( "MySQL or SQLite with FTS3 only" );
+		}
+	}
 
 	function pageExists( $title ) {
 		return false;
@@ -47,9 +65,6 @@ class SearchEngineTest extends MediaWikiTestSetup {
 	function fetchIds( $results ) {
 		$this->assertTrue( is_object( $results ) );
 
-		if ( $this->db->getType() !== 'mysql' && $this->db->getType() !== 'sqlite' ) {
-			$this->markTestSkipped( "MySQL or SQLite only" );
-		}
 		$matches = array();
 		while ( $row = $results->next() ) {
 			$matches[] = $row->getTitle()->getPrefixedText();

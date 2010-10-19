@@ -19,8 +19,8 @@ function install_version_checks() {
 	}
 	if ( version_compare( phpversion(), '5.1.0' ) < 0 ) {
 		echo "PHP 5.1.0 or higher is required. If PHP 5 is available only when \n" .
-   "PHP files have a .php5 extension, please navigate to <a href=\"index.php5\">index.php5</a> \n" .
-   "to continue installation. ABORTING.\n";
+		"PHP files have a .php5 extension, please navigate to <a href=\"index.php5\">index.php5</a> \n" .
+		"to continue installation. ABORTING.\n";
 		die( 1 );
 	}
 
@@ -191,7 +191,8 @@ function dbsource( $fname, $db = false ) {
 
 function archive( $name ) {
 	wfDeprecated( __METHOD__ );
-	return DatabaseBase::patchPath( $name );
+	$dbr = wfGetDB( DB_SLAVE );
+	return $dbr->patchPath( $name );
 }
 
 /**

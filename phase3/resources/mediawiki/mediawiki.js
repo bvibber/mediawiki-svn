@@ -55,11 +55,11 @@ window.mediaWiki = new ( function( $ ) {
 		 * An object which allows single and multiple get/set/exists functionality on a list of key / value pairs
 		 * 
 		 * @param {boolean} global whether to get/set/exists values on the window object or a private object
-		 * @param {function} parser function to perform extra processing before while getting a value which accepts
-		 * value and options parameters where value is a string to be parsed and options is an object of options for the
-		 * parser
+		 * @param {function} parser function to perform extra processing; in the form of function( value, options )
+		 * @param {function} fallback function to format default fallback; in the form of function( key )
+		 * where value is the data to be parsed and options is additional data passed through to the parser
 		 */
-		'configuration': function( global, parser ) {
+		'map': function( global, parser, fallback ) {
 			
 			/* Private Members */
 			
@@ -87,7 +87,7 @@ window.mediaWiki = new ( function( $ ) {
 			this.get = function( selection, options ) {
 				if ( typeof selection === 'object' ) {
 					var results = {};
-					for ( s in selection ) {
+					for ( var s in selection ) {
 						if ( selection.hasOwnProperty( s ) ) {
 							if ( typeof s === 'string' ) {
 								return that.get( values[s], selection[s] );
@@ -99,8 +99,13 @@ window.mediaWiki = new ( function( $ ) {
 					return results;
 				} else if ( typeof selection === 'string' ) {
 					if ( typeof values[selection] === 'undefined' ) {
-						return typeof options === 'object' && 'fallback' in options ?
-							options.fallback : '<' + selection + '>';
+						if ( typeof options === 'object' && 'fallback' in options ) {
+							return options.fallback;
+						} else if ( typeof fallback === 'function' ) {
+							return fallback( selection );
+						} else {
+							return null;
+						}
 					} else {
 						if ( typeof parser === 'function' ) {
 							return parser( values[selection], options );
@@ -159,7 +164,7 @@ window.mediaWiki = new ( function( $ ) {
 	 * 
 	 * In legacy mode the values this object wraps will be in the global space
 	 */
-	this.config = new this.prototypes.configuration( LEGACY_GLOBALS );
+	this.config = new this.prototypes.map( LEGACY_GLOBALS );
 	
 	/*
 	 * Information about the current user
@@ -168,7 +173,7 @@ window.mediaWiki = new ( function( $ ) {
 		
 		/* Public Members */
 		
-		this.options = new that.prototypes.configuration();
+		this.options = new that.prototypes.map();
 	} )();
 	
 	/*
@@ -176,9 +181,10 @@ window.mediaWiki = new ( function( $ ) {
 	 */
 	this.parser = function( text, options ) {
 		if ( typeof options === 'object' && typeof options.parameters === 'object' ) {
-			for ( var p = 0; p < options.parameters.length; p++ ) {
-				text = text.replace( '\$' + ( parseInt( p ) + 1 ), options.parameters[p] );
-			}
+			text = text.replace( /\$(\d+)/g, function( str, match ) {
+				var index = parseInt( match, 10 ) - 1;
+				return index in options.parameters ? options.parameters[index] : '$' + match;
+			} );
 		}
 		return text;
 	};
@@ -186,7 +192,7 @@ window.mediaWiki = new ( function( $ ) {
 	/*
 	 * Localization system
 	 */
-	this.msg = new that.prototypes.configuration( false, this.parser );
+	this.msg = new that.prototypes.map( false, this.parser, function( key ) { return '<' + key + '>'; } );
 	
 	/*
 	 * Client-side module loader which integrates with the MediaWiki ResourceLoader
@@ -230,24 +236,18 @@ window.mediaWiki = new ( function( $ ) {
 		/* Private Methods */
 		
 		/**
-		 * Generates an ISO8601 string from a UNIX timestamp
+		 * Generates an ISO8601 "basic" string from a UNIX timestamp
 		 */
 		function formatVersionNumber( timestamp ) {
-			var date = new Date();
-			date.setTime( timestamp * 1000 );
-			function pad1( n ) {
-				return n < 10 ? '0' + n : n
+			function pad( a, b, c ) {
+				return [a < 10 ? '0' + a : a, b < 10 ? '0' + b : b, c < 10 ? '0' + c : c].join( '' );
 			}
-			function pad2( n ) {
-				return n < 10 ? '00' + n : ( n < 100 ? '0' + n : n );     
-			}
-			return date.getUTCFullYear() + '-' +
-				pad1( date.getUTCMonth() + 1 ) + '-' +
-				pad1( date.getUTCDate() ) + 'T' +
-				pad1( date.getUTCHours() ) + ':' +
-				pad1( date.getUTCMinutes() ) + ':' +
-				pad1( date.getUTCSeconds() ) +
-				'Z';
+			var d = new Date()
+			d.setTime( timestamp * 1000 );
+			return [
+				pad( d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate() ), 'T',
+				pad( d.getUTCHours(), d.getUTCMinutes(), d.getUTCSeconds() ), 'Z'
+			].join( '' );
 		}
 		
 		/**
@@ -258,7 +258,7 @@ window.mediaWiki = new ( function( $ ) {
 			// Resolves dynamic loader function and replaces it with it's own results
 			if ( typeof registry[module].dependencies === 'function' ) {
 				registry[module].dependencies = registry[module].dependencies();
-				// Gaurantees the module's dependencies are always in an array 
+				// Ensures the module's dependencies are always in an array 
 				if ( typeof registry[module].dependencies !== 'object' ) {
 					registry[module].dependencies = [registry[module].dependencies];
 				}
@@ -682,12 +682,12 @@ window.mediaWiki = new ( function( $ ) {
 				if ( modules.substr( 0, 7 ) == 'http://' || modules.substr( 0, 8 ) == 'https://' ) {
 					if ( type === 'text/css' ) {
 						setTimeout(  function() {
-							$( 'head' ).append( '<link rel="stylesheet" type="text/css" href="' + modules + '" />' );
+							$( 'head' ).append( '<link rel="stylesheet" type="text/css" />' ).attr( 'href', modules );
 						}, 0 );
 						return true;
 					} else if ( type === 'text/javascript' || typeof type === 'undefined' ) {
 						setTimeout(  function() {
-							$( 'body' ).append( '<script type="text/javascript" src="' + modules + '"></script>' );
+							$( 'body' ).append( '<script type="text/javascript"></script>'  ).attr( 'src', modules )
 						}, 0 );
 						return true;
 					}
@@ -765,10 +765,12 @@ window.mediaWiki = new ( function( $ ) {
 	
 } )( jQuery );
 
-
 /* Auto-register from pre-loaded startup scripts */
 
-if ( typeof window['startUp'] === 'function' ) {
-	window['startUp']();
-	delete window['startUp'];
+if ( typeof startUp === 'function' ) {
+	startUp();
+	delete startUp;
 }
+
+// Alias $j to jQuery for backwards compatibility
+window.$j = jQuery;

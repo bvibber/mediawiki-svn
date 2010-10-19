@@ -20,11 +20,26 @@ $messages = array(
 'tog-highlightbroken'       => 'Bantuk tautan pagat <a href="" class="puga">nangkaya ini</a> (pilihan: nangkaya ini<a href="" class="internal">?</a>)',
 'tog-justify'               => 'Ratakan paragraf',
 'tog-hideminor'             => 'Sungkupakan babakan sapalih dalam parubahan tahanyar',
+'tog-hidepatrolled'         => 'Sungkupakan babakan taawasi dalam parubahan tahanyar',
 'tog-newpageshidepatrolled' => 'Sungkupakan tungkaran nang diitihi matan daptar tungkaran hanyar',
+'tog-usenewrc'              => 'Purukakan panampaian parubahan tahanyar tingkat tinggi  (parlu ada JavaScript)',
+'tog-numberheadings'        => 'Bari numur judul utumatis',
+'tog-showtoolbar'           => 'Tampaiakan bilah pakakas babak (parlu ada JavaScript)',
+'tog-editondblclick'        => 'Babak tungkaran-tungkaran wan klik ganda (parlu ada JavaScript)',
+'tog-editsection'           => 'Kawa-akan babakan hapat limpat tautan [babak]',
 'tog-watchcreations'        => 'Tambahi tungkaran nang ulun ulah ka daptar itihan',
 'tog-watchdefault'          => 'Tambahi tungkaran nang ulun babak ka daptar itihan ulun',
 'tog-watchmoves'            => 'Tambahi tungkaran nang ulun pindah ka daptar itihan ulun',
 'tog-watchdeletion'         => 'Tambahi tungkaran nang ulun hapus ka daptar itihan ulun',
+'tog-previewontop'          => 'Tampaiakan titilikan sabalum kutak babak',
+'tog-previewonfirst'        => 'Tampaiakan titilikan pada babakan kaasa',
+'tog-enotifwatchlistpages'  => 'Surili ulun amun sabuah tungkaran dalam daptar itihan ulun baubah',
+'tog-enotifusertalkpages'   => 'Surili ulun amun tungkaran pamandiran ulun baubah',
+'tog-enotifminoredits'      => 'Surili ulun jua amun ada babakan sapalih matan tungkaran-tungkaran',
+'tog-watchlisthideown'      => 'Sungkupakan babakan ulun di daptar itihan',
+'tog-watchlisthidebots'     => 'Sungkupakan babakan bot di daptar itihan',
+'tog-watchlisthideminor'    => 'Sungkupakan babakan sapalih di daptar itihan',
+'tog-watchlisthideliu'      => 'Sungkupakan babakan pamuruk babuat log di daptar itihan',
 
 'underline-never' => 'Kada suah',
 
@@ -242,7 +257,7 @@ $messages = array(
 Nangkaya ini biasanya dimargakan tautan lawas ka sabuah tungkaran nang halamnya sudah dihapus.
 
 Munnya lainan ini pasalnya, Pian mungkin batamu bug dalam perangkat lunak.
-Silakan lapurakan ini ka saurang [[Special:ListUsers/sysop|pangirak]], ulah catatan URL nang ditulaki',
+Silakan lapurakan ini ka saurang [[Special:ListUsers/sysop|pambakal]], ulah catatan URL nang ditulaki',
 'missingarticle-rev'   => '(ralatan#: $1)',
 'fileappenderror'      => 'Kada kawa mamasukakan "$1" ka "$2".',
 'filecopyerror'        => 'Kada kawa manyalin "$1" ka "$2".',
@@ -254,6 +269,9 @@ Nangini bisa baisi satu atawa labih hurup nang saharusnya kadada di judul.',
 'querypage-no-updates' => 'Pamugaan matan tungkaran ini rahat dipajahkan. Data nang ada di sia wayahini kada akan dimuat ulang.',
 'viewsource'           => 'Tiringi asal mulanya',
 'viewsourcefor'        => 'gasan $1',
+'ns-specialprotected'  => 'Tungkaran istimiwa kada kawa dibabak',
+'titleprotected'       => 'Judul nang ini dilindungi matan paulahannya ulih [[User:$1|$1]].
+Wan alasan nang dibari adalah "\'\'$2\'\'".',
 
 # Login and logout pages
 'yourname'                => 'Ngaran pamuruk',
@@ -437,14 +455,14 @@ Tarai pamintaan Pian lawan ''all:'' gasan manggagai samunyaan isi (tamasuk tungk
 # Groups
 'group'       => 'Galambang:',
 'group-bot'   => 'Bot',
-'group-sysop' => 'Pangirak',
+'group-sysop' => 'Pambakal',
 
 'group-user-member'  => 'Pamuruk',
 'group-bot-member'   => 'Bot',
 'group-sysop-member' => 'Pambakal',
 
 'grouppage-bot'   => '{{ns:project}}:Bot',
-'grouppage-sysop' => '{{ns:project}}:Pangirak',
+'grouppage-sysop' => '{{ns:project}}:Pambakal',
 
 # Rights
 'right-read'          => 'Mambaca tungkaran',
@@ -630,7 +648,7 @@ Pian kawa maubah tingkatan palindungan gasan tungkaran ini, tagal ini kada pacan
 'protect-default'             => 'Bulihakan samua pamuruk',
 'protect-fallback'            => 'Mamarluakan ijin "$1"',
 'protect-level-autoconfirmed' => 'Blukir pamuruk hanyar wan kada tadaptar',
-'protect-level-sysop'         => 'Hanya pangirak',
+'protect-level-sysop'         => 'Hanya pambakal',
 'protect-summary-cascade'     => 'barénténg',
 'protect-expiring'            => 'kadaluwarsa $1 (UTC)',
 'protect-cascade'             => 'Lindungi tungkaran-tungkaran nang tamasuk dalam tungkaran ini (palindungan barénténg)',

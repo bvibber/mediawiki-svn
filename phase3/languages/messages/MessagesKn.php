@@ -60,14 +60,14 @@ $messages = array(
 'tog-hidepatrolled'           => 'ಪಹರೆಯಲ್ಲಿ ಆದ ಸಂಪಾದನೆಗಳನ್ನು ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳಲ್ಲಿ ಅಡಗಿಸು',
 'tog-newpageshidepatrolled'   => 'ಪಹರೆಯಲ್ಲಿ ಆದ ಪುಟಗಳನ್ನು ಹೊಸ ಪುಟಗಳ ಪಟ್ಟಿಯಲ್ಲಿ ಅಡಗಿಸು',
 'tog-extendwatchlist'         => 'ಕೇವಲ ಇತ್ತೀಚೆಗಿನ ಬದಲಾವಣೆಗಳಲ್ಲದೆ, ಸಂಬಂಧಿತ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳನ್ನು ತೋರುವಂತೆ ಪಟ್ಟಿಯನ್ನು ವಿಸ್ತರಿಸಿ',
-'tog-usenewrc'                => "ಹೆಚ್ಚು ಮಾಹಿತಿಯುಳ್ಳ 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು' ಪುಟ (JavaScript)",
+'tog-usenewrc'                => 'ಹೆಚ್ಚು ವರ್ಧಿಸಲಾದ ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು ಪುಟ ಬಳಸು(ಜಾವಸ್ಕ್ರಿಪ್ಟ್ ಬೇಕಾಗುತ್ತದೆ)',
 'tog-numberheadings'          => 'ತಲೆಬರಹಗಳಿಗೆ ಅಂಕಿಗಳನ್ನು ತೋರಿಸು',
 'tog-showtoolbar'             => 'ಸಂಪಾದನೆಯ ಉಪಕರಣಗಳ ಪಟ್ಟಿಯನ್ನು ತೋರು (JavaScript)',
 'tog-editondblclick'          => 'ಎರಡು ಬಾರಿ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಪುಟವು ಸಂಪಾದಿಸುವಂತಾಗಲಿ (JavaScript)',
 'tog-editsection'             => 'ಪುಟದ ವಿಭಾಗಗಳನ್ನು [ಬದಲಾಯಿಸು] ಕೊಂಡಿಗಳನ್ನು ಒತ್ತುವುದರಿಂದ ಸಂಪಾದನೆ ಮಾಡುವಂತೆ ಇರಲಿ',
 'tog-editsectiononrightclick' => 'ಪುಟದ ವಿಭಾಗಗಳನ್ನು ಅವುಗಳ ಶೀರ್ಷಿಕೆಯನ್ನು ಎರಡು ಬಾರಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಸಂಪಾದನೆ ಮಾಡುವಂತೆ ಇರಲಿ (JavaScript)',
 'tog-showtoc'                 => 'ಪರಿವಿಡಿಯನ್ನು ತೋರಿಸು (ಮೂರಕ್ಕಿಂತ ಹೆಚ್ಚು ತಲೆಬರಹಗಳನ್ನು ಹೊಂದಿರುವ ಪುಟಗಳಿಗೆ)',
-'tog-rememberpassword'        => 'ಈ ಗಣಕಯಂತ್ರದಲ್ಲಿ ನನ್ನ ಲಾಗಿನ್ ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊ (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'tog-rememberpassword'        => 'ಈ ಗಣಕಯಂತ್ರದಲ್ಲಿ ನನ್ನ ಲಾಗಿನ್ ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊ (ಗರಿಷ್ಠ $1 {{PLURAL:$1|ದಿನದ|ದಿನಗಳ}}ವರೆಗೆ)',
 'tog-watchcreations'          => 'ನಾನು ಪ್ರಾರಂಭಿಸುವ ಲೇಖನಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdefault'            => 'ನಾನು ಸಂಪಾದಿಸುವ ಪುಟಗಳನ್ನು ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchmoves'              => 'ನಾನು ಸ್ಥಳಾಂತರಿಸುವ ಪುಟಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
@@ -98,6 +98,10 @@ $messages = array(
 'underline-always'  => 'ಯಾವಾಗಲೂ',
 'underline-never'   => 'ಎಂದಿಗೂ ಇಲ್ಲ',
 'underline-default' => 'ಬ್ರೌಸರ್‍ನ ಯಥಾಸ್ಥಿತಿ',
+
+# Font style option in Special:Preferences
+'editfont-sansserif' => 'ಸಾನ್ಸ್-ಸೆರಿಫ಼್ ಮುದ್ರಲಿಪಿ',
+'editfont-serif'     => 'ಸೆರಿಫ಼್ ಮುದ್ರಲಿಪಿ',
 
 # Dates
 'sunday'        => 'ಭಾನುವಾರ',
@@ -199,15 +203,18 @@ $messages = array(
 'faqpage'        => 'Project:ಸಾಮಾನ್ಯವಾಗಿ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು',
 
 # Vector skin
-'vector-action-delete'    => 'ಅಳಿಸು',
-'vector-action-move'      => 'ಸ್ಥಳಾಂತರಿಸಿ',
-'vector-action-protect'   => 'ಸಂರಕ್ಷಿಸು',
-'vector-action-unprotect' => 'ಸಂರಕ್ಷಣೆಯನ್ನು ತೆಗೆ',
-'vector-view-create'      => 'ಸೃಷ್ಟಿಸು',
-'vector-view-edit'        => 'ಸಂಪಾದಿಸಿ',
-'vector-view-history'     => 'ಇತಿಹಾಸವನ್ನು ನೋಡಿ',
-'vector-view-view'        => 'ಓದು',
-'vector-view-viewsource'  => 'ಆಕರ ವೀಕ್ಷಿಸು',
+'vector-action-addsection' => 'ವಿಷಯ ಸೇರಿಸಿ',
+'vector-action-delete'     => 'ಅಳಿಸು',
+'vector-action-move'       => 'ಸ್ಥಳಾಂತರಿಸಿ',
+'vector-action-protect'    => 'ಸಂರಕ್ಷಿಸು',
+'vector-action-unprotect'  => 'ಸಂರಕ್ಷಣೆಯನ್ನು ತೆಗೆ',
+'vector-view-create'       => 'ಸೃಷ್ಟಿಸು',
+'vector-view-edit'         => 'ಸಂಪಾದಿಸಿ',
+'vector-view-history'      => 'ಇತಿಹಾಸವನ್ನು ನೋಡಿ',
+'vector-view-view'         => 'ಓದು',
+'vector-view-viewsource'   => 'ಆಕರ ವೀಕ್ಷಿಸು',
+'actions'                  => 'ಕ್ರಿಯೆಗಳು',
+'namespaces'               => 'ನಾಮವರ್ಗಗಳು',
 
 'errorpagetitle'    => 'ದೋಷ',
 'returnto'          => '$1 ಗೆ ಹಿಂತಿರುಗಿ.',
@@ -263,6 +270,7 @@ $messages = array(
 'jumpto'            => 'ಇಲ್ಲಿಗೆ ಹೋಗು:',
 'jumptonavigation'  => 'ಸಂಚರಣೆ',
 'jumptosearch'      => 'ಹುಡುಕು',
+'pool-errorunknown' => 'ಅಪರಿಚಿತ ದೋಷ',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'ಕನ್ನಡ {{SITENAME}} ಬಗ್ಗೆ',
@@ -401,6 +409,9 @@ $2',
 'titleprotected'       => "ಈ ಹೆಸರಿನ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲಾಗದಂತೆ [[User:$1|$1]] ಅವರು ಸಂರಕ್ಷಿಸಿದ್ದಾರೆ.
 ಸಂರಕ್ಷಣೆಗೆ ನೀಡಿರುವ ಕಾರಣ: ''$2''.",
 
+# Virus scanner
+'virus-unknownscanner' => 'ಅಪರಿಚಿತ ವೈರಾಣುನಾಶಕ:',
+
 # Login and logout pages
 'logouttext'                 => "'''ನೀವು ಈಗ ಲಾಗ್ ಔಟ್ ಆಗಿರುವಿರಿ.'''
 
@@ -427,6 +438,7 @@ $2',
 'gotaccount'                 => "ಈಗಾಗಲೇ ಖಾತೆಯಿದೆಯೇ? '''$1'''.",
 'gotaccountlink'             => 'ಲಾಗ್ ಇನ್',
 'createaccountmail'          => 'ಇ-ಅಂಚೆಯ ಮೂಲಕ',
+'createaccountreason'        => 'ಕಾರಣ:',
 'badretype'                  => 'ನೀವು ಕೊಟ್ಟ ಪ್ರವೇಶಪದಗಳು ಬೇರೆಬೇರೆಯಾಗಿವೆ.',
 'userexists'                 => 'ನೀವು ನೀಡಿದ ಸದಸ್ಯರ ಹೆಸರು ಆಗಲೆ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಬೇರೊಂದು ಹೆಸರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
 'loginerror'                 => 'ಲಾಗಿನ್ ದೋಷ',
@@ -482,6 +494,13 @@ $2',
 ಆ ಖಾತೆ ತಪ್ಪಾಗಿ ತೆಗೆದಿದ್ದಲ್ಲಿ, ಈ ಸಂದೇಶವನ್ನು ನೀವು ಅಲಕ್ಷಿಸಬಹುದು.',
 'loginlanguagelabel'         => 'ಭಾಷೆ: $1',
 
+# JavaScript password checks
+'password-strength'            => 'ಅಂದಾಜಿಸಲ್ಪಟ್ಟ ಪ್ರವೇಶಪದ ಬಲ: $1',
+'password-strength-bad'        => 'ದುರ್ಬಲ',
+'password-strength-mediocre'   => 'ಸಾಧಾರಣ',
+'password-strength-acceptable' => 'ಸ್ವೀಕಾರಾರ್ಹ',
+'password-strength-good'       => 'ಉತ್ತಮ',
+
 # Password reset dialog
 'resetpass'                 => 'ಪ್ರವೇಶಪದವನ್ನು ಬದಲಾಯಿಸಿ',
 'resetpass_announce'        => 'ನೀವು ತಾತ್ಕಾಲಿಕ ಇ-ಅಂಚೆ ಕೋಡ್ ಅನ್ನು ಉಪಯೋಗಿಸಿ ಲಾಗ್ ಇನ್ ಆಗಿರುವಿರಿ.
@@ -494,6 +513,7 @@ $2',
 'resetpass_success'         => 'ನಿಮ್ಮ ಪ್ರವೇಶ ಪದವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಬದಲಾಯಿಸಲಾಗಿದೆ. ಈಗ ನಿಮ್ಮನ್ನು ಲಾಗ್ ಇನ್ ಮಾಡಲಾಗುತ್ತಿದೆ...',
 'resetpass_forbidden'       => 'ಪ್ರವೇಶಪದಗಳನ್ನು ಬದಲಾಯಿಸುವಂತಿಲ್ಲ.',
 'resetpass-submit-loggedin' => 'ಪ್ರವೇಶಪದ ಬದಲಾಯಿಸು',
+'resetpass-submit-cancel'   => 'ರದ್ದು ಮಾಡು',
 'resetpass-temp-password'   => 'ತಾತ್ಕಾಲಿಕ ಪ್ರವೇಶಪದ:',
 
 # Edit page toolbar
@@ -643,6 +663,7 @@ $2',
 ಪುಟದ ಅಳಿಸುವಿಕೆ ದಿನಚರಿಯನ್ನು ಈ ಕೆಳಗೆ ನೀಡಲಾಗಿದೆ:",
 'moveddeleted-notice'              => 'ಈ ಪುಟವು ಅಳಿಸಲ್ಪಟ್ಟಿದೆ.
 ಈ ಪುಟದ ಅಳಿಸುವಿಕೆಯ ದಾಖಲೆಯನ್ನು ಕೆಳಗೆ ತೋರಿಸಲಾಗಿದೆ.',
+'edit-conflict'                    => 'ಸಂಪಾದನಾ ಘರ್ಷಣೆ.',
 'edit-already-exists'              => 'ಹೊಸ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸಲಾಗಲಿಲ್ಲ.
 ಅದು ಆಗಲೆ ಅಸ್ಥಿತ್ವದಲ್ಲಿದೆ.',
 
@@ -651,6 +672,7 @@ $2',
 
 ಈಗ {{PLURAL:$1|$1 ಕರೆ|$1 ಕರೆಗಳು}} ಇದ್ದು, $2 {{PLURAL:$2|ಕರೆಗಿಂತ|ಕರೆಗಳಿಗಿಂತ}} ಕಡಿಮೆ ಇರಬೇಕು.',
 'expensive-parserfunction-category' => 'ಬಹುತೇಕ ದುಬಾರಿ parser function ಕರೆಗಳಿರುವ ಪುಟಗಳು',
+'parser-template-loop-warning'      => 'ಟೆಂಪ್ಲೇಟು ಆವರ್ತನೆ ಪತ್ತೆಯಾಗಿದೆ: [[$1]]',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'ಖಾತೆಯನ್ನು ಸೃಷ್ಟಿಸಲಾಗುತ್ತಿಲ್ಲ',
@@ -674,6 +696,7 @@ $2',
 ಆಖ್ಯಾನ: (ಈಗಿನ) = ಪ್ರಸಕ್ತ ಆವೃತ್ತಿಯೊಂದಿಗೆ ವ್ಯತ್ಯಾಸಗಳು,
 (ಕೊನೆಯ) = ಹಿಂದಿನ ಆವೃತ್ತಿಯೊಂದಿಗೆ ವ್ಯತ್ಯಾಸಗಳು, ಚು = ಚುಟುಕಾದ ಬದಲಾವಣೆ.',
 'history-fieldset-title' => 'ಇತಿಹಾಸವನ್ನು ವಿಹರಿಸಿ',
+'history-show-deleted'   => 'ಅಳಿಸಿದ್ದು ಮಾತ್ರ',
 'histfirst'              => 'ಅತ್ಯಂತ ಮುಂಚಿನ',
 'histlast'               => 'ಅತ್ಯಂತ ಇತ್ತೀಚಿನ',
 'historysize'            => '({{PLURAL:$1|೧ ಬೈಟ್|$1 ಬೈಟ್‍ಗಳು}})',
@@ -713,6 +736,8 @@ $2',
 'revdelete-submit'           => 'ಆಯ್ಕೆ ಮಾಡಿದ ಬದಲಾವಣೆಗೆ ಅನ್ವಯಿಸು',
 'revdelete-logentry'         => '[[$1]] ರ ಸಂಪಾದನೆಯ ಕಾಣಿಸುವಿಕೆಯನ್ನು ಬದಲಾಯಿಸಲಾಯಿತು',
 'revdel-restore'             => 'ಕಾಣಿಸುವಿಕೆಯನ್ನು ಬದಲಾಯಿಸು',
+'revdel-restore-deleted'     => 'ಅಳಿಸಿಹಾಕಲಾದ ಆವೃತ್ತಿಗಳು',
+'revdel-restore-visible'     => 'ಕಾಣುವ ಆವೃತ್ತಿಗಳು',
 'pagehist'                   => 'ಪುಟದ ಇತಿಹಾಸ',
 'deletedhist'                => 'ಅಳಿಸಲ್ಪಟ್ಟ ಇತಿಹಾಸ',
 'revdelete-content'          => 'ಮಾಹಿತಿ',
@@ -721,7 +746,15 @@ $2',
 'revdelete-restricted'       => 'ನಿರ್ವಾಹಕರಿಗೆ ನಿಬಂಧನೆಗಳನ್ನು ಅನ್ವಯಿಸಲಾಯಿತು',
 'revdelete-unrestricted'     => 'ನಿರ್ವಾಹಕರ ನಿಬಂಧನೆಗಳನ್ನು ತೆಗೆಯಲಾಯಿತು',
 'revdelete-hid'              => '$1 ಅಡಗಿಸಲಾಯಿತು',
+'revdelete-otherreason'      => 'ಇತರ/ಹೆಚ್ಚುವರಿ ಕಾರಣ:',
+'revdelete-reasonotherlist'  => 'ಇತರ ಕಾರಣ',
 'revdelete-edit-reasonlist'  => 'ಅಳಿಸುವಿಕೆಯ ಕಾರಣಗಳನ್ನು ಸಂಪಾದಿಸು',
+'revdelete-offender'         => 'ಆವೃತ್ತಿಯ ಸಂಪಾದಕ:',
+
+# Revision move
+'revmove-submit'               => 'ಆವೃತ್ತಿಗಳನ್ನು ಆಯ್ದ ಪುಟಕ್ಕೆ ವರ್ಗಾಯಿಸಿ',
+'revisionmoveselectedversions' => 'ಆಯ್ಕೆ ಮಾಡಿದ ಆವೃತ್ತಿಗಳನ್ನು ವರ್ಗಾಯಿಸಿ',
+'revmove-reasonfield'          => 'ಕಾರಣ:',
 
 # History merging
 'mergehistory'                     => 'ಪುಟ ಇತಿಹಾಸಗಳನ್ನು ವಿಲೀನಗೊಳಿಸು',
@@ -754,12 +787,13 @@ $2',
 'mergelogpagetext'   => 'ಒಂದು ಪುಟದ ಇತಿಹಾಸವನ್ನು ಇನ್ನೊಂದರೊಳಗೆ ಇತ್ತೀಚೆಗೆ ಸೇರ್ಪಡೆ ಮಾಡಲಾಗಿರುವ ಪಟ್ಟಿ ಕೆಳಗಿದೆ.',
 
 # Diffs
-'history-title'           => '"$1" ಪುಟದ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
-'difference'              => '(ಆವೃತ್ತಿಗಳ ನಡುವಿನ ವ್ಯತ್ಯಾಸ)',
-'lineno'                  => '$1 ನೇ ಸಾಲು:',
-'compareselectedversions' => 'ಆಯ್ಕೆ ಮಾಡಿದ ಆವೃತ್ತಿಗಳನ್ನು ಹೊಂದಾಣಿಕೆ ಮಾಡಿ ನೋಡಿ',
-'editundo'                => 'ಹಿಂದಿನಂತೆ',
-'diff-multi'              => '(ಮಧ್ಯದಲ್ಲಿ ಆಗಿರುವ {{PLURAL:$1|೧ ಬದಲಾವಣೆಯನ್ನು|$1 ಬದಲಾವಣೆಗಳನ್ನು}} ತೋರಿಸಲಾಗಿಲ್ಲ.)',
+'history-title'            => '"$1" ಪುಟದ ಬದಲಾವಣೆಗಳ ಇತಿಹಾಸ',
+'difference'               => '(ಆವೃತ್ತಿಗಳ ನಡುವಿನ ವ್ಯತ್ಯಾಸ)',
+'lineno'                   => '$1 ನೇ ಸಾಲು:',
+'compareselectedversions'  => 'ಆಯ್ಕೆ ಮಾಡಿದ ಆವೃತ್ತಿಗಳನ್ನು ಹೊಂದಾಣಿಕೆ ಮಾಡಿ ನೋಡಿ',
+'showhideselectedversions' => 'ಆಯ್ದ ಆವೃತ್ತಿಗಳನ್ನು ತೋರಿಸು/ಅಡಗಿಸು',
+'editundo'                 => 'ಹಿಂದಿನಂತೆ',
+'diff-multi'               => '(ಮಧ್ಯದಲ್ಲಿ ಆಗಿರುವ {{PLURAL:$1|೧ ಬದಲಾವಣೆಯನ್ನು|$1 ಬದಲಾವಣೆಗಳನ್ನು}} ತೋರಿಸಲಾಗಿಲ್ಲ.)',
 
 # Search results
 'searchresults'             => 'ಶೋಧನೆಯ ಫಲಿತಾಂಶಗಳು',
@@ -778,6 +812,7 @@ $2',
 'searchhelp-url'            => 'Help:ಪರಿವಿಡಿ',
 'searchprofile-project'     => 'ಸಹಾಯ ಮತ್ತು ಯೋಜನೆ ಪುಟಗಳು',
 'searchprofile-images'      => 'ಬಹುಮಾಧ್ಯಮ',
+'searchprofile-everything'  => 'ಪ್ರತಿಯೊಂದು',
 'searchprofile-advanced'    => 'ಪರಿಣತ',
 'search-result-size'        => '$1 ({{PLURAL:$2|೧ ಪದ|$2 ಪದಗಳು}})',
 'search-result-score'       => 'ಸಂಬದ್ಧತೆ: $1%',
@@ -802,6 +837,7 @@ $2',
 'powersearch-ns'            => 'ಈ ಪುಟ ಪ್ರಬೇಧಗಳಲ್ಲಿ ಹುಡುಕು:',
 'powersearch-redir'         => 'ಪುನರ್ನಿರ್ದೇಶನಗಳ ಪಟ್ಟಿ',
 'powersearch-field'         => 'ಇದನ್ನು ಹುಡುಕು',
+'powersearch-toggleall'     => 'ಎಲ್ಲಾ',
 'search-external'           => 'ಬಾಹ್ಯ ಹುಡುಕಾಟ',
 'searchdisabled'            => '{{SITENAME}} ಹುಡುಕಾಟ ಸದ್ಯಕ್ಕೆ ಸ್ಥಗಿತವಾಗಿದೆ.
 ಈ ವೇಳೆಯಲ್ಲಿ ನೀವು ಗೂಗಲ್ ಉಪಯೋಗಿಸಿ ಹುಡುಕಾಟ ನಡೆಸಬಹುದು.
@@ -859,6 +895,7 @@ $2',
 'timezoneregion-indian'       => 'ಹಿಂದೂ ಮಹಾಸಾಗರ',
 'timezoneregion-pacific'      => 'ಪೆಸಿಫಿಕ್ ಮಹಾಸಾಗರ',
 'allowemail'                  => 'ಬೇರೆ ಸದಸ್ಯರಿಂದ ಈ-ಮೈಲ್‍ಗಳನ್ನು ಸ್ವೀಕರಿಸು',
+'prefs-namespaces'            => 'ನಾಮವರ್ಗಗಳು',
 'defaultns'                   => 'ಮೂಲಸ್ಥಿತಿಯಲ್ಲಿ ಈ ಪುಟಪ್ರಬೇಧಗಳಲ್ಲಿ ಹುಡುಕಿ:',
 'default'                     => 'ಮೂಲಸ್ಥಿತಿ',
 'prefs-files'                 => 'ಫೈಲುಗಳು',
@@ -879,12 +916,16 @@ $2',
 'prefs-help-email'            => 'ಇ-ಅಂಚೆ ವಿಳಾಸ ಕಡ್ಡಾಯವಲ್ಲ, ಆದರೆ ನೀವು ಅದನ್ನು ನೀಡಿದರೆ ನೀವು ನಿಮ್ಮ ಪ್ರವೇಶ ಪದವನ್ನು ಮರೆತರೆ ಅದನ್ನು ನಿಮಗೆ ಇ-ಅಂಚೆಯಿಂದ ಕಳುಹಿಸಿಬಹುದು.
 ಅಲ್ಲದೆ ಬೇರೆಯವರು ನಿಮ್ಮನ್ನು ಇತರರಿಗೆ ತಿಳಿಯದಂತೆ ನಿಮ್ಮ ಸದಸ್ಯ ಪುಟ ಅಥವ ಚರ್ಚೆ ಪುಟದ ಮೂಲಕ ಸಂಪರ್ಕಿಸಬಹುದು.',
 'prefs-help-email-required'   => 'ಇ-ಅಂಚೆ ವಿಳಾಸ ಬೇಕಾಗಿದೆ.',
+'prefs-i18n'                  => 'ಅಂತರರಾಷ್ಟ್ರೀಕರಣ',
 'prefs-signature'             => 'ಸಹಿ',
 'prefs-advancedediting'       => 'ಪರಿಣತ ಇಚ್ಛೆಗಳು',
 'prefs-advancedrc'            => 'ಪರಿಣತ ಇಚ್ಛೆಗಳು',
 'prefs-advancedrendering'     => 'ಪರಿಣತ ಇಚ್ಛೆಗಳು',
 'prefs-advancedsearchoptions' => 'ಪರಿಣತ ಇಚ್ಛೆಗಳು',
 'prefs-advancedwatchlist'     => 'ಪರಿಣತ ಇಚ್ಛೆಗಳು',
+'prefs-displayrc'             => 'ಪ್ರದರ್ಶನ ಆಯ್ಕೆಗಳು',
+'prefs-displaysearchoptions'  => 'ಪ್ರದರ್ಶನ ಆಯ್ಕೆಗಳು',
+'prefs-displaywatchlist'      => 'ಪ್ರದರ್ಶನ ಆಯ್ಕೆಗಳು',
 
 # User rights
 'userrights'                  => 'ಬಳಕೆದಾರ ಹಕ್ಕುಗಳ ನಿರ್ವಹಣೆ',
@@ -939,7 +980,9 @@ $2',
 'right-delete'         => 'ಪುಟಗಳನ್ನು ಅಳಿಸಿ',
 'right-bigdelete'      => 'ಜಾಸ್ತಿ ಇತಿಹಾಸವಿರುವ ಪುಟಗಳನ್ನು ಅಳಿಸಿ',
 'right-deleterevision' => 'ಪುಟದ ಕೆಲ ಆವೃತ್ತಿಗಳನ್ನು ಅಳಿಸಿ ಹಾಗು ಉಳಿಸಿ',
+'right-deletedtext'    => 'ಆಳಿಸಿದ ಪಠ್ಯ ಮತ್ತು ಅಳಿಸಿದ ಆವೃತ್ತಿಗಳ ನಡುವಿನ ಬದಲಾವಣೆಗಳನ್ನು ನೋಡಿ',
 'right-browsearchive'  => 'ಅಳಿಸಲಾಗಿರುವ ಪುಟಗಳನ್ನು ಹುಡುಕಿ',
+'right-revisionmove'   => 'ಆವೃತ್ತಿಗಳನ್ನು ವರ್ಗಾಯಿಸಿ',
 
 # User rights log
 'rightslog'      => 'ಸದಸ್ಯರ ಹಕ್ಕುಗಳ ದಾಖಲೆಗಳು',
@@ -948,10 +991,16 @@ $2',
 'rightsnone'     => '(ಯಾವೂ ಇಲ್ಲ)',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-read'    => 'ಈ ಪುಟವನ್ನು ಓದಿ',
-'action-edit'    => 'ಪುಟದ ಸಂಪಾದನೆ',
-'action-block'   => 'ಈ ಸದಸ್ಯರನ್ನು ಸಂಪಾದಿಸಲು ಆಗದಂತೆ ನಿರ್ಭಂಧಿಸಿ',
-'action-protect' => 'ಈ ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟಗಳನ್ನು ಬದಲಾಯಿಸಲು',
+'action-read'           => 'ಈ ಪುಟವನ್ನು ಓದಿ',
+'action-edit'           => 'ಪುಟದ ಸಂಪಾದನೆ',
+'action-createpage'     => 'ಪುಟಗಳನ್ನು ಸೃಷ್ಟಿಸು',
+'action-createtalk'     => 'ಚರ್ಚಾ ಪುಟಗಳನ್ನು ಸೃಷ್ಟಿಸು',
+'action-delete'         => 'ಈ ಪುಟವನ್ನು ಅಳಿಸು',
+'action-deleterevision' => 'ಈ ಆವೃತ್ತಿಯನ್ನು ಅಳಿಸು',
+'action-browsearchive'  => 'ಅಳಿಸಲಾಗಿರುವ ಪುಟಗಳನ್ನು ಹುಡುಕು',
+'action-block'          => 'ಈ ಸದಸ್ಯರನ್ನು ಸಂಪಾದಿಸಲು ಆಗದಂತೆ ನಿರ್ಭಂಧಿಸಿ',
+'action-protect'        => 'ಈ ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟಗಳನ್ನು ಬದಲಾಯಿಸಲು',
+'action-revisionmove'   => 'ಆವೃತ್ತಿಗಳನ್ನು ವರ್ಗಾಯಿ',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|ಬದಲಾವಣೆ|ಬದಲಾವಣೆಗಳು}}',
@@ -959,6 +1008,7 @@ $2',
 'recentchanges-legend'              => 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳ ಆಯ್ಕೆಗಳು',
 'recentchangestext'                 => 'ವಿಕಿಗೆ ಮಾಡಲ್ಪಟ್ಟ ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳನ್ನು ಈ ಪುಟದಲ್ಲಿ ನೀವು ಕಾಣಬಹುದು.',
 'recentchanges-feed-description'    => 'ವಿಕಿಯಲ್ಲಿ ಆಗುವ ಹೊಸ ಬದಲಾವಣೆಗಳ ಮೇಲೆ ನಿಗ ಇಡಲು ಉಪಯೋಗವಾಗುವ ಫೀಡು.',
+'recentchanges-label-minor'         => 'ಇದು ಚುಟುಕಾದ ಬದಲಾವಣೆ',
 'rcnote'                            => "$5, $4 ವರೆಗೆ ಹಿಂದಿನ {{PLURAL:$2|ದಿನದಲ್ಲಿ|'''$2''' ದಿನಗಳಲ್ಲಿ}} ಮಾಡಲಾಗಿರುವ {{PLURAL:$1|'''೧''' ಬದಲಾವಣೆ|'''$1''' ಬದಲಾವಣೆಗಳು}} ಕೆಳಗಿವೆ.",
 'rcnotefrom'                        => "'''$2''' ಇಂದ ಆಗಿರುವ ಬದಲಾವಣೆಗಳು ಕೆಳಗಿವೆ (ಕೊನೆಯ '''$1'''ರವರೆಗೆ ತೋರಿಸಲಾಗಿದೆ).",
 'rclistfrom'                        => '$1 ಇಂದ ಪ್ರಾರಂಭಿಸಿ ಮಾಡಲಾದ ಬದಲಾವಣೆಗಳನ್ನು ನೋಡಿ',
@@ -1024,6 +1074,7 @@ $2',
 'filetype-unwanted-type'      => "'''\".\$1\"''' ಒಂದು ಬೇಡವಾದ ಫೈಲಿನ ಮಾದರಿ. ಐಚ್ಛಿಕ ಫೈಲಿನ {{PLURAL:\$3|ಮಾದರಿಯು|ಮಾದರಿಗಳು}} \$2.",
 'filetype-banned-type'        => "'''\".\$1\"''' ಒಂದು ನಿರ್ಬಂಧಿತ ಫೈಲಿನ ಮಾದರಿ.  ನಿರ್ಬಂಧನೆಯಿಲ್ಲದ ಫೈಲಿನ {{PLURAL:\$3|ಮಾದರಿಯು|ಮಾದರಿಗಳು}} \$2.",
 'filetype-missing'            => 'ಈ ಫೈಲಿಗೆ ಉಪನಾಮ (extension ಉದಾ ".jpg") ಇಲ್ಲ.',
+'empty-file'                  => 'ನೀವು ಸಮರ್ಪಿಸಿದ ಕಡತವು ಖಾಲಿಯಾಗಿತ್ತು.',
 'large-file'                  => 'ಫೈಲುಗಳು $1 ಗಿಂತ ದೊಡ್ಡದಾಗಿರಬಾರದೆಂದು ಶಿಫಾರಿತ;
 ಈ ಫೈಲಿನ ಗಾತ್ರ $2.',
 'largefileserver'             => 'ಈ ಫೈಲು ಸರ್ವರ್‍ನಲ್ಲಿ ಸೇರ್ಪಡೆ ಮಾಡಲು ಶಿಫಾರಿತ ಗಾತ್ರಕ್ಕಿಂತ ದೊಡ್ಡದಾಗಿದೆ.',
@@ -1056,6 +1107,7 @@ $2',
 'uploaddisabled'              => 'ಅಪ್ಲೋಡ್‍ಗಳು ನಿರ್ಬಂಧಿತವಾಗಿದೆ',
 'uploaddisabledtext'          => '{{SITENAME}} ತಾಣದಲ್ಲಿ ಫೈಲುಗಳ ಅಪ್ಲೋಡ್ ಮಾಡುವಿಕೆ ತಡೆಗಟ್ಟಲ್ಪಟ್ಟಿದೆ.',
 'uploadvirus'                 => 'ಈ ಫೈಲಿನಲ್ಲಿ ಒಂದು ವೈರಸ್ ಇದೆ! ಮಾಹಿತಿ: $1',
+'upload-source'               => 'ಮೂಲ ಕಡತ',
 'sourcefilename'              => 'ಮೂಲ ಫೈಲಿನ ಹೆಸರು:',
 'upload-maxfilesize'          => 'ಗರಿಷ್ಠ ಫೈಲು ಗಾತ್ರ: $1',
 'watchthisupload'             => 'ಈ ಪುಟವನ್ನು ವೀಕ್ಷಿಸಿ',
@@ -1071,6 +1123,11 @@ $2',
 'upload-file-error-text' => 'ಸರ್ವರ್‍ನಲ್ಲಿ ತಾತ್ಕಾಲಿಕ ಫೈಲನ್ನು ಸೃಷ್ಟಿಸುವಲ್ಲಿ ಒಂದು ಆಂತರಿಕ ದೋಷವಾಯಿತು.
 ದಯವಿಟ್ಟು ವ್ಯವಸ್ಥಾಪಕರೊಬ್ಬರನ್ನು ಸಂಪರ್ಕಿಸಿ.',
 'upload-misc-error'      => 'ತಿಳಿದಿಲ್ಲದ ಅಪ್ಲೋಡ್ ದೋಷ',
+'upload-unknown-size'    => 'ಅಪರಿಚಿತ ಗಾತ್ರ',
+
+# img_auth script messages
+'img-auth-accessdenied' => 'ಅನುಮತಿ ನಿರಾಕರಿಸಲಾಗಿದೆ',
+'img-auth-nofile'       => 'ಕಡತ "$1" ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ.',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'      => 'URL ಅನ್ನು ತಲುಪಲು ಆಗಲಿಲ್ಲ',
@@ -1100,6 +1157,7 @@ $2',
 'filehist-help'             => 'ದಿನ/ಕಾಲ ಒತ್ತಿದರೆ ಆ ಸಮಯದಲ್ಲಿ ಈ ಕಡತದ ವಸ್ತುಸ್ಥಿತಿ ತೋರುತ್ತದೆ.',
 'filehist-deleteall'        => 'ಎಲ್ಲವನ್ನೂ ಅಳಿಸು',
 'filehist-deleteone'        => 'ಅಳಿಸು',
+'filehist-revert'           => 'ಹಿಂದಿನಂತಾಗಿಸು',
 'filehist-current'          => 'ಪ್ರಸಕ್ತ',
 'filehist-datetime'         => 'ದಿನ/ಕಾಲ',
 'filehist-thumb'            => 'ಕಿರುನೋಟ',
@@ -1115,7 +1173,9 @@ $2',
 'uploadnewversion-linktext' => 'ಈ ಫೈಲಿನ ಹೊಸ ಆವೃತ್ತಿಯನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ',
 
 # File reversion
+'filerevert'         => '$1 ಹಿಂದಿನಂತಾಗಿಸು',
 'filerevert-comment' => 'ಕಾರಣ:',
+'filerevert-submit'  => 'ಹಿಂದಿನಂತಾಗಿಸು',
 
 # File deletion
 'filedelete'                  => '$1 ಅನ್ನು ಅಳಿಸು',
@@ -1160,7 +1220,11 @@ $2',
 
 # Statistics
 'statistics'              => 'ಅಂಕಿ ಅಂಶಗಳು',
+'statistics-header-pages' => 'ಪುಟಗಳ ಅಂಕಿಅಂಶಗಳು',
+'statistics-header-edits' => 'ಸಂಪಾದನಾ ಅಂಕಿಅಂಶಗಳು',
+'statistics-header-views' => 'ವೀಕ್ಷಣಾ ಅಂಕಿಅಂಶಗಳು',
 'statistics-header-users' => 'ಸದಸ್ಯರ ಅಂಕಿ ಅಂಶ',
+'statistics-header-hooks' => 'ಇತರ ಅಂಕಿಅಂಶಗಳು',
 'statistics-pages'        => 'ಪುಟಗಳು',
 'statistics-mostpopular'  => 'ಅತ್ಯಂತ ಹೆಚ್ಚು ವೀಕ್ಷಿತ ಪುಟಗಳು',
 
@@ -1198,6 +1262,7 @@ $2',
 'popularpages'            => 'ಜನಪ್ರಿಯ ಪುಟಗಳು',
 'wantedcategories'        => 'ಬೇಕಾಗಿರುವ ವರ್ಗಗಳು',
 'wantedpages'             => 'ಬೇಕಾಗಿರುವ ಪುಟಗಳು',
+'wantedfiles'             => 'ಬೇಕಾಗಿರುವ ಕಡತಗಳು',
 'wantedtemplates'         => 'ಬೇಕಾಗಿರುವ ಟೆಂಪ್ಲೇಟುಗಳು',
 'mostlinked'              => 'ಅತ್ಯಂತ ಹೆಚ್ಚು ಸಂಪರ್ಕಗಳನ್ನು ಹೊಂದಿರುವ ಪುಟಗಳು',
 'mostlinkedcategories'    => 'ಅತ್ಯಂತ ಹೆಚ್ಚು ಸಂಪರ್ಕಗಳನ್ನು ಹೊಂದಿರುವ ವರ್ಗಗಳು',
@@ -1269,6 +1334,7 @@ $2',
 
 # Special:LinkSearch
 'linksearch'    => 'ಹೊರಗಿನ ಸಂಪರ್ಕಗಳು',
+'linksearch-ns' => 'ನಾಮವರ್ಗ:',
 'linksearch-ok' => 'ಹುಡುಕು',
 
 # Special:ListUsers
@@ -1276,17 +1342,21 @@ $2',
 'listusers-submit'   => 'ತೋರು',
 'listusers-noresult' => 'ಯಾವ ಬಳಕೆದಾರರೂ ಸಿಗಲಿಲ್ಲ.',
 
+# Special:ActiveUsers
+'activeusers' => 'ಸಕ್ರಿಯ ಸದಸ್ಯರ ಪಟ್ಟಿ',
+
 # Special:Log/newusers
 'newuserlogpage'          => 'ಸದಸ್ಯತ್ವ ಸೃಷ್ಟಿಗಳ ದಾಖಲೆ',
 'newuserlog-create-entry' => 'ಹೊಸ ಸದಸ್ಯತ್ವ ಖಾತೆ',
 
 # Special:ListGroupRights
-'listgrouprights'          => 'ಬಳಕೆದಾರ ಗುಂಪು ಹಕ್ಕುಗಳು',
-'listgrouprights-summary'  => 'ಈ ವಿಕಿಯಲ್ಲಿ ಪ್ರಚಲಿತವಾಗಿರುವ ಬಳಕೆದಾರ ಗುಂಪುಗಳು ಮತ್ತು ಆ ಗುಂಪುಗಳಿಗೆ ಅನ್ವಯಿಸುವ ಹಕ್ಕುಗಳು ಈ ಕೆಳಗಿನಂತಿದೆ.',
-'listgrouprights-group'    => 'ಗುಂಪು',
-'listgrouprights-rights'   => 'ಹಕ್ಕುಗಳು',
-'listgrouprights-helppage' => 'Help:ಗುಂಪು ಹಕ್ಕುಗಳು',
-'listgrouprights-members'  => '(ಸದಸ್ಯರ ಪಟ್ಟಿ)',
+'listgrouprights'              => 'ಬಳಕೆದಾರ ಗುಂಪು ಹಕ್ಕುಗಳು',
+'listgrouprights-summary'      => 'ಈ ವಿಕಿಯಲ್ಲಿ ಪ್ರಚಲಿತವಾಗಿರುವ ಬಳಕೆದಾರ ಗುಂಪುಗಳು ಮತ್ತು ಆ ಗುಂಪುಗಳಿಗೆ ಅನ್ವಯಿಸುವ ಹಕ್ಕುಗಳು ಈ ಕೆಳಗಿನಂತಿದೆ.',
+'listgrouprights-group'        => 'ಗುಂಪು',
+'listgrouprights-rights'       => 'ಹಕ್ಕುಗಳು',
+'listgrouprights-helppage'     => 'Help:ಗುಂಪು ಹಕ್ಕುಗಳು',
+'listgrouprights-members'      => '(ಸದಸ್ಯರ ಪಟ್ಟಿ)',
+'listgrouprights-addgroup-all' => 'ಎಲ್ಲಾ ಗುಂಪುಗಳನ್ನು ಸೇರಿಸಿ',
 
 # E-mail user
 'mailnologin'     => 'ಕಳುಹಿಸುವ ವಿಳಾಸ ಇಲ್ಲ',
@@ -1336,12 +1406,13 @@ $2',
 'watching'   => 'ವೀಕ್ಷಣೆಗೆ ಸೇರಿಸಲಾಗುತ್ತಿದೆ...',
 'unwatching' => 'ವೀಕ್ಷಣೆಯಿಂದ ತೆಗೆಯಲಾಗುತ್ತಿದೆ...',
 
-'enotif_reset'       => 'ಭೇಟಿಯಿತ್ತ ಎಲ್ಲಾ ಪುಟಗಳನ್ನು ಗುರುತು ಮಾಡಿ',
-'enotif_newpagetext' => 'ಇದೊಂದು ಹೊಸ ಪುಟ.',
-'changed'            => 'ಬದಲಾಯಿಸಲಾಗಿದೆ',
-'created'            => 'ಸೃಷ್ಟಿಸಲ್ಪಟ್ಟಿದೆ',
-'enotif_lastvisited' => 'ನಿಮ್ಮ ಕಳೆದ ಭೇಟಿಯ ನಂತರದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳಿಗೆ $1 ನೋಡಿ.',
-'enotif_anon_editor' => 'ಅನಾಮಧೇಯ ಸದಸ್ಯ $1',
+'enotif_reset'                 => 'ಭೇಟಿಯಿತ್ತ ಎಲ್ಲಾ ಪುಟಗಳನ್ನು ಗುರುತು ಮಾಡಿ',
+'enotif_newpagetext'           => 'ಇದೊಂದು ಹೊಸ ಪುಟ.',
+'enotif_impersonal_salutation' => '{{SITENAME}} ಸದಸ್ಯ',
+'changed'                      => 'ಬದಲಾಯಿಸಲಾಗಿದೆ',
+'created'                      => 'ಸೃಷ್ಟಿಸಲ್ಪಟ್ಟಿದೆ',
+'enotif_lastvisited'           => 'ನಿಮ್ಮ ಕಳೆದ ಭೇಟಿಯ ನಂತರದ ಎಲ್ಲಾ ಬದಲಾವಣೆಗಳಿಗೆ $1 ನೋಡಿ.',
+'enotif_anon_editor'           => 'ಅನಾಮಧೇಯ ಸದಸ್ಯ $1',
 
 # Delete
 'deletepage'             => 'ಪುಟವನ್ನು ಅಳಿಸಿ',
@@ -1395,8 +1466,14 @@ $2',
 'protect-level-sysop'         => 'ನಿರ್ವಾಹಕರು ಮಾತ್ರ',
 'protect-summary-cascade'     => 'ತಡಸಲು (cascading)',
 'protect-expiring'            => 'ಮುಕ್ತಾಯ $1 (UTC)',
+'protect-expiry-indefinite'   => 'ಅನಿರ್ದಿಷ್ಟ',
 'protect-cascade'             => 'ಈ ಪುಟದಲ್ಲಿ ಸೇರಿಸಲಾಗಿರುವ ಪುಟಗಳನ್ನು ಸಂರಕ್ಷಿಸು (ತಡಸಲು ಸಂರಕ್ಷಣೆ - cascading protection)',
 'protect-cantedit'            => 'ನೀವು ಈ ಪುಟದ ಸಂರಕ್ಷಣೆ ಮಟ್ಟವನ್ನು ಬದಲಾಯಿಸುವ ಅನುಮತಿಯನ್ನು ಹೊಂದಿಲ್ಲ.',
+'protect-othertime'           => 'ಇತರ ಸಮಯ:',
+'protect-othertime-op'        => 'ಇತರ ಸಮಯ',
+'protect-otherreason'         => 'ಇತರ/ಹೆಚ್ಚುವರಿ ಕಾರಣ:',
+'protect-otherreason-op'      => 'ಇತರ ಕಾರಣ',
+'protect-edit-reasonlist'     => 'ಸಂರಕ್ಷಣಾ ಕಾರಣಗಳನ್ನು ಸಂಪಾದಿಸು',
 'protect-expiry-options'      => '೨ ಗಂಟೆಗಳು:2 hours,೧ ದಿನ:1 day,೩ ದಿನಗಳು:3 days,೧ ವಾರ:1 week,೨ ವಾರಗಳು:2 weeks,೧ ತಿಂಗಳು:1 month,೩ ತಿಂಗಳುಗಳು:3 months,೬ ತಿಂಗಳುಗಳು:6 months,೧ ವರ್ಷ:1 year,ಅನಿರ್ಧಿಷ್ಟ:infinite',
 'restriction-type'            => 'ಅನುಮತಿ:',
 'restriction-level'           => 'ನಿರ್ಬಂಧನೆಯ ಮಟ್ಟ:',
@@ -1423,6 +1500,7 @@ $2',
 'undelete-nodiff'        => 'ಯಾವ ಪೂರ್ವ ಬದಲಾವಣೆಯೂ ಸಿಗಲಿಲ್ಲ.',
 'undeletebtn'            => 'ಹಿಂದೆ ಇದ್ದಂತೆ ಮಾಡು',
 'undeletelink'           => 'ವೀಕ್ಷಿಸು/ಹಿಂದಿನಂತಾಗಿಸು',
+'undeleteviewlink'       => 'ನೋಡು',
 'undeletecomment'        => 'ಕಾರಣ:',
 'undeletedarticle'       => '"[[$1]]" ಅನ್ನು ಹಿಂದಿನಂತೆ ಮಾಡು',
 'undelete-header'        => 'ಇತ್ತೀಚೆಗೆ ಅಳಿಸಲಾದ ಪುಟಗಳಿಗೆ [[Special:Log/delete|ಅಳಿಸುವಿಕೆ ದಿನಚರಿ]] ಅನ್ನು ನೋಡಿ.',
@@ -1492,7 +1570,7 @@ $2',
 'ipbcreateaccount'         => 'ಖಾತೆ ಸೃಷ್ಟಿಯನ್ನು ನಿರ್ಬಂಧಿಸು',
 'ipbemailban'              => 'ಬಳಕೆದಾರನು ಇ-ಅಂಚೆ ಕಳುಹಿಸುವುದನ್ನು ತಡೆಗಟ್ಟು',
 'ipbsubmit'                => 'ಈ ಸದಸ್ಯರನ್ನು ತಡೆಹಿಡಿಯಿರಿ',
-'ipbother'                 => 'ಇತರ ಕಾಲಾವಧಿ:',
+'ipbother'                 => 'ಇತರ ಸಮಯ:',
 'ipboptions'               => '೨ ಗಂಟೆಗಳು:2 hours,೧ ದಿನ:1 day,೩ ದಿನಗಳು:3 days,೧ ವಾರ:1 week,೨ ವಾರಗಳು:2 weeks,೧ ತಿಂಗಳು:1 month,೩ ತಿಂಗಳುಗಳು:3 months,೬ ತಿಂಗಳುಗಳು:6 months,೧ ವರ್ಷ:1 year,ಅನಿರ್ಧಿಷ್ಟ:infinite',
 'ipbotheroption'           => 'ಇತರ',
 'ipbotherreason'           => 'ಇತರ/ಹೆಚ್ಚುವರಿ ಕಾರಣ:',
@@ -1529,6 +1607,7 @@ $2',
 'block-log-flags-nocreate' => 'ಖಾತೆ ಸೃಷ್ಟಿ ತಡೆಹಿಡಿಯಲಾಗಿದೆ',
 'block-log-flags-noemail'  => 'ಇ-ಅಂಚೆ ತಡೆಹಿಡಿಯಲಾಗಿದೆ',
 'ipb_already_blocked'      => '"$1" ಆಗಲೆ ತಡೆ ಹಿಡಿಯಲಾಗಿದೆ',
+'blockme'                  => 'ನನ್ನನ್ನು ತಡೆಹಿಡಿ',
 'proxyblocksuccess'        => 'ಮುಗಿಯಿತು.',
 
 # Developer tools
@@ -1604,14 +1683,17 @@ $2',
 'export-submit'     => 'ರಫ್ತು',
 'export-addcattext' => 'ಈ ವರ್ಗದಿಂದ ಪುಟಗಳನ್ನು ಸೇರಿಸು:',
 'export-addcat'     => 'ಸೇರಿಸು',
+'export-addns'      => 'ಸೇರಿಸು',
 'export-download'   => 'ಫೈಲಾಗಿ ಉಳಿಸು',
 'export-templates'  => 'ಟೆಂಪ್ಲೇಟುಗಳನ್ನು ಸೇರಿಸು',
 
 # Namespace 8 related
-'allmessages'               => 'ಸಂಪರ್ಕ ಸಾಧನದ ಎಲ್ಲ ಸಂದೇಶಗಳು',
-'allmessagesname'           => 'ಹೆಸರು',
-'allmessages-language'      => 'ಭಾಷೆ:',
-'allmessages-filter-submit' => 'ಹೋಗು',
+'allmessages'                 => 'ಸಂಪರ್ಕ ಸಾಧನದ ಎಲ್ಲ ಸಂದೇಶಗಳು',
+'allmessagesname'             => 'ಹೆಸರು',
+'allmessages-filter-all'      => 'ಎಲ್ಲಾ',
+'allmessages-filter-modified' => 'ಬದಲಾಯಿಸಲಾದ',
+'allmessages-language'        => 'ಭಾಷೆ:',
+'allmessages-filter-submit'   => 'ಹೋಗು',
 
 # Thumbnails
 'thumbnail-more'  => 'ದೊಡ್ಡದಾಗಿಸು',
@@ -1806,7 +1888,12 @@ $1',
 'exif-fnumber'                   => 'F ಸಂಖ್ಯೆ',
 'exif-brightnessvalue'           => 'ಪ್ರಕಾಶತೆ',
 'exif-lightsource'               => 'ಬೆಳಕಿನ ಮೂಲ',
+'exif-flash'                     => 'ಫ್ಲಾಶ್',
 'exif-filesource'                => 'ಫೈಲಿನ ಮೂಲ',
+'exif-gpslatituderef'            => 'ಉತ್ತರ ಅಥವಾ ದಕ್ಷಿಣ ಅಕ್ಷಾಂಶ',
+'exif-gpslatitude'               => 'ಅಕ್ಷಾಂಶ',
+'exif-gpslongituderef'           => 'ಪೂರ್ವ ಅಥವಾ ಪಶ್ಚಿಮ ರೇಖಾಂಶ',
+'exif-gpslongitude'              => 'ರೇಖಾಂಶ',
 'exif-gpsaltitude'               => 'ಎತ್ತರ',
 'exif-gpstimestamp'              => 'GPS ಕಾಲ (ಅಣು ಗಡಿಯಾರ)',
 'exif-gpssatellites'             => 'ಅಳತೆಗೆ ಉಪಯೋಗಿಸಲಾದ ಉಪಗ್ರಹಗಳು',
@@ -1828,6 +1915,7 @@ $1',
 'exif-lightsource-0'   => 'ತಿಳಿದಿಲ್ಲ',
 'exif-lightsource-1'   => 'ದಿನದ ಬೆಳಕು',
 'exif-lightsource-3'   => 'ಟಂಗ್ಸ್ಟನ್ (ಪ್ರಕಾಶಮಾನ ಬೆಳಕು)',
+'exif-lightsource-4'   => 'ಫ್ಲಾಶ್',
 'exif-lightsource-11'  => 'ನೆರಳು',
 'exif-lightsource-17'  => 'ನಿರ್ದಿಷ್ಟ ಬೆಳಕು A',
 'exif-lightsource-18'  => 'ನಿರ್ದಿಷ್ಟ ಬೆಳಕು B',
@@ -1842,6 +1930,11 @@ $1',
 
 # Pseudotags used for GPSLatitudeRef and GPSDestLatitudeRef
 'exif-gpslatitude-n' => 'ಉತ್ತರ ಆಕಾಂಕ್ಷ',
+'exif-gpslatitude-s' => 'ದಕ್ಷಿಣ ಅಕ್ಷಾಂಶ',
+
+# Pseudotags used for GPSLongitudeRef and GPSDestLongitudeRef
+'exif-gpslongitude-e' => 'ಪೂರ್ವ ರೇಖಾಂಶ',
+'exif-gpslongitude-w' => 'ಪಶ್ಚಿಮ ರೇಖಾಂಶ',
 
 'exif-gpsstatus-a' => 'ಅಳತೆ ಪ್ರಗತಿಯಲ್ಲಿದೆ',
 
@@ -1867,6 +1960,7 @@ $1',
 'watchlistall2'    => 'ಎಲ್ಲಾ',
 'namespacesall'    => 'ಎಲ್ಲಾ',
 'monthsall'        => 'ಎಲ್ಲಾ',
+'limitall'         => 'ಎಲ್ಲಾ',
 
 # E-mail address confirmation
 'confirmemail'             => 'ಇ-ಅಂಚೆ ವಿಳಾಸವನ್ನು ಖಾತ್ರಿ ಮಾಡಿ',
@@ -1973,6 +2067,7 @@ $5
 'version-other'            => 'ಇತರ',
 'version-version'          => '(ಆವೃತ್ತಿ $1)',
 'version-software'         => 'ಸಂಸ್ಥಾಪಿಸಲಾಗಿರುವ ತಂತ್ರಾಂಶ',
+'version-software-product' => 'ಉತ್ಪನ್ನ',
 'version-software-version' => 'ಆವೃತ್ತಿ',
 
 # Special:FilePath
@@ -1999,12 +2094,21 @@ $5
 'specialpages-group-users'       => 'ಬಳಕೆದಾರರು ಮತ್ತು ಹಕ್ಕುಗಳು',
 'specialpages-group-highuse'     => 'ಹೆಚ್ಚು ಬಳಕೆಯಲ್ಲಿರುವ ಪುಟಗಳು',
 'specialpages-group-pages'       => 'ಪುಟಗಳ ಪಟ್ಟಿ',
+'specialpages-group-redirects'   => 'ವಿಶೇಷ ಪುಟಗಳನ್ನು ಪುನರ್ನಿರ್ದೇಶಿಸಲಾಗುತ್ತಿದೆ',
 
 # Special:BlankPage
 'blankpage' => 'ಖಾಲಿ ಪುಟ',
 
 # Special:Tags
 'tags-edit' => 'ಸಂಪಾದಿಸಿ',
+
+# Special:ComparePages
+'comparepages'   => 'ಪುಟಗಳನ್ನು ಹೋಲಿಸು',
+'compare-page1'  => 'ಪುಟ ೧',
+'compare-page2'  => 'ಪುಟ ೨',
+'compare-rev1'   => 'ಆವೃತ್ತಿ ೧',
+'compare-rev2'   => 'ಆವೃತ್ತಿ ೨',
+'compare-submit' => 'ಹೋಲಿಸು',
 
 # HTML forms
 'htmlform-selectorother-other' => 'ಇತರ',

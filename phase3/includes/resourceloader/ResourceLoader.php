@@ -23,7 +23,10 @@
 defined( 'MEDIAWIKI' ) || die( 1 );
 
 /**
- * Dynamic JavaScript and CSS resource loading system
+ * Dynamic JavaScript and CSS resource loading system.
+ *
+ * Most of the documention is on the MediaWiki documentation wiki starting at
+ *    http://www.mediawiki.org/wiki/ResourceLoader
  */
 class ResourceLoader {
 
@@ -39,11 +42,17 @@ class ResourceLoader {
 	 * 
 	 * This is not inside the module code because it's so much more performant to request all of the information at once
 	 * than it is to have each module requests it's own information.
-	 * 
-	 * @param $modules array list of module names to preload information for
-	 * @param $context ResourceLoaderContext context to load the information within
+	 *
+	 * This method grab modules dependencies from the database and initialize modules object.
+	 * A first pass compute dependencies, a second one the blob mtime.
+	 *
+	 * @param $modules Array List of module names to preload information for
+	 * @param $context ResourceLoaderContext Context to load the information within
 	 */
 	protected function preloadModuleInfo( array $modules, ResourceLoaderContext $context ) {
+		if ( !count( $modules ) ) {
+			return; # or Database*::select() will explode
+		}
 		$dbr = wfGetDb( DB_SLAVE );
 		$skin = $context->getSkin();
 		$lang = $context->getLanguage();
@@ -54,7 +63,8 @@ class ResourceLoader {
 				'md_skin' => $context->getSkin()
 			), __METHOD__
 		);
-		
+
+		// Set modules dependecies		
 		$modulesWithDeps = array();
 		foreach ( $res as $row ) {
 			$this->modules[$row->md_module]->setFileDependencies( $skin,
@@ -62,7 +72,7 @@ class ResourceLoader {
 			);
 			$modulesWithDeps[] = $row->md_module;
 		}
-		// Register the absence of a dependencies row too
+		// Register the absence of a dependency row too
 		foreach ( array_diff( $modules, $modulesWithDeps ) as $name ) {
 			$this->modules[$name]->setFileDependencies( $skin, array() );
 		}
@@ -93,7 +103,13 @@ class ResourceLoader {
 	}
 
 	/**
-	 * Runs text through a filter, caching the filtered result for future calls
+	 * Runs text (js,CSS) through a filter, caching the filtered result for future calls.
+	 * 
+	 * Availables filters are:
+	 *  - minify-js \see JSMin::minify
+	 *  - minify-css \see CSSMin::minify
+	 *  - flip-css \see CSSJanus::transform
+	 * When the filter names does not exist, text is returned as is.
 	 *
 	 * @param $filter String: name of filter to run
 	 * @param $data String: text to filter, such as JavaScript or CSS text
@@ -105,6 +121,8 @@ class ResourceLoader {
 		wfProfileIn( __METHOD__ );
 
 		// For empty or whitespace-only things, don't do any processing
+		# FIXME: we should return the data unfiltered if $filter is not supported.
+		# that would save up a md5 computation and one memcached get.
 		if ( trim( $data ) === '' ) {
 			wfProfileOut( __METHOD__ );
 			return $data;
@@ -122,6 +140,7 @@ class ResourceLoader {
 		// Run the filter
 		try {
 			switch ( $filter ) {
+				# note: if adding a new filter. Please update method documentation above. 
 				case 'minify-js':
 					$result = JSMin::minify( $data );
 					break;
@@ -140,7 +159,7 @@ class ResourceLoader {
 			throw new MWException( 'Filter threw an exception: ' . $exception->getMessage() );
 		}
 
-		// Save to memcached
+		// Save filtered text to memcached
 		$wgMemc->set( $key, $result );
 
 		wfProfileOut( __METHOD__ );
@@ -237,7 +256,7 @@ class ResourceLoader {
 	 * @param $context ResourceLoaderContext object
 	 */
 	public function respond( ResourceLoaderContext $context ) {
-		global $wgResourceLoaderMaxage;
+		global $wgResourceLoaderMaxage, $wgCacheEpoch;
 
 		wfProfileIn( __METHOD__ );
 		
@@ -256,13 +275,13 @@ class ResourceLoader {
 		// If a version wasn't specified we need a shorter expiry time for updates to 
 		// propagate to clients quickly
 		if ( is_null( $context->getVersion() ) ) {
-			$maxage = $wgResourceLoaderMaxage['unversioned']['client'];
+			$maxage  = $wgResourceLoaderMaxage['unversioned']['client'];
 			$smaxage = $wgResourceLoaderMaxage['unversioned']['server'];
 		}
 		// If a version was specified we can use a longer expiry time since changing 
 		// version numbers causes cache misses
 		else {
-			$maxage = $wgResourceLoaderMaxage['versioned']['client'];
+			$maxage  = $wgResourceLoaderMaxage['versioned']['client'];
 			$smaxage = $wgResourceLoaderMaxage['versioned']['server'];
 		}
 
@@ -272,7 +291,7 @@ class ResourceLoader {
 		// To send Last-Modified and support If-Modified-Since, we need to detect 
 		// the last modified time
 		wfProfileIn( __METHOD__.'-getModifiedTime' );
-		$mtime = 1;
+		$mtime = wfTimestamp( TS_UNIX, $wgCacheEpoch );
 		foreach ( $modules as $module ) {
 			// Bypass squid cache if the request includes any private modules
 			if ( $module->getGroup() === 'private' ) {
@@ -290,18 +309,30 @@ class ResourceLoader {
 
 		// If there's an If-Modified-Since header, respond with a 304 appropriately
 		$ims = $context->getRequest()->getHeader( 'If-Modified-Since' );
-		if ( $ims !== false && $mtime >= wfTimestamp( TS_UNIX, $ims ) ) {
+		if ( $ims !== false && $mtime <= wfTimestamp( TS_UNIX, $ims ) ) {
 			header( 'HTTP/1.0 304 Not Modified' );
 			header( 'Status: 304 Not Modified' );
 			wfProfileOut( __METHOD__ );
 			return;
 		}
 
-		echo self::makeModuleResponse( $context, $modules, $missing );
+		$response = $this->makeModuleResponse( $context, $modules, $missing );
+		if ( $context->getDebug() && strlen( $warnings = ob_get_contents() ) ) {
+			$response .= "/*\n$warnings\n*/";
+		}
+		// Clear any warnings from the buffer
+		ob_clean();
+		echo $response;
 
 		wfProfileOut( __METHOD__ );
 	}
 
+	/**
+	 *
+	 * @param $context ResourceLoaderContext
+	 * @param $modules Array array( modulename => ResourceLoaderModule )
+	 * @param $missing Unavailables modules (Default null)
+	 */
 	public function makeModuleResponse( ResourceLoaderContext $context, array $modules, $missing = null ) {
 		// Pre-fetch blobs
 		$blobs = $context->shouldIncludeMessages() ?
@@ -320,10 +351,7 @@ class ResourceLoader {
 
 			// Styles
 			$styles = array();
-			if (
-				$context->shouldIncludeStyles() &&
-				( count( $styles = $module->getStyles( $context ) ) )
-			) {
+			if ( $context->shouldIncludeStyles() && ( count( $styles = $module->getStyles( $context ) ) ) ) {
 				// Flip CSS on a per-module basis
 				if ( $this->modules[$name]->getFlip( $context ) ) {
 					foreach ( $styles as $media => $style ) {
@@ -419,7 +447,7 @@ class ResourceLoader {
 			return "mediaWiki.loader.state( $statuses );\n";
 		} else {
 			$name = Xml::escapeJsString( $name );
-			$name = Xml::escapeJsString( $state );
+			$state = Xml::escapeJsString( $state );
 			return "mediaWiki.loader.state( '$name', '$state' );\n";
 		}
 	}
@@ -427,20 +455,10 @@ class ResourceLoader {
 	public static function makeCustomLoaderScript( $name, $version, $dependencies, $group, $script ) {
 		$name = Xml::escapeJsString( $name );
 		$version = (int) $version > 1 ? (int) $version : 1;
-		if ( is_array( $dependencies ) ) {
-			$dependencies = FormatJson::encode( $dependencies );
-		} else if ( is_string( $dependencies ) ) {
-			$dependencies = "'" . Xml::escapeJsString( $dependencies ) . "'";
-		} else {
-			$dependencies = 'null';
-		}
-		if ( is_string( $group ) ) {
-			$group = "'" . Xml::escapeJsString( $group ) . "'";
-		} else {
-			$group = 'null';
-		}
+		$dependencies = FormatJson::encode( $dependencies );
+		$group = FormatJson::encode( $group );
 		$script = str_replace( "\n", "\n\t", trim( $script ) );
-		return "( function( name, version, dependencies ) {\n\t$script\n} )" .
+		return "( function( name, version, dependencies, group ) {\n\t$script\n} )" .
 			"( '$name', $version, $dependencies, $group );\n";
 	}
 
@@ -451,18 +469,8 @@ class ResourceLoader {
 		} else {
 			$name = Xml::escapeJsString( $name );
 			$version = (int) $version > 1 ? (int) $version : 1;
-			if ( is_array( $dependencies ) ) {
-				$dependencies = FormatJson::encode( $dependencies );
-			} else if ( is_string( $dependencies ) ) {
-				$dependencies = "'" . Xml::escapeJsString( $dependencies ) . "'";
-			} else {
-				$dependencies = 'null';
-			}
-			if ( is_string( $group ) ) {
-				$group = "'" . Xml::escapeJsString( $group ) . "'";
-			} else {
-				$group = 'null';
-			}
+			$dependencies = FormatJson::encode( $dependencies );
+			$group = FormatJson::encode( $group );
 			return "mediaWiki.loader.register( '$name', $version, $dependencies, $group );\n";
 		}
 	}

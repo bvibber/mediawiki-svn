@@ -328,11 +328,11 @@ abstract class CoreInstaller extends Installer {
 	public function performInstallation( $startCB, $endCB ) {
 		$installResults = array();
 		$installer = $this->getDBInstaller();
+		$installer->preInstall();
 
 		foreach( $this->getInstallSteps() as $stepObj ) {
 			$step = is_array( $stepObj ) ? $stepObj['name'] : $stepObj;
 			call_user_func_array( $startCB, array( $step ) );
-			$status = null;
 
 			# Call our working function
 			if ( is_array( $stepObj ) ) {
@@ -448,6 +448,9 @@ abstract class CoreInstaller extends Installer {
 
 		// Allow multiple ob_flush() calls
 		$GLOBALS['wgDisableOutputCompression'] = true;
+
+		// Some of the environment checks make shell requests, remove limits
+		$GLOBALS['wgMaxShellMemory'] = 0;
 	}
 
 	/**

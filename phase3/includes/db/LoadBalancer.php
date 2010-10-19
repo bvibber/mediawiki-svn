@@ -216,7 +216,6 @@ class LoadBalancer {
 		# Scale the configured load ratios according to the dynamic load (if the load monitor supports it)
 		$this->getLoadMonitor()->scaleLoads( $nonErrorLoads, $group, $wiki );
 
-		$i = false;
 		$laggedSlaveMode = false;
 
 		# First try quickly looking through the available servers for a server that
@@ -364,7 +363,7 @@ class LoadBalancer {
 	 * Returns false if there is no connection open
 	 */
 	function getAnyOpenConnection( $i ) {
-		foreach ( $this->mConns as $type => $conns ) {
+		foreach ( $this->mConns as $conns ) {
 			if ( !empty( $conns[$i] ) ) {
 				return reset( $conns[$i] );
 			}
@@ -651,9 +650,9 @@ class LoadBalancer {
 		wfDebug( "Connecting to $host $dbname...\n" );
 		$db = new $class( $host, $user, $password, $dbname, 1, $flags );
 		if ( $db->isOpen() ) {
-			wfDebug( "Connected\n" );
+			wfDebug( "Connected to $host $dbname.\n" );
 		} else {
-			wfDebug( "Failed\n" );
+			wfDebug( "Connection failed to $host $dbname.\n" );
 		}
 		$db->setLBInfo( $server );
 		if ( isset( $server['fakeSlaveLag'] ) ) {
@@ -824,7 +823,7 @@ class LoadBalancer {
 	function commitMasterChanges() {
 		// Always 0, but who knows.. :)
 		$masterIndex = $this->getWriterIndex();
-		foreach ( $this->mConns as $type => $conns2 ) {
+		foreach ( $this->mConns as $conns2 ) {
 			if ( empty( $conns2[$masterIndex] ) ) {
 				continue;
 			}

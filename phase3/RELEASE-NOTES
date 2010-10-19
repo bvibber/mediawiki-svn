@@ -61,12 +61,20 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   responses from ResourceLoader based on whether the request's URL contained a
   version parameter or not.
 * $wgResourceLoaderDebug was added to specify the default state of debug mode;
-  this will still be overridden with the debug URL parameter a la $wgLanguageCode.
+  this will still be overridden with the debug URL parameter a la
+  $wgLanguageCode.
 * $wgResourceLoaderInlinePrivateModules was added to specify whether private
-  modules such as user.options should be embedded in the HTML output or delivered
-  through a resource loader request, which bypasses server cache (like squid) and
-  checks the user parameter against $wgUser. The former adds more data to all
-  pages, while the latter adds a request which cannot be cached server side.
+  modules such as user.options should be embedded in the HTML output or
+  delivered through a resource loader request, which bypasses server cache (like
+  squid) and checks the user parameter against $wgUser. The former adds more
+  data to all pages, while the latter adds a request which cannot be cached
+  server side.
+* Removed $wgUpdates for database updates; extension should use
+  DatabaseUpdater::addExtensionUpdate().
+* Removed $wgServerName. It doesn't need to be set anymore and is no longer 
+  available as input for other configuration items, either.
+* Remove $wgRemoteUploads. It was not well supported and superseded by
+  $wgUploadNavigationUrl.
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -138,7 +146,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   because it encourages edits to be marked minor accidentally and it can be
   easily replicated by custom user scripts for those who really want it.
 * Non-file pages can no longer be moved to the file namespace, nor vice versa.
-* (bug 671) The <dfn>, <kbd> and <samp> elements have been whitelisted in user input
+* (bug 671) The <dfn>, <kbd> and <samp> elements have been whitelisted in user
+  input
 * (bug 24563) Entries on Special:WhatLinksHere now have a link to their history
 * (bug 21503) There's now a "reason" field when creating account for other users
 * (bug 24418) action=markpatrolled now requires a token
@@ -168,6 +177,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Special:Version now displays whether a SQLite database supports full-text
   search.
 * (bug 24343) New parser hook {{linkurl:}}, same as {{localurl:}} with fragment
+* TS_ISO_8691_BASIC was added as a time format, which is used by ResourceLoader
+  for versioning
+* Maintenance scripts get a --memory-limit option to override defaults (which
+  is usually to set it to -1 to disable the limit)
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -288,7 +301,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   a fatal error
 * (bug 23465) Don't ignore the predefined destination filename on
   Special:Upload after following a red link
-* Correct the escaping of the autosummary URI fragments.
 * (bug 23642) Recognize mime types of MS OpenXML documents.
 * (bug 22784) Normalise underscores and spaces in autocomments.
 * (bug 19910) Headings of the form ===+\s+ are now displayed as valid headings
@@ -315,7 +327,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 21052) Fix link color for stubs in NewPages
 * (bug 24714) Usage of {{#dateformat: }} in wikis without $wgUseDynamicDates no
   longer pollutes the parser cache.
-* (bug 17031) Correct which characters the parser allows in tag attributes.
+* (bug 17031) Correct which characters the parser allows in tag attributes (a
+  letter, colon or underscore followed by 0 or more letters, numbers, colons,
+  underscores, hyphens, and/or periods).
 * Save 200 useless queries on each category page view
 * Shell commands will now work on Linux in filesystems mounted noexec
 * (bug 24804) Corrected commafying in Polish and Ukrainian
@@ -341,7 +355,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 25292) SkinSubPageSubtitle hook now passes the Skin object as second
   parameter
 * (bug 25167) Correctly load JS fixes for IE6 (fixing a regression in 1.16)
-* (bug 25367) wfShellExec() is more explicit when failing due to disabled passthru()
+* (bug 25367) wfShellExec() is more explicit when failing due to disabled
+  passthru()
+* (bug 25462) Fix double-escaping for section edit link tooltips
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -359,7 +375,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23548) Allow access of another users watchlist through watchlistraw
   using token and username.
 * (bug 23524) Api Modules as followup to bug 14473 (Add iwlinks table to
-  track inline interwiki link usage.
+  track inline interwiki link usage).
 * Add pltitles and tltemplates to prop=links and prop=templates respectively,
   similar to prop=categories's clcategorie
 * (bug 23834) Invalid "thumbwidth" and "thumbheight" in "imageinfo" query when
@@ -384,7 +400,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   to the local alias.
 * (bug 24296) Added converttitles parameter to convert titles to their
   canonical language variant.
-* (bug 17398) Fixed "link" parameter in image links with "thumb" or "frame" parameter.
+* (bug 17398) Fixed "link" parameter in image links with "thumb" or "frame"
+  parameter.
 * (bug 23936) Add "displaytitle" to query/info API
 * (bug 24485) Make iwbacklinks a generator, optionally display iwprefix and
   iwtitle
@@ -412,6 +429,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   $wgAllowAsyncCopyUploads to be true.
 * sinumberingroup correctly gives size of 'user' group, and omits size of
   implicit groups rather than showing 0.
+* (bug 25248) API: paraminfo errors with certain modules
+* (bug 25303) Fix API parameter integer validation to actually enforce validation
+  on the input values in addition to giving a warning. Also add flag to enforce (die)
+  if integer out of range (breaking change!)
+* (bug 24792) API help for action=purge sometimes wrongly stated whether a
+  POST request was needed due to cache pollution
 
 === Languages updated in 1.17 ===
 

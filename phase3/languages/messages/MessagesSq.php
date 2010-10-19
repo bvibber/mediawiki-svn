@@ -16,6 +16,7 @@
  * @author MicroBoy
  * @author Mikullovci11
  * @author Puntori
+ * @author Techlik
  * @author The Evil IP address
  * @author Urhixidur
  * @author לערי ריינהארט
@@ -335,10 +336,10 @@ $messages = array(
 'faqpage'        => 'Project:Pyetje e Përgjigje',
 
 # Vector skin
-'vector-action-addsection'       => 'Shtoe temën',
-'vector-action-delete'           => 'Fshij',
+'vector-action-addsection'       => 'Fillo një temë të re',
+'vector-action-delete'           => 'Grise',
 'vector-action-move'             => 'Zhvendose',
-'vector-action-protect'          => 'Mbrojtëje',
+'vector-action-protect'          => 'Mbroje',
 'vector-action-undelete'         => 'Jo e grisur',
 'vector-action-unprotect'        => 'Liroje',
 'vector-simplesearch-preference' => 'Aktivizoni kërkim të avancuar (vetë për Vektor)',
@@ -934,8 +935,12 @@ Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistr
 'revdelete-logentry'          => 'Pamja e versionit u ndryshua për [[$1]]',
 'logdelete-logentry'          => 'u ndryshua dukshmëria e ngjarjes së [[$1]]',
 'revdelete-success'           => "'''Dukshmëria e versioneve u vendos me sukses.'''",
+'revdelete-failure'           => "' ' 'Dukshmëria e rivizionit nuk mund të përditëohet\"
+\$1",
 'logdelete-success'           => "'''Dukshmëria e regjistrave u vendos me sukses.'''",
 'revdel-restore'              => 'Ndrysho dukshmërinë',
+'revdel-restore-deleted'      => 'fshij rivizonet',
+'revdel-restore-visible'      => 'rivizionet e dukshme',
 'pagehist'                    => 'Historiku i faqes',
 'deletedhist'                 => 'Historiku i grisjeve',
 'revdelete-content'           => 'përmbajtja',
@@ -947,6 +952,8 @@ Shiko tek [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} regjistr
 'revdelete-unhid'             => 'u tregua $1',
 'revdelete-log-message'       => '$1 për $2 {{PLURAL:$2|version|versione}}',
 'logdelete-log-message'       => '$1 për $2 {{PLURAL:$2|ngjarje|ngjarje}}',
+'revdelete-hide-current'      => 'Gabim në fshehje të pikës me datë $2, $1: ky është rivizioni i tanishëm. 
+Nuk mund të fshihet',
 'revdelete-edit-reasonlist'   => 'Arsye grisjeje për redaktimet',
 
 # Suppression log

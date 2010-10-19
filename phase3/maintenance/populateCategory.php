@@ -54,7 +54,7 @@ TEXT;
 				'updatelog',
 				'1',
 				array( 'ul_key' => 'populate category' ),
-				__FUNCTION__
+				__METHOD__
 			);
 			if ( $row ) {
 				$this->output( "Category table already populated.  Use php " .
@@ -80,7 +80,7 @@ TEXT;
 				'categorylinks',
 				'cl_to',
 				$where,
-				__FUNCTION__,
+				__METHOD__,
 				array(
 					'ORDER BY' => 'cl_to'
 				)
@@ -111,14 +111,14 @@ TEXT;
 		if ( $dbw->insert(
 				'updatelog',
 				array( 'ul_key' => 'populate category' ),
-				__FUNCTION__,
+				__METHOD__,
 				'IGNORE'
 			)
 		) {
-			wfOut( "Category population complete.\n" );
+			$this->output( "Category population complete.\n" );
 			return true;
 		} else {
-			wfOut( "Could not insert category population row.\n" );
+			$this->output( "Could not insert category population row.\n" );
 			return false;
 		}
 	}

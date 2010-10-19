@@ -654,7 +654,7 @@ abstract class DatabaseBase implements DatabaseType {
 		# Add a comment for easy SHOW PROCESSLIST interpretation
 		# if ( $fname ) {
 			global $wgUser;
-			if ( is_object( $wgUser ) && !( $wgUser instanceof StubObject ) ) {
+			if ( is_object( $wgUser ) && $wgUser->mDataLoaded ) {
 				$userName = $wgUser->getName();
 				if ( mb_strlen( $userName ) > 15 ) {
 					$userName = mb_substr( $userName, 0, 15 ) . '...';
@@ -1217,7 +1217,7 @@ abstract class DatabaseBase implements DatabaseType {
 
 		$result = array();
 
-		while ( $row = $this->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( $row->Key_name == $index ) {
 				$result[] = $row;
 			}
@@ -1232,7 +1232,7 @@ abstract class DatabaseBase implements DatabaseType {
 	function tableExists( $table ) {
 		$table = $this->tableName( $table );
 		$old = $this->ignoreErrors( true );
-		$res = $this->query( "SELECT 1 FROM $table LIMIT 1" );
+		$res = $this->query( "SELECT 1 FROM $table LIMIT 1", __METHOD__ );
 		$this->ignoreErrors( $old );
 
 		return (bool)$res;
@@ -2332,7 +2332,7 @@ abstract class DatabaseBase implements DatabaseType {
 		$res = $this->query( "SHOW STATUS LIKE '{$which}'" );
 		$status = array();
 
-		while ( $row = $this->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$status[$row->Variable_name] = $row->Value;
 		}
 
@@ -2412,11 +2412,12 @@ abstract class DatabaseBase implements DatabaseType {
 	 * @param $patch String The name of the patch, like patch-something.sql
 	 * @return String Full path to patch file
 	 */
-	public static function patchPath( $patch ) {
-		global $wgDBtype, $IP;
+	public function patchPath( $patch ) {
+		global $IP;
 
-		if ( file_exists( "$IP/maintenance/$wgDBtype/archives/$patch" ) ) {
-			return "$IP/maintenance/$wgDBtype/archives/$patch";
+		$dbType = $this->getType();
+		if ( file_exists( "$IP/maintenance/$dbType/archives/$patch" ) ) {
+			return "$IP/maintenance/$dbType/archives/$patch";
 		} else {
 			return "$IP/maintenance/archives/$patch";
 		}

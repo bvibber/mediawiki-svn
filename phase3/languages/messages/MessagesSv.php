@@ -538,6 +538,9 @@ För många användare försöker visa denna sida.
 Vänta en liten stund och försök igen lite senare.
 
 $1',
+'pool-timeout'      => 'Timeout i väntan på låsning',
+'pool-queuefull'    => 'Kön är full',
+'pool-errorunknown' => 'Okänt fel',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Om {{SITENAME}}',
@@ -1190,7 +1193,7 @@ Se [[Special:IPBlockList|blockeringslistan]] för listan över gällande blocker
 'revmove-norevisions-title'    => 'Ogiltig målversion',
 'revmove-norevisions'          => 'Du har inte angivit en eller flera målversioner för att utföra denna funktion eller den angivna versionen finns inte.',
 'revmove-nullmove-title'       => 'Dålig titel',
-'revmove-nullmove'             => 'Källa och målsida är identiska. Klicka på "tillbaka" och ange ett sidnamn som skiljer sig från "$1".',
+'revmove-nullmove'             => 'Källa och målsida är identiska. Klicka på "tillbaka" och ange ett sidnamn som skiljer sig från "[[$1]]".',
 'revmove-success-existing'     => '{{PLURAL:$1|En version från [[$2]] har|$1 versioner från [[$2]] har}} flyttats till den befintliga sidan [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|En version från [[$2]] har|$1 versioner från [[$2]] har}} flyttats till den nyskapade sidan [[$3]].',
 
@@ -3539,5 +3542,9 @@ Skriv filnamnet utan prefixet "{{ns:file}}:" .',
 'htmlform-submit'              => 'Spara',
 'htmlform-reset'               => 'Ogör ändringar',
 'htmlform-selectorother-other' => 'Andra',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 med stöd för fulltextsökning',
+'sqlite-no-fts'  => '$1 utan stöd för fulltextsökning',
 
 );

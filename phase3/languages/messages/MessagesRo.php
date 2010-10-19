@@ -525,10 +525,12 @@ pe titlul secțiunii (JavaScript)',
 'jumptonavigation'  => 'navigare',
 'jumptosearch'      => 'căutare',
 'view-pool-error'   => 'Ne pare rău, dar serverele sunt supraîncărcare în acest moment.
-Prea multi utilizatori încearcă să vizualizeze această pagină.
-Vă rugăm să așteptați un moment înainte să încercați să accesați pagina din nou.
+Prea mulți utilizatori încearcă să vizualizeze această pagină.
+Vă rugăm să așteptați un moment înainte de a reîncerca accesarea paginii.
 
 $1',
+'pool-timeout'      => 'Timpul alocat așteptării pentru blocare a expirat',
+'pool-queuefull'    => 'Coada de așteptare este plină',
 'pool-errorunknown' => 'Eroare necunoscută',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -763,6 +765,11 @@ Ignorați acest mesaj dacă crearea contului s-a produs în urma unei greșeli.'
 Vă rugăm să așteptați până să mai încercați.',
 'loginlanguagelabel'         => 'Limba: $1',
 'suspicious-userlogout'      => 'Cererea dumneavoastră de a închide sesiunea a fost refuzată întrucât pare că a fost trimisă printr-o eroare a navigatorului sau de un proxy memorat în cache.',
+'ratelimit-excluded-ips'     => '  #<!-- nu modificați această linie --> <pre>
+# Sintaxa este după cum urmează:
+#  * Totul, de la caracterul „#” până la sfârșitul liniei, este un comentariu
+#  * Fiecare linie ocupată este o adresă IP exclusă de la limita de frecvență
+ #</pre> <!-- nu modificați această linie -->',
 
 # JavaScript password checks
 'password-strength'            => 'Nivelul de securitate al parolei: $1',
@@ -1162,7 +1169,7 @@ Vezi [[Special:IPBlockList|adresele IP blocate]] pentru o listă a interzicerilo
 'revmove-norevisions-title'    => 'Versiune invalidă',
 'revmove-norevisions'          => 'Nu ați specificat una sau mai multe versiuni pentru a efectua operația sau versiunea specificată nu există.',
 'revmove-nullmove-title'       => 'Titlu incorect',
-'revmove-nullmove'             => 'Destinația și sursa sînt identice. Apăsați „înapoi” și alegeți un nume de pagină diferit de „$1”.',
+'revmove-nullmove'             => 'Destinația și sursa sînt identice. Apăsați „înapoi” și alegeți un nume de pagină diferit de „[[$1]]”.',
 'revmove-success-existing'     => '{{PLURAL:$1|S-a mutat o versiune|S-au mutat $1 versiuni}} de la [[$2]] la pagina existentă [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|S-a mutat o versiune|S-au mutat $1 versiuni}} de la [[$2]] la pagina nou creată [[$3]].',
 
@@ -1198,7 +1205,7 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'mergelogpagetext'   => 'Mai jos este o listă a celor mai recente combinări ale istoricului unei pagini cu al alteia.',
 
 # Diffs
-'history-title'            => 'Istoria reviziilor pentru "$1"',
+'history-title'            => 'Istoricul versiunilor pentru „$1”',
 'difference'               => '(Diferența dintre versiuni)',
 'difference-multipage'     => '(Diferență între pagini)',
 'lineno'                   => 'Linia $1:',
@@ -1206,6 +1213,7 @@ Folosirea linkurilor de navigare va reseta această coloană.',
 'showhideselectedversions' => 'Arată/ascunde reviziile marcate',
 'editundo'                 => 'anulează',
 'diff-multi'               => '({{PLURAL:$1|O revizie intermediară|$1 revizii intermediare}} efectuată de {{PLURAL:$2|un utilizator|$2 utilizatori}} {{PLURAL:$1|neafișată|neafișate}})',
+'diff-multi-manyusers'     => '({{PLURAL:$1|O versiune intermediară efectuată de|$1 (de) versiuni intermediare efectuate de peste}} $2 {{PLURAL:$2|utilizator|utilizatori}} {{PLURAL:$1|neafișată|neafișate}})',
 
 # Search results
 'searchresults'                    => 'Rezultatele căutării',
@@ -3398,6 +3406,11 @@ Puteți folosi în schimb [[Special:Watchlist/edit|editorul standard]].',
 'version-license'                  => 'Licență',
 'version-poweredby-credits'        => "Acest wiki este dezvoltat de '''[http://www.mediawiki.org/ MediaWiki]''', drepturi de autor © 2001-$1 $2.",
 'version-poweredby-others'         => 'alții',
+'version-license-info'             => 'MediaWiki este un software liber pe care îl puteți redistribui și/sau modifica sub termenii Licenței Publice Generale GNU publicată de Free Software Foundation – fie a doua versiune a acesteia, fie, la alegerea dumneavoastră, orice altă versiune ulterioară. 
+
+MediaWiki este distribuit în speranța că va fi folositor, dar FĂRĂ VREO GARANȚIE, nici măcar cea implicită de COMERCIALIZARE sau de ADAPTARE PENTRU UN UN SCOP ANUME. Vedeți Licența Publică Generală GNU pentru mai multe detalii. 
+
+În cazul în care nu ați primit [{{SERVER}}{{SCRIPTPATH}}/COPYING o copie a  Licenței Publice Generale GNU] împreună cu acest program, scrieți la Free Software Foundation, Inc, 51, Strada Franklin, etajul cinci, Boston, MA 02110-1301, Statele Unite ale Americii sau [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html citiți-o online].',
 'version-software'                 => 'Software instalat',
 'version-software-product'         => 'Produs',
 'version-software-version'         => 'Versiune',
@@ -3497,5 +3510,9 @@ Introdu numele fișierului fără prefixul "{{ns:file}}:".',
 'htmlform-submit'              => 'Trimite',
 'htmlform-reset'               => 'Anulează modificările',
 'htmlform-selectorother-other' => 'Altul',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 cu suport de căutare în tot textul',
+'sqlite-no-fts'  => '$1 fără suport de căutare în tot textul',
 
 );

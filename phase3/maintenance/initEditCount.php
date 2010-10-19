@@ -1,5 +1,8 @@
 <?php
 /**
+ * Init the user_editcount database field based on the number of rows in the
+ * revision table.
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -15,6 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @ingroup Maintenance
  */
 
@@ -30,12 +34,11 @@ class InitEditCount extends Maintenance {
 
 Background mode will be automatically used if the server is MySQL 4.0
 (which does not support subqueries) or if multiple servers are listed
-in $wgDBservers, usually indicating a replication environment.' );
+in the load balancer, usually indicating a replication environment.' );
 		$this->mDescription = "Batch-recalculate user_editcount fields from the revision table";
 	}
 
 	public function execute() {
-		global $wgDBservers;
 		$dbw = wfGetDB( DB_MASTER );
 		$user = $dbw->tableName( 'user' );
 		$revision = $dbw->tableName( 'revision' );
@@ -43,7 +46,7 @@ in $wgDBservers, usually indicating a replication environment.' );
 		$dbver = $dbw->getServerVersion();
 
 		// Autodetect mode...
-		$backgroundMode = count( $wgDBservers ) > 1 ||
+		$backgroundMode = wfGetLB()->getServerCount() > 1 ||
 			( $dbw instanceof DatabaseMysql && version_compare( $dbver, '4.1' ) < 0 );
 	
 		if ( $this->hasOption( 'background' ) ) {

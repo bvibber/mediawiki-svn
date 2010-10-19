@@ -9,6 +9,9 @@ wikiUrl 			= "http://localhost/deployment"
 username 			= "wikiuser"
 userPassword 		= "wikipass"
 testBrowser 		= "firefox"
+startserver			=
+stopserver			=
+jUnitLogFile		=
 
 [SeleniumTests]
 

@@ -186,7 +186,7 @@ class WatchlistEditor {
 			__METHOD__
 		);
 		if( $res->numRows() > 0 ) {
-			while( $row = $res->fetchObject() ) {
+			foreach ( $res as $row ) {
 				$title = Title::makeTitleSafe( $row->wl_namespace, $row->wl_title );
 				if( $title instanceof Title && !$title->isTalkPage() )
 					$list[] = $title->getPrefixedText();
@@ -212,10 +212,13 @@ class WatchlistEditor {
 		$sql = "SELECT wl_namespace, wl_title, page_id, page_len, page_is_redirect, page_latest
 			FROM {$watchlist} LEFT JOIN {$page} ON ( wl_namespace = page_namespace
 			AND wl_title = page_title ) WHERE wl_user = {$uid}";
+		if ( ! $dbr->implicitOrderby() ) {
+			$sql .= " ORDER BY wl_title";
+		}
 		$res = $dbr->query( $sql, __METHOD__ );
 		if( $res && $dbr->numRows( $res ) > 0 ) {
 			$cache = LinkCache::singleton();
-			while( $row = $dbr->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {			
 				$title = Title::makeTitleSafe( $row->wl_namespace, $row->wl_title );
 				if( $title instanceof Title ) {
 					// Update the link cache while we're at it

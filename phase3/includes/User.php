@@ -42,7 +42,7 @@ class PasswordError extends MWException {
  */
 class User {
 	/**
-	 * Global constants made accessable as class constants so that autoloader
+	 * Global constants made accessible as class constants so that autoloader
 	 * magic can be used.
 	 */
 	const USER_TOKEN_LENGTH = USER_TOKEN_LENGTH;
@@ -248,7 +248,7 @@ class User {
 		}
 
 		if ( !$data ) {
-			wfDebug( "Cache miss for user {$this->mId}\n" );
+			wfDebug( "User: cache miss for user {$this->mId}\n" );
 			# Load from DB
 			if ( !$this->loadFromDatabase() ) {
 				# Can't load from ID, user is anonymous
@@ -256,7 +256,7 @@ class User {
 			}
 			$this->saveToCache();
 		} else {
-			wfDebug( "Got user {$this->mId} from cache\n" );
+			wfDebug( "User: got user {$this->mId} from cache\n" );
 			# Restore from cache
 			foreach ( self::$mCacheVars as $name ) {
 				$this->$name = $data[$name];
@@ -863,7 +863,6 @@ class User {
 			return false;
 		}
 
-		$passwordCorrect = FALSE;
 		$this->mId = $sId;
 		if ( !$this->loadFromId() ) {
 			# Not a valid ID, loadFromId has switched the object to anon for us
@@ -891,11 +890,11 @@ class User {
 
 		if ( ( $sName == $this->mName ) && $passwordCorrect ) {
 			$_SESSION['wsToken'] = $this->mToken;
-			wfDebug( "Logged in from $from\n" );
+			wfDebug( "User: logged in from $from\n" );
 			return true;
 		} else {
 			# Invalid credentials
-			wfDebug( "Can't log in from $from, invalid credentials\n" );
+			wfDebug( "User: can't log in from $from, invalid credentials\n" );
 			$this->loadDefaults();
 			return false;
 		}
@@ -976,7 +975,7 @@ class User {
 				array( 'ug_user' => $this->mId ),
 				__METHOD__ );
 			$this->mGroups = array();
-			while( $row = $dbr->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$this->mGroups[] = $row->ug_group;
 			}
 		}
@@ -1173,7 +1172,6 @@ class User {
 		wfProfileIn( __METHOD__ );
 
 		$found = false;
-		$host = '';
 		// FIXME: IPv6 ???  (http://bugs.php.net/bug.php?id=33170)
 		if( IP::isIPv4( $ip ) ) {
 			# Reverse IP, bug 21255
@@ -2411,7 +2409,9 @@ class User {
 		$this->mOptionsLoaded = true;
 		$this->mOptionOverrides = array();
 
-		$this->mOptions = array();
+		// If an option is not set in $str, use the default value
+		$this->mOptions = self::getDefaultOptions();
+		
 		$a = explode( "\n", $str );
 		foreach ( $a as $s ) {
 			$m = array();
@@ -2669,6 +2669,7 @@ class User {
 	 * which will give them a chance to modify this key based on their own
 	 * settings.
 	 *
+	 * @deprecated use the ParserOptions object to get the relevant options
 	 * @return \string Page rendering hash
 	 */
 	function getPageRenderingHash() {
@@ -2676,6 +2677,7 @@ class User {
 		if( $this->mHash ){
 			return $this->mHash;
 		}
+		wfDeprecated( __METHOD__ );
 
 		// stubthreshold is only included below for completeness,
 		// since it disables the parser cache, its value will always 
@@ -3615,12 +3617,12 @@ class User {
 
 		// Maybe load from the object
 		if ( !is_null( $this->mOptionOverrides ) ) {
-			wfDebug( "Loading options for user " . $this->getId() . " from override cache.\n" );
+			wfDebug( "User: loading options for user " . $this->getId() . " from override cache.\n" );
 			foreach( $this->mOptionOverrides as $key => $value ) {
 				$this->mOptions[$key] = $value;
 			}
 		} else {
-			wfDebug( "Loading options for user " . $this->getId() . " from database.\n" );
+			wfDebug( "User: loading options for user " . $this->getId() . " from database.\n" );
 			// Load from database
 			$dbr = wfGetDB( DB_SLAVE );
 
@@ -3631,7 +3633,7 @@ class User {
 				__METHOD__
 			);
 
-			while( $row = $dbr->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$this->mOptionOverrides[$row->up_property] = $row->up_value;
 				$this->mOptions[$row->up_property] = $row->up_value;
 			}

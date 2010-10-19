@@ -15,16 +15,28 @@ $fallback = 'ar';
 
 $messages = array(
 # User preference toggles
-'tog-underline'        => 'krrj du izdayn:',
-'tog-justify'          => 'skr lɛrd n-stor ɣ togzimin aygiddi',
-'tog-hidepatrolled'    => 'Hide patrolled edits in recent changes',
-'tog-numberheadings'   => 'nmra n nsmiat wahdot',
-'tog-showtoolbar'      => 'sbaynd tizikrt n tbddil(JavaScript)',
-'tog-rememberpassword' => 'Sektid akccum inu ɣu-amsuddas ad (for a maximum of $1 {{PLURAL:$1|day|days}})',
-'tog-watchcreations'   => 'Zaydn tasniwin lli skrɣ i umuɣ n tilli ssuġiɣ.',
-'tog-watchdefault'     => 'Zaydn tasniwin lli tżrigɣ i umuɣ n tilli tsaggaɣ',
-'tog-watchmoves'       => 'Zayd tisniwin lli smattayɣ i tilli tsggaɣ.',
-'tog-watchdeletion'    => 'Zaydn tasniwin lli kkesɣ i tilli tsaggaɣ',
+'tog-underline'              => 'krrj du izdayn:',
+'tog-highlightbroken'        => 'sbaynd izdayn li khsrnin   <a href="" class="new">zod ghika</a> (nghd: zod ghika <a href="" class="internal">?</a>)',
+'tog-justify'                => 'skr lɛrd n-stor ɣ togzimin aygiddi',
+'tog-hidepatrolled'          => 'Hide patrolled edits in recent changes',
+'tog-numberheadings'         => 'nmra n nsmiat wahdot',
+'tog-showtoolbar'            => 'sbaynd tizikrt n tbddil(JavaScript)',
+'tog-rememberpassword'       => 'Sektid akccum inu ɣu-amsuddas ad (for a maximum of $1 {{PLURAL:$1|day|days}})',
+'tog-watchcreations'         => 'Zaydn tasniwin lli skrɣ i umuɣ n tilli ssuġiɣ.',
+'tog-watchdefault'           => 'Zaydn tasniwin lli tżrigɣ i umuɣ n tilli tsaggaɣ',
+'tog-watchmoves'             => 'Zayd tisniwin lli smattayɣ i tilli tsggaɣ.',
+'tog-watchdeletion'          => 'Zaydn tasniwin lli kkesɣ i tilli tsaggaɣ',
+'tog-nocache'                => 'ador itsjjal lmtasaffih tawriqt ad',
+'tog-enotifwatchlistpages'   => 'sifd yi tabrat  igh ibdl kra yat twriqt ghomdfor inu',
+'tog-enotifusertalkpages'    => 'sifd yi tabrat  igh tbdl tawriqt ohokko-no',
+'tog-enotifminoredits'       => 'sifd yi tabrat  i ibdln mziynin',
+'tog-watchlisthideown'       => 'hbo ghayli bdlgh gh omdfor inu',
+'tog-watchlisthidebots'      => 'hba ghayli bdln robotat gh omdfor inu',
+'tog-watchlisthideminor'     => 'hbo ibdln mziynin gh omdfor inu',
+'tog-watchlisthideliu'       => 'hbo ibdln n wili tsjlnin gh omdfr ino',
+'tog-watchlisthideanons'     => 'hbo ibdl n wili orisjilnin gh omdfor ino',
+'tog-watchlisthidepatrolled' => 'hbo ibdln lityozranin gh omdfor ino',
+'tog-ccmeonemails'           => 'sifd yi noskha n tibratin liyid safdn wiyad',
 
 'underline-always' => 'dima',
 'underline-never'  => 'ḥtta manak',
@@ -85,6 +97,7 @@ $messages = array(
 'pagecategories'         => '{{PLURAL:$1|amggrd|imggrad}}',
 'category_header'        => 'tiwriqin ɣ-omggrd "$1"',
 'subcategories'          => 'imggrad-mzin',
+'category-media-header'  => 'tiwriqin ɣ-omggrd "$1"',
 'hidden-categories'      => '{{PLURAL:$1|taggayt igdln|taggayin gdlnin}}',
 'listingcontinuesabbrev' => 'Aḍfar',
 
@@ -272,6 +285,13 @@ S ussiglad "<tt>$2</tt>".
 laffut d yurrin ɣ database "<tt>$3: $4</tt>".',
 'laggedslavemode' => 'Ḥan tasnayad ur gis graygan ambddel amaynu.',
 'readonly'        => 'Tqqn tabase',
+'missing-article' => 'lqaa\'ida n lbayanat ortofa nass ad gh tawriqt  liss ikhssa asti taf limism "$1" $2.
+
+ghikad artitsbib  igh itab3a lfr9 a9dim nghd tarikh artawi skra nsf7a ityo7yadn.
+
+ighor iga lhal ghika ati ran taft kra lkhata gh lbarnamaj.
+
+ini mayad ikra [[Special:ListUsers/sysop|lmodir]] tfktas ladriss ntwri9t an.',
 'viewsource'      => 'Mel iɣbula',
 
 # Login and logout pages
@@ -330,9 +350,11 @@ lcont nek  tuyskar .
 'minoredit'                  => 'Imbddel ad fssusn',
 'watchthis'                  => 'Sagg tasna yad',
 'savearticle'                => 'Ḥbu tasna',
+'preview'                    => '↓ Ammal',
 'showpreview'                => 'Iẓṛi amzwaru',
 'showdiff'                   => 'Mel imbddeln',
 'anoneditwarning'            => "Balak ''' ur tkcmt ''' rad ibayn IP nk ɣ umzrut n tasna yad, ur sul  iḥba tamagit nk",
+'newarticle'                 => '↓ (Amaynu)',
 'noarticletext'              => 'ɣilad ur illa walu may ityuran  f tasnatad ad, tzdart at [[Special:Search/{{PAGENAME}}|search for this page title]] in other pages,
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} search the related logs],
 ulla cabba  [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page]</span>.',
@@ -340,6 +362,7 @@ ulla cabba  [{{fullurl:{{FULLPAGENAME}}|action=edit}} edit this page]</span>.',
 Ẓr [[Special:Search/{{PAGENAME}}|search for this page title]] ɣ tisnatin yaḍnin,
 ulla <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}}search the related logs]</span>.',
 'editing'                    => 'taẓṛgt $1',
+'editingsection'             => '↓ Ẓrig $1 (tagzumt)',
 'copyrightwarning'           => "ikhssak atst izd kolchi tikkin noun ɣ {{SITENAME}} llan ɣdo $2 (zr $1 iɣ trit ztsnt uggar).
 iɣ ortrit ayg ɣayli torit ḥor artisbadal wnna ka-iran, attid ortgt ɣid.<br />
 ikhssak ola kiyi ador tnqilt ɣtamani yadni.
@@ -348,14 +371,16 @@ ikhssak ola kiyi ador tnqilt ɣtamani yadni.
 'template-semiprotected'     => 'Azin-ugdal',
 
 # History pages
-'currentrev-asof'     => 'Amseggar amǧuru  n $1',
-'revisionasof'        => 'Askttay yaḍn f $1',
-'previousrevision'    => 'Iẓṛi daɣ aqbur',
-'currentrevisionlink' => 'Amcggr amggaṛu',
-'cur'                 => 'Ɣilad',
-'last'                => 'Amzwaru',
-'histfirst'           => 'Amzwaru',
-'histlast'            => 'Amggaru',
+'viewpagelogs'           => '↓ Ẓr timhlin lli ittuskarn ɣ tasna yad',
+'currentrev-asof'        => 'Amseggar amǧuru  n $1',
+'revisionasof'           => 'Askttay yaḍn f $1',
+'previousrevision'       => 'Iẓṛi daɣ aqbur',
+'currentrevisionlink'    => 'Amcggr amggaṛu',
+'cur'                    => 'Ɣilad',
+'last'                   => 'Amzwaru',
+'history-fieldset-title' => '↓ sigel ɣ umzruy',
+'histfirst'              => 'Amzwaru',
+'histlast'               => 'Amggaru',
 
 # Revision deletion
 'rev-delundel'   => 'Mel/ĥbu',
@@ -442,18 +467,26 @@ Izdar ad urtili ɣ isbidn n mayllan ɣ {{SITENAME}} .',
 
 'grouppage-sysop' => '{{ns:project}}: Inedbalen',
 
+# Rights
+'right-revisionmove' => '↓ Smmati imẓran daɣ',
+
+# Associated actions - in the sentence "You do not have permission to X"
+'action-edit' => '↓ Ẓrig tasna yad.',
+
 # Recent changes
 'recentchanges'                     => 'Imbddeln imggura',
+'rclistfrom'                        => '↓ Mel imbdeltn imaynutn z $1',
 'rcshowhideminor'                   => '$1 iẓṛign fssusnin',
 'rcshowhidebots'                    => '$1 butn',
 'rcshowhideliu'                     => '$1 midn li ttuyqqiyadnin',
 'rcshowhideanons'                   => '$1 midn ur ttuyssan nin',
 'rcshowhidemine'                    => '$1 iẓṛign inu',
+'rclinks'                           => '↓ Ml id  $1 n imbddltn immgura li ittuyskarn n id $2 ussan ad gguranin<br />$3.',
 'diff'                              => 'Gar',
-'hist'                              => 'Amzruy',
+'hist'                              => '↓ Amzruy',
 'hide'                              => 'Ḥbu',
 'show'                              => 'Mel',
-'minoreditletter'                   => 'm',
+'minoreditletter'                   => '↓ m',
 'newpageletter'                     => 'A',
 'boteditletter'                     => 'q',
 'unpatrolledletter'                 => '!',
@@ -478,11 +511,15 @@ Izdar ad urtili ɣ isbidn n mayllan ɣ {{SITENAME}} .',
 Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 
 # Upload
-'upload'            => 'Srbu asddaw',
-'uploadbtn'         => 'Srbu asddaw',
-'reuploaddesc'      => 'Sbidd asrbu d turrit',
-'uploadnologin'     => 'Ur tmlit mat git',
-'uploadnologintext' => 'Mel zwar mat git [[Special:UserLogin|Mel mat git]] iɣ trit ad tsrbut isddawn.',
+'upload'                   => 'Srbu asddaw',
+'uploadbtn'                => 'Srbu asddaw',
+'reuploaddesc'             => 'Sbidd asrbu d turrit',
+'upload-tryagain'          => '↓ Ṣafḍ Anglam n ufaylu li ibudln',
+'uploadnologin'            => 'Ur tmlit mat git',
+'uploadnologintext'        => 'Mel zwar mat git [[Special:UserLogin|Mel mat git]] iɣ trit ad tsrbut isddawn.',
+'upload_directory_missing' => '↓ Akaram n w-affay ($1) ur ittyufa d urt iskr uqadac web (serveur)',
+'uploadlogpage'            => '↓ Anɣmis n isrbuṭn',
+'uploadedimage'            => '↓ Issrba "[[$1]]"',
 
 # File description page
 'filehist'                  => 'Amzry n usdaw',
@@ -511,6 +548,7 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 'lonelypagestext'         => 'Tisnawinad ur ur tuyzdaynt z ulla lant ɣ tisniwin yaḍnin ɣ {{SITENAME}}.',
 'uncategorizedpages'      => 'Tisnawinad ur llant ɣ graygan taggayt',
 'uncategorizedcategories' => 'Taggayin ur ittuyzlayn ɣ kraygan taggayt',
+'newpages'                => '↓ Tisniwin timaynutin',
 'move'                    => 'Smmatti',
 'movethispage'            => 'Smmatti tasna yad',
 'unusedcategoriestext'    => 'Taggayin ad llant waxxa gis nt ur tlli kra n tasna wala kra n taggayin yaḍnin',
@@ -557,7 +595,14 @@ Mel imbddeln z tisniwin li ittuyzdayni bla tasna li trit.',
 # Special:Log/newusers
 'newuserlogpage' => '↓ Aɣmis n willi mmurzmn imiḍan amsqdac',
 
+# Special:ListGroupRights
+'listgrouprights-members' => '↓ Umuɣ n  midn',
+
+# E-mail user
+'emailuser' => '↓ Azn tabrat umsqdac ad',
+
 # Watchlist
+'watchlist'   => '↓ Umuɣ n imtfrn',
 'mywatchlist' => 'Umuɣ inu lli tsaggaɣ',
 'watch'       => 'zaydtin i tochwafin-niw',
 'unwatch'     => 'Ur rast tsaggaɣ',
@@ -575,7 +620,7 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 Ẓṛ $2 inɣmas imggura n ma ittuykkasn',
 'deletedarticle'        => 'Kkiss "[[$1]]"',
 'dellogpage'            => 'Qqiyd akkas ad',
-'deletecomment'         => 'Maf ittuykkas:',
+'deletecomment'         => '! Maɣ:',
 'deleteotherreason'     => 'Wayyaḍ/ maf ittuykkas yaḍn',
 'deletereasonotherlist' => 'Maf ittuykkas yaḍn',
 
@@ -583,7 +628,11 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 'rollbacklink' => 'Rard',
 
 # Protect
-'protect-default' => 'Immurzm i kullu imsxdamn',
+'protectlogpage'            => '↓ Iɣmisn n ugdal',
+'protectedarticle'          => '↓ ay gdl  "[[$1]]"',
+'modifiedarticleprotection' => '↓ isbudl taskfalt n ugdal n « [[$1]] »',
+'protectcomment'            => 'Maɣ:',
+'protect-default'           => 'Immurzm i kullu imsxdamn',
 
 # Undelete
 'undeletelink' => 'mel/rard',
@@ -596,6 +645,9 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 # Contributions
 'contributions' => 'Tiwuriwin n umsaws',
 'mycontris'     => 'Tiwuriwin inu',
+'contribsub2'   => '↓ I $1 ($2)',
+'uctop'         => '↓ (tamgarut)',
+'month'         => 'Z usggas (d urbur):',
 'year'          => 'Z usggas (d urbur):',
 
 'sp-contributions-newbies'             => '↓ Ad ur tmlt abla tiwuriwin n wiyyaḍ',
@@ -635,13 +687,37 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 'whatlinkshere-filters'    => 'Istayn',
 
 # Block/unblock
-'blocklink'        => 'Adur tajt',
-'unblocklink'      => 'kkis agdal',
-'change-blocklink' => 'Sbadl agdal',
-'contribslink'     => 'tikkin',
+'blockip'                  => '↓ Qn f umsqdac',
+'ipboptions'               => '↓ 2 ikudn:2 hours,1 as:1 day,3 ussan:3 days,1 imalas:1 week,2 imalasn:2 weeks,1 ayur:1 month,3 irn:3 months,6 irn:6 months,1 asggas:1 year,tusut ur iswuttan:infinite',
+'ipbotheroption'           => '↓ wayya',
+'ipbhidename'              => '↓ ḥbu assaɣ n umsqdac ɣ imbdln d umuɣn',
+'ipbwatchuser'             => '↓ Tfr tisniwin d imsgdaln n umqdac',
+'ipballowusertalk'         => '↓ Yufa umsqdac ad ad isbddl tasna ns n umsgdal ɣ tizi lliɣas ttuyqqan tins',
+'ipblocklist'              => '↓ Tansa IP d imsqdacn ttuẓnin',
+'blocklink'                => 'Adur tajt',
+'unblocklink'              => 'kkis agdal',
+'change-blocklink'         => 'Sbadl agdal',
+'contribslink'             => 'tikkin',
+'blocklogpage'             => '↓ aɣmmis n may ittuyqqanin',
+'blocklog-showlog'         => '↓ Amsqdac ikkattin ittuyqqan. anɣmis n willi ttuyqqanin  ɣid:',
+'blocklog-showsuppresslog' => '↓ Amsqdac ikkattin ittuyqqan d iḥba. Anɣmis n willi ttuyqqanin  ɣid:',
+'blocklogentry'            => '↓ tqn [[$1]] s tizi izrin n $2 $3',
 
 # Move page
-'revertmove' => 'Rard',
+'movearticle'              => 'Smmatti tasna niɣ as tsbudlt assaɣ',
+'newtitle'                 => '↓ dar w-assaɣ amaynu:',
+'movepagebtn'              => '↓ Smmatti tasna niɣ as tsbudlt assaɣ',
+'pagemovedsub'             => '↓ tmmutti bla tamukrist',
+'movepage-moved'           => '↓ \'\'\'"$1" tmmutti s "$2"\'\'\'',
+'movedto'                  => '↓ Tmmuti s',
+'1movedto2'                => '↓ ad tmmatti z [[$1]] s [[$2]]',
+'1movedto2_redir'          => '↓ ad tmmatti [[$1]] s [[$2]] trẓ asurriti ns',
+'move-redirect-suppressed' => '↓ asuritti n ittuykkasn',
+'movelogpage'              => '↓ Iɣmisn n ismmattrayn',
+'movelogpagetext'          => '↓ Γid umuɣ n tisniwin lli sbadlnin assaɣ d tilli mmuttini.',
+'movesubpage'              => '↓ Ddu-tasna {{PLURAL:$1||s}}',
+'movereason'               => 'Maɣ:',
+'revertmove'               => 'Rard',
 
 # Export
 'export' => 'assufɣ n tasniwin',
@@ -714,11 +790,18 @@ illa fllak ad ni tẓrt is trit ast tkkist d is tssnt marad igguṛu iɣt tkkist
 
 # Browsing diffs
 'previousdiff' => 'Imbddln imzwura',
+'nextdiff'     => '↓ Ambdl d ittfrn  →',
 
 # Media information
 'file-info-size'       => '($1 × $2 piksil, asdaw tugut: $3, MIME anaw: $4)',
+'file-nohires'         => '↓<small>Ur tlli tabudut tamqrant.</small>',
 'show-big-image'       => 'balak',
 'show-big-image-thumb' => '<small>Size of this preview: $1 × $2 pixels</small>',
+
+# Bad image list
+'bad_image_list' => 'zud ghikad :
+
+ghir l7wayj n lista (stour libdounin s *) karaytyo7asab',
 
 # Metadata
 'metadata'          => 'isfka n mita',
@@ -743,7 +826,9 @@ Wiyyaḍ raggis ḥbun s ɣiklli sttin kkan gantn
 'edit-externally-help' => '(Ẓṛ [http://www.mediawiki.org/wiki/Manual:External_editors/fr les instructions d’installation] bac ad taf uggar n inɣmisn)',
 
 # 'all' in various places, this might be different for inflected languages
+'watchlistall2' => '↓ kraygat (kullu)',
 'namespacesall' => 'kullu',
+'monthsall'     => '↓ kullu',
 
 # Multipage image navigation
 'imgmultigo' => 'ballak !',
@@ -752,6 +837,9 @@ Wiyyaḍ raggis ḥbun s ɣiklli sttin kkan gantn
 'table_pager_first'        => 'tawriqt tamzwarut',
 'table_pager_last'         => 'tawriqt tamgrut',
 'table_pager_limit_submit' => 'ballak',
+
+# Watchlist editing tools
+'watchlisttools-raw' => '↓ Ẓṛig umuɣ n tisniwin',
 
 # Special:SpecialPages
 'specialpages' => 'tiwriqin tesbtarin',

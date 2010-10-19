@@ -1610,10 +1610,10 @@ class OutputPage {
 		}
 
 		$sk = $wgUser->getSkin();
-		
+
 		// Add base resources
 		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
-		
+
 		// Add various resources if required
 		if ( $wgUseAjax ) {
 			$this->addModules( 'mediawiki.legacy.ajax' );
@@ -2276,11 +2276,14 @@ class OutputPage {
 		$bodyAttrs['class'] .= ' ' . Sanitizer::escapeClass( 'page-' . $this->getTitle()->getPrefixedText() );
 		$bodyAttrs['class'] .= ' skin-' . Sanitizer::escapeClass( $wgUser->getSkin()->getSkinName() );
 
+		$sk->addToBodyAttributes( $this, $bodyAttrs ); // Allow skins to add body attributes they need
+		wfRunHooks( 'OutputPageBodyAttributes', array( $this, $sk, &$bodyAttrs ) );
+
 		$ret .= Html::openElement( 'body', $bodyAttrs ) . "\n";
 
 		return $ret;
 	}
-	
+
 	// TODO: Document
 	protected function makeResourceLoaderLink( $skin, $modules, $only, $useESI = false ) {
 		global $wgUser, $wgLang, $wgRequest, $wgLoadScript, $wgResourceLoaderDebug, $wgResourceLoaderUseESI,
@@ -2323,9 +2326,7 @@ class OutputPage {
 				$context = new ResourceLoaderContext( $this->mResourceLoader, new FauxRequest( $query ) );
 				if ( $only == 'styles' ) {
 					$links .= Html::inlineStyle(
-						ResourceLoader::makeLoaderConditionalScript(
-							$this->mResourceLoader->makeModuleResponse( $context, $modules )
-						)
+						$this->mResourceLoader->makeModuleResponse( $context, $modules )
 					);
 				} else {
 					$links .= Html::inlineScript(
@@ -2343,16 +2344,16 @@ class OutputPage {
 				// Create a fake request based on the one we are about to make so modules return correct times
 				$context = new ResourceLoaderContext( $this->mResourceLoader, new FauxRequest( $query ) );
 				// Get the maximum timestamp
-				$timestamp = 0;
+				$timestamp = 1;
 				foreach ( $modules as $module ) {
 					$timestamp = max( $timestamp, $module->getModifiedTime( $context ) );
 				}
 				// Add a version parameter so cache will break when things change
-				$query['version'] = wfTimestamp( TS_ISO_8601, round( $timestamp, -2 ) );
+				$query['version'] = wfTimestamp( TS_ISO_8601_BASIC, round( $timestamp, -2 ) );
 			}
 			// Make queries uniform in order
 			ksort( $query );
-			
+
 			$url = wfAppendQuery( $wgLoadScript, $query );
 			if ( $useESI && $wgResourceLoaderUseESI ) {
 				$esi = Xml::element( 'esi:include', array( 'src' => $url ) );
@@ -2372,7 +2373,7 @@ class OutputPage {
 		}
 		return $links;
 	}
-	
+
 	/**
 	 * Gets the global variables and mScripts; also adds userjs to the end if
 	 * enabled. Despite the name, these scripts are no longer put in the
@@ -2383,14 +2384,14 @@ class OutputPage {
 	 */
 	function getHeadScripts( Skin $sk ) {
 		global $wgUser, $wgRequest, $wgUseSiteJs, $wgResourceLoaderDebug;
-		
+
 		// Startup - this will immediately load jquery and mediawiki modules
 		$scripts = $this->makeResourceLoaderLink( $sk, 'startup', 'scripts', true );
-		
+
 		// Configuration -- This could be merged together with the load and go, but makeGlobalVariablesScript returns a
 		// whole script tag -- grumble grumble...
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		
+
 		// Script and Messages "only"
 		if ( $wgRequest->getFuzzyBool( 'debug', $wgResourceLoaderDebug ) ) {
 			// Scripts
@@ -2411,7 +2412,7 @@ class OutputPage {
 				$scripts .= $this->makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
 			}
 		}
-		
+
 		// Modules - let the client calculate dependencies and batch requests as it likes
 		if ( $this->getModules() ) {
 			$modules = FormatJson::encode( $this->getModules() );
@@ -2419,7 +2420,7 @@ class OutputPage {
 				"if ( window.mediaWiki ) { mediaWiki.loader.load( {$modules} ); mediaWiki.loader.go(); }"
 			) . "\n";
 		}
-		
+
 		// Add user JS if enabled - trying to load user.options as a bundle if possible
 		$userOptionsAdded = false;
 		if ( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
@@ -2436,12 +2437,12 @@ class OutputPage {
 			$scripts .= $this->makeResourceLoaderLink( $sk, 'user.options', 'scripts' );
 		}
 		$scripts .= "\n" . $this->mScripts;
-		
+
 		// Add site JS if enabled
 		if ( $wgUseSiteJs ) {
 			$scripts .= $this->makeResourceLoaderLink( $sk, 'site', 'scripts' );
 		}
-		
+
 		return $scripts;
 	}
 
@@ -2570,7 +2571,7 @@ class OutputPage {
 				$tags[] = $this->makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
 			}
 		}
-		
+
 		return implode( "\n", $tags );
 	}
 

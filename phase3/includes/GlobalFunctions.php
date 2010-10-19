@@ -16,7 +16,7 @@ require_once dirname( __FILE__ ) . '/normal/UtfNormalUtil.php';
 /**
  * Compatibility functions
  *
- * We more or less support PHP 5.0.x and up.
+ * We support PHP 5.1.x and up.
  * Re-implementations of newer functions or functions in non-standard
  * PHP extensions may be included here.
  */
@@ -499,7 +499,8 @@ function wfLogProfilingData() {
 		$forward = "\t(proxied via {$_SERVER['REMOTE_ADDR']}{$forward})";
 	}
 	// Don't unstub $wgUser at this late stage just for statistics purposes
-	if( StubObject::isRealObject( $wgUser ) && $wgUser->isAnon() ) {
+	// FIXME: We can detect some anons even if it is not loaded. See User::getId()
+	if( $wgUser->mDataLoaded && $wgUser->isAnon() ) {
 		$forward .= ' anon';
 	}
 	$log = sprintf( "%s\t%04.3f\t%s\n",
@@ -928,7 +929,8 @@ function wfMsgExt( $key, $options ) {
  * Just like exit() but makes a note of it.
  * Commits open transactions except if the error parameter is set
  *
- * @deprecated Please return control to the caller or throw an exception
+ * @deprecated Please return control to the caller or throw an exception. Will
+ *             be removed in 1.19.
  */
 function wfAbruptExit( $error = false ) {
 	static $called = false;
@@ -937,6 +939,7 @@ function wfAbruptExit( $error = false ) {
 	}
 	$called = true;
 
+	wfDeprecated( __FUNCTION__ );
 	$bt = wfDebugBacktrace();
 	if( $bt ) {
 		for( $i = 0; $i < count( $bt ); $i++ ) {
@@ -957,9 +960,11 @@ function wfAbruptExit( $error = false ) {
 }
 
 /**
- * @deprecated Please return control the caller or throw an exception
+ * @deprecated Please return control the caller or throw an exception. Will
+ *             be removed in 1.19.
  */
 function wfErrorExit() {
+	wfDeprecated( __FUNCTION__ );
 	wfAbruptExit( true );
 }
 
@@ -1957,6 +1962,13 @@ define( 'TS_POSTGRES', 7 );
 define( 'TS_DB2', 8 );
 
 /**
+ * ISO 8601 basic format with no timezone: 19860209T200000Z
+ *
+ * This is used by ResourceLoader
+ */
+define( 'TS_ISO_8601_BASIC', 9 );
+
+/**
  * @param $outputtype Mixed: A timestamp in one of the supported formats, the
  *                    function will autodetect which format is supplied and act
  *                    accordingly.
@@ -1983,6 +1995,8 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 				str_replace( '+00:00', 'UTC', $ts ) ) );
 	} elseif ( preg_match( '/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.*\d*)?Z$/', $ts, $da ) ) {
 		# TS_ISO_8601
+	} elseif ( preg_match( '/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(?:\.*\d*)?Z$/', $ts, $da ) ) {
+		#TS_ISO_8601_BASIC
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d*[\+\- ](\d\d)$/', $ts, $da ) ) {
 		# TS_POSTGRES
 	} elseif ( preg_match( '/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/', $ts, $da ) ) {
@@ -2014,6 +2028,8 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 			return gmdate( 'Y-m-d H:i:s', $uts );
 		case TS_ISO_8601:
 			return gmdate( 'Y-m-d\TH:i:s\Z', $uts );
+		case TS_ISO_8601_BASIC:
+			return gmdate( 'Ymd\THis\Z', $uts );
 		// This shouldn't ever be used, but is included for completeness
 		case TS_EXIF:
 			return gmdate( 'Y:m:d H:i:s', $uts );
@@ -2263,7 +2279,8 @@ function wfIncrStats( $key ) {
 			);
 		}
 		$statline = "stats/{$wgDBname} - 1 1 1 1 1 {$key}\n";
-		@socket_sendto(
+		wfSuppressWarnings();
+		socket_sendto(
 			$socket,
 			$statline,
 			strlen( $statline ),
@@ -2271,6 +2288,7 @@ function wfIncrStats( $key ) {
 			$wgUDPProfilerHost,
 			$wgUDPProfilerPort
 		);
+		wfRestoreWarnings();
 	} elseif( $wgStatsMethod == 'cache' ) {
 		global $wgMemc;
 		$key = wfMemcKey( 'stats', $key );
@@ -3253,7 +3271,9 @@ function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
 		if( isset( $callerfunc['class'] ) ) {
 			$func .= $callerfunc['class'] . '::';
 		}
-		$func .= @$callerfunc['function'];
+		if( isset( $callerfunc['function'] ) ) {
+			$func .= $callerfunc['function'];
+		}
 		$msg .= " [Called from $func in $file]";
 	}
 
@@ -3284,7 +3304,9 @@ function wfWaitForSlaves( $maxLag, $wiki = false ) {
 		$lb = wfGetLB( $wiki );
 		list( $host, $lag ) = $lb->getMaxLag( $wiki );
 		while( $lag > $maxLag ) {
-			$name = @gethostbyaddr( $host );
+			wfSuppressWarnings();
+			$name = gethostbyaddr( $host );
+			wfRestoreWarnings();
 			if( $name !== false ) {
 				$host = $name;
 			}

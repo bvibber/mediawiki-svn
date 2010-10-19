@@ -570,6 +570,15 @@ class Skin extends Linker {
 	}
 
 	/**
+	 * This will be called by OutputPage::headElement when it is creating the
+	 * <body> tag, skins can override it if they have a need to add in any
+	 * body attributes or classes of their own.
+	 */
+	function addToBodyAttributes( $out, &$bodyAttrs ) {
+		// does nothing by default
+	}
+
+	/**
 	 * URL to the logo
 	 */
 	function getLogo() {
@@ -827,7 +836,6 @@ class Skin extends Linker {
 		$ret = '<li>';
 
 		foreach ( $lines as $line ) {
-			$m = array();
 			$display = ltrim( $line );
 			$ident = strlen( $line ) - strlen( $display );
 			$diff = $ident - $curIdent;
@@ -2184,12 +2192,10 @@ class Skin extends Linker {
 
 					$line = substr( $line, 2, strlen( $line ) - 4 );
 
-					if ( is_null( $wgParser->mOptions ) ) {
-						$wgParser->mOptions = new ParserOptions();
-					}
-
-					$wgParser->mOptions->setEditSection( false );
-					$wikiBar[$heading] = $wgParser->parse( wfMsgForContentNoTrans( $line ) , $wgTitle, $wgParser->mOptions )->getText();
+					$options = new ParserOptions();
+					$options->setEditSection( false );
+					$options->setInterfaceMessage( true );
+					$wikiBar[$heading] = $wgParser->parse( wfMsgForContentNoTrans( $line ) , $wgTitle, $options )->getText();
 				} else {
 					continue;
 				}

@@ -504,6 +504,7 @@ Liiga palju kasutajaid üritab korraga seda lehte vaadata.
 Palun oota hetk enne kui uuesti proovid.
 
 $1',
+'pool-errorunknown' => 'Teadmata tõrge',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '{{GRAMMAR:genitive|{{SITENAME}}}} tiitelandmed',
@@ -744,6 +745,11 @@ Kui kasutajakonto loomine on eksitus, võid käesolevat sõnumit lihtsalt eirata
 Palun pea nüüd pisut vahet.',
 'loginlanguagelabel'         => 'Keel: $1',
 'suspicious-userlogout'      => 'Sinu väljalogimiskatse nurjus, sest see näis olevat katkise veebilehitseja või puhverserveri saadetud.',
+'ratelimit-excluded-ips'     => '  #<!-- Jäta see rida muutmata kujule. --> <pre>
+# Süntaks:
+#  * Kõik alates märgist "#" kuni rea lõpuni on kommentaar.
+#  * Iga rida, mis ei ole tühi, on IP-aadress, millele piirang ei kehti.
+  #</pre> <!-- Jäta see rida muutmata kujule. -->',
 
 # JavaScript password checks
 'password-strength'            => 'Parooli tugevuse hinnang: $1',
@@ -1149,7 +1155,7 @@ Mine eelmisele leheküljele tagasi ja proovi uuesti.',
 'revmove-norevisions'          => 'Selle toimingu sooritamiseks pole ühtegi sihtredaktsiooni määratud või määratud redaktsiooni pole olemas.',
 'revmove-nullmove-title'       => 'Halb pealkiri',
 'revmove-nullmove'             => 'Lähte- ja sihtlehekülg ei saa olla samad.
-Mine eelmisele leheküljele tagasi ja vali pealkirjast "$1" erinev pealkiri.',
+Mine eelmisele leheküljele tagasi ja vali pealkirjast "[[$1]]" erinev pealkiri.',
 'revmove-success-existing'     => '{{PLURAL:$1|Üks redaktsioon|$1 redaktsiooni}} leheküljelt [[$2]] on teisaldatud olemasolevale leheküljele [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Üks redaktsioon|$1 redaktsiooni}} leheküljelt [[$2]] on teisaldatud vastloodud leheküljele [[$3]].',
 
@@ -2878,7 +2884,7 @@ kontrollige oma ''latex'', ''dvips'', ''gs'', ''convert'' installatsioonide korr
 'log-show-hide-patrol' => '$1 kontrollimislogi',
 
 # Image deletion
-'deletedrevision'                 => 'Kustutatud vanem variant $1',
+'deletedrevision'                 => 'Kustutatud vanem versioon $1',
 'filedeleteerror-short'           => 'Faili $1 kustutamine ebaõnnestus',
 'filedeleteerror-long'            => 'Faili kustutamine ebaõnnestus:
 
@@ -2957,6 +2963,8 @@ Kui faili on rakendustarkvaraga töödeldud, võib osa andmeid olla muudetud võ
 'exif-yresolution'                 => 'Vertikaalne eraldus',
 'exif-resolutionunit'              => 'X ja Y resolutsiooni ühik',
 'exif-stripoffsets'                => 'Pildi andmete asukoht',
+'exif-rowsperstrip'                => 'Ridade arv riba kohta',
+'exif-stripbytecounts'             => 'Baitide hulk kokkusurutud riba kohta',
 'exif-jpeginterchangeformat'       => 'Kaugus JPEG SOI-ni',
 'exif-jpeginterchangeformatlength' => 'JPEG-andmete suurus baitides',
 'exif-transferfunction'            => 'Siirdefunktsioon',
@@ -3004,6 +3012,7 @@ Kui faili on rakendustarkvaraga töödeldud, võib osa andmeid olla muudetud võ
 'exif-exposureindex'               => 'Särituse number',
 'exif-sensingmethod'               => 'Tundlikustamismeetod',
 'exif-filesource'                  => 'Faili päritolu',
+'exif-scenetype'                   => 'Stseeni tüüp',
 'exif-customrendered'              => 'Kohandatud pilditöötlus',
 'exif-exposuremode'                => 'Särituse meetod',
 'exif-whitebalance'                => 'Valge tasakaal',
@@ -3047,6 +3056,8 @@ Kui faili on rakendustarkvaraga töödeldud, võib osa andmeid olla muudetud võ
 'exif-orientation-6' => 'Pööratud 90° päripäeva',
 'exif-orientation-7' => 'Pööratud 90° päripäeva ja püstselt ümberpööratud',
 'exif-orientation-8' => 'Pööratud 90° vastupäeva',
+
+'exif-planarconfiguration-2' => 'tasapinnaline vorm',
 
 'exif-componentsconfiguration-0' => 'ei ole',
 
@@ -3106,6 +3117,9 @@ Kui faili on rakendustarkvaraga töödeldud, võib osa andmeid olla muudetud võ
 'exif-sensingmethod-3' => 'Kahe-kiibiga värvisensor',
 'exif-sensingmethod-4' => 'Kolme-kiibiga värvisensor',
 'exif-sensingmethod-7' => 'Kolmerealine sensor',
+
+'exif-customrendered-0' => 'Normaalne protsess',
+'exif-customrendered-1' => 'Kohandatud protsess',
 
 'exif-exposuremode-0' => 'Automaatne säritus',
 'exif-exposuremode-1' => 'Manuaalne säritus',
@@ -3299,6 +3313,7 @@ Sa võid [[Special:Watchlist/edit|kasutada ka harilikku tekstiredaktorit]].',
 'watchlisttools-raw'  => 'Muuda lähteteksti',
 
 # Core parser functions
+'unknown_extension_tag' => 'Tundmatu lisa märgend "$1".',
 'duplicate-defaultsort' => '\'\'\'Hoiatus:\'\'\' Järjestamisvõti "$2" tühistab eespool oleva järjestamisvõtme "$1".',
 
 # Special:Version
@@ -3318,6 +3333,13 @@ Sa võid [[Special:Watchlist/edit|kasutada ka harilikku tekstiredaktorit]].',
 'version-hook-subscribedby'        => 'Tellijad',
 'version-version'                  => '(Versioon $1)',
 'version-license'                  => 'Litsents',
+'version-poweredby-credits'        => "See viki kasutab '''[http://www.mediawiki.org/ MediaWiki]''' tarkvara. Autoriõigus © 2001-$1 $2.",
+'version-poweredby-others'         => 'teised',
+'version-license-info'             => "MediaWiki on vaba tarkvara; tohid seda taaslevitada ja/või selle põhjal teisendeid luua vastavalt Vaba Tarkvara Fondi avaldatud GNU Üldise Avaliku Litsentsi versioonis 2 või hilisemas seatud tingimustele.
+
+MediaWiki tarkvara levitatakse lootuses, et see on kasulik, aga '''igasuguse tagatiseta''', ka kaudse tagatiseta teose '''turustatavuse''' või '''müügikõlblikkuse''' kohta. Üksikasjad leiad GNU Üldisest Avalikust Litsentsist.
+
+GNU Üldise Avaliku Litsentsi [{{SERVER}}{{SCRIPTPATH}}/COPYING eksemplar] peaks selle programmiga kaasas olema; kui pole, kirjuta aadressil Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA või [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html loe seda võrgust].",
 'version-software'                 => 'Paigaldatud tarkvara',
 'version-software-product'         => 'Toode',
 'version-software-version'         => 'Versioon',
@@ -3413,6 +3435,7 @@ Sisesta faili nimi eesliiteta "{{ns:file}}:".',
 'htmlform-float-invalid'       => 'Määratud väärtus ei ole arvuline.',
 'htmlform-int-toolow'          => 'Antud suurus on väiksem kui minimaalne $1',
 'htmlform-int-toohigh'         => 'Antud suurus on suurem kui maksimaalne $1',
+'htmlform-required'            => 'See väärtus on nõutav',
 'htmlform-submit'              => 'Saada',
 'htmlform-reset'               => 'Tühista muudatused',
 'htmlform-selectorother-other' => 'Muu',

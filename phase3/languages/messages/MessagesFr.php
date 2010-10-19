@@ -52,6 +52,7 @@
  * @author The Evil IP address
  * @author Urhixidur
  * @author Verdy p
+ * @author Wyz
  * @author Yumeki
  * @author Zetud
  * @author Горан Анђелковић
@@ -1223,7 +1224,7 @@ Voir la [[Special:IPBlockList|liste des adresses IP et utilisateurs bloqués]] p
 'revmove-norevisions-title'    => 'Révision cible invalide',
 'revmove-norevisions'          => 'Vous n’avez pas spécifié un ou plusieurs révisions cibles pour effectuer cette fonctionnalité ou la révision spécifiée n’existe pas.',
 'revmove-nullmove-title'       => 'Mauvais titre',
-'revmove-nullmove'             => 'Les pages source et cible sont identiques. Veuillez cliquer sur « précédent » et entrez un nom de page différent de « $1 ».',
+'revmove-nullmove'             => 'Les pages source et cible sont identiques. Veuillez cliquer sur « précédent » et entrez un nom de page différent de « [[$1]] ».',
 'revmove-success-existing'     => '{{PLURAL:$1|Une révision de [[$2]] a été déplacée|$1 révisions de [[$2]] ont été déplacées}} vers la page existante [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Une révision de [[$2]] a été déplacée|$1 révisions de [[$2]] ont été déplacées}} vers la page [[$3]] nouvellement créée.',
 
@@ -1381,7 +1382,7 @@ Essayez en utilisant le préfixe ''all:'' pour rechercher dans tout le contenu (
 'recentchangesdays-max'         => '(maximum $1 jour{{PLURAL:$1||s}})',
 'recentchangescount'            => 'Nombre de modifications à afficher par défaut :',
 'prefs-help-recentchangescount' => 'Ceci inclut les modifications récentes, les pages d’historiques et les journaux.',
-'prefs-help-watchlist-token'    => 'En remplissant ceci avec une valeur secrète générera un flux RSS pour votre liste de suivi.
+'prefs-help-watchlist-token'    => 'Remplissez ce champ avec une valeur secrète et un flux RSS sera généré pour votre liste de suivi.
 Toute personne connaissant ce jeton pourra lire votre liste de suivi, choisissez donc une valeur sécurisée.
 Voici une valeur générée aléatoirement que vous pouvez utiliser : $1',
 'savedprefs'                    => 'Les préférences ont été sauvegardées.',
@@ -1989,7 +1990,7 @@ Les entrées <del>barrées</del> ont été résolues.',
 'fewestrevisions' => 'Pages les moins modifiées',
 
 # Miscellaneous special pages
-'nbytes'                  => '$1 octet{{PLURAL:$1||s}}',
+'nbytes'                  => '$1 {{PLURAL:$1|octet|octets}}',
 'ncategories'             => '$1 catégorie{{PLURAL:$1||s}}',
 'nlinks'                  => '$1 lien{{PLURAL:$1||s}}',
 'nmembers'                => '$1 membre{{PLURAL:$1||s}}',

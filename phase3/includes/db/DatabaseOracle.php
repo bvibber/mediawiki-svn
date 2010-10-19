@@ -37,7 +37,7 @@ class ORAResult {
 		$array_out = array();
 		$array_hashes = array();
 
-		foreach ( $array_in as $key => $item ) {
+		foreach ( $array_in as $item ) {
 			$hash = md5( serialize( $item ) );
 			if ( !isset( $array_hashes[$hash] ) ) {
 				$array_hashes[$hash] = $hash;
@@ -53,7 +53,7 @@ class ORAResult {
 
 		if ( ( $this->nrows = oci_fetch_all( $stmt, $this->rows, 0, - 1, OCI_FETCHSTATEMENT_BY_ROW | OCI_NUM ) ) === false ) {
 			$e = oci_error( $stmt );
-			$db->reportQueryError( $e['message'], $e['code'], '', __FUNCTION__ );
+			$db->reportQueryError( $e['message'], $e['code'], '', __METHOD__ );
 			return;
 		}
 
@@ -218,9 +218,9 @@ class DatabaseOracle extends DatabaseBase {
 		return true;
 	}
 
-	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 )
+	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0, $tablePrefix )
 	{
-		return new DatabaseOracle( $server, $user, $password, $dbName, $failFunction, $flags );
+		return new DatabaseOracle( $server, $user, $password, $dbName, $failFunction, $flags, $tablePrefix );
 	}
 
 	/**
@@ -233,10 +233,23 @@ class DatabaseOracle extends DatabaseBase {
 		}
 
 		$this->close();
-		$this->mServer = $server;
 		$this->mUser = $user;
 		$this->mPassword = $password;
-		$this->mDBname = $dbName;
+		// changed internal variables functions
+		// mServer now holds the TNS endpoint
+		// mDBname is schema name if different from username
+		if ( !$server ) {
+			// backward compatibillity (server used to be null and TNS was supplied in dbname)
+			$this->mServer = $dbName;
+			$this->mDBname = $user;
+		} else {
+			$this->mServer = $server;
+			if ( !$dbName ) {
+				$this->mDBname = $user;
+			} else {	
+				$this->mDBname = $dbName;
+			}
+		}
 
 		if ( !strlen( $user ) ) { # e.g. the class is being loaded
 			return;
@@ -244,9 +257,14 @@ class DatabaseOracle extends DatabaseBase {
 
 		$session_mode = $this->mFlags & DBO_SYSDBA ? OCI_SYSDBA : OCI_DEFAULT;
 		if ( $this->mFlags & DBO_DEFAULT ) {
-			$this->mConn = oci_new_connect( $user, $password, $dbName, $this->defaultCharset, $session_mode );
+			$this->mConn = oci_new_connect( $this->mUser, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
 		} else {
-			$this->mConn = oci_connect( $user, $password, $dbName, $this->defaultCharset, $session_mode );
+			$this->mConn = oci_connect( $this->mUser, $this->mPassword, $this->mServer, $this->defaultCharset, $session_mode );
+		}
+
+		if ( $this->mUser != $this->mDBname ) {
+			//change current schema in session
+			$this->selectDB( $this->mDBname );
 		}
 
 		if ( !$this->mConn ) {
@@ -305,14 +323,14 @@ class DatabaseOracle extends DatabaseBase {
 
 		if ( ( $this->mLastResult = $stmt = oci_parse( $this->mConn, $sql ) ) === false ) {
 			$e = oci_error( $this->mConn );
-			$this->reportQueryError( $e['message'], $e['code'], $sql, __FUNCTION__ );
+			$this->reportQueryError( $e['message'], $e['code'], $sql, __METHOD__ );
 			return false;
 		}
 
 		if ( !oci_execute( $stmt, $this->execFlags() ) ) {
 			$e = oci_error( $stmt );
 			if ( !$this->ignore_DUP_VAL_ON_INDEX || $e['code'] != '1' ) {
-				$this->reportQueryError( $e['message'], $e['code'], $sql, __FUNCTION__ );
+				$this->reportQueryError( $e['message'], $e['code'], $sql, __METHOD__ );
 				return false;
 			}
 		}
@@ -531,7 +549,7 @@ class DatabaseOracle extends DatabaseBase {
 		wfRestoreWarnings();
 
 		if ( isset( $lob ) ) {
-			foreach ( $lob as $lob_i => $lob_v ) {
+			foreach ( $lob as $lob_v ) {
 				$lob_v->free();
 			}
 		}
@@ -565,7 +583,7 @@ class DatabaseOracle extends DatabaseBase {
 
 		// count-alias subselect fields to avoid abigious definition errors
 		$i = 0;
-		foreach ( $varMap as $key => &$val ) {
+		foreach ( $varMap as &$val ) {
 			$val = $val . ' field' . ( $i++ );
 		}
 
@@ -833,7 +851,12 @@ class DatabaseOracle extends DatabaseBase {
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
-		return oci_server_version( $this->mConn );
+		//better version number, fallback on driver
+		$rset = $this->doQuery( 'SELECT version FROM product_component_version WHERE UPPER(product) LIKE \'ORACLE DATABASE%\'' );
+		if ( !( $row =  $rset->fetchRow() ) ) {
+			return oci_server_version( $this->mConn );
+		} 
+		return $row['version'];
 	}
 
 	/**
@@ -861,7 +884,6 @@ class DatabaseOracle extends DatabaseBase {
 	 * @param $field String
 	 */
 	private function fieldInfoMulti( $table, $field ) {
-		$tableWhere = '';
 		$field = strtoupper( $field );
 		if ( is_array( $table ) ) {
 			$table = array_map( array( &$this, 'tableName' ), $table );
@@ -1028,6 +1050,20 @@ class DatabaseOracle extends DatabaseBase {
 		echo "<li>Table interwiki successfully populated</li>\n";
 	}
 
+	function selectDB( $db ) {
+		if ( $db == null || $db == $this->mUser ) { return true; }
+		$sql = 'ALTER SESSION SET CURRENT_SCHEMA=' . strtoupper($db);
+		$stmt = oci_parse( $this->mConn, $sql );
+		if ( !oci_execute( $stmt ) ) {
+			$e = oci_error( $stmt );
+			if ( $e['code'] != '1435' ) {
+				$this->reportQueryError( $e['message'], $e['code'], $sql, __METHOD__ );
+			}
+			return false;
+		}
+		return true;
+	}
+
 	function strencode( $s ) {
 		return str_replace( "'", "''", $s );
 	}
@@ -1110,7 +1146,7 @@ class DatabaseOracle extends DatabaseBase {
 	public function delete( $table, $conds, $fname = 'DatabaseOracle::delete' ) {
 		global $wgContLang;
 
-		if ( $wgContLang != null ) {
+		if ( $wgContLang != null && $conds != '*' ) {
 			$conds2 = array();
 			$conds = ( $conds != null && !is_array( $conds ) ) ? array( $conds ) : $conds;
 			foreach ( $conds as $col => $val ) {
@@ -1162,8 +1198,8 @@ class DatabaseOracle extends DatabaseBase {
 	public function replaceVars( $ins ) {
 		$varnames = array( 'wgDBprefix' );
 		if ( $this->mFlags & DBO_SYSDBA ) {
-			$varnames[] = 'wgDBOracleDefTS';
-			$varnames[] = 'wgDBOracleTempTS';
+			$varnames[] = '_OracleDefTS';
+			$varnames[] = '_OracleTempTS';
 		}
 
 		// Ordinary variables

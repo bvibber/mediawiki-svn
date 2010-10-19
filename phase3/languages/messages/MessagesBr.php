@@ -398,7 +398,7 @@ Re a implijerien a glask mont war ar bajenn-mañ war un dro.
 Gortozit ur pennadig a-raok klask mont war ar bjann-mañ en-dro.
 
 $1',
-'pool-timeout'      => "Timeout zo o c'hortoz evit klozañ",
+'pool-timeout'      => "Aet eur dreist d'an termen gortoz evit ar stankadenn",
 'pool-queuefull'    => 'Soulgarget eo ar servijerioù',
 'pool-errorunknown' => 'Fazi dianav',
 
@@ -581,7 +581,7 @@ Na zisoñjit ket resisaat ho [[Special:Preferences|penndibaboù evit {{SITENAME}
 'gotaccountlink'             => 'Kevreañ',
 'createaccountmail'          => 'dre bostel',
 'createaccountreason'        => 'Abeg :',
-'badretype'                  => "N'eo ket peurheñvel an eil ouzh egile an daou c'her-tremen bet lakaet ganeoc'h.",
+'badretype'                  => 'Ne glot ket ar gerioù-tremen an eil gant egile.',
 'userexists'                 => "Implijet eo an anv implijer lakaet ganeoc'h dija.
 Dibabit un anv all mar plij.",
 'loginerror'                 => 'Kudenn kevreañ',
@@ -642,7 +642,7 @@ Gortozit a-raok klask en-dro.",
 'ratelimit-excluded-ips'     => " #<!-- laoskit al linenn-mañ tre evel m'emañ --> <pre>
 # Setu penaos emañ an ereadur :
 #  * Kement tra war-lerc'h an arouezenn \"#\" zo un urzhiad, betek penn all al linenn
-#  * Kement linenn n'eo ket goullo zo ur chomlec'h IP e-maez ar feur termen
+#  * Kement linenn n'eo ket goullo zo ur chomlec'h IP argaset eus bevenn an aliested
   #</pre> <!-- laoskit al linenn-mañ tre evel m'emañ -->",
 
 # JavaScript password checks
@@ -897,7 +897,7 @@ An abeg roet gant $3 zo ''$2''",
 'nextrevision'           => "Stumm war-lerc'h →",
 'currentrevisionlink'    => 'Gwelet ar stumm red',
 'cur'                    => 'red',
-'next'                   => 'goude',
+'next'                   => "War-lerc'h",
 'last'                   => 'diwez',
 'page_first'             => 'kentañ',
 'page_last'              => 'diwezhañ',
@@ -1044,7 +1044,7 @@ Distroit d'ar bajenn a-raok ha klaskit en-dro.",
 'revmove-norevisions'          => "N'hoc'h eus ket resisaet adweladenn dal pe adweladennoù tal ebet evit seveniñ an arc'hwel-mañ pe neuze n'eus ket eus an adweladenn merket",
 'revmove-nullmove-title'       => 'Titl fall',
 'revmove-nullmove'             => 'N\'hall ket ar bajenn dal bezañ heñvel ouzh ar bajenn gein.
-Distroit d\'ar bajenn a-raok ha dibabit un anv disheñvel diouzh "$1".',
+Distroit d\'ar bajenn a-raok ha dibabit un anv disheñvel diouzh "[[$1]]".',
 'revmove-success-existing'     => "{{PLURAL:$1|Un|$1}} adweladenn eus [[$2]] a zo bet dilec'hiet davet ar bajenn ez eus outi dija [[$3]].",
 'revmove-success-created'      => "{{PLURAL:$1|Un|$1}} adweladenn eus [[$2]] a zo bet dilec'hiet davet ar bajenn [[$3]] bet krouet nevez zo.",
 
@@ -1086,7 +1086,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'showhideselectedversions' => 'Diskouez/Kuzhat ar stummoù diuzet',
 'editundo'                 => 'disteuler',
 'diff-multi'               => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant {{PLURAL:$2|un implijer|$2 implijer}} kuzhet.)",
-'diff-multi-manyusers'     => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant muioc'h evit $2 {{PLURAL:$2|implijer|implijer}} kuzhet.)",
+'diff-multi-manyusers'     => "({{PLURAL:$1|Ur reizhadenn da c'hortoz|$1 reizhadenn da c'hortoz}} gant muioc'h eget $2 {{PLURAL:$2|implijer|implijer}} kuzhet.)",
 
 # Search results
 'searchresults'                    => "Disoc'h ar c'hlask",

@@ -63,9 +63,8 @@ CREATE TABLE /*_*/user (
   -- Optional 'real name' to be displayed in credit listings
   user_real_name varchar(255) binary NOT NULL default '',
   
-  -- Password hashes, normally hashed like so:
-  -- MD5(CONCAT(user_id,'-',MD5(plaintext_password))), see
-  -- wfEncryptPassword() in GlobalFunctions.php
+  -- Password hashes, see User::crypt() and User::comparePasswords()
+  -- in User.php for the algorithm
   user_password tinyblob NOT NULL,
   
   -- When using 'mail me a new password', a random
@@ -493,7 +492,7 @@ CREATE TABLE /*_*/categorylinks (
   -- A binary string obtained by applying a sortkey generation algorithm
   -- (Language::convertToSortkey()) to page_title, or cl_sortkey_prefix . "\0"
   -- . page_title if cl_sortkey_prefix is nonempty.
-  cl_sortkey varbinary(255) NOT NULL default '',
+  cl_sortkey varbinary(230) NOT NULL default '',
 
   -- A prefix for the raw sortkey manually specified by the user, either via
   -- [[Category:Foo|prefix]] or {{defaultsort:prefix}}.  If nonempty, it's

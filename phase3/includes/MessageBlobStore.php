@@ -36,7 +36,6 @@ class MessageBlobStore {
 	 * @return array An array mapping module names to message blobs
 	 */
 	public static function get( ResourceLoader $resourceLoader, $modules, $lang ) {
-		// TODO: Invalidate blob when module touched
 		wfProfileIn( __METHOD__ );
 		if ( !count( $modules ) ) {
 			wfProfileOut( __METHOD__ );
@@ -67,7 +66,7 @@ class MessageBlobStore {
 	 * @return mixed Message blob or false if the module has no messages
 	 */
 	public static function insertMessageBlob( $name, ResourceLoaderModule $module, $lang ) {
-		$blob = self::generateMessageBlob( $name, $module, $lang );
+		$blob = self::generateMessageBlob( $module, $lang );
 
 		if ( !$blob ) {
 			return false;
@@ -138,7 +137,7 @@ class MessageBlobStore {
 
 		foreach ( $res as $row ) {
 			$oldBlob = $row->mr_blob;
-			$newBlob = self::generateMessageBlob( $name, $module, $row->mr_lang );
+			$newBlob = self::generateMessageBlob( $module, $row->mr_lang );
 
 			if ( $row->mr_lang === $lang ) {
 				$retval = $newBlob;
@@ -312,6 +311,7 @@ class MessageBlobStore {
 	 * @return array Array mapping module names to blobs
 	 */
 	private static function getFromDB( ResourceLoader $resourceLoader, $modules, $lang ) {
+		global $wgCacheEpoch;
 		$retval = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'msg_resource',
@@ -326,8 +326,11 @@ class MessageBlobStore {
 				// This shouldn't be possible
 				throw new MWException( __METHOD__ . ' passed an invalid module name' );
 			}
-			if ( array_keys( FormatJson::decode( $row->mr_blob, true ) ) !== $module->getMessages() ) {
-				$retval[$row->mr_resource] = self::updateModule( $row->mr_resource, $lang );
+			// Update the module's blobs if the set of messages changed or if the blob is
+			// older than $wgCacheEpoch
+			if ( array_keys( FormatJson::decode( $row->mr_blob, true ) ) !== $module->getMessages() ||
+					wfTimestamp( TS_MW, $row->mr_timestamp ) <= $wgCacheEpoch ) {
+				$retval[$row->mr_resource] = self::updateModule( $row->mr_resource, $module, $lang );
 			} else {
 				$retval[$row->mr_resource] = $row->mr_blob;
 			}
@@ -342,7 +345,7 @@ class MessageBlobStore {
 	 * @param $lang string Language code
 	 * @return string JSON object
 	 */
-	private static function generateMessageBlob( $name, ResourceLoaderModule $module, $lang ) {
+	private static function generateMessageBlob( ResourceLoaderModule $module, $lang ) {
 		$messages = array();
 
 		foreach ( $module->getMessages() as $key ) {

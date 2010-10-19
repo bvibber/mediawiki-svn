@@ -399,7 +399,7 @@ class DatabaseSqlite extends DatabaseBase {
 		# SQLite can't handle multi-row inserts, so divide up into multiple single-row inserts
 		if ( isset( $a[0] ) && is_array( $a[0] ) ) {
 			$ret = true;
-			foreach ( $a as $k => $v ) {
+			foreach ( $a as $v ) {
 				if ( !parent::insert( $table, $v, "$fname/multi-row", $options ) ) {
 					$ret = false;
 				}
@@ -417,7 +417,7 @@ class DatabaseSqlite extends DatabaseBase {
 		# SQLite can't handle multi-row replaces, so divide up into multiple single-row queries
 		if ( isset( $rows[0] ) && is_array( $rows[0] ) ) {
 			$ret = true;
-			foreach ( $rows as $k => $v ) {
+			foreach ( $rows as $v ) {
 				if ( !parent::replace( $table, $uniqueIndexes, $v, "$fname/multi-row" ) ) {
 					$ret = false;
 				}
@@ -554,8 +554,8 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
-	 * Called by the installer script (when modified according to the MediaWikiLite installation instructions)
-	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using dbsource (which calls db->sourceFile)
+	 * Called by the installer script
+	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using DatabaseBase::sourceFile()
 	 */
 	public function setup_database() {
 		global $IP;
@@ -606,7 +606,9 @@ class DatabaseSqlite extends DatabaseBase {
 			// no such thing as unsigned
 			$s = preg_replace( '/\b(un)?signed\b/i', '', $s );
 			// INT -> INTEGER
-			$s = preg_replace( '/\b(tiny|small|medium|big|)int(\s*\([\s\d]*\)|\b)/i', 'INTEGER', $s );
+			$s = preg_replace( '/\b(tiny|small|medium|big|)int(\s*\(\s*\d+\s*\)|\b)/i', 'INTEGER', $s );
+			// floating point types -> REAL
+			$s = preg_replace( '/\b(float|double(\s+precision)?)(\s*\(\s*\d+\s*(,\s*\d+\s*)?\)|\b)/i', 'REAL', $s );
 			// varchar -> TEXT
 			$s = preg_replace( '/\b(var)?char\s*\(.*?\)/i', 'TEXT', $s );
 			// TEXT normalization

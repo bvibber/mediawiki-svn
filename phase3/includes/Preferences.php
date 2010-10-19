@@ -98,7 +98,7 @@ class Preferences {
 			$prefix = isset( $info['prefix'] ) ? $info['prefix'] : $name;
 			$val = array();
 
-			foreach ( $options as $label => $value ) {
+			foreach ( $options as $value ) {
 				if ( $user->getOption( "$prefix$value" ) ) {
 					$val[] = $value;
 				}
@@ -1107,7 +1107,8 @@ class Preferences {
 					$wgLang->formatNum( $wgMaxSigChars )
 				)
 			);
-		} elseif ( !empty( $alldata['fancysig'] ) &&
+		} elseif ( isset( $alldata['fancysig'] ) &&
+				$alldata['fancysig'] &&
 				false === $wgParser->validateSig( $signature ) ) {
 			return Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'badsig' ) );
 		} else {
@@ -1117,7 +1118,7 @@ class Preferences {
 
 	static function cleanSignature( $signature, $alldata ) {
 		global $wgParser;
-		if ( $alldata['fancysig'] ) {
+		if ( isset( $alldata['fancysig'] ) && $alldata['fancysig'] ) {
 			$signature = $wgParser->cleanSig( $signature );
 		} else {
 			// When no fancy sig used, make sure ~{3,5} get removed.
@@ -1217,7 +1218,6 @@ class Preferences {
 				return $tz;
 			default:
 				$data = explode( ':', $tz, 2 );
-				$minDiff = 0;
 				if ( count( $data ) == 2 ) {
 					$data[0] = intval( $data[0] );
 					$data[1] = intval( $data[1] );

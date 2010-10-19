@@ -97,6 +97,11 @@ class ApiDelete extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
+	/**
+	 *
+	 * @param &$title Title
+	 * @param $token String
+	 */
 	private static function getPermissionsError( &$title, $token ) {
 		global $wgUser;
 
@@ -153,6 +158,15 @@ class ApiDelete extends ApiBase {
 		return array( array( 'cannotdelete', $article->mTitle->getPrefixedText() ) );
 	}
 
+	/**
+	 * @static
+	 * @param $token
+	 * @param $title
+	 * @param $oldimage
+	 * @param $reason
+	 * @param $suppress bool
+	 * @return \type|array|Title
+	 */
 	public static function deleteFile( $token, &$title, $oldimage, &$reason = null, $suppress = false ) {
 		$errors = self::getPermissionsError( $title, $token );
 		if ( count( $errors ) ) {
@@ -214,8 +228,11 @@ class ApiDelete extends ApiBase {
 					'nochange'
 				),
 			),
-			'unwatch' => false,
-			'oldimage' => null
+			'unwatch' => array(
+				ApiBase::PARAM_DFLT => false,
+				ApiBase::PARAM_DEPRECATED => true,
+			),
+			'oldimage' => null,
 		);
 	}
 
@@ -244,6 +261,10 @@ class ApiDelete extends ApiBase {
 			array( 'notanarticle' ),
 			array( 'hookaborted', 'error' ),
 		) );
+	}
+
+	public function needsToken() {
+		return true;
 	}
 
 	public function getTokenSalt() {

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Script that postprocesses XML dumps from dumpBackup.php to add page text
+ *
  * Copyright (C) 2005 Brion Vibber <brion@pobox.com>
  * http://www.mediawiki.org/
  *
@@ -50,7 +52,7 @@ class TextPassDumper extends BackupDumper {
 	var $spawnRead = false;
 	var $spawnErr = false;
 
-	function dump() {
+	function dump( $history, $text = WikiExporter::TEXT ) {
 		# This shouldn't happen if on console... ;)
 		header( 'Content-type: text/html; charset=UTF-8' );
 
@@ -277,7 +279,7 @@ class TextPassDumper extends BackupDumper {
 		$row = $this->db->selectRow( 'text',
 			array( 'old_text', 'old_flags' ),
 			array( 'old_id' => $id ),
-			'TextPassDumper::getText' );
+			__METHOD__ );
 		$text = Revision::getRevisionText( $row );
 		if ( $text === false ) {
 			return false;
@@ -467,8 +469,8 @@ class TextPassDumper extends BackupDumper {
 
 $dumper = new TextPassDumper( $argv );
 
-if ( true ) {
-	$dumper->dump();
+if ( !isset( $options['help'] ) ) {
+	$dumper->dump( true );
 } else {
 	$dumper->progress( <<<ENDS
 This script postprocesses XML dumps from dumpBackup.php to add
@@ -482,13 +484,14 @@ Options:
   --stub=<type>:<file> To load a compressed stub dump instead of stdin
   --prefetch=<type>:<file> Use a prior dump file as a text source, to save
 			  pressure on the database.
-			  (Requires PHP 5.0+ and the XMLReader PECL extension)
+			  (Requires the XMLReader extension)
   --quiet	  Don't dump status reports to stderr.
   --report=n  Report position and speed after every n pages processed.
 			  (Default: 100)
   --server=h  Force reading from MySQL server h
   --current	  Base ETA on number of pages in database instead of all revisions
   --spawn	  Spawn a subprocess for loading text records
+  --help      Display this help message
 ENDS
 );
 }
