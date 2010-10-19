@@ -47,8 +47,8 @@ class ApiQueryStashImageInfo extends ApiQueryImageInfo {
 			foreach ( $params['sessionkey'] as $sessionkey ) {	
 				$file = $stash->getFile( $sessionkey );
 				$imageInfo = self::getInfo( $file, $prop, $result, $scale );
-				$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), $modulePrefix );
 				$result->addValue( array( 'query', $this->getModuleName() ), null, $imageInfo );
+				$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), $modulePrefix );
 			}
 
 		} catch ( SessionStashNotAvailableException $e ) {
