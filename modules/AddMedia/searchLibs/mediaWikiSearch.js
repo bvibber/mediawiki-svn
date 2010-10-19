@@ -25,7 +25,7 @@ mediaWikiSearch.prototype = {
 	/**
 	* Adds a resource by its Title
 	*
-	* @param {String} title Title of the resource to be added
+	* @param {String} title Title of the resource to be added (in the form of a wgPageName)
 	* @param {Function} callback Function called once title resource acquired   
 	*/ 
 	getByTitle:function( title , callback ) {
@@ -47,7 +47,13 @@ mediaWikiSearch.prototype = {
 			callback( _this.addSingleResult( data ) );
 		});
 	},
-	
+
+	/**
+	 * Add a resource by its Url
+	 *
+	 * @param {String} url The url of the resource to be added
+	 * @param {Function} callback Function called once the resource is acquired
+	 */
 	getResourceFromUrl: function( url, callback  ){		
 		var title = this.getTitleKeyFromMwUrl( url );
 		if( !title) {
@@ -56,21 +62,25 @@ mediaWikiSearch.prototype = {
 		} 
 		this.getByTitle(title , callback );				
 	},
+
 	/**
-	 * Does best effort to get the title key from a mediawiki url 
+	 * Does best effort to get the title key from a mediawiki url
+	 *
+	 * @param {String} url The url for which we want to find the title
+	 * @return {String} The title in a form that should mirror wgPageName
 	 */
 	getTitleKeyFromMwUrl: function( url ){
 		// try for title key param 
 		var titleKey = mw.parseUri( url ).queryKey['title'];
 		if( titleKey ){
-			return titleKey;
+			return decodeURIComponent( titleKey ).replace( / /g, "_");
 		}
 		// else try for title url map
 		titleKey = url.replace( this.provider.detailsUrl.replace( '$1', ''), '' );
 		if( titleKey != url ){
-			return titleKey;
+			return decodeURI(titleKey).replace( / /g, "_" );;
 		}
-		mw.log("Error: mediaWikiSearch:: getResourceFromUrl could not get title form url: " + url );
+		mw.log("Error: mediaWikiSearch:: getResourceFromUrl could not get title from url: " + url );
 		return false;
 	},
 	
@@ -184,35 +194,30 @@ mediaWikiSearch.prototype = {
 		if ( data.query && data.query.pages ) {
 			for ( var page_id in  data.query.pages ) {
 				var page =  data.query.pages[ page_id ];
-				
+
 				// Make sure the repo is shared (don't show for now it confusing things)
 				// @@todo support remote repository better
 				if ( page.imagerepository == 'shared' ) {
 					continue;
 				}
-				
+
 				// Skip if its an empty or missing imageinfo: 
 				if ( !page.imageinfo ){
 					continue;
 				}
-				
+
 				// Get the url safe titleKey from the descriptionurl
-				var titleKey = page.imageinfo[0].descriptionurl.split( '/' )
-					;
-				titleKey = unescape( 
-						titleKey[ titleKey.length - 1 ]
-						.replace( 'index.php?title=', '') 
-					);				
-				
+				var titleKey = page.title.replace( / /g, "_" );
+
 				var resource = 	{
 					'id'		 : page_id,
 					'titleKey'	 : titleKey,
 					'link'		 : page.imageinfo[0].descriptionurl,
 					'title'		 : page.title.replace(/Image:|File:|.jpg|.png|.svg|.ogg|.ogv|.oga/ig, ''),
 					'poster'	 : page.imageinfo[0].thumburl,
-					'thumbwidth' : page.imageinfo[0].thumbwidth,
-					'thumbheight': page.imageinfo[0].thumbheight,
-					'width'	 : page.imageinfo[0].width,
+					'thumbwidth'     : page.imageinfo[0].thumbwidth,
+					'thumbheight'    : page.imageinfo[0].thumbheight,
+					'width'	         : page.imageinfo[0].width,
 					'height'	 : page.imageinfo[0].height,
 					'mime'		 : page.imageinfo[0].mime,
 					'src'		 : page.imageinfo[0].url,
