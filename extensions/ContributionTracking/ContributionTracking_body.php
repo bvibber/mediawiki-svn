@@ -5,6 +5,28 @@ class ContributionTracking extends UnlistedSpecialPage {
 		parent::__construct( 'ContributionTracking' );
 	}
 
+	function get_owa_ref_id($ref){
+		// Replication lag means sometimes a new event will not exist in the table yet
+		$dbw = wfGetDB( DB_MASTER );
+		$id_num = $dbw->selectField(
+			'contribution_tracking_owa_ref',
+			'id',
+			array( 'url' => $ref ),
+			__METHOD__
+		);
+		// Once we're on mysql 5, we can use replace() instead of this selectField --> insert or update hooey
+		if ( $id_num === false ) {
+			$dbw->insert(
+				'contribution_tracking_owa_ref',
+				array( 'url' => (string) $event_name ),
+				__METHOD__
+			);
+			$id_num = $dbw->insertId();
+		}
+		return $id_num === false ? 0 : $id_num;
+	}
+
+
 	function execute( $language ) {
 		global $wgRequest, $wgOut;
 		wfLoadExtensionMessages( 'ContributionTracking' );
@@ -28,6 +50,11 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 		$ts = $db->timestamp();
 
+		$owa_ref = $wgRequest->getText('owa_ref', null);
+		if($owa_ref != null  && !is_numeric($owa_ref)){
+			$owa_ref = $this->get_owa_ref_id($owa_ref);
+		}
+
 		$tracked_contribution = array(
 			'note' => $wgRequest->getText('comment', null),
 			'referrer' => $wgRequest->getText('referrer', null),
@@ -38,7 +65,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 			'optout' => ($wgRequest->getCheck('email-opt', 0) ? 0 : 1),
 			'language' => $wgRequest->getText('language', null),
 			'owa_session' => $wgRequest->getText('owa_session', null),
-			'owa_ref' => $wgRequest->getText('owa_ref', null),
+			'owa_ref' => $owa_ref,
 			'ts' => $ts,
 		);
 		
@@ -140,6 +167,7 @@ class ContributionTracking extends UnlistedSpecialPage {
 	function msg( $key ) {
 		return wfMsgExt( $key, array( 'escape', 'language' => $this->lang ) );
 	}
+
 
 	function msgWiki( $key ) {
 		return wfMsgExt( $key, array( 'parse', 'language' => $this->lang ) );
