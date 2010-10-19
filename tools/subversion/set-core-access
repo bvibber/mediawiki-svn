@@ -1,0 +1,83 @@
+#!/usr/bin/perl -w
+
+if ( $#ARGV < 1 || ( $ARGV[0] ne "add" && $ARGV[0] ne "delete" ) ) {
+	print "Usage: $0 {add|delete} <user>\n";
+	exit 1;
+}
+my $action = $ARGV[0];
+my $user = $ARGV[1];
+my $fileName = "/svnroot/mediawiki/conf/authz";
+if ( !open( AUTHZ, "<", $fileName ) ) {
+	print "Unable to open authz\n";
+	exit 1;
+}
+
+# Find the [groups] section
+my $found = 0;
+my $before = '', $after = '';
+while ( <AUTHZ> ) {
+	$before .= $_;
+	if ( $_ =~ /^\[groups\]/ ) {
+		$found = 1;
+		last;
+	}
+}
+
+if ( !$found ) {
+	print "Unable to find [groups] section\n";
+	exit 1;
+}
+
+# Find the core group
+$found = 0;
+my $memberString;
+while ( <AUTHZ> ) {
+	if ( $_ =~ /^core *= *(.*)\n$/ ) {
+		$memberString = $1;
+		$found = 1;
+		last;
+	} else {
+		$before .= $_;
+	}
+}
+if ( !$found ) {
+	print "Unable to find core group\n";
+	exit 1;
+}
+
+# Load the rest of the file into a string
+while ( <AUTHZ> ) {
+	$after .= $_;
+}
+close AUTHZ;
+
+# Do the add/remove operation
+
+my @members = split( /, */, $memberString );
+if ( $action eq "add" ) {
+	if ( grep( $_ eq $user, @members ) ) {
+		print "$user already has core access\n";
+		exit 1;
+	}
+	push( @members, $user );
+} else { # if action == delete
+	if ( !grep( $_ eq $user, @members ) ) {
+		print "$user does not have core access\n";
+		exit 1;
+	}
+	@members = grep( $_ ne $user, @members );
+}
+
+@members = sort( @members );
+$memberString = join( ', ', @members );
+
+# Move the file to a backup location
+rename( $fileName, "$fileName~" );
+
+# Write the new file
+open( AUTHZ, ">", $fileName );
+print AUTHZ $before;
+print AUTHZ "core = $memberString\n";
+print AUTHZ $after;
+close AUTHZ;
+
