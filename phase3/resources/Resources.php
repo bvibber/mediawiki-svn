@@ -304,6 +304,9 @@ return array(
 		'scripts' => 'resources/mediawiki/mediawiki.js',
 		'debugScripts' => 'resources/mediawiki/mediawiki.log.js',
 	) ),
+	'mediawiki.parser' => new ResourceLoaderFileModule( array(
+		'scripts' => 'resources/mediawiki/mediawiki.parser.js',
+	) ),
 	
 	/* MediaWiki Legacy */
 	
