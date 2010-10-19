@@ -132,7 +132,6 @@ function fetch_rss( $url ) {
 			}
 		}
 
-		var_dump($request_headers);
 		$resp = _fetch_remote_file( $url, $request_headers );
 
 		if ( isset( $resp ) && $resp ) {
@@ -202,8 +201,6 @@ function _fetch_remote_file( $url, $headers = '' ) {
 		foreach($headers as $h) {
 			if( count( $h ) > 1 ) {
 				$client->setHeader($h[0], $h[1]);
-			} else {
-				var_dump($h);
 			}
 		}
 	}

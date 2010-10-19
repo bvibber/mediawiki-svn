@@ -21,10 +21,9 @@ class RSSData {
 			$bit = array();
 			foreach($item->childNodes as $n) {
 				$name = $this->rssTokenToName($n->nodeName);
-				if($name != null) 
+				if($name != null)
 					$bit[$name] = $n->nodeValue;
 			}
-			var_dump(implode(":: ", array_keys($bit)));
 			$this->items[] = $bit;
 		}
 	}
