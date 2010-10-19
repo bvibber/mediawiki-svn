@@ -23,11 +23,28 @@ $wgExtensionMessagesFiles['ContributionTracking'] = $dir . 'ContributionTracking
 $wgExtensionAliasesFiles['ContributionTracking'] = $dir . 'ContributionTracking.alias.php';
 $wgAutoloadClasses['ContributionTracking'] = $dir . 'ContributionTracking_body.php';
 $wgSpecialPages['ContributionTracking'] = 'ContributionTracking';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates'; 
+
 
 $wgContributionTrackingDBserver = $wgDBserver;
 $wgContributionTrackingDBname = $wgDBname;
 $wgContributionTrackingDBuser = $wgDBuser;
 $wgContributionTrackingDBpassword = $wgDBpassword;
+
+function efContributionTrackingLoadUpdates(){
+ 	global $wgExtNewTables, $wgExtNewFields;
+ 	$dir = dirname( __FILE__ ) . '/';
+ 	$wgExtNewTables[] = array( 'contribution_tracking', $dir . 'ContributionTracking.sql' );
+ 	$wgExtNewTables[] = array( 'contribution_tracking_owa_ref', $dir . 'ContributionTracking_OWA_ref.sql' );
+ 	
+ 	$wgExtNewFields[] = array(
+ 		'contribution_tracking',
+ 		'owa_session',
+ 		$dir . 'patch-owa.sql',
+ 	);
+ 	return true; 	
+	
+}
 
 function contributionTrackingConnection() {
 	global $wgContributionTrackingDBserver, $wgContributionTrackingDBname;
