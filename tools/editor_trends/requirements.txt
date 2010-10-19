@@ -1,0 +1,2 @@
+progressbar==2.3-dev
+psyco==1.6

@@ -1,0 +1,12 @@
+*.pyc
+*.xml
+*.db
+*.bin
+*.zip
+*.csv
+.*
+zips/
+wikistats/
+datasets/
+data/
+notes.txt

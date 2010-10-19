@@ -1,0 +1,65 @@
+===============================================================================
+
+						Wikipedia Editor Trends Analytics
+						
+===============================================================================
+
+BACKGROUND:
+This package offers a set of tools used to create datasets to analyze Editor 
+Trends. By Editor Trends we refer to the overall pattern of entering and leaving
+a Wikipedia site. The main information source for this package is:
+	http://strategy.wikimedia.org/wiki/Editor_Trends_Study
+
+REQUIREMENTS:
+
+* Python 2.6 or higher (this code has not been tested with Python 3.x)
+
+OPTIONAL 
+* MongoDB
+
+If you don't want to install / use MongDB then the package will use the built-in
+Sqlite library. However, this not optimized for speed and may take a serious
+amount of time. If possible, install MongoDB. 
+
+INSTALLING USING VIRTUALENV
+It's recommended to use Python virtualenv. If you are not familiar with
+virtualenv then have a look over here: 
+	http://groups.google.com/group/python-virtualenv/browse_thread/thread/f2f19d2cc93a844e
+
+To install Editor Trends Analytics:
+		
+	virtualenv --no-site-packages --distribute editor_trends
+	pip install -E editor_trends -r /editor_trends/requirements.txt
+	
+
+The first command creates a new virtualenv called editor_trends and the second
+command installs the dependencies. Currently the dependencies are:
+* PyMongo
+* Progressbar  
+
+INSTALLING WITHOUT VIRTUALENV
+If you don't like virtualenv then do the following:
+
+	easy_install pymongo
+	easy_install progressbar
+
+IMPORTANT MONGODB NOTES
+If you decide to use MongDB to store the results then you have to install the 
+64-bit version. 32-bit versions of MongoDB are limited to 2GB of data and the 
+databases created by this package will definitely be larger than that. For more
+background information on this limitation, please read: 
+	http://blog.mongodb.org/post/137788967/32-bit-limitations
+
+
+CONFIGURATION:
+If you would like to create a dataset for your own analyses then you should
+first make the appropriate changes to settings.py. Settings.py contains
+configuration variables such as the location of input and output files. Most
+settings are self-explanatory but in cases of any questions please drop me a
+line. 
+
+CODE:
+The Python code adheres to PEP8. Function names are deliberately expressive to
+ease understanding what's going. If you find a bug please email me at dvanliere
+at gmail dot com or leave a message on my Talk page. 
+
