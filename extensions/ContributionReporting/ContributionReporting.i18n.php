@@ -4297,6 +4297,14 @@ $messages['sah'] = array(
 	'fundraiserstats-tab-ytd' => 'Бу сылга (USD)',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'contrib-hist-name' => 'Nomu',
+	'contribstats-week' => 'Simana',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -4888,7 +4896,7 @@ $messages['tl'] = array(
 	'contributionreporting-desc' => 'Buhay na paguulat hinggil sa pangangalap ng salaping panustos (pondo) ng Wikimedia',
 	'contributiontotal' => 'Kabuoan ng ambag',
 	'contributionhistory' => 'Kasaysayan ng ambag',
-	'contrib-hist-header' => "Mga puna/kumento ng tagapagkaloob na nasa tunay na panahon/oras mula sa iba't ibang sulok ng daigdig",
+	'contrib-hist-header' => "Mga puna ng tagapagkaloob mula sa iba't ibang sulok ng daigdig",
 	'contrib-hist-name' => 'Pangalan',
 	'contrib-hist-date' => 'Oras at petsa',
 	'contrib-hist-amount' => 'Halaga',
@@ -4951,6 +4959,13 @@ $messages['tl'] = array(
 	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-ytd' => 'Taon-sa-petsa (USD)',
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'contribstats-day' => 'De',
 );
 
 /** Turkish (Türkçe)

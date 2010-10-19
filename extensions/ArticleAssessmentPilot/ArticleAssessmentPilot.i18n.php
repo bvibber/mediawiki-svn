@@ -173,6 +173,16 @@ $messages['be-tarask'] = array(
 	'articleassessment-survey-thanks' => 'Дзякуй за адказы на пытаньні.',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'articleassessment-survey-question-useful-iffalse' => 'Защо?',
+	'articleassessment-survey-submit' => 'Изпращане',
+	'articleassessment-survey-title' => 'Моля, отговорете на няколко въпроса',
+	'articleassessment-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  * @author Y-M D

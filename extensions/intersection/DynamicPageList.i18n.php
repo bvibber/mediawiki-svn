@@ -714,8 +714,10 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'intersection-desc' => 'Выпише список найновшых положок в катеґорії або зъєднотить пару катеґорій',
 	'intersection_toomanycats' => 'Error: дуже много катеґорій!',
 	'intersection_noresults' => 'Error: жадны резултаты!',
+	'intersection_noincludecats' => 'Хыба: Мусите включіти холем єдну катеґорію або задати простор назв!',
 );
 
 /** Yakut (Саха тыла)

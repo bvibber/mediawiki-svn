@@ -1740,6 +1740,7 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'passwordreset-nopassmatch' => 'Паролі не співпадають',
+	'passwordreset-username' => "Ім'я користувача:",
 );
 
 /** Urdu (اردو)

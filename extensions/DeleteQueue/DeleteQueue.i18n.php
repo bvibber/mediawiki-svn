@@ -4775,8 +4775,14 @@ $messages['pl'] = array(
 	'deletequeue-nom-alreadyqueued' => 'Ta strona jest już w kolejce do usunięcia.',
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
 	'deletequeue-prod-title' => 'Zaproponuj usunięcie „$1”',
+	'deletequeue-delnom-reason' => 'Powód zgłoszenia',
 	'deletequeue-delnom-otherreason' => 'Inny powód',
 	'deletequeue-delnom-extra' => 'Dodatkowe informacje',
+	'deletequeue-delnom-submit' => 'Zapisz zgłoszenie',
+	'deletequeue-log-nominate' => 'zgłoszono [[$1]] do usunięcia w kolejce „$2”',
+	'deletequeue-log-rmspeedy' => 'zmieniono na ekspresowe usuwanie [[$1]]',
+	'deletequeue-log-requeue' => 'przeniesiono [[$1]] do innej kolejki usuwania – z „$2” do „$3”',
+	'deletequeue-log-dequeue' => 'usunięto [[$1]] z kolejki usuwania „$2”',
 	'right-speedy-nominate' => 'Oznaczanie stron do ekspresowego skasowania',
 	'right-speedy-review' => 'Przeglądanie stron oznaczonych do ekspresowego skasowania',
 	'right-prod-nominate' => 'Proponowanie usunięcia strony',
@@ -4787,18 +4793,61 @@ $messages['pl'] = array(
 	'deletequeue-queue-speedy' => 'Ekspresowe usuwanie',
 	'deletequeue-queue-prod' => 'Propozycje usunięcia',
 	'deletequeue-queue-deletediscuss' => 'Dyskusja usuwania',
+	'deletequeue-page-speedy' => "Ta strona została zgłoszona do ekspresowego usunięcia.
+Powód podany jako uzasadnienie zgłoszenia to ''$1''.",
+	'deletequeue-notqueued' => 'Strona, którą wybrałeś nie znajduje się w kolejce do usunięcia',
+	'deletequeue-review-action' => 'Cel działania',
 	'deletequeue-review-delete' => 'Usuń stronę.',
+	'deletequeue-review-change' => 'Usuń tę stronę, ale z innym uzasadnieniem.',
+	'deletequeue-review-requeue' => 'Przenieś tę stronę do kolejki',
+	'deletequeue-review-dequeue' => 'Nie podejmuj żadnej akcji i usuń tę stronę z kolejki stron do usunięcia.',
 	'deletequeue-review-reason' => 'Komentarze:',
 	'deletequeue-review-newreason' => 'Nowy powód',
 	'deletequeue-review-newextra' => 'Dodatkowe informacje:',
+	'deletequeue-review-original' => 'Powód zgłoszenia',
+	'deletequeue-discusscreate-summary' => 'Tworzenie strony dyskusji dla usuwania [[$1]].',
+	'deletequeue-discusscreate-text' => 'Zgłoszono usunięcie podając powód – $2',
+	'deletequeue-role-nominator' => 'pierwszy zgłaszający do usunięcia',
+	'deletequeue-role-vote-endorse' => 'za usunięciem',
+	'deletequeue-role-vote-object' => 'przeciwny usunięciu',
+	'deletequeue-vote-tab' => 'Głosowanie nad usunięciem',
+	'deletequeue-vote-title' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia „$1”',
+	'deletequeue-vote-legend' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia',
+	'deletequeue-vote-action' => 'Rekomendacja',
+	'deletequeue-vote-endorse' => 'za usunięciem',
+	'deletequeue-vote-object' => 'przeciwny usunięciu',
 	'deletequeue-vote-reason' => 'Komentarze:',
 	'deletequeue-vote-submit' => 'Zapisz',
+	'deletequeue-vote-success-endorse' => 'Potwierdziłeś, że jesteś za usunięciem tej strony.',
+	'deletequeue-vote-success-object' => 'Sprzeciwiłeś się usunięciu tej strony.',
+	'deletequeue-vote-requeued' => 'Zgłosiłeś sprzeciw przeciwko usunięciu tej strony.
+Ponieważ się sprzeciwiłeś strona została przeniesiona do kolejki $1.',
+	'deletequeue-showvotes' => 'Potwierdzenia i sprzeciwy dotyczące usunięcia strony „$1”',
+	'deletequeue-showvotes-text' => "Poniżej znajdują się potwierdzenia i sprzeciwy dotyczące usunięcia strony „'''$1'''”.
+Możesz [{{fullurl:{{FULLPAGENAME}}|action=delvote}} zająć stanowisko] w tej sprawie.",
+	'deletequeue-showvotes-restrict-endorse' => 'Pokaż wyłącznie zwolenników',
+	'deletequeue-showvotes-restrict-object' => 'Pokaż wyłącznie przeciwników',
+	'deletequeue-showvotes-restrict-none' => 'Pokaż wszystkich, zarówno zwolenników i przeciwników',
+	'deletequeue-showvotes-vote-endorse' => "'''Poprzeć''' usunięcie na $1 $2",
+	'deletequeue-showvotes-vote-object' => "'''Sprzeciw''' przeciwko usunięciu na $1 $2",
+	'deletequeue-showvotes-showingonly-endorse' => 'Wyświetlanie wyłącznie zwolenników',
+	'deletequeue-showvotes-showingonly-object' => 'Wyświetlanie wyłącznie przeciwników',
+	'deletequeue-showvotes-none' => 'Brak zarówno zwolenników jak i przeciwników usunięcia tej strony.',
+	'deletequeue-showvotes-none-endorse' => 'Brak zwolenników usunięcia tej strony.',
+	'deletequeue-showvotes-none-object' => 'Brak przeciwników usunięcia tej strony.',
+	'deletequeue' => 'Kolejka usuwania',
+	'deletequeue-list-text' => 'Na tej stronie wyświetlane są wszystkie strony, które są przetwarzane przez system usuwania stron.',
 	'deletequeue-list-search-legend' => 'Szukaj stron',
 	'deletequeue-list-queue' => 'Kolejka:',
 	'deletequeue-list-status' => 'Status:',
+	'deletequeue-list-expired' => 'Pokaż wyłącznie zgłoszenia wymagające zamknięcia.',
 	'deletequeue-list-search' => 'Szukaj',
+	'deletequeue-list-anyqueue' => '(dowolna)',
+	'deletequeue-list-votes' => 'Lista głosów',
+	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|zwolennik|zwolenników}}, $2 {{PLURAL:$2|przeciwnik|przeciwników}}',
 	'deletequeue-list-header-page' => 'Strona',
 	'deletequeue-list-header-queue' => 'Kolejka',
+	'deletequeue-list-header-votes' => 'Poparcia i sprzeciwy',
 	'deletequeue-list-header-expiry' => 'Upływa',
 	'deletequeue-list-header-discusspage' => 'Strona dyskusji',
 	'deletequeue-case-intro' => 'Na tej stronie znajdziesz informacje na temat konkretnego przypadku usunięcia.',
@@ -5304,6 +5353,7 @@ Você pode registrar que também apóia, ou oferecer objeção a essa eliminaç�
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'deletequeue-action-queued' => 'Ştergeri',
@@ -5332,12 +5382,14 @@ $messages['ro'] = array(
 	'deletequeue-vote-action' => 'Recomandare:',
 	'deletequeue-vote-reason' => 'Comentarii:',
 	'deletequeue-vote-submit' => 'Trimite',
+	'deletequeue-list-queue' => 'În listă:',
 	'deletequeue-list-status' => 'Stare:',
 	'deletequeue-list-search' => 'Căutare',
 	'deletequeue-list-anyqueue' => '(orice)',
 	'deletequeue-list-header-page' => 'Pagină',
 	'deletequeue-list-header-expiry' => 'Expirare',
 	'deletequeue-list-header-discusspage' => 'Pagină de discuții',
+	'deletequeue-case-details' => 'Detalii de bază',
 	'deletequeue-case-page' => 'Pagina:',
 	'deletequeue-case-reason' => 'Motiv:',
 	'deletequeue-case-expiry' => 'Expirare:',
@@ -5505,6 +5557,15 @@ $messages['ru'] = array(
 	'deletequeue-case-reason' => 'Причина:',
 	'deletequeue-case-expiry' => 'Истекает:',
 	'deletequeue-case-needs-review' => 'Этот запрос требует [[$1|досмотра]].',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'deletequeue-list-search' => "Va' cerca",
+	'deletequeue-case-page' => 'Pàggina:',
+	'deletequeue-case-reason' => 'Mutivu:',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -6480,6 +6541,7 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'deletequeue-delnom-otherreason' => 'Інша причина',
@@ -6487,6 +6549,7 @@ $messages['uk'] = array(
 	'deletequeue-review-original' => 'Причина номінації',
 	'deletequeue-vote-submit' => 'Відправити',
 	'deletequeue-list-status' => 'Статус:',
+	'deletequeue-list-search' => 'Пошук',
 	'deletequeue-case-reason' => 'Причина:',
 );
 

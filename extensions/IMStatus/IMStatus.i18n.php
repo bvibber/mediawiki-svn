@@ -1279,6 +1279,7 @@ O ID que você precisa fornecer consiste em números e letras entre "$2" e "$3".
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'imstatus_syntax' => 'Sintaxă',
@@ -1288,6 +1289,7 @@ $messages['ro'] = array(
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'sau',
+	'imstatus_your_name' => 'numele $1 tău',
 	'imstatus_gtalk_height' => 'înălțimea cutiei, în pixeli.',
 	'imstatus_gtalk_width' => 'lățimea cutiei, în pixeli.',
 	'imstatus_icq_style' => 'un număr între 0 și 26 (da, există 27 de stiluri disponibile...).',

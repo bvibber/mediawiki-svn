@@ -2354,6 +2354,13 @@ $messages['ml'] = array(
 	'whitelistnummatches' => '- {{PLURAL:$1|ഒരു പൊരുത്തം|$1 പൊരുത്തങ്ങൾ}}',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'whitelisttablemodifyall' => 'Бүгдийг',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

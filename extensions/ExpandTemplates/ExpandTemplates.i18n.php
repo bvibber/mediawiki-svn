@@ -2068,6 +2068,13 @@ $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'expand_templates_ok' => 'OK',
+);
+
 /** Turkish (Türkçe)
  * @author Erkan Yilmaz
  * @author Joseph

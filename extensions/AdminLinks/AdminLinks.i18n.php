@@ -432,10 +432,14 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'adminlinks' => 'Administraatori lingid',
+	'adminlinks-desc' => 'Lisab [[Special:AdminLinks|erilehekülje]] administraatoritele kasulike linkidega.',
 	'adminlinks_users' => 'Kasutajad',
 	'adminlinks_createuser' => 'Loo uus kasutaja',
+	'right-adminlinks' => 'Näha linki leheküljele [[Special:AdminLinks|administraatori lingid]]',
 );
 
 /** Basque (Euskara)
@@ -1238,6 +1242,13 @@ $messages['sah'] = array(
 	'adminlinks_browsesearch' => 'Көрүү уонна көрдөөһүн',
 	'adminlinks_importexport' => 'Импорт уонна экспорт',
 	'right-adminlinks' => '[[Special:AdminLinks|Дьаһабылларга анаммыт сигэлэри]] көрүү',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'adminlinks_users' => 'Utenti',
 );
 
 /** Tachelhit (Tašlḥiyt)

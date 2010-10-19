@@ -694,6 +694,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'dplforum-by' => 'de către $1',
 	'dplforum-edited' => '- Ultima editare',
 	'dplforum-never' => 'Niciodată',
 );

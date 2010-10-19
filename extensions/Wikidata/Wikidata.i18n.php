@@ -8266,7 +8266,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_LinkAttributeValues' => 'Linken',
 	'ow_User' => 'Benotzer',
 	'ow_Property' => 'Eegeschaft',
-	'ow_Value' => 'Wert',
+	'ow_Value' => 'Wäert',
 	'ow_added' => 'Derbäigesat',
 	'ow_removed' => 'Ewechgeholl',
 	'ow_meaningsoftitle' => 'Bedeitung vun "$1"',

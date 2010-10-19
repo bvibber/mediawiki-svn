@@ -111,6 +111,14 @@ $messages['de'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Erstellen',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'articletocategory2-create-article-under-category-button' => 'Krei',
+	'articletocategory2-create-category-under-category-button' => 'Krei',
+);
+
 /** Spanish (Español)
  * @author Danke7
  * @author Sanbec

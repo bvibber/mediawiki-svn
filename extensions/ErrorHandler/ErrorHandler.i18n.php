@@ -1110,6 +1110,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'errorhandler-errors' => 'Erori:',
@@ -1118,6 +1119,8 @@ $messages['ro'] = array(
 	'errorhandler-error-parse' => 'Eroare de parser',
 	'errorhandler-error-notice' => 'Notificare',
 	'errorhandler-error-deprecated' => 'Învechit',
+	'errorhandler-error-core-error' => 'Eroare nucelu',
+	'errorhandler-error-core-warning' => 'Avertisment nucleu',
 	'errorhandler-error-compile-error' => 'Eroare de compilare',
 	'errorhandler-error-compile-warning' => 'Avertizare de compilare',
 	'errorhandler-error-user-error' => 'Eroare de utilizator',
@@ -1168,6 +1171,13 @@ $messages['ru'] = array(
 	'errorhandler-trace' => 'след:',
 	'errorhandler-trace-line' => '$1 (линия $2): $3',
 	'errorhandler-trace-line-internal' => '[внутренняя функция]: $1',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'errorhandler-error-warning' => 'Accura',
 );
 
 /** Slovak (Slovenčina)

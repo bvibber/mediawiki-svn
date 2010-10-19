@@ -111,6 +111,18 @@ $messages['be-tarask'] = array(
 	'article-comments-comment-field' => 'Камэнтар:',
 	'article-comments-submit-button' => 'Даслаць',
 	'article-comments-leave-comment-link' => 'Пакінуць камэнтар…',
+	'article-comments-invalid-field' => '$1 пададзеная для <nowiki>[$2]</nowiki> зьяўляецца няслушнай.',
+	'article-comments-required-field' => 'Поле $1 — абавязковае.',
+	'article-comments-submission-failed' => 'Немагчыма запісаць камэнтар',
+	'article-comments-failure-reasons' => 'Прабачце, але адбылася памылка запісу Вашага камэнтара па наступным прычынам:',
+	'article-comments-no-comments' => 'Прабачце, старонка «[[$1]]» у цяперашні момант недаступная для камэнтараў.',
+	'article-comments-talk-page-starter' => '<noinclude>Камэнтар да [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 {{GENDER:$1|напісаў|напісала}}…',
+	'article-comments-summary' => 'Камэнтар пададзены $1 з дапамогай пашырэньня ArticleComments',
+	'article-comments-submission-succeeded' => 'Камэнтар пасьпяхова запісаны',
+	'article-comments-submission-success' => 'Ваш камэнтар да «[[$1]]» быў пасьпяхова запісаны',
 );
 
 /** Breton (Brezhoneg)
@@ -222,6 +234,18 @@ Möglich sind die Modi „plain“, „normal“ und „wiki“.',
 	'article-comments-comment-missing-date-parameter' => 'Fehlendes Datum',
 	'article-comments-no-spam' => 'Mindestens eine der Angaben wurde als Spam identifiziert.',
 	'processcomment' => 'Kommentieren von Inhaltsseiten verarbeiten',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'article-comments-title-string' => 'titolo',
+	'article-comments-name-string' => 'Nomo',
+	'article-comments-name-field' => 'Nomo (deviga):',
+	'article-comments-url-field' => 'Retejo:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-commenter-said' => '$1 diris ...',
 );
 
 /** Spanish (Español)
@@ -372,6 +396,20 @@ $messages['he'] = array(
 	'article-comments-comment-missing-date-parameter' => 'תאריך ההערה חסר',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'article-comments-name-string' => 'Név',
+	'article-comments-name-field' => 'Név (kötelező):',
+	'article-comments-url-field' => 'Weboldal:',
+	'article-comments-url-string' => 'URL-cím',
+	'article-comments-comment-string' => 'Megjegyzés',
+	'article-comments-comment-field' => 'Megjegyzés:',
+	'article-comments-submit-button' => 'Elküldés',
+	'article-comments-commenter-said' => '$1 írta ...',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -460,6 +498,10 @@ $messages['lb'] = array(
 	'article-comments-leave-comment-link' => 'Eng Bemierkung derbäisetzen ...',
 	'article-comments-invalid-field' => 'Den $1 <nowiki>[$2]</nowiki> deen Dir uginn hutt ass net valabel.',
 	'article-comments-required-field' => "D'Feld $1 ass obligatoresch.",
+	'article-comments-no-comments' => 'Pardon, d\'Säit "[[$1]]" hëlt elo keng Bemierkungen un.',
+	'article-comments-talk-page-starter' => '<noinclude>Bemierkungen iwwer [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 huet gesot ...',
 	'article-comments-submission-succeeded' => "D'Bemierkung ass gespäichert",
 	'article-comments-submission-success' => 'Är Bemierkung fir [[$1]] ass gespäichert.',
@@ -660,21 +702,21 @@ $messages['pms'] = array(
 	'article-comments-required-field' => "Ël camp $1 a l'é obligatòri.",
 	'article-comments-submission-failed' => "La spedission dël coment a l'é falìa",
 	'article-comments-failure-reasons' => "An dëspias,, la spedission ëd sò coment a l'é falìa për le rason si-dapress:",
-	'article-comments-no-comments' => 'Spiasent, la pàgina "[[$1]]\'\' a aceta pa ëd coment al moment.',
+	'article-comments-no-comments' => 'An dëspias, la pàgina «[[$1]]» a aceta pa ëd coment al moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Coment su [[$1]]
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 dit ...',
-	'article-comments-summary' => "Coment dàit da $1 - via l'estension ArticleComments",
+	'article-comments-summary' => "Coment fornì da $1 - a travers l'estension ArticleComments",
 	'article-comments-submission-succeeded' => "La spedission dël coment a l'é andàita bin",
 	'article-comments-submission-success' => 'It l\'has spedì da bin un coment për "[[$1]]"',
 	'article-comments-submission-view-all' => 'It peule vëdde [[$1|tùit ij coment su sta pàgina]]',
 	'article-comments-user-is-blocked' => 'Tò cont utent a l\'é al moment blocà da modifiché "[[$1]]".',
-	'article-comments-comment-bad-mode' => 'Manera pa bon-a dàita për coment.
+	'article-comments-comment-bad-mode' => 'La manera fornìa për ël coment a va pa bin.
 Cole disponìbij a son "plain", "normal" e "wiki".',
 	'article-comments-comment-missing-name-parameter' => 'Nòm mancant',
 	'article-comments-comment-missing-date-parameter' => 'Data dël coment mancanta',
-	'article-comments-no-spam' => "Almanch un dij camp spedì a l'era signà com spam.",
+	'article-comments-no-spam' => "Almanch un dij camp spedì a l'é stàit marcà com ëd rumenta.",
 	'processcomment' => "Trata ël coment ëd l'artìcol",
 );
 

@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'metadata_help' => '{{Identical|Metadata}}',
 );
 
+/** Moroccan Spoken Arabic (Maġribi)
+ * @author Zanatos
+ */
+$messages['ary'] = array(
+	'metadata_help' => 'L-Métadoné',
+);
+
 /** Achinese (Acèh)
  * @author Fadli Idris
  */

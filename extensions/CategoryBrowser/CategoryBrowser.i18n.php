@@ -304,6 +304,25 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
 	'cb_edit_paste_right_hint' => 'Operator an nächstmöglicher Position einfügen (sofern möglich)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'cb_previous_items_link' => 'Antaŭa',
+	'cb_next_items_link' => 'Sekva',
+	'cb_next_items_stats' => '(de $1)',
+	'cb_cat_subcats' => 'subkategorioj',
+	'cb_cat_pages' => 'paĝoj',
+	'cb_cat_files' => 'dosieroj',
+	'cb_apply_button' => 'Apliki',
+	'cb_all_op' => 'Ĉiuj',
+	'cb_or_op' => 'aŭ',
+	'cb_and_op' => 'kaj',
+	'cb_edit_left_hint' => 'Maldekstrenigi, se eblas',
+	'cb_edit_right_hint' => 'Dekstrenigi, se eblas',
+	'cb_edit_remove_hint' => 'Forigi, se eble',
+);
+
 /** Spanish (Español)
  * @author Danke7
  * @author Translationista
@@ -519,6 +538,24 @@ $messages['he'] = array(
 	'cb_edit_remove_hint' => 'מחיקה, אם ניתן',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'cb_has_subcategories' => '{{PLURAL:$1|egy|$1}} alkategória',
+	'cb_has_pages' => '{{PLURAL:$1|egy|$1}} lap',
+	'cb_has_files' => '{{PLURAL:$1|egy|$1}} fájl',
+	'cb_has_parentcategories' => 'szülőkategóriák (ha vannak)',
+	'cb_previous_items_link' => 'Előző',
+	'cb_next_items_link' => 'Következő',
+	'cb_cat_subcats' => 'alkategóriák',
+	'cb_cat_pages' => 'lapok',
+	'cb_apply_button' => 'Alkalmazás',
+	'cb_all_op' => 'Összes',
+	'cb_or_op' => 'vagy',
+	'cb_and_op' => 'és',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -699,6 +736,13 @@ $messages['mk'] = array(
 	'cb_edit_clear_hint' => 'Исчисти го тековниот израз (избери сè)',
 	'cb_edit_paste_hint' => 'Залепи го операторот во тековната позиција, ако може',
 	'cb_edit_paste_right_hint' => 'Залепи го операторот во следната позиција, ако може',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'cb_all_op' => 'Бүгдийг',
 );
 
 /** Dutch (Nederlands)
@@ -1035,6 +1079,8 @@ $messages['scn'] = array(
 	'cb_next_items_link' => "'N avanti",
 	'cb_cat_pages' => 'pàggini',
 	'cb_all_op' => 'Tutti',
+	'cb_or_op' => 'o',
+	'cb_and_op' => 'e',
 );
 
 /** Swedish (Svenska)
@@ -1168,8 +1214,10 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатегорія|підкатегорії|підкатегорій}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|файл|файли|файлів}}',
 	'cb_cat_subcats' => 'підкатегорій',
 	'cb_cat_pages' => 'сторінок',
+	'cb_cat_files' => 'файлів',
 	'cb_all_op' => 'Усі',
 );
 

@@ -351,7 +351,7 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'userdailycontribs-desc' => 'ക്ലിക്കുകളിൽ ഉപയോക്താവിന്റെ ദൈനിക സംഭാവനകൾ അനുഗമിക്കാനുള്ള അനുബന്ധം',
+	'userdailycontribs-desc' => 'ക്ലിക്കുകളിൽ ഉപയോക്താവിന്റെ ദൈനംദിന സംഭാവനകൾ അനുഗമിക്കാനുള്ള അനുബന്ധം',
 );
 
 /** Malay (Bahasa Melayu)

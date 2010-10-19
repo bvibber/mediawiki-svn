@@ -4892,15 +4892,18 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'sign-address' => 'Поштова адреса:',
 	'sign-city' => 'Місто:',
 	'sign-state' => 'Штат:',
+	'sign-country' => 'Країна:',
 	'sign-email' => 'Адреса електронної пошти:',
 	'sign-viewfield-address' => 'Адреса',
 	'sign-viewfield-city' => 'Місто',
 	'sign-viewfield-state' => 'Штат',
+	'sign-viewfield-country' => 'Країна',
 	'sign-viewfield-email' => 'Електронна пошта',
 	'sign-review-comment' => 'Коментар',
 );

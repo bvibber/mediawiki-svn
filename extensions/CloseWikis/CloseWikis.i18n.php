@@ -1758,7 +1758,11 @@ $messages['sah'] = array(
  * @author Aushulz
  */
 $messages['scn'] = array(
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-submit' => 'Chiudi',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Mutivu:',
+	'closewikis-list-header-wiki' => 'Wiki',
 );
 
 /** Slovak (Slovenčina)

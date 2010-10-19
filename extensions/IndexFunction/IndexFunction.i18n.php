@@ -962,6 +962,11 @@ $1
 Upewnij się, że strona, którą chcesz utworzyć nie istnieje pod inną nazwą. 
 Jeśli utworzysz tę stronę, usuń tytułu z <nowiki>{{#index:}}</nowiki> dla {{PLURAL:$2|powyższej strony|powyższych stron}}.',
 	'indexfunc-index-exists' => 'Strona „$1” już istnieje',
+	'indexfunc-movewarn' => 'Uwaga.
+
+„$1” jest tytułem indeksu dla następujących stron:
+$2
+Usuń „$1” z <nowiki>{{#index:}}</nowiki> z {{PLURAL:$3|powyższej strony|powyższych stron}}.',
 	'index' => 'Indeks',
 	'index-legend' => 'Szukaj w indeksie',
 	'index-search' => 'Szukaj',
@@ -971,6 +976,11 @@ Jeśli utworzysz tę stronę, usuń tytułu z <nowiki>{{#index:}}</nowiki> dla {
 	'index-expand-detail' => 'Pokaż strony indeksowane tym tytułem',
 	'index-hide-detail' => 'Ukryj listę stron',
 	'index-no-results' => 'Brak wyników wyszukiwania',
+	'index-search-explain' => 'Ta strona korzysta z wyszukiwania przedrostka.
+
+Wpisz kilka początkowych znaków i wciśnij przycisk „{{int:index-submit}}”, aby wyszukać tytuły stron i wpisy w indeksie rozpoczynające się od poszukiwanego ciągu znaków',
+	'index-details-explain' => 'Wpisy ze strzałkami to hasła indeksowe.
+Kliknij strzałkę, aby zobaczyć wszystkie strony zaindeksowane tym tytułem.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1081,10 +1091,13 @@ Clique uma seta para ver todas as páginas indexadas sob o respectivo título.',
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'indexfunc-badtitle' => 'Titlu invalid: "$1"',
 	'indexfunc-index-exists' => 'Pagina "$1" există deja',
+	'index' => 'Indexul de căutare',
+	'index-legend' => 'Caută index',
 	'index-search' => 'Căutare:',
 	'index-submit' => 'Trimitere',
 	'index-disambig-start' => "'''$1''' se poate referi la mai multe pagini:",
@@ -1275,11 +1288,13 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'indexfunc-desc' => 'Функція парсера для створення автоматичних перенаправлень і сторінок неоднозначностей',
 	'indexfunc-badtitle' => 'Неприпустима назва: "$1"',
 	'indexfunc-index-exists' => 'Сторінка "$1" вже існує',
+	'index-search' => 'Пошук:',
 );
 
 /** Veps (Vepsan kel')

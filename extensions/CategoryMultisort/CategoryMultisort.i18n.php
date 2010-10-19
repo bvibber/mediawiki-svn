@@ -226,10 +226,14 @@ $messages['hsb'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Dani
+ */
 $messages['hu'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Alapértelmezett',
+	'categorymultisort-sortkey' => 'Rendezési kulcs:',
 	'categorymultisort-go' => 'Menj',
+	'categorymultisort-default-sortkey' => 'Alapértelmezett rendezési kulcs:',
 	'prefs-category' => 'Kategória',
 );
 
@@ -463,6 +467,13 @@ $messages['rue'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Імпліцітне',
 	'categorymultisort-sortkey' => 'Ключ сортованя:',
 	'categorymultisort-go' => 'Перейти',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'categorymultisort-go' => "Va'",
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

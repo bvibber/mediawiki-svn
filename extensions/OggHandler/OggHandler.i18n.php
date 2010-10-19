@@ -2805,6 +2805,7 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'ogg-desc' => 'Обслуга файлів Ogg Theora і Vorbis з JavaScript-овым перегравачом',
 	'ogg-short-audio' => 'Звуковый файл Ogg $1, $2',
 	'ogg-short-video' => 'Відео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Файл Ogg $1, $2',
@@ -2818,6 +2819,8 @@ $messages['rue'] = array(
 	'ogg-stop' => 'Заставити',
 	'ogg-play-video' => 'Переграти відео',
 	'ogg-play-sound' => 'Переграти звук',
+	'ogg-no-player' => 'Ваша сістема асі не має жаден підпорованый перегравач. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте перегравач</a>.',
+	'ogg-no-xiphqt' => 'Не маєте росшырїна XiphQT про QuickTime. QuickTime не може перегравати файлы без того росшырїня. <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Скачайте XiphQT</a> або звольте іншый перегравач.',
 	'ogg-player-videoElement' => 'Вставляна підпора в переглядачу',
 	'ogg-player-oggPlugin' => 'Модул до переглядача',
 	'ogg-player-thumbnail' => 'Лем снимок нагляду',
@@ -3356,6 +3359,13 @@ Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganito
 	'ogg-desc-link' => 'Tungkol sa talaksang ito',
 	'ogg-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma.',
 	'ogg-oggThumb-failed' => 'Nabigo ang oggThumb na lumikha ng munting larawan.',
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'ogg-more' => 'Moa...',
 );
 
 /** Turkish (Türkçe)

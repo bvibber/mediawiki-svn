@@ -1102,6 +1102,7 @@ $messages['ro'] = array(
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'importă aceasta',
 	'importfreeimages_next' => 'Înainte $1',
+	'importfreeimages_size_square' => 'Pătrat',
 	'importfreeimages_size_thumbnail' => 'Miniatură',
 	'importfreeimages_size_small' => 'Mică',
 	'importfreeimages_size_medium' => 'Mediu',

@@ -2284,6 +2284,7 @@ Voltar para:
  */
 $messages['ro'] = array(
 	'crosswikiblock' => 'Blochează utilizator pe alt wiki',
+	'crosswikiblock-target' => 'Adresa IP sau numele de utilizator şi destinaţia wiki:',
 	'crosswikiblock-reason' => 'Motiv:',
 	'crosswikiblock-submit' => 'Blochează acest utilizator',
 	'crosswikiblock-anononly' => 'Blochează doar utilizatorii anonimi',

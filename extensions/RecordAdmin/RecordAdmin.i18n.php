@@ -2172,8 +2172,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'recordadmin-buttonsearch' => 'Знайти',
 	'recordadmin-buttonreset' => 'Скинути',
 	'recordadmin-editlink' => 'ред.',
 	'recordadmin-actions' => 'Дії',

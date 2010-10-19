@@ -1697,6 +1697,7 @@ $messages['ro'] = array(
 	'dt_xml_title' => 'Titlu',
 	'dt_xml_id' => 'ID',
 	'importxml' => 'Importă XML',
+	'dt_import_summarydesc' => 'Descrierea importului:',
 	'dt_import_importing' => 'Importare...',
 	'importcsv' => 'Importă CSV',
 	'right-datatransferimport' => 'Importă date',
@@ -1774,6 +1775,14 @@ $messages['rue'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Вольный текст',
 	'importxml' => 'Імпортовати XML',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'dt_xml_name' => 'Nomu',
+	'dt_xml_id' => 'ID',
 );
 
 /** Slovak (Slovenčina)

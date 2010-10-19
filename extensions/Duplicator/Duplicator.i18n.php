@@ -1359,6 +1359,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'duplicator' => 'Duplică o pagină',
 	'duplicator-toolbox' => 'Duplică această pagină',
 	'duplicator-options' => 'Opțiuni',
 	'duplicator-source' => 'Sursă:',
@@ -1409,6 +1410,13 @@ $messages['ru'] = array(
 	'duplicator-dest-exists' => 'Страница «[[$1]]» уже существует. Пожалуйста, введите название несуществующей страницы-назначения.',
 	'duplicator-toomanyrevisions' => 'Страница «[[$1]]» имеет слишком много ($2) изменений. Текущим ограничением является $3.',
 	'right-duplicate' => 'копирование страниц',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'duplicator-options' => 'Oppizioni',
 );
 
 /** Slovak (Slovenčina)

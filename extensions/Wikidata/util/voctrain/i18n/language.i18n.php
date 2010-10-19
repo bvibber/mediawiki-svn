@@ -3841,9 +3841,12 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'voctrain_continue' => 'продовжити',
+	'voctrain_User_name' => "Ім'я користувача",
+	'voctrain_Password' => 'Пароль',
 	'voctrain_Language' => 'Мова',
 );
 

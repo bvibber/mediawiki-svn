@@ -533,10 +533,16 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'qp_result_NA' => 'Nije odgovoreno',
 	'qp_result_error' => 'Sintaksna greška',
+	'qp_vote_button' => 'Glasaj',
+	'qp_vote_again_button' => 'Promijeni svoj glas',
+	'qp_polls_list' => 'Prikaži sva glasanja',
+	'qp_users_list' => 'Prikaži sve korisnike',
 	'qp_source_link' => 'Izvor',
 	'qp_stats_link' => 'Statistika',
 	'qp_users_link' => 'Korisnici',
+	'qp_not_participated_link' => 'Nije učestvovao',
 );
 
 /** Czech (Česky) */
@@ -2414,9 +2420,11 @@ $messages['tt-cyrl'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'qp_desc' => 'Дозволяє створювати опитування',
+	'qp_users_link' => 'Користувачі',
 	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
 );
 

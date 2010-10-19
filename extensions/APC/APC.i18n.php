@@ -4014,6 +4014,13 @@ $messages['ml'] = array(
 	'viewapc-usercache-cleared' => "'''''ആപ്ലിക്കേഷൻ കാഷെ വൃത്തിയാക്കി.'''''",
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'viewapc-ls-limit-none' => 'Бүгдийг',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -5449,11 +5456,19 @@ $messages['scn'] = array(
 	'viewapc-filecache-info' => 'Nformazioni supra la cache dô file',
 	'viewapc-usercache-info' => 'Nformazioni supra la cache utenti',
 	'viewapc-cached-files' => 'File in cache',
+	'viewapc-misses' => 'Persi',
 	'viewapc-display-info' => 'Nomu',
 	'viewapc-display-mtime' => 'Canciati',
+	'viewapc-display-stored-value' => 'Valuri sarvatu',
+	'viewapc-ls-options-legend' => 'Oppizioni',
+	'viewapc-ls-submit' => "Va'",
 	'viewapc-ls-header-name' => 'Nomu',
 	'viewapc-ls-header-size' => 'Grannizza',
+	'viewapc-ls-header-created' => 'Criatu',
 	'viewapc-ls-scope-both' => 'Tutti e dui',
+	'viewapc-ls-sort-size' => 'Grannizza',
+	'viewapc-ls-sort-name' => 'Nomu',
+	'viewapc-ls-sort-created' => 'Criatu',
 	'viewapc-ls-limit-none' => 'Tutti',
 );
 

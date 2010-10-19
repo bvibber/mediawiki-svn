@@ -1544,7 +1544,10 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'sitematrix' => 'Список проєктів Вікімедія',
+	'sitematrix-summary' => 'Тота шпеціална сторінка обсягує список вшыткых вікі Фонду Вікімедія',
+	'sitematrix-desc' => 'Указує [[Special:SiteMatrix|список проєктів фонду Вікімедія]]',
 	'sitematrix-language' => 'Язык',
+	'sitematrix-project' => 'Назва проєкту, міджіпроєктовый одказ і міджіязыковый одказ',
 	'sitematrix-others' => 'Іншы проєкты Фонду «Вікімедія»',
 	'sitematrix-total' => "'''Цілкове чісло: $1'''",
 	'sitematrix-sitetotal' => 'Цілком',
@@ -1871,6 +1874,13 @@ $messages['tl'] = array(
 /** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'sitematrix' => "Ko e hokohoko ʻo e ngaahi ''wiki''",
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'sitematrix-language' => 'Toktok',
 );
 
 /** Turkish (Türkçe)

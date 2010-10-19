@@ -808,12 +808,14 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'emergencydesysop-reason' => 'Motiv pentru ștergere',
 	'emergencydesysop-submit' => 'Trimite',
 	'emergencydesysop-nogroups' => 'Niciunul',
 	'emergencydesysop-invalidtarget' => 'Utilizatorul țintă nu există.',
+	'emergencydesysop-noright' => 'Nu ai suficiente permisiuni pentru a accesa această pagină',
 );
 
 /** Russian (Русский)
@@ -837,6 +839,13 @@ $messages['ru'] = array(
 	'emergencydesysop-blocked' => 'Вы не можете получить доступ к этой странице, будучи заблокированным',
 	'emergencydesysop-noright' => 'Вы не имеете достаточных полномочий для доступа к этой странице',
 	'right-emergencydesysop' => 'снятие прав администратора другого участника, вместе со своими',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'emergencydesysop-nogroups' => 'Nuddu',
 );
 
 /** Slovak (Slovenčina)

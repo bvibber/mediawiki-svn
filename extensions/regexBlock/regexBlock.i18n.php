@@ -2049,6 +2049,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'regexblock-form-reason' => 'Шалтгаан:',
+	'regexblock-view-all' => 'Бүгдийг',
 );
 
 /** Marathi (मराठी)

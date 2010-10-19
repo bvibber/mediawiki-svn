@@ -1002,6 +1002,14 @@ $messages['mk'] = array(
 	'gep-nocategories' => 'Одберете барем една категорија пред зачувување',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'gep-addcategorybutton' => 'Нэмэх',
+	'gep-addsectionbutton' => 'Нэмэх',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

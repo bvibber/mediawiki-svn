@@ -1629,6 +1629,13 @@ $messages['ml'] = array(
 	'right-badimages' => 'മോശം ചിത്രങ്ങളുടെ പട്ടിക പുതുക്കുക',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'badimages-add-btn' => 'Нэмэх',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

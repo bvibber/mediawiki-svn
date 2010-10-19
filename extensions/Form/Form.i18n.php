@@ -923,7 +923,7 @@ $messages['lb'] = array(
 	'formarticleexists' => "D'Säit gëtt et schonn.",
 	'formarticleexiststext' => "D'Säit [[$1]] gëtt et schonn.",
 	'formbadpagename' => 'Falsche Säitennumm',
-	'formbadrecaptcha' => 'Falsche Wert fir reCaptcha. Probéiert nach emol.',
+	'formbadrecaptcha' => 'Falsche Wäert fir reCaptcha. Probéiert nach emol.',
 	'formbadpagenametext' => 'Déi Donnéeën déi Dir an de Formulaire aginn hutt erginn e Säitennumm, den net ka gespäichert ginn: "$1".',
 	'formrequiredfielderror' => "D'{{PLURAL:$2|Feld $1 muss|Felder $1 mussen}} an dësem Formulaire ausgefëllt ginn.
 Fëllt {{PLURAL:$2|et|se}} w.e.g. aus.",
@@ -1342,6 +1342,13 @@ $messages['ru'] = array(
 	'formsavesummary' => 'Новая страница, с помощью [[Special:Form/$1|формы $1]]',
 	'formsaveerror' => 'Ошибка при сохранении формы',
 	'formsaveerrortext' => 'При сохранении страницы «$1» возникла неизвестная ошибка.',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'formsave' => 'Sarva',
 );
 
 /** Sinhala (සිංහල)
