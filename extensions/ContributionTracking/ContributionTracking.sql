@@ -13,4 +13,4 @@ CREATE TABLE IF NOT EXISTS /*_*/`contribution_tracking` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `contribution_id` (`contribution_id`),
   KEY `ts` (`ts`)
-) /*wgDBTableOptions/*; 
+) /*wgDBTableOptions*/; 
