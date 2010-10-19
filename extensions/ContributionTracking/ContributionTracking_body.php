@@ -37,6 +37,8 @@ class ContributionTracking extends UnlistedSpecialPage {
 			'utm_campaign' => $wgRequest->getText('utm_campaign', null),
 			'optout' => ($wgRequest->getCheck('email-opt', 0) ? 0 : 1),
 			'language' => $wgRequest->getText('language', null),
+			'owa_session' => $wgRequest->getText('owa_session', null),
+			'owa_ref' => $wgRequest->getText('owa_ref', null),
 			'ts' => $ts,
 		);
 		
