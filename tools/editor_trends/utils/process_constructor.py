@@ -14,7 +14,7 @@ http://www.fsf.org/licenses/gpl.html
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
 
-from multiprocessing import Process, Queue, JoinableQueue
+from multiprocessing import Process, Queue
 from Queue import Empty
 
 import settings
@@ -52,7 +52,7 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
 
     input_queue = Queue()
     if result_queue:
-        result_queue = JoinableQueue()
+        result_queue = Queue()
 
     load_input_queue(input_queue, obj, poison_pill=True)
 

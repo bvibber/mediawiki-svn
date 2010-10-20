@@ -55,6 +55,7 @@ def check_if_process_is_running(pid):
         if settings.OS == 'Windows':
             PROCESS_TERMINATE = 1
             handle = ctypes.windll.kernel32.OpenProcess(PROCESS_TERMINATE, False, pid)
+            ctypes.windll.kernel32.CloseHandle(handle)
             if handle != 0:
                 return True
             else:

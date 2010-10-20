@@ -24,6 +24,7 @@ import re
 import xml.etree.cElementTree as cElementTree
 from multiprocessing import Queue
 from Queue import Empty
+import pymongo
 
 # Custom written files
 import settings
@@ -71,15 +72,15 @@ def extract_contributor_id(contributor, kwargs):
     ignore anonymous editors. If you are interested in collecting data on
     anonymous editors then add the string 'ip' to the tags variable.
     '''
-    tags = ['id'] 
+    tags = ['id']
     if contributor.get('deleted'):
-        return -1 #Not sure if this is the best way to code deleted contributors.
+        return - 1 #Not sure if this is the best way to code deleted contributors.
     for elem in contributor:
         if elem.tag in tags:
             if elem.text != None:
                 return elem.text.decode('utf-8')
             else:
-                return -1
+                return - 1
 
 
 def output_editor_information(elem, data_queue, **kwargs):
@@ -104,8 +105,8 @@ def output_editor_information(elem, data_queue, **kwargs):
             vars.pop('bot')
             vars['date'] = utils.convert_timestamp_to_date(vars['date'])
             data_queue.put(vars)
-        vars={}
-    
+        vars = {}
+
 def lookup_new_editors(xml_queue, data_queue, pbar, bots, debug=False, separator='\t'):
     if settings.DEBUG:
         messages = {}
@@ -118,36 +119,41 @@ def lookup_new_editors(xml_queue, data_queue, pbar, bots, debug=False, separator
                 file = xml_queue.get(block=False)
             #print 'parsing %s' % file
             if file == None:
+                print 'Swallowed a poison pill'
                 break
-            
-            data = xml.read_input(utils.open_txt_file(settings.XML_FILE_LOCATION 
+
+            data = xml.read_input(utils.open_txt_file(settings.XML_FILE_LOCATION
                 + file, 'r', encoding=settings.ENCODING))
             #data = read_input(sys.stdin)
             #print xml_queue.qsize()
             for raw_data in data:
                 xml_buffer = cStringIO.StringIO()
                 raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
-                raw_data = ''.join(raw_data)
-                xml_buffer.write(raw_data)
-
                 try:
+                    raw_data = ''.join(raw_data)
+                    xml_buffer.write(raw_data)
                     elem = cElementTree.XML(xml_buffer.getvalue())
                     output_editor_information(elem, data_queue, bots=bots)
                 except SyntaxError, error:
                     print error
-                    #There are few cases with invalid tokens, they are fixed
-                    #here and then reinserted into the XML DOM
-                    #data = convert_html_entities(xml_buffer.getvalue())
-                    #elem = cElementTree.XML(data)
-                    #output_editor_information(elem)
-                    if settings.DEBUG:
-                        utils.track_errors(xml_buffer, error, file, messages)
+                    '''
+                    There are few cases with invalid tokens, they are fixed
+                    here and then reinserted into the XML DOM
+                    data = convert_html_entities(xml_buffer.getvalue())
+                    elem = cElementTree.XML(data)
+                    output_editor_information(elem)
+                    '''
                 except UnicodeEncodeError, error:
                     print error
+                except MemoryError, error:
+                    '''
+                    There is one xml file causing an out of memory file, not
+                    sure which one yet. 
+                    '''
+                    print error
+                finally:
                     if settings.DEBUG:
                         utils.track_errors(xml_buffer, error, file, messages)
-                #finally:
-
 
             if pbar:
                 print xml_queue.qsize()
@@ -171,11 +177,12 @@ def store_data_mongo(data_queue, pids):
             chunk = data_queue.get(block=False)
             values.append(chunk)
             #print chunk
-            if len(values) == 100000:
-                collection.insert(values)
+            if len(values) == 25000:
+                collection.insert(chunk)
                 values = []
             #print data_queue.qsize()
-            data_queue.task_done()
+
+        
         except Empty:
             # The queue is empty but store the remaining values if present
             if values != []:
@@ -190,10 +197,13 @@ def store_data_mongo(data_queue, pids):
             are finished and this Queue is empty than break, else wait for the
             Queue to fill.
             '''
+            
             if all([utils.check_if_process_is_running(pid) for pid in pids]):
                 pass
+                #print 'Empty queue or not %s?' % data_queue.qsize()
             else:
                 break
+
 
 
 def store_data_db(data_queue, pids):
@@ -238,8 +248,8 @@ def run_stand_alone():
     for bot in cursor:
         ids[bot['id']] = bot['name']
     pc.build_scaffolding(pc.load_queue, lookup_new_editors, files, store_data_mongo, True, bots=ids)
-    db.add_index_to_collection('editors', 'date')
-    db.add_index_to_collection('editors', 'name')
+    keys = [('date', pymongo.ASCENDING), ('name', pymongo.ASCENDING)]
+    db.add_index_to_collection('editors', 'editors', keys)
 
 def debug_lookup_new_editors():
     q = Queue()
@@ -247,9 +257,9 @@ def debug_lookup_new_editors():
     pbar = progressbar.ProgressBar().start()
     edits = db.init_mongo_db('editors')
     lookup_new_editors('1.xml', q, None, None, True)
-    db.add_index_to_collection('editors', 'date')
-    db.add_index_to_collection('editors', 'name')
-    
+    keys = [('date', pymongo.ASCENDING), ('name', pymongo.ASCENDING)]
+    db.add_index_to_collection('editors', 'editors', keys)
+
 
 
 def run_hadoop():
@@ -258,7 +268,7 @@ def run_hadoop():
 
 if __name__ == "__main__":
     #debug_lookup_new_editors()
-    
+
     if settings.RUN_MODE == 'stand_alone':
         run_stand_alone()
         print 'Finished processing XML files.'
