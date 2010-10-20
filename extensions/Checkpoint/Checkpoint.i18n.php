@@ -348,6 +348,14 @@ $messages['pt-br'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'checkpoint' => 'Salvează şi continuă modificarea',
+	'checkpoint-tooltip' => 'Salvează-ţi progresul şi continuă editarea paginii',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -384,6 +392,13 @@ $messages['sv'] = array(
 	'checkpoint-desc' => 'Möjligör att spara och fortsätta redigera',
 	'checkpoint-tooltip' => 'Spara ditt arbete och fortsätt redigera sidan',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|spara checkpoint]])',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'checkpoint' => 'சேமித்த பின், தொடர்ந்து தொகுத்தலைச் செய்யவும்',
 );
 
 /** Telugu (తెలుగు)

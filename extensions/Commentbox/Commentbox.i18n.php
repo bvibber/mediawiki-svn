@@ -798,6 +798,20 @@ Você tem um comentário sobre esta página? Adicione-o aqui ou <span class="pla
 	'commentbox-error-empty-comment' => 'Comentários vazios não são permitidos!',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'commentbox-savebutton' => 'Salvează comentariul',
+	'commentbox-name' => 'Nume:',
+	'commentbox-log' => 'Comentarii noi',
+	'commentbox-first-comment-heading' => '== Comentarii ==',
+	'commentbox-regex' => '/\\n==\\s*Comentarii\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Eroare în timpul creării comentariului',
+	'commentbox-error-page-nonexistent' => 'Această pagină nu există',
+	'commentbox-error-empty-comment' => 'Comentariile goale nu sunt permise!',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -827,6 +841,13 @@ $messages['ru'] = array(
 	'commentbox-error-empty-comment' => 'Пустые комментарии не допускаются!',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'commentbox-name' => 'Імя:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -835,6 +856,13 @@ $messages['sah'] = array(
 	'commentbox-name' => 'Аата:',
 	'commentbox-first-comment-heading' => '== Быһаарыылар ==',
 	'commentbox-regex' => '/\\n==\\s*Быһаарыылар\\s*==\\s*\\n/i',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'commentbox-name' => 'Nomu:',
 );
 
 /** Slovak (Slovenčina)
@@ -913,6 +941,8 @@ Har du en kommentar till den här sidan? Lägg till den här eller <span class="
  */
 $messages['ta'] = array(
 	'commentbox-name' => 'பெயர்:',
+	'commentbox-log' => 'புதிய கருத்துக்கள்',
+	'commentbox-first-comment-heading' => '== கருத்துக்கள் ==',
 );
 
 /** Telugu (తెలుగు)

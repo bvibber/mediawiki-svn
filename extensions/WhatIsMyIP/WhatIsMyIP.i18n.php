@@ -276,10 +276,11 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author BlueDevil
+ * @author Huji
  */
 $messages['fa'] = array(
-	'whatismyip' => 'نشانی اینترنتی من چیست',
-	'whatismyip-out' => 'نشانی اینترنتی شما:',
+	'whatismyip' => 'نشانی آی‌پی من چیست',
+	'whatismyip-out' => 'نشانی آی‌پی شما:',
 );
 
 /** Finnish (Suomi)

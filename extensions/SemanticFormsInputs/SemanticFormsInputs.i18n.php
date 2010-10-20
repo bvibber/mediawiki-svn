@@ -109,9 +109,15 @@ $messages['de'] = array(
 
 /** Spanish (Español)
  * @author Danke7
+ * @author Translationista
  */
 $messages['es'] = array(
+	'semanticformsinputs-desc' => 'Tipos de entrada adicionales para [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularios Semánticos]',
 	'semanticformsinputs-wrongformat' => 'Formato incorrecto.',
+	'semanticformsinputs-close' => 'Cerrar',
+	'semanticformsinputs-prev' => 'Anterior',
+	'semanticformsinputs-next' => 'Siguiente',
+	'semanticformsinputs-today' => 'Hoy',
 );
 
 /** French (Français)
@@ -158,6 +164,16 @@ $messages['gsw'] = array(
 	'semanticformsinputs-prev' => 'Vorigi',
 	'semanticformsinputs-next' => 'Negschti',
 	'semanticformsinputs-today' => 'Hit',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'semanticformsinputs-close' => 'סגירה',
+	'semanticformsinputs-prev' => 'הקודם',
+	'semanticformsinputs-next' => 'הבא',
+	'semanticformsinputs-today' => 'היום',
 );
 
 /** Hungarian (Magyar) */
@@ -207,6 +223,10 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'semanticformsinputs-desc' => "Zousätzlech Manéieren fir d'Eraginn fir [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Formulairen]",
 	'semanticformsinputs-wrongformat' => 'Falsche Format.',
+	'semanticformsinputs-close' => 'Zoumaachen',
+	'semanticformsinputs-prev' => 'Vireg',
+	'semanticformsinputs-next' => 'Nächst',
+	'semanticformsinputs-today' => 'Haut',
 );
 
 /** Macedonian (Македонски)
@@ -251,6 +271,10 @@ $messages['no'] = array(
 $messages['pl'] = array(
 	'semanticformsinputs-desc' => 'Dodatkowe typy wejściowe dla [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularzy Semantycznych]',
 	'semanticformsinputs-wrongformat' => 'Niewłaściwy format.',
+	'semanticformsinputs-close' => 'Zamknij',
+	'semanticformsinputs-prev' => 'Poprzednie',
+	'semanticformsinputs-next' => 'Następne',
+	'semanticformsinputs-today' => 'Dziś',
 );
 
 /** Piedmontese (Piemontèis)

@@ -800,6 +800,13 @@ Tai gali papildomai apkrauti serverį, taigi naudokite šią funkciją atsakinga
 	'right-asksql' => 'Vykdyti SQL užklausas',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'asksql' => 'SQL vaicājums',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

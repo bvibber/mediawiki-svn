@@ -1436,10 +1436,18 @@ Pontuações calculadas desta forma pesam a diversidade de edições relativamen
 );
 
 /** Romanian (Română)
+ * @author AlexZaim
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'contributionscores' => 'Punctaje contribuții',
+	'contributionscores-info' => 'Punctajul este calculat în felul următor:
+*Un (1) punct pentru fiecare pagină unic modificată
+*Rădăcină pătrată din (totalul modificărilor efectuate) - (totalul paginilor unice) * 2
+Punctajul astfel calculate oferă diversitate volumului de modificări.
+Practic, acest scor măsoară în primul rând paginile unic modificate, cu considerație pentru volumul ridicat de modificări - presupunând că pagina este de o calitate superioară.',
 	'contributionscores-top' => '(Top $1)',
 	'contributionscores-days' => '{{PLURAL:$1|Ultima zi|Ultimele $1 zile}}',
 	'contributionscores-allrevisions' => 'Toate versiunile',
@@ -1630,11 +1638,14 @@ När poängen beräknas på detta sätt, så väger bidrag spridda över många 
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  * @author Ulmo
  */
 $messages['ta'] = array(
+	'contributionscores-allrevisions' => 'எல்லா திருத்தங்களும்',
 	'contributionscores-pages' => 'பக்கங்கள்',
+	'contributionscores-changes' => 'மாற்றங்கள்',
 	'contributionscores-username' => 'பயனர் பெயர்',
 );
 

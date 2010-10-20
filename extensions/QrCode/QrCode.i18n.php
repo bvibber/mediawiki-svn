@@ -86,6 +86,13 @@ $messages['gsw'] = array(
 	'qrcode-desc' => 'Leit QR Code-Grafike aa un zun ere Wikisyte zue',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'qrcode-desc' => 'Płodźi a přidawa wikistronje wobrazy QRCode',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

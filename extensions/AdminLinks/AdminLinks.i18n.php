@@ -859,6 +859,16 @@ $messages['ltg'] = array(
 	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'adminlinks_users' => 'Lietotāji',
+	'adminlinks_createuser' => 'Izveidot lietotāju',
+	'adminlinks_browsesearch' => 'Pārlūkot un meklēt',
+	'adminlinks_importexport' => 'Imports un eksports',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */
@@ -1170,11 +1180,19 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'adminlinks' => 'Legături administrator',
+	'adminlinks_general' => 'General',
+	'adminlinks_editsidebar' => 'Editează bara laterală',
+	'adminlinks_editcss' => 'Editează fişierul CSS',
+	'adminlinks_editmainpagename' => 'Editează numele paginii principale',
 	'adminlinks_users' => 'Utilizatori',
 	'adminlinks_createuser' => 'Creează un utilizator',
+	'adminlinks_browsesearch' => 'Răsfoieşte şi caută',
 	'adminlinks_importexport' => 'Importare și exportare',
 );
 

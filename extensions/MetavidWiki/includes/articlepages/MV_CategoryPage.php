@@ -137,4 +137,3 @@ class MvCategoryViewer extends CategoryViewer {
 	}
 }
 
-?>

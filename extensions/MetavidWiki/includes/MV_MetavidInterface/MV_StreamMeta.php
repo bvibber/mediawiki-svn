@@ -19,4 +19,3 @@
 		$wgOut->addHTML( '</div>' );
 	}
  }
-?>

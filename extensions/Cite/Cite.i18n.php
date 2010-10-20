@@ -81,6 +81,7 @@ no text was provided for refs named <code>$1</code>',
 );
 
 /** Message documentation (Message documentation)
+ * @author Dani
  * @author Lejonel
  * @author Mormegil
  * @author Nike
@@ -103,6 +104,8 @@ $messages['qqq'] = array(
 	'cite_error_references_no_backlink_label' => 'Cite extension. Error message shown in the references tag when the same name is used for too many ref tags. Too many in this case is more than there are backlink labels defined in [[MediaWiki:Cite references link many format backlink labels]].
 
 It is not possible to make a clickable link to this message. "nowiki" is mandatory around [[MediaWiki:Cite references link many format backlink labels]].',
+	'cite_error_no_link_label_group' => "*'''$1''' is the name of a reference group.
+*'''$2''' is <tt>cite_link_label_group-<i>groupname</i></tt>.",
 	'cite_error_references_no_text' => 'Cite extension. This error occurs when the tag <code>&lt;ref name="something" /&gt;</code> is used with the name-option specified and no other tag specifies a cite-text for this name.',
 	'cite_error_included_ref' => 'Error message shown if the <tt>&lt;ref&gt;</tt> tag is unbalanced, that means a <tt>&lt;ref&gt;</tt> is not followed by a <tt>&lt;/ref&gt;</tt>',
 	'cite_error_references_group_mismatch' => 'Error message shown when doing something like
@@ -166,7 +169,18 @@ The <code>$1</code> parameter contains the name of the unused reference (in the 
 $messages['af'] = array(
 	'cite-desc' => 'Maak <nowiki><ref[ name=id]></nowiki> en <nowiki><references/></nowiki> etikette beskikbaar vir sitasie.',
 	'cite_croak' => 'Probleem met Cite; $1: $2',
+	'cite_error_key_str_invalid' => 'Interne fout;
+ongeldige $str en/of $key.
+Dit behoort nie te gebeur nie.',
+	'cite_error_stack_invalid_input' => 'Interne fout;
+ongeldige "stack key".
+Dit behoort nie te gebeur nie.',
 	'cite_error' => 'Citefout: $1',
+	'cite_error_ref_numeric_key' => "Ongeldige etiket <code>&lt;ref&gt;</code>;
+die naam kan nie 'n eenvoudige heelgetal wees nie.
+Gebruik 'n beskrywende titel",
+	'cite_error_ref_no_key' => 'Ongeldige etiket <code>&lt;ref&gt;</code>;
+"refs" sonder inhoud moet \'n naam hê',
 	'cite_error_ref_too_many_keys' => 'Ongeldig <code>&lt;ref&gt;</code>-etiket;
 ongeldige name, byvoorbeeld te veel',
 );
@@ -875,6 +889,8 @@ parametro "group" nur estas permesita.
 Uzu etikedon <code>&lt;references /&gt;</code>, aŭ <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Neniom plu memfaritaj retroligaj etikedoj.
 Difinu pliajn en la mesaĝo <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>.',
+	'cite_error_no_link_label_group' => 'Mankas proprajn ligilajn etikedojn por grupo "$1".
+Difinu pliajn en la <nowiki>[[MediaWiki:$2]]</nowiki> mesaĝo.',
 	'cite_error_references_no_text' => 'Nevalida <code>&lt;ref&gt;</code> etikedo;
 neniu teksto estis donita por ref-oj nomataj <code>$1</code>',
 	'cite_error_included_ref' => 'Ferma &lt;/ref&gt; mankas por &lt;ref&gt; etikedon',
@@ -1014,6 +1030,7 @@ $messages['fa'] = array(
  * @author Agony
  * @author Crt
  * @author Nike
+ * @author Olli
  * @author Silvonen
  * @author Str4nd
  * @author Tarmo
@@ -1032,6 +1049,8 @@ $messages['fi'] = array(
 	'cite_error_references_invalid_parameters_group' => 'Kelpaamaton <code>&lt;references&gt;</code>-elementti: vain parametri ”group” on sallittu. Käytä muotoa <code>&lt;references /&gt;</code> tai <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Määritetyt takaisinviittausnimikkeet loppuivat kesken.
 Niitä voi määritellä lisää sivulla <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>.',
+	'cite_error_no_link_label_group' => 'Mukautettujen linkkikirjainten määrä ryhmälle ”$1” loppui.
+Määritä niitä lisää viestissä <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Virheellinen <code>&lt;ref&gt;</code>-elementti;
 viitettä <code>$1</code> ei löytynyt',
 	'cite_error_included_ref' => '&lt;ref&gt;-elementin sulkeva &lt;/ref&gt;-elementti puuttuu',
@@ -1378,6 +1397,8 @@ $messages['hu'] = array(
 	'cite_error_references_invalid_parameters' => 'Érvénytelen <code>&lt;references&gt;</code> tag; nincsenek paraméterei, használd a <code>&lt;references /&gt;</code> formát',
 	'cite_error_references_invalid_parameters_group' => 'Érvénytelen <code>&lt;references&gt;</code> tag; csak a „group” attribútum használható. Használd a <code>&lt;references /&gt;</code>, vagy a <code>&lt;references group="..." /&gt;</code> formát.',
 	'cite_error_references_no_backlink_label' => 'Elfogytak a visszahivatkozásra használt címkék, adj meg többet a <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> üzenetben',
+	'cite_error_no_link_label_group' => 'Nincs több egyedi címke a következő csoport számára: „$1”.
+Definiálj többet a <nowiki>[[MediaWiki:$2]]</nowiki> lapon.',
 	'cite_error_references_no_text' => 'Érvénytelen <code>&lt;ref&gt;</code> tag; nincs megadva szöveg a(z) <code>$1</code> nevű ref-eknek',
 	'cite_error_included_ref' => 'Egy &lt;ref&gt; tag lezáró &lt;/ref&gt; része hiányzik',
 	'cite_error_refs_without_references' => '<code>&lt;ref&gt;</code>-ek vannak a lapon, de nincsen <code>&lt;references/&gt;</code>',
@@ -2504,6 +2525,41 @@ $messages['ru'] = array(
 	'cite_references_link_many_format_backlink_labels' => 'а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я аа аб ав аг ад ае ё аж аз аи ай ак ал ам ан ао ап ар ас ат ау аф ах ац ач аш ащ аъ аы аь аэ аю ая ба бб бв бг бд бе бж бз би бй бк бл бм бн бо бп бр бс бт бу бф бх бц бч бш бщ бъ бы бь бэ бю бя ва вб вв вг вд ве вж вз ви вй вк вл вм вн во вп вр вс вт ву вф вх вц вч вш вщ въ вы вь вэ вю вя га гб гв гг гд ге гж гз ги гй гк гл гм гн го гп гр гс гт гу гф гх гц гч гш гщ гъ гы гь гэ гю гя да дб дв дг дд де дж дз ди дй дк дл дм дн до дп др дс дт ду дф дх дц дч дш дщ дъ ды дь дэ дю дя еа еб ев ег ед ее еж ез еи ей ек ел ем ен ео еп ер ес ет еу еф ех ец еч еш ещ еъ еы еь еэ ею ея жа жб жв жг жд же жж жз жи жй жк жл жм жн жо жп жр жс жт жу жф жх жц жч жш жщ жъ жы жь жэ жю жя за зб зв зг зд зе зж зз зи зй зк зл зм зн зо зп зр зс зт зу зф зх зц зч зш зщ зъ зы зь зэ зю зя иа иб ив иг ид ие иж из ии ий ик ил им ин ио ип ир ис ит иу иф их иц ич иш ищ иъ иы иь иэ ию ия йа йб йв йг йд йе йж йз йи йй йк йл йм йн йо йп йр йс йт йу йф йх йц йч йш йщ йъ йы йь йэ йю йя ка кб кв кг кд ке кж кз ки кй кк кл км кн ко кп кр кс кт ку кф кх кц кч кш кщ къ кы кь кэ кю кя ла лб лв лг лд ле лж лз ли лй лк лл лм лн ло лп лр лс лт лу лф лх лц лч лш лщ лъ лы ль лэ лю ля ма мб мв мг мд ме мж мз ми мй мк мл мм мн мо мп мр мс мт му мф мх мц мч мш мщ мъ мы мь мэ мю мя на нб нв нг нд не нж нз ни нй нк нл нм нн но нп нр нс нт ну нф нх нц нч нш нщ нъ ны нь нэ ню ня оа об ов ог од ое ож оз ои ой ок ол ом он оо оп ор ос от оу оф ох оц оч ош ощ оъ оы оь оэ ою оя па пб пв пг пд пе пж пз пи пй пк пл пм пн по пп пр пс пт пу пф пх пц пч пш пщ пъ пы пь пэ пю пя ра рб рв рг рд ре рж рз ри рй рк рл рм рн ро рп рр рс рт ру рф рх рц рч рш рщ ръ ры рь рэ рю ря са сб св сг сд се сж сз си сй ск сл см сн со сп ср сс ст су сф сх сц сч сш сщ съ сы сь сэ сю ся та тб тв тг тд те тж тз ти тй тк тл тм тн то тп тр тс тт ту тф тх тц тч тш тщ тъ ты ть тэ тю тя уа уб ув уг уд уе уж уз уи уй ук ул ум ун уо уп ур ус ут уу уф ух уц уч уш ущ уъ уы уь уэ ую уя фа фб фв фг фд фе фж фз фи фй фк фл фм фн фо фп фр фс фт фу фф фх фц фч фш фщ фъ фы фь фэ фю фя ха хб хв хг хд хе хж хз хи хй хк хл хм хн хо хп хр хс хт ху хф хх хц хч хш хщ хъ хы хь хэ хю хя ца цб цв цг цд це цж цз ци цй цк цл цм цн цо цп цр цс цт цу цф цх цц цч цш цщ цъ цы ць цэ цю ця ча чб чв чг чд че чж чз чи чй чк чл чм чн чо чп чр чс чт чу чф чх чц чч чш чщ чъ чы чь чэ чю чя ша шб шв шг шд ше шж шз ши шй шк шл шм шн шо шп шр шс шт шу шф шх шц шч шш шщ шъ шы шь шэ шю шя ща щб щв щг щд ще щж щз щи щй щк щл щм щн що щп щр щс щт щу щф щх щц щч щш щщ щъ щы щь щэ щю щя ъа ъб ъв ъг ъд ъе ъж ъз ъи ъй ък ъл ъм ън ъо ъп ър ъс ът ъу ъф ъх ъц ъч ъш ъщ ъъ ъы ъь ъэ ъю ъя ыа ыб ыв ыг ыд ые ыж ыз ыи ый ык ыл ым ын ыо ып ыр ыс ыт ыу ыф ых ыц ыч ыш ыщ ыъ ыы ыь ыэ ыю ыя ьа ьб ьв ьг ьд ье ьж ьз ьи ьй ьк ьл ьм ьн ьо ьп ьр ьс ьт ьу ьф ьх ьц ьч ьш ьщ ьъ ьы ьь ьэ ью ья эа эб эв эг эд эе эж эз эи эй эк эл эм эн эо эп эр эс эт эу эф эх эц эч эш эщ эъ эы эь ээ эю эя юа юб юв юг юд юе юж юз юи юй юк юл юм юн юо юп юр юс ют юу юф юх юц юч юш ющ юъ юы юь юэ юю юя яа яб яв яг яд яе яж яз яи яй як ял ям ян яо яп яр яс ят яу яф ях яц яч яш ящ яъ яы яь яэ яю яя',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'cite-desc' => 'Придасть таґы <nowiki><ref[ name="id"]></nowiki> і&nbsp;<nowiki><references /></nowiki> на означіня цітацій',
+	'cite_croak' => 'Нефункчна цітація; $1: $2',
+	'cite_error_key_str_invalid' => 'Внутрїшня хыба; 
+неплатный $str або $key. 
+Тото бы не мало ниґда настати.',
+	'cite_error_stack_invalid_input' => 'Внутрїшня хыба; 
+неплатный ключ стека. 
+Тото бы не мало ниґда настати.',
+	'cite_error' => 'Хыбна цітація: $1',
+	'cite_error_ref_numeric_key' => 'Хыба в таґу <code>&lt;ref&gt;</code>; назвов не сміє быти просте чісло, хоснуйте пописове означіня',
+	'cite_error_ref_no_key' => 'Хыба в таґу <code>&lt;ref&gt;</code>; порожнї едітації мусять обсяговати назву',
+	'cite_error_ref_too_many_keys' => 'Хыба в таґу <code>&lt;ref&gt;</code>; хыбны назвы, напр. є їх дуже много',
+	'cite_error_ref_no_input' => 'Хыба в таґу <code>&lt;ref&gt;</code>; цітації без назвы мусять мати властный обсяг',
+	'cite_error_references_invalid_parameters' => 'Хыба в таґу <code>&lt;references&gt;</code>;  ту не є доволеный параметер, хоснуйте <code>&lt;references /&gt;</code>',
+	'cite_error_references_invalid_parameters_group' => 'Не платный таґ <tt>&lt;references&gt;</tt>;
+є поволеный лем параметер „group“.
+Хоснуйте <tt>&lt;references /&gt;</tt> або <tt>&lt;references group="..." /&gt;</tt>.',
+	'cite_error_references_no_backlink_label' => 'Дішли означіня зворотных одказів, придайте їх пару до повідомлїня <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Дішли дефінованы значкы про ґрупу „$1“.
+Звыште їх чісло у повідомлїню <nowiki>[[MediaWiki:$2]]</nowiki>.',
+	'cite_error_references_no_text' => 'Хыба в таґу <code>&lt;ref&gt;</code>; цітації означеной <code>$1</code> не є доданый жаден текст',
+	'cite_error_included_ref' => 'Хыбить закінчіня &lt;/ref&gt; k&nbsp;таґу &lt;ref&gt;',
+	'cite_error_refs_without_references' => 'Найджена значка <code>&lt;ref&gt;</code> без одповідной значкы <code>&lt;references/&gt;</code>.',
+	'cite_error_group_refs_without_references' => 'Найджена значка <code>&lt;ref&gt;</code> про ґрупу „$1“ без одповідной значкы <code>&lt;references group="$1"/&gt;</code>.',
+	'cite_error_references_group_mismatch' => 'Значка <code>&lt;ref&gt;</code> внутрї <code>&lt;references&gt;</code> має дефіновану іншу ґрупу „$1“.',
+	'cite_error_references_missing_group' => 'Значка <code>&lt;ref&gt;</code> внутрї <code>&lt;references&gt;</code> хоснує ґрупу „$1“, котра ся в попереднїм текстї не обявує.',
+	'cite_error_references_missing_key' => 'На <code>&lt;ref&gt;</code> з іменом „$1“ дефінованый внутрї <code>&lt;references&gt;</code> не суть в попереднїм текстї жадны одказы.',
+	'cite_error_references_no_key' => 'У значкы <code>&lt;ref&gt;</code> дефінованой внутрї <code>&lt;references&gt;</code> хыбить атрібут <code>name</code>.',
+	'cite_error_empty_references_define' => 'У значкы <code>&lt;ref&gt;</code> з назвов „$1“ дефінованой внутрї <code>&lt;references&gt;</code> хыбить обсяг.',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -2523,6 +2579,8 @@ $messages['sah'] = array(
 Маны <code>&lt;references /&gt;</code>, эбэтэр <code>&lt;references group="..." /&gt;</code> туһан.',
 	'cite_error_references_no_backlink_label' => 'Төннөрөр сигэлэргэ бэлиэлэрэ тиийбэттэр.
 <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> диэн систиэмэ этиитин кэҥэтэн биэрэххэ наада',
+	'cite_error_no_link_label_group' => '«$1» бөлөх кыттааччыларын сигэлэрин бэлиэлэрэ бүппүттэр.
+Эбии манна <nowiki>[[MediaWiki:$2]]</nowiki> оҥор.',
 	'cite_error_references_no_text' => 'Сыыһа <code>&lt;ref&gt;</code> тиэк (тег);
 <code>$1</code> диэн хос быһаарыыларга аналлаах тиэкис суох',
 	'cite_error_included_ref' => '&lt;/ref&gt; диэн сабар тиэк суох эбит',
@@ -3037,6 +3095,7 @@ Sta roba no la dovarìa mai capitar.',
 solo el parametro "group" el xe permesso.
 Dòpara <code>&lt;references /&gt;</code>, o <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Etichete de rimando personalizàe esaurìe, auménteghen el nùmaro nel messagio <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Etichete esaurìe par colegamenti personalizà del grupo "$1", aumentarne el numaro nel messajo <nowiki>[[MediaWiki:$2]]</nowiki>',
 	'cite_error_references_no_text' => 'Marcator <code>&lt;ref&gt;</code> mìa valido; no xe stà indicà nissun testo par el marcator <code>$1</code>',
 	'cite_error_included_ref' => '&lt;/ref&gt; de chiusura mancante par el marcador &lt;ref&gt;',
 	'cite_error_refs_without_references' => 'Ghe xe un tag <code>&lt;ref&gt;</code>, ma no xe stà catà nissun tag <code>&lt;references/&gt;</code>',

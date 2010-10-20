@@ -621,6 +621,13 @@ $messages['lt'] = array(
 	'contrib-tracking-button' => 'Tęsti',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'contrib-tracking-button' => 'Turpināt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -813,11 +820,14 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
+	'contrib-tracking-error-text' => 'Trimiterea formularului este invalidă',
+	'contrib-tracking-submitting' => 'Trimitere la procesorul de plată...',
 	'contrib-tracking-button' => 'Continuați',
 );
 
@@ -923,11 +933,20 @@ $messages['sw'] = array(
 	'contrib-tracking-error' => 'Hitilafu',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contrib-tracking-error' => 'தவறு',
+	'contrib-tracking-button' => 'தொடரவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
 	'contrib-tracking-error' => 'పొరపాటు',
+	'contrib-tracking-continue' => 'స్వయంచాలకంగా మిమ్మల్ని దారి మళ్ళించకపోతే, పేపాల్ లో మీ విరాళాన్ని పూర్తిచెయ్యడానికి మీరే బొత్తాన్ని నొక్కండి.',
 	'contrib-tracking-button' => 'కొనసాగించు',
 );
 

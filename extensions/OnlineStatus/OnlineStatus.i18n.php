@@ -1001,14 +1001,19 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'onlinestatus-js-changed' => 'Starea dvs. a fost schimbată în „$1”',
 	'onlinestatus-subtitle-offline' => 'Acest utilizator este momentan offline',
 	'onlinestatus-subtitle-online' => 'Acest utilizator este momentan online',
 	'onlinestatus-tab' => 'Statut',
 	'onlinestatus-toggles-desc' => 'Starea dvs.:',
+	'onlinestatus-toggles-show' => 'Arată starea online pe pagina mea de utilizator',
 	'onlinestatus-toggle-offline' => 'Offline',
 	'onlinestatus-toggle-online' => 'Online',
+	'onlinestatus-pref-onlineonlogin' => 'Schimbă-mi starea la online când mă autentific',
+	'onlinestatus-pref-offlineonlogout' => 'Schimbă-mi starea la offline când mă dezautentific',
 );
 
 /** Tarandíne (Tarandíne)

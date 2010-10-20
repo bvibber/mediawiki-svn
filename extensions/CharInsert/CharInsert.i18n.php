@@ -45,6 +45,13 @@ $messages['ast'] = array(
 	'charinsert-desc' => "Permite la creación d'una caxa JavaScript pa [[MediaWiki:Edittools|enxertar carauteres non estándar]]",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'charinsert-desc' => '[[MediaWiki:Edittools|Стандарт булмаған символдарҙы ҡуйыу]] өсөн JavaScript юлын яһауға рөхсәт бирә',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

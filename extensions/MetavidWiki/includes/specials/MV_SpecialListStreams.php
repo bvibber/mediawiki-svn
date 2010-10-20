@@ -98,5 +98,3 @@ class MV_SpecialQueryStreams extends QueryPage {
 		return $rlink;
 	}
 }
-
-?>

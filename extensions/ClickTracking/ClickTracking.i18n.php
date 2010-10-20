@@ -2020,6 +2020,7 @@ $messages['rue'] = array(
 $messages['sah'] = array(
 	'clicktracking' => 'Баттааһыннары Табыгас Ситиһиитин иһинэн кэтээһин',
 	'clicktracking-desc' => 'Баттааһыны кэтээһин. Сирэйи саҥардыбат түбэлтэлэри кэтииргэ туттуллар',
+	'ct-title' => 'Кыттааччылар холбоммут клииктара',
 	'ct-event-name' => 'Түбэлтэ аата',
 	'ct-expert-header' => '"Экспертар" баттааһыннара (клик)',
 	'ct-intermediate-header' => '"Орто кыттааччылар" баттааһыннара (клик)',
@@ -2027,6 +2028,7 @@ $messages['sah'] = array(
 	'ct-total-header' => 'Баттааһын барытын ахсаана',
 	'ct-start-date' => 'Саҕаламмыт күнэ-ыйа (ССССЫЫКК)',
 	'ct-end-date' => 'Бүппүт күнэ-дьыла (ССССЫЫКК)',
+	'ct-increment-by' => 'Дааннайдар хас биирдии точкаларын көрдөрөр күннэрин ахсаана',
 	'ct-change-graph' => 'Графигы уларытыы',
 	'ct-beginner' => 'Саҥа кыттааччы',
 	'ct-intermediate' => 'Бороохтуйбут кыттааччы',
@@ -2242,6 +2244,8 @@ $messages['sw'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'ct-start-date' => 'ஆரம்பத் தேதி (YYYYMMDD)',
+	'ct-end-date' => 'முடிவுத் தேதி (YYYYMMDD)',
 	'ct-beginner' => 'ஆரம்பநிலையில் உள்ளவர்',
 	'ct-intermediate' => 'இடைப்பட்ட நிலையில் உள்ளவர்',
 	'ct-expert' => 'முதிர்ந்த நிலையில் உள்ளவர்',

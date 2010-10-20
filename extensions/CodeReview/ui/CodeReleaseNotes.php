@@ -27,7 +27,7 @@ class CodeReleaseNotes extends CodeView {
 		$this->showForm();
 		# Sanity/performance check...
 		$lastRev = $this->mRepo->getLastStoredRev();
-		if ( $this->mStartRev < ( $lastRev - 5000 ) ) {
+		if ( $this->mStartRev < ( $lastRev - 10000 ) ) {
 			global $wgOut;
 			$wgOut->addHtml( wfMsgHtml( 'code-release-badrange' ) );
 			return;

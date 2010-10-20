@@ -143,7 +143,3 @@
  		return $html . parent::getPreviewText();
  	}
  }
- 
- 
- 
-?>

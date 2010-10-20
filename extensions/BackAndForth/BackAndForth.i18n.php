@@ -106,6 +106,7 @@ $messages['avk'] = array(
  */
 $messages['az'] = array(
 	'backforth-next' => 'Sonrakı ($1)',
+	'backandforth-desc' => 'Səhifənin yuxarı küncünə əlifba sırasına görə sonrakı və əvvəlki səhifələrə keçid əlavə edir',
 	'backforth-prev' => 'Əvvəlki ($1)',
 );
 
@@ -787,6 +788,13 @@ $messages['ru'] = array(
 	'backforth-next' => 'След. ($1)',
 	'backandforth-desc' => 'Добавляет на верх страницы ссылки на следующую и предыдущую по алфавиту страницы',
 	'backforth-prev' => 'Пред. ($1)',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'backforth-next' => 'Наст. ($1)',
 );
 
 /** Yakut (Саха тыла)

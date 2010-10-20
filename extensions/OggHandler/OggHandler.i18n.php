@@ -2805,10 +2805,31 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'ogg-short-audio' => 'Звуковый файл Ogg $1, $2',
+	'ogg-short-video' => 'Відео-файл Ogg $1, $2',
+	'ogg-short-general' => 'Файл Ogg $1, $2',
+	'ogg-long-audio' => '(звуковый файл Ogg $1, довжка $2, $3)',
+	'ogg-long-video' => '(відео-файл Ogg $1, довжка $2, $4×$5 пікселів, $3)',
+	'ogg-long-multiplexed' => '(мултіплексный аудіо/відео-файл ogg, $1, довжка $2, $4×$5 пікселів, $3 вшыткого)',
+	'ogg-long-general' => '(медіа-файл Ogg, довжка $2, $3)',
+	'ogg-long-error' => '(Неправилный ogg-файл: $1)',
 	'ogg-play' => 'Заграти',
 	'ogg-pause' => 'Пауза',
 	'ogg-stop' => 'Заставити',
+	'ogg-play-video' => 'Переграти відео',
+	'ogg-play-sound' => 'Переграти звук',
+	'ogg-player-videoElement' => 'Вставляна підпора в переглядачу',
+	'ogg-player-oggPlugin' => 'Модул до переглядача',
+	'ogg-player-thumbnail' => 'Лем снимок нагляду',
+	'ogg-player-soundthumb' => 'Жадный перегравач',
+	'ogg-player-selected' => '(выбране)',
+	'ogg-use-player' => 'Выберте перегравач:',
+	'ogg-more' => 'Веце…',
 	'ogg-dismiss' => 'Заперти',
+	'ogg-download' => 'Скачати файл',
+	'ogg-desc-link' => 'О файлі',
+	'ogg-oggThumb-version' => 'OggHandler потребує oggThumb верзії $1 або новшый.',
+	'ogg-oggThumb-failed' => 'oggThumb не быв годен створити нагляд.',
 );
 
 /** Yakut (Саха тыла)
@@ -3480,6 +3501,8 @@ $messages['vec'] = array(
 	'ogg-dismiss' => 'Sara',
 	'ogg-download' => 'Descarga el file',
 	'ogg-desc-link' => 'Informazion su sto file',
+	'ogg-oggThumb-version' => 'Par OggHandler ghe vole oggThumb version $1 o sucessiva.',
+	'ogg-oggThumb-failed' => "oggThumb no'l xe stà bon de crear la miniatura.",
 );
 
 /** Veps (Vepsan kel')

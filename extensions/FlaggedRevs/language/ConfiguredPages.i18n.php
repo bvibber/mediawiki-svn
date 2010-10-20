@@ -242,6 +242,19 @@ $messages['fa'] = array(
 	'configuredpages-def-stable' => 'نسخه پایدار',
 );
 
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'configuredpages' => 'Sivut, joilla on tarkistusasetuksia',
+	'configuredpages-list' => 'Alla on lista sivuista, joilla on sivun oletusasetuksista poikkeavat hyväksymisasetukset.
+Jotkut asetukset saattavat muuttaa sitä, mikä versio näytetään lukijoille tai rajoittaa tulevia muokkauksia siltä osin, kuka voi tehdä muokkauksia, joita ei tarvitse tarkistaa.',
+	'configuredpages-none' => 'Tällä listalla ei ole sivuja.',
+	'configuredpages-config' => 'Asetukset',
+	'configuredpages-def-draft' => 'viimeisin versio',
+	'configuredpages-def-stable' => 'vakaa versio',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -285,9 +298,12 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
  * @author Amire80
  * @author DoviJ
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'configuredpages' => 'דפים עם תצורות סקירה',
 	'configuredpages-none' => 'אין דפים ברשימה זו.',
+	'configuredpages-config' => 'הגדרות',
 	'configuredpages-def-draft' => 'הגרסה האחרונה',
 	'configuredpages-def-stable' => 'גרסה יציבה',
 );
@@ -360,11 +376,14 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Aushulz
  * @author Beta16
  */
 $messages['it'] = array(
+	'configuredpages-none' => 'Non ci sono pagine in questa lista.',
 	'configuredpages-config' => 'Configurazione',
 	'configuredpages-def-draft' => 'ultima versione',
+	'configuredpages-def-stable' => 'Versione stabile',
 );
 
 /** Japanese (日本語)
@@ -470,6 +489,14 @@ Instellingen wijzigen welke versie wordt weergegeven aan lezers of beperken wie 
 	'configuredpages-def-stable' => 'gepubliceerde versie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'configuredpages-def-draft' => 'siste versjon',
+	'configuredpages-def-stable' => 'publisert versjon',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -554,9 +581,12 @@ Alguns parâmetros podem alterar a versão que é apresentada aos usuários, ou 
 
 /** Romanian (Română)
  * @author Cin
+ * @author Firilacroco
  */
 $messages['ro'] = array(
 	'configuredpages-config' => 'Configurație',
+	'configuredpages-def-draft' => 'ultima versiune',
+	'configuredpages-def-stable' => 'versiune stabilă',
 );
 
 /** Tarandíne (Tarandíne)
@@ -651,6 +681,7 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'configuredpages-none' => 'ఈ జాబితాలో పుటలు లేవు.',
 	'configuredpages-config' => 'స్వరూపణం',
+	'configuredpages-def-draft' => 'చిట్టచివరి కూర్పు',
 	'configuredpages-def-stable' => 'ప్రచురిత కూర్పు',
 );
 
@@ -693,6 +724,19 @@ $messages['uk'] = array(
 	'configuredpages-config' => 'Налаштування',
 	'configuredpages-def-draft' => 'остання версія',
 	'configuredpages-def-stable' => 'опублікована версія',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'configuredpages' => 'Pagine con configurassion de revision',
+	'configuredpages-list' => 'Qua ghe xe na lista de pagine configurà con inpostassion de aprovassion difarenti del resto del sito.
+Qualche inpostassion la podarìa canbiar quale version xe mostrà ai letori o restrenzere chi pole far modifiche che no ghe voja la verifica.',
+	'configuredpages-none' => 'No ghe xe nissuna pagina su sta lista',
+	'configuredpages-config' => 'Configurassion',
+	'configuredpages-def-draft' => 'ultima version',
+	'configuredpages-def-stable' => 'version stabile',
 );
 
 /** Vietnamese (Tiếng Việt)

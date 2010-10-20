@@ -11,36 +11,8 @@ function addEvent(obj, evType, fn){
 	} 
 }
 
-function loadPlaceholders() {
-	var fname = document.getElementById('fname');
-	var lname = document.getElementById('lname');
-	var amountOther = document.getElementById('amountOther');
-	if (fname.value == '') {
-		fname.style.color = '#999999';
-		fname.value = 'First';
-	}
-	if (lname.value == '') {
-		lname.style.color = '#999999';
-		lname.value = 'Last';
-	}
-	if (amountOther.value == '') {
-		amountOther.style.color = '#999999';
-		amountOther.value = 'Other';
-	}
-}
-
-addEvent( window, 'load', loadPlaceholders );
-
 function getIfSessionSet() {
 	sajax_do_call( 'efPayflowGatewayCheckSession', [], checkSession );
-}
-
-addEvent( window, 'load', getIfSessionSet );
-
-function checkSession( request ) {
-	if ( request.responseText == "no" ) {
-		window.location = document.location.href;
-	}
 }
 
 function clearField( field, defaultValue ) {
@@ -73,8 +45,8 @@ function validate_form( form ) {
 
 
 	// validate email address
-	var apos = form.emailAdd.value.indexOf("@");
-	var dotpos = form.emailAdd.value.lastIndexOf(".");
+	var apos = document.payment.emailAdd.value.indexOf("@");
+	var dotpos = document.payment.emailAdd.value.lastIndexOf(".");
 
 	if( apos < 1 || dotpos-apos < 2 ) {
 		output += payflowproGatewayErrorMsgEmail;
@@ -90,7 +62,8 @@ function validate_form( form ) {
 
 function submit_form( ccform ) {
 	if ( validate_form( ccform )) {
-		ccform.submit();
+		// weird hack!!!!!! for some reasondoing just ccform.submit() throws an error....
+		$j(ccform).submit();
 	}
 	return true;
 }

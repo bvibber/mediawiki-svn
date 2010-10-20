@@ -907,6 +907,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'gep-categories' => 'ವರ್ಗಗಳು',
+	'gep-addsectionbutton' => 'ಸೇರಿಸು',
 );
 
 /** Colognian (Ripoarisch)

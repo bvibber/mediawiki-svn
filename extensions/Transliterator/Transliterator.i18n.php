@@ -119,6 +119,7 @@ $messages['ca'] = array(
 	'transliterator-error-syntax' => 'Sintaxi incorrecta <code>$1</code> a [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Més de $1 {{PLURAL:$1|regla|regles}} a [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => "La regla <code>$1</code> té més {{PLURAL:$3|d'un caràcter|de $3 caràcters}} a l'esquerra a [[MediaWiki:$2]]",
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] ha de tenir com a mínim $1 {{PLURAL:$1|caràcter|caràcters}}.',
 );
 
 /** Czech (Česky)
@@ -525,6 +526,16 @@ $messages['tl'] = array(
 	'transliterator-error-rulecount' => 'Mahigit sa  $1 {{PLURAL:$1|tuntunin|mga tuntunin}} sa loob ng [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Ang tuntuning <code>$1</code> ay may mahigit sa $3 {{PLURAL:$3|panitikr|mga panitiks}} sa kaliwa sa loob ng [[MediaWiki:$2]]',
 	'transliterator-error-prefix' => 'Hindi dapat bababa sa $1 na {{PLURAL:$1|panitik|mga panitik}} ang haba ng [[MediaWiki:$2]].',
+);
+
+/** Ukrainian (Українська)
+ * @author Arturyatsko
+ */
+$messages['uk'] = array(
+	'transliterator-desc' => 'Забезпечує фукцію парсера для транслітерації, що можна налаштовувати',
+	'transliterator-error-ambiguous' => 'Неоднозначне правило <code>$1</code> в [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Невірний синтаксис <code>$1</code> в [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Більше $1 {{PLURAL:$1|правила|правил|правил}} в [[MediaWiki:$2]]',
 );
 
 /** Vietnamese (Tiếng Việt)

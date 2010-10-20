@@ -72,6 +72,14 @@ $messages['az'] = array(
 	'absenteelandlord-desc' => 'Müəyyən müddət ərzində idarəçilərin heç biri fəal olmadıqda viki layihənin verilənlər bazasını avtomatik kilidləyir',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'absenteelandlord-reason' => 'Мәғлүмәттәр базаһы хәкимдәрҙең әүҙемһеҙлеге арҡаһында үҙенән-үҙе бикләнгән.',
+	'absenteelandlord-desc' => 'Әгәр хәкимдәрҙең береһе лә ниндәйҙер ваҡыт арауығында әүҙемлек күрһәмтәһәләр, вики проекттың мәғлүмәттәр базаһын үҙенән-үҙе  бикләй',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  * @author Mucalexx
@@ -461,6 +469,14 @@ $messages['lv'] = array(
 	'absenteelandlord-desc' => 'Automātiski bloķē wiki-projekta datu bāzi, ja visi administratori kādu laiku ir neaktīvi',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'absenteelandlord-reason' => "Nohidiana ny banky angona noho tsi-havitrihan'ny mpandrindra.",
+	'absenteelandlord-desc' => "Manidy ny banky angona raha tsy mavitrika avokoa ny mpandrindra tanatin'ny fotoana iray",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */
@@ -753,6 +769,13 @@ $messages['tr'] = array(
 $messages['tt-cyrl'] = array(
 	'absenteelandlord-reason' => 'Идарәчеләр даими рәвештә эшләмәү нәтиҗәсендә мәгълүмат базасы автоматик рәвештә ябылган.',
 	'absenteelandlord-desc' => 'Билгеле бер вакыт эчендә идарәчеләр үзләренең активлыкларын күрсәтмәсә вики-проект ябыла',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'absenteelandlord-reason' => 'باشقۇرغۇچى ئاكتىپ بولمىغانلىقتىن ساندان ئۆزلۈكىدىن قۇلۇپلاندى.',
 );
 
 /** Ukrainian (Українська)

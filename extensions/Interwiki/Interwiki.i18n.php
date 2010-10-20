@@ -2020,6 +2020,7 @@ $messages['kn'] = array(
 	'interwiki_0' => 'ಇಲ್ಲ',
 	'interwiki_edit' => 'ಸಂಪಾದಿಸಿ',
 	'interwiki_reasonfield' => 'ಕಾರಣ:',
+	'interwiki_addbutton' => 'ಸೇರಿಸು',
 );
 
 /** Korean (한국어)
@@ -2378,6 +2379,8 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'interwiki_1' => 'тийм',
+	'interwiki_0' => 'үгүй',
+	'interwiki_reasonfield' => 'Шалтгаан:',
 );
 
 /** Marathi (मराठी)

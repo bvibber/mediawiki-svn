@@ -77,6 +77,13 @@ $messages['gsw'] = array(
 	'specialtalk-desc' => 'Fiegt e Diskussionsryter yy bi dr [[Special:SpecialPages|Spezialsyte]]',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'specialtalk-desc' => 'Přidawa diskusijny rajtark k [[Special:SpecialPages|specialnym stronam]]',
+);
+
 /** Interlingua (Interlingua) */
 $messages['ia'] = array(
 	'specialtalk-desc' => 'Adde un pagina de discussion a [[Special:SpecialPages|paginas special]]',
@@ -149,6 +156,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'specialtalk-desc' => 'Acrescenta um separador de discussão às [[Special:SpecialPages|páginas especiais]]',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'specialtalk-desc' => "Aggiunge 'na schede de 'ngazzaminde a le [[Special:SpecialPages|pàggene speciale]]",
 );
 
 /** Russian (Русский)

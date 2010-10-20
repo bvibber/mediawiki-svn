@@ -77,9 +77,11 @@ $messages['ar'] = array(
 
 /** Aramaic (ܐܪܡܝܐ)
  * @author Basharh
+ * @author Michaelovic
  */
 $messages['arc'] = array(
 	'randomincategory' => 'ܦܐܬܐ ܚܘܚܬܐ ܒܣܕܪܐ',
+	'randomincategory-toolbox' => 'ܡܓܠ̈ܐ ܚܘܝܚ̈ܐ',
 	'randomincategory-label' => 'ܣܕܪܐ:',
 	'randomincategory-submit' => 'ܙܠ',
 );

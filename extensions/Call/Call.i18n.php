@@ -1039,8 +1039,10 @@ Em caso de problemas, você poderá experimentar <b>{{#special:call}}/DebuG</b>"
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'call' => 'Apel',
 	'call-save-success' => 'Următorul text a fost salvat la pagina <big>[[$1]]</big> .',
 );
 
@@ -1076,6 +1078,13 @@ $messages['ru'] = array(
 	'call-save' => "Вывод этого вызова будет сохранён на страницу ''$1''.",
 	'call-save-success' => 'Следующий текст был сохранён на страницу <big>[[$1]]</big>.',
 	'call-save-failed' => 'Следующий текст НЕ был сохранён на страницу <big>[[$1]]</big>, так как данная страница уже существует.',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'call' => 'Call',
 );
 
 /** Yakut (Саха тыла)

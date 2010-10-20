@@ -46,8 +46,29 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'sphinxsearch' => 'Deursoek wiki met Sphinx',
+	'sphinxsearch-desc' => 'Vervang MediaWiki se soekenjin met [http://www.sphinxsearch.com/ Sphinx]',
+	'sphinxSearchInNamespaces' => 'Soek in naamruimtes:',
+	'sphinxSearchInCategories' => 'Soek in kategorieë:',
+	'sphinxExcludeCategories' => 'Kategorieë om uit te sluit',
+	'sphinxResultPage' => 'Resultaatbladsy:',
 	'sphinxPreviousPage' => 'Vorige',
 	'sphinxNextPage' => 'Volgende',
+	'sphinxSearchPreamble' => '{{PLURAL:$1|Resultaat|Resultate $1 tot $2 van $3 word weergegee}} vir soekopdrag "<nowiki>$4</nowiki>". Soektyd: $5 sekondes',
+	'sphinxSearchStats' => '* "$1" is $2 {{PLURAL:$2|keer|keer}} aangetref in $3 {{PLURAL:$3|dokument|dokumente}}',
+	'sphinxSearchStatsInfo' => "''Die bogenoemde getalle kan dokumente bevat wat nie gelys is as gevolg van soekopsies nie.''",
+	'sphinxSearchButton' => 'Soek',
+	'sphinxSearchEpilogue' => 'Addisionele databasistyd was $1 sekondes.',
+	'sphinxSearchDidYouMean' => 'Bedoeld u:',
+	'sphinxMatchAny' => 'ieder woord',
+	'sphinxMatchAll' => 'alle woorde',
+	'sphinxMatchTitles' => 'slegs bladsyname',
+	'sphinxLoading' => 'Besig om te laai...',
+	'sphinxPowered' => 'Aangedryf deur $1',
+	'sphinxClientFailed' => 'Dit was nie moontlik om SphinxClient te instansieer nie',
+	'sphinxSearchFailed' => 'Soekopdrag het misluk: $1',
+	'sphinxSearchWarning' => 'Waarskuwing: $1',
+	'sphinxPspellError' => 'Kom nie die "pspell"-uitbreiding laai nie.',
 );
 
 /** Gheg Albanian (Gegë)
@@ -175,6 +196,19 @@ $messages['br'] = array(
 	'sphinxSearchFailed' => "C'hwitet en deus ar reked : $1",
 	'sphinxSearchWarning' => 'Diwallit : $1',
 	'sphinxPspellError' => 'Dibosupl lañsañ astenn pspell.',
+);
+
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'sphinxsearch' => 'Pretraga wikija koristeći Sphinx',
+	'sphinxSearchInNamespaces' => 'Pretraga u imenskim prostorima:',
+	'sphinxSearchInCategories' => 'Pretraga u kategorijama',
+	'sphinxExcludeCategories' => 'Kategorije za izostaviti',
+	'sphinxPreviousPage' => 'Prethodno',
+	'sphinxNextPage' => 'Slijedeći',
+	'sphinxSearchButton' => 'Traži',
 );
 
 /** Sorani (کوردی) */
@@ -433,6 +467,19 @@ $messages['ha'] = array(
 	'sphinxSearchButton' => 'Nema',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'sphinxResultPage' => 'דף תוצאות:',
+	'sphinxPreviousPage' => 'הקודם',
+	'sphinxNextPage' => 'הבא',
+	'sphinxSearchButton' => 'חיפוש',
+	'sphinxLoading' => 'בטעינה…',
+	'sphinxPowered' => 'מופעל על גבי $1',
+	'sphinxSearchWarning' => 'אזהרה: $1',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -675,6 +722,20 @@ $messages['nl'] = array(
 	'sphinxPspellError' => 'Het was niet mogelijk de uitbreiding "pspell" aan te spreken.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'sphinxSearchInNamespaces' => 'Søk i namnerom:',
+	'sphinxSearchInCategories' => 'Søk i kategoriar:',
+	'sphinxResultPage' => 'Resultatside:',
+	'sphinxPreviousPage' => 'Førre',
+	'sphinxNextPage' => 'Neste',
+	'sphinxSearchButton' => 'Søk',
+	'sphinxLoading' => 'Lastar...',
+	'sphinxSearchWarning' => 'Åtvaring: $1',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -737,6 +798,10 @@ $messages['pl'] = array(
 	'sphinxMatchTitles' => 'dopasuj tylko do tytułów',
 	'sphinxLoading' => 'Ładowanie...',
 	'sphinxPowered' => 'Wykorzystano $1',
+	'sphinxClientFailed' => 'Nie można utworzyć instancji klienta Sfinksa.',
+	'sphinxSearchFailed' => 'Zapytanie nie powiodło się – $1',
+	'sphinxSearchWarning' => 'Uwaga – $1',
+	'sphinxPspellError' => 'Nie można wywołać rozszerzenia pspell.',
 );
 
 /** Piedmontese (Piemontèis)

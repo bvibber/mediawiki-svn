@@ -52,7 +52,6 @@ class DisabledusersPage extends QueryPage {
 	}
 
 	function getSQL() {
-		global $wgDBtype;
 		$db = wfGetDB( DB_SLAVE );
 		$user = $db->tableName( 'user' );
 

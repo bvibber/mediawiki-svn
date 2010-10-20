@@ -25,6 +25,13 @@ $messages['qqq'] = array(
 	'variablepage-navlink_text' => '{{Identical|Donate}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'variablepage-navlink_text' => 'Skenk',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -70,6 +77,15 @@ $messages['de'] = array(
 	'variablepage-desc' => 'Ermöglicht ressourcenschonende variable Weiterleitungen von Wikiseiten',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'variablepage' => 'Variebla-Paĝo',
+	'variablepage-navlink_text' => 'Donaci',
+	'variablepage-desc' => 'Malpeza alidirektado per variebla paĝo',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  * @author Translationista
@@ -80,11 +96,29 @@ $messages['es'] = array(
 	'variablepage-desc' => 'Redirección de página variable ligera',
 );
 
+/** Estonian (Eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'variablepage-navlink_text' => 'Anneta',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
 $messages['fa'] = array(
 	'variablepage' => 'صفحه متغیر',
+	'variablepage-navlink_text' => 'اهدا کنید',
+	'variablepage-desc' => 'تغییر مسیر سبک صفحه متغیر',
+);
+
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Lahjoita',
+	'variablepage-desc' => 'Muuttujasivun heikko ohjaus',
 );
 
 /** French (Français)
@@ -115,6 +149,13 @@ $messages['gsw'] = array(
 	'variablepage-desc' => 'Lychti variabli Wyterleitige',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'variablepage-navlink_text' => 'תרומה',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
@@ -124,6 +165,25 @@ $messages['hr'] = array(
 	'variablepage-desc' => 'Lako preusmjeravanje promjenjive stranice',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Darić',
+	'variablepage-desc' => 'Lutowace wariabelne dalesposrědkowanje stronow',
+);
+
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Misibacsi
+ */
+$messages['hu'] = array(
+	'variablepage' => 'VariablePage',
+	'variablepage-navlink_text' => 'Adományozás',
+	'variablepage-desc' => 'Egyszerű, változó lapátirányás',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -131,6 +191,13 @@ $messages['ia'] = array(
 	'variablepage' => 'Pagina variabile',
 	'variablepage-navlink_text' => 'Donationes',
 	'variablepage-desc' => 'Redirection variabile de paginas sin consumption excessive de ressources',
+);
+
+/** Italian (Italiano)
+ * @author Aushulz
+ */
+$messages['it'] = array(
+	'variablepage-navlink_text' => 'Fai una donazione',
 );
 
 /** Japanese (日本語)
@@ -238,6 +305,20 @@ $messages['qu'] = array(
 	'variablepage-navlink_text' => 'Qarana',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'variablepage-navlink_text' => 'Donează',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'variablepage-navlink_text' => 'Done',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -245,6 +326,21 @@ $messages['ru'] = array(
 	'variablepage' => 'ПеременнаяСтраница',
 	'variablepage-navlink_text' => 'Пожертвовать',
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
+);
+
+/** Swedish (Svenska)
+ * @author Cohan
+ */
+$messages['sv'] = array(
+	'variablepage-navlink_text' => 'Donera',
+	'variablepage-desc' => 'Lättviktsomdirigering av variabelsida',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'variablepage-navlink_text' => 'విరాళమివ్వండి',
 );
 
 /** Tagalog (Tagalog)
@@ -260,7 +356,9 @@ $messages['tl'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'variablepage' => 'VariablePage',
 	'variablepage-navlink_text' => 'Dona',
+	'variablepage-desc' => 'Redissionamento legero de pagine variabili',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -143,6 +143,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		$html .= Xml::hidden( 'token', $this->tokenToCheck );
 		// Render a survey
 		$html .= SimpleSurvey::render(
+			$mode,
 			$wgPrefSwitchSurveys[$mode]['questions']
 		);
 		// Finish out the form

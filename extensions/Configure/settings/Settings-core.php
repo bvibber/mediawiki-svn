@@ -459,7 +459,6 @@ $settings = array(
 			'wgFileStore' => 'array',
 			'wgHashedUploadDirectory' => 'bool',
 			'wgLocalFileRepo' => 'array',
-			'wgRemoteUploads' => 'bool',
 			'wgStrictFileExtensions' => 'bool',
 			'wgUploadSizeWarning' => 'int',
 			'wgMaxUploadSize' => 'int',

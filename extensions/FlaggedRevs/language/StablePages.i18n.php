@@ -252,6 +252,7 @@ $messages['eo'] = array(
 Ĉi tiaj redaktoj ne estas publikigita ĝis aŭtorita uzanto kontrolas tiujn.',
 	'stablepages-none' => 'Neniuj paĝoj estas en ĉi tiu listo',
 	'stablepages-config' => 'Konfiguro',
+	'stablepages-indef' => 'Nur maldefinita findato',
 );
 
 /** Spanish (Español)
@@ -304,13 +305,17 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Olli
  * @author Str4nd
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'stablepages' => 'Vakaat sivut',
+	'stablepages' => 'Sivut, jotka käyttävät muokkausten hyväksyntää',
+	'stablepages-list' => 'Alla on lista sivuista, joihin vain tietyt käyttäjät voivat tehdä muokkauksia, jotka eivät vaadi tarkistusta.
+Muiden käyttäjien tekemiä muokkauksia ei näytetä ennen kuin valtuutettu käyttäjä tarkistaa ne.',
 	'stablepages-none' => 'Tällä listalla ei ole sivuja.',
 	'stablepages-config' => 'Asetukset',
+	'stablepages-indef' => 'Vain ikuinen vanhentuminen',
 );
 
 /** French (Français)
@@ -717,12 +722,13 @@ Edições de outros utilizadores não são apresentadas aos leitores até que um
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'stablepages' => 'Pagini stabile',
+	'stablepages' => 'Pagini utilizând aprobarea modificării',
 	'stablepages-none' => 'Nu există pagini în această listă',
 	'stablepages-config' => 'Configurație',
 );
@@ -844,6 +850,7 @@ $messages['te'] = array(
 	'stablepages' => 'స్థిరమైన పేజీలు',
 	'stablepages-none' => 'ఈ జాబితాలో పేజీలేవీ లేవు',
 	'stablepages-config' => 'స్వరూపణం',
+	'stablepages-indef' => 'నిరవధిక కాలంచెల్లుబాటు మాత్రమే',
 );
 
 /** Turkmen (Türkmençe)
@@ -897,10 +904,11 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'stablepages' => 'Pagine stabili',
+	'stablepages' => "Pagine che dopara l'aprovassion de le modifiche",
 	'stablepages-list' => 'Sta qua la xe na lista de pagine configurà manualmente par mostrar la version publicà come contenuto de default par i letori.',
 	'stablepages-none' => 'No ghe xe nissuna pagina su sta lista',
 	'stablepages-config' => 'Configurassion',
+	'stablepages-indef' => 'Solo scadensa indefinìa',
 );
 
 /** Veps (Vepsan kel')

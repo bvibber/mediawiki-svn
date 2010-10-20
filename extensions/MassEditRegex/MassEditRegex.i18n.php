@@ -289,6 +289,8 @@ $messages['br'] = array(
 	'masseditregex-hint-headeffect' => 'Efed',
 	'masseditregex-hint-toappend' => "Ensoc'hañ un tamm testenn e fin ar bajenn - efedus evit ouzhpennañ pajennoù e rummadoù",
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
+	'masseditregex-hint-removecat' => "Lemel kuit an holl rummadoù zo en ur pennad (notit e vez lezet ar c'hrochedoù er-maez er chod wiki).
+N'haller ket lezel er-maez an talvoudennoù erlec'hiañ.",
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
 	'masseditregex-listtype-categories' => "Anv ar rummadoù (kemmañ pep pajenn a zo er rummadoù-se ; graet 'vez van eus diuzadenn an esaouenn anv)",
@@ -1311,6 +1313,7 @@ Os valores de troca não devem ser o escapados.',
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'masseditregex-matchtxt' => 'Caută:',
@@ -1321,6 +1324,7 @@ $messages['ro'] = array(
 	'masseditregex-hint-headmatch' => 'Potrivire',
 	'masseditregex-hint-headreplace' => 'Înlocuiește',
 	'masseditregex-hint-headeffect' => 'Efect',
+	'masseditregex-editfailed' => 'Editare eşuată',
 );
 
 /** Russian (Русский)
@@ -1458,6 +1462,9 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'masseditregex' => 'Maramihang pamamatnugot na ginagamitan ng pangkaraniwang mga pagsasaad',
+	'masseditregex-desc' => 'Gamitin ang pangkaraniwang mga pagsasaad sa [[Special:MassEditRegex|pagpapatnugot ng maraming mga pahina sa loob ng isang pagsasagawa]]',
+	'masseditregextext' => 'Magpasok ng isa o mahigit pang pangkaraniwang mga pagsasaad (isa bawat guhit) para sa pagtutugma, at isa o mahigit pang mga pagsasaad upang pampalit. Ang unang pagtutugma ng pagsasaad, kung matagumpay, ay papalitan ng unang pamalit na pagtutugma, at mga kasunod pa. Tingnan ang [http://php.net/manual/tl/function.preg-replace.php the PHP function preg_replace()] para sa mga detalye.',
 	'masseditregex-pagelisttxt' => 'Mga pahinang pamamatnugutan (huwag gamitin ang isang puwang na pampangalan: unlapi)',
 	'masseditregex-matchtxt' => 'Hanapin ang:',
 	'masseditregex-replacetxt' => 'Palitan ng:',

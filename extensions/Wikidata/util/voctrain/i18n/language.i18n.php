@@ -721,7 +721,7 @@ $messages['br'] = array(
 	'voctrain_list_of_questions_and_answers' => 'Roll ar goulennoù hag o respontoù',
 	'voctrain_Answer_s_' => 'Respont(où)',
 	'voctrain_logout' => 'digevreañ',
-	'voctrain_Powered_by' => 'Savet diwar',
+	'voctrain_Powered_by' => 'Enlusket gant',
 	'voctrain_Omegawiki' => 'Omegawiki',
 	'voctrain_Exercise_complete' => 'Poelladenn echu',
 	'voctrain_Exercise_terminated' => 'Poelladenn echu',
@@ -3685,6 +3685,14 @@ $messages['sv'] = array(
 	'voctrain_hide_words_in_question_language' => 'Dölj ord i frågespråket',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'För att kunna använda flera språk så sätt ett komma mellan värdena',
 	'voctrain_other' => 'annat',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'voctrain_Login' => 'புகுபதிகை',
+	'voctrain_Log_in' => 'புகுபதிகை',
 );
 
 /** Telugu (తెలుగు)

@@ -600,7 +600,7 @@ $messages['he'] = array(
 	'globalusage-no-results' => '[[:$1]] אינו בשימוש באתרי ויקי אחרים.',
 	'globalusage-on-wiki' => 'שימוש באתר $2',
 	'globalusage-of-file' => 'אתרי הוויקי השונים הבאים משתמשים בקובץ זה:',
-	'globalusage-more' => 'ראו [[{{#Special:GlobalUsage}}/$1|שימושים גלובליים נוספים]] של קובץ זה.',
+	'globalusage-more' => 'צפייה ב[[{{#Special:GlobalUsage}}/$1|שימושים גלובליים נוספים]] של קובץ זה.',
 	'globalusage-filterlocal' => 'אין להציג שימוש מקומי',
 );
 
@@ -880,7 +880,7 @@ $messages['lb'] = array(
 	'globalusage-no-results' => '[[:$1]] gëtt net op anere Wikie benotzt.',
 	'globalusage-on-wiki' => 'Benotzt op $2',
 	'globalusage-of-file' => 'Dës aner Wikie benotzen dëse Fichier:',
-	'globalusage-more' => 'Kuckt [[{{#Special:GlobalUsage}}/$1|global Notzung]] vun dësem Fichier.',
+	'globalusage-more' => 'Kuckt [[{{#Special:GlobalUsage}}/$1|globale Gebrauch]] vun dësem Fichier.',
 	'globalusage-filterlocal' => 'Déi lokal Benotzung net weisen',
 );
 
@@ -1033,6 +1033,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'globalusage' => 'Global filbruk',
@@ -1149,7 +1150,7 @@ $messages['ps'] = array(
 	'globalusage-no-results' => '[[:$1]] په نورو ويکي ګانو نه کارېږي.',
 	'globalusage-on-wiki' => 'په $2 کارونې',
 	'globalusage-of-file' => 'همدا دوتنه لاندينۍ نورې ويکي ګانې کاروي:',
-	'globalusage-more' => 'د همدې دوتنې [[{{#Special:GlobalUsage}}/$1|نورې نړېوالې کارونې]] کتل.',
+	'globalusage-more' => 'د دې دوتنې [[{{#Special:GlobalUsage}}/$1|نورې نړېوالې کارېدنې]] کتل.',
 	'globalusage-filterlocal' => 'سيمه ايزې کارونې مه ښکاره کوه',
 );
 
@@ -1268,7 +1269,12 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'globalusage' => 'Ґлобалне хоснованя файлу',
+	'globalusage-for' => 'Ґлобалне хоснованя „$1“',
 	'globalusage-ok' => 'Глядати',
+	'globalusage-on-wiki' => 'Хоснованя на $2',
+	'globalusage-of-file' => 'Тот файл хоснують такы іншы вікі:',
+	'globalusage-filterlocal' => 'Не указовати локалне хоснованя',
 );
 
 /** Yakut (Саха тыла)
@@ -1365,6 +1371,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author Lejonel
  * @author M.M.S.

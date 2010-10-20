@@ -336,6 +336,3 @@ class MetaTranslator {
   	return $this->sourceLang;
   }
 }
-    
-?>  
-  

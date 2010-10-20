@@ -419,6 +419,13 @@ $messages['pt-br'] = array(
 	'purge-desc' => 'Adiciona uma aba para purgar em todas as páginas normais, e ultrapassa a verificação de purga para utilizadores anônimos, permitindo um purga rápida da cache',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'purge' => 'curăţă',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

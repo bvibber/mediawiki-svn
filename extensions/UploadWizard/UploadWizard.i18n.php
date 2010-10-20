@@ -167,6 +167,7 @@ Please do not use wikitext or HTML here.',
  * @author EugeneZelenko
  * @author Kghbln
  * @author McDutchie
+ * @author Naudefj
  */
 $messages['qqq'] = array(
 	'mwe-upwiz-step-file' => '{{Identical|Upload}}',
@@ -187,6 +188,7 @@ $messages['qqq'] = array(
 	'mwe-upwiz-next' => '{{Identical|Next}}',
 	'mwe-upwiz-next-deeds' => '{{Identical|Next}}',
 	'mwe-upwiz-next-details' => '{{Identical|Next}}',
+	'mwe-upwiz-error-blank' => '{{Identical|Required}}',
 	'mwe-upwiz-categories' => '{{Identical|Categories}}',
 	'mwe-upwiz-categories-add' => '{{Identical|Add}}',
 );
@@ -445,6 +447,9 @@ Kemerit perzh e gouiziegezh an denelezh en ur kargañ restroù hag a c'hellfe be
 	'mwe-upwiz-details-intro' => 'Ezhomm hon eus bremañ un nebeut titouroù diazez diwar-benn ar restr.',
 	'mwe-upwiz-source-ownwork' => 'Ar {{PLURAL:$1|restr|restroù}}-mañ a zo frouezh ma labour.',
 	'mwe-upwiz-source-ownwork-assert' => "Me, $2, perc'henn war gwirioù an {{PLURAL:$1|oberenn-mañ|oberennoù-mañ}}, a ro da viken ar gwir d'an holl da implijout an {{PLURAL:$1|oberenn-mañ|oberennoù-mañ}} evit ober ne vern petra, gant ma vo meneget ac'hanon ha gant ma vo rannet al labourioù deveret hervez an hevelep termenoù.",
+	'mwe-upwiz-source-ownwork-assert-custom' => 'Me, $2, Piaouer gwirioù aozer {{PLURAL:$1||al labour|al labourioù}}-mañ, a embann dre an anzavadenn-mañ al {{PLURAL:$1|labour|labourioù}}-mañ dindan an aotre(où)-implijout da-heul :',
+	'mwe-upwiz-source-ownwork-assert-note' => "Talvezout a ra ec'h embannit ho labour dindan un aotre Kenrannañ Heñvel Creative Commons.",
+	'mwe-upwiz-source-permission' => "Roet eo bet deoc'h sklaer gant an aozer an aotre d'o enporzhiañ",
 	'mwe-upwiz-source-thirdparty' => "Ar {{PLURAL:$1|restr-mañ n'eo|restroù-mañ n'int}} ket frouezh ma labour.",
 	'mwe-upwiz-source-thirdparty-intro' => "Mar plij roit ar chomlec'h e lec'h m'hoc'h eus kavet pep restr.",
 	'mwe-upwiz-source-thirdparty-custom-multiple-intro' => "M'o deus an holl restroù ar memes mammenn, oberour hag aotre-implijout, e c'hellit krouiñ un enmont hepken evit an hollad.",
@@ -503,12 +508,21 @@ Kemerit perzh e gouiziegezh an denelezh en ur kargañ restroù hag a c'hellfe be
 	'mwe-upwiz-files-complete' => 'Echuet eo enporzhiadur ho restroù !',
 	'mwe-upwiz-tooltip-author' => 'Anv an den en deus tapet ar skeudenn, livet an daolenn, treset an dresadenn, h.a.',
 	'mwe-upwiz-tooltip-source' => "Al lec'h m'emañ o tont ar restr niverel a c'hell bezañ un URl, ul levr, pe un embannadur",
+	'mwe-upwiz-tooltip-sign' => "Gallout a rit implijout hoc'h anv wiki pe hoc'h anv gwir. 
+En daou zegouezh e vo liammet ouzh ho pajenn implijer wiki",
+	'mwe-upwiz-tooltip-title' => "Un anv berr evit ar restr.
+Gallout a rit implijout ur yezh plaen gant esaouennoù, gant ma n'ez eot ket d'al linenn. Disheñvel e ranko an titl bezañ eus an holl ditloù all zo war ar wiki-mañ.",
+	'mwe-upwiz-tooltip-description' => "Grit un tamm diverrañ eus perzhioù heverkañ al labour. 
+Evit ur skeudenn, merkit ar pep pouezusañ eus ar pezh a weler, an degouezh pe al lec'h.",
+	'mwe-upwiz-tooltip-other' => "Nep titour all a fell deoc'h emrkañ diwar-benn al labour-mañ.
+Gallout a rit implijout kodoù wiki evit skrivañ.",
 	'mwe-upwiz-tooltip-more-info' => "Gouzout hiroc'h.",
 	'mwe-upwiz-file-need-file' => 'Mar plij ouzhpennit ur restr da enporzhiañ da gentañ.',
 	'mwe-upwiz-file-need-start' => 'Mar plij klikit war ar bouton-mañ evit kregiñ gant ho enporzhiadurioù.',
 	'mwe-upwiz-file-need-complete' => "Mar plij gortozit betek ma 'vefe echuet enporzhiadur an holl restroù.",
 	'mwe-upwiz-deeds-need-deed' => "Mar plij displegit eus pelec'h 'mañ o tont ar restr{{PLURAL:$1||où}}-mañ ha penaos e c'hell al lec'hienn-mañ implijout anezh{{PLURAL:$1|añ|o}}, en ur ziuzañ unan eus an dibarzhioù.",
 	'mwe-upwiz-deeds-need-license' => 'Mar-plij dibabit un aotre-implijout.',
+	'mwe-upwiz-license-incompatible-pd' => "N'eo ket kenglotus an aotreoù Domani foran gant aotre all ebet.",
 	'mwe-upwiz-license-incompatible-cc' => "Ne c'hellit dibab nemet un doare aotre-implijout Creative Commons.",
 	'mwe-upwiz-license-show-all' => 'Implijout un aotre-implijout disheñvel.',
 	'mwe-upwiz-license-show-recommended' => 'Implijout an aotre-implijout erbedet',
@@ -517,11 +531,15 @@ Kemerit perzh e gouiziegezh an denelezh en ur kargañ restroù hag a c'hellfe be
 Arabat eo e vefe hiroc'h eget $1 {{PLURAL:$1|arouezenn|arouezenn}}.",
 	'mwe-upwiz-error-signature-too-short' => "Re verr eo ho sinadur.
 Ret eo e vefe hiroc'h eget $1 {{PLURAL:$1|arouezenn|arouezenn}}.",
-	'mwe-upwiz-error-blank' => 'Ar maezienn-mañ a zo ret.',
+	'mwe-upwiz-error-signature-bad-chars' => "Arouezennoù diaotreet zo en ho sinadur.
+Arabat ober gant kod wiki pe HTML amañ, merkit hoc'h anv implijer pe hoc'h anv gwirion traken.",
+	'mwe-upwiz-error-blank' => 'Rekis eo leuniañ ar vaezienn-mañ.',
 	'mwe-upwiz-error-too-long' => "Re hir eo ar maezienn.
 Arabat eo e vefe hiroc'h eget $1 {{PLURAL:$1|arouezenn|arouezenn}}.",
 	'mwe-upwiz-error-too-short' => "Re verr eo ar maezienn.
 Ret eo e vefe hiroc'h eget $1 {{PLURAL:$1|arouezenn|arouezenn}}.",
+	'mwe-upwiz-error-bad-chars' => 'Arouezennoù diaotreet zo er vaezienn-mañ.
+Arabat ober gant kod wiki pe HTML amañ.',
 	'mwe-upwiz-error-date' => 'Trugarez da reiñ ur deiziad reizh dindan ar stumm YYYY-MM-DD, pe dibab unan e-touez ar re kinniget e prenestr an deiziataer.',
 	'mwe-upwiz-license-cc-by-sa-3.0' => 'Creative Commons Attribution ShareAlike 3.0',
 	'mwe-upwiz-license-cc-by-3.0' => 'Creative Commons Deroadenn 3.0',
@@ -723,7 +741,7 @@ $messages['de'] = array(
 	'mwe-loading-upwiz' => 'Assistent zum Hochladen von Dateien wird geladen',
 	'mwe-upwiz-code-unknown' => 'Unbekannte Sprache',
 	'mwe-upwiz-step-file' => 'Hochladen',
-	'mwe-upwiz-step-deeds' => 'Unter neuer Lizenz veröffentlichen',
+	'mwe-upwiz-step-deeds' => 'Lizenz wählen',
 	'mwe-upwiz-step-details' => 'Beschreiben',
 	'mwe-upwiz-step-thanks' => 'Nutzen',
 	'mwe-upwiz-intro' => 'Willkommen bei Wikimedia Commons, einer Sammlung von Bildern, Klängen und Filmen, die jeder frei herunterladen und verwenden kann. Erweitere das Wissen der Menschheit durch das Hochladen von Dateien, die für pädagogische Zwecke genutzt werden könnten.',
@@ -737,7 +755,7 @@ $messages['de'] = array(
 	'mwe-upwiz-remove-upload' => 'Entferne diese Datei aus der Liste der hochzuladenden Dateien',
 	'mwe-upwiz-remove-description' => 'Entferne diese Beschreibung',
 	'mwe-upwiz-upload' => 'Hochladen',
-	'mwe-upwiz-upload-count' => '$1 {{PLURAL:$1|Datei|Dateien}} von $2 {{PLURAL:$2|Datei|Dateien}} hochgeladen',
+	'mwe-upwiz-upload-count' => '$1 von $2 {{PLURAL:$2|Datei|Dateien}} hochgeladen',
 	'mwe-upwiz-progressbar-uploading' => 'Am Hochladen',
 	'mwe-upwiz-finished' => 'Fertig!',
 	'mwe-upwiz-secs-remaining' => 'Noch $1 {{PLURAL:$1|Sekunde|Sekunden}}',
@@ -746,7 +764,7 @@ $messages['de'] = array(
 	'mwe-upwiz-deeds-intro' => 'Auf dieser Website ist es notwendig, dass du die hochgeladenen Dateien mit einer Lizenz für freie Inhalte versiehst, damit sie jeder legal für jedwede Zwecke weiternutzen kann.',
 	'mwe-upwiz-deeds-macro-prompt' => 'Versehe {{PLURAL:$1|die obige Datei|die obigen Dateien}} mit einer Lizenz:',
 	'mwe-upwiz-deeds-custom-prompt' => 'Oder:',
-	'mwe-upwiz-details-intro' => 'Nun benötigen wir ein paar Basisinformationen zu diesen Dateien.',
+	'mwe-upwiz-details-intro' => 'Nun benötigen wir einige Basisinformationen zu diesen Dateien.',
 	'mwe-upwiz-source-ownwork' => '{{PLURAL:$1|Diese Datei ist|Diese Dateien sind}} meine eigene Arbeit.',
 	'mwe-upwiz-source-ownwork-assert' => 'Ich, $2, der Rechteinhaber {{PLURAL:$1|dieses Werks|dieser Werke}}, räume hiermit jedem das Recht ein, {{PLURAL:$1|es|sie}} für jedweden Zweck nutzen zu können. Voraussetzung ist, dass ich als Rechteinhaber genannt werde und abgeleitete Werke gemäß den gleichen Lizenzbedingungen weitergegeben werden können.',
 	'mwe-upwiz-source-ownwork-assert-custom' => 'Ich, $2, der Rechteinhaber {{PLURAL:$1|dieses Werks|dieser Werke}}, veröffentliche {{PLURAL:$1|es|sie}} gemäß den folgenden Lizenz(en):',
@@ -1551,9 +1569,44 @@ $messages['ha'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author YaronSh
  */
 $messages['he'] = array(
+	'mwe-upwiz-code-unknown' => 'שפה בלתי מוכרת',
+	'mwe-upwiz-step-file' => 'העלאה',
+	'mwe-upwiz-step-details' => 'תיאור',
+	'mwe-upwiz-step-thanks' => 'שימוש',
+	'mwe-upwiz-add-file-n' => 'הוספת קובץ נוסף',
+	'mwe-upwiz-add-file-0' => 'יש ללחוץ כאן כדי להעלות קובץ',
+	'mwe-upwiz-browse' => 'עיון...',
+	'mwe-upwiz-transported' => 'אישור',
+	'mwe-upwiz-click-here' => 'יש ללחוץ כאן כדי לבחור קובץ',
 	'mwe-upwiz-deeds-custom-prompt' => 'או:',
+	'mwe-upwiz-source-thirdparty-accept' => 'אישור',
+	'mwe-upwiz-more-options' => 'עוד אפשרויות...',
+	'mwe-upwiz-fewer-options' => 'פחות אפשרויות...',
+	'mwe-upwiz-desc-add-0' => 'הוספת תיאור',
+	'mwe-upwiz-title' => 'כותרת',
+	'mwe-upwiz-categories-intro' => 'באפשרותך לסייע לאנשים למצוא את יצירותיך על ידי הוספת קטגוריות',
+	'mwe-upwiz-categories-another' => 'הוספת קטגוריות אחרות',
+	'mwe-upwiz-about-this-work' => 'על אודות יצירה זו',
+	'mwe-upwiz-date-created' => 'תאריך היצירה',
+	'mwe-upwiz-location' => 'מיקום',
+	'mwe-upwiz-about-format' => 'על אודות הקובץ',
+	'mwe-upwiz-filename-tag' => 'שם הקובץ:',
+	'mwe-upwiz-other' => 'פרטים אחרים',
+	'mwe-upwiz-showall' => 'הצגת הכול',
+	'mwe-upwiz-source' => 'מקור',
+	'mwe-upwiz-macro-edit' => 'עדכון התיאורים',
+	'mwe-upwiz-thanks-link' => 'קובץ זה זמין כעת תחת <b><tt>$1</tt></b>.',
+	'mwe-upwiz-upload-error-stashed-anyway' => 'האם להעלות בכול זאת?',
+	'mwe-upwiz-cancel' => 'ביטול',
+	'mwe-upwiz-thumbnail-more' => 'הגדלה',
+	'mwe-upwiz-overwrite' => 'החלפת הקובץ',
+	'mwe-copyright-custom' => 'התאמה אישית',
+	'mwe-upwiz-categories' => 'קטגוריות',
+	'mwe-upwiz-categories-add' => 'הוספה',
+	'mwe-upwiz-category-remove' => 'הסרת קטגוריה זו',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2380,6 +2433,14 @@ $1文字より長くしてください。',
 	'mwe-upwiz-category-remove' => 'このカテゴリを除去',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'mwe-upwiz-cancel' => 'ರದ್ದು ಮಾಡು',
+	'mwe-upwiz-categories-add' => 'ಸೇರಿಸು',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -2665,6 +2726,13 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം) */
 $messages['ml'] = array(
 	'mwe-upwiz-fileexists' => 'ഇതേ പേരിൽ ഒരു പ്രമാണം നിലവിലുണ്ട്. അതിൽ മാറ്റം വരുത്തണോ എന്നു താങ്കൾക്ക് ഉറപ്പില്ലങ്കിൽ ദയവായി <b><tt>$1</tt></b> കാണുക.',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'mwe-upwiz-cancel' => 'Цуцлах',
 );
 
 /** Dutch (Nederlands)
@@ -3895,12 +3963,14 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Dafer45
  * @author Nghtwlkr
  * @author Sertion
  */
 $messages['sv'] = array(
 	'uploadwizard' => 'Guide för uppladdning',
+	'uploadwizard-desc' => 'Uppladdningsguiden, som har utvecklats med Multimedia användbarhets stipendium',
 	'mwe-loading-upwiz' => 'Laddar guide för uppladdning',
 	'mwe-upwiz-code-unknown' => 'Okänt språk',
 	'mwe-upwiz-step-file' => 'Ladda upp',
@@ -3914,10 +3984,11 @@ $messages['sv'] = array(
 	'mwe-upwiz-transported' => 'OK',
 	'mwe-upwiz-click-here' => 'Klicka här för att välja en fil',
 	'mwe-upwiz-uploading' => 'laddar upp...',
+	'mwe-upwiz-editing' => 'redigerar...',
 	'mwe-upwiz-remove-upload' => 'Ta bort denna fil från listan med filer att ladda upp',
 	'mwe-upwiz-remove-description' => 'Ta bort denna beskrivning',
 	'mwe-upwiz-upload' => 'Ladda upp',
-	'mwe-upwiz-upload-count' => '$1 av $2 filer uppladdade',
+	'mwe-upwiz-upload-count' => '$1 av $2 {{PLURAL:$2|fil|filer}} uppladdade',
 	'mwe-upwiz-progressbar-uploading' => 'Laddar upp',
 	'mwe-upwiz-finished' => 'Klar!',
 	'mwe-upwiz-secs-remaining' => '$1 {{PLURAL:$1|sekund|sekunder}} kvar',
@@ -3928,7 +3999,7 @@ $messages['sv'] = array(
 	'mwe-upwiz-deeds-custom-prompt' => 'Eller:',
 	'mwe-upwiz-details-intro' => 'Nu behöver vi lite grundläggande information om filerna.',
 	'mwe-upwiz-source-ownwork' => '{{PLURAL:$1|Den här filen är|De här filerna är}} skapade av mig.',
-	'mwe-upwiz-source-ownwork-assert' => 'Jag, $1, upphovsrättsinnehavaren till detta arbete beviljar härmed vem som helst rätten att använda detta verk för valfritt ändamål, så länge de hänvisar till mig som upphovsman och delar material som bygger på detta under samma villkor.',
+	'mwe-upwiz-source-ownwork-assert' => 'Jag, $2, upphovsrättshavaren till {{PLURAL:$1|detta verk|dessa verk}}, ger härmed oåterkalleligen envar rätten att använda {{PLURAL:$1| detta verk|dessa verk}} för alla ändamål, så länge de attribuerar mig och delar härledda verk på samma villkor.',
 	'mwe-upwiz-source-ownwork-assert-custom' => 'Jag, $1, upphovsrättsmannen till detta verk publicerar härmed detta verk under följande licens(er):',
 	'mwe-upwiz-source-permission' => 'Deras upphovsmän gav dig uttryckligt tillstånd att ladda upp dem',
 	'mwe-upwiz-source-thirdparty' => 'Denna fil är inte mitt eget verk.',
@@ -4079,8 +4150,13 @@ $messages['te'] = array(
 	'mwe-upwiz-category-remove' => 'ఈ వర్గాన్ని తొలగించు',
 );
 
-/** Turkish (Türkçe) */
+/** Turkish (Türkçe)
+ * @author Karduelis
+ */
 $messages['tr'] = array(
+	'mwe-upwiz-upload' => 'Yükle',
+	'mwe-upwiz-title' => 'Başlık',
+	'mwe-upwiz-filename-tag' => 'Dosya adı:',
 	'mwe-upwiz-fileexists' => 'Bu isimde bir dosya zaten mevcut. Değiştirmek istediğinize emin değilseniz lütfen <b><tt>$1</tt></b> kontrol edin.',
 );
 

@@ -576,7 +576,9 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'recordadmin' => 'Administración de registros',
-	'recordadmin-desc' => 'Una [[Special:RecordAdmin|página especial]] para encontrar y editar páginas de registros usando un formulario',
+	'recordadmin-desc' => 'Búsqueda, consultas, formularios y reportes de datos de wiki derivados de parámetros de plantilla',
+	'recordadmin-specialdesc' => 'Una [[Special:RecordAdmin|página especial]] para encontrar y crear páginas de registros usando formularios asociados',
+	'recordadmin-noforms' => 'Actualmente no existen formularios definidos para usar en la búsqueda y creación de páginas',
 	'recordadmin-select' => 'Seleccionar el tipo de registro a gestionar',
 	'recordadmin-createtype' => 'Ingrese el nombre de un nuevo tipo de registro para crear',
 	'recordadmin-recordtype' => 'tipo de registro',
@@ -611,6 +613,8 @@ $messages['es'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'No existe ningún "$1"',
+	'recordadmin-edit-info' => 'Esta página contiene plantillas que tienen formularios propios, los cuales puedes completar a partir de este grupo de pestañas.',
+	'recordadmin-properties' => 'Propiedades',
 );
 
 /** Estonian (Eesti)
@@ -923,6 +927,7 @@ $messages['he'] = array(
 	'recordadmin-actions' => 'פעולות',
 	'recordadmin-needscontent' => 'הוספת תוכן...',
 	'right-recordadmin' => 'מציאת ועריכת דפי רשומות',
+	'recordadmin-properties' => 'מאפיינים',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1151,7 +1156,8 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'recordadmin' => '記録管理',
-	'recordadmin-desc' => 'フォームを用いて記録ページを検索および編集するための[[Special:RecordAdmin|特別ページ]]',
+	'recordadmin-desc' => 'テンプレート引数から派生したウィキデータの検索、クエリ、フォームと報告',
+	'recordadmin-specialdesc' => '関連したフォームを用いた、ページの検索と作成のための[[Special:RecordAdmin|特別ページ]]',
 	'recordadmin-noforms' => '現在、検索と作成のために使用されるフォームは存在しません',
 	'recordadmin-select' => '対処したい記録種別を選んでください',
 	'recordadmin-createtype' => '新規作成したい記録種別の名前を入力してください',
@@ -1187,6 +1193,8 @@ $messages['ja'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => '"$1"なし',
+	'recordadmin-edit-info' => 'このページは、このタブから入力できる自身のフォームを持つテンプレートを含んでいます',
+	'recordadmin-properties' => 'プロパティー',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1271,6 +1279,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'recordadmin-select' => 'Eraussichen',
 	'recordadmin-newsearch' => 'Nei $1 sichen',
+	'recordadmin-submit' => 'Schécken',
 	'recordadmin-alreadyexist' => 'Pardon, "$1" gëtt et schonn!',
 	'recordadmin-createsuccess' => '$1 ugeluecht',
 	'recordadmin-badtitle' => 'Schlechten Titel!',
@@ -1429,6 +1438,7 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'recordadmin' => 'Oppføringshandsaming',
@@ -1464,6 +1474,10 @@ $messages['nn'] = array(
 	'recordadmin-actions' => 'Handlingar',
 	'recordadmin-needscontent' => 'Legg til innhald',
 	'right-recordadmin' => 'Finn og gjer endringar på oppføringssider',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Ingen «$1»',
+	'recordadmin-properties' => 'Eigenskapar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1473,6 +1487,7 @@ $messages['no'] = array(
 	'recordadmin' => 'Oppføringshåndtering',
 	'recordadmin-desc' => 'Søk, spørringer, skjema og rapportering av wikidata hentet fra malparametre',
 	'recordadmin-specialdesc' => 'En [[Special:RecordAdmin|spesialside]] for å finne og opprette sider ved å bruke tilknyttede skjema',
+	'recordadmin-noforms' => 'Det er ingen skjema definert til å bruke for søking og oppretting',
 	'recordadmin-select' => 'Velg',
 	'recordadmin-createtype' => 'Skriv inn navnet på en ny oppføringstype som du vil opprette',
 	'recordadmin-recordtype' => 'oppføringstype',
@@ -1507,6 +1522,7 @@ $messages['no'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Ingen «$1»',
+	'recordadmin-edit-info' => 'Denne siden innholder maler som har sine egne skjema som du kan fylle ut fra dette fane-settet',
 	'recordadmin-properties' => 'Egenskaper',
 );
 
@@ -1788,6 +1804,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'recordadmin-select' => 'Selectați',
@@ -1798,6 +1815,7 @@ $messages['ro'] = array(
 	'recordadmin-buttoncreate' => 'Creare',
 	'recordadmin-buttonreset' => 'Resetare',
 	'recordadmin-buttonsave' => 'Salvare',
+	'recordadmin-createlink' => 'crează unul',
 	'recordadmin-viewlink' => 'vedeți',
 	'recordadmin-created' => 'Creat',
 	'recordadmin-modified' => 'Modificat',

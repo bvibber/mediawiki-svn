@@ -340,11 +340,12 @@ Morate imati odgovarajuća prava na odredišnoj wiki (uključujući pravo da ure
  * @author Aleator
  * @author Paucabot
  * @author SMP
+ * @author Toniher
  * @author Vriullop
  */
 $messages['ca'] = array(
 	'gadgets-desc' => 'Permet als usuaris personalitzar [[Special:Gadgets|ginys CSS i JavaScript]] a les seves [[Special:Preferences|preferències]]',
-	'prefs-gadgets' => 'Gadgets',
+	'prefs-gadgets' => 'Ginys',
 	'gadgets-prefstext' => "A continuació teniu una llista de ginys especials que podeu activar al vostre compte.<br />
 La majoria d'aquests ginys fan servir JavaScript, per tant l'haureu de tenir activat al vostre navegador per a que funcionin.
 Tingueu en compte que aquests ginys no tenen cap efecte sobre aquesta pàgina de preferències.
@@ -356,6 +357,14 @@ Els administradors locals poden editar els ginys disponibles fent servir [[Media
 	'gadgets-pagetext' => 'A continuació teniu una llista de ginys especials que els usuaris poden activar a la seva [[Special:Preferences|pàgina de preferències]], segons les [[MediaWiki:Gadgets-definition|seves definicions]].
 Aquesta llista permet un fàcil accés a les pàgines del sistema que defineixen la descripció i el codi de cada giny.',
 	'gadgets-uses' => 'Usa',
+	'gadgets-export' => 'Exporta',
+	'gadgets-export-title' => 'Exportació de ginys',
+	'gadgets-not-found' => "No s'ha trobat el giny «$1».",
+	'gadgets-export-text' => "Per a exportar el giny $1, feu clic al botó «{{int:gadgets-export-download}}», deseu el fitxer baixat,
+aneu a Special:Import al wiki de destinació i pugeu-lo. Llavors afegiu el següent a la pàgina MediaWiki:Gadgets-definition:
+<pre>$2</pre>
+Heu de tenir els permisos adequats en el wiki de destinació (incloent-hi els permisos per editar missatges del sistema) i s'ha d'habilitar la importació de la pujada de fitxers.",
+	'gadgets-export-download' => 'Baixa',
 );
 
 /** Chechen (Нохчийн)
@@ -558,6 +567,12 @@ Lokaj administrantoj povas redakti liston de haveblaj aldonaĵoj per [[MediaWiki
 Ĉi tiu superrigardo provizas facilan aliron al la sistemaj mesaĝoj kiuj difinas la priskribon kaj la kodon de ĉiuj aldonaĵoj.',
 	'gadgets-uses' => 'uzas',
 	'gadgets-export' => 'Eksporti',
+	'gadgets-export-title' => 'Aldonaĵo-eksportado',
+	'gadgets-not-found' => 'Aldonaĵo "$1" ne estis trovita.',
+	'gadgets-export-text' => 'Eksporti la aldonaĵon $1, klaku butonon "{{int:gadgets-export-download}}", konservu la elŝutitan dosieron,
+iru Special:Import en cela vikio kaj alŝutu ĝin. Poste aldonu la jenan signoĉenon al paĝo MediaWiki:Gadgets-definition:
+<pre>$2</pre>
+Vi nepras la taŭgajn rajtojn ĉe cela vikio (inkluzivante rajton redakti sistemajn mesaĝojn) kaj importebleco de dosieraj alŝutaĵojn devas esti ŝaltita.',
 	'gadgets-export-download' => 'Elŝuti',
 );
 
@@ -608,6 +623,7 @@ Kohalikud administraatorid saavad olemasolevaid riistu muuta [[MediaWiki:Gadgets
 	'gadgets-title' => 'Tööriistad',
 	'gadgets-pagetext' => 'Allpool on nimekiri eririistadest, mida kasutajad saavad oma [[Special:Preferences|eelistuste leheküljel]] sisse lülitada, nii nagu [[MediaWiki:Gadgets-definition|määratlustes]] määratletud. See ülevaade võimaldab kergesti ligi pääseda süsteemi sõnumilehekülgedele, milles on iga riista kirjeldus ja kood.',
 	'gadgets-uses' => 'Kasutab',
+	'gadgets-export-download' => 'Laadi alla',
 );
 
 /** Basque (Euskara)
@@ -683,6 +699,13 @@ Huomio myös, että nämä pienoisohjelmat eivät ole osa MediaWiki-ohjelmistoa 
 
 Tämä lista antaa helpon pääsyn järjestelmäviesteihin, jotka sisältävät pienoisohjelmien kuvauksen ja koodin.',
 	'gadgets-uses' => 'Käyttää',
+	'gadgets-export' => 'Vie',
+	'gadgets-export-title' => 'Pienoisohjelmien vienti',
+	'gadgets-not-found' => 'Pienoisohjelmaa $1 ei löytynyt.',
+	'gadgets-export-text' => 'Jos haluat kopioida pienoisohjelman $1 omaan wikiisi, toimi seuraavasti: Napsauta »{{int:gadgets-export-download}}» ja tallenna tiedosto. Mene oman wikisi sivulle Special:Import ja syötä tallennettu tiedosto. Lisää seuraava koodinpätkä sivulle MediaWiki:Gadgets-definition omassa wikissäsi:
+<pre>$2</pre>
+Sinulla pitää olla tarvittavat oikeudet omassa wikissäsi, kuten järjestelmäviestien muokkaus ja sivujen tuonti tiedostoja tallentamalla.',
+	'gadgets-export-download' => 'Lataa',
 );
 
 /** French (Français)
@@ -821,6 +844,7 @@ $messages['gu'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'gadgets-desc' => 'אפשרות למשתמשים לבחור [[Special:Gadgets|סקריפטים בקוד JavaScript וסגנונות בקוד CSS]] ב[[Special:Preferences|העדפות]] שלהם',
@@ -836,6 +860,9 @@ $messages['he'] = array(
 	'gadgets-pagetext' => 'זוהי רשימה של סקריפטים שמשתמשים יכולים להתקין באמצעות [[Special:Preferences|דף ההעדפות]] שלהם, כפי שהוגדרו ב[[MediaWiki:Gadgets-definition|הודעת המערכת המתאימה]].
 מכאן ניתן לגשת בקלות לדפי הודעות המערכת שמגדירים את התיאור והקוד של כל סקריפט.',
 	'gadgets-uses' => 'משתמש בדפים',
+	'gadgets-export' => 'יצוא',
+	'gadgets-export-title' => 'יצוא גאדג׳טים',
+	'gadgets-export-download' => 'הורדה',
 );
 
 /** Hindi (हिन्दी)
@@ -1508,6 +1535,7 @@ U moet de juiste rechten hebben op de doelwiki, inclusief het recht om bewerking
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Eirik
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'gadgets-desc' => 'Lèt brukarane velje eigendefinerte [[Special:Gadgets|CSS- og JavaScript-verktøy]]  i [[Special:Preferences|innstillingane sine]].',
@@ -1520,6 +1548,8 @@ Merk også at tilleggsfunksjonane ikkje er ein del av MediaWiki-programvara, og 
 	'gadgets-pagetext' => 'Under finn du ei liste over tilleggsfunksjonar som brukarane kan slå på på [[Special:Preferences|innstillingane]] sine, som oppgjevne i [[MediaWiki:Gadgets-definition|definisjonane]].
 Dette oversynet gjev enkel tilgang til systemmeldingssidene som inneheld skildringa og koden til kvar enkelt tilleggsfunksjon.',
 	'gadgets-uses' => 'Brukar',
+	'gadgets-export' => 'Eksporter',
+	'gadgets-export-download' => 'Last ned',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1725,6 +1755,7 @@ $messages['qu'] = array(
  * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'gadgets-desc' => 'Permite utilizatorilor să își aleagă [[Special:Gadgets|gadgeturi CSS și JavaScript]] în [[Special:Preferences|preferințele]] lor',
@@ -1732,6 +1763,10 @@ $messages['ro'] = array(
 	'gadgets' => 'Gadgeturi',
 	'gadgets-title' => 'Gadgeturi',
 	'gadgets-uses' => 'Utilizări',
+	'gadgets-export' => 'Exportă',
+	'gadgets-export-title' => 'Exportul de gadgeturi',
+	'gadgets-not-found' => 'Gadgetul „$1” nu a fost găsit.',
+	'gadgets-export-download' => 'Descarcă',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1751,6 +1786,13 @@ Le amministrature locale ponne cangià le gadget disponibbele ausanne le [[Media
 	'gadgets-pagetext' => "Sotte stè 'n'elenghe de gadget speciale ca l'utinde ponne abbilità sus a lore [[Special:Preferences|pàgene de le preferenze]], cumme definite da le [[MediaWiki:Gadgets-definition|definiziune]].
 Stu riepileghe prevede 'nu facile facile accesse a le pàggene de le messagge d'u sisteme ca definiscene ogne descrizione e codece de le gadget.",
 	'gadgets-uses' => 'Ause',
+	'gadgets-export' => 'Esporte',
+	'gadgets-export-title' => "Esporte 'u gadget",
+	'gadgets-not-found' => 'Gadget "$1" none acchiate.',
+	'gadgets-export-text' => "Pe esportà 'u \$1 gadget, cazze sus a 'u buttone \"{{int:gadgets-export-download}}\", reggistre 'u file scarecate, veje'a pàgene Special:Import sus 'a Uicchi de destinazione e carechele. Pò aggiunge 'a seguende pàgene MediaWiki:Gadgets-definition:
+<pre>\$2</pre>
+Tu a ave le permesse appropriate sus 'a Uicchi de destinazione (ingludenne le deritte a cangià le messagge d'u sisteme) e 'a 'mbortazione da file carecate adda essere abbilitate.",
+	'gadgets-export-download' => 'Scareche',
 );
 
 /** Russian (Русский)
@@ -1789,7 +1831,21 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'gadgets-desc' => 'Уможнює хоснователям собі выбрати [[Special:Gadgets|CSS і JavaScript додаток]] у своїм [[Special:Preferences|наставлїню]].',
+	'prefs-gadgets' => 'Додаткы',
+	'gadgets-prefstext' => 'Ниже є перегляд шпеціалный додатків, котры собі можете у своїм контї запнути.
+Тоты додаткы суть основаны переважно на JavaScript-і, также є про їх функчность треба мати запнутый JavaScript в переглядачі.
+Додаткы не суть аплікованы на тій сторінцї наставлїня.
+
+Усвідомте собі тыж, же шпеціалны додаткы не суть частёв софтверу MediaWiki і&nbsp;суть сторёваны і&nbsp;адміністрованы хоснователями той вікі.
+Локалны адміністраторы можуть управляти [[MediaWiki:Gadgets-definition|дефініції]] і&nbsp;[[Special:Gadgets|пописы]] доступных додатків.',
+	'gadgets' => 'Додаткы',
+	'gadgets-title' => 'Додаткы',
 	'gadgets-uses' => 'Хоснує',
+	'gadgets-export' => 'Експортовати',
+	'gadgets-export-title' => 'Експорт додатку',
+	'gadgets-not-found' => 'Додато „$1“ не найдженый.',
+	'gadgets-export-download' => 'Скачати',
 );
 
 /** Yakut (Саха тыла)
@@ -1910,7 +1966,9 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
+ * @author Cohan
  * @author Lejonel
  * @author M.M.S.
  */
@@ -1928,6 +1986,13 @@ Lokala administratörer kan redigera [[MediaWiki:Gadgets-definition|definitioner
 	'gadgets-pagetext' => 'Härunder finns en lista över finesser som användare kan aktivera i sina [[Special:Preferences|inställningar]], definierad av [[MediaWiki:Gadgets-definition|definieringarna]].
 Den här översikten ger enkel åtkomst till de systemmeddelanden som definierar beskrivningarna och koden för varje finess.',
 	'gadgets-uses' => 'Använder',
+	'gadgets-export' => 'Exportera',
+	'gadgets-export-title' => 'Exportera finess',
+	'gadgets-not-found' => 'Tillägg "$1" hittades inte.',
+	'gadgets-export-text' => 'För att exportera tillägg $1, klicka på "{{int:gadgets-export-download}}"-knappen, spara den nedladdade filen, gå till Special:Importera på destinationswikin och ladda upp den. Lägg sedan till följande till MediaWiki:Gadgets-definition sidan:
+<pre>$2</pre>
+Du måste ha tillräckliga behörigheter på destinationswikin (inklusive möjlighet att ändra systemmeddelanden) och att importera från filuppladningar måste vara aktiverad.',
+	'gadgets-export-download' => 'Ladda ner',
 );
 
 /** Swahili (Kiswahili) */
@@ -1964,6 +2029,8 @@ $messages['te'] = array(
 	'gadgets-title' => 'ఉపకరణాలు',
 	'gadgets-pagetext' => 'ఈ దిగువన ఉన్న ప్రత్యేక ఉపకరణాల నుండి సభ్యులు తమకు కావలసినవి తమ [[Special:Preferences|అభిరుచులు పేజీ]]లోని ఉపకరణాల టాబులో టిక్కు పెట్టి ఎనేబుల్ చేసుకొనే అవకాశం ఉన్నది. వీటిని [[MediaWiki:Gadgets-definition|ఉపకరణాల నిర్వచన]] పేజీలో నిర్వచించడం జరిగింది. ఈ చిన్న పరిచయం ఆయా ఉపకరణాల నిర్వచన మరియు కోడుకు సంబంధించిన మీడియావికీ సందేశాలకు సులువుగా చేరుకునేందుకు లింకులను సమకూర్చుతుంది.',
 	'gadgets-uses' => 'ఉపయోగించే ఫైళ్ళు',
+	'gadgets-export' => 'ఎగుమతించు',
+	'gadgets-export-download' => 'దింపుకోండి',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -2124,6 +2191,11 @@ Nota anca che sti acessori speciali no i fa parte del software MediaWiki e i vie
 Sta panoramica la fornisse un comodo mecanismo par accédar ai messagi de sistema nei quali xe definìo la descrizion e el codice de ciascun acessorio.",
 	'gadgets-uses' => 'Dopara',
 	'gadgets-export' => 'Esporta',
+	'gadgets-export-title' => 'Esporta acessorio',
+	'gadgets-not-found' => 'Acessorio "$1" mia catà.',
+	'gadgets-export-text' => 'Par esportar el gadget $1, struca "{{int:gadgets-export-download}}", salva el file, va su Special:Import de la wiki de destinassion e carichelo. Dopo zonta sta roba qua su MediaWiki:Gadgets-definition:
+<pre>$2</pre>
+Te serve i parmessi su la wiki de destinassion (compreso quelo de modificar i messaji de sistema) e l\'inportassion dei file la deve essar ativà.',
 	'gadgets-export-download' => 'Descarga',
 );
 

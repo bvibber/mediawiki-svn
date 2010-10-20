@@ -290,6 +290,7 @@ Els Editors són usuaris experimentats que poden validar les revisions de les p�
 	'validationstatistics-stable' => "S'ha revisat",
 	'validationstatistics-latest' => 'Sincronitzat',
 	'validationstatistics-synced' => 'Sincronitzat/Revisat',
+	'validationstatistics-user' => 'Usuari',
 );
 
 /** Sorani (کوردی) */
@@ -459,7 +460,14 @@ $messages['eo'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}''' nun havas '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|uzanton|uzantojn}} kun rajto [[{{MediaWiki:Validationpage}}|Redaktanto]].
 
 Redaktantoj estas daŭraj uzantoj kiuj povas iufoje kontroli paĝojn.",
-	'validationstatistics-table' => "Statistikoj por ĉiu nomspaco estas jene montritaj, ''krom'' alidirektiloj.",
+	'validationstatistics-lastupdate' => "''La jenaj datenoj estis laste ĝisdatigitaj je $1, $2.''",
+	'validationstatistics-pndtime' => "Redaktoj kontrolita de establitaj uzantoj estas konsiderataj kiel kontrolitaj.
+
+La averaĝa atendo-tempo por [[Special:OldReviewedPages|paĝoj kun kontrolendaj redaktoj]] estas '''$1'''.
+Ĉi tiuj paĝoj estas konsiderataj ''malfreŝaj''. Ankaŭ, paĝoj estas konsiderataj kiel ''sinkrona'' se estas neniom da kontrolendaj redaktoj.",
+	'validationstatistics-revtime' => "La averaĝa atendo por redaktoj de ''ne-ensalutitaj uzantoj'' por esti kontrolita estas '''$1'''; la mediano estas '''$2'''.
+$3",
+	'validationstatistics-table' => "Jen statistikoj por paĝkontrolado por ĉiu nomspaco, ''eksklusivante'' alidirektilojn.",
 	'validationstatistics-ns' => 'Nomspaco',
 	'validationstatistics-total' => 'Paĝoj',
 	'validationstatistics-stable' => 'Paĝoj kun almenaŭ unu revizio',
@@ -575,15 +583,25 @@ $3",
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Olli
  * @author Silvonen
  * @author Str4nd
  * @author Vililikku
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'validationstatistics' => 'Validointitilastot',
+	'validationstatistics' => 'Sivun tarkistustilastot',
+	'validationstatistics-users' => "Sivustolla '''{{SITENAME}}''' on tällä hetkellä '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|käyttäjä, jolla|käyttäjää, joilla}} on [[{{MediaWiki:Validationpage}}|tarkistajan]] oikeudet.
+
+Tarkistajat ovat käyttäjiä, jotka voivat tarkistaa sivuille tehtyjä muutoksia.",
 	'validationstatistics-lastupdate' => "''Seuraavat tiedot päivitettiin viimeksi $1 kello $2.''",
-	'validationstatistics-table' => "Alla on tilastot kaikille nimiavaruuksille ''lukuun ottamatta'' ohjaussivuja.",
+	'validationstatistics-pndtime' => "Oikeutettujen käyttäjien tarkistamat muokkaukset ovat tarkistettuja.
+
+Keskimääräinen tarkistusaika [[Special:OldReviewedPages|sivuille, joilla on odottavia muokkauksia]] on '''$1'''.
+Nämä sivut tulkitaan ''vanhentuneiksi''. Sivut taas tulkitaan ''ajantasaisiksi'', jos odottavia muutoksia ei ole.",
+	'validationstatistics-revtime' => "Keskimääräinen odotusaika ''sisäänkirjautumattomien käyttäjien'' muokkauksille on '''$1'''; tilasto on '''$2'''.
+$3",
+	'validationstatistics-table' => "Alla on tilastot kaikkien nimiavaruuksien tarkistuksille ''lukuun ottamatta'' ohjaussivuja.",
 	'validationstatistics-ns' => 'Nimiavaruus',
 	'validationstatistics-total' => 'Sivut',
 	'validationstatistics-stable' => 'Arvioitu',
@@ -759,6 +777,7 @@ $messages['he'] = array(
 	'validationstatistics-users' => "ב'''{{grammar:תחילית|{{SITENAME}}}}''' יש כרגע {{PLURAL:$1|משתמש '''[[Special:ListUsers/editor|אחד]]'''|'''[[Special:ListUsers/editor|$1]]''' משתמשים}} עם הרשאת [[{{MediaWiki:Validationpage}}|עורך]].
 
 עורכים הם משתמשים ותיקים שיכולים לבצע בדיקה מהירה של גרסאות ושל דפים.",
+	'validationstatistics-lastupdate' => "''הנתונים הבאים עודכנו לאחרונה ב־$1 בשעה $2.''",
 	'validationstatistics-table' => "סטטיסטיקות לכל מרחב שם מוצגות להלן, תוך '''התעלמות''' מדפי הפניה.",
 	'validationstatistics-ns' => 'מרחב שם',
 	'validationstatistics-total' => 'דפים',
@@ -849,6 +868,13 @@ $messages['hu'] = array(
 	'validationstatistics-users' => "A(z) '''{{SITENAME}}''' wikinek jelenleg '''[[Special:ListUsers/editor|$1]]''' [[{{MediaWiki:Validationpage}}|járőrjoggal]]  rendelkező szerkesztője van.
 
 A járőrök olyan tapasztalt szerkesztők, akik ellenőrizhetik a lapok változatait.",
+	'validationstatistics-lastupdate' => "''Az alábbi adatokat legutóbb $1 $2-kor frissítették.''",
+	'validationstatistics-pndtime' => "Azok a szerkesztések, melyeket a gyakorlottabb szerkesztők végeznek, ellenőrzöttnek minősülnek.
+
+[[Special:OldReviewedPages|A nem ellenőrzött szerkesztésekkel rendelkező lapok]] átlagos késleltetési ideje '''$1'''.
+Ezek a lapok ''elavultnak'' számítanak. A lapok akkor számítanak „frissnek”, ha nincsenek ellenőrzésre váró szerkesztéseik.",
+	'validationstatistics-revtime' => "A ''nem bejelentkezett szerkesztőknek'' '''$1''' az átlagos várakozási idő az ellenőrzésig; a medián '''$2''''.
+$3",
 	'validationstatistics-table' => "Ezen az oldalon a névterekre bontott ellenőrzési statisztika látható, az átirányítások ''nélkül''.",
 	'validationstatistics-ns' => 'Névtér',
 	'validationstatistics-total' => 'Lapok',
@@ -1526,10 +1552,10 @@ $3",
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'validationstatistics-users' => "'''{{SITENAME}}''' are în prezent '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|editare]]
-și '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|recenzie]].
+	'validationstatistics-users' => "'''{{SITENAME}}''' are în prezent '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|editare]].
 
 Editorii și recenzorii sunt utilizatori stabiliți care pot verifica modificările din pagini.",
 	'validationstatistics-ns' => 'Spațiu de nume',
@@ -1538,6 +1564,7 @@ Editorii și recenzorii sunt utilizatori stabiliți care pot verifica modificăr
 	'validationstatistics-latest' => 'Sincronizată',
 	'validationstatistics-synced' => 'Sincronizată/Revizualizată',
 	'validationstatistics-old' => 'Învechită',
+	'validationstatistics-utable' => 'Mai jos este lista cu top 5 recenzenţi în ultima oră.',
 	'validationstatistics-user' => 'Utilizator',
 	'validationstatistics-reviews' => 'Recenzii',
 );
@@ -1921,17 +1948,24 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'validationstatistics' => 'Statìsteghe de validassion',
+	'validationstatistics' => 'Statìsteghe de revision',
 	'validationstatistics-users' => "'''{{SITENAME}}''' el gà atualmente '''[[Special:ListUsers/editor|$1]]'''  {{PLURAL:$1|utente|utenti}} con diriti de [[{{MediaWiki:Validationpage}}|revisor]].
 
 I revisori i xe utenti che pode verificar le revision de le pagine.",
-	'validationstatistics-table' => "Qua soto se cata le statìsteghe par ogni namespace, ''escluse'' le pagine de redirect.",
+	'validationstatistics-lastupdate' => "''Sti dati i xe agiornà al $1 a le $2.''",
+	'validationstatistics-pndtime' => "Le modifiche che xe stà controlà da utenti afidabili le xe considerà verificà.
+
+El ritardo medio par [[Special:OldReviewedPages|le pagine con canbiamenti in atesa]] el xe '''$1'''.
+Ste pagine le xe considerà ''obsolete''. Le se considera ''agiornà'' se no ghe xe canbiamenti in atesa.",
+	'validationstatistics-revtime' => "El tenpo medio da spetare par controlar le modifiche fate da ''utenti anonimi'' xe '''$1'''; la media xe '''$2'''.",
+	'validationstatistics-table' => "Qua soto se cata le statìsteghe de revision par ogni namespace, ''escluse'' le pagine de redirect.",
 	'validationstatistics-ns' => 'Namespace',
 	'validationstatistics-total' => 'Pagine',
 	'validationstatistics-stable' => 'Ricontrolà',
 	'validationstatistics-latest' => 'Sincronizà',
 	'validationstatistics-synced' => 'Sincronizà/Ricontrolà',
 	'validationstatistics-old' => 'Mia ajornà',
+	'validationstatistics-utable' => "Sto qua xe l'elenco dei primi 5 revisori ne l'ultima ora.",
 	'validationstatistics-user' => 'Utente',
 	'validationstatistics-reviews' => 'Revisioni',
 );

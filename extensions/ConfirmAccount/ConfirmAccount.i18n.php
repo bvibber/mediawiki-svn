@@ -1464,6 +1464,15 @@ $messages['br'] = array(
 	'requestaccount-submit' => 'Goulenn ur gont implijer',
 	'request-account-econf' => "Kadarnaet eo bet ho chomlec'h postel ha meneget e vo evel m'emañ en ho koulenn kont.",
 	'requestaccount-email-subj' => "Gwiriañ ar chomlec'h postel evit {{SITENAME}}",
+	'requestaccount-email-body' => "Unan bennak, c'hwi moarvat, gant ar chomlec'h IP \$1, en deus goulennet sevel ur gont \"\$2\" gant ar chomlec'h postel-mañ war {{SITENAME}}.
+
+Evit kadarnaat eo deoc'h ar gont-se war {{SITENAME}} e gwirionez, digorit al liamm-mañ en ho merdeer :
+
+\$3
+
+Mard eo bet krouet ar gont e vo kaset ar ger-tremen dre bostel deoc'h hepken
+Ma n'eo ekt gwir, *arabat* deoc'h implijout al liamm.
+Mont a raio ar c'hod gwiriañ-mañ d'e dermen d'an  \$4.",
 	'requestaccount-email-subj-admin' => 'Goulenn kont evit {{SITENAME}}',
 	'requestaccount-email-body-admin' => "« $1 » en deus goulennet ur gont ha zo o c'hortoz ar c'hadarnadur.
 
@@ -1618,6 +1627,7 @@ Jednom podnesen zahtjev koji se odobri ili odbije će se ukloniti sa ovog spiska
 	'confirmaccount-showopen' => 'otvoreni zahtjevi',
 	'confirmaccount-showrej' => 'odbijeni zahtjevi',
 	'confirmaccount-showexp' => 'zahtijevi istekli',
+	'confirmaccount-review' => 'Pregled',
 	'confirmaccount-all' => '(pokaži sve na čekanju)',
 	'confirmaccount-type' => 'Red:',
 	'confirmaccount-leg-user' => 'Korisnički račun',
@@ -1641,6 +1651,7 @@ Jednom podnesen zahtjev koji se odobri ili odbije će se ukloniti sa ovog spiska
 	'confirmaccount-deny' => 'Odbij (skini sa spiska)',
 	'confirmaccount-reason' => 'Komentar (bit će uključen u e-mail):',
 	'confirmaccount-ip' => 'IP adresa:',
+	'confirmaccount-legend' => 'Potvrdi/odbij ovaj račun',
 	'confirmaccount-submit' => 'Potvrdi',
 	'confirmaccount-summary' => 'Pravljenje korisničke stranice sa biografijom novog korisnika.',
 	'confirmaccount-wsum' => 'Dobrodošli!',
@@ -6353,16 +6364,16 @@ $messages['lb'] = array(
 	'requestaccount' => 'Benotzerkont ufroen',
 	'requestaccount-text' => "'''Fëllt dëse Formulaire aus a schéckt e fort fir e Benotzerkont unzefroen'''.
 
-Passt op datt Dir d'éischt d'[[{{MediaWiki:Requestaccount-page}}|Conditioune vun der Notzung]] gelies hutt éier Dir e Benotzerkont ufrot.
+Passt op datt Dir d'éischt d'[[{{MediaWiki:Requestaccount-page}}|Conditioune vum Benotze]] gelies hutt éier Dir e Benotzerkont ufrot.
 
-Wann Äre Benotzekont ugeholl as, kritt Dir eng Informatioun per E-Mail an Dir kënnt Äre Benotzerkont  [[Special:UserLogin|benotzen]].",
+Wann Äre Benotzerkont ugeholl as, kritt Dir eng Informatioun per E-Mail an Dir kënnt Äre Benotzerkont  [[Special:UserLogin|benotzen]].",
 	'requestaccount-page' => '{{ns:project}}:Notzungsbedingungen',
 	'requestaccount-dup' => "'''Opgepasst: Dir sidd scho matt engem registréierte Benotzerkont ugemellt.'''",
 	'requestaccount-leg-user' => 'Benotzerkont',
 	'requestaccount-leg-areas' => 'Haaptinteressen',
 	'requestaccount-leg-person' => 'Perséinlech Informatiounen',
 	'requestaccount-leg-other' => 'Aner Informatiounen',
-	'requestaccount-leg-tos' => 'Conditioune vun der Notzung',
+	'requestaccount-leg-tos' => 'Conditioune vum Gebrauch',
 	'requestaccount-acc-text' => 'Esoubal wéi Dir dës Ufro geschéckt hutt kritt Dir e Confirmatiouns-Message op Är E-Mailadress.
 Äntwert w.e.g. duerch klicken op de Confirmatiouns-Link deen an där Mail drasteet.
 Och Äert Passwuert gëtt Iech gemailt esoubal wéi Äre Benotzerkonnt ugeluecht gouf.',
@@ -8946,6 +8957,8 @@ $messages['rm'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'requestaccount' => 'Solicitare deschidere cont',
@@ -9008,6 +9021,7 @@ Adresa de e-mail a fost confirmată. Poți confirma cererea aici "$2".',
 	'confirmaccount-email' => 'E-mail:',
 	'confirmaccount-reqtype' => 'Poziție:',
 	'confirmaccount-pos-0' => 'autor',
+	'confirmaccount-pos-1' => 'editor',
 	'confirmaccount-bio' => 'Biografie:',
 	'confirmaccount-attach' => 'CV:',
 	'confirmaccount-notes' => 'Note adiționale:',
@@ -9021,7 +9035,22 @@ Adresa de e-mail a fost confirmată. Poți confirma cererea aici "$2".',
 	'confirmaccount-reason' => 'Comentariu (va fi inclus în e-mail):',
 	'confirmaccount-ip' => 'Adresă IP:',
 	'confirmaccount-submit' => 'Confirmă',
+	'confirmaccount-needreason' => 'Trebuie să furnizați un motiv în caseta de comentarii de mai jos.',
+	'confirmaccount-welc' => "'''Bun venit pe ''{{SITENAME}}''!'''
+Sperăm că veţi contribui mult şi bine.
+Veţi dori probabil să citiţi [[{{MediaWiki:Helppage}}|paginile de ajutor]].
+Din nou, bun venit şi distrează-te!",
 	'confirmaccount-wsum' => 'Bun venit!',
+	'confirmaccount-email-body2' => 'Cererea dvs. pentru un cont a fost aprobată pe {{SITENAME}}.
+
+Numele contului: $1
+
+Parola: $2
+
+$3
+
+Din motive de securitate va trebui să vă schimbaţi parola la prima autentificare.
+Pentru a vă autentifica, vă rugăm mergeţi aici: {{fullurl:Special:UserLogin}}.',
 	'usercredentials-user' => 'Nume de utilizator:',
 	'usercredentials-leg-user' => 'Cont de utilizator',
 	'usercredentials-leg-areas' => 'Arii principale de interes',
@@ -10163,11 +10192,37 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'requestaccount-leg-user' => 'பயனர் கணக்கு',
+	'requestaccount-leg-other' => 'மற்ற தகவல்',
+	'requestaccount-real' => 'உண்மைப் பெயர்:',
+	'requestaccount-email' => 'மின்னஞ்சல் முகவரி:',
+	'requestaccount-reqtype' => 'இடம்:',
+	'requestaccount-level-0' => 'ஆசிரியர்',
+	'requestaccount-level-1' => 'பதிப்பாசிரியர்',
+	'confirmaccount-real-q' => 'பெயர்',
+	'confirmaccount-email-q' => 'மின்னஞ்சல்',
+	'confirmaccount-review' => 'மதிப்பிடு',
+	'confirmaccount-type' => 'வரிசை:',
+	'confirmaccount-leg-user' => 'பயனர் கணக்கு',
 	'confirmaccount-name' => 'பயனர் பெயர்',
+	'confirmaccount-real' => 'பெயர்:',
+	'confirmaccount-email' => 'மின்னஞ்சல்:',
+	'confirmaccount-reqtype' => 'இடம்:',
+	'confirmaccount-pos-0' => 'ஆசிரியர்',
+	'confirmaccount-pos-1' => 'பதிப்பாசிரியர்',
+	'confirmaccount-noreason' => '(எதுவுமில்லை)',
+	'confirmaccount-ip' => 'ஐ.பி. முகவரி:',
+	'confirmaccount-submit' => 'உறுதிசெய்',
+	'confirmaccount-wsum' => 'வருக ! வணக்கம் !',
 	'usercredentials-user' => 'பயனர் பெயர்:',
+	'usercredentials-leg-user' => 'பயனர் கணக்கு',
+	'usercredentials-email' => 'மின்னஞ்சல்:',
+	'usercredentials-real' => 'உண்மைப் பெயர்:',
+	'usercredentials-member' => 'உரிமைகள்:',
 );
 
 /** Telugu (తెలుగు)
@@ -11540,15 +11595,16 @@ $2
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenxiaoqino
+ * @author Kuailong
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'requestaccount' => '请求账户',
-	'requestaccount-text' => "'''完成并递交以下的表格去请求一个用户账户'''。
+	'requestaccount-text' => "'''完成并递交下述表格，以请求用户账户'''。
 
-	请确认您在请求一个账户之前，先读过[[{{MediaWiki:Requestaccount-page}}|服务细则]]。
+请确认您在请求账户之前，预先阅读过[[{{MediaWiki:Requestaccount-page}}|服务细则]]。
 
-	一旦该账户获得批准，您将会收到一个电邮通知信息，该账户就可以在[[Special:Userlogin]]中使用。",
+一旦该账户获得批准，您将会收到一个电邮通知信息，该账户就可以在[[Special:UserLogin|登录页面]]中使用。",
 	'requestaccount-page' => '{{ns:project}}:服务条款',
 	'requestaccount-dup' => "'''注意: 您已经登入成一个已注册的账户。'''",
 	'requestaccount-leg-user' => '用户账户',
@@ -11669,15 +11725,18 @@ $3
 	'confirmaccount-spam' => '垃圾（请不要发送电子邮件）',
 	'confirmaccount-reason' => '注解 （在电邮中使用）:',
 	'confirmaccount-ip' => ' IP地址：',
+	'confirmaccount-legend' => '批准/拒绝这个帐号',
 	'confirmaccount-submit' => '确认',
 	'confirmaccount-needreason' => '您必须在下方的评论栏阐述您的理由。',
 	'confirmaccount-canthold' => '该请求已被挂起，或已被删除。',
 	'confirmaccount-acc' => '账户请求已经成功确认；已经创建一个新的用户帐号[[User:$1]]。',
 	'confirmaccount-rej' => '账户请求已经成功拒绝。',
+	'confirmaccount-viewing' => '（当前正由[[User:$1|$1]]浏览）',
 	'confirmaccount-summary' => '正在创建一个新用户拥有传记的用户页面。',
-	'confirmaccount-welc' => "'''欢迎来到''{{SITENAME}}''！'''我们希望您会作出更多更好的贡献。
-	您可能会去参看[[{{MediaWiki:Helppage}}|开始]]。再一次欢迎你！
-	[[User:FuzzyBot|FuzzyBot]] 11:50, 3 September 2008 （UTC）",
+	'confirmaccount-welc' => "'''欢迎来到''{{SITENAME}}''！'''
+我们希望您会作出更多更好的贡献。
+您可能想先阅读一下[[{{MediaWiki:Helppage}}|帮助页面]]。
+再次欢迎您，祝您愉快！",
 	'confirmaccount-wsum' => '欢迎！',
 	'confirmaccount-email-subj' => '{{SITENAME}}账户请求',
 	'confirmaccount-email-body' => '您请求的账户已经在{{SITENAME}}中批准。

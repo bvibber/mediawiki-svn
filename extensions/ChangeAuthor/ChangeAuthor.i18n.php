@@ -1395,6 +1395,13 @@ Es doe dees foutmeljing jedere kier weer zuus, is de database allezelaeve kepot.
 	'right-changeauthor' => "De outäör van 'n bewirking aanpasse",
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'changeauthor-changeauthors-single' => 'Mainīt autoru',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1734,6 +1741,7 @@ Se sto eror-sì a continua a ess-ie, a peul esse che ël database a sia rompù."
  */
 $messages['ps'] = array(
 	'changeauthor-pagenameform-go' => 'ورځه',
+	'changeauthor-comment' => 'تبصره:',
 	'changeauthor-nosuchtitle' => 'داسې هېڅ کوم مخ نشته چې نوم يې "$1" وي.',
 	'changeauthor-success' => 'ستاسو غوښتنه په برياليتوب سره پلي شوه.',
 );
@@ -1837,8 +1845,12 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'changeauthor' => 'Schimbă autorul reviziei',
+	'changeauthor-title' => 'Schimbă autorul unei revizii',
+	'changeauthor-search-box' => 'Caută revizii',
 	'changeauthor-pagename-or-revid' => 'Numele paginii sau ID-ul reviziei:',
 	'changeauthor-pagenameform-go' => 'Du-te',
 	'changeauthor-comment' => 'Comentariu:',
@@ -1849,6 +1861,7 @@ $messages['ro'] = array(
 	'changeauthor-revview' => 'Versiunea #$1 din $2',
 	'changeauthor-nosuchtitle' => 'Nu există o pagină numită "$1".',
 	'changeauthor-success' => 'Cererea ta a fost procesată cu succes.',
+	'right-changeauthor' => 'Schimbă autorul unei revizii',
 );
 
 /** Tarandíne (Tarandíne)

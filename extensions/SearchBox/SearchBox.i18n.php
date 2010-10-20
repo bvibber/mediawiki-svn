@@ -479,6 +479,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'searchbox-search' => 'ಹುಡುಕು',
 	'searchbox-go' => 'ಹೋಗು',
+	'searchbox-namespaces' => 'ನಾಮವರ್ಗಗಳು:',
 );
 
 /** Colognian (Ripoarisch)
@@ -701,10 +702,11 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'searchbox-search' => 'Căutare',
-	'searchbox-go' => 'Mergeți',
+	'searchbox-go' => 'Du-te',
 	'searchbox-namespaces' => 'Spații de nume:',
 );
 

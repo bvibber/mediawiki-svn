@@ -79,15 +79,14 @@ class WikilogUtils
 		$parserOpt->setTidy( true );
 		if ( $feed ) {
 			$parserOpt->setEditSection( false );
+			$parserOpt->addExtraKey( "WikilogFeed" );
 		} else {
 			$parserOpt->enableLimitReport();
 		}
 
 		if ( $useParserCache ) {
 			# Select parser cache according to the $feed flag.
-			$parserCache = $feed
-				? WikilogParserCache::singleton()
-				: ParserCache::singleton();
+			$parserCache = ParserCache::singleton();
 
 			# Look for the parsed article output in the parser cache.
 			$parserOutput = $parserCache->get( $article, $parserOpt );

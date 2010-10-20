@@ -95,7 +95,7 @@ class SimpleSecurity {
 	 */
 	public function ifGroup( &$parser, $groups, $then, $else = '' ) {
 		global $wgUser;
-		$intersection = array_intersect( array_map( 'strtolower', split( ',', $groups ) ), $wgUser->getEffectiveGroups() );
+		$intersection = array_intersect( array_map( 'strtolower', explode( ',', $groups ) ), $wgUser->getEffectiveGroups() );
 		return count( $intersection ) > 0 ? $then : $else;
 	}
 

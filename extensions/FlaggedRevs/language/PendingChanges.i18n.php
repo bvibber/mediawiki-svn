@@ -486,7 +486,7 @@ $messages['eo'] = array(
 	'pendingchanges-recent' => '(malpli ol 1 horo)',
 	'pendingchanges-category' => 'Kategorio:',
 	'pendingchanges-onwatchlist' => 'Paĝoj en mia atentaro',
-	'pendingchanges-stable' => 'reviziita',
+	'pendingchanges-stable' => 'Stabila versio estas defaŭlta',
 	'pendingchanges-diff' => 'kontroli',
 	'pendingchanges-size' => 'Maksimuma ŝanĝo de bitokoj:',
 	'pendingchanges-unwatched' => '(malatentita)',
@@ -591,6 +591,7 @@ $messages['fa'] = array(
  * @author Jaakonam
  * @author Mobe
  * @author Nike
+ * @author Olli
  * @author ZeiP
  */
 $messages['fi'] = array(
@@ -602,7 +603,8 @@ $messages['fi'] = array(
 	'pendingchanges-days' => '($1 {{PLURAL:$1|päivä|päivää}})',
 	'pendingchanges-recent' => '(alle 1 tunti)',
 	'pendingchanges-category' => 'Luokka:',
-	'pendingchanges-stable' => 'Vakaa',
+	'pendingchanges-onwatchlist' => 'Tarkkailulistan sivut',
+	'pendingchanges-stable' => 'Vakaa versio on oletus',
 	'pendingchanges-diff' => 'arvioi',
 	'pendingchanges-size' => 'Enimmäismuutos (tavua):',
 	'pendingchanges-unwatched' => '(tarkkailematon)',
@@ -726,6 +728,7 @@ $messages['gsw'] = array(
 /** Hebrew (עברית)
  * @author DoviJ
  * @author Rotemliss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'pendingchanges' => 'דפים עם שינויים ממתינים',
@@ -736,7 +739,8 @@ $messages['he'] = array(
 	'pendingchanges-days' => '({{PLURAL:$1|יום|$1 ימים|יומיים}})',
 	'pendingchanges-recent' => 'פחות משעה',
 	'pendingchanges-category' => 'קטגוריה:',
-	'pendingchanges-stable' => 'נצפה',
+	'pendingchanges-onwatchlist' => 'דפים ברשימת המעקב שלי',
+	'pendingchanges-stable' => 'הגרסה היציבה היא בררת המחדל',
 	'pendingchanges-diff' => 'בדיקה',
 	'pendingchanges-size' => 'השינוי המירבי בגודל בבתים:',
 	'pendingchanges-unwatched' => '(לא במעקב)',
@@ -1590,6 +1594,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Cohan
  * @author M.M.S.
  * @author Najami
  * @author Per
@@ -1604,7 +1609,8 @@ $messages['sv'] = array(
 	'pendingchanges-days' => '($1 {{PLURAL:$1|dag|dagar}})',
 	'pendingchanges-recent' => '(mindre än 1 timme)',
 	'pendingchanges-category' => 'Kategori:',
-	'pendingchanges-stable' => 'synad',
+	'pendingchanges-onwatchlist' => 'Sidor på min bevakningslista',
+	'pendingchanges-stable' => 'Stabil version är standard',
 	'pendingchanges-diff' => 'granska',
 	'pendingchanges-size' => 'Maximal storleksändring i byte:',
 	'pendingchanges-unwatched' => '(obevakad)',
@@ -1763,7 +1769,8 @@ $messages['vec'] = array(
 	'pendingchanges-days' => '($1 {{PLURAL:$1|giòrno|giòrni}})',
 	'pendingchanges-recent' => '(manco de 1 ora)',
 	'pendingchanges-category' => 'Categoria:',
-	'pendingchanges-stable' => 'rivardà',
+	'pendingchanges-onwatchlist' => "Pagine che tegno d'ocio",
+	'pendingchanges-stable' => 'La version stabile xe el default',
 	'pendingchanges-diff' => 'riesamina',
 	'pendingchanges-size' => 'Canbiamento massimo (in byte):',
 	'pendingchanges-unwatched' => '(non osservà)',

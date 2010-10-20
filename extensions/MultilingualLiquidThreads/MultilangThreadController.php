@@ -59,4 +59,3 @@ class MultilangThreadController {
 		return $parserOutput->getText();
 	}
 }
-?>

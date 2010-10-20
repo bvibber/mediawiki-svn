@@ -95,4 +95,3 @@ class TranslatedBody {
 		return $this->targetLang;
 	}
 }
-?>

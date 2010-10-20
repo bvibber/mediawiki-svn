@@ -1396,6 +1396,13 @@ $messages['ru'] = array(
 	'imagemap_poly_odd' => 'Ошибка: в строке $1 обнаружено описание многоугольника с лишними координатами',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'imagemap_description' => 'О образку',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

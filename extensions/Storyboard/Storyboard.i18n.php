@@ -890,6 +890,23 @@ Du chasch [$1 vereffentligti Botschafte] läse.',
 	'storyboard-storydeletionconfirm' => 'Bisch sicher, ass Du die Botschaft fir immer witt lesche?',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'storyboard-authoroccupation' => 'עיסוק המחבר',
+	'storyboard-storystate' => 'מצב',
+	'storyboard-yourname' => 'שמך (נדרש)',
+	'storyboard-location' => 'המיקום שלך',
+	'storyboard-photo' => 'יש לך תמונה של עצמך?
+למה לא לשתף אותה?',
+	'storyboard-charsleft' => '({{PLURAL:$1|תו אחד נותר|$1 תווים נותרו}})',
+	'storyboard-imagedeleted' => 'התמונה נמחקה',
+	'storyboard-showimage' => 'הצגת תמונה',
+	'storyboard-hideimage' => 'הסתרת התמונה',
+	'storyboard-deletestory' => 'הסרה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -1196,6 +1213,7 @@ $messages['ja'] = array(
 	'storyboard-storystate' => '状態',
 	'storyboard-language' => '言語',
 	'storyboard-storymetadata' => '$1が $2$3に投稿',
+	'storyboard-storymetadatafrom' => '$1によって、$2から、$4の$3に送信',
 	'storyboard-yourname' => 'あなたの名前（必須）',
 	'storyboard-location' => 'あなたの位置',
 	'storyboard-occupation' => 'あなたの職業',
@@ -1218,6 +1236,10 @@ $messages['ja'] = array(
 	'storyboard-morecharsneeded' => '$1 文字がさらに必要です',
 	'storyboard-charactersleft' => '残り$1文字',
 	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
+	'storyboard-emailtitle' => 'ストーリーの送信に成功',
+	'storyboard-emailbody' => 'ストーリー「$1」は送信に成功しました。
+すぐに確認されます。
+[$2 公開されたストーリーを読む]こともできます。',
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',
 	'storyboard-done' => '完了',
@@ -1384,6 +1406,13 @@ $messages['mk'] = array(
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'storyboard-language' => 'Хэл',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -1482,6 +1511,21 @@ U kunt [$2 gepubliceerde verhalen lezen] als u dat wilt.',
 	'storyboard-hideimage' => 'Afbeelding verbergen',
 	'storyboard-deletestory' => 'Verwijderen',
 	'storyboard-storydeletionconfirm' => 'Weet u zeker dat u dit verhaal permanent wilt verwijderen?',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'storyboard-createdandmodified' => 'Oppretta $1, $2 og sist endra $3, $4',
+	'storyboard-authorname' => 'Namnet til forfattar',
+	'storyboard-charsleft' => '({{PLURAL:$1|eitt|$1}} teikn igjen)',
+	'storyboard-charsneeded' => '(treng {{PLURAL:$1|eitt|$1}} teikn til)',
+	'storyboard-charstomany' => '$1 teikn for mange!',
+	'storyboard-morecharsneeded' => '$1 fleire teikn trengst',
+	'storyboard-charactersleft' => '$1 teikn igjen',
+	'storyboard-deleteimage' => 'Slett bilete',
+	'storyboard-deletestory' => 'Fjern',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -2198,6 +2242,7 @@ Maaaring tinanggal ito.',
 Bakit hindi mo ito ibahagi?',
 	'storyboard-email' => 'Tirahan mo ng e-liham (kailangan)',
 	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
+	'storyboard-agreement' => 'Sumasang-ayon ako sa paglalathala at paggamit ng kuwentong ito sa ilalim ng mga patakaran ng [http://creativecommons.org/licenses/by-sa/3.0/ Lisensiya ng Malikhaing mga Pangkaraniwang Atribusyon/Pamamahaging Magkatulad].',
 	'storyboard-charsleft' => '($1 natitirang {{PLURAL:$1|panitik|mga panitik}})',
 	'storyboard-cannotbelonger' => 'Ang kuwento mo ay mahaba ng <b>$1</b> {{PLURAL:$1|panitik|mga panitik}}!',
 	'storyboard-charsneeded' => '($1 pang {{PLURAL:$1|panitik|mga panitik}} ang  kailangan)',
@@ -2211,8 +2256,23 @@ Bakit hindi mo ito ibahagi?',
 	'storyboard-charstomany' => 'Labis ng $1 mga panitik!',
 	'storyboard-morecharsneeded' => '$1 pang mga panitik ang kinakailangan',
 	'storyboard-charactersleft' => '$1 mga panitik ang natitira',
+	'storyboard-createdsuccessfully' => 'Salamat sa pagbabahagi ng iyong kuwento sa amin!
+Susuriin namin ito maya-maya.
+Maaari kang [$1 magbasa ng nalathalang mga kuwento].',
+	'storyboard-emailtitle' => 'Matagumpay ang pagpapasa ng kuwento',
+	'storyboard-emailbody' => 'Ang iyong kuwentong pinamagatang "$1" ay matagumpay na naipasa.
+Susuriin namin ito mamaya-maya.
+Maaari kang [$2 magbasa ng nalathalang mga kuwento].',
+	'storyreview' => 'Muling pagsusuri ng kuwento',
+	'storyboard-deleteimage' => 'Burahin ang larawan',
 	'storyboard-done' => 'Nagawa na',
+	'storyboard-working' => 'Gumagawa...',
+	'storyboard-imagedeletionconfirm' => 'Nakatitiyak ka bang nais mong burahin ng pamalagian ang larawan ng kuwento?',
+	'storyboard-imagedeleted' => 'Nabura na ang larawan',
+	'storyboard-showimage' => 'Ipakita ang larawan',
+	'storyboard-hideimage' => 'Ikubli ang larawan',
 	'storyboard-deletestory' => 'Tanggalin',
+	'storyboard-storydeletionconfirm' => 'Natitiyak mo bang nais mong burahin ng pamalagian ang kuwento?',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

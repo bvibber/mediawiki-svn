@@ -355,5 +355,3 @@ $messages['vi']['multilang_lqt_language_name_pt'] = "Tiếng Bồ Đào Nha";
 $messages['vi']['multilang_lqt_language_name_ru'] = "Tiếng Nga";
 $messages['vi']['multilang_lqt_language_name_th'] = "Thái Lan";
 $messages['vi']['multilang_lqt_language_name_vi'] = "Việt";
-
- ?>

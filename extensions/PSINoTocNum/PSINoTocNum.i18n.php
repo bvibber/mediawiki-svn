@@ -29,6 +29,13 @@ $messages['arz'] = array(
 	'psinotocnum-desc' => 'كلمة سحرية جديدة "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'psinotocnum-desc' => 'Yeni sehrli söz "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

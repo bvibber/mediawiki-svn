@@ -36,6 +36,13 @@ $messages['ar'] = array(
 	'conditionalshowsection-desc' => 'إضافة وسم cshow لعرض/إخفاء شرطيا قسم من نص الويكي',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'conditionalshowsection-desc' => 'Vikimətnin bölməsinin şərti göstərilməsi və ya gizlədilməsi üçün cshow teqini əlavə edir.',
+);
+
 /** Bashkir (Башҡорт)
  * @author Haqmar
  */
@@ -90,6 +97,13 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'conditionalshowsection-desc' => 'Προσθέτει την ετικέτα cshow για να προβάλλει/αποκρύψει υπό όρους τμήμα του βικικειμένου',
+);
+
+/** Esperanto (Esperanto)
+ * @author Eliovir
+ */
+$messages['eo'] = array(
+	'conditionalshowsection-desc' => 'Aldonante la etikedon cshow por kondiĉe montri aŭ kaŝi sekcion de vikiteksto',
 );
 
 /** Spanish (Español)

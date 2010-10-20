@@ -1279,6 +1279,13 @@ $messages['sv'] = array(
 	'errorhandler-trace-line-internal' => '[intern funktion]: $1',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'errorhandler-error-notice' => 'அறிவிப்பு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

@@ -73,6 +73,18 @@ $messages['bs'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
+$messages['ca'] = array(
+	'categorymultisort-desc' => "Permetre la visualització de les categories amb diferents claus d'ordenació",
+	'categorymultisort-defaultsortkey-name' => 'Per defecte',
+	'categorymultisort-sortkey' => "Clau d'ordenació",
+	'categorymultisort-go' => 'Anar',
+	'categorymultisort-default-sortkey' => "Clau d'ordenació predeterminada",
+	'prefs-category' => 'Categoria',
+);
+
 /** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'categorymultisort-go' => 'بڕۆ',
@@ -191,6 +203,15 @@ $messages['gsw'] = array(
 /** Hausa (هَوُسَ) */
 $messages['ha'] = array(
 	'prefs-category' => 'Rukuni',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'categorymultisort-defaultsortkey-name' => 'בררת המחדל',
+	'categorymultisort-go' => 'מעבר',
+	'prefs-category' => 'קטגוריה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -317,6 +338,14 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'prefs-category' => 'Kategori',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -365,6 +394,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'categorymultisort-defaultsortkey-name' => 'تلواليز',
 	'categorymultisort-go' => 'ورځه',
 	'prefs-category' => 'وېشنيزه',
 );
@@ -394,6 +424,14 @@ $messages['pt-br'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Implicit',
+	'prefs-category' => 'Categorie',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -416,6 +454,15 @@ $messages['ru'] = array(
 	'categorymultisort-go' => 'Перейти',
 	'categorymultisort-default-sortkey' => 'Ключ сортировки по умолчанию:',
 	'prefs-category' => 'Категория',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Імпліцітне',
+	'categorymultisort-sortkey' => 'Ключ сортованя:',
+	'categorymultisort-go' => 'Перейти',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

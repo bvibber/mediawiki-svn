@@ -83,4 +83,3 @@ class ThreadLanguage {
 		return $this->language;
 	}
 }
-?>

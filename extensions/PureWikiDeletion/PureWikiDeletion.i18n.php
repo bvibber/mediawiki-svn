@@ -141,6 +141,8 @@ Sellit ouzh $2 evit ur roll eus ar gwennadurioù nevez.',
  */
 $messages['bs'] = array(
 	'randomexcludeblank' => 'Slučajna stranica (neuključujući prazne)',
+	'populateblankedpagestable' => 'Popuni tabele ispražnjenih stranica',
+	'blank-log' => 'prazno',
 	'purewikideletion-blanknologin' => 'Niste prijavljeni',
 );
 
@@ -568,6 +570,11 @@ $messages['pl'] = array(
 	'purewikideletion-desc' => 'Między innymi powoduje oznaczenie czerwonym kolorem linków do pustych stron',
 	'purewikideletion-pref-watchblank' => 'Dodawaj strony, których treść usunąłem do mojej listy obserwowanych',
 	'purewikideletion-pref-watchunblank' => 'Dodawaj strony, których treść odtworzyłem do mojej listy obserwowanych',
+	'purewikideletion-blanked' => "Poprzednia wersja tej strony została wyczyszczona przez [[User:$1|$1]] ([[User talk:$1|dyskusja]]) ([[Special:Contributions/$1|wkład]]) dnia $5 o $6.
+
+Uzasadnieniem czyszczenia było – ''<nowiki>$3</nowiki>''.
+
+Możesz [{{fullurl:{{FULLPAGENAMEE}}|action=history}} sprawdzić historię edycji strony], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edytować ostatnią wersję] lub napisać treść strony od nowa w pustym polu poniżej.",
 	'blank-log' => 'czyszczenie',
 	'blank-log-name' => 'Historia czyszczenia',
 	'blank-log-header' => 'Poniżej znajduje się spis czyszczeń i anulowania czyszczeń stron.',
@@ -577,6 +584,10 @@ $messages['pl'] = array(
 	'purewikideletion-blanknologin' => 'Nie jesteś zalogowany',
 	'purewikideletion-blanknologintext' => 'Czyszczenie stron jest możliwe dopiero po zarejestrowaniu się i [[Special:UserLogin|zalogowaniu]].',
 	'purewikideletion-unblanknologintext' => 'Anulowanie czyszczenia stron jest możliwe dopiero po zarejestrowaniu się i [[Special:UserLogin|zalogowaniu]].',
+	'purewikideletion-blankedtext' => '[[$1]] została wyczyszczona.
+Zobacz $2 aby przejrzeć ostatnie czyszczenia.',
+	'purewikideletion-population-done' => 'Wypełniono tabelę blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Wypełnianie]] tabeli czyszczonych stron',
 );
 
 /** Piedmontese (Piemontèis)
@@ -676,6 +687,15 @@ Pode [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ver o histórico da página],
 Consulte $2 para ver um registro dos esvaziamentos recentes de páginas.',
 	'purewikideletion-population-done' => 'O preenchimento da tabela de páginas esvaziadas foi feito.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Preencher]] a tabela de páginas esvaziadas',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'blank-log' => 'gol',
+	'blank-log-name' => 'Jurnal gol',
+	'purewikideletion-blanknologin' => 'Neautentificat',
 );
 
 /** Russian (Русский)

@@ -1356,8 +1356,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'duplicator-toolbox' => 'Duplică această pagină',
 	'duplicator-options' => 'Opțiuni',
 	'duplicator-source' => 'Sursă:',
 	'duplicator-dest' => 'Destinație:',
@@ -1369,6 +1371,7 @@ $messages['ro'] = array(
 	'duplicator-success-talknotcopied' => 'Pagina de discuții nu a putut fi copiată.',
 	'duplicator-failed' => 'Pagina nu a putut fi duplicată.
 A apărut o eroare necunoscută.',
+	'right-duplicate' => 'Duplică pagini',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1547,6 +1550,16 @@ $messages['sv'] = array(
 	'duplicator-dest-exists' => '[[$1]] finns redan. Du måste ange en målsida som inte finns.',
 	'duplicator-toomanyrevisions' => '[[$1]] har för många ($2) versioner, och kan därför inte dupliceras. Gränsen för duplicering är $3 sidversioner.',
 	'right-duplicate' => 'Kopiera sidorna',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'duplicator-options' => 'விருப்பத்தேர்வுகள்',
+	'duplicator-source' => 'மூலம்:',
+	'duplicator-dest' => 'சேருமிடம்:',
+	'duplicator-submit' => 'ஒரே மாதிரியுள்ள (நகல் எடு)',
 );
 
 /** Telugu (తెలుగు)

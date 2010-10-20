@@ -4352,6 +4352,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'ur-main-page' => 'ಮುಖ್ಯ ಪುಟ',
+	'ur-cancel' => 'ರದ್ದು ಮಾಡು',
 	'ur-login' => 'ಲಾಗ್ ಇನ್',
 );
 
@@ -4608,7 +4609,7 @@ Maacht Ufroe fir Frënn/Géigner mat dem richtege Link.',
 	'ur-remove-relationship-message-friend' => 'Dir hutt ugefrot fir de Benotzer $1 als Äre Frënd ewechzehuelen, dréckt "$2" fir ze confirméieren.',
 	'ur-remove-relationship-message-confirm-friend' => 'Dir hutt de Benotzer $1 als Äre Frënd ewechgeholl.',
 	'ur-remove-error-message-no-relationship' => 'Dir hutt keng Relatioun mam $1',
-	'ur-remove-error-message-remove-yourself' => 'Dir kënnt iech net selwer ewechhuelen.',
+	'ur-remove-error-message-remove-yourself' => 'Dir kënnt Iech net selwer ewechhuelen.',
 	'ur-remove-error-message-pending-foe-request' => 'Dir hutt eng oppe Géigner-Ufro mam Benotzer $1.',
 	'ur-remove-error-message-pending-friend-request' => 'Dir hutt eng oppe Frënd-Ufro mam Benozer $1.',
 	'ur-remove-error-not-loggedin-foe' => 'Dir musst ageloggt si fir e Géigner ewechzehuelen.',
@@ -4894,6 +4895,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'ur-main-page' => 'Нүүр хуудас',
+	'ur-cancel' => 'Цуцлах',
 	'ur-login' => 'Нэвтрэх',
 );
 
@@ -7300,6 +7302,19 @@ $messages['szl'] = array(
 	'ur-main-page' => 'Přodńo zajta',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'ur-previous' => 'முந்தைய',
+	'ur-next' => 'அடுத்தது',
+	'ur-remove' => 'நீக்குக',
+	'ur-cancel' => 'விட்டுவிடு',
+	'ur-login' => 'புகுபதிகை',
+	'ur-accept' => 'ஒத்துக்கொள்',
+	'ur-reject' => 'ஒதுக்கித் தள்ளு',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -8079,6 +8094,7 @@ $messages['xal'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'ur-main-page' => 'הויפּט בלאַט',
 	'ur-cancel' => 'אַנולירן',
 	'ur-login' => 'אַרײַנלאגירן',
 );

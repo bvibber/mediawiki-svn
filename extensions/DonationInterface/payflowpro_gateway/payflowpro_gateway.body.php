@@ -56,11 +56,6 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			$wgPayFlowProGatewayCSSVersion, $wgPayflowGatewayPaypalURL, 
 			$wgPayflowGatewaySalt;
 		
-		session_cache_limiter( 'nocache' );
-		$this->fnPayflowEnsureSession();
-		$this->setHeaders();
-		
-
 		$wgOut->addExtensionStyle( 
 			"{$wgScriptPath}/extensions/DonationInterface/payflowpro_gateway/payflowpro_gateway.css?284" . 
 			$wgPayFlowProGatewayCSSVersion);
@@ -82,13 +77,17 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'payflowproGatewayCVVExplain' => wfMsg( 'payflowpro_gateway-cvv-explain' ),
 		);
 		
-
 		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );
 		
-		// establish the edit token to prevent csrf
-		$token = $this->fnPayflowEditToken( $wgPayflowGatewaySalt ); //$wgUser->editToken( 'mrxc877668DwQQ' );
-
-
+		 $js = <<<EOT
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery("div#p-logo a").attr("href","#");
+});
+</script>
+EOT;
+        $wgOut->addHeadItem( 'logolinkoverride', $js );
+		
 		// find out if amount was a radio button or textbox, set amount
 		if( isset( $_REQUEST['amount'] ) && preg_match( '/^\d+(\.(\d+)?)?$/', $wgRequest->getText( 'amount' ) ) ) {
 			$amount = $wgRequest->getText( 'amount' );
@@ -109,14 +108,32 @@ class PayflowProGateway extends UnlistedSpecialPage {
 		require_once( 'includes/payflowUser.inc' );
 
 		$payflow_data = payflowUser();
+		
+		// if _cache_ is requested by the user, do not set a session/token; dynamic data will be loaded via ajax
+		if ( $wgRequest->getText( '_cache_', false ) ) {
+			$cache = true;
+			$token = '';
+			$token_match = false;	
+		} else {
+			$cache = false;
+			
+			// make sure we have a session open for tracking a CSRF-prevention token
+			$this->fnPayflowEnsureSession();
+					
+			// establish the edit token to prevent csrf
+			$token = self::fnPayflowEditToken( $wgPayflowGatewaySalt );
 
+			// match token
+			$token_check = ( $wgRequest->getText( 'token' ) ) ? $wgRequest->getText( 'token' ) : $token;
+			$token_match = $this->fnPayflowMatchEditToken( $token_check, $wgPayflowGatewaySalt );
+		}
+		
+		$this->setHeaders();
+		
 		// Populate form data
 		$data = $this->fnGetFormData( $amount, $numAttempt, $token, $payflow_data['order_id'] );
 		
-		// Check form for errors and display 
-		// match token
-		$token_check = ( $wgRequest->getText( 'token' ) ) ? $wgRequest->getText( 'token' ) : $token;
-		$token_match = $this->fnPayflowMatchEditToken( $token_check, $wgPayflowGatewaySalt );
+		// dispatch forms/handling
 		if( $token_match ) {
 			/**
 			 *  handle PayPal redirection 
@@ -177,8 +194,10 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				$this->fnPayflowDisplayForm( $data, $this->errors );
 			}
 		} else { 
-			// there's a token mismatch
-			$this->errors['general']['token-mismatch'] = wfMsg( 'payflowpro_gateway-token-mismatch' );
+			if ( !$cache ) {
+				// if we're not caching, there's a token mismatch
+				$this->errors['general']['token-mismatch'] = wfMsg( 'payflowpro_gateway-token-mismatch' );
+			}
 			$this->fnPayflowDisplayForm( $data, $this->errors );
 		}
 	}
@@ -192,10 +211,10 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 * The message at the top of the form can be edited in the payflow_gateway.i18n.php file
 	 */
 	public function fnPayflowDisplayForm( &$data, &$error ) {
-		global $wgOut;	
+		global $wgOut, $wgRequest;	
 
 		// save contrib tracking id early to track abondonment
-		if ( $data[ 'numAttempt' ] == '0' ) {
+		if ( $data[ 'numAttempt' ] == '0' && ( !$wgRequest->getText( 'utm_source_id', false ) || $wgRequest->getText( '_nocache_' ) == 'true' )) {
 			if ( !$tracked = $this->fnPayflowSaveContributionTracking( $data ) ) {
 				$when = time();
 				wfDebugLog( 'payflowpro_gateway', 'Unable to save data to the contribution_tracking table ' . $when );
@@ -707,21 +726,15 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 * are backwards (they are really opt-in) relative to contribution_tracking
 	 * (which is opt-out), we need to reverse the values
 	 */
-	function determineOptOut( $data ) {
-		$optout[ 'optout' ] = ( $data[ 'email-opt' ] == "1" ) ? '0' : '1';
-		$optout[ 'anonymous' ] = ( $data[ 'comment-option' ] == "1" ) ? '0' : '1';
+	public static function determineOptOut( $data ) {
+		$optout[ 'optout' ] = ( isset( $data[ 'email-opt' ]) && $data[ 'email-opt' ] == "1" ) ? '0' : '1';
+		$optout[ 'anonymous' ] = ( isset( $data[ 'comment-option' ]) && $data[ 'comment-option' ] == "1" ) ? '0' : '1';
 		return $optout;
 	}
 	
 	function fnPayflowSaveContributionTracking( &$data ) {
 		// determine opt-out settings
-		$optout = $this->determineOptOut( $data );
-
-		$db = payflowGatewayConnection();
-			
-		if (!$db) { return true ; }
-
-		$ts = $db->timestamp();
+		$optout = self::determineOptOut( $data );
 
 		$tracked_contribution = array(
 			'note' => $data['comment'],
@@ -732,23 +745,88 @@ class PayflowProGateway extends UnlistedSpecialPage {
 			'utm_campaign' => $data['utm_campaign'],
 			'optout' => $optout[ 'optout' ],
 			'language' => $data['language'],
-			'ts' => $ts,
+			'ts' => '',
 		);
+
+		// insert tracking data and get the tracking id
+		$data['contribution_tracking_id'] = self::insertContributionTracking( $tracked_contribution );
 		
-		// Make all empty strings NULL
-		foreach ($tracked_contribution as $key => $value) {
-			if ($value === '') {
-				$tracked_contribution[$key] = null;
-			}
+		if ( !$data[ 'contribution_tracking_id' ]) {
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * Insert a record into the contribution_tracking table
+	 * 
+	 * @param array $tracking_data The array of tracking data to insert to contribution_tracking
+	 * 	NOTE: this should probably be run thru self::cleanTrackingData to ensure data integrity
+	 * @return mixed Contribution tracking ID or false on failure
+	 */
+	public static function insertContributionTracking( $tracking_data ) {
+		$db = payflowGatewayConnection();
+			
+		if (!$db) { return false; }
+
+		// set the time stamp if it's not already set
+		if ( !isset( $tracking_data[ 'ts' ] ) || !strlen( $tracking_data[ 'ts' ] )) {
+			$tracking_data[ 'ts' ] = $db->timestamp();
 		}
 		
 		// Store the contribution data
-		if ($db->insert( 'contribution_tracking', $tracked_contribution ) ) {
-			$data['contribution_tracking_id'] = $db->insertId();
-		 	return true;
+		if ($db->insert( 'contribution_tracking', $tracking_data )) {
+		 	return $db->insertId();
 		} else { 
 			return false; 
 		}		
+	}
+	
+	/**
+	 * Clean array of tracking data to contain valid fields
+	 * 
+	 * Compares tracking data array to list of valid tracking fields and 
+	 * removes any extra tracking fields/data.  Also sets empty values to
+	 * 'null' values.
+	 * @param array $tracking_data
+	 * @param bool $clean_opouts If true, form opt-out values will be run through $this->determineOptOut
+	 * 	for cleanup.
+	 */
+	public static function cleanTrackingData( $tracking_data, $clean_optouts=false ) {
+		// clean up the optout values if necessary
+		if ( $clean_optouts ) {
+			$optouts = self::determineOptOut( $tracking_data );
+			$tracking_data[ 'optout' ] = $optouts[ 'optout' ];
+			$tracking_data[ 'anonymous' ] = $optouts[ 'anonymous' ];
+		}
+		
+		// define valid tracking fields
+		$tracking_fields = array( 
+			'note', 
+			'referrer', 
+			'anonymous', 
+			'utm_source', 
+			'utm_medium', 
+			'utm_campaign', 
+			'optout', 
+			'language', 
+			'ts'
+		);
+		
+		// loop through tracking data and clean it up
+		foreach ($tracking_data as $key => $value) {
+			// Make sure we only have valid fields
+			if( !in_array( $key, $tracking_fields )) {
+				unset( $tracking_data[ $key ]);	
+			}
+			
+			// Make all empty strings NULL	
+			if ( !strlen( $value )) {
+				$tracking_data[$key] = null;
+			}
+		}
+		
+		return $tracking_data;
 	}
 	
 	function fnPayflowReturnCurrencies() {
@@ -778,7 +856,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 * @var mixed $salt
 	 * @return string
 	 */
-	function fnPayflowEditToken( $salt='' ) {
+	public static function fnPayflowEditToken( $salt='' ) {
 		if ( !isset( $_SESSION[ 'payflowEditToken' ] )) {
 			//generate unsalted token to place in the session
 			$token = self::fnPayflowGenerateToken();
@@ -813,7 +891,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 */
 	function fnPayflowMatchEditToken( $val, $salt='' ) {
 		// fetch a salted version of the session token
-		$sessionToken = $this->fnPayflowEditToken( $salt );
+		$sessionToken = self::fnPayflowEditToken( $salt );
 		if ( $val != $sessionToken ) {
 			wfDebug( "PayflowproGateway::fnPayflowMatchEditToken: broken session data\n" );
 		}
@@ -887,7 +965,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				'order_id' => $order_id, 
 				'numAttempt' => $numAttempt,
 				'referrer' => 'http://www.baz.test.com/index.php?action=foo&action=bar',
-				'utm_source' => $this->getUtmSource(),
+				'utm_source' => self::getUtmSource(),
 				'utm_medium' => $wgRequest->getText( 'utm_medium' ),
 				'utm_campaign' => $wgRequest->getText( 'utm_campaign' ),
 				'language' => 'en',
@@ -922,7 +1000,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				'order_id' => $order_id,
 				'numAttempt' => $numAttempt,
 				'referrer' => ( $wgRequest->getVal( 'referrer' )) ? $wgRequest->getVal( 'referrer' ) : $wgRequest->getHeader( 'referer' ),
-				'utm_source' => $this->getUtmSource(),
+				'utm_source' => self::getUtmSource(),
 				'utm_medium' => $wgRequest->getText( 'utm_medium' ),
 				'utm_campaign' => $wgRequest->getText( 'utm_campaign' ),
 				// try to honr the user-set language (uselang), otherwise the language set in the URL (language)
@@ -969,20 +1047,34 @@ class PayflowProGateway extends UnlistedSpecialPage {
 	 *
 	 * the utm_source is structured as: banner.landing_page.payment_instrument
 	 *
+	 * @param string $utm_source The utm_source for tracking - if not passed directly,
+	 * 	we try to figure it out from the request object
+	 * @param int $utm_source_id The utm_source_id for tracking - if not passed directly,
+	 * 	we try to figure it out from the request object
 	 * @return string The full utm_source
 	 */
-	public function getUtmSource() {
+	public static function getUtmSource( $utm_source=null, $utm_source_id=null ) {
 		global $wgRequest;
 
-		// fetch whatever was passed in as the utm_source
-		$utm_source = $wgRequest->getText( 'utm_source' );
+		/**
+		 * fetch whatever was passed in as the utm_source
+		 * 
+		 * if utm_source was not passed in as a param, we try to divine it from
+		 * the request.  if it's not set there, no big deal, we'll just be
+		 * missing some tracking data.
+		 */ 
+		if ( is_null( $utm_source )) {
+			$utm_source = $wgRequest->getText( 'utm_source' );
+		}
 		
 		/**
 		 * if we have a utm_source_id, then the user is on a single-step credit card form.
 		 * if that's the case, we treat the single-step credit card form as a landing page, 
 		 * which we label as cc#, where # = the utm_source_id
 		 */
-		$utm_source_id = $wgRequest->getVal( 'utm_source_id', 0 );
+		if ( is_null( $utm_source_id )) {
+			$utm_source_id = $wgRequest->getVal( 'utm_source_id', 0 );
+		}
 		
 		// this is how the CC portion of the utm_source should be defined
 		$correct_cc_source = ( $utm_source_id ) ? 'cc' . $utm_source_id . '.cc' : 'cc';
@@ -1024,7 +1116,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 
 		
 		// determine opt-out settings
-		$optout = $this->determineOptOut( $data );
+		$optout = self::determineOptOut( $data );
 		
 		$db = payflowGatewayConnection();
 			
@@ -1047,8 +1139,13 @@ class PayflowProGateway extends UnlistedSpecialPage {
 				$tracked_contribution[$key] = null;
 			}
 		}
-
-		$db->update( 'contribution_tracking', $tracked_contribution, array( 'id' => $data[ 'contribution_tracking_id' ] ));
+		
+		// if contrib tracking id is not already set, we need to insert the data, otherwise update
+		if ( !$data[ 'contribution_tracking_id' ] ) {
+			$data[ 'contribution_tracking_id' ] = $this->insertContributionTracking( $tracked_contribution );
+		} else {
+			$db->update( 'contribution_tracking', $tracked_contribution, array( 'id' => $data[ 'contribution_tracking_id' ] ));
+		}
 	}
 	
 	/**

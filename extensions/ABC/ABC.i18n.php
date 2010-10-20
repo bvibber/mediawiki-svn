@@ -788,10 +788,11 @@ $messages['rif'] = array(
 
 /** Romansh (Rumantsch)
  * @author Gion
+ * @author Gion-andri
  */
 $messages['rm'] = array(
 	'abc-desc' => 'Agiunta il tag <code>&lt;abc&gt;</code> per formatar musica ABC',
-	'abcdownload' => 'Download:',
+	'abcdownload' => 'Telechargiar:',
 );
 
 /** Romanian (Română)
@@ -940,7 +941,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'abc-desc' => 'ABC సంగీతాన్ని చూపించడానికై <code>&lt;abc&gt;</code> అనే ట్యాగుని చేరుస్తుంది',
-	'abcdownload' => 'డౌన్‌లోడ్',
+	'abcdownload' => 'దింపుకోలు:',
 );
 
 /** Thai (ไทย)

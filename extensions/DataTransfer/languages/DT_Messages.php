@@ -1159,6 +1159,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'dt_viewxml_categories' => 'ವರ್ಗಗಳು',
+	'dt_xml_namespace' => 'ನಾಮವರ್ಗ',
 	'dt_xml_pages' => 'ಪುಟಗಳು',
 	'dt_xml_page' => 'ಪುಟ',
 	'dt_xml_template' => 'ಟೆಂಪ್ಲೇಟು',
@@ -1680,6 +1681,7 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'viewxml' => 'Vizualizează XML',
@@ -1689,6 +1691,7 @@ $messages['ro'] = array(
 	'dt_xml_namespace' => 'Spațiu de nume',
 	'dt_xml_pages' => 'Pagini',
 	'dt_xml_page' => 'Pagină',
+	'dt_xml_template' => 'Format',
 	'dt_xml_field' => 'Câmp',
 	'dt_xml_name' => 'Nume',
 	'dt_xml_title' => 'Titlu',
@@ -2095,12 +2098,35 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Arturyatsko
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'datatransfer-desc' => 'Дозволяє імпортувати та експортувати дані, які містяться в викликах шаблонів',
+	'viewxml' => 'Перегляд XML',
+	'dt_viewxml_docu' => 'Будь ласка, виберіть одну з наступних категорій та імен для перегляду в форматі XML.',
 	'dt_viewxml_categories' => 'Категорії',
+	'dt_viewxml_namespaces' => 'Простори назв',
+	'dt_viewxml_simplifiedformat' => 'Спрощений формат',
+	'dt_xml_namespace' => 'Простір назв',
+	'dt_xml_pages' => 'Сторінки',
+	'dt_xml_page' => 'Сторінка',
+	'dt_xml_template' => 'Шаблон',
 	'dt_xml_field' => 'Поле',
+	'dt_xml_name' => 'Назва',
 	'dt_xml_title' => 'Заголовок',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Вільний текст',
+	'importxml' => 'Імпорт XML',
+	'dt_import_selectfile' => 'Будь ласка, виберіть файл $1 для імпорту:',
+	'dt_import_encodingtype' => 'Тип кодування',
+	'dt_import_summarydesc' => 'Опис імпорту:',
+	'dt_import_editsummary' => 'імпорт $1',
+	'dt_import_importing' => 'Імпорт ...',
+	'dt_import_success' => '$1 {{PLURAL:$1|сторінка була|сторінки було|сторінок було}} створено з файлу $2.',
+	'importcsv' => 'Імпорт CSV',
+	'dt_importcsv_badheader' => 'Помилка. Заголовок колонки №$1 «$2» повинен бути або «$3», або «$4», або у формі «template_name[field_name]»',
+	'right-datatransferimport' => 'Імпорт даних',
 );
 
 /** Vietnamese (Tiếng Việt)

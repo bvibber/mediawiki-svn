@@ -358,6 +358,14 @@ $3Зарэгістравацца$4',
 Калі Вы не жадаеце атрымліваць лісты з навінамі, Вы можаце адмовіцца ад іх на закладцы «{{int:prefs-personal}}» Вашых [[Special:Preferences|установак]].',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'translate-fs-pagetitle-done' => ' - সম্পন্ন!',
+	'translate-fs-userpage-title' => 'আপনার ব্যবহারকারী পাতা তৈরি করুন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -1255,6 +1263,16 @@ Bitte tue si ändere wänn netig.",
 Des git andere d Megligkeit, di iber E-Mail z erreiche.
 Du chunnsch derno derzue eimol im Monet e Newsletter iber.
 Wänn Du kei Newsletter witt iberchuu, chasch di im Tab „{{int:prefs-personal}}“ in [[Special:Preferences|Dyyne Yystellige]] uustrage.',
+);
+
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'translate-fs-signup-title' => 'הרשמה',
+	'translate-fs-target-title' => 'התחלה בתרגום!',
+	'translate-fs-userpage-submit' => 'יצירת דף המשתמש שלי',
+	'translate-fs-userpage-done' => 'מצוין! כעת יש לך דף משתמש.',
 );
 
 /** Croatian (Hrvatski)

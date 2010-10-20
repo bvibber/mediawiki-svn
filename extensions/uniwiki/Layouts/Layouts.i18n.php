@@ -842,6 +842,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'layouts-desc' => 'Obda na novo ustvarjene strani z uredljivimi »postavitvami«, ki vzpodbudijo skupno zgradbo strani',
 	'layouts_title' => 'Ustvari stran',
 	'layouts_chooselayout' => 'Izberite postavitev za $1:',
 	'layouts_nolayout' => 'Ni postavitve',
@@ -903,7 +904,7 @@ $messages['sv'] = array(
  */
 $messages['ta'] = array(
 	'layouts-desc' => "தொகுக்கக்கூடிய ''பக்கவடிமைப்பை'' புதிய பக்கங்கள் உருவாக்கும் போது ஒரு பொதுவான அமைப்பு கொண்ட பக்கங்களை உருவாக்க எல்லோருக்கும் தெரிவித்து ஊக்கப்படுத்துங்கள்",
-	'layouts_title' => 'ஒரு பக்கத்தை உருவாக்குக',
+	'layouts_title' => 'ஒரு பக்கத்தை உருவாக்கவும்',
 	'layouts_chooselayout' => '$1 க்கான ஒரு இடைமுகப்பை தேர்ந்தெடுக்கவும்',
 	'layouts_nolayout' => 'வடிவமைப்பு இல்லை',
 	'layouts_continue' => 'தொடரவும்',

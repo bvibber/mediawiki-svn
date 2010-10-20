@@ -120,7 +120,7 @@ class MapsGeocode extends ParserHook {
 	 */
 	protected function getDefaultParameters( $type ) {
 		return array( 'location', 'geoservice', 'mappingservice' );
-	}
+	}	
 	
 	/**
 	 * Renders and returns the output.
@@ -148,7 +148,7 @@ class MapsGeocode extends ParserHook {
 		else {
 			$output = htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
 		}
-		
+
 		return $output;		
 	}
 	

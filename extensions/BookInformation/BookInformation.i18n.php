@@ -1085,6 +1085,18 @@ $messages['lt'] = array(
 	'bookinfo-purchase' => 'Pirkti šią knygą iš $1',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'bookinfo-header' => 'Grāmatas informācija',
+	'bookinfo-result-title' => 'Nosaukums:',
+	'bookinfo-result-author' => 'Autors:',
+	'bookinfo-result-publisher' => 'Izdevējs:',
+	'bookinfo-result-year' => 'Gads:',
+	'bookinfo-error-invalidisbn' => 'Ievadīts nederīgs ISBN.',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -1443,6 +1455,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'bookinfo-header' => "'Mbormazione sus a 'u libbre",
+	'bookinformation-desc' => "Spanne 'a [[Special:Booksources|pàgena speciale de le sorgende de le libbre]] cu le 'mbormaziune da 'nu servizie web",
 	'bookinfo-result-title' => 'Titele:',
 	'bookinfo-result-author' => 'Autore:',
 	'bookinfo-result-publisher' => 'Pubblicatore:',
@@ -1452,6 +1465,7 @@ $messages['roa-tara'] = array(
 	'bookinfo-error-nodriver' => "Non ge se pò inizializzà 'nu Driver appropriate de 'mbormaziune sus a le libbew.",
 	'bookinfo-error-noresponse' => "Nisciuna risposte o 'a richieste ha scadute.",
 	'bookinfo-purchase' => 'Accatte stu libbre da $1',
+	'bookinfo-provider' => "Fornitore d'u date: $1",
 );
 
 /** Russian (Русский)
@@ -1472,6 +1486,17 @@ $messages['ru'] = array(
 	'bookinfo-provider' => 'Поставщик информации: $1',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'bookinfo-result-title' => 'Назва:',
+	'bookinfo-result-author' => 'Автор:',
+	'bookinfo-result-publisher' => 'Выдаватель:',
+	'bookinfo-result-year' => 'Рік:',
+	'bookinfo-error-invalidisbn' => 'Зазначене неправилне ISBN.',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1488,6 +1513,14 @@ $messages['sah'] = array(
 	'bookinfo-error-noresponse' => 'Хоруй суох эбэтэр болдьоҕо ааста.',
 	'bookinfo-purchase' => 'Бу кинигэни мантан атыылаһарга: $1',
 	'bookinfo-provider' => 'Информацияны ким биэрбитэ: $1',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'bookinfo-result-title' => 'Tìtulu:',
+	'bookinfo-result-year' => 'Annu:',
 );
 
 /** Slovak (Slovenčina)

@@ -42,44 +42,56 @@ table.mw-codereview-meta td {
 	padding-left: 48px;
 }
 
+.mw-codereview-status-new,
 .mw-codereview-status-new td {
 	background: #ffffc0 !important;
 }
+
+.mw-codereview-status-new:hover,
 .mw-codereview-status-new:hover td {
 	background: #dfdfa0 !important;
 }
 
+.mw-codereview-status-fixme,
 .mw-codereview-status-fixme td {
 	background: #ff9999 !important;
 }
+.mw-codereview-status-fixme:hover,
 .mw-codereview-status-fixme:hover td {
 	background: #df0000 !important;
 	color: white;
 }
+.mw-codereview-status-fixme:hover a,
 .mw-codereview-status-fixme:hover td a {
 	color: #ff0 !important;
 }
 
+.mw-codereview-status-resolved,
 .mw-codereview-status-resolved td {
 	background: #c0ffc0 !important;
 }
+.mw-codereview-status-resolved:hover,
 .mw-codereview-status-resolved:hover td {
 	background: #a0dfa0 !important;
 }
 
+.mw-codereview-status-reverted,
 .mw-codereview-status-reverted td {
 	background: #ddd !important;
 	color: #666 !important;
 	text-decoration: line-through !important;
 }
+.mw-codereview-status-reverted:hover,
 .mw-codereview-status-reverted:hover td {
 	background: #aaa !important;
 	text-decoration: line-through !important;
 }
+.mw-codereview-status-deferred,
 .mw-codereview-status-deferred td {
 	color: #666;
 }
 
+.mw-codereview-status-old,
 .mw-codereview-status-old td {
 	color: #666;
 }

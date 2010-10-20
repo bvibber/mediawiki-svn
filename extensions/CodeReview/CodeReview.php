@@ -121,7 +121,7 @@ $wgSubversionOptions = "--non-interactive --trust-server-cert";
 $wgCodeReviewImportBatchSize = 400;
 
 // Bump the version number every time you change a CodeReview .css/.js file
-$wgCodeReviewStyleVersion = 5;
+$wgCodeReviewStyleVersion = 6;
 
 // The name of a repo which represents the code running on this wiki, used to highlight active revisions
 $wgWikiSVN = '';
@@ -158,9 +158,9 @@ $wgCodeReviewDeferredPaths = array();
 /**
  * UDP comment and status changes notification
  */
-$wgCRUDPAddress = false;
-$wgCRUDPPort = false;
-$wgCRUDPPrefix = '';
+$wgCodeReviewUDPAddress = false;
+$wgCodeReviewUDPPort = false;
+$wgCodeReviewUDPPrefix = '';
 
 # Schema changes
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';

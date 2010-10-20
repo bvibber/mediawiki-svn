@@ -88,4 +88,3 @@
  		$wgOut->addHTML( '</div>' );
  	}
  }
-?>

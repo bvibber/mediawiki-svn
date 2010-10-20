@@ -7004,6 +7004,7 @@ Klik <a href="$1">hier</a> om u aan te melden of klik <a href="$2">hier</a> om e
  * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'populateuserprofiles' => 'Folkeset brukarprofilar',
@@ -7059,7 +7060,7 @@ $messages['nn'] = array(
 	'user-send-board-blast' => 'Send melding',
 	'user-personal-info-title' => 'Personleg informasjon',
 	'user-no-personal-info' => 'Ingen personleg informasjon',
-	'user-personal-info-real-name' => 'Verkeleg namn:',
+	'user-personal-info-real-name' => 'Verkeleg namn',
 	'user-personal-info-location' => 'Stad',
 	'user-personal-info-hometown' => 'Heimstad',
 	'user-personal-info-birthday' => 'Fødselsdag',
@@ -10966,7 +10967,9 @@ $messages['yi'] = array(
 	'other-no-info' => 'קיין אנדערע אינפֿאָרמאַציע',
 	'user-profile-section-preferences' => 'פרעפֿערענצן',
 	'user-profile-personal-name' => 'נאָמען',
+	'user-profile-interests-eats' => 'עסן',
 	'user-profile-goback' => 'צוריקגיין',
+	'user-page-link' => 'באַניצער בלאַט',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

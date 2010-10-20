@@ -76,6 +76,7 @@ Remarks||10',
  * @author McDutchie
  * @author Minh Nguyen
  * @author Mormegil
+ * @author Nike
  * @author Purodha
  * @author Siebrand
  * @author The Evil IP address
@@ -99,6 +100,7 @@ $messages['qqq'] = array(
 	'proofreadpage_js_attributes' => 'Names of the variables on index pages, separated by spaces.',
 	'proofreadpage_pages' => '{{Identical|Page}}',
 	'proofreadpage_source' => '{{Identical|Source}}',
+	'right-pagequality' => '{{doc-right}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -677,6 +679,7 @@ Napomene||10',
  */
 $messages['ca'] = array(
 	'indexpages' => "Llista de pàgines d'índex",
+	'pageswithoutscans' => 'Pàgines sense escanejos',
 	'proofreadpage_desc' => "Permetre una fàcil comparació d'un text amb l'escanejat original",
 	'proofreadpage_namespace' => 'Pàgina',
 	'proofreadpage_index_namespace' => 'Index',
@@ -730,6 +733,7 @@ Sumari||15",
 	'proofreadpage_specialpage_legend' => "Cerca a les pàgines d'índex",
 	'proofreadpage_source' => 'Font',
 	'proofreadpage_source_message' => "Edició digitalitzada d'on s'ha extret aquest text",
+	'right-pagequality' => "Modifica l'indicador de qualitat de la pàgina",
 );
 
 /** Cebuano (Cebuano)
@@ -1131,6 +1135,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'indexpages' => 'Listo de indeksaj paĝoj',
+	'pageswithoutscans' => 'Paĝoj sen skanaĵoj',
 	'proofreadpage_desc' => 'Permesas facilan komparon de teksto al la originala skanitaĵo.',
 	'proofreadpage_namespace' => 'Paĝo',
 	'proofreadpage_index_namespace' => 'Indekso',
@@ -1182,6 +1187,7 @@ Rimarkoj||10',
 	'proofreadpage_specialpage_legend' => 'Serĉi indeksajn paĝojn',
 	'proofreadpage_source' => 'Fonto',
 	'proofreadpage_source_message' => 'Skanita eldono uzata establi ĉi tiu teksto',
+	'right-pagequality' => 'Modifi flagon de paĝa kvalito',
 );
 
 /** Spanish (Español)
@@ -1353,6 +1359,7 @@ Oharrak||10',
  */
 $messages['fa'] = array(
 	'indexpages' => 'فهرست صفحات شاخص',
+	'pageswithoutscans' => 'صفحه‌های بدون پویش',
 	'proofreadpage_desc' => 'امکان مقایسهٔ آسان متن با نسخهٔ اصلی پویش شده را فراهم می‌آورد',
 	'proofreadpage_namespace' => 'صفحه',
 	'proofreadpage_index_namespace' => 'اندیس',
@@ -1404,6 +1411,7 @@ $messages['fa'] = array(
 	'proofreadpage_specialpage_legend' => 'جستجو در صفحات شاخص',
 	'proofreadpage_source' => 'منبع',
 	'proofreadpage_source_message' => 'برای ایجاد این متن از ویرایش پویش‌شده (اسکن‌شده) استفاده شده',
+	'right-pagequality' => 'تغییر پرچم کیفیت صفحه',
 );
 
 /** Finnish (Suomi)
@@ -1412,11 +1420,13 @@ $messages['fa'] = array(
  * @author Crt
  * @author Jaakonam
  * @author Nike
+ * @author Olli
  * @author Str4nd
  * @author ZeiP
  */
 $messages['fi'] = array(
 	'indexpages' => 'Luettelo hakemistosivuista',
+	'pageswithoutscans' => 'Sivut ilman skannauksia',
 	'proofreadpage_desc' => 'Mahdollistaa helpon vertailun tekstin ja alkuperäisen skannauksen välillä.',
 	'proofreadpage_namespace' => 'Sivu',
 	'proofreadpage_index_namespace' => 'Hakemisto',
@@ -1468,6 +1478,7 @@ Huomautuksia||10',
 	'proofreadpage_specialpage_legend' => 'Hae indeksisivuilta',
 	'proofreadpage_source' => 'Lähde',
 	'proofreadpage_source_message' => 'Skannattua versiota on käytetty tämän tekstin muodostamiseen',
+	'right-pagequality' => 'Muuttaa sivun laatumerkintää',
 );
 
 /** French (Français)
@@ -1952,6 +1963,7 @@ Napomene||10',
  */
 $messages['hsb'] = array(
 	'indexpages' => 'Lisćina indeksowych stronow',
+	'pageswithoutscans' => 'Strony bjez skanow',
 	'proofreadpage_desc' => 'Lochke přirunanje teksta z originalnym skanom dowolić',
 	'proofreadpage_namespace' => 'Strona',
 	'proofreadpage_index_namespace' => 'Indeks',
@@ -2003,6 +2015,7 @@ Přispomnjenki||10',
 	'proofreadpage_specialpage_legend' => 'Indeksowe strony přepytać',
 	'proofreadpage_source' => 'Žórło',
 	'proofreadpage_source_message' => 'Skanowane wudaće wužite za wutworjenje tutoho teksta',
+	'right-pagequality' => 'Kajkosć strony změnić',
 );
 
 /** Hungarian (Magyar)
@@ -2013,6 +2026,7 @@ Přispomnjenki||10',
  */
 $messages['hu'] = array(
 	'indexpages' => 'Indexlapok listája',
+	'pageswithoutscans' => 'Vizsgálatlan lapok',
 	'proofreadpage_desc' => 'Lehetővé teszi a szöveg és az eredeti szkennelt változat egyszerű összehasonlítását',
 	'proofreadpage_namespace' => 'Oldal',
 	'proofreadpage_index_namespace' => 'Index',
@@ -2064,6 +2078,7 @@ Megjegyzések||10',
 	'proofreadpage_specialpage_legend' => 'Indexlapok keresése',
 	'proofreadpage_source' => 'Forrás',
 	'proofreadpage_source_message' => 'A szkennelt változat amin a szöveg alapszik',
+	'right-pagequality' => 'lapok minőség szerinti értékelésének módosítása',
 );
 
 /** Armenian (Հայերեն)
@@ -2289,11 +2304,13 @@ $messages['is'] = array(
  * @author BrokenArrow
  * @author Civvì
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  * @author Stefano-c
  */
 $messages['it'] = array(
 	'indexpages' => 'Elenco delle pagine di indice',
+	'pageswithoutscans' => 'Pagine senza scansioni',
 	'proofreadpage_desc' => 'Consente un facile confronto tra un testo e la sua scansione originale',
 	'proofreadpage_namespace' => 'Pagina',
 	'proofreadpage_index_namespace' => 'Indice',
@@ -2324,6 +2341,10 @@ $messages['it'] = array(
 	'proofreadpage_quality2_category' => 'Da rivedere',
 	'proofreadpage_quality3_category' => 'Corretta',
 	'proofreadpage_quality4_category' => 'Verificata',
+	'proofreadpage_quality0_message' => 'Questa pagina non necessita di essere corretta',
+	'proofreadpage_quality1_message' => 'Questa pagina non è stata corretta',
+	'proofreadpage_quality2_message' => "C'è stato un problema nella correzione di questa pagina",
+	'proofreadpage_quality3_message' => 'Questa pagina è stata corretta',
 	'proofreadpage_quality4_message' => 'Questa pagina è stata convalidata',
 	'proofreadpage_index_listofpages' => 'Lista delle pagine',
 	'proofreadpage_image_message' => 'Collegamento alla pagina indice',
@@ -4023,6 +4044,13 @@ $messages['sc'] = array(
 	'proofreadpage_pages' => '{{PLURAL:$1|pàgina|pàginas}}',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Gmelfi
+ */
+$messages['scn'] = array(
+	'proofreadpage_header' => 'Ntistazzioni (nun inclusa)',
+);
+
 /** Sinhala (සිංහල)
  * @author බිඟුවා
  */
@@ -4094,6 +4122,7 @@ Poznámky||10',
  */
 $messages['sl'] = array(
 	'indexpages' => 'Seznam kazalnih strani',
+	'pageswithoutscans' => 'Strani brez skeniranj',
 	'proofreadpage_desc' => 'Omogočajo enostavno primerjavo besedila z izvirno preslikavo',
 	'proofreadpage_namespace' => 'Stran',
 	'proofreadpage_index_namespace' => 'Kazalo',
@@ -4145,6 +4174,7 @@ Pripombe||10',
 	'proofreadpage_specialpage_legend' => 'Iskanje kazalnih strani',
 	'proofreadpage_source' => 'Vir',
 	'proofreadpage_source_message' => 'Preslikana izdaja, uporabljena za nastanek tega besedila',
+	'right-pagequality' => 'Spremeni označbo kakovosti strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -4282,6 +4312,7 @@ Catetan||10',
 );
 
 /** Swedish (Svenska)
+ * @author Cohan
  * @author Fluff
  * @author Lejonel
  * @author M.M.S.
@@ -4291,6 +4322,7 @@ Catetan||10',
  */
 $messages['sv'] = array(
 	'indexpages' => 'Lista över indexsidor',
+	'pageswithoutscans' => 'Sidor utan scanningar.',
 	'proofreadpage_desc' => 'Ger möjlighet att korrekturläsa texter mot scannade original',
 	'proofreadpage_namespace' => 'Sida',
 	'proofreadpage_index_namespace' => 'Index',
@@ -4342,6 +4374,7 @@ Anmärkningar||10',
 	'proofreadpage_specialpage_legend' => 'Sök i indexsidorna',
 	'proofreadpage_source' => 'Källa',
 	'proofreadpage_source_message' => 'Scannat orginal använt för att skapa denna text',
+	'right-pagequality' => 'Ändra sidans kvalitetsflagga',
 );
 
 /** Swahili (Kiswahili)
@@ -4816,9 +4849,10 @@ $messages['uk'] = array(
  */
 $messages['vec'] = array(
 	'indexpages' => 'Elenco de le pagine de indice',
+	'pageswithoutscans' => 'Pagine sensa scansion',
 	'proofreadpage_desc' => 'Parméte un façile confronto tra un testo e la so scansion original',
-	'proofreadpage_namespace' => 'Pajina',
-	'proofreadpage_index_namespace' => 'Indexe',
+	'proofreadpage_namespace' => 'Pagina',
+	'proofreadpage_index_namespace' => 'Indice',
 	'proofreadpage_image' => 'Imagine',
 	'proofreadpage_index' => 'Indice',
 	'proofreadpage_index_expected' => 'Eròr: indice mancante',
@@ -4842,15 +4876,15 @@ $messages['vec'] = array(
 	'proofreadpage_footer' => 'Pié de pagina (mìa incluso)',
 	'proofreadpage_toggleheaders' => 'ativa/disativa la visibilità de le sezioni mìa incluse',
 	'proofreadpage_quality0_category' => 'Sensa testo',
-	'proofreadpage_quality1_category' => 'Da corègiar',
-	'proofreadpage_quality2_category' => 'Da rivédar',
-	'proofreadpage_quality3_category' => 'Corèta',
+	'proofreadpage_quality1_category' => 'Da trascrivare',
+	'proofreadpage_quality2_category' => 'Con problemi',
+	'proofreadpage_quality3_category' => 'Trascrita',
 	'proofreadpage_quality4_category' => 'Verificà',
-	'proofreadpage_quality0_message' => 'Sta pagina no serve corègerla',
-	'proofreadpage_quality1_message' => 'Sta pagina no la xe mia stà ricontrolà',
+	'proofreadpage_quality0_message' => 'Sta pagina no ghe xe bisogno de trascrìvarla',
+	'proofreadpage_quality1_message' => 'Sta pagina no la xe stà gnancora trascrita',
 	'proofreadpage_quality2_message' => 'Ghe xe stà un problema durante la corezion de sta pagina',
-	'proofreadpage_quality3_message' => 'Sta pagina la xe stà controlà e corèta',
-	'proofreadpage_quality4_message' => 'Sta pagina la xe stà validà',
+	'proofreadpage_quality3_message' => 'Sta pagina la xe stà trascrita',
+	'proofreadpage_quality4_message' => 'Sta pagina la xe stà verificà da almanco do utenti',
 	'proofreadpage_index_listofpages' => 'Lista de le pagine',
 	'proofreadpage_image_message' => 'Colegamento a la pagina indice',
 	'proofreadpage_page_status' => 'Status de la pagina',
@@ -4867,6 +4901,7 @@ Note||10',
 	'proofreadpage_specialpage_legend' => 'Serca in te le pagine de indice',
 	'proofreadpage_source' => 'Fonte',
 	'proofreadpage_source_message' => 'Edission scanerizà doparà par inserir sto testo',
+	'right-pagequality' => "Canbiar l'indicador de qualità de la pagina",
 );
 
 /** Veps (Vepsan kel')

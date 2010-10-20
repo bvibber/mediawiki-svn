@@ -32,6 +32,19 @@ $messages['be-tarask'] = array(
 	'specialarc2admin' => 'Старонка кіраваньня сховішча ARC2 RDF',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'rdfio-desc' => "Arc'hwel enporzhiañ/ezporzhiañ RDF astennet, ennañ ur poent dibenn SPARQL, evit MediaWiki  Ereadurezh",
+	'rdfimport' => 'Enporzhiañ RDF',
+	'rdfio-arc2admin-desc' => 'Pajenn verañ evit ar sanailh RDF ARC2, evit Mediawiki Ereadurezh',
+	'rdfio-rdfimport-desc' => 'Ur bajenn dibar da enporzhiañ roadennoù ereadurel er furmad RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Ur poent dibenn SPARQL porchaset gant an SMWRDFConnector',
+	'sparqlendpoint' => 'Poent dibenn SPARQL',
+	'specialarc2admin' => 'Pajenn verañ ar sanailh ARC2 RDF',
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -56,6 +69,19 @@ $messages['de'] = array(
 	'rdfio-sparqlendpoint-desc' => 'Stellt eine SPARQL-Anknüpfung für den SMWRDFConnector bereit',
 	'sparqlendpoint' => 'SPARQL-Anknüpfung',
 	'specialarc2admin' => '„ARC2 RDF“-Speicher-Administrationsseite',
+);
+
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'rdfio-desc' => 'Funcionalidad expandida de importación y exportación RDF, extremo SPARQL, para Semantic MediaWiki',
+	'rdfimport' => 'Importación RDF',
+	'rdfio-arc2admin-desc' => 'Página de administración del ARC2 RDF Store para Semantic MediaWiki',
+	'rdfio-rdfimport-desc' => 'Una página especial para importar datos semánticos en formato RDF/XML',
+	'rdfio-sparqlendpoint-desc' => 'Un extremo SPARQL proporcionado por SMWRDFConnector',
+	'sparqlendpoint' => 'Extremo SPARQL',
+	'specialarc2admin' => 'Página de administración de ARC2 RDF Store',
 );
 
 /** French (Français)
@@ -97,6 +123,13 @@ $messages['gsw'] = array(
 	'specialarc2admin' => '„ARC2 RDF“-Spyycher-Administrationssyte',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'rdfimport' => 'יבוא RDF',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -110,10 +143,24 @@ $messages['ia'] = array(
 	'specialarc2admin' => 'Pagina de administration pro le immagazinage ARC2 RDF',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'rdfio-desc' => 'セマンティックMediaWikiのあｔめの、SPARQLエンドポイントを含む、拡張RDFのインポートおよびエクスポート機能',
+	'rdfimport' => 'RDF読み込み',
+	'rdfio-arc2admin-desc' => 'セマンティックMediaWikiのための、ARC2のRDFストアの管理ページ',
+	'rdfio-rdfimport-desc' => 'セマンティックなデータをRFD/XML形式で読み込むための特別ページ',
+	'rdfio-sparqlendpoint-desc' => 'SMWRDFConnectorによって提供されるSPARQLエンドポイント',
+	'sparqlendpoint' => 'SPARQLエンドポイント',
+	'specialarc2admin' => 'ARC2のRDFストア管理ページ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'rdfio-desc' => 'Erweidert RDF Import/Export Fonctionalitéit, inklusiv SPARQL-Endpunkt, fir Semantic MediaWiki',
 	'rdfimport' => 'RDF-Import',
 );
 
@@ -141,6 +188,13 @@ $messages['nl'] = array(
 	'rdfio-sparqlendpoint-desc' => 'Een SPARQL eindpunt voor de SMWRDFConnector',
 	'sparqlendpoint' => 'SPARQL eindpunt',
 	'specialarc2admin' => 'ARC2 RDF-opslag beheren',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'rdfimport' => 'RDF Import',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -207,6 +261,13 @@ $messages['pt-br'] = array(
 	'rdfio-sparqlendpoint-desc' => 'Um SPARQL Endpoint, fornecido pelo SMWRDFConnector',
 	'sparqlendpoint' => 'SPARQL Endpoint',
 	'specialarc2admin' => 'Página de administração do ARC2 RDF Store',
+);
+
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'rdfimport' => 'RDF import',
 );
 
 /** Russian (Русский)

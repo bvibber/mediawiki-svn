@@ -330,4 +330,3 @@ class MediaQueueTransformOutput extends MediaTransformOutput {
 
 	}
 }
-?>

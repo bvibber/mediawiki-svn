@@ -939,6 +939,7 @@ $messages['pdc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author McMonster
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
@@ -947,8 +948,8 @@ $messages['pl'] = array(
 	'ajax-se-pending' => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
 	'ajax-se-idling' => '($1s temu)',
 	'ajax-se-pagedoesnotexist' => 'strona nie istnieje',
-	'ajax-se-userinvalid' => 'BŁAD: nieprawidłowy użytkownik',
-	'ajax-se-usernotfound' => 'BŁĄD: nie znaleziono użytkownika',
+	'ajax-se-userinvalid' => 'Błąd – nieprawidłowy użytkownik',
+	'ajax-se-usernotfound' => 'Błąd – nie znaleziono użytkownika',
 );
 
 /** Piedmontese (Piemontèis)

@@ -299,7 +299,8 @@ Tor-võrgu kaudu toimetamine on väärtarvituse vältimiseks keelatud.',
  */
 $messages['fa'] = array(
 	'torblock-desc' => 'قطع دسترسی خروجی‌های TOR از ویرایش در یک ویکی را ممکن می‌کند',
-	'torblock-blocked' => 'نشانی اینترنتی شما، <tt>$1</tt>، به طور خودکار به عنوان یک خروجی TOR شناسایی شده‌است. ویرایش از طریق این نشانی برای جلوگیری از سوء استفاده ممکن نیست.',
+	'torblock-blocked' => 'نشانی آی‌پی شما، <tt>$1</tt>، به طور خودکار به عنوان یک خروجی TOR شناسایی شده‌است.
+ویرایش از طریق این نشانی برای جلوگیری از سوء استفاده ممکن نیست.',
 	'torblock-isexitnode' => 'نشانی آی‌پی $1 به عنوان گرهٔ خروجی Tor مسدود شده است.',
 	'right-torunblocked' => 'گذر از قطع دسترسی خودکار خروجی‌های TOR',
 	'tag-tor-description' => 'اگر این تگ تنظیم شده، ویرایشی توسط گرهٔ خروجی Tor صورت گرفته است.',
@@ -385,10 +386,12 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Rotem Liss
+ * @author YaronSh
  */
 $messages['he'] = array(
 	'torblock-desc' => 'אפשרות לחסימת נקודות יציאה של רשת TOR מעריכה בוויקי',
 	'torblock-blocked' => 'כתובת ה־IP שלכם, <tt>$1</tt>, זוהתה אוטומטית כנקודת יציאה של רשת TOR. עריכה דרך TOR חסומה כדי למנוע ניצול לרעה.',
+	'torblock-isexitnode' => 'כתובת ה־IP $1 נחסמה כצומת יציאה של Tor.',
 	'right-torunblocked' => 'עקיפת חסימות אוטומטיות של נקודות יציאה ברשת TOR',
 	'tag-tor-description' => 'אם תגית זו מוגדרת, בוצעה עריכה מנקודת יציאה של רשת TOR',
 	'tag-tor' => 'בוצעה דרך רשת TOR',
@@ -836,6 +839,13 @@ $messages['ru'] = array(
 	'tag-tor-description' => 'Если данная метка установлена, значит правка была сделана с выходного узла сети Tor.',
 	'tag-tor' => 'Сделано через Tor',
 	'abusefilter-edit-builder-vars-tor-exit-node' => 'Была ли правка сделана через выходной узел сети Tor',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'tag-tor' => 'Зроблене через Tor',
 );
 
 /** Yakut (Саха тыла)

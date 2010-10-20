@@ -1229,6 +1229,7 @@ $messages['roa-tara'] = array(
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => "Non ge stè nisciune utende cu 'u nome $1.",
 	'countedits-resultheader' => 'Resultate pe $1',
+	'countedits-resulttext' => '$1 ave fatte $2 {{PLURAL:$2|cangiamende|cangiaminde}}',
 	'countedits-mostactive' => 'Le condrebbuture cchiù attive',
 	'countedits-nocontribs' => 'Non ge stonne condrebbute sus a sta Uicchi.',
 );

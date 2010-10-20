@@ -442,6 +442,13 @@ $messages['nl'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Vanwege mogelijke interpretatieproblemen worden alleen berichten in platte tekst (MIME-type text/plain) geaccepteerd.',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */

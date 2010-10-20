@@ -175,6 +175,26 @@ $messages['arz'] = array(
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'ratinghistory' => 'Битте баһалау тарихы',
+	'ratinghistory-tab' => 'баһа',
+	'ratinghistory-link' => 'Бит баһаһы',
+	'ratinghistory-period' => 'Ваҡыт:',
+	'ratinghistory-month' => 'һуңғы ай',
+	'ratinghistory-3months' => 'һуңғы 3 ай',
+	'ratinghistory-year' => 'һуңғы йыл',
+	'ratinghistory-3years' => 'һуңғы 3 йыл',
+	'ratinghistory-ave' => 'Уртаса: $1',
+	'ratinghistory-purge' => 'кэшты таҙартырға',
+	'ratinghistory-svg' => 'SVG итеп күрһәтелһен',
+	'ratinghistory-table-rating' => 'Баһа',
+	'ratinghistory-table-votes' => 'Тауыштар',
+	'ratinghistory-ratings' => "'''Баһалау:''' '''(1)''' — насар; '''(2)''' — түбән; '''(3)''' — уртаса; '''(4)''' — яҡшы; '''(5)''' — бик шәп;",
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -701,7 +721,7 @@ $messages['fa'] = array(
 	'ratinghistory' => 'تاریخچهٔ ارزیابی صفحه',
 	'ratinghistory-leg' => '[[:$1|$1]] داده‌های تاریخچهٔ ارزیابی',
 	'ratinghistory-tab' => 'نمره',
-	'ratinghistory-link' => 'درجهٔ مقاله',
+	'ratinghistory-link' => 'نمرهٔ مقاله',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">از این که فرصتی را صرف بازبینی این صفحه کردید متشکریم!</font>''",
 	'ratinghistory-period' => 'بازه زمانی:',
 	'ratinghistory-month' => 'ماه پیش',
@@ -2177,7 +2197,7 @@ The ratings are as follows:
  */
 $messages['te'] = array(
 	'ratinghistory' => 'పేజీ రేటింగు చరిత్ర',
-	'ratinghistory-link' => 'పేజీ మూల్యాంకన',
+	'ratinghistory-link' => 'పుట మూల్యాంకన',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">ఈ పేజీని సమీక్షించడానికి సమయం వెచ్చించినందుకు ధన్యవాదాలు!</font>''",
 	'ratinghistory-period' => 'కాల వ్యవధి:',
 	'ratinghistory-month' => 'గత నెల',
@@ -2391,6 +2411,7 @@ Le valutassion le xe ste qua:
 
 '''(1)''' - Tristo assè; '''(2)''' - Tristo; '''(3)''' - Cussì-cussì; '''(4)''' - Bon; '''(5)''' - Bon assè;",
 	'ratinghistory-graph-scale' => "'''Revision par zorno'''  <font color=\"red\">''(rosso)''</font> mostrà in scala ''1:\$1''.",
+	'right-feedback' => 'Dopara sto modulo par valutar na pagina',
 );
 
 /** Veps (Vepsan kel')

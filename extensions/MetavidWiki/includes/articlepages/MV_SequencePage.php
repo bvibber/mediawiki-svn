@@ -760,4 +760,3 @@ class MV_SequencePage extends Article {
 		return '';
 	}
 }
-?>

@@ -844,5 +844,3 @@ if (0) {
                         FILE_APPEND|LOCK_EX);
   }
 }
-
-?>

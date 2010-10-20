@@ -36,19 +36,14 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7 beta 3' );
+	define( 'Maps_VERSION', '0.7.1 rc1' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
 	define( 'Maps_COORDS_DMS', 'dms' );
 	define( 'Maps_COORDS_DM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
-
-	// The symbols to use for degrees, minutes and seconds.
-	define( 'Maps_GEO_DEG', '°' );
-	define( 'Maps_GEO_MIN', "'" );
-	define( 'Maps_GEO_SEC', '"' );
-
+	
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
@@ -66,14 +61,17 @@ else {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+	$wgAutoloadClasses['MapsLayer'] 				= $incDir . 'Maps_Layer.php';
+	$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
 	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
-	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';	
+	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
 	
 	// Autoload the "includes/criteria/" classes.
 	$criDir = $incDir . 'criteria/';
 	$wgAutoloadClasses['CriterionIsDistance'] 		= $criDir . 'CriterionIsDistance.php';
+	$wgAutoloadClasses['CriterionIsImage'] 			= $criDir . 'CriterionIsImage.php';
 	$wgAutoloadClasses['CriterionIsLocation'] 		= $criDir . 'CriterionIsLocation.php';
 	$wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
 	
@@ -92,6 +90,7 @@ else {
 	$manDir = $incDir . 'manipulations/';
 	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamDimension'] 		= $manDir . 'Maps_ParamDimension.php';
+	$wgAutoloadClasses['MapsParamImage'] 			= $manDir . 'Maps_ParamImage.php';
 	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
 	$wgAutoloadClasses['MapsParamZoom'] 			= $manDir . 'Maps_ParamZoom.php';
 	
@@ -114,11 +113,6 @@ else {
 		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 	}		
 	
-	$egMapsFeatures = array();
-	
-	// Include the settings file.
-	require_once $egMapsDir . 'Maps_Settings.php';
-
 	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 
 	// Register the initialization function of Maps.
@@ -135,6 +129,17 @@ else {
 	
 	// Since 0.7
 	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
+	
+	// Since 0.7.1
+	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
+	
+	$egMapsFeatures = array();
+	
+	// Include the settings file.
+	require_once $egMapsDir . 'Maps_Settings.php';
+	
+	define( 'Maps_NS_LAYER', 		$egMapsNamespaceIndex + 0 );
+	define( 'Maps_NS_LAYER_TALK', 	$egMapsNamespaceIndex + 1 );
 }
 
 /**
@@ -145,7 +150,7 @@ else {
  * @return true
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang;
+	global $wgExtensionCredits, $wgLang, $wgExtraNamespaces, $wgNamespaceAliases;
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs;
 
@@ -154,6 +159,16 @@ function efMapsSetup() {
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
+
+	$wgExtraNamespaces += array(
+		Maps_NS_LAYER => 'Layer',
+		Maps_NS_LAYER_TALK => 'Layer talk'
+	);
+	
+	$wgNamespaceAliases += array(
+		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER,
+		wfMsg( 'maps-ns-layer-talk' ) => Maps_NS_LAYER_TALK
+	);
 	
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );

@@ -512,6 +512,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'mostrevisors-namespace' => 'ನಾಮವರ್ಗ:',
 	'mostrevisors-submit' => 'ಹೋಗು',
 );
 
@@ -610,6 +611,15 @@ $messages['nl'] = array(
 	'mostrevisors-hideredir' => "Doorverwijspagina's verbergen",
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|bewerker|bewerkers}}',
 	'mostrevisors-viewcontributors' => 'De grootste bijdragers bekijken',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'mostrevisors-limitlinks' => 'Vis opptil $1 sider',
+	'mostrevisors-namespace' => 'Namnerom:',
+	'mostrevisors-submit' => 'Gå',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

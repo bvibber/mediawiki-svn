@@ -12,4 +12,3 @@
  class MV_AutoCompleteCache {
  	
  }
-?>

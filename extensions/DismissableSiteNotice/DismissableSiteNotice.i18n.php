@@ -769,6 +769,14 @@ $messages['ru'] = array(
 	'sitenotice-desc' => 'Позволяет участникам скрывать уведомления сайта',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sitenotice_close' => 'заперти',
+	'sitenotice-desc' => 'Доволює хоснователям заперти повідомлїня в заголовю сайту',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

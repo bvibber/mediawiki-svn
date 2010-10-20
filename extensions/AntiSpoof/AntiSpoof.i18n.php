@@ -551,6 +551,7 @@ $messages['et'] = array(
 	'antispoof-conflict-bottom' => 'Palun vali teine nimi.',
 	'antispoof-name-illegal' => 'Nimi "$1" ei ole lubatud, et vältida eksitavaid või pilavaid kasutajanimesid. Põhjus: $2<br />
 Palun vali teine nimi.',
+	'antispoof-badtype' => 'Halb andmetüüp',
 	'antispoof-blacklisted' => 'Sisaldab mustas nimekirjas olevat märki',
 	'antispoof-noletters' => 'Ei sisalda ühtegi tähte',
 	'antispoof-mixedscripts' => 'Sisaldab ühildumatuid kirjasüsteeme',
@@ -1207,6 +1208,13 @@ $messages['lt'] = array(
 	'antispoof-tooshort' => 'Kanonizuotas vardas per trumpas',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'antispoof-badtype' => 'Nederīgs datu tips',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -1239,7 +1247,7 @@ $messages['ml'] = array(
 	'antispoof-name-illegal' => 'ഉപയോക്തൃനാമത്തിലെ തെറ്റിദ്ധാരണയും സ്പൂഫിങ്ങും ഒഴിവാക്കാൻ "$1" എന്ന ഉപയോക്തൃനാമം അനുവദനീയമല്ല: $2.
 ദയവായി മറ്റൊരു നാമം തിരഞ്ഞെടുക്കുക.',
 	'antispoof-badtype' => 'മോശം ഡേറ്റാ തരം',
-	'antispoof-empty' => 'ശൂന്യമായ സ്ട്രിംങ്ങ്',
+	'antispoof-empty' => 'ശൂന്യമായ അക്ഷരക്കൂട്ടം',
 	'antispoof-blacklisted' => 'കരിമ്പട്ടികയിൽ പെട്ട അക്ഷരങ്ങളുണ്ട്',
 	'antispoof-combining' => 'യോജിപ്പിക്കാനുള്ള അടയാളത്തോടെ തുടങ്ങുന്നു',
 	'antispoof-unassigned' => 'നിർദ്ദേശിക്കപ്പെടാത്തതോ പിന്തള്ളപ്പെട്ടതോ ആയ അക്ഷരം ഉൾക്കൊള്ളുന്നു',
@@ -1599,14 +1607,18 @@ $messages['qu'] = array(
  * @author KlaudiuMihaila
  * @author Minisarm
  * @author Stelistcristi
+ * @author Strainu
  */
 $messages['ro'] = array(
+	'antispoof-desc' => 'Blochează crearea de conturi cu nume de utilizator cu LiTeRe AmEsTeCate, confuzante sau similare',
 	'antispoof-conflict-top' => 'Numele „$1” este prea asemănător cu {{PLURAL:$2|următorul cont deja existent|următoarele $2 conturi}}:',
 	'antispoof-conflict-bottom' => 'Vă rugăm să alegeți alt nume.',
 	'antispoof-name-illegal' => 'Numele „$1” nu este permis pentru a preveni confuziile cu numele: $2. Vă rog alegeți alt nume de utilizator.',
 	'antispoof-badtype' => 'Tip de date greșit',
 	'antispoof-empty' => 'Şir gol',
 	'antispoof-blacklisted' => 'Conține un caracter interzis',
+	'antispoof-combining' => 'Începe cu marcajul de combinare',
+	'antispoof-unassigned' => 'Conține un caracter neatribuit sau învechit',
 	'antispoof-noletters' => 'Nu conține nici o literă',
 	'antispoof-ignore' => 'Nu verifica existența unor nume de cont similare',
 	'right-override-antispoof' => 'Asuprește verificările spoofing',
@@ -1616,6 +1628,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'antispoof-badtype' => 'Tipe de date errate',
 	'antispoof-empty' => 'stringa vacande',
 );
 
@@ -1654,8 +1667,11 @@ $messages['rue'] = array(
 	'antispoof-blacklisted' => 'Обсягує недоволеный сімбол',
 	'antispoof-combining' => 'Зачінать комбінуючім діакрітічным сімболом',
 	'antispoof-unassigned' => 'Обсягує невызначеный або непідпорованый знак',
+	'antispoof-noletters' => 'Не обсягує жадну літеру',
 	'antispoof-mixedscripts' => 'Обсягує недоволену комбінацію тіпів писма',
 	'antispoof-tooshort' => 'Мено є по нормалізації дуже курте',
+	'antispoof-ignore' => 'Іґноровати перевіркы на ошалюючі імена',
+	'right-override-antispoof' => 'Іґнорованя перевірок на подобны імена',
 );
 
 /** Yakut (Саха тыла)
@@ -1853,6 +1869,7 @@ $messages['sv'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'antispoof-conflict-bottom' => 'தயவு செய்து மற்றொரு பெயரைத் தேர்ந்தெடுக்கவும்.',
 	'antispoof-badtype' => 'மோசமான தரவு வகை',
 	'antispoof-empty' => 'வெற்றுச் சொற்றொடர்',
 	'antispoof-blacklisted' => 'தடுக்கப்பட்ட எழுத்து உள்ளது',
@@ -1866,6 +1883,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'antispoof-desc' => 'మిశ్రమ లిపులతో, అయోమయపు మరియు సామీప్యపు పేర్లతో ఖాతాలను సృష్టించడాన్ని నిరోధిస్తుంది',
+	'antispoof-conflict-top' => '"$1" అన్న పేరు {{PLURAL:$2|ఈ ప్రస్తుత ఖాతాకి|ఈ $2 ఖాతాలకు}} చాలా దగ్గరగా ఉంది:',
 	'antispoof-conflict-bottom' => 'దయచేసి మరో పేరుని ఎంచుకోండి.',
 	'antispoof-name-illegal' => '"$1" అనే పేరును అనుమతించము; అయోమయాన్ని, ఎగతాళి చేయడాన్ని నివారించేందుకు: $2. దయచేసి మరో పేరును ఎంచుకోండి.',
 	'antispoof-badtype' => 'తప్పుడు డాటా రకం',
@@ -2077,6 +2095,13 @@ $messages['yi'] = array(
 	'antispoof-noletters' => 'אַנטהאַלט ניט קײַן בוכשטאַבן.',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'antispoof-badtype' => 'Irú dátà burúkú',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'antispoof-desc' => '封鎖一啲對於有混合程序、混淆同埋相似嘅用戶名嘅開戶口動作',
@@ -2111,13 +2136,14 @@ $messages['zea'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Jimmy xu wrk
  * @author Liangent
  * @author PhiLiP
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'antispoof-desc' => '禁止创建用户名使用混合文字、容易混淆或与已存在用户名过于相似的帐户',
-	'antispoof-conflict-top' => '用户名“$1”与下列账户过于相似：',
+	'antispoof-conflict-top' => '用户名“$1”与{{PLURAL:$2|下列账户|下列 $2 个账户}}过于相似：',
 	'antispoof-conflict-bottom' => '请选择其他名称。',
 	'antispoof-name-illegal' => '为了防止混淆或欺诈性使用用户名“$2”，用户名“$1”已被禁止使用。请使用其他用户名。',
 	'antispoof-badtype' => '错误的数据类型',

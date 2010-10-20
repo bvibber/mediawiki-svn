@@ -507,4 +507,3 @@ $t->setUp();
 $t->runTest();
 
 echo "OK.\n";
-?>

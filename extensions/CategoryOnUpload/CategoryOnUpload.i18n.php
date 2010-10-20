@@ -58,6 +58,14 @@ $messages['arz'] = array(
 	'categoryonupload-label' => 'التصنيف:',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'categoryonupload-desc' => 'İstifadəçiyə fayl yükləyərkən kateqoriya seçmək imkanı verir',
+	'categoryonupload-label' => 'Kateqoriya:',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -565,6 +573,13 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'categoryonupload-desc' => 'Позволяет участнику при загрузке файла выбирать категорию',
 	'categoryonupload-label' => 'Категория:',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'categoryonupload-label' => 'Катеґорія:',
 );
 
 /** Yakut (Саха тыла)

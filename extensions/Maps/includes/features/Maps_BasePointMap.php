@@ -97,7 +97,14 @@ abstract class MapsBasePointMap {
 		
 		$this->addSpecificMapHTML( $parser );
 		
-		$this->service->addDependencies( $parser );
+		global $wgTitle;
+		if ( $wgTitle->isSpecialPage() ) {
+			global $wgOut;
+			$this->service->addDependencies( $wgOut );
+		}
+		else {
+			$this->service->addDependencies( $parser );			
+		}
 		
 		return $this->output;
 	}
@@ -117,7 +124,7 @@ abstract class MapsBasePointMap {
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
 			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
-			
+
 			if ( !$markerData ) continue;
 			
 			if ( count( $args ) > 0 ) {
@@ -141,12 +148,7 @@ abstract class MapsBasePointMap {
 			}
 			
 			if ( $markerData['icon'] != '' ) {
-				$title = Title::newFromText( $markerData['icon'] );
-
-				if ( !is_null( $title ) && $title->exists() ) {
-					$iconImagePage = new ImagePage( $title );
-					$markerData['icon'] = $iconImagePage->getDisplayedFile()->getURL();
-				}
+				$markerData['icon'] = MapsMapper::getImageUrl( $markerData['icon'] );
 			}
 			
 			// Temporary fix, will refactor away later

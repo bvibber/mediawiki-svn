@@ -632,6 +632,7 @@ $messages['fy'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author McDutchie
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -651,7 +652,7 @@ $messages['gl'] = array(
 	'importusers-log-summary-all' => 'Todo',
 	'importusers-log-summary-added' => 'Engadido',
 	'importusers-log-summary-updated' => 'Actualizado',
-	'importusers-login-name' => 'Rexistrar nome',
+	'importusers-login-name' => 'Nome de usuario',
 	'importusers-password' => 'contrasinal',
 	'importusers-email' => 'correo electrónico',
 	'importusers-realname' => 'nome real',
@@ -1078,6 +1079,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'importusers-log-summary' => 'ಸಾರಾಂಶ',
+	'importusers-log-summary-all' => 'ಎಲ್ಲಾ',
 	'importusers-password' => 'ಪ್ರವೇಶಪದ',
 	'importusers-email' => 'ಇ-ಅಂಚೆ',
 );
@@ -1589,15 +1591,18 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'importusers' => 'Importați utilizatori',
 	'importusers-uploadfile' => 'Încarcă fișier',
 	'importusers-form-button' => 'Importă',
+	'importusers-user-added' => "Utilizatorul '''$1''' a fost adăugat.",
 	'importusers-log-summary' => 'Rezumat',
 	'importusers-log-summary-all' => 'Total',
 	'importusers-log-summary-added' => 'Adăugat',
 	'importusers-log-summary-updated' => 'Actualizat',
+	'importusers-login-name' => 'Nume autentificare',
 	'importusers-password' => 'parolă',
 	'importusers-email' => 'e-mail',
 	'importusers-realname' => 'nume real',
@@ -1843,7 +1848,12 @@ $messages['sw'] = array(
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'importusers-log-summary' => 'சுருக்கம்',
 	'importusers-log-summary-all' => 'அனைத்தும்',
+	'importusers-log-summary-added' => 'சேர்க்கப்பட்டது',
+	'importusers-log-summary-updated' => 'புதிப்பிக்கப்பட்டது',
+	'importusers-login-name' => 'புகுபதிகைப் பயனர் பெயர்',
+	'importusers-password' => 'கடவுச்சொல்',
 );
 
 /** Telugu (తెలుగు)

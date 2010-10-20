@@ -900,6 +900,7 @@ $messages['lb'] = array(
 	'deletebatch-caption' => 'Lëscht vun der Säit:',
 	'deletebatch-title' => 'Zesumme läschen',
 	'deletebatch-link-back' => "Gitt zréck op d'Spezialsäit",
+	'deletebatch-as' => 'Skript ausféieren als:',
 	'deletebatch-both-modes' => 'Wielt entweder eng spezifesch Säit oder eng spezifesch Lëscht vu Säiten.',
 	'deletebatch-or' => '<b>ODER</b>',
 	'deletebatch-delete' => 'Läschen',
@@ -907,6 +908,7 @@ $messages['lb'] = array(
 	'deletebatch-processing-from-form' => 'Säiten vum Formulaire aus läschen',
 	'deletebatch-omitting-nonexistant' => "D'Säit $1 déi et net gëtt iwwersprangen.",
 	'deletebatch-omitting-invalid' => 'Déi ongëlteg Säit $1 iwwersprangen.',
+	'deletebatch-file-bad-format' => 'De Fichier sollt als textfile virleien',
 	'deletebatch-file-missing' => 'De Fichier deen ukoum konnt net geliest ginn',
 	'deletebatch-select-script' => 'de Script vun der Säit läschen',
 	'deletebatch-select-yourself' => 'Dir',
@@ -1228,13 +1230,17 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'deletebatch-caption' => 'Lista de pagini:',
+	'deletebatch-title' => 'Şterge lot',
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-delete' => 'Ştergere',
 	'deletebatch-page' => 'Pagini de șters:',
 	'deletebatch-file-missing' => 'Nu se poate citi fișierul dat',
+	'deletebatch-select-yourself' => 'Dumneavoastră',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1373,6 +1379,16 @@ En uppladdad fil ska innehålla sidnamn och en valfri anledning separerade med e
 	'deletebatch-select-yourself' => 'du',
 	'deletebatch-no-page' => 'Var god specifiera minst en sida för att radera ELLER välj en fil innehållande en sidlista.',
 	'right-deletebatch' => 'Massradera sidor',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'deletebatch-caption' => 'பக்கப்பட்டியல்:',
+	'deletebatch-delete' => 'நீக்கவும்',
+	'deletebatch-page' => 'நீக்க வேண்டிய பக்கங்கள்:',
+	'deletebatch-select-yourself' => 'தாங்கள்',
 );
 
 /** Telugu (తెలుగు)

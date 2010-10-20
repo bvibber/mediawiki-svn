@@ -80,6 +80,7 @@ $messages['af'] = array(
 	'contactpage-legend' => 'Stuur E-pos',
 	'contactpage-defsubject' => 'Kontak boodskap',
 	'contactpage-subject-and-sender' => '$1 (van $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (van $2 op $3)',
 	'contactpage-fromname' => 'U naam *',
 	'contactpage-fromaddress' => 'U e-posadres **',
 	'contactpage-formfootnotes' => "* opsioneel<br />
@@ -89,6 +90,7 @@ $messages['af'] = array(
 	'contactpage-formfootnotes-required' => 'Alle velde is verpligtend.',
 	'contactpage-captcha' => 'Los die captch op voor u die boodskap kan stuur ([[Special:Captcha/help|meer inligting]])',
 	'contactpage-captcha-failed' => 'Die captcha-toets het gefaal! ([[Special:Captcha/help|meer inligting]])',
+	'contactpage-includeip' => 'Sluit my IP-adres by die boodskap in.',
 );
 
 /** Gheg Albanian (Gegë)
@@ -159,6 +161,27 @@ $messages['arz'] = array(
 	'contactpage-formfootnotes-required' => 'كل الحقول مطلوبة',
 	'contactpage-captcha' => 'لإرسال الرسالة، من فضلك حل الكابتشا ([[Special:Captcha/help|معلومات إضافية]])',
 	'contactpage-captcha-failed' => 'اختبار الكابتشا فشل! ([[Special:Captcha/help|معلومات إضافية]])',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'contact' => 'Бәйләнеш бите',
+	'contactpage' => 'Бәйләнеш бите',
+	'contactpage-desc' => '[[Special:Contact|Ҡараусылар өсөн форма]]',
+	'contactpage-title' => 'Бәйләнеш',
+	'contactpage-legend' => 'Э-хат ебәрергә',
+	'contactpage-defsubject' => 'Хәбәр',
+	'contactpage-subject-and-sender' => '$1 ($2 башлап)',
+	'contactpage-subject-and-sender-withip' => '$1 ($2  $3 адресынан)',
+	'contactpage-fromname' => 'Исемегеҙ: *',
+	'contactpage-fromaddress' => 'Электрон почта адресығыҙ: **',
+	'contactpage-formfootnotes' => '* мәжбүри түгел<br />
+** мәжбүри түгел, ләкин һеҙгә яуап биреү өсөн кәрәк',
+	'contactpage-fromname-required' => 'Исемегеҙ:',
+	'contactpage-fromaddress-required' => 'Эл. почта адресығыҙ:',
+	'contactpage-formfootnotes-required' => 'Бөтә юлдар ҙа тултырылырға тейеш',
 );
 
 /** Bikol Central (Bikol Central)
@@ -302,6 +325,7 @@ $messages['ca'] = array(
 	'contactpage-legend' => 'Envia missatge',
 	'contactpage-defsubject' => 'Missatge de contacte',
 	'contactpage-subject-and-sender' => '$1 (des de $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (de $2 a $3)',
 	'contactpage-fromname' => 'El vostre nom: *',
 	'contactpage-fromaddress' => 'El vostre correu-e: **',
 	'contactpage-formfootnotes' => '* opcional<br />
@@ -1473,6 +1497,7 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'contact' => 'Kontaktsida',
@@ -1483,6 +1508,7 @@ $messages['nn'] = array(
 	'contactpage-legend' => 'Send e-post',
 	'contactpage-defsubject' => 'Melding',
 	'contactpage-subject-and-sender' => '$1 (frå $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (frå $2 på $3)',
 	'contactpage-fromname' => 'Namnet ditt: *',
 	'contactpage-fromaddress' => 'E-postadressa di: **',
 	'contactpage-formfootnotes' => '* valfri<br />
@@ -1792,6 +1818,7 @@ $messages['sah'] = array(
 	'contactpage-legend' => 'Суругу ыыт',
 	'contactpage-defsubject' => 'Сурук',
 	'contactpage-subject-and-sender' => '$1 (от $2)',
+	'contactpage-subject-and-sender-withip' => '$1 ($2, $3 аадырыстан)',
 	'contactpage-fromname' => 'Эн аатыҥ: *',
 	'contactpage-fromaddress' => 'Эн эл. почтаҥ аадырыһа: **',
 	'contactpage-formfootnotes' => '* булугуччута суох<br />
@@ -1801,6 +1828,7 @@ $messages['sah'] = array(
 	'contactpage-formfootnotes-required' => 'Бары түннүктэр булгуччу толоруллуохтаахтар.',
 	'contactpage-captcha' => 'Сурук ыытарга CAPTCHA бэрэбиэркэтин ааһыахтааххын ([[Special:Captcha/help|ол туһунан сиһилии]])',
 	'contactpage-captcha-failed' => 'CAPTCHA бэрэбиэркэтэ ааһыллыбатах! ([[Special:Captcha/help|ол туһунан сиһилии]])',
+	'contactpage-includeip' => 'Мин IP-бын бу биллэриккэ киллэр.',
 );
 
 /** Slovak (Slovenčina)
@@ -1959,6 +1987,17 @@ $messages['sv'] = array(
 	'contactpage-includeip' => 'Inkludera min IP-adress i detta meddelande.',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contactpage-legend' => 'மின்னஞ்சலை அனுப்பவும்',
+	'contactpage-fromname' => 'தங்களது பெயர்: *',
+	'contactpage-fromaddress' => 'தங்களது மின்னஞ்சல்: **',
+	'contactpage-fromname-required' => 'தங்களது பெயர்:',
+	'contactpage-fromaddress-required' => 'தங்களது மின்னஞ்சல்:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -1971,6 +2010,7 @@ $messages['te'] = array(
 	'contactpage-legend' => 'ఈమెయిలు పంపండి',
 	'contactpage-defsubject' => 'సంప్రదింపు సందేశం',
 	'contactpage-subject-and-sender' => '$1 ($2 నుండి)',
+	'contactpage-subject-and-sender-withip' => '$1 ($3 వద్ద $2 నుండి)',
 	'contactpage-fromname' => 'మీ పేరు: *',
 	'contactpage-fromaddress' => 'మీ ఈ-మెయిల్: **',
 	'contactpage-formfootnotes' => '* ఐచ్చికం<br />
@@ -1980,6 +2020,7 @@ $messages['te'] = array(
 	'contactpage-formfootnotes-required' => 'అన్ని ఖాళీలు తప్పనిసరి.',
 	'contactpage-captcha' => 'సందేశాన్ని పంపిచడానికి, ఆమకవేపని పరిష్కరించండి ([[Special:Captcha/help|మరింత సమాచారం]])',
 	'contactpage-captcha-failed' => 'అమకవేప పరీక్ష విఫలమైంది! ([[Special:Captcha/help|మరింత సమాచారం]])',
+	'contactpage-includeip' => 'ఈ సందేశంలో నా ఐపీ చిరునామాని చేర్చు.',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -2206,6 +2247,7 @@ $messages['vec'] = array(
 	'contactpage-formfootnotes-required' => 'Tuti i canpi i xe obligatori.',
 	'contactpage-captcha' => 'Par mandar el messajo, par piaser risolvi el captcha ([[Special:Captcha/help|ulteriori informassion]])',
 	'contactpage-captcha-failed' => 'Test captcha mia riussìo! ([[Special:Captcha/help|ulteriori informassion]])',
+	'contactpage-includeip' => 'Includi el me indirisso IP in sto messajo.',
 );
 
 /** Veps (Vepsan kel')

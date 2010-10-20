@@ -83,6 +83,13 @@ $messages['eu'] = array(
 	'firefoggcu-desc' => 'Firefoggen Chunked igoera protokoloa',
 );
 
+/** Finnish (Suomi)
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'firefoggcu-desc' => 'Firefoggin pilkottu latausprotokolla',
+);
+
 /** French (Français)
  * @author Peter17
  */

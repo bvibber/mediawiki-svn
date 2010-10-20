@@ -236,6 +236,21 @@ $messages['ast'] = array(
 	'coll-show_collection' => 'Amosar coleición',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'coll-printable_version_pdf' => 'PDF өлгөһө',
+	'coll-remove_this_page' => 'Был битте китабығыҙҙан сығарығыҙ',
+	'coll-remove_page_tooltip' => 'Ағымдағы вики-битте китабығыҙҙан сығарырға',
+	'coll-show_collection' => 'Китапты күрһәтергә',
+	'coll-show_collection_tooltip' => 'Китапты мөхәррирләү/тейәү/заказ биреү өсөн баҫығыҙ',
+	'coll-not_addable' => 'Был битте өҫтәп булмай',
+	'coll-make_suggestions' => 'Тәҡдим ителгән биттәр',
+	'coll-make_suggestions_tooltip' => 'Китабығыҙҙа булған биттәргә таянып һөйләмдәрҙе күрһәт',
+	'coll-suggest_empty' => 'буш',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
@@ -1260,6 +1275,7 @@ $messages['he'] = array(
 	'coll-disable' => 'ביטול',
 	'coll-book_creator_disable' => 'ביטול מצב ספר',
 	'coll-book_creator_disable_tooltip' => 'הפסקת השימוש במצב ספר',
+	'coll-remove_linked_article' => 'הסרת עמודי ויקי המקושרים מהספר שלך',
 	'coll-add_category' => 'הוספת קטגוריה זו לספר שלכם',
 	'coll-add_category_tooltip' => 'הוספת כל הדפים בקטגוריה זו לספר שלכם',
 	'coll-add_this_page' => 'הוספת דף זה לספר שלכם',
@@ -1927,6 +1943,14 @@ $messages['lt'] = array(
 	'coll-printable_version_pdf' => 'PDF versija',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'coll-print_export' => 'Drukāt/eksportēt',
+	'coll-bookscategory' => 'Grāmatas',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -2512,6 +2536,9 @@ $messages['ro'] = array(
 	'coll-download_as_tooltip' => 'Descărcați o versiune $1 a acestei pagini wiki',
 	'coll-disable' => 'dezactivează',
 	'coll-book_creator_disable' => 'Dezactivează creatorul de cărți',
+	'coll-book_creator_disable_tooltip' => 'Oprirea utilizării creatorului de cărți',
+	'coll-add_linked_article' => 'Adaugă pagina indicată în cartea mea',
+	'coll-remove_linked_article' => 'Elimină pagina indicată din cartea mea',
 	'coll-add_category' => 'Adaugă această categorie la carte',
 	'coll-add_category_tooltip' => 'Adăugați toate wiki paginile din această categorie în cartea dumneavoastră',
 	'coll-add_this_page' => 'Adaugă această pagină la carte',
@@ -2521,14 +2548,19 @@ $messages['ro'] = array(
 	'coll-clear_collection_confirm' => 'Doriți să goliți complet cartea dumneavoastră?',
 	'coll-clear_collection_tooltip' => 'Elimină toate wiki paginile din cartea actuală',
 	'coll-help' => 'Ajutor',
+	'coll-help_tooltip' => 'Arată de ajutor despre crearea cărţii',
 	'coll-helppage' => 'Help:Cărți',
 	'coll-load_collection' => 'Încarcă cartea',
 	'coll-load_collection_tooltip' => 'Încarcă această carte ca actuala dumneavoastră carte',
 	'coll-n_pages' => '$1 {{PLURAL:$1|pagină|pagini}}',
 	'coll-printable_version_pdf' => 'Versiune PDF',
+	'coll-remove_this_page' => 'Eliminaţi această pagină din cartea dvs.',
 	'coll-remove_page_tooltip' => 'Eliminați pagina actuală din cartea dumneavoastră',
 	'coll-show_collection' => 'Arată cartea',
 	'coll-show_collection_tooltip' => 'Apăsați pentru a modifica/descărca/comanda cartea dumneavoastră',
+	'coll-not_addable' => 'Aceasta pagina nu poate fi adăugată',
+	'coll-make_suggestions' => 'Sugerează pagini',
+	'coll-make_suggestions_tooltip' => 'Afişaţi sugestii bazate pe paginile din cartea dvs.',
 	'coll-suggest_empty' => 'gol',
 );
 
@@ -2536,9 +2568,15 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'coll-print_export' => 'Stambe/esporte',
 	'coll-create_a_book' => "Ccreje 'nu libbre",
+	'coll-book_creator' => 'Ccrejatore de libbre',
+	'coll-download_as' => 'Scareche cumme $1',
+	'coll-download_as_tooltip' => "Scareche 'na $1 versione de sta pàgene de Uicchi",
 	'coll-disable' => 'disabbilete',
 	'coll-add_category' => "Aggiunge sta categorije jndr'à 'u libbre tue",
+	'coll-add_this_page' => "Aggiunge sta pàgene a 'u libbre tune",
+	'coll-add_page_tooltip' => "Aggiunge 'a pàgene de sta Uicchi a 'u libbre tune",
 	'coll-bookscategory' => 'Libbre',
 	'coll-clear_collection' => "Pulizze 'u libbre",
 	'coll-help' => 'Aijute',
@@ -2547,6 +2585,8 @@ $messages['roa-tara'] = array(
 	'coll-n_pages' => '$1 {{PLURAL:$1|pàgene|pàggene}}',
 	'coll-printable_version_pdf' => 'Versione in PDF',
 	'coll-show_collection' => "Fà vedè 'nu libbre",
+	'coll-make_suggestions' => 'Pàggene suggerite',
+	'coll-suggest_empty' => 'vacande',
 );
 
 /** Russian (Русский)
@@ -2609,6 +2649,7 @@ $messages['rue'] = array(
 	'coll-bookscategory' => 'Книгы',
 	'coll-help' => 'Поміч',
 	'coll-n_pages' => '$1 {{PLURAL:$1|сторінка|сторінкы|сторінок}}',
+	'coll-printable_version_pdf' => 'PDF-верзія',
 	'coll-remove_this_page' => 'Одобрати тоту сторінку з вашой книгы',
 );
 
@@ -2625,6 +2666,8 @@ $messages['sah'] = array(
 	'coll-disable' => 'араарыы',
 	'coll-book_creator_disable' => 'Кинигэ оҥорооччуну араарыы',
 	'coll-book_creator_disable_tooltip' => 'Кинигэ онорооччуну туһаныма',
+	'coll-add_linked_article' => 'Сигэммит биикини кинигэҕэр эп',
+	'coll-remove_linked_article' => 'Сигэммит биики сирэйи кинигэттэн сот',
 	'coll-add_category' => 'Бу категорияны кинигэҕэр эбии',
 	'coll-add_category_tooltip' => 'Бу категория биики сирэйдэрин кинигэҕэ киллэр',
 	'coll-add_this_page' => 'Бу сирэйи кинигэҕэр киллэр',
@@ -2656,6 +2699,14 @@ $messages['sah'] = array(
 $messages['sc'] = array(
 	'coll-bookscategory' => 'Libros',
 	'coll-show_collection' => 'Ammustra libru',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'coll-show_collection' => 'Talìa libbru',
+	'coll-suggest_empty' => 'vacanti',
 );
 
 /** Slovak (Slovenčina)
@@ -2882,7 +2933,9 @@ $messages['sw'] = array(
 $messages['ta'] = array(
 	'coll-disable' => 'செயலிழக்கச் செய்',
 	'coll-add_this_page' => 'உங்கள் புத்தகத்தில் இப்பக்கத்தைச் சேர்க்கவும்',
+	'coll-bookscategory' => 'புத்தகங்கள்',
 	'coll-help' => 'உதவி',
+	'coll-helppage' => 'உதவி:புத்தகங்கள்',
 	'coll-load_collection' => 'புத்தகத்தை ஏற்றவும்',
 	'coll-show_collection' => 'புத்தகத்தை காட்டவும்',
 	'coll-suggest_empty' => 'ஒன்றுமில்லாத',
@@ -2896,6 +2949,7 @@ $messages['te'] = array(
 	'coll-print_export' => 'ముద్రించండి/ఎగుమతి చేయండి',
 	'coll-create_a_book' => 'ఓ పుస్తకాన్ని సృష్టించండి',
 	'coll-create_a_book_tooltip' => 'పుస్తకాన్ని లేదా పేజీల సేకరణని సృష్టించండి',
+	'coll-book_creator' => 'పుస్తక కూర్పరి',
 	'coll-download_as' => '$1 క్రింద దిగుమతి చేసుకోండి',
 	'coll-download_as_tooltip' => 'ఈ పేజీ యొక్క $1 సంచికని దించుకోండి',
 	'coll-disable' => 'అచేతన పరచు',
@@ -2908,9 +2962,11 @@ $messages['te'] = array(
 	'coll-clear_collection_confirm' => 'మీరు నిజంగా మీ పుస్తకమును పూర్తిగా తొలగించాలని అనుకొంటున్నారా?',
 	'coll-clear_collection_tooltip' => 'ప్రస్తుత పుస్తకంలో నుండి అన్ని వికీ పేజీలను తీసివేయి',
 	'coll-help' => 'సహాయం',
+	'coll-help_tooltip' => 'పుస్తకాల్ని తయారుచేయడం గురించి సహాయాన్ని చూడండి',
 	'coll-helppage' => 'Help:పుస్తకాలు',
 	'coll-n_pages' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
 	'coll-printable_version_pdf' => 'PDF కూర్పు',
+	'coll-remove_this_page' => 'ఈ పుటని మీ పుస్తకం నుండి తొలగించండి',
 	'coll-remove_page_tooltip' => 'ప్రస్తుత వికీ పేజీని నా పుస్తకం నుండి తొలగించు',
 	'coll-show_collection' => 'పుస్తకముని చూపించు',
 	'coll-not_addable' => 'ఈ పేజీని చేర్చలేము',
@@ -3219,6 +3275,8 @@ $messages['vec'] = array(
 	'coll-disable' => 'disativa',
 	'coll-book_creator_disable' => 'Destaca el creador de libri',
 	'coll-book_creator_disable_tooltip' => 'Desmeti de doparar el creador de libri',
+	'coll-add_linked_article' => 'Zonta al to libro le pagine ligà a sta qua',
+	'coll-remove_linked_article' => 'Cava dal to libro le pagine ligà a sta qua',
 	'coll-add_category' => 'Zonta sta categoria al to libro',
 	'coll-add_category_tooltip' => 'Zonta tute le pagine wiki de sta categoria al to libro',
 	'coll-add_this_page' => 'Zonta sta pagina al to libro',

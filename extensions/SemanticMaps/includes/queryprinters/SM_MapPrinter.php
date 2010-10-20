@@ -195,7 +195,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		$validator->validateParameters();
 		
 		$fatalError  = $validator->hasFatalError();
-			
+		
 		if ( $fatalError === false ) {
 			$this->zoomDefaulted = $validator->getParameter( 'zoom' )->wasSetToDefault();
 			$this->setMapProperties( $validator->getParameterValues() );
@@ -291,12 +291,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			}
 			
 			if ( $markerData['icon'] != '' ) {
-				$title = Title::newFromText( $markerData['icon'] );
-
-				if ( !is_null( $title ) && $title->exists() ) {
-					$iconImagePage = new ImagePage( $title );
-					$markerData['icon'] = $iconImagePage->getDisplayedFile()->getURL();
-				}
+				$markerData['icon'] = MapsMapper::getImageUrl( $markerData['icon'] );
 			}
 			
 			// Temporary fix, will refactor away later
@@ -462,7 +457,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		// If a centre value is set, use it.
 		if ( $this->centre != '' ) {
 			// Geocode and convert if required.
-			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
+			$centre = MapsGeocoders::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
 			
 			if ( $centre ) {
 				$this->centreLat = $centre['lat'];

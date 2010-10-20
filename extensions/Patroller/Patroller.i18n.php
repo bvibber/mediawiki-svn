@@ -1076,6 +1076,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'patrol-revert' => 'ಹಿಂದಿನಂತಾಗಿಸು',
 	'patrol-revert-reason' => 'ಕಾರಣ:',
 );
 
@@ -1250,6 +1251,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'patrol-revert' => 'Хуучин төлөвт шилжүүлэх',
+	'patrol-revert-reason' => 'Шалтгаан:',
 	'patrol-reverting' => 'Хуучин төлөвт шилжүүлж байна: $1',
 	'patrol-reverted-ok' => 'Засварыг хуучин төлөвт шилжүүллээ.',
 	'patrol-reverted-failed' => 'Засварыг хуучин төлөвт шилжүүлэх боломжгүй байв',
@@ -1670,6 +1672,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'patrol-skip' => 'Перескочіти',
+	'group-patroller' => 'Патролы',
+	'group-patroller-member' => 'патрола',
 );
 
 /** Yakut (Саха тыла)

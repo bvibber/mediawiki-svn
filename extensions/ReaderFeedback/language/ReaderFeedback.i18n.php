@@ -433,6 +433,7 @@ $messages['ca'] = array(
 	'readerfeedback-level-4' => 'Exceŀlent',
 	'readerfeedback-submit' => 'Tramet',
 	'readerfeedback-finished' => 'Gràcies!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
 	'readerfeedback-tierfilter' => 'Valoració:',
 	'readerfeedback-tier-high' => 'Alta',
 	'readerfeedback-tier-medium' => 'Moderada',
@@ -2459,6 +2460,7 @@ $messages['te'] = array(
 	'readerfeedback-tier-medium' => 'సామాన్యం',
 	'tooltip-ca-ratinghist' => 'ఈ పుట యొక్క చదువరుల మూల్యాంకనం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
+	'readerfeedback-tt-review' => 'సమీక్షని దాఖలుచేయండి',
 );
 
 /** Thai (ไทย)
@@ -2639,7 +2641,9 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
+	'readerfeedback-desc' => 'La valutazion de le pagine la permete ai lettori de dar un giudissio soto forma de voti par categorie',
 	'readerfeedback' => "'Sa ghe ne pensito de sta pàxena?",
+	'readerfeedback-text' => "''Par piaser, valuta sta pagina. El to giudissio el xe inportante par jutarne a mejorarne el nostro sito.''",
 	'readerfeedback-reliability' => 'Afidabilità',
 	'readerfeedback-completeness' => 'Conpletessa',
 	'readerfeedback-npov' => 'Neutralità',
@@ -2652,6 +2656,10 @@ $messages['vec'] = array(
 	'readerfeedback-level-3' => 'Bon',
 	'readerfeedback-level-4' => 'Bon assè',
 	'readerfeedback-submit' => 'Manda',
+	'readerfeedback-main' => 'Solo le pagine de contenuto le se pole valutare.',
+	'readerfeedback-success' => "'''Grassie de ver valutà sta pagina!''' ([$2 varda risultati]) ([$3 comenti o domande?])",
+	'readerfeedback-voted' => "'''Te ghè zà valutà sta pagina!''' ([$2 varda risultati]) ([$3 comenti o domande?])",
+	'readerfeedback-error' => "'''Se gà verificà un eror finché te seri drio valutar sta pagina!''' ([$2 varda risultati]) ([$3 comenti o domande?])",
 	'readerfeedback-submitting' => "So' drio mandarlo...",
 	'readerfeedback-finished' => 'Grassie!',
 	'readerfeedback-tagfilter' => 'Eticheta:',
@@ -2661,6 +2669,7 @@ $messages['vec'] = array(
 	'readerfeedback-tier-poor' => 'Trista',
 	'tooltip-ca-ratinghist' => 'Valutassion dei letori par sta pagina',
 	'specialpages-group-feedback' => 'Opinion del letor',
+	'readerfeedback-tt-review' => 'Invia recension',
 );
 
 /** Veps (Vepsan kel')

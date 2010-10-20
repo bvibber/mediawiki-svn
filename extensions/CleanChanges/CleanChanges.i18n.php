@@ -588,6 +588,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'cleanchanges-language' => 'ಭಾಷೆ:',
+	'cleanchanges-language-na' => 'ಎಲ್ಲಾ',
 );
 
 /** Korean (한국어)
@@ -669,6 +670,13 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'cleanchanges-changerightslink' => 'ഗ്രൂപ്പുകൾ മാറ്റുക',
 	'cleanchanges-desc' => '[[Special:RecentChanges|പുതിയ മാറ്റങ്ങളുടെ പട്ടികയുടെ]] ഒതുക്കമുള്ള പ്രദർശനം',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'cleanchanges-language' => 'Хэл:',
 );
 
 /** Marathi (मराठी)
@@ -856,10 +864,14 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'cleanchanges-changerightslink' => 'schimbă grupurile',
 	'cleanchanges-language' => 'Limbă:',
+	'cleanchanges-language-na' => 'Toate',
 	'cleanchanges-users' => 'Utilizatori (sep. prin |):',
+	'cleanchanges-showuserlinks' => 'Arată legăturile utilizatorului',
 );
 
 /** Tarandíne (Tarandíne)
@@ -906,6 +918,13 @@ $messages['sah'] = array(
 	'cleanchanges-language-na' => 'Бары',
 	'cleanchanges-users' => 'Кыттааччылар (араарыы: |):',
 	'cleanchanges-showuserlinks' => 'Кыттааччылар сигэлэрин көрдөр',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'cleanchanges-language-na' => 'Tutti',
 );
 
 /** Slovak (Slovenčina)
@@ -1007,6 +1026,7 @@ $messages['szl'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'cleanchanges-changerightslink' => 'குழுக்களை மாற்று',
 	'cleanchanges-desc' => '[[Special:RecentChanges|அண்மைய மாற்றங்களின் பட்டியல்]] மிகச் சுருக்கமாக காட்டப்பட்டுள்ளது',
 	'cleanchanges-language' => 'மொழி:',
 	'cleanchanges-language-na' => 'அனைத்தும்',

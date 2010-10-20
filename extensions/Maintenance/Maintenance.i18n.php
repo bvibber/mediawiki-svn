@@ -3007,6 +3007,13 @@ $messages['ml'] = array(
 	'maintenance-memc-updates' => 'അപ്‌ഡേറ്റ്സ്:',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'maintenance-reason' => 'Шалтгаан',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */
@@ -4557,6 +4564,14 @@ Avbryt flyttning',
 	'maintenance-re-rce' => 'Bidrag på senaste ändringar: $1',
 	'maintenance-re-total' => 'Totalt antal redigeringar att ändra: $1',
 	'maintenance-re-re' => 'Flyttar redigeringar{{int:ellipsis}} klart',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'maintenance-deleted' => 'நீக்கப்பட்டுவிட்டது',
+	'maintenance-memc-total' => 'மொத்தம்:',
 );
 
 /** Telugu (తెలుగు)

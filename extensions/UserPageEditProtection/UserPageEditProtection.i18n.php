@@ -138,6 +138,13 @@ $messages['gsw'] = array(
 	'right-editalluserpages' => 'Benutzersyte bearbeite',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'right-editalluserpages' => 'עריכת דפי משתמש',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -290,6 +297,13 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'userpageeditprotection-desc' => 'Restringe a edição das páginas de usuário ao próprio usuário e aos editores permitidos',
 	'right-editalluserpages' => 'Editar páginas de usuário',
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'right-editalluserpages' => 'Modifică paginile utilizatorului',
 );
 
 /** Tarandíne (Tarandíne)

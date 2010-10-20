@@ -427,10 +427,11 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'multiboilerplate-submit' => 'ലോഡ് ചെയ്യുക',
+	'multiboilerplate-submit' => 'ശേഖരിക്കുക',
 );
 
 /** Marathi (मराठी)

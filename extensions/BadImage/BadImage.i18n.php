@@ -1372,6 +1372,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'badimages-add-btn' => 'ಸೇರಿಸು',
 	'badimages-name' => 'ಹೆಸರು:',
 	'badimages-reason' => 'ಕಾರಣ:',
 );
@@ -1553,6 +1554,15 @@ $messages['lt'] = array(
 	'badimages-remove-btn' => 'Pašalinti',
 	'badimages-remove-confirm' => 'Patvirtinkite, jog norite pašalinti $1 iš sąrašo:',
 	'badimages-removed' => '$1 buvo pašalintas iš sąrašo.',
+);
+
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'badimages-add-btn' => 'Pievienot',
+	'badimages-name' => 'Nosaukums:',
+	'badimages-reason' => 'Iemesls:',
 );
 
 /** Eastern Mari (Олык Марий)
@@ -2117,6 +2127,16 @@ $messages['ru'] = array(
 	'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
 	'badimages-page' => '{{ns:help}}:Список нежелательных изображений',
 	'right-badimages' => 'изменение чёрного списка изображений',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'badimages-add-btn' => 'Придати',
+	'badimages-name' => 'Назва:',
+	'badimages-remove' => '(одстранити)',
+	'badimages-remove-btn' => 'Одстранити',
 );
 
 /** Yakut (Саха тыла)

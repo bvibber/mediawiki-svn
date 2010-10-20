@@ -912,4 +912,3 @@ END
 		// $wgOut->addHTML( '</div>' );
 	}
  }
-?>

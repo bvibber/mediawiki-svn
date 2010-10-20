@@ -790,6 +790,13 @@ $messages['sw'] = array(
 Huwezi kuanzisha ukurasa, lakini unaweza [{{fullurl:{{FULLPAGENAME}}|action=edit}} kuuhariri] au [{{fullurl:{{FULLPAGENAME}}}} kuusoma], au kuanzisha ukurasa mwingine kwa kutumia sanduku iliyopo chini.",
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'createbox-create' => 'உருவாக்கவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Kiranmayee
  * @author Veeven

@@ -642,6 +642,13 @@ $messages['ml'] = array(
 	'languageselector' => 'ഭാഷ',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'languageselector' => 'Хэл',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar

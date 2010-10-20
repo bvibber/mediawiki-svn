@@ -1005,6 +1005,13 @@ $messages['ml'] = array(
 	'contributors-nosuchpage' => '$1 എന്ന താൾ നിലവിലില്ല.',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'contributors-submit' => 'Үзүүлэх',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -1480,6 +1487,17 @@ $messages['sv'] = array(
 	'contributors-others' => 'och {{PLURAL:$1|en annan|$1 andra}}',
 	'contributors-badtitle' => 'Ogiltig titel.',
 	'contributors-nosuchpage' => 'Sidan $1 existerar inte.',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'contributors' => 'பங்களிப்பாளர்கள்',
+	'contributors-toolbox' => 'முக்கிய பங்களிப்பாளர்கள்',
+	'contributors-target' => 'தலைப்பு:',
+	'contributors-submit' => 'காட்டு',
+	'contributors-badtitle' => 'தவறான தலைப்பு.',
 );
 
 /** Telugu (తెలుగు)

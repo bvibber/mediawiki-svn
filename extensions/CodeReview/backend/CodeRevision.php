@@ -309,7 +309,8 @@ class CodeRevision {
 		if ( $wgEnableEmail && $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
 			$commitAuthor = $this->getWikiUser();
-			$commitAuthorId = $commitAuthor->getId();
+			# Author might not have a username in the wiki:
+			$commitAuthorId = $commitAuthor ? $commitAuthor->getId() : false;
 			$committer = $commitAuthor ? $commitAuthor->getName() : htmlspecialchars( $this->mAuthor );
 			// Get the authors of these revisions
 			$res = $dbw->select( 'code_rev',
@@ -345,15 +346,18 @@ class CodeRevision {
 				$revisionAuthor = $revision->getWikiUser();
 				
 				//Add the followup revision author if they have not already been added as a commentor (they won't want dupe emails!)
-				if ( !array_key_exists( $revisionAuthor->getId(), $users ) ) {
+				if ( $revisionAuthor && !array_key_exists( $revisionAuthor->getId(), $users ) ) {
 					$users[$revisionAuthor->getId()] = $revisionAuthor;
 				}
 
 				//Notify commenters and revision author of followup revision
 				foreach ( $users as $userId => $user ) {
-					// No sense in notifying the author of this rev if they are a commenter/the author on the target rev
+					// Notify user with its own message if he already want
+					// to be CCed of all emails it sends.
 					if ( $commitAuthorId == $user->getId() ) {
-						continue;
+						if(! $user->getBoolOption( 'ccmeonemails' ) ) {
+							continue;
+						}
 					}	
 
 					if ( $user->canReceiveEmail() ) {
@@ -427,9 +431,12 @@ class CodeRevision {
 			$url = $this->getFullUrl( $commentId );
 
 			foreach ( $users as $userId => $user ) {
-				// No sense in notifying this commenter
+				// Notify user with its own message if he already want
+				// to be CCed of all emails it sends.
 				if ( $wgUser->getId() == $user->getId() ) {
-					continue;
+					if(! $user->getBoolOption( 'ccmeonemails' ) ) {
+						continue;
+					}
 				}
 
 				if ( $user->canReceiveEmail() ) {

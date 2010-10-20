@@ -348,6 +348,29 @@ Ede va guazafi exulesiki favel oke ede JavaScript fliaceem tir metegis, batcoba 
 	'categorytree-retry' => 'Vay kemel aze tolyawal !',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'categorytree-category' => 'Категория:',
+	'categorytree-go' => 'Тейәү',
+	'categorytree-parents' => 'Төп категориялар',
+	'categorytree-mode-categories' => 'категориялар ғына',
+	'categorytree-mode-pages' => 'файлдарҙан башҡа',
+	'categorytree-mode-all' => 'бар биттәр',
+	'categorytree-collapse' => 'төрөргә',
+	'categorytree-expand' => 'асырға',
+	'categorytree-load' => 'тейәү',
+	'categorytree-loading' => 'тейәү бара...',
+	'categorytree-nothing-found' => 'бер ни ҙә табылманы',
+	'categorytree-no-subcategories' => 'эске категориялар юҡ.',
+	'categorytree-no-parent-categories' => 'төп категориялар юҡ',
+	'categorytree-no-pages' => 'мәҡәләләр йәки эске категориялар юҡ.',
+	'categorytree-not-found' => '<i>$1</i> категорияһы табылманы.',
+	'categorytree-error' => 'Мәғлүмәт тейәүҙә хата бар.',
+	'categorytree-retry' => 'Зинһар, бер аҙ көткәндән һуң яңынан ҡабатлап ҡарағыҙ.',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  * @author Mucalexx
@@ -2456,7 +2479,7 @@ $messages['ml'] = array(
 	'categorytree' => 'വർഗ്ഗവൃക്ഷം',
 	'categorytree-portlet' => 'വർഗ്ഗങ്ങൾ',
 	'categorytree-legend' => 'വർഗ്ഗവൃക്ഷം പ്രദർശിപ്പിക്കുക',
-	'categorytree-desc' => 'വിക്കിയിലെ [[Special:CategoryTree|വർഗ്ഗങ്ങളുടെ ഘടന]] പ്രദർശിപ്പിക്കുവാനുള്ള  AJAX സാങ്കേതികവിദ്യ ഉപയോഗിക്കുന്ന ഗാഡ്ജറ്റ്.',
+	'categorytree-desc' => 'വിക്കിയിലെ [[Special:CategoryTree|വർഗ്ഗങ്ങളുടെ ഘടന]] പ്രദർശിപ്പിക്കുവാനുള്ള അജാക്സ് സാങ്കേതികവിദ്യ ഉപയോഗിക്കുന്ന ഗാഡ്ജറ്റ്.',
 	'categorytree-header' => 'വർഗ്ഗങ്ങളുടെ ഘടന വ്യക്ഷരൂപത്തിൽ കാണുവാൻ ഒരു വർഗ്ഗത്തിന്റെ പേരു ചേർക്കുക.
 ഇതു പ്രവർത്തിക്കണമെങ്കിൽ അജാക്സ് എന്ന ചുരുക്കനാമത്തിലറിയപ്പെടുന്ന നൂതന ജാവാസ്ക്രിപ്റ്റ് സാങ്കേതികവിദ്യ ആവശ്യമാണ്‌.
 താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് പ്രവർത്തനരഹിതമാക്കിയതാണെങ്കിലോ അല്ലെങ്കിൽ ബ്രൗസർ കാലഹരണപ്പെട്ടതാണെങ്കിലോ ഇതു പ്രവർത്തിക്കില്ല.',
@@ -2469,14 +2492,14 @@ $messages['ml'] = array(
 	'categorytree-collapse' => 'അടയ്ക്കുക',
 	'categorytree-expand' => 'വികസിപ്പിക്കുക',
 	'categorytree-member-counts' => '{{PLURAL:$1|ഒരു ഉപവർഗ്ഗവും|$1 ഉപവർഗ്ഗങ്ങളും}}, {{PLURAL:$2|ഒരു താളും|$2 താളുകളും}}, {{PLURAL:$3|ഒരു പ്രമാണവും|$3 പ്രമാണങ്ങളും}} ഉൾക്കൊള്ളുന്നു',
-	'categorytree-load' => 'ലോഡ് ചെയ്യുക',
+	'categorytree-load' => 'ശേഖരിക്കുക',
 	'categorytree-loading' => 'ശേഖരിച്ചുകൊണ്ടിരിക്കുന്നു…',
 	'categorytree-nothing-found' => 'ഒന്നും കണ്ടെത്തിയില്ല',
 	'categorytree-no-subcategories' => 'ഉപവർഗ്ഗങ്ങളില്ല',
 	'categorytree-no-parent-categories' => 'മാതൃവർഗ്ഗങ്ങൾ ഇല്ല',
 	'categorytree-no-pages' => 'താളുകളോ ഉപവർഗ്ഗങ്ങളോ ഇല്ല',
 	'categorytree-not-found' => "''$1'' എന്ന വർഗ്ഗം കണ്ടില്ല",
-	'categorytree-error' => 'ഡാറ്റ ലോഡ് ചെയ്യുന്നതിൽ പിഴവ്.',
+	'categorytree-error' => 'ഡാറ്റ ശേഖരിക്കുന്നതിൽ പിഴവുണ്ടായി.',
 	'categorytree-retry' => 'കുറച്ചു നേരം കഴിഞ്ഞ് വീണ്ടും പരിശ്രമിക്കുക',
 );
 
@@ -3178,11 +3201,31 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'categorytree' => 'Дерево катеґорій',
 	'categorytree-portlet' => 'Катеґорії',
+	'categorytree-legend' => 'Указати дерево катеґорій',
+	'categorytree-desc' => 'AJAX-компонент про зображіня [[Special:CategoryTree|штруктуры катеґорій]] вікі',
+	'categorytree-header' => 'Зазначте назву катеґорії ку&nbsp;зображіню єй обсягу як стромовой штруктуры.
+
+(Тота функція потребує покрочілы функції JavaScript знамы як Ajax. Кідь маєте дуже старый переглядач або выпнутый JavaScript, не укаже ся стром правилно або нияк.)',
 	'categorytree-category' => 'Катеґорія:',
+	'categorytree-go' => 'Указати дерево',
+	'categorytree-parents' => 'Родичовскы катеґорії',
+	'categorytree-mode-categories' => 'лем катеґорії',
+	'categorytree-mode-pages' => 'сторінкы окрім файлів',
 	'categorytree-mode-all' => 'вшыткы сторінкы',
+	'categorytree-collapse' => 'згорнути',
+	'categorytree-expand' => 'розгорнути',
+	'categorytree-member-counts' => 'обсягує {{PLURAL:$1|1 підкатеґорію|$1 підкатеґорії|$1 підкатеґорій}}, {{PLURAL:$2|1 сторінку|$2 сторінкы|$2 сторінок}} і {{PLURAL:$3|1 файл|$3 файлы|$3 файлів}}',
+	'categorytree-load' => 'начітати',
 	'categorytree-loading' => 'начітавать ся...',
+	'categorytree-nothing-found' => 'ніч не найджене',
 	'categorytree-no-subcategories' => 'жадны підкатеґорії',
+	'categorytree-no-parent-categories' => 'не має родичовскы катеґорії',
+	'categorytree-no-pages' => 'жадны статї ані підкатеґорії',
+	'categorytree-not-found' => 'Катеґорія <em>$1</em> ненайджена',
+	'categorytree-error' => 'Хыба начітаня дат.',
+	'categorytree-retry' => 'Кус почекайте і потім спробуйте знову.',
 );
 
 /** Yakut (Саха тыла)
@@ -3602,13 +3645,14 @@ $messages['sw'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Surya Prakash.S.A.
  * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'categorytree' => 'பகுப்பு மரம்',
 	'categorytree-portlet' => 'பகுப்புகள்',
-	'categorytree-legend' => 'பகுப்பு மரத்தை காட்டு',
+	'categorytree-legend' => 'பகுப்பு மரத்தைக் காட்டு',
 	'categorytree-category' => 'பகுப்பு:',
 	'categorytree-go' => 'மரத்தைக் காட்டு',
 	'categorytree-parents' => 'மூலங்கள்',
@@ -4125,6 +4169,12 @@ $messages['yo'] = array(
 	'categorytree-category' => 'Ẹ̀ka:',
 	'categorytree-parents' => 'Àwọn òbí',
 	'categorytree-mode-all' => 'gbogbo àwọn ojúewé',
+	'categorytree-member-counts' => 'ní {{PLURAL:$1|ẹ̀kaabẹ́ 1|àwọn ẹ̀kaabẹ́ $1}}, {{PLURAL:$2|ojúewé 1 page|àwọn ojúewé $2}}, àti {{PLURAL:$3|fáìlì 1|àwọn fáìlì $3}} nínú',
+	'categorytree-load' => 'ìgbéyọ',
+	'categorytree-loading' => 'úngbéyọ...',
+	'categorytree-nothing-found' => 'kò sí ùnkankan',
+	'categorytree-no-subcategories' => 'Kò sí àwọn ẹ̀kaabẹ́',
+	'categorytree-not-found' => 'Ẹ̀ka <i>$1</i> kò ṣe é wárí',
 );
 
 /** Cantonese (粵語)

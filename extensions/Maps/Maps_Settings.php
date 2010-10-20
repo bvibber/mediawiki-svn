@@ -219,7 +219,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsDefaultLabel = '';
 
 
-
+	
+# Other general configuration
+	
+	# Namespace index start of the mapping namespaces.
+	$egMapsNamespaceIndex = 420;
+	
+	# Boolean. Controls if you can specify images using a full path in layers.
+	$egMapsAllowExternalImages = true;
+	
+	
+	
 # Specific mapping service configuration
 
 	# Google Maps
@@ -368,10 +378,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Array of String. The default layers for Open Layers. This value will only be
 		# used when the user does not provide one.
 		$egMapsOLLayers = array(
-			'osmarender',
+			'osm-mapnik',
 			'osm-cyclemap',
-			'osm-mapnik'
-		
+			'osmarender'
 		);
 		
 		# The difinitions for the layers that should be available for the user.
@@ -390,19 +399,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 			'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",
 				{layers: "landsat7", "sphericalMercator":true} )',
-		
-			/* FIXME: does not work properly yet
-			'wikipediaworld' => 'OpenLayers.Layer.Vector("Wikipedia World", {
-		strategies: [new OpenLayers.Strategy.BBOX( { ratio : 1.1, resFactor: 1 })],
-		protocol: new OpenLayers.Protocol.HTTP({
-				url: "http://toolserver.org/~kolossos/geoworld/marks.php?LANG=de",
-				format: new OpenLayers.Format.KML({
-                           extractStyles: true, 
-                           extractAttributes: true
-                })		
-        })
-	})'
-	*/
 		);
 		
 		# Layer group definitions. Group names must be different from layer names, and

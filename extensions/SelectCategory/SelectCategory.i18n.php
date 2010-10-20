@@ -463,6 +463,13 @@ $messages['pt-br'] = array(
 	'selectcategory-subtitle' => 'Shift-clique para selecionar múltiplas entradas contíguas, Ctrl-clique para selecionar entradas não-contíguas.',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'selectcategory-title' => 'Selectează categoriile',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

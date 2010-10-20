@@ -69,6 +69,23 @@ $messages['arz'] = array(
 * Self',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Sortilegus
+ */
+$messages['az'] = array(
+	'minipreview-desc' => 'MiniPreview şəklin yanında onunla eyni kateqoriyada və ya səhifədə yerləşən digər media-faylların miniatürlərini göstərir',
+	'minipreview-files_in_category' => "Bu kateqoriyada '''$1''' {{PLURAL:$1|fayl}} var.",
+	'minipreview-files_in_gallery' => "Bu qalereyada '''$1''' {{PLURAL:$1|fayl}} var.",
+	'minipreview-no_more_files_here' => 'bu istiqamətdə daha fayl yoxdur.',
+	'minipreview-no_category_gallery' => 'Kateqoriya və ya qalereya yoxdur!',
+	'minipreview-ignore_categories' => 'Aşağıda kateqoriyaların adlarının bütünlükdə və ya başlanğıc hissələrinin siyahısı verilmişdir. Bu kateqoriyalar MiniPreview vasitəsilə göstərilməyəcək. Məsələn, "* PD-" onu göstərir ki, adı "PD-" ilə başlayan kateqoriyaların ("PD-köhnə" və s.) heç biri əks olunmayacaq.
+* GFDL-
+* GFDL
+* CC-
+* PD-
+* Self',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -731,6 +748,7 @@ $messages['ro'] = array(
 
 /** Russian (Русский)
  * @author Kaganer
+ * @author Sortilegus
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(

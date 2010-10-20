@@ -1804,6 +1804,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'regexblock-form-reason' => 'ಕಾರಣ:',
+	'regexblock-view-all' => 'ಎಲ್ಲಾ',
 	'regexblock-view-go' => 'ಹೋಗು',
 );
 
@@ -2041,6 +2042,13 @@ $messages['ml'] = array(
 	'regexblock-view-block-by' => 'തടഞ്ഞത്',
 	'regexblock-view-block-unblock' => 'സ്വതന്ത്രമാക്കുക',
 	'regexblock-view-time' => '$1 ന്‌',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'regexblock-form-reason' => 'Шалтгаан:',
 );
 
 /** Marathi (मराठी)

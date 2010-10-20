@@ -1571,6 +1571,7 @@ No podrás acceder sin un OpenID.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'openidoptional' => 'Valikuline',
@@ -1582,7 +1583,7 @@ $messages['et'] = array(
 	'openidtimezone' => 'Ajavöönd',
 	'openidchoosefull' => 'Sinu täisnimi ($1)',
 	'openidchoosemanual' => 'Sinu valitud nimi:',
-	'openidchooseexisting' => 'Olemasolev konto siin vikis:',
+	'openidchooseexisting' => 'Olemasolev konto selles vikis',
 	'openidchoosepassword' => 'Parool:',
 	'openidconvertyourstext' => 'See on juba Sinu avatud ID.',
 	'openidconvertothertext' => 'See on kellegi teise avatud ID.',
@@ -2105,6 +2106,7 @@ $messages['he'] = array(
 	'openidchooseauto' => 'שם שנוצר אוטומטית ($1)',
 	'openidchoosemanual' => 'השם הנבחר:',
 	'openidchooseexisting' => 'חשבון קיים בוויקי זה:',
+	'openidchooseusername' => 'שם משתמש:',
 	'openidchoosepassword' => 'סיסמה:',
 	'openidconvertinstructions' => 'טופס זה מאפשר לכם לשנות את חשבון המשתמש שלכם לשימוש בכתובת OpenID או להוסיף כתובות OpenID נוספות',
 	'openidconvertoraddmoreids' => 'המרה ל־OpenID או הוספת כתובת OpenID נוספת',
@@ -3457,6 +3459,7 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'openidlanguage' => 'Хэл',
 	'openidtimezone' => 'Цагийн бүс',
 );
 
@@ -4433,6 +4436,7 @@ Você não poderia entrar sem um OpenID.',
  * @author Memo18
  * @author Minisarm
  * @author Misterr
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'openid-desc' => 'Autentificați-vă pe acest wiki folosind un [http://openid.net/ OpenID] și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki',
@@ -4485,6 +4489,7 @@ Dacă doriți să utilizați un OpenID în viitor, puteți [[Special:OpenIDConve
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greșit.',
 	'openidloginlabel' => 'URL OpenID',
+	'openidupdateuserinfo' => 'Actualizează informaţiile mele personale:',
 	'openiddelete' => 'Şterge OpenID',
 	'openiddelete-button' => 'Confirmă',
 	'openid-urls-action' => 'Acțiune',

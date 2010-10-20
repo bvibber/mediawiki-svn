@@ -538,6 +538,13 @@ $messages['ru'] = array(
 	'nstab-comments' => 'Примечание',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'nstab-comments' => 'Коментарь',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -1005,6 +1005,18 @@ $messages['ru'] = array(
 	'fancycaptcha-sendemail' => 'В целях защиты от автоматического спама, пожалуйста, введите показанные ниже слова ([[Special:Captcha/help|подробнее]]):',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'fancycaptcha-addurl' => 'Ваше едітованя обсягує новы одказы формов URL; про охорону перед автоматічным спамом мусите описати текст з наступного образку. ([[Special:Captcha/help|Што тото значіть?]])',
+	'fancycaptcha-badlogin' => 'В рамках охороны перед автоматічныма пробами угаднути гесло мусите описати текст з наступного образку. ([[Special:Captcha/help|Што тото значіть?]]):',
+	'fancycaptcha-createaccount' => 'В рамках охороны перед автоматічныма створёванями конт мусите про выконаня реґістрації описати текст з наступного образку. ([[Special:Captcha/help|Што тото значіть?]]):',
+	'fancycaptcha-create' => 'Жебы сьте могли створити сторінку, мусите описати текст з наступного образку:([[Special:Captcha/help|Што тото значіть?]])',
+	'fancycaptcha-edit' => 'Жебы сьте могли едітовати тоту сторінку, мусите описати текст з наступного образку: ([[Special:Captcha/help|Што тото значіть?]])',
+	'fancycaptcha-sendemail' => 'В рамках охороны перед автоматічным спамом мусите описати текст з наступного образку. ([[Special:Captcha/help|Што тото значіть?]]):',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -1227,6 +1239,7 @@ Par jutarne a conbàtar el spam, par piaser inserissi ne la casela le parole che
 	'fancycaptcha-createaccount' => 'Par jutarne a inpedir la creazion automatica dei account, par piaser inserissi ne la casela le parole che vien fora qua soto ([[Special:Captcha/help|magiori informazion]]):',
 	'fancycaptcha-create' => 'Par crear la pagina, par piaser inserissi ne la casela le parole che vien fora qua soto ([[Special:Captcha/help|magiori informazion]]):',
 	'fancycaptcha-edit' => 'Par modificar la pagina, par piaser inserissi ne la casela le parole che vien fora qua soto ([[Special:Captcha/help|magiori informazion]]):',
+	'fancycaptcha-sendemail' => 'Par precauzion contro i tentativi de forzatura automatica de le password, par piaser inserissi ne la casela le parole che vien fora qua soto ([[Special:Captcha/help|magiori informazion]]):',
 );
 
 /** Vietnamese (Tiếng Việt)

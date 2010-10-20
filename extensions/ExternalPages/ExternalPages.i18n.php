@@ -55,6 +55,15 @@ $messages['ar'] = array(
 	'externalpages-no-page' => 'لم تحدد الصفحة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'externalpages' => 'Тышҡы биттәр',
+	'externalpages-bad-page' => 'Яңылыш бит күрһәтелгән',
+	'externalpages-no-page' => 'Бер бит тә күрһәтелмәгән',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -430,6 +439,13 @@ $messages['nl'] = array(
 	'externalpages-desc' => "Haalt pagina's op van andere WMF-sites en geeft deze weer",
 	'externalpages-bad-page' => 'Er is een verkeerde pagina opgegeven',
 	'externalpages-no-page' => 'Er is geen pagina opgegeven',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'externalpages' => 'Eksterne sider',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

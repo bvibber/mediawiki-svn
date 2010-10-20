@@ -30,7 +30,7 @@
 }
 
 #payflowpro_gateway-form-submit {
-	margin-top: 1em;
+	margin-top: 1.5em;
 	text-align: center;
 	margin-bottom: 1em;
 }
@@ -67,6 +67,11 @@
 #payflowpro_gateway-donate-addl-info-secure-logos {
         float: left;
         margin-right: 2em;
+}
+
+.button-plain {
+	font-size: 1em;
+	margin-bottom: 0.3em;
 }
 
 .button-navyblue {

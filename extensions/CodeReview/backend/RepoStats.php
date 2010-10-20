@@ -24,7 +24,7 @@ class RepoStats {
 		wfDebug( "miss\n" );
 		$stats = new RepoStats( $repo );
 		$stats->generate();
-		$wgMemc->set( $key, $stats, 12 * 60 * 60 ); // 12 hours
+		$wgMemc->set( $key, $stats, 6 * 60 * 60 ); // 6 hours
 		return $stats;
 	}
 

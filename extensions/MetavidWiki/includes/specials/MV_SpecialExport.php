@@ -749,4 +749,3 @@ foreach($vid_types as $vid_key){
 		<?php
 	}
 }
-?>

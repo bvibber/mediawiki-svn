@@ -80,7 +80,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 	private function formatRow( $row ) {
 		$item = array();
 		if ( isset( $this->props['revid'] ) ) {
-			$item['revid'] = intval( $row->cr_rev_id );
+			$item['revid'] = intval( $row->cr_id );
 		}
 		if ( isset( $this->props['status'] ) ) {
 			$item['status'] = $row->cr_status;
@@ -165,6 +165,6 @@ class ApiCodeRevisions extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiCodeComments.php 48777 2009-03-25 01:26:54Z aaron $';
+		return __CLASS__ . ': $Id$';
 	}
 }

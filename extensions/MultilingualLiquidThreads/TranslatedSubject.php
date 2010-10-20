@@ -95,4 +95,3 @@ class TranslatedSubject {
 		return $this->targetLang;
 	}
 }
-?>

@@ -339,6 +339,25 @@ $messages['nl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditioneel',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ */
+$messages['no'] = array(
+	'categorymultisortchinese-desc' => 'Lar kategorier vises med forskjellige sorteringer for kinesiske skrifter',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonesisk: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Strøk',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Strøk: Forenklet',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Strøk: Tradisjonell',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Forenklet',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradisjonell',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

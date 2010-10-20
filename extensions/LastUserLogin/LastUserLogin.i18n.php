@@ -291,6 +291,17 @@ $messages['gsw'] = array(
 	'right-lastlogin' => 'D Zyt aaluege, wu ne Benutzer sich s letscht Mol aagmäldet gha het',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'lastuserlogin-desc' => 'הצגת הפעם האחרונה בה המשתמש נכנס',
+	'lastuserlogin_userid' => 'שם משתמש',
+	'lastuserlogin_username' => 'שם אמתי',
+	'lastuserlogin_useremail' => 'דוא״ל המשתמש',
+	'lastuserlogin_lastlogin' => 'הכניסה האחרונה',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -462,6 +473,14 @@ $messages['nl'] = array(
 	'lastuserlogin_lastlogin' => 'Laatste aanmelding',
 	'lastuserlogin_daysago' => 'Aantal dagen geleden',
 	'right-lastlogin' => 'Bekijken wanneer een gebruiker voor de laatste keer heeft aangemeld',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Nghtwlkr
+ */
+$messages['nn'] = array(
+	'lastuserlogin_userid' => 'Brukarnamn',
+	'lastuserlogin_username' => 'Verkeleg namn',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

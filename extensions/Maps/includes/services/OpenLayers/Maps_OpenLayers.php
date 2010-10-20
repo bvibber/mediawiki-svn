@@ -14,16 +14,6 @@
 class MapsOpenLayers extends MapsMappingService {
 	
 	/**
-	 * List to keep track of loaded layers.
-	 * Typically this means one or more js/css files have been added.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @var array
-	 */
-	protected static $loadedLayers = array();
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.6.6
@@ -46,30 +36,19 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 19 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
-		$params['controls'] = new ListParameter(
-			'controls',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsOLControls,
-			array(),
-			array(
-				new CriterionInArray( self::getControlNames() ),
-			)			
-		);
+		$params['controls'] = new ListParameter( 'controls' );
+		$params['controls']->setDefault( $egMapsOLControls );
+		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
 		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
-		$params['layers'] = new ListParameter(
-			'layers',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsOLLayers,
-			array(),
-			array(
-				new CriterionInArray( self::getLayerNames( true ) ),
-			)			
-		);
+		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
 		$params['layers']->setDoManipulationOfDefault( true );
+		$params['layers']->addCriteria( new CriterionOLLayer() );
+		$params['layers']->setDefault( $egMapsOLLayers );
+		$params['layers']->lowerCaseValue = false;
+		
+		//$params['imagelayers'] = new ListParameter();
 	}
 	
 	/**
@@ -105,9 +84,10 @@ class MapsOpenLayers extends MapsMappingService {
 	 */
 	public function createMarkersJs( array $markers ) {
 		$markerItems = array();
-		
+		$defaultGroup = wfMsg( 'maps-markers' );
+		//.// TODO
 		foreach ( $markers as $marker ) {
-			$markerItems[] = Xml::encodeJsVar( (object)array(
+			$markerItems[false ? $marker[5] : $defaultGroup] = MapsMapper::encodeJsVar( (object)array(
 				'lat' => $marker[0],
 				'lon' => $marker[1],
 				'title' => $marker[2],
@@ -157,56 +137,32 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * Returns the names of all supported layers.
+	 * Returns the names of all supported dynamic layers.
 	 * 
 	 * @return array
 	 */
 	public static function getLayerNames( $includeGroups = false ) {
 		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
+		
 		$keys = array_keys( $egMapsOLAvailableLayers );
-		if ( $includeGroups ) $keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
-		return $keys;
-	}
 		
-	/**
-	 * Build up a csv string with the layers, to be outputted as a JS array
-	 *
-	 * @param array $layers
-	 * 
-	 * @return csv string
-	 */
-	public function createLayersStringAndLoadDependencies( array $layers ) {
-		global $egMapsOLAvailableLayers;
-		
-		$layerStr = array();
-		
-		foreach ( $layers as $layer ) {
-			$this->loadDependencyWhenNeeded( $layer );
-			$layerStr[] = is_array( $egMapsOLAvailableLayers[$layer] ) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
+		if ( $includeGroups ) {
+			$keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
 		}
-
-		return count( $layerStr ) == 0 ? '' : 'new ' . implode( ',new ', $layerStr );
+		
+		return $keys;
 	}
 	
 	/**
-	 * Load the dependencies of a layer if they are not loaded yet.
+	 * Adds the layer dependencies. 
 	 * 
-	 * Note: The check if the layer has been added is redudant with the new (>=0.6.3) dependency management.
-	 *
-	 * @param string $layer The layer to check (and load the dependencies for
+	 * @since 0.7.1
+	 * 
+	 * @param array $dependencies
 	 */
-	public function loadDependencyWhenNeeded( $layer ) {
-		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies;
-		
-		// Check if there is a dependency refered by the layer definition.
-		if ( is_array( $egMapsOLAvailableLayers[$layer] )
-			&& count( $egMapsOLAvailableLayers[$layer] ) > 1
-			&& array_key_exists( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLayerDependencies )
-			&& !in_array( $egMapsOLAvailableLayers[$layer][1], self::$loadedLayers ) ) {
-			// Add the dependency to the output.
-			$this->addDependency( $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]] );
-			// Register that it's added so it does not get done multiple times.
-			self::$loadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
+	public function addLayerDependencies( array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addDependency( $dependency );
 		}
 	}
 	

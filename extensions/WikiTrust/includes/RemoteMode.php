@@ -267,5 +267,3 @@ class WikiTrust extends WikiTrustBase {
   }
 
 }    
-
-?>

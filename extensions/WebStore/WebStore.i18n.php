@@ -772,6 +772,8 @@ $1',
  */
 $messages['eo'] = array(
 	'inplace_access_denied' => 'Ĉi tiu servo estas limigita laŭ klienta IP-adreso.',
+	'inplace_scaler_no_temp' => 'Ne estas valida provizora dosierujo.
+Metu $wgLocalTmpDirectory al skribebla dosierujo.',
 	'inplace_scaler_not_enough_params' => 'Ne sufiĉaj parametroj',
 	'inplace_scaler_invalid_image' => 'Nevalida bildo; ne eblis determini pezon.',
 	'inplace_scaler_failed' => 'Eraro okazis dum bilda skalado: $1',

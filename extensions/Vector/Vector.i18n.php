@@ -371,13 +371,14 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
 /** German (Deutsch)
  * @author Church of emacs
  * @author Kghbln
+ * @author SVG
  * @author The Evil IP address
  * @author Tischbeinahe
  */
 $messages['de'] = array(
-	'vector' => 'Verbesserungen für die Vektor-Benutzeroberfläche',
+	'vector' => 'Verbesserungen für die Vector-Benutzeroberfläche',
 	'vector-desc' => 'Stellt Verbesserungen für die Benutzeroberfläche „Vector“ zur Verfügung',
-	'vector-collapsiblenav-preference' => 'Zusammenklappen von Items im Navigationsmenü des Vektor-Skins aktivieren',
+	'vector-collapsiblenav-preference' => 'Zusammenklappen von Items im Navigationsmenü des Vector-Skins aktivieren',
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass die Änderungen verloren gehen.
 Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „Bearbeiten“-Bereich der Einstellungen abgeschaltet werden.',
@@ -446,7 +447,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'vector' => 'Plibonigado de grafika interfaco por Vector',
 	'vector-desc' => 'Plibonigas la elementojn de la uzula interfaco de la Vector-etoso.',
-	'vector-collapsiblenav-preference' => 'Ŝalti kaŝeblan dekstran navigan menuon',
+	'vector-collapsiblenav-preference' => 'Ŝalti kaŝebladon de aĵoj en la dekstra navigmenuon kun etoso Vector',
 	'vector-collapsiblenav-more' => 'Pli lingvoj',
 	'vector-editwarning-warning' => 'Forlasante ĉi tiun paĝon kaŭzos al vi perdi iun ajn ŝanĝojn kiujn vi faris.
 Se vi ensalutas, vi povas malŝalti ĉi tiun averton en la sekcio "Grandeco de redakta tekstujo" de viaj preferoj.',

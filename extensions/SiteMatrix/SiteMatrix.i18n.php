@@ -1193,6 +1193,13 @@ $messages['ml'] = array(
 	'sitematrix-fishbowl' => 'തിരുത്തൽ പരിമിതപ്പെടുത്തിയിരിക്കുന്നു',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'sitematrix-language' => 'Хэл',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
@@ -1536,9 +1543,13 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'sitematrix' => 'Список проєктів Вікімедія',
 	'sitematrix-language' => 'Язык',
+	'sitematrix-others' => 'Іншы проєкты Фонду «Вікімедія»',
+	'sitematrix-total' => "'''Цілкове чісло: $1'''",
 	'sitematrix-sitetotal' => 'Цілком',
 	'sitematrix-private' => 'пріватный',
+	'sitematrix-fishbowl' => 'едітованя обмеджене',
 );
 
 /** Yakut (Саха тыла)
@@ -1743,6 +1754,7 @@ $messages['szl'] = array(
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'sitematrix-language' => 'மொழி',
 	'sitematrix-sitetotal' => 'மொத்தம்',
 	'sitematrix-private' => 'தனிப்பட்ட',
 );

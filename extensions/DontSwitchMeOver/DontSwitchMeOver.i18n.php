@@ -136,6 +136,14 @@ $messages['el'] = array(
 	'dontswitchmeover-pref' => 'Να μην επιτρέπεται αλλαγή του επιλεγμένου από μένα συνόλου οπτικής οργάνωσης (skin), όταν αλλάζει το προεπιλεγμένο σύνολο οπτικής οργάνωσης (skin)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'dontswitchmeover-desc' => 'Prefero por uzantoj specifi ĉu ili deziras konservi ilian etosan agordon kiam la defaŭlta etoso estas ŝanĝita.',
+	'dontswitchmeover-pref' => 'Ne permesi al mia etoso esti ŝanĝita kiam la defaŭlta etoso ŝanĝas',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -159,6 +167,14 @@ $messages['eu'] = array(
 $messages['fa'] = array(
 	'dontswitchmeover-desc' => 'ترجیحات برای کاربران به منظور مشخص‌کردن اینکه آیا می‌خواهند تنظیمات پوسته را، هنگامی که پوستهٔ پیش‌فرض تغییر می‌کند، حفظ کنند؟',
 	'dontswitchmeover-pref' => 'اجازه نده پوستهٔ من با تغییر پوستهٔ پیش‌فرض تغییر کند',
+);
+
+/** Finnish (Suomi)
+ * @author Olli
+ */
+$messages['fi'] = array(
+	'dontswitchmeover-desc' => 'Asetus käyttäjille, jotka haluavat määrittää, haluavatko he säilyttää ulkoasuasetuksensa, kun oletusulkoasua vaihdetaan.',
+	'dontswitchmeover-pref' => 'Älä anna ulkoasuni vaihtua, kun sivuston oletusulkoasua muutetaan',
 );
 
 /** French (Français)
@@ -193,6 +209,14 @@ $messages['gsw'] = array(
 	'dontswitchmeover-pref' => 'Änderig vu myym Benutzeroberflechinedesign nit erlaube, wänn s Standarddesign gänderet wird',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'dontswitchmeover-desc' => 'העדפה למשתמשים לצורך ציון האם ברצונם לשמר את הגדרות העיצוב שלהם כאשר עיצוב בררת המחדל משתנה.',
+	'dontswitchmeover-pref' => 'אין להרשות את החלפת העיצוב שלי כאשר עיצוב בררת המחדל משתנה',
+);
+
 /** Croatian (Hrvatski)
  * @author SpeedyGonsales
  */
@@ -213,6 +237,7 @@ $messages['hsb'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'dontswitchmeover-desc' => 'Beállítási lehetőség a felhasználóknak: szeretnék-e megtartani a felületbeállítást, ha a wiki alapértelmezett felület változik.',
 	'dontswitchmeover-pref' => 'Ne módosuljon az általam beállított felület, ha változik az alapértelmezett.',
 );
 
@@ -416,6 +441,14 @@ $messages['su'] = array(
 	'dontswitchmeover-pref' => 'Lamun kulit ti dituna robah, setélan kulit kuring ulah milu robah',
 );
 
+/** Swedish (Svenska)
+ * @author Cohan
+ */
+$messages['sv'] = array(
+	'dontswitchmeover-desc' => 'Preferens för användare att ange om de vill bevara sina skin-inställningar när standard-skin ändras.',
+	'dontswitchmeover-pref' => 'Låt inte mitt skin ändras vid byte av standardskin',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -439,6 +472,14 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'dontswitchmeover-desc' => 'Можливість для користувачів визначитись, чи вони бажають зберігати вибране оформлення вікі у випадку зміни оформлення за замовчуванням.',
 	'dontswitchmeover-pref' => 'Не змінювати вибране оформлення при зміні оформлення за замовчуванням',
+);
+
+/** Vèneto (Vèneto)
+ * @author Candalua
+ */
+$messages['vec'] = array(
+	'dontswitchmeover-desc' => 'Impostazion che permete a un utente de specificar se el vole conservar la skin impostà quando la skin de default la vien cambià.',
+	'dontswitchmeover-pref' => 'No sta canbiar la me skin co vien canbià la skin de default',
 );
 
 /** Vietnamese (Tiếng Việt)
