@@ -346,6 +346,7 @@ Nudi autentifikaciju zasnovanu na Facebook grupama i korištenju FBML u wiki tek
 /** German (Deutsch)
  * @author Als-Holder
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'fbconnect' => 'Facebook Connect',
@@ -402,7 +403,7 @@ Für weitere Informationen kann man den Gruppenersteller $4 kontaktieren.',
 	'fbconnect-success' => 'Facebook Connect-Überprüfung erfolgreich',
 	'fbconnect-successtext' => 'Die Anmeldung via Facebook Connect war erfolgreich.',
 	'fbconnect-nickname' => 'Benutzername',
-	'fbconnect-fullname' => 'Vollständiger Name',
+	'fbconnect-fullname' => 'Bürgerlicher Name',
 	'fbconnect-email' => 'E-Mail-Adresse',
 	'fbconnect-language' => 'Sprache',
 	'fbconnect-timecorrection' => 'Zeitzonenkorrektur (Stunden)',
@@ -412,7 +413,7 @@ Für weitere Informationen kann man den Gruppenersteller $4 kontaktieren.',
 Bitte einen anderen auswählen.',
 	'fbconnect-choosenick' => 'Der Profilname auf Facebook ($1)',
 	'fbconnect-choosefirst' => 'Vorname ($1)',
-	'fbconnect-choosefull' => 'Vollständiger Name ($1)',
+	'fbconnect-choosefull' => 'Dein bürgerlicher Name ($1)',
 	'fbconnect-chooseauto' => 'Ein automatisch erzeugter Name ($1)',
 	'fbconnect-choosemanual' => 'Ein Name der Wahl:',
 	'fbconnect-chooseexisting' => 'Ein bestehendes Benutzerkonto in diesem Wiki',
@@ -891,6 +892,57 @@ $messages['he'] = array(
 	'fbconnect-link-to-profile' => 'Facebook פרופיל',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'fbconnect' => 'Facebook Connect',
+	'group-fb-user' => 'Facebook Connect felhasználók',
+	'group-fb-user-member' => 'Facebook Connect felhasználó',
+	'grouppage-fb-user' => '{{ns:project}}:Facebook Connect felhasználók',
+	'fbconnect-connect' => 'Bejelentkezés a Facebook Connecttel',
+	'fbconnect-convert' => 'Fiók összekötése a Facebookkal',
+	'fbconnect-logout' => 'Kijelentkezés a Facebookról',
+	'fbconnect-link' => 'Vissza a facebook.com-ra',
+	'fbconnect-title' => 'Fiók összekötése a Facebookkal',
+	'fbconnect-click-to-login' => 'Bejelentkezés az oldalra Facebookon keresztül',
+	'fbconnect-conv' => 'Kényelem',
+	'fbconnect-fbml' => 'Facebook-jelölőnyelv',
+	'fbconnect-comm' => 'Kommunikáció',
+	'fbconnect-welcome' => 'Üdvözöllek, Facebook Connect felhasználó!',
+	'fbconnect-loginbox' => "Vagy '''jelentkezz be''' Facebookon keresztül:
+
+$1",
+	'fbconnect-merge' => 'Wikis fiók összekötése facebookos azonosítóval',
+	'fbconnect-error' => 'Hiba az ellenőrzés során',
+	'fbconnect-errortext' => 'Hiba történt a Facebook Connect ellenőrzése közben.',
+	'fbconnect-cancel' => 'Művelet megszakítva',
+	'fbconnect-canceltext' => 'A felhasználó megszakította az előző műveletet.',
+	'fbconnect-invalid' => 'Érvénytelen beállítás',
+	'fbconnect-invalidtext' => 'Az előző oldalon kiválasztott beállítás érvénytelen.',
+	'fbconnect-success' => 'Facebook-ellenőrzés sikerült',
+	'fbconnect-successtext' => 'Sikeresen bejelentkeztél a Facebook Connect használatával.',
+	'fbconnect-nickname' => 'Becenév',
+	'fbconnect-fullname' => 'Teljes név',
+	'fbconnect-email' => 'E-mail cím',
+	'fbconnect-language' => 'Nyelv',
+	'fbconnect-timecorrection' => 'Időzóna-korrekció (órában)',
+	'fbconnect-chooselegend' => 'Felhasználónév választása',
+	'fbconnect-chooseinstructions' => 'Minden felhasználónak kell egy becenév; válassz egyet az alábbi lehetőségek közül.',
+	'fbconnect-choosenick' => 'Facebook-profilod neve ($1)',
+	'fbconnect-choosefirst' => 'A keresztneved ($1)',
+	'fbconnect-choosefull' => 'A teljes neved ($1)',
+	'fbconnect-chooseauto' => 'Automatikusan generált név ($1)',
+	'fbconnect-choosemanual' => 'A választott név:',
+	'fbconnect-chooseexisting' => 'Már létező fiók',
+	'fbconnect-chooseusername' => 'Felhasználónév:',
+	'fbconnect-choosepassword' => 'Jelszó:',
+	'fbconnect-updateuserinfo' => 'A következő személyes adatok frissítése:',
+	'fbconnect-error-creating-user' => 'Nem sikerült létrehozni a felhasználót a helyi adatbázisban.',
+	'fbconnect-prefstext' => 'Facebook Connect',
+	'fbconnect-link-to-profile' => 'Facebook-profil',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -944,7 +996,7 @@ Pro plus informationes, per favor contacta le creator del gruppo, $4.',
 	'fbconnect-cancel' => 'Action cancellate',
 	'fbconnect-canceltext' => 'Le previe action esseva cancellate per le usator.',
 	'fbconnect-invalid' => 'Option invalide',
-	'fbconnect-invalidtext' => 'Le modo de selection in le previe pagina esseva invalide.',
+	'fbconnect-invalidtext' => 'Le modo de selection in le previe pagina es invalide.',
 	'fbconnect-success' => 'Verification de Facebook succedite',
 	'fbconnect-successtext' => 'Le apertura de session con Facebook Connect ha succedite.',
 	'fbconnect-nickname' => 'Pseudonymo',
@@ -1797,13 +1849,28 @@ Se de futuro pretende usar o Facebook Connect para entrar, pode [[Special:Connec
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'fbconnect' => 'Conectare Facebook',
+	'group-fb-groupie' => 'Membrii grup',
+	'group-fb-admin' => 'Administratori grup',
+	'group-fb-admin-member' => 'Administrator grup',
+	'fbconnect-logout' => 'Deconectare de pe Facebook',
+	'fbconnect-link' => 'Înapoi pe facebook.com',
+	'fbconnect-click-to-login' => 'Apasă pentru a vă autentifica pe acest site prin Facebook',
+	'fbconnect-cancel' => 'Acţiune anulată',
 	'fbconnect-nickname' => 'Pseudonim',
 	'fbconnect-fullname' => 'Numele complet',
 	'fbconnect-email' => 'Adresa de e-mail',
 	'fbconnect-language' => 'Limba',
+	'fbconnect-choosefirst' => 'Prenumele tău ($1)',
+	'fbconnect-choosefull' => 'Numele tău complet ($1)',
+	'fbconnect-chooseauto' => 'Un nume generat automat ($1)',
+	'fbconnect-choosemanual' => 'Un nume la alegere:',
+	'fbconnect-chooseexisting' => 'Un cont existent pe acest wiki',
 	'fbconnect-chooseusername' => 'Utilizator:',
 	'fbconnect-choosepassword' => 'Parolă:',
 	'fbconnect-updateuserinfo' => 'Actualiează următoarele informaţii personale:',
+	'fbconnect-error-creating-user' => 'Eroare la crearea utilizatorului în baza de date locală.',
+	'fbconnect-link-to-profile' => 'Profil Facebook',
 );
 
 /** Russian (Русский)
@@ -1941,5 +2008,14 @@ Kung nais mong gamitin ang Ugnay sa Facebook upang makalagda ka sa hinaharap, ma
 	'fbconnect-link-to-profile' => 'Balangkas sa Facebook',
 	'fbconnect-prefsheader' => "Upang matabanan ang kung aling mga kaganapan ang tutulak sa isang bagay papunta sa iyong pakain ng balita sa Facebook, <a id='fbConnectPushEventBar_show' href='#'>ipakita ang mga nais</a> <a id='fbConnectPushEventBar_hide' href='#' style='display:none'>itago ang mga nais</a>",
 	'fbconnect-prefs-can-be-updated' => 'Maisasapanahon mo ang mga ito anumang oras sa pamamagitan ng pagdalaw sa panglaylay na "$1" ng iyong pahina ng mga nais.',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'fbconnect-email' => 'Адреса електронної пошти',
+	'fbconnect-language' => 'Мова',
+	'fbconnect-choosepassword' => 'Пароль:',
 );
 

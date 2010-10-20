@@ -2750,6 +2750,14 @@ Iayos ang $wgPrefStatsTrackPrefs upang subaybayan ang mga nais.',
 	'prefstats-legend-in' => 'Sumali',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'prefstats-factor-day' => 'de',
+	'prefstats-factor-week' => 'wik',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

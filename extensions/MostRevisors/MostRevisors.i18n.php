@@ -904,6 +904,13 @@ $messages['tr'] = array(
 	'mostrevisors-viewcontributors' => 'Ana katkı sahiplerini göster',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'mostrevisors-namespace' => 'Простір назв:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

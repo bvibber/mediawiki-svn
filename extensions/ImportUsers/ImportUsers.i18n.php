@@ -1239,6 +1239,7 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'importusers-log-summary' => 'Товч агуулга',
+	'importusers-log-summary-all' => 'Бүгдийг',
 );
 
 /** Marathi (मराठी)
@@ -2014,10 +2015,18 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'importusers-uploadfile' => 'Завантажити файл',
 	'importusers-log-summary' => 'Всього',
+	'importusers-log-summary-all' => 'Усі',
+	'importusers-log-summary-added' => 'Додано',
+	'importusers-log-summary-updated' => 'Оновлено',
+	'importusers-login-name' => 'Назва облікового запису',
+	'importusers-password' => 'пароль',
 	'importusers-email' => 'електронна пошта',
+	'importusers-realname' => "cправжнє ім'я",
 );
 
 /** Veps (Vepsan kel')

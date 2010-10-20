@@ -94,6 +94,13 @@ $messages['hsb'] = array(
 	'datediff-desc' => 'Bjerje dwaj datumaj a wróća wšě dny mjez nimaj',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'datediff-desc' => 'Visszaadja két dátum közötti összes napot',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -205,5 +212,12 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'datediff-desc' => 'Kumukuha ng dalawang mga petsa at nagbabalik ng panggitnang mga araw',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'datediff-desc' => 'Приймає дві дати і повертає всі проміжні дні',
 );
 

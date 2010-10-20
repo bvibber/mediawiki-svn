@@ -1719,7 +1719,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'expand_templates_output' => 'Резултат',
 	'expand_templates_ok' => 'ОК',
+	'expand_templates_preview' => 'Нагляд',
 );
 
 /** Yakut (Саха тыла)
@@ -2066,6 +2068,13 @@ Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pa
 /** Tonga (lea faka-Tonga) */
 $messages['to'] = array(
 	'expandtemplates' => 'Fakalahiange ʻa e ngaahi sīpinga',
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'expand_templates_ok' => 'OK',
 );
 
 /** Turkish (Türkçe)

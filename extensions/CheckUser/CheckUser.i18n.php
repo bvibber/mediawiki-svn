@@ -1988,6 +1988,7 @@ $messages['et'] = array(
 	'checkuser-week-2' => 'viimased kaks nädalat',
 	'checkuser-month' => 'viimased 30 päeva',
 	'checkuser-all' => 'kõik',
+	'checkuser-empty' => 'Logi ei sisalda üksusi.',
 	'checkuser-nomatch' => 'Tulemusi ei leitud.',
 	'checkuser-log-fail' => 'Logisissekande lisamine ei õnnestu.',
 	'checkuser-nolog' => 'Logifaili ei leitud.',
@@ -4542,6 +4543,7 @@ $messages['mn'] = array(
 	'grouppage-checkuser' => '{{ns:project}}:Шалгагч хэрэглэгч',
 	'checkuser-reason' => 'Шалтгаан:',
 	'checkuser-search' => 'Хайх',
+	'checkuser-all' => 'бүгдийг',
 	'checkuser-blocked' => 'Түгжигдсэн',
 	'checkuser-search-submit' => 'Хайх',
 );
@@ -5901,13 +5903,47 @@ $messages['rue'] = array(
 	'group-checkuser' => 'Ревізоры',
 	'group-checkuser-member' => 'Ревізор',
 	'checkuser-reason' => 'Причіна:',
+	'checkuser-showlog' => 'Указати лоґ',
+	'checkuser-users' => 'Найти хоснователїв',
+	'checkuser-edits' => 'Найти едітованя з IP адресы',
+	'checkuser-ips' => 'Найти IP адресы',
+	'checkuser-account' => 'найти едітованя од хоснователя',
 	'checkuser-search' => 'Найти',
+	'checkuser-period' => 'Тырваня:',
 	'checkuser-week-1' => 'послїднїй тыждень',
+	'checkuser-week-2' => 'остатнї два тыжднї',
+	'checkuser-month' => 'остатнїх 30 днїв',
 	'checkuser-all' => 'вшыткы',
+	'checkuser-cidr-res' => 'Сполочный CIDR:',
+	'checkuser-empty' => 'Лоґ не обсягує жадны положкы.',
+	'checkuser-nomatch' => 'Згода ненайджена.',
+	'checkuser-nomatch-edits' => 'Згода ненайджена.
+Остатнє едітованя зроблене $1 о $2.',
 	'checkuser-check' => 'Перевірити',
+	'checkuser-log-fail' => 'Не подарило ся записати до лоґу',
+	'checkuser-nolog' => 'Файл лоґованя ся не нашов.',
 	'checkuser-blocked' => 'Заблокованый',
+	'checkuser-gblocked' => 'Заблокованый ґлобално',
 	'checkuser-locked' => 'Замкнуто',
+	'checkuser-wasblocked' => 'Скоре блокованый',
+	'checkuser-localonly' => 'Незъєдноченый',
+	'checkuser-massblock' => 'Заблоковати выбраных хоснователїв',
+	'checkuser-blocktag' => 'Замінити сторінкы хоснователїв на:',
+	'checkuser-blocktag-talk' => 'Замінити сторінкы діскузії на:',
+	'checkuser-massblock-commit' => 'Заблоковати выбраных хоснователїв',
+	'checkuser-block-success' => "'''{{PLURAL:$2|Хоснователь|Хоснователї}} $1 {{PLURAL:$2|є заблокованый|суть заблокованы}}.'''",
+	'checkuser-block-failure' => "'''Жаден хоснователь не быв заблокованый.'''",
+	'checkuser-block-limit' => 'Выбрано дуже много хоснователїв.',
+	'checkuser-block-noreason' => 'Мусите задати причіну блокованя.',
+	'checkuser-noreason' => 'Ку тому запыту мусите увести причіну.',
+	'checkuser-accounts' => '$1 {{PLURAL:$1|нове конто|новы конта|новых конт}}',
+	'checkuser-user-nonexistent' => 'Зазначеный хоснователь не єствує.',
+	'checkuser-search-form' => 'Глядай записы, де $1 є $2',
 	'checkuser-search-submit' => 'Глядати',
+	'checkuser-search-initiator' => 'ініціатор',
+	'checkuser-search-target' => 'ціль',
+	'checkuser-ipeditcount' => 'асі $1 од вшыткых хоснователїв',
+	'checkuser-log-subpage' => 'Лоґ',
 );
 
 /** Yakut (Саха тыла)
@@ -7108,6 +7144,14 @@ $messages['to'] = array(
 	'checkuser' => 'Siviʻi ʻa e ʻetita',
 	'group-checkuser' => 'Siviʻi kau ʻetita',
 	'group-checkuser-member' => 'Siviʻi ʻa e ʻetita',
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'checkuser-search' => 'Painim',
+	'checkuser-search-submit' => 'Painim',
 );
 
 /** Turkish (Türkçe)

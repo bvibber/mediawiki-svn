@@ -654,9 +654,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'piwik-desc' => 'Додає скрипт Piwik на сторінки MediaWiki для відстеження і [[Special:Piwik|деяку статистику]]',
+	'piwik-countries' => 'Країни',
 );
 
 /** Vèneto (Vèneto)

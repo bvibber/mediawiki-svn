@@ -714,8 +714,10 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'intersection-desc' => 'Выпише список найновшых положок в катеґорії або зъєднотить пару катеґорій',
 	'intersection_toomanycats' => 'Error: дуже много катеґорій!',
 	'intersection_noresults' => 'Error: жадны резултаты!',
+	'intersection_noincludecats' => 'Хыба: Мусите включіти холем єдну катеґорію або задати простор назв!',
 );
 
 /** Yakut (Саха тыла)
@@ -903,6 +905,13 @@ $messages['vo'] = array(
 	'intersection_toomanycats' => 'Error: Klads tu mödiks!',
 	'intersection_noresults' => 'Error: Seks nonik!',
 	'intersection_noincludecats' => 'Error: Nedol välön kladi pu bali, u nemaspadi!',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'intersection_noresults' => 'Àsìṣe: Kò sí àwọn èsì kankan!',
 );
 
 /** Cantonese (粵語)

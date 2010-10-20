@@ -1302,6 +1302,14 @@ $messages['tl'] = array(
 	'slippymap_clicktoactivate' => 'Pindutin upang buhayin ang mapa',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'slippymap_error' => 'Помилка $1: $2',
+	'slippymap_errors' => 'Помилки $1:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

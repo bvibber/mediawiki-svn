@@ -1234,8 +1234,11 @@ O arquivo carregado deverá conter o nome da página e um motivo opcional, separ
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'deletebatch' => 'Şterge seria de pagini',
 	'deletebatch-caption' => 'Lista de pagini:',
 	'deletebatch-title' => 'Şterge lot',
+	'deletebatch-link-back' => 'Du-te înapoi la pagina specială',
+	'deletebatch-as' => 'Rulează scriptul ca:',
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-delete' => 'Ştergere',
 	'deletebatch-page' => 'Pagini de șters:',
@@ -1282,6 +1285,13 @@ $messages['ru'] = array(
 	'deletebatch-select-yourself' => 'вы',
 	'deletebatch-no-page' => 'Пожалуйста, выберите минимум одну страницу для удаления ИЛИ выберите файл, содержащий список страниц.',
 	'right-deletebatch' => 'удаление набора страниц',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'deletebatch-select-yourself' => 'tu',
 );
 
 /** Slovak (Slovenčina)

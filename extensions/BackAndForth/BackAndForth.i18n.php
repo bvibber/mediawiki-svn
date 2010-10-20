@@ -772,6 +772,14 @@ $messages['pt-br'] = array(
 	'backforth-prev' => 'Anterior ($1)',
 );
 
+/** Romanian (Română)
+ * @author Stelistcristi
+ */
+$messages['ro'] = array(
+	'backforth-next' => 'Următorul ($1)',
+	'backforth-prev' => 'Anterior ($1)',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

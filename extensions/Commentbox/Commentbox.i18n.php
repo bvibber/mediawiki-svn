@@ -1014,9 +1014,11 @@ Bu sayfa ile ilgili bir yorumunuz mu var? Buraya ekleyin ya da <span class="plai
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
+	'commentbox-name' => 'Назва:',
 );
 
 /** Vèneto (Vèneto)

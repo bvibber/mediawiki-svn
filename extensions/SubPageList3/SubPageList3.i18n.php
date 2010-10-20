@@ -308,7 +308,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'spl3-desc' => 'Mécht automatesch eng Lëscht vun Ënnersäite vun enger Säit mat Hëllef vum Tag <code><nowiki><splist /></nowiki></code>',
-	'spl3_debug' => "Onbekannte Wert fir d'Optioun $1",
+	'spl3_debug' => "Onbekannte Wäert fir d'Optioun $1",
 	'spl3_nosubpages' => '$1 huet keng Ënnersäite fir ze weisen',
 );
 

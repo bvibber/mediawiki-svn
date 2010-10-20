@@ -1759,6 +1759,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'taggedimages' => 'Imagini etichetate',
@@ -1768,10 +1769,12 @@ $messages['ro'] = array(
 	'imagetagging-imghistory' => 'Istoric',
 	'imagetagging-images' => 'imagini',
 	'imagetagging-inthisimage' => 'În această imagine: $1',
+	'imagetagging-log-tagged' => 'Imaginea [[$1|$2]] a fost etichetată paginii [[$3]] de către $4',
 	'imagetagging-removetag' => 'elimină etichetă',
 	'imagetagging-done-button' => 'Etichetare încheiată',
 	'imagetagging-tag-button' => 'Etichetă',
 	'imagetagging-tagcancel-button' => 'Anulează',
+	'imagetagging-tagging-instructions' => 'Apasă pe persoane sau lucruri în imagine pentru a le eticheta.',
 	'imagetagging-addingtag' => 'Adăugare etichetă…',
 	'imagetagging-removingtag' => 'Eliminare etichetă…',
 	'imagetagging-addtagsuccess' => 'Adăugat etichetă.',

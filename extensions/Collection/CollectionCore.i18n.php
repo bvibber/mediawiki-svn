@@ -2648,9 +2648,14 @@ $messages['rue'] = array(
 	'coll-book_creator_disable_tooltip' => 'Перестане хоснованя едітора книг',
 	'coll-bookscategory' => 'Книгы',
 	'coll-help' => 'Поміч',
+	'coll-helppage' => 'Help:Книгы',
 	'coll-n_pages' => '$1 {{PLURAL:$1|сторінка|сторінкы|сторінок}}',
 	'coll-printable_version_pdf' => 'PDF-верзія',
 	'coll-remove_this_page' => 'Одобрати тоту сторінку з вашой книгы',
+	'coll-show_collection' => 'Указати книгу',
+	'coll-not_addable' => 'Тота сторінка не може быти придана',
+	'coll-make_suggestions' => 'Запропоновати сторінкы',
+	'coll-suggest_empty' => 'порожня',
 );
 
 /** Yakut (Саха тыла)
@@ -2705,6 +2710,7 @@ $messages['sc'] = array(
  * @author Aushulz
  */
 $messages['scn'] = array(
+	'coll-help' => 'Aiutu',
 	'coll-show_collection' => 'Talìa libbru',
 	'coll-suggest_empty' => 'vacanti',
 );

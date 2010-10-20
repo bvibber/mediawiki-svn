@@ -834,6 +834,13 @@ Ayrıca [[Special:MostRevisors|'''en fazla inceleyene sahip sayfalar''']] ve [[S
 	'cooperationstatistics-legendmore' => 'veya daha fazla editör.',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

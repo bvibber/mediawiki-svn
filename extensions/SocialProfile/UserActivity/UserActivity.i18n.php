@@ -142,6 +142,7 @@ $messages['bs'] = array(
 	'useractivity' => 'Aktivnost prijatelja',
 	'useractivity-award' => '$1 je dobio nagradu',
 	'useractivity-all' => 'Pogledajte sve',
+	'useractivity-gift' => '$1 primio poklon od $2',
 	'useractivity-group-edit' => '{{PLURAL:$1|jedna izmjena|$1 izmjene|$1 izmjena}}',
 	'useractivity-siteactivity' => 'Aktivnosti na stranici',
 	'useractivity-title' => 'Aktivnosti prijatelja',
@@ -782,8 +783,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'useractivity-all' => 'Переглянути все',
 	'useractivity-group-edit' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
 	'useractivity-user_message' => '$1 {{GENDER:$6|відправив|відправила}} {{PLURAL:$4|повідомлення|повідомлення|повідомлень}} $3',
 );

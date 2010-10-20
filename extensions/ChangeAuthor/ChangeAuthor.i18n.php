@@ -1923,6 +1923,13 @@ $messages['sah'] = array(
 	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Ааптары|Ааптардары}} уларытыы',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'changeauthor-pagenameform-go' => "Va'",
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

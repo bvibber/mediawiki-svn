@@ -902,7 +902,7 @@ $messages['lb'] = array(
 	'editmsg-warning-parse2' => '* Ziatiouns-Buchstaw no dem Feil erwaart: $1',
 	'editmsg-warning-parse3' => '* Ënn vun der Zeechekette gouf net fonnt: $1',
 	'editmsg-warning-file' => '* Et si Feeler beim Liese vun {{PLURAL:$2|dëser Sprooch|dëse Sprooche}} begéint ginn: $1',
-	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wert fir dës {{PLURAL:$2|Sprooch|Sproochen}}: $1',
+	'editmsg-warning-mismatch' => '* Den Originaltext hat net den erwaartene Wäert fir dës {{PLURAL:$2|Sprooch|Sproochen}}: $1',
 	'editmsg-apply-patch' => 'Patch uwenden',
 	'editmsg-no-patch' => 'De "Patch" Kommando konnt net ausgeféiert ginn',
 	'editmsg-patch-failed' => 'Patch huet net fonctionnéiert mat dem Feelermessage $1',
@@ -1333,6 +1333,13 @@ $messages['ru'] = array(
 	'editmsg-no-patch' => 'Невозможно выполнить команду «patch»',
 	'editmsg-patch-failed' => 'Применение патча завершено с ошибой, код возврата $1',
 	'editmsg-patch-success' => 'Патч успешно применён.',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'editmsg-search' => "Va' cerca",
 );
 
 /** Slovak (Slovenčina)

@@ -1326,6 +1326,10 @@ $messages['sah'] = array(
 $messages['scn'] = array(
 	'amazonplus-german' => 'Tidescu',
 	'amazonplus-french' => 'Francisi',
+	'amazonplus-new' => 'novu',
+	'amazonplus-cp-none' => 'Nuddu',
+	'amazonplus-more' => "cchiù assà'",
+	'amazonplus-less' => 'cchiù picca',
 );
 
 /** Slovak (Slovenčina)

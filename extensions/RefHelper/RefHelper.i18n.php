@@ -1287,6 +1287,19 @@ $messages['tl'] = array(
 Maaari mong [[Special:RefHelper|kinakamay na idagdag ang sanggunian]] o [[Special:RefSearch|maghanap ng pagbanggit na idaragdag]].',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'refhelper-refcreate_failure' => 'Сторінка [[$1]] вже існує!',
+	'refhelper-title' => 'Назва:',
+	'refhelper-pages' => 'Сторінки:',
+	'refhelper-year' => 'Рік:',
+	'refhelper-category' => 'Категорія $1:',
+	'refhelper-create' => 'Створити',
+	'refhelper-search' => 'Знайти',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

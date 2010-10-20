@@ -973,6 +973,7 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'layouts_title' => 'Створити сторінку',
 	'layouts_continue' => 'Продовжити',
+	'layouts_choosecategory' => 'Вибір категорії для $1:',
 );
 
 /** Veps (Vepsan kel')

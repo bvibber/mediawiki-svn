@@ -853,6 +853,14 @@ $messages['ru'] = array(
 	'contrib-tracking-button' => 'Продолжить',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'contrib-tracking-error' => 'Хыба',
+	'contrib-tracking-button' => 'Продовжовати',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

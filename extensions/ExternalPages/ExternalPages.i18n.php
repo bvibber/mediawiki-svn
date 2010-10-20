@@ -559,6 +559,13 @@ $messages['ru'] = array(
 	'externalpages-no-page' => 'Не указана страница',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'externalpages' => 'Екстерны сторінкы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

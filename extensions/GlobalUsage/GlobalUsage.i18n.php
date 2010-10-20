@@ -1271,9 +1271,13 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'globalusage' => 'Ґлобалне хоснованя файлу',
 	'globalusage-for' => 'Ґлобалне хоснованя „$1“',
+	'globalusage-desc' => '[[Special:GlobalUsage|Шпеціална сторінка]] про перегляд ґлобалного хоснованя файлу',
 	'globalusage-ok' => 'Глядати',
+	'globalusage-text' => 'Гляданя ґлобалного схоснованя файлу',
+	'globalusage-no-results' => '[[:$1]] ся на іншых вікі не хоснує.',
 	'globalusage-on-wiki' => 'Хоснованя на $2',
 	'globalusage-of-file' => 'Тот файл хоснують такы іншы вікі:',
+	'globalusage-more' => 'Указати [[{{#Special:GlobalUsage}}/$1|ґлобалне схоснованя]] того файлу.',
 	'globalusage-filterlocal' => 'Не указовати локалне хоснованя',
 );
 
@@ -1607,6 +1611,13 @@ $messages['yi'] = array(
 	'globalusage-ok' => 'זוכן',
 	'globalusage-text' => 'זוכן גלאבאלע טעקע ניצן.',
 	'globalusage-no-results' => '[[:$1]] נישט געניצט אויף אַנדערע וויקיס.',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'globalusage-ok' => 'Ṣàwárí',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

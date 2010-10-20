@@ -1421,6 +1421,14 @@ $messages['ug-latn'] = array(
 	'player-goto-page' => 'Bet',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'player-goto-page' => 'Сторінка',
+	'player-goto-file' => 'файл',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

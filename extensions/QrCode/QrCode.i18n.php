@@ -177,6 +177,13 @@ $messages['pt-br'] = array(
 	'qrcode-desc' => 'Gera e adiciona imagens QR Code a uma página wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'qrcode-desc' => "Genere e aggiunge le immaggine QR code a 'na pàgene de Uicchi",
+);
+
 /** Russian (Русский)
  * @author MaxSem
  */

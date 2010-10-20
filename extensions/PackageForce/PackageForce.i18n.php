@@ -335,13 +335,16 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'pf-admin-menu-default' => 'Alapértelmezett',
 	'pf-admin-link-editlink-page' => 'Lap szerkesztése',
 	'pf-header-documentation' => 'Dokumentáció',
+	'pf-header-in_packages' => 'Csomagok',
 	'pf-header-edit' => 'Hivatkozás szerkesztése',
+	'pf-header-type' => 'A lap típusa',
 	'pf-header-page_title' => 'Cím',
 	'pf-header-approve' => 'Elfogadás',
 );
@@ -758,6 +761,16 @@ $messages['tl'] = array(
 	'pf-header-type' => 'Uri ng pahina',
 	'pf-header-page_title' => 'Pamagat',
 	'pf-header-approve' => 'Payagan',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'pf-admin-menu-default' => 'За умовчанням',
+	'pf-admin-link-editlink-page' => 'Редагувати сторінку',
+	'pf-header-type' => 'Тип сторінки',
+	'pf-header-page_title' => 'Заголовок',
 );
 
 /** Yiddish (ייִדיש)

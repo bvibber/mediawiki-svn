@@ -99,10 +99,12 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Comp1089
  */
 $messages['ba'] = array(
 	'abc-desc' => 'ABC музыка форматлауы өсөн <code>&lt;abc&gt;</code> тэге ҡулланыла',
+	'abcdownload' => 'Күсереп алырға:',
 );
 
 /** Bavarian (Boarisch)

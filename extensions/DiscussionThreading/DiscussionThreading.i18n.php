@@ -581,10 +581,12 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'discussionthreading-replysection' => 'răspuns',
 	'discussionthreading-threadnewsection' => 'nou',
+	'discussionthreading-threadnewsectionhint' => 'Începe un nou fir',
 );
 
 /** Tarandíne (Tarandíne)

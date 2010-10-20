@@ -1084,6 +1084,7 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'am-username' => "ім'я користувача",
 	'am-email' => 'електронна пошта',
 	'nss-save-changes' => 'Зберегти зміни',
 	'nss-create-account-header' => 'Створити новий обліковий запис',

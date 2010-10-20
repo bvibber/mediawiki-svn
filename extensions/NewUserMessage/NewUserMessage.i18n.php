@@ -579,6 +579,14 @@ $messages['ru'] = array(
 	'newuseredit-summary' => 'Добавление [[{{int:newusermessage-template}}|приветствия]] на страницу обсуждения нового участника',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'newusermessage-desc' => 'Додавать повідомлїня на діскузны сторінкы ново створеных хоснователїв',
+	'newuseredit-summary' => 'Приданя [[{{int:newusermessage-template}}|привітаня]] на діскузну сторінку нового хоснователя',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

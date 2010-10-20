@@ -3906,6 +3906,7 @@ $messages['he'] = array(
 	'group-filemover' => 'מעבירי קבצים',
 	'group-flood' => 'משתמשי בוט',
 	'group-founder' => 'מייסדים',
+	'group-Image-reviewer' => 'סוקרי תמונות',
 	'group-import' => 'מייבאים',
 	'group-interface_editors' => 'עורכי ממשק',
 	'group-ipblock-exempt' => 'חסיני חסימות IP',
@@ -3925,6 +3926,7 @@ $messages['he'] = array(
 	'group-filemover-member' => 'מעביר קבצים',
 	'group-flood-member' => 'משתמש בוט',
 	'group-founder-member' => 'מייסד',
+	'group-Image-reviewer-member' => 'סוקר תמונות',
 	'group-import-member' => 'מייבא',
 	'group-interface_editors-member' => 'עורך ממשק',
 	'group-ipblock-exempt-member' => 'חסין חסימות IP',
@@ -4766,6 +4768,7 @@ $messages['is'] = array(
  * @author BrokenArrow
  * @author Brownout
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  * @author Melos
  * @author Nemo bis
@@ -4828,6 +4831,7 @@ $messages['it'] = array(
 	'grouppage-founder' => '{{ns:project}}:Founders',
 	'grouppage-import' => '{{ns:project}}:Importatori',
 	'grouppage-ipblock-exempt' => '{{ns:project}}:Esenti dal blocco IP',
+	'grouppage-OTRS-member' => '{{ns:project}}: Membri OTRS',
 	'grouppage-researcher' => '{{ns:project}}:Ricercatori',
 	'grouppage-rollbacker' => '{{ns:project}}:Rollbackers',
 	'grouppage-transwiki' => '{{ns:project}}:Importatori transwiki',
@@ -6040,7 +6044,7 @@ $messages['mg'] = array(
 	'group-founder' => 'Mpamorina',
 	'group-import' => 'Mpanafatra',
 	'group-interface_editors' => 'Mpanova ny rindrankajy',
-	'group-ipblock-exempt' => "Tsy afaka voasakana amin'ny adiresy IP",
+	'group-ipblock-exempt' => "Tsy afaka sakanana amin'ny adiresy IP",
 	'group-patroller' => 'Mpitsidika',
 	'group-researcher' => 'Mpikaroka',
 	'group-rollbacker' => 'Mpamafa',
@@ -6059,7 +6063,7 @@ $messages['mg'] = array(
 	'group-founder-member' => 'Mpamorina',
 	'group-import-member' => 'Mpanafatra',
 	'group-interface_editors-member' => 'mpanova ny rindrankajy',
-	'group-ipblock-exempt-member' => "Mpikambana tsy afaka voasakana amin'ny IP-ny",
+	'group-ipblock-exempt-member' => "Mpikambana tsy afaka sakanana amin'ny IP-ny",
 	'group-patroller-member' => 'Mpitsidika',
 	'group-researcher-member' => 'mpikaroka',
 	'group-rollbacker-member' => 'Mpamafa',
@@ -8163,6 +8167,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'wikimediamessages-desc' => 'Повідомлїня, характерістічны про Вікімедію',
+	'sitesupport-url' => 'http://wikimediafoundation.org/wiki/Donate/rue',
 	'sitesupport' => 'Підпорте нас',
 	'tooltip-n-sitesupport' => 'Підпорьте нас',
 	'specialpages-group-contribution' => 'Приспевкы/фінанцованя',
@@ -8252,6 +8257,7 @@ $messages['rue'] = array(
 	'group-inactive' => 'Неактівны хоснователї',
 	'group-inactive-member' => 'неактівный хоснователь',
 	'grouppage-inactive' => '{{ns:project}}:Неактівны хоснователї',
+	'wikimedia-copyright' => 'Текст є доступный під<a href="http://creativecommons.org/licenses/by-sa/3.0/deed.rue">ліценціов Creative Commons Зазначте автора&nbsp;– Уховайте ліценцію</a>, припадно за далшых подмінок. Детайлы найдете на сторінцї <a href="http://wikimediafoundation.org/wiki/Подмінкы_схоснованя">Подмінкы схоснованя</a>.',
 	'wikimedia-copyrightwarning' => 'Уложінём ваш приспевок неодволательно увольнюєте під ліценціями [http://creativecommons.org/licenses/by-sa/3.0/deed.rue Creative Commons Зазначте автора&nbsp;– Заховайте ліценцію&nbsp;3.0] і&nbsp;[http://www.gnu.org/copyleft/fdl.html GFDL]. Согласите з&nbsp;тым, жебы далшы хоснователї ваше авторство увели холем формов гіпертекстового одказу або адресы на сторінку, до котрой приспівате. Детайлы найдете в&nbsp;[http://wikimediafoundation.org/wiki/Подмінкы_хоснованя подмінках хоснованя].',
 	'wikimedia-editpage-tos-summary' => 'кідь собі не желате, жебы ваш приспевок быв немилосердно управляный і&nbsp;вольно шыреный, пак го ту не укладайте. покы не сьте автором тексту, мусить быти доступный за подмінок злучітельных з&nbsp;nнашыма [http://wikimediafoundation.org/wiki/Подмнікы_хоснованя подмінками хоснованя] і&nbsp;вы согласите із вшыткыма прислушныма ліценчныма пожадавками.',
 );
@@ -10763,6 +10769,7 @@ $messages['yi'] = array(
 	'group-Global_bot-member' => 'גלאבאַלער באט',
 	'group-Global_rollback-member' => 'גלאבאַלער צוריקדרייער',
 	'group-Global_sysops-member' => 'גלאבאַלער סיסאָפּ',
+	'group-Staff-member' => 'שטאַב',
 	'group-coder-member' => 'פראגראַמירער',
 	'group-inactive' => 'אומאַקטיווע באַניצער',
 	'group-inactive-member' => 'אומאַקטיווער באַניצער',

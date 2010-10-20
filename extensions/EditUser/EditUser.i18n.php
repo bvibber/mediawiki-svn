@@ -1315,6 +1315,13 @@ $messages['tl'] = array(
 	'right-edituser-exempt' => 'Hindi mababago ng iba ang mga kagustuhan ng tagagamit na ito',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'edituser-dosearch' => 'Painim',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Manco Capac
@@ -1344,6 +1351,14 @@ $messages['tt-cyrl'] = array(
 	'edituser-exempt' => 'Кулланучы  «$1» бите төзәтелә алмый',
 	'right-edituser' => 'Башка катнашучылар көйләүләрен төзәтү',
 	'right-edituser-exempt' => 'башкалар бу кулланучының көйләнмәләрен төзәтә алмый',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'edituser-username' => "Ім'я користувача:",
+	'edituser-dosearch' => 'Пошук',
 );
 
 /** Urdu (اردو)

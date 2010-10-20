@@ -2049,6 +2049,14 @@ $messages['sc'] = array(
 	'ct-and' => 'e',
 );
 
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'ct-anon-users' => 'Utenti anònimi',
+	'ct-and' => 'e',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  * @author බිඟුවා

@@ -656,6 +656,16 @@ $messages['ru'] = array(
 	'simpleantispam-desc' => 'Добавляет на форму простую проверку на спам и ботов',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'simpleantispam' => 'Ваша управа спустила антіспамовый механізм',
+	'simpleantispam-label' => "Перевірка на спам.
+'''НЕ''' заповнюйте тото!",
+	'simpleantispam-desc' => 'Придасть до формуларїв просте овірїня ботів/спаму',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

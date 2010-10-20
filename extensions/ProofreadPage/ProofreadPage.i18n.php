@@ -2744,11 +2744,11 @@ $messages['lb'] = array(
 	'proofreadpage_nologintext' => "Dir musst [[Special:UserLogin|ageloggt]] si fir de Status vum Iwwerliese vu Säiten z'änneren.",
 	'proofreadpage_notallowed' => 'Ännerung net erlaabt',
 	'proofreadpage_notallowedtext' => "Dir sidd net berechtigt de Status vum Iwwerliese vun dëser Säit z'änneren.",
-	'proofreadpage_number_expected' => 'Feeler: et gof en numerische Wert erwaart',
+	'proofreadpage_number_expected' => 'Feeler: et gouf en numeresche Wäert erwaart',
 	'proofreadpage_interval_too_large' => 'Feeler: Intervall ze ze grouss',
 	'proofreadpage_invalid_interval' => 'Feeler: net valabelen Intervall',
 	'proofreadpage_nextpage' => 'Nächst Säit',
-	'proofreadpage_prevpage' => 'Säit virdrun',
+	'proofreadpage_prevpage' => 'Vireg Säit',
 	'proofreadpage_header' => 'Entête (noinclude):',
 	'proofreadpage_body' => 'Inhalt vun der Säit (Transklusioun):',
 	'proofreadpage_footer' => 'Foussnote (noinclude):',
@@ -3965,6 +3965,15 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'proofreadpage_namespace' => 'Сторінка',
+	'proofreadpage_nextpage' => 'Далша сторінка',
+	'proofreadpage_prevpage' => 'Попередня сторінка',
+	'proofreadpage_header' => 'Головка (noinclude):',
+	'proofreadpage_body' => 'Тїло сторінкы (буде ся включати):',
+	'proofreadpage_footer' => 'Пятка (noinclude):',
+	'proofreadpage_quality0_category' => 'Без тексту',
+	'proofreadpage_quality2_category' => 'Проблематічна',
+	'proofreadpage_index_listofpages' => 'Список сторінок',
+	'proofreadpage_page_status' => 'Статус сторінкы',
 	'proofreadpage_js_attributes' => 'Автор Назва Рік Выдавательство',
 	'proofreadpage_index_attributes' => 'Автор
 Назва
@@ -3974,6 +3983,8 @@ $messages['rue'] = array(
 Образок|Обалка
 Сторінок||20
 Познамок||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|сторінка|сторінкы|сторінок}}',
+	'proofreadpage_source' => 'Жрідло',
 );
 
 /** Yakut (Саха тыла)
@@ -4787,9 +4798,11 @@ $messages['ug-latn'] = array(
  * @author AS
  * @author Ahonc
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'indexpages' => 'Список індексових сторінок',
+	'pageswithoutscans' => 'Сторінки без сканувань',
 	'proofreadpage_desc' => 'Дозволяє легко порівнювати текст і відскановане зображення оригіналу',
 	'proofreadpage_namespace' => 'Сторінка',
 	'proofreadpage_index_namespace' => 'Індекс',
@@ -4841,6 +4854,7 @@ $messages['uk'] = array(
 	'proofreadpage_specialpage_legend' => 'Пошук сторінок індексації',
 	'proofreadpage_source' => 'Джерело',
 	'proofreadpage_source_message' => 'Для створення цього тексту використані відскановані видання',
+	'right-pagequality' => 'Змінювати статус якості сторінки',
 );
 
 /** Vèneto (Vèneto)

@@ -2741,6 +2741,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'stabilization-page' => 'Назва сторінкы:',
+	'stabilization-submit' => 'Підтвердити',
 	'stabilization-comment' => 'Причіна:',
 	'stabilization-otherreason' => 'Інша причіна:',
 	'stabilization-expiry' => 'Кінчіть:',
@@ -2790,6 +2791,15 @@ $messages['sc'] = array(
 	'stabilization-submit' => 'Cunfirma',
 	'stabilization-comment' => 'Motivu:',
 	'stabilization-otherreason' => 'Àteru motivu:',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'stabilization-page' => 'Nnomu dâ pàggina:',
+	'stabilization-comment' => 'Mutivu:',
+	'stabilization-otherreason' => 'Àutru mutivu:',
 );
 
 /** Slovak (Slovenčina)

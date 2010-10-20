@@ -26,6 +26,7 @@ $wgAutoloadClasses[ 'PayflowProGateway_Form_OneStepTwoColumn' ] = $dir . 'forms/
 $wgAutoloadClasses[ 'PayflowProGateway_Form_TwoStepTwoColumn' ] = $dir . 'forms/TwoStepTwoColumn.php';
 $wgAutoloadClasses[ 'PayflowProGateway_Form_TwoColumnPayPal' ] = $dir . 'forms/TwoColumnPayPal.php';
 $wgAutoloadClasses[ 'PayflowProGateway_Form_TwoColumnLetter' ] = $dir . 'forms/TwoColumnLetter.php';
+$wgAutoloadClasses[ 'PayflowProGateway_Form_TwoColumnLetter2' ] = $dir . 'forms/TwoColumnLetter2.php';
 $wgAutoloadClasses[ 'PayflowProGateway_Form_TwoStepTwoColumnLetter' ] = $dir . 'forms/TwoStepTwoColumnLetter.php';
 $wgAutoloadClasses[ 'PayflowProGateway_Form_SingleColumn' ] = $dir . 'forms/SingleColumn.php';
 $wgExtensionMessagesFiles['PayflowProGateway'] = $dir . 'payflowpro_gateway.i18n.php';
@@ -100,6 +101,15 @@ $wgPayflowGatewayHTTPProxy = '';
  * The URL to redirect a transaction to PayPal
  */
 $wgPayflowGatewayPaypalURL = '';
+
+/**
+ * Set the max-age value for Squid
+ * 
+ * If you have Squid enabled for caching, use this variable to configure
+ * the s-max-age for cached requests.
+ * @var int Time in seconds
+ */
+$wgPayflowSMaxAge = 6000;
 
 /** 
  * Hooks required to interface with the donation extension (include <donate> on page)

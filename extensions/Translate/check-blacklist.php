@@ -35,6 +35,7 @@ array(
 		'blocklog-showlog', // Optional GENDER parameter
 		'blocklog-showsuppresslog', // Optional GENDER parameter
 		'confirmemail_body', // Optional time parameters
+		'confirmemail_body_changed', // Optional time parameters
 		'currentrev-asof', // Optional time parameters
 		'filehist-thumbtext', // Optional time parameters
 		'history-feed-item-nocomment', // Optional time parameters
@@ -376,6 +377,13 @@ array(
 	'check' => 'links',
 	'message' => array(
 		'pr_introductory_text', // Contains link parts that may need translation
+	)
+),
+array(
+	'group' => 'wikia-sharedhelp',
+	'check' => 'links',
+	'message' => array(
+		'sharedhelp-desc', // Contains link parts that may need translation
 	)
 ),
 array(

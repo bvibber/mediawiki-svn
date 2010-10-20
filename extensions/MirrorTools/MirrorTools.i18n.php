@@ -153,6 +153,13 @@ $messages['hsb'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužiwarjo špiheloweho nastroja',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'mirrortools' => 'MirrorTools',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

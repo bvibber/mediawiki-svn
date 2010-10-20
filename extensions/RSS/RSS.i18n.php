@@ -15,7 +15,13 @@ $messages['en'] = array(
 	'rss-desc' => 'Displays an RSS feed on a wiki page',
 	'rss-error' => 'Failed to load RSS feed from $1: $2',
 	'rss-empty' => 'Failed to load RSS feed from $1!',
+	'rss-item' => '{{RSSPost | title = {{{title}}} | link = {{{link}}} | date = {{{date}}} | author = {{{author}}} }}',
 );
+
+$messages['qqq'] = array(
+	'rss-item' => 'Do not translate',
+);
+
 
 /** Afrikaans (Afrikaans)
  * @author Naudefj

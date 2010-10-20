@@ -398,6 +398,16 @@ $messages['es'] = array(
 	'mwe-clipedit-layout_left' => 'Composición de la imagen del lado izquierdo',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'mwe-clipedit-sc_duration' => 'Kestus',
+	'mwe-clipedit-start_time' => 'Algusaeg',
+	'mwe-clipedit-end_time' => 'Lõpuaeg',
+	'mwe-clipedit-duration' => 'Kestus:',
+);
+
 /** Basque (Euskara) */
 $messages['eu'] = array(
 	'mwe-clipedit-crop' => 'Irudia moztu',
@@ -1545,13 +1555,45 @@ $messages['vi'] = array(
 	'mwe-clipedit-edit-tools' => 'Công cụ sửa đổi',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'mwe-clipedit-start_time' => 'Àsìkò ìbẹ̀rẹ̀',
+	'mwe-clipedit-end_time' => 'Àsìkò ìparí',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Shizhao
+ */
 $messages['zh-hans'] = array(
+	'mwe-clipedit-crop' => '裁剪图像',
+	'mwe-clipedit-apply_crop' => '对图像进行裁剪',
+	'mwe-clipedit-reset_crop' => '重新裁剪',
+	'mwe-clipedit-insert_image_page' => '插入到页面',
+	'mwe-clipedit-insert_into_sequence' => '插入到序列',
+	'mwe-clipedit-preview_insert' => '预览插入',
+	'mwe-clipedit-cancel_image_insert' => '取消插入',
+	'mwe-clipedit-sc_attributes' => '剪辑细节编辑',
+	'mwe-clipedit-sc_inoutpoints' => '设置进出点',
+	'mwe-clipedit-sc_overlays' => '重叠',
+	'mwe-clipedit-sc_audio' => '音频控制',
 	'mwe-clipedit-sc_duration' => '期限',
+	'mwe-clipedit-template_properties' => '模板属性',
+	'mwe-clipedit-custom_title' => '定制标题',
+	'mwe-clipedit-edit_properties' => '编辑属性',
+	'mwe-clipedit-other_properties' => '其他属性',
+	'mwe-clipedit-resource_page' => '资源页：',
+	'mwe-clipedit-set_in_out_points' => '设置进出点',
 	'mwe-clipedit-start_time' => '开始时间',
 	'mwe-clipedit-end_time' => '结束时间',
+	'mwe-clipedit-preview_inout' => '预览进出点',
+	'mwe-clipedit-edit-tools' => '编辑工具',
 	'mwe-clipedit-inline-description' => '说明',
+	'mwe-clipedit-edit-video-tools' => '编辑视频工具',
 	'mwe-clipedit-duration' => '期限：',
 	'mwe-clipedit-layout' => '布局',
+	'mwe-clipedit-layout_right' => '右侧图像布局',
+	'mwe-clipedit-layout_left' => '左侧图像布局',
 );
 

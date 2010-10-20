@@ -1306,6 +1306,13 @@ $messages['yi'] = array(
 	'ajax-se-userinvalid' => 'גרייז: באַניצער אומגילטיק',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'ajax-se-idling' => '($1s sẹ́yìn)',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

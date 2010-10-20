@@ -352,6 +352,15 @@ $messages['tl'] = array(
 	'variablepage-desc' => 'Magaang na pabagubaong muling pagiiba ng pupuntahan ng pahina',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'variablepage' => 'ЗміннаСторінка',
+	'variablepage-navlink_text' => 'Пожертвувати',
+	'variablepage-desc' => 'Легке перенаправлення на різні сторінки',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -4219,10 +4219,42 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'contrib-hist-name' => 'Мено',
 	'contrib-hist-date' => 'Час і датум',
+	'contrib-hist-amount' => 'Сума',
+	'contrib-hist-anonymous' => 'Анонім',
 	'contribstats-day' => 'День',
 	'contribstats-month' => 'Місяць',
+	'contribstats-contributions' => 'Чісло приспевків',
+	'contribstats-total' => 'Цалком (USD)',
+	'contribstats-avg' => 'Середнє чісло (USD)',
+	'contribstats-max' => 'Максімум (USD)',
+	'contribstats-total-ytd' => 'Вшыткого (з початку року)',
+	'contribstats-value-exactly' => 'Рівно $1',
+	'contribstats-value-under' => 'Менше як $1',
+	'contribstats-value-from' => 'З $1 - $2',
+	'contribstats-value-over' => 'Веце як $1',
 	'contribstats-week' => 'Тыждень',
+	'contribstats-payment-type' => 'Способ платбы',
+	'contribstats-banner' => 'Банер',
+	'contribstats-clicks' => 'Кліків',
+	'contribstats-donations' => 'Приспівкы',
+	'contribstats-conversion' => 'Коефіціент конверзії (%)',
+	'contribstats-template' => 'Шаблона',
+	'contribstats-nodata' => 'Дата не доданы',
+	'contribstats-landingpage' => 'Цілёва сторінка',
+	'contribstats-average' => 'Середнє',
+	'contribstats-credit-card' => 'Кредітна карта',
 	'fundraiserstats-date' => 'Датум',
+	'fundraiserstats-day' => '$2, $1. день',
+	'fundraiserstats-contributions' => 'Приспевкы',
+	'fundraiserstats-total' => 'Цалком (USD)',
+	'fundraiserstats-avg' => 'Середнє чісло (USD)',
+	'fundraiserstats-ytd' => 'Кумулатівна сума (USD)',
+	'fundraiserstats-max' => 'Максімум (USD)',
+	'fundraiserstats-tab-totals' => 'Цалком (USD)',
+	'fundraiserstats-tab-contributions' => 'Чісло приспівків',
+	'fundraiserstats-tab-averages' => 'Середнї чісла (USD)',
+	'fundraiserstats-tab-maximums' => 'Максіма (USD)',
+	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
 );
 
 /** Yakut (Саха тыла)
@@ -4295,6 +4327,14 @@ $messages['sah'] = array(
 	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
 	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
 	'fundraiserstats-tab-ytd' => 'Бу сылга (USD)',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'contrib-hist-name' => 'Nomu',
+	'contribstats-week' => 'Simana',
 );
 
 /** Slovak (Slovenčina)
@@ -4888,7 +4928,7 @@ $messages['tl'] = array(
 	'contributionreporting-desc' => 'Buhay na paguulat hinggil sa pangangalap ng salaping panustos (pondo) ng Wikimedia',
 	'contributiontotal' => 'Kabuoan ng ambag',
 	'contributionhistory' => 'Kasaysayan ng ambag',
-	'contrib-hist-header' => "Mga puna/kumento ng tagapagkaloob na nasa tunay na panahon/oras mula sa iba't ibang sulok ng daigdig",
+	'contrib-hist-header' => "Mga puna ng tagapagkaloob mula sa iba't ibang sulok ng daigdig",
 	'contrib-hist-name' => 'Pangalan',
 	'contrib-hist-date' => 'Oras at petsa',
 	'contrib-hist-amount' => 'Halaga',
@@ -4951,6 +4991,13 @@ $messages['tl'] = array(
 	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-ytd' => 'Taon-sa-petsa (USD)',
+);
+
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'contribstats-day' => 'De',
 );
 
 /** Turkish (Türkçe)

@@ -130,6 +130,13 @@ $messages['he'] = array(
 	'rdfimport' => 'יבוא RDF',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'rdfimport' => 'RDF importálása',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

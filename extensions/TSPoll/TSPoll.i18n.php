@@ -344,8 +344,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'tspoll-fetch-error' => 'Eroare în timpul preluării adresei!',
 	'tspoll-id-error' => 'Niciun ID introdus!',
 );
 

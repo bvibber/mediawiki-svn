@@ -229,6 +229,10 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'donate_interface-currency' => 'Валута:',
+	'donate_interface-gateway' => 'Начин на плащане:',
+	'donate_interface-submit-button' => 'Даряване',
+	'donate_interface-comment-label' => 'Коментар:',
 	'donate_interface-GBP' => 'GBP: британска лира',
 	'donate_interface-EUR' => 'EUR: евро',
 	'donate_interface-USD' => 'USD: американски долар',
@@ -1930,6 +1934,13 @@ $messages['ru'] = array(
 	'donate_interface-SGD' => 'SGD: сингапурский доллар',
 	'donate_interface-SEK' => 'SEK: шведская крона',
 	'donate_interface-ILS' => 'ILS: израильский шекель',
+);
+
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'donate_interface-comment-label' => 'Коментарь:',
 );
 
 /** Yakut (Саха тыла)

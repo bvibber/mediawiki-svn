@@ -530,12 +530,14 @@ $messages['tl'] = array(
 
 /** Ukrainian (Українська)
  * @author Arturyatsko
+ * @author Тест
  */
 $messages['uk'] = array(
 	'transliterator-desc' => 'Забезпечує фукцію парсера для транслітерації, що можна налаштовувати',
 	'transliterator-error-ambiguous' => 'Неоднозначне правило <code>$1</code> в [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Невірний синтаксис <code>$1</code> в [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Більше $1 {{PLURAL:$1|правила|правил|правил}} в [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] повинне мати довжину принаймні $1 {{PLURAL:$1|символу|символів}}.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -76,6 +76,7 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Haqmar
  * @author Рустам Нурыев
  */
@@ -84,7 +85,7 @@ $messages['ba'] = array(
 	'interwikilist-desc' => 'Ҡулланып булған интервики һылтанмаларын ҡарау өсөн [[Special:Interwikilist|махсус бит]] өҫтәй',
 	'interwikilist-linkname' => 'Интервики һылтанмаһы',
 	'interwikilist-target' => 'Маҡсат URL',
-	'interwikilist-filter' => 'Фильтрҙар исемлеге',
+	'interwikilist-filter' => 'Һөҙгөстәр исемлеге',
 	'interwikilist-prefix' => 'Интервики префиксы:',
 );
 

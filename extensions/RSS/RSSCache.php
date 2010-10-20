@@ -30,6 +30,14 @@ class RSSCache {
 				);
 			}
 		}
+
+		// check if it is writable.
+		if ( !is_writable( $this->BASE_CACHE ) ) {
+			wfDebugLog(
+				'RSS',
+				"Cache dir '" . $this->BASE_CACHE . "' is not writable."
+			);
+		}
 	}
 
 	/**

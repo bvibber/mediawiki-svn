@@ -2330,6 +2330,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $wgCustomToolbarMessages['ro'] = array(
 	'ct-desc' => 'Adaugă o bară de unelte extensibilă',
@@ -2369,6 +2370,7 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_success' => 'Încărcare a fișierului cu succes!',
 	'ct_user_user' => 'Utilizator',
 	'ct_user_tip' => 'Inserează o legătură într-o pagină de utilizator.',
+	'ct_user_caption' => 'Legătură utilizator',
 	'ct_user_sample' => 'Nume de utilizator',
 );
 

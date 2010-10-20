@@ -5432,6 +5432,7 @@ $messages['rif'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'farmer' => 'Fermier',
@@ -5458,12 +5459,14 @@ Este accesibil la $1',
 	'farmer-button-confirm' => 'Confirmă',
 	'farmer-button-submit' => 'Trimite',
 	'farmer-createwiki-form-title' => 'Creează wiki',
+	'farmer-createwiki-form-text1' => 'Foloseşte formularul de mai jos pentru a crea un nou wiki.',
 	'farmer-createwiki-form-help' => 'Ajutor',
 	'farmer-createwiki-user' => 'Nume de utilizator',
 	'farmer-createwiki-name' => 'Nume wiki',
 	'farmer-createwiki-title' => 'Titlu wiki',
 	'farmer-createwiki-description' => 'Descriere',
 	'farmer-createwiki-reason' => 'Motiv',
+	'farmer-updatedlist' => 'Listă actualizată',
 	'farmer-notaccessible' => 'Inaccesibil',
 	'farmer-permissiondenied' => 'Permisiune refuzată',
 	'farmer-deleting' => 'Wiki-ul "$1" a fost șters',
@@ -5477,6 +5480,7 @@ Este accesibil la $1',
 	'farmer-mainpage' => 'Pagina principală',
 	'farmer-basic-title' => 'Parametri de bază',
 	'farmer-basic-title1' => 'Titlu',
+	'farmer-basic-title1-text' => 'Wiki-ul tău nu are un titlu. Setează unul <b>acum</b>',
 	'farmer-basic-description' => 'Descriere',
 	'farmer-basic-permission' => 'Permisiuni',
 	'farmer-basic-permission-visitor' => 'Permisiuni pentru fiecare utilizator',
@@ -5487,6 +5491,7 @@ Este accesibil la $1',
 	'farmer-basic-permission-user-text' => 'Următoarele permisiuni vor fi aplicate fiecărei persoane care se autentifică în acest wiki',
 	'farmer-setpermission' => 'Setați permisiunile',
 	'farmer-defaultskin' => 'Stil implicit',
+	'farmer-defaultskin-button' => 'Setează interfaţa implicită',
 	'farmer-extensions' => 'Extensii active',
 	'farmer-extensions-button' => 'Setează exteniile active',
 	'farmer-extensions-invalid' => 'Extensie incorectă',
@@ -5650,6 +5655,21 @@ $messages['rue'] = array(
 	'farmer-createwiki-name' => 'Вікі мено',
 	'farmer-createwiki-description' => 'Попис',
 	'farmer-createwiki-reason' => 'Причіна',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'farmer-confirmsetting-name' => 'Nomu',
+	'farmer-confirmsetting-title' => 'Tìtulu',
+	'farmer-confirmsetting-reason' => 'Mutivu',
+	'farmer-createwiki-reason' => 'Mutivu',
+	'farmer-mainpage' => 'Pàggina principali',
+	'farmer-basic-title1' => 'Tìtulu',
+	'farmer-yes' => 'Sì',
+	'farmer-no' => 'Nò',
+	'farmer-extensions-register-name' => 'Nomu',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -6679,15 +6699,39 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'farmercreatesitename' => 'Назва сайту',
+	'farmer-list-wiki' => 'Список вікі',
+	'farmer-createwiki' => 'Створити вікі',
+	'farmer-notavailable' => 'Не доступно',
+	'farmer-wikicreated' => 'Вікі створена',
+	'farmer-wikiexists' => 'Вікі існує',
+	'farmer-confirmsetting-name' => 'Назва',
+	'farmer-confirmsetting-title' => 'Заголовок',
 	'farmer-confirmsetting-description' => 'Опис',
 	'farmer-confirmsetting-reason' => 'Причина',
 	'farmer-description' => 'Опис',
+	'farmer-button-confirm' => 'Підтвердити',
+	'farmer-button-submit' => 'Надіслати',
+	'farmer-createwiki-form-title' => 'Створити вікі',
+	'farmer-createwiki-form-help' => 'Довідка',
+	'farmer-createwiki-user' => "Ім'я користувача",
+	'farmer-createwiki-name' => 'Назва вікі',
+	'farmer-createwiki-title' => 'Заголовок вікі',
 	'farmer-createwiki-description' => 'Опис',
 	'farmer-createwiki-reason' => 'Причина',
+	'farmer-updatedlist' => 'Оновлений список',
+	'farmer-delete-form' => 'Виберіть вікі',
+	'farmer-listofwikis' => 'Список вікі',
+	'farmer-mainpage' => 'Головна сторінка',
+	'farmer-basic-title' => 'Основні параметри',
 	'farmer-basic-title1' => 'Заголовок',
 	'farmer-basic-description' => 'Опис',
+	'farmer-yes' => 'Так',
+	'farmer-no' => 'Ні',
+	'farmer-extensions-register-name' => 'Назва',
 );
 
 /** Urdu (اردو) */

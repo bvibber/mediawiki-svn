@@ -15,6 +15,29 @@ class PayflowProGateway_Form_OneStepTwoColumn extends PayflowProGateway_Form {
 		$this->loadValidateJs(); // validation JS
 
 		$this->loadApiJs(); // API/Ajax JS
+
+		// form placeholder values
+		$first = wfMsg( 'payflowpro_gateway-first' );
+		$last = wfMsg( 'payflowpro_gateway-last' );
+		$js = <<<EOT
+<script type="text/javascript">
+function loadPlaceholders() {
+	var fname = document.getElementById('fname');
+	var lname = document.getElementById('lname');
+	var amountOther = document.getElementById('amountOther');
+	if (fname.value == '') {
+		fname.style.color = '#999999';
+		fname.value = '$first';
+	}
+	if (lname.value == '') {
+		lname.style.color = '#999999';
+		lname.value = '$last';
+	}
+}
+addEvent( window, 'load', loadPlaceholders );
+</script>
+EOT;
+		$wgOut->addHeadItem( 'placeholders', $js );
 	}
 
 	/**
@@ -83,7 +106,7 @@ class PayflowProGateway_Form_OneStepTwoColumn extends PayflowProGateway_Form {
 			$form .= Xml::hidden( 'PaypalRedirect', false );
 			$form .= Xml::element( 'input', array( 'class' => 'input-button button-navyblue', 'value' => wfMsg( 'payflowpro_gateway-submit-button'), 'onclick' => 'document.payment.PaypalRedirect.value=\'true\';document.payment.submit();', 'type' => 'submit'));
 		} else {
-			$form .= Xml::element( 'input', array( 'class' => 'input-button button-navyblue', 'value' => wfMsg( 'payflowpro_gateway-submit-button'), 'onclick' => 'submit_form( this )', 'type' => 'submit'));
+			$form .= Xml::element( 'input', array( 'class' => 'button-plain', 'value' => wfMsg( 'payflowpro_gateway-cc-button'), 'onclick' => 'submit_form( this )', 'type' => 'submit'));
 			$form .= Xml::closeElement( 'div' ); // close div#mw-donate-submit-button
 			$form .= Xml::openElement( 'div', array( 'class' => 'mw-donate-submessage', 'id' => 'payflowpro_gateway-donate-submessage' ) ) .
 			wfMsg( 'payflowpro_gateway-donate-click' );

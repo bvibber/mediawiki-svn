@@ -1,4 +1,4 @@
-CREATE TABLE `contribution_tracking` (
+CREATE TABLE IF NOT EXISTS /*_*/`contribution_tracking` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `contribution_id` int(10) unsigned default NULL,
   `note` text,
@@ -13,4 +13,4 @@ CREATE TABLE `contribution_tracking` (
   PRIMARY KEY  (`id`),
   UNIQUE KEY `contribution_id` (`contribution_id`),
   KEY `ts` (`ts`)
-) /*wgDBTableOptions/*; 
+) /*wgDBTableOptions*/; 

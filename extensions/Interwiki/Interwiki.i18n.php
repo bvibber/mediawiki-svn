@@ -2381,6 +2381,7 @@ $messages['mn'] = array(
 	'interwiki_1' => 'тийм',
 	'interwiki_0' => 'үгүй',
 	'interwiki_reasonfield' => 'Шалтгаан:',
+	'interwiki_addbutton' => 'Нэмэх',
 );
 
 /** Marathi (मराठी)
@@ -3292,6 +3293,7 @@ Obsahuje [[Special:Log/interwiki|záznam zmien]] tabuľky interwiki.',
 $messages['sl'] = array(
 	'interwiki_1' => 'da',
 	'interwiki_0' => 'ne',
+	'interwiki_addbutton' => 'Dodaj',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

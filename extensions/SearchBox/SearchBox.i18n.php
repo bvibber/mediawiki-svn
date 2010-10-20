@@ -882,6 +882,13 @@ $messages['ug-latn'] = array(
 	'searchbox-go' => 'Köchüsh',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'searchbox-namespaces' => 'Простори назв:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

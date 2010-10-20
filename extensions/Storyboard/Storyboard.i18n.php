@@ -2275,6 +2275,16 @@ Maaari kang [$2 magbasa ng nalathalang mga kuwento].',
 	'storyboard-storydeletionconfirm' => 'Natitiyak mo bang nais mong burahin ng pamalagian ang kuwento?',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'storyboard-hidden' => 'Прихована',
+	'storyboard-language' => 'Мова',
+	'storyboard-done' => 'Виконано',
+	'storyboard-deletestory' => 'Вилучити',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'storyboard-hidden' => '隐藏',

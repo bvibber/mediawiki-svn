@@ -1582,7 +1582,11 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'drafts' => 'Концепты',
 	'drafts-view-article' => 'Сторінка',
+	'drafts-view-saved' => 'Уложене',
+	'drafts-view-discard' => 'Змазати',
+	'drafts-save-saved' => 'Уложене',
 );
 
 /** Yakut (Саха тыла)
@@ -1609,6 +1613,15 @@ $messages['sah'] = array(
 	'drafts-save-saving' => 'Хаалларыы',
 	'drafts-save-error' => 'Сатаан хаалларыллыбата',
 	'tooltip-drafts-save' => 'Харатынан хааллар',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Aushulz
+ */
+$messages['scn'] = array(
+	'drafts-view-article' => 'Pàggina',
+	'drafts-view-saved' => 'Sarvata',
+	'drafts-save-saved' => 'Sarvata',
 );
 
 /** Slovak (Slovenčina)

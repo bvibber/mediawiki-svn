@@ -2028,6 +2028,13 @@ $4',
 	'right-todosubmit' => 'Limitahan ang talaan ng karapatan na panggagawin ng tagagamit',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'todo-new-queue' => 'niu',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
