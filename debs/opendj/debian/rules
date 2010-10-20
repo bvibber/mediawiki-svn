@@ -80,6 +80,8 @@ binary-indep: install
 
 	# Move the binaries into usr
 	mv ${CURDIR}/build/package/OpenDJ/* $(CURDIR)/debian/opendj/usr/opendj
+	cp ${CURDIR}/create-nis-indexes $(CURDIR)/debian/opendj/usr/opendj/bin
+	chmod a+rx $(CURDIR)/debian/opendj/usr/opendj/bin/create-nis-indexes
 
 	# Ensure the resource file created by the build is gone, and we link to etc for it
 	rm -f $(CURDIR)/debian/opendj/usr/opendj/instance.loc
