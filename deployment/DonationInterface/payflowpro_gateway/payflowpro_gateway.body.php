@@ -80,6 +80,7 @@ class PayflowProGateway extends UnlistedSpecialPage {
 
 		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );
 		
+		// @fixme can this be moved into the form generators?
 		 $js = <<<EOT
 <script type="text/javascript">
 jQuery(document).ready(function() {
@@ -114,7 +115,11 @@ EOT;
 		if ( $wgRequest->getText( '_cache_', false ) ) {
 			$cache = true;
 			$token = '';
-			$token_match = false;	
+			$token_match = false;
+			
+			// if we have squid caching enabled, set the maxage
+			global $wgUseSquid, $wgPayflowSMaxAge;
+			if ( $wgUseSquid ) $wgOut->setSquidMaxage( $wgPayflowSMaxAge );
 		} else {
 			$cache = false;
 			
