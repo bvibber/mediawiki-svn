@@ -650,6 +650,17 @@ abstract class PayflowProGateway_Form {
 							$wgScriptPath .
 							'/extensions/DonationInterface/payflowpro_gateway/pfp_api_controller.js?284"></script>' );
 	}
+	
+	protected function loadOwaJs() {
+		global $wgOut, $wgScriptPath;
+		$wgOut->addHeadItem( 'owa_get_info', '<script type="text/javascript" src="' .
+							$wgScriptPath .
+							'/extensions/DonationInterface/payflowpro_gateway/owa_get_info.js?284"></script>' );
+		$wgOut->addHeadItem( 'owa_tracker', '<script type="text/javascript" src="' .
+							$wgScriptPath .
+							'/extensions/DonationInterface/payflowpro_gateway/owa.tracker-combined-min.js?284"></script>' );					
+							
+	}
 
 	/**
 	 * Generate HTML for <noscript> tags
