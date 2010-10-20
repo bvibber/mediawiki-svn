@@ -9,11 +9,6 @@
 define( 'DO_MAINTENANCE', dirname( __FILE__ ) . '/doMaintenance.php' );
 $maintClass = false;
 
-function wfRunMaintenance( $class ) {
-	$maintClass = $class;
-	require_once( DO_MAINTENANCE );
-}
-
 // Make sure we're on PHP5 or better
 if ( version_compare( PHP_VERSION, '5.1.0' ) < 0 ) {
 	die ( "Sorry! This version of MediaWiki requires PHP 5.1.x; you are running " .
@@ -351,6 +346,7 @@ abstract class Maintenance {
 		$this->addOption( 'conf', 'Location of LocalSettings.php, if not default', false, true );
 		$this->addOption( 'wiki', 'For specifying the wiki ID', false, true );
 		$this->addOption( 'globals', 'Output globals at the end of processing for debugging' );
+		$this->addOption( 'memory-limit', 'Set a specific memory limit for the script, "max" for no limit or "default" to avoid changing it' );
 		// If we support a DB, show the options
 		if ( $this->getDbType() > 0 ) {
 			$this->addOption( 'dbuser', 'The DB user to use for this script', false, true );
@@ -430,9 +426,12 @@ abstract class Maintenance {
 			// command-line mode is on, regardless of PHP version.
 		}
 
+		$this->loadParamsAndArgs();
+		$this->maybeHelp();
+
 		# Set the memory limit
 		# Note we need to set it again later in cache LocalSettings changed it
-		ini_set( 'memory_limit', $this->memoryLimit() );
+		$this->adjustMemoryLimit();
 
 		# Set max execution time to 0 (no limit). PHP.net says that
 		# "When running PHP from the command line the default setting is 0."
@@ -453,18 +452,34 @@ abstract class Maintenance {
 		# Turn off output buffering if it's on
 		@ob_end_flush();
 
-		$this->loadParamsAndArgs();
-		$this->maybeHelp();
 		$this->validateParamsAndArgs();
 	}
 
 	/**
 	 * Normally we disable the memory_limit when running admin scripts.
 	 * Some scripts may wish to actually set a limit, however, to avoid
-	 * blowing up unexpectedly.
+	 * blowing up unexpectedly. We also support a --memory-limit option,
+	 * to allow sysadmins to explicitly set one if they'd prefer to override
+	 * defaults (or for people using Suhosin which yells at you for trying
+	 * to disable the limits)
 	 */
 	public function memoryLimit() {
-		return -1;
+		$limit = $this->getOption( 'memory-limit', 'max' );
+		$limit = trim( $limit, "\" '" ); // trim quotes in case someone misunderstood
+		return $limit;
+	}
+
+	/**
+	 * Adjusts PHP's memory limit to better suit our needs, if needed.
+	 */
+	protected function adjustMemoryLimit() {
+		$limit = $this->memoryLimit();
+		if ( $limit == 'max' ) {
+			$limit = -1; // no memory limit
+		}
+		if ( $limit != 'default' ) {
+			ini_set( 'memory_limit', $limit );
+		}
 	}
 
 	/**
@@ -702,7 +717,7 @@ abstract class Maintenance {
 
 		$wgShowSQLErrors = true;
 		@set_time_limit( 0 );
-		ini_set( 'memory_limit', $this->memoryLimit() );
+		$this->adjustMemoryLimit();
 
 		$wgProfiling = false; // only for Profiler.php mode; avoids OOM errors
 	}
