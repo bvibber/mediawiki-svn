@@ -11,6 +11,7 @@
 
 class SpecialUploadWizard extends SpecialPage {
 
+	private $simpleForm;
 
 	// $request is the request (usually wgRequest)
 	// $par is everything in the URL after Special:UploadWizard. Not sure what we can use it for
@@ -21,8 +22,13 @@ class SpecialUploadWizard extends SpecialPage {
 
 		parent::__construct( 'UploadWizard', 'upload' );
 
+		// create a simple form for non-JS fallback, which targets the old Special:Upload page.
+		// at some point, if we completely subsume its functionality, change that to point here again,
+	 	// but then we'll need to process non-JS uploads in the same way Special:Upload does.
 		$this->simpleForm = new UploadWizardSimpleForm();
-		$this->simpleForm->setTitle( $this->getTitle() );
+		$this->simpleForm->setTitle( 
+			SpecialPage::getPage( 'Upload' )->getTitle() 
+		);
 	}
 
 	/**
@@ -151,12 +157,15 @@ class SpecialUploadWizard extends SpecialPage {
 
 
 /**
- * This is a hack on UploadForm.
- * Normally, UploadForm adds its own Javascript.
- * We wish to prevent this, because we want to control the case where we have Javascript.
- * So, we subclass UploadForm, and make the addUploadJS a no-op.
+ * This is a hack on UploadForm, to make one that works from UploadWizard when JS is not available.
  */
 class UploadWizardSimpleForm extends UploadForm {
+
+	/*
+ 	 * Normally, UploadForm adds its own Javascript.
+ 	 * We wish to prevent this, because we want to control the case where we have Javascript.
+ 	 * So, we make the addUploadJS a no-op.
+	 */
 	protected function addUploadJS( ) { }
 
 }
