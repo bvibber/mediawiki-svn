@@ -15,12 +15,7 @@ class SpecialUploadWizard extends SpecialPage {
 	// $request is the request (usually wgRequest)
 	// $par is everything in the URL after Special:UploadWizard. Not sure what we can use it for
 	public function __construct( $request=null, $par=null ) {
-		global $wgEnableAPI, $wgRequest;
-
-		if (! $wgEnableAPI) {
-			// XXX complain
-		}
-
+		global $wgRequest;
 		// here we would configure ourselves based on stuff in $request and $wgRequest, but so far, we
 		// don't have such things
 
@@ -44,29 +39,26 @@ class SpecialUploadWizard extends SpecialPage {
 			return;
 		}
 
-		$langCode = $wgLang->getCode();
-
 		$this->setHeaders();
 		$this->outputHeader();
-
-		$this->addJsVars( $subPage );
-		
-		$wgOut->addModules( 'ext.uploadWizard' );
-		
-		// where the uploadwizard will go
-		// TODO import more from UploadWizard itself.
-		// "createInterface" call?
-		$wgOut->addHTML(
-			'<div id="upload-licensing" class="upload-section" style="display: none;">Licensing tutorial</div>'
-			. '<div id="upload-wizard" class="upload-section"><div class="loadingSpinner"></div></div>'
-		);
-		
+			
 
 		// fallback for non-JS
 		$wgOut->addHTML('<noscript>');
+		$wgOut->addHTML( '<p class="errorbox">' . wfMsg( 'mwe-upwiz-js-off' ) . '</p>' );
 		$this->simpleForm->show();
 		$wgOut->addHTML('</noscript>');
 	
+			
+		$this->addJsVars( $subPage );
+		$wgOut->addModules( 'ext.uploadWizard' );
+		
+		// where the uploadwizard will go
+		// TODO import more from UploadWizard's createInterface call.
+		$wgOut->addHTML(
+			'<div id="upload-wizard" class="upload-section"><div class="loadingSpinner"></div></div>'
+		);
+
 	}
 
 	/**
@@ -80,7 +72,7 @@ class SpecialUploadWizard extends SpecialPage {
 		global $wgUploadWizardDebug;
 
 		$wgOut->addScript( Skin::makeVariablesScript( array(
-			'wgUploadWizardDebug' => !!$wgUploadWizardDebug,
+			'wgUploadWizardDebug' => (bool)$wgUploadWizardDebug,
 
 			// uncertain if this is relevant. Can we do license preview with API?
 			'wgAjaxLicensePreview' => $wgUseAjax && $wgAjaxLicensePreview,
@@ -105,13 +97,15 @@ class SpecialUploadWizard extends SpecialPage {
 	 * @return boolean -- true if can upload
 	 */
 	private function isUploadAllowed() {
-		global $wgOut;
+		global $wgOut, $wgEnableAPI;
 
 		// Check uploading enabled
 		if( !UploadBase::isEnabled() ) {
 			$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext' );
 			return false;
 		}
+
+		// XXX does wgEnableAPI affect all uploads too?
 
 		// Check whether we actually want to allow changing stuff
 		if( wfReadOnly() ) {
