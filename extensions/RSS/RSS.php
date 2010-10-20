@@ -14,7 +14,7 @@
  * @link http://www.mediawiki.org/wiki/Extension:RSS Documentation
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This is not a valid entry point.\n" );
 }
 
@@ -70,14 +70,14 @@ function renderRss( $input, $args, $parser, $frame ) {
 	$url = $input;
 
 	# Get charset from argument array
-	if( isset( $args['charset'] ) ) {
+	if ( isset( $args['charset'] ) ) {
 		$charset = $args['charset'];
 	} else {
 		$charset = $wgOutputEncoding;
 	}
 
 	# Get max number of headlines from argument-array
-	if( isset( $args['max'] ) ) {
+	if ( isset( $args['max'] ) ) {
 		$maxheads = $args['max'];
 	} else {
 		$maxheads = 32;
@@ -85,14 +85,14 @@ function renderRss( $input, $args, $parser, $frame ) {
 
 	# Get short flag from argument array
 	# If short is set, no description text is printed
-	if( isset( $args['short'] ) ) {
+	if ( isset( $args['short'] ) ) {
 		$short = true;
 	} else {
 		$short = false;
 	}
 
 	# Get reverse flag from argument array
-	if( isset( $args['reverse'] ) ) {
+	if ( isset( $args['reverse'] ) ) {
 		$rss->items = array_reverse( $rss->items );
 	}
 
@@ -104,7 +104,7 @@ function renderRss( $input, $args, $parser, $frame ) {
 	}
 
 	# Get highlight terms from argument array
-	if( isset( $args['highlight'] ) ) {
+	if ( isset( $args['highlight'] ) ) {
 		$rssHighlight = $args['highlight'];
 		$rssHighlight = str_replace( '  ', ' ', $rssHighlight );
 		$rssHighlight = explode( ' ', trim( $rssHighlight ) );
@@ -113,7 +113,7 @@ function renderRss( $input, $args, $parser, $frame ) {
 	}
 
 	# Get filter terms from argument array
-	if( isset( $args['filter'] ) ) {
+	if ( isset( $args['filter'] ) ) {
 		$rssFilter = $args['filter'];
 		$rssFilter = str_replace( '  ', ' ', $rssFilter );
 		$rssFilter = explode( ' ', trim( $rssFilter ) );
@@ -122,7 +122,7 @@ function renderRss( $input, $args, $parser, $frame ) {
 	}
 
 	# Filterout terms
-	if( isset( $args['filterout'] ) ) {
+	if ( isset( $args['filterout'] ) ) {
 		$rssFilterout = $args['filterout'];
 		$rssFilterout = str_replace( '  ', ' ', $rssFilterout );
 		$rssFilterout = explode( ' ', trim( $rssFilterout ) );
@@ -130,7 +130,7 @@ function renderRss( $input, $args, $parser, $frame ) {
 		$rssFilterout = false;
 	}
 
-	if( isset( $args['template'] ) ) {
+	if ( isset( $args['template'] ) ) {
 		$template = 'Template:' . $args['template'];
 	} else {
 		$template = wfMsgNoTrans( 'rss-item' );
@@ -166,16 +166,16 @@ function renderRss( $input, $args, $parser, $frame ) {
 	 */
 	if ( $template ) {
 		$headcnt = 0;
-		foreach( $rss->items as $item ) {
-			if( $maxheads > 0 && $headcnt >= $maxheads ) {
+		foreach ( $rss->items as $item ) {
+			if ( $maxheads > 0 && $headcnt >= $maxheads ) {
 				continue;
 			}
 
 			$decision = true;
-			foreach( array( 'title', 'author', 'description', 'category' ) as $check ) {
-				if( isset( $item[$check] ) ) {
+			foreach ( array( 'title', 'author', 'description', 'category' ) as $check ) {
+				if ( isset( $item[$check] ) ) {
 					$decision &= wfRssFilter( $item[$check], $rssFilter ) & wfRssFilterout( $item[$check], $rssFilterout );
-					if( !$decision ) {
+					if ( !$decision ) {
 						continue 2;
 					}
 
@@ -186,12 +186,12 @@ function renderRss( $input, $args, $parser, $frame ) {
 
 			$rssTemp = '';
 
-			foreach( explode( '|', $template ) as $bit ) {
+			foreach ( explode( '|', $template ) as $bit ) {
 				$bits = explode( '=', $bit );
-				if( count( $bits ) == 2 ) {
+				if ( count( $bits ) == 2 ) {
 					$left = trim( $bits[0] );
 
-					if( isset( $item[$left] ) ) {
+					if ( isset( $item[$left] ) ) {
 						$right = $item[$left];
 					}
 
@@ -213,7 +213,7 @@ function renderRss( $input, $args, $parser, $frame ) {
 function wfRssFilter( $text, $rssFilter ) {
 	$display = true;
 	if ( is_array( $rssFilter ) ) {
-		foreach( $rssFilter as $term ) {
+		foreach ( $rssFilter as $term ) {
 			if ( $term ) {
 				$display = false;
 				if ( preg_match( "|$term|i", $text, $a ) ) {
@@ -257,7 +257,7 @@ function wfRssHighlight( $text, $rssHighlight ) {
 	$count_color = count( $color );
 
 	if ( is_array( $rssHighlight ) ) {
-		foreach( $rssHighlight as $term ) {
+		foreach ( $rssHighlight as $term ) {
 			if ( $term ) {
 				$text = preg_replace( "|\b(\w*?" . $term . "\w*?)\b|i", "$starttag" . "_" . $i . "\\1$endtag", $text );
 				$i++;

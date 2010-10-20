@@ -18,11 +18,11 @@ class RSSData {
 		$xpath = new DOMXPath( $this->xml );
 		$items = $xpath->evaluate( '/rss/channel/item' );
 
-		foreach( $items as $item ) {
+		foreach ( $items as $item ) {
 			$bit = array();
-			foreach( $item->childNodes as $n ) {
+			foreach ( $item->childNodes as $n ) {
 				$name = $this->rssTokenToName( $n->nodeName );
-				if( $name != null ) {
+				if ( $name != null ) {
 					$bit[$name] = $n->nodeValue;
 				}
 			}

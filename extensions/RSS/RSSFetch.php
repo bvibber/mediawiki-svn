@@ -60,8 +60,8 @@ function fetch_rss( $url ) {
 		'wgRSSUseGzip' => true
 	);
 
-	foreach( $nameValue as $n => $v) {
-		if( !isset( $GLOBALS[$n] ) ) {
+	foreach ( $nameValue as $n => $v ) {
+		if ( !isset( $GLOBALS[$n] ) ) {
 			$GLOBALS[$n] = $v;
 		}
 	}
@@ -200,8 +200,8 @@ function _fetch_remote_file( $url, $headers = '' ) {
 	$client->setUserAgent( 'MediaWikiRSS/0.01 (+http://www.mediawiki.org/wiki/Extension:RSS) / MediaWiki RSS extension' );
 	/* $client->use_gzip = $wgRSSUseGzip; */
 	if ( is_array( $headers ) && count( $headers ) > 0 ) {
-		foreach( $headers as $h ) {
-			if( count( $h ) > 1 ) {
+		foreach ( $headers as $h ) {
+			if ( count( $h ) > 1 ) {
 				$client->setHeader( $h[0], $h[1] );
 			}
 		}
@@ -210,7 +210,7 @@ function _fetch_remote_file( $url, $headers = '' ) {
 	$fetch = $client->execute();
 
 	/* @$client->fetch( $url ); */
-	if( $fetch->isGood() ) {
+	if ( $fetch->isGood() ) {
 		return $client;
 	} else {
 		wfDebugLog( 'RSS', 'error fetching $url: ' . $fetch->getWikiText() );
