@@ -389,7 +389,8 @@ EOT;
 		global $wgOut, $wgDonationTestingMode, $wgPayflowGatewayUseHTTPProxy, $wgPayflowGatewayHTTPProxy;
 
 		// update contribution tracking
-		$this->updateContributionTracking( $data );
+		// only forced when OWA is defined
+		$this->updateContributionTracking( $data, defined(OWA) );
 		
 		// create payflow query string, include string lengths
 		$queryArray = array(
@@ -924,6 +925,28 @@ EOT;
 		wfSetupSession();
 	}
 
+	function get_owa_ref_id($ref){
+		// Replication lag means sometimes a new event will not exist in the table yet
+		$dbw = contributionTrackingConnection();
+		$id_num = $dbw->selectField(
+			'contribution_tracking_owa_ref',
+			'id',
+			array( 'url' => $ref ),
+			__METHOD__
+		);
+		// Once we're on mysql 5, we can use replace() instead of this selectField --> insert or update hooey
+		if ( $id_num === false ) {
+			$dbw->insert(
+				'contribution_tracking_owa_ref',
+				array( 'url' => (string) $event_name ),
+				__METHOD__
+			);
+			$id_num = $dbw->insertId();
+		}
+		return $id_num === false ? 0 : $id_num;
+	}
+
+
 	/**
 	 * Populate the $data array for the credit card form
 	 *
@@ -932,6 +955,11 @@ EOT;
 	 */
 	public function fnGetFormData( $amount, $numAttempt, $token, $order_id ) {
 		global $wgPayflowGatewayTest, $wgRequest;
+		
+		$owa_ref = $wgRequest->getText( 'owa_ref', null);
+		if($owa_ref != null  && !is_numeric($owa_ref)){
+			$owa_ref = $this->get_owa_ref($owa_ref);
+		}
 		
 		// if we're in testing mode and an action hasn't yet be specified, prepopulate the form
 		if ( !$wgRequest->getText( 'action', false ) && !$numAttempt && $wgPayflowGatewayTest ) {
@@ -948,7 +976,7 @@ EOT;
 
 			// randomly select a credit card #
 			$card_num_index = array_rand( $card_nums[ $cards[ $card_index ]] );
-
+			
 			$data = array(
 				'amount' => ( $amount != "0.00" ) ? $amount : "35",
 				'amountOther' => '',
@@ -1018,6 +1046,8 @@ EOT;
 				'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
 				'data_hash' => $wgRequest->getText( 'data_hash' ),
 				'action' => $wgRequest->getText( 'action' ),
+				'owa_session' => $wgRequest->getText( 'owa_session', null ),
+				'owa_ref' => $owa_ref,
 			);
 		}
 		return $data;
@@ -1127,6 +1157,9 @@ EOT;
 			
 		if (!$db) { return true ; }
 
+	/*NIMISH*/
+
+
 		$tracked_contribution = array(
 			'note' => $data['comment'],
 			'referrer' => $data['referrer'],
@@ -1136,6 +1169,8 @@ EOT;
 			'utm_campaign' => $data['utm_campaign'],
 			'optout' => $optout[ 'optout' ],
 			'language' => $data['language'],
+			'owa_session' => $data['owa_session'],
+			'owa_ref' => $data['owa_ref'],
 		);
 		
 		// Make all empty strings NULL

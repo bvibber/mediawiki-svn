@@ -353,6 +353,8 @@ abstract class PayflowProGateway_Form {
 				'contribution_tracking_id' => $this->form_data[ 'contribution_tracking_id' ],
 				'data_hash' => $this->form_data[ 'data_hash' ],
 				'action' => $this->form_data[ 'action' ],
+				'owa_session' => $this->form_data[ 'owa_session' ],
+				'owa_ref' => $this->form_data[ 'owa_ref' ],
 			);
 		}
 
