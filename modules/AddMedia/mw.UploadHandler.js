@@ -82,7 +82,7 @@ var defaultUploadHandlerOptions = {
 			myUpload.setupForm( );
 		}
 		
-		// Update the selecto to include pointer to upload handler 		
+		// Update the selector to include pointer to upload handler 		
 		var selectorElement = $j( this.selector ).get( 0 );
 		selectorElement[ 'uploadHandler' ] = myUpload;
 	};
@@ -140,8 +140,13 @@ mw.UploadHandler.prototype = {
 		} else { 					
 			// Setup the default DialogInterface UI
 			this.ui = new mw.UploadDialogInterface();
-		}		
-		
+		}
+
+		// Don't rewrite on reuploads
+		if( $j("[name='wpForReUpload']").val() ) {
+			this.rewriteDescriptionText = false;
+		}
+
 		// Setup ui uploadHandler pointer
 		this.ui.uploadHandler = this;		
 		
