@@ -6,7 +6,7 @@ class TradeTrackScreenDetailsForm extends TradeTrackScreen { public function exe
 <form method="post" action="<?php echo $this->data['tData']['formURL'] ?>" class="tradetrack-master" id="tradetrack-form">
   <input type="hidden" name="doaction" value="details" />
   <input type="hidden" name="tradetrack-purpose" value="<?php echo $this->data['tData']['purpose'] ?>" />
-  <?php if ( $this->data['tData']['agreementType'] ) { ?>
+  <?php if ( isset ( $this->data['tData']['agreementType'] ) ) { ?>
   <input type="hidden" name="tradetrack-elements-agreement" value="<?php echo $this->data['tData']['agreementType'] ?>" />
   <?php } ?>
   
@@ -73,18 +73,18 @@ class TradeTrackScreenDetailsForm extends TradeTrackScreen { public function exe
       <input type="text" name="tradetrack-elements-orgname" maxlength="200" value="<?php echo $this->data['tData']['orgname'] ?>" /><br />
     </div>
 	<div class="<?php echo ( $this->hasError( 'tradetrack-elements-email' ) ? 'tradetrack-element-error' : 'tradetrack-element' ) ?>">
-      <label class="tradetrack-question-label"><?php echo wfMsg( 'tradetrack-about-label-email' ) ?></label>
+      <label class="tradetrack-question-label"><?php echo wfMsg( 'tradetrack-about-label-e-mail' ) ?></label>
       <span class="tradetrack-field-hint"
-    	  title="<?php echo wfMsg( 'tradetrack-about-expanse-email' ) ?>"
-    	  original-title="<?php echo wfMsg( 'tradetrack-about-expanse-email' ) ?>"></span><br style="clear:both" />
+    	  title="<?php echo wfMsg( 'tradetrack-about-expanse-e-mail' ) ?>"
+    	  original-title="<?php echo wfMsg( 'tradetrack-about-expanse-e-mail' ) ?>"></span><br style="clear:both" />
       <?php $this->showErrors( 'tradetrack-elements-email' ) ?>
       <input type="text" name="tradetrack-elements-email" maxlength="200" value="<?php echo $this->data['tData']['email'] ?>" /><br />
     </div>
-	<div class="<?php echo ( $this->hasError( 'tradetrack-elements-confirmemail' ) ? 'tradetrack-element-error' : 'tradetrack-element' ) ?>">
-      <label class="tradetrack-question-label"><?php echo wfMsg( 'tradetrack-about-label-confirmemail' ) ?></label>
+	<div class="<?php echo ( $this->hasError( 'tradetrack-elements-confirme-mail' ) ? 'tradetrack-element-error' : 'tradetrack-element' ) ?>">
+      <label class="tradetrack-question-label"><?php echo wfMsg( 'tradetrack-about-label-confirme-mail' ) ?></label>
       <span class="tradetrack-field-hint"
-    	  title="<?php echo wfMsg( 'tradetrack-about-expanse-confirmemail' ) ?>"
-    	  original-title="<?php echo wfMsg( 'tradetrack-about-expanse-confirmemail' ) ?>"></span><br style="clear:both" />
+    	  title="<?php echo wfMsg( 'tradetrack-about-expanse-confirme-mail' ) ?>"
+    	  original-title="<?php echo wfMsg( 'tradetrack-about-expanse-confirme-mail' ) ?>"></span><br style="clear:both" />
       <?php $this->showErrors( 'tradetrack-elements-confirmemail' ) ?>
       <input type="text" name="tradetrack-elements-confirmemail" maxlength="200" value="<?php echo $this->data['tData']['confirmemail'] ?>" /><br />
     </div>

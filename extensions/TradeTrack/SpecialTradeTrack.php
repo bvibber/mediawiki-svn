@@ -99,7 +99,7 @@ class SpecialTradeTrack extends SpecialPage {
         'errmsgs' => array(
           'max' => 'tradetrack-errors-generic-too-long',
           'required' => 'tradetrack-errors-generic-empty',
-          'equals' => 'tradetrack-errors-emails-do-not-match'
+          'equals' => 'tradetrack-errors-e-mails-do-not-match'
         ),
         'tests' => array(
           'max' => 200,
@@ -222,7 +222,7 @@ class SpecialTradeTrack extends SpecialPage {
 
         // This is our template data array.
         $tData = array();
-        $tData['formURL'] = $this->getTitle()->getLinkURL( $query );
+        $tData['formURL'] = $this->getTitle()->getLinkURL( );
 
         // First, see if it's supplied from the page.
         $doaction = $wgRequest->getVal( 'doaction' );
@@ -443,8 +443,9 @@ class SpecialTradeTrack extends SpecialPage {
             $mailer->send( new MailAddress( $toEmail ) , new MailAddress( $wgTradeTrackFromEmail ), $wgTradeTrackEmailSubject, $generatedEmail);
 
             // debug line to dump this to the end screen.
+            $wgOut->addHtml( "<pre>" );
             $wgOut->addHtml( $generatedEmail );
-            
+            $wgOut->addHtml( "</pre>" );
             
         }
         
@@ -526,13 +527,7 @@ class SpecialTradeTrack extends SpecialPage {
         return true;
     }
 
-
-    function sendEmailMail( array $tData ) {
-
-
-    }
-    
-
+  
 	private function insertTradeTrackRequest( array $tData ) {
 		$dbw = wfGetDB( DB_MASTER );
 

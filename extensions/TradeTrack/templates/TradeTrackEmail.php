@@ -18,6 +18,7 @@ class TradeTrackEmail extends QuickTemplate { public function execute() { ?>
   A new request to utilize a Wikimedia trademark has arrived.
 
     Purpose: <?php echo $this->data['tData']['purpose'] ?>
+    
     <?php if ( $this->data['tData']['agreementType'] ) { ?>Agreement Type: <?php echo $this->data['tData']['agreementType'] ?><?php } ?>
 
     Usage: <?php echo $this->data['tData']['usage'] ?>
@@ -31,12 +32,16 @@ class TradeTrackEmail extends QuickTemplate { public function execute() { ?>
       	  }
       	}
     } ?>
+    
     Mailing Address:
     <?php echo $this->data['tData']['mailingaddress'] ?>
   
     Name:  <?php echo $this->data['tData']['name'] ?>
+    
     Organization Name: <?php echo $this->data['tData']['orgname'] ?>
+    
     Email: <?php echo $this->data['tData']['email'] ?>
+    
     Phone: <?php echo $this->data['tData']['phone'] ?>
   
 <?php } }
