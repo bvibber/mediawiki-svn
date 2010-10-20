@@ -131,9 +131,9 @@ function renderRss( $input, $args, $parser, $frame ) {
 	}
 
 	if( isset( $args['template'] ) ) {
-		$template = 'Template:'.$args['template'];
+		$template = 'Template:' . $args['template'];
 	} else {
-		$template = wfMsgNoTrans("rss-item");
+		$template = wfMsgNoTrans( 'rss-item' );
 	}
 
 	$headcnt = 0;
@@ -160,43 +160,48 @@ function renderRss( $input, $args, $parser, $frame ) {
 
 	$output = '';
 
-	/* This would be better served by preg_replace_callback, but
+	/**
+	 * This would be better served by preg_replace_callback, but
 	 * I can't create a callback that carries $item in PHP < 5.3
 	 */
 	if ( $template ) {
 		$headcnt = 0;
 		foreach( $rss->items as $item ) {
-			if($maxheads > 0 && $headcnt >= $maxheads) continue;
+			if( $maxheads > 0 && $headcnt >= $maxheads ) {
+				continue;
+			}
 
 			$decision = true;
-			foreach(array('title', 'author', 'description', 'category') as $check) {
+			foreach( array( 'title', 'author', 'description', 'category' ) as $check ) {
 				if( isset( $item[$check] ) ) {
-					$decision &= wfRssFilter($item[$check], $rssFilter) & wfRssFilterout($item[$check], $rssFilterout);
-					if( !$decision ) continue 2;
+					$decision &= wfRssFilter( $item[$check], $rssFilter ) & wfRssFilterout( $item[$check], $rssFilterout );
+					if( !$decision ) {
+						continue 2;
+					}
 
 					$item[$check] = wfRssHighlight( $item[$check], $rssHighlight );
 				}
 
 			}
 
-			$rssTemp = "";
+			$rssTemp = '';
 
-			foreach(explode("|", $template) as $bit) {
-				$bits = explode("=", $bit);
-				if( count($bits) == 2 ) {
-					$left = trim($bits[0]);
+			foreach( explode( '|', $template ) as $bit ) {
+				$bits = explode( '=', $bit );
+				if( count( $bits ) == 2 ) {
+					$left = trim( $bits[0] );
 
 					if( isset( $item[$left] ) ) {
 						$right = $item[$left];
 					}
 
-					$rssTemp .= implode( " = ", array($left, $right) );
+					$rssTemp .= implode( ' = ', array( $left, $right ) );
 				} else {
 					$rssTemp .= $bit;
 				}
-				$rssTemp .= "|";
+				$rssTemp .= '|';
 			}
-			$rssTemp .= "}}";
+			$rssTemp .= '}}';
 
 			$output .= $parser->recursiveTagParse( $rssTemp, $frame );
 			$headcnt++;

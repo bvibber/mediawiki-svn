@@ -48,7 +48,8 @@ function fetch_rss( $url ) {
 	global $wgRSSOutputEncoding, $wgRSSInputEncoding;
 	global $wgRSSDetectEncoding, $wgRSSUseGzip;
 
-	$nameValue = array('wgRSSCache' => true,
+	$nameValue = array(
+		'wgRSSCache' => true,
 		'wgRSSCacheAge' => 60 * 60, // one hour
 		'wgRSSCacheFreshOnly' => false,
 		'wgRSSCacheDirectory' => '/extensions/RSS/cache',
@@ -56,9 +57,10 @@ function fetch_rss( $url ) {
 		'wgRSSInputEncoding' => null,
 		'wgRSSDetectEncoding' => true,
 		'wgRSSFetchTimeout' => 5, // 5 second timeout
-		'wgRSSUseGzip' => true);
+		'wgRSSUseGzip' => true
+	);
 
-	foreach($nameValue as $n => $v) {
+	foreach( $nameValue as $n => $v) {
 		if( !isset( $GLOBALS[$n] ) ) {
 			$GLOBALS[$n] = $v;
 		}
@@ -194,13 +196,13 @@ function _fetch_remote_file( $url, $headers = '' ) {
 	global $wgRSSFetchTimeout, $wgRSSUseGzip;
 
 	$client =
-		HttpRequest::factory($url, array('timeout' => $wgRSSFetchTimeout));
-	$client->setUserAgent('MediawikiRSS/0.01 (+http://www.mediawiki.org/wiki/Extension:RSS) / MediaWiki RSS extension');
+		HttpRequest::factory( $url, array( 'timeout' => $wgRSSFetchTimeout ) );
+	$client->setUserAgent( 'MediaWikiRSS/0.01 (+http://www.mediawiki.org/wiki/Extension:RSS) / MediaWiki RSS extension' );
 	/* $client->use_gzip = $wgRSSUseGzip; */
 	if ( is_array( $headers ) && count( $headers ) > 0 ) {
-		foreach($headers as $h) {
+		foreach( $headers as $h ) {
 			if( count( $h ) > 1 ) {
-				$client->setHeader($h[0], $h[1]);
+				$client->setHeader( $h[0], $h[1] );
 			}
 		}
 	}
@@ -222,7 +224,7 @@ function _fetch_remote_file( $url, $headers = '' ) {
  */
 function _response_to_rss( $resp ) {
 	global $wgRSSOutputEncoding, $wgRSSInputEncoding, $wgRSSDetectEncoding;
-	$rss = new RSSData($resp);
+	$rss = new RSSData( $resp );
 
 	// if RSS parsed successfully
 	if ( $rss && !$rss->ERROR ) {
