@@ -175,7 +175,7 @@ function fetch_rss( $url ) {
 
 		// else we totally failed
 		$RSS_FETCH_ERROR = $errormsg;
-		wfDebugLog(
+		wfDebugLog( 'RSS',
 			'RSSFetch: we totally failed :-( Error message:' .
 			$errormsg
 		);
@@ -211,7 +211,7 @@ function _fetch_remote_file( $url, $headers = '' ) {
 	if( $fetch->isGood() ) {
 		return $client;
 	} else {
-		wfDebugLog( 'RSS', 'error fetching $url: ' . $fetch->getMessage() );
+		wfDebugLog( 'RSS', 'error fetching $url: ' . $fetch->getWikiText() );
 	}
 }
 
