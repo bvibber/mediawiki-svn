@@ -40,9 +40,14 @@ def retrieve_editor_ids_mongo():
     else:
         mongo = db.init_mongo_db('editors')
         editors = mongo['editors']
-        ids = editors.find().distinct('editor')
-        print ids
-        if ids != []:
+        contributors = set()
+        #ids = editors.find().distinct('editor')
+        ids = editors.find()
+        for x,id in enumerate(ids):
+            contributors.add(id['editor'])
+            if len(contributors) % 25000 == 0:
+                print x, len(contributors)
+        if ids != set():
             utils.store_object(ids, settings.BINARY_OBJECT_FILE_LOCATION, retrieve_editor_ids_mongo)
     return ids
 
@@ -60,20 +65,27 @@ def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
             else:
                 id = input_queue.get(block=False)
 
-            contributors = set()
+
             if definition == 'Traditional':
-                obs = editors.find({'editor': id}).limit(limit) #.sort({'date': 1}).limit(limit)
+                obs = editors.find({'editor': id}).sort('date').limit(limit)
+                contributors = []
                 for ob in obs:
-                    contributors.add(ob)
+                    contributors.append(ob['date'])
             else:
-                obs = editors.find({'editor': id}).sort({'date': 1})
+                obs = editors.find({'editor': id}).sort('date')
+                contributors = set()
                 for ob in obs:
-                    if len(dates) > limit:
+                    if len(contributors) == limit:
                         break
                     else:
-                        if edit.date not in dates:
-                            set.add(edit)
-            utils.write_data_to_csv(contributors, generate_editor_dataset, settings.ENCODING)
+                        contributors.add(ob['date'])
+
+            if len(contributors) < limit:
+                new_wikipedian = False
+            else:
+                new_wikipedian = True
+            data = {id: [contributors, new_wikipedian]}
+            utils.write_data_to_csv(data, settings.DATASETS_FILE_LOCATION, generate_editor_dataset, settings.ENCODING)
 
         except Empty:
             break
@@ -146,7 +158,7 @@ def debug_retrieve_edits_by_contributor_launcher():
               'debug': True
               }
     generate_editor_dataset(input_queue, False, False, kwargs)
-    generate_editor_dataset_launcher()
+    #generate_editor_dataset_launcher()
     #retrieve_list_contributors()
     #retrieve_edits_by_contributor()
 
@@ -156,4 +168,5 @@ def generate_editor_dataset_launcher():
 
 
 if __name__ == '__main__':
-    debug_retrieve_edits_by_contributor_launcher()
+    generate_editor_dataset_launcher()
+    #debug_retrieve_edits_by_contributor_launcher()

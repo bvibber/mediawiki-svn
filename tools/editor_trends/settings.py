@@ -75,6 +75,8 @@ DATABASE_FILE_LOCATION = WORKING_DIRECTORY + '/data/database/'
 
 BINARY_OBJECT_FILE_LOCATION = WORKING_DIRECTORY + '/data/objects/'
 
+DATASETS_FILE_LOCATION = WORKING_DIRECTORY + '/datasets/'
+
 #This section contains configuration variables for parsing / encoding and
 #working with the XML files.
 

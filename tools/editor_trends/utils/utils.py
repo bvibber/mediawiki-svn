@@ -138,18 +138,24 @@ def read_data_from_csv(filename, encoding):
     fh.close()
 
 
-def write_data_to_csv(data, function, encoding):
+def write_data_to_csv(data, location, function, encoding):
     filename = construct_filename_from_function(function, '.csv')
-    fh = open_txt_file(filename, 'a', encoding=encoding)
+    fh = open_txt_file(location, filename, 'a', encoding=encoding)
     keys = data.keys()
     for key in keys:
-        for value in data[key]:
-            fh.write('%s\t%s\n' % (key, value))
+        fh.write('%s' % key)
+        for obs in data[key]:
+            if getattr(obs, '__iter__', False):
+                for o in obs:
+                    fh.write('\t%s' % o)
+            else:
+                fh.write('\t%s' % (obs))
+        fh.write('\n')
     fh.close()
 
 
-def open_txt_file(filename, mode, encoding):
-    return codecs.open(filename, mode, encoding=encoding)
+def open_txt_file(location, filename, mode, encoding):
+    return codecs.open(location+filename, mode, encoding=encoding)
 
 def construct_filename_from_function(function, extension):
     return function.func_name + extension

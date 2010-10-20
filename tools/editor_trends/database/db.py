@@ -32,17 +32,17 @@ def remove_documents_from_mongo_db(collection, ids):
     collection.remove(ids)
 
 
-def add_index_to_collection(db, collection, keys):
+def add_index_to_collection(db, collection, key):
     '''
     @db is the name of the mongodb 
     @collection is the name of the 'table' in mongodb
-    @keys should be a list of keys used to create the index
+    @key name of the field to create the index
     '''
     
     mongo = init_mongo_db(db)
     collection = mongo[collection]
-    mongo.collection.create_index(keys)
-    mongo.collection.ensure_index(keys)
+    mongo.collection.create_index(key)
+    mongo.collection.ensure_index(key)
 
 
 def init_database(db=None):

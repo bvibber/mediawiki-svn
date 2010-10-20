@@ -143,17 +143,24 @@ def lookup_new_editors(xml_queue, data_queue, pbar, bots, debug=False, separator
                     elem = cElementTree.XML(data)
                     output_editor_information(elem)
                     '''
+                    if settings.DEBUG:
+                        utils.track_errors(xml_buffer, error, file, messages)
                 except UnicodeEncodeError, error:
                     print error
+                    if settings.DEBUG:
+                        utils.track_errors(xml_buffer, error, file, messages)
                 except MemoryError, error:
                     '''
                     There is one xml file causing an out of memory file, not
-                    sure which one yet. 
+                    sure which one yet. This happens when raw_data = 
+                    ''.join(raw_data) is called. 18-22
                     '''
                     print error
-                finally:
+                    print raw_data[:12]
+                    print 'String was supposed to be %s characters long' % sum([len(raw) for raw in raw_data])
                     if settings.DEBUG:
                         utils.track_errors(xml_buffer, error, file, messages)
+
 
             if pbar:
                 print xml_queue.qsize()
@@ -248,17 +255,19 @@ def run_stand_alone():
     for bot in cursor:
         ids[bot['id']] = bot['name']
     pc.build_scaffolding(pc.load_queue, lookup_new_editors, files, store_data_mongo, True, bots=ids)
-    keys = [('date', pymongo.ASCENDING), ('name', pymongo.ASCENDING)]
-    db.add_index_to_collection('editors', 'editors', keys)
+    keys = ['editor']
+    for key in keys:
+        db.add_index_to_collection('editors', 'editors', key)
 
 def debug_lookup_new_editors():
     q = Queue()
     import progressbar
     pbar = progressbar.ProgressBar().start()
-    edits = db.init_mongo_db('editors')
-    lookup_new_editors('1.xml', q, None, None, True)
-    keys = [('date', pymongo.ASCENDING), ('name', pymongo.ASCENDING)]
-    db.add_index_to_collection('editors', 'editors', keys)
+    #edits = db.init_mongo_db('editors')
+    #lookup_new_editors('1.xml', q, None, None, True)
+    keys = ['editor']
+    for key in keys:
+        db.add_index_to_collection('editors', 'editors', key)
 
 
 
@@ -267,10 +276,10 @@ def run_hadoop():
 
 
 if __name__ == "__main__":
-    #debug_lookup_new_editors()
+    debug_lookup_new_editors()
 
-    if settings.RUN_MODE == 'stand_alone':
-        run_stand_alone()
-        print 'Finished processing XML files.'
-    else:
-        run_hadoop()
+#    if settings.RUN_MODE == 'stand_alone':
+#        run_stand_alone()
+#        print 'Finished processing XML files.'
+#    else:
+#        run_hadoop()

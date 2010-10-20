@@ -58,6 +58,30 @@ configuration variables such as the location of input and output files. Most
 settings are self-explanatory but in cases of any questions please drop me a
 line. 
 
+PROCESSING TIMES:
+
+CONFIG	NAMESPACE	FILENAME	CHUNKING	STORING	INDEXING	RETRIEVING	TOTAL
+1	0			stub-meta-history	7	3	1	?	11	
+
+
+*CHUNKING == splitting XML file in smaller pieces
+*STORING == parsing xml files and storing it in MongoDB
+*INDEXING == creating an index in MongoDB
+*RETRIEVING == generating a dataset
+*TOTAL == sum of all parts
+
+MACHINE CONFIGURATIONS
+
+ID	OS		VERSION	MEMORY	PROCESSOR	SPEED
+1	Windows	7 64-bit	4GB	Duo Core	2.8MHZ
+Please add your processing times plus configuration to help improve performance.
+
+HARDDISK REQUIREMENTS
+You will need at least 3x the size of xml dump file in free space on your hard
+disk if you want to create the databases and datasets to run your own analyses.
+The English stub-meta-history.xml is about 15Gb so you need about 45Gb of free
+diskspace. 
+
 CODE:
 The Python code adheres to PEP8. Function names are deliberately expressive to
 ease understanding what's going. If you find a bug please email me at dvanliere
