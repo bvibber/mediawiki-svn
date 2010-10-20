@@ -1,0 +1,19 @@
+= MwEmbed Support Extension =
+
+The MwEmbed Support Extension includes adds support for mwEmbed modules and extension  to mwEmbed
+
+MwEmbed Support Extension was previously known as JS2Support
+
+
+== mwEmbed Stand Alone ==
+
+mwEmbed also works stand alone but does not work stand alone from a js2 support checkout. 
+You can learn more about mwEmbed stand alone in 
+/branches/mwEmbedStandAlone/README  
+and or
+http://www.kaltura.org/project/html5-kaltura-library
+
+This extension solely supports other extensions, and hence would be a good candidate for 
+inclusion into core. Its built as an extension to enable development to move forward while
+the core integration is sorted out.
+
