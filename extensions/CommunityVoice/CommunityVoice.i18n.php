@@ -819,6 +819,13 @@ $messages['ru'] = array(
 	'communityvoice-ratings-error-no-title' => 'В теге рейтинга отсутствует атрибут названия.',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'communityvoice-ratings' => 'Рейтінґы',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -1295,6 +1295,7 @@ $messages['uk'] = array(
 	'indexfunc-badtitle' => 'Неприпустима назва: "$1"',
 	'indexfunc-index-exists' => 'Сторінка "$1" вже існує',
 	'index-search' => 'Пошук:',
+	'index-submit' => 'Відправити',
 );
 
 /** Veps (Vepsan kel')

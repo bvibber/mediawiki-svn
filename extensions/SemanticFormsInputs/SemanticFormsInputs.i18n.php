@@ -348,6 +348,14 @@ $messages['tl'] = array(
 	'semanticformsinputs-today' => 'Ngayon',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'semanticformsinputs-prev' => 'Попередня',
+	'semanticformsinputs-next' => 'Наступна',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'semanticformsinputs-close' => '关闭',

@@ -1976,9 +1976,13 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'createsigndoc-pagename' => 'Сторінка:',
 	'createsigndoc-email' => 'Адреса електронної пошти:',
+	'createsigndoc-hidden' => 'Прихований',
+	'createsigndoc-create' => 'Створити',
 );
 
 /** Veps (Vepsan kel')

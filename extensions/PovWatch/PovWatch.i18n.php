@@ -2395,11 +2395,13 @@ Abone olmak için aşağıdaki düğmeye tıklayın.",
 /** Ukrainian (Українська)
  * @author AS
  * @author Apromix
+ * @author Тест
  */
 $messages['uk'] = array(
 	'povwatch_push' => 'Помістити',
 	'povwatch_title' => 'Назва:',
 	'povwatch_comment' => 'Примітки для журналу:',
+	'povwatch_added' => 'додано',
 );
 
 /** Vèneto (Vèneto)

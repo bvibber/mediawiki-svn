@@ -576,6 +576,13 @@ $messages['tr'] = array(
 	'logentry' => 'KayıtGirdisi',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'logentry-append' => 'Додати',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

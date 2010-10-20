@@ -4895,11 +4895,13 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'sign-realname' => "Ім'я:",
 	'sign-address' => 'Поштова адреса:',
 	'sign-city' => 'Місто:',
 	'sign-state' => 'Штат:',
 	'sign-country' => 'Країна:',
 	'sign-email' => 'Адреса електронної пошти:',
+	'sign-viewfield-realname' => "Ім'я",
 	'sign-viewfield-address' => 'Адреса',
 	'sign-viewfield-city' => 'Місто',
 	'sign-viewfield-state' => 'Штат',

@@ -3587,6 +3587,26 @@ $messages['wa'] = array(
 	'ogg-dismiss' => 'Clôre',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ogg-play' => 'שפּיל',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'ogg-short-audio' => 'Fáìlì amóhùn Ogg $1, $2',
+	'ogg-play' => 'Ìmúṣeré',
+	'ogg-pause' => 'Ìjáwọ́',
+	'ogg-stop' => 'Ìdádúró',
+	'ogg-player-selected' => '(ṣíṣàyàn)',
+	'ogg-download' => 'Ìrùsílẹ̀ fáìlì',
+	'ogg-desc-link' => 'Nípa fáìlì yìí',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'ogg-desc' => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',

@@ -542,6 +542,7 @@ $messages['he'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'categorybrowser' => 'Kategóriaböngésző',
 	'cb_has_subcategories' => '{{PLURAL:$1|egy|$1}} alkategória',
 	'cb_has_pages' => '{{PLURAL:$1|egy|$1}} lap',
 	'cb_has_files' => '{{PLURAL:$1|egy|$1}} fájl',
@@ -550,10 +551,18 @@ $messages['hu'] = array(
 	'cb_next_items_link' => 'Következő',
 	'cb_cat_subcats' => 'alkategóriák',
 	'cb_cat_pages' => 'lapok',
+	'cb_cat_files' => 'fájlok',
 	'cb_apply_button' => 'Alkalmazás',
 	'cb_all_op' => 'Összes',
 	'cb_or_op' => 'vagy',
 	'cb_and_op' => 'és',
+	'cb_edit_left_hint' => 'Mozgás balra, ha lehetséges',
+	'cb_edit_right_hint' => 'Mozgás jobbra, ha lehetséges',
+	'cb_edit_copy_hint' => 'Operátor másolása a vágólapra',
+	'cb_edit_append_hint' => 'Operátor beillesztése a legutolsó helyre',
+	'cb_edit_clear_hint' => 'Kifejezés törlése (összes kijelölése)',
+	'cb_edit_paste_hint' => 'Operátor beillesztése a jelenlegi helyre, ha lehetséges',
+	'cb_edit_paste_right_hint' => 'Operátor beillesztése a következő helyre, ha lehetséges',
 );
 
 /** Interlingua (Interlingua)
@@ -1215,9 +1224,14 @@ $messages['uk'] = array(
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатегорія|підкатегорії|підкатегорій}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|файл|файли|файлів}}',
+	'cb_previous_items_link' => 'Попередні',
+	'cb_next_items_link' => 'Наступні',
 	'cb_cat_subcats' => 'підкатегорій',
 	'cb_cat_pages' => 'сторінок',
 	'cb_cat_files' => 'файлів',
+	'cb_apply_button' => 'Застосувати',
 	'cb_all_op' => 'Усі',
+	'cb_or_op' => 'або',
+	'cb_and_op' => 'і',
 );
 

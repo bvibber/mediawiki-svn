@@ -2525,6 +2525,14 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 	'extdist-want-more' => 'Скачать другое расширение',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'extdist-submit-extension' => 'Продовжыти',
+	'extdist-submit-version' => 'Продовжыти',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

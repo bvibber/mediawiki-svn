@@ -10610,6 +10610,7 @@ $messages['uk'] = array(
 	'configure-section-specialpages' => 'Спеціальні сторінки',
 	'configure-section-recentchanges' => 'Останні зміни',
 	'configure-section-users' => 'Користувачі',
+	'configure-section-extension' => 'Розширення',
 	'configure-section-search' => 'Пошук',
 	'configure-section-external-tools' => 'Зовнішні інструменти',
 	'configure-select-wiki-desc' => 'Оберіть вікі, яку ви хочете настроїти.',

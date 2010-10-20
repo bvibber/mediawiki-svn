@@ -1545,6 +1545,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'adminlinks' => 'סיסאפ לינקען',
 	'adminlinks_general' => 'אַלגעמיין',
 	'adminlinks_editsidebar' => 'רעדאַקטירן זײַטפאַס',
 	'adminlinks_editcss' => 'רעדאַקטירן CSS טעקע',

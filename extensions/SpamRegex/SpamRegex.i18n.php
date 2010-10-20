@@ -1830,8 +1830,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(опис)',
 );
 

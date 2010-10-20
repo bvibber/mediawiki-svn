@@ -1425,6 +1425,7 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'player-goto-page' => 'Сторінка',
 	'player-goto-file' => 'файл',
 );
 

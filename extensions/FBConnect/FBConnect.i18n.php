@@ -346,6 +346,7 @@ Nudi autentifikaciju zasnovanu na Facebook grupama i korištenju FBML u wiki tek
 /** German (Deutsch)
  * @author Als-Holder
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'fbconnect' => 'Facebook Connect',
@@ -402,7 +403,7 @@ Für weitere Informationen kann man den Gruppenersteller $4 kontaktieren.',
 	'fbconnect-success' => 'Facebook Connect-Überprüfung erfolgreich',
 	'fbconnect-successtext' => 'Die Anmeldung via Facebook Connect war erfolgreich.',
 	'fbconnect-nickname' => 'Benutzername',
-	'fbconnect-fullname' => 'Vollständiger Name',
+	'fbconnect-fullname' => 'Bürgerlicher Name',
 	'fbconnect-email' => 'E-Mail-Adresse',
 	'fbconnect-language' => 'Sprache',
 	'fbconnect-timecorrection' => 'Zeitzonenkorrektur (Stunden)',
@@ -412,7 +413,7 @@ Für weitere Informationen kann man den Gruppenersteller $4 kontaktieren.',
 Bitte einen anderen auswählen.',
 	'fbconnect-choosenick' => 'Der Profilname auf Facebook ($1)',
 	'fbconnect-choosefirst' => 'Vorname ($1)',
-	'fbconnect-choosefull' => 'Vollständiger Name ($1)',
+	'fbconnect-choosefull' => 'Dein bürgerlicher Name ($1)',
 	'fbconnect-chooseauto' => 'Ein automatisch erzeugter Name ($1)',
 	'fbconnect-choosemanual' => 'Ein Name der Wahl:',
 	'fbconnect-chooseexisting' => 'Ein bestehendes Benutzerkonto in diesem Wiki',
@@ -995,7 +996,7 @@ Pro plus informationes, per favor contacta le creator del gruppo, $4.',
 	'fbconnect-cancel' => 'Action cancellate',
 	'fbconnect-canceltext' => 'Le previe action esseva cancellate per le usator.',
 	'fbconnect-invalid' => 'Option invalide',
-	'fbconnect-invalidtext' => 'Le modo de selection in le previe pagina esseva invalide.',
+	'fbconnect-invalidtext' => 'Le modo de selection in le previe pagina es invalide.',
 	'fbconnect-success' => 'Verification de Facebook succedite',
 	'fbconnect-successtext' => 'Le apertura de session con Facebook Connect ha succedite.',
 	'fbconnect-nickname' => 'Pseudonymo',
@@ -2013,6 +2014,8 @@ Kung nais mong gamitin ang Ugnay sa Facebook upang makalagda ka sa hinaharap, ma
  * @author Тест
  */
 $messages['uk'] = array(
+	'fbconnect-email' => 'Адреса електронної пошти',
+	'fbconnect-language' => 'Мова',
 	'fbconnect-choosepassword' => 'Пароль:',
 );
 

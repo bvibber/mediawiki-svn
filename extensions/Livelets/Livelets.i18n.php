@@ -171,6 +171,13 @@ $messages['pt-br'] = array(
 	'livelets-desc' => 'Permite que páginas transcluídas só sejam carregadas após o conteúdo principal da página e que possam receber atualizações usando Ajax',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'livelets-desc' => "Conzende a le pàggene de essere escluse quanne careche apprisse 'a pàgene prengepàle e pò aggiornà dinamicamende cu Ajax",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

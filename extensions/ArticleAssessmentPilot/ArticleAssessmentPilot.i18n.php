@@ -499,15 +499,44 @@ Quizá quisieras valorarla de nuevo.",
  * @author Pikne
  */
 $messages['et'] = array(
+	'articleassessment' => 'Artikli hindamine',
+	'articleassessment-desc' => 'Artikli hindamine (prooviversioon)',
 	'articleassessment-yourfeedback' => 'Sinu tagasiside',
+	'articleassessment-pleaserate' => 'Palun leia mõni hetk allpool oleva lehekülje hindamiseks.',
+	'articleassessment-submit' => 'Saada',
+	'articleassessment-rating-wellsourced' => 'Viidatus:',
 	'articleassessment-rating-neutrality' => 'Neutraalne:',
 	'articleassessment-rating-completeness' => 'Täielikkus:',
 	'articleassessment-rating-readability' => 'Loetavus:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Kas leheküljel on piisavalt viiteid ja kas need pärinevad usalduväärsetest allikatest.',
+	'articleassessment-rating-neutrality-tooltip' => 'Kas kõik antud küsimuse tahud on leheküljel võrdselt esindatud?',
+	'articleassessment-rating-completeness-tooltip' => 'Kas see lehekülg annab teemast piisava ülevaate?',
+	'articleassessment-rating-readability-tooltip' => 'Kas see lehekülg on hästi üles ehitatud ja kirjutatud?',
+	'articleassessment-articlerating' => 'Lehekülje hinnang',
 	'articleassessment-error' => 'Ilmnes tõrge. 
 Palun proovi hiljem uuesti.',
+	'articleassessment-thanks' => 'Aitäh! Sinu hinnangud on salvestatud.',
+	'articleassessment-featurefeedback' => 'Anna meile <span class="feedbacklink">tagasisidet</span> selle hindamismeetodi kohta.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|hindamine|hindamist}})',
+	'articleassessment-stalemessage-norevisioncount' => "Seda lehekülge on pärast sinu viimast ülevaatamist ''muudetud''.
+Võib-olla soovid seda uuesti hinnata.",
+	'articleassessment-results-show' => '(Tulemused on peidetud. <span class="showlink">Näita</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Peida tulemused</span>)',
+	'articleassessment-survey-question-whyrated' => 'Miks seda lehekülge täna hindasid (vali kõik sobivad):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Tahtsin leheküljele üldist hinnangut anda',
+	'articleassessment-survey-answer-whyrated-development' => 'Loodan, et minu hinnang aitab lehekülje arendamisele kaasa',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Tahtsin {{GRAMMAR:inessive|{{SITENAME}}}} kaastööd teha',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Mulle meeldib oma arvamust jagada',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Ma ei hinnanud täna seda lehekülge, vaid tahtsin tagasisidet anda',
 	'articleassessment-survey-answer-whyrated-other' => 'Muu',
+	'articleassessment-survey-question-useful' => 'Kas pead antud hinnanguid kasulikuks ja selgeks?',
 	'articleassessment-survey-question-useful-iffalse' => 'Miks?',
+	'articleassessment-survey-question-expert' => 'Kas pead ennast sellel leheküljel käsitletud teema asjatundjaks?',
+	'articleassessment-survey-question-expert-iftrue' => 'Kas saad kirjeldada, milles sinu asjatundlikkus väljendub?',
+	'articleassessment-survey-question-comments' => 'Kas sul on lisamärkusi?',
+	'articleassessment-survey-submit' => 'Saada',
+	'articleassessment-survey-title' => 'Palun vasta mõnele küsimusele.',
+	'articleassessment-survey-thanks' => 'Aitäh küsitlusele vastamast!',
 );
 
 /** Persian (فارسی)
@@ -1694,8 +1723,14 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'articleassessment-submit' => 'Одослати',
+	'articleassessment-rating-wellsourced' => 'Жрідла:',
+	'articleassessment-rating-neutrality' => 'Невтралность:',
+	'articleassessment-rating-completeness' => 'Комплетность:',
+	'articleassessment-rating-readability' => 'Чітательность:',
 	'articleassessment-survey-answer-whyrated-other' => 'Інше',
 	'articleassessment-survey-question-useful-iffalse' => 'Чом?',
+	'articleassessment-survey-submit' => 'Одослати',
 );
 
 /** Yakut (Саха тыла)

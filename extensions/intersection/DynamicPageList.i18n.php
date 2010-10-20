@@ -907,6 +907,13 @@ $messages['vo'] = array(
 	'intersection_noincludecats' => 'Error: Nedol välön kladi pu bali, u nemaspadi!',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'intersection_noresults' => 'Àsìṣe: Kò sí àwọn èsì kankan!',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

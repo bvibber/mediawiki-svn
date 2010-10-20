@@ -2175,10 +2175,14 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'recordadmin-submit' => 'Відправити',
 	'recordadmin-buttonsearch' => 'Знайти',
+	'recordadmin-buttoncreate' => 'Створити',
 	'recordadmin-buttonreset' => 'Скинути',
+	'recordadmin-buttonsave' => 'Зберегти',
 	'recordadmin-editlink' => 'ред.',
 	'recordadmin-actions' => 'Дії',
+	'recordadmin-properties' => 'Властивості',
 );
 
 /** Veps (Vepsan kel')

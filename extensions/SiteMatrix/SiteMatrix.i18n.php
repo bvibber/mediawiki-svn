@@ -2034,6 +2034,14 @@ $messages['yi'] = array(
 	'sitematrix-others' => 'אַנדערע פראיעקטן פֿון וויקימעדיע',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'sitematrix-summary' => 'Ojúewé pàtàkì yìí ṣàkójọ ggbogbo àwọn wiki Wikimedia.',
+	'sitematrix-language' => 'Èdè',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

@@ -2174,6 +2174,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'readerfeedback-completeness' => 'Повнота',
+	'readerfeedback-npov' => 'Невтралсность',
+	'readerfeedback-presentation' => 'Поданя матеріалу',
 	'readerfeedback-level-0' => 'Бідне',
 	'readerfeedback-level-1' => 'Низке',
 	'readerfeedback-level-2' => 'Середнє',
@@ -2182,6 +2185,7 @@ $messages['rue'] = array(
 	'readerfeedback-submit' => 'Одослати',
 	'readerfeedback-submitting' => 'Одосылать ся...',
 	'readerfeedback-finished' => 'Дякуєме!',
+	'readerfeedback-tagfilter' => 'Значка:',
 	'readerfeedback-tierfilter' => 'Оцінка:',
 	'readerfeedback-tier-high' => 'Высоке',
 	'readerfeedback-tier-medium' => 'Середнє',

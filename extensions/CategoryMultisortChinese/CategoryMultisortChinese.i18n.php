@@ -225,6 +225,18 @@ $messages['hsb'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradicionelne',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoni: Jyutping',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

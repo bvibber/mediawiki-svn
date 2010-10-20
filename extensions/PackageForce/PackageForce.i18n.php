@@ -763,6 +763,16 @@ $messages['tl'] = array(
 	'pf-header-approve' => 'Payagan',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'pf-admin-menu-default' => 'За умовчанням',
+	'pf-admin-link-editlink-page' => 'Редагувати сторінку',
+	'pf-header-type' => 'Тип сторінки',
+	'pf-header-page_title' => 'Заголовок',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -596,6 +596,13 @@ $messages['tr'] = array(
 	'tablemod-error-invalidaction' => 'Geçersiz işlem.',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'tablemod-msg-remove' => 'Вилучити',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

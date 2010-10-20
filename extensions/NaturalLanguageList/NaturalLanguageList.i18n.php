@@ -333,8 +333,10 @@ $messages['tl'] = array(
 
 /** Ukrainian (Українська)
  * @author Riwnodennyk
+ * @author Тест
  */
 $messages['uk'] = array(
+	'nll-desc' => 'Легке форматування списків на природних мовах',
 	'nll-lastseparator' => '&#32;і&#32;',
 );
 

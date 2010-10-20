@@ -1719,7 +1719,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'expand_templates_output' => 'Резултат',
 	'expand_templates_ok' => 'ОК',
+	'expand_templates_preview' => 'Нагляд',
 );
 
 /** Yakut (Саха тыла)

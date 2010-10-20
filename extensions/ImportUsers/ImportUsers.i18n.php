@@ -2018,9 +2018,15 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'importusers-uploadfile' => 'Завантажити файл',
 	'importusers-log-summary' => 'Всього',
+	'importusers-log-summary-all' => 'Усі',
+	'importusers-log-summary-added' => 'Додано',
+	'importusers-log-summary-updated' => 'Оновлено',
+	'importusers-login-name' => 'Назва облікового запису',
 	'importusers-password' => 'пароль',
 	'importusers-email' => 'електронна пошта',
+	'importusers-realname' => "cправжнє ім'я",
 );
 
 /** Veps (Vepsan kel')

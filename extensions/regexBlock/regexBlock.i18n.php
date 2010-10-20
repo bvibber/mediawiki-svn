@@ -3265,11 +3265,13 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'regexblock-form-username' => "IP-адреса або ім'я користувача:",
 	'regexblock-form-reason' => 'Причина:',
 	'regexblock-form-expiry' => 'Закінчення:',
+	'regexblock-view-all' => 'Усі',
 );
 
 /** Urdu (اردو) */

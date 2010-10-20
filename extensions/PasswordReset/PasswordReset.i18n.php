@@ -1739,8 +1739,12 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'passwordreset-invalidusername' => "Неправильне ім'я користувача",
+	'passwordreset-emptyusername' => "Пусте ім'я користувача",
 	'passwordreset-nopassmatch' => 'Паролі не співпадають',
 	'passwordreset-username' => "Ім'я користувача:",
+	'passwordreset-newpass' => 'Новий пароль:',
+	'passwordreset-confirmpass' => 'Підтвердіть пароль:',
 );
 
 /** Urdu (اردو)

@@ -679,6 +679,13 @@ $messages['ru'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|оценка|оценки|оценок}}',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ratedpages' => 'Сторінкы, оцінены хоснователями',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

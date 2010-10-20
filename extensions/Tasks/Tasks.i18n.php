@@ -3933,8 +3933,11 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Тест
  */
 $messages['uk'] = array(
+	'tasks' => 'Завдання',
+	'tasks_tab' => 'Завдання',
 	'tasks_form_comment' => 'Примітка',
 	'tasks_error1' => 'Завдання не було встановлено: таке завдання вже існує!',
 	'tasks_ok1' => 'Було встановлене нове завдання!',
@@ -3945,6 +3948,11 @@ $messages['uk'] = array(
 	'tasks_action_delete' => 'Завдання було вилучено.',
 	'tasks_task_was_deleted' => 'Завдання було успішно вилучено.',
 	'tasks_reopen' => 'Відкрити завдання знову',
+	'tasks_sidebar_title' => 'Відкриті завдання',
+	'tasks_here' => 'тут',
+	'tasks_help_page' => 'Завдання',
+	'tasks_more_like_it' => 'більше',
+	'tasks_event_on_creation' => 'перевірити',
 	'tasks_event_on_creation_anon' => 'перевірити',
 	'tasks_on_creation_comment' => 'Автоматичне завдання, встановлене після створення статті',
 	'tasks_link_your_assignments' => 'поточні призначення',

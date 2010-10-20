@@ -165,6 +165,13 @@ $messages['pt-br'] = array(
 	'slimboxthumbs-desc' => 'Mostra as imagens em tamanho normal com  [http://www.digitalia.be/software/slimbox2 Slimbox 2] ao clicar sobre a miniatura',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'slimboxthumbs-desc' => 'Fa vedè le immaggine a dimenzione vere cu [http://www.digitalia.be/software/slimbox2 Slimbox 2] quanne cazze sus a le miniature',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  */

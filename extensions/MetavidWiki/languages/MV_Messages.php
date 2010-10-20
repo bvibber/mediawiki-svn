@@ -8303,7 +8303,7 @@ Por favor, reporte este facto ao [[{{MediaWiki:Grouppage-sysop}}|administrador d
 	'mvexportstream' => 'Exportar stream Metavid',
 	'mv_move_delete_msg' => 'movido para $1',
 	'mv_add_stream_page' => 'MetaVid adicionar stream',
-	'mv_edit_strea_docu' => '<p>Editar <b>administração</b> de stream<br />para visionamento/edição por utilizadores normais, veja a página $1',
+	'mv_edit_strea_docu' => '<p>Editar stream como <b>administrador</b><br />para ver ou editar como utilizador normal, consulte a página $1</p>',
 	'mv_add_stream_docu' => '<p>Adicionar uma nova stream com o campo abaixo.</p>
 <p>Mais informação é dada na <a href="$1">página de ajuda de adição de streams</a>.</p>',
 	'mv_add_stream_submit' => 'Adicionar stream',
@@ -8545,6 +8545,20 @@ $messages['pt-br'] = array(
 	'mv_ogg_low_quality' => 'Stream para Web - Ogg Theora 300 kbit/s',
 	'mv_ogg_high_quality' => 'Alta Qualidade - Ogg Theora 900 kbit/s',
 	'mv_flash_low_quality' => 'Stream para Web - vídeo Flash',
+	'mv_archive_org_mp4' => 'Fluxo H.264 encapsulado em MP4 do Archive.org',
+	'mv_archive_org_link' => 'Links para os originais mpeg2 do Archive.org',
+	'mv_error_stream_missing' => '<span class="error">Erro: Não há nenhum arquivo de vídeo associado com este stream.</span><br />
+Por favor, reporte este fato ao [[{{MediaWiki:Grouppage-sysop}}|administrador do site]].',
+	'mv_stream_added' => 'Você adicionou o stream $1',
+	'mv_stream_meta' => 'Página de stream',
+	'mv_add_stream' => 'Adicionar stream Metavid',
+	'mv_edit_stream' => 'Editar stream Metavid',
+	'mvexportsearch' => 'Exportar Metavid',
+	'mvexportsequence' => 'Exportar sequência Metavid',
+	'mvexportstream' => 'Exportar stream Metavid',
+	'mv_move_delete_msg' => 'movido para $1',
+	'mv_add_stream_page' => 'MetaVid adicionar stream',
+	'mv_edit_strea_docu' => '<p>Editar <b>administração</b> de stream<br />para visualização/edição por usuários normais, veja a página $1</p>',
 	'mv_duration_label' => 'Duração',
 	'mv_save_changes' => 'Salvar alterações',
 	'mv_remove_reason' => 'Motivo para a eliminação:',
@@ -10465,7 +10479,12 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'mv_duration_label' => 'Тривалість',
 	'mv_save_changes' => 'Зберегти зміни',
+	'mv_upload_file' => 'Завантажити файл',
+	'mv_external_file' => 'Зовнішній файл',
+	'mv_tool_search' => 'Пошук',
+	'mv_tool_export' => 'Експорт',
 	'mv_remove' => 'вилучити',
 	'mv_existing_categories' => '{{PLURAL:$1|категорія|категорії|категорій}}:',
 	'mv_search_categories' => 'Категорії',

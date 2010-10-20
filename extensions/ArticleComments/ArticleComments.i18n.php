@@ -123,6 +123,14 @@ $messages['be-tarask'] = array(
 	'article-comments-summary' => 'Камэнтар пададзены $1 з дапамогай пашырэньня ArticleComments',
 	'article-comments-submission-succeeded' => 'Камэнтар пасьпяхова запісаны',
 	'article-comments-submission-success' => 'Ваш камэнтар да «[[$1]]» быў пасьпяхова запісаны',
+	'article-comments-submission-view-all' => 'Вы можаце ўбачыць [[$1|усе камэнтары гэтай старонкі]]',
+	'article-comments-user-is-blocked' => 'У Вашага рахунка заблякаваная магчымасьць рэдагаваньня «[[$1]]».',
+	'article-comments-comment-bad-mode' => 'Пададзены няслушны рэжым для камэнтара.
+Даступнымі зьяўляюцца «plain», «normal» і «wiki».',
+	'article-comments-comment-missing-name-parameter' => 'Няма назвы',
+	'article-comments-comment-missing-date-parameter' => 'Няма даты стварэньня камэнтара',
+	'article-comments-no-spam' => 'Хаця б адно дасланае поле пазначанае як спам.',
+	'processcomment' => 'Апрацоўка камэнтара артыкулу',
 );
 
 /** Breton (Brezhoneg)
@@ -400,6 +408,7 @@ $messages['he'] = array(
  * @author Dani
  */
 $messages['hu'] = array(
+	'article-comments-desc' => 'Megjegyzések szakasz a tartalommal rendelkező lapokra',
 	'article-comments-name-string' => 'Név',
 	'article-comments-name-field' => 'Név (kötelező):',
 	'article-comments-url-field' => 'Weboldal:',
@@ -407,7 +416,19 @@ $messages['hu'] = array(
 	'article-comments-comment-string' => 'Megjegyzés',
 	'article-comments-comment-field' => 'Megjegyzés:',
 	'article-comments-submit-button' => 'Elküldés',
+	'article-comments-required-field' => '$1 mező kitöltése kötelező.',
+	'article-comments-submission-failed' => 'A hozzászólás elküldése nem sikerült',
+	'article-comments-failure-reasons' => 'A hozzászólás elküldése nem sikerült a következő ok(ok) miatt:',
+	'article-comments-talk-page-starter' => '<noinclude>Hozzászólások a(z) [[$1]] laphoz
+<comments />
+----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 írta ...',
+	'article-comments-submission-succeeded' => 'A hozzászólás elküldése sikerült',
+	'article-comments-submission-success' => 'Sikeresen hozzászóltál a(z) „[[$1]]” című laphoz',
+	'article-comments-submission-view-all' => '[[$1|A lap összes hozzászólásának]] megtekintése',
+	'article-comments-comment-missing-name-parameter' => 'Hiányzik a név',
+	'article-comments-comment-missing-date-parameter' => 'Hiányzik a hozzászólás dátuma',
+	'article-comments-no-spam' => 'Az elküldött mezők legalább egyike spamnek lett jelölve.',
 );
 
 /** Interlingua (Interlingua)
@@ -498,6 +519,7 @@ $messages['lb'] = array(
 	'article-comments-leave-comment-link' => 'Eng Bemierkung derbäisetzen ...',
 	'article-comments-invalid-field' => 'Den $1 <nowiki>[$2]</nowiki> deen Dir uginn hutt ass net valabel.',
 	'article-comments-required-field' => "D'Feld $1 ass obligatoresch.",
+	'article-comments-submission-failed' => "D'Schécke vun der Bemierkung huet net fonctionnéiert",
 	'article-comments-no-comments' => 'Pardon, d\'Säit "[[$1]]" hëlt elo keng Bemierkungen un.',
 	'article-comments-talk-page-starter' => '<noinclude>Bemierkungen iwwer [[$1]]
 <comments />
@@ -505,6 +527,7 @@ $messages['lb'] = array(
 	'article-comments-commenter-said' => '$1 huet gesot ...',
 	'article-comments-submission-succeeded' => "D'Bemierkung ass gespäichert",
 	'article-comments-submission-success' => 'Är Bemierkung fir [[$1]] ass gespäichert.',
+	'article-comments-submission-view-all' => 'Dir kënnt [[$1|all Bemierkungen zu dëser Säit]] kucken',
 	'article-comments-comment-missing-name-parameter' => 'Den Numm feelt',
 	'article-comments-comment-missing-date-parameter' => 'Datum vun der Bemierkung feelt',
 	'processcomment' => "D'Bemierkung zum Artikel gëtt verschafft",
@@ -889,6 +912,7 @@ $messages['sv'] = array(
 
 /** Ukrainian (Українська)
  * @author Alex Khimich
+ * @author Тест
  */
 $messages['uk'] = array(
 	'article-comments-desc' => 'Ввімкнути розділ коментарів на змістових сторінках',
@@ -901,5 +925,6 @@ $messages['uk'] = array(
 	'article-comments-comment-field' => 'Коментар:',
 	'article-comments-submit-button' => 'Відправити',
 	'article-comments-leave-comment-link' => 'Написати коментар ...',
+	'article-comments-required-field' => "Поле $1 — обов'язкове.",
 );
 

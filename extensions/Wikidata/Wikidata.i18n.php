@@ -14075,6 +14075,7 @@ $messages['ug-latn'] = array(
  * @author Olvin
  * @author Prima klasy4na
  * @author Riwnodennyk
+ * @author Тест
  */
 $messages['uk'] = array(
 	'wikidata-desc' => 'Додає вікі-подібну базу даних для різних типів контенту',
@@ -14108,6 +14109,7 @@ $messages['uk'] = array(
 	'datasearch_match_words' => 'Слова, що відповідають "$1", і пов\'язані значення',
 	'ow_importtsv_import_failed' => 'Помилка при імпортуванні',
 	'ow_importtsv_nothing_added' => 'Нічого не додано.',
+	'ow_exporttsv_languages' => 'Мови:',
 	'ow_save' => 'Зберегти',
 	'ow_history' => 'Історія',
 	'ow_datasets' => 'Вибір набору даних',
@@ -14190,6 +14192,7 @@ $messages['uk'] = array(
 	'ow_Text' => 'Текст',
 	'ow_TextAttribute' => 'Властивість',
 	'ow_TextAttributeValues' => 'Прості тексти',
+	'ow_Time' => 'Час',
 	'ow_TranslatedTextAttribute' => 'Властивість',
 	'ow_TranslatedText' => 'Перекладений текст',
 	'ow_TranslatedTextAttributeValue' => 'Текст',

@@ -205,9 +205,13 @@ $messages['hsb'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Wutworić',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Dani
+ */
 $messages['hu'] = array(
+	'articletocategory2-create-article-under-category-text' => 'Lap hozzáadása ezen kategóriához',
 	'articletocategory2-create-article-under-category-button' => 'Létrehozás',
+	'articletocategory2-create-category-under-category-text' => 'Kategória hozzáadása ezen kategóriához',
 	'articletocategory2-create-category-under-category-button' => 'Létrehozás',
 );
 
@@ -445,5 +449,16 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Oluştur',
 	'articletocategory2-create-category-under-category-button' => 'Oluştur',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'articletocategory2-desc' => 'Додає поле вводу на сторінці кожної категорії, що дозволяє створювати нові сторінки безпосередньо в цій категорії',
+	'articletocategory2-create-article-under-category-text' => 'Додати сторінку до цієї категорії',
+	'articletocategory2-create-article-under-category-button' => 'Створити',
+	'articletocategory2-create-category-under-category-text' => 'Додати категорію до цієї категорії',
+	'articletocategory2-create-category-under-category-button' => 'Створити',
 );
 
