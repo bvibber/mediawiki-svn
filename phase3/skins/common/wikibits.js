@@ -352,15 +352,16 @@ window.addPortletLink = function( portlet, href, text, id, tooltip, accesskey, n
 	// unhide portlet if it was hidden before
 	root.className = root.className.replace( /(^| )emptyPortlet( |$)/, "$2" );
 
-	var span = document.createElement( 'span' );
-	span.appendChild( document.createTextNode( text ) );
-
 	var link = document.createElement( 'a' );
-	link.appendChild( span );
+	link.appendChild( document.createTextNode( text ) );
 	link.href = href;
 
+	// Wrap in a span - make it work with vector tabs and has no effect on any other portlets
+	var span = document.createElement( 'span' );
+	span.appendChild( link );
+
 	var item = document.createElement( 'li' );
-	item.appendChild( link );
+	item.appendChild( span );
 	if ( id ) {
 		item.id = id;
 	}
@@ -1056,9 +1057,9 @@ window.runOnloadHook = function() {
  * @param callable handler Event handler callback
  */
 window.addHandler = function( element, attach, handler ) {
-	if( window.addEventListener ) {
+	if( element.addEventListener ) {
 		element.addEventListener( attach, handler, false );
-	} else if( window.attachEvent ) {
+	} else if( element.attachEvent ) {
 		element.attachEvent( 'on' + attach, handler );
 	}
 }

@@ -376,6 +376,8 @@ Tropi utenti i sta tentando de visuałisare sta pajina.
 Atendare qualche minudo prima de riprovare a cargare ła pajina.
 
 $1',
+'pool-timeout'      => "Timeout durante l'atesa de lo sbloco",
+'pool-queuefull'    => 'La cóa de laorassion la xe piena',
 'pool-errorunknown' => 'Eror sconossùo',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -611,6 +613,11 @@ Se l\'acesso el xe stà creà par sbaglio, se pol ignorar sto messagio.',
 Spèta un tocheto prima de proàr da novo.',
 'loginlanguagelabel'         => 'Lengua: $1',
 'suspicious-userlogout'      => 'Ła to richiesta de disconesion xè sta negà parché e a senbra invià da on browser non funsionante o on proxy de caching.',
+'ratelimit-excluded-ips'     => '#<!-- no sta modificar in alcun modo sta riga --> <pre>
+# La sintassi la xe la seguente:
+#  * Tuto quel che segue un caràtere "#" el xe un comento, fin a la fine de la riga
+#  * Tute le righe mìa vode le xe un indirisso IP escluso dal limite de velocità
+   #</pre> <!-- no sta modificar in alcun modo sta riga -->',
 
 # JavaScript password checks
 'password-strength'            => 'Stima de la robusteza de la password: $1',
@@ -994,11 +1001,21 @@ No ti gà acesso su de ela.',
 # Revision move
 'moverevlogentry'              => 'gà spostà {{PLURAL:$3|na revision|$3 revision}} da $1 a $2',
 'revisionmove'                 => 'Sposta revision da "$1"',
+'revmove-explain'              => 'Le seguenti revision le vegnarà spostà da $1 a la pagina de destinassion specificà. Se questa no la esiste la vegnarà creà. Se no, se revision le sarà unìe a la cronologia de la pagina.',
+'revmove-legend'               => "Inposta la pagina de destinassion e l'ogeto",
+'revmove-submit'               => 'Sposta revision a la pagina selessionà',
 'revisionmoveselectedversions' => 'Sposta le revision selessionà',
 'revmove-reasonfield'          => 'Motivassion:',
 'revmove-titlefield'           => 'Pagina de destinassion:',
 'revmove-badparam-title'       => 'Parametri mia validi',
+'revmove-badparam'             => 'La to richiesta la contien parametri sbalià o insuficienti. Struca "indrio" e proa da novo.',
+'revmove-norevisions-title'    => 'Revision mia valida',
+'revmove-norevisions'          => 'No te ghè indicà nissuna revision su cui eseguir sta funsion o la revision indicà no la esiste.',
 'revmove-nullmove-title'       => 'Titolo mia valido',
+'revmove-nullmove'             => 'La pagine de partensa e quela de arivo le xe la stessa.
+Torna indrio e metighe un nome pagina difarente da "[[$1]]".',
+'revmove-success-existing'     => '{{PLURAL:$1|Una revision de [[$2]] la xe stà spostà|$1 revision de [[$2]] le xe stà spostà}} ne la pagina esistente [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Una revision de [[$2]] la xe stà spostà|$1 revisioni de [[$2]] le xe stà spostà}} ne la nova pagina creà [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Union cronologie',
@@ -1038,6 +1055,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'showhideselectedversions' => 'Mostra/scondi version selessionà',
 'editundo'                 => 'anuła',
 'diff-multi'               => '({{PLURAL:$1|Una revision intermedia|$1 revision intermedie}} de {{PLURAL:$2|un utente|$2 utenti}} mia mostrà)',
+'diff-multi-manyusers'     => '({{PLURAL:$1|Una revision intermedia|$1 revision intermedie}} de pi de {{PLURAL:$2|un utente|$2 utenti}} mia mostrà)',
 
 # Search results
 'searchresults'                    => 'Risultati de ła riserca',
@@ -1072,6 +1090,7 @@ Assicùrete che la continuità storica de la pagina no la vegna alterà.',
 'searchprofile-everything-tooltip' => 'Serca dapartuto (conprese le pàxene de discussion)',
 'searchprofile-advanced-tooltip'   => 'Serca nei namespace personalixài',
 'search-result-size'               => '$1 ({{PLURAL:$2|na paroła|$2 parołe}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 utente|$1 utenti}} ({{PLURAL:$2|1 sotocategoria|$2 sotocategorie}}, {{PLURAL:$3|1 file|$3 file}})',
 'search-result-score'              => 'Rilevansa: $1%',
 'search-redirect'                  => '(redirect $1)',
 'search-section'                   => '(sesion $1)',
@@ -1217,6 +1236,8 @@ In più te pol anca farte contatar da altri tramite la to pagina personale o la 
 'prefs-advancedsearchoptions'   => 'Preferense avansade',
 'prefs-advancedwatchlist'       => 'Preferense avansade',
 'prefs-displayrc'               => 'Preferense de visualixassion',
+'prefs-displaysearchoptions'    => 'Opzioni de visualixassion',
+'prefs-displaywatchlist'        => 'Opzioni de visualixassion',
 'prefs-diffs'                   => 'Difarense',
 
 # User rights
@@ -1427,6 +1448,9 @@ par poder cargar dei file.',
 'upload_directory_missing'    => 'La cartèla de caricamento ($1) no la esiste mìa e no la pode vegner creàda dal browser web.',
 'upload_directory_read_only'  => "El server web no l'è bon de scrìvar ne la directory de caricamento ($1).",
 'uploaderror'                 => 'Eror nel caricamento',
+'upload-recreate-warning'     => "'''Ocio: Un file co sto nome el xe stà scancelà o spostà.'''
+
+Qua ghe xe el registro de le scancelassion e dei spostamenti:",
 'uploadtext'                  => "Par cargar novi file, dopara el modulo qua soto.
 Par védar o sercar i file zà caricà, consulta la [[Special:FileList|lista dei file caricà]]. I caricamenti de file te pol védarli nel [[Special:Log/upload|registro dei caricamenti]], le scancelasion nel [[Special:Log/delete|registro de le scancelasion]].
 
@@ -1459,8 +1483,17 @@ Varda la [[Special:NewFiles|galerìa dei file nóvi]] par na vision de insieme.'
 'filetype-unwanted-type'      => "Cargar file de tipo '''\".\$1\"''' xe sconsiglià. {{PLURAL:\$3|El tipo de file consiglià el|I tipi de file consiglià i}} xe \$2.",
 'filetype-banned-type'        => "Cargar file de tipo '''\".\$1\"''' no xe mìa consentìo. {{PLURAL:\$3|El tipo de file consentìo el|I tipi de file consentìi i}} xe \$2.",
 'filetype-missing'            => 'El file no\'l gà nissuna estension (ad es. ".jpg").',
+'empty-file'                  => 'El file che te ghè cargà el xe vodo.',
+'file-too-large'              => 'El file che te ghè cargà el xe massa grando.',
 'filename-tooshort'           => 'El nome del file el xe massa curto.',
+'filetype-banned'             => 'Sto tipo de file el xe vietà.',
+'verification-error'          => "Sto file no'l gà passà la verifica.",
+'hookaborted'                 => 'La modifica che te voli fare la xe stà interota da un hook de na estension.',
+'illegal-filename'            => 'El nome del file no xe parmesso.',
+'overwrite'                   => 'No xe parmesso de sorascrìvar un file esistente.',
+'unknown-error'               => 'Se gà verifica un eror sconossùo.',
 'tmp-create-error'            => 'Inpussibile creare el file tenporaneo.',
+'tmp-write-error'             => 'Eror de scritura del file temporaneo.',
 'large-file'                  => 'Se racomanda de no superar mìa le dimension de $1 par ciascun file; sto file el xe grando $2.',
 'largefileserver'             => 'El file el supera le dimension consentìe da la configurazion del server.',
 'emptyfile'                   => 'El file che te ghè caricà el xè aparentemente vodo. Podarìa èssar par un eror nel nome del file. Par piaser controla se te vol dal bon caricar sto file.',
@@ -1491,6 +1524,7 @@ Se te vol cargar el file istesso, par piaser torna indrio e canbia el nome che t
 'uploadedimage'               => 'ga cargà "[[$1]]"',
 'overwroteimage'              => 'gà cargà na version nova de "[[$1]]"',
 'uploaddisabled'              => 'Semo spiacenti, ma el caricamento de file el xe tenporaneamente sospeso.',
+'copyuploaddisabled'          => 'El caricamento tramite URL el xe disabilità.',
 'uploadfromurl-queued'        => 'El to caricamento el xe stà messo in coa.',
 'uploaddisabledtext'          => "El caricamento dei file no'l xe mìa ativo.",
 'php-uploaddisabledtext'      => 'El caricamento de file tramite PHP el xe disabilità. Contròla la configurassion de file_uploads.',
@@ -1511,7 +1545,13 @@ Verifica par piaser se xe el caso de continuare col caricamento de sto file.
 Par to comodità qua ghe xe la registrazion de la scancelazion:",
 'filename-bad-prefix'         => "El nome del file che te sì drio cargar el scuminsia con '''\"\$1\"''', che el xe un nome non-descritivo tipicamente assegnà automaticamente da le fotocàmare digitali. Par piaser siegli un nome piassè descritivo par el to file.",
 'upload-success-subj'         => 'Caricamento conpletà',
+'upload-success-msg'          => "El to caricamento da [$2] el xe 'ndà ben. Te lo cati qua: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => 'Problema nel caricamento',
+'upload-failure-msg'          => 'Ghe xe stà un problema col caricamento da [$2]:
+
+$1',
+'upload-warning-subj'         => 'Aviso de caricamento',
+'upload-warning-msg'          => 'Ghe xe stà un problema col caricamento da [$2]. Torna al [[Special:Upload/stash/$1|modulo de caricamento]] par sistemarlo.',
 
 'upload-proto-error'        => 'Protocòl mìa giusto',
 'upload-proto-error-text'   => 'Par el caricamento remoto bisogna specificar URL che scuminsia con <code>http://</code> opure <code>ftp://</code>.',
@@ -1904,6 +1944,10 @@ La e-mail che te ghè indicà ne le [[Special:Preferences|to preferense]] la veg
 'emailsent'            => 'E-mail invià',
 'emailsenttext'        => 'La to e-mail la xè stà invià.',
 'emailuserfooter'      => 'Sta e-mail la xe stà mandà da $1 a $2 \'traverso la funsion "Manda na e-mail a l\'utente" su {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Messajo de sistema.',
+'usermessage-editor'  => 'Messagero de sistema',
 
 # Watchlist
 'watchlist'            => 'Oservai spesałi',
@@ -3234,5 +3278,9 @@ Inserissi el nome del file senza el prefisso \"{{ns:file}}:\"",
 'htmlform-submit'              => 'Manda',
 'htmlform-reset'               => 'Scancèla modifiche',
 'htmlform-selectorother-other' => 'Altro',
+
+# SQLite database support
+'sqlite-has-fts' => '$1 con la possibilità de riserca completa nel testo',
+'sqlite-no-fts'  => '$1 sensa la possibilità de riserca completa nel testo',
 
 );

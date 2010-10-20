@@ -8,6 +8,7 @@
  * @file
  *
  * @author Ganesh
+ * @author Lkhatiwada
  * @author RajeshPandey
  * @author ne.wikipedia.org sysops
  * @author सरोज कुमार ढकाल
@@ -49,7 +50,7 @@ $messages = array(
 'tog-watchdeletion'           => 'मैले हटाएको पृष्ठहरुलाई निगरानी सुचीमा थप्ने',
 'tog-previewontop'            => 'सम्पादन सन्दुक अगि पूर्वरुप देखाउने',
 'tog-previewonfirst'          => 'पहिलो सम्पादनमा पूर्वरुप देखाउने',
-'tog-nocache'                 => 'पृष्ठ क्यासिङ्ग निस्क्रिय पार्ने',
+'tog-nocache'                 => 'ब्राउजर पृष्ठ क्यासिङ्ग निस्क्रिय पार्ने',
 'tog-enotifwatchlistpages'    => 'मेरो निगरानी सूचीमा रहेको पृष्ठ परिवर्तन गरिए मलाई ई-मेल गर्ने',
 'tog-enotifusertalkpages'     => 'मेरो प्रयोगकर्ता वार्ता पृष्ठ परिवर्रतन गरिए मलाई ई-मेल गर्ने',
 'tog-enotifminoredits'        => 'पृष्ठहरुको सामान्य सम्पादनको लागि पनि मलाई ई-मेल गर्ने',
@@ -153,6 +154,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|यो श्रेणीमा निम्न फाइल मात्र छ ।|निम्न श्रेणीमा {{PLURAL:$1|फाइल|$1 फाइलहरु}} , कुल  $2 मध्ये रहेको ।}}',
 'category-file-count-limited'    => 'निम्न  {{PLURAL:$1|फाइल|$1 फाइलहरु}} यस श्रेणीमा रहेको ।',
 'listingcontinuesabbrev'         => 'निरन्तरता...',
+'index-category'                 => 'सुचिकृत पृष्ठ',
+'noindex-category'               => 'सुचिकरण नगरिएको पृष्ठ',
 
 'mainpagetext'      => "'''MediaWiki सफलतापूर्वक स्थापना भयो ।'''",
 'mainpagedocfooter' => " विकी अनुप्रयोग कसरी प्रयोग गर्ने भन्ने जानकारीको लागि  [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] हेर्नुहोस्
@@ -185,20 +188,21 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection' => 'पाठ थप्नुहोस',
-'vector-action-delete'     => 'हटाउने',
-'vector-action-move'       => 'सार्ने',
-'vector-action-protect'    => 'सुरक्षितगर्ने',
-'vector-action-undelete'   => 'हटाएको रद्द गर्ने',
-'vector-action-unprotect'  => 'सुरक्षित गरिएको रद्द गर्ने',
-'vector-view-create'       => 'शृजना गर्ने',
-'vector-view-edit'         => 'सम्पादन',
-'vector-view-history'      => 'इतिहास हेर्ने',
-'vector-view-view'         => 'पढ्ने',
-'vector-view-viewsource'   => 'स्रोत हेर्ने',
-'actions'                  => 'कृयाकलापहरु',
-'namespaces'               => 'नेमस्पेस',
-'variants'                 => 'बहुरुपहरु',
+'vector-action-addsection'       => 'पाठ थप्नुहोस',
+'vector-action-delete'           => 'हटाउने',
+'vector-action-move'             => 'सार्ने',
+'vector-action-protect'          => 'सुरक्षितगर्ने',
+'vector-action-undelete'         => 'हटाएको रद्द गर्ने',
+'vector-action-unprotect'        => 'सुरक्षित गरिएको रद्द गर्ने',
+'vector-simplesearch-preference' => 'विशिष्ठ खोज सुझावहरु सक्रिय पार्ने (भेक्टर पर्दाको लागि मात्र)',
+'vector-view-create'             => 'शृजना गर्ने',
+'vector-view-edit'               => 'सम्पादन',
+'vector-view-history'            => 'इतिहास हेर्ने',
+'vector-view-view'               => 'पढ्ने',
+'vector-view-viewsource'         => 'स्रोत हेर्ने',
+'actions'                        => 'कृयाकलापहरु',
+'namespaces'                     => 'नेमस्पेस',
+'variants'                       => 'बहुरुपहरु',
 
 'errorpagetitle'    => 'त्रुटि',
 'returnto'          => '$1 मा फर्कनुहोस् ।',
@@ -345,14 +349,15 @@ $1',
 # General errors
 'error'                => 'त्रुटी',
 'databaseerror'        => 'डेटावेस त्रुटी',
-'dberrortext'          => 'A database query syntax error has occurred.
-This may indicate a bug in the software.
-The last attempted database query was:
+'dberrortext'          => '↓ डेटाबेस क्वेरी सुत्र त्रुटि भएको छ ।
+यसले सफ्टवेयरमा बग रहेको देखाउँदछ ।
+डेटावेसमा पछिल्लो पटक प्रयास गरिएको क्वेरी:
 <blockquote><tt>$1</tt></blockquote>
-from within function "<tt>$2</tt>".
-Database returned error "<tt>$3: $4</tt>".',
+ "<tt>$2</tt>" फङ्सन बाट बोलाइएको
+थियो "<tt>$3: $4</tt>" डेटावेस त्रुटि उत्पन्न ।',
 'laggedslavemode'      => "'''चेतावनी:''' पृष्ठमा हालैको अध्यावधिहरु नरहेका पनि हुनसक्छन ।",
 'readonly'             => 'डेटाबेस ताल्चामारिएको छ',
+'enterlockreason'      => 'ताल्चा मार्नुको कारण प्रविष्ठ गर्नुहोस्, साथै ताल्चा हटाउने समयको अबधि अन्दाज गर्नुहोस ।',
 'missing-article'      => 'डेटाबेसले पृष्ठको पाठ भेटाएन जुन भेटिनु पर्ने थियो , नाम "$1" $2.
 
 यस्तो प्राय: मिति नाघिसकेको diff वा इतिहास वा कुनै मेटिसकेको पानाको लिंक पछ्याउनाले हुन्छ ।
@@ -552,7 +557,7 @@ Database returned error "<tt>$3: $4</tt>".',
 'blockededitsource'                => "'''$1'''को '''तपाईँको सम्पादन'''को पाठ तल देखाइएको छ:",
 'whitelistedittitle'               => 'सम्पादन गर्नको लागि प्रवेश (लग इन) आवश्यक छ',
 'whitelistedittext'                => 'पाना सम्पादन गर्न तपाँईले $1 गर्नु पर्दछ।',
-'nosuchsectiontitle'               => 'त्यस्तो खण्ड छैन',
+'nosuchsectiontitle'               => 'सेक्सन फेला परेन',
 'loginreqtitle'                    => 'प्रवेशगर्नु जरुरी छ।',
 'loginreqlink'                     => 'प्रवेश (लग ईन)',
 'loginreqpagetext'                 => 'अरु पृष्ठहेर्न तपाईले $1 गर्नुपर्छ ।',
@@ -1199,7 +1204,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'filedelete-nofile'           => "'''$1''' अस्तित्वमा छैन ।",
 'filedelete-otherreason'      => 'थप प्रवाह विकल्प',
 'filedelete-reason-otherlist' => 'अन्य कोडेक',
-'filedelete-edit-reasonlist'  => 'मेट्नको लागि अनुक्रमणिका',
+'filedelete-edit-reasonlist'  => 'मेट्नका कारण संपादन गर्नुहोस् ।',
 
 # MIME search
 'mimesearch' => 'MIME खोज',
@@ -1213,7 +1218,7 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'listredirects' => 'प्रभाव सूची',
 
 # Unused templates
-'unusedtemplates'    => 'प्याकेजबाट टेम्प्लेट उद्धरण गर्दैछ: %d%%',
+'unusedtemplates'    => 'प्रयोग नगरिएको टेम्प्लेट',
 'unusedtemplateswlh' => 'अन्य कोडेक',
 
 # Random page

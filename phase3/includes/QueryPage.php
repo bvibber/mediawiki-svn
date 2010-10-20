@@ -566,9 +566,11 @@ abstract class QueryPage extends SpecialPage {
 
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $this->reallyDoQuery( $limit, 0 );
-			while( $obj = $dbr->fetchObject( $res ) ) {
+			foreach ( $res as $obj ) {
 				$item = $this->feedResult( $obj );
-				if( $item ) $feed->outItem( $item );
+				if( $item ) {
+					$feed->outItem( $item );
+				}
 			}
 
 			$feed->outFooter();
@@ -651,8 +653,9 @@ abstract class WantedQueryPage extends QueryPage {
 	 */
 	function preprocessResults( $db, $res ) {
 		$batch = new LinkBatch;
-		while ( $row = $db->fetchObject( $res ) )
+		foreach ( $res as $row ) {
 			$batch->add( $row->namespace, $row->title );
+		}
 		$batch->execute();
 
 		// Back to start for display

@@ -139,12 +139,13 @@ class DatabasePostgres extends DatabaseBase {
 
 	function hasConstraint( $name ) {
 		global $wgDBmwschema;
-		$SQL = "SELECT 1 FROM pg_catalog.pg_constraint c, pg_catalog.pg_namespace n WHERE c.connamespace = n.oid AND conname = '" . pg_escape_string( $this->mConn, $name ) . "' AND n.nspname = '" . pg_escape_string( $this->mConn, $wgDBmwschema ) ."'";
-		return $this->numRows( $res = $this->doQuery( $SQL ) );
+		$SQL = "SELECT 1 FROM pg_catalog.pg_constraint c, pg_catalog.pg_namespace n WHERE c.connamespace = n.oid AND conname = '" .
+				pg_escape_string( $this->mConn, $name ) . "' AND n.nspname = '" . pg_escape_string( $this->mConn, $wgDBmwschema ) ."'";
+		$res = $this->doQuery( $SQL );
+		return $this->numRows( $res );
 	}
 
-	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 )
-	{
+	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0 ) {
 		return new DatabasePostgres( $server, $user, $password, $dbName, $failFunction, $flags );
 	}
 
@@ -215,7 +216,6 @@ class DatabasePostgres extends DatabaseBase {
 			&& preg_match( '/^\w+$/', $wgDBts2schema )
 		) {
 			$safeschema = $this->quote_ident( $wgDBmwschema );
-			$safeschema2 = $this->quote_ident( $wgDBts2schema );
 			$this->doQuery( "SET search_path = $safeschema, $wgDBts2schema, public" );
 		}
 
@@ -381,7 +381,6 @@ class DatabasePostgres extends DatabaseBase {
 			// Install plpgsql if needed
 			$this->setup_plpgsql();
 
-			$superuser = '';
 			return true; // Reconnect as regular user
 
 		} // end superuser
@@ -737,7 +736,7 @@ class DatabasePostgres extends DatabaseBase {
 		if ( !$res ) {
 			return null;
 		}
-		while ( $row = $this->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( $row->indexname == $this->indexName( $index ) ) {
 				return $row;
 			}
@@ -754,7 +753,7 @@ class DatabasePostgres extends DatabaseBase {
 		if ( !$res ) {
 			return null;
 		}
-		while ( $row = $this->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			return true;
 		}
 		return false;

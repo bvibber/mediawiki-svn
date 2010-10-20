@@ -755,6 +755,11 @@ Sinun ei tarvitse huomioida tätä viestiä, jos tunnus on luotu virheellisesti.
 Odota ennen kuin yrität uudelleen.',
 'loginlanguagelabel'         => 'Kieli: $1',
 'suspicious-userlogout'      => 'Pyyntösi kirjautua ulos evättiin, koska se näytti rikkinäisen selaimen tai välimuistipalvelimen lähettämältä.',
+'ratelimit-excluded-ips'     => '#<!-- älä tee muutoksia tähän riviin --> <pre>
+# Syntaksi on seuraava:
+#  * Teksti "#" -merkin jälkeen rivin loppuun asti on kommenttia
+#  * Jokainen ei-tyhjä rivi on IP-osoite jota ei oteta huomioon määrärajassa
+ #</pre> <!-- älä tee muutoksia tähän riviin -->',
 
 # JavaScript password checks
 'password-strength'            => 'Arvioitu salasanan vahvuus: $1',
@@ -1135,7 +1140,7 @@ Sinulla ei ole oikeutta siihen.',
 'revmove-norevisions-title'    => 'Virheellinen kohdeversio',
 'revmove-norevisions'          => 'Et määrittänyt yhtä tai useampaa versiota tämän funktion suoritettavaksi, tai määritettyä versiota ei ole olemassa.',
 'revmove-nullmove-title'       => 'Virheellinen otsikko',
-'revmove-nullmove'             => 'Lähde- ja kohdesivu ovat samat. Palaa edelliselle sivulle ja valitse sivunimi, joka on eri kuin "$1".',
+'revmove-nullmove'             => 'Lähde- ja kohdesivu ovat samat. Palaa edelliselle sivulle ja valitse sivunimi, joka on eri kuin "[[$1]]".',
 'revmove-success-existing'     => '{{PLURAL:$1|Yksi versio|$1 versiota}} sivulta [[$2]] on siirretty olemassa olevalle sivulle [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Yksi versio|$1 versiota}} sivulta [[$2]] on siirretty juuri luodulle sivulle [[$3]].',
 

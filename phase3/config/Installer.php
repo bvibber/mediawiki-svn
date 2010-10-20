@@ -1249,7 +1249,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			if ( $conf->DBtype == 'mysql' && version_compare( $myver, "4.1.2", "ge" ) ) {
 				$res = $wgDatabase->query( 'SHOW ENGINES' );
 				$found = false;
-				while ( $row = $wgDatabase->fetchObject( $res ) ) {
+				foreach ( $res as $row ) {
 					if ( $row->Engine == $conf->DBengine && ( $row->Support == 'YES' || $row->Support == 'DEFAULT' ) ) {
 						$found = true;
 						break;
@@ -2106,8 +2106,9 @@ function aField( &$conf, $field, $text, $type = "text", $value = "", $onclick = 
 	$id = $field;
 	$nolabel = ($type == "radio") || ($type == "hidden");
 
-	if ($type == 'radio')
+	if ($type == 'radio') {
 		$id .= $radioCount++;
+	}
 
 	if( !$nolabel ) {
 		echo "<label class='column' for=\"$id\">$text</label>";

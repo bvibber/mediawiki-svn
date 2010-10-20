@@ -70,6 +70,7 @@ abstract class Installer {
 	protected static $dbTypes = array(
 		'mysql',
 		'postgres',
+		'oracle',
 		'sqlite',
 	);
 
@@ -445,7 +446,7 @@ abstract class Installer {
 		$this->showMessage( 'config-have-db', $wgLang->listToText( $goodNames ), count( $goodNames ) );
 
 		// Check for FTS3 full-text search module
-		$sqlite = $this->getDBInstaller( $name );
+		$sqlite = $this->getDBInstaller( 'sqlite' );
 		if ( $sqlite->isCompiled() ) {
 			$db = new DatabaseSqliteStandalone( ':memory:' );
 			$this->showMessage( $db->getFulltextSearchModule() == 'FTS3'
@@ -590,34 +591,14 @@ abstract class Installer {
 	 * Search for GNU diff3.
 	 */
 	public function envCheckDiff3() {
-		$paths = array_merge(
-			array(
-				"/usr/bin",
-				"/usr/local/bin",
-				"/opt/csw/bin",
-				"/usr/gnu/bin",
-				"/usr/sfw/bin"
-			),
-			explode( PATH_SEPARATOR, getenv( "PATH" ) )
-		);
-
 		$names = array( "gdiff3", "diff3", "diff3.exe" );
 		$versionInfo = array( '$1 --version 2>&1', 'diff3 (GNU diffutils)' );
 
-		$haveDiff3 = false;
+		$diff3 = $this->locateExecutableInDefaultPaths( $names, $versionInfo );
 
-		foreach ( $paths as $path ) {
-			$exe = $this->locateExecutable( $path, $names, $versionInfo );
-
-			if ($exe !== false) {
-				$this->setVar( 'wgDiff3', $exe );
-				$haveDiff3 = true;
-				break;
-			}
-		}
-
-		if ( $haveDiff3 ) {
-			$this->showMessage( 'config-diff3-good', $exe );
+		if ( $diff3 ) {
+			$this->showMessage( 'config-diff3-good', $diff3 );
+			$this->setVar( 'wgDiff3', $diff3 );
 		} else {
 			$this->setVar( 'wgDiff3', false );
 			$this->showMessage( 'config-diff3-bad' );
@@ -628,28 +609,19 @@ abstract class Installer {
 	 * Environment check for ImageMagick and GD.
 	 */
 	public function envCheckGraphics() {
-		$imcheck = array( "/usr/bin", "/opt/csw/bin", "/usr/local/bin", "/sw/bin", "/opt/local/bin" );
+		$names = array( wfIsWindows() ? 'convert.exe' : 'convert' );
+		$convert = $this->locateExecutableInDefaultPaths( $names, array( '$1 -version', 'ImageMagick' ) );
 
-		foreach( $imcheck as $dir ) {
-			$im = "$dir/convert";
-
-			wfSuppressWarnings();
-			$file_exists = file_exists( $im );
-			wfRestoreWarnings();
-
-			if( $file_exists ) {
-				$this->showMessage( 'config-imagemagick', $im );
-				$this->setVar( 'wgImageMagickConvertCommand', $im );
-				return true;
-			}
-		}
-
-		if ( function_exists( 'imagejpeg' ) ) {
+		if ( $convert ) {
+			$this->setVar( 'wgImageMagickConvertCommand', $convert );
+			$this->showMessage( 'config-imagemagick', $convert );
+			return true;
+		} elseif ( function_exists( 'imagejpeg' ) ) {
 			$this->showMessage( 'config-gd' );
 			return true;
+		} else {
+			$this->showMessage( 'no-scaling' );
 		}
-
-		$this->showMessage( 'no-scaling' );
 	}
 
 	/**
@@ -721,14 +693,8 @@ abstract class Installer {
 	 * TODO: document
 	 */
 	public function envCheckShellLocale() {
-		# Give up now if we're in safe mode or open_basedir.
-		# It's theoretically possible but tricky to work with.
-		if ( wfIniGetBool( "safe_mode" ) || ini_get( 'open_basedir' ) || !function_exists( 'exec' ) ) {
-			return true;
-		}
-
 		$os = php_uname( 's' );
-		$supported = array( 'Linux', 'SunOS', 'HP-UX' ); # Tested these
+		$supported = array( 'Linux', 'SunOS', 'HP-UX', 'Darwin' ); # Tested these
 
 		if ( !in_array( $os, $supported ) ) {
 			return true;
@@ -736,13 +702,13 @@ abstract class Installer {
 
 		# Get a list of available locales.
 		$lines = $ret = false;
-		exec( '/usr/bin/locale -a', $lines, $ret );
+		$lines = wfShellExec( '/usr/bin/locale -a', $ret );
 
 		if ( $ret ) {
 			return true;
 		}
 
-		$lines = wfArrayMap( 'trim', $lines );
+		$lines = wfArrayMap( 'trim', explode( "\n", $lines ) );
 		$candidatesByLocale = array();
 		$candidatesByLang = array();
 
@@ -885,6 +851,20 @@ abstract class Installer {
 		}
 	}
 
+	/**
+	 * Get an array of likely places we can find executables. Check a bunch
+	 * of known Unix-like defaults, as well as the PATH environment variable
+	 * (which should maybe make it work for Windows?)
+	 *
+	 * @return Array
+	 */
+	protected function getPossibleBinPaths() {
+		return array_merge(
+			array( '/usr/bin', '/usr/local/bin', '/opt/csw/bin',
+				'/usr/gnu/bin', '/usr/sfw/bin', '/sw/bin', '/opt/local/bin' ),
+			explode( PATH_SEPARATOR, getenv( 'PATH' ) )
+		);
+	}
 
 	/**
 	 * Search a path for any of the given executable names. Returns the
@@ -908,7 +888,7 @@ abstract class Installer {
 		}
 
 		foreach ( $names as $name ) {
-			$command = "$path/$name";
+			$command = $path . DIRECTORY_SEPARATOR . $name;
 
 			wfSuppressWarnings();
 			$file_exists = file_exists( $command );
@@ -919,16 +899,29 @@ abstract class Installer {
 					return $command;
 				}
 
+				if ( wfIsWindows() ) {
+					$command = "\"$command\"";
+				}
 				$file = str_replace( '$1', $command, $versionInfo[0] );
-
-				# Should maybe be wfShellExec( $file), but runs into a ulimit, see
-				# http://www.mediawiki.org/w/index.php?title=New-installer_issues&diff=prev&oldid=335456
-				if ( strstr( `$file`, $versionInfo[1]) !== false ) {
+				if ( strstr( wfShellExec( $file ), $versionInfo[1]) !== false ) {
 					return $command;
 				}
 			}
 		}
+		return false;
+	}
 
+	/**
+	 * Same as locateExecutable(), but checks in getPossibleBinPaths() by default
+	 * @see locateExecutable()
+	 */
+	protected function locateExecutableInDefaultPaths( $names, $versionInfo = false ) {
+		foreach( $this->getPossibleBinPaths() as $path ) {
+			$exe = $this->locateExecutable( $path, $names, $versionInfo );
+			if( $exe !== false ) {
+				return $exe;
+			}
+		}
 		return false;
 	}
 

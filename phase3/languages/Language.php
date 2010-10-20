@@ -1496,6 +1496,7 @@ class Language {
 	 * @return string
 	 */
 	function date( $ts, $adj = false, $format = true, $timecorrection = false ) {
+		$ts = wfTimestamp( TS_MW, $ts );
 		if ( $adj ) {
 			$ts = $this->userAdjust( $ts, $timecorrection );
 		}
@@ -1514,6 +1515,7 @@ class Language {
 	 * @return string
 	 */
 	function time( $ts, $adj = false, $format = true, $timecorrection = false ) {
+		$ts = wfTimestamp( TS_MW, $ts );
 		if ( $adj ) {
 			$ts = $this->userAdjust( $ts, $timecorrection );
 		}
@@ -2385,7 +2387,7 @@ class Language {
 		$tagType = 0; // 0-open, 1-close
 		$bracketState = 0; // 1-tag start, 2-tag name, 0-neither
 		$entityState = 0; // 0-not entity, 1-entity
-		$tag = $ret = $ch = '';
+		$tag = $ret = '';
 		$openTags = array();
 		$textLen = strlen( $text );
 		for ( $pos = 0; $pos < $textLen; ++$pos ) {

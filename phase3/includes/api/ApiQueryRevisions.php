@@ -38,6 +38,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiQueryRevisions extends ApiQueryBase {
 
+	private $diffto, $difftotext, $expandTemplates, $generateXML, $section,
+		$token;
+
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'rv' );
 	}
@@ -45,6 +48,8 @@ class ApiQueryRevisions extends ApiQueryBase {
 	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
 			$fld_comment = false, $fld_parsedcomment = false, $fld_user = false, $fld_userid = false,
 			$fld_content = false, $fld_tags = false;
+
+	private $tokenFunctions;
 
 	protected function getTokenFunctions() {
 		// tokenname => function
@@ -107,7 +112,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->dieUsage( 'titles, pageids or a generator was used to supply multiple pages, but the limit, startid, endid, dirNewer, user, excludeuser, start and end parameters may only be used on a single page.', 'multpages' );
 		}
 
-		$this->diffto = $this->difftotext = null;
 		if ( !is_null( $params['difftotext'] ) ) {
 			$this->difftotext = $params['difftotext'];
 		} elseif ( !is_null( $params['diffto'] ) ) {
@@ -376,12 +380,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 				if ( $this->fld_user ) {
 					$vals['user'] = $revision->getUserText();
 				}
-				if ( $this->fld_userid ) {
-					$user = User::newFromName( $revision->getUserText() );
-					$vals['userid'] = $user->getId();
-				}
-				if ( !$revision->getUser() ) {
+				$userid = $revision->getUser();
+				if ( !$userid ) {
 					$vals['anon'] = '';
+				}
+
+				if ( $this->fld_userid ) {
+					$vals['userid'] = $userid;
 				}
 			}
 		}

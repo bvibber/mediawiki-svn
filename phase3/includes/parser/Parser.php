@@ -494,7 +494,7 @@ class Parser {
 	 * @private
 	 * @static
 	 */
-	static function getRandomString() {
+	static private function getRandomString() {
 		return dechex( mt_rand( 0, 0x7fffffff ) ) . dechex( mt_rand( 0, 0x7fffffff ) );
 	}
 
@@ -538,7 +538,7 @@ class Parser {
 	 *
 	 * @return Title object
 	 */
-	function &getTitle() {
+	function getTitle() {
 		return $this->mTitle;
 	}
 
@@ -647,7 +647,7 @@ class Parser {
 	 *
 	 * @param $elements list of element names. Comments are always extracted.
 	 * @param $text Source text string.
-	 * @param $matches Out parameter, Array: extarcted tags
+	 * @param $matches Out parameter, Array: extracted tags
 	 * @param $uniq_prefix
 	 * @return String: stripped text
 	 *
@@ -1129,7 +1129,6 @@ class Parser {
 			return $this->makeFreeExternalLink( $m[0] );
 		} elseif ( isset( $m[4] ) && $m[4] !== '' ) {
 			# RFC or PMID
-			$CssClass = '';
 			if ( substr( $m[0], 0, 3 ) === 'RFC' ) {
 				$keyword = 'RFC';
 				$urlmsg = 'rfcurl';
@@ -3755,7 +3754,6 @@ class Parser {
 		$head = array();
 		$sublevelCount = array();
 		$levelCount = array();
-		$toclevel = 0;
 		$level = 0;
 		$prevlevel = 0;
 		$toclevel = 0;
@@ -3769,6 +3767,7 @@ class Parser {
 		$node = $root->getFirstChild();
 		$byteOffset = 0;
 		$tocraw = array();
+		$refers = array();
 
 		foreach ( $matches[3] as $headline ) {
 			$isTemplate = false;
@@ -3943,8 +3942,9 @@ class Parser {
 			while ( $node && !$isTemplate ) {
 				if ( $node->getName() === 'h' ) {
 					$bits = $node->splitHeading();
-					if ( $bits['i'] == $sectionIndex )
+					if ( $bits['i'] == $sectionIndex ) {
 						break;
+					}
 				}
 				$byteOffset += mb_strlen( $this->mStripState->unstripBoth(
 					$frame->expand( $node, PPFrame::RECOVER_ORIG ) ) );
@@ -4036,7 +4036,7 @@ class Parser {
 	 * conversion, substitting signatures, {{subst:}} templates, etc.
 	 *
 	 * @param $text String: the text to transform
-	 * @param &$title Title: the Title object for the current article
+	 * @param $title Title: the Title object for the current article
 	 * @param $user User: the User object describing the current user
 	 * @param $options ParserOptions: parsing options
 	 * @param $clearState Boolean: whether to clear the parser state first
@@ -5258,7 +5258,7 @@ class Parser {
 	 */
 	function unserialiseHalfParsedText( $data, $intPrefix = null ) {
 		if ( !$intPrefix ) {
-			$intPrefix = $this->getRandomString();
+			$intPrefix = self::getRandomString();
 		}
 
 		# First, extract the strip state.

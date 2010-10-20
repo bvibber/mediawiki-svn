@@ -35,6 +35,7 @@
  * @author OsamaK
  * @author Ouda
  * @author Oxydo
+ * @author Rami.Awad
  * @author Riadismet
  * @author Samer
  * @author Sami Lab
@@ -660,6 +661,7 @@ $messages = array(
 من فضلك انتظر قليلا قبل أن تحاول الوصول إلى هذه الصفحة مجددا.
 
 $1',
+'pool-errorunknown' => 'خطأ غير معروف',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'عن {{SITENAME}}',
@@ -1333,7 +1335,7 @@ $1",
 'revmove-norevisions-title'    => 'مراجعة مستهدفة غير صالحة',
 'revmove-norevisions'          => 'لم تحدد مراجعة هدفًا أو أكثر لتنفيذ الدالة أو أن المراجعة المحددة غير موجودة.',
 'revmove-nullmove-title'       => 'عنوان سيء',
-'revmove-nullmove'             => 'الصفحة المصدر والصفحة الهدف متطابقتان. من فضلك انقر "للخلف" وأدخل اسم صفحة غير "$1".',
+'revmove-nullmove'             => 'الصفحة المصدر والصفحة الهدف متطابقتان. من فضلك انقر "للخلف" وأدخل اسم صفحة غير "[[$1]]".',
 'revmove-success-existing'     => 'تم نقل {{PLURAL:$1||مراجعة واحدة|مراجعتين|$1 مراجعات|$1 مراجعة}} من [[$2]] إلى الصفحة الموجودة [[$3]]',
 'revmove-success-created'      => 'تم نقل {{PLURAL:$1||مراجعة واحدة|مراجعتين|$1 مراجعات|$1 مراجعة}} من [[$2]] إلى الصفحة المنشأة حديثًا [[$3]]',
 

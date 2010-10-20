@@ -532,13 +532,23 @@ abstract class ApiBase {
 		array_shift( $required );
 
 		$intersection = array_intersect( array_keys( array_filter( $params,
-				create_function( '$x', 'return !is_null($x) && $x !== false;' )
-			) ), $required );
+				array( $this, "parameterNotEmpty" ) ) ), $required );
+
 		if ( count( $intersection ) > 1 ) {
 			$this->dieUsage( 'The parameters ' . implode( ', ', $intersection ) . ' can not be used together', 'invalidparammix' );
 		} elseif ( count( $intersection ) == 0 ) {
 			$this->dieUsage( 'One of the parameters ' . implode( ', ', $required ) . ' is required', 'missingparam' );
 		}
+	}
+
+	/**
+	 * Callback function used in requireOnlyOneParameter to check whether reequired parameters are set
+	 *
+	 * @param  $x object Parameter to check is not null/false
+	 * @return bool
+	 */
+	private function parameterNotEmpty( $x ) {
+		return !is_null( $x ) && $x !== false;
 	}
 
 	/**
@@ -998,7 +1008,6 @@ abstract class ApiBase {
 		'createonly-exists' => array( 'code' => 'articleexists', 'info' => "The article you tried to create has been created already" ),
 		'nocreate-missing' => array( 'code' => 'missingtitle', 'info' => "The article you tried to edit doesn't exist" ),
 		'nosuchrcid' => array( 'code' => 'nosuchrcid', 'info' => "There is no change with rcid ``\$1''" ),
-		'cantpurge' => array( 'code' => 'cantpurge', 'info' => "Only users with the 'purge' right can purge pages via the API" ),
 		'protect-invalidaction' => array( 'code' => 'protect-invalidaction', 'info' => "Invalid protection type ``\$1''" ),
 		'protect-invalidlevel' => array( 'code' => 'protect-invalidlevel', 'info' => "Invalid protection level ``\$1''" ),
 		'toofewexpiries' => array( 'code' => 'toofewexpiries', 'info' => "\$1 expiry timestamps were provided where \$2 were needed" ),

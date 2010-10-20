@@ -499,7 +499,8 @@ function wfLogProfilingData() {
 		$forward = "\t(proxied via {$_SERVER['REMOTE_ADDR']}{$forward})";
 	}
 	// Don't unstub $wgUser at this late stage just for statistics purposes
-	if( StubObject::isRealObject( $wgUser ) && $wgUser->isAnon() ) {
+	// FIXME: We can detect some anons even if it is not loaded. See User::getId()
+	if( $wgUser->mDataLoaded && $wgUser->isAnon() ) {
 		$forward .= ' anon';
 	}
 	$log = sprintf( "%s\t%04.3f\t%s\n",
@@ -2278,7 +2279,8 @@ function wfIncrStats( $key ) {
 			);
 		}
 		$statline = "stats/{$wgDBname} - 1 1 1 1 1 {$key}\n";
-		@socket_sendto(
+		wfSuppressWarnings();
+		socket_sendto(
 			$socket,
 			$statline,
 			strlen( $statline ),
@@ -2286,6 +2288,7 @@ function wfIncrStats( $key ) {
 			$wgUDPProfilerHost,
 			$wgUDPProfilerPort
 		);
+		wfRestoreWarnings();
 	} elseif( $wgStatsMethod == 'cache' ) {
 		global $wgMemc;
 		$key = wfMemcKey( 'stats', $key );
@@ -3268,7 +3271,9 @@ function wfWarn( $msg, $callerOffset = 1, $level = E_USER_NOTICE ) {
 		if( isset( $callerfunc['class'] ) ) {
 			$func .= $callerfunc['class'] . '::';
 		}
-		$func .= @$callerfunc['function'];
+		if( isset( $callerfunc['function'] ) ) {
+			$func .= $callerfunc['function'];
+		}
 		$msg .= " [Called from $func in $file]";
 	}
 
@@ -3299,7 +3304,9 @@ function wfWaitForSlaves( $maxLag, $wiki = false ) {
 		$lb = wfGetLB( $wiki );
 		list( $host, $lag ) = $lb->getMaxLag( $wiki );
 		while( $lag > $maxLag ) {
-			$name = @gethostbyaddr( $host );
+			wfSuppressWarnings();
+			$name = gethostbyaddr( $host );
+			wfRestoreWarnings();
 			if( $name !== false ) {
 				$host = $name;
 			}

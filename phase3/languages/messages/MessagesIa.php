@@ -366,7 +366,7 @@ Per favor attende un momento ante que tu essaya acceder novemente a iste pagina.
 
 $1',
 'pool-timeout'      => 'Tempore limite excedite attendente le serratura',
-'pool-queuefull'    => 'Le cauda de ressources commun es plen',
+'pool-queuefull'    => 'Le cauda commun de processos es plen',
 'pool-errorunknown' => 'Error incognite',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
@@ -491,7 +491,7 @@ Per favor reporta isto a un [[Special:ListUsers/sysop|administrator]], faciente 
 'cannotdelete'         => 'Le pagina o file "$1" non poteva esser delite.
 Es possibile que un altere persona lo ha ja delite.',
 'badtitle'             => 'Titulo invalide',
-'badtitletext'         => 'Le titulo de pagina requestate esseva invalide, vacue, o un titulo interlingual o interwiki incorrectemente ligate.
+'badtitletext'         => 'Le titulo de pagina requestate es invalide, vacue, o un titulo interlingual o interwiki incorrectemente ligate.
 Es possibile que illo contine un o plure characteres que non pote esser usate in titulos.',
 'perfcached'           => 'Le sequente datos se recuperava del cache e possibilemente non es actual.',
 'perfcachedts'         => 'Le sequente datos se recuperava del cache. Ultime actualisation: le $1.',
@@ -1049,7 +1049,7 @@ Vide le [[Special:IPBlockList|lista de blocadas IP]] pro le lista de bannimentos
 'revmove-norevisions-title'    => 'Le version de destination es invalide',
 'revmove-norevisions'          => 'Tu non ha specificate un o plus versiones de destination pro executar iste function o le version specificate non existe.',
 'revmove-nullmove-title'       => 'Titulo invalide',
-'revmove-nullmove'             => 'Le paginas de origine e de destination es identic. Per favor preme "retro" e entra un nomine de pagina differente de "$1".',
+'revmove-nullmove'             => 'Le paginas de origine e de destination es identic. Per favor preme "retro" e entra un nomine de pagina differente de "[[$1]]".',
 'revmove-success-existing'     => '{{PLURAL:$1|Un version|$1 versiones}} de [[$2]] ha essite displaciate al pagina existente [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Un version|$1 versiones}} de [[$2]] ha essite displaciate al nove pagina [[$3]].',
 
@@ -1922,7 +1922,7 @@ Pro restringer le presentation, selige un typo de registro, le nomine de usator 
 'allpagesnext'      => 'Sequente',
 'allpagessubmit'    => 'Ir',
 'allpagesprefix'    => 'Monstrar le paginas con prefixo:',
-'allpagesbadtitle'  => 'Le titulo de pagina date esseva invalide o habeva un prefixo interlingual o interwiki.
+'allpagesbadtitle'  => 'Le titulo de pagina date es invalide o ha un prefixo interlingual o interwiki.
 Es possibile que illo contine un o plus characteres que non pote esser usate in titulos.',
 'allpages-bad-ns'   => '{{SITENAME}} non ha un spatio e nomines "$1".',
 
@@ -2227,7 +2227,7 @@ Tu pote cambiar le nivello de protection de iste pagina, ma isto non cambiara le
 # Undelete
 'undelete'                     => 'Vider paginas delite',
 'undeletepage'                 => 'Vider e restaurar paginas delite',
-'undeletepagetitle'            => "'''Lo sequente consiste de versiones delite de [[:$1|$1]]'''.",
+'undeletepagetitle'            => "'''Le lista sequente contine le versiones delite de [[:$1|$1]]'''.",
 'viewdeletedpage'              => 'Vider paginas delite',
 'undeletepagetext'             => 'Le {{PLURAL:$1|pagina|paginas}} sequente ha essite delite, sed es ancora in le archivo e pote esser restaurate.
 Le archivo pote esser vacuate periodicamente.',

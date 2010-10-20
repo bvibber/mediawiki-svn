@@ -98,7 +98,6 @@ class SpecialProtectedpages extends SpecialPage {
 			$description_items[] = wfMsg( 'protect-summary-cascade' );
 		}
 
-		$expiry_description = '';
 		$stxt = '';
 
 		if( $row->pr_expiry != 'infinity' && strlen($row->pr_expiry) ) {
@@ -309,7 +308,7 @@ class ProtectedPagesPager extends AlphabeticPager {
 	function getStartBody() {
 		# Do a link batch query
 		$lb = new LinkBatch;
-		while( $row = $this->mResult->fetchObject() ) {
+		foreach ( $this->mResult as $row ) {
 			$lb->add( $row->page_namespace, $row->page_title );
 		}
 		$lb->execute();

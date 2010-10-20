@@ -73,6 +73,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   DatabaseUpdater::addExtensionUpdate().
 * Removed $wgServerName. It doesn't need to be set anymore and is no longer 
   available as input for other configuration items, either.
+* Remove $wgRemoteUploads. It was not well supported and superseded by
+  $wgUploadNavigationUrl.
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -177,6 +179,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 24343) New parser hook {{linkurl:}}, same as {{localurl:}} with fragment
 * TS_ISO_8691_BASIC was added as a time format, which is used by ResourceLoader
   for versioning
+* Maintenance scripts get a --memory-limit option to override defaults (which
+  is usually to set it to -1 to disable the limit)
+* (bug 25397) Allow uploading (not displaying) of WebP images, disabled by default
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -297,7 +302,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   a fatal error
 * (bug 23465) Don't ignore the predefined destination filename on
   Special:Upload after following a red link
-* Correct the escaping of the autosummary URI fragments.
 * (bug 23642) Recognize mime types of MS OpenXML documents.
 * (bug 22784) Normalise underscores and spaces in autocomments.
 * (bug 19910) Headings of the form ===+\s+ are now displayed as valid headings
@@ -372,7 +376,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23548) Allow access of another users watchlist through watchlistraw
   using token and username.
 * (bug 23524) Api Modules as followup to bug 14473 (Add iwlinks table to
-  track inline interwiki link usage.
+  track inline interwiki link usage).
 * Add pltitles and tltemplates to prop=links and prop=templates respectively,
   similar to prop=categories's clcategorie
 * (bug 23834) Invalid "thumbwidth" and "thumbheight" in "imageinfo" query when
@@ -430,6 +434,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 25303) Fix API parameter integer validation to actually enforce validation
   on the input values in addition to giving a warning. Also add flag to enforce (die)
   if integer out of range (breaking change!)
+* (bug 24792) API help for action=purge sometimes wrongly stated whether a
+  POST request was needed due to cache pollution
 
 === Languages updated in 1.17 ===
 

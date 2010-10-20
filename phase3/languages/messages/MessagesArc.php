@@ -10,6 +10,7 @@
  * @author 334a
  * @author A2raya07
  * @author Basharh
+ * @author Michaelovic
  * @author The Thadman
  */
 
@@ -253,6 +254,7 @@ $messages = array(
 'redirectedfrom'    => '(ܨܝܒ ܡܢ $1)',
 'redirectpagesub'   => 'ܦܐܬܐ ܕܨܘܝܒܐ',
 'lastmodifiedat'    => 'ܫܘܚܠܦܐ ܐܚܪܝܐ ܕܦܐܬܐ ܗܕܐ ܗܘܐ ܒܣܝܩܘܡ $1, $2.',
+'viewcount'         => 'ܐܬܓܠܚܬ ܗܕܐ ܦܐܬܐ {{PLURAL:$1|ܙܒܢܬܐ ܚܕ|$1 ܙܒܢܝ̈ܢ}}.',
 'protectedpage'     => 'ܦܐܬܐ ܢܛܝܪܬܐ',
 'jumpto'            => 'ܫܘܪ ܠ:',
 'jumptonavigation'  => 'ܐܠܦܪܘܬܐ',
@@ -274,6 +276,8 @@ $messages = array(
 'mainpage-description' => 'ܦܐܬܐ ܪܫܝܬܐ',
 'portal'               => 'ܬܪܥܐ ܕܟܢܫܐ',
 'portal-url'           => 'Project:ܬܪܥܐ ܕܟܢܫܐ',
+'privacy'              => 'ܦܘܪܢܣܐ ܕܕܝܠܢܝܘܬܐ',
+'privacypage'          => 'Project:ܦܘܪܢܣܐ ܕܕܝܠܢܝܘܬܐ',
 
 'badaccess' => 'ܦܘܕܐ ܒܦܣܣܐ',
 
@@ -742,6 +746,7 @@ $messages = array(
 
 # Special:ListFiles
 'imgfile'         => 'ܠܦܦܐ',
+'listfiles'       => 'ܡܟܬܒܘܬܐ ܕܠܦܦ̈ܐ',
 'listfiles_date'  => 'ܣܝܩܘܡܐ',
 'listfiles_name'  => 'ܫܡܐ',
 'listfiles_user'  => 'ܡܦܠܚܢܐ',
@@ -775,13 +780,14 @@ $messages = array(
 'filedelete-edit-reasonlist'  => 'ܫܚܠܦ ܥܠܠܬ̈ܐ ܕܫܝܦܐ',
 
 # MIME search
-'download' => 'ܢܚܬ',
+'mimesearch' => 'MIME ܒܨܝܐ',
+'download'   => 'ܢܚܬ',
 
 # Unwatched pages
 'unwatchedpages' => 'ܦܐܬܬ̈ܐ ܠܐ ܪ̈ܗܝܬܐ',
 
 # List redirects
-'listredirects' => 'ܒܪܒܝܢ ܕܨܘܝܒ̈ܐ',
+'listredirects' => 'ܡܟܬܒܘܬܐ ܕܨܘܝܒ̈ܐ',
 
 # Unused templates
 'unusedtemplates'    => 'ܩܠܒ̈ܐ ܠܐ ܦܠܝܚ̈ܐ',
@@ -832,13 +838,14 @@ $messages = array(
 'wantedpages'             => 'ܦܐܬܬ̈ܐ ܒܥܝܬ̈ܐ',
 'wantedfiles'             => 'ܠܦܦ̈ܐ ܒܥܝ̈ܐ',
 'wantedtemplates'         => 'ܩܠܒ̈ܐ ܒܥܝ̈ܐ',
+'prefixindex'             => 'ܟܠ ܦܐܬܬ̈ܐ ܥܡ ܫܪܘܝܐ',
 'shortpages'              => 'ܦܐܬܬ̈ܐ ܟܪ̈ܝܬܐ',
 'longpages'               => 'ܦܐܬܬ̈ܐ ܐܪ̈ܝܟܬܐ',
 'deadendpages'            => 'ܦܐܬܬ̈ܐ ܥܡ ܚܪܬܐ ܡܝܬܬܐ',
 'protectedpages'          => 'ܦܐܬܬ̈ܐ ܢܛܝܪ̈ܬܐ',
 'protectedtitles'         => 'ܟܘܢܝ̈ܐ ܢܛܝܪ̈ܐ',
 'protectedtitlestext'     => '↓ ܟܘܢܝ̈ܐ ܗܠܝܢ ܢܛܝܪ̈ܐ ܐܢܘܢ ܠܘܩܒܠ ܒܪܝܐ',
-'listusers'               => 'ܒܪܒܝܢ ܕܗܕ̈ܡܐ',
+'listusers'               => 'ܡܟܬܒܘܬܐ ܕܗܕ̈ܡܐ',
 'listusers-editsonly'     => 'ܚܘܝ ܡܦܠܚܢ̈ܐ ܥܡ ܫܘܚܠܦ̈ܐ ܒܠܚܘܕ',
 'listusers-creationsort'  => 'ܛܟܣ ܐܝܟ ܣܝܩܘܡܐ ܕܒܪܝܐ',
 'usereditcount'           => '$1 {{PLURAL:$1|ܫܘܚܠܦܐ|ܫܘܚܠܦ̈ܐ}}',
@@ -902,6 +909,7 @@ $messages = array(
 'listusers-blocked' => '(ܚܪܝܡܐ)',
 
 # Special:ActiveUsers
+'activeusers'       => 'ܡܟܬܒܘܬܐ ܕܗܕ̈ܡܐ ܟܫܝܪ̈ܐ',
 'activeusers-count' => '$1 {{PLURAL:$1|ܫܘܚܠܦܐ ܚܕܬܐ|ܫܘܚܠܦ̈ܐ ܚܕ̈ܬܐ}} ܒ {{PLURAL:$3|ܝܘܡܐ ܐܚܪܝܐ|$3 ܝܘܡܬ̈ܐ ܐܚܪ̈ܝܬܐ}}',
 'activeusers-from'  => 'ܚܘܝ ܡܦܠܚܢ̈ܐ ܕܫܪܐ ܥܡ:',
 
@@ -915,7 +923,7 @@ $messages = array(
 'listgrouprights-group'                => 'ܟܢܘܫܬܐ',
 'listgrouprights-rights'               => 'ܙܕ̈ܩܐ',
 'listgrouprights-helppage'             => 'Help:ܙܕ̈ܩܐ ܕܟܢܘܫܬܐ',
-'listgrouprights-members'              => '(ܒܪܒܝܢ ܕܗܕ̈ܡܐ)',
+'listgrouprights-members'              => '(ܡܟܬܒܘܬܐ ܕܗܕ̈ܡܐ)',
 'listgrouprights-addgroup'             => 'ܐܘܣܦ {{PLURAL:$2|ܟܢܘܫܬܐ|ܟܢܘܫܬ̈ܐ}}: $1',
 'listgrouprights-removegroup'          => 'ܠܚܝ {{PLURAL:$2|ܟܢܘܫܬܐ|ܟܢܘܫܬ̈ܐ}}: $1',
 'listgrouprights-addgroup-all'         => 'ܐܘܣܦ ܟܠ ܟܢܘܫܬ̈ܐ',
@@ -1046,7 +1054,7 @@ $messages = array(
 'sp-contributions-submit'        => 'ܒܨܝ',
 
 # What links here
-'whatlinkshere'            => 'ܡܐ ܐܣܪ ܠܟܐ',
+'whatlinkshere'            => 'ܡܐ ܐܣܪ ܠܗܪܟܐ',
 'whatlinkshere-title'      => 'ܦܐܬܬ̈ܐ ܕܐܣܝܪܝܢ ܥܡ "$1"',
 'whatlinkshere-page'       => 'ܦܐܬܐ:',
 'linkshere'                => "ܦܐܬܬ̈ܐ ܗܠܝܢ ܐܣܝܪܝܢ ܥܡ '''[[:$1]]''':",
@@ -1161,12 +1169,6 @@ Do you want to change the settings?',
 # Import log
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|ܬܢܝܬܐ |ܬܢܝܬ̈ܐ}}',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|ܬܢܝܬܐ |ܬܢܝܬ̈ܐ}} ܡܢ $2',
-
-# Tooltip help for the actions
-'tooltip-pt-userpage' => '',
-'tooltip-pt-mytalk'   => '',
-'tooltip-search'      => 'Search {{SITENAME}}',
-'tooltip-t-print'     => 'Printable version of this page',
 
 # Attribution
 'anonymous'   => '{{PLURAL:$1|ܡܦܠܚܢܐ ܠܐ ܝܕܝܥܐ|ܡܦܠܚܢ̈ܐ ܠܐ ܝܕ̈ܝܥܐ}} ܕ {{SITENAME}}',

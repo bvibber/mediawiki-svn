@@ -201,7 +201,6 @@ class IPUnblockForm extends SpecialPage {
 			}
 			$ip = $block->getRedactedName();
 		} else {
-			$block = new Block();
 			$ip = trim( $ip );
 			if ( substr( $ip, 0, 1 ) == "#" ) {
 				$id = substr( $ip, 1 );
@@ -484,7 +483,6 @@ class IPUnblockForm extends SpecialPage {
 
 		$line = wfMsgReplaceArgs( $msg['blocklistline'], array( $formattedTime, $blocker, $target, $properties ) );
 
-		$unblocklink = '';
 		$changeblocklink = '';
 		$toolLinks = '';
 		if ( $wgUser->isAllowed( 'block' ) ) {
@@ -544,7 +542,7 @@ class IPBlocklistPager extends ReverseChronologicalPager {
 		# Faster way
 		# Usernames and titles are in fact related by a simple substitution of space -> underscore
 		# The last few lines of Title::secureAndSplit() tell the story.
-		while ( $row = $this->mResult->fetchObject() ) {
+		foreach ( $this->mResult as $row ) {
 			$name = str_replace( ' ', '_', $row->ipb_by_text );
 			$lb->add( NS_USER, $name );
 			$lb->add( NS_USER_TALK, $name );

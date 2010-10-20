@@ -238,7 +238,7 @@ class PostgresUpdater extends DatabaseUpdater {
 		}
 
 		# Add missing extension fields
-		foreach ( $wgExtPGNewFields as $nc ) {
+		foreach ( $wgExtPGNewFields as $fieldRecord ) {
 			$updates[] = array(
 					'addPgField', $fieldRecord[0], $fieldRecord[1],
 					$fieldRecord[2]
@@ -254,7 +254,7 @@ class PostgresUpdater extends DatabaseUpdater {
 		}
 
 		# Add missing extension indexes
-		foreach ( $wgExtNewIndexes as $ni ) {
+		foreach ( $wgExtNewIndexes as $fieldRecord ) {
 			$updates[] = array(
 					'addPgExtIndex', $fieldRecord[0], $fieldRecord[1],
 					$fieldRecord[2]
@@ -280,7 +280,7 @@ END;
 		}
 
 		$cols = array();
-		while ( $r = $this->db->fetchRow( $res ) ) {
+		foreach ( $res as $r ) {
 			$cols[] = array(
 					"name" => $r[0],
 					"ord" => $r[1],

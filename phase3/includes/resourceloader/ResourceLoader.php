@@ -23,29 +23,35 @@
 defined( 'MEDIAWIKI' ) || die( 1 );
 
 /**
- * Dynamic JavaScript and CSS resource loading system
+ * Dynamic JavaScript and CSS resource loading system.
+ *
+ * Most of the documention is on the MediaWiki documentation wiki starting at:
+ *    http://www.mediawiki.org/wiki/ResourceLoader
  */
 class ResourceLoader {
 
 	/* Protected Static Members */
 
-	// @var array list of module name/ResourceLoaderModule object pairs
+	/** @var {array} List of module name/ResourceLoaderModule object pairs */
 	protected $modules = array();
 
 	/* Protected Methods */
-	
+
 	/**
-	 * Loads information stored in the database about modules
+	 * Loads information stored in the database about modules.
+	 * 
+	 * This method grabs modules dependencies from the database and updates modules objects.
 	 * 
 	 * This is not inside the module code because it's so much more performant to request all of the information at once
-	 * than it is to have each module requests it's own information.
+	 * than it is to have each module requests its own information. This sacrifice of modularity yields a profound
+	 * performance improvement.
 	 * 
-	 * @param $modules array list of module names to preload information for
-	 * @param $context ResourceLoaderContext context to load the information within
+	 * @param {array} $modules List of module names to preload information for
+	 * @param {ResourceLoaderContext} $context Context to load the information within
 	 */
 	protected function preloadModuleInfo( array $modules, ResourceLoaderContext $context ) {
 		if ( !count( $modules ) ) {
-			return; # or Database*::select() will explode
+			return; // or else Database*::select() will explode, plus it's cheaper!
 		}
 		$dbr = wfGetDb( DB_SLAVE );
 		$skin = $context->getSkin();
@@ -57,7 +63,8 @@ class ResourceLoader {
 				'md_skin' => $context->getSkin()
 			), __METHOD__
 		);
-		
+
+		// Set modules' dependecies		
 		$modulesWithDeps = array();
 		foreach ( $res as $row ) {
 			$this->modules[$row->md_module]->setFileDependencies( $skin,
@@ -65,7 +72,8 @@ class ResourceLoader {
 			);
 			$modulesWithDeps[] = $row->md_module;
 		}
-		// Register the absence of a dependencies row too
+
+		// Register the absence of a dependency row too
 		foreach ( array_diff( $modules, $modulesWithDeps ) as $name ) {
 			$this->modules[$name]->setFileDependencies( $skin, array() );
 		}
@@ -96,33 +104,38 @@ class ResourceLoader {
 	}
 
 	/**
-	 * Runs text through a filter, caching the filtered result for future calls
-	 *
-	 * @param $filter String: name of filter to run
-	 * @param $data String: text to filter, such as JavaScript or CSS text
-	 * @param $file String: path to file being filtered, (optional: only required for CSS to resolve paths)
-	 * @return String: filtered data
+	 * Runs JavaScript or CSS data through a filter, caching the filtered result for future calls.
+	 * 
+	 * Available filters are:
+	 *  - minify-js \see JSMin::minify
+	 *  - minify-css \see CSSMin::minify
+	 *  - flip-css \see CSSJanus::transform
+	 * 
+	 * If $data is empty, only contains whitespace or the filter was unknown, $data is returned unmodified.
+	 * 
+	 * @param {string} $filter Name of filter to run
+	 * @param {string} $data Text to filter, such as JavaScript or CSS text
+	 * @return {string} Filtered data
 	 */
 	protected function filter( $filter, $data ) {
 		global $wgMemc;
+		
 		wfProfileIn( __METHOD__ );
 
-		// For empty or whitespace-only things, don't do any processing
-		if ( trim( $data ) === '' ) {
+		// For empty/whitespace-only data or for unknown filters, don't perform any caching or processing
+		if ( trim( $data ) === '' || !in_array( $filter, array( 'minify-js', 'minify-css', 'flip-css' ) ) ) {
 			wfProfileOut( __METHOD__ );
 			return $data;
 		}
 
-		// Try memcached
+		// Try for Memcached hit
 		$key = wfMemcKey( 'resourceloader', 'filter', $filter, md5( $data ) );
-		$cached = $wgMemc->get( $key );
-
-		if ( $cached !== false && $cached !== null ) {
+		if ( is_string( $cache = $wgMemc->get( $key ) ) ) {
 			wfProfileOut( __METHOD__ );
-			return $cached;
+			return $cache;
 		}
 
-		// Run the filter
+		// Run the filter - we've already verified one of these will work
 		try {
 			switch ( $filter ) {
 				case 'minify-js':
@@ -134,26 +147,23 @@ class ResourceLoader {
 				case 'flip-css':
 					$result = CSSJanus::transform( $data, true, false );
 					break;
-				default:
-					// Don't cache anything, just pass right through
-					wfProfileOut( __METHOD__ );
-					return $data;
 			}
 		} catch ( Exception $exception ) {
-			throw new MWException( 'Filter threw an exception: ' . $exception->getMessage() );
+			throw new MWException( 'ResourceLoader filter error. Exception was thrown: ' . $exception->getMessage() );
 		}
 
-		// Save to memcached
+		// Save filtered text to Memcached
 		$wgMemc->set( $key, $result );
 
 		wfProfileOut( __METHOD__ );
+		
 		return $result;
 	}
 
 	/* Methods */
 
 	/**
-	 * Registers core modules and runs registration hooks
+	 * Registers core modules and runs registration hooks.
 	 */
 	public function __construct() {
 		global $IP;
@@ -170,23 +180,17 @@ class ResourceLoader {
 
 	/**
 	 * Registers a module with the ResourceLoader system.
-	 *
-	 * Note that registering the same object under multiple names is not supported 
-	 * and may silently fail in all kinds of interesting ways.
-	 *
-	 * @param $name Mixed: string of name of module or array of name/object pairs
-	 * @param $object ResourceLoaderModule: module object (optional when using 
-	 *    multiple-registration calling style)
-	 * @return Boolean: false if there were any errors, in which case one or more 
-	 *    modules were not registered
-	 *
-	 * @todo We need much more clever error reporting, not just in detailing what 
-	 *    happened, but in bringing errors to the client in a way that they can 
-	 *    easily see them if they want to, such as by using FireBug
+	 * 
+	 * @param {mixed} $name string of name of module or array of name/object pairs
+	 * @param {ResourceLoaderModule} $object module object (optional when using multiple-registration calling style)
+	 * @throws {MWException} If a duplicate module registration is attempted
+	 * @throws {MWException} If something other than a ResourceLoaderModule is being registered
+	 * @return {bool} false if there were any errors, in which case one or more modules were not registered
 	 */
 	public function register( $name, ResourceLoaderModule $object = null ) {
+
 		wfProfileIn( __METHOD__ );
-		
+
 		// Allow multiple modules to be registered in one call
 		if ( is_array( $name ) && !isset( $object ) ) {
 			foreach ( $name as $key => $value ) {
@@ -194,20 +198,23 @@ class ResourceLoader {
 			}
 
 			wfProfileOut( __METHOD__ );
+
 			return;
 		}
 
 		// Disallow duplicate registrations
 		if ( isset( $this->modules[$name] ) ) {
 			// A module has already been registered by this name
-			throw new MWException( 'Another module has already been registered as ' . $name );
+			throw new MWException(
+				'ResourceLoader duplicate registration error. Another module has already been registered as ' . $name
+			);
 		}
-		
+
 		// Validate the input (type hinting lets null through)
 		if ( !( $object instanceof ResourceLoaderModule ) ) {
-			throw new MWException( 'Invalid ResourceLoader module error. Instances of ResourceLoaderModule expected.' );
+			throw new MWException( 'ResourceLoader invalid module error. Instances of ResourceLoaderModule expected.' );
 		}
-		
+
 		// Attach module
 		$this->modules[$name] = $object;
 		$object->setName( $name );
@@ -218,36 +225,35 @@ class ResourceLoader {
 	/**
 	 * Gets a map of all modules and their options
 	 *
-	 * @return Array: array( modulename => ResourceLoaderModule )
+	 * @return {array} array( modulename => ResourceLoaderModule )
 	 */
 	public function getModules() {
 		return $this->modules;
 	}
 
 	/**
-	 * Get the ResourceLoaderModule object for a given module name
+	 * Get the ResourceLoaderModule object for a given module name.
 	 *
-	 * @param $name String: module name
-	 * @return mixed ResourceLoaderModule or null if not registered
+	 * @param {string} $name module name
+	 * @return {mixed} ResourceLoaderModule if module has been registered, null otherwise
 	 */
 	public function getModule( $name ) {
 		return isset( $this->modules[$name] ) ? $this->modules[$name] : null;
 	}
 
 	/**
-	 * Outputs a response to a resource load-request, including a content-type header
+	 * Outputs a response to a resource load-request, including a content-type header.
 	 *
-	 * @param $context ResourceLoaderContext object
+	 * @param {ResourceLoaderContext} $context Context in which a response should be formed
 	 */
 	public function respond( ResourceLoaderContext $context ) {
 		global $wgResourceLoaderMaxage, $wgCacheEpoch;
 
 		wfProfileIn( __METHOD__ );
-		
+
 		// Split requested modules into two groups, modules and missing
 		$modules = array();
 		$missing = array();
-		
 		foreach ( $context->getModules() as $name ) {
 			if ( isset( $this->modules[$name] ) ) {
 				$modules[$name] = $this->modules[$name];
@@ -256,25 +262,23 @@ class ResourceLoader {
 			}
 		}
 
-		// If a version wasn't specified we need a shorter expiry time for updates to 
-		// propagate to clients quickly
+		// If a version wasn't specified we need a shorter expiry time for updates to propagate to clients quickly
 		if ( is_null( $context->getVersion() ) ) {
-			$maxage = $wgResourceLoaderMaxage['unversioned']['client'];
+			$maxage  = $wgResourceLoaderMaxage['unversioned']['client'];
 			$smaxage = $wgResourceLoaderMaxage['unversioned']['server'];
 		}
-		// If a version was specified we can use a longer expiry time since changing 
-		// version numbers causes cache misses
+		// If a version was specified we can use a longer expiry time since changing version numbers causes cache misses
 		else {
-			$maxage = $wgResourceLoaderMaxage['versioned']['client'];
+			$maxage  = $wgResourceLoaderMaxage['versioned']['client'];
 			$smaxage = $wgResourceLoaderMaxage['versioned']['server'];
 		}
 
 		// Preload information needed to the mtime calculation below
 		$this->preloadModuleInfo( array_keys( $modules ), $context );
 
-		// To send Last-Modified and support If-Modified-Since, we need to detect 
-		// the last modified time
 		wfProfileIn( __METHOD__.'-getModifiedTime' );
+
+		// To send Last-Modified and support If-Modified-Since, we need to detect the last modified time
 		$mtime = wfTimestamp( TS_UNIX, $wgCacheEpoch );
 		foreach ( $modules as $module ) {
 			// Bypass squid cache if the request includes any private modules
@@ -284,6 +288,7 @@ class ResourceLoader {
 			// Calculate maximum modified time
 			$mtime = max( $mtime, $module->getModifiedTime( $context ) );
 		}
+
 		wfProfileOut( __METHOD__.'-getModifiedTime' );
 
 		header( 'Content-Type: ' . ( $context->getOnly() === 'styles' ? 'text/css' : 'text/javascript' ) );
@@ -299,13 +304,31 @@ class ResourceLoader {
 			wfProfileOut( __METHOD__ );
 			return;
 		}
+		
+		// Generate a response
+		$response = $this->makeModuleResponse( $context, $modules, $missing );
 
-		echo $this->makeModuleResponse( $context, $modules, $missing );
+		// Tack on PHP warnings as a comment in debug mode
+		if ( $context->getDebug() && strlen( $warnings = ob_get_contents() ) ) {
+			$response .= "/*\n$warnings\n*/";
+		}
+
+		// Clear any warnings from the buffer
+		ob_clean();
+		echo $response;
 
 		wfProfileOut( __METHOD__ );
 	}
 
-	public function makeModuleResponse( ResourceLoaderContext $context, array $modules, $missing = null ) {
+	/**
+	 * Generates code for a response
+	 * 
+	 * @param {ResourceLoaderContext} $context Context in which to generate a response
+	 * @param {array} $modules List of module objects keyed by module name
+	 * @param {array} $missing List of unavailable modules (optional)
+	 * @return {string} Response data
+	 */
+	public function makeModuleResponse( ResourceLoaderContext $context, array $modules, $missing = array() ) {
 		// Pre-fetch blobs
 		$blobs = $context->shouldIncludeMessages() ?
 			MessageBlobStore::get( $this, $modules, $context->getLanguage() ) : array();
@@ -313,6 +336,7 @@ class ResourceLoader {
 		// Generate output
 		$out = '';
 		foreach ( $modules as $name => $module ) {
+
 			wfProfileIn( __METHOD__ . '-' . $name );
 
 			// Scripts
@@ -323,10 +347,7 @@ class ResourceLoader {
 
 			// Styles
 			$styles = array();
-			if (
-				$context->shouldIncludeStyles() &&
-				( count( $styles = $module->getStyles( $context ) ) )
-			) {
+			if ( $context->shouldIncludeStyles() && ( count( $styles = $module->getStyles( $context ) ) ) ) {
 				// Flip CSS on a per-module basis
 				if ( $this->modules[$name]->getFlip( $context ) ) {
 					foreach ( $styles as $media => $style ) {
@@ -359,7 +380,7 @@ class ResourceLoader {
 					$out .= self::makeLoaderImplementScript( $name, $scripts, $styles, $messages );
 					break;
 			}
-			
+
 			wfProfileOut( __METHOD__ . '-' . $name );
 		}
 
@@ -385,9 +406,9 @@ class ResourceLoader {
 			}
 		}
 	}
-	
+
 	/* Static Methods */
-	
+
 	public static function makeLoaderImplementScript( $name, $scripts, $styles, $messages ) {
 		if ( is_array( $scripts ) ) {
 			$scripts = implode( $scripts, "\n" );
@@ -430,18 +451,8 @@ class ResourceLoader {
 	public static function makeCustomLoaderScript( $name, $version, $dependencies, $group, $script ) {
 		$name = Xml::escapeJsString( $name );
 		$version = (int) $version > 1 ? (int) $version : 1;
-		if ( is_array( $dependencies ) ) {
-			$dependencies = FormatJson::encode( $dependencies );
-		} else if ( is_string( $dependencies ) ) {
-			$dependencies = "'" . Xml::escapeJsString( $dependencies ) . "'";
-		} else {
-			$dependencies = 'null';
-		}
-		if ( is_string( $group ) ) {
-			$group = "'" . Xml::escapeJsString( $group ) . "'";
-		} else {
-			$group = 'null';
-		}
+		$dependencies = FormatJson::encode( $dependencies );
+		$group = FormatJson::encode( $group );
 		$script = str_replace( "\n", "\n\t", trim( $script ) );
 		return "( function( name, version, dependencies, group ) {\n\t$script\n} )" .
 			"( '$name', $version, $dependencies, $group );\n";
@@ -454,18 +465,8 @@ class ResourceLoader {
 		} else {
 			$name = Xml::escapeJsString( $name );
 			$version = (int) $version > 1 ? (int) $version : 1;
-			if ( is_array( $dependencies ) ) {
-				$dependencies = FormatJson::encode( $dependencies );
-			} else if ( is_string( $dependencies ) ) {
-				$dependencies = "'" . Xml::escapeJsString( $dependencies ) . "'";
-			} else {
-				$dependencies = 'null';
-			}
-			if ( is_string( $group ) ) {
-				$group = "'" . Xml::escapeJsString( $group ) . "'";
-			} else {
-				$group = 'null';
-			}
+			$dependencies = FormatJson::encode( $dependencies );
+			$group = FormatJson::encode( $group );
 			return "mediaWiki.loader.register( '$name', $version, $dependencies, $group );\n";
 		}
 	}

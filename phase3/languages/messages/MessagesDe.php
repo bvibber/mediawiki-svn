@@ -35,6 +35,7 @@
  * @author Red Baron
  * @author Remember the dot
  * @author Revolus
+ * @author SVG
  * @author Spacebirdy
  * @author Srhat
  * @author Tbleher
@@ -583,7 +584,7 @@ Zu viele Benutzer versuchen, diese Seite zu besuchen.
 Bitte warte einige Minuten, bevor du es noch einmal versuchst.
 
 $1',
-'pool-timeout'      => 'Timeout bis die Sperrung aufgehoben ist',
+'pool-timeout'      => 'Zeitablauf während des Wartens auf die Sperrung',
 'pool-queuefull'    => 'Poolwarteschlange ist voll',
 'pool-errorunknown' => 'Unbekannter Fehler',
 
@@ -1229,7 +1230,7 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'revmove-norevisions-title'    => 'Ungültige Zielversion',
 'revmove-norevisions'          => 'Du hast keine Zielversion angegeben, um diese Aktion durchzuführen oder die angegebene Version existiert nicht.',
 'revmove-nullmove-title'       => 'Ungültiger Titel',
-'revmove-nullmove'             => 'Quell- und Zielseite sind identisch. Bitte klicke auf „zurück“ und gib einen anderen Seitennamen als „$1“ ein.',
+'revmove-nullmove'             => 'Quell- und Zielseite sind identisch. Bitte klicke auf „zurück“ und gib einen anderen Seitennamen als „[[$1]]“ ein.',
 'revmove-success-existing'     => '{{PLURAL:$1|Eine Version von [[$2]] wurde|$1 Versionen von [[$2]] wurden}} zur existierenden Seite [[$3]] verschoben.',
 'revmove-success-created'      => '{{PLURAL:$1|Eine Version von [[$2]] wurde|$1 Versionen von [[$2]] wurden}} zur neu angelegten Seite [[$3]] verschoben.',
 
@@ -1546,8 +1547,8 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-editprotected'         => 'Geschützte Seiten bearbeiten (ohne Kaskadenschutz)',
 'right-editinterface'         => 'Benutzeroberfläche bearbeiten',
 'right-editusercssjs'         => 'Fremde CSS- und JavaScript-Dateien bearbeiten',
-'right-editusercss'           => 'Fremde CSS-Datei bearbeiten',
-'right-edituserjs'            => 'Fremde JavaScript-Datei bearbeiten',
+'right-editusercss'           => 'Fremde CSS-Dateien bearbeiten',
+'right-edituserjs'            => 'Fremde JavaScript-Dateien bearbeiten',
 'right-rollback'              => 'Schnelles Zurücksetzen',
 'right-markbotedits'          => 'Schnell zurückgesetzte Bearbeitungen als Bot-Bearbeitung markieren',
 'right-noratelimit'           => 'Keine Beschränkung durch Limits',
@@ -1743,7 +1744,7 @@ Wenn du diese Datei trotzdem hochladen möchtest, gehe bitte zurück und ändere
 'uploadedimage'               => 'hat „[[$1]]“ hochgeladen',
 'overwroteimage'              => 'hat eine neue Version von „[[$1]]“ hochgeladen',
 'uploaddisabled'              => 'Hochladen deaktiviert',
-'copyuploaddisabled'          => 'Das Hochladen per URL wurde deaktiviert',
+'copyuploaddisabled'          => 'Das Hochladen von URLs ist deaktiviert',
 'uploadfromurl-queued'        => 'Dein Upload befindet sich nun in der Warteschlange.',
 'uploaddisabledtext'          => 'Das Hochladen von Dateien ist deaktiviert.',
 'php-uploaddisabledtext'      => 'Das Hochladen von Dateien wurde in PHP deaktiviert.
@@ -3574,7 +3575,7 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'htmlform-selectorother-other' => 'Andere',
 
 # SQLite database support
-'sqlite-has-fts' => '$1 unterstützt die Volltextsuche',
-'sqlite-no-fts'  => '$1 unterstützt die Volltextsuche nicht',
+'sqlite-has-fts' => 'Version $1 mit Unterstützung für die Volltextsuche',
+'sqlite-no-fts'  => 'Version $1 ohne Unterstützung für die Volltextsuche',
 
 );

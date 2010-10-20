@@ -136,7 +136,6 @@ class EditPage {
 		$undoafter = $wgRequest->getVal( 'undoafter' );
 		$undo = $wgRequest->getVal( 'undo' );
 
-		$text = '';
 		// For message page not locally set, use the i18n message.
 		// For other non-existent articles, use preload text if any.
 		if ( !$this->mTitle->exists() ) {
@@ -1079,7 +1078,7 @@ class EditPage {
 			),
 			__METHOD__,
 			array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 50 ) );
-		while( $row = $res->fetchObject() ) {
+		foreach ( $res as $row ) {
 			if( $row->rev_user != $id ) {
 				return false;
 			}
@@ -1595,8 +1594,6 @@ HTML
 	 * be it a form, or simply wpTextbox1 with a modified content that will be
 	 * reverse modified when extracted from the post data.
 	 * Note that this is basically the inverse for importContentFormData
-	 *
-	 * @param $request WebRequest
 	 */
 	protected function showContentForm() {
 		$this->showTextbox1();

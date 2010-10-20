@@ -1423,7 +1423,7 @@ faili hili lina $2.',
 Hii huenda ikawa jina lake limeandikwa vibaya.
 Tafadhali uhakikishe kwamba ni kweli unataka kupakia faili hili.',
 'fileexists'                  => "Faili lenye jina hili lipo tayari, tafadhali tazama '''<tt>$1</tt>''' ikiwa una mashaka kuhusu kulibadilisha.",
-'filepageexists'              => "Maelezo ya ukurasa kwa ajili ya faili hili tayari yameshaanzishwa katika '''<tt>[[:$1]]</tt>''', lakini bado hakuna faili lenye jina hili kwa sasa.
+'filepageexists'              => "Ukurasa wa maelezo kwa ajili ya faili hili tayari umeshaanzishwa katika '''<tt>[[:$1]]</tt>''', lakini bado hakuna faili lenye jina hili kwa sasa.
 Muhtasari utakaoandika hautaonekana katika ukurasa wa maelezo.
 Kufanya muhtasari wako uonekana pale, utahitajika uhariri ukurasa kwa mikono.
 [[$1|thumb]]",
@@ -1431,12 +1431,12 @@ Kufanya muhtasari wako uonekana pale, utahitajika uhariri ukurasa kwa mikono.
 * Jina la faili linalopakiwa: '''<tt>[[:$1]]</tt>'''
 * Jina la faili lililopo tayari: '''<tt>[[:$2]]</tt>'''
 Tafadhali chagua jina lingine.",
-'fileexists-thumbnail-yes'    => "Faili huwa ni ''picha ndogo''.
+'fileexists-thumbnail-yes'    => "Faili linaonekana kuwa ni ''picha'' iliyopunguzwa ukubwa.
 [[$1|thumb]]
-Tafadhali utazame faili la '''<tt>[[:$1]]</tt>'''.
+Tafadhali tazama faili la '''<tt>[[:$1]]</tt>'''.
 Ikiwa faili hili linaonyesha picha ile ile kwa ukubwa wa kawaida hakuna haja ya kupakia faili lingine la picha ndogo.",
 'file-thumbnail-no'           => "Jina la faili linaloanza na '''<tt>$1</tt>'''.
-Inaonekana kuwa ni picha iliyopunguzwa kubwa''(thumbnail)''.
+Inaonekana kuwa ni picha iliyopunguzwa ukubwa''(thumbnail)''.
 Ikiwa unaoyo picha hii kwa ukubwa wa kawaida tafadhali pakia picha hii, vinginevyo tafadhali badilisha jina la faili.",
 'fileexists-forbidden'        => 'Faili lenye jina hili lipo tayari, na haliwezi kuandikizwa.
 Kama unataka kupakia faili lako, tafadhali rudia kwa kutumia jina lingine. [[File:$1|thumb|center|$1]]',
@@ -1510,12 +1510,12 @@ Tatizo likiendelea, uwasiliane na [[Special:ListUsers/sysop|mkabidhi]].',
 'http-timed-out'        => 'Ombi la HTTP muda umepita.',
 'http-curl-error'       => 'Hitilafu ya kuleta URL: $1',
 'http-host-unreachable' => 'KISARA (URL) haikupatikana',
-'http-bad-status'       => 'Ilitokea tatizo wakati wa kutekeleza ombi la HTTP: $1 $2',
+'http-bad-status'       => 'Kulikuwa na tatizo wakati wa kutekeleza ombi la HTTP: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'KISARA (URL) haikupatikana',
-'upload-curl-error6-text'  => 'URL iliyotajwa haikupatikana.
-Tafadhali uhakikishe kwamba URL ni sahihi na kwamba tovuti inafanya kazi.',
+'upload-curl-error6-text'  => 'URL iliyotajwa haikuweza kupatikana.
+Tafadhali hakikisha kwamba URL ni sahihi na tovuti inafanya kazi.',
 'upload-curl-error28'      => 'Muda wa upakiaji umeisha',
 'upload-curl-error28-text' => 'Tovuti imechelewa mno kuitikia.
 Tafadhali uhakikishe kwamba tovuti inafanya kazi, subiri kidogo halafu jaribu tena.
@@ -1525,13 +1525,13 @@ Unaweza kujaribu wakati tovuti haina kazi nyingi.',
 'license-header'     => 'Hatimiliki',
 'nolicense'          => 'Haikuchaguliwa',
 'license-nopreview'  => '(Hakikisho hakipatikani)',
-'upload_source_url'  => ' (URL halali, inayofifika kadamnasi)',
+'upload_source_url'  => '(URL halali, inayopatikana kwa umma)',
 'upload_source_file' => '(faili kwenye tarakilishi yako)',
 
 # Special:ListFiles
-'listfiles-summary'     => 'Ukurasa maalum huu unaonyesha mafaili yote yaliyopakiwa.
-Unapofika ukurasa orodha ya mafaili inapangwa ianze na mafaili yaliyopakiwa hivi karibuni.
-Ukibofya kichwa cha safu mtindo wa kupanga orodha utabadili.',
+'listfiles-summary'     => 'Ukurasa huu maalum unaonyesha mafaili yote yaliyopakiwa.
+Kwa kawaida mafaili ya mwisho kupakiwa yanaonekana juu kabisa ya orodha.
+Ukibofya kichwa cha safu mtindo wa kupanga orodha utabadilika.',
 'listfiles_search_for'  => 'Tafuta jina la faili:',
 'imgfile'               => 'faili',
 'listfiles'             => 'Orodha ya mafaili',
@@ -1561,17 +1561,17 @@ Ukibofya kichwa cha safu mtindo wa kupanga orodha utabadili.',
 'filehist-missing'          => 'Faili halipo',
 'imagelinks'                => 'Viungo vya mafaili',
 'linkstoimage'              => '{{PLURAL:$1|Ukurasa huu umeunganishwa|Kurasa hizi $1 zimeunganishwa}} na faili hili:',
-'linkstoimage-more'         => 'Zipo {{PLURAL:$1|kurasa|kurasa}} zaidi na $1 zinazounga na faili hili.
-Orodha inayofuata inaonyesha {{PLURAL:$1|kiungo cha kwanza|viungo $1 vya kwanza}} tu vinavyounga na faili hili.
+'linkstoimage-more'         => 'Zipo {{PLURAL:$1|kurasa|kurasa}} zaidi ya $1 zinazounga na faili hili.
+Orodha inayofuata inaonyesha {{PLURAL:$1|kiungo cha kwanza|viungo $1 vya kwanza}} tu vinavyoungana na faili hili.
 [[Special:WhatLinksHere/$2|Orodha nzima]] inapatikana.',
 'nolinkstoimage'            => 'Hakuna kurasa zozote zilizounganishwa na faili hii.',
 'morelinkstoimage'          => 'Tazama [[Special:WhatLinksHere/$1|viungo vingine]] vinavyoelekeza faili hili.',
 'redirectstofile'           => '{{PLURAL:$1|Faili linalofuata linaelekeza|Mafaili $1 yanayofuata yanaelekeza}} faili hili:',
 'duplicatesoffile'          => '{{PLURAL:$1|Faili linalofuata ni nakala ya|Mafaili $1 yanayofuata ni nakala za}} faili hili ([[Special:FileDuplicateSearch/$2|maelezo mengine]]):',
 'sharedupload'              => 'Faili hili linatoka $1 na linaweza kushirikiwa na miradi mingine.',
-'sharedupload-desc-there'   => 'Faili hili linatoka $1 na linaweza kutumika na miradi mingine.
-Tafadhali tazama [$2 ukurasa wa maelezo ya faili] ukitaka maelezo mengine.',
-'sharedupload-desc-here'    => 'Faili hili linatoka $1 na linaweza kutumika na miradi mingine.
+'sharedupload-desc-there'   => 'Faili hili linatoka $1 na huenda likawa limetumika na miradi mingine.
+Tafadhali tazama [$2 ukurasa wa maelezo ya faili] kwa maelezo zaidi.',
+'sharedupload-desc-here'    => 'Faili hili linatoka $1 na huenda likawa limetumika na miradi mingine.
 Maelezo yaliyopo katika [$2 ukurasa wa maelezo ya faili] linaonyeshwa hapa.',
 'filepage-nofile'           => 'Hakuna faili yenye jina hili.',
 'filepage-nofile-link'      => 'Hakuna faili lenye jina hili, lakini unaweza [$1 kulipakia].',
@@ -1589,7 +1589,7 @@ Maelezo yaliyopo katika [$2 ukurasa wa maelezo ya faili] linaonyeshwa hapa.',
 # File deletion
 'filedelete'                  => 'Futa $1',
 'filedelete-legend'           => 'Futa faili',
-'filedelete-intro'            => "Unakaribia kufuta faili la '''[[Media:$1|$1]]''' pamoja na historia yake yote.",
+'filedelete-intro'            => "Unataka kufuta faili la '''[[Media:$1|$1]]''' pamoja na historia yake yote.",
 'filedelete-intro-old'        => "You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].",
 'filedelete-comment'          => 'Sababu:',
 'filedelete-submit'           => 'Futa',
@@ -2177,8 +2177,8 @@ Kama tayari kuna ukurasa au ukifuta tiki, itabidi usogeze au uunganishe ukurasa 
 'movenologintext'              => 'Lazima uwe mtumiaji uliyesajiliwa na [[Special:UserLogin|uliyeingizwa]] ili uhamishe ukurasa.',
 'movenotallowed'               => 'Huna ruhusa ya kuhamisha kurasa.',
 'movenotallowedfile'           => 'Huna ruhusa ya kuhamisha mafaili.',
-'cant-move-user-page'          => 'Huna ruhusa kuhamisha ukurasa wa mtumiaji (isopokuwa ukurasa tanzu).',
-'cant-move-to-user-page'       => 'Huna ruhusa ya kuhamisha ukurasa katika ukurasa wa mtumiaji (isipokuwa katika ukurasa tanzu wa mtumiaji).',
+'cant-move-user-page'          => 'Huna fursa ya kuhamisha ukurasa wa mtumiaji (isopokuwa kurasa ndogo).',
+'cant-move-to-user-page'       => 'Huna ruhusa ya kuhamisha ukurasa katika ukurasa wa mtumiaji (isipokuwa katika ukurasa mdogo wa mtumiaji).',
 'newtitle'                     => 'Kuelekeza jina jipya:',
 'move-watch'                   => 'Fuatilia ukurasa huu',
 'movepagebtn'                  => 'Hamisha ukurasa',
@@ -2191,15 +2191,15 @@ Chagua jina lengine.',
 'talkexists'                   => "'''Ukurasa wenyewe ulisogezwa salama, lakini ukurasa wake wa majadiliano haujasogezwa kwa sababu tayari kuna ukurasa wenye jina lake.  Tafadhali ziunganishe kwa mkono.'''",
 'movedto'                      => 'imesogezwa hadi',
 'movetalk'                     => 'Hamisha ukurasa wake wa majadiliano',
-'move-subpages'                => 'Hamisha kurasa tanzu (hadi $1)',
-'move-talk-subpages'           => 'Hamisha kurasa tanzu za ukurasa wa majadiliano (hadi $1)',
+'move-subpages'                => 'Hamisha kurasa ndogo (hadi $1)',
+'move-talk-subpages'           => 'Hamisha kurasa ndogo za ukurasa wa majadiliano (hadi $1)',
 '1movedto2'                    => '[[$1]] umesogezwa hapa [[$2]]',
 '1movedto2_redir'              => 'alihamisha [[$1]] kwenda [[$2]] kwa kutengeneza elekezo',
 'movelogpage'                  => 'Kumbukumbu ya uhamiaji',
 'movelogpagetext'              => 'Hapo chini panaorodheshwa kurasa zote zilizohamishwa.',
-'movesubpage'                  => '{{PLURAL:$1|Ukurasa tanzu|Kurasa tanzu}}',
-'movesubpagetext'              => 'Ukurasa huu una {{PLURAL:$1|ukurasa tanzu unao|kurasa tanzu $1 zinazo}}onyeshwa hapo.',
-'movenosubpage'                => 'Ukurasa huu hauna kurasa tanzu.',
+'movesubpage'                  => '{{PLURAL:$1|Ukurasa mdogo|Kurasa ndogo}}',
+'movesubpagetext'              => 'Ukurasa huu una {{PLURAL:$1|ukurasa mdogo unao|kurasa ndogo $1 zinazo}}onyeshwa hapo.',
+'movenosubpage'                => 'Ukurasa huu hauna kurasa ndogo.',
 'movereason'                   => 'Sababu:',
 'revertmove'                   => 'rejesha',
 'delete_and_move'              => 'Kufuta na kuhamisha',
@@ -2629,7 +2629,7 @@ Tafadhali uthibitishe kwamba kweli unataka kuanzisha ukurasa huu upya.",
 'table_pager_empty'        => 'Hakuna matokeo',
 
 # Auto-summaries
-'autosumm-blank'   => 'Ukurasa ulimwagika',
+'autosumm-blank'   => 'Kaondosha yaliyomo',
 'autosumm-replace' => "Maandishi yaliyokuwepo yalichukuliwa nafasi na '$1'",
 'autoredircomment' => 'Ukurasa umeelekezwa kwenda [[$1]]',
 'autosumm-new'     => "Ukurasa ulianzishwa kwa kuandika '$1'",

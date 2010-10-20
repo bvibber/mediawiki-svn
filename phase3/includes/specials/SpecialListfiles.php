@@ -139,7 +139,7 @@ class ImageListPager extends TablePager {
 		if ( $this->mResult->numRows() ) {
 			$lb = new LinkBatch;
 			$this->mResult->seek( 0 );
-			while ( $row = $this->mResult->fetchObject() ) {
+			foreach ( $this->mResult as $row ) {
 				if ( $row->img_user ) {
 					$lb->add( NS_USER, str_replace( ' ', '_', $row->img_user_text ) );
 				}
@@ -228,7 +228,7 @@ class ImageListPager extends TablePager {
 		$queries = parent::getPagingQueries();
 		if ( !is_null( $this->mUserName ) ) {
 			# Append the username to the query string
-			foreach ( $queries as $key => &$query ) {
+			foreach ( $queries as &$query ) {
 				$query['username'] = $this->mUserName;
 			}
 		}

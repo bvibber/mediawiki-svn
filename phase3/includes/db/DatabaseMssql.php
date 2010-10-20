@@ -347,7 +347,7 @@ class DatabaseMssql extends DatabaseBase {
 		}
 
 		$result = array();
-		while ( $row = $res->FetchNextObj() ) {
+		foreach ( $res as $row ) {
 			if ( $row->index_name == $index ) {
 				$row->Non_unique = !stristr( $row->index_description, "unique" );
 				$cols = explode( ", ", $row->index_keys );
@@ -405,7 +405,7 @@ class DatabaseMssql extends DatabaseBase {
 		}
 		unset( $res );
 
-		foreach ( $arrToInsert as $blah => $a ) {
+		foreach ( $arrToInsert as $a ) {
 			// start out with empty identity column, this is so we can return it as a result of the insert logic
 			$sqlPre = '';
 			$sqlPost = '';
@@ -457,7 +457,7 @@ class DatabaseMssql extends DatabaseBase {
 				" INTO $table (" . implode( ',', $keys ) . ") $identityClause VALUES (";
 
 			$first = true;
-			foreach ( $a as $key => $value ) {
+			foreach ( $a as $value ) {
 				if ( $first ) {
 					$first = false;
 				} else {
@@ -784,8 +784,9 @@ class DatabaseMssql extends DatabaseBase {
 			print( "Error in fieldInfo query: " . $this->getErrors() );
 			return false;
 		}
-		if ( $meta = $this->fetchRow( $res ) )
+		if ( $meta = $this->fetchRow( $res ) ) {
 			return new MssqlField( $meta );
+		}
 		return false;
 	}
 
@@ -815,7 +816,7 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	function setup_database() {
-		global $wgVersion, $wgDBport, $wgDBuser;
+		global $wgDBuser;
 
 		// Make sure that we can write to the correct schema
 		$ctest = "mediawiki_test_table";
@@ -825,7 +826,7 @@ class DatabaseMssql extends DatabaseBase {
 		$SQL = "CREATE TABLE $ctest (a int)";
 		$res = $this->doQuery( $SQL );
 		if ( !$res ) {
-			print "<b>FAILED</b>. Make sure that the user \"$wgDBuser\" can write to the database</li>\n";
+			print "<b>FAILED</b>. Make sure that the user " . htmlspecialchars( $wgDBuser ) . " can write to the database</li>\n";
 			dieout( "</ul>" );
 		}
 		$this->doQuery( "DROP TABLE $ctest" );
@@ -1130,11 +1131,12 @@ class MssqlResult {
   }
 
   public function fetch( $mode = SQLSRV_FETCH_BOTH, $object_class = 'stdClass' ) {
-	if ( $this->mCursor >= $this->mRowCount || $this->mRowCount == 0 ) return false;
-	$ret = false;
+	if ( $this->mCursor >= $this->mRowCount || $this->mRowCount == 0 ) {
+		return false;
+	}
 	$arrNum = array();
 	if ( $mode == SQLSRV_FETCH_NUMERIC || $mode == SQLSRV_FETCH_BOTH ) {
-		foreach ( $this->mRows[$this->mCursor] as $key => $value ) {
+		foreach ( $this->mRows[$this->mCursor] as $value ) {
 			$arrNum[] = $value;
 		}
 	}
