@@ -555,7 +555,7 @@ mw.ApiProxy = { };
 	*/
 	function getClientRequest() {
 		// Read the anchor data package from the requesting url
-		var hashMsg = unescape( mw.parseUri( document.URL ).anchor );
+		var hashMsg = decodeURIComponent( mw.parseUri( document.URL ).anchor );
 		try {
 			return JSON.parse( hashMsg );
 		} catch ( e ) {
