@@ -64,7 +64,18 @@ abstract class PayflowProGateway_Form {
 		if ( !strlen( $this->getStylePath())) {
 			$this->setStylePath();
 		}
+		
 		$wgOut->addExtensionStyle( $this->getStylePath() );
+		
+		/**
+		 * if OWA is enabled, load the JS.  
+		 * 
+		 * We do this here (rather than in individual forms) because if OWA is 
+		 * enabled, we ALWAYS want to make sure it gets included.
+		 */
+		if(defined('OWA')){
+			$this->loadOwaJs();
+		}
 	}
 
 	/**

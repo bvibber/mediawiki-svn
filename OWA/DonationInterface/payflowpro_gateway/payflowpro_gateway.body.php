@@ -925,7 +925,15 @@ EOT;
 		wfSetupSession();
 	}
 
-	function get_owa_ref_id($ref){
+	/**
+	 * Fetches ID for reference URL for OWA tracking
+	 * 
+	 * In the event that the URL is not already in the database, insert it
+	 * and return it's id.  Otehrewise, just return its id.
+	 * @param string $ref The reference URL
+	 * @return int The id for the reference URL - 0 if not found
+	 */
+	function get_owa_ref_id( $ref ) {
 		// Replication lag means sometimes a new event will not exist in the table yet
 		$dbw = contributionTrackingConnection();
 		$id_num = $dbw->selectField(
@@ -956,9 +964,10 @@ EOT;
 	public function fnGetFormData( $amount, $numAttempt, $token, $order_id ) {
 		global $wgPayflowGatewayTest, $wgRequest;
 		
-		$owa_ref = $wgRequest->getText( 'owa_ref', null);
-		if($owa_ref != null  && !is_numeric($owa_ref)){
-			$owa_ref = $this->get_owa_ref($owa_ref);
+		// fetch ID for the url reference for OWA tracking
+		$owa_ref = $wgRequest->getText( 'owa_ref', null );
+		if( $owa_ref != null  && !is_numeric( $owa_ref )){
+			$owa_ref = $this->get_owa_ref_id( $owa_ref );
 		}
 		
 		// if we're in testing mode and an action hasn't yet be specified, prepopulate the form
