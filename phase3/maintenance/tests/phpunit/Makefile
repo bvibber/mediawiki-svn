@@ -4,7 +4,8 @@
 SHELL = /bin/sh
 CONFIG_FILE = $(shell pwd)/suite.xml
 FLAGS = 
-PU = php phpunit.php --configuration ${CONFIG_FILE}
+PHP = php
+PU = ${PHP} phpunit.php --configuration ${CONFIG_FILE}
 
 all test: warning
 
