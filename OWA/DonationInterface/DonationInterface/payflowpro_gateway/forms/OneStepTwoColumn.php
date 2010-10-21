@@ -16,7 +16,7 @@ class PayflowProGateway_Form_OneStepTwoColumn extends PayflowProGateway_Form {
 
 		$this->loadApiJs(); // API/Ajax JS
 		
-		if(defined(OWA)){
+		if(defined('OWA')){
 			$this->loadOwaJs();
 		}
 	}

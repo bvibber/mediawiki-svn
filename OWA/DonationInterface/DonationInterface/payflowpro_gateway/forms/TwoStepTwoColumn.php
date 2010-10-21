@@ -10,7 +10,7 @@ class PayflowProGateway_Form_TwoStepTwoColumn extends PayflowProGateway_Form {
 		// we only want to load this JS if the form is being rendered
 		$this->loadValidateJs(); // validation JS
 		
-		if(defined(OWA)){
+		if(defined('OWA')){
 			$this->loadOwaJs();
 		}
 		
