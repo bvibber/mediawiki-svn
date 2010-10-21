@@ -285,7 +285,7 @@ mw.includeAllModuleMessages();
 					
 					// Add a title
 					$j( textElm ).attr('title', 
-						gM('mwe-timedtext-key-language', [textSource.srclang, unescape( mw.Language.names[ textSource.srclang ] )	] )
+						gM('mwe-timedtext-key-language', [textSource.srclang, mw.Language.names[ textSource.srclang ] ] )
 					);
 
 					// Add the sources to the parent embedPlayer 
@@ -636,7 +636,7 @@ mw.includeAllModuleMessages();
 				var langKey = source.srclang.toLowerCase();
 				_this.getLanguageName ( langKey );
 				return $j.getLineItem( 
-					gM('mwe-timedtext-key-language', [langKey, unescape( mw.Language.names[ source.srclang ] )	] ), 
+					gM('mwe-timedtext-key-language', [langKey, mw.Language.names[ source.srclang ]	] ), 
 					source_icon,
 					function() {						
 						_this.selectTextSource( source ); 
