@@ -201,7 +201,7 @@ mw.Sequencer.prototype = {
 		if( ! xmlString ){
 			xmlString = this.getSmil().getXMLString();
 		}
-		return 'data:text/xml;charset=utf-8,' + escape( xmlString );
+		return 'data:text/xml;charset=utf-8,' + encodeURIComponent( xmlString );
 	},
 	getNewSmilXML: function( ){
 		var title = ( this.getOption('title') ) ?
