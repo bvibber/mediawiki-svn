@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 from multiprocessing import Process, Queue
 from Queue import Empty
@@ -106,7 +109,7 @@ def load_queue(input_queue, obj, poison_pill=False):
         data = obj
     for d in data:
         input_queue.put(d)
-    
+
     if poison_pill:
         for p in xrange(settings.NUMBER_OF_PROCESSES):
             input_queue.put(None)

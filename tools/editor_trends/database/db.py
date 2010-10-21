@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 import sqlite3 as sqlite
 from pymongo import Connection
@@ -38,7 +41,7 @@ def add_index_to_collection(db, collection, key):
     @collection is the name of the 'table' in mongodb
     @key name of the field to create the index
     '''
-    
+
     mongo = init_mongo_db(db)
     collection = mongo[collection]
     mongo.collection.create_index(key)

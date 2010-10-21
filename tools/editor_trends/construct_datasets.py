@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 from multiprocessing import Queue
 from Queue import Empty
@@ -32,10 +35,10 @@ except ImportError:
     pass
 
 
-def retrieve_editor_ids_mongo():
+def retrieve_editor_ids_mongo(RANDOM_SAMPLE=True):
     if utils.check_file_exists(settings.BINARY_OBJECT_FILE_LOCATION,
                                retrieve_editor_ids_mongo):
-        ids = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION,
+        contributors = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION,
                                 retrieve_editor_ids_mongo)
     else:
         mongo = db.init_mongo_db('editors')
@@ -43,13 +46,14 @@ def retrieve_editor_ids_mongo():
         contributors = set()
         #ids = editors.find().distinct('editor')
         ids = editors.find()
-        for x,id in enumerate(ids):
+        for x, id in enumerate(ids):
             contributors.add(id['editor'])
-            if len(contributors) % 25000 == 0:
-                print x, len(contributors)
-        if ids != set():
-            utils.store_object(ids, settings.BINARY_OBJECT_FILE_LOCATION, retrieve_editor_ids_mongo)
-    return ids
+            if len(contributors) == 100000:
+                if RANDOM_SAMPLE:
+                    break
+        if contributors != set():
+            utils.store_object(contributors, settings.BINARY_OBJECT_FILE_LOCATION, retrieve_editor_ids_mongo)
+    return contributors
 
 
 def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
@@ -58,6 +62,7 @@ def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
     debug = kwargs.pop('debug')
     mongo = db.init_mongo_db('editors')
     editors = mongo['editors']
+    data = {}
     while True:
         try:
             if debug:
@@ -65,29 +70,32 @@ def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
             else:
                 id = input_queue.get(block=False)
 
-
+            print input_queue.qsize()
             if definition == 'Traditional':
-                obs = editors.find({'editor': id}).sort('date').limit(limit)
+                
+                obs = editors.find({'editor': id}, {'date':1}).sort('date').limit(limit)
                 contributors = []
                 for ob in obs:
                     contributors.append(ob['date'])
+                obs = ''
             else:
-                obs = editors.find({'editor': id}).sort('date')
+                obs = editors.find({'editor': id}, {'date':1}).sort('date')
                 contributors = set()
                 for ob in obs:
                     if len(contributors) == limit:
                         break
                     else:
                         contributors.add(ob['date'])
-
+                obs.close()
             if len(contributors) < limit:
                 new_wikipedian = False
             else:
                 new_wikipedian = True
-            data = {id: [contributors, new_wikipedian]}
-            utils.write_data_to_csv(data, settings.DATASETS_FILE_LOCATION, generate_editor_dataset, settings.ENCODING)
+            data[id] = [contributors, new_wikipedian]
+
 
         except Empty:
+            utils.write_data_to_csv(data, settings.DATASETS_FILE_LOCATION, generate_editor_dataset, settings.ENCODING)
             break
 
 
@@ -152,21 +160,26 @@ def retrieve_edits_by_contributor_launcher():
 
 
 def debug_retrieve_edits_by_contributor_launcher():
-    input_queue = Queue()
+    q = Queue()
     kwargs = {'definition':'Traditional',
               'limit': 10,
-              'debug': True
+              'debug': False
               }
+    ids = retrieve_editor_ids_mongo()
+    input_queue = pc.load_queue(q, ids)
     generate_editor_dataset(input_queue, False, False, kwargs)
     #generate_editor_dataset_launcher()
     #retrieve_list_contributors()
     #retrieve_edits_by_contributor()
 
 def generate_editor_dataset_launcher():
-    ids = retrieve_editor_ids_mongo()
-    pc.build_scaffolding(pc.load_queue, generate_editor_dataset, ids, False, False, definition='Traditional', limit=10)
+    kwargs = {'definition':'Traditional',
+              'limit': 10,
+              'debug': False
+              }
+    pc.build_scaffolding(pc.load_queue, generate_editor_dataset, ids, False, False, kwargs)
 
 
 if __name__ == '__main__':
-    generate_editor_dataset_launcher()
-    #debug_retrieve_edits_by_contributor_launcher()
+    #generate_editor_dataset_launcher()
+    debug_retrieve_edits_by_contributor_launcher()

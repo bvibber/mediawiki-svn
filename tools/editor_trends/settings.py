@@ -13,7 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 '''
 This file contains settings that are used for constructing and analyzing
@@ -91,3 +93,14 @@ NAME_SPACE = 'http://www.mediawiki.org/xml/export-0.4/'
 #Multiprocess settings used to parallelize workload
 #Change this to match your computers configuration (RAM / CPU)
 NUMBER_OF_PROCESSES = cpu_count() * 1
+
+#Extensions of ascii files, this is used to determine the filemode to use 
+ASCII = ['txt', 'csv', 'xml', 'sql']
+
+WP_DUMP_LOCATION = 'http://download.wikimedia.org'
+
+LANGUAGE_MAPPING = {
+'English': '/enwiki/latest/',
+'Russian': '/ruwiki/latest/',
+'German': '/dewiki/latest',
+}

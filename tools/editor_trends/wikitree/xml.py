@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 from utils import utils
 import settings

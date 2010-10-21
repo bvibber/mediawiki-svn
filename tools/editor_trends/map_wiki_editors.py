@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 #Default Python libraries (Python => 2.6)
 import sys
@@ -189,7 +192,7 @@ def store_data_mongo(data_queue, pids):
                 values = []
             #print data_queue.qsize()
 
-        
+
         except Empty:
             # The queue is empty but store the remaining values if present
             if values != []:
@@ -204,7 +207,7 @@ def store_data_mongo(data_queue, pids):
             are finished and this Queue is empty than break, else wait for the
             Queue to fill.
             '''
-            
+
             if all([utils.check_if_process_is_running(pid) for pid in pids]):
                 pass
                 #print 'Empty queue or not %s?' % data_queue.qsize()

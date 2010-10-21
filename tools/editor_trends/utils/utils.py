@@ -13,6 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 '''
 The utils module contains helper functions that will be needed throughout.
@@ -138,6 +141,18 @@ def read_data_from_csv(filename, encoding):
     fh.close()
 
 
+def determine_file_extension(filename):
+    pos = filename.rfind('.') + 1
+    return filename[pos:]
+
+
+def determine_file_mode(extension):
+    if extension in settings.ASCII:
+        return 'w'
+    else:
+        return 'wb'
+
+
 def write_data_to_csv(data, location, function, encoding):
     filename = construct_filename_from_function(function, '.csv')
     fh = open_txt_file(location, filename, 'a', encoding=encoding)
@@ -155,14 +170,19 @@ def write_data_to_csv(data, location, function, encoding):
 
 
 def open_txt_file(location, filename, mode, encoding):
-    return codecs.open(location+filename, mode, encoding=encoding)
+    return codecs.open(location + filename, mode, encoding=encoding)
+
+
+def open_binary_file(location, filename, mode):
+    return open(location + filename, mode)
 
 def construct_filename_from_function(function, extension):
     return function.func_name + extension
 
+
 def check_file_exists(location, filename):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename, '.bin') 
+        filename = construct_filename_from_function(filename, '.bin')
     if os.path.exists(location + filename):
         return True
     else:
@@ -181,7 +201,7 @@ def store_object(object, location, filename):
 
 def load_object(location, filename):
     if hasattr(filename, '__call__'):
-        filename = construct_filename_from_function(filename, '.bin')    
+        filename = construct_filename_from_function(filename, '.bin')
     if not filename.endswith('.bin'):
         filename = filename + '.bin'
     fh = open(location + filename, 'rb')
