@@ -574,7 +574,7 @@ mw.PlayerControlBuilder.prototype = {
 			this.addSkinControlBindings();
 		}
 		
-		mw.log('tirgger::addControlBindingsEvent');
+		mw.log('trigger::addControlBindingsEvent');
 		$j( embedPlayer ).trigger( 'addControlBindingsEvent');
 	},
 	
