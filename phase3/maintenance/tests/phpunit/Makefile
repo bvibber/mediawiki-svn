@@ -62,3 +62,4 @@ help:
 	#  Options:
 	#   CONFIG_FILE         Path to a PHPUnit configuration file (default: suite.xml)
 	#   FLAGS               Additional flags to pass to PHPUnit
+	#   PHP                 Path to php
