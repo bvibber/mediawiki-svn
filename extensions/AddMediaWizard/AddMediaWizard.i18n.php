@@ -50,6 +50,13 @@ $messages['az'] = array(
 	'addmediawizard-desc' => 'Kaltura və Vikimedia Fondunun birgə əməkdaşlığı sayəsində hazırlanmış media-fayllar əlavəçisi',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'addmediawizard-desc' => 'Викимедиа Фонды менән Kaltura хеҙмәттәшлеге һөҙөмтәһендә булдырылған медиа өҫтәү ҡоралы.',
+);
+
 /** Belarusian (Беларуская)
  * @author Хомелка
  */
@@ -323,6 +330,13 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'addmediawizard-desc' => 'Medijos pridėjimo vedlys, sukurtas bendradarbiaujant su Kaltura bei Wikimedia Foundation.',
+);
+
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'addmediawizard-desc' => 'Multivides pievienošanas vednis, izstrādāts sadarbībā ar Kaltura un Wikimedia Foundation',
 );
 
 /** Malagasy (Malagasy)

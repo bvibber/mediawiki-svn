@@ -1089,6 +1089,15 @@ $messages['bcc'] = array(
 	'mv-category-media-count' => '{{PLURAL:$1|یک فایل هست|هستن $1 فایلانی}} ته ای دسته.',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'mv_history' => 'Гісторыя',
+	'mv_existing_categories' => '{{PLURAL:$1|катэгорыя|катэгорыі|катэгорый}}:',
+	'mv_search_categories' => 'Катэгорыі',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -8558,7 +8567,13 @@ Por favor, reporte este fato ao [[{{MediaWiki:Grouppage-sysop}}|administrador do
 	'mvexportstream' => 'Exportar stream Metavid',
 	'mv_move_delete_msg' => 'movido para $1',
 	'mv_add_stream_page' => 'MetaVid adicionar stream',
-	'mv_edit_strea_docu' => '<p>Editar <b>administração</b> de stream<br />para visualização/edição por usuários normais, veja a página $1</p>',
+	'mv_edit_strea_docu' => '<p>Editar stream como <b>administrador</b><br />para ver ou editar como utilizador normal, consulte a página $1</p>',
+	'mv_add_stream_docu' => '<p>Adicionar uma nova stream com o campo abaixo.</p>
+<p>Mais informação é dada na <a href="$1">página de ajuda de adição de streams</a>.</p>',
+	'mv_add_stream_submit' => 'Adicionar stream',
+	'mv_no_stream_files' => 'Arquivos de stream não existentes',
+	'mv_edit_stream_files' => 'Editar arquivos de stream',
+	'mv_path_type_url_anx' => 'URL completo da mídia',
 	'mv_duration_label' => 'Duração',
 	'mv_save_changes' => 'Salvar alterações',
 	'mv_remove_reason' => 'Motivo para a eliminação:',
@@ -10481,10 +10496,12 @@ $messages['tr'] = array(
 $messages['uk'] = array(
 	'mv_duration_label' => 'Тривалість',
 	'mv_save_changes' => 'Зберегти зміни',
+	'mv_remove_reason' => 'Причина вилучення:',
 	'mv_upload_file' => 'Завантажити файл',
 	'mv_external_file' => 'Зовнішній файл',
 	'mv_tool_search' => 'Пошук',
 	'mv_tool_export' => 'Експорт',
+	'mv_history' => 'Історія',
 	'mv_remove' => 'вилучити',
 	'mv_existing_categories' => '{{PLURAL:$1|категорія|категорії|категорій}}:',
 	'mv_search_categories' => 'Категорії',

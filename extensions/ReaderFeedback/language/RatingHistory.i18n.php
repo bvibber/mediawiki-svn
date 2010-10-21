@@ -1441,6 +1441,21 @@ $messages['li'] = array(
 	'right-feedback' => 'Gebroek feedback veur paginawaardering',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'ratinghistory-period' => 'Laika periods:',
+	'ratinghistory-month' => 'pēdējais mēnesis',
+	'ratinghistory-3months' => 'pēdējie 3 mēneši',
+	'ratinghistory-year' => 'pēdējais gads',
+	'ratinghistory-3years' => 'pēdējie 3 gadi',
+	'ratinghistory-ave' => 'Vidēji: $1',
+	'ratinghistory-chart' => 'Lasītāju vērtējumi laika gaitā',
+	'ratinghistory-table' => 'Lasītāju vērtējumu pārskats',
+	'ratinghistory-svg' => 'Skatīt kā SVG',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest
@@ -1972,6 +1987,9 @@ $messages['rue'] = array(
 	'ratinghistory-3years' => 'послїднї 3 рокы',
 	'ratinghistory-ave' => 'Середня годнота: $1',
 	'ratinghistory-purge' => 'очістити кеш',
+	'ratinghistory-table-rating' => 'Рейтінґ',
+	'ratinghistory-table-votes' => 'Голосы',
+	'ratinghistory-ratings' => "'''Леґенда:''' '''(1)''' — слаба; '''(2)''' — низка; '''(3)''' — середня; '''(4)''' — высока; '''(5)''' — выняткова;",
 );
 
 /** Yakut (Саха тыла)

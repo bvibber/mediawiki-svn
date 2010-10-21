@@ -72,6 +72,13 @@ $messages['arz'] = array(
 	'catboxattop-categories' => 'تصانيف',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'catboxattop-categories' => 'Катэгорыі',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

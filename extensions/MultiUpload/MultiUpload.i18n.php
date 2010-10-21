@@ -982,6 +982,20 @@ Net ubruechte Fichiere ginn direkt geläscht, kuckt d'[[{{MediaWiki:Multipleuplo
 	'multiupload-blank' => 'Kee Fichier erausgesicht',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'multipleupload' => 'Augšupielādēt vairākus failus',
+	'multiupload-desc' => 'Ļauj lietotājiem vienā reizē [[Special:MultipleUpload|augšupielādēt vairākus failus]]',
+	'multipleupload-ignoreallwarnings' => "Neievērot '''visus brīdinājumus''' un tāpat saglabāt failus.",
+	'multipleupload-saveallfiles' => 'Saglabāt visus failus',
+	'multiupload-fileuploaded' => 'Fails augšupielādēts.',
+	'multiupload-toolbox' => 'Augšupielādēt vairākus failus',
+	'multiupload-no-files' => 'Lūdzu, izvēlieties vismaz vienu failu augšupielādēšanai',
+	'multiupload-blank' => 'Nav izvēlēts neviens fails',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

@@ -208,6 +208,20 @@ $messages['el'] = array(
 	'right-lastlogin' => 'Δείτε την τελευταία φορά που ένας χρήστης συνδέθηκε',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'lastuserlogin' => 'Lasta ensaluto de uzanto',
+	'lastuserlogin-desc' => 'Montras la lastan fojon kiam uzanto ensalutis',
+	'lastuserlogin_userid' => 'Salutnomo',
+	'lastuserlogin_username' => 'Reala nomo',
+	'lastuserlogin_useremail' => 'Retpoŝto de uzanto',
+	'lastuserlogin_lastlogin' => 'Lasta ensaluto',
+	'lastuserlogin_daysago' => 'Antaŭ tagoj',
+	'right-lastlogin' => 'Vidi la lastan fojon kiam uzanto ensalutis',
+);
+
 /** Spanish (Español)
  * @author Translationista
  */

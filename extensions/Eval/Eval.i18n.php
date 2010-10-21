@@ -683,6 +683,13 @@ $messages['tr'] = array(
 	'eval_code' => 'Kod',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'eval_code' => 'Код',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

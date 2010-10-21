@@ -950,6 +950,13 @@ $messages['sk'] = array(
 	'showprocesslist-info' => 'Informácie',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'showprocesslist-time' => 'Čas',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -1087,10 +1094,12 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'showprocesslist-desc' => 'Показує вивід команди MySQL [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-user' => 'Користувач',
+	'showprocesslist-db' => 'База даних',
 );
 
 /** Veps (Vepsan kel')

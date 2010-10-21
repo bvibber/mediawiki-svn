@@ -433,6 +433,13 @@ $messages['ro'] = array(
 	'nedits' => '$1 {{PLURAL:$1|modificare|modificări}}',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Reder
+ */
+$messages['roa-tara'] = array(
+	'activestrategy' => 'Strateggie attive',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  * @author Александр Сигачёв
@@ -442,6 +449,13 @@ $messages['ru'] = array(
 	'active-strategy-desc' => 'Показывает число правок на страницах стратегического планирования',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
+);
+
+/** Slovak (Slovenčina)
+ * @author Jkjk
+ */
+$messages['sk'] = array(
+	'activestrategy' => 'Aktívná stratégia',
 );
 
 /** Slovenian (Slovenščina)

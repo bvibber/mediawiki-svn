@@ -955,10 +955,14 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'postcomment_notloggedin' => 'Niste prijavljeni.',
+	'postcomment_youareloggedinas' => 'Prijavljeni ste kot $1',
+	'postcomment_leavemessagefor' => 'Pusti sporočilo $1',
 	'postcomment_post' => 'Objavi',
 	'postcomment_on' => 'Dne',
 	'postcomment_said' => 'pravi',
 	'postcomment_invalidrequest' => 'Neveljavna zahteva.',
+	'postcomment_replyto' => 'Odgovori $1',
 );
 
 /** Lower Silesian (Schläsch)

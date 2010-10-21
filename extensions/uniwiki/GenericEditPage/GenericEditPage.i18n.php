@@ -157,6 +157,15 @@ $messages['arz'] = array(
 	'gep-nocategories' => 'لو سمحت تختار تصنيف واحد على الاقل قبل الحفظ',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'gep-categories' => 'Катэгорыі',
+	'gep-addcategorybutton' => 'Дадаць',
+	'gep-addsectionbutton' => 'Дадаць',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

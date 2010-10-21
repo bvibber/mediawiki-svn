@@ -665,6 +665,13 @@ $messages['tr'] = array(
 	'multiboilerplate-submit' => 'Yükle',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'multiboilerplate-submit' => 'Завантажити',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

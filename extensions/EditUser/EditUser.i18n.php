@@ -681,6 +681,13 @@ $messages['jv'] = array(
 	'edituser-dosearch' => 'Golèk',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'edituser-dosearch' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -734,10 +741,10 @@ $messages['krj'] = array(
 $messages['ksh'] = array(
 	'edituser-desc' => 'Määt et müjjelesch, dat Metmaacher met däm Rääsch dozoh aan anderlüx Enstelleunge driije künne.',
 	'edituser' => 'De Enstellunge för dä Metmaacher ändere',
-	'edituser-username' => 'Metmaacher Name',
+	'edituser-username' => 'Metmaacher_Name:',
 	'edituser-dosearch' => 'Sööke',
-	'edituser-nouser' => 'Dä Metmaacher ham_mer nit.',
-	'edituser-exempt' => 'Dä Metmaacher kam_mer nit beärbeide.',
+	'edituser-nouser' => 'Ene Metmaacher „$1“ ham_mer nit.',
+	'edituser-exempt' => '{{GENDER:$1|Dä Metmaacher|Dat|Dä Metmaacher|De Metmaacherin|Et}} „$1“ kam_mer nit beärbeide.',
 	'right-edituser' => 'Enstellunge för ander Metmaacher Ändere',
 	'right-edituser-exempt' => 'Kann de Enstellunge nit fun andere ändere lohße',
 );

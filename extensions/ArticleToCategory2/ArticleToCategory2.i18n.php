@@ -260,6 +260,17 @@ $messages['ja'] = array(
 	'articletocategory2-create-category-under-category-button' => '作成',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'articletocategory2-desc' => 'Deiht op jede Sigg vun en Saachjropp e Feld dobei, wo mer Atikelle drövver aanlääje kann, di dann automattesch in di Jropp enzotteet wääde.',
+	'articletocategory2-create-article-under-category-text' => 'Donn en Sigg en heh di Saachjropp eren',
+	'articletocategory2-create-article-under-category-button' => 'Aanlääje',
+	'articletocategory2-create-category-under-category-text' => 'En Saachjropp en heh di Saachjropp eren donn',
+	'articletocategory2-create-category-under-category-button' => 'Aanläje',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby

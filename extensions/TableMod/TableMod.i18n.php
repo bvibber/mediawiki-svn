@@ -601,6 +601,8 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'tablemod-msg-remove' => 'Вилучити',
+	'tablemod-error-invalidsort' => 'Неприпустимі параметри сортування.',
+	'tablemod-error-invalidaction' => 'Неприпустима дія.',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -340,6 +340,13 @@ $messages['tr'] = array(
 	'preloader-desc' => 'Yeni sayfalar için isim alanına özel kişiselleştirilebilir hazır metinler sunar',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'preloader-desc' => 'Забезпечення настроюваних за імен по стандартним типовим текстам для нової сторінки',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

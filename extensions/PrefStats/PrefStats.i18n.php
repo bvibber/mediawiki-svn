@@ -1695,6 +1695,20 @@ Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 	'prefstats-xaxis' => 'Trukmė (valandomis)',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'prefstats-xaxis' => 'Ilgums (stundas)',
+	'prefstats-factor-hour' => 'stunda',
+	'prefstats-factor-sixhours' => 'sešas stundas',
+	'prefstats-factor-day' => 'diena',
+	'prefstats-factor-week' => 'nedēļa',
+	'prefstats-factor-twoweeks' => 'divas nedēļas',
+	'prefstats-factor-fourweeks' => 'četras nedēļas',
+	'prefstats-factor-default' => 'atpakaļ uz noklusēto skalu',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */

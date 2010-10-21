@@ -1110,6 +1110,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1119,7 +1120,7 @@ $messages['ro'] = array(
 	'errorhandler-error-parse' => 'Eroare de parser',
 	'errorhandler-error-notice' => 'Notificare',
 	'errorhandler-error-deprecated' => 'Învechit',
-	'errorhandler-error-core-error' => 'Eroare nucelu',
+	'errorhandler-error-core-error' => 'Eroare nucleu',
 	'errorhandler-error-core-warning' => 'Avertisment nucleu',
 	'errorhandler-error-compile-error' => 'Eroare de compilare',
 	'errorhandler-error-compile-warning' => 'Avertizare de compilare',
@@ -1362,6 +1363,7 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'errorhandler-desc' => 'Оброблювач помилок для MediaWiki',
@@ -1379,8 +1381,10 @@ $messages['uk'] = array(
 	'errorhandler-error-user-warning' => 'Попередження користувача',
 	'errorhandler-error-user-notice' => 'Повідомлення користувача',
 	'errorhandler-error-user-deprecated' => 'Користувач заборонений',
+	'errorhandler-error-strict' => 'Жорсткі стандарти',
 	'errorhandler-msg-text' => '$1 : $2 в $3 (рядок $4)',
 	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> у <b>$3</b> (рядок <b>$4</b>)',
+	'errorhandler-trace' => 'відбиток:',
 	'errorhandler-trace-line' => '$1 (рядок $2): $3',
 	'errorhandler-trace-line-internal' => '[внутрішня функція]: $1',
 );

@@ -1606,6 +1606,20 @@ $messages['tr'] = array(
 	'tasklistprojdisp' => 'Gösteri',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'tasklist' => 'Список завдань',
+	'tasklistbyproject' => 'Список завдань по проектах',
+	'tasklistunknownproject' => 'Невідомий проект',
+	'tasklistunspecuser' => 'Невизначений користувач',
+	'tasklistincorrectuser' => "Неправильне ім'я користувача",
+	'tasklistmytasks' => 'Мої завдання',
+	'tasklistchooseproj' => 'Оберіть проект:',
+	'tasklistprojdisp' => 'Показати',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

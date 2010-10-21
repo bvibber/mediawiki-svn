@@ -636,6 +636,13 @@ $messages['bar'] = array(
 	'deletequeue-list-search' => 'Suacha',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'deletequeue-case-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -6568,6 +6575,7 @@ $messages['uk'] = array(
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-search' => 'Пошук',
 	'deletequeue-list-header-page' => 'Сторінка',
+	'deletequeue-list-header-reason' => 'Причина вилучення',
 	'deletequeue-case-page' => 'Сторінка:',
 	'deletequeue-case-reason' => 'Причина:',
 );

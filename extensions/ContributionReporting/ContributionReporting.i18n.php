@@ -420,6 +420,13 @@ $messages['ba'] = array(
 	'contribstats-average' => 'Уртаса',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'contribstats-template' => 'Шаблон',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1772,7 +1779,7 @@ $messages['frp'] = array(
 	'contributionreporting-desc' => 'Rapôrt de survelyence en dirèct sur la levâ de fonds de Wikimedia',
 	'contributiontotal' => 'Soma de les contribucions',
 	'contributionhistory' => 'Historico de les contribucions',
-	'contrib-hist-header' => 'Comentèros en dirèct ux donators a travèrs lo mondo',
+	'contrib-hist-header' => 'Comentèros ux donators du mondo entiér',
 	'contrib-hist-name' => 'Nom',
 	'contrib-hist-date' => 'Dâta et hora',
 	'contrib-hist-amount' => 'Montent',
@@ -2865,7 +2872,7 @@ $messages['ksh'] = array(
 	'contributionreporting-desc' => 'Tirek övver de Wikimedia Shtefftung ier Spende-Sammlong bereeschte',
 	'contributiontotal' => 'De Spende zosamme jeräshnet',
 	'contributionhistory' => 'De Spende bes jäz',
-	'contrib-hist-header' => 'De Spender uß alle Welt ier Annmerkunge tirek aanzeije',
+	'contrib-hist-header' => 'De Spender uß alle Welt ier Annmerkunge',
 	'contrib-hist-name' => 'Name',
 	'contrib-hist-date' => 'Uhrzick un Dattum',
 	'contrib-hist-amount' => 'Betraach',
@@ -2907,6 +2914,11 @@ $messages['ksh'] = array(
 	'contribstats-landingpage' => 'De Sigg, woh mer drop kütt',
 	'contribstats-donatepage' => 'Sigg övver et Spände',
 	'contribstats-average' => 'Dorschnett',
+	'contribstats-imperfect-data' => 'Di Aanjabe sin nit kumplätt, weil mer Shpender ohne en täschnesche Verfoljung vun Setzunge nit all jriefe künne.',
+	'contribstats-paypal-donations' => 'Shpände met <i lang="en">PayPal</i>',
+	'contribstats-credit-card' => 'Kredditkaat',
+	'contribstats-fraud-note' => 'E paa unääshte Spende sen och dobei.',
+	'contribstats-unaudited' => 'Di Jesampsumme sin nit jeprööf.',
 	'fundraiserstatistics' => 'Statistik övver de Spende',
 	'fundraiserstats-date' => 'Dattum',
 	'fundraiserstats-day' => 'Dä $1. Daach{{PLURAL:$2||, fun $2 Dääch|}}',
@@ -2919,6 +2931,7 @@ $messages['ksh'] = array(
 	'fundraiserstats-tab-contributions' => 'Aanzahl Beidrääsch',
 	'fundraiserstats-tab-averages' => 'De Schnette (en Dollar us de USA)',
 	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
+	'fundraiserstats-tab-ytd' => 'En diesem Johr ald ? US$',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -4097,15 +4110,28 @@ $messages['ro'] = array(
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
+ * @author Reder
  */
 $messages['roa-tara'] = array(
+	'contributionreporting-desc' => "Dirette sus 'a raccolte funne de Wikimedia",
 	'contributiontotal' => 'Condrebbute totele',
 	'contributionhistory' => 'Storie de le condrebbute',
+	'contrib-hist-header' => "Commènde de le donatore jndre totte 'u munne",
 	'contrib-hist-name' => 'Nome',
 	'contrib-hist-date' => 'Orarie e date',
 	'contrib-hist-amount' => 'Imborte',
+	'contrib-hist-next' => 'Donazione precendende',
+	'contrib-hist-previous' => 'Donazione recende',
 	'contrib-hist-anonymous' => 'Anonime',
 	'contributionstatistics' => 'Statisteche de le condrebbute',
+	'contribstats-desc' => "Visualizze le statisteche de le condrebbute pè 'a Wikimedia Foundation",
+	'contribstats-daily-totals' => '{{PLURAL:$1|Totale pè ôsce|Somme sciùrnaliere passate $1 sciùrne}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|Totale pè quiste mise|Somme mensile passate $1 mise}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|Totale pè $1 mise|Somme mensile pè $1 mise}}',
+	'contribstats-currency-range-totals' => 'Valute totale (da $1 a $2)',
+	'contribstats-contribution-range-breakdown' => 'Scucchiamènde de le condrebbute pè valore (da $1 a $2)',
+	'contribstats-currency-totals' => "Valute totale pè l'anne fiscale de $1",
+	'contribstats-contribution-breakdown' => "Scucchiamènde de le condrebbute de valore pè l'anne fiscale de $1",
 	'contribstats-day' => 'Sciúrne',
 	'contribstats-month' => 'Mese',
 	'contribstats-currency' => 'Monete',
@@ -4120,13 +4146,25 @@ $messages['roa-tara'] = array(
 	'contribstats-value-under' => 'Mene de $1',
 	'contribstats-value-from' => 'Da $1 - $2',
 	'contribstats-value-over' => 'Sus a $1',
+	'contributiontrackingstatistics' => 'Condrebbute de monitoragge de le statisteche',
 	'contribstats-day-totals' => 'Totale pe sciurne',
 	'contribstats-week' => 'Sumáne',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Totale pè quèste sumáne|Somme sumánale $1 sumáne combrese}}',
+	'contribstats-payment-type' => 'Tipe de pajamènde',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Tipe de pajamènde hits',
+	'contribstats-clicks' => 'Cazze',
 	'contribstats-donations' => 'Donazziune',
+	'contribstats-conversion' => 'Tasse de conversione (%)',
 	'contribstats-template' => 'Template',
+	'contribstats-nodata' => 'Nisciune date fornite',
+	'contribstats-landingpage' => 'Pagene de arrive',
+	'contribstats-donatepage' => 'Pagene de donazione',
 	'contribstats-average' => 'Medie',
 	'contribstats-paypal-donations' => 'Donazziune cu PayPal',
 	'contribstats-credit-card' => 'Carte de credite',
+	'contribstats-fraud-note' => 'Stone quacche donazione fraudolente.',
+	'contribstats-unaudited' => 'Quiste sonde le oggette totale de revisiue condabbile',
 	'fundraiserstats-date' => 'Date',
 	'fundraiserstats-day' => 'Sciurne $1 de $2',
 	'fundraiserstats-contributions' => 'Condrebbute',
@@ -4134,7 +4172,10 @@ $messages['roa-tara'] = array(
 	'fundraiserstats-avg' => 'Medie (USD)',
 	'fundraiserstats-ytd' => 'Totale cumulative (USD)',
 	'fundraiserstats-max' => 'Massime (USD)',
+	'fundraiserstats-tab-totals' => 'Totale (USD)',
 	'fundraiserstats-tab-contributions' => 'Numere de le condrebbute',
+	'fundraiserstats-tab-averages' => 'Medie (USD)',
+	'fundraiserstats-tab-maximums' => 'Massime (USD)',
 	'fundraiserstats-tab-ytd' => 'Anne-a-date (USD)',
 );
 
@@ -4856,7 +4897,7 @@ $messages['tk'] = array(
 	'contributionreporting-desc' => 'Wikimedia fond ýygnaýjysynyň janly habarlary',
 	'contributiontotal' => 'Goşant jemi',
 	'contributionhistory' => 'Goşant geçmişi',
-	'contrib-hist-header' => 'Dünýäniň çar tarapyndan real-time bagyşçy teswirleri',
+	'contrib-hist-header' => 'Dünýäniň çar tarapyndan bagyşçy teswirleri',
 	'contrib-hist-name' => 'At',
 	'contrib-hist-date' => 'Wagt we sene',
 	'contrib-hist-amount' => 'Summa',

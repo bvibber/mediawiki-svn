@@ -492,6 +492,13 @@ $messages['ru'] = array(
 	'mwsearch-desc' => 'Плагин MWSearch',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwsearch-desc' => 'Плаґін MWSearch',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -1616,6 +1616,21 @@ $messages['lmo'] = array(
 	'readerfeedback-presentation' => 'Presentazión',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'readerfeedback-npov' => 'Neitralitāte',
+	'readerfeedback-level-none' => '(nezinu)',
+	'readerfeedback-submit' => 'Iesniegt',
+	'readerfeedback-main' => 'Vērtēt var tikai satura lapas.',
+	'readerfeedback-finished' => 'Paldies!',
+	'readerfeedback-tierfilter' => 'Vērtējums:',
+	'readerfeedback-tier-high' => 'Augsts',
+	'readerfeedback-tier-medium' => 'Vidējs',
+	'readerfeedback-tier-poor' => 'Zems',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

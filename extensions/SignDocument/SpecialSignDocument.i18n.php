@@ -440,6 +440,16 @@ $messages['bcl'] = array(
 	'sign-review-comment' => 'Komento',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'sign-city' => 'Горад:',
+	'sign-state' => 'Штат:',
+	'sign-viewfield-city' => 'Горад',
+	'sign-viewfield-state' => 'Штат',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

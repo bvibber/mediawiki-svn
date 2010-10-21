@@ -1151,6 +1151,7 @@ $messages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Papuass
  * @author Xil
  * @author לערי ריינהארט
  */
@@ -1158,6 +1159,8 @@ $messages['lv'] = array(
 	'sitematrix' => 'Visu Wikimedia wiki projektu uzskaitījums',
 	'sitematrix-language' => 'Valoda',
 	'sitematrix-others' => 'Citi Wikimedia projekti',
+	'sitematrix-sitetotal' => 'Kopā',
+	'sitematrix-private' => 'privāts',
 );
 
 /** Macedonian (Македонски)

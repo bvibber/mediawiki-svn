@@ -2167,6 +2167,13 @@ $messages['jv'] = array(
 	'tasks_logentry' => 'Kanggo "[[$1]]"',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'tasks_search_form_title' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith
@@ -3937,19 +3944,27 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'tasks' => 'Завдання',
+	'tasks_desc' => 'Розширення для керування завданнями',
 	'tasks_tab' => 'Завдання',
+	'tasks_title' => 'Завдання для "$1"',
+	'tasks_form_new' => 'Створення нового завдання',
 	'tasks_form_comment' => 'Примітка',
 	'tasks_error1' => 'Завдання не було встановлено: таке завдання вже існує!',
 	'tasks_ok1' => 'Було встановлене нове завдання!',
 	'tasks_create_header' => 'Створення нового завдання',
 	'tasks_existing_header' => 'Існуючі завдання',
+	'tasks_existing_table_header' => 'Завдання|Дати|Початковий коментар|Призначення/Дії/Сторінка',
 	'tasks_noone' => 'ніхто',
+	'tasks_close' => 'Закрити завдання',
 	'tasks_delete' => 'Вилучити',
+	'tasks_no_task_delete_title' => 'Не дозволено',
 	'tasks_action_delete' => 'Завдання було вилучено.',
 	'tasks_task_was_deleted' => 'Завдання було успішно вилучено.',
 	'tasks_reopen' => 'Відкрити завдання знову',
+	'tasks_discussion_page_link' => 'Сторінка обговорення завдання',
 	'tasks_sidebar_title' => 'Відкриті завдання',
 	'tasks_here' => 'тут',
+	'tasks_plain_text_only' => '(звичайний текст, не більше 256 символів)',
 	'tasks_help_page' => 'Завдання',
 	'tasks_more_like_it' => 'більше',
 	'tasks_event_on_creation' => 'перевірити',
@@ -3967,6 +3982,7 @@ $messages['uk'] = array(
 	'tasks_previous' => 'Назад',
 	'tasks_next' => 'Далі',
 	'tasks_sort' => 'Сортування',
+	'tasks_ascending' => 'Спочатку старіші',
 	'tasks_status_open' => 'Відкрита',
 	'tasks_status_assigned' => 'Призначена',
 	'tasks_status_closed' => 'Закрита',

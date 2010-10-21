@@ -699,6 +699,7 @@ $messages['ug-arab'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'pageby-desc' => 'Показує учасників редагування безпосередньо на вікі-сторінці за допомогою тегу <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Сторінка створена $1 $2',
 	'pageby-last' => 'Востаннє <a href="$3">змінювалась</a> $1 $2',
 	'pageby-contributors' => 'Автори:',

@@ -329,6 +329,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -337,6 +338,8 @@ $messages['hu'] = array(
 	'tiff_too_many_embed_files' => 'A kép túl sok beágyazott fájlt tartalmaz.',
 	'tiff_targetfile_too_large' => 'A célfájl felbontása túl nagy. Nem fog bélyegkép készülni hozzá.',
 	'tiff_file_too_large' => 'A feltöltött fájl túl nagy, vissza lett utasítva.',
+	'tiff_out_of_service' => 'A feltöltött fájlt nem sikerült feldolgozni.
+Az ImageMagick nem érhető el.',
 	'tiff_too_much_meta' => 'A metaadatok túl sok helyet foglalnak.',
 	'tiff_script_detected' => 'A feltöltött fájl parancsfájlokat tartalmaz.',
 	'tiff_bad_file' => 'A feltöltött fájl hibákat tartalmaz: $1',

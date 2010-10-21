@@ -53,6 +53,13 @@ $messages['ar'] = array(
 	'massblank-blankcomment' => 'السبب:',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'massblank-blankcomment' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

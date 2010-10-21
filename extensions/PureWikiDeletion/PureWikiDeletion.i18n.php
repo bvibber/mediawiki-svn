@@ -375,8 +375,11 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 	'right-purewikideletion' => 'Tabelu wuprózdnjenych stronow [[Special:PopulateBlankedPagesTable|napjelnić]]',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Dani
+ */
 $messages['hu'] = array(
+	'randomexcludeblank' => 'Véletlen lap (üres lapokat kivéve)',
 	'purewikideletion-blanknologin' => 'Nem vagy bejelentkezve',
 );
 
@@ -769,5 +772,22 @@ Maaari mong [{{fullurl:{{FULLPAGENAMEE}}|action=history}} tingnan ang kasaysayan
 Tingnan ang $2 para sa isang tala ng kamakailang lamang na mga pagtanggal ng laman.',
 	'purewikideletion-population-done' => 'Tapos na ang pagpapadami sa tabla ng pahinang_inalisan_ng_laman .',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Paramihin ang loob]] ng tabla ng mga pahinang inalisan ng laman',
+);
+
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'purewikideletion' => 'Чистове видалення в Вікі',
+	'randomexcludeblank' => 'Випадкові сторінки (крім порожніх)',
+	'populateblankedpagestable' => 'Заповнити таблицю очищенних сторінок',
+	'purewikideletion-desc' => 'Помічає посилання на очищені сторінки червоним кольором',
+	'purewikideletion-pref-watchblank' => 'Додати сторінки які я очищаю до мого списку спостереження',
+	'purewikideletion-pref-watchunblank' => 'Додавати сторінки після очистки до мого списку спостереження',
+	'purewikideletion-blanked' => "A former version of this page was blanked by [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) on $5 at $6.
+
+The reason given for blanking was: ''<nowiki>$3</nowiki>''.
+
+You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the page's history], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edit the last version], or type new page into the white space below.",
 );
 

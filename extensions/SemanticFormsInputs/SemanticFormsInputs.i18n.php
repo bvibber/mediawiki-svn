@@ -176,8 +176,11 @@ $messages['he'] = array(
 	'semanticformsinputs-today' => 'היום',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Dani
+ */
 $messages['hu'] = array(
+	'semanticformsinputs-wrongformat' => 'Hibás formátum.',
 	'semanticformsinputs-close' => 'Bezárás',
 	'semanticformsinputs-prev' => 'Előző',
 	'semanticformsinputs-next' => 'Következő',
@@ -352,6 +355,7 @@ $messages['tl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'semanticformsinputs-close' => 'Закрити',
 	'semanticformsinputs-prev' => 'Попередня',
 	'semanticformsinputs-next' => 'Наступна',
 );

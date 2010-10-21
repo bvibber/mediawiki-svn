@@ -911,6 +911,7 @@ $messages['vo'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'intersection_toomanycats' => 'Àsìṣe: Àwọn ẹ̀ka ti pọ̀jù!',
 	'intersection_noresults' => 'Àsìṣe: Kò sí àwọn èsì kankan!',
 );
 

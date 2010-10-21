@@ -241,6 +241,14 @@ $messages['arz'] = array(
 	'dt_import_success' => '$1 {{PLURAL:$1|صفحه|صفحه}} ح يتعملو من الفايل $2.',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'dt_viewxml_categories' => 'Катэгорыі',
+	'dt_xml_template' => 'Шаблон',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1259,6 +1267,23 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'dt_viewxml_categories' => 'Kategorijos',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'dt_viewxml_categories' => 'Kategorijas',
+	'dt_viewxml_namespaces' => 'Vārdtelpas',
+	'dt_viewxml_simplifiedformat' => 'Vienkāršots formāts',
+	'dt_xml_namespace' => 'Vārdtelpa',
+	'dt_xml_pages' => 'Lapas',
+	'dt_xml_page' => 'Lapa',
+	'dt_xml_template' => 'Veidne',
+	'dt_xml_field' => 'Lauks',
+	'dt_xml_name' => 'Vārds',
+	'dt_xml_title' => 'Nosaukums',
+	'dt_xml_id' => 'ID',
 );
 
 /** Eastern Mari (Олык Марий)

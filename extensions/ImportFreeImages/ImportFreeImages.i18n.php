@@ -142,6 +142,13 @@ $messages['bar'] = array(
 	'importfreeimages_size_original' => 'original',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'importfreeimages_owner' => 'Аўтар',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

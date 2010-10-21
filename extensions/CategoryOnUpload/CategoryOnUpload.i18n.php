@@ -74,6 +74,13 @@ $messages['bar'] = array(
 	'categoryonupload-label' => 'Kategorie:',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'categoryonupload-label' => 'Катэгорыя:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

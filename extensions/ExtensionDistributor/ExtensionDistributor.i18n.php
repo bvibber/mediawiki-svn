@@ -2635,6 +2635,14 @@ Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navšt�
 	'extdist-want-more' => 'Stiahnuť iné rozšírenie',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'extensiondistributor' => 'Prenesi razširitev MediaWiki',
+	'extdist-submit-extension' => 'Nadaljuj',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

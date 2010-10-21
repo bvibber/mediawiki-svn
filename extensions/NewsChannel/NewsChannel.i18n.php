@@ -84,6 +84,13 @@ $messages['ast'] = array(
 	'newschannel_submit_button' => "Crear fonte d'anuncies",
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'newschannel_format' => 'Фармат:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

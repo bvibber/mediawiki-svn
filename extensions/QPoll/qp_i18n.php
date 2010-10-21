@@ -410,6 +410,13 @@ $messages['arz'] = array(
 	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبه المحتمله المعرفة: مستحيل الإكمال',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'qp_stats_link' => 'Статыстыка',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -2424,6 +2431,7 @@ $messages['tt-cyrl'] = array(
  */
 $messages['uk'] = array(
 	'qp_desc' => 'Дозволяє створювати опитування',
+	'qp_result_error' => 'Синтаксична помилка',
 	'qp_users_link' => 'Користувачі',
 	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
 );

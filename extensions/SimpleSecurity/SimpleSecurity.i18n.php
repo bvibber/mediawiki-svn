@@ -119,6 +119,13 @@ $messages['arc'] = array(
 	'security-type-namespace' => 'ܚܩܠܐ',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'security-type-category' => 'катэгорыя',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1093,7 +1100,9 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'security' => 'Журнал безпеки',
 	'security-desc' => 'Розширює захист сторінок MediaWiki, дозволяючи обмежувати перегляд вмісту сторінки',
+	'security-logpage' => 'Журнал безпеки',
 	'security-inforestrict' => '$1 обмежений для $2',
 	'security-type-category' => 'категорія',
 	'security-type-namespace' => 'простір назв',

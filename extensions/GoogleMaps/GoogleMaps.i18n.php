@@ -418,7 +418,7 @@ $wgGoogleMapsMessages['arc'] = array(
 	'gm-show-path' => 'ܚܘܝ ܢܘܩܙ̈ܐ',
 	'gm-color-path' => 'ܫܚܠܦ ܓܘܢܐ',
 	'gm-line-width' => 'ܦܬܘܐ',
-	'gm-back' => 'ܦܢܝܐ',
+	'gm-back' => 'ܗܦܟܐ ܠܒܣܬܪܐ',
 	'gm-earth' => 'ܐܪܥܐ',
 	'gm-moon' => 'ܣܗܪܐ',
 );
@@ -2985,6 +2985,13 @@ $wgGoogleMapsMessages['kk-cyrl'] = array(
  */
 $wgGoogleMapsMessages['kk-latn'] = array(
 	'gm-zoom-control' => 'Şarlaw',
+);
+
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$wgGoogleMapsMessages['kl'] = array(
+	'gm-search' => 'Ujarlerit',
 );
 
 /** Khmer (ភាសាខ្មែរ)

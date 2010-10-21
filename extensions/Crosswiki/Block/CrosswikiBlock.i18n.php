@@ -248,6 +248,14 @@ $messages['arz'] = array(
 	'crosswikiunblock-local' => 'عمليات المنع المحلية غير مدعومة بواسطة هذه الواجهة. استخدم [[Special:IPBlockList|{{int:ipblocklist}}]]',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'crosswikiblock-reason' => 'Прычына:',
+	'crosswikiunblock-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -2876,6 +2884,7 @@ Geri dön:
 /** Ukrainian (Українська)
  * @author Alex Khimich
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'crosswikiblock-desc' => 'Дозволяє блокувати користувачів в інших вікі за допомогою [[Special:Crosswikiblock|спеціальної сторінки]]',
@@ -2891,6 +2900,7 @@ $messages['uk'] = array(
 	'crosswikiunblock-user' => "Ім'я користувача, IP-адреса або блокування ID в призначенній вікі:",
 	'crosswikiunblock-reason' => 'Причина:',
 	'crosswikiunblock-submit' => 'Розблокувати цього користувача',
+	'crosswikiblock-noexpiry' => 'Помилковий строк закінчення: $1.',
 );
 
 /** Urdu (اردو) */

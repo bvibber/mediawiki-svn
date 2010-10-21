@@ -420,6 +420,15 @@ $messages['lo'] = array(
 	'categorystepper-start' => '(ເລິ່ມໝວດ)',
 );
 
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'categorystepper-desc' => 'Parāda kategoriju apstaigāšanas logu, ļaujot pārvietoties pa lapai piesaistītajam kategorijām alfabētiskā secībā',
+	'categorystepper-end' => '(Kategorijas beigas)',
+	'categorystepper-start' => '(Kategorijas sākums)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

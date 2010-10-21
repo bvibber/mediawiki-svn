@@ -163,6 +163,17 @@ $messages['hsb'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimalnje 20 srjódkow',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ */
+$messages['hu'] = array(
+	'jsbreadcrumbs-leading-description' => 'Navigációs lánc',
+	'prefs-jsbreadcrumbs' => 'Bread Crumbs',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Bread crumb megjelenítése',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Bread crumbok száma',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximum 20 bread crumb',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

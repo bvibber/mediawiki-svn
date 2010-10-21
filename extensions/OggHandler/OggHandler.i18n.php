@@ -384,6 +384,13 @@ $messages['bcl'] = array(
 	'ogg-dismiss' => 'Isara',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'ogg-dismiss' => 'Закрыць',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -2087,10 +2094,15 @@ $messages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Papuass
  * @author Xil
  */
 $messages['lv'] = array(
+	'ogg-pause' => 'Pauze',
+	'ogg-player-selected' => '(izvēlēts)',
 	'ogg-dismiss' => 'Aizvērt',
+	'ogg-download' => 'Lejupielādēt failu',
+	'ogg-desc-link' => 'Par šo failu',
 );
 
 /** Macedonian (Македонски)
@@ -2906,6 +2918,7 @@ $messages['si'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Jkjk
  */
 $messages['sk'] = array(
 	'ogg-desc' => 'Obsluha súborov Ogg Theora a Vorbis s JavaScriptovým prehrávačom',
@@ -2934,6 +2947,8 @@ $messages['sk'] = array(
 	'ogg-dismiss' => 'Zatvoriť',
 	'ogg-download' => 'Stiahnuť súbor',
 	'ogg-desc-link' => 'O tomto súbore',
+	'ogg-oggThumb-version' => 'OggHandler vyžaduje verziu oggThumbu $1 alebo novšiu.',
+	'ogg-oggThumb-failed' => 'oggThumbu sa neporarilo vytvoriť obraz.',
 );
 
 /** Slovenian (Slovenščina)

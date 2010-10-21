@@ -175,6 +175,13 @@ $messages['bcl'] = array(
 	'bookinfo-result-year' => 'Taon:',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'bookinfo-result-author' => 'Аўтар:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

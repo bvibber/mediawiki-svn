@@ -979,6 +979,11 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'fundraiserportal-plain-button' => 'Підпорте Вікіпедю!',
+	'fundraiserportal-rubytext-button' => 'Зробити пожертву зараз',
+	'fundraiserportal-rubytext-close' => 'Сховати тото одтеперь',
+	'fundraiserportal-sapphire-button' => 'Зробити пожертву зараз',
+	'fundraiserportal-tourmaline-button' => 'Зробити пожертву зараз',
+	'fundraiserportal-tourmaline-close' => 'Сховати тото одтеперь',
 );
 
 /** Yakut (Саха тыла)

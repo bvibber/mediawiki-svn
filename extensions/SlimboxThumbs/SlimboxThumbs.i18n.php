@@ -186,3 +186,10 @@ $messages['tl'] = array(
 	'slimboxthumbs-desc' => 'Nagpapakita ng buong hugis ng mga larawan na ginagamitan ng [http://www.digitalia.be/software/slimbox2 Slimbox 2] kapag pinipindot ang mga kagyat',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'slimboxthumbs-desc' => 'Показує повний розмір зображення з [http://www.digitalia.be/software/slimbox2 Slimbox 2] при натисканні на мініатюру',
+);
+

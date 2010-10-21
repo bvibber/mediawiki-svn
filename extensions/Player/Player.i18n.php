@@ -1422,9 +1422,20 @@ $messages['ug-latn'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Тест
  */
 $messages['uk'] = array(
+	'player' => 'Програвач',
+	'player-title' => 'Програвач',
+	'player-playertitle' => 'Програвач: $1',
+	'player-file' => 'Назва файлу',
+	'player-play' => 'Відтворити',
+	'player-not-allowed' => 'заборонений формат',
+	'player-not-found' => 'файл не знайдено',
+	'player-invalid-title' => 'помилкова назва',
+	'player-clicktoplay' => 'Відтворити $1',
+	'player-goto-player' => 'програвач',
 	'player-goto-page' => 'Сторінка',
 	'player-goto-file' => 'файл',
 );

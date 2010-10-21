@@ -533,6 +533,7 @@ $messages['arc'] = array(
 	'prefswitch-survey-true' => 'ܐܝܢ',
 	'prefswitch-survey-false' => 'ܠܐ',
 	'prefswitch-title-on' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
+	'prefswitch-title-switched-off' => 'ܬܘܕܝ',
 );
 
 /** Bashkir (Башҡорт)
@@ -4654,8 +4655,31 @@ Grįžti į <span class="plainlinks">[$1 $2]</span>.',
  * @author Papuass
  */
 $messages['lv'] = array(
+	'prefswitch-link-anon' => 'Jaunas iespējas',
+	'tooltip-pt-prefswitch-link-anon' => 'Uzzini vairāk par jaunajām iespējām',
+	'prefswitch-link-on' => 'Vecais izskats',
+	'tooltip-pt-prefswitch-link-on' => 'Atslēgt jaunās iespējas',
+	'prefswitch-link-off' => 'Jaunas iespējas',
+	'tooltip-pt-prefswitch-link-off' => 'Izmēģini jaunās iespējas',
 	'prefswitch-survey-true' => 'Jā',
 	'prefswitch-survey-false' => 'Nē',
+	'prefswitch-survey-submit-feedback' => 'Nosūtīt atsauksmi',
+	'prefswitch-survey-question-like' => 'Kas tev patika jaunajās iespējās?',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Man nepatika jaunā rīkjosla.',
+	'prefswitch-survey-answer-whyoff-other' => 'Cits iemesls:',
+	'prefswitch-survey-question-browser' => 'Kādu pārlūkprogrammu tu izmanto?',
+	'prefswitch-survey-answer-browser-other' => 'Cits pārlūks:',
+	'prefswitch-survey-question-os' => 'Kuru operētājsistēmu tu izmanto?',
+	'prefswitch-survey-answer-os-other' => 'Cita operētājsistēma:',
+	'prefswitch-survey-question-res' => 'Kāda ir tava ekrāna izšķirtspēja?',
+	'prefswitch-title-on' => 'Jaunas iespējas',
+	'prefswitch-title-switched-on' => 'Izbaudi!',
+	'prefswitch-title-off' => 'Atslēgt jaunās iespējas',
+	'prefswitch-title-switched-off' => 'Paldies',
+	'prefswitch-title-feedback' => 'Atsauksmes',
+	'prefswitch-success-feedback' => 'Tavas atsauksmes ir nosūtītas.',
+	'prefswitch-return' => '<hr style="clear:both">
+Atgriezties uz <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Minangkabau (Baso Minangkabau)
@@ -6207,15 +6231,33 @@ Pentru a ne ajuta să le perfecționăm vă rugăm să răspundeți la sondajul 
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
+ * @author Reder
  */
 $messages['roa-tara'] = array(
+	'prefswitch-link-anon' => 'Nuève funziune',
+	'tooltip-pt-prefswitch-link-anon' => "Cchiù 'mbormazziune sus a le funziune nuève",
 	'prefswitch-link-on' => 'Puerteme rrete',
+	'tooltip-pt-prefswitch-link-on' => 'Disabbilite le funziune nuève',
+	'prefswitch-link-off' => 'Nuève funziune',
+	'tooltip-pt-prefswitch-link-off' => 'Pruève le funziune nuève',
 	'prefswitch-survey-true' => 'Sìne',
 	'prefswitch-survey-false' => 'None',
+	'prefswitch-survey-submit-off' => 'Chiude le funziune nuève',
+	'prefswitch-survey-submit-feedback' => 'Invie commende',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "Non ge me piace 'u mode jndre cui se vedene le caratteristeche.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "Non ge me piacene le schede nuève e 'a disposizione.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "Non ge me piace 'a barra de le struminde nova.",
 	'prefswitch-survey-answer-whyoff-other' => 'Otre mutive:',
+	'prefswitch-survey-question-browser' => 'Ce browser ause?',
+	'prefswitch-survey-answer-browser-other' => 'Otre browser:',
+	'prefswitch-survey-question-os' => 'Ce sisteme operative ause?',
+	'prefswitch-survey-answer-os-other' => 'Otre sisteme operative:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Sìne, chiude le caratteristeche sus a totte le uicchi',
+	'prefswitch-survey-question-res' => "Ce risoluzione tène 'u scherme tue?",
 	'prefswitch-title-switched-on' => 'Devirtete!',
 	'prefswitch-title-switched-off' => 'Rengraziaminde',
 	'prefswitch-title-feedback' => 'Giudizie',
+	'prefswitch-success-feedback' => "'U commende tue hé state inviate.",
 );
 
 /** Russian (Русский)
@@ -6610,8 +6652,44 @@ $messages['si'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
+	'prefswitch' => 'Prepínač nastavenia Iniciatívy použiteľnosti',
+	'prefswitch-desc' => 'Umožňuje používateľom prepínať sady predvolieb',
+	'prefswitch-link-anon' => 'Nové funkcie',
+	'tooltip-pt-prefswitch-link-anon' => 'Vyskúšajte nové funkcie',
+	'prefswitch-link-on' => 'Vrátiť späť',
+	'tooltip-pt-prefswitch-link-on' => 'Vypnúť nové funkcie',
+	'prefswitch-link-off' => 'Nové funkcie',
+	'tooltip-pt-prefswitch-link-off' => 'Vyskúšajte nové funkcie',
+	'prefswitch-jswarning' => 'Pamätajte pri zmene témy vzhľadu budete musieť skopírovať svoj [[User:$1/$2.js|JavaScriptový súbor $2]] do [[{{ns:user}}:$1/vector.js]] <!-- alebo [[{{ns:user}}:$1/common.js]]--> aby naďalej fungoval.',
+	'prefswitch-csswarning' => 'Vaše [[User:$1/$2.css|vlastné štýly $2]] už nebudú požité. Vlastné CSS pre tému vzhľadu Vector môžete pridať do [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Áno',
 	'prefswitch-survey-false' => 'Nie',
+	'prefswitch-survey-submit-off' => 'Vypnúť nové funkcie',
+	'prefswitch-survey-cancel-off' => 'Ak si želáte pokračovať v používaní nových funkcií, môžete sa vrátiť späť na $1',
+	'prefswitch-survey-submit-feedback' => 'Poslať komentáre',
+	'prefswitch-survey-cancel-feedback' => 'Ak nechcete poskytnúť komentáre, môžete sa vrátiť na $1.',
+	'prefswitch-survey-question-like' => 'Čo sa vám páčilo na nových funkciách?',
+	'prefswitch-survey-question-dislike' => 'Čo sa vám nepáčilo na nových funkciách?',
+	'prefswitch-survey-question-whyoff' => 'Prečo vypínate nové funkcie? 
+Vyberte prosím všetky možnosti, ktoré považujete za pravdivé.',
+	'prefswitch-survey-question-globaloff' => 'Chcete nové funkcie vypnúť globálne?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Nové funkcie sa používali príliš ťažko.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Nové funkcie nefungovali správne.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nové funkcie sa nesprávali predvídateľne.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nepáčilo sa mi ako vyzerali.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nepáčili sa mi nové záložky a rozloženie.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nepáčil sa mi nový panel nástrojov.',
+	'prefswitch-survey-answer-whyoff-other' => 'Iný dôvod:',
+	'prefswitch-survey-question-browser' => 'Ktorý prehliadač používate?',
+	'prefswitch-survey-answer-browser-other' => 'Iný prehliadač:',
+	'prefswitch-survey-question-os' => 'Ktorý operačný systém používate?',
+	'prefswitch-survey-answer-os-other' => 'Iný operačný systém:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Áno, funkcie vypnúť na všetkých wiki',
+	'prefswitch-survey-question-res' => 'Aké je rozlíšenie vašej obrazovky?',
+	'prefswitch-title-on' => 'Nové funkcie',
+	'prefswitch-title-switched-on' => 'Užite si to!',
+	'prefswitch-title-off' => 'Vypnúť nové funkcie',
+	'prefswitch-title-switched-off' => 'Ďakujeme',
 );
 
 /** Slovenian (Slovenščina)

@@ -2394,6 +2394,7 @@ Abone olmak için aşağıdaki düğmeye tıklayın.",
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Alex Khimich
  * @author Apromix
  * @author Тест
  */
@@ -2401,7 +2402,15 @@ $messages['uk'] = array(
 	'povwatch_push' => 'Помістити',
 	'povwatch_title' => 'Назва:',
 	'povwatch_comment' => 'Примітки для журналу:',
+	'povwatch_unsubscribe' => 'Відписатись',
+	'povwatch_subscribe_intro' => 'Ви не підписані на PovWatch. 
+ Натисніть на кнопку нижче, щоб підписатися.',
+	'povwatch_subscribe' => 'Підписатися',
 	'povwatch_added' => 'додано',
+	'right-povwatch_admin' => 'Адміністрування прав користувачів для додавання сторінок в списки спостереження інших користувачів',
+	'right-povwatch_user' => 'Додати сторінки в списки спостереження інших користувачів',
+	'action-povwatch_admin' => 'адміністрування прав користувачів для PovWatch',
+	'action-povwatch_user' => 'додати цю сторінку до списку спостереження іншого користувача',
 );
 
 /** Vèneto (Vèneto)

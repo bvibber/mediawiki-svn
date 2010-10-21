@@ -38,6 +38,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author McDutchie
  * @author Purodha
  * @author Umherirrender
  */
@@ -47,7 +48,9 @@ $messages['qqq'] = array(
 Hint: The linked special page allows to collect stuff and make it into downloadable packages.',
 	'pf-only-admins-allowed' => 'Do not translate "<code lang="en">packageforce-admin</code>".',
 	'pf-admin-menu-default' => '{{Identical|Default}}',
+	'pf-admin-link-editlink-page' => 'This is a link anchor. The page it links to allows users to edit the Package page. The link itself is an entry in a table column, the column header of which is {{msg-mw|Pf-header-edit}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
+	'pf-header-edit' => 'This is a column header in a table. In the rows, there are clickable links with description {{msg-mw|pf-admin-link-editlink-page}} that allow users to edit the Package page.',
 	'pf-header-page_title' => '{{Identical|Title}}',
 	'pf-header-approve' => '{{Identical|Approve}}',
 );
@@ -107,10 +110,15 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'pf-desc' => '[[Special:PackageForce|Skidanje paketea]] korisnih šablona/itd.',
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administratorska stranica za PackageForce',
+	'pf-desc' => '[[Special:PackageForce|Skidanje paketa]] korisnih šablona/itd.',
+	'pf-only-admins-allowed' => "Ova stranica je samo za korisnike sa 'packageforce-admin'-pravom.",
 	'pf-admin-menu-default' => 'Pretpostavljeno',
 	'pf-admin-menu-unsortedtemplates' => 'Šabloni još nisu poredani',
+	'pf-admin-link-view-documentation' => 'Pogledaj dokumentacije vezane sa stranicom.',
 	'pf-admin-link-editlink-page' => 'Uredi stranicu',
+	'pf-admin-link-approve' => 'Odobri stranicu',
 	'pf-header-documentation' => 'Dokumentacija',
 	'pf-header-in_packages' => 'Paketi',
 	'pf-header-edit' => 'Uredi link',
@@ -339,8 +347,13 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => 'Hasznos sablonok és egyéb dolgok [[Special:PackageForce|letöltése csomagban]]',
 	'pf-admin-menu-default' => 'Alapértelmezett',
+	'pf-admin-link-view-documentation' => 'A laphoz tartozó dokumentációk megtekintése.',
 	'pf-admin-link-editlink-page' => 'Lap szerkesztése',
+	'pf-admin-link-approve' => 'Lap jóváhagyása',
 	'pf-header-documentation' => 'Dokumentáció',
 	'pf-header-in_packages' => 'Csomagok',
 	'pf-header-edit' => 'Hivatkozás szerkesztése',
@@ -364,7 +377,7 @@ $messages['ia'] = array(
 	'pf-admin-link-approve' => 'Approbar pagina',
 	'pf-header-documentation' => 'Documentation',
 	'pf-header-in_packages' => 'Pacchettos',
-	'pf-header-edit' => 'Modificar ligamine',
+	'pf-header-edit' => 'Ligamine de mod.',
 	'pf-header-type' => 'Typo de pagina',
 	'pf-header-page_title' => 'Titulo',
 	'pf-header-approve' => 'Approbar',
@@ -442,12 +455,16 @@ $messages['ksh'] = array(
 	'pf-admin-menu-default' => 'Shtandatt',
 	'pf-admin-menu-unsortedtemplates' => 'De Schabloone sin noch nit zoteet',
 	'pf-admin-link-view-documentation' => 'Beloor Der de Dokkemäntazjuhn för di Sigg',
+	'pf-admin-link-editlink-page' => 'De Sigg ändere',
+	'pf-admin-link-approve' => 'De Sigg beshtääteje',
 	'pf-header-documentation' => 'Dokkemäntazjuhn',
 	'pf-header-in_packages' => 'Pakkätte
 of
 Pöngelle',
+	'pf-header-edit' => 'Lengk för et Ändere',
 	'pf-header-type' => 'Zoot vun Sigg',
-	'pf-header-page_title' => 'Tittel',
+	'pf-header-page_title' => 'Tittel vun dä Sigg',
+	'pf-header-approve' => 'Lengk för et Beshtääteje',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -507,7 +524,7 @@ $messages['nl'] = array(
 	'pf-admin-link-approve' => 'Pagina goedkeuren',
 	'pf-header-documentation' => 'Documentatie',
 	'pf-header-in_packages' => 'Pakketten',
-	'pf-header-edit' => 'Verwijzing bewerken',
+	'pf-header-edit' => 'Bewerken',
 	'pf-header-type' => 'Type pagina',
 	'pf-header-page_title' => 'Naam',
 	'pf-header-approve' => 'Goedkeuren',
@@ -767,10 +784,16 @@ $messages['tl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'pf-desc' => '[[Special:PackageForce|Завантаження наборів]] корисних шаблонів та інш.',
 	'pf-admin-menu-default' => 'За умовчанням',
+	'pf-admin-link-view-documentation' => "Перегляд документів, пов'язаних зі сторінкою.",
 	'pf-admin-link-editlink-page' => 'Редагувати сторінку',
+	'pf-admin-link-approve' => 'Затвердити сторінку',
+	'pf-header-documentation' => 'Документація',
+	'pf-header-in_packages' => 'Набори',
 	'pf-header-type' => 'Тип сторінки',
 	'pf-header-page_title' => 'Заголовок',
+	'pf-header-approve' => 'Затвердження',
 );
 
 /** Yiddish (ייִדיש)

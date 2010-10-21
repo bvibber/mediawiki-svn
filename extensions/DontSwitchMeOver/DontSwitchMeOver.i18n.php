@@ -419,6 +419,22 @@ $messages['rue'] = array(
 	'dontswitchmeover-pref' => 'Не мінити мій зволеный взгляд почас переходу на іншый імпліцітный взгляд',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'dontswitchmeover-desc' => 'Бу тэрил киһи тус туоруорууларыгар билигин көстөр тиэмэни куруук хаалларарга (по умолчанию тиэмэ уларыйбытын да иһин) туттуллар.',
+	'dontswitchmeover-pref' => 'По умолчанию тиэмэ уларыйдаҕына мин тиэмэбин уларытыма',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'dontswitchmeover-desc' => 'Používatelia si môžu určiť, či chcú zachovať svoje nastavenie témy vzhľadu pri zmene predvolenej témy vzhľadu.',
+	'dontswitchmeover-pref' => 'Nedovoliť, aby sa moja téma vzhľadu zmenila, keď sa zmení predvolená téma vzhľadu',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

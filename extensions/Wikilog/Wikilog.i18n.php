@@ -871,6 +871,15 @@ $messages['arz'] = array(
 	'wikilog-doc-import-comment' => 'استورد توثيق سجل الويكي',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'wikilog-authors' => 'Аўтары',
+	'wikilog-form-author' => 'Аўтар:',
+	'wikilog-history-lc' => 'Гісторыя',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -3491,6 +3500,8 @@ Vedd ki a pipát a doboz elől, ha vázlatként szeretnéd elmenteni a cikket.',
 	'wikilog-newtalk-text' => '<!-- a Wikinapló által létrehozott üres oldal -->',
 	'wikilog-newtalk-summary' => 'automatikusan létrehozta a Wikinapló',
 	'wikilog-feed-description' => 'A hírcsatorna legújabb hozzászólásainak olvasása',
+	'wikilog-comment-feed-title1' => '$2 hozzászólása (#$1)',
+	'wikilog-comment-feed-title2' => '$2 hozzászólása a(z) $3 lapon (#$1)',
 	'wikilog-title-comments' => 'Megjegyzések – $1',
 	'wikilog-error-msg' => 'Wikinapló: $1',
 	'wikilog-error-title' => 'Wikinapló hiba',
@@ -7249,6 +7260,7 @@ $messages['uk'] = array(
 	'wikilog-edit-fieldset-legend' => 'Опції вікілогу:',
 	'wikilog-edit-signpub' => 'Підписати та опублікувати цю статтю',
 	'wikilog-comment-permalink' => '$1 о $2',
+	'wikilog-comment-anonsig' => '$3 (анонім)',
 	'wikilog-comment-pending' => 'Цей коментар чекає на розгляд.',
 	'wikilog-comment-deleted' => 'Цей коментар був вилучений.',
 	'wikilog-comment-omitted-x' => 'Коментар не вказаний (#$1).',
@@ -7277,6 +7289,8 @@ $messages['uk'] = array(
 	'wikilog-invalid-file' => 'Недійсний файл: $1.',
 	'wikilog-file-not-found' => 'Неіснуючий файл: $1.',
 	'wikilog-not-an-image' => 'Файл не є зображенням: $1.',
+	'wikilog-comment-is-empty' => 'Відправлений коментар порожній.',
+	'wikilog-comment-too-long' => 'Відправлений коментар занадто довгий.',
 	'wikilog-form-category' => 'Категорія:',
 	'wikilog-form-name' => 'Назва:',
 	'wikilog-form-author' => 'Автор:',

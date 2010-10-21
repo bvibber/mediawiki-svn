@@ -354,13 +354,25 @@ $messages['el'] = array(
 	'mwe-clipedit-duration' => 'Διάρκεια:',
 );
 
-/** Esperanto (Esperanto) */
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
 $messages['eo'] = array(
 	'mwe-clipedit-crop' => 'Stuci bildon',
 	'mwe-clipedit-apply_crop' => 'Apliki stucon al bildo',
+	'mwe-clipedit-reset_crop' => 'Reŝarĝi stucon',
+	'mwe-clipedit-insert_image_page' => 'Enigi en paĝon',
+	'mwe-clipedit-insert_into_sequence' => 'Enigi en sekvencon',
+	'mwe-clipedit-preview_insert' => 'Antaŭvidi enmeton',
 	'mwe-clipedit-cancel_image_insert' => 'Nuligi enmeton',
 	'mwe-clipedit-sc_duration' => 'Daŭro',
 	'mwe-clipedit-custom_title' => 'Memkreita titolo',
+	'mwe-clipedit-other_properties' => 'Aliaj ecoj',
+	'mwe-clipedit-edit-tools' => 'Redaktiloj',
+	'mwe-clipedit-inline-description' => 'Subteksto',
+	'mwe-clipedit-edit-video-tools' => 'Video-redaktiloj',
+	'mwe-clipedit-duration' => 'Daŭro:',
+	'mwe-clipedit-layout' => 'Aspekto',
 );
 
 /** Spanish (Español)
@@ -804,7 +816,9 @@ $messages['ko'] = array(
 	'mwe-clipedit-duration' => '시간:',
 );
 
-/** Colognian (Ripoarisch) */
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
 	'mwe-clipedit-crop' => 'Beld beschnigge',
 	'mwe-clipedit-apply_crop' => 'Lohß Jonn!',
@@ -813,6 +827,7 @@ $messages['ksh'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'En de Afshpellleß ennfööje',
 	'mwe-clipedit-preview_insert' => 'Vör_Aansich för et Ennfööje',
 	'mwe-clipedit-cancel_image_insert' => 'Et Enfööje avbreche!',
+	'mwe-clipedit-sc_attributes' => 'Einzelheite zom Video ändere',
 	'mwe-clipedit-sc_inoutpoints' => 'Der En- un Ußschteeschßpunk för et Afschpelle faßlääje',
 	'mwe-clipedit-sc_overlays' => 'Övverbländunge',
 	'mwe-clipedit-sc_audio' => 'Enshtällunge för der Tohn',
@@ -830,6 +845,9 @@ $messages['ksh'] = array(
 	'mwe-clipedit-inline-description' => 'Legände',
 	'mwe-clipedit-edit-video-tools' => 'Wärkzüsch för Viddejos ze beärbeide:',
 	'mwe-clipedit-duration' => 'Duur:',
+	'mwe-clipedit-layout' => 'Ußreeschdung',
+	'mwe-clipedit-layout_right' => 'Beld op der rääshte Sigg',
+	'mwe-clipedit-layout_left' => 'Beld op der lengke Sigg',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

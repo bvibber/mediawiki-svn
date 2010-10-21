@@ -135,6 +135,7 @@ $messages['he'] = array(
  */
 $messages['hu'] = array(
 	'rdfimport' => 'RDF importálása',
+	'sparqlendpoint' => 'SPARQL végpont',
 );
 
 /** Interlingua (Interlingua)

@@ -463,6 +463,13 @@ $messages['ka'] = array(
 	'searchbox-namespaces' => 'სახელთა სივრცეები:',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'searchbox-search' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author គីមស៊្រុន
@@ -886,6 +893,7 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'searchbox-search' => 'Пошук',
 	'searchbox-namespaces' => 'Простори назв:',
 );
 

@@ -1023,6 +1023,13 @@ $messages['yi'] = array(
 	'sitenotice-desc' => 'ערלויבט באַניצער שליסן דעם נאטיץ',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'sitenotice_close' => 'palẹ̀mọ́',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',

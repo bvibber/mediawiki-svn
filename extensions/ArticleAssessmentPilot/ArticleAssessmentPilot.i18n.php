@@ -1198,17 +1198,27 @@ $messages['li'] = array(
  * @author Papuass
  */
 $messages['lv'] = array(
+	'articleassessment-yourfeedback' => 'Tavas atsauksmes',
+	'articleassessment-pleaserate' => 'Lūdzu, velti laiku, lai novērtētu šo lapu.',
 	'articleassessment-submit' => 'Iesniegt',
 	'articleassessment-rating-wellsourced' => 'Korektas atsauces:',
 	'articleassessment-rating-neutrality' => 'Neitralitāte:',
 	'articleassessment-rating-completeness' => 'Pilnīgums:',
 	'articleassessment-rating-readability' => 'Lasāmība:',
 	'articleassessment-articlerating' => 'Lapas vērtējums',
+	'articleassessment-error' => 'Notika kļūda. 
+Lūdzu, mēģini vēlreiz vēlāk.',
+	'articleassessment-thanks' => 'Paldies! Tavs vērtējums ir saglabāts.',
+	'articleassessment-results-show' => '(Rezultāti paslēpti. <span class="showlink">Parādīt</span> tos.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Paslēpt rezultātus</span>)',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Man patīk dalīties ar viedokli',
 	'articleassessment-survey-answer-whyrated-other' => 'Cits',
 	'articleassessment-survey-question-useful-iffalse' => 'Kāpēc?',
+	'articleassessment-survey-question-expert-iftrue' => 'Vai tu vari aprakstīt savu specializāciju?',
+	'articleassessment-survey-question-comments' => 'Vai tev ir kādi papildus komentāri?',
 	'articleassessment-survey-submit' => 'Iesniegt',
+	'articleassessment-survey-title' => 'Lūdzu, atbildi uz dažiem jautājumiem',
+	'articleassessment-survey-thanks' => 'Paldies par piedalīšanos aptaujā.',
 );
 
 /** Macedonian (Македонски)
@@ -1832,6 +1842,40 @@ Možno ju budete chcieť znova ohodnotiť.",
 	'articleassessment-survey-thanks' => 'Ďakujeme za vyplnenie dotazníka.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'articleassessment-yourfeedback' => 'Vaša povratna informacija',
+	'articleassessment-pleaserate' => 'Prosimo, vzemite si trenutek in spodaj ocenite to stran.',
+	'articleassessment-submit' => 'Pošlji',
+	'articleassessment-rating-wellsourced' => 'Dobro dokumentirano:',
+	'articleassessment-rating-neutrality' => 'Nevtralnost:',
+	'articleassessment-rating-completeness' => 'Celovitost:',
+	'articleassessment-rating-readability' => 'Bralnost:',
+	'articleassessment-articlerating' => 'Ocena strani',
+	'articleassessment-error' => 'Prišlo je do napake.
+Prosimo, poskusite znova pozneje.',
+	'articleassessment-thanks' => 'Hvala! Vaša ocena je bila zabeležena.',
+	'articleassessment-featurefeedback' => 'Podajte nam <span class="feedbacklink">povratno informacijo</span> o tej funkciji.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|ocena|oceni|ocene|ocen}})',
+	'articleassessment-stalemessage-norevisioncount' => "Stran je bila ''pregledana'' odkar ste jo nazadnje ocenili.
+Morda jo želite ponovno oceniti.",
+	'articleassessment-results-show' => '(Rezultati so skriti. <span class="showlink">Prikaži</span> jih.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Skrij rezultate</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Želel sem prispevati k projektu {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Rad delim svoje mnenje',
+	'articleassessment-survey-answer-whyrated-other' => 'Drugo',
+	'articleassessment-survey-question-useful' => 'Ali verjamete, da so posredovane ocene uporabne in jasne?',
+	'articleassessment-survey-question-useful-iffalse' => 'Zakaj?',
+	'articleassessment-survey-question-expert' => 'Menite, da ste strokovnjak na področju, ki ga pokriva članek?',
+	'articleassessment-survey-question-expert-iftrue' => 'Lahko pojasnite svoje izvedensko mnenje?',
+	'articleassessment-survey-question-comments' => 'Imate kakšne dodatne pripombe?',
+	'articleassessment-survey-submit' => 'Pošlji',
+	'articleassessment-survey-title' => 'Prosimo, odgovorite na nekaj vprašanj',
+	'articleassessment-survey-thanks' => 'Zahvaljujemo se vam za izpolnitev vprašalnika.',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Fluff
@@ -1932,6 +1976,18 @@ $messages['te'] = array(
 	'articleassessment-survey-submit' => 'దాఖలుచెయ్యి',
 	'articleassessment-survey-title' => 'దయచేసి కొన్ని ప్రశ్నలకి సమాధానమివ్వండి',
 	'articleassessment-survey-thanks' => 'ఈ సర్వేని పూరించినందుకు కృతజ్ఞతలు.',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'articleassessment-yourfeedback' => 'Seslenmäňiz',
+	'articleassessment-submit' => 'Tabşyr',
+	'articleassessment-rating-completeness' => 'Doly:',
+	'articleassessment-survey-answer-whyrated-other' => 'Başga',
+	'articleassessment-survey-question-useful-iffalse' => 'Näme üçin?',
+	'articleassessment-survey-submit' => 'Tabşyr',
 );
 
 /** Tagalog (Tagalog)

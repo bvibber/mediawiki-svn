@@ -114,6 +114,13 @@ $messages['an'] = array(
 	'refhelper-create' => 'Creyar',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'refhelper-category' => 'Катэгорыя $1:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -615,9 +622,14 @@ Móžeš [[Special:RefHelper|referencu manuelnje přidać]] abo [[Special:RefSea
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'refsearch' => 'Hivatkozás keresése',
+	'refhelper-refcreate_legend' => 'Új hivatkozás készítése',
+	'refhelper-refsearch_legend' => 'Hivatkozás keresése a PubMeden',
+	'refhelper-refcreate_autocomment' => 'A lap automatikusan létrejött.',
 	'refhelper-refcreate_failure' => 'A(z) [[$1]] lap már létezik!',
 	'refhelper-label_workspace' => 'Munkaterület (másolás és beillesztés):',
 	'refhelper-label_authorforename' => 'Szerző ($1) keresztneve:',
@@ -627,9 +639,12 @@ $messages['hu'] = array(
 	'refhelper-volume' => 'Kötet:',
 	'refhelper-pages' => 'Oldalszám:',
 	'refhelper-year' => 'Év:',
+	'refhelper-refname' => 'Hivatkozás neve:',
 	'refhelper-category' => '$1 kategória:',
 	'refhelper-create' => 'Létrehozás',
 	'refhelper-search' => 'Keresés',
+	'refhelper-toolbox_link_create' => 'Hivatkozás készítése',
+	'refhelper-toolbox_link_search' => 'Hivatkozás készítése keresés alapján',
 );
 
 /** Interlingua (Interlingua)

@@ -1498,14 +1498,19 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'imagemap_desc' => 'Omogoča klikljive zemljevide slik na odjemalski strani z uporabo oznake <code>&lt;imagemap&gt;</code>',
 	'imagemap_no_image' => 'Napaka: v prvi vrstici morate navesti sliko',
 	'imagemap_invalid_image' => 'Napaka: slika je neveljavna ali ne obstaja',
 	'imagemap_bad_image' => 'Napaka: slika je na tej strani na črnem seznamu',
+	'imagemap_no_link' => 'Napaka: na koncu vrstice $1 ni bila najdena veljavna povezava',
 	'imagemap_invalid_title' => 'Napaka: neveljaven naslov v povezavi v vrstici $1',
 	'imagemap_missing_coord' => 'Napaka: ni dovolj koordinat za obliko v vrstici $1',
+	'imagemap_unrecognised_shape' => 'Napaka: nerazpoznavna oblika v vrsici $1; vsaka vrstica se mora začeti z enim od: default, rect, circle ali poly',
+	'imagemap_no_areas' => 'Napaka: navedeno mora biti vsaj eno območje',
 	'imagemap_invalid_coord' => 'Napaka: neveljavna koordinata v vrstici $1, mora biti število',
 	'imagemap_invalid_desc' => 'Napaka: neveljavno določilo desc, mora biti eno izmed: <code>$1</code>',
 	'imagemap_description' => 'O tej sliki',
+	'imagemap_poly_odd' => 'Napaka: najden večkotnik z lihim številom koordinat v vrstici $1',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -1791,6 +1796,13 @@ $messages['vo'] = array(
 	'imagemap_invalid_title' => 'Error: tiäd no lonöföl pö yüm su lien: $1',
 	'imagemap_invalid_coord' => 'Error: koordinats no lonöföls su lien $1: mutons binön num',
 	'imagemap_description' => 'Tefü magod at',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'imagemap_description' => 'Nípa àwòrán yìí',
 );
 
 /** Cantonese (粵語)

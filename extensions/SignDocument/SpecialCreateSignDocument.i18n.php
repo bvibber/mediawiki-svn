@@ -1981,6 +1981,7 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'createsigndoc-pagename' => 'Сторінка:',
 	'createsigndoc-email' => 'Адреса електронної пошти:',
+	'createsigndoc-introtext' => 'Вступ:',
 	'createsigndoc-hidden' => 'Прихований',
 	'createsigndoc-create' => 'Створити',
 );

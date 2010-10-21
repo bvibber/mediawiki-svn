@@ -157,6 +157,13 @@ $messages['az'] = array(
 	'right-authorprotect' => 'Müəllif səhifələrinin mühafizəsi',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'authorprotect-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

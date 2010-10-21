@@ -174,6 +174,13 @@ $messages['arz'] = array(
 	'right-spamregex' => 'منع عبارات السبام من خلال [[Special:SpamRegex]]',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'spamregex-text' => '(Тэкст)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

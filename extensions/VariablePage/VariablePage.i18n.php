@@ -131,6 +131,14 @@ $messages['fr'] = array(
 	'variablepage-desc' => 'Redirection légère vers une page variable',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'variablepage' => 'PâgeVariâbla',
+	'variablepage-navlink_text' => 'Balyér',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -328,6 +336,13 @@ $messages['ru'] = array(
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'variablepage-navlink_text' => 'Doniraj',
+);
+
 /** Swedish (Svenska)
  * @author Cohan
  */
@@ -341,6 +356,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'variablepage-navlink_text' => 'విరాళమివ్వండి',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'variablepage-navlink_text' => 'Bagyş et',
 );
 
 /** Tagalog (Tagalog)

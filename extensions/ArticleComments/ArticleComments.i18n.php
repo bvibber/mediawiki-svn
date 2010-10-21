@@ -208,6 +208,7 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  * @author The Evil IP address
  * @author 青子守歌
  */
@@ -231,7 +232,7 @@ $messages['de'] = array(
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 meinte …',
-	'article-comments-summary' => 'Der Kommentar wurde von $1 abgegeben.',
+	'article-comments-summary' => 'Ein Kommentar wurde von $1 über die Programmerweiterung <code lang="en">ArticleComments</code> abgegeben.',
 	'article-comments-submission-succeeded' => 'Die Kommentierung wurde durchgeführt.',
 	'article-comments-submission-success' => 'Du hast erfolgreich einen Kommentar für Seite „[[$1]]“ abgegeben.',
 	'article-comments-submission-view-all' => 'Du kannst [[$1|alle Kommentare zu dieser Seite]] einsehen',
@@ -253,6 +254,14 @@ $messages['eo'] = array(
 	'article-comments-name-field' => 'Nomo (deviga):',
 	'article-comments-url-field' => 'Retejo:',
 	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Komenti:',
+	'article-comments-comment-field' => 'Komenti:',
+	'article-comments-submit-button' => 'Enmeti',
+	'article-comments-leave-comment-link' => 'Komenti ...',
+	'article-comments-invalid-field' => 'La $1 provizis <nowiki>[$2]</nowiki> estas malvalida.',
+	'article-comments-required-field' => '$1 kampo estas deviga.',
+	'article-comments-submission-failed' => 'Enmetado de komento malsukcesis',
+	'article-comments-failure-reasons' => 'Bedaŭrinde, via komentado malsukcesis pro la jena(j) kialo(j):',
 	'article-comments-commenter-said' => '$1 diris ...',
 );
 
@@ -409,6 +418,7 @@ $messages['he'] = array(
  */
 $messages['hu'] = array(
 	'article-comments-desc' => 'Megjegyzések szakasz a tartalommal rendelkező lapokra',
+	'article-comments-title-string' => 'cím',
 	'article-comments-name-string' => 'Név',
 	'article-comments-name-field' => 'Név (kötelező):',
 	'article-comments-url-field' => 'Weboldal:',
@@ -416,9 +426,12 @@ $messages['hu'] = array(
 	'article-comments-comment-string' => 'Megjegyzés',
 	'article-comments-comment-field' => 'Megjegyzés:',
 	'article-comments-submit-button' => 'Elküldés',
+	'article-comments-leave-comment-link' => 'Hozzászólás írása ...',
+	'article-comments-invalid-field' => 'A megadott $1 <nowiki>[$2]</nowiki> érvénytelen.',
 	'article-comments-required-field' => '$1 mező kitöltése kötelező.',
 	'article-comments-submission-failed' => 'A hozzászólás elküldése nem sikerült',
 	'article-comments-failure-reasons' => 'A hozzászólás elküldése nem sikerült a következő ok(ok) miatt:',
+	'article-comments-no-comments' => 'Sajnáljuk, a(z) „[[$1]]” laphoz jelenleg nem lehet hozzászólásokat írni.',
 	'article-comments-talk-page-starter' => '<noinclude>Hozzászólások a(z) [[$1]] laphoz
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
@@ -501,6 +514,42 @@ $messages['ja'] = array(
 	'article-comments-comment-missing-date-parameter' => 'コメントの日付がありません',
 	'article-comments-no-spam' => '投稿された項目のうち、少なくとも1つがスパムとしてフラグが設定されました。',
 	'processcomment' => '記事コメントの処理',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'article-comments-desc' => 'Määt Aanmerkunge op Sigge müjjelesch.',
+	'article-comments-title-string' => 'Övverschreff',
+	'article-comments-name-string' => 'Naam',
+	'article-comments-name-field' => 'Naam (kam_mer nit fottlohße):',
+	'article-comments-url-field' => 'Websait:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Aanmerkung',
+	'article-comments-comment-field' => 'Enndraach för en et Logboch:',
+	'article-comments-submit-button' => 'Faßhallde!',
+	'article-comments-leave-comment-link' => 'Donn en Aanmerkung maache&nbsp;…',
+	'article-comments-invalid-field' => 'De aanjejovve $1 <nowiki>[$2]</nowiki> es nix wäät.',
+	'article-comments-required-field' => '$1 moß aanjejovve sin.',
+	'article-comments-submission-failed' => 'En Aanmerkung ze maache hät nit jeflup',
+	'article-comments-failure-reasons' => 'En Aanmerkung ze maache hät nit jeflup, weil:',
+	'article-comments-no-comments' => 'För de Sigg „[[$1]]“ künne em Momang kein Aanmerkunge jemaat wääde.',
+	'article-comments-talk-page-starter' => '<noinclude>Aanmerkunge op [[$1]]
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '{{GENDER:$1|Dä||Et|Dä Metmaacher|De|Et}} $1 hät jeschrevve&nbsp;…',
+	'article-comments-summary' => '{{GENDER:$1|Dä||Et|Dä Metmaacher|De|Et}} $1 hät en Aanmerkung jeschrevve övver et Zohsaz_Programm <i lang="en">ArticleComments</i>.',
+	'article-comments-submission-succeeded' => 'Di Aanmerkung es jemaat',
+	'article-comments-submission-success' => 'Do häs en Aanmerkung för di Sigg „[[$1]]“ jemaat.',
+	'article-comments-submission-view-all' => 'Do kanns Der [[$1|alle Aanmerkunge op dä Sigg]] beluore.',
+	'article-comments-user-is-blocked' => 'Do darfs di Sigg „[[$1]]“ em Momang nit ändere.',
+	'article-comments-comment-bad-mode' => 'För di Aanmerkung wood ene unbikannte Zoot Täx aanjejovve.
+Müjjelesh sin bloß „<code lang="en">plain</code>“, „<code lang="en">normal</code>“, un „<code lang="en">wiki</code>“.',
+	'article-comments-comment-missing-name-parameter' => 'Dä Name fählt',
+	'article-comments-comment-missing-date-parameter' => 'Et Dattum fählt',
+	'article-comments-no-spam' => 'En winnishsdens eine vun dä Einjabe wohd SPAM jefonge.',
+	'processcomment' => 'Ben di Aanmerkung aam verärbeide',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -925,6 +974,25 @@ $messages['uk'] = array(
 	'article-comments-comment-field' => 'Коментар:',
 	'article-comments-submit-button' => 'Відправити',
 	'article-comments-leave-comment-link' => 'Написати коментар ...',
+	'article-comments-invalid-field' => 'Варіант $1, запропонований <nowiki>[$2]</nowiki> є недійсний.',
 	'article-comments-required-field' => "Поле $1 — обов'язкове.",
+	'article-comments-submission-failed' => 'Помилка відправки коментарів',
+	'article-comments-failure-reasons' => 'На жаль, ваш коментар неможливо було додати через наступні причини:',
+	'article-comments-no-comments' => 'Нажаль, на сторінці  "[[$1]]" відхилена можливість додавати коментарі на цей час.',
+	'article-comments-talk-page-starter' => '<noinclude> Коментарі на [[$1]] 
+<comments />
+ ----- __NOEDITSECTION__ </noinclude>',
+	'article-comments-commenter-said' => '$1 сказав ...',
+	'article-comments-summary' => 'Коментарі надаються $1 - використовуючи додаток ArticleComments',
+	'article-comments-submission-succeeded' => 'Коментар був надісланий вдало.',
+	'article-comments-submission-success' => 'Ви успішно додали коментар до "[[$1]]"',
+	'article-comments-submission-view-all' => 'Ви можете переглянути [[$1|всі коментарі на цій сторінці]]',
+	'article-comments-user-is-blocked' => 'Обліковий запис користувача в даний момент заблокований від редагування "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'Ви обрали невірний вид коментарів.
+Потрібно використати коментарі виду "plain", "normal" або "wiki".',
+	'article-comments-comment-missing-name-parameter' => "Відсутнє ім'я",
+	'article-comments-comment-missing-date-parameter' => 'Відсутня дата коментарію',
+	'article-comments-no-spam' => 'Принаймні один з представлених полів було відмічено як такий, що містить спам.',
+	'processcomment' => 'Переглянути коментарі до матеріалу',
 );
 

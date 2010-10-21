@@ -70,6 +70,13 @@ $messages['arz'] = array(
 	'authors_anonymous' => 'مش معروف',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'authors_authors' => 'Аўтары',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -973,6 +973,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -1012,6 +1013,7 @@ $messages['hu'] = array(
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
 	'recordadmin-notset' => 'Nincs „$1”',
+	'recordadmin-properties' => 'Tulajdonságok',
 );
 
 /** Interlingua (Interlingua)

@@ -983,6 +983,7 @@ Móžeće [$1 wozjewjene powědančka čitać].',
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -996,17 +997,32 @@ $messages['hu'] = array(
 	'storyboard-option-unpublished' => 'nincs közzétéve',
 	'storyboard-option-published' => 'közzétéve',
 	'storyboard-option-hidden' => 'elrejtve',
+	'story' => 'Történet',
+	'storyboard-viewstories' => 'Történetek megtekintése',
+	'storyboard-authorname' => 'Szerző neve',
+	'storyboard-authoroccupation' => 'Szerző foglalkozása',
+	'storyboard-authoremail' => 'Szerző e-mail címe',
+	'storyboard-thestory' => 'A történet',
 	'storyboard-storystate' => 'Megye/állam',
 	'storyboard-language' => 'Nyelv',
+	'storyboard-yourname' => 'A neved (kötelező)',
 	'storyboard-occupation' => 'A foglalkozásod',
+	'storyboard-story' => 'A történeted',
 	'storyboard-email' => 'Az email címed (kötelező)',
 	'storyboard-storytitle' => 'Egy rövid, beszédes cím (kötelező)',
+	'storyboard-charsleft' => '({{PLURAL:$1|egy|$1}} karakter maradt)',
+	'storyboard-cannotbelonger' => 'A történeted túl hosszú, <b>{{PLURAL:$1|egy|$1}}</b> karakteres!',
+	'storyboard-charsneeded' => '({{PLURAL:$1|$1|egy}} karakter kell még)',
 	'storyboard-submissioncomplete' => 'A beküldés kész',
 	'storyboard-submissionincomplete' => 'A beküldés meghiúsult',
+	'storyboard-alreadyexists' => 'A(z) „$1” már foglalt',
 	'storyboard-changetitle' => 'Cím megváltoztatása.',
+	'storyboard-notsubmitted' => 'Autentikáció nem sikertelen, a történet nem lett elmentve.',
 	'storyboard-charstomany' => '$1 karakterrel több, mint lehetne!',
 	'storyboard-morecharsneeded' => 'még $1 karakter szükséges',
 	'storyboard-charactersleft' => '$1 karakter maradt',
+	'storyboard-emailtitle' => 'Történet beküldése sikerült',
+	'storyreview' => 'Történet ellenőrzése',
 	'storyboard-deleteimage' => 'Kép törlése',
 	'storyboard-done' => 'Kész',
 	'storyboard-working' => 'Feldolgozás…',

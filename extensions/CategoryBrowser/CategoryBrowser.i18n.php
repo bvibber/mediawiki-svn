@@ -308,6 +308,10 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|subkategorio|subkategorioj}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|paĝo|paĝoj}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|dosiero|dosieroj}}',
+	'cb_has_parentcategories' => 'Superaj kategorioj (se ili ekzistas)',
 	'cb_previous_items_link' => 'Antaŭa',
 	'cb_next_items_link' => 'Sekva',
 	'cb_next_items_stats' => '(de $1)',
@@ -543,6 +547,7 @@ $messages['he'] = array(
  */
 $messages['hu'] = array(
 	'categorybrowser' => 'Kategóriaböngésző',
+	'cb_cat_name_filter_ci' => 'Ne különböztesse meg a kis- és nagybetűket',
 	'cb_has_subcategories' => '{{PLURAL:$1|egy|$1}} alkategória',
 	'cb_has_pages' => '{{PLURAL:$1|egy|$1}} lap',
 	'cb_has_files' => '{{PLURAL:$1|egy|$1}} fájl',
@@ -558,6 +563,7 @@ $messages['hu'] = array(
 	'cb_and_op' => 'és',
 	'cb_edit_left_hint' => 'Mozgás balra, ha lehetséges',
 	'cb_edit_right_hint' => 'Mozgás jobbra, ha lehetséges',
+	'cb_edit_remove_hint' => 'Törlés, ha lehetséges',
 	'cb_edit_copy_hint' => 'Operátor másolása a vágólapra',
 	'cb_edit_append_hint' => 'Operátor beillesztése a legutolsó helyre',
 	'cb_edit_clear_hint' => 'Kifejezés törlése (összes kijelölése)',
@@ -672,6 +678,45 @@ $messages['ja'] = array(
  */
 $messages['kn'] = array(
 	'cb_all_op' => 'ಎಲ್ಲಾ',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorybrowser' => 'En Saachjroppe bläddere',
+	'categorybrowser-desc' => 'Deiht en [[Special:CategoryBrowser|Extrasigg]] en et Wiki, öm de vollste Saachjroppe ze fenge un en dänne övver en AJAX-Schnettställ ze bläddere.',
+	'cb_requires_javascript' => 'Öm et Saachjroppe-Bläddere bruche ze künne, moß em Brauser JavaSkrepp zohjelohße sin.',
+	'cb_ie6_warning' => 'Dat Enjävve vun Bedengunge deiht et nit met dä Version 6.0 vum Internet Explorer udder ällder Versione.
+Ävver Met Bedengunge ärbeide, di ald doh sin, sullt janz nomaal fluppe.
+Nemm ene neuere Brauser, wann De kanns.',
+	'cb_show_no_parents_only' => 'Bloß de Saachjroppe zeije, di sellver en kein Saachjroppe dren sin',
+	'cb_cat_name_filter' => 'Söhk en Saachjropp ovver dä iehre Name:',
+	'cb_cat_name_filter_clear' => 'Deiht dä Name vun dä Saachjropp zom donoh söhke leddish maache',
+	'cb_cat_name_filter_ci' => 'Jruß- un Kleinboochshtaabe sin ejaal',
+	'cb_copy_line_hint' => 'Nemm de [+] un [>+] Knöpp, öm di Rääschezeijshe en dä usjewählte Ußdrock ze donn',
+	'cb_has_subcategories' => '{{PLURAL:$1|Ein Ongerjropp|$1 Ongerjroppe|Kei Ongerjropp}}',
+	'cb_has_pages' => '{{PLURAL:$1|ein Sigg|$1 Sigge|kein Sigge}}',
+	'cb_has_files' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}}',
+	'cb_has_parentcategories' => 'de övverjeoodente Saachjroppe (wann et welshe jitt)',
+	'cb_previous_items_link' => 'Vörijje',
+	'cb_next_items_link' => 'Nächs',
+	'cb_next_items_stats' => '(vun $1 aff)',
+	'cb_cat_subcats' => 'Ungerjruppe',
+	'cb_cat_pages' => 'Sigge',
+	'cb_cat_files' => 'Dateie',
+	'cb_apply_button' => 'Aanwände',
+	'cb_all_op' => 'All',
+	'cb_or_op' => 'udder',
+	'cb_and_op' => 'un',
+	'cb_edit_left_hint' => 'Noh lengks donn, wann müjjelesch',
+	'cb_edit_right_hint' => 'Noh räähß donn, wann müjjelesch',
+	'cb_edit_remove_hint' => 'Fott nämme, wann müjjelesch',
+	'cb_edit_copy_hint' => 'Dat Rääschezeijshe merke',
+	'cb_edit_append_hint' => 'Dat Rääschezeijshe aan et Engk aanhänge',
+	'cb_edit_clear_hint' => 'Donn dä äktoälle Ußdrock fott nämme (alles ußwähle)',
+	'cb_edit_paste_hint' => 'Dat Rääschezeijshe aan de aktoälle Pussizjuhn endraare, wann müjjelesch',
+	'cb_edit_paste_right_hint' => 'Dat Rääschezeijshe aan de näächste Pussizjuhn endraare, wann müjjelesch',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1218,14 +1263,28 @@ $messages['tt-cyrl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Тест
  */
 $messages['uk'] = array(
+	'categorybrowser' => 'Перегляд категорій',
+	'categorybrowser-desc' => 'Додає [[Special:CategoryBrowser|спеціальну сторінку]] для відфільтрування найбільш переповнених категорій та керування ними за допомогою інтерфейсу AJAX',
+	'cb_requires_javascript' => 'Додаток для перегляду категорій потребує в браузері ввімкнений JavaScript.',
+	'cb_ie6_warning' => 'Редактор умов не працює в Internet Explorer 6.0 або в більш ранніх версіях. 
+ Однак, переглядаючи попередньо визначені умови, він повинен працювати нормально. 
+ Будь ласка, замініть або оновіть ваш браузер, якщо це можливо.',
+	'cb_show_no_parents_only' => 'Показати тільки категорії, які не мають батьків',
+	'cb_cat_name_filter' => 'Пошук категорії за назвою:',
+	'cb_cat_name_filter_clear' => 'Натисніть, щоб видалити назву фільтра категорій',
+	'cb_cat_name_filter_ci' => 'Без урахування регістру',
+	'cb_copy_line_hint' => 'Використовуйте [+] і [> +] кнопки для копіювання і вставки операторів у вибраний вираз',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|підкатегорія|підкатегорії|підкатегорій}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|файл|файли|файлів}}',
+	'cb_has_parentcategories' => 'батьківські категорії (якщо такі є)',
 	'cb_previous_items_link' => 'Попередні',
 	'cb_next_items_link' => 'Наступні',
+	'cb_next_items_stats' => '(починаючи від $1)',
 	'cb_cat_subcats' => 'підкатегорій',
 	'cb_cat_pages' => 'сторінок',
 	'cb_cat_files' => 'файлів',
@@ -1233,5 +1292,13 @@ $messages['uk'] = array(
 	'cb_all_op' => 'Усі',
 	'cb_or_op' => 'або',
 	'cb_and_op' => 'і',
+	'cb_edit_left_hint' => 'Переміщення вліво, якщо це можливо',
+	'cb_edit_right_hint' => 'Переміщення вправо, якщо це можливо',
+	'cb_edit_remove_hint' => 'Видалити, якщо це можливо',
+	'cb_edit_copy_hint' => 'Скопіювати оператор в буфер',
+	'cb_edit_append_hint' => 'Вставка оператора в останню позицію',
+	'cb_edit_clear_hint' => 'Очистити поточний вираз (виділити все)',
+	'cb_edit_paste_hint' => 'Вставити оператор у поточну позицію, якщо це можливо',
+	'cb_edit_paste_right_hint' => 'Вставити оператора в наступну позицію, якщо це можливо',
 );
 

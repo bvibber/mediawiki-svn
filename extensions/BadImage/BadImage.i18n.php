@@ -267,6 +267,14 @@ $messages['bcl'] = array(
 	'badimages-log-remove' => 'Pighalî an [[$1]] sa lista kan salang ladawan',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'badimages-add-btn' => 'Дадаць',
+	'badimages-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -321,6 +321,13 @@ $messages['arz'] = array(
 	'right-regexblock' => 'منع المستخدمين من التعديل فى كل الويكيات فى مزرعة الويكى',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'regexblock-form-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

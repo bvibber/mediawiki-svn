@@ -235,6 +235,12 @@ $messages['hu'] = array(
 	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
 	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
 	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoni: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Stroke',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Stroke: Egyszerűsített',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Stroke: Hagyományos',
+	'categorymultisort-sortkey-name-radical' => 'Radical',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Egyszerűsített',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Hagyományos',
 );
 
 /** Interlingua (Interlingua)

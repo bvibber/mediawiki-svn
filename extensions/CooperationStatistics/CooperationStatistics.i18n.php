@@ -838,7 +838,9 @@ Ayrıca [[Special:MostRevisors|'''en fazla inceleyene sahip sayfalar''']] ve [[S
  * @author Тест
  */
 $messages['uk'] = array(
+	'cooperationstatistics-tablevalue' => 'Кількість редакторів',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|сторінка|сторінки|сторінок}}',
+	'cooperationstatistics-legendmore' => 'або більше редакторів.',
 );
 
 /** Vietnamese (Tiếng Việt)

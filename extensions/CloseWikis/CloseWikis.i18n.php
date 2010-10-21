@@ -200,6 +200,14 @@ $messages['bar'] = array(
 	'right-closewikis' => 'Wikis schliassen',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'closewikis-page-close-submit' => 'Закрыць',
+	'closewikis-page-reopen-reason' => 'Прычына:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -2103,9 +2111,14 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'closewikis-page-close-wiki' => 'Вікі:',
+	'closewikis-page-close-submit' => 'Закрити',
+	'closewikis-page-reopen-wiki' => 'Вікі:',
 	'closewikis-page-reopen-reason' => 'Причина:',
+	'closewikis-list-header-wiki' => 'Вікі',
 );
 
 /** Urdu (اردو) */

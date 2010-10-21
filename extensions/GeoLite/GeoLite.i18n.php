@@ -343,6 +343,13 @@ $messages['ru'] = array(
 	'geolite-desc' => 'Облегчённое перенаправление GeoIp',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'geolite-desc' => 'Полегшене напрямлїня GeoIP',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

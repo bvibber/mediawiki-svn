@@ -900,6 +900,15 @@ $messages['hu'] = array(
 	'group-fb-user' => 'Facebook Connect felhasználók',
 	'group-fb-user-member' => 'Facebook Connect felhasználó',
 	'grouppage-fb-user' => '{{ns:project}}:Facebook Connect felhasználók',
+	'group-fb-groupie' => 'csoporttagok',
+	'group-fb-groupie-member' => 'csoporttag',
+	'grouppage-fb-groupie' => '{{ns:project}}:Csoporttagok',
+	'group-fb-officer' => 'csoporttisztek',
+	'group-fb-officer-member' => 'csoporttiszt',
+	'grouppage-fb-officer' => '{{ns:project}}:Csoporttisztek',
+	'group-fb-admin' => 'csoportadminisztrátorok',
+	'group-fb-admin-member' => 'csoportadminisztrátor',
+	'grouppage-fb-admin' => '{{ns:project}}:Csoportadminisztrátorok',
 	'fbconnect-connect' => 'Bejelentkezés a Facebook Connecttel',
 	'fbconnect-convert' => 'Fiók összekötése a Facebookkal',
 	'fbconnect-logout' => 'Kijelentkezés a Facebookról',
@@ -1846,12 +1855,13 @@ Se de futuro pretende usar o Facebook Connect para entrar, pode [[Special:Connec
 );
 
 /** Romanian (Română)
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'fbconnect' => 'Conectare Facebook',
 	'group-fb-groupie' => 'Membrii grup',
-	'group-fb-admin' => 'Administratori grup',
+	'group-fb-admin' => 'Administratori de grup',
 	'group-fb-admin-member' => 'Administrator grup',
 	'fbconnect-logout' => 'Deconectare de pe Facebook',
 	'fbconnect-link' => 'Înapoi pe facebook.com',

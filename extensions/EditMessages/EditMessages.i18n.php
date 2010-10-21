@@ -796,6 +796,13 @@ $messages['jv'] = array(
 	'editmsg-new-search' => 'Panggolèkan anyar',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'editmsg-search' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
  * @author Thearith

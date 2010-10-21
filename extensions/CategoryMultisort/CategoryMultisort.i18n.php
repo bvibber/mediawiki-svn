@@ -34,6 +34,13 @@ $messages['af'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Standaard',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'prefs-category' => 'Катэгорыя',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -125,6 +132,15 @@ $messages['dsb'] = array(
 /** Ewe (Eʋegbe) */
 $messages['ee'] = array(
 	'categorymultisort-go' => 'Yi',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Defaŭlta',
+	'categorymultisort-sortkey' => 'Ordiga ŝlosilo',
+	'categorymultisort-go' => 'Ek',
 );
 
 /** Spanish (Español)
@@ -303,6 +319,18 @@ $messages['ja'] = array(
  */
 $messages['ko'] = array(
 	'prefs-category' => '분류',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'categorymultisort-desc' => 'Määt et müjjelesh, Saachjroppe mem Enhalld ungerscheidledlesh zoteert aanzezeije.',
+	'categorymultisort-defaultsortkey-name' => 'Shtandatt',
+	'categorymultisort-sortkey' => 'Zottiere noh:',
+	'categorymultisort-go' => 'Lohß jonn!',
+	'categorymultisort-default-sortkey' => 'Shtandattmääßesch zottiere noh:',
+	'prefs-category' => 'Saachjropp',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

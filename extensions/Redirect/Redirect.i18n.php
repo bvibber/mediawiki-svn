@@ -210,7 +210,7 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'redirect-desc' => 'Овозможува лесна конфигурација на пренасочувањата при [[MediaWiki:Redirect-addnewaccount|создавањето на сметки]] и [[MediaWiki:Redirect-userlogoutcomplete|одјавување]]',
+	'redirect-desc' => 'Овозможува лесно поставување на пренасочувањата при [[MediaWiki:Redirect-addnewaccount|создавањето на сметки]] и [[MediaWiki:Redirect-userlogoutcomplete|одјавување]]',
 );
 
 /** Low German (Plattdüütsch)

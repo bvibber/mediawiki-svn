@@ -490,6 +490,13 @@ $messages['ast'] = array(
 	'openidlanguage' => 'Llingua',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'openiddelete-button' => 'Пацвердзіць',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -3337,8 +3344,8 @@ $messages['mk'] = array(
 	'openiderror' => 'Грешка при потврдувањето',
 	'openiderrortext' => 'Настана грешка при потврдувањето на URL адресата на OpenID.',
 	'openidconfigerror' => 'Грешка со конфигурацијата на OpenID',
-	'openidconfigerrortext' => 'Складишната конфигурација на OpenID за ова вики е погрешна.
-Консултирајте се со [[Special:ListUsers/sysop|администратор]].',
+	'openidconfigerrortext' => 'Складишните посатвки на OpenID за ова вики се погрешни.
+Консултирајте [[Special:ListUsers/sysop|администратор]].',
 	'openidpermission' => 'Грешка при дозволување на OpenID',
 	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој опслужувач.',
 	'openidcancel' => 'Потврдувањето е откажано',

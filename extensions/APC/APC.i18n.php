@@ -586,6 +586,15 @@ $messages['arz'] = array(
 	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'viewapc-display-mem_size' => 'Памер',
+	'viewapc-ls-header-size' => 'Памер',
+	'viewapc-ls-sort-size' => 'Памер',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

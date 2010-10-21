@@ -856,6 +856,30 @@ $messages['tr'] = array(
 	'plotters-no-data' => 'Veri girilmedi.',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'plotters-desc' => 'Дозволяє користувачам використовувати користувальницький JavaScript тегах jsplot',
+	'plotters' => 'Плоттери',
+	'plotters-title' => 'Плоттери',
+	'plotters-pagetext' => 'Нижче наводиться перелік спеціальних плоттерів які користувачі можуть використовувати свої jsplot теги, як описано в [[MediaWiki:Plotters-definition]] 
+Цей розділ забезпечує легкий доступ до сторінок системних повідомлень, які визначають опис кожного плоттера і код.',
+	'plotters-uses' => 'Використання',
+	'plotters-missing-script' => 'Не вказано жодного скрипта.',
+	'plotters-missing-arguments' => 'Не вказано жодного аргумента.',
+	'plotters-excessively-long-scriptname' => 'Назва скрипта занадто довга.
+Будь-ласка, вкажіть скрипт,з максимальною довжиною імені в 255 символів.',
+	'plotters-excessively-long-preprocessorname' => "Занадто довге ім'я препроцесора. 
+Будь ласка, вкажіть ім'я довжиною не більше ніж 255 символів.",
+	'plotters-excessively-long-name' => "Ім'я плотера занадто довге ім'я. 
+Будь ласка, вкажіть ім'я, яке має не більше 255 символів.",
+	'plotters-excessively-long-tableclass' => "Клас таблиці містить занадто довге ім'я. 
+Будь ласка, вкажіть ім'я, яке має не більше 255 символів.",
+	'plotters-no-data' => 'Данні не вказані.',
+	'plotters-invalid-renderer' => 'Обрано невірний рендерер.',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

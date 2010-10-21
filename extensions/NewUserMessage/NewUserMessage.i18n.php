@@ -710,6 +710,13 @@ $messages['vo'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'newusermessage-desc' => 'Àfikún ìránṣẹ́ kan kún àwọn ojúewé ọ̀rọ̀ oníṣe dídá tuntun',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

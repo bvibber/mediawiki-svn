@@ -424,6 +424,7 @@ Napsauta nuolta näyttääksesi kaikki sivut, jotka on indeksoitu otsikon alle.'
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'indexfunc-desc' => "Fonction du parseur pour créer des pages de redirection et d'homonymie automatiquement",
@@ -439,7 +440,7 @@ Enlevez « $1 » de <nowiki>{{#index:}}</nowiki> {{PLURAL:$3|de la page|des page
 	'index' => 'Index',
 	'index-legend' => 'Rechercher dans l’index',
 	'index-search' => 'Chercher:',
-	'index-submit' => 'Envoyer',
+	'index-submit' => 'Soumettre',
 	'index-disambig-start' => "'''$1''' peut se référer à plusieurs pages :",
 	'index-emptylist' => 'Il n’y a pas de pages liées à « $1 »',
 	'index-expand-detail' => 'Afficher les pages indexées sous ce titre',

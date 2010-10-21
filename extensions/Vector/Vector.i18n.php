@@ -814,6 +814,13 @@ $messages['ka'] = array(
 	'vector-simplesearch-containing' => 'შეიცავს...',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'vector-simplesearch-search' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author គីមស៊្រុន
  */

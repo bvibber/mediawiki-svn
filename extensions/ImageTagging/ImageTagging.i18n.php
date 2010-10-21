@@ -237,6 +237,13 @@ $messages['arz'] = array(
 	'tag-logpagetext' => 'هذا سجل بكل عمليات إضافة وإزالة وسم الصور.',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'imagetagging-imghistory' => 'Гісторыя',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

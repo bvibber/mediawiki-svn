@@ -805,6 +805,16 @@ $messages['bcc'] = array(
 	'specialpages-group-developer' => 'وسایل پیشبروک',
 );
 
+/** Belarusian (Беларуская)
+ * @author Тест
+ */
+$messages['be'] = array(
+	'code-field-author' => 'Аўтар',
+	'code-rev-author' => 'Аўтар:',
+	'code-revfilter-cr_author' => 'Аўтар = $1',
+	'code-stats' => 'статыстыка',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -891,10 +901,15 @@ $messages['be-tarask'] = array(
 	'code-status-reverted' => 'адмененая',
 	'code-status-desc-reverted' => 'Вэрсія была замененая больш позьняю.',
 	'code-status-resolved' => 'вырашаная',
+	'code-status-desc-resolved' => 'Вэрсія мае праблему, якая была выпраўленая ў больш позьняй вэрсіі.',
 	'code-status-ok' => 'добра',
+	'code-status-desc-ok' => 'Вэрсія поўнасьцю рэцанзаваная і рэцэнзэнт упэўнены, што яна выдатная ва ўсіх адносінах.',
 	'code-status-verified' => 'правераная',
+	'code-status-desc-verified' => 'Вэрсія была правераная і працуе як прадбачылася.',
 	'code-status-deferred' => 'адкладзены',
+	'code-status-desc-deferred' => 'Вэрсія не патрабуе рэцэнзаваньня.',
 	'code-status-old' => 'састарэлы',
+	'code-status-desc-old' => 'Старая вэрсія з патэнцыйнымі памылкамі, на разгляд якіх ня варта траціць высілкі.',
 	'code-pathsearch-legend' => 'Пошук у гэтым сховішчы вэрсіяў па іх адрасе',
 	'code-pathsearch-path' => 'Шлях:',
 	'code-pathsearch-filter' => 'Выкарыстаны фільтар:',
@@ -3319,7 +3334,7 @@ $messages['fr'] = array(
 	'code-batch-status' => 'Modifier le statut :',
 	'code-batch-tags' => 'Modifier les balises :',
 	'codereview-batch-title' => 'Modifier toutes les révisions sélectionnées',
-	'codereview-batch-submit' => 'Envoyer',
+	'codereview-batch-submit' => 'Soumettre',
 	'code-releasenotes' => 'notes de publication',
 	'code-release-legend' => 'Générer les notes de publication',
 	'code-release-startrev' => 'Révision de début :',
@@ -3992,6 +4007,7 @@ $messages['he'] = array(
 	'code-author-link' => 'לקשר?',
 	'code-author-unlink' => 'לבטל קישור?',
 	'code-author-unlinksuccess' => 'הקישור של הכותב $1 בוטל',
+	'code-author-badtoken' => 'שגיאת התחברות בעת הניסיון לביצוע פעולה זו.',
 	'code-author-total' => 'מספר סך כל הכותבים: $1',
 	'code-author-lastcommit' => 'תאריך המסירה האחרון',
 	'code-browsing-path' => "עיון בגרסאות תחת '''$1'''",
@@ -4920,6 +4936,7 @@ $messages['io'] = array(
  * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  * @author Melos
  * @author Nemo bis
@@ -4960,6 +4977,7 @@ $messages['it'] = array(
 	'code-author-unlinksuccess' => "È stato rimosso il collegamento all'autore $1",
 	'code-author-badtoken' => "Errore durante la sessione nel tentativo di eseguire l'azione richiesta.",
 	'code-author-total' => 'Numero totale di autori: $1',
+	'code-author-lastcommit' => 'Data ultimo commit',
 	'code-browsing-path' => "Esplora le revisioni in '''$1'''",
 	'code-field-id' => 'Revisione',
 	'code-field-author' => 'Autore',
@@ -4998,11 +5016,18 @@ $messages['it'] = array(
 	'code-rev-total' => 'Numero totale di risultati: $1',
 	'code-rev-not-found' => "La revisione '''$1''' è inesistente!",
 	'code-status-new' => 'nuovo',
+	'code-status-fixme' => 'fixme',
 	'code-status-reverted' => 'annullato',
 	'code-status-resolved' => 'risolto',
+	'code-status-desc-resolved' => 'La revisione ha avuto un problema risolto da una revisione successiva.',
 	'code-status-ok' => 'ok',
+	'code-status-desc-ok' => 'Revisione visionata in modo completo ed è certo che andrà correttamente sotto tutti gli aspetti.',
 	'code-status-verified' => 'verificato',
+	'code-status-desc-verified' => 'La revisione è stata testata e lavora come previsto.',
 	'code-status-deferred' => 'differito',
+	'code-status-desc-deferred' => 'Revisione che non richiede di essere esaminata.',
+	'code-status-old' => 'vecchia',
+	'code-status-desc-old' => 'Vecchia revisione con bug potenziali ma che non vale la pena di esaminare.',
 	'code-pathsearch-legend' => 'Ricerca nelle revisioni di questo repository in base al percorso',
 	'code-pathsearch-path' => 'Percorso:',
 	'code-pathsearch-filter' => 'Filtro applicato:',
@@ -5031,6 +5056,8 @@ Commento:
 
 $4',
 	'code-stats' => 'statistiche',
+	'code-stats-header' => 'Statistiche per il repository $1',
+	'code-stats-main' => 'Alla data del $1, il repository contiene $2 {{PLURAL:$2|revisione|revisioni}} da parte di [[Special:Code/$3/author|$4 {{PLURAL:$4|autore|autori}}]].',
 	'code-stats-status-breakdown' => 'Numero di revisioni per stato',
 	'code-stats-count' => 'Numero di revisioni',
 	'repoadmin' => 'Gestione dei repository',
@@ -5654,13 +5681,15 @@ $messages['ksh'] = array(
 	'code-prop-changes' => 'Logboch för Shtattus un Makeerunge',
 	'codereview-desc' => 'Werkzüch för [[Special:Code|Projramm-Änderunge ze verwallde]] met [[Special:RepoAdmin|Ongershtözung för <i lang="en">Subversion</i>]]',
 	'code-no-repo' => 'Et es kei Repositorijum enjeshtallt.',
+	'code-repo-not-found' => "E Repositorijum '''$1''' jidd_et heh nit!",
 	'code-load-diff' => 'Ben de Ungerscheide aam Lade&nbsp;…',
 	'code-notes' => 'De neuste Bemerkunge',
 	'code-statuschanges' => 'Änderunge aam Stattus',
+	'code-mycommits' => 'ming Beidrääsch',
 	'code-authors' => 'de Schriiver',
 	'code-status' => 'Shtattuße',
 	'code-tags' => 'Makeerunge',
-	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, zotteet noh dänne iehre Name doh. De Name als Metmaacher hee em Wiki sen en Klammere met dobei, woh et se jitt.',
+	'code-authors-text' => 'Hee kütt en Leß met dä Schriever aan dämm Repositorijum, zotteet noh dänne iehre Name doh. De Name als Metmaacher hee em Wiki sen en Klammere met dobei, woh et se jitt. Di Leß künnt uss_em Zwescheshpeicher kumme un nit janz om neuste Shtand sin.',
 	'code-author-haslink' => 'Dä Schriiver es em Wiki mem Metmaacher $1 verlengk',
 	'code-author-orphan' => 'Dä Schriiver es nit met enem Metmaacher em Wiki verlengk',
 	'code-author-dolink' => 'Donn dä Schriiver hee met enem Metmaacher em Wiki verlengke:',
@@ -5671,8 +5700,9 @@ $messages['ksh'] = array(
 	'code-author-link' => 'donn dä Lengk mache?',
 	'code-author-unlink' => 'donn dä Lengk fott nämme?',
 	'code-author-unlinksuccess' => 'Dä Schriiver $1 es jäz nit mieh met dämm Wiki verlengk',
-	'code-author-badtoken' => 'Ene Fähler met dä <i lang="en">Session </i>-Daate es opjetrodde, wi mer dat maache wullte.',
+	'code-author-badtoken' => 'Ene Fähler met dä <i lang="en">Session</i>-Daate es opjetrodde, wi mer dat maache wullte.',
 	'code-author-total' => 'Schriever insjesamp: $1',
+	'code-author-lastcommit' => 'Et Dattum vum läzde Beidraach',
 	'code-browsing-path' => "Bläddere en de Versione vun '''$1'''",
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Schriiver',
@@ -5708,13 +5738,24 @@ $messages['ksh'] = array(
 	'code-rev-diff-link' => '{{int:code-rev-diff}}',
 	'code-rev-diff-too-large' => 'De Ungerscheid senn zoh vill för se heh aanzezeije.',
 	'code-rev-purge-link' => 'Donn dä Zweschespeicher leddisch maache',
+	'code-rev-total' => 'Jesampzahl: $1',
+	'code-rev-not-found' => "En Version '''$1''' beshteiht nit!",
 	'code-status-new' => 'neu',
-	'code-status-fixme' => 'unjedonn',
+	'code-status-desc-new' => 'Di Version es drop am waade, dat mer jet med_er deiht, dad_es och der Aanfangs_Zohshtand.',
+	'code-status-fixme' => 'zom Verbessere',
+	'code-status-desc-fixme' => 'Ene Prööfer hät di Version als kappott ennjeshtoof udder se määt jet kapoot un leuf nit. Doh jidd_et jet draan ze verbäßere.',
 	'code-status-reverted' => 'retuur jemaat',
+	'code-status-desc-reverted' => 'Di Version es vun ene shpäädere Version widder opjehovve woode.',
 	'code-status-resolved' => 'äleedesch',
+	'code-status-desc-resolved' => 'Di Version häd e Problem jehat, wat shpääder vun ene andere Version jelööß wood.',
 	'code-status-ok' => 'Jot',
+	'code-status-desc-ok' => 'Di Version es kumplättemang nohjelooert un jeprööf, un dä et jedonn hät es sesh sesher, dat se joot es.',
 	'code-status-verified' => 'jepröf',
+	'code-status-desc-verified' => 'Di Version es jeloufe un werk, wi jedaach.',
 	'code-status-deferred' => 'spääder',
+	'code-status-desc-deferred' => 'Di Version bruch jez kein Prööfung.',
+	'code-status-old' => 'ahl',
+	'code-status-desc-old' => 'En älder Version met udder ohne Fähler, woh ävver et Prööfe der Möh nit wäät es.',
 	'code-pathsearch-legend' => 'Söhk en däm Repositorijum noh Versione, övver dänne iere Pahdt',
 	'code-pathsearch-path' => 'Pahdt:',
 	'code-pathsearch-filter' => 'Ußjesöhk noh:',
@@ -5743,17 +5784,22 @@ Dä Kommentaa es:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: De Änderunge donoh',
-	'codereview-email-body2' => '{{GENDER:$1|Dä|Et|Dä Metmaacher|Dat|De}} "$1" hät aan de Version $2 noch noch jet jedonn.
+	'codereview-email-body2' => '{{GENDER:$1|Dä|Et|Dä Metmaacher|De|Dat}} "$1" hät aan de Version $2 noch noch jet jedonn.
 
-Loor op de URL: $3
+Dä kumplätte URL vun dä Oppaß-Version:
+$5
 
-Singe Kommentaa dozo:
+Dä kumplätte URL vun dä neue Fassung:
+$3
+
+{{GENDER:$1|Däm singe|Däm sing|Däm Metmaacher sing|Dä ier|Em sing}} Aanmerkung för en et Logbooch dozo:
 
 $4',
 	'code-stats' => 'Statistike',
-	'code-stats-header' => 'Statistike vum Repositorijum $1',
+	'code-stats-header' => 'Statistike vum Repositorijum „$1“',
 	'code-stats-main' => 'Bes aam $6 öm $5 Uhr {{PLURAL:$4|hät [[Special:Code/$3/author|eine Schriever]]|han [[Special:Code/$3/author|$4 Schriever]]}} {{PLURAL:$2|ein Änderung|$2 Änderunge}} em Repositorijum jemaat.',
 	'code-stats-status-breakdown' => 'Aanzahl Versione per Stattus',
+	'code-stats-fixme-breakdown' => 'Woh jet draan ze Verbessere es, opjeschlößelt noh Schriever',
 	'code-stats-count' => 'Aanzahl Versione',
 	'repoadmin' => 'Repositorijums-Verwalldung',
 	'repoadmin-new-legend' => 'E neu Repositorijum aanlääje',
@@ -5765,6 +5811,7 @@ $4',
 	'repoadmin-edit-view' => '<i lang="en">ViewVC</i> Pahdt:',
 	'repoadmin-edit-button' => 'Loß Jonn!',
 	'repoadmin-edit-sucess' => 'Dat Repositorijum „[[Special:Code/$1|$1]]“ woht verändert.',
+	'repoadmin-nav' => 'Repositorijums-Verwalldung',
 	'right-repoadmin' => 'Repositorije verwallde',
 	'right-codereview-use' => '[[Special:Code|{{#special:Code}}]] bruche',
 	'right-codereview-add-tag' => 'Makeerunge för Projramm-Versione verjäve',
@@ -8159,6 +8206,7 @@ $4',
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
+ * @author Reder
  */
 $messages['roa-tara'] = array(
 	'code' => 'Revisore de Codece',
@@ -8184,6 +8232,8 @@ $messages['roa-tara'] = array(
 	'code-author-link' => 'colleghete?',
 	'code-author-unlink' => 'scolleghete?',
 	'code-author-unlinksuccess' => 'Autore $1 ha state scollegate',
+	'code-author-badtoken' => "Errore de sessione cercanne de combiere l'aziune.",
+	'code-author-total' => 'Numere totale de le autore: $1',
 	'code-field-id' => 'Revisione',
 	'code-field-author' => 'Autore',
 	'code-field-user' => 'Commendatore',
@@ -8204,6 +8254,7 @@ $messages['roa-tara'] = array(
 	'code-rev-modified-r' => 'sostituite',
 	'code-rev-modified-d' => 'scangillete',
 	'code-rev-modified-m' => 'cangete',
+	'code-rev-imagediff' => 'Cangiaminde de le immaggene',
 	'code-rev-status' => 'State:',
 	'code-rev-status-set' => "Cange 'u state",
 	'code-rev-tags' => 'Tag:',
@@ -8214,8 +8265,10 @@ $messages['roa-tara'] = array(
 	'code-rev-inline-preview' => 'Andeprime:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => "'A diff jè larghe assaje pè 'a visualizzazione.",
 	'code-rev-purge-link' => 'sdevache',
 	'code-rev-total' => 'Numere totale de le resultate: $1',
+	'code-rev-not-found' => "'A revisione '''$1''' non ge esiste!",
 	'code-status-new' => 'nueve',
 	'code-status-fixme' => 'aggiusteme',
 	'code-status-reverted' => 'annullate',
@@ -8232,10 +8285,16 @@ $messages['roa-tara'] = array(
 	'code-rev-submit' => 'Reggistre le cangiaminde',
 	'code-batch-status' => "Cange 'u state:",
 	'code-batch-tags' => 'Cange le tag:',
+	'codereview-batch-title' => 'Cange totte le revisione selezionate',
 	'codereview-batch-submit' => 'Conferme',
+	'code-releasenotes' => 'Note de relasse',
+	'code-release-legend' => 'Crijà note de relasse',
+	'code-release-startrev' => 'Prime rev:',
+	'code-release-endrev' => 'Urteme rev:',
 	'code-release-badrange' => 'Indervalle troppe larie!',
 	'codereview-subtitle' => 'Pe $1',
 	'codereview-reply-link' => 'respunne',
+	'codereview-email-subj' => '[$1] [$2]: Nuève commende aggiunde',
 	'codereview-email-body' => 'Utende "$1" ha postete \'nu commende sus a $3.
 
 \'A URL comblete je: $2
@@ -8244,11 +8303,14 @@ Commende:
 
 $4',
 	'code-stats' => 'statisteche',
+	'code-stats-status-breakdown' => 'Numere de revisione pè state',
 	'code-stats-count' => 'Numere de le revisiune',
 	'repoadmin-new-button' => 'Ccreje',
 	'repoadmin-edit-bug' => 'Percorse de Bugzilla:',
 	'repoadmin-edit-view' => "Percorse d'u ViewVC:",
 	'repoadmin-edit-button' => 'OK',
+	'right-codereview-post-comment' => "Aggiunge commende sus 'a revisione",
+	'right-codereview-set-status' => "Cange 'u state d'a revisione",
 	'specialpages-group-developer' => 'Struminde pe le sviluppature',
 );
 
@@ -8418,11 +8480,17 @@ $4',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'code' => 'Перевірка коду',
+	'code-rev-title' => '$1 – Перегляд коду',
 	'code-comments' => 'Коментарї',
+	'code-references' => 'Наступны верзії',
+	'code-change-status' => "змінив '''статус''' $1",
+	'code-change-tags' => "змінив '''значкы''' про $1",
 	'code-change-removed' => 'одстранене:',
 	'code-change-added' => 'придане:',
 	'code-old-status' => 'Попередній статус',
 	'code-new-status' => 'Новый статус',
+	'code-prop-changes' => 'Лоґ змін статус і значок',
 	'code-statuschanges' => 'зміны статусу',
 	'code-mycommits' => 'мої дїї',
 	'code-authors' => 'авторы',
@@ -8763,6 +8831,7 @@ $messages['si'] = array(
 
 /** Slovak (Slovenčina)
  * @author Helix84
+ * @author Jkjk
  * @author Mormegil
  */
 $messages['sk'] = array(
@@ -8779,6 +8848,7 @@ $messages['sk'] = array(
 	'code-prop-changes' => 'Záznam stavu a značiek',
 	'codereview-desc' => '[[Special:Code|Nástroj na kontrolu kódu]] s [[Special:RepoAdmin|podporou Subversion]]',
 	'code-no-repo' => 'Nebolo nastavené žiadne úložisko',
+	'code-repo-not-found' => "Úložisko '''$1''' neexistuje!",
 	'code-load-diff' => 'Načítava sa rozdiel…',
 	'code-notes' => 'posledné komentáre',
 	'code-statuschanges' => 'zmeny stavu',
@@ -8796,6 +8866,7 @@ $messages['sk'] = array(
 	'code-author-link' => 'zviazať?',
 	'code-author-unlink' => 'zrušiť väzbu?',
 	'code-author-unlinksuccess' => 'Väzba autora $1 bola zrušená',
+	'code-author-total' => 'Celkový počet autorov: $1',
 	'code-browsing-path' => "Prehliadajú sa revízie v '''$1'''",
 	'code-field-id' => 'Revízia',
 	'code-field-author' => 'Autor',
@@ -8831,6 +8902,8 @@ $messages['sk'] = array(
 	'code-rev-diff-link' => 'rozdiel',
 	'code-rev-diff-too-large' => 'Rozdiel je príliš veľký aby ho bolo možné zobraziť.',
 	'code-rev-purge-link' => 'vyčistiť',
+	'code-rev-total' => 'Celkový počet výsledkov: $1',
+	'code-rev-not-found' => "Revízia '''$1''' neexistuje!",
 	'code-status-new' => 'nový',
 	'code-status-fixme' => 'fixme',
 	'code-status-reverted' => 'vrátené',
@@ -8838,6 +8911,7 @@ $messages['sk'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'overené',
 	'code-status-deferred' => 'oddialené',
+	'code-status-old' => 'stará',
 	'code-pathsearch-legend' => 'Hľadať revízie v tomto úložisku podľa cesty',
 	'code-pathsearch-path' => 'Cesta:',
 	'code-rev-submit' => 'Uložiť zmeny',
@@ -8887,6 +8961,36 @@ $4',
 	'right-codereview-set-status' => 'Zmeniť stav revízií',
 	'right-codereview-link-user' => 'Zviazať autorov s používateľmi wiki',
 	'specialpages-group-developer' => 'Nástroje vývojárov',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'code' => 'Pregled kode',
+	'code-rev-title' => '$1 – Pregled kode',
+	'code-comments' => 'Pripombe',
+	'code-change-removed' => 'odstranjeno:',
+	'code-change-added' => 'dodano:',
+	'code-old-status' => 'Staro stanje',
+	'code-new-status' => 'Novo stanje',
+	'code-load-diff' => 'Nalaganje primerjave ...',
+	'code-author-name' => 'Vnesite uporabniško ime:',
+	'code-field-id' => 'Redakcija',
+	'code-field-author' => 'Avtor',
+	'code-rev-author' => 'Avtor:',
+	'code-rev-date' => 'Datum:',
+	'code-rev-message' => 'Pripomba:',
+	'code-rev-rev' => 'Redakcija:',
+	'code-rev-rev-viewvc' => 'na ViewVC',
+	'code-rev-comment-by' => 'Pripomba $1',
+	'code-rev-comment-preview' => 'Predogled',
+	'code-rev-inline-preview' => 'Predogled:',
+	'code-revfilter-cr_status' => 'Stanje = $1',
+	'code-revfilter-cr_author' => 'Avtor = $1',
+	'code-rev-submit' => 'Shrani spremembe',
+	'codereview-batch-submit' => 'Pošlji',
+	'specialpages-group-developer' => 'Razvijalska orodja',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -9766,6 +9870,7 @@ $messages['tk'] = array(
 	'code-status-ok' => 'bolýar',
 	'code-status-verified' => 'barlagdan geçdi',
 	'code-status-deferred' => 'gaýra goýuldy',
+	'code-status-old' => 'köne',
 	'code-pathsearch-legend' => 'Bu ammardaky wersiýalary ýol boýunça gözle',
 	'code-pathsearch-path' => 'Ýol:',
 	'code-rev-submit' => 'Üýtgeşmeleri ýazdyr',
@@ -9790,13 +9895,16 @@ Teswir:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Yzarlama üýtgeşmeleri',
-	'codereview-email-body2' => 'Ulanyjy "$1" $2 üçin yzarlama üýtgeşmeleri etdi.
+	'codereview-email-body2' => '"$1" atly ulanyjy $2 üçin yzarlama üýtgeşmeleri etdi.
+
+Yzarlanýan wersiýa üçin doly URL: $5
 
 Doly URL: $3
 
 Tabşyrma düşündirişi:
 
 $4',
+	'code-stats' => 'statistika',
 	'repoadmin' => 'Ammar Dolandyryşy',
 	'repoadmin-new-legend' => 'Täze ammar döret',
 	'repoadmin-new-label' => 'Ammar ady:',

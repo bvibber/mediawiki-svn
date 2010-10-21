@@ -188,6 +188,16 @@ $messages['cy'] = array(
 	'right-whatismyip' => 'Gweld [[Special:WhatIsMyIP|fy nghyfeiriad IP]] fy hunan',
 );
 
+/** Danish (Dansk)
+ * @author MGA73
+ */
+$messages['da'] = array(
+	'whatismyip' => 'Hvad er min IP',
+	'whatismyip-desc' => 'Viser den aktuelle brugers [[Special:WhatIsMyIP|IP-adresse]]',
+	'whatismyip-out' => 'Din IP-adresse:',
+	'right-whatismyip' => 'Vis [[Special:WhatIsMyIP|egen IP-adresse]]',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Revolus
