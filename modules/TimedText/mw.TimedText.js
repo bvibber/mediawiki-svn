@@ -817,7 +817,7 @@ mw.includeAllModuleMessages();
 				}
 			} else {
 				for(var catKey in catSourceList) {
-					for(var i=0 i < catSourceList[ catKey ].length; i++) {
+					for(var i=0; i < catSourceList[ catKey ].length; i++) {
 						$langMenu.append(
 							catSourceList[ catKey ][i]
 						);
