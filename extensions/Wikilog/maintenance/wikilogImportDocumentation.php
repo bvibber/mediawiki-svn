@@ -165,7 +165,7 @@ class WikilogImportDocumentation
 				$this->output( " uploading..." );
 				$filepath = dirname( $this->mFilename ) . '/' . $base;
 				$archive = $image->upload( $filepath, $this->mComment,
-					$revision->getText(), 0, false, $this->mTimeStamp,
+					$revision->getText(), 0, false, $this->mTimestamp,
 					$this->mUser);
 
 				if ( WikiError::isError( $archive ) || !$archive->isGood() ) {
