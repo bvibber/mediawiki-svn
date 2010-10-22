@@ -59,6 +59,9 @@ class WikilogUtils
 	 *   parser that we could mess up without interfering with normal page
 	 *   rendering, and we can't create a new instance because of too many
 	 *   broken extensions around. Check self::parserSanityCheck().
+	 *
+	 * @todo (In Wikilog 1.3.x) Remove deprecated WikilogParserCache
+	 *   in favor of ParserOptions::addExtraKey().
 	 */
 	public static function parsedArticle( Title $title, $feed = false ) {
 		global $wgWikilogCloneParser;
@@ -73,20 +76,28 @@ class WikilogUtils
 		$useParserCache = $wgEnableParserCache &&
 			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
 			$article->exists();
+		$parserCacheClass = "ParserCache";
 
 		# Parser options.
 		$parserOpt = ParserOptions::newFromUser( $wgUser );
 		$parserOpt->setTidy( true );
 		if ( $feed ) {
 			$parserOpt->setEditSection( false );
-			$parserOpt->addExtraKey( "WikilogFeed" );
+			
+			# NOTE (Mw1.16- COMPAT) ParserOptions::addExtraKey() added in
+			# MediaWiki 1.17 (r70822) makes WikilogParserCache obsolete.
+			if ( method_exists( $parserOpt, 'addExtraKey' ) ) {
+				$parserOpt->addExtraKey( "WikilogFeed" );
+			} else {
+				$parserCacheClass = "WikilogParserCache";
+			}
 		} else {
 			$parserOpt->enableLimitReport();
 		}
 
 		if ( $useParserCache ) {
-			# Select parser cache according to the $feed flag.
-			$parserCache = ParserCache::singleton();
+			# Get the parser cache instance.
+			$parserCache = $parserCacheClass::singleton();
 
 			# Look for the parsed article output in the parser cache.
 			$parserOutput = $parserCache->get( $article, $parserOpt );

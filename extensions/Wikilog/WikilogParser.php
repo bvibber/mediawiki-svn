@@ -616,3 +616,36 @@ class WikilogParserOutput
 	public function getTags() { return $this->mTags; }
 }
 
+/**
+ * Since wikilog parses articles with specific options in order to be
+ * rendered in feeds, it is necessary to store these parsed outputs in
+ * the cache separately. This derived class from ParserCache overloads the
+ * getKey() function in order to provide a specific namespace for this
+ * purpose.
+ *
+ * @deprecated In MediaWiki 1.17, in favor of $parserOpt->addExtraKey().
+ * @todo (In Wikilog 1.3.x) Remove this class.
+ */
+class WikilogParserCache
+	extends ParserCache
+{
+	public static function &singleton() {
+		static $instance;
+		if ( !isset( $instance ) ) {
+			global $parserMemc;
+			$instance = new WikilogParserCache( $parserMemc );
+		}
+		return $instance;
+	}
+
+	public function getKey( &$article, $popts ) {
+		if ( $popts instanceof User )	// API change in MediaWiki 1.15.
+			$popts = ParserOptions::newFromUser( $popts );
+
+		$user = $popts->mUser;
+		$pageid = intval( $article->getID() );
+		$hash = $user->getPageRenderingHash();
+		$key = wfMemcKey( 'wlcache', 'idhash', "$pageid-$hash" );
+		return $key;
+	}
+}

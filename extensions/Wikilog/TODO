@@ -24,3 +24,6 @@
 * Remove Mw1.16 compatibility boilerplate in:
   - WikilogComment::getCommentArticleTitle() (GAID_FOR_UPDATE).
   - WikilogCommentsPage::setCommentApproval() (GAID_FOR_UPDATE).
+* Remove deprecated WikilogParserCache:
+  - WikilogParserCache class definition in WikilogParser.php.
+  - WikilogUtils::parsedArticle() in WikilogUtils.php.
