@@ -773,9 +773,11 @@ mw.includeAllModuleMessages();
 		getLanguageMenu: function() {
 			var _this = this;
 
-			// See if we have categories to worry about:
+			// See if we have categories to worry about
+			// associative array of SUB etc categories. Each category contains an array of textSources.
+			var catSourceList = {};
+			var catSourceCount = 0;
 
-			var catSourceList = [ ];
 			// ( All sources should have a category (depreciate ) 
 			var sourcesWithoutCategory = [ ];
 			for( var i=0; i < this.textSources.length; i++ ) {
@@ -786,6 +788,7 @@ mw.includeAllModuleMessages();
 					if( !catSourceList[ catKey ] ) {
 						// Set up catList pointer: 
 						catSourceList[ catKey ] = [ ];
+						catSourceCount++;
 					}
 					// Append to the source category key menu item:
 					catSourceList[ catKey ].push(
@@ -797,10 +800,10 @@ mw.includeAllModuleMessages();
 			}
 			var $langMenu = $j('<ul>');
 			// Check if we have multiple categories ( if not just list them under the parent menu item)
-			if( catSourceList.length > 1 ) {
-				for(var catKey=0; catKey < catSourceList.length; catKey++) {
+			if( catSourceCount > 1 ) {
+				for(var catKey in catSourceList) {
 					$catChildren = $j('<ul>');
-					for(var i in catSourceList[ catKey ]) {
+					for(var i=0; i < catSourceList[ catKey ].length; i++) {
 						$catChildren.append(
 							catSourceList[ catKey ][i]
 						);
@@ -813,8 +816,8 @@ mw.includeAllModuleMessages();
 					);
 				}
 			} else {
-				for(var catKey=0; catKey < catSourceList.length; catKey++) {
-					for(var i in catSourceList[ catKey ]) {
+				for(var catKey in catSourceList) {
+					for(var i=0 i < catSourceList[ catKey ].length; i++) {
 						$langMenu.append(
 							catSourceList[ catKey ][i]
 						);
@@ -1086,7 +1089,7 @@ mw.includeAllModuleMessages();
 				var startIndex = 0;
 			}			 			
 			// Start looking for the text via time, return first match: 
-			for( var i = startIndex ; i < this.captions.length; i ++ ) {
+			for( var i = startIndex ; i < this.captions.length; i++ ) {
 				caption = this.captions[ i ];
 				if( time >= caption.start  && 
 					time <= caption.end ) {
@@ -1188,7 +1191,7 @@ mw.includeAllModuleMessages();
 		// Get captions
 		var captions = [];
 		var caplist = srt.split('\n\n');
-		for (var i = 0; i < caplist.length; i=i+1) {
+		for (var i = 0; i < caplist.length; i++) {
 	 		var caption = "";
 			var content, start, end, s;
 			caption = caplist[i];
