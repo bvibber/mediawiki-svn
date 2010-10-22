@@ -13,7 +13,9 @@ http://www.fsf.org/licenses/gpl.html
 '''
 
 __author__ = '''\n'''.join(['Diederik van Liere (dvanliere@gmail.com)', ])
-
+__author__email = 'dvanliere at gmail dot com'
+__date__ = '2010-10-21'
+__version__ = '0.1'
 
 import xml.etree.cElementTree as cElementTree
 import codecs
@@ -29,9 +31,6 @@ except ImportError:
 
 
 RE_NUMERIC_CHARACTER = re.compile('&#(\d+);')
-
-#def convert_html_entities(text):
-#    return utils.unescape(text)
 
 
 def remove_numeric_character_references(text):
@@ -57,26 +56,17 @@ def parse_comments(xml, function):
     for revision in revisions:
         comment = revision.find('comment')
         timestamp = revision.find('timestamp').text
-        #if timestamp == '2007-11-25T09:21:11Z':
-        #    print 'debug'
-        #    text = comment.text
-            #test2 = text.encode('utf-8')
-            #test = text.decode('utf-8')
 
 #            text1 = remove_ascii_control_characters(text)
 #            text2 = remove_numeric_character_references(text)
 #            text3 = convert_html_entities(text)
 
         if comment != None and comment.text != None:
-            #print comment.text.encode('utf-8')
-
             comment.text = function(comment.text)
-            #text = comment.text
-            #print text
     return xml
 
 
-def write_xml_file(element, fh, counter):
+def write_xml_file(element, fh, counter, language):
     '''Get file handle and write xml element to file'''
     size = len(cElementTree.tostring(element))
     fh, counter = create_xml_file_handle(fh, counter, size)
@@ -89,20 +79,24 @@ def create_xml_file_handle(fh, counter, size):
     '''Create file handle if none is supplied or if file size > max file size.'''
     if not fh:
         counter = 0
-        fh = codecs.open(settings.LOCATION + str(counter) + '.xml', 'w', encoding=settings.ENCODING)
+        fh = codecs.open(settings.LOCATION + '/' + language + '/' + str(counter) + '.xml', 'w', encoding=settings.ENCODING)
         return fh, counter
     elif (fh.tell() + size) > settings.MAX_XML_FILE_SIZE:
         print 'Created chunk %s' % counter
         fh.close
         counter += 1
-        fh = codecs.open(settings.LOCATION + str(counter) + '.xml', 'w', encoding=settings.ENCODING)
+        fh = codecs.open(settings.LOCATION + '/' + language + '/' + str(counter) + '.xml', 'w', encoding=settings.ENCODING)
         return fh, counter
     else:
         return fh, counter
 
 
-def split_xml():
+def split_xml(language):
     '''Reads xml file and splits it in N chunks'''
+    result = utils.create_directory(language)
+    if not result:
+        return
+
     fh = None
     counter = None
     tag = '{%s}page' % settings.NAME_SPACE
@@ -118,10 +112,10 @@ def split_xml():
                 elem = parse_comments(elem, remove_numeric_character_references)
                 #elem = parse_comments(elem, convert_html_entities)
                 #elem = parse_comments(elem, remove_ascii_control_characters)
-                fh, counter = write_xml_file(elem, fh, counter)
+                fh, counter = write_xml_file(elem, fh, counter, language)
                 #print cElementTree.tostring(elem)
                 root.clear()  # when done parsing a section clear the tree to safe memory
 
 
 if __name__ == "__main__":
-    split_xml()
+    split_xml('enwiki')

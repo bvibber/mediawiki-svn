@@ -256,7 +256,7 @@ def update_progressbar(pbar, queue):
     ValueError: I/O operation on closed file
     Not sure how to fix this, that's why the line is commented.
     '''
-    #pbar.update(x)
+    pbar.update(pbar.currval + x)
 
 
 def humanize_time_difference(seconds_elapsed):

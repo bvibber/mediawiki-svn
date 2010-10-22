@@ -36,25 +36,37 @@ except ImportError:
 
 
 def retrieve_editor_ids_mongo(RANDOM_SAMPLE=True):
-    if utils.check_file_exists(settings.BINARY_OBJECT_FILE_LOCATION,
+    raise DeprecatedError
+#    if utils.check_file_exists(settings.BINARY_OBJECT_FILE_LOCATION,
+#                               retrieve_editor_ids_mongo):
+#        contributors = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION,
+#                                retrieve_editor_ids_mongo)
+#    else:
+#        mongo = db.init_mongo_db('editors')
+#        editors = mongo['editors']
+#        contributors = set()
+#        #ids = editors.find().distinct('editor')
+#        ids = editors.find()
+#        for x, id in enumerate(ids):
+#            contributors.add(id['editor'])
+#            if len(contributors) == 100000:
+#                if RANDOM_SAMPLE:
+#                    break
+#        if contributors != set():
+#            utils.store_object(contributors, settings.BINARY_OBJECT_FILE_LOCATION, retrieve_editor_ids_mongo)
+#    return contributors
+
+def retrieve_ids_mongo_new(dbname, collection):
+    if utils.check_file_exists(settings.TXT_FILE_LOCATION,
                                retrieve_editor_ids_mongo):
-        contributors = utils.load_object(settings.BINARY_OBJECT_FILE_LOCATION,
+        ids = utils.load_object(settings.TXT_FILE_LOCATION,
                                 retrieve_editor_ids_mongo)
     else:
-        mongo = db.init_mongo_db('editors')
-        editors = mongo['editors']
-        contributors = set()
-        #ids = editors.find().distinct('editor')
-        ids = editors.find()
-        for x, id in enumerate(ids):
-            contributors.add(id['editor'])
-            if len(contributors) == 100000:
-                if RANDOM_SAMPLE:
-                    break
-        if contributors != set():
-            utils.store_object(contributors, settings.BINARY_OBJECT_FILE_LOCATION, retrieve_editor_ids_mongo)
-    return contributors
-
+        mongo = db.init_mongo_db(dbname)
+        editors = mongo[collection]
+        ids = editors.distinct()
+        utils.store_object(contributors, settings.TXT_FILE_LOCATION, retrieve_editor_ids_mongo)
+    return ids
 
 def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
     definition = kwargs.pop('definition')
@@ -72,7 +84,7 @@ def generate_editor_dataset(input_queue, data_queue, pbar, kwargs):
 
             print input_queue.qsize()
             if definition == 'Traditional':
-                
+
                 obs = editors.find({'editor': id}, {'date':1}).sort('date').limit(limit)
                 contributors = []
                 for ob in obs:

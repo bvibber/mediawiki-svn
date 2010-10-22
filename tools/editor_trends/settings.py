@@ -79,6 +79,8 @@ BINARY_OBJECT_FILE_LOCATION = WORKING_DIRECTORY + '/data/objects/'
 
 DATASETS_FILE_LOCATION = WORKING_DIRECTORY + '/datasets/'
 
+TXT_FILE_LOCATION = WORKING_DIRECTORY + '/csv/'
+
 #This section contains configuration variables for parsing / encoding and
 #working with the XML files.
 
@@ -99,8 +101,3 @@ ASCII = ['txt', 'csv', 'xml', 'sql']
 
 WP_DUMP_LOCATION = 'http://download.wikimedia.org'
 
-LANGUAGE_MAPPING = {
-'English': '/enwiki/latest/',
-'Russian': '/ruwiki/latest/',
-'German': '/dewiki/latest',
-}
