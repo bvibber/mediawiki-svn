@@ -31,10 +31,10 @@ class MwEmbedResourceManager {
 		}
 		
 		// Add the messages to the extension messages set: 
-		$wgExtensionMessagesFiles[ 'MwEmbed.' . $moduleName ] = $fullResourcePath . '/' . $moduleName . '.i18n.php';		
+		$wgExtensionMessagesFiles[ 'MwEmbed.' . $moduleName ] = $fullResourcePath . '/' . $moduleName . '.i18n.php';				
 		
 		// Get the mwEmbed module resource list
-		$resourceList = include( $fullResourcePath . '/' . $moduleName . '.resourceList.php' );
+		$resourceList = include( $fullResourcePath . '/' . $moduleName . '.resources.php' );
 		
 		// Look for special 'messages' => 'moduleFile' key and load all modules file messages:
 		foreach( $resourceList as $name => $resources ){
@@ -46,6 +46,9 @@ class MwEmbedResourceManager {
 				}
 			}			
 		};
+		
+		// Add the moduleLoader to the resource list: 
+		$resourceList[$moduleName. '.loader'] = array( 'loader' => $moduleName . '.loader.js' );
 				
 		// Add the resource list into the module set with its provided path 
 		self::$moduleSet[ $mwEmbedResourcePath ] = $resourceList;		
