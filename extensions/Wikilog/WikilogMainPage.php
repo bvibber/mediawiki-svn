@@ -54,7 +54,6 @@ class WikilogMainPage
 	 */
 	public function __construct( &$title, &$wi ) {
 		parent::__construct( $title );
-		wfLoadExtensionMessages( 'Wikilog' );
 	}
 
 	/**
@@ -250,8 +249,8 @@ class WikilogMainPage
 		global $wgScript;
 
 		$fields = array();
-		$fields[] = Xml::hidden( 'title', $this->mTitle->getPrefixedText() );
-		$fields[] = Xml::hidden( 'action', 'wikilog' );
+		$fields[] = Html::hidden( 'title', $this->mTitle->getPrefixedText() );
+		$fields[] = Html::hidden( 'action', 'wikilog' );
 		$fields[] = Xml::inputLabel( wfMsg( 'wikilog-item-name' ),
 			'wlItemName', 'wl-item-name', 50 );
 		$fields[] = Xml::submitButton( wfMsg( 'wikilog-new-item-go' ),

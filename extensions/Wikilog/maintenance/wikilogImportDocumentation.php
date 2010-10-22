@@ -36,8 +36,7 @@ $wgWikilogDocumentationXML = "$WIKILOGDIR/documentation/documentation.xml";
 
 # Compatibility with MediaWiki < 1.16.
 if ( !file_exists( "$MEDIAWIKIDIR/maintenance/Maintenance.php" ) ) {
-	require( 'wikilogImportDocumentation-pre1.16.php' );
-	exit( 0 );
+	die( "MediaWiki 1.16 or later is required." );
 }
 
 # Maintenance scripts base class.

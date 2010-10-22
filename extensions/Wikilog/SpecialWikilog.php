@@ -51,7 +51,6 @@ class SpecialWikilog
 	 */
 	function __construct( ) {
 		parent::__construct( 'Wikilog' );
-		wfLoadExtensionMessages( 'Wikilog' );
 	}
 
 	/**
@@ -288,13 +287,13 @@ class SpecialWikilog
 	protected function getHeader( FormOptions $opts ) {
 		global $wgScript;
 
-		$out = Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
+		$out = Html::hidden( 'title', $this->getTitle()->getPrefixedText() );
 
 		$out .= self::getQueryForm( $opts );
 
 		$unconsumed = $opts->getUnconsumedValues();
 		foreach ( $unconsumed as $key => $value ) {
-			$out .= Xml::hidden( $key, $value );
+			$out .= Html::hidden( $key, $value );
 		}
 
 		$out = Xml::tags( 'form', array( 'action' => $wgScript ), $out );

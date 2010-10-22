@@ -135,11 +135,7 @@ class WikilogSummaryPager
 	}
 
 	function getNavigationBar() {
-		# NOTE (Mw1.15- COMPAT): IndexPager::isNavigationBarShown introduced
-		# in Mw1.16. Remove this guard in Wl1.1.
-		if ( method_exists( $this, 'isNavigationBarShown' ) ) {
-			if ( !$this->isNavigationBarShown() ) return '';
-		}
+		if ( !$this->isNavigationBarShown() ) return '';
 		if ( !isset( $this->mNavigationBar ) ) {
 			$navbar = new WikilogNavbar( $this, 'chrono-rev' );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );
@@ -273,9 +269,12 @@ class WikilogSummaryPager
  * - 'authors': authors
  * - 'tags': tags
  * - 'published': empty (draft) or "*" (published)
- * - 'pubdate': article publication date
- * - 'updated': article last update date
+ * - 'date': article publication date
+ * - 'time': article publication time
+ * - 'updatedDate': article last update date
+ * - 'updatedTime': article last update time
  * - 'summary': article summary
+ * - 'hasMore': empty (summary only) or "*" (has more than summary)
  * - 'comments': comments page link
  */
 class WikilogTemplatePager
@@ -313,10 +312,6 @@ class WikilogTemplatePager
 		return "</div>\n";
 	}
 
-	/**
-	 * @todo (On or after Wl 1.2.0) Remove {{{pubdate}}} and {{{updated}}}.
-	 * @todo (Req >= Mw 1.16) Remove bug 20431 workaround.
-	 */
 	function formatRow( $row ) {
 		global $wgParser, $wgContLang;
 
@@ -357,10 +352,8 @@ class WikilogTemplatePager
 			'authors'       => $authors,
 			'tags'          => $tags,
 			'published'     => $item->getIsPublished() ? '*' : '',
-			'pubdate'       => $pubdate, # Deprecated, to be removed on Wl 1.2.0.
 			'date'          => $publishedDate,
 			'time'          => $publishedTime,
-			'updated'       => $updated, # Deprecated, to be removed on Wl 1.2.0.
 			'updatedDate'   => $updatedDate,
 			'updatedTime'   => $updatedTime,
 			'summary'       => $wgParser->insertStripItem( $summary ),
@@ -369,12 +362,6 @@ class WikilogTemplatePager
 		);
 
 		$frame = $wgParser->getPreprocessor()->newCustomFrame( $vars );
-
-		# XXX: Work around MediaWiki bug 20431
-		# https://bugzilla.wikimedia.org/show_bug.cgi?id=20431
-		$frame->title = $frame->parser->mTitle;
-		$frame->titleCache = array( $frame->title ? $frame->title->getPrefixedDBkey() : false );
-
 		$text = $frame->expand( $this->mTemplate );
 
 		return $this->parse( $text );
@@ -438,11 +425,7 @@ class WikilogArchivesPager
 	}
 
 	function getNavigationBar() {
-		# NOTE (Mw1.15- COMPAT): IndexPager::isNavigationBarShown introduced
-		# in Mw1.16. Remove this guard in Wl1.1.
-		if ( method_exists( $this, 'isNavigationBarShown' ) ) {
-			if ( !$this->isNavigationBarShown() ) return '';
-		}
+		if ( !$this->isNavigationBarShown() ) return '';
 		if ( !isset( $this->mNavigationBar ) ) {
 			$navbar = new WikilogNavbar( $this, 'pages' );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );

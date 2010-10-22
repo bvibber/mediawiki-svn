@@ -4,6 +4,9 @@
 
 === General notes ===
 
+MediaWiki requirement raised to 1.16.0 and later.  MediaWiki 1.15 and earlier
+are no longer supported in this release.
+
 === New configuration options ===
 
 === New features ===

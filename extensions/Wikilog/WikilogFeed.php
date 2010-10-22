@@ -242,8 +242,8 @@ abstract class WikilogFeed
 					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
 					"($feedkey; $tsCache; $tsData)\n" );
 
-				# NOTE (Mw1.15- COMPAT): OutputPage::setLastModified()
-				# introduced in Mw1.16. Remove this guard after Wl1.1.
+				# NOTE (Mw1.16- COMPAT): OutputPage::setLastModified()
+				# introduced in Mw1.17. Remove this guard after Wl1.2.
 				if ( method_exists( $wgOut, 'setLastModified' ) ) {
 					$wgOut->setLastModified( $tsCache );
 				} else {

@@ -220,33 +220,6 @@ class WikilogItem
 	}
 
 	/**
-	 * Returns an array with all published comments.
-	 * @deprecated Doesn't scale well, use query and pager objects instead.
-	 */
-	public function getComments( $thread = null ) {
-		wfDeprecated( __METHOD__ );
-		$dbr = wfGetDB( DB_SLAVE );
-
-		if ( $thread ) {
-			$result = WikilogComment::fetchAllFromItemThread( $dbr, $this->mID, $thread );
-		} else {
-			$result = WikilogComment::fetchAllFromItem( $dbr, $this->mID );
-		}
-
-		$comments = array();
-		foreach ( $result as $row ) {
-			$comment = WikilogComment::newFromRow( $this, $row );
-			if ( $comment->mCommentRev ) {
-				$rev = Revision::newFromId( $row->mCommentRev );
-				$comment->setText( $rev->getText() );
-			}
-			$comments[] = $comment;
-		}
-		$result->free();
-		return $comments;
-	}
-
-	/**
 	 * Creates a new wikilog article object from a database row.
 	 * @param $row Row from database.
 	 * @return New WikilogItem object.

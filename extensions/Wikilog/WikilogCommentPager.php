@@ -148,11 +148,7 @@ abstract class WikilogCommentPager
 	}
 
 	function getNavigationBar() {
-		# NOTE (Mw1.15- COMPAT): IndexPager::isNavigationBarShown introduced
-		# in Mw1.16. Remove this guard in Wl1.1.
-		if ( method_exists( $this, 'isNavigationBarShown' ) ) {
-			if ( !$this->isNavigationBarShown() ) return '';
-		}
+		if ( !$this->isNavigationBarShown() ) return '';
 		if ( !isset( $this->mNavigationBar ) ) {
 			$navbar = new WikilogNavbar( $this );
 			$this->mNavigationBar = $navbar->getNavigationBar( $this->mLimit );

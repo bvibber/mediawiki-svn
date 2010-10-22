@@ -249,35 +249,6 @@ class WikilogHooks
 	}
 
 	/**
-	 * LanguageGetSpecialPageAliases hook handler function.
-	 * Adds language aliases for special pages.
-	 * @note Deprecated in MediaWiki 1.16.
-	 * @todo Remove this in Wikilog 1.1.0, along with support for Mw < 1.16.
-	 */
-	static function LanguageGetSpecialPageAliases( &$specialPageAliases, $lang ) {
-		wfLoadExtensionMessages( 'Wikilog' );
-		$title = Title::newFromText( wfMsg( 'wikilog-specialwikilog' ) );
-		$specialPageAliases['SpecialWikilog'][] = $title->getDBKey();
-		return true;
-	}
-
-	/**
-	 * LanguageGetMagic hook handler function.
-	 * Adds language aliases for magic words.
-	 * @note Deprecated in MediaWiki 1.16.
-	 * @todo Remove this in Wikilog 1.1.0, along with support for Mw < 1.16.
-	 */
-	static function LanguageGetMagic( &$words, $lang ) {
-		require( 'Wikilog.i18n.magic.php' );
-		if ( $lang == 'en' || !isset( $magicWords[$lang] ) ) {
-			$words += $magicWords['en'];
-		} else {
-			$words += array_merge( $magicWords['en'], $magicWords[$lang] );
-		}
-		return true;
-	}
-
-	/**
 	 * EditPage::showEditForm:fields hook handler function.
 	 * Adds wikilog article options to edit pages.
 	 */
@@ -333,16 +304,8 @@ class WikilogHooks
 	/**
 	 * EditPage::attemptSave hook handler function.
 	 * Check edit page options.
-	 * @todo Remove $editpage->wlSignpub hack in Wikilog 1.1.0, along with
-	 *   support for Mw < 1.16.
 	 */
 	static function EditPageAttemptSave( $editpage ) {
-		# HACK: For Mw < 1.16, due to the lack of 'EditPage::importFormData' hook.
-		if ( !isset( $editpage->wlSignpub ) ) {
-			global $wgRequest;
-			$editpage->wlSignpub = $wgRequest->getCheck( 'wlSignpub' );
-		}
-
 		$options = array(
 			'signpub' => $editpage->wlSignpub
 		);

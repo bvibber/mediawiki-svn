@@ -1,27 +1,10 @@
 == Wikilog To-do list ==
 
-=== Wikilog 1.2.0. ===
+=== Wikilog 1.3.0. ===
 
-* Drop support for Mw1.15 and earlier.
-* Remove Mw1.15 compatibility boilerplate in:
-  - WikilogNavbar::getNavigationBar() (Language::getDir()).
-  - WikilogSummaryPager::getNavigationBar() (IndexPager::isNavigationBarShown()).
-  - WikilogArchivesPager::getNavigationBar() (IndexPager::isNavigationBarShown()).
-  - WikilogCommentPager::getNavigationBar() (IndexPager::isNavigationBarShown()).
-  - WikilogHooks::LanguageGetSpecialPageAliases().
-  - WikilogHooks::LanguageGetMagic().
-  - WikilogHooks::EditPageAttemptSave().
-  - WikilogTemplatePager::formatRow() (workaround bug 20431).
-  - WikilogFeed::loadFromCache() (bug 21916).
-  - Wikilog.i18n.php: 'wikilog-specialwikilog' message.
-* WikilogTemplatePager::formatRow(): Remove {{{pubdate}}} and {{{updated}}}.
-* Remove wfLoadExtensionMessages() calls.
-* Replace Xml::hidden() calls with Html::hidden().
-
-=== Wikilog 1.3.0.
-
-* Drop support for Mw1.16 and earlier.
+* Drop support for Mw 1.16 and earlier.
 * Remove Mw1.16 compatibility boilerplate in:
+  - WikilogFeed::loadFromCache() (bug 21916).
   - WikilogComment::getCommentArticleTitle() (GAID_FOR_UPDATE).
   - WikilogCommentsPage::setCommentApproval() (GAID_FOR_UPDATE).
 * Remove deprecated WikilogParserCache:
