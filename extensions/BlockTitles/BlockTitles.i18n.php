@@ -51,6 +51,13 @@ $messages['ar'] = array(
 	'block_title_error' => 'عذرا، عنوان هذه الصفحة غير مسموح بحفظه.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'block_title_error_page_title' => 'ܟܘܢܝܐ ܚܪܝܡܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

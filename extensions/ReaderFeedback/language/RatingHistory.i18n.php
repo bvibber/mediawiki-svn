@@ -1980,6 +1980,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'ratinghistory' => 'Історія оцінёваня сторінкы',
+	'ratinghistory-tab' => 'рейтінґ',
+	'ratinghistory-link' => 'Рейтінґ сторінкы',
 	'ratinghistory-period' => 'Період часу:',
 	'ratinghistory-month' => 'послїднїй місяць',
 	'ratinghistory-3months' => 'послїднї 3 місяцї',
@@ -2215,6 +2218,7 @@ The ratings are as follows:
  */
 $messages['te'] = array(
 	'ratinghistory' => 'పేజీ రేటింగు చరిత్ర',
+	'ratinghistory-tab' => 'మూల్యాంకన',
 	'ratinghistory-link' => 'పుట మూల్యాంకన',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">ఈ పేజీని సమీక్షించడానికి సమయం వెచ్చించినందుకు ధన్యవాదాలు!</font>''",
 	'ratinghistory-period' => 'కాల వ్యవధి:',
@@ -2223,6 +2227,7 @@ $messages['te'] = array(
 	'ratinghistory-year' => 'గత సంవత్సరం',
 	'ratinghistory-3years' => 'గత 3 సంవత్సరాలు',
 	'ratinghistory-ave' => 'సగటు: $1',
+	'ratinghistory-users' => 'మూల్యాంకన చేసిన వాడుకరులు',
 	'ratinghistory-graph' => '"$3" యొక్క $2 ($1 {{PLURAL:$1|సమీక్ష|సమీక్షలు}})',
 	'ratinghistory-svg' => 'SVGగా చూడండి',
 	'ratinghistory-table-rating' => 'మూల్యాంకనం',

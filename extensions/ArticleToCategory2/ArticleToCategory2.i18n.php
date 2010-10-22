@@ -37,6 +37,15 @@ $messages['af'] = array(
 	'articletocategory2-create-category-under-category-button' => 'Skep',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'articletocategory2-create-article-under-category-button' => 'ܒܪܝ',
+	'articletocategory2-create-category-under-category-text' => 'ܐܘܣܦ ܣܕܪܐ ܠܣܕܪܐ ܗܢܐ',
+	'articletocategory2-create-category-under-category-button' => 'ܒܪܝ',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
@@ -281,6 +290,17 @@ $messages['lb'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Uleeën',
 	'articletocategory2-create-category-under-category-text' => 'Eng Kategorie an dës Kategorie derbäisetzen',
 	'articletocategory2-create-category-under-category-button' => 'Uleeën',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'articletocategory2-desc' => "Manampy boaty fampidirana teny isaky (inputbox) ny pejin-tsokajy hahafahana mamorona pejy vaovao iray voasokajy ao amin'ilay sokajy avy hatrany.",
+	'articletocategory2-create-article-under-category-text' => "Manampy pejy iray ato amin'ity sokajy ity",
+	'articletocategory2-create-article-under-category-button' => 'Foronina',
+	'articletocategory2-create-category-under-category-text' => "Hanampy sokajy iray ato amin'ity sokajy ity",
+	'articletocategory2-create-category-under-category-button' => 'Foronina',
 );
 
 /** Macedonian (Македонски)

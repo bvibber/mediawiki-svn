@@ -1742,9 +1742,11 @@ $messages['uk'] = array(
 	'passwordreset-invalidusername' => "Неправильне ім'я користувача",
 	'passwordreset-emptyusername' => "Пусте ім'я користувача",
 	'passwordreset-nopassmatch' => 'Паролі не співпадають',
+	'passwordreset-badtoken' => 'Неприпустимий маркер редагування',
 	'passwordreset-username' => "Ім'я користувача:",
 	'passwordreset-newpass' => 'Новий пароль:',
 	'passwordreset-confirmpass' => 'Підтвердіть пароль:',
+	'passwordreset-submit' => 'Скинути пароль',
 );
 
 /** Urdu (اردو)

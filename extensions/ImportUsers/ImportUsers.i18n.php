@@ -2019,6 +2019,7 @@ $messages['ug-latn'] = array(
  */
 $messages['uk'] = array(
 	'importusers-uploadfile' => 'Завантажити файл',
+	'importusers-form-button' => 'Імпортувати',
 	'importusers-log-summary' => 'Всього',
 	'importusers-log-summary-all' => 'Усі',
 	'importusers-log-summary-added' => 'Додано',

@@ -1802,6 +1802,8 @@ $messages['vo'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'imagemap_no_image' => 'Àsìṣe: àwòrán gbọ́dọ̀ jẹ́ títọ́kasí ní inú ìlà àkọ́kọ́',
+	'imagemap_missing_coord' => 'Àsìṣe: àwọn ajọfọ̀nàkò kò tó fún síṣerí ní ìlà $1',
 	'imagemap_description' => 'Nípa àwòrán yìí',
 );
 

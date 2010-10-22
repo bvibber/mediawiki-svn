@@ -69,6 +69,14 @@ $messages['ar'] = array(
 	'cooperationstatistics-legendmore' => 'أو أكثر من المحررين.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'cooperationstatistics-tablearticle' => 'ܡܢܝܢܐ ܕܕܦ̈ܐ',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|ܕܦܐ|ܕܦ̈ܐ}}',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

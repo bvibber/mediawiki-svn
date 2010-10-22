@@ -506,6 +506,20 @@ $messages['mk'] = array(
 	'securepasswords-word' => 'не биде збор',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'securepasswords-desc' => 'കൂടുതൽ സുരക്ഷിതമായ രഹസ്യവാക്ക് ഹാഷുകളും, രഹസ്യവാക്കിന്റെ ശേഷി പരിശോധനോപകരണവും സൃഷ്ടിക്കുന്നു',
+	'securepasswords-valid' => 'താങ്കളുടെ രഹസ്യവാക്ക് അസാധുവാണ് അല്ലെങ്കിൽ തീരെ ചെറുതാണ്.
+അത്:',
+	'securepasswords-minlength' => 'കുറഞ്ഞത് {PLURAL:$1|ഒരക്ഷരം|$1 അക്ഷരങ്ങൾ}} നീളമുള്ളതാവണം',
+	'securepasswords-digit' => 'ഒരു അക്കമെങ്കിലും ഉൾക്കൊള്ളണം',
+	'securepasswords-special' => 'ഒരു പ്രത്യേകാക്ഷരമെങ്കിലും ഉൾക്കൊള്ളണം (പ്രത്യേകാക്ഷരങ്ങൾ: $1)',
+	'securepasswords-username' => 'താങ്കളുടെ ഉപയോക്തൃനാമത്തിൽ നിന്നും വ്യത്യസ്തമായിരിക്കണം',
+	'securepasswords-word' => 'ഒരു വാക്ക് ആയിരിക്കരുത്',
+);
+
 /** Nahuatl (Nāhuatl)
  * @author Fluence
  */

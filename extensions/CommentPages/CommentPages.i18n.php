@@ -387,6 +387,14 @@ $messages['lb'] = array(
 	'nstab-comments' => 'Kommentar',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'commentpages-desc' => "Pejin-dresaka ho an'ny anaran-tsehatra fotony",
+	'nstab-comments' => 'Resaka',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

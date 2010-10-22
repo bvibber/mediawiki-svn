@@ -455,11 +455,21 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'deletequeue-delnom-otherreason' => 'ܥܠܬܐ ܐܚܪܬܐ',
+	'deletequeue-delnom-extra' => 'ܝܕ̈ܥܬܐ ܝܬܝܪ:',
+	'deletequeue-review-newreason' => 'ܥܠܬܐ ܚܕܬܐ:',
+	'deletequeue-review-newextra' => 'ܝܕ̈ܥܬܐ ܝܬܝܪ:',
+	'deletequeue-review-submit' => 'ܠܒܘܟ ܬܢܝܬܐ',
+	'deletequeue-vote-submit' => 'ܫܕܪ',
 	'deletequeue-list-search-legend' => 'ܒܨܝܐ ܥܠ ܦܐܬܬ̈ܐ',
+	'deletequeue-list-status' => 'ܐܝܟܢܝܘܬܐ:',
 	'deletequeue-list-search' => 'ܒܨܝܐ',
 	'deletequeue-list-header-page' => 'ܦܐܬܐ',
 	'deletequeue-list-header-discusspage' => 'ܦܐܬܐ ܕܕܘܪܫܐ',
 	'deletequeue-list-header-reason' => 'ܥܠܬܐ ܕܫܝܦܐ',
+	'deletequeue-case-details' => 'ܐܪ̈ܝܟܬܐ ܪ̈ܫܝܬܐ',
+	'deletequeue-case-page' => 'ܕܦܐ:',
+	'deletequeue-case-reason' => 'ܥܠܬܐ:',
 );
 
 /** Araucanian (Mapudungun)
@@ -5391,11 +5401,16 @@ $messages['ro'] = array(
 	'deletequeue-prod-title' => 'Propune ștergerea lui "$1"',
 	'deletequeue-delnom-reason' => 'Motiv pentru nominalizare:',
 	'deletequeue-delnom-otherreason' => 'Alt motiv',
+	'deletequeue-delnom-submit' => 'Trimite nominalizarea',
 	'right-prod-nominate' => 'Propune ștergerea paginii',
 	'deletequeue-queue-speedy' => 'Ştergere rapidă',
 	'deletequeue-queue-prod' => 'Ştergere propusă',
+	'deletequeue-page-speedy' => "Această pagină a fost nominalizată pentru ştergere rapidă.
+Motivul invocat pentru această ştergere este ''$1''.",
+	'deletequeue-notqueued' => 'Pagina care aţi selectat-o nu este în aşteptare pentru ştergere',
 	'deletequeue-review-action' => 'Acțiune de întreprins:',
 	'deletequeue-review-delete' => 'Șterge pagina.',
+	'deletequeue-review-requeue' => 'Transferă această pagină în coada următoare:',
 	'deletequeue-review-reason' => 'Comentarii:',
 	'deletequeue-review-newreason' => 'Motiv nou:',
 	'deletequeue-review-newextra' => 'Informații suplimentare:',
@@ -5410,6 +5425,7 @@ $messages['ro'] = array(
 	'deletequeue-list-status' => 'Stare:',
 	'deletequeue-list-search' => 'Căutare',
 	'deletequeue-list-anyqueue' => '(orice)',
+	'deletequeue-list-votes' => 'Lista de voturi',
 	'deletequeue-list-header-page' => 'Pagină',
 	'deletequeue-list-header-expiry' => 'Expirare',
 	'deletequeue-list-header-discusspage' => 'Pagină de discuții',
@@ -6219,6 +6235,8 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'deletequeue-action-queued' => 'తొలగింపు',
+	'deletequeue-nom-alreadyqueued' => 'ఈ పుట ఇప్పటికే తొలగింపు వరుసలో ఉంది.',
 	'deletequeue-delnom-otherreason' => 'ఇతర కారణం',
 	'deletequeue-delnom-extra' => 'అదనపు సమాచారం:',
 	'deletequeue-queue-prod' => 'ప్రతిపాదిత తొలగింపు',
@@ -6234,6 +6252,7 @@ $messages['te'] = array(
 	'deletequeue-review-success-title' => 'సమీక్ష పూర్తి',
 	'deletequeue-discusscreate-text' => 'ఈ కారణం వల్ల తొలగింపుని ప్రతిపాదించారు: $2',
 	'deletequeue-vote-reason' => 'వ్యాఖ్యలు:',
+	'deletequeue-vote-submit' => 'దాఖలుచెయ్యి',
 	'deletequeue-showvotes-none-object' => 'ఈ పేజీని తొలగించడానికి అభ్యంతరాలు ఏమీ లేవు.',
 	'deletequeue' => 'తొలగింపు వరుస',
 	'deletequeue-list-text' => 'తొలగింపు వ్యవస్థలో ఉన్న అన్నీ పేజీలనూ ఈ పేజీ చూపిస్తుంది.',
@@ -6568,16 +6587,41 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'deletequeue-desc' => 'Створює [[Special:DeleteQueue|побудовану на черзі систему управління вилученням]]',
+	'deletequeue-action-queued' => 'Вилучення',
+	'deletequeue-action' => 'Запропонувати вилучення',
+	'deletequeue-action-title' => 'Запропонувати вилучення "$1"',
+	'deletequeue-nom-alreadyqueued' => 'Ця сторінку вже включено у чергу на вилучення.',
+	'deletequeue-speedy-title' => 'Позначити "$1" для швидкого вилучення',
+	'deletequeue-delnom-reason' => 'Причина номінації:',
 	'deletequeue-delnom-otherreason' => 'Інша причина',
+	'deletequeue-delnom-extra' => 'Додаткова інформація:',
+	'deletequeue-delnom-submit' => 'Надіслати номінацію',
+	'right-speedy-nominate' => 'Номінація сторінок для швидкого вилучення',
+	'deletequeue-queue-speedy' => 'Швидке вилучення',
+	'deletequeue-review-delete' => 'Вилучити сторінку.',
+	'deletequeue-review-reason' => 'Коментарі:',
 	'deletequeue-review-newreason' => 'Нова причина:',
+	'deletequeue-review-newextra' => 'Додаткова інформація:',
 	'deletequeue-review-original' => 'Причина номінації',
+	'deletequeue-vote-action' => 'Рекомендація:',
+	'deletequeue-vote-reason' => 'Коментарі:',
 	'deletequeue-vote-submit' => 'Відправити',
+	'deletequeue' => 'Черга вулучення',
+	'deletequeue-list-search-legend' => 'Пошук сторінок',
+	'deletequeue-list-queue' => 'Черга:',
 	'deletequeue-list-status' => 'Статус:',
 	'deletequeue-list-search' => 'Пошук',
+	'deletequeue-list-anyqueue' => '(будь-яка)',
+	'deletequeue-list-votes' => 'Список голосів',
 	'deletequeue-list-header-page' => 'Сторінка',
+	'deletequeue-list-header-queue' => 'Черга',
+	'deletequeue-list-header-discusspage' => 'Сторінка обговорення',
 	'deletequeue-list-header-reason' => 'Причина вилучення',
+	'deletequeue-case-details' => 'Основні подробиці',
 	'deletequeue-case-page' => 'Сторінка:',
 	'deletequeue-case-reason' => 'Причина:',
+	'deletequeue-case-expiry' => 'Закінчується:',
 );
 
 /** Urdu (اردو) */

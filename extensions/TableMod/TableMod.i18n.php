@@ -563,6 +563,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'tablemod-msg-remove' => 'తొలగించు',
+	'tablemod-error-invalidaction' => 'చెల్లని చర్య.',
 );
 
 /** Turkmen (Türkmençe)

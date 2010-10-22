@@ -615,6 +615,17 @@ $messages['lt'] = array(
 	'communityvoice-ratings-scale-status-thanks' => 'Ačiū, kad balsavote!',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'communityvoice' => "Feon'ny fikambanana",
+	'communityvoice-ratings-scale-status-sending' => 'Am-pandefasana...',
+	'communityvoice-ratings-scale-status-error' => 'Tsi-fetezana teo am-pandefasana !',
+	'communityvoice-ratings-scale-status-thanks' => 'Misaotra mandatsa-bato !',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 (latsa-bato $2{{PLURAL:}})',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

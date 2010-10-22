@@ -1860,6 +1860,13 @@ $wgCustomToolbarMessages['mk'] = array(
 	'ct_user_sample' => 'Корисничко име',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$wgCustomToolbarMessages['mn'] = array(
+	'ct_submit' => 'Явах',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

@@ -521,6 +521,14 @@ $messages['lb'] = array(
 Dir kënnt dës Säit net uleeën, awer Dir kënnt [{{fullurl:{{FULLPAGENAME}}|action=edit}} s'änneren], [{{fullurl:{{FULLPAGENAME}}}} liest] oder wielt fir eng aner Säit unzeleeë mat Hëllef vun der Këscht ënnendrënner.",
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'createbox-desc' => "Boaty fampidirana teny natokana ho an'ny famoronana pejy",
+	'createbox-create' => 'Amboary',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

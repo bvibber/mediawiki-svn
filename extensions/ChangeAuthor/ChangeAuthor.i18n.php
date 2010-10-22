@@ -1464,6 +1464,7 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'changeauthor-pagenameform-go' => 'Явах',
 	'changeauthor-comment' => 'Тайлбар:',
 );
 

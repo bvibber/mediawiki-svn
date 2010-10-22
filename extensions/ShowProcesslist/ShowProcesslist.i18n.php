@@ -1100,6 +1100,7 @@ $messages['uk'] = array(
 	'showprocesslist-desc' => 'Показує вивід команди MySQL [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-user' => 'Користувач',
 	'showprocesslist-db' => 'База даних',
+	'showprocesslist-time' => 'Час',
 );
 
 /** Veps (Vepsan kel')

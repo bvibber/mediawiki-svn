@@ -96,6 +96,15 @@ Beskikbare modusse is: "plain", "normal" en "wiki".',
 	'processcomment' => 'Verwerk kommentaar op artikel',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'article-comments-title-string' => 'ܟܘܢܝܐ',
+	'article-comments-name-string' => 'ܫܡܐ',
+	'article-comments-submit-button' => 'ܫܕܪ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -232,7 +241,7 @@ $messages['de'] = array(
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 meinte …',
-	'article-comments-summary' => 'Ein Kommentar wurde von $1 über die Programmerweiterung <code lang="en">ArticleComments</code> abgegeben.',
+	'article-comments-summary' => 'Ein Kommentar wurde von $1 über die Programmerweiterung ArticleComments abgegeben.',
 	'article-comments-submission-succeeded' => 'Die Kommentierung wurde durchgeführt.',
 	'article-comments-submission-success' => 'Du hast erfolgreich einen Kommentar für Seite „[[$1]]“ abgegeben.',
 	'article-comments-submission-view-all' => 'Du kannst [[$1|alle Kommentare zu dieser Seite]] einsehen',
@@ -341,6 +350,7 @@ Saatavilla ovat "plain", "normal" ja "wiki".',
 
 /** French (Français)
  * @author Peter17
+ * @author Verdy p
  * @author 青子守歌
  */
 $messages['fr'] = array(
@@ -363,7 +373,7 @@ $messages['fr'] = array(
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 a dit...',
-	'article-comments-summary' => 'Commentaires apportés par $1 - via l’extension ArticleComments',
+	'article-comments-summary' => 'Commentaires apportés par $1 — via l’extension ArticleComments',
 	'article-comments-submission-succeeded' => 'L’envoi du commentaire a réussi',
 	'article-comments-submission-success' => 'Vous avez envoyé avec succès un commentaire sur « [[$1]] »',
 	'article-comments-submission-view-all' => 'Vous pouvez voir tous les commentaires sur cet article [[$1|ici]]',
@@ -630,6 +640,42 @@ $messages['mk'] = array(
 	'processcomment' => 'Обработи го коментарот',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'article-comments-desc' => 'ഉള്ളടക്ക താളുകളിൽ അഭിപ്രായമിടാനുള്ള ഭാഗം സജ്ജമാക്കുന്നു',
+	'article-comments-title-string' => 'ശീർഷകം',
+	'article-comments-name-string' => 'പേര്‌',
+	'article-comments-name-field' => 'പേര് (ആവശ്യമാണ്):',
+	'article-comments-url-field' => 'വെബ്‌സൈറ്റ്:',
+	'article-comments-url-string' => 'യൂ.ആർ.എൽ.',
+	'article-comments-comment-string' => 'അഭിപ്രായം',
+	'article-comments-comment-field' => 'അഭിപ്രായം:',
+	'article-comments-submit-button' => 'സമർപ്പിക്കുക',
+	'article-comments-leave-comment-link' => 'ഒരു കുറിപ്പിടുക ...',
+	'article-comments-invalid-field' => '$1 നൽകിയ <nowiki>[$2]</nowiki> അസാധുവാണ്.',
+	'article-comments-required-field' => '$1 എന്ന ഫീൽഡ് ആവശ്യമാണ്.',
+	'article-comments-submission-failed' => 'അഭിപ്രായം സമർപ്പിക്കാൻ സാധിച്ചില്ല',
+	'article-comments-failure-reasons' => 'ക്ഷമിക്കുക, താങ്കളുടെ അഭിപ്രായം സമർപ്പിക്കാൻ താഴെ പറയുന്ന കാരണത്താൽ (കാരണങ്ങളാൽ) സാധിച്ചില്ല:',
+	'article-comments-no-comments' => 'ക്ഷമിക്കുക, ഇപ്പോൾ "[[$1]]" താളിൽ അഭിപ്രായങ്ങൾ സ്വീകരിക്കുന്നില്ല.',
+	'article-comments-talk-page-starter' => '<noinclude>[[$1]] താളിലെ അഭിപ്രായങ്ങൾ
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 പറഞ്ഞു ...',
+	'article-comments-summary' => '$1 ഇട്ട അഭിപ്രായം - ArticleComments അനുബന്ധം വഴി',
+	'article-comments-submission-succeeded' => 'അഭിപ്രായം സമർപ്പിച്ചിരിക്കുന്നു',
+	'article-comments-submission-success' => 'താങ്കൾ "[[$1]]" താളിൽ അഭിപ്രായം വിജയകരമായി സമർപ്പിച്ചിരിക്കുന്നു',
+	'article-comments-submission-view-all' => '[[$1|ആ താളിലെ എല്ലാ അഭിപ്രായങ്ങളും]] താങ്കൾക്ക് കാണാവുന്നതാണ്',
+	'article-comments-user-is-blocked' => 'താങ്കളുടെ അംഗത്വം തിരുത്തുന്നതിൽ നിന്നും ഇപ്പോൾ തടയപ്പെട്ടിരിക്കുകയാണ് "[[$1]]".',
+	'article-comments-comment-bad-mode' => 'അഭിപ്രായത്തിനായി തിരഞ്ഞെടുത്ത സമ്പ്രദായം അസാധുവാണ്.
+"plain", "normal", "wiki" എന്നിവയാണ് ലഭ്യമായിട്ടുള്ളത്.',
+	'article-comments-comment-missing-name-parameter' => 'പേര് ഇല്ല',
+	'article-comments-comment-missing-date-parameter' => 'അഭിപ്രായത്തിന്റെ തീയതി ഇല്ല',
+	'article-comments-no-spam' => 'ഏതോ ഒരു ഫീൽഡ് എങ്കിലും പാഴ് എഴുത്ത് ആയി കുറിച്ചിരിക്കുന്നു.',
+	'processcomment' => 'ലേഖനത്തെക്കുറിച്ചുള്ള അഭിപ്രായം പാകപ്പെടുത്തുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -880,13 +926,16 @@ $messages['ro'] = array(
 	'article-comments-leave-comment-link' => 'Lăsaţi un comentariu ...',
 	'article-comments-required-field' => 'Câmpul $1 este obligatoriu.',
 	'article-comments-submission-failed' => 'Trimiterea comentariului a eșuat',
+	'article-comments-failure-reasons' => 'Ne pare rău, trimiterea comentariului dvs. a eşuat din motivul(ele) următor(are):',
 	'article-comments-no-comments' => 'Scuze, pagina „[[$1]]” nu acceptă comentarii în acest moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentarii pe [[$1]]
 <comments />
 ----- __NOEDITSECTION__</noinclude>',
 	'article-comments-commenter-said' => '$1 a spus ...',
+	'article-comments-summary' => 'Comentariu furnizat de către $1 - prin extensia ArticleComments',
 	'article-comments-submission-succeeded' => 'Trimiterea comentariului s-a efectuat cu succes',
 	'article-comments-submission-success' => 'Ai trimis cu succes un comentariu pentru „[[$1]]”',
+	'article-comments-user-is-blocked' => 'Contul dvs. de utilizator este blocat pentru a modifica „[[$1]]”.',
 	'article-comments-comment-missing-name-parameter' => 'Lipseşte numele',
 	'article-comments-comment-missing-date-parameter' => 'Lipseşte data comentariului',
 );
@@ -957,6 +1006,21 @@ $messages['sv'] = array(
 	'article-comments-commenter-said' => '$1 sa ...',
 	'article-comments-summary' => 'Kommentar från $1 - via ArticleComments-tillägg',
 	'article-comments-submission-succeeded' => 'Kommentarinlämning lyckades',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'article-comments-title-string' => 'శీర్షిక',
+	'article-comments-name-string' => 'పేరు',
+	'article-comments-name-field' => 'పేరు (తప్పనిసరి):',
+	'article-comments-url-field' => 'వెబ్ సైటు:',
+	'article-comments-comment-string' => 'వ్యాఖ్య',
+	'article-comments-comment-field' => 'వ్యాఖ్య:',
+	'article-comments-submit-button' => 'దాఖలుచెయ్యి',
+	'article-comments-leave-comment-link' => 'వ్యాఖ్యానించండి ...',
+	'article-comments-required-field' => '$1 అనే ఖాళీ తప్పనిసరి .',
 );
 
 /** Ukrainian (Українська)

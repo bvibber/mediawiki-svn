@@ -13403,6 +13403,7 @@ $messages['te'] = array(
 	'ow_needs_xlation_source_lang' => 'మూల భాష:',
 	'ow_needs_xlation_dest_lang' => 'లక్ష్యిత భాష:',
 	'ow_needs_xlation_no_dest_lang' => 'ఒక దేస్తినషన్ భాషను పేర్కొనండి.',
+	'ow_statistics' => 'Wikidata: గణాంకాలు',
 	'ow_show' => 'చూపించు',
 	'ow_upload' => 'ఎగుమతిచెయ్యండి',
 	'ow_create' => 'సృష్టించు',

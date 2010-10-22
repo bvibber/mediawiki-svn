@@ -684,6 +684,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'ratedpages' => 'Сторінкы, оцінены хоснователями',
+	'ratedpages-count' => '$1 {{PLURAL:$1|оцінка|оцінкы|оцінок}}',
 );
 
 /** Yakut (Саха тыла)

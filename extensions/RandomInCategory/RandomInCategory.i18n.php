@@ -681,6 +681,13 @@ $messages['ml'] = array(
 	'randomincategory-submit' => 'പോകൂ',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'randomincategory-submit' => 'Явах',
+);
+
 /** Marathi (मराठी)
  * @author Kaustubh
  */

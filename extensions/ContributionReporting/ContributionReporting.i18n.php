@@ -327,12 +327,15 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'contributionhistory' => 'ܬܫܥܝܬܐ ܕܫܘܬܦܘܝܬ̈ܐ',
 	'contrib-hist-name' => 'ܫܡܐ',
 	'contrib-hist-amount' => 'ܟܡܝܘܬܐ',
 	'contrib-hist-anonymous' => 'ܠܐ ܝܕܝܥܐ',
 	'contribstats-day' => 'ܝܘܡܐ',
 	'contribstats-month' => 'ܝܪܚܐ',
 	'contribstats-currency' => 'ܙܘܙܐ',
+	'contribstats-value-from' => 'ܡܢ $1 - $2',
+	'contribstats-week' => 'ܫܒܘܥܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -2906,6 +2909,9 @@ $messages['ksh'] = array(
 	'contribstats-day-totals' => 'Zosammejezallt för hück dä Daach',
 	'contribstats-week' => 'Woch',
 	'contribstats-weekly-totals' => 'Zosamme jezallt för {{PLURAL:$1|diß Woch|de $1 lezte Woche, beß hück|-nix-}}',
+	'contribstats-payment-type' => 'Wie bezahlt?',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => 'Henwieß övver der Zahlungswääch',
 	'contribstats-clicks' => 'Klecks',
 	'contribstats-donations' => 'Jabe',
 	'contribstats-conversion' => 'Aandeil, dä jet jebraat hät, en Prozent',
@@ -4385,7 +4391,7 @@ $messages['sk'] = array(
 	'contributionreporting-desc' => 'Správa o priebehu fundraisingu nadácie Wikimedia',
 	'contributiontotal' => 'Príspevky celkom',
 	'contributionhistory' => 'História príspevkov',
-	'contrib-hist-header' => 'Komentáre od prispievateľov z celého sveta v reálnom čase',
+	'contrib-hist-header' => 'Komentáre od darcov z celého sveta',
 	'contrib-hist-name' => 'Meno',
 	'contrib-hist-date' => 'Čas a dátum',
 	'contrib-hist-amount' => 'Čiastka',

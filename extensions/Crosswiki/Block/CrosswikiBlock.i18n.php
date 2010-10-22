@@ -203,6 +203,14 @@ $messages['ar'] = array(
 	'right-crosswikiblock' => 'منع ورفع المنع عن المستخدمين في الويكيات الأخرى',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'crosswikiblock-reason' => 'ܥܠܬܐ:',
+	'crosswikiunblock-reason' => 'ܥܠܬܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -2888,9 +2896,14 @@ Geri dön:
  */
 $messages['uk'] = array(
 	'crosswikiblock-desc' => 'Дозволяє блокувати користувачів в інших вікі за допомогою [[Special:Crosswikiblock|спеціальної сторінки]]',
+	'crosswikiblock' => 'Блокування користувача на інших вікі',
+	'crosswikiblock-header' => 'Ця сторінка дозволяє блокувати користувачів на інших вікі. 
+Будь ласка, перевірте, чи ви маєте право так чинити у цій вікі, і що ваші дії відповідають всім політикам.',
+	'crosswikiblock-target' => "IP-адреса або ім'я користувача та цільова вікі:",
 	'crosswikiblock-expiry' => 'Закінчення:',
 	'crosswikiblock-reason' => 'Причина:',
 	'crosswikiblock-submit' => 'Заблокувати цього користувача',
+	'crosswikiblock-anononly' => 'Блокувати тільки анонімних користувачів',
 	'crosswikiblock-nocreate' => 'Запобігання створення облікового запису',
 	'crosswikiblock-autoblock' => 'Автоматично блокувати останню IP адресу, використовувану цим користувачем, і будь-які подальші IP-адреси з яких вони намагаються вносити зміни',
 	'crosswikiblock-noemail' => 'Забороняти можливість для учасників відправляти електронну пошту.',
@@ -2900,7 +2913,28 @@ $messages['uk'] = array(
 	'crosswikiunblock-user' => "Ім'я користувача, IP-адреса або блокування ID в призначенній вікі:",
 	'crosswikiunblock-reason' => 'Причина:',
 	'crosswikiunblock-submit' => 'Розблокувати цього користувача',
+	'crosswikiunblock-success' => "Користувача '''$1''' успішно розблоковано.
+
+Повернутись до:
+* [[Special:CrosswikiBlock|Форми блокування]]
+* [[$2]]",
+	'crosswikiblock-nousername' => "Не недано ім'я користувача",
+	'crosswikiblock-local' => 'Локальні блокування не підтримується через цей інтерфейс. Використовуйте [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-dbnotfound' => 'База даних $1 не існує',
+	'crosswikiblock-noname' => '"$1" не є чинним ім\'ям користувача.',
+	'crosswikiblock-nouser' => 'Користувача "$3" не знайдено.',
 	'crosswikiblock-noexpiry' => 'Помилковий строк закінчення: $1.',
+	'crosswikiblock-noreason' => 'Не зазначено причину',
+	'crosswikiblock-notoken' => 'Неприпустимий маркер редагування',
+	'crosswikiblock-alreadyblocked' => 'Користувач $3 вже заблокований.',
+	'crosswikiblock-noblock' => 'Цей користувач не заблокований.',
+	'crosswikiblock-success' => "Користувача '''$3''' успішно заблоковано.
+
+Повернутись до:
+* [[Special:CrosswikiBlock|Форми блокування]]
+* [[$4]]",
+	'crosswikiunblock-local' => 'Локальні розблокування не підтримується через цей інтерфейс. Використовуйте [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Блокування та розблокування користувачів в інших вікі',
 );
 
 /** Urdu (اردو) */

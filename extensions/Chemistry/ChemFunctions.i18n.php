@@ -87,6 +87,14 @@ $messages['ar'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'chemicalsources' => 'ܥܩܪ̈ܐ ܟܝܡܝܝ̈ܐ',
+	'chemFunctions_Name' => 'ܫܡܐ ܕIUPAC',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

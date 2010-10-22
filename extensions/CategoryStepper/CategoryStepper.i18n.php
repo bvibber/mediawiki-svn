@@ -429,6 +429,13 @@ $messages['lv'] = array(
 	'categorystepper-start' => '(Kategorijas sākums)',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'categorystepper-start' => "(Fitombohan'ilay sokajy)",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author Brest

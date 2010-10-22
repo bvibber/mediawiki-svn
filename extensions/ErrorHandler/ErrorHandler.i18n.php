@@ -104,6 +104,18 @@ $messages['ar'] = array(
 	'errorhandler-trace-line-internal' => '[وظيفة داخلية]: $1',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'errorhandler-errors' => 'ܦܘܕ̈ܐ:',
+	'errorhandler-error-user-error' => 'ܦܘܕܐ ܕܡܬܚܫܚܢܐ',
+	'errorhandler-error-user-warning' => 'ܙܘܗܪܐ ܕܡܬܚܫܚܢܐ',
+	'errorhandler-msg-text' => '$1 : $2 ܒ $3 (ܣܪܛܐ $4)',
+	'errorhandler-msg-html' => '<b>$1</b> : <i>$2</i> ܒ <b>$3</b> (ܣܪܛܐ <b>$4</b>)',
+	'errorhandler-trace-line' => '$1 (ܣܪܛܐ $2): $3',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

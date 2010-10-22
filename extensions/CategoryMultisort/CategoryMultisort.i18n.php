@@ -34,6 +34,14 @@ $messages['af'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Standaard',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'categorymultisort-go' => 'ܙܠ',
+	'prefs-category' => 'ܣܕܪܐ',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -356,6 +364,13 @@ $messages['mk'] = array(
 	'categorymultisort-go' => 'Оди',
 	'categorymultisort-default-sortkey' => 'Основен подреден клуч:',
 	'prefs-category' => 'Категорија',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'categorymultisort-go' => 'Явах',
 );
 
 /** Dutch (Nederlands)

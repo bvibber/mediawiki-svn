@@ -237,7 +237,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'randomimage-desc' => 'Дава случаен избирач на медии користејќи <code>&lt;randomimage /&gt;</code>',
+	'randomimage-desc' => 'Дава случаен избирач на податотеки користејќи <code>&lt;randomimage /&gt;</code>',
 );
 
 /** Marathi (मराठी)

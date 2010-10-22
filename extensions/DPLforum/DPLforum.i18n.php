@@ -76,6 +76,13 @@ $messages['ar'] = array(
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'dplforum-never' => 'ܠܐ ܡܡܬܘܡ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

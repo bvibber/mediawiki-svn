@@ -71,6 +71,13 @@ $messages['ar'] = array(
 	'right-findspam' => 'البحث عن السبام المضاف حديثا',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'findspam-ok' => 'ܛܒ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

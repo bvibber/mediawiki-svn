@@ -208,6 +208,23 @@ $messages['ar'] = array(
 	'right-datatransferimport' => 'استورد بيانات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'dt_viewxml_categories' => 'ܣܕܪ̈ܐ',
+	'dt_viewxml_namespaces' => 'ܚܩܠܬ̈ܐ',
+	'dt_xml_namespace' => 'ܚܩܠܐ',
+	'dt_xml_pages' => 'ܕ̈ܦܐ',
+	'dt_xml_page' => 'ܕܦܐ',
+	'dt_xml_template' => 'ܩܠܒܐ',
+	'dt_xml_name' => 'ܫܡܐ',
+	'dt_xml_title' => 'ܟܘܢܝܐ',
+	'dt_xml_id' => 'ܗܝܝܘܬܐ',
+	'dt_import_summarydesc' => 'ܦܣܝܩܬ̈ܐ ܕܡܥܠܢܘܬܐ:',
+	'right-datatransferimport' => 'ܡܥܠܢܘܬܐ ܕܓܠܝܬ̈ܐ',
+);
+
 /** Araucanian (Mapudungun)
  * @author Remember the dot
  */

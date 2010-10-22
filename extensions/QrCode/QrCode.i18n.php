@@ -198,3 +198,10 @@ $messages['tl'] = array(
 	'qrcode-desc' => 'Bumubuo at nagdaragdag ng mga larawan ng Kodigong QR sa isang pahina ng wiki',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'qrcode-desc' => 'Створює і додає зображення з QR-кодами на сторінки вікі',
+);
+

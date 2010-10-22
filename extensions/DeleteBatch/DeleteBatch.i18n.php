@@ -118,6 +118,15 @@ $messages['ar'] = array(
 	'right-deletebatch' => 'حذف باتش الصفحات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'deletebatch-caption' => 'ܡܟܬܒܘܬܐ ܕܕܦܐ:',
+	'deletebatch-or' => '<b>ܐܘ</b>',
+	'deletebatch-delete' => 'ܫܘܦ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda

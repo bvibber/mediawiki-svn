@@ -50,6 +50,13 @@ $messages['ar'] = array(
 	'categoryonupload-label' => 'التصنيف:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'categoryonupload-label' => 'ܣܕܪܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -424,6 +431,13 @@ $messages['lt'] = array(
 $messages['lv'] = array(
 	'categoryonupload-desc' => 'Piedāvā lietotājam izvēlēties kategoriju augšupielādējot failu',
 	'categoryonupload-label' => 'Kategorija:',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'categoryonupload-desc' => 'Maneho mpisafidy sokajy rehefa am-pangalana rakitra iray',
 );
 
 /** Macedonian (Македонски)

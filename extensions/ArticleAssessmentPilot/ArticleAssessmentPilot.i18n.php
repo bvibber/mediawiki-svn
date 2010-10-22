@@ -128,6 +128,16 @@ Probeer asseblief later weer.",
 	'articleassessment-survey-thanks' => 'Dankie dat u die opname ingevul het.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'articleassessment-submit' => 'ܫܕܪ',
+	'articleassessment-survey-answer-whyrated-other' => 'ܐܚܪܢܐ',
+	'articleassessment-survey-question-useful-iffalse' => 'ܠܡܢܐ?',
+	'articleassessment-survey-submit' => 'ܫܕܪ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1666,8 +1676,11 @@ Poate doriți să o reevaluați.",
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
+ * @author Reder
  */
 $messages['roa-tara'] = array(
+	'articleassessment' => 'Artichele de valutazione',
+	'articleassessment-desc' => 'Artichele de valutazione (versiune guidate)',
 	'articleassessment-yourfeedback' => "'U giudizie tune",
 	'articleassessment-submit' => 'Conferme',
 	'articleassessment-rating-wellsourced' => 'Belle probbie:',
@@ -1675,11 +1688,17 @@ $messages['roa-tara'] = array(
 	'articleassessment-rating-completeness' => 'Comblete:',
 	'articleassessment-rating-readability' => 'Leggibbele:',
 	'articleassessment-articlerating' => "Pundegge d'a pàgene",
+	'articleassessment-error' => "S'è verifecate 'nu errore.
+Se preghe de pruvà cchiù nnande.",
 	'articleassessment-thanks' => "Grazie! 'A valutaziona toje ha state reggistrate.",
 	'articleassessment-results-hide' => '(<span class="hidelink">Scunne le resultate</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => "Ije amm'a condrebbuì a {{SITENAME}}",
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => "Me chiace dìcere 'u penziere mèje",
 	'articleassessment-survey-answer-whyrated-other' => 'Otre',
 	'articleassessment-survey-question-useful-iffalse' => 'Purcé?',
 	'articleassessment-survey-submit' => 'Conferme',
+	'articleassessment-survey-title' => 'Se preghe de responnere a quacche dumanne',
+	'articleassessment-survey-thanks' => "Grazzie pè avè combilate 'u sondagge.",
 );
 
 /** Russian (Русский)
@@ -1733,14 +1752,23 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'articleassessment-yourfeedback' => 'Ваш назор',
 	'articleassessment-submit' => 'Одослати',
 	'articleassessment-rating-wellsourced' => 'Жрідла:',
 	'articleassessment-rating-neutrality' => 'Невтралность:',
 	'articleassessment-rating-completeness' => 'Комплетность:',
 	'articleassessment-rating-readability' => 'Чітательность:',
+	'articleassessment-articlerating' => 'Рейтінґ сторінкы',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|оцінка|оцінкы|оцінок}})',
+	'articleassessment-results-hide' => '(<span class="hidelink">Сховати резултаты</span>)',
+	'articleassessment-survey-answer-whyrated-development' => 'Сподїваю ся, же мій рейтінґ буде позітівно впливати на вывой сторінкы',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Хотїв єм помочі {{grammar:3sg|{{SITENAME}}}}',
 	'articleassessment-survey-answer-whyrated-other' => 'Інше',
 	'articleassessment-survey-question-useful-iffalse' => 'Чом?',
+	'articleassessment-survey-question-comments' => 'Маєте даякы додаточны коментарї?',
 	'articleassessment-survey-submit' => 'Одослати',
+	'articleassessment-survey-title' => 'Просиме, одповіджте на пару вопросів',
+	'articleassessment-survey-thanks' => 'Дякуєме за выповнїня звідованя.',
 );
 
 /** Yakut (Саха тыла)
@@ -1982,12 +2010,28 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'articleassessment' => 'Makala berlen baha',
+	'articleassessment-desc' => 'Makala berlen baha (synag warianty)',
 	'articleassessment-yourfeedback' => 'Seslenmäňiz',
 	'articleassessment-submit' => 'Tabşyr',
+	'articleassessment-rating-wellsourced' => 'Çeşmeler:',
+	'articleassessment-rating-neutrality' => 'Bitarap:',
 	'articleassessment-rating-completeness' => 'Doly:',
+	'articleassessment-rating-readability' => 'Okap bolýar:',
+	'articleassessment-articlerating' => 'Sahypa derejelendirmesi',
+	'articleassessment-error' => 'Bir säwlik ýüze çykdy.',
+	'articleassessment-thanks' => 'Sag boluň! Derejelendirmeleriňiz ýazdyryldy.',
+	'articleassessment-featurefeedback' => 'Bu funksiýa hakda bize <span class="feedbacklink">seslenme</span> iberiň.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|derejelendirme|derejelendirme}})',
+	'articleassessment-results-show' => '(Netijeler gizlenilgi. Olary <span class="showlink">görkez</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Netijeleri gizle</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => '{{SITENAME}} saýtyna goşant goşmak isledim.',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Öz pikirimi paýlaşmagy halaýaryn.',
 	'articleassessment-survey-answer-whyrated-other' => 'Başga',
 	'articleassessment-survey-question-useful-iffalse' => 'Näme üçin?',
+	'articleassessment-survey-question-comments' => 'Goşmaça bellikleriňiz barmy?',
 	'articleassessment-survey-submit' => 'Tabşyr',
+	'articleassessment-survey-title' => 'Käbir soraglara jogap beriň',
 );
 
 /** Tagalog (Tagalog)

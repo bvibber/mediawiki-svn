@@ -99,6 +99,15 @@ $messages['ar'] = array(
 	'right-authorprotect' => 'حماية الصفحات المؤلفة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'authorprotect-reason' => 'ܥܠܬܐ:',
+	'authorprotect-success' => 'ܢܛܝܪܘܬܐ ܓܡܪܬ',
+	'authorprotect-failure' => 'ܢܛܝܪܘܬܐ ܠܐ ܓܡܪܬ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -1054,13 +1063,14 @@ $messages['ml'] = array(
 	'authorprotect-confirm' => 'സംരക്ഷണ മാനത്തിൽ മാറ്റം വരുത്തുക',
 	'authorprotect-edit' => 'തിരുത്താനുള്ള അവകാശം ലേഖകർക്കു മാത്രമായി പരിമിതപ്പെടുത്തുന്നു.',
 	'authorprotect-move' => 'തലക്കെട്ടു മാറ്റാനുള്ള അവകാശം ലേഖകർക്കു മാത്രമായി പരിമിതപ്പെടുത്തുന്നു.',
-	'authorprotect-expiry' => 'കാലാവധി',
-	'authorprotect-reason' => 'കാരണം',
+	'authorprotect-expiry' => 'കാലാവധി:',
+	'authorprotect-reason' => 'കാരണം:',
 	'authorprotect-intro' => 'ലേഖകരല്ലാത്തവരിൽ നിന്നു ഈ താൾ സം‌രക്ഷിക്കുവാൻ ഈ പത്രിക ഉപയോഗിക്കുക',
 	'authorprotect-success' => 'വിജയകരമായി സം‌രക്ഷിച്ചിരിക്കുന്നു!',
 	'authorprotect-failure' => 'സം‌രക്ഷിക്കുവാൻ സാധിച്ചില്ല',
 	'protect-level-author' => 'ലേഖകരല്ലാത്തവരിൽ നിന്നു സം‌രക്ഷിക്കുക',
 	'restriction-level-author' => 'ലേഖകർക്കു മാത്രമായി പരിമിതപ്പെടുത്തിയിരിക്കുന്നു',
+	'right-authorprotect' => 'രചയിതാവ് ഉള്ള താളുകൾ സംരക്ഷിക്കുക',
 );
 
 /** Marathi (मराठी)

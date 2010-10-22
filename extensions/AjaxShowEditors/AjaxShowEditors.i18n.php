@@ -70,6 +70,13 @@ $messages['ar'] = array(
 	'ajax-se-usernotfound' => 'خطأ: المستخدم غير موجود',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'ajax-se-pagedoesnotexist' => '(ܕܦܐ ܗܢܐ ܠܝܬ)',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -791,11 +798,13 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'ajaxshoweditors-desc' => 'ഒരേ താൾ തന്നെ തിരുത്തുന്ന  ഉപയോക്താക്കളെ പ്രദർശിപ്പിക്കുന്നു.',
 	'ajax-se-title' => 'നിലവിൽ തിരുത്തിക്കൊണ്ടിരിക്കുന്നത്:',
+	'ajax-se-pending' => 'പുതുക്കലിനായി കാത്തിരിക്കുന്നു... (ഈ പെട്ടിയിൽ ഞെക്കുക അല്ലെങ്കിൽ തിരുത്തൽ തുടങ്ങുക)',
 	'ajax-se-idling' => '($1 സെക്കന്റുകൾക്ക് മുൻപ്)',
 	'ajax-se-pagedoesnotexist' => 'താൾ നിലവിലില്ല',
 	'ajax-se-userinvalid' => 'പിഴവ്: അസാധുവായ ഉപയോക്താവ്',

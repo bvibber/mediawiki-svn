@@ -1345,6 +1345,8 @@ $messages['si'] = array(
 $messages['sk'] = array(
 	'vector' => 'Vylepšenia použ. rozhrania Vector',
 	'vector-desc' => 'Vylepšuje prvky používateľského rozhrania témy vzhľady Vector',
+	'vector-collapsiblenav-preference' => 'Povoliť zbaľovanie položiek v navigačnom menu v téme vzhľadu Vector',
+	'vector-collapsiblenav-more' => 'Ďalšie jazyky',
 	'vector-editwarning-warning' => 'Ak opustíte túto stránku, môžete tým stratiť všetky vykonané zmeny.
 Ak ste prihlásený, toto upozornenie môžete vypnúť v sekcii „Úpravy“ svojich nastavení.',
 	'vector-editwarning-preference' => 'Upozorniť ma, keď opúšťam upravovaciu stránku s neuloženými zmenami',

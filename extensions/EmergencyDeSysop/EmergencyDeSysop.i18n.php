@@ -80,6 +80,14 @@ $messages['ar'] = array(
 	'right-emergencydesysop' => 'القدرة على عزل مستخدم آخر، بشكل متبادل',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'emergencydesysop-submit' => 'ܫܕܪ',
+	'emergencydesysop-nogroups' => 'ܠܐ ܡܕܡ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda

@@ -1485,9 +1485,12 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'invite-logpage' => 'Журнал запрошень',
 	'invitations-desc' => 'Дозволяє [[Special:Invitations|управління новими функціями]], обмежуючи доступ до них за допомогою системи запрошень',
+	'invitations-inviteform-submit' => 'Запросити',
 );
 
 /** Veps (Vepsan kel')

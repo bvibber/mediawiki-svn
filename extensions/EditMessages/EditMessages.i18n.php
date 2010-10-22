@@ -105,6 +105,15 @@ $messages['ar'] = array(
 	'editmsg-patch-success' => 'تم تنفيذ الباتش بنجاح.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'editmessages' => 'ܫܚܠܦ ܐܓܪ̈ܬܐ',
+	'editmsg-search' => 'ܒܨܝܐ',
+	'editmsg-new-search' => 'ܒܨܝܐ ܚܕܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II

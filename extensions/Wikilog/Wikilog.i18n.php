@@ -6821,6 +6821,7 @@ $messages['te'] = array(
 	'wikilog-form-comment' => 'వ్యాఖ్య:',
 	'wikilog-show-all' => 'అన్ని టపాలు',
 	'wikilog-show-published' => 'ప్రచురితం',
+	'wikilog-show-drafts' => 'చిత్తుప్రతులు',
 	'wikilog-submit' => 'దాఖలుచేయి',
 	'wikilog-preview' => 'మునుజూపు',
 	'wikilog-edit-lc' => 'మార్చు',

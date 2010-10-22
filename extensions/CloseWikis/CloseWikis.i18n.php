@@ -132,6 +132,19 @@ $messages['ar'] = array(
 	'right-closewikis' => 'إغلاق الويكيات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'closewikis-page-close-wiki' => 'ܘܝܩܝ:',
+	'closewikis-page-close-submit' => 'ܣܟܘܪ',
+	'closewikis-page-reopen' => 'ܦܬܘܚ ܘܝܩܝ ܙܒܢܬܐ ܐܚܪܬܐ',
+	'closewikis-page-reopen-wiki' => 'ܘܝܩܝ:',
+	'closewikis-page-reopen-reason' => 'ܥܠܬܐ:',
+	'closewikis-page-reopen-submit' => 'ܦܬܘܚ ܙܒܢܬܐ ܐܚܪܬܐ',
+	'closewikis-list-header-wiki' => 'ܘܝܩܝ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

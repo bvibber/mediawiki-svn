@@ -67,6 +67,13 @@ $messages['ar'] = array(
 	'commentbox-error-empty-comment' => 'التعليقات الفارغة غير مسموح بها!',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'commentbox-name' => 'ܫܡܐ:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1019,6 +1026,8 @@ Bu sayfa ile ilgili bir yorumunuz mu var? Buraya ekleyin ya da <span class="plai
 $messages['uk'] = array(
 	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
 	'commentbox-name' => 'Назва:',
+	'commentbox-first-comment-heading' => '== Коментарі ==',
+	'commentbox-regex' => '/\\n==\\s*Коментарі\\s*==\\s*\\n/i',
 );
 
 /** Vèneto (Vèneto)

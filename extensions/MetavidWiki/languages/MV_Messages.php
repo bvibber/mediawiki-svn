@@ -5543,6 +5543,13 @@ $messages['jv'] = array(
 	'mv_protect_source_material' => 'Bahan sumber asli direksa saka panyuntingan',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'mv_tool_search' => 'Ujarlerit',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer
@@ -6285,7 +6292,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_viewprevnext' => 'Видете ($1) ($2)',
 	'mediasearch' => 'Пребарај податотека',
 	'mv_search_sel_t' => 'Изберете тип на пребарување',
-	'mv_do_media_search' => 'Пребарај MetaVid медии за $1',
+	'mv_do_media_search' => 'Пребарај MetaVid податотеки за $1',
 	'mv_results_for' => 'Резултати за $1',
 	'mv_video_search' => 'Пребарување снимки',
 	'mv_page_search' => 'Пребарај вики-страници за $1',
@@ -6317,7 +6324,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_spoken_by' => 'зборува',
 	'mv_speech_by' => 'чита',
 	'mv_category' => 'категорија',
-	'mv_search_no_results' => 'Нема совпаднати медии',
+	'mv_search_no_results' => 'Нема совпаднати податотеки',
 	'mv_media_matches' => 'Медиски совпаѓања',
 	'mv_remove_filter' => 'отстрани филтер',
 	'mv_advaced_search' => 'Напредно пребарување на податотеки',
@@ -6332,7 +6339,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_resource_not_supported' => "Ресурсо од типот '''$1''' не е поддржан",
 	'mv_resource_locator' => 'Пронаоѓач на извори',
 	'mv_unknown_clipboard_action' => 'Непознато дејство од магацинот',
-	'mv_media_search' => 'Баребарување по медии',
+	'mv_media_search' => 'Пребарување на податотеки',
 	'mv_editor_options' => 'Уреднички прилагодувања',
 	'mv_editor_mode' => 'Уреднички режим',
 	'mv_simple_editor_desc' => 'прост уредник (iMovie стил)',

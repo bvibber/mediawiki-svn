@@ -146,6 +146,16 @@ $messages['ar'] = array(
 	'ct-update-table' => 'حدّث الجدول',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'ct-beginner' => 'ܫܪܘܝܐ',
+	'ct-intermediate' => 'ܡܨܥܝܐ',
+	'ct-anon-users' => '$1 ܡܬܚܫܚܢ̈ܐ ܠܐ ܝܕ̈ܝܥܐ',
+	'ct-and' => 'ܘ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

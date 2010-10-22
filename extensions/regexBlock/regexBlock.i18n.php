@@ -2057,6 +2057,7 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'regexblock-form-reason' => 'Шалтгаан:',
 	'regexblock-view-all' => 'Бүгдийг',
+	'regexblock-view-go' => 'Явах',
 );
 
 /** Marathi (मराठी)
@@ -3275,6 +3276,7 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'regexblock-already-blocked' => '$1 вже заблокований.',
 	'regexblock-form-username' => "IP-адреса або ім'я користувача:",
 	'regexblock-form-reason' => 'Причина:',
 	'regexblock-form-expiry' => 'Закінчення:',

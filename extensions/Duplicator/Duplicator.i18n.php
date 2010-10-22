@@ -127,6 +127,14 @@ $messages['ar'] = array(
 	'right-duplicate' => 'استنساخ الصفحات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'duplicator-options' => 'ܓܒܝܬ̈ܐ',
+	'duplicator-source' => 'ܥܩܪܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -476,6 +476,46 @@ $messages['ar'] = array(
 	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'apc' => 'ܝܕܥܬ̈ܐ ܕAPC',
+	'right-apc' => 'ܡܬܚܫܚܢܘܬܐ ܕܟܠ ܦܪ̈ܘܫܝܐ ܒ[[Special:APC|APC]]',
+	'viewapc-info-general' => 'ܝܕ̈ܥܬܐ ܓܘܢܝܬ̈ܐ',
+	'viewapc-apc-version' => 'ܨܚܚܐ ܕAPC',
+	'viewapc-php-version' => 'ܨܚܚܐ ܕPHP',
+	'viewapc-shared-memory' => 'ܥܘܗܕܢܐ ܫܘܬܦܐ',
+	'viewapc-start-time' => 'ܙܒܢܐ ܕܫܘܪܝܐ',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ܠܦܦܐ|ܠܦܦ̈ܐ}} ($2)',
+	'viewapc-memory-usage' => 'ܡܬܚܫܚܢܘܬܐ ܕܥܘܗܕܢܐ',
+	'viewapc-memory-free' => 'ܚܐܪܐ: $1 ($2)',
+	'viewapc-memory-used' => 'ܡܬܚܫܚܐ: $1 ($2)',
+	'viewapc-display-value' => 'ܛܝܡܐ',
+	'viewapc-display-filename' => 'ܫܡܐ ܕܠܦܦܐ',
+	'viewapc-display-info' => 'ܫܡܐ',
+	'viewapc-display-type' => 'ܐܕܫܐ',
+	'viewapc-display-creation_time' => 'ܒܪܝܬ',
+	'viewapc-display-deletion_time' => 'ܫܝܦܬ',
+	'viewapc-display-no-delete' => 'ܠܐ ܫܝܦܐ',
+	'viewapc-display-mem_size' => 'ܥܓܪܐ',
+	'viewapc-ls-options-legend' => 'ܓܒܝܬ̈ܐ',
+	'viewapc-ls-submit' => 'ܙܠ!',
+	'viewapc-ls-header-name' => 'ܫܡܐ',
+	'viewapc-ls-header-size' => 'ܥܓܪܐ',
+	'viewapc-ls-header-created' => 'ܒܪܝܬ',
+	'viewapc-ls-header-deleted' => 'ܫܝܦܬ',
+	'viewapc-ls-delete' => '[ܫܘܦ ܗܫܐ]',
+	'viewapc-ls-scope-deleted' => 'ܫܝܦܐ',
+	'viewapc-ls-scope-both' => 'ܬܪܬܝܗܘܢ',
+	'viewapc-ls-sort-size' => 'ܥܓܪܐ',
+	'viewapc-ls-sort-name' => 'ܫܡܐ',
+	'viewapc-ls-sort-created' => 'ܒܪܝܬ',
+	'viewapc-ls-sort-deleted' => 'ܫܝܦܬ',
+	'viewapc-ls-limit-none' => 'ܟܠ',
+	'viewapc-version-info' => 'ܝܕ̈ܥܬܐ ܕܨܚܚܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -584,6 +624,40 @@ $messages['arz'] = array(
 نسخة جديدة $2 متوفرة فى http://pecl.php.net/package/APC/$2',
 	'viewapc-filecache-cleared' => "'''''تم إفراغ اختزان الملفات.'''''",
 	'viewapc-usercache-cleared' => "'''''تم إفراغ كاش التطبيق.'''''",
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'apc' => 'APC тураһында мәғлүмәт',
+	'apc-desc' => 'MediaWiki программаһында [[Special:APC|APC кэшын ҡарау һәм идаралау]]',
+	'right-apc' => '[[Special:APC|APC]] кэшының бөтә мөмкинлектәрен ҡулланыу',
+	'viewapc-apc-not-available' => 'Кэш тураһында мәғлүмәт юҡ.
+APC эшләмәй, булһа кәрәк.',
+	'viewapc-clear-confirm' => 'Һеҙ кэшты таҙартырға теләйһегеҙме?',
+	'viewapc-clear-user-cache' => 'Ҡулланыусы кэшын таҙартыу',
+	'viewapc-clear-code-cache' => 'opcode кэшын таҙартыу',
+	'viewapc-mode-stats' => 'Үҙәктең статистикаһын ҡарау',
+	'viewapc-mode-system-cache' => 'Система кэшы яҙмалары',
+	'viewapc-mode-system-cache-dir' => 'Директориялар буйынса яҙмалар',
+	'viewapc-mode-user-cache' => 'Ҡулланыусы кэшы яҙмалары',
+	'viewapc-mode-version-check' => 'Өлгөнө тикшереү',
+	'viewapc-info-general' => 'Дөйөм мәғлүмәт',
+	'viewapc-apc-version' => 'APC өлгөһө',
+	'viewapc-php-version' => 'PHP өлгөһө',
+	'viewapc-shared-memory' => 'Дөйөм хәтер',
+	'viewapc-shared-memory-details' => '{{PLURAL:$1|Күләме $2 булған $1 өлөш|Һәр береһенең күләме $2 булған $1 өлөш}}.<br />
+(хәтере — $3, бикләү — $4)',
+	'viewapc-start-time' => 'Башланыу ваҡыты',
+	'viewapc-uptime' => 'Эшләү ваҡыты',
+	'viewapc-upload-support' => 'Файл тейәү мөмкинлеге',
+	'viewapc-filecache-info' => 'Файлдар кэшы тураһында мәғлүмәт',
+	'viewapc-usercache-info' => 'Ҡулланыусы кэшы тураһында мәғлүмәт',
+	'viewapc-cached-files' => 'Кэшланған файлдар',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|файл}} ($2)',
+	'viewapc-hits' => 'Эләгеүҙәр',
+	'viewapc-misses' => 'Яҙа эләгеүҙәр',
 );
 
 /** Belarusian (Беларуская)
@@ -4027,6 +4101,7 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'viewapc-ls-submit' => 'Явах',
 	'viewapc-ls-limit-none' => 'Бүгдийг',
 );
 

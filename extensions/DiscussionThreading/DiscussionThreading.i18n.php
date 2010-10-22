@@ -71,6 +71,13 @@ $messages['ar'] = array(
 	'discussionthreading-threadnewsectionhint' => 'بدء مجموعة رسائل جديدة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'discussionthreading-threadnewsection' => 'ܚܕܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -585,6 +592,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'discussionthreading-replysection' => 'răspuns',
+	'discussionthreading-replysectionhint' => 'Răspunde la această postare',
 	'discussionthreading-threadnewsection' => 'nou',
 	'discussionthreading-threadnewsectionhint' => 'Începe un nou fir',
 );

@@ -339,6 +339,16 @@ $messages['ru'] = array(
 	'semanticformsinputs-today' => 'Сегодня',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'semanticformsinputs-close' => 'మూసివేయి',
+	'semanticformsinputs-prev' => 'గత',
+	'semanticformsinputs-next' => 'తదుపరి',
+	'semanticformsinputs-today' => 'ఈరోజు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

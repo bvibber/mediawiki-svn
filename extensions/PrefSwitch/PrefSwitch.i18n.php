@@ -6690,6 +6690,27 @@ Vyberte prosím všetky možnosti, ktoré považujete za pravdivé.',
 	'prefswitch-title-switched-on' => 'Užite si to!',
 	'prefswitch-title-off' => 'Vypnúť nové funkcie',
 	'prefswitch-title-switched-off' => 'Ďakujeme',
+	'prefswitch-title-feedback' => 'Komentáre',
+	'prefswitch-success-on' => 'Nové funkcie sú teraz zapnuté. Dúfame, že sa vám budú páčiť. kedykoľvek ich môžete znova vypnúť kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ v hornej časti stránky.',
+	'prefswitch-success-off' => 'Nové funkcie sú teraz vypnuté. Dúfame, že sa vám budú páčiť. kedykoľvek ich môžete znova zapnúť kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ v hornej časti stránky.',
+	'prefswitch-success-feedback' => 'Vaše komentáre boli odoslané.',
+	'prefswitch-return' => '<hr style="clear:both">
+Späť na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* '''Karta {{int:watch}}''' je teraz hviezdičkou.
+* '''Karta {{int:move}}''' je teraz v roletovom menu vedľa vyhľadávacieho poľa.",
+	'prefswitch-main-feedback' => '===Komentáre?===
+Radi by sme počuli váš názor. Prosím, navštívte našu [[$1|stránku komentárov]] alebo ak vás zaujímajú naše prebiehajúce snahy vylepšiť softvér, navštívte [http://usability.wikimedia.org wiki o použiteľnosti].',
+	'prefswitch-main-anon' => '===Vrátiť späť===
+[$1 Kliknutím sem vypnete nové funkcie]. Budete požiadaný o prihlásenie alebo vytvorenie nového účtu.',
+	'prefswitch-main-on' => '===Vrátiť späť!===
+[$2 Kliknutím sem vypnete nové funkcie].',
+	'prefswitch-main-off' => '===Vyskúšajte ich!===
+ [$1 Kliknutím sem zapnete nové funkcie].',
+	'prefswitch-survey-intro-feedback' => 'Radi si vypočujeme váš názor.
+Prosím, vyplňte nepovinný dotazník dolu a potom kliknite na „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
+	'prefswitch-survey-intro-off' => 'Ďakujeme, že ste vyskúšali nové funkcie.
+Ak nám chcete pomôcť ich vylepšiť, vyplňte nepovinný dotazník a potom kliknite na „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“.',
+	'prefswitch-feedbackpage' => 'Project:Komentáre o použiteľnosti',
 );
 
 /** Slovenian (Slovenščina)
@@ -7263,6 +7284,7 @@ $messages['tk'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Başga brauzer:',
 	'prefswitch-survey-question-os' => 'Nähili operasion ulgam ulanýarsyňyz?',
 	'prefswitch-survey-answer-os-other' => 'Başga operasion ulgam:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Hawa, funksiýalary ähli wikilerde ýap',
 	'prefswitch-survey-question-res' => 'Ekran çözgüdiňiz näçe?',
 	'prefswitch-title-on' => 'Täze funksiýalar',
 	'prefswitch-title-switched-on' => 'Hezilini görüň!',

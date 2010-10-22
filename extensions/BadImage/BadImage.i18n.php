@@ -160,7 +160,11 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'badimages' => 'ܡܟܬܒܘܬܐ ܕܨܘܪ̈ܬܐ ܠܐ ܛܒ̈ܐ',
 	'badimages-add-btn' => 'ܐܘܣܦ',
+	'badimages-name' => 'ܫܡܐ:',
+	'badimages-reason' => 'ܥܠܬܐ:',
+	'badimages-log-name' => 'ܡܟܬܒܘܬܐ ܕܨܘܪ̈ܬܐ ܠܐ ܛܒ̈ܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

@@ -4916,7 +4916,9 @@ $messages['uk'] = array(
 	'sign-viewfield-city' => 'Місто',
 	'sign-viewfield-state' => 'Штат',
 	'sign-viewfield-country' => 'Країна',
+	'sign-viewfield-ip' => 'IP-адреса',
 	'sign-viewfield-email' => 'Електронна пошта',
+	'sign-viewfield-reviewcomment' => 'Коментар',
 	'sign-review-comment' => 'Коментар',
 );
 

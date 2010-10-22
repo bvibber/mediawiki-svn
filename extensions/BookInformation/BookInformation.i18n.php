@@ -113,6 +113,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'bookinfo-result-title' => 'ܟܘܢܝܐ:',
 	'bookinfo-result-author' => 'ܣܝܘܡܐ:',
 	'bookinfo-result-publisher' => 'ܦܪܣܢܐ:',
 	'bookinfo-result-year' => 'ܫܢܬܐ:',

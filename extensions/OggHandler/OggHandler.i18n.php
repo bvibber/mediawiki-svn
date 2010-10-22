@@ -3618,6 +3618,7 @@ $messages['yo'] = array(
 	'ogg-pause' => 'Ìjáwọ́',
 	'ogg-stop' => 'Ìdádúró',
 	'ogg-player-selected' => '(ṣíṣàyàn)',
+	'ogg-dismiss' => 'Padé',
 	'ogg-download' => 'Ìrùsílẹ̀ fáìlì',
 	'ogg-desc-link' => 'Nípa fáìlì yìí',
 );

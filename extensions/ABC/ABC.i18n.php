@@ -81,6 +81,13 @@ $messages['ar'] = array(
 	'abcvorbis' => 'أو جي جي فوربيس',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'abcdownload' => 'ܐܚܬ:',
+);
+
 /** Araucanian (Mapudungun)
  * @author Kaniw
  */

@@ -149,6 +149,19 @@ $messages['ar'] = array(
 	'amazonplus-less' => 'أقل',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'amazonplus-german' => 'ܓܪܡܢܝܐ',
+	'amazonplus-french' => 'ܦܪܢܣܝܐ',
+	'amazonplus-japanese' => 'ܝܦܢܝܐ',
+	'amazonplus-new' => 'ܚܕܬܐ',
+	'amazonplus-cp-none' => 'ܠܐ ܡܕܡ',
+	'amazonplus-more' => 'ܝܬܝܪ',
+	'amazonplus-less' => 'ܒܨܝܪ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda
@@ -170,6 +183,27 @@ $messages['arz'] = array(
 	'amazonplus-cp-none' => 'لا شيء',
 	'amazonplus-more' => 'أكثر',
 	'amazonplus-less' => 'أقل',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'amazonplus-desc' => 'Amazon мәғлүмәтен күрһәтеү өсөн көйләнмәле киңәйтеү',
+	'amazonplus-nores' => 'Хата: Бер нимә лә табылманы!',
+	'amazonplus-noidres' => 'Хата: Тауарҙың идентификаторын табып булманы!',
+	'amazonplus-fgcerr' => 'Хата: Amazon-дан мәғлүмәт алып булмай!',
+	'amazonplus-slserr' => 'Хата: Amazon-дан алынған мәғлүмәтте уҡып булмай!',
+	'amazonplus-used' => 'ҡулланыла',
+	'amazonplus-german' => 'немецса',
+	'amazonplus-french' => 'французса',
+	'amazonplus-japanese' => 'японса',
+	'amazonplus-amazon' => 'Amazon хаҡы',
+	'amazonplus-new' => 'яңы',
+	'amazonplus-none' => 'Һатыу өсөн был тауар ҡалмаған.',
+	'amazonplus-cp-none' => 'Юҡ',
+	'amazonplus-more' => 'күберәк',
+	'amazonplus-less' => 'әҙерәк',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

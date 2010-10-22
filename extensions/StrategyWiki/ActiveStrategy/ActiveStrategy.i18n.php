@@ -452,10 +452,14 @@ $messages['ru'] = array(
 );
 
 /** Slovak (Slovenčina)
+ * @author Helix84
  * @author Jkjk
  */
 $messages['sk'] = array(
 	'activestrategy' => 'Aktívná stratégia',
+	'active-strategy-desc' => 'Zobrazuje počet úprav na strategické plánovanie stránky',
+	'active-strategy-intro' => 'Počet úprav stránok pracovnej skupiny za {{PLURAL:$1|posledný $1 deň|posledné $1 dni|posledných $1 dní}}.',
+	'nedits' => '$1 {{PLURAL:$1|úprava|úpravy|úprav}}',
 );
 
 /** Slovenian (Slovenščina)
@@ -493,6 +497,15 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'activestrategy' => 'క్రియాశీల వ్యూహం',
 	'nedits' => '$1 {{PLURAL:$1|మార్పు|మార్పులు}}',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'activestrategy' => 'Işjeň strategiýa',
+	'active-strategy-desc' => 'Strategik planlaýyş sahypalaryndaky özgerdişleriň sanyny görkezýär',
+	'nedits' => '$1 {{PLURAL:$1|özgerdiş|özgerdiş}}',
 );
 
 /** Tagalog (Tagalog)

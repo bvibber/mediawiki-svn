@@ -422,6 +422,17 @@ $messages['lb'] = array(
 	'cspammer-log-page' => 'Bemierkung Spammer Logbuch',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'commentspammer-save-blocked' => "An'olona mety mpanao spam ny adiresy IP anao : tsy notehirizina ilay pejy.
+[[Special:UserLogin|Midira na manokafa kaonty]] mba manodina io fandraràna io.",
+	'commentspammer-log-msg' => "Fanovana nataon'i [[Special:Contributions/$1|$1]] tamin'ny [[:$2]].",
+	'cspammerlogpagetext' => "Tatitra momban'ny fanovana nekena na nolavina, mifototra amin'ny mpikambana mpanao spam fantatra.",
+	'cspammer-log-page' => 'Tatitry ny mpanao spam',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -1163,6 +1163,13 @@ $messages['yi'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|לינק|לינקען}} צו $3',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|ìjápọ̀|àwọn ìjápọ̀}} $2 sí $3',
+);
+
 /** Cantonese (粵語) */
 $messages['yue'] = array(
 	'crossnamespacelinks' => '跨空間名連結',

@@ -585,6 +585,7 @@ $messages['mk'] = array(
  */
 $messages['mn'] = array(
 	'mostrevisors-namespace' => 'Нэрний зай:',
+	'mostrevisors-submit' => 'Явах',
 );
 
 /** Maltese (Malti)
@@ -856,6 +857,7 @@ $messages['te'] = array(
 	'mostrevisors-submit' => 'వెళ్ళు',
 	'mostrevisors-showredir' => 'దారిమార్పు పేజీలను చూపించు',
 	'mostrevisors-hideredir' => 'దారిమార్పు పేజీలను దాచు',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|కూర్పరి|కూర్పరులు}}',
 );
 
 /** Thai (ไทย)

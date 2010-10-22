@@ -216,6 +216,13 @@ $messages['fr'] = array(
 	'antibot-desc' => 'Environnement simple de vérification contre les robots spammeurs et les contenus à déclenchement conditionnel automatique',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'antibot-desc' => 'Enveronance simpla de contrôlo contre los robots spamors et los contegnus a dècllenchement condicionèl ôtomatico',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

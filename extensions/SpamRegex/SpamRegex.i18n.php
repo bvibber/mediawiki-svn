@@ -1840,6 +1840,7 @@ $messages['tr'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'spamregex-already-blocked' => '"$1" вже заблокований',
 	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(опис)',
 );

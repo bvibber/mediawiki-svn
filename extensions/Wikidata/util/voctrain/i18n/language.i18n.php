@@ -167,6 +167,7 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Malafaya
+ * @author Тест
  */
 $messages['qqq'] = array(
 	'voctrain_Hello_World' => 'Test message',
@@ -232,7 +233,7 @@ $messages['qqq'] = array(
 	'voctrain_other' => "Selectable item to be chosen when the desired number of questions is not in the list
 i.e.:
 
-'''Number of questions'''
+'''Number of questions''' {{msg-voctrain|Voctrain Number of questions}}
 
 * 10
 * 25
@@ -3844,10 +3845,15 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'voctrain_try_again_' => 'спробуєте ще раз?',
 	'voctrain_continue' => 'продовжити',
+	'voctrain_Number_of_questions' => 'Кількість питань',
+	'voctrain_Answers' => 'Відповіді',
+	'voctrain_Answer' => 'Відповідь',
 	'voctrain_User_name' => "Ім'я користувача",
 	'voctrain_Password' => 'Пароль',
 	'voctrain_Language' => 'Мова',
+	'voctrain_other' => 'інша',
 );
 
 /** Vèneto (Vèneto)

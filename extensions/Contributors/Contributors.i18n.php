@@ -111,8 +111,12 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'contributors' => 'ܫܘܬܦܢ̈ܐ',
+	'contributors-toolbox' => 'ܫܘܬܦܢ̈ܐ ܪ̈ܫܝܐ',
+	'contributors-target' => 'ܟܘܢܝܐ:',
 	'contributors-submit' => 'ܚܘܝ',
+	'contributors-subtitle' => 'ܫܘܬܦܢ̈ܐ ܪ̈ܫܝܐ ܒ $1',
 	'contributors-others' => 'ܘ {{PLURAL:$1|ܚܕ ܐܚܪܢܐ|$1 ܐܚܪ̈ܢܐ}}',
+	'contributors-badtitle' => 'ܟܘܢܝܐ ܠܐ ܬܪܝܨܐ.',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

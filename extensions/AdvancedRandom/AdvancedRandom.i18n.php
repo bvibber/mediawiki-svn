@@ -79,6 +79,15 @@ $messages['avk'] = array(
 	'advancedrandom' => 'Xuyavapon',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'advancedrandom' => 'Киңәйтелгән осраҡлы дәүмәл',
+	'advancedrandom-desc' => 'Ҡайһы исемдәр арауығынан  булһа ла эске битенән йәки фекер алышыу битенән  күрһәтелгән биткә һылтанма булған осраҡлы битте сығара.
+Осраҡлы һайланған мәҡләне алыр өсөн [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] миҫалындағы һымаҡ, йәки осраҡлы GFDL-файлды алыр өсөн [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] миҫалындағы һымаҡ ҡулланыла ала',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

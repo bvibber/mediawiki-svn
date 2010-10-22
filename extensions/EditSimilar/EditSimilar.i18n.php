@@ -55,6 +55,13 @@ $messages['ar'] = array(
 	'tog-edit-similar' => 'تفعيل اقتراحات الصفحات المشابهة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'editsimilar-link-disable' => 'ܛܟܣ ܓܒܝܬ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

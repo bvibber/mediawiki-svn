@@ -116,6 +116,15 @@ $messages['ar'] = array(
 	'expand_templates_preview' => 'معاينة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'expand_templates_output' => 'ܦܠܛܐ',
+	'expand_templates_ok' => 'ܛܒ',
+	'expand_templates_preview' => 'ܚܝܪܐ ܩܕܡܝܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

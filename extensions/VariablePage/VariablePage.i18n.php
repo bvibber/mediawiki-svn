@@ -336,6 +336,15 @@ $messages['ru'] = array(
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'variablepage' => 'StránkaPremennej',
+	'variablepage-navlink_text' => 'Podpora',
+	'variablepage-desc' => 'Odľahčené presmerovanie premennej stránky',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
@@ -362,6 +371,7 @@ $messages['te'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'variablepage' => 'ÜýtgeýänSahypa',
 	'variablepage-navlink_text' => 'Bagyş et',
 );
 

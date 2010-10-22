@@ -109,6 +109,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'edituser' => 'ܫܚܠܦܬܐ ܕܡܬܚܫܚܢܐ',
 	'edituser-username' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
 	'edituser-dosearch' => 'ܒܨܝ',
 );
@@ -1245,7 +1246,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'edituser' => 'వాడుకరిని మార్చండి',
-	'edituser-username' => 'పేరు',
+	'edituser-username' => 'వాడుకరిపేరు:',
 	'edituser-dosearch' => 'వెతుకు',
 	'edituser-nouser' => 'ఆ వాడుకరి లేనేలేరు.',
 	'edituser-exempt' => 'ఆ వాడుకరిని మార్చలేరు',

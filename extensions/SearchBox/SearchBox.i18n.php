@@ -549,6 +549,7 @@ $messages['mk'] = array(
  */
 $messages['mn'] = array(
 	'searchbox-search' => 'Хайлт',
+	'searchbox-go' => 'Явах',
 	'searchbox-namespaces' => 'Нэрний зайнууд:',
 );
 

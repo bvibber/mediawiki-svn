@@ -174,6 +174,23 @@ $messages['af'] = array(
 	'fbconnect-link-to-profile' => 'Facebook-profiel',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'group-fb-groupie' => 'ܗܕ̈ܡܐ ܕܟܢܘܫܬܐ',
+	'group-fb-groupie-member' => 'ܗܕܡܐ ܕܟܢܘܫܬܐ',
+	'grouppage-fb-groupie' => '{{ns:project}}:ܗܕ̈ܡܐ ܕܟܢܘܫܬܐ',
+	'fbconnect-invalid' => 'ܓܒܝܬܐ ܠܐ ܬܪܝܨܬܐ',
+	'fbconnect-fullname' => 'ܫܡܐ ܓܡܝܪܐ',
+	'fbconnect-email' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
+	'fbconnect-language' => 'ܠܫܢܐ',
+	'fbconnect-choosefirst' => 'ܫܡܐ ܩܕܡܝܐ ܕܝܠܟ($1)',
+	'fbconnect-choosefull' => 'ܫܡܐ ܓܡܝܪܐ ܕܝܠܟ($1)',
+	'fbconnect-chooseusername' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ:',
+	'fbconnect-choosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1860,17 +1877,29 @@ Se de futuro pretende usar o Facebook Connect para entrar, pode [[Special:Connec
  */
 $messages['ro'] = array(
 	'fbconnect' => 'Conectare Facebook',
+	'group-fb-user' => 'Utilizatori Facebook Connect',
+	'group-fb-user-member' => 'Utilizator Facebook Connect',
 	'group-fb-groupie' => 'Membrii grup',
 	'group-fb-admin' => 'Administratori de grup',
 	'group-fb-admin-member' => 'Administrator grup',
+	'fbconnect-connect' => 'Conectare cu Facebook Connect',
 	'fbconnect-logout' => 'Deconectare de pe Facebook',
 	'fbconnect-link' => 'Înapoi pe facebook.com',
 	'fbconnect-click-to-login' => 'Apasă pentru a vă autentifica pe acest site prin Facebook',
+	'fbconnect-click-to-connect-existing' => 'Apăsaţi pentru a vă conecta contul dvs. Facebook la $1',
+	'fbconnect-comm' => 'Comunicaţie',
+	'fbconnect-welcome' => 'Bun venit, utilizator Facebook Connect!',
+	'fbconnect-loginbox' => "Sau '''autentificaţi-vă''' cu Facebook:
+
+$1",
+	'fbconnect-error' => 'Eroare la verificare',
 	'fbconnect-cancel' => 'Acţiune anulată',
+	'fbconnect-invalid' => 'Opţiune invalidă',
 	'fbconnect-nickname' => 'Pseudonim',
 	'fbconnect-fullname' => 'Numele complet',
 	'fbconnect-email' => 'Adresa de e-mail',
 	'fbconnect-language' => 'Limba',
+	'fbconnect-chooselegend' => 'Alegerea utilizatorului',
 	'fbconnect-choosefirst' => 'Prenumele tău ($1)',
 	'fbconnect-choosefull' => 'Numele tău complet ($1)',
 	'fbconnect-chooseauto' => 'Un nume generat automat ($1)',
@@ -1933,6 +1962,22 @@ $messages['rue'] = array(
 	'fbconnect-fullname' => 'Повне мено',
 	'fbconnect-email' => 'Адреса електронічной пошты',
 	'fbconnect-language' => 'Язык',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'group-fb-groupie' => 'గుంపు సభ్యులు',
+	'group-fb-groupie-member' => 'గుంపు సభ్యుడు',
+	'grouppage-fb-groupie' => '{{ns:project}}:గుంపు సభ్యులు',
+	'fbconnect-fullname' => 'పూర్తిపేరు',
+	'fbconnect-email' => 'ఈ-మెయిల్ చిరునామా',
+	'fbconnect-language' => 'భాష',
+	'fbconnect-timecorrection' => 'కాల మండలపు సర్దుబాటు (గంటలు)',
+	'fbconnect-chooseexisting' => 'ఈ వికీలో ఇప్పటికే ఉన్న ఖాతా',
+	'fbconnect-chooseusername' => 'వాడుకరిపేరు:',
+	'fbconnect-choosepassword' => 'సంకేతపదం:',
 );
 
 /** Tagalog (Tagalog)

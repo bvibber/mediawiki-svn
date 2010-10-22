@@ -128,6 +128,18 @@ $messages['af'] = array(
 	'cb_edit_remove_hint' => 'Verwyder, indien moontlik',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'cb_next_items_stats' => ' (ܡܢ $1)',
+	'cb_cat_pages' => 'ܕܦ̈ܐ',
+	'cb_cat_files' => 'ܠܦܦ̈ܐ',
+	'cb_all_op' => 'ܟܠ',
+	'cb_or_op' => 'ܐܘ',
+	'cb_and_op' => 'ܘ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
