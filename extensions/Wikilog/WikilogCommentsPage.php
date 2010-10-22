@@ -29,6 +29,12 @@
 if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
+# NOTE (Mw1.16- COMPAT): GAID_FOR_UPDATE removed and replaced by
+# Title::GAID_FOR_UPDATE in Mw1.17. Remove this define and replace its
+# occurrence WikilogCommentsPage::setCommentApproval() in Wl1.3.
+if ( !defined( 'GAID_FOR_UPDATE' ) )
+	define( 'GAID_FOR_UPDATE', Title::GAID_FOR_UPDATE );
+
 /**
  * Wikilog comments namespace handler class.
  *
@@ -377,6 +383,10 @@ class WikilogCommentsPage
 			array( 'id' => 'wl-comment-form' ) ) . "\n";
 	}
 
+	/**
+	 * @todo (In Wikilog 1.3.x) Replace GAID_FOR_UPDATE with
+	 *    Title::GAID_FOR_UPDATE.
+	 */
 	protected function setCommentApproval( $comment, $approval ) {
 		global $wgOut, $wgUser;
 
@@ -399,7 +409,7 @@ class WikilogCommentsPage
 				array( 'content', 'parsemag' ),
 				$comment->mUserText
 			);
-			$id = $title->getArticleID( Title::GAID_FOR_UPDATE );
+			$id = $title->getArticleID( GAID_FOR_UPDATE );
 			if ( $this->doDeleteArticle( $reason, false, $id ) ) {
 				$comment->deleteComment();
 				$log->addEntry( 'c-reject', $title, '' );
