@@ -1406,7 +1406,7 @@ mw.includeAllModuleMessages();
 					sources.push( {
 						'extension': extension,
 						'srclang': langKey,
-						'titleKey': subPage.title
+						'titleKey': subPage.title.replace( / /g, "_")
 					} );
 				}
 			}
