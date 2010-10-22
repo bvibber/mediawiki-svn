@@ -140,6 +140,12 @@ def read_data_from_csv(filename, encoding):
 
     fh.close()
 
+def create_directory(language):
+    try:
+        os.mkdir(settings.WORKING_DIRECTORY + '/' + language)
+        return True
+    except IOERROR:
+        return False
 
 def determine_file_extension(filename):
     pos = filename.rfind('.') + 1

@@ -19,36 +19,41 @@ import multiprocessing
 
 class ProcessInputQueue(multiprocessing.Process):
 
-    def __init__(self, target, input_queue, result_queue, pbar, **kwargs):
+    def __init__(self, target, input_queue, result_queue, **kwargs):
         multiprocessing.Process.__init__(self)
         self.input_queue = input_queue
         self.result_queue = result_queue
         self.target = target
-        self.progressbar = pbar
         for kw in kwargs:
             setattr(self, kw, kwargs[kw])
 
     def run(self):
         proc_name = self.name
         kwargs = {}
-        IGNORE = [self.input_queue, self.result_queue, self.target,
-                  self.progressbar]
+        IGNORE = [self.input_queue, self.result_queue, self.target]
         for kw in self.__dict__:
             if kw not in IGNORE and not kw.startswith('_'):
                 kwargs[kw] = getattr(self, kw)
 
-        self.target(self.input_queue, self.result_queue, self.progressbar, kwargs)
+        self.target(self.input_queue, self.result_queue, self.pbar, kwargs)
 
 
 class ProcessResultQueue(multiprocessing.Process):
 
-    def __init__(self, target, result_queue, pids, pbar):
+    def __init__(self, target, result_queue, **kwargs):
         multiprocessing.Process.__init__(self)
         self.result_queue = result_queue
         self.target = target
-        self.progressbar = pbar
-        self.pids = pids
+        for kw in kwargs:
+            setattr(self, kw, kwargs[kw])
+
 
     def run(self):
         proc_name = self.name
-        self.target(self.result_queue, self.pids)
+        kwargs= {}
+        IGNORE = [self.result_queue, self.target]
+        for kw in self.__dict__:
+            if kw not in IGNORE and not kw.startswith('_'):
+                kwargs[kw] = getattr(self, kw)
+        
+        self.target(self.result_queue, self.pids, self.dbname)

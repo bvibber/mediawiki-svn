@@ -91,18 +91,16 @@ def output_editor_information(elem, data_queue, **kwargs):
             'timestamp': {'date': xml.extract_text},
             }
     vars = {}
-    vars['article'] = elem.find('id').text.decode(settings.ENCODING)
+
     revisions = elem.findall('revision')
     for revision in revisions:
-        #print vars
+        vars['article'] = elem.find('id').text.decode(settings.ENCODING)
         elements = revision.getchildren()
         for tag, functions in tags.iteritems():
             xml_node = xml.retrieve_xml_node(elements, tag)
             for var, function in functions.iteritems():
                 vars[var] = function(xml_node, kwargs)
 
-        #if vars['editor'] == '11887479' or vars['editor'] == '518794':
-        #    print vars
         #print '%s\t%s\t%s\t%s\t' % (vars['article'], vars['contributor'], vars['timestamp'], vars['bot'])
         if vars['bot'] == 0 and vars['editor'] != -1 and vars['editor'] != None:
             vars.pop('bot')
@@ -124,11 +122,10 @@ def lookup_new_editors(xml_queue, data_queue, pbar, bots, debug=False, separator
             if file == None:
                 print 'Swallowed a poison pill'
                 break
-
-            data = xml.read_input(utils.open_txt_file(settings.XML_FILE_LOCATION
-                + file, 'r', encoding=settings.ENCODING))
+            data = xml.read_input(utils.open_txt_file(settings.XML_FILE_LOCATION,
+                                                      file, 'r',
+                                                      encoding=settings.ENCODING))
             #data = read_input(sys.stdin)
-            #print xml_queue.qsize()
             for raw_data in data:
                 xml_buffer = cStringIO.StringIO()
                 raw_data.insert(0, '<?xml version="1.0" encoding="UTF-8" ?>\n')
@@ -178,28 +175,26 @@ def lookup_new_editors(xml_queue, data_queue, pbar, bots, debug=False, separator
         utils.report_error_messages(messages, lookup_new_editors)
 
 
-def store_data_mongo(data_queue, pids):
-    mongo = db.init_mongo_db('editors')
+def store_data_mongo(data_queue, pids, dbname):
+    mongo = db.init_mongo_db(dbname)
     collection = mongo['editors']
-    values = []
+    mongo.collection.ensure_index('editor')
+    contributors = {}
     while True:
         try:
-            chunk = data_queue.get(block=False)
-            values.append(chunk)
-            #print chunk
-            if len(values) == 25000:
-                collection.insert(chunk)
-                values = []
-            #print data_queue.qsize()
+            edit = data_queue.get(block=False)
+            contributor = edit['editor']
+            if contributor not in contributors:
+                collection.insert({'editor': contributor, 'edit_count': 0, })
+                contributors[contributor] = 1
 
+            key = str(contributors[contributor])
+            value = {'date':edit['date'], 'article': edit['article']}
+            collection.update({'editor': contributor}, {'$inc': {'edit_count': 1},
+                                                        '$push': {'edits': value}})
+            contributors[contributor] += 1
 
         except Empty:
-            # The queue is empty but store the remaining values if present
-            if values != []:
-                collection.insert(values)
-                values = []
-
-            #print [utils.check_if_process_is_running(pid) for pid in pids]
             '''
             This checks whether the Queue is empty because the preprocessors are
             finished or because this function is faster in emptying the Queue
@@ -213,7 +208,8 @@ def store_data_mongo(data_queue, pids):
                 #print 'Empty queue or not %s?' % data_queue.qsize()
             else:
                 break
-
+        except Exception, error:
+            print error
 
 
 def store_data_db(data_queue, pids):
@@ -255,22 +251,27 @@ def run_stand_alone():
     ids = {}
     cursor = bots.find()
 
+    kwargs = {'bots': ids,
+             'dbname': 'enwiki',
+            'pbar': True}
+
     for bot in cursor:
         ids[bot['id']] = bot['name']
-    pc.build_scaffolding(pc.load_queue, lookup_new_editors, files, store_data_mongo, True, bots=ids)
+    pc.build_scaffolding(pc.load_queue, lookup_new_editors, files, store_data_mongo, True, **kwargs)
     keys = ['editor']
     for key in keys:
-        db.add_index_to_collection('editors', 'editors', key)
+        db.add_index_to_collection('enwiki', 'editors', key)
 
 def debug_lookup_new_editors():
     q = Queue()
     import progressbar
     pbar = progressbar.ProgressBar().start()
     #edits = db.init_mongo_db('editors')
-    #lookup_new_editors('1.xml', q, None, None, True)
-    keys = ['editor']
-    for key in keys:
-        db.add_index_to_collection('editors', 'editors', key)
+    lookup_new_editors('464.xml', q, None, None, True)
+    store_data_mongo(q, [], 'test')
+    #keys = ['editor']
+    #for key in keys:
+    #    db.add_index_to_collection('editors', 'editors', key)
 
 
 
@@ -279,10 +280,10 @@ def run_hadoop():
 
 
 if __name__ == "__main__":
-    debug_lookup_new_editors()
+    #debug_lookup_new_editors()
 
-#    if settings.RUN_MODE == 'stand_alone':
-#        run_stand_alone()
-#        print 'Finished processing XML files.'
-#    else:
-#        run_hadoop()
+    if settings.RUN_MODE == 'stand_alone':
+        run_stand_alone()
+        print 'Finished processing XML files.'
+    else:
+        run_hadoop()

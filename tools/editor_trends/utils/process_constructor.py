@@ -66,15 +66,18 @@ def build_scaffolding(load_input_queue, main, obj, result_processor=False, resul
 
 
     input_processes = [models.ProcessInputQueue(main, input_queue, result_queue,
-                pbar, **kwargs) for i in xrange(settings.NUMBER_OF_PROCESSES)]
+                        **kwargs) for i in xrange(settings.NUMBER_OF_PROCESSES)]
 
     for input_process in input_processes:
         input_process.start()
     pids = [p.pid for p in input_processes]
-
+    kwargs['pids'] = pids
+    
+    
+    
     if result_queue:
         result_processes = [models.ProcessResultQueue(result_processor,
-                result_queue, pids, pbar) for i in xrange(1)]
+                result_queue, **kwargs) for i in xrange(1)]
         for result_process in result_processes:
             result_process.start()
 
