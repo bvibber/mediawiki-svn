@@ -849,7 +849,7 @@ mw.includeAllModuleMessages();
 			if( text === this.prevText[ source.category ] )
 				return ;
 			
-			//mw.log( 'updateTextDisplay: ' + text );	
+			mw.log( 'mw.TimedText:: updateTextDisplay: ' + text );	
 					
 			var $playerTarget =  this.embedPlayer.$interface;
 			var $textTarget = $playerTarget.find( '.track_' + source.category + ' span' );
@@ -1042,6 +1042,7 @@ mw.includeAllModuleMessages();
 					if( data ) {
 						_this.captions = handler( data );
 					}				
+					mw.log("mw.TimedText:: parsed " + _this.captions.length + ' captions');
 					// Update the loaded state:
 					_this.loaded = true;
 					if( callback ) { 
@@ -1089,8 +1090,12 @@ mw.includeAllModuleMessages();
 				var startIndex = 0;
 			}			 			
 			// Start looking for the text via time, return first match: 
-			for( var i = startIndex ; i < this.captions.length; i++ ) {
+			for( var i = startIndex ; i < this.captions.length; i++ ) {				
 				caption = this.captions[ i ];
+				// Don't handle captions with 0 or -1 end time: 
+				if( caption.end == 0 || caption.end  == -1)
+					continue;
+				
 				if( time >= caption.start  && 
 					time <= caption.end ) {
 					this.prevIndex = i;
@@ -1117,7 +1122,10 @@ mw.includeAllModuleMessages();
 			//mw.log( 'pText: ' + currentPtext );
 			
 			//Check if the p matches the "all in one line" match: 
-			var m = currentPtext.replace('--&gt;', '-->').match(/\d+\s(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?\n?(.*)/);
+			var m = currentPtext
+			.replace('--&gt;', '-->')
+			.match(/\d+\s([\d\-]+):([\d\-]+):([\d\-]+)(?:,([\d\-]+))?\s*--?>\s*([\d\-]+):([\d\-]+):([\d\-]+)(?:,([\d\-]+))?\n?(.*)/);
+			
 			if (m) {
 				var startMs = (m[4])? (parseInt(m[4], 10) / 1000):0;
 				var endMs = (m[8])? (parseInt(m[8], 10) / 1000) : 0;
@@ -1134,7 +1142,7 @@ mw.includeAllModuleMessages();
 					endMs,
 				'content': $j.trim( m[9] )
 				});
-				return 'next';
+				return true;
 			} 
 			// Else check for multi-line match:
 			if( parseInt( currentPtext ) ==  currentPtext ) {
@@ -1144,7 +1152,7 @@ mw.includeAllModuleMessages();
 				curentCap = {
 					'content': ''
 				};	
-				return 'next';
+				return true;
 			}
 			//Check only for time match:
 			var m = currentPtext.replace('--&gt;', '-->').match(/(\d+):(\d+):(\d+)(?:,(\d+))?\s*--?>\s*(\d+):(\d+):(\d+)(?:,(\d+))?/);
@@ -1161,7 +1169,7 @@ mw.includeAllModuleMessages();
 					(parseInt(m[6], 10) * 60) +
 					(parseInt(m[7], 10)) +
 					endMs;
-				return 'next';
+				return true;
 			}
 			//Else content for the curentCap
 			if( currentPtext != '<br>' ) {

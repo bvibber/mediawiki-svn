@@ -242,7 +242,6 @@ mw.MiroSubsConfig = {
 		var _this = this;		
 		var playerTimedText = this.embedPlayer.timedText;
 		
-		var letters = 'abcdefghijklmnopqrstuvwxyz';
 		playerTimedText.setupTextSources( function(){
 			var miroJsonSubs = [];
 			// NOTE the autoselected default language is a tricky issue
@@ -254,16 +253,21 @@ mw.MiroSubsConfig = {
 				_this.config.languageKey = source.srclang;
 				for( var i = 0; i < captions.length ; i ++ ){
 					var caption = captions[i];
-					// get random letters					
-					miroJsonSubs.push({						
+					var miroSub = {
 						'subtitle_id': 'sub_' + i,
 						'text': caption.content,
-						'start_time': caption.start,
-						'end_time': caption.end,
-						'sub_order': i
-					});
+						'sub_order': i+1
+					};
+					if( caption.end == 0){						
+						miroSub.start_time = -1;
+						miroSub.end_time = -1;						
+					} else {
+						miroSub.start_time =  caption.start;
+						miroSub.end_time = caption.end;
+					}
+					miroJsonSubs.push( miroSub );
 				}
-			});				
+			});
 			callback( miroJsonSubs );
 		});			
 	}

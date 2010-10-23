@@ -343,7 +343,7 @@ mw.ApiProxy = { };
 		sendClientMsg( { 'state':'ok' } );
 		
 		return serverHandleRequest();											
-	}
+	};
 	
 	/**
 	* Local scoped helper functions:
@@ -452,7 +452,7 @@ mw.ApiProxy = { };
 			'clientFrame' : getClientFrame( context ),
 			'action' : 'apiRequest',
 			'request' : context[ 'apiReq' ]
-		}
+		};
 				  
 		mw.log( "Do frame proxy request on src: \n" + getServerFrame( context ) + "\n" + JSON.stringify(  context[ 'apiReq' ] ) );		
 		appendIframe( {	
