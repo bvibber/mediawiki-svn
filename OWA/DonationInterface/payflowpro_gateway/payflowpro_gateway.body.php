@@ -1019,6 +1019,8 @@ EOT;
 				'contribution_tracking_id' => $wgRequest->getText( 'contribution_tracking_id' ),
 				'data_hash' => $wgRequest->getText( 'data_hash' ),
 				'action' => $wgRequest->getText( 'action' ),
+				'owa_session' => $wgRequest->getText( 'owa_session', null ),
+				'owa_ref' => $owa_ref,
 			);
 		} else {
 			$data = array(
