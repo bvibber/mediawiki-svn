@@ -42,6 +42,9 @@ build-stamp: $(QUILT_STAMPFN)
 	--without-threads \
 	--disable-openmp
 
+	echo "#undef HAVE_PTHREAD" >> config/config.h
+	echo "#undef MAGICKCORE_HAVE_PTHREAD" >> magick/magick-config.h
+
 	cd "$(CURDIR)/PerlMagick" && \
 		perl Makefile.PL
 
