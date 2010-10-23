@@ -301,7 +301,7 @@ class LqtHooks {
 
 	public static function onLoadExtensionSchemaUpdates() {
 		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields,
-				$wgExtPGAlteredFields, $wgExtNewIndexes, $wgDBtype;
+				$wgExtPGAlteredFields, $wgExtNewIndexes;
 
 		$dir = realpath( dirname( __FILE__ ) . '/..' );
 
