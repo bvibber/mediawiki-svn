@@ -349,6 +349,6 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryLQTThreads.php 62609 2010-02-16 22:36:05Z reedy $';
+		return __CLASS__ . ': $Id$';
 	}
 }

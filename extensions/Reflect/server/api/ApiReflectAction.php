@@ -580,6 +580,6 @@ class ApiReflectAction extends ApiBase {
 	}
 
 	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiReflectAction.php 66465 2010-05-15 11:31:55Z travis $';
+		return __CLASS__ . ': $Id$';
 	}
 }
