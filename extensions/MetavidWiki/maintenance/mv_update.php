@@ -5,12 +5,10 @@
 // include commandLine.inc from the mediaWiki maintance dir:
 require_once ( '../../../maintenance/commandLine.inc' );
 
-$dbclass = 'Database' . ucfirst( $wgDBtype ) ;
-
 # Attempt to connect to the database as a privileged user
 # This will vomit up an error if there are permissions problems
 
-$wgDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
+$wgDatabase = wfGetDB( DB_MASTER );
 
 //first run the mv_tables.sql
 $wgDatabase->sourceFile( 'mv_tables.sql' );
