@@ -1,4 +1,4 @@
-<?
+<?php
 // eventually should fix to use mediaWiki format
 // for now just has little scripts for doing database operations
 
