@@ -2540,7 +2540,7 @@ mw.EmbedPlayer.prototype = {
 		if( this.height ){
 			params.height = parseInt( this.height );
 		}
-		iframeUrl += $.param( params );
+		iframeUrl += $j.param( params );
 		
 		// Set up embedFrame src path
 		var embedCode = '&lt;object data=&quot;' + mw.escapeQuotesHTML( iframeUrl ) + '&quot; ';
@@ -2695,7 +2695,7 @@ mw.EmbedPlayer.prototype = {
 		if( this.paused ){
 			this.paused = false;
 		   	mw.log("trigger play event::");		   	
-		   	$j( this ).trigger( 'play' );
+		   	//$j( this ).trigger( 'play' );
 		}
 		
 		
