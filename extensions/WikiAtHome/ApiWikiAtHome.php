@@ -301,6 +301,10 @@ class ApiWikiAtHome extends ApiBase {
 			'Note that the HTTP POST must be done as a file upload (i.e. using multipart/form-data)'
 		);
 	}
+
+	public function needsToken() {
+		return true;
+	}
 	
 	public function getTokenSalt() {
 		return '';
