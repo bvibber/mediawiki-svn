@@ -2,7 +2,7 @@ imagemagick (7:6.6.2.6-1wm3) lucid; urgency=low
 
    * Really disabled threads ha ha ha
 
- -- Domas Mituzas <domas@wikimedia.org>  Sat, 23 Oct 2010 11:16:49 -05:00
+ -- Domas Mituzas <domas@wikimedia.org>  Sat, 23 Oct 2010 11:16:49 -0500
 
 imagemagick (7:6.6.2.6-1wm2) lucid; urgency=low
 
