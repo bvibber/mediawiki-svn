@@ -327,7 +327,7 @@ $messages['avk'] = array(
 /** Samogitian (Žemaitėška)
  * @author Hugo.arg
  */
-$messages['bat-smg'] = array(
+$messages['sgs'] = array(
 	'ogg-play' => 'Gruotė',
 	'ogg-pause' => 'Pauzė',
 	'ogg-stop' => 'Sostabdītė',

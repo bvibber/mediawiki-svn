@@ -184,7 +184,7 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 /** Samogitian (Žemaitėška)
  * @author Hugo.arg
  */
-$messages['bat-smg'] = array(
+$messages['sgs'] = array(
 	'expandtemplates' => 'Ėšskeistė šabluonus',
 );
 

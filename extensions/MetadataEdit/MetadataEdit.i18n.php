@@ -120,7 +120,7 @@ $messages['bar'] = array(
 );
 
 /** Samogitian (Žemaitėška) */
-$messages['bat-smg'] = array(
+$messages['sgs'] = array(
 	'metadata_help' => 'Metadoumenīs:',
 );
 

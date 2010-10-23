@@ -157,7 +157,7 @@ $messages['ast'] = array(
 /** Samogitian (Žemaitėška)
  * @author Hugo.arg
  */
-$messages['bat-smg'] = array(
+$messages['sgs'] = array(
 	'sitematrix-summary' => 'Tas specēlus poslapis ešdiesta vėsos Vikimedėjės pruojektos',
 	'sitematrix-project' => 'Pruojekta pavadėnėms, terppruojektėnė nūruoda ėr interwiki nūruoda.',
 	'sitematrix-others' => 'Kėtė Vikimedėjės pruojektā',
