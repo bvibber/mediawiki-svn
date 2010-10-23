@@ -17,9 +17,13 @@ class ArticleEmblemsHooks {
 	/**
 	 * LoadExtensionSchemaUpdates hook
 	 */
-	public static function loadExtensionSchemaUpdates() {
-		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'articleemblems', dirname( __FILE__ ) . '/patches/ArticleEmblems.sql' );
+	public static function loadExtensionSchemaUpdates( $updater = null ) {
+		if ( $updater === null ) {
+			global $wgExtNewTables;
+			$wgExtNewTables[] = array( 'articleemblems', dirname( __FILE__ ) . '/patches/ArticleEmblems.sql' );
+		} else {
+			$updater->addExtensionUpdate( array( 'addTable', 'articleemblems', dirname( __FILE__ ) . '/patches/ArticleEmblems.sql', true ) );
+		}
 		return true;
 	}
 
