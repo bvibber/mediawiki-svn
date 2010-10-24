@@ -12,6 +12,7 @@ class CodeRevision {
 		$rev->mMessage = rtrim( $data['msg'] );
 		$rev->mPaths = $data['paths'];
 		$rev->mStatus = 'new';
+		$rev->mOldStatus = '';
 
 		$common = null;
 		if ( $rev->mPaths ) {
@@ -71,6 +72,7 @@ class CodeRevision {
 		$rev->mTimestamp = wfTimestamp( TS_MW, $row->cr_timestamp );
 		$rev->mMessage = $row->cr_message;
 		$rev->mStatus = $row->cr_status;
+		$rev->mOldStatus = '';
 		$rev->mCommonPath = $row->cr_path;
 		return $rev;
 	}
@@ -147,12 +149,12 @@ class CodeRevision {
 		}
 		// Get the old status from the master
 		$dbw = wfGetDB( DB_MASTER );
-		$oldStatus = $dbw->selectField( 'code_rev',
+		$this->moldStatus = $dbw->selectField( 'code_rev',
 			'cr_status',
 			array( 'cr_repo_id' => $this->mRepoId, 'cr_id' => $this->mId ),
 			__METHOD__
 		);
-		if ( $oldStatus === $status ) {
+		if ( $this->moldStatus === $status ) {
 			return false; // nothing to do here
 		}
 		// Update status
@@ -171,7 +173,7 @@ class CodeRevision {
 					'cpc_repo_id'   => $this->getRepoId(),
 					'cpc_rev_id'    => $this->getId(),
 					'cpc_attrib'    => 'status',
-					'cpc_removed'   => $oldStatus,
+					'cpc_removed'   => $this->moldStatus,
 					'cpc_added'     => $status,
 					'cpc_timestamp' => $dbw->timestamp(),
 					'cpc_user'      => $user->getId(),
@@ -181,7 +183,7 @@ class CodeRevision {
 			);
 		}
 
-		$this->sendStatusToUDP( $status, $oldStatus );
+		$this->sendStatusToUDP( $status, $this->moldStatus );
 
 		return true;
 	}
@@ -399,7 +401,6 @@ class CodeRevision {
 	}
 
 	public function saveComment( $text, $review, $parent = null ) {
-		global $wgUser;
 		$text = trim( $text );
 		if ( !strlen( $text ) ) {
 			return 0;
@@ -413,47 +414,61 @@ class CodeRevision {
 		$commentId = $dbw->insertId();
 		$dbw->commit();
 
-		// Give email notices to committer and commenters
-		global $wgCodeReviewENotif, $wgEnableEmail, $wgCodeReviewCommentWatcher;
-		if ( $wgCodeReviewENotif && $wgEnableEmail ) {
-			// Make list of users to send emails to
-			$users = $this->getCommentingUsers();
-			if ( $user = $this->getWikiUser() ) {
-				$users[$user->getId()] = $user;
-			}
-			// If we've got a spam list, send e-mails to it too
-			if ( $wgCodeReviewCommentWatcher ) {
-				$watcher = new User();
-				$watcher->setEmail( $wgCodeReviewCommentWatcher );
-				$users[0] = $watcher; // We don't have any anons, so using 0 is safe
-			}
-			// Get repo and build comment title (for url)
-			$url = $this->getFullUrl( $commentId );
-
-			foreach ( $users as $userId => $user ) {
-				// Notify user with its own message if he already want
-				// to be CCed of all emails it sends.
-				if ( $wgUser->getId() == $user->getId() ) {
-					if(! $user->getBoolOption( 'ccmeonemails' ) ) {
-						continue;
-					}
-				}
-
-				if ( $user->canReceiveEmail() ) {
-					// Send message in receiver's language
-					$lang = array( 'language' => $user->getOption( 'language' ) );
-				
-					$user->sendMail(
-						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->getIdString() ),
-						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->getIdStringUnique(), $text )
-					);
-				}
-			}
-		}
+		$url = $this->getFullUrl( $commentId );
 
 		$this->sendCommentToUDP( $commentId, $text, $url );
 
 		return $commentId;
+	}
+
+	/**
+	 * @param  $subject
+	 * @param  $body
+	 * @return void
+	 */
+	public function emailNotifyUsersOfChanges( $subject, $body ) {
+		// Give email notices to committer and commenters
+		global $wgCodeReviewENotif, $wgEnableEmail, $wgCodeReviewCommentWatcher,
+			$wgUser;
+		if ( !$wgCodeReviewENotif && !$wgEnableEmail ) {
+			return;
+		}
+
+		$args = func_get_args();
+		array_shift( $args ); //Drop $subject
+		array_shift( $args ); //Drop $body
+
+		// Make list of users to send emails to
+		$users = $this->getCommentingUsers();
+		if ( $user = $this->getWikiUser() ) {
+			$users[$user->getId()] = $user;
+		}
+		// If we've got a spam list, send e-mails to it too
+		if ( $wgCodeReviewCommentWatcher ) {
+			$watcher = new User();
+			$watcher->setEmail( $wgCodeReviewCommentWatcher );
+			$users[0] = $watcher; // We don't have any anons, so using 0 is safe
+		}
+
+		foreach ( $users as $user ) {
+			// Notify user with its own message if he already want
+			// to be CCed of all emails it sends.
+			if ( $wgUser->getId() == $user->getId() ) {
+				if(! $user->getBoolOption( 'ccmeonemails' ) ) {
+					continue;
+				}
+			}
+
+			if ( $user->canReceiveEmail() ) {
+				// Send message in receiver's language
+				$lang = array( 'language' => $user->getOption( 'language' ) );
+
+				$localSubject = wfMsgExt( $subject, $lang, $this->mRepo->getName(), $this->getIdString() );
+				$localBody = call_user_func_array( 'wfMsgExt', array_merge( array( $body, $lang, $wgUser->getName() ), $args ) );
+
+				$user->sendMail( $localSubject, $localBody );
+			}
+		}
 	}
 
 	protected function commentData( $text, $review, $parent = null ) {

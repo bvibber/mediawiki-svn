@@ -143,6 +143,26 @@ Full URL: $3
 Commit summary:
 
 $4',
+
+	'codereview-email-subj3' => '[$1] [$2]: Revision status changed',
+	'codereview-email-body3' => 'User "$1" changed the status of $2.
+
+Old Status: $3
+New Status: $4',
+
+	'codereview-email-subj4' => '[$1] [$2]: New comment added, and revision status changed',
+	'codereview-email-body4' => 'User "$1" changed the status of $2.
+
+Old Status: $3
+New Status: $4
+
+User "$1" also posted a comment on $2.
+
+Full URL: $5
+
+Comment:
+
+$6',
 	
 	'code-stats' => 'statistics',
 	'code-stats-header' => 'Statistics for repository $1',
