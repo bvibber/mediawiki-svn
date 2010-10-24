@@ -40,6 +40,10 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		if ( count( $addTags ) || count( $removeTags ) ) {
 			$this->mRev->changeTags( $addTags, $removeTags, $wgUser );
 		}
+		// Add any signoffs
+		if ( $this->validPost( 'codereview-signoff' ) && count( $this->mSignoffFlags ) )  {
+			$this->mRev->addSignoff( $wgUser, $this->mSignoffFlags );
+		}
 		// Add any comments
 		$commentAdded = false;
 		if ( $this->validPost( 'codereview-post-comment' ) && strlen( $this->text ) ) {

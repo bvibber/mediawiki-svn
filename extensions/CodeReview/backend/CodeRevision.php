@@ -141,6 +141,10 @@ class CodeRevision {
 	public static function getPossibleStates() {
 		return array( 'new', 'fixme', 'reverted', 'resolved', 'ok', 'verified', 'deferred', 'old' );
 	}
+	
+	public static function getPossibleFlags() {
+		return array( 'inspected', 'tested' );
+	}
 
 	public function isValidStatus( $status ) {
 		return in_array( $status, self::getPossibleStates(), true );
@@ -626,6 +630,40 @@ class CodeRevision {
 			}
 		}
 		return $refs;
+	}
+
+	public function getSignoffs( $from = DB_SLAVE ) {
+		$db = wfGetDB( $from );
+		$result = $db->select( 'code_signoffs',
+			array( 'cs_user_text', 'cs_flag', 'cs_timestamp' ),
+			array(
+				'cs_repo_id' => $this->mRepoId,
+				'cs_rev_id' => $this->mId,
+			),
+			__METHOD__,
+			array( 'ORDER BY' => 'cs_timestamp' )
+		);
+		
+		$signoffs = array();
+		foreach ( $result as $row ) {
+			$signoffs[] = CodeSignoff::newFromRow( $this, $row );
+		}
+		return $signoffs;
+	}
+
+	public function addSignoff( $user, $flags ) {
+		$dbw = wfGetDB( DB_MASTER );
+		$rows = array();
+		foreach ( $flags as $flag ) {
+			$rows[] = array(
+				'cs_repo_id' => $this->mRepoId,
+				'cs_rev_id' => $this->mId,
+				'cs_user_text' => $user->getName(),
+				'cs_flag' => $flag,
+				'cs_timestamp' => $dbw->timestamp(),
+			);
+		}
+		$dbw->insert( 'code_signoffs', $rows, __METHOD__ );
 	}
 
 	public function getTags( $from = DB_SLAVE ) {

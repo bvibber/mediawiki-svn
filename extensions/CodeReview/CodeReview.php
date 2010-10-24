@@ -52,6 +52,7 @@ $wgAutoloadClasses['CodeCommentLinker'] = $dir . 'backend/CodeCommentLinker.php'
 $wgAutoloadClasses['CodeCommentLinkerHtml'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodeCommentLinkerWiki'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'backend/CodePropChange.php';
+$wgAutoloadClasses['CodeSignoff'] = $dir . 'backend/CodeSignoff.php';
 $wgAutoloadClasses['RepoStats'] = $dir . 'backend/RepoStats.php';
 
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'ui/CodeRepoListView.php';
@@ -93,6 +94,7 @@ $wgAvailableRights[] = 'codereview-add-tag';
 $wgAvailableRights[] = 'codereview-remove-tag';
 $wgAvailableRights[] = 'codereview-post-comment';
 $wgAvailableRights[] = 'codereview-set-status';
+$wgAvailableRights[] = 'codereview-signoff';
 $wgAvailableRights[] = 'codereview-link-user';
 
 $wgGroupPermissions['*']['codereview-use'] = true;
@@ -102,6 +104,7 @@ $wgGroupPermissions['user']['codereview-remove-tag'] = true;
 $wgGroupPermissions['user']['codereview-post-comment'] = true;
 $wgGroupPermissions['user']['codereview-set-status'] = true;
 $wgGroupPermissions['user']['codereview-link-user'] = true;
+$wgGroupPermissions['user']['codereview-signoff'] = true;
 
 $wgGroupPermissions['steward']['repoadmin'] = true; // temp
 
@@ -178,6 +181,7 @@ function efCodeReviewSchemaUpdates( $updater ) {
 		}
 
 		$updater->addExtensionUpdate( array( 'addTable', 'code_bugs', "$base/archives/code_bugs.sql", true ) );
+		$updater->addExtensionUpdate( array( 'addTable', 'code_signoffs', "$base/archives/code_signoffs.sql", true ) );
 		break;
 	case 'sqlite':
 		$updater->addExtensionUpdate( array( 'addTable', 'code_rev', "$base/codereview.sql", true ) );

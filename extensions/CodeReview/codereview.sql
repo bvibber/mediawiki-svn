@@ -54,7 +54,7 @@ CREATE TABLE /*_*/code_rev (
   -- 'verified': Reviewed and tested, no issues spotted
   -- 'deferred': Not reviewed at this time (usually non-Wikimedia extension)
   -- 'old': Predates the extension/doesn't require review
-  -- See CodeRevision::getPossibleStates() (in backend\CodeRevision.php) for most up to date list
+  -- See CodeRevision::getPossibleStates() (in backend/CodeRevision.php) for most up to date list
   cr_status varchar(25) not null default 'new',
 
   -- Base path of this revision :
@@ -221,3 +221,21 @@ CREATE TABLE /*_*/code_prop_changes (
 
 CREATE INDEX /*i*/cpc_repo_rev_time ON /*_*/code_prop_changes (cpc_repo_id, cpc_rev_id, cpc_timestamp);
 CREATE INDEX /*i*/cpc_repo_time ON /*_*/code_prop_changes (cpc_repo_id, cpc_timestamp);
+
+CREATE TABLE /*_*/code_signoffs (
+  -- Repository ID and revision ID
+  cs_repo_id int not null,
+  cs_rev_id int not null,
+
+  -- User that signed off
+  cs_user_text varchar(255) not null,
+
+  -- Type of signoff. Current values: 'inspected', 'tested'
+  -- See CodeRevision::getPossibleFlags() (in backend/CodeRevision.php) for most up to date list
+  cs_flag varchar(25) not null,
+  
+  -- Timestamp of the sign-off
+  cs_timestamp binary(14) not null default ''
+) /*$wgDBTableOptions*/;
+CREATE UNIQUE INDEX /*i*/cs_repo_rev_user_flag ON /*_*/code_signoffs (cs_repo_id, cs_rev_id, cs_user_text, cs_flag);
+CREATE INDEX /*i*/cs_repo_repo_rev_timestamp ON /*_*/code_signoffs (cs_repo_id, cs_rev_id, cs_timestamp);
