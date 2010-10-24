@@ -7,7 +7,7 @@ class SpecialCode extends SpecialPage {
 	}
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest, $wgUser, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
+		global $wgOut, $wgUser, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
 
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
@@ -16,6 +16,30 @@ class SpecialCode extends SpecialPage {
 
 		$this->setHeaders();
 		$wgOut->addStyle( "$wgExtensionAssetsPath/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
+
+		if( $view = self::getViewFrom( $subpage ) ) {
+			$view->execute();
+		} else {
+			$wgOut->addWikiText( wfMsg( 'nosuchactiontext' ) );
+			$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
+			return;
+		}
+
+		// Add subtitle for easy navigation
+		if ( $view instanceof CodeView && ( $repo = $view->getRepo() ) ) {
+			$wgOut->setSubtitle(
+				wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo ) )
+			);
+		}
+	}
+
+	/**
+	 * Get a view object from a sub page path.
+	 * @return View object or null if no valid action could be found
+	 */
+	private static function getViewFrom( $subpage ) {
+		global $wgRequest;
+
 		# Remove stray slashes
 		$subpage = preg_replace( '/\/$/', '', $subpage );
 		if ( $subpage == '' ) {
@@ -49,10 +73,10 @@ class SpecialCode extends SpecialPage {
 					$view = new CodeReleaseNotes( $params[0] );
 					break;
 				} else if ( $wgRequest->wasPosted() && !$wgRequest->getCheck( 'wpPreview' ) ) {
+					# This is not really a view, but we return it nonetheless.
 					# Add any tags, Set status, Adds comments
-					$submit = new CodeRevisionCommitter( $params[0], $params[1] );
-					$submit->execute();
-					return;
+					$view = new CodeRevisionCommitter( $params[0], $params[1] );
+					break;
 				} else { // revision details
 					$view = new CodeRevisionView( $params[0], $params[1] );
 					break;
@@ -89,27 +113,18 @@ class SpecialCode extends SpecialPage {
 					$view = new CodeRevisionView( $params[0], $params[1], $params[3] );
 					break;
 				}
-				$wgOut->addWikiText( wfMsg( 'nosuchactiontext' ) );
-				$wgOut->returnToMain( null, SpecialPage::getTitleFor( 'Code' ) );
-				return;
+				return null;
 			}
 
 			// If a repository was specified, but it does not exist, redirect to the
 			// repository list with an appropriate message.
 			if ( !$view->mRepo ) {
 				$view = new CodeRepoListView();
+				global $wgOut;
 				$wgOut->addWikiMsg( 'code-repo-not-found', wfEscapeWikiText( $params[0] ) );
 			}
 		}
-		$view->execute();
-
-		// Add subtitle for easy navigation
-		global $wgOut;
-		if ( $view instanceof CodeView && ( $repo = $view->getRepo() ) ) {
-			$wgOut->setSubtitle(
-				wfMsgExt( 'codereview-subtitle', 'parse', CodeRepoListView::getNavItem( $repo ) )
-			);
-		}
+		return $view;
 	}
 }
 
