@@ -57,22 +57,23 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		}
 		$dbw->commit();
 
-	    if ( $statusChanged || $commentAdded ) {
-		    if ( $statusChanged && $commentAdded ) {
-			    $url = $this->mRev->getFullUrl( $commentId );
-		        $this->mRev->emailNotifyUsersOfChanges( 'codereview-email-subj4', 'codereview-email-body4',
-			        $wgUser->getName(), $this->mRev->getIdStringUnique(), $this->mRev->mOldStatus, $this->mRev->mStatus,
+		if ( $statusChanged || $commentAdded ) {
+			if ( $statusChanged && $commentAdded ) {
+				$url = $this->mRev->getFullUrl( $commentId );
+				$this->mRev->emailNotifyUsersOfChanges( 'codereview-email-subj4', 'codereview-email-body4',
+					$wgUser->getName(), $this->mRev->getIdStringUnique(), $this->mRev->mOldStatus, $this->mRev->mStatus,
 					$url, $this->text
-		            );
-		    } else if ( $statusChanged ) {
+				);
+			} else if ( $statusChanged ) {
 				$this->mRev->emailNotifyUsersOfChanges( 'codereview-email-subj3', 'codereview-email-body3',
 					$wgUser->getName(), $this->mRev->getIdStringUnique(), $this->mRev->mOldStatus, $this->mRev->mStatus
-					);
-		    } else if ( $commentAdded ) {
-			    $url = $this->mRev->getFullUrl( $commentId );
-				$this->mRev->emailNotifyUsersOfChanges( 'codereview-email-subj', 'codereview-email-body',
-					$wgUser->getName(), $url, $this->mRev->getIdStringUnique(), $this->text );
-		    }
+				);
+			} else if ( $commentAdded ) {
+			$url = $this->mRev->getFullUrl( $commentId );
+			$this->mRev->emailNotifyUsersOfChanges( 'codereview-email-subj', 'codereview-email-body',
+				$wgUser->getName(), $url, $this->mRev->getIdStringUnique(), $this->text
+			);
+			}
 	    }
 
 		// Return to rev page
