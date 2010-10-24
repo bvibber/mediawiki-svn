@@ -5,6 +5,8 @@ class CodeRepository {
 	static $userLinks = array();
 	static $authorLinks = array();
 
+	public $mId, $mName, $mPath, $mViewVc, $mBugzilla;
+
 	public static function newFromName( $name ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$row = $dbw->selectRow(
@@ -150,7 +152,7 @@ class CodeRepository {
 				'ORDER BY' => 'revs DESC', 'LIMIT' => 500 )
 		);
 		$tags = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach( $res as $row ) {
 			$tags[] = $row->ct_tag;
 		}
 		$wgMemc->set( $key, $tags, 3600 * 3 );

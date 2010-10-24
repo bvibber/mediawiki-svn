@@ -2,6 +2,8 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class CodeComment {
+	public $id, $text, $user, $userText, $timestamp, $review, $sortkey, $attrib, $removed, $added;
+
 	function __construct( $rev ) {
 		$this->rev = $rev;
 	}
