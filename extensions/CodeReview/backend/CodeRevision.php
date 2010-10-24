@@ -152,12 +152,12 @@ class CodeRevision {
 		}
 		// Get the old status from the master
 		$dbw = wfGetDB( DB_MASTER );
-		$this->moldStatus = $dbw->selectField( 'code_rev',
+		$this->mOldStatus = $dbw->selectField( 'code_rev',
 			'cr_status',
 			array( 'cr_repo_id' => $this->mRepoId, 'cr_id' => $this->mId ),
 			__METHOD__
 		);
-		if ( $this->moldStatus === $status ) {
+		if ( $this->mOldStatus === $status ) {
 			return false; // nothing to do here
 		}
 		// Update status
@@ -176,7 +176,7 @@ class CodeRevision {
 					'cpc_repo_id'   => $this->getRepoId(),
 					'cpc_rev_id'    => $this->getId(),
 					'cpc_attrib'    => 'status',
-					'cpc_removed'   => $this->moldStatus,
+					'cpc_removed'   => $this->mOldStatus,
 					'cpc_added'     => $status,
 					'cpc_timestamp' => $dbw->timestamp(),
 					'cpc_user'      => $user->getId(),
@@ -186,7 +186,7 @@ class CodeRevision {
 			);
 		}
 
-		$this->sendStatusToUDP( $status, $this->moldStatus );
+		$this->sendStatusToUDP( $status, $this->mOldStatus );
 
 		return true;
 	}
