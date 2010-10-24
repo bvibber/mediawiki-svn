@@ -2,6 +2,8 @@
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class CodeRevision {
+	public $mRepoId, $mRepo, $mId, $mAuthor, $mTimestamp, $mMessage, $mPaths, $mStatus, $mOldStatus, $mCommonPath;
+
 	public static function newFromSvn( CodeRepository $repo, $data ) {
 		$rev = new CodeRevision();
 		$rev->mRepoId = $repo->getId();
@@ -27,8 +29,9 @@ class CodeRevision {
 					$compare = explode( '/', $path['path'] );
 
 					// make sure $common is the shortest path
-					if ( count( $compare ) < count( $common ) )
+					if ( count( $compare ) < count( $common ) ) {
 						list( $compare, $common ) = array( $common, $compare );
+					}
 
 					$tmp = array();
 					foreach ( $common as $k => $v ) {
@@ -366,8 +369,10 @@ class CodeRevision {
 						// Send message in receiver's language
 						$lang = array( 'language' => $user->getOption( 'language' ) );
 						$user->sendMail(
-							wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
-							wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage, $rowUrl )
+							wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(),
+								$this->getIdString( $row->cr_id ) ),
+							wfMsgExt( 'codereview-email-body2', $lang, $committer,
+								$this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage, $rowUrl )
 						);
 					}
 				}
@@ -595,7 +600,7 @@ class CodeRevision {
 			__METHOD__
 		);
 		$users = array();
-		while ( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			$users[$row->cc_user] = User::newFromId( $row->cc_user );
 		}
 		return $users;
@@ -615,7 +620,7 @@ class CodeRevision {
 			),
 			__METHOD__
 		);
-		while ( $row = $res->fetchObject() ) {
+		foreach( $res as $row ) {
 			if ( $this->mId != intval( $row->cr_id ) ) {
 				$refs[] = $row;
 			}
