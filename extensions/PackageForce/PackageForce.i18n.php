@@ -63,6 +63,17 @@ $messages['af'] = array(
 	'pf-header-approve' => 'Keur goed',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'pf-admin-link-approve' => 'ܩܒܘܠ ܕܦܐ',
+	'pf-header-edit' => 'ܫܚܠܦ ܐܣܘܪܐ',
+	'pf-header-type' => 'ܐܕܫܐ ܕܕܦܐ',
+	'pf-header-page_title' => 'ܟܘܢܝܐ',
+	'pf-header-approve' => 'ܩܘܒܠܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -198,7 +209,9 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'pf-admin-menu-default' => 'Defaŭlta',
 	'pf-header-edit' => 'Redakti ligilon',
+	'pf-header-approve' => 'Aprobi',
 );
 
 /** Spanish (Español)
@@ -754,6 +767,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'pf-admin-menu-default' => 'అప్రమేయం',
+	'pf-header-documentation' => 'పత్రావళి',
 	'pf-header-type' => 'పుట యొక్క రకం',
 	'pf-header-page_title' => 'శీర్షిక',
 	'pf-header-approve' => 'అనుమతించు',
@@ -784,13 +798,18 @@ $messages['tl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
 	'pf-desc' => '[[Special:PackageForce|Завантаження наборів]] корисних шаблонів та інш.',
+	'pf-only-admins-allowed' => "Ця сторінка призначена тільки для користувачів з правами 'packageforce-admin'.",
 	'pf-admin-menu-default' => 'За умовчанням',
+	'pf-admin-menu-unsortedtemplates' => 'Ще не відсортовані шаблони',
 	'pf-admin-link-view-documentation' => "Перегляд документів, пов'язаних зі сторінкою.",
 	'pf-admin-link-editlink-page' => 'Редагувати сторінку',
 	'pf-admin-link-approve' => 'Затвердити сторінку',
 	'pf-header-documentation' => 'Документація',
 	'pf-header-in_packages' => 'Набори',
+	'pf-header-edit' => 'Посилання для зміни',
 	'pf-header-type' => 'Тип сторінки',
 	'pf-header-page_title' => 'Заголовок',
 	'pf-header-approve' => 'Затвердження',

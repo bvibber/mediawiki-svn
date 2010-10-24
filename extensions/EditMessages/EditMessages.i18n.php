@@ -990,6 +990,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -999,7 +1000,7 @@ $messages['ml'] = array(
 	'editmsg-search' => 'തിരയൂ',
 	'editmsg-show-list' => '"$1" എന്ന സന്ദേശത്തിന്റെ മൂല്യങ്ങൾ കാണിക്കുന്നു.',
 	'editmsg-new-search' => 'പുതിയ തിരച്ചിൽ',
-	'editmsg-warning-file' => '* താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന ഭാഷകൾക്ക് പ്രമാണം വായിക്കുമ്പോൾ പിഴവ് സംഭവിച്ചു: $1',
+	'editmsg-warning-file' => '* താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന {{PLURAL:$2|ഭാഷയ്ക്ക്|ഭാഷകൾക്ക്}} പ്രമാണം വായിക്കുമ്പോൾ പിഴവ് സംഭവിച്ചു: $1',
 	'editmsg-no-patch' => '"patch" കമാന്റ് ഓടിക്കാൻ പറ്റിയില്ല',
 	'editmsg-patch-success' => 'വിജയകരമായി പാച്ച് ചെയ്തിരിക്കുന്നു.',
 );

@@ -157,6 +157,18 @@ $messages['ca'] = array(
 	'cooperationstatistics-legendmore' => 'o més editors.',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'cooperationstatistics' => 'Statistika spolupráce',
+	'cooperationstatistics-desc' => 'Zobrazit [[Special:CooperationStatistics|statistiku spolupráce v hlavním jmenném prostoru]].',
+	'cooperationstatistics-tablearticle' => 'Počet stránek',
+	'cooperationstatistics-tablevalue' => 'Počet editorů',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|stránka|stránky|stránek}}',
+	'cooperationstatistics-legendmore' => 'nebo více editorů.',
+);
+
 /** German (Deutsch)
  * @author Pill
  * @author Umherirrender
@@ -546,6 +558,13 @@ $messages['mk'] = array(
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|има|имаат}} $1 {{PLURAL:$1|уредник|или помалку уредници}}',
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има|имаат}} $1 или повеќе уредници',
 	'cooperationstatistics-legendmore' => 'или повеќе уредници.',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|хуудас}}',
 );
 
 /** Dutch (Nederlands)

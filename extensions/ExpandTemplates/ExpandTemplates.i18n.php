@@ -181,13 +181,6 @@ llamando a les funciones afechisques d'análisis sintáuticu de MediaWiki.",
 	'expand_templates_preview' => 'Previsualizar',
 );
 
-/** Samogitian (Žemaitėška)
- * @author Hugo.arg
- */
-$messages['sgs'] = array(
-	'expandtemplates' => 'Ėšskeistė šabluonus',
-);
-
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */
@@ -566,6 +559,7 @@ Selleks kutsub lehekülg MediaWikist asjassepuutuva parserijärgu.',
 	'expand_templates_xml_output' => 'XML-väljund',
 	'expand_templates_ok' => 'Lahenda',
 	'expand_templates_remove_comments' => 'Eemalda selgitavad märkused',
+	'expand_templates_remove_nowiki' => 'Ära näita tulemuses <nowiki>-märgendeid',
 	'expand_templates_generate_xml' => 'Näita XML sõelumispuud',
 	'expand_templates_preview' => 'Eelvaade',
 );
@@ -1728,8 +1722,15 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'expandtemplates' => 'Розгортаня шаблон',
+	'expand_templates_title' => 'Назва сторінкы про контекст про {{PAGENAME}} ітд.:',
+	'expand_templates_input' => 'Вступный текст:',
 	'expand_templates_output' => 'Резултат',
+	'expand_templates_xml_output' => 'XML-выступ',
 	'expand_templates_ok' => 'ОК',
+	'expand_templates_remove_comments' => 'Одстранити коментарї',
+	'expand_templates_remove_nowiki' => 'Іґноровати в резултатї значкы <nowiki>',
+	'expand_templates_generate_xml' => 'Указати сінтаксічный стром в XML',
 	'expand_templates_preview' => 'Нагляд',
 );
 
@@ -1757,6 +1758,13 @@ $messages['sah'] = array(
  */
 $messages['sc'] = array(
 	'expand_templates_preview' => 'Antiprima',
+);
+
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['sgs'] = array(
+	'expandtemplates' => 'Ėšskeistė šabluonus',
 );
 
 /** Sinhala (සිංහල)

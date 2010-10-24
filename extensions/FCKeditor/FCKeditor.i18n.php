@@ -221,6 +221,13 @@ $messages['ca'] = array(
 	'tog-riched_disable_ns_category_talk' => 'Deshabilita l\'editor enriquit dins de l\'espai de noms "{{ns:category_talk}}"',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'fckeditor-desc' => 'Umožnit editace s použitím WYSIWYG edigoru FCKeditor',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Umherirrender

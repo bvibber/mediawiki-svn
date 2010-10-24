@@ -73,6 +73,14 @@ $messages['az'] = array(
 	'categoryonupload-label' => 'Kateqoriya:',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categoryonupload-desc' => 'Ҡатнашыусыға файл тейәү ваҡытында категория һайларға мөмкинлек бирә',
+	'categoryonupload-label' => 'Категория:',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -446,6 +454,13 @@ $messages['mg'] = array(
 $messages['mk'] = array(
 	'categoryonupload-desc' => 'Потсетување на корисник да избере категорија за подигната податотека',
 	'categoryonupload-label' => 'Категорија:',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'categoryonupload-label' => 'വർഗ്ഗം:',
 );
 
 /** Malay (Bahasa Melayu)

@@ -260,6 +260,31 @@ $messages['ca'] = array(
 	'errorhandler-error-user-error' => "Error d'usuari",
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'errorhandler-desc' => 'Obsluha chyb MediaWiki',
+	'errorhandler-errors' => 'Chyby:',
+	'errorhandler-error-fatal' => 'Kritická chyba',
+	'errorhandler-error-warning' => 'Upozornění',
+	'errorhandler-error-parse' => 'Chyba syntaktické analýzy',
+	'errorhandler-error-notice' => 'Oznámení',
+	'errorhandler-error-deprecated' => 'Zastaralé',
+	'errorhandler-error-core-error' => 'Chyba jádra',
+	'errorhandler-error-core-warning' => 'Upozornění jádra',
+	'errorhandler-error-compile-error' => 'Chyba kompilace',
+	'errorhandler-error-compile-warning' => 'Upozornění kompilace',
+	'errorhandler-error-user-error' => 'Chyba uživatele',
+	'errorhandler-error-user-warning' => 'Upozornění uživatele',
+	'errorhandler-error-user-notice' => 'Oznámení uživatele',
+	'errorhandler-error-user-deprecated' => 'Uživatel je zastaralý',
+	'errorhandler-error-strict' => 'Přísné standardy',
+	'errorhandler-error-recoverable' => 'Zachytitelná kritická chyba',
+	'errorhandler-trace' => 'trasování:',
+	'errorhandler-trace-line-internal' => '[vnitřní funkce]: $1',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

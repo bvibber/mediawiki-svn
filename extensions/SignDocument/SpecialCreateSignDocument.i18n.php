@@ -157,6 +157,17 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'createsigndoc-pagename' => 'ܦܐܬܐ:',
+	'createsigndoc-email' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ:',
+	'createsigndoc-address' => 'ܦܪܫܓܢܐ ܕܒܝܬܐ:',
+	'createsigndoc-extaddress' => 'ܡܕܝܢܬܐ، ܐܘܚܕܢܐ، ܐܬܪܐ:',
+	'createsigndoc-phone' => 'ܡܢܝܢܐ ܕܙܥܘܩܐ:',
+	'createsigndoc-bday' => 'ܣܝܩܘܡܐ ܕܡܘܠܕܐ:',
+	'createsigndoc-minage' => 'ܡܬܚܐ ܬܚܬܝܐ ܕܥܘܡܪܐ:',
+	'createsigndoc-introtext' => 'ܥܘܬܕܐ:',
+	'createsigndoc-hidden' => 'ܛܘܫܝܐ',
+	'createsigndoc-optional' => 'ܓܒܝܝܐ',
+	'createsigndoc-create' => 'ܒܪܝ',
+	'createsigndoc-error-generic' => 'ܦܘܕܐ: $1',
 );
 
 /** Araucanian (Mapudungun)
@@ -1247,6 +1258,13 @@ $messages['ml'] = array(
 	'createsigndoc-error-pagenoexist' => 'പിഴവ്: [[$1]] എന്ന താൾ നിലവിലില്ല.',
 	'createsigndoc-success' => '[[$1]] പ്രമാണഒപ്പിടൽ വിജയകരമായി പ്രവർത്തനസജ്ജമാക്കിയിരിക്കുന്നു. അതു പരീക്ഷിക്കുവാൻ ദയവായി [{{fullurl:{{#Special:SignDocument}}|doc=$2}} ഈ താൾ] സന്ദർശിക്കുക.',
 	'createsigndoc-error-alreadycreated' => 'പ്രമാണ ഒപ്പിടൽ "$1" നിലവിലുണ്ട്.',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'createsigndoc-pagename' => 'Хуудас:',
 );
 
 /** Marathi (मराठी)

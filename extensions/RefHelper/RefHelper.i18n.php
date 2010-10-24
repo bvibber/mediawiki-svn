@@ -114,6 +114,16 @@ $messages['an'] = array(
 	'refhelper-create' => 'Creyar',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'refhelper-year' => 'ܫܢܬܐ:',
+	'refhelper-category' => 'ܣܕܪܐ $1:',
+	'refhelper-create' => 'ܒܪܝ',
+	'refhelper-search' => 'ܒܨܝ',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -781,6 +791,13 @@ $messages['ja'] = array(
 [[Special:RefHelper|参考文献を手動で追加]]するか、または[[Special:RefSearch|追加する引用を検索]]できます。',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'refhelper-search' => 'Ujarlerit',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
@@ -1303,16 +1320,33 @@ Maaari mong [[Special:RefHelper|kinakamay na idagdag ang sanggunian]] o [[Specia
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Тест
  */
 $messages['uk'] = array(
+	'refhelper-refcreate_autocomment' => 'Автоматизоване створення сторінки.',
+	'refhelper-refcreate_success' => 'Сторінки [[$1]] не існує, вона була створений.',
 	'refhelper-refcreate_failure' => 'Сторінка [[$1]] вже існує!',
+	'refhelper-label_workspace' => 'Робоча область (скопіювати і вставити):',
+	'refhelper-label_authorforename' => "Ім'я автора $1:",
+	'refhelper-label_authorsurname' => 'Прізвище:',
 	'refhelper-title' => 'Назва:',
+	'refhelper-journal' => 'Журнал:',
+	'refhelper-volume' => 'Том:',
 	'refhelper-pages' => 'Сторінки:',
 	'refhelper-year' => 'Рік:',
+	'refhelper-refname' => "Ім'я посилання:",
 	'refhelper-category' => 'Категорія $1:',
 	'refhelper-create' => 'Створити',
 	'refhelper-search' => 'Знайти',
+	'refhelper-toolbox_link_create' => 'Створити посилання',
+	'refhelper-toolbox_link_search' => 'Створення посилань із пошуку',
+	'refhelper-newarticle_nocitation' => 'В даний час немає цитат з такою назвою.',
+	'refhelper-newarticle_suggestions' => 'Якщо є відповідні цитати з нижче, ви можете створити цю сторінку, натиснувши на відповідну кнопку "Створити". 
+
+<h2>Пропозиції</h2>',
+	'refhelper-newarticle_nosuggestions' => 'На жаль, я не можу запропонувати будь-які посилання. 
+Ви можете [[Special:RefHelper|додати посилання вручну]] або [[Special:RefSearch|скористатись пошуком цитат для додавання]].',
 );
 
 /** Vietnamese (Tiếng Việt)

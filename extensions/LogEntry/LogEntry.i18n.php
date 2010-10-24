@@ -227,9 +227,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'logentry-append' => 'Adxuntar',
-	'logentry-parserhook-desc' => 'Esta extensión proporciona un formulario para adxuntar/prefixar ás páxinas de rexistros',
-	'logentry-specialpage-desc' => 'Esta extensión proporciona un proceso para adxuntar ás páxinas de rexistros',
+	'logentry-append' => 'Anexar',
+	'logentry-parserhook-desc' => 'Esta extensión proporciona un formulario para anexar/prefixar ás páxinas de rexistros',
+	'logentry-specialpage-desc' => 'Esta extensión proporciona un proceso para anexar ás páxinas de rexistros',
 	'logentry' => 'Entrada do rexistro',
 	'logentry-invalidpage' => 'Páxina inválida',
 	'logentry-invalidtoken' => 'Ficha inválida',

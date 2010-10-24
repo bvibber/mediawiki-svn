@@ -166,6 +166,26 @@ $messages['az'] = array(
 	'right-authorprotect' => 'Müəllif səhifələrinin mühafizəsi',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'authorprotect' => 'Битте автор булмаған ҡатнашыусыларҙан һаҡлау',
+	'authorprotect-desc' => 'Биттең авторына уны башҡа ҡатнашыусылар үҙгәртеүенән һаҡларға мөмкинлек бирә',
+	'authorprotect-notauthor' => 'Һеҙ был биттең авторы түгел',
+	'authorprotect-confirm' => 'Һаҡлау дәрәжәләрен үҙгәртергә',
+	'authorprotect-edit' => 'Авторҙар ғына үҙгәртә ала',
+	'authorprotect-move' => 'Авторҙар ғына исемен үҙгәртә ала',
+	'authorprotect-expiry' => 'Тамамлана:',
+	'authorprotect-reason' => 'Сәбәп:',
+	'authorprotect-intro' => 'Был форманы битте автор булмаған ҡатнашыусыларҙан һаҡлар өсөн ҡулланығыҙ.',
+	'authorprotect-success' => 'Уңышлы һаҡланды!',
+	'authorprotect-failure' => 'Һаҡлап булманы',
+	'protect-level-author' => 'Автор булмаған ҡатнашыусыларҙан һаҡлау',
+	'restriction-level-author' => 'Автор тарафынан һаҡланған',
+	'right-authorprotect' => 'Автор биттәрен һаҡлау',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -1443,7 +1463,20 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'authorprotect' => 'Zaščitite stran pred ne avtorji',
+	'authorprotect-desc' => 'Omogoča avtorjem strani, da jih zaščitijo pred drugimi uporabniki',
+	'authorprotect-notauthor' => 'Niste avtor te strani',
+	'authorprotect-confirm' => 'Spremeni ravni zaščite',
+	'authorprotect-edit' => 'Omeji urejanje na avtorje',
+	'authorprotect-move' => 'Omeji prestavljanje na avtorje',
+	'authorprotect-expiry' => 'Poteče:',
 	'authorprotect-reason' => 'Razlog:',
+	'authorprotect-intro' => 'S tem obrazcem lahko zaklenete to stran pred ne avtorji',
+	'authorprotect-success' => 'Zaščita je uspešna!',
+	'authorprotect-failure' => 'Zaščita ni uspešna!',
+	'protect-level-author' => 'Zaščiti pred ne avtorji',
+	'restriction-level-author' => 'Zaščiteno na avtorje',
+	'right-authorprotect' => 'Zaščiti avtorske strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -1229,6 +1229,8 @@ $messages['rue'] = array(
 	'scanset_no_files' => 'Error: В  данім адресарю ся не находять жадны файлы.',
 	'scanset_no_volumes' => 'Error: Не были найджены жадны адресарї про світок (дісковый)',
 	'scanset_missing_index_file' => 'Error: Індексовый файл  $1 ся не нашов',
+	'scanset_next' => 'Наступна &gt;',
+	'scanset_prev' => '&lt; Попередня',
 );
 
 /** Yakut (Саха тыла)
@@ -1279,6 +1281,15 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'scanset-desc' => 'Ogled preslikanih strani slik iz zbirk CD/DVD Andreasa Grosza',
+	'scanset_no_name' => 'Napaka: Določiti morate ime množice preslikav, npr. &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Napaka: Neveljavna ali pogrešana množica preslikav.',
+	'scanset_unrecognised_index_format' => 'Napaka: Neznana oblika kazala',
+	'scanset_opendir_error' => 'Napaka: Ne morem odpreti mape $1',
+	'scanset_no_files' => 'Napaka: V določeni mapi ni prisotna nobena datoteka.',
+	'scanset_no_volumes' => 'Napaka: Mape zvezkov niso bile najdene',
+	'scanset_missing_index_file' => 'Napaka: Datoteke kazala $1 ni bilo mogoče najti',
+	'scanset_index_file_error' => 'Napaka: Napaka v obliki datoteke kazala v vrstici $1',
+	'scanset_invalid_volume' => 'Napaka: Neveljavni zvezek',
 	'scanset_next' => 'Naslednji &gt;',
 	'scanset_prev' => '&lt; Prejšnji',
 );

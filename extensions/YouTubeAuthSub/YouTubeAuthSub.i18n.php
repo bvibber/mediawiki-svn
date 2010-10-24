@@ -2217,6 +2217,7 @@ $messages['mn'] = array(
 	'youtubeauthsub_password' => 'YouTube нууц үг',
 	'youtubeauthsub_username' => 'YouTube хэрэглэгчийн нэр',
 	'youtubeauthsub_keywords' => 'Түлхүүр үгнүүд',
+	'youtubeauthsub_submit' => 'Явуулах',
 	'youtubeauthsub_uploadbutton' => 'Оруулах',
 );
 

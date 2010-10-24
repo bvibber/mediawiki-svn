@@ -315,9 +315,34 @@ $1',
  * @author Basharh
  */
 $messages['arc'] = array(
+	'sign-selectdoc' => 'ܐܫܛܪܐ:',
+	'sign-realname' => 'ܫܡܐ:',
+	'sign-city' => 'ܡܕܝܢܬܐ:',
+	'sign-state' => 'ܐܘܚܕܢܐ:',
+	'sign-country' => 'ܐܬܪܐ:',
+	'sign-phone' => 'ܡܢܝܢܐ ܕܙܥܘܩܐ:',
+	'sign-bday' => 'ܥܘܡܪܐ:',
+	'sign-email' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ:',
 	'sign-list-hideemail' => 'ܠܐ ܓܠܚ ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
+	'sign-submit' => 'ܪܫܘܡ ܪܡܝ ܐܝܕܐ ܥܠ ܐܫܛܪܐ',
+	'sign-viewfield-realname' => 'ܫܡܐ',
+	'sign-viewfield-address' => 'ܦܪܫܓܢܐ',
+	'sign-viewfield-city' => 'ܡܕܝܢܬܐ',
+	'sign-viewfield-state' => 'ܐܘܚܕܢܐ:',
 	'sign-viewfield-country' => 'ܐܬܪܐ',
+	'sign-viewfield-agent' => 'ܩܝܝܘܡܐ ܕܡܬܚܫܚܢܐ',
+	'sign-viewfield-phone' => 'ܙܥܘܩܐ',
+	'sign-viewfield-email' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
+	'sign-viewfield-age' => 'ܥܘܡܪܐ',
 	'sign-viewfield-options' => 'ܓܒܝܬ̈ܐ',
+	'sig-anonymous' => "''ܠܐ ܝܕܝܥܐ''",
+	'sig-private' => "''ܦܪܨܘܦܝܐ''",
+	'sign-sigdetails' => 'ܐܪ̈ܝܟܬܐ ܕܪܡܝ ܐܝܕܐ',
+	'sign-submitreview' => 'ܫܕܪ ܬܢܝܬܐ',
+	'sign-uniquequery-similarname' => 'ܫܡܐ ܕܡܝܐ',
+	'sign-uniquequery-similaraddress' => 'ܦܪܫܓܢܐ ܕܡܝܐ',
+	'sign-uniquequery-similarphone' => 'ܙܥܘܩܐ ܕܡܝܐ',
+	'sign-uniquequery-similaremail' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ ܕܡܝܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1449,6 +1474,7 @@ $messages['fi'] = array(
  * @author Peter17
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'signdocument' => 'Authentifier le document',
@@ -1495,7 +1521,7 @@ $1',
 	'sign-viewfield-ip' => 'Adresse IP',
 	'sign-viewfield-agent' => 'Agent utilisateur',
 	'sign-viewfield-phone' => 'Numéro de téléphone',
-	'sign-viewfield-email' => 'Adresse de courriel',
+	'sign-viewfield-email' => 'Courriel',
 	'sign-viewfield-age' => 'Âge',
 	'sign-viewfield-options' => 'Options',
 	'sign-viewsigs-intro' => 'Ci-dessous apparaissent les signatures enregistrées pour <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1]</span>.',

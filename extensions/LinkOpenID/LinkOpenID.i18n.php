@@ -360,6 +360,18 @@ $messages['mk'] = array(
 	'linkopenid-prefstext-v2url' => 'URL-адресата на опслужувачот за OpenID Верзија 2:',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'linkopenid-desc' => 'ഉപയോക്താക്കളെ അവരുടെ അംഗത്വം ഒരു ബാഹ്യ ഓപ്പൺഐഡിയുമായി ബന്ധിപ്പിക്കാൻ അനുവദിക്കുക',
+	'linkopenid-prefstext-pre' => 'താങ്കൾക്ക് ഒരു ബാഹ്യ ദാതാവിന്റെ ഓപ്പൺഐഡി ഉണ്ടെങ്കിൽ അതിവിടെ വ്യക്തമാക്കാവുന്നതാണ്.
+ഇതുവഴി താങ്കളുടെ ഉപയോക്തൃതാൾ ഒരു ഓപ്പൺഐഡി ആയി ഉപയോഗിക്കാൻ അവസരം ലഭിക്കും.',
+	'linkopenid-prefstext-openid' => 'താങ്കളുടെ ഓപ്പൺഐഡി:',
+	'linkopenid-prefstext-v1url' => 'ഓപ്പൺഐഡി പതിപ്പ് 1.1 സെർവർ-യൂ.ആർ.എൽ.:',
+	'linkopenid-prefstext-v2url' => 'ഓപ്പൺഐഡി പതിപ്പ് 2 സെർവർ-യൂ.ആർ.എൽ:',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

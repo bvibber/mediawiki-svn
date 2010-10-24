@@ -400,9 +400,12 @@ $wgGoogleMapsMessages['ar'] = array(
  * @author Basharh
  */
 $wgGoogleMapsMessages['arc'] = array(
+	'gm-balloon-title' => 'ܟܘܢܝܐ:',
 	'gm-searching' => 'ܒܨܝܐ...',
+	'gm-map' => 'ܨܘܪܬ ܥܠܡܐ',
 	'gm-clear-all-points' => 'ܡܫܝ ܟܠ ܢܘܩܙ̈ܐ',
 	'gm-width' => 'ܦܬܘܐ',
+	'gm-height' => 'ܐܘܪܟܐ',
 	'gm-zoom-control' => 'ܐܠܦܪܘܬܐ',
 	'gm-large' => 'ܪܒܐ',
 	'gm-medium' => 'ܡܨܥܝܐ',

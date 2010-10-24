@@ -103,6 +103,16 @@ $messages['dsb'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Tradicionelne',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarina: Pinjina',
+	'categorymultisort-sortkey-name-radical' => 'Radikalo',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikalo: Simpligita',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikalo: Tradicia',
+);
+
 /** Spanish (Español)
  * @author Bola
  * @author Crazymadlover

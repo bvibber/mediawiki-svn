@@ -83,8 +83,14 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'accountmanager' => 'ܕܒܘܪܐ ܕܚܘܫܒܢܐ',
+	'am-username' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'am-email' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
 	'nss-rights' => 'ܙܕ̈ܩܐ',
+	'nss-save-changes' => 'ܠܒܘܟ ܫܘܚܠܦ̈ܐ',
 	'nss-create-account-header' => 'ܒܪܝ ܚܘܫܒܢܐ ܚܕܬܐ',
+	'nss-create-account' => 'ܒܪܝ ܚܘܫܒܢܐ',
+	'nss-welcome-mail-subject' => 'ܒܪܝܐ ܕܚܘܫܒܢܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -676,6 +682,13 @@ $messages['mk'] = array(
 	'nss-welcome-mail' => 'Создадена ви е сметка со корисничко име $1 и лозинка $2.',
 	'nss-welcome-mail-subject' => 'Создавање на сметка',
 	'nss-db-error' => 'Најдена е грешка во базата на податоци за потврдување',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'am-username' => 'хэрэглэгчийн нэр',
 );
 
 /** Nahuatl (Nāhuatl)

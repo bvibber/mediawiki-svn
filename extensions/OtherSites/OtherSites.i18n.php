@@ -32,6 +32,13 @@ $messages['ar'] = array(
 	'othersites-desc' => 'ينقل وصلات الإنترويكي غير وصلات اللغة إلى مكانها الخاص',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'othersites' => 'ܕ̈ܘܟܝܬܐ ܐܚܪ̈ܢܝܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -343,6 +343,22 @@ $messages['ar'] = array(
 	'qp_error_unique' => 'السؤال من نوع unique() لديه اقتراحات أكثر من الأجوبة المحتملة المعرفة: مستحيل الإكمال',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'qp_vote_button' => 'ܝܗܒ ܩܠܐ',
+	'qp_users_list' => 'ܚܘܝ ܟܠ ܡܬܚܫܚܢ̈ܐ',
+	'qp_browse_to_poll' => 'ܙܠ ܠ $1',
+	'qp_browse_to_user' => 'ܙܠ ܠ $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|ܩܠܐ|ܩܠ̈ܐ}}',
+	'qp_source_link' => 'ܥܩܪܐ',
+	'qp_users_link' => 'ܡܬܚܫܚܢ̈ܐ',
+	'qp_voice_link' => 'ܩܠܐ ܕܡܬܚܫܚܢܐ',
+	'qp_voice_link_inv' => 'ܡܬܚܫܚܢܐ ܝܗܒ ܩܠܐ؟',
+	'qp_error_category_name_empty' => 'ܫܡܐ ܕܣܕܪܐ ܣܦܝܩܐ ܗܘ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -2432,6 +2448,9 @@ $messages['tt-cyrl'] = array(
 $messages['uk'] = array(
 	'qp_desc' => 'Дозволяє створювати опитування',
 	'qp_result_error' => 'Синтаксична помилка',
+	'qp_vote_button' => 'Проголосувати',
+	'qp_source_link' => 'Джерело',
+	'qp_stats_link' => 'Статистика',
 	'qp_users_link' => 'Користувачі',
 	'qp_users_answered_questions' => 'На питання {{PLURAL:$1|відповів $1 користувач|відповіли $1 користувачі|відповіли $1 користувачів}}',
 );

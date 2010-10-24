@@ -1615,6 +1615,13 @@ $messages['sk'] = array(
 	'right-spamregex' => 'Blokovať spam v texte pomocou [[Special:SpamRegex]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'spamregex-summary-log' => '(Povzetek)',
+);
+
 /** Southern Sami (Åarjelsaemien)
  * @author M.M.S.
  */

@@ -1071,6 +1071,8 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'crossnamespacelinks' => 'At giňişlikleriniň arasyndaky çykgytlar',
+	'crossnamespacelinks-desc' => '{{SITENAME}} saýtynda bolmaly däl [[Special:CrossNamespaceLinks|at giňişlikleriniň arasyndaky çykgytlaryň sanawyny görkezýär]]',
+	'crossnamespacelinks-summary' => 'Bu sahypa esasy at giňişligindäki bir sahypadan ulanylmagy maslahat berilmeýän başga at giňişliklerine ({{ns:special}}, {{ns:talk}}, {{ns:project}}, ve {{ns:template}} at giňişlikleri muňa degişli däl) bolan çykgytlaryň sanawyny berýär.',
 	'crossnamespacelinkstext' => '$1: $3 üçin $2 {{PLURAL:$2|çykgyt|çykgyt}}',
 );
 

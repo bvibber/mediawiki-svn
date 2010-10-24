@@ -108,6 +108,13 @@ $messages['ar'] = array(
 	'formsaveerrortext' => "حدث خطأ غير معروف أثناء حفظ الاستمارة '$1'.",
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'formsave' => 'ܠܒܘܟ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

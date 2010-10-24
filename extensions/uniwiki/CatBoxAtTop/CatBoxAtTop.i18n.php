@@ -375,6 +375,13 @@ $messages['mk'] = array(
 	'catboxattop-categories' => 'Категории',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'catboxattop-categories' => 'Ангиллууд',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -99,6 +99,13 @@ $messages['ar'] = array(
 	'multiupload-blank' => 'لا ملف تم اختياره',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'multipleupload-saveallfiles' => 'ܠܒܘܟ ܟܠ ܠܦܦ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -1028,10 +1035,11 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'multipleupload' => 'പ്രമാണങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക',
+	'multipleupload' => 'ഒന്നിലധികം പ്രമാണങ്ങൾ അപ്‌ലോഡ് ചെയ്യുക',
 	'multiupload-desc' => '[[Special:MultipleUpload|ഒരേ സമയം നിരവധി പ്രമാണങ്ങൾ ഒരുമിച്ച് അപ്‌ലോഡ് ചെയ്യാൻ]] ഉപയോക്താക്കൾക്ക് അനുമതി നൽകുന്നു',
 	'multipleupload-ignoreallwarnings' => "'''എല്ലാ മുന്നറിയിപ്പുകളും''' അവഗണിച്ച് പ്രമാണങ്ങൾ സേവ് ചെയ്യുക.",
 	'multipleupload-saveallfiles' => 'എല്ലാ പ്രമാണങ്ങളും സൂക്ഷിക്കുക',
@@ -1623,12 +1631,24 @@ $messages['ta'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'multipleupload' => 'పలు ఫైళ్ళను ఎగుమతిచేయి',
+	'multipleupload' => 'పలు దస్త్రాలను ఎక్కించండి',
+	'multiupload-desc' => 'వాడుకరులకు [[Special:MultipleUpload|ఒకేసారి పలు దస్త్రాలను ఎక్కించే]] వీలుని కల్పిస్తుంది',
 	'multipleupload-ignoreallwarnings' => "'''అన్ని హెచ్చరికల'''ను పట్టించుకోకుండా ఎలాగైనా ఆ ఫైళ్ళను భద్రపరచు.",
 	'multipleupload-saveallfiles' => 'అన్ని ఫైళ్ళనూ భద్రపరచు',
 	'multipleupload-addresswarnings' => 'ఫైళ్ళను తిరిగి ఎగుమతి చేసేముందు హెచ్చరికలు లేకుండా సరిచూడండి.',
 	'multipleupload-page' => '{{ns:project}}:ఫైలు తొలగింపు విధానం',
+	'multipleupload-text' => "ఇక్కడ పలు దస్త్రాలను ఎక్కించండి.
+
+'Browse'ని ఎంచుకుని మీరు ఎక్కించాల్సిన దస్త్రాలను ఎంచుకోండి.
+మీరు ఒకేసారి 1 నుండి $1 దస్త్రాల వరకూ ఎక్కించవచ్చు.
+
+మీరు ఒక ఐచ్చిక '''గమ్యస్థానపు దస్త్రనామం''' ఇవ్వవచ్చు మరియు మీ దస్త్రాన్ని గురించి వివరించే '''సారాశం''' ఇవ్వవచ్చు.
+
+సరితగని దస్తాలు వెంటనే తొలగించబడతాయి, [[{{MediaWiki:Multipleupload-page}}|దస్త్రాల తొలగింపు విధానా]]న్ని చూడండి.",
 	'multiupload-fileuploaded' => 'ఫైలు ఎగుమతయ్యింది.',
+	'multiupload-toolbox' => 'పలు దస్త్రాలను ఎక్కించండి',
+	'multiupload-no-files' => 'ఎక్కించడానికి కనీసం ఒక్క దస్త్రాన్నైనా దయచేసి ఎంచుకోండి',
+	'multiupload-blank' => 'ఏ దస్త్రాన్నీ ఎంచుకోలేదు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

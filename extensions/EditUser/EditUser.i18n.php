@@ -262,10 +262,18 @@ $messages['ckb'] = array(
 	'edituser-dosearch' => 'گەڕان',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'edituser-desc' => 'Umožňuje privilegovaným uživatelům měnit nastavení jiných uživatelů',
+	'edituser' => 'Upravit uživatele',
 	'edituser-username' => 'Uživatelské jméno:',
 	'edituser-dosearch' => 'Hledat',
+	'edituser-nouser' => 'Uživatel "$1" neexistuje.',
+	'edituser-exempt' => 'Uživatel "$1" nemůže být upraven.',
+	'right-edituser' => 'Editovat nastavení jiných uživatelů',
+	'right-edituser-exempt' => 'Jiní nemohou měnit nastavení uživatele',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -830,21 +838,23 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'edituser-desc' => 'വിശേഷാവകാശമുള്ള ഉപയോക്താക്കൾക്ക് മറ്റ് ഉപയോക്താക്കളുടെ ക്രമീകരണങ്ങൾ തിരുത്തുവാനുള്ള സൗകര്യം കൊടുക്കുന്നു.',
 	'edituser' => 'ഉപയോക്താവിന്റെ ക്രമീകരണം തിരുത്തുക',
-	'edituser-username' => 'പേര്‌',
+	'edituser-username' => 'ഉപയോക്തൃനാമം:',
 	'edituser-dosearch' => 'തിരയൂ',
-	'edituser-nouser' => 'താങ്കൾ തിരഞ്ഞെടുത്ത ഉപയോക്താവ് നിലവിലില്ല',
-	'edituser-exempt' => 'താങ്കൾ തിരഞ്ഞെടുത്ത ഉപയോക്താവിന്റെ ക്രമീകരണം തിരുത്തുവാൻ സാധിക്കില്ല',
+	'edituser-nouser' => '"$1" എന്ന ഉപയോക്താവ് നിലവിലില്ല.',
+	'edituser-exempt' => '"$1" എന്ന ഉപയോക്താവ് തിരുത്താനാവില്ല.',
 );
 
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'edituser-username' => 'Хэрэглэгчийн нэр:',
 	'edituser-dosearch' => 'Хайх',
 );
 

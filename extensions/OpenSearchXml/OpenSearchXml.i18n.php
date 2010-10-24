@@ -398,6 +398,13 @@ $messages['sk'] = array(
 	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML rozhranie umožňuje úryvky textu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] vmesnik XML priskrbi povzetke besedil',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Piotron
  */

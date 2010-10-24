@@ -90,6 +90,13 @@ $messages['el'] = array(
 	'autoincrement-desc' => 'Μία μεταβλητή άγκιστρο που προσθέτει την αυτόματα αυξανόμενη μεταβλητή <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'autoincrement-desc' => 'Variabla hokilo kiu aldonas la aŭtomate enkremantan variablon <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Spanish (Español)
  * @author Antur
  */

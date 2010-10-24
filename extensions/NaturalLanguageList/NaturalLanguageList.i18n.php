@@ -33,6 +33,13 @@ $messages['af'] = array(
 	'nll-lastseparator' => '&#32;en&#32;',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'nll-lastseparator' => '&#32;ܘ&#32;',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */

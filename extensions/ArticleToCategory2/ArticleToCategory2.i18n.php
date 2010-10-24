@@ -46,6 +46,17 @@ $messages['arc'] = array(
 	'articletocategory2-create-category-under-category-button' => 'ܒܪܝ',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'articletocategory2-desc' => 'Һәр категория битендә туранан-тура ошо категорияла бит булдырырға мөмкинлек биреүсе мөхәррирләү юлы урынлаштыра.',
+	'articletocategory2-create-article-under-category-text' => 'Был категорияға бит өҫтәргә',
+	'articletocategory2-create-article-under-category-button' => 'Яһарға',
+	'articletocategory2-create-category-under-category-text' => 'Был категорияға категория өҫтәргә',
+	'articletocategory2-create-category-under-category-button' => 'Яһарға',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
@@ -124,7 +135,10 @@ $messages['de'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'articletocategory2-desc' => 'Aldonas enmetujon en ĉiu kategorio-paĝo permesante kreadon de nova paĝo rekte en tiu kategorio',
+	'articletocategory2-create-article-under-category-text' => 'Aldoni paĝon al ĉi tiu kategorio',
 	'articletocategory2-create-article-under-category-button' => 'Krei',
+	'articletocategory2-create-category-under-category-text' => 'Aldoni kategorion al ĉi tiu kategorio',
 	'articletocategory2-create-category-under-category-button' => 'Krei',
 );
 
@@ -312,6 +326,16 @@ $messages['mk'] = array(
 	'articletocategory2-create-article-under-category-button' => 'Создај',
 	'articletocategory2-create-category-under-category-text' => 'Додај категорија во категоријава',
 	'articletocategory2-create-category-under-category-button' => 'Создај',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'articletocategory2-create-article-under-category-text' => 'ഈ വർഗ്ഗത്തിലേയ്ക്ക് ഒരു താൾ ചേർക്കുക',
+	'articletocategory2-create-article-under-category-button' => 'സൃഷ്ടിക്കുക',
+	'articletocategory2-create-category-under-category-text' => 'ഈ വർഗ്ഗത്തിലേയ്ക്ക് ഒരു വർഗ്ഗം ചേർക്കുക',
+	'articletocategory2-create-category-under-category-button' => 'സൃഷ്ടിക്കുക',
 );
 
 /** Erzya (Эрзянь)

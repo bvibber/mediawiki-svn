@@ -564,6 +564,9 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'externalpages' => 'Екстерны сторінкы',
+	'externalpages-desc' => 'Обтримує і указує сторінкы із сторінок WMF',
+	'externalpages-bad-page' => 'Неправилно уведена сторінка',
+	'externalpages-no-page' => 'Не была уведжена сторінка',
 );
 
 /** Slovak (Slovenčina)
@@ -574,6 +577,16 @@ $messages['sk'] = array(
 	'externalpages-desc' => 'Získa a zobrazí stránky zo vzdialených lokalít WMF',
 	'externalpages-bad-page' => 'Uvedená chybná stránka',
 	'externalpages-no-page' => 'Neuvedená stránka',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'externalpages' => 'Zunanje strani',
+	'externalpages-desc' => 'Pridobi in prikaže strani iz oddaljenih strani WMF',
+	'externalpages-bad-page' => 'Določena je slaba stran',
+	'externalpages-no-page' => 'Določena ni nobena stran',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

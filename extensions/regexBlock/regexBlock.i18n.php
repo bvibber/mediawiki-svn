@@ -2046,7 +2046,7 @@ $messages['ml'] = array(
 	'regexblock-view-reason' => 'കാരണം: $1',
 	'regexblock-view-reason-default' => 'സാമാന്യമായ കാരണം',
 	'regexblock-view-block-infinite' => 'സ്ഥിരമായ തടയൽ',
-	'regexblock-view-block-by' => 'തടഞ്ഞത്',
+	'regexblock-view-block-by' => 'തടഞ്ഞത്:',
 	'regexblock-view-block-unblock' => 'സ്വതന്ത്രമാക്കുക',
 	'regexblock-view-time' => '$1 ന്‌',
 );
@@ -3054,6 +3054,7 @@ $messages['te'] = array(
 	'regexblock-form-submit-empty' => 'నిరోధించాల్సిన వాడుకరి పేరు లేదా ఐపీ చిరునామా ఇవ్వండి.',
 	'regexblock-form-submit-regex' => 'తప్పుడు రెగ్యులర్ ఎక్స్&zwnj;ప్రెషన్.',
 	'regexblock-form-submit-expiry' => 'దయచేసి ఓ కాలపరిమితి ఇవ్వండి.',
+	'regexblock-nodata-found' => 'భోగట్టా ఏమీ దొరకలేదు',
 	'regexblock-unblock-success' => 'నిరోధపు ఎత్తివేత విజయవంతమైంది',
 	'regexblock-unblock-log' => "'''$1''' అనే వాడుకరి పేరు లేదా ఐపీ చిరునామాపై నిరోధం ఎత్తివేసారు.",
 	'regexblock-view-all' => 'అన్నీ',

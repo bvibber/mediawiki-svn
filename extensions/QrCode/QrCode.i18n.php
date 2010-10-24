@@ -45,6 +45,13 @@ $messages['br'] = array(
 	'qrcode-desc' => 'Genel hag ouzhpennañ a ra skeudennoù "kod QR" d\'ur bajenn wiki',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'qrcode-desc' => 'Generira i dodaje QR Kod slike na wiki stranicu',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'qrcode-desc' => 'Erzeugt QR Code-Grafiken und fügt diese der Seite hinzu',

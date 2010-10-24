@@ -805,6 +805,7 @@ $messages['ro'] = array(
 
 /** Tarandíne (Tarandíne)
  * @author Joetaras
+ * @author Reder
  */
 $messages['roa-tara'] = array(
 	'communityvoice' => "Vôsce d'a comunitate",
@@ -813,6 +814,7 @@ $messages['roa-tara'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Stoche a manne...',
 	'communityvoice-ratings-scale-status-error' => 'Errore de invie!',
 	'communityvoice-ratings-scale-status-thanks' => 'Grazie pu vote!',
+	'communityvoice-ratings-error-no-title' => "Titele attribbuite mangande jndr'ô tag de rating.",
 );
 
 /** Russian (Русский)
@@ -834,7 +836,15 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'communityvoice' => 'Голос комуніты',
+	'communityvoice-desc' => 'Інштрументы участи комуніты',
 	'communityvoice-ratings' => 'Рейтінґы',
+	'communityvoice-ratings-scale-status-sending' => 'Одосылать ся ...',
+	'communityvoice-ratings-scale-status-error' => 'Хыба почас одосыланя!',
+	'communityvoice-ratings-scale-status-thanks' => 'Дякуєме за ваш голос!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 (обтримано $2 {{PLURAL:$2|голос|голосы|голосів}})',
+	'communityvoice-ratings-error-no-category' => 'У значцї про оцінку хыбить катеґорія.',
+	'communityvoice-ratings-error-no-title' => 'У значцї про оцінку хыбить назва.',
 );
 
 /** Yakut (Саха тыла)
@@ -942,6 +952,8 @@ $messages['tk'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Iberiş säwligi!',
 	'communityvoice-ratings-scale-status-thanks' => 'Ses berendigiňiz üçin sag boluň!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|ses|ses}} berildi)',
+	'communityvoice-ratings-error-no-category' => 'Reýting teginde kategoriýa atributy kem.',
+	'communityvoice-ratings-error-no-title' => 'Reýting teginde at atributy kem.',
 );
 
 /** Tagalog (Tagalog)

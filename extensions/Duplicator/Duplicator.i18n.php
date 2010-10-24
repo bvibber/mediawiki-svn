@@ -667,6 +667,7 @@ $messages['hak'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -693,7 +694,7 @@ $messages['he'] = array(
 	'duplicator-dest-invalid' => 'אנא ספקו כותרת יעד תקינה.',
 	'duplicator-dest-exists' => '[[$1]] כבר קיים. אנא ספקו כותרת יעד תקינה שאינה קיימת.',
 	'duplicator-toomanyrevisions' => 'לדף [[$1]] יש גרסאות רבות מדי ($2) ולכן לא ניתן להעתיקו.
-המגבלה הנוכחית הינה $3.',
+המגבלה הנוכחית היא $3.',
 	'right-duplicate' => 'שכפול דפים',
 );
 
@@ -1023,11 +1024,12 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'duplicator' => 'താളിന്റെ പകർപ്പ് ഉണ്ടാക്കുക',
-	'duplicator-desc' => 'എല്ലാ തിരുത്തൽ ചരിത്രത്തോടും കൂടി ഒരു താളിന്റെ പകർപ്പ് ഉണ്ടാക്കുന്നു',
+	'duplicator-desc' => 'നാൾവഴി പൂർണ്ണമായി ഉൾപ്പെടുത്തിയ, [[Special:Duplicate|താളിന്റെ സ്വതന്ത്ര പകർപ്പുകൾ]] സൃഷ്ടിക്കുന്നു',
 	'duplicator-toolbox' => 'ഈ താളിന്റെ പകർപ്പ് ഉണ്ടാക്കുക',
 	'duplicator-source' => 'സ്രോതസ്സ്:',
 	'duplicator-dest' => 'ലക്ഷ്യം:',
@@ -1036,7 +1038,7 @@ $messages['ml'] = array(
 	'duplicator-summary' => '[[$1]]ൽ നിന്നു പകർത്തിയത്',
 	'duplicator-success' => "<big>'''[[$1]] എന്ന താൾ [[$2]]ലേക്കു പകർത്തി.'''</big>",
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|പതിപ്പ്|പതിപ്പുകൾ}} പകർത്തി.',
-	'duplicator-success-talkcopied' => 'സം‌വാദം താളും പകർത്തി',
+	'duplicator-success-talkcopied' => 'സം‌വാദം താളും പകർത്തിയിരിക്കുന്നു.',
 	'duplicator-success-talknotcopied' => 'സം‌വാദം താൾ പകർത്തുവാൻ കഴിഞ്ഞില്ല',
 	'duplicator-failed' => 'താളിന്റെ പകർപ്പെടുക്കാൻ സാധിച്ചില്ല. അജ്ഞാതമായ കാരണം മൂലം എന്തോ പിഴവ് സംഭവിച്ചു.',
 	'duplicator-source-invalid' => 'സാധുവായൊരു സ്രോതസ്സ് തലക്കെട്ട് കൊടുക്കുക.',

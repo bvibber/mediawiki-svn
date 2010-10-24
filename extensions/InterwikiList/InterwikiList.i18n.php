@@ -63,6 +63,13 @@ $messages['ar'] = array(
 	'interwikilist-prefix' => 'بادئة الإنترويكي:',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'interwikilist-filter' => 'ܨܦܝ ܡܟܬܒܘܬܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

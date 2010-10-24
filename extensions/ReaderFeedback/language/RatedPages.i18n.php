@@ -46,6 +46,13 @@ $messages['ar'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|مراجعة|مراجعات}}',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'ratedpages-count' => '$1 {{PLURAL:$1|ܬܢܝܬܐ|ܬܢܝܬ̈ܐ}}',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -233,7 +240,7 @@ $messages['et'] = array(
 	'ratedpages-list' => 'Allpool on lugejate tagasisidehinnangu alusel järjestatud lehekülgede loend.',
 	'ratedpages-none' => 'Loendis puuduvad leheküljed',
 	'ratedpages-graphs' => 'hindamisandmed',
-	'ratedpages-count' => '$1 {{PLURAL:$1|arvustus|arvustust}}',
+	'ratedpages-count' => '$1 {{PLURAL:$1|hindamine|hindamist}}',
 );
 
 /** Persian (فارسی)
@@ -684,6 +691,8 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'ratedpages' => 'Сторінкы, оцінены хоснователями',
+	'ratedpages-none' => 'У тім списку не суть жадны сторінкы.',
+	'ratedpages-graphs' => 'дата рейтінґу',
 	'ratedpages-count' => '$1 {{PLURAL:$1|оцінка|оцінкы|оцінок}}',
 );
 
@@ -716,6 +725,8 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'ratedpages' => 'Strani, ki so jih ocenili bralci',
+	'ratedpages-leg' => 'Najdi strani, ocenjene z velikim številom ocen',
+	'ratedpages-list' => 'Spodaj je seznam strani, razvrščenih po njihovih povratnih informacijah o ocenah bralcev.',
 	'ratedpages-none' => 'Na tem seznamu ni strani.',
 	'ratedpages-graphs' => 'podatki ocenjevanja',
 	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',

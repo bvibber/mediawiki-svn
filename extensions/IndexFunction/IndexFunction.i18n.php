@@ -115,6 +115,15 @@ $2
 انقر على السهم لعرض كل الصفحات المفهرسة تحت ذلك العنوان.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'indexfunc-badtitle' => 'ܟܘܢܝܐ ܠܐ ܬܪܝܨܐ: "$1"',
+	'index-search' => 'ܒܨܝ:',
+	'index-submit' => 'ܫܕܪ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -737,6 +746,13 @@ $2
 	'index-details-explain' => '矢印の付いた項目は索引項目で、矢印をクリックするとその名前で索引に載っているすべてのページを表示します。',
 );
 
+/** Kalaallisut (Kalaallisut)
+ * @author Qaqqalik
+ */
+$messages['kl'] = array(
+	'index-search' => 'Ujaruk:',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
@@ -842,6 +858,7 @@ $2
  */
 $messages['mn'] = array(
 	'index-search' => 'Хайх:',
+	'index-submit' => 'Явуулах',
 );
 
 /** Dutch (Nederlands)
@@ -1231,8 +1248,11 @@ Klicka på pilen för att se hela innehållsförteckningen.',
  */
 $messages['te'] = array(
 	'indexfunc-badtitle' => 'చెల్లని శీర్షిక: "$1"',
+	'indexfunc-index-exists' => '"$1" అనే పుట ఇప్పటికే ఉంది',
 	'index-search' => 'వెతుకు:',
 	'index-submit' => 'దాఖలుచెయ్యి',
+	'index-hide-detail' => 'పుటల యొక్క జాబితాని దాచు',
+	'index-no-results' => 'ఈ అన్వేషణకి ఫలితాలేమీ లేవు',
 );
 
 /** Turkmen (Türkmençe)
@@ -1297,6 +1317,7 @@ $messages['uk'] = array(
 	'indexfunc-index-exists' => 'Сторінка "$1" вже існує',
 	'index-search' => 'Пошук:',
 	'index-submit' => 'Відправити',
+	'index-hide-detail' => 'Сховати список сторінок',
 );
 
 /** Veps (Vepsan kel')

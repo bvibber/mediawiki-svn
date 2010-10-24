@@ -158,6 +158,13 @@ $messages['ar'] = array(
 	'right-patroller' => 'مراجعة الصفحات',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'patrol-revert-reason' => 'ܥܠܬܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -79,6 +79,13 @@ $messages['ar'] = array(
 	'mostrevisors-viewcontributors' => 'اعرض المساهمين الرئيسيين',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'mostrevisors-submit' => 'ܙܠ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -851,8 +858,10 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'mostrevisors-header' => "'''ఈ పేజీ ఎక్కవమంది కూర్పురులున్న {{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తుంది.'''",
+	'mostrevisors-header' => "'''ఈ వికీలో ఎక్కువమంది కూర్పురులున్న {{PLURAL:$1|పుటని|$1 పుటలను}} ఈ పుట చూపిస్తుంది.'''",
+	'mostrevisors-limitlinks' => '$1 పుటల వరకు చూపించు',
 	'mostrevisors-namespace' => 'పేరుబరి:',
+	'mostrevisors-ns-header' => "'''ఈ పుట ఎక్కువమంది కూర్పురులున్న $2 పేరుబరిలోని {{PLURAL:$1|పుటని|$1 పుటలను}} చూపిస్తుంది.'''",
 	'mostrevisors-showing' => '{{PLURAL:$1|పేజీని|$1 పేజీలను}} చూపిస్తున్నాం:',
 	'mostrevisors-submit' => 'వెళ్ళు',
 	'mostrevisors-showredir' => 'దారిమార్పు పేజీలను చూపించు',

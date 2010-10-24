@@ -51,6 +51,13 @@ $messages['arz'] = array(
 	'breadcrumbs-desc' => 'يعرض مسار المستخدمين خلال الويكى',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'breadcrumbs-desc' => 'Ҡатнашыусыларҙың вики проект буйлап үткән юлын күрһәтә',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

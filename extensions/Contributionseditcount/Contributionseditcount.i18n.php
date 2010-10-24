@@ -410,11 +410,12 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'contributionseditcount' => 'ഈ ഉപയോക്താവിനു $1 തിരുത്തലുകളുണ്ട്.',
-	'contributionseditcount-desc' => '[[Special:Contributions]]ൽ തിരുത്തലുകളുടെ എണ്ണം പ്രദർശിപ്പിക്കുന്നു',
+	'contributionseditcount-desc' => '[[Special:Contributions|ഉപയോക്തൃ സംഭാവനാ താളിൽ]] തിരുത്തലുകളുടെ എണ്ണം പ്രദർശിപ്പിക്കുന്നു',
 );
 
 /** Marathi (मराठी)

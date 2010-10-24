@@ -52,6 +52,15 @@ $messages['br'] = array(
 	'ukgeocoding_couldNotGeocode' => "N'eus ket bet gallet geokodiñ ur c'hod-post pe meur a hini; tennet int bet diwar ar gartenn.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'ukgeocoding_name' => 'Britansko geokodiranje za karte',
+	'ukgeocoding_desc' => 'Proširene karte sa parserskom funkcijom display_uk_point za implementiranje na Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Jedan ili više poštanskih brojeva nije moglo biti geokodirano i nije prikazano na karti.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

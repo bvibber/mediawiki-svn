@@ -75,6 +75,18 @@ $messages['az'] = array(
 	'categoryintersection-results' => 'Axtarış $1 {{PLURAL:$1|nəticə}} verdi.',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categoryintersection' => 'Категорияларҙың киҫешеүе',
+	'categoryintersection-desc' => 'Бит эсендә [[Special:CategoryIntersection|категориялар киҫешеүе]] өсөн хэштар таблицаһы менән тәьмин итә.',
+	'categoryintersection-doit' => 'Ошо бөтә категорияларҙағы биттәрҙе сығарырға',
+	'categoryintersection-maxcategories' => 'Рөхсәт ителгән киҫешкән категориялар һанының сиге — $1.',
+	'categoryintersection-mincategories' => 'Һеҙ кәмендә ике категория индерергә тейешһегеҙ.',
+	'categoryintersection-results' => 'Эҙләү $1 {{PLURAL:$1|һөҙөмтә}} бирҙе.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -202,6 +214,7 @@ $messages['eo'] = array(
 	'categoryintersection' => 'Kategoria Intersekcio',
 	'categoryintersection-doit' => 'Listigu paĝojn en ĉiuj ĉi tiuj kategorioj',
 	'categoryintersection-maxcategories' => 'La maksimuma permesita nombro de intersekciaj kategorioj estas $1.',
+	'categoryintersection-mincategories' => 'Vi devas inkluzivi almenaŭ du kategoriojn.',
 	'categoryintersection-results' => 'La serĉo trovis $1 {{PLURAL:$1|pafon|pafojn}}.',
 );
 

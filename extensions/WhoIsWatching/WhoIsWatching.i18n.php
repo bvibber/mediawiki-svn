@@ -529,11 +529,15 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'whoiswatching' => 'ആരൊക്കെയാണ്‌ വിക്കിതാൾ നിരീക്ഷിക്കുന്നത്',
+	'whoiswatching-desc' => 'ഒരു വിക്കി താൾ ശ്രദ്ധിക്കുന്ന ഉപയോക്തൃനാമങ്ങളുടെ പട്ടിക നൽകുന്നു',
 	'specialwhoiswatchingthepage' => 'ആരാണു നിരീക്ഷിക്കുന്നത് %s',
+	'specialwhoiswatchingusage' => 'ഈ പ്രത്യേക താൾ അതിനു മാത്രമായി ഉപയോഗിക്കരുത്.
+ദയവായി ഈ പത്യേക താളിലോട്ടുള്ള പ്രവേശന മാർഗ്ഗമായി [[MediaWiki:Number_of_watching_users_pageview]] എന്ന താൾ ഉപയോഗിക്കുക.',
 	'specialwhoiswatchingaddusers' => 'താൾ നിരീക്ഷിക്കുവാൻ ഉപയോക്താക്കളെ ചേർക്കുക',
 	'specialwhoiswatchingaddbtn' => 'തിരഞ്ഞെടുത്ത ഉപയോക്താക്കളെ ചേർക്കുക',
 );

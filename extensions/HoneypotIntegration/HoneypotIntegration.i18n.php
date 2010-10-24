@@ -399,6 +399,14 @@ $messages['sk'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Počet udalostí v poslednej dobe, ktoré IP adresa spustila podľa projektu Honey Pot',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'honeypot-desc' => 'Nudi združitev s [http://projecthoneypot.org/ Projektom Honey Pot] za strani MediaWiki',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Število nedavnih dogodkov, ki jih je sprožil IP-naslov, glede na Projekt Honey Pot',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

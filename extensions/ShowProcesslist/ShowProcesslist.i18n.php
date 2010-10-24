@@ -78,7 +78,11 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'showprocesslist-id' => 'ܗܝܝܘܬܐ',
+	'showprocesslist-user' => 'ܡܬܚܫܚܢܐ',
+	'showprocesslist-host' => 'ܡܐܪܚܢܐ',
 	'showprocesslist-time' => 'ܙܒܢܐ',
+	'showprocesslist-info' => 'ܝܕ̈ܥܬܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

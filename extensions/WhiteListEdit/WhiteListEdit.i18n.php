@@ -1226,7 +1226,7 @@ $messages['fr'] = array(
 	'whitelisttablechangedate' => 'Changer la date d’expiration',
 	'whitelisttablesetedit' => 'Activer modification',
 	'whitelisttablesetview' => 'Activer visualisation',
-	'whitelisttableremove' => 'Retirer',
+	'whitelisttableremove' => 'Enlever',
 	'whitelistnewpagesfor' => 'Ajoute de nouvelles pages à la liste blanche de <b>$1</b><br />
 Utiliser soit le caractère * soit %',
 	'whitelistnewtabledate' => 'Date d’expiration :',

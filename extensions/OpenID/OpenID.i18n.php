@@ -410,8 +410,22 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'openidusernameprefix' => 'ܡܬܚܫܚܢܐ ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
+	'openidoptional' => 'ܓܒܝܝܐ',
+	'openidfullname' => 'ܫܡܐ ܓܡܝܪܐ',
+	'openidemail' => 'ܦܪܫܓܢܐ ܕܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ',
+	'openidlanguage' => 'ܠܫܢܐ',
+	'openidtimezone' => 'ܙܘܢܐ ܙܒܢܝܐ:',
+	'openidchooselegend' => 'ܓܒܝܐ ܕܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'openidchoosefull' => 'ܫܡܐ ܓܡܝܪܐ ܕܝܠܟ($1)',
 	'openidchoosepassword' => 'ܡܠܬܐ ܕܥܠܠܐ:',
+	'openidloginlabel' => 'URL ܕܗܝܝܘܬܐ ܦܬܝܚܬܐ',
+	'openiddelete' => 'ܫܘܦ ܗܝܝܘܬܐ ܦܬܝܚܬܐ',
 	'openiddelete-button' => 'ܚܬܬ',
+	'openid-urls-action' => 'ܥܒܕܐ',
+	'openid-urls-delete' => 'ܫܘܦ',
+	'openid-add-url' => 'ܐܘܣܦ ܗܝܝܘܬܐ ܦܬܝܚܬܐ ܚܕܬܐ',
+	'openid-provider-label-other-username' => 'ܐܥܠ ܫܡܐ ܕܡܬܚܫܚܢܐ ܕܝܠܟ ܒ $1',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -3469,6 +3483,7 @@ $messages['ml'] = array(
 $messages['mn'] = array(
 	'openidlanguage' => 'Хэл',
 	'openidtimezone' => 'Цагийн бүс',
+	'openidchooseusername' => 'Хэрэглэгчийн нэр:',
 );
 
 /** Marathi (मराठी)

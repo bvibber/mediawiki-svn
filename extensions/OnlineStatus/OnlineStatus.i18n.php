@@ -92,6 +92,18 @@ $messages['ar'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'غير حالتي إلى غير موجود عند تسجيل الخروج',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'onlinestatus-subtitle-offline' => 'ܡܬܚܫܚܢܐ ܗܢܐ ܠܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
+	'onlinestatus-subtitle-online' => 'ܡܬܚܫܚܢܐ ܗܢܐ ܨܡܝܕܐ ܗܘ ܗܫܐ',
+	'onlinestatus-tab' => 'ܐܝܟܢܝܘܬܐ',
+	'onlinestatus-toggles-desc' => 'ܐܝܟܢܝܘܬܐ ܕܝܠܟ:',
+	'onlinestatus-toggle-offline' => 'ܠܐ ܨܡܝܕܐ',
+	'onlinestatus-toggle-online' => 'ܨܡܝܕܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25

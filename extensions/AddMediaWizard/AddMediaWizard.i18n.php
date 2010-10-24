@@ -444,6 +444,13 @@ $messages['ru'] = array(
 	'addmediawizard-desc' => 'Мастер добавления медиа-данных, разработанный при сотрудничестве Kaltura и Фонда Викимедиа',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'addmediawizard-desc' => 'Sprievodca pridaním multimédií, vyvinutý v partnerstve s Kaltura a Wikimedia Foundation',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

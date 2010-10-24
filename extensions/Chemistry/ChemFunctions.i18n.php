@@ -1256,6 +1256,7 @@ $messages['ta'] = array(
 $messages['te'] = array(
 	'chemicalsources' => 'రసాయన మూలాలు',
 	'chemicalsource-desc' => 'రసాయనిక సూత్రాలకి <nowiki><chemform></nowiki> అనే టాగుని చేరుస్తుంది',
+	'chemicalsources-desc' => 'రసాయన మూలాల కొరకు [[Special:ChemicalSources|ప్రత్యేక పుట]]',
 	'chemFunctions_ListPage' => 'రసాయన మూలాలు',
 	'chemFunctions_CAS' => 'CAS సంఖ్య',
 	'chemFunctions_Formula' => 'సూత్రం',

@@ -210,6 +210,7 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'newusermessage-desc' => 'Lisab vastloodud kasutaja aruteluleheküljele läkituse.',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Tervitusteate]] lisamine uue kasutaja aruteluleheküljele',
 );
 
 /** Basque (Euskara)

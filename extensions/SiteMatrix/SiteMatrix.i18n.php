@@ -118,6 +118,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'sitematrix-language' => 'ܠܫܢܐ',
+	'sitematrix-private' => 'ܦܪܨܘܦܝܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -152,16 +153,6 @@ $messages['ast'] = array(
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'priváu',
 	'sitematrix-fishbowl' => 'edición restrinxida',
-);
-
-/** Samogitian (Žemaitėška)
- * @author Hugo.arg
- */
-$messages['sgs'] = array(
-	'sitematrix-summary' => 'Tas specēlus poslapis ešdiesta vėsos Vikimedėjės pruojektos',
-	'sitematrix-project' => 'Pruojekta pavadėnėms, terppruojektėnė nūruoda ėr interwiki nūruoda.',
-	'sitematrix-others' => 'Kėtė Vikimedėjės pruojektā',
-	'sitematrix-private' => 'nūsavs',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1579,6 +1570,16 @@ $messages['sah'] = array(
  */
 $messages['sc'] = array(
 	'sitematrix-language' => 'Limba',
+);
+
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['sgs'] = array(
+	'sitematrix-summary' => 'Tas specēlus poslapis ešdiesta vėsos Vikimedėjės pruojektos',
+	'sitematrix-project' => 'Pruojekta pavadėnėms, terppruojektėnė nūruoda ėr interwiki nūruoda.',
+	'sitematrix-others' => 'Kėtė Vikimedėjės pruojektā',
+	'sitematrix-private' => 'nūsavs',
 );
 
 /** Sinhala (සිංහල)

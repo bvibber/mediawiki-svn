@@ -44,6 +44,14 @@ $messages['ar'] = array(
 	'icon-desc' => 'يسمح لك باستخدام الصور كأيقونات ووصلات أيقونة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'icon-badimage' => 'ܨܘܪܬܐ ܠܐ ܛܒܬܐ',
+	'icon-badwidth' => 'ܦܬܘܐ ܠܐ ܛܒܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

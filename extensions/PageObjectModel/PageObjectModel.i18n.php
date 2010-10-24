@@ -33,6 +33,13 @@ $messages['br'] = array(
 	'pageobjectmodel-desc' => "Ouzhpennañ a ra ur strobad renkadoù a c'haller pakañ drezo ereadurezh Mediawiki evit aesaat eztennañ pajennoù hag embreger anezho e diabarzh programmoù all",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'pageobjectmodel-desc' => 'Dodaje set klasa za apstraktnu MediaWiki sintaksu za omogućavanje lahkog izdvajanja i upravljanja stranicama unutar drugih programa',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

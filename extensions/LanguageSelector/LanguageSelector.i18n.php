@@ -71,6 +71,13 @@ $messages['ar'] = array(
 	'languageselector-setlang' => 'ضبط',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'languageselector' => 'ܠܫܢܐ',
+);
+
 /** Araucanian (Mapudungun)
  * @author Kaniw
  * @author Lin linao
@@ -746,6 +753,14 @@ $messages['oc'] = array(
  */
 $messages['os'] = array(
 	'languageselector' => 'Æвзаг',
+);
+
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'languageselector' => 'ਭਾਸ਼ਾ:',
+	'languageselector-setlang' => 'ਸੈੱਟ ਕਰੋ',
 );
 
 /** Deitsch (Deitsch)

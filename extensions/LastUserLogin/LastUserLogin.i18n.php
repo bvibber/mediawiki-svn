@@ -73,6 +73,15 @@ $messages['ar'] = array(
 	'lastuserlogin_useremail' => 'بريد المستخدم الإلكتروني',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'lastuserlogin_userid' => 'ܫܡܐ ܕܡܬܚܫܚܢܐ',
+	'lastuserlogin_username' => 'ܫܡܐ ܫܪܝܪܐ',
+	'lastuserlogin_useremail' => 'ܒܝܠܕܪܐ ܐܠܩܛܪܘܢܝܐ ܕܡܬܚܫܚܢܐ',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */

@@ -1865,6 +1865,7 @@ $wgCustomToolbarMessages['mk'] = array(
  */
 $wgCustomToolbarMessages['mn'] = array(
 	'ct_submit' => 'Явах',
+	'ct_user_sample' => 'Хэрэглэгчийн нэр',
 );
 
 /** Maltese (Malti)

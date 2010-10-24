@@ -138,6 +138,13 @@ $messages['ca'] = array(
  #</pre><!-- deixau aquesta línia -->',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'editsubpages-desc' => 'Umožnit správcům odblokovat stránku a její podstránky pro anonymní editování pomocí [[MediaWiki:Unlockedpages]]',
+);
+
 /** German (Deutsch)
  * @author Flominator
  */

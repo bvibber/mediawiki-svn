@@ -1015,6 +1015,7 @@ $messages['mk'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'gep-categories' => 'Ангиллууд',
 	'gep-addcategorybutton' => 'Нэмэх',
 	'gep-addsectionbutton' => 'Нэмэх',
 );

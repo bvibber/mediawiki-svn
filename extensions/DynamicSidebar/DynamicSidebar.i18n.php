@@ -174,6 +174,13 @@ $messages['mk'] = array(
 	'dynamicsidebar-desc' => 'Овозможува динамични странични ленти на основа на кориснички страници, групи и категории',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'dynamicsidebar-desc' => 'ഉപയോക്തൃതാളുകൾക്കും, സംഘങ്ങൾക്കും, വർഗ്ഗങ്ങൾക്കുമനുസരിച്ച് തത്സമയ സൈഡ്ബാറുകൾ നൽകുന്നു',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

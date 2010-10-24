@@ -156,9 +156,17 @@ $messages['co'] = array(
 	'createbox-create' => 'Creà',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'createbox-desc' => 'Speciální vkládací pole pro vytváření stránek',
 	'createbox-create' => 'Vytvořit',
+	'createbox-exists' => "Omlouváme se, \"'''{{FULLPAGENAME}}'''\" již existuje.
+
+Nemůžete vytvořit tuto stránku, ale můžete jí [{{fullurl:{{FULLPAGENAME}}|action=edit}} editovat], [{{fullurl:{{FULLPAGENAME}}}} zobrazit], nebo vytvořit jinou stránku pomocí následujícího pole.
+
+<createbox>break=no</createbox>",
 );
 
 /** Welsh (Cymraeg)
@@ -540,6 +548,13 @@ $messages['mk'] = array(
 Не можете да ја создадете оваа страница, но можете да ја [{{fullurl:{{FULLPAGENAME}}|action=edit}} уредите], [{{fullurl:{{FULLPAGENAME}}}} прочитате], или да изберете да создадете друга страница со помош на кутијата подолу.
 
 <createbox>break=no</createbox>",
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'createbox-create' => 'സൃഷ്ടിക്കുക',
 );
 
 /** Marathi (मराठी)

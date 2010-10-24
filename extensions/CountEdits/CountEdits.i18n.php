@@ -971,11 +971,13 @@ $messages['ml'] = array(
 );
 
 /** Mongolian (Монгол)
+ * @author Chinneeb
  * @author E.shijir
  */
 $messages['mn'] = array(
 	'countedits' => 'Засваруудыг тоолох',
 	'countedits-desc' => '[[Special:CountEdits|Тусгай хуудас]] нь хэрэглэгчийн засваруудыг тоолж топ арван хувь оруулагчдын жагсаалт гаргадаг',
+	'countedits-username' => 'Хэрэглэгчийн нэр:',
 );
 
 /** Marathi (मराठी)

@@ -4636,6 +4636,8 @@ $messages['mn'] = array(
 	'wikilog-has-comments' => '{{PLURAL:$1|нэг сэтгэгдэл|$1 сэтгэгдэл}}',
 	'wikilog-title-comments' => 'Сэтгэгдлүүд - $1',
 	'wikilog-form-comment' => 'Сэтгэгдэл:',
+	'wikilog-submit' => 'Явуулах',
+	'wikilog-page-lc' => 'хуудас',
 );
 
 /** Malay (Bahasa Melayu)
@@ -6777,6 +6779,7 @@ $messages['te'] = array(
 	'wikilog-draft-title-mark' => '(ప్రతి)',
 	'wikilog-anonymous-mark' => '(అజ్ఞాత)',
 	'wikilog-pager-newest' => 'కొత్తవి',
+	'wikilog-pager-oldest' => 'పాతవి',
 	'wikilog-pager-prev' => 'గత',
 	'wikilog-pager-next' => 'తర్వాతి',
 	'wikilog-pager-first' => 'మొదటి',
@@ -6804,6 +6807,7 @@ $messages['te'] = array(
 	'wikilog-title-comments' => 'వ్యాఖ్యలు - $1',
 	'wikilog-error-msg' => 'వికీచిట్టా: $1',
 	'wikilog-error-title' => 'వికీలాగ్ పొరపాటు',
+	'wikilog-invalid-param' => 'చెల్లని పరామితి: $1.',
 	'wikilog-invalid-date' => 'తప్పుడు తేదీ: $1.',
 	'wikilog-invalid-file' => 'తప్పుడు ఫైలు: $1.',
 	'wikilog-comment-is-empty' => 'వ్రాసిన వ్యాఖ్య ఖాళీగా ఉంది.',

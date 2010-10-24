@@ -518,6 +518,55 @@ Móžośo [$1 wózjawjone tšojenja cytaś].',
 	'storyboard-storydeletionconfirm' => 'Cośo napšawdu toś to tšojenje na pśecej wulašowaś?',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'storyboard-unpublished' => 'Nepublikigita',
+	'storyboard-published' => 'Publikigita',
+	'storyboard-hidden' => 'Kaŝita',
+	'storyboard-unpublish' => 'Malpublikigi',
+	'storyboard-publish' => 'Publikigi',
+	'storyboard-hide' => 'Kaŝi',
+	'storyboard-option-unpublished' => 'malpublikigita',
+	'storyboard-option-published' => 'publikigita',
+	'storyboard-option-hidden' => 'kaŝita',
+	'story' => 'Historio',
+	'storyboard-submittedbyon' => 'Sendita de $1 je $2, $3.',
+	'storyboard-viewstories' => 'Vidi rakontojn',
+	'storyboard-nosuchstory' => 'La petita rakonto ne ekzistas.
+Eble ĝi estis forigita.',
+	'storyboard-storyunpublished' => 'La rakonto petita ne estis ankoraŭ eldonita.',
+	'storyboard-nostorytitle' => 'Vi devas specifigi la titolon aŭ identigon de la rakonto kiun vi volas vidi.',
+	'storyboard-authorname' => 'Nomo de aŭtoro',
+	'storyboard-authorlocation' => 'Loko de aŭtoro',
+	'storyboard-authoroccupation' => 'Laboro de aŭtoro',
+	'storyboard-authoremail' => 'Retadreso de aŭtoro',
+	'storyboard-thestory' => 'La rakonto',
+	'storyboard-storystate' => 'Ŝtato',
+	'storyboard-language' => 'Lingvo',
+	'storyboard-storymetadata' => 'Sendita de $1 je $2, $3.',
+	'storyboard-storymetadatafrom' => 'Sendita de $1 de $2 la $3, $4.',
+	'storyboard-yourname' => 'Via nomo (deviga)',
+	'storyboard-location' => 'Via loko',
+	'storyboard-occupation' => 'Via laboro',
+	'storyboard-story' => 'Via rakonto',
+	'storyboard-photo' => 'Ĉu vi havas foton de vi?
+Bonvolu prezenti ĝin!',
+	'storyboard-email' => 'Via retpoŝtadreso (deviga)',
+	'storyboard-storytitle' => 'Mallonga, priskribema titolo (deviga)',
+	'storyboard-agreement' => 'Mi konsentas la publikigado kaj uzado de ĉi tiu rakonto sub la kondiĉoj de la [http://creativecommons.org/licenses/by-sa/3.0/deed.eo Creative Commons Permesilo Atribuite-Samkondiĉe].',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|signo|signoj}} plu permesita)',
+	'storyboard-cannotbelonger' => 'Via rakonto estas <b>$1</b> {{PLURAL:$1|signo|signoj}} tro longa!',
+	'storyboard-charsneeded' => '($1 plu {{PLURAL:$1|bezona signo|bezonaj signoj}})',
+	'storyboard-needtoagree' => 'Vi devas konsenti al la publikigado de via rakonto por sendi ĝin.',
+	'storyboard-submissioncomplete' => 'Sendado finiĝis.',
+	'storyboard-submissionincomplete' => 'Sendado malsukcesis',
+	'storyboard-alreadyexists' => '"$1" jam estas prenita.',
+	'storyboard-alreadyexistschange' => '"{0}" jam estas uzita, bonvolu elekti malsaman titolon.',
+	'storyboard-changetitle' => 'Ŝanĝi la titolon.',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
@@ -614,6 +663,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  * @author Peter17
  * @author PieRRoMaN
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'storyboard-name' => 'Storyboard',
@@ -681,7 +731,7 @@ Vous pouvez [$1 lire des histoires publiées].',
 	'storyboard-imagedeleted' => 'Image supprimée',
 	'storyboard-showimage' => 'Voir l’image',
 	'storyboard-hideimage' => 'Masquer l’image',
-	'storyboard-deletestory' => 'Supprimer',
+	'storyboard-deletestory' => 'Enlever',
 	'storyboard-storydeletionconfirm' => 'Voulez-vous vraiment supprimer définitivement cette histoire ?',
 );
 
@@ -1420,6 +1470,81 @@ $messages['mk'] = array(
 	'storyboard-hideimage' => 'Сокриј слика',
 	'storyboard-deletestory' => 'Отстрани',
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'storyboard-name' => 'കഥാവേദി',
+	'right-storyreview' => 'കഥകൾ സംശോധനം ചെയ്യുക, തിരുത്തുക, പ്രസിദ്ധീകരിക്കുക, ഒപ്പം മറയ്ക്കുക',
+	'storyboard-anerroroccured' => 'ഒരു പിഴവ് ഉണ്ടായിരിക്കുന്നു: $1',
+	'storyboard-unpublished' => 'പ്രസിദ്ധീകരിക്കപ്പെടാത്തത്',
+	'storyboard-published' => 'പ്രസിദ്ധീകരിച്ചത്',
+	'storyboard-hidden' => 'മറയ്ക്കപ്പെട്ടവ',
+	'storyboard-unpublish' => 'പ്രസിദ്ധീകരിക്കൽ ഒഴിവാക്കുക',
+	'storyboard-publish' => 'പ്രസിദ്ധീകരിക്കുക',
+	'storyboard-hide' => 'മറയ്ക്കുക',
+	'storyboard-option-unpublished' => 'പ്രസിദ്ധീകരിക്കാത്തവ',
+	'storyboard-option-published' => 'പ്രസിദ്ധീകരിച്ചവ',
+	'storyboard-option-hidden' => 'മറയ്ക്കപ്പെട്ടവ',
+	'story' => 'കഥ',
+	'storyboard-submittedbyon' => 'സമർപ്പിച്ചത് $1, തീയതി $2, $3.',
+	'storyboard-viewstories' => 'കഥകൾ കാണുക',
+	'storyboard-nosuchstory' => 'താങ്കൾ ആവശ്യപ്പെട്ട കഥ നിലവിലില്ല.
+അത് നീക്കം ചെയ്യപ്പെട്ടിട്ടുണ്ടാകണം.',
+	'storyboard-storyunpublished' => 'താങ്കൾ ആവശ്യപ്പെട്ട കഥ ഇതുവരെ പ്രസിദ്ധീകരിച്ചിട്ടില്ല.',
+	'storyboard-nostorytitle' => 'താങ്കൾക്ക് കാണേണ്ട കഥയുടെ തലക്കെട്ടോ ഐ.ഡി.യോ വ്യക്തമാക്കേണ്ടതാണ്.',
+	'storyboard-cantedit' => 'കഥകൾ തിരുത്താൻ താങ്കൾക്ക് അനുവാദമില്ല.',
+	'storyboard-canedit' => 'ഈ കഥ താങ്കൾക്ക് [$1 തിരുത്താവുന്നതും] പ്രസിദ്ധീകരിക്കാവുന്നതുമാണ്.',
+	'storyboard-createdandmodified' => 'സൃഷ്ടിച്ചത് $1, $2 ഒടുവിൽ മാറ്റം വരുത്തിയത് $3, $4',
+	'storyboard-authorname' => 'രചയിതാവിന്റെ പേര്',
+	'storyboard-authorlocation' => 'രചയിതാവിന്റെ സ്ഥലം',
+	'storyboard-authoroccupation' => 'രചയിതാവിന്റെ ജോലി',
+	'storyboard-authoremail' => 'രചയിതാവിന്റെ ഇമെയിൽ വിലാസം',
+	'storyboard-thestory' => 'കഥ',
+	'storyboard-storystate' => 'സംസ്ഥാനം',
+	'storyboard-language' => 'ഭാഷ',
+	'storyboard-storymetadata' => 'സമർപ്പിച്ചത് $1 തീയതി $2, $3.',
+	'storyboard-yourname' => 'താങ്കളുടെ പേര് (ആവശ്യമാണ്)',
+	'storyboard-location' => 'താങ്കളുടെ സ്ഥലം',
+	'storyboard-occupation' => 'താങ്കളുടെ ജോലി',
+	'storyboard-story' => 'താങ്കളുടെ കഥ',
+	'storyboard-photo' => 'താങ്കളുടെ ഒരു ഫോട്ടോ ഉണ്ടോ?
+ഇവിടെ നൽകൂ?',
+	'storyboard-email' => 'താങ്കളുടെ ഇമെയിൽ വിലാസം (ആവശ്യമാണ്)',
+	'storyboard-storytitle' => 'ചെറുതും വിവരണാത്മകവുമായ തലക്കെട്ട് (ആവശ്യമാണ്)',
+	'storyboard-agreement' => 'ഈ കഥ [http://creativecommons.org/licenses/by-sa/3.0/ ക്രിയേറ്റീവ് കോമൺസ് ആട്രിബ്യൂഷൻ/ഷെയർ-എലൈക് അനുമതി] പ്രകാരം പ്രസിദ്ധീകരിക്കാനും ഉപയോഗിക്കാനും എനിക്ക് സമ്മതമാണ്.',
+	'storyboard-charsleft' => '({{PLURAL:$1|ഒരു അക്ഷരം|$1 അക്ഷരങ്ങൾ}} ബാക്കി കിടക്കുന്നു)',
+	'storyboard-cannotbelonger' => 'താങ്കളുടെ കഥ {{PLURAL:$1|<b>ഒരു</b> അക്ഷരത്തിന്|<b>$1</b> അക്ഷരങ്ങൾക്ക്}} വലുതാണ്!',
+	'storyboard-charsneeded' => '(കൂടുതൽ {{PLURAL:$1|ഒരു അക്ഷരം|$1 അക്ഷരങ്ങൾ}} വേണം)',
+	'storyboard-needtoagree' => 'താങ്കളുടെ കഥ സമർപ്പിക്കാൻ അത് പ്രസിദ്ധീകരിക്കാനുള്ള താങ്കളുടെ സമ്മതം വേണം.',
+	'storyboard-submissioncomplete' => 'സമർപ്പിക്കൽ സമ്പൂർണ്ണം',
+	'storyboard-submissionincomplete' => 'സമർപ്പിക്കൽ പരാജയപ്പെട്ടു',
+	'storyboard-alreadyexists' => '"$1" മുമ്പേ എടുത്തിരിക്കുന്നു.',
+	'storyboard-alreadyexistschange' => '"{0}" മുമ്പേ എടുത്തിരിക്കുന്നു, ദയവായി മറ്റൊരു തലക്കെട്ട് തിരഞ്ഞെടുക്കുക.',
+	'storyboard-changetitle' => 'ശീർഷകം മാറ്റുക',
+	'storyboard-notsubmitted' => 'ആധികാരികതാ പരിശോധന പരാജയപ്പെട്ടു, കഥ സേവ് ചെയ്തിട്ടില്ല.',
+	'storyboard-charstomany' => '$1 അക്ഷരങ്ങൾ കൂടുതലുണ്ട്!',
+	'storyboard-morecharsneeded' => '$1 അക്ഷരങ്ങൾ കൂടെ വേണം',
+	'storyboard-charactersleft' => '$1 അക്ഷരങ്ങൾ ബാക്കി കിടക്കുന്നു',
+	'storyboard-createdsuccessfully' => 'താങ്കളുടെ കഥ പങ്ക് വെച്ചതിനു നന്ദി!
+ഞങ്ങളത് ഉടനേ സംശോധനം ചെയ്യും.
+താങ്കൾക്ക് [$1 പ്രസിദ്ധീകരിച്ച കഥകൾ വായിക്കാവുന്നതാണ്].',
+	'storyboard-emailtitle' => 'കഥാ സമർപ്പണം വിജയകരമായി',
+	'storyboard-emailbody' => '"$1" തലക്കെട്ടിലുള്ള താങ്കളുടെ കഥ വിജയകരമായി സമർപ്പിച്ചിരിക്കുന്നു.
+ഞങ്ങളത് ഉടനേ സംശോധനം ചെയ്യും.
+താങ്കൾക്ക് [$2 പ്രസിദ്ധീകരിച്ചിട്ടുള്ള കഥകൾ വായിക്കാവുന്നതാണ്].',
+	'storyreview' => 'കഥാ സംശോധനം',
+	'storyboard-deleteimage' => 'ചിത്രം മായ്ക്കുക',
+	'storyboard-done' => 'ചെയ്തു കഴിഞ്ഞു.',
+	'storyboard-working' => 'ശ്രമിക്കുന്നു...',
+	'storyboard-imagedeletionconfirm' => 'ഈ കഥയുടെ ചിത്രം സ്ഥിരമായി മായ്ച്ചുകളയുകയാണോ വേണ്ടത്?',
+	'storyboard-imagedeleted' => 'ചിത്രം മായ്ച്ചിരിക്കുന്നു',
+	'storyboard-showimage' => 'ചിത്രം പ്രദർശിപ്പിക്കുക',
+	'storyboard-hideimage' => 'ചിത്രം മറയ്ക്കുക',
+	'storyboard-deletestory' => 'നീക്കം ചെയ്യുക',
+	'storyboard-storydeletionconfirm' => 'ഈ കഥ സ്ഥിരമായി മായ്ച്ചുകളയാണോ താങ്കൾക്കാവശ്യം?',
 );
 
 /** Mongolian (Монгол)
@@ -2194,6 +2319,7 @@ $messages['te'] = array(
 	'storyboard-published' => 'ప్రచురితం',
 	'storyboard-publish' => 'ప్రచురించు',
 	'storyboard-hide' => 'దాచు',
+	'story' => 'కథనం',
 	'storyboard-authorname' => 'రచయిత పేరు',
 	'storyboard-authorlocation' => 'రచయిత ప్రాంతం',
 	'storyboard-authoroccupation' => 'రచయిత వృత్తి',
@@ -2211,9 +2337,13 @@ $messages['te'] = array(
 	'storyboard-storytitle' => 'క్లుప్త, వివరణాత్మకమైన శీర్షిక (తప్పనిసరి)',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|అక్షరం మిగిలివుంది|అక్షరాలు మిగిలివున్నాయి}})',
 	'storyboard-cannotbelonger' => 'మీ కథనం <b>$1</b> {{PLURAL:$1|అక్షరం|అక్షరాలు}} చాలా పెద్దగా ఉంది!',
+	'storyboard-charsneeded' => '(ఇంకా $1 {{PLURAL:$1|అక్షరం|అక్షరాలు}} కావాలి)',
 	'storyboard-submissioncomplete' => 'సమర్పణ పూర్తి',
+	'storyboard-submissionincomplete' => 'దాఖలు విఫలమైంది',
 	'storyboard-changetitle' => 'శీర్షికని మార్చండి.',
 	'storyboard-done' => 'పూర్తయ్యింది',
+	'storyboard-showimage' => 'చిత్రాన్ని చూపించు',
+	'storyboard-hideimage' => 'చిత్రాన్ని దాచు',
 	'storyboard-deletestory' => 'తొలగించు',
 	'storyboard-storydeletionconfirm' => 'మీరు నిజంగానే ఈ కథనాన్ని తొలగించాలనుకుంటున్నారా?',
 );
@@ -2300,8 +2430,16 @@ Maaari kang [$2 magbasa ng nalathalang mga kuwento].',
  */
 $messages['uk'] = array(
 	'storyboard-hidden' => 'Прихована',
+	'storyboard-publish' => 'Опублікувати',
+	'storyboard-hide' => 'Сховати',
+	'storyboard-authorname' => "Ім'я автора",
 	'storyboard-language' => 'Мова',
+	'storyboard-changetitle' => 'Змінити заголовок.',
+	'storyboard-deleteimage' => 'Вилучити зображення',
 	'storyboard-done' => 'Виконано',
+	'storyboard-imagedeleted' => 'Зображення вилучено',
+	'storyboard-showimage' => 'Показати зображення',
+	'storyboard-hideimage' => 'Сховати зображення',
 	'storyboard-deletestory' => 'Вилучити',
 );
 

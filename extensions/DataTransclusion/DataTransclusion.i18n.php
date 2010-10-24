@@ -129,6 +129,16 @@ $2 su valjani ključevi u izvoru podataka $1.',
 	'datatransclusion-bad-template-name' => 'Loše ime šablona: $1.',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'datatransclusion-desc' => 'Import a zobrazování dat z externích zdrojů',
+	'datatransclusion-unknown-source' => 'Špatný zdroj dat.
+"$1" není známý.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> neexistuje.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

@@ -470,6 +470,17 @@ $messages['mk'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Започни нова нишка',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'discussionthreading-desc' => 'സംവാദം താളുകളിൽ ചരട് ചേർക്കുക',
+	'discussionthreading-replysection' => 'മറുപടി',
+	'discussionthreading-replysectionhint' => 'ഈ പ്രസിദ്ധപ്പെടുത്തലിന് മറുപടിയിടുക',
+	'discussionthreading-threadnewsection' => 'നൂതനം',
+	'discussionthreading-threadnewsectionhint' => 'പുതിയൊരു ചരട് തുടങ്ങുക',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

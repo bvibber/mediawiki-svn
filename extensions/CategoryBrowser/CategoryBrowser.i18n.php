@@ -140,6 +140,45 @@ $messages['arc'] = array(
 	'cb_and_op' => 'ܘ',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categorybrowser' => 'Категориялар ҡарау',
+	'categorybrowser-desc' => 'Вики-сайттың иң тулы категорияларын һайлау һәм артабан улар булап AJAX-интерфейс ярҙамында йөрөү өсөн [[Special:CategoryBrowser|махсус]] бит менән тәьмин итә.',
+	'cb_requires_javascript' => 'Категориялар ҡарау өсөн киңәйтеү браузерҙа Javascript эшләүен талап итә.',
+	'cb_ie6_warning' => 'Шарттарҙы мөхәррирләү өсөн ҡорал Internet Explorer браузерының 6.0 һәм элеккерәк өлгөләрендә эшләмәй.
+Алдан билдәләнгән шарттарҙы ғына ҡарау мөмкин.
+Зинһар, браузерығыҙҙы алыштырығыҙ йәки яңыртығыҙ.',
+	'cb_show_no_parents_only' => 'Инә категориялары булмаған категорияларҙы ғына күрһәтергә',
+	'cb_cat_name_filter' => 'Категорияны исеме буйынса эҙләү:',
+	'cb_cat_name_filter_clear' => 'Категорияны исеме буйынса эҙләүҙе таҙартыу өсөн ошонда баҫығыҙ',
+	'cb_cat_name_filter_ci' => 'Ҙур һәм бәләкәй хәрефтәр айырылмай',
+	'cb_copy_line_hint' => 'Операторҙы һайланған аңлатмаға күсереп яҙыр өсөн [+] һәм [>+] төймәләрен ҡулланығыҙ',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|Эске категория}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|бит}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|файл}}',
+	'cb_has_parentcategories' => 'инә категориялары (әгәр булһа)',
+	'cb_previous_items_link' => 'Алдағы',
+	'cb_next_items_link' => 'Киләһе',
+	'cb_next_items_stats' => '($1 башлап)',
+	'cb_cat_subcats' => 'эске категориялар',
+	'cb_cat_pages' => 'биттәр',
+	'cb_cat_files' => 'файл',
+	'cb_apply_button' => 'Ҡулланырға',
+	'cb_all_op' => 'Барыһы ла',
+	'cb_or_op' => 'йәки',
+	'cb_and_op' => 'һәм',
+	'cb_edit_left_hint' => 'Әгәр мөмкин булһа, һулға күсерергә',
+	'cb_edit_right_hint' => 'Әгәр мөмкин булһа, уңға күсерергә',
+	'cb_edit_remove_hint' => 'Әгәр мөмкин булһа, юйырға',
+	'cb_edit_copy_hint' => 'Операторҙы ваҡытлы һаҡлағысҡа яҙҙырырға',
+	'cb_edit_append_hint' => 'Операторҙы һуңғы урынға өҫтәргә',
+	'cb_edit_clear_hint' => 'Әлеге аңлатманы таҙартырға (барыһын да һайларға)',
+	'cb_edit_paste_hint' => 'Әгәр мөмкин булһа, операторҙы әлеге урынға өҫтәргә',
+	'cb_edit_paste_right_hint' => 'Әгәр мөмкин булһа, операторҙы киләһе урынға өҫтәргә',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -276,6 +315,25 @@ $messages['ca'] = array(
 	'cb_and_op' => 'i',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'cb_has_files' => '$1 {{PLURAL:$1|soubor|soubory|souborů}}',
+	'cb_has_parentcategories' => 'rodičovské kategorie (pokud existují)',
+	'cb_previous_items_link' => 'Předchozí',
+	'cb_next_items_link' => 'Další',
+	'cb_next_items_stats' => '(z $1)',
+	'cb_cat_subcats' => 'podkategorie',
+	'cb_cat_pages' => 'stránky',
+	'cb_cat_files' => 'soubory',
+	'cb_apply_button' => 'Aplikuj',
+	'cb_all_op' => 'Všechno',
+	'cb_or_op' => 'nebo',
+	'cb_and_op' => 'a',
+	'cb_edit_remove_hint' => 'Smazat, pokud je to možné',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
@@ -320,6 +378,12 @@ Dennoch sollte, sofern irgend möglich, der Browser aktualisiert oder gewechselt
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'categorybrowser' => 'Navigilo de kategorioj',
+	'cb_requires_javascript' => 'La kromprogramo por la kategoria navigilo devigas JavaScript esti ŝalta en la retumilo.',
+	'cb_show_no_parents_only' => 'Montri nur kategoriojn kiuj ne havas superajn kategoriojn',
+	'cb_cat_name_filter' => 'Serĉi kategorion laŭ nomo:',
+	'cb_cat_name_filter_clear' => 'Premi por nuligi filtrilon de kategoria nomo',
+	'cb_cat_name_filter_ci' => 'Usklecoblinda',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subkategorio|subkategorioj}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|paĝo|paĝoj}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|dosiero|dosieroj}}',
@@ -337,6 +401,11 @@ $messages['eo'] = array(
 	'cb_edit_left_hint' => 'Maldekstrenigi, se eblas',
 	'cb_edit_right_hint' => 'Dekstrenigi, se eblas',
 	'cb_edit_remove_hint' => 'Forigi, se eble',
+	'cb_edit_copy_hint' => 'Kopii operacion al tondujon',
+	'cb_edit_append_hint' => 'Enmeti operacion al lasta pozicio',
+	'cb_edit_clear_hint' => 'Nuligi nunan espremon (elekti ĉion)',
+	'cb_edit_paste_hint' => 'Gluigi operacion ĉe nuna pozicion, se eble',
+	'cb_edit_paste_right_hint' => 'Gluigi operacion ĉe postan pozicion, se eble',
 );
 
 /** Spanish (Español)
@@ -738,6 +807,9 @@ $messages['lb'] = array(
 	'categorybrowser' => 'Kategoriebrowser',
 	'categorybrowser-desc' => 'Mécht eng [[Special:CategoryBrowser|Spezialsäit]] fir déi Kategorie mat de meeschten Elementer erauszefilteren a mat engem AJAX-Interface driwwer ze navigéieren',
 	'cb_requires_javascript' => "D'Erweiderung Kategriebrowser brauch ageschalte Javascript am Browser.",
+	'cb_ie6_warning' => "Dësen Editeur fir Bedingung fonctionnéiert net mam Internet Explorer 6.0 oder méi ale Versiounen.
+D'Browse mat virdefinierte Bedingunge misst awer normal fonctionnéieren.
+Wiesselt Äre Borwseroder maacht en Update, wa méiglech.",
 	'cb_show_no_parents_only' => 'Nëmme Kategorie weisen déi keng Kategorie driwwer hunn',
 	'cb_cat_name_filter' => 'Sich no enger Kategorie nom Numm:',
 	'cb_cat_name_filter_clear' => 'Dréckt fir de Filter vum Kategoriennumm eidelzemaachen',
@@ -763,6 +835,8 @@ $messages['lb'] = array(
 	'cb_edit_copy_hint' => 'Operateur an den Tëschespäicher kopéieren',
 	'cb_edit_append_hint' => 'Operateur u leschter Positioun drasetzen',
 	'cb_edit_clear_hint' => 'Aktuellen Ausdrock ewechhuelen (alles uwielen)',
+	'cb_edit_paste_hint' => 'Operateur an déi aktuell Positioun drasetzen (wa méiglech)',
+	'cb_edit_paste_right_hint' => 'Operateur an déi nächst Positioun drasetzen (wa méiglech)',
 );
 
 /** Macedonian (Македонски)
@@ -804,10 +878,50 @@ $messages['mk'] = array(
 	'cb_edit_paste_right_hint' => 'Залепи го операторот во следната позиција, ако може',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'categorybrowser' => 'വർഗ്ഗം ബ്രൗസർ',
+	'categorybrowser-desc' => 'ഏറ്റവുമധികം സൃഷ്ടിക്കപ്പെട്ടിട്ടുള്ള വർഗ്ഗങ്ങളെ തിരഞ്ഞെടുക്കാനും അവയിലൂടെ അജാക്സ് സമ്പർക്കമുഖമുപയോഗിച്ച് കേറിയിറങ്ങാനുമുള്ള അരിപ്പയ്ക്കുള്ള [[Special:CategoryBrowser|പ്രത്യേക താൾ]] തരുന്നു',
+	'cb_requires_javascript' => 'വർഗ്ഗം ബ്രൗസർ എക്സ്റ്റെൻഷൻ പ്രവർത്തിക്കാൻ താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് സജ്ജമായിരിക്കണം.',
+	'cb_ie6_warning' => 'തിരുത്തുവാനുള്ള ഉപാധി ഇന്റർനെറ്റ് എക്സ്പ്ലോററിലും അതിനും മുമ്പത്തെ പതിപ്പുകളിലും പ്രവർത്തിക്കില്ല.
+എന്നിരുന്നാലും, മുമ്പേ നിർവചിച്ചിട്ടുള്ള വ്യവസ്ഥകൾ സാധാരണ പോലെ പ്രവർത്തിക്കുന്നതാണ്.
+സാദ്ധ്യമെങ്കിൽ താങ്കളുടെ ബ്രൗസർ പുതുക്കുക, മറ്റൊരു ബ്രൗസർ തിരഞ്ഞെടുക്കുകയോ ചെയ്യുക.',
+	'cb_show_no_parents_only' => 'താവഴി വർഗ്ഗങ്ങളില്ലാത്ത വർഗ്ഗങ്ങൾ മാത്രം പ്രദർശിപ്പിക്കുക',
+	'cb_cat_name_filter' => 'പേരനുസരിച്ച് വർഗ്ഗം തിരയുക:',
+	'cb_cat_name_filter_clear' => 'വർഗ്ഗത്തിന്റെ പേരിന്റെ അരിപ്പ ശൂന്യമാക്കാൻ ഞെക്കുക',
+	'cb_cat_name_filter_ci' => 'കേസ് അധിഷ്ഠിതമല്ല',
+	'cb_copy_line_hint' => 'തിരഞ്ഞെടുത്ത എക്സ്‌പ്രെഷനിൽ ഓപ്പറേറ്ററുകൾ പകർത്താനും ചേർക്കാനും [+] ഒപ്പം [>+] ബട്ടണുകൾ ഉപയോഗിക്കുക.',
+	'cb_has_subcategories' => '{{PLURAL:$1|ഒരു ഉപവർഗ്ഗം|$1 ഉപവർഗ്ഗങ്ങൾ}}',
+	'cb_has_pages' => '{{PLURAL:$1|ഒരു താൾ|$1 താളുകൾ}}',
+	'cb_has_files' => '{{PLURAL:$1|ഒരു പ്രമാണം|$1 പ്രമാണങ്ങൾ}}',
+	'cb_has_parentcategories' => 'താവഴി വർഗ്ഗങ്ങൾ (ഉണ്ടെങ്കിൽ)',
+	'cb_previous_items_link' => 'മുമ്പത്തെ',
+	'cb_next_items_link' => 'അടുത്തത്',
+	'cb_next_items_stats' => ' ($1 എന്നതിൽ നിന്ന്)',
+	'cb_cat_subcats' => 'ഉപവർഗ്ഗങ്ങൾ',
+	'cb_cat_pages' => 'താളുകൾ',
+	'cb_cat_files' => 'പ്രമാണങ്ങൾ',
+	'cb_apply_button' => 'ബാധകമാക്കുക',
+	'cb_all_op' => 'എല്ലാം',
+	'cb_or_op' => 'അഥവാ',
+	'cb_and_op' => 'ഒപ്പം',
+	'cb_edit_left_hint' => 'സാദ്ധ്യമെങ്കിൽ ഇടത്തോട്ട് മാറ്റുക',
+	'cb_edit_right_hint' => 'സാദ്ധ്യമെങ്കിൽ വലത്തോട്ട് മാറ്റുക',
+	'cb_edit_remove_hint' => 'സാദ്ധ്യമെങ്കിൽ മായ്ക്കുക',
+	'cb_edit_copy_hint' => 'ഓപ്പറേറ്റർ ക്ലിപ്ബോർഡിലേയ്ക്ക് പകർത്തുക',
+	'cb_edit_append_hint' => 'ഓപ്പറേറ്റർ അവസാന സ്ഥാനത്ത് ഉൾപ്പെടുത്തുക',
+	'cb_edit_clear_hint' => 'ഇപ്പോഴത്തെ എക്സ്പ്രെഷൻ ശൂന്യമാക്കുക (എല്ലാം തിരഞ്ഞെടുക്കുക)',
+	'cb_edit_paste_hint' => 'സാദ്ധ്യമെങ്കിൽ ഇപ്പോഴത്തെ സ്ഥാനത്തേയ്ക്ക് ഓപ്പറേറ്റർ ഉൾപ്പെടുത്തുക',
+	'cb_edit_paste_right_hint' => 'സാദ്ധ്യമെങ്കിൽ അടുത്ത സ്ഥാനത്തേയ്ക്ക് ഓപ്പറേറ്റർ ചേർക്കുക',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'cb_has_pages' => '$1 {{PLURAL:$1|хуудас}}',
 	'cb_all_op' => 'Бүгдийг',
 );
 
@@ -1149,6 +1263,37 @@ $messages['scn'] = array(
 	'cb_and_op' => 'e',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'categorybrowser' => 'Brskalnik po kategorijah',
+	'cb_show_no_parents_only' => 'Prikaži samo kategorije, ki nimajo staršev',
+	'cb_cat_name_filter' => 'Iskanje kategorije po imenu:',
+	'cb_cat_name_filter_ci' => 'Neobčutljivo na velikost črk',
+	'cb_has_subcategories' => '$1 {{PLURAL:$1|podkategorija|podkategoriji|podkategorije|podkategorij}}',
+	'cb_has_pages' => '$1 {{PLURAL:$1|stran|strani}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|datoteka|datoteki|datoteke|datotek}}',
+	'cb_has_parentcategories' => 'starševske kategorije (če obstajajo)',
+	'cb_previous_items_link' => 'Prejšnja',
+	'cb_next_items_link' => 'Naslednja',
+	'cb_next_items_stats' => ' (od $1)',
+	'cb_cat_subcats' => 'podkategorije',
+	'cb_cat_pages' => 'strani',
+	'cb_cat_files' => 'datoteke',
+	'cb_apply_button' => 'Uporabi',
+	'cb_all_op' => 'Vse',
+	'cb_or_op' => 'ali',
+	'cb_and_op' => 'in',
+	'cb_edit_left_hint' => 'Prestavi levo, če je mogoče',
+	'cb_edit_right_hint' => 'Prestavi desno, če je mogoče',
+	'cb_edit_remove_hint' => 'Izbriši, če je mogoče',
+	'cb_edit_append_hint' => 'Vstavi operator na zadnje mesto',
+	'cb_edit_clear_hint' => 'Počisti trenutni izraz (izberi vse)',
+	'cb_edit_paste_hint' => 'Prilepi operator na trenutni položaj, če je mogoče',
+	'cb_edit_paste_right_hint' => 'Prilepi operator na naslednji položaj, če je mogoče',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -1193,6 +1338,7 @@ $messages['te'] = array(
 	'categorybrowser' => 'వర్గ విహారిణి',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|ఉపవర్గం|ఉపవర్గాలు}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|పుట|పుటలు}}',
+	'cb_has_files' => '$1 {{PLURAL:$1|దస్త్రం|దస్త్రాలు}}',
 	'cb_previous_items_link' => 'గత',
 	'cb_next_items_link' => 'తదుపరి',
 	'cb_next_items_stats' => ' ($1 నుండి)',

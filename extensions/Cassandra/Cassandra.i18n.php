@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'cassandra-desc' => "Stoor teks van wysigings in 'n [http://cassandra.apache.org/ Apache Cassandra] databasis",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'cassandra-desc' => 'Биттең өлгөһөнөң эстәлеген [http://cassandra.apache.org/ Apache Cassandra] базаһанды һаҡлау',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -233,6 +240,13 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'cassandra-desc' => 'Складирај го текстот на ревизијата во базата [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'cassandra-desc' => 'നാൾപ്പതിപ്പ് എഴുത്തുകൾ [http://cassandra.apache.org/ അപ്പാച്ചേ കസാൻഡ്രാ] ഡേറ്റാബേസിൽ സൂക്ഷിച്ച് വെയ്ക്കുക',
 );
 
 /** Dutch (Nederlands)

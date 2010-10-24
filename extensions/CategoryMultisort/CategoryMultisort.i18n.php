@@ -42,6 +42,18 @@ $messages['arc'] = array(
 	'prefs-category' => 'ܣܕܪܐ',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categorymultisort-desc' => 'Категорияларҙы төрлө тәртипкә килтереү асҡыстары менән ҡарарға мөмкинлек бирә.',
+	'categorymultisort-defaultsortkey-name' => 'Ғәҙәттәге',
+	'categorymultisort-sortkey' => 'Тәртипкә килтереү асҡысы:',
+	'categorymultisort-go' => 'Үтәргә',
+	'categorymultisort-default-sortkey' => 'Ғәҙәттәге тәртипкә килтереү асҡысы:',
+	'prefs-category' => 'Категория',
+);
+
 /** Belarusian (Беларуская)
  * @author Тест
  */
@@ -146,9 +158,12 @@ $messages['ee'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'categorymultisort-desc' => 'Permesante kategoriojn esti vidita kun aliaj ordigaj ŝlosiloj',
 	'categorymultisort-defaultsortkey-name' => 'Defaŭlta',
 	'categorymultisort-sortkey' => 'Ordiga ŝlosilo',
 	'categorymultisort-go' => 'Ek',
+	'categorymultisort-default-sortkey' => 'Defaŭlta ordiga ŝlosilo',
+	'prefs-category' => 'Kategorio',
 );
 
 /** Spanish (Español)
@@ -366,6 +381,15 @@ $messages['mk'] = array(
 	'prefs-category' => 'Категорија',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'categorymultisort-go' => 'പോകൂ',
+	'categorymultisort-default-sortkey' => 'സ്വതേയുള്ള ക്രമപ്പെടുത്തൽ ചാവി:',
+	'prefs-category' => 'വർഗ്ഗം',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
@@ -517,6 +541,15 @@ $messages['rue'] = array(
  */
 $messages['scn'] = array(
 	'categorymultisort-go' => "Va'",
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Privzeto',
+	'categorymultisort-go' => 'Pojdi',
+	'prefs-category' => 'Kategorija',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

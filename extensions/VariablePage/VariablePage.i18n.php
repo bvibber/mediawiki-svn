@@ -41,6 +41,13 @@ $messages['be-tarask'] = array(
 	'variablepage-desc' => 'Простае перанакінаваньне на розныя старонкі',
 );
 
+/** Bulgarian (Български)
+ * @author Turin
+ */
+$messages['bg'] = array(
+	'variablepage-navlink_text' => 'Даряване',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  */
@@ -336,6 +343,14 @@ $messages['ru'] = array(
 	'variablepage-desc' => 'Простое перенаправление на различные страницы',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'variablepage' => 'ЗміннаСторінка',
+	'variablepage-navlink_text' => 'Пожертвовати',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -349,7 +364,9 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'variablepage' => 'SpremenljivaStran',
 	'variablepage-navlink_text' => 'Doniraj',
+	'variablepage-desc' => 'Lahka preusmeritev spremenljive strani',
 );
 
 /** Swedish (Svenska)

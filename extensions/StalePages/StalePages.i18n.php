@@ -330,10 +330,11 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Jacob.jose
+ * @author Praveenp
  */
 $messages['ml'] = array(
 	'stalepages' => 'പഴക്കം തട്ടിയ താളുകൾ',
-	'stalepages-summary' => 'കഴിഞ്ഞ $1 ദിവസങ്ങളാ‍യി ഒരിക്കൽപ്പോലും തിരുത്തപ്പെടാത്ത താളുകളുടെ പട്ടികയാണ് ഇത്.',
+	'stalepages-summary' => 'കഴിഞ്ഞ {PLURAL:$1|ഒരു ദിവസമായി|$1 ദിവസങ്ങളായി}} തിരുത്തപ്പെടാത്ത താളുകളുടെ പട്ടികയാണ് ഇത്.',
 );
 
 /** Marathi (मराठी)

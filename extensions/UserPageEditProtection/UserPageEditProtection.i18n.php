@@ -350,6 +350,13 @@ $messages['sv'] = array(
 	'right-editalluserpages' => 'Redigera användarsidor',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'right-editalluserpages' => 'వాడుకరి పుటలను మార్చగలడం',
+);
+
 /** Thai (ไทย)
  * @author Passawuth
  */

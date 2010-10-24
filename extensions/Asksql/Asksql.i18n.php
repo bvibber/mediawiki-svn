@@ -366,6 +366,7 @@ $messages['eo'] = array(
 	'querybtn' => 'Sendu SQL-serĉomendon',
 	'selectonly' => 'Nur nurlegecaj serĉomendoj estas permesitaj.',
 	'querysuccessful' => 'Serĉomendo sukcesas',
+	'right-asksql' => 'Fari SQL-mendojn',
 );
 
 /** Spanish (Español)

@@ -83,6 +83,15 @@ $messages['avk'] = array(
 	'block_title_error' => 'Argenon, vergumvelt ke batu bu me zo rogiwar.',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'block_title_error_page_title' => 'Тыйылған исем',
+	'blocktitles-desc' => 'Күрһәтелгән исемдәр менән мәҡәләләр булдырыуҙы йәки һаҡлауҙы тыйыу өсөн төп мөмкинлектәр менән тәьмин итә.',
+	'block_title_error' => 'Ғәфү итегеҙ, бындай исемле бит һаҡлана алмай.',
+);
+
 /** Bikol Central (Bikol Central)
  * @author Filipinayzd
  */
@@ -692,6 +701,15 @@ $messages['sk'] = array(
 	'block_title_error_page_title' => 'Zablokovaný názov',
 	'blocktitles-desc' => 'Poskytuje základný prostriedok na zabránenie vytvárania či ukladania stránok s určitým názvom',
 	'block_title_error' => 'Prepáčte, stránky s týmto názvom nie je povolené ukladať.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'block_title_error_page_title' => 'Blokiran naslov',
+	'blocktitles-desc' => 'Nudi osnovni način preprečevanja shranjevanja ali ustvarjanja strani z določenimi naslovi',
+	'block_title_error' => 'Žal naslova te strani ni dovoljeno shraniti.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

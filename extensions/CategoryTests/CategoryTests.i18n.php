@@ -40,6 +40,13 @@ $messages['az'] = array(
 	'categorytests-desc' => 'Kateqoriyaların yoxlanılması üçün funksiyalar',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categorytests-desc' => 'Категорияны тикшереү мөмкинлектәре',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

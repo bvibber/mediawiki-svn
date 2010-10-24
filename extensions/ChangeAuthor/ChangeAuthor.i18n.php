@@ -254,6 +254,20 @@ $messages['arz'] = array(
 	'right-changeauthor' => 'غير مؤلف مراجعة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'changeauthor' => 'Өлгөнөң авторын үҙгәртеү',
+	'changeauthor-desc' => 'Өлгөнөң авторын үҙгәртеү мөмкинлеген бирә',
+	'changeauthor-title' => 'Өлгөнөң авторын үҙгәртеү',
+	'changeauthor-search-box' => 'Өлгөләрҙе эҙләү',
+	'changeauthor-pagename-or-revid' => 'Мәҡәләнең исеме йәки өлгөнөң идентификаторы:',
+	'changeauthor-pagenameform-go' => 'Үтәргә',
+	'changeauthor-comment' => 'Иҫкәрмә:',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Авторҙы|Авторҙарҙы}} үҙгәртеү',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -634,6 +648,7 @@ Se ĉi tiu eraro daŭras okazi, tiel la datumbazo verŝajne estas rompita.',
 	'changeauthor-success' => 'Via peto estis traktita sukcese.',
 	'changeauthor-logentry' => 'Ŝanĝis aŭtoron de $2 de $1 de $3 al $4',
 	'changeauthor-logpagename' => 'Protokolo pri ŝanĝoj de aŭtoroj',
+	'right-changeauthor' => 'Ŝanĝi la aŭtoro de revizio',
 );
 
 /** Spanish (Español)
@@ -1435,6 +1450,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1445,7 +1461,7 @@ $messages['ml'] = array(
 	'changeauthor-pagename-or-revid' => 'താളിന്റെ പേര്‌ അല്ലെങ്കിൽ പതിപ്പിന്റെ ഐ.ഡി.:',
 	'changeauthor-pagenameform-go' => 'പോകൂ',
 	'changeauthor-comment' => 'അഭിപ്രായം:',
-	'changeauthor-changeauthors-multi' => 'ലേഖകരെ മാറ്റുക',
+	'changeauthor-changeauthors-multi' => '{PLURAL:$1|രചയിതാവിനെ|രചയിതാക്കളെ}} മാറ്റുക',
 	'changeauthor-explanation-multi' => "ഈ താൾ ഉപയോഗിച്ച് താങ്കൾക്ക് ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റാവുന്നതാണ്‌.
 താഴെയുള്ള പട്ടികയിൽ ഒന്നോ അതിലധികമോ ഉപയോക്തൃനാമങ്ങൾ മാറ്റിയിട്ട്, അഭിപ്രായം രേഖപ്പെടുത്തിയതിനു ശേഷം (നിർബന്ധമില്ല), 'ലേഖകരെ മാറ്റുക' എന്ന ബട്ടൺ ഞെക്കുക.",
 	'changeauthor-changeauthors-single' => 'ലേഖകനെ മാറ്റുക',
@@ -1454,10 +1470,14 @@ $messages['ml'] = array(
 	'changeauthor-nosuchuser' => '"$1" എന്ന ഉപയോക്താവ് നിലവിലില്ല.',
 	'changeauthor-revview' => '$2ന്റെ #$1 എന്ന പതിപ്പ്',
 	'changeauthor-nosuchtitle' => '"$1" എന്ന താൾ നിലവിലില്ല.',
-	'changeauthor-invalidform' => 'ദയവായി ഈ ഫോമിനു പകരം Special:ChangeAuthor എന്ന താളിൽ വരുന്ന ഫോം ഉപയോഗിക്കുക.',
+	'changeauthor-weirderror' => 'വളരെ അപരിചിതമായ പിഴവ് ഉണ്ടായിരിക്കുന്നു.
+ദയവായി താങ്കളുടെ ആവശ്യം വീണ്ടും ശ്രമിക്കുക.
+ഈ പിഴവ് വീണ്ടും വീണ്ടും വരുന്നുവെങ്കിൽ, ഡേറ്റാബേസിലെന്തോ പിഴവുണ്ട്.',
+	'changeauthor-invalidform' => 'ദയവായി ഐച്ഛിക ഫോമിനു പകരം [[Special:ChangeAuthor|പ്രത്യേക താളിൽ]] വരുന്ന ഫോം ഉപയോഗിക്കുക.',
 	'changeauthor-success' => 'താങ്കളുടെ അഭ്യർത്ഥനയുടെ നടപടിക്രമങ്ങൾ വിജയകരമായി പൂർത്തിയാക്കിയിരിക്കുന്നു.',
 	'changeauthor-logentry' => '$1എന്ന താളിന്റെ $2പതിപ്പിന്റെ ലേഖകനെ $3ൽ നിന്നു $4ലേക്കു മാറ്റിയിരിക്കുന്നു',
 	'changeauthor-logpagename' => 'ലേഖകരെ മാറ്റിയതിന്റെ പ്രവർത്തനരേഖ',
+	'right-changeauthor' => 'ഒരു നാൾപ്പതിപ്പിന്റെ ലേഖകനെ മാറ്റുക',
 );
 
 /** Mongolian (Монгол)
@@ -1956,6 +1976,37 @@ $messages['sk'] = array(
 	'changeauthor-logentry' => 'Autor $2 z $1 bol zmenený z $3 na $4',
 	'changeauthor-logpagename' => 'Záznam zmien autorov',
 	'right-changeauthor' => 'Zmeniť autora revízie',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'changeauthor' => 'Spremeni avtorja redakcije',
+	'changeauthor-desc' => 'Omogoča spreminjanje avtorja redakcije',
+	'changeauthor-title' => 'Spreminjanje avtorja redakcije',
+	'changeauthor-search-box' => 'Iskanje redakcij',
+	'changeauthor-pagename-or-revid' => 'Ime strani ali ID redakcije:',
+	'changeauthor-pagenameform-go' => 'Pojdi',
+	'changeauthor-comment' => 'Pripomba:',
+	'changeauthor-changeauthors-multi' => 'Spremeni {{PLURAL:$1|avtorja|avtorje}}',
+	'changeauthor-explanation-multi' => 'S tem obrazcem lahko spremenite avtorje redakcije.
+Na spodnjem seznamu preprosto spremenite eno ali več uporabniških imen, dodajte pripombo (po želji) in kliknite gumb »Spremeni avtorje«.',
+	'changeauthor-changeauthors-single' => 'Spremeni avtorja',
+	'changeauthor-explanation-single' => 'S tem obrazcem lahko spremenite avtorja redakcije.
+Spodaj preprosto spremenite uporabniško ime, dodajte pripombo (po želji) in kliknite gumb »Spremeni avtorja«.',
+	'changeauthor-invalid-username' => 'Neveljavno uporabniško ime »$1«.',
+	'changeauthor-nosuchuser' => 'Uporabnik »$1« ne obstaja.',
+	'changeauthor-revview' => 'Redakcija #$1 $2',
+	'changeauthor-nosuchtitle' => 'Stran z imenom »$1« ne obstaja.',
+	'changeauthor-weirderror' => 'Prišlo je do zelo nenavadne napake.
+Prosimo, ponovite svojo zahtevo.
+Če se ta napaka ne preneha pojavljati, je zbirka podatkov verjetno poškodovana.',
+	'changeauthor-invalidform' => 'Namesto obrazca po meri, prosimo, uporabite obrazec na [[Special:ChangeAuthor|posebni strani]].',
+	'changeauthor-success' => 'Vaša zahteva je bila uspešno obdelana.',
+	'changeauthor-logentry' => 'je spremenil(-a) avtorja $2 strani $1 iz $3 v $4',
+	'changeauthor-logpagename' => 'Dnevnik sprememb avtorjev',
+	'right-changeauthor' => 'Spreminjanje avtorjev redakcij',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

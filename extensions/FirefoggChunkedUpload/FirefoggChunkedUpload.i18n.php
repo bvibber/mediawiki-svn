@@ -33,6 +33,13 @@ $messages['br'] = array(
 	'firefoggcu-desc' => 'Protokol pellgargañ a-dammoù Firefogg',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'firefoggcu-desc' => 'Firefogg-ov protokol otpremanja',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */

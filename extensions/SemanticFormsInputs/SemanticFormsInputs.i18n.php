@@ -39,6 +39,16 @@ $messages['af'] = array(
 	'semanticformsinputs-wrongformat' => 'Verkeerde formaat.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'semanticformsinputs-close' => 'ܣܟܘܪ',
+	'semanticformsinputs-prev' => 'ܩܕܡ',
+	'semanticformsinputs-next' => 'ܒܬܪ',
+	'semanticformsinputs-today' => 'ܝܘܡܢܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -71,6 +81,10 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'semanticformsinputs-desc' => 'Dodatne vrste unosa za [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantičke forme]',
 	'semanticformsinputs-wrongformat' => 'Pogrešan format.',
+	'semanticformsinputs-close' => 'Zatvori',
+	'semanticformsinputs-prev' => 'Prethodno',
+	'semanticformsinputs-next' => 'Slijedeće',
+	'semanticformsinputs-today' => 'Danas',
 );
 
 /** Catalan (Català)

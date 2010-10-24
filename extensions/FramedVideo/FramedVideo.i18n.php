@@ -74,6 +74,13 @@ $messages['ar'] = array(
 	'framedvideo-desc' => 'يسمح بتضمين الفيديو من مواقع ويب متعددة باستخدام الوسم <code>&lt;video&gt;</code>',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'framedvideo_helppage' => 'Help:ܒܝܕܝܘ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -179,6 +186,16 @@ $messages['ca'] = array(
 	'framedvideo_error_limit' => 'El valor màxim permès és $1.',
 	'framedvideo_helppage' => 'Help:Vídeo',
 	'framedvideo-desc' => "Permet incrustar vídeos de diversos llocs web mitjançant l'etiqueta <code>&lt;video&gt;</code>",
+);
+
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'framedvideo_helppage' => 'Help:Video',
+	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Více o syntaxi]].',
+	'framedvideo_error_height_and_width_required' => 'Typ videa "$1" vyžaduje parametry "height" a "width2" nebo parametr "width".',
+	'framedvideo-desc' => 'Umožňuje vkládání videií z různých webových stránek za použití tagu <code>&lt;video&gt;</code>',
 );
 
 /** Danish (Dansk)

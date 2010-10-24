@@ -667,6 +667,16 @@ $messages['tr'] = array(
 	'msfunc_div_zero' => 'Sıfıra bölme',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'msfunc_desc' => 'Набір математичних і статистичних функцій',
+	'msfunc_nan' => 'Отримане значення не є числом',
+	'msfunc_inf' => 'Отримані значення дорівнює нескінченності',
+	'msfunc_div_zero' => 'Ділення на нуль',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

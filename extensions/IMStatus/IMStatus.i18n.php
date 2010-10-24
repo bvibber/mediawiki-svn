@@ -108,6 +108,16 @@ $messages['ar'] = array(
 	'imstatus_yahoo_style' => 'أسلوب الزر، من $1 (أصغر) إلى $2 (أكبر)، $3 و $4 هما للبريد الصوتي.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'imstatus_max' => 'ܡܬܚܐ ܥܠܝܐ',
+	'imstatus_min' => 'ܡܬܚܐ ܬܚܬܝܐ',
+	'imstatus_or' => 'ܐܘ',
+	'imstatus_your_name' => 'ܫܡܐ $1 ܕܝܠܟ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -1483,13 +1493,16 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'imstatus_default' => 'అప్రమేయం',
 	'imstatus_example' => 'ఉదాహరణ',
+	'imstatus_possible_val' => 'సాధ్యమయ్యే విలువలు',
 	'imstatus_max' => 'గరిష్ఠ',
 	'imstatus_min' => 'కనిష్ఠ',
 	'imstatus_or' => 'లేదా',
 	'imstatus_your_name' => 'మీ $1 పేరు',
 	'imstatus_gtalk_height' => 'పెట్టె యొక్క ఎత్తు, పిక్సెళ్ళలో.',
 	'imstatus_gtalk_width' => 'పెట్టె యొక్క వెడల్పు, పిక్సెళ్ళలో.',
+	'imstatus_icq_style' => '0 నుండి 26 లోపు ఒక సంఖ్య (అవును, 27 శైలులు అందుబాటులో ఉన్నాయి).',
 );
 
 /** Tagalog (Tagalog)

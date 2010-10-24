@@ -128,6 +128,14 @@ $messages['ar'] = array(
 	'action-povwatch_user' => 'إضافة هذه الصفحة إلى قائمة مراقبة مستخدم آخر',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'povwatch_title' => 'ܟܘܢܝܐ:',
+	'povwatch_added' => 'ܐܘܣܦܬ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -862,6 +870,7 @@ $messages['gv'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -876,7 +885,7 @@ $messages['he'] = array(
 	'povwatch_unsubscribed' => 'הרשמתכם ל־PovWatch בוטלה כעת',
 	'povwatch_invalid_title' => 'הכותרת שצוינה אינה תקינה',
 	'povwatch_pushed' => '[[$1]] נדחף בהצלחה ל{{PLURAL:$2|רשימת המעקב של משתמש אחד|רשימות המעקב של $2 משתמשים}}',
-	'povwatch_intro' => 'PovWatch הינו שירות המאפשר דחיפת דפי תוכן לרשימות המעקב של המנהלים שנרשמו לשירות.
+	'povwatch_intro' => 'PovWatch הוא שירות המאפשר דחיפה חסויה דפי תוכן לרשימות המעקב של המנהלים שנרשמו לשירות.
 
 יומן הדחיפות האחרונות לרשימות המעקב זמין בדף [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'ניתן לצפות ב[[Special:PovWatch/subscribers|רשימת הנרשמים]].',
@@ -2275,6 +2284,7 @@ Klicka på knappen nedan för att abonnera.',
  */
 $messages['te'] = array(
 	'povwatch_invalid_title' => 'మీరిచ్చిన శీర్షిక సరైనది కాదు',
+	'povwatch_subscriber_list' => '[[Special:PovWatch/subscribers|చందాదారుల యొక్క జాబితా]] అందుబాటులో ఉంది.',
 	'povwatch_subscriber_list_intro' => '<strong>చందాదార్ల జాబితా</strong>',
 	'povwatch_unknown_subpage' => 'గుర్తుతెలియని ఉపపేజీ.',
 	'povwatch_title' => 'శీర్షిక:',
@@ -2284,6 +2294,8 @@ $messages['te'] = array(
 	'povwatch_unsubscribe' => 'చందామాను',
 	'povwatch_subscribe' => 'చందాచేరు',
 	'povwatch_added' => 'చేర్చాం',
+	'right-povwatch_user' => 'ఇతర వాడుకరుల వీక్షణజాబితాలకు పుటలను చేర్చడం',
+	'action-povwatch_user' => 'ఈ పుటని మరొక వాడుకరి యొక్క వీక్షణజాబితాకి చేర్చే',
 );
 
 /** Tetum (Tetun)

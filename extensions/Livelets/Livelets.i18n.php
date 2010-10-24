@@ -192,3 +192,10 @@ $messages['tl'] = array(
 	'livelets-desc' => 'Nagpapahintulot sa mga pahina na mailipat-sama na naikarga pagkaraan ng nilalaman ng pangunahing pahina at masiglang nakapagsasapanahon sa pamamagitan ng Ajax',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'livelets-desc' => 'Дозволяє включати сторінки у інші сторінки після основного їх змісту і динамічно оновлювати за допомогою Ajax',
+);
+

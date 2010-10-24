@@ -858,9 +858,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Alex Khimich
+ * @author Тест
  */
 $messages['uk'] = array(
-	'plotters-desc' => 'Дозволяє користувачам використовувати користувальницький JavaScript тегах jsplot',
+	'plotters-desc' => 'Дозволяє користувачам використовувати користувальницький JavaScript за допомогою тегів jsplot',
 	'plotters' => 'Плоттери',
 	'plotters-title' => 'Плоттери',
 	'plotters-pagetext' => 'Нижче наводиться перелік спеціальних плоттерів які користувачі можуть використовувати свої jsplot теги, як описано в [[MediaWiki:Plotters-definition]] 
@@ -878,6 +879,7 @@ $messages['uk'] = array(
 Будь ласка, вкажіть ім'я, яке має не більше 255 символів.",
 	'plotters-no-data' => 'Данні не вказані.',
 	'plotters-invalid-renderer' => 'Обрано невірний рендерер.',
+	'plotters-errors' => '{{PLURAL:$1|Помилка|Помилки}} плоттерів:',
 );
 
 /** Veps (Vepsan kel')

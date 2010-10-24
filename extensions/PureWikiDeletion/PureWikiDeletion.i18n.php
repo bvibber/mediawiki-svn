@@ -74,6 +74,14 @@ $messages['ar'] = array(
 	'purewikideletion-blanknologintext' => 'يجب أن تكون مستخدما مسجلا و [[Special:UserLogin|تسجل الدخول]] لإفراغ أو ملأ صفحة.',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'blank-log' => 'ܣܦܝܩܬܐ',
+	'blank-log-name' => 'ܣܓܠܐ ܣܦܝܩܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -742,6 +750,13 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'purewikideletion-blanknologin' => 'Niste ulogovani',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'randomexcludeblank' => 'యాదృచ్చిక పుట (ఖాళీలను మినహాయించి)',
 );
 
 /** Tagalog (Tagalog)

@@ -1580,6 +1580,7 @@ $messages['haw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
@@ -1612,7 +1613,7 @@ $messages['he'] = array(
 	'tasks_discussion_page_link' => 'דף השיחה של המשימה',
 	'tasks_closedby' => 'נסגרה על ידי $1',
 	'tasks_assigned_myself_log' => 'הקצאה עצמית של המשימה "$1"',
-	'tasks_discussion_page_for' => 'משימה זו הינה עבור הדף "$1". רשימת כל המשימות עבור דף זה זמינה $2.',
+	'tasks_discussion_page_for' => 'זוהי משימה עבור הדף "$1". רשימת כל המשימות עבור דף זה: $2.',
 	'tasks_sidebar_title' => 'משימות פתוחות',
 	'tasks_here' => 'כאן',
 	'tasks_returnto' => 'כעת מבוצעת הפניה. אם ההפניה לא מבוצעת תוך מספר שניות, לחצו $1.',
@@ -2481,6 +2482,7 @@ $messages['mk'] = array(
  */
 $messages['mn'] = array(
 	'tasks_form_comment' => 'Тайлбар',
+	'tasks_table_header_page' => 'Хуудас',
 	'tasks_search_form_title' => 'Хайлт',
 );
 
@@ -3747,6 +3749,7 @@ $messages['te'] = array(
 	'tasks_here' => 'ఇక్కడ',
 	'tasks_returnto' => 'మిమ్మల్ని ఇప్పుడు దారిమారుస్తాం. మరి కొద్ది క్షణాల్లో అది జరగకపోతే, $1ని నొక్కండి.',
 	'tasks_see_page_tasks' => '(ఈ పేజీ యొక్క పనులు)',
+	'tasks_task_is_assigned' => '(అప్పగించారు)',
 	'tasks_plain_text_only' => '(సాదా పాఠ్యం, 256 అక్షరాలు మాత్రమే)',
 	'tasks_help_page' => 'పనులు',
 	'tasks_more_like_it' => 'మరిన్ని',
@@ -3761,6 +3764,9 @@ $messages['te'] = array(
 	'tasks_next' => 'తర్వాతి',
 	'tasks_ascending' => 'పాతవి ముందు',
 	'tasks_status_open' => 'చేయాల్సినవి',
+	'tasks_status_assigned' => 'అప్పగించారు',
+	'tasks_action_open' => 'పని "$1"ని తెరిచారు.',
+	'tasks_action_assigned' => 'పని "$1"ని అప్పగించారు.',
 	'tasks_sign_delete' => '<b>ఈ పేజీని తొలగించమని కోరారు!</b>',
 	'tasks_logpage' => 'పనుల చిట్టా',
 	'tasks_logpagetext' => 'ఇది పనులకు జరిగిన మార్పుల చిట్టా',

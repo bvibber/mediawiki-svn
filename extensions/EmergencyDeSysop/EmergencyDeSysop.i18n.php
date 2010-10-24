@@ -188,10 +188,23 @@ $messages['ckb'] = array(
 	'emergencydesysop-submit' => 'ناردن',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'emergencydesysop' => 'Nouzové odstranění práv správce',
+	'emergencydesysop-desc' => 'Umožňuje správci obětovat svoje vlastní práva, když je chce odebrat jinému správci',
+	'emergencydesysop-title' => 'Odebrat práva správce aktuálnímu a jinému správci',
+	'emergencydesysop-reason' => 'Důvod odebrání',
 	'emergencydesysop-submit' => 'Odeslat',
+	'emergencydesysop-incomplete' => 'Všechna pole formuláře jsou povinná, zkuste to znovu.',
+	'emergencydesysop-notasysop' => 'Cílový uživatel není správcem.',
 	'emergencydesysop-nogroups' => 'Nic',
+	'emergencydesysop-done' => 'Operace dokončena, vy i [[$1]] už nejste správci.',
+	'emergencydesysop-invalidtarget' => 'Cílový uživatel neexistuje.',
+	'emergencydesysop-blocked' => 'Nemáte přístup na tuto stránku, protože jste zablokován.',
+	'emergencydesysop-noright' => 'Nemáte dostatenčné oprávnění pro přístup k této stránce',
+	'right-emergencydesysop' => 'Může odstranit práva správce jinému zároveň se svými',
 );
 
 /** German (Deutsch)
@@ -632,6 +645,13 @@ $messages['mk'] = array(
 	'emergencydesysop-blocked' => 'Не можете да дојдете до страницата кога сте блокирани',
 	'emergencydesysop-noright' => 'Немате доволно дозволи за пристап на оваа страница',
 	'right-emergencydesysop' => 'Одземање на администраторски права заедно со своите',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'emergencydesysop-submit' => 'Явуулах',
 );
 
 /** Dutch (Nederlands)

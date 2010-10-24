@@ -910,6 +910,7 @@ Jeli chcesz wybrać wjyncyj jak jedna zajta, możesz użyć przićiska shift, tr
  * @author Veeven
  */
 $messages['te'] = array(
+	'watchsubpages' => 'ఉపపుటలని గమనించండి',
 	'watchsubpages-addtitles' => 'పేజీలను చేర్చండి',
 );
 

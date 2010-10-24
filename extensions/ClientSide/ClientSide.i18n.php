@@ -365,6 +365,13 @@ $messages['ru'] = array(
 	'clientside-desc' => 'Предоставляет функции генерации кода в клиентских форматах, таких, как HTML, CSS и JavaScript',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'clientside-desc' => 'Додавать функції про ґенерованя коду в кліентскых форматах, як суть  HTML, CSS і JavaScript',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -1070,12 +1070,80 @@ $messages['ckb'] = array(
 	'deletequeue-case-reason' => 'هۆکار:',
 );
 
-/** Czech (Česky) */
+/** Czech (Česky)
+ * @author Jkjk
+ */
 $messages['cs'] = array(
+	'deletequeue-desc' => 'Vytvoří [[Special:DeleteQueue|na frontách založený systém na správu mazání]]',
+	'deletequeue-action-queued' => 'Smazání',
+	'deletequeue-action' => 'Navrhnout smazání',
+	'deletequeue-action-title' => 'Navrhnou smazání "$1"',
+	'deletequeue-delnom-reason' => 'Důvod návrhu:',
 	'deletequeue-delnom-otherreason' => 'Jiný důvod',
+	'deletequeue-delnom-extra' => 'Další informace:',
+	'deletequeue-delnom-submit' => 'Odeslat návrh',
+	'deletequeue-log-nominate' => ' navrhl [[$1]]  na smazání ve frontě „$2”.',
+	'deletequeue-log-rmspeedy' => 'zamítl rychlé smazání [[$1]].',
+	'deletequeue-log-requeue' => 'přesunul [[$1]] do jiné fronty mazání: z „$2” do „$3”.',
+	'deletequeue-log-dequeue' => 'odstranil [[$1]] z fronty mazání „$2”.',
+	'right-speedy-nominate' => 'Navrhout stránky na rychlé smazání',
+	'right-speedy-review' => 'Posuzovat návrhy na rychlé smazání',
+	'right-prod-nominate' => 'Navrhnout smazání stránky',
+	'right-prod-review' => 'Posouzovat návrhy na smazání bez nesouhlasu',
+	'right-deletediscuss-nominate' => 'Vytvořit diskuzi o smazání',
+	'right-deletediscuss-review' => 'Uzavřít diskuzi o smazání',
+	'right-deletequeue-vote' => 'Doporučit nebo nesouhlasit se smazáním',
+	'deletequeue-queue-speedy' => 'Rychlé smazání',
+	'deletequeue-queue-prod' => 'Navrhované smazání',
+	'deletequeue-queue-deletediscuss' => 'Diskuze o smazání',
+	'deletequeue-page-speedy' => "Tato stránka byla navržena na rychlé smazání.
+Jako důvod návrh byu uveden  ''$1''.",
+	'deletequeue-notqueued' => 'Stránka, kterou jste vybrali nyní není ve frontě na smazání',
+	'deletequeue-review-action' => 'Vykonat:',
+	'deletequeue-review-delete' => 'Smazat stránku.',
+	'deletequeue-review-change' => 'Smazat tuto stránku, ale s jiným zdůvodněním.',
+	'deletequeue-review-requeue' => 'Přenést tuto stránku do následující fronty:',
+	'deletequeue-review-dequeue' => 'Nic nedělat a odstranit stránku z fronty na smazání.',
 	'deletequeue-review-reason' => 'Komentáře:',
+	'deletequeue-review-newreason' => 'Nový důvod:',
+	'deletequeue-review-newextra' => 'Další informace:',
+	'deletequeue-review-original' => 'Důvod návrhu',
+	'deletequeue-actiondisabled-notexpired' => 'Následující akce není možná, protože návrh na smazání ještě nevypršel:',
+	'deletequeue-review-badaction' => 'Zadali jste neplatnou akci',
+	'deletequeue-review-actiondenied' => 'Zadali jste akci, která je pro tuto stránku vypnuta',
+	'deletequeue-reviewspeedy-tab' => 'Posoudit rychlé smazání',
+	'deletequeue-reviewspeedy-title' => 'Posoudit návrh na rychlé smazání „$1”',
+	'deletequeue-reviewprod-tab' => 'Posoudit navržené smazání',
+	'deletequeue-reviewprod-title' => 'Posoudit navržené smazání „$1”',
+	'deletequeue-reviewprod-text' => "Můžete použit tento formulár na posouzení návrhu na smazání \"'''\$1'''\" bez nesouhlasu.",
+	'deletequeue-reviewdeletediscuss-tab' => 'Posoudit smazání',
+	'deletequeue-reviewdeletediscuss-title' => 'Posoudit diskuzi o smazání „$1”',
+	'deletequeue-review-success' => 'Úspěšně jste pousoudili smazání této stránky',
+	'deletequeue-review-success-title' => 'Posouzení dokončeno',
+	'deletequeue-discusscreate-summary' => 'Vytvoření diskuze o smazání [[$1]].',
+	'deletequeue-discusscreate-text' => 'Smazání bylo navrhnuto z následujícího důvodu: $2',
+	'deletequeue-role-nominator' => 'původní navrhovatel smazání',
+	'deletequeue-role-vote-endorse' => 'podporovatel smazání',
+	'deletequeue-role-vote-object' => 'odpůrce smazání',
+	'deletequeue-vote-tab' => 'Volba v tomto smazání',
+	'deletequeue-vote-title' => 'Souhlasit nebo nesouhlasit se smazáním "$1"',
+	'deletequeue-vote-legend' => 'Souhlasit/nesouhlasit se smazáním',
+	'deletequeue-vote-action' => 'Doporučení:',
+	'deletequeue-vote-endorse' => 'Souhlasit se smazáním.',
+	'deletequeue-vote-object' => 'Nesouhlasit se smazáním.',
 	'deletequeue-vote-reason' => 'Komentáře:',
 	'deletequeue-vote-submit' => 'Odeslat',
+	'deletequeue-vote-success-endorse' => 'Podpořili jste smazání této stránky.',
+	'deletequeue-vote-success-object' => 'Nesouhlasili jste se smazáním této stránky.',
+	'deletequeue-vote-requeued' => 'Nesouhlasili jste se smazáním této stránky.
+Vzhledem k vašemu nesouhlasu byla stránka přesunuta do fronty $1.',
+	'deletequeue-showvotes' => 'Souhlasy a nesouhlasy se smazáním "$1"',
+	'deletequeue-showvotes-restrict-endorse' => 'Zobrazit jen souhlasy',
+	'deletequeue-showvotes-restrict-object' => 'Zobrazit jen nesouhlasy',
+	'deletequeue-showvotes-restrict-none' => 'Zobrazit všechny souhlasy a nesouhlasy',
+	'deletequeue-showvotes-vote-endorse' => '"Schválená" smazání na $1 $2',
+	'deletequeue-showvotes-vote-object' => '"Nesouhlasil" se smazáním na $1 $2',
+	'deletequeue-showvotes-showingonly-endorse' => 'Zobrazují se jen souhlasy',
 	'deletequeue-list-queue' => 'Zvolená fronta:',
 	'deletequeue-list-status' => 'Stav:',
 	'deletequeue-list-search' => 'Hledat',
@@ -4068,6 +4136,29 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 	'deletequeue-case-needs-review' => 'Овој случај бара [[$1|прегледување]].',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'deletequeue-action-queued' => 'മായ്ക്കൽ',
+	'deletequeue-action' => 'മായ്ക്കൽ നിർദ്ദേശിക്കുക',
+	'deletequeue-delnom-reason' => 'നിർദ്ദേശിക്കാനുള്ള കാരണം:',
+	'deletequeue-delnom-otherreason' => 'മറ്റ് കാരണം',
+	'deletequeue-delnom-extra' => 'കൂടുതൽ വിവരങ്ങൾ:',
+	'deletequeue-delnom-submit' => 'നിർദ്ദേശം സമർപ്പിക്കുക',
+	'deletequeue-queue-speedy' => 'അതിവേഗ മായ്ക്കൽ',
+	'deletequeue-review-delete' => 'താൾ മായ്ക്കുക.',
+	'deletequeue-review-reason' => 'അഭിപ്രായം:',
+	'deletequeue-review-newreason' => 'പുതിയ കാരണം:',
+	'deletequeue-review-newextra' => 'കൂടുതൽ വിവരങ്ങൾ:',
+	'deletequeue-review-submit' => 'സംശോധനം സേവ് ചെയ്യുക',
+	'deletequeue-review-original' => 'നിർദ്ദേശിക്കാനുള്ള കാരണം',
+	'deletequeue-review-success' => 'താങ്കൾ വിജയകരമായി ഈ താളിന്റെ മായ്ക്കൽ സംശോധനം ചെയ്തിരിക്കുന്നു',
+	'deletequeue-review-success-title' => 'സംശോധനം സമ്പൂർണ്ണം',
+	'deletequeue-vote-reason' => 'അഭിപ്രായങ്ങൾ:',
+	'deletequeue-vote-submit' => 'സമർപ്പിക്കുക',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
@@ -4075,7 +4166,10 @@ $messages['mn'] = array(
 	'deletequeue-delnom-otherreason' => 'Өөр шалтгаан',
 	'deletequeue-review-reason' => 'Тайлбар:',
 	'deletequeue-vote-reason' => 'Тайлбар:',
+	'deletequeue-vote-submit' => 'Явуулах',
 	'deletequeue-list-search' => 'Хайх',
+	'deletequeue-list-header-page' => 'Хуудас',
+	'deletequeue-case-page' => 'Хуудас:',
 	'deletequeue-case-reason' => 'Шалтгаан:',
 );
 
@@ -4783,6 +4877,13 @@ $messages['pl'] = array(
 	'deletequeue-action-queued' => 'Usunięcie',
 	'deletequeue-action' => 'Zaproponuj do usunięcia',
 	'deletequeue-action-title' => 'Zaproponuj usunięcie „$1”',
+	'deletequeue-action-text' => "Wiki ma kilka procedur usuwania stron: 
+* Jeśli uważasz za uzasadnione, możesz tę stronę [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=speedy}} oznaczyć do ''ekspresowego usunięcia''].
+* Jeśli zawartość strony nie gwarantuje kwalifikacji jej do ekspresowego usunięcia, a ''usunięcie prawdopodobnie będzie niekontrowersyjne'', należy [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=prod}} zaproponować usunięcie bezspornych].
+* Jeśli usunięcie tej strony ''może wywołać czyjeś protesty'', należy [{{fullurl:{{FULLPAGENAME}}|action=delnom&queue=deletediscuss}} otworzyć dyskusję].",
+	'deletequeue-action-text-queued' => 'Następujące strony związane są z tym zgłoszeniem:
+* [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} Zobacz głosy zwolenników i przeciwników usunięcia].
+* [{{fullurl:{{FULLPAGENAME}}|action=delvote}} Zagłosuj za lub przeciw usunięciu].',
 	'deletequeue-permissions-noedit' => 'Musisz być w stanie edytować stronę, aby móc wpływać na jej status usunięcia.',
 	'deletequeue-generic-reasons' => '* Najczęstsze powody
 ** Wandalizm
@@ -4791,7 +4892,14 @@ $messages['pl'] = array(
 ** Treść nie przystaje do projektu',
 	'deletequeue-nom-alreadyqueued' => 'Ta strona jest już w kolejce do usunięcia.',
 	'deletequeue-speedy-title' => 'Oznacz „$1” do ekspresowego skasowania',
+	'deletequeue-speedy-text' => "Możesz użyć tego formularza do oznaczenia strony „'''$1'''” do ekspresowego usunięcia.
+
+Administrator zweryfikuje to zgłoszenie i jeśli uzna zgłoszenie za zasadne usunie stronę.
+Musisz wybrać powód usunięcia z poniższej listy rozwijalnej i dodać wszelkie istotne informacje.",
 	'deletequeue-prod-title' => 'Zaproponuj usunięcie „$1”',
+	'deletequeue-prod-text' => "Możesz użyć tego formularza aby zgłosić „'''$1'''” do usunięcia.
+
+Jeśli w ciągu pięciu dni nikt nie zakwestionuje usunięcia tej strony zostanie usunięta po końcowym sprawdzeniu przez administratora.",
 	'deletequeue-delnom-reason' => 'Powód zgłoszenia',
 	'deletequeue-delnom-otherreason' => 'Inny powód',
 	'deletequeue-delnom-extra' => 'Dodatkowe informacje',
@@ -4812,6 +4920,13 @@ $messages['pl'] = array(
 	'deletequeue-queue-deletediscuss' => 'Dyskusja usuwania',
 	'deletequeue-page-speedy' => "Ta strona została zgłoszona do ekspresowego usunięcia.
 Powód podany jako uzasadnienie zgłoszenia to ''$1''.",
+	'deletequeue-page-prod' => "Strona została zgłoszona do usunięcia.
+Powód podany przy zgłoszeniu to ''$1''.
+Jeśli nikt nie będzie miał zastrzeżeń do ''$2'' strona zostanie usunięta.
+Możesz w kwestii usunięcia strony [{{fullurl:{{FULLPAGENAME}}|action=delvote}} zgłosić sprzeciw].",
+	'deletequeue-page-deletediscuss' => "Ta strona została zgłoszona do usunięcia lecz ktoś zgłosił sprzeciw.
+Podany powód to ''$1''.
+Dyskusja trwa na stronie [[$5]], a zakończy się ''$2''.",
 	'deletequeue-notqueued' => 'Strona, którą wybrałeś nie znajduje się w kolejce do usunięcia',
 	'deletequeue-review-action' => 'Cel działania',
 	'deletequeue-review-delete' => 'Usuń stronę.',
@@ -4827,15 +4942,26 @@ Powód podany jako uzasadnienie zgłoszenia to ''$1''.",
 	'deletequeue-actiondisabled-notexpired' => 'Następująca działanie nie jest możliwe ponieważ to czas trwania zgłoszenia do usunięcia jeszcze nie upłynął',
 	'deletequeue-review-badaction' => 'Wybrałeś nieprawidłowe działanie',
 	'deletequeue-review-actiondenied' => 'Wybrałeś działanie, które jest wyłączone dla tej strony',
+	'deletequeue-review-objections' => "'''Uwaga''' – usunięcie tej strony [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} wywołało czyjś sprzeciw].
+Upewnij się przed usunięciem tej strony, że zapoznałeś się z ich argumentami.",
 	'deletequeue-reviewspeedy-tab' => 'Zatwierdzanie ekspresowego usuwania',
 	'deletequeue-reviewspeedy-title' => 'Zatwierdzanie zgłoszenia do ekspresowego usunięcia „$1”',
+	'deletequeue-reviewspeedy-text' => "Możesz użyć tego formularza do zaakceptowania zgłoszenia „'''$1'''” do ekspresowego usunięcia.
+Upewnij się, że usunięcie strony w tym trybie będzie zgodne z obowiązującą polityką.",
 	'deletequeue-reviewprod-tab' => 'Zatwierdzanie zgłoszeń do usunięcia',
 	'deletequeue-reviewprod-title' => 'Zatwierdzanie zgłoszenia do usunięcia „$1”',
 	'deletequeue-reviewprod-text' => "Możesz użyć tego formularza do zatwierdzania bezspornego zgłoszenia do usunięcia „'''$1'''”.",
 	'deletequeue-reviewdeletediscuss-tab' => 'Zatwierdzam usunięcie',
 	'deletequeue-reviewdeletediscuss-title' => 'Sprawdzenie dyskusji nad usunięciem „$1”',
+	'deletequeue-reviewdeletediscuss-text' => "Możesz użyć tego formularza do podsumowania dyskusji o usunięciu „'''$1'''”.
+
+Dostępna jest [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} lista] głosów poparcia i sprzeciwu w sprawie usunięcia tej strony oraz dyskusja na [[$2]].
+Upewnij się, że podejmujesz decyzję zgodną z ustalonym w toku dyskusji konsensusem.",
 	'deletequeue-review-success' => 'Zweryfikowałeś potrzebę usunięcia tej strony.',
 	'deletequeue-review-success-title' => 'Weryfikacja zakończona',
+	'deletequeue-deletediscuss-discussionpage' => 'To jest strona dyskusji usunięcia [[$1]].
+Obecnie $2 {{PLURAL:$2|użytkownik|użytkowników}} popiera usunięcie, a $3 {{PLURAL:$3|użytkownik|użytkowników}} jest przeciwnych usunięciu.
+Możesz [{{fullurl:$1|action=delvote}} zająć stanowisko] w sprawie usunięcia lub [{{fullurl:$1|action=delviewvotes}} zobaczyć przebieg głosowania].',
 	'deletequeue-discusscreate-summary' => 'Tworzenie strony dyskusji dla usuwania [[$1]].',
 	'deletequeue-discusscreate-text' => 'Zgłoszono usunięcie podając powód – $2',
 	'deletequeue-role-nominator' => 'pierwszy zgłaszający do usunięcia',
@@ -4843,6 +4969,10 @@ Powód podany jako uzasadnienie zgłoszenia to ''$1''.",
 	'deletequeue-role-vote-object' => 'przeciwny usunięciu',
 	'deletequeue-vote-tab' => 'Głosowanie nad usunięciem',
 	'deletequeue-vote-title' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia „$1”',
+	'deletequeue-vote-text' => "Możesz użyć tego formularza aby poprzeć lub sprzeciwić się usunięciu „'''$1'''”.
+Działanie to nadpisze wcześniejsze głosy, które oddałeś w tej sprawie.
+Możesz [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} sprawdzić] wszystkie dotychczasowe głosy.
+Powodem zgłoszenia do usunięcia było ''$2''.",
 	'deletequeue-vote-legend' => 'Wyrażenie poparcia lub sprzeciwu dla usunięcia',
 	'deletequeue-vote-action' => 'Rekomendacja',
 	'deletequeue-vote-endorse' => 'za usunięciem',

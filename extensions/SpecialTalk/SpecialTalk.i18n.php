@@ -177,3 +177,10 @@ $messages['tl'] = array(
 	'specialtalk-desc' => 'Nagdaragdag ng isang panglaylay ng usapan sa [[Special:SpecialPages|natatanging mga pahina]]',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'specialtalk-desc' => 'Додає вкладку обговорення до [[Special:SpecialPages|спеціальних сторінок]]',
+);
+

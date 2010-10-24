@@ -167,6 +167,15 @@ $messages['ar'] = array(
 	'masseditregex-tooltip-execute' => 'طبق هذه التغييرات على كل صفحة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'masseditregex-matchtxt' => 'ܒܨܝ ܥܠ:',
+	'masseditregex-before' => 'ܩܕܡ',
+	'masseditregex-after' => 'ܒܬܪ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
@@ -1456,6 +1465,7 @@ $messages['te'] = array(
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|మార్పు|మార్పులు}}',
 	'masseditregex-page-not-exists' => '$1 లేనే లేదు',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
+	'masseditregex-listtype-pagenames' => 'పుటల పేర్లు (ఈ పుటలని మార్చండి)',
 );
 
 /** Tagalog (Tagalog)

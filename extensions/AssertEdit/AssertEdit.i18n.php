@@ -67,6 +67,15 @@ $messages['ast'] = array(
 	'assert_edit_message' => "Falló l'afirmación especificada ($1).",
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'assert_edit_title' => 'Раҫлау хатаһы',
+	'assertedit-desc' => 'Боттар тарафынан ҡулланыу өсөн раҫлауҙар өҫтәй',
+	'assert_edit_message' => 'Күрһәтелгән раҫлауҙа ($1) хата бар.',
+);
+
 /** Southern Balochi (بلوچی مکرانی)
  * @author Mostafadaneshvar
  */

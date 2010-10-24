@@ -712,6 +712,13 @@ $messages['mk'] = array(
 	'createpage-badtitle' => '"$1" не може да се искористи како наслов на страница',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'createpage_submitbutton' => 'Явуулах',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

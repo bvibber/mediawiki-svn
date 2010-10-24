@@ -215,6 +215,7 @@ $6',
  * @author Mormegil
  * @author Nike
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  * @author Sp5uhe
  */
@@ -244,6 +245,11 @@ $messages['qqq'] = array(
 	'code-status-new' => '{{Identical|New}}',
 	'code-status-reverted' => '{{Identical|Revert}}',
 	'code-status-ok' => '{{Identical|OK}}',
+	'code-signoffs' => 'A "sign-off" is a concept in code review that means that the person doing the sign-off has the authority to completely approve the involved code changes and has done so.',
+	'code-signoff-legend' => 'A "sign-off" is a concept in code review that means that the person doing the sign-off has the authority to completely approve the involved code changes and has done so.',
+	'code-signoff-submit' => 'Submit button text.
+
+A "sign-off" is a concept in code review that means that the person doing the sign-off has the authority to completely approve the involved code changes and has done so.',
 	'code-pathsearch-path' => '{{Identical|Path}}',
 	'code-revfilter-cr_status' => '{{Identical|Status}}',
 	'code-revfilter-cr_author' => '{{Identical|Author}}',
@@ -264,6 +270,11 @@ $1 = Repository name',
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.
 * <code>$5</code> – URL to followed revision.',
+	'codereview-email-subj3' => '* <code>$1</code> – Repository name
+* <code>$2</code> – Number of the revision',
+	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
+* <code>$2</code> – URL to the revision
+* <code>$3</code> – Commit message for the revision',
 	'code-stats' => '{{Identical|Statistics}}',
 	'code-stats-main' => 'Parameters:
 * $1 - time and date when statistics was cached
@@ -397,6 +408,8 @@ $messages['aln'] = array(
 	'codereview-email-body' => 'User "$1" postuar nje koment mbi $3. Plotë URL: $2 Komenti: $4',
 	'codereview-email-subj2' => 'Ndryshime [$1] [$2]: Ndiqni-up',
 	'codereview-email-body2' => 'User "$1" bërë ndjekjen ndryshime tek $2. Plotë URL: $3 përmbledhje angazhohen: $4',
+	'codereview-email-subj3' => '[$1] [$2]: testimi automatik i zbuluar regresionit',
+	'codereview-email-body3' => 'Testimi automatik i ka zbuluar një regres për shkak të ndryshimeve në $1. plotë URL: $2 përmbledhje angazhohen: $3',
 	'repoadmin' => 'Depo Administrata',
 	'repoadmin-new-legend' => 'Krijo një depo të re',
 	'repoadmin-new-label' => 'Emri depo:',
@@ -596,6 +609,14 @@ $4',
 ملخص الارتكاب:
 
 $4',
+	'codereview-email-subj3' => '[$1] [ن$2]: الاختبار الأوتوماتيكي أظهر ريجريشن',
+	'codereview-email-body3' => 'الاختبار الأوتوماتيكي أظهر ريجريشن نتيجة للتغييرات في ن$1.
+
+المسار الكامل: $2
+
+ملخص الكوميت:
+
+$3',
 	'repoadmin' => 'إدارة المستودع',
 	'repoadmin-new-legend' => 'إنشاء مستودع جديد',
 	'repoadmin-new-label' => 'اسم المستودع:',
@@ -758,6 +779,7 @@ $4',
 );
 
 /** Bashkir (Башҡорт)
+ * @author Assele
  * @author Haqmar
  */
 $messages['ba'] = array(
@@ -776,7 +798,7 @@ $messages['ba'] = array(
 	'code-field-select' => 'Һайларға',
 	'code-rev-author' => 'Автор:',
 	'code-rev-date' => 'Дата:',
-	'code-rev-message' => 'Комментарий:',
+	'code-rev-message' => 'Иҫкәрмә:',
 	'code-rev-repo' => 'Һаҡлағыс:',
 	'code-rev-rev' => 'Ревизия:',
 	'code-rev-rev-viewvc' => 'ViewVC аша',
@@ -1013,6 +1035,14 @@ $4',
 Кароткае апісаньне зьменаў:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
+	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў $1.
+
+Поўны URL-адрас: $2
+
+Апісаньне зьменаў:
+
+$3',
 	'code-stats' => 'статыстыка',
 	'code-stats-header' => 'Статыстыка для сховішча $1',
 	'code-stats-main' => 'На $1 ў сховішчы {{PLURAL:$2|утрымліваецца $2 вэрсія|утрымліваюцца $2 вэрсіі|утрымліваюцца $2 вэрсіяў}} [[Special:Code/$3/author|$4 {{PLURAL:$4|аўтара|аўтараў|аўтараў}}]].',
@@ -1046,6 +1076,8 @@ $4',
  * @author Turin
  */
 $messages['bg'] = array(
+	'code' => 'Преглед на кода',
+	'code-rev-title' => '$1 - Преглед на кода',
 	'code-comments' => 'Коментари',
 	'code-change-status' => "промени '''състоянието''' на $1",
 	'code-change-tags' => "промени '''етикетите''' за $1",
@@ -1059,7 +1091,7 @@ $messages['bg'] = array(
 	'code-notes' => 'скорошни коментари',
 	'code-statuschanges' => 'промени на състоянието',
 	'code-authors' => 'автори',
-	'code-status' => 'статут',
+	'code-status' => 'състояния',
 	'code-tags' => 'етикети',
 	'code-author-haslink' => 'Този автор е свързан с уики потребителя $1',
 	'code-author-orphan' => 'Този автор не е свързан с името на уики потребител',
@@ -1071,6 +1103,7 @@ $messages['bg'] = array(
 	'code-author-link' => 'да се сложи ли връзка?',
 	'code-author-unlink' => 'да се премахне ли връзката?',
 	'code-author-unlinksuccess' => 'Премахната връзката към автора $1',
+	'code-author-total' => 'Общ брой автори: $1',
 	'code-browsing-path' => "Преглед на редакциите на '''$1'''",
 	'code-field-id' => 'Версия',
 	'code-field-author' => 'Автор',
@@ -1312,6 +1345,14 @@ URL klok : $3
 Diverrañ eus ar c\'hemmoù :
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2] : merzet ez eus bet ur giladenn gant an amprouadenn emgefre',
+	'codereview-email-body3' => "Merzet ez eus bet ur giladenn gant an amprouadenn emgefre en abeg d'ar c'hemmoù degaset er stumm $1.
+
+URL klok : $2
+
+Diverrañ evit ar c'has :
+
+$3",
 	'code-stats' => 'stadegoù',
 	'code-stats-header' => 'Stadegoù evit ar sanailh $1',
 	'code-stats-main' => "D'an deiziad $1, an dastummlec'h en doa $2 {{PLURAL:$2|adweladenn|adweladenn}} gant [[Special:Code/$3/author|$4 {{PLURAL:$4|oberour|oberour}}]].",
@@ -1432,6 +1473,14 @@ $messages['bs'] = array(
 	'code-status-desc-deferred' => 'Revizija ne zahtijeva pregled.',
 	'code-status-old' => 'staro',
 	'code-status-desc-old' => 'Stara revizija sa mogućim greškama ali koje nisu vrijedne truda za njihovu provjeru.',
+	'code-signoffs' => 'Završeci',
+	'code-signoff-legend' => 'Dodaj završetak',
+	'code-signoff-submit' => 'Završetak',
+	'code-signoff-flag-inspected' => 'Ispitano',
+	'code-signoff-flag-tested' => 'Testirano',
+	'code-signoff-field-user' => 'Korisnik',
+	'code-signoff-field-flag' => 'Zastava',
+	'code-signoff-field-date' => 'Datum',
 	'code-pathsearch-legend' => 'Pretraga revizija u ovom repozitoriju po putanji',
 	'code-pathsearch-path' => 'Putanja:',
 	'code-pathsearch-filter' => 'Primijenjen filter:',
@@ -1469,6 +1518,24 @@ Puni URL: $3
 Napravljeni sažetak:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Promjena stanja revizije',
+	'codereview-email-body3' => 'Korisnik "$1" je promijenio stanje od $2.
+
+Staro stanje: $3
+Novo stanje: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Dodan novi komentar i promijenjeno stanje revizije',
+	'codereview-email-body4' => 'Korisnik "$1"  je promijenio stanje od $2.
+
+Staro stanje: $3
+Novo stanje: $4
+
+Korisnik "$1" je postavio i komentar na $2.
+
+Puni URL: $5
+
+Komentar:
+
+$6',
 	'code-stats' => 'statistike',
 	'code-stats-header' => 'Statistike za repozitorij $1',
 	'code-stats-main' => 'Sa stanjem od $1, repozitorij je imao $2 {{PLURAL:$2|reviziju|revizije|revizija}} od strane [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autora}}]].',
@@ -1492,6 +1559,7 @@ $4',
 	'right-codereview-remove-tag' => 'Uklanjanje oznaka sa revizija',
 	'right-codereview-post-comment' => 'Dodavanje komentara na revizije',
 	'right-codereview-set-status' => 'Promjena stanja revizija',
+	'right-codereview-signoff' => 'Završi izmjene revizija',
 	'right-codereview-link-user' => 'Poveži autore sa wiki korisnicima',
 	'specialpages-group-developer' => 'Razvojni alati',
 );
@@ -1718,6 +1786,24 @@ $4',
 Komentář ke změně:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Změnil se stav revize',
+	'codereview-email-body3' => 'Uživatel „$1“ změnil stav $2.
+
+Předchozí stav: $3
+Nový stav: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Přidán nový komentář a změnil se stav revize',
+	'codereview-email-body4' => 'Uživatel „$1“ změnil stav $2.
+
+Předchozí stav: $3
+Nový stav: $4
+
+Uživatel „$1“ také přidal k $2 komentář.
+
+Plné URL: $5
+
+Komentář:
+
+$6',
 	'code-stats' => 'statistika',
 	'code-stats-header' => 'Statistika pro úložiště $1',
 	'code-stats-main' => 'K $1 obsahovalo úložiště $2 {{PLURAL:$2|revizi|revize|revizí}} od [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autorů}}]].',
@@ -1920,7 +2006,7 @@ $messages['de'] = array(
 	'code-rev-not-found' => "Version '''$1''' existiert nicht!",
 	'code-status-new' => 'neu',
 	'code-status-desc-new' => 'Version erwartet eine Aktion (Standardstatus).',
-	'code-status-fixme' => 'fixme',
+	'code-status-fixme' => 'FIXME',
 	'code-status-desc-fixme' => 'Ein Begutachter markierte diese Version als kaputt oder Verursacher eines Bugs. Sie sollte korrigiert werden.',
 	'code-status-reverted' => 'rückgängig gemacht',
 	'code-status-desc-reverted' => 'Version wurde durch eine spätere Version rückgängig gemacht.',
@@ -1934,6 +2020,14 @@ $messages['de'] = array(
 	'code-status-desc-deferred' => 'Die Version erfordert keine Begutachtung.',
 	'code-status-old' => 'alt',
 	'code-status-desc-old' => 'Alte Version mit potenziellen Bugs, die es aber nicht wert sind, begutachtet zu werden.',
+	'code-signoffs' => 'Freigaben',
+	'code-signoff-legend' => 'Freigabe hinzufügen',
+	'code-signoff-submit' => 'Freigeben',
+	'code-signoff-flag-inspected' => 'Geprüft',
+	'code-signoff-flag-tested' => 'Getestet',
+	'code-signoff-field-user' => 'Benutzer',
+	'code-signoff-field-flag' => 'Kennzeichen',
+	'code-signoff-field-date' => 'Datum',
 	'code-pathsearch-legend' => 'Suche in diesem Repositorium nach Versionen, per Pfad',
 	'code-pathsearch-path' => 'Pfad:',
 	'code-pathsearch-filter' => 'Angewendeter Filter:',
@@ -1971,6 +2065,24 @@ Volle URL: $3
 Übertragungszusammenfassung:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Änderungsstatus wurde geändert',
+	'codereview-email-body3' => 'Benutzer „$1“ änderte den Status von $2.
+
+Alter Status: $3
+Neuer Status: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Neuen Kommentar hinzugefügt und den Änderungsstatus geändert',
+	'codereview-email-body4' => 'Benutzer „$1“ änderte den Status von $2.
+
+Alter Status: $3
+Neuer Status: $4
+
+Benutzer „$1“ fügte zudem einen Kommentar zu $2 hinzu.
+
+Vollständige URL: $5
+
+Kommentar:
+
+$6',
 	'code-stats' => 'Statistiken',
 	'code-stats-header' => 'Statistik des Repositoriums „$1“',
 	'code-stats-main' => 'Mit Stand $1 wurden von [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autoren}}]] $2 {{PLURAL:$2|Revision|Revisionen}} im Repositorium durchgeführt.',
@@ -1994,6 +2106,7 @@ $4',
 	'right-codereview-remove-tag' => 'Tags von Revisionen entfernen',
 	'right-codereview-post-comment' => 'Eigene Kommentare zu Revisionen einstellen',
 	'right-codereview-set-status' => 'Revisionsstatus ändern',
+	'right-codereview-signoff' => 'Änderungen freigeben',
 	'right-codereview-link-user' => 'Autoren auf Wiki-Benutzer verlinken',
 	'specialpages-group-developer' => 'Entwicklerwerkzeuge',
 );
@@ -2114,6 +2227,14 @@ Full URL: $3
 Xulasa:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Regression otomatik test keno',
+	'codereview-email-body3' => 'Qe vurnayîşê $1î otomatik test yew regression mucna. 
+
+Full URL: $2
+
+Xulasa:
+
+$3',
 	'repoadmin' => 'Îdarê Kerdîşê Arşîvî',
 	'repoadmin-new-legend' => 'Yew arşîvê newî viraze',
 	'repoadmin-new-label' => 'Nameyê arşîvî:',
@@ -2251,6 +2372,14 @@ Dopołny URL: $3
 Zespominanje pśenjasenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatiski test jo regresiju nadejšeł.',
+	'codereview-email-body3' => 'Awtomatiski test jo regresiju změnow w $1 dla nadejšeł.
+
+Dopołny URL: $2
+
+Zapominanje:
+
+$3',
 	'code-stats' => 'statistiki',
 	'code-stats-header' => 'Repozitoriumowa statistika za $1',
 	'code-stats-main' => 'Wót $1 repozitorium ma $2 {{PLURAL:$2|wersiju|wersiji|wersije|wersijow}} wót [[Special:Code/$3/author|$4 {{PLURAL:$4|awtora|awtorowu|awtorow|awtorow}}]].',
@@ -2399,6 +2528,14 @@ $4',
 Υποβολή περίληψης:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Η αυτόματη δοκιμή εντόπισε παλινδρόμηση',
+	'codereview-email-body3' => 'Η αυτόματη δοκιμή αποκάλυψε μια οπισθοδρόμηση εξαιτίας των αλλαγών στο $1.
+
+Πλήρες URL: $2
+
+Υποβολή σύνοψης:
+
+$3',
 	'code-stats' => 'στατιστικές',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
@@ -2550,6 +2687,14 @@ Plena URL: $3
 Resumo de ŝanĝoj:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Aŭtomata testado detektis regresion',
+	'codereview-email-body3' => 'Aŭtomata testado malkaŝis regresion pro la ŝanĝoj en $1.
+
+Plena URL: $2
+
+Ŝanĝa resumo:
+
+$3',
 	'code-stats' => 'statistiko',
 	'code-stats-header' => 'Statistiko por deponejo $1',
 	'code-stats-main' => 'Ekde $1, la deponejo havas $2 {{PLURAL:$2|revizion|reviziojn}} de [[Special:Code/$3/author|$4 {{PLURAL:$4|aŭtoro|aŭtoroj}}]].',
@@ -2717,6 +2862,14 @@ URL completa : $3
 Resumen de las confirmaciones:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2] : la prueba automática ha detectado una regresión',
+	'codereview-email-body3' => 'La prueba automática ha mostrado una regresión debido a los cambios realizados en $1.
+
+URL completa: $2
+
+Resumen de confirmación:
+
+$3',
 	'code-stats' => 'estadísticas',
 	'code-stats-header' => 'Estadísticas del repositorio $1',
 	'code-stats-main' => ' A la fecha de $1, el repositorio tiene $2 {{PLURAL:$2|revisión|revisiones}} hechas por [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
@@ -2760,6 +2913,7 @@ $messages['et'] = array(
 	'code-old-status' => 'Vana olek',
 	'code-new-status' => 'Uus olek',
 	'code-prop-changes' => 'Oleku- ja märgistamislogi',
+	'code-no-repo' => 'Ühtegi hoidlat pole häälestatud.',
 	'code-repo-not-found' => "Hoidlat '''$1''' pole olemas!",
 	'code-load-diff' => 'Erinevuste laadimine...',
 	'code-notes' => 'viimased kommentaarid',
@@ -2812,18 +2966,26 @@ $messages['et'] = array(
 	'code-rev-total' => 'Tulemuste koguarv: $1',
 	'code-rev-not-found' => "Redaktsiooni '''$1''' pole olemas!",
 	'code-status-new' => 'uus',
+	'code-status-desc-new' => 'Redaktsioon ootab toimingut (vaikeolek).',
 	'code-status-fixme' => 'vajab parandamist',
+	'code-status-desc-fixme' => 'Ülevaataja märkis selle redaktsiooni vigaseks. Seda tuleks parandada.',
+	'code-status-reverted' => 'tagasi võetud',
 	'code-status-resolved' => 'lahendatud',
+	'code-status-desc-resolved' => 'Redaktsioonil oli viga, mis parandati hilisema redaktsiooniga.',
 	'code-status-ok' => 'korras',
+	'code-status-desc-ok' => 'Redaktsioon on täielikult üle vaadatud ja ülevaataja on kindel, et sellega on kõik igati korras.',
 	'code-status-verified' => 'kinnitatud',
 	'code-status-desc-verified' => 'Redaktsiooni on katsetatud ja see töötab nii, nagu ette nähtud.',
 	'code-status-deferred' => 'edasi lükatud',
 	'code-status-desc-deferred' => 'Redaktsiooni pole tarvis üle vaadata.',
 	'code-status-old' => 'vana',
+	'code-status-desc-old' => 'Vana redaktsioon, milles võib vigu olla, aga mida pole mõtet üle vaadata.',
 	'code-pathsearch-legend' => 'Raja järgi hoidlast redaktsioonide otsimine',
 	'code-pathsearch-path' => 'Rada:',
+	'code-pathsearch-filter' => 'Kasutatud filter:',
 	'code-revfilter-cr_status' => 'Olek = $1',
 	'code-revfilter-cr_author' => 'Autor = $1',
+	'code-revfilter-clear' => 'Eemalda filter',
 	'code-rev-submit' => 'Salvesta muudatused',
 	'code-batch-status' => 'Muutuse olek:',
 	'codereview-batch-title' => 'Kõikide valitud redaktsioonide muutmine',
@@ -2856,6 +3018,7 @@ $4',
 	'code-stats-header' => 'Hoidla $1 arvandmed',
 	'code-stats-main' => 'Seisuga $1 on hoidlas {{PLURAL:$2|üks redaktsioon|$2 redaktsiooni}} [[Special:Code/$3/author|{{PLURAL:$4|ühelt|$4}} autorilt]].',
 	'code-stats-status-breakdown' => 'Redaktsioonide arv olekuti',
+	'code-stats-fixme-breakdown' => 'Parandamist vajavate redaktsioonide arv autoriti',
 	'code-stats-count' => 'Redaktsioonide arv',
 	'repoadmin' => 'Hoidla haldamine',
 	'repoadmin-new-legend' => 'Loo uus hoidla',
@@ -2867,12 +3030,14 @@ $4',
 	'repoadmin-edit-view' => 'ViewVC-rada:',
 	'repoadmin-edit-button' => 'Sobib',
 	'repoadmin-edit-sucess' => 'Hoidla "[[Special:Code/$1|$1]]" on edukalt muudetud.',
+	'repoadmin-nav' => 'hoidla haldamine',
 	'right-repoadmin' => 'Hallata koodihoidlaid',
 	'right-codereview-use' => 'Kasutada erilehekülge Special:Code',
 	'right-codereview-add-tag' => 'Lisada redaktsioonidele uusi märgiseid',
 	'right-codereview-remove-tag' => 'Eemaldada redaktsioonidelt märgiseid',
 	'right-codereview-post-comment' => 'Lisada redaktsioonidele kommentaare',
 	'right-codereview-set-status' => 'Muuta redaktsioonide olekut',
+	'right-codereview-link-user' => 'Siduda autoreid vikikasutajatega',
 	'specialpages-group-developer' => 'Arendusriistad',
 );
 
@@ -3260,6 +3425,14 @@ Täydellinen osoite: $3
 Yhteenveto muokkaukselle:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automaattinen testaus havaitsi regression',
+	'codereview-email-body3' => 'Automaattinen testaus havaitsi regression version $1 muutoksen takia.
+
+Täydellinen osoite: $2
+
+Lähdekoodiversion kommentti:
+
+$3',
 	'code-stats' => 'tilastot',
 	'code-stats-header' => 'Versionhallinnan $1 tilastot',
 	'code-stats-main' => '$1 versionhallinnassa oli {{PLURAL:$2|yksi muokkaus|$2 muokkausta}} [[Special:Code/$3/author|$4 {{PLURAL:$4|käyttäjältä|eri käyttäjältä}}]].',
@@ -3426,6 +3599,14 @@ URL complète : $3
 Résumé des modifications :
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2] : le test automatique a détecté une régression',
+	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version $1.
+
+URL complète : $2
+
+Résumé lors de la soumission :
+
+$3',
 	'code-stats' => 'statistiques',
 	'code-stats-header' => 'Statistiques du dépôt $1',
 	'code-stats-main' => 'À la date du $1, le dépôt a $2 {{PLURAL:$2|révision|révisions}} faites par [[Special:Code/$3/author|$4 {{PLURIEL:$4|auteur|auteurs}}]].',
@@ -3574,6 +3755,14 @@ URL complèta : $3
 Rèsumâ des changements :
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2] : l’èprôva ôtomatica at dècelâ una règrèssion',
+	'codereview-email-body3' => 'L’èprôva ôtomatica at dècelâ una règrèssion a côsa des changements arrevâs dens $1.
+
+Lim hipèrtèxto complèt : $2
+
+Rèsumâ pendent la somission :
+
+$3',
 	'code-stats' => 'statistiques',
 	'code-stats-header' => 'Statistiques por lo dèpôt $1',
 	'code-stats-main' => 'A la dâta du $1, lo dèpôt at $2 {{PLURAL:$2|rèvision fêta|rèvisions fêtes}} per [[Special:Code/$3/author|$4 ôtor{{PLURAL:$4||s}}]].',
@@ -3694,13 +3883,21 @@ $messages['gl'] = array(
 	'code-rev-total' => 'Número total de resultados: $1',
 	'code-rev-not-found' => "A revisión '''$1''' non existe!",
 	'code-status-new' => 'novo',
+	'code-status-desc-new' => 'Esta revisión está á espera dunha acción (estado por defecto).',
 	'code-status-fixme' => 'arránxeme',
+	'code-status-desc-fixme' => 'Un revisor marcou esta revisión como que introduce un erro ou que é errónea. Cómpre corrección.',
 	'code-status-reverted' => 'revertido',
+	'code-status-desc-reverted' => 'A revisión desbotouna outra revisión posterior.',
 	'code-status-resolved' => 'resolto',
+	'code-status-desc-resolved' => 'A revisión tiña un problema que foi corrixido por outra revisión posterior.',
 	'code-status-ok' => 'de acordo',
+	'code-status-desc-ok' => 'A revisión foi completamente comprobada e o revisor está seguro de que é correcta.',
 	'code-status-verified' => 'verificado',
+	'code-status-desc-verified' => 'A revisión foi probada e funciona como se esperaba.',
 	'code-status-deferred' => 'diferido',
+	'code-status-desc-deferred' => 'Esta revisión non necesita comprobación.',
 	'code-status-old' => 'vello',
+	'code-status-desc-old' => 'Revisión vella con erros potenciais que non paga a pena o esforzo de revisala.',
 	'code-pathsearch-legend' => 'Procurar as revisións nesta resposta por ruta',
 	'code-pathsearch-path' => 'Ruta:',
 	'code-pathsearch-filter' => 'Filtro aplicado:',
@@ -3738,6 +3935,14 @@ Enderezo URL: $3
 Resumo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: a proba automática detectou unha regresión',
+	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión $1.
+
+Enderezo URL: $2
+
+Resumo:
+
+$3',
 	'code-stats' => 'estatísticas',
 	'code-stats-header' => 'Estatísticas do repositorio "$1"',
 	'code-stats-main' => 'A día $6 ás $5, o repositorio ten $2 {{PLURAL:$2|revisión|revisións}} feitas por [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
@@ -3996,6 +4201,14 @@ Volli URL: $3
 Ibertragzämmefassig:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
+	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in $1 wider ufträtten isch
+
+Vollständigi URL: $2
+
+Zämmefassig vu dr Bearbeitig:
+
+$3',
 	'code-stats' => 'Statischtike',
 	'code-stats-header' => 'Statistik vum Repositorium „$1“',
 	'code-stats-main' => 'Mit em Stand $1 {{PLURAL:$2|isch|sin}} vu [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autore}}]] $2 {{PLURAL:$2|Revision|Revisione}} im Repositorium durgfiert wore.',
@@ -4116,13 +4329,19 @@ $messages['he'] = array(
 	'code-status-new' => 'חדש',
 	'code-status-desc-new' => 'הגרסה ממתינה לפעולה (מצב בררת המחדל).',
 	'code-status-fixme' => 'לתיקון',
+	'code-status-desc-fixme' => 'סוקר סימן שגרסה זו גורמת לתקלה או שאינה תקינה. יש לתקן זאת.',
 	'code-status-reverted' => 'בוטל',
+	'code-status-desc-reverted' => 'הגרסה נדחקה הצידה על ידי גרסה עדכנית יותר.',
 	'code-status-resolved' => 'תוקן',
+	'code-status-desc-resolved' => 'בגרסה הופיעה בעיה שנפתרה בגרסה מאוחרת יותר.',
 	'code-status-ok' => 'אושר',
+	'code-status-desc-ok' => 'הגרסה נסקרה לחלוטין והסוקר משוכנע שהיא בסדר בכל אופן שהוא.',
 	'code-status-verified' => 'נבדק',
+	'code-status-desc-verified' => 'הגרסה נבדקה והיא עובדת כמצופה.',
 	'code-status-deferred' => 'נדחה',
 	'code-status-desc-deferred' => 'אין צורך לסקור את הגרסה.',
 	'code-status-old' => 'ישנה',
+	'code-status-desc-old' => 'גרסה ישנה עם אפשרות להופעת תקלות שאינן שוות את המאמץ בסקירתן.',
 	'code-pathsearch-legend' => 'חיפוש גרסאות במאגר זה לפי נתיב',
 	'code-pathsearch-path' => 'נתיב:',
 	'code-pathsearch-filter' => 'מסנן הוחל:',
@@ -4153,13 +4372,24 @@ $4',
 	'codereview-email-subj2' => '[$1] [גרסה $2]: גרסאות המשך',
 	'codereview-email-body2' => 'המשתמש "$1" הוסיף גרסאות המשך לגרסה $2.
 
+הכתובת המלאה לגרסת ההמשך: $5.
+
 הכתובת המלאה: $3
 
 תקציר השינוי:
 
 $4',
+	'codereview-email-subj3' => '[$1] [גרסה $2]: הבדיקה האוטומטית גילתה באג חדש',
+	'codereview-email-body3' => 'הבדיקה האוטומטית גילתה באג חדש שנוצר עקב השינויים בגרסה $1.
+
+הכתובת המלאה: $2
+
+תקציר השינוי:
+
+$3',
 	'code-stats' => 'סטטיסטיקה',
 	'code-stats-header' => 'סטטיסטיקה עבור המאגר $1',
+	'code-stats-main' => 'נכון ל־$1, למאגר יש {{PLURAL:$2|גרסה אחת|$2 גרסאות}} מאת [[Special:Code/$3/author|{{PLURAL:$4|יוצר אחד|$4 יוצרים}}]].',
 	'code-stats-status-breakdown' => 'מספר הגרסאות למצב',
 	'code-stats-count' => 'מספר הגרסאות',
 	'repoadmin' => 'ניהול מאגרים',
@@ -4459,6 +4689,14 @@ Dopołny URL: $3
 Zjeće přenjesenja:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatiski test je regresiju wotkrył',
+	'codereview-email-body3' => 'Awtomatiski test je změnow w $1 dla regresiju wotkrył.
+
+Dospołny URL: $2
+
+Zjeće:
+
+$3',
 	'code-stats' => 'Statistika',
 	'code-stats-header' => 'Statistika repozitorija za $1',
 	'code-stats-main' => 'Wot $1 repozitorij ma $2 {{PLURAL:$2|wersiju|wersiji|wersije|wersijow}} wot [[Special:Code/$3/author|$4 {{PLURAL:$4|awtora|awtorow|awtorow|awtorow}}]].',
@@ -4617,6 +4855,14 @@ Teljes URL: $3
 Commit összefoglaló:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: az automatikus tesztelés regressziót talált',
+	'codereview-email-body3' => 'Az automatikus tesztelés felfedett egy regressziót, amit a(z) $1-ben történt változások okoztak.
+
+Teljes URL: $2
+
+Commit összefoglaló:
+
+$3',
 	'code-stats' => 'statisztika',
 	'code-stats-header' => 'A(z) $1-tárhely statisztikái',
 	'code-stats-main' => '$1-i állapot szerint a tárhelyen {{PLURAL:$2|egy|$2}} változat van tárolva, amiket [[Special:Code/$3/author|{{PLURAL:$4|egy|$4}} szerző]] tett közzé.',
@@ -4773,6 +5019,24 @@ URL complete: $3
 Summario del commit:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Stato del version cambiate',
+	'codereview-email-body3' => 'Le usator "$1" cambiava le stato de $2.
+
+Previe stato: $3
+Nove stato: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Nove commento addite, e stato del version cambiate',
+	'codereview-email-body4' => 'Le usator "$1" cambiava le stato de $2.
+
+Previe stato: $3
+Nove stato: $4
+
+Le usator "$1" dava etiam un commento sur $2.
+
+URL complete: $5
+
+Commento:
+
+$6',
 	'code-stats' => 'statisticas',
 	'code-stats-header' => 'Statisticas pro le deposito $1',
 	'code-stats-main' => 'Al data de $1, le deposito ha $2 {{PLURAL:$2|version|versiones}} per [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
@@ -4924,6 +5188,14 @@ URL penuh: $3
 Ringkasan:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Ujicoba langsung terdeteksi pemulihan',
+	'codereview-email-body3' => 'Pengujian otomatis telah mengungkapkan regresi akibat perubahan dalam $1.
+
+URL lengkap: $2 
+
+Ringkasan: 
+
+$3',
 	'code-stats' => 'statistik',
 	'code-stats-header' => 'Statistik penyimpanan untuk $1',
 	'code-stats-main' => 'Pada $1, penyimpanan ini memiliki $2 {{PLURAL:$2|revisi|revisi}} oleh [[Special:Code/$3/author|$4 {{PLURAL:$4|pemilik|pemilik}}]].',
@@ -5281,6 +5553,14 @@ $4',
 コミットの要約：
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: 自動的なテストによってリグレッションが検出されました',
+	'codereview-email-body3' => '自動的なテストによって、$1 における変更のためにリグレッションが起きたことが明らかになりました。
+
+Full URL: $2
+
+コミットの要約:
+
+$3',
 	'code-stats' => '統計',
 	'code-stats-header' => 'レポジトリ$1の統計情報',
 	'code-stats-main' => '$1現在、レポジトリは[[Special:Code/$3/author|$4人の著者]]による$2個のリビジョンがあります。',
@@ -5485,6 +5765,13 @@ $messages['ka'] = array(
 კომენტარი:
 
 $4',
+	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
+
+სრული URL: $2
+
+ცვლილებების აღწერა:
+
+$3',
 	'repoadmin-new-button' => 'შექმნა',
 	'repoadmin-edit-button' => 'კარგი',
 	'repoadmin-edit-sucess' => 'საცავი «[[Special:Code/$1|$1]]» წარმატებით შეიცვალა',
@@ -5706,6 +5993,14 @@ $4',
 변경 요약:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: 자동 회귀 테스트를 감지',
+	'codereview-email-body3' => '자동 테스트 과정에서 $1의 변경 사항으로 인한 회귀 버그를 발견했습니다.
+
+전체 URL: $2
+
+커밋 요약:
+
+$3',
 	'code-stats' => '통계',
 	'code-stats-header' => '$1 저장소 통계',
 	'code-stats-main' => '$6 $5 기준으로, 이 저장소에는 [[Special:Code/$3/author|$4명의 저자]]가 작성한 $2개의 판이 있습니다.',
@@ -5861,6 +6156,15 @@ $3
 {{GENDER:$1|Däm singe|Däm sing|Däm Metmaacher sing|Dä ier|Em sing}} Aanmerkung för en et Logbooch dozo:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: En automattesche Prööfung hät ene Fähler (widder)jefonge.',
+	'codereview-email-body3' => 'Et automattesche Prööfe hät ene Fähler opjedeck,
+dä met dä Version $1 (widder) opjetrodde es.
+
+Der kumplätte URL es: $2
+
+Beim Afshpeishere wood aanjejovve:
+
+$3',
 	'code-stats' => 'Statistike',
 	'code-stats-header' => 'Statistike vum Repositorijum „$1“',
 	'code-stats-main' => 'Bes aam $6 öm $5 Uhr {{PLURAL:$4|hät [[Special:Code/$3/author|eine Schriever]]|han [[Special:Code/$3/author|$4 Schriever]]}} {{PLURAL:$2|ein Änderung|$2 Änderunge}} em Repositorijum jemaat.',
@@ -6006,6 +6310,7 @@ Komplett URL: $3
 Resumé vun der Ännerung:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Den automateschen Test huet eng Regressioun fonnt',
 	'code-stats' => 'Statistiken',
 	'code-stats-status-breakdown' => 'Zuel vun de Versioune pro Statut',
 	'code-stats-fixme-breakdown' => 'Opdeelung vun de FixMe pro Auteur',
@@ -6370,6 +6675,14 @@ $4',
 Опис на измените:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Автоматското испробување откри регресија',
+	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во $1.
+
+Полна URL-адреса: $2
+
+Опис на измените:
+
+$3',
 	'code-stats' => 'статистики',
 	'code-stats-header' => 'Статистики за складот $1',
 	'code-stats-main' => 'На $1 складиштето имало $2 {{PLURAL:$2|ревизија|ревизии}} од [[Special:Code/$3/author|$4 {{PLURAL:$4|автор|автори}}]].',
@@ -6526,6 +6839,7 @@ $4',
 ചുരുക്കം അംഗീകരിക്കുക:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: സ്വയമുള്ള പരിശോധനകൾ ശോഷണം കണ്ടെത്തിയിരിക്കുന്നു',
 	'code-stats' => 'സ്ഥിതിവിവരക്കണക്കുകൾ',
 	'code-stats-header' => '$1 എന്ന റെപ്പോസിറ്ററിയുടെ സ്ഥിതിവിവരക്കണക്കുകൾ',
 	'code-stats-main' => '$1-ൽ, റെപ്പോസിറ്ററിയിൽ [[Special:Code/$3/author|{{PLURAL:$4|ഒരു രചയിതാവ്|$4 രചയിതാക്കൾ}}]] സൃഷ്ടിച്ച {{PLURAL:$2|ഒരു നാൾപതിപ്പ്|$2 നാൾപ്പതിപ്പുകൾ}} ഉണ്ട്.',
@@ -6558,8 +6872,11 @@ $4',
  */
 $messages['mn'] = array(
 	'code-comments' => 'Тайлбар',
+	'code-field-id' => 'Засвар',
 	'code-rev-message' => 'Тайлбар:',
+	'code-rev-rev' => 'Засвар:',
 	'code-status-reverted' => 'хуучин төлөвт шилжүүлэв',
+	'codereview-batch-submit' => 'Явуулах',
 );
 
 /** Malay (Bahasa Melayu)
@@ -6933,6 +7250,9 @@ De gegevens kunnen uit een cache komen.',
 	'code-status-desc-deferred' => 'De versie heeft geen review nodig.',
 	'code-status-old' => 'oud',
 	'code-status-desc-old' => 'Oude versie die mogelijk bugs bevat maar het niet waard is om nog review te krijgen.',
+	'code-signoffs' => 'Goedkeuringen',
+	'code-signoff-legend' => 'Goedkeuring toevoegen',
+	'code-signoff-submit' => 'Goedkeuren',
 	'code-pathsearch-legend' => 'Op pad versies in deze repository zoeken',
 	'code-pathsearch-path' => 'Pad:',
 	'code-pathsearch-filter' => 'Toegepaste filter:',
@@ -6970,6 +7290,14 @@ Volledige URL: $3
 Toelichting bij commit:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Regressie ontdekt tijdens automatisch testen',
+	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in $1
+
+Volledige URL: $2
+
+Commitsamenvatting:
+
+$3',
 	'code-stats' => 'statistieken',
 	'code-stats-header' => 'Repositorystatistieken voor $1',
 	'code-stats-main' => 'Per $1 heeft de repository $2 {{PLURAL:$2|versie|versies}} door [[Special:Code/$3/author|$4 {{PLURAL:$4|auteur|auteurs}}]].',
@@ -7257,6 +7585,14 @@ Full nettadresse: $3
 Sammendrag:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automatisk testing oppdaget regresjon',
+	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i $1.
+
+Full nettadresse: $2
+
+Sammendrag av bidrag:
+
+$3',
 	'code-stats' => 'statistikk',
 	'code-stats-header' => 'Statistikk for repositoriet $1',
 	'code-stats-main' => 'Som på $1 har depoet $2 {{PLURAL:$2|revisjon|revisjoner}} av [[Special:Code/$3/author|$4 {{PLURAL:$4|forfatter|forfattere}}]]',
@@ -7392,6 +7728,14 @@ URL completa : $3
 Resumit de las modificacions :
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2] : lo tèst automatic a detectat una regression',
+	'codereview-email-body3' => 'Lo tèst automatic a revelat una regression a causa dels cambiaments intervenguts dins la version $1.
+
+URL completa : $2
+
+Resumit al moment de la somission :
+
+$3',
 	'repoadmin' => 'Administracion dels depauses',
 	'repoadmin-new-legend' => 'Crear un depaus novèl',
 	'repoadmin-new-label' => 'Nom del depaus :',
@@ -7579,6 +7923,14 @@ Pełny adres URL do tej wersji – $3
 Skrócony opis:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automatyczne testowanie wykrytej regresji',
+	'codereview-email-body3' => 'Automatyczne testowanie regresji wykazało współzależności ze zmianami w wersji $1.
+
+Pełny adres URL: $2
+
+Opis zmian w wersji:
+
+$3',
 	'code-stats' => 'statystyki',
 	'code-stats-header' => 'Statystyki repozytorium $1',
 	'code-stats-main' => 'Na dzień $1 w repozytorium znajduje się $2 {{PLURAL:$2|poprawka wprowadzona|poprawki wprowadzone|poprawek wprowadzonych}} przez [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autorów}}]].',
@@ -7736,6 +8088,14 @@ Adrëssa dl\'aragnà completa: $3
 Resumé dël coment:
 
 $4',
+	'codereview-email-subj3' => "[$1] [$2]: La preuva automàtica a l'ha trovà na regression",
+	'codereview-email-body3' => "La preuva automàtica a l'ha arvelà na regression dovùa ai cangiament an $1.
+
+Adrëssa dl'aragnà completa: $2
+
+Resumé dla publicassion:
+
+$3",
 	'code-stats' => 'statìstiche',
 	'code-stats-header' => 'Statìstiche për ël depòsit  $1',
 	'code-stats-main' => "Ai $1, ël depòsit a l'ha $2  {{PLURAL:$2|revision|revision}} për [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autor}}]].",
@@ -7944,6 +8304,14 @@ URL completa: $3
 Resumo da efectivação:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detectaram regressão',
+	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em $1.
+
+URL completa: $2
+
+Resumo da efectivação:
+
+$3',
 	'code-stats' => 'estatísticas',
 	'code-stats-header' => 'Estatísticas do repositório $1',
 	'code-stats-main' => 'À data de $1, o repositório tinha $2 {{PLURAL:$2|revisão|revisões}} de [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
@@ -8102,6 +8470,14 @@ URL completa: $3
 Resumo da efetivação:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Teste automático detectou regressão',
+	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na $1.
+
+URL completa: $2
+
+Sumário do envio:
+
+$3',
 	'code-stats' => 'estatísticas',
 	'code-stats-header' => 'Estatísticas do repositório $1',
 	'code-stats-main' => 'À data de $1, o repositório tinha $2 {{PLURAL:$2|revisão|revisões}} de [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
@@ -8278,12 +8654,17 @@ $messages['roa-tara'] = array(
 	'code' => 'Revisore de Codece',
 	'code-rev-title' => '$1 - Revisore de Codece',
 	'code-comments' => 'Commende',
+	'code-references' => 'Revisiune supplemendare',
 	'code-change-status' => "cangiate 'u '''state''' de $1",
 	'code-change-tags' => "cangiate le '''tag''' de $1",
 	'code-change-removed' => 'luete:',
 	'code-change-added' => 'aggiunde:',
 	'code-old-status' => 'State vecchije',
 	'code-new-status' => 'State nuève',
+	'code-prop-changes' => 'State & trasùte condrassignate',
+	'codereview-desc' => "[[Special:Code|Strumènde de revisione d'u codece]] cu [[Special:RepoAdmin|Supporte sovversione]]",
+	'code-no-repo' => 'Nisciune deposite configurate!',
+	'code-repo-not-found' => "'U deposite '''$1''' non ge esiste!",
 	'code-load-diff' => 'Stoche a careche le differenze...',
 	'code-notes' => 'commende recende',
 	'code-statuschanges' => 'cangiaminde de le state',
@@ -8291,10 +8672,13 @@ $messages['roa-tara'] = array(
 	'code-authors' => 'le autore',
 	'code-status' => 'state',
 	'code-tags' => 'le tag',
+	'code-author-haslink' => "Quiste autore jè cullegate a l'utinde uicchi $1",
+	'code-author-orphan' => "Quiste autore non ge tène nisciune cullegamende cu 'nu cunde uicchi",
 	'code-author-dolink' => "Colleghe st'autore a 'n'utende de Uicchi:",
 	'code-author-alterlink' => "Cange l'utende de Uicchi collegate a st'autore:",
 	'code-author-orunlink' => 'O scolleghe stu utende de Uicchi:',
 	'code-author-name' => "Mitte 'nu nome utende:",
+	'code-author-success' => "L'autore $1 jè state cullegate a l'utinde uicchi $2",
 	'code-author-link' => 'colleghete?',
 	'code-author-unlink' => 'scolleghete?',
 	'code-author-unlinksuccess' => 'Autore $1 ha state scollegate',
@@ -8338,8 +8722,11 @@ $messages['roa-tara'] = array(
 	'code-status-new' => 'nueve',
 	'code-status-fixme' => 'aggiusteme',
 	'code-status-reverted' => 'annullate',
+	'code-status-desc-reverted' => "'A revisione jè state scettáte da n'otre revisione cchù nuève.",
 	'code-status-resolved' => 'resolte',
+	'code-status-desc-resolved' => "'A revisione hagghie avute 'nu probbleme ce jè state resolte da 'na revisione cchiù nuève.",
 	'code-status-ok' => 'ok',
+	'code-status-desc-ok' => "Revisione revisionate combletamende e 'u recensore jè secure ca jèdde vèje bbuène jndre ogne mode.",
 	'code-status-verified' => 'verificate',
 	'code-status-deferred' => 'differite',
 	'code-status-old' => 'vecchie',
@@ -8349,6 +8736,7 @@ $messages['roa-tara'] = array(
 	'code-revfilter-cr_author' => 'Autore = $1',
 	'code-revfilter-clear' => "Pulizze 'u filtre",
 	'code-rev-submit' => 'Reggistre le cangiaminde',
+	'code-rev-submit-next' => 'Salve & prossime irresolte',
 	'code-batch-status' => "Cange 'u state:",
 	'code-batch-tags' => 'Cange le tag:',
 	'codereview-batch-title' => 'Cange totte le revisione selezionate',
@@ -8368,6 +8756,7 @@ $messages['roa-tara'] = array(
 Commende:
 
 $4',
+	'codereview-email-subj2' => '[$1] [$2]: Revisiune supplemendare',
 	'code-stats' => 'statisteche',
 	'code-stats-status-breakdown' => 'Numere de revisione pè state',
 	'code-stats-count' => 'Numere de le revisiune',
@@ -8375,8 +8764,12 @@ $4',
 	'repoadmin-edit-bug' => 'Percorse de Bugzilla:',
 	'repoadmin-edit-view' => "Percorse d'u ViewVC:",
 	'repoadmin-edit-button' => 'OK',
+	'right-codereview-use' => 'Ause de speciale:Codece',
+	'right-codereview-add-tag' => 'Aggiunge nuève etichette pè le revsione',
+	'right-codereview-remove-tag' => 'Luà le etichette da le revisione',
 	'right-codereview-post-comment' => "Aggiunge commende sus 'a revisione",
 	'right-codereview-set-status' => "Cange 'u state d'a revisione",
+	'right-codereview-link-user' => 'Culleghe le autore a le utinde uicchi',
 	'specialpages-group-developer' => 'Struminde pe le sviluppature',
 );
 
@@ -8515,6 +8908,14 @@ $4',
 Описание изменений:
 
 $4',
+	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
+	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
+
+Полный URL: $2
+
+Описание изменений:
+
+$3',
 	'code-stats' => 'статистика',
 	'code-stats-header' => 'Статистика репозитория «$1»',
 	'code-stats-main' => 'На $1 в репозитории {{PLURAL:$2|содержится одна ревизия|содержатся $2 ревизии|содержатся $2 ревизий}} [[Special:Code/$3/author|$4 {{PLURAL:$4|автора|авторов}}]].',
@@ -8557,6 +8958,8 @@ $messages['rue'] = array(
 	'code-old-status' => 'Попередній статус',
 	'code-new-status' => 'Новый статус',
 	'code-prop-changes' => 'Лоґ змін статус і значок',
+	'codereview-desc' => '[[Special:Code|Інштрумент про овірїня коду]] з [[Special:RepoAdmin|podporou Subversion]]',
+	'code-no-repo' => 'Не было наставлене жадне усховище!',
 	'code-repo-not-found' => "Усховище '''$1''' не єствує!",
 	'code-load-diff' => 'Начітаваня різницї ...',
 	'code-notes' => 'остатнї коментарї',
@@ -8565,13 +8968,22 @@ $messages['rue'] = array(
 	'code-authors' => 'авторы',
 	'code-status' => 'статусы',
 	'code-tags' => 'значкы',
+	'code-authors-text' => 'Тото є список авторів в усховищу сортованый подля імена. В заперках суть хосновательскы імена на той вікі.
+Дата можуть походжати з кеш.',
 	'code-author-haslink' => 'Тот автор є повязаный з хоснователём $1',
+	'code-author-orphan' => 'Тот автор не є звязаный із жадным хоснователём',
+	'code-author-dolink' => 'Звязати того автора з вікі-хоснователём:',
+	'code-author-alterlink' => 'Змінити вікі-хоснователя звязаного з тым автором:',
+	'code-author-orunlink' => 'Або розорвати звязок з вікі-хоснователём',
 	'code-author-name' => 'Уведьте імя хоснователя:',
 	'code-author-success' => 'Автор $1 успішно повязаный з хоснователём $2',
 	'code-author-link' => 'звязати?',
 	'code-author-unlink' => 'розорвати звязок?',
 	'code-author-unlinksuccess' => 'Звязок автор $1 быв розорваный',
+	'code-author-badtoken' => 'Почас выконованя операції дішло ку хыбі.',
 	'code-author-total' => 'Цалкове чісло авторів: $1',
+	'code-author-lastcommit' => 'Датум послїднёго коміту',
+	'code-browsing-path' => "Перегляд ревізій в '''$1'''",
 	'code-field-id' => 'Ревізія',
 	'code-field-author' => 'Автор',
 	'code-field-user' => 'Автор коментаря',
@@ -8604,34 +9016,88 @@ $messages['rue'] = array(
 	'code-rev-inline-preview' => 'Нагляд:',
 	'code-rev-diff' => 'Зміна',
 	'code-rev-diff-link' => 'різн.',
+	'code-rev-diff-too-large' => 'Тот роздїл не є дуже великый, жебы міг быти зображеный.',
 	'code-rev-purge-link' => 'очістити кеш',
 	'code-rev-total' => 'Цалкове чісло резултатів: $1',
 	'code-rev-not-found' => "Ревізія '''$1''' не єствує!",
 	'code-status-new' => 'нове',
+	'code-status-desc-new' => 'Ревізія чекать на означіня (початочный статус).',
 	'code-status-fixme' => 'оправити',
+	'code-status-desc-fixme' => 'Рецензент тоту ревізію означів як хыбну або нефункчну. Мала бы быти справена.',
 	'code-status-reverted' => 'вернуто назад',
+	'code-status-desc-reverted' => 'Попередня ревізія была одшмарена нескоршов.',
 	'code-status-resolved' => 'вырїшено',
+	'code-status-desc-resolved' => 'Ревізія мала проблем, котрый вырїшыла пізнїша ревізія.',
 	'code-status-ok' => 'ОК',
+	'code-status-desc-ok' => 'Ревізія была повно перевірена і рецензент собі є певный, же є цалком в порядку.',
 	'code-status-verified' => 'овірено',
+	'code-status-desc-verified' => 'Ревізія была отестована і працує як має.',
 	'code-status-deferred' => 'одложена',
 	'code-status-desc-deferred' => 'Ревізія не потребує рецензованя',
 	'code-status-old' => 'стара',
+	'code-status-desc-old' => 'Стара ревізія, котра може обсяговати хыбы, але не стоїть за то, жебы была перевірена.',
+	'code-pathsearch-legend' => 'Глядати ревізії у тім усховищу подля стежкы',
 	'code-pathsearch-path' => 'Стежка:',
+	'code-pathsearch-filter' => 'Хоснованый філтер:',
 	'code-revfilter-cr_status' => 'Став = $1',
 	'code-revfilter-cr_author' => 'Автор = $1',
 	'code-revfilter-clear' => 'Зняти філтер',
 	'code-rev-submit' => 'Вказати зміны',
+	'code-rev-submit-next' => 'Уложыти & далшы невырїшены',
 	'code-batch-status' => 'Змінити став:',
 	'code-batch-tags' => 'Змінити значкы:',
+	'codereview-batch-title' => 'Зміна вшыткых выбраных верзій',
 	'codereview-batch-submit' => 'Одослати',
+	'code-releasenotes' => 'познамкы про выданя',
+	'code-release-legend' => 'Створити познамку про выданя',
 	'code-release-startrev' => 'Початочна ревізія:',
 	'code-release-endrev' => 'Послїня ревізія:',
+	'code-release-badrange' => 'Россяг є дуже великый!',
 	'codereview-subtitle' => 'Про $1',
 	'codereview-reply-link' => 'одповісти',
 	'codereview-email-subj' => '[$1] [$2]: Приданый новый коментарь',
+	'codereview-email-body' => 'Хоснователь „$1“ придав коментарь ку $3.
+
+Повне URL: $2
+
+Коментарь:
+
+$4',
+	'codereview-email-subj2' => '[$1] [$2]: Реаґуюча зміна',
+	'codereview-email-body2' => 'Хоснователь „$1“ своёв змінов реаґовав на $2.
+
+Повне URL про ревізію перед тов: $5
+
+Повне URL: $3
+
+Коментарь про зміну:
+
+$4',
 	'code-stats' => 'штатістіка',
+	'code-stats-header' => 'Штатістіка про усховища $1',
+	'code-stats-main' => 'Ку $1 обсяговало усховище $2 {{PLURAL:$2|ревізію|ревізії|ревізій}} од [[Special:Code/$3/author|$4 {{PLURAL:$4|автора|авторів}}]].',
+	'code-stats-status-breakdown' => 'Чісло ревізій на статус',
+	'code-stats-fixme-breakdown' => 'Роздїлїня потрібных оправ подля автора',
+	'code-stats-count' => 'Чісло ревізій',
+	'repoadmin' => 'Адміністрація усховищ',
+	'repoadmin-new-legend' => 'Створити нове усховище',
+	'repoadmin-new-label' => 'Назва усховища:',
 	'repoadmin-new-button' => 'Створити',
+	'repoadmin-edit-legend' => 'Зміна усховища «$1»',
+	'repoadmin-edit-path' => 'Стежка до усховища:',
+	'repoadmin-edit-bug' => 'Стежка до Bugzilla:',
+	'repoadmin-edit-view' => 'Стежка до ViewVC:',
 	'repoadmin-edit-button' => 'ОК',
+	'repoadmin-edit-sucess' => 'Усховище «[[Special:Code/$1|$1]]» успішно змінено.',
+	'repoadmin-nav' => 'адміністрація усховища',
+	'right-repoadmin' => 'Адміністрація усховищ кодів',
+	'right-codereview-use' => 'Хоснованя Special:Code',
+	'right-codereview-add-tag' => 'Придаваня значок до ревізій',
+	'right-codereview-remove-tag' => 'Одобераня значок із ревізій',
+	'right-codereview-post-comment' => 'Придаваня коментарїв до ревізій',
+	'right-codereview-set-status' => 'Зміна статусу ревізій',
+	'right-codereview-link-user' => 'Звязок авторів з вікі-хоснователями',
+	'specialpages-group-developer' => 'Інштрументы вывоя',
 );
 
 /** Yakut (Саха тыла)
@@ -9035,6 +9501,14 @@ Plný URL: $3
 Zhrnutie začlenenia:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Automatický test zistil regresiu',
+	'codereview-email-body3' => 'Automatický test odhalil regresiu kvôli zmenám vykonaným v $1.
+
+Plný URL: $2
+
+Zhrnutie commitu:
+
+$3',
 	'code-stats' => 'štatistika',
 	'code-stats-header' => 'Štatistika úložiska $1',
 	'code-stats-main' => '$1, úložisko má $2 {{PLURAL:$2|revíziu|revízie|revízií}} od [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autorov}}]].',
@@ -9069,26 +9543,152 @@ $messages['sl'] = array(
 	'code' => 'Pregled kode',
 	'code-rev-title' => '$1 – Pregled kode',
 	'code-comments' => 'Pripombe',
+	'code-references' => 'Nadaljnje redakcije',
+	'code-change-status' => "je spremenil(-a) '''stanje''' $1",
+	'code-change-tags' => "je spremenil(-a) '''oznake''' $1",
 	'code-change-removed' => 'odstranjeno:',
 	'code-change-added' => 'dodano:',
 	'code-old-status' => 'Staro stanje',
 	'code-new-status' => 'Novo stanje',
+	'code-prop-changes' => 'Dnevnik stanj in označevanj',
+	'codereview-desc' => '[[Special:Code|Orodje za pregledovanje kode]] s [[Special:RepoAdmin|podporo Subversion]]',
+	'code-no-repo' => 'Nastavljena ni nobena shramba!',
+	'code-repo-not-found' => "Shramba '''$1''' ne obstaja!",
 	'code-load-diff' => 'Nalaganje primerjave ...',
+	'code-notes' => 'nedavne pripombe',
+	'code-statuschanges' => 'spremembe stanj',
+	'code-mycommits' => 'moji prispevki',
+	'code-authors' => 'avtorji',
+	'code-status' => 'stanja',
+	'code-tags' => 'oznake',
+	'code-authors-text' => 'Spodaj je seznam avtorjev shrambe razporejenih po prispevajočem imenu. Lokalni wikiračuni so prikazani v oklepajih. Podatki so lahko predpomnjeni.',
+	'code-author-haslink' => 'Ta avtor je povezan z wikiuporabnikom $1',
+	'code-author-orphan' => 'Ta avtor nima povezave z wikiračunom',
+	'code-author-dolink' => 'Poveži tega avtorja z wikiuporabnikom:',
+	'code-author-alterlink' => 'Spremeni wikiuporabnika, povezanega s tem avtorjem:',
+	'code-author-orunlink' => 'Ali odstrani povezavo tega wikiuporabnika:',
 	'code-author-name' => 'Vnesite uporabniško ime:',
+	'code-author-success' => 'Avtor $1 je bil povezan z wikiuporabnikom $2',
+	'code-author-link' => 'povežem?',
+	'code-author-unlink' => 'odstranim povezavo?',
+	'code-author-unlinksuccess' => 'Avtorju $1 je bila odstranjena povezava',
+	'code-author-badtoken' => 'Napaka seje med poskušanjem izvedbe dejanja.',
+	'code-author-total' => 'Skupno število avtorjev: $1',
+	'code-author-lastcommit' => 'Datum zadnjega prispevka',
+	'code-browsing-path' => "Brskanje po redakcijah v '''$1'''",
 	'code-field-id' => 'Redakcija',
 	'code-field-author' => 'Avtor',
+	'code-field-user' => 'Komentator',
+	'code-field-message' => 'Prispevan povzetek',
+	'code-field-status' => 'Stanje',
+	'code-field-timestamp' => 'Datum',
+	'code-field-comments' => 'Beležke',
+	'code-field-path' => 'Pot',
+	'code-field-text' => 'Beležka',
+	'code-field-select' => 'Izberi',
 	'code-rev-author' => 'Avtor:',
 	'code-rev-date' => 'Datum:',
 	'code-rev-message' => 'Pripomba:',
+	'code-rev-repo' => 'Shramba:',
 	'code-rev-rev' => 'Redakcija:',
 	'code-rev-rev-viewvc' => 'na ViewVC',
+	'code-rev-paths' => 'Spremenjene poti:',
+	'code-rev-modified-a' => 'dodano',
+	'code-rev-modified-r' => 'zamenjano',
+	'code-rev-modified-d' => 'izbrisano',
+	'code-rev-modified-m' => 'spremenjeno',
+	'code-rev-imagediff' => 'Spremembe slik',
+	'code-rev-status' => 'Stanje:',
+	'code-rev-status-set' => 'Spremeni stanje',
+	'code-rev-tags' => 'Oznake:',
+	'code-rev-tag-add' => 'Dodaj oznake:',
+	'code-rev-tag-remove' => 'Odstrani oznake:',
 	'code-rev-comment-by' => 'Pripomba $1',
 	'code-rev-comment-preview' => 'Predogled',
 	'code-rev-inline-preview' => 'Predogled:',
+	'code-rev-diff' => 'Prim',
+	'code-rev-diff-link' => 'prim',
+	'code-rev-diff-too-large' => 'Primerjava je preobsežna za prikaz.',
+	'code-rev-purge-link' => 'počisti',
+	'code-rev-total' => 'Skupno število rezultatov: $1',
+	'code-rev-not-found' => "Redakcija '''$1''' ne obstaja!",
+	'code-status-new' => 'novo',
+	'code-status-desc-new' => 'Redakcija izvaja dejanje (privzeto stanje).',
+	'code-status-fixme' => 'popravi me',
+	'code-status-desc-fixme' => 'Pregledovalec je označil to redakcijo kot hroščato ali pokvarjeno. To je treba popraviti.',
+	'code-status-reverted' => 'vrnjeno',
+	'code-status-desc-reverted' => 'Redakcijo je zavrgla poznejša redakcija.',
+	'code-status-resolved' => 'razrešeno',
+	'code-status-desc-resolved' => 'Redakcija je imela težavo, ki je bila obravnavana v poznejši redakciji.',
+	'code-status-ok' => 'v redu',
+	'code-status-desc-ok' => 'Redakcija je v celoti pregledana in pregledovalec je prepričan, da je v redu v vseh pogledih.',
+	'code-status-verified' => 'preizkušeno',
+	'code-status-desc-verified' => 'Redakcija je preizkušena in deluje kot je bilo predvideno.',
+	'code-status-deferred' => 'odloženo',
+	'code-status-desc-deferred' => 'Redakcija ne potrebuje pregleda.',
+	'code-status-old' => 'staro',
+	'code-status-desc-old' => 'Stara redakcija z morebitnimi hrošči, ki niso vredni truda pregleda.',
+	'code-pathsearch-legend' => 'Iskanje redakcij v tej shrambi po poti',
+	'code-pathsearch-path' => 'Pot:',
+	'code-pathsearch-filter' => 'Uporabljen filter:',
 	'code-revfilter-cr_status' => 'Stanje = $1',
 	'code-revfilter-cr_author' => 'Avtor = $1',
+	'code-revfilter-clear' => 'Počisti filter',
 	'code-rev-submit' => 'Shrani spremembe',
+	'code-rev-submit-next' => 'Shrani in pojdi na naslednjo nerazrešeno',
+	'code-batch-status' => 'Spremeni stanje:',
+	'code-batch-tags' => 'Spremeni oznake:',
+	'codereview-batch-title' => 'Spremeni vse izbrane redakcije',
 	'codereview-batch-submit' => 'Pošlji',
+	'code-releasenotes' => 'opombe ob izidu',
+	'code-release-legend' => 'Ustvari opombe ob izidu',
+	'code-release-startrev' => 'Začetna redakcija:',
+	'code-release-endrev' => 'Končna redakcija:',
+	'code-release-badrange' => 'Razpon je preširok!',
+	'codereview-subtitle' => 'Za $1',
+	'codereview-reply-link' => 'odgovori',
+	'codereview-email-subj' => '[$1] [$2]: Dodana nova pripomba',
+	'codereview-email-body' => 'Uporabnik »$1« je objavil pripombo na $3.
+
+Polni URL: $2
+
+Pripomba:
+
+$4',
+	'codereview-email-subj2' => '[$1] [$2]: Nadaljnje spremembe',
+	'codereview-email-body2' => 'Uporabnik »$1« je naredil nadaljnje spremembe $2.
+
+Polni URL nadaljnjih redakcij: $5
+
+Polni URL: $3
+
+Prispevani povzetek:
+
+$4',
+	'code-stats' => 'statistike',
+	'code-stats-header' => 'Statistike shrambe $1',
+	'code-stats-main' => 'Dne $1 ima shramba $2 {{PLURAL:$2|redakcijo|redakciji|redakcije|redakcij}} od [[Special:Code/$3/author|$4 {{PLURAL:$4|avtorja|avtorjev}}]].',
+	'code-stats-status-breakdown' => 'Število redakcij glede na stanje',
+	'code-stats-fixme-breakdown' => 'Odprava »popravi me«-jev glede na avtorja',
+	'code-stats-count' => 'Število redakcij',
+	'repoadmin' => 'Upravljanje shramb',
+	'repoadmin-new-legend' => 'Ustvari novo shrambo',
+	'repoadmin-new-label' => 'Ime shrambe:',
+	'repoadmin-new-button' => 'Ustvari',
+	'repoadmin-edit-legend' => 'Spreminjanje shrambe »$1«',
+	'repoadmin-edit-path' => 'Pot shrambe:',
+	'repoadmin-edit-bug' => 'Pot Bugzilla:',
+	'repoadmin-edit-view' => 'Pot ViewVC:',
+	'repoadmin-edit-button' => 'V redu',
+	'repoadmin-edit-sucess' => 'Shramba »[[Special:Code/$1|$1]]« je bila uspešno spremenjena.',
+	'repoadmin-nav' => 'upravljanje shramb',
+	'right-repoadmin' => 'Upravljanje shramb kode',
+	'right-codereview-use' => 'Uporaba Special:Code',
+	'right-codereview-add-tag' => 'Dodajanje novih oznak redakcijam',
+	'right-codereview-remove-tag' => 'Odstranjevanje novih oznak redakcijam',
+	'right-codereview-post-comment' => 'Dodajanje pripomb na redakcije',
+	'right-codereview-set-status' => 'Spreminjanje stanj redakcij',
+	'right-codereview-link-user' => 'Povezovanje avtorjev z wikiuporabniki',
 	'specialpages-group-developer' => 'Razvijalska orodja',
 );
 
@@ -9503,6 +10103,14 @@ Full URL:  $3
 Sammanfattning:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Regression upptäcktes vid automatisk testning',
+	'codereview-email-body3' => 'Vid automatisk testning upptäcktes regression på grund av förändringar i $1.
+
+Fullständig webbadress: $2
+
+Bidragssammanfattning:
+
+$3',
 	'code-stats' => 'statistik',
 	'code-stats-header' => 'Statistik för repositoriet $1',
 	'code-stats-main' => '$1 hade repositoriet $2 {{PLURAL:$2|revision|revisioner}} av [[Special:Code/$3/author|$4 författare]].',
@@ -9607,6 +10215,7 @@ $messages['te'] = array(
 	'code-change-removed' => 'తొలిగించబడినది',
 	'code-old-status' => 'పాత స్థితి',
 	'code-new-status' => 'కొత్త స్థితి',
+	'code-prop-changes' => 'స్థితి & ట్యాగుల చిట్టా',
 	'code-notes' => 'ఇటీవలి వ్యాఖ్యలు',
 	'code-statuschanges' => 'స్థితి మార్పులు',
 	'code-authors' => 'రచయితలు',
@@ -10015,7 +10624,18 @@ Doly URL: $3
 Tabşyrma düşündirişi:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Awtomatik synag regressiýany ýüze çykardy',
+	'codereview-email-body3' => '$1 üçin üýtgeşmeler zerarly awtomatik synag bir regressiýany ýüze çykardy. 
+
+Doly URL: $2
+
+Tabşyrma düşündirişi:
+
+$3',
 	'code-stats' => 'statistika',
+	'code-stats-header' => '$1 repozitoriýasy üçin statistika',
+	'code-stats-main' => '$1 boýunça, repozitoriýada [[Special:Code/$3/author|$4 {{PLURAL:$4|awtor|awtor}}]] tarapyndan edilen $2 {{PLURAL:$2|wersiýa|wersiýa}} bar.',
+	'code-stats-status-breakdown' => 'Ýagdaý boýunça wersiýalaryň sany',
 	'code-stats-count' => 'Wersiýalaryň sany',
 	'repoadmin' => 'Ammar Dolandyryşy',
 	'repoadmin-new-legend' => 'Täze ammar döret',
@@ -10027,6 +10647,7 @@ $4',
 	'repoadmin-edit-view' => 'ViewVC ýoly:',
 	'repoadmin-edit-button' => 'Bolýar',
 	'repoadmin-edit-sucess' => '"[[Special:Code/$1|$1]]" ammary şowly üýtgedildi.',
+	'repoadmin-nav' => 'repozitoriýa administrasiýasy',
 	'right-repoadmin' => 'Kod ammarlaryny dolandyr',
 	'right-codereview-use' => 'Special:Code ulanyşy',
 	'right-codereview-add-tag' => 'Wersiýalara täze teg goş',
@@ -10166,6 +10787,14 @@ Buong URL: $3
 Buod ng pagsasagawa:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Pagpapabalik na napansin ng kusang pagsubok',
+	'codereview-email-body3' => 'Nagbunyag ang kusang pagsusulit ng isang pagpapabalik dahil sa mga pagbabago sa loob ng $1.
+
+Buongl URL: $2
+
+Buod ng pagsasagawa:
+
+$3',
 	'code-stats' => 'estadistika',
 	'code-stats-header' => 'Estadistika para sa repositoryong $1',
 	'code-stats-main' => 'Magmula noong $1, ang repositoryo ay may $2 {{PLURAL:$2|rebisyon|mga rebisyon}} ng [[Special:Code/$3/author|$4 {{PLURAL:$4|may-akda|mga may-akda}}]].',
@@ -10310,6 +10939,14 @@ Tam URL: $3
 Teslim özeti:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Otomatik test gerileme saptadı',
+	'codereview-email-body3' => 'Otomatik test $1 revizyonundaki değişikliklerden dolayı bir gerileme ortaya çıkardı.
+
+Tam URL: $2
+
+Teslimat özeti:
+
+$3',
 	'repoadmin' => 'Depo Yönetimi',
 	'repoadmin-new-legend' => 'Yeni bir depo oluştur',
 	'repoadmin-new-label' => 'Depo adı:',
@@ -10480,6 +11117,24 @@ $4',
 Опис змін: $4
 
 Адреса для подальшого перегляду $5',
+	'codereview-email-subj3' => '[$1] [$2]: Статус редакції змінено',
+	'codereview-email-body3' => 'Користувач "$1" змінив статус $2.
+
+Старий статус: $3
+Новий статус: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Додано новий коментар, статус редакції змінено',
+	'codereview-email-body4' => 'Користувач "$1" змінив статус $2.
+
+Старий статус: $3
+Новий статус: $4
+
+Користувач "$1" також розмістив коментар про $2.
+
+URL: $5
+
+Коментар:
+
+$6',
 	'code-stats' => 'статистика',
 	'code-stats-header' => 'Статистика репозиторія $1',
 	'code-stats-main' => 'Станом на $1, репозиторій має $2 {{PLURAL:$2|перегляд|перегляди|переглядів}} виконаних  [[Special:Code/$3/author|$4 {{PLURAL:$4|автором|авторами}}]].',
@@ -10636,6 +11291,14 @@ URL: $3
 Ojeto de la modifica:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: el test automatico el gà catà na regression',
+	'codereview-email-body3' => 'El test automatico el gà catà na regression dovùa ai canbiamenti de la version $1.
+
+URL conpleto: $2
+
+Ogeto de la modifica:
+
+$3',
 	'code-stats' => 'statisteghe',
 	'code-stats-header' => 'Statìsteghe del deposito $1',
 	'code-stats-main' => 'A la data del $1, el deposito el gà $2 {{PLURAL:$2|revision|revision}} fate da [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autori}}]].',
@@ -11047,6 +11710,14 @@ $4',
 遞交摘要：
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]：自動測試偵測到表達式問題',
+	'codereview-email-body3' => '自動測試發現到響 $1 嘅改動之中出咗表達式問題。
+
+完整URL：$2
+
+遞交摘要：
+
+$3',
 	'repoadmin' => '檔案室庫管理',
 	'repoadmin-new-legend' => '開一個新檔案庫',
 	'repoadmin-new-label' => '檔案庫名：',
@@ -11183,6 +11854,14 @@ URL链接：$3
 提交摘要：
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]：自动测试发现已知错误',
+	'codereview-email-body3' => '自动测试发现$1导致了已知的错误。
+
+URL链接：$2
+
+提交摘要：
+
+$3',
 	'code-stats' => '统计',
 	'repoadmin' => '储存库管理',
 	'repoadmin-new-legend' => '建立新的储存库',
@@ -11318,6 +11997,14 @@ URL鏈接：$3
 提交摘要：
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]：自動測試發現已知錯誤',
+	'codereview-email-body3' => '自動測試發現$1導致了已知的錯誤。
+
+URL鏈接：$2
+
+提交摘要：
+
+$3',
 	'repoadmin' => '儲存庫管理',
 	'repoadmin-new-legend' => '建立新的儲存庫',
 	'repoadmin-new-label' => '儲存庫名稱：',

@@ -993,6 +993,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1003,8 +1004,8 @@ $messages['ml'] = array(
 	'contributors-target' => 'ശീർഷകം:',
 	'contributors-submit' => 'പ്രദർശിപ്പിക്കുക',
 	'contributors-subtitle' => '$1ലെ മുഖ്യ സംഭാവക്കാർ',
-	'contributors-others-long' => 'ഈ താളിനു $1 മറ്റു സംഭാവക്കാർ കൂടിയുണ്ട്.',
-	'contributors-others' => '$1 മറ്റുള്ളവർ',
+	'contributors-others-long' => 'ഈ താളിനു {{PLURAL:$1|മറ്റൊരു സംഭാവകൻ|മറ്റ് $1 സംഭാവകർ}} ഉണ്ട്.',
+	'contributors-others' => 'ഒപ്പം {{PLURAL:$1|മറ്റൊരാൾ|$1 മറ്റുള്ളവർ}}',
 	'contributors-badtitle' => 'അസാധുവായ ശീർഷകം.',
 	'contributors-nosuchpage' => '$1 എന്ന താൾ നിലവിലില്ല.',
 );

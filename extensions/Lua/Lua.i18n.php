@@ -52,6 +52,13 @@ $messages['ar'] = array(
 	'lua_overflow_time' => 'تم الوصول إلى أقصى زمن للتنفيذ',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'lua_error_internal' => 'ܦܘܕܐ ܓܘܝܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -857,7 +857,10 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'contributiontracking' => 'Слїдованя приспевків',
 	'contrib-tracking-error' => 'Хыба',
+	'contrib-tracking-error-text' => 'Одосланый формуларь не быв правилно выповненый',
+	'contrib-tracking-submitting' => 'Платба ся одосылать про спрацованя ...',
 	'contrib-tracking-button' => 'Продовжовати',
 );
 

@@ -865,6 +865,14 @@ $messages['tl'] = array(
 	'searchbox-namespaces' => 'Mga espasyo ng pangalan:',
 );
 
+/** Tok Pisin (Tok Pisin)
+ * @author Iketsi
+ */
+$messages['tpi'] = array(
+	'searchbox-search' => 'Painim',
+	'searchbox-go' => 'Go',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis

@@ -249,7 +249,11 @@ $messages['eo'] = array(
 	'commentbox-name' => 'Nomo:',
 	'commentbox-log' => 'Novaj komentoj',
 	'commentbox-first-comment-heading' => '== Komentoj ==',
+	'commentbox-regex' => '/\\n==\\s*Komentoj\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Eraro kiam kreante komenton',
 	'commentbox-error-page-nonexistent' => 'Ĉi tiu paĝo ne ekzistas!',
+	'commentbox-error-namespace' => 'Komentoj ne estas permesita en ĉi tiu nomspaco!',
+	'commentbox-error-empty-comment' => 'Nulaj komentoj ne estas permesita.',
 );
 
 /** Spanish (Español)
@@ -614,6 +618,25 @@ $messages['mk'] = array(
 	'commentbox-error-empty-comment' => 'Не се дозволени празни коментари!',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'commentbox-desc' => 'ചില താളുകളിൽ ഒരു അഭിപ്രായപെട്ടി ചേർക്കുന്നു',
+	'commentbox-intro' => '== അഭിപ്രായം ചേർക്കുക... ==
+ഈ താളിനെക്കുറിച്ച് താങ്കൾക്ക് ഒരഭിപ്രായമുണ്ടോ? ഇവിടെ ചേർക്കുക അല്ലെങ്കിൽ <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} താൾ നേരിട്ട് തിരുത്തുക]</span>.',
+	'commentbox-savebutton' => 'അഭിപ്രായം സേവ് ചെയ്യുക',
+	'commentbox-name' => 'പേര്:',
+	'commentbox-name-explanation' => '<small>(സഹായം: താങ്കൾ [[Special:UserLogin|ലോഗിൻ]] ചെയ്തിട്ടുണ്ടെങ്കിൽ, ഫോമിൽ താങ്കളുടെ പേര് നൽകേണ്ടി വരില്ല)</small>',
+	'commentbox-log' => 'പുതിയ അഭിപ്രായങ്ങൾ',
+	'commentbox-first-comment-heading' => '== അഭിപ്രായങ്ങൾ ==',
+	'commentbox-regex' => '/\\n==\\s*അഭിപ്രായങ്ങൾ\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'അഭിപ്രായം സൃഷ്ടിക്കുന്നതിനിടയിൽ പിഴവുണ്ടായി',
+	'commentbox-error-page-nonexistent' => 'ഈ താൾ നിലവിലില്ല',
+	'commentbox-error-namespace' => 'ഈ നാമമേഖലയിൽ അഭിപ്രായങ്ങൾ അനുവദിച്ചിട്ടില്ല!',
+	'commentbox-error-empty-comment' => 'ശൂന്യമായ അഭിപ്രായങ്ങൾ അനുവദിച്ചിട്ടില്ല!',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */
@@ -891,6 +914,25 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 	'commentbox-error-empty-comment' => 'Prázdne komentáre nie sú povolené!',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'commentbox-desc' => 'Doda polje za pripombe na nekatere strani',
+	'commentbox-intro' => '== Dodajte pripombo ... ==
+Imate pripombo na to stran? Dodajte jo tukaj <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} ali neposredno uredite stran]</span>.',
+	'commentbox-savebutton' => 'Shrani pripombo',
+	'commentbox-name' => 'Ime:',
+	'commentbox-name-explanation' => '<small>(Nasvet: Če se [[Special:UserLogin|prijavite]], vam tukaj ne bo potrebno ročno vnesti svojega imena)</small>',
+	'commentbox-log' => 'Nove pripombe',
+	'commentbox-first-comment-heading' => '== Pripombe ==',
+	'commentbox-regex' => '/\\n==\\s*Pripombe\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Napaka med ustvarjanjem pripombe',
+	'commentbox-error-page-nonexistent' => 'Ta stran ne obstaja!',
+	'commentbox-error-namespace' => 'Pripombe niso dovoljene v tem imenskem prostoru!',
+	'commentbox-error-empty-comment' => 'Prazne pripombe niso dovoljene!',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -1025,9 +1067,15 @@ Bu sayfa ile ilgili bir yorumunuz mu var? Buraya ekleyin ya da <span class="plai
  */
 $messages['uk'] = array(
 	'commentbox-desc' => 'Додає поле коментаря до певних сторінок',
+	'commentbox-savebutton' => 'Зберегти коментар',
 	'commentbox-name' => 'Назва:',
+	'commentbox-log' => 'Нові коментарі',
 	'commentbox-first-comment-heading' => '== Коментарі ==',
 	'commentbox-regex' => '/\\n==\\s*Коментарі\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Помилка при створенні коментаря',
+	'commentbox-error-page-nonexistent' => 'Цієї сторінки не існує!',
+	'commentbox-error-namespace' => 'Коментарі не дозволені в цьому просторі назв!',
+	'commentbox-error-empty-comment' => 'Порожні коментарі не дозволені!',
 );
 
 /** Vèneto (Vèneto)

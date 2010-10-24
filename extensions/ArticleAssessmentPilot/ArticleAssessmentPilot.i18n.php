@@ -138,6 +138,50 @@ $messages['arc'] = array(
 	'articleassessment-survey-submit' => 'ܫܕܪ',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'articleassessment' => 'Мәҡәләне баһалау',
+	'articleassessment-desc' => 'Мәҡәләне баһалау (һынау өсөн)',
+	'articleassessment-yourfeedback' => 'Һеҙҙең баһаламағыҙ',
+	'articleassessment-pleaserate' => 'Зинһар, был мәҡәләне баһалар өсөн бер генә минут ваҡытығыҙҙы бүлегеҙ.',
+	'articleassessment-submit' => 'Ебәрергә',
+	'articleassessment-rating-wellsourced' => 'Сығанаҡтар:',
+	'articleassessment-rating-neutrality' => 'Битарафлыҡ:',
+	'articleassessment-rating-completeness' => 'Тулылыҡ:',
+	'articleassessment-rating-readability' => 'Уҡымлылыҡ:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Һеҙ был биттә етәрлек сығанаҡтар бар һәм сығанаҡтар ышаныслы, тип һанайһығыҙмы?',
+	'articleassessment-rating-neutrality-tooltip' => 'Һеҙ был бит ҡағылған һорау буйынса бөтә фекерҙәрҙе лә ғәҙел сағылдыра, тип һанайһығыҙмы?',
+	'articleassessment-rating-completeness-tooltip' => 'Һеҙ был бит төп һорауҙарҙы етәрлек кимәлдә аса, тип һанайһығыҙмы?',
+	'articleassessment-rating-readability-tooltip' => 'Һеҙ был бит яҡшы ойошторолған һәм яҡшы яҙылған, тип һанайһығыҙмы?',
+	'articleassessment-articlerating' => 'Бит баһаһы',
+	'articleassessment-error' => 'Хата килеп сыҡты.
+Зинһар, һуңынан ҡабатлап ҡарағыҙ.',
+	'articleassessment-thanks' => 'Рәхмәт! Һеҙҙең баһағыҙ һаҡланды.',
+	'articleassessment-featurefeedback' => 'Был мөмкинлек тураһында <span class="feedbacklink">үҙ фекерегеҙҙе</span> беҙгә ебәрегеҙ.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|баһа}})',
+	'articleassessment-stalemessage-norevisioncount' => "Был бит һеҙ ҡарап сыҡҡандан һуң ''мөхәррирләнгән''.
+Һеҙ уны яңынан баһалай алаһығыҙ.",
+	'articleassessment-results-show' => '(Һөҙөмтәләр йәшерелгән. <span class="showlink">Күрһәтергә</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Һөҙөмтәләрҙе йәшерергә</span>)',
+	'articleassessment-survey-question-whyrated' => 'Зинһар, ниңә һеҙ бөгөн был биткә баһа биреүегеҙҙе беҙгә белгертегеҙ (бөтә тап килгән яуаптарҙы билдәләгеҙ):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Минең был биттең дөйөм баһаһына өлөш индергем килде.',
+	'articleassessment-survey-answer-whyrated-development' => 'Минең баһам был биттең үҫешенә ыңғай йоғонто яһар, тип өмөт итәм.',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Минең {{SITENAME}} проектына өлөш индергем килде.',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Мин үҙ фекерем менән бүлешергә ярятам',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Бин бөгөн баһа ҡуйманым, әммә был мөмкинлек тураһында үҙ фекеремде ҡалдырырға теләйем',
+	'articleassessment-survey-answer-whyrated-other' => 'Башҡа',
+	'articleassessment-survey-question-useful' => 'Ҡуйылған баһалар файҙалы һәм аңлайышлы, тип иҫәпләйһегеҙме?',
+	'articleassessment-survey-question-useful-iffalse' => 'Ниңә?',
+	'articleassessment-survey-question-expert' => 'Һеҙ үҙегеҙҙе был бит ҡағылған өлкәлә белгес тип иҫәпләйһегеҙме?',
+	'articleassessment-survey-question-expert-iftrue' => 'Һеҙ үҙегеҙҙең баһағыҙҙы тасуирлай алаһығыҙмы?',
+	'articleassessment-survey-question-comments' => 'Һеҙҙең берәй төрлө өҫтәмә иҫкәрмәләрегеҙ бармы?',
+	'articleassessment-survey-submit' => 'Ебәрергә',
+	'articleassessment-survey-title' => 'Зинһар, бер нисә һорауға яуап бирегеҙ',
+	'articleassessment-survey-thanks' => 'Һорауҙарға яуап биреүегеҙ өсөн рәхмәт.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -187,7 +231,21 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'articleassessment-submit' => 'Изпращане',
+	'articleassessment-articlerating' => 'Оценка на страницата',
+	'articleassessment-error' => 'Възникна грешка. 
+Опитайте по-късно.',
+	'articleassessment-thanks' => 'Благодарим ви! Вашите оценки са записани.',
+	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|оценка|оценки}})',
+	'articleassessment-results-show' => '(Резултатите се скрити. <span class="showlink">Показване</span>.)',
+	'articleassessment-results-hide' => '(<span class="hidelink">Скриване на резултатите</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Исках да допринеса за общата оценка на страницата',
+	'articleassessment-survey-answer-whyrated-development' => 'Надявам се, че оценката ми ще се отрази положително върху развитието на страницата',
+	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Исках да допринеса за {{SITENAME}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Харесва ми да споделям мнението си',
+	'articleassessment-survey-answer-whyrated-other' => 'Друго',
 	'articleassessment-survey-question-useful-iffalse' => 'Защо?',
+	'articleassessment-survey-question-comments' => 'Имате ли някакви допълнителни коментари?',
 	'articleassessment-survey-submit' => 'Изпращане',
 	'articleassessment-survey-title' => 'Моля, отговорете на няколко въпроса',
 	'articleassessment-survey-thanks' => 'Благодарим ви, че попълнихте въпросника!',
@@ -806,6 +864,7 @@ $messages['he'] = array(
 	'articleassessment-rating-neutrality' => 'ניטרלי:',
 	'articleassessment-rating-completeness' => 'שלם:',
 	'articleassessment-rating-readability' => 'קריא:',
+	'articleassessment-rating-wellsourced-tooltip' => 'האם לדעתך לדף זה יש די ציטוטים והאם ציטוטים אלה מגיעים ממקורות מהימנים?',
 	'articleassessment-rating-neutrality-tooltip' => 'האם לדעתך דף זה מייצג באופן הוגן את כל ההיבטים בנושא?',
 	'articleassessment-rating-completeness-tooltip' => 'האם לדעתך דף זה מכסה את התחומים החיוניים לנושא כפי שהוא אמור?',
 	'articleassessment-rating-readability-tooltip' => 'האם לדעתך דף זה מסודר היטב וכתוב כראוי?',
@@ -1319,6 +1378,14 @@ $messages['ml'] = array(
 	'articleassessment-survey-thanks' => 'സർവേ പൂരിപ്പിച്ചതിനു നന്ദി',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'articleassessment-submit' => 'Явуулах',
+	'articleassessment-survey-submit' => 'Явуулах',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */
@@ -1696,12 +1763,15 @@ Se preghe de pruvà cchiù nnande.",
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => "Me chiace dìcere 'u penziere mèje",
 	'articleassessment-survey-answer-whyrated-other' => 'Otre',
 	'articleassessment-survey-question-useful-iffalse' => 'Purcé?',
+	'articleassessment-survey-question-expert-iftrue' => 'Puè descrivere le esperienze tue?',
+	'articleassessment-survey-question-comments' => 'Tìne otre commende?',
 	'articleassessment-survey-submit' => 'Conferme',
 	'articleassessment-survey-title' => 'Se preghe de responnere a quacche dumanne',
 	'articleassessment-survey-thanks' => "Grazzie pè avè combilate 'u sondagge.",
 );
 
 /** Russian (Русский)
+ * @author Assele
  * @author Catrope
  * @author MaxSem
  * @author Александр Сигачёв
@@ -1733,7 +1803,7 @@ $messages['ru'] = array(
 	'articleassessment-results-hide' => '(<span class="hidelink">Скрыть результаты</span>)',
 	'articleassessment-survey-question-whyrated' => 'Пожалуйста, дайте нам знать, почему вы сегодня дали оценку этой странице (отметьте все подходящие варианты):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Я хотел повлиять на итоговый рейтинг этой страницы',
-	'articleassessment-survey-answer-whyrated-development' => 'Я надеюсь, что моя оценка положительно повлияет на развитие этой странице',
+	'articleassessment-survey-answer-whyrated-development' => 'Я надеюсь, что моя оценка положительно повлияет на развитие этой страницы',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Я хочу содействовать развитию {{GRAMMAR:genitive|{{SITENAME}}}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Мне нравится делиться своим мнением',
 	'articleassessment-survey-answer-whyrated-didntrate' => 'Я не поставил сегодня оценку, но хочу оставить отзыв о данной функции',
@@ -1752,19 +1822,40 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'articleassessment' => 'Оцінка статї',
+	'articleassessment-desc' => 'Оцінка статї (експеріменталный варіант)',
 	'articleassessment-yourfeedback' => 'Ваш назор',
+	'articleassessment-pleaserate' => 'Просиме, найдьте собі час про оцінку той статї.',
 	'articleassessment-submit' => 'Одослати',
 	'articleassessment-rating-wellsourced' => 'Жрідла:',
 	'articleassessment-rating-neutrality' => 'Невтралность:',
 	'articleassessment-rating-completeness' => 'Комплетность:',
 	'articleassessment-rating-readability' => 'Чітательность:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Маєте чутя, же тота сторінка достаточно одказує на жрідла і хоснованы жрідла суть способны довірованя?',
+	'articleassessment-rating-neutrality-tooltip' => 'Маєте чутя, же тота сторінка справедливо покрывать вшыткы погляды на даны темы?',
+	'articleassessment-rating-completeness-tooltip' => 'Маєте чутя, же тота сторінка покрывать вшыткы важны части темы?',
+	'articleassessment-rating-readability-tooltip' => 'Маєте чутя, же тота сторінка є правилно орґанізована о добрі написана?',
 	'articleassessment-articlerating' => 'Рейтінґ сторінкы',
+	'articleassessment-error' => 'Дішло ку хыбі.
+Просиме, спробуйте то пізнїше.',
+	'articleassessment-thanks' => 'Дякуєме! Вашы оцінкы были уложены.',
+	'articleassessment-featurefeedback' => 'Сдїляйте нам свій <span class="feedbacklink">назор</span> на тоту функцію.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|оцінка|оцінкы|оцінок}})',
+	'articleassessment-stalemessage-norevisioncount' => "Од коли сьте сторінку {{GENDER:|оцінив|оцінила|оцінили}}, была ''управлена''.
+Може єй будете хотїти оцінити знову.",
+	'articleassessment-results-show' => '(Резултаты схованы. <span class="showlink">Указати</span> їх.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Сховати резултаты</span>)',
+	'articleassessment-survey-question-whyrated' => 'Чом сьте днесь оцінили тоту сторінку (зачаркните вшыткы платны можности):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Хотїв єм овпливнити цалкову оцінку сторінкы',
 	'articleassessment-survey-answer-whyrated-development' => 'Сподїваю ся, же мій рейтінґ буде позітівно впливати на вывой сторінкы',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Хотїв єм помочі {{grammar:3sg|{{SITENAME}}}}',
+	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Люблю здїляти свій назор',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Днесь єм не оцінёвав, але хотїв єм додати свій назор на тоту функцію',
 	'articleassessment-survey-answer-whyrated-other' => 'Інше',
+	'articleassessment-survey-question-useful' => 'Думаєте собі, же доданы оцінкы суть хосновны і зрозумітельны?',
 	'articleassessment-survey-question-useful-iffalse' => 'Чом?',
+	'articleassessment-survey-question-expert' => 'Поважуєте себе за шпеціалісти на область, о котрій тота сторінка їднає?',
+	'articleassessment-survey-question-expert-iftrue' => 'Можете описати свою шпеціалізацію?',
 	'articleassessment-survey-question-comments' => 'Маєте даякы додаточны коментарї?',
 	'articleassessment-survey-submit' => 'Одослати',
 	'articleassessment-survey-title' => 'Просиме, одповіджте на пару вопросів',
@@ -1874,6 +1965,8 @@ Možno ju budete chcieť znova ohodnotiť.",
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'articleassessment' => 'Ocenjevanje člankov',
+	'articleassessment-desc' => 'Ocenjevanje člankov (pilotska različica)',
 	'articleassessment-yourfeedback' => 'Vaša povratna informacija',
 	'articleassessment-pleaserate' => 'Prosimo, vzemite si trenutek in spodaj ocenite to stran.',
 	'articleassessment-submit' => 'Pošlji',
@@ -1881,6 +1974,10 @@ $messages['sl'] = array(
 	'articleassessment-rating-neutrality' => 'Nevtralnost:',
 	'articleassessment-rating-completeness' => 'Celovitost:',
 	'articleassessment-rating-readability' => 'Bralnost:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Menite, da ima ta stran dovolj navedkov in da ta navajanja prihajajo iz zanesljivih virov?',
+	'articleassessment-rating-neutrality-tooltip' => 'Menite, da ta stran prikazuje pravično zastopanost vseh pogledov na obravnavano temo?',
+	'articleassessment-rating-completeness-tooltip' => 'Menite, da ta stran zajema temeljna tematska področja, ki bi jih naj?',
+	'articleassessment-rating-readability-tooltip' => 'Menite, da je ta stran dobro organizirana in dobro napisana?',
 	'articleassessment-articlerating' => 'Ocena strani',
 	'articleassessment-error' => 'Prišlo je do napake.
 Prosimo, poskusite znova pozneje.',
@@ -1891,8 +1988,12 @@ Prosimo, poskusite znova pozneje.',
 Morda jo želite ponovno oceniti.",
 	'articleassessment-results-show' => '(Rezultati so skriti. <span class="showlink">Prikaži</span> jih.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Skrij rezultate</span>)',
+	'articleassessment-survey-question-whyrated' => 'Prosimo, povejte nam, zakaj ste danes ocenili to stran (izberite vse, kar ustreza):',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Želel sem prispevati splošni oceni strani',
+	'articleassessment-survey-answer-whyrated-development' => 'Upam, da bo moja ocena dobro vplivala na razvoj strani',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'Želel sem prispevati k projektu {{SITENAME}}',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Rad delim svoje mnenje',
+	'articleassessment-survey-answer-whyrated-didntrate' => 'Danes nisem podal ocene, ampak sem želel podati povratno informacijo o funkciji',
 	'articleassessment-survey-answer-whyrated-other' => 'Drugo',
 	'articleassessment-survey-question-useful' => 'Ali verjamete, da so posredovane ocene uporabne in jasne?',
 	'articleassessment-survey-question-useful-iffalse' => 'Zakaj?',
@@ -1992,6 +2093,7 @@ $messages['te'] = array(
 	'articleassessment-results-hide' => '(<span class="hidelink">ఫలితాలను దాచు</span>)',
 	'articleassessment-survey-question-whyrated' => 'ఈ పుటని ఈరోజు మీరు ఎందుకు మూల్యాంకన చేసారో మాకు దయచేసి తెలియజేయండి (వర్తించే వాటినన్నీ ఎంచుకోండి):',
 	'articleassessment-survey-answer-whyrated-contribute-rating' => 'నేను ఈ పుట యొక్క స్థూల మూల్యాంకనకి తోడ్పాలనుకున్నాను',
+	'articleassessment-survey-answer-whyrated-development' => 'నా మూల్యాంకన ఈ పుట యొక్క అభివృద్ధికి సానుకూలంగా ప్రభావితం చేస్తుందని ఆశిస్తున్నాను',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => 'నేను {{SITENAME}}కి తోడ్పడాలనుకున్నాను',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'నా అభిప్రాయాన్ని పంచుకోవడం నాకిష్టం',
 	'articleassessment-survey-answer-whyrated-didntrate' => 'నేను ఈ రోజు మాల్యాంకన చేయలేదు, కానీ ఈ సౌలభ్యంపై నా ప్రతిస్పందనని తెలియజేయాలనుకున్నాను',
@@ -2013,6 +2115,7 @@ $messages['tk'] = array(
 	'articleassessment' => 'Makala berlen baha',
 	'articleassessment-desc' => 'Makala berlen baha (synag warianty)',
 	'articleassessment-yourfeedback' => 'Seslenmäňiz',
+	'articleassessment-pleaserate' => 'Bu sahypany derejelendirmek üçin biraz egleniň.',
 	'articleassessment-submit' => 'Tabşyr',
 	'articleassessment-rating-wellsourced' => 'Çeşmeler:',
 	'articleassessment-rating-neutrality' => 'Bitarap:',
@@ -2025,13 +2128,17 @@ $messages['tk'] = array(
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|derejelendirme|derejelendirme}})',
 	'articleassessment-results-show' => '(Netijeler gizlenilgi. Olary <span class="showlink">görkez</span>.)',
 	'articleassessment-results-hide' => '(<span class="hidelink">Netijeleri gizle</span>)',
+	'articleassessment-survey-answer-whyrated-contribute-rating' => 'Men sahypanyň umumy derejesine goşant goşmak isledim.',
 	'articleassessment-survey-answer-whyrated-contribute-wiki' => '{{SITENAME}} saýtyna goşant goşmak isledim.',
 	'articleassessment-survey-answer-whyrated-sharing-opinion' => 'Öz pikirimi paýlaşmagy halaýaryn.',
 	'articleassessment-survey-answer-whyrated-other' => 'Başga',
+	'articleassessment-survey-question-useful' => 'Berlen derejeleriň peýdalydygyna we düşnüklidigine ynanýarsyňyzmy?',
 	'articleassessment-survey-question-useful-iffalse' => 'Näme üçin?',
+	'articleassessment-survey-question-expert-iftrue' => 'Öz ekspert bahaňyzy suratlandyryp bilersiňizmi?',
 	'articleassessment-survey-question-comments' => 'Goşmaça bellikleriňiz barmy?',
 	'articleassessment-survey-submit' => 'Tabşyr',
 	'articleassessment-survey-title' => 'Käbir soraglara jogap beriň',
+	'articleassessment-survey-thanks' => 'Soragnamany dolduranyňyz üçin sag boluň.',
 );
 
 /** Tagalog (Tagalog)

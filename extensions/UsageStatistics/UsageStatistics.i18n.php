@@ -1511,15 +1511,16 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'specialuserstats' => 'ഉപയോഗത്തിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
 	'usagestatistics' => 'ഉപയോഗത്തിന്റെ സ്ഥിതിവിവരക്കണക്ക്',
-	'usagestatisticsinterval' => 'ഇടവേള',
+	'usagestatisticsinterval' => 'ഇടവേള:',
 	'usagestatisticstype' => 'തരം',
-	'usagestatisticsstart' => 'തുടങ്ങുന്ന തീയ്യതി',
-	'usagestatisticsend' => 'അവസാനിക്കുന്ന തീയ്യതി',
+	'usagestatisticsstart' => 'തുടങ്ങുന്ന തീയതി:',
+	'usagestatisticsend' => 'അവസാനിക്കുന്ന തീയതി:',
 	'usagestatisticssubmit' => 'സ്ഥിതിവിവരക്കണക്ക് ഉത്പാദിപ്പിക്കുക',
 	'usagestatisticsnostart' => 'ദയവായി ഒരു തുടക്ക തീയ്യതി ചേർക്കുക',
 	'usagestatisticsnoend' => 'ദയവായി ഒരു ഒടുക്ക തീയ്യതി ചേർക്കുക',

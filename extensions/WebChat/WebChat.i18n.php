@@ -450,6 +450,19 @@ $messages['mk'] = array(
 	'right-webchat' => 'Дозволено користење [[Special:WebChat|Интернет-разговори (web chat)]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'webchat' => 'വെബ് ചാറ്റ്',
+	'webchat-desc' => 'വിക്കിയിലെ മറ്റ് ഉപയോക്താക്കളുമായി തത്സമയം ആശയവിനിമയം നടത്താനുള്ള [[Special:WebChat|പ്രത്യേക താൾ]] കൂട്ടിച്ചേർക്കുന്നു',
+	'webchat-header' => 'ഈ പ്രത്യേക താൾ വിക്കിയിലെ മറ്റുപയോക്താക്കളുമായി തത്സമയം ചേർന്ന് പ്രവർത്തിക്കാൻ അനുവദിക്കുന്നു.
+ബന്ധപ്പെടാൻ "Connect" എന്ന ബട്ടൺ അമർത്തുക.
+താങ്കൾ ലോഗിൻ ചെയ്തിട്ടുണ്ടെങ്കിൽ താങ്കളുടെ വിളിപ്പേര് തനിയേ ചേർക്കപ്പെടും.
+അജ്ഞാത ഉപയോക്താക്കൾക്ക് ക്രമരഹിതമായി സൃഷ്ടിക്കപ്പെട്ട ഒന്ന് നൽകുന്നതാണ്, എങ്കിലും അത് മാറ്റാവുന്നതാണ്.',
+	'right-webchat' => '[[Special:WebChat|വെബ് ചാറ്റ്]] ഉപയോഗിക്കാൻ അനുവദിച്ചു',
+);
+
 /** Marathi (मराठी)
  * @author Mahitgar
  */
@@ -629,6 +642,14 @@ Pripojíte sa jednoducho stlačením tlačidla „Pripojiť“.
 Ak ste prihlásený, vaša prezývka bude vyplnená automaticky.
 Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno ju zmeniť.',
 	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'webchat' => 'Spletni klepet',
+	'right-webchat' => 'Dovoljena uporaba [[Special:WebChat|spletnega klepeta]]',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

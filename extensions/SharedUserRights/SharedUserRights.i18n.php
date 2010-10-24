@@ -541,6 +541,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'gblrights-desc' => 'సులువైన [[Special:GlobalUserRights|సార్వత్రిక వాడుకరి పరిపాలన]]',
 	'gblrights-logpage' => 'సార్వత్రిక హక్కుల చిట్టా',
 );
 

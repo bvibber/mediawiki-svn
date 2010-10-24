@@ -532,8 +532,12 @@ $messages['arc'] = array(
 	'prefswitch-link-off' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
 	'prefswitch-survey-true' => 'ܐܝܢ',
 	'prefswitch-survey-false' => 'ܠܐ',
+	'prefswitch-survey-submit-feedback' => 'ܫܕܪ ܡܥܝܪ̈ܢܘܬܐ',
+	'prefswitch-survey-answer-whyoff-other' => 'ܥܠܬܐ ܐܚܪܬܐ:',
+	'prefswitch-survey-answer-browser-other' => 'ܡܦܐܬܢܐ ܐܚܪܢܐ:',
 	'prefswitch-title-on' => 'ܦܪ̈ܘܫܝܐ ܚܕ̈ܬܐ',
 	'prefswitch-title-switched-off' => 'ܬܘܕܝ',
+	'prefswitch-title-feedback' => 'ܡܥܝܪ̈ܢܘܬܐ',
 );
 
 /** Bashkir (Башҡорт)
@@ -757,6 +761,7 @@ $messages['be-tarask'] = array(
 /** Bulgarian (Български)
  * @author DCLXVI
  * @author Stanqo
+ * @author Turin
  */
 $messages['bg'] = array(
 	'prefswitch-survey-true' => 'Да',
@@ -769,7 +774,10 @@ $messages['bg'] = array(
 	'prefswitch-title-on' => 'Нови функционалности',
 	'prefswitch-title-switched-on' => 'Наслаждавайте се!',
 	'prefswitch-title-switched-off' => 'Благодарности',
+	'prefswitch-title-feedback' => 'Обратна връзка',
 	'prefswitch-success-off' => 'Новите функции са изключени.',
+	'prefswitch-return' => '<hr style="clear:both">
+Назад към <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
@@ -6254,7 +6262,9 @@ $messages['roa-tara'] = array(
 	'prefswitch-survey-answer-os-other' => 'Otre sisteme operative:',
 	'prefswitch-survey-answer-globaloff-yes' => 'Sìne, chiude le caratteristeche sus a totte le uicchi',
 	'prefswitch-survey-question-res' => "Ce risoluzione tène 'u scherme tue?",
+	'prefswitch-title-on' => 'Nuève funziune',
 	'prefswitch-title-switched-on' => 'Devirtete!',
+	'prefswitch-title-off' => 'Chiude le funziune nuève',
 	'prefswitch-title-switched-off' => 'Rengraziaminde',
 	'prefswitch-title-feedback' => 'Giudizie',
 	'prefswitch-success-feedback' => "'U commende tue hé state inviate.",
@@ -6466,7 +6476,8 @@ $messages['sah'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Саҥа туруоруулары араар',
 	'prefswitch-link-off' => 'Саҥа туруоруулар',
 	'tooltip-pt-prefswitch-link-off' => 'Саҥа туруоруулары тургутан көр',
-	'prefswitch-jswarning' => '',
+	'prefswitch-jswarning' => 'Өйдөө, тас көстүүтүн уларытарга [[User:$1/$2.js|$2 JavaScript]] манна хатыланыахтаах [[{{ns:user}}:$1/vector.js]] <!-- эбэтэр [[{{ns:user}}:$1/common.js]]-->, оччоҕо кини үлэлиирин салгыа.',
+	'prefswitch-csswarning' => 'Эн  [[User:$1/$2.css|бэйэҥ «$2» тиэмэҕэ аналлаах истииллэриҥ]] бу кэннэ туттуллубт буолуохтара. Ол гынан баран «Вектор» тиэмэҕэ анаан [[{{ns:user}}:$1/vector.css]] билэҕэ бэйэҥ CSS эбиэххин сөп.',
 	'prefswitch-survey-true' => 'Сөп',
 	'prefswitch-survey-false' => 'Суох',
 	'prefswitch-survey-submit-off' => 'Саҥа туруоруулары араар',
@@ -6532,6 +6543,8 @@ $messages['sah'] = array(
 * '''Көрдөөһүн.''' Көрдөөһүн этэн биэриилэрин тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ.
 * '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут.
 * '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Пуондатын» блога].",
+	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» кыбытык''' билигин сулус курдук бэлиэ (иконка) буолла.
+* '''«{{int:move}}» кыбытык''' билигин көрдөөһүн устуруокатын таһыгар түһэр менюга баар.",
 	'prefswitch-main-feedback' => '=== Айааччылардыын алтыһыы ===
 Эн санааҕын истиэхпитин баҕарабыт. Бука диэн, биһиги [[$1|онно аналлаах сирэйбитигэр]] киирэ сырыт эрэ. Өскө салгыы тугу гыныахпытын баҕарарбытын билиэххин баҕарар буоллаххына, манна [http://usability.wikimedia.org биики юзабилити-бырайыагар] киирэ сырыт.',
 	'prefswitch-main-anon' => '=== Уруккутугар төннөрүү ===
@@ -7257,12 +7270,16 @@ $messages['th'] = array(
  * @author Hanberke
  */
 $messages['tk'] = array(
+	'prefswitch' => 'Oňaýlylyk Başlangyjy ileri tutma pereklýuçateli',
+	'prefswitch-desc' => 'Ulanyjylaryň ileri tutma toplumlaryny çalyşmagyna rugsat berýär',
 	'prefswitch-link-anon' => 'Täze funksiýalar',
 	'tooltip-pt-prefswitch-link-anon' => 'Täze funksiýalary öwren',
 	'prefswitch-link-on' => 'Meni yzyma äkit',
 	'tooltip-pt-prefswitch-link-on' => 'Täze funksiýalary ýap',
 	'prefswitch-link-off' => 'Täze funksiýalar',
 	'tooltip-pt-prefswitch-link-off' => 'Täze funksiýalary synap gör',
+	'prefswitch-jswarning' => 'Bezeg çalşylanyndan soň, [[User:$1/$2.js|$2 JavaScript]] kodlaryňyzyň işlemäge dowam etmegi üçin [[{{ns:user}}:$1/vector.js]] <!-- ýa-da [[{{ns:user}}:$1/common.js]]--> sahypasyna göçürilmelidir.',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|Hususy $2 stilleriňiz]] indi ulanylmaz. Vector üçin ýörite CSS kodlaryňyzy [[{{ns:user}}:$1/vector.css]] sahypasynagoşup bilersiňiz.',
 	'prefswitch-survey-true' => 'Hawa',
 	'prefswitch-survey-false' => 'Ýok',
 	'prefswitch-survey-submit-off' => 'Täze funksiýalary ýap',
@@ -7273,6 +7290,7 @@ $messages['tk'] = array(
 	'prefswitch-survey-question-dislike' => 'Täze funksiýalarda size näme ýaramady?',
 	'prefswitch-survey-question-whyoff' => 'Täze funksiýalary näme üçin ýapýarsyňyz?
 Ähli gabat gelýänleri saýlaň.',
+	'prefswitch-survey-question-globaloff' => 'Funksiýalaryň global ýapylmagyny isleýärsiňizmi?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Funksiýalary ulanmak örän çylşyrymly.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Funksiýalar bolmalysy ýaly işlemeýär.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Funksiýalar öňünden çak edip bolar ýaly işlemedi.',
@@ -7291,11 +7309,25 @@ $messages['tk'] = array(
 	'prefswitch-title-off' => 'Täze funksiýalary ýap',
 	'prefswitch-title-switched-off' => 'Sag boluň',
 	'prefswitch-title-feedback' => 'Seslenme',
+	'prefswitch-success-on' => 'Täze funksiýalar şu wagt açyk. Täze funksiýalary halarsyňyz diýip umyt edýäris. Islän wagtyňyz sahypanyň iň ýokarsyndaky "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" çykgydyna basyp, ondan çykyp bilersiňiz.',
+	'prefswitch-success-off' => 'Täze funksiýalar şu wagt ýapyk. Täze funksiýalary synap göreniňiz üçin minnetdar. Islän wagtyňyz sahypanyň iň ýokarsyndaky "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" çykgydyna basyp, oňa girip bilersiňiz.',
 	'prefswitch-success-feedback' => 'Seslenmäňiz iberildi.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span> sahypasyna dolan',
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}} salmasy'''nda indi ýyldyz bar.
 * '''{{int:move}} salmasy''' indi gözleg paneliniň ýanyndaky açylýan menýuda.",
+	'prefswitch-main-feedback' => '===Seslenme===
+Seslenmeleriňize gulak asmak isleýäris. [[$1|Seslenme]] sahypamyza ýa-da programmany ösdürmek üçin alyp barýan tagallarymyz bilen gyzyklanýan bolsaňyz, giňişleýin maglumat üçin [http://usability.wikimedia.org oňaýlylyk wikimize] gelip görüň.',
+	'prefswitch-main-anon' => '===Meni yzyma äkit===
+Eger täze funksiýalary ýapasyňyz gelse, [$1 şu ýere basyň]. Ilki bilen sessiýa açmagyňyz ýa-da hasap döretmegiňiz soralar.',
+	'prefswitch-main-on' => '===Meni yzyma äkit!===
+[$2 Täze funksiýalary ýapmak üçin şu ýere basyň].',
+	'prefswitch-main-off' => '===Olary synap görüň!===
+[$1 Täze funksiýalary açmak üçin şu ýere basyň].',
+	'prefswitch-survey-intro-feedback' => 'Seslenmeleriňize gulak asmak isleýäris.
+"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" çykgydyna basmankaňyz, ilki bilen aşakdaky hökmany däl soraglara jogap beriň.',
+	'prefswitch-survey-intro-off' => 'Täze funksiýalary synap göreniňiz üçin sag boluň.
+Olary ösdürmegimize kömek etmek üçin, "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" çykgydyna basmankaňyz, ilki bilen aşakdaky hökmany däl soraglara jogap beriň.',
 	'prefswitch-feedbackpage' => 'Project:Ulanyjynyň tejribe seslenmesi',
 );
 

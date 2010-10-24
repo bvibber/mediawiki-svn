@@ -81,6 +81,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'inspectcache-delete' => 'ܫܘܦ',
+	'inspectcache-list' => 'ܡܟܬܒܘܬܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

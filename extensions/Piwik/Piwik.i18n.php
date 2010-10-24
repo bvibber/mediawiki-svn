@@ -64,6 +64,7 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'piwik-countries' => 'ܐܬܪ̈ܘܬܐ',
 	'piwik-browsers' => 'ܡܦܐܬܢ̈ܐ',
 );
 

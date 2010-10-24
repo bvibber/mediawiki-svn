@@ -452,6 +452,7 @@ $messages['eo'] = array(
 	'spamdifftool' => 'Kontrolu spaman nigraliston',
 	'spamdifftool-desc' => 'Provizas bazan fojon por aldoni novajn listanojn al la spam-nigralisto de diferencaj paĝoj',
 	'spamdifftool_cantedit' => 'Bedaŭrinde - vi ne havas permeson por redakti la spaman nigraliston.',
+	'spamdifftool-no-title' => "'''Eraro:''' neniu paĝtitolo estis specifita.",
 	'spamdifftool_notext' => "Estas neniom da teksto aldoni al la spama nigralisto.
 Klaku <a href='$1'>ĉi tie</a> por daŭri.",
 	'spamdifftool_confirm' => "Konfirmu ke vi volas aldoni ĉi tiujn aĵojn al la spama nigralisto.
@@ -1032,6 +1033,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'spamdifftool_submit_buttom' => 'സമർപ്പിക്കുക',
+);
+
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'spamdifftool_submit_buttom' => 'Явуулах',
 );
 
 /** Marathi (मराठी)

@@ -52,6 +52,15 @@ $messages['bs'] = array(
 	'embedvideo-missing-params' => 'EmbedVideo nedostaje neophodni parametar.',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'embedvideo-missing-params' => 'EmbedVideo chybí potřebný parametr.',
+	'embedvideo-bad-params' => 'EmbedVideo dostalo špatný parametr.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo nerozpoznalo zdroj videa "<code>$1</code>".',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

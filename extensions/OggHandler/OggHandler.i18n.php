@@ -234,7 +234,9 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'ogg-player-soundthumb' => 'ܠܝܬ ܛܐܠܢܐ',
 	'ogg-more' => 'ܝܬܝܪ…',
+	'ogg-download' => 'ܐܚܬ ܠܦܦܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -322,18 +324,6 @@ href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descar
 $messages['avk'] = array(
 	'ogg-download' => 'Iyeltakkalvajara',
 	'ogg-desc-link' => 'Icde bat iyeltak',
-);
-
-/** Samogitian (Žemaitėška)
- * @author Hugo.arg
- */
-$messages['sgs'] = array(
-	'ogg-play' => 'Gruotė',
-	'ogg-pause' => 'Pauzė',
-	'ogg-stop' => 'Sostabdītė',
-	'ogg-play-video' => 'Gruotė video',
-	'ogg-play-sound' => 'Gruotė garsa',
-	'ogg-download' => 'Atsėsiōstė faila',
 );
 
 /** Southern Balochi (بلوچی مکرانی)
@@ -1320,6 +1310,8 @@ $messages['he'] = array(
 	'ogg-dismiss' => 'סגירה',
 	'ogg-download' => 'הורדת הקובץ',
 	'ogg-desc-link' => 'אודות הקובץ',
+	'ogg-oggThumb-version' => 'OggHandler דורש את oggThumb בגרסה $1 ומעלה.',
+	'ogg-oggThumb-failed' => 'oggThumb נכשל ביצירת התמונה הממוזערת.',
 );
 
 /** Hindi (हिन्दी)
@@ -2879,6 +2871,19 @@ $messages['sah'] = array(
 	'ogg-download' => 'Билэни хачайдаа',
 	'ogg-desc-link' => 'Бу билэ туһунан',
 	'ogg-oggThumb-version' => 'OggHandler oggThumb $1 эбэтэр ордук версиятын наадыйар',
+	'ogg-oggThumb-failed' => 'oggThumb миниатюраны кыайан оҥорбото.',
+);
+
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['sgs'] = array(
+	'ogg-play' => 'Gruotė',
+	'ogg-pause' => 'Pauzė',
+	'ogg-stop' => 'Sostabdītė',
+	'ogg-play-video' => 'Gruotė video',
+	'ogg-play-sound' => 'Gruotė garsa',
+	'ogg-download' => 'Atsėsiōstė faila',
 );
 
 /** Sinhala (සිංහල)
@@ -3328,6 +3333,8 @@ QuickTime bu komponent bolmasa Ogg faýllaryny oýnadyp bilmeýär.
 	'ogg-dismiss' => 'Ýap',
 	'ogg-download' => 'Faýl düşür',
 	'ogg-desc-link' => 'Bu faýl hakda',
+	'ogg-oggThumb-version' => 'OggHandler oggThumb programmasynyň $1 wersiýasyny ýa-da has täzesini talap edýär.',
+	'ogg-oggThumb-failed' => 'oggThumb miniatýura döredip bilmedi.',
 );
 
 /** Tagalog (Tagalog)

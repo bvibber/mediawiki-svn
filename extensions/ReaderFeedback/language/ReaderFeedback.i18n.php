@@ -178,6 +178,7 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'readerfeedback-finished' => 'ܬܘܕܝ!',
+	'readerfeedback-tt-review' => 'ܫܕܪ ܬܢܝܬܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1702,6 +1703,13 @@ $messages['ml'] = array(
 	'readerfeedback-tt-review' => 'സംശോധനം സമർപ്പിക്കുക',
 );
 
+/** Mongolian (Монгол)
+ * @author Chinneeb
+ */
+$messages['mn'] = array(
+	'readerfeedback-submit' => 'Явуулах',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aviator
  */
@@ -2192,6 +2200,8 @@ $messages['rue'] = array(
 	'readerfeedback-completeness' => 'Повнота',
 	'readerfeedback-npov' => 'Невтралсность',
 	'readerfeedback-presentation' => 'Поданя матеріалу',
+	'readerfeedback-overall' => 'Цалкова оцінка',
+	'readerfeedback-level-none' => '(не знаю)',
 	'readerfeedback-level-0' => 'Бідне',
 	'readerfeedback-level-1' => 'Низке',
 	'readerfeedback-level-2' => 'Середнє',
@@ -2205,6 +2215,8 @@ $messages['rue'] = array(
 	'readerfeedback-tier-high' => 'Высоке',
 	'readerfeedback-tier-medium' => 'Середнє',
 	'readerfeedback-tier-poor' => 'Низке',
+	'specialpages-group-feedback' => 'Назоры чітателїв',
+	'readerfeedback-tt-review' => 'Одослати оцінку',
 );
 
 /** Yakut (Саха тыла)
@@ -2294,6 +2306,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'readerfeedback-desc' => 'Vrednotenje strani omogoča uporabnikom podajanje povratne informacije v obliki kategoričnih ocen',
 	'readerfeedback' => 'Kaj menite o tej strani?',
 	'readerfeedback-text' => "''Prosimo, vzemite si trenutek za ocenitev te strani spodaj. Vaša povratna informacija je dragocena in nam bo pomagala izboljšati našo spletno stran.''",
 	'readerfeedback-reliability' => 'Zanesljivost',
@@ -2309,6 +2322,9 @@ $messages['sl'] = array(
 	'readerfeedback-level-4' => 'Izvrstno',
 	'readerfeedback-submit' => 'Potrdi',
 	'readerfeedback-main' => 'Ocenjevati je mogoče samo vsebinske strani.',
+	'readerfeedback-success' => "'''Zahvaljujemo se vam za ocenitev te strani!''' ([$2 ogled rezultatov]) ([$3 pripombe ali vprašanja?]).",
+	'readerfeedback-voted' => "'''Zdi se, da ste to stran že ocenili''' ([$2 ogled rezultatov]) ([$3 pripombe ali vprašanja?]).",
+	'readerfeedback-error' => "'''Med ocenjevanjem te strani je prišlo do napake''' ([$2 ogled rezultatov]) ([$3 pripombe ali vprašanja?]).",
 	'readerfeedback-submitting' => 'Potrjevanje …',
 	'readerfeedback-finished' => 'Hvala!',
 	'readerfeedback-tagfilter' => 'Oznaka:',
@@ -2316,6 +2332,7 @@ $messages['sl'] = array(
 	'readerfeedback-tier-high' => 'Visoko',
 	'readerfeedback-tier-medium' => 'Zmerno',
 	'readerfeedback-tier-poor' => 'Slabo',
+	'tooltip-ca-ratinghist' => 'Ocene bralcev te strani',
 	'specialpages-group-feedback' => 'Mnenje obiskovalca',
 	'readerfeedback-tt-review' => 'Pošlji pregled',
 );

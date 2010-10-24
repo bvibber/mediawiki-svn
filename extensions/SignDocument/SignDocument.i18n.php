@@ -35,6 +35,13 @@ $messages['ar'] = array(
 	'right-createsigndocument' => 'إنشاء وثائق يمكن توقيعها',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'signaturelogpage' => 'ܣܓܠܐ ܕܪܡܝ ܐܝܕܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */

@@ -1340,6 +1340,7 @@ $messages['ml'] = array(
  * @author Chinneeb
  */
 $messages['mn'] = array(
+	'imagetagging-article' => 'Хуудас:',
 	'imagetagging-tagcancel-button' => 'Цуцлах',
 );
 

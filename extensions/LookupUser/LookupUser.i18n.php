@@ -81,6 +81,14 @@ $messages['ar'] = array(
 	'right-lookupuser' => 'مطالعة تفضيلات المستخدم',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'lookupuser-realname' => 'ܫܡܐ ܫܪܝܪܐ: $1',
+	'lookupuser-useroptions' => 'ܓܒܝܬ̈ܐ ܕܡܬܚܫܚܢܐ:',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ouda
@@ -861,10 +869,13 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Anoopan
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'lookupuser' => 'ഉപയോക്താവിന്റെ വിവരം തിരയുക',
+	'lookupuser-desc' => 'ഒരു ഉപയോക്താവിന്റെ ഇമെയിൽ വിലാസം, ഐ.ഡി. തുടങ്ങിയ [[Special:LookupUser|വിവരങ്ങൾ ശേഖരിക്കുക]]',
+	'lookupuser-intro' => 'ഒരു ഉപയോക്താവിന്റെ ക്രമീകരണങ്ങൾ നൽകാൻ ഉപയോക്തൃനാമം നൽകുക.',
 	'lookupuser-nonexistent' => 'തെറ്റ്: ഉപയോക്താവ് നിലവിലില്ല',
 	'lookupuser-authenticated' => 'ഇമെയിൽ സ്ഥിരീകരണം: $1',
 	'lookupuser-not-authenticated' => 'സ്ഥിരീകരിച്ചിട്ടില്ല',
@@ -875,6 +886,9 @@ $messages['ml'] = array(
 	'lookupuser-registration' => 'രജിസ്റ്റർ ചെയ്ത തീയതി: $1',
 	'lookupuser-no-registration' => 'റെക്കോർഡ് ചെയ്തിട്ടില്ല',
 	'lookupuser-touched' => 'ഉപയോക്താവിന്റെ വിവരങ്ങൾ അവസാനം തിരുത്തിയത്: $1',
+	'lookupuser-info-authenticated' => 'ഇമെയിൽ സാധൂകരണം: $1',
+	'lookupuser-useroptions' => 'ഉപയോക്തൃ ഐച്ഛികങ്ങൾ:',
+	'right-lookupuser' => 'ഉപയോക്തൃ ഐച്ഛികങ്ങൾ നോക്കുക',
 );
 
 /** Marathi (मराठी)

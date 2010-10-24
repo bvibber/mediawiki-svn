@@ -67,7 +67,9 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
+	'pageby-first' => 'ܕܦܐ ܐܬܒܪܝܬ ܒܝܕ $1, $2',
 	'pageby-contributors' => 'ܫܘܬܦܢ̈ܐ:',
+	'pageby-anon' => '<i>ܠܐ ܝܕܝܥܐ</i>',
 );
 
 /** Egyptian Spoken Arabic (مصرى)

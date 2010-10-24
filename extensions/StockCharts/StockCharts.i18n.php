@@ -104,6 +104,13 @@ $messages['el'] = array(
 Χρήση: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'stockcharts-desc' => 'Aldonas <nowiki><stockchart ticker="AAPL"/></nowiki> etikedon por interaktiva financa borsa protokolo',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

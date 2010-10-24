@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'specialarc2admin' => 'ARC2 RDF Store admin page',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'rdfimport' => 'RDF ܡܥܠܢܘܬܐ',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

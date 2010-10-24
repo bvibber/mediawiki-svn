@@ -1228,6 +1228,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1240,7 +1241,7 @@ $messages['ml'] = array(
 	'vote-results' => 'വോട്ടെടുപ്പിന്റെ ഫലം',
 	'vote-results-count' => 'എണ്ണം',
 	'vote-results-none' => 'നിലവിൽ വോട്ടുകളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.',
-	'vote-login' => 'വോട്ടു ചെയ്യാൻ താങ്കൾ [$1 ലോഗിൻ ചെയ്യുക] ചെയ്തിരിക്കണം.',
+	'vote-login' => 'വോട്ടു ചെയ്യാൻ താങ്കൾ [$1 ലോഗിൻ] ചെയ്തിരിക്കണം.',
 );
 
 /** Marathi (मराठी)

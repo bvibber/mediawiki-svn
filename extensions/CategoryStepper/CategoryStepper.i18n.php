@@ -65,6 +65,15 @@ $messages['az'] = array(
 	'categorystepper-start' => '(kateqoriyanın başlanğıcı)',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categorystepper-desc' => 'Бит ҡараған бер йәки бер нисә категорияның алфавит буйынса тәртипкә килтерелгән эстәлеге буйлап алға һәм артҡа күсергән мөмкинлек биреүсе йүнәлештәр бүлеген күрһәтә.',
+	'categorystepper-end' => '(Категорияның аҙағы)',
+	'categorystepper-start' => '(Категорияның башы)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -603,6 +612,14 @@ $messages['sk'] = array(
 	'categorystepper-desc' => 'Zobrazuje navigačné pole na abecedné prechádzanie kategórií, v ktorých sa stránka nachádza',
 	'categorystepper-end' => '(koniec kategórie)',
 	'categorystepper-start' => '(začiatok kategórie)',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'categorystepper-end' => '(Konec kategorije)',
+	'categorystepper-start' => '(Začetek kategorije)',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

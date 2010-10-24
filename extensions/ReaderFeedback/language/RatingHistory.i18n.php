@@ -142,6 +142,17 @@ $messages['ar'] = array(
 	'right-feedback' => 'استخدام استمارة الآراء لتقييم صفحة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'ratinghistory-month' => 'ܝܪܚܐ ܐܚܪܝܐ',
+	'ratinghistory-3months' => '3 ܝܪ̈ܚܐ ܐܚܪ̈ܝܐ',
+	'ratinghistory-year' => 'ܫܢܬܐ  ܐܚܪܝܬܐ',
+	'ratinghistory-3years' => '3 ܫܢܝ̈ܐ  ܐܚܪ̈ܝܬܐ',
+	'ratinghistory-table-votes' => 'ܩܠ̈ܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  * @author Ramsis II
@@ -674,6 +685,8 @@ Las valoraciones son como siguen:
 $messages['et'] = array(
 	'ratinghistory' => 'Lehekülje hindamise ajalugu',
 	'ratinghistory-leg' => 'Lehekülje [[:$1|$1]] hindamisajalugu',
+	'ratinghistory-tab' => 'hindamine',
+	'ratinghistory-link' => 'Lehekülje hindamine',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">Aitäh, et leidsid aega selle lehekülje hindamiseks!</font>''",
 	'ratinghistory-period' => 'Ajavahemik:',
 	'ratinghistory-month' => 'viimane kuu',
@@ -685,7 +698,7 @@ $messages['et'] = array(
 	'ratinghistory-purge' => 'tühjenda vahemälu',
 	'ratinghistory-table' => 'Lugejahinnangute ülevaade',
 	'ratinghistory-users' => 'Hinnanud kasutajad',
-	'ratinghistory-graph' => 'Lehekülje "$3" {{lcfirst:$2}} ($1 {{PLURAL:$1|arvustus|arvustust}})',
+	'ratinghistory-graph' => 'Lehekülje "$3" {{lcfirst:$2}} ($1 {{PLURAL:$1|hindamine|hindamist}})',
 	'ratinghistory-svg' => 'Näita SVG-vormingus',
 	'ratinghistory-table-rating' => 'Hinnang',
 	'ratinghistory-table-votes' => 'Hääli',
@@ -1989,7 +2002,12 @@ $messages['rue'] = array(
 	'ratinghistory-year' => 'послїднїй рік',
 	'ratinghistory-3years' => 'послїднї 3 рокы',
 	'ratinghistory-ave' => 'Середня годнота: $1',
+	'ratinghistory-chart' => 'Оцінка чітателїв за час',
 	'ratinghistory-purge' => 'очістити кеш',
+	'ratinghistory-table' => 'Перегляд оцінок чітателїв',
+	'ratinghistory-users' => 'Хоснователї, котры оцінёвали',
+	'ratinghistory-graph' => '$2 з "$3" ($1 {{PLURAL:$1|перегляд|перегляды|переглядів}})',
+	'ratinghistory-svg' => 'Зобразити як SVG',
 	'ratinghistory-table-rating' => 'Рейтінґ',
 	'ratinghistory-table-votes' => 'Голосы',
 	'ratinghistory-ratings' => "'''Леґенда:''' '''(1)''' — слаба; '''(2)''' — низка; '''(3)''' — середня; '''(4)''' — высока; '''(5)''' — выняткова;",
@@ -2072,6 +2090,7 @@ $messages['sl'] = array(
 	'ratinghistory-leg' => 'Podatki zgodovine ocen za [[:$1|$1]]',
 	'ratinghistory-tab' => 'ocenjevanje',
 	'ratinghistory-link' => 'Ocenjevanje strani',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Hvala, ker ste si vzeli trenutek in ocenili to stran!</font>''",
 	'ratinghistory-period' => 'Časovno obdobje:',
 	'ratinghistory-month' => 'zadnji mesec',
 	'ratinghistory-3months' => 'zadnje tri mesece',
@@ -2079,12 +2098,22 @@ $messages['sl'] = array(
 	'ratinghistory-3years' => 'zadnja tri leta',
 	'ratinghistory-ave' => 'Povp.: $1',
 	'ratinghistory-chart' => 'Ocene bralcev skozi čas',
+	'ratinghistory-purge' => 'počisti predpomnilnik',
+	'ratinghistory-table' => 'Pregled ocen bralcev',
 	'ratinghistory-users' => 'Uporabniki, ki so ocenili',
 	'ratinghistory-graph' => '$2 »$3« ($1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}})',
 	'ratinghistory-svg' => 'Prikaži kot SVG',
 	'ratinghistory-table-rating' => 'Ocena',
 	'ratinghistory-table-votes' => 'Glasovi',
+	'ratinghistory-none' => 'V tem trenutku ni dovolj podatkov o povratnih informacijah bralcev, da bi bilo mogoče izrisati graf.',
 	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – Slabo; '''(2)''' – Nizko; '''(3)''' – Pošteno; '''(4)''' – Visoko; '''(5)''' – Izvrstno;",
+	'ratinghistory-legend' => "'''Dnevno število ocen''' <font color=\"red\">''(rdeče)''</font>, '''dnevna povprečna ocena''' <font color=\"blue\">''(modro)''</font> in '''tekoče povprečje ocen''' <font color=\"green\">''(zeleno)''</font> je prikazano v grafu spodaj, po datumu.
+'''Tekoče povprečje ocen''' je preprosto povprečje vseh dnevnih ocen ''v tem'' časovnem obdobju za vsak dan.
+Ocene so naslednje:
+
+'''(1)''' – Slabo; '''(2)''' – Nizko; '''(3)''' – Pošteno; '''(4)''' – Visoko; '''(5)''' – Izvrstno;",
+	'ratinghistory-graph-scale' => "'''Dnevne ocene''' <font color=\"red\">''(rdeče)''</font>, prikazane v merilu ''1:\$1''.",
+	'right-feedback' => 'Uporaba obrazca za povratne informacije za ocenjevanje strani',
 );
 
 /** Albanian (Shqip)

@@ -72,6 +72,19 @@ $messages['arz'] = array(
 	'categorywatch-catsub' => 'ازال $1 من التصنيف $2',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'categorywatch-desc' => 'Күҙәтелгән категорияларға кергән биттәр исемлегенең үҙгәреүе тураһында белгертеү мөмкинлеге менән күҙәтеү исемлеген киңәйтә',
+	'categorywatch-emailsubject' => '"$1" категорияһына ҡағылған үҙгәртеүҙәр',
+	'categorywatch-catmovein' => '$1 битен $3 категорияһынан $2 категорияһына күсергән',
+	'categorywatch-catmoveout' => '$1 битен $3 категорияһынан $2 категорияһына күсергән',
+	'categorywatch-catadd' => '$2 категорияһына $1 битен өҫтәгән',
+	'categorywatch-catsub' => '$2 категорияһынан $1 битен юйған',
+	'categorywatch-autocat' => '$1 категорияһы үҙенән-үҙе күҙәтелә',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

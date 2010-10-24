@@ -198,11 +198,12 @@ $messages['fi'] = array(
 /** French (Français)
  * @author McDutchie
  * @author PieRRoMaN
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'tablemod' => 'TableMod',
 	'tablemod-desc' => 'Manipulation des wiki-tables',
-	'tablemod-msg-remove' => 'Supprimer',
+	'tablemod-msg-remove' => 'Enlever',
 	'tablemod-error-format' => 'Cette balise supporte uniquement une table simple par balise, sans aucun texte avant ou après celle-ci.',
 	'tablemod-error-colcount' => 'Cette balise supporte uniquement les tables avec un nombre égal de colonnes par ligne lors de la suppression.',
 	'tablemod-error-headcount' => 'Cette balise supporte uniquement les tables avec des en-têtes sur une seule colonne lors du tri.',

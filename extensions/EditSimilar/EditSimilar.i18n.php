@@ -139,6 +139,16 @@ $messages['ca'] = array(
 	'tog-edit-similar' => 'Activa els suggeriments de pàgines similars',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'editsimilar-desc' => 'Nabádá uživatele editovat podobnou stránku po uložení stránky',
+	'editsimilar-thankyou' => 'Děkujeme za váš příspěvek, $1!',
+	'editsimilar-link-disable' => 'nastavit nastavení',
+	'tog-edit-similar' => 'Zapnout navrhování podobných stránek',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Leithian

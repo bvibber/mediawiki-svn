@@ -242,6 +242,33 @@ $messages['avk'] = array(
 	'badimages-page' => '{{ns:help}}:Ewaveemaj',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'badimages' => 'Рөхсәт ителмәгән рәсемдәр исемлеге',
+	'badimage-desc' => 'MediaWiki программаһының рөхсәт ителмәгән рәсемдәр исемлегенең мөмкинлектәрен киңәйтә',
+	'badimages-add-btn' => 'Өҫтәргә',
+	'badimages-added' => '$1 исемлеккә өҫтәлде.',
+	'badimages-count' => "Рөхсәт ителмәгән рәсемдәр исемлегендә бөтәһе '''$1''' {{PLURAL:$1|рәсем}}.",
+	'badimages-name' => 'Исеме:',
+	'badimages-not-added' => 'Был рәсемде өҫтәп булмай.',
+	'badimages-not-removed' => 'Был рәсемде юйып булмай.',
+	'badimages-reason' => 'Сәбәп:',
+	'badimages-remove' => '(юйырға)',
+	'badimages-remove-btn' => 'Юйырға',
+	'badimages-remove-confirm' => 'Зинһар, $1 рәсемен исемлектән юйыуҙы раҫлағыҙ:',
+	'badimages-removed' => '$1 рәсеме исемлектән юйылды.',
+	'badimages-subheading' => 'Хәҙерге рәсемдәр',
+	'badimages-unprivileged' => '(Һеҙҙең исемлекте үҙгәртер өсөн хоҡуҡтарығыҙ етәрлек түгел)',
+	'badimages-log-name' => 'Рөхсәт ителмәгән рәсемдәр исемлеге',
+	'badimages-log-header' => 'Был — [[{{MediaWiki:Badimages-page}}|рөхсәт ителмәгән рәсемдәр исемлеген]] үҙгәртеү яҙмалары журналы.',
+	'badimages-log-add' => '[[$1]] рәсемен рөхсәт ителмәгән рәсемдәр исемлегенә өҫтәгән',
+	'badimages-log-remove' => '[[$1]] рәсемен рөхсәт ителмәгән рәсемдәр исемлегенән юйған',
+	'badimages-page' => '{{ns:help}}:Рөхсәт ителмәгән рәсемдәр исемлеге',
+	'right-badimages' => 'Рөхсәт ителмәгән рәсемдәр исемлеген яңыртыу',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */
@@ -782,6 +809,7 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'badimages' => 'Liste des images indésirables',
@@ -794,7 +822,7 @@ $messages['fr'] = array(
 	'badimages-not-removed' => 'L’image n’a pas pu être retirée.',
 	'badimages-reason' => 'Motif :',
 	'badimages-remove' => '(retirer)',
-	'badimages-remove-btn' => 'Retirer',
+	'badimages-remove-btn' => 'Enlever',
 	'badimages-remove-confirm' => 'Veuillez confirmer que vous voulez retirer $1 de la liste :',
 	'badimages-removed' => '$1 a été retirée de la liste.',
 	'badimages-subheading' => 'Liste actuelle',
@@ -819,9 +847,9 @@ $messages['frc'] = array(
 	'badimages-not-added' => "L'image a pas pu être additionnée.",
 	'badimages-not-removed' => "L'image a pas pu être ôtée.",
 	'badimages-reason' => 'Raison:',
-	'badimages-remove' => '(ôter)',
-	'badimages-remove-btn' => 'Ôter',
-	'badimages-remove-confirm' => 'Confirmez donc que vous souhaitez ôter $1 de la liste:',
+	'badimages-remove' => '(enlever)',
+	'badimages-remove-btn' => 'Enlever',
+	'badimages-remove-confirm' => 'Veuillez confirmer que vous souhaitez enlever $1 de la liste :',
 	'badimages-removed' => '$1 a été ôté de la liste.',
 	'badimages-subheading' => 'Liste courante',
 	'badimages-unprivileged' => '(Vous avez pas la permission de changer la liste.)',

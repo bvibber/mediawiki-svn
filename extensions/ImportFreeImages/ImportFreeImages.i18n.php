@@ -111,6 +111,11 @@ $messages['ar'] = array(
  */
 $messages['arc'] = array(
 	'importfreeimages_owner' => 'ܣܝܘܡܐ',
+	'importfreeimages_size_thumbnail' => 'ܨܘܪܬܐ ܙܥܘܪܬܐ',
+	'importfreeimages_size_small' => 'ܙܥܘܪܬܐ',
+	'importfreeimages_size_medium' => 'ܡܨܥܝܬܐ',
+	'importfreeimages_size_large' => 'ܪܒܬܐ',
+	'importfreeimages_size_original' => 'ܫܪܫܝܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -1318,6 +1323,9 @@ $messages['te'] = array(
 	'importfreeimages_next' => 'తర్వాతి $1',
 	'importfreeimages_size_square' => 'చతురస్రం',
 	'importfreeimages_size_thumbnail' => 'నఖచిత్రం',
+	'importfreeimages_size_small' => 'చిన్న',
+	'importfreeimages_size_medium' => 'మధ్యస్థం',
+	'importfreeimages_size_large' => 'పెద్ద',
 	'importfreeimages_size_original' => 'అసలు',
 );
 

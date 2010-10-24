@@ -513,6 +513,13 @@ $messages['ru'] = array(
 	'charinsert-desc' => 'Позволяет создать JavaScript-поле для [[MediaWiki:Edittools|вставки нестандартных символов]]',
 );
 
+/** Rusyn (Русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'charinsert-desc' => 'Доволює створити JavaScript-блок про [[MediaWiki:Edittools|вкладаня незвычайных сімболів]]',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

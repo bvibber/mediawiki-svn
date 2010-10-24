@@ -79,6 +79,16 @@ $messages['ca'] = array(
 	'delaydef-error-no-name' => 'Error: No heu especificat un nom de paràmetre',
 );
 
+/** Czech (Česky)
+ * @author Jkjk
+ */
+$messages['cs'] = array(
+	'delayeddefinition-desc' => 'Přidá značky &lt;define&gt; a &lt;display&gt; které umožňují změnu polohy kódu',
+	'delaydef-error-missing-def' => 'Chyba: Definice potřebná pro &lt;display name="$1"&gt; nebyla nalezena.',
+	'delaydef-error-no-name' => 'Chyba: Nebyl zadán název parametru.',
+	'delaydef-error-redef' => 'Chyba: Pokus o předefinování $1.',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  */

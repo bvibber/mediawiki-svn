@@ -1086,6 +1086,16 @@ $messages['sk'] = array(
 	'ajax-se-usernotfound' => 'CHYBA: používateľ nebol nájdený',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ajax-se-idling' => '(pred $1 s)',
+	'ajax-se-pagedoesnotexist' => 'stran ne obstaja',
+	'ajax-se-userinvalid' => 'Napaka: neveljavni uporabnik',
+	'ajax-se-usernotfound' => 'Napaka: uporabnika ni mogoče najti',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */
