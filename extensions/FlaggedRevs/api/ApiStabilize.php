@@ -237,7 +237,11 @@ class ApiStabilize extends ApiBase {
 			array( 'code' => 'invalidconfig', 'info' => 'Invalid config parameters given. The precendence level may beyond your rights.' ),
 		) );
 	}
-	
+
+	public function needsToken() {
+		return true;
+	}
+
 	public function getTokenSalt() {
 		return '';
 	}
