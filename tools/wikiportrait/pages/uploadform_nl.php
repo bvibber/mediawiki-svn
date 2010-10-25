@@ -89,6 +89,7 @@
 		<br style="clear:both;" />
 
 		<button type="submit" id="btnUpload" name="btnUpload">Upload mijn foto</button>
+        <input type="hidden" name="btnUpload" value="true"> <!-- fix for Chrome -->
 
 		<div id="loading" class="imgbox jshide">
 			<script type="text/javascript">
