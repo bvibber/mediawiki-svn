@@ -29,6 +29,7 @@ $wgOpenStackManagerNovaDisableSSL = true;
 $wgOpenStackManagerNovaServerName = 'localhost';
 $wgOpenStackManagerNovaPort = 8773;
 $wgOpenStackManagerNovaResourcePrefix = '/services/Cloud/';
+$wgOpenStackManagerNovaAdminKeys = array( 'accessKey' => '', 'secretKey' => '' );
 
 $dir = dirname(__FILE__) . '/';
 
