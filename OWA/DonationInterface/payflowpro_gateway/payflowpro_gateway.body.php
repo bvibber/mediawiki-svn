@@ -969,7 +969,7 @@ EOT;
 		if( $owa_ref != null  && !is_numeric( $owa_ref )){
 			$owa_ref = $this->get_owa_ref_id( $owa_ref );
 		}
-		echo $ow
+
 		// if we're in testing mode and an action hasn't yet be specified, prepopulate the form
 		if ( !$wgRequest->getText( 'action', false ) && !$numAttempt && $wgPayflowGatewayTest ) {
 			// define arrays of cc's and cc #s for random selection
