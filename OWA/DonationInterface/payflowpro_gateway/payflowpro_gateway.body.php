@@ -946,7 +946,7 @@ EOT;
 		if ( $id_num === false ) {
 			$dbw->insert(
 				'contribution_tracking_owa_ref',
-				array( 'url' => (string) $event_name ),
+				array( 'url' => (string) $ref ),
 				__METHOD__
 			);
 			$id_num = $dbw->insertId();
