@@ -7,17 +7,13 @@
  *
  * This is the include file for the InlineEditor.
  *
- * Usage: Include the following line in your LocalSettings.php
- * require_once( "$IP/extensions/InlineEditor.php" );
- *
- * To enable all provided editors, add this in your LocalSettings.php:
- * require_once( "$IP/extensions/InlineEditor/InlineEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/SentenceEditor/SentenceEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/ListEditor/ListEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/ReferenceEditor/ReferenceEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/MediaEditor/MediaEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/TemplateEditor/TemplateEditor.php" );
- * require_once( "$IP/extensions/InlineEditor/FullEditor/FullEditor.php" );
+ * Usage: It's recommended to use one of the following configurations in LocalSettings.php:
+ * 
+ * 1. For editors like "Sentences", "Lists", "Media", etc. use:
+ * require_once( "$IP/extensions/InlineEditor/InlineEditorFunctional.php" );
+ * 
+ * 2. For editors "Sentences", "Paragraphs" and "Sections" use:
+ * require_once( "$IP/extensions/InlineEditor/InlineEditorBlocks.php" );
  *
  * @author Jan Paul Posma <jp.posma@gmail.com>
  * @license GPL v2 or later
@@ -42,13 +38,19 @@ $dir = dirname( __FILE__ ) . '/';
 // add autoload classes
 $wgAutoloadClasses['InlineEditor']                = $dir . 'InlineEditor.class.php';
 $wgAutoloadClasses['InlineEditorText']            = $dir . 'InlineEditorText.class.php';
+$wgAutoloadClasses['InlineEditorMarking']         = $dir . 'InlineEditorMarking.class.php';
 $wgAutoloadClasses['InlineEditorPiece']           = $dir . 'InlineEditorPiece.class.php';
-$wgAutoloadClasses['InlineEditorPreviousMarking'] = $dir . 'InlineEditorPreviousMarking.class.php';
+$wgAutoloadClasses['InlineEditorRoot']            = $dir . 'InlineEditorRoot.class.php';
+$wgAutoloadClasses['InlineEditorNode']            = $dir . 'InlineEditorNode.class.php';
 $wgAutoloadClasses['ExtendedEditPage']            = $dir . 'ExtendedEditPage.class.php';
 
 // register hooks
 $wgHooks['MediaWikiPerformAction'][]              = 'InlineEditor::mediaWikiPerformAction';
 $wgHooks['EditPage::showEditForm:initial'][]      = 'InlineEditor::showEditForm';
+
+$wgHooks['InlineEditorPartialBeforeParse']        = array();
+$wgHooks['InlineEditorPartialAfterParse']         = array();
+$wgHooks['InlineEditorPartialBeforeParse'][]      = 'InlineEditor::partialRenderCite';
 
 // i18n messages
 $wgExtensionMessagesFiles['InlineEditor']         = $dir . 'InlineEditor.i18n.php';

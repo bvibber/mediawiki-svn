@@ -11,6 +11,11 @@
 	padding: 1px;
 }
 
+.sentenceEditor .edited {
+	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
+	background-color: #F9F2A7;
+}
+
 .sentenceEditor .sentenceEditorElement:hover {
 	/* indicate the sentence to be edited with a darker color */
 	background-color: #a7d7f9;
@@ -25,12 +30,7 @@
 	cursor: auto;
 }
 
-.sentenceEditor .edited {
-	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
-	background-color: #F9F2A7;
-}
-
-.sentenceEditor .lastEdit {
+.sentenceEditor .sentenceEditorElement.lastEdit {
 	/* have an orange color, the exact complement of the hover color, for highlighting on preview/cancel */
 	background-color: #f9c9a7;
 }

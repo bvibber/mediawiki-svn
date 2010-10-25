@@ -31,7 +31,7 @@ class MediaEditor {
 			if ( $namespace == NS_FILE ) {
 				$start = $match[1];
 				$end   = $start + strlen( $match[0] );
-				$inlineEditorText->addPiece( new InlineEditorPiece( $start, $end, 'mediaEditorElement', false ) );
+				$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'mediaEditorElement', false ) );
 			}
 		}
 

@@ -15,19 +15,20 @@ lastState: 0,
 /**
  * Adds the initial state from the current HTML and a wiki string.
  */
-addInitialState: function( stateWiki ) {
-	$.inlineEditor.states[0] = {
-		wiki: stateWiki,
-		html: $('#editContent').html()
-	};
+addInitialState: function( state ) {
 	$.inlineEditor.currentState = 0;
+	$.inlineEditor.states[$.inlineEditor.currentState] = { 
+		'object': state.object,
+		'texts': state.texts,
+		'html': $( '#editContent' ).html()
+	};
 },
 
 /**
  * Returns wikitext in the current state given an ID.
  */
 getTextById: function( id ) {
-	return $.inlineEditor.states[$.inlineEditor.currentState].wiki.locations[id].text;
+	return $.inlineEditor.states[$.inlineEditor.currentState].texts[id];
 },
 
 /**
@@ -36,7 +37,7 @@ getTextById: function( id ) {
 previewTextById: function( text, id ) {
 	// send out an AJAX request which will be handled by addNewState()
 	var data = {
-			'originalWiki': $.inlineEditor.states[$.inlineEditor.currentState].wiki,
+			'object': $.inlineEditor.states[$.inlineEditor.currentState].object,
 			'lastEdit': { 'id': id, 'text': text }
 	};
 	
@@ -49,11 +50,21 @@ previewTextById: function( text, id ) {
  * Adds a new state from an AJAX request.
  */
 addNewState: function( request ) {
-	// save the state and show it on the screen
 	state = JSON.parse( request.responseText );
-	$('#editContent').html( state.html );
+	
+	// restore the html to the current state, instantly remove the animations,
+	// and then add the new html
+	$( '#editContent' ).html( $.inlineEditor.states[$.inlineEditor.currentState].html );
+	$( '.lastEdit' ).removeClass( 'lastEdit' );
+	$( '#' + state.partialHtml.id ).replaceWith( state.partialHtml.html );
+	
+	// add the new state
 	$.inlineEditor.currentState += 1;
-	$.inlineEditor.states[$.inlineEditor.currentState] = state;
+	$.inlineEditor.states[$.inlineEditor.currentState] = { 
+		'object': state.object,
+		'texts': state.texts,
+		'html': $( '#editContent' ).html()
+	};
 	
 	// clear out all states after the current state, because undo/redo would be broken
 	var i = $.inlineEditor.currentState + 1;
@@ -76,10 +87,10 @@ reload: function() {
 	$.inlineEditor.editors[$.inlineEditor.currentMode].reload();
 	
 	// fade out all lastEdit elements
-	$('.lastEdit').removeClass('lastEdit', 200);
+	$('.lastEdit').removeClass( 'lastEdit', 800 );
 	
 	// make the links in the article unusable
-	$('#editContent a').click(function(event) { event.preventDefault(); });
+	$( '#editContent a' ).click( function( event ) { event.preventDefault(); } );
 },
 
 /**
@@ -92,7 +103,7 @@ undo: function( event ) {
 	// check if we can move backward one state and do it
 	if( $.inlineEditor.currentState > 0 ) {
 		$.inlineEditor.currentState -= 1;
-		$('#editContent').html( $.inlineEditor.states[$.inlineEditor.currentState].html );
+		$( '#editContent' ).html( $.inlineEditor.states[$.inlineEditor.currentState].html );
 		$.inlineEditor.reload();
 	}
 	
@@ -194,7 +205,9 @@ publish: function( event ) {
 	event.preventDefault();
 	
 	// get the wikitext from the state as it's currently on the screen
-	var data = { 'originalWiki': $.inlineEditor.states[$.inlineEditor.currentState].wiki };
+	var data = {
+			'object': $.inlineEditor.states[$.inlineEditor.currentState].object,
+	};
 	var json = JSON.stringify( data );
 	
 	// set and send the form

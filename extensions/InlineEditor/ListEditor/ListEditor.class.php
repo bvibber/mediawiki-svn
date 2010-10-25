@@ -5,7 +5,7 @@
  */
 class ListEditor {
 	/**
-	 * This function hooks into InlineEditorMark and marks the media.
+	 * This function hooks into InlineEditorMark and marks the lists.
 	 * @param $inlineEditorText InlineEditorText
 	 */
 	public static function mark( &$inlineEditorText ) {
@@ -22,7 +22,7 @@ class ListEditor {
 			// do not include the trailing newline
 			if ( substr( $match[0], -1 ) == "\n" ) $end--;
 
-			$inlineEditorText->addPiece( new InlineEditorPiece( $start, $end, 'listEditorElement', false ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'listEditorElement', false ) );
 		}
 
 		return true;

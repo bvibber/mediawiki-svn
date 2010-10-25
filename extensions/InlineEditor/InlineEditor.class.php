@@ -99,7 +99,7 @@ class InlineEditor {
 
 	/**
 	 * Prepends a fallback message at the top of the page.
-	 * @param $html String with correct HTML
+	 * @param $html string Correct HTML
 	 */
 	private static function prependFallbackMessage( $html ) {
 		global $wgOut;
@@ -129,7 +129,7 @@ class InlineEditor {
 	 * Check if the page is 'advanced'. For now, that means it has to be in an allowed namespace.
 	 * @param $article Article
 	 * @param $title Title
-	 * @return boolean
+	 * @return bool
 	 */
 	private static function isAdvancedPage( &$article, &$title ) {
 		global $wgInlineEditorAllowedNamespaces;
@@ -143,9 +143,9 @@ class InlineEditor {
 	/**
 	 * Entry point for the 'Preview' function through Ajax.
 	 * No real point in securing this, as nothing is actually saved.
-	 * @param $json String JSON object from the client
-	 * @param $pageName String The page we're editing
-	 * @return String HTML
+	 * @param $json string JSON object from the client
+	 * @param $pageName string The page we're editing
+	 * @return string HTML
 	 */
 	public static function ajaxPreview( $json, $pageName ) {
 		$title   = Title::newFromText( $pageName );
@@ -196,13 +196,15 @@ class InlineEditor {
 	public function render( &$output ) {
 		global $wgParser, $wgHooks, $wgRequest, $wgExtensionAssetsPath;
 
-		// create an InlineEditorText object which generates the HTML and JSON for the editor
-		$text = new InlineEditorText( $this->article );
-
 		// if the page is being saved, retrieve the wikitext from the JSON
 		if ( $wgRequest->wasPosted() ) {
-			$text->loadFromJson( $wgRequest->getVal( 'json' ) );
+			$request = FormatJson::decode( $wgRequest->getVal( 'json' ), true );
+			$text = InlineEditorText::restoreObject( $request, $this->article );
 			$wgRequest->setVal( 'wpTextbox1', $text->getWikiOriginal() );
+		}
+		else {
+			// create an InlineEditorText object which generates the HTML and JSON for the editor
+			$text = new InlineEditorText( $this->article );
 		}
 
 		// try to init, or else return false, which will spawn an 'advanced page' notice
@@ -212,6 +214,8 @@ class InlineEditor {
 
 			// include the required JS and CSS files
 			$output->includeJQuery();
+			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.elastic.js?0" );
+			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.textWidth.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery.inlineEditor.basicEditor.js?0" );
 			$output->addScriptFile( $wgExtensionAssetsPath . "/InlineEditor/jquery-ui-effects-1.8.4.min.js?0" );
@@ -224,18 +228,19 @@ class InlineEditor {
 			$text->loadFromWikiText( $this->extendedEditPage->getWikiText() );
 
 			// add a large <div> around the marked wikitext to denote the editing position
-			$parserOutput = $text->getParserOutputMarked();
+			$parserOutput = $text->getFullParserOutput();
 			$parserOutput->setText( '<div id="editContent">' . $parserOutput->getText() . '</div>' );
-
+			
 			// put the marked output into the page
 			$output->addParserOutput( $parserOutput );
+			$output->setPageTitle( $parserOutput->getTitleText() );
 
 			// add the different edit modes and initial JSON state in Javascript, and finally init the editor
 			$output->addInlineScript(
 				'jQuery( document ).ready( function() {
 					jQuery.inlineEditor.editModes = ["' . implode( '","', array_keys( $this->editModes ) ) . '"];
 					jQuery.inlineEditor.currentMode = "' . reset( $this->editModes ) . '";
-					jQuery.inlineEditor.addInitialState( ' . $text->getWikiJson() . ' );
+					jQuery.inlineEditor.addInitialState( ' . FormatJson::encode( InlineEditorText::initialState( $text ) ) . ' );
 					jQuery.inlineEditor.init();
 				} );'
 			);
@@ -260,18 +265,19 @@ class InlineEditor {
 
 	/**
 	 * Pass JSON into an InlineEditorText object and return combined JSON (HTML + sentence representation)
-	 * @param $json String
-	 * @return String
+	 * @param $json string
+	 * @return string
 	 */
 	public function preview ( $json ) {
-		$text = new InlineEditorText( $this->article );
-		$text->loadFromJson( $json );
-		return $text->getCombinedJson();
+		$request = FormatJson::decode( $json, true );
+		$text = InlineEditorText::restoreObject( $request, $this->article );
+		$text->doEdit( $request['lastEdit']['id'], $request['lastEdit']['text'] );
+		return FormatJson::encode( InlineEditorText::subsequentState( $text ) );
 	}
 
 	/**
 	 * Hooks into SiteNoticeBefore. Renders the edit interface above the title of the page.
-	 * @param $siteNotice String
+	 * @param $siteNotice string
 	 */
 	public function siteNoticeBefore( &$siteNotice ) {
 		$siteNotice = $this->renderEditBox() . $this->renderEditModes();
@@ -280,9 +286,9 @@ class InlineEditor {
 
 	/**
 	 * Add an edit mode to the list.
-	 * @param $name String Name to be used in id-fields
-	 * @param $caption String Name to be displayed
-	 * @param $description String Description to be displayed when the mode is selected (*escaped* HTML only!)
+	 * @param $name string Name to be used in id-fields
+	 * @param $caption string Name to be displayed
+	 * @param $description string Description to be displayed when the mode is selected (*escaped* HTML only!)
 	 */
 	public function addEditMode( $name, $caption, $description ) {
 		$this->editModes[$name] = array(
@@ -399,5 +405,19 @@ class InlineEditor {
 			Html::rawElement( 'div', array( 'class' => 'header' ), $header )
 			. Html::rawElement( 'div', array( 'class' => 'descriptionOuter' ), $descriptions )
 		);
+	}
+	
+	/**
+	 * Make sure the entire page rerenders when rendering a reference.
+	 * 
+	 * This should be moved over to the Cite extension, and something like this should
+	 * be included in other extensions as well. In the future, something smarter should be
+	 * implemented, to be able to only rerender the dependencies and not the entire page.
+	 *  
+	 * @param $markedWiki string
+	 * @return bool
+	 */
+	public static function partialRenderCite( $markedWiki ) {
+		return ( preg_match( '/<ref[^\/]*?>.*?<\/ref>|<ref.*?\/>/is', $markedWiki) <= 0) ;
 	}
 }

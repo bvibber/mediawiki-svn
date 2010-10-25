@@ -2,8 +2,8 @@
  * Client side part of the ReferenceEditor. Defines $.inlineEditor.editors.referenceEditor.
  */
 ( function( $ ) { $.inlineEditor.editors.referenceEditor = {
-
-click: function(event) {
+		
+click: function( event ) {
 	// prevent clicks from reaching other elements
 	event.stopPropagation();
 	event.preventDefault();
@@ -12,8 +12,8 @@ click: function(event) {
 	var $field = $(this);
 	var wiki = $.inlineEditor.getTextById( $field.attr( 'id' ) );
 	
-	$newField = $.inlineEditor.basicEditor.newField( $field, $.inlineEditor.editors.referenceEditor.click );
-	$.inlineEditor.basicEditor.addEditBar( $newField, 500, wiki );
+	$newField = $.inlineEditor.basicEditor.newField( $field, $.inlineEditor.basicEditor.click );
+	$.inlineEditor.basicEditor.addEditBar( $newField, 600, wiki );
 },
 
 enable: function() {
@@ -35,6 +35,9 @@ disable: function() {
 	
 	// remove the identifying class from #editContent
 	$( '#editContent' ).removeClass( 'referenceEditor' );
+	
+	// cancel all open editors
+	$.inlineEditor.basicEditor.cancelAll();
 }
 
 }; } ) ( jQuery );

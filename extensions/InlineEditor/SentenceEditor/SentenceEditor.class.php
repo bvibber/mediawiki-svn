@@ -36,9 +36,9 @@ class SentenceEditor {
 			$detection->addWikiText( $wikiText[0], $wikiText[1] );
 		}
 
-		// have the detection class add the pieces to the InlineEditorText object,
+		// have the detection class add the markings to the InlineEditorText object,
 		// class 'sentenceEditorElement', inline elements
-		$detection->addPiecesToText( $inlineEditorText, 'sentenceEditorElement', true );
+		$detection->addMarkingsToText( $inlineEditorText, 'sentenceEditorElement', true );
 
 		return true;
 	}
@@ -59,8 +59,6 @@ class SentenceEditor {
 
 		$output->addExtensionStyle( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/SentenceEditor.css?0" );
 		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/jquery.inlineEditor.editors.sentenceEditor.js?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/jquery.textWidth.js?0" );
-		$output->addScriptFile( "$wgExtensionAssetsPath/InlineEditor/SentenceEditor/jquery.elastic.js?0" );
 
 		return true;
 	}
@@ -68,8 +66,8 @@ class SentenceEditor {
 	/**
 	 * Replaces all occurences of unsupported wikitext by spaces. This is to make sure the
 	 * positions of what's left are still the same as those in the original wikitext
-	 * @param $wikitext String
-	 * @return String
+	 * @param $wikitext string
+	 * @return string
 	 */
 	protected static function preprocess( $wikitext ) {
 		$patterns = array();
@@ -101,7 +99,7 @@ class SentenceEditor {
 	/**
 	 * Function used by preprocess() to replace matches with spaces
 	 * @param $matches array
-	 * @return String
+	 * @return string
 	 */
 	protected static function makeSpaces ( $matches ) {
 		return str_repeat( ' ', strlen( $matches[0] ) );
@@ -110,7 +108,7 @@ class SentenceEditor {
 	/**
 	 * Splits the wikitext into pieces of actual text. A split is forced where there are
 	 * two spaces or a newline. This way, it's possible to have the users define the sentences.
-	 * @param $wikitext String
+	 * @param $wikitext string
 	 * @return array
 	 */
 	protected static function split( $wikitext ) {

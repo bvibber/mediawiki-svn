@@ -70,7 +70,7 @@ class ExtendedEditPage extends EditPage {
 				return false;
 			}
 		}
-
+		
 		if ( 'initial' == $this->formtype || 'preview' == $this->formtype || $this->firsttime ) {
 			if ( $this->initialiseForm() !== false ) {
 				return true;
@@ -96,7 +96,7 @@ class ExtendedEditPage extends EditPage {
 
 	/**
 	 * Get the wikitext to render the page from
-	 * @return String
+	 * @return string
 	 */
 	public function getWikiText() {
 		return $this->textbox1;
@@ -104,7 +104,7 @@ class ExtendedEditPage extends EditPage {
 
 	/**
 	 * Get the summary to show in the input field
-	 * @return String
+	 * @return string
 	 */
 	public function getSummary() {
 		return $this->summary;
@@ -112,7 +112,7 @@ class ExtendedEditPage extends EditPage {
 
 	/**
 	 * Get the URL to submit to, with some options in the URL that are usually hidden fields
-	 * @return String
+	 * @return string
 	 */
 	public function getSubmitUrl() {
 		global $wgUser;

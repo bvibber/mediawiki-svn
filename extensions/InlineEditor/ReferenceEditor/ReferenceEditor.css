@@ -10,6 +10,11 @@
 	padding: 0.5em;
 }
 
+.referenceEditor .edited {
+	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
+	background-color: #F9F2A7;
+}
+
 .referenceEditor .referenceEditorElement:hover {
 	/* indicate the reference to be edited with a darker color */
 	background-color: #a7d7f9;
@@ -22,11 +27,6 @@
 	
 	/* reset the cursor when editing */
 	cursor: auto;
-}
-
-.referenceEditor .edited {
-	/* have a yellow color to highlight edited elements, basically the orange color with the hue shifted */
-	background-color: #F9F2A7;
 }
 
 .referenceEditor .lastEdit {

@@ -19,6 +19,7 @@ newField: function( $field, originalClickEvent ) {
 	// create a new field and add the original text
 	var $newField = $( '<' + $field.get(0).nodeName + '/>' );
 	$newField.addClass( $field.attr('class' ) );
+	$newField.removeClass( 'notEditing' );
 	$newField.addClass( 'editing' );
 	$newField.append( $orig );
 	
@@ -28,6 +29,18 @@ newField: function( $field, originalClickEvent ) {
 	$field.remove();
 	
 	return $newField;
+},
+
+/**
+ * Get a good width for the edit bar based on the original field.
+ */
+fieldWidth: function( $field, minWidth ) {
+	// calculate width based on the text width witin the page flow
+	// this means that this width will never exeed the original width when it's a multiline sentence
+	var width = $field.textWidth() - 5;
+	if( minWidth === undefined ) minWidth = 300;
+	if( width < minWidth ) width = minWidth;
+	return width;
 },
 
 /**
@@ -63,6 +76,23 @@ addEditBar: function( $newSpan, width, wiki ) {
 },
 
 /**
+ * Default click handler for simple editors. Recommended to override.
+ */
+click: function( event ) {
+	// prevent clicks from reaching other elements
+	event.stopPropagation();
+	event.preventDefault();
+	
+	// find the element and retrieve the corresponding wikitext
+	var $field = $(this);
+	var wiki = $.inlineEditor.getTextById( $field.attr( 'id' ) );
+	var width = $.inlineEditor.basicEditor.fieldWidth( $field );
+	
+	$newField = $.inlineEditor.basicEditor.newField( $field, $.inlineEditor.basicEditor.click );
+	$.inlineEditor.basicEditor.addEditBar( $newField, width, wiki );
+},
+
+/**
  * Cancels the current edit operation.
  */
 cancel: function( event ) {
@@ -87,7 +117,7 @@ cancel: function( event ) {
 	// highlight the text orange and have it fade to blue again
 	// this is a visual indicator to where the element is now
 	$orig.addClass( 'lastEdit' );
-	$orig.removeClass( 'lastEdit', 'slow' );
+	$orig.removeClass( 'lastEdit', 20000 );
 },
 
 /**
@@ -107,7 +137,14 @@ preview: function( event ) {
 	// add a visual indicator to show the preview is loading 
 	$element.addClass( 'saving' );
 	var $overlay = $( '<div class="overlay"><div class="alpha"></div><img class="spinner" src="' + wgScriptPath + '/extensions/InlineEditor/ajax-loader.gif"/></div>' );
-	$editbar.append( $overlay );
+	
+	// if it's an inline element, put it *inside* the editbar, else outside
+	if( $element.hasClass( 'inline' ) ) {
+		$editbar.append( $overlay );
+	}
+	else {
+		$editbar.after( $overlay );
+	}
 	
 	// get the edited text and the id to save it to
 	text = $editbar.children( 'textarea' ).val();
@@ -115,6 +152,13 @@ preview: function( event ) {
 	
 	// let the inlineEditor framework handle the preview
 	$.inlineEditor.previewTextById( text, id );
+},
+
+/**
+ * Cancel all basic editors. Recommended to call when switching edit modes.
+ */
+cancelAll: function() {
+	$('.editing').find('.cancel').click();
 }
 
 }; } ) ( jQuery );

@@ -18,7 +18,7 @@ class ReferenceEditor {
 		foreach ( $matches[0] as $match ) {
 			$start = $match[1];
 			$end   = $start + strlen( $match[0] );
-			$inlineEditorText->addPiece( new InlineEditorPiece( $start, $end, 'referenceEditorElement', true ) );
+			$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, 'referenceEditorElement', true ) );
 		}
 
 		return true;

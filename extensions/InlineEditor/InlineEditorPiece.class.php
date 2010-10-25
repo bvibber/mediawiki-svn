@@ -1,102 +1,85 @@
 <?php
-
 /**
- * Denotes the start and end of an editiable piece in the wikitext, along with some properties.
+ * InlineEditorPiece is a base (abstract) class for everything that describes a start-
+ * and endpoint, and provides some basic functionality. Subclasses have to implement
+ * getStart() and getEnd(), and then things like getLength(), equals(), etc. are provided
+ * as a convenience. 
  */
-class InlineEditorPiece {
-	private static $lastId = 0; /// < counter which is used to generate unique ids
-
-	private $start;     /// < start position of the piece in the wikitext
-	private $end;       /// < end position of the piece in the wikitext
-	private $class;     /// < class(es) attached to the piece, usually identifies the edit mode
-	private $inline;    /// < whether or not the piece is inline (span) or not (div)
-	private $id;        /// < unique id of this piece
-	private $edited;    /// < boolean whether or not (part of) the piece has been edited before
-	private $lastEdit;  /// < boolean whether or not (part of) the piece was in the last edit
-
-	// getter functions for most private variables
-	public function getStart()     { return $this->start; }
-	public function getEnd()       { return $this->end; }
-	public function getClass()     { return $this->class; }
-	public function getId()        { return $this->id; }
-	public function getEdited()    { return $this->edited; }
-	public function getLastEdit()  { return $this->lastEdit; }
-
-	// setter functions for edited and lastEdit, as these are not set by the different editors,
-	// but by InlineEditorText
-	public function setEdited( $val )   { $this->edited   = $val; }
-	public function setLastEdit( $val ) { $this->lastEdit = $val; }
-
+abstract class InlineEditorPiece {
 	/**
-	 * @param $start Integer Start of the piece, offset in number of characters from the begin of the wikitext
-	 * @param $end Integer End of the piece, offset in number of characters from the begin of the wikitext
-	 * @param $class String Class(es) the piece should be labeled with
-	 * @param $inline Boolean Whether the piece is inline (span) or not (div), a div also adds newlines
+	 * Get the start position of the piece, to be implemented by an extending class.
+	 * @return int
 	 */
-	function __construct( $start, $end, $class, $inline ) {
-		$this->start    = $start;
-		$this->end      = $end;
-		$this->class    = $class;
-		$this->inline   = $inline;
-		$this->id       = self::uniqueId();
-		$this->edited   = false;
-		$this->lastEdit = false;
-	}
-
+	abstract public function getStart();
+	
 	/**
-	 * Render the open tag, depending on $this->inline this is a <span> or a <div>.
-	 * @return String HTML
+	 * Get the end position of the piece, to be implemented by an extending class.
+	 * @return int
 	 */
-	public function renderStartMarking() {
-		$attribs = array( 'class' => $this->getFullClass(), 'id' => $this->id );
-		return HTML::openElement( $this->getElement(), $attribs ) . $this->getNewline();
-	}
-
+	abstract public function getEnd();
+	
 	/**
-	 * Render the close tag.
-	 * @return String HTML
+	 * Get the length by taking the difference between getEnd() and getStart()
+	 * @return int
 	 */
-	public function renderEndMarking() {
-		return $this->getNewline() . '</' . $this->getElement() . '>';
+	public final function getLength() {
+		return $this->getEnd() - $this->getStart();
 	}
-
+	
+	/**
+	 * Check whether another piece has the exact same position as this one.
+	 * @param $piece
+	 * @return bool
+	 */
+	public final function samePositionAs( InlineEditorPiece $piece ) {
+		return ( $piece->getStart() == $this->getStart() && $piece->getEnd() == $this->getEnd() );
+	}
+	
+	/**
+	 * Check whether another piece is exactly the same as this one. By default this is
+	 * the same as samePositionAs(), but it can be overridden by a subclass.
+	 * @param $piece InlineEditorPiece
+	 * @return bool
+	 */
+	public function equals( InlineEditorPiece $piece ) {
+		return $this->samePositionAs( $piece );
+	}
+	
+	/**
+	 * Check whether another piece may fit inside this piece.
+	 * @param $piece InlineEditorPiece
+	 * @return bool
+	 */
+	public final function canContain( InlineEditorPiece $piece ) {
+		return ($piece->getStart() >= $this->getStart() && 
+		        $piece->getStart() <= $this->getEnd()   &&
+		        $piece->getEnd()   >= $this->getStart() &&
+		        $piece->getEnd()   <= $this->getEnd() );
+	}
+	
+	/**
+	 * Check whether another piece overlaps with this piece with one character or more.
+	 * @param $piece InlineEditorPiece
+	 * @return bool
+	 */
+	public final function hasOverlap( InlineEditorPiece $piece ) {
+		return ( $piece->getStart() < $this->getEnd() && $piece->getEnd() > $this->getStart() );
+	}
+	
+	/**
+	 * Check whether another piece touches this piece at the start or end.
+	 * @param $piece InlineEditorPiece
+	 * @return bool
+	 */
+	public final function touches( InlineEditorPiece $piece ) {
+		return ( $piece->getStart() == $this->getEnd() || $piece->getEnd() == $this->getStart() );
+	}
+	
 	/**
 	 * Simple check to prevent invalid values.
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isValid() {
-		return $this->end > $this->start;
-	}
-
-	/**
-	 * Get the class that should be rendered, this may include 'edited' and 'lastEdit' for highlighting.
-	 * @return String All the classes
-	 */
-	private function getFullClass() {
-		return $this->class . ( $this->edited ? ' edited' : '' ) . ( $this->lastEdit ? ' lastEdit' : '' );
-	}
-
-	/**
-	 * Get the element name based on $this->inline.
-	 * @return String Element name
-	 */
-	private function getElement() {
-		return $this->inline ? 'span' : 'div';
-	}
-
-	/**
-	 * Get a newline or not based on $this->inline.
-	 * @return String Empty string or single newline character
-	 */
-	private function getNewline() {
-		return $this->inline ? '' : "\n";
-	}
-
-	/**
-	 * Get a unique id by using self::$lastId and incrementing it.
-	 * @return String
-	 */
-	private static function uniqueId() {
-		return 'inline-editor-' . self::$lastId++;
+		return $this->getEnd() > $this->getStart();
 	}
 }

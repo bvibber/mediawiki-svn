@@ -15,8 +15,7 @@ class SentenceDetectionBasic implements ISentenceDetection {
 		$this->wikiTexts[] = array( 'text' => $text, 'offset' => $offset );
 	}
 
-	public function addPiecesToText( InlineEditorText &$inlineEditorText, $class, $inline ) {
-		$pieces = array();
+	public function addMarkingsToText( InlineEditorText &$inlineEditorText, $class, $inline ) {
 		foreach ( $this->wikiTexts as $wikiText ) {
 			$sentences =  preg_split( "/(?<!\..|\...|\....)([\?\!\.]+)\s(?!.\.|..\.|...\.)/u", $wikiText['text'], -1,
 				PREG_SPLIT_OFFSET_CAPTURE | PREG_SPLIT_DELIM_CAPTURE );
@@ -28,10 +27,9 @@ class SentenceDetectionBasic implements ISentenceDetection {
 					}
 					$start = $wikiText['offset'] + $sentence[1];
 					$end   = $start + strlen( $sentence[0] );
-					$inlineEditorText->addPiece( new InlineEditorPiece( $start, $end, $class, $inline ) );
+					$inlineEditorText->addMarking( new InlineEditorMarking( $start, $end, $class, $inline ) );
 				}
 			}
 		}
-		return $pieces;
 	}
 }

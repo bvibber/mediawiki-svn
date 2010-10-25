@@ -24,7 +24,7 @@ See $1 for more information.',
 	'inline-editor-editbox-publish-caption' => 'Publish',
 	'inline-editor-editmodes-caption' => 'Edit mode:',
 	'inline-editor-redirect-browser' => 'The new editing interface is not supported by your browser.',
-	'inline-editor-redirect-advanced' => "Editing this page is considered '''advanced''' use of MediaWiki.
+	'inline-editor-redirect-advanced' => "Editing this page is considered '''advanced''' use of {{SITENAME}}.
 You can only use the '''full editor''' for this page.",
 	'inline-editor-editmodes-undo' => 'Undo',
 	'inline-editor-editmodes-redo' => 'Redo',
