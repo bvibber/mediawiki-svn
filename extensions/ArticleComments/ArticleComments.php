@@ -377,7 +377,7 @@ function specialProcessComment() {
 	if ( !empty( $messages ) ) {
 		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>\n";
-		$wikiText .= wfMsg( 'article-comments-failure-reasons' ) . "\n\n";
+		$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', count( $messages ) ) . "\n\n";
 		foreach ( $messages as $message ) {
 			$wikiText .= "* $message\n";
 		}
@@ -395,7 +395,8 @@ function specialProcessComment() {
 	if ( $wgUser->isBlockedFrom( $talkTitle ) ) {
 		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wikiText = "<div class='errorbox'>\n";
-		$wikiText .= wfMsg( 'article-comments-failure-reasons' ) . "\n\n";
+		# 1 error only but message is used above for n errors too
+		$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', 1 ) . "\n\n";
 		$wikiText .= '* ' . wfMsg( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
 		$wgOut->addWikiText( $wikiText . "</div>" );
 		return;
