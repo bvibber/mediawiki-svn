@@ -1156,7 +1156,7 @@ EOT;
 	public function updateContributionTracking( &$data, $force=false ) {
 		// ony update contrib tracking if we're coming from a single-step landing page 
 		// which we know with cc# in utm_source or if force=true
-		if ( !$force && !preg_match( "/cc[0-9]/", $data[ 'utm_source' ] )) {
+		if ( !$force || !preg_match( "/cc[0-9]/", $data[ 'utm_source' ] )) {
 			return;
 		}
 
