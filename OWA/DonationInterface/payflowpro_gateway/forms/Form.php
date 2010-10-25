@@ -664,12 +664,14 @@ abstract class PayflowProGateway_Form {
 	
 	protected function loadOwaJs() {
 		global $wgOut, $wgScriptPath;
-		$wgOut->addHeadItem( 'owa_get_info', '<script type="text/javascript" src="' .
+		$wgOut->addHeadItem('owa_tracker_analytics', '<script type="text/javascript" src="http://analytics.tesla.usability.wikimedia.org/wiki/d/extensions/owa/modules/base/js/owa.tracker-combined-min.js"></script>');
+		$wgOut->addHeadItem('owa_get_info', '<script type="text/javascript" src="http://analytics.tesla.usability.wikimedia.org/owa_get_info.js"></script>');
+		/*$wgOut->addHeadItem( 'owa_get_info', '<script type="text/javascript" src="' .
 							$wgScriptPath .
-							'/extensions/DonationInterface/payflowpro_gateway/owa_get_info.js?284"></script>' );
+							'/extensions/DonationInterface/payflowpro_gateway/owa_get_info.js?284"></script>' );*/
 		$wgOut->addHeadItem( 'owa_tracker', '<script type="text/javascript" src="' .
 							$wgScriptPath .
-							'/extensions/DonationInterface/payflowpro_gateway/owa.tracker-combined-min.js?284"></script>' );					
+							'/extensions/DonationInterface/payflowpro_gateway/owa.tracker-combined-min.js?284"></script>' );
 							
 	}
 
