@@ -25,6 +25,11 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'openstackmanager-desc',
 );
 
+$wgOpenStackManagerNovaDisableSSL = true;
+$wgOpenStackManagerNovaServerName = 'localhost';
+$wgOpenStackManagerNovaPort = 8773;
+$wgOpenStackManagerNovaResourcePrefix = '/services/Cloud/';
+
 $dir = dirname(__FILE__) . '/';
 
 $wgExtensionMessagesFiles['OpenStackManager'] = $dir . 'OpenStackManager.i18n.php';

@@ -10,11 +10,14 @@ class OpenStackNovaController {
 
 	# TODO: Make disable_ssl, hostname, and resource_prefix config options
 	function __construct( $credentials ) {
+		global $wgOpenStackManagerNovaDisableSSL, $wgOpenStackManagerNovaPort,
+			$wgOpenStackManagerNovaServerName, $wgOpenStackManagerNovaPort,
+			$wgOpenStackManagerNovaResourcePrefix;
 		wfLoadExtensionMessages('OpenStackManager');
 		$this->novaConnection = new AmazonEC2( $credentials['accessKey'], $credentials['secretKey'] );
-		$this->novaConnection->disable_ssl(true);
-		$this->novaConnection->set_hostname('controller', 8773);
-		$this->novaConnection->set_resource_prefix('/services/Cloud/');
+		$this->novaConnection->disable_ssl($wgOpenStackManagerNovaDisableSSL);
+		$this->novaConnection->set_hostname($wgOpenStackManagerNovaServerName, $wgOpenStackManagerNovaPort);
+		$this->novaConnection->set_resource_prefix($wgOpenStackManagerNovaResourcePrefix);
 		$this->instances = Array();
 	}
 
