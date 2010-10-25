@@ -390,7 +390,7 @@ EOT;
 
 		// update contribution tracking
 		// only forced when OWA is defined
-		$this->updateContributionTracking( $data, defined(OWA) );
+		$this->updateContributionTracking( $data, defined( 'OWA' ) );
 		
 		// create payflow query string, include string lengths
 		$queryArray = array(
@@ -969,7 +969,7 @@ EOT;
 		if( $owa_ref != null  && !is_numeric( $owa_ref )){
 			$owa_ref = $this->get_owa_ref_id( $owa_ref );
 		}
-		
+		echo $ow
 		// if we're in testing mode and an action hasn't yet be specified, prepopulate the form
 		if ( !$wgRequest->getText( 'action', false ) && !$numAttempt && $wgPayflowGatewayTest ) {
 			// define arrays of cc's and cc #s for random selection
@@ -1156,8 +1156,10 @@ EOT;
 	public function updateContributionTracking( &$data, $force=false ) {
 		// ony update contrib tracking if we're coming from a single-step landing page 
 		// which we know with cc# in utm_source or if force=true
-		if ( !$force || !preg_match( "/cc[0-9]/", $data[ 'utm_source' ] )) {
-			return;
+		if ( $force === false ) {
+			if ( !preg_match( "/cc[0-9]/", $data[ 'utm_source' ] )) {
+				return;
+			}
 		}
 
 		
