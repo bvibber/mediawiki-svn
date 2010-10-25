@@ -117,7 +117,7 @@ cancel: function( event ) {
 	// highlight the text orange and have it fade to blue again
 	// this is a visual indicator to where the element is now
 	$orig.addClass( 'lastEdit' );
-	$orig.removeClass( 'lastEdit', 20000 );
+	$orig.removeClass( 'lastEdit', 800 );
 },
 
 /**
