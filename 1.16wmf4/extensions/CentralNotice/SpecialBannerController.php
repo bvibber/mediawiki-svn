@@ -55,21 +55,21 @@ class SpecialBannerController extends UnlistedSpecialPage {
 		'fn': {
 			'loadBanner': function( bannerName ) {
 				// Get the requested banner
-				var bannerPageQuery = $.param( { 'banner': bannerName, 'userlang': wgUserLanguage, 'db': wgDBname, 'sitename': wgSiteName, 'country': Geo.country } );
-				var bannerPage = 'Special:BannerLoader?' + bannerPageQuery;
+				var bannerPage = 'Special:BannerLoader?banner='+bannerName+'&userlang='+wgUserLanguage+'&db='+wgDBname+'&sitename='+wgSiteName+'&country='+Geo.country;
 EOT;
 		$js .= "\n\t\t\t\tvar bannerScript = '<script type=\"text/javascript\" src=\"".Xml::escapeJsString( $wgCentralPagePath )."' + bannerPage + '\"></script>';\n";
 		$js .= <<<EOT
 				$( '#siteNotice' ).prepend( '<div id="centralNotice" class="' + ( wgNoticeToggleState ? 'expanded' : 'collapsed' ) + '">'+bannerScript+'</div>' );
 			},
 			'loadBannerList': function( geoOverride ) {
+				var bannerListURL;
 				if ( geoOverride ) {
 					var geoLocation = geoOverride; // override the geo info
 				} else {
 					var geoLocation = Geo.country; // pull the geo info
 				}
-				var bannerListQuery = $.param( { 'title': wgFormattedNamespaces[-1] + ':BannerListLoader', 'language': wgContentLanguage, 'project': wgNoticeProject, 'country': geoLocation, 'cache': 'cn.js' } );
-				var bannerListURL = wgScript + '?' + bannerListQuery;
+				var bannerListPage = 'Special:BannerListLoader?language='+wgContentLanguage+'&project='+wgNoticeProject+'&country='+geoLocation;
+				bannerListURL = wgArticlePath.replace( '$1', bannerListPage );
 				var request = $.ajax( {
 					url: bannerListURL,
 					dataType: 'json',
