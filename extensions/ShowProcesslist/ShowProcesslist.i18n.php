@@ -958,7 +958,16 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'showprocesslist' => 'Prikaži seznam procesov',
+	'showprocesslist-desc' => 'Prikaže izhod [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Uporabnik',
+	'showprocesslist-host' => 'Gostitelj',
+	'showprocesslist-db' => 'Zbirka podatkov',
+	'showprocesslist-command' => 'Ukaz',
 	'showprocesslist-time' => 'Čas',
+	'showprocesslist-state' => 'Stanje',
+	'showprocesslist-info' => 'Informacije',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

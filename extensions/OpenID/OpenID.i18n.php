@@ -4872,6 +4872,8 @@ $messages['sl'] = array(
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-button' => 'Potrdi',
+	'openid-prefstext' => 'Nastavitve [http://openid.net/ OpenID]',
+	'openid-urls-desc' => 'OpenID-ji, povezani z vašim računom:',
 	'openid-urls-action' => 'Dejanje',
 	'openid-urls-delete' => 'Izbriši',
 	'openid-add-url' => 'Dodaj nov OpenID',
@@ -4879,6 +4881,7 @@ $messages['sl'] = array(
 	'openid-provider-label-openid' => 'Vnesite svoj URL OpenID',
 	'openid-provider-label-google' => 'Prijavite se s svojim računom Google',
 	'openid-provider-label-yahoo' => 'Prijavite se s svojim računom Yahoo',
+	'openid-provider-label-aol' => 'Vnesite svoje prikazno ime AOL',
 	'openid-provider-label-other-username' => 'Vnesite svoje uporabniško ime $1',
 );
 

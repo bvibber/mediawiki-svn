@@ -110,6 +110,13 @@ $messages['et'] = array(
 	'variablepage-navlink_text' => 'Anneta',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'variablepage-navlink_text' => 'Dohaintza egin',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

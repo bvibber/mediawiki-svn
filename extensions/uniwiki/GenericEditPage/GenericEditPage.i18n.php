@@ -532,12 +532,13 @@ Lisää osioita käyttäen valikkorivin työkaluja.',
  * @author IAlex
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'gep-desc' => 'Complète le formulaire de modification pour être plus convivial',
 	'gep-emailsubject' => '[$1] Suggestion de catégorie : $2',
 	'gep-emailbody' => 'L’utilisateur « $1 » a suggéré la catégorie « $2 » pour le site « $3 ».',
-	'gep-emailfailure' => 'Désolé, votre suggestion n’a pas pu être effectuée.',
+	'gep-emailfailure' => 'Désolé, votre suggestion n’a pas pu être traitée.',
 	'gep-emailsuccess' => 'Merci d’avoir suggéré la catégorie : $1.',
 	'gep-categories' => 'Catégories',
 	'gep-addcategory' => 'Ajouter une catégorie',

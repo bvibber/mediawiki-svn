@@ -1502,10 +1502,14 @@ Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-p
  */
 $messages['sl'] = array(
 	'multipleupload' => 'Naložite več datotek',
+	'multiupload-desc' => 'Omogoča uporabnikom [[Special:MultipleUpload|nalaganje več datotek hkrati]]',
+	'multipleupload-ignoreallwarnings' => "Prezri '''vsa opozorila''' in kljub temu naloži datoteke.",
 	'multipleupload-saveallfiles' => 'Shrani vse datoteke',
+	'multipleupload-addresswarnings' => 'Prosimo, uredite vsa opozorila pred ponovnim nalaganjem datotek.',
 	'multipleupload-page' => '{{ns:project}}:Pravila brisanja datotek',
 	'multiupload-fileuploaded' => 'Datoteka naložena.',
 	'multiupload-toolbox' => 'Naložite več datotek',
+	'multiupload-no-files' => 'Prosimo, izberite vsaj eno datoteko za nalaganje.',
 	'multiupload-blank' => 'Izbrana ni nobena datoteka',
 );
 

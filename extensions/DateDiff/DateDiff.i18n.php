@@ -38,6 +38,13 @@ $messages['bs'] = array(
 	'datediff-desc' => 'Uzima dva datuma i vraća sve dane između njih',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'datediff-desc' => 'Pren dues dates i retorna tots els dies intermedis',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

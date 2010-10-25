@@ -265,7 +265,21 @@ $messages['ba'] = array(
 	'changeauthor-pagename-or-revid' => 'Мәҡәләнең исеме йәки өлгөнөң идентификаторы:',
 	'changeauthor-pagenameform-go' => 'Үтәргә',
 	'changeauthor-comment' => 'Иҫкәрмә:',
-	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Авторҙы|Авторҙарҙы}} үҙгәртеү',
+	'changeauthor-changeauthors-multi' => '{{PLURAL:$1|Авторҙы|Авторҙарҙы}} үҙгәртергә',
+	'changeauthor-explanation-multi' => 'Был форма ярҙамында һеҙ өлгөләрҙең авторҙарын үҙәртә алаһығыҙ.
+Түбәндәге исемлектә бер йәки бер нисә ҡатнашыусы исемен үҙгәртегеҙ, иҫкәрмә өҫтәгеҙ (мотлаҡ түгел) һәм "Авторҙы(ҙарҙы) үҙгәртергә" төймәһенә баҫығыҙ.',
+	'changeauthor-changeauthors-single' => 'Авторҙы үҙгәртергә',
+	'changeauthor-explanation-single' => 'Был форма ярҙамында һеҙ өлгөнөң авторын үҙәртә алаһығыҙ.
+Түбәндә ҡатнашыусы исемен үҙгәртегеҙ, иҫкәрмә өҫтәгеҙ (мотлаҡ түгел) һәм "Авторҙы үҙгәртергә" төймәһенә баҫығыҙ.',
+	'changeauthor-invalid-username' => '"$1" ҡатнашыусы исеме дөрөҫ түгел.',
+	'changeauthor-nosuchuser' => '"$1" исемле ҡатнашыусы юҡ.',
+	'changeauthor-revview' => '$2 өлгөнән №$1 өлгөһө',
+	'changeauthor-nosuchtitle' => '"$1" исемле бит юҡ.',
+	'changeauthor-weirderror' => 'Бик сәйер хата килеп сыҡты.
+Зинһар, яңынан ҡабалтағыҙ.
+Әгәр хата тағы килеп сыҡһа, мәғлүмәттәр базаһы боҙолған булыуы мөмкин.',
+	'changeauthor-invalidform' => 'Зинһар, башҡа форманы түгел, [[Special:ChangeAuthor|махсус биттәге]] форманы ҡулланығыҙ.',
+	'changeauthor-success' => 'Һеҙҙең һорауығыҙ уңышлы башҡарылды.',
 );
 
 /** Bavarian (Boarisch)

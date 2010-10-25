@@ -333,7 +333,7 @@ $messages['fi'] = array(
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'layouts-desc' => 'Remplit les pages nouvellement créées à l’aide de « mises en page » modifiables afin d’encourager une structure commune à toutes les pages',
+	'layouts-desc' => 'Remplit les pages nouvellement créées à l’aide de « mises en page » modifiables afin d’encourager une structure homogène à toutes les pages',
 	'layouts_title' => 'Créer une page',
 	'layouts_chooselayout' => 'Choisir une mise en page pour $1 :',
 	'layouts_nolayout' => 'Aucune mise en page',

@@ -262,6 +262,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author IAlex
  * @author Peter17
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'packageforce' => 'PackageForce',
@@ -275,7 +276,7 @@ $messages['fr'] = array(
 	'pf-admin-link-approve' => 'Approuver la page',
 	'pf-header-documentation' => 'Documentation',
 	'pf-header-in_packages' => 'Paquets',
-	'pf-header-edit' => 'Modifier le lien',
+	'pf-header-edit' => 'Lien pour modifier',
 	'pf-header-type' => 'Type de page',
 	'pf-header-page_title' => 'Titre',
 	'pf-header-approve' => 'Approuver',

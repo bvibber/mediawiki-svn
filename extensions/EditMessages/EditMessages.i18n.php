@@ -1615,6 +1615,7 @@ $messages['vi'] = array(
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'editmsg-search' => 'Sukön',
 	'editmsg-new-search' => 'Suk nulik',
 );
 

@@ -223,12 +223,13 @@ $messages['fi'] = array(
  * @author IAlex
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Verdy p
  */
 $messages['fr'] = array(
 	'formatchanges-desc' => 'Reformate les [[Special:RecentChanges|modifications récentes]]',
 	'formatchanges-anonymous' => 'Anonyme',
-	'formatchanges-createdby' => '$1 - créé par $2 ($3)',
-	'formatchanges-editedby' => '$1 - modifié par $2 ($3)',
+	'formatchanges-createdby' => '$1 — créé par $2 ($3)',
+	'formatchanges-editedby' => '$1 — modifié par $2 ($3)',
 );
 
 /** Franco-Provençal (Arpetan)

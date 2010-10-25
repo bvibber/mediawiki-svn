@@ -77,7 +77,7 @@ $messages['af'] = array(
 	'article-comments-invalid-field' => 'Die $1 verskafde <nowiki>[$2]</nowiki> is ongeldig.',
 	'article-comments-required-field' => 'Die veld $1 is verpligtend.',
 	'article-comments-submission-failed' => 'Indien van kommentaar het gefaal',
-	'article-comments-failure-reasons' => 'Jammer, u kommentaar was om die volgende rede(s) onsuksesvol:',
+	'article-comments-failure-reasons' => 'Jammer, u kommentaar was om die volgende {{PLURAL:$1|rede|redes}} onsuksesvol:',
 	'article-comments-no-comments' => 'Jammer, die artikel "[[$1]]" aanvaar nie tans kommentaar nie.',
 	'article-comments-talk-page-starter' => '<noinclude> Kommentaar op [[$1]] 
 <comments />
@@ -287,7 +287,7 @@ $messages['de'] = array(
 	'article-comments-invalid-field' => 'Die Eingabe <nowiki>[$2]</nowiki> als $1 ist ungültig.',
 	'article-comments-required-field' => '$1 ist ein Pflichtfeld.',
 	'article-comments-submission-failed' => 'Die Kommentierung ist fehlgeschlagen.',
-	'article-comments-failure-reasons' => 'Die Kommentierung ist fehlgeschlagen weil:',
+	'article-comments-failure-reasons' => 'Die Kommentierung ist aus {{PLURAL:$1|dem folgenden Grund|den folgenden Gründen}} fehlgeschlagen:',
 	'article-comments-no-comments' => 'Für die Seite „[[$1]]“ können momentan keine Kommentare abgegeben werden.',
 	'article-comments-talk-page-starter' => '<noinclude>Kommentare zur Seite „[[$1]]“
 <comments />
@@ -365,6 +365,21 @@ Los disponibles son "plain", "normal" y "wiki".',
 	'article-comments-comment-missing-date-parameter' => 'Falta la fecha del comentario',
 	'article-comments-no-spam' => 'Al menos uno de los campos enviados se ha marcado como no deseado.',
 	'processcomment' => 'Procesar el comentario sobre el artículo',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'article-comments-title-string' => 'izenburua',
+	'article-comments-name-string' => 'Izena',
+	'article-comments-name-field' => 'Izena (beharrezkoa):',
+	'article-comments-url-field' => 'Webgunea:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Iruzkina',
+	'article-comments-comment-field' => 'Iruzkina:',
+	'article-comments-submit-button' => 'Bidali',
+	'article-comments-leave-comment-link' => 'Iruzkina egin ...',
 );
 
 /** Finnish (Suomi)
@@ -560,6 +575,19 @@ Disponibile es "plain", "normal" e "wiki".',
 	'article-comments-comment-missing-date-parameter' => 'Data de commento mancante',
 	'article-comments-no-spam' => 'Al minus un del campos submittite esseva marcate como spam.',
 	'processcomment' => 'Tractar commento de articulo',
+);
+
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'article-comments-title-string' => 'titolo',
+	'article-comments-name-string' => 'Nome',
+	'article-comments-url-field' => 'Sito web:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-submit-button' => 'Invia',
+	'article-comments-leave-comment-link' => 'Lascia un commento ...',
+	'article-comments-commenter-said' => '$1 ha detto ...',
 );
 
 /** Japanese (日本語)
@@ -940,7 +968,7 @@ $messages['pt'] = array(
 	'article-comments-invalid-field' => 'O valor que forneceu como $1, <nowiki>[$2]</nowiki>, é inválido',
 	'article-comments-required-field' => 'O campo "$1" é obrigatório.',
 	'article-comments-submission-failed' => 'O envio do comentário falhou',
-	'article-comments-failure-reasons' => 'O envio do seu comentário falhou pelas seguintes razões:',
+	'article-comments-failure-reasons' => 'O envio do seu comentário falhou {{PLURAL:$1|pela seguinte razão|pelas seguintes razões}}:',
 	'article-comments-no-comments' => 'Neste momento, a página "[[$1]]" não aceita comentários.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentários a [[$1]]
 <comments />
@@ -1162,7 +1190,7 @@ $messages['uk'] = array(
 	'article-comments-invalid-field' => 'Варіант $1, запропонований <nowiki>[$2]</nowiki> є недійсний.',
 	'article-comments-required-field' => "Поле $1 — обов'язкове.",
 	'article-comments-submission-failed' => 'Помилка відправки коментарів',
-	'article-comments-failure-reasons' => 'На жаль, ваш коментар неможливо було додати через наступні причини:',
+	'article-comments-failure-reasons' => 'На жаль, додавання вашого коментаря не відбулося через {{PLURAL:$1|наступну причину|наступні причини}}:',
 	'article-comments-no-comments' => 'Нажаль, на сторінці  "[[$1]]" відхилена можливість додавати коментарі на цей час.',
 	'article-comments-talk-page-starter' => '<noinclude> Коментарі на [[$1]] 
 <comments />

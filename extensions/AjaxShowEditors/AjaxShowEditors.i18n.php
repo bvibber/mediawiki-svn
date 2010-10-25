@@ -1090,6 +1090,9 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'ajaxshoweditors-desc' => 'Prikaže uporabnike, ki urejajo enako stran',
+	'ajax-se-title' => 'Trenutno urejajo:',
+	'ajax-se-pending' => 'osvežitev v teku ... (kliknite to polje ali začnite urejati)',
 	'ajax-se-idling' => '(pred $1 s)',
 	'ajax-se-pagedoesnotexist' => 'stran ne obstaja',
 	'ajax-se-userinvalid' => 'Napaka: neveljavni uporabnik',

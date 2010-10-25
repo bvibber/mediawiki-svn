@@ -6861,6 +6861,7 @@ $messages['vi'] = array(
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
@@ -6870,6 +6871,7 @@ $messages['vo'] = array(
 	'deletequeue-permissions-noedit' => 'Mutol dalön redakön padi ad fägön ad votükön moükamastadi onik.',
 	'deletequeue-prod-title' => 'Mobön moükami pada: „$1“',
 	'deletequeue-delnom-otherreason' => 'Kod votik',
+	'deletequeue-delnom-extra' => 'Nüns pluik:',
 	'right-prod-nominate' => 'Mobön padimoükami',
 	'right-deletediscuss-nominate' => 'Primön moükamibespiki',
 	'right-deletediscuss-review' => 'Finükön moükamibespikis',

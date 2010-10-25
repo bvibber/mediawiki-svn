@@ -131,12 +131,13 @@ $messages['bg'] = array(
 /** Bahasa Banjar (Bahasa Banjar)
  * @author Alamnirvana
  * @author Ezagren
+ * @author J Subhi
  */
 $messages['bjn'] = array(
 	'call' => 'Kiauan',
 	'call-save' => "Kaluaran gasan kiauan ini pacang disimpan di sabuah tungkaran bangaran ''$1''.",
-	'call-save-success' => 'Teks berikut ini sudah disimpan ka tungkaran <big>[[$1]]</big>.',
-	'call-save-failed' => 'Teks berikut ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran itu sudah ada.',
+	'call-save-success' => 'Naskah nang baumpat ini sudah disimpan ka tungkaran <big>[[$1]]</big>.',
+	'call-save-failed' => 'Naskah nang baumpat ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran itu sudah ada.',
 );
 
 /** Bengali (বাংলা)

@@ -73,7 +73,7 @@ $messages['bg'] = array(
  * @author J Subhi
  */
 $messages['bjn'] = array(
-	'didyoumean-desc' => 'Tambahi tautan ka tungkaran-tungkaran nang bajudul "mahirip"',
+	'didyoumean-desc' => 'Tambahi tautan ka tutungkaran nang bajudul "mahirip"',
 );
 
 /** Bengali (বাংলা)

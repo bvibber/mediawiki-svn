@@ -8333,6 +8333,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Cedric31
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
@@ -8374,7 +8375,7 @@ Por favor, reporte este facto ao [[{{MediaWiki:Grouppage-sysop}}|administrador d
 	'mv_path_type_label' => 'tipo de caminho',
 	'mv_base_offset_label' => 'desvio da base',
 	'mv_duration_label' => 'Duração',
-	'mv_file_desc_label' => 'mensagem de decriptação da stream',
+	'mv_file_desc_label' => 'mensagem de descrição da stream',
 	'mv_delete_stream_file' => 'eliminar referência a ficheiro de stream',
 	'mv_save_changes' => 'Gravar alterações',
 	'mv_file_with_same_desc' => 'Erro: ficheiro de stream com mesma chave de descrição <i>$1</i> já presente',
@@ -8623,8 +8624,24 @@ Por favor, reporte este fato ao [[{{MediaWiki:Grouppage-sysop}}|administrador do
 	'mv_no_stream_files' => 'Arquivos de stream não existentes',
 	'mv_edit_stream_files' => 'Editar arquivos de stream',
 	'mv_path_type_url_anx' => 'URL completo da mídia',
+	'mv_path_type_wiki_title' => 'título wiki da mídia',
+	'mv_path_type_url_file' => 'URL multimídia completa usando procura local',
+	'mv_path_type_mp4_stream' => 'Servidor de stream MP4',
+	'mv_path_type_label' => 'tipo de caminho',
+	'mv_base_offset_label' => 'desvio da base',
 	'mv_duration_label' => 'Duração',
+	'mv_file_desc_label' => 'mensagem de descrição da stream',
+	'mv_delete_stream_file' => 'eliminar referência ao arquivo de stream',
 	'mv_save_changes' => 'Salvar alterações',
+	'mv_file_with_same_desc' => 'Erro: arquivo de stream com mesma chave de descrição <i>$1</i> já presente',
+	'mv_updated_stream_files' => 'Registro de arquivos de stream atualizados',
+	'mv_removed_file_stream' => 'Foi removido o arquivo de stream: $1',
+	'mv_user_cant_edit' => 'Você poderá ter que [$1 se autenticar] para editar, $2',
+	'mv_add_stream_file' => 'Adicionar arquivo de stream',
+	'mv_media_path' => 'caminho da mídia',
+	'mv_file_list' => 'Arquivos de stream',
+	'mv_label_stream_name' => 'Nome do stream',
+	'mv_label_stream_desc' => 'Descrição do stream',
 	'mv_remove_reason' => 'Motivo para a eliminação:',
 	'mv_upload_file' => 'Carregar arquivo',
 	'mv_tool_export' => 'Exportar',

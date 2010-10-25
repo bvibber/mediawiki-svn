@@ -902,6 +902,7 @@ $messages['ug-latn'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'searchbox-desc' => 'Дозволити включення пошукових форм',
 	'searchbox-search' => 'Пошук',
 	'searchbox-namespaces' => 'Простори назв:',
 );

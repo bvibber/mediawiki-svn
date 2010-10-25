@@ -140,10 +140,11 @@ $messages['bg'] = array(
 
 /** Bahasa Banjar (Bahasa Banjar)
  * @author Ezagren
+ * @author J Subhi
  */
 $messages['bjn'] = array(
 	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
-	'abcdownload' => 'Unduh:',
+	'abcdownload' => 'Hunduh:',
 );
 
 /** Bengali (বাংলা)

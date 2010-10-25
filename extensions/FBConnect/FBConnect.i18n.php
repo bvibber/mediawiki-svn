@@ -635,6 +635,27 @@ Si quieres usar Facebook Connect para ingresar en el futuro, puedes [[Special:Co
 	'fbconnect-prefs-can-be-updated' => 'Puedes actualizar estos elementos en cualquier momento mediante la pestaña "$1" en tu página de preferencias.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'fbconnect' => 'Facebook Konexioa',
+	'fbconnect-connect' => 'Facebook Konexioarekin saioa hasi',
+	'fbconnect-convert' => 'Kontu hau Facebookekin lotu',
+	'fbconnect-logout' => 'Facebooketik irten',
+	'fbconnect-link' => 'facebook.com-era itzuli',
+	'fbconnect-title' => 'Kontua Facebookekin  lotu',
+	'fbconnect-comm' => 'Komunikazioa',
+	'fbconnect-nickname' => 'Ezizena',
+	'fbconnect-fullname' => 'Izen osoa',
+	'fbconnect-email' => 'E-posta helbidea',
+	'fbconnect-language' => 'Hizkuntza',
+	'fbconnect-chooseusername' => 'Erabiltzaile izena:',
+	'fbconnect-choosepassword' => 'Pasahitza:',
+	'fbconnect-prefstext' => 'Facebook Konexioa',
+	'fbconnect-link-to-profile' => 'Facebook profila',
+);
+
 /** Finnish (Suomi)
  * @author Nike
  * @author Olli

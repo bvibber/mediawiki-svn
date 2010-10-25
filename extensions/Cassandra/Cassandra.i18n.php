@@ -41,9 +41,10 @@ $messages['be-tarask'] = array(
 
 /** Bahasa Banjar (Bahasa Banjar)
  * @author Ezagren
+ * @author J Subhi
  */
 $messages['bjn'] = array(
-	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
+	'cassandra-desc' => 'Simpan naskah ralatan di basisdata [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
 /** Breton (Brezhoneg)

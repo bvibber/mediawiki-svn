@@ -1455,6 +1455,14 @@ $messages['vi'] = array(
 	'errorhandler-trace-line-internal' => '[hàm nội bộ]: $1',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'errorhandler-errors' => 'Pöls:',
+	'errorhandler-error-warning' => 'Nuned',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

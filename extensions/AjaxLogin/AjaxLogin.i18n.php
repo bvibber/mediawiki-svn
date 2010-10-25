@@ -108,12 +108,12 @@ $messages['bg'] = array(
  * @author J Subhi
  */
 $messages['bjn'] = array(
-	'ajaxLogin2' => 'Piyan yakin kah?
-Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
+	'ajaxLogin2' => 'Pian yakin kah?
+Pian kawa kahilangan ubahan di tungkaran ini munnya Pian tulak kaluar tungkaran ini daminian.',
 	'ajaxlogin-create' => 'Ulah sabuah akun',
-	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
-Ngaran pamakay sifatnya sansitip.
-Pariksa hijaan piyan.',
+	'al-nosuchuser' => 'Kadada pamuruk bangaran "$1".
+Ngaran pamuruk sipatnya sansitip.
+Pariksa hijaan Pian.',
 );
 
 /** Bengali (বাংলা)

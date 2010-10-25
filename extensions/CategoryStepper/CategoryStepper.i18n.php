@@ -618,6 +618,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'categorystepper-desc' => 'Prikaže navigacijsko polje kategorije, ki omogoča sprehajanje naprej in nazaj po abecednem vrstnem redu skozi eno ali več kategorij, v katerih se nahaja stran',
 	'categorystepper-end' => '(Konec kategorije)',
 	'categorystepper-start' => '(Začetek kategorije)',
 );

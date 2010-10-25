@@ -1051,8 +1051,7 @@ $wgCustomToolbarMessages['fr'] = array(
 	'ct_submit' => 'Lancer',
 	'ct_close' => 'Fermer la fenêtre',
 	'ct_success' => 'Téléversement du fichier réussi !',
-	'ct_popupblocked' => 'L’ouverture de la fenêtre de téléversement a été empêchée.
-Veuillez vérifier vos paramètres de blocage des fenêtres intruses.',
+	'ct_popupblocked' => 'L’ouverture de la fenêtre de téléversement a été empêchée. Veuillez vérifier les paramètres de votre outil de blocage de fenêtres intruses.',
 	'ct_user_user' => 'Utilisateur',
 	'ct_user_tip' => 'Insérer un lien vers une page utilisateur',
 	'ct_user_caption' => 'Lien de l’utilisateur',

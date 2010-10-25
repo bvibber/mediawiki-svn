@@ -957,6 +957,7 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'postcomment_notloggedin' => 'Niste prijavljeni.',
 	'postcomment_youareloggedinas' => 'Prijavljeni ste kot $1',
+	'postcomment_addcommentdiscussionpage' => 'Dodajte svojo pripombo na to pogovorno stran',
 	'postcomment_leavemessagefor' => 'Pusti sporočilo $1',
 	'postcomment_post' => 'Objavi',
 	'postcomment_on' => 'Dne',

@@ -1388,11 +1388,16 @@ $messages['sl'] = array(
 	'mwe-clipedit-crop' => 'Obreži sliko',
 	'mwe-clipedit-preview_insert' => 'Predogled vstavljanja',
 	'mwe-clipedit-cancel_image_insert' => 'Prekliči vstavljanje',
+	'mwe-clipedit-sc_audio' => 'Nadzor zvoka',
 	'mwe-clipedit-sc_duration' => 'Trajanje',
+	'mwe-clipedit-custom_title' => 'Naslov po meri',
+	'mwe-clipedit-edit_properties' => 'Uredite lastnosti',
+	'mwe-clipedit-other_properties' => 'Druge lastnosti',
 	'mwe-clipedit-start_time' => 'Začetni čas',
 	'mwe-clipedit-end_time' => 'Končni čas',
 	'mwe-clipedit-edit-tools' => 'Orodja za urejanje',
 	'mwe-clipedit-inline-description' => 'Napis',
+	'mwe-clipedit-edit-video-tools' => 'Uredite orodja za video:',
 	'mwe-clipedit-duration' => 'Trajanje:',
 );
 

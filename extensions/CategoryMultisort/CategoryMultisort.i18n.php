@@ -548,7 +548,9 @@ $messages['scn'] = array(
  */
 $messages['sl'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Privzeto',
+	'categorymultisort-sortkey' => 'Ključ razvrščanja:',
 	'categorymultisort-go' => 'Pojdi',
+	'categorymultisort-default-sortkey' => 'Privzeti ključ razvrščanja:',
 	'prefs-category' => 'Kategorija',
 );
 

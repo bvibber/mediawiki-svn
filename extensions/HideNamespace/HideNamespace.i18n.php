@@ -45,6 +45,13 @@ $messages['bs'] = array(
 	'hidens-desc' => 'Skriva imenski prostor u naslovu i zaglavlju kada je stranica u određenom imenskom prostoru ili kada je pozvana parserska funkcija <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Catalan (Català)
+ * @author Aleator
+ */
+$messages['ca'] = array(
+	'hidens-desc' => "Oculta l'espai de noms en l'encapçalament i al títol quan una pàgina està en un espai de noms determinat o quan es crida a la funció <code><nowiki>{{#hidens:}}</nowiki></code>",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
