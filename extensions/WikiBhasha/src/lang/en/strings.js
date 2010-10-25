@@ -96,7 +96,7 @@
                                     " for content contribution." +
                                     "<br><br>" +
                                     "Current WikiBhasha beta version: 1.0.0<br><br>" +
-                                    "<a href=\"mailto:wikibfb@microsoft.com?subject=WikiBhasha Feedback\">Feedback to WikiBhasha team</a> welcome.",
+                                    "<a href=\"mailto:wikibfb@microsoft.com?subject=WikiBhasha beta Feedback\">Feedback to WikiBhasha team</a> welcome.",
                                     "<b>Supported Platforms: </b><P><P>\tIE 7/8 on Windows XP/Vista/Win7 and " +
                                     "Firefox 3.5 or above on Linux Fedora 11/12.  " +
                                     "<b><P><P> Supported Languages: </b><P><P>\t" +

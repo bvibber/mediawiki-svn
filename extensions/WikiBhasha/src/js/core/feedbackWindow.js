@@ -97,7 +97,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
 
                 $("#feedBackMessageDiv").html(wbLocal.feedbackThankYouMessage);
 
-                $("#wbFeedbackEmail").attr("href", "mailto:" + wbGlobalSettings.feedbackEmail + "?subject=WikiBhasha Feedback");
+                $("#wbFeedbackEmail").attr("href", "mailto:" + wbGlobalSettings.feedbackEmail + "?subject=WikiBhasha beta Feedback");
             }
             else {
                 //always show the feedback form area and hide the thank you message.
@@ -193,7 +193,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
                         responseSmile=" (+): ";
                     }
 
-                    document.location.href=wbUtil.stringFormat("mailto:{0}?subject=WikiBhasha feedback{1}&body={2}",wbGlobalSettings.feedbackEmail, responseSmile, $feedbackTextValue);
+                    document.location=wbUtil.stringFormat("mailto:{0}?subject=WikiBhasha beta feedback{1}&body={2}",wbGlobalSettings.feedbackEmail, responseSmile, $feedbackTextValue);
                     
                     wbFeedback.isInvokedOnMainWindowExit = false;
                     $("#" + wbFeedback.windowId).hide();

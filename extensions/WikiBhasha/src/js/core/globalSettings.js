@@ -141,6 +141,7 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
                         ['French', 'fr', 'Français'],
                         ['Korean', 'ko', '한국어'],
                         ['Hindi', 'hi', 'हिन्दी'],
+                        ['Indonesian', 'id', 'Bahasa Indonesia'],
                         ['Italian', 'it', 'italiano'],
                         ['Hebrew', 'he', 'עברית'],
                         ['HaitianCreole', 'ht', 'Kreyòlayisyen'],
@@ -160,6 +161,8 @@ if (typeof (wikiBhasha.configurations) === "undefined") {
                         ['Swedish', 'sv', 'Svenska'],
                         ['Thai', 'th', 'ภาษาไทย'],
                         ['Turkish', 'tr', 'Türkç'],
+                        ['Ukrainian', 'uk', 'Українська'],
+                        ['Vietnamese', 'vi', 'Tiếng Việt'],
                         ['ChineseSimplified', 'zh-CHS', '简体中文'],
                         ['ChineseTraditional', 'zh-CHT', '繁體中文']
                        ],

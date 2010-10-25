@@ -151,7 +151,7 @@ if (typeof (wikiBhasha.windowManagement) === "undefined") {
             wbWikiSite.getTargetLanguageTitle(wbGlobalSettings.sourceLanguageCode, wbGlobalSettings.targetLanguageCode, wbGlobalSettings.sourceLanguageArticleTitle, function(data) {
                 var isTitleBeingTranslated = false;
                 //if article exists
-                if (data.length > 0) {
+                if (data && data.length > 0) {
                     wbGlobalSettings.targetLanguageArticleTitle = decodeURIComponent(($.trim(data)));
                     $("#wbArticleTitleInput").hide();
                     $("#wbArticleTitleLabel").hide();
