@@ -23,7 +23,8 @@ $wgExtensionMessagesFiles['ContributionTracking'] = $dir . 'ContributionTracking
 $wgExtensionAliasesFiles['ContributionTracking'] = $dir . 'ContributionTracking.alias.php';
 $wgAutoloadClasses['ContributionTracking'] = $dir . 'ContributionTracking_body.php';
 $wgSpecialPages['ContributionTracking'] = 'ContributionTracking';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates'; 
+//this only works if contribution tracking is inside a mediawiki DB, which typically it isn't.
+//$wgHooks['LoadExtensionSchemaUpdates'][] = 'efContributionTrackingLoadUpdates'; 
 
 
 $wgContributionTrackingDBserver = $wgDBserver;
@@ -49,7 +50,7 @@ function efContributionTrackingLoadUpdates(){
 	//convert a referrer URL to an index in the owa_ref table
 function ef_contribution_tracking_owa_get_ref_id($ref){
 		// Replication lag means sometimes a new event will not exist in the table yet
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = contributionTrackingConnection();
 		$id_num = $dbw->selectField(
 			'contribution_tracking_owa_ref',
 			'id',
@@ -60,7 +61,7 @@ function ef_contribution_tracking_owa_get_ref_id($ref){
 		if ( $id_num === false ) {
 			$dbw->insert(
 				'contribution_tracking_owa_ref',
-				array( 'url' => (string) $event_name ),
+				array( 'url' => (string) $ref ),
 				__METHOD__
 			);
 			$id_num = $dbw->insertId();
