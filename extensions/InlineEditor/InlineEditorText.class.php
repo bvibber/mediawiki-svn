@@ -207,6 +207,10 @@ class InlineEditorText implements Serializable {
 		$parserOptions = clone $this->article->getParserOptions();
 		$parserOptions->setEditSection( false );
 		
+		// always remove the table of contents as we don't want it pop up at partial parsing
+		// or even at the first page render as it is an dependency
+		$wikiMarked .= "\n__NOTOC__";
+		
 		// run $wikiMarked through the parser and store the result
 		return $wgParser->parse( $wikiMarked, $this->article->getTitle(),
 			$parserOptions, true, true, $this->article->getRevIdFetched() );
