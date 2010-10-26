@@ -1,10 +1,10 @@
 <?php
-/*
+/**
  * ArticleComments.php - A MediaWiki extension for adding comment sections to articles.
  * @author Jim R. Wilson
  * @author Platonides
  * @version 0.6
- * @copyright Copyright (C) 2007 Jim R. Wilson
+ * @copyright Copyright © 2007 Jim R. Wilson
  * @license The MIT License - http://www.opensource.org/licenses/mit-license.php
  * -----------------------------------------------------------------------
  * Description:
@@ -52,7 +52,7 @@
  *     version 0.1:
  *         Initial release.
  * -----------------------------------------------------------------------
- * Copyright (c) 2007 Jim R. Wilson
+ * Copyright © 2007 Jim R. Wilson
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,23 +76,24 @@
  */
 
 # Confirm MW environment
-if ( !defined( 'MEDIAWIKI' ) ) die();
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die();
+}
 
 # Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'ArticleComments',
-	'author' => 'Jim R. Wilson - wilson.jim.r <at> gmail.com',
-	'url' => 'http://jimbojw.com/wiki/index.php?title=ArticleComments',
+	'author' => array( 'Jim R. Wilson', 'Platonides' ),
+	'version' => '0.6',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleComments',
 	'descriptionmsg' => 'article-comments-desc',
-	'version' => '0.6'
 );
 
-# Add Extension Functions
-$wgExtensionMessagesFiles['ArticleComments'] = dirname( __FILE__ ) . "/ArticleComments.i18n.php";
+# Add extension internationalization messages
+$wgExtensionMessagesFiles['ArticleComments'] = dirname( __FILE__ ) . '/ArticleComments.i18n.php';
 
-
-# Attach Hooks
+# Attach hooks
 $wgHooks['ParserFirstCallInit'][] = 'wfArticleCommentsParserSetup';
 $wgHooks['SkinAfterContent'][] = 'wfArticleCommentsAfterContent';
 $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
@@ -106,7 +107,7 @@ $wgArticleCommentDefaults = array(
 	'noscript' => false, # Set to true to not include any ArticleComments related JavaScript
 	'hideform' => true, # Should the comment field be hidden by default?
 	'defaultMode' => 'normal', # Which mode should be preselected for comments? Values are: plain, normal and wiki
-	);
+);
 
 /**
  * List of namespaces on which a comment field is automatically added.
@@ -137,81 +138,93 @@ function wfArticleCommentsParserHook( $text, $params = array(), $parser ) {
 function wfArticleCommentsParserHookComment( $text, $args, $parser, $frame ) {
 	global $wgArticleCommentDefaults, $wgParser, $wgParserConf;
 
-	if ( $parser === $wgParser ) # Workaround bug 25506
+	if ( $parser === $wgParser ) { # Workaround bug 25506
 		$wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
-		
-	if ( !isset( $args['name'] ) )
-		$args['name'] = wfMsgExt( 'article-comments-comment-missing-name-parameter', array( 'language' => $parser->getFunctionLang() ) ) ;
-	
-	if ( !isset( $args['url'] ) )
-		$args['url'] = ''; # This one can be empty
-	
-	if ( !isset( $args['date'] ) )
-		$args['date'] = wfMsgExt( 'article-comments-comment-missing-date-parameter', array( 'language' => $parser->getFunctionLang() ) ) ;
-	else
-		$args['date'] = $parser->getFunctionLang()->date( wfTimestamp( TS_MW, $args['date'] ) );
-	
-	if ( !isset( $args['signature'] ) )
-		$args['signature'] = $args['url'] == '' ? $args['name'] : $parser->getOptions()->getSkin( $parser->getTitle() )->makeExternalLink( $args['url'], $args['name'] );
-	else // The signature is wikitext, so it may need parsing
-		$args['signature'] = $parser->recursiveTagParse( $args['signature'], $frame );
-	
-	if ( !isset( $args['mode'] ) )
-		$args['mode'] = $wgArticleCommentDefaults['defaultMode'];
+	}
 
-	$args['mode'] = strtolower( $args['mode'] );	
+	if ( !isset( $args['name'] ) ) {
+		$args['name'] = wfMsgExt( 'article-comments-comment-missing-name-parameter', array( 'language' => $parser->getFunctionLang() ) );
+	}
+
+	if ( !isset( $args['url'] ) ) {
+		$args['url'] = ''; # This one can be empty
+	}
+
+	if ( !isset( $args['date'] ) ) {
+		$args['date'] = wfMsgExt( 'article-comments-comment-missing-date-parameter', array( 'language' => $parser->getFunctionLang() ) );
+	} else {
+		$args['date'] = $parser->getFunctionLang()->date( wfTimestamp( TS_MW, $args['date'] ) );
+	}
+
+	if ( !isset( $args['signature'] ) ) {
+		$args['signature'] = $args['url'] == '' ? $args['name'] : $parser->getOptions()->getSkin( $parser->getTitle() )->makeExternalLink( $args['url'], $args['name'] );
+	} else { // The signature is wikitext, so it may need parsing
+		$args['signature'] = $parser->recursiveTagParse( $args['signature'], $frame );
+	}
+
+	if ( !isset( $args['mode'] ) ) {
+		$args['mode'] = $wgArticleCommentDefaults['defaultMode'];
+	}
+
+	$args['mode'] = strtolower( $args['mode'] );
 	if ( $args['mode'] == 'plain' ) {
 		// Don't perform any formatting
-		
 		$text = htmlspecialchars( $text );
-		
+
 		// But make new line generate new paragraphs
 		$text = str_replace( "\n", "</p><p>", $text );
-		
-		return "<p>$text</p>";			
+
+		return "<p>$text</p>";
 	} elseif ( $args['mode'] == 'normal' ) {
 		// Convert some wikitext oddities to wiki markup
-		
+
 		# Need only a newline for new paragraph
 		$text = str_replace( "\n", "\n\n", $text );
-		
+
 		# Disable <pre> on space // TODO: Enable space indenting.
 		$text = str_replace( "\n ", "\n&#32;", $text );
-		
+
 	} elseif ( $args['mode'] == 'wiki' ) {
 		/* Full wikitext */
-		
+
 	} else {
 		return Html::rawElement( 'div', array( 'class' => 'error' ),
 			wfMsgExt( 'article-comments-comment-bad-mode', array( 'parsemag', 'language' => $parser->getFunctionLang() ) )
 		);
 	}
-	
+
 	# Parse the content, this is later kept as-is since we do a replaceafter there.
 	$text = $parser->recursiveTagParse( $text, $frame );
-	
-	return wfMsgExt( 'article-comments-comment-contents', array( 'parse', 'replaceafter', 'content' ), 
-			$args['name'], $args['url'], $args['signature'], $args['date'], $text );
+
+	return wfMsgExt(
+		'article-comments-comment-contents',
+		array( 'parse', 'replaceafter', 'content' ),
+		$args['name'], $args['url'], $args['signature'], $args['date'], $text
+	);
 }
 
 /**
  * Echos out a comment form depending on the page action and namespace.
- * @param Title $title The title of the article on which the form will appear.
- * @param Array $params A hash of parameters containing rendering options.
+ *
+ * @param $data
+ * @param $skin Object: Skin object
  */
 function wfArticleCommentsAfterContent( $data, $skin ) {
-
 	global $wgRequest, $wgArticleCommentsNSDisplayList;
 
-	# Short circuit for anything other than action=view or action=purge
+	# Short-circuit for anything other than action=view or action=purge
 	if ( $wgRequest->getVal( 'action' ) &&
 		$wgRequest->getVal( 'action' ) != 'view' &&
 		$wgRequest->getVal( 'action' ) != 'purge'
-	) return true;
+	)
+	{
+		return true;
+	}
 
 	# Short-circuit if displaylist is undefined, empty or null
-	if ( $wgArticleCommentsNSDisplayList == null )
+	if ( $wgArticleCommentsNSDisplayList == null ) {
 		return true;
+	}
 
 	$title = $skin->getTitle();
 	if ( !$title->exists() ) {
@@ -220,7 +233,9 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
 
 	# Ensure that the namespace list is an actual list
 	$nsList = $wgArticleCommentsNSDisplayList;
-	if ( !is_array( $nsList ) ) $nsList = array( $nsList );
+	if ( !is_array( $nsList ) ) {
+		$nsList = array( $nsList );
+	}
 
 	# Display the form
 	if ( in_array( $title->getNamespace(), $nsList ) ) {
@@ -231,9 +246,9 @@ function wfArticleCommentsAfterContent( $data, $skin ) {
 }
 
 /**
- * Generates and returns an ArticleComment form html.
- * @param Title $title The title of the article on which the form will appear.
- * @param Array $params A hash of parameters containing rendering options.
+ * Generates and returns an ArticleComment form HTML.
+ * @param $title Object: the title of the article on which the form will appear.
+ * @param $params Array: a hash of parameters containing rendering options.
  */
 function wfArticleCommentForm( $title, $params = array() ) {
 	global $wgArticleCommentDefaults, $wgOut;
@@ -252,17 +267,27 @@ function wfArticleCommentForm( $title, $params = array() ) {
 	$content .= '<p>';
 	$content .= Html::hidden( 'commentArticle', $title->getPrefixedDBkey() );
 
-	$content .= '<label for="commenterName">' . wfMsgExt( 'article-comments-name-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+	$content .= '<label for="commenterName">' .
+		wfMsgExt(
+			'article-comments-name-field',
+			array( 'parseinline', 'content' )
+		) . Html::element( 'br' ) . '</label>';
 	$content .= Html::input( 'commenterName', '', 'text', array( 'id' => 'commenterName' ) );
 	$content .= '</p>';
 
 	if ( $params['showurlfield'] ) {
-		$content .=  '<p><label for="commenterURL">' . wfMsgExt( 'article-comments-url-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+		$content .=  '<p><label for="commenterURL">' .
+			wfMsgExt(
+				'article-comments-url-field',
+				array( 'parseinline', 'content' )
+			) . Html::element( 'br' ) . '</label>';
 		$content .= Html::input( 'commenterURL', 'http://', 'text', array( 'id' => 'commenterURL' ) );
 		$content .= '</p>';
 	}
 
-	$content .= '<p><label for="comment">' . wfMsgExt( 'article-comments-comment-field', array( 'parseinline', 'content' ) ) . Html::element( 'br' ) . '</label>';
+	$content .= '<p><label for="comment">' .
+		wfMsgExt( 'article-comments-comment-field', array( 'parseinline', 'content' ) ) .
+		Html::element( 'br' ) . '</label>';
 
 	$content .= '<textarea id="comment" name="comment" style="width:30em" rows="5">' . '</textarea></p>';
 
@@ -327,15 +352,14 @@ function wfArticleCommentForm( $title, $params = array() ) {
 
 	$js .= "})();\n//]]></script>";
 	$wgOut->addScript( $js );
-	
+
 	return $content;
 }
 
 /**
-* Special page for comment processing.
-*/
+ * Special page for comment processing.
+ */
 function specialProcessComment() {
-
 	global $wgOut, $wgParser, $wgUser, $wgContLang, $wgRequest;
 
 	# Retrieve submitted values
@@ -371,7 +395,7 @@ function specialProcessComment() {
 	}
 
 	if ( !$comment ) {
-		$messages[] = wfMsg('article-comments-required-field', wfMsg( 'article-comments-comment-string' ) );
+		$messages[] = wfMsg( 'article-comments-required-field', wfMsg( 'article-comments-comment-string' ) );
 	}
 
 	if ( !empty( $messages ) ) {
@@ -381,7 +405,7 @@ function specialProcessComment() {
 		foreach ( $messages as $message ) {
 			$wikiText .= "* $message\n";
 		}
-		$wgOut->addWikiText( $wikiText . "</div>" );
+		$wgOut->addWikiText( $wikiText . '</div>' );
 		return;
 	}
 
@@ -398,7 +422,7 @@ function specialProcessComment() {
 		# 1 error only but message is used above for n errors too
 		$wikiText .= wfMsgExt( 'article-comments-failure-reasons', 'parsemag', 1 ) . "\n\n";
 		$wikiText .= '* ' . wfMsg( 'article-comments-user-is-blocked', $talkTitle->getPrefixedText() ) . "\n";
-		$wgOut->addWikiText( $wikiText . "</div>" );
+		$wgOut->addWikiText( $wikiText . '</div>' );
 		return;
 	}
 
@@ -414,8 +438,7 @@ function specialProcessComment() {
 		$talkContent = $talkArticle->getContent();
 	}
 
-
-	# Check if talk NS is in the Namespace display list
+	# Check if talk NS is in the namespace display list
 	# Note: if so, then there's no need to confirm that <comments /> appears in the article or talk page.
 	global $wgArticleCommentsNSDisplayList;
 	$skipCheck = (
@@ -431,24 +454,24 @@ function specialProcessComment() {
 	) {
 		$wgOut->setPageTitle( wfMsgForContent( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
-			"<div class='errorbox'>" .
+			'<div class="errorbox">' .
 			wfMsg( 'article-comments-no-comments', $title->getPrefixedText() ) .
-			"</div>"
+			'</div>'
 		);
 		return;
 	}
 
 	# Run spam checks
-	$isspam = false;
-	wfRunHooks( 'ArticleCommentsSpamCheck', array( $comment , $commenterName, $commenterURL, &$isspam ) );
+	$isSpam = false;
+	wfRunHooks( 'ArticleCommentsSpamCheck', array( $comment, $commenterName, $commenterURL, &$isSpam ) );
 
 	# If it's spam - it's gone!
-	if ( $isspam ) {
+	if ( $isSpam ) {
 		$wgOut->setPageTitle( wfMsg( 'article-comments-submission-failed' ) );
 		$wgOut->addWikiText(
-			"<div class='errorbox'>" .
+			'<div class="errorbox">' .
 			wfMsg( 'article-comments-no-spam' ) .
-			"</div>"
+			'</div>'
 		);
 		return;
 	}
@@ -461,16 +484,22 @@ function specialProcessComment() {
 	# Search for insertion point, or append most recent comment.
 	$commentText = wfMsgForContent( 'article-comments-new-comment-heading', $commenterName, $commenterURL, '~~~~', $comment );
 	$commentText .= '<comment date="' . htmlspecialchars( wfTimestamp( TS_ISO_8601 ) ) . '" name="' . htmlspecialchars( $commenterName ) . '"';
-	if ( $commenterURL != '' ) $commentText .= ' url="' . htmlspecialchars( $commenterURL ) . '"';
-	if ( $wgUser->isLoggedIn() ) $commentText .= ' signature="' . htmlspecialchars( $wgParser->getUserSig( $wgUser ) ) . '"';
+	if ( $commenterURL != '' ) {
+		$commentText .= ' url="' . htmlspecialchars( $commenterURL ) . '"';
+	}
+	if ( $wgUser->isLoggedIn() ) {
+		$commentText .= ' signature="' . htmlspecialchars( $wgParser->getUserSig( $wgUser ) ) . '"';
+	}
 	$commentText .= ">\n" . str_replace( '</comment', '&lt;/comment', $comment ) . "\n</comment>";
-	
+
 	$posAbove = stripos( $talkContent, '<!--COMMENTS_ABOVE-->' );
-	if ( $posAbove === false ) $posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
+	if ( $posAbove === false ) {
+		$posBelow = stripos( $talkContent, '<!--COMMENTS_BELOW-->' );
+	}
 	if ( $posAbove !== false ) {
 		# Insert comments above HTML marker
 		$talkContent = substr( $talkContent, 0, $posAbove ) . $commentText . substr( $talkContent, $posAbove );
-	} else if ( $posBelow !== false ) {
+	} elseif ( $posBelow !== false ) {
 		# Insert comments below HTML marker
 		$talkContent = substr( $talkContent, 0, $posBelow + 21 ) . $commentText . substr( $talkContent, $posBelow + 21 );
 	} else {
@@ -483,22 +512,21 @@ function specialProcessComment() {
 	$talkArticle->doEdit( $talkContent, $summary );
 
 	$wgOut->setPageTitle( wfMsg( 'article-comments-submission-succeeded' ) );
-	$wgOut->addWikiText(  wfMsg( 'article-comments-submission-success', $title->getPrefixedText() ) );
-	$wgOut->addWikiText(  wfMsg( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() ) );
+	$wgOut->addWikiMsg( 'article-comments-submission-success', $title->getPrefixedText() );
+	$wgOut->addWikiMsg( 'article-comments-submission-view-all', $talkTitle->getPrefixedText() );
 }
 
 /**
- * Checks ArticleComment fields for SPAM.
+ * Checks ArticleComment fields for spam.
  * Usage: $wgHooks['ArticleCommentsSpamCheck'][] = 'defaultArticleCommentSpamCheck';
  * @param String $comment The comment body submitted (passed by value)
  * @param String $commenterName Name of commenter (passed by value)
  * @param String $commenterURL Website URL provided for comment (passed by value)
- * @param Boolean $isspam Whether the comment is spam (passed by reference)
+ * @param Boolean $isSpam Whether the comment is spam (passed by reference)
  * @return Boolean Always true to indicate other hooking methods may continue to check for spam.
  */
-function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL, &$isspam ) {
-
-	if ( $isspam ) {
+function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL, &$isSpam ) {
+	if ( $isSpam ) {
 		# This module only marks comments as spam (other modules may unspam)
 		return true;
 	}
@@ -510,7 +538,7 @@ function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL
 	if ( $wgSpamRegex ) {
 		foreach ( $fields as $field ) {
 			if ( preg_match( $wgSpamRegex, $field ) ) {
-				$isspam = true;
+				$isSpam = true;
 				return true;
 			}
 		}
@@ -524,7 +552,7 @@ function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL
 	foreach ( $spampatterns as $sp ) {
 		foreach ( $fields as $field ) {
 			if ( preg_match( $sp, $field ) ) {
-				$isspam = true;
+				$isSpam = true;
 				return true;
 			}
 		}
@@ -539,17 +567,17 @@ function defaultArticleCommentSpamCheck( $comment, $commenterName, $commenterURL
 	);
 	foreach ( $spampatterns as $sp ) {
 		if ( preg_match( $sp, $commenterName ) ) {
-			$isspam = true;
+			$isSpam = true;
 			return true;
 		}
 	}
 
 	# Fail for length violations
 	if ( strlen( $commenterName ) > 255 || strlen( $commenterURL ) > 300 ) {
-		$isspam = true;
+		$isSpam = true;
 		return true;
 	}
 
-	# We made it this far, leave $isspam alone and give other implementors a chance.
+	# We made it this far, leave $isSpam alone and give other implementors a chance.
 	return true;
 }
