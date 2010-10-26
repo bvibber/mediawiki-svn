@@ -174,7 +174,7 @@ mw.EmbedPlayerNative = {
 			return ;
 		}
 		// Bind events to local js methods:			
-		vid.addEventListener( 'canplaythrogh',  function() { $j( _this ).trigger('canplaythrough'); }, true);			 
+		vid.addEventListener( 'canplaythrough',  function() { $j( _this ).trigger('canplaythrough'); }, true);			 
 		vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
 		vid.addEventListener( 'progress', function( e ) { if( _this.onprogress ) { _this.onprogress( e ); }  }, true);
 		vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
