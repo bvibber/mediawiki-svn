@@ -1,25 +1,13 @@
 <?php
-/********************************************************
-*                                                       *
-*   Copyright (C) Microsoft. All rights reserved.       *
-*                                                       *
-********************************************************/
 
-/*
-Copyright (c) 2010, Microsoft
-All rights reserved.
+/* 
+WikiBhasha launch Extention base class script.
+Available functions:
+1) wikiBhashaToolbox	: adds wikibhasha launch link in the left toolbox menue
+2) wbToolbarIcon		: - Looks for "action=edit" in the URL and check if toolbar exists. if present adds a icon to the toolbar for launching WikiBhasha.
+*						  - Looks for "wbAutoLaunch=true" in the URL and launch WikiBhasha.	 
 */
 
-// WikiBhasha launch Extention script.
-// Description: this script eases the procedure to launch WikiBhasha by instrumenting
-// wikipedia pages with links and options to launch the application. It executes the
-// same routine as the bookmarklet and is portable across Wikipedia installations.
-//
-// The current functions to launch WikiBhasha:
-// 1. Looks for "action=edit" in the URL and check if toolbar exists. if present adds a
-//    icon to the toolbar for launching WikiBhasha.
-// 2. inserts a "WikiBhasha" option in the left side toolbox menu.
-// 3. Looks for "wbAutoLaunch=true" in the URL and launch WikiBhasha.
 class wikiBhashaExt {
 	private $url, $wikiBhashaUrl;
 	function __construct() {

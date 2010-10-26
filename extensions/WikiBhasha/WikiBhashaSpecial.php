@@ -1,14 +1,12 @@
 <?php
-/**
- * Special:WikiBhasha
- *
- * @file
- * @ingroup SpecialPage
- */
 
-/**
- *
- */
+/*
+* 
+* We need to overload the special page constructor to initialize our own data also if we want to change the behavior of the SpecialPage class itself. 
+* it will ececute when called from the child class
+* 
+*/
+
 class wikiBhasha extends SpecialPage {
 
 	/**

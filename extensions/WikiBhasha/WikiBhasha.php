@@ -1,14 +1,4 @@
 <?php
-/********************************************************
-*                                                       *
-*   Copyright (C) Microsoft. All rights reserved.       *
-*                                                       *
-********************************************************/
-
-/*
-Copyright (c) 2010, Microsoft
-All rights reserved.
-*/
 
 // WikiBhasha launch Extention script.
 // Description: this script eases the procedure to launch WikiBhasha by instrumenting
