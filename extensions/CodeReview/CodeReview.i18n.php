@@ -358,6 +358,8 @@ $messages['af'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'geverifieer',
 	'code-status-old' => 'oud',
+	'code-signoff-field-user' => 'Gebruiker',
+	'code-signoff-field-date' => 'Datum',
 	'code-pathsearch-path' => 'Pad:',
 	'code-revfilter-cr_status' => 'Status = $1',
 	'code-revfilter-cr_author' => 'Outeur = $1',
@@ -1050,6 +1052,19 @@ $4',
 
 Старая вэрсія: $3
 Новая вэрсія: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Дададзены новы камэнтар, статус вэрсіі зьменены',
+	'codereview-email-body4' => 'Удзельнік «$1» зьмяніў статус $2.
+
+Стары статус: $3
+Новы статус: $4
+
+Удзельнік «$1» таксама пакінуў камэнтар у $2.
+
+Поўны URL-адрас: $5
+
+Камэнтар:
+
+$6',
 	'code-stats' => 'статыстыка',
 	'code-stats-header' => 'Статыстыка для сховішча $1',
 	'code-stats-main' => 'На $1 ў сховішчы {{PLURAL:$2|утрымліваецца $2 вэрсія|утрымліваюцца $2 вэрсіі|утрымліваюцца $2 вэрсіяў}} [[Special:Code/$3/author|$4 {{PLURAL:$4|аўтара|аўтараў|аўтараў}}]].',
@@ -1073,6 +1088,7 @@ $4',
 	'right-codereview-remove-tag' => 'Выдаленьне тэгаў са зьменаў',
 	'right-codereview-post-comment' => 'Дадаць камэнтары да вэрсіяў',
 	'right-codereview-set-status' => 'Зьмяніць статус вэрсіяў',
+	'right-codereview-signoff' => 'Зацьвердзіць вэрсіі',
 	'right-codereview-link-user' => 'Даданьне да аўтараў спасылак на рахункі ўдзельнікаў вікі',
 	'specialpages-group-developer' => 'Інструмэнты распрацоўшчыка',
 );
@@ -4195,6 +4211,14 @@ $messages['gsw'] = array(
 	'code-status-desc-deferred' => 'D Version brucht kei Beguetachtig.',
 	'code-status-old' => 'alt',
 	'code-status-desc-old' => 'Alti Version mit meglige Bug, wu aber nit derwärt sin, zum si beguetachte.',
+	'code-signoffs' => 'Frejgabe',
+	'code-signoff-legend' => 'Frejgab zuefiege',
+	'code-signoff-submit' => 'Frejgee',
+	'code-signoff-flag-inspected' => 'Prieft',
+	'code-signoff-flag-tested' => 'Teschtet',
+	'code-signoff-field-user' => 'Benutzer',
+	'code-signoff-field-flag' => 'Fahne',
+	'code-signoff-field-date' => 'Datum',
 	'code-pathsearch-legend' => 'Suech no Revisione in däm Depot per Pfad',
 	'code-pathsearch-path' => 'Pfad:',
 	'code-pathsearch-filter' => 'Filter aagwändet:',
@@ -4232,14 +4256,24 @@ Volli URL: $3
 Ibertragzämmefassig:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: E automatischi Priefig het e Fähler gfunde, wu schon emol ufträtten isch',
-	'codereview-email-body3' => 'E automatischi Priefig het e Fähler ufdeckt, wu dr Änderigen in $1 wider ufträtten isch
+	'codereview-email-subj3' => '[$1] [$2]: Versionsstatus gänderet',
+	'codereview-email-body3' => 'Benutzer „$1“ het dr Status vu $2 gänderet.
 
-Vollständigi URL: $2
+Alte Status: $3
+Neje Status: $4',
+	'codereview-email-subj4' => '[$1] [$2]: Neje Kommentar zuegfiegt un dr Versionsstatus gänderet',
+	'codereview-email-body4' => 'Benutzer „$1“ het dr Status vu $2 gänderet.
 
-Zämmefassig vu dr Bearbeitig:
+Alte Status: $3
+Neje Status: $4
 
-$3',
+Benutzer „$1“ het au ne Kommentar zue $2 zuegfiegt.
+
+Vollständigi URL: $5
+
+Kommentar:
+
+$6',
 	'code-stats' => 'Statischtike',
 	'code-stats-header' => 'Statistik vum Repositorium „$1“',
 	'code-stats-main' => 'Mit em Stand $1 {{PLURAL:$2|isch|sin}} vu [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autore}}]] $2 {{PLURAL:$2|Revision|Revisione}} im Repositorium durgfiert wore.',
@@ -4263,6 +4297,7 @@ $3',
 	'right-codereview-remove-tag' => 'Tag vu Revisione useneh',
 	'right-codereview-post-comment' => 'Kommentar zue Revisione ergänze',
 	'right-codereview-set-status' => 'Revisionsstatus ändere',
+	'right-codereview-signoff' => 'Änderige frejgee',
 	'right-codereview-link-user' => 'Autore uf Wiki-Benutzer vergleiche',
 	'specialpages-group-developer' => 'Entwicklerwärchzyyg',
 );
@@ -5397,6 +5432,9 @@ $messages['it'] = array(
 	'code-status-desc-deferred' => 'Revisione che non richiede di essere esaminata.',
 	'code-status-old' => 'vecchia',
 	'code-status-desc-old' => 'Vecchia revisione con bug potenziali ma che non vale la pena di esaminare.',
+	'code-signoff-flag-tested' => 'Testato',
+	'code-signoff-field-user' => 'Utente',
+	'code-signoff-field-date' => 'Data',
 	'code-pathsearch-legend' => 'Ricerca nelle revisioni di questo repository in base al percorso',
 	'code-pathsearch-path' => 'Percorso:',
 	'code-pathsearch-filter' => 'Filtro applicato:',
@@ -5439,6 +5477,7 @@ $4',
 	'repoadmin-edit-view' => 'Percorso su ViewVC:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'La modifica del repository "[[Special:Code/$1|$1]]" è stata completata correttamente.',
+	'repoadmin-nav' => 'gestione dei repository',
 	'right-repoadmin' => 'Gestione dei repository del codice',
 	'right-codereview-use' => 'Utilizzo di Special:Code',
 	'right-codereview-add-tag' => 'Aggiunge nuove etichette alle modifiche',
@@ -5547,6 +5586,14 @@ $messages['ja'] = array(
 	'code-status-desc-deferred' => 'リビジョンはレビューを必要としていません。',
 	'code-status-old' => '古',
 	'code-status-desc-old' => '潜在的なバグがあるが、レビューする価値がない古いリビジョン',
+	'code-signoffs' => 'サインオフ',
+	'code-signoff-legend' => 'サインオフを追加',
+	'code-signoff-submit' => 'サインオフ',
+	'code-signoff-flag-inspected' => '検査済み',
+	'code-signoff-flag-tested' => '試験済み',
+	'code-signoff-field-user' => 'ユーザー',
+	'code-signoff-field-flag' => 'フラグ',
+	'code-signoff-field-date' => '日付',
 	'code-pathsearch-legend' => 'このリポジトリ内のリビジョンをパスで検索する',
 	'code-pathsearch-path' => 'パス:',
 	'code-pathsearch-filter' => 'フィルターの適用',
@@ -5584,14 +5631,24 @@ $4',
 コミットの要約：
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: 自動的なテストによってリグレッションが検出されました',
-	'codereview-email-body3' => '自動的なテストによって、$1 における変更のためにリグレッションが起きたことが明らかになりました。
+	'codereview-email-subj3' => '[$1] [$2]: リビジョンの状態が変更されました',
+	'codereview-email-body3' => 'ユーザー$1が、$2の状態を変更しました。
 
-Full URL: $2
+もとの状態：$3
+新しい状態：$4',
+	'codereview-email-subj4' => '[$1] [$2]: 新しいコメントが追加され、リビジョンの状態が変更されました',
+	'codereview-email-body4' => 'ユーザー「$1」が、$2の状況を変更しました。
 
-コミットの要約:
+もとの状態：$3
+新しい状態：$4
 
-$3',
+また、ユーザー「$1」はコメントを$2に残しました。
+
+全URL：$5
+
+コメント：
+
+$6',
 	'code-stats' => '統計',
 	'code-stats-header' => 'レポジトリ$1の統計情報',
 	'code-stats-main' => '$1現在、レポジトリは[[Special:Code/$3/author|$4人の著者]]による$2個のリビジョンがあります。',
@@ -5615,6 +5672,7 @@ $3',
 	'right-codereview-remove-tag' => 'リビジョンからタグを除去する',
 	'right-codereview-post-comment' => 'リビジョンにコメントを追加する',
 	'right-codereview-set-status' => 'リビジョンの状態を変更する',
+	'right-codereview-signoff' => 'リビジョンでサインオフ',
 	'right-codereview-link-user' => '著者とウィキ利用者を対応付ける',
 	'specialpages-group-developer' => '開発者用ツール',
 );
@@ -6299,9 +6357,12 @@ $messages['lb'] = array(
 	'code-status-new' => 'nei',
 	'code-status-fixme' => 'verbesser mech',
 	'code-status-reverted' => 'zréckgesat',
+	'code-status-desc-reverted' => "D'Versioun gouf duerch eng méi nei Versioun ersat.",
 	'code-status-resolved' => 'geléist',
+	'code-status-desc-resolved' => "D'Versioun hat e Feeler deen duerch eng méi nei Versioun verbessert gouf.",
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'nogekuckt',
+	'code-status-desc-verified' => "D'Versioun gouf getest a fonctionnéiert esou wéi geduecht.",
 	'code-status-deferred' => 'zréckgestallt',
 	'code-status-desc-deferred' => "D'Versioun muss net nogekuckt ginn.",
 	'code-status-old' => 'al',
@@ -8410,6 +8471,7 @@ $messages['pt'] = array(
 	'code-signoff-flag-inspected' => 'Inspeccionado',
 	'code-signoff-flag-tested' => 'Testado',
 	'code-signoff-field-user' => 'Utilizador',
+	'code-signoff-field-flag' => 'Estado',
 	'code-signoff-field-date' => 'Data',
 	'code-pathsearch-legend' => 'Pesquisar revisões neste repositório por caminho',
 	'code-pathsearch-path' => 'Caminho:',

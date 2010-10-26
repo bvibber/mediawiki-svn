@@ -41,6 +41,16 @@ $messages['ar'] = array(
 	'checkpoint-tooltip' => 'إحفظ هذه المرحلة واستمرّ في تحرير الصفحة',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'checkpoint' => 'Һаҡларға һәм мөхәррирләүҙе дауам итергә',
+	'checkpoint-desc' => 'Үҙгәртеүҙәрҙе һаҡларға һәм мөхәррирләүҙе дауам итергә мөмкинлек бирә',
+	'checkpoint-tooltip' => 'Үҙгәртеүҙәрегеҙҙе һаҡлағыҙ һәм мөхәррирләүҙе дауам итегеҙ',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|туҡтау нөктәһен һаҡлау]])',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

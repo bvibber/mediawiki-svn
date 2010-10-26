@@ -684,6 +684,24 @@ $messages['mk'] = array(
 	'nss-db-error' => 'Најдена е грешка во базата на податоци за потврдување',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'accountmanager' => 'അംഗത്വ കൈകാര്യോപകരണം',
+	'am-username' => 'ഉപയോക്തൃനാമം',
+	'am-email' => 'ഇമെയിൽ',
+	'am-active' => 'സജീവം',
+	'am-updated' => 'താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ വിജയകരമായി സേവ് ചെയ്തിരിക്കുന്നു',
+	'nss-rights' => 'അവകാശങ്ങൾ',
+	'nss-save-changes' => 'മാറ്റങ്ങൾ സേവ് ചെയ്യുക',
+	'nss-create-account-header' => 'അംഗത്വമെടുക്കുക',
+	'nss-create-account' => 'അംഗത്വമെടുക്കുക',
+	'nss-no-mail' => 'ഇമെയിൽ അയയ്ക്കരുത്',
+	'nss-welcome-mail' => 'ഉപയോക്തൃനാമം $1 എന്നും രഹസ്യവാക്ക് $2 എന്നുമുള്ള ഒരംഗത്വം താങ്കൾക്കായി സൃഷ്ടിച്ചിരിക്കുന്നു.',
+	'nss-welcome-mail-subject' => 'അംഗത്വ സൃഷ്ടി',
+);
+
 /** Mongolian (Монгол)
  * @author Chinneeb
  */

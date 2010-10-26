@@ -523,6 +523,17 @@ $messages['mk'] = array(
 	'pf-header-approve' => 'Одобри',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'pf-admin-menu-default' => 'സ്വതേ',
+	'pf-admin-link-editlink-page' => 'താൾ തിരുത്തുക',
+	'pf-admin-link-approve' => 'താൾ അംഗീകരിക്കുക',
+	'pf-header-edit' => 'തിരുത്തുവാനുള്ള കണ്ണി',
+	'pf-header-type' => 'താളിന്റെ തരം',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

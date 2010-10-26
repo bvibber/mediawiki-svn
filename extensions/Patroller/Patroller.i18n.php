@@ -1236,6 +1236,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -1258,6 +1259,7 @@ $messages['ml'] = array(
 	'group-patroller' => 'റോന്തു ചുറ്റുന്നവർ',
 	'group-patroller-member' => 'റോന്തു ചുറ്റുന്നവർ',
 	'grouppage-patroller' => '{{ns:project}}:റോന്തു ചുറ്റുന്നവർ',
+	'right-patroller' => 'താളുകളിൽ റോന്തുചുറ്റുക',
 );
 
 /** Mongolian (Монгол)

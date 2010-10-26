@@ -122,7 +122,7 @@ $messages['ba'] = array(
 	'article-comments-invalid-field' => '$1 күрһәткән <nowiki>[$2]</nowiki> дөрөҫ түгел.',
 	'article-comments-required-field' => '$1 юлы мотлаҡ.',
 	'article-comments-submission-failed' => 'Иҫкәрмә ебәреү хатаһы',
-	'article-comments-failure-reasons' => 'Ғәфү итегеҙ, иҫкәрмә ебәреү түбәндәге сәбәп(тәр) арҡаһында килеп сыҡманы:',
+	'article-comments-failure-reasons' => 'Ғәфү итегеҙ, иҫкәрмә ебәреү түбәндәге {{PLURAL:$1|сәбәп|сәбәптәр}} арҡаһында килеп сыҡманы:',
 	'article-comments-no-comments' => 'Ғәфү итегеҙ, "[[$1]]" бите хәҙерге ваҡытта иҫкәрмәләр ҡабул итмәй.',
 	'article-comments-talk-page-starter' => '<noinclude>[[$1]] битенә иҫкәрмә
 <comments />
@@ -159,7 +159,7 @@ $messages['be-tarask'] = array(
 	'article-comments-invalid-field' => '$1 пададзеная для <nowiki>[$2]</nowiki> зьяўляецца няслушнай.',
 	'article-comments-required-field' => 'Поле $1 — абавязковае.',
 	'article-comments-submission-failed' => 'Немагчыма запісаць камэнтар',
-	'article-comments-failure-reasons' => 'Прабачце, але адбылася памылка запісу Вашага камэнтара па наступным прычынам:',
+	'article-comments-failure-reasons' => 'Прабачце, але адбылася памылка запісу Вашага камэнтара па {{PLURAL:$1|наступнай прычыне|наступным прычынам}}:',
 	'article-comments-no-comments' => 'Прабачце, старонка «[[$1]]» у цяперашні момант недаступная для камэнтараў.',
 	'article-comments-talk-page-starter' => '<noinclude>Камэнтар да [[$1]]
 <comments />
@@ -268,6 +268,7 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Als-Holder
  * @author Kghbln
  * @author Purodha
  * @author The Evil IP address
@@ -295,7 +296,7 @@ $messages['de'] = array(
 	'article-comments-commenter-said' => '$1 meinte …',
 	'article-comments-summary' => 'Ein Kommentar wurde von $1 über die Programmerweiterung ArticleComments abgegeben.',
 	'article-comments-submission-succeeded' => 'Die Kommentierung wurde durchgeführt.',
-	'article-comments-submission-success' => 'Du hast erfolgreich einen Kommentar für Seite „[[$1]]“ abgegeben.',
+	'article-comments-submission-success' => 'Du hast erfolgreich einen Kommentar für die Seite „[[$1]]“ abgegeben.',
 	'article-comments-submission-view-all' => 'Du kannst [[$1|alle Kommentare zu dieser Seite]] einsehen',
 	'article-comments-user-is-blocked' => 'Du darfst die Seite „[[$1]]“ derzeit nicht bearbeiten.',
 	'article-comments-comment-bad-mode' => 'Für die Kommentierung wurde ein ungültiger Modus angegeben.
@@ -493,6 +494,42 @@ Os modos dispoñibles son "plain", "normal" e "wiki".',
 	'processcomment' => 'Proceso de comentario dun artigo',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'article-comments-desc' => 'Macht s Kommentiere vu Inhaltssyte megli',
+	'article-comments-title-string' => 'Titel',
+	'article-comments-name-string' => 'Name',
+	'article-comments-name-field' => 'Name (brucht s):',
+	'article-comments-url-field' => 'Websyte:',
+	'article-comments-url-string' => 'URL',
+	'article-comments-comment-string' => 'Aamerkig',
+	'article-comments-comment-field' => 'Aamerkig:',
+	'article-comments-submit-button' => 'Ibertrage',
+	'article-comments-leave-comment-link' => 'E Aamerkig hinterloo …',
+	'article-comments-invalid-field' => 'D Yygab <nowiki>[$2]</nowiki> as $1 isch nit giltig.',
+	'article-comments-required-field' => '$1 isch e Pflichtfäld.',
+	'article-comments-submission-failed' => 'D Ibertragig vu dr Aamerkig isch fähl gschlaa',
+	'article-comments-failure-reasons' => 'Excusez, d Ibertragig vu Dyyre Aamerkig isch us {{PLURAL:$1|däm Grund|däne Grind}} fähl gschlaa:',
+	'article-comments-no-comments' => 'Fir d Syte „[[$1]]“ chenne zurzyt no kei Aamerkige abgee wäre.',
+	'article-comments-talk-page-starter' => '<noinclude>Aamerkige zue dr Syte „[[$1]]“
+<comments />
+----- __NOEDITSECTION__</noinclude>',
+	'article-comments-commenter-said' => '$1 het gmeint …',
+	'article-comments-summary' => 'Aameerkig vu $1 - iber d Programmerwyterig ArticleComments.',
+	'article-comments-submission-succeeded' => 'D Ibertragig vu dr Aamerkig isch erfolgryych gsi',
+	'article-comments-submission-success' => 'Du hesch erfolgryych en Aamerkig fir d Syte „[[$1]]“ abgee.',
+	'article-comments-submission-view-all' => 'Du chasch [[$1|alli Aamerkige zue däre Syte]] bschaue',
+	'article-comments-user-is-blocked' => 'Du derfsch d Syte „[[$1]]“ zurzyt nit bearbeite.',
+	'article-comments-comment-bad-mode' => 'Fir d Aamerkige isch e uugiltige Modus aagee wore.
+Megli sin d Modi „plain“, „normal“ un „wiki“.',
+	'article-comments-comment-missing-name-parameter' => 'Dr Name fählt',
+	'article-comments-comment-missing-date-parameter' => 'S Datum fählt',
+	'article-comments-no-spam' => 'Zmindescht ei Aagab isch as Spam idäntifiziert wore.',
+	'processcomment' => 'Aamerkige zue Artikel verschaffe',
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */
@@ -607,7 +644,7 @@ $messages['ja'] = array(
 	'article-comments-invalid-field' => '$1に入力された値<nowiki>[$2]</nowiki>が不正です。',
 	'article-comments-required-field' => '$1項目は必須です。',
 	'article-comments-submission-failed' => 'コメント投稿に失敗しました',
-	'article-comments-failure-reasons' => '申し訳ありませんが、コメントの投稿が、次の理由により失敗しました：',
+	'article-comments-failure-reasons' => '申し訳ありませんが、コメントの投稿が、次の{{PLURAL:$1|理由}}により失敗しました：',
 	'article-comments-no-comments' => '申し訳ありませんが、ページ「[[$1]]」は、現在、コメントの投稿を受け付けていません。',
 	'article-comments-talk-page-starter' => '<noinclude>[[$1]]へのコメント
 <comments />
@@ -679,7 +716,7 @@ $messages['lb'] = array(
 	'article-comments-invalid-field' => 'Den $1 <nowiki>[$2]</nowiki> deen Dir uginn hutt ass net valabel.',
 	'article-comments-required-field' => "D'Feld $1 ass obligatoresch.",
 	'article-comments-submission-failed' => "D'Schécke vun der Bemierkung huet net fonctionnéiert",
-	'article-comments-failure-reasons' => 'Pardon, Är Bemierkung huet net fonctionnéiert well:',
+	'article-comments-failure-reasons' => 'Pardon, Är Bemierkung huet aus {{PLURAL:$1|dësem Grond|dëse Grënn}} net fonctionnéiert:',
 	'article-comments-no-comments' => 'Pardon, d\'Säit "[[$1]]" hëlt elo keng Bemierkungen un.',
 	'article-comments-talk-page-starter' => '<noinclude>Bemierkungen iwwer [[$1]]
 <comments />
@@ -727,7 +764,7 @@ $messages['mk'] = array(
 	'article-comments-invalid-field' => 'Наведеното „$1“ е <nowiki>[$2]</nowiki> неважечко.',
 	'article-comments-required-field' => 'Се бара полето $1.',
 	'article-comments-submission-failed' => 'Поднесувањето на коментарот не успеа.',
-	'article-comments-failure-reasons' => 'Нажалост, поднесувањето на коментарот не успеа, и тоа од следниве причини:',
+	'article-comments-failure-reasons' => 'Нажалост, поднесувањето на коментарот не успеа, и тоа од {{PLURAL:$1|следнава причина|следниве причини}}:',
 	'article-comments-no-comments' => 'Нажалост, статијата „[[$1]]“ моментално не прифаќа коментари.',
 	'article-comments-talk-page-starter' => '<noinclude>Коментари за [[$1]]
 <comments />
@@ -895,7 +932,7 @@ $messages['pl'] = array(
 	'article-comments-invalid-field' => 'dla „$1” wartość <nowiki>[$2]</nowiki> jest nieprawidłowa',
 	'article-comments-required-field' => 'wypełnienie pola „$1” jest obowiązkowe',
 	'article-comments-submission-failed' => 'Nieudane zapisanie komentarza',
-	'article-comments-failure-reasons' => 'Komentarz nie może zostać zapisany ponieważ',
+	'article-comments-failure-reasons' => 'Komentarz nie może zostać zapisany {{PLURAL:$1|ponieważ|z następujących powodów:}}',
 	'article-comments-no-comments' => 'W tej chwili nie można komentować strony „[[$1]]”.',
 	'article-comments-talk-page-starter' => '<noinclude>Komentarze do [[$1]]
 <comments />
@@ -1025,6 +1062,7 @@ Os modos disponíveis são "plain" (simples), "normal" e "wiki".',
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1039,7 +1077,7 @@ $messages['ro'] = array(
 	'article-comments-leave-comment-link' => 'Lăsaţi un comentariu ...',
 	'article-comments-required-field' => 'Câmpul $1 este obligatoriu.',
 	'article-comments-submission-failed' => 'Trimiterea comentariului a eșuat',
-	'article-comments-failure-reasons' => 'Ne pare rău, trimiterea comentariului dvs. a eşuat din motivul(ele) următor(are):',
+	'article-comments-failure-reasons' => 'Ne pare rău, dar trimiterea comentariului dumneavoastră a eșuat din {{PLURAL:$1|următorul|următoarele}} {{PLURAL:$1|motiv|motive}}:',
 	'article-comments-no-comments' => 'Scuze, pagina „[[$1]]” nu acceptă comentarii în acest moment.',
 	'article-comments-talk-page-starter' => '<noinclude>Comentarii pe [[$1]]
 <comments />
@@ -1048,7 +1086,7 @@ $messages['ro'] = array(
 	'article-comments-summary' => 'Comentariu furnizat de către $1 - prin extensia ArticleComments',
 	'article-comments-submission-succeeded' => 'Trimiterea comentariului s-a efectuat cu succes',
 	'article-comments-submission-success' => 'Ai trimis cu succes un comentariu pentru „[[$1]]”',
-	'article-comments-user-is-blocked' => 'Contul dvs. de utilizator este blocat pentru a modifica „[[$1]]”.',
+	'article-comments-user-is-blocked' => 'Contului dumneavoastră de utilizator nu îi este permisă modificarea paginii „[[$1]]”.',
 	'article-comments-comment-missing-name-parameter' => 'Lipseşte numele',
 	'article-comments-comment-missing-date-parameter' => 'Lipseşte data comentariului',
 );
@@ -1112,7 +1150,7 @@ $messages['sl'] = array(
 	'article-comments-invalid-field' => 'Naveden $1 <nowiki>[$2]</nowiki> ni veljaven.',
 	'article-comments-required-field' => 'Polje $1 je obvezno.',
 	'article-comments-submission-failed' => 'Oddaja pripombe je spodletela',
-	'article-comments-failure-reasons' => 'Oprostite, oddaja vaše pripombe je spodletela zaradi naslednjih razlogov:',
+	'article-comments-failure-reasons' => 'Oprostite, oddaja vaše pripombe je spodletela zaradi {{PLURAL:$1|naslednjega razloga|naslednjih razlogov}}:',
 	'article-comments-no-comments' => 'Oprostite, stran »[[$1]]« v tem trenutku ne sprejema pripomb.',
 	'article-comments-talk-page-starter' => '<noinclude>Komentarji na [[$1]]
 <comments />

@@ -7521,7 +7521,7 @@ $messages['ro'] = array(
 	'mwe-return-to-form' => 'Înapoi la formular',
 	'mwe-fileexists' => 'Un fişier cu acest nume există deja. Vă rugăm să verificaţi <b><code>$1</code></b> dacă nu sunteţi sigur dacă doriţi să-l schimbaţi.',
 	'mwe-fileexists-thumb' => 'Fişier existent',
-	'mwe-ignorewarning' => 'Ignoră avertismentul şi salvează fişierul oricum',
+	'mwe-ignorewarning' => 'Ignoră avertismentul și salvează fișierul oricum',
 	'mwe-thumbnail-more' => 'Extinde',
 	'mwe-filesource' => 'Sursă:',
 	'mwe-filestatus' => 'Stare drept de autor:',
@@ -7565,9 +7565,9 @@ Mai multe despre <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_rati
 	'mwe-destfilename' => 'Numele fișierului de destinație:',
 	'mwe-summary' => 'Descriere fișier',
 	'mwe-date-of-work' => 'Data realizării operei',
-	'mwe-error_not_loggedin' => 'Nu apăreţi să fiţi autentificat sau nu aveţi privilegii pentru upload.',
-	'mwe-error-not-loggedin-file' => 'Nu apăreţi să fiţi autentificat sau există o eroare în software.
-Puteţi $1 şi încercaţi iar',
+	'mwe-error_not_loggedin' => 'Nu apăreți ca autentificat sau nu aveți drepturi de încărcare.',
+	'mwe-error-not-loggedin-file' => 'Nu apăreți ca autentificat ori există o eroare în software.
+Puteți $1 și încerca iar',
 	'mwe-link-login' => 'autentificare',
 	'mwe-watch-this-file' => 'Urmăreşte acest fişier',
 	'mwe-ignore-any-warnings' => 'Ignoră orice avertismente',

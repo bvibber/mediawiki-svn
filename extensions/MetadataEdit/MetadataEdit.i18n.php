@@ -154,6 +154,13 @@ $messages['bg'] = array(
 	'metadata_help' => 'Метаданни:',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'metadata_help' => 'Metadata:',
+);
+
 /** Bengali (বাংলা)
  * @author Zaheen
  */

@@ -479,6 +479,16 @@ $messages['mk'] = array(
 	'newschannel_submit_button' => 'Создај емитување',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'newschannel_limit' => 'പരിധി:',
+	'newschannel_include_category' => 'കൂടുതൽ വർഗ്ഗം:',
+	'newschannel_exclude_category' => 'വർഗ്ഗം ഒഴിവാക്കുക:',
+	'newschannel_submit_button' => 'ഫീഡ് സൃഷ്ടിക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

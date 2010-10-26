@@ -3461,12 +3461,16 @@ $messages['ml'] = array(
 	'openidfullname' => 'പൂർണ്ണനാമം',
 	'openidemail' => 'ഇമെയിൽ വിലാസം',
 	'openidlanguage' => 'ഭാഷ',
+	'openidtimezone' => 'സമയ മേഖല',
+	'openidchooselegend' => 'ഐച്ഛിക ഉപയോക്തൃനാമം',
 	'openidchooseinstructions' => 'എല്ലാ ഉപയോക്താക്കൾക്കും ഒരു വിളിപ്പേരു ആവശ്യമാണ്‌. താഴെ കൊടുത്തിരിക്കുന്നവയിൽ നിന്നു ഒരെണ്ണം താങ്കൾക്ക് തിരഞ്ഞെടുക്കാവുന്നതാണ്‌.',
+	'openidchoosenick' => 'താങ്കളുടെ വിളിപ്പേര് ($1)',
 	'openidchoosefull' => 'താങ്കളുടെ പൂർണ്ണനാമം ($1)',
 	'openidchooseurl' => 'താങ്കളുടെ ഓപ്പൺ‌ഐ.ഡി.യിൽ നിന്നു തിരഞ്ഞെടുത്ത ഒരു പേര്‌ ($1)',
 	'openidchooseauto' => 'യാന്ത്രികമായി ഉണ്ടാക്കിയ പേര്‌ ($1)',
 	'openidchoosemanual' => 'താങ്കൾക്ക് ഇഷ്ടമുള്ള ഒരു പേര്‌:',
 	'openidchooseexisting' => 'ഈ വിക്കിയിലെ നിലവിലുള്ള അംഗത്വം',
+	'openidchooseusername' => 'ഉപയോക്തൃനാമം:',
 	'openidchoosepassword' => 'രഹസ്യവാക്ക്:',
 	'openidconvertsuccess' => 'ഓപ്പൺ ഐ.ഡി.യിലേക്ക് വിജയകരമായി പരിവർത്തനം ചെയ്തിരിക്കുന്നു',
 	'openidconvertsuccesstext' => 'താങ്കളുടെ ഓപ്പൺ‌ഐ.ഡി. $1ലേക്കു വിജയകരമായി പരിവർത്തനം ചെയ്തിരിക്കുന്നു.',
@@ -3475,6 +3479,8 @@ $messages['ml'] = array(
 	'openidnousername' => 'ഉപയോക്തൃനാമം തിരഞ്ഞെടുത്തിട്ടില്ല.',
 	'openidbadusername' => 'അസാധുവായ ഉപയോക്തൃനാമമാണു തിരഞ്ഞെടുത്തിരിക്കുന്നത.',
 	'openidloginlabel' => 'ഓപ്പൺ‌ഐ.ഡി. വിലാസം',
+	'openid-urls-action' => 'നടപടി',
+	'openid-urls-delete' => 'മായ്ക്കുക',
 );
 
 /** Mongolian (Монгол)

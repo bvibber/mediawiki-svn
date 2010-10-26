@@ -191,6 +191,13 @@ $messages['mk'] = array(
 	'nsfilerepo-desc' => 'Дава својства за работа со подигнати податотеки звисно од именскиот простор',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'nsfilerepo-desc' => 'അപ്‌ലോഡ് ചെയ്യുന്ന പ്രമാണങ്ങൾക്ക് നാമമേഖലയനുസരിച്ച് വിശേഷഗുണങ്ങൾ നൽകുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

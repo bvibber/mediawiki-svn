@@ -307,6 +307,13 @@ $messages['mk'] = array(
 	'othersites-desc' => 'Ги преместува интервики врските, кои не се јазични врски, во посебни места',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'othersites' => 'മറ്റ് സൈറ്റുകൾ',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Zamwan
  */

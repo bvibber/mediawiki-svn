@@ -2026,12 +2026,15 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'voctrain_continue' => 'continua',
+	'voctrain_Number_of_questions' => 'Numero di domande',
 	'voctrain_User_name' => 'Nome utente',
+	'voctrain_other' => 'altro',
 );
 
 /** Japanese (日本語)

@@ -280,6 +280,9 @@ $messages['ba'] = array(
 Әгәр хата тағы килеп сыҡһа, мәғлүмәттәр базаһы боҙолған булыуы мөмкин.',
 	'changeauthor-invalidform' => 'Зинһар, башҡа форманы түгел, [[Special:ChangeAuthor|махсус биттәге]] форманы ҡулланығыҙ.',
 	'changeauthor-success' => 'Һеҙҙең һорауығыҙ уңышлы башҡарылды.',
+	'changeauthor-logentry' => '$1 битенең $2 өлгөһөнөң авторын үҙгәрткән. Элекке авторы: $3,  яңы авторы: $4',
+	'changeauthor-logpagename' => 'Автор үҙгәртеү яҙмалары журналы',
+	'right-changeauthor' => 'Өлгөнөң авторын үҙгәртеү',
 );
 
 /** Bavarian (Boarisch)

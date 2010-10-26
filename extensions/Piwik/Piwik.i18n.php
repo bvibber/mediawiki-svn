@@ -400,6 +400,15 @@ $messages['mk'] = array(
 	'right-viewpiwik' => 'Погледајте ги [[Special:Piwik|Piwik статистиките]]',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'piwik-lastvisits' => 'അവസാന സന്ദർശനങ്ങൾ',
+	'piwik-countries' => 'രാജ്യങ്ങൾ',
+	'piwik-browsers' => 'ബ്രൗസറുകൾ',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand
