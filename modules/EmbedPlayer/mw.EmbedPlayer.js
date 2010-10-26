@@ -633,7 +633,7 @@ EmbedPlayerManager.prototype = {
 			// Be sure to remove any player loader spinners
 			$j('.playerLoadingSpinner').remove();
 			
-			mw.log( "EmbedPlayer::All on-page players ready run playerMannager callbacks" );
+			mw.log( "EmbedPlayer::All on-page players ready run playerManager callbacks" );
 			// Run queued functions 
 			if( _this.callbackFunctions ) {
 				while ( _this.callbackFunctions.length ) {					
