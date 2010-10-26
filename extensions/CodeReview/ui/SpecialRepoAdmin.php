@@ -37,7 +37,7 @@ class RepoAdminListView {
 		global $wgScript;
 		return Xml::fieldset( wfMsg( 'repoadmin-new-legend' ) ) .
 			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
-			Xml::hidden( 'title', $this->mPage->getTitle()->getPrefixedDBKey() ) .
+			Html::hidden( 'title', $this->mPage->getTitle()->getPrefixedDBKey() ) .
 			Xml::inputLabel( wfMsg( 'repoadmin-new-label' ), 'repo', 'repo' ) .
 			Xml::submitButton( wfMsg( 'repoadmin-new-button' ) ) .
 			'</form></fieldset>';
@@ -114,7 +114,7 @@ class RepoAdminRepoView {
 						Xml::input( 'wpBugPath', 60, $bugPath ),
 					'repoadmin-edit-view' =>
 						Xml::input( 'wpViewPath', 60, $viewPath ) ) ) .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->mRepoName ) ) .
+			Html::hidden( 'wpEditToken', $wgUser->editToken( $this->mRepoName ) ) .
 			Xml::submitButton( wfMsg( 'repoadmin-edit-button' ) ) .
 			'</form></fieldset>'
 		);

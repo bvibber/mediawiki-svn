@@ -360,7 +360,7 @@ class CodeRevision {
 				}
 
 				//Notify commenters and revision author of followup revision
-				foreach ( $users as $userId => $user ) {
+				foreach ( $users as $user ) {
 					// Notify user with its own message if he already want
 					// to be CCed of all emails it sends.
 					if ( $commitAuthorId == $user->getId() ) {

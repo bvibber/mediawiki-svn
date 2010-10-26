@@ -141,7 +141,7 @@ class SvnImport extends Maintenance {
 				__METHOD__,
 				$options
 			);
-			while ( $row = $dbw->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$repo->getRevision( $row->cr_id );
 				$repo->getDiff( $row->cr_id ); // trigger caching
 				$this->output( "Diff r{$row->cr_id} done\n" );

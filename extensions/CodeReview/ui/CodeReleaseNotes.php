@@ -44,7 +44,7 @@ class CodeReleaseNotes extends CodeView {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'action' => $wgScript, 'method' => 'get' ) ) .
 			"<fieldset><legend>" . wfMsgHtml( 'code-release-legend' ) . "</legend>" .
-				Xml::hidden( 'title', $special->getPrefixedDBKey() ) . '<b>' .
+				Html::hidden( 'title', $special->getPrefixedDBKey() ) . '<b>' .
 				Xml::inputlabel( wfMsg( "code-release-startrev" ), 'startrev', 'startrev', 10, $this->mStartRev ) .
 				'</b>&#160;' .
 				Xml::inputlabel( wfMsg( "code-release-endrev" ), 'endrev', 'endrev', 10, $this->mEndRev ) .
@@ -86,7 +86,7 @@ class CodeReleaseNotes extends CodeView {
 		);
 		$wgOut->addHTML( '<ul>' );
 		# Output any relevant seeming commits...
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$summary = htmlspecialchars( $row->cr_message );
 			# Add this commit summary if needed.
 			if ( $row->rnotes || $this->isRelevant( $summary ) ) {

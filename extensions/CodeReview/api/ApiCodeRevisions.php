@@ -31,7 +31,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->setVaryCookie();
+		$this->getMain()->setCacheMode( 'anon-public-user-private' );
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view code revisions', 'permissiondenied' );

@@ -615,9 +615,9 @@ class CodeRevisionView extends CodeView {
 		}
 		return '<div class="mw-codereview-post-comment">' .
 			$preview .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
-			Xml::hidden( 'path', $this->mPath ) .
-			( $parent ? Xml::hidden( 'wpParent', $parent ) : '' ) .
+			Html::hidden( 'wpEditToken', $wgUser->editToken() ) .
+			Html::hidden( 'path', $this->mPath ) .
+			( $parent ? Html::hidden( 'wpParent', $parent ) : '' ) .
 			'<div>' .
 			Xml::openElement( 'textarea', array(
 				'name' => "wpReply{$parent}",
