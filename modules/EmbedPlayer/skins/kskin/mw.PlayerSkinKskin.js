@@ -186,7 +186,7 @@ mw.PlayerSkinKskin = {
 			}
 			
 			// Add the menu binding
-			_this.addMeunBinding();
+			_this.addMenuBinding();
 		}
 	},
 	
@@ -235,7 +235,7 @@ mw.PlayerSkinKskin = {
 	*
 	* @param {Object} $tp Target video container for 
 	*/
-	addMeunBinding: function() {
+	addMenuBinding: function() {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
 		// Set local player target pointer:
