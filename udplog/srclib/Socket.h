@@ -15,6 +15,7 @@
 class Socket
 {
 public:
+	Socket(){}
 	Socket(int domain, int type, int protocol)
 		: fd(-1) 
 	{
@@ -153,4 +154,29 @@ public:
 	}
 };
 
+
+class MulticastSocket : public Socket
+{
+public:
+        MulticastSocket(int domain = PF_INET)
+                : Socket(domain, SOCK_DGRAM, 0) {}
+
+        MulticastSocket(IPAddress & addr, unsigned int port, const char* multicastAddr)
+                : Socket(addr.GetDomain(), SOCK_DGRAM, 0)
+        {
+                struct ip_mreq imreq;
+		bzero(&imreq, sizeof(struct ip_mreq));
+		boost::shared_ptr<SocketAddress> saddr = addr.NewSocketAddress(port);
+                if (Connect(*saddr)) {
+                        good = false;
+                }
+        	imreq.imr_multiaddr.s_addr = inet_addr(multicastAddr);
+   		imreq.imr_interface.s_addr = INADDR_ANY;
+
+   		// JOIN multicast group on default interface
+       		setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, 
+                     (const void *)&imreq, sizeof(struct ip_mreq));
+   
+	}
+};
 #endif

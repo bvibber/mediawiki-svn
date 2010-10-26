@@ -22,6 +22,7 @@ std::string configFileName("/etc/udp2log");
 std::string logFileName("/var/log/udp2log/udp2log.log");
 std::string pidFileName("/var/run/udp2log.pid");
 std::string daemonUserName("udp2log");
+std::string multicastAddr("0");
 
 Udp2LogConfig config;
 
@@ -112,10 +113,11 @@ int main(int argc, char** argv)
 	using namespace boost::program_options;
 	unsigned int port = 8420;
 	bool daemon = false;
-	
+
 	// Process command line
 	options_description optDesc;
 	optDesc.add_options()
+		("multicast", value<string>(&multicastAddr)->default_value(multicastAddr), "multicast address to listen to")
 		("help", "Show help message.")
 		("port,p", value<unsigned int>(&port)->default_value(port), "UDP port.")
 		("config-file,f", value<string>(&configFileName)->default_value(configFileName), 
@@ -182,13 +184,18 @@ int main(int argc, char** argv)
 	// Open the receiving socket
 	IPAddress any(INADDR_ANY);
 	SocketAddress saddr(any, (unsigned short int)port);
-	UDPSocket socket;
-	if (!socket) {
-		cerr << "Unable to open socket\n";
-		return 1;
-	}
-	socket.Bind(saddr);
-
+	Socket socket;
+	if(strcmp("0", multicastAddr.c_str())){ //if multicast
+                socket = *(new MulticastSocket(any, port, multicastAddr.c_str()));
+        }
+        else{
+                socket = *(new UDPSocket());
+	      	if (!socket) {
+                	cerr << "Unable to open socket\n";
+                	return 1;
+        	}
+		socket.Bind(saddr);
+        }
 	// Process received packets
 	boost::shared_ptr<SocketAddress> address;
 	const size_t bufSize = 65536;
