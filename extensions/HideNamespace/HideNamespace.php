@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'HideNamespace',
 	'description'    => 'Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.',
 	'descriptionmsg' => 'hidens-desc',
-	'version'        => '1.4.1',
+	'version'        => '1.4.1a',
 	'author'         => 'Matěj Grabovský',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:HideNamespace',
 );
@@ -45,10 +45,9 @@ function wfHideNamespaceSetup() {
 function wfHideNamespaceSetupLanguageGetMagic( &$mw, $lang ) {
 	require_once( dirname( __FILE__ ) . DIRECTORY_SEPARATOR . 'HideNamespace.i18n.magic.php' );
 
-	if( $lang == 'en' || !isset( $magicWords[$lang] ) )
-		$mw += $magicWords['en'];
-	else
-		$mw += array_merge( $magicWords['en'], $magicWords[$lang] );
+	$mw = array_merge( $mw, $magicWords['en'] );
+	if( $lang !== 'en' && isset( $magicWords[$lang] ) )
+		$mw = array_merge( $mw, $magicWords[$lang] );
 
 	return true;
 }
