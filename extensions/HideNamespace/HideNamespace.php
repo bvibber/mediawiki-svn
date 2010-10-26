@@ -2,7 +2,7 @@
 
 /**
  * Extension HideNamespace - Hides namespace in the header and title when a page is in specified namespace
- * or when the {{#hidens:}} parser function is called.
+ * or when the {{#hidens:}} parser function is called
  *
  * @file
  * @ingroup Extensions
@@ -46,7 +46,7 @@ class ExtensionHideNamespace {
 	private static $forceHide = false, $forceShow = false;
 
 	/**
-	 * Register our parser functions.
+	 * Register our parser functions
 	 */
 	function registerParser( &$parser ) {
 		$parser->setFunctionHook( 'hidens', array( &$this, 'hideNs' ) );
@@ -56,8 +56,9 @@ class ExtensionHideNamespace {
 	}
 
 	/**
-	 * Callback for our parser function {{#hidens:}}.
-	 * Force to hide the namespace.
+	 * Callback for our parser function {{#hidens:}}
+	 *
+	 * Force to hide the namespace
 	 */
 	function hideNs( &$parser ) {
 		self::$forceHide = true;
@@ -66,8 +67,9 @@ class ExtensionHideNamespace {
 	}
 
 	/**
-	 * Callback for our parser function {{#showns:}}.
-	 * Force to show the namespace.
+	 * Callback for our parser function {{#showns:}}
+	 *
+	 * Force to show the namespace
 	 */
 	function showNs( &$parser ) {
 		self::$forceShow = true;
@@ -77,7 +79,9 @@ class ExtensionHideNamespace {
 
 	/**
 	 * Callback for the ArticleViewHeader hook.
-	 * Saves namespace identifier and localized namespace name to the $namespace and $namespaceL10n variables.
+	 *
+	 * Saves namespace identifier and localized namespace name to the $namespace and
+	 * $namespaceL10n variables
 	 */
 	function onArticleViewHeader( $article, $outputDone, $enableParserCcache ) {
 		self::$namespace = $article->mTitle->mNamespace;
@@ -93,8 +97,9 @@ class ExtensionHideNamespace {
 	}
 
 	/**
-	 * Callback for the OutputPageBeforeHTML hook.
-	 * "Hides" the namespace in the header and in title.
+	 * Callback for the OutputPageBeforeHTML hook
+	 *
+	 * "Hides" the namespace in the header and in title
 	 */
 	function onBeforePageDisplay( &$out, $skin ) {
 		if( self::$namespace === NS_MAIN )
